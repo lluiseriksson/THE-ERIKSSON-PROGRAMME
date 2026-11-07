@@ -1,0 +1,460 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=28mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\setlength{\emergencystretch}{3em}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\E}{\mathcal E}
+\newcommand{\Pcal}{\mathcal P}
+\title{Rectangular mean observations with critical inverse moments}
+\author{Lluis Eriksson}
+\date{7 November 2026 --- grouped supplement for the existing paper dossier}
+\begin{document}
+\maketitle
+\begin{abstract}
+We construct rectangular mean observations for every positive scalar
+coefficient on a finite periodic lattice that depends on one coordinate.
+At the critical inverse-moment exponent, the number of cells attains the
+target upper order, with the penalty coefficient equal to the coercivity
+threshold. The proof uses actual interval resistances, transverse averaging
+and a balanced-tree charge valid for odd lattice sizes. No bounded contrast
+or separation of weak sites is assumed. A thin weak layer separates this
+construction from certificates based only on the minimum coefficient.
+We also determine the exact asymptotic cell-cost phase diagram of strong
+Green-moment certificates on homogeneous coefficients, for arbitrary
+rectangular partitions and aspect ratios. At the critical exponent these
+certificates pay a logarithmic overhead although one actual mean suffices.
+An explicit coexact field refutes extension of the laminate argument by
+sampling a representative fibre. The unrestricted critical rectangular
+question remains open. These finite analytical results consolidate related
+positive and negative mechanisms; they do not establish a physical mass gap,
+formal verification or independent originality.
+\end{abstract}
+
+\section{Problem and relation to the existing record}
+This grouped supplement belongs to the existing coarse-information paper
+dossier~\cite{programme}. It combines the complementary research units184
+and185 rather than proposing a deposit for each corollary. Let $D\ge3$,
+$n\ge2$, $X=(\mathbb Z/n\mathbb Z)^D$, $N=n^D$ and $p=D/2$.
+All differences have unit spacing and all norms use counting measure. Set
+\[
+ \E_a(u)=\sum_{x\in X}\sum_{j=1}^D
+ a(x)|u(x+e_j)-u(x)|^2,\qquad a(x)>0.
+\]
+For a disjoint rectangular partition $\Pcal$ define the actual normalized
+arithmetic means $C_{\Pcal}u=(\sqrt{|R|}\,\bar u_R)_{R\in\Pcal}$.
+Our positive construction gives, simultaneously for all fields,
+\begin{equation}\label{eq:goal}
+ c\|u\|^2\le\E_a(u)+c\|C_{\Pcal}u\|^2,\qquad c>0.
+\end{equation}
+For a fixed $h$-component field the output dimension is $h\#\Pcal$ over
+the selected scalar field; complex dimension must be doubled when counted
+over the reals. Scalar estimates sum over components, and hence restrict
+to any actual coexact subspace without assuming an abstract surrogate.
+
+The original question asks for a target-order partition under
+$\mu=\operatorname{mean}(a)\ge1$, $1\le a\le2\mu$ and
+$\operatorname{mean}((\mu/a)^p)\le M$, with cell count bounded by a constant
+depending on $D,c,M$ times $\max(1,N/(1+\mu)^p)$. We solve here only the
+subclass $a(x)=\alpha(x_1)$. Lamination is an explicit retained hypothesis.
+The Green-moment results below concern the cost of a sufficient certificate,
+not a lower bound for every successful observation or for coexact rank.
+
+\section{A constructive theorem for arbitrary laminates}
+Put $d=D-1$ and
+\[
+ r=(2/3)^d,\qquad B_D=\frac{2\,6^d}{1-r}.
+\]
+\begin{theorem}\label{thm:laminate}
+For every positive sequence $\alpha(0),\ldots,\alpha(n-1)$, set
+$a(x)=\alpha(x_1)$. There is a disjoint axis-aligned rectangular partition
+independent of $u$ that satisfies~\eqref{eq:goal} and
+\begin{equation}\label{eq:count}
+ \#\Pcal\le2^d+B_D(c/2)^p\sum_{x\in X}a(x)^{-p}.
+\end{equation}
+If the original critical inverse-moment assumptions hold, its output rank
+is at most
+\[
+ h\bigl[2^d+B_D(c/2)^p2^p M\bigr]
+ \max\bigl(1,N/(1+\mu)^p\bigr).
+\]
+The upper bound $a\le2\mu$ is not needed for~\eqref{eq:count}.
+Target order here means the requested upper order, not a matching lower
+bound for every individual coefficient.
+\end{theorem}
+
+\subsection{Actual local energy estimate}
+For an interval $I$ of length $m$, write
+$R_I=\sum_{x\in I}\alpha(x)^{-1}$. Include its last starting vertex in
+this sum: although its longitudinal edge may leave the cut interval, its
+coefficient is needed for transverse averaging. Internal rectangle energies
+keep only edges within cut paths; periodic closing and cross-cell edges
+are discarded as nonnegative contributions.
+
+\begin{lemma}\label{lem:local}
+If $R=I\times Z$ and every transverse side has length at most $m$, then
+\begin{equation}\label{eq:local}
+ \Var_R(u):=\sum_R|u-\bar u_R|^2\le\frac{mR_I}{2}\E_{a,R}(u).
+\end{equation}
+The constant $mR_I/2$ is an inverse-gap bound.
+\end{lemma}
+\begin{proof}
+Let $v(y)=m^{-1}\sum_{x\in I}u(x,y)$. Orthogonal decomposition gives
+\[
+ \Var_R(u)=\sum_{y\in Z}\Var_I(u(\cdot,y))+m\Var_Z(v).
+\]
+The pairwise variance identity and weighted Cauchy along a path give
+$\Var_I\le(m-1)R_I\E_1/2\le mR_I\E_1/2$.
+For an unweighted path of length $\ell$, the same identity bounds the
+coefficient of its $k$th edge by $k(\ell-k)\le\ell^2/4$:
+use the path Cauchy bound with its length and then bound that length
+divided by $\ell$ by one. Tensorizing these path inequalities gives
+$\Var_Z(v)\le m^2\sum_{y,j>1}|D_jv(y)|^2/4$; the tensorized constant
+is the largest coordinate constant, not their sum. Weighted Cauchy yields
+\[
+ |D_jv(y)|^2\le\frac{R_I}{m^2}
+      \sum_{x\in I}\alpha(x)|D_ju(x,y)|^2.
+\]
+Thus $\Var_R\le(mR_I/2)\E_1+(mR_I/4)\E_\perp$, proving the lemma.
+This is the step where a common coefficient sequence on all fibres is used.
+\end{proof}
+
+\subsection{Partition algorithm and critical charge}
+Start from the interval $\{0,\ldots,n-1\}$. Split a node of length $m\ge2$
+into consecutive lengths $\lfloor m/2\rfloor,\lceil m/2\rceil$ exactly
+when $mR_I>2/c$. Accept equality. Never split a singleton. For each final
+interval of length $m$, partition every transverse coordinate into intervals
+of length $m$ with a possible shorter last interval. Their products form
+an actual disjoint cover. A nonsingleton leaf satisfies
+$c\Var_R\le\E_{a,R}$ by Lemma~\ref{lem:local}; singleton longitudinal
+leaves produce only singleton cells, with zero variance. Summing and using
+$\|u\|^2=\sum_R\Var_R(u)+\sum_R|R||\bar u_R|^2$ proves~\eqref{eq:goal}.
+
+For the count set $b(I)=\sum_I\alpha^{-p}$ and $w(I)=m^{-d}$.
+H\"older gives $R_I\le m^{1-1/p}b(I)^{1/p}$. Every split therefore satisfies
+\begin{equation}\label{eq:charge}
+ w(I)<(c/2)^p b(I),\qquad d=2p-1.
+\end{equation}
+Let $T$ consist of internal nodes with no internal children. These intervals
+are disjoint. Assign each internal node to a terminal internal descendant.
+Each child has size at most $2/3$ of its parent, also when sizes are odd.
+Nodes assigned to a fixed terminal node lie on its ancestor path at distinct
+depths, so their weights sum to at most $w(J)/(1-r)$. Consequently
+\[
+ \sum_{I\text{ internal}}w(I)
+ \le\frac{(c/2)^p}{1-r}\sum_{x_1}\alpha(x_1)^{-p}.
+\]
+Each child also has size at least $m/3$. Telescoping leaf weights over all
+splits gives
+\[
+ \sum_{I\text{ leaf}}w(I)
+ \le n^{-d}+2\,3^d\sum_{I\text{ internal}}w(I).
+\]
+The exact transverse cost of a leaf is $\lceil n/m\rceil^d\le(2n/m)^d$.
+Multiply the last display by $(2n)^d$ and use
+$\sum_Xa^{-p}=n^d\sum_{x_1}\alpha^{-p}$ to obtain~\eqref{eq:count}.
+Finally $\sum_Xa^{-p}\le MN/\mu^p$ and
+$\mu^{-p}\le2^p(1+\mu)^{-p}$ prove the stated target bound.
+This completes the proof of Theorem~\ref{thm:laminate} without a logarithmic
+charge at each tree level.
+
+\subsection{A thin weak layer beyond minimum certificates}
+Take integer $t\ge2$, $n=t^D$, $\mu=n^2$, $b=n^{2-2/D}$, and
+\[
+ \alpha(0)=b,\qquad \alpha(i)=H=\frac{n\mu-b}{n-1}\quad(i>0).
+\]
+Then $1\le\alpha\le2\mu$, its exact mean is $\mu$, and
+\begin{equation}\label{eq:moment-layer}
+ \operatorname{mean}((\mu/a)^p)
+ =1+(1-1/n)(\mu/H)^p<2.
+\end{equation}
+The uniform bound for this unbounded sequence is $M=2$; the moments tend
+to two, so a single fixed $M<2$ is not asserted. Moreover
+\[
+ nR_{\rm root}=n^{-1+2/D}
+       +\frac{(n-1)^2}{n^2-b/n}<2.
+\]
+Thus at $c=1$ the algorithm accepts the root and uses one mean.
+Yet $b\to\infty$ and $b/\mu\to0$, excluding every fixed coefficient-gap
+condition $a\le B$ or $a\ge\theta\mu$ for fixed $B,\theta>0$ eventually.
+
+Consider instead any partition whose cells pass the minimum-only sufficient
+test $(\min_Ra)\lambda_1^0(R)\ge1$, where $\lambda_1^0$ is the actual
+unweighted internal gap. For a singleton the mean-zero condition is vacuous.
+Every cell meeting the weak layer has minimum $b$. A linear path test gives
+$\lambda_1^0\le12/\ell^2$ in a cut coordinate of length $\ell\ge2$;
+a Fourier test gives $\lambda_1^0<40/\ell^2$ in a full cycle coordinate.
+Thus each transverse side of such a cell is at most $\sqrt{40b}$.
+Covering the $n^d$ weak-layer vertices forces
+\[
+ \#\Pcal\ge40^{-d/2}n^{d/D}.
+\]
+This is a limitation of that certificate, since the preceding one-cell
+construction works on the same coefficients.
+
+\section{The cell cost of strong Green moments}
+Now take homogeneous $a=\mu=n^2$. These original coefficient data have
+$M=1$ and target order one. On a rectangle $R$ use cut coordinate paths,
+or retain a periodic edge only when its coordinate spans the full period.
+Let $L_R$ be its actual weighted Laplacian and $G_R=L_R^\dagger$, zero
+on the constant kernel. For $s>0$ let
+\[
+ T_s(R)=\tr(G_R^s)=\sum_{\lambda_j(L_R)>0}\lambda_j(L_R)^{-s}.
+\]
+For a singleton set $T_s=0$. The strong certificate $T_s(R)\le1$ indeed
+implies $\Var_R(u)\le\E_{a,R}(u)$, because its first positive inverse
+eigenvalue raised to $s$ is one summand. Define $q_s(n)$ as the minimum
+number of cells in any disjoint rectangular partition passing this test.
+No hierarchy, aspect ratio or placement restriction is imposed.
+
+\begin{theorem}\label{thm:green}
+For fixed $D\ge3$ and $s>0$,
+\[
+ q_s(n)=
+ \begin{cases}
+ \Theta_{D,s}(n^{D-2s}),&0<s<D/2,\\
+ \Theta_D(\log n),&s=D/2,\\
+ \Theta_{D,s}(1),&s>D/2.
+ \end{cases}
+\]
+The actual gap and a weak critical counting certificate both allow one
+root cell on this family. This phase diagram concerns sufficient
+certificate cost, not necessary observation rank.
+\end{theorem}
+
+\subsection{Finite spectra and all-partition lower bounds}
+The cut path of length $\ell$ has eigenvectors
+$\cos(\pi k(x+1/2)/\ell)$ and eigenvalues
+$4\sin^2(\pi k/(2\ell))$, $0\le k<\ell$. The endpoint identity follows
+from cosine addition and $\sin(\pi k)=0$. Distinct eigenvalues give a full
+orthogonal basis. A full cycle has the usual Fourier eigenvalues
+$4\sin^2(\pi k/n)$. At $n=2$ retain both positive-start periodic edges;
+its nonzero eigenvalue is four, while the cut path eigenvalue is two.
+Tensor products give the cut-rectangle spectrum
+\begin{equation}\label{eq:spectrum}
+ \lambda_k=4n^2\sum_{i=1}^D\sin^2\frac{\pi k_i}{2\ell_i},
+ \qquad 0\le k_i<\ell_i,\quad k\ne0.
+\end{equation}
+Adding full-period edges increases ordered eigenvalues by min-max and keeps
+the constant kernel. Comparing eigenvalues suffices for every $s>0$;
+we do not assume an operator-power order valid for arbitrary powers.
+
+Every such internal graph has $\lambda_{\max}\le4Dn^2$. Hence, with
+$V=|R|$, $T_s(R)\ge(V-1)/(4Dn^2)^s$. A passing partition satisfies
+\begin{equation}\label{eq:subcrit}
+ q\ge\frac{n^D}{1+(4Dn^2)^s}.
+\end{equation}
+This proves the subcritical lower bound for arbitrary shapes.
+
+For the endpoint set $p=D/2$, $m=\min_i\ell_i$,
+$J(m)=\max(0,\lfloor\log_2m\rfloor-2)$ and
+$A_D=2^{-D}(256D)^{-\lceil D/2\rceil}$. We claim
+\begin{equation}\label{eq:blocks}
+ T_p(R)\ge A_D(V/n^D)J(m).
+\end{equation}
+It is vacuous if $m<8$. Otherwise for
+$j=0,\ldots,\lfloor\log_2m\rfloor-3$ put $t_j=2^{j+1}/m$ and select
+the disjoint mode blocks
+$\lceil t_j\ell_i\rceil\le k_i<\lceil2t_j\ell_i\rceil$ for every $i$.
+Their sizes are at least $Vt_j^D/2^D$: for $x=t_j\ell_i\ge2$,
+$\lceil2x\rceil-\lceil x\rceil\ge x/2$.
+All selected frequencies have $k_i/\ell_i<2t_j\le1/2$ and satisfy
+$\lambda_k<256Dn^2t_j^2$, under both path and retained-cycle spectra.
+Their contribution is at least $A_DV/n^D$ per block. This proves
+\eqref{eq:blocks}, including arbitrary aspect ratios.
+
+In a partition with $q$ cells, those of volume at least $N/(2q)$ cover
+at least half of $X$. Each of their sides is at least $n/(2q)$.
+Summing~\eqref{eq:blocks} over these cells and using $T_p\le1$ gives
+\[
+ q\ge\frac{A_D}{2}
+ \max\{0,\lfloor\log_2(n/(2q))\rfloor-2\}.
+\]
+For $n\ge2^{16}$ this implies $q\ge(A_D/8)\log_2 n$.
+Indeed if $q\ge\sqrt n$ this is immediate; otherwise the expression in
+braces is at least $(\log_2 n)/2-4\ge(\log_2 n)/4$.
+
+\subsection{Matching actual meshes}
+Use a Cartesian mesh with all side lengths at most an integer $M\le n$,
+allowing shorter last intervals. From~\eqref{eq:spectrum} and
+$\sin t\ge2t/\pi$ on $[0,\pi/2]$, group modes by $j=\max_i k_i$ to get
+\begin{equation}\label{eq:upper}
+ T_s(R)\le D2^{D-1}4^{-s}(M/n)^{2s}
+          \sum_{j=1}^{M-1}j^{D-1-2s}.
+\end{equation}
+There are at most $D(j+1)^{D-1}\le D2^{D-1}j^{D-1}$ modes in the group.
+When $2s<D$, the sum is at most a constant depending on $D,s$ times
+$M^{D-2s}$. Choose $M=\max(1,\lfloor\varepsilon n^{2s/D}\rfloor)$
+with fixed sufficiently small $\varepsilon>0$. Then every trace passes,
+and the cell count is $O_{D,s}(n^{D-2s})$. Floor-zero cases use singletons.
+When $2s=D$, the sum is at most $1+\log M$. Choosing
+$M=\max(1,\lfloor\varepsilon n/(1+\log n)^{1/D}\rfloor)$ gives
+$O_D(1+\log n)$ cells. When $2s>D$, the sum is at most
+$1+(2s-D)^{-1}$; choose $M=\max(1,\lfloor\varepsilon n\rfloor)$
+to get a constant cell count. Retained full-period edges only decrease
+the traces. These constructions and the lower bounds prove
+Theorem~\ref{thm:green}.
+
+\subsection{Successful weak endpoint and exact finite distinctions}
+For the cut root, $\lambda_k\ge4|k|^2$, so its true positive gap is at
+least four. Define
+\[
+ W_p=\sup_{\lambda>0}\lambda^{-p}
+          \#\{0<\lambda_j(L_X)<\lambda\}.
+\]
+There are no such eigenvalues for $\lambda<4$; for $\lambda\ge4$ their
+number is at most $(1+\sqrt\lambda/2)^D\le\lambda^p$. Thus $W_p\le1$.
+The same holds after adding periodic edges. Integrality of this counting
+function excludes any eigenvalue below one, so this weak criterion really
+certifies the successful one-mean inequality. The weak/strong ideal
+distinction is classical~\cite{frank}; its use does not solve the original
+coefficient-to-rectangle construction.
+
+For $D=4,n=4$, the periodic coordinate spectrum at $a=16$ is
+$0,32,64,32$. The root eigenvalues $32m$ have multiplicities
+$\binom8m$. Its gap is32, but
+$T_1(X)\ge56/96+70/128=217/192>1$; sixteen cut length-two boxes instead
+have $T_1=103/384$ each. At the critical endpoint an exact separate
+example takes $n=2$, $\mu=4$, $c=16$ and test $16^pT_p(R)\le1$.
+A rectangle with $r$ full coordinates has spectrum $16m$ with multiplicity
+$\binom rm$, so this test passes exactly when $r\le1$. Therefore its
+minimum cell count is $2^{D-1}$, whereas the actual one-mean inequality
+works with $K=c=16$. For $D=4$ the rejected root value is $865/144$.
+Changing a fixed $c$ changes the constants in the phase diagram, not its
+orders. The ordinary identity
+$\sum_{x<y}R_{\rm eff}(x,y)=|R|\tr(G_R)$ follows by expanding
+$(e_x-e_y)^TG_R(e_x-e_y)$ and using $G_R\mathbf1=0$; it only identifies
+the all-pairs resistance sum with the $s=1$ test, not every resistance method.
+
+\section{A coexact falsifier for representative fibres}
+Lamination cannot be replaced by sampling one favourable fibre. In
+$D=3,n=4$ let $c=15/2$ and set $a=1$ on $\{0,1,2\}^3$, $a=64$
+elsewhere. Its exact mean is $\mu=2395/64$, $1\le a\le2\mu$, and
+\[
+ \operatorname{mean}((\mu/a)^{3/2})
+ <\frac{27}{64}\frac{1178}{5}+\frac{37}{64}
+ =\frac{31991}{320}<100.
+\]
+Here $\mu<38$ and $\sqrt\mu<31/5$. The fibre through $(3,3)$ in the
+transverse coordinates has all coefficients64 and would pass
+$nR=1/4<2/c=4/15$, leading to a false one-cell conclusion.
+
+Let $G=\delta_{(1,1,1)}$ and use backward differences to define
+$U_1=D_2^-G$, $U_2=-D_1^-G$, $U_3=0$. This is the codifferential of
+an actual antisymmetric plaquette potential, up to its global sign
+convention; backward divergence vanishes by commuting differences.
+Both nonzero components have zero mean and squared norm two, so
+$\|U\|^2=4$. An adjacent opposite delta pair has forward-gradient
+energy six in its own direction and four in each other direction.
+The total for $U$ is28. Every nonzero forward-gradient starting vertex
+lies in the weak cube, so the actual weighted energy is also28.
+Consequently $\E_a(U)=28<30=c\|U\|^2$, while the global mean penalty
+vanishes. This refutes the representative-fibre mechanism even on the
+actual coexact domain. A different partition remains allowed by the
+original problem, so that problem has not been refuted.
+
+\section{Literature comparison and verification boundaries}
+Weighted path Cauchy estimates and weighted Hardy theory are classical;
+Muckenhoupt~\cite{muckenhoupt} is relevant context. Adaptive tree
+approximation has an extensive literature, including
+Binev--DeVore~\cite{binev}. Our tree charge is proved explicitly rather
+than imported from a near-best approximation theorem. Publisher/author
+metadata for those two references were checked; unavailable full-text
+retrievals are not represented as complete comparisons.
+
+Nochetto--Ot\'arola--Salgado~\cite{nos}, Lemma3.1 and Theorem5.7,
+give constructive weighted Poincar\'e and anisotropic rectangular
+interpolation estimates in Muckenhoupt-weighted Sobolev spaces.
+Their constants depend on the weight characteristic and mesh geometry.
+Their inspected results are not the finite counting-norm observation
+theorem proved here, nor a proof of its uniform constants from only a
+global inverse moment. Conversely this distinction is not proof of
+originality: broader weighted approximation and adaptive-partition
+literature still requires comparison. In particular no claim is made to
+invent weighted Poincar\'e inequalities, spectral counting, adaptive trees,
+or weak Schatten ideals. The weak/strong distinction is separately
+attributed to the established spectral literature~\cite{frank}.
+
+The universal mathematical arguments above are analytical, not Lean
+verified. Source units184 and185 have exact rational finite checks at
+pinned Git commits. Unit184 has four matching normal/optimized payloads
+from two fresh Colab clones, six rejecting mutations, five critical matrix
+controls and six mode-block cases. Unit185 has four matching payloads
+from two fresh clones, six global matrix controls,72 balanced-tree cases,
+five weak-layer instances and six rejected intentional errors. It checks
+the actual coexact energy28 versus30. These are selected finite tests,
+not an all-size computation or independent replication. Full stdout,
+stderr, actual exit codes, hashes, failures and resource records are in
+the source evidence directories. No scientific computation ran on Windows.
+
+\subsection{Model assessments and review context}
+This exact supplement PDF has no inherited numerical grade or stars.
+It is a draft pending its own declared exact-PDF assessment, not a public
+AIRR release, human peer-reviewed paper or editorial acceptance. Public
+version8 of the existing dossier has a separate exact-PDF AI assessment;
+its score does not transfer to these bytes.
+
+The proof of unit185 was read once in full in an adversarial source audit;
+the auditor found no blocking defect in the laminate construction or
+critical charge and recorded the uniform $M=2$ distinction and dimension,
+singleton and target-order qualifications incorporated here. This audit
+has no numeric score. Interface: OpenAI Codex, configured gpt-6-astra;
+the actual served backend and reasoning setting were unexposed. Shared
+account, provider and historical chat context mean the audit is neither
+blind nor organizationally independent. The full report is retained,
+including objections; it is not replaced by this summary. It did not
+review this newly typeset exact PDF. No assessment was rerun to improve
+a grade, and no report is represented as human peer review.
+
+\subsection{Reproducibility and remaining question}
+The source proof for185 has SHA256
+\begin{center}\small\texttt{\detokenize{cee3556c1ff9dd99a69b3d62b20f65288189}}\\
+\texttt{\detokenize{26cca2734b2728b51ce9e4fdd407}}\end{center}
+The corresponding executed commit is
+\texttt{dfc2205dcfb8642bf5639c8433e4bdbff38075a3};
+source184 was executed at
+\texttt{bedf55c593994aeba2cf47454c2f608870ecb871}.
+This supplement's source and rendered-file hashes belong in its separate
+build manifest; a PDF cannot contain its own final hash. The research
+evidence is preserved at the pinned programme repository~\cite{evidence}.
+
+The sole unrestricted critical rectangular question remains open.
+A proposed extension must derive genuine transverse or all-fibre control
+from its coefficient hypotheses; one favourable fibre is insufficient.
+The strong Green test alone is abandoned at and below the critical
+exponent as a uniform target-order mechanism by Theorem~\ref{thm:green}.
+These findings do not reopen previously stopped routes, change PR29's
+20/41 and TermSource0 baseline, or identify a finite sequence bound with
+a continuum or interacting Yang--Mills mass gap.
+
+\begin{thebibliography}{9}\small\raggedright
+\bibitem{programme} L. Eriksson, \emph{Coarse information and finite rank
+obstructions for flat lattice Hodge forms}, existing AIRR dossier
+ARR-2026-7EPM3V3DP796BBRR, public version8.
+\url{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v8/}.
+Working paper with AI assessment, not editorial acceptance.
+\bibitem{muckenhoupt} B. Muckenhoupt, \emph{Hardy's inequality with weights},
+Studia Mathematica44 (1972),31--38.
+\url{https://doi.org/10.4064/sm-44-1-31-38}.
+\bibitem{binev} P. Binev and R. DeVore, \emph{Fast computation in adaptive
+tree approximation}, Numerische Mathematik97 (2004),193--217.
+\url{https://doi.org/10.1007/s00211-003-0493-6}.
+\bibitem{nos} R. H. Nochetto, E. Ot\'arola and A. J. Salgado,
+\emph{Piecewise polynomial interpolation in Muckenhoupt weighted Sobolev
+spaces and applications}, arXiv:1402.1916v2 (2014), Lemma3.1,
+Section5.2 and Theorem5.7. \url{https://arxiv.org/abs/1402.1916v2}.
+\bibitem{frank} R. L. Frank, \emph{Cwikel's theorem and the CLR inequality},
+arXiv:1206.3325v1 (2012), Section2.
+\url{https://arxiv.org/abs/1206.3325v1}.
+\bibitem{evidence} L. Eriksson programme research evidence, units184--185,
+pinned at commit506004b3e7251aa881b08dde1a1bb14aff33e76f.
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/506004b3e7251aa881b08dde1a1bb14aff33e76f/papers/flat-coarse-rank/research}{Source proofs and complete finite evidence}.
+\end{thebibliography}
+\end{document}
