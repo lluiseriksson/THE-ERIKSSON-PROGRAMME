@@ -1,0 +1,128 @@
+UNIT192: A fixed-critical-moment obstruction to exact Neumann extension
+Status: analytic proof for source audit. No execution, Lean verification,
+PDF, numerical assessment, stars, deposit or publication is claimed.
+This note belongs to the existing dossier; it is not a separate paper.
+
+QUESTION AND FALSIFIER
+The active main question remains actual rectangular coarse means for fully
+variable coefficients with a bounded normalized critical inverse moment.
+One possible route would transfer an internal Neumann low mode on an actual
+rectangle into a global low-energy field using a uniformly controlled exact
+extension. We test the precise auxiliary assertion:
+  E_a(Tu) <= C(D,M) E^N_{a,R}(u), with (Tu)|_R=u,
+for every local mean-zero scalar u and every admissible coefficient profile.
+The constant must be independent of n and coefficient contrast. No boundary
+energy is included in the right side. T need not be linear. This assertion
+is false even for a fixed two-vertex rectangle and M=2.
+
+DEFINITIONS
+Let D>=3, n>=3, X=(Z/nZ)^D, N=n^D, p=D/2 and H=n^2.
+Positive-start energy means
+  E_a(v)=sum_{x in X} sum_{i=1}^D a(x)|v(x+e_i)-v(x)|^2.
+The internal Neumann energy retains only those positive-start edges whose
+two endpoints lie in the indicated rectangle. Norms use counting measure.
+Set a(0)=1 and a(x)=H for x!=0. Write
+  mu=N^{-1}sum_x a(x)=H-(H-1)/N.
+The normalized critical inverse moment is
+  M_actual=mu^p N^{-1}sum_x a(x)^{-p}.
+
+1. THE PROFILE IS ADMISSIBLE WITH FIXED M=2
+Since N>=2, H/2<=mu<H, hence 1<=a(x)<=2mu. Also H^p=N, so
+  M_actual=mu^p/N+(1-1/N)(mu/H)^p < 1+1 = 2.
+Thus neither the moment bound nor the upper comparability constant grows
+with n. The usual scale max(1,N/(1+mu)^p) is at most 2^p, since mu>=H/2.
+This is an all-size family, not a finite numerical experiment.
+
+2. AN ACTUAL INTERNAL NEUMANN DEFECT
+Take R={0,e_1}, a Cartesian product of one interval of length two and
+D-1 singleton intervals. Because n>=3 its only internal positive-start
+edge is (0,1), of coefficient one. For u(0)=1,u(e_1)=-1,
+  sum_R u=0, ||u||_R^2=2, E^N_{a,R}(u)=4.
+Every mean-zero function on this two-point set is a multiple of u. Its
+sharp internal Neumann gap is exactly 2.
+
+3. EVERY EXACT EXTENSION HAS LARGE ENERGY
+For any global v agreeing with u on R, use the three edges of the path
+  0 -> -e_2 -> e_1-e_2 -> e_1.
+Their positive starts are -e_2 (directions 2 and 1) and e_1-e_2
+(direction 2), respectively. They are distinct edges with nonzero starts,
+so all three have coefficient H. Telescoping and Cauchy--Schwarz give
+  E_a(v) >= (H/3)|v(0)-v(e_1)|^2 = 4H/3.
+Consequently any proposed exact extension estimate above requires
+  C(D,2)>=H/3=n^2/3,
+which is impossible uniformly in n. This includes nonlinear extension
+rules and arbitrary choices away from R. Adding a global constant cannot
+alter this endpoint-difference lower bound. The result is stronger than
+failure of extension by zero alone.
+
+4. THE GLOBAL ENERGY IS COERCIVE, NOT A GLOBAL LOW MODE
+For completeness the single-defect comparison can be proved directly.
+Write E_0=E_weak+E_strong, where E_weak comprises the D positive-start
+edges from 0 and E_strong all other unweighted edges. Choose a cyclic
+permutation sigma of {1,...,D}. Replace each weak edge (0,i) by
+  0 -> -e_{sigma(i)} -> e_i-e_{sigma(i)} -> e_i.
+All replacement edges have nonzero positive starts. For a fixed positive
+edge (y,k), occurrences as first, middle and last bypass segments require,
+respectively, weak source positions
+  y+e_k, y+e_{sigma(k)}, y-e_{sigma^{-1}(k)}+e_k.
+These three positions are pairwise distinct on X when D>=3,n>=3:
+k,sigma(k),sigma^{-1}(k) are distinct coordinate indices, and the last
+position has a nonzero sigma^{-1}(k) component absent in the first two.
+Only the source 0 is weak; hence a fixed edge is used at most once among
+all replacement paths. Cauchy--Schwarz on each three-edge path yields
+  E_weak<=3E_strong; E_0<=4E_strong; E_a>=H E_strong>=H E_0/4.
+The standard torus Fourier eigenvalues are
+4 sum_i sin^2(pi k_i/n); every nonzero frequency has eigenvalue at least
+4 sin^2(pi/n)>=16/n^2, using sin(t)>=2t/pi on [0,pi/2]. Therefore
+  E_a(v)>=4 ||v-mean_X(v)||^2.
+This also holds componentwise for real vector fields. In particular for
+c=3 one actual global normalized mean gives the coarse inequality with
+K=c, while the internal gap on the displayed rectangle is 2<c.
+A local Neumann defect is therefore not by itself a global low mode.
+
+5. EXACT SCOPE AND NEXT STEP
+This refutes the specified exact-trace, internal-energy-only, uniformly
+contrast-controlled transfer lemma within fixed M=2. It does not refute
+the main rectangle partition theorem, additive-constant counting bounds,
+all extension methods, or boundary/capacity methods that explicitly pay
+cut-edge energy or change the local data. Only one bad cell is exhibited;
+no claim of arbitrarily many independent defects is made. No local coexact
+witness is claimed. The scalar statement is enough to falsify the proposed
+scalar auxiliary lemma. No hypothesis has been removed by this result.
+
+Abandon this unmodified transfer immediately; the family is its explicit
+falsifier. Keep just the same main question active. The next candidate
+must derive a coefficient-dependent boundary/capacity correction, and
+must charge the strong bypass in this example rather than silently assume
+a bound by the internal energy. Before proposing a counting conclusion,
+test whether the corrected charge can be bounded at the fixed critical
+moment scale. Abandon a candidate if this family or three units without
+substantial progress defeat it. No new structure may assume the desired
+global estimate as a premise.
+
+PRIMARY-SOURCE CONTEXT AND NOVELTY LIMIT
+Seng-Kee Chua, Extension Theorems on Weighted Sobolev Spaces and Some
+Applications, Canadian Journal of Mathematics 58(3) (2006), 492--528,
+DOI 10.4153/CJM-2006-021-0. Original publisher PDF:
+https://www.cambridge.org/core/services/aop-cambridge-core/content/view/F89E9C07F23E8493E31A4146CEDD93C5/S0008414X00021921a.pdf/extension_theorems_on_weighted_sobolev_spaces_and_some_applications.pdf
+Inspected introduction and Theorem 1.4 (PDF page index 2) only. That
+weighted Sobolev extension result assumes Muckenhoupt weights and includes
+weight dependence in its constants. It does not supply the particular
+finite discrete, internal-energy-only, contrast-uniform estimate refuted
+here. We do not claim to contradict that theorem or to identify quantitative
+equivalence between its weight conditions and this finite moment bound.
+Boundary sensitivity at high contrast and path comparison are classical;
+this note supplies a concrete obstruction with the programme's start
+convention and a fixed critical moment. No priority or exhaustive novelty
+claim is made. The global comparison specializes the existing single-weak
+site bypass argument (unit190/G4); it is included to make the contrast
+with local Neumann energy explicit, not claimed as a new theorem of priority.
+
+MODEL ASSESSMENTS AND REVIEW CONTEXT
+Prepared by the ongoing Codex authoring assistant with full programme
+context. A source audit, if obtained, must identify its actual configured
+model, shared context and exact source hash. It is not a full exact-PDF
+assessment, independent peer review, formal verification, acceptance or
+publication; no stars can be inherited from any existing AIRR version.
+PR29 remains 20/41 and TermSource=0. Physical continuum Yang--Mills remains
+open; no physical spectral-gap conclusion follows from this note.
