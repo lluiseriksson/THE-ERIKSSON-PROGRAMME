@@ -1,0 +1,62 @@
+SHA context: executed proof/worker bedf55c593994aeba2cf47454c2f608870ecb871
+Research184 exact finite controls, 7 November2026.
+
+The associated analytical note derives the all-rectangle strong Green-moment
+partition-cost phase diagram. Its proof is analytical, not an extrapolation
+from these cases. The frozen worker and proof at the SHA above were reproduced
+in two fresh shallow Linux clones in one own CPU/high-RAM Colab allocation.
+Each clone ran the standard-library Fraction worker normally and with -O.
+All four payloads are identical:
+a49587b4bb6cc3e066b3c69d49200d25d5b0434f871b16942b2debfb676f8aaf.
+
+Worker SHA256 c58469fb3420a7c5ba83e2692c88d2335074940db317f6a14e9a199771d084a4.
+Proof SHA256 b58b94f9ed04263123b679640ea316327e9e097e120b59e6e82d8dd37caf4d44.
+Full31-entry archive, with30hashed manifest subjects and8actual decimal-zero
+child exit files:
+d450902261037f8c76e691cd4debe17477caa64a63ba40abc9e49e951f5c7a5e.
+
+The controls use actual positive-edge dictionaries, rational Green matrices,
+LG=I-P, zero constant kernel, symmetry, the all-pairs resistance identity,
+an exact PSD Schur elimination for L+16P-16I, and an actual eight-line cover.
+The five r=0,...,4 controls classify the critical c=16 certificate exactly:
+its values are0,1,9/4,139/36,865/144, so only r<=1 passes. They also compare
+path against the doubled n=2 periodic edges. Six integer mode-block cases
+check dyadic counts, ceiling endpoints and disjointness. Extra D3 traces
+29/48 and29/96 check the cut/periodic convention. No large rational matrix
+or all-size computation is claimed.
+
+All six deliberately introduced errors are rejected in every process:
+constant kernel incorrectly included in Green; lost periodic multiplicity;
+trace divided by volume; wrong n-squared energy scale; omitted spectral
+multiplicities; included dyadic upper endpoint. No acceptance depends on a
+Python assert. This is not a substitute for auditing the complete proof.
+
+Execution elapsed16.254735824seconds including both clones. Actual worker
+executions were0.265210276,0.415862513,0.266530617,0.265296095seconds.
+Wrapper child maxRSS145436KiB includes git. Requested-to-release84.682seconds
+includes allocation, observation, export and disconnect, not uninterrupted
+worker execution. Billed compute units are unknown. The CPU allocation was
+exported and visibly disconnected. Windows did editing, Git, hashes and
+archive/readback work; it did not run the mathematical worker or Lean/Lake.
+
+Both clones share one host/runtime, source, author and orchestration. They
+are separate fresh clones with matching outputs, not independent mathematical
+review, different-machine validation, an exact served-model attestation or
+human peer review. No numerical star assessment is supplied for this research
+note, no new AIRR paper is deposited, and v8's assessment is not inherited.
+This is material for a later grouped continuation after genuine assessment.
+
+Primary-source scope is recorded in the analytical note: Frank's weak ideals,
+the operator-valued weak-ideal discussion of Hundertmark et al., and the
+publisher record of Klein-Randic. The weak/strong endpoint principle and
+resistance trace identity are classical; originality of this finite
+all-rectangle adapter is not established by a targeted search.
+
+Closed mechanism: replacing local gaps by the specified strong Green trace
+or critical Schatten moment cannot achieve bounded cell count on every
+original admissible family; here even the homogeneous M=1 family defeats it.
+The same family has a one-cell true-gap and weak-endpoint solution. This
+does not refute the unrestricted rectangular question or every trace hybrid.
+Do not spend three further units trying to repair this disproved certificate
+as the sole target-order mechanism. Original PR29=20/41,TermSource0 unchanged;
+there is no physical interacting/continuum mass-gap conclusion.
