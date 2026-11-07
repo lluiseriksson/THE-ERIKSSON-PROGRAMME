@@ -1,0 +1,55 @@
+PARTIAL COORDINATE INVARIANCE REMOVES ALL BUT ONE LAMINATION DIRECTION
+Research unit188, analytical candidate; not a separate paper or AIRR deposit.
+Parent source22cf1b943646a3dd51c60139363e47d4740c8670. No inherited PDF grade.
+
+Statement. Let D>=3,1<=k<D,d=D-k,p=D/2,n>=2,c>0. On the unit-spacing counting torus X=(Z/nZ)^D take ANY positive a(x)=alpha(x1,...,xk). Define Ea(u)=sum_{x,j}a(x)|u(x+ej)-u(x)|². There exists a disjoint axis-aligned rectangular partition P, independent ofu, such that
+ c||u||² <= Ea(u)+c||CPu||²,
+where CPu=(sqrt(|R|)mean_Ru)_R, and
+ #P <= 2^d + F_{D,k}(c C_D)^p sum_X a^-p,
+ C_D=4 A_D D^(2/D),
+ F_{D,k}=2^D 3^d/[1-(2/3)^d].
+Here A_D is the explicit finite unweighted rectangle Sobolev constant from the complete proof in revision187/sobolev.tex:
+ q=2D/(D+2), beta=2(D-1)/D, K_D=2D beta sqrt(2D),
+ A_D=K_D² 2^D 3^(2D/q+2).
+The claim holds for every real/complex scalar field and coordinatewise for any fixed h-component field, hence also on every actual coexact subspace. Output dimension is h#P over the selected scalar field; double complex dimension for a real count. K=c is explicit; no prescribed abstract gap/partition hypothesis is carried.
+Under mu=mean(a)>=1 and mean((mu/a)^p)<=M it follows that
+ h#P <= h[2^d+F_{D,k}(c C_D)^p 2^p M] max(1,n^D/(1+mu)^p).
+The upper bound a<=2mu and lower bound a>=1 are unnecessary for the unconditional sum bound. In particular D3,k2 covers arbitrary two-coordinate profiles, rather than the one-coordinate-only class of185. At least one exactly invariant coordinate remains a hypothesis. Constants are deliberately nonoptimal.
+
+1. Local inequality, actual edges and provenance.
+For a finite cut D-rectangle R with longest side L, volume V and kappa=L²/V^(2/D), the explicit finite unweighted estimate is
+ Var_R u <= A_D kappa (sum_internal_edges |du|^q)^(2/q).
+A complete finite proof, including projection/relative isoperimetry, median/coarea/power and endpoint-repeating reflection with every multiplicity, is pinned in parent revision187/sobolev.tex, equations rectangle-unweighted-derived and rectangle-weighted-derived. Its scalar-start consequence is
+ Var_R u <= A_D D^(1/p) kappa (sum_R a^-p)^(1/p) Ea,R(u).                 (1)
+Indeed Holder with exponents2/q and2/(2-q) gives q/(2-q)=p; each original starting vertex supplies at mostD internal edges. This uses original positive-start coefficients only, no reflected coefficient, enlarged-neighborhood energy, physical projection or an assumed local spectral gap. All periodic closing/cross-cell edges may be discarded as nonnegative, including n2 opposite starts. Singleton rectangles have zero variance. The unweighted ingredient is classical; its finite proof is not new in188.
+
+2. Base tree and aspect ratios, all odd/even sizes.
+The base domain is {0,...,n-1}^k. For a nodeQ let m(Q) be its maximum integer side length and b(Q)=sum_Q alpha^-p. Start with the full base cube. Set theta=(c C_D)^-p. Split a node exactly if m>=2 and m^d b(Q)>theta. Accept equality; never split a base singleton. A split bisects EVERY non-singleton coordinate into consecutive floor/ceil halves; coordinates already singleton stay unchanged. Children partition the actual base lattice, and there are at most2^k children.
+Every node's side lengths differ by at most1. This follows by induction: bisecting lengths m or m-1 produces only floor((m-1)/2),ceil((m-1)/2),floor(m/2),ceil(m/2); the largest and smallest differ by at most1. Ifm2, splitting all length2 sides gives singleton children. In general every child has maximum m' satisfying
+ m/3 <= floor(m/2) <= m' <= ceil(m/2) <= 2m/3.                           (2)
+The left floor bound and right ceil bound hold for integersm>=2, includingm2. Thus the tree terminates. For m>=2 every base side is >=m/2; m1 means all base sides singleton.
+For each leafQ, partition EACH of the d invariant coordinates into r=ceil(n/m) consecutive intervals with balanced lengths floor(n/r),ceil(n/r). Every such length is <=m and >=m/2. For r1 this is immediate; for r>=2, n>=(r-1)m+1, so floor(n/r)>=floor((m+1)/2)>=m/2. Products R=Q times these intervals are disjoint and coverX exactly. Ifm>=2 allD side lengths lie between m/2 andm, so kappa<=4. Ifm1 allfullcells are singletons.
+
+3. Local energy bound and actual mean observations.
+Because a is exactly independent of the lastd coordinates, for each fullcellR overQ
+ sum_R a^-p = |Z| b(Q) <= m^d b(Q).                                    (3)
+For a nonsingleton leaf, (1), kappa<=4 and the acceptance criterion give
+ c Var_R u <= c C_D (m^d b(Q))^(1/p) Ea,R(u) <= Ea,R(u).
+For a singleton leaf the variance vanishes without imposing an impossible mass acceptance condition. Sum over the disjoint rectangles and discard cross-cell/closing energies. Orthogonal mean decomposition ||u||²=sum_R Var_Ru+sum_R |R||mean_Ru|² gives the stated actual inequality withK=c, simultaneously for allu. All field coordinates sum with the SAME constant. The partition is constructed solely from the actual positive coefficients.
+
+4. Internal-node charging without a logarithm.
+Write w(Q)=m(Q)^-d and rho=(2/3)^d<1. Every split satisfies
+ w(Q)<theta^-1 b(Q).                                                    (4)
+LetT be internal nodes with no internal children. These nodes are pairwise disjoint in the base lattice. For each internal node choose one terminal internal descendant. Nodes assigned to a fixed terminalJ lie on its ancestor path at distinct depths. From(2), ancestor weights decay by at least rho per depth, so
+ sum_internal w(Q) <= [1/(1-rho)] sum_{J inT}w(J)
+                   <= theta^-1/[1-rho] sum_base alpha^-p.                (5)
+The subtree assignment is used only to prove a bound, not to assume local gap or rank. Terminal nodes exist because the tree is finite. Disjointness ofT, not disjointness of ALL internal nodes, is what justifies the final mass charge.
+Each split has at most2^k children and (2) implies each childw<=3^d w(parent). Exact telescoping of leaf weights gives
+ sum_leaves w <= n^-d+2^k 3^d sum_internal w.                             (6)
+A base leaf produces exactly ceil(n/m)^d <=(2n/m)^d full rectangles. Multiply(6) by(2n)^d, substitute(5), and use n^d sum_base alpha^-p=sum_X a^-p. This yields exactly the constants in the statement. If the root is accepted there are no internal nodes and the argument still gives #P=1<=2^d. Base singleton leaves are already included in telescoping; no uncharged exceptional mass is discarded.
+
+5. Critical moment and scope.
+The original moment condition gives sum_X a^-p <= M n^D/mu^p <= 2^p M n^D/(1+mu)^p whenmu>=1. Adding the root constant proves the target-order bound. This is an upper-order claim, not a sharp per-profile lower bound. For k=D, d0 and rho1 make(5) divergent; no assertion for fully variable coefficients follows. Invariance in one or more coordinates is actual mathematical input. The method derives local gaps and a partition from coefficients; it does not put the conclusion into a structure. This eliminates the restriction to dependence on just ONE coordinate in185, by proving the wider k<D class, but does not eliminate all coordinate-invariance assumptions. No Yang-Mills interacting or continuum claim; PR29=20/41,TermSource0 unchanged.
+
+Verification status at source preparation: complete analytic argument above; no new Lean result, computational replay, independent verification or exact-PDF assessment yet. A source audit must check (2), balanced extrusion, singleton treatment, terminal assignment and exact constants. Any finite test will be diagnostic, not proof of this universal statement.
+Novelty: weighted Sobolev and tree-compression mechanisms are classical. Compare primary Cruz-Uribe/Dal/Rodney arXiv2608.20498v1 Theorem4.5 and Claros/Perez/Zheng arXiv2606.08556v1 AppendixC. No exhaustive priority claim. Do not create a separate small-corollary paper; integrate a validated broader theorem into the existing manuscript together with187errata.
