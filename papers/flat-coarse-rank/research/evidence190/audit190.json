@@ -1,0 +1,64 @@
+{
+  "unit": 190,
+  "date": "2026-11-07",
+  "assessment_type": "involved_source_correctness_audit",
+  "source_path": "D:\\Entregas\\the-eriksson-programme\\2026-11-07_detour-separation190\\detour-separation-proof190.txt",
+  "source_sha256": "1090cfb751ed667ca625f84003460279ac658df4a0caa839086e6c5eb489f23d",
+  "complete_source_read": true,
+  "parent_read": {
+    "commit": "5d10d10bdb9a95628782b249cb8b1af946d9692b",
+    "path": "papers/flat-coarse-rank/integrated-revision/revision189/spatial-geometry.tex",
+    "relevant_checks": ["G4", "G5", "codifferential convention"]
+  },
+  "verdict": "supported_scoped_hypothesis_weakening_and_counterexample",
+  "blocking_mathematical_objections_found": [],
+  "checks": {
+    "D_ge_3_radius_two_use_multiplicity_one": "supported",
+    "D_two_use_multiplicity_at_most_two": "supported_nonsharp",
+    "n_three_positive_start_periodic_edges": "supported",
+    "Fourier_gap_and_mean_constants": "supported",
+    "parity_layer_pairing_and_mean_zero": "supported",
+    "m_two_cyclic_double_start": "supported",
+    "actual_coexact_preimage": "supported_with_parent_sign_convention",
+    "real_dimension_m_minus_one": "supported",
+    "joint_map_rank_obstruction": "supported_with_consistent_scalar_field",
+    "unbounded_critical_moment": "supported"
+  },
+  "genuine_hypothesis_weakening": true,
+  "nearest_neighbour_only_comparison_refuted": true,
+  "main_critical_rectangular_question_refuted": false,
+  "significance": "Modest scoped refinement and route obstruction, narrower than theorem188; not a new comparison principle or endpoint solution.",
+  "findings": [
+    {"id":"L1","blocking":false,"finding":"One global spatial mean on cochains is component-valued, not necessarily one scalar measurement."},
+    {"id":"L2","blocking":false,"finding":"Specify consistent real or complex dimensions and linearity in the joint-map rank corollary; complex-linear extension follows by complexifying z."},
+    {"id":"L3","blocking":false,"finding":"D=2 constants six and seven are safe but not proved sharp; n=3 actually has use multiplicity one."},
+    {"id":"L4","blocking":false,"finding":"The negative family has unbounded normalized inverse moment at growing contrast and does not refute fixed-M rectangular sufficiency."},
+    {"id":"L5","blocking":false,"finding":"No replay, formal proof, physical Hodge/continuum implication, priority certification or independent review; parent189B not verified."}
+  ],
+  "primary_source_read": {
+    "url": "https://pi.math.cornell.edu/~lsc/papers/comp-rev.pdf",
+    "scope": "Section 2B, Theorem 2.1 and start of Example 2.1",
+    "exhaustive_priority_search": false
+  },
+  "review_context": {
+    "configured_model_from_orchestration": "gpt-6-astra",
+    "provider_context": "OpenAI Codex",
+    "served_backend_attestation": null,
+    "reasoning_setting_attestation": null,
+    "historically_involved_reviewer": true,
+    "shared_account_provider_chat_workspace": true,
+    "blind": false,
+    "organizationally_independent": false,
+    "prior_grades_consulted_or_transferred": false,
+    "other_models_contacted": false
+  },
+  "scientific_execution_performed": false,
+  "formal_verification": false,
+  "source_modified": false,
+  "pdf_assessed": false,
+  "scores_or_stars_assigned": false,
+  "human_peer_review": false,
+  "publication_authorization": false,
+  "native_import_validity": false,
+  "full_report": "source-audit190.txt"
+}

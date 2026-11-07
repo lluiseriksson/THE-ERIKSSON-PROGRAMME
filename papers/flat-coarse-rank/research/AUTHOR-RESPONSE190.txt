@@ -1,0 +1,53 @@
+Author response to source audit190 — 2026-11-07
+
+Exact audited source SHA256:
+1090cfb751ed667ca625f84003460279ac658df4a0caa839086e6c5eb489f23d
+Full report SHA256:
+041f7dc6beb3adff674dc65ee5978785b450d5dcf6ea7e3a1e15dc5fd0a9e008
+Audit JSON SHA256:
+5877f718d54a95a5557f263e80dac79116744790e55ed091568a7fdad29e1388
+
+No blocking mathematical objection was found in the involved source audit.
+The exact audited text remains unchanged. Retain every clarification below
+when integrating these results into a future manuscript version.
+
+L1 — Component-valued means. One spatial cell supplies all selected component
+means. Its scalar output dimension is the number of field components; it is
+not one scalar observation for an entire vector-valued cochain.
+
+L2 — Scalar field in the repair corollary. The displayed parity construction
+and dimension m-1 are over the real numbers. C and R in that statement are
+real-linear and their dimensions/ranks are real. Complexify z for a
+complex-linear variant, keeping complex dimensions throughout. For arbitrary
+real-linear observations on complex fields, use real dimensions. The common
+kernel argument has a zero repair term and does not certify a real-valued
+quadratic inequality for an arbitrary complex nonsymmetric repair away from
+that kernel.
+
+L3 — Two-dimensional constants. Six and seven are sufficient bounds, not
+optimal constants. The source-use multiplicity bound improves to one at n=3.
+No optimality assertion is intended.
+
+L4 — Critical-moment boundary. The parity family has an unbounded normalized
+inverse moment at growing contrast. It refutes the stated geometric
+comparison route, including its coexact restriction, but not fixed-M
+rectangular sufficiency or theorem188. Preserve its explicit moment formula.
+
+L5 — Evidence and review context. The analytical all-size proofs have one
+source audit by the same historically involved Codex agent, configured in a
+gpt-6-astra context. Served backend identity and reasoning tier are unexposed;
+shared account, history, provider and workspace do not establish blindness
+or independence. No independent peer review, Lean verification, scientific
+replay, new PDF assessment or numerical stars were obtained in190. The
+prepared Linux diagnostics and paired-clone driver remain UNEXECUTED.
+
+Disposition: group this modest refinement and useful route obstruction with
+the existing dossier. They do not justify a separate small-corollary paper,
+a new comparison principle, an endpoint solution, or physical closure. Do not
+reset the main fully variable critical-rectangle route's no-progress counter
+solely on this narrower improvement.
+
+Publication queue: the unchanged priority remains recovery and disconnection
+of the existing own Colab189B session, actual PDF export and visual review,
+first genuine exact-PDF numerical overall/criterion assessment, and native
+linked AIRR reconciliation/release. No new consent or receipt is simulated.
