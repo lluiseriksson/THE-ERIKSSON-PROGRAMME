@@ -1,0 +1,34 @@
+{
+  "final_recipe_seconds": 99.793956136,
+  "allocations": [
+    {
+      "requested_utc": "2026-11-07T02:16:57.427Z",
+      "allocation": "initial_unresolved",
+      "requested_to_release_seconds": 180.463,
+      "released_utc": "2026-11-07T02:19:57.89Z",
+      "observed_disconnected": true
+    },
+    {
+      "requested_utc": "2026-11-07T02:20:33.644Z",
+      "allocation": "content_verifier_failure",
+      "requested_to_release_seconds": 184.982,
+      "released_utc": "2026-11-07T02:23:38.626Z",
+      "observed_disconnected": true
+    },
+    {
+      "requested_utc": "2026-11-07T02:24:22.3Z",
+      "allocation": "final",
+      "requested_to_release_seconds": 236.351,
+      "released_utc": "2026-11-07T02:28:18.651Z",
+      "observed_disconnected": true
+    }
+  ],
+  "own_CPU_allocations": 3,
+  "final_max_child_RSS_KiB": 127408,
+  "content_failed_recipe_seconds": 60.268488354,
+  "compute_units_billed": null,
+  "local_scientific_processes": 0,
+  "unit": 170,
+  "notes": "Allocation durations include provisioning, archive export and UI diagnosis. Immutable final report is authoritative for actual RSS.",
+  "initial_execution_status": "No recovered output; root cause unconfirmed"
+}

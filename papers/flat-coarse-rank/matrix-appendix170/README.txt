@@ -13,9 +13,9 @@ Exact standalone TeX source:
 TeX Git-LF SHA256:
 e24d57d19ec11a172b5dcad649cd548cce80d1d6b795f0cfbb84e82112f18e0f.
 Executed own Linux rendering recipe:
-f4509cc764837feabc88b39d0fe1f126b46d92b4.
+6f893aec4e5746a67886f492880585e6819eccfd.
 Recipe Git-LF SHA256:
-0d5edcc5877d80793d8427998f4fa017906eec579b6103d1b3ca1c4798b5d889.
+939acb815689a43f85557f0ad4f6dadd3dd9be7fe6271086895e6b448f15d0b9.
 
 The final PDF hash and exact page-by-page visual review are recorded in
 the separate exact-pdf-review170.txt. report.json is the immutable build
@@ -23,11 +23,11 @@ report generated BEFORE visual inspection and its PENDING field must not
 be rewritten to simulate a contemporaneous visual review. The separate
 exact-hash record resolves that field after inspection.
 
-Reproduce with render170.py in a fresh own authorized Colab Linux CPU
+Reproduce with render170b.py in a fresh own authorized Colab Linux CPU
 allocation. It fetches the pinned source, checks its hash, installs only
 official Debian TeX/Poppler packages, performs two TeX passes, extracts text,
 renders all pages and archives complete logs/reports/source/manifest. It
-refuses an existing /content/tep-own170-matrix-appendix directory. No local
+refuses an existing /content/tep-own170b-matrix-appendix directory. No local
 Windows scientific or TeX build is authorized. Every new PDF requires its
 own visual review; prior PDF assessments never transfer.
 
