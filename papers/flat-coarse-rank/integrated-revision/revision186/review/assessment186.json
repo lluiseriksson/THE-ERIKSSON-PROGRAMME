@@ -1,0 +1,130 @@
+{
+  "record_kind": "draft_scoped_exact_pdf_model_assessment",
+  "schema_native_import_validity": false,
+  "public_airr_binding": "Not assigned; no version_id, receipt or UUID created",
+  "title": "Rectangular mean observations with critical inverse moments",
+  "artifact_path": "D:\\Entregas\\the-eriksson-programme\\2026-11-07_rectangular-consolidation186\\rectangular_observations.pdf",
+  "canonical_sha256": "040cae56bad1deb48605ea72f7d4e9ee28da00de702b5ebb11c039129fe65146",
+  "pages": 8,
+  "bytes": 321889,
+  "source_context_supplied": "fda4743d41960bf2c0cb018e113cccb85d62ca9a",
+  "assessed_at": "2026-11-07T17:52:36.8675745Z",
+  "rubric": "AIRR Millennium scale and five criteria from supplied MODEL_ASSESSMENT_POLICY.md",
+  "provider_interface": "OpenAI Codex",
+  "configured_model_context": "gpt-6-astra",
+  "served_backend": "unexposed",
+  "reasoning_setting": "unexposed",
+  "participation": "involved_in_manuscript",
+  "participation_basis": "Previously audited source185; corrections from that audit appear in this supplement. Historical shared account/provider/chat context remains. Not blind or organizationally independent; no runtime or fresh-context attestation supplied.",
+  "review_scope": "Single first full assessment of all eight pages of this exact grouped supplement; not a regrade of v8 or the source185 audit",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.4,
+  "millennium_score_display": "4.40",
+  "overall_stars": 4,
+  "overall_label": "Strong",
+  "score_interpretation": "Research-position judgment, not a probability of correctness or criterion average",
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "Both main theorems withstand analytic checks of constants, quantifiers, edge conventions and endpoint orders. The exact finite n=2 example needs its periodic-retention convention explicit. No independent execution or formal verification was performed."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Actual local energy, constructive partitions, odd-size tree charging, arbitrary-aspect endpoint lower bounds and matching meshes are supplied. Minor convention and evidence-location corrections remain."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The finite laminate adapter and all-partition certificate-cost statement are plausible specialized contributions. Core methods are classical; only targeted primary passages were checked, not exhaustive priority."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "The work enlarges a positive finite subclass and excludes a specific strong certification route. The general variable-coefficient rectangular problem and interacting/continuum questions remain open."
+    },
+    "reproducibility": {
+      "stars": 3,
+      "basis": "All eight rendered pages and complete text were inspected; 48 manifest entries match. The reported scientific runs were not independently replayed, and reference [6] needs an explicit repository/evidence locator."
+    }
+  },
+  "summary": "This exact eight-page supplement earns 4.40/10, rounded to 4 overall stars, with minor revisions recommended. No demonstrated invalidation of either principal theorem was found. The laminate theorem has an actual K=c construction and correct critical charge; the strong Green certificate has matching all-partition asymptotic costs. Preserve the finite periodic-edge clarification, incomplete evidence locator, and all execution, priority and scope limits. This is an involved, shared-context model assessment of an unbound draft, not human peer review or native AIRR admission.",
+  "strengths": [
+    "Constructive arbitrary-laminate observation theorem with actual energy control, explicit K=c and critical inverse-moment cell count.",
+    "All-partition strong Green certificate-cost phase diagram, including arbitrary aspect ratios and matching meshes.",
+    "Explicit weak-layer and coexact separation examples with correct finite arithmetic and clearly restricted conclusions.",
+    "Uniform M=2, complex dimension, inverse-gap, singleton and target-upper-order qualifications are explicit."
+  ],
+  "objections": [
+    {
+      "id": "O1",
+      "location": "Page 6, section 3.3",
+      "finding": "The exact n=2,c=16 spectrum and minimum cell count require retained full-period positive-start edges. Section 3 also permits cut coordinates.",
+      "correction_or_falsifier": "State retained-edge convention explicitly. With all-cut coordinates a two-vertex cell has eigenvalue8, test value2^p>1, and the minimum is2^D instead of2^(D-1). The asymptotic theorem survives.",
+      "severity": "minor_mathematical_clarification"
+    },
+    {
+      "id": "O2",
+      "location": "Page 7, section 5.2; page 8 reference [6]",
+      "finding": "A commit hash is supplied without repository URL or evidence paths.",
+      "correction_or_falsifier": "Provide stable repository URL and pinned program/input/evidence paths or an archived manifest. This is an incomplete PDF locator, not proof that public evidence is absent.",
+      "severity": "reproducibility_correction"
+    },
+    {
+      "id": "O3",
+      "location": "Page 7",
+      "finding": "Reported finite executions, controls and mutations were not independently replayed or comprehensively audited in this review.",
+      "correction_or_falsifier": "Preserve the distinction between packet hashes, finite tests, same-source repeat runs, independent replication and formal proof.",
+      "severity": "assurance_limit"
+    },
+    {
+      "id": "O4",
+      "location": "Pages 6-8",
+      "finding": "Targeted primary-source checks do not establish priority relative to all weighted approximation and adaptive partition literature.",
+      "correction_or_falsifier": "Retain cautious attribution and seek specialist comparison; no independent originality claim follows.",
+      "severity": "priority_limit"
+    },
+    {
+      "id": "O5",
+      "location": "Pages 1,4,6-7",
+      "finding": "Lamination is retained; Green lower bounds concern a sufficient certificate, and the witness rejects a selected-fibre extension only.",
+      "correction_or_falsifier": "Keep these restrictions in publication summaries. No general rectangular or continuum/physical solution follows.",
+      "severity": "scope_limit"
+    },
+    {
+      "id": "O6",
+      "location": "All pages and supplied pdfinfo report",
+      "finding": "Repeated missing prose spaces and compressed bibliography joins; Title/Author/Subject/Keywords metadata empty in supplied report. All pages remain legible without clipping.",
+      "correction_or_falsifier": "Improve spacing and bibliographic metadata in a future artifact; provide copyable source hash manifest.",
+      "severity": "editorial"
+    }
+  ],
+  "unresolved_material_objections": [],
+  "strong_novelty_candidates": [
+    "Explicit finite laminate adapter under a global critical inverse moment; priority unverified.",
+    "All-aspect rectangular strong-certificate cost lower bound with matching meshes; classical spectral mechanisms acknowledged.",
+    "Concrete examples separating successful observations from minimum-only and strong Green certificates, and rejecting a representative-fibre extension."
+  ],
+  "primary_sources_checked": [
+    {
+      "url": "https://arxiv.org/pdf/1402.1916v2",
+      "scope": "Lemma3.1, section5.2 condition5.6, Theorem5.7 and nearby context"
+    },
+    {
+      "url": "https://arxiv.org/pdf/1206.3325v1",
+      "scope": "Section2 weak Schatten definition and nearby context"
+    }
+  ],
+  "verification_limits": {
+    "publication_performed": false,
+    "manifest_entries_verified": 48,
+    "formal_verification": false,
+    "scientific_execution": false,
+    "exhaustive_priority_review": false,
+    "independent_replication": false,
+    "source_or_pdf_modified": false,
+    "other_model_consulted": false,
+    "manifest_mismatches": 0,
+    "individual_rendered_pages_inspected": 8,
+    "complete_text_read": true
+  },
+  "full_report": "report-exact186.md",
+  "full_report_sha256": "04dd49685d24edf69ca498872e2fde0115d78ed4911f7fcaa1cf765c6839a1dd"
+}

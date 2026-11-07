@@ -1,0 +1,23 @@
+Author response and explicit qualifications for exact supplement186
+SHA context b48d6afda2f12c658837b4559c450a3903cfea20
+Frozen PDF040cae56bad1deb48605ea72f7d4e9ee28da00de702b5ebb11c039129fe65146 unchanged.
+
+The first exact-PDF assessment is4.40/10, rounded4/10 overall stars. Five criteria are4/5 correctness confidence,4/5 rigor,3/5 novelty,3/5 significance,3/5 reproducibility. Recommendation minor_revision. This response does not change the model's report, score or frozen PDF, request a new grade, supply human peer review or claim editorial acceptance.
+
+O1 accepted: the exact n2,c16 example in section3.3 is explicitly to be read with BOTH positive-start periodic edges retained on every full coordinate. The exact certificate minimum2^(D-1) is for this convention. If every full coordinate is cut, the two-vertex eigenvalue is8, its test value is2^p>1 and the exact minimum is2^D. Both conventions have the same asymptotic orders in Theorem3.1. This qualification is retained alongside the unchanged PDF; any future integrated PDF must include the explicit sentence in its body and receive its own exact assessment.
+
+O2 evidence access supplied: the source of reference6 already encodes an href to the pinned research directory, with display text 'Source proofs and complete finite evidence'; a bare URL is absent from extracted prose, which limits a printed copy. The full reviewer objection remains unaltered. Direct copyable primary locators:
+https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/506004b3e7251aa881b08dde1a1bb14aff33e76f/papers/flat-coarse-rank/research
+184 proof: papers/flat-coarse-rank/research/2026-11-07_green-moment-partitions184.txt
+184 reproduction summary at that pin: papers/flat-coarse-rank/research/2026-11-07_green-moment-reproduction184.txt; full31-entry archive is now supplied beside this supplement as supporting-evidence184.zip (archive hash d450902261037f8c76e691cd4debe17477caa64a63ba40abc9e49e951f5c7a5e)
+185 proof: papers/flat-coarse-rank/research/2026-11-07_laminated-rectangles185.txt
+185 full evidence: papers/flat-coarse-rank/research/evidence185/tep185-evidence.zip
+185 driver: scripts/laminated_rectangles185.py
+185 imported exact-rational helpers: scripts/green_moment_partition184.py
+The source185 universal proof SHA256 iscee3556c1ff9dd99a69b3d62b20f6528818926cca2734b2728b51ce9e4fdd407. Report184 and185 scripts/archives bind their executed SHAs. Their same-source repeated runs are not independent replications.
+
+O3 retained: the reviewer did not reexecute scientific cases or establish formal verification; checking artifact hashes is a separate operation. O4 retained: targeted primary-source comparison does not establish priority. O5 retained: arbitrary one-coordinate laminates only for the positive theorem; negative results exclude named certificate mechanisms, not all partitions or a physical gap. O6 accepted: visible eight-page layout is legible and unclipped, but missing prose spaces and empty embedded bibliographic metadata are recorded for correction in the next full integrated artifact. The current PDF and its assessment are not edited to imply that these issues were already fixed.
+
+The source audit's configured model context isgpt-6-astra via OpenAI Codex; effective served backend and reasoning setting unexposed. Prior involvement and shared history are declared. Draft-scoped JSON has no native public version binding; no UUID, receipt, independent reviewer or AIRR acceptance has been fabricated. Every adverse finding remains visible.
+
+Publication route: this is a grouped supplement in the existing dossier, not an unrelated new-submission workaround for stale historical bindings. To release a full successor ofv8, integrate the related source, explicitly repair these minor points, compile and visually inspect the complete exact PDF, obtain its own genuine numeric assessment, reconcile the actual trusted predecessor catalogue and use the native continuous author route with receipt/working permission and protected release checks. Do not transfer this supplement-only grade to that different PDF.
