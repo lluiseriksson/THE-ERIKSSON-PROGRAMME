@@ -1,0 +1,45 @@
+{
+ "unit":"195B",
+ "date":"2026-11-08",
+ "assessment_type":"corrective_source_delta_audit_only",
+ "baseline_commit":"3c13efd4",
+ "artifacts":{
+  "boundary-transfer.tex":"a71474ff5b3519bbce84cbde1dc9d90efd5746efd06042160f1977d6b7dc76e8",
+  "flat_critical_integrated.tex":"9d83e657d31005b7137577b58598164b6558bf8810666fadace9ca89401c3af8"
+ },
+ "verdict":"O1_O2_O3_resolved_on_exact_195B_bytes",
+ "findings":[
+  {"id":"O1","original_finding_preserved":true,"status_on_195B":"resolved","basis":"Restored conductance lower/upper bounds, distinct-edge trial-extension proof and explicit Q boundary-correction corollary."},
+  {"id":"O2","original_finding_preserved":true,"status_on_195B":"resolved","basis":"H>1 explicitly declared before profile inequalities."},
+  {"id":"O3","original_finding_preserved":true,"status_on_195B":"resolved","basis":"Abstract specifies uniform internal-energy-only exact-extension control and D>=4 aggregate scope."}
+ ],
+ "new_blocking_defect_found":false,
+ "additional_correction":"Resulting-PDF wording is prospective.",
+ "remaining_limits":[
+  "Final immutable evidence/driver bindings promised after this audit remain unverified.",
+  "Hosted Kron citation numbering remains unverified; prior arXiv comparison only.",
+  "All mathematical scope limits and original195A record are preserved.",
+  "Boundary-cost ratio presumes nonzero internal trace energy; constant traces have zero over zero."
+ ],
+ "review_context":{
+  "configured_model_from_orchestration":"gpt-6-astra",
+  "provider_context":"OpenAI Codex",
+  "served_backend_attestation":null,
+  "reasoning_setting_attestation":null,
+  "historically_involved_reviewer":true,
+  "shared_history_account_provider_workspace":true,
+  "blind":false,
+  "organizationally_independent":false,
+  "other_reviewers_contacted":false
+ },
+ "original_report_overwritten":false,
+ "source_modified":false,
+ "scientific_execution_or_compilation":false,
+ "full_manuscript_reassessed":false,
+ "pdf_assessed":false,
+ "scores_assigned_or_inherited":false,
+ "human_peer_review":false,
+ "publication_authorization":false,
+ "native_import_validity":false,
+ "full_report":"source-audit195B.txt"
+}

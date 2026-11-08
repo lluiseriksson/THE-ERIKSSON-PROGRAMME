@@ -1,0 +1,42 @@
+CORRECTIVE SOURCE-DELTA AUDIT 195B
+Date: 2026-11-08
+
+Verdict and boundary
+O1, O2 and O3 from the original195A transcription audit are resolved in the exact195B source bytes checked here. No new mathematical defect was found in this corrective delta. This conclusion concerns those three corrections and their immediate source context only. It is not a fresh full-manuscript or PDF assessment, a numerical re-rating, compilation, formal verification or publication approval. The adverse195A report remains valid for195A and is not withdrawn or overwritten.
+
+Exact corrected inputs
+Directory: C:\Trabajo\the-eriksson-programme\coexact-family-20261031\papers\flat-coarse-rank\integrated-revision\revision195\
+boundary-transfer.tex SHA256 a71474ff5b3519bbce84cbde1dc9d90efd5746efd06042160f1977d6b7dc76e8.
+flat_critical_integrated.tex SHA256 9d83e657d31005b7137577b58598164b6558bf8810666fadace9ca89401c3af8.
+Both hashes were directly verified. I inspected the complete diff of these files against195A commit3c13efd4 and read the corrected two-point section with its surrounding proof and scaling discussion. The diff contains the added H>1 hypothesis, the restored conductance/Q paragraph, the corrected abstract scope, and the prospective resulting-PDF wording. No other change to those two files appeared in that comparison.
+
+Preserved original record
+195A's assessed appendix hash was b58f381b1a335fdc4a819f4e9ee59d0094581bc889f2017f47738dd2802adc07; main hash fd9059cf32d32213a5f5e94799f750713c685f3eccebd64e1c7f423ebe82241b.
+Its findings were:
+O1: missing source193 upper conductance bound and test-extension proof, plus missing explicit boundary-correction corollary.
+O2: no explicit H>1 before strict mean/admissibility inequalities.
+O3: abstract appeared to exclude exact extension itself instead of uniform internal-energy-only control.
+These findings are retained as historical facts about195A. Its complete original report and JSON in the delivery directory were left untouched. The additionally supplied evidence195 archive locations were not separately revalidated in this bounded check.
+
+O1 — resolved in195B
+The new paragraph displays Lambda_R=g[[1,-1],[-1,1]], 1+H/3<=g<=D(H+1), and Q_R=(g-1)[[1,-1],[-1,1]]. It supplies the source193 proof: symmetry and zero row sums give the two-terminal form; the disjoint direct edge and strong three-step bypass give the lower bound for every endpoint trace; choosing the extension equal to the second endpoint value off zero gives the upper bound. The latter energy counts exactly D outgoing weight-one and D incoming weight-H edges. Those are distinct for n>=3, including n=3. The matrix normalization uses conductance g rather than eigenvalue2g and has no missing factor two.
+Subtracting the internal coefficient one gives the claimed boundary-correction/internal-energy ratio at least H/3 for a nonconstant trace. The surrounding nonzero mean-zero trace is such a trace. Constant traces have zero numerator and denominator; the ratio wording is naturally restricted to nonzero internal energy and should be understood that way, not as division by zero. Choosing H=n then proves the fixed-M0>1 failure by the already displayed near-one moment tail. This restores the actual omitted source result and proof; it does not introduce an unaudited theorem.
+
+O2 — resolved in195B
+The profile now begins “For H>1”. With n>=3 and D>=3, N>=2, so mu=H-(H-1)/N lies in [H/2,H), and the displayed1<=a<=2mu follows. Both intended choices H=n and H=n^2 meet the hypothesis. The preliminary assertion is now valid on its declared parameter range.
+
+O3 — resolved in195B
+The abstract now specifies “uniformly controlled exact trace extension based only on internal energy”, and separately limits the aggregate harmonic-cost claim to D>=4. This removes the mistaken implication that exact extensions fail to exist. The body proves their unique harmonic minimizer and refutes only the specified uniform control. The correction preserves the distinction between a local scalar transfer obstruction and the open selectable rectangular-count question.
+
+Additional wording correction
+The inherited “this changed full PDF” phrase becomes “the resulting changed PDF”. This is appropriately prospective: this audit has not assessed, compiled or established any195B PDF. No grade or earlier resolved-objection status transfers to a future artifact.
+
+Limits that remain unchanged
+The original195A checks and limitations are not replaced by a blanket approval. The source retains distinct old H=n^2/M=2, new H=n/near-one moment, and D>=4/M=3 aggregate families. Their target scales and global-gap comparisons must remain separate. The aggregate example is not a counting impossibility, and none of these scalar diagnostics establishes a coexact/rank/physical continuum conclusion. No exhaustive novelty comparison, scientific replay, full-manuscript correctness check, typeset cross-reference check or layout review was undertaken here.
+The original evidence-link limitation remains pending: the final provenance/driver is promised to pin all192–195 reports by immutable commits after this audit. That future deliverable was not available for verification in this check and is not represented as complete. Exact hosted-version Kron theorem/equation numbering likewise remains unverified by this reviewer; the prior primary arXiv comparison remains the extent of that bibliographic check.
+
+Reviewer context
+Configured reviewer context supplied by orchestration is gpt-6-astra through OpenAI Codex. Actual served backend identity and reasoning effort are not exposed as attestations. This is the same historically involved agent that audited192–194 and195A, with shared history, account/provider and workspace. It is not blind or organizationally independent. No other model or reviewer was contacted. There is no numerical grade being improved or resampled. No score was assigned or transferred. Tools were used only for static reads, source diff, hashing and report writing; no scientific program, Lean/Lake, compilation, rendering or runtime was executed. No source or original report was changed.
+
+Disposition
+All three requested195A corrective findings are resolved on these exact195B bytes. Preserve both the full original adverse record and this bounded correction record. Final evidence-manifest binding and any future exact-PDF assessment remain separate work, with no inherited approval or score.

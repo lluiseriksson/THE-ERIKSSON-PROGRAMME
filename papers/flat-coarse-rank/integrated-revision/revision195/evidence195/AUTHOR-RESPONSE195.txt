@@ -1,0 +1,37 @@
+AUTHOR RESPONSE195 — preserve initial adverse record and corrected delta
+Initial195A sources remain immutable in commit3c13efd4. Full original report
+source-audit195A.txt SHA25615a11fb55e62375f0a4a18f7b847c4aeaa2cee71a9e2c35a41e1eace8fd69f72
+and audit195A.json SHA256ccad2248da61ee2c9ac17173b17d3512341485c4bd71f1f784ab32c9eecea09c
+are retained unchanged. No failed/incomplete assessment was rewritten.
+
+O1 accepted and corrected: the original manuscript omitted source193's upper
+conductance bound and trial-extension proof plus explicit Q corollary.195B
+restores1+H/3<=g<=D(H+1), the D outgoing/D incoming edge count and Q=(g-1)J.
+The boundary/internal ratio concerns nonconstant traces with positive internal
+energy; it does not divide the constant trace's zero energy by zero.
+O2 accepted and corrected: H>1 is explicit before strict mean inequalities.
+O3 accepted and corrected: abstract excludes uniform internal-energy-only
+control of exact extension; it does not deny existence. Aggregate D>=4 is
+explicit. Historical changed-full-PDF wording is now prospective.
+Full corrective report195B confirms only this exact delta, not a new full
+manuscript/PDF assessment. No numeric stars existed or were resampled.
+
+Corrected appendix SHA256a71474ff5b3519bbce84cbde1dc9d90efd5746efd06042160f1977d6b7dc76e8
+and main SHA2569d83e657d31005b7137577b58598164b6558bf8810666fadace9ca89401c3af8
+remain the exact referents. All seven prior included191 TeX sources are
+byte-identical. Unit192 M2,193 near1 and194 D>=4M3 scopes are distinct;
+no partition/counting/coexact/physical endpoint or new hypothesis removal.
+
+Evidence-link limit: the subsequent prepared driver/provenance pins complete
+192-194 proofs/audits/responses and BOTH195A/B reports to immutable commits
+and byte hashes. Parent metadata/Git checks will verify these bindings; the
+reviewer did not certify that later driver, its execution or rendered layout.
+The driver retains recovery189B=False; it must not allocate a new runtime
+until the existing own session is reconciled. Bounded export is untested.
+
+Same involved configured gpt-6-astra agent, shared history/account/provider/
+workspace; served backend and reasoning not attested. Not blind, independent
+or human peer review. No full-PDF score, stars, receipt or acceptance exists
+for195. Frozen191 and failed189A records stay intact. This is one consolidated
+dossier. Next exact PDF needs actual Linux build, all-page visual review and
+one complete genuine numerical assessment; no grade transfers.
