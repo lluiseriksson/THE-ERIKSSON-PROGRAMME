@@ -1,0 +1,158 @@
+UNIT198: An admissible target-order partition for the two-defect-plane family
+Analytic source candidate. Base4ee425e6a0058cf144f589c0ea0f9f76a3022c61.
+No Lean, mathematical program, PDF, numerical score or formal certification.
+
+QUESTION, HYPOTHESES AND DISPOSITION
+The family194/197 refutes an aggregate separate-elimination comparison,
+and197 rules out its uniformly bounded-rank repair. Does this actual family
+itself refute the selectable rectangular partition target? No. This note
+constructs an admissible partition for every c>0, of target-order cardinality,
+with the stronger global quadratic penalty coefficient K=c. It proves a
+positive result for this prescribed structured family only. It does not solve
+the unrestricted coefficient question. Group with192-194/197, no new paper.
+
+1. DEFINITIONS AND EXACT MOMENT
+Fix D>=4 and even integer s>=2. Set d=D-1, n=s^(2D), H=s^4,
+p=D/2, m=n/2, N=n^D, X=(Z/nZ)^D. Use representatives0,...,n-1
+in every coordinate; t is the first coordinate, y the remaining d.
+Let a=1 on t=0 or t=m except a(0,0)=H; let a=H elsewhere.
+E_a(f)=sum_(x in X)sum_(i=1)^D a(x)|f(x+e_i)-f(x)|^2.
+Every positive-start edge occurs once. W=2n^d-1 sites have a=1;
+mu=(1-W/N)H+W/N is the actual arithmetic mean. Since H^p=n and
+W/N<2/n<=1/3, we have 2H/3<=mu<H, 1<=a<=2mu, and
+M_actual=mu^p[W/N+(1-W/N)H^(-p)]<n W/N+1<3.
+Convexity of z->z^(-p) gives M_actual>=1. Thus this is the same
+fixed critical inverse-moment family, with M=3 as an upper bound.
+The exceptional strong hole is retained, not deleted or averaged away.
+
+2. ELEMENTARY INTERNAL RECTANGLE POINCARE BOUND
+Let R be a product of D nonempty integer intervals, of lengths l_i<=L,
+with only its nonwrapping internal nearest-neighbor edges. For real f put
+bar f_R=|R|^(-1)sum_R f, and E_R^0=sum_internal_edges |D_i f|^2.
+Then
+  sum_R |f-bar f_R|^2 <= (L^2/4) E_R^0.                 (2.1)
+For a path of l>=2 sites the exact variance identity is
+  sum_j |w_j-bar w|^2 = (1/l)sum_(i<j)|w_i-w_j|^2.
+By telescoping and Cauchy-Schwarz,
+  |w_i-w_j|^2 <= (j-i)sum_(k=i)^(j-1)|w_(k+1)-w_k|^2.
+Using j-i<=l and counting the k(l-k) pairs crossing edge k,
+with k=1,...,l-1, proves the bound l^2/4 times the path energy.
+For l=1 the variance is zero.
+
+For completeness tensorization does not introduce a factor D. Let A_i
+average in coordinate i, as an orthogonal projection on counting L2(R).
+These projections commute. Decompose f into the mutually orthogonal
+components [product_(i in S)(I-A_i) product_(i notin S) A_i] f.
+The constant component has S empty. Each other component contributes once
+to ||f-product_i A_i f||^2 and |S|>=1 times to
+sum_i ||(I-A_i)f||^2. Thus variance <=sum_i ||(I-A_i)f||^2.
+Apply the path bound on every coordinate fiber and sum. This proves(2.1),
+including intervals of length1. The lemma concerns internal energy only;
+no external harmonic extension or boundary-cost sum occurs.
+
+3. AN ACTUAL INTEGER RECTANGULAR PARTITION
+Fix c>0, b=max(1,sqrt(c)), and integer
+  L=max(1,floor(sqrt(H)/b)).
+We have 1<=L<=sqrt(H)<=n and L>=sqrt(H)/(2b). The last inequality
+holds when sqrt(H)/b<1 since L=1, and otherwise follows from
+floor x>=x/2 for x>=1.
+
+Partition each of the two planes t=0,m into all n^d singleton vertices.
+These are legal product rectangles; include (0,0) as a singleton as well.
+The complement consists of the two coordinate slabs
+  [1,m-1] x [0,n-1]^d, [m+1,n-1] x [0,n-1]^d.
+Both are nonempty. Split each coordinate interval into consecutive chunks
+of L sites, with one final shorter nonempty chunk when needed. Take products
+of these chunks within each slab. All lengths are positive and <=L; the
+result is a disjoint partition of every vertex of X, with no wrapped box.
+Every start of every internal edge in a nonsingleton slab box has a=H.
+Neither torus wrap edges nor edges crossing a box boundary are included in
+its internal energy. Dropping them is legitimate since a>0.
+
+If L=1 all boxes are singletons and their variances vanish. If L>=2,
+then L<=sqrt(H)/b. By(2.1), on each slab box R,
+  E_R^a=H E_R^0 >= (4H/L^2)sum_R|f-bar f_R|^2
+                    >= c sum_R|f-bar f_R|^2.
+Singleton boxes satisfy the same inequality with both variances zero.
+The retained internal edges of distinct boxes are disjoint, so globally
+  E_a(f) >= c sum_R sum_(x in R)|f(x)-bar f_R|^2.       (3.1)
+This uses actual internal energies, not separate minimized exterior costs.
+
+4. EXACT NORMALIZED MEANS AND A FINITE PENALTY
+Put ||f||_N^2=N^(-1)sum_X |f|^2, and define one scalar coordinate per box
+  (P f)_R=sqrt(|R|/N) bar f_R
+          =sum_R f /sqrt(N |R|).
+Thus P consists of normalized arithmetic means on the constructed boxes.
+Their supports are disjoint and nonempty, so P has full row rank J=#boxes.
+Orthogonal decomposition into cell means and cell-mean-zero fluctuations
+is exact:
+  ||f||_N^2=N^(-1)sum_R sum_R|f-bar f_R|^2+||P f||_2^2.
+Combining with(3.1) gives, for EVERY real f, not only near zero,
+  N^(-1)E_a(f)+c||P f||_2^2 >= c||f||_N^2.            (4.1)
+Hence the finite penalty is exactly c times squared normalized-mean norm.
+If an unnormalized row convention Q_R=sum_R f/sqrt(|R|) is used, the same
+statement is E_a(f)+c||Q f||_2^2>=c sum_X|f|^2. No conventions are mixed.
+In particular Pf=0 implies the actual spectral lower bound on that kernel.
+This is a finite scalar graph inequality, not a physical mass gap.
+
+5. INTEGER COUNT, INCLUDING ALL SMALL-s AND LARGE-c CASES
+The exact number of boxes in this partition is
+  J=2 n^d+2 ceil((m-1)/L) ceil(n/L)^d.
+As L<=n, each ceiling here is at most 2n/L. Consequently
+  J <=2 n^d+2^(D+1)n^D/L^D
+     <=[2+2^(2D+1)b^D] n^D/H^(D/2),                  (5.1)
+where H^(D/2)=n exactly. This estimate remains valid for L=1, in which
+case the actual exact count is N. There is no large-s threshold depending
+on c. With 1+mu<=2H, we obtain the original target scale
+  J <= C(D,c) max{1,(n/sqrt(1+mu))^D},                (5.2)
+  C(D,c)=2^(D/2)[2+2^(2D+1)max(1,c^(D/2))].
+All constants are explicit and independent of s. The max is harmless; the
+bound already holds without it. This note proves the scalar normalized-means
+version. It does not silently identify scalar rank with a color-valued rank.
+
+6. WHAT THIS ELIMINATES AND WHAT IT DOES NOT
+This exact family, including the strong hole, cannot be a counterexample to
+the scalar selectable-rectangle inequality at the stated count order:
+(4.1)-(5.2) give a witness for every c>0. It is nevertheless a counterexample
+to the separate harmonic-cost comparison and its bounded-rank repair197.
+These claims coexist: choosing a different admissible partition is allowed,
+and the new partition resolves the weak planes by singleton means.
+
+No exact transverse invariance of a is needed in this proof: the strong hole
+breaks it. That fact does not remove invariance from the previously proved
+general invariant-coordinate theorem. This proof uses the much more special
+geometry that all weak sites lie on two prescribed coordinate planes and the
+complement is uniformly strong. Critical moment alone has not been shown to
+supply that geometry, or to permit isolation of arbitrary weak sites at this
+cost. The original question for all admissible coefficients remains open.
+No D=3 claim, sharp count, universal optimality, coexact/interacting extension,
+continuum theorem, new Lean result or physical hypothesis removal is claimed.
+PR29 stays recorded20/41, TermSource=0; those tallies are not proved here.
+
+7. PRIMARY CONTEXT, PRIORITY AND NEXT FALSIFIER
+The path/product-grid Poincare mechanism is classical. Naoki Saito,
+How can we naturally order and organize graph Laplacian eigenvectors?,
+arXiv:1801.06782v2, Section2, Eq(1) gives the unnormalized path spectrum
+4 sin^2(pi k/(2n)); the next product-rectangle discussion gives the tensor
+sum structure. Primary source checked2026-11-08:
+https://arxiv.org/html/1801.06782v2
+This note reproves the elementary estimate rather than relying on a spectral
+normalization imported from that paper. The concrete family resolution is a
+scope correction within this programme, not a claimed new Poincare theorem.
+An exhaustive literature search or originality verdict is not asserted.
+
+Active general question remains: at fixed D,c,Nc,M does every actual
+1<=a<=2mu, exact mean mu>=1 and mean((mu/a)^(D/2))<=M admit unrestricted
+integer rectangular normalized means of target-order rank and some finite
+locally quadratic penalty? The mechanism to test next is direct internal
+energy partitioning for nonplanar weak sets. A refutation must defeat every
+admissible target-order partition/finite penalty, not this construction alone.
+Abandon a specific route after three research units without a derived new
+comparison/count estimate or genuine counterexample; manuscript work does
+not reset the counter. Preserve all negative outcomes. No assumptions may
+be moved into a certificate and then described as removed.
+
+Model assessments and review context: pending separate exact-source analytic
+audit. No numerical assessment/stars/PDF/deposit exist for this note, and no
+prior published score is inherited. No mathematical program or runtime was
+used in fabrication. Text/Git/hash checks do not constitute formal verification.
