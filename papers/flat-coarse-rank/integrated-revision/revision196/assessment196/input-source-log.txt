@@ -1,0 +1,56 @@
+INPUT AND SOURCE LOG FOR EXACT-PDF ASSESSMENT
+
+Local permitted root: D:\Datos\the-eriksson-programme\autonomia\evidencia-196\assessment196
+The scientific scope was confined to this curated directory and targeted primary literature. D:\LEEME.md and the installed PDF skill instructions were read for operating requirements, not scientific evidence. No unrelated project state was consulted.
+
+Read completely: flat_critical_integrated.txt, 4330 extracted lines, including all 37 sections, historical disclosures and references. Read adaptively in overlapping chunks after initial tool-output truncation; no truncated region was treated as complete without subsequent reading.
+PDF: 790890 bytes; 82 pages as assigned and corroborated by all existing page/contact images. SHA256 independently matched 0e641695cc59257c87880bd63fdfb0d115018fa563a1d7b7b9d97e3a39e7aed9.
+Text SHA256: 4649b489d02c355459ff561471965c51d7803977ce8503a5936ecfe08ee25c9c.
+Viewed: contact-01.jpg through contact-14.jpg, covering pages 1-82 at overview scale; page-71.png individually. This was layout overview plus selected readable page inspection, not full-resolution visual proofreading of every equation.
+Selected TeX text checks: flat_critical_integrated.tex, including threshold radical tau=sqrt(mu), normalization and penalty terms. Other scientific TeX source members were integrity-compared to the source ZIP, not separately reread in full.
+
+INPUT-MANIFEST.json: all 130 listed entries rehashed, zero mismatches. Some listed files are excluded reports or source notes; those were hashed as byte streams only and not read for content. In particular report.json and source-proof190/192/193/194.txt were not read. No standalone author response, prior score or reviewer report was read. Historic review descriptions already embedded in the canonical PDF were read as canonical content, not as an inherited verdict.
+
+source196.zip SHA256: 2a57eec4363a39e63d05b4719ea81760b880ee6f7024ee34ab9e8126b9ed8d6a.
+All 9 TeX members matched the respective supplied loose files by SHA256; no TeX build was run.
+supporting-evidence184.zip SHA256: d450902261037f8c76e691cd4debe17477caa64a63ba40abc9e49e951f5c7a5e.
+Inner manifest: 30 subjects, zero mismatches. Selected fresh-a head and normal output were read; reported source bedf55c593994aeba2cf47454c2f608870ecb871. This is stored evidence, not a fresh replay.
+supporting-evidence185.zip SHA256: 7c3659dcc621c90a24762f8277b9310b188df1a2052d9fa51b7d243ec666c1c3.
+Inner manifest: 32 subjects, zero mismatches. Selected fresh-a head and normal output were read; reported source dfc2205dcfb8642bf5639c8433e4bdbff38075a3. No diagnostic worker was executed.
+supporting-evidence188.zip SHA256: 94f762615a4a7fdc93d04437aa9e2c97bfa4496ea214be6d9dbd078cc5a26fb0.
+Inner manifest: 47 subjects, zero mismatches. Selected fresh-a head and normal summary were read; reported source b9d9dfdee043a62ec5d30926e215f8a581507b70; stored summary says CASES=648 MUTATIONS_REJECTED=6 PASS. No claim that hashing proves those cases mathematically or that the present reviewer reran them.
+No Lean/Lake, mathematical Python, TeX, rendering, cloud scientific computation or sustained local computation was performed.
+
+TARGETED PRIMARY LITERATURE ACTUALLY CONSULTED
+1. Rupert L. Frank, Cwikel's theorem and the CLR inequality, arXiv:1206.3325v1.
+https://arxiv.org/html/1206.3325v1
+Inspected introduction, scalar weak-ideal/density background, operator-valued Section 3.1 and Theorem 3.1 with its explicit constant and Fourier-kernel assumption. Used to check Theorem 28.1's finite normalization and to limit general-method novelty. Not a complete audit of all references or all of Frank's paper.
+
+2. Nochetto, Otarola and Salgado, Piecewise polynomial interpolation in Muckenhoupt weighted Sobolev spaces and applications, arXiv:1402.1916v2.
+https://arxiv.org/html/1402.1916v2
+Inspected introduction and selected Section 5.2 hypotheses, neighboring-cell comparability and Theorem 5.7's weight-characteristic dependence. Supports the existence of established weighted anisotropic approximation machinery. Did not establish that its exact theorem implies this manuscript's uniform finite inverse-moment partition theorem. Browser HTML metadata included an anomalous later displayed manuscript date; no publication chronology conclusion was inferred from that display.
+
+3. Dorfler and Bullo, Kron Reduction of Graphs with Applications to Electrical Networks, arXiv:1102.2950.
+https://arxiv.org/html/1102.2950
+Inspected the paper's structure and selected Schur/spectral-reduction material; the manuscript's boundary formulas were checked directly analytically. Initial author-hosted PDF https://motion.me.ucsb.edu/pdf/2011d-db.pdf timed out and was not represented as read. No full exhaustive literature comparison of boundary extensions was completed.
+
+4. Birman and Solomyak, Piecewise-polynomial approximations of functions of the classes W_p^alpha, Math. USSR-Sbornik 2 (1967), 295-317.
+https://www.mathnet.ru/php/getFT.phtml?jrnid=sm&paperid=4132&what=fullteng
+Inspected introduction and Section 2 partition-function setup/Theorem 2.1, including measure-dependent subdivisions and semiadditive set functions. This is relevant omitted direct background for adaptive coefficient-mass partition comparisons. No claim is made that it already proves Section 35 or resolves the manuscript's open question. The rest of the 23-page source was not read in full.
+
+5. Michael Solomyak, On approximation of functions from Sobolev spaces on metric graphs, arXiv:math/0206235.
+https://arxiv.org/abs/math/0206235
+ABSTRACT ONLY. Identifies earlier step-function approximation on metric graphs with graph-uniform estimates. Not used as a theorem-level refutation or equivalence claim.
+
+6. Yu. Brudnyi, Nonlinear Piecewise Polynomial Approximation and Multivariate BV spaces of a Wiener--L. Young Type. I, arXiv:1511.03971.
+https://arxiv.org/abs/1511.03971
+ABSTRACT ONLY. Identifies endpoint adaptive approximation literature and a Birman-Solomyak comparison lead. Function-dependent approximation is not silently identified with a single coefficient-dependent observation controlling all fields.
+
+Search terms included adaptive rectangular inverse-moment Poincare partitions and Birman-Solomyak weighted Sobolev partition eigenvalues. Search results from secondary sites were not used as scientific premises. Negative search results do not establish novelty. No AIRR predecessor page, programme repository review or unrelated project state was opened.
+
+OUTPUTS
+scientific-review.txt: complete scientific report and adverse findings.
+candidate-response.json: numerical exact-PDF evaluation and factual context.
+review-context.json: separate identity, participation and isolation disclosure.
+input-source-log.txt: this input and source log.
+input-integrity.json: full outer-manifest SHA256 comparison record.

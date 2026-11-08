@@ -1,0 +1,19 @@
+{
+  "assessment_utc": "2026-11-08T04:23:05.8038552Z",
+  "provider": "OpenAI",
+  "model": "Codex (GPT-6-based per session instructions; exact served backend identifier unexposed)",
+  "configured_model_override": "not exposed to this reviewer",
+  "served_backend_model": "not exposed",
+  "reasoning_setting": "not exposed; not inferred",
+  "prior_participation": "Factual prior participation across sessions unknown",
+  "history": "Fresh delegated task history; shared orchestration, account and filesystem",
+  "isolation": "Not verified",
+  "blind_review": false,
+  "organizational_independence": false,
+  "human_peer_review": false,
+  "editorial_acceptance": false,
+  "previous_grade_inherited": false,
+  "canonical_pdf_historical_disclosures": "Read as part of exact artifact; no standalone reports or responses read",
+  "local_execution": "Text, ZIP and image inspection; SHA256 and byte comparison; assessment output writing. No Lean/Lake, TeX, rendering or mathematical program execution.",
+  "publication_binding": "Unbound changed candidate; no new public version or case identifier assigned"
+}

@@ -1,0 +1,16 @@
+SEPARATE AUTHOR CLARIFICATIONS FOR EXACT CANDIDATE196D
+PDF SHA256 0e641695cc59257c87880bd63fdfb0d115018fa563a1d7b7b9d97e3a39e7aed9
+
+These are preparing-agent clarifications, not an amendment to the original PDF, scientific review, numerical score or model response. The one new full assessment gives4.10/10 and4overall stars, criteria4/4/3/3/3, minor_revision. AllR1-R5 are retained. Working-paper distribution is distinct from screening completion, acceptance and human peer review.
+
+R1: Accepted as an open literature-comparison limitation. Birman and Solomyak, Piecewise-polynomial approximations of functions of the classes W_p^alpha, Math.USSR-Sbornik2(1967),295-317, Section2, is pertinent older partition-function background. The reviewer inspected its introduction and partition-function statement. No exhaustive priority finding or proof that this older theorem implies our exact coefficient-dependent all-field rectangular observation theorem is asserted. Close comparison remains a recorded next research action; it cannot be discharged merely by a citation.
+
+R2: Section29.1's displayed K_min expression is for the explicitly introduced mean-zero space e-perp. On the full counting space the constant mode additionally requires K>=c, so the full-space value is max(c,displayed expression). The restricted formula must not be exported as a full-space minimum.
+
+R3: In the Section28.3 numerical penalty bound, normalized linear observation means a contraction, ||C||<=1, for the stated counting and output Hilbert norms. For arbitrary C the numerical lower bound must retain the corresponding operator-norm factor. Rescaling C changes numerical K; it does not change the rank/existence assertions. Normalized spectral coordinates and disjoint arithmetic means used in the constructions satisfy the intended contraction condition.
+
+R4: Historical frozen/reviewed-PDF and pending-permission wording in inherited source sections describes those historical source artifacts. It does not assert that the changed candidate has inherited their review or permission. Current82page identity, full report and context are supplied separately. Presentation consolidation and a shorter dependency/evidence map remain requested editorial improvements.
+
+R5: Reproducibility limits remain unresolved. The exact build/render179subject manifest and source archives match hashes; no new Lean dependency closure or independent all-size scientific replay was performed. Sections36-37 are analytic, with no claimed new replay. One stable source/recipe/evidence entrypoint is preserved; this does not turn recorded diagnostics into independent theorem verification.
+
+No material main-claim objection was identified by the model; that is a bounded model finding, not proof of correctness. The unrestricted fullyvariable critical rectangle question, exactly-invariant-coordinate hypothesis, interacting dictionary and physical continuum remain open. PR29=20/41,TermSource0.
