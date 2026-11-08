@@ -1,0 +1,184 @@
+UNIT201B: Relative overlaps do not uniformly glue finite-L2 local constants
+Analytic candidate, distinct from the duplicate threshold reproduction201A.
+Basec0f27edbb6597c7096cb9efc8cc8993a41f62732. No execution or PDF score.
+
+QUESTION, HYPOTHESES AND MECHANISM
+A possible multilevel route passes through covers of rings by overlapping
+cubes. Does a fixed relative overlap with the smaller adjacent cube, together
+with a fixed number of cubes, give a uniform L2 gluing constant? No. Three
+cubes suffice to falsify that general rule, in both counting and Lebesgue
+measure. We also derive an explicit valid bound using actual overlap volumes
+on a rooted tree. Its scale loss has the right order on the counterexample.
+This does not refute a special annular-domain estimate, a more restrictive
+geometric cover, a complete approximation theorem, or the main rectangle target.
+
+1. THE PRECISE GENERIC CLAIM TO TEST
+In a measure space let S_i have finite positive measure v_i, and put
+  e(f;S)=inf_(z in R) ||f-z||_(L2(S)).
+The norm is unnormalized. For f square integrable on the finite union, its
+best constant on S is m_S=v_S^(-1)integral_S f, and
+  e(f;S)^2=integral_S|f-m_S|^2.
+The tested assertion is the existence of a finite C depending only on the
+number J of sets, a dimension d, and fixed rho>0, such that
+  e(f;union_i S_i)<=C sum_i e(f;S_i),                  (1.1)
+whenever neighboring sets satisfy
+  measure(S_i intersect S_(i+1))>=rho min(v_i,v_(i+1)). (1.2)
+No bound on ratios of set volumes or accumulated-union overlap is assumed.
+The next examples have J=3 and actual adjacent overlap ratio1/2, so they
+satisfy(1.2) even with the fixed strict margin rho=1/4. They also satisfy
+that condition for every pair with positive intersection, not just neighbors.
+
+2. EXACT FINITE COUNTING COUNTEREXAMPLE
+Fix an integer d>=2 and an integer L>=2. On the integer lattice define
+  S1={0,...,L-1}^d,
+  S3={L,...,2L-1} x {0,...,L-1}^(d-1),
+  S2={L-1,L} x {0,1}^(d-1).
+All three sets are actual cubes. Their counting volumes are L^d,2^d,L^d.
+S2 is contained in S1 union S3 and each of its two overlaps has volume
+2^(d-1), exactly half its own volume. S1,S3 are disjoint. Thus all required
+relative overlap tests hold with fixed rho=1/4, independently of L.
+Let f=0 on S1 and f=1 on S3. Then
+  e(f;S1)=e(f;S3)=0,
+  e(f;S2)^2=2^d/4,
+  e(f;S1 union S2 union S3)^2=2L^d/4=L^d/2.
+The last two equalities use the minimizing mean1/2 on equally sized halves.
+Their exact ratio is
+  e(f;union)/sum_i e(f;S_i)=sqrt(2L^d/2^d),           (2.1)
+which is unbounded as L grows. No numerical experiment is required. In
+particular a fixed number of overlaps, even each occupying half the smaller
+cube, does not yield a dimension-only gluing constant. This assertion is
+about scalar L2 approximation by one constant, not an energy or physical gap.
+
+3. CONTINUUM COUNTEREXAMPLE AND A SMOOTH VERSION
+For 0<t<=1/4 take halfopen cubes in R^d,
+  S1=[0,1)^d,
+  S3=[1,2) x [0,1)^(d-1),
+  S2=[1-t,1+t) x [0,2t)^(d-1).
+Write v=(2t)^d. The union is S1 union S3, of Lebesgue measure2. The small
+cube has volume v<=1, and both overlaps have measure v/2. The same step
+function has exact errors
+  e(f;S1)=e(f;S3)=0, e(f;S2)=sqrt(v)/2,
+  e(f;union)=1/sqrt(2).
+Thus the ratio is sqrt(2/v), tending to infinity as t decreases.
+All cubes may be simultaneously translated and rescaled into a unit cube;
+the relative overlaps and error ratio are unchanged.
+
+Additional smoothness alone does not rescue this generic claim. Choose a
+smooth eta:R->[0,1] with eta(u)=0 for u<=-1 and eta(u)=1 for u>=1. Such
+an eta is obtained by integrating a nonnegative smooth bump supported in
+(-1,1), and normalizing its integral. Put delta=t^(2d) and
+  f_delta(x)=eta((x_1-1)/delta).
+It can be multiplied by a fixed compactly supported smooth cutoff equal to1
+on a neighborhood of the three cubes; hence it is admissible even when a
+globally smooth compactly supported test is wanted. On S1 compare with0
+and on S3 with1: the transition has thickness at most delta on each side,
+so
+  e(f_delta;S1)<=sqrt(delta), e(f_delta;S3)<=sqrt(delta).
+On S2 compare with1/2, obtaining e(f_delta;S2)<=sqrt(v)/2.
+On the union its L2 distance to the step function is <=sqrt(2delta).
+Distance to the closed subspace of constants is1-Lipschitz in L2, so
+  e(f_delta;union)>=1/sqrt(2)-sqrt(2delta).
+For t<=1/4,d>=2, delta<=1/256, and this lower bound is >=1/(2sqrt(2)).
+The sum of the three local errors is <=2sqrt(delta)+sqrt(v)/2, which tends
+to zero. This proves failure of(1.1) even for smooth f. Derivatives may grow
+with t; the false generic claim had no derivative term or bound to absorb it.
+
+4. A CORRECTED ROOTED-OVERLAP BOUND, DERIVED
+Let S_1,...,S_J be any finite positive-measure sets, with f in L2 of their
+union. Choose a connected graph of actual positive-measure overlaps, and a
+spanning tree T with root r. Let v_i=measure(S_i),
+  theta_(ij)=measure(S_i intersect S_j)>0 for tree edges,
+  Delta_T=max_i degree_T(i),
+  R_i=sum_(edges e on path r to i) theta_e^(-1), R_r=0,
+  Q_T=sum_i v_i R_i.
+This Q_T is dimensionless and uses ACTUAL set/overlap volumes. For J=1 set
+Delta_T=0,Q_T=0. Then the universally valid estimate is
+  e(f;union_i S_i)^2 <=(1+2 Delta_T Q_T) sum_i e(f;S_i)^2.  (4.1)
+No uniform bound on Q_T is asserted, and (4.1) is not presented as removing
+the missing local geometric estimate for a particular cover.
+
+Proof. Let m_i be the average of f on S_i and e_i=e(f;S_i). On a tree edge,
+restriction to the overlap and the L2 triangle inequality give
+  sqrt(theta_(ij))|m_i-m_j|<=e_i+e_j,
+  theta_(ij)|m_i-m_j|^2<=2(e_i^2+e_j^2).
+Weighted Cauchy-Schwarz along a tree path yields
+  |m_i-m_r|^2<=R_i sum_(e on path) theta_e |D_e m|^2
+             <=2 R_i sum_(e in T)(e_(head(e))^2+e_(tail(e))^2)
+             <=2 R_i Delta_T sum_j e_j^2.
+The first inequality is trivial at the root because both sides vanish.
+For any f in L2 of the union, use the candidate constant m_r. Counting a
+point once is bounded by counting it with the cover multiplicity. On each
+set, orthogonality to its average gives the exact Pythagorean identity.
+Consequently
+  e(f;union)^2<=integral_union |f-m_r|^2
+     <=sum_i integral_(S_i)|f-m_r|^2
+     =sum_i[e_i^2+v_i|m_i-m_r|^2]
+     <=(1+2 Delta_T Q_T)sum_i e_i^2.
+This proves(4.1) for either counting or Lebesgue measure. The elementary
+path/graph mechanism is classical; no new general gluing principle is claimed.
+
+On the three-set chain with outer volumes V and small bridge volume v,
+each overlap has volume v/2. Taking r=1 gives Delta_T=2,
+  R_2=2/v, R_3=4/v, Q_T=2+4V/v.
+Our bound is1+4Q_T=9+16V/v. The exact step example has squared error ratio
+2V/v against the sum of local squared errors. Thus deterioration of order
+V/v in the squared inequality, or sqrt(V/v) in the norm inequality, cannot
+in general be eliminated merely because adjacent relative overlaps are fixed.
+The constant9+16V/v is sufficient, not claimed optimal.
+
+5. WHY THE NAIVE CHAIN INDUCTION FAILS
+From a fixed relative overlap of S_N and S_(N+1), one cannot infer the same
+relative overlap between union_(i<=N) S_i and S_(N+1). In our example,
+measure(S2 intersect S3)=v/2 is half the smaller set S2, but
+measure((S1 union S2) intersect S3)=v/2 while both accumulated-union volume
+and S3 volume are of order V. The min-volume denominator changes when sets
+are accumulated. The new relative overlap tends to zero as v/V does.
+A proof that equates these two minima without an additional condition has
+not proved a uniform constant. A geometric ordering, volume comparability,
+a suitable conductance bound or a new direct domain estimate might repair a
+specific application, but must be derived there. Do not replace it by a
+structure field called a gluing certificate and call the hypothesis eliminated.
+
+6. PRIMARY-SOURCE CHECK AND STRICT ATTRIBUTION BOUNDARY
+Primary inspected: Brudnyi, arXiv:1511.03971v1 (12November2015), Section3
+Eq(3.1), Lemma3.7 Eqs(3.20)-(3.21), PDFprintedpp6and11 and matching HTML:
+https://arxiv.org/pdf/1511.03971
+https://arxiv.org/html/1511.03971
+The extracted PDF and HTML use unnormalized best polynomial Lq error and
+state a general adjacent-minimum-overlap chain estimate. Our counterexample
+tests that literal general statement at k=1,q=2,N=3. Its fixed overlap margin
+rho=1/4 avoids any ambiguity between strict and weak inequality signs.
+The in-app PDF viewer was blank; no claim of visual PDF typesetting inspection
+is made. The exact extracted formula and matching HTML, not a retyped quote,
+were the available primary readings. A later correction/version or additional
+hypothesis in another source has not been established or ruled out.
+
+This note proves the counterexample to(1.1)-(1.2) independently. It does not
+claim to refute that entire paper, its principal approximation theorem, the
+actual ring geometry, or other special-cover results. A function-dependent
+approximation partition is also not automatically a single coefficient-
+dependent rectangle map working for every f. The safe use of a future ring
+route therefore requires its own exact local-energy and count derivations.
+No message to an author or external party is authorized or sent. Particular-
+family priority is unestablished; the counterexample's elementary nature and
+its separate reasoning audit do not establish originality or importance.
+
+7. STATUS, FALSIFIER AND NEXT STEP
+Source201A and the binarycorollary199 were found to reproduce consequences
+already present in the manuscript; inventory-correction201.txt records this.
+They are not counted as new mathematical progress. This201B addresses a
+separate overlap guard and is not included in the existing85page PDF200.
+It requires a fresh exact-source analytic audit; no score, stars, formal
+certificate, numerical experiment, build/render or runtime is assigned.
+
+The main single active problem remains the unrestricted critical rectangle
+question. Next test any proposed multilevel/ring cover using this three-cube
+field and derive an actual quantitative gluing/local-energy constant before
+using it. A falsifier of that next route is an admissible cover whose claimed
+uniform constant diverges, or a partition depending on f when uniformity in
+f is required. After3units without a derived advance change that specific
+route. No main physical or coexact/color hypothesis has been removed, and
+PR29 stays recorded20/41,TermSource0, continuum open, not certified here.
+Group this guard with the existing dossier, not a standalone minor paper.
+The pending200 human artifact recovery/security rejection is unchanged and
+has not been retried, bypassed or turned into another approval request.
