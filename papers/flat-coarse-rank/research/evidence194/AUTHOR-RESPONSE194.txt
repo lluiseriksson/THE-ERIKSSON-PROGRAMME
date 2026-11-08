@@ -1,0 +1,36 @@
+AUTHOR RESPONSE194
+Exact source SHA256 1c94cf9e45a140b0af55b3d24438de37c9840444c8b2ee4ea446334e4c0d42d0.
+Source commit53f21d86. Full involved source audit retained without editing.
+No blocking mathematical error found. This is source review, not PDF grading.
+
+L1 accepted: D>=4 is essential to the supplied transverse Fourier bound.
+The shell estimate for D=3 would be logarithmic; no D=3 result is claimed.
+L2 accepted: fixed admissibility M=3; the actual moments approach3. No
+smaller fixed M0 is established by this particular family.
+L3 accepted: H/(12K_d) is a sufficiently-large-even-n lower bound requiring
+H>=2K_d. The family itself is defined for every evenn>=6; constants are crude.
+L4 accepted: each Q_R eliminates its own entire complement. Joint elimination
+is different. Number of retained pairs and the permitted count scale are both
+order n^(D-1); no main partition/counting impossibility follows.
+L5 accepted: one scalar global field, no coexact/rank/physical conclusion.
+L6 accepted: the reviewer independently read a primary arXiv version with
+different numbering. Parent web evidence inspected the hosted manuscript's
+TheoremIII.8/equation27/page9. These are separately recorded observations,
+not a claim of exact version byte identity or independent attestation of the
+other reader's history. No exhaustive novelty, formal check or replay exists.
+The same configured gpt-6-astra reviewer shares programme history/workspace;
+the assessment is involved, not blind or organizationally independent.
+
+The report notes singleton completion if a full partition is required. That
+observation does not provide the favorable target count for such a completion.
+The frozen statement already suffices for the arbitrary disjoint-rectangles
+energy-sum claim under test; no source change or extra evaluation is needed.
+The common-hole comparisons certify lower bounds for trace costs; they do
+not force the actual minimizer to use that hole rather than parallel cuts.
+
+Three boundary units192-194 now identify concrete failures of cellwise and
+separate-cell aggregate transfer. Stop that additivity mechanism. The same
+main fixed-moment rectangle question next needs joint reduction or a direct
+internal partition argument, with an actual count estimate, not an assumption.
+Group the negative results in the existing dossier. No separate corollary
+paper, new PDF, stars, deposit, receipt or acceptance is created by this audit.

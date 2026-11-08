@@ -1,0 +1,56 @@
+{
+ "unit":194,
+ "date":"2026-11-08",
+ "assessment_type":"involved_source_correctness_audit",
+ "source_path":"C:\\Trabajo\\the-eriksson-programme\\coexact-family-20261031\\papers\\flat-coarse-rank\\research\\2026-11-08_aggregate-capacity194.txt",
+ "source_sha256":"1c94cf9e45a140b0af55b3d24438de37c9840444c8b2ee4ea446334e4c0d42d0",
+ "complete_source_read":true,
+ "verdict":"supported_aggregate_independent_trace_counterexample_D_ge_4_M_3",
+ "blocking_mathematical_objections_found":[],
+ "checks":{
+  "Fourier_normalization_and_Nyquist":"supported",
+  "shell_count_and_Cd":"supported",
+  "fixed_M_3_profile":"supported",
+  "five_change_weighted_Cauchy_Schwarz":"supported",
+  "directed_edge_disjointness_including_n6":"supported",
+  "effective_conductance_bound":"supported",
+  "step_field_mean_and_energy":"supported",
+  "ratio_H_over_12Kd_on_tail":"supported",
+  "target_count_scale_comparable_to_n_to_d":"supported"
+ },
+ "findings":[
+  {"id":"L1","finding":"D>=4 is essential to the supplied uniform transverse estimate; no D=3 result."},
+  {"id":"L2","finding":"Actual moments below3 tend to3; the uniform bound proved is M=3, not any smaller fixed bound."},
+  {"id":"L3","finding":"The divergent lower bound uses the sufficiently large tail H>=2Kd; constants are not sharp."},
+  {"id":"L4","finding":"The sum concerns separate whole-complement eliminations, not joint reduction or the main selectable count theorem."},
+  {"id":"L5","finding":"No coexact, rank or physical conclusion is established."},
+  {"id":"L6","finding":"Exact hosted-version citation numbering, priority, replay and formal verification unverified; reviewer is involved and not independent."}
+ ],
+ "primary_source_check":{
+  "url":"https://arxiv.org/pdf/1102.2950",
+  "scope":"Theorem3.9 and equation3.14, effective resistance invariance",
+  "author_hosted_version_numbering_verified":false,
+  "exhaustive_priority_search":false
+ },
+ "review_context":{
+  "configured_model_from_orchestration":"gpt-6-astra",
+  "provider_context":"OpenAI Codex",
+  "served_backend_attestation":null,
+  "reasoning_setting_attestation":null,
+  "historically_involved_reviewer":true,
+  "prior_involvement_includes_192_193":true,
+  "shared_history_account_provider_workspace":true,
+  "blind":false,
+  "organizationally_independent":false,
+  "prior_grades_inherited":false,
+  "other_reviewers_contacted":false
+ },
+ "scientific_execution_performed":false,
+ "source_modified":false,
+ "pdf_assessed":false,
+ "scores_or_stars_assigned":false,
+ "human_peer_review":false,
+ "publication_authorization":false,
+ "native_import_validity":false,
+ "full_report":"source-audit194.txt"
+}
