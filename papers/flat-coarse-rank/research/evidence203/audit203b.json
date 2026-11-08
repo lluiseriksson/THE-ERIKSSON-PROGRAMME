@@ -1,0 +1,52 @@
+{
+  "verdict": "ACCEPT_WITH_STATED_LIMITATIONS",
+  "completed_at": "2026-11-08T10:52:47.995965+00:00",
+  "source_commit": "172a8109b74558fe861ff0ea7706cfa7ed9a40ee",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-08_thin-shell-field203b.txt",
+  "source_representation": "exact Git LF blob bytes; no normalization",
+  "source_bytes": 4568,
+  "source_sha256": "d7b17a8d9ac3c3e08af1b669f2a3b571a88b75c27eb22b5b7dbec13adcb2b297",
+  "report_representation": "UTF-8 LF, no BOM",
+  "report_bytes": 7100,
+  "report_sha256": "0d201e42ec3c884475606c20cfe29af54065a73c4eae6941814ac1f2481f8bae",
+  "reviewer": {
+    "provider": "OpenAI",
+    "exposed_identity": "Codex described as GPT-6 based",
+    "served_model_id": null,
+    "reasoning_effort": null,
+    "task": "/root/integer_shell203_audit",
+    "shared_account_and_filesystem": true,
+    "parent_preparation_context_inherited": true,
+    "previous203_audit_context_reused": true,
+    "independence_verified": false,
+    "inbound_messages_during203b_review": 0
+  },
+  "blocking_defects": [],
+  "nonblocking_findings": [
+    {
+      "id": "E1",
+      "location": "Section4 generic adjacent-overlap theorem phrasing",
+      "finding": "201B refuted a generic adjacent-overlap assertion; calling it a theorem is potentially misleading. The thin-family nonapplicability to a fixed-rho premise is mathematically correct.",
+      "suggested_wording": "This thin-shell family does not satisfy the fixed-positive-rho overlap hypothesis examined in201B, since beta tends to zero.",
+      "affects_mathematical_claim": false
+    }
+  ],
+  "analytic_claims_checked": [
+    "Consistent global indicator",
+    "Exact local/global variance and positive denominator",
+    "Uniform-constant counterexample quantifiers",
+    "Unsquared-error corollary",
+    "Two-sided L/t order for covering-error comparison",
+    "Scope separate from Poincare energy/other covers/main rectangle target"
+  ],
+  "mathematical_source_correction_required": false,
+  "new_grade": null,
+  "stars": null,
+  "new_main_hypotheses_removed": [],
+  "scientific_computation": false,
+  "build_executed": false,
+  "runtime_allocated": false,
+  "pr_body_capture": "Not applicable: no PR exists",
+  "cleanup_pending": false,
+  "external_source_context": "AppendixI attribution already checked in203; no new external theorem used or novelty search claimed"
+}

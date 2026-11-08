@@ -1,0 +1,132 @@
+EXACT-SOURCE ANALYTIC AUDIT203
+Frozen source: 1dac4edaa1c315f7683c048f790a315f9a79fdfe
+Path: papers/flat-coarse-rank/research/2026-11-08_integer-shell203.txt
+Git blob (SHA1): f86865c21f1f9899959038216e4803d38c6a1ab4
+Git LF bytes: 8281, no CR bytes, no normalization applied
+Git LF SHA256: c0bdf9bb46200a3291a3dddcbec046dd36e96fd53248324693d193adf260fe57
+
+VERDICT: ACCEPT_WITH_STATED_LIMITATIONS
+No substantive mathematical defect found in the stated finite counting,
+gluing, box-energy, thick-shell estimate or thin-cover tree obstruction.
+This is an adversarial analytic reading of the exact source, not a formal
+certificate, numerical experiment, originality finding, publication approval,
+PDF assessment or star grade. No main critical-rectangle hypothesis has
+been eliminated and no Yang-Mills endpoint has been obtained.
+
+ACQUISITION AND CONTEXT
+I read the complete frozen source with git show at the stated commit,
+then bound its exact Git LF bytes by an unmodified subprocess byte read
+for length/SHA256 only. I read the 201B rooted-overlap proof at the same
+commit, not merely its acceptance summary. I read CLAUDE.md and the audit,
+execution, frozen-SHA and no-inbound rules in the governance charter, and
+D:\LEEME.md before writing reports. No PR exists; PR-body capture and
+PR-body normalization/hash are not applicable. The assigned source was
+not edited. No commits, clones or worktrees were created, and no build,
+Lean/Lake, scientific code, numerical search or runtime was used.
+
+Reviewer identity exposed: OpenAI Codex, described in the inherited
+execution instructions as GPT-6 based. Exact served model identifier,
+backend revision and reasoning-effort setting are not exposed to me.
+I am the different-session child /root/integer_shell203_audit. Full-history
+fork context includes the parent's preparation and proposed construction;
+the same account and filesystem are shared. There is therefore no claim
+of blinded or verified independent review. No inbound message was received
+while this audit ran. This report is a single reading, not a repeated
+attempt to improve a score.
+
+DETAILED ADVERSARIAL CHECK
+1. Coverage, volumes and edge conventions.
+For 0<=r<R, both signed intervals in every coordinate contain exactly
+t=R-r positive numbers of integer sites. Each slab is nonempty and lies
+in the complement of the inner cube. Conversely every shell vertex has
+a coordinate outside [-r,r], so it lies in one or more listed slabs.
+Membership overlap is explicitly allowed and never used as if it were a
+partition. The cardinalities v=t L^(D-1), disjoint opposite same-coordinate
+slabs, and theta=t^2 L^(D-2) for different coordinates follow by fixing the
+one or two restricted factors. They include r=0 and R=1. No boundary
+energy outside the shell, wrapping edge, volume normalization, half-energy
+factor or extension operator is silently introduced.
+
+2. Tree and exact Q.
+There are J=2D vertices. The root has J-2 listed coordinate-distinct children.
+The sole remaining vertex (1,-) is attached to (2,+), which exists for D>=2.
+This produces J-1 edges, reaches every vertex and contains no cycle.
+Every edge has actual positive overlap theta. There are J-2 depth-one
+vertices and one depth-two vertex; their depths sum to J. Thus Q=J v/theta
+=J L/t exactly. The bound Delta<=J-1 is conservative but valid even for
+D=2. The D=1 exception is material and correctly excluded: two separated
+nonempty intervals support a nonconstant componentwise constant field
+with zero internal energy.
+
+3. Imported201B inequality.
+For an overlap edge, sqrt(theta)|m_i-m_j|<=e_i+e_j follows by restricting
+the two error functions and applying the L2 triangle inequality. Squaring
+gives theta|m_i-m_j|^2<=2(e_i^2+e_j^2). Weighted path Cauchy-Schwarz,
+then summing all edge endpoint errors, bounds the squared root-to-i mean
+difference by 2 R_i Delta sum_j e_j^2. The candidate root mean has error
+over the union bounded by the sum of errors over covering sets; exact
+orthogonality to each local mean gives sum_i[e_i^2+v_i|m_i-m_root|^2].
+This proves the imported 1+2 Delta Q formula without a hidden extra
+factor of two. Substitution of the actual tree proves (3.1). For thick
+shells R=2m,r=m, L/t=4+1/m<=5, so (3.2) is valid with J fixed by D.
+No geometrical certificate is merely assumed.
+
+4. Tensorized internal energy.
+The interval variance identity uses unordered pairs divided by ell,
+which is correct for counting measure. An edge between sites k and k+1
+is crossed by k(ell-k) unordered pairs. Bounding every path length by ell
+and dividing by ell bounds its coefficient by ell^2/4, which is at most
+L^2. Length-one directions have zero conditional variance. In the product
+step, the displayed law of total variance uses normalized uniform product
+expectations; applying the lower-dimensional bound to the first-coordinate
+average and Jensen to each of its remaining directional differences is
+legitimate. Multiplication by box cardinality cancels the conditional
+normalizations and gives counting energy with no missing side length or
+dimension factor. Thus (4.1) is a safe, nonsharp constant.
+Each slab-internal edge is a shell-internal edge and has multiplicity at
+most J. Combining the gluing bound with (4.1) yields (4.2), with factor J,
+not J^2. L<=5m then gives 25 J G_D m^2 as claimed. The positive-start
+weighted variant follows termwise from a(x)>=alpha on the shell because
+the start of every retained internal edge is in that shell. It remains
+conditional on that lower bound and does not derive it from a moment.
+
+5. Thin-shell obstruction and its exact target.
+All tree edges of this specific slab-intersection graph have identical
+overlap theta and all vertex volumes equal v. Therefore Q=(L/t)sum depth
+for every choice of root and spanning tree. Every nonroot depth is at least
+one, giving Q>=(J-1)L/t. With t=1 and R increasing this excludes a
+D-only upper bound on Q for this particular cover, even after re-rooting
+or reordering. It proves a genuine obstruction to that precise sufficient
+criterion; it does not prove that the actual best gluing constant, a
+Poincare constant, another cover or a rectangle-partition target diverges.
+The note draws exactly this limited conclusion and explicitly disclaims
+the invalid stronger inference. A three-set dumbbell field cannot be
+inferred for the slab cover from this count.
+
+PRIMARY-SOURCE AND NOVELTY BOUNDARY
+I checked the primary HTML at https://arxiv.org/html/1511.03971v1,
+Appendix I, heading and Theorem I.1. It concerns covering a dyadic cube
+difference by a special family of cubes. This corroborates the limited
+attribution in Section6. No judgment of its complete theorem or proof is
+made here. The present boxes are discrete slabs and are not identified
+with that cube family. No exhaustive priority search has been made.
+These elementary estimates should remain grouped in the internal dossier;
+this audit establishes no basis for a standalone novelty claim or paper.
+
+LIMITATIONS AND DISPOSITION
+The result closes a previously unproved actual thick-shell geometry step
+for the stated concentric nonwrapping integer shells, and excludes one
+uniform thin-shell slab-tree strategy. It does not furnish a selected
+coefficient-dependent multilevel family, its moment-controlled count,
+its weighted energy bound, an off-center or torus construction, or a
+single admissible disjoint rectangle partition for the main problem.
+These omissions are explicitly acknowledged rather than transferred into
+a structure field and called solved. The next selection/count/energy
+link remains open. Preserve the source and full report without promoting
+this acceptance into formal verification, publication stars or an
+independence claim. No source correction is required by this reading.
+PR29 bookkeeping remains 20/41 and TermSource=0.
+
+Cleanup: no disposable clone, runtime or worktree was created; no cleanup
+is pending from this audit. Reports are retained on D:. Foreign files,
+states, chats and automations were not changed.
