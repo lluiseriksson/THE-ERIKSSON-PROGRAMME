@@ -1,0 +1,120 @@
+{
+  "verdict": "ACCEPT_WITHIN_DISPLAYED_SCALAR_PRESCRIBED_FAMILY_CLAIM",
+  "load_bearing_errors_found": [],
+  "source": {
+    "commit": "754efd103c756b23164cb85f9f5a1c4eac82c9a3",
+    "path": "papers/flat-coarse-rank/research/2026-11-08_defect-plane-partition198.txt",
+    "capture_command": "git show 754efd103c756b23164cb85f9f5a1c4eac82c9a3:papers/flat-coarse-rank/research/2026-11-08_defect-plane-partition198.txt",
+    "representation": "Raw Git blob LF; no normalization; no CR bytes",
+    "bytes": 9178,
+    "sha256": "9436a98c4d7b8979f137abfeca2bc35e30169aab74d2cf8d24d06d8a7f65b4da",
+    "capture_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-198\\audit-capture198.txt",
+    "supplied_copy_byte_identical": true,
+    "binding_sha256_raw": "551cc76c2f36c04beb284e8c94178a49662089674e753d3a8b4e5e90bd43052b"
+  },
+  "auditor": {
+    "exposed_model_description": "Codex, an agent based on GPT-6",
+    "specific_selected_model": "unknown; not exposed",
+    "backend": "unknown; not exposed",
+    "reasoning_effort": "unknown; not exposed",
+    "fresh_task": true,
+    "fork_turns": "none",
+    "model_configuration": "inherited",
+    "shared_filesystem": true,
+    "shared_account": true,
+    "independence_claim": false,
+    "inbound_messages_received": false,
+    "prior_model_reports_read": false,
+    "prior_numeric_grades_read": false
+  },
+  "method": {
+    "full_source_read": true,
+    "analytic_reasoning": true,
+    "git_hash_text_only": true,
+    "primary_reference_read": "https://arxiv.org/html/1801.06782v2",
+    "lean": false,
+    "lake": false,
+    "mathematical_python": false,
+    "tests": false,
+    "oracles": false,
+    "builds": false,
+    "rendering": false,
+    "runtime_allocations": false,
+    "source_changes": false,
+    "branch_changes": false,
+    "pr_exists": false,
+    "other_application_state_changes": false,
+    "disposable_clone_created": false
+  },
+  "checks": {
+    "actual_moment": "valid",
+    "positive_start_energy_convention": "valid",
+    "path_variance": "valid, nonsharp",
+    "tensorization_without_dimension_factor": "valid",
+    "singleton_cases": "valid",
+    "small_s_cases": "valid",
+    "large_c_cases": "valid, L=1 handled",
+    "integer_partition_coverage": "valid",
+    "strong_hole_retained": "valid",
+    "exact_count": "valid",
+    "target_conversion": "valid with stated C(D,c)",
+    "normalized_means": "valid",
+    "row_rank": "J for real scalar fields",
+    "global_penalty": "K=c valid; constant fields require K>=c",
+    "scope": "structured scalar family only"
+  },
+  "adverse_findings_and_limitations": [
+    "No load-bearing defect found in Sections 1–5.",
+    "External original-question constraints beyond those displayed were not recertified.",
+    "Color-valued real rank is not automatically J; r independent components require rJ scalar coordinates under componentwise extension.",
+    "Planar weak-site geometry is essential to this proof; moment-only arbitrary coefficients remain unresolved.",
+    "Prior 194/197 comparison claims, invariant-coordinate theorem, and PR29/TermSource tallies were not recertified.",
+    "No formal certification, exhaustive novelty conclusion, continuum result, coexact/interacting extension, or physical mass gap follows."
+  ],
+  "actual_field_attacks": [
+    {
+      "attack": "constant f=1",
+      "result": "forces K>=c; detects erroneous P-for-Q substitution in unnormalized inequality"
+    },
+    {
+      "attack": "arbitrary defect-plane-supported field including strong hole",
+      "result": "all plane norms recorded by singleton means; no negative omitted energy"
+    },
+    {
+      "attack": "cellwise constant field",
+      "result": "penalty equals target norm; exterior comparisons unnecessary"
+    },
+    {
+      "attack": "single-box mean-zero field including shortened final chunks",
+      "result": "actual internal Poincare estimate applies"
+    },
+    {
+      "attack": "one-coordinate and mixed-coordinate fluctuations",
+      "result": "projection decomposition prevents a hidden D factor"
+    },
+    {
+      "attack": "large c yielding L=1",
+      "result": "all singleton case valid; removing max creates zero chunk length"
+    },
+    {
+      "attack": "nondivisibility residual chunk",
+      "result": "ceilings and residual boxes essential to coverage"
+    },
+    {
+      "attack": "unrecorded constant color component",
+      "result": "invalid scalar-to-color scope mutation fails"
+    },
+    {
+      "attack": "weak sites moved to slab interiors",
+      "result": "breaks constant-H internal-energy step; not a proof of a general counterexample"
+    }
+  ],
+  "primary_reference": {
+    "url": "https://arxiv.org/html/1801.06782v2",
+    "checked": "Section 2 Eq. (1), unnormalized path spectrum and product-rectangle sum structure",
+    "exhaustive_literature_search": false
+  },
+  "report_representation": "UTF-8 without BOM, LF, final newline",
+  "stars": null,
+  "pdf_review": null
+}

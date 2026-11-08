@@ -1,0 +1,106 @@
+EXACT-SOURCE ANALYTIC AUDIT — UNIT198
+Date: 2026-11-08
+Verdict: ACCEPT within the displayed scalar, prescribed-family claim.
+No load-bearing mathematical error was found in Sections 1–5 or the stated structured-family consequence. This is an analytic reading, not formal certification, a numerical verification, or an originality verdict.
+
+1. Immutable referent and capture
+Repository: C:\Trabajo\the-eriksson-programme\coexact-family-20261031
+Frozen commit: 754efd103c756b23164cb85f9f5a1c4eac82c9a3
+Path: papers/flat-coarse-rank/research/2026-11-08_defect-plane-partition198.txt
+Capture command: git show 754efd103c756b23164cb85f9f5a1c4eac82c9a3:papers/flat-coarse-rank/research/2026-11-08_defect-plane-partition198.txt
+Method: git stdout BaseStream copied into a byte stream and written with WriteAllBytes. No shell text redirection, decoding/re-encoding, or newline normalization was used for the capture.
+Exact representation: raw Git blob, LF; no CR bytes; no normalization.
+Bytes: 9178
+SHA-256: 9436a98c4d7b8979f137abfeca2bc35e30169aab74d2cf8d24d06d8a7f65b4da
+Audit capture: D:\Datos\the-eriksson-programme\autonomia\evidencia-198\audit-capture198.txt
+Supplied copy: D:\Datos\the-eriksson-programme\autonomia\evidencia-198\source198.txt
+The audit capture and supplied copy were compared byte-for-byte and agree.
+Binding: D:\Datos\the-eriksson-programme\autonomia\evidencia-198\binding198.json
+Binding SHA-256, existing raw bytes without normalization: 551cc76c2f36c04beb284e8c94178a49662089674e753d3a8b4e5e90bd43052b
+The binding's source SHA/path/bytes/hash agree with the capture.
+
+2. Audit boundary and disclosure
+The source was read in full. D:\LEEME.md, active repository CLAUDE.md and docs/OPERATIONAL-GOVERNANCE-CHARTER.md were read. No prior model reports or numerical grades were read. No inbound message was received during this audit. No source, branch, commit, PR body, chat, automation, or other application state was changed. No PR exists in this assignment.
+This was a fresh audit task with fork_turns=none, inherited model configuration, and a shared filesystem/account, as specified in the assignment. It is a separate task/session for split-role purposes; no statistical, organizational, backend, account, or model independence is claimed.
+Actually exposed model description: Codex, an agent based on GPT-6. A more specific selected model identifier, backend, and reasoning-effort setting are not exposed to this auditor and are unknown. Tool catalog model options do not establish which selected backend is running.
+Only reasoning, text/file operations, git capture, hashing, and reading one primary web reference were used. No Lean, Lake, mathematical Python, test, oracle, numerical experiment, build, rendering, or remote runtime allocation occurred. No stars, grade, PDF review, or deposit is supplied. No disposable clone/worktree was created, so none requires cleanup.
+
+3. What has actually been established
+For every integer dimension D>=4, even integer s>=2, and real c>0, with exactly the coefficient field specified in the source, the construction supplies a partition of X into nonempty nonwrapping integer product rectangles. There is one scalar normalized counting-mean coordinate per rectangle. Its row count J obeys the displayed explicit C(D,c) bound. For every real scalar field f,
+  E_a(f)/N + c ||Pf||_2^2 >= c ||f||_N^2.
+The partition depends on D,s,c and the prescribed coefficient geometry, not on f. The claim is stronger than merely coercivity on ker(P), and the finite global penalty K=c is valid.
+
+4. Coefficient, edge, and moment audit
+The two planes are distinct because n=s^(2D) is even and m=n/2 lies strictly between 0 and n. Their total number of vertices is 2n^(D-1). Exactly one of these vertices has its coefficient changed to H, so W=2n^(D-1)-1 is correct. The mean is H-(H-1)W/N, strictly below H and at least 2H/3 under the given loose bound W/N<2/n<=1/3. Since H>=16 and mu>=2H/3, every coefficient lies between 1 and 2mu. There is no omitted low-weight site or mistaken weak count at the hole.
+For p=D/2, H^p=s^(2D)=n exactly. Therefore the formula for M_actual is exact, and
+  M_actual < n W/N + 1 < 3
+follows from mu<H, W>0, and n W/N=2-1/n^(D-1). Jensen applied to the positive random variable a under uniform counting measure gives mean(a^(-p))>=mu^(-p), hence M_actual>=1. Nonintegral p for odd integer D poses no problem.
+The energy is the specified positive-start, site-weighted edge sum, with no factor 1/2 and no endpoint averaging. In this regime n>=256, so there is no two-vertex cycle convention issue. An internal edge of a slab box starts at a vertex off both planes and has coefficient exactly H. Discarded boundary and wrapping edges have nonnegative contributions. No symmetrization or harmonic extension is substituted for the actual energy.
+
+5. One-dimensional variance and tensorization audit
+The pairwise variance identity is correct for counting measure and real scalar values. For a path of l sites, telescoping plus Cauchy–Schwarz gives the displayed bound for each pair. After division by l in the variance identity, using j-i<=l leaves an edge coefficient bounded by k(l-k)<=l^2/4. Thus the source's bound l^2/4 is valid, though not asserted sharp. For l=1 both variance and internal energy are zero; no division by a nonexistent edge count occurs.
+On a product, coordinate averaging is an orthogonal projection in the same counting inner product. The commuting projections give mutually orthogonal components indexed by subsets S of coordinates. A nonconstant component contributes once to total variance and exactly |S| times to the sum of coordinate residual norms. Consequently variance is at most that sum, without a factor D. Applying the path bound fiberwise yields (2.1) with L^2/4, also when some or all intervals have length one. The normalization of a coordinate average does not introduce a hidden product-volume factor.
+
+6. Partition, all endpoint cases, and actual-energy lower bound
+Set x=sqrt(H)/b and L=max(1,floor x), with b=max(1,sqrt(c)).
+If x<1, L=1 and L>=x/2. If x>=1, floor x>=x/2. Also 1<=L<=sqrt(H)<=n, since sqrt(H)=s^2 is an integer at least four. This covers c arbitrarily large, small s, and values of c at floor transitions.
+Every vertex on either plane is isolated once, including the strong hole. The remaining first-coordinate indices are precisely 1,...,m-1 and m+1,...,n-1. Both slabs have m-1>0 sites in the first direction. Consecutive chunks, with a shorter final nonempty chunk when required, partition each coordinate interval exactly. Products therefore cover every slab vertex exactly once, without wrapped boxes, gaps, overlaps, or duplicated hole vertices.
+When L=1, the entire partition is singleton and (3.1) is the true zero-variance statement for all fields. In particular this case does not require a false positive lower bound on singleton internal energy.
+When L>=2, L<=sqrt(H)/b gives 4H/L^2>=4b^2>=c. The same estimate controls any shorter last chunk. For every nonsingleton slab box, its retained energy is exactly H times the unweighted internal energy. Singleton boxes have variance zero regardless of their coefficient. Internal edge sets of distinct boxes are disjoint. Summing and then retaining the omitted positive terms proves (3.1). No edge-crossing cancellation can invalidate it because the energy consists of positive squares.
+Thus there is no asymptotic s threshold concealed in the proof. At fixed very large c, L=1 may occur for some small s, and the proof still holds with J=N.
+
+7. Exact count and target conversion
+There are exactly 2n^d plane singletons. Each slab contributes ceil((m-1)/L) choices in its first coordinate and ceil(n/L)^d choices in the others. This proves the source's exact count.
+Because L<=n, n/L>=1, and each ceiling in that product is at most 2n/L; using the same looser bound for m-1 is legitimate. Hence
+  J <= 2n^d + 2^(D+1)n^D/L^D.
+The lower bound on L gives L^(-D)<=2^D b^D/H^(D/2). The first term satisfies n^d=n^D/H^(D/2), because H^(D/2)=n. This reproduces (5.1) including its constants.
+If L=1 the exact count reduces to
+  2n^d + 2(m-1)n^d = n^D = N.
+The upper bound may be much larger than N for large c; this is loose but valid and does not assert that actual row rank exceeds N.
+Finally 1+mu<=2H implies
+  n^D/H^(D/2) <= 2^(D/2) (n/sqrt(1+mu))^D.
+Using b^D=max(1,c^(D/2)) yields exactly the stated C(D,c). Its dependence on D and c is explicit and it is independent of s. In fact n/sqrt(1+mu)>=s^(2D-2)/sqrt(2)>1 in this family, so the max with 1 is harmless even without appealing only to monotonicity.
+No sharpness or optimal constant is established, and none is needed.
+
+8. Means, row rank, and finite penalty audit
+The row formula equals sum over R divided by sqrt(N|R|), and is exactly sqrt(|R|/N) times the arithmetic mean. Nonempty disjoint supports give linearly independent rows: each coefficient in a linear row dependence must vanish by evaluation at a vertex of its own box. Thus rank(P)=J.
+Orthogonality to the constant vector on each box gives the exact counting identity
+  sum_X f^2 = sum_R sum_R (f-bar(f)_R)^2 + sum_R |R| bar(f)_R^2.
+Division by N makes the final term ||Pf||_2^2. Combined with (3.1), this proves the global penalty inequality with K=c. There is no small-field restriction. If Q_R=sum_R f/sqrt(|R|), then Q=sqrt(N)P; multiplying the normalized inequality by N gives precisely the source's Q-convention statement.
+Testing f identically constant gives E_a(f)=0 and ||Pf||_2^2=||f||_N^2. Therefore K>=c is necessary for any inequality with the same right-side coefficient c and these normalized means. K=c is not merely finite: it reaches that elementary necessary threshold. This does not assert optimal J.
+For Pf=0 the penalty vanishes and the actual energy has the claimed c lower bound relative to counting L2. The zero field is not the only field in that kernel when a nonsingleton box exists; any opposite signed pair within one box supplies a nonzero example. When every box is singleton the kernel is zero, while the full penalized inequality remains meaningful and true.
+
+9. Adverse findings and restrictions
+No load-bearing defect was found in the scalar family theorem, its constants, or its displayed proof.
+The following boundaries remain essential:
+(a) This audit establishes the displayed scalar graph statement. It does not certify every unstated requirement of an external formulation referred to as the “original question.” The source explicitly describes unrestricted integer rectangles and one scalar coordinate per box; imposing other constraints would require a separate comparison.
+(b) Scalar row count J is not automatically the real rank for a color-valued field. A componentwise extension for r independent real components has rJ scalar coordinates. It cannot retain a claim of real rank J merely by calling each vector mean one row. The source explicitly avoids this identification.
+(c) The argument uses planar weak-site geometry, not only the inverse moment. No theorem for arbitrary admissible coefficients, coexact fields, interacting fields, physical mass gap, continuum reconstruction, or physical hypothesis removal follows.
+(d) Statements that this family refutes other comparisons (194/197), that an earlier invariant-coordinate theorem was proved, and that PR29 remains 20/41 with TermSource=0 are contextual assertions. Their underlying sources were not part of this exact-source proof audit, so this report does not recertify them. They are not used to prove (4.1)–(5.2).
+(e) The Poincare mechanism is classical. No exhaustive novelty or priority conclusion was sought or reached.
+These are scope limitations, not discovered counterexamples to (4.1)–(5.2). No source correction is required for the audited mathematical claim.
+
+10. Actual adversarial field attacks and useful future regressions
+These attacks were reasoned through symbolically; no executable mathematical tests were run.
+A. Constant field f=1: E=0, ||Pf||^2=1, ||f||_N^2=1. This checks all normalization factors and forces K>=c. A mutated unnormalized-energy statement using P in place of Q would read c>=cN and fail. This is a concrete normalization regression.
+B. Arbitrary values supported on defect-plane vertices, including the strong hole: all such vertices are singletons. Their contribution to the fluctuation variance is zero and their norm contribution is represented exactly by their means. Positive crossing energies only help. Treating the hole as deleted would break coverage; counting it twice would break both the partition and exact row count.
+C. A field constant on each box with different constants between boxes: fluctuation variance is zero; the penalty already equals the entire target norm. This checks that no comparison between separately minimized exterior costs was used.
+D. A mean-zero field supported on a single slab box, including a box with shorter final chunks: P=0 and the path/product estimate controls its actual internal energy. The omitted exterior energy cannot subtract from it. Opposite values at two vertices of one box give an explicit nonzero such field.
+E. A one-coordinate path fluctuation and a fluctuation involving several coordinates: the commuting-projection argument counts each nonconstant component at least once, with no lost D factor. Singleton directions contribute neither edges nor variance.
+F. Arbitrarily large c with sqrt(H)/b<1: L=1, J=N, P is the normalized coordinate map and the inequality holds directly. Removing max(1,...) from L would instead create a zero chunk length and an undefined partition; this is a genuine arithmetic regression.
+G. No divisibility assumption: the final short chunk is retained. Dropping it leaves uncovered vertices, and replacing the exact ceilings by floor counts without residual boxes is invalid.
+H. Color-scope mutation: recording only a selected scalar component of a vector mean leaves an unrecorded constant component. That field has E=0 and no recorded penalty but positive norm, so the scalar proof cannot support that altered target. Componentwise measurements or a correct vector-valued norm/rank convention are necessary.
+I. Geometry mutation: moving weak sites arbitrarily into slab interiors destroys the identity E_R^a=H E_R^0 on those boxes. The moment bound alone does not restore that identity. This identifies a failed proof step, not an established counterexample to the general question.
+
+11. Primary-source check and disposition
+Primary reference consulted: Naoki Saito, “How can we naturally order and organize graph Laplacian eigenvectors?”, arXiv:1801.06782v2, Section 2, Eq. (1) and its immediately following rectangle discussion.
+https://arxiv.org/html/1801.06782v2
+The cited section uses the unnormalized combinatorial path Laplacian, states eigenvalues 4 sin^2(pi k/(2n)), and gives a product-rectangle spectrum by addition of factor eigenvalues. This supports the source's limited contextual attribution. The present audit relies on the source's elementary variance proof for its actual inequality, so it does not import normalized-Laplacian conventions. No broader literature search or novelty verdict was performed.
+Disposition: the exact prescribed two-plane family is not a counterexample to the displayed scalar selectable-rectangle target at the given count order. Preserve the general-question and scalar-scope restrictions. Grouping with the preceding family notes is consistent with what this result actually proves.
+
+12. Final exact referent
+754efd103c756b23164cb85f9f5a1c4eac82c9a3
+papers/flat-coarse-rank/research/2026-11-08_defect-plane-partition198.txt
+Raw git show capture, Git blob LF, no normalization, 9178 bytes
+SHA-256 9436a98c4d7b8979f137abfeca2bc35e30169aab74d2cf8d24d06d8a7f65b4da
+Report representation: UTF-8 without BOM, LF, final newline.

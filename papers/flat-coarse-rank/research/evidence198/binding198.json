@@ -1,0 +1,14 @@
+{
+  "source_sha": "754efd103c756b23164cb85f9f5a1c4eac82c9a3",
+  "path": "papers/flat-coarse-rank/research/2026-11-08_defect-plane-partition198.txt",
+  "sha256": "9436a98c4d7b8979f137abfeca2bc35e30169aab74d2cf8d24d06d8a7f65b4da",
+  "bytes": 9178,
+  "representation": "Exact Git blob LF; no normalization; checkout and D copies byte-identical",
+  "capture": "git show 754efd103c756b23164cb85f9f5a1c4eac82c9a3:papers/flat-coarse-rank/research/2026-11-08_defect-plane-partition198.txt",
+  "question": "Does the explicit two-defect-plane family admit the original scalar target-order rectangle means?",
+  "hypotheses": "D>=4, even s>=2, c>0; actual prescribed coefficient including strong hole; counting normalization",
+  "mechanism": "Singleton defect planes plus constant-H internal-energy boxes; elementary tensorized path Poincare",
+  "falsifier": "Any invalid partition/count/mean normalization or field violating the derived actual-energy inequality; no numerics to substitute for proof",
+  "abandonment": "Retain all findings; no claim of general moment-only geometry; group with192-194/197, not a standalone paper",
+  "stars": null
+}
