@@ -1,0 +1,363 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\emergencystretch=3em
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}\newcommand{\N}{\mathbb N}
+\newcommand{\hist}{ac8979631c1541b059b3c10f590ca174b0b5f6be}
+\newcommand{\diagpin}{1bbe6e3ca9869777c205abe88f3303b2dbc07292}
+\newcommand{\decl}[2]{\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\hist/YangMills/OS/#1.lean}{\nolinkurl{#2}}}
+\title{Finite Source-Weighted Kernels:\\Strict Peripheral Separation and an Explicit Shrinking-Gap Family}
+\author{Lluis Eriksson}
+\date{8 November 2026\quad Revision v2}
+\begin{document}\maketitle
+\begin{abstract}
+We specify a finite spin kernel and its source-weight convention, then distinguish
+strict separation at each finite size from a bound uniform over sizes and weights.
+For $X_L=\{-1,1\}^L$, $\beta\in\R$ and $w:X_L\to(0,\infty)$, the operator has
+entries $A(\sigma,\tau)=w(\sigma)\exp(\beta\sum_j\sigma_j\tau_j)$.
+It is similar to a real symmetric matrix. A classical positive-matrix argument,
+organized through a positive left eigenvector and the pair $|u|-u,|u|+u$,
+excludes the negative Perron eigenvalue and gives strict separation of the whole
+spectrum. We state the actual specialized historical formal premises rather
+than identify a theorem name with an unspecified physical operator.
+We also give a fully explicit positive source-weight sequence at each fixed
+$\beta>0$ whose relative modulus gap satisfies
+$\delta_L\sim2\exp(-2\beta L)$. The construction concentrates weight at the two
+constant configurations; its proof uses a rank-two compression and exact
+variational bounds. These weights depend globally on the configuration and on
+$L$. The result supplies no conclusion for a fixed local-interaction Ising
+family. The finite gap, the all-size analytic counterexample and earlier formal
+endpoints are distinguished; twelve rational diagnostic cases corroborate the
+finite construction but do not prove its limit. Originality of this particular
+specialization remains unestablished. No interacting or continuum Yang--Mills
+result is claimed.
+\end{abstract}
+
+\section{The operator and the question}
+Put $X_L=\{-1,1\}^L$, including $L=0$, and let
+\[
+ b_\beta(s,t)=e^{\beta st},\qquad
+ K_{\beta,L}(\sigma,\tau)=\prod_{j=1}^L b_\beta(\sigma_j,\tau_j).
+\]
+All parameters are finite real numbers. The source-weighted convention here is
+\begin{equation}\label{eq:A}
+ A_{w,\beta,L}(\sigma,\tau)=w(\sigma)K_{\beta,L}(\sigma,\tau),\qquad
+ (Ax)(\sigma)=\sum_{\tau\in X_L}A(\sigma,\tau)x(\tau).
+\end{equation}
+Thus $A=\operatorname{diag}(w)K$; the weight multiplies rows, not columns.
+Every entry is strictly positive for every real $\beta$ when $w>0$.
+Writing $D=\operatorname{diag}(\sqrt w)$ and $S=DKD$, we have
+\begin{equation}\label{eq:similar}
+ A=DSD^{-1},\qquad D^{-1}AD=S.
+\end{equation}
+The inverses exist because every weight is positive. Since $K$ is real and
+symmetric, so is $S$. This is symmetry of a specified finite matrix; entrywise
+positivity alone does not assert positive semidefiniteness.
+
+There is no spatial boundary convention hidden in~\eqref{eq:A}: the displayed
+product contains temporal sitewise bonds, and any spatial interaction must be
+specified separately by $w$. For example an open-chain weight is
+$w_{\gamma,L}(\sigma)=\exp(\gamma\sum_{j=1}^{L-1}\sigma_j\sigma_{j+1})$;
+it is positive for every real $\gamma$. We do not infer the large-$L$ behavior
+of that fixed-$\gamma$ family from the theorem for arbitrary source weights.
+At $L=0$ the configuration space has one element, the empty product equals1,
+and $A=[w(\emptyset)]$. There is no second eigenvalue at that size.
+
+The generic existence, uniqueness and separation results are classical Perron
+matrix theory~\cite{Perron,Ahmadinejad}. The contribution intended here is a
+specified interface to the historical formal development, an elementary
+organization of its real peripheral proof, and a concrete shrinking-gap family
+in the exact kernel class. These are not claims to new Perron theory or to the
+first formalization. They are consolidated in this revision of the existing
+paper, rather than presented as separate corollary papers.
+
+\section{Finite positive kernels and real peripheral separation}
+Let $A$ be a real matrix on a finite nonempty index set, with $A_{ij}>0$.
+Classical positive-matrix existence supplies $v>0$ and $Av=\lambda v$.
+Taking any coordinate shows $\lambda>0$.
+
+\begin{lemma}[Left vector and subeigenvector equality]\label{lem:left}
+There is $\varphi>0$ with $A^{\mathsf T}\varphi=\lambda\varphi$.
+If $Au-\lambda u\ge0$ componentwise, then $Au=\lambda u$.
+\end{lemma}
+\begin{proof}
+Apply existence to $A^{\mathsf T}$, obtaining eigenvalue $\nu$.
+Pairing its positive eigenvector with $Av$ gives
+$(\lambda-\nu)\langle\varphi,v\rangle=0$; the pairing is positive, so
+$\nu=\lambda$. For $z=Au-\lambda u\ge0$ the same pairing gives
+$\langle\varphi,z\rangle=0$. All positive coefficients $\varphi_i$ force
+$z_i=0$. No sign assumption on $u$ is needed for this implication.
+\end{proof}
+
+\begin{lemma}[Domination]\label{lem:dom}
+Every complex eigenvalue $\mu$ of $A$ obeys $|\mu|\le\lambda$.
+\end{lemma}
+\begin{proof}
+For a nonzero complex eigenvector $x$, let $r=\max_j|x_j|/v_j>0$ and choose
+$i$ attaining it. Then $|x_i|=rv_i>0$ and
+\[
+ |\mu||x_i|=\left|\sum_jA_{ij}x_j\right|
+ \le\sum_jA_{ij}|x_j|\le r\sum_jA_{ij}v_j
+ =r\lambda v_i=\lambda|x_i|.
+\]
+Division by $|x_i|$ proves the claim.
+\end{proof}
+
+\begin{theorem}[Excluding the negative Perron value]\label{thm:minus}
+There is no nonzero real vector $u$ with $Au=-\lambda u$.
+Consequently every real eigenvalue $\mu\ne\lambda$ has $|\mu|<\lambda$.
+\end{theorem}
+\begin{proof}
+Suppose $Au=-\lambda u$, and put $h=|u|$ entrywise. The triangle inequality
+and $\lambda>0$ give $Ah\ge\lambda h$, so Lemma~\ref{lem:left} gives equality.
+Set $p=h-u\ge0$, $q=h+u\ge0$. Then
+\[
+ Ap=\lambda q,\qquad Aq=\lambda p.
+\]
+If $p\ne0$, strict positivity of $A$ implies $Ap>0$, and hence $q>0$.
+But $q_i=|u_i|+u_i$ vanishes when $u_i\le0$, so $u>0$, which forces
+$p=0$, a contradiction. Thus $p=0$ and $h=u\ge0$. The two equations
+$Au=\lambda u$ and $Au=-\lambda u$ imply $u=0$. Finally,
+Lemma~\ref{lem:dom} and realness leave only $\pm\lambda$ as possible equality
+cases, both excluded for a real eigenvalue different from $\lambda$.
+\end{proof}
+
+This $p,q$ organization avoids formalizing an equality case of the triangle
+inequality. We claim neither priority for the organization nor measured savings
+against another formal implementation. It is an interface choice in the
+historical development, not a new spectral principle.
+
+\section{The full spectrum of the specified source-weighted operator}
+\begin{theorem}\label{thm:whole}
+For~\eqref{eq:A}, every complex eigenvalue is real. The Perron eigenvalue is
+algebraically simple, and every other eigenvalue has modulus strictly smaller
+than it. If $L\ge1$, the finite relative modulus gap
+\[
+ \delta(A)=1-\max_{\mu\ne\lambda}\frac{|\mu|}{\lambda}
+\]
+is a well-defined positive number. This assertion supplies no uniform modulus
+over unspecified weight sequences.
+\end{theorem}
+\begin{proof}
+Similarity~\eqref{eq:similar} transfers an eigenpair of $A$ to one of the real
+symmetric matrix $S$. For $Sy=\mu y$, pairing $y$ with $Sy$ and conjugating
+shows $(\mu-\bar\mu)\sum_i|y_i|^2=0$, hence $\mu$ is real.
+For a real eigenvalue and a nonzero complex eigenvector of the real matrix $A$,
+its real and imaginary parts are real eigenvectors, and at least one is nonzero.
+Theorem~\ref{thm:minus} therefore gives the strict modulus assertion for every
+non-Perron eigenvalue.
+
+To check simplicity, let $Au=\lambda u$ with $u$ real, and choose
+$c=\min_i u_i/v_i$. Then $y=u-cv\ge0$, one coordinate of $y$ is zero, and
+$Ay=\lambda y$. If $y\ne0$, strict positivity of $A$ would imply $Ay>0$ at
+that zero coordinate, a contradiction. Thus the real Perron eigenspace is
+one-dimensional. A real symmetric matrix is diagonalizable, so similarity to
+$S$ promotes this geometric assertion to algebraic simplicity for this class.
+For $L\ge1$ there are $2^L\ge2$ eigenvalues counted with multiplicity, and the
+maximum of the finitely many non-Perron moduli is strictly below $\lambda$.
+\end{proof}
+
+The existence of this positive finite gap is quantitative in an existential
+sense. The issue left open by qualitative separation is an explicit controlled
+modulus as $L$, $w$ and parameters vary. Calling the finite theorem devoid of
+all quantitative content would be too strong. Likewise $L=0$ gives a valid
+one-dimensional operator and a vacuous separation assertion, not a defined
+second-largest eigenvalue. For $\beta=0$, $A=w\mathbf1^{\mathsf T}$ has sole
+nonzero eigenvalue $\sum_\sigma w(\sigma)$, so $\delta(A)=1$ for $L\ge1$.
+Not every positive-weight family loses its uniform relative gap.
+
+\section{An explicit family with exponentially shrinking relative gap}
+\begin{theorem}[Two-corner source weights]\label{thm:corner}
+Fix $q\in(0,1)$. For each integer $L\ge1$ put
+\[
+ H_L(\sigma,\tau)=q^{d_H(\sigma,\tau)},\qquad
+ R_L=(1+q)^L,\qquad z_L=q^L,\qquad t_L=\frac{z_L^2}{R_L}.
+\]
+Assign weight1 to the two constant configurations and weight $t_L^2$ to every
+other configuration. Let $D_L=\operatorname{diag}(\sqrt{w_L})$,
+$S_L=D_LH_LD_L$, and $A_L=D_L^2H_L$. All weights are strictly positive.
+The eigenvalues are real and positive, with a simple largest eigenvalue.
+Writing $\delta_L=1-\lambda_2/\lambda_1$ and
+$\eta_L=2z_L^2+z_L^4/R_L$, one has
+\begin{equation}\label{eq:delta}
+ \frac{2z_L-\eta_L}{1+z_L}\ \le\ \delta_L\ \le\
+ \frac{2z_L+\eta_L}{1+z_L+\eta_L},\qquad
+ \frac{\delta_L}{2q^L}\longrightarrow1.
+\end{equation}
+For the original kernel~\eqref{eq:A}, take any fixed $\beta>0$ and
+$q=e^{-2\beta}$. The same source weights then give
+$\delta_L\sim2e^{-2\beta L}$. Thus strict positivity alone cannot imply a
+positive volume-uniform relative gap for the arbitrary-source-weight class.
+\end{theorem}
+\begin{proof}
+We omit subscripts temporarily. The Walsh characters
+$\chi_J(\sigma)=\prod_{j\in J}\sigma_j$ form an orthogonal basis and satisfy
+\[
+ H\chi_J=(1-q)^{|J|}(1+q)^{L-|J|}\chi_J.
+\]
+This identity follows by separating the $L$ sums over $\tau_j$.
+Every displayed eigenvalue is positive, so $H$ is positive definite.
+Consequently $S=DHD$ is positive definite by congruence, and $A$ is similar to
+$S$. All eigenvalues are positive, so the second-largest modulus is exactly
+$\lambda_2$. The finite strictness and simplicity follow from
+Theorem~\ref{thm:whole}; alternatively they follow from the positive-entry
+Rayleigh argument for $S$.
+
+All row and column sums of $H$ equal $R$. Weighted Cauchy--Schwarz gives
+\[
+ |(Hx)_i|^2\le R\sum_jH_{ij}|x_j|^2,
+ \qquad \|Hx\|_2^2\le R^2\|x\|_2^2.
+\]
+The constant vector attains equality; hence $\|H\|_{2\to2}=R$.
+Let $P$ be the orthogonal projection onto the two corner coordinate vectors
+and $Q=I-P$. Then $D=P+tQ$. The compression $B=PHP$ has corner block
+$\left[\begin{smallmatrix}1&z\\z&1\end{smallmatrix}\right]$ and is zero off
+that coordinate subspace. Its two largest eigenvalues are $1+z$ and $1-z$.
+The exact decomposition
+\[
+ S-B=t(PHQ+QHP)+t^2QHQ
+\]
+therefore yields $\|S-B\|\le(2t+t^2)R=\eta$.
+At $L=1$, $P=I$ and $Q=0$; the same statements remain valid.
+
+The normalized sum of the corner vectors has Rayleigh quotient $1+z$ for
+$S$, while the perturbation bound gives the upper estimate. Thus
+\[
+ 1+z\le\lambda_1\le1+z+\eta.
+\]
+Every unit vector in the two-dimensional range of $P$ has Rayleigh quotient
+at least $1-z$. That space intersects the orthogonal complement of a top
+eigenvector nontrivially, proving $\lambda_2\ge1-z$.
+On the orthogonal complement of the corner-sum vector, $B$ has Rayleigh
+quotient at most $1-z$, and $S$ has quotient at most $1-z+\eta$.
+The finite-dimensional min-max principle consequently gives
+\[
+ 1-z\le\lambda_2\le1-z+\eta.
+\]
+Dividing by the appropriate positive bounds on $\lambda_1$ proves both
+inequalities in~\eqref{eq:delta}. Finally
+$\eta_L/z_L=2z_L+z_L^3/R_L\to0$, so both bounds divided by $2z_L$ tend to1.
+Since $K_{\beta,L}=e^{\beta L}H_L$ when $q=e^{-2\beta}$, the positive scalar
+factor changes no eigenvalue ratio and proves the claim for~\eqref{eq:A}.
+\end{proof}
+
+\paragraph{Scope of this counterexample.}
+The source weights depend on $L$ and globally distinguish the two constant
+configurations. Their minimum tends to zero. They are not asserted to come from
+one fixed local nearest-neighbour coupling $\gamma$. The theorem is an actual
+family in the source-weighted kernel class, not merely a changing $2\times2$
+example, but it does not settle the fixed-$(\beta,\gamma)$ Ising case or exclude
+uniform estimates under stronger separately proved weight restrictions.
+The counterexample removes no hypothesis from the physical Yang--Mills problem.
+
+\section{Historical formal endpoint and finite diagnostics}
+The historical formal source is the immutable checkpoint
+\begin{center}\small\texttt{\hist}\end{center}
+It declares \texttt{leanprover/lean4:v4.29.0-rc6}; its Mathlib revision is
+\begin{center}\small\texttt{07642720480157414db592fa85b626dafb71355b}.\end{center}
+No Lean/Lake build or axiom oracle was replayed for this revision.
+The broad build and oracle totals printed in the earlier artifact are not
+reasserted as newly authenticated evidence.
+The formal configuration type \texttt{Fin L} $\to$ \texttt{Fin 2} is identified
+with $X_L$ by mapping the site values $0\mapsto+1$, $1\mapsto-1$.
+The definitions are \decl{Z2Identification}{z2Bond},
+\decl{SpatialExtent}{spatialKernel}, and
+\decl{PerronKernel}{sourceWeightedKernelL}. The positive source-weight premise
+is explicit; \decl{PerronKernel}{vacuum_exists_of_sourceWeight} supplies the
+positive Perron vector used by the separation endpoint.
+
+For clarity the full mathematical signature of
+\decl{PerronGap}{coupled_gap_all_eigenvalues} is as follows.
+Take $L\in\N$, $w:X_L\to\R$, $\beta\in\R$, $v:X_L\to\R$,
+$\lambda\in\R$, $x:X_L\to\C$, $\sigma_1\in X_L$, and $\mu\in\C$.
+Its premises are
+\begin{align*}
+ &\forall\sigma,\quad w(\sigma)>0,\qquad v(\sigma)>0,\\
+ &\forall\sigma,\quad\sum_\tau A_{w,\beta,L}(\sigma,\tau)v(\tau)
+       =\lambda v(\sigma),\\
+ &x(\sigma_1)\ne0,\\
+ &\forall\sigma,\quad\sum_\tau
+       (A_{w,\beta,L}(\sigma,\tau):\C)x(\tau)=\mu x(\sigma),\\
+ &\mu\ne(\lambda:\C).
+\end{align*}
+Its conclusion is $\|\mu\|<\lambda$.
+The declaration \decl{PerronGap}{sourceWeighted_eq_sym} gives precisely
+$A=DSD^{-1}$, and \decl{PerronGap}{coupled_eigenvalue_real} gives realness.
+The final endpoint explicitly takes real or imaginary parts to recover a
+nonzero real eigenvector. This is source-level correspondence, not new formal
+verification of the endpoint, of Theorem~\ref{thm:corner}, or of every analytic
+claim in this paper. In particular the algebraic-simplicity argument above is
+not represented as a newly checked Lean declaration.
+
+\paragraph{Finite exact checks of the new construction.}
+At diagnostic source checkpoint
+\begin{center}\small\texttt{\diagpin}\end{center}
+\nolinkurl{scripts/perron_two_corner_diagnostic_210.py} checks $q=1/3,1/2,2/3$
+and $L=1,2,3,4$ using rational arithmetic. It checks the source-weight
+similarity, row/column sums, the rank-two decomposition and exact rational
+LDL certificates for positive definiteness and the two upper variational
+bounds. There are twelve distinct parameter cases, 1,020 entry checks and
+48 matrix certificates; normal and optimized execution agree. Four negative
+checks reject the excluded endpoints $q=0,1$, an incorrect top-eigenvalue bound
+and the wrong column-weight convention. These are finite diagnostic checks,
+not a proof of the all-$L$ asymptotic, which is proved analytically above.
+The full results, original inputs, actual child exit codes and archive hashes
+are retained in the revision's reproducibility package. Execution used an
+owned Colab Linux CPU runtime, which was stopped after the run; billed units
+were not available. No floating numerical spectrum is used as evidence.
+
+\section{Correction record, originality and review context}
+The earlier exact PDF did not specify its full source-weight convention and
+specialized formal premises. Sections1 and5 now supply them. The earlier
+numerical table is removed: its cited19-line open-chain transcript at the
+stated checkpoint does not match the printed ratios and contains no $L=5$
+row. For example, at $\beta=0.8$, $\gamma=1.2$, $L=2$ the old table prints
+$0.9205$, whereas the cited transcript prints $0.908247$. This establishes a
+provenance discrepancy, not impossibility of those numbers for some different,
+unverified convention. Both the old artifact and the full discrepancy record
+are preserved. Neither a historical finite grid nor a comparison with an Ising
+critical line is used to infer a limit here.
+
+The ingredients of the matrix arguments are classical. The exact source-weight
+family in Theorem~\ref{thm:corner} is an explicit specialization of elementary
+compression and perturbation reasoning; a targeted primary-source comparison
+did not establish its priority. Absence of a matching search result is not
+novelty evidence. Perron's original publication details are verified at its
+publisher; its full original proof was not obtained. The primary research
+source~\cite{Ahmadinejad}, Section2.3, explicitly treats the established Perron
+framework; no algorithmic or field-level novelty from that work is attributed
+to this paper. Further relevance of the formal interface requires practical
+reuse, and no comparative formalization effort has been measured.
+
+\paragraph{Model assessments and review context.}
+Codex assisted this manuscript's preparation, source audit and exact diagnostic
+orchestration. The preparing workflow is involved in the artifact; independent
+review or verified context isolation is not asserted. Exact served backend and
+reasoning effort were unexposed. Reports for the historical PDF retain their
+own referent. Any numerical assessment of this revision must be recorded
+separately against its exact frozen PDF hash; no score from another artifact
+is applied. AI assessment, historical source inspection, finite exact checking,
+human peer review, Working-paper deposit and editorial acceptance are distinct.
+No human acceptance or model admission quorum is asserted here.
+
+\begin{thebibliography}{9}
+\bibitem{Perron}O.~Perron, \emph{Zur Theorie der Matrices},
+Mathematische Annalen \textbf{64} (1907), 248--263.
+\href{https://doi.org/10.1007/BF01449896}{doi:10.1007/BF01449896}.
+\bibitem{Ahmadinejad}A.~Ahmadinejad, A.~Jambulapati, A.~Saberi and A.~Sidford,
+\emph{Perron-Frobenius Theory in Nearly Linear Time: Positive Eigenvectors,
+M-matrices, Graph Kernels, and Other Applications}, arXiv:1810.02348v1 (2018),
+Section2.3. \url{https://arxiv.org/abs/1810.02348}.
+\bibitem{Lean}L.~de~Moura and S.~Ullrich,
+\emph{The Lean4 theorem prover and programming language}, CADE-28 (2021),625--635.
+\bibitem{Mathlib}The mathlib Community, \emph{The Lean mathematical library},
+CPP 2020, 367--381. Exact historical revision is pinned in Section5.
+\end{thebibliography}
+\end{document}
+
