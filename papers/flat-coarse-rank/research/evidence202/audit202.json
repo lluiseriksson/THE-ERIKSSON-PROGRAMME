@@ -1,0 +1,144 @@
+{
+  "schema": "source-audit202-v1",
+  "status": "ISSUED",
+  "date": "2026-11-08",
+  "verdict": "ACCEPT_WITH_STATED_LIMITATIONS",
+  "blocking_objections": [],
+  "frozen_source_commit": "c0cca66815879438cfdd921c1d7ddedb8f97bf94",
+  "source_directory": "papers/flat-coarse-rank/integrated-revision/revision202",
+  "predecessor_commit": "7be52370bb0b778233f703a5f24d4aaf814079cc",
+  "earlier_threshold_commit": "4ccfea2be1e7545bd69191163579b1417c453454",
+  "inventory_correction_commit": "c545ea5b205c5f34122687553e2712e79f62d7f6",
+  "model_context": {
+    "exposed_identity": "Codex, based on GPT-6",
+    "provider_environment": "OpenAI",
+    "exact_served_backend": null,
+    "exact_model_version": null,
+    "reasoning_effort": null,
+    "delegated_task": true,
+    "shared_account_and_filesystem": true,
+    "history_isolation_attested": false,
+    "incoming_followup_guidance_received": false,
+    "independence_claimed": false,
+    "human_peer_review_claimed": false,
+    "formal_verification_claimed": false,
+    "prior_audit_verdicts_used_as_proof": false
+  },
+  "representation": "raw Git blob UTF-8 LF, no normalization, except explicitly labelled checkout hash",
+  "source_files": {
+    "boundary-transfer.tex": {
+      "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0",
+      "bytes": 11918
+    },
+    "detour-separation.tex": {
+      "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8",
+      "bytes": 8394
+    },
+    "flat_critical_integrated.tex": {
+      "sha256": "fa410c5d3053d400aca3267537573646fafe185948f389d37a690d46393181f5",
+      "bytes": 148031
+    },
+    "joint-binary.tex": {
+      "sha256": "001f9e6d2ec168fac732baad166f8ab2dc876bab84b82c00b8df75385e532551",
+      "bytes": 8896
+    },
+    "laminates-green.tex": {
+      "sha256": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1",
+      "bytes": 20710
+    },
+    "partial-invariance.tex": {
+      "sha256": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01",
+      "bytes": 8946
+    },
+    "partition.tex": {
+      "sha256": "18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2",
+      "bytes": 12830
+    },
+    "physical-cycle.tex": {
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+      "bytes": 15608
+    },
+    "sobolev.tex": {
+      "sha256": "65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb",
+      "bytes": 9469
+    },
+    "spatial-geometry.tex": {
+      "sha256": "cfa2bfef60d30f38216d6dd24145e55a2d7353b3d810dee1e8eedfa944fc74d4",
+      "bytes": 21292
+    }
+  },
+  "source_manifest": {
+    "git_blob": "3ad61c6b4ae2166629670cd4fb888773e54baf7d",
+    "git_lf_sha256": "c4c27eefb09783d017d08526bfdb1be5964c2ddd0aa95e97519fb5f957019dc3",
+    "git_lf_bytes": 1862,
+    "checkout_representation": "UTF-8 CRLF",
+    "checkout_sha256": "7c2ecdfc3b16015a062fb489ed1d7fa52941fa0a2811be541674fa85103cbbb9"
+  },
+  "historical_hashes": {
+    "revision196_main_git_lf_sha256": "f035ad2f21da2b4db18251234107404be24e704df1697ce2efb33d000b78df12",
+    "revision200_main_git_lf_sha256": "5a1b987bcca3c8640756ef9829c0ef7b03f05917d78bcff24df19cba60ddb244",
+    "revision200_joint_binary_git_lf_sha256": "7e37ce12e20fe4e46bdde0cca48317bec0a3d9066aa64cfce297a3e00f8f0a5a"
+  },
+  "checks": {
+    "complete_new_joint_binary_read": true,
+    "changed_main_passages_read": true,
+    "threshold_proof_reconstructed": true,
+    "threshold196_subsection_equals202_after_line_ending_normalization": true,
+    "all_ten_tex_hashes_match_frozen_blobs_and_manifest": true,
+    "unchanged_tex_inputs": 8,
+    "labels": 137,
+    "duplicate_labels": [],
+    "unresolved_refs": [],
+    "bibliography_keys": 28,
+    "unresolved_cites": [],
+    "input_files": 9,
+    "all_inputs_present": true,
+    "binary_normalization": "valid",
+    "sharper_constant": "valid",
+    "upper_envelope_removal": "valid",
+    "edge_cases": [
+      "H=1",
+      "absent nominal H",
+      "all low",
+      "all high",
+      "H<c/4 singletons",
+      "H=c/4",
+      "ell=1",
+      "cap and remainder chunks"
+    ],
+    "growing_rank_diagnostic": "unchanged; dependency preservation and scoped algebra checked"
+  },
+  "limitations": [
+    "Scoped source audit, not whole-manuscript recertification",
+    "No optimal rank or runtime complexity",
+    "Scalar J versus rJ component rows",
+    "No external priority or originality certification",
+    "Intermediate coefficient question open",
+    "No new physical or continuum conclusion",
+    "No PDF supplied or graded; exact PDF stars still required",
+    "No compile, tests, numerics or formal execution",
+    "No external URL availability check"
+  ],
+  "exact_pdf_assessment": {
+    "performed": false,
+    "pdf_sha256": null,
+    "numeric_overall": null,
+    "numeric_criteria": null,
+    "stars": null,
+    "prior_score_transfer": false,
+    "publication_ready_claim": false
+  },
+  "execution": {
+    "windows_builds": false,
+    "windows_tests": false,
+    "windows_numerics": false,
+    "colab_runtime_created": false,
+    "disposable_clone_created": false,
+    "cleanup_pending": []
+  },
+  "report": {
+    "path": "papers/flat-coarse-rank/research/evidence202/source-audit202.txt",
+    "representation": "UTF-8 without BOM, LF",
+    "sha256": "b9ce50420cb90ceeb01d4d3258dbb887eca160a2ac2b55bcec119d40707dce2d"
+  }
+}
