@@ -1,0 +1,56 @@
+EDITORIAL DELTA CHECK 200 -- ISSUED 2026-11-08
+VERDICT: EXPECTED EDITORIAL DELTA VERIFIED.
+This verdict checks the exact post-verdict delta only. It is not a new mathematical grade, expanded audit, publication-ready claim, PDF assessment or independent review.
+
+Frozen source endpoint originally audited:
+8b98916ab15272a4ea61e359fd371db1bb8238d7
+Frozen editorial endpoint checked here:
+7be52370bb0b778233f703a5f24d4aaf814079cc
+Repository: C:\Trabajo\the-eriksson-programme\coexact-family-20261031
+Candidate root: papers/flat-coarse-rank/integrated-revision/revision200/
+Evidence root: papers/flat-coarse-rank/research/evidence200/
+No PR/body capture applies to this assignment.
+
+Capture method and representation
+Direct binary stdout capture of `git cat-file blob <exact-SHA>:<path>`; SHA-256 of exact captured bytes, without newline normalization or text re-encoding. Git diff/name-status between the two exact endpoints was read in full for every candidate source change. All ten new-endpoint candidate TeX blobs match their checkout bytes and the new SOURCE200.json hashes. All ten are LF with zero CR; byte sizes, LF counts and raw hashes are recorded below. Git blob identity/diff confirms the other eight TeX files are unchanged. The only changed source files are the main TeX, joint-binary.tex and SOURCE200.json; the only other branch-tree changes are the three evidence additions listed below. No mathematical statement, proof, quantifier, normalization, rank bound, reference label or other source change appears beyond the expected editorial substitutions.
+
+Complete source delta
+1. flat_critical_integrated.tex:49 changes exactly
+"construction handles arbitrary arrangements of two scalar coefficient values:"
+to
+"construction handles arbitrary arrangements of scalar coefficient values $1$ and $H$:"
+This resolves original finding E1 by stating the two values proved in the theorem. No theorem is generalized or altered.
+Old GitLF bytes 148626, SHA256 ab2a2cf941b6398196aa93a90924ca75881a8ec46bf1428d5a9a66d735baffd7.
+New GitLF bytes 148634, 2773 LF, 0 CR, SHA256 5a1b987bcca3c8640756ef9829c0ef7b03f05917d78bcff24df19cba60ddb244.
+
+2. joint-binary.tex:212 changes "source units197--199" to "source units 197--199"; line231 changes "recorded at20/41" to "recorded at 20/41". These are exactly the two missing-space repairs in original finding E2. All mathematical text and review limitations are unchanged.
+Old GitLF bytes 11774, SHA256 af27187ba968a6f7c2999c8150ac4e77cba35f29fa4cfebecbc2050de129af68.
+New GitLF bytes 11776, 233 LF, 0 CR, SHA256 7e37ce12e20fe4e46bdde0cca48317bec0a3d9066aa64cfce297a3e00f8f0a5a.
+
+3. SOURCE200.json converts its 29 CRLF line endings to 29 LF line endings, updates exactly the two changed TeX hashes above, and changes its representation value from "UTF8LF exact source bytes, no normalization" to "UTF8LF exact TeX and manifest bytes; no normalization". All other fields/values are preserved. This resolves the representation qualification E3 for the new endpoint. The old raw-byte representation and hash remain historical facts in the original report.
+Old raw Git bytes 1672, 29 CR and 29 LF, SHA256 f42c0d286b571e1766b6defdbe9f7a8ad92b1310d93b48d10f4a14b62a6814fc.
+New raw Git bytes 1653, 0 CR and 29 LF, SHA256 352b49aca4aeda4e44976921c593f5e8d27f36f298178a22e7f4f0a50487f7f6.
+
+Complete new-endpoint ten-TeX inventory
+All paths below are relative to the candidate root stated above. Each raw hash matches the corresponding SOURCE200.json entry, without normalization.
+boundary-transfer.tex: 11918 bytes; 248 LF; b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0
+detour-separation.tex: 8394 bytes; 169 LF; d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8
+flat_critical_integrated.tex: 148634 bytes; 2773 LF; 5a1b987bcca3c8640756ef9829c0ef7b03f05917d78bcff24df19cba60ddb244
+joint-binary.tex: 11776 bytes; 233 LF; 7e37ce12e20fe4e46bdde0cca48317bec0a3d9066aa64cfce297a3e00f8f0a5a
+laminates-green.tex: 20710 bytes; 410 LF; 3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1
+partial-invariance.tex: 8946 bytes; 174 LF; fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01
+partition.tex: 12830 bytes; 246 LF; 18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2
+physical-cycle.tex: 15608 bytes; 324 LF; c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c
+sobolev.tex: 9469 bytes; 210 LF; 65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb
+spatial-geometry.tex: 21292 bytes; 440 LF; cfa2bfef60d30f38216d6dd24145e55a2d7353b3d810dee1e8eedfa944fc74d4
+
+Complete non-source delta and original-report preservation
+The evidence root adds .gitattributes, audit200.json and source-audit200.txt; there are no other changed tracked paths between these endpoints.
+.gitattributes is exactly the two rules "*.txt -text" and "*.json -text", with LF line endings; 25 bytes; SHA256 73fe662883f1bfa72445ac400f366e8861feb9b832603931dd68a3eb025af351. These preserve exact evidence bytes rather than altering mathematics.
+source-audit200.txt at the new Git endpoint is byte-identical to the issued original at D:\Entregas\the-eriksson-programme\2026-11-08_integrated200\source-audit200.txt: 13642 bytes; SHA256 f1b89e0873f019c0cf64023ef6b399798177d41eeea9102c4d275e32bd58a8df.
+audit200.json at the new Git endpoint is byte-identical to the issued original at D:\Entregas\the-eriksson-programme\2026-11-08_integrated200\audit200.json: 3108 bytes; SHA256 2d5772128afdc33440d11a75cb319cc4a21fdf9a667bdfb69cc581813190fd41.
+The complete original report, its original endpoint and all adverse findings/nits remain unchanged. The repairs are recorded only in this separate delta report; they do not retrospectively rewrite the original verdict.
+
+Scope, limitations and context
+No unexpected delta or new adverse finding was identified in this bounded check. The three original editorial findings are addressed at the new endpoint only. This conclusion does not repeat or extend the original mathematical audit. It does not certify historic unaffected text, current remote public status, priority/originality, rank optimality, implementation complexity, formal endpoints, scientific replay, a built/rendered PDF, visible stars, a numerical PDF score, or publication readiness. All original scope boundaries, including scalar/component rank and the open unrestricted/physical continuum questions, remain in force.
+The factual exposed model description is Codex based on GPT-6; precise served backend and reasoning effort are unknown. This is the same source-audit task resumed for a bounded editorial check. Its launch context was fresh fork_turns=none with inherited configuration and shared account/filesystem. No model, statistical or organizational independence or human peer-review claim is made. No inbound messages were received during this delta check. Only text/Git/hash/read/write operations were used; no mathematical executable, test, Lean, build, rendering, numerical campaign or runtime allocation was used. No repository source or branch was modified. Existing untracked _tmp/ was left untouched. No clone, worktree or runtime was created and none requires cleanup. New output is limited to editorial-delta200.txt and delta200.json in the same D: delivery directory, UTF-8 LF without BOM; their exact output hashes accompany issuance.

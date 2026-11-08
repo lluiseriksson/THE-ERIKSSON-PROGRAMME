@@ -1,0 +1,76 @@
+{
+  "unit": 200,
+  "type": "bounded post-verdict editorial delta check",
+  "verdict": "EXPECTED_EDITORIAL_DELTA_VERIFIED",
+  "old_sha": "8b98916ab15272a4ea61e359fd371db1bb8238d7",
+  "new_sha": "7be52370bb0b778233f703a5f24d4aaf814079cc",
+  "repo": "C:\\Trabajo\\the-eriksson-programme\\coexact-family-20261031",
+  "candidate_root": "papers/flat-coarse-rank/integrated-revision/revision200/",
+  "capture": "Raw binary git cat-file blob; no normalization",
+  "all_ten_tex_match_manifest": true,
+  "all_ten_checkout_match_git": true,
+  "all_ten_tex_zero_cr": true,
+  "tex_sha256": {
+    "boundary-transfer.tex": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0",
+    "detour-separation.tex": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8",
+    "flat_critical_integrated.tex": "5a1b987bcca3c8640756ef9829c0ef7b03f05917d78bcff24df19cba60ddb244",
+    "joint-binary.tex": "7e37ce12e20fe4e46bdde0cca48317bec0a3d9066aa64cfce297a3e00f8f0a5a",
+    "laminates-green.tex": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1",
+    "partial-invariance.tex": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01",
+    "partition.tex": "18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2",
+    "physical-cycle.tex": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+    "sobolev.tex": "65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb",
+    "spatial-geometry.tex": "cfa2bfef60d30f38216d6dd24145e55a2d7353b3d810dee1e8eedfa944fc74d4"
+  },
+  "manifest": {
+    "path": "papers/flat-coarse-rank/integrated-revision/revision200/SOURCE200.json",
+    "bytes": 1653,
+    "lf": 29,
+    "cr": 0,
+    "sha256": "352b49aca4aeda4e44976921c593f5e8d27f36f298178a22e7f4f0a50487f7f6"
+  },
+  "expected_changes": [
+    "Abstract specifies scalar values 1,H",
+    "Two missing spaces inserted in joint-binary.tex",
+    "Manifest CRLF to LF, two TeX hash updates, representation field clarified"
+  ],
+  "other_changes": [
+    "Evidence .gitattributes added",
+    "Issued original source-audit200.txt and audit200.json added byte-for-byte"
+  ],
+  "unexpected_changes": [],
+  "mathematics_changed": false,
+  "original_findings_preserved": true,
+  "original_findings_addressed_at_new_endpoint": [
+    "E1",
+    "E2",
+    "E3"
+  ],
+  "original_reports_unchanged": [
+    {
+      "path": "papers/flat-coarse-rank/research/evidence200/source-audit200.txt",
+      "bytes": 13642,
+      "sha256": "f1b89e0873f019c0cf64023ef6b399798177d41eeea9102c4d275e32bd58a8df"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/evidence200/audit200.json",
+      "bytes": 3108,
+      "sha256": "2d5772128afdc33440d11a75cb319cc4a21fdf9a667bdfb69cc581813190fd41"
+    }
+  ],
+  "mathematical_audit_repeated_or_expanded": false,
+  "pdf_certified": false,
+  "historic_unaffected_text_recertified": false,
+  "model": "Codex based on GPT-6 exposed; precise backend/effort unknown",
+  "context": "same audit task resumed; fresh fork_turns=none launch; inherited configuration; shared account/filesystem",
+  "independence_claim": false,
+  "inbound_messages_during_check": false,
+  "source_or_branch_modified": false,
+  "execution": "text/Git/hash/report-writing only",
+  "cleanup_pending": [],
+  "report": {
+    "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-08_integrated200\\editorial-delta200.txt",
+    "representation": "UTF-8 LF no BOM",
+    "sha256": "6c5fd4c979c21bea080f8e1ab028e38e5079c06d2e90562dc1d6385afd898d20"
+  }
+}
