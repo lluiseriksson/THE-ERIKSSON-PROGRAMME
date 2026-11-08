@@ -4,7 +4,7 @@ if os.name != 'posix': raise RuntimeError('Existing AIRR Linux host only')
 p=Path('/srv/airr-private/historical-revisions/catalogue.json').resolve()
 raw=p.read_bytes(); data=json.loads(raw)
 import urllib.request
-b=urllib.request.urlopen('https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v9/ARR-2026-7EPM3V3DP796BBRR-v9.pdf',timeout=30).read()
+b=urllib.request.urlopen('https://github.com/arr-research/arr-research.github.io/releases/download/ARR-2026-7EPM3V3DP796BBRR-v9/ARR-2026-7EPM3V3DP796BBRR-v9.pdf',timeout=30).read()
 if hashlib.sha256(b).hexdigest()!='0e641695cc59257c87880bd63fdfb0d115018fa563a1d7b7b9d97e3a39e7aed9' or len(b)!=790890:raise RuntimeError('Public v9 bytes mismatch')
 pid='ARR-2026-7EPM3V3DP796BBRR'
 entry={'record_id':'arr:record:eeb507b1-b6c7-4996-bc62-a4e7c416be00','version_id':'arr:version:d7b18a02-4e4b-42a8-b524-52e21a6497cf','version':'v9','canonical_sha256':'0e641695cc59257c87880bd63fdfb0d115018fa563a1d7b7b9d97e3a39e7aed9','authors':['Lluis Eriksson']}
