@@ -1,0 +1,34 @@
+Source ac8979631c1541b059b3c10f590ca174b0b5f6be, YangMills/OS/PerronGap.lean.
+Exact source signatures, no replay performed.
+
+theorem coupled_gap_of_sourceWeight {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    {v : (Fin L → Fin 2) → ℝ} (hv : ∀ σ, 0 < v σ) {lam : ℝ}
+    (hvE : ∀ σ, ∑ τ : Fin L → Fin 2, sourceWeightedKernelL w β σ τ * v τ = lam * v σ)
+    {u : (Fin L → Fin 2) → ℝ} {σ₁ : Fin L → Fin 2} (hu : u σ₁ ≠ 0) {mu : ℝ}
+    (huE : ∀ σ, ∑ τ : Fin L → Fin 2, sourceWeightedKernelL w β σ τ * u τ = mu * u σ)
+    (hne : mu ≠ lam) :
+    |mu| < lam
+
+theorem sourceWeighted_eq_sym {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ) (σ τ : Fin L → Fin 2) :
+    sourceWeightedKernelL w β σ τ
+      = Real.sqrt (w σ) * symWeighted w β σ τ / Real.sqrt (w τ)
+
+theorem coupled_eigenvalue_real {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    {x : (Fin L → Fin 2) → ℂ} {σ₁ : Fin L → Fin 2} (hx : x σ₁ ≠ 0) {mu : ℂ}
+    (hxE : ∀ σ, ∑ τ : Fin L → Fin 2,
+      ((sourceWeightedKernelL w β σ τ : ℝ) : ℂ) * x τ = mu * x σ) :
+    (starRingEnd ℂ) mu = mu
+
+theorem coupled_gap_all_eigenvalues {L : ℕ} {w : (Fin L → Fin 2) → ℝ}
+    (hw : ∀ σ, 0 < w σ) (β : ℝ)
+    {v : (Fin L → Fin 2) → ℝ} (hv : ∀ σ, 0 < v σ) {lam : ℝ}
+    (hvE : ∀ σ, ∑ τ : Fin L → Fin 2,
+      sourceWeightedKernelL w β σ τ * v τ = lam * v σ)
+    {x : (Fin L → Fin 2) → ℂ} {σ₁ : Fin L → Fin 2} (hx : x σ₁ ≠ 0) {mu : ℂ}
+    (hxE : ∀ σ, ∑ τ : Fin L → Fin 2,
+      ((sourceWeightedKernelL w β σ τ : ℝ) : ℂ) * x τ = mu * x σ)
+    (hne : mu ≠ (lam : ℂ)) :
+    ‖mu‖ < lam

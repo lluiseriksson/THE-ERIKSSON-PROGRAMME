@@ -1,0 +1,189 @@
+PREPARATORY CORRECTION AND STANDALONE ANALYTIC PROPOSITION — UNIT210
+Not a new paper, published revision, new numerical assessment or Lean replay.
+Historical public referent: ARR-2026-1A608PTGTC9XX9JZ/v1,
+PDF SHA256 e8063013965ea1699718d08f2bce1646e73f0dd2b970a518bb9e6339c68d78a0.
+This note is to be grouped into a corrected version of the existing Perron-gap
+paper, not split into a separate small-corollary publication.
+
+1. EXACT OPERATOR AND FORMAL DEPENDENCIES
+
+Fix L in N and X_L={-1,+1}^L (the encoding 0,1 in Fin2 is immaterial).
+For beta in R define b_beta(s,t)=exp(beta*s*t) and
+ K_beta,L(sigma,tau)=product_j b_beta(sigma_j,tau_j).
+For any w:X_L -> (0,infinity), define the ROW/source-weighted operator
+ A_w,beta(sigma,tau)=w(sigma)*K_beta,L(sigma,tau),
+ acting by (Ax)(sigma)=sum_tau A(sigma,tau)x(tau).
+No periodic spatial boundary is implicitly imposed by this definition: there
+are only temporal sitewise bonds and a separately specified source weight.
+Every entry is strictly positive for every real beta. X_L has 2^L elements and
+is nonempty even at L=0, where the empty product is1 and A=[w(empty)].
+There is no second eigenvalue at L=0; separation from other eigenvalues is
+vacuous. Do not silently assign a second-largest ratio there.
+
+At historical Lean source ac8979631c1541b059b3c10f590ca174b0b5f6be:
+- Z2Identification.z2Bond: exp(beta*z2Sign i j).
+- SpatialExtent.spatialKernel: product_j z2Bond beta (sigma j) (tau j).
+- PerronKernel.sourceWeightedKernelL: w sigma * spatialKernel beta sigma tau.
+- PerronKernel.vacuum_exists_of_sourceWeight supplies a positive right
+  eigenvector, simplex normalization and positive eigenvalue for hw:forall
+  sigma,0<w sigma, beta:R, with L:N unrestricted.
+- PerronGap.coupled_gap_of_sourceWeight additionally takes the positive
+  eigenvector/eigenvalue equation, a nonzero coordinate of a real eigenvector,
+  its eigenvalue equation and mu!=lam; its conclusion is abs(mu)<lam.
+- PerronGap.sourceWeighted_eq_sym says A=D S D^{-1}, with D=diag(sqrt(w))
+  and S=D K D. Thus D^{-1} A D=S. This is ROW weighting, not K D^2.
+- PerronGap.coupled_eigenvalue_real proves conjugate(mu)=mu for a complex
+  eigenvector with a specified nonzero coordinate.
+- PerronGap.coupled_gap_all_eigenvalues explicitly extracts a nonzero real
+  or imaginary eigenvector and concludes norm(mu)<lam. That bridge is present
+  in the source and should be stated in the corrected PDF.
+The precise source declarations and their immutable byte hashes accompany this
+note. These are inspected source signatures, not a fresh kernel check. Historical
+pins: Lean4.29.0-rc6; Mathlib07642720480157414db592fa85b626dafb71355b.
+No whole-repository build/oracle counts are authenticated by this inspection.
+
+2. A CLOSED NEGATIVE RESULT INSIDE THIS EXACT KERNEL CLASS
+
+Proposition. Fix q in (0,1). For every integer L>=1 let
+ H_L(sigma,tau)=q^{d_H(sigma,tau)}, R_L=(1+q)^L, z_L=q^L,
+ t_L=z_L^2/R_L.
+Give the two constant configurations (+,...,+) and (-,...,-) weight1 and give
+all other configurations weight t_L^2. All weights are strictly positive.
+Let D_L=diag(sqrt(w_L)), S_L=D_L H_L D_L and A_L=D_L^2 H_L.
+Write their eigenvalues in decreasing order as lambda1>lambda2>=...>0;
+A_L is similar to S_L and has the same eigenvalues. Define the relative modulus
+gap delta_L=1-max_{mu!=lambda1}|mu|/lambda1=1-lambda2/lambda1.
+With eta_L=2 z_L^2+z_L^4/R_L, one has
+ (2 z_L-eta_L)/(1+z_L) <= delta_L
+    <= (2 z_L+eta_L)/(1+z_L+eta_L),
+and consequently delta_L/(2 q^L) ->1 as L->infinity.
+In particular strict positivity for every L and every source weight does not
+imply any positive volume-uniform relative gap over this allowed class, even
+when beta=-log(q)/2>0 is fixed once and for all.
+
+Proof.
+(a) H_L is the tensor product of L copies of [[1,q],[q,1]]. Equivalently the
+Walsh characters chi_J(sigma)=product_{j in J}sigma_j form an orthogonal basis
+and have eigenvalues (1-q)^{|J|}(1+q)^{L-|J|}>0. This follows by separating each
+sum over tau_j. Thus H_L is positive definite. D_L is invertible and S_L is
+positive definite by congruence. Also D_L^{-1} A_L D_L=S_L. All eigenvalues are
+positive, so the non-Perron maximum in modulus is the ordinary second eigenvalue.
+
+(b) All row and column sums of H_L equal R_L, by factoring sum_tau q^{d_H}.
+For a real vector x, Cauchy-Schwarz with weights H_ij gives
+ |(H x)_i|^2 <= R_L sum_j H_ij |x_j|^2.
+Summing i proves ||H x||_2^2<=R_L^2||x||_2^2. Equality holds on the constant
+vector, hence ||H||_{2->2}=R_L. This is an operator-norm statement, not an
+entrywise or unspecified-norm estimate.
+
+(c) Let P be the orthogonal projection onto the two constant configurations,
+Q=I-P and D=P+t_L Q. Put B=P H P. On range(P), B=[[1,z_L],[z_L,1]]; on its
+orthogonal complement it is zero. Its two largest eigenvalues are1+z_L and
+1-z_L. This also covers L=1, where Q=0 and there is no complement.
+The exact decomposition
+ S-B=t_L(P H Q+Q H P)+t_L^2 Q H Q
+therefore implies ||S-B||<= (2t_L+t_L^2)R_L=eta_L.
+
+(d) The normalized sum of the two corner coordinate vectors has Rayleigh
+quotient1+z_L for S, so lambda1>=1+z_L. The perturbation norm and the maximum
+Rayleigh quotient of B give lambda1<=1+z_L+eta_L.
+Every vector in range(P) has Rayleigh quotient at least1-z_L. This two-dimensional
+space intersects the orthogonal complement of a top eigenvector nontrivially;
+the Rayleigh principle therefore gives lambda2>=1-z_L.
+For the upper bound, restrict to the orthogonal complement of the corner-sum
+vector. B has Rayleigh quotient at most1-z_L on that codimension-one space,
+and S has quotient at most1-z_L+eta_L. The min-max characterization gives
+lambda2<=1-z_L+eta_L. No uncontrolled continuity or eigenvalue calculation is
+used; these are exact variational bounds.
+
+(e) For completeness the top eigenvalue is simple: a unit Rayleigh maximizer
+can be replaced by its entrywise absolute value. Strict positivity of S makes
+its image strictly positive, hence there is a strictly positive top eigenvector.
+A second top eigenvector orthogonal to it would have both signs; replacing
+that vector by its absolute value strictly increases its Rayleigh quotient,
+a contradiction. Thus delta_L>0 for every L>=1. Symmetric diagonalization and
+similarity also give algebraic simplicity in this specified class; this is an
+analytic statement here, not a new Lean theorem or a claim about every generic
+nonsymmetric positive kernel's recorded formal endpoints.
+
+(f) Dividing the two bounds on lambda2 by the appropriate positive bounds on
+lambda1 yields exactly the displayed two-sided bounds on delta_L. Since
+eta_L/z_L=2z_L+z_L^3/R_L ->0, both bounds divided by2z_L tend to1.
+For fixed beta>0, K_beta,L=exp(beta L) H_L with q=exp(-2beta).
+Multiplying the whole matrix by this positive scalar changes no eigenvalue ratio,
+so this is the actual sourceWeightedKernelL class from Section1, not a separate
+2x2 surrogate or a restatement with a gap hidden in the hypotheses. QED.
+
+3. LIMITS AND ADVERSARIAL CHECKS
+
+The source weights vary with L and globally distinguish the two constant spin
+configurations. They are not asserted to be a fixed-gamma nearest-neighbour
+Ising weight. Their positive lower bound tends to0. This proposition does not
+refute a uniform gap under stronger, separately verified weight hypotheses,
+does not settle the printed fixed-(beta,gamma) Ising families, and proves no
+interacting/continuum Yang-Mills conclusion. PR29 stays20/41,TermSource0.
+For L=1, P=I and the exact gap is2q/(1+q), consistent with all stated bounds.
+The excluded endpoint q=1 (beta=0) is different: K has every entry1, so A=w*1^T
+has eigenvalue sum(w) and otherwise0; its relative modulus gap is1 for L>=1.
+This directly warns against interpreting the old title as saying that every
+allowed weighted family necessarily loses its uniform gap.
+No finite numerical grid is used to prove the limiting assertion above.
+No hypothesis is counted as eliminated; this is an explicit counterexample
+to a stronger uniform conclusion, proved within the existing positive-weight
+class. It is to be consolidated with the existing paper, not counted as a new
+paper or a physical spectral gap.
+
+4. HISTORICAL NUMERICAL PROVENANCE DISCREPANCY
+
+The exact v1 PDF prints coupled ratios
+ beta=.8,gamma=1.2: .9205,.9829,.9964,.9992 at L=2,3,4,5;
+ beta=.3,gamma=.4: .4665,.5518,.5938,.6159 at L=2,3,4,5.
+But its cited transcript at the stated immutable checkpoint records
+ beta=.8,gamma=1.2: .908247,.977021,.994387 at L=2,3,4;
+ beta=.3,gamma=.4: .396761,.460955,.503009 at L=2,3,4.
+The cited script explicitly uses OPEN-CHAIN w=exp(gamma sum_{j=0}^{L-2}
+ sigma_j sigma_{j+1}), and its driver runs only L=2,3,4. The19-line transcript
+has no L=5 row. These differences exceed the printed rounding tolerance.
+Thus the specifically cited transcript does not substantiate the printed table.
+This does not demonstrate that the numbers cannot arise from a different
+boundary/kernel convention or another computation. No such additional witness
+was authenticated here. Do not silently replace them by a fresh run, label the
+old values independently verified, or infer a limiting gap from either finite
+list. Preserve this discrepancy and remove that table from the corrected version
+unless its exact model, parameters and evidence are recovered and checked.
+
+5. CORRECTION TO QUALITATIVE VERSUS QUANTITATIVE LANGUAGE
+
+For any fixed finite matrix with at least two eigenvalues, strict separation
+implies an existential positive gap by taking the maximum of finitely many
+non-Perron moduli. The old phrases 'no quantitative content' or 'no information
+whatever' are too strong. The actual limitation is no explicit certified modulus
+with controlled dependence on L and the specified weight family. Section2 now
+supplies a proved obstruction for an explicit arbitrary-source-weight sequence,
+while supplying no conclusion for a fixed local-interaction Ising family.
+
+6. PRIMARY-SOURCE COMPARISON AND MODEL/REVIEW CONTEXT
+
+The positive-matrix Perron theorem, diagonal similarity and finite-dimensional
+variational arguments are classical. Ahmadinejad, Jambulapati, Saberi and Sidford,
+Perron-Frobenius Theory in Nearly Linear Time, arXiv1810.02348v1, Section2.3,
+is a primary research source explicitly presenting the existing Perron framework:
+https://arxiv.org/html/1810.02348v1#S2.SS3
+Perron's1907 publication details were checked at its publisher:
+https://link.springer.com/article/10.1007/BF01449896
+The full original1907 proof was not obtained, so its precise proof route is not
+attributed. A targeted primary-source search on diagonal scaling and positive
+matrix gap sharpness did not establish priority for this particular corner-weight
+formula. That is not evidence of novelty. The result is a self-contained
+specialization of standard rank-two compression/perturbation reasoning; originality
+remains unresolved. No first formalization or comparative effort saving is claimed.
+
+This is the preparing Codex agent's source inspection and analytic proof, not a
+new reviewer assessment. Exact served backend/effort and independence are unverified.
+The historical v1 assessment remains2.75/10,major_revision, with M1 attached to
+that exact historical PDF. These corrections do not alter its report or clear M1
+retroactively. A corrected frozen PDF must receive its own full numerical review
+before AIRR publication. No grade is assigned to this source note. No Lean/Lake,
+oracle or numerical experiment was run in this unit. Source corrections and the
+new analytic proposition need review before any publication claim.
+

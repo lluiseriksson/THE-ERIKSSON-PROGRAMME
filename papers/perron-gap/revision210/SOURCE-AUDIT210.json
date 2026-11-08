@@ -1,0 +1,41 @@
+{
+  "historical_source_sha": "ac8979631c1541b059b3c10f590ca174b0b5f6be",
+  "files": {
+    "YangMills/OS/Z2Identification.lean": {
+      "bytes": 18385,
+      "sha256": "090a60d153e1365fd78b8e11045a703819f127439dec3befa047756019acc520"
+    },
+    "YangMills/OS/SpatialExtent.lean": {
+      "bytes": 10422,
+      "sha256": "9a42feee01b9af9d041dea9510a630309282350c3b0c1abae6a90d446f0ca260"
+    },
+    "YangMills/OS/PerronKernel.lean": {
+      "bytes": 22934,
+      "sha256": "cbcc8f33662a549eacc8b90b367f17967350970117697245d31c8497fe1b26ba"
+    },
+    "YangMills/OS/PerronGap.lean": {
+      "bytes": 23712,
+      "sha256": "0811fca9df38723446f20c9d986497ebe442d4543ccc512a6d471dabccb2e172"
+    },
+    "scripts/probe_spatial_birkhoff.py": {
+      "bytes": 2174,
+      "sha256": "a484769864e9ecae9adc6a83378dd1933bd5d5a839211d3dc389c40659e9cf1c"
+    },
+    "lean-toolchain": {
+      "bytes": 29,
+      "sha256": "dc6d65016fad3123d44bf17b5bf0598286284ab16ba75d5c17eb22ed11f47361"
+    },
+    "lake-manifest.json": {
+      "bytes": 3141,
+      "sha256": "1c72b465ab37a0418de6f82573c18bb0e79f9e0165e901fd9da0ddabecdb2611"
+    }
+  },
+  "formal_replay_performed": false,
+  "transcript": {
+    "path": "docs/O-LANE-PROBE-TRANSCRIPT-20260728.txt",
+    "sha256": "25ecc1900527d6023b43c24224dd1fe8871155a403a6fead682bb30e7386a003",
+    "lines": 19
+  },
+  "source_only": true,
+  "new_formal_verification": false
+}
