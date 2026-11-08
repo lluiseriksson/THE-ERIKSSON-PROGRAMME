@@ -1,0 +1,24 @@
+{
+  "checked_source_sha": "1bbe6e3ca9869777c205abe88f3303b2dbc07292",
+  "diagnostic": "scripts/perron_two_corner_diagnostic_210.py",
+  "result": "EXACT_FINITE_DIAGNOSTICS_VALIDATED",
+  "arithmetic": "Exact fractions and rational LDL pivots; no floating eigenvalue solver",
+  "case_count": 12,
+  "matrix_certificates": 48,
+  "entry_count": 1020,
+  "negative_guards": [
+    "excluded_q_0",
+    "excluded_q_1",
+    "wrong_lambda1_upper",
+    "wrong_weight_orientation"
+  ],
+  "both_normal_optimized_exit0": true,
+  "case_certificate_sha256": "f7c3fe404493af8afce3276c4975afef6ad4c9735219b979cac05408056a9f80",
+  "archive_sha256": "a1c481e9ccda533ff1b4328ea44f54b10155fa3fe16aa8f1bef5a41e6a1ec611",
+  "archive_subjects": 13,
+  "general_theorem": "Separate all-L analytic proof, not inferred from12finite cases",
+  "new_lean_or_formal_verification": false,
+  "new_independent_review": false,
+  "new_grade": null,
+  "publication": "No new PDF or AIRR version yet"
+}
