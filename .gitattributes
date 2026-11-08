@@ -1,0 +1,2 @@
+# Preserve exact LF bytes of positive-parity scientific source and reports.
+papers/parity-barriers/revision214/** -text
