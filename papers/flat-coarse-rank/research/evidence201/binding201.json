@@ -1,0 +1,15 @@
+{
+  "source_sha": "c0f27edbb6597c7096cb9efc8cc8993a41f62732",
+  "path": "papers/flat-coarse-rank/research/2026-11-08_single-threshold201.txt",
+  "bytes": 11920,
+  "sha256": "ecb4afa582195826c1b1d853c4a05b8368daf7796650bcf66c1c3077128c2837",
+  "representation": "Exact Git blob LF; no normalization; checkout and D copies byte-identical",
+  "capture": "git show c0f27edbb6597c7096cb9efc8cc8993a41f62732:papers/flat-coarse-rank/research/2026-11-08_single-threshold201.txt",
+  "question": "Can one globally chosen coefficient threshold and compulsory subthreshold singletons attain the original rectangle budget for all actual coefficients?",
+  "hypotheses": "D>=3,n>=3,c>0,a>=1, actual mean/moment; negative c=1 family A=s^2,H=s^4,n=s^2,lowcube size s^D,M<2",
+  "mechanism": "Derived threshold count, h=sqrt(mu) upper bound, all-h point-isolation route lower bound, and D+1 adapted-box escape",
+  "falsifier": "Wrong actual moment/count/normalization/cap or an allowed strategy defeating the lower bound; general target not itself claimed false",
+  "abandonment": "Single-threshold tuning route closed by explicit family if accepted; change to genuinely multilevel grouping with derived local gap/count, no imported assumption",
+  "pdf200_recovery": "Still pending; known rejected data-URL action not retried, no duplicate human request",
+  "score": null
+}

@@ -1,0 +1,94 @@
+{
+  "audit": "201b",
+  "date": "2026-11-08",
+  "kind": "Fresh exact-source analytic guard audit; no grade",
+  "source": {
+    "repository": "C:\\Trabajo\\the-eriksson-programme\\coexact-family-20261031",
+    "commit": "f7e634433ea49b7e55cef09d59a61641da3a693d",
+    "path": "papers/flat-coarse-rank/research/2026-11-08_overlap-chain201b.txt",
+    "capture": "git show exact commit:path; stdout BaseStream to memory; exit 0",
+    "representation": "Exact Git blob UTF-8/LF bytes; no normalization; CR count 0",
+    "bytes": 10619,
+    "sha256": "430d7846f9ffc2cfd7d1f41f2ab54af8f78c6400c772505b3706e46a8b565525",
+    "retained_copy": "D:\\Entregas\\the-eriksson-programme\\2026-11-08_single-threshold201\\source201b.txt",
+    "retained_binding": "D:\\Entregas\\the-eriksson-programme\\2026-11-08_single-threshold201\\binding201b.json",
+    "copy_match": true,
+    "assignment_subdirectory": "evidencia-201 absent; actual copies directly in delivery directory"
+  },
+  "disposition": "Scoped analytic assertions survive adversarial reading; no substantive mathematical defect found",
+  "findings": [
+    "Counting cubes and exact errors valid; ratio unbounded at fixed J,d,rho",
+    "Continuum cubes and exact errors valid; unit-cube rescaling invariant",
+    "Smooth compact-support variant valid without uniform derivative bound",
+    "Corrected rooted-tree coefficient 1+2 Delta_T Q_T valid, including J=1",
+    "9+16V/v sufficient; exact squared ratio 2V/v establishes family order",
+    "Adjacent smaller-volume overlap does not transfer to accumulated union",
+    "Primary v1 extracted PDF and HTML formulas confirm literal generic statement; no visual inspection"
+  ],
+  "field_attacks": [
+    "unnormalized versus normalized error",
+    "actual cube and containment geometry",
+    "L=2 and small t",
+    "strict overlap slack rho=1/4",
+    "all overlapping pairs versus all pairs",
+    "smooth cutoff and asymmetric eta",
+    "derivative growth",
+    "tree positivity and finite averages",
+    "root and J=1",
+    "cover multiplicity and Pythagorean cross term",
+    "weighted path and degree count",
+    "measure scaling",
+    "sufficient versus optimal constants",
+    "fixed N and variable volume ratio",
+    "generic statement versus actual ring estimate",
+    "function-dependent versus uniform map"
+  ],
+  "primary": {
+    "version": "arXiv:1511.03971v1, 12 November 2015",
+    "pdf": "https://arxiv.org/pdf/1511.03971v1",
+    "html": "https://arxiv.org/html/1511.03971v1",
+    "pdf_evidence": "Extracted text, printed pages 6 and 11; zero-based PDF pages 5 and 10",
+    "html_evidence": "Direct HTTP retrieval of MathML alttext S3.E1,S3.E20,S3.E21 and induction; targeted web retrieval timed out",
+    "visual_inspection": false,
+    "latest_corrections_checked": false,
+    "scope": "Literal generic k=1,q=2,N=3 statement only"
+  },
+  "identity": {
+    "description": "Codex, described in supplied instructions as based on GPT-6",
+    "actual_backend": "unknown",
+    "reasoning_effort": "unknown",
+    "fork": "Assignment describes fresh fork_turns=none; hidden launch metadata not independently inspected",
+    "shared": "Inherited configuration; shared account and filesystem",
+    "independent_model_claim": false,
+    "human_review_claim": false,
+    "inbound_messages_during_audit": 0
+  },
+  "operations": {
+    "prior_reports_read": false,
+    "source_mutation": false,
+    "mathematical_execution": false,
+    "build_test_oracle": false,
+    "render": false,
+    "runtime": false,
+    "pr": false,
+    "other_chats_states_automations": false,
+    "disposable_clone_created": false,
+    "writes": "Only requested source-audit201b.txt and audit201b.json"
+  },
+  "excluded_claims": [
+    "Entire primary paper",
+    "Principal approximation theorem",
+    "Actual ring estimate",
+    "Latest corrections",
+    "Main rectangle theorem",
+    "Originality or importance",
+    "Contextual inventory and PR/programme status",
+    "PDF score or stars",
+    "Formal or numerical certification"
+  ],
+  "report": {
+    "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-08_single-threshold201\\source-audit201b.txt",
+    "representation": "UTF-8 without BOM, LF",
+    "sha256": "91a8a376ad47cd1a00ae42d938ec65d0800ef6bf0e647a57d1e42609ad65a5f4"
+  }
+}

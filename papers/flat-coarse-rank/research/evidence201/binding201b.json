@@ -1,0 +1,16 @@
+{
+  "source_sha": "f7e634433ea49b7e55cef09d59a61641da3a693d",
+  "path": "papers/flat-coarse-rank/research/2026-11-08_overlap-chain201b.txt",
+  "bytes": 10619,
+  "sha256": "430d7846f9ffc2cfd7d1f41f2ab54af8f78c6400c772505b3706e46a8b565525",
+  "representation": "Exact GitLF bytes; no normalization",
+  "capture": "git show f7e634433ea49b7e55cef09d59a61641da3a693d:papers/flat-coarse-rank/research/2026-11-08_overlap-chain201b.txt",
+  "question": "Do fixed adjacent relative overlaps and fixed cover size uniformly glue scalar L2 local constants?",
+  "hypotheses": "Three actual counting/Lebesgue cubes; fixed rho1/4; unnormalized best constant error; corrected bound for any finite connected positive-overlap tree",
+  "mechanism": "Small bridge between two large cubes; exact errors; rooted weighted path estimate with actual Q_T",
+  "falsifier": "Any hidden normalization/extra source hypothesis or invalid tree/Pythagorean step; no entire-paper or ring-domain refutation claimed",
+  "abandonment": "Do not import generic overlap-chain stability; derive actual geometry/quantifier-dependent local-energy/count bounds for main question",
+  "classification201A": "Duplicate of prior manuscript threshold route, not new progress; binary199 is earlier corollary; correction retained",
+  "status": "Separate exact-source201B audit pending",
+  "score": null
+}
