@@ -1,0 +1,149 @@
+SHELL204: A DIRECT COUNTING-ENERGY BOUND UNIFORM IN SHELL THICKNESS
+2026-11-08. Internal extension of the201B/203/203B research dossier.
+
+1. Question, inventory and exact theorem
+The single active main problem is still the critical-moment, coefficient-
+dependent rectangle partition question.203B correctly disproved a uniform
+comparison of global best-constant error with the sum of local errors on
+the fixed face-slab cover of thin shells. That comparison is not necessary
+for a direct energy bound. This note proves the latter without assuming
+thickness, extension, a local spectral gap or a gluing certificate.
+
+Let D>=2, R>=1 and 0<=r<R be integers, t=R-r, L=2R+1, J=2D,
+ I=[-R,R] intersect Z,
+ A=I^D \ ([-r,r] intersect Z)^D.
+For a real scalar field f on A, let
+ V_A(f)=sum_(x in A)|f(x)-mean_A(f)|^2,
+ E_A(f)=sum_(nearest-neighbor internal edges {x,y} of A)|f(y)-f(x)|^2,
+each nonwrapping edge counted once. Then
+ V_A(f) <= C_D L^2 E_A(f),
+ C_D=J[1+4J(J-1)].                                     (1.1)
+The constant is independent of r,R,t,f, and no optimality is asserted.
+In particular it applies to t=1, whose covering-error gluing fails in203B.
+The proof does not construct a disjoint rectangle partition, a moment-based
+selection of shells or a continuum Yang-Mills gap.
+
+2. The actual cover and tree (not assumed geometric data)
+For each coordinate j and sign, use the203 slabs
+ S_(j,+)={x in I^D:r+1<=x_j<=R},
+ S_(j,-)={x in I^D:-R<=x_j<=-r-1}.
+Their union is A, every slab has v=t L^(D-1)>0 vertices, and each slab is
+an integer box of lengths t,L,...,L. Opposite slabs of one coordinate are
+disjoint. Two slabs of distinct coordinates intersect in t^2 L^(D-2)>0
+vertices. Root at (1,+), join it to all J-2 slabs of coordinates>=2,
+and join (1,-) to (2,+). This is a tree of depth at most2 and maximum
+degree Delta<=J-1. All its edges join slabs of DISTINCT coordinates.
+D>=2 is essential; for D=1 the shell has two disconnected components.
+All formulas include r=0,R=1 and t=1. Integer translations are allowed;
+wrapping identifications and off-center holes are outside this theorem.
+
+3. A one-dimensional mean comparison that pays energy, not local error
+For a field g on an interval of L integer sites, and ANY nonempty subset
+T of its sites, write m_I,m_T for the two arithmetic means. Jensen and
+the interval path inequality give
+ |m_I-m_T|^2
+  <= (1/(L |T|))sum_(i in I,k in T)|g(i)-g(k)|^2
+  <= L sum_(edges of I)|g(i+1)-g(i)|^2.                 (3.1)
+Indeed each pair difference is a telescoping sum of at most L-1 terms,
+whose square is at most L times the full interval edge energy. Averaging
+the L|T| pairs cancels that count. No factor L/|T| or inverse intersection
+volume is introduced. The bound is deliberately nonsharp.
+
+For an integer product box B=I times F with |F|=w, apply(3.1) on each
+fiber and Jensen to the average of the w mean differences. Thus
+ |mean_B(f)-mean_(T times F)(f)|^2
+     <= (L/w) E_(B,first-direction)(f).                (3.2)
+This proof also works for any coordinate direction of length L. It uses
+exact counting means on the same transverse fibers, not a trace theorem.
+
+4. Adjacent slab means compared through actual internal energy
+For adjacent slabs S_i,S_j in the displayed tree, their restricted
+coordinates differ. Their intersection is obtained from S_i by restricting
+ONE of its long L-site directions to a t-site interval, with every other
+coordinate interval unchanged. Consequently(3.2), with w=v/L, proves
+ |m_i-m_(intersection)|^2 <= (L^2/v) E_i.
+The same argument in S_j, using its other long coordinate, proves
+ |m_j-m_(intersection)|^2 <= (L^2/v) E_j.
+Here E_i is full unweighted internal energy of S_i; using its full energy
+only enlarges the single-direction bound. Since the intersection means
+in the two inequalities are exactly the SAME counting mean,
+ |m_i-m_j|^2 <= (2 L^2/v)(E_i+E_j).                    (4.1)
+There is no small-overlap denominator: long-direction energy controls the
+transport of the slab mean to its restricted sub-box, even when t=1.
+
+5. All-field shell estimate
+Put H=sum_i E_i. Every root-to-i path has at most2 edges. Cauchy-Schwarz
+along that path, followed by(4.1), gives
+ |m_i-m_root|^2 <= 2 sum_(path edges {j,k})|m_j-m_k|^2
+    <= (4 L^2/v) sum_(all tree edges {j,k})(E_j+E_k)
+    <= (4 L^2/v) Delta H.                             (5.1)
+For the root the left side is zero, so the same inequality remains valid.
+
+The counting product-box Poincare estimate established in203 is
+ V_Si(f)<=L^2 E_i; it follows from the interval pair-variance identity and
+tensorization of uniform product variance. For clarity, the interval
+identity is V_I=(1/L)sum_(a<b)|g(a)-g(b)|^2. Telescoping, then counting
+at most L^2/4 crossing pairs per edge, gives a coefficient at most L^2/4.
+Conditional variance plus Jensen iterates this bound in the coordinates;
+after multiplying by the box cardinality the energy is the unnormalized
+internal-edge sum. Directions of length1 have variance0, so are included.
+
+Choosing the root mean as a candidate for the global constant and using
+the cover (membership may be repeated on the right),
+ V_A(f) <= sum_i sum_(x in S_i)|f(x)-m_root|^2
+        = sum_i [V_Si(f)+v|m_i-m_root|^2]
+        <= L^2[1+4J Delta] H.                         (5.2)
+The equality uses the exact vanishing of each slab's centered sum.
+Each edge internal to a slab is internal to A, and a fixed shell edge
+belongs to at most J slabs. Hence H<=J E_A. Together with Delta<=J-1,
+this proves(1.1). All choices depend on the shell geometry, never on f;
+the inequality therefore holds for every field on the same fixed shell.
+
+6. Weighting, the203B falsifier and what has really been removed
+If the positive-start coefficient satisfies a(x)>=alpha>0 on A, the actual
+weighted internal energy E_a,A>=alpha E_A, term by term. Thus
+ V_A(f)<= (C_D L^2/alpha) E_a,A(f).                    (6.1)
+This is conditional on a lower bound; the critical moment is NOT shown to
+supply alpha of order the global mean on selected shells. The background
+a>=1 alone gives alpha=1, without the desired mean-scale improvement.
+
+For203B's indicator of S_(1,+), if t=1 its only nonzero internal edges
+cross from x_1=R to x_1=R-1 while another coordinate has absolute value R.
+There are L^(D-1)-(L-2)^(D-1) such edges, each with squared jump1, so
+ E_A(f)=L^(D-1)-(L-2)^(D-1)>0.                        (6.2)
+This also covers R=1,r=0: both endpoints of such an edge are in A exactly
+under that transverse condition. There is no outward or wrapping energy.
+Its global error is at most v=L^(D-1). Since
+L^(D-1)-(L-2)^(D-1)>=L^(D-2), the ratio V_A/E_A is at most L.
+Thus its unbounded covering-error ratio does not contradict(1.1).
+
+The thickness restriction has been removed for this direct scalar shell
+energy estimate by proof, not moved into a data structure. It has NOT
+been removed from the false local-error gluing assertion. No main critical-
+rectangle hypothesis, coefficient selection premise, torus geometry,
+coexact/color bridge or interacting/continuum endpoint has been discharged.
+
+7. Novelty, sources, audit and next step
+This is a self-contained elementary proof, not an originality claim.
+Inventory inspected203/203B and their full audits: they explicitly left
+the thin-shell direct-energy question unresolved. Existing threshold and
+binary constructions are not new advances and are not repeated here.
+Related annular Poincare estimates exist in the literature; an exhaustive
+priority comparison or exact equivalence to this discrete theorem has not
+been established. Primary contextual source actually available:
+https://arxiv.org/html/1511.03971v1 Appendix I (special continuum cube cover,
+different from this proof). A search hit for a continuum annulus lemma at
+https://users.cms.caltech.edu/~hou/papers/CGH_paper_220209.pdf could not be
+read: open/find returned502 Bad Gateway. Its formula/proof is not used or
+claimed verified. No novelty is inferred from an unavailable lookup.
+
+Fresh frozen-source analytic audit is required before calling204 checked.
+No scientific execution, Lean certificate, numerical test, PDF, star grade
+or runtime is attached. Group with the existing dossier, no minor paper.
+Next in the single main question: derive moment-controlled coefficient-
+dependent shell selection/count AND the needed weighted energy control,
+or expose their obstruction. Mere use of(6.1) with an assumed alpha is not
+progress on that link. Falsifiers include an unjustified mean-scale alpha,
+uncontrolled rectangle counts or a family selected separately for each f.
+After3units without a substantive advance in that link, change route or
+name the concrete blocker. PR29 remains20/41,TermSource0; continuum open.
