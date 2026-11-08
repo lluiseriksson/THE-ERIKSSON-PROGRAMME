@@ -54,9 +54,9 @@ ordering $c_{mn} < 0$ ($m<n$) of the $2\times2$ determinants of the
 coefficient arrays of a $\pi$-local surface expansion arising in an
 audit-first programme on two-dimensional $SU(2)$ lattice gauge
 theory; this is the structural half of a positivity problem whose
-remaining half --- an alternating-parity dominance with
-near-perfect mirror cancellation --- we state precisely and leave
-open. An accompanying earlier Lean formalization encodes the ordered-field
+remaining half --- a signed-series positivity question --- we state
+precisely and leave open. No numerical cancellation rate is asserted
+in this revision. An accompanying earlier Lean formalization encodes the ordered-field
 implication with the analytic recurrences and Amos bound as named
 hypotheses. Its archived verification record is supplied separately;
 no new Lean or numerical run is claimed by this revision.
@@ -308,8 +308,9 @@ output for the four declarations; this revision has not replayed it:
 'phi_step_of_recurrences' depends on axioms:
     [propext, Classical.choice, Quot.sound]
 \end{verbatim}
-(exit code $0$; no \texttt{sorry}, no \texttt{admit}). As in the
-companion note, what is machine-checked is the ordered-field
+These are the archived run's reported exit code $0$ and absence of
+\texttt{sorry} or \texttt{admit}, not new run results. As in the
+companion note, the encoded statement is the ordered-field
 implication [recurrences $+$ Amos bound $\Rightarrow$ monotonicity];
 the analytic inputs themselves are classical and cited.
 
