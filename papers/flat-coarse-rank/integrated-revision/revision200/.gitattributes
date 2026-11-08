@@ -1,0 +1,3 @@
+*.tex -text
+*.json -text
+*.txt -text

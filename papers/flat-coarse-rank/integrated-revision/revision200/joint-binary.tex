@@ -1,0 +1,233 @@
+\section{Joint trace discrepancies and constructive binary partitions}
+\label{sec:binary200}
+A failed comparison need not prevent a successful choice of observations.
+We first strengthen the preceding harmonic-cost diagnostic, then give a
+direct rectangular construction for arbitrary binary scalar coefficients.
+The positive result uses actual internal energy, not separate exterior
+minimizers. The unrestricted intermediate-coefficient question remains open.
+
+\subsection{A growing-dimensional discrepancy}
+Use the family of Theorem~\ref{thm:boundary195-aggregate} on the subsequence
+$n=s^{2D}$, $H=s^4$, with even $s\ge2$ and $D\ge4$. Put $d=D-1$,
+$m=n/2$ and $T=(\mathbb Z/n\mathbb Z)^d$. The exact actual mean and
+moment bounds there still hold: $\frac23H\le\mu<H$, $1\le a\le2\mu$
+and $1\le M_a<3$.
+For $y\ne0$ retain $R_y=\{(0,y),(1,y)\}$, and let $U$ be their union.
+Define two distinct quadratic forms on real traces:
+\[
+ S_U(u)=\min_{f|_U=u}E_a(f),\qquad
+ B_{\rm sep}(u)=\sum_{y\ne0}Q_{R_y}(u|_{R_y}).
+\]
+The grounded-block argument above makes $S_U$ well defined with constant
+kernel; it is positive definite on the counting-mean-zero trace hyperplane.
+The separate summands minimize different global fields.
+Write $C_d=d3^{d-1}/2$, $K_d=3+2C_d$ and $\beta_D=4+2\pi^2d$.
+\begin{proposition}\label{prop:jb200-rank}
+For each fixed $A>0$ and all sufficiently large even $s$, any real-linear
+maps $C:\mathbb R^U\to F$ and $V:\mathbb R^U\to\mathbb R^U$, and any
+function $\Phi$ with $\Phi(0)=0$, satisfying
+\[
+ B_{\rm sep}(u)\le A S_U(u)+\Phi(Cu)+\langle u,Vu\rangle
+\]
+for all traces, or on a neighborhood of zero, must obey
+\[
+ \rank C+\rank V\ge L_s=(2s^{D-2}+1)^{D-1}-1
+ \ge n^{(D-2)(D-1)/(2D)}.
+\]
+No symmetry or positivity of $V$, or continuity of $\Phi$, is required.
+\end{proposition}
+\begin{proof}
+The five-change comparison in the preceding theorem gives the individually
+minimized pair form $g_y(v_0-v_1)^2$ with $g_y\ge H/K_d$; hence
+$Q_{R_y}=(g_y-1)(v_0-v_1)^2$.
+Set $R=s^{D-2}$, so $R^2=n/H$ and $R<n/2$. The real Fourier space on $T$
+with frequencies $|k_i|\le R$ has dimension $(2R+1)^d$: the frequency
+box is conjugation symmetric and contains no nonzero Nyquist character.
+Evaluation at zero is a nonzero functional since constants belong to the
+space. Its kernel $G_R^0$ therefore has dimension $L_s$.
+For $g\in G_R^0$ put $u_g(0,y)=g(y)$ and $u_g(1,y)=-g(y)$ for $y\ne0$.
+These traces are mean zero; the map is injective because $g(0)=0$, and
+$\|u_g\|^2=2\|g\|^2$. For $H\ge2K_d$,
+\[
+ B_{\rm sep}(u_g)=4\sum_{y\ne0}(g_y-1)|g(y)|^2
+ \ge (H/K_d)\|u_g\|^2.
+\]
+Here the coefficient $g_y$ of the pair form is distinct from the field $g$.
+
+Let $\sigma(t)=1$ on $0,m+1,\ldots,n-1$ and $-1$ on $1,\ldots,m$.
+The extension $f_g(t,y)=\sigma(t)g(y)$ is globally mean zero, regardless of
+the mean of $g$. Its longitudinal energy is exactly
+$8\|g\|^2+4(H-1)|g(0)|^2=8\|g\|^2$. Its transverse energy is
+\[
+ \sum_y\big[(n-2)H+2+(H-1)\mathbf1_{y=0}\big]
+       \sum_{l=1}^d|D_lg(y)|^2\le nH E_T(g).
+\]
+The derivatives $D_lg(0)$ have not been set to zero. Fourier support gives
+$E_T(g)\le4\pi^2dR^2\|g\|^2/n^2$. Therefore
+\[
+ S_U(u_g)\le E_a(f_g)\le(8+4\pi^2d)\|g\|^2
+                      =\beta_D\|u_g\|^2.
+\]
+When $H>AK_d\beta_D$, every nonzero vector in this $L_s$-dimensional
+trace space violates $B_{\rm sep}\le A S_U$. If the combined rank of
+$C,V$ were less than $L_s$, their joint kernel in that space would contain
+a nonzero vector. Both repair terms vanish there. Scaling that vector
+toward zero also handles a neighborhood-only inequality. Finally
+$L_s\ge s^{(D-2)(D-1)}$ gives the displayed power of $n$.
+\end{proof}
+The same subspace gives at least $L_s$ generalized eigenvalues of
+$B_{\rm sep}/S_U$ at least $H/(K_d\beta_D)$ on the mean-zero trace
+hyperplane, by finite-dimensional min--max. This necessity is not shown
+sharp or sufficient. Its exponent is below the allowed $n^{D-1}$ count
+for this family. It does not rule out growing-rank repairs or selectable
+partitions, and does not address $D=3$ through this comparison.
+
+\subsection{Rectangles with isolated marked vertices}
+The next elementary construction does not require marked points to be
+separated, planar, or to avoid the boundary.
+\begin{lemma}\label{lem:jb200-isolate}
+Given a partition into $J_0$ nonempty integer rectangles and $m$ marked
+vertices, there is a refinement into at most $J_0+2Dm$ rectangles in which
+every marked vertex is singleton. All side lengths weakly decrease.
+\end{lemma}
+\begin{proof}
+For a marked point $z$ in $R=\prod_i[\alpha_i,\beta_i]$, keep $\{z\}$.
+For each $i$, make at most two additional pieces: coordinates $j<i$ are
+fixed at $z_j$, coordinate $i$ is either $[\alpha_i,z_i-1]$ or
+$[z_i+1,\beta_i]$, and coordinates $j>i$ keep their original intervals.
+Discard empty pieces. For $x\ne z$, its first differing coordinate and
+sign select exactly one piece. Thus this is a disjoint cover by at most
+$2D+1$ rectangles. Replacing one box adds at most $2D$. Process marked
+vertices in a fixed order, skipping any already singleton. Earlier
+singletons stay untouched. Induction proves the claim, without a
+logarithmic refinement-depth factor. No implementation complexity is claimed.
+\end{proof}
+
+For reference, a product rectangle of maximum side length $L$ satisfies
+\begin{equation}\label{eq:jb200-poincare}
+ \sum_R|f-\bar f_R|^2\le\frac{L^2}{4}
+ \sum_{i,x:x,x+e_i\in R}|D_if(x)|^2,
+\end{equation}
+using nonwrapping internal edges. Here is a direct proof in the actual
+counting convention. On an $l$-site path the variance is
+$l^{-1}\sum_{u<v}|f_u-f_v|^2$. Telescoping and Cauchy--Schwarz, followed
+by $v-u\le l$, give at most $k(l-k)\le l^2/4$ as the coefficient of edge
+$k$. For $l=1$ both variance and energy vanish. On a product let $A_i$
+average in coordinate $i$. The commuting orthogonal projections decompose
+$f$ into components indexed by subsets $S$ of coordinates. Each nonconstant
+component occurs once in the total variance and $|S|\ge1$ times in
+$\sum_i\|(I-A_i)f\|^2$. Apply the path bound fiberwise to obtain
+\eqref{eq:jb200-poincare}, with no extra factor $D$. Path/product spectral
+ingredients are classical\cite{jb:saito}; the point-partition subject is
+also classical\cite{jb:gonzalez}, whose optimization objective differs.
+
+\subsection{Arbitrary binary scalar coefficients}
+\begin{theorem}\label{thm:jb200-binary}
+Let integers $D\ge3,n\ge3$, reals $c>0,H\ge1$, $p=D/2$ and $N=n^D$
+be fixed. On $X=(\mathbb Z/n\mathbb Z)^D$, let $a:X\to\{1,H\}$ be any
+arrangement, of actual mean $\mu$ and actual critical moment
+$N^{-1}\sum_x(\mu/a(x))^p\le M$. There is a nonwrapping integer rectangle
+partition and one normalized arithmetic mean per box,
+\[
+ (Pf)_R=\frac{\sum_R f}{\sqrt{N|R|}},\qquad
+ \|f\|_N^2=N^{-1}\sum_X|f|^2,
+\]
+such that, for all real scalar $f$,
+\begin{align}
+ N^{-1}E_a(f)+c\|Pf\|_2^2&\ge c\|f\|_N^2,\label{eq:jb200-penalty}\\
+ \rank P&\le2^p\big[(4\max(1,\sqrt c))^D+2DM\big]
+ \max\{1,(n/\sqrt{1+\mu})^D\}.\label{eq:jb200-count}
+\end{align}
+Here $E_a=\sum_{x,i}a(x)|D_if(x)|^2$ uses positive-start weights. The
+condition $a\le2\mu$ is not needed, so binary fields satisfying that
+additional original envelope are included. $H$ need not be attained.
+\end{theorem}
+\begin{proof}
+Put $b=\max(1,\sqrt c)$ and
+$L=\min(n,\max(1,\lfloor\sqrt H/b\rfloor))$. For $x=\sqrt H/b<1$ the
+uncapped length is $1\ge x/2$; for $x\ge1$, $\lfloor x\rfloor\ge x/2$.
+Consequently
+\[
+ L\ge\min(n,\sqrt H/(2b)),\qquad
+ n/L\le\max(1,2bn/\sqrt H).
+\]
+If $L\ge2$, the forced lower bound $1$ cannot have been selected, so
+$L\le\sqrt H/b$, including the capped case $L=n$.
+Split each coordinate interval into chunks of length $L$ and a shorter
+final nonempty chunk when needed. This gives $J_0=\lceil n/L\rceil^D$
+boxes, with
+\[
+ J_0\le(2n/L)^D\le(4b)^D\max(1,N/H^p).
+\]
+Let $B=\{a<H\}$, empty when $H=1$, and $m=|B|$. When $H>1$ its
+vertices all have coefficient one, so their contribution to the actual
+moment gives $m\mu^p/N\le M$. For $H=1$ the bound on $m=0$ is trivial.
+Apply Lemma~\ref{lem:jb200-isolate}. Every remaining nonsingleton box has
+all coefficients $H$ and side lengths at most $L$.
+
+If $L\ge2$, its actual internal energy, by
+\eqref{eq:jb200-poincare}, is at least
+$(4H/L^2)\sum_R|f-\bar f_R|^2\ge c\sum_R|f-\bar f_R|^2$.
+Singleton boxes have variance zero. If $L=1$ every box is singleton.
+Distinct internal edge sets are disjoint, and dropping interbox and
+wrapped edges loses only positive terms. Therefore
+\[
+ E_a(f)\ge c\sum_R\sum_{x\in R}|f(x)-\bar f_R|^2.
+\]
+The exact orthogonal cell-mean identity, divided by $N$, proves
+\eqref{eq:jb200-penalty}. Disjoint nonempty row supports give $\rank P=J$.
+Since $1\le\mu\le H$,
+\[
+ J\le J_0+2Dm\le[(4b)^D+2DM]\max(1,N/\mu^p).
+\]
+Use $1+\mu\le2\mu$ and $b^D=\max(1,c^{D/2})$ to obtain
+\eqref{eq:jb200-count}. These inequalities cover all-low fields, absent
+nominal $H$, $H=1$, $L=1$, cap transitions and residual chunks; no
+large-size threshold is imposed.
+\end{proof}
+For constant $f=1$, both squared normalized norms in
+\eqref{eq:jb200-penalty} equal one and the energy is zero. Thus $K\ge c$
+is necessary in this exact convention; our construction attains $K=c$,
+without asserting minimum rank. For $r$ independent real components,
+componentwise means give $rJ$ scalar coordinates, not $J$. No color/coexact
+rank identification is implicit. The two-plane family above is a special
+case: its comparator obstruction and its successful selectable partition
+coexist. The planar-only construction from source198 is subsumed here.
+
+\subsection{A failed extension to intermediate values}
+For even $n$ put $a=H/2$ on half the vertices and $a=H$ on the rest, with
+$H\ge2$. Then $\mu=3H/4$, $a\le2\mu$, and
+\[
+ M_a=\tfrac12[(3/2)^p+(3/4)^p]
+\]
+is independent of $H$. Nevertheless the attempted unit-cost bound
+$|\{a<H\}|\le M_aN/\mu^p$ would require $H^p\le2^p+1$, and fails for
+larger $H$. The actual moment does not pay unit cost per intermediate
+vertex. Rounding these coefficients down to one changes the hypotheses.
+This is a falsifier of that cardinal lemma, not of the target partition
+statement: the same field is uniformly strong at scale $H/2$. A derived
+multilevel construction remains necessary for the unrestricted question.
+
+\subsection{Model assessments and review context}
+These grouped analytical continuations are pinned in source units197--199.
+Complete exact-source reports and preparing-agent responses are retained
+with the immutable manifest. Source198 supplies a special-case check rather
+than another paper. The separate Codex audit tasks were fresh
+\texttt{fork\_turns=none} tasks with inherited configuration and shared
+filesystem/account. The exposed description was Codex based on GPT-6;
+precise served backend and reasoning effort were not exposed. No model,
+statistical or organizational independence, human peer review or formal
+verification is claimed. The full adverse findings remain attached,
+including scalar/component rank, unproved optimality or runtime complexity,
+and unestablished priority. No previous PDF grade transfers to this changed
+manuscript; an exact-PDF numerical assessment and visible stars are still
+required before a new publication-ready claim.
+
+The Fourier, Schur, rank-nullity, Poincare and rectangle-cutting ingredients
+are classical. The particular combinations are useful for separating a
+failed comparison from a successful binary-class construction; their
+originality is not established by this limited primary-source comparison.
+No physical hypothesis of Yang--Mills is removed. The continuum remains
+open; PR29 stays recorded at20/41 with TermSource0, not newly certified by
+these source audits. The sole unrestricted critical rectangular question
+continues to require actual control of intermediate coefficient levels.

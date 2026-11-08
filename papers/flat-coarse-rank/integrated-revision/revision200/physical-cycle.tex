@@ -1,0 +1,324 @@
+\section{Physical cycle obstructions for an actual observation map}
+\label{sec:physical-cycle}
+This part closes a limitation of the scalar four-cycle example: the
+obstruction is now realized inside the actual divergence-zero flat physical
+cochain domain. The kernel estimate below is proved for all actual cochains,
+not just the special fields used as negative witnesses. The conclusion
+concerns this observation and this fixed penalty. It does not obstruct all
+partitions or the optimal-rank question from the preceding parts.
+
+\subsection{The actual form and rectangular observations}
+Fix $D\geq3$, $N_c\geq2$ and $X=(\mathbb Z/4\mathbb Z)^D$.
+Write $V=\mathbb R^{N_c^2-1}$ with its standard Euclidean norm and
+$A=(A_\ell(x))_{x\in X,1\leq\ell\leq D}$ for an actual one-cochain.
+All norms use counting measure. Choose the actual total coefficients
+\[
+ \alpha=(1,6,4,1),\qquad a(x)=\alpha_{x_1},\qquad
+ w(i,x,\ell)=\alpha_{x_1}-1
+\]
+for every derivative direction $i$ and physical component $\ell$.
+Define actual forward and backward differences by
+\[
+ D_i^+f(x)=f(x+e_i)-f(x),\qquad D_i^-f(x)=f(x)-f(x-e_i).
+\]
+The flat curl and backward divergence, with one curl for each unordered
+pair, are
+\[
+ (\operatorname{curl}A)_{ij}=D_i^+A_j-D_j^+A_i\quad(i<j),\qquad
+ \operatorname{div}^-A=\sum_iD_i^-A_i.
+\]
+Their counting quadratic form and the original componentwise repair are
+\begin{align*}
+ H_0(A)&=\sum_{i<j,x}\|D_i^+A_j(x)-D_j^+A_i(x)\|^2
+       +\sum_x\Big\|\sum_iD_i^-A_i(x)\Big\|^2,\\
+ R_w(A)&=\sum_{i,x,\ell}w(i,x,\ell)\|D_i^+A_\ell(x)\|^2.
+\end{align*}
+In operator notation the repair is $\langle A,G^*WG A\rangle$ for the
+actual stacked gradient $G$ and diagonal multiplication $W$.
+These formulas fix the energy on paper; no comparison certificate is supplied.
+
+\paragraph{Deriving the flat identity.}
+Periodic reindexing gives
+\[
+ \sum_x\langle D_i^+f,h\rangle=-\sum_x\langle f,D_i^-h\rangle.
+\]
+Coordinate shifts commute. Applying this formula twice and real symmetry
+therefore yields
+\[
+ \sum_x\langle D_i^+f,D_j^+g\rangle
+ =\sum_x\langle D_j^-f,D_i^-g\rangle.
+\]
+Also $\sum_x\|D_i^-f\|^2=\sum_x\|D_i^+f\|^2$ by translation.
+Expand each curl square with $f=A_j$, $g=A_i$: it supplies the two
+off-diagonal gradient norms and the negative mixed terms. Expansion of
+the divergence square supplies the diagonal norms and the opposite
+mixed terms. Cancellation for each $i<j$ proves, for every cochain,
+\[
+ H_0(A)=\sum_{i,x,\ell}\|D_i^+A_\ell(x)\|^2.
+\]
+No divergence condition or lift ansatz was used. Define $H=H_0+R_w$.
+Adding the displayed repair, with $1+w(i,x,\ell)=\alpha_{x_1}$, gives
+\begin{equation}\label{eq:actual-cycle-energy}
+ H(A)=\sum_{x\in X}\sum_{i=1}^D\sum_{\ell=1}^D
+ \alpha_{x_1}\|A_\ell(x+e_i)-A_\ell(x)\|^2.
+\end{equation}
+The cancellation was unweighted; the varying repair is added afterwards.
+We do not move $\alpha$ through summation by parts or assert a weighted
+curl--divergence identity. This is the paper counterpart of
+\texttt{finite\_flat\_curl\_div\_energy} and
+\texttt{componentwiseWeightedRepair\_energy} in the pinned formal source.
+Thus the coefficient is the original shared scalar total coefficient,
+not a substituted energy or an interacting Hessian.
+
+Put $I_0=\{0,1\}$ and $I_1=\{2,3\}$. For every transverse
+$y\in(\mathbb Z/4\mathbb Z)^{D-1}$ the blocks $I_b\times\{y\}$
+are nonempty axis-aligned rectangles. They are disjoint and cover $X$.
+For each physical component $\ell$ and each standard internal coordinate $k$,
+define the actual normalized means
+\begin{equation}\label{eq:actual-cycle-C}
+ (CA)_{b,y,\ell,k}=\frac{1}{\sqrt2}\sum_{t\in I_b} A_\ell(t,y)_k.
+\end{equation}
+The output includes \emph{all} these coordinates. If
+$h=D(N_c^2-1)$, its dimension is $2h4^{D-1}$; no optimality is asserted.
+
+The spatial mean of $a$ is $\mu=3$, and $1\leq a\leq2\mu$.
+For $p=D/2$ its original normalized inverse moment is
+\begin{equation}\label{eq:actual-cycle-moment}
+ \frac1{|X|}\sum_{x\in X}\left(\frac{\mu}{a(x)}\right)^p
+   =\frac{2\cdot3^p+(1/2)^p+(3/4)^p}{4}=:M_D<\infty.
+\end{equation}
+This is an actual member of the stated bounded-moment coefficient class
+when the allowed bound is at least $M_D$. Its fixed finite size and the
+large output dimension do not disprove an asymptotic optimal-rank order.
+
+\subsection{A fixed-penalty counterexample with a proved kernel premise}
+For a real cyclic vector $u=(u_0,u_1,u_2,u_3)$ set
+\begin{align*}
+ E(u)&=(u_1-u_0)^2+6(u_2-u_1)^2+4(u_3-u_2)^2+(u_0-u_3)^2,\\
+ |u|^2&=\sum_{t=0}^3u_t^2,\qquad
+ O(u)=\frac{(u_0+u_1)^2+(u_2+u_3)^2}{2}.
+\end{align*}
+Choose a unit internal coordinate vector $T$. The actual lift is
+\[
+ (Ju)_2(x)=u_{x_1}T,\qquad (Ju)_\ell(x)=0\quad(\ell\ne2).
+\]
+Its backward divergence is zero: its only nonzero component is constant
+in coordinate $2$. It is injective and direct summation gives
+\begin{equation}\label{eq:cycle-transports}
+ \|Ju\|^2=4^{D-1}|u|^2,\quad H(Ju)=4^{D-1}E(u),\quad
+ \|CJu\|^2=4^{D-1}O(u).
+\end{equation}
+The last equality uses the entire output in \eqref{eq:actual-cycle-C},
+not only a selected nonzero coordinate.
+
+\paragraph{Kernel premise on all actual fields.}
+For $v=(x,-x,y,-y)$, direct algebra yields
+\begin{align}
+ E(v)&=11x^2+14xy+23y^2,\qquad |v|^2=2x^2+2y^2,\notag\\
+ E(v)-\frac{19}{5}|v|^2
+   &=\frac{17}{5}\left(x+\frac{35}{17}y\right)^2
+       +\frac{84}{85}y^2\geq0.\label{eq:cycle-kernel-square}
+\end{align}
+If $CA=0$, both pair sums vanish for every actual scalar profile
+$t\mapsto A_\ell(t,y)_k$. Apply \eqref{eq:cycle-kernel-square}
+to each such profile and sum over all $y,\ell,k$. These profiles account
+for the full norm of $A$. Their energies are exactly the $i=1$ term
+of \eqref{eq:actual-cycle-energy}; every other derivative term is
+nonnegative because $\alpha_t\geq1$. Therefore
+\begin{equation}\label{eq:full-physical-kernel}
+ CA=0\quad\Longrightarrow\quad H(A)\geq\frac{19}{5}\|A\|^2
+ \qquad\text{for every actual cochain }A.
+\end{equation}
+No divergence condition, scalar-lift ansatz or supplied coercivity
+certificate was used in this proof.
+
+\paragraph{Failure on an actual divergence-zero field.}
+For $u=(19,-9,-5,-5)/14$ one has
+\[
+ E(u)=\frac{52}{7},\qquad |u|^2=\frac{123}{49},\qquad
+ O(u)=\frac{25}{49}.
+\]
+Consequently the actual divergence-zero field $Ju$ satisfies
+\begin{equation}\label{eq:physical-negative-defect}
+ H(Ju)+\frac{19}{5}\|CJu\|^2-\frac{19}{5}\|Ju\|^2
+       =-\frac{6}{35}4^{D-1}<0.
+\end{equation}
+Equations \eqref{eq:full-physical-kernel} and
+\eqref{eq:physical-negative-defect} prove the complete fixed-map statement:
+kernel coercivity does not imply the same coefficient as a fixed coarse
+penalty, even on the actual flat physical divergence-zero domain.
+They do not rule out larger penalties or different observations.
+
+\subsection{The exact finite penalty at the subsharp target}\label{sec:cycle-subsharp}
+The failure just proved concerns $K=19/5$. Here we determine exactly
+which larger penalties work for this same observation and target.
+This subsection is a paper proof with an exact rational coefficient
+check; it is not part of the paired Lean theorem below.
+
+Every $u\in\mathbb R^4$ has the unique decomposition
+\[
+ u=m(1,1,1,1)+(x,-x,y,-y)
+       +(\delta/2,\delta/2,-\delta/2,-\delta/2),
+\]
+where $m=(\sum_tu_t)/4$, $x=(u_0-u_1)/2$, $y=(u_2-u_3)/2$
+and $\delta=(u_0+u_1-u_2-u_3)/2$. Direct expansion gives
+\begin{align*}
+ |u|^2&=4m^2+2x^2+2y^2+\delta^2,\qquad O(u)=4m^2+\delta^2,\\
+ E(u)&=11x^2+14xy+23y^2+7\delta^2-10\delta(x+y).
+\end{align*}
+Set $X=x-25\delta/2$ and $Y=y+75\delta/14$. For every real $K$,
+\begin{align}
+ E(u)+KO(u)-\frac{19}{5}|u|^2
+ &=4\left(K-\frac{19}{5}\right)m^2
+   +\frac{17}{5}\left(X+\frac{35}{17}Y\right)^2\notag\\
+ &\quad+\frac{84}{85}Y^2
+   +\left(K-\frac{1138}{35}\right)\delta^2.
+ \label{eq:exact-subsharp-square}
+\end{align}
+Since $1138/35>19/5$, this proves sufficiency of $K\geq1138/35$
+on every scalar profile. Necessity follows from
+\[
+ u_*=(13,-12,-41/7,34/7),\qquad
+ O(u_*)=1,\quad |u_*|^2=\frac{18174}{49},\quad
+ E(u_*)=\frac{67468}{49}.
+\]
+It has $m=0$, $\delta=1$ and $X=Y=0$, hence defect $K-1138/35$.
+
+Apply the scalar inequality to every profile
+$t\mapsto A_\ell(t,y)_k$ and sum over all $y,\ell,k$.
+Their squared norms and observations exhaust the actual full norms,
+and their energies exhaust the first-direction contribution in
+\eqref{eq:actual-cycle-energy}. The remaining directions are
+nonnegative. Conversely $Ju_*$ is actual divergence zero and multiplies
+the scalar defect by $4^{D-1}$. Therefore the following are equivalent:
+\begin{enumerate}
+ \item $K\geq1138/35$;
+ \item $H(A)+K\|CA\|^2\geq(19/5)\|A\|^2$ for every actual cochain;
+ \item the same inequality for every actual divergence-zero cochain.
+\end{enumerate}
+This is a necessity-and-sufficiency statement for the fixed map, not
+an obstruction to different partitions. In particular, a larger finite
+penalty repairs the subsharp target even though $K=19/5$ fails.
+The sharp kernel target in the next subsection behaves differently.
+
+A second calculation records the classical block elimination behind the
+constant. The kernel residual matrix and mixed vector are
+\[
+ M=\begin{pmatrix}17/5&7\\7&77/5\end{pmatrix},\quad
+ \det M=84/25,\quad b=(5,5),\quad
+ M^{-1}b=(25/2,-75/14).
+\]
+Thus $b^TM^{-1}b=250/7$ and the residual coefficient is
+$K+16/5-250/7=K-1138/35$, agreeing with
+\eqref{eq:exact-subsharp-square}. No new Schur-complement principle is claimed.
+
+The unit151 exact verifier constructs $E$, $O$ and $|u|^2$ from the actual
+four-coordinate linear forms and compares every coefficient of the
+polynomial in $(m,x,y,\delta,K)$, rather than sampling values. Normal and
+optimized Python in one own Colab Linux runtime each accepted five checks
+and rejected three real coefficient mutations; both exits were zero and
+their JSON outputs were identical. The 8794-byte archive has ten members
+and nine checked inner hashes. It and the full hand derivation are
+included in the reproduction package. The driver took about 0.56 seconds;
+the runtime was released after recovery and exact billed consumption is
+unknown. This check is neither a new Lean theorem nor independently
+authored verification. Its source is
+\begin{quote}\small\ttfamily
+564b84230478cb8d40505cb67985470e9bae699d.
+\end{quote}
+\subsection{Sharp free-penalty extension and its distinct status}\label{sec:cycle-sharp}
+The following is an analytic continuation, outside the paired Lean result.
+Put $s=\sqrt{85}$ and $c_*=(17-s)/2$. Since $9<s<10$, the exact identity
+\[
+ E(v)-c_*|v|^2=(s-6)\left(x+\frac{7y}{s-6}\right)^2
+\]
+holds on the same block kernel. The nonzero vector
+$v_*=(7,-7,6-s,s-6)$ attains equality. The all-profile argument above
+also establishes the sharp kernel constant for the actual form in paper
+proof, and the lift establishes sharpness.
+
+For $p_\delta=(\delta/2,\delta/2,-\delta/2,-\delta/2)$, the two vectors
+are orthogonal, $Cv_*=0$, and $O(p_\delta)=|p_\delta|^2=\delta^2$.
+For any finite $K\geq0$, direct expansion gives
+\begin{align*}
+ &E(v_*+p_\delta)+K O(v_*+p_\delta)-c_*|v_*+p_\delta|^2\\
+ &\hspace{18mm}=(7+K-c_*)\delta^2-10(13-s)\delta.
+\end{align*}
+The positive number $q_K=7+K-c_*$ permits the choice
+$\delta=5(13-s)/q_K$, giving the strictly negative value
+$-25(13-s)^2/q_K$. Lifting multiplies this complete defect by
+$4^{D-1}$ and preserves actual divergence zero. Thus no finite quadratic
+penalty repairs this same observation at the sharp kernel endpoint.
+A penalty $\Phi(z)\leq K\|z\|^2$ only near zero is also defeated:
+scale the negative witness by a sufficiently small nonzero real number.
+Both radius conditions can be met, and its defect remains a negative
+multiple of the square of that scale. This is not a strict-margin claim.
+
+These exact analytic identities and arguments are supplied here, but their
+complete physical sharp-endpoint/free-penalty statement has \emph{not}
+been verified in Lean in the paired execution described next. Finite
+checks in dimensions three and four, including $K=0,1,100$, are diagnostics
+only, not the universal theorem or independent review.
+
+\subsection{Formal scope and the paired reproduction record}
+The fixed-penalty result, including the actual full-kernel premise and
+all transport/comparison identities used to connect it, was compiled in
+two separately allocated Colab Linux CPU sessions with high RAM. Each
+started with a fresh clone at the same immutable source
+\begin{quote}\small\ttfamily
+0c706827dcbb11859e56bb6c7dc981eb37a02e69.
+\end{quote}
+The final theorem is named
+\texttt{physicalCycleFour\_kernel\_fixed\_penalty\_counterexample}
+in \texttt{PhysicalCycleFullForm.lean}. It asserts the proved
+all-cochain kernel bound together with failure of the fixed-penalty
+inequality on the actual divergence-zero domain. Four preceding printed
+endpoints identify longitudinal energy, the full actual energy sum,
+its comparison, and the kernel estimate. They do not assume transport
+certificates or posit a structure containing the conclusion.
+
+All five actual dependency readouts in each clone contain only
+\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}.
+The normal and optimized validator in each clone accepted all five
+readouts and rejected three actual oracle mutations. All actual decimal
+exit sentinels were zero. Lean was version 4.29.0-rc6 with Mathlib pinned
+in the included manifest. The recovered theorem source, oracle source,
+compiled binary, oracle output, validator source, normal and optimized
+outputs and driver have identical hashes across the two fresh executions.
+The raw per-run reports still say first-clone pass and paired false:
+the identical driver executes one clone per session. They remain
+unmodified; the separate aggregate records the completed pair.
+
+The first successful driver took about 374.31 seconds and the second
+400.28 seconds. These are not billed connection times. Both environments
+were disconnected after complete evidence recovery. No Lean compilation,
+oracle or numerical campaign ran on Windows. Separate fresh executions
+are not independently authored proofs or independent scientific review.
+The previous failed attempt, its exact source and full compiler log are
+preserved: mixed finite-index inference and nested sum type inference
+were corrected without changing the theorem statements.
+
+The package includes both public evidence archives. Their comparison is
+recorded in the aggregate file:
+\begin{quote}\small\ttfamily
+paired-full-form148.json
+\end{quote}
+Full hashes and source bindings are in \texttt{inputs.json}.
+Each archive has 45 checked inner manifest
+members and excludes third-party installers and downloaded binary assets.
+Their complete originals, including those assets, are retained in the
+private evidence record. The compiled binary hash begins
+\texttt{b0f8ff8654d79d02}, and the full value is in the paired comparison file.
+
+\paragraph{Attribution and scope of novelty.}
+The scalar square identities and negative vectors predate this physical
+embedding in the dossier. The present consolidation adds the explicit
+actual-domain embedding and the formally derived all-field comparison;
+it claims no new Schur-complement principle, priority or exhaustive novelty
+finding. Carlson, Haynsworth and Markham's classical paper,
+\emph{A Generalization of the Schur Complement by Means of the Moore--Penrose
+Inverse}, SIAM Journal on Applied Mathematics 26 (1974), 169--175,
+\href{https://doi.org/10.1137/0126013}{doi:10.1137/0126013}, supplies algebraic
+context. The publisher abstract and bibliography were inspected in the
+source investigation; the full paywalled article was not read. The direct
+finite proof here carries the mathematical claim.
