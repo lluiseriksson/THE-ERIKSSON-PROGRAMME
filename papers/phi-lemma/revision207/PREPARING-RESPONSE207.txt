@@ -1,0 +1,11 @@
+PREPARING CORRECTION RESPONSE207 - source stage, no current-PDF score.
+Full v1 scientific-review206 report was read and retained unchanged at public AIRR commit8174a68cb296a9e85abcc8a3dee5c4468ee3dadf; exact raw report SHA256 e19e643d2b37553e19f5f26316e3f0fde814f8bd59501ebc654bcd6d47e10be7.
+1. Corrected reference5 authorship to Baricz-Ponnusamy and reference6 to Baricz alone, checked against primary arXiv1010.3346 and1202.4853.
+2. Added an explicit factorial-tail proof of absolute and uniform-in-t convergence of W for each fixed beta, based on DLMF10.25.2. This does not prove the open sign.
+3. Removed unsupported uniqueness of the weight choice; exact factorization retained with unchanged main theorem.
+4. Removed incompletely specified exploratory W totals and asserted exponential/decimal precision rule. No epsilon, cutoff, error certificate or new numerical result has been invented. Historicalv1 remains public for comparison. No assertion that an estimate-based proof is impossible remains.
+5. Removed unverified numerical independence wording and current symbolic/numerical audit claim; full earlier Lean source and July9log retained as historical evidence with full Mathlib hash, recorded command and explicit named analytic premises. No fresh Lean execution claimed.
+6. Pinned code/log provenance to871bb2bee8410dfb5b225d7961203eefaca5c15e and bound revised source/files inSOURCE207.json. Exact current PDF review will follow typesetting and freezing, not inherit v1 grade.
+7. Narrowed title and physical application language to the actual weighted unit-step and defined array determinant result. No physical positivity observable, signed dominance, continuum or Yang-Mills solution claimed.
+8. Added Model assessments and review context explaining artifact locking, unknown backend/effort/independence and AI-versus-human/formal/admission distinctions.
+Fresh frozen-source analytic audit and then exact-PDF numerical review remain required. This file is a preparing response, not a reviewer report or a new human confirmation.

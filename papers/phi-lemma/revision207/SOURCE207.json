@@ -1,0 +1,20 @@
+{
+  "parent_source_sha": "871bb2bee8410dfb5b225d7961203eefaca5c15e",
+  "canonical_predecessor_pdf_sha256": "b6307a215b321c380f1f76b117e6cb6c660239c176b0b25c45fe2fe5a3c59d50",
+  "revision": "AIRR v2 candidate; no rating inherited",
+  "scope": "Bibliography, convergence proof, computational and physical scope, immutable source provenance",
+  "files": {
+    "LEAN-VERIFICATION-LOG.txt": {
+      "bytes": 707,
+      "git_lf_sha256": "7b2501b0ff34cb0ab8da49a5d081b1e6a13be7712c2079ce53bc6bb7b3645bc8"
+    },
+    "phi_lemma.tex": {
+      "bytes": 17606,
+      "git_lf_sha256": "f909942066cf670b745c2acd7237cba8d3b76b1cb6d07c42dd3d86ddf3047cb4"
+    },
+    "PhiMonotone.lean": {
+      "bytes": 5519,
+      "git_lf_sha256": "ab9fc594ae6e87d8255cfeb01d7a6fe3875408706046d2f26dd1d8a8c88d8c1b"
+    }
+  }
+}
