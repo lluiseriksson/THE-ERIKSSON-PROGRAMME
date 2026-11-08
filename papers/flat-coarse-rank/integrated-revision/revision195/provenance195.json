@@ -1,0 +1,108 @@
+{
+  "build_source_sha": "ad4ea990b3fbe14565146ff4d2c904102b5c582e",
+  "tex_hashes": {
+    "boundary-transfer.tex": "a71474ff5b3519bbce84cbde1dc9d90efd5746efd06042160f1977d6b7dc76e8",
+    "detour-separation.tex": "a7bd1013ac7cfe7b00d3e29913e6ed5e81316a8e304a5aa7343956917f44c268",
+    "flat_critical_integrated.tex": "9d83e657d31005b7137577b58598164b6558bf8810666fadace9ca89401c3af8",
+    "laminates-green.tex": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1",
+    "partial-invariance.tex": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01",
+    "partition.tex": "18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2",
+    "physical-cycle.tex": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+    "sobolev.tex": "65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb",
+    "spatial-geometry.tex": "cfa2bfef60d30f38216d6dd24145e55a2d7353b3d810dee1e8eedfa944fc74d4"
+  },
+  "boundary_evidence": {
+    "source-proof192.txt": [
+      "fcedc62d16e08d99bc6e12e22bbd92db302eec3d",
+      "papers/flat-coarse-rank/research/2026-11-08_neumann-extension192.txt",
+      "a088b7bb394964ca81f7822c7b579a6a07ec5101f7e5bdc160da06545895b940"
+    ],
+    "source-audit192.txt": [
+      "fcedc62d16e08d99bc6e12e22bbd92db302eec3d",
+      "papers/flat-coarse-rank/research/evidence192/source-audit192.txt",
+      "e089b67a331038d246ad453e89a2527c76a9786acce06454eb1da69c37a0acd9"
+    ],
+    "audit192.json": [
+      "fcedc62d16e08d99bc6e12e22bbd92db302eec3d",
+      "papers/flat-coarse-rank/research/evidence192/audit192.json",
+      "4869b05d7ef0d7354c318043a2fea6589bbae451bd2fecfeb24be79901e22115"
+    ],
+    "AUTHOR-RESPONSE192.txt": [
+      "fcedc62d16e08d99bc6e12e22bbd92db302eec3d",
+      "papers/flat-coarse-rank/research/evidence192/AUTHOR-RESPONSE192.txt",
+      "0683353cc6fd474431fe67f8ddb91667a09d5534c9b92e7bbb5c51c2cca8d8d4"
+    ],
+    "source-proof193.txt": [
+      "39aa216005cce6e5b4bf36ed4145c6f0a9367a37",
+      "papers/flat-coarse-rank/research/2026-11-08_capacity-obstruction193.txt",
+      "a4bb3c201e083a5cf581af6fd4720e0a9deb37b143f62e21a4c5591f3afd2c1c"
+    ],
+    "source-audit193.txt": [
+      "39aa216005cce6e5b4bf36ed4145c6f0a9367a37",
+      "papers/flat-coarse-rank/research/evidence193/source-audit193.txt",
+      "2d5cd1c2e7f2d9766fa4bd353851caacb4527af6b99e8ce459ad21251ca4db06"
+    ],
+    "audit193.json": [
+      "39aa216005cce6e5b4bf36ed4145c6f0a9367a37",
+      "papers/flat-coarse-rank/research/evidence193/audit193.json",
+      "41dc34d50ca71621d0911d24efe7d0c01655f10d46a011c6c9aea56ce3c0d00f"
+    ],
+    "AUTHOR-RESPONSE193.txt": [
+      "39aa216005cce6e5b4bf36ed4145c6f0a9367a37",
+      "papers/flat-coarse-rank/research/evidence193/AUTHOR-RESPONSE193.txt",
+      "90a7f539fc459d1f64c127352473aa654afdecdd557ad0ab31b785d14dad6e49"
+    ],
+    "source-proof194.txt": [
+      "d5fd301c093c71313682bde657f87f0ab10be34e",
+      "papers/flat-coarse-rank/research/2026-11-08_aggregate-capacity194.txt",
+      "1c94cf9e45a140b0af55b3d24438de37c9840444c8b2ee4ea446334e4c0d42d0"
+    ],
+    "source-audit194.txt": [
+      "d5fd301c093c71313682bde657f87f0ab10be34e",
+      "papers/flat-coarse-rank/research/evidence194/source-audit194.txt",
+      "cdb858d858405207e89ca3f4aa42a3e4a449fb1a0b4328b45ec5c01542596b54"
+    ],
+    "audit194.json": [
+      "d5fd301c093c71313682bde657f87f0ab10be34e",
+      "papers/flat-coarse-rank/research/evidence194/audit194.json",
+      "e0f77d8cd396e32af826a9113936acf13ca861e2055f71968800bd099c940bd6"
+    ],
+    "AUTHOR-RESPONSE194.txt": [
+      "d5fd301c093c71313682bde657f87f0ab10be34e",
+      "papers/flat-coarse-rank/research/evidence194/AUTHOR-RESPONSE194.txt",
+      "aea0d01ba7e0cc6dce17f36e1f31154ef84b00360e3c1419e68701efe997bc4e"
+    ],
+    "source-audit195A.txt": [
+      "ad4ea990b3fbe14565146ff4d2c904102b5c582e",
+      "papers/flat-coarse-rank/integrated-revision/revision195/evidence195/source-audit195A.txt",
+      "15a11fb55e62375f0a4a18f7b847c4aeaa2cee71a9e2c35a41e1eace8fd69f72"
+    ],
+    "audit195A.json": [
+      "ad4ea990b3fbe14565146ff4d2c904102b5c582e",
+      "papers/flat-coarse-rank/integrated-revision/revision195/evidence195/audit195A.json",
+      "ccad2248da61ee2c9ac17173b17d3512341485c4bd71f1f784ab32c9eecea09c"
+    ],
+    "source-audit195B.txt": [
+      "ad4ea990b3fbe14565146ff4d2c904102b5c582e",
+      "papers/flat-coarse-rank/integrated-revision/revision195/evidence195/source-audit195B.txt",
+      "10a3b381fd736f5aadc51f18d18bbb54480296f8d32ec4c05f7e81cce14b1ea7"
+    ],
+    "audit195B.json": [
+      "ad4ea990b3fbe14565146ff4d2c904102b5c582e",
+      "papers/flat-coarse-rank/integrated-revision/revision195/evidence195/audit195B.json",
+      "bdf8b095320790ba639d8568df50c4eeb1db600fd3cf40d8e277691ced36b207"
+    ],
+    "AUTHOR-RESPONSE195.txt": [
+      "ad4ea990b3fbe14565146ff4d2c904102b5c582e",
+      "papers/flat-coarse-rank/integrated-revision/revision195/evidence195/AUTHOR-RESPONSE195.txt",
+      "32771fb5fced84bfd983dc7a5ce781312944bb8623a7e7bbe73a999555de2dfb"
+    ]
+  },
+  "scientific_execution": false,
+  "rendered": false,
+  "exact_pdf_or_stars": null,
+  "recovery189B_confirmed": false,
+  "bounded_export_tested": false,
+  "resource_status": "No allocation; own189B requested2026-11-07T20:53:16.774Z remains unreconciled",
+  "source_audit195": "Separate involved source-transcription audit pending/retained, not PDF grading"
+}

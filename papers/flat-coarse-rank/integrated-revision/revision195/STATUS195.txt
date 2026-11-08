@@ -1,0 +1,13 @@
+FULL INTEGRATED SOURCE195 PREPARED, NO NEW PDF
+Complete191 manuscript plus complete boundary proofs192-194. Frozen191 unchanged.
+Nine TeX inputs pinned to buildsource in provenance195.json. Full source audits,
+objections and author responses192-194 are fetched by exact commit/hash in the
+prepared own-Linux driver, together with prior184/185/188/190 evidence.
+Recovery189B guard remainsFalse. No build, TeX, renderer, scientific replay,
+visual inspection, PDF numerical assessment, stars, deposit or public release
+has been performed for195. No older score transfers. Export transport remains
+prepared, not tested. After actual runtime recovery/reconciliation, execute
+in this chat's own Colab Linux CPU, inspect exact PDF pages, obtain one full
+overall/fivecriterion numerical stars report retaining all objections, and
+reconcile native AIRR trusted catalogue/linked intake before release.
+This is one consolidated dossier, not a separate paper for each corollary.
