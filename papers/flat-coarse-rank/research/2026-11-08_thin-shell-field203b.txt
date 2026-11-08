@@ -1,0 +1,80 @@
+THIN-SHELL203B: AN ACTUAL FIELD OBSTRUCTION FOR THE FIXED SLAB COVER
+2026-11-08. Supplement to source203, kept in the same research dossier.
+
+1. Exact scope
+This strengthens source203 Section5 from a lower bound on its sufficient
+tree quantity to an actual field falsifier of uniform squared-error gluing
+for that same thin-shell slab cover. It is not a counterexample to a
+thin-shell Poincare estimate, a different cover or the main critical
+rectangle question. It is not a new paper, formal certificate or originality
+claim. Source203 remains unchanged with its own frozen-source audit.
+
+2. Setup and the field
+Use the exact integer definitions of source203: D>=2, R>=1, 0<=r<R,
+t=R-r, L=2R+1, J=2D, A=[-R,R]^D\[-r,r]^D (integer points),
+and the J full-width face slabs S_(j,+),S_(j,-).
+Each slab has v=t L^(D-1) points; slabs of different coordinates intersect
+in theta=t^2 L^(D-2)=beta v, where beta=t/L lies strictly between0 and1/2.
+Write N=|A|=L^D-(2r+1)^D=L^D-(L-2t)^D.
+Define ONE scalar function on the whole shell, independent of any tree:
+ f(x)=1 if x belongs to S_(1,+), and f(x)=0 otherwise.
+This is a consistent pointwise assignment even at overlapping corners.
+
+3. All local and global errors calculated exactly
+For a0/1 field with h ones on a finite set of n points, its unnormalized
+squared best-constant error is h(1-h/n), by direct expansion around h/n.
+The root slab has f identically1, and the opposite first-coordinate slab
+has f identically0. Each therefore has squared error0.
+For every slab of coordinate j>=2 and either sign, exactly theta=beta v
+points have f=1, since membership in S_(1,+) imposes the first-coordinate
+condition, independently of the j condition. Its error is
+ e_S(f)^2=beta v(1-beta).
+There are J-2 such slabs, giving the exact sum
+ sum_S e_S(f)^2=(J-2) v beta(1-beta)>0.                 (3.1)
+Globally exactly v points have f=1, so
+ e_A(f)^2=v(1-v/N).                                  (3.2)
+The two first-coordinate slabs are disjoint subsets of A, each of volume
+v. Thus N>=2v and 1-v/N>=1/2. Combining(3.1)-(3.2),
+ e_A(f)^2 / sum_S e_S(f)^2
+   =(1-v/N)/[(J-2)beta(1-beta)]
+   >=1/[2(J-2)beta(1-beta)]
+   >=L/[2(J-2)t].                                   (3.3)
+All quantities use counting measure. No limit theorem, approximate count,
+optimization, boundary extension or computational experiment is used.
+
+4. Falsified assertion and precise limitations
+Take r=R-1,t=1 and let R tend to infinity, with fixed D>=2. Then L grows
+and(3.3) diverges. Consequently there is no finite dimension-only constant
+C_D satisfying
+ e_A(f)^2 <= C_D sum_S e_S(f)^2
+for every one of these thin-shell slab covers and every field on its union.
+This holds regardless of the root/tree selected: the function and the local
+error sum do not involve a tree. It is stronger than divergent Q_T alone.
+For unsquared errors the same obstruction follows from
+(sum_S e_S)^2 <= J sum_S e_S^2: the ratio e_A/sum_S e_S is unbounded too.
+
+It does not disprove the earlier201B generic adjacent-overlap theorem under
+a fixed positive rho, since here beta=t/L tends to0. It also does not refute
+the thick-shell bound203, where beta>=1/5 for R=2m,r=m. Indeed the upper
+bound203 grows like L/t, consistent with(3.3); the deterioration order of
+the squared-error gluing constant for this cover is therefore L/t, up to
+dimension constants. This is an order statement for the gluing constant,
+not the optimal internal-energy Poincare constant.
+
+The field has many nonzero edge differences on the boundary of S_(1,+).
+No claim that its energy is small is made. Transferring(3.3) to a spectral
+or weighted-energy impossibility without a separate energy calculation
+would be invalid. The slabs overlap and do not constitute an admissible
+disjoint rectangle partition. A different coefficient-dependent partition
+may work. Nothing here resolves the main rectangle or Yang-Mills problem.
+
+5. Use and novelty boundary
+Do not use a dimension-only constant for the fixed thin-shell slab cover in
+the proposed multilevel proof. A different cover/direct energy estimate or
+a derived thickness condition is necessary. The elementary indicator-field
+calculation is not claimed novel; no separate paper, PDF score or stars.
+Primary contextual source already inspected for source203:
+https://arxiv.org/html/1511.03971v1 Appendix I. Its special continuum cube
+construction is different; this note does not assess that construction.
+The precise source203B claims need their own frozen-source analytic audit.
+No formal/numerical execution or runtime. PR29 stays20/41, TermSource0.
