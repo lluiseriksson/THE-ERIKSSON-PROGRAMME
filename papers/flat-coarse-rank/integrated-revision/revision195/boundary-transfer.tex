@@ -45,7 +45,7 @@ On $X=(\mathbb Z/n\mathbb Z)^D$, $D\ge3$, $n\ge3$, use
 \]
 Positive starts define unique unordered edges at these sizes. Internal
 Neumann energy retains only edges with both endpoints in the rectangle.
-Set $a(0)=1$ and $a(x)=H$ otherwise. Then
+For $H>1$, set $a(0)=1$ and $a(x)=H$ otherwise. Then
 \[
  \mu=H-(H-1)/N,\qquad H/2\le\mu<H,\qquad 1\le a\le2\mu,
  \quad M_a=\frac{\mu^p}{N}+(1-N^{-1})(\mu/H)^p.
@@ -75,6 +75,21 @@ $1+n/3$. This argument includes nonlinear extension selection rules.
 The proposition does not include $M_0=1$, when strict convexity forces
 constant coefficients. Bounds allowed to depend on size, mean or a growing
 target scale are different assertions.
+
+For completeness the two-terminal conductance also satisfies
+\[
+ \Lambda_R=g\begin{pmatrix}1&-1\\-1&1\end{pmatrix},\qquad
+ 1+H/3\le g\le D(H+1),\qquad
+ Q_R=(g-1)\begin{pmatrix}1&-1\\-1&1\end{pmatrix}.
+\]
+Symmetry and zero row sums give the displayed form of $\Lambda_R$.
+The direct edge plus bypass prove the lower bound for arbitrary endpoint
+values by the same telescoping calculation. For the upper bound, extend
+the value at $e_1$ constantly to all vertices other than zero. Only the
+$D$ outgoing weight-one edges and $D$ incoming weight-$H$ edges at zero
+contribute. They are distinct for $n\ge3$, proving the upper bound.
+Thus the boundary-correction to internal-energy ratio is at least $H/3$;
+for $H=n$ it too has no uniform bound for any fixed $M_0>1$.
 
 \paragraph{A contrasting uniformly coercive family.}
 For the different choice $H=n^2$, $H^p=N$, so $M_a<2$ and $M_a\to2$;

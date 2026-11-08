@@ -1,0 +1,49 @@
+{
+ "unit":195,
+ "date":"2026-11-08",
+ "assessment_type":"involved_source_transcription_audit_only",
+ "artifacts":{
+  "boundary-transfer.tex":"b58f381b1a335fdc4a819f4e9ee59d0094581bc889f2017f47738dd2802adc07",
+  "flat_critical_integrated.tex":"fd9059cf32d32213a5f5e94799f750713c685f3eccebd64e1c7f423ebe82241b"
+ },
+ "reference_sources_rehashed":{
+  "192":"a088b7bb394964ca81f7822c7b579a6a07ec5101f7e5bdc160da06545895b940",
+  "193":"a4bb3c201e083a5cf581af6fd4720e0a9deb37b143f62e21a4c5591f3afd2c1c",
+  "194":"1c94cf9e45a140b0af55b3d24438de37c9840444c8b2ee4ea446334e4c0d42d0"
+ },
+ "verdict":"central_proofs_preserved_selective_not_complete_transcription",
+ "complete_appendix_read":true,
+ "main_abstract_guide_context_and_full_diff_read":true,
+ "full_manuscript_freshly_assessed":false,
+ "seven_prior_included_tex_files_byte_identical_to_191":true,
+ "findings":[
+  {"id":"O1","type":"completeness_omission","location":"boundary-transfer.tex lines40-109","finding":"Source193 upper conductance bound g<=D(H+1) and its test-extension proof are omitted; its explicit Q=(g-1) two-point corollary is also not displayed.","correction":"Restore the already audited two-terminal bounds, trial-extension proof and boundary-correction statement, or explicitly characterize the consolidation as selective."},
+  {"id":"O2","type":"missing_explicit_hypothesis","location":"boundary-transfer.tex line48","finding":"H>1 is not declared before mu<H and1<=a<=2mu; intended H=n,n^2 families satisfy it.","correction":"State H>1 before defining the single-site profile."},
+  {"id":"O3","type":"abstract_scope_precision","location":"main lines53-55","finding":"Rule out internal-only trace extension is too broad: exact extensions exist, but uniform internal-energy control fails.","correction":"Specify uniformly controlled exact trace extension and D>=4 for the aggregate example."}
+ ],
+ "additional_limits":[
+  "The inspected source-hashes195.json does not itself pin192-194 audit commits; a separate evidence manifest reference remains unverified.",
+  "Exact author-hosted Kron theorem/equation numbering remains unverified; no new priority review.",
+  "Inherited PDF wording is prospective and does not establish a195 PDF or assessment."
+ ],
+ "scope_distinctions_preserved":["192 H=n^2 moment tends2 fixedM2","193 H=n moment tends1 fixedM0>1","194 D>=4 fixedM3 moments tend3","no main counting no-go","no coexact/rank/physical conclusion"],
+ "review_context":{
+  "configured_model_from_orchestration":"gpt-6-astra",
+  "provider_context":"OpenAI Codex",
+  "served_backend_attestation":null,
+  "reasoning_setting_attestation":null,
+  "historically_involved_reviewer":true,
+  "shared_history_account_provider_workspace":true,
+  "blind":false,
+  "organizationally_independent":false,
+  "scores_consulted_assigned_or_inherited":false,
+  "other_reviewers_contacted":false
+ },
+ "scientific_execution_or_build_performed":false,
+ "source_modified":false,
+ "pdf_assessed":false,
+ "human_peer_review":false,
+ "publication_authorization":false,
+ "native_import_validity":false,
+ "full_report":"source-audit195.txt"
+}
