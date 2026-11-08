@@ -1,0 +1,126 @@
+{
+  "attempt": "D",
+  "child_maxrss_kib": 127488,
+  "compute_units_billed": null,
+  "elapsed_seconds": 92.97129418200001,
+  "execution_plane": "Own Colab Linux CPU",
+  "execution_unit": 196,
+  "finished_utc": "2026-11-08T04:13:51.749768+00:00",
+  "independent_review": false,
+  "layout_warnings": [],
+  "model_assessment": null,
+  "numeric_stars": null,
+  "page_count": 82,
+  "pdf_bytes": 790890,
+  "pdf_sha256": "0e641695cc59257c87880bd63fdfb0d115018fa563a1d7b7b9d97e3a39e7aed9",
+  "pdfinfo": "Title:           Coarse information and finite rank obstructions for flat lattice Hodge forms\nSubject:         Finite weighted observations and rectangular constructions\nKeywords:        flat lattice, Hodge form, inverse moment, rectangular partition, laminate\nAuthor:          Lluis Eriksson\nCreator:         LaTeX with hyperref\nProducer:        pdfTeX-1.40.25\nCreationDate:    Sat Nov  7 00:00:00 2026 UTC\nModDate:         Sat Nov  7 00:00:00 2026 UTC\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           82\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       790890 bytes\nOptimized:       no\nPDF version:     1.5\n",
+  "pdflatex_version": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)\nkpathsea version 6.3.5\nCopyright 2023 Han The Thanh (pdfTeX) et al.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the pdfTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the pdfTeX source.\nPrimary author of pdfTeX: Han The Thanh (pdfTeX) et al.\nCompiled with libpng 1.6.43; using libpng 1.6.43\nCompiled with zlib 1.3; using zlib 1.3\nCompiled with xpdf version 4.04\n",
+  "poppler_version": "pdftoppm version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n",
+  "prior189B_recovery": {
+    "actual_zero_child_exits": 10,
+    "archive_bytes": 25746032,
+    "archive_sha256": "53eee1ca38fb60f1b1b0269187081c766b9f456d018c913877aabb97d78b4d08",
+    "child_maxrss_kib": 127656,
+    "compute_units_billed": null,
+    "execution_seconds": 114.32345206399987,
+    "human_recovery_request": "No longer required; tools recovered and closed this exact own runtime without new author consent",
+    "manifest_subjects_verified": 148,
+    "observed_utc": "2026-11-08T03:50:05.250150+00:00",
+    "pages": 75,
+    "pdf_bytes": 755410,
+    "pdf_sha256": "155e848065ca4080a297d9b8763bdcc675ce4d988f4c4da57641596b7f51cacf",
+    "pngs": 75,
+    "prior189B_execution_confirmed": true,
+    "prior189B_release_confirmed": true,
+    "release_signal": "After own disconnect/delete confirmation, actual UI button became Ateranslut / click to connect",
+    "visual_review_or_stars": false
+  },
+  "prior195A_release": {
+    "compute_units_billed": null,
+    "full_archive_sha256": "0fb942685c41da9e7a7288ab4ec32b24f4beae81885defefe31a9429f5f259c8",
+    "observed_utc": "2026-11-08T03:57:24.440Z",
+    "released": true,
+    "runtime": "Own TEP196 CPU high RAM, first195A attempt",
+    "signal": "Ateranslut button after disconnect/delete"
+  },
+  "published": false,
+  "python": "3.13.18",
+  "source_hashes": {
+    "boundary-transfer.tex": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0",
+    "detour-separation.tex": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8",
+    "flat_critical_integrated.tex": "f035ad2f21da2b4db18251234107404be24e704df1697ce2efb33d000b78df12",
+    "laminates-green.tex": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1",
+    "partial-invariance.tex": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01",
+    "partition.tex": "18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2",
+    "physical-cycle.tex": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+    "sobolev.tex": "65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb",
+    "spatial-geometry.tex": "cfa2bfef60d30f38216d6dd24145e55a2d7353b3d810dee1e8eedfa944fc74d4"
+  },
+  "source_sha": "4ccfea2be1e7545bd69191163579b1417c453454",
+  "started_utc": "2026-11-08T04:12:18.778449+00:00",
+  "status": "PDF_RENDERED_PENDING_VISUAL_REVIEW",
+  "steps": [
+    {
+      "exit_code": 0,
+      "label": "apt-update",
+      "seconds": 3.5957861539999953,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "apt-install",
+      "seconds": 58.77552980799999,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "pdflatex-version",
+      "seconds": 0.0026031909999915115,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "poppler-version",
+      "seconds": 0.06069859600000882,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-first",
+      "seconds": 1.0064297019999913,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-second",
+      "seconds": 0.9354260540000041,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-final",
+      "seconds": 0.984151876999988,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "pdfinfo",
+      "seconds": 0.017239225000025726,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "pdftext",
+      "seconds": 0.46886879700002737,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "render-pages",
+      "seconds": 18.483237562,
+      "timed_out": false
+    }
+  ],
+  "unit": 196,
+  "visual_review": "PENDING"
+}

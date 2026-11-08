@@ -1,0 +1,22 @@
+{
+  "status": "Frozen exact candidate, not AIRR publication or acceptance",
+  "pdf": {
+    "sha256": "0e641695cc59257c87880bd63fdfb0d115018fa563a1d7b7b9d97e3a39e7aed9",
+    "bytes": 790890,
+    "pages": 82
+  },
+  "source_sha": "4ccfea2be1e7545bd69191163579b1417c453454",
+  "recipe_sha256": "13837e74e436ffb097e96091cab55f1b1a47bd481e289ec45946b7324f811d71",
+  "full_archive": {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-196\\tep196D-review.zip",
+    "sha256": "529cbb6e0b274bc6ed352ab04775a9bd7f679ceea38a13fc1c149e7a8440d673",
+    "bytes": 28143650,
+    "manifest_subjects_verified": 179
+  },
+  "preserved_failed_attempts": [
+    "195A:layout",
+    "196B:audit fetch paths",
+    "196C:missing rank backslash"
+  ],
+  "PR29": "20/41,TermSource0;continuum open"
+}

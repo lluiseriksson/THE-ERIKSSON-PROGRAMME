@@ -1,0 +1,3 @@
+*.json -text
+*.pdf -text
+*.py -text

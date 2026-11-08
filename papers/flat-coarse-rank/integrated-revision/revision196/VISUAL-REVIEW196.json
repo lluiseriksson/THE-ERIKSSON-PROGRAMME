@@ -1,0 +1,24 @@
+{
+  "pdf_sha256": "0e641695cc59257c87880bd63fdfb0d115018fa563a1d7b7b9d97e3a39e7aed9",
+  "visual_review": "PASS",
+  "all_82_pages_covered": true,
+  "method": "14 contact sheets of196C inspected, full pages75,77,78 inspected. Exact PNG hash comparison proves81 pages pixel-identical for196D; only changed page75 inspected full size and rank notation corrected. No visible clipping/overlap found.",
+  "page_identity": {
+    "82_pages": true,
+    "compared_to_visually_inspected196C": true,
+    "changed_pages": [
+      "page-75.png"
+    ],
+    "unchanged_pages": 81,
+    "PDF_sha256": "0e641695cc59257c87880bd63fdfb0d115018fa563a1d7b7b9d97e3a39e7aed9"
+  },
+  "runtime_released": {
+    "utc": "2026-11-08T04:15:53.608Z",
+    "released": true,
+    "signal": "Ateranslut after own disconnect/delete",
+    "archive_sha256": "529cbb6e0b274bc6ed352ab04775a9bd7f679ceea38a13fc1c149e7a8440d673",
+    "compute_units_billed": null
+  },
+  "scientific_validation": "No new Lean build or scientific replay;10 zero exits are TeX/render tooling only; no novelty or proof certificate implied",
+  "numeric_assessment": "One first full exact196D numerical assessment requested in fresh task, shared workspace, not established independent; pending"
+}
