@@ -4,8 +4,8 @@
   "tex_sha256": {
     "boundary-transfer.tex": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0",
     "detour-separation.tex": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8",
-    "flat_critical_integrated.tex": "ab2a2cf941b6398196aa93a90924ca75881a8ec46bf1428d5a9a66d735baffd7",
-    "joint-binary.tex": "af27187ba968a6f7c2999c8150ac4e77cba35f29fa4cfebecbc2050de129af68",
+    "flat_critical_integrated.tex": "5a1b987bcca3c8640756ef9829c0ef7b03f05917d78bcff24df19cba60ddb244",
+    "joint-binary.tex": "7e37ce12e20fe4e46bdde0cca48317bec0a3d9066aa64cfce297a3e00f8f0a5a",
     "laminates-green.tex": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1",
     "partial-invariance.tex": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01",
     "partition.tex": "18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2",
@@ -13,7 +13,7 @@
     "sobolev.tex": "65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb",
     "spatial-geometry.tex": "cfa2bfef60d30f38216d6dd24145e55a2d7353b3d810dee1e8eedfa944fc74d4"
   },
-  "representation": "UTF8LF exact source bytes, no normalization",
+  "representation": "UTF8LF exact TeX and manifest bytes; no normalization",
   "new_file": "joint-binary.tex",
   "predecessor": "Public exactv9; no grade inherited",
   "status": "SOURCE_ONLY; PDF/build/render/visualQA/exactPDFnumericassessment pending",

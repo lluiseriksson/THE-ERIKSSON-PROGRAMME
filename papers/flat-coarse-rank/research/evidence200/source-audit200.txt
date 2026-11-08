@@ -1,0 +1,73 @@
+EXACT-SOURCE AUDIT 200 -- ISSUED 2026-11-08
+VERDICT: PASS WITH EDITORIAL NITS, for the audited mathematical integration only.
+No mathematical transcription defect or unsupported strengthening was identified in the new joint-binary.tex proofs or the corresponding changed abstract/guide passages. This is not a publication-ready, PDF, formal-verification, originality, or whole-manuscript certification. No numerical PDF score or stars are issued.
+
+1. Referential boundary and method
+Repository: C:\Trabajo\the-eriksson-programme\coexact-family-20261031
+Frozen commit: 8b98916ab15272a4ea61e359fd371db1bb8238d7
+Candidate root: papers/flat-coarse-rank/integrated-revision/revision200/
+No PR exists in this assignment. PR body capture, normalized body bytes and body hash are not applicable. The capture method was direct binary Git blob extraction with `git cat-file blob <frozen-SHA>:<path>` into a byte stream, checked against checkout bytes using SHA-256. There was no newline normalization, decoding/re-encoding, or other transformation for hashing. All ten candidate TeX blobs contain LF and zero CR bytes; the checkout bytes match each of those blobs exactly. The manuscript and new-section hashes match both the assignment and SOURCE200.json.
+
+Primary exact referents (path relative to the repository):
+papers/flat-coarse-rank/integrated-revision/revision200/joint-binary.tex
+11774 bytes; 233 LF; 0 CR; SHA256 af27187ba968a6f7c2999c8150ac4e77cba35f29fa4cfebecbc2050de129af68
+papers/flat-coarse-rank/integrated-revision/revision200/flat_critical_integrated.tex
+148626 bytes; 2773 LF; 0 CR; SHA256 ab2a2cf941b6398196aa93a90924ca75881a8ec46bf1428d5a9a66d735baffd7
+
+Other exact TeX referents in the same candidate root (bytes; LF; SHA256):
+boundary-transfer.tex: 11918; 248; b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0
+detour-separation.tex: 8394; 169; d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8
+laminates-green.tex: 20710; 410; 3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1
+partial-invariance.tex: 8946; 174; fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01
+partition.tex: 12830; 246; 18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2
+physical-cycle.tex: 15608; 324; c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c
+sobolev.tex: 9469; 210; 65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb
+spatial-geometry.tex: 21292; 440; cfa2bfef60d30f38216d6dd24145e55a2d7353b3d810dee1e8eedfa944fc74d4
+
+Manifest: papers/flat-coarse-rank/integrated-revision/revision200/SOURCE200.json
+1672 raw Git bytes; 29 CR and 29 LF (CRLF); SHA256 f42c0d286b571e1766b6defdbe9f7a8ad92b1310d93b48d10f4a14b62a6814fc.
+Its representation statement correctly describes the ten TeX referents; this JSON itself is CRLF, not LF. No normalized JSON digest is substituted for that raw-byte hash.
+
+Full analytic originals read, without opening their model reports/grades:
+papers/flat-coarse-rank/research/2026-11-08_joint-schur-rank197.txt
+10197 GitLF bytes; 191 LF; SHA256 689109e81365d152a98e04e1eb1511dfc39d1915036c4c70cb2483ceb97ab94f
+papers/flat-coarse-rank/research/2026-11-08_binary-point-partition199.txt
+12055 GitLF bytes; 205 LF; SHA256 e561bebd342a05ff59cc19ee7e1b9f607f79c231e28c9848a2d09e2e587cf1c9
+
+Read joint-binary.tex in full, boundary-transfer.tex in full, the main-file difference versus revision196 and necessary surrounding scope text. Eight pre-existing input TeX files compare unchanged against revision196. Read D:\LEEME.md, repository CLAUDE.md and docs/OPERATIONAL-GOVERNANCE-CHARTER.md. No previous model assessments were read. Operations were text reading/search/comparison, Git, byte counting/hashing and report writing only. No math executable, Lean, tests, build, rendering, numerical campaign or runtime allocation was used. No repository source was modified. Existing untracked _tmp/ was observed and left untouched.
+
+2. Mathematical transcription of source197
+The subsequence n=s^(2D), H=s^4, even s, D>=4, d=D-1 agrees with the preceding actual two-plane family; H^p=n and R^2=n/H are exact. The actual mean and fixed moment M_a<3, positive-start convention and coefficient envelope are inherited from a proof reproduced in boundary-transfer.tex, not from a model report. Joint S_U and separately minimized B_sep are kept distinct. The grounded-block argument gives a quadratic S_U with exactly constant kernel, hence positive definiteness on the counting-mean-zero trace hyperplane. Each individually minimized pair has g_y>=H/K_d and Q_R=(g_y-1)(difference)^2. The five energy groups used for this one comparison are disjoint; their reuse across distinct pair problems is not mistaken for additive control by one field.
+
+The symmetric Fourier box has real dimension (2R+1)^d: conjugate pairs account for two real coordinates, with no nonzero Nyquist frequency since R<n/2. Evaluation at zero is a nonzero functional because constants are in the band; imposing g(0)=0 removes exactly one dimension, without imposing mean(g)=0. The trace map is injective and has counting norm squared 2||g||^2. Pair cancellation makes its trace mean zero. Balanced sigma makes the full extension mean zero even when g has nonzero mean.
+
+Both extension energy calculations are correct. The longitudinal energy is 8||g||^2+4(H-1)|g(0)|^2. Transverse energy retains [(n-2)H+2+(H-1)1_(y=0)] times the actual squared derivatives, bounded by nH E_T(g). In particular, g(0)=0 is not used to erase D_l g(0). Fourier support bounds E_T by 4*pi^2*d*R^2/n^2 times ||g||^2, giving beta_D=4+2*pi^2*d in the trace normalization.
+
+For H>=2K_d, B_sep>=H/K_d times the trace norm squared. For H>A K_d beta_D, every nonzero vector of the displayed L_s-dimensional space violates B_sep<=A S_U. Rank-nullity for the joint map (C,V) then proves rank(C)+rank(V)>=L_s. This works for arbitrary linear V, without symmetry or positivity, and arbitrary Phi with Phi(0)=0. Scaling a joint-kernel vector proves the neighborhood version without continuity assumptions. The generalized-eigenvalue statement follows from min-max on the positive definite mean-zero restriction. The polynomial lower bound and its exponent relative to n^(D-1) are correct. The proof does not address D=3, rank sharpness/sufficiency, or failure of selectable rectangular means.
+
+The integration is a faithful compression, not a verbatim reproduction of every subsidiary assertion in source197. In particular source197's separately designated Q_joint formula, its stronger quotient bound, and its analogous rank consequence are omitted. Nothing in the integrated statement misattributes those omitted claims or relies on them. No false identification of an induced-U correction with a sum of pair corrections is introduced.
+
+3. Mathematical transcription of source199
+The point-isolation cut is an exact disjoint integer-rectangle cover: each noncentral point chooses its first differing coordinate and sign. At most 2D additional boxes are introduced per marked point. Processing points preserves previous singleton cells and never increases side lengths. This proves J<=J0+2Dm with no logarithmic factor and includes boundary/adjacent marks. No running-time or memory-complexity bound follows or is claimed.
+
+The path variance identity uses the actual counting convention. Telescoping, Cauchy--Schwarz and replacement v-u<=l yield edge coefficient k(l-k)<=l^2/4 after the 1/l cancellation. Product-coordinate averaging projections give total variance <=sum_i||(I-A_i)f||^2; applying the path bound fiberwise gives L^2/4 without an extra factor D. Singleton cases are included.
+
+The binary theorem quantifiers are D>=3,n>=3,c>0,H>=1, a in {1,H}, actual mean mu and actual inverse moment <=M, with one partition valid for all scalar f. The grid side L=min(n,max(1,floor(sqrt(H)/b))), b=max(1,sqrt(c)), handles all floor/cap transitions. The lower bound L>=min(n,sqrt(H)/(2b)), upper bound L<=sqrt(H)/b when L>=2, and J0<=(4b)^D max(1,N/H^p) are correct. The set B={a<H} is empty at H=1 and otherwise consists exactly of coefficient-one vertices. Its actual moment contribution gives m<=MN/mu^p; this includes a nominal, unattained H and all-low profiles.
+
+After isolation, every nonsingleton box has coefficient H at every retained positive start. The internal edge sets are disjoint, and omitted wrapping/interbox terms are nonnegative. Poincare therefore gives E_a>=c times the total within-box variance. The mean normalization sum_R f/sqrt(N|R|) gives the exact identity ||f||_N^2=variance/N+||Pf||^2. Thus the penalty K=c is valid globally. Disjoint nonempty supports give real scalar rank J, and 1+mu<=2mu supplies the displayed factor 2^p in the target-order count. No missing volume factor was found. The statement that r independent real components require rJ scalar coordinates is explicit and necessary; no color/coexact rank is inferred. Constant f proves K>=c in this normalization, without proving rank optimality.
+
+For the intermediate-value counterexample, mu=3H/4 and M_a=[(3/2)^p+(3/4)^p]/2 are correct; the false unit-cost cardinal bound is equivalent to H^p<=2^p+1. Its failure attacks that lemma only, not the target partition theorem. The unrestricted fully variable question remains open and a derived multilevel mechanism is still required. The new result removes the binary arrangement restriction, not a premise from an all-coefficient or physical theorem.
+
+4. Labels, guide and scope
+The seven new actual labels are sec:binary200, prop:jb200-rank, lem:jb200-isolate, eq:jb200-poincare, thm:jb200-binary, eq:jb200-penalty and eq:jb200-count. The referenced predecessor label thm:boundary195-aggregate actually exists with the required family. All new ref/eqref targets resolve, and bibliography keys jb:saito and jb:gonzalez are present. A text-only inventory of all ten TeX inputs found 139 labels, no duplicate labels, and no unresolved ref/eqref targets. This is a source-identifier check, not a LaTeX build or visual check. The guide's Section 27 for the unrestricted question is consistent after accounting for the earlier included sections; it is not a newly introduced numbering defect.
+
+The changed abstract and guide distinguish the partial-invariance proof from the binary construction, the comparison obstruction from a selectable-partition obstruction, and analytical/source evidence from scientific/formal replay. They retain the open unrestricted and physical-continuum boundaries. The predecessor change to public v9 is consistent with SOURCE200.json; no live AIRR publication/status check was performed in this source-only task, so current remote status is not certified. The exact label map and local immutable originals support transcription, not priority or the completeness/independence of historic evidence packets. The original source197 literature comparisons were not reproduced as new integrated claims. The two added classical citations are bounded attributions and do not carry the new proofs.
+
+5. Full adverse findings and limitations
+E1 -- editorial precision, nonblocking: main file lines 49-50 says "arbitrary arrangements of two scalar coefficient values" while the proved displayed theorem explicitly uses {1,H}, H>=1. For maximum fidelity, the abstract should say "the two scalar values 1 and H" (or otherwise state the lower-value convention). This audit does not extend the displayed theorem to every unspecified pair of scalar values with the same constant.
+E2 -- typography, nonblocking: joint-binary.tex line 212 has "units197--199", and line 231 has "at20/41". These visibly join words/numbers in the source; insert normal spaces in future editing. They do not affect the mathematics. Other compressed source-unit tokens function as identifiers and are not treated here as mathematical defects.
+E3 -- representation qualification: SOURCE200.json itself has CRLF while its representation field says UTF8LF exact source bytes. The ten TeX hashes satisfy the field as intended. The manifest's own raw-byte regime is separately disclosed above; a reader must not silently normalize its bytes before comparing this audit's manifest hash.
+No blocking mathematical finding was identified. No originality/priority, optimal-rank, algorithmic-complexity, coexact/interacting/continuum, or physical hypothesis-removal conclusion follows. A successful audit of the new proofs does not recertify historic unaffected text, formal endpoints, old diagnostics, old assessments, old PDF grades, or old public status. This audit does not certify a built PDF, layout, typography beyond the source nits noticed, visible stars, or a new publication-ready release. The prescribed source-only evidence boundary leaves all of those outside its verdict.
+
+6. Auditor identity and operational boundary
+This is the separate source-audit role; the auditor did not fabricate or edit these manuscript sources. The launch description is a fresh fork_turns=none audit task with inherited configuration and shared account/filesystem. The factual exposed model description is Codex based on GPT-6; the precise served backend and reasoning effort are unknown. Fresh task boundaries and split roles do not establish model, statistical or organizational independence, human peer review or formal verification. No such claim is made. No inbound messages or partial findings were received during the audit. No disposable clone/worktree or runtime was created, so no clone cleanup is pending. The only new files are the two issued reports in D:\Entregas\the-eriksson-programme\2026-11-08_integrated200. Their UTF-8 LF/no-BOM byte hashes are returned with issuance.

@@ -1,0 +1,83 @@
+{
+  "unit": 200,
+  "type": "exact-source mathematical transcription and scope audit",
+  "verdict": "PASS_WITH_EDITORIAL_NITS",
+  "commit": "8b98916ab15272a4ea61e359fd371db1bb8238d7",
+  "repo": "C:\\Trabajo\\the-eriksson-programme\\coexact-family-20261031",
+  "capture": "Raw git cat-file blob binary stdout; exact bytes; no normalization; candidate checkout matches",
+  "tex_representation": "UTF-8 LF; zero CR",
+  "primary": [
+    {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision200/joint-binary.tex",
+      "bytes": 11774,
+      "lf": 233,
+      "sha256": "af27187ba968a6f7c2999c8150ac4e77cba35f29fa4cfebecbc2050de129af68"
+    },
+    {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision200/flat_critical_integrated.tex",
+      "bytes": 148626,
+      "lf": 2773,
+      "sha256": "ab2a2cf941b6398196aa93a90924ca75881a8ec46bf1428d5a9a66d735baffd7"
+    }
+  ],
+  "manifest": {
+    "path": "papers/flat-coarse-rank/integrated-revision/revision200/SOURCE200.json",
+    "bytes": 1672,
+    "representation": "raw Git CRLF",
+    "sha256": "f42c0d286b571e1766b6defdbe9f7a8ad92b1310d93b48d10f4a14b62a6814fc",
+    "ten_tex_hashes_match": true
+  },
+  "originals_read": [
+    "papers/flat-coarse-rank/research/2026-11-08_joint-schur-rank197.txt",
+    "papers/flat-coarse-rank/research/2026-11-08_binary-point-partition199.txt"
+  ],
+  "prior_model_assessments_read": false,
+  "mathematical_blockers": [],
+  "findings": [
+    {
+      "id": "E1",
+      "severity": "editorial_nonblocking",
+      "location": "flat_critical_integrated.tex:49-50",
+      "finding": "Clarify abstract binary values as {1,H}; no extension to unspecified pairs with the same constant certified"
+    },
+    {
+      "id": "E2",
+      "severity": "typography_nonblocking",
+      "location": "joint-binary.tex:212,231",
+      "finding": "Source units197--199 and at20/41 omit normal spaces"
+    },
+    {
+      "id": "E3",
+      "severity": "representation_qualification",
+      "location": "SOURCE200.json",
+      "finding": "Manifest itself CRLF; its ten TeX referents are LF; raw manifest hash separately bound"
+    }
+  ],
+  "new_labels": 7,
+  "total_labels": 139,
+  "duplicate_labels": [],
+  "unresolved_ref_eqref": [],
+  "pdf_certified": false,
+  "historic_unaffected_text_recertified": false,
+  "live_predecessor_status_certified": false,
+  "originality_or_priority_certified": false,
+  "formal_verification": false,
+  "scientific_replay": false,
+  "source_modified": false,
+  "pr_exists_in_assignment": false,
+  "pr_body_capture": null,
+  "auditor": {
+    "exposed_description": "Codex based on GPT-6",
+    "precise_backend": "unknown",
+    "reasoning_effort": "unknown",
+    "launch": "fresh fork_turns=none, inherited configuration, shared account/filesystem",
+    "independence_claim": false,
+    "inbound_messages_received": false
+  },
+  "cleanup_pending": [],
+  "report": {
+    "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-08_integrated200\\source-audit200.txt",
+    "representation": "UTF-8 LF no BOM",
+    "sha256": "f1b89e0873f019c0cf64023ef6b399798177d41eeea9102c4d275e32bd58a8df"
+  }
+}
