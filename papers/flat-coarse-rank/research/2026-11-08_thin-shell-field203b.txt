@@ -53,8 +53,9 @@ error sum do not involve a tree. It is stronger than divergent Q_T alone.
 For unsquared errors the same obstruction follows from
 (sum_S e_S)^2 <= J sum_S e_S^2: the ratio e_A/sum_S e_S is unbounded too.
 
-It does not disprove the earlier201B generic adjacent-overlap theorem under
-a fixed positive rho, since here beta=t/L tends to0. It also does not refute
+It is not an additional fixed-rho counterexample to the generic adjacent-
+overlap assertion discussed and refuted in201B, since here beta=t/L tends
+to0. It also does not refute
 the thick-shell bound203, where beta>=1/5 for R=2m,r=m. Indeed the upper
 bound203 grows like L/t, consistent with(3.3); the deterioration order of
 the squared-error gluing constant for this cover is therefore L/t, up to

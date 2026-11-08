@@ -1,0 +1,12 @@
+{
+  "sha": "1dac4edaa1c315f7683c048f790a315f9a79fdfe",
+  "file": "papers/flat-coarse-rank/research/2026-11-08_integer-shell203.txt",
+  "byte_regime": "exact Git blob LF, no normalization",
+  "sha256": "c0bdf9bb46200a3291a3dddcbec046dd36e96fd53248324693d193adf260fe57",
+  "bytes": 8281,
+  "remote_main": "88f31a1981b757b9240a9076e2012545066b9028",
+  "review": "mandatory different-session audit in flight; branch frozen",
+  "runtime": "none; paper reasoning only; no local scientific computation",
+  "primary": "https://arxiv.org/html/1511.03971v1 Appendix I; special continuum cube cover differs from new discrete slab construction",
+  "publication": "none; internal dossier only, not a new star-rated paper"
+}

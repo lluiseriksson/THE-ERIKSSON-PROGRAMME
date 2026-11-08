@@ -1,0 +1,53 @@
+{
+  "verdict": "ACCEPT_WITH_STATED_LIMITATIONS",
+  "completed_at": "2026-11-08T10:50:46.771157+00:00",
+  "source_commit": "1dac4edaa1c315f7683c048f790a315f9a79fdfe",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-08_integer-shell203.txt",
+  "git_blob_sha1": "f86865c21f1f9899959038216e4803d38c6a1ab4",
+  "source_representation": "exact Git blob LF bytes; no normalization",
+  "source_bytes": 8281,
+  "source_sha256": "c0bdf9bb46200a3291a3dddcbec046dd36e96fd53248324693d193adf260fe57",
+  "report_representation": "UTF-8 LF, no BOM",
+  "report_bytes": 7999,
+  "report_sha256": "672bb69e7554246181defabd5c6cd1ef266f9abe1d8f9d3deb53b940d97fbed7",
+  "reviewer": {
+    "provider": "OpenAI",
+    "exposed_identity": "Codex described as GPT-6 based",
+    "served_model_id": null,
+    "reasoning_effort": null,
+    "task": "/root/integer_shell203_audit",
+    "full_history_fork": true,
+    "shared_account_and_filesystem": true,
+    "independence_verified": false,
+    "inbound_messages_received": 0
+  },
+  "method": "Frozen-source analytic reasoning; exact-source acquisition and hashes; prior201B proof checked; primary AppendixI attribution inspected",
+  "blocking_defects": [],
+  "source_correction_required": false,
+  "verified_analytic_claims": [
+    "Exact integer slab cover and counts including smallest scale",
+    "Explicit tree Q=J L/t",
+    "Derived thick-shell gluing constant",
+    "Counting-measure product-box energy bound and edge multiplicity",
+    "Conditional positive-start weighted comparison",
+    "Every-root/every-tree Q obstruction for this thin slab cover"
+  ],
+  "limitations": [
+    "No formal or numerical certificate",
+    "No originality or publication claim",
+    "Not a lower bound on the optimal thin-shell Poincare or gluing constant",
+    "No critical-moment selection/count/weighted-energy theorem",
+    "No main hypothesis eliminated; no Yang-Mills endpoint"
+  ],
+  "new_grade": null,
+  "stars": null,
+  "new_main_hypotheses_removed": [],
+  "pr_body_capture": "Not applicable: no PR exists",
+  "runtime_allocated": false,
+  "build_executed": false,
+  "scientific_script_executed": false,
+  "disposable_clone_created": false,
+  "cleanup_pending": false,
+  "primary_source": "https://arxiv.org/html/1511.03971v1",
+  "primary_scope": "Appendix I heading and Theorem I.1 only, no exhaustive priority search"
+}

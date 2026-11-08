@@ -1,0 +1,116 @@
+EXACT-SOURCE SUPPLEMENTARY ANALYTIC AUDIT203B
+Frozen commit: 172a8109b74558fe861ff0ea7706cfa7ed9a40ee
+Source: papers/flat-coarse-rank/research/2026-11-08_thin-shell-field203b.txt
+Representation: exact Git blob LF bytes, no normalization, 4568 bytes, zero CR
+Source SHA256: d7b17a8d9ac3c3e08af1b669f2a3b571a88b75c27eb22b5b7dbec13adcb2b297
+
+VERDICT: ACCEPT_WITH_STATED_LIMITATIONS
+The actual indicator-field obstruction is valid and is strictly stronger
+than the divergent sufficient tree quantity in source203. No blocking
+mathematical defect was found. There is one nonblocking attribution/wording
+clarification below: do not label the generic adjacent-overlap assertion a
+valid earlier201B theorem. No PDF grade, stars or originality finding is given.
+
+ACQUISITION AND REVIEW CONTEXT
+I read the complete frozen source with git show at the named commit. I
+separately obtained the exact Git bytes for length and SHA256 only. The
+source203 setup, explicit gluing proof and 201B rooted-overlap proof had
+been read for my previous distinct audit203. That context is deliberately
+reused and disclosed; this is not a blind or verified independent reading.
+No PR exists, so PR-body acquisition/normalization/hash are not applicable.
+No source was edited, no commit was made, and no scientific script,
+experiment, build, Lean/Lake, formal checker or runtime was used.
+
+Actual exposed reviewer identity: OpenAI Codex, described by the execution
+instructions as GPT-6 based. Exact served model identifier, backend revision
+and reasoning effort are not exposed. Reviewer session is
+/root/integer_shell203_audit, with shared account/filesystem and inherited
+parent history, including source preparation and prior203 reasoning. This
+is one fresh reading of a new supplementary claim, not a regrade or an
+attempt to improve a score. No inbound guidance arrived during this reading.
+
+1. THE FIELD IS WELL-DEFINED ON THE ACTUAL UNION
+The source203 integer shell is used with D>=2, R>=1, 0<=r<R. Thus t>=1,
+L=2R+1, and beta=t/L is positive and strictly less than 1/2. Its indicator
+of S_(1,+) is a single field on A. It is not an inconsistent assignment of
+one constant to each overlapping slab: its value on an intersection with
+S_(1,+) is always one, and zero outside S_(1,+). No root or spanning tree
+occurs in its definition or in its error sum.
+The shell count N=L^D-(L-2t)^D follows from 2r+1=L-2t. The number of ones
+is exactly the slab volume v=t L^(D-1). Both first-coordinate slabs lie in
+A and are disjoint, so N>=2v without any asymptotic approximation. All
+counts include r=0, the first scale R=1, and D=2.
+
+2. EXACT LOCAL ERRORS
+For h ones among n points, summing squares around the mean h/n gives
+h(1-h/n), including h=0 and h=n. The first-coordinate positive slab is
+constant one and the opposite slab constant zero, so their variances vanish.
+For every different-coordinate signed slab, imposing the first-coordinate
+positive condition leaves exactly t^2 L^(D-2)=beta v ones. This is independent
+of the sign of the other coordinate and uses two distinct coordinate
+factors; its squared error is v beta(1-beta). There are exactly J-2 such
+slabs. Thus (3.1) is exact and its right side is strictly positive because
+J-2>=2 and 0<beta<1/2. Intersections counted several times are appropriate
+in the sum of local errors; the global count is used only once in (3.2).
+
+3. GLOBAL ERROR AND LOWER BOUND
+There are v ones on N shell vertices, hence the exact global error is
+v(1-v/N). Division by the positive expression in (3.1) cancels v and yields
+the exact ratio in (3.3). N>=2v implies 1-v/N>=1/2. Finally
+1/[beta(1-beta)]>=1/beta=L/t. Both lower-bound steps therefore have the
+correct direction and no missing square or counting-volume factor.
+
+4. QUANTIFIERS AND UNSQUARED CLAIM
+Fix D>=2 and set r=R-1 for every positive integer R. This satisfies every
+stated integer hypothesis and has t=1, beta=1/(2R+1). The ratio lower bound
+L/[2(J-2)] tends to infinity. Therefore no single finite C_D can control
+every one of these covers and every field. Exhibiting this one consistent
+field for each R is sufficient to falsify that universally quantified
+claim, and no choice of root/tree repairs an inequality without root/tree
+in its denominator.
+For unsquared errors, let q=e_A^2/sum e_S^2. Cauchy-Schwarz gives
+(sum e_S)^2<=J sum e_S^2, and therefore
+e_A/sum e_S>=sqrt(q/J). Since J is fixed and the denominator is positive,
+the claimed unsquared ratio is unbounded too.
+
+5. SHARPNESS ORDER AND LIMITATIONS
+Source203 gives the upper bound 1+2J(J-1)/beta for the squared-error gluing
+constant of this same cover, for every field and all allowed R,r. The new
+lower bound is at least 1/[2(J-2)beta]. These imply order beta^(-1)=L/t up
+to constants depending on D; the additive one in the upper bound is absorbed
+because beta<1/2. This is a statement about the best covering-error
+comparison constant. The thick regime beta>=1/5 stays uniformly bounded
+and is fully consistent with both bounds.
+The field has jumps; no low-energy estimate was supplied or needed. The
+new argument does not establish any optimal spectral or energy lower
+bound. The cover overlaps and is not itself a legal disjoint rectangle
+partition. Changing the cover, selecting a different partition or deriving
+a direct energy estimate is not excluded. No main critical-moment selection,
+count or weighted-energy hypothesis is proved or eliminated.
+
+NONBLOCKING EDITORIAL CLARIFICATION
+Section4 says: 'It does not disprove the earlier201B generic adjacent-overlap
+theorem under a fixed positive rho'. Source201B actually refuted a generic
+adjacent-overlap assertion; its valid positive result is a volume-sensitive
+rooted-overlap theorem. The intended mathematical limitation here is right:
+this family has beta tending to zero and cannot by itself test a universal
+assertion restricted to one fixed positive overlap margin. However, calling
+the earlier generic assertion a 'theorem' could mistakenly restore a claim
+already refuted. Suggested future wording, kept outside the frozen source:
+'This thin-shell family does not satisfy the fixed-positive-rho overlap
+hypothesis examined in201B, since beta tends to zero.' No formula, field,
+proof or verdict depends on this wording. Preserve the frozen audited
+version and its report; if edited later, record a new version/hash normally.
+
+NOVELTY AND DISPOSITION
+The elementary indicator calculation establishes the stated scoped actual
+field obstruction. I do not establish its historical priority, novelty or
+publication relevance. No external theorem is needed for the calculation.
+The contextual AppendixI attribution had been checked against the primary
+https://arxiv.org/html/1511.03971v1 in audit203; this audit does not assess
+its special continuum cube construction or repeat a broad literature check.
+Keep203B with203 and201B in the same dossier, not as a new small paper.
+PR29 remains20/41, TermSource=0 and the continuum problem remains open.
+
+Cleanup: no disposable clone/worktree/runtime was created; none is pending.
+Only these two supplementary audit reports were written on D:.
