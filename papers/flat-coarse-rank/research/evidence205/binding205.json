@@ -1,0 +1,18 @@
+{
+  "source_sha": "625bd50110799561511b40ee2ed426e983eed4be",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-08_shell-moment205.txt",
+  "byte_regime": "Exact Git blob LF; no normalization",
+  "source_sha256": "423c38cd9e5d7f300b318fdd362dc47a726d9db87972e2257c4fffb0b9a47b1d",
+  "source_bytes": 8909,
+  "existing_dependency": "papers/flat-coarse-rank/integrated-revision/revision202/sobolev.tex",
+  "dependency_sha": "8262c72573387d44d82359636f65ec635449a131",
+  "dependency_gitlf_sha256": "65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb",
+  "dependency_bytes": 9469,
+  "inventory": "The full aspect-ratio critical box lemma is already proved; no new box theorem claimed",
+  "status": "frozen for different-session analytic source audit",
+  "primary": "https://arxiv.org/html/1312.5473v6 Section2.2 Eq2.9/Proposition2.4: Sobolev+conductance-moment Holder is classical, no originality claimed",
+  "failed_primary": "Original1949 AMS publisher PDF403 Forbidden; not inspected or used as an unproved dependency",
+  "scientific_execution": false,
+  "runtime": null,
+  "new_paper": false
+}

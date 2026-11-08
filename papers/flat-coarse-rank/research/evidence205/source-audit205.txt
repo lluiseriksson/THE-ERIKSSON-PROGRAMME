@@ -1,0 +1,177 @@
+EXACT-SOURCE ANALYTIC AUDIT205
+Frozen source:625bd50110799561511b40ee2ed426e983eed4be
+Path:papers/flat-coarse-rank/research/2026-11-08_shell-moment205.txt
+Git blob SHA1:740d7acbe748835ec4b357c0be82cac1b8483438
+Exact Git LF bytes:8909, zero CR, no normalization
+Source SHA256:423c38cd9e5d7f300b318fdd362dc47a726d9db87972e2257c4fffb0b9a47b1d
+
+Pinned proof dependency:
+Commit8262c72573387d44d82359636f65ec635449a131
+papers/flat-coarse-rank/integrated-revision/revision202/sobolev.tex
+Git blob SHA1:8d94e94dcc0e3c97df77f10a5e4c1d9de2f8d8dc
+Exact Git LF bytes:9469, zero CR, no normalization
+Dependency SHA256:65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb
+
+VERDICT:ACCEPT_WITH_STATED_LIMITATIONS
+No substantive mathematical defect or required source correction found in
+(1.1), its constants and the supplied proof, including the full pinned box
+proof. The local inverse-moment shell comparison is proved uniformly in
+thickness for the stated D>=3 concentric nonwrapping integer shells, without
+a pointwise lower bound comparable to the mean. This is a scoped analytic
+reading, not formal verification, a numerical certificate, originality
+finding, publication approval, PDF score or star grade. The main global-
+moment selection/count/partition problem remains open.
+
+ACQUISITION, INSTRUCTIONS AND ACTUAL REVIEW CONTEXT
+I read the entire source through git show at the frozen SHA and the entire
+pinned sobolev.tex dependency at its named SHA. Separate unmodified Git-byte
+reads bound both by length and SHA256. I read D:\LEEME.md and the relevant
+CLAUDE.md split-role/environment and governance frozen-audit/no-inbound
+instructions. No PR205 exists in this assignment, so PR-body capture,
+normalized body bytes and their hash are not applicable. I did not edit
+source, create commits, clone or create a worktree. Only file/Git acquisition,
+hashing and writing these reports were executed. No scientific code,
+computation, numerical search, build, Lean/Lake or runtime was used.
+
+Actual exposed reviewer identity:OpenAI Codex, described in inherited
+instructions as GPT-6 based. Exact served model identifier, backend revision
+and reasoning-effort setting are not exposed. Task /root/shell205_source_audit
+is a different session from the fabricator, with full inherited construction
+and earlier review context, shared account and filesystem. No blinded or
+verified independent-review claim is justified. No inbound guidance was
+received after the initial assignment. This is one reading of a new scoped
+claim, not a repeat to improve a grade.
+
+DETAILED ADVERSARIAL CHECK
+1. Entropy/projection dependency, actually read.
+For finite distributions, entropy concavity gives the reduction of conditional
+entropy under additional conditioning. The finite chain rule then proves
+sum_i H(X_-i)>=(D-1)H(X). For X uniform on a nonempty finite set, H(X)=log|A|,
+and H(X_-i)<=log|projection_i A|. Exponentiation proves the finite projection
+inequality. The conditioning omission convention is stated and correct.
+Thus the projection step is proved, not an unnamed imported assumption.
+
+2. Relative cube edge isoperimetry and endpoint Sobolev.
+For a set of a<=s^D/2 vertices, at most a/s occupied coordinate fibers are
+full. Every occupied nonfull interval contributes an internal crossing edge.
+Different fibers and directions give different edges. Projection plus AM-GM
+therefore bounds boundary size by D a^((D-1)/D)-D a/s, at least
+c_D a^((D-1)/D), c_D=D(1-2^(-1/D))>0. The empty case is harmless.
+Layer sets of a nonnegative function supported on at most half the cube
+remain admissible to that isoperimetry. Finite layer decomposition, Minkowski
+and the exact edge coarea identity yield the stated L^(D/(D-1))-L1 gradient
+bound. Applying it to v^alpha, alpha=2(D-1)/D, uses alpha D/(D-1)=2 and
+(alpha-1)q'=2. The endpoint power difference estimate is valid for alpha>1.
+Holder and degree<=2D give the displayed K_D=2 alpha D^(1/q')/c_D, with no
+missing factor of two. For v=0 there is no division; otherwise division is
+legitimate. A counting median yields positive/negative supports of size at
+most half. On each edge their q-gradient energies sum to at most the original
+q-gradient energy, because q>1. The inequality sum a_i^(2/q)<=(sum a_i)^(2/q)
+then gives the squared cube mean-centered estimate; the arithmetic mean
+minimizes squared error. Singleton cubes are separately covered.
+
+3. Rectangle reflection, all aspect ratios and original edges.
+The dependency folds the s=2L+1 cube by an endpoint-repeating pattern of
+period2l_i. Each full period visits each coordinate value twice, giving the
+stated lower bound on preimages; the remainder gives the conservative upper
+bound s/l_i+2<=3s/l_i. The same upper count bounds traversals of an original
+edge in its direction. For singleton directions the fold is constant and
+there is no original directional edge. Adjacent folded points coincide or
+form an original internal edge, even when reversed. Products of coordinate
+bounds yield the lower 2^(-D)r variance comparison, r=s^D/V, and upper3^D r
+q-energy comparison. The variance comparison holds at every chosen constant
+and hence at the extended mean, followed by minimization on the original box.
+Combining with the cube estimate leaves r^(2/q-1)=s^2/V^(2/D), not an
+uncontrolled aspect-ratio factor. Since s<=3L, the stated
+A_D=K_D^2 2^D 3^(2D/q+2) follows. It is independent of aspect ratio. This is
+an unweighted extension argument only; no site weights are reflected. Thus
+the exact existing lemma(2.1) required by205 is supported by its full proof.
+It is appropriately inventoried as earlier work, not a new result here.
+
+4. Actual shell geometry and tree.
+The slab sets are nonempty products, each of v=tL^(D-1) vertices. Their union
+is exactly the complement of the integer inner cube, so N<=Jv. Opposite
+same-coordinate slabs are disjoint, while different-coordinate slabs meet
+in t^2L^(D-2) points. The root joins J-2 other-coordinate slabs; the only
+remaining slab is reached through coordinate2. All J vertices are reached
+with J-1 edges and no cycle, at depth at most2. Every edge in this tree
+joins different restricted coordinates, exactly as needed for mean transport.
+R=1,r=0, t=1 and shortened thickness do not introduce empty intersections.
+All chosen geometry is independent of both field and coefficient.
+
+5. Interval and fiber q-mean transport.
+The difference of arithmetic means on I and T is the average of all
+pair differences over I times T. Jensen gives the first inequality in(4.1).
+Holder along each interval path gives path length^(q-1) times its q-energy,
+which is bounded by L^(q-1) times the whole interval energy. Averaging
+cancels the pair count. It does not leave a reciprocal subset size or use
+an invalid L2-local-error gluing inequality. Averaging the same transverse
+fibers in the product and Jensen gives exactly L^(q-1)/w, not wL^(q-1).
+In adjacent slabs the intersection restricts just one long direction and
+has identical counting mean from either side. With w=v/L, taking a qth
+root gives L v^(-1/q). Triangle proves(4.3) with the stated two energy terms.
+
+6. Shell Sobolev factors, including N/v and powers.
+Writing H=sum F_i, each edge mean difference is at most2L v^(-1/q)H^(1/q).
+The depth-two path bound therefore has factor4, and its squared version
+has factor16. Multiplication by the slab volume gives v^(1-2/q)=v^(-2/D).
+The local variance terms have exactly this volume exponent from(2.1).
+Summing them is bounded by A_D H^(2/q), since2/q>1. The cover sum at the
+root mean bounds the union error above, and local centered-sum orthogonality
+makes its local decomposition exact. Thus(5.2) is valid. Every slab edge is
+an internal shell edge, with multiplicity at most J, so H<=J F_A. Since
+N<=Jv, v^(-2/D)<=J^(2/D)N^(-2/D); the inequality direction is correct.
+These steps give precisely B_D=(A_D+16J)J^(2/q+2/D), with no omitted volume,
+edge factor, sign or normalization. The resulting constant is conservative
+but finite and depends only on D, even when thickness is one lattice site.
+
+7. Critical Holder with actual site-to-edge convention.
+For every retained positive-axis edge use its original start a(x)>0 as b_e.
+Holder applied to (b_e |df|^2)^(q/2)b_e^(-q/2) has exponents2/q and2/(2-q).
+Raising to2/q leaves exponent (2-q)/q on the inverse mass. Direct algebra
+q/(2-q)=D/2 and (2-q)/q=2/D proves the critical power, so(6.1) is correct.
+Each shell site starts at most D internal edges. Summing b_e^(-p) therefore
+costs at most D times the shell inverse site mass, irrespective of which
+boundary edges are absent. The starting vertex is always in A. No endpoint
+averaging, replacement by a neighboring coefficient, exterior value or
+reflected weight enters. Combining gives C_D=D^(2/D)B_D and exactly the
+normalized factor (sum_A a^(-p)/N)^(1/p) in(1.1). Positivity suffices; no
+contrast cap or pointwise lower bound on the mean scale is assumed.
+
+8. Corollary and exact closure boundary.
+For an actual local moment bound on (mu/a)^p, factoring mu^p is legitimate
+and gives M_A^(1/p)/mu. The parameter mu need not equal the local mean.
+For uniform a=H the normalized inverse-moment factor is1/H. The note does
+not deduce a uniform local M_A from an ambient global moment. It also does
+not provide coefficient-only selection or count of shells, turn their
+cover into a disjoint rectangle partition, or permit f-dependent selection.
+The earlier203B obstruction has a different denominator (sum of local
+approximation errors), so it coexists with this direct energy estimate.
+The pointwise mean-scale lower-bound and supplied local shell-gap premise
+are eliminated from THIS local weighted estimate by proof. They have not
+been eliminated from an unproved main global-to-local construction. No
+off-center, torus, coexact/color or continuum endpoint is established.
+
+PRIMARY COMPARISON AND NOVELTY
+I opened the primary https://arxiv.org/html/1312.5473v6 and read the relevant
+Section2.2 statements, including Eq(2.9), Proposition2.4 and its immediate
+weighted-moment context. They support the limited attribution that the
+Sobolev-to-weighted-moment Holder mechanism is classical. They are not
+imported to replace the finite proof above or to supply a shell geometry.
+No exact priority comparison for this full discrete shell statement or
+originality finding is established. I did not inspect the blocked original
+Loomis--Whitney publisher PDF and make no claim about it. The dependency's
+finite entropy proof suffices for its projection step.
+
+DISPOSITION
+Accept the scoped theorem and its explicit dependency chain analytically,
+with the stated limitations. No source correction is required by this
+reading. Keep it grouped with the dossier, rather than issuing a small
+paper or a numerical/star assessment. A formal or computational witness
+has not been produced. The next substantive task is the global-to-local
+coefficient-only selection/count/disjoint-rectangle link, not reproducing
+the old box estimate or assuming a favorable pointwise minimum. PR29 remains
+20/41,TermSource=0 and the physical continuum problem remains open.
+
+Cleanup: no disposable clone, worktree or runtime was created; none is pending.
+Only these two audit reports were written on D:.
