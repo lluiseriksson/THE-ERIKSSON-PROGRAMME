@@ -1,0 +1,48 @@
+{
+  "representation": "UTF-8 LF; copied source200 TeX with original bytes preserved except two edited files; Git attributes enforce LF",
+  "predecessor_source_commit": "7be52370bb0b778233f703a5f24d4aaf814079cc",
+  "inventory_correction_commit": "c545ea5b205c5f34122687553e2712e79f62d7f6",
+  "purpose": "Deduplicate earlier threshold proof; retain explicit binary corollary and comparison diagnostic; no novelty or inherited score claim",
+  "files": {
+    "boundary-transfer.tex": {
+      "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0",
+      "bytes": 11918
+    },
+    "detour-separation.tex": {
+      "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8",
+      "bytes": 8394
+    },
+    "flat_critical_integrated.tex": {
+      "sha256": "fa410c5d3053d400aca3267537573646fafe185948f389d37a690d46393181f5",
+      "bytes": 148031
+    },
+    "joint-binary.tex": {
+      "sha256": "001f9e6d2ec168fac732baad166f8ab2dc876bab84b82c00b8df75385e532551",
+      "bytes": 8896
+    },
+    "laminates-green.tex": {
+      "sha256": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1",
+      "bytes": 20710
+    },
+    "partial-invariance.tex": {
+      "sha256": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01",
+      "bytes": 8946
+    },
+    "partition.tex": {
+      "sha256": "18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2",
+      "bytes": 12830
+    },
+    "physical-cycle.tex": {
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+      "bytes": 15608
+    },
+    "sobolev.tex": {
+      "sha256": "65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb",
+      "bytes": 9469
+    },
+    "spatial-geometry.tex": {
+      "sha256": "cfa2bfef60d30f38216d6dd24145e55a2d7353b3d810dee1e8eedfa944fc74d4",
+      "bytes": 21292
+    }
+  }
+}
