@@ -1,0 +1,30 @@
+AUTHOR RESPONSE193
+Frozen source SHA256 a4bb3c201e083a5cf581af6fd4720e0a9deb37b143f62e21a4c5591f3afd2c1c.
+Source commit 9f3f8031. Entire source and involved audit retained unchanged.
+No blocking error found; this is analytical source review, not PDF grading.
+
+L1 accepted: H=n is a different family. Old192 has H=n^2 and moment tending
+to2. Its immutable audit/O1 is correct. New193 has moment tending to1,
+but targetscale grows like n^(D/2) and comparison gap lower bound is4/n.
+Neither old uniform gap nor old bounded target scale transfers to193.
+L2 accepted: g is conductance and the reduced matrix eigenvalue is2g.
+Energy is sum of unordered edge terms once, without a factor1/2.
+L3 accepted: every fixed M0>1 admits an unbounded admissible tail, excluding
+C(D,M0). This does not include M0=1 or bounds depending on n, mu or scale.
+L4 accepted: the derived Schur form is nonlocal. It supplies no aggregate
+partition estimate, coexact witness, rank obstruction or partition no-go.
+L5 accepted: the framework is classical; no priority, independent review,
+formal verification, replay or physical continuum consequence is claimed.
+
+Primary provenance: the preparer read the author-hosted2011d-db PDF in the
+web tool; the reviewer encountered a timeout there and used the opening
+arXiv text. The latter is a primary fallback, not proof of byte identity
+between versions or attestation of the preparer's reading history. Retain
+both provenance records. No unavailable lookup is treated as expiry.
+
+Next test concerns aggregate boundary charges at the original target scale;
+the moment does not furnish the refuted cellwise bound. This note is grouped
+with192 and the main dossier, with no standalone corollary paper or PDF.
+No stars, deposit, receipt or publication acceptance result from this audit.
+Publication priority remains the full191 manuscript after the existing own
+Colab189 recovery; the pending human action is not asked again.

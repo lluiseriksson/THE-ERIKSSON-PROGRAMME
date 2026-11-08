@@ -1,0 +1,57 @@
+{
+ "unit":193,
+ "date":"2026-11-08",
+ "assessment_type":"involved_source_correctness_audit",
+ "source_path":"C:\\Trabajo\\the-eriksson-programme\\coexact-family-20261031\\papers\\flat-coarse-rank\\research\\2026-11-08_capacity-obstruction193.txt",
+ "source_sha256":"a4bb3c201e083a5cf581af6fd4720e0a9deb37b143f62e21a4c5591f3afd2c1c",
+ "complete_source_read":true,
+ "verdict":"supported_for_every_fixed_M0_greater_than_1",
+ "blocking_mathematical_objections_found":[],
+ "checks":{
+   "grounded_block_positive_definite":"supported",
+   "unique_minimizer_and_completed_square":"supported",
+   "boundary_correction_PSD_and_constant_kernel":"supported",
+   "near_one_moment_quantifiers":"supported",
+   "two_point_internal_gap_2":"supported",
+   "effective_conductance_lower_1_plus_H_over_3":"supported",
+   "effective_conductance_upper_D_times_H_plus_1":"supported",
+   "positive_start_edge_counts_including_n3":"supported",
+   "uniform_extension_and_boundary_ratio_failure":"supported",
+   "new_target_scale_grows_like_n_to_p":"supported",
+   "global_comparison_lower_bound_4_over_n":"supported_not_sharp_gap_identity"
+ },
+ "limitations":[
+  {"id":"L1","finding":"H=n is a new family;192 remains H=n^2 with moment tending to2 and different global scaling."},
+  {"id":"L2","finding":"Conductance g and reduced matrix eigenvalue2g have distinct normalizations; preserve the source convention."},
+  {"id":"L3","finding":"Failure covers fixed M0>1 and C(D,M0), not M0=1 or constants depending on size, mean, boundary geometry or target scale."},
+  {"id":"L4","finding":"One scalar defect and exact nonlocal reduction give no aggregate partition estimate, coexact witness or partition impossibility."},
+  {"id":"L5","finding":"No exhaustive priority study, formal validation, independent review, scientific replay or physical continuum implication."}
+ ],
+ "primary_source_check":{
+   "author_hosted_pdf":"timeout",
+   "alternative_primary_source":"https://arxiv.org/pdf/1102.2950",
+   "scope":"Abstract and opening two pages; Schur graph reduction confirmed",
+   "hosted_version_byte_identity_verified":false
+ },
+ "review_context":{
+   "configured_model_from_orchestration":"gpt-6-astra",
+   "provider_context":"OpenAI Codex",
+   "served_backend_attestation":null,
+   "reasoning_setting_attestation":null,
+   "historically_involved_reviewer":true,
+   "prior_involvement_includes_source192":true,
+   "shared_history_account_provider_workspace":true,
+   "blind":false,
+   "organizationally_independent":false,
+   "prior_grades_inherited":false,
+   "other_reviewers_contacted":false
+ },
+ "scientific_execution_performed":false,
+ "source_modified":false,
+ "pdf_assessed":false,
+ "scores_or_stars_assigned":false,
+ "human_peer_review":false,
+ "publication_authorization":false,
+ "native_import_validity":false,
+ "full_report":"source-audit193.txt"
+}

@@ -1,0 +1,56 @@
+SOURCE AUDIT 193 — SCHUR BOUNDARY ENERGY AND NEAR-ONE MOMENT
+Date: 2026-11-08
+
+Verdict
+Supported. The frozen source correctly derives the exact optimal trace-extension energy and its positive semidefinite boundary correction. The new H=n family correctly refutes a constant C(D,M0) controlling either exact extension energy or its boundary correction by internal Neumann energy, for every fixed M0>1. No blocking mathematical error was found. This is a new family and a stronger auxiliary-route counterexample than192, not a correction of192's immutable H=n^2 family. It does not settle the main rectangular partition problem.
+
+Exact source read and hashed
+C:\Trabajo\the-eriksson-programme\coexact-family-20261031\papers\flat-coarse-rank\research\2026-11-08_capacity-obstruction193.txt
+SHA256: a4bb3c201e083a5cf581af6fd4720e0a9deb37b143f62e21a4c5591f3afd2c1c.
+The entire source was read. This report concerns those exact bytes. No source was modified, no earlier score was inherited, and no PDF was assessed.
+
+Review context
+This is an involved analytical model audit, not human peer review, independent replication, formal verification, an editorial decision or publication authorization. Configured reviewer context supplied by orchestration is gpt-6-astra through OpenAI Codex; the actual served backend and reasoning effort are not exposed as attestations. The reviewer is the same historically involved agent, including source192 and prior dossier work, sharing chat history, account/provider context and workspace. It is not blind or organizationally independent. No other reviewer/model was contacted. No scientific code, Lean/Lake, build, renderer, finite experiment or runtime was executed. Work consisted of static source reading, hashing, paper reasoning, limited primary-text reading and these reports. No stars or other numerical assessment are assigned. Administrative publication/recovery statements, PR29 and TermSource are not independently verified here.
+
+A. General reduction and minimization
+For a finite connected positive-conductance graph, v^T L v is indeed sum_e c_e(v_i-v_j)^2 with each undirected edge once, when L has diagonal weighted degrees and off-diagonal negatives of conductance. No factor one half belongs in this convention. The source's torus conversion is valid at n>=3: every positive-start nearest-neighbour edge has a unique corresponding unordered edge. At n=3 each coordinate is a triangle, but opposite starts are not duplicate representations of one edge. At n=2 opposite starts would share an unordered pair and require combining conductances; that size is correctly excluded.
+
+For any nonempty proper retained set R, grounded L_BB is positive definite. Extending z by zero on R identifies z^T L_BB z with global energy. Its vanishing forces a constant on a connected graph and then zero, because R is nonempty. This reasoning does not require the induced graph on B to be connected: each component is grounded through the full graph. Consequently the inverse and the unique minimizer h=-L_BB^{-1}L_BR u exist for every trace.
+
+Expansion of the quadratic form gives the stated completed-square identity with Lambda=L_RR-L_RB L_BB^{-1}L_BR. The R-block is exactly L_int+D_cut. Thus the optimum equals u^T L_int u+u^T Q_R u with Q_R=D_cut-L_RB L_BB^{-1}L_BR. Its symmetry follows from the symmetric Laplacian. Positivity of Q_R follows from minimizing the sum of cut and B-internal edge energies; subtracting the fixed internal energy is legitimate before taking the minimum. This proof is stronger than merely assuming a Schur complement is positive: it verifies that the difference from the internal Laplacian is positive too.
+
+For constant trace, a constant extension makes this residual energy zero. Positivity then implies Q_R 1_R=0; alternatively the two displayed block row-sum identities prove it directly with the correct signs. The algebra remains valid if R is disconnected or a singleton. The correction depends on the eliminated graph and need not be local in the retained vertices. No summability estimate for many cells is furnished just by naming Q_R.
+
+B. New profile and the quantifier for every M0>1
+At fixed integer D>=3, with p=D/2, N=n^D and H=n, the mean is H-(H-1)/N. The bounds H/2<=mu<H imply 1<=a<=2mu and mu>=1. Here H^p/N=n^{-p}, unlike192's H=n^2 case where H^p/N=1.
+The stated formula M_actual=mu^p/N+(1-1/N)(mu/H)^p is exact. Its first term is strictly below n^{-p}, and its second is below one. Jensen applied to the strictly convex function t^{-p} proves M_actual>=1; it is actually strictly greater than one because the positive profile is nonconstant. Thus 1<M_actual<1+n^{-p} and M_actual tends to one. For any fixed M0>1, taking n large enough that n^{-p}<M0-1 places an unbounded tail of this family in the fixed M0 class. H still diverges along that tail. Constants depending arbitrarily on D and this fixed M0 remain fixed along the tail and cannot absorb the diverging ratio.
+The source does not assert the conclusion at M0=1. Strict convexity excludes this nonconstant family there. It also does not change the mathematical fact that the old192 family tends to two. The earlier192/O1 scope objection is preserved rather than retrospectively erased.
+
+C. Two-terminal effective energy and constants
+The retained set {0,e_1} is a rectangle with singleton sides in the other coordinates. At n>=3 its only internal positive-start edge is (0,1), with coefficient one. Consequently its internal energy is the squared endpoint difference and its mean-zero Neumann gap is exactly two in counting norm.
+Lambda is symmetric positive semidefinite and has zero row sums. Every two-by-two matrix with these properties has form g times [[1,-1],[-1,1]], with g>=0. Connectedness makes g strictly positive: a nonconstant two-point trace cannot have a zero-energy extension. Hence the optimal energy is g times the squared endpoint difference. This definition is the effective conductance in the no-factor-of-two convention. It is not the matrix eigenvalue 2g; these quantities must not be conflated.
+
+The direct edge contributes one times the squared endpoint difference for every extension. The bypass 0 -> -e_2 -> e_1-e_2 -> e_1 has positive starts (-e_2,2), (-e_2,1), and (e_1-e_2,2), all nonzero and all distinct for n>=3. None is the direct edge. Each carries H. Path Cauchy–Schwarz supplies H/3 times the squared difference. Since these are disjoint retained energy terms, they may be added, proving g>=1+H/3 after minimization. The n=3 wrap creates no repeated edge or weak starting coefficient in this path.
+
+For the test extension constant off zero, the only nonzero differences occur on edges incident to zero. There are D outgoing starts at zero of weight one and D incoming starts -e_i of weight H. These 2D labels represent distinct edges for n>=3; in particular e_i is not -e_i. Their total energy is D(H+1) times the squared difference, proving the claimed upper bound on the minimum. Thus both conductance estimates have the correct factors.
+
+Since L_int=[[1,-1],[-1,1]], Q_R=(g-1)[[1,-1],[-1,1]]. Its ratio to the internal energy is g-1 for every nonconstant trace, while the exact extension ratio is g. The lower bounds g-1>=n/3 and g>=1+n/3 therefore exclude both proposed uniform controls for every fixed M0>1. A real mean-zero trace (1,-1) already suffices, and optimizing over all extensions includes nonlinear selection rules. No arbitrary extension operator is assumed to attain an unattainable minimum: the minimizer was explicitly proved to exist.
+
+D. Scaling, limitations and significance
+The source correctly distinguishes the global comparison lower bound 4H/n^2=4/n from192's value four. It does not prove the sharp global gap equals4/n. Independently, the target scale is comparable to n^p: since 1+mu<=2n and 1+mu>=n/2, the ratio N/(1+mu)^p lies between 2^{-p}n^p and 2^p n^p. It grows rather than remaining uniformly bounded. This does not weaken the refutation of C(D,M0), whose definition forbids dependence on n or mu; it would matter for a different bound explicitly allowing the target scale.
+
+This is a stronger negative auxiliary result than192 because it excludes rescue by any fixed moment allowance above the homogeneous minimum. The Schur identity supplies an exact expression for the cost but no control of its aggregate over disjoint cells. Only one scalar bad cell is exhibited. No coexact witness, growing independent-defect family, rank lower bound, or impossibility theorem for a selectable rectangular partition follows. Boundary-aware methods and altered trace data remain unexcluded. The result is a useful scoped diagnostic, substantially narrower than a solution of the fully variable critical rectangular problem or theorem188's positive class. The source appropriately avoids those stronger claims.
+
+E. Primary context and attribution
+The author-hosted URL https://motion.me.ucsb.edu/pdf/2011d-db.pdf timed out during this audit. I instead read the primary arXiv abstract and the opening two pages of Dörfler and Bullo, Kron Reduction of Graphs with Applications to Electrical Networks, arXiv:1102.2950v1, https://arxiv.org/abs/1102.2950 and https://arxiv.org/pdf/1102.2950. They explicitly identify graph elimination with the Schur complement and describe the boundary current/voltage reduction. This supports attribution of the general framework as classical. This audit does not attest byte identity or exact equation numbering between the unavailable author-hosted manuscript and the arXiv copy, nor verify the preparer's claimed reading history. No exhaustive novelty or priority search was performed. The explicit proof in section A does not rely on importing an unverified external theorem.
+
+Retained objections and clarifications
+No blocking mathematical objection found in the stated source. Preserve these limits:
+L1. The strengthened counterexample is a different H=n family. It must not be conflated with192's bounded target scale or uniform gap lower bound.
+L2. Effective conductance g, reduced matrix eigenvalue2g, and the mean-zero quotient have distinct normalizations. The source currently handles them correctly.
+L3. The quantified failure is for fixed M0>1 and a constant depending only on D,M0. It does not cover M0=1 or bounds allowed to grow with n, mu, boundary geometry or the target scale.
+L4. Exact nonlocal boundary reduction alone proves no aggregate cell estimate, locality preservation, coexact statement or partition impossibility.
+L5. Primary comparison was limited; the author-hosted PDF was unavailable. No originality, formal validation, independent review, replay or physical continuum conclusion is established.
+
+Disposition
+Supported analytical source audit of the frozen193 result, with the limitations above. Stop the specific internal-energy-only uniform extension proposal and its near-one-moment rescue as mathematical claims; this audit does not direct operational publication or runtime actions. Preserve the unchanged source and full adverse/limiting findings. No score, PDF assessment or publication receipt is created.
