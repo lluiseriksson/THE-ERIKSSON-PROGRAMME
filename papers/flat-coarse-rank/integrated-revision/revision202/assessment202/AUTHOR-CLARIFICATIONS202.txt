@@ -1,0 +1,9 @@
+PREPARING-AGENT RESPONSE TO THE SINGLE EXACT-PDF202 REVIEW
+The complete scientific-review.txt, original candidate-response.json and review-context.json were read. Retain the4.20/10 score,4overall stars, criteria4/4/3/3/3 and allO1-O5 without amendment or resampling.
+O1: priority remains unestablished; no new-mechanism novelty credit for the binary corollary.
+O2: this review did not independently rebuild/replay every claimed formal or finite endpoint; the new10zero toolingexits are TeX/render tools only.
+O3: the all-coefficient rectangle and interacting/continuum problems remain open; PR29 remains20/41,TermSource0.
+O4: Section29.1 is an e-perp calculation. Its printed Kmin is the mean-zero minimum. For the full space the minimum is max(c, that fraction), because the constant mode forcesK>=c. This external clarification does not amend or regrade the frozenPDF.
+O5: opening guide names the immediate predecessorv9. Section26 and inherited frozenPDF statements describe historical artifacts; their referents remain editorial debt. The canonical new artifact is the exact84pagePDF c90f30000d0e723b88af0e9402f1d3e697077a8c9d15f131082e7627ea06b27c.
+The reviewer explicitly states none of these objections blocks this scoped workingpaper. They do preclude any claim of journal acceptance, original priority, independent verification or resolution of the open general/physical problems.
+Technical native representation: original JSON has nullmodelID, unassignedversionID, custom recommendation/protocol and rich object findings. The bound response supplies factual exposed Codex identity, native version binding after actual receipt, ARR-ASSESS1.0 protocol and lossless textual findings. Native policy requires major_revision or reject whenever its material-objection list is nonempty; major_revision conservatively preserves all five. Original free-text recommendation remains quoted. This is a schema projection of one review, not a second assessment or changed score.

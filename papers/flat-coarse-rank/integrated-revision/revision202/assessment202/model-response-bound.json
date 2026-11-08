@@ -1,0 +1,67 @@
+{
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "canonical_sha256": "c90f30000d0e723b88af0e9402f1d3e697077a8c9d15f131082e7627ea06b27c",
+  "provider": "OpenAI",
+  "assessed_at": "2026-11-08T09:56:02Z",
+  "independence": "unknown",
+  "millennium_score": 4.2,
+  "overall_stars": 4,
+  "summary": "A strong specialist dossier of finite flat-lattice observation budgets, global critical inverse-moment sufficiency, restricted actual rectangular constructions and route-specific counterexamples. No blocking mathematical counterexample to central claims was found in this limited review. The k<D construction and growing-dimensional trace discrepancy are particularly substantive. Binary means are explicitly an earlier threshold corollary. General rectangular and physical continuum questions remain open; no acceptance or independent verification is implied. Original free-text recommendation: suitable_scoped_working_paper_specialist_revision_before_journal_acceptance. Native major_revision is the conservative schema projection retaining all five material objections, not another assessment.",
+  "strengths": [
+    "Actual maps, positive-start forms, coexact potentials and disjoint partitions are constructed.",
+    "Necessary rank, spectral observations, rectangle means, penalty coefficients and certificate costs are distinguished.",
+    "Theorem 35.1 derives local energy from coefficients and charges terminal descendants with at least one invariant direction.",
+    "Boundary comparison failures are separated from successful selectable binary observations.",
+    "Formal endpoints, analytic proofs, finite diagnostics and historical exact-artifact assessments retain distinct status."
+  ],
+  "weaknesses": [
+    "Incremental originality and exhaustive priority comparison remain unresolved.",
+    "No fresh formal compilation, scientific replay or full archive/dependency audit was performed in this assessment.",
+    "Exact invariance remains required by the partial-coordinate tree argument.",
+    "The general fully variable critical rectangular question and interacting/continuum physical dictionary remain open.",
+    "The integrated 84-page presentation contains repeated operational context and historical referent ambiguity."
+  ],
+  "version": "v10",
+  "version_id": "arr:version:b19013d7-e749-44cb-9655-f82ad674c4cc",
+  "model_id": "Codex (GPT-6-based; exact served backend and effort unexposed)",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "recommendation": "major_revision",
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "Central arguments survived full text reading and focused analytic checks; no formal rebuild or scientific replay."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Self-contained finite proofs with explicit normalization, quantifiers, geometry and analytic/formal boundaries; formula-domain clarification remains."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Specific constructions and diagnostic families are plausible incremental contributions; mechanisms are classical and priority is unestablished."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "Useful specialist flat-lattice results; general rectangle problem and interacting/continuum bridges remain open."
+    },
+    "reproducibility": {
+      "stars": 3,
+      "basis": "Immutable evidence locators and careful reported run scopes; only PDF/text identity and supplied images were checked here, no fresh recipe/build execution."
+    }
+  },
+  "potential_errors": [
+    "{\"description\": \"Domain-sensitive Kmin ambiguity: the displayed fraction is correct on the mean-zero subspace; a full-space reading also requires max with c.\", \"exact_test\": \"tau=1 gives displayed c-alpha<c, but f=1 forces K>=c.\", \"location\": \"Section 29.1 p.58\", \"status\": \"clarification needed; not a demonstrated failure of the central theorems\"}"
+  ],
+  "strong_novelty_candidates": [
+    "{\"basis\": \"Actual k<D critical inverse-mass rectangular construction with K=c and balanced invariant-direction charging.\", \"priority_established\": false, \"result\": \"Theorem 35.1\"}",
+    "{\"basis\": \"All-rectangle strong Green-certificate cost phase diagram, separate from observation rank.\", \"priority_established\": false, \"result\": \"Theorem 32.1\"}",
+    "{\"basis\": \"Near-one-moment extension and growing-dimensional independently minimized trace discrepancy families.\", \"priority_established\": false, \"result\": \"Proposition 37.2, Theorem 37.3, Proposition 38.1\"}",
+    "{\"basis\": \"Actual-coexact prescribed-mean penalty witnesses and critical residue transfer as model-specific realizations.\", \"priority_established\": false, \"result\": \"Section 28.7\"}"
+  ],
+  "unresolved_material_objections": [
+    "{\"blocks_scoped_working_paper\": false, \"falsifier_or_resolution\": \"Compare exact hypotheses/conclusions/constants with closest weighted approximation/capacity and adaptive partition results. A prior theorem giving the same finite coefficient-to-rectangle count falsifies novelty.\", \"id\": \"O1\", \"location\": \"Sections 1, 17.1, 23, 28.2, 34, 35.4, 37.4, 38.4; Theorem 35.1 and Proposition 38.1\", \"objection\": \"Targeted classical-method comparisons do not establish incremental priority of the specific restricted construction and diagnostic families.\", \"severity\": \"material originality limitation\"}",
+    "{\"blocks_scoped_working_paper\": false, \"falsifier_or_resolution\": \"Reconstruct exact pinned sources and audit printed theorem hypotheses against dependency readouts and raw outputs. Extra axioms, changed statements, omitted hypotheses or mismatched accepted outputs falsify the respective evidence assertion.\", \"id\": \"O2\", \"location\": \"Sections 13–14, 24.5, 25, 28.8, 29.5, 34.2, 35.4; Section 36.3\", \"objection\": \"This round did not rebuild formal sources, inspect all archived logs/dependencies, or replay scientific diagnostics. Section 36's diagnostics are explicitly unexecuted.\", \"severity\": \"material verification limitation\"}",
+    "{\"blocks_scoped_working_paper\": false, \"falsifier_or_resolution\": \"For rectangles derive a valid all-coefficient partition/count/penalty or defeat every permitted partition on an admissible fixed-M family. Physical claims require proved form/domain/scaling and continuum bridges.\", \"id\": \"O3\", \"location\": \"Section 27; Sections 35.4, 37.3, 38.3–38.4\", \"objection\": \"Fully variable intermediate coefficients and interacting/continuum physical conclusions remain open. Exact invariance is essential to the presented tree charge; binary excision does not cover intermediate levels.\", \"severity\": \"material scope limit\"}",
+    "{\"blocks_scoped_working_paper\": false, \"falsifier_or_resolution\": \"For tau=1, the fraction equals c-alpha<c while the constant field requires K>=c. Label the domain explicitly, or state full-space Kmin=max(c, displayed fraction).\", \"id\": \"O4\", \"location\": \"Section 29.1, p.58, Kmin display following analysis on e-perp\", \"objection\": \"The displayed minimum is a mean-zero optimum. If read on the full space it omits the constant-mode floor K>=c.\", \"severity\": \"minor but concrete formula-domain ambiguity\"}",
+    "{\"blocks_scoped_working_paper\": false, \"falsifier_or_resolution\": \"Provide one authoritative chronology and identify each unchanged historical artifact explicitly, retaining all adverse records. Consolidate evidence-status navigation.\", \"id\": \"O5\", \"location\": \"Section 26 p.45 versus opening guide; Sections 22.6 and 23.6; repeated evidence narratives\", \"objection\": \"The integrated manuscript retains v8/v9 chronology and inherited frozen-artifact phrasing that can confuse current versus historical referents.\", \"severity\": \"submission presentation limitation\"}"
+  ]
+}

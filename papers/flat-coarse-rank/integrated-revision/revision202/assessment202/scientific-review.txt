@@ -1,0 +1,126 @@
+EXACT-PDF SCIENTIFIC ASSESSMENT — candidate202
+Paper: Coarse information and finite rank obstructions for flat lattice Hodge forms
+Paper ID: ARR-2026-7EPM3V3DP796BBRR
+Version label: candidate202; assigned version ID: none
+Canonical PDF: D:\Entregas\the-eriksson-programme\2026-11-08_integrated202\flat_critical_integrated202.pdf
+Raw-byte SHA256: c90f30000d0e723b88af0e9402f1d3e697077a8c9d15f131082e7627ea06b27c
+Observed size: 807652 bytes; manuscript: 84 numbered pages.
+Assessment date: 2026-11-08 UTC; exact file-write timestamp is recorded in review-context.json.
+
+DECLARED ROUND AND CONTEXT
+This is one declared numerical assessment of the frozen integrated PDF, with no target score and no resampling. I read the complete supplied Cloud pdftotext extraction, including all 38 sections, historical disclosures and references. I did not open earlier numerical assessments, other reviewer reports, or author responses. References to those reports inside the PDF were unavoidable artifact context; their verdicts were not adopted as evidence for my verdict. This is a delegated Codex task on a shared account and filesystem. The exposed description identifies Codex as based on GPT-6; an exact served backend identifier and reasoning effort are not exposed. Provider: OpenAI. Independence: unknown; no blindness, organizational independence, human review, or formal verification is asserted.
+
+VERDICT AND VISIBLE RATINGS
+Recommendation: suitable as a carefully scoped working paper; specialist revision and further originality comparison before journal acceptance. No blocking mathematical counterexample to the central stated positive or negative results was found in this reading. This statement is limited by the inspection and verification coverage below. It is not editorial acceptance or authorization of a deposit.
+
+AIRR ARR-ASSESS-1.0 millennium_score: 4.20 / 10.00
+Overall stars (nearest integer of the 0–10 score, minimum one): ★★★★☆☆☆☆☆☆ — 4 / 10. Criterion stars below use their separate 1–5 scale.
+The overall number measures scientific importance on the supplied 0–10 scale, not probability of correctness, a school grade, or completion of a Millennium problem. The finite flat-lattice results form a strong technical dossier with useful constructions and route-specific falsifiers. They do not settle the unrestricted critical rectangular question, provide interacting/continuum Yang–Mills estimates, or establish a recognized Millennium solution. Those boundaries and unfinished priority comparisons keep the rating far below the historic end of the scale.
+
+Separate criterion stars:
+Correctness confidence: ★★★★☆ (4/5). The central displayed derivations survived a complete manuscript reading and focused analytic cross-checks, including normalization, quantifier order, partial-invariance charging, and the growing-rank trace construction. No fresh formal build or scientific replay was performed.
+Rigor: ★★★★☆ (4/5). Substantial self-contained finite proofs; hypotheses, strict thresholds, singleton cases, original positive starts and analytic/formal boundaries are unusually explicit. The lengthy integrated assembly and one domain-sensitive minimum-penalty formula still invite clarification.
+Novelty: ★★★☆☆ (3/5). Candidate contributions lie in the particular finite constructions, restricted critical-rank theorem and diagnostic families. The main methods are classical, and this limited primary-source comparison establishes neither priority nor exhaustive originality.
+Significance: ★★★☆☆ (3/5). Useful specialist results about information budgets and spatial certificates; broader impact is limited by exact-invariance requirements, unresolved fully variable coefficients and absence of an interacting physical dictionary.
+Reproducibility: ★★★☆☆ (3/5). The PDF supplies many immutable source anchors and precise accounts of formal endpoints and finite runs. I verified the actual PDF/text hashes and inspected existing render images, but did not inspect every archived log, execute the recipes, rebuild Lean, or certify the dependency closure.
+
+SCIENTIFIC SUMMARY
+The manuscript separates three questions that are easy to conflate: necessary observation dimension, existence of a global spectral observation, and existence of actual rectangle means with an acceptable penalty. The Fourier/tangent budget is a necessary condition, never advertised as sufficient. Singular Schur compatibility prevents weak kernel coercivity from being mistaken for finite-penalty sufficiency. The critical scalar and matrix inverse-moment arguments provide global coordinates rather than local cells. The later sections supply actual local constructions for specified subclasses and show why several attractive certificates cannot be promoted to universal partition theorems.
+
+The strongest spatial statement in this reading is Theorem 35.1: coefficients depending arbitrarily on k<D coordinates admit actual rectangular normalized means, K=c, and an upper count controlled by the critical inverse mass. Its proof derives its local estimate from the finite Sobolev argument, extrudes balanced base leaves through invariant directions, and charges ancestors using d=D-k>0. This is a restricted all-size analytical theorem, not a theorem inferred from its 648 finite fixtures. The binary result in Proposition 38.2 is correctly presented as a corollary of Section 21's existing threshold construction, with a related earlier inclusion in Theorem 29.3. It is not an additional invention of a new partition mechanism.
+
+The boundary-transfer results are genuinely distinct from those constructions. Exact extension can cost much more than internal energy even when the critical moment tends to one. In D>=4, separately minimized complements do not support a uniform sum bound; the discrepancy persists in a growing-dimensional trace space, so bounded-rank repairs of that particular comparison fail. These statements do not refute selectable rectangular observations. The same binary profiles admit the stated positive construction.
+
+ANALYTIC INSPECTION BY RESULT FAMILY
+1. Sections 2–6, pp.3–7: the counting/unit-spacing conventions count each unordered plaquette once. The two internal coordinates store a complex scalar as a real isometric plane; they justify the real factor two without a scalar sine/cosine aliasing mistake. Mass and derivative orthogonality are both supplied. Rank-nullity applies to (C,V) on an actual subspace; V need not be positive or symmetric because the chosen vector lies in its kernel. The uniform theorem fixes the finite codomain and repair rank before sending n large. The effect of replacing K0 by a side-squared multiple is explicitly different.
+
+2. Sections 7–11, pp.7–17: the shrinking-ray argument uses differentiability at a fixed lattice and a locally quadratic upper bound for the penalty; it does not require uniform radii. The regular-sector construction needs surjectivity of DP(0) and an actual quadratic energy because its curve leaves the band. The supplied counterexamples explain both requirements. Signed-weight domination takes the positive part before spatial averaging. The full coexact packet uses an actual positive envelope supported on its occupied components, not a globally assumed comparison. The integer-tail choice R=floor(n/k), no-alias condition and trace/count conversion are coherent. The exact sinc average is an analytic improvement, not another formal endpoint.
+
+3. Sections 12–14, pp.17–22: the singular-Schur range condition and counterexample correctly obstruct an inference from kernel nonnegativity alone. Source hashes and historical formalization claims are evidence locators, not proof of their current execution. I did not read those source modules or rebuild them in this review. The physical-consumer specialization in Section 13 therefore remains an author-stated source-inspection claim beyond my exact-PDF mathematical reading.
+
+4. Sections 16–18, pp.22–26: the scalar critical result uses a normalized Fourier matrix and unnormalized eigenvalue counts. The density lemma handles the zero-frequency kernel through the pseudoinverse/range decomposition. The feasible-flow comparison has the right orientation: the minimizing weighted inverse energy is bounded by that of the explicit unweighted flow. Counts of a sum use min–max and do not assume commutation. Real complexification does not double real multiplicity. The final spectral observation includes the constant modes and uses c on low eigenvalues of a positive form. The lower-exponent obstruction uses actual compact coexact curls with both field and gradient-start supports in separated weak boxes. It defeats a uniform scalar inverse-moment implication at lower exponent; it does not classify every coefficient criterion.
+
+5. Sections 19–24, pp.26–44: translated full cube trees are a narrower class than arbitrary rectangles. The explicit successful complement partition is retained on their counterexample family. Variance tensorization has no gratuitous factor D. The fixed-penalty Schur condition differs from a free finite penalty, including at sharp equality. The point tests have their stated ambient/coexact dimension and scale restrictions. The self-contained finite Sobolev proof has compatible exponents q=2D/(D+2), alpha=2(D-1)/D, and keeps reflection multiplicities until the aspect-ratio factor emerges. The cube partition proof distinguishes proper interior intersection from boundary contact, bounds multiple occupancy and uses consistent half-open ownership of integer points. The physical cycle embedding proves the ambient kernel premise before restricting witnesses to divergence zero. The subsharp penalty threshold and sharp nonattainment are logically separate.
+
+6. Section 28, pp.47–56: the positive matrix argument compares the inverse to a feasible flow and applies the operator-valued estimate without commuting the coefficient matrices. Fourier padding and counting normalization produce the declared dimension-free channel estimate. The selected-channel update costs rank(P_S d); a graph incidence formula is reserved for diagonal rows. Nonpositive channels and negative depth are treated explicitly. Coupled channels retain their off-diagonal Green interaction. The minimum finite penalty is the generalized Schur optimum. The 8-dimensional example distinguishes a necessary two-mode lower bound from the full optimum. Explicit plaquette potentials establish actual coexactness of the transferred witnesses; the leading residue is bounded between ambient and restricted inequalities, without asserting equality of their full optima.
+
+7. Sections 29–34, pp.57–70: the isospectral geometry example is explicitly nonlocal and does not masquerade as an admissible coefficient field. The point-support correction is constructed from potentials; it has a different coefficient scale from the high-gap no-observation regime. Fixed-gap partitions isolate only the weak vertices and retain complementary means. Minimum-only tests are falsified on families where actual strong-edge detours succeed. The laminate proof uses the same coefficient profile on every transverse fibre, includes the last coefficient in resistance, and treats singleton residuals separately. The strong Green-moment phase diagram concerns certificate cost, not necessary observation rank. Its all-partition endpoint lower bound uses aspect-ratio-safe mode blocks; the matching meshes give the three claimed orders. The representative-fibre falsifier is actual coexact and does not falsify the laminate theorem.
+
+8. Section 35, pp.71–73: I checked the local estimate, balanced side lengths, floor/ceiling extrusion, critical charge and leaf telescoping. For m>=2, the aspect ratio stays bounded, exact invariance gives sum_R a^-p=|Z|b(Q), and acceptance supplies local energy control. Internal nodes are charged to disjoint terminal internal descendants; they are not themselves falsely treated as disjoint. The geometric ancestor factor rho=(2/3)^(D-k) is strictly below one only when k<D. The displayed failure at k=D is a method boundary, not a general impossibility theorem.
+
+9. Section 36, pp.73–76: the three possible path-preimage sources for a fixed strong edge are pairwise distance one in D>=3, so the relaxed exclusion has the stated congestion bound. The D=2 qualification is retained. The nearest-neighbour-independent parity example has a real mean-zero z space of dimension n/2-1 and an explicit backward-difference plaquette potential. Its moment diverges with H/epsilon, so it cannot refute fixed-M rectangular sufficiency. The unexecuted finite replay is candidly disclosed; it contributes no executed evidence here.
+
+10. Sections 37–38, pp.76–82: grounded Schur minimization yields a nonnegative boundary correction annihilating constants. The two-point near-one-moment example uses a disjoint direct weak edge and a three-edge strong bypass, so its extension lower bound does not assume linearity of the extension selector. The two-plane example's d=D-1>=3 point-resistance estimate is essential; there is no D=3 inference. The independently minimized pair forms may reuse the same exterior routes, which is precisely why a sum estimate fails. In Proposition 38.1, n=s^(2D), H=s^4 and R=s^(D-2) give R^2=n/H; the real Fourier box has the declared dimension after the nonzero evaluation functional is removed. The extension sigma(t)g(y) bounds joint energy while separate pair corrections grow like H. Rank-nullity on that actual trace subspace handles arbitrary zero-vanishing penalties along the common kernel, including a local-neighbourhood assertion. This proves no uniform bounded-rank rescue of the specified comparison; it does not establish a sharp required observation count for the original problem.
+
+11. Proposition 38.2, pp.81–82: with tau=H, only coefficient-one vertices are excised. Their actual inverse-moment mass pays unit cost. The strong grid cost uses H and then H>=mu. Dividing the counting inequality by N explains P=C_P/sqrt(N), including the constant test enforcing K>=c. The r-component output count is rJ, not J. The intermediate-value cardinality falsifier is valid and explains why binary rounding cannot silently solve the general problem. This is an earlier-threshold corollary; it receives no separate novelty credit.
+
+STRENGTHS
+- Actual maps, cochains, positive-start energies and nonempty partitions are supplied rather than replaced by certificates containing the desired conclusion.
+- Necessary rank, global spectral sufficiency, actual rectangular sufficiency, penalty size and certificate cost remain distinguishable.
+- The k<D spatial theorem and growing-dimensional boundary discrepancy have readable finite proofs with clear quantifiers.
+- Counterexample families often retain explicit successful observations, preventing method failures from being presented as universal negative results.
+- Formal endpoints, analytical extensions, selected finite diagnostics, model review, deposit and editorial acceptance are repeatedly separated.
+- The unrestricted problem and physical continuum remain explicitly open.
+
+UNRESOLVED MATERIAL OBJECTIONS AND CONCRETE TESTS
+O1 — Priority and incremental novelty remain unestablished.
+Locations: Sections 1, 17.1, 23, 28.2, 34, 35.4, 37.4 and 38.4; especially Theorem 35.1 and Proposition 38.1.
+The available primary comparisons support attribution of mechanisms, but do not establish that the restricted critical observation count or diagnostic families are new relative to the full weighted approximation/capacity literature. This is material to journal-level originality and the importance score, not a discovered contradiction in the displayed proofs.
+Resolution test: a proposition-by-proposition comparison identifying exact hypotheses, conclusions and constants against the closest prior results. A prior theorem with the same finite coefficient hypothesis and rectangle-count conclusion would falsify novelty; a precise non-implication plus additional literature checking would narrow this objection. Repeating that methods are classical does not by itself settle incremental novelty.
+
+O2 — Execution and formal-source assertions were not independently checked in this round.
+Locations: Sections 13–14, 24.5, 25, 28.8, 29.5, 34.2 and 35.4; Section 36.3 expressly has no replay.
+This review did not open all archived logs or sources, compile Lean, run the numerical/rational recipes, or verify the entire source-to-theorem/dependency map. PDF hashes establish identity only. New analytical statements are not covered merely because older pinned endpoints are formal.
+Resolution test: at the exact cited commits, reconstruct the advertised endpoints and finite diagnostics in fresh permitted environments, compare raw outputs/manifests and audit theorem hypotheses against the printed claims. Any extra axiom, different theorem, omitted hypothesis or differing accepted output falsifies the corresponding evidence assertion. A matched replay would improve reproducibility confidence but would not establish scientific independence or all-size analytical truth.
+
+O3 — The general rectangular and physical conclusions remain unavailable.
+Locations: Section 27; Sections 35.4, 37.3 and 38.3–38.4.
+At k=D the summability factor used by the proof is one; binary excision does not pay for intermediate coefficients. Neither global spectral rank nor failures of selected certificates fills this missing construction. No interacting coefficient producer, covariant form comparison, continuum limit or OS reconstruction is supplied.
+Resolution test: for the rectangle question, derive an actual all-coefficient partition with the stated count and valid finite penalty, or an admissible fixed-M family defeating every permitted partition/finite penalty. For a physical claim, provide and prove each form/scaling/domain bridge and continuum step. This is a preserved scope boundary, not a demand to solve those problems before a scoped working-paper deposit.
+
+O4 — Section 29.1's exact minimum-penalty formula needs explicit domain labelling.
+Location: p.58, display following “some finite K exists”, after an analysis explicitly on e-perp.
+On the mean-zero subspace the displayed formula follows from the rank-one calculation. If “Kmin” is read as the optimum on the full space, the constant mode additionally requires K>=c, so the full-space minimum is max(c, displayed fraction). For tau=1 the fraction is c-alpha<c, immediately exposing the distinction. The paragraph's restriction to e-perp and later reference to restricted rank make the intended restricted statement recoverable; I do not treat this as a refutation of the main theorems.
+Resolution test: label Kmin as the mean-zero optimum, or state the full-space maximum with c. The constant f=1 is the exact falsifier of any unrestricted smaller penalty. No new numerical run is needed.
+
+O5 — Integrated exposition still carries assembly debt.
+Locations: Section 26 p.45 names v8 as predecessor while the opening guide names v9; Sections 22.6/23.6 preserve “frozen PDF unchanged” language inside a changed integrated artifact; review-context and execution narratives recur in several sections.
+This does not invalidate the mathematics, but makes the exact contribution/evidence boundary harder for a new reader to track and can encourage an accidental transfer of an old status. It is material to a polished submission, not a mathematical veto on an openly labelled working paper.
+Resolution test: a single authoritative candidate/public-version chronology and a compact central evidence matrix, retaining every adverse historical record externally and all relevant limitations in the paper. Explicitly identify which “frozen” object each inherited sentence refers to. A line-level editorial pass can settle this objection without changing theorem claims.
+
+POTENTIAL ERRORS
+No demonstrated error in the central all-size claims was found. O4 is a domain-sensitive formula ambiguity with a concrete constant-mode falsifier under the full-space reading. I have not silently promoted “not found” to a proof of absence. The extensive finite algebra and imported literature were not completely rederived or replayed line by line.
+
+STRONG NOVELTY CANDIDATES — NOT PRIORITY FINDINGS
+A. The k<D actual rectangle construction with critical inverse-mass count and K=c, including its finite balanced-tree/invariant-direction charge (Theorem 35.1).
+B. The all-rectangle strong Green-certificate cost phase diagram at and below the critical exponent, explicitly distinguished from observation rank (Theorem 32.1).
+C. The near-one-moment exact-extension obstruction, aggregate separately minimized harmonic-cost obstruction and growing-dimensional trace discrepancy (Propositions 37.2, 38.1 and Theorem 37.3).
+D. Specific actual-coexact penalty witnesses and the exact critical residue transfer (Section 28.7), as finite model-specific realizations of classical Schur mechanisms.
+The binary corollary is excluded from this list as a new mechanism.
+
+FRESH PRIMARY-SOURCE CHECKING ACTUALLY PERFORMED
+These were targeted comparisons, not a complete bibliography or priority search. No external reviewer report was consulted.
+- Frank, Cwikel's theorem and the CLR inequality, arXiv:1206.3325v1: Section 2 context and Theorem 3.1 statement/proof vicinity. Checked the operator-valued weak ideal estimate and its q/2*(q/(q-2))^(q-1)*C^2 constant against Section 28's counting Fourier C=V^-1/2 application. This supports the classical attribution and finite normalization, not novelty.
+  https://arxiv.org/html/1206.3325v1
+- Nochetto–Otarola–Salgado, arXiv:1402.1916v2: abstract, rectangular-mesh section context and Theorem 5.7. Its weighted anisotropic interpolation constants retain weight/mesh dependence; I did not derive the present observation-count theorem from it.
+  https://arxiv.org/html/1402.1916v2
+- Cruz-Uribe–Dal–Rodney, arXiv:2608.20498v1: abstract, Theorem 4.5 and adjacent discussion. This is continuum weighted Poincare theory with its stated integrability hypotheses; the inspection does not establish the finite partition theorem or its priority.
+  https://arxiv.org/html/2608.20498v1
+- Claros–Perez–Zheng, arXiv:2606.08556v1: abstract and Appendix C, Theorem C.1 and rectangle splitting lemma. Summability and weight hypotheses matter; the presence of rectangles in that source is neither automatic equivalence nor automatic proof of difference.
+  https://arxiv.org/html/2606.08556v1
+- de Berg, UU-CS-1998-12: retrieved primary 15-page PDF and inspected opening description of linear-size BSPs for disjoint fat/uncluttered objects. This supports classical geometric context only; I did not completely re-audit that paper's Section 2.
+  https://ics-archive.science.uu.nl/research/techreps/repo/CS-1998/1998-12.pdf
+- Dorfler–Bullo, Kron Reduction: retrieved primary 14-page manuscript and inspected opening Schur-complement/retained-set framework. This supports its scope as one specified retained set; I did not check every resistance theorem in that paper.
+  https://motion.me.ucsb.edu/pdf/2011d-db.pdf
+Other cited primary works, paywalled articles, every formal source dependency and every source-evidence archive were NOT checked in this round.
+
+ACTUAL INPUT AND VISUAL COVERAGE
+Complete text input: flat_critical_integrated.txt, all 4471 PowerShell text lines, read in sequential nonoverlapping chunks covering 1–4471; raw-byte SHA256 d22a1c04034e583aec2b642b9ece3a98e8d61f8fc1c35e964d9e7bbc92a2eaa3. Page form feeds identify 84 numbered pages. I relied on the supplied Cloud extraction rather than rerunning PDF extraction on Windows.
+Visual input: all 14 supplied contact sheets contact-01.jpg through contact-14.jpg, covering pages 1–84 at overview scale; full-page existing PNGs 23, 48, 71, 72, 80 and 81 for mathematical formula/layout inspection. Full-resolution inspection of all 84 pages was NOT performed. The inspected full pages have readable equations and no material clipping; contact overviews reveal no gross missing pages or layout collapse. This is not a pixel-by-pixel visual certification.
+Operational inputs: D:\LEEME.md; repository CLAUDE.md and docs/OPERATIONAL-GOVERNANCE-CHARTER.md; PDF reading skill. No previous review files or author responses were opened.
+Execution: text reading/writing, hashes, existing images and web primary-source reading only. No Windows TeX, PDF render, Lean build, oracle, scientific numerical run or certifier execution occurred. No manuscript edits were made.
+All report hashes in report-hashes.sha256 concern exact raw bytes as written, with no normalization. The external checksum list avoids a self-hash assertion inside the context report.
+
+PUBLICATION DISTINCTIONS
+The recommendation concerns a scoped working paper. This candidate has no assigned public version ID or native receipt in this assessment. A report file and visible stars do not imply publication, editorial screening, acceptance, human peer review or author permission. Preserve this complete report, its limitations, all five objections and any adverse historical records. Do not use the overall score as evidence that the open general or physical questions have been solved.
+

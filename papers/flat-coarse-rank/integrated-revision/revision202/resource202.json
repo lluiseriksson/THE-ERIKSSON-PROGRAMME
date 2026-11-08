@@ -1,0 +1,17 @@
+{
+  "request_utc": "2026-11-08T09:47:15Z",
+  "release_finished_utc": "2026-11-08T09:50:37Z",
+  "runtime": "Owned tep202-own-cpu, Colab Linux CPU highRAM",
+  "cli": "Official google-colab-cli0.7.5 in local WSL orchestration; existing ADC reused without new scopes",
+  "new_session_exit": 0,
+  "exec_exit": 0,
+  "download_exit": 0,
+  "stop_exit": 0,
+  "actual_build_seconds": 114.73146960799994,
+  "child_maxrss_kib": 127528,
+  "compute_units_billed": null,
+  "archive_verified": true,
+  "download_protocol": "Official authenticated HTTPS Jupyter Contents API via CLI, no browser data/blob link",
+  "old200_archive_recovered": false,
+  "outer_cli_exit_files": "Diagnostic actual exit-code captures, not atomic acceptance sentinels. Acceptance uses completed wrapper exit0, literal successful logs, archive hashes and separately atomic10 build sentinels."
+}

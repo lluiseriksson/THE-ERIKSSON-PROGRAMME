@@ -1,0 +1,149 @@
+{
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "version": "candidate202",
+  "version_id": null,
+  "canonical_sha256": "c90f30000d0e723b88af0e9402f1d3e697077a8c9d15f131082e7627ea06b27c",
+  "provider": "OpenAI",
+  "model_id": null,
+  "assessed_at": "2026-11-08T09:56:02Z",
+  "prompt_version": "ARR-ASSESS-1.0/exact-pdf-candidate202-single-round",
+  "independence": "unknown",
+  "recommendation": "suitable_scoped_working_paper_specialist_revision_before_journal_acceptance",
+  "millennium_score": 4.2,
+  "overall_stars": 4,
+  "overall_stars_display": "★★★★☆☆☆☆☆☆",
+  "overall_stars_scale": "nearest whole millennium_score on 0–10 scale, minimum 1",
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "display": "★★★★☆",
+      "basis": "Central arguments survived full text reading and focused analytic checks; no formal rebuild or scientific replay."
+    },
+    "rigor": {
+      "stars": 4,
+      "display": "★★★★☆",
+      "basis": "Self-contained finite proofs with explicit normalization, quantifiers, geometry and analytic/formal boundaries; formula-domain clarification remains."
+    },
+    "novelty": {
+      "stars": 3,
+      "display": "★★★☆☆",
+      "basis": "Specific constructions and diagnostic families are plausible incremental contributions; mechanisms are classical and priority is unestablished."
+    },
+    "significance": {
+      "stars": 3,
+      "display": "★★★☆☆",
+      "basis": "Useful specialist flat-lattice results; general rectangle problem and interacting/continuum bridges remain open."
+    },
+    "reproducibility": {
+      "stars": 3,
+      "display": "★★★☆☆",
+      "basis": "Immutable evidence locators and careful reported run scopes; only PDF/text identity and supplied images were checked here, no fresh recipe/build execution."
+    }
+  },
+  "summary": "A strong specialist dossier of finite flat-lattice observation budgets, global critical inverse-moment sufficiency, restricted actual rectangular constructions and route-specific counterexamples. No blocking mathematical counterexample to central claims was found in this limited review. The k<D construction and growing-dimensional trace discrepancy are particularly substantive. Binary means are explicitly an earlier threshold corollary. General rectangular and physical continuum questions remain open; no acceptance or independent verification is implied.",
+  "strengths": [
+    "Actual maps, positive-start forms, coexact potentials and disjoint partitions are constructed.",
+    "Necessary rank, spectral observations, rectangle means, penalty coefficients and certificate costs are distinguished.",
+    "Theorem 35.1 derives local energy from coefficients and charges terminal descendants with at least one invariant direction.",
+    "Boundary comparison failures are separated from successful selectable binary observations.",
+    "Formal endpoints, analytic proofs, finite diagnostics and historical exact-artifact assessments retain distinct status."
+  ],
+  "weaknesses": [
+    "Incremental originality and exhaustive priority comparison remain unresolved.",
+    "No fresh formal compilation, scientific replay or full archive/dependency audit was performed in this assessment.",
+    "Exact invariance remains required by the partial-coordinate tree argument.",
+    "The general fully variable critical rectangular question and interacting/continuum physical dictionary remain open.",
+    "The integrated 84-page presentation contains repeated operational context and historical referent ambiguity."
+  ],
+  "potential_errors": [
+    {
+      "location": "Section 29.1 p.58",
+      "description": "Domain-sensitive Kmin ambiguity: the displayed fraction is correct on the mean-zero subspace; a full-space reading also requires max with c.",
+      "exact_test": "tau=1 gives displayed c-alpha<c, but f=1 forces K>=c.",
+      "status": "clarification needed; not a demonstrated failure of the central theorems"
+    }
+  ],
+  "strong_novelty_candidates": [
+    {
+      "result": "Theorem 35.1",
+      "basis": "Actual k<D critical inverse-mass rectangular construction with K=c and balanced invariant-direction charging.",
+      "priority_established": false
+    },
+    {
+      "result": "Theorem 32.1",
+      "basis": "All-rectangle strong Green-certificate cost phase diagram, separate from observation rank.",
+      "priority_established": false
+    },
+    {
+      "result": "Proposition 37.2, Theorem 37.3, Proposition 38.1",
+      "basis": "Near-one-moment extension and growing-dimensional independently minimized trace discrepancy families.",
+      "priority_established": false
+    },
+    {
+      "result": "Section 28.7",
+      "basis": "Actual-coexact prescribed-mean penalty witnesses and critical residue transfer as model-specific realizations.",
+      "priority_established": false
+    }
+  ],
+  "unresolved_material_objections": [
+    {
+      "id": "O1",
+      "location": "Sections 1, 17.1, 23, 28.2, 34, 35.4, 37.4, 38.4; Theorem 35.1 and Proposition 38.1",
+      "severity": "material originality limitation",
+      "objection": "Targeted classical-method comparisons do not establish incremental priority of the specific restricted construction and diagnostic families.",
+      "falsifier_or_resolution": "Compare exact hypotheses/conclusions/constants with closest weighted approximation/capacity and adaptive partition results. A prior theorem giving the same finite coefficient-to-rectangle count falsifies novelty.",
+      "blocks_scoped_working_paper": false
+    },
+    {
+      "id": "O2",
+      "location": "Sections 13–14, 24.5, 25, 28.8, 29.5, 34.2, 35.4; Section 36.3",
+      "severity": "material verification limitation",
+      "objection": "This round did not rebuild formal sources, inspect all archived logs/dependencies, or replay scientific diagnostics. Section 36's diagnostics are explicitly unexecuted.",
+      "falsifier_or_resolution": "Reconstruct exact pinned sources and audit printed theorem hypotheses against dependency readouts and raw outputs. Extra axioms, changed statements, omitted hypotheses or mismatched accepted outputs falsify the respective evidence assertion.",
+      "blocks_scoped_working_paper": false
+    },
+    {
+      "id": "O3",
+      "location": "Section 27; Sections 35.4, 37.3, 38.3–38.4",
+      "severity": "material scope limit",
+      "objection": "Fully variable intermediate coefficients and interacting/continuum physical conclusions remain open. Exact invariance is essential to the presented tree charge; binary excision does not cover intermediate levels.",
+      "falsifier_or_resolution": "For rectangles derive a valid all-coefficient partition/count/penalty or defeat every permitted partition on an admissible fixed-M family. Physical claims require proved form/domain/scaling and continuum bridges.",
+      "blocks_scoped_working_paper": false
+    },
+    {
+      "id": "O4",
+      "location": "Section 29.1, p.58, Kmin display following analysis on e-perp",
+      "severity": "minor but concrete formula-domain ambiguity",
+      "objection": "The displayed minimum is a mean-zero optimum. If read on the full space it omits the constant-mode floor K>=c.",
+      "falsifier_or_resolution": "For tau=1, the fraction equals c-alpha<c while the constant field requires K>=c. Label the domain explicitly, or state full-space Kmin=max(c, displayed fraction).",
+      "blocks_scoped_working_paper": false
+    },
+    {
+      "id": "O5",
+      "location": "Section 26 p.45 versus opening guide; Sections 22.6 and 23.6; repeated evidence narratives",
+      "severity": "submission presentation limitation",
+      "objection": "The integrated manuscript retains v8/v9 chronology and inherited frozen-artifact phrasing that can confuse current versus historical referents.",
+      "falsifier_or_resolution": "Provide one authoritative chronology and identify each unchanged historical artifact explicitly, retaining all adverse records. Consolidate evidence-status navigation.",
+      "blocks_scoped_working_paper": false
+    }
+  ],
+  "not_checked": [
+    "Independent Lean rebuild",
+    "All source modules and full dependency closure",
+    "Every archived scientific log or manifest",
+    "Scientific/numerical/rational replay",
+    "Exhaustive novelty/priority search",
+    "Full-resolution visual inspection of all 84 pages",
+    "Interacting/continuum Yang–Mills identification"
+  ],
+  "binary_novelty_status": "Proposition 38.2 is an explicit corollary of the earlier Section 21 threshold construction; no separate new-mechanism novelty credit.",
+  "publication_status": "Candidate label only; no native version ID or receipt assigned by this report; no editorial acceptance, human peer review or deposit authorization.",
+  "single_round": {
+    "declared_rounds": 1,
+    "target_score_supplied": false,
+    "resampling": false
+  },
+  "report_file": "scientific-review.txt",
+  "context_file": "review-context.json",
+  "report_hash_manifest": "report-hashes.sha256"
+}

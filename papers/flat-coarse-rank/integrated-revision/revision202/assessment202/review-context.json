@@ -1,0 +1,168 @@
+{
+  "schema": "exact-pdf-review-context-1.0",
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "version": "candidate202",
+  "version_id": null,
+  "native_receipt": null,
+  "assessed_at": "2026-11-08T09:56:02Z",
+  "timezone": "UTC",
+  "review_started_at": null,
+  "review_started_at_note": "No exact start timestamp was captured; do not infer it from file modification times.",
+  "round": {
+    "declared": 1,
+    "resampling": false,
+    "target_score": null,
+    "prompt_version": "ARR-ASSESS-1.0/exact-pdf-candidate202-single-round"
+  },
+  "identity": {
+    "provider": "OpenAI",
+    "application": "Codex",
+    "exposed_description": "Codex, agent based on GPT-6",
+    "model_id": null,
+    "served_backend": "unexposed",
+    "reasoning_effort": "unexposed",
+    "configured_model": "not attested by this review",
+    "independence": "unknown",
+    "shared_account": true,
+    "shared_filesystem": true,
+    "blindness_claim": false,
+    "human_review_claim": false,
+    "formal_verification_claim": false
+  },
+  "review_boundary": {
+    "assignment": "Fresh full integrated exact-PDF numerical assessment; preserve every objection and negative result; no desired score.",
+    "prior_reports_opened": false,
+    "author_responses_opened": false,
+    "other_reviewer_reports_opened": false,
+    "incoming_followups_during_review": 0,
+    "historical_disclosures_in_pdf_read": true,
+    "historical_grades_adopted": false,
+    "manuscript_edited": false
+  },
+  "canonical_artifact": {
+    "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-08_integrated202\\flat_critical_integrated202.pdf",
+    "sha256": "c90f30000d0e723b88af0e9402f1d3e697077a8c9d15f131082e7627ea06b27c",
+    "hash_representation": "exact raw file bytes, no normalization",
+    "bytes": 807652,
+    "numbered_pages": 84,
+    "hash_recomputed": true
+  },
+  "input_coverage": {
+    "text": {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-08_integrated202\\flat_critical_integrated.txt",
+      "sha256": "d22a1c04034e583aec2b642b9ece3a98e8d61f8fc1c35e964d9e7bbc92a2eaa3",
+      "hash_representation": "exact supplied extraction file bytes, no normalization",
+      "lines": 4471,
+      "coverage": "All text lines 1–4471; all sections 1–38, opening guide, disclosures and references",
+      "method": "Supplied Cloud pdftotext extraction read in full; no local extraction/render run"
+    },
+    "visual": {
+      "directory": "D:\\Capturas\\the-eriksson-programme\\2026-11-08_integrated202",
+      "contact_sheets": [
+        "contact-01.jpg",
+        "contact-02.jpg",
+        "contact-03.jpg",
+        "contact-04.jpg",
+        "contact-05.jpg",
+        "contact-06.jpg",
+        "contact-07.jpg",
+        "contact-08.jpg",
+        "contact-09.jpg",
+        "contact-10.jpg",
+        "contact-11.jpg",
+        "contact-12.jpg",
+        "contact-13.jpg",
+        "contact-14.jpg"
+      ],
+      "contact_page_coverage": "1–84 at overview scale",
+      "full_page_pngs": [
+        "page-23.png",
+        "page-48.png",
+        "page-71.png",
+        "page-72.png",
+        "page-80.png",
+        "page-81.png"
+      ],
+      "full_resolution_all_pages": false,
+      "observed": "No material clipping on six focused full-page images; no gross missing-page/layout collapse in overview. Not a pixel-by-pixel certification."
+    },
+    "operational_files": [
+      "D:\\LEEME.md",
+      "C:\\Trabajo\\the-eriksson-programme\\coexact-family-20261031\\CLAUDE.md",
+      "C:\\Trabajo\\the-eriksson-programme\\coexact-family-20261031\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "C:\\Users\\lluis\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.1104.22356\\skills\\pdf\\SKILL.md"
+    ],
+    "formal_source_modules_read": false,
+    "evidence_archives_opened": false
+  },
+  "primary_sources_checked": [
+    {
+      "url": "https://arxiv.org/html/1206.3325v1",
+      "scope": "Section 2 context and Theorem 3.1 statement/proof vicinity; operator-valued constant and counting Fourier normalization"
+    },
+    {
+      "url": "https://arxiv.org/html/1402.1916v2",
+      "scope": "Abstract, rectangular-mesh context, Theorem 5.7 with weight/mesh-dependent constants"
+    },
+    {
+      "url": "https://arxiv.org/html/2608.20498v1",
+      "scope": "Abstract, Theorem 4.5 and adjacent weighted continuum discussion"
+    },
+    {
+      "url": "https://arxiv.org/html/2606.08556v1",
+      "scope": "Abstract and Appendix C: Theorem C.1 and rectangle splitting lemma with summability hypotheses"
+    },
+    {
+      "url": "https://ics-archive.science.uu.nl/research/techreps/repo/CS-1998/1998-12.pdf",
+      "scope": "Primary 15-page PDF retrieved; opening BSP/fat-object context read, not complete Section 2 audit"
+    },
+    {
+      "url": "https://motion.me.ucsb.edu/pdf/2011d-db.pdf",
+      "scope": "Primary 14-page PDF retrieved; opening specified-retained-set Schur framework read, not complete theorem audit"
+    }
+  ],
+  "source_comparison_limit": "Targeted primary checking only. No exhaustive bibliography, priority result or independent discovery established. Other references not freshly checked.",
+  "execution": {
+    "windows_actions": [
+      "text read/write",
+      "file metadata and SHA256",
+      "existing image viewing",
+      "primary-source browsing"
+    ],
+    "tex": false,
+    "render": false,
+    "lean": false,
+    "oracle": false,
+    "numerical_replay": false,
+    "rational_certifier": false,
+    "colab_runtime_opened": false
+  },
+  "outcome": {
+    "millennium_score": 4.2,
+    "overall_stars": 4,
+    "overall_stars_display": "★★★★☆☆☆☆☆☆",
+    "overall_scale": "0–10 scientific importance; stars nearest whole score, minimum 1",
+    "criteria_scale": "separate 1–5",
+    "recommendation": "suitable_scoped_working_paper_specialist_revision_before_journal_acceptance",
+    "blocking_mathematical_counterexample_found": false,
+    "not_found_is_not_verified_absence": true,
+    "unresolved_objection_ids": [
+      "O1",
+      "O2",
+      "O3",
+      "O4",
+      "O5"
+    ],
+    "binary_result": "earlier threshold corollary; no separate novelty credit",
+    "general_rectangular_problem": "open",
+    "interacting_continuum_Yang_Mills": "not established",
+    "publication_or_acceptance_inferred": false
+  },
+  "report_hashes": {
+    "representation": "Exact raw UTF-8 files as written by PowerShell Set-Content; no normalization",
+    "scientific-review.txt": "a0c7ba6f8ac598eefd953c7899a92d8a0fee10d00fe2aeda9373617efcc74b7f",
+    "candidate-response.json": "f4f75109056d0bd27e57fb0f73c4f391fdf48d759ed0af605e56b4e3c6126246",
+    "review-context.json": "See external report-hashes.sha256 to avoid an impossible embedded self-hash"
+  },
+  "retention": "Full report and all objections retained. No manuscript changes or publication performed."
+}

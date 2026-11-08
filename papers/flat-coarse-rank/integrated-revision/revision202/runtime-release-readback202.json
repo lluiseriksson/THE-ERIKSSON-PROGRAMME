@@ -1,0 +1,10 @@
+{
+  "recorded_utc": "2026-11-08T10:04:14.640280+00:00",
+  "route": "Official Colab CLI --auth adc sessions",
+  "actual_process_exit": 0,
+  "literal_stdout": "[colab] No active sessions found on server.\n",
+  "own_session": "tep202-own-cpu",
+  "prior_stop_actual_exit": 0,
+  "secret_exposed": false,
+  "scope": "Readback after terminating own202; not a perpetual account state assertion"
+}

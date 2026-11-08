@@ -1,0 +1,50 @@
+{
+  "reviewed_utc": "2026-11-08T09:53:09.591787+00:00",
+  "pdf_sha256": "c90f30000d0e723b88af0e9402f1d3e697077a8c9d15f131082e7627ea06b27c",
+  "pages": 84,
+  "method": "Visual inspection of all14 six-page contact sheets covering84pages; full-size page PNGs1,2,80,81,82,84 inspected",
+  "contact_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "full_size_pages": [
+    1,
+    2,
+    80,
+    81,
+    82,
+    84
+  ],
+  "visible_layout_defects": [],
+  "checks": "No observed clipping, overlapping text, broken mathematical glyphs or missing page content; revised title/abstract, scope table, binary corollary and references readable",
+  "scope": "Visual layout QA, not mathematical or independent verification; exact full scientific assessment pending",
+  "reviewer": "Preparing Codex agent; exact served backend/effort unexposed",
+  "contacts": {
+    "contact-01.jpg": "a2e87c017015e1ade868fca16dfbc85e63f55050a352d385014ea8b501a5461e",
+    "contact-02.jpg": "e4d586aabb546dbea1f935032d01fc3f788f89b43530989e03e332888bc22244",
+    "contact-03.jpg": "4f0790a34db183847b98cc00bbc9e4331ed3d27c9e826d1533b238d7e77160a1",
+    "contact-04.jpg": "a576f59f0b810ec6a0b8c79eec291b888edca071a5a558152a569133bba42aad",
+    "contact-05.jpg": "4cf9442d08be0c297b3bddb1d31ac670ae05129825d8445f7549301bb058221f",
+    "contact-06.jpg": "5172d9dc8344377e1d129724bff0f17c6f217f8c08f651d1ca9111ac5440c837",
+    "contact-07.jpg": "a82667fb4efe407e4171419d56c47891d99249eaecb0d5add9cc92584703eb02",
+    "contact-08.jpg": "cc1ffcbff52f2af06f677c2e9955d4993c80c00b6e840eaa48df183504866032",
+    "contact-09.jpg": "0c9459cea388470e04c84563cb8727d08fecb8e173ba45eb6be202cf760afa20",
+    "contact-10.jpg": "bdeef07ee6f3218778977be3aab886e3f95db9461189c92ce5131fb455907978",
+    "contact-11.jpg": "7943e86916abbed3e2118acbfd82bceb98d584ad3dcbdcacd411703440b21398",
+    "contact-12.jpg": "da6d8d50473c5b53b37103cf7620cee5b8757479dee43cdd147bea2efc8865ae",
+    "contact-13.jpg": "35f258015eeec7e4f90772186f2663b10c089988970e8c3d335abac05ae6b468",
+    "contact-14.jpg": "56b41e69f15994dc6913b26682f2e0bb1abb25b83162995fb950cf007ada5e79"
+  }
+}
