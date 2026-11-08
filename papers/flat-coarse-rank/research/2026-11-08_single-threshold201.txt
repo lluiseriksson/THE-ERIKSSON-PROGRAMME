@@ -1,0 +1,196 @@
+UNIT201: A general single-threshold bound and its sharp route limitation
+Analytic source candidate. Basef49b3f28a69667ba8a00d9bdd1aaaf130f441ba6.
+No mathematical executable, Lean, oracle, PDF or runtime allocation.
+
+QUESTION AND SCOPE
+Can the point-isolation construction199 be extended to all admissible
+coefficients by choosing one threshold optimally? It gives a genuine general
+positive inequality but loses half of the mean exponent in its rank budget.
+An explicit fixed-M2 family proves that this loss cannot be repaired inside
+the defined single-threshold/refinement/singleton-isolation strategy, even
+though D+1 adapted rectangles solve that family at the original target order.
+This is a route limitation, not a counterexample to the unrestricted theorem.
+
+1. ACTUAL FINITE CONVENTIONS
+Let integers D>=3,n>=3, p=D/2,N=n^D, X=(Z/nZ)^D. Let c>0 and a:X->[1,infty)
+have actual arithmetic mean mu>=1 and critical actual inverse moment
+  M_actual=N^(-1)sum_X(mu/a(x))^p<=M.
+The original extra envelope a<=2mu is allowed but not needed in the upper
+bound. Define
+  E_a(f)=sum_(x in X)sum_(i=1)^D a(x)|f(x+e_i)-f(x)|^2,
+  ||f||_N^2=N^(-1)sum_X |f|^2.
+Each positive-start edge occurs once; internal rectangle edges never wrap.
+For a partition into nonempty integer rectangles R set
+  (P f)_R=sum_R f/sqrt(N|R|)=sqrt(|R|/N)bar f_R.
+Then rank(P)=J=#rectangles for real scalar fields, by disjoint row supports.
+For r independent real components the corresponding scalar rank is rJ.
+No color/coexact or physical rank identification is implicit.
+
+2. TWO ELEMENTARY LEMMAS, WITH THEIR WITNESSES
+For a product rectangle whose integer side lengths are <=L,
+  Var_R(f)=sum_R|f-bar f_R|^2 <= (L^2/4) E_R^0(f),      (2.1)
+where E_R^0 sums unweighted internal nonwrapping edges. On an l-site path,
+variance=(1/l)sum_(u<v)|f_u-f_v|^2. Telescoping/Cauchy-Schwarz and v-u<=l
+bound the coefficient at edge k by k(l-k)<=l^2/4 after cancelling 1/l.
+For l=1 variance and energy both vanish. To tensorize, coordinate averaging
+projections A_i commute and are orthogonal in counting L2. Expand into
+components indexed by subsets S of coordinates. Each nonconstant component
+occurs once in total variance and |S|>=1 times in sum_i||(I-A_i)f||^2.
+Apply the path estimate on each fiber to prove(2.1), without a factor D.
+
+To isolate a vertex z in R=product_i[alpha_i,beta_i], partition into {z}
+and up to two pieces per coordinate i: coordinates j<i fixed at z_j;
+coordinate i in [alpha_i,z_i-1] or [z_i+1,beta_i]; coordinates j>i keep
+their original intervals. Drop empty pieces. The first coordinate where
+x!=z differs, and its sign, select its unique piece. This is an exact
+disjoint cover, of at most2D+1 nonempty rectangles. A split adds <=2D
+boxes, never increases a side length, and leaves earlier singleton boxes
+untouched when distinct marked vertices are processed. Consequently m marked
+vertices can all be isolated using at most J0+2Dm final boxes from an initial
+J0-box partition. This is an existence/count statement, not a measured
+implementation complexity claim. No logarithmic depth factor is needed.
+
+3. GENERAL POSITIVE RESULT FROM ONE THRESHOLD
+Fix any real h>=1. Set b=max(1,sqrt(c)),
+  L(h)=min(n,max(1,floor(sqrt(h)/b))), B_h={x:a(x)<h}, m_h=|B_h|.
+Start with the regular grid of chunks of length L(h), retaining a final
+shorter nonempty chunk on each coordinate. Isolate B_h by Section2. Every
+non-singleton final box has a>=h at all its vertices and side lengths<=L(h).
+If L(h)>=2, then L(h)<=sqrt(h)/b and(2.1) gives its actual internal energy
+>=4h/L(h)^2 Var_R>=c Var_R. For L(h)=1 every variance vanishes.
+Internal edge sets are disjoint; omitted interface/wrap terms are nonnegative.
+Therefore, for all real f,
+  E_a(f)>=c sum_R Var_R(f).
+Orthogonal decomposition into the cell mean and fluctuation gives exactly
+  ||f||_N^2=N^(-1)sum_R Var_R(f)+||Pf||_2^2.
+Thus the same partition proves the global finite-penalty inequality
+  E_a(f)/N+c||Pf||_2^2>=c||f||_N^2.                  (3.1)
+This holds for all f, not just near zero or on ker(P).
+
+For x=sqrt(h)/b, max(1,floor x)>=x/2, considering x<1 and x>=1 separately.
+Hence L(h)>=min(n,sqrt(h)/(2b)), and with ceil(t)<=2t for t>=1,
+  J0=ceil(n/L(h))^D <=(4b)^D max(1,N/h^p).
+The exact actual count before any overestimate is bounded by
+  J(h)<=(4b)^D max(1,N/h^p)+2D m_h.                  (3.2)
+Each member of B_h contributes more than (mu/h)^p to the unnormalized
+critical sum. Consequently
+  m_h<=M N(h/mu)^p,                                 (3.3)
+with the weak inequality valid also when B_h is empty. Equations(3.2)-(3.3)
+are valid for genuine intermediate coefficients; no coefficient is replaced
+by1. Select h=sqrt(mu)>=1. Then
+  rank(P)<=[(4b)^D+2DM] max(1,N/mu^(D/4))
+          <=C1(D,c,M) max(1,(n/(1+mu)^(1/4))^D),     (3.4)
+  C1(D,c,M)=2^(D/4)[(4max(1,sqrt(c)))^D+2DM].
+Here mu>=1 implies 1+mu<=2mu. This is a fully variable scalar positive
+bound under the actual moment. It is weaker than the original target
+max(1,(n/sqrt(1+mu))^D): the mean exponent is D/4 rather than D/2.
+It supplies no physical mass gap and no unrestricted target-order theorem.
+
+4. FIXED-M2 FAMILY THAT DEFEATS EVERY THRESHOLD IN THIS STRATEGY
+Fix D>=3 and integer s>=2, set
+  n=s^2, N=s^(2D), A=s^2, H=s^4, p=D/2,
+  Q={0,...,s-1}^D subset X, |Q|=s^D, delta=|Q|/N=s^(-D).
+Let a=A on Q and H on X\Q. These are actual coefficients, not a nominal
+low value rounded down to1. The exact actual mean is
+  mu=(1-delta)H+delta A=H[1-delta(1-s^(-2))].
+Since delta<=1/8, H/2<=mu<H, 1<=a<=2mu. Moreover (H/A)^p=s^D=delta^(-1),
+so the exact moment is
+  M_actual=(mu/H)^p[(1-delta)+delta(H/A)^p]
+          =(mu/H)^p(2-delta)<2.
+Jensen gives M_actual>=1. Thus M=2 is fixed for this whole sequence.
+The original target T_s=max(1,N/(1+mu)^p) satisfies
+  1<=T_s<=2^p,                                      (4.1)
+because N=H^p and mu>=H/2. This is a nonvacuous uniformly bounded target.
+
+Specify the strategy whose limitation is being proved. Set c=1, so b=1.
+Choose any h>=1, possibly depending arbitrarily on the full coefficient
+field and on s. Begin with ANY nonempty rectangular partition whose every
+side length is <=L(h)=min(n,max(1,floor(sqrt(h)))). Refine it (no later
+coarsening), requiring EVERY vertex with a<h to become a distinct singleton.
+The point-isolation construction of Section3 is one member of this class.
+
+If h<=A, then L(h)<=sqrt(A)=s. Each initial rectangle has <=s^D vertices,
+so its count is at least N/s^D=s^D. Refinement cannot decrease this count.
+If h>A, every vertex of Q lies in B_h, so the final partition has at least
+|Q|=s^D distinct singleton boxes. This includes h=H and h>H as well.
+Therefore every choice of h and every partition strategy just specified has
+  J>=s^D.                                          (4.2)
+The divergence versus(4.1) is unavoidable in this precise strategy. For the
+regular-grid strategy the bound is exact: choose h=A. Then L=s, n=s^2 is
+divisible by s, and B_h is empty because all a>=A. Its grid has exactly
+s^D boxes. Thus min_h J(h)=s^D for that regular-grid-and-isolation strategy.
+On this sequence N/mu^(D/4) is comparable to s^D (between s^D and
+2^(D/4)s^D), so the general half-exponent bound is order-sharp for the
+defined single-threshold route, not established sharp for the full problem.
+
+5. D+1 RECTANGLES SOLVE THE SAME FAMILY AT THE ORIGINAL ORDER
+The field of Section4 has an actual admissible partition with D+1 boxes.
+Keep Q as one box. For each i=1,...,D use the nonempty rectangle
+  x_j in [0,s-1] for j<i,
+  x_i in [s,n-1],
+  x_j in [0,n-1] for j>i.
+For x outside Q, its first coordinate outside [0,s-1] determines its unique
+box. Hence these D boxes partition X\Q disjointly. All starts inside any
+of these strong boxes have coefficient H. Their maximum side length is <=n,
+so(2.1) gives internal energy>=4H/n^2 Var_R=4 Var_R. On Q, coefficient A
+and side length s give internal energy>=4A/s^2 Var_Q=4 Var_Q. These constants
+are valid even for thin strong rectangles. Retained edge sets are disjoint,
+so E_a(f)>=4 sum_R Var_R(f). Define P by the normalized means of these
+D+1 boxes. It follows, in particular for c=1, that
+  E_a(f)/N+||Pf||_2^2>=||f||_N^2,
+  rank(P)=D+1 <=(D+1)T_s.                           (5.1)
+For any fixed 0<c<=4 the same partition works with penalty c. Thus(4.2)
+is a failure of the defined algorithmic certificate/selection route, not of
+all selectable partitions. Allowing local coefficient scales or grouping
+weak vertices instead of mandatory singleton isolation escapes the negative
+premises. No conclusion is made about all alternative one-parameter rules.
+
+6. WHAT IS CLOSED, WHAT REMAINS OPEN
+Derived: an actual fully variable scalar positive finite-penalty bound(3.4)
+with suboptimal rank exponent. Refuted: any target-order claim for the exact
+single-global-threshold / maximum-side grid / refine-only / all-subthreshold-
+vertices-singleton route, by(4.1)-(4.2), even on two growing levels with M<2.
+Verified positive escape: an explicit D+1-box partition(5.1) for that same
+family. The original all-coefficient critical target is NOT refuted or proved.
+No main physical or mathematical hypothesis has been removed by moving it
+into a certificate. No spectral/coexact/color/continuum extension is inferred.
+For constant f=1, (3.1) requires K>=c in this mean convention; K=c is valid,
+without implying optimal total rank.
+
+This closes the attempt to repair the single-threshold route just by tuning h.
+Do not spend another three units on that now-refuted strategy. A possible next
+mechanism is genuinely multilevel grouping, with separate derived local-energy
+and global count estimates; an unproved annular Sobolev or extension constant
+must not be imported as an assumption and then called a solution.
+The sole active original question keeps its statement/hypotheses: actual
+1<=a<=2mu, exact mean mu>=1, actual critical inverse moment<=M; unrestricted
+integer rectangle means of rank<=C(D,c,Nc,M)max(1,(n/sqrt(1+mu))^D), and some
+finite locally quadratic penalty. Scalar/component ranks must stay explicit.
+A main negative answer must defeat EVERY allowed target-order partition and
+finite penalty, not only a chosen algorithm. After3research units without a
+derived advance in a specific remaining route, document and change that route.
+Manuscript/publication work never resets this counter.
+
+7. PRIMARY ATTRIBUTION AND ASSESSMENT CONTEXT
+The Poincare, point-isolation and moment-tail steps are elementary/classical;
+particular-combination priority is unestablished and no exhaustive novelty
+search is claimed. Birman--Solomyak1967, Section2 Theorem2.1 and discussion3,
+require a positive volume exponent in their displayed cube partition theorem;
+the authors explicitly distinguish its zero-exponent boundary. This does not
+supply our missing weighted local-energy or rectangle target. Source checked:
+https://www.mathnet.ru/php/getFT.phtml?jrnid=sm&paperid=4132&what=fullteng
+Brudnyi, arXiv1511.03971, introduces dyadic-ring covering/approximation tools.
+Only its introduction and initial ring-related text were inspected here;
+no theorem from it is invoked to prove this note. A ring cover is not silently
+identified with our actual disjoint rectangular observations. This is a next
+bibliographic lead, not a verified closure:
+https://arxiv.org/html/1511.03971
+Our complete finite proofs(2)-(5) do not rely on either external theorem.
+
+Fresh separate exact-source analytic review is pending. No numeric score,
+stars or PDF review is assigned or inherited. Keep this in the same dossier
+as197-200; do not create a standalone small-corollary paper. The existing85page
+PDF recovery request200 remains pending; no blocked download action was retried.
+Only paper reasoning, primary reading and text/Git/hash operations were used.
+No mathematical program or runtime was run. PR29 stays recorded20/41 with
+TermSource=0 and the physical continuum open, not newly certified here.
