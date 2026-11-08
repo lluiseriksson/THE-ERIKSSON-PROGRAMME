@@ -1,0 +1,25 @@
+{
+  "source_sha": "3b5160dc7b7cbaea8a797fa36f0babf0fe9b8b91",
+  "started_utc": "2026-11-08T22:16:03.693472+00:00",
+  "billed_compute_units": null,
+  "formal_replay": false,
+  "all_n_machine_proof": false,
+  "exits": {
+    "normal": 0,
+    "optimized": 0
+  },
+  "normal": {
+    "accepted_cases": 30,
+    "character_entries": 32736,
+    "sha256": "849458b87858b3ad9d30103a13df7e6be486a66b9a405ea712b3b08ee2b2e24d"
+  },
+  "optimized": {
+    "accepted_cases": 30,
+    "character_entries": 32736,
+    "sha256": "849458b87858b3ad9d30103a13df7e6be486a66b9a405ea712b3b08ee2b2e24d"
+  },
+  "status": "FINITE_DIAGNOSTICS_CHECKED",
+  "finished_utc": "2026-11-08T22:16:06.792987+00:00",
+  "elapsed_seconds": 3.0996516460000976,
+  "child_maxrss_kib": 105512
+}

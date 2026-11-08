@@ -1,0 +1,14 @@
+{
+  "source_sha": "3b5160dc7b7cbaea8a797fa36f0babf0fe9b8b91",
+  "representation": "immutable Git blobs (LF), no normalization after fetch",
+  "inputs": {
+    "STRICT-POSITIVE-SPECTRUM214.md": {
+      "path": "papers/parity-barriers/revision214/STRICT-POSITIVE-SPECTRUM214.md",
+      "sha256": "1a748cb849ce2796baf986f673e982325999c54616fece9caf0fc3453619e415"
+    },
+    "verify_strict_parity214.py": {
+      "path": "papers/parity-barriers/revision214/verify_strict_parity214.py",
+      "sha256": "00b7743cd41c6e0b469cc125a36479808e108d231fe8f0d2e7e59633ded00116"
+    }
+  }
+}
