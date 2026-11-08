@@ -1,0 +1,38 @@
+{
+  "source": "Exact visible Colab output text; not local archive/sentinel validation",
+  "source_sha": "7be52370bb0b778233f703a5f24d4aaf814079cc",
+  "recipe_sha": "04785b34da0691e7c39b3eb87fd4b4b5c63bf2a6",
+  "recipe_sha256": "64c7c8b49b5533b665a137b8996697ca03746bceb28c97a7adbde19245286e6f",
+  "reported_pdf_sha256": "c40b24900f24a9092b7a5348d7e9191e80ae6269e9626b2f667731b08bdb37f3",
+  "reported_pdf_bytes": 813770,
+  "reported_pages": 85,
+  "reported_archive_sha256": "5635292aeda84ac27964a7d6715a51233f45bc23408042403623d9888817941b",
+  "reported_archive_bytes": 29666357,
+  "reported_build_seconds": 117.40927247399998,
+  "reported_child_maxrss_kib": 127764,
+  "reported_zero_child_exits": 10,
+  "local_archive_verified": false,
+  "visual_review": false,
+  "exact_pdf_rating": null,
+  "runtime_release": {
+    "observed_by_utc": "2026-11-08T08:19:56Z",
+    "released": true,
+    "signal": "After disconnect/delete confirmation, actual UI became Ateranslut/Mycket RAM-minne/click to connect",
+    "opening_requested_utc": "2026-11-08T08:10:46Z",
+    "compute_units_billed": null,
+    "duration_exact": null
+  },
+  "blocker": {
+    "kind": "Browser security policy rejection",
+    "action": "downloadMedia on the visible existing verified archive export link",
+    "reason": "URL protocol data: blocked; only http: and https: allowed; authority for network egress not granted",
+    "circumvention": false,
+    "ordinary_download_event": "Timed out; regular Colab files.download attempted before rejection; no completed local download located",
+    "next": "Human saves the existing open-tab export as D:/Entregas/the-eriksson-programme/2026-11-08_integrated200/tep200A-review.zip; do not reload the current notebook tab",
+    "notebook_autosave": "Visible autosave conflict; exported anchor remains available in current preserved tab after runtime release",
+    "new_pdf_permission_needed": false
+  },
+  "public_status": "No new PDF release; priorv9 unchanged; no new stars or intake",
+  "ui_notebook": "https://colab.research.google.com/drive/1kIiyY-GK7_l7ljZfb7k-PJPQ_LaG1bsK",
+  "screenshot": "D:/Capturas/the-eriksson-programme/2026-11-08_integrated200/colab200-export-handoff.jpg"
+}
