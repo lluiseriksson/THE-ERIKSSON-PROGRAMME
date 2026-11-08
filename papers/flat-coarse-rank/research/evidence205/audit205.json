@@ -1,0 +1,65 @@
+{
+  "verdict": "ACCEPT_WITH_STATED_LIMITATIONS",
+  "completed_at": "2026-11-08T12:58:51.397037+00:00",
+  "source_commit": "625bd50110799561511b40ee2ed426e983eed4be",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-08_shell-moment205.txt",
+  "git_blob_sha1": "740d7acbe748835ec4b357c0be82cac1b8483438",
+  "source_representation": "exact Git blob LF bytes; no normalization",
+  "source_bytes": 8909,
+  "source_sha256": "423c38cd9e5d7f300b318fdd362dc47a726d9db87972e2257c4fffb0b9a47b1d",
+  "dependency": {
+    "commit": "8262c72573387d44d82359636f65ec635449a131",
+    "path": "papers/flat-coarse-rank/integrated-revision/revision202/sobolev.tex",
+    "git_blob_sha1": "8d94e94dcc0e3c97df77f10a5e4c1d9de2f8d8dc",
+    "representation": "exact Git LF bytes; no normalization",
+    "bytes": 9469,
+    "sha256": "65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb",
+    "full_proof_read_and_analytically_checked": true
+  },
+  "report_representation": "UTF-8 LF, no BOM",
+  "report_bytes": 11235,
+  "report_sha256": "db4d29409629cd1ab0352f4648e639d2fb972d138c9f00a7e1f6be11c872b6bf",
+  "reviewer": {
+    "provider": "OpenAI",
+    "exposed_identity": "Codex described as GPT-6 based",
+    "served_model_id": null,
+    "reasoning_effort": null,
+    "task": "/root/shell205_source_audit",
+    "full_history_fork": true,
+    "shared_account_and_filesystem": true,
+    "independence_verified": false,
+    "inbound_messages_received": 0
+  },
+  "method": "Frozen-source analytic reasoning; exact bytes/hashes; full dependency proof checked; primary Section2.2 attribution inspected",
+  "blocking_defects": [],
+  "source_correction_required": false,
+  "verified_analytic_claims": [
+    "Full entropy/projection/isoperimetry/median/power/folding proof of pinned box estimate",
+    "q-energy transport to actual shared intersection mean",
+    "Shell volume exponents and tree/multiplicity constants",
+    "Critical Holder p=D/2 with original positive-start site weights",
+    "Uniform-in-thickness local inverse-moment shell estimate"
+  ],
+  "scoped_hypotheses_removed": [
+    "Pointwise mean-scale coefficient lower-bound premise for the specified local scalar shell energy estimate",
+    "Supplied local shell-gap premise for that estimate"
+  ],
+  "new_main_hypotheses_removed": [],
+  "limitations": [
+    "No global-to-local moment selection/count/disjoint rectangle theorem",
+    "No off-center or torus wrapping theorem",
+    "No formal or numerical certificate",
+    "No originality or publication finding",
+    "No physical continuum endpoint"
+  ],
+  "new_grade": null,
+  "stars": null,
+  "pr_body_capture": "Not applicable: no PR205 exists in assignment",
+  "runtime_allocated": false,
+  "build_executed": false,
+  "scientific_script_executed": false,
+  "disposable_clone_created": false,
+  "cleanup_pending": false,
+  "primary_source": "https://arxiv.org/html/1312.5473v6",
+  "primary_scope": "Section2.2 Eq2.9 and Proposition2.4 plus immediate context; no exhaustive priority comparison"
+}
