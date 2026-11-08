@@ -66,7 +66,7 @@ specified separately by $w$. For example an open-chain weight is
 $w_{\gamma,L}(\sigma)=\exp(\gamma\sum_{j=1}^{L-1}\sigma_j\sigma_{j+1})$;
 it is positive for every real $\gamma$. We do not infer the large-$L$ behavior
 of that fixed-$\gamma$ family from the theorem for arbitrary source weights.
-At $L=0$ the configuration space has one element, the empty product equals1,
+At $L=0$ the configuration space has one element, the empty product equals $1$,
 and $A=[w(\emptyset)]$. There is no second eigenvalue at that size.
 
 The generic existence, uniqueness and separation results are classical Perron
@@ -179,7 +179,7 @@ Fix $q\in(0,1)$. For each integer $L\ge1$ put
  H_L(\sigma,\tau)=q^{d_H(\sigma,\tau)},\qquad
  R_L=(1+q)^L,\qquad z_L=q^L,\qquad t_L=\frac{z_L^2}{R_L}.
 \]
-Assign weight1 to the two constant configurations and weight $t_L^2$ to every
+Assign weight $1$ to the two constant configurations and weight $t_L^2$ to every
 other configuration. Let $D_L=\operatorname{diag}(\sqrt{w_L})$,
 $S_L=D_LH_LD_L$, and $A_L=D_L^2H_L$. All weights are strictly positive.
 The eigenvalues are real and positive, with a simple largest eigenvalue.
@@ -242,7 +242,7 @@ The finite-dimensional min-max principle consequently gives
 \]
 Dividing by the appropriate positive bounds on $\lambda_1$ proves both
 inequalities in~\eqref{eq:delta}. Finally
-$\eta_L/z_L=2z_L+z_L^3/R_L\to0$, so both bounds divided by $2z_L$ tend to1.
+$\eta_L/z_L=2z_L+z_L^3/R_L\to0$, so both bounds divided by $2z_L$ tend to $1$.
 Since $K_{\beta,L}=e^{\beta L}H_L$ when $q=e^{-2\beta}$, the positive scalar
 factor changes no eigenvalue ratio and proves the claim for~\eqref{eq:A}.
 \end{proof}
@@ -314,8 +314,8 @@ were not available. No floating numerical spectrum is used as evidence.
 
 \section{Correction record, originality and review context}
 The earlier exact PDF did not specify its full source-weight convention and
-specialized formal premises. Sections1 and5 now supply them. The earlier
-numerical table is removed: its cited19-line open-chain transcript at the
+specialized formal premises. Sections~1 and~5 now supply them. The earlier
+numerical table is removed: its cited 19-line open-chain transcript at the
 stated checkpoint does not match the printed ratios and contains no $L=5$
 row. For example, at $\beta=0.8$, $\gamma=1.2$, $L=2$ the old table prints
 $0.9205$, whereas the cited transcript prints $0.908247$. This establishes a
@@ -330,7 +330,7 @@ compression and perturbation reasoning; a targeted primary-source comparison
 did not establish its priority. Absence of a matching search result is not
 novelty evidence. Perron's original publication details are verified at its
 publisher; its full original proof was not obtained. The primary research
-source~\cite{Ahmadinejad}, Section2.3, explicitly treats the established Perron
+source~\cite{Ahmadinejad}, Section~2.3, explicitly treats the established Perron
 framework; no algorithmic or field-level novelty from that work is attributed
 to this paper. Further relevance of the formal interface requires practical
 reuse, and no comparative formalization effort has been measured.
@@ -353,11 +353,11 @@ Mathematische Annalen \textbf{64} (1907), 248--263.
 \bibitem{Ahmadinejad}A.~Ahmadinejad, A.~Jambulapati, A.~Saberi and A.~Sidford,
 \emph{Perron-Frobenius Theory in Nearly Linear Time: Positive Eigenvectors,
 M-matrices, Graph Kernels, and Other Applications}, arXiv:1810.02348v1 (2018),
-Section2.3. \url{https://arxiv.org/abs/1810.02348}.
+Section~2.3. \url{https://arxiv.org/abs/1810.02348}.
 \bibitem{Lean}L.~de~Moura and S.~Ullrich,
-\emph{The Lean4 theorem prover and programming language}, CADE-28 (2021),625--635.
+\emph{The Lean 4 theorem prover and programming language}, CADE-28 (2021), 625--635.
 \bibitem{Mathlib}The mathlib Community, \emph{The Lean mathematical library},
-CPP 2020, 367--381. Exact historical revision is pinned in Section5.
+CPP 2020, 367--381. Exact historical revision is pinned in Section~5.
 \end{thebibliography}
 \end{document}
 
