@@ -10,6 +10,7 @@
 \usepackage{hyperref}
 \definecolor{linkblue}{rgb}{0.1,0.2,0.55}
 \hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue}
+\emergencystretch=3em
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -285,19 +286,24 @@ not a derivation of a physical observable or a positivity theorem.
 \section{Machine verification}
 
 The accompanying historical record reports a Lean~4/Mathlib check of
-the ordered-field chain of Section~2
-(file \texttt{PhiMonotone.lean} accompanying this note; checked with
-\texttt{lake env lean} against Lean \texttt{4.30.0-rc2}, Mathlib
-commit
-\nolinkurl{cd3b69baae9cd81a572a3720f2372655eca39038}): \texttt{amos\_calibration'} (the exact
-calibration), \texttt{amos\_small} ($u < x/(2m+1)$ from
-\eqref{eq:amos}), \texttt{phi\_unit\_step}
-(Lemma~\ref{lem:factor} plus positivity), and
-\texttt{phi\_step\_of\_recurrences} (Theorem~\ref{thm:main} with the
-recurrences \eqref{eq:rec} and the bound \eqref{eq:amos} entering as
-the named hypotheses \texttt{hrec1}, \texttt{hrec2},
-\texttt{hAmos}). The archived log, dated 9~July~2026, reports the following standard-axiom
-output for the four declarations; this revision has not replayed it:
+this ordered-field argument in \nolinkurl{PhiMonotone.lean}. The recorded
+command is \texttt{lake env lean}, with Lean~\texttt{4.30.0-rc2} and
+Mathlib revision
+\begin{center}\small
+\nolinkurl{cd3b69baae9cd81a572a3720f2372655eca39038}.
+\end{center}
+The recorded declarations are:
+\begin{itemize}
+\item \nolinkurl{amos_calibration'}: the exact calibration;
+\item \nolinkurl{amos_small}: the inequality $u<x/(2m+1)$ from
+\eqref{eq:amos};
+\item \nolinkurl{phi_unit_step}: Lemma~\ref{lem:factor} and positivity;
+\item \nolinkurl{phi_step_of_recurrences}: Theorem~\ref{thm:main}, with
+\eqref{eq:rec} and \eqref{eq:amos} as the named hypotheses
+\texttt{hrec1}, \texttt{hrec2}, \texttt{hAmos}.
+\end{itemize}
+The archived log, dated 9~July~2026, reports the following standard-axiom
+output; this revision has not replayed it:
 \begin{verbatim}
 'amos_calibration'' depends on axioms:
     [propext, Classical.choice, Quot.sound]
@@ -316,15 +322,22 @@ the analytic inputs themselves are classical and cited.
 
 \section{Reproducibility and computational scope}
 
-The source of the supplied \texttt{PhiMonotone.lean} and the unchanged
-historical \texttt{LEAN-VERIFICATION-LOG.txt} is pinned to programme commit
+The supplied files are \nolinkurl{PhiMonotone.lean} and the unchanged
+historical log \nolinkurl{LEAN-VERIFICATION-LOG.txt}. Their programme
+source commit is
 \begin{center}\small
 \nolinkurl{871bb2bee8410dfb5b225d7961203eefaca5c15e}.
 \end{center}
 The source paths at that commit are
-\nolinkurl{papers/phi-lemma/PhiMonotone.lean} and
-\nolinkurl{papers/phi-lemma/LEAN-VERIFICATION-LOG.txt}. The latter records
-\texttt{lake env lean PhiMonotone.lean}, Lean~\texttt{4.30.0-rc2} and the
+\begin{quote}\small
+\nolinkurl{papers/phi-lemma/PhiMonotone.lean}\\
+\nolinkurl{papers/phi-lemma/LEAN-VERIFICATION-LOG.txt}.
+\end{quote}
+The historical log records the command
+\begin{quote}\small\ttfamily
+lake env lean PhiMonotone.lean
+\end{quote}
+with Lean~\texttt{4.30.0-rc2} and the
 full Mathlib revision displayed above. These are historical provenance,
 not a newly authenticated replay in that environment. The package
 \texttt{SOURCE207.json} binds the exact manuscript and supplied files by
