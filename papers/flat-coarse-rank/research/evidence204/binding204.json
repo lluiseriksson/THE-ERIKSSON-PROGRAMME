@@ -1,0 +1,14 @@
+{
+  "source_sha": "ebcfead3e887b0b524be0ba6700d2c409351fb0f",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-08_shell-energy204.txt",
+  "representation": "Exact Git blob LF bytes; no normalization",
+  "source_sha256": "950c3443f74dd5c4458948ea20446c1c16e1631370dce19fc785f4634b9faee8",
+  "source_bytes": 8704,
+  "remote_main": "88f31a1981b757b9240a9076e2012545066b9028",
+  "status": "frozen separate-session analytic audit running; no inbound guidance",
+  "formal_verification": false,
+  "scientific_execution": false,
+  "runtime_allocated": false,
+  "primary_failure": "Caltech continuum PDF open/find502; proof and novelty not inferred from unavailable source",
+  "paper_publication": false
+}

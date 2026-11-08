@@ -1,0 +1,141 @@
+EXACT-SOURCE ANALYTIC AUDIT204
+Frozen commit: ebcfead3e887b0b524be0ba6700d2c409351fb0f
+Source: papers/flat-coarse-rank/research/2026-11-08_shell-energy204.txt
+Git blob SHA1: 12940208c952ad7c507724d756eb8a53611db91b
+Representation: exact Git LF bytes, no normalization, 8704 bytes, zero CR
+Source SHA256: 950c3443f74dd5c4458948ea20446c1c16e1631370dce19fc785f4634b9faee8
+
+VERDICT: ACCEPT_WITH_STATED_LIMITATIONS
+No substantive mathematical defect or required correction found in the
+stated direct internal-energy inequality, including uniformity in shell
+thickness and the separate indicator-energy calculation. This is a scoped
+analytic reading, not a formal certificate, experiment, numerical check,
+originality finding, publication approval, numerical assessment or star grade.
+
+ACQUISITION AND REVIEW CONTEXT
+I read the entire frozen source through git show, obtained its exact bytes
+separately for a length/SHA256 binding, and read the complete203 and203B
+sources at the same commit to check conventions and the actual falsifier.
+I read D:\LEEME.md and the relevant CLAUDE.md environment/split-role and
+OPERATIONAL-GOVERNANCE-CHARTER.md frozen-audit/no-inbound rules. No PR204
+exists in the assignment, so PR-body capture, normalized body bytes and
+body hash are not applicable. No source was edited and no commit made.
+The only executable work was file/Git acquisition, hashes and writing these
+reports. No scientific code, Lean/Lake, build, numerical test or runtime.
+
+Actual exposed identity: OpenAI Codex, described by execution instructions
+as GPT-6 based. Exact served model identifier, backend revision and effort
+setting are not exposed. Task /root/shell204_source_audit is a different
+session from the fabricator. Full inherited parent context includes the
+construction and earlier review history, and account/filesystem are shared.
+There is no blinded or verified independent-review claim. No inbound
+message or partial guidance was received during this audit.
+
+DETAILED ADVERSARIAL ANALYTIC CHECK
+1. Geometry and finite edge cases.
+For D>=2,R>=1,0<=r<R, the J=2D slabs are nonempty rectangular products,
+cover exactly A and have equal v=t L^(D-1). Opposite same-coordinate slabs
+are disjoint; different-coordinate slabs intersect in t^2 L^(D-2) vertices.
+The root reaches the J-2 slabs of all other coordinates in one edge and
+reaches (1,-) through (2,+) in two edges. There are J-1 edges and no cycle.
+All used intersections therefore restrict a long coordinate of each
+participating slab. Delta<=J-1 is a valid conservative bound. D=2, R=1,
+r=0 and t=1 remain valid, with no rounding, empty sets or undefined means.
+D=1 is genuinely excluded: a componentwise constant field on its two
+separate intervals has zero energy but nonzero global variance.
+
+2. Interval-to-subset comparison, especially no hidden |T| loss.
+The difference of the two arithmetic means is exactly the average of
+(g(i)-g(k)) over I times T. Squaring and Jensen bounds it by the average
+pair square. Every pair is linked inside the same interval by at most L-1
+edges; Cauchy-Schwarz bounds its square by L times the full interval
+energy. Averaging cancels the L|T| pair count, proving (3.1) for every
+nonempty T, even one site. This argument pays energy and does not apply
+a false local-error gluing estimate or divide by overlap measure.
+
+3. Fiber normalization and the shared intersection mean.
+For B=I times F, the difference of B and T-times-F means is the uniform
+average over the SAME w fibers of each interval mean difference. Jensen
+then contributes 1/w times the sum of those squared differences. Thus
+(3.2) has L/w times the total directional counting energy, exactly as
+stated, not L*w or an additional |T| denominator.
+For neighboring slabs their distinct restricted coordinates mean that
+S_i intersect S_j is obtained by selecting t sites of one of S_i's long
+L directions and leaving its other factors untouched. Here w=v/L, so
+the coefficient is L^2/v. Reversing i,j gives the same actual intersection
+mean, although the controlled directional energy is a different one.
+Triangle and (a+b)^2<=2(a^2+b^2) prove (4.1). Replacing directional by
+full slab energy enlarges the right side. This is the decisive step that
+bypasses the small-overlap obstruction of203B.
+
+4. Tree path and root-mean constants.
+A path of length at most two gives squared root-to-i mean difference at
+most twice the sum of edge mean differences. Substituting (4.1) gives
+4 L^2/v times the sum of endpoint energies over that path. Enlarging to
+the full tree and counting endpoint occurrences gives at most Delta H.
+Thus (5.1) is valid, including the root with zero left side. No factor of
+v or of the number of slabs is lost. Summing v times the root-mean bound
+over J slabs gives the stated 4J Delta L^2 H term.
+
+5. Box variance, orthogonality and energy multiplicity.
+The interval counting identity is V=(1/ell)sum_(a<b)|g(a)-g(b)|^2 for
+an interval of ell sites. A fixed edge is crossed by k(ell-k)<=ell^2/4
+unordered pairs. Bounding path length by ell and dividing by ell gives
+coefficient at most ell^2/4. Using ell<=L proves the conservative L^2
+bound, including length-one directions with zero variance. Conditional
+variance under the uniform product measure and Jensen for directional
+differences of the coordinate-averaged function tensorize this estimate.
+Multiplying by the box cardinality gives unnormalized counting internal
+energy without an extra transverse-volume or dimension factor.
+The local centered sum vanishes, so the decomposition about m_root in
+(5.2) is exact. The union variance is at most the candidate root-mean error,
+and a covering sum may repeat nonnegative terms, giving the correct first
+inequality. Each slab-internal edge lies inside A; each shell edge appears
+at most J times in H. Therefore H<=J E_A and
+V_A<=J[1+4J(J-1)] L^2 E_A follows. Every cover/tree choice is geometric
+and independent of f, giving the required all-field quantifier.
+
+6. Weighting and smallest-scale indicator energy.
+Under a(x)>=alpha>0 on A, the start of every retained positive-direction
+internal edge is in A. Hence the weighted energy is at least alpha times
+the unweighted sum, proving only the conditional (6.1). This does not
+produce alpha comparable to the global coefficient mean from its moment.
+For t=1, f=1_{x_1=R} has no jumps in transverse directions or between
+points sharing its first coordinate. The only possible jumps are the
+x_1 edges from R-1 to R. The second endpoint is always in A, while the
+first is in A exactly when at least one transverse coordinate has absolute
+value R. There are L^(D-1)-(L-2)^(D-1) such transverse choices and each
+jump is one. This remains correct for R=1,r=0,D=2; the excluded central
+point is not accidentally used. There is no outside or wrapped edge.
+For n=D-1>=1, the difference L^n-(L-2)^n is at least L^(n-1): for n=1
+it equals2, and for larger n the factorization 2 sum_(j=0)^(n-1)
+L^(n-1-j)(L-2)^j already contains 2 L^(n-1). Thus the global error at
+most L^(D-1) divided by the positive energy is at most L as claimed.
+No contradiction with203B follows: its denominator was local variance,
+not internal energy. The two mathematically different statements coexist.
+
+PRIMARY CONTEXT AND NOVELTY BOUNDARY
+I opened https://arxiv.org/html/1511.03971v1 and inspected the AppendixI
+heading and TheoremI.1. It concerns a special continuum dyadic-ring cube
+cover, not this discrete slab-energy argument. No result from that source
+is used to validate the proof above and no criticism of its special
+construction is made. I have not independently read the Caltech PDF whose
+failed lookup the source transparently reports; its claim is unnecessary
+for this self-contained proof. No exhaustive priority comparison, novelty
+finding or claim of a new publishable Poincare theorem is established.
+
+LIMITATIONS AND DISPOSITION
+A thickness assumption is actually removed from the stated local scalar
+shell internal-energy estimate by a proof. It is not removed from the
+false local-error comparison. Off-center holes, wrapping torus geometry,
+weighted control at the coefficient-mean scale, moment-controlled shell
+selection/count, a disjoint rectangle partition valid for every f, and
+coexact/color or physical continuum endpoints are not established.
+The explicit source keeps those limitations and does not hide them in a
+structure or relabel a conditional alpha assumption as a proved result.
+Retain the complete source and this report in the same research dossier.
+No source correction, new paper, regrade or star assessment is required
+by this analytic reading. PR29 remains20/41, TermSource=0, continuum open.
+
+Cleanup: no disposable clone, worktree or runtime was created; none is
+pending. Only source-audit204.txt and audit204.json were written on D:.
