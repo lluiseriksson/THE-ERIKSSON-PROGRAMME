@@ -1,0 +1,71 @@
+{
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "version": "v9",
+  "version_id": "arr:version:d7b18a02-4e4b-42a8-b524-52e21a6497cf",
+  "canonical_sha256": "0e641695cc59257c87880bd63fdfb0d115018fa563a1d7b7b9d97e3a39e7aed9",
+  "provider": "OpenAI",
+  "model_id": "Codex (GPT-6-based per session instructions; exact served backend identifier unexposed)",
+  "assessed_at": "2026-11-08T04:23:05.8038552Z",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "unknown",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.1,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "Main analytic chains withstand normalization, dimension, endpoint and quantifier scrutiny; no independent formal closure, and local scope clarifications remain."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Detailed finite proofs handle odd lengths, singletons, real/complex dimensions and singular compatibility; fragmented presentation and implicit normalization remain."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Specific constructive and negative families are credible novelty candidates; core tools are classical and close adaptive-approximation comparison is incomplete."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "Useful finite weighted-lattice observation theory; unrestricted critical rectangular sufficiency and interacting/continuum questions remain open."
+    },
+    "reproducibility": {
+      "stars": 3,
+      "basis": "Exact hashes and selected archived outputs are consistent; no local scientific replay or independent formal dependency-closure rebuild was performed."
+    }
+  },
+  "summary": "The exact 82-page PDF was assessed in full. No blocking gap was identified in its stated main analytic theorems. The k<D exact-invariance rectangular construction is the strongest positive contribution; certificate and extension counterexamples remain carefully scoped. Minor scope, normalization, literature-comparison and presentation revisions are requested. Same single completed scientific assessment; technical linkage after validated native intake only, with no new review or grade. Factual prior participation across sessions unknown. Fresh delegated task history, shared orchestration/account/filesystem; isolation not verified, not blind or organizationally independent. No human peer review or editorial acceptance. No standalone prior reports or author responses were read; historical disclosures embedded in the canonical PDF were read. No inherited grade. No local scientific execution or independent formal closure. Strong scoped finite-lattice contribution. Classical mechanisms, provisional priority, limited verified execution scope, and the open unrestricted rectangular problem prevent a higher rating. No Millennium solution asserted.",
+  "strengths": [
+    "Actual unit-spacing Fourier/coexact packets give honest finite information budgets and nonlinear tangent obstructions.",
+    "Critical scalar and matrix inverse-moment spectral bounds keep counting normalization and real multiplicities straight.",
+    "The partial-invariance theorem constructs actual disjoint rectangular arithmetic means with K=c, deriving local control and terminal tree charging.",
+    "Exact penalty examples preserve singular compatibility and provide actual coexact witnesses.",
+    "Green-certificate and harmonic-transfer failures are separated from unrestricted observation-rank claims.",
+    "Historical artifacts, finite diagnostics, analytic proofs and formal endpoints are explicitly distinguished."
+  ],
+  "weaknesses": [
+    "Classical Fourier, Cwikel, Schur, resistance, Sobolev and adaptive-tree mechanisms limit general-method originality.",
+    "R1. Closest adaptive-approximation comparison, especially Birman-Solomyak partition-function theory, remains incomplete.",
+    "R2. Section 29.1 should repeat that its displayed K_min formula is on the mean-zero space; full space also requires K>=c.",
+    "R3. Section 28.3 should define normalized observation as a contraction for its numerical penalty lower bound.",
+    "R4. Repeated historical workflow material and frozen-artifact wording obscure the current theorem structure. Clarify historical frozen-reviewed-PDF/pending-permission wording and consolidate repeated provenance; add a compact analytic/formal/diagnostic dependency map.",
+    "R5. No independent full formal closure or all-size scientific replay was done; selected archives only establish integrity and finite recorded controls. Hash consistency does not establish execution provenance, correctness or an independent complete dependency-closure rebuild.",
+    "Exact invariance k<D, nonlocal spectral observations, and missing interacting form identifications remain substantive boundaries.",
+    "The unrestricted fully variable critical rectangular problem remains open.",
+    "The proof of Theorem 35.1 requires at least one exactly invariant coordinate; no approximate-invariance extension is established.",
+    "No interacting or continuum Yang-Mills mass gap is claimed or verified.",
+    "Prior participation across sessions is unknown and shared context does not establish independence.",
+    "Historical formal reproduction assertions were not independently rebuilt; finite archives do not certify all-size proofs."
+  ],
+  "potential_errors": [
+    "R2; minor_scope_clarification; Section 29.1, page 58. The printed K_min expression is derived on e-perp. If interpreted on the full space it omits the constant-mode floor. Correction: Label mean-zero scope explicitly; the full-space minimum is max(c, displayed expression). Main-claim material: false.",
+    "R3; minor_normalization_clarification; Section 28.3, page 49. The numerical penalty lower bound needs ||C||<=1. Arbitrary rescaling of C invalidates an unqualified bound on K. Correction: Define normalized linear observation explicitly or include its operator-norm factor. Main-claim material: false."
+  ],
+  "strong_novelty_candidates": [
+    "Theorem 35.1: exact-invariance k<D critical rectangular construction with simultaneous all-field K=c control.",
+    "Theorem 32.1: matching arbitrary-rectangle cost regimes for strong Green-moment certificates.",
+    "Exact prescribed-mean penalties, their critical residue and actual coexact transfer.",
+    "Near-one-moment exact-extension failure and D>=4 separately minimized harmonic-cost aggregate failure.",
+    "Candidates only; no exhaustive novelty or priority finding. Primary-source targeted comparison and abstract-only sources are disclosed in input-source-log.txt."
+  ],
+  "unresolved_material_objections": []
+}

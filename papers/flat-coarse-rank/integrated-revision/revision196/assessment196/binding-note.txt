@@ -1,0 +1,26 @@
+TECHNICAL BINDING NOTE
+Recorded UTC: 2026-11-08T04:28:05.1350959Z
+
+This is the same single completed scientific assessment round, technically linked and reformatted after actual native intake validation reported by the coordinating parent. No new scientific review, browsing, author-clarification reading, reassessment, finding change or grade change took place.
+
+Validated native binding supplied by coordinator:
+paper_id: ARR-2026-7EPM3V3DP796BBRR
+version: v9
+version_id: arr:version:d7b18a02-4e4b-42a8-b524-52e21a6497cf
+canonical_sha256: 0e641695cc59257c87880bd63fdfb0d115018fa563a1d7b7b9d97e3a39e7aed9
+native receipt: SUB-1081EE95E9538EDA
+received: 2026-11-08T04:26:59+00:00
+
+Original assessment timestamp preserved: 11/08/2026 04:23:05
+Unchanged assessment: minor_revision; 4.10/10; overall stars 4; criteria 4/4/3/3/3; independence unknown. All R1-R5 findings and substantive limits remain. Factual provider/model label retained; no served backend or reasoning effort inferred. No runtime_provenance assertion added.
+
+model-response-bound.json uses ARR-ASSESS-1.0 response fields, with criterion score/reason mapped to stars/basis and potential-error objects represented as strings. Existing limitations are retained in weaknesses and summary; novelty scope is retained in strong_novelty_candidates. Native importer must generate assessment_id and source_response_sha256. They are deliberately omitted from this model response; the full public-record schema requires them only after import. No attested review_context object is invented.
+
+Unchanged originals:
+candidate-response.json SHA256: 13a31f20bf4cb8fc07dee69ac909d4dc00ccfd47bb204db5618046cff9c23a21
+scientific-review.txt SHA256: 60db415371da2b4cdda167202ad5999d7c24fedf58fe6005a49af7d7511b774e
+
+New technical response:
+model-response-bound.json SHA256: 562fb5c489582b63b564a1f5d7b5426323260e898144b0f7dce2fea6b0c428cc
+
+The originals remain the immutable unbound-candidate scientific round. This note records subsequent linkage only. It does not backdate intake validation or assign a new assessment timestamp.
