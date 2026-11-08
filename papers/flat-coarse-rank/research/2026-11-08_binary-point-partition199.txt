@@ -1,0 +1,205 @@
+UNIT199: Target-order rectangular means for arbitrary binary coefficients
+Analytic exact-source candidate. Basee193b46e38aef7a550f8baeb5d3387a56ce7a303.
+No mathematical program, Lean, PDF, stars or runtime allocation.
+
+THEOREM AND SCOPE
+Let D>=3,n>=3 be integers, c>0,H>=1 real, p=D/2,N=n^D, and
+X=(Z/nZ)^D. Let a:X->{1,H} be ANY arrangement of these two values.
+Use the actual mean mu=N^(-1)sum_X a and assume the actual critical moment
+  M_actual=N^(-1)sum_X (mu/a(x))^p <= M.
+There is a partition of X into nonempty axis-aligned integer rectangles,
+with normalized arithmetic means P, such that for every real scalar f,
+  E_a(f)/N+c||Pf||_2^2 >= c||f||_N^2,                 (T1)
+  rank(P) <= C(D,c,M)max{1,(n/sqrt(1+mu))^D},          (T2)
+where
+  E_a(f)=sum_(x in X)sum_(i=1)^D a(x)|f(x+e_i)-f(x)|^2,
+  ||f||_N^2=N^(-1)sum_X|f|^2,
+  C(D,c,M)=2^(D/2)[(4 max(1,sqrt(c)))^D+2DM].
+The partition depends on a,c, not f. The coefficient bound a<=2mu is NOT
+needed for this restricted theorem. Binary fields satisfying that additional
+condition are therefore included. No weak-plane geometry, separation of
+weak vertices, or coefficient invariance is assumed. H need not be attained.
+
+This is a scalar two-valued positive result, not the unrestricted moment-only
+coefficient theorem. Its purpose is to replace the planar geometry restriction
+of the preceding family construction by an actual proof within this class.
+No originality of elementary Poincare or partition operations is asserted.
+
+1. A DISCRETE RECTANGLE POINCARE LEMMA, REPROVED
+For R=product_i I_i, with nonempty integer intervals of length l_i<=L,
+write bar f_R=|R|^(-1)sum_R f and
+E_R^0(f)=sum_(i,x:x,x+e_i in R; no wrapping)|f(x+e_i)-f(x)|^2.
+Then
+  sum_R|f-bar f_R|^2 <= (L^2/4) E_R^0(f).              (1.1)
+For a path of l>=2 sites, variance equals
+  (1/l)sum_(u<v)|w_u-w_v|^2.
+Telescoping and Cauchy-Schwarz bound each pair by (v-u) times the sum of
+squared differences on its intervening path. Replace v-u by l. The edge
+between sites k and k+1 occurs in k(l-k)<=l^2/4 pairs, for k=1,...,l-1.
+After cancellation with 1/l this proves the claimed path constant.
+For l=1 variance and energy vanish.
+
+Let A_i be averaging in coordinate i on counting L2(R). These are commuting
+orthogonal projections. Expand the identity as product_i[A_i+(I-A_i)].
+Its components indexed by subsets S of coordinates are orthogonal.
+Every nonconstant component occurs once in ||f-product_i A_i f||^2 and
+|S|>=1 times in sum_i ||(I-A_i)f||^2. Thus the first is at most the second.
+Apply the path estimate to each coordinate fiber, sum, and use l_i<=L.
+This proves(1.1) without a factor D or a missing volume normalization.
+Singleton coordinates and a singleton rectangle are included.
+
+2. POINT ISOLATION WITH A LINEAR, NOT LOGARITHMIC, COUNT
+Given a rectangle R=product_i[alpha_i,beta_i] and z in R, partition R into
+{z} and the following possible pieces for i=1,...,D and signs -,+:
+  x_j=z_j for j<i;
+  alpha_i<=x_i<=z_i-1 for sign -, or z_i+1<=x_i<=beta_i for sign +;
+  alpha_j<=x_j<=beta_j for j>i.
+Drop every empty piece. Each surviving piece is a nonempty integer product
+rectangle. For any x!=z the first coordinate i where x_i!=z_i and its sign
+choose its unique piece. Thus these pieces are disjoint and cover R exactly.
+There are at most 2D+1 pieces including {z}. Replacing R therefore increases
+the partition cardinality by at most 2D. All side lengths weakly decrease.
+This is a direct finite construction; no time/RSS complexity is claimed.
+
+Consequently, start with any rectangular partition of J0 boxes and a finite
+set B of m marked vertices. Process those vertices in any fixed order.
+If the current box containing z in B is singleton, retain it. Otherwise
+perform the preceding split. Previously isolated singleton boxes remain
+untouched because marked vertices are distinct and current boxes are disjoint.
+After at most m operations the result is an exact partition with
+  J <= J0+2Dm,                                        (2.1)
+each marked vertex singleton and each non-singleton box disjoint from B.
+No point-separation assumption or recursive dyadic depth is used. The bound
+has no log(n), log(H), or log of the distance between marked points.
+
+3. STRONG BACKGROUND GRID AND ALL CAP/FLOOR CASES
+Set b=max(1,sqrt(c)) and
+  L=min(n,max(1,floor(sqrt(H)/b))).
+This is an integer in [1,n]. Put x=sqrt(H)/b. If x<1, the uncapped length
+is1>=x/2. If x>=1, floor x>=x/2. Taking the cap at n proves
+  L>=min(n,sqrt(H)/(2b)),
+  n/L<=max(1,2bn/sqrt(H)).
+If L>=2, the uncapped maximum cannot have chosen1, so
+  L<=floor(sqrt(H)/b)<=sqrt(H)/b.                     (3.1)
+This also holds when L=n. Large H and large c create no omitted cases.
+
+Split each of the D coordinate intervals [0,n-1] into chunks of length L
+and one final shorter nonempty chunk if needed. Their products form an
+initial nonwrapping grid partition with J0=ceil(n/L)^D. Since n/L>=1,
+  J0<=(2n/L)^D
+     <=2^D max(1,(2b)^D N/H^p)
+     <=(4b)^D max(1,N/H^p).                          (3.2)
+Residual chunks are retained, so no divisibility assumption appears.
+
+Define B={x:a(x)<H}. If H>1 this is exactly {a=1}; if H=1 it is empty.
+Apply Section2 inside the grid to isolate B. Every side length stays <=L.
+For every remaining non-singleton box, all its vertices have coefficient H.
+Its retained internal edge energy is exactly H E_R^0(f), regardless of the
+values of neighboring vertices outside R. Positive-start weights matter:
+this assertion uses the actual start of each retained edge inside R.
+Wrapped edges and all inter-box edges are omitted but have nonnegative energy.
+
+If L>=2, (1.1) and (3.1) give on every non-singleton box
+  E_R^a(f)>=4H/L^2 sum_R|f-bar f_R|^2
+              >=c sum_R|f-bar f_R|^2.
+Singleton boxes have variance zero, even for coefficient1. If L=1, all
+boxes are singleton and every variance is zero. Internal edge sets of different
+boxes are disjoint. Thus, in every case,
+  E_a(f)>=c sum_R sum_(x in R)|f(x)-bar f_R|^2.        (3.3)
+No separate harmonic minimizers or boundary-cost additivity enter the proof.
+
+4. THE ACTUAL MOMENT PAYS FOR ALL THE MARKED VERTICES
+Let m=|B|. For H>1, the contribution from B to the actual critical moment
+is m mu^p/N. For H=1, m=0 and the same inequality is trivial. Hence
+  m <= M N/mu^p.                                    (4.1)
+Here mu, not the nominal value H, is used. In particular all-low fields
+are covered. Also 1<=mu<=H follows immediately from the coefficient range.
+Combining(2.1),(3.2),(4.1) and mu<=H gives
+  J <= [(4b)^D+2DM] max(1,N/mu^p).                   (4.2)
+Since mu>=1 and 1+mu<=2mu,
+  max(1,N/mu^p)<=2^p max(1,N/(1+mu)^p).
+This proves the count(T2), with C as displayed. J never actually exceeds N
+because it counts nonempty disjoint boxes; the loose upper bound is permitted
+to exceed N. No asymptotic limit or large-n threshold is required.
+
+5. NORMALIZED MEANS AND A GLOBAL FINITE PENALTY
+For each final rectangle R let
+  (Pf)_R=sqrt(|R|/N) bar f_R=sum_R f/sqrt(N|R|).
+These rows have nonempty disjoint supports, hence full real scalar row rank
+J. The counting-measure orthogonal decomposition is exact:
+  ||f||_N^2=N^(-1)sum_R sum_R|f-bar f_R|^2+||Pf||_2^2.
+Combine with(3.3) to obtain(T1) for all real f. Thus K=c is an explicit
+finite global quadratic penalty, which in particular is locally quadratic.
+For constant f=1 the energy is0 and both squared norms are1, showing K>=c
+is necessary in this exact convention. We do not assert rank optimality.
+For Q_R=sum_R f/sqrt(|R|), the equivalent unnormalized statement is
+  E_a(f)+c||Qf||_2^2>=c sum_X|f|^2;
+Q=sqrt(N)P. Mixing P and Q conventions is invalid.
+For r independent real components, applying the scalar construction
+componentwise yields rJ scalar coordinates, not J. No identification with a
+particular Nc/color/coexact target is silently made.
+
+6. ENDPOINT AND FIELD ATTACKS, ANALYTIC ONLY
+H=1: B empty, a=mu=1, M_actual=1; the ordinary grid proof applies.
+All a=1 with H>1: B=X, mu=1, M_actual=1; final partition is singleton,
+J=N and(T1) is immediate. H need not be an attained maximum for this case.
+All a=H: B empty, mu=H,M_actual=1; the grid alone applies, including L=n.
+If c>>H: L=1, all singleton, no spurious positive singleton internal gap.
+If H>>n^2: cap L=n may occur; (3.1) remains true when L>=2.
+At a boundary or for adjacent marked points, empty cut pieces are simply
+discarded; Section2's first-differing-coordinate proof still gives exact
+coverage. A marked point may already be singleton and incurs zero new cost.
+A strong-hole or arbitrary weak/strong arrangement creates no new case.
+Fields constant on each box are controlled entirely by the penalty. A
+mean-zero field within one non-singleton box is controlled by internal energy.
+All dropped energies are positive; no interface flux cancellation is assumed.
+These are symbolic argument checks, not executed numerical tests.
+
+7. LIMITATION: INTERMEDIATE VALUES ARE NOT PAID AT UNIT COST
+The cardinal step(4.1) uses that every isolated vertex has coefficient1.
+For arbitrary a in [1,H], counting all a<H as coefficient1 is false.
+For example choose an even torus size, H>=2, and put a=H/2 on half the
+vertices and a=H on the rest. Then mu=3H/4, a<=2mu, and
+  M_actual=[(3/2)^p+(3/4)^p]/2,
+a constant independent of H. Yet |{a<H}|=N/2 does not satisfy
+|{a<H}|<=M_actual N/mu^p for all sufficiently large H. The right side
+tends to zero relative to N. This is a counterexample to that attempted
+cardinal lemma, not to the original partition target. Rounding H/2 down to1
+would change the actual mean/moment and is not licensed by the hypothesis.
+It remains possible that a different adaptive partition handles intermediate
+values. This note proves no such result and no no-go theorem for it.
+
+8. CORRECTNESS, ORIGINALITY, RELEVANCE, AND NEXT QUESTION
+The path/product Poincare mechanism is classical; see Naoki Saito,
+How can we naturally order and organize graph Laplacian eigenvectors?,
+arXiv1801.06782v2 Section2 Eq(1) and the following product rectangle formula:
+https://arxiv.org/html/1801.06782v2
+We supply the elementary proof with our counting convention. Rectangular
+point partitions are also a classical computational-geometry subject;
+no novelty of the point-isolation operation itself is claimed. A targeted
+primary-source search was performed; priority of this specific combination
+and quantified binary-class bound remains unestablished, not absent.
+The theorem is useful here because it removes the weak-plane arrangement
+restriction within the two-valued class, by a derived construction rather
+than transferring the missing estimate into a structure or hypothesis.
+It does not remove a structural premise from any all-coefficient theorem.
+
+Original single question remains: fixed D>=3,c>0,Nc>=2,M; for every actual
+1<=a<=2mu with exact mean mu>=1 and critical inverse moment<=M, do unrestricted
+integer rectangular normalized means of target-order rank and some finite
+locally quadratic penalty exist? Scalar ranks and component ranks must be
+stated consistently. K=c is a stronger sufficient result, not an added premise.
+Next mechanism: handle genuine intermediate coefficient levels by a derived
+multilevel local-energy partition, without falsely paying unit cost per
+intermediate vertex. Falsifier for a negative answer must defeat every allowed
+target-order partition/finite penalty, not this binary construction alone.
+After three research units without a derived advance in a specific route,
+record the failure and change it. Publication does not reset that counter.
+
+Group199 with192-194/197/198 and the existing consolidated dossier; do not
+produce a standalone corollary paper. No physical mass gap, continuum,
+interacting/coexact theorem or Lean verification is claimed. PR29 remains
+recorded20/41,TermSource=0, not newly certified by this note.
+Model assessments and review context: a fresh separate exact-source analytic
+audit is pending. No numeric score/stars/PDF exists; no grade is inherited.
+Only paper reasoning, primary reading and text/Git/hash operations were used.
