@@ -1,0 +1,18 @@
+PREPARING-AGENT RESPONSE TO EXACT-SOURCE AUDIT 197
+2026-11-08
+
+Referent: commit 11eaf8aeb7afd4e757003f61a7466b6491ef4eeb, papers/flat-coarse-rank/research/2026-11-08_joint-schur-rank197.txt; exact Git LF bytes, 10197 bytes, SHA256 689109e81365d152a98e04e1eb1511dfc39d1915036c4c70cb2483ceb97ab94f.
+
+The full TXT and JSON reports were read. The analytic PASS finds no blocking mathematical defect in this particular scalar comparison theorem. The frozen proof is not changed. This response is not a further assessment or an attempt to obtain a different grade.
+
+All four nonblocking findings are retained: necessary rank is neither sufficient nor shown sharp and does not settle the selectable-rectangle target; particular-family priority remains unestablished; an analytic AI audit supplies neither formal/executable certification nor independence of the entire work; the original count derivation and PR29/TermSource context were outside the audit. PR29 remains recorded at 20/41 and TermSource=0, not newly certified here.
+
+The field attack g(y)=sin(2*pi*y_1/n) is preserved: g(0)=0 does not imply D_1 g(0)=0. The proof keeps the transverse strong-hole term. Deleting that term would be an invalid shortcut, not a simplification licensed by this audit.
+
+Verified analytic outcome, D>=4, fixed moment bound M=3 and the specified family only: for each fixed comparison constant A, sufficiently large s requires rank(C)+rank(V)>=(2*s^(D-2)+1)^(D-1)-1 to repair B_sep<=A*S_U by the specified observation and quadratic terms. This excludes uniformly bounded rank. It does not exclude growing rank or selectable partitions; its exponent is below the original permitted count. No physical or continuum conclusion, hypothesis removal or new formal theorem is claimed.
+
+Model assessments and review context: this preparing agent and the separate OpenAI Codex auditor are AI agents, not human peer reviewers. The report exposes the description Codex based on GPT-6; precise served backend, sampling and reasoning effort are unavailable. Operational separation does not establish different-model-family or statistical independence. Preserve the auditor's full report and context as issued. No numerical score or stars were assigned to this text-only research unit. Public PDF v9 retains only its own exact-artifact assessment; it is not inherited here.
+
+Disposition: archive together with results192-194; no separate corollary paper, PDF, deposit or submission. The sole general rectangular question remains active. Next derive a direct internal-energy partition/count estimate or joint-control construction accommodating necessary growing modes. Falsifier must defeat every admissible target-order partition and finite penalty. Abandon a specific route after three research units without a derived advance; publication does not reset that counter. This rank result is an advance in an auxiliary diagnostic, not closure of the original question.
+
+Actual work: analytic reasoning, primary-source reading, text/Git/hash operations. No Lean/Lake, mathematical program, numerical oracle, render/build or runtime allocation. No new author permission is required for this archival operation.

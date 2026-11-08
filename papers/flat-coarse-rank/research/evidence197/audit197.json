@@ -1,0 +1,75 @@
+{
+  "audit_type": "exact-source analytic audit only; no PR/body exists",
+  "date": "2026-11-08",
+  "verdict": "PASS",
+  "verdict_scope": "Scalar joint-versus-separate comparison and necessary combined rank lower bound; no blocking mathematical defect found",
+  "source_sha": "11eaf8aeb7afd4e757003f61a7466b6491ef4eeb",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-08_joint-schur-rank197.txt",
+  "source_copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-197\\source197.txt",
+  "capture_method": "git show 11eaf8aeb7afd4e757003f61a7466b6491ef4eeb:papers/flat-coarse-rank/research/2026-11-08_joint-schur-rank197.txt",
+  "representation": "Exact Git blob LF; no normalization; raw stdout bytes hashed; checkout and supplied copy byte-identical",
+  "source_bytes": 10197,
+  "source_sha256": "689109e81365d152a98e04e1eb1511dfc39d1915036c4c70cb2483ceb97ab94f",
+  "source_git_blob": "0a87f5917124c074972dd2a465323a78f5f62ff3",
+  "provider": "OpenAI",
+  "model_description_exposed": "Codex, based on GPT-6",
+  "served_backend_model_identifier": null,
+  "reasoning_effort_exposed": null,
+  "configuration": "Separate subagent with inherited parent configuration/context; no different-model-family or whole-work independence claim",
+  "context_limits": [
+    "Frozen source, plan197.txt, binding197.json, storage instructions and active repository governance read",
+    "No other model reports, old numerical grades, author rebuttals or result194 proof consulted",
+    "No inbound messages received while running",
+    "Original target count derivation and PR29/TermSource tallies not independently audited"
+  ],
+  "checks": {
+    "edge_start_normalization_and_fixed_M3": "checked analytically",
+    "grounded_Schur_invertibility_and_constant_kernel": "checked analytically",
+    "Fourier_point_difference_constant": "checked analytically",
+    "five_disjoint_energy_groups_per_pair": "checked analytically",
+    "real_band_dimension_no_Nyquist": "checked analytically",
+    "evaluation_codimension_trace_injectivity_mean_zero": "checked analytically",
+    "strong_hole_transverse_derivatives_retained": "checked analytically",
+    "joint_extension_energy_constants": "checked analytically",
+    "generalized_minmax": "checked analytically on mean-zero trace hyperplane",
+    "arbitrary_nonsymmetric_V_Phi_zero_local_scaling": "checked analytically",
+    "original_selectable_target_not_refuted": "checked scope and exponent comparison"
+  },
+  "blocking_findings": [],
+  "nonblocking_findings": [
+    "Necessary rank bound is not sufficient or sharp and does not close/refute original selectable-rectangle target",
+    "Particular-family novelty unestablished; targeted reference check is not exhaustive",
+    "Reasoning audit is not formal or executable verification or independence of the whole research work",
+    "Original count derivation and PR29/TermSource context not certified"
+  ],
+  "correction_required": false,
+  "priority": "unestablished for this particular quantified family; classical mechanisms acknowledged",
+  "relevance": "Auxiliary comparison diagnostic only; generalized rank lower bound lies below original permitted count exponent",
+  "field_falsifier": {
+    "field": "g(y)=sin(2*pi*y_1/n)",
+    "property": "g(0)=0 but D_1 g(0)=sin(2*pi/n)!=0",
+    "attack": "Falsifies deleting transverse strong-hole derivatives from evaluation-zero alone",
+    "source_outcome": "Survives: retains excess (H-1)*sin^2(2*pi/n) and bounds by nH",
+    "numerically_executed": false
+  },
+  "primary_sources_checked": [
+    {
+      "url": "https://strathprints.strath.ac.uk/44827/1/10.1007_s00211_013_0576_y.pdf",
+      "sections": "Introduction and Section 4.4"
+    },
+    {
+      "url": "https://arxiv.org/html/2104.00280v3",
+      "sections": "Abstract and introduction"
+    }
+  ],
+  "execution": {
+    "actual": "Text/Git/hash inspection, targeted primary-source browsing, analytic reasoning and report writing",
+    "mathematical_program_execution": false,
+    "Lean_Lake_tests_oracles_numerical_campaigns_build_render": false,
+    "runtime_allocation": false,
+    "source_modified": false,
+    "disposable_clone_created": false,
+    "cleanup": "not applicable"
+  },
+  "report": "D:\\Entregas\\the-eriksson-programme\\2026-11-08_joint-schur-rank197\\source-audit197.txt"
+}

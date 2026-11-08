@@ -1,0 +1,66 @@
+EXACT-SOURCE AUDIT 197
+Date: 2026-11-08
+Verdict: PASS for the scalar joint-versus-separate comparison diagnostic. No blocking mathematical defect found. This is an analytic source audit, not formal verification, numerical certification, an originality verdict, or closure of the original selectable-rectangle target.
+
+BOUND REFERENT
+Source SHA: 11eaf8aeb7afd4e757003f61a7466b6491ef4eeb
+Repository: C:\Trabajo\the-eriksson-programme\coexact-family-20261031
+Path: papers/flat-coarse-rank/research/2026-11-08_joint-schur-rank197.txt
+Copy: D:\Datos\the-eriksson-programme\autonomia\evidencia-197\source197.txt
+Capture: git show 11eaf8aeb7afd4e757003f61a7466b6491ef4eeb:papers/flat-coarse-rank/research/2026-11-08_joint-schur-rank197.txt
+Representation: exact Git blob bytes, LF, no normalization, 10197 bytes. Raw git-show stdout was hashed without text reencoding; no CR bytes were present.
+SHA-256: 689109e81365d152a98e04e1eb1511dfc39d1915036c4c70cb2483ceb97ab94f
+Git blob: 0a87f5917124c074972dd2a465323a78f5f62ff3
+The audit copy and current checkout have the same SHA-256. git hash-object of the copy matches git rev-parse of SHA:path. No PR/body exists: exact-source audit only. No source modification occurred.
+
+AUDITOR AND CONTEXT LIMITS
+Provider: OpenAI. Role: separate Codex mathematical source-audit agent. Exposed developer description: Codex, based on GPT-6. The precise served backend/model identifier, sampling parameters and reasoning effort are not exposed and are not inferred. This subagent inherited its parent's configuration and context. Separation is operational; no different-model-family or statistical independence of the entire work is claimed.
+Read the source in full, plan197.txt, binding197.json, D:\LEEME.md, repository CLAUDE.md and docs/OPERATIONAL-GOVERNANCE-CHARTER.md. No other model reports, old numerical grades, author rebuttals, or result194 proof were consulted. The frozen proof is self-contained for the checks below. No inbound messages arrived during the audit.
+Actual operations: text reading, Git inspection, byte/hash verification, targeted primary-source browsing, analytic reasoning and writing these reports. No Lean/Lake, mathematical Python, tests, numerical oracle/campaign, build, render, or runtime allocation occurred. No disposable clone was created; cleanup is not applicable. No PDF, score, stars or submission recommendation is supplied.
+
+DETAILED ANALYTIC CHECKS
+
+1. Edge normalization and fixed moment: checked.
+The energy counts each positive-start edge once; n=s^(2D)>=256 ensures distinct undirected representatives. Exactly W=2n^d-1 sites have coefficient one. The stated mu is the exact mean. Since H^p=n, mu^p average(a^(-p))<nW/N+1<3; Jensen gives the lower bound one. Thus M=3 is a fixed upper bound, not an asserted equality M_actual=3. The bounds 2H/3<=mu<H and a<=2mu hold uniformly. No extra edge multiplicity enters the moment calculation.
+
+2. Schur definitions, grounded inverses and constants: checked.
+All coefficients are positive and the torus graph is connected. Both U and B are nonempty. A grounded zero-energy vector on B extended by zero on U must be a zero constant, proving the grounded block SPD. The joint minimizer exists uniquely, the Schur form is PSD, and its only kernel consists of constant traces. It is therefore SPD on the counting-mean-zero trace hyperplane. The same grounding argument applies to each individual pair. The sole internal pair edge has coefficient one. Its energy is fixed by the trace, so subtracting it before minimization proves Q_y>=0. Subtracting all designated pair-edge energies jointly proves Q_joint>=0. Transverse U-to-U edges between distinct pairs are retained, as required. No independent-cell additivity is used.
+
+3. Point-difference Fourier constant: checked analytically.
+Normalized Fourier coefficients give n^d in Parseval's energy formula. Character differences have squared modulus at most four. With lambda(k)>=16|k|^2/n^2, weighted Cauchy-Schwarz gives n^(2-d)/4 times sum_{k!=0}|k|^(-2). A max-norm shell has at most 2d*3^(d-1)r^(d-1) representatives. For d>=3, summing r^(d-3) up to n/2 is bounded by n^(d-2), giving precisely C_d=d*3^(d-1)/2. The asymmetric Nyquist representatives can only reduce the shell count. This step does not justify d=2, and the source correctly assumes D>=4.
+
+4. Individual pair cost and disjoint groups: checked.
+The five changes go through (0,y), (n-1,y), (n-1,0), (0,0), (1,0), (1,y). Three scalar edges have coefficient H: two starts on t=n-1 and the strong-hole start (0,0). The other differences use the entire transverse layers t=n-1 and t=1, each with coefficient H. For y!=0 the incoming normal edges are distinct. Direction and layer separate these from the transverse groups and the hole edge. Thus the five groups are disjoint for this individual comparison and weighted Cauchy-Schwarz gives K_d=3+2C_d. No disjointness across different y is needed or asserted.
+Translation invariance and homogeneity make the minimized two-point form g_y(v0-v1)^2. Minimization of the proved inequality gives g_y>=H/K_d. Therefore Q_y=(g_y-1)(v0-v1)^2. Opposite traces give a factor four in the separate energy and a factor two in trace norm. For H>=2K_d, B_sep>=H||u||^2/K_d is correct.
+
+5. Real dimension, evaluation codimension and trace injectivity: checked.
+R=s^(D-2) satisfies R^2=n/H and R<n/2. The frequency box is conjugation-symmetric and contains no nonzero self-conjugate Nyquist character. Its real dimension is (2R+1)^d, rather than twice that count. Constants witness a nonzero evaluation functional at zero, so g(0)=0 removes exactly one dimension. A mean-zero condition on g is not needed and is not imposed. Restricting g to y!=0 is injective on this evaluation kernel. Each opposite pair cancels in the trace sum and ||u_g||^2=2||g||^2, so W_s is a mean-zero trace space of exactly L_s dimensions.
+
+6. Common extension, especially transverse strong-hole derivatives: checked.
+Sigma has m positive and m negative sites, making f_g mean-zero even if g has nonzero mean. Only normal edges starting at t=0 and t=m jump. Their exact total is 8||g||^2+4(H-1)|g(0)|^2; the last term vanishes. The transverse sum is exactly [(n-2)H+2+(H-1)1_{y=0}] times each transverse difference squared, with coefficient at most nH. Crucially, D_l g(0) is retained. The band estimate E_T(g)<=4*pi^2*d*R^2||g||^2/n^2 then gives E_a(f_g)<=[8+4*pi^2*d]||g||^2. Dividing by trace norm gives beta_D=4+2*pi^2*d. Removing designated pair energies 4||g||^2 gives the stated Q_joint constant. These use an admissible extension; f_g need not minimize.
+
+7. Quantifiers, arbitrary nonsymmetric repairs, local inequality and min-max: checked.
+For each fixed D and A>0, even s can be arbitrarily large with H>=2K_d and H>A K_d beta_D. Every nonzero vector of W_s then violates B_sep<=A S_U strictly. C,V and Phi may depend on s. If rank C+rank V<L_s, the map u -> (Cu,Vu) on W_s has a nonzero kernel vector. Phi(0)=0 annihilates its observation term even for nonlinear discontinuous Phi. Vu=0 annihilates <u,Vu> without symmetry or positivity. Scaling this vector towards zero proves the same contradiction for any inequality on a neighborhood of zero; quadratic terms scale alike and Phi remains evaluated at zero. The bound is necessary, not sufficient or sharp.
+On the mean-zero trace hyperplane the symmetric forms have an SPD denominator S_U. The exhibited subspace has generalized quotient at least H/(K_d beta_D); finite min-max gives at least L_s eigenvalues above that threshold. Constants have been removed. The Q_joint rank claim only needs Q_joint<=S_U and does not rely on an additional assertion of invertibility for Q_joint.
+
+8. Growth and relevance: checked within the stated diagnostic.
+L_s>=s^((D-2)(D-1))=n^((D-2)(D-1)/(2D)), so uniformly bounded total rank is impossible for any fixed comparison A. This does not exclude size-dependent A. The exponent is strictly below D-1. Thus the lower bound cannot refute a selectable-rectangle count of order n^(D-1), and a prescribed retained U is not a universal quantifier over selectable families. The source correctly makes no D=3, coexact, interacting or continuum claim and does not remove the positive theorem's invariant-coordinate hypothesis.
+
+ADVERSE FINDINGS AND CLASSIFICATION
+Blocking mathematical findings: none found.
+Nonblocking scope limitation: rank necessity does not produce a direct partition, prove sharp rank, or close/refute the original selectable-rectangle target. The source already acknowledges these limits.
+Nonblocking priority limitation: novelty of this particular fixed-moment torus family remains unestablished. Two targeted references do not constitute an exhaustive search.
+Nonblocking evidence limitation: this reasoning audit is not a formal or executable certificate and does not establish independence of the whole research work.
+Nonblocking context limitation: the original count formula, PR29=20/41 and TermSource0 were not checked against their underlying definitions, absent from the frozen source. They are not certified by this PASS. This does not affect the self-contained comparison theorem.
+No mathematical correction is required by a found defect. Preserve the existing scope qualifications.
+
+USEFUL FIELD FALSIFIER
+The real field g(y)=sin(2*pi*y_1/n) belongs to G_R and satisfies g(0)=0, but D_1 g(0)=sin(2*pi/n)!=0 for n>=256. Hence the transverse strong-hole excess (H-1)*sin^2(2*pi/n) is positive. This analytically falsifies any prospective shortcut or guard that discards all hole derivatives solely because g(0)=0. The frozen source survives: it explicitly retains this term and bounds its coefficient by nH. This is a useful field attack on a false shortcut, not a counterexample to the actual theorem. No numerical execution was used.
+
+PRIMARY CONTEXT; CORRECTNESS, PRIORITY AND RELEVANCE SEPARATED
+Spillane et al., DOI 10.1007/s00211-013-0576-y, author PDF https://strathprints.strath.ac.uk/44827/1/10.1007_s00211_013_0576_y.pdf : introduction and Section 4.4 checked. They discuss spectral coarse enrichment and Schur-complement reduction with harmonic extension. These mechanisms are classical.
+Spillane, GenEO spectral coarse spaces in SPD domain decomposition, arXiv:2104.00280v3, https://arxiv.org/html/2104.00280v3 : abstract/introduction checked. Growing spectral coarse spaces belong to established robust domain-decomposition methods.
+Neither targeted reading establishes priority of the exact fixed-moment family here. Their preconditioners are not identified with B_sep or S_U. Correctness survives this comparison; priority remains unestablished; relevance is the specified auxiliary diagnostic. No broad originality or exhaustive novelty verdict is made.
+
+FINAL BOUND VERDICT
+PASS for commit 11eaf8aeb7afd4e757003f61a7466b6491ef4eeb, path papers/flat-coarse-rank/research/2026-11-08_joint-schur-rank197.txt, captured by git show SHA:path, exact Git blob LF/no normalization, 10197 bytes, SHA-256 689109e81365d152a98e04e1eb1511dfc39d1915036c4c70cb2483ceb97ab94f. No blocking mathematical defect found. Originality unestablished; original selectable-rectangle question remains open.
