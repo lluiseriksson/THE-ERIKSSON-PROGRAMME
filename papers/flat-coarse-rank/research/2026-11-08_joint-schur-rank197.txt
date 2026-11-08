@@ -1,0 +1,191 @@
+UNIT197: A growing-rank discrepancy between joint and separate elimination
+Analytic candidate for exact-source audit. No Lean, scientific replay or PDF.
+Base SHA0b0c543bd129b9793e2b94b6cf229648a3605e11; result194 supplies the
+starting coefficient geometry. All needed estimates are reproved below.
+
+QUESTION AND RESULT
+The separate harmonic-cost sum from194 cannot be controlled by the original
+energy. This unit asks whether passing to the correct joint reduction leaves
+only finitely many exceptional coupling modes. It does not: at fixed critical
+inverse-moment bound3, a subspace of dimension
+  L_s=(2s^(D-2)+1)^(D-1)-1
+has uniformly bounded joint Rayleigh quotients and separate boundary-cost
+Rayleigh quotients tending to infinity. Consequently a size-independent
+comparison cannot be repaired by observations and quadratic repairs whose
+combined rank stays bounded. The result is a concrete comparison diagnostic,
+not a new general Schur, coarse-space or rank-nullity principle.
+
+1. ACTUAL COEFFICIENTS AND THE FIXED MOMENT
+Fix D>=4, d=D-1>=3, and an even integer s>=2. Put
+  n=s^(2D), H=s^4, p=D/2, m=n/2, N=n^D,
+  T=(Z/nZ)^d, X=(Z/nZ) x T.
+Thus H^p=n exactly. Let a(t,y)=1 on t=0 and t=m, except a(0,0)=H;
+let a=H elsewhere. Define the actual scalar energy
+  E_a(f)=sum_(x in X) sum_(i=1)^D a(x)|f(x+e_i)-f(x)|^2.
+Each positive-start edge is counted once. Since n>=6 these are distinct
+unordered torus edges. Let W=2n^d-1 and mu=(1-W/N)H+W/N.
+As W/N<2/n<=1/3,
+  2H/3<=mu<H, 1<=a<=2mu,
+and
+  M_actual=mu^p[W/N+(1-W/N)H^(-p)]
+          < H^p W/N+1 <3.
+Jensen gives M_actual>=1. The exact mean is mu; M=3 is fixed as s grows.
+
+2. TWO DISTINCT REDUCTIONS, DEFINED WITHOUT AN ASSUMED COMPARISON
+For y!=0 let R_y={(0,y),(1,y)}. These are disjoint actual product
+rectangles. Set U=union_(y!=0) R_y and B=X\U.
+The joint Schur form is
+  S_U(u)=min_(f|U=u) E_a(f).
+It is a quadratic form: connectedness and B nonempty make the grounded
+L_BB positive definite. Indeed a zero grounded energy, extended by zero on
+U, is constant on connected X and hence zero. Completing the square gives
+the unique minimizing extension and the usual Schur matrix. S_U is PSD,
+with kernel exactly the constant traces.
+
+For each INDIVIDUAL pair let
+  S_y(v)=min_(f|R_y=v) E_a(f),
+  Q_y(v)=S_y(v)-|v(0,y)-v(1,y)|^2.
+The subtracted term is its single internal coefficient-one edge. All other
+edge energies are nonnegative, so Q_y is PSD. Define on the whole trace
+space R^U the block-diagonal separate boundary cost
+  B_sep(u)=sum_(y!=0) Q_y(u|R_y).
+The minimizers in this sum are different global fields; S_U uses one field.
+
+One can also subtract ONLY these designated internal pair edges jointly:
+  Q_joint(u)=S_U(u)-sum_(y!=0)|u(0,y)-u(1,y)|^2 >=0.
+All other edges, including transverse edges whose endpoints both lie in U
+but in different pairs, remain in Q_joint. This is NOT the correction
+obtained by subtracting the entire induced energy on U. For any actual f,
+  Q_joint(f|U)<=E_a(f)-sum_(y!=0)|f(0,y)-f(1,y)|^2.
+This valid joint inequality has no separate-cell additivity premise.
+
+3. THE INDIVIDUAL PAIR COST, DERIVED
+For the unit torus T, normalized Fourier coefficients and Parseval give
+  |w(y)-w(z)|^2 <= C_d E_T(w), C_d=d*3^(d-1)/2,
+where E_T=sum_(y,l)|w(y+e_l)-w(y)|^2.
+Here is a complete constant bound. Choose frequency representatives
+k_l in {-n/2,...,n/2-1}. Their eigenvalues satisfy
+  lambda(k)=4 sum_l sin^2(pi k_l/n)>=16|k|^2/n^2.
+Fourier inversion and weighted Cauchy--Schwarz bound point differences by
+  n^(2-d)/4 sum_(k!=0)|k|^(-2) E_T(w).
+The shell max_l|k_l|=r has at most
+  (2r+1)^d-(2r-1)^d<=2d*3^(d-1)r^(d-1)
+representatives. Since d>=3,
+  sum_(r=1)^(n/2) r^(d-3)<=n^(d-2).
+Substitution proves C_d. The estimate is independent of n and of w.
+
+For fixed y!=0, telescope any global f along the five changes
+  (0,y), (n-1,y), (n-1,0), (0,0), (1,0), (1,y).
+There are three distinct actual coefficient-H edges. The other two changes
+are controlled by the full transverse layer energies at t=n-1 and t=1,
+each with coefficient H and point-difference constant C_d. These five
+energy groups are disjoint for this one comparison: y!=0 separates the
+two incoming edges; layers and directions separate all remaining groups.
+With K_d=3+2C_d, weighted Cauchy--Schwarz yields
+  |f(0,y)-f(1,y)|^2 <= K_d E_a(f)/H.
+Translation of endpoint values by a constant costs no energy, so the
+two-point minimized quadratic form is g_y|v(0,y)-v(1,y)|^2. Therefore
+  g_y>=H/K_d,
+  Q_y(v)=(g_y-1)|v(0,y)-v(1,y)|^2.
+For H>=2K_d and any g with g(0)=0, the trace
+  u_g(0,y)=g(y), u_g(1,y)=-g(y), y!=0
+thus satisfies
+  ||u_g||^2=2||g||^2,
+  B_sep(u_g)>=4(H/K_d-1)||g||^2 >=(H/K_d)||u_g||^2.       (1)
+Norms here and below are unnormalized real counting norms.
+
+4. A GROWING REAL BAND AND ONE COMMON EXTENSION
+Put R=s^(D-2), so R^2=n/H and R<n/2. Let G_R be the real scalar
+Fourier subspace on T supported on the symmetric box |k_l|<=R. It has
+real dimension (2R+1)^d: the zero character contributes one real
+dimension, and each nonzero conjugate pair contributes two. There is no
+Nyquist frequency because R<n/2. Evaluation at0 is nonzero on G_R,
+as witnessed by constants. Hence
+  G_R^0={g in G_R:g(0)=0}
+has real dimension L_s=(2R+1)^d-1. No mean-zero condition on g is imposed.
+Fourier diagonalization and |sin t|<=|t| give for every g in this band
+  E_T(g)<=4pi^2 d R^2/n^2 ||g||^2.                        (2)
+
+Define sigma(t)=1 for t=0,m+1,...,n-1 and sigma(t)=-1 for t=1,...,m.
+There are m positive and m negative t sites. For g in G_R^0 set
+  f_g(t,y)=sigma(t)g(y).
+The whole field is mean-zero since sum_t sigma(t)=0. It restricts to u_g.
+The map g->u_g is injective: its values give g at every y!=0, and g(0)=0
+already. Thus W_s={u_g:g in G_R^0} has exactly L_s real dimensions and
+lies in the mean-zero trace space (each pair cancels).
+
+Only direction1 edges starting at t=0 or t=m have a normal difference.
+Their total energy is exactly
+  8||g||^2+4(H-1)|g(0)|^2=8||g||^2.
+The transverse energy is exactly
+  sum_y [(n-2)H+2+(H-1)1_(y=0)] sum_l |D_l g(y)|^2.
+The bracket is at most nH, including y=0. This explicitly retains the
+transverse strong-hole terms: g(0)=0 does NOT set D_l g(0) to zero.
+Using (2) and R^2=n/H now proves
+  E_a(f_g)<=[8+4pi^2 d]||g||^2.
+Consequently, with beta_D=4+2pi^2 d,
+  S_U(u)<=beta_D||u||^2                    (u in W_s),    (3)
+and the designated-pair joint correction satisfies the stronger
+  Q_joint(u)<=[2+2pi^2 d]||u||^2            (u in W_s).   (4)
+Neither inequality assumes that f_g is the minimizing extension.
+
+5. RANK OBSTRUCTION FOR ANY FINITE-RANK REPAIR OF THE COMPARISON
+Fix A>0 independent of s. For H>=2K_d and H>A K_d beta_D, (1)-(3) give
+  B_sep(u)>A S_U(u) for every nonzero u in W_s.            (5)
+Suppose F is a finite-dimensional real space, C:R^U->F and V:R^U->R^U
+are arbitrary real-linear maps, and Phi:F->R is any function with Phi(0)=0.
+If, for every u (or just every u in a neighborhood of0),
+  B_sep(u)<=A S_U(u)+Phi(Cu)+<u,V u>,                     (6)
+then necessarily
+  rank C + rank V >= L_s.                               (7)
+Proof: otherwise (C,V) restricted to W_s has a nonzero kernel vector u.
+Both added terms vanish, contradicting (5). If (6) is only local, scale
+this kernel vector towards0; all quadratic terms scale alike and Phi(Cu)
+stays Phi(0)=0. Symmetry, positivity or norm bounds on V are unnecessary.
+The same argument with C=0 proves that a single additive matrix correction
+T of rank<L_s cannot make B_sep<=A S_U+<.,T.> hold.
+
+Equivalently, since S_U is positive definite on mean-zero trace space,
+the generalized quotient B_sep/S_U has at least L_s eigenvalues at least
+  H/(K_d beta_D).
+This is the finite min-max consequence of the exhibited W_s, not a new
+spectral principle. The analogous comparison with Q_joint in place of S_U
+also cannot be repaired with fewer ranks, since Q_joint<=S_U.
+
+The bound is polynomial:
+  L_s >= s^((D-2)(D-1))=n^((D-2)(D-1)/(2D)).
+It therefore excludes every uniformly bounded correction rank, not merely
+one scalar exceptional mode. It does NOT claim a matching lower bound or
+necessity of this many means in the original coercivity problem.
+
+6. SCOPE, CLASSICAL CONTEXT AND NEXT STEP
+The retained set U and its disjoint pairs are prescribed for this diagnostic.
+The allowed target order in the original question is of order n^(D-1) on
+this family, while L_s has strictly smaller exponent. No failure of the
+selectable-rectangle target count follows. The result is scalar, D>=4,
+on a concrete subsequence of194; no D=3, coexact, interacting or continuum
+claim is made. It eliminates a proposed UNIFORMLY BOUNDED-RANK rescue of
+the joint-versus-separate comparison, not a physical hypothesis and not
+the invariant-coordinate assumption in the positive theorem.
+
+The Fourier-band, min-max, rank-nullity, harmonic extension and adaptive
+coarse-space mechanisms are classical. Primary comparison checked:
+Spillane et al., Abstract robust coarse spaces for systems of PDEs via
+generalized eigenproblems in the overlaps, DOI10.1007/s00211-013-0576-y,
+author manuscript https://strathprints.strath.ac.uk/44827/1/10.1007_s00211_013_0576_y.pdf .
+Introduction and Section4.4 explain spectral coarse enrichment and Schur
+reduction of local eigenproblems; they do not provide a checked theorem
+about this fixed-M torus pair family. Nicole Spillane, arXiv2104.00280v3,
+https://arxiv.org/html/2104.00280 , abstract/introduction checked: robust
+spectral coarse spaces can grow. No contradiction to these methods is
+asserted. Their preconditioners are not identified with B_sep or S_U.
+Originality of this particular quantified family remains unestablished;
+no exhaustive priority claim or score is made.
+
+The next research step stays the single original rectangle question:
+derive a joint/direct local-energy partition count. A correction dimension
+that grows with s may still be below its permitted target scale, so it is
+not excluded. Do not revive independent-cell additivity, and do not use
+an assumed joint bound or low-rank representation as a hypothesis-removal
+substitute. Group this source with192-194; no standalone corollary paper.
+PR29=20/41,TermSource0; physical continuum remains open.

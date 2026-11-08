@@ -1,0 +1,32 @@
+UNIT197: frozen analytic comparison target
+Base SHA0b0c543bd129b9793e2b94b6cf229648a3605e11.
+Existing result194 is a scalar separate-elimination counterexample. The first
+joint-reduction question is whether its discrepancy is confined to finitely
+many global coupling modes. This is an auxiliary diagnostic of the ONE open
+rectangular question, not a second proposed main problem.
+
+Hypotheses: actual start-weighted torus; D>=4; the two weak planes and one
+strong hole from194; fixed normalized critical moment bound3. Retain the
+union of all disjoint two-point rectangles R_y, y!=0. Compare simultaneous
+elimination of its complement with the sum of individually eliminated
+boundary energies. No extension bound or local spectral gap is assumed.
+
+Mechanism: use a transverse low-frequency real subspace with g(0)=0, and
+extend each trace by one common mean-zero two-slab field. This removes the
+strong-hole normal-edge cost on an entire subspace. Seek a dimension lower
+bound for all finite-rank corrections by joint rank-nullity.
+
+Falsifiers: a missing transverse gradient term of orderH times trace norm;
+an incorrect real Fourier dimension; a noninjective trace restriction;
+failure of the fixedM=3 coefficient bound; or a bounded-rank correction
+that controls every vector of the proposed subspace with a size-independent
+comparison constant. These checks must be explicit in the source audit.
+
+Abandonment: if the band does not produce a growing-dimensional low joint
+energy space, preserve the failed calculation and use direct internal-energy
+partitions instead. Do not revive separate-cost additivity already refuted194.
+After three unsuccessful research units on this joint mechanism, document
+the blockage/change route. Publication196 does not reset that counter.
+
+No numerical campaign, Lean build, PDF, score or new submission is planned
+in this unit. Group any valid result with192-194; do not make a small paper.
