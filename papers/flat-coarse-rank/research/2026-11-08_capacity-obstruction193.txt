@@ -1,0 +1,118 @@
+UNIT193: Exact boundary energy and failure even as the moment tends to one
+Source-level analytic work only. No PDF, stars, execution or publication.
+This extends the same dossier and auxiliary-route falsifier, not a new paper.
+Unit192 remains immutable at fcedc62d16e08d99bc6e12e22bbd92db302eec3d.
+
+ACTIVE QUESTION
+The sole main question is still actual rectangular means for fully variable
+coefficients in the fixed critical inverse-moment class. The candidate
+mechanism is now a derived boundary/capacity charge, not an assumed uniform
+Neumann extension. This unit derives that charge exactly and tests the hope
+that making the normalized moment almost one controls it by internal energy.
+That hope is false. No general partition/counting theorem is refuted.
+
+A. EXACT TRACE REDUCTION, WITH NO UNPROVED EXTENSION PREMISE
+Let a finite connected undirected graph have positive conductances c_e.
+Use E(v)=sum_e c_e(v_i-v_j)^2=v^T L v, each edge once. A positive-start
+torus at n>=3 defines exactly such a graph by assigning its edge conductance
+from the positive start; the energy matrix is symmetric even though the
+coefficient convention names a start. Fix nonempty proper R and B=V\R.
+Write L in R,B blocks, and L_int for the Laplacian of edges internal to R.
+Let D_cut be the diagonal matrix of sums of conductances from R to B, so
+L_RR=L_int+D_cut.
+
+L_BB is positive definite: if z^T L_BB z=0, extend z by zero on R.
+Its global energy vanishes; connectedness forces a global constant, hence
+zero since R is nonempty. Thus for any trace u on R there is a unique
+minimizer h=-L_BB^{-1}L_BR u on B. Completing the square gives
+ E(u,z)=u^T Lambda u+(z-h)^T L_BB(z-h),
+ Lambda=L_RR-L_RB L_BB^{-1}L_BR.
+In particular the exact optimal extension energy is
+ min_{v|_R=u} E(v)=E_int(u)+u^T Q_R u,
+ Q_R=D_cut-L_RB L_BB^{-1}L_BR.
+The correction is derived, not postulated. It is positive semidefinite:
+E(u,z)-E_int(u) is the sum of all cut-edge and B-internal edge energies,
+each nonnegative; minimizing in z proves u^T Q_R u>=0.
+Also Q_R 1_R=0: the constant trace has a constant energy-zero extension,
+or equivalently L_BR 1_R=-L_BB 1_B and L_RB 1_B=-D_cut 1_R.
+Consequently Q_R is a genuine boundary energy form, though it depends on
+the entire eliminated graph through L_BB^{-1}. Naming this matrix does not
+give the missing quantitative moment bound and does not remove a hypothesis
+from the main theorem. For a rectangle, the exact identity alone does not
+preserve the desired locality of a coarse partition construction.
+
+B. EXACT TWO-POINT CAPACITY AND AN ALL-SIZE NEAR-ONE FAMILY
+Fix D>=3, n>=3, N=n^D, p=D/2, X=(Z/nZ)^D. Set
+ a(0)=1, a(x)=H=n for x!=0, mu=H-(H-1)/N.
+Use exactly the unit192 positive-start energy, counting norms and actual
+rectangle R={0,e_1}. Its internal energy is (u(0)-u(e_1))^2, and its
+mean-zero Neumann gap remains exactly2. Since H/2<=mu<H,
+ 1<=a<=2mu.
+The normalized inverse moment satisfies
+ M_actual=mu^p/N+(1-1/N)(mu/H)^p
+          < n^{-p}+1.
+The first term is <H^p/N=n^{-p}; the second is <1. Conversely convexity
+of t -> t^{-p} gives N^{-1}sum a^{-p} >= mu^{-p}, hence M_actual>=1.
+It follows that M_actual tends to1 as n tends to infinity. For each fixed
+M0>1, all sufficiently large n satisfy M_actual<=M0, while H=n diverges.
+This is not an assertion at M0=1: equality in the strict convexity inequality
+would force all coefficients equal, which this profile is not.
+
+For two retained vertices, Lambda is symmetric positive semidefinite and
+annihilates constants. Thus it has form g[[1,-1],[-1,1]] for a scalar g>0,
+and the minimum extension energy is g(u(0)-u(e_1))^2. This defines the
+two-terminal effective conductance with the stated no-factor-of-two energy.
+The weak direct edge contributes (u(0)-u(e_1))^2. The three-edge strong
+bypass 0 -> -e_2 -> e_1-e_2 -> e_1, with positive starts nonzero, contributes
+at least (H/3)(u(0)-u(e_1))^2 by Cauchy--Schwarz. It is disjoint from the
+direct edge, so g>=1+H/3. For an upper bound choose v(0)=u(0), v(x)=u(e_1)
+at all other sites. Only edges incident to0 contribute. They have D outgoing
+weights1 and D incoming weightsH, all distinct for n>=3. Hence
+ 1+H/3 <= g <= D(H+1).
+For this trace Q_R=(g-1)[[1,-1],[-1,1]], with boundary correction coefficient
+at least H/3. Therefore neither exact optimal extension nor its boundary
+correction can be bounded by C(D,M0) times internal Neumann energy, for ANY
+fixed M0>1. The ratio diverges at least n/3 although the moment tends to1.
+This removes the possible rescue of that particular auxiliary lemma by
+assuming the moment is arbitrarily close to its homogeneous minimum.
+
+C. LIMITS THAT MUST SURVIVE CONSOLIDATION
+Unit192's own family H=n^2 still has actual moments tending to2, not1;
+the full audit192/O1 remains correct. This new H=n family is different.
+Its simple global gap comparison gives only >=4/n, rather than the uniform
+>=4 of192. No fixed positive global gap is claimed here. The usual target
+scale max(1,N/(1+mu)^p) can grow (it is comparable to n^p); it must NOT be
+reported uniformly bounded for this new family. That growth does not affect
+the contradiction to C(D,M0), which forbids dependence on n and mu.
+One local defect is exhibited, not arbitrarily many independent defects.
+No coexact witness, rank lower bound, partition impossibility, physical
+continuum gap, formal certificate, new general extension theorem, or removal
+of a main-theorem hypothesis is obtained. The Schur identity is classical.
+
+D. PRIMARY-SOURCE COMPARISON AND REVIEW CONTEXT
+Florian Dorfler and Francesco Bullo, Kron Reduction of Graphs with
+Applications to Electrical Networks, original author manuscript:
+https://motion.me.ucsb.edu/pdf/2011d-db.pdf
+and https://arxiv.org/abs/1102.2950 . Inspected introduction, the displayed
+Schur-complement formula (equations1-2), and its Dirichlet-to-Neumann
+interpretation on PDF pages0-1. These already identify graph elimination
+with the Schur complement. We claim no novelty for that framework; sectionA
+is a self-contained specialization and energy decomposition. No exhaustive
+literature priority comparison or unrelated theorem check is asserted.
+The programme-specific contribution here is the explicit admissible
+near-one-moment test of the proposed internal-only quantitative bound.
+An involved Codex source audit may check the frozen bytes; it is not a
+full exact-PDF assessment, numerical stars, independent peer review or
+publication acceptance. Model/backend/context and objections must be saved.
+
+NEXT TEST AND ABANDONMENT
+Stop both internal-only exact extension and its near-one-moment rescue.
+The single remaining main question requires a genuinely nonlocal boundary
+charge or a different partition mechanism. Next, test whether disjoint-cell
+boundary charges admit an aggregate bound at the original target scale;
+do not infer a cellwise bound from the moment. Reject on a counterexample;
+after three units without substantial advance identify the obstruction or
+change mechanism. No new PDF is prepared for this diagnostic corollary.
+Publication priority remains consolidated191 after the existing own Colab189
+recovery action; no repeated authorization is requested. PR29=20/41,
+TermSource=0 and the physical continuum problem remain unchanged/open.
