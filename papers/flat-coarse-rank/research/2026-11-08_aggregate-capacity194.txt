@@ -1,0 +1,140 @@
+UNIT194: Disjoint traces do not give a uniform sum of harmonic boundary costs
+Analytic source for audit; no scientific execution, Lean, PDF or stars.
+Group with the existing192/193 dossier; no separate small-corollary paper.
+
+QUESTION TESTED
+After193 derived Q_R, a possible rescue is an aggregate energy bound
+  sum_j f|_{R_j}^T Q_{R_j} f|_{R_j} <= C(D,M) E_a(f)
+for disjoint actual rectangles R_j, each Q computed by eliminating the
+entire complement of that individual rectangle. This unit refutes precisely
+that bound at fixed M=3, for each D>=4. It does not refute an aggregate bound
+with an explicit growing size/scale factor, a different joint elimination,
+or the main selectable rectangular partition/counting theorem.
+
+CONVENTIONS
+X=(Z/nZ)^D, n even and n>=6, D>=4, d=D-1>=3, p=D/2,
+N=n^D, T=(Z/nZ)^d. Write x=(t,y), with t in Z/nZ and y in T.
+E_a(v)=sum_{x,i} a(x)|v(x+e_i)-v(x)|^2, counting each positive-start
+edge once. All coefficients and fields are real. R_y={(0,y),(1,y)}.
+These are pairwise disjoint actual product rectangles, not abstract blocks.
+The harmonic boundary form Q_R is defined exactly as in193:
+  min_{v|_R=u} E_a(v)=E_int,R(u)+u^T Q_R u.
+Positive coefficients and connectedness give the unique minimizer on the
+complement;193 proves this by grounding and completing the square.
+
+1. A UNIFORM TRANSVERSE POINT-DIFFERENCE ESTIMATE, DERIVED HERE
+On the unit-coefficient torus T define E_T(w)=sum_{y,l}|w(y+e_l)-w(y)|^2.
+For every y,z and every real w,
+  |w(y)-w(z)|^2 <= C_d E_T(w),  C_d=d*3^(d-1)/2.
+To prove it, use normalized Fourier coefficients hat(w)(k)=n^(-d)
+sum_y w(y) exp(-2pi i k.y/n), with representatives k_l in
+{-n/2,...,n/2-1}. Nonzero eigenvalues are
+  lambda(k)=4 sum_l sin^2(pi k_l/n)>=16|k|^2/n^2.
+Fourier expansion, Parseval and Cauchy--Schwarz therefore bound the
+point-difference constant by
+  n^(-d) sum_{k!=0} |exp(2pi i k.y/n)-exp(2pi i k.z/n)|^2/lambda(k)
+  <= n^(2-d)/4 sum_{k!=0}|k|^(-2).
+For r=max_l|k_l|>=1 the number of representatives in its shell is at most
+(2r+1)^d-(2r-1)^d <= 2d*3^(d-1)r^(d-1). Thus the last sum is at most
+2d*3^(d-1) sum_{r=1}^{n/2} r^(d-3) <= 2d*3^(d-1)n^(d-2).
+This proves the stated C_d, with no imported resistance estimate or hidden
+numerical calculation. The d>=3 restriction is essential to this bound;
+this proof makes no D=3 claim.
+
+2. TWO WEAK CUT PLANES AND ONE STRONG HOLE
+Set m=n/2 and H=n^(2/D), so H^p=n. Let a(t,y)=1 on both planes
+t=0 and t=m, except a(0,0)=H. Set a=H at every other vertex.
+The weak count is W=2n^d-1, and mu=N^(-1)sum a=(1-W/N)H+W/N.
+Since W/N<2/n<=1/3, we have 2H/3<=mu<H, so 1<=a<=2mu.
+The normalized critical inverse moment obeys
+  M_actual=mu^p [W/N+(1-W/N)H^(-p)]
+           < H^p W/N+1 < 3.
+It is at least1 by Jensen. Thus a fixed admissibility bound M=3 covers
+the whole family. No moment constant is allowed to grow with n.
+
+3. EACH OF MANY TRACE PAIRS HAS LARGE OPTIMAL CONDUCTANCE
+Fix y!=0. The only internal edge of R_y is the positive-start edge from
+(0,y) to (1,y), of coefficient1. Its internal Neumann gap is exactly2.
+Let K_d=3+2C_d. For an arbitrary global v, telescope its endpoint
+difference along the following five changes:
+ (0,y) -> (n-1,y) -> (n-1,0) -> (0,0) -> (1,0) -> (1,y).
+The first, third and fourth changes are actual direction1 edges of
+coefficient H, the first traversed backwards. The second and fifth are
+point differences within the full transverse layers t=n-1 and t=1.
+Those layers have coefficient H at all their positive transverse starts.
+Section1 controls their squared differences by C_d times the corresponding
+layer energy divided by H. The three single-edge energies and the two
+entire transverse-layer energies are pairwise disjoint subsets of E_a(v):
+y!=0 distinguishes the two incoming edges, and directions/layers distinguish
+the others. Weighted Cauchy--Schwarz, with weights1,C_d,1,1,C_d, gives
+  |v(0,y)-v(1,y)|^2 <= K_d E_a(v)/H.
+This applies to every global extension. Its minimized two-point energy is
+g_y|u(0,y)-u(1,y)|^2 by the symmetric two-by-two Schur form. Consequently
+  g_y>=H/K_d,
+  u^T Q_{R_y}u=(g_y-1)|u(0,y)-u(1,y)|^2.
+Small n need not give a positive lower bound for g_y-1 from this estimate;
+Q is nevertheless positive semidefinite, and the divergence argument uses
+only the tail with H>=2K_d. No individual constant has been assumed.
+
+4. ONE GLOBAL FIELD, MANY OVERLAPPING HARMONIC CHARGES
+Take f(t,y)=1 for t=0,m+1,...,n-1 and f(t,y)=-1 for t=1,...,m.
+It has global counting mean zero. Only direction1 edges starting at t=0
+or t=m have nonzero differences. There is one such strong edge at (0,0),
+with weight H, and 2n^d-1 other such weak edges with weight1. Therefore
+  E_a(f)=4(2n^d-1+H).
+For each y!=0 the retained endpoint difference is2. Thus for J=n^d-1
+disjoint rectangles, section3 implies
+  sum_{y!=0} f|_{R_y}^T Q_{R_y} f|_{R_y}
+       >=4(n^d-1)(H/K_d-1).
+Since H<=n^d, n^d-1>=n^d/2 and eventually H>=2K_d, their ratio satisfies
+  [sum boundary costs]/E_a(f) >= H/(12K_d) -> infinity.
+No C(D,3) can make the proposed aggregate energy inequality true.
+The fields in different trace problems are optimized separately; disjoint
+retained vertices do not make those global extension energies disjoint.
+The lower-bound certificates use the same high-conductance hole and
+transverse layers across different trace problems. This does not assert
+that each actual minimizer must use that hole rather than the weak cuts.
+It exposes the failed additivity assumption under test, not a failure of
+the exact Schur identity from193.
+
+5. LIMITS, COUNTING SCALE AND NEXT MECHANISM
+This is an all-size scalar counterexample for D>=4; no D=3 analogue is
+established here. Because 2H/3<=mu<H and H>=1, the original scale obeys
+  2^(-p)n^d <= N/(1+mu)^p <= (3/2)^p n^d.
+Thus J is of the same order as the permitted target count, not larger
+than it by an unbounded factor. The example therefore supplies NO
+counterexample to the main rectangle-count estimate. It only refutes
+a size-independent aggregate harmonic-energy bound of the precise form
+in the opening question. No aggregate estimate with a growing factor,
+joint Schur reduction, partition-adapted boundary rule or alternate
+choice of rectangles is excluded. There is no coexact/rank/physical
+continuum conclusion, no positive hypothesis removal and no new PDF.
+
+The single active main question remains the fully variable fixed-moment
+actual-rectangle estimate. Abandon the independent-cell harmonic-cost
+additivity route now: the explicit family is its falsifier. Three boundary
+units192-194 have now isolated, rather than solved, the obstruction:
+cellwise extension fails, near-one moments do not repair it, and disjoint
+traces do not justify an energy sum. Change mechanism to a joint partition
+or a direct local internal-energy construction whose quantitative count
+is derived without this additivity premise. First compare a joint retained
+set with separate-cell reductions on the present family. Do not package
+the missing count as an assumed structure. After three units without
+substantial advance on the new mechanism, document the blockage/change.
+
+PRIMARY CONTEXT AND ASSESSMENT LIMITS
+Dorfler and Bullo, Kron Reduction of Graphs with Applications to Electrical
+Networks, original author manuscript https://motion.me.ucsb.edu/pdf/2011d-db.pdf
+Theorem III.8 and equation27 on PDF page9 were inspected: effective
+resistance between retained vertices is preserved by the Schur reduction.
+This is classical context for the individual trace forms, not a theorem
+asserting the refuted sum over separately reduced retained sets. Fourier
+and resistance comparison are classical; no priority or exhaustive novelty
+claim is made for this diagnostic family. Full proof of the needed torus
+estimate is supplied above. Any source audit must preserve exact hash,
+actual configured model/context and all objections; it is not independent
+peer review, formal verification, exact-PDF grading or stars. No score
+may be inherited from192/193 or from the public AIRR working paper.
+Publication priority remains consolidated191 after the existing own189
+Colab recovery; no repeat authorization is sought. PR29=20/41,
+TermSource=0; physical continuum Yang--Mills remains open.
