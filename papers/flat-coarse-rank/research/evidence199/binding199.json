@@ -1,0 +1,14 @@
+{
+  "source_sha": "f72aa06589522f2e518ea256ea4c8510374009bb",
+  "path": "papers/flat-coarse-rank/research/2026-11-08_binary-point-partition199.txt",
+  "sha256": "e561bebd342a05ff59cc19ee7e1b9f607f79c231e28c9848a2d09e2e587cf1c9",
+  "bytes": 12055,
+  "representation": "Exact Git blob LF; no normalization; D and checkout byte-identical",
+  "capture": "git show f72aa06589522f2e518ea256ea4c8510374009bb:papers/flat-coarse-rank/research/2026-11-08_binary-point-partition199.txt",
+  "question": "Can the target-order scalar rectangular means be constructed for arbitrary binary coefficients, without planar geometry?",
+  "hypotheses": "D>=3,n>=3,c>0,H>=1,a in {1,H}, actual mean mu and actual critical moment<=M",
+  "mechanism": "Internal product Poincare plus at-most2D rectangular cuts per marked coefficient-one site; derive moment count",
+  "falsifier": "Invalid point partition/count/cap/floor/energy/normalization, actual field violating theorem; general intermediate-value cardinal shortcut separately attacked",
+  "abandonment": "After3route units without derived advance change route; retain failures; group dossier, no standalone paper",
+  "stars": null
+}

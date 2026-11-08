@@ -1,0 +1,18 @@
+PREPARING-AGENT RESPONSE199
+Bound source: f72aa06589522f2e518ea256ea4c8510374009bb, papers/flat-coarse-rank/research/2026-11-08_binary-point-partition199.txt. Exact GitLF12055bytes/no normalization; SHA256e561bebd342a05ff59cc19ee7e1b9f607f79c231e28c9848a2d09e2e587cf1c9.
+
+Complete TXT and JSON reports were read. The separate analytic ACCEPT finds no blocking defect for displayed(T1)-(T2). The frozen proof is unchanged. This response is neither an additional review nor a request to improve a grade. No numerical score/stars/PDF assessment exists for this source.
+
+All A1-A5 findings remain attached: general intermediate coefficients unresolved and the unit-cost cardinal shortcut false; r real components require rJ scalar coordinates; no optimality or implementation complexity established; specific-combination priority unestablished with no exhaustive search; no formal/coexact/interacting/continuum/physical-mass-gap or broader programme closure consequence. Previous context/PR labels were not recertified. PR29 stays recorded20/41,TermSource=0, not newly certified by this audit.
+
+Retain the actual symbolic shortcut attack: half a=H/2 and half a=H have mu=3H/4 and fixed M_actual=((3/2)^p+(3/4)^p)/2, but the claimed unit-cost cardinal bound would require H^p<=2^p+1. It therefore fails for larger H. This is a refutation of a cardinal lemma, not the main partition target; a uniformly strong H/2 background can still support a suitable grid. Rounding those coefficients to1 is unauthorized mathematical substitution.
+
+All endpoint/field attacks are preserved in full: H=1; all-low with absent nominalH; all-high; capL=n conditional on c; L=1; floor transitions; short and thin boxes; arbitrary adjacent, clustered, corner or alternating marked sets; constants forcingK>=c; cellwise constants and one-box mean-zero fields; exact P/Q normalization and rJ accounting. No executed mathematical test or numerical certificate is claimed.
+
+Within the binary class, planar geometry has actually been removed by the explicit at-most2D-per-point partition proof and actual-moment payment, not moved into a certificate premise. This does not remove any assumption from the unrestricted all-coefficient theorem. Full general question remains active. Source198 is a prescribed-family special case; group it with199 rather than repeating it as another paper.
+
+Model assessments and review context: fresh separate OpenAI Codex task fork_turns=none, inherited configuration, no inbound messages during frozen audit. Filesystem/account shared; no model/statistical/organizational independence or human peer review claimed. Exposed description: Codex based on GPT-6; exact served backend and reasoning effort unexposed/unknown. Issued reports kept byte-for-byte. No prior PDF score inherited.
+
+Disposition: consolidate the grouped negative comparison197 and positive binary partition199 into the existing dossier, retaining intermediate-value limitation. A new PDF must be built/rendered on an owned Colab Linux runtime, visually checked and assessed once on its exact bytes with actual numeric stars before any publication-ready claim, linked native intake or protected release. The continuous author route already has its initial authorization; do not ask unchanged author permission again. No PDF, receipt, publication or runtime was produced199. Existing exactv9 remains unchanged.
+
+Actual work: paper reasoning, primary reading and text/Git/hash operations. All source/audit/failure artifacts remain in D or Git. Next mathematical issue is a derived multilevel internal-energy partition; isolate no intermediate vertex at an unjustified unit cost. Preserve the single original question and three-research-unit abandonment rule.

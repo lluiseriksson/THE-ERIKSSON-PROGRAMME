@@ -1,0 +1,101 @@
+{
+  "audit_id": "binary-point-partition199",
+  "issued_date": "2026-11-08",
+  "verdict": "ACCEPT_STATED_SCALAR_BINARY_THEOREM",
+  "blocking_mathematical_findings": [],
+  "source": {
+    "commit": "f72aa06589522f2e518ea256ea4c8510374009bb",
+    "path": "papers/flat-coarse-rank/research/2026-11-08_binary-point-partition199.txt",
+    "representation": "Exact Git blob LF; no normalization",
+    "capture": "git show f72aa06589522f2e518ea256ea4c8510374009bb:papers/flat-coarse-rank/research/2026-11-08_binary-point-partition199.txt",
+    "capture_method": "RedirectStandardOutput BaseStream direct raw byte capture",
+    "capture_exit": 0,
+    "bytes": 12055,
+    "sha256": "e561bebd342a05ff59cc19ee7e1b9f607f79c231e28c9848a2d09e2e587cf1c9",
+    "lf_bytes": 205,
+    "cr_bytes": 0,
+    "d_copy_byte_identical": true,
+    "full_source_read": true
+  },
+  "audit_role": {
+    "fresh_task": true,
+    "fork_turns": "none",
+    "configuration": "inherited",
+    "exposed_description": "Codex, an agent based on GPT-6",
+    "exact_backend": "unknown: not exposed",
+    "reasoning_effort": "unknown: not exposed",
+    "shared_filesystem": true,
+    "shared_account": true,
+    "independence_claim": false,
+    "prior_candidate_reports_consulted": false,
+    "inbound_followup_messages_received": false
+  },
+  "accepted_checks": [
+    "path Poincare and product tensorization",
+    "exact point-isolation coverage and linear count without logarithm",
+    "all cap and floor regimes",
+    "retained start-weight internal energy",
+    "actual mean and moment pay binary low vertices",
+    "rank target constant and normalization",
+    "explicit finite global K=c penalty",
+    "H=1, absent H, all-low, all-high, residual and thin boxes"
+  ],
+  "adverse_findings": [
+    {
+      "id": "A1",
+      "severity": "scope",
+      "finding": "General intermediate-coefficient theorem remains unresolved; the unit-cost cardinal shortcut is false",
+      "symbolic_attack": "half H/2, half H; mu=3H/4; M=((3/2)^p+(3/4)^p)/2; cardinal shortcut fails iff H^p>2^p+1"
+    },
+    {
+      "id": "A2",
+      "severity": "scope",
+      "finding": "r independent real components require rJ scalar coordinates"
+    },
+    {
+      "id": "A3",
+      "severity": "limitation",
+      "finding": "No rank optimality or implementation complexity established"
+    },
+    {
+      "id": "A4",
+      "severity": "priority",
+      "finding": "Specific-combination priority unestablished; no exhaustive novelty assertion"
+    },
+    {
+      "id": "A5",
+      "severity": "application_boundary",
+      "finding": "No interacting/coexact/continuum/physical-mass-gap or formal verification consequence; earlier PR status not recertified"
+    }
+  ],
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/html/1801.06782v2",
+      "author": "Naoki Saito",
+      "location": "Section 2 Eq (1) and following rectangle product formulas",
+      "supports": "Classical path and product graph spectral ingredients",
+      "does_not_establish": "Novelty or priority of full binary theorem"
+    }
+  ],
+  "operations": {
+    "mathematical_execution": false,
+    "lean_lake": false,
+    "tests_builds": false,
+    "numerical_oracle": false,
+    "rendering": false,
+    "runtime_allocation": false,
+    "branch_or_source_mutation": false,
+    "pr_exists": false,
+    "disposable_clone_created": false,
+    "cleanup_pending": false
+  },
+  "report": {
+    "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-08_binary-point-partition199\\source-audit199.txt",
+    "representation": "UTF-8 no BOM, LF only, final LF",
+    "sha256": "b91d06190fcfd3275a8ff6774a99ec49755ab4685e3fbb20693931e782810e58"
+  },
+  "structured_companion_representation": "UTF-8 no BOM, LF only, final LF",
+  "score": null,
+  "stars": null,
+  "pdf": null
+}

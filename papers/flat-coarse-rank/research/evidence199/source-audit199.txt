@@ -1,0 +1,75 @@
+EXACT-SOURCE ANALYTIC AUDIT199
+Issued 2026-11-08. Verdict: ACCEPT the stated scalar binary-coefficient theorem (T1)-(T2) as an elementary analytic argument. No blocking mathematical defect found. This verdict is restricted to the exact source identified below; it is not a machine/formal certificate or approval of any other theorem, programme, repository state, or publication.
+
+1. REFERENT, CAPTURE, AND AUDIT BOUNDARY
+Repository examined read-only: C:\Trabajo\the-eriksson-programme\coexact-family-20261031.
+Frozen commit: f72aa06589522f2e518ea256ea4c8510374009bb.
+Git path: papers/flat-coarse-rank/research/2026-11-08_binary-point-partition199.txt.
+Capture command: git -C <repository> show f72aa06589522f2e518ea256ea4c8510374009bb:papers/flat-coarse-rank/research/2026-11-08_binary-point-partition199.txt.
+Capture method: git process standard-output BaseStream copied directly to a byte buffer, without a text reader, pipeline decoding, newline conversion, or normalization. Git exit code 0. Raw bytes: 12055; LF bytes: 205; CR bytes: 0.
+SHA256 of this exact GitLF representation: e561bebd342a05ff59cc19ee7e1b9f607f79c231e28c9848a2d09e2e587cf1c9.
+D evidence source: D:\Datos\the-eriksson-programme\autonomia\evidencia-199\source199.txt. Direct byte-by-byte comparison with captured Git output returned identical; its independent file SHA256 matches. Binding read: D:\Datos\the-eriksson-programme\autonomia\evidencia-199\binding199.json. The full source was read, not merely its header or binding.
+No PR exists in this assignment; no PR-body hash is applicable. No branch/source/PR, chat, automation, build, or remote state was edited. No disposable clone or runtime was created, so no clone cleanup is pending. No numerical or symbolic executable, mathematical oracle, Lean/Lake command, test, build, rendering, or runtime allocation was used. Operations were paper reasoning, source/primary reading, text editing, Git capture, and byte/hash inspection.
+D:\LEEME.md, the active repository CLAUDE.md, repository governance charter, and the tail of its standing Surface closure notes were read as operational instructions/context. Historical unrelated programme status does not support this verdict. No previous candidate audit report or grade was consulted.
+This is the separate audit role assigned to a fresh task with fork_turns=none and inherited configuration. Shared filesystem/account remain shared. No statistical, organizational, model, or infrastructure independence is claimed. The exposed role description says "Codex, an agent based on GPT-6"; exact deployed backend identifier/version and actual reasoning-effort setting are not exposed and are unknown. No model-strength assertion or score is inferred. No inbound follow-up message was received during the audit.
+
+2. EXACT MATHEMATICAL SCOPE
+D>=3 and n>=3 are integers; c>0, H>=1; p=D/2; N=n^D. Each coefficient is exactly 1 or H. The mean mu is the actual arithmetic mean; M_actual=N^(-1) sum (mu/a)^p<=M is the actual critical inverse moment. The source does not assume that H is attained or that a<=2mu. It supplies one partition depending on the coefficients and c, valid simultaneously for every real scalar f. Its coordinates are normalized rectangular arithmetic means. Its claimed rank constant is 2^p[(4 max(1,sqrt(c)))^D+2DM]. These statements, including the explicit penalty c||Pf||_2^2, are supported by the argument.
+Constant fields provide nonempty examples for every H>=1 and M>=1. Jensen gives M_actual>=1; if M<1 the hypothesis has no instance, rather than creating an unmentioned adverse case. The relevant families are thus not inherently vacuous.
+
+3. PATH ESTIMATE AND PRODUCT TENSORIZATION
+For an l-site path the identity sum |w-mean(w)|^2=(1/l) sum_{u<v}|w_u-w_v|^2 is correct. For a fixed edge k, telescoping/Cauchy-Schwarz, followed by v-u<=l, puts at most k(l-k) in front of its squared difference after the factor l cancels 1/l. Since k(l-k)<=l^2/4, the path constant used in (1.1) is valid, though not claimed sharp. l=1 contributes zero on both sides.
+On a product box the coordinate averaging maps are commuting orthogonal projections for counting L2. The decomposition into the products of A_i or I-A_i is orthogonal. A nonconstant component indexed by a nonempty S contributes once to total variance and |S| times to the sum of fiber variances. Hence variance<=sum_i fiber variance. Applying the one-dimensional bound on each fiber yields L^2/4 times the sum of all retained edges, without an extra D or volume factor. Thin boxes and singleton coordinates cause no exception.
+
+4. POINT ISOLATION AND COUNT: ARBITRARY GEOMETRY
+The proposed 2D signed pieces plus {z} are genuine product rectangles: coordinates before i are singleton z_j; coordinate i is a one-sided interval; later coordinates retain their original intervals. For each x unequal to z, its first differing coordinate and sign place it in exactly one piece. This proves coverage, disjointness and absence of a hidden missing corner. Empty pieces are discarded.
+One split replaces one box by at most 2D+1 boxes, increasing cardinality by at most 2D. Coordinates never increase in length. Processing each distinct marked vertex preserves every previously isolated singleton since a different vertex belongs to a different current box. A marked vertex already singleton costs zero. Consequently J<=J0+2Dm is a literal finite induction, not a recursive octree estimate requiring a logarithmic depth multiplier.
+Adversarial geometric fields: neighboring marked points, boundary/corner marked points, every vertex marked, widely separated marked points, dense clusters, perforated strong regions, and an alternating weak/strong field all obey this same induction. No separation, planarity, connectedness of the strong region, or minimum chunk size after cutting is needed. Time or memory complexity is not established or claimed.
+
+5. CAP, FLOOR, GRID, AND ENERGY
+Write b=max(1,sqrt(c)), x=sqrt(H)/b, and L=min(n,max(1,floor(x))). If x<1 the uncapped length is 1>=x/2; if x>=1 its floor is at least x/2. Thus L>=min(n,x/2), so n/L<=max(1,2bn/sqrt(H)). When L>=2, the uncapped value cannot come from the forced lower bound 1, and L<=floor(x)<=x even if the upper cap is active. The latter implication is only used when L>=2.
+The grid retains final shorter nonempty coordinate chunks, hence has ceil(n/L)^D boxes without divisibility requirements. The source's inequalities follow from ceil(t)<=2t for t>=1 and b>=1:
+J0<=2^D max(1,(2b)^D N/H^p)<=(4b)^D max(1,N/H^p).
+Each marked point is a coefficient-one point when H>1. After isolation any nonsingleton box contains only H-valued vertices. Every retained positive-direction edge has its start in that box; its weight is therefore H. Keeping only nonwrapping internal edges loses nonnegative energy and causes no double counting. Interface or wrapped-edge weights and any asymmetry across an interface are immaterial to this lower bound.
+If L>=2, product Poincare gives E_R^a>=4H/L^2 Var_R>=4b^2 Var_R>=c Var_R. The source uses a weaker final constant, which is valid. If L=1 all boxes are singleton and the needed variance bound is zero. Summing over disjoint internal edge sets proves (3.3).
+
+6. ACTUAL MEAN, MOMENT PAYMENT, AND TARGET RANK
+For H>1 the marked set is precisely {a=1}, so its contribution to the actual moment is m mu^p/N. Thus m<=MN/mu^p. For H=1 the marked set is empty and the inequality is trivial. The range gives 1<=mu<=H, including fields in which H is not attained. Accordingly max(1,N/H^p)<=max(1,N/mu^p), and both the initial-grid term and 2Dm fit the coefficient in (4.2).
+Since (1+mu)/mu<=2, max(1,N/mu^p)<=2^p max(1,N/(1+mu)^p). This is exactly the displayed C times max{1,(n/sqrt(1+mu))^D}. There is no missing H/mu comparison, no replacement of an upper bound M by a nominal moment, and no need for a large-n asymptotic. Disjoint nonempty boxes also give J<=N independently of the loose displayed estimate.
+
+7. NORMALIZATION, FULL RANK, AND FINITE GLOBAL PENALTY
+For a box R, its row is 1_R/sqrt(N|R|). Distinct rows have disjoint nonempty supports, so the real scalar row rank is J. The rows have squared norm 1/N in counting Euclidean coordinates; they need not be unit rows for the stated identity to hold. Direct calculation gives ||Pf||_2^2=N^(-1)sum_R |R| |bar f_R|^2. Orthogonal decomposition on each box then yields precisely ||f||_N^2=N^(-1)sum_R Var_R+||Pf||_2^2. Substituting (3.3) proves (T1), with global finite quadratic penalty K=c, uniformly in f.
+The attack f=1 has E=0 and both normalized squared norms 1, so K<c fails in this convention. Fields constant separately on boxes are controlled by their mean coordinates. A mean-zero fluctuation supported in a nonsingleton box is controlled by retained internal energy. These observations exclude a hidden need to optimize interbox fluxes or boundary harmonic extensions. With Q_R=sum_R f/sqrt(|R|), Q=sqrt(N)P, so the unnormalized equation in the source is also correct. Substituting Q for P without changing normalization would be invalid; the source does not do so.
+
+8. EXPLICIT ENDPOINT ATTACKS
+H=1: all coefficients and mu are 1; B is empty, the ordinary grid suffices, and M_actual=1.
+All a=1, H>1: B=X, mu=1, M_actual=1, and the final partition is all singletons. The rank N is allowed by the stated constant and target, which here equals N/2^p because n>=3. H need not be attained.
+All a=H: B is empty, mu=H, M_actual=1; the grid applies, with no payment for absent low points.
+c sufficiently large relative to H: L=1, and all variances vanish rather than being assigned a spurious singleton gap.
+Cap regime: L=n>=2 implies n<=sqrt(H)/b, so the whole-box energy estimate is valid. Merely saying H>>n^2 does not force this cap if c is larger still; the source only says the cap may occur and handles both alternatives.
+Floor transitions x<1, x=1, 1<x<2, x=2, and integer jumps are covered by the conditional L>=2 argument and the factor-two lower bound. Anisotropic residual chunks and subsequent thin cut pieces remain within the same maximum side-length bound.
+No counterexample to (T1)-(T2) emerged from these symbolic field attacks.
+
+9. INTERMEDIATE VALUES: A REAL FAILED CARDINAL SHORTCUT, NOT A COUNTEREXAMPLE TO THE TARGET
+For even n take half the vertices with a=H/2 and half with a=H, H>=2. These lie in [1,H], with actual mean mu=3H/4 and a<=2mu. Their actual moment is ((3/2)^p+(3/4)^p)/2, independent of H. The proposed unit-cost cardinal bound for B={a<H} would say
+1/2<=M_actual/mu^p=(2^p+1)/(2H^p),
+which is false whenever H^p>2^p+1. This exact symbolic threshold confirms the source's sufficiently-large-H argument. In particular it is a valid attack under the original a<=2mu envelope. Rounding H/2 down to 1 changes the actual field and its hypotheses, and cannot rescue that shortcut.
+This attack defeats counting every intermediate vertex as a coefficient-one exception. It does not defeat all rectangular partitions or all finite penalties. Here a>=H/2 everywhere, so a background grid built at that lower coefficient scale already illustrates why a large set {a<H} does not itself imply failure of the target. The source draws the correct limited conclusion and leaves multilevel coefficients unresolved.
+
+10. ADVERSE FINDINGS AND LIMITS OF ACCEPTANCE
+Blocking mathematical findings: none for the exact stated binary scalar theorem.
+A1, scope limitation: the all-coefficient moment-only question is still open in this source. Its proposed intermediate-value cardinal shortcut is actually false as above. Binary acceptance supplies no unrestricted theorem.
+A2, rank accounting: for r independent real components this construction has rJ scalar coordinates. Reusing J as the total scalar rank would be wrong. Any application where r depends on Nc must display that dependence; no Nc/color/coexact identification is proved here.
+A3, optimality and efficiency: constants and ranks are upper bounds, not optimality results. The argument proves a finite construction without implementation complexity guarantees. These omissions do not block the stated existence theorem.
+A4, priority evidence: the cited primary source supports familiar path/product spectral ingredients, not priority of this binary combination or its displayed constant. No exhaustive novelty search or absence-of-prior-art assertion is justified. The source explicitly leaves priority unestablished.
+A5, application boundary: no physical mass gap, continuum limit, interacting/coexact theorem, Lean verification, or broader programme closure follows from this scalar note. The source's final references to previous dossier/PR status are historical labels not audited here, and are not independently recertified by this verdict.
+No required source repair follows from this audit. The restrictions above must travel with any subsequent use of the result.
+
+11. PRIMARY READING AND RELEVANCE
+Read directly: Naoki Saito, How can we naturally order and organize graph Laplacian eigenvectors?, arXiv:1801.06782v2, Section 2, Eq. (1), and its following rectangle product formulas, https://arxiv.org/html/1801.06782v2 . It gives the path graph Laplacian eigenpairs and sums/products for rectangular graph eigenpairs. This supports the classical status of the local path/product ingredient; the present audit establishes the source's looser Poincare constant directly and does not import a new theorem from that citation. No substantial quoted text was used. Only this targeted primary reading was needed for the citation check; it is not a priority search for the full binary theorem.
+The substantive gain within the source's scope is genuine: arbitrary placement of binary low points replaces a planar arrangement restriction, with a direct linear-in-marked-points rectangle partition and actual-moment payment. The next general-coefficient mechanism is not supplied by this proof. Nothing here certifies an additional paper or resets a route counter.
+
+12. ISSUED ARTIFACTS
+Complete report: D:\Entregas\the-eriksson-programme\2026-11-08_binary-point-partition199\source-audit199.txt.
+Structured companion: D:\Entregas\the-eriksson-programme\2026-11-08_binary-point-partition199\audit199.json.
+Both are issued as UTF-8 without BOM, LF only, with a final LF. Their exact byte hashes are returned to the assigning agent after writing. No PDF, numeric score, or star rating was requested or produced.
