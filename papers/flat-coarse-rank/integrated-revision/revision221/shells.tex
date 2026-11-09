@@ -1,0 +1,247 @@
+\section{Local shell estimates and their sharp lower moment boundary}
+\label{sec:shell217}
+This section groups the local estimates from source units 204--205 and 216.
+They concern actual internal energy on concentric integer shells, rather
+than a supplied annular gap. They do not construct or count the disjoint
+rectangular observations in Section~27. The lower moment estimate below
+pays a necessary thickness cost; it does not remove that cost from the
+earlier, thickness-uniform estimate.
+
+Fix $D\geq3$, integers $R\geq1$ and $0\leq r<R$, and set
+\[
+ A=\{-R,\ldots,R\}^D\setminus\{-r,\ldots,r\}^D,
+ \quad t=R-r,\quad L=2R+1,\quad N=|A|,\quad J=2D.
+\]
+Only nonwrapping internal positive-axis edges are counted, once each.
+For $a:A\to(0,\infty)$ and $f:A\to\R$ put
+\[
+ V_A(f)=\sum_A|f-\bar f_A|^2,\qquad
+ \E_{a,A}(f)=\sum_{x,x+e_i\in A}a(x)|f(x+e_i)-f(x)|^2.
+\]
+The coefficient belongs to the original starting site $x$. No energy
+outside $A$, averaging of endpoint weights, or reflected weights is used.
+
+\begin{theorem}[Two local inverse moment estimates]\label{thm:shell217}
+There are explicit finite dimension-only constants $U_D$ and $C_D$ such that
+every $f$ and positive $a$ as above satisfy
+\begin{align}
+ V_A(f)&\leq U_D L^2
+   \left(\frac1N\sum_Aa^{-D/2}\right)^{2/D}\E_{a,A}(f),
+   \label{eq:shell217-full}\\
+ V_A(f)&\leq C_D\left(\sum_Aa^{-(D-1)/2}\right)^{2/(D-1)}\E_{a,A}(f)
+   \label{eq:shell217-intrinsic}\\
+ &\leq C_D J^{2/(D-1)}L^2t^{2/(D-1)}
+   \left(\frac1N\sum_Aa^{-(D-1)/2}\right)^{2/(D-1)}\E_{a,A}(f).
+   \nonumber
+\end{align}
+The statements include $t=1$ and $r=0$. Translation preserves them;
+off-center holes, several holes and wrapping identifications are not covered.
+\end{theorem}
+
+We give the proofs and constants. They use the finite counting cube theorem
+already proved in Section~\ref{sec:self-contained-box-sobolev}, not a new
+unproved graph or extension assumption. Coarea, variance decomposition and
+the final conductance H\"older step are classical; see also \cite{ap:ads},
+Section 2.2. No priority finding for this particular shell formulation is made.
+
+\subsection{The actual cover and directional mean transport}
+Let $S_{i,+}$ restrict $x_i$ to $[r+1,R]\cap\mathbb Z$ and $S_{i,-}$
+restrict it to $[-R,-r-1]\cap\mathbb Z$, leaving every other coordinate
+in $[-R,R]\cap\mathbb Z$. These $J$ slabs cover $A$; their common volume is
+$v=tL^{D-1}$. Slabs with distinct normal coordinates intersect in
+$t^2L^{D-2}$ sites. Root a tree at $(1,+)$, attach all $J-2$ slabs with
+other normals to it, and attach $(1,-)$ to $(2,+)$. Every root path has
+at most two edges, each joining distinct normals. Also
+\begin{equation}\label{eq:shell217-volume}
+ 2tL^{D-1}\leq N=L^D-(L-2t)^D\leq JtL^{D-1}.
+\end{equation}
+The lower bound uses the two disjoint coordinate-1 slabs, and the upper
+bound the full cover.
+
+For $q\geq1$, an $L$-site interval $I$, and a nonempty subinterval $T$,
+Jensen and path H\"older give
+\[
+ |\bar g_I-\bar g_T|^q
+ \leq\frac1{L|T|}\sum_{x\in I,y\in T}|g(x)-g(y)|^q
+ \leq L^{q-1}\sum_{e\subset I}|dg(e)|^q.
+\]
+Averaging over the same fibers of $B=I\times F$ therefore gives
+\begin{equation}\label{eq:shell217-transport}
+ |\bar f_B-\bar f_{T\times F}|
+ \leq L^{1-1/q}|F|^{-1/q}
+       \left(\sum_{\substack{e\subset B\\ e\parallel I}}|df(e)|^q\right)^{1/q}.
+\end{equation}
+For each side of a tree intersection, $|F|=v/L$. Its intersection mean
+is identical from either side. If $F_i=\sum_{e\subset S_i}|df(e)|^q$,
+then
+\begin{equation}\label{eq:shell217-edge}
+ |\bar f_{S_i}-\bar f_{S_j}|
+ \leq Lv^{-1/q}\bigl(F_i^{1/q}+F_j^{1/q}\bigr).
+\end{equation}
+There is no inverse overlap-volume loss. This is a directional energy
+comparison, not the local best-constant error gluing statement refuted earlier.
+
+\subsection{The thickness uniform endpoint}
+Put $q=2D/(D+2)$ and $H=\sum_iF_i$. The proved rectangle theorem
+\eqref{eq:rectangle-unweighted-derived} gives
+$V_{S_i}(f)\leq A_D L^2v^{-2/D}F_i^{2/q}$ with its explicit $A_D$.
+By the depth-two tree and \eqref{eq:shell217-edge},
+$|\bar f_{S_i}-\bar f_{S_{\rm root}}|\leq4Lv^{-1/q}H^{1/q}$.
+The cover and the exact variance decomposition about each slab mean yield
+\begin{align*}
+ V_A(f)&\leq\sum_i\left[V_{S_i}(f)
+                  +v|\bar f_{S_i}-\bar f_{S_{\rm root}}|^2\right]\\
+ &\leq (A_D+16J)L^2v^{-2/D}H^{2/q},
+\end{align*}
+using $1-2/q=-2/D$ and $\sum_iF_i^{2/q}\leq H^{2/q}$.
+Writing $F_A=\sum_{e\subset A}|df(e)|^q$, we have $H\leq JF_A$;
+and $N\leq Jv$ implies $v^{-2/D}\leq J^{2/D}N^{-2/D}$. Thus
+\[
+ V_A(f)\leq (A_D+16J)J^{2/q+2/D}L^2N^{-2/D}F_A^{2/q}.
+\]
+H\"older on precisely the retained original edges gives, for $p=q/(2-q)$,
+\begin{equation}\label{eq:shell217-holder}
+ F_A^{2/q}\leq\E_{a,A}(f)
+       \left(\sum_{e\subset A}a(\operatorname{start}e)^{-p}\right)^{1/p}
+ \leq D^{1/p}\E_{a,A}(f)\left(\sum_Aa^{-p}\right)^{1/p}.
+\end{equation}
+Here $p=D/2$, so \eqref{eq:shell217-full} follows with
+$U_D=D^{2/D}(A_D+16J)J^{2/q+2/D}$. This is the source205 bound,
+including its thickness-uniform conclusion, rather than a new result counted twice.
+
+\subsection{The lower dimensional slab endpoint}
+Put $d=D-1$, $p=d/2$, $q=2d/(d+2)$. On a $d$-dimensional $L$-site
+cube $Q$, the earlier counting cube proof gives
+\begin{equation}\label{eq:shell217-cube}
+ V_Q(g)\leq K_d^2\left(\sum_{e\subset Q}|dg(e)|^q\right)^{2/q}.
+\end{equation}
+For $d\geq3$, its explicit constant is
+\[
+ c_d=d(1-2^{-1/d}),\quad \alpha_d=2(d-1)/d,\quad q'=2d/(d-2),
+ \qquad K_d=2\alpha_d d^{1/q'}/c_d.
+\]
+For $d=2$, use $K_2=2$. To check this endpoint without a spurious
+infinite-conjugate power argument, the same finite projection proof gives
+$|\partial_E B|\geq(2-\sqrt2)|B|^{1/2}\geq\tfrac12|B|^{1/2}$
+for sets occupying at most half a cube. Finite coarea and the triangle
+inequality in $\ell^2$ give $\|u\|_2\leq2\sum_e|du|$ for a nonnegative
+$u$ with such support. Split $g$ at a counting median. Both positive and
+negative supports have size at most half, and their edge $\ell^1$ energies
+add exactly to that of $g$. Squaring and adding proves
+\eqref{eq:shell217-cube} at $q=1$. Singleton cubes have zero variance.
+
+For a slab $B=Q_L^d\times\{1,\ldots,t\}$, let $m_z$ be its layer means,
+and let $T$ and $U$ be its long- and short-direction $q$-energies. Exactly,
+\[
+ V_B(f)=\sum_z V_{Q_L^d}(f_z)+L^d\sum_z|m_z-\bar m|^2.
+\]
+The first term is at most $K_d^2T^{2/q}$. On a $t$-site interval, every
+pair difference is at most $t^{1-1/q}$ times the $q$-gradient norm.
+Jensen at its mean gives
+$\sum_z|m_z-\bar m|^2\leq t^{3-2/q}(\sum|dm|^q)^{2/q}$.
+Jensen across each $L^d$-point layer gives $\sum|dm|^q\leq L^{-d}U$.
+Thus the second term is at most
+\[
+ L^{d-2d/q}t^{3-2/q}U^{2/q}
+ =L^{-2}t^{2-2/d}U^{2/q}\leq U^{2/q}.
+\]
+For $t=1$ it is zero; otherwise $t\leq L$ proves the inequality.
+With $B_d=\max(K_d^2,1)$ and $2/q\geq1$, we have proved
+\begin{equation}\label{eq:shell217-slab}
+ V_B(f)\leq B_d(T+U)^{2/q},
+\end{equation}
+uniformly in thickness, using only actual internal edges.
+
+\subsection{Lower moment shell bound}
+Set $G=(\sum_{e\subset A}|df(e)|^q)^{1/q}$ and
+$h=L^{1-d/q}t^{-1/q}=L^{-d/2}t^{-1/q}$.
+By \eqref{eq:shell217-transport}, each slab mean differs from a tree
+intersection mean by at most $hG$. Hence each root mean difference is at
+most $4hG$. Since $v=tL^d$, we have $vh^2=t^{1-2/q}=t^{-2/d}\leq1$.
+Using the same cover and exact decomposition, now with
+\eqref{eq:shell217-slab}, proves
+\[
+ V_A(f)\leq JB_dG^2+16Jvh^2G^2\leq S_DG^2,
+ \qquad S_D=J(B_d+16).
+\]
+Finally \eqref{eq:shell217-holder} has $p=d/2$ at this $q$. It proves
+\eqref{eq:shell217-intrinsic} with $C_D=S_DD^{2/d}$.
+Equation~\eqref{eq:shell217-volume} proves its normalized form.
+For $D=3$, $S_3=120$, $C_3=360$, and the final normalized constant is 2160.
+These are explicit upper bounds, not optimal constants. Applying the scalar
+bounds to each real coordinate and summing adds no internal-dimension factor.
+
+\subsection{Sharp powers and an actual starting site falsifier}
+\begin{proposition}\label{prop:shell217-sharp}
+For arbitrary positive starting-site weights, the thickness power
+$2/(D-1)$ in the lower moment estimate cannot be replaced by a smaller
+power with a dimension-only constant. At thickness one, no exponent
+$p_0<(D-1)/2$ gives a uniform $L^2(\operatorname{mean}_A a^{-p_0})^{1/p_0}$
+variance bound. These are local scalar statements, not counterexamples to
+the fixed global $D/2$-moment rectangular question.
+\end{proposition}
+\begin{proof}
+For any $p_0>0$, let $x_0=(R,R,0,\ldots,0)$,
+$W=\{x_0,x_0-e_1,\ldots,x_0-e_D\}$ and $h_0=D+1$.
+All these distinct sites belong to $A$, including when $t=1$ and $R=1$.
+The smallest shell has $N\geq3^D-1\geq2h_0$ sites. Put
+$\varepsilon=(h_0/N)^{1/p_0}$, $a=\varepsilon$ on $W$ and $a=1$ elsewhere.
+Then $\operatorname{mean}_A a^{-p_0}=2-h_0/N<2$.
+For $f=\boldsymbol1_{\{x_0\}}$,
+\[
+ V_A(f)=\frac{N-1}N,\qquad
+ \E_{a,A}(f)=(2D-2)\varepsilon,\qquad
+ \frac{V_A(f)}{\E_{a,A}(f)}
+ \geq\frac1{4(D-1)}\left(\frac N{h_0}\right)^{1/p_0}.
+\]
+There are $D$ incoming and $D-2$ outgoing retained incident edges, and
+all their starting sites lie in $W$. Weakening $x_0$ alone would leave
+order-one incoming energy and would not prove this bound.
+
+At $p_0=(D-1)/2$, the volume brackets \eqref{eq:shell217-volume} show
+that the lower bound is of order $L^2t^{2/(D-1)}$, while the normalized
+moment stays below two. Taking $r=0$, $R\to\infty$ rules out any smaller
+thickness power. Taking $t=1$, $R\to\infty$ and $p_0<(D-1)/2$ instead
+gives growth of the ratio divided by $L^2$ at least as
+$L^{(D-1)/p_0-2}$, proving the second assertion.
+
+One may even impose actual mean comparability: set
+$\widetilde a=a/\varepsilon$ and $\mu=\operatorname{mean}_A\widetilde a$.
+Since $\bar a\geq1-h_0/N\geq1/2$,
+$1\leq\widetilde a\leq1/\varepsilon\leq2\mu$, and
+$\operatorname{mean}_A(\mu/\widetilde a)^{p_0}
+=\bar a^{p_0}(2-h_0/N)<2$.
+The indicator energy after rescaling is $2D-2$. However, at
+$p_0=(D-1)/2$ its normalized $D/2$ moment is at least
+$2^{-D/2}(N/h_0)^{1/(D-1)}$, and diverges. Thus it does not obey the
+fixed global moment hypothesis of Section~27. No statement about every
+rectangular partition or every finite penalty follows.
+\end{proof}
+
+\subsection{Evidence and the remaining conversion}
+The full analytical sources are units 205 and 216, with frozen source
+reviews accepting their stated local claims. The unit216 review read the
+entire proof and cube dependency; it used an existing shared-filesystem
+Codex task with earlier unit198 context, not a fresh isolated reviewer.
+The exposed description is Codex based on GPT-6; its exact hidden backend
+and effort are unknown. Independence and human peer review are not claimed.
+The exact source216 commit is
+\begin{center}\scriptsize\texttt{8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337}.\end{center}
+The full report and diagnostic records are at
+\path{papers/flat-coarse-rank/research/intrinsic-shell216/}; the diagnostic is
+\path{scripts/shell_intrinsic_diagnostic216.py}.
+An owned CPU/high-memory Colab Linux run checked ten $D=3$ geometries,
+40 fields, 240 slab estimates, 960 fiber comparisons and ten negative
+controls for missing incoming starting sites. Normal and optimized modes
+had actual zero exits and identical output bytes. Its three-second child
+execution is finite diagnostic evidence, not an all-field or all-$D$
+machine proof. The runtime was stopped and separately read back inactive.
+No Lean theorem or fresh formal validation is asserted by this section.
+
+The useful new local input is a weaker inverse moment on thin shells.
+To use it in the main question, favorable local moments, selection and
+count, and conversion to a disjoint admissible rectangle partition still
+must be derived from the original global coefficient assumptions. The
+slabs overlap and are not that partition. Historical stopped routes and
+their negative results remain in force. This section does not close the
+general question or change PR29's 20/41 and TermSource0 record.

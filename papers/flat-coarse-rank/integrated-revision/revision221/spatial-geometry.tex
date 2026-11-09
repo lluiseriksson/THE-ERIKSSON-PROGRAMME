@@ -1,0 +1,445 @@
+\clearpage
+\section{Local geometry of coarse observations}\label{sec:geometry183}
+The preceding critical inverse-moment theorem constructs a global spectral
+observation. It does not construct a spatial partition. We now consolidate
+four complementary statements: an abstract limitation of spectral data,
+a local coexact point-support obstruction, a positive rectangular construction
+for a restricted coefficient class, and a limitation of minimum-coefficient
+certificates even with sharp unweighted constants. The original unrestricted
+critical rectangular question remains open.
+
+Throughout the actual lattice statements, $D\geq3$, $p=D/2$,
+$X=(\mathbb Z/n\mathbb Z)^D$, $N=n^D$ and $h=D(N_c^2-1)$.
+The energy is the componentwise start-weighted form
+\[
+ \E_a(U)=\sum_{x,i,j}a(x)|D_iU_j(x)|^2,\qquad
+ D_iU_j(x)=U_j(x+e_i)-U_j(x).
+\]
+We do not silently substitute a variable-coefficient weighted curl form.
+For a rectangular partition $\mathcal P$, the actual normalized mean map is
+\[
+ C_{\mathcal P}(U)_{R,j}=\sqrt{|R|}\operatorname{mean}_R U_j,
+ \qquad \dim F=h\#\mathcal P.
+\]
+A global inequality with penalty $c\|C_{\mathcal P}(U)\|^2$ gives the
+original differentiable near-zero data with $K=c$. A kernel obstruction
+below applies to every finite locally upper-quadratic penalty, rather
+than only to this particular coefficient.
+
+\subsection{An isospectral obstruction to forgetting coordinate geometry}
+This first construction is deliberately a nonlocal scalar graph, not an
+admissible nearest-neighbour Hodge profile. Let $n$ be even and set
+$e=N^{-1/2}\mathbf1$, $v=N^{-1/2}(-1)^{x_1+\cdots+x_D}$. For $0<\alpha<c<\beta$ put
+\[
+ L=\beta(I-ee^*)-(\beta-\alpha)vv^*.
+\]
+Its eigenvalues are $0$ on $e$, $\alpha$ on $v$, and $\beta$ on their
+orthogonal complement. On $e^\perp$ there is exactly one mode below $c$,
+and the actual scalar observation $\langle v,f\rangle$ with penalty
+coefficient $c-\alpha$ repairs the target. For $x\ne y$ the edge weight is
+\[
+ w_{xy}=\frac{\beta+(\beta-\alpha)\sigma(x)\sigma(y)}N>0,
+ \qquad \sigma(x)=(-1)^{x_1+\cdots+x_D}.
+\]
+The row sums vanish, so this is a connected positive graph Laplacian.
+For $\alpha=c/2$, $\beta=2c$, the weight ratio is only seven.
+
+Let $\Pi$ project onto the span of normalized cell indicators and let
+$\tau=\|\Pi v\|^2$. Constants belong to this span. If $\tau<1$, the actual
+unseen mean-zero vector $u=(I-\Pi)v$ has
+\[
+ \|u\|^2=1-\tau,\qquad
+ \frac{\langle Lu,u\rangle}{\|u\|^2}
+       =\alpha+(\beta-\alpha)\tau.
+\]
+For a rectangle, the alternating sum in every cyclic coordinate interval
+has magnitude at most one. Consequently, for $q$ cells,
+\[
+ \tau=\frac1N\sum_R\frac{(\sum_R\sigma)^2}{|R|}\leq\frac qN.
+\]
+The exact finite quadratic-penalty criterion is stricter than a nonnegative
+kernel margin. Put $d=\beta-c$ and $r=\beta-\alpha$. On $e^\perp$,
+$L-cI+K\Pi=dI+K\Pi-rvv^*$. Since $dI+K\Pi>0$, Cauchy--Schwarz after
+its square root shows that positivity is equivalent to
+\[
+ r\left[\frac{1-\tau}{d}+\frac\tau{d+K}\right]\leq1.
+\]
+Solving gives
+\[
+ \text{some finite }K\text{ exists}\quad\Longleftrightarrow\quad
+ r\tau>c-\alpha,
+ \qquad
+ K_{\min}^{e^\perp}=\frac{(\beta-c)(c-\alpha)}{(\beta-\alpha)\tau-(c-\alpha)}.
+\]
+Here $K_{\min}^{e^\perp}$ is the optimum on the mean-zero subspace.
+On the full space the constant mode additionally requires $K\geq c$,
+so the optimum is $\max\{c,K_{\min}^{e^\perp}\}$. In particular,
+at $\tau=1$ the restricted value $c-\alpha$ is below the full-space
+minimum; the constant field is an exact witness to the difference.
+At equality the second summand stays positive for every finite $K$.
+A locally upper-quadratic penalty cannot outperform this quadratic
+condition. Thus the displayed positive-weight example requires $q>N/3$
+for every successful rectangular mean partition. Its restricted mean-zero
+observation rank is $q-1$.
+
+Replace the checkerboard signs by signs constant on two equal half-slabs.
+A vertex permutation conjugates the two graphs: their complete spectra
+and unlabelled weighted graphs coincide. The two half-slab means observe
+the sole low direction and admit a finite penalty. Therefore even the
+unlabelled graph, not just the eigenvalue count, omits the coordinate
+geometry needed for rectangular observations. This is an analytical
+counterexample to a locality-free conversion; it is not a counterexample
+to the original local coefficient question or a new Schur principle.
+
+\subsection{Growing point support on actual coexact fields in dimension three}
+The earlier line-constant point test can be strengthened using a local
+coexact correction, with an essential change of coefficient scale.
+For even $n\geq4$, define the rational triangular profile and its periodic
+primitive by
+\[
+ f(t)=1-4\operatorname{dist}_{\mathbb Z/n\mathbb Z}(t,0)/n,
+ \qquad F(0)=0,\quad F(t)=-\sum_{r=1}^t f(r).
+\]
+Then $\sum f=0$, $|D f|=4/n$, $D^*F=f$ and
+$\sum f^2=n/3+8/(3n)$. The positive-pair curl and backward adjoint satisfy
+\[
+ (d_1U)_{ij}=D_iU_j-D_jU_i,\qquad
+ (d_1^*G)_1=-D_2^*G_{12},\quad (d_1^*G)_2=D_1^*G_{12}.
+\]
+Put $B^0_{12}(x)=F(x_1)e_0$ in one fixed internal unit coordinate, with
+other entries zero. Then $U^0=d_1^*B^0$ has only component two, equal to
+$f(x_1)e_0$. It is explicitly coexact and divergence zero, and
+\[
+ \|U^0\|^2\geq N/3,\qquad \E_\mu(U^0)=16\mu N/n^2.
+\]
+
+For an arbitrary sampled set $S$ of $s$ vertices, join two samples when
+their periodic maximum-coordinate distance is at most four. Let $S_\alpha$
+be the resulting components, of sizes $s_\alpha$, with representatives
+$p_\alpha$. Write $N_r(S_\alpha)$ for the radius-$r$ neighbourhood and set
+\[
+ \chi_\alpha=\mathbf1_{N_1(S_\alpha)},\qquad
+ (G_\alpha)_{12}(x)=\chi_\alpha(x)
+       [F(x_1)-F((p_\alpha)_1)]e_0,
+ \qquad U=U^0-\sum_\alpha d_1^*G_\alpha.
+\]
+This is an actual potential, not an assumed right inverse of divergence.
+At every sample, $\chi_\alpha$ equals one at the site and its two backward
+neighbours, so $d_1^*G_\alpha$ agrees with $U^0$ in component two and is
+zero in component one. Other components contribute zero there. Thus
+$U_i(x)=0$ for every $x\in S$ and every $i$.
+
+Distinct $N_2(S_\alpha)$ are disjoint and their total size is at most
+$5^Ds$. Outside them $U=U^0$, hence, with $C_D=5^D$,
+\[
+ \|U\|^2\geq N/3-C_Ds.
+\]
+A component graph path has at most $s_\alpha-1$ steps of cyclic length
+at most four. The unit increment bound for $F$ gives
+$|F(x_1)-F((p_\alpha)_1)|\leq4s_\alpha$ on $N_1(S_\alpha)$.
+Each correction has at most two components of magnitude $8s_\alpha$,
+so its squared norm, summed over disjoint supports, is at most
+$128C_D\sum_\alpha s_\alpha^3$. Expanding finite differences gives the
+unit flat Hodge identity, and $\E_\mu(A)\leq4D\mu\|A\|^2$.
+The quadratic inequality for $U^0$ minus the correction therefore gives
+\[
+ \E_\mu(U)\leq32\mu N/n^2+A_D\mu\sum_\alpha s_\alpha^3,
+ \qquad A_D=1024D5^D.                                      \tag{G1}
+\]
+All support and energy constants have been derived, without a separation
+or correction-operator hypothesis on the samples.
+
+\begin{proposition}\label{prop:geo-point}
+Fix $c>0$ and take $a=\mu_n=cn^2/384$ for sufficiently large even $n$.
+Any successful point-supported original observation on the actual coexact
+domain must have sampled support
+\[
+ s\geq\min\left\{\frac{n^D}{12C_D},
+       (64/A_D)^{1/3}n^{(D-2)/3}\right\}.
+\]
+The same conclusion holds when only the derivative at zero factors through
+the point values. In particular support diverges in $D=3$.
+\end{proposition}
+\begin{proof}
+The profile satisfies $1\leq a\leq2\mu_n$, its mean is $\mu_n$, and its
+normalized critical inverse moment is exactly one. If $s\leq N/(12C_D)$,
+then $\|U\|^2\geq N/4>0$. Point-supported maps with $C(0)=0$ annihilate
+$tU$; derivative-supported maps satisfy $C(tU)=o(t)$. Divide the local
+coercivity inequality by $t^2$ and use the quadratic upper bound on its
+penalty. Since $32\mu_nN/n^2=cN/12$, (G1) implies
+$\sum s_\alpha^3\geq(64/A_D)n^{D-2}$. Finally $\sum s_\alpha^3\leq s^3$.
+If the initial restriction on $s$ fails, the first alternative already holds.
+\end{proof}
+The family scale is $\mu_n=cn^2/384$, not the older $\mu=n^2,c\leq16$
+coexact regime, where a uniform Fourier gap can already suffice without
+observations. No fine-space repair is covered here. On this same new
+family, observing all real Fourier modes with centred $|k|^2<24$ has
+dimension at most $h9^D$ and gives target $c$ with penalty coefficient $c$:
+the omitted modes obey $\mu_n\lambda_n(k)\geq c|k|^2/24$.
+Thus this separates bounded point support from bounded global spectral
+rank, not from rectangular averages or point samples plus complementary
+means. The arbitrary-cluster exponent is a safe bound, not claimed sharp.
+
+\subsection{A fixed-gap rectangular construction with arbitrary weak geometry}
+\begin{lemma}\label{lem:geo-isolate}
+Suppose $a\geq A>0$ outside any set $S$ of $k$ vertices, with $a>0$
+everywhere. Put $L=\min\{n,\max\{1,\lfloor\sqrt{A/c}\rfloor\}\}$.
+There is an actual rectangular partition satisfying
+\[
+ c\|U\|^2\leq\E_a(U)+c\|C_{\mathcal P}(U)\|^2
+ \quad\hbox{for every cochain},\qquad
+ \#\mathcal P\leq\lceil n/L\rceil^D+2Dk.                  \tag{G2}
+\]
+No shape, connectedness or separation of $S$ is assumed.
+\end{lemma}
+\begin{proof}
+Start with coordinate intervals of length at most $L$. To isolate a sample
+in its current rectangle, cut just before and after its first coordinate,
+retain the side slabs, and continue only in the central width-one slice.
+Repeat in each direction. At most $2D$ actual binary cuts isolate that
+vertex; each increases the leaf count by one. Previously isolated vertices
+stay singleton leaves. Induction gives disjoint coverage, the asserted
+count, and every nonsingleton leaf avoids $S$. This is not a product of
+all coordinate cut sets or a full equal-child cube tree.
+
+On a length-$l$ path, the counting variance identity, path Cauchy--Schwarz
+and the pair count $r(l-r)\leq l^2/4$ give
+\[
+ \sum|u-\bar u|^2=\frac1l\sum_{r<s}|u_r-u_s|^2
+ \leq\frac{l(l-1)}4\sum|Du|^2\leq\frac{l^2}4\sum|Du|^2.
+\]
+Commuting coordinate-averaging projections $P_i$ satisfy
+$I-\prod_iP_i\leq\sum_i(I-P_i)$ as quadratic forms; their simultaneous
+zero-one eigenvalues prove it. Tensorization bounds each leaf's variance
+by $L^2/4$ times its unweighted internal-edge energy. Every retained
+positive edge starts outside $S$, hence has coefficient at least $A$.
+If $L\geq2$ this bounds $c$ times residual by one quarter of internal
+weighted energy; if $L=1$ every residual is zero. Sum the disjoint internal
+edge sets and discard nonnegative cross-leaf/wrap edges. The exact
+orthogonal mean decomposition proves (G2). Arbitrary aspect ratios cause
+no extra hypothesis.
+\end{proof}
+A safe mesh count is
+\[
+ \lceil n/L\rceil^D\leq4^D\max\{1,c^p\}\max\{1,N/A^p\}.
+\]
+For $A/c<4$, $L=1$ and $N\leq(4c)^pN/A^p$; otherwise, unless $L=n$,
+$L\geq\sqrt{A/c}/2$ and $\lceil n/L\rceil\leq1+2n\sqrt{c/A}$.
+These estimates also include small sizes and all-singleton cases.
+
+\begin{theorem}\label{thm:geo-gap}
+Fix $B\geq1$ and $0<\theta\leq1$ independently of $n,\mu$. In addition
+to the original critical-moment profile hypotheses, assume
+\[
+ \text{every }x\text{ satisfies }a(x)\leq B\text{ or }a(x)\geq\theta\mu.
+                                                                    \tag{G3}
+\]
+Then the original rectangular inequality holds globally with $K=c$ and
+\[
+ \dim F\leq h2^p\left[4^D\max\{1,c^p\}\theta^{-p}+2DMB^p\right]
+             \max\{1,N/(1+\mu)^p\}.
+\]
+\end{theorem}
+\begin{proof}
+For $S=\{a\leq B\}$ the moment hypothesis derives
+$|S|\leq MB^pN/\mu^p$. Off $S$, (G3) gives $a\geq\theta\mu$.
+Insert these facts in (G2), use $\theta\leq1$ and
+$\max\{1,N/\mu^p\}\leq2^p\max\{1,N/(1+\mu)^p\}$.
+\end{proof}
+In particular every original profile taking values $\{1,H\}$ is included:
+its actual mean gives $H\geq\mu$. Arbitrary weak-set geometry replaces the
+earlier single weak cube. This does not cover every two-valued family
+whose lower value grows with $n$; (G3) is additional and is not derived
+from the critical moment alone.
+
+The limitation is explicit. At $c=1$, set $n=t^2$, $\mu=t^4$, $b=t^2$,
+let the weak cube have side $t$ and fraction $s=t^{-D}$, and set
+$a=b$ there and $H=(\mu-sb)/(1-s)$ elsewhere. The exact mean is $\mu$,
+$1\leq a\leq2\mu$, and the critical moment is less than two.
+For the specifically prescribed mesh of side
+$\max(1,\lfloor\sqrt{\tau/c}\rfloor)$, followed by isolation of exactly
+$a<\tau$, the count is at least $t^D$: if $\tau\le b$, its mesh side is
+at most $t$; if $\tau>b$, all $t^D$ weak sites are isolated. This is not
+a numerical lower bound for every sufficient uniform mesh. For even $t$
+and $\tau=b$, a mesh of side $2t$ has only $(t/2)^D$ cells and passes the
+actual bound $L(L-1)/(4b)=1-1/(2t)<1$. This corrects the broader sentence
+in the preserved revision187 and retains its full adverse review.
+Nevertheless the weak cube itself and its $D$ first-coordinate-outside
+complement slabs form $D+1$ rectangles. Their variance coefficients are
+at most $t^2/(4b)=1/4$ or $n^2/(4H)\leq1/4$, respectively.
+They therefore give the actual target with $K=1$. This defeats the named
+threshold method, not unrestricted rectangular means.
+
+\subsection{Actual detours and the failure of minimum-only certificates}
+We next leave coefficient minima behind, using the classical path
+comparison mechanism\cite{geo:comparison}. Let a weak set $W$ have periodic
+maximum-coordinate separation at least three, let $a\geq H>0$ off $W$,
+and allow arbitrary nonnegative coefficients on $W$. Denote by
+$\E_{\rm str}$ and $\E_{\rm wk}$ the unweighted edge-square sums with
+positive starts outside and inside $W$.
+
+\begin{lemma}\label{lem:geo-detour}
+For $D\geq2,n\geq3$ under these hypotheses,
+\[
+ \E_{\rm wk}\leq3\E_{\rm str},\qquad
+ \E_0\leq4\E_{\rm str},\qquad \E_a\geq(H/4)\E_0.         \tag{G4}
+\]
+\end{lemma}
+\begin{proof}
+Let $\sigma(i)=i+1$ cyclically. Bypass every weak-start edge $x\to x+e_i$
+by the actual three-edge path
+\[
+ x\longrightarrow x-e_{\sigma(i)}
+ \longrightarrow x+e_i-e_{\sigma(i)}\longrightarrow x+e_i.
+\]
+Its positive starts are $x-e_{\sigma(i)}$ twice in different directions,
+and $x+e_i-e_{\sigma(i)}$. They are strong by separation. The first edge
+is traversed backwards, so its coefficient is not evaluated at $x$.
+
+For a fixed positive edge $(y,k)$, the three possible weak sources are
+\[
+ y+e_k,\qquad y+e_{\sigma(k)},\qquad
+ y-e_{\sigma^{-1}(k)}+e_k.
+\]
+For each type its direction $i$ is uniquely fixed. These candidate sources
+are distinct and pairwise at periodic maximum-coordinate distance at most
+two. At most one is weak. Thus every strong positive edge is used at most
+once, counting uses rather than just distinct paths. Cauchy--Schwarz along
+each three-step path and summation prove $\E_{\rm wk}\leq3\E_{\rm str}$.
+The remaining assertions follow directly, componentwise. Periodic wraps
+are already included in the path identities.
+\end{proof}
+The Fourier torus gap gives
+\[
+ \E_a(U)\geq\frac H4\frac{16}{n^2}\|U-\operatorname{mean}_XU\|^2.
+                                                                    \tag{G5}
+\]
+If $4H/n^2\geq c$, one global normalized mean gives the original inequality
+with $K=c$, on all cochains. No supplied flow, comparison or kernel margin
+remains as an unproved assumption.
+
+For a nonsingleton rectangle $R$, let $\lambda_1^0(R)$ be the sharp
+unweighted internal Neumann gap after cutting each coordinate interval
+into a path. A standard sufficient local test is
+\[
+       \min_R(a)\lambda_1^0(R)\geq c.                      \tag{G6}
+\]
+Singletons have zero residual. On a longest side of length $l$, the actual
+mean-zero ramp $u(r)=r-(l-1)/2$ has energy $l-1$ and counting squared norm
+$l(l^2-1)/12$. Tensor copies cancel, giving
+\[
+       \lambda_1^0(R)\leq12/[l(l+1)]<12/l^2.              \tag{G7}
+\]
+Thus the following obstruction applies even to the best unweighted
+constant, not just a loose path or trace estimate.
+
+\begin{proposition}\label{prop:geo-minimum}
+For every fixed $D\geq3$ and $M>1$ there are original admissible profiles
+at $c=1,\mu=n^2$ for which a single rectangular mean gives original data
+with $K=1$, but every partition passing (G6) has an unbounded number of
+cells. No fixed multiplicative loosening of (G6) rescues its uniform rank
+order. This does not refute the original rectangular question.
+\end{proposition}
+\begin{proof}
+Choose an integer $m\geq4$ with $1+m^{-D}\leq M$, and take large multiples
+$t$ of $m$. Put $n=t^2$, $\mu=t^4$, $b=t^2$ and
+\[
+ \begin{gathered}
+ W=\{0,mt,2mt,\ldots,n-mt\}^D,\quad
+ k=(t/m)^D,\quad s=\frac1{m^Dt^D},\\
+ a=b\text{ on }W,\qquad H=\frac{\mu-sb}{1-s}\text{ elsewhere}.
+ \end{gathered}
+\]
+Then $H\geq\mu$, $1\leq a\leq2\mu$, and the arithmetic mean is exactly
+$\mu$. The normalized critical inverse moment is
+\[
+ s(\mu/b)^p+(1-s)(\mu/H)^p
+      =m^{-D}+(1-s)(\mu/H)^p<1+m^{-D}\leq M.
+\]
+Weak sites have periodic separation $mt$. By (G5), $\E_a$ is at least
+four times global mean-zero squared norm, so one mean suffices. The target
+rank scale is exactly one.
+
+Every weak-containing nonsingleton leaf passing (G6) has, by (G7),
+$l^2<12b=12t^2$, hence $l<\sqrt{12}t<mt$. It contains at most one weak
+site; a singleton does too. Therefore every passing partition has
+$\#\mathcal P\geq k=(t/m)^D\to\infty$, with arbitrary cut locations and
+translated cyclic intervals allowed. For the test
+$\eta\min_R(a)\lambda_1^0(R)\geq1$ with any fixed $\eta>0$, choose also
+$m>\sqrt{12\eta}$. The same proof applies.
+\end{proof}
+If a local test retains periodic edges on a full-period side, the ramp
+bound (G7) must not be used on that cycle. Its first Fourier mode instead
+gives a gap upper bound $4\pi^2/l^2<40/l^2$. Choosing
+$m>\sqrt{40\eta}$ gives the same conclusion uniformly. Alternatively,
+for every fixed $m$, a weak-containing full-period side fails that test
+for sufficiently large $t$, since its upper bound is
+$4\eta\pi^2/t^2<1$. No periodic edge was discarded in the actual global
+comparison (G4)--(G5).
+
+A separate example clarifies non-necessity of the scalar moment for an
+individual family. Let $n$ run through multiples of three, take
+$W=\{0,3,\ldots,n-3\}^D$, $s=3^{-D}$, $a=1$ on $W$, $\mu=n^2$ and
+$H=(\mu-s)/(1-s)$ elsewhere. The original mean and coefficient bounds
+hold, and (G5) again gives one-cell data at $c=K=1$, while
+\[
+ \operatorname{mean}((\mu/a)^{D/2})\geq3^{-D}n^D\longrightarrow\infty.
+\]
+This does not remove the moment assumption from its unrestricted
+sufficiency theorem or contradict its sharp exponent among universal
+scalar inverse-moment assumptions. Here separation is a verified feature
+of the explicit profiles, not a consequence of an arbitrary moment bound.
+
+\subsection{Reproduction and remaining limitations}
+The analytical sources are the pinned notes at
+\texttt{aaa9e278f2c7} (nonlocal graph), \texttt{bfc4ada98dd9} (coexact
+point support), \texttt{ee2b86c0e62b} (fixed-gap rectangles) and
+\texttt{29fc9366bf4e} (detours and minimum certificates).
+Classical comparison is attributed to Section2B and Example2.1
+of\cite{geo:comparison}, which already use short bypasses and edge
+congestion. No new comparison principle or independent originality is
+claimed. The present finite start-weighted and coordinate-geometry
+adapters are derived in the proofs above.
+
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+Replay & Executed source & Cases & Rejected mutations\\
+\midrule
+178 & \texttt{115fedf62ad2} & 17 & 7\\
+180 & \texttt{1cf122830b45} & 12 & 5 plus2 solver attacks\\
+182 & \texttt{4422b0e19acf} & 11 & 7 plus2 solver attacks\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each replay used four fresh pinned clones across two own CPU Colab
+allocations and eight byte-identical normal/optimized payloads. Source
+hashes, full stdout/stderr, actual decimal child exit codes, archive
+manifests, resource records and disconnections are retained in the
+reproducible package. Windows performed editing, git and hash/readback
+work, not scientific execution. In180 the two host fingerprints matched;
+in178 and182 they differed. Neither observation establishes independent
+model review or physical-machine independence.
+
+Replay178 checks the actual coexact potential, every pin component,
+backward divergence, norm and Hodge/gradient identities. Replay180
+includes ten exact $64\times64$ positivity checks and two intermediate
+island cases; no large full matrix was claimed. Replay182 includes four
+exact small positivity checks, the full path/preimage/edge-use dictionary,
+sparse large-family coefficient checks and the path-versus-cycle ramp
+exception. The nonlocal graph proof has no corresponding executed replay
+in this consolidation. Finite selected cases do not prove all-size
+statements, formalize these additions, establish novelty or solve the
+unrestricted rectangular question.
+
+A useful research direction is to derive actual weighted local energy
+or capacity estimates. The counterexamples above concern the specified
+eigenvalue-only, point-support, full-tree, trace, threshold-singleton and
+minimum-coefficient methods in isolation; they do not exclude all hybrids
+or classify every possible positive mechanism. These scoped negative results preserve the
+successful partitions on the same examples. They make no statement about
+interacting gauge forms, a continuum limit or a physical mass gap.
+Section~\ref{sec:laminates187} supplies such an actual-energy construction
+for arbitrary one-coordinate laminates and proves a separate barrier for
+strong Green-moment certificates. Extending it to unrestricted transverse
+variation is partly supplied by Section~\ref{sec:partial188}; the fully variable case remains open.
