@@ -1,0 +1,309 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\gap}{\operatorname{gap}}
+\newcommand{\one}{\mathbf 1}
+\title{Strictly Positive Parity Laws\ and the Limits of Marginal Certificates\\[3pt]
+\large Exact Heat-Bath Spectrum and Optimal Variance Tensorization}
+\author{Lluis Eriksson\\\small Independent researcher}
+\date{9 November 2026 \quad Corrected manuscript for the existing parity record}
+\begin{document}
+\maketitle
+\begin{abstract}
+On the Boolean cube, the strictly positive laws with density
+$1+t\prod_{i=1}^n x_i$, $|t|<1$, have identical proper coordinate
+marginals. We compute their complete single-site heat-bath spectrum
+for arbitrary positive site rates. If $R$ is the sum of the rates and
+$m$ their minimum, the gap is
+$[R-\sqrt{(R-2m)^2+4t^2m(R-m)}]/2$.
+Its inverse is the exact optimal variance tensorization constant.
+This constant diverges as $|t|\to1$ at fixed dimension and rates,
+although all proper marginal data stay fixed. Thus no finite-valued
+function of those data bounds the constant over all strictly positive
+laws. This quantitative obstruction requires neither a hard parity
+constraint nor a comparison functional vanishing at the product law.
+We also state the older exact-zero certificate argument with a literal
+input map and distinguish genuine full-conditional coefficients from
+marginal proxies. The construction is classical and the spectral
+calculation is elementary; priority of the particular formula is not
+established. No fixed-local, spatial-decay, entropy-constant or physical
+mass-gap theorem is claimed.
+\end{abstract}
+
+\section{The law and the meaning of marginal input}
+Let $n\ge2$, $\Omega=\{-1,1\}^n$, and let $u$ be its uniform product
+law. Write $[n]=\{1,\ldots,n\}$,
+$\chi_S(x)=\prod_{i\in S}x_i$ and $S^c=[n]\setminus S$. Define
+\begin{equation}\label{eq:law}
+ \mu_t(x)=2^{-n}(1+t\chi_{[n]}(x)),\qquad -1<t<1.
+\end{equation}
+Normalization follows from $\E_u\chi_{[n]}=0$, and every configuration
+has strictly positive probability. Integrating over any omitted
+coordinate removes the perturbation, so every proper marginal equals
+the corresponding uniform product marginal. This is the classical
+parity mechanism behind limited-order independence; no novelty is
+claimed for it~\cite{AGM}.
+
+For a law $\mu$, define the literal input tuple
+\[
+ M_r(\mu)=(\mu_S:S\subseteq[n],\ |S|\le r),
+\]
+where coordinate labels are retained. Saying that a functional of
+$(\mu,f)$ has this marginal input means an actual factorization
+$B(\mu,f)=\Psi(M_r(\mu),f)$, with the same fixed observable $f$ when
+laws are compared. No conditional quantity is admitted merely because
+it conditions on few variables. In fact, from~\eqref{eq:law},
+\begin{equation}\label{eq:conditional}
+ \mu_t(X_i=s\mid x_j,\ j\ne i)
+ =\frac{1+t s\chi_{[n]\setminus\{i\}}(x)}2.
+\end{equation}
+These conditionals vary with $t$ while $M_{n-1}(\mu_t)=M_{n-1}(u)$.
+
+\section{Complete spectrum with arbitrary site rates}
+Fix rates $\rho_i>0$, independently of $t$, and put
+$R=\sum_i\rho_i$, $m=\min_i\rho_i$.
+Let $P_i f=\E_{\mu_t}[f\mid x_j,\ j\ne i]$ and use the positive
+operator
+\begin{equation}\label{eq:generator}
+ H=\sum_i\rho_i(I-P_i).
+\end{equation}
+Thus the Markov generator is $-H$. Each site is refreshed at rate
+$\rho_i$; we do not divide by $R$. The usual full-conditional
+heat-bath and variance tensorization conventions are recorded, for
+unit rates, in~\cite[eqs.~(1.3), (1.5), (1.6)]{CMT}.
+
+\begin{theorem}\label{thm:spectrum}
+The constant function has eigenvalue zero and
+$\chi_{[n]}-t$ has eigenvalue $R$. For each unordered pair
+$\{S,S^c\}$ with $S$ nonempty and proper, put
+$a=\sum_{i\in S}\rho_i$ and $b=R-a$. The invariant space
+$\operatorname{span}(\chi_S,\chi_{S^c})$ has eigenvalues
+\begin{equation}\label{eq:roots}
+ \lambda_\pm(a)=\frac{R\pm\sqrt{(a-b)^2+4t^2ab}}2.
+\end{equation}
+These spaces and the two distinguished modes exhaust the spectrum,
+with repetitions counted by blocks. In particular,
+\begin{equation}\label{eq:gap}
+ \gap_\rho(t)=\frac{R-\sqrt{(R-2m)^2+4t^2m(R-m)}}2>0.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Equation~\eqref{eq:conditional} gives $P_i\chi_S=\chi_S$ when
+$i\notin S$ and $P_i\chi_S=t\chi_{S^c}$ when $i\in S$.
+Therefore
+\begin{equation}\label{eq:action}
+ H\chi_S=a\chi_S-ta\chi_{S^c}.
+\end{equation}
+For the empty set and full set this proves the distinguished modes.
+For a proper nonempty pair, the coefficient matrix in the displayed
+ordered basis is
+\begin{equation}\label{eq:block}
+ B(a)=\begin{pmatrix}a&-tb\\-ta&b\end{pmatrix}.
+\end{equation}
+Its trace is $R$ and determinant is $(1-t^2)ab$, giving
+\eqref{eq:roots}; both roots are positive. The off-diagonal rates
+must not be interchanged when $a\ne b$.
+
+For completeness and orthogonality, character multiplication gives
+\begin{equation}\label{eq:gram}
+ \E_{\mu_t}[\chi_S\chi_T]
+ =\one_{S=T}+t\one_{S=T^c}.
+\end{equation}
+Different complement pairs are orthogonal in $L^2(\mu_t)$.
+Each pair has positive definite Gram matrix
+$\left(\begin{smallmatrix}1&t\\t&1\end{smallmatrix}\right)$.
+The $2^n$ characters form a basis, consisting of the empty/full pair
+and $2^{n-1}-1$ proper pairs. Each $P_i$ is an orthogonal projection,
+so $H$ is self-adjoint; these blocks account for all eigenvalues.
+
+For every proper nonempty $S$, both $a$ and $R-a$ are at least $m$.
+Hence $a(R-a)\ge m(R-m)$, with equality for a singleton of minimum
+rate. The lower root
+$[R-\sqrt{R^2-4(1-t^2)a(R-a)}]/2$ increases with $a(R-a)$.
+It is minimized at that singleton, is at most $R/2$, and is no
+larger than any upper root or the separate eigenvalue $R$.
+This proves~\eqref{eq:gap} and its strict positivity.
+\end{proof}
+
+\begin{corollary}\label{cor:optimal}
+The optimal constant in
+\begin{equation}\label{eq:variance}
+ \Var_{\mu_t}(f)\le C_\rho(t)
+ \sum_i\rho_i\E_{\mu_t}[\Var_{\mu_t}(f\mid x_j,\ j\ne i)]
+\end{equation}
+for all real $f$ is $C_\rho(t)=1/\gap_\rho(t)$.
+\end{corollary}
+\begin{proof}
+Orthogonal projection gives the exact Dirichlet form identity
+\[
+ \langle f,Hf\rangle_{\mu_t}=
+ \sum_i\rho_i\E_{\mu_t}[\Var_{\mu_t}(f\mid x_j,\ j\ne i)].
+\]
+The finite-dimensional spectral decomposition on the mean-zero space
+therefore proves the inequality and its sharpness. More explicitly,
+for $t\ne0$, a minimum-rate singleton $S$ and
+$\lambda=\gap_\rho(t)$, an extremizer is
+\[
+ f=\chi_S+\frac{m-\lambda}{t(R-m)}\chi_{S^c}.
+\]
+Substitution in~\eqref{eq:block} proves the eigenvector equation.
+Its mean is zero and variance is positive by~\eqref{eq:gram}.
+At $t=0$, $\chi_S$ alone is an extremizer.
+\end{proof}
+
+\begin{remark}[Limits and normalization]\label{rem:limits}
+Rationalizing~\eqref{eq:gap} yields
+\begin{equation}\label{eq:stable}
+ \gap_\rho(t)=
+ \frac{2(1-t^2)m(R-m)}{R+\sqrt{(R-2m)^2+4t^2m(R-m)}}.
+\end{equation}
+Consequently $(1-t^2)C_\rho(t)\to R/[m(R-m)]$ as $|t|\to1$,
+at fixed dimension and rates. For unit rates the gap is
+$[n-\sqrt{(n-2)^2+4(n-1)t^2}]/2$; it equals $1-|t|$ at $n=2$
+and equals $1$ at $t=0$. At fixed $|t|<1$ it tends to $1-t^2$
+as $n\to\infty$. The random-scan transition operator
+$P=R^{-1}\sum_i\rho_iP_i$ has gap $\gap_\rho(t)/R$.
+None of these limit statements is inferred from finite diagnostics.
+\end{remark}
+
+\section{A quantitative obstruction without exact-zero certification}
+For an arbitrary strictly positive law $\mu$ on the cube, write
+$C_\rho(\mu)$ for the optimal constant in~\eqref{eq:variance} with
+its actual conditionals.
+\begin{theorem}\label{thm:information}
+Fix $n\ge2$ and the positive site rates. There is no finite-valued
+function $F$ of all proper coordinate marginals such that
+\[
+ C_\rho(\mu)\le F(M_{n-1}(\mu))
+\]
+for every strictly positive law $\mu$ on the cube. Equivalently, no
+strictly positive gap lower bound depending only on this tuple can
+hold on that whole class.
+\end{theorem}
+\begin{proof}
+All $\mu_t$ in~\eqref{eq:law} have the same tuple $M_{n-1}$.
+A finite $F$ at this common input is a fixed number, while
+Theorem~\ref{thm:spectrum} and~\eqref{eq:stable} show
+$C_\rho(\mu_t)\to\infty$ as $|t|\to1$. Every member of this sequence
+is strictly positive. The positive-gap formulation is the reciprocal
+of the same contradiction.
+\end{proof}
+
+Taking $n=r+1$ proves the obstruction for each fixed marginal order
+$r\ge1$. Neither a product-law right-hand side equal to zero nor
+a law with zero-probability configurations is used in this theorem.
+This does not exclude certificates on a class with a specified
+uniform probability lower bound, bounded interaction parameters or
+other substantive structural information. Here the ratio of largest
+to smallest configuration probability is $(1+|t|)/(1-|t|)$, which
+is unbounded along the obstructing sequence. Also
+$\mu_t$ is proportional to $\exp(\operatorname{atanh}(t)\chi_{[n]})$:
+the interaction is global, not a fixed local pair potential.
+
+\section{The restricted exact-zero lemma and its scope}
+The earlier elementary certificate argument remains useful if its
+input and zero condition are stated literally.
+\begin{proposition}\label{prop:zero}
+Let $B(\mu,f)=\Psi(M_r(\mu),f)$ and fix a single observable $f$.
+If laws $\mu,\nu$ have identical $M_r$, if $B(\nu,f)=0$, and if
+$D(\mu,f)>0$, then $D(\mu,f)\le cB(\mu,f)$ fails for every finite
+$c$. A claimed measure-class application must establish all these
+conditions on actual formulas.
+\end{proposition}
+\begin{proof}
+Factorization gives $B(\mu,f)=B(\nu,f)=0$, contradicting the
+asserted positive left-hand side.
+\end{proof}
+For example, at unit rates, take $f=X_n$ and
+$D(\mu,f)=\Var_\mu(f)-\sum_i\E_\mu\Var_\mu(f\mid\mathrm{rest})$.
+Under $u$ this defect is zero. Under $\mu_t$, $\Var(f)=1$,
+only the $i=n$ conditional term is nonzero, and that term is
+$1-t^2$ by~\eqref{eq:conditional}. Thus $D(\mu_t,f)=t^2$.
+The exact-zero lemma still assumes its displayed certification
+condition; Theorem~\ref{thm:information} is a different quantitative
+statement that does not assume it.
+
+True full-conditional coefficients do not have the marginal-input
+factorization above. For the usual total-variation influence, flipping
+$x_j$ changes the conditional Bernoulli bias at site $i\ne j$,
+giving $c_{ij}=|t|$ and row sum $(n-1)|t|$. These values vary while
+all proper marginals stay fixed. No unspecified Dobrushin-to-entropy
+constant is invoked. The entropy theorem in~\cite[Theorem~2.1]{CMT}
+has its own ergodicity and conditional-coefficient hypotheses;
+it is not contradicted by the present construction.
+
+For $n\ge3$, $\Cov_{\mu_t}(X_i,X_j)=0$ when $i\ne j$.
+Ordinary pair-coordinate covariance therefore cannot separate these
+laws. The specified block observables $X_n$ and $\prod_{i<n}X_i$
+have covariance $t$, but no spatial-decay conclusion follows without
+a geometry and allowed support dependence of constants.
+Classical Efron--Stein bounds under independence are not refuted.
+The previous claimed application to four audited inequalities is
+withdrawn here: no four-formula bridge establishing factorization,
+certification and separation has been supplied.
+
+\section{Evidence, comparison and limits}
+The complete proof is analytical. A finite exact rational diagnostic
+constructs the actual conditional resampling matrix, rather than
+assuming its Fourier block. It checks its action on all characters,
+detailed balance, Gram self-adjointness, block dimension counts,
+trace, determinant and the minimum subset product. The cases cover
+$n=2,\ldots,6$, $t=0,3/5,-9/10$, and both unit and unequal rational
+site rates: thirty cases and $32736$ state-character identities in
+each mode. On an owned Colab Linux CPU runtime, normal and optimized
+Python each exited zero and produced byte-identical complete reports.
+These finite cases check implementation consistency; they do not
+replace the all-$n$ proof. No new Lean/Lake proof or formal replay
+of the spectral theorem is claimed.
+
+Immutable proof, diagnostic, reports and source bindings are available
+at~\cite{Artifacts}; the scientific diagnostic source is
+\texttt{3b5160dc7b7cbaea8a797fa36f0babf0fe9b8b91}.
+The historical Lean character-sum artifact belongs to the older note;
+it is not a formalization of the new spectrum or optimal constant.
+
+The parity family and limited-marginal independence are classical.
+The calculation is an explicit specialization for a global interaction.
+A targeted primary-source search did not establish priority; absence
+of a located match is not novelty evidence. No entropy constant,
+fixed-local Gibbs, spatial-decay, gauge-field, continuum or physical
+mass-gap theorem is claimed.
+
+\subsection*{Model assessments and review context}
+Codex assisted the analytic derivation, source preparation and
+diagnostic orchestration. The exact served backend and reasoning
+effort are not exposed in this preparation context. Prior manuscript
+participation by the preparing agent is explicit; independence is
+not asserted. This revised PDF has not yet received its declared
+exact-artifact scientific assessment. Any later numerical assessment
+must identify these exact PDF bytes and retain the complete original
+report, objections and factual model context. No historical grade is
+transferred to this version. AI assessment, formal checking,
+deposit, editorial acceptance and human peer review are distinct.
+
+\begin{thebibliography}{9}\small
+\bibitem{AGM} N.~Alon, O.~Goldreich and Y.~Mansour,
+\emph{Almost $k$-wise independence versus $k$-wise independence},
+Information Processing Letters \textbf{88} (2003),107--110.
+Author-hosted preprint page (2002):
+\url{https://www.wisdom.weizmann.ac.il/~oded/p_agm.html}.
+\bibitem{CMT} P.~Caputo, G.~Menz and P.~Tetali,
+\emph{Approximate tensorization of entropy at high temperature},
+Annales de la Facult\'e des Sciences de Toulouse \textbf{24}(4)
+(2015),691--716. DOI:10.5802/afst.1460.
+\url{https://www.numdam.org/item/AFST_2015_6_24_4_691_0.pdf}.
+\bibitem{Artifacts} L.~Eriksson, \emph{Strict positive parity spectrum
+and finite conditional-operator diagnostics}, THE ERIKSSON PROGRAMME,
+immutable evidence tree (2026):
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/5ae3b83ec0486bb7dc2b056573351af1b9fa17e9/papers/parity-barriers/revision214}.
+\end{thebibliography}
+\end{document}
