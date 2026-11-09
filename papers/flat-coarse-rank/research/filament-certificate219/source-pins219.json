@@ -1,0 +1,8 @@
+{
+  "source_sha": "5298926f130f3d680dfaa633bbf82e780bd0af84",
+  "representation": "actual Git UTF-8 LF bytes",
+  "pins": {
+    "papers/flat-coarse-rank/research/2026-11-09_filament-certificate219.txt": "9005f350b1d6e02d689d20c09f7fc7e0402408c0a604d92e92573b5dc0cd43af",
+    "scripts/filament_certificate_diagnostic219.py": "154a73d275bc914ace4b184e327538390b3847e65aaa58dc03302b038faa413a"
+  }
+}

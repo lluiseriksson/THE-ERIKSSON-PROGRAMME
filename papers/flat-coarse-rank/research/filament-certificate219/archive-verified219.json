@@ -1,0 +1,35 @@
+{
+  "archive_sha256": "9c536af658aff6f82482dfd0af341742f4d0d118ae715846ba7391a2484f28b2",
+  "bytes": 11536,
+  "source_sha": "5298926f130f3d680dfaa633bbf82e780bd0af84",
+  "manifest_all_members_verified": true,
+  "stdout_sha256": "6d7290706aa9a1c5157f3a556132c62613a0bbfa8ac550b0b04d928a8ceef41f",
+  "report": {
+    "source_sha": "5298926f130f3d680dfaa633bbf82e780bd0af84",
+    "started_utc": "2026-11-09T03:36:52.210084+00:00",
+    "billed_units": null,
+    "exits": {
+      "normal": 0,
+      "optimized": 0
+    },
+    "status": "FINITE_DIAGNOSTICS_CHECKED",
+    "finished_utc": "2026-11-09T03:36:56.043416+00:00",
+    "elapsed_seconds": 3.8334173270000065,
+    "child_maxrss_kib": 106100
+  },
+  "finite_checks": {
+    "base_partition_cases": 12,
+    "dimension": 3,
+    "full_grid_fields": 60,
+    "linear_energy_checks": 6,
+    "lowspace_checks": 4,
+    "negative_controls_rejected": 3,
+    "profile_checks": 10,
+    "refined_cell_checks": 1680,
+    "refined_partition_cases": 12,
+    "scope": "Small full-grid fields plus exact 1D/closed-count fixtures; not an all-size, formal, coexact or unrestricted-partition falsifier.",
+    "status": "FINITE_RATIONAL_DIAGNOSTICS_CHECKED",
+    "transcript_sha256": "54ef252af2924906eace2df53bff311172ae598f2c87bf0576c0bf6ee57b7ddd"
+  },
+  "no_formal_or_unrestricted_verification": true
+}

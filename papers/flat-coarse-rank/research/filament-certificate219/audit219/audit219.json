@@ -1,0 +1,109 @@
+{
+  "verdict": "accept_with_limits",
+  "date": "2026-11-09",
+  "source": {
+    "commit": "5298926f130f3d680dfaa633bbf82e780bd0af84",
+    "path": "papers/flat-coarse-rank/research/2026-11-09_filament-certificate219.txt",
+    "bytes": 12869,
+    "sha256": "9005f350b1d6e02d689d20c09f7fc7e0402408c0a604d92e92573b5dc0cd43af"
+  },
+  "diagnostic": {
+    "path": "scripts/filament_certificate_diagnostic219.py",
+    "bytes": 8250,
+    "sha256": "154a73d275bc914ace4b184e327538390b3847e65aaa58dc03302b038faa413a",
+    "executed": false,
+    "review": "static analytical code reading only",
+    "expected_counts": {
+      "base_cases": 12,
+      "refined_cases": 12,
+      "full_fields": 60,
+      "refined_cell_checks": 1680,
+      "linear_formula_checks": 6,
+      "large_profile_checks": 10,
+      "lowspace_checks": 4,
+      "negative_controls": 3
+    },
+    "assert_dependent_acceptance": false,
+    "execution_success_certified": false
+  },
+  "representation": "Exact UTF-8 Git-LF bytes; no normalization; no CR",
+  "capture_method": "git show SHA:path; raw stdout BaseStream; WriteAllBytes",
+  "capture_manifest_sha256": "c797be56f718c74e14f980324ebd85ada5c3ca4e8057bf58908932983645c9d4",
+  "dependencies": {
+    "commit": "2c881a5e8f31cad5643a49cb205fe8eb3156955d",
+    "sobolev_sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+    "partition_sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+    "prior197_200_context": "frozen integrated joint-binary.tex and boundary-transfer.tex; standalone source notes absent from frozen research tree"
+  },
+  "checks": {
+    "actual_weak_count": "2DR",
+    "critical_inverse_mass": "S=2D+1-w/N",
+    "actual_normalized_moment": "1<=M_a<2D+1",
+    "mean_envelope": "valid for all s>=1,D>=3",
+    "target_order_factor": "uniformly bounded",
+    "cube_actual_gap": "c_D=1/[64D^2(2D+1)] valid",
+    "canonical_partitions": "all permutations; exact 2D+1 rectangles",
+    "linear_failure": "valid for E_int only",
+    "full_energy_guard": "E_a>=(D-1)H norm^2 on indicated supported fields",
+    "signed_tent_formulas": "valid",
+    "lowspace_dimension": "exactly2m_s; possibly zero for small s",
+    "lowspace_quotient": "rho_s<=c_D/4",
+    "rank_repair": "rankC+rankV>=2m_s; neighborhood version valid",
+    "refinement_count": "1+2D(D-1)+2Ds^(D-1)",
+    "refinement_gap": "at least4 on nonzero residuals",
+    "matching_order": "Theta_D(s^(D-1)) for prescribed retained-certificate repair",
+    "normalized_means": "correct counting and probability conventions"
+  },
+  "load_bearing_errors": [],
+  "minor_corrections": [],
+  "limits": [
+    "retained canonical internal energy obstruction only",
+    "actual full energy has one-cell solution",
+    "fixed M_D and c_D; not all prescribed parameters",
+    "scalar witnesses not coexact/divergence constrained",
+    "small-s lowspace can be zero",
+    "rank bound not against all actual-energy partitions",
+    "no execution certification or all-size machine proof",
+    "no exhaustive novelty or priority verdict",
+    "no numerical/PDF grade or publication permission"
+  ],
+  "context": {
+    "exposed_model": "Codex, an agent based on GPT-6",
+    "exact_hidden_model": "unknown",
+    "backend": "unknown",
+    "reasoning_effort": "unknown",
+    "task": "/root/defect_plane198_audit",
+    "fresh_context": false,
+    "prior_context": [
+      "198",
+      "216",
+      "217",
+      "218"
+    ],
+    "shared_filesystem": true,
+    "shared_account": true,
+    "independence_claim": false,
+    "human_peer_review": false,
+    "inbound_messages_during_audit": false
+  },
+  "actions": {
+    "scientific_execution": false,
+    "tests": false,
+    "lean": false,
+    "lake": false,
+    "oracle": false,
+    "build": false,
+    "render": false,
+    "runtime": false,
+    "source_or_pr_edits": false,
+    "other_chat_or_automation_access": false
+  },
+  "primary_context": "https://arxiv.org/html/1511.03971",
+  "assessment": {
+    "numerical_grade": null,
+    "pdf_grade": null,
+    "stars": null,
+    "existing_grade_inherited": false
+  },
+  "output_representation": "UTF-8 without BOM, LF, final newline"
+}

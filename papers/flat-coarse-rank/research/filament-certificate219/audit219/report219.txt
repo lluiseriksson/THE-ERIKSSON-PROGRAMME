@@ -1,0 +1,171 @@
+FROZEN BOUNDED-SOURCE AUDIT219
+Date: 2026-11-09
+Verdict: accept_with_limits
+
+The family, its actual one-rectangle coercivity, its failed canonical internal-energy certificate for every coordinate order, the 2m_s-dimensional low internal-energy space, and the matching-order refinement are analytically valid as stated. No load-bearing mathematical or diagnostic-source defect was found. This does not refute the actual full-energy rectangular problem or establish a scalar obstruction on constrained coexact fields.
+
+1. Exact referent, captures and representations
+Repository: C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108
+Frozen commit: 5298926f130f3d680dfaa633bbf82e780bd0af84
+Source:
+ papers/flat-coarse-rank/research/2026-11-09_filament-certificate219.txt
+ 12869 bytes
+ SHA-256 9005f350b1d6e02d689d20c09f7fc7e0402408c0a604d92e92573b5dc0cd43af
+Diagnostic:
+ scripts/filament_certificate_diagnostic219.py
+ 8250 bytes
+ SHA-256 154a73d275bc914ace4b184e327538390b3847e65aaa58dc03302b038faa413a
+
+Exact dependency/context commit:
+ 2c881a5e8f31cad5643a49cb205fe8eb3156955d
+under papers/flat-coarse-rank/integrated-revision/revision217:
+ sobolev.tex: 9493 bytes; SHA-256 80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54
+ partition.tex: 12856 bytes; SHA-256 b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff
+ joint-binary.tex: 8896 bytes; SHA-256 001f9e6d2ec168fac732baad166f8ab2dc876bab84b82c00b8df75385e532551
+ boundary-transfer.tex: 11918 bytes; SHA-256 b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0
+The last two were compared only for the prior 197/200 harmonic-cost/rank context and duplicate-principle boundary.
+
+Capture method: git show SHA:path, raw stdout BaseStream copied into bytes and saved with WriteAllBytes. Hash representation: exact UTF-8 Git-LF bytes, no normalization, no CR bytes. Source and script were read in full, and complete relevant dependency proofs were consulted in this context.
+All retained outputs are only in:
+ D:\Datos\the-eriksson-programme\autonomia\evidencia-219\audit219
+The full source/diagnostic/dependency capture manifest is capture-manifest219.json.
+Manifest SHA-256, UTF-8 LF without BOM:
+ c797be56f718c74e14f980324ebd85ada5c3ca4e8057bf58908932983645c9d4
+
+2. Factual context and operational boundary
+This is a continuing assignment in /root/defect_plane198_audit with existing unit198/216/217/218 context, shared filesystem and shared account. It is not a fresh isolated review. No independence, blind-review or human-peer-review claim is made.
+Actually exposed model description: Codex, an agent based on GPT-6. Exact selected hidden model, backend and reasoning-effort setting are unknown. Tool catalog model options do not establish the running selection.
+The source and diagnostic were read at the exact frozen commit. The partition.tex dependency was read completely and its product-interval variance argument checked; the complete cube dependency had been read and checked in the preceding audits and was consulted for this argument. Prior 197/200 content was compared through its full frozen revision217 consolidation in boundary-transfer.tex and joint-binary.tex, not by rereviewing model scores. Standalone 197/200 note files are not present under research in the frozen219 tree; this comparison does not purport to authenticate their separate historical audit packets.
+No prior source219 grade/report was used. No inbound message arrived during the audit.
+No scientific or mathematical executable, Python diagnostic, test, Lean, Lake, oracle, build, render, numerical resampling or runtime was executed. Only analytical reading and text/git/hash operations, plus primary web context, were used. No source, branch or PR was changed. No other chat or automation was accessed or changed. No disposable clone was created.
+No numerical/PDF grade, stars, paper-score inheritance or publication permission is supplied. This is an analytic source review and static diagnostic-code audit, not execution certification.
+
+3. Exact family, mean, envelope and critical moment
+For integer D>=3 and s>=1, R=s^D is a positive integer, n=2R+1>=3, A=s^2>=1 and H=n^2>A. The set of sites with exactly one nonzero coordinate has D coordinate choices and 2R choices of signed value, hence w=2DR. The origin is strong and is not counted in W.
+With P=D/2,
+ H^P=n^D=N and A^P=s^D=R.
+Therefore
+ S=w/R+(N-w)/N=2D+1-w/N
+is exactly sum a^(-P), and the actual mean is H-w(H-A)/N.
+Moreover n^D>=2R*3^(D-1), giving w/N<=D/3^(D-1)<=1/3. The final inequality holds at D=3 and decreases thereafter. Hence mu>=H(1-w/N)>=2H/3, and H<=3mu/2<=2mu. Also mu>=2H/3>=1, so all original lower/upper/mean hypotheses hold, including the smallest s=1 member.
+The normalized inverse moment is
+ M_a=mu^P S/N=(mu/H)^P S<2D+1.
+The strict upper bound follows because both mu<H and w>0. Jensen for positive a and the actual arithmetic mean gives M_a>=1.
+Since mu>=2n^2/3, n^2/(1+mu)<=3/2<=2, so the displayed target-order upper bound 2^(D/2), including the max with one, is safe. The moment bound is the fixed dimension-dependent M_D=2D+1, not an arbitrary smaller prescribed M or a near-one-moment example. No surrogate density assumption is used.
+
+4. Canonical partitions and actual versus retained energy
+For any permutation pi, every nonzero site has a unique first nonzero coordinate in that order and its sign. This gives the stated 2D rectangular cells plus the singleton origin, with disjoint exact coverage and no empty cell. Their scalar counting-normalized indicator rows are independent on disjoint nonempty supports, so rank P_0=2D+1.
+The last two cells are precisely the positive and negative half-axes in coordinate pi(D). Because W contains every axis, this remains true for every pi, even an order selected from the coefficient profile.
+E_int,pi is exactly the sum of original internal positive-start edge energies in those cells. It discards intercell edges and periodic wraps. Those edges have nonnegative energy, so E_int,pi<=E_a for the full nonwrapping energy and for its periodic enlargement.
+No reverse comparison is shown or needed. The distinction is load-bearing: a counterexample for this retained form is not a field of low actual full energy.
+
+5. Actual one-rectangle solution and rational constant
+The counting cube dependency in sobolev.tex proves
+ V_X<=K_D^2 ||df||_q^2,
+ q=2D/(D+2),
+ K_D=2 alpha D^(1/q')/c_iso,
+ alpha=2(D-1)/D, q'=2D/(D-2),
+ c_iso=D(1-2^(-1/D)).
+Its entropy/projection, internal edge-isoperimetry, coarea/median and power-Holder proof matches the current counting and once-counted edge convention; no weighted reflection is imported.
+Bernoulli gives (1-1/(2D))^D>=1/2. Taking positive D-th roots implies 1-1/(2D)>=2^(-1/D), hence c_iso>=1/2. With alpha<2 and D^(1/q')<=sqrt(D), K_D<=8sqrt(D).
+Weighted Holder applies directly to original nonwrapping cube edges. At most D starts occur per site, so
+ V_X<=K_D^2(D S)^(2/D) E_a.
+Using S<2D+1 and 2/D<=1 with D(2D+1)>=1 gives
+ V_X<=64D^2(2D+1) E_a.
+Thus c_D=1/[64D^2(2D+1)] is valid, including D=3 where it is 1/4032. It is a deliberately loose rational lower gap, not an optimal gap.
+The exact identity sum_X f^2=V_X+|N^(-1/2)sum_X f|^2 proves the global one-cell inequality. Dividing by N makes the single probability-normalized row mean_X f and leaves the claimed convention. Adding torus wrap terms only helps. Constant fields attain equality in the penalty part. This is an actual scalar rank-one solution, not a successful repair of the retained internal form.
+
+6. Linear residual counterexample and full-energy guard
+On either last half-axis, all internal line starts have coefficient A. For the positive half-axis ramp t-(R+1)/2 with R>=2, its cell sum is zero and all other cell rows are zero. Its internal energy is exactly A(R-1), its norm is R(R^2-1)/12, and its Rayleigh quotient is 12s^2/[R(R+1)]. Since R=s^D, that quotient tends to zero. No finite coefficient multiplying the already-zero P_0 rows can restore a uniform retained residual gap.
+For a field supported on that half-axis or on both final half-axes, each site x on them has D-1 distinct transverse incoming positive edges x-e_j -> x. Their starts have two nonzero coordinates, hence weight H, and lie within the cube even at R=1. Their other endpoints carry zero field. They are distinct nonwrapping edges and contribute exactly (D-1)H times the squared supported field norm. Thus (3) is valid. Further outgoing and endpoint edges only increase full energy.
+This guard explicitly prevents assigning incoming starts the weak value A and prevents confusing a low E_int quotient with a low E_a quotient.
+
+7. Signed tents, both half-axes and exact lowspace dimension
+With T_D=32D(D+1) and ell=T_Ds, the piecewise tent has zero endpoints and antisymmetry g(4ell-t)=-g(t), hence zero counting sum. The two lobes give
+ sum g^2=4 sum_(j=1)^(ell-1) j^2+2ell^2
+        =2ell(2ell^2+1)/3.
+Every increment is plus or minus one, so the gradient-square sum is exactly 4ell.
+The m_s intervals begin at 1+4ell*j and end at 1+4ell*(j+1); m_s=floor((R-1)/(4ell)) ensures the last endpoint does not exceed R. Outside those intervals the field is zero. Adjacent intervals share only a zero endpoint. Their nonzero vertex supports are disjoint, and their nonzero gradient supports are disjoint, so both norm and energy cross terms vanish.
+On the negative half-axis, positive-axis orientation reverses |x|-index. Squared differences remain the same and every retained line start still has coefficient A. This does not reassign the strong transverse starts of the actual full energy.
+There are m_s linearly independent tents on each of two different canonical cells. Their whole-cell means vanish and their supports are nonzero and disjoint. Thus their real span G_s has dimension exactly 2m_s and lies in ker P_0. For every vector in that span, including arbitrary linear combinations,
+ E_int,pi=rho_s ||f||^2,
+ rho_s=6A/(2ell^2+1)<=3/T_D^2.
+The inequality T_D^2>=12/c_D follows from
+ 1024D^2(D+1)^2>=768D^2(2D+1),
+equivalently 4(D+1)^2>=3(2D+1). Therefore rho_s<=c_D/4.
+At small s, m_s can be zero; the source states this and the dimension lower bound is then vacuous. As s increases,
+ m_s=floor(s^(D-1)/(4T_D)-1/(4T_Ds)),
+so 2m_s is Theta_D(s^(D-1)), equivalently Theta_D(R^(1-1/D)). The asymptotic statement is not a claim of a positive lower dimension for every small member.
+
+8. Rank-nullity repair obstruction and neighborhood quantifier
+For a fixed pi, restrict the combined linear map f -> (Cf,Vf) to G_s. If rank C+rank V<dim G_s, its kernel contains a nonzero f. For that f, P_0f=0, Cf=0 and Vf=0, so K||P_0f||^2, Phi(Cf)=Phi(0), and <f,Vf> all vanish. The retained energy is <=c_D||f||^2/4<c_D||f||^2. This contradicts (5).
+This proof requires no symmetry or positivity of V and no continuity of Phi; the source's minimal hypotheses suffice. The bound is on rank C+rank V, rather than a false count of the symmetrized V's entries or a claimed rank of a nonlinear map.
+If (5) holds only in a neighborhood of zero, any nonzero scalar multiple of the joint-kernel vector remains in all kernels and still has the same strict energy ratio. Taking a sufficiently small nonzero multiple gives the same contradiction. Thus the local-neighborhood version is valid without a regularity assumption on Phi away from zero.
+The construction works for each pi with the same constants. It excludes selecting any one of these canonical orders as a cure, but not arbitrary partitions or linear observations used with the full actual energy.
+
+9. Matching refinement, exact count and normalized means
+Within B_(i,sign), the weak half-axis is the part with all later coordinates zero. Its complement is partitioned by the first later nonzero coordinate and sign, giving 2(D-i) strong rectangles. Each has at least two nonzero coordinates, so every vertex and retained start in it has actual coefficient H. Over both signs and all i the count is
+ 2 sum_i 2(D-i)=2D(D-1).
+These rectangles are products with the earlier coordinates fixed at zero, the first two selected nonzero coordinates in their signed R-site intervals, and unrestricted later coordinates. They are genuine disjoint rectangles.
+Each of the 2D weak half-axes is split into R/s=s^(D-1) consecutive intervals of length s; divisibility is exact. Together with the strong complement and the singleton origin, this proves exact disjoint coverage and
+ J_s=1+2D(D-1)+2Ds^(D-1).
+The product-interval dependency proves
+ V_B<=L_B(L_B-1) E_B^0/4
+by pairwise variance, path Cauchy–Schwarz and commuting-average tensorization. Strong rectangles have L_B<=n and coefficient H=n^2, so E_a,B>=4V_B whenever variance is nonzero. Weak intervals have L_B=s and coefficient A=s^2, giving the same safe bound. Singleton residuals vanish; there is no division by a zero side or nonexistent singleton gap.
+The refined retained energy is a subset of the base retained edges because the refinement is within each canonical cell. Sum the internal estimates and use the exact counting means q_B=sqrt(|B|)mean_B. Since c_D<=1<4,
+ E_ref+c_D||P_ref f||^2>=c_D||f||^2.
+Hence the same rows supply (5) using C=P_ref, Phi(u)=c_D||u||^2, V=0 and any nonnegative base K. Its scalar row rank is J_s. This is an upper bound of matching order for repair of this specified retained form; it is not a statement of optimal multiplicative constant or minimum rectangular rank for E_a.
+The lower/upper orders are therefore genuinely matched: Omega_D(s^(D-1)) versus O_D(s^(D-1)).
+
+10. Static diagnostic review: exact arithmetic and actual energies
+The script's D=3-only fixture scope is explicit. Its grid edges are nonwrapping positive-axis occurrences with original a[x]; no endpoint-average substitution is made. classify implements first and second nonzero coordinates in each permutation. cover checks disjointness, completeness, nonempty contiguous sides and Cartesian cardinality.
+For D=3, R=s^3, H=n^2, N=n^3 and A=s^2 make the inverse powers exact rational identities: H^(3/2)=N and A^(3/2)=R. parameters checks the actual envelope, arithmetic mean, critical inverse mass and target factor without floating roots.
+The gate mu^3*S^2<49*N^2 is exactly M_a^2<49 since H^3=N^2. It therefore checks the original normalized critical moment upper bound, not just a surrogate inverse mass. The absence of a separate Jensen-lower-bound test does not undermine the analytic Jensen proof.
+On s=1,2, the grid dictionary has the specified weak sites, exact mean and full nonwrapping energies. Every one of the six coordinate permutations is considered. Base/refined partitions are checked, strong complements exclude all weak axes, weak segments have length s and each refined-cell variance gate uses its actual original-start energy.
+Er<=Eb<=E checks the nested retained edge sets. The counting mean identity and Er+c*rowmass>=c*norm test the correct fixed-penalty convention.
+For the doubled positive-line ramp, norm=R(R^2-1)/3 and Eb=4A(R-1) match the analytic formulas. In D=3 its full energy is exactly
+ 4A(R-1)+2(H+A)norm+H(1-R)^2.
+The transverse terms count two incoming strong starts and two outgoing weak starts per line site; the last term is the strong origin-to-first-site edge. This is the correct nonwrapping endpoint formula. The script checks it for all six permutations when s=2. At s=1 that mode is the zero field and the nontrivial formula test is appropriately skipped.
+The larger-profile loop uses only exact closed formulas. The lowspace loop checks the complete 1D tent values, exact sums/energy, quotient, positive m_s and placement at s=40,48,64,80. Joining a tent and a -2 multiple at a shared zero endpoint verifies 5-times norm/energy additivity exactly. This is a 1D orthogonality fixture, not construction or rank computation of the entire huge grid or all G_s basis vectors.
+All field values in those gates are integers and energies/variances are exact integers or Fraction objects. No irrational powers or floating approximation decide acceptance.
+
+11. Diagnostic counters, negative controls and execution boundary
+All acceptance gates use explicit require calls raising ValueError. There is no acceptance-dependent Python assert. The final status print follows all positive checks, three required rejections and the final exact counter tuple.
+Expected counters are statically consistent:
+ base cases=12 and refined cases=12: two small s values times six permutations;
+ full fields=60: twelve cases times five fields;
+ refined-cell checks=1680: six permutations times five fields times (19+37);
+ linear-energy checks=6: the s=2 doubled ramp in six orders;
+ large-profile checks=10;
+ lowspace checks=4;
+ negative controls=3.
+The controls exercise actual failure classes:
+- The six positive/negative coordinate slabs plus origin overlap at multiaxial vertices. The actual cover predicate rejects them.
+- At s=2, replacing incoming/endpoint strong starts by weak A produces the displayed false full-energy formula. It differs from the actual formula and is rejected. This tests the original-start failure class directly.
+- At s=32, the canonical linear quotient 12A/[R(R+1)] is below c=1/4032, so the false inherited uniform internal-gap predicate is rejected using an actual admissible profile.
+These are concrete targeted regression cases, not a proof that a generic verifier rejects every corruption.
+No execution occurred in this audit. Expected counters, output status, transcript digest, normal/optimized agreement, child exits, resource use and completion are not certified. A future runner must separately bind source SHA, command and actual exits; the script's internal transcript hash alone would not establish those facts. No Windows scientific execution is authorized or implied by this review.
+
+12. Prior 197/200 comparison, attribution and scope
+The frozen revision217 joint-binary section contains the earlier growing-rank result for B_sep versus S_U: separate global harmonic minimizations on D>=4 two-plane traces, with a Fourier low-dimensional discrepancy space and a rank-nullity repair bound. Its binary corollary is explicitly an old threshold-construction specialization. The adjoining boundary-transfer section supplies that earlier harmonic-cost setup.
+Source219 instead uses no minimization or Schur complement. Its E_int is the actual sum of retained within-cell edges on a full-volume canonical partition. It changes the family to all axial filaments, covers D>=3, guards every coordinate permutation, provides exact signed-tent modes, and matches the repair order constructively. It is not the old harmonic-cost theorem restated on the same forms. The rank-nullity argument itself is the same classical general mechanism and is correctly not advertised as new.
+This comparison is a scope/duplication check through the frozen consolidation, not an exhaustive audit of historical 197/200 records or a proof of original priority.
+Primary context consulted:
+ https://arxiv.org/html/1511.03971
+Brudnyi's Sections 1–2 concern approximation of each specified function by selected pieces; Appendix I concerns dyadic-ring cube coverings with its own geometry. This supports the source's warning that the quantifiers cannot be reversed into one coefficient-selected observation map valid for all fields. No weighted original-start adapter or global theorem is imported from it. No exhaustive literature or originality verdict is claimed.
+
+13. Objections, restrictions and final disposition
+No load-bearing mathematical correction is required for the audited bounded claims, and no actual diagnostic-source bug was found by static reading.
+The following limits remain binding:
+- The falsified form is the prescribed canonical retained internal energy for each coordinate order. The source supplies an actual full-energy one-cell solution on the same family.
+- The fixed admissibility parameter is M_D=2D+1 and the fixed positive target is c_D. This does not assert a near-one-moment example or a failure at every externally prescribed c,M.
+- Rank lower bounds concern real-linear observations plus a finite-rank real-linear quadratic repair, with the stated Phi(0)=0. They are not lower bounds against arbitrary rectangular partitions for E_a.
+- The lowspace dimension can be zero at small s; its asymptotic order starts only as s grows.
+- Scalar tent witnesses have not been made divergence-free/coexact. No obstruction on those constrained fields follows.
+- Refinement rank J_s is per scalar coordinate and is sufficient for the retained certificate, not optimal actual-energy observation rank.
+- The diagnostic is finite D=3 source code. It has not been run here and is not an all-size/Lean proof.
+- Earlier paper grades, PR29/TermSource counts, publication217 and execution histories are not recertified.
+The stopped route is specifically transfer to these full-volume canonical cells while discarding their interfaces without paying for the lost energy. It does not stop the valid selected balanced-face theorem218 or settle the unrestricted main question.
+Final verdict: accept_with_limits for frozen source5298926f130f3d680dfaa633bbf82e780bd0af84.
+
+Report and structured report representation: UTF-8 without BOM, LF, final newline.

@@ -1,0 +1,11 @@
+{
+  "primary_url": "https://arxiv.org/html/1511.03971",
+  "arxiv_version": "1511.03971v1",
+  "author": "Yuri Brudnyi",
+  "locations": "Theorem2.1(a),(b); AppendixI,TheoremI.1",
+  "comparison": "For each given function, Theorem2.1 selects nonlinear cube coverings or dyadic-ring partitions. This does not directly supply one coefficient-selected rectangular map for all fields, nor an original-start weighted-energy comparison. Finite ring coverings in AppendixI are context, not an energy-adapter hypothesis.",
+  "correctness": "Analytical source219 plus pending full source audit; no formal certificate",
+  "originality": "Unestablished; classical finite variance, Sobolev/Holder, signed tents and rank-nullity; no general new spectral or approximation theorem claimed",
+  "relevance": "Tests a precise full-volume separated-internal-energy conversion, preserving a successful actual one-row example and leaving the original unrestricted question open",
+  "scope": "Limited primary comparison, not exhaustive novelty verification"
+}

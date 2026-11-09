@@ -1,0 +1,272 @@
+Weak axial filaments: a sharp repair cost for a prescribed internal certificate
+Research supplement219 to the existing flat-coarse-rank dossier, not a paper.
+
+0. Bounded question fixed before verification
+
+The sole main question is still the original unrestricted critical rectangular
+problem. Source218 derives one coefficient-selected unit shell and actual
+disjoint face observations. A tempting global conversion is to decompose a
+punctured cube by the first nonzero coordinate, discard all intercell edges,
+and infer a uniform residual gap from the original critical moment. We test
+that precise INTERNAL-ENERGY certificate, including coordinate-order choice.
+The falsifier must retain actual mean, upper envelope and bounded critical
+moment; failing only an unrelated moment surrogate is insufficient. Stop this
+specific conversion if a genuine family defeats it. No inferred failure of
+the actual full energy or of every allowed partition is permitted.
+
+We construct such a family for every D>=3 and obtain a matching-order repair
+rank. The same family has a proved one-rectangle solution for the actual
+energy. This distinguishes a failed sufficient certificate from the main
+problem. Earlier separately minimized harmonic-cost counterexamples are not
+being recounted: the form below is the sum of actual retained internal edges,
+with no minimizers or Schur complements.
+
+1. Actual coefficient family and original hypotheses
+
+Fix an integer D>=3 and s>=1. Put
+
+ R=s^D, n=2R+1, X={-R,...,R}^D, N=n^D,
+ A=s^2, H=n^2, w=2DR.
+
+Interpret X either as a nonwrapping integer cube or as representatives of
+the periodic n-site lattice. Let W consist of the 2D punctured coordinate
+half-axes: x has exactly one nonzero coordinate. Then |W|=w. Define actual
+positive starting-site coefficients a=A on W and a=H elsewhere, including
+at the origin. With P=D/2 the exact mean and inverse critical mass are
+
+ (1) mu=H-w(H-A)/N,
+     S=sum_X a^(-P)=2D+1-w/N,
+     M_a=N^(-1)sum_X(mu/a)^P=(mu/H)^P S<2D+1.
+
+Indeed H^P=N, A^P=R, so the w weak sites contribute exactly2D to S.
+Also N=(2R+1)^D>=2R*3^(D-1), hence
+w/N<=D/3^(D-1)<=1/3 for D>=3. Since H>A>=1,
+
+ 1<=a<=H<=3mu/2<=2mu,  mu>=2H/3>=1.
+
+Jensen applied to t^(-P) and mean a=mu gives M_a>=1. Thus every member
+obeys the original coefficient hypotheses with the fixed M_D=2D+1.
+The target-order factor is uniformly bounded:
+
+ max(1,(n/sqrt(1+mu))^D)<=2^(D/2).
+
+No rare-set density, moment or mean has been supplied independently of a.
+
+2. The fixed family of canonical full-volume partitions
+
+For any permutation pi of {1,...,D}, define the cells
+
+ B_{i,+}: x_{pi(j)}=0 for j<i,
+          1<=x_{pi(i)}<=R,
+          -R<=x_{pi(j)}<=R for j>i;
+ B_{i,-}: the same with -R<=x_{pi(i)}<=-1.
+
+Together with {0}, these 2D+1 nonempty axis-aligned integer rectangles
+partition X exactly: use the first nonzero coordinate in the order pi.
+Let P_0 have the normalized COUNTING-L2 rows
+q_B(f)=|B|^(-1/2)sum_B f; its exact scalar rank is2D+1.
+Let
+
+ E_int,pi(f)=sum_{B in partition} sum_{x,x+e_j in B}
+                                      a(x)|f(x+e_j)-f(x)|^2.
+
+Original positive-axis starts are retained, once each. Periodic wrap and
+intercell edges are discarded only in E_int,pi. The actual full energy E_a
+retains all nonwrapping edges, and optionally the additional nonnegative
+periodic edges. Thus E_int,pi<=E_a, but the reverse comparison is not assumed.
+
+The final pair B_{D,+},B_{D,-} are precisely the two weak half-axes of
+coordinate pi(D). This holds for EVERY choice of pi, including a choice
+depending on the coefficient profile. The family W includes all axes so
+merely changing the coordinate order does not evade the obstruction.
+
+3. The actual energy admits one rectangular mean
+
+Let
+
+ c_D=1/[64 D^2(2D+1)].
+
+For every real f on X,
+
+ (2) E_a(f)+c_D |N^(-1/2)sum_X f|^2>=c_D sum_X |f|^2.
+
+Here E_a can be the full nonwrapping energy; adding periodic wrap preserves
+the conclusion. Consequently the one-cell partition {X} solves this actual
+family at a fixed positive c_D. Dividing(2) by N gives the original
+probability-normalized convention, with its one row equal to mean_X f.
+
+Proof, including a rational dimension-only constant. The complete counting
+cube proof is sobolev.tex at source2c881a5e8f31cad5643a49cb205fe8eb3156955d.
+For q=2D/(D+2), q'=2D/(D-2), alpha=2(D-1)/D and
+c_iso=D(1-2^(-1/D)), it gives
+
+ V_X(f)<=K_D^2(sum_internal |df|^q)^(2/q),
+ K_D=2 alpha D^(1/q')/c_iso.
+
+Bernoulli gives (1-1/(2D))^D>=1/2, hence c_iso>=1/2 and
+K_D<=8 sqrt(D). Holder on ORIGINAL internal edges and the starting-site
+count at most D gives
+
+ V_X(f)<=K_D^2(D S)^(2/D) E_a(f)
+        <=64D [D(2D+1)]^(2/D) E_a(f)
+        <=64D^2(2D+1) E_a(f),
+
+where 2/D<=1. Finally sum_X f^2=V_X(f)+|N^(-1/2)sum_X f|^2 proves(2).
+No coefficient reflection, internal-certificate comparison or new unproved
+gap is used. This is an analytic consequence of the proved cube estimate,
+not a new formal execution claim or optimal gap constant.
+
+4. A direct failed residual-gap certificate
+
+Fix pi and use its positive final half-axis, indexed t=1,...,R. For R>=2
+let f_t=t-(R+1)/2 there and set f=0 elsewhere. Then P_0f=0 and exactly
+
+ E_int,pi(f)=A(R-1),
+ ||f||_2^2=R(R^2-1)/12,
+ E_int,pi(f)/||f||_2^2=12s^2/[R(R+1)] ->0 as s->infinity.
+
+Thus there is no uniform positive residual gap for these canonical cells
+under the bounded ORIGINAL critical moment, and no coefficient of ||P_0f||^2
+can fix this failure. This is a statement about E_int,pi, NOT about E_a.
+
+The omitted edges explain the difference rather than conceal it. At every
+point of that weak half-axis, each of its D-1 transverse incoming positive
+edges starts at a point with two nonzero coordinates and hence coefficient H.
+Their other endpoint has f=0. They are all actual distinct nonwrapping edges,
+so for every field supported on that half-axis, or on both final half-axes,
+
+ (3) E_a(f)>=(D-1)H ||f||_2^2.
+
+Their starts have not been reassigned the weak value A. The actual full
+energy is uniformly strong on these fields, consistent with(2).
+
+5. A growing-dimensional exact low internal-energy space
+
+Put T_D=32D(D+1), ell=T_D s, and
+
+ m_s=floor((R-1)/(4ell)).
+
+Define a signed tent on integer t=0,...,4ell by
+
+ g(t)=t                 for 0<=t<=ell;
+      2ell-t           for ell<=t<=3ell;
+      t-4ell           for 3ell<=t<=4ell.
+
+It has zero endpoints, g(4ell-t)=-g(t), zero counting sum, and exact values
+
+ (4) sum_t g(t)^2=2ell(2ell^2+1)/3,
+     sum_{t=0}^{4ell-1}|g(t+1)-g(t)|^2=4ell.
+
+For the first identity, the two triangular lobes give
+4 sum_{j=1}^{ell-1}j^2+2ell^2; substitute the finite square-sum formula.
+Every consecutive increment is1 or-1, proving the second identity.
+
+On each of the final positive and negative half-axes, place m_s copies on
+the intervals [1+4ell j,1+4ell(j+1)], j=0,...,m_s-1, using |x_{pi(D)}|
+as index. Their nonzero supports are disjoint. Adjacent supports share at
+most a zero endpoint, so their internal energy cross terms also vanish.
+All intervals lie in [1,R]. Every tent has zero mean on its whole cell.
+The resulting real span G_s has dimension2m_s and is contained in ker P_0.
+For every f in this span,
+
+ E_int,pi(f)=rho_s ||f||_2^2,
+ rho_s=6A/(2ell^2+1)<=3/T_D^2<=c_D/4.
+
+The last inequality follows from
+T_D^2=1024D^2(D+1)^2>=768D^2(2D+1)=12/c_D,
+since 4(D+1)^2>=3(2D+1). This is an exact all-size construction; if m_s=0
+the lower bound is vacuous, and m_s grows of order s^(D-1) as s increases.
+On the negative half-axis positive-axis orientation reverses the tent
+index, but all retained line starts still have the SAME original value A.
+Only this internal line calculation uses that constancy; transverse incoming
+starts in the full energy still have coefficient H.
+
+6. Sharp-order rank needed to repair this prescribed certificate
+
+For any fixed pi, suppose real-linear maps C:R^X->F and V:R^X->R^X and
+any function Phi with Phi(0)=0 satisfy, for all f, or in a neighborhood of0,
+
+ (5) E_int,pi(f)+K||P_0f||^2+Phi(Cf)+<f,Vf>>=c_D||f||^2.
+
+Here K is any finite scalar; no symmetry/positivity of V or continuity of Phi
+is needed. Then
+
+ (6) rank C+rank V>=2m_s=Omega_D(s^(D-1))=Omega_D(R^(1-1/D)).
+
+If the combined rank were smaller, the joint kernel of C and V restricted
+to G_s would contain a nonzero f. All three repair terms vanish there,
+whereas E_int,pi(f)<=c_D||f||^2/4<c_D||f||^2. Scaling f toward zero proves
+the neighborhood version. This is the elementary rank-nullity mechanism,
+not an original general rank-repair principle. The lower bound is valid
+for each pi, so it also applies to selecting any one of these coordinate
+orders from a. It does not apply to arbitrary rectangular partitions.
+
+The order is sufficient for this internal-certificate task by an explicit
+refinement. In each B_{i,+/-}, retain its one weak coordinate half-axis and
+partition its complement by the first nonzero later coordinate. This gives
+2(D-i) STRONG integer rectangles per cell. Every such point has at least
+two nonzero coordinates, hence actual coefficient H. Together there are
+2D(D-1) strong rectangles. Split each of the2D weak half-axes into
+R/s=s^(D-1) consecutive intervals of length s. Retain the singleton origin.
+These are disjoint integer rectangles covering X, with exact total count
+
+ (7) J_s=1+2D(D-1)+2D s^(D-1).
+
+All strong cells have largest side at most n and coefficient H=n^2; all
+weak intervals have length s and coefficient A=s^2. The derived product
+interval variance bound V_B<=L_B(L_B-1) sum_internal|df|^2/4 therefore
+gives E_{a,B}>=4V_B whenever V_B is nonzero. Singletons have zero variance.
+Summing disjoint retained edges and the exact normalized-mean identity
+proves the fixed-penalty inequality with coefficient K=c_D and these J_s
+rows, even for the refined internal energy. That energy is no greater than
+the base E_int,pi, so the same rows also supply a repair in(5), by taking
+Phi(Cf)=c_D||P_ref f||^2 and retaining any nonnegative base penalty.
+Since c_D<=1, there is no
+division by a vanishing side or gap. Thus the matching repair order is
+Theta_D(s^(D-1)); no optimal multiplicative constant is asserted.
+
+7. What is refuted, and what remains open
+
+This family has fixed original moment M_D and a bounded target-order factor,
+and admits an actual one-rectangle solution. Nevertheless a natural
+full-volume canonical decomposition, for EVERY coordinate order, needs
+growing-rank repair if it relies only on its separated internal energy.
+The order of this certificate loss is derived and matched constructively.
+The route “transfer the shell gap to these full-volume cells and discard
+their interfaces for free” is therefore STOPPED_BY_COUNTEREXAMPLE.
+
+The example does not defeat the actual energy or every admissible partition;
+it explicitly supplies a successful one. It neither removes a hypothesis of
+the original unrestricted problem nor licenses an internal-energy conclusion
+on coexact/divergence-constrained fields. It concerns the scalar sufficient
+certificate; no interacting or continuum Yang--Mills assertion follows.
+Source218's selected unit-shell theorem remains valid: its faces are nearly
+balanced in their tangential dimensions, unlike the full-volume cells here.
+Do not substitute this family for its coefficient-only selected-shell theorem.
+
+8. Primary comparison and status at first freeze
+
+Methods are classical finite variance/Sobolev, signed tents and rank-nullity.
+Precise priority of this bounded starting-site/canonical-certificate example
+is unestablished; a new general spectral or approximation theorem is not
+claimed. The full cube and interval dependencies are proved in frozen
+revision217 at source2c881a5e8f31cad5643a49cb205fe8eb3156955d, respectively
+sobolev.tex and partition.tex. Related source197/200 rank arguments concern
+separately minimized harmonic costs in D>=4; they do not prove this actual
+internal-edge theorem, its all-order axial guard or matching repair count.
+
+Primary context: Yuri Brudnyi, arXiv:1511.03971v1,
+Sections1-2 and AppendixI (dyadic rings) discusses nonlinear approximation
+of each given function by chosen pieces. It does not directly give a single
+coefficient-selected rectangular observation map valid for all fields.
+Neither that quantifier reversal nor a weighted original-start-energy
+adapter is imported. Its ring geometry is context, not a premise here.
+URL: https://arxiv.org/html/1511.03971
+This limited primary comparison is not exhaustive novelty verification.
+
+At first freeze the all-size argument is analytical; full source audit and
+owned Colab finite rational diagnostics are pending. No Lean/all-size
+machine verification, PDF, numerical exact-PDF assessment, stars, human peer
+review, new AIRR/ai.viXra deposit or independence is claimed. Group this result
+with the existing dossier, not a small-corollary paper. Preserve all reports,
+original scores and negative cases. PR29=20/41,TermSource0 unchanged.
