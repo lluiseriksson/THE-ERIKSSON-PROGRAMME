@@ -1,0 +1,24 @@
+{
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "record_id": "arr:record:eeb507b1-b6c7-4996-bc62-a4e7c416be00",
+  "version": "v12",
+  "version_id": "arr:version:21c85b75-4a5f-4387-b537-008ace1d6963",
+  "canonical_sha256": "78bcb10ac82b7b920281542a311a28bf70132c73a4a1dbacf90c62b62eb9bf83",
+  "canonical_bytes": 885392,
+  "pages": 95,
+  "source_sha": "86c19e1bd5b18cfe39f6c53685489b0d7cc75a64",
+  "parent_version_id": "arr:version:6ad47e92-441a-4953-abe4-6996b0dc89a5",
+  "parent_sha256": "68aae0aa0c93a2718abcc3f489f7ccdcb5cdc3477b2c93472cfa308e0c540a6b",
+  "title": "Coarse information and finite rank obstructions for flat lattice Hodge forms",
+  "pdf": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\flat_critical_integrated221B.pdf",
+  "native_permission": "Not yet requested; proposed revision UUID is artifact binding only, not permission/receipt/publication",
+  "prepared_at": "2026-11-09T05:06:18.135608+00:00",
+  "review_round": "First and only declared numerical exactPDF221B assessment; no target score, no inherited judgment, no resampling",
+  "ungraded_previous_candidate": {
+    "source_sha": "7822ac91245a8e79c304e595ca82b786283c3c92",
+    "pdf_sha256": "a9c51109ac77831b12a22743fef38808020a7b6e761438a5d7fa12b8ee123903",
+    "source_verdict": "reject",
+    "numerical_assessment": null,
+    "corrections_retained": true
+  }
+}

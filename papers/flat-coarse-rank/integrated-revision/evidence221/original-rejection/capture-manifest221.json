@@ -1,0 +1,830 @@
+{
+  "source_commit": "7822ac91245a8e79c304e595ca82b786283c3c92",
+  "baseline_commit": "2c881a5e8f31cad5643a49cb205fe8eb3156955d",
+  "capture": "git show SHA:path; raw stdout BaseStream; WriteAllBytes; no normalization",
+  "files": [
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/boundary-transfer.tex",
+      "capture": "current/boundary-transfer.tex",
+      "bytes": 11918,
+      "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/detour-separation.tex",
+      "capture": "current/detour-separation.tex",
+      "bytes": 8394,
+      "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/flat_critical_integrated.tex",
+      "capture": "current/flat_critical_integrated.tex",
+      "bytes": 150294,
+      "sha256": "b33485504fdaf390b14fd3a56e85ff7b11108b358aec120a38df67887a050d6b",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/geometry-boundaries221.tex",
+      "capture": "current/geometry-boundaries221.tex",
+      "bytes": 18246,
+      "sha256": "ee03c649af2bcc8cf22d4f152a68517d84795f7fab64a48451887c89f2b36e09",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/joint-binary.tex",
+      "capture": "current/joint-binary.tex",
+      "bytes": 8896,
+      "sha256": "001f9e6d2ec168fac732baad166f8ab2dc876bab84b82c00b8df75385e532551",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/laminates-green.tex",
+      "capture": "current/laminates-green.tex",
+      "bytes": 20710,
+      "sha256": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/partial-invariance.tex",
+      "capture": "current/partial-invariance.tex",
+      "bytes": 8946,
+      "sha256": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/partition.tex",
+      "capture": "current/partition.tex",
+      "bytes": 12856,
+      "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/physical-cycle.tex",
+      "capture": "current/physical-cycle.tex",
+      "bytes": 15608,
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/shells.tex",
+      "capture": "current/shells.tex",
+      "bytes": 11932,
+      "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/sobolev.tex",
+      "capture": "current/sobolev.tex",
+      "bytes": 9493,
+      "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/spatial-geometry.tex",
+      "capture": "current/spatial-geometry.tex",
+      "bytes": 21639,
+      "sha256": "3f6152b40718190276160977a3401f52ad910a5f150890c971be01c1a1bfd4f9",
+      "contains_cr": false
+    },
+    {
+      "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/boundary-transfer.tex",
+      "capture": "baseline/boundary-transfer.tex",
+      "bytes": 11918,
+      "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0",
+      "contains_cr": false
+    },
+    {
+      "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/detour-separation.tex",
+      "capture": "baseline/detour-separation.tex",
+      "bytes": 8394,
+      "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8",
+      "contains_cr": false
+    },
+    {
+      "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/flat_critical_integrated.tex",
+      "capture": "baseline/flat_critical_integrated.tex",
+      "bytes": 149281,
+      "sha256": "8a5e5c4960d0fb9d356d45b5fcccbb83716c4f74b15346b135fc276f2ebb60fd",
+      "contains_cr": false
+    },
+    {
+      "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/joint-binary.tex",
+      "capture": "baseline/joint-binary.tex",
+      "bytes": 8896,
+      "sha256": "001f9e6d2ec168fac732baad166f8ab2dc876bab84b82c00b8df75385e532551",
+      "contains_cr": false
+    },
+    {
+      "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/laminates-green.tex",
+      "capture": "baseline/laminates-green.tex",
+      "bytes": 20710,
+      "sha256": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1",
+      "contains_cr": false
+    },
+    {
+      "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/partial-invariance.tex",
+      "capture": "baseline/partial-invariance.tex",
+      "bytes": 8946,
+      "sha256": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01",
+      "contains_cr": false
+    },
+    {
+      "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/partition.tex",
+      "capture": "baseline/partition.tex",
+      "bytes": 12856,
+      "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+      "contains_cr": false
+    },
+    {
+      "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/physical-cycle.tex",
+      "capture": "baseline/physical-cycle.tex",
+      "bytes": 15608,
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+      "contains_cr": false
+    },
+    {
+      "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/shells.tex",
+      "capture": "baseline/shells.tex",
+      "bytes": 11932,
+      "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a",
+      "contains_cr": false
+    },
+    {
+      "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/sobolev.tex",
+      "capture": "baseline/sobolev.tex",
+      "bytes": 9493,
+      "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+      "contains_cr": false
+    },
+    {
+      "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/spatial-geometry.tex",
+      "capture": "baseline/spatial-geometry.tex",
+      "bytes": 21639,
+      "sha256": "3f6152b40718190276160977a3401f52ad910a5f150890c971be01c1a1bfd4f9",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/.gitattributes",
+      "capture": "evidence/filament-certificate219/.gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/archive-verified219.json",
+      "capture": "evidence/filament-certificate219/archive-verified219.json",
+      "bytes": 1365,
+      "sha256": "9e5f855fbe25ffa7ba4e39af7a69233dd65b119315f0ac51786b541c303ded6e",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/author-response219.json",
+      "capture": "evidence/filament-certificate219/author-response219.json",
+      "bytes": 955,
+      "sha256": "d731177f86bb0a8e9668a6a2d3ebd58445c9c03e14af5a8a70768dbd9ed9e62e",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/primary-comparison219.json",
+      "capture": "evidence/filament-certificate219/primary-comparison219.json",
+      "bytes": 1045,
+      "sha256": "41b70b37675c16f6c62bc65cb6d5d3f82ec19588ef29dc6b7aaef2b3dcf47f07",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/README.md",
+      "capture": "evidence/filament-certificate219/README.md",
+      "bytes": 3078,
+      "sha256": "ec37699c36931c168d33ae93f1f65d71bfa8fbcb9de85c686a58e327243e15e9",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/run_diagnostic219.py",
+      "capture": "evidence/filament-certificate219/run_diagnostic219.py",
+      "bytes": 2733,
+      "sha256": "715949637b62e971db92184bad4d6c1e8cd4fa1e11b9ad7ec10131e747fb6c3d",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/runtime-and-source219.json",
+      "capture": "evidence/filament-certificate219/runtime-and-source219.json",
+      "bytes": 799,
+      "sha256": "92981a9d43227f96a2cff429830e8458b3a760eb1496744d60f01bb6fa377d15",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/source-pins219.json",
+      "capture": "evidence/filament-certificate219/source-pins219.json",
+      "bytes": 404,
+      "sha256": "889032ef441c7c37fb43f6976ccf882a6167d05286189f044ece981640b6fabc",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/audit219/audit219.json",
+      "capture": "evidence/filament-certificate219/audit219/audit219.json",
+      "bytes": 4138,
+      "sha256": "5116d963c812b791fe3442d703277a5aa2136eb3379adf00b06adcd23b727c7b",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/audit219/capture-manifest219.json",
+      "capture": "evidence/filament-certificate219/audit219/capture-manifest219.json",
+      "bytes": 1816,
+      "sha256": "c797be56f718c74e14f980324ebd85ada5c3ca4e8057bf58908932983645c9d4",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/audit219/context-boundary-transfer217.tex",
+      "capture": "evidence/filament-certificate219/audit219/context-boundary-transfer217.tex",
+      "bytes": 11918,
+      "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/audit219/context-joint-binary217.tex",
+      "capture": "evidence/filament-certificate219/audit219/context-joint-binary217.tex",
+      "bytes": 8896,
+      "sha256": "001f9e6d2ec168fac732baad166f8ab2dc876bab84b82c00b8df75385e532551",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/audit219/dependency-partition217.tex",
+      "capture": "evidence/filament-certificate219/audit219/dependency-partition217.tex",
+      "bytes": 12856,
+      "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/audit219/dependency-sobolev217.tex",
+      "capture": "evidence/filament-certificate219/audit219/dependency-sobolev217.tex",
+      "bytes": 9493,
+      "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/audit219/filament_certificate_diagnostic219.py",
+      "capture": "evidence/filament-certificate219/audit219/filament_certificate_diagnostic219.py",
+      "bytes": 8250,
+      "sha256": "154a73d275bc914ace4b184e327538390b3847e65aaa58dc03302b038faa413a",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/audit219/report219.txt",
+      "capture": "evidence/filament-certificate219/audit219/report219.txt",
+      "bytes": 21210,
+      "sha256": "c1cf13dc3d81d509679c68ff6d174f8d8e83342f20a3cd6bcebf1751cac3fb05",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/audit219/source219.txt",
+      "capture": "evidence/filament-certificate219/audit219/source219.txt",
+      "bytes": 12869,
+      "sha256": "9005f350b1d6e02d689d20c09f7fc7e0402408c0a604d92e92573b5dc0cd43af",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/execution219/2026-11-09_filament-certificate219.txt",
+      "capture": "evidence/filament-certificate219/execution219/2026-11-09_filament-certificate219.txt",
+      "bytes": 12869,
+      "sha256": "9005f350b1d6e02d689d20c09f7fc7e0402408c0a604d92e92573b5dc0cd43af",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/execution219/filament_certificate_diagnostic219.py",
+      "capture": "evidence/filament-certificate219/execution219/filament_certificate_diagnostic219.py",
+      "bytes": 8250,
+      "sha256": "154a73d275bc914ace4b184e327538390b3847e65aaa58dc03302b038faa413a",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/execution219/manifest219.json",
+      "capture": "evidence/filament-certificate219/execution219/manifest219.json",
+      "bytes": 859,
+      "sha256": "afbf8abe891e475caf63d161b1b5e6470228f6033434cf15331462a4d1b53eda",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/execution219/normal.exit",
+      "capture": "evidence/filament-certificate219/execution219/normal.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/execution219/normal.stderr.txt",
+      "capture": "evidence/filament-certificate219/execution219/normal.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/execution219/normal.stdout.json",
+      "capture": "evidence/filament-certificate219/execution219/normal.stdout.json",
+      "bytes": 513,
+      "sha256": "6d7290706aa9a1c5157f3a556132c62613a0bbfa8ac550b0b04d928a8ceef41f",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/execution219/optimized.exit",
+      "capture": "evidence/filament-certificate219/execution219/optimized.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/execution219/optimized.stderr.txt",
+      "capture": "evidence/filament-certificate219/execution219/optimized.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/execution219/optimized.stdout.json",
+      "capture": "evidence/filament-certificate219/execution219/optimized.stdout.json",
+      "bytes": 513,
+      "sha256": "6d7290706aa9a1c5157f3a556132c62613a0bbfa8ac550b0b04d928a8ceef41f",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/filament-certificate219/execution219/report219.json",
+      "capture": "evidence/filament-certificate219/execution219/report219.json",
+      "bytes": 361,
+      "sha256": "f3140f27b7ce83bc6b7734b4e7cbbfe9e6830d34873199b00b9fda0693262cf7",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/.gitattributes",
+      "capture": "evidence/offcenter-shell220/.gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/archive-verified220.json",
+      "capture": "evidence/offcenter-shell220/archive-verified220.json",
+      "bytes": 1404,
+      "sha256": "c8a959047190ce315e9faf933b99f29842126704933aca85180ec2381050085d",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/author-response220.json",
+      "capture": "evidence/offcenter-shell220/author-response220.json",
+      "bytes": 926,
+      "sha256": "70e29a7d685cd152878be2036e7a20b7faa23bc5e6fee9ce90f1f3a4c889fd50",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/prefreeze-correction220.json",
+      "capture": "evidence/offcenter-shell220/prefreeze-correction220.json",
+      "bytes": 462,
+      "sha256": "c81f8f8fc87c04d58a504651b1bc6c7aba32b6c8ea7faea845c1740278f1cd8c",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/primary-comparison220.json",
+      "capture": "evidence/offcenter-shell220/primary-comparison220.json",
+      "bytes": 931,
+      "sha256": "63e687cc41c172bfe73ec43e6af7afa5da643cf45737f770394189d75b2e3faf",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/README.md",
+      "capture": "evidence/offcenter-shell220/README.md",
+      "bytes": 3198,
+      "sha256": "b6ed0eaf4eab70edab49a0a9117e9a34df05cb89609f10993be925a77cbb9ab9",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/run_diagnostic220.py",
+      "capture": "evidence/offcenter-shell220/run_diagnostic220.py",
+      "bytes": 2704,
+      "sha256": "814fb8ea9b9a3b3f89985b5e0ac2001a95004c6ba82dd7dc3ef81435c1c63420",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/runtime-and-source220.json",
+      "capture": "evidence/offcenter-shell220/runtime-and-source220.json",
+      "bytes": 788,
+      "sha256": "0680df9dedb30a171d3ad06acd3eb60ba4e4f07db8a8509ab4fe031cd1efdbbf",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/source-pins220.json",
+      "capture": "evidence/offcenter-shell220/source-pins220.json",
+      "bytes": 394,
+      "sha256": "3cd1a18adb8449c9abe9933b5b3074a09590466a42ef7f4a5a88ab6b7a045c35",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/audit220/audit220.json",
+      "capture": "evidence/offcenter-shell220/audit220/audit220.json",
+      "bytes": 4176,
+      "sha256": "28c04a8393a414f715d56d622cc2b953910292341f243382f7b0555ffbe4cb2b",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/audit220/capture-manifest220.json",
+      "capture": "evidence/offcenter-shell220/audit220/capture-manifest220.json",
+      "bytes": 1764,
+      "sha256": "eb88c800b10be7ba25c7551894959f3b786e9a18a97dfd76b59d456eecfaee9e",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/audit220/context-source205.txt",
+      "capture": "evidence/offcenter-shell220/audit220/context-source205.txt",
+      "bytes": 8909,
+      "sha256": "423c38cd9e5d7f300b318fdd362dc47a726d9db87972e2257c4fffb0b9a47b1d",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/audit220/context-source216.txt",
+      "capture": "evidence/offcenter-shell220/audit220/context-source216.txt",
+      "bytes": 10954,
+      "sha256": "9d22d01608893991411c52c696c2ee2d8ab342e0d5b18e371846681100af7198",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/audit220/dependency-partition217.tex",
+      "capture": "evidence/offcenter-shell220/audit220/dependency-partition217.tex",
+      "bytes": 12856,
+      "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/audit220/dependency-sobolev217.tex",
+      "capture": "evidence/offcenter-shell220/audit220/dependency-sobolev217.tex",
+      "bytes": 9493,
+      "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/audit220/offcenter_shell_diagnostic220.py",
+      "capture": "evidence/offcenter-shell220/audit220/offcenter_shell_diagnostic220.py",
+      "bytes": 7470,
+      "sha256": "ec80c950ea2457f706c054989000379e1f326b5efb7fc96b389736b4c9a0aee0",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/audit220/report220.txt",
+      "capture": "evidence/offcenter-shell220/audit220/report220.txt",
+      "bytes": 15816,
+      "sha256": "1e1359b06813050754d2fd448b18edf6721aee2fcd6b176c5e26963bd1a0f8d2",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/audit220/source220.txt",
+      "capture": "evidence/offcenter-shell220/audit220/source220.txt",
+      "bytes": 11692,
+      "sha256": "286577395ab9d13e2e75a010d764c9d926b0dd6601e8b1afef6599b8885578c3",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/execution220/2026-11-09_offcenter-shell220.txt",
+      "capture": "evidence/offcenter-shell220/execution220/2026-11-09_offcenter-shell220.txt",
+      "bytes": 11692,
+      "sha256": "286577395ab9d13e2e75a010d764c9d926b0dd6601e8b1afef6599b8885578c3",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/execution220/manifest220.json",
+      "capture": "evidence/offcenter-shell220/execution220/manifest220.json",
+      "bytes": 849,
+      "sha256": "d31aa4aab6ea05171d8b7d51c7c8f1a638cffe0d35f677125b540e0c8931b333",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/execution220/normal.exit",
+      "capture": "evidence/offcenter-shell220/execution220/normal.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/execution220/normal.stderr.txt",
+      "capture": "evidence/offcenter-shell220/execution220/normal.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/execution220/normal.stdout.json",
+      "capture": "evidence/offcenter-shell220/execution220/normal.stdout.json",
+      "bytes": 546,
+      "sha256": "3b0c9d6541f6a2d69fd57566b5b6d28b463f676e6023047ae86680a41da7954d",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/execution220/offcenter_shell_diagnostic220.py",
+      "capture": "evidence/offcenter-shell220/execution220/offcenter_shell_diagnostic220.py",
+      "bytes": 7470,
+      "sha256": "ec80c950ea2457f706c054989000379e1f326b5efb7fc96b389736b4c9a0aee0",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/execution220/optimized.exit",
+      "capture": "evidence/offcenter-shell220/execution220/optimized.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/execution220/optimized.stderr.txt",
+      "capture": "evidence/offcenter-shell220/execution220/optimized.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/execution220/optimized.stdout.json",
+      "capture": "evidence/offcenter-shell220/execution220/optimized.stdout.json",
+      "bytes": 546,
+      "sha256": "3b0c9d6541f6a2d69fd57566b5b6d28b463f676e6023047ae86680a41da7954d",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/execution220/report220.json",
+      "capture": "evidence/offcenter-shell220/execution220/report220.json",
+      "bytes": 361,
+      "sha256": "433d24e498906efe18f36bdef2ca4bfe70aa9efaa5a49f6432ae1312f93ec024",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/pre-freeze-notes/README.txt",
+      "capture": "evidence/offcenter-shell220/pre-freeze-notes/README.txt",
+      "bytes": 373,
+      "sha256": "23c1ffc39ca4a4be23092e3bed6bcfd5484d3280b6877b1184e11bf23ee5d2eb",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/pre-freeze-notes/UNREVIEWED-v1.txt",
+      "capture": "evidence/offcenter-shell220/pre-freeze-notes/UNREVIEWED-v1.txt",
+      "bytes": 2266,
+      "sha256": "70226299f4d7199efe20499ea748e60f80408ed9425811e31988ee330bc0ed93",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/offcenter-shell220/pre-freeze-notes/UNREVIEWED-v2.txt",
+      "capture": "evidence/offcenter-shell220/pre-freeze-notes/UNREVIEWED-v2.txt",
+      "bytes": 4312,
+      "sha256": "bb47da7f06f444303e3e4bead67631fd0b21c8f85125bc2bfbed0f11dab8f4fe",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/.gitattributes",
+      "capture": "evidence/selected-shell218/.gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/archive-verified218.json",
+      "capture": "evidence/selected-shell218/archive-verified218.json",
+      "bytes": 1253,
+      "sha256": "2aab1c0496b5e2d777a459fa84fda6490420f8ca2ca690e4b18d891d7174ef8b",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/author-response218.json",
+      "capture": "evidence/selected-shell218/author-response218.json",
+      "bytes": 1052,
+      "sha256": "11f26c696fca975ddcec68db0b7169d4138966fdbe562ce2a8def257527fa40d",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/primary-comparison218.json",
+      "capture": "evidence/selected-shell218/primary-comparison218.json",
+      "bytes": 1452,
+      "sha256": "52c86a56c2bbca0790fba6014b5af72e84b298de8f9a66398836511bf4d59e3a",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/README.md",
+      "capture": "evidence/selected-shell218/README.md",
+      "bytes": 2791,
+      "sha256": "b95f99039934ff1fb290bdc902d919d8b0f8081b2cfeaa78d52014f24e749f16",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/run_diagnostic218.py",
+      "capture": "evidence/selected-shell218/run_diagnostic218.py",
+      "bytes": 2697,
+      "sha256": "3d8e96ebbe095029c00c7e256d444786d4966c7b4c4ae3481e5223c38ec45e58",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/runtime-and-source218.json",
+      "capture": "evidence/selected-shell218/runtime-and-source218.json",
+      "bytes": 805,
+      "sha256": "a3e015107c011d838a863f480cc93e306dfff6bc242a2e986a70c3e2bf562637",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/source-pins218.json",
+      "capture": "evidence/selected-shell218/source-pins218.json",
+      "bytes": 342,
+      "sha256": "af0584a40101e1bf8ed7d82382c7228891f7b70888a48c6fcad7d7743ed36b28",
+      "contains_cr": true
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/audit218/audit218.json",
+      "capture": "evidence/selected-shell218/audit218/audit218.json",
+      "bytes": 4319,
+      "sha256": "6bb3523017099f990d751bee2d65b5b498039861816d66403737158edfdb35a2",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/audit218/capture-manifest218.json",
+      "capture": "evidence/selected-shell218/audit218/capture-manifest218.json",
+      "bytes": 1465,
+      "sha256": "c99abd8cfdb324e141b072d2d87b4f8747ab4bef00a676eda900d0f53f27a4b1",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/audit218/dependency-shells217.tex",
+      "capture": "evidence/selected-shell218/audit218/dependency-shells217.tex",
+      "bytes": 11932,
+      "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/audit218/dependency-sobolev217.tex",
+      "capture": "evidence/selected-shell218/audit218/dependency-sobolev217.tex",
+      "bytes": 9493,
+      "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/audit218/dependency-source216.txt",
+      "capture": "evidence/selected-shell218/audit218/dependency-source216.txt",
+      "bytes": 10954,
+      "sha256": "9d22d01608893991411c52c696c2ee2d8ab342e0d5b18e371846681100af7198",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/audit218/report218.txt",
+      "capture": "evidence/selected-shell218/audit218/report218.txt",
+      "bytes": 18521,
+      "sha256": "238cbe9584e36b0a3ccc62a293995479bdd55647767e9892a7e1ed002799191c",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/audit218/selected_shell_diagnostic218.py",
+      "capture": "evidence/selected-shell218/audit218/selected_shell_diagnostic218.py",
+      "bytes": 7928,
+      "sha256": "eb047f9ecae0d4d93ad7f9ce9f200b78930cdb6d260cc2e54a5d9cf4f29b439b",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/audit218/source218.txt",
+      "capture": "evidence/selected-shell218/audit218/source218.txt",
+      "bytes": 9615,
+      "sha256": "41b28da62c1b9d523e1d565ef556a5ede64bdf27f74cf867f05df4ea5a1f487a",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/execution218/2026-11-09_selected-shell218.txt",
+      "capture": "evidence/selected-shell218/execution218/2026-11-09_selected-shell218.txt",
+      "bytes": 9615,
+      "sha256": "41b28da62c1b9d523e1d565ef556a5ede64bdf27f74cf867f05df4ea5a1f487a",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/execution218/manifest218.json",
+      "capture": "evidence/selected-shell218/execution218/manifest218.json",
+      "bytes": 847,
+      "sha256": "f94fdf1366154d27d5d5677f79d8a1cfea3b145ad8484bbf3183f1ba20ae1a5e",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/execution218/normal.exit",
+      "capture": "evidence/selected-shell218/execution218/normal.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/execution218/normal.stderr.txt",
+      "capture": "evidence/selected-shell218/execution218/normal.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/execution218/normal.stdout.json",
+      "capture": "evidence/selected-shell218/execution218/normal.stdout.json",
+      "bytes": 409,
+      "sha256": "223af146aeecf91f292edc83a907d2e6ab3d43814332d65028981a63264572df",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/execution218/optimized.exit",
+      "capture": "evidence/selected-shell218/execution218/optimized.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/execution218/optimized.stderr.txt",
+      "capture": "evidence/selected-shell218/execution218/optimized.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/execution218/optimized.stdout.json",
+      "capture": "evidence/selected-shell218/execution218/optimized.stdout.json",
+      "bytes": 409,
+      "sha256": "223af146aeecf91f292edc83a907d2e6ab3d43814332d65028981a63264572df",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/execution218/report218.json",
+      "capture": "evidence/selected-shell218/execution218/report218.json",
+      "bytes": 360,
+      "sha256": "ab540cd676b694931dff1306430355a0a90c23aee6f2754db12fd90403422286",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/selected-shell218/execution218/selected_shell_diagnostic218.py",
+      "capture": "evidence/selected-shell218/execution218/selected_shell_diagnostic218.py",
+      "bytes": 7928,
+      "sha256": "eb047f9ecae0d4d93ad7f9ce9f200b78930cdb6d260cc2e54a5d9cf4f29b439b",
+      "contains_cr": false
+    },
+    {
+      "spec": "7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/research/2026-11-09_selected-shell218.txt",
+      "capture": "original-sources/current218.txt",
+      "bytes": 9615,
+      "sha256": "18a13ffbdb7555716684f7a36fb9ec452bbdaf078fb62c113600c84ace3911ab",
+      "contains_cr": false
+    },
+    {
+      "spec": "e040475e37bf6b7440625df41c723738dbe3dbd8:papers/flat-coarse-rank/research/2026-11-09_selected-shell218.txt",
+      "capture": "original-sources/original218.txt",
+      "bytes": 9615,
+      "sha256": "41b28da62c1b9d523e1d565ef556a5ede64bdf27f74cf867f05df4ea5a1f487a",
+      "contains_cr": false
+    },
+    {
+      "spec": "5298926f130f3d680dfaa633bbf82e780bd0af84:papers/flat-coarse-rank/research/2026-11-09_filament-certificate219.txt",
+      "capture": "original-sources/original219.txt",
+      "bytes": 12869,
+      "sha256": "9005f350b1d6e02d689d20c09f7fc7e0402408c0a604d92e92573b5dc0cd43af",
+      "contains_cr": false
+    },
+    {
+      "spec": "0c79cd67a002c24a305b70cf707c420aa1bd9ae3:papers/flat-coarse-rank/research/2026-11-09_offcenter-shell220.txt",
+      "capture": "original-sources/original220.txt",
+      "bytes": 11692,
+      "sha256": "286577395ab9d13e2e75a010d764c9d926b0dd6601e8b1afef6599b8885578c3",
+      "contains_cr": false
+    }
+  ],
+  "comparisons": [
+    {
+      "file": "boundary-transfer.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "detour-separation.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "flat_critical_integrated.tex",
+      "byte_identical": false
+    },
+    {
+      "file": "joint-binary.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "laminates-green.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "partial-invariance.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "partition.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "physical-cycle.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "shells.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "sobolev.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "spatial-geometry.tex",
+      "byte_identical": true
+    }
+  ]
+}

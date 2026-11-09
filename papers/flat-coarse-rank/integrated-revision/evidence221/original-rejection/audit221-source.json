@@ -1,0 +1,159 @@
+{
+  "verdict": "reject",
+  "disposition": "bounded source-integration corrections required; original218-220 mathematics remain accepted within prior limits",
+  "source": {
+    "commit": "7822ac91245a8e79c304e595ca82b786283c3c92",
+    "branch_named_in_assignment": "codex/tep-integrated221-20261109",
+    "directory": "papers/flat-coarse-rank/integrated-revision/revision221",
+    "root": {
+      "bytes": 150294,
+      "sha256": "b33485504fdaf390b14fd3a56e85ff7b11108b358aec120a38df67887a050d6b",
+      "representation": "exact Git blob LF; no normalization"
+    },
+    "geometry": {
+      "bytes": 18246,
+      "sha256": "ee03c649af2bcc8cf22d4f152a68517d84795f7fab64a48451887c89f2b36e09",
+      "representation": "exact Git blob; LF plus one bare CR inside formula; no normalization",
+      "bare_cr_zero_based_byte_offset": 10512,
+      "bare_cr_lf_line": 245
+    }
+  },
+  "capture": {
+    "method": "git show SHA:path; raw stdout BaseStream; WriteAllBytes; no normalization",
+    "captured_files": 111,
+    "manifest": "capture-manifest221.json",
+    "manifest_sha256": "912e5d4e9e1158ac16da51d8e3cf247ada2f875fba0d0cdabb2490ba787732ce",
+    "evidence_readback": "evidence-readback221.json",
+    "evidence_readback_sha256": "0c55b3e1bdd04c278377a57e5c786bc4a8d3f13f355f4106ebbfae8f1c42c6b2"
+  },
+  "baseline": {
+    "commit": "2c881a5e8f31cad5643a49cb205fe8eb3156955d",
+    "directory": "papers/flat-coarse-rank/integrated-revision/revision217",
+    "byte_identical_files": [
+      "boundary-transfer.tex",
+      "detour-separation.tex",
+      "joint-binary.tex",
+      "laminates-green.tex",
+      "partial-invariance.tex",
+      "partition.tex",
+      "physical-cycle.tex",
+      "shells.tex",
+      "sobolev.tex",
+      "spatial-geometry.tex"
+    ],
+    "root_delta_fully_read": true,
+    "new_section_fully_read": true
+  },
+  "required_corrections": [
+    {
+      "id": "R1",
+      "file": "geometry-boundaries221.tex",
+      "line": 20,
+      "kind": "lost necessary hypothesis",
+      "issue": "z is introduced but integer lattice-center/domain hypothesis from source218 is omitted",
+      "counterexample": "D=3,L=2,z=(1/2,1/2,1/2): integer-lattice annulus nonempty, candidate integer-radius shells empty",
+      "fix": "state z in Z^D, x in Z^D and the nonwrapping setting; define A_k explicitly"
+    },
+    {
+      "id": "R2",
+      "file": "geometry-boundaries221.tex",
+      "line": 161,
+      "kind": "lost endpoint restriction",
+      "issue": "s=1 gives R=1 and a zero ramp, so its displayed energy/norm quotient is0/0",
+      "fix": "restore original219's R>=2 guard before ramp quotient"
+    },
+    {
+      "id": "R3",
+      "file": "geometry-boundaries221.tex",
+      "line": 245,
+      "kind": "literal control-character corruption",
+      "issue": "bare0D followed by m replaces the intended TeX rm command inside supremum subscript",
+      "fix": "replace with a proper nonconstant text subscript and intended newlines"
+    },
+    {
+      "id": "R4",
+      "file": "flat_critical_integrated.tex",
+      "line": 2756,
+      "kind": "contradictory predecessor",
+      "issue": "bibliography calls v10 immediate predecessor while opening/model context call v11",
+      "fix": "update current-parent sentence or explicitly bind it to an earlier historical candidate"
+    },
+    {
+      "id": "R5",
+      "file": "geometry-boundaries221.tex",
+      "line": 363,
+      "kind": "missing/mismatched primary citation",
+      "issue": "Section3.1/Proposition3.5 of arXiv v5 refers to1306.2521v5, which is absent; existing ap:ads is1312.5473v6",
+      "fix": "restore actual1306.2521v5 entry and usable citation/link"
+    }
+  ],
+  "mathematical_checks": {
+    "selected218": "valid under restored original lattice hypotheses; constants C3=2592 and normalization preserved",
+    "filament219": "rank/nullity, tents, original starts and matching count valid apart from dropped ramp guard",
+    "offcenter220": "actual annular Theta_D(s^2), mixed-volume transport, B3=7350 and filled A norm^2 valid",
+    "global_scope": "no unrestricted/coexact/physical conclusion asserted"
+  },
+  "retained_evidence": {
+    "all_three_folders_captured": true,
+    "manifest_entries_per_unit": 9,
+    "manifest_hash_mismatches": 0,
+    "normal_optimized_stdout_byte_identical": true,
+    "recorded_exits": "each exact0 followed by LF",
+    "original_report_hashes": {
+      "218": "238cbe9584e36b0a3ccc62a293995479bdd55647767e9892a7e1ed002799191c",
+      "219": "c1cf13dc3d81d509679c68ff6d174f8d8e83342f20a3cd6bcebf1751cac3fb05",
+      "220": "1e1359b06813050754d2fd448b18edf6721aee2fcd6b176c5e26963bd1a0f8d2"
+    },
+    "counters_match_integrated_prose": true,
+    "full_profile220_meaning": "five fields on one weighted grid",
+    "U1000_control": "finite regression, not all-constant proof",
+    "source218_delta": "exactly Section3->Section2 locator only",
+    "execution_reperformed": false,
+    "service_side_provenance_independently_attested": false,
+    "billed_compute_units": "unknown/null in records"
+  },
+  "context": {
+    "exposed_model": "Codex, an agent based on GPT-6",
+    "exact_hidden_model": "unknown",
+    "backend": "unknown",
+    "reasoning_effort": "unknown",
+    "task": "/root/defect_plane198_audit",
+    "fresh_context": false,
+    "prior_context": [
+      "198",
+      "216",
+      "217",
+      "218",
+      "219",
+      "220"
+    ],
+    "shared_filesystem": true,
+    "shared_account": true,
+    "independence_claim": false,
+    "human_peer_review": false,
+    "inbound_messages_during_audit": false
+  },
+  "actions": {
+    "scientific_execution": false,
+    "diagnostic_execution": false,
+    "lean": false,
+    "lake": false,
+    "oracle": false,
+    "tests": false,
+    "build": false,
+    "render": false,
+    "runtime": false,
+    "frozen_source_changes": false,
+    "other_chat_or_automation_access": false
+  },
+  "external_limits": {
+    "v11_page": "web tool Internal Error; inaccessible",
+    "v11_pdf_hash_and_grade_independently_authenticated": false,
+    "v1_220_history_independently_authenticated": false
+  },
+  "numerical_grade": null,
+  "pdf_grade": null,
+  "stars": null,
+  "prior_grade_inherited": false,
+  "output_representation": "UTF-8 without BOM, LF, final newline"
+}

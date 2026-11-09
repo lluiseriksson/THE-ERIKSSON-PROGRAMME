@@ -1,0 +1,95 @@
+{
+  "runtime_open_request": "2026-11-09T04:51:05Z",
+  "runtime_release_finished": "2026-11-09T04:55:28Z",
+  "type": "CPU high-memory, owned tep221-a-own-cpu",
+  "backend_readback": "[colab] No active sessions found on server.\n",
+  "backend_exit": "0",
+  "actual_exits": {
+    "allocation": "0",
+    "execution": "0",
+    "download": "0",
+    "release": "0"
+  },
+  "compute_units_billed": null,
+  "shared_runtime": false,
+  "new_contract_or_spend": false,
+  "renderer_report": {
+    "source_sha": "7822ac91245a8e79c304e595ca82b786283c3c92",
+    "source_inputs": {
+      "boundary-transfer.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/boundary-transfer.tex",
+        "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0"
+      },
+      "detour-separation.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/detour-separation.tex",
+        "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8"
+      },
+      "flat_critical_integrated.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/flat_critical_integrated.tex",
+        "sha256": "b33485504fdaf390b14fd3a56e85ff7b11108b358aec120a38df67887a050d6b"
+      },
+      "geometry-boundaries221.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/geometry-boundaries221.tex",
+        "sha256": "ee03c649af2bcc8cf22d4f152a68517d84795f7fab64a48451887c89f2b36e09"
+      },
+      "joint-binary.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/joint-binary.tex",
+        "sha256": "001f9e6d2ec168fac732baad166f8ab2dc876bab84b82c00b8df75385e532551"
+      },
+      "laminates-green.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/laminates-green.tex",
+        "sha256": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1"
+      },
+      "partial-invariance.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/partial-invariance.tex",
+        "sha256": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01"
+      },
+      "partition.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/partition.tex",
+        "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff"
+      },
+      "physical-cycle.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/physical-cycle.tex",
+        "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c"
+      },
+      "shells.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/shells.tex",
+        "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a"
+      },
+      "sobolev.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/sobolev.tex",
+        "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54"
+      },
+      "spatial-geometry.tex": {
+        "path": "papers/flat-coarse-rank/integrated-revision/revision221/spatial-geometry.tex",
+        "sha256": "3f6152b40718190276160977a3401f52ad910a5f150890c971be01c1a1bfd4f9"
+      }
+    },
+    "started_utc": "2026-11-09T04:51:43.415580+00:00",
+    "tool_exits": {
+      "apt-update": 0,
+      "apt-install": 0,
+      "tex-version": 0,
+      "poppler-version": 0,
+      "latex-first": 0,
+      "latex-second": 0,
+      "latex-final": 0,
+      "pdfinfo": 0,
+      "text": 0,
+      "render": 0
+    },
+    "compute_units_billed": null,
+    "formal_or_scientific_replay": false,
+    "tex_version": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)\nkpathsea version 6.3.5\nCopyright 2023 Han The Thanh (pdfTeX) et al.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the pdfTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the pdfTeX source.\nPrimary author of pdfTeX: Han The Thanh (pdfTeX) et al.\nCompiled with libpng 1.6.43; using libpng 1.6.43\nCompiled with zlib 1.3; using zlib 1.3\nCompiled with xpdf version 4.04\n",
+    "poppler_version": "pdftoppm version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n",
+    "pdfinfo": "Title:           Coarse information and finite rank obstructions for flat lattice Hodge forms\nSubject:         Finite weighted observations and rectangular constructions\nKeywords:        flat lattice, Hodge form, inverse moment, rectangular partition, laminate\nAuthor:          Lluis Eriksson\nCreator:         LaTeX with hyperref\nProducer:        pdfTeX-1.40.25\nCreationDate:    Mon Nov  9 00:00:00 2026 UTC\nModDate:         Mon Nov  9 00:00:00 2026 UTC\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           95\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       874664 bytes\nOptimized:       no\nPDF version:     1.5\n",
+    "layout_warnings": [],
+    "status": "RENDERED_PENDING_VISUAL_REVIEW",
+    "pages": 95,
+    "pdf_sha256": "a9c51109ac77831b12a22743fef38808020a7b6e761438a5d7fa12b8ee123903",
+    "pdf_bytes": 874664,
+    "finished_utc": "2026-11-09T04:53:50.166051+00:00",
+    "elapsed_seconds": 126.75057843399998,
+    "child_maxrss_kib": 127396
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "source_sha": "86c19e1bd5b18cfe39f6c53685489b0d7cc75a64",
+  "inputs": {
+    "boundary-transfer.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/boundary-transfer.tex",
+      "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0"
+    },
+    "detour-separation.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/detour-separation.tex",
+      "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8"
+    },
+    "flat_critical_integrated.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/flat_critical_integrated.tex",
+      "sha256": "1ef2117d05b6f894033a7995b1c23f51f430758312d3985564b857a0ffe093f2"
+    },
+    "geometry-boundaries221.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/geometry-boundaries221.tex",
+      "sha256": "96b49972afd82abe52e87db727efc85601303d220bcff4c986351afcc3a64055"
+    },
+    "joint-binary.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/joint-binary.tex",
+      "sha256": "001f9e6d2ec168fac732baad166f8ab2dc876bab84b82c00b8df75385e532551"
+    },
+    "laminates-green.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/laminates-green.tex",
+      "sha256": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1"
+    },
+    "partial-invariance.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/partial-invariance.tex",
+      "sha256": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01"
+    },
+    "partition.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/partition.tex",
+      "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff"
+    },
+    "physical-cycle.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/physical-cycle.tex",
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c"
+    },
+    "shells.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/shells.tex",
+      "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a"
+    },
+    "sobolev.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/sobolev.tex",
+      "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54"
+    },
+    "spatial-geometry.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision221/spatial-geometry.tex",
+      "sha256": "3f6152b40718190276160977a3401f52ad910a5f150890c971be01c1a1bfd4f9"
+    }
+  }
+}

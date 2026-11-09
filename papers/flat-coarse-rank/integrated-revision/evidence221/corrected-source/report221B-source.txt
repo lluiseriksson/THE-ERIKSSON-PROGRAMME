@@ -1,0 +1,115 @@
+BOUNDED CORRECTIVE-SOURCE CHECK221B
+Date: 2026-11-09
+Verdict: accept_with_limits for the corrective source delta.
+
+All five defects R1–R5 from the original221 rejection are corrected at the exact B commit. The changes are bounded and do not alter other proof arguments, constants, normalizations or scope. The additional Birman–Solomyak entry accurately identifies the existing comparison. The original rejection remains valid for A and is retained in full; it is not overwritten or retrospectively upgraded.
+
+1. Exact source referents and capture
+A, rejected source: 7822ac91245a8e79c304e595ca82b786283c3c92
+B, corrected source: 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64
+Repository: C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108
+Directory: papers/flat-coarse-rank/integrated-revision/revision221
+
+B root flat_critical_integrated.tex:
+ 150847 bytes
+ SHA-256 1ef2117d05b6f894033a7995b1c23f51f430758312d3985564b857a0ffe093f2
+B geometry-boundaries221.tex:
+ 18392 bytes
+ SHA-256 96b49972afd82abe52e87db727efc85601303d220bcff4c986351afcc3a64055
+
+Every A and B TeX file was captured from git show SHA:path via raw stdout BaseStream and WriteAllBytes, without normalization. All twelve B TeX blobs are LF with no CR bytes. The A geometry blob and raw exact Git diff preserve the original bare CR. Their hashes must not be described as normalized-LF hashes.
+Raw exact Git A-to-B diff:
+ exact-git-diff221A-B.diff
+ 4904 bytes
+ SHA-256 fe30af0ea289441578647b12daa0567cfcff1c700d67dcac9834490e2faff778
+
+All captures and reports are only under:
+ D:\Datos\the-eriksson-programme\autonomia\evidencia-221\source-audit-correction-b
+Manifest: capture-manifest221B.json
+Manifest SHA-256, UTF-8 LF without BOM:
+ 2e34cf3ae070d0c57e273522266b385ef7525bb4bb5f5676770b49e9be3409e3
+It contains25 Git captures (12A,12B,one diff), the twelve comparisons and hashes for four preserved context files.
+
+2. Original rejection and supplied response
+The complete original report was read again, not merely its five-point summary.
+Original-report221-source.txt is a byte-identical retained copy,18342 bytes,
+ SHA-256 beb980a237883b74c81c23e102308ec9f09abda6928c7a7fb0a3835994b05d8f.
+Original-audit221-source.json is likewise retained,6215 bytes,
+ SHA-256 d7f40329f407d00cb125c5d15faa51b902f4b532fc1e33ac81457aa84c28bf1d.
+The original files at source-audit were not modified.
+AUTHOR-RESPONSE221-source.json was read as context, not authority:
+ SHA-256 3dfc65af7ce93c2e1c810796ee04bc7062cc8f3fbcb0b33b01826c1b584d0ce5.
+Its two claimed corrected working-file hashes match the exact B Git blobs.
+The supplied bounded-corrections221A-to-B.diff is retained in raw bytes:
+ SHA-256 4a68d8fb97a5ac883f87e0e617b3125ea43b9d391877a93e28c573f5c666ce26.
+Its presentation/hunk headers differ from authoritative git diff output; the changes agree substantively. This verdict uses the actual commit comparison, not the supplied description.
+
+3. Factual model/context and execution boundary
+This is the same continuing /root/defect_plane198_audit task, with prior198/216/217/218/219/220/221A involvement, shared history/filesystem/account. It is not fresh, independent or blinded review, and not human peer review.
+Actually exposed description: Codex, an agent based on GPT-6. Exact hidden selected model/backend and reasoning effort are unknown.
+The complete previous report, full exact A-to-B diff, all changed passages and surrounding relevant context were checked. All twelve A/B source files were captured; ten unchanged files were compared directly byte-for-byte. This is a bounded corrective check relying on the prior full-source integration review for unchanged mathematics, not a new complete old-manuscript audit or novelty exercise.
+No inbound message arrived during the check. No source, branch or PR was changed. No other chat/automation was accessed. No scientific/diagnostic executable, mathematical Python, Lean, Lake, oracle, test, build, PDF render or runtime was executed. No numerical or PDF grade, stars or prior-grade inheritance is supplied.
+The assignment says renderA succeeded at95 pages and was superseded ungraded, runtimeA was released/inactive, and B rendering is separate. I did not inspect/render either PDF or authenticate runtime state here. Those facts are supplied context and do not determine this source verdict.
+
+4. Delta extent and unchanged sources
+The exact source-directory delta has only two files and17 insertions/9 deletions:
+ flat_critical_integrated.tex;
+ geometry-boundaries221.tex.
+All ten remaining files are byte-identical A-to-B:
+ boundary-transfer.tex; detour-separation.tex; joint-binary.tex;
+ laminates-green.tex; partial-invariance.tex; partition.tex;
+ physical-cycle.tex; shells.tex; sobolev.tex; spatial-geometry.tex.
+No hidden proof edits were found in the changed files: the hunks are the required statement/guard/text/citation/chronology fixes and the additional bibliography entry. This confirms the claimed boundedness within revision221; it does not recertify arbitrary unrelated repository files.
+
+5. R1 — corrected
+B geometry lines20–23 now explicitly state z in Z^D, a nonwrapping integer lattice, Omega as an integer-lattice set, and A_k={x in Z^D:||x-z||_infinity=k}.
+This restores the exact source218 hypothesis needed for L integer-radius layers to partition Omega and for shifted product faces to be integer rectangles. The half-integer-center counterexample from the rejection is excluded. The selection remains coefficient-only and the same selected shell works for every field; the constant and conditional penalty are unchanged.
+Disposition: R1 closed for B.
+
+6. R2 — corrected
+B geometry line161 now begins “For R>=2” before the final-half-axis ramp and its quotient.
+This restores the original219 guard, preventing the R=1 zero-field0/0 expression. The theorem can still allow s=1: the asymptotic ramp argument is restricted appropriately and the separate m_s=0/rank-vacuity explanation remains. No rank-nullity, signed-tent, count or matching-upper claim was altered.
+Disposition: R2 closed for B.
+
+7. R3 — corrected
+The supremum subscript on B geometry line245 now uses a proper text/nonconstant command. Direct byte checks show no CR anywhere in B geometry; the former bare0D plus m fragment is absent.
+The bound's mathematical meaning is restored, with the same scalar nonconstant-field restriction and unchanged constants. No render was needed or performed for this source-byte verification; this does not certify line fit or appearance.
+Disposition: R3 closed for B.
+
+8. R4 — corrected
+The bibliography's current-parent parenthetical now says version11, consistent with the opening, model context and authoritative chronology paragraph. The historical v8 reference/link remains historical.
+This fixes the internal contradiction. It does not independently authenticate the remote v11 PDF hash, score, page count or review record; the original external-provenance limitation remains.
+Disposition: R4 closed for B.
+
+9. R5 — corrected
+The new section now cites ads221 and explicitly identifies arXiv:1306.2521v5, Section3.1, Proposition3.5. The new root entry supplies the correct paper title/authors,2015 Annals publication details and2019 v5 arXiv version/link. It is distinct from the older ap:ads entry for arXiv:1312.5473v6.
+The arXiv primary metadata was consulted:
+ https://arxiv.org/abs/1306.2521v5
+It confirms the v5 revision date16 January2019 and journal reference Annals of Probability43(4),2015,1866–1891. The relevant Section3.1/Proposition3.5 text had already been read in the earlier source218 comparison. Thus the intended comparison is now traceable without silently referring to the other ADS paper.
+No external theorem becomes a premise of the finite face proof, and no priority/global claim was added.
+Disposition: R5 closed for B.
+
+10. Additional Birman–Solomyak citation — correct and bounded
+The existing comparison now cites birman221. The new entry identifies:
+ M.Sh.Birman and M.Z.Solomyak;
+ Piecewise-polynomial approximations of functions of the classes W_p^alpha;
+ Math.USSR-Sbornik2(3),1967,295–317;
+ DOI10.1070/SM1967v002n03ABEH002343.
+Primary Mathnet metadata at
+ https://www.mathnet.ru/eng/sm4132
+confirms the title, names, venue/year/volume/issue/pages and exact DOI. Direct opening of the DOI URL returned a web-tool access error, but the primary Mathnet page explicitly associates the same DOI; this is not evidence of an incorrect identifier.
+Sections1–2 and their adaptive partition/set-function context had already been consulted in the source218 review. The new entry supplies the missing explicit bibliographic connection; it does not import a zero-smoothness theorem, alter a proof assumption or establish novelty.
+No further objection was found in this added citation.
+
+11. What remains limited
+The original positive mathematical checks for the grouped218–220 proofs, normalizations/constants, original-start boundaries, rank obstruction and matching repair construction apply to their unchanged arguments. Their original accept-with-limits verdicts remain separate historical referents.
+The original221A verdict remains reject for A. This new acceptance is for corrected B's bounded source integration only. It is neither a retrospective pass of A nor an exact-PDF assessment.
+Earlier limits remain: no unrestricted full-domain partition/count solution; scalar witnesses not promoted to coexact/physical statements; originality/priority unestablished; historical service-side executions and v11 assessment provenance not independently reproduced here; no old grade transfers.
+A corrected render and actual exact-artifact assessment, if requested elsewhere, are separate work. This audit provides neither their outcome nor publication permission.
+
+12. Final disposition
+accept_with_limits for86c19e1bd5b18cfe39f6c53685489b0d7cc75a64 as the corrective source integration.
+R1,R2,R3,R4,R5 are all addressed; no new bounded-delta defect was found.
+The full rejection, original source bytes and corrected source bytes are retained.
+
+Report representation: UTF-8 without BOM, LF, final newline.

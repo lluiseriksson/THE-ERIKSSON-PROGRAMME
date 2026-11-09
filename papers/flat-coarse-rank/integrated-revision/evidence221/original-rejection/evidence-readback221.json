@@ -1,0 +1,29 @@
+[
+  {
+    "unit": 218,
+    "manifest_entries": 9,
+    "manifest_mismatches": [],
+    "stdout_byte_identical": true,
+    "normal_exit_raw": "0\n",
+    "optimized_exit_raw": "0\n",
+    "source_report_sha256": "238cbe9584e36b0a3ccc62a293995479bdd55647767e9892a7e1ed002799191c"
+  },
+  {
+    "unit": 219,
+    "manifest_entries": 9,
+    "manifest_mismatches": [],
+    "stdout_byte_identical": true,
+    "normal_exit_raw": "0\n",
+    "optimized_exit_raw": "0\n",
+    "source_report_sha256": "c1cf13dc3d81d509679c68ff6d174f8d8e83342f20a3cd6bcebf1751cac3fb05"
+  },
+  {
+    "unit": 220,
+    "manifest_entries": 9,
+    "manifest_mismatches": [],
+    "stdout_byte_identical": true,
+    "normal_exit_raw": "0\n",
+    "optimized_exit_raw": "0\n",
+    "source_report_sha256": "1e1359b06813050754d2fd448b18edf6721aee2fcd6b176c5e26963bd1a0f8d2"
+  }
+]

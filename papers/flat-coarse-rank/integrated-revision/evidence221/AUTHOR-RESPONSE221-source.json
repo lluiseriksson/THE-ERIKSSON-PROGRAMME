@@ -1,0 +1,18 @@
+{
+  "rejected_source": "7822ac91245a8e79c304e595ca82b786283c3c92",
+  "original_report_sha256": "beb980a237883b74c81c23e102308ec9f09abda6928c7a7fb0a3835994b05d8f",
+  "disposition": "All R1-R5 corrected before first numerical exact-PDF review; original source, rejection and ungraded renderA preserved. Exact corrected source needs bounded-delta source check and actual new renderB.",
+  "additional_edit": "Add exact primary Birman-Solomyak bibliography link for existing comparison; no proof change.",
+  "numerical_grades_requested": 0,
+  "corrections": {
+    "R1": "Explicit integer lattice, integer center and shell set",
+    "R2": "R>=2 guard before nonzero ramp quotient",
+    "R3": "Replace literal CR with proper text subscript",
+    "R4": "Current immediate predecessorv11, historicalv8 unchanged",
+    "R5": "Exact ADS1306.2521v5 citation distinct from old1312.5473v6"
+  },
+  "corrected_working_files": {
+    "geometry-boundaries221.tex": "96b49972afd82abe52e87db727efc85601303d220bcff4c986351afcc3a64055",
+    "flat_critical_integrated.tex": "1ef2117d05b6f894033a7995b1c23f51f430758312d3985564b857a0ffe093f2"
+  }
+}
