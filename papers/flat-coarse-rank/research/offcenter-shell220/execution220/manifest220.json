@@ -1,0 +1,11 @@
+{
+  "normal.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+  "optimized.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+  "normal.stdout.json": "3b0c9d6541f6a2d69fd57566b5b6d28b463f676e6023047ae86680a41da7954d",
+  "report220.json": "433d24e498906efe18f36bdef2ca4bfe70aa9efaa5a49f6432ae1312f93ec024",
+  "optimized.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "normal.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "offcenter_shell_diagnostic220.py": "ec80c950ea2457f706c054989000379e1f326b5efb7fc96b389736b4c9a0aee0",
+  "optimized.stdout.json": "3b0c9d6541f6a2d69fd57566b5b6d28b463f676e6023047ae86680a41da7954d",
+  "2026-11-09_offcenter-shell220.txt": "286577395ab9d13e2e75a010d764c9d926b0dd6601e8b1afef6599b8885578c3"
+}

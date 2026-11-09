@@ -1,0 +1,36 @@
+{
+  "archive_sha256": "9486d9bb6044e6a82397c54effcdec7c970133478fd6d83c965a4c111a5de4f7",
+  "bytes": 10963,
+  "source_sha": "0c79cd67a002c24a305b70cf707c420aa1bd9ae3",
+  "manifest_all_members_verified": true,
+  "stdout_sha256": "3b0c9d6541f6a2d69fd57566b5b6d28b463f676e6023047ae86680a41da7954d",
+  "report": {
+    "source_sha": "0c79cd67a002c24a305b70cf707c420aa1bd9ae3",
+    "started_utc": "2026-11-09T04:34:09.017118+00:00",
+    "billed_units": null,
+    "exits": {
+      "normal": 0,
+      "optimized": 0
+    },
+    "status": "FINITE_DIAGNOSTICS_CHECKED",
+    "finished_utc": "2026-11-09T04:34:12.699974+00:00",
+    "elapsed_seconds": 3.6829362370000354,
+    "child_maxrss_kib": 106352
+  },
+  "finite_checks": {
+    "closed_profile_checks": 6,
+    "dimension": 3,
+    "fields": 20,
+    "filled_cube_checks": 5,
+    "full_profile_checks": 5,
+    "geometries": 4,
+    "negative_controls_rejected": 3,
+    "root_checks": 120,
+    "scope": "Unweighted small shapes and one full weighted grid plus closed-count/1D product formulas; no enormous-grid, all-size, formal, coexact or full-domain counterexample claim.",
+    "slab_checks": 120,
+    "status": "FINITE_RATIONAL_DIAGNOSTICS_CHECKED",
+    "transcript_sha256": "55fbea74276e54ec07023d690541ac6e42cec06ef89143dfb96673f8ac8aeb8f",
+    "transport_checks": 200
+  },
+  "no_formal_or_full_domain_counterexample": true
+}

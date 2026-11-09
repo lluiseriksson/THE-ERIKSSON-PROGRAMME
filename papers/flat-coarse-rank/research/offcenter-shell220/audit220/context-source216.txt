@@ -1,0 +1,200 @@
+INTRINSIC SHELL216: LOWER INVERSE MOMENT WITH OPTIMAL THICKNESS COST
+Analytical supplement to shell205, not a separate paper. 2026-11-09.
+
+0. Question, inventory and boundary
+The sole main question remains the unrestricted critical rectangular
+partition question recorded in Section27 of the existing dossier. This
+note tests its local shell mechanism; it opens no second main question.
+205 already proves the shell bound with inverse moment D/2 and uniform
+thickness constant. We do not re-count that theorem or its proof.
+The distinct result here lowers the local moment to (D-1)/2, paying a
+derived, necessary thickness factor. No selection/count theorem follows.
+The falsifier for the proposed local improvement is a shell/field/positive
+starting-site weight violating (1). A second falsifier tests whether its
+thickness factor can be deleted. We settle that second test negatively.
+Abandon this mechanism on a valid counterexample; do not modify a judge
+after failure. Main neutral-ancestor/boundary-additivity routes stay stopped.
+
+1. Statement and conventions
+Let D>=3, d=D-1, p=d/2, q=2d/(d+2), J=2D. In counting measure put
+ A=([-R,R] intersect Z)^D minus ([-r,r] intersect Z)^D,
+ R>=1, 0<=r<R integers, t=R-r, L=2R+1, N=|A|.
+For a real field f and arbitrary positive a:A->(0,infinity), define
+ V_A(f)=sum_A |f-mean_A(f)|^2,
+ E_a,A(f)=sum_(x,x+e_i in A) a(x)|f(x+e_i)-f(x)|^2.
+Edges are internal, positive-axis oriented, counted ONCE. Coefficients
+are the ORIGINAL starting-site coefficients. No outside energy or weights.
+Then, with a finite explicit dimension-only C_D,
+
+ V_A(f) <= C_D (sum_A a^(-p))^(1/p) E_a,A(f)                 (1)
+        <= C_D J^(2/d) L^2 t^(2/d)
+                       [mean_A a^(-p)]^(1/p) E_a,A(f).
+
+The first line is the stronger volume form. Both hold for every t>=1,
+including t=1 and r=0. They are for the nonwrapping concentric integer
+shell only. Translation changes nothing; off-center/multiple holes and
+wrapping identifications are not covered.
+For any parameter mu>0, an ACTUAL LOCAL bound
+ mean_A (mu/a)^p <= M_A
+therefore gives V_A <= C_D J^(2/d) L^2 t^(2/d) M_A^(1/p) E_a,A/mu.
+This is not inferred from an ambient moment by relabeling it as local.
+
+Constants: c_d=d(1-2^(-1/d)). For d=2 take K_2=2. For d>=3 put
+ alpha_d=2(d-1)/d, qstar=2d/(d-2),
+ K_d=2 alpha_d d^(1/qstar)/c_d.
+Set B_d=max(K_d^2,1), S_D=J(B_d+16), C_D=S_D D^(2/d).
+In particular S_3=120, C_3=360 and the normalized second-line coefficient
+is 2160. These constants are upper bounds, not claimed optimal.
+
+2. Existing cube lemma and the d=2 endpoint
+For a d-dimensional L-site cube Q and counting norms,
+ V_Q(g) <= K_d^2 (sum_(internal Q edges)|dg|^q)^(2/q).       (2)
+For d>=3 this is exactly the already-proved cube theorem in
+ papers/flat-coarse-rank/integrated-revision/revision202/sobolev.tex,
+commit 8262c72573387d44d82359636f65ec635449a131, with its dimension
+variable replaced by d. Its finite entropy/projection, relative EDGE
+isoperimetry, coarea/median and power-Holder proof is the dependency,
+not a new premise or new result here. Only its cube theorem is used;
+no aspect-ratio reflection or weighted extension is required.
+
+For d=2, that same finite projection argument gives
+ |boundary_E U| >= (2-sqrt(2)) |U|^(1/2) >= (1/2)|U|^(1/2)
+when |U|<=|Q|/2. The second inequality follows from sqrt(2)<=3/2.
+For nonnegative v supported on at most half Q, finite coarea and the
+triangle inequality in l2 give ||v||_2 <= 2 sum_edges |dv|.
+Split g at a counting median into v_+ and v_-. Each support is at most
+half Q and edgewise |dv_+|+|dv_-|=|dg|. Thus
+ V_Q(g) <= ||g-median(g)||_2^2
+ <=4[(sum|dv_+|)^2+(sum|dv_-|)^2] <=4(sum|dg|)^2.
+This proves (2) with q=1,K_2=2 without importing a false qstar=infinity
+power argument. For an L=1 cube the variance is zero.
+
+3. Slab lemma: one short direction, d long directions
+Let B=Q_L^d times {1,...,t}, with 1<=t<=L. Write m_z for the mean
+of f in its z-th d-cube layer, T for total q-energy in long directions,
+and U for total q-energy in the short direction. The exact orthogonal
+variance decomposition is
+ V_B(f)=sum_z V_Q(f_z) + L^d sum_z |m_z-mean_z(m)|^2.
+By (2) and 2/q>=1, its first term is <=K_d^2 T^(2/q).
+For any t-site sequence m, all point differences are at most
+ t^(1-1/q)(sum|dm|^q)^(1/q). Jensen at its arithmetic mean implies
+ sum_z |m_z-mean(m)|^2 <= t^(3-2/q)(sum|dm|^q)^(2/q).
+For t=1 this term is zero. Jensen across each L^d-point layer gives
+ sum|dm|^q <= L^(-d) U.
+Consequently the second term is bounded by
+ L^(d-2d/q) t^(3-2/q) U^(2/q)
+ = L^(-2) t^(2-2/d) U^(2/q) <= U^(2/q),
+because t<=L and d>=2. Hence
+ V_B(f) <= B_d (T+U)^(2/q).                              (3)
+Every slab below has precisely this geometry. All edges used in (3)
+belong to the slab. A zero short-direction energy for t=1 is allowed.
+
+4. Shell mean transport, independently of overlap-error gluing
+Use the J slabs S_(i,+) with x_i in[r+1,R] and S_(i,-) with
+x_i in[-R,-r-1], all other coordinates in[-R,R]. They cover A and
+have v=t L^d vertices. Distinct normals intersect in t^2 L^(d-1)
+points. Root at (1,+), attach the J-2 other-normal slabs to it, then
+attach (1,-) to (2,+). Every root path has at most two edges, all
+joining distinct normals. This is valid also at t=1,R=1.
+
+For an L-site interval I, a nonempty subinterval T0 and any g,
+ |mean_I(g)-mean_T0(g)|^q <= L^(q-1) sum_I |dg|^q.
+Indeed average the point differences over I times T0, apply Jensen and
+the path Holder inequality of at most L-1 edges. The factor |T0|
+cancels in that average; no inverse-overlap-volume factor survives.
+For B=I times F, Jensen over the SAME fibers gives
+ |mean_B(f)-mean_(T0 times F)(f)|
+ <= L^(1-1/q)|F|^(-1/q) ||directional df||_q.
+For each side of a tree-edge slab intersection |F|=t L^(d-1).
+Thus, defining G=(sum_(edges internal A)|df|^q)^(1/q),
+ H=L^(1-d/q)t^(-1/q)=L^(-d/2)t^(-1/q),
+each slab mean differs from the intersection mean by at most H G.
+Each tree-edge mean difference is at most 2HG, and each slab mean
+differs from the root mean by at most 4HG. Importantly,
+ v H^2 = t^(1-2/q)=t^(-2/d)<=1.                         (4)
+
+5. Unweighted shell inequality, then original weights
+Use the root mean as a candidate constant, then the slab cover and
+the EXACT decomposition about each slab mean (no extra factor two):
+ V_A(f) <=sum_i [V_Si(f)+v|mean_Si(f)-mean_root(f)|^2]
+ <=J B_d G^2 +16J vH^2 G^2 <= S_D G^2.                 (5)
+Each individual slab energy is <= the full shell energy. This avoids
+assuming disjoint slabs, adding independent optimal extensions, or a
+uniform best-constant overlap gluing theorem, all of which have separate
+scope restrictions/counterexamples in the earlier dossier.
+
+For each original retained edge b_e=a(start(e)), Holder gives
+ G^2 <= (sum_e b_e|df|^2) (sum_e b_e^(-p))^(1/p),
+since q/(2-q)=p. At most D edges start at any site, so
+ sum_e b_e^(-p) <= D sum_A a^(-p).
+Combine with (5) to prove the first line of (1).
+The cover gives N<=JtL^d, which proves its second line. All selections
+and constants are independent of f and a. Finite real vector fields
+follow coordinatewise with the same coefficient factor; no assertion
+about physical coexact subspaces or other observations follows.
+
+6. Sharp power losses: an actual starting-site counterexample
+These examples show two different obstructions to stronger versions.
+Fix any p0>0, the same shell, and x0=(R,R,0,...,0). All D vertices
+x0-e_i are in A and distinct. Let W={x0,x0-e_1,...,x0-e_D}, h=D+1,
+ epsilon=(h/N)^(1/p0), a=epsilon on W and a=1 elsewhere.
+Here N>=3^D-1>=2h, so 0<epsilon<1. Directly,
+ mean_A a^(-p0)=2-h/N<2.
+For f=indicator_{x0}, V_A=(N-1)/N>=1/2. There are exactly 2D-2
+retained incident edges at x0: D incoming and D-2 outgoing. Every
+one has starting coefficient epsilon. Thus
+ E_a,A(f)=(2D-2)epsilon,
+ V_A/E_a,A >= [4(D-1)]^(-1) (N/h)^(1/p0).              (6)
+The weakening of incoming STARTING SITES is essential; weakening x0
+alone would leave order-one incoming energy and would not prove (6).
+
+The exact volume N=L^D-(L-2t)^D satisfies
+ 2t L^d <= N <= 2Dt L^d.
+The lower bound uses the two disjoint coordinate-1 slabs, and the upper
+bound the J-slab cover. At p0=d/2, (6) therefore has order
+ L^2 t^(2/d), with dimension-only upper/lower factors. Since its local
+p0-moment stays below two, the t^(2/d) power in the second line of (1)
+cannot be reduced uniformly over L,t and positive site weights.
+For any proposed smaller power beta<2/d, take R->infinity,r=0, so
+t=R->infinity: the ratio of the necessary factor to L^2 t^beta diverges.
+For t=1 fixed and p0<d/2, N>=2L^d and (6)/L^2 grows as
+ L^(d/p0-2). Thus the exponent p=d/2 is the lowest possible for a
+uniform L^2 times normalized p-moment bound even on thickness-one shells.
+This is sharpness of powers, not of the constants above.
+
+These counterexamples can obey the actual mean comparability convention:
+put a_tilde=a/epsilon, mu=mean_A a_tilde. Then
+ 1<=a_tilde<=1/epsilon<=2mu,
+ mean_A (mu/a_tilde)^p0=(mean_A a)^p0 mean_A a^(-p0)<2.
+Their indicator energy is exactly 2D-2. However, for p0=d/2 their
+normalized D/2 moment grows unbounded with N. They are NOT a counterexample
+to the original GLOBAL D/2-moment rectangular-partition question, and
+the shell is not itself a rectangular partition. No finite-penalty
+observation conclusion is claimed.
+
+7. Attribution, verification and use
+The projection/coarea/power Sobolev ingredients, variance decomposition
+and conductance Holder step are classical. Primary comparison read:
+Andres--Deuschel--Slowik, arXiv:1312.5473v6, Section2.2, Eq(2.9) and
+Proposition2.4, https://arxiv.org/html/1312.5473v6 . Their graph theorem
+has its own isoperimetry/boundary assumptions, not a ready-made proof of
+our particular shell geometry. We derive that geometry explicitly above.
+No general-method novelty, first-priority result, human peer review or
+physical relevance is asserted. The finite isolated-site test itself is
+a classical sharpness mechanism. This is a stronger local input in the
+same existing shell dossier, not a paper made from a small corollary.
+
+The all-D analytical proof is distinct from finite diagnostic checks.
+The companion diagnostic tests actual shell edges/starting coefficients,
+slab variance, fiber mean transport, the D=3 q=1 inequality, exact
+isolated-site formulas and the missing-incoming-site negative control.
+It is not an exhaustive all-field/all-D proof or a Lean certificate.
+No previous exact-PDF assessment or stars transfer to these new bytes.
+
+Next: obtain a separate frozen-source mathematical audit before manuscript
+integration. Then test a coefficient-derived selection of thin shells
+using the proved p=(D-1)/2 input; derive local moments/count and the
+annular-to-disjoint-rectangle conversion rather than supplying them.
+The original sole question remains OPEN; its three-unit stopped-route
+counter is not reset by this local result or publication work.
+PR29 remains20/41,TermSource0. Continuum Yang--Mills remains open.

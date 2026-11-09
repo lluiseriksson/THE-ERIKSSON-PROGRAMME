@@ -1,0 +1,44 @@
+[
+  {
+    "spec": "0c79cd67a002c24a305b70cf707c420aa1bd9ae3:papers/flat-coarse-rank/research/2026-11-09_offcenter-shell220.txt",
+    "file": "source220.txt",
+    "bytes": 11692,
+    "sha256": "286577395ab9d13e2e75a010d764c9d926b0dd6601e8b1afef6599b8885578c3",
+    "contains_cr": false
+  },
+  {
+    "spec": "0c79cd67a002c24a305b70cf707c420aa1bd9ae3:scripts/offcenter_shell_diagnostic220.py",
+    "file": "offcenter_shell_diagnostic220.py",
+    "bytes": 7470,
+    "sha256": "ec80c950ea2457f706c054989000379e1f326b5efb7fc96b389736b4c9a0aee0",
+    "contains_cr": false
+  },
+  {
+    "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/sobolev.tex",
+    "file": "dependency-sobolev217.tex",
+    "bytes": 9493,
+    "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+    "contains_cr": false
+  },
+  {
+    "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/partition.tex",
+    "file": "dependency-partition217.tex",
+    "bytes": 12856,
+    "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+    "contains_cr": false
+  },
+  {
+    "spec": "625bd50110799561511b40ee2ed426e983eed4be:papers/flat-coarse-rank/research/2026-11-08_shell-moment205.txt",
+    "file": "context-source205.txt",
+    "bytes": 8909,
+    "sha256": "423c38cd9e5d7f300b318fdd362dc47a726d9db87972e2257c4fffb0b9a47b1d",
+    "contains_cr": false
+  },
+  {
+    "spec": "8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337:papers/flat-coarse-rank/research/2026-11-09_intrinsic-shell216.txt",
+    "file": "context-source216.txt",
+    "bytes": 10954,
+    "sha256": "9d22d01608893991411c52c696c2ee2d8ab342e0d5b18e371846681100af7198",
+    "contains_cr": false
+  }
+]
