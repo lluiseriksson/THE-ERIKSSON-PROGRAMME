@@ -42,19 +42,11 @@ def fold(t,length):
     r=t%(2*length)
     return r if r<length else 2*length-1-r
 
-def folding(part,k):
+def fold_check(part,k,normal,f):
+    # Keep both tangential axes, including singleton sides at k=1.
     # Geometry and actual edge preimages only; no weights are reflected.
     axes=[sorted({x[i] for x in part}) for i in range(3)]
-    varying=[i for i in range(3) if len(axes[i])>1]
-    # Include singleton tangential dimensions: the normal is first fixed
-    # coordinate at +/-k relative to its center, so identify via face length.
-    # At k=1 several sides can be singleton; use a direct 3D cube fold with
-    # the normal kept singleton, inferred from the first coordinate fixed
-    # at its extreme below in the caller's explicit normal index.
-    return axes
-
-def fold_check(part,k,normal,f):
-    axes=folding(part,k); tangent=[i for i in range(3) if i!=normal]
+    tangent=[i for i in range(3) if i!=normal]
     cube=set(product(range(2*k+1),repeat=2));mapped={}
     for t in cube:
         x=[axes[i][0] for i in range(3)]
@@ -101,7 +93,7 @@ def main():
                     r=tuple(a-b for a,b in zip(x,z))
                     if field==0:return 1
                     if field==1:return r[1]
-                    if field==2:return (-1)**sum(r)
+                    if field==2:return 1 if sum(r)%2 else -1
                     if field==3:return int(x==min(A))
                     return sum((j+1)*v*v for j,v in enumerate(r))%11-5
                 f={x:value(x) for x in A};totalV=F(0);totalE=F(0)
