@@ -1,0 +1,11 @@
+{
+  "primary_url": "https://arxiv.org/html/1511.03971",
+  "version": "1511.03971v1",
+  "author": "Yuri Brudnyi",
+  "locations": "Appendix I,Theorem I.1 and initial dyadic/positive-distance assumptions",
+  "finding": "The theorem concerns a dyadic subcube strictly inside its outer cube; source220 uses a shifted near-boundary integer hole that is not that dyadic subcube. No counterexample to the cited covering theorem or weighted adapter is claimed.",
+  "formal_correctness": "Analytical source plus full source audit and owned Colab finite fixtures pending; no Lean certification",
+  "originality": "Unestablished; classical finite tents,variance,Sobolev/Holder,directional means; limited primary comparison only",
+  "relevance": "Tests whether original critical moment alone permits removing centering/clearance control from an actual annular gap; distinguishes full ambient domain",
+  "statistics_queried": false
+}

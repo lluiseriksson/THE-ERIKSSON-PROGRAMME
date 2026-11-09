@@ -1,0 +1,1 @@
+Historical unreviewed drafts, not accepted theorems. V1 incorrectly describes the restored normal edge as strong/incoming. V2 explicitly corrects it before source220 freeze. The exact corrected Eq9 and its negative control are validated separately. The source auditor did not independently authenticate these draft histories. No execution or grade is inherited from them.

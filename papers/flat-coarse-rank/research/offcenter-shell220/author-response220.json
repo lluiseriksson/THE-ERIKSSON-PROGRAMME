@@ -1,0 +1,30 @@
+{
+  "audited_source_sha": "0c79cd67a002c24a305b70cf707c420aa1bd9ae3",
+  "full_original_report_sha256": "1e1359b06813050754d2fd448b18edf6721aee2fcd6b176c5e26963bd1a0f8d2",
+  "verdict": "accept_with_limits",
+  "source_or_diagnostic_changed_after_audit": false,
+  "all_limits_retained": true,
+  "context": {
+    "exposed_model": "Codex, an agent based on GPT-6",
+    "exact_hidden_model": "unknown",
+    "backend": "unknown",
+    "reasoning_effort": "unknown",
+    "task": "/root/defect_plane198_audit",
+    "fresh_context": false,
+    "prior_audits": [
+      "198",
+      "216",
+      "217",
+      "218",
+      "219"
+    ],
+    "shared_filesystem": true,
+    "shared_account": true,
+    "independence_claim": false,
+    "human_peer_review": false,
+    "inbound_messages_during_audit": false
+  },
+  "numerical_or_PDF_grade": null,
+  "new_paper_or_deposit": false,
+  "prior_grade_inherited": false
+}

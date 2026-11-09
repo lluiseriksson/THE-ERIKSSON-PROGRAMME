@@ -1,0 +1,113 @@
+{
+  "verdict": "accept_with_limits",
+  "date": "2026-11-09",
+  "source": {
+    "commit": "0c79cd67a002c24a305b70cf707c420aa1bd9ae3",
+    "path": "papers/flat-coarse-rank/research/2026-11-09_offcenter-shell220.txt",
+    "bytes": 11692,
+    "sha256": "286577395ab9d13e2e75a010d764c9d926b0dd6601e8b1afef6599b8885578c3"
+  },
+  "diagnostic": {
+    "path": "scripts/offcenter_shell_diagnostic220.py",
+    "bytes": 7470,
+    "sha256": "ec80c950ea2457f706c054989000379e1f326b5efb7fc96b389736b4c9a0aee0",
+    "executed": false,
+    "review": "static analytical reading only",
+    "expected_counters": {
+      "geometries": 4,
+      "fields": 20,
+      "slab_checks": 120,
+      "transport_checks": 200,
+      "root_checks": 120,
+      "full_profile_checks": 5,
+      "filled_checks": 5,
+      "closed_profiles": 6,
+      "negative_controls": 3
+    },
+    "full_profile_checks_meaning": "five fields on one full weighted geometry/profile at L=8,s=2",
+    "U1000_control": "finite regression only; all-constant failure proved separately",
+    "assert_dependent_acceptance": false,
+    "execution_certified": false
+  },
+  "representation": "Exact UTF-8 Git-LF; no normalization; no CR",
+  "capture": "git show SHA:path; raw stdout BaseStream; WriteAllBytes",
+  "capture_manifest_sha256": "eb88c800b10be7ba25c7551894959f3b786e9a18a97dfd76b59d456eecfaee9e",
+  "dependencies": {
+    "revision217_commit": "2c881a5e8f31cad5643a49cb205fe8eb3156955d",
+    "sobolev_sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+    "partition_sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+    "source205_commit": "625bd50110799561511b40ee2ed426e983eed4be",
+    "source205_sha256": "423c38cd9e5d7f300b318fdd362dc47a726d9db87972e2257c4fffb0b9a47b1d",
+    "source216_commit": "8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337",
+    "source216_sha256": "9d22d01608893991411c52c696c2ee2d8ab342e0d5b18e371846681100af7198"
+  },
+  "checks": {
+    "actual_mass": "valid S=2^(D-1)+(N-w)/Q^D",
+    "mean_envelope": "valid",
+    "original_critical_moment": "1<=M_a<2(1+2^(D-1))",
+    "product_tent": "exact formulas valid",
+    "all_original_starts": "accounted for; no annular interface dropped",
+    "all_constant_offcenter_falsifier": "valid",
+    "mixed_slab_geometry": "actual cover valid",
+    "root_path_volumes": "descendant at most all ancestor volumes",
+    "mean_transport_constant": "8Q^2Z valid",
+    "upper_constant": "B_D=25(2D)(1+16D)",
+    "B3": 7350,
+    "best_poincare_order": "Theta_D(s^2)",
+    "filled_edge_guard": "EX=Ea+A norm^2, not H norm^2",
+    "full_cube": "one-row solution with c_X=1/[64D^2(1+2^(D-1))]"
+  },
+  "load_bearing_errors": [],
+  "minor_corrections": [],
+  "limitations": [
+    "specific unconditional offcenter extension only",
+    "not full-domain rectangle counterexample",
+    "not source218 falsifier",
+    "scalar witnesses not coexact",
+    "no physical/continuum conclusion",
+    "no execution certification",
+    "v1 chronology/preservation not independently authenticated",
+    "no exhaustive novelty verdict",
+    "no numerical/PDF grade or stars"
+  ],
+  "context": {
+    "exposed_model": "Codex, an agent based on GPT-6",
+    "exact_hidden_model": "unknown",
+    "backend": "unknown",
+    "reasoning_effort": "unknown",
+    "task": "/root/defect_plane198_audit",
+    "fresh_context": false,
+    "prior_audits": [
+      "198",
+      "216",
+      "217",
+      "218",
+      "219"
+    ],
+    "shared_filesystem": true,
+    "shared_account": true,
+    "independence_claim": false,
+    "human_peer_review": false,
+    "inbound_messages_during_audit": false
+  },
+  "actions": {
+    "scientific_execution": false,
+    "diagnostic_execution": false,
+    "tests": false,
+    "resampling": false,
+    "lean": false,
+    "lake": false,
+    "oracle": false,
+    "build": false,
+    "render": false,
+    "runtime": false,
+    "source_or_pr_edits": false,
+    "other_chat_or_automation_access": false
+  },
+  "primary_context": "https://arxiv.org/html/1511.03971",
+  "numerical_grade": null,
+  "pdf_grade": null,
+  "stars": null,
+  "prior_grade_inherited": false,
+  "output_representation": "UTF-8 without BOM, LF, final newline"
+}

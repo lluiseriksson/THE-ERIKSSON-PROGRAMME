@@ -1,0 +1,154 @@
+SHELL205: CRITICAL INVERSE-MOMENT ENERGY CONTROL ON INTEGER SHELLS
+2026-11-08. Same research dossier as201B/203/203B/204; no new paper.
+
+1. Inventory, scope and theorem
+The single main question remains the coefficient-only critical rectangle
+partition problem. The local scalar shell mechanism is tested here.
+204 proved direct unweighted energy control uniform in thickness;203B's
+actual thin-shell local-error gluing obstruction remains valid. The
+unweighted critical Sobolev estimate on arbitrary rectangles is ALREADY
+proved in revision202/sobolev.tex and is NOT a new result of this note.
+We reuse that proved estimate to derive a shell result and never assume
+a pointwise coefficient bound comparable to the mean.
+
+Let D>=3, p=D/2, q=2D/(D+2), J=2D. Let R>=1 and0<=r<R be integers,
+t=R-r, L=2R+1, and A=([-R,R] intersect Z)^D minus([-r,r] intersect Z)^D.
+Set N=|A|>0. Every field f:A->R and every positive coefficient a:A->(0,infty)
+satisfy
+ V_A(f) <= C_D L^2 [(1/N)sum_(x in A)a(x)^(-p)]^(1/p) E_a,A(f), (1.1)
+where V_A is squared counting distance to its arithmetic mean, and
+ E_a,A=sum_(x,x+e_j in A) a(x)|f(x+e_j)-f(x)|^2.
+Only internal positive-axis edges are retained, each once, with their
+ORIGINAL starting-site coefficient. No torus wrapping or outside energy.
+C_D is finite and depends only on D; an explicit derived value is below.
+No condition on thickness, contrast or pointwise mean-scale minimum appears.
+All selections in the proof are fixed independently of f and a.
+
+2. Exact existing box dependency and constants
+Dependency: papers/flat-coarse-rank/integrated-revision/revision202/sobolev.tex
+at commit8262c72573387d44d82359636f65ec635449a131, full section entitled
+'A finite proof of the critical rectangle estimate'. Its displayed
+rectangle-unweighted-derived theorem states, for every integer product box
+B with v vertices and all coordinate lengths<=L,
+ V_B(f)<= A_D L^2 v^(-2/D) (sum_(e internal B)|df(e)|^q)^(2/q). (2.1)
+The dependency defines
+ alpha=2(D-1)/D, c_D=D(1-2^(-1/D)), q'=2D/(D-2),
+ K_D=2 alpha D^(1/q')/c_D,
+ A_D=K_D^2 2^D 3^(2D/q+2).
+It derives finite projection by entropy, relative edge isoperimetry,
+layer-set/median Sobolev and power Holder, and endpoint-repeating reflection
+with actual preimage multiplicities for every box aspect ratio. Thus(2.1)
+is a proved existing lemma with a pinned proof, NOT a new input field or an
+unverified shell extension theorem. Singleton coordinate sides are covered.
+Its all-singleton case has zero variance. No weighted reflection is used.
+Our shell slabs below have at least one long side L>=3, so no degenerate
+all-singleton exception arises. Reproducing this box proof would duplicate
+an already closed manuscript result and is deliberately avoided.
+
+3. Actual shell cover and fixed tree
+Use slabs S_(j,+)={x in[-R,R]^D:x_j in[r+1,R]},
+S_(j,-)={x in[-R,R]^D:x_j in[-R,-r-1]}, on integer points.
+They cover A; each has v=t L^(D-1)>0 vertices and is a product box.
+N<=Jv because it is a cover. Slabs of distinct coordinates overlap in
+t^2 L^(D-2)>0 points. Root at(1,+), attach all J-2 slabs of coordinates
+other than1, and attach(1,-) to(2,+). This is a spanning tree of depth<=2.
+Each tree edge joins distinct restricted coordinates. The construction is
+valid at r=0,R=1 and t=1; translations preserve it, off-center holes and
+wrapping identifications are outside the theorem.
+
+4. Mean transport in the q-energy norm, with no overlap loss
+For a field g on an L-site interval I and nonempty T subset I, Jensen and
+Holder along the interval path yield
+ |mean_I(g)-mean_T(g)|^q
+ <= (1/(L|T|))sum_(i in I,k in T)|g(i)-g(k)|^q
+ <= L^(q-1) sum_(interval edges)|dg|^q.                (4.1)
+Every path uses at most L-1 edges; replacing its sum by all interval edges
+only enlarges it. Averaging cancels L|T|, without a factor1/|T| left over.
+For a product box B=I times F with w=|F| fibers, Jensen across the SAME
+fibers gives
+ |mean_B(f)-mean_(T times F)(f)|^q
+ <= L^(q-1)/w sum_(directional edges of B)|df|^q.      (4.2)
+
+Write m_i for the mean on slab S_i, and F_i=sum_(edges in S_i)|df|^q.
+For neighboring slabs in the fixed tree, their intersection is obtained
+from each by restricting ONE long coordinate of L sites to t sites, with
+the other coordinate intervals unchanged. Hence w=v/L in(4.2). Their
+actual intersection mean is identical from either side, proving
+ |m_i-m_j| <= L v^(-1/q)(F_i^(1/q)+F_j^(1/q)).         (4.3)
+No inverse-overlap volume or local-error gluing estimate is invoked.
+
+5. Unweighted shell Sobolev derived before weighting
+Put H=sum_i F_i and F_A=sum_(internal edges of A)|df|^q. Each F_i<=H.
+By(4.3) a tree edge mean difference is at most2 L v^(-1/q) H^(1/q).
+Every root path has at most2 edges, so
+ |m_i-m_root|<=4 L v^(-1/q) H^(1/q).                  (5.1)
+Use the root mean as a candidate constant on the shell, the cover, and
+the exact decomposition about each local mean:
+ V_A(f)<=sum_i[V_Si(f)+v|m_i-m_root|^2]
+ <= L^2 v^(-2/D)[A_D sum_i F_i^(2/q)+16J H^(2/q)]
+ <= (A_D+16J)L^2 v^(-2/D) H^(2/q).                  (5.2)
+Here1-2/q=-2/D, and sum_i F_i^(2/q)<=H^(2/q) since2/q>=1.
+Every slab-internal edge belongs to A; every A-edge belongs to at most J
+slabs. Thus H<=J F_A. Also N<=Jv gives v^(-2/D)<=J^(2/D) N^(-2/D).
+Consequently
+ V_A(f)<= B_D L^2 N^(-2/D) F_A^(2/q),
+ B_D=(A_D+16J) J^(2/q+2/D).                          (5.3)
+This is uniform in thickness, derived from actual geometry and the proved
+box lemma rather than postulating an annular Sobolev constant.
+
+6. Original site weights: critical Holder and no minimum hypothesis
+Orient every shell-internal edge e from its lower coordinate endpoint x
+to x+e_j and set b_e=a(x)>0. Holder with exponents2/q and2/(2-q) gives
+ F_A^(2/q)
+  <= [sum_e b_e|df(e)|^2] [sum_e b_e^(-q/(2-q))]^((2-q)/q)
+  = E_a,A(f) [sum_e b_e^(-p)]^(1/p),                (6.1)
+because q/(2-q)=p=D/2. Each site starts at most D retained internal edges,
+so sum_e b_e^(-p)<=D sum_A a^(-p). Combining with(5.3) proves(1.1) with
+ C_D=D^(2/D) B_D.
+Weights have not been reflected, symmetrized, averaged between endpoints,
+or supplied outside A. This proves the full inverse-moment weighted bound
+without importing a pointwise alpha lower bound or assuming a local gap.
+
+If, for a positive parameter mu, the ACTUAL LOCAL moment obeys
+ (1/N)sum_A (mu/a)^p<=M_A,
+then(1.1) implies V_A<=C_D L^2 M_A^(1/p) E_a,A/mu.
+The parameter mu need not be the shell mean. This is a conditional
+corollary with an explicit local moment; a moment on a much larger ambient
+domain does not automatically give the same local M_A on every shell.
+For uniform a=H the coefficient factor is exactly1/H, as required.
+
+7. What is and is not closed
+The inverse-moment weighted comparison proposed as unreviewed in204 is
+proved here for D>=3 and the stated concentric integer shells. The
+pointwise mean-scale lower-bound premise and a supplied local shell gap
+are not required for this estimate. No main rectangle theorem is proved:
+choosing/counting a family of shells or disjoint integer rectangles using
+only the GLOBAL critical moment remains a separate unproved link. This
+note does not silently replace the global moment by local bounds.
+The slabs overlap; they are not themselves a partition. The203B actual
+field refutes a different local-error comparison and remains valid.
+No off-center, wrapping torus, physical, coexact/color or continuum claim.
+
+8. Primary comparison, status and next action
+Primary read2026-11-08: Andres--Deuschel--Slowik, arXiv1312.5473v6,
+https://arxiv.org/html/1312.5473v6 Section2.2, Eq(2.9) and Proposition2.4.
+That source explicitly combines unweighted Sobolev and Holder with
+conductance moments. This classical mechanism is not original here.
+Our statement and proof fix a particular nonwrapping discrete shell
+geometry and original site-to-edge convention. An exact priority/equivalence
+comparison for all these details is not established; no originality or
+standalone-publication claim follows. The original1949 Loomis--Whitney
+publisher PDF lookup returned403Forbidden and is not claimed inspected.
+Its theorem is not an unproved dependency: revision202's finite entropy
+proof already supplies the projection step required for(2.1).
+
+Fresh frozen-source analytic audit, including full box dependency, is
+required before calling205 checked. No build, numerical experiment,
+Lean certificate, runtime, new PDF or stars. Keep with the same dossier.
+Next test the global-to-local selection/count link using the now proved
+shell bound. A falsifier is a proposed selected family with uncontrolled
+local inverse mass/count, a dependence on f, or a hidden annular-to-disjoint-
+rectangle conversion loss. Do not spend another unit assuming a favorable
+pointwise minimum or reproving the old box lemma. After3units without
+substantial advance in that selection route, change it or record its
+concrete blocker. PR29 remains20/41,TermSource0; continuum Yang-Mills open.

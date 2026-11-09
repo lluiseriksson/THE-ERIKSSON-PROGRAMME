@@ -1,0 +1,257 @@
+An off-center hole destroys the thickness-uniform critical-moment shell bound
+Research supplement220 to the existing flat-coarse-rank dossier, not a paper.
+
+0. Bounded question and falsifier fixed before verification
+
+The sole main question is still the original unrestricted critical rectangular
+problem. Source218 supplies a coefficient-selected CENTERED unit shell and
+actual disjoint faces. Source219 stops a different conversion that discards
+canonical rectangle interfaces. Here the question is whether centeredness
+can simply be dropped from the shell205 critical inverse-moment estimate,
+retaining only the actual coefficient mean/envelope and critical moment.
+
+The proposed falsifier must have a genuine low-energy field for the ACTUAL
+annular internal graph, not just a smaller separated-cell form. Every incoming
+original starting site and every absent hole/root edge must be checked. A
+failure of its mean/moment or actual energy invalidates the example. If the
+example succeeds, stop the unrestricted off-center extension rather than
+replace it by an assumed geometric adapter. It does not decide the full-domain
+unrestricted main question, whose energy restores the missing hole edges.
+
+1. Geometry, actual coefficients and exact original data
+
+Fix integers D>=3 and s>=2. Set d=D-1, P=D/2 and
+
+ L=s^D, Q=4L+1, X={0,...,4L}^D, I={1,...,2L}^D,
+ Omega=X\I, N=Q^D-(2L)^D.
+
+There is one nonwrapping off-center cubical hole. Its side is comparable to
+the outer side, but its lower clearance is one lattice step. Define the plate
+
+ F={x in X:x_1=0, 1<=x_j<=2L for j=2,...,D}, w=|F|=(2L)^d.
+
+Let actual starting-site coefficients on Omega be
+
+ a(x)=A=s^(2d) on F, a(x)=H=Q^2 elsewhere.
+
+In particular 1<=A<H. Their exact arithmetic mean and inverse mass are
+
+ (1) mu=H-w(H-A)/N,
+     S=sum_Omega a^(-P)=2^d+(N-w)/Q^D.
+
+Indeed A^P=s^(dD)=L^d, so w/A^P=2^d, while H^P=Q^D.
+Also N> (4^D-2^D)L^D, giving
+
+ w/N<=1/[2(2^D-1)L]<=1/14.
+
+Consequently mu>=H(1-w/N)>=13H/14>=H/2>=1, and
+1<=a<=H<=2mu. The original normalized critical moment obeys
+
+ (2) 1<=M_a=(mu^P/N) S
+       <=(1+2^d)/(1-2^(-D))<2(1+2^d)=:M_D.
+
+The lower bound is Jensen for t^(-P) and mean a=mu. The upper uses mu<=H,
+S<1+2^d and N/Q^D=1-(2L/Q)^D>1-2^(-D). No local moment, mean or rare-set
+density is an independent input. All are computed from this actual profile.
+
+For real f on Omega use counting variance and actual nonwrapping energy
+
+ V_Omega(f)=sum_Omega|f-mean_Omega f|^2,
+ E_a,Omega(f)=sum_{x,x+e_j in Omega}a(x)|f(x+e_j)-f(x)|^2.
+
+Each positive-axis edge is counted once at its ORIGINAL starting site. There
+are no periodic identifications, reflected coefficients, endpoint averages,
+separately optimized extensions or discarded intercell edges in this form.
+
+2. An actual slow plate mode, with every boundary edge accounted for
+
+For t=1,...,2L set h(t)=min(t-1,2L-t). Thus h(1)=h(2L)=0 and
+
+ (3) sum h=L(L-1),
+     T:=sum h^2=(L-1)L(2L-1)/3,
+     sum_{t=1}^{2L-1}|h(t+1)-h(t)|^2=2L-2.
+
+The first two identities sum the two copies of0,...,L-1. The last counts
+two runs of L-1 unit increments and the single central zero increment.
+Since L>=2, T>0. Put
+
+ f(0,x_2,...,x_D)=product_{j=2}^D h(x_j) on F,
+ f=0 on Omega\F.
+
+The only nonzero original edge differences in Omega are tangential internal
+plate edges. The possible normal incoming edge to x_1=0 starts outside X,
+so is absent. The possible normal outgoing edge enters I, so is absent.
+At each tangential boundary x_j=1 or2L the plate field is ZERO. Thus edges
+joining that boundary to a strong outside-plate site have zero difference,
+including all actual strong incoming starts. This is why no strong edge is
+being silently reassigned weight A. No interface within Omega is dropped.
+
+Product counting now gives exactly
+
+ (4) ||f||_2^2=T^d,
+     sum_Omega f=[L(L-1)]^d,
+     E_a,Omega(f)=A d(2L-2) T^(d-1).
+
+Cauchy on its w-site support gives
+V_Omega(f)>= (1-w/N)||f||_2^2>=||f||_2^2/2. Hence
+
+ (5) E_a,Omega(f)/||f||_2^2=6d A/[L(2L-1)]<=6d/s^2,
+     V_Omega(f)/E_a,Omega(f)>=s^2/(12d).
+
+Subtracting mean_Omega f gives a counting-mean-zero witness with unchanged
+energy and variance, if required. This is an ACTUAL annular low-energy
+family; it is not only a failed sufficient partition certificate.
+
+3. The centered critical-moment formula cannot extend uniformly
+
+The thickness-uniform centered-shell estimate205 has the form
+
+ V<=U_D Q^2 (mean_Omega a^(-D/2))^(2/D) E_a,Omega.
+
+For the present family its multiplier, without U_D, is bounded by
+
+ (6) Q^2(S/N)^(2/D)
+      <=[(1+2^d)/(1-2^(-D))]^(2/D).
+
+This follows by canceling Q^2 against (Q^D)^(2/D). It is dimension-only,
+while(5) diverges with s. Therefore no dimension-only U_D makes this
+off-center version true, even though the actual mean/envelope and original
+normalized critical moment have the fixed bounds(1)-(2), and the inner/outer
+side ratio stays comparable to1/2. Centeredness cannot be removed with NO
+replacement quantitative geometric condition. This does not prove that exact
+centering is the weakest possible condition; clearance hypotheses may suffice.
+
+4. Matching upper order from an actual unweighted cover
+
+We also derive an upper bound of the same s^2 order, not a supplied annular
+gap. Let J=2D. Cover Omega by the actual rectangles
+
+ S_{i,-}: x_i=0, others in{0,...,4L};
+ S_{i,+}: x_i in{2L+1,...,4L}, others in{0,...,4L}.
+
+Their volumes are v_-=Q^d and v_+=2L Q^d. Every annular vertex belongs to
+at least one slab. Root a tree at S_{1,+}; attach every slab with normal
+different from1 to the root, and attach S_{1,-} to S_{2,+}. Every path has
+at most two edges, each joining distinct normals. Every parent is a fat
+plus slab, and a descendant volume is at most every volume on its root path.
+
+Write E_i^0 for each slab's unweighted internal energy and Z=sum_i E_i^0.
+The proved product-interval inequality gives V_{S_i}<=Q^2 E_i^0/4.
+For completeness its interval step is pairwise variance plus path Cauchy:
+an ell-site interval has V<=ell(ell-1)sum|dg|^2/4. Commuting coordinate
+averages tensorize this to the largest-side bound on every rectangle.
+Singleton normal coordinates have no energy or variance in that direction.
+This dependency is proved in revision217/partition.tex, not assumed here.
+
+We give the needed mean transport explicitly. In a Q-site interval B and a
+nonempty subinterval T_0, Jensen and pair paths give
+
+ |mean_B g-mean_T0 g|^2
+ <=(Q|T_0|)^(-1)sum_{x in B,y in T_0}|g(x)-g(y)|^2
+ <=Q sum_{e in B}|dg(e)|^2.
+
+Averaging this over the identical fibers of a slab S_i, in a free full
+coordinate j, gives the actual directional inequality
+
+ |mean_Si f-mean_{Si intersect Sj} f|^2
+ <=Q^2 E_i^0/v_i,
+
+when the other slab has normal j!=i. Its normal restriction has width1 or2L;
+no inverse overlap-width factor occurs. Applying the same inequality from
+the other slab and using the identical intersection mean yields
+
+ (7) |m_i-m_parent|^2<=2Q^2(E_i^0/v_i+E_parent^0/v_parent).
+
+For a root path of length at most two, multiply by the descendant's volume,
+use its volume monotonicity along that path, and use (a+b)^2<=2(a^2+b^2).
+Each intermediate slab energy occurs at most twice, so
+
+ v_i|m_i-m_root|^2<=8Q^2 Z.
+
+The root's term is zero. The cover and exact variance decomposition about
+each slab mean therefore imply, for every real g,
+
+ V_Omega(g)<=sum_i[V_Si(g)+v_i|m_i-m_root|^2]
+            <=(1/4+8J)Q^2 Z
+            <=J(1/4+8J)Q^2 E_Omega^0(g).
+
+The last step counts each actual internal edge at most J times. Since a>=A
+and Q<=5L, this proves
+
+ (8) V_Omega(g)<=B_D s^2 E_a,Omega(g),
+     B_D=25J(1+8J), J=2D.
+
+For D=3, B_3=7350. The loose integer constant replaces1/4 by1 safely.
+Together(5) and(8) prove that the best Poincare constant of this ACTUAL
+weighted annular graph is Theta_D(s^2); equivalently its first nonconstant
+finite Neumann energy quotient is Theta_D(s^(-2)). These are finite scalar
+graph notions, not a physical spectral gap. Neither optimal constants nor
+arbitrary off-center/multiple-hole estimates are asserted by(8).
+
+5. Restoring the hole: the original full-domain distinction
+
+Fill I with coefficient H and extend the SAME plate field by zero there.
+Then the exact full NONWRAPPING cube energy is
+
+ (9) E_a,X(f)=E_a,Omega(f)+A||f||_2^2.
+
+Each newly present edge with nonzero difference is the normal edge from
+x_1=0 into x_1=1, at tangential coordinates in{1,...,2L}^d. Its ORIGINAL
+START is on the weak plate and its coefficient is A, NOT H. All other newly
+present differences are zero. Thus the actual full energy of this witness
+has quotient at least A>=1. It is not a full-domain counterexample.
+
+Indeed the whole cube has inverse critical mass
+
+ S_X=2^d+(Q^D-w)/Q^D<1+2^d.
+
+The complete counting cube proof in source2c881a5e8f31cad5643a49cb205fe8eb3156955d,
+revision217/sobolev.tex, gives V_X<=K_D^2(D S_X)^(2/D) E_a,X, with
+K_D<=8sqrt(D). To check the latter bound, its exact constants are
+K_D=2alpha D^(1/q')/[D(1-2^(-1/D))], alpha=2(D-1)/D,
+q'=2D/(D-2). Bernoulli (1-1/(2D))^D>=1/2 gives the denominator>=1/2,
+and alpha<=2,D^(1/q')<=sqrt(D) finish the bound. Hence
+
+ V_X<=64D^2(1+2^d) E_a,X.
+
+The actual one-rectangle normalized mean q_X=Q^(-D/2)sum_X f therefore gives
+E_a,X+c_X|q_X|^2>=c_X||f||^2 with c_X=1/[64D^2(1+2^d)]. Dividing by Q^D
+gives the probability-normalized convention. Adding periodic wrap edges
+only helps this full-cube conclusion; no such edges belong to Omega's
+annular theorem. The filled cube also has its own actual mean and bounded
+critical moment, but it is a different domain from the annular graph.
+
+6. Pre-freeze correction, originality and verification scope
+
+The initial UNREVIEWED next-candidate note retained in evidencia-219 wrongly
+called the edge restored in(9) strong/incoming. Its v1 is preserved; it was
+corrected to the actual weak outgoing start BEFORE this source220 freeze,
+source audit or scientific execution. No annular test criterion was changed
+and no failed execution was rerun. Formula(9) is an explicit regression
+guard against that mistake, not an inherited proof from the initial note.
+
+This result concerns a true annular energy with a near-boundary off-center
+hole. It is distinct from source219's smaller separated-cell energy, and
+does not invalidate source218's centered-shell selection or source205's
+centered estimate. It stops the unconditional off-center extension. The
+original unrestricted full-domain critical rectangular question, physical
+and continuum questions, and PR29=20/41,TermSource0 remain unchanged.
+Scalar witnesses have not been made coexact or divergence constrained.
+
+The methods are classical finite product tents, variance, Sobolev/Holder and
+directional mean transport. Exact priority of this starting-site quantitative
+counterexample is UNESTABLISHED; no general new graph theorem is claimed.
+Primary comparison: Brudnyi arXiv:1511.03971v1, AppendixI TheoremI.1, covers
+a DYADIC inner cube strictly inside its outer dyadic cube by finitely many
+cubes under that geometry. The present shifted hole is not that dyadic
+subcube, and no weighted-energy adapter or quantifier reversal is imported.
+The comparison does not claim that his covering theorem is false.
+URL: https://arxiv.org/html/1511.03971
+This is a limited primary comparison, not an exhaustive originality search.
+
+At first freeze: analytical proof only; full exact-source review and owned
+Colab finite rational diagnostics pending. No Lean/all-size machine proof,
+independence, human peer review, numerical/PDF grade, new PDF or AIRR/ai.viXra
+deposit is claimed. Group the related218--220 results into the existing
+manuscript with a genuine new exact-PDF assessment when that version is ready;
+do not publish separate small-corollary papers or inherit earlier stars.

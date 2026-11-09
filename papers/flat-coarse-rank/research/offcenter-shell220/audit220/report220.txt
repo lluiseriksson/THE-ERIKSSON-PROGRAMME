@@ -1,0 +1,140 @@
+FROZEN BOUNDED-SOURCE AUDIT220
+Date: 2026-11-09
+Verdict: accept_with_limits
+
+No load-bearing mathematical or static diagnostic-source error was found. The actual off-center annulus satisfies the stated original coefficient hypotheses and has best counting Poincare constant Theta_D(s^2). B_3=7350 and the filled-domain correction A||f||^2 are correct. This falsifies the stated unconditional off-center extension, not the full-domain rectangle question, source218, a coexact claim or a physical gap.
+
+1. Exact frozen source and capture
+Repository: C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108
+Commit: 0c79cd67a002c24a305b70cf707c420aa1bd9ae3
+Source path: papers/flat-coarse-rank/research/2026-11-09_offcenter-shell220.txt
+Source bytes: 11692
+Source SHA-256: 286577395ab9d13e2e75a010d764c9d926b0dd6601e8b1afef6599b8885578c3
+Diagnostic path: scripts/offcenter_shell_diagnostic220.py
+Diagnostic bytes: 7470
+Diagnostic SHA-256: ec80c950ea2457f706c054989000379e1f326b5efb7fc96b389736b4c9a0aee0
+Capture: git show SHA:path; raw stdout BaseStream copied into bytes and saved with WriteAllBytes. Representation for all source hashes: exact UTF-8 Git-LF; no normalization; no CR bytes.
+
+Complete captured dependencies:
+At 2c881a5e8f31cad5643a49cb205fe8eb3156955d:
+ papers/flat-coarse-rank/integrated-revision/revision217/sobolev.tex
+ 9493 bytes; SHA-256 80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54
+ papers/flat-coarse-rank/integrated-revision/revision217/partition.tex
+ 12856 bytes; SHA-256 b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff
+At 625bd50110799561511b40ee2ed426e983eed4be:
+ papers/flat-coarse-rank/research/2026-11-08_shell-moment205.txt
+ 8909 bytes; SHA-256 423c38cd9e5d7f300b318fdd362dc47a726d9db87972e2257c4fffb0b9a47b1d
+At 8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337:
+ papers/flat-coarse-rank/research/2026-11-09_intrinsic-shell216.txt
+ 10954 bytes; SHA-256 9d22d01608893991411c52c696c2ee2d8ab342e0d5b18e371846681100af7198
+
+All outputs are only under:
+ D:\Datos\the-eriksson-programme\autonomia\evidencia-220\audit220
+Complete capture manifest: capture-manifest220.json
+Manifest SHA-256, UTF-8 LF without BOM:
+ eb88c800b10be7ba25c7551894959f3b786e9a18a97dfd76b59d456eecfaee9e
+
+2. Model, context, method and execution boundary
+This is a continuing assignment in /root/defect_plane198_audit with retained unit198/216/217/218/219 context, shared filesystem and shared account. It is not a fresh isolated context. No independence, blind-review or human-peer-review claim is made.
+Actually exposed model description: Codex, an agent based on GPT-6. Exact hidden model identifier, backend and reasoning effort are unknown. Available tool model names do not establish the running selection.
+The entire source220 and diagnostic were read at the frozen commit. Full dependency/context proofs had already been read in this same context; their exact unchanged revisions and relevant cube, interval and centered-shell steps were consulted and retained.
+No prior source220 model grade/report was used. No inbound message arrived during this audit. Only analytical reasoning, source/text/git/hash operations and primary-reference text reading were used. No scientific/diagnostic program, mathematical Python, test, resampling, Lean, Lake, oracle, build, render or runtime was executed. No source, branch or PR was changed; no other chat or automation was accessed. No disposable clone was created.
+No numerical or PDF grade, stars, prior-grade inheritance or publication permission is supplied. Diagnostic statements below are static judgments, not observed executions.
+
+3. Exact geometry and original coefficient data
+For D>=3,s>=2, L=s^D,Q=4L+1, X={0,...,4L}^D, I={1,...,2L}^D and Omega=X\I have exactly the stated N=Q^D-(2L)^D. The hole has a one-step lower clearance, not centered-shell geometry.
+The plate is outside I because x_1=0. It has w=(2L)^d sites, d=D-1. A=s^(2d) satisfies 1<=A<H=Q^2. Since A^P=L^d and H^P=Q^D,
+ S=2^d+(N-w)/Q^D
+is exactly sum_Omega a^(-P). The actual mean is H-w(H-A)/N.
+N>(4^D-2^D)L^D implies
+ w/N<1/[2(2^D-1)L]<=1/14.
+Therefore mu>=13H/14>=H/2>=1 and 1<=a<=H<=2mu. Jensen for a^(-P), with this actual mean, gives M_a>=1.
+For the upper moment, mu^P<=Q^D, S<1+2^d and
+ N/Q^D=1-(2L/Q)^D>1-2^(-D).
+Thus M_a<(1+2^d)/(1-2^(-D))<2(1+2^d)=M_D. The source's non-strict intermediate bound is safe. No moment surrogate or separately supplied mean/rare-set density is used.
+
+4. Product-tent formulas and actual edge accounting
+h(t)=min(t-1,2L-t) consists of two copies of 0,...,L-1. Its sum is L(L-1), squared sum T=(L-1)L(2L-1)/3, and gradient-square sum 2L-2. The last formula has two runs of L-1 unit increments plus one central zero increment. T>0 under the stated hypotheses.
+The product plate field has norm squared T^d, total mass [L(L-1)]^d, and tangential energy exactly A d(2L-2)T^(d-1).
+Every interface is accounted for. The normal incoming edge would start at x_1=-1 outside X. The outgoing normal edge from the plate enters the absent hole. Tangential edges entering or leaving the plate meet a zero field value at a coordinate equal to 1 or 2L. In particular, any strong incoming start there contributes zero, rather than being assigned A. All other off-plate values are zero. No actual Omega interface was discarded.
+Support Cauchy gives
+ V_Omega>= (1-w/N)||f||^2>=||f||^2/2.
+The exact quotient simplifies to
+ E/||f||^2=6dA/[L(2L-1)]<=6d/s^2,
+because A/L^2=s^(-2). Hence V/E>=s^2/(12d). Subtracting the annular mean preserves energy and gives a nonzero counting-mean-zero witness with norm squared V.
+
+5. Actual falsifier and scope of the extension rejected
+The putative off-center multiplier satisfies
+ Q^2(S/N)^(2/D)=[S/(N/Q^D)]^(2/D)
+ <[(1+2^d)/(1-2^(-D))]^(2/D).
+This is dimension-only, whereas V/E grows at least as s^2/(12d). Therefore every fixed dimension-only U_D fails for sufficiently large s. This all-constant conclusion follows analytically from a sequence, not from the diagnostic's fixed U1000 regression.
+The example refutes the stated unconditional off-center class containing this precise hole family. It does not classify all off-center geometries or prove that exact centering is necessary under every added condition. Quantitative clearance hypotheses might restore an estimate. The centered theorems205/216 and source218's selected centered faces are not contradicted.
+
+6. Mixed-width cover, directional transport and root volumes
+Omega is covered by J=2D actual product slabs: a minus slab has normal coordinate zero and volume Q^d; a plus slab has normal range2L+1,...,4L and volume2LQ^d. A point outside I has at least one such coordinate. Distinct-normal slabs intersect in nonempty products.
+Root at S_(1,+), attach every other-normal slab directly, and attach S_(1,-) via S_(2,+). Every parent is a fat plus slab. A fat descendant has the same volume as the root, and a thin descendant is no larger than either ancestor. Thus descendant volume is at most every volume on its root path. This special monotonicity is proved for this tree, not assumed for arbitrary annuli.
+The interval dependency gives V_S<=Q(Q-1)E_S^0/4<=Q^2E_S^0/4, including singleton normal directions. Its proof uses pairwise variance/path Cauchy and commuting coordinate-average tensorization.
+For a full Q-site free coordinate, Jensen/path Cauchy gives mean-difference squared <=Q times the fiber energy. Averaging over v_i/Q identical fibers gives Q^2 E_i,directional^0/v_i. The intersection restriction may have width1 or2L; no inverse width survives. Using the same actual intersection mean from both sides and then (a+b)^2<=2(a^2+b^2) proves (7).
+A root path has at most two edges. Cauchy on that path gives another factor two; multiplying by descendant volume bounds every resulting volume ratio by one. The intermediate energy occurs at most twice, so
+ v_i|m_i-m_root|^2<=8Q^2Z.
+Direct-child paths need less, and the root term is zero. This verifies the exact constant and geometry needed for the transport argument.
+
+7. Matching upper order
+The cover and exact decomposition about each slab mean imply
+ V_Omega(g)<=sum_i[V_Si(g)+v_i|m_i-m_root|^2]
+ <=(1/4+8J)Q^2Z.
+Each slab-internal edge is an actual Omega edge counted at most J times in Z, giving Z<=J E_Omega^0. Since a>=A, E_Omega^0<=E_a,Omega/A. Finally Q<=5L and L^2/A=s^2 give
+ V_Omega<=25J(1/4+8J)s^2 E_a,Omega
+ <=25J(1+8J)s^2 E_a,Omega.
+Thus B_D=25(2D)(1+16D) and B_3=25*6*49=7350 are correct; replacing1/4 by1 is a safe relaxation.
+Each slab is connected and the slab tree has nonempty intersections, so Omega is connected. The best counting Poincare constant is finite for every member. The lower tent bound and this all-field upper bound give Theta_D(s^2), equivalently first nonconstant Neumann quotient Theta_D(s^(-2)). This is a finite scalar graph statement, not a physical gap or optimal multiplicative constant.
+
+8. Filled hole: explicit original-start guard and one-cell theorem
+After filling I with H and extending the same field by zero, the only new nonzero differences are from (0,y) to (1,y) at the plate tangential coordinates. The original positive start (0,y) is weak and outgoing. Its coefficient is A, not H. All other added differences are zero. Consequently
+ EX=E_Omega+A||f||^2
+exactly. Eq.(9) correctly guards against the old strong/incoming description.
+The witness's filled energy/norm quotient is at least A>=1, but the source separately proves the all-field result. The full cube inverse mass is
+ S_X=2^d+(Q^D-w)/Q^D<1+2^d.
+The included counting cube proof gives V_X<=K_D^2(D S_X)^(2/D)EX. Its exact K_D is bounded by8sqrt(D): Bernoulli (1-1/(2D))^D>=1/2 gives D(1-2^(-1/D))>=1/2, while alpha<=2 and D^(1/q')<=sqrt(D). Since 2/D<=1,
+ V_X<=64D^2(1+2^d)EX.
+The normalized counting row Q^(-D/2)sum_X f therefore yields the stated one-cell penalty with c_X=1/[64D^2(1+2^d)]. Dividing by Q^D gives row mean_X f in probability normalization. Constants check the penalty convention. Periodic additions would only help this full-cube result and were not used in Omega.
+The filled mean is H-w(H-A)/Q^D, at least the annular mean, and its normalized moment is below1+2^d. Thus it too has actual mean/envelope/moment bounds, on a different graph.
+
+9. Earlier v1 chronology is context, not new certified evidence
+The source and assignment describe an unreviewed v1 note calling the restored edge strong/incoming, preserved and corrected before freeze/execution. This audit verifies the corrected frozen equation directly; it does not inherit the v1 reasoning.
+I did not inspect that separate v1 packet or independently authenticate its preservation, timestamps, freeze chronology or absence of failed execution. These historical statements are source/assignment context. No strong/incoming error remains in frozen Eq.(9) or its diagnostic guard.
+
+10. Diagnostic geometry and exact rational gates
+The script is explicitly finite D=3 source code. Positive-axis edges are nonwrapping and use original a[x].
+L=1,2,3,8 give four actual unweighted geometry fixtures. The first three are auxiliary geometry checks, not members of the stated s>=2,L=s^3 weighted family. At L=1 the product field is zero, a legitimate degenerate fixture rather than a nonzero low mode.
+On five fields per geometry it checks slab variance, each side of every tree-intersection directional transport comparison, descendant/ancestor volume monotonicity, path depth, 8Q^2Z root bound, edge overlap count and the global unweighted bound. Means and variances use exact Fraction values; directional energies are restricted to the correct free coordinate.
+closed(s) uses L=s^3,A=s^4,H=Q^2. H^(3/2)=Q^3 and A^(3/2)=L^2 make every inverse mass rational without approximate roots. Its mu^3*S^2<100N^2 gate is exactly M_a^2<100, hence the original normalized D=3 bound M_D=10, not merely a surrogate-S check. Its tent ratio12A/[L(2L-1)] and lower factor s^2/24 agree with the source.
+At L=8 there is ONE full weighted profile, s=2, on which five fields are tested. full_profile_checks=5 means those five field checks, not five distinct profiles. Each checks actual grid mean/inverse mass, weighted annular upper bound, actual filled energy, c_X=1/2880 cube variance and normalized-mean penalty. The tent case also checks exact norm/mass/variance/energy, every nonzero annular start weak, and EX=Ea+A*norm.
+The six counted closed-profile cases s=2,3,4,8,16,32 use closed counts and 1D product formulas, not enormous full-grid allocation. Repeated internal closed(2) calls and the separate negative-control closed(4096) call are not counted by that six-case counter. The definition is consistent with the output's stated scope.
+
+11. Acceptance counters, genuine negative controls and no execution claim
+All acceptance decisions use explicit require calls raising ValueError, not Python assert. Final status is printed only after the checks and final counter tuple. This is static evidence that optimized mode retains gates, not observed normal/optimized agreement.
+The expected counts are consistent:4 geometries;20 fields;120 slab checks;200 transport comparisons (20*5 tree edges*2 sides);120 root checks;5 full weighted-grid field checks;5 filled-cube field checks;6 counted closed-profile cases;3 rejections.
+The controls reject three actual failure classes:
+(a) EX=Ea+H*norm fails because A<H and the actual tent norm is positive.
+(b) Ea=EX fails because the restored A*norm term is positive.
+(c) At s=4096 the U1000 off-center bound fails. The cubic gate is exactly V^3<=1000^3 Q^6(S/N)^2 E^3, with nonnegative quantities, so cubing is legitimate.
+For a symbolic confirmation of (c), in D=3 the multiplier is <(40/7)^(2/3)<4, whereas V/E>=4096^2/24>4000. Thus it truly rejects that fixed constant without rounding.
+This is a FINITE regression for U1000, not the all-constant proof. The latter comes from the diverging source sequence and bounded geometric multiplier.
+No diagnostic was executed in this audit. Completion, output status/hash, actual counters, mode equality, child exits, resource use and performance are not certified. A future runner must bind source SHA, command and real exits separately; the transcript hash alone would not do that.
+
+12. Primary comparison, detailed limits and disposition
+Primary text consulted: https://arxiv.org/html/1511.03971
+Appendix I Theorem I.1 concerns a dyadic subcube strictly inside an outer dyadic cube and an unweighted cube-covering geometry. It is not a weighted Poincare theorem for this shifted lattice hole. No weighted adapter/quantifier reversal is imported, and the source does not claim the covering theorem false. No exhaustive priority or novelty judgment is established.
+No mathematical correction is required for the actual moment, all original starts, product tent, upper transport constant, matching powers or filled-cube conclusion. No static diagnostic bug was found.
+Binding limits:
+- The falsified statement is the unconditional off-center extension on this precise near-boundary hole family, not every restricted off-center class or the weakest possible geometry.
+- The witness is scalar and not coexact/divergence constrained. No physics or continuum conclusion follows.
+- Filled and annular energies are distinct; the witness's exact difference uses A, not H.
+- The U1000 control is finite and five full_profile_checks are five fields on one weighted grid.
+- Static diagnostics are not execution evidence, Lean certification or an all-size machine proof.
+- Historical v1 chronology, earlier publication records and PR29/TermSource tallies were not independently authenticated.
+- There is no numerical/PDF grade, stars, inherited assessment or permission to publish.
+Final verdict: accept_with_limits for commit0c79cd67a002c24a305b70cf707c420aa1bd9ae3.
+
+Report representation: UTF-8 without BOM, LF, final newline.
