@@ -1,0 +1,7 @@
+{
+  "source_sha": "e040475e37bf6b7440625df41c723738dbe3dbd8",
+  "pins": {
+    "papers/flat-coarse-rank/research/2026-11-09_selected-shell218.txt": "41b28da62c1b9d523e1d565ef556a5ede64bdf27f74cf867f05df4ea5a1f487a",
+    "scripts/selected_shell_diagnostic218.py": "eb047f9ecae0d4d93ad7f9ce9f200b78930cdb6d260cc2e54a5d9cf4f29b439b"
+  }
+}

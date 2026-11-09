@@ -1,0 +1,37 @@
+[
+  {
+    "spec": "e040475e37bf6b7440625df41c723738dbe3dbd8:papers/flat-coarse-rank/research/2026-11-09_selected-shell218.txt",
+    "file": "source218.txt",
+    "bytes": 9615,
+    "sha256": "41b28da62c1b9d523e1d565ef556a5ede64bdf27f74cf867f05df4ea5a1f487a",
+    "contains_cr": false
+  },
+  {
+    "spec": "e040475e37bf6b7440625df41c723738dbe3dbd8:scripts/selected_shell_diagnostic218.py",
+    "file": "selected_shell_diagnostic218.py",
+    "bytes": 7928,
+    "sha256": "eb047f9ecae0d4d93ad7f9ce9f200b78930cdb6d260cc2e54a5d9cf4f29b439b",
+    "contains_cr": false
+  },
+  {
+    "spec": "8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337:papers/flat-coarse-rank/research/2026-11-09_intrinsic-shell216.txt",
+    "file": "dependency-source216.txt",
+    "bytes": 10954,
+    "sha256": "9d22d01608893991411c52c696c2ee2d8ab342e0d5b18e371846681100af7198",
+    "contains_cr": false
+  },
+  {
+    "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/sobolev.tex",
+    "file": "dependency-sobolev217.tex",
+    "bytes": 9493,
+    "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+    "contains_cr": false
+  },
+  {
+    "spec": "2c881a5e8f31cad5643a49cb205fe8eb3156955d:papers/flat-coarse-rank/integrated-revision/revision217/shells.tex",
+    "file": "dependency-shells217.tex",
+    "bytes": 11932,
+    "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a",
+    "contains_cr": false
+  }
+]

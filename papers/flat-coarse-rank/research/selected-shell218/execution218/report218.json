@@ -1,0 +1,13 @@
+{
+  "source_sha": "e040475e37bf6b7440625df41c723738dbe3dbd8",
+  "started_utc": "2026-11-09T02:26:58.722076+00:00",
+  "billed_units": null,
+  "exits": {
+    "normal": 0,
+    "optimized": 0
+  },
+  "status": "FINITE_DIAGNOSTICS_CHECKED",
+  "finished_utc": "2026-11-09T02:27:01.966143+00:00",
+  "elapsed_seconds": 3.244196991000024,
+  "child_maxrss_kib": 106228
+}

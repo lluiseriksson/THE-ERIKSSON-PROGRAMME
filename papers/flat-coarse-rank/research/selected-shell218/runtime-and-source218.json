@@ -1,0 +1,16 @@
+{
+  "source_sha": "e040475e37bf6b7440625df41c723738dbe3dbd8",
+  "representation": "Actual Git blob bytes, UTF-8 LF; copied without text normalization",
+  "source_pins": {
+    "papers/flat-coarse-rank/research/2026-11-09_selected-shell218.txt": "41b28da62c1b9d523e1d565ef556a5ede64bdf27f74cf867f05df4ea5a1f487a",
+    "scripts/selected_shell_diagnostic218.py": "eb047f9ecae0d4d93ad7f9ce9f200b78930cdb6d260cc2e54a5d9cf4f29b439b"
+  },
+  "runtime_open_request": "2026-11-09T02:26:20Z",
+  "runtime_release_finished": "2026-11-09T02:27:06Z",
+  "backend_readback": "[colab] No active sessions found on server.\n",
+  "backend_exit": "0",
+  "billed_units": null,
+  "new_contract_or_purchase": false,
+  "shared_runtime": false,
+  "source_freeze": "No edits or commits during external source audit"
+}

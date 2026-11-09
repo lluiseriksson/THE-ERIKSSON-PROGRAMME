@@ -1,0 +1,201 @@
+Selected unit shells with actual disjoint rectangular observations
+Analytical research supplement218 to the existing shell dossier, not a paper.
+
+0. Question and scope fixed before verification
+
+The sole main question remains the unrestricted critical rectangular problem
+of Section27. This unit asks a bounded subquestion: can the original critical
+inverse moment itself select a thin shell and supply actual disjoint
+rectangles with a proved local gap, rather than an assumed annular gap?
+The mechanism is finite radial averaging, a first-exterior-coordinate face
+partition and the already proved counting Sobolev inequality. A falsifier is
+an actual positive starting-site profile for which the stated selected shell
+or face estimate fails. Abandon this mechanism if its moment-to-face bound
+fails; do not replace the criterion after seeing a failure. Even success
+does not partition or count observations on the complement of the shell.
+
+1. Statement, all normalizations explicit
+
+Fix D>=3, d=D-1, p=d/2, P=D/2, q=2d/(d+2), an integer L>=1,
+a center z in Z^D and a scale mu>0. Work in a nonwrapping copy of
+Omega={x: L<=||x-z||_infinity<=2L-1}. All coefficients a(x)>0 are actual
+original starting-site coefficients. Put b(x)=mu/a(x),
+
+  B=sum_{x in Omega} b(x)^P.
+
+There is an explicitly selected k in {L,...,2L-1} and a partition of
+A_k={x:||x-z||_infinity=k} into exactly 2D nonempty axis-aligned integer
+rectangles F_{i,s}, i=1,...,D, s=+/-1, such that, for every real f,
+
+ (1) sum_F sum_{x in F}|f(x)-mean_F f|^2
+      <= C_D B^(2/D)/mu * sum_F E_{a,F}(f)
+      <= C_D B^(2/D)/mu * E_{a,A_k}(f).
+
+Every E_{a,F} sums only retained internal positive-axis edges
+(x,x+e_j), with coefficient a(x), once each. No endpoint averaging,
+off-shell energies or optimal extensions are supplied. Here one explicit
+choice is
+
+ K_2=2;
+ for d>=3, c_d=d(1-2^(-1/d)), alpha_d=2(d-1)/d,
+ q'=2d/(d-2), K_d=2 alpha_d d^(1/q')/c_d;
+ C_D=4 K_d^2 3^(2d/q) d^(2/d).
+
+In particular C_3=2592. These constants are upper bounds, not optimized.
+The conclusion holds coordinatewise for real vector fields without an
+extra coordinate-count factor. It does not require invariant coefficients,
+a preassigned good shell, an assumed local moment, or an annular gap.
+
+If c C_D B^(2/D)/mu<=1, the normalized counting means
+q_F(f)=|F|^(-1/2) sum_F f give the actual local penalty estimate
+
+ (2) E_{a,A_k}(f)>=c sum_{A_k}|f|^2-c sum_F|q_F(f)|^2.
+
+This is a rank-2D local observation family per scalar coordinate. It is
+not a rank bound for an observation family on the whole ambient domain.
+
+2. The coefficient-driven selection and disjoint faces
+
+For each candidate radius j, set W_j=sum_{A_j} b^P. The L shells are
+pairwise disjoint and have union Omega, hence sum_j W_j=B. Choose the
+least radius minimizing W_j. It satisfies W_k<=B/L. This is a finite,
+coefficient-only rule; it does not inspect f or its energy.
+
+In coordinates relative to z, define
+
+ F_{i,s}= [-k+1,k-1]^(i-1) x {s k} x [-k,k]^(D-i).
+
+Each has dimension d, with every tangential side of length either 2k-1
+or 2k+1, including singleton sides at k=1. A shell point belongs to the
+unique face determined by the first coordinate whose absolute value is k.
+This proves exact disjointness, covering and nonemptiness; these are not
+the overlapping slabs in the earlier shell proof. Each face has at most
+(2k+1)^d<=(4L)^d sites. Internal face edges are disjoint retained shell
+edges. Discarding edges between faces only decreases energy.
+
+3. Actual tangential counting Sobolev estimate
+
+The counting cube inequality in source216 Section3 (its complete cube
+dependency is source202, now the sobolev.tex and shells.tex sections of
+frozen revision217 at commit2c881a5e8f31cad5643a49cb205fe8eb3156955d)
+states for a d-dimensional cube Q and every g:
+
+  V_Q(g)<=K_d^2 (sum_{e internal Q}|dg(e)|^q)^(2/q).
+
+For d=2 this is the coarea/median endpoint q=1,K_2=2; for d>=3 it is
+the projection/isoperimetry/coarea/power proof with the above K_d.
+No new graph or coefficient theorem is assumed here.
+
+Here is the needed finite face adapter, including k=1. Translate a face
+to R=product_{j=1}^d {0,...,ell_j-1}, ell_j in {2k-1,2k+1}. Let
+s=2k+1. Fold each interval {0,...,s-1} onto its ell_j-site interval by
+the endpoint-repeating sequence
+0,1,...,ell_j-1,ell_j-1,...,1,0,0,1,... .
+Every original vertex is visited at least once and at most three times,
+since ell_j<=s<=3ell_j. For ell_j=1 the map is constant, and its
+multiplicity is s<=3 (this case occurs only at k=1).
+Every original internal interval edge has at most three preimages: for
+k>=2,s<=ell_j+2, so the initial forward traversal and at most two
+further steps cross each edge at most three times; for k=1 the possible
+ell_j are1 or3, and the assertion is immediate. This deliberately loose
+bound also covers ell_j=s.
+
+Let g~ be the folded extension to Q_s. For any constant m,
+sum_Q|g~-m|^2>=sum_R|g-m|^2, so after minimizing the left at its own
+mean, V_Q(g~)>=V_R(g). Every folded nonconstant cube edge maps to an
+actual internal face edge, possibly reversing its orientation, with
+total multiplicity at most 3^d. This step is UNWEIGHTED. Therefore
+
+ (3) V_F(f)<=H_d (sum_{e internal F}|df(e)|^q)^(2/q),
+     H_d=K_d^2 3^(2d/q).
+
+The face is a d-dimensional graph even though embedded in Z^D. Only d
+positive tangential directions occur. Reversing folded edges does not
+transport weights: original positive starting-site coefficients enter
+only in the next step. Singleton faces have variance and energy zero.
+
+4. Original weights and the critical-to-face moment conversion
+
+Holder on the ORIGINAL retained face edges gives, with p=q/(2-q)=d/2,
+
+ (sum_{e in F}|df|^q)^(2/q)
+ <=E_{a,F}(f) (sum_{e in F} a(start e)^(-p))^(1/p)
+ <=d^(1/p)/mu E_{a,F}(f) (sum_{x in F} b(x)^p)^(1/p).
+
+Each vertex starts at most d retained tangential edges. No incoming
+starting sites are omitted; the site sum is an upper bound on all the
+actual starts, not a replacement weight on the observed vertex.
+
+Since p<P, finite Holder on F gives
+
+ (4) (sum_F b^p)^(1/p)
+       <= |F|^(1/p-1/P) (sum_F b^P)^(1/P)
+       <= (4L)^(2/D) (B/L)^(2/D)
+       =4^(2/D) B^(2/D)<=4 B^(2/D).
+
+The cancellation of L uses d(1/p-1/P)=2/D. In particular a global
+moment is not simply asserted to be a uniformly bounded local average;
+the shell selection and counting factors are both retained. Combining
+(3)-(4) proves the first inequality in(1), face by face with the same
+constant. Summing uses disjoint internal edges; no gluing of separately
+minimized harmonic costs or common-refinement margin is needed.
+Equation(2) follows from (1), c*tau<=1 and the exact identity
+sum_A|f|^2=sum_F V_F(f)+sum_F |q_F(f)|^2.
+
+5. Scale check and the precise remaining obstruction
+
+The B^(2/D)/mu order cannot be replaced by o(L^2)/mu on homogeneous
+profiles with mu fixed as L grows. Indeed, a=mu gives b=1 and
+B=(4L-1)^D-(2L-1)^D<= (4L)^D. For every candidate k and f(x)=x_2-z_2,
+the face F_{1,+} alone has variance
+(2k+1)^d*((2k+1)^2-1)/12. The shell has at most2D(2k+1)^d vertices,
+and E_{a,A_k}(f)<=mu |A_k|. Hence
+
+ sum_F V_F(f)/E_{a,A_k}(f)
+ >=((2k+1)^2-1)/(24D mu)
+ >=L^2/(6D mu)>=B^(2/D)/(96D mu).
+
+This is a genuine all-selected-radii scale check, not a numerical optimal
+constant calculation. It uses f on the entire shell, not an isolated
+face with ignored cross-face energy.
+
+Most importantly, a unit shell contains only order L^(D-1) sites. The
+selected2D rectangles do not cover the interior or the unselected layers.
+Repeating this construction independently on order L shells costs order
+L observations; that cost cannot be hidden as a dimension-only constant.
+The local normalized observations on the chosen shell are derived, but
+a coefficient-driven covering/charging theorem with the original
+target-order count on the whole domain is STILL MISSING. We do not claim
+that the shell is a global partition, that arbitrary holes are covered,
+or that no finite penalty can work elsewhere.
+
+Thus the bounded subquestion removes two actual local inputs (supplied
+good-shell moment and disjoint-face conversion) for one selected shell.
+It removes no hypothesis of the unrestricted main theorem. Earlier
+refuted harmonic-cost additivity and stopped common-refinement routes
+remain stopped; publication217 did not reset their counters.
+
+6. Originality, relevance and verification boundary
+
+Radial pigeonhole selection, finite reflection, Sobolev and Holder are
+classical. This exact starting-site/disjoint-face specialization is a
+derived local input in the existing dossier, not established new priority.
+Primary comparison: Andres--Deuschel--Slowik, arXiv:1306.2521v5,
+Section3.1, Proposition3.5 and its proof explicitly use unweighted
+Sobolev plus Holder to obtain weighted estimates; their conductance and
+cutoff setup is not this finite face theorem. Birman--Solomyak1967,
+Math.USSR-Sbornik2:295-317, Sections1-2, studies adaptive cube partitions
+and a set-function theorem; no unsupported zero-smoothness partition
+estimate is imported. This limited comparison is not an exhaustive
+novelty audit and establishes neither priority nor global applicability.
+
+Primary URLs:
+https://arxiv.org/html/1306.2521
+https://www.mathnet.ru/php/getFT.phtml?jrnid=sm&paperid=4132&what=fullteng
+
+At first freeze: analytical derivation only; external source audit and
+owned Colab finite diagnostics pending. No Lean/formal verification,
+new PDF, new stars, AIRR/ai.viXra deposit or peer review is claimed.
+Keep this supplement with the grouped manuscript rather than create a
+paper for a local consequence. PR29=20/41,TermSource0 unchanged;
+no interacting/continuum mass gap follows.
