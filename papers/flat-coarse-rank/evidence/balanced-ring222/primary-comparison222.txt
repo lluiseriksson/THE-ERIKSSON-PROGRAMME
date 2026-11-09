@@ -1,0 +1,23 @@
+2026-11-09 primary-source comparison, read before asserting originality.
+Source: Yu. Brudnyi, arXiv:1511.03971v1 (2015),
+https://arxiv.org/html/1511.03971v1
+Sections1 and AppendixI, including RemarkI.2; authoritative source read today.
+
+The introduction already describes approximation on dyadic rings, together
+with an equivalent cube-cover formulation, and discusses the critical Sobolev
+endpoint in relation to Birman--Solomyak and later authors. The appendix also
+includes boundary-touching inner dyadic cubes. Thus neither using rings,
+using their rectangular decompositions, endpoint Sobolev methods, nor handling
+a boundary-touching hole establishes novelty for candidate222.
+
+The proposed narrower task is to derive one coefficient-only integer lattice
+partition simultaneously for all fields, using the actual original oriented
+weighted energy and an explicit critical-moment rank bound. Whether that exact
+specialization is new has NOT been established. Existing classical results may
+already imply it after a correct finite discretization. A self-contained proof
+would remove a programme-local missing adapter but would not establish priority.
+
+This is a limited primary comparison, not a comprehensive literature search.
+Candidate222 remains under source audit and finite Colab diagnostics; the
+published221 PDF, original score and public bibliographic qualification are
+unchanged. No original paper is copied into the public reproducibility package.

@@ -1,0 +1,50 @@
+[
+  {
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-222\\balanced-ring222-draft.txt",
+    "capture": "balanced-ring222-draft-capture.txt",
+    "bytes": 12385,
+    "sha256": "f2cd7941ccc8e9fa30e3a8742d5e814b0e4bcdc83ded16426b48b78c7deac057",
+    "contains_cr": false,
+    "representation": "Raw checkout UTF-8 bytes; copied without normalization; not a Git commit"
+  },
+  {
+    "origin": "git show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/flat_critical_integrated.tex",
+    "capture": "context-flat_critical_integrated.tex",
+    "bytes": 150847,
+    "sha256": "1ef2117d05b6f894033a7995b1c23f51f430758312d3985564b857a0ffe093f2",
+    "contains_cr": false,
+    "representation": "Exact Git blob bytes; no normalization"
+  },
+  {
+    "origin": "git show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/sobolev.tex",
+    "capture": "context-sobolev.tex",
+    "bytes": 9493,
+    "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+    "contains_cr": false,
+    "representation": "Exact Git blob bytes; no normalization"
+  },
+  {
+    "origin": "git show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/partition.tex",
+    "capture": "context-partition.tex",
+    "bytes": 12856,
+    "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+    "contains_cr": false,
+    "representation": "Exact Git blob bytes; no normalization"
+  },
+  {
+    "origin": "git show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/geometry-boundaries221.tex",
+    "capture": "context-geometry-boundaries221.tex",
+    "bytes": 18392,
+    "sha256": "96b49972afd82abe52e87db727efc85601303d220bcff4c986351afcc3a64055",
+    "contains_cr": false,
+    "representation": "Exact Git blob bytes; no normalization"
+  },
+  {
+    "origin": "git show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/shells.tex",
+    "capture": "context-shells.tex",
+    "bytes": 11932,
+    "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a",
+    "contains_cr": false,
+    "representation": "Exact Git blob bytes; no normalization"
+  }
+]

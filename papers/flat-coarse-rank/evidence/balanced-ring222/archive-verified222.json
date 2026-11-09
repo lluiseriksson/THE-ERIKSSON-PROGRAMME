@@ -1,0 +1,44 @@
+{
+  "checked_at": "2026-11-09T06:22:00.527801+00:00",
+  "source_sha": "c993dff04868d01d37b6ec87e0417da3c91a1330",
+  "archive_sha256": "fca0a427cc4206dd8436e054fc9c6c2aba223725288d27332ec52e521ccf1dcb",
+  "archive_bytes": 12119,
+  "manifest_all_members_verified": true,
+  "report": {
+    "source_sha": "c993dff04868d01d37b6ec87e0417da3c91a1330",
+    "input_pins": {
+      "papers/flat-coarse-rank/research/2026-11-09_balanced-ring222.txt": "f2cd7941ccc8e9fa30e3a8742d5e814b0e4bcdc83ded16426b48b78c7deac057",
+      "scripts/balanced_ring_diagnostic222.py": "f87e76462f346037e10e16ff9713f2a15ddb46337f997955bb18fbf188cf0dd5"
+    },
+    "started_utc": "2026-11-09T06:19:57.368268+00:00",
+    "billed_units": null,
+    "exits": {
+      "normal": 0,
+      "optimized": 0
+    },
+    "status": "FINITE_DIAGNOSTICS_CHECKED",
+    "finished_utc": "2026-11-09T06:20:11.968169+00:00",
+    "elapsed_seconds": 14.599980136999989,
+    "child_maxrss_kib": 106488
+  },
+  "finite_checks": {
+    "BV_extensions": 648,
+    "cross_piece_edges": 1668,
+    "geometries": 216,
+    "global_fields": 800,
+    "negative_controls_rejected": 3,
+    "partitions": 200,
+    "region_fields": 71232,
+    "scope": "Selected D3/D4 odd and singleton geometries; exact rational BV/cover/count/actual-gradient fields. Not all-size, formal, spectral or independent reproduction proof.",
+    "status": "FINITE_RATIONAL_DIAGNOSTICS_CHECKED",
+    "transcript_sha256": "d60395d608311676c2f96d4421cb3b506ab74defc6b7c01c1f73aa130f035ea7"
+  },
+  "runtime_type": "Own Colab CPU/high-memory tep222-own-cpu",
+  "runtime_open_requested": "2026-11-09T06:18:50Z",
+  "runtime_release_finished": "2026-11-09T06:20:15Z",
+  "runtime_backend_inactive": true,
+  "compute_units_billed": null,
+  "independent_two_clone_reproduction": false,
+  "all_size_or_formal_proof": false,
+  "original_wrong_distribution_attempt_preserved": true
+}
