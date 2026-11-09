@@ -1,0 +1,53 @@
+{
+  "audited_proof_commit": "8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337",
+  "proof_gitLF_sha256": "9d22d01608893991411c52c696c2ee2d8ab342e0d5b18e371846681100af7198",
+  "complete_audit_report_sha256": "1e1a25155b6552c18e3e69facd8c4994cb7b251c82263ea4b19ba8b6a83e6f9a",
+  "audit_verdict": "accept_with_limits",
+  "audit_context": "Follow-up in existing shared-filesystem Codex task; prior198 context retained; no verified independence; exact hidden model/effort unknown. Full factual context in original report. No inbound messages during audit.",
+  "finite_checks": {
+    "dimensions": 3,
+    "geometries": 10,
+    "fields": 40,
+    "slab_checks": 240,
+    "transport_checks": 960,
+    "missing_incoming_negative_controls": 10,
+    "normal_optimized_outputs_identical": true,
+    "stdout_sha256": "ec5075022673db3ed6d6a3b042571b2b26f857ae60af62ef75bd40013bda08a9"
+  },
+  "execution": {
+    "source_sha": "8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337",
+    "started_utc": "2026-11-09T00:18:19.912952+00:00",
+    "billed_units": null,
+    "exits": {
+      "normal": 0,
+      "optimized": 0
+    },
+    "status": "FINITE_DIAGNOSTICS_CHECKED",
+    "finished_utc": "2026-11-09T00:18:23.046379+00:00",
+    "elapsed_seconds": 3.1335158489999912,
+    "child_maxrss_kib": 106104
+  },
+  "runtime": {
+    "request": "2026-11-09T00:17:49Z",
+    "release_finished": "2026-11-09T00:18:25Z",
+    "type": "owned CPU high-memory Colab Linux",
+    "allocation_execution_download_release_exits": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "separate_backend_no_active": true,
+    "billed_units": null
+  },
+  "negative_attempt": "First WSL distro lacked CLI; no runtime allocated. Fixed orchestration worktree path before actual execution. Original logs retained on D. Readback filename typo copied verbatim to canonical filename with source retained; no rerun was needed. No mathematical source or acceptance predicates changed.",
+  "formal_verification": false,
+  "new_paper": false,
+  "new_PDF": false,
+  "stars": null,
+  "originality": "Unestablished; classical projection/coarea/Sobolev/variance and Holder mechanism; exact shell details not subject of exhaustive prior-art search.",
+  "global_question_closed": false,
+  "main_route_counter_unchanged": 3,
+  "PR29": "20/41,TermSource0 unchanged",
+  "next": "Integrate protected source after exact-head checks; then derive thin-shell selection/local moment/observation count from actual global coefficients. Do not assume or repackage the missing conversion."
+}
