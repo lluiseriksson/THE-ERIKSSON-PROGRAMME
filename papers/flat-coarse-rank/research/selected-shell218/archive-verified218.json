@@ -1,0 +1,35 @@
+{
+  "archive_sha256": "78ac8c45067b59feb053a611cce415e82c32b808e541886baf97447f79b14d4d",
+  "bytes": 9901,
+  "source_sha": "e040475e37bf6b7440625df41c723738dbe3dbd8",
+  "manifest_all_members_verified": true,
+  "stdout_sha256": "223af146aeecf91f292edc83a907d2e6ab3d43814332d65028981a63264572df",
+  "report": {
+    "source_sha": "e040475e37bf6b7440625df41c723738dbe3dbd8",
+    "started_utc": "2026-11-09T02:26:58.722076+00:00",
+    "billed_units": null,
+    "exits": {
+      "normal": 0,
+      "optimized": 0
+    },
+    "status": "FINITE_DIAGNOSTICS_CHECKED",
+    "finished_utc": "2026-11-09T02:27:01.966143+00:00",
+    "elapsed_seconds": 3.244196991000024,
+    "child_maxrss_kib": 106228
+  },
+  "finite_checks": {
+    "dimension": 3,
+    "face_checks": 960,
+    "fields": 160,
+    "fold_checks": 960,
+    "geometries": 8,
+    "moment_checks": 192,
+    "negative_controls_rejected": 3,
+    "profiles": 32,
+    "scale_checks": 20,
+    "scope": "Finite fixtures only; no all-size, formal, global-partition or priority claim.",
+    "status": "FINITE_RATIONAL_DIAGNOSTICS_CHECKED",
+    "transcript_sha256": "037e0d569d8d6e6017f80a84ed9f0b355606546ddfe7adc9a5fac2211735798c"
+  },
+  "no_formal_or_global_verification": true
+}

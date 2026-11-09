@@ -75,7 +75,7 @@ edges. Discarding edges between faces only decreases energy.
 
 3. Actual tangential counting Sobolev estimate
 
-The counting cube inequality in source216 Section3 (its complete cube
+The counting cube inequality in source216 Section2 (its complete cube
 dependency is source202, now the sobolev.tex and shells.tex sections of
 frozen revision217 at commit2c881a5e8f31cad5643a49cb205fe8eb3156955d)
 states for a d-dimensional cube Q and every g:

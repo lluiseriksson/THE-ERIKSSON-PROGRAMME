@@ -1,0 +1,119 @@
+{
+  "verdict": "accept_with_limits",
+  "date": "2026-11-09",
+  "source": {
+    "commit": "e040475e37bf6b7440625df41c723738dbe3dbd8",
+    "path": "papers/flat-coarse-rank/research/2026-11-09_selected-shell218.txt",
+    "bytes": 9615,
+    "sha256": "41b28da62c1b9d523e1d565ef556a5ede64bdf27f74cf867f05df4ea5a1f487a"
+  },
+  "diagnostic": {
+    "path": "scripts/selected_shell_diagnostic218.py",
+    "bytes": 7928,
+    "sha256": "eb047f9ecae0d4d93ad7f9ce9f200b78930cdb6d260cc2e54a5d9cf4f29b439b",
+    "review": "static source reading only",
+    "executed": false,
+    "expected_counts": {
+      "geometries": 8,
+      "profiles": 32,
+      "fields": 160,
+      "face_checks": 960,
+      "moment_checks": 192,
+      "fold_checks": 960,
+      "scale_checks": 20,
+      "negative_controls_rejected": 3
+    },
+    "acceptance_uses_assert": false,
+    "gate_arithmetic": "exact rational and integer cubic gates",
+    "execution_success_certified": false
+  },
+  "source_representation": "Exact UTF-8 Git-LF; no normalization; no CR",
+  "capture_method": "git show SHA:path; raw stdout BaseStream; WriteAllBytes",
+  "capture_manifest_sha256": "c99abd8cfdb324e141b072d2d87b4f8747ab4bef00a676eda900d0f53f27a4b1",
+  "dependencies": {
+    "source216": {
+      "commit": "8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337",
+      "sha256": "9d22d01608893991411c52c696c2ee2d8ab342e0d5b18e371846681100af7198"
+    },
+    "revision217": {
+      "commit": "2c881a5e8f31cad5643a49cb205fe8eb3156955d",
+      "sobolev_sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+      "shells_sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a"
+    }
+  },
+  "checks": {
+    "coefficient_only_selection": "valid; same k for every f",
+    "disjoint_faces": "valid exactly 2D nonempty faces",
+    "singleton_tangents": "covered including k=1",
+    "folding": "valid unweighted 3^d multiplicity",
+    "cube_constants": "valid including d=2,q=1",
+    "original_starting_site_holder": "valid d^(2/d)/mu factor",
+    "critical_to_face_moment": "valid L cancellation",
+    "constant_C3": 2592,
+    "local_penalty": "K=c valid under c*C_D*B^(2/D)/mu<=1",
+    "rank": "2D per scalar coordinate locally",
+    "homogeneous_scale": "valid for every selected radius",
+    "diagnostic_gates": "statically consistent, not executed"
+  },
+  "load_bearing_errors": [],
+  "minor_objections": [
+    {
+      "location": "source218 Section 3",
+      "issue": "Cube dependency locator says source216 Section3; actual cube lemma and d=2 endpoint are Section2",
+      "severity": "minor reference error; no proof impact"
+    }
+  ],
+  "limits": [
+    "one selected nonwrapping concentric unit shell only",
+    "actual annular total mass B retained",
+    "conditional useful local gap; no automatic global gap",
+    "no global covering/count/charging theorem",
+    "no original unrestricted rectangle conclusion",
+    "no exhaustive novelty assessment",
+    "no physical/coexact/continuum conclusion",
+    "D=3 finite diagnostic code only; no execution certified"
+  ],
+  "context": {
+    "exposed_model": "Codex, an agent based on GPT-6",
+    "exact_hidden_model": "unknown",
+    "backend": "unknown",
+    "reasoning_effort": "unknown",
+    "task": "/root/defect_plane198_audit",
+    "fresh_context": false,
+    "retained_audits": [
+      "198",
+      "216",
+      "217"
+    ],
+    "shared_filesystem": true,
+    "shared_account": true,
+    "independence_claim": false,
+    "human_peer_review": false,
+    "inbound_messages_during_audit": false
+  },
+  "actions": {
+    "scientific_execution": false,
+    "lean": false,
+    "lake": false,
+    "tests": false,
+    "oracle": false,
+    "build": false,
+    "render": false,
+    "runtime": false,
+    "source_or_pr_edits": false,
+    "other_chat_or_automation_access": false
+  },
+  "assessment": {
+    "numerical_score": null,
+    "reason": "No calibrated numerical rubric supplied; source-level analytic accept_with_limits is the suitable assessment",
+    "exact_pdf_grade": false,
+    "existing_grade_inherited": false,
+    "stars": null,
+    "new_publication": false
+  },
+  "primary_references": [
+    "https://arxiv.org/html/1306.2521",
+    "https://www.mathnet.ru/php/getFT.phtml?jrnid=sm&paperid=4132&what=fullteng"
+  ],
+  "output_representation": "UTF-8 without BOM, LF, final newline"
+}

@@ -1,0 +1,160 @@
+FROZEN BOUNDED-SOURCE AUDIT218
+Date: 2026-11-09
+Verdict: accept_with_limits
+
+The selected-shell theorem, its explicit constant, its conditional K=c local penalty, and its all-radius homogeneous scale obstruction are analytically valid under the stated hypotheses. No load-bearing mathematical error was found. One minor dependency locator should be corrected in a later unfrozen revision: the cube lemma is in source216 Section 2, not Section 3. The diagnostic source is consistent with the formulas and intended finite counters on static reading; no execution success is certified.
+
+1. Exact frozen referent and capture
+Repository: C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108
+Frozen commit: e040475e37bf6b7440625df41c723738dbe3dbd8
+Source path: papers/flat-coarse-rank/research/2026-11-09_selected-shell218.txt
+Source bytes: 9615
+Source SHA-256: 41b28da62c1b9d523e1d565ef556a5ede64bdf27f74cf867f05df4ea5a1f487a
+Diagnostic path: scripts/selected_shell_diagnostic218.py
+Diagnostic bytes: 7928
+Diagnostic SHA-256: eb047f9ecae0d4d93ad7f9ce9f200b78930cdb6d260cc2e54a5d9cf4f29b439b
+Capture commands are git show e040475e37bf6b7440625df41c723738dbe3dbd8:<respective path>. stdout BaseStream was copied into bytes and saved with WriteAllBytes. Hash representation: exact UTF-8 Git-LF bytes, no normalization, no CR bytes.
+
+Dependencies captured and checked:
+- 8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337:
+  papers/flat-coarse-rank/research/2026-11-09_intrinsic-shell216.txt
+  10954 bytes; SHA-256 9d22d01608893991411c52c696c2ee2d8ab342e0d5b18e371846681100af7198
+- 2c881a5e8f31cad5643a49cb205fe8eb3156955d:
+  papers/flat-coarse-rank/integrated-revision/revision217/sobolev.tex
+  9493 bytes; SHA-256 80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54
+- Same revision217 commit:
+  papers/flat-coarse-rank/integrated-revision/revision217/shells.tex
+  11932 bytes; SHA-256 646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a
+Their actual counting cube proof and d=2 endpoint are the mathematical dependencies, rather than an assumed weighted or annular estimate.
+
+Full captures are in:
+ D:\Datos\the-eriksson-programme\autonomia\evidencia-218\audit218
+Capture manifest, UTF-8 LF without BOM:
+ capture-manifest218.json
+ SHA-256 c99abd8cfdb324e141b072d2d87b4f8747ab4bef00a676eda900d0f53f27a4b1
+
+2. Factual model/context and method
+This is a continuing assignment in /root/defect_plane198_audit with prior unit198, unit216 and unit217 audit context. It is not a fresh isolated context. It shares the programme filesystem/account and makes no independence or human-peer-review claim.
+Actually exposed model description: Codex, an agent based on GPT-6. Exact hidden model identifier, backend and reasoning effort are unknown to this auditor. Available model names in tools do not identify the running selection.
+I read the entire source218 and diagnostic218 at the frozen commit. The exact dependency material was consulted in conjunction with its full prior reads and audits in this same context. No prior source218 model grade/report was used. No inbound message was received during this audit.
+No scientific program, mathematical Python, test, diagnostic, Lean, Lake, oracle, build, render or runtime was executed. The Python file was read as text only. File/text/git/hash operations and primary web-source reading were used. No source, branch, PR, other chat or automation was modified or accessed. No disposable clone was created.
+This is an analytic source and diagnostic-code review, not an exact-PDF assessment, execution certificate, human review, new publication or inherited paper grade. No numerical score or stars are assigned: no calibrated numerical rubric was supplied, and the analytic verdict is the suitable assessment here. This does not inherit or target an existing score.
+
+3. Quantifiers, selection and geometry
+The source fixes D>=3, d=D-1>=2, p=d/2, P=D/2>p, q=2d/(d+2)>=1, integer L>=1, integer center z and arbitrary mu>0. Positive a on the finite nonempty annulus gives finite B>0. It does not require mu to be the arithmetic mean or a to obey mean comparability for this bounded theorem.
+The L integer radii from L to 2L-1 give disjoint unit shells with union Omega. Thus sum_j W_j=B and an actual minimum has W_k<=B/L. Choosing the least minimizer fixes ties and depends solely on a, mu and geometry. It does not inspect f. The same chosen k and faces therefore work for every field f, as the theorem's quantifier order requires.
+For each shell point the first coordinate with absolute relative value k is unique, including its sign. The face formula imposes interior coordinates before it and unrestricted shell-width coordinates after it, proving exact disjoint coverage. Each of the 2D products is nonempty. For k=1, interior-coordinate intervals are singletons, not empty intervals.
+Each face has d nominal tangential axes of side lengths 2k-1 or 2k+1. Some of those axes can be singleton, and the last pair of faces at k=1 are themselves singletons. The proof explicitly covers those degeneracies. The normal axis has length one. The side lengths are <=2k+1<=4L-1<4L, so |F|<=(4L)^d is valid. Internal positive-axis face edges are actual shell edges. Distinct faces have disjoint internal edge sets. Omitting cross-face edges decreases the nonnegative original energy.
+These are genuine disjoint integer rectangles on the selected shell, not the overlapping slab cover of source216.
+
+4. Counting cube dependency
+For d>=3, the included finite entropy/projection proof yields the relative internal EDGE-isoperimetric bound c_d=d(1-2^(-1/d)). Coarea on a half-support median part gives an l^(d/(d-1)) estimate. Applying it to v^alpha with alpha=2(d-1)/d uses alpha*d/(d-1)=2 and (alpha-1)q'=2, where q'=2d/(d-2) is conjugate to q. Holder and maximum degree 2d give exactly K_d=2 alpha d^(1/q')/c_d. Median recombination uses 2/q>=1 without an added dimension factor.
+For d=2, source216 Section 2 and revision217 explicitly provide the separate q=1 endpoint: relative isoperimetry constant 2-sqrt(2)>=1/2, coarea in l2, and positive/negative median l1 energy addition yield K_2=2. No infinite-conjugate power proof is imported.
+The source218 reference to “source216 Section3” is a minor inaccurate locator. Source216 Section 3 is the slab lemma; the cube statement and d=2 endpoint are in Section 2. The displayed cube inequality, constants, exact dependency commit and revision217 locations are otherwise unambiguous. This does not invalidate the theorem, but should be corrected after the source freeze.
+
+5. Face folding, including k=1
+Write s=2k+1 and ell_j in {2k-1,2k+1}. The endpoint-repeating fold has adjacent images equal or adjacent, so its nonconstant edges are actual face edges, with possible reversal only during this unweighted stage.
+If ell_j=s, the fold is the initial forward traversal, with every value visited once.
+If k>=2 and ell_j=s-2>=3, the s samples consist of the entire initial traversal and two extra endpoint-return samples. All values are visited at least once and at most three times; every original internal interval edge has at most three preimages. The bound is loose but safe.
+If k=1, s=3 and ell_j is 1 or 3. For ell_j=1 the fold is constant with exactly three vertex preimages and no nonconstant edge. For ell_j=3 it is the identity traversal. Thus every singleton tangential case is included.
+Product preimages visit every original vertex at least once, so for any fixed m the cube sum is at least the face sum. Choosing the extension's own mean and then minimizing the face's squared distance over constants proves V_cube>=V_face. This comparison uses the correct direction of minimization.
+For any fixed original edge, its own-axis edge multiplicity is at most three and every other-axis vertex multiplicity is at most three. Therefore total edge multiplicity is at most 3^d. The unweighted cube bound then gives
+ H_d=K_d^2(3^d)^(2/q)=K_d^2 3^(2d/q)
+in (3). For a singleton face both energies and variance vanish. Fold reversals do not move or reflect weights because original weights enter only after this argument.
+
+6. Original starting-site Holder and critical cancellation
+For retained face edges,
+ (sum|df|^q)^(2/q)
+ <= E_a,F (sum_e a(start(e))^(-p))^(1/p),
+where q/(2-q)=p=d/2 and (2-q)/q=1/p.
+Only d tangential positive directions occur. Each site starts at most d such edges, so the inverse edge mass is bounded above by d times the site inverse mass. Since a^(-p)=mu^(-p)b^p, the resulting coefficient is exactly
+ d^(1/p)/mu * (sum_F b^p)^(1/p).
+There is no omitted incoming-site energy, endpoint averaging or substituted observation-site weight. All actual edge starts are among the sites summed, and the site mass is an upper bound.
+Since P>p>0, finite Holder gives
+ (sum_F b^p)^(1/p)
+ <= |F|^(1/p-1/P)(sum_F b^P)^(1/P).
+Here 1/p-1/P=2/(dD)>0, d(1/p-1/P)=2/D and 1/P=2/D. With |F|<=(4L)^d and sum_F b^P<=W_k<=B/L, this becomes
+ (4L)^(2/D)(B/L)^(2/D)=4^(2/D)B^(2/D)<=4B^(2/D).
+The positive power of L from face counting cancels the negative power from radial selection exactly. No ambient normalized average has been relabeled as a favorable local average.
+Combining the estimates proves (1), with precisely
+ C_D=4K_d^2 3^(2d/q)d^(2/d).
+For D=3, q=1,d=2,K_2^2=4,3^(2d/q)=81,d^(2/d)=2, giving C_3=2592. The sharper factor 4^(2/D) could be retained, but the stated looser constant is valid and explicitly not optimized.
+Summing uses the same uniform coefficient on every face and disjoint retained energies, proving both inequalities in (1). Vector coordinates can be summed without another coefficient factor. Their observation dimension is still 2D per real scalar coordinate, not 2D total for arbitrarily many coordinates.
+
+7. Conditional local K=c penalty and normalization
+Let tau=C_D B^(2/D)/mu. The exact counting identity is
+ sum_A |f|^2=sum_F V_F(f)+sum_F |q_F(f)|^2,
+because q_F=|F|^(-1/2)sum_F f=sqrt(|F|)mean_F f.
+Thus “normalized counting means” means normalization relative to counting L2, not division by the shell probability mass. No additional N factor is missing in (2).
+From (1), residual variance is <=tau E_a,A. If c>0 and c tau<=1, then E_a,A>=c times residual. This proves (2) on all real fields, including constant fields and arbitrary facewise constants. The 2D rows have disjoint nonempty supports, hence are independent and have exact scalar row rank 2D. They are a local observation family on A_k only.
+For constant f, energy and residual variance vanish while the squared row norm equals the entire field norm; adding penalty c therefore reaches equality. This checks the coefficient and constant-mode convention. Nothing in the proof supplies observation rows or an inequality for the complement of A_k.
+
+8. Homogeneous all-radius lower scaling
+For a=mu, b=1 and
+ B=|Omega|=(4L-1)^D-(2L-1)^D<=(4L)^D.
+For every k in the candidate set and the field f(x)=x_2-z_2, F_(1,+) is a full d-cube of side s=2k+1 with that coordinate tangential. Its variance is exactly s^d(s^2-1)/12. The other face variances are nonnegative.
+Only positive coordinate-2 edges have nonzero differences, each of square one. There are at most |A_k| such starts. Thus the FULL shell energy is <=mu |A_k|<=2Dmu s^d, with positive denominator already for k=1. Therefore
+ sum_F V_F/E_a,A >=(s^2-1)/(24Dmu)
+ >=L^2/(6Dmu)
+ >=B^(2/D)/(96Dmu).
+The constants and inequality directions are correct. This uses the full shell energy, including cross-face edges, so it is not a false isolated-face energy lower bound.
+Because it works for every k, a coefficient-only selection cannot evade this scale check even if homogeneous shell masses select a particular radius. At fixed mu, a replacement of the order by o(L^2)/mu fails. This does not establish optimal C_D, all possible geometric partitions, or a lower bound against every global observation mechanism.
+
+9. Static diagnostic audit: rational gates and scope
+The script explicitly limits itself to D=3. Its helpers shell, faces and edges construct the actual lattice objects; cover and fold_check intentionally specialize geometry checks to three coordinates/two tangents. That is consistent with the documented scope, not an all-D diagnostic.
+For the four profiles, u is a positive integer and a=1/u^2, with mu=1. Then b=u^2, b^P=u^3 for P=3/2, and b^p=u^2 for p=1. Thus B, W and U used in the code are exactly the theorem's masses, not numerical fractional-power approximations.
+Fields are integer-valued and energies/variances use Fraction. The proof gates require no float root or rounding. All quantities compared under cubic powers are nonnegative, so cubing preserves the relevant inequality:
+- U^3<=|F|W^2 is finite Holder at p=1,P=3/2.
+- U^3<=16B^2 is the sharper selected-mass cancellation.
+- V<=324G^2 is H_2=4*81=324.
+- G^2<=2UE checks original-start Holder.
+- V<=648UE combines those constants.
+- totalV^3<=648^3*16B^2*totalE^3 follows from the common U bound.
+- totalV^3<=2592^3B^2*EA^3 is the stated looser theorem gate.
+- totalE<=EA checks disjoint internal edge selection.
+The qmass identity uses the correct sum squared divided by face size and no square-root rounding.
+fold_check retains both nominal tangent axes, including singleton axes. It checks surjectivity, vertex multiplicity <=9, mapped-edge locality, edge multiplicity <=9, variance domination, l1-energy domination and the actual q=1 cube bound. It does not reflect any coefficients.
+The homogeneous loop checks every candidate radius, not only the selected one, against the D=3 scale bound L^2/18.
+
+10. Diagnostic acceptance, counters and real negative controls
+Acceptance uses explicit require calls raising ValueError, not Python assert. The final status print occurs only after every positive gate, three negative-control checks and the exact final counter tuple. Optimized Python does not remove these require calls. This is a static code conclusion, not evidence of an executed normal/optimized pair.
+The loop counters are arithmetically consistent:
+ 8 geometries = four L values times two centers;
+ 32 profiles = eight geometries times four profiles;
+ 160 fields = 32 times five;
+ 960 face checks and 960 fold checks = 160 times six;
+ 192 moment checks = 32 times six;
+ 20 homogeneous scale checks = two centers times (1+2+3+4);
+ 3 intended negative-control rejections.
+The controls exercise actual failure classes:
+(a) Six full boundary faces at k=1 overlap. cover rejects their actual non-disjoint vertex counts.
+(b) At L=2, placing u=7 on the first radius makes that fixed radius's W_L exceed B/L. The false fixed-radius rule is rejected by its actual critical-mass comparison.
+(c) In the positive first-coordinate face at k=1, x0=(1,0,0) has two incoming tangential edges started at strong sites and two outgoing ones started at the weakened site. With epsilon=1/97, the actual energy is 2+2epsilon, whereas the false “all four starts weakened” formula gives 4epsilon. The equality gate rejects that real starting-site error.
+These are targeted finite regression controls, not a claim to reject every malicious mutation or validate a generic certificate interpreter.
+No script execution took place, so the expected counters, transcript digest, exits, mode agreement, resource use and successful completion are NOT certified. The printed transcript hash, if produced by a future run, would bind its transcript list; by itself it does not bind the executed script SHA or invocation. An execution wrapper must retain that separate source/command/exit provenance. This is a future evidence limit, not a defect in the stated diagnostic scope.
+
+11. Detailed objections and remaining limits
+Minor correction requested after freeze:
+ The source218 Section 3 locator “source216 Section3” should say Section 2 for the cube theorem and d=2 endpoint. It is non-load-bearing because the inequality and exact dependency are explicit.
+No mathematical correction is required for (1), (2), the constants, folding or homogeneous lower bound.
+Important limits:
+- The theorem is for one coefficient-selected unit shell in a nonwrapping concentric integer annulus. It does not cover arbitrary holes or torus identifications.
+- Its coefficient is derived from the actual TOTAL annular critical mass B. A useful target c still requires the explicit c*C_D*B^(2/D)/mu<=1 condition.
+- The selected 2D rectangles cover only that shell. The interior and L-1 other annular layers remain unobserved by these rows.
+- Iterating independently over order L shells can produce order L observation cost; no coefficient-driven global cover/count/charging theorem removes that cost here.
+- It does not close the unrestricted rectangle problem, remove a physical hypothesis, revive the refuted additivity/common-refinement routes, or claim a continuum/coexact result.
+- Scalar inequality extension to several real components does not remove their observation-rank multiplier.
+- Finite D=3 diagnostics do not prove all fields, dimensions or sizes. They have not been executed in this audit.
+- Contextual publication217 status and PR29/TermSource tallies were not reauthenticated.
+These limits are present in the source and are not hidden hypotheses being promoted to proved conclusions.
+
+12. Primary comparison and final disposition
+I consulted the named primary comparisons as context, not as mathematical dependencies:
+https://arxiv.org/html/1306.2521
+Section 3.1, Proposition 3.5 and proof use unweighted Sobolev/power estimates with conductance and Holder steps under their graph/cutoff assumptions. This supports the limited classical-method attribution, not immediate applicability to these finite faces.
+https://www.mathnet.ru/php/getFT.phtml?jrnid=sm&paperid=4132&what=fullteng
+The extracted text of Birman–Solomyak's 1967 paper supports the stated adaptive cube/set-function context. Its discussion explicitly warns that a positive parameter condition in its partition theorem is essential. No zero-smoothness global partition result is imported here. This was text reading of the primary PDF, not a render or layout assessment.
+No exhaustive novelty/equivalence search, first-priority judgment or human-peer-review conclusion is claimed.
+Final disposition: accept_with_limits for the exact frozen bounded result, with the minor citation-locator correction recorded. The derivation genuinely supplies selection and disjoint-face conversion for one shell; global covering/count remains an unproved separate link.
+
+Report and structured report representation: UTF-8 without BOM, LF, final newline.

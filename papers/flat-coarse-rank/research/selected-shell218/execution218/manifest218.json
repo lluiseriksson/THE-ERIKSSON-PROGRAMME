@@ -1,0 +1,11 @@
+{
+  "normal.stdout.json": "223af146aeecf91f292edc83a907d2e6ab3d43814332d65028981a63264572df",
+  "report218.json": "ab540cd676b694931dff1306430355a0a90c23aee6f2754db12fd90403422286",
+  "optimized.stdout.json": "223af146aeecf91f292edc83a907d2e6ab3d43814332d65028981a63264572df",
+  "optimized.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "normal.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "2026-11-09_selected-shell218.txt": "41b28da62c1b9d523e1d565ef556a5ede64bdf27f74cf867f05df4ea5a1f487a",
+  "selected_shell_diagnostic218.py": "eb047f9ecae0d4d93ad7f9ce9f200b78930cdb6d260cc2e54a5d9cf4f29b439b",
+  "optimized.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+  "normal.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+}

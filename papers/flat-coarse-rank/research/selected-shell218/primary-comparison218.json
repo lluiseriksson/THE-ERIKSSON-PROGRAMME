@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-11-09T02:27:20.9269337+00:00",
+  "method": "Read primary sources with web tool; limited exact-mechanism comparison, not exhaustive priority search",
+  "sources": [
+    {
+      "version": "v5",
+      "finding": "Classical unweighted Sobolev plus Holder weighted graph mechanism; cutoff/conductance setup differs from the actual finite first-exterior-coordinate face partition. No invariance principle or Harnack theorem imported.",
+      "authors": "Andres,Deuschel,Slowik",
+      "url": "https://arxiv.org/html/1306.2521",
+      "locations": "Section3.1,Proposition3.5,proof3.13-3.16"
+    },
+    {
+      "finding": "Adaptive dyadic cube partition set-function theorem is stated for positive alpha; no alpha0 counting conclusion imported. Selected codimension1 shell does not supply a global target-rank partition.",
+      "year": 1967,
+      "authors": "Birman,Solomyak",
+      "url": "https://www.mathnet.ru/php/getFT.phtml?jrnid=sm&paperid=4132&what=fullteng",
+      "locations": "Section2,pp298-300,Theorem2.1 and proof"
+    }
+  ],
+  "originality": "Unestablished; source218 is a local derived input using classical methods, retained in existing dossier",
+  "formal_correctness": "Not formally verified; pending full source audit",
+  "relevance": "Derives local coefficient-only selection and actual disjoint face control; whole-domain covering/count remains missing",
+  "statistics_queried": false
+}
