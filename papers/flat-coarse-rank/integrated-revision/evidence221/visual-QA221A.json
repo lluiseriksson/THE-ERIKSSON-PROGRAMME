@@ -1,0 +1,164 @@
+{
+  "pdf": {
+    "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\flat_critical_integrated.pdf",
+    "bytes": 874664,
+    "sha256": "a9c51109ac77831b12a22743fef38808020a7b6e761438a5d7fa12b8ee123903"
+  },
+  "pages": 95,
+  "reviewer": "Continuing Codex author task /root; not independent review",
+  "coverage": "All16contact sheets covering95pages plus13individual page images",
+  "contact_sheets": [
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-01.jpg",
+      "bytes": 297603,
+      "sha256": "c018ed8d2fc14c16ab58c1f0126e466adabbfd2eb4c123121d06acd2daad1702"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-02.jpg",
+      "bytes": 335693,
+      "sha256": "6dc11713f80e954bdf9bf38c2355f094c310618e806bcb407c5aa06d9c9243b3"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-03.jpg",
+      "bytes": 330147,
+      "sha256": "622d75c11986f765abd3840f88260efb3d4c80a24938598375d87bdbd5faa1a6"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-04.jpg",
+      "bytes": 334695,
+      "sha256": "e92e41848c89cbf40835f33771e0ab1500658cca709a4f6d50a1d90ee670e0b5"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-05.jpg",
+      "bytes": 319491,
+      "sha256": "3ec2691c618764baac511883e5902feb0216b0ad644e77bb95cbfc08515e0cb3"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-06.jpg",
+      "bytes": 307632,
+      "sha256": "632c47ee4501666891628d3d640abb7967de9c45ac0fd50d5a956c389ddece07"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-07.jpg",
+      "bytes": 300929,
+      "sha256": "6589eca3e0383e4b8583dcbf9d401a1b7fbcf39e64b5dfa2f6ec573e12e6b43b"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-08.jpg",
+      "bytes": 346926,
+      "sha256": "457c4d0ef981fa5d45498b7c37615161de7152a1919756d999a19d03ab49f2d9"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-09.jpg",
+      "bytes": 310260,
+      "sha256": "2f8676950dfef90708920d451cf64546d4b15c513033e9f273c505042960bb97"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-10.jpg",
+      "bytes": 341969,
+      "sha256": "7923ffd6d43906d1b51a425373be406a8629e6c2c22ffef2f719bbb2c0204a80"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-11.jpg",
+      "bytes": 302505,
+      "sha256": "f0c7c7fb4f59cb8c661176ecb62385c071105eb08b42e172caad3738b541bf7d"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-12.jpg",
+      "bytes": 313433,
+      "sha256": "ae5d32852719b667b68d71f8b97b69e53fc96e07932e38da84c5bbdd48973bcd"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-13.jpg",
+      "bytes": 330736,
+      "sha256": "109ba35fd30f8db91566833b3f5419369cf3ae6b305ffd0822e0b0725237294e"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-14.jpg",
+      "bytes": 317600,
+      "sha256": "23d2bc1c39f1476294f4abe964896b08ee5de4e8336df007a06509088b4e847d"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-15.jpg",
+      "bytes": 309414,
+      "sha256": "ae738ae6bd4c3a40759d93763c00cd1a686f10df5b2289962074cede3e91ef13"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\contact-16.jpg",
+      "bytes": 251631,
+      "sha256": "adf8a3e98365f90e575b1373b1834105a4394180a00b38cda679f35edc8de3d1"
+    }
+  ],
+  "individual_pages": [
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-01.png",
+      "bytes": 228335,
+      "sha256": "7bd4c111431268dacb985ea60aab5bedafcdbb8881f11aeef55d6abbc2e47052"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-02.png",
+      "bytes": 243528,
+      "sha256": "11a06a5d65abc092ca1c623a23894048267700e4cbef8f07ce4aae475f835952"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-45.png",
+      "bytes": 310925,
+      "sha256": "4e92e16591e2596bebd39cb92b497cf6be4ec9f2f7591be72ad8c99823f08c50"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-46.png",
+      "bytes": 284557,
+      "sha256": "9ba7334bb7c6136d6336d21427a610e4bd42971536935e8fe3e2021618658a19"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-87.png",
+      "bytes": 229843,
+      "sha256": "4a454fc00c9dcd44cc977ac25403392f3e549121f12eb4dafffe040c1ae738ba"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-88.png",
+      "bytes": 209859,
+      "sha256": "c119150cbfcb3f81eceba4d7f030cba0318745a490d036ff238ca8462c9aaac1"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-89.png",
+      "bytes": 212728,
+      "sha256": "0c20839d8b039d9cfa8acddf3f7b10d6da2bd9be9dbfd2ae2cffdcbe52ee0afe"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-90.png",
+      "bytes": 242008,
+      "sha256": "a8e8d0ecaafcfe369971af07d2c96d98ea81411878d2a6402351cda878b3bc4f"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-91.png",
+      "bytes": 223839,
+      "sha256": "86b69de0a636e7d91495a13ac2e789ee1d891a3475b1ae60dad0111e9086a5da"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-92.png",
+      "bytes": 282498,
+      "sha256": "ae8b64f5e456987a3937d17eae6ee629411471d43fcf25b7393309e16c410476"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-93.png",
+      "bytes": 294189,
+      "sha256": "839214441e6fe8442fe7ed9bd182485c3f7b6b1fb5ab5614bf914738bf3275ea"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-94.png",
+      "bytes": 290022,
+      "sha256": "ddfc5b36cf53a647a83490cad3d4e47f925f1fc90db06e71c3fb8308eba7db26"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-09_integrated221\\exact221A\\page-95.png",
+      "bytes": 97147,
+      "sha256": "035e1f0da3bf85e2e98c5449b8c153b3c2d826cd08d4c80fd3b50845db017593"
+    }
+  ],
+  "layout": "No clipping, overlap, missing glyphs or unreadable formula found at this coverage; final TeX warning list empty",
+  "content_disposition": "Three author pre-assessment clarifications retained separately; source audit ongoing, wait for full report before source edits. Rerender corrected sourceB.",
+  "exact_PDF_numerical_assessment": null,
+  "grade_requested": false,
+  "status": "VISUALLY_INSPECTED_UNGRADED_AWAITING_SOURCE_CORRECTIONS"
+}

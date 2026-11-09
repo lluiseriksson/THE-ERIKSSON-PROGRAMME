@@ -1,0 +1,258 @@
+{
+  "A_commit": "7822ac91245a8e79c304e595ca82b786283c3c92",
+  "B_commit": "86c19e1bd5b18cfe39f6c53685489b0d7cc75a64",
+  "capture": "Raw Git stdout bytes; no normalization",
+  "files": [
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/boundary-transfer.tex",
+      "capture": "B/boundary-transfer.tex",
+      "bytes": 11918,
+      "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/boundary-transfer.tex",
+      "capture": "A/boundary-transfer.tex",
+      "bytes": 11918,
+      "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/detour-separation.tex",
+      "capture": "B/detour-separation.tex",
+      "bytes": 8394,
+      "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/detour-separation.tex",
+      "capture": "A/detour-separation.tex",
+      "bytes": 8394,
+      "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/flat_critical_integrated.tex",
+      "capture": "B/flat_critical_integrated.tex",
+      "bytes": 150847,
+      "sha256": "1ef2117d05b6f894033a7995b1c23f51f430758312d3985564b857a0ffe093f2",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/flat_critical_integrated.tex",
+      "capture": "A/flat_critical_integrated.tex",
+      "bytes": 150294,
+      "sha256": "b33485504fdaf390b14fd3a56e85ff7b11108b358aec120a38df67887a050d6b",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/geometry-boundaries221.tex",
+      "capture": "B/geometry-boundaries221.tex",
+      "bytes": 18392,
+      "sha256": "96b49972afd82abe52e87db727efc85601303d220bcff4c986351afcc3a64055",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/geometry-boundaries221.tex",
+      "capture": "A/geometry-boundaries221.tex",
+      "bytes": 18246,
+      "sha256": "ee03c649af2bcc8cf22d4f152a68517d84795f7fab64a48451887c89f2b36e09",
+      "contains_cr": true
+    },
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/joint-binary.tex",
+      "capture": "B/joint-binary.tex",
+      "bytes": 8896,
+      "sha256": "001f9e6d2ec168fac732baad166f8ab2dc876bab84b82c00b8df75385e532551",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/joint-binary.tex",
+      "capture": "A/joint-binary.tex",
+      "bytes": 8896,
+      "sha256": "001f9e6d2ec168fac732baad166f8ab2dc876bab84b82c00b8df75385e532551",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/laminates-green.tex",
+      "capture": "B/laminates-green.tex",
+      "bytes": 20710,
+      "sha256": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/laminates-green.tex",
+      "capture": "A/laminates-green.tex",
+      "bytes": 20710,
+      "sha256": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/partial-invariance.tex",
+      "capture": "B/partial-invariance.tex",
+      "bytes": 8946,
+      "sha256": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/partial-invariance.tex",
+      "capture": "A/partial-invariance.tex",
+      "bytes": 8946,
+      "sha256": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/partition.tex",
+      "capture": "B/partition.tex",
+      "bytes": 12856,
+      "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/partition.tex",
+      "capture": "A/partition.tex",
+      "bytes": 12856,
+      "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/physical-cycle.tex",
+      "capture": "B/physical-cycle.tex",
+      "bytes": 15608,
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/physical-cycle.tex",
+      "capture": "A/physical-cycle.tex",
+      "bytes": 15608,
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/shells.tex",
+      "capture": "B/shells.tex",
+      "bytes": 11932,
+      "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/shells.tex",
+      "capture": "A/shells.tex",
+      "bytes": 11932,
+      "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/sobolev.tex",
+      "capture": "B/sobolev.tex",
+      "bytes": 9493,
+      "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/sobolev.tex",
+      "capture": "A/sobolev.tex",
+      "bytes": 9493,
+      "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64:papers/flat-coarse-rank/integrated-revision/revision221/spatial-geometry.tex",
+      "capture": "B/spatial-geometry.tex",
+      "bytes": 21639,
+      "sha256": "3f6152b40718190276160977a3401f52ad910a5f150890c971be01c1a1bfd4f9",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "show 7822ac91245a8e79c304e595ca82b786283c3c92:papers/flat-coarse-rank/integrated-revision/revision221/spatial-geometry.tex",
+      "capture": "A/spatial-geometry.tex",
+      "bytes": 21639,
+      "sha256": "3f6152b40718190276160977a3401f52ad910a5f150890c971be01c1a1bfd4f9",
+      "contains_cr": false
+    },
+    {
+      "git_arguments": "diff 7822ac91245a8e79c304e595ca82b786283c3c92 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64 -- papers/flat-coarse-rank/integrated-revision/revision221/",
+      "capture": "exact-git-diff221A-B.diff",
+      "bytes": 4904,
+      "sha256": "fe30af0ea289441578647b12daa0567cfcff1c700d67dcac9834490e2faff778",
+      "contains_cr": true
+    }
+  ],
+  "comparisons": [
+    {
+      "file": "boundary-transfer.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "detour-separation.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "flat_critical_integrated.tex",
+      "byte_identical": false
+    },
+    {
+      "file": "geometry-boundaries221.tex",
+      "byte_identical": false
+    },
+    {
+      "file": "joint-binary.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "laminates-green.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "partial-invariance.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "partition.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "physical-cycle.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "shells.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "sobolev.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "spatial-geometry.tex",
+      "byte_identical": true
+    }
+  ],
+  "context_files": [
+    {
+      "file": "original-report221-source.txt",
+      "bytes": 18342,
+      "sha256": "beb980a237883b74c81c23e102308ec9f09abda6928c7a7fb0a3835994b05d8f",
+      "representation": "Existing raw bytes copied without normalization"
+    },
+    {
+      "file": "original-audit221-source.json",
+      "bytes": 6215,
+      "sha256": "d7f40329f407d00cb125c5d15faa51b902f4b532fc1e33ac81457aa84c28bf1d",
+      "representation": "Existing raw bytes copied without normalization"
+    },
+    {
+      "file": "AUTHOR-RESPONSE221-source.json",
+      "bytes": 1141,
+      "sha256": "3dfc65af7ce93c2e1c810796ee04bc7062cc8f3fbcb0b33b01826c1b584d0ce5",
+      "representation": "Existing raw bytes copied without normalization"
+    },
+    {
+      "file": "bounded-corrections221A-to-B.diff",
+      "bytes": 4115,
+      "sha256": "4a68d8fb97a5ac883f87e0e617b3125ea43b9d391877a93e28c573f5c666ce26",
+      "representation": "Existing raw bytes copied without normalization"
+    }
+  ]
+}

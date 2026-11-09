@@ -1,0 +1,126 @@
+{
+  "verdict": "accept_with_limits",
+  "scope": "bounded corrective-source integration check221B",
+  "A_commit": "7822ac91245a8e79c304e595ca82b786283c3c92",
+  "B_commit": "86c19e1bd5b18cfe39f6c53685489b0d7cc75a64",
+  "directory": "papers/flat-coarse-rank/integrated-revision/revision221",
+  "B_blobs": {
+    "root": {
+      "path": "flat_critical_integrated.tex",
+      "bytes": 150847,
+      "sha256": "1ef2117d05b6f894033a7995b1c23f51f430758312d3985564b857a0ffe093f2"
+    },
+    "geometry": {
+      "path": "geometry-boundaries221.tex",
+      "bytes": 18392,
+      "sha256": "96b49972afd82abe52e87db727efc85601303d220bcff4c986351afcc3a64055"
+    }
+  },
+  "B_representation": "Exact Git blob UTF-8 LF; no CR; no normalization",
+  "capture": {
+    "method": "git show SHA:path; raw stdout BaseStream; WriteAllBytes",
+    "git_captures": 25,
+    "manifest": "capture-manifest221B.json",
+    "manifest_sha256": "2e34cf3ae070d0c57e273522266b385ef7525bb4bb5f5676770b49e9be3409e3",
+    "exact_git_diff_sha256": "fe30af0ea289441578647b12daa0567cfcff1c700d67dcac9834490e2faff778",
+    "exact_diff_representation": "Raw bytes; preserves old bare CR in deleted A fragment"
+  },
+  "original_rejection": {
+    "verdict": "reject for A remains unchanged",
+    "full_report_read": true,
+    "full_report_retained": true,
+    "report_sha256": "beb980a237883b74c81c23e102308ec9f09abda6928c7a7fb0a3835994b05d8f",
+    "structured_sha256": "d7f40329f407d00cb125c5d15faa51b902f4b532fc1e33ac81457aa84c28bf1d",
+    "overwritten": false,
+    "retroactively_upgraded": false
+  },
+  "supplied_context": {
+    "author_response_sha256": "3dfc65af7ce93c2e1c810796ee04bc7062cc8f3fbcb0b33b01826c1b584d0ce5",
+    "supplied_diff_sha256": "4a68d8fb97a5ac883f87e0e617b3125ea43b9d391877a93e28c573f5c666ce26",
+    "treated_as_authority": false
+  },
+  "delta": {
+    "changed_files": 2,
+    "insertions": 17,
+    "deletions": 9,
+    "changed": [
+      "flat_critical_integrated.tex",
+      "geometry-boundaries221.tex"
+    ],
+    "unchanged_byte_identical": [
+      "boundary-transfer.tex",
+      "detour-separation.tex",
+      "joint-binary.tex",
+      "laminates-green.tex",
+      "partial-invariance.tex",
+      "partition.tex",
+      "physical-cycle.tex",
+      "shells.tex",
+      "sobolev.tex",
+      "spatial-geometry.tex"
+    ],
+    "other_proof_changes_found": false
+  },
+  "corrections": {
+    "R1": "closed: explicit integer center/lattice/nonwrapping domain and A_k",
+    "R2": "closed: R>=2 guard restored for ramp quotient",
+    "R3": "closed: proper nonconstant text subscript; no bare CR in B",
+    "R4": "closed: current predecessor consistently v11; historical v8 retained",
+    "R5": "closed: ADS1306.2521v5 entry and cite distinct from older ADS1312.5473v6"
+  },
+  "additional_birman_entry": "primary Mathnet metadata confirms names/title/1967 volume2 issue3 pages295-317 and DOI; no proof change",
+  "new_objections": [],
+  "context": {
+    "task": "/root/defect_plane198_audit",
+    "exposed_model": "Codex, an agent based on GPT-6",
+    "exact_hidden_model": "unknown",
+    "backend": "unknown",
+    "reasoning_effort": "unknown",
+    "fresh_context": false,
+    "retained_prior_audits": [
+      "198",
+      "216",
+      "217",
+      "218",
+      "219",
+      "220",
+      "221A"
+    ],
+    "shared_filesystem": true,
+    "shared_account": true,
+    "independence_claim": false,
+    "human_peer_review": false,
+    "inbound_messages_during_check": false
+  },
+  "actions": {
+    "source_or_branch_or_pr_edits": false,
+    "other_chat_or_automation_access": false,
+    "scientific_execution": false,
+    "diagnostic_execution": false,
+    "mathematical_python": false,
+    "lean": false,
+    "lake": false,
+    "oracle": false,
+    "tests": false,
+    "build": false,
+    "render": false,
+    "runtime": false
+  },
+  "limits": [
+    "bounded source correction check only",
+    "no comprehensive old-page audit or novelty review",
+    "original global/coexact/physical limits retained",
+    "historical runtime and v11 assessment provenance not independently authenticated",
+    "renderA/B not inspected or assessed",
+    "no publication permission"
+  ],
+  "primary_metadata": [
+    "https://arxiv.org/abs/1306.2521v5",
+    "https://www.mathnet.ru/eng/sm4132"
+  ],
+  "numerical_grade": null,
+  "pdf_grade": null,
+  "stars": null,
+  "prior_grade_inherited": false,
+  "output_representation": "UTF-8 without BOM, LF, final newline"
+}

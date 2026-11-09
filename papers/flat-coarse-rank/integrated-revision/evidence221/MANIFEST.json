@@ -1,0 +1,132 @@
+[
+  {
+    "path": ".gitattributes",
+    "bytes": 8,
+    "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+  },
+  {
+    "path": "archive221-verified.json",
+    "bytes": 5457,
+    "sha256": "a961dc092068803cdcdda100e295e52849b01c18a1b37be0189247612252e483"
+  },
+  {
+    "path": "archive221B-verified.json",
+    "bytes": 5457,
+    "sha256": "146e209efa509ad23a366d348e635966cfb1980a8ac0e15ca358b7c25ac6551b"
+  },
+  {
+    "path": "author-observations-before-assessment221.txt",
+    "bytes": 1714,
+    "sha256": "c14ca1fccd695b133eb6cc89accbb850cdd67c683bcdb91e2afd7b98ae57c919"
+  },
+  {
+    "path": "AUTHOR-RESPONSE221-source.json",
+    "bytes": 1141,
+    "sha256": "3dfc65af7ce93c2e1c810796ee04bc7062cc8f3fbcb0b33b01826c1b584d0ce5"
+  },
+  {
+    "path": "bounded-corrections221A-to-B.diff",
+    "bytes": 4115,
+    "sha256": "4a68d8fb97a5ac883f87e0e617b3125ea43b9d391877a93e28c573f5c666ce26"
+  },
+  {
+    "path": "corrected-source/audit221B-source.json",
+    "bytes": 4417,
+    "sha256": "529b334734e94ec9bb1264c840afac0ae51edf27fcc991589d8adecac19f1a01"
+  },
+  {
+    "path": "corrected-source/capture-manifest221B.json",
+    "bytes": 10556,
+    "sha256": "2e34cf3ae070d0c57e273522266b385ef7525bb4bb5f5676770b49e9be3409e3"
+  },
+  {
+    "path": "corrected-source/exact-git-diff221A-B.diff",
+    "bytes": 4904,
+    "sha256": "fe30af0ea289441578647b12daa0567cfcff1c700d67dcac9834490e2faff778"
+  },
+  {
+    "path": "corrected-source/report221B-source.txt",
+    "bytes": 10107,
+    "sha256": "29991d8c219d4f8b34db2ae2de7bc8e438260b885d6250756c8c96c87f389ac3"
+  },
+  {
+    "path": "locked221.json",
+    "bytes": 1383,
+    "sha256": "babd2cb0b4ef5083956e36a0bb9bc2402bd275bdc87ff743a85bc6df58046135"
+  },
+  {
+    "path": "original-rejection/audit221-source.json",
+    "bytes": 6215,
+    "sha256": "d7f40329f407d00cb125c5d15faa51b902f4b532fc1e33ac81457aa84c28bf1d"
+  },
+  {
+    "path": "original-rejection/capture-manifest221.json",
+    "bytes": 40489,
+    "sha256": "912e5d4e9e1158ac16da51d8e3cf247ada2f875fba0d0cdabb2490ba787732ce"
+  },
+  {
+    "path": "original-rejection/evidence-readback221.json",
+    "bytes": 834,
+    "sha256": "0c55b3e1bdd04c278377a57e5c786bc4a8d3f13f355f4106ebbfae8f1c42c6b2"
+  },
+  {
+    "path": "original-rejection/report221-source.txt",
+    "bytes": 18342,
+    "sha256": "beb980a237883b74c81c23e102308ec9f09abda6928c7a7fb0a3835994b05d8f"
+  },
+  {
+    "path": "predecessor-lookup221.json",
+    "bytes": 570,
+    "sha256": "7e06fed2c97eeb71e79593ab8531f905df6eb35546047e3c9fe2e0dbe567ed3c"
+  },
+  {
+    "path": "preparation221B-encoding-failure.txt",
+    "bytes": 418,
+    "sha256": "04e680b0c9f3b99cde3efc56587cc8ad2b0ca9dcd6dabc758a667fe41daf7e3c"
+  },
+  {
+    "path": "README.md",
+    "bytes": 2647,
+    "sha256": "1f1476ee41220417a3093338e6ac8c0bbf2a3707fa186fe03a04174946db333f"
+  },
+  {
+    "path": "render221A.py",
+    "bytes": 6812,
+    "sha256": "21a2ddf0574d327e348a9b773fac41ab440419ab47a5d21fc7137ed07e514783"
+  },
+  {
+    "path": "render221B.py",
+    "bytes": 6754,
+    "sha256": "29627b00f6b67382b01a989175f89830a24953816f2bcd8ea9e540c5b8fd7bbb"
+  },
+  {
+    "path": "runtime221A.json",
+    "bytes": 5581,
+    "sha256": "3417642bfe977fa47af6b0374af85225924ef0aeb88e5bf939ce6d508bbfac8c"
+  },
+  {
+    "path": "runtime221B.json",
+    "bytes": 5551,
+    "sha256": "9804b18fdd20d288a7cbe2b1a574f47bdfe44e054f977baeb8cc1fdc5efc64dd"
+  },
+  {
+    "path": "source-pins221.json",
+    "bytes": 2672,
+    "sha256": "ea596c801d5e2af1a32811a22560c0bb4a174a5e2c8ac9e0473af4988708bc58"
+  },
+  {
+    "path": "source-pins221B.json",
+    "bytes": 2672,
+    "sha256": "a25d91deb6d82bde09630683d3f54749253a06955ce8403a101c881229af822e"
+  },
+  {
+    "path": "visual-QA221A.json",
+    "bytes": 7597,
+    "sha256": "3e64ed2293373804d6d1c74922c1a83177bc0caa8a27df29cdecaf65aa985856"
+  },
+  {
+    "path": "visual-QA221B.json",
+    "bytes": 7568,
+    "sha256": "f585d4185a3feff52d8a45044f25c854731b8dd4800ef23220e8bb48b878cab6"
+  }
+]

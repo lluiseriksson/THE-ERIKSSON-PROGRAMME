@@ -1,0 +1,138 @@
+FROZEN SOURCE-INTEGRATION AUDIT221
+Date: 2026-11-09
+Verdict: reject — bounded source corrections required before accepting this integration.
+
+The intended mathematical integrations of218–220 remain sound under their original hypotheses. This exact consolidation loses one necessary center hypothesis and one endpoint guard, contains a control-character corruption, leaves a contradictory predecessor sentence, and loses a specific primary citation. These are bounded integration defects; they do not overturn the accepted original218–220 proofs. No numerical or exact-PDF grade is assigned.
+
+1. Exact referent and captures
+Commit: 7822ac91245a8e79c304e595ca82b786283c3c92
+Frozen branch named in assignment: codex/tep-integrated221-20261109
+Repository: C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108
+Source directory: papers/flat-coarse-rank/integrated-revision/revision221
+New file geometry-boundaries221.tex:
+ 18246 bytes
+ SHA-256 ee03c649af2bcc8cf22d4f152a68517d84795f7fab64a48451887c89f2b36e09
+Root flat_critical_integrated.tex:
+ 150294 bytes
+ SHA-256 b33485504fdaf390b14fd3a56e85ff7b11108b358aec120a38df67887a050d6b
+
+All captures use git show SHA:path, stdout BaseStream copied to bytes and saved with WriteAllBytes, without normalization. IMPORTANT: geometry-boundaries221.tex is not pure LF text: it contains a bare CR byte inside the formula on LF-line245, described below. The other current TeX captures have no CR bytes. All hashes identify actual Git blob bytes, preserving that defect.
+
+Baseline: 2c881a5e8f31cad5643a49cb205fe8eb3156955d,
+papers/flat-coarse-rank/integrated-revision/revision217.
+All twelve current TeX blobs, all eleven baseline TeX blobs, original218–220 source blobs, the corrected current218 source, and the complete frozen selected-shell218/filament-certificate219/offcenter-shell220 evidence directories were retained. There are111 captured files in total.
+Own output directory:
+ D:\Datos\the-eriksson-programme\autonomia\evidencia-221\source-audit
+Complete manifest: capture-manifest221.json
+Manifest SHA-256, UTF-8 LF:
+ 912e5d4e9e1158ac16da51d8e3cf247ada2f875fba0d0cdabb2490ba787732ce
+Evidence readback summary: evidence-readback221.json
+Readback SHA-256, UTF-8 LF:
+ 0c55b3e1bdd04c278377a57e5c786bc4a8d3f13f355f4106ebbfae8f1c42c6b2
+
+2. Factual model/context and scope
+This is the continuing /root/defect_plane198_audit task with retained198/216/217/218/219/220 context, shared filesystem/account and prior involvement in the original source audits. It is not a fresh, blinded or independent review and is not human peer review.
+Actually exposed description: Codex, an agent based on GPT-6. Exact hidden selected model/backend and reasoning effort are unknown. Tool model options do not identify the running selection.
+The entire new section, complete root delta and relevant root context were read. Ten claimed unchanged files were compared directly byte-for-byte. Original218–220 proofs and their full retained evidence packets were consulted for integration fidelity. Existing old pages were not comprehensively re-audited.
+Prior v11 assessment numbers were read as quoted historical source context, not inherited or used to determine this verdict. No source221 numerical assessment is supplied.
+No inbound message arrived during this audit. No scientific program, diagnostic, mathematical Python, Lean, Lake, oracle, test, build, render or runtime was executed. Evidence files and hashes were read; no original campaign was rerun. No frozen source, branch or PR was changed. No other chat/automation was accessed. No disposable clone was created.
+An initial metadata capture command had a malformed final git argument for current218.txt and failed after the earlier files were captured. That one capture was corrected, and the complete final manifest was generated/read back. This was a text/git capture error, not a mathematical diagnostic run or source mutation.
+
+3. Required correction R1 — restore the lattice-center hypothesis
+geometry-boundaries221.tex, lines19–22, theorem selected221:
+The source218 statement explicitly fixes z in Z^D and a nonwrapping integer domain. The integrated statement introduces z in Omega but never declares z in Z^D, nor explicitly restricts x to the integer lattice. The proof's radial-layer identity and shifted integer faces require that omitted hypothesis.
+This is not a harmless extension to arbitrary centers. On the integer lattice take D=3,L=2,z=(1/2,1/2,1/2), mu=a=1. Sup-norm distances to z are half-integers. Omega with distances between2 and3 is nonempty, but both candidate integer-radius shells A_2 and A_3 are empty. There cannot be2D nonempty faces on either one, and their union does not give the asserted radial decomposition.
+Required bounded fix: explicitly state z in Z^D and x in Z^D in the nonwrapping setting, and preferably define A_k={x in Z^D:||x-z||_infinity=k}. This restores the original theorem; no proof redesign is needed. If lattice-aligned z was intended from context, the statement must still say so rather than silently broaden the quantifier.
+
+4. Required correction R2 — restore the nonzero-ramp guard
+geometry-boundaries221.tex, lines161–166:
+The theorem allows s=1, hence R=1. The proof unconditionally displays the quotient for f_t=t-(R+1)/2 on the final half-axis. At R=1 this field is zero, so the displayed left quotient is0/0, whereas the right expression12s^2/[R(R+1)] is6.
+Original source219 explicitly limited this calculation to R>=2. Reinsert that guard before defining/asserting this nonzero ramp quotient. The asymptotic limit, signed-tent lowspace and theorem's rank statement remain valid, including the separately stated vacuous small-m_s case. This is a lost proof endpoint restriction, not a counterexample to the large-s rank result.
+
+5. Required correction R3 — remove an actual control-character corruption
+geometry-boundaries221.tex, LF-line245, byte offset10512 (zero-based):
+Inside the supremum subscript, the Git blob has bytes
+ 75-70-5F-7B-66-5C-20-7B-0D-6D-20-6E-6F-6E-63-6F-6E-73-74-61-6E-74
+in the surrounding fragment. In particular it has opening brace, bare0D, then letter m, rather than the intended backslash-r-m command. There is no CRLF pair at that location. The capture preserved the raw bytes.
+This corrupts the “nonconstant” restriction's TeX text, leaving an extra literal m when TeX treats the CR as an endline. Replace the fragment with a proper command such as a text/nonconstant subscript, and save the source in the intended newline representation. No render is needed to identify the source corruption; no claim about its exact rendered appearance is certified here.
+
+6. Required correction R4 — contradictory immediate predecessor remains
+flat_critical_integrated.tex, lines2755–2756:
+The bibliography still says the immediate predecessor of “this candidate” is version10. The new opening lines78–79, model context1958 onward and authoritative-chronology sentence1989 say version11.
+This is a direct source-level contradiction introduced by incomplete chronology update. It is not merely a historical reference to v8: the retained parenthetical explicitly describes the current candidate's immediate predecessor. Update that parenthetical to v11 or make it unambiguously refer to an earlier historical candidate.
+The old v8 bibliography target itself can remain historical. The required correction is the current-parent claim, not erasing history.
+
+7. Required correction R5 — restore the specific ADS v5 citation
+geometry-boundaries221.tex, lines363–364:
+The comparison calls Section3.1/Proposition3.5 of “the cited arXiv v5 text.” The integrated bibliography has no arXiv:1306.2521v5 entry or citation. Its existing ap:ads entry at root2727–2730 is the different arXiv:1312.5473v6 paper, with Section2.2/Proposition2.1.
+Original218 correctly named arXiv:1306.2521v5 for the new comparison. Restore that paper/version and a usable citation/link, or explicitly choose and accurately identify a different intended reference. The finite face proof is self-contained, so this is not an unproved mathematical dependency, but the current attribution is not traceable as written.
+
+8. Ten unchanged files and complete root-delta check
+All ten claimed inherited files are exact byte copies of the specified revision217 commit:
+ boundary-transfer.tex; detour-separation.tex; joint-binary.tex;
+ laminates-green.tex; partial-invariance.tex; partition.tex;
+ physical-cycle.tex; shells.tex; sobolev.tex; spatial-geometry.tex.
+Thus their mathematical/provenance text was not otherwise silently changed. Equality does not recertify all inherited claims.
+The root delta is bounded to the date, abstract/guide additions, v11 model/predecessor context and hash, current-manifest wording, new input and Brudnyi bibliography item. It includes geometry-boundaries221.tex once after shells.tex. The new theorem labels are distinct in this source set, and existing cube/interval dependencies remain present.
+The new guide accurately separates selected local means, retained internal-certificate loss and actual annular slowdown. O1 originality, O2 historical reproduction and O3 global/physical limitations remain open in the surrounding prose. The O4 mean-zero/full-space correction in unchanged spatial-geometry.tex is preserved.
+No compilation/render was performed: resolved cross-reference output, layout, overfull lines or page count are not certified.
+
+9. Positive integration — selected shell218
+Under the restored lattice-center hypothesis, the mathematical body is faithful:
+- L disjoint radial layers sum to B; the least minimizer has W_k<=B/L and is coefficient-only, so the same choice works for every f.
+- First coordinate attaining absolute value k gives exactly2D disjoint nonempty integer rectangles, including singleton tangents at k=1.
+- The unweighted endpoint-repeat fold has vertex preimages between1 and3 and edge multiplicity at most3^d, including lengths1 and3 at k=1. Minimizing over constants yields variance domination in the correct direction.
+- The retained cube dependency includes the separate d=2,q=1,K_2=2 coarea/median endpoint and the d>=3 power argument. It gives H_d=K_d^2 3^(2d/q).
+- Original-start Holder uses at most d starts per site and p=q/(2-q)=d/2. It introduces d^(1/p)/mu, without moving coefficients under the fold.
+- Finite Holder from p to P retains |F|^(1/p-1/P) and W_k^(1/P). Since d(1/p-1/P)=2/D, the L powers cancel exactly. The safe factor4 gives C_D=4K_d^2 3^(2d/q)d^(2/d), with C_3=2592.
+- Face energies are disjoint actual retained edges. The exact counting-mean decomposition proves the conditional c penalty; no omitted ambient N factor appears. Probability normalization rescales rows by the square root of ambient volume.
+- Homogeneous f=x_2-z_2 on the whole shell uses the full shell energy, including interfaces, and yields L^2/(6Dmu)>=B^(2/D)/(96Dmu) for every candidate radius.
+The section preserves that this is one shell, with local rank2D per scalar component, not a global cover/count theorem or total vector rank2D.
+
+10. Positive integration — filament219, including sharp repair order
+Apart from R2, all formulas survive consolidation.
+w=2DR, A^P=R and H^P=N give actual S=2D+1-w/N and mu=H-w(H-A)/N. The envelope, Jensen lower moment and fixed upper M_D follow as in original219. The actual full cube gap uses the complete counting cube estimate, K_D<=8sqrt(D), original-start Holder and c_D=[64D^2(2D+1)]^(-1).
+The canonical cells remain disjoint rectangles for every permutation; the final two cells are weak half-axes. Actual transverse incoming starts are strong and imply E_full>=(D-1)H||f||^2 for fields supported there. No claimed retained obstruction is substituted for the full energy.
+The signed tent has norm2ell(2ell^2+1)/3 and energy4ell. Placement of m_s copies per half-axis fits [1,R], shares only zero endpoints and gives orthogonal norm/edge supports. Negative-half-axis reversal does not change the original constant internal coefficient A.
+G_s has dimension2m_s in kerP_0 and rho_s=6s^2/(2ell^2+1)<=c_D/4. The constant comparison reduces correctly to4(D+1)^2>=3(2D+1). m_s=0 is explicitly allowed.
+The rank-nullity argument uses a joint kernel of C,V in G_s and Phi(0)=0; no symmetry/positivity of V or continuity of Phi is needed. Scaling preserves all kernels and proves the neighborhood version. The statement excludes every choice among these coordinate orders, not every partition.
+Refinement has2D(D-1) strong rectangles,2Ds^(D-1) weak length-s intervals and origin, totaling J_s=1+2D(D-1)+2Ds^(D-1). Product-interval variance gives E_cell>=4V_cell. Refined energy is at most the base retained energy, and normalized means with coefficient c_D supply a repair. This matches Theta_D(s^(D-1)) in the stated task, not actual full-energy minimum rank.
+The one-cell positive example and scalar/coexact distinction remain explicit.
+
+11. Positive integration — off-center220
+All actual geometry, coefficient and energy formulas agree with original220:
+w=(2L)^d, A^P=L^d, H^P=Q^D, exact S and mean, w/N<=1/14 and actual original moment bound are retained.
+The product h has sumL(L-1), normT=(L-1)L(2L-1)/3 and gradient energy2L-2. The normal incoming edge is outside X; outgoing normal edge enters the absent hole; tangential boundary values vanish, including every strong incoming start. Thus E_ann=A d(2L-2)T^(d-1) is the actual annular energy, not a separated-cell form.
+Support Cauchy and the exact quotient give V/E>=s^2/(12d). Q^2(S/N)^(2/D) stays bounded, proving all-constant failure of the unconditional off-center formula.
+The mixed-width cover has Q^d thin and2LQ^d fat slabs. Every parent in the depth-two tree is fat, and descendant volumes are at most ancestor volumes. Directional fiber transport gives2Q^2(E_i/v_i+E_j/v_j); path Cauchy and the intermediate multiplicity give8Q^2Z. Cover variance, Z<=J E0, a>=A, Q<=5L and L^2/A=s^2 yield B_D=25J(1+8J), B_3=7350.
+The lower/upper orders therefore agree. R3 concerns the text restriction in the supremum, not those estimates.
+Filling the hole adds exactly A||f||^2 because restored edges start on the weak plate. The full cube inverse mass is below1+2^d, giving c_X=[64D^2(1+2^d)]^(-1) and the actual one-cell inequality for all fields. The section does not revive the rejected strong/incoming wording mathematically.
+It preserves that exact centering is not proved minimal, clearance might suffice, the slow quotient is scalar and no full-domain/coexact/physical counterexample follows.
+
+12. Full retained evidence218–220: what was verified
+The complete original retained evidence folders were captured, not just report summaries. Their original source-report hashes match this auditor's earlier final reports:
+218:238cbe9584e36b0a3ccc62a293995479bdd55647767e9892a7e1ed002799191c
+219:c1cf13dc3d81d509679c68ff6d174f8d8e83342f20a3cd6bcebf1751cac3fb05
+220:1e1359b06813050754d2fd448b18edf6721aee2fcd6b176c5e26963bd1a0f8d2
+Their accept-with-limits verdicts and involved/shared-context disclosures are accurately described.
+Each execution manifest has9 entries; every retained payload hash agrees. In each unit, actual captured normal/optimized exit files contain exactly0 followed by LF, stderr files are empty as manifested, and normal/optimized stdout bytes agree.
+The original sources/scripts in those manifests match the frozen source/script hashes that were audited. Original218 execution uses its original proof bytes; the later top-level proof differs in exactly one locator replacement Section3->Section2, as claimed. Its mathematical and diagnostic content did not change.
+Recorded stdout supports all new-section finite counts:
+218:160 fields;960 face and960 fold checks;192 moment;20 scale;3 rejected controls.
+219:60 fields;1680 refined-cell;6 linear;10 profile;4 lowspace;3 rejected controls.
+220:20 fields/4 geometries;120 slab;200 transport;120 root;5 fields on ONE full weighted profile;5 filled;6 counted closed-profile;3 rejected controls.
+The fixed U1000 control in220 remains a finite regression, not the all-constant proof.
+Thus the integrated numerical COUNTER descriptions are faithful to the retained finite transcripts. These observations do not create a numerical grade or re-execute a diagnostic.
+
+13. Provenance claims and limits not newly authenticated
+runtime-and-source records retain allocation/release times, source pins, zero backend-exit strings, “No active sessions” readback and null billed-unit fields. They support the statement that those records are preserved and billed units are unknown. I did not contact Colab, reproduce those runs, verify service-side allocation ownership or recover unrecorded history. This is recorded provenance consistency, not fresh execution attestation or two-fresh-clone terminal reproduction.
+The220 packet preserves v1/v2 note files and a correction record. Its README expressly says historical draft timelines were not independently authenticated by the source auditor. The current source's weak-outgoing Eq.(9) is correct; preservation/timestamp/no-hidden-rerun claims are not independently proved by this review.
+The v11 AIRR page open returned “Internal Error”/URL inaccessible through the web tool. I did not independently fetch/hash its PDF or authenticate its quoted4.00/10, criterion stars, recommendation or page count. Those remain historical assertions of the root, expressly not a current assessment. R4 is already a direct internal contradiction and does not depend on remote access.
+No exhaustive novelty/priority check, comprehensive old-page audit, physical obligation removal, global partition/count theorem, PDF grade or permission is supplied. Earlier O1/O2/O3 limitations remain.
+
+14. Final disposition
+Reject this exact integration pending R1–R5:
+restore the integer lattice center/domain; restore R>=2 for the ramp quotient; repair the bare-CR TeX fragment; reconcile the stale v10 predecessor sentence; restore the actual ADS v5 citation.
+These are concrete bounded changes to the consolidation. The already accepted original218–220 mathematics and their recorded source verdicts remain intact. No source edit was made by this auditor, and this verdict applies only to commit7822ac91245a8e79c304e595ca82b786283c3c92.
+
+Report representation: UTF-8 without BOM, LF, final newline.

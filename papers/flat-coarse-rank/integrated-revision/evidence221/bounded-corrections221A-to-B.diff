@@ -1,0 +1,73 @@
+--- A/geometry-boundaries221.tex
++++ B/geometry-boundaries221.tex
+@@ -17,10 +17,10 @@
+ \subsection{Coefficient-selected unit shells with disjoint faces}
+ \begin{theorem}\label{thm:selected221}
+ Let $D\ge3$, $d=D-1$, $P=D/2$, $p=d/2$, $q=2d/(d+2)$,
+-$L\ge1$ an integer, and $\mu>0$. On
+-$\Omega=\{x:L\le\|x-z\|_\infty\le2L-1\}$ let $a(x)>0$ and put
++$L\ge1$ an integer, $z\in\mathbb Z^D$, and $\mu>0$. In the nonwrapping integer lattice, on
++$\Omega=\{x\in\mathbb Z^D:L\le\|x-z\|_\infty\le2L-1\}$ let $a(x)>0$ and put
+ $B=\sum_\Omega(\mu/a)^P$. There is a coefficient-only selected
+-$k\in\{L,\ldots,2L-1\}$ whose shell $A_k$ has exactly $2D$
++$k\in\{L,\ldots,2L-1\}$ whose shell $A_k=\{x\in\mathbb Z^D:\|x-z\|_\infty=k\}$ has exactly $2D$
+ disjoint rectangular faces $F$, such that for every real $f$
+ \begin{equation}\label{eq:selected221}
+  \sum_F V_F(f)\le \frac{C_DB^{2/D}}{\mu}\sum_F E_{a,F}(f)
+@@ -158,7 +158,7 @@
+ with all later coordinates free in $[-R,R]$; define $B_{i,-}$ using
+ $[-R,-1]$ and include $\{0\}$. These disjoint integer rectangles
+ cover $X$. Their final pair are weak half-axes for every $\pi$.
+-The mean-zero linear field $f_t=t-(R+1)/2$ on one final half-axis,
++For $R\ge2$, the mean-zero linear field $f_t=t-(R+1)/2$ on one final half-axis,
+ zero elsewhere, has
+ \[
+  P_0f=0,\qquad
+@@ -242,8 +242,7 @@
+ annular energy satisfies
+ \[
+  \frac{s^2}{12d}\le
+- \sup_{f\ {-m nonconstant}}\frac{V_\Omega(f)}{E_{a,\Omega}(f)}
++ \sup_{f\ \text{nonconstant}}\frac{V_\Omega(f)}{E_{a,\Omega}(f)}
+  \le B_Ds^2,\qquad B_D=25J(1+8J),\quad J=2D.
+ \]
+ Thus the thickness-uniform centered critical-moment formula cannot extend
+@@ -361,9 +360,8 @@
+ \subsection{Comparison, evidence and remaining question}
+ Radial selection, folds, finite Sobolev/H\"older, product tents and
+ rank-nullity are classical. The weighted method should be compared with
+-Andres--Deuschel--Slowik, Section~3.1, Proposition~3.5 of the cited
+-arXiv v5 text: its conductance and cutoff setup is not this finite-face
+-construction. Birman--Solomyak's adaptive cube partitions do not supply
++Andres--Deuschel--Slowik~\cite{ads221}, Section~3.1, Proposition~3.5 of arXiv:1306.2521v5: its conductance and cutoff setup is not this finite-face
++construction. Birman--Solomyak's adaptive cube partitions~\cite{birman221} do not supply
+ an unsupported zero-smoothness partition theorem here.
+ Brudnyi~\cite{brudnyi221}, Sections~1--2 and Appendix~I, treats
+ function-dependent approximation and a dyadic inner cube strictly inside
+--- A/flat_critical_integrated.tex
++++ B/flat_critical_integrated.tex
+@@ -2669,6 +2669,15 @@
+ \input{geometry-boundaries221.tex}
+ 
+ \begin{thebibliography}{99}
++\bibitem{ads221} S. Andres, J.-D. Deuschel and M. Slowik,
++\emph{Invariance principle for the random conductance model in a degenerate ergodic environment},
++Annals of Probability 43(4) (2015), 1866--1891; arXiv:1306.2521v5 (2019),
++Section 3.1, Proposition 3.5. \url{https://arxiv.org/abs/1306.2521v5}.
++\bibitem{birman221} M. Sh. Birman and M. Z. Solomyak,
++\emph{Piecewise-polynomial approximations of functions of the classes $W_p^\alpha$},
++Math. USSR-Sbornik 2(3) (1967), 295--317, Sections 1--2.
++\url{https://doi.org/10.1070/SM1967v002n03ABEH002343}.
++
+ \bibitem{brudnyi221} Yuri Brudnyi, \emph{Nonlinear piecewise polynomial approximation and multivariate BV spaces of a Wiener--L.\ Young type. I}, arXiv:1511.03971v1 (2015), Sections 1--2 and Appendix I. \url{https://arxiv.org/abs/1511.03971v1}.
+ \small
+ \raggedright
+@@ -2753,7 +2762,7 @@
+ \bibitem{lg:programme} L. Eriksson, \emph{Coarse information and finite rank
+ obstructions for flat lattice Hodge forms}, existing AIRR dossier
+ ARR-2026-7EPM3V3DP796BBRR, historical public version8 (the immediate
+-predecessor of this candidate is version10).
++predecessor of this candidate is version11).
+ \url{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v8/}.
+ Working paper with AI assessment, not editorial acceptance.
+ \bibitem{lg:muckenhoupt} B. Muckenhoupt, \emph{Hardy's inequality with weights},
