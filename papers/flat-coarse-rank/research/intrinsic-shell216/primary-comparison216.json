@@ -1,0 +1,10 @@
+{
+  "url": "https://arxiv.org/html/1312.5473v6",
+  "retrieved_at": "2026-11-09T00:18:15.629086+00:00",
+  "raw_bytes": 1707423,
+  "sha256": "dd193c2b47f0943ebabb213e40f4564b7afc79d2cd037f8a0393101dbf75cb99",
+  "read": "Section2.2 Eqs2.5-2.11 and propositions2.1/2.4",
+  "comparison": "Classical coarea/Sobolev plus conductance Holder; no priority established for specific shell geometry or thickness loss. No Harnack or continuum conclusions imported.",
+  "version": "arXivv6,2019-01-16 according to abstract version history; HTML display dateline not used as publication date",
+  "full_prior_art_search_complete": false
+}

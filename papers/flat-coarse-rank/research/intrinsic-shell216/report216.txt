@@ -1,0 +1,110 @@
+MATHEMATICAL SOURCE AUDIT — INTRINSIC SHELL216
+Date: 2026-11-09
+Verdict: accept_with_limits
+
+I found no load-bearing error in the stated shell inequality, its explicit constants, its lower-moment exponent, or either sharp-power obstruction. Acceptance applies to the exact finite-shell analytic statement below. It does not establish originality, human peer review, a global rectangular-partition theorem, or a physical consequence.
+
+1. Frozen artifacts and byte capture
+Repository: C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108
+Source commit: 8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337
+Source path: papers/flat-coarse-rank/research/2026-11-09_intrinsic-shell216.txt
+Capture command: git show 8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337:papers/flat-coarse-rank/research/2026-11-09_intrinsic-shell216.txt
+Source bytes: 10954
+Source SHA-256: 9d22d01608893991411c52c696c2ee2d8ab342e0d5b18e371846681100af7198
+Dependency commit: 8262c72573387d44d82359636f65ec635449a131
+Dependency path: papers/flat-coarse-rank/integrated-revision/revision202/sobolev.tex
+Capture command: git show 8262c72573387d44d82359636f65ec635449a131:papers/flat-coarse-rank/integrated-revision/revision202/sobolev.tex
+Dependency bytes: 9469
+Dependency SHA-256: 65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb
+Representation for both hashes: exact Git stdout bytes, UTF-8 Git-LF; no normalization, no CR bytes. Git stdout BaseStream was copied into memory and saved with WriteAllBytes, without text redirection or decode/re-encode.
+Retained captures and this report are only in the assignment's own folder:
+D:\Datos\the-eriksson-programme\autonomia\evidencia-216\audit216
+
+2. Factual model, context and method
+Actually exposed description: Codex, an agent based on GPT-6. The selected exact hidden model identifier, backend and reasoning-effort setting are unknown to this auditor. Available model names in tool documentation do not identify the running selection.
+This assignment is a follow-up in the existing auditor task /root/defect_plane198_audit. Its context includes that task's earlier unit198 audit and report; this unit216 assignment was not a fresh context reset. The filesystem and account are shared. No independence claim is made. No prior unit216 audit report, grade or stars was consulted. No inbound follow-up message arrived during the audit.
+I read the complete source and complete dependency using git show, and re-read the active repository CLAUDE.md and operational governance. D:\LEEME.md and the owner's storage rule were already read in the earlier part of this session. The dependency's cube theorem is the only dependency result needed for this verdict; its reflection and weighted rectangle adapters are not substituted into the shell proof.
+This was reasoning and source review, with git/text/hash operations and one primary-reference comparison. No numerical execution, mathematical program, test, Lean, Lake, build, rendering, oracle, remote runtime, or publication action was performed. The referenced companion diagnostics were not run, read as evidence, or treated as a proof. No source, branch, PR, chat or automation state was edited. No disposable clone was created. This is model-assisted mathematical review, not human peer review. No stars or PDF assessment is issued.
+
+3. Exact accepted claim
+For integer D>=3, d=D-1, p=d/2, q=2d/(d+2), integer R>=1 and 0<=r<R, let t=R-r and L=2R+1. For the nonwrapping concentric integer shell A and any positive starting-site coefficient a on A, the displayed variance and once-counted internal positive-axis energy obey
+ V_A(f) <= C_D (sum_A a^(-p))^(1/p) E_a,A(f)
+ <= C_D (2D)^(2/d) L^2 t^(2/d)
+                 (mean_A a^(-p))^(1/p) E_a,A(f)
+for every real scalar f, with precisely the stated C_D. The local-mu formulation follows if the actual local normalized moment is supplied. The scalar inequality extends coordinatewise to finite real vector fields with the same coefficient factor, since every coordinate uses the identical coefficient field and common scalar multiplier.
+
+4. Dependency cube theorem
+The finite entropy argument is valid: entropy decreases under additional conditioning, the chain rule counts each coordinate D-1 times, and support bounds give the finite projection inequality. The omitted-coordinate notation is explicitly resolved in the text.
+For a set U occupying at most half a cube, at most |U|/L fibers per direction can be full. Every nonempty nonfull interval fiber has an internal crossing edge. Different fibers/directions supply different edges. Projection plus AM-GM therefore gives
+ boundary_E(U) >= d |U|^((d-1)/d) - d|U|/L
+ >= d(1-2^(-1/d)) |U|^((d-1)/d).
+Finite coarea and the triangle inequality in the counting norm consequently supply the l^(d/(d-1)) bound for functions supported on at most half the cube.
+For d>=3, alpha=2(d-1)/d has alpha*d/(d-1)=2 and (alpha-1)qstar=2 with qstar=2d/(d-2), the conjugate of q. The power-difference bound and degree bound 2d yield the stated factor 2 alpha d^(1/qstar)/c_d. Dividing by the positive norm only when nonzero is valid. Median splitting has both supports at most half and the edgewise q-energy inequality; 2/q>=1 permits addition of the squared estimates without an extra factor. Thus the imported K_d^2 counting cube inequality is proved with the exact convention used in shell216. No external boundary condition or aspect-ratio estimate is silently imported.
+For d=2 the projection/isoperimetry argument itself remains valid and gives c_2=2-sqrt(2)>=1/2. Coarea now gives ||v||_2<=2 sum|dv|. The positive and negative median parts satisfy the edgewise exact l1 identity, and the squared sums are bounded by their total squared. Therefore K_2=2 is valid. No illegitimate qstar=infinity power division is used. A singleton cube has zero variance.
+
+5. Slab exponents and endpoints
+For a slab Q_L^d times a t-site interval, exact orthogonal variance decomposition about layer means gives the two terms in the source. If T is total long-direction q-energy, summing layer cube estimates uses sum_z T_z^(2/q)<=T^(2/q).
+For the short direction, path Holder bounds every pair difference by t^(1-1/q) times the q-gradient norm. Jensen over the mean and summation over t sites give exactly t^(3-2/q). Jensen over the L^d fibers gives sum|dm|^q<=L^(-d)U. Thus the second term is
+ L^(d-2d/q) t^(3-2/q) U^(2/q)
+ = L^(-2) t^(2-2/d) U^(2/q).
+Since t<=L and L>=1, its prefactor is at most L^(-2/d)<=1. Taking B_d=max(K_d^2,1) and combining T and U proves (3).
+At q=1, all Jensen and path arguments remain valid, with t^0 in the point-difference bound. At t=1 the short-direction variance and energy both vanish. Here t<=R<L, so the stated t<=L hypothesis holds throughout. No asymptotic size restriction is used.
+
+6. Slab cover, overlap and mean transport
+The 2D slabs cover exactly those outer-cube sites with some coordinate outside [-r,r], hence cover A. Each has tL^d sites. Slabs with opposite signs on the same coordinate do not meet. Slabs on distinct coordinates meet in t^2L^(d-1) sites, for either choice of signs. The specified tree connects all 2D slabs: each other-normal slab attaches to (1,+), and (1,-) attaches through (2,+). Every root path has at most two edges with distinct normals. This works already at R=1,r=0,t=1.
+For the interval mean comparison, averaging differences over I times T0 cancels the subinterval length through the normalized average. Path Holder then leaves L^(q-1), with q>=1; q=1 is legitimate. In a product slab, Jensen over the same fibers leaves the factor |F|^(-1/q). On a tree intersection |F|=tL^(d-1), so the source's transport coefficient is
+ H=L^(1-1/q)(tL^(d-1))^(-1/q)
+  =L^(1-d/q)t^(-1/q)
+  =L^(-d/2)t^(-1/q).
+Every relevant directional edge is internal to that slab, and hence internal to A. Bounding each such norm by the full G is legitimate; it does not claim disjoint slab energy.
+Each tree-edge mean difference is <=2HG, each root difference <=4HG, and vH^2=t^(1-2/q)=t^(-2/d)<=1. This exact cancellation is why an inverse overlap-volume factor does not survive. There is no off-center or multiple-hole inference.
+The shell variance is the minimum squared distance to a constant. Using the root mean, then overcounting nonnegative squared terms by a cover, and decomposing exactly on each slab proves
+ V_A <= J B_d G^2 +16J vH^2 G^2 <= J(B_d+16)G^2.
+No factor two is missing in the decomposition, and overlap multiplicities do not undermine the upper bound.
+
+7. Original coefficients, moment and constants
+Weighted Holder on precisely the retained original edges has q/(2-q)=d/2=p and (2-q)/q=1/p. It gives
+ G^2 <= E_a,A (sum_e a(start(e))^(-p))^(1/p).
+At most D positive-axis retained edges start at a site, so replacing inverse edge mass by D times inverse site mass costs exactly D^(1/p)=D^(2/d). Thus C_D=S_D D^(2/d), with S_D=J(B_d+16), is valid. No weight is reflected, averaged, or moved from its original starting site; no outside energy is introduced.
+For d=2, K_2=2 gives B_2=4, J=6, S_3=120, C_3=360. Multiplication by J^(2/d)=6 gives the second-line coefficient 2160 as stated.
+N<=JtL^d implies N^(1/p)<=J^(2/d)t^(2/d)L^2. Since sum a^(-p)=N mean a^(-p), this proves the normalized second line with no hidden volume factor. An actual local bound mean(mu/a)^p<=M_A gives (mean a^(-p))^(1/p)<=M_A^(1/p)/mu. Ambient moments cannot be substituted without an actual localization argument.
+For constant coefficients this estimate can be loose in thickness, but its claim is uniform over all positive coefficients, for which the following example is necessary.
+
+8. Isolated starting-site star: exact audit
+Take x0=(R,R,0,...,0). It belongs to A since its first two coordinates equal the outer radius. All x0-e_i belong to A, are within the outer cube and are distinct, including at R=1 and for r=0. W therefore has exactly h=D+1 sites.
+The smallest shell volume occurs at R=1,r=0, giving N>=3^D-1>=2(D+1) for D>=3. One way to see the first inequality is to minimize volume at r=R-1, then note that (2R+1)^D-(2R-1)^D increases for integer R>=1. Therefore epsilon=(h/N)^(1/p0) lies strictly between zero and one for every p0>0.
+The moment is exactly
+ mean a^(-p0)=(h/N)*(N/h)+(N-h)/N=2-h/N<2.
+The indicator variance is exactly 1-1/N. There are D incoming retained edges, started at x0-e_i, and D-2 outgoing retained edges, started at x0; the two positive first/second-coordinate steps leave the outer cube. Every one of the 2D-2 starts lies in W. These are the only edges with nonzero indicator difference. Consequently E=(2D-2)epsilon exactly and (6) follows from V>=1/2.
+Weakening x0 alone fails: incoming starts would retain coefficient one and contribute D to the energy. Thus the stated star, including all incoming starting sites, is essential under this energy convention and correctly implements the sharpness test.
+
+9. Thin-shell critical exponent and thickness power
+The exact inner cube side is 2r+1=L-2t, so N=L^D-(L-2t)^D. Two disjoint coordinate-1 slabs give N>=2tL^d; the full cover gives N<=2DtL^d. Both are valid at r=0 and t=1.
+At p0=d/2, the isolated-star lower bound is a dimension-dependent positive constant times N^(2/d), hence times L^2t^(2/d), while its normalized moment stays below two. The proved upper bound has this same power dependence. This establishes sharpness of powers for the class of arbitrary positive original site weights, not optimal constants.
+To rule out beta<2/d in an otherwise uniform L^2t^beta normalized-moment estimate, the sequence r=0,R increasing has t=R increasing and N comparable to tL^d; division of the lower bound by L^2t^beta gives a diverging multiple of t^(2/d-beta).
+For fixed thickness t=1 and p0<d/2, the lower bound divided by L^2 grows at least as L^(d/p0-2), whose exponent is positive. Thus no dimension-only uniform L^2 normalized-p0-moment inequality of the proposed form can hold at that smaller exponent, already on thickness-one shells. This is the precise scope of “lowest possible”; it does not prohibit other inequalities with additional geometry, ellipticity, observations or stronger size factors.
+
+10. Mean-comparability rescaling and global-moment distinction
+For a_tilde=a/epsilon, its minimum is one and its maximum is 1/epsilon. Set a_bar=mean a=1-h/N+(h/N)epsilon. Since h/N<=1/2, a_bar>=1/2, and mu=a_bar/epsilon. Therefore max a_tilde<=2mu. The normalized p0-moment equals a_bar^p0(2-h/N)<2, and the indicator energy after rescaling is exactly 2D-2. These statements use the actual arithmetic mean.
+The claimed divergence of the normalized D/2 moment at p0=d/2 can be made explicit. Write theta=h/N and k=D/2. Then
+ mean(mu/a_tilde)^k = a_bar^k [theta^(1-k/p0)+1-theta].
+Here 1-k/p0=-1/d. Since a_bar>=1/2, this is at least 2^(-D/2)(N/h)^(1/d), which diverges as N grows. Thus this star family does not meet a fixed global D/2 normalized-moment bound in that limit. Its use is local sharpness, not a counterexample to the main global problem.
+
+11. Adverse findings, limitations and actual attack surface
+No mathematical correction is required for the audited local claims.
+The following limitations are binding:
+- The theorem is for concentric nonwrapping integer shells with one hole and their translations. Its transport proof does not certify off-center holes, multiple holes, wrapped identifications or arbitrary annuli.
+- Lower local p-moment control is an input. No coefficient-driven shell selection, local-moment derivation from the ambient assumption, target-order observation count, or conversion to disjoint admissible rectangles is proved.
+- The star example defeats stronger local inequalities with the specified normalized moment and scale. It does not defeat every target-order rectangular partition or every finite penalty.
+- “Sharp” concerns the exponents for arbitrary positive site weights. No claim of optimal constants, all geometric classes or originality is established.
+- Contextual shell205, stopped-route status, PR29=20/41 and TermSource0 were not independently re-audited. The diagnostic companion's assertions and execution history were not checked.
+- The dependency's cube proof is checked here as a load-bearing argument. This verdict does not purport to recertify every unused reflection/rectangle statement in that file.
+Useful actual analytical attacks were: constant fields (variance zero); fields varying only between slab layers (tests the L^(-2)t^(2-2/d) factor); q=1 endpoint fields; the smallest R=1,r=0 geometry; opposite-normal transport via a distinct-normal intermediate; arbitrary thin overlaps; indicator at x0 with all incoming starts weakened; the negative control weakening x0 only; thin-shell p0<d/2 sequences; and thick-shell beta<2/d sequences. All are resolved by the displayed reasoning. No numerical attack was executed or claimed.
+
+12. Attribution and conclusion
+Primary comparison consulted: Andres–Deuschel–Slowik, arXiv:1312.5473v6, Section 2.2, Eq. (2.9) and Proposition 2.4.
+https://arxiv.org/html/1312.5473v6
+That reference presents unweighted Sobolev and weighted graph inequalities under its graph and boundary hypotheses. It supports the classical-method context, not an automatic theorem for this finite shell. The source appropriately proves its own geometry and does not import Harnack conclusions. No exhaustive literature search, first-priority finding or originality verdict was attempted.
+Conclusion: accept_with_limits for the frozen local analytic source. Its intrinsic exponent and thickness-loss claims survive this adversarial reading. The original global rectangular-partition problem remains open on the evidence reviewed here.
+
+Report representation: UTF-8 without BOM, LF, final newline.

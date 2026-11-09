@@ -1,0 +1,6 @@
+{
+  "attempt_a": "WSL Ubuntu selected instead of existing Ubuntu-24.04; CLI not found, exit127; no runtime allocated/no science run",
+  "additional_preflight_correction": "Retained template incorrectly replaced worktree path210 by216; corrected runner path before actual execution",
+  "mathematical_source_changed": false,
+  "acceptance_predicates_changed": false
+}

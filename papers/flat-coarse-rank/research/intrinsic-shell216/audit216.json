@@ -1,0 +1,83 @@
+{
+  "verdict": "accept_with_limits",
+  "date": "2026-11-09",
+  "source": {
+    "commit": "8b0fd2f5a93606a3f94b3b1115a7d4cc1bb38337",
+    "path": "papers/flat-coarse-rank/research/2026-11-09_intrinsic-shell216.txt",
+    "bytes": 10954,
+    "sha256": "9d22d01608893991411c52c696c2ee2d8ab342e0d5b18e371846681100af7198",
+    "representation": "Exact UTF-8 Git-LF bytes; no normalization; no CR"
+  },
+  "dependency": {
+    "commit": "8262c72573387d44d82359636f65ec635449a131",
+    "path": "papers/flat-coarse-rank/integrated-revision/revision202/sobolev.tex",
+    "bytes": 9469,
+    "sha256": "65a531612374f0218bff0efac4dfd799cb2dc6a420c6c41ac60ac78f88fb83bb",
+    "representation": "Exact UTF-8 Git-LF bytes; no normalization; no CR",
+    "full_file_read": true,
+    "load_bearing_part_audited": "cube theorem and entropy/projection/isoperimetry/coarea/median/power proof"
+  },
+  "capture": "git show SHA:path; stdout BaseStream copied to bytes; WriteAllBytes",
+  "context": {
+    "exposed_model": "Codex, an agent based on GPT-6",
+    "exact_selected_model": "unknown; not exposed",
+    "backend": "unknown; not exposed",
+    "reasoning_effort": "unknown; not exposed",
+    "task": "/root/defect_plane198_audit",
+    "fresh_context": false,
+    "prior_context": "earlier unit198 audit retained",
+    "shared_filesystem": true,
+    "shared_account": true,
+    "independence_claim": false,
+    "human_peer_review": false,
+    "inbound_messages_during_audit": false
+  },
+  "method": {
+    "full_source_read": true,
+    "mathematical_reasoning": true,
+    "numerical_execution": false,
+    "lean": false,
+    "lake": false,
+    "tests": false,
+    "builds": false,
+    "oracles": false,
+    "runtime": false,
+    "source_edits": false,
+    "new_publication": false,
+    "pdf_review": false,
+    "stars": null,
+    "diagnostic_companion_used_as_evidence": false
+  },
+  "checks": {
+    "cube_dependency": "valid",
+    "d2_endpoint": "valid K_2=2",
+    "slab_variance": "valid",
+    "slab_exponents": "valid",
+    "cover_geometry": "valid",
+    "fiber_transport": "valid",
+    "tree_paths": "depth at most two",
+    "overlap_cancellation": "vH^2=t^(-2/d)",
+    "weighted_holder": "q/(2-q)=p=d/2",
+    "site_edge_conversion": "factor D^(2/d)",
+    "constants": "S_3=120,C_3=360,second-line coefficient=2160",
+    "isolated_starting_star": "exact h=D+1,E=(2D-2)epsilon",
+    "thin_shell_critical_exponent": "p=d/2 sharp within stated local class",
+    "thickness_power": "2/d necessary within stated local class",
+    "rescaling_comparability": "valid",
+    "higher_normalized_moment": "diverges at least as 2^(-D/2)(N/h)^(1/d)"
+  },
+  "load_bearing_errors": [],
+  "limits": [
+    "Concentric nonwrapping integer shells and translations only",
+    "Actual local moment is an input",
+    "No global coefficient-driven selection/count or disjoint-rectangle conversion",
+    "Sharp powers for arbitrary positive site weights; no optimal constants",
+    "No originality or first-priority verdict",
+    "No global rectangular-partition conclusion",
+    "No human peer review or formal certification",
+    "Contextual tallies and earlier shell205 not recertified",
+    "Unused dependency adapters and companion diagnostics not certified"
+  ],
+  "primary_reference": "https://arxiv.org/html/1312.5473v6",
+  "output_representation": "UTF-8 without BOM, LF, final newline"
+}
