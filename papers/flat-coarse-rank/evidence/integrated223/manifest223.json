@@ -1,0 +1,527 @@
+[
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/archive223C-verified.json",
+    "bytes": 6019,
+    "sha256": "2d2e3692bb46d18ae35b5705e2c99b7921ee6f2bb9961353b12364f00c99abeb"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/author-observations-before-assessment223.txt",
+    "bytes": 544,
+    "sha256": "cf00465f46e100c11f508c3becb0b4f05d3160114d9dfa2a0df4988256c605d9"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/correction223B.json",
+    "bytes": 797,
+    "sha256": "b8ee26f3f8e47df2b081ffc39964d26ec5c9d0463d1047ad170d1c377a4b56f9"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/correction223C.json",
+    "bytes": 1025,
+    "sha256": "1a89f8b21d5e8d7232c8ea466eb208f5093436d8fcc5aad7407781c9da8a9d82"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/failed-render223A-archive-check.json",
+    "bytes": 227,
+    "sha256": "e0c7baf5878518684c1b9913a664bde7db9eab6ff2f7ae783377785a50d19e2b"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/failed-render223A-failure.txt",
+    "bytes": 295,
+    "sha256": "f71cadaa8703cc12dc2e1b4bf47c4c7488038d4c5674ac0a5b5442ea4c82282e"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/failed-render223A-report.json",
+    "bytes": 5133,
+    "sha256": "d013e40049f2fc4d5c40bb92bb0baa5d7cdd8f6a3d441801ccc4a692480dbfb7"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/locked223.json",
+    "bytes": 1696,
+    "sha256": "682dfe635f9723202741141151431fe72fbe9d063415e79c11fba3cb037fc6f5"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/predecessor-lookup223.json",
+    "bytes": 579,
+    "sha256": "b6ee26847e42936229f98a80974e87be4b70058ca4e900cc4d058f93c6a5fe54"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/preparation223C.json",
+    "bytes": 4838,
+    "sha256": "04370d0da8df04206388c6ed8d22400fbf7366e40e5fedff03d2840bbc2ee5d9"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/render223B-archive-check.json",
+    "bytes": 488,
+    "sha256": "ec9114ae056f39e736adf351c4a1d37c897139dd636df4b8a1ac2929246b74a7"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/render223B-report.json",
+    "bytes": 5069,
+    "sha256": "1ba89b6543647e616cec9910d20670f0913d0314ed57b71bfb08ac8d3ae3383e"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/render223C.py",
+    "bytes": 6968,
+    "sha256": "8fd5b09009d1119413762833b589994ce622f81d453e7f6effb3068963e0ecee"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/runtime223C.json",
+    "bytes": 5775,
+    "sha256": "c12afb792abb02dbecf697cba9a82d3a4441c9e21d5700dcb3b0dec2a5ca5fa4"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/audit223-source.json",
+    "bytes": 7264,
+    "sha256": "d6a595aef4e0e9f11dc23969faee0c37bd7f15bd2d41ec7f360ad0126ac51dae"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/boundary-transfer.tex",
+    "bytes": 11918,
+    "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/detour-separation.tex",
+    "bytes": 8394,
+    "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/flat_critical_integrated.tex",
+    "bytes": 150847,
+    "sha256": "1ef2117d05b6f894033a7995b1c23f51f430758312d3985564b857a0ffe093f2"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/geometry-boundaries221.tex",
+    "bytes": 18392,
+    "sha256": "96b49972afd82abe52e87db727efc85601303d220bcff4c986351afcc3a64055"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/joint-binary.tex",
+    "bytes": 8896,
+    "sha256": "001f9e6d2ec168fac732baad166f8ab2dc876bab84b82c00b8df75385e532551"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/laminates-green.tex",
+    "bytes": 20710,
+    "sha256": "3aa2b0517c400aef0259a353b3d04f0750a4af3d6390d31989bcc1616e236ab1"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/partial-invariance.tex",
+    "bytes": 8946,
+    "sha256": "fd2c382bda872858a71b0dc0fd992ce58a509e139e13d5f930de0a59bce50a01"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/partition.tex",
+    "bytes": 12856,
+    "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/physical-cycle.tex",
+    "bytes": 15608,
+    "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/shells.tex",
+    "bytes": 11932,
+    "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/sobolev.tex",
+    "bytes": 9493,
+    "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/baseline/spatial-geometry.tex",
+    "bytes": 21639,
+    "sha256": "3f6152b40718190276160977a3401f52ad910a5f150890c971be01c1a1bfd4f9"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/capture-manifest223.json",
+    "bytes": 18088,
+    "sha256": "8e275e70451c4108aa3c4732cdd66398b1e84733ae8696148f854cb920c4683a"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/balanced-rings223.tex",
+    "bytes": 15888,
+    "sha256": "715aaf0ac64e0491db0f21ff78b4ade9f5bd12482371bf8bb966d7ccb0c46c82"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/boundary-transfer.tex",
+    "bytes": 11918,
+    "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/detour-separation.tex",
+    "bytes": 8394,
+    "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/flat_critical_integrated.tex",
+    "bytes": 149844,
+    "sha256": "9b831e241f3d7b0206881b49ebd415ab96e98ef725de86ef18a8d5bb51b2e6c4"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/geometry-boundaries221.tex",
+    "bytes": 18599,
+    "sha256": "3af7eea5607ca74342e9265207ad68bbdec812d2a56769b1e4deda613ea08252"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/joint-binary.tex",
+    "bytes": 8980,
+    "sha256": "d149c8d9733feb9dd55efe0d00a9a68664c37088b4b8ba35a7d187933c510d1f"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/laminates-green.tex",
+    "bytes": 20803,
+    "sha256": "4a573061166dcb39824bea1aaf8a8e237dbcf2ab4a7c19be57e54cff02d13b55"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/partial-invariance.tex",
+    "bytes": 9037,
+    "sha256": "bba932a34bef4ac01ca24047487a0fab5cb3e98c6dc3e010041e7b5d91a5cda7"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/partition.tex",
+    "bytes": 12856,
+    "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/physical-cycle.tex",
+    "bytes": 15608,
+    "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/shells.tex",
+    "bytes": 11932,
+    "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/sobolev.tex",
+    "bytes": 9493,
+    "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/current/spatial-geometry.tex",
+    "bytes": 21749,
+    "sha256": "3e658054bca885ec7bd2f018b33c1f122e54f3038c39282279fa61e9a9ac7a2b"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/boundary-transfer.tex.diff",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/detour-separation.tex.diff",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/flat_critical_integrated.tex.diff",
+    "bytes": 18326,
+    "sha256": "056c05536b301a2ef549001bf7531314d80926ad02f697b62493c85e11581083"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/geometry-boundaries221.tex.diff",
+    "bytes": 2769,
+    "sha256": "54949ec4fa648f27aecea191e0954e4e55616f8cdc6cae1fe69f2396cfe177b6"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/joint-binary.tex.diff",
+    "bytes": 1016,
+    "sha256": "e29cbe6f4a1359abf8ccc8d3672b66063d434c6ca4ec57c1e9db34a366a23d7a"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/laminates-green.tex.diff",
+    "bytes": 1005,
+    "sha256": "ef144d1b19aec6155e7abcbdc96983ff0d552aa5088ad7c97c4e8b6b20c28c34"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/partial-invariance.tex.diff",
+    "bytes": 1106,
+    "sha256": "a117ef3643213c976cfa98c1f07ab5d048da8c2568b471041ccda76b6f2b3099"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/partition.tex.diff",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/physical-cycle.tex.diff",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/shells.tex.diff",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/sobolev.tex.diff",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/diffs/spatial-geometry.tex.diff",
+    "bytes": 1681,
+    "sha256": "4e12304fcf19954c0bd1d23cb58ef05e7896d936964be37866efa4407e7f9f8f"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/interruption223.txt",
+    "bytes": 730,
+    "sha256": "7605a1386491c430a95de79aff8615cbace8fca77515ec00f3db00f27f96e177"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/original222/addendum222.txt",
+    "bytes": 4359,
+    "sha256": "2e0396adb9029db384c34fcf270cedef5187cde1f5805097475a8c2982f48514"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/original222/audit222.json",
+    "bytes": 4955,
+    "sha256": "372d61b96955ac2e42e5eb0f9854e45c4b633b6e6d23281aa12400165d1a5908"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/original222/draft222.txt",
+    "bytes": 12385,
+    "sha256": "f2cd7941ccc8e9fa30e3a8742d5e814b0e4bcdc83ded16426b48b78c7deac057"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/original222/execution-manifest222.json",
+    "bytes": 845,
+    "sha256": "faa216123a8f7f500be8952d589fcbecf9cede2046448ca2e337fed8ea181a79"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/original222/execution-normal.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/original222/execution-normal.stdout.json",
+    "bytes": 482,
+    "sha256": "0b444349e304629b9723812a9b2888fe619d3021009b4b6126511210855ea34e"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/original222/execution-optimized.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/original222/execution-optimized.stdout.json",
+    "bytes": 482,
+    "sha256": "0b444349e304629b9723812a9b2888fe619d3021009b4b6126511210855ea34e"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/original222/execution-report222.json",
+    "bytes": 637,
+    "sha256": "2d54b133801e406009aa6b9f00ed26b0894dcf758dc747a342730526ac19c65e"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/original222/report222.txt",
+    "bytes": 20576,
+    "sha256": "6d229bc87db95769d7fd153d8e39afc6954bb07707923ac64b607ca6043b667e"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit/report223-source.txt",
+    "bytes": 18404,
+    "sha256": "566efd027c8eaf7d5a6b4b0e1ae1dfdaddffe50abfa9b21b38e7bf896245b317"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/balanced-rings223.tex",
+    "bytes": 15888,
+    "sha256": "715aaf0ac64e0491db0f21ff78b4ade9f5bd12482371bf8bb966d7ccb0c46c82"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/boundary-transfer.tex",
+    "bytes": 11918,
+    "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/detour-separation.tex",
+    "bytes": 8394,
+    "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/flat_critical_integrated.tex",
+    "bytes": 149844,
+    "sha256": "9b831e241f3d7b0206881b49ebd415ab96e98ef725de86ef18a8d5bb51b2e6c4"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/geometry-boundaries221.tex",
+    "bytes": 18599,
+    "sha256": "3af7eea5607ca74342e9265207ad68bbdec812d2a56769b1e4deda613ea08252"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/joint-binary.tex",
+    "bytes": 8980,
+    "sha256": "d149c8d9733feb9dd55efe0d00a9a68664c37088b4b8ba35a7d187933c510d1f"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/laminates-green.tex",
+    "bytes": 20803,
+    "sha256": "4a573061166dcb39824bea1aaf8a8e237dbcf2ab4a7c19be57e54cff02d13b55"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/partial-invariance.tex",
+    "bytes": 9037,
+    "sha256": "bba932a34bef4ac01ca24047487a0fab5cb3e98c6dc3e010041e7b5d91a5cda7"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/partition.tex",
+    "bytes": 12856,
+    "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/physical-cycle.tex",
+    "bytes": 15608,
+    "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/shells.tex",
+    "bytes": 11932,
+    "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/sobolev.tex",
+    "bytes": 9493,
+    "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/A/spatial-geometry.tex",
+    "bytes": 21749,
+    "sha256": "3e658054bca885ec7bd2f018b33c1f122e54f3038c39282279fa61e9a9ac7a2b"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/audit223C-source.json",
+    "bytes": 4909,
+    "sha256": "95bccdd6f08ba7a3f83fba8a6b1bd3909c1953f4cbec50e95f677f68e5228bb6"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/balanced-rings223.tex",
+    "bytes": 16119,
+    "sha256": "6877841cde546f8920c39b98a5dfef8af385b1a2d5a4842f95a9dd36985b3dc2"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/boundary-transfer.tex",
+    "bytes": 12065,
+    "sha256": "e3d1b9fc6a642c0ac68dfdd3bccda442bfe25ae63e2a8ee713cea12fd5fcd155"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/detour-separation.tex",
+    "bytes": 8394,
+    "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/flat_critical_integrated.tex",
+    "bytes": 150243,
+    "sha256": "2b916abb82de709f52a9671fa3f1e9c6019bf2224127c2c111ac1de6cab1acc6"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/geometry-boundaries221.tex",
+    "bytes": 18748,
+    "sha256": "b2bb2dfb39538ce05eac0a6835ef4534491e514219a165cb9d634a9383577a50"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/joint-binary.tex",
+    "bytes": 9104,
+    "sha256": "084213b6b6fb6f864b82e2bfa0551775cce878ea9a1b0054eb30ab77e83d6c6c"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/laminates-green.tex",
+    "bytes": 20803,
+    "sha256": "4a573061166dcb39824bea1aaf8a8e237dbcf2ab4a7c19be57e54cff02d13b55"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/partial-invariance.tex",
+    "bytes": 9037,
+    "sha256": "bba932a34bef4ac01ca24047487a0fab5cb3e98c6dc3e010041e7b5d91a5cda7"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/partition.tex",
+    "bytes": 12856,
+    "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/physical-cycle.tex",
+    "bytes": 15608,
+    "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/shells.tex",
+    "bytes": 11932,
+    "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/sobolev.tex",
+    "bytes": 9623,
+    "sha256": "1cb480d4d67b67e4e1e4181c391f620bf21c2558fe4002f239e149eaa81bf712"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/C/spatial-geometry.tex",
+    "bytes": 21749,
+    "sha256": "3e658054bca885ec7bd2f018b33c1f122e54f3038c39282279fa61e9a9ac7a2b"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/capture-manifest223C.json",
+    "bytes": 12257,
+    "sha256": "b604425e44ae8a6d530784fc958ce5ce034064e672fb2a90522f698e996f8eb1"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/exact-A-to-B.diff",
+    "bytes": 5365,
+    "sha256": "bc0564acd48461c63cd4daa77606185737b496dc9156d8ae7a8fb2958a23ab80"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/exact-A-to-C.diff",
+    "bytes": 11185,
+    "sha256": "1123a758dcd6e9d1d09cee06e8d0061bf761271e3195dee06e079639918f54a4"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/exact-B-to-C.diff",
+    "bytes": 6219,
+    "sha256": "94ca9b3b8fd761c066d97e65bd6f12fb8221eecb8b91985381002f1fc43b3a26"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/original-audit223-source.json",
+    "bytes": 7264,
+    "sha256": "d6a595aef4e0e9f11dc23969faee0c37bd7f15bd2d41ec7f360ad0126ac51dae"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/original-capture-manifest223.json",
+    "bytes": 18088,
+    "sha256": "8e275e70451c4108aa3c4732cdd66398b1e84733ae8696148f854cb920c4683a"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/original-interruption223.txt",
+    "bytes": 730,
+    "sha256": "7605a1386491c430a95de79aff8615cbace8fca77515ec00f3db00f27f96e177"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/original-report223-source.txt",
+    "bytes": 18404,
+    "sha256": "566efd027c8eaf7d5a6b4b0e1ae1dfdaddffe50abfa9b21b38e7bf896245b317"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/source-audit-correction-c/report223C-source.txt",
+    "bytes": 11142,
+    "sha256": "c7b45272f7f92ed0d861ca5828a58942eaa4d13cf7795567798cce01660f3c42"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/sourceC-gate223.json",
+    "bytes": 266,
+    "sha256": "2923ab626aa733e111636f2948b96936cfc387d30aa53cb5b3548a894776e422"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/STATUS.txt",
+    "bytes": 2072,
+    "sha256": "a0242aa4edac1b875bf1f85be777d88c08e7fc37a74f9296c76c89b2fe6de1fb"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/verify_render223C.py",
+    "bytes": 3133,
+    "sha256": "fbc4f8c846a2e8e876a14824938fc3dc12d0cf6fc7040f6a98c80524e0094c7d"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/integrated223/visual-QA223C.json",
+    "bytes": 8052,
+    "sha256": "1be527d72fd672859101dd670ffad1379e34dddd82dc9d186d058bc705bcfed6"
+  }
+]

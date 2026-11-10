@@ -1,0 +1,266 @@
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision221/flat_critical_integrated.tex b/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex
+index 907c39d2..d453bb9b 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision221/flat_critical_integrated.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex
+@@ -9,6 +9,7 @@
+ \newtheorem{lemma}[theorem]{Lemma}
+ \newtheorem{proposition}[theorem]{Proposition}
+ \newtheorem{remark}[theorem]{Remark}
++\newtheorem{corollary}[theorem]{Corollary}
+ \newcommand{\R}{\mathbb R}
+ \newcommand{\C}{\mathbb C}
+ \newcommand{\T}{\mathbb T}
+@@ -19,7 +20,7 @@
+ \newcommand{\ip}[2]{\langle #1,#2\rangle}
+ \title{Coarse information and finite rank obstructions\newline for flat lattice Hodge forms}
+ \author{Lluis Eriksson}
+-\date{9 November 2026 --- integrated geometry revision candidate}
++\date{9 November 2026 --- constructive rectangular revision candidate}
+ \usepackage{booktabs,array}
+ \newtheorem{matrixTheorem}[theorem]{Theorem}
+ \newtheorem{matrixProposition}[theorem]{Proposition}
+@@ -33,50 +34,32 @@
+ \begin{document}
+ \maketitle
+ \begin{abstract}
+-We study how finite observations and finite-rank repairs can restore coercivity
+-for unit-spacing flat lattice Hodge forms. An explicitly constructed real Fourier
+-band gives necessary output-dimension budgets, including tangent obstructions
+-for differentiable nonlinear observations. Singular Schur compatibility explains
+-why kernel nonnegativity alone is insufficient. Positive results include scalar
+-and matrix critical inverse-moment bounds for global spectral observations,
+-exact finite prescribed-mean penalty thresholds, and constructive spatial means.
+-For coefficients depending on any $k<D$ coordinate directions, we construct
+-actual disjoint rectangular averages with penalty coefficient $K=c$ and the
+-critical target-order observation budget. The construction derives local energy
+-control from the coefficients and charges a balanced base tree through its
+-invariant directions; it handles odd sizes and singleton cells. At least one
+-exactly invariant coordinate remains required by that argument. An explicit corollary of the existing threshold construction handles
+-arbitrary arrangements of scalar coefficient values $1$ and $H$:
+-the actual critical moment gives target-order rectangular means with the
+-same global penalty coefficient $K=c$. Complementary
+-examples distinguish successful observations from minimum-coefficient, full-tree,
+-point-support and strong Green-moment certificates. The latter have matching
+-all-rectangle certificate-cost regimes. A weaker detour exclusion and an explicit
+-coexact parity example delimit an additional local comparison route.
+-Further exact boundary-energy calculations rule out uniformly controlled
+-exact trace extension based only on internal energy, including near-one
+-critical moments, and, in $D\ge4$, a size-independent
+-sum of separately minimized harmonic costs over disjoint rectangles.
+-The discrepancy also occupies a growing-dimensional space, ruling out
+-uniformly bounded-rank repairs of that particular comparison. Nevertheless,
+-the underlying binary family admits the constructive partition just described.
+-Local shell estimates also lower the inverse-moment exponent from $D/2$
+-to $(D-1)/2$ with a necessary thickness cost; the thickness-uniform
+-$D/2$ estimate and sharp local counterexamples are grouped with them.
+-A coefficient-selected unit shell supplies actual disjoint face means.
+-Two matched quantitative counterexamples distinguish discarded canonical
+-interfaces from an actual off-center annular slowdown; successful full-cube
+-means on both families keep the unrestricted question separate.
+-Complete analytical proofs and separately
+-pinned formal endpoints and finite diagnostic records are distinguished
+-throughout. Classical methods are attributed, and originality remains subject
+-to further comparison. The unrestricted critical rectangular problem is open.
+-No interacting or continuum Yang--Mills mass gap is asserted.
++We study finite observations restoring coercivity for unit-spacing flat lattice
++component-gradient forms. For every positive scalar coefficient profile we
++construct a coefficient-only partition into integer rectangles whose normalized
++means satisfy the actual energy inequality with penalty coefficient $K=c$.
++Under the critical inverse-moment condition this gives the target-order output
++dimension $C\max\{1,(n/\sqrt{1+\mu})^D\}$ without an assumed local gap, supplied
++cover or invariant coordinate. The proof derives an unweighted BV extension on
++balanced integer rings, obtains actual weighted local gaps by H\"older, and
++compresses a coefficient-mass tree. Cross-rectangle edges inside each ring are
++retained; only edges between distinct regions are discarded. Odd sizes, heavy
++atoms, singleton directions and boundary-touching holes are included.
++Complementary rank obstructions, singular Schur compatibility, critical spectral
++criteria, prescribed-mean penalties and matched geometric counterexamples explain
++why several stronger internal-cell and trace-extension certificates fail although
++the requested global mean inequality holds. Complete analytical proofs are
++distinguished from selected rational diagnostics and earlier separately scoped
++formal endpoints. Dyadic-ring approximation, BV/Sobolev and heavy-tree mechanisms
++are classical; exact historical priority of this finite specialization remains
++unestablished. This resolves the stated finite scalar-gradient rectangular
++construction, not a variable-weight curl identity, interacting coefficient
++producer or continuum Yang--Mills mass gap.
+ \end{abstract}
+ \clearpage
+ \section*{Theorem, scope and evidence guide}
+ The immediate public predecessor is the existing AIRR
+-\href{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v11/}{version 11}.
++\href{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v12/}{version 12}.
+ Historical versions, reviews and their exact hashes remain separate. This is a
+ changed integrated candidate, not an assigned public version or acceptance.
+ \begin{center}\small
+@@ -93,7 +76,7 @@ Detour geometry boundary & Distance two suffices in $D\ge3$; nearest-neighbour i
+ Boundary transfer and binary means & Growing-rank comparison obstruction; arbitrary scalar binary arrangements & Sections \ref{sec:boundary195}--\ref{sec:binary200}; comparison proofs and binary corollary of Section~\ref{ap:sec:spatial-new}; source audits192--199, inventory correction201.\\[5pt]
+ Local shell input & Actual internal energy; two inverse-moment endpoints and sharp powers & Section~\ref{sec:shell217}; grouped analytical sources205/216, finite checks separately scoped.\\[5pt]
+ Selected observations and limits & Disjoint shell means; sharp internal repair and actual annular costs & Section~\ref{sec:geometry221}; full grouped proofs218--220, original source reports and finite transcripts.\\[5pt]
+-Unrestricted question & Fully variable coefficients; still open & Section 27 and final scope paragraph; no physical continuum conclusion.\\
++Arbitrary scalar profiles & Actual coefficient-only means, $K=c$ and critical rank & Theorem~\ref{thm:balanced223} and Corollary~\ref{cor:balanced223-moment}; complete proof, no physical continuum conclusion.\\
+ \bottomrule
+ \end{tabular}
+ \end{center}
+@@ -103,7 +86,7 @@ At commit \texttt{d8d2c66ce76103e302e08cb74f878d46b7a60262}, the unit188 proof a
+ complete evidence are under \path{papers/flat-coarse-rank/research/}:
+ \path{2026-11-07_partial-invariance188.txt} and \path{evidence188/}.
+ The latter retains the complete source audit, every limitation, the Linux driver,
+-raw diagnostic archive and resource record. Revision221's own build manifest must pin
++raw diagnostic archive and resource record. Revision223's own build manifest must pin
+ this changed manuscript. No source-audit verdict or older PDF score transfers
+ as its numerical exact-PDF assessment.
+ \clearpage
+@@ -1610,7 +1593,7 @@ $cn^2/(4A)\leq c/(4\gamma)\leq1$, exact orthogonal decomposition proves
+ \]
+ These rectangles have potentially unbounded aspect ratio; they leave the cube-tree class.
+ \end{proof}
+-The general critical moment question for unrestricted rectangular means remains open.
++These examples alone do not settle the unrestricted question. Theorem~\ref{thm:balanced223} below supplies the general finite scalar-gradient construction.
+ Changing only the stopping rule within full cube trees cannot resolve it. Classical
+ weighted Sobolev inequalities \cite{ap:ads} also yield block observations for inverse
+ moments of finite order strictly greater than $D/2$; the dossier contains the explicit
+@@ -1887,8 +1870,8 @@ Equation~\eqref{ap:eq:globalmeans} holds and
+ There are at most $\lceil n/\ell\rceil^D+4D$ blocks. If $\ell<n$,
+ $\ell\geq\sqrt{A/c}$; if $\ell=n$, there is one grid box. Remaining
+ rectangles have coefficient $A$ and weak residuals are singletons. The
+-universal supplied-cube route is refuted. The original unrestricted
+-rectangular question is neither proved nor refuted.
++universal supplied-cube route is refuted. This route alone neither proves nor refutes the unrestricted
++rectangular question; its positive finite solution is supplied in Section~\ref{sec:balanced223}.
+ 
+ 
+ % One article: self-contained proofs supporting the preceding claims.
+@@ -1955,55 +1938,53 @@ Lean certificate; the sharp extension is analytic. Rendering does not upgrade
+ any verification status. Earlier exact PDFs and assessments remain preserved.
+ 
+ \section{Model assessments and review context}\label{sec:model-context}
+-This is a changed exact-artifact successor of the public v11 working paper.
+-Its exact predecessor PDF SHA256 is
+-\begin{center}\scriptsize\texttt{68aae0aa0c93a2718abcc3f489f7ccdcb5cdc3477b2c93472cfa308e0c540a6b}.\end{center}
+-Its full numerical AI assessment is retained with that immutable artifact at
+-\href{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v11/\#model-assessments}{the v11 assessment record}.
+-The v11 report gave 4.00/10 overall, with five criterion stars 4/4/3/3/3
+-and a minor-revision recommendation. Those figures describe only that
+-88-page predecessor; they are not a score for this candidate.
+-The separately assessed eight-page supplement from unit 186 is also a
+-historical source artifact. Neither its score nor the parent's score or
+-resolved-objection status transfers to the resulting changed PDF. All earlier
+-reports, objections and operator dispositions remain preserved with their
+-own exact versions. No new public version identity or receipt is assigned
+-by this manuscript.
+-
+-Preparation, analytical checking and the new finite adapters were performed
+-in the continuing Codex programme context. Exact served backend identity
+-and technical history isolation are not attested. This is not independent
+-review. The new model report, when completed, must be retained in full and
+-bound to the resulting exact PDF hash, with factual model identity,
+-provider, supplied materials, prior exposure and review limitations.
+-Publication requires a genuine numerical overall/criterion assessment and
+-visible stars for this exact artifact; an ungraded report or an inherited
+-parent score is insufficient. No grade is assigned by this paragraph.
+-
+-The complete version11 report and all its objections remain attached to
+-that exact public artifact. Objections concerning unfinished originality
+-comparison, un-replayed historical execution and the open global/physical
+-questions remain limitations here. The mean-zero minimum penalty in
+-Section~\ref{sec:geometry183} is now explicitly labelled, and its full-space
+-counterpart includes the constant-mode constraint. The authoritative
+-chronology is version11 followed by this unassigned candidate; references
+-to earlier frozen artifacts below describe those historical objects only.
+-The grouped shell and geometric sections have source-level reasoning reviews and finite checks,
+-which are not the numerical exact-PDF assessment of this changed manuscript.
+-
+-The principal limitations remain substantive. Classical Fourier,
+-Dirichlet-form comparison, Schur, variance and refinement mechanisms limit
+-originality claims; a complete priority comparison is unfinished. Some
+-endpoints have earlier separately scoped formal proofs, while these spatial
+-continuations are analytical with selected exact finite reproduction.
+-Their coefficient and geometry hypotheses are not physical coefficient
+-producers. A global spectral observation is not a local rectangular
+-construction; the unrestricted critical rectangular question remains open.
+-Finite selected cases do not certify every lattice size or replace an
+-independent audit. AI evaluations, working-paper deposits, editorial
+-acceptance and human peer review are distinct. No interacting or continuum
+-Yang--Mills gap or reduced programme obligations are claimed.
+-\section{The single remaining bounded question}
++This is a changed exact-artifact successor of the public version12 working paper.
++The exact predecessor is the95-page PDF with SHA-256
++\begin{center}\scriptsize
++\texttt{78bcb10ac82b7b920281542a311a28bf70132c73a4a1dbacf90c62b62eb9bf83}.
++\end{center}
++Its first numerical AI review gave4.00/10 overall and criterion stars4/4/3/3/3,
++with a minor-revision recommendation. Its complete original report and factual
++model/context limitations remain at
++\href{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v12/\#model-assessments}{the immutable version12 assessment record}.
++The page92 Brudnyi wording was publicly qualified there; this new manuscript
++explicitly includes RemarkI.2 and its boundary-touching holes. The original
++assessed version12 PDF and score are unchanged. Older reports remain attached
++to their exact artifacts; no grade, resolved-objection status or independence
++claim transfers to this changed PDF.
++
++The new construction222 received a complete analytical source audit returning
++\emph{accept with limits}, with no load-bearing error found and three minor
++write-up clarifications addressed here. This is an involved AI source review
++with retained198--221 history and shared account/filesystem/provider, not a
++fresh blind review, verified independent audit, numerical PDF grade or human
++peer review. Exposed identity is OpenAI Codex, described as based on GPT-6;
++the exact served backend and reasoning effort are unknown. The complete
++original report, capture manifest, context and author disposition are retained.
++That reviewer did not execute the separate scientific diagnostics.
++
++Selected exact-rational checks were subsequently run on this chat's own
++Colab Linux runtime in normal and optimized modes, with actual zero exits,
++identical output and a separate inactive-runtime readback. They do not certify
++all lattice sizes or establish independent fresh-clone reproduction. No local
++scientific run or new Lean theorem is claimed. The construction is analytic.
++
++A first exact-PDF numerical assessment must follow rendering and visual
++inspection of this changed manuscript. Its full original report must identify
++the actual model/context, exact PDF hash, supplied material, prior exposure
++and limitations, and be retained without inheriting grades or resampling to
++improve them. No grade is assigned by this paragraph. A working-paper deposit,
++AI assessment, editorial acceptance and human peer review remain distinct.
++
++Originality remains uncertain: classical Fourier, Schur, dyadic-ring,
++BV/Sobolev and tree methods are substantial ingredients, and the primary
++comparison is limited. Earlier separately scoped formal endpoints do not
++formally certify the new proof. The finite scalar-gradient rectangular
++construction is now supplied in Section~\ref{sec:balanced223}; variable-weight
++curl replacement, interacting/covariant producers and the physical continuum
++problem remain separate and unproved. PR29 stays20/41 with TermSource0.
++
++\section{The finite rectangular question and its constructive answer}
+ For fixed $D\geq3,c>0,N_c\geq2,M$, do all actual scalar profiles
+ $1\leq a\leq2\mu$, exact mean $\mu$, satisfying \eqref{ap:eq:moment}, admit
+ \eqref{ap:eq:rank} using normalized means on an unrestricted axis-aligned
+@@ -2013,8 +1994,10 @@ A negative answer must defeat every such partition and finite penalty,
+ not just a prescribed algorithm or sufficient certificate. The additions
+ in Sections~\ref{sec:geometry183}, \ref{sec:laminates187} and~\ref{sec:partial188} solve fixed-gap and partially invariant subclasses and exclude
+ several incomplete approaches, while giving successful observations on
+-the same counterexample families. They do not settle this question or
+-create another one. The physical continuum problem remains separate.
++the same counterexample families. Those restricted additions alone do not settle the question. The new
++Theorem~\ref{thm:balanced223} and Corollary~\ref{cor:balanced223-moment}
++supply its affirmative finite scalar-gradient answer, with actual derived
++cover/count and $K=c$. The physical continuum problem remains separate.
+ 
+ \clearpage
+ \section{Matrix gradients and critical rectangular penalties}\label{sec:matrix-continuation}
+@@ -2651,7 +2634,8 @@ be retained; critical kernel compatibility cannot be omitted at the target; fini
+ interacting physical form equality has been supplied. These limits are part
+ of the result, not editorial acceptance conditions represented as satisfied.
+ 
+-The original positive critical rectangular construction remains open.
++The positive finite scalar-gradient rectangular construction is supplied
++by Section~\ref{sec:balanced223}; this does not supply a physical coefficient producer.
+ The common-refinement route remains stopped after three unsuccessful units.
+ The recorded PR29 baseline stays 20/41 with TermSource 0. This appendix adds
+ supporting finite mathematical results and useful counterexamples without
+@@ -2667,6 +2651,7 @@ acceptance or new verified public release.
+ \input{joint-binary.tex}
+ \input{shells.tex}
+ \input{geometry-boundaries221.tex}
++\input{balanced-rings223.tex}
+ 
+ \begin{thebibliography}{99}
+ \bibitem{ads221} S. Andres, J.-D. Deuschel and M. Slowik,

@@ -1,0 +1,164 @@
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex b/papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex
+index 89821a36..6cf10f10 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex
+@@ -277,7 +277,9 @@ interface discard excluded by the earlier canonical example.
+ \subsection{Attribution, audit and executable evidence}
+ Brudnyi~\cite{brudnyi221}, Sections~1--2 and Appendices~I--II, and its cited
+ predecessors already develop dyadic-ring approximation and related tree
+-mechanisms. Remark~I.2 includes boundary-touching inner cubes. Neither
++mechanisms. Cohen--DeVore--Petrushev--Xu~\cite{cdpx223} give a classical
++bivariate BV approximation setting, also with dyadic rings; that
++function-approximation problem is not asserted to originate here. Remark~I.2 includes boundary-touching inner cubes. Neither
+ ring decomposition, BV/Sobolev machinery, boundary touching nor heavy-tree
+ compression is asserted to be a new general principle here. This section
+ supplies the explicit finite integer coefficient-only original-energy
+@@ -286,7 +288,10 @@ an atomic coefficient mass is handled by terminal singletons, rather than
+ silently importing continuum absolute continuity.
+ 
+ The original analytical draft is at programme source
+-\texttt{c993dff04868d01d37b6ec87e0417da3c91a1330}; its raw-byte SHA-256 is
++\begin{center}\scriptsize
++\texttt{c993dff04868d01d37b6ec87e0417da3c91a1330}.
++\end{center}
++Its raw-byte SHA-256 is
+ \begin{center}\scriptsize
+ \texttt{f2cd7941ccc8e9fa30e3a8742d5e814b0e4bcdc83ded16426b48b78c7deac057}.
+ \end{center}
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/boundary-transfer.tex b/papers/flat-coarse-rank/integrated-revision/revision223/boundary-transfer.tex
+index 328a7112..bb2fe6ed 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/boundary-transfer.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/boundary-transfer.tex
+@@ -239,8 +239,9 @@ were complete source audits, not blind or independent peer reviews,
+ scientific replay, Lean verification, PDF assessments or numerical stars.
+ All limitations and author responses remain in the evidence packet.
+ 
+-The main fully variable fixed-moment actual-rectangle question remains
+-open. Cellwise internal-only extension, a near-one-moment rescue, and
++These boundary-transfer tests alone did not settle the fully variable
++fixed-moment actual-rectangle question. Section~\ref{sec:balanced223}
++supplies its positive finite scalar-gradient construction by a different mechanism. Cellwise internal-only extension, a near-one-moment rescue, and
+ independent-cell harmonic-cost additivity have explicit falsifiers.
+ A joint partition or direct local internal-energy argument must derive
+ its count without assuming any of those failed transfers. No main-theorem
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex b/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex
+index d453bb9b..25fe33e9 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex
+@@ -1939,16 +1939,16 @@ any verification status. Earlier exact PDFs and assessments remain preserved.
+ 
+ \section{Model assessments and review context}\label{sec:model-context}
+ This is a changed exact-artifact successor of the public version12 working paper.
+-The exact predecessor is the95-page PDF with SHA-256
++The exact predecessor is the 95-page PDF with SHA-256
+ \begin{center}\scriptsize
+ \texttt{78bcb10ac82b7b920281542a311a28bf70132c73a4a1dbacf90c62b62eb9bf83}.
+ \end{center}
+-Its first numerical AI review gave4.00/10 overall and criterion stars4/4/3/3/3,
++Its first numerical AI review gave 4.00/10 overall and criterion stars 4/4/3/3/3,
+ with a minor-revision recommendation. Its complete original report and factual
+ model/context limitations remain at
+ \href{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v12/\#model-assessments}{the immutable version12 assessment record}.
+ The page92 Brudnyi wording was publicly qualified there; this new manuscript
+-explicitly includes RemarkI.2 and its boundary-touching holes. The original
++explicitly includes Remark~I.2 and its boundary-touching holes. The original
+ assessed version12 PDF and score are unchanged. Older reports remain attached
+ to their exact artifacts; no grade, resolved-objection status or independence
+ claim transfers to this changed PDF.
+@@ -1956,7 +1956,7 @@ claim transfers to this changed PDF.
+ The new construction222 received a complete analytical source audit returning
+ \emph{accept with limits}, with no load-bearing error found and three minor
+ write-up clarifications addressed here. This is an involved AI source review
+-with retained198--221 history and shared account/filesystem/provider, not a
++with retained 198--221 history and shared account/filesystem/provider, not a
+ fresh blind review, verified independent audit, numerical PDF grade or human
+ peer review. Exposed identity is OpenAI Codex, described as based on GPT-6;
+ the exact served backend and reasoning effort are unknown. The complete
+@@ -1982,7 +1982,7 @@ comparison is limited. Earlier separately scoped formal endpoints do not
+ formally certify the new proof. The finite scalar-gradient rectangular
+ construction is now supplied in Section~\ref{sec:balanced223}; variable-weight
+ curl replacement, interacting/covariant producers and the physical continuum
+-problem remain separate and unproved. PR29 stays20/41 with TermSource0.
++problem remain separate and unproved. PR29 stays 20/41 with TermSource~0.
+ 
+ \section{The finite rectangular question and its constructive answer}
+ For fixed $D\geq3,c>0,N_c\geq2,M$, do all actual scalar profiles
+@@ -2023,7 +2023,9 @@ coordinates on this low space give a real observation $C$ and penalty
+  \qquad Q_A(u)+\Phi(Cu)\geq c\|u\|^2.
+ \end{equation}
+ This is an existence result for an actual, generally nonlocal observation.
+-It does not construct the unresolved local rectangular observation.
++It does not construct the unresolved local rectangular observation for
++these general matrix coefficients. The later common-scalar result in
++Section~\ref{sec:balanced223} does not close that general matrix problem.
+ For signed forms, $c\|y\|^2$ alone need not be sufficient.
+ 
+ \subsection{The positive matrix estimate}
+@@ -2654,6 +2656,10 @@ acceptance or new verified public release.
+ \input{balanced-rings223.tex}
+ 
+ \begin{thebibliography}{99}
++\bibitem{cdpx223} A. Cohen, R. DeVore, P. Petrushev and H. Xu,
++\emph{Nonlinear approximation and the space $BV(\mathbb R^2)$},
++American Journal of Mathematics 121 (1999), 587--628.
++\url{https://people.math.sc.edu/pencho/Publications/BV9707.pdf}.
+ \bibitem{ads221} S. Andres, J.-D. Deuschel and M. Slowik,
+ \emph{Invariance principle for the random conductance model in a degenerate ergodic environment},
+ Annals of Probability 43(4) (2015), 1866--1891; arXiv:1306.2521v5 (2019),
+@@ -2747,7 +2753,7 @@ Section2B, Theorem2.1 and Example2.1.
+ \bibitem{lg:programme} L. Eriksson, \emph{Coarse information and finite rank
+ obstructions for flat lattice Hodge forms}, existing AIRR dossier
+ ARR-2026-7EPM3V3DP796BBRR, historical public version8 (the immediate
+-predecessor of this candidate is version11).
++predecessor of this candidate is version12).
+ \url{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v8/}.
+ Working paper with AI assessment, not editorial acceptance.
+ \bibitem{lg:muckenhoupt} B. Muckenhoupt, \emph{Hardy's inequality with weights},
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex b/papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex
+index 0642e46f..aaea40a4 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex
+@@ -100,8 +100,10 @@ This uses the whole shell energy, including its face interfaces. It is
+ an all-candidate-radii lower scale bound. A unit shell has only order
+ $L^{D-1}$ sites: its $2D$ observations do not cover the unselected
+ layers or interior. Repeating independently on order $L$ layers costs
+-order $L$ rows. A global covering and charging theorem at the original
+-target count remains missing.
++order $L$ rows. This independent-layer repetition alone does not supply
++a global covering and charging theorem at the original target count.
++Section~\ref{sec:balanced223} derives the finite scalar construction by
++a different balanced-ring mechanism.
+ 
+ \subsection{Sharp rank cost of discarding canonical interfaces}
+ \begin{theorem}\label{thm:filament221}
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex b/papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex
+index 0f82763f..b0f56553 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex
+@@ -169,5 +169,7 @@ failed comparison from a successful binary-class construction; their
+ originality is not established by this limited primary-source comparison.
+ No physical hypothesis of Yang--Mills is removed. The continuum remains
+ open; PR29 stays recorded at 20/41 with TermSource0, not newly certified by
+-these source audits. The sole unrestricted critical rectangular question
+-continues to require actual control of intermediate coefficient levels.
++these source audits. This binary/comparison section alone does not supply
++the required control of arbitrary intermediate coefficient levels. The later
++Section~\ref{sec:balanced223} derives that control, complete cover and
++count for the finite scalar-gradient question.
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/sobolev.tex b/papers/flat-coarse-rank/integrated-revision/revision223/sobolev.tex
+index 2536060d..364088f0 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/sobolev.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/sobolev.tex
+@@ -6,8 +6,10 @@ This supplement derives the balanced-cube endpoint used by the rectangle
+ adapter, rather than importing a local Sobolev estimate as an external input.
+ The method is classical: finite entropy proves the projection inequality,
+ which yields relative edge isoperimetry, layer sets, and a power argument.
+-We claim neither a new general Sobolev principle nor a solution of the open
+-critical rectangular-partition problem. This is part of the existing dossier.
++We claim no new general Sobolev principle, and this cube lemma alone does
++not solve the critical rectangular-partition question. The complete finite
++scalar-gradient construction is supplied in Section~\ref{sec:balanced223}.
++This supporting lemma remains part of the existing dossier.
+ 
+ Fix $D\geq3$, and put
+ \[

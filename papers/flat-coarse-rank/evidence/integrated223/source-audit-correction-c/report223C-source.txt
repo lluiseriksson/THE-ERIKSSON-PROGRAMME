@@ -1,0 +1,116 @@
+BOUNDED CORRECTIVE SOURCE AUDIT223C
+Date: 2026-11-10
+Verdict: accept_with_limits for the corrective source integration.
+
+All required R1–R5 corrections from the complete223A rejection are implemented at C. The optional general-matrix clarification is also correct. The A-to-C delta changes no theorem, constant, hypothesis or mathematical proof. The added primary CDPX attribution is accurate within its limited stated scope. The original rejection remains unchanged and valid for A; this report is neither its replacement nor a numerical/PDF regrade.
+
+1. Exact source referents and captures
+A:1e30fc310acf1361ccc532f2f186b38e4f6634e2
+Intermediate B:a28e0f24523b4bc2ec33b1abff104935a0a3b9a5
+Frozen C:ddd2cf605c1715a03d2e87991e920c0ec760e527
+Repository:C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108
+Directory:papers/flat-coarse-rank/integrated-revision/revision223
+
+C balanced-rings223.tex:
+ 16119 bytes
+ SHA-2566877841cde546f8920c39b98a5dfef8af385b1a2d5a4842f95a9dd36985b3dc2
+C flat_critical_integrated.tex:
+ 150243 bytes
+ SHA-2562b916abb82de709f52a9671fa3f1e9c6019bf2224127c2c111ac1de6cab1acc6
+Exact A-to-C Git diff:
+ 11185 bytes
+ SHA-2561123a758dcd6e9d1d09cee06e8d0061bf761271e3195dee06e079639918f54a4
+
+All13 A and13 C TeX blobs were captured, together with exact A-to-B, B-to-C and A-to-C diffs. Capture method:git show/diff, raw stdout BaseStream copied into bytes and saved with WriteAllBytes; no normalization. Current quoted TeX and diff hashes identify their actual UTF-8 Git-LF bytes with no CR.
+Own evidence directory:
+ D:\Datos\the-eriksson-programme\autonomia\evidencia-223\source-audit-correction-c
+Manifest:capture-manifest223C.json
+Manifest SHA-256, UTF-8 LF without BOM:
+ b604425e44ae8a6d530784fc958ce5ce034064e672fb2a90522f698e996f8eb1
+
+2. Original rejection retained and read in full
+The complete report223-source.txt was read again, including its positive proof analysis, all five corrections, legitimate remaining limits and interruption history.
+The original report, JSON, capture manifest and interruption record were copied byte-for-byte into this correction folder. Their originals in source-audit were not modified.
+Original report SHA-256:
+ 566efd027c8eaf7d5a6b4b0e1ae1dfdaddffe50abfa9b21b38e7bf896245b317
+Original structured rejection SHA-256:
+ d6a595aef4e0e9f11dc23969faee0c37bd7f15bd2d41ec7f360ad0126ac51dae
+Original interruption record SHA-256:
+ 7605a1386491c430a95de79aff8615cbace8fca77515ec00f3db00f27f96e177
+The earlier usage-limit interruption and subsequent completed A rejection are preserved as distinct events. No earlier completed result or numerical review is invented, erased or retrospectively changed.
+
+3. Factual model/context and execution boundary
+This is the same continuing /root/defect_plane198_audit task, retaining198/216/217/218/219/220/221A/221B/222/223A involvement, shared history, filesystem and account. It is not fresh, independent, blind or human peer review.
+Actually exposed description:Codex, an agent based on GPT-6. Exact hidden selected model/backend and reasoning effort are unknown. No new agent or model/provider/account switch was used.
+The entire A-to-C diff, both intermediate deltas and relevant surrounding text were checked against the full A report. All13 files were compared A-to-C. This is a bounded corrective source check relying on the prior full mathematical audit for unchanged arguments, not a new comprehensive old-page proof review or novelty audit.
+No inbound message arrived during the active check. No source, branch, PR, score or programme status was edited; no other chat/automation was accessed.
+No scientific/diagnostic program, mathematical Python, Lean, Lake, oracle, test, build, render or runtime was executed. Only text/git/hash operations and primary-paper text reading were used. No current PDF was inspected. The new C numerical assessment has not been performed or supplied by this report.
+
+4. Actual delta and proof identity
+A-to-C changes6 files,35 insertions/17 deletions:
+ balanced-rings223.tex;
+ boundary-transfer.tex;
+ flat_critical_integrated.tex;
+ geometry-boundaries221.tex;
+ joint-binary.tex;
+ sobolev.tex.
+Seven files are exact byte copies of A:
+ detour-separation.tex; laminates-green.tex; partial-invariance.tex;
+ partition.tex; physical-cycle.tex; shells.tex; spatial-geometry.tex.
+A-to-B changes2 files,16 insertions/7 deletions. B-to-C changes5 files,19 insertions/10 deletions.
+The complete balanced-rings223 text before its “Attribution, audit and executable evidence” subsection is exactly unchanged by direct prefix comparison and the full Git diff. Thus the theorem/corollary, all geometry, BV/trace, exponents/constants, original-start Holder, heavy-tree cover/count and final mean/energy proof remain the accepted text.
+Other changed-file hunks are status scoping, typography, attribution and bibliography. No mathematical premise or proof step was silently changed.
+
+5. R1 — closed for C
+boundary-transfer no longer declares the global scalar question open. It now states that those boundary-transfer tests alone did not settle it, and that balanced223 supplies a positive finite scalar-gradient construction by a different mechanism.
+The original internal-only extension, near-one-moment and separately minimized harmonic-cost falsifiers remain. The continuing requirement that a construction derive its count without those failed transfers is mathematically appropriate; the new construction does so.
+This is the requested historical/method scoping, not deletion of a negative result.
+
+6. R2 — closed for C
+The bibliography's current-parent parenthetical now says version12. This agrees with the opening and assessment context while preserving the historical-v8 citation and link.
+It fixes the internal chronology contradiction. It does not independently authenticate remote version12 PDF bytes, page count, review score or receipt; the prior external-provenance limits remain.
+
+7. R3 — closed for C
+The selected-shell paragraph now says independent-layer repetition ALONE does not supply the target-order cover/charging theorem. It then points to the later balanced-ring mechanism for the finite scalar construction.
+This correctly retains the local218 method's limitation without saying the full manuscript still lacks a general scalar construction. It neither modifies the selected-shell theorem nor claims the repeated-layer method has been repaired.
+
+8. R4 — closed for C
+The old Sobolev fragment now states that the cube lemma alone does not solve the rectangular question and explicitly points to balanced223 for the complete finite scalar-gradient construction.
+The stale present-tense “open problem” adjective is removed. The classical method attribution and complete supporting cube proof remain unchanged.
+
+9. R5 — closed for C
+The binary/comparison closing paragraph now explicitly says that section ALONE does not supply arbitrary intermediate-coefficient control, and that the later balanced223 section derives the control, complete cover and count for the finite scalar-gradient question.
+This matches its already-updated opening and preserves its classical/nonoriginality and physical/continuum limits. No binary corollary is silently promoted to the general proof.
+
+10. Optional matrix scope — correctly clarified
+The root now says the nonlocal spectral result does not construct rectangular observations for THESE GENERAL MATRIX COEFFICIENTS, and that the later common-scalar result does not close that general matrix problem.
+This is precisely the valid limit identified in the A report. It avoids both a false scalar-open claim and a false closure for noncommuting/signed matrix coefficients. The actual component-gradient form and h=D(N_c^2-1) scalar-profile multiplicity are unchanged.
+A status search of all13 C files found no remaining unqualified current scalar OPEN/missing-count/pending-control contradiction of the type listed in R1–R5. Remaining unresolved physical/continuum/general-matrix or section-specific route limitations retain their proper scope.
+
+11. B typography and provenance movement
+The40-character original source SHA c993dff04868d01d37b6ec87e0417da3c91a1330 is unchanged; it was moved to its own centered scriptsize line. Its raw draft hash is also unchanged. This changes source presentation only.
+The root spacing/RemarkI.2/TermSource corrections are prose typography and preserve all quoted values and meanings. No claim that an overfull box is actually resolved or that the result fits a page is certified here: that requires the separate render/layout work.
+No numerical assessment or grade inheritance is introduced by these changes.
+
+12. Added CDPX primary attribution
+The new cdpx223 bibliography item names A.Cohen,R.DeVore,P.Petrushev,H.Xu,
+“Nonlinear approximation and the space BV(R^2),”
+American Journal of Mathematics121(1999),587–628,
+with the author-hosted primary PDF:
+ https://people.math.sc.edu/pencho/Publications/BV9707.pdf
+The primary PDF text was consulted, not rendered or graded. Its title/authors and publication line confirm the bibliographic data. Its introduction defines dyadic rings as differences of nested dyadic cubes and describes split-and-merge approximation on disjoint ring partitions, supporting the new limited bivariate-BV/dyadic-ring description.
+The integrated text does not import that continuous bivariate approximation theorem as the finite D>=3 weighted proof. It explicitly denies originating the function-approximation problem or the general ring/BV/tree machinery here. Brudnyi's RemarkI.2 boundary-touching qualification remains explicit in geometry-boundaries221 and in the new attribution context.
+This is a correct additional primary comparison, not an exhaustive novelty/equivalence finding or a claim of original priority.
+
+13. Continuing mathematical and evidence limits
+The unchanged balanced-ring proof retains its earlier analytic acceptance: it constructs finite coefficient-only rectangular means for the stated common positive scalar component-gradient form, with the declared safe constants/count and K=c.
+It does not provide a general matrix/covariant/interacting coefficient producer, variable-weight curl identity or physical continuum theorem.
+The full original222/223 source reports and diagnostic provenance remain distinct. This check did not replay scientific evidence, establish all-size machine proof/Lean verification, attest service-side runtime state or upgrade the involved review to independence.
+OriginalA remains rejected at its exact SHA. CorrectedC receives this bounded source acceptance. Neither result is a numerical or exact-PDF grade, no older grade transfers, and no publication permission or public status update is supplied.
+
+14. Final disposition
+accept_with_limits for ddd2cf605c1715a03d2e87991e920c0ec760e527 as the corrective source integration.
+R1–R5 are all closed; the optional matrix clarification and CDPX citation are correct. No new bounded-delta defect was found.
+The original rejection, interruption history and captures remain preserved without modification.
+
+Report representation:UTF-8 without BOM,LF,final newline.

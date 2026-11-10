@@ -1,0 +1,30 @@
+Integrated223 exact source/evidence snapshot. The complete arbitrary-profile
+finite scalar-gradient rectangular construction222 is now incorporated with K=c,
+actual derived local gap/cover/count, unchanged original positive-start weights
+and retained cross-rectangle edges inside each ring. Source222 is merged byPR199.
+
+Frozen TeX sourceCddd2cf605c1715a03d2e87991e920c0ec760e527 has13inputs.
+Exact101page PDFc99f59936f7ac58dc4af25443d3a3a17932d6b1651542285feb65d6781f3814e,
+918043bytes. Own Colab10actual tool exits0, no final warnings; all101pages viewed
+through17contact sheets and13individual images. Runtime released and separately
+read back inactive. Full original render archive remains in the permanentD
+delivery folder and must accompany publication as an immutable release asset.
+
+SourceA was rejected for5current-status integration omissions; its complete
+original report/captures remain. Ungraded renderA also failed one overfull line.
+B fixed layout and typography; C fixesR1-R5, clarifies remaining general-matrix
+scope and adds a primary CDPX attribution. Complete bounded corrective report
+accepts C with limits; mathematical proof/constants were unchanged. All earlier
+failures and ungraded artifacts remain preserved, not retrospectively passed.
+
+At THIS snapshot the FIRST current numerical exact-PDF assessment is in progress.
+No numerical grade is supplied or inherited by this source packet. Actual full
+original model report/context must accompany the exact AIRR version after that
+round completes. This snapshot is neither publication permission nor acceptance.
+No new Lean theorem, human peer review, verified independent review, exhaustive
+priority result or physical/continuum conclusion is asserted. PR29 remains20/41,
+TermSource0. SourceC, not the moving branch name, is the exact mathematical referent.
+
+Code licences: renderer/inherited programme code AGPL-3.0-only; the separately
+included diagnostic222 retains its MIT header in its own previous evidence path.
+No third-party full research paper or protected client credential is bundled.

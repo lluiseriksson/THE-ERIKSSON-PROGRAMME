@@ -1,0 +1,15 @@
+{
+  "at": "2026-11-10T16:14:46.878843+00:00",
+  "source_A": "1e30fc310acf1361ccc532f2f186b38e4f6634e2",
+  "ungraded_A_pdf_sha256": "056f2471a834007a200877af1e6e126ab108f1b186a86ed60cd87c46177d2134",
+  "A_status": "FAILED_PRESERVED:34.36049pt overfull source-SHA paragraph",
+  "changes": [
+    "Move original40character sourceSHA onto its own small centered line to close actual layout failure",
+    "Repair6 spacing/notation typos in current review-context prose",
+    "Add primary Cohen--DeVore--Petrushev--Xu1999 attribution, institutional author PDF directly read; no claim of new ring/BV principle"
+  ],
+  "mathematical_theorem_constants_or_hypotheses_changed": false,
+  "new_grade": null,
+  "original_A_archive_retained": true,
+  "A_source_audit_still_bound_only_to_A": true
+}

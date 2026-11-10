@@ -1,0 +1,171 @@
+MATHEMATICAL SOURCE AUDIT222 — BALANCED INTEGER RINGS
+Date: 2026-11-09
+Verdict: accept_with_limits (analytic source audit).
+
+No load-bearing geometric, exponent, constant, counting or original-energy error was found. The displayed balanced-ring construction supplies the claimed scalar-gradient rectangular means and target-order count on analytic reading. It is materially more than a local shell input. This is not formal certification, finite diagnostic execution, a novelty judgment or a change to the programme's recorded OPEN/publication status. The source's required separate diagnostic gate has not been performed here.
+
+1. Exact object and capture
+Candidate: D:\Datos\the-eriksson-programme\autonomia\evidencia-222\balanced-ring222-draft.txt
+Bytes: 12385
+SHA-256: f2cd7941ccc8e9fa30e3a8742d5e814b0e4bcdc83ded16426b48b78c7deac057
+Representation: exact raw checkout UTF-8 bytes, LF with no CR; no normalization. This candidate is a filesystem draft, not a Git-committed source referent.
+A byte-for-byte capture is retained as balanced-ring222-draft-capture.txt.
+Context commit: 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64
+Complete context captures: revision221 flat_critical_integrated.tex, sobolev.tex, partition.tex, geometry-boundaries221.tex and shells.tex. These were captured by git show SHA:path through raw stdout BaseStream and WriteAllBytes, without normalization.
+Own evidence folder:
+ D:\Datos\the-eriksson-programme\autonomia\evidencia-222\audit222
+Capture manifest: capture-manifest222.json
+Manifest SHA-256, UTF-8 LF without BOM:
+ a0087ce0efc96de7a51d7537444c0cb5e067e52871032566793be9879703418e
+
+2. Factual context and method
+This is the existing /root/defect_plane198_audit task with retained198/216/217/218/219/220/221A/221B history, shared filesystem/account and prior involvement in the dossier. It is not a fresh, independent or blinded review, and not human peer review.
+Actually exposed description: Codex, an agent based on GPT-6. Exact hidden selected model/backend and reasoning effort are unknown; tool model options do not establish the running selection.
+The entire candidate was read and the actual original scalar-gradient energy, field multiplicity, local-data definition and Question27 rank scale were checked in the pinned context. The finite cube/interval arguments and prior stopped219/220 mechanisms were consulted. No new agent was created.
+No inbound message arrived during the audit. No candidate source, frozen221 object, score, branch, PR or other programme record was changed. No other chat/automation was accessed.
+No scientific program, mathematical Python, diagnostic, Lean, Lake, oracle, test, build, rendering or runtime was executed. Only analytical reasoning and text/git/hash operations, plus primary-source contextual reading, were used. No stars, numerical/PDF grade, new publication or originality claim is supplied.
+
+3. Interpretation and minor write-up clarifications
+The claim is read with the original question's positive c, integer n>=1, integer D>=3 and finite positive scalar coefficients. A formal theorem statement should list n>=1 and c>0 explicitly. The current preregistration/context makes this intended range clear; it is not a discovered load-bearing counterexample.
+At the end of a unary chain, output a residual group only if nonempty. If a closed group ends exactly at the chain end there is no residual ring to average. Likewise discard empty geometric pieces. This standard empty-output convention should be stated explicitly in a formal version; it does not change the count or construction.
+No numerical running-time bound is proved. The finite construction may inspect the whole tree and all coefficients, with exact mathematical comparisons. Its partition is coefficient-only; proof constants/extensions may depend on a test field without making the partition field-dependent.
+
+4. Balanced integer geometry, including odd roots
+At depth k, recursively halving an n-site interval gives lengths floor(n/2^k) or ceil(n/2^k), until singleton coordinates remain singletons. This follows inductively because halving the two adjacent possible parent lengths again yields two adjacent lengths. With h=max(1,floor(n/2^k)), all actual depth-k side lengths lie in[h,h+1], hence[h,2h]. Cartesian choices may give different lengths between coordinates, but never more than one.
+An ancestor boundary and descendant-hole boundary are boundaries in the same nested one-dimensional partition. Any positive intervening integer interval is a union of depth-k intervals and therefore has length at least the GLOBAL h. At h=1 the same conclusion holds even for coordinates that have already stopped subdividing.
+The use of global h is essential and correct. For example, n=3 and the depth-one hole {1,2}^D have a clearance of one although the hole's own minimum side is two. The candidate does not incorrectly use that minimum as h.
+If every side of Q has length at least2, its next generation strictly shortens every coordinate, so every proper descendant I is shorter in every coordinate. Each axis therefore has at least one positive clearance. Expanding I by h on every positive-clearance face, clipped to Q, gives B with side lengths between2h and4h: one available extension of h provides the lower bound; I-side<=2h plus at most two h extensions gives the upper bound.
+If min side(Q)=1, balance makes every side1 or2. Every proper descendant is a corner singleton. Q minus that corner is a Boolean-cube graph minus a vertex, connected when nonempty (or a singleton in the effective one-dimensional case). This is exactly the small geometry separately handled later. There is no hidden full-dimensional slab assumption in that case.
+
+5. Collar cover and BV mean transport
+For large Q, A=B\I is covered by the positive-clearance slabs. Their normal width is exactly h; all other sides are those of B. They are contained in Omega=Q\I. There are between D and J=2D slabs. Distinct-normal slabs intersect in nonempty products.
+Writing ell_i for the B side in direction i, the common product formula gives
+ v_i/|S_i intersect S_j|=ell_j/h<=4,
+ v_i/v_j=ell_j/ell_i<=2.
+Opposite slabs with one normal have the same volume. The stated tree connects distinct normals directly and at most one opposite-root slab through another normal, so depth is at most two. D>=3 supplies other normals; in fact this connectivity part already works for two.
+The rectangle L1 variance bound is valid. On m sites,
+ sum|u-mean u| <=(1/m)sum_(i,j)|u_i-u_j|
+ <=(2/m)sum_edges k(m-k)|du_k|
+ <=(m/2)sum|du|.
+Coordinate-average projections commute and contract L1. Telescoping their product, then applying this bound fiberwise, gives V1(S)<=2h TV_S because every side is<=4h. No extra factor D is lost.
+An intersection mean m_O gives
+ v_i|m_i-m_j|<= (v_i/|O|)(V1_i+V1_j)<=4(V1_i+V1_j).
+For i,p,r on a depth-two path, the second edge is multiplied by v_i/v_p<=2. Thus the coefficients are exactly4V1_i+12V1_p+8V1_r, bounded by12 times their total. Direct paths need only4. Covering A about the root mean c0 gives
+ sum_A|f-c0| <=(1+12J)sum_i V1_i
+ <=2J(1+12J)h TV_A.
+Hence the candidate's P_D=2J(1+12J) is correct.
+
+6. Actual trace bound and constant-fill extension
+For a hole face with positive clearance, its adjacent h-layer has normal length h and tangential intervals exactly those of I. It lies in A. Along a normal fiber, averaging the path comparison from its nearest value to each of the h values gives
+ |f(first)-c0|<=h^(-1)sum_fiber|f-c0|+sum_fiber|df|.
+This remains true at h=1, where the gradient sum is zero.
+Summing the actual hole-crossing face values costs at most
+ J[h^(-1)sum_A|f-c0|+TV_A]
+ <=J(P_D+1)TV_A.
+This deliberately overcounts safely. Every edge crossing from I to Q\I corresponds to exactly such a positive-clearance face; faces touching Q's exterior introduce no external edge. Corner sites can contribute along multiple coordinate edges, which the face sum counts correctly.
+Fill I with the constant c0. Internal hole differences vanish; original Omega differences are unchanged; added variation is precisely the hole-crossing jumps just bounded. Therefore
+ TV_Q(f_ext)<= [1+J(P_D+1)]TV_Omega(f)=C_ext TV_Omega(f).
+No coefficients are extended. Direction reversal is immaterial for unweighted absolute variation. This is a BV extension statement and supplies no weighted quadratic extension claim.
+
+7. Full-cube isoperimetry, median BV and aspect-two folding
+The occupied/nonfull-fiber argument is valid for the finite cube. At most |T|/m occupied fibers per direction are full; each occupied nonfull interval has an internal crossing edge. The discrete projection inequality plus AM-GM gives
+ boundary(T)>=D|T|^((D-1)/D)-D|T|/m
+ >=c_iso |T|^((D-1)/D)
+on half-volume sets. The pinned context contains the finite entropy proof of the needed projection inequality. c_iso=D(1-2^(-1/D))>=1/2 follows, for example, from the Bernoulli argument already used in221.
+Finite coarea and Minkowski on median parts give the asserted infimum BV bound with2/c_iso. This factor is conservative; no unsupported infinite-volume theorem or boundary condition is imported. On a one-site cube the inequality is simply0<=0.
+For a rectangle of aspect at most2, each side m_i is between N/2 and N, where N is its longest side. The endpoint-repeat fold from an N-site cube visits each original vertex once or twice per coordinate and each original edge at most twice per coordinate. A singleton side is possible only with N<=2 and is also covered. The initial product block maps identically onto the rectangle.
+Consequently variation increases at most2^D, while restriction of the extension's distance to any constant dominates the rectangle's. Taking infima gives the stated
+ C_full=2^(D+1)/c_iso.
+This folding is entirely unweighted, as required.
+
+8. Ring relative isoperimetry and critical Sobolev constant
+For an indicator on Omega and every real z, either |z|>=1/2 or |1-z|>=1/2. Thus
+ ||1_T-z||_(r,Omega)>= (1/2)min(|T|,|Omega\T|)^(1/r),
+ r=D/(D-1).
+Apply the full-rectangle BV inequality to its constant-fill extension. Norm restriction and infimum directions are correct, yielding
+ c_Omega=c_iso/[2^(D+2)C_ext].
+The extension is allowed to depend on the indicator; no fixed coefficient extension is assumed.
+Coarea gives ||g||_r<=c_Omega^(-1)TV(g) for nonnegative half-supported g. The median positive/negative parts have the needed supports. With
+ alpha=2(D-1)/D, q=2D/(D+2), q'=2D/(D-2),
+ alpha*r=2 and (alpha-1)q'=2.
+The edge power inequality and degree<=2D give exactly
+ TV(w^alpha)<=2alpha D^(1/q')||dw||_q ||w||_2^(alpha-1).
+Division is made only for nonzero w. The two truncated q-energies sum to at most the original q-energy. Since2/q>=1, recombining squares produces the stated counting variance bound without an extra factor.
+The constants are safe:
+ K=2alpha D^(1/q')/c_Omega,
+ K^2 D^(2/D)<=2^(2D+10)D C_ext^2
+ <=G_D=2^(2D+10)D^2 C_ext^2.
+Here alpha<=2, c_iso>=1/2 and2/q'+2/D=1. Thus G_D is a valid loose dimension-only constant. Full aspect-two rectangles admit the same upper constant with no hole.
+
+9. Original-start weighted Holder and small cubes
+Only after the unweighted graph inequality, weighted Holder is applied on the ORIGINAL retained Omega edges:
+ ||df||_q^2 <= (sum_e a(start e)^(-D/2))^(2/D) E_a(f;Omega).
+The exponent identity q/(2-q)=D/2 is correct. At most D retained positive-axis edges start at a vertex, so the inverse edge mass is<=D S(Omega). There is no coefficient reflection, endpoint averaging, hole coefficient or reassigned incoming start.
+For min side(Q)=1, Q or its corner-punctured version has at most b=2^D vertices and is connected if nonempty. A simple path has at most b-1 edges. The pairwise variance identity therefore gives the safe bound Var<=b^2 E_1. Each actual retained edge has a(start)^(-P)<=S(Omega), hence E_1<=S(Omega)^(2/D)E_a. G_D>=b^2.
+Singleton variance is zero. Empty sets are omitted. These facts close all effective-low-dimensional small cases rather than importing a false full-dimensional isoperimetric bound.
+Thus every nonempty full tree box or tree-ancestor ring has
+ Var_Omega<=G_D S(Omega)^(2/D)E_a(f;Omega).
+
+10. Heavy tree: exact cover, compression and count
+The tree is finite, and positive additive vertex mass makes heavy descendants imply heavy ancestors. Terminal heavy nodes are disjoint: below a non-singleton terminal, every child and descendant is light; a heavy singleton has no children. If L denotes their number, L<=S(X)/t.
+For the finite rooted heavy tree, branching nodes B satisfy B<=L-1. Contracting unary paths leaves at most B+L-1 skeleton edges plus a possible root-leading chain, so the number of maximal unary chains is<=B+L<=2L-1. This bound is on chains, not on their potentially large total length.
+At a unary node, all other children are light, so increment mass<= (b-1)t. Greedy aggregation begins below t and closes after one such increment; each closed group therefore has mass in[t,bt). Consecutive nested increments are exactly a tree-ancestor ring Q_i\Q_j, so the geometric lemma really applies. The residual, if nonempty, has mass<t.
+Closed groups are disjoint across all chains and number<=S/t. There is at most one residual per chain. Branching/terminal heavy internal nodes output their light children; heavy singleton terminals output themselves. The total of these cubes/singletons is<=b(B+L). These outputs cover all branches exactly: unary increments exclude the endpoint heavy subtree, and branching/terminal processing covers that remaining subtree without duplicating its ancestors' increments.
+For heavy root, region count is at most
+ S/t+(2L-1)+b(B+L)
+ <=S/t+(b+1)(2L-1)
+ <=1+(2b+3)S/t.
+For light root, output one root box, covered by the same bound. Every nonsingleton region has mass<=bt=(cG_D)^(-D/2), giving actual regional residual gap>=c. Heavy singleton mass can exceed that threshold, but its variance is zero and its mean captures its whole norm; no false singleton gap is used.
+The partition is determined by coefficients/tree and fixed geometric conventions, never by f. No unbounded unary-depth factor is hidden in the count.
+
+11. Rectangular observation conversion retains the necessary edges
+For a ring, first coordinate outside I yields at most2D disjoint integer product rectangles: earlier coordinates lie in I, the current coordinate is below/above I, and later coordinates fill Q. Empty pieces are discarded. Full boxes/singletons need one rectangle.
+For these pieces,
+ q_Omega^2=(sum_B sqrt(|B|)q_B)^2/|Omega|
+ <=sum_B q_B^2
+by Cauchy. Thus the ring's actual residual estimate implies
+ E_a(f;Omega)+c sum_B q_B^2>=c||f||_Omega^2.
+This uses the entire actual regional energy, INCLUDING edges between the rectangles of that ring. It does not assert that each rectangular piece has an individual gap. That distinction is valid for the requested global energy inequality and avoids source219's falsified internal-cell certificate.
+Distinct regions have disjoint vertex sets and disjoint internal edge occurrences. Summing retains all their within-ring interfaces and discards only inter-region edges of nonnegative energy. Hence the full nonwrapping X inequality follows, and periodic wrap occurrences can be added even at small n.
+The number of rectangles is<=2D times the region count, exactly the claimed R_rect bound. Nonempty disjoint rectangle rows q_B have scalar rank equal to their count. Constant fields verify the K=c normalization. Dividing by V rescales each row to V^(-1/2)q_B=sqrt(|B|/V)mean_B f.
+
+12. Original Question27 and output dimension
+The pinned ap:eq:energy is the unit-spacing positive-start COMPONENTWISE scalar coefficient gradient form, shared across all derivative/internal directions. The actual internal real dimension is g=N_c^2-1 and there are D field components, so h=Dg.
+Applying the same coefficient-selected partition to each real component adds no factor to the energy/penalty coefficient and gives output dimension h R_rect. It is not N_c R_rect or a scalar rank being mislabeled as vector rank. The all-field inequality restricts to divergence-zero fields without needing the mean map to preserve that constraint.
+Phi(y)=c||y||^2 and a linear mean map supply the original near-zero data with K=c globally; there is no kernel-only-to-penalty inference.
+The moment conversion is correct:
+ S(X)<=M n^D mu^(-P)
+ <=2^P M max{1,n^D/(1+mu)^P}
+for mu>=1. Since1/t=b(cG_D)^P and the target max is>=1, the displayed output constant
+ 2D h[1+(2b+3)b(cG_D)^P 2^P M]
+is valid. This is a new explicit safe rectangular constant; it does not claim the earlier spectral theorem's numerical constant or sharp rank.
+The construction itself only needs positive a; exact mean and upper envelope are unnecessary for that sufficiency. Under the original moment hypotheses it gives the target-order rectangular statement in the finite scalar-gradient sense. It supplies no covariant/interacting coefficient producer, weighted curl replacement or continuum theorem.
+
+13. Adversarial cases checked analytically
+No mathematical executable was used. Actual attacks considered were:
+- Odd n=3 with the large depth-one child: clearance1 versus hole side2 confirms why global h is necessary.
+- Mixed1/2 side nodes and corner-singleton holes: the small connected-graph bound, not the slab proof, handles them.
+- Boundary-touching, corner and interior descendants: only positive-clearance faces enter the actual collar/trace sum.
+- Constant fields: energy0 and sum rectangle-row squares exactly equals the norm, checking K=c.
+- One heavy atom with an arbitrarily long unary chain: compression emits mass groups/residual rings, not one cost per depth, while the atom is a singleton.
+- All-light root and all-heavy singleton terminals: both cover/count and zero-variance conventions remain valid.
+- Multiple heavy branches: B<=L-1 and chain count<=B+L prevent a missing branching factor.
+- Adjacent rectangular pieces of one ring: deleting their interface energy would be an invalid mutation; the source explicitly retains it.
+- Source220's thin off-center plate: its large hole with clearance1 is not an admissible balanced-tree descendant at that scale, so the new lemma does not silently extend to that refuted geometry.
+These attacks reveal no counterexample to the stated balanced construction.
+
+14. Attribution and evidence still required
+Brudnyi's arXiv:1511.03971 Appendix I Remark I.2 was consulted:
+ https://arxiv.org/html/1511.03971
+It explicitly addresses boundary-touching dyadic inner cubes. Its geometric and approximation mechanisms are classical context, not evidence that the finite integer collar or original-start weighted adapter is novel. Appendix II has a related heavy-tree organization; its continuum absolute-continuity assumptions are not imported into the present finite atomic tree, which stops at vertices and treats heavy atoms as singletons.
+The earlier Birman–Solomyak and scalar Neumann Sobolev contexts remain relevant. This audit establishes no exhaustive priority/equivalence verdict. Boundary touching, compression, BV and rank mechanisms must not be advertised as new general principles.
+No finite diagnostics exist as evidence from this audit. Source222 explicitly requires a separate finite adversarial campaign, including odd sizes, boundary rings, branch/unary cases, exact cover/count and an interface-discard mutation. That gate remains pending. No Lean/formal result, runtime/performance measurement, PDF, numerical assessment or publication is supplied.
+The mathematical source gate passes on this reading. No existing programme OPEN/closure record or immutable221 PDF/score was changed. The original finite target-order question and any eventual status update must be distinguished from physical/continuum questions and from the pending operational evidence requirements.
+
+15. Final objections and disposition
+No load-bearing error or actual counterexample was found.
+Minor formal-write-up clarifications: list n>=1,c>0 explicitly; omit empty residual groups; specify fixed deterministic ordering conventions if presenting executable pseudocode. These do not require a new mathematical premise or change the stated constants/count.
+accept_with_limits for the exact draft hash f2cd7941ccc8e9fa30e3a8742d5e814b0e4bcdc83ded16426b48b78c7deac057.
+Limits: analytic involved source review only; no independent/blind/human review, no finite execution/formal certification, no originality claim, no numerical/PDF grade, no public-status mutation and no physical hypothesis removal.
+
+Report representation: UTF-8 without BOM, LF, final newline.

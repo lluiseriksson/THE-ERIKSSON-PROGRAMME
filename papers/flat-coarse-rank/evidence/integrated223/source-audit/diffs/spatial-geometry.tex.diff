@@ -1,0 +1,21 @@
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision221/spatial-geometry.tex b/papers/flat-coarse-rank/integrated-revision/revision223/spatial-geometry.tex
+index 17ed27cb..3ad1db09 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision221/spatial-geometry.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/spatial-geometry.tex
+@@ -5,8 +5,8 @@ observation. It does not construct a spatial partition. We now consolidate
+ four complementary statements: an abstract limitation of spectral data,
+ a local coexact point-support obstruction, a positive rectangular construction
+ for a restricted coefficient class, and a limitation of minimum-coefficient
+-certificates even with sharp unweighted constants. The original unrestricted
+-critical rectangular question remains open.
++certificates even with sharp unweighted constants. The arbitrary-profile finite construction is supplied later in
++Section~\ref{sec:balanced223}, using an actual balanced-ring adapter.
+ 
+ Throughout the actual lattice statements, $D\geq3$, $p=D/2$,
+ $X=(\mathbb Z/n\mathbb Z)^D$, $N=n^D$ and $h=D(N_c^2-1)$.
+@@ -442,4 +442,4 @@ interacting gauge forms, a continuum limit or a physical mass gap.
+ Section~\ref{sec:laminates187} supplies such an actual-energy construction
+ for arbitrary one-coordinate laminates and proves a separate barrier for
+ strong Green-moment certificates. Extending it to unrestricted transverse
+-variation is partly supplied by Section~\ref{sec:partial188}; the fully variable case remains open.
++variation is partly supplied by Section~\ref{sec:partial188}; the fully variable finite construction is supplied in Section~\ref{sec:balanced223}.

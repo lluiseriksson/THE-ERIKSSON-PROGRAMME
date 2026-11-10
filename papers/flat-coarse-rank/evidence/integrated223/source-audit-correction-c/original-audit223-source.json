@@ -1,0 +1,193 @@
+{
+  "verdict": "reject",
+  "reason": "bounded source-consistency omissions in the integration; no load-bearing error found in the balanced-ring proof",
+  "dates": {
+    "started": "2026-11-09",
+    "resumed_completed": "2026-11-10"
+  },
+  "source": {
+    "commit": "1e30fc310acf1361ccc532f2f186b38e4f6634e2",
+    "directory": "papers/flat-coarse-rank/integrated-revision/revision223",
+    "balanced_rings": {
+      "bytes": 15888,
+      "sha256": "715aaf0ac64e0491db0f21ff78b4ade9f5bd12482371bf8bb966d7ccb0c46c82"
+    },
+    "root": {
+      "bytes": 149844,
+      "sha256": "9b831e241f3d7b0206881b49ebd415ab96e98ef725de86ef18a8d5bb51b2e6c4"
+    },
+    "representation": "Exact raw Git blob LF bytes; no normalization; no CR in these two files"
+  },
+  "baseline_commit": "86c19e1bd5b18cfe39f6c53685489b0d7cc75a64",
+  "captures": {
+    "manifest": "capture-manifest223.json",
+    "sha256": "8e275e70451c4108aa3c4732cdd66398b1e84733ae8696148f854cb920c4683a",
+    "prior_captures_preserved": true,
+    "all13_current_files": true,
+    "all12_baseline_files": true,
+    "all12_diffs": true
+  },
+  "interruption": {
+    "record": "interruption223.txt",
+    "sha256": "7605a1386491c430a95de79aff8615cbace8fca77515ec00f3db00f27f96e177",
+    "resume_assignment_text": "Prior turn failed with usage-limit error before any verdict",
+    "full_platform_exception_visible": false,
+    "prior_completed_audit_or_grade": false,
+    "same_audit_resumed": true,
+    "new_agent_or_model_provider_account_switch": false
+  },
+  "comparison": {
+    "byte_identical": [
+      "boundary-transfer.tex",
+      "detour-separation.tex",
+      "partition.tex",
+      "physical-cycle.tex",
+      "shells.tex",
+      "sobolev.tex"
+    ],
+    "changed_existing": [
+      "flat_critical_integrated.tex",
+      "geometry-boundaries221.tex",
+      "joint-binary.tex",
+      "laminates-green.tex",
+      "partial-invariance.tex",
+      "spatial-geometry.tex"
+    ],
+    "new": "balanced-rings223.tex"
+  },
+  "corrections": [
+    {
+      "id": "R1",
+      "file": "boundary-transfer.tex",
+      "line": 242,
+      "kind": "definite current-status contradiction",
+      "issue": "main fully variable fixed-moment actual-rectangle question still explicitly remains open",
+      "fix": "historical or method-scoped wording plus reference to balanced223"
+    },
+    {
+      "id": "R2",
+      "file": "flat_critical_integrated.tex",
+      "line": 2750,
+      "kind": "definite current-parent contradiction",
+      "issue": "bibliography says current predecessor v11 while opening/context say v12",
+      "fix": "update parenthetical to v12 or bind it to an earlier historical candidate"
+    },
+    {
+      "id": "R3",
+      "file": "geometry-boundaries221.tex",
+      "line": 103,
+      "kind": "unqualified missing-count status",
+      "issue": "global covering/charging theorem remains missing inside old selected-shell subsection",
+      "fix": "scope to independent-layer/local218 route and reference different later construction"
+    },
+    {
+      "id": "R4",
+      "file": "sobolev.tex",
+      "line": 9,
+      "kind": "stale open-problem descriptor",
+      "issue": "calls critical rectangular-partition problem currently open",
+      "fix": "then-open/historical or section-alone wording with balanced223 reference"
+    },
+    {
+      "id": "R5",
+      "file": "joint-binary.tex",
+      "line": 172,
+      "kind": "legacy pending-control scope",
+      "issue": "continues to require intermediate-level control reads as an unsupplied programme link",
+      "fix": "scope to binary/comparison section alone and point to later general proof"
+    }
+  ],
+  "legitimate_remaining_limits": {
+    "matrix_root_line2026": "general matrix-coefficient rectangular problem is not solved by common scalar a; optional clarification only",
+    "shell_lower_moment_route": "section-specific conversion requirements remain valid",
+    "supplied_cube_route": "section-alone nonclosure remains valid",
+    "physical_and_continuum": "remain unproved"
+  },
+  "mathematical_assessment": {
+    "balanced_ring_integration": "complete against accepted222 draft/addendum",
+    "load_bearing_errors_found": [],
+    "new_counterexamples": [],
+    "clarifications_from222": "n>=1,c>0,nonempty residual,fixed orders all addressed",
+    "constants": "P_D,C_ext,G_D,t and C_rect preserved",
+    "geometry": "global-depth odd rounding, positive clearance and singleton/corner cases complete",
+    "BV_trace": "actual hole-crossing edges and boundary-touching faces complete, unweighted only",
+    "weighted_holder": "original starts retained, degree D and exponents correct",
+    "tree": "complete disjoint cover and 1+(2b+3)S/t region count",
+    "rectangle_energy": "within-ring cross-piece edges retained",
+    "means": "counting/probability normalization correct",
+    "multiplicity": "h=D(N_c^2-1); output dimension h#R",
+    "original_scope": "finite common scalar-gradient Question27, not general matrix/curl/physical closure"
+  },
+  "original222": {
+    "draft_sha256": "f2cd7941ccc8e9fa30e3a8742d5e814b0e4bcdc83ded16426b48b78c7deac057",
+    "addendum_sha256": "2e0396adb9029db384c34fcf270cedef5187cde1f5805097475a8c2982f48514",
+    "report_sha256": "6d229bc87db95769d7fd153d8e39afc6954bb07707923ac64b607ca6043b667e",
+    "audit_sha256": "372d61b96955ac2e42e5eb0f9854e45c4b633b6e6d23281aa12400165d1a5908",
+    "originals_unchanged": true
+  },
+  "evidence_reading": {
+    "normal_optimized_stdout_byte_identical": true,
+    "recorded_exit_bytes": "0 followed by LF in each",
+    "counts_match_new_section": true,
+    "geometries": 216,
+    "BV": 648,
+    "partitions": 200,
+    "regional_fields": 71232,
+    "global_fields": 800,
+    "negative_controls": 3,
+    "cross_piece_edge_occurrences": 1668,
+    "used_as_mathematical_proof": false,
+    "replayed": false,
+    "runtime_provenance_independently_authenticated": false
+  },
+  "context": {
+    "task": "/root/defect_plane198_audit",
+    "exposed_model": "Codex, an agent based on GPT-6",
+    "exact_hidden_model": "unknown",
+    "backend": "unknown",
+    "reasoning_effort": "unknown",
+    "fresh_context": false,
+    "prior_context": [
+      "198",
+      "216",
+      "217",
+      "218",
+      "219",
+      "220",
+      "221A",
+      "221B",
+      "222"
+    ],
+    "shared_history_filesystem_account": true,
+    "independence_claim": false,
+    "blind_review": false,
+    "human_peer_review": false
+  },
+  "actions": {
+    "scientific_execution": false,
+    "diagnostic_execution": false,
+    "mathematical_python": false,
+    "lean": false,
+    "lake": false,
+    "oracle": false,
+    "tests": false,
+    "build": false,
+    "render": false,
+    "runtime": false,
+    "source_or_status_or_grade_changes": false,
+    "other_chat_or_automation_access": false
+  },
+  "limitations": [
+    "involved analytic integration audit only",
+    "no comprehensive old-page reproof",
+    "no fresh novelty/equivalence review",
+    "no service-side execution or remote v12 assessment provenance authentication",
+    "no numerical/PDF grade or stars",
+    "no public status mutation or publication permission"
+  ],
+  "numerical_grade": null,
+  "pdf_grade": null,
+  "stars": null,
+  "prior_grade_inherited": false,
+  "output_representation": "UTF-8 without BOM, LF, final newline"
+}

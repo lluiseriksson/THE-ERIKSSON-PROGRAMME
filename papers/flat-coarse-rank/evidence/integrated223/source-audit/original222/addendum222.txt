@@ -1,0 +1,72 @@
+AUDIT222 AUTHOR DISPOSITION AND PRECISE STATEMENT
+2026-11-09. Read with the unchanged exact original draft, raw Git LF SHA256
+f2cd7941ccc8e9fa30e3a8742d5e814b0e4bcdc83ded16426b48b78c7deac057.
+Full original audit report SHA256
+6d229bc87db95769d7fd153d8e39afc6954bb07707923ac64b607ca6043b667e.
+
+The original draft's UNREVIEWED label records its actual initial state. It is
+retained unchanged. The completed source audit returned accept_with_limits:
+no load-bearing error or counterexample found, with the three clarifications
+below. The reviewer had not received the separate execution results; its
+statement that finite diagnostics remained pending is accurate in its audit
+context and is not edited. Subsequently verified original Colab transcripts
+at c993dff04868d01d37b6ec87e0417da3c91a1330 supply the selected finite checks.
+No numerical/PDF score or verified independence is attributed to this audit.
+
+PRECISE FINITE THEOREM
+Let D>=3 and n>=1 be integers, c>0 real, and a(x)>0 finite on the integer cube
+X={0,...,n-1}^D. Define P=D/2, b=2^D, J=2D,
+C_ext=1+J[2J(1+12J)+1], G_D=2^(2D+10) D^2 C_ext^2,
+S=sum_X a(x)^(-P), and t=(c G_D)^(-P)/b.
+Then there is a coefficient-only partition into nonempty axis-aligned integer
+rectangles, of cardinality
+ R <=2D[1+(2b+3)S/t],
+such that for every real scalar field f,
+ sum_{i,x:x,x+e_i in X}a(x)|f(x+e_i)-f(x)|^2
+ +c sum_B |B|^-1 (sum_B f)^2 >=c sum_X f^2.
+The same inequality holds for the periodic original energy by adding wrap
+terms. The construction and full proof are in the unchanged original draft.
+
+For any N_c>=2, apply this same partition to h=D(N_c^2-1) real components.
+For mu>=1 and n^-D sum_X (mu/a)^(D/2)<=M, the actual output dimension is at most
+ 2D h[1+(2b+3)b(cG_D)^P 2^P M]
+ *max{1,(n/sqrt(1+mu))^D}.
+The Euclidean penalty Phi(y)=c||y||^2 has K=c globally. Thus this supplies the
+original finite component-gradient Question27, including its divergence-zero
+restriction, without an assumed local gap, cover, capacity or count. The
+arithmetic mean identity and upper envelope are not needed for this sufficiency;
+the critical moment itself is still a hypothesis and is NOT derived from a mean.
+
+MINOR CLARIFICATIONS (all expressly requested by the audit)
+1. The integer n>=1 and positive c>0 ranges are explicit above.
+2. Output a residual ring only if it is nonempty; omit every empty rectangle
+   or residual group. The executed diagnostic already used this convention.
+3. Use axis order1,...,D; lower interval before upper in every midpoint split;
+   lexicographic product order on children; first available slab in that order
+   as root and first available distinct-normal slab for the opposite-root link.
+   Along each unary chain process from ancestor toward descendant, closing a
+   group at the first cumulative mass>=t. The construction is determined only
+   by coefficients and fixed geometry, never by f. No bit-complexity or runtime
+   bound for arbitrary real comparisons is asserted.
+No mathematical constants, main proof steps or hypotheses were changed.
+
+SCOPE AND EVIDENCE LIMITS
+This is an analytical finite scalar positive-start component-gradient result,
+not a new Lean endpoint, physical coefficient producer, weighted curl/divergence
+identity, interacting theory or continuum mass gap. The numerical constant is
+safe and very large, not sharp. The exact mean/envelope removal is sufficiency
+for this finite question only. PR29 remains20/41 and TermSource0.
+
+The full involved AI source audit shares prior198--221 context/account/filesystem;
+exact hidden model/effort and independence are unknown. Selected exact-rational
+Colab diagnostics passed in normal/-O, including3 rejected real mutations;
+they are neither an all-size executable proof nor two independent fresh-clone
+reproductions. Every original report/context and negative finding is retained.
+
+The dyadic-ring, BV, endpoint Sobolev and heavy-tree mechanisms are classical;
+see the primary-comparison note, especially Brudnyi1511.03971 AppendixI RemarkI.2
+and AppendixII. No invention of those mechanisms or established priority for
+this finite coefficient-only specialization is claimed. It resolves a missing
+programme-local adapter on analytical review, without asserting a new general
+principle. No new PDF has yet been assessed or published for222; frozen221B
+and its original4/10 assessment remain unchanged.

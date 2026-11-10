@@ -1,0 +1,88 @@
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/boundary-transfer.tex b/papers/flat-coarse-rank/integrated-revision/revision223/boundary-transfer.tex
+index 328a7112..bb2fe6ed 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/boundary-transfer.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/boundary-transfer.tex
+@@ -239,8 +239,9 @@ were complete source audits, not blind or independent peer reviews,
+ scientific replay, Lean verification, PDF assessments or numerical stars.
+ All limitations and author responses remain in the evidence packet.
+ 
+-The main fully variable fixed-moment actual-rectangle question remains
+-open. Cellwise internal-only extension, a near-one-moment rescue, and
++These boundary-transfer tests alone did not settle the fully variable
++fixed-moment actual-rectangle question. Section~\ref{sec:balanced223}
++supplies its positive finite scalar-gradient construction by a different mechanism. Cellwise internal-only extension, a near-one-moment rescue, and
+ independent-cell harmonic-cost additivity have explicit falsifiers.
+ A joint partition or direct local internal-energy argument must derive
+ its count without assuming any of those failed transfers. No main-theorem
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex b/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex
+index 43cc0186..25fe33e9 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex
+@@ -2023,7 +2023,9 @@ coordinates on this low space give a real observation $C$ and penalty
+  \qquad Q_A(u)+\Phi(Cu)\geq c\|u\|^2.
+ \end{equation}
+ This is an existence result for an actual, generally nonlocal observation.
+-It does not construct the unresolved local rectangular observation.
++It does not construct the unresolved local rectangular observation for
++these general matrix coefficients. The later common-scalar result in
++Section~\ref{sec:balanced223} does not close that general matrix problem.
+ For signed forms, $c\|y\|^2$ alone need not be sufficient.
+ 
+ \subsection{The positive matrix estimate}
+@@ -2751,7 +2753,7 @@ Section2B, Theorem2.1 and Example2.1.
+ \bibitem{lg:programme} L. Eriksson, \emph{Coarse information and finite rank
+ obstructions for flat lattice Hodge forms}, existing AIRR dossier
+ ARR-2026-7EPM3V3DP796BBRR, historical public version8 (the immediate
+-predecessor of this candidate is version11).
++predecessor of this candidate is version12).
+ \url{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v8/}.
+ Working paper with AI assessment, not editorial acceptance.
+ \bibitem{lg:muckenhoupt} B. Muckenhoupt, \emph{Hardy's inequality with weights},
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex b/papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex
+index 0642e46f..aaea40a4 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex
+@@ -100,8 +100,10 @@ This uses the whole shell energy, including its face interfaces. It is
+ an all-candidate-radii lower scale bound. A unit shell has only order
+ $L^{D-1}$ sites: its $2D$ observations do not cover the unselected
+ layers or interior. Repeating independently on order $L$ layers costs
+-order $L$ rows. A global covering and charging theorem at the original
+-target count remains missing.
++order $L$ rows. This independent-layer repetition alone does not supply
++a global covering and charging theorem at the original target count.
++Section~\ref{sec:balanced223} derives the finite scalar construction by
++a different balanced-ring mechanism.
+ 
+ \subsection{Sharp rank cost of discarding canonical interfaces}
+ \begin{theorem}\label{thm:filament221}
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex b/papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex
+index 0f82763f..b0f56553 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex
+@@ -169,5 +169,7 @@ failed comparison from a successful binary-class construction; their
+ originality is not established by this limited primary-source comparison.
+ No physical hypothesis of Yang--Mills is removed. The continuum remains
+ open; PR29 stays recorded at 20/41 with TermSource0, not newly certified by
+-these source audits. The sole unrestricted critical rectangular question
+-continues to require actual control of intermediate coefficient levels.
++these source audits. This binary/comparison section alone does not supply
++the required control of arbitrary intermediate coefficient levels. The later
++Section~\ref{sec:balanced223} derives that control, complete cover and
++count for the finite scalar-gradient question.
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/sobolev.tex b/papers/flat-coarse-rank/integrated-revision/revision223/sobolev.tex
+index 2536060d..364088f0 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/sobolev.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/sobolev.tex
+@@ -6,8 +6,10 @@ This supplement derives the balanced-cube endpoint used by the rectangle
+ adapter, rather than importing a local Sobolev estimate as an external input.
+ The method is classical: finite entropy proves the projection inequality,
+ which yields relative edge isoperimetry, layer sets, and a power argument.
+-We claim neither a new general Sobolev principle nor a solution of the open
+-critical rectangular-partition problem. This is part of the existing dossier.
++We claim no new general Sobolev principle, and this cube lemma alone does
++not solve the critical rectangular-partition question. The complete finite
++scalar-gradient construction is supplied in Section~\ref{sec:balanced223}.
++This supporting lemma remains part of the existing dossier.
+ 
+ Fix $D\geq3$, and put
+ \[

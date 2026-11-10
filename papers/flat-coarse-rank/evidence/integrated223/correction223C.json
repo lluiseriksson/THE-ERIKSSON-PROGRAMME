@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-10T16:18:12.436998+00:00",
+  "original_rejected_source": "1e30fc310acf1361ccc532f2f186b38e4f6634e2",
+  "source_B": "a28e0f24523b4bc2ec33b1abff104935a0a3b9a5",
+  "original_full_reject_report_sha256": "566efd027c8eaf7d5a6b4b0e1ae1dfdaddffe50abfa9b21b38e7bf896245b317",
+  "corrections": [
+    "R1 boundary-transfer current OPEN made method-scoped with later constructive reference",
+    "R2 historicalv8 bibliography now names current parentv12",
+    "R3 selected-shell local missing-count statement scoped to independent-layer route",
+    "R4 supporting Sobolev cube fragment no longer calls the current scalar problem open",
+    "R5 binary comparison intermediate-level requirement explicitly supplied by later theorem",
+    "Optional general matrix scope clarified, without falsely closing it"
+  ],
+  "original_reject_unchanged": true,
+  "balanced_ring_proof_constants_hypotheses_unchanged": true,
+  "new_PDF_grade": null,
+  "B_layout_correction_and_primary_attribution_retained": true
+}

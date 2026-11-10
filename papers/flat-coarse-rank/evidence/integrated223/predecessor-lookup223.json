@@ -1,0 +1,12 @@
+{
+  "method": "Actual anonymous HTTPS200 and raw-byte SHA256",
+  "url": "https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v12/ARR-2026-7EPM3V3DP796BBRR-v12.pdf",
+  "artifact": {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-223\\predecessor-v12-public.pdf",
+    "bytes": 885392,
+    "sha256": "78bcb10ac82b7b920281542a311a28bf70132c73a4a1dbacf90c62b62eb9bf83"
+  },
+  "matches_latest_native_catalogue_predecessor": true,
+  "two_foreign_registries_read_without_mutation": true,
+  "no_duplicate_new_paper_or_aiViXra_deposit": true
+}

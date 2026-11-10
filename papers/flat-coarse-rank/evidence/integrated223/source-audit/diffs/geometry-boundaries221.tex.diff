@@ -1,0 +1,37 @@
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision221/geometry-boundaries221.tex b/papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex
+index ac2de900..0642e46f 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision221/geometry-boundaries221.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex
+@@ -364,11 +364,12 @@ Andres--Deuschel--Slowik~\cite{ads221}, Section~3.1, Proposition~3.5 of arXiv:13
+ construction. Birman--Solomyak's adaptive cube partitions~\cite{birman221} do not supply
+ an unsupported zero-smoothness partition theorem here.
+ Brudnyi~\cite{brudnyi221}, Sections~1--2 and Appendix~I, treats
+-function-dependent approximation and a dyadic inner cube strictly inside
+-an outer cube. This does not supply one coefficient-selected observation
+-map valid for all fields, an original-start weighted adapter, or an
+-arbitrary shifted-hole bound. No contrary claim about that covering
+-theorem is made. Exact priority of these quantitative specializations
++function-dependent approximation on dyadic rings. Appendix~I, Remark~I.2,
++also treats boundary-touching dyadic inner cubes; an exclusively strictly
++interior description would be incomplete. Those classical results do not by
++themselves verify the particular integer original-start weighted adapter
++required here. Section~\ref{sec:balanced223} derives that adapter explicitly;
++no claim that arbitrary shifted holes have uniform geometry is made. Exact priority of these quantitative specializations
+ is unestablished; this limited primary comparison is not exhaustive.
+ 
+ The frozen analytical source commits are
+@@ -403,9 +404,9 @@ terminal reproduction. Runtime allocation, real exits, source hashes and
+ release/readback records are preserved; billed compute units are unknown.
+ 
+ One positive local input has been derived from the coefficients, and two
+-specific extension routes have been stopped by proofs. What is still
+-missing is an actual coefficient-derived full-domain rectangular partition
+-and target-order charging theorem, or a counterexample defeating every
+-allowed partition and finite penalty. Earlier stopped harmonic-cost and
+-common-refinement routes remain stopped. PR29 remains at 20/41 and
++specific extension routes have been stopped by proofs. These local results
++alone did not supply a full-domain partition and count. Section~\ref{sec:balanced223}
++now derives them for the original scalar-gradient question by a different
++balanced-ring mechanism. Earlier stopped harmonic-cost, common-refinement,
++canonical interface-discard and unconditional off-center routes remain stopped. PR29 remains at 20/41 and
+ TermSource $=0$. No interacting or continuum conclusion follows.

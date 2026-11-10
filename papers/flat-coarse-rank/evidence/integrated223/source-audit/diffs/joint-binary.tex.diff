@@ -1,0 +1,14 @@
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision221/joint-binary.tex b/papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex
+index bb793f9b..0f82763f 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision221/joint-binary.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex
+@@ -4,7 +4,8 @@ A failed comparison need not prevent a successful choice of observations.
+ We first strengthen the preceding harmonic-cost diagnostic, then record a
+ binary scalar corollary of the existing threshold construction.
+ The corollary uses actual internal energy, not separate exterior
+-minimizers. The unrestricted intermediate-coefficient question remains open.
++minimizers. The general intermediate-coefficient construction is supplied later in
++Section~\ref{sec:balanced223}; this binary corollary alone does not prove it.
+ 
+ \subsection{A growing-dimensional discrepancy}
+ Use the family of Theorem~\ref{thm:boundary195-aggregate} on the subsequence

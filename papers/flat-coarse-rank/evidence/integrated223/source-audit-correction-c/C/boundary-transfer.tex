@@ -1,0 +1,249 @@
+\section{Limits of Neumann and harmonic boundary transfer}
+\label{sec:boundary195}
+This section consolidates the analytic negative tests of source units
+192--194. It concerns scalar finite positive-start energies and actual
+rectangles. The positive partial-invariance construction above is unchanged.
+None of the results below refutes the unrestricted rectangle-count question.
+
+\subsection{Exact boundary energy}
+Let a connected finite graph have positive edge conductances and energy
+$E(v)=\sum_{\{i,j\}}c_{ij}(v_i-v_j)^2=v^TLv$, each edge counted once.
+For a nonempty proper retained set $R$ write $B=V\setminus R$ and
+$L_{RR}=L_{\mathrm{int}}+D_{\mathrm{cut}}$, where $D_{\mathrm{cut}}$ is
+the diagonal of cut conductances at retained vertices.
+\begin{proposition}\label{prop:boundary195-schur}
+The grounded block $L_{BB}$ is positive definite, and
+\begin{align*}
+ \min_{v|_R=u}E(v)&=E_{\mathrm{int}}(u)+u^TQ_Ru,\\
+ Q_R&=D_{\mathrm{cut}}-L_{RB}L_{BB}^{-1}L_{BR}.
+\end{align*}
+The form $Q_R$ is positive semidefinite and annihilates constants.
+\end{proposition}
+\begin{proof}
+Extend a vector on $B$ by zero on $R$. If its energy vanishes,
+connectedness makes it constant and hence zero. This proves positive
+definiteness of $L_{BB}$. For $h=-L_{BB}^{-1}L_{BR}u$, completion of the
+square gives
+\[
+ E(u,z)=u^T\Lambda_Ru+(z-h)^TL_{BB}(z-h),\qquad
+ \Lambda_R=L_{RR}-L_{RB}L_{BB}^{-1}L_{BR}.
+\]
+Subtracting the fixed internal energy before minimization leaves the
+nonnegative sum of cut and $B$-internal edge energies. Thus $Q_R\succeq0$.
+A constant trace has a constant zero-energy extension, so $Q_R1_R=0$.
+\end{proof}
+This is the classical Schur or Dirichlet-to-Neumann framework
+\cite{bd:kron}. The identity derives the correction but supplies no
+quantitative moment bound: the inverse depends on the entire eliminated
+graph. Merely naming $Q_R$ does not remove a hypothesis of a spatial theorem.
+
+\subsection{Internal energy does not control exact extension}
+On $X=(\mathbb Z/n\mathbb Z)^D$, $D\ge3$, $n\ge3$, use
+\[
+ E_a(v)=\sum_{x,i}a(x)|v(x+e_i)-v(x)|^2,\quad N=n^D,\quad p=D/2,
+ \quad \mu=N^{-1}\sum_xa(x).
+\]
+Positive starts define unique unordered edges at these sizes. Internal
+Neumann energy retains only edges with both endpoints in the rectangle.
+For $H>1$, set $a(0)=1$ and $a(x)=H$ otherwise. Then
+\[
+ \mu=H-(H-1)/N,\qquad H/2\le\mu<H,\qquad 1\le a\le2\mu,
+ \quad M_a=\frac{\mu^p}{N}+(1-N^{-1})(\mu/H)^p.
+\]
+For $R=\{0,e_1\}$ the sole internal edge has coefficient one. A mean-zero
+trace $(1,-1)$ has norm squared two and internal energy four, hence sharp
+local Neumann gap two.
+\begin{proposition}\label{prop:boundary195-single}
+For every exact extension $v$ of that trace,
+$E_a(v)\ge4+4H/3$. Thus no size-independent internal-energy-only exact
+extension estimate with constant $C(D,M_0)$ holds for every admissible
+profile, for any fixed $M_0>1$.
+\end{proposition}
+\begin{proof}
+The path $0\to-e_2\to e_1-e_2\to e_1$ uses three distinct strong edges,
+with positive starts $-e_2$ (directions two and one) and $e_1-e_2$
+(direction two). Cauchy--Schwarz gives energy at least $4H/3$ on this
+path. The disjoint direct weak edge contributes four. For $H=n$,
+\[
+ 1<M_a<1+n^{-p}\longrightarrow1.
+\]
+Indeed $H^p/N=n^{-p}$ bounds its first term, while its second is below
+one; strict Jensen gives the lower bound. Every fixed $M_0>1$ admits
+an unbounded tail, but the extension-to-internal-energy ratio is at least
+$1+n/3$. This argument includes nonlinear extension selection rules.
+\end{proof}
+The proposition does not include $M_0=1$, when strict convexity forces
+constant coefficients. Bounds allowed to depend on size, mean or a growing
+target scale are different assertions.
+
+For completeness the two-terminal conductance also satisfies
+\[
+ \Lambda_R=g\begin{pmatrix}1&-1\\-1&1\end{pmatrix},\qquad
+ 1+H/3\le g\le D(H+1),\qquad
+ Q_R=(g-1)\begin{pmatrix}1&-1\\-1&1\end{pmatrix}.
+\]
+Symmetry and zero row sums give the displayed form of $\Lambda_R$.
+The direct edge plus bypass prove the lower bound for arbitrary endpoint
+values by the same telescoping calculation. For the upper bound, extend
+the value at $e_1$ constantly to all vertices other than zero. Only the
+$D$ outgoing weight-one edges and $D$ incoming weight-$H$ edges at zero
+contribute. They are distinct for $n\ge3$, proving the upper bound.
+Thus the boundary-correction to internal-energy ratio is at least $H/3$;
+for $H=n$ it too has no uniform bound for any fixed $M_0>1$.
+
+\paragraph{A contrasting uniformly coercive family.}
+For the different choice $H=n^2$, $H^p=N$, so $M_a<2$ and $M_a\to2$;
+the fixed admissibility bound is $M=2$, not a fixed smaller bound. Here
+$\max\{1,N/(1+\mu)^p\}\le2^p$, while the global mean-zero gap is at least
+four. To see the latter directly, split unit-coefficient energy as
+$E_0=E_w+E_s$, the weak starts being the $D$ edges from zero. Choose one
+cycle $\sigma$ through all $D$ coordinate directions and replace edge
+$(0,i)$ by
+\[
+ 0\to-e_{\sigma(i)}\to e_i-e_{\sigma(i)}\to e_i.
+\]
+Every replacement start is strong. For a fixed positive edge $(y,k)$,
+its possible weak sources in the first, middle and last segment are
+\[
+ y+e_k,\qquad y+e_{\sigma(k)},\qquad
+ y-e_{\sigma^{-1}(k)}+e_k.
+\]
+They are pairwise distinct modulo $n$ for $D\ge3,n\ge3$: the three
+coordinate indices are distinct. Only source zero is weak, so an edge is
+used at most once. Hence $E_w\le3E_s$, $E_0\le4E_s$ and
+$E_a\ge HE_0/4$. Nonzero torus eigenvalues are at least
+$4\sin^2(\pi/n)\ge16/n^2$, proving
+\[
+ E_a(v)\ge4\|v-\operatorname{mean}_Xv\|^2.
+\]
+Thus for $c=3$ one global normalized mean with penalty coefficient $K=c$
+suffices, despite the displayed local gap being two. For vector fields
+that cell carries one mean per component, not one scalar output in total.
+The near-one family $H=n$ instead has only the comparison lower bound
+$4/n$, and its target scale grows like $n^p$. These limits must not be
+interchanged. No local coexact witness is asserted.
+
+\subsection{Disjoint traces do not justify a sum of harmonic costs}
+The next example refutes the aggregate estimate
+\begin{equation}\label{eq:boundary195-false-sum}
+ \sum_j (f|_{R_j})^TQ_{R_j}(f|_{R_j})\le C(D,M)E_a(f),
+\end{equation}
+where each form separately eliminates the entire complement of its own
+rectangle. Joint elimination is not the same construction.
+
+First let $T=(\mathbb Z/n\mathbb Z)^d$, $d\ge3$, with even $n$ and unit
+energy $E_T$. For all $y,z\in T$,
+\begin{equation}\label{eq:boundary195-point}
+ |w(y)-w(z)|^2\le C_d E_T(w),\qquad C_d=d3^{d-1}/2.
+\end{equation}
+Here is a complete finite proof. Use the normalized Fourier coefficients
+\[
+ \widehat w(k)=n^{-d}\sum_y w(y)e^{-2\pi i k\cdot y/n}.
+\]
+Parseval gives $E_T=n^d\sum_k\lambda_k|\widehat w(k)|^2$.
+Choose representatives $-n/2\le k_l<n/2$. Then
+$\lambda_k=4\sum_l\sin^2(\pi k_l/n)\ge16|k|^2/n^2$.
+Fourier inversion and Cauchy--Schwarz bound the point-difference constant by
+\[
+ n^{-d}\sum_{k\ne0}
+ \frac{|e^{2\pi i k\cdot y/n}-e^{2\pi i k\cdot z/n}|^2}{\lambda_k}
+ \le\frac{n^{2-d}}4\sum_{k\ne0}|k|^{-2}.
+\]
+The shell with $\max_l|k_l|=r$ has at most
+\[
+ (2r+1)^d-(2r-1)^d\le2d3^{d-1}r^{d-1}
+\]
+representatives. Its inverse-square contribution is at most
+$2d3^{d-1}r^{d-3}$. Summing $1\le r\le n/2$ gives at most
+$2d3^{d-1}n^{d-2}$, proving \eqref{eq:boundary195-point}.
+The restriction $d\ge3$ is essential to this uniform estimate.
+
+\begin{theorem}\label{thm:boundary195-aggregate}
+For every fixed $D\ge4$, there are positive profiles with fixed critical
+moment bound $M=3$, disjoint actual rectangles, and one global mean-zero
+field for which the ratio of the left side of
+\eqref{eq:boundary195-false-sum} to $E_a(f)$ tends to infinity.
+\end{theorem}
+\begin{proof}
+Take even $n\ge6$, $d=D-1$, $p=D/2$, $m=n/2$, $H=n^{2/D}$ and
+$X=(\mathbb Z/n\mathbb Z)\times T$, writing vertices $(t,y)$.
+Put $a=1$ on the two planes $t=0,m$, except $a(0,0)=H$; put $a=H$
+elsewhere. There are $W=2n^d-1$ weak vertices. Since $H^p=n$ and
+$W/n^D<2/n\le1/3$,
+\[
+ \tfrac23H\le\mu<H,\quad1\le a\le2\mu,\qquad
+ 1\le M_a=\mu^p[W/n^D+(1-W/n^D)H^{-p}]<3.
+\]
+For each $y\ne0$ let $R_y=\{(0,y),(1,y)\}$. These rectangles are
+disjoint and their internal coefficient is one. For arbitrary $v$,
+telescope the endpoint difference through
+\[
+ (0,y)\to(n-1,y)\to(n-1,0)\to(0,0)\to(1,0)\to(1,y).
+\]
+The first, third and fourth changes use distinct longitudinal edges of
+weight $H$. The two other changes are within the entirely strong
+transverse layers $n-1$ and one. Their squared differences are bounded by
+$C_d$ times the respective layer energy divided by $H$, by
+\eqref{eq:boundary195-point}. These five energy sets are pairwise disjoint
+within this one comparison: $y\ne0$ distinguishes the two incoming edges,
+and layers and directions distinguish all others. Weighted Cauchy--Schwarz
+with weights $1,C_d,1,1,C_d$ gives, for $K_d=3+2C_d$,
+\[
+ |v(0,y)-v(1,y)|^2\le K_d E_a(v)/H.
+\]
+The minimized two-point energy is $g_y$ times the squared endpoint
+difference, so $g_y\ge H/K_d$ and its boundary correction is $g_y-1$
+times that squared difference.
+
+Let $f=1$ on layers $0,m+1,\ldots,n-1$ and $f=-1$ on layers
+$1,\ldots,m$. The two sets each contain $m$ layers, so its mean is zero.
+Only longitudinal starts at zero and $m$ contribute. One has weight $H$
+and the remaining $2n^d-1$ have weight one, giving exactly
+\[
+ E_a(f)=4(2n^d-1+H),\qquad
+ \sum_{y\ne0}(f|_{R_y})^TQ_{R_y}(f|_{R_y})
+ \ge4(n^d-1)(H/K_d-1).
+\]
+Eventually $H\ge2K_d$. Since $H\le n^d$ and $n^d-1\ge n^d/2$, the
+ratio is at least $H/(12K_d)$ and diverges. All constants depend only on
+the fixed dimension. The moments tend to three, not a fixed smaller bound.
+\end{proof}
+
+The lower-bound certificates reuse the hole and transverse layers across
+different trace problems. This does not force the actual minimizers to
+use that hole rather than parallel weak cuts. Disjoint retained vertices
+do not make independently optimized global energies disjoint.
+The original target count remains comparable to the number of pairs:
+\[
+ 2^{-p}n^d\le\frac{n^D}{(1+\mu)^p}\le(3/2)^p n^d.
+\]
+Thus the example is not a counting counterexample. There is no $D=3$
+conclusion from this proof and no obstruction to a joint reduction,
+partition-dependent selection, overlap compensation or a growing-factor
+bound. No coexact, rank or physical continuum result is obtained.
+
+\subsection{Attribution, assessment and unresolved mechanism}
+Weighted extension theorems have their own weight and domain hypotheses;
+the constants in Chua's Theorem 1.4 explicitly depend on the weights
+\cite{bd:chua}. Our finite counterexamples do not contradict it.
+The retained-resistance invariance under Kron reduction in
+\cite{bd:kron} concerns one retained set, not a sum over different
+eliminations. Fourier, path comparison and Schur reduction are classical.
+No exhaustive novelty or priority claim is made for these diagnostic
+families. Full source proofs and involved audits192--194 are retained at
+the immutable programme commits recorded in the source manifest. Each
+configured reviewer was the same historically involved Codex
+\texttt{gpt-6-astra} agent with shared history, provider/account and
+workspace; served backend and reasoning effort were not attested. These
+were complete source audits, not blind or independent peer reviews,
+scientific replay, Lean verification, PDF assessments or numerical stars.
+All limitations and author responses remain in the evidence packet.
+
+These boundary-transfer tests alone did not settle the fully variable
+fixed-moment actual-rectangle question. Section~\ref{sec:balanced223}
+supplies its positive finite scalar-gradient construction by a different mechanism. Cellwise internal-only extension, a near-one-moment rescue, and
+independent-cell harmonic-cost additivity have explicit falsifiers.
+A joint partition or direct local internal-energy argument must derive
+its count without assuming any of those failed transfers. No main-theorem
+hypothesis has been removed by these negative tests. No earlier PDF score
+or public Working-paper status transfers to this changed manuscript.
