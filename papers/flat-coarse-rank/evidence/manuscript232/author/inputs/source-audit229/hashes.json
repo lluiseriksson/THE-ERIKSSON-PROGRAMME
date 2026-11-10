@@ -1,0 +1,38 @@
+{
+  "algorithm": "SHA256",
+  "source": {
+    "commit": "1af074718e5d122c5ef02d287461750833b44c77",
+    "git_path": "papers/flat-coarse-rank/research/2026-11-10_sharp-coexact229.txt",
+    "D_snapshot": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\sharp-coexact229-draft.txt",
+    "capture": "capture/sharp-coexact229-draft.txt",
+    "bytes": 8529,
+    "sha256": "8b8457bdacc242150492890e6b08503356a6c9328ce787501239528eb303da70",
+    "representation": "raw Git blob stdout and originalDfilebytes match",
+    "normalization": "none",
+    "method": "Binary git-show stdout capture, Get-FileHash comparison against Dsnapshot"
+  },
+  "outputs": [
+    {
+      "file": "fullreport.txt",
+      "bytes": 11011,
+      "sha256": "c4462653be053a53837d7bcf0933b5ea5286d739a3e0ce9e0e611dfbbc6de436",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "verdict.json",
+      "bytes": 1625,
+      "sha256": "563cebc2875f914c784d60480bd202ddfcc56702c42fea2549605c17a8502550",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "context.json",
+      "bytes": 1562,
+      "sha256": "7af335114234317d95a08e93443f99eb56c5f722e61b40ee56e3232c640e1eca",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    }
+  ],
+  "self_hash": "Provided separately in final handoff; not recursively embedded."
+}

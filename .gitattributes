@@ -50,3 +50,7 @@ papers/flat-coarse-rank/research/2026-11-10_channel-separable231B.txt -text
 
 papers/flat-coarse-rank/research/2026-11-10_sharp-separable233.txt -text
 papers/flat-coarse-rank/research/sharp-separable233/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space
+
+# Exact grouped232 author freeze and complete input evidence.
+papers/flat-coarse-rank/integrated-revision/revision232/** -text
+papers/flat-coarse-rank/evidence/manuscript232/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space

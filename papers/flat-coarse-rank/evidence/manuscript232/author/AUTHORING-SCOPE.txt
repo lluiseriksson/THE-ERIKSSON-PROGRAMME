@@ -1,0 +1,1 @@
+Manuscript232 offline grouped successor of226C. Marker succeeded exactly once immediately before this first authoring/capture command. No PDF produced. 229and230 source audited;231B source-audit pending at assignment and remains explicitly pending here. No numerical review requested. Original source bytes captured through binary git-show; no checkout mutation.

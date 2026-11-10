@@ -1,0 +1,75 @@
+{
+  "from": "exact226C commit2d3237501569f6afac8a44d524a5d6db59f63c39",
+  "to": "offline manuscript232 source",
+  "files": [
+    {
+      "file": "class-statements.tex",
+      "predecessor_raw_sha256": null,
+      "new_raw_sha256": "f8cf1ab6ff210f2c8ef61058bbdf517dcdd6f4dd072fd6c56408db28a200d3de",
+      "status": "added"
+    },
+    {
+      "file": "coexact-classes.tex",
+      "predecessor_raw_sha256": null,
+      "new_raw_sha256": "71010b9bd1efb453248bb6278485804e590e28b72dd316b12acaa2b1d383b318",
+      "status": "added"
+    },
+    {
+      "file": "common-rank.tex",
+      "predecessor_raw_sha256": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b",
+      "new_raw_sha256": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b",
+      "status": "byte-identical"
+    },
+    {
+      "file": "coupled-channels.tex",
+      "predecessor_raw_sha256": null,
+      "new_raw_sha256": "7f30175962ed10fd74be257c1fedb2ac4885789b630ce7172c981f7cb4814994",
+      "status": "added"
+    },
+    {
+      "file": "matching-modes.tex",
+      "predecessor_raw_sha256": null,
+      "new_raw_sha256": "d1220e54cb019bd0722bbdaebd4c94075457f826ddc1afd911b6b03b87b043db",
+      "status": "added"
+    },
+    {
+      "file": "matrix-proof.tex",
+      "predecessor_raw_sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "new_raw_sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "status": "byte-identical"
+    },
+    {
+      "file": "rectangular_matrix.tex",
+      "predecessor_raw_sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3",
+      "new_raw_sha256": "9234a4084d6c0db7754d3a13581b80f69a844e7ddc95f1eed21945c74e6883e6",
+      "status": "changed"
+    },
+    {
+      "file": "review-context.tex",
+      "predecessor_raw_sha256": "9be1438be6ec128f6852faa1affa6f85a6c6ca9e9a4570a84a20f676b21dbd57",
+      "new_raw_sha256": "64c4203bfd082d82f0f53a9af1518b47c7e14e3448104dd2bdefe9200dddc56c",
+      "status": "changed"
+    },
+    {
+      "file": "scalar-rings.tex",
+      "predecessor_raw_sha256": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0",
+      "new_raw_sha256": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0",
+      "status": "byte-identical"
+    },
+    {
+      "file": "weak-endpoint.tex",
+      "predecessor_raw_sha256": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7",
+      "new_raw_sha256": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7",
+      "status": "byte-identical"
+    }
+  ],
+  "map": {
+    "rectangular_matrix": "Title/abstract and navigation refocused on observation classes; retained existing front theorems; inserted grouped class statements; added sharp/coexact/adapted proofs and two coupled appendices; precise CDPX6/Theorem6.1 and BrudnyiAppendixIIcomparison; proof-dependency table; no externalprogramme shorthand; classical maximum-principle reference; compact standard bibliography.",
+    "class_statements": "Sharp universal actual coexact rank with attaining fibre partitions; coexact common-partition product family; additive structured component-adapted upper and actual-rank escape; coupled fixed-basis lower and matching-order guide.",
+    "coexact_classes": "Full229 annihilator/Fourier/maximum-principle proof, complete228fixedL16coexact coefficient family, and complete230block-spectrum/root-row escape proof. D2 applies only to standalone universal rank theorem; coefficient budget retainsD>=3.",
+    "coupled_channels": "Full exact231B proof, g=V,D>=3,H=cn^2, projection inside actualcoexact domain, full strong multiplicities and fixed-basis lower, cheap mixed escape. Actual acceptance read before slot closure.",
+    "matching_modes": "Full exact233 real-mode selection/principal-block strict2c kernel margin, finiteK, ceiling count and finiteGreen shell proof; Greenconstant renamed mathfrakG_D to distinguish inherited weighted-gapG_D.",
+    "review_context": "Dated source-freeze status; truthful drafting/audit involvement; newPDF absent atfreeze and old exact226Cassessment isolated; originalreport/context/authorresponse retained; nograde inheritance; legitimate editorials addressed with visualQA stillpending.",
+    "preserved": "matrix-proof.tex,common-rank.tex,weak-endpoint.tex,scalar-rings.tex byte-identical to exact226C Git captures; no old scientific constants/proofs altered."
+  }
+}

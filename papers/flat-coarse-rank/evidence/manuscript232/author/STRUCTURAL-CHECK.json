@@ -1,0 +1,141 @@
+{
+  "kind": "Static text structure; no TeX/scientific execution",
+  "tex_sources": 10,
+  "labels": 93,
+  "references": 113,
+  "unresolved": [],
+  "duplicate_labels": [],
+  "unresolved_citations": [],
+  "inputs": [
+    {
+      "file": "class-statements.tex",
+      "exists": true
+    },
+    {
+      "file": "matrix-proof.tex",
+      "exists": true
+    },
+    {
+      "file": "common-rank.tex",
+      "exists": true
+    },
+    {
+      "file": "coexact-classes.tex",
+      "exists": true
+    },
+    {
+      "file": "weak-endpoint.tex",
+      "exists": true
+    },
+    {
+      "file": "review-context.tex",
+      "exists": true
+    },
+    {
+      "file": "scalar-rings.tex",
+      "exists": true
+    },
+    {
+      "file": "coupled-channels.tex",
+      "exists": true
+    },
+    {
+      "file": "matching-modes.tex",
+      "exists": true
+    }
+  ],
+  "files": [
+    {
+      "file": "class-statements.tex",
+      "bytes": 5148,
+      "begin": 9,
+      "end": 9,
+      "sha256_raw_file": "f8cf1ab6ff210f2c8ef61058bbdf517dcdd6f4dd072fd6c56408db28a200d3de"
+    },
+    {
+      "file": "coexact-classes.tex",
+      "bytes": 12509,
+      "begin": 10,
+      "end": 10,
+      "sha256_raw_file": "71010b9bd1efb453248bb6278485804e590e28b72dd316b12acaa2b1d383b318"
+    },
+    {
+      "file": "common-rank.tex",
+      "bytes": 5213,
+      "begin": 4,
+      "end": 4,
+      "sha256_raw_file": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b"
+    },
+    {
+      "file": "coupled-channels.tex",
+      "bytes": 6469,
+      "begin": 4,
+      "end": 4,
+      "sha256_raw_file": "7f30175962ed10fd74be257c1fedb2ac4885789b630ce7172c981f7cb4814994"
+    },
+    {
+      "file": "matching-modes.tex",
+      "bytes": 7710,
+      "begin": 9,
+      "end": 9,
+      "sha256_raw_file": "d1220e54cb019bd0722bbdaebd4c94075457f826ddc1afd911b6b03b87b043db"
+    },
+    {
+      "file": "matrix-proof.tex",
+      "bytes": 7469,
+      "begin": 13,
+      "end": 13,
+      "sha256_raw_file": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    {
+      "file": "rectangular_matrix.tex",
+      "bytes": 17049,
+      "begin": 23,
+      "end": 23,
+      "sha256_raw_file": "9234a4084d6c0db7754d3a13581b80f69a844e7ddc95f1eed21945c74e6883e6"
+    },
+    {
+      "file": "review-context.tex",
+      "bytes": 5337,
+      "begin": 3,
+      "end": 3,
+      "sha256_raw_file": "64c4203bfd082d82f0f53a9af1518b47c7e14e3448104dd2bdefe9200dddc56c"
+    },
+    {
+      "file": "scalar-rings.tex",
+      "bytes": 13858,
+      "begin": 10,
+      "end": 10,
+      "sha256_raw_file": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0"
+    },
+    {
+      "file": "weak-endpoint.tex",
+      "bytes": 11284,
+      "begin": 17,
+      "end": 17,
+      "sha256_raw_file": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7"
+    }
+  ],
+  "preserved": [
+    {
+      "file": "matrix-proof.tex",
+      "byte_identical_to_git_capture": true
+    },
+    {
+      "file": "common-rank.tex",
+      "byte_identical_to_git_capture": true
+    },
+    {
+      "file": "weak-endpoint.tex",
+      "byte_identical_to_git_capture": true
+    },
+    {
+      "file": "scalar-rings.tex",
+      "byte_identical_to_git_capture": true
+    }
+  ],
+  "pending_marker_in_manuscript": 0,
+  "render": "not performed",
+  "PDF": "not produced",
+  "new_numerical_assessment": "not requested or performed"
+}

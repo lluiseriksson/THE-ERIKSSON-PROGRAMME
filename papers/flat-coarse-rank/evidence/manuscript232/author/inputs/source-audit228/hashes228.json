@@ -1,0 +1,37 @@
+{
+  "unit": 228,
+  "algorithm": "SHA256",
+  "source": {
+    "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\coexact-common-rank228-draft.txt",
+    "capture": "captured-source/coexact-common-rank228-draft.txt",
+    "bytes": 8775,
+    "sha256": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e",
+    "representation": "raw original file bytes",
+    "normalization": "none",
+    "capture_method": "ReadAllBytes and WriteAllBytes; source and capture digests match"
+  },
+  "outputs": [
+    {
+      "file": "report228-source.txt",
+      "bytes": 12373,
+      "sha256": "646c3f2c4554fe59a9feb06b05f39e5e36bca853072c8d1a15f2ccf73f7c8a31",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "response228.json",
+      "bytes": 2210,
+      "sha256": "8815a412f005253c2d4a78258712ac31ab813a17a940e7c6970119bb4b5456df",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "context228.json",
+      "bytes": 1677,
+      "sha256": "2d6404f9884c666ed0bc94b8552c99fd87b409c479a20a83cf3d67d1cd101ff8",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    }
+  ],
+  "self_hash": "Given separately in final handoff; not recursively embedded."
+}

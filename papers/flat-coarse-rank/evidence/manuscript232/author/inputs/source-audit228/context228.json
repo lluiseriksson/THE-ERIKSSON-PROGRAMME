@@ -1,0 +1,22 @@
+{
+  "unit": 228,
+  "role": "involved source auditor; parent is current fabricator",
+  "exposed_identity": "System: AI assistant accessed via API. Developer: Codex, agent based on GPT-6.",
+  "exact_served_backend_and_effort": "Not exposed; unknown.",
+  "involvement_history": "Same context audited original224, logarithmic224,225,227, complete226B(reject), complete226C(accept_with_limits).",
+  "shared_context": "Parent supplied candidate framing and exact hash; shared account/system/environment and retained prior audits. No independent, blind, human or independently selected-model claim.",
+  "inbound_during228": "None received",
+  "input": "Complete exact139line8775byte228draft; binary source copy retained",
+  "analytic_inputs": "Existing same-context224bump proof/226C full proof and225upper used with declared scope",
+  "numerical_assessment_context": "Parent says226C first assessment completed; no numerical report, PDF or score read. Draft line138 chronology flagged without changing prior evidence.",
+  "operations": "Read exact draft, hash/copy raw bytes, write four audit files and verify encoding/JSON; no scientific computations.",
+  "no_science_Lean_build_render_runtime": true,
+  "no_source_status_Git_mutation": true,
+  "no226_pdf_or_numeric_report_access": true,
+  "no_otherchat_or_automation_access": true,
+  "no_prior_audit_or_original_assessment_edits": true,
+  "disposable_clone_created": false,
+  "output_representation": "Original complete UTF-8 without BOM, LF, final newline",
+  "capture_representation": "Exact raw source bytes; no normalization",
+  "output_location": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\source-audit"
+}

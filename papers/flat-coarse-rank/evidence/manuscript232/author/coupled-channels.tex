@@ -1,0 +1,148 @@
+\section{Coupled coefficients and fixed-basis channel separation}\label{sec:coupled}
+This appendix proves Theorem~\ref{thm:separable}. The direct-sum
+observation hypothesis is imposed in a specified internal basis; the
+coefficient profile deliberately couples those channels in that basis.
+The conclusion is not invariant under a change of separability basis.
+
+\subsection{The actual constant profile and its full budget}
+Fix $D\ge3$, $n\ge2$, $V=n^D$ and $g=V$. The domain is
+$\mathcal U=\mathcal U_0^g$ and its one-channel dimension is
+$d_0=(D-1)(V-1)>0$ by \eqref{eq:coexact-dimension}.
+There are $h=Dg$ real field components and $r=D^2g$ gradient coordinates.
+Let $v=(1,\ldots,1)/\sqrt g\in\R^g$ and put
+\begin{equation}\label{eq:coupled-profile}
+ \begin{gathered}
+ a=c/(16D),\quad H=cn^2,\quad B=H I_g-(H-a)vv^{\mathsf T},\\
+ A_{(i,j,\alpha),(i',j',\beta)}
+                =\delta_{ii'}\delta_{jj'}B_{\alpha\beta}.
+ \end{gathered}
+\end{equation}
+Here $i$ is the gradient direction, $j$ the spatial one-cochain component,
+and $\alpha$ the internal channel. This is a constant positive matrix
+with $0<A\le H I$; its actual energy is
+\[
+ Q_A(z)=\sum_{x,i,j,\alpha,\beta}B_{\alpha\beta}
+                D_i^+z_j^\alpha(x)D_i^+z_j^\beta(x).
+\]
+The weak polarization $v$ has eigenvalue $a$, and $v^\perp$ has eigenvalue
+$H$. There are $D^2$ copies of $B$ at each start, so the full local
+multiplicities are $D^2$ weak and $D^2(g-1)$ strong. None can be removed
+when the tested field domain is restricted.
+
+Since $\sigma/c=\alpha_D^{2/D}\ge9/16$ and $a/c=1/(16D)$, every
+weak channel has cap cost one. A strong channel has cost
+$\min\{1,\alpha_Dn^{-D}\}$. Thus the exact full budget is
+\begin{equation}\label{eq:coupled-budget}
+ F_c(A)=D^2V[1+(g-1)\min\{1,\alpha_Dn^{-D}\}]
+                    \le D^2(1+\alpha_D)V.
+\end{equation}
+The minimum is retained in the identity; the inequality uses $g=V=n^D$.
+The strong tail is allowed to have order $V$, and is not claimed bounded
+independently of volume. Adding $h=DV$ gives $h+F_c(A)\le L_DV$.
+
+\subsection{A projection inside the actual coexact space}
+Write the channel-separable observation as
+$C=\bigoplus_{\alpha=1}^g C_\alpha$. Each $C_\alpha$ is an arbitrary
+finite real linear map on one channel, restricted to $\mathcal U_0$;
+within that channel it may mix all sites and spatial components.
+Let $R_\alpha$ be the counting orthogonal projection in $\mathcal U_0$
+onto the representer space of the restricted rows. This is a projection
+within the actual domain, not an unrestricted spatial row-space
+projection. Therefore
+\[
+ R=\bigoplus_\alpha R_\alpha:\mathcal U\to\mathcal U,
+ \quad \rank R=r_C:=\rank(C|_{\mathcal U}),\quad
+ \ker R=\ker(C|_{\mathcal U}).
+\]
+The internal direct sum is legitimate. No decomposition of $\mathcal U_0$
+by its individual spatial components is assumed.
+
+Define the isometry $T:\mathcal U_0\to\mathcal U$ by
+$(Tf)_\alpha=v_\alpha f$. Channel separation gives
+\begin{equation}\label{eq:projection-trace}
+ T^*RT=g^{-1}\sum_\alpha R_\alpha,\qquad
+ \tr(T^*RT)=r_C/g.
+\end{equation}
+This real symmetric positive contraction has a real unit vector
+$f\in\mathcal U_0$ with Rayleigh quotient at most its trace divided by
+dimension. As $R$ is an orthogonal projection, there is consequently $f$ with
+\[
+ t:=\|RTf\|^2\le r_C/(gd_0),\qquad0\le t\le1.
+\]
+Set $u=(I-R)Tf$. Then $u\in\mathcal U$, $Cu=0$ and
+$\|u\|^2=1-t$. The witness may depend on the proposed observation map.
+Projections need not preserve locality, gradients, spatial components or
+weak polarization; their preservation of $\mathcal U$ is enough.
+
+\subsection{The kernel witness and the necessary rank}
+For any periodic field, shifts are isometries, whence
+\[
+ \sum_i\|D_i^+z\|^2\le4D\|z\|^2.
+\]
+This counts every original forward start and wrap, including period two,
+with no further internal-dimension factor. The constant weak polarization
+and the bound $A\le H I$ give, respectively,
+\[
+ Q_A(Tf)\le4Da,\qquad Q_A(RTf)\le4DHt.
+\]
+Positivity implies $Q_A(x-y)\le2Q_A(x)+2Q_A(y)$, hence
+$Q_A(u)\le8Da+8DHt$. If
+\[
+ V^{-1}Q_A(z)+\Phi(Cz)\ge c\normn{z}^2\quad(z\in\mathcal U),
+ \qquad \Phi(0)=0,
+\]
+apply this at the actual kernel vector $u$ and multiply by $V$:
+\[
+ c(1-t)\le8Da+8DHt.
+\]
+Since $8Da=c/2$ and $H=cn^2$, this yields
+\[
+ t\ge\frac{c-8Da}{c+8DH}=\frac1{2(1+8Dn^2)}.
+\]
+Combining with \eqref{eq:projection-trace} proves
+\eqref{eq:separable-lower}. No division by $1-t$ occurred; $t=1$ is
+harmless. The penalty may be nonlinear, and no differentiability,
+quadratic growth or uniform penalty bound was used. Observations remain linear.
+
+For fixed $D\ge3$ the lower-bound expression has order $n^{2D-2}$,
+whereas $h+F_c(A)\le L_Dn^D$. Explicitly,
+\[
+ \frac{r_C}{h+F_c(A)}\ge
+ \frac{(D-1)(V-1)}{2L_D(1+8Dn^2)}\longrightarrow\infty.
+\]
+The divergence has order $n^{D-2}$, including $D=3,4$.
+This concerns growing $g=V$, a specified internal basis and finite
+unit-spacing tori. It supplies no fixed-$g$ or $D=2$ impossibility and
+no physical mass-gap inference.
+
+\subsection{The same profile admits a cheap mixed observation}
+Let $Wz=\sum_\alpha v_\alpha z_\alpha$. Since $WT=I$, this map
+surjects $\mathcal U$ onto $\mathcal U_0$. Observe its values at every
+site and spatial component with rows $V^{-1/2}(Wz)_j(x)$.
+The listed output has $DV$ coordinates but actual restricted rank is
+exactly $d_0$.
+The orthogonal splitting
+\[
+ z=TWz+z_{\rm strong}
+\]
+stays in $\mathcal U$, since constant internal combinations commute
+with the codifferential. They also commute with forward differences.
+The split is orthogonal in norm and in coefficient energy. Every real
+component of $z_{\rm strong}$ has zero mean, so the actual torus gap
+\eqref{eq:torus-gap} gives
+\[
+ Q_A(z_{\rm strong})\ge H(16/n^2)\|z_{\rm strong}\|^2
+                         =16c\|z_{\rm strong}\|^2.
+\]
+The weak energy is nonnegative, and
+$\|C_{\rm weak}z\|^2=V^{-1}\|Wz\|^2
+=V^{-1}\|TWz\|^2$. Therefore
+\[
+ V^{-1}Q_A(z)+c\|C_{\rm weak}z\|^2\ge c\normn{z}^2.
+\]
+Its actual rank $d_0=O_D(V)=O_D(h+F_c(A))$ is additive in order on this
+family. A fixed global internal rotation exposing $v$ makes the cheap
+channel visible. Thus no all-linear or basis-free obstruction follows.
+The profile in its original basis is not component-block-diagonal, so
+Theorem~\ref{thm:adapted} is not contradicted.
+This completes Theorem~\ref{thm:separable}. Appendix~\ref{sec:matching-modes} proves a matching order for this precise family, rather than an all-profile upper bound.

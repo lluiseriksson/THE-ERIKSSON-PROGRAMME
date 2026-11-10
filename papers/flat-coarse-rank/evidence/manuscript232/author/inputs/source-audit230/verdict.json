@@ -1,0 +1,21 @@
+{
+  "verdict": "accept_with_limits",
+  "unit": 230,
+  "source_commit": "348537ed8496a05c388476ce8985a12b2e87e398",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-10_component-adapted230.txt",
+  "source_sha256_raw": "5653a586ad4b2a6d1600926a5ef0e43e5c57f44ca4729ee8c89ae6c5e1510f91",
+  "blocking_findings": [],
+  "material_scope_findings": [],
+  "editorial_findings": [],
+  "theorem_A": "Validated from exact226C h=1 construction: output<=a_D h+b_D F with finite max penalty.",
+  "family_B": "Validated actual228 coexact family; adapted restricted rank O_D(m), common restricted rank>=(D-1)m^2/4 for g=m,m>=4.",
+  "limits": [
+    "Retains actual real-field-component block diagonality; no arbitrary cross-component coupled additive theorem.",
+    "Finite profile-dependent penalty only; count constants are D-only, penalty uniformity is not asserted.",
+    "Adapted rank upper bound is on actual coexact restricted image; full output still includes h-2 root rows.",
+    "No new execution, full-family runtime check, formal certificate, independent replay, numerical grade, PDF assessment, priority or physical result."
+  ],
+  "numerical_grade": null,
+  "new_execution": false,
+  "originals_unchanged": true
+}

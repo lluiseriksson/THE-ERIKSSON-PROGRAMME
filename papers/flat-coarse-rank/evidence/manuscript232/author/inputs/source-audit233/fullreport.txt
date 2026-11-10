@@ -1,0 +1,66 @@
+UNIT233 COMPLETE MATHEMATICAL SOURCE AUDIT
+Verdict: accept_with_limits
+Blocking mathematical or material-scope findings: none found.
+This is a new source verdict on the new upper construction, not inherited231B acceptance or a numerical paper review.
+
+EXACT REFERENT AND INPUTS
+Commit:a1da5307a7b91e0d57f110c624eb3f9eefc03919.
+Path:papers/flat-coarse-rank/research/2026-11-10_sharp-separable233.txt.
+The complete candidate was read and captured as6864raw bytes, SHA256e244cff296a5fe3b833162a0a759a3a6a1d2cde4eef469261a91653b4af699da. Capture copied binary git-show stdout without checkout conversion or text normalization. The exact231B input atdbaca106b4def20c1b9d674ec34cfb9a56794cd7 has7789bytes and assigned rawSHA51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f. Its complete original source audit was reread and its four original files copied byte-for-byte into the authorized capture area. That input audit's hashes.json remainsa95419be9c2ba80a1b4006c126344e5366fd1eee4453e3fddce04d1ed96513f3. All original231A/B sources and reports remain unchanged.
+The lower theorem is used as the explicitly declared exact analytic input and its mechanism is checked again below. A prior acceptance is not taken as acceptance of the new upper argument. No scientific execution, PDF/score read or new numerical assessment occurred.
+
+1. SAME PROFILE, DOMAIN AND MINIMUM-RANK QUESTION
+The setup retains D>=3,n>=2,V=n^D,g=V, h=Dg and U=U_0^g with U_0 the actual forward-curl adjoint image. The counting norm and original forward-gradient energy are those of231B. The constant internal B has eigenvalues a=c/(16D) in the uniform polarization and H=cn^2 in its orthogonal complement. The local coefficient matrix has D^2 copies of B at every start. No coefficient profile or restricted domain has changed.
+The full budget is still exactly D^2 V[1+(g-1)min(1,alpha_D n^-D)] and is <=D^2(1+alpha_D)V. This includes all local gradient eigenvalue multiplicities rather than replacing them by the smaller coexact dimension. h=Dg is unchanged. The new conclusion concerns the minimum true rank on U among fixed-basis internal-channel-separable finite linear observations admitting some penalty vanishing at zero. Such observations exist, for example by observing a full basis, and possible ranks are nonnegative integers in a finite range. Thus discussing a minimum rank poses no unattained-infimum problem. Arbitrary penalties are permitted in the lower class; the upper construction supplies an ordinary finite quadratic penalty, which is a member of that class.
+
+2. REAL COEXACT LAPLACIAN MODES AND ENERGY DECOMPOSITION
+The scalar forward torus Laplacian acting on spatial vector components is real symmetric and commutes with the constant-coefficient curl and its adjoint. It preserves U_0. At a nonzero frequency its eigenvalue is lambda(k)=4 sum_i sin^2(pi k_i/n), and the curl-adjoint image has complex dimension D-1. At the zero frequency the coexact image is zero. These statements agree with the exact forward convention in231B/229, not a central-difference surrogate.
+There is a real counting-orthonormal eigenbasis f_s of U_0 with d_0=(D-1)(V-1). Its eigenvalue multiset is the full nonzero-frequency multiset with each frequency repeated D-1 times: a conjugate pair of frequencies supplies twice D-1 real modes, the same number already counted by those two complex frequencies, while self-conjugate frequencies supply D-1 real modes. There is no extra factor two and no missing Nyquist mode. For every n>=2 the bounds16/n^2<=lambda_s<=4D hold. The lower bound uses sin(t)>=2t/pi on[0,pi/2]; n=2 is valid. n=1 is excluded.
+Expanding each internal channel in this same real basis gives ||z||^2=sum_s||z_s||^2. The energy also separates exactly: <df_s,df_t>=<f_s,Lf_t>=lambda_t delta_st, so Q_A(z)=sum_s lambda_s z_s^T B z_s even for real modes sharing an eigenvalue or involving several spatial field components. The fixed internal B commutes with this spatial decomposition. No false decomposition into independent physical-component coexact spaces occurs.
+
+3. SELECTED ROWS, CEILINGS AND PRINCIPAL-BLOCK KERNEL
+For each real mode the construction chooses
+ k_s=min(g,ceil(max(0,g(2c/lambda_s-a)/(H-a)))).
+This is an integer between0 and g, selected from coefficient/mode data before the field. Observing z_{alpha,s}/sqrt(V) for alpha<=k_s is allowed: it mixes no internal channels, although it is spatially nonlocal. The representers e_alpha f_s are counting-orthonormal on U, and their common nonzero scaling does not alter independence. Therefore the actual restricted image rank is exactly sum_s k_s. The same inner products extend to all fields if desired; the claimed coercive inequality remains on U. No rectangular/local row claim is made.
+For a kernel field, the first k_s internal coordinates of that mode vanish. If k_s=g there is no unobserved mode. Otherwise the actual remaining principal block is
+ H I_{g-k_s}-(H-a)/g 11^T.
+Its eigenvalues are H on the perpendicular subspace and H-(H-a)(g-k_s)/g=a+(H-a)k_s/g in the uniform remaining direction. Thus the latter is the least eigenvalue, including a one-dimensional remaining block. If the ceiling's nonnegative argument is positive and k_s<g, k_s is at least g(2c/lambda_s-a)/(H-a); multiplication gives the desired2c threshold. If the max is zero then a lambda_s>=2c. If the outer truncation applies, no kernel coordinates remain for that mode. These cases justify Q_A(x)>=2c||x||^2 on the entire kernel. The ceiling is on an internal-coordinate count, not on complex modes or a fraction of a real polarization. Using whole actual modes avoids any assumption that a general projector commutes with energy.
+
+4. STRICT KERNEL MARGIN AND FINITE PENALTY
+Let R project onto these selected real row representers. Then x=(I-R)z is in the kernel, y=Rz is orthogonal to x, and ||Cz||^2=V^-1||y||^2 exactly. The actual positive energy operator on U has norm at most M=4DH, by A<=H I and the complete forward-gradient norm bound4D; this does not require R to commute with that operator.
+Dropping the nonnegative Q_A(y), bounding the cross term by2M||x||||y|| and using the kernel2c bound gives
+ Q_A(x+y)>=2c||x||^2-2M||x||||y||
+ >=c||x||^2-(M^2/c)||y||^2.
+The final inequality is the elementary Young bound2Mab<=c a^2+(M^2/c)b^2. With K=c+M^2/c the normalized penalty adds exactly K||y||^2/V, leaving at least c(||x||^2+||y||^2)/V=c||z||_V^2. K is finite for each finite profile and may grow with n,c,D. No uniform or optimal K is claimed.
+The strict kernel margin is genuinely used. A mere c bound on the kernel would not justify this same cross-term argument; the source supplies2c and spends c in Young's estimate. Zero kernel, zero selected component, degeneracies and mode cross terms introduce no exception to the estimate.
+
+5. CEILING COUNT AND COMPLETE FINITE GREEN ESTIMATE
+Since a/H=1/(16Dn^2)<1/2, H-a>=H/2. If the positive ceiling argument applies, ceil(t)<=t+1 and
+ g(2c/lambda_s-a)/(H-a)<=4g/(n^2 lambda_s).
+A zero argument yields k_s=0 and truncation by g only decreases the count. Thus k_s<=1+4g/(n^2 lambda_s) in every case, giving r_C<=d_0+(4g/n^2)sum_s lambda_s^-1. The additive ceiling cost is d_0, not g d_0.
+Choose centered integer frequency representatives, with one of the two possible Nyquist representatives in each even coordinate. Each coordinate has absolute value<=n/2, and all nonzero frequencies lie in max-norm shells r=1,...,N=floor(n/2). On these representatives the sine bound gives lambda(k)>=16|k|_2^2/n^2. Overcounting by every integer point on the shell is safe for both odd and even n, including n=2.
+The shell size is (2r+1)^D-(2r-1)^D, bounded by2D(2r+1)^(D-1)<=2D3^(D-1)r^(D-1). For example the first inequality follows by integrating D t^(D-1) over the length-two interval. Since |k|_2>=r, the reciprocal-eigenvalue contribution is at most
+ (n^2/16)2D3^(D-1)sum_{r=1}^N r^(D-3).
+For D>=3, each of the N summands is at most N^(D-3), hence the sum is <=N^(D-2)<=n^(D-2), including exponent zero at D=3. This proves the finite bound sum_{k!=0}lambda(k)^-1<=G_D V with G_D=D3^(D-1)/8. No infinite-volume limit, continuum Green function or unproved summability hypothesis is inserted.
+Multiplying by the actual real multiplicity D-1 yields sum_s lambda_s^-1<=(D-1)G_D V. Consequently
+ r_C<=(D-1)(V-1)+4(D-1)G_D gV/n^2
+ <=(D-1)(1+4G_D)n^(2D-2),
+since g=V=n^D and V<=n^(2D-2) for D>=3,n>=2. Extra Nyquist representatives only overcount. The estimate need not be below the trivial full dimension for every small n; it remains a valid upper count, while the actual truncation always bounds the true construction by g d_0.
+
+6. MATCHING LOWER ORDER AND LIMITS OF SHARPNESS
+For the exact231B input, its actual-domain row-space projection and trace calculation yields, for every allowed C and every penalty with Phi(0)=0,
+ rank(C|U)>=g(D-1)(V-1)/[2(1+8Dn^2)].
+The input proof uses restricted row representers inside U_0, the uniform internal isometry, trace r_C/g, and a kernel vector with Q_A<=8Da+8DHt. These identities still apply to the frequency-dependent, within-channel observations constructed here. They do not require locality. The lower result is not inferred from the prior verdict text alone.
+Because V>=2, V-1>=V/2, and 1+8Dn^2<=(1+8D)n^2, the necessary rank is at least
+ [(D-1)/(4(1+8D))]n^(2D-2).
+Combining with the constructed upper bound gives the claimed Theta_D order, for every fixed D>=3,n>=2,c>0 in this precise family and class. Both displayed order constants depend only on D; the constructed penalty can depend on c,n. This is a substantial matching-order upper result relative to231B, not an exact leading constant, exact minimal-rank formula, efficient implementation, all-profile theorem or new product hF obstruction.
+The same family's mixed internal map Wz retains rank d_0=O_D(V) and restores coercivity because H times the forward gap is at least16c. Thus fixed-basis internal separability remains essential even after the order is matched. A global internal rotation changes the allowed row class. Growing g=V is part of the example. The result is finite unit-spacing mathematics including D4 as a dimension, with no physical mass-gap, covariant, continuum, D2 capped-budget, fixed-g impossibility or basis-free/all-linear lower theorem.
+
+REFUTATION ATTEMPTS AND EDITORIAL OBSERVATIONS
+I checked real-versus-complex multiplicities, even/odd and n=2 frequencies, coexact domain preservation, mode energy separation, negative/oversized ceiling arguments, zero or full kernel modes, remaining-block eigenvalue multiplicity, loss of a volume factor, the need for a strict kernel margin, uncharged ceiling cost, shell-count constants and the D=3 summation endpoint. None produced a load-bearing counterexample or unresolved scope gap.
+One nonblocking consolidation notation observation: G_D here is explicitly defined as the Green-trace constant D3^(D-1)/8. In226C the same symbol denotes a different scalar weighted-gap constant. The standalone233 proof is unambiguous and does not use226C's G_D value, but these symbols should be distinguished when merging the arguments into one manuscript. This is not a mathematical defect or a demand to edit the frozen sources.
+The dated 'not separately audited' heading is retained as preparation history. The candidate withholds originality/priority, and no new primary novelty search was performed. Classical Fourier, principal-block and finite shell mechanisms are not treated as proof of historical absence. This source has no scientific or formal execution attached; prior229 or231B material supplies no such run. No PDF or numerical grade is read, assigned, inherited or changed. Consolidation with the related observation-class results is appropriate; this is not a new small paper.
+
+ROLE, OPERATIONS AND EVIDENCE LIMITS
+Same involved separate-role AI source auditor as224/logarithmic224,225,227,226B/C,228/229 analytical/diagnostic/execution-evidence work,230,231A/B and related operational reviews. Parent fabricated the candidate and supplied framing. Account/system and prior context are shared. Exposed identity is Codex based on GPT-6; exact served backend, reasoning effort and hidden context handling are unknown. Independence is not established; no blind, human or independently selected-model review claim is made. No inbound message arrived during this audit.
+Only this new evidencia-233/source-audit directory, four audit outputs and authorized exact captures were written. No scientific/matrix/test/Lean/build/render/runtime execution, source/status/Git mutation, PDF/numerical-report read, other-chat/automation access or disposable clone occurred. Original231A/B sources and reports remain unchanged. New report text is UTF8 without BOM, LF and final newline; all hashes specify raw byte representations. The acceptance is an exact-source proof reading with the foregoing mathematical and role limits.

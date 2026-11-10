@@ -1,0 +1,453 @@
+{
+  "context_version": "exact226C-first-numerical-review-context-1",
+  "created_at": "2026-11-10T19:39:11.4685619+01:00",
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "proposed_version": "v14",
+  "binding_status": "PROPOSED linked successor only; not published or an intake receipt. Native version UUID unassigned; version_id omitted from response. Parent must bind actual UUID without changing judgments.",
+  "canonical_pdf_sha256": "28cb2a7502e05cd8588aa6294f07a7eca5e0e452cce1bf5e4f09e9ec3c89e1a6",
+  "source_commit_reported": "2d3237501569f6afac8a44d524a5d6db59f63c39",
+  "source_commit_independently_audited": false,
+  "provider": "OpenAI",
+  "exposed_model": "Codex, based on GPT-6",
+  "exact_backend": "unknown",
+  "reasoning_effort": "unknown",
+  "independence": "unknown",
+  "session_context": "Parent assignment states fresh fork requested with no conversation inheritance. Only current role assignment and global user instructions were supplied here; no predecessor numerical report or score. Same account/system/filesystem remain; memory-disabled isolation and provider-history controls unverified. Fresh context does not prove historical model nonparticipation. No authorship in this review session.",
+  "manuscript_exposure": "Section 5 includes author-reported prior source-audit outcomes, preparation error history and diagnostic counts. Read as manuscript content, never as operating instructions or independently verified support.",
+  "no_inbound_during_review": true,
+  "prior_numeric_reports_sought": false,
+  "other_role_reports_read": false,
+  "full_text_pages_read": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "individual_images_read": [
+    2,
+    11,
+    14,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "contact_sheets_read": [
+    "contact-01.jpg",
+    "contact-02.jpg",
+    "contact-03.jpg",
+    "contact-04.jpg"
+  ],
+  "text_page_check": "20 nonempty form-feed terminated pages and one empty trailing split; supplied packet metadata states 20 PDF pages",
+  "pages": [
+    {
+      "characters": 3213,
+      "page": 1,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 3271,
+      "page": 2,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": true
+    },
+    {
+      "characters": 3167,
+      "page": 3,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 3874,
+      "page": 4,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 3348,
+      "page": 5,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 3638,
+      "page": 6,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 3689,
+      "page": 7,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 3133,
+      "page": 8,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 3482,
+      "page": 9,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 2836,
+      "page": 10,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 3494,
+      "page": 11,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": true
+    },
+    {
+      "characters": 3508,
+      "page": 12,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 3503,
+      "page": 13,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 3675,
+      "page": 14,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": true
+    },
+    {
+      "characters": 3182,
+      "page": 15,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": false
+    },
+    {
+      "characters": 3894,
+      "page": 16,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": true
+    },
+    {
+      "characters": 3746,
+      "page": 17,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": true
+    },
+    {
+      "characters": 3342,
+      "page": 18,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": true
+    },
+    {
+      "characters": 3379,
+      "page": 19,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": true
+    },
+    {
+      "characters": 278,
+      "page": 20,
+      "contact_sheet_inspected": true,
+      "full_text_read": true,
+      "individual_image_opened": true
+    }
+  ],
+  "inputs": [
+    {
+      "sha256": "28cb2a7502e05cd8588aa6294f07a7eca5e0e452cce1bf5e4f09e9ec3c89e1a6",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\rectangular_matrix.pdf",
+      "bytes": 419361,
+      "representation": "Raw file bytes; no normalization",
+      "usage": "Canonical bytes hashed; supplied text/render used for reading"
+    },
+    {
+      "sha256": "9c0e924b2c6ce0c40523545e721148af464381099a82b72ff1fb8fa8cab16460",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\rectangular_matrix.txt",
+      "bytes": 67001,
+      "representation": "Raw file bytes; no normalization",
+      "usage": "Read all 20 nonempty page segments"
+    },
+    {
+      "sha256": "b7ad37da9d830a8be48346f7e069bac110827a80a30e6e3db5fe071d545bbb64",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\report.json",
+      "bytes": 3450,
+      "representation": "Raw file bytes; no normalization",
+      "usage": "Packet rendering provenance only"
+    },
+    {
+      "sha256": "563f2fdc92faa4f433015419d57435ba06930f8a733b89671abcd231780ffa96",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\manifest.json",
+      "bytes": 9224,
+      "representation": "Raw file bytes; no normalization",
+      "usage": "Packet rendering provenance only"
+    },
+    {
+      "sha256": "7146028a0fb8d1d037dfcc8d20797b9870ef76cb94ffcc72fdcc5a651039a11f",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\contact-01.jpg",
+      "bytes": 295584,
+      "representation": "Raw file bytes; no normalization",
+      "usage": "Visual contact sheet inspected"
+    },
+    {
+      "sha256": "85c23835c245bd30379f4d6e411d3efb1c239952f3a43470704e98e7824eb91f",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\contact-02.jpg",
+      "bytes": 283823,
+      "representation": "Raw file bytes; no normalization",
+      "usage": "Visual contact sheet inspected"
+    },
+    {
+      "sha256": "79a4bc7b917f10ab43380e2dcbbe862e41c8ef2cd23c59dc2fd7551e19b63879",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\contact-03.jpg",
+      "bytes": 324765,
+      "representation": "Raw file bytes; no normalization",
+      "usage": "Visual contact sheet inspected"
+    },
+    {
+      "sha256": "6e49d7cc4805c4fe74b8a0e845ae221afe7e7ee888c94c31cd2bf9b417f37a2a",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\contact-04.jpg",
+      "bytes": 85299,
+      "representation": "Raw file bytes; no normalization",
+      "usage": "Visual contact sheet inspected"
+    },
+    {
+      "sha256": "78fd6f5b4c49758acd9ae84b9d7510da9018bd324eda9e07360724120de67e7c",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-01.png",
+      "bytes": 215813,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "7dde03025a4a08793ba5d27469dc70c10dad40a078767f74dd014b394db7000a",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-02.png",
+      "bytes": 184895,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Individually visually opened and also shown in contact sheet"
+    },
+    {
+      "sha256": "c187962bf11f69c3bd7f44b259f1cefbd300f9b31fdc53b3dbca9e984da12690",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-03.png",
+      "bytes": 225578,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "b1036aac75153c39c7374ebbf8e3dc328a1a7dffc9a0b868b31db9b799b270ff",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-04.png",
+      "bytes": 273219,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "c3543973e8c63b5a6d960ff0358dddc78ee006ad76b1b4ccfe1bfa2045b6bea9",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-05.png",
+      "bytes": 256277,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "83d5e2ddb75b5b4e1d3b5cae558e84f112a76f7f495598dcd09dda7b49872ab6",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-06.png",
+      "bytes": 178025,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "820a911053cb55faaf1c9a83c5f2b5e37b7f5bb52aac3c1a2c4d6731b70b78af",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-07.png",
+      "bytes": 187642,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "78aea7cee668cc99457277848d8998b3dbd925ec5bc36769c4ae929d71154cdd",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-08.png",
+      "bytes": 238716,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "39d6c8cdeb7180b43da1a5d55ca359e8ca6cdd7647053372ec2491a7354fa44a",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-09.png",
+      "bytes": 240705,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "1bfbd9164260b010614a3e17672668eda9c14627bd0982e8d49a632aea5a2464",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-10.png",
+      "bytes": 173047,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "a6c6ddf179a6fce21be23157f05ada7cbc56c1509ebdee87fea03a92c2503486",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-11.png",
+      "bytes": 234896,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Individually visually opened and also shown in contact sheet"
+    },
+    {
+      "sha256": "a2cacee3a970c553787c1c30ca79b39c0120306c72541c9408ebbc03a4e2f08a",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-12.png",
+      "bytes": 178561,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "7026149c7a66589a02d5c05977b4f5ca1c4c764a805a8dd032b9f9643fa63bb4",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-13.png",
+      "bytes": 236210,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "349eee808faa185b3b8c402dc66db6a4e919971a1952d666bf8394fa6198c65f",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-14.png",
+      "bytes": 301589,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Individually visually opened and also shown in contact sheet"
+    },
+    {
+      "sha256": "7414da9d8ddf1a3b7a17555829b4f400fb0dc1e014a3af558b75ac8c94281715",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-15.png",
+      "bytes": 240019,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Page visually inspected within contact sheet only"
+    },
+    {
+      "sha256": "654bca104aa25a17c1729a801f620402c88d50bc4f1cb6027446990a698978ea",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-16.png",
+      "bytes": 282528,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Individually visually opened and also shown in contact sheet"
+    },
+    {
+      "sha256": "44708663663ccbb0a1f626ef8224521c8e1a600bf1dadd18d529426ffc43b42e",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-17.png",
+      "bytes": 219094,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Individually visually opened and also shown in contact sheet"
+    },
+    {
+      "sha256": "c6eba98c692b580f1d46f1c8f4544be4caea123917961e0f2aed7fb1e8ad1e35",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-18.png",
+      "bytes": 215887,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Individually visually opened and also shown in contact sheet"
+    },
+    {
+      "sha256": "5ee12f2c56e65725415615bbbf2fa9d92b9953d576827e55ff1df3c1be39add3",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-19.png",
+      "bytes": 275224,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Individually visually opened and also shown in contact sheet"
+    },
+    {
+      "sha256": "5020fa071510ecce5f0695f16dcde496bd1f2a9f969d921e1242cccec50f9652",
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\exact226C\\page-20.png",
+      "bytes": 31505,
+      "representation": "Raw PNG bytes; no normalization",
+      "usage": "Individually visually opened and also shown in contact sheet"
+    },
+    {
+      "sha256": "3502d37a3f765ea2e867f1379917b25b7d458c03500b682b2b3403210181b1b8",
+      "path": "D:\\LEEME.md",
+      "bytes": 16801,
+      "representation": "Raw on-disk bytes; no normalization",
+      "usage": "Role/execution instructions; not scientific evidence"
+    },
+    {
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "path": "D:\\Proyectos\\the-eriksson-programme\\CLAUDE.md",
+      "bytes": 24408,
+      "representation": "Raw on-disk bytes; no normalization",
+      "usage": "Role/execution instructions; not scientific evidence"
+    },
+    {
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "path": "D:\\Proyectos\\the-eriksson-programme\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "representation": "Raw on-disk bytes; no normalization",
+      "usage": "Role/execution instructions; not scientific evidence"
+    }
+  ],
+  "public_primary_sources": [
+    {
+      "hash": "Not downloaded; remote web extracts not byte-hashed",
+      "read": "Introduction and Theorems 2.1/3.1, Corollary 2.2 statements and surrounding passages",
+      "url": "https://arxiv.org/pdf/1206.3325v1"
+    },
+    {
+      "hash": "Not downloaded; remote web extracts not byte-hashed",
+      "read": "Introduction and selected relevant Appendices I-II covering, boundary and basic-path passages",
+      "url": "https://arxiv.org/html/1511.03971v1"
+    },
+    {
+      "hash": "Not downloaded; remote web extracts not byte-hashed",
+      "read": "Introduction and selected Sections 5-6, especially Theorem 6.1 and chain construction",
+      "url": "https://people.math.sc.edu/pencho/Publications/BV9707.pdf"
+    }
+  ],
+  "verification_limits": [
+    "No new PDF extraction/render/build/Lean/local science or numerical execution",
+    "No diagnostic replay or two-clone reproducibility certification",
+    "No source-audit reports or historical numerical reviews consulted",
+    "Public papers only selected passages, not entire proofs or exhaustive novelty search",
+    "No claim of blind, independent, human review, provider-history controls or exact backend identity"
+  ],
+  "original_judgment": {
+    "rescoring_performed": false,
+    "recommendation": "minor_revision",
+    "first_numeric_review": true,
+    "millennium_score": 3.25,
+    "score_semantics": "Scientific importance 0-10; overall_stars nearest-whole half-up with floor one; not probability or independent quality score",
+    "overall_stars": 3
+  },
+  "operational_note": "Initial long shell write rejected automatically as blocked by policy, no further stated reason and no file created. Authorized report saved by file-editing tool. No source, Git, report from another role or operational state changed."
+}

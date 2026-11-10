@@ -1,0 +1,25 @@
+{
+  "unit": 229,
+  "role": "same involved AI analytical source auditor; parent fabricator",
+  "exposed_identity": "System: AI assistant accessed via API. Developer: Codex, agent based on GPT-6.",
+  "exact_backend_and_effort": "Not exposed; unknown.",
+  "involvement_history": "224/logarithmic224,225,227,226B/C,228analytical/diagnostic-source/execution and AIRRcompatibility source reviews retained.",
+  "shared_context": "Parent framing/shared account/system; no independent, blind, human or independently selected-model claim.",
+  "inbound_while_auditing": "None received",
+  "source_reads": "Complete126line229draft at exactGitcommit and Dsnapshot, raw hashmatched;8529bytes",
+  "primary_reads": [
+    "Levin/Peres author index for second edition; not fullbook",
+    "Sushch2202.03923v1 abstract and relevant forward-difference/curl/adjoint/Hodge context"
+  ],
+  "historical_timeout": "Draft discloses earlierbookPDFtimeout; not independently attested here",
+  "proof_method": "Direct analytical source reasoning, no symbolic/numerical execution",
+  "no_science_Lean_build_render_runtime": true,
+  "no_source_status_Git_mutation": true,
+  "no_otherchat_automation": true,
+  "no226_pdf_numeric_report_read": true,
+  "no_original_evidence_edit": true,
+  "disposable_clone_created": false,
+  "output_representation": "Original complete UTF-8 without BOM, LF, final newline",
+  "capture_representation": "Exact raw binary git-show bytes, Dsnapshotmatched, no normalization",
+  "root": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\source-audit"
+}

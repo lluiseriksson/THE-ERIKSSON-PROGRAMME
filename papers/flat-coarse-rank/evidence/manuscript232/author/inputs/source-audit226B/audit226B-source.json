@@ -1,0 +1,47 @@
+{
+  "artifact": "manuscript226-source-b",
+  "commit": "2e97589506d593fe29a72a48bfd55a1a113df9d1",
+  "root_sha256_raw_git_blob": "c014c3f4e8946500a03e2c403317df10128e5c3d9c1eaf02e46f847e04814c08",
+  "verdict": "reject",
+  "verdict_scope": "Exact complete artifact, because optional auxiliary conditional M1 is false without M>=0; no principal theorem refuted.",
+  "principal_load_bearing_objections": [],
+  "material_findings": [
+    {
+      "id": "M1",
+      "file": "matrix-proof.tex",
+      "lines": "147-151",
+      "finding": "Missing M>=0 in optional singleton lower bound and K=c+4DM derivation",
+      "counterexample": "n=1, D>=3, h=1, A=Id_D, M=-1, nonzero constant u: premise holds but Q_A=0 and claimed lower bound is positive.",
+      "effect": "Auxiliary conditional false as written; main K=c+4DL proof and existence of finite singleton penalty unaffected.",
+      "needed": "Explicit nonnegative M or an explicitly nonnegative chosen spectral-depth bound; no source edit performed."
+    }
+  ],
+  "editorial_findings": [
+    {
+      "id": "E1",
+      "file": "review-context.tex",
+      "lines": "9-18",
+      "finding": "Blanket complete-prior-report identity language includes scalar audits, but SOURCE-INPUTS lists frozen scalar source and full224/225/227 reports without a separate original scalar-audit identity.",
+      "effect": "Nonblocking provenance precision; no impact on included scalar proof."
+    }
+  ],
+  "checks": {
+    "all_six_tex_read": true,
+    "raw_git_manifest": "all12listed entries match,13files captured",
+    "both_D_source_b_snapshots": "all13capture hashes match",
+    "scalar_transcription": "mathematics retained with disclosed notation/context adaptations",
+    "scalar_complete_proof": "no load-bearing defect found",
+    "matrix_main_proof": "no load-bearing defect found",
+    "endpoint_coexact_and_logarithm": "no load-bearing defect found",
+    "common_fullvector_rank": "no load-bearing defect found",
+    "front_theorem_fidelity": "accepted",
+    "classical_primary_attribution": "supported within stated nonpriority limits",
+    "documentary_diagnostics_context": "consistent with referenced result records, not replayed",
+    "static_labels": "60labels,63references,no duplicates or missing targets"
+  },
+  "numerical_or_pdf_grade": null,
+  "scientific_execution": false,
+  "compiled_or_rendered": false,
+  "prior_evidence_edited": false,
+  "report": "report226B-source.txt"
+}

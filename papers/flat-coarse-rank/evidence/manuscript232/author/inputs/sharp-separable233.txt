@@ -1,0 +1,125 @@
+UNIT233. MATCHING CHANNEL-SEPARABLE RANK ORDER ON THE ACTUAL COEXACT FAMILY
+Analytical candidate prepared2026-11-10, not yet separately audited.
+Input231B exact sourcedbaca106b4def20c1b9d674ec34cfb9a56794cd7,
+path papers/flat-coarse-rank/research/2026-11-10_channel-separable231B.txt,
+rawSHA25651c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f.
+Separate231B source audit accepts with limits; no execution or grade.
+
+QUESTION. Is231B's necessary channel-separable rank order sharp for its
+explicit coupled family? Hypotheses stay D>=3,n>=2,g=V=n^D, fixed internal
+basis, actual forward-curl-adjoint coexact domain; no general-profile upper
+theorem. Mechanism: observe a frequency-dependent number of entire real
+coexact mode coordinates, separately in each internal channel. An explicit
+finite Green trace bound counts them. Falsifier: wrong real mode multiplicity,
+failure of the unobserved internal principal block's coercivity, excessive
+rank count, or lack of a finite restoring penalty. Abandon if uncorrectable,
+preserving objections; three units without substantive progress change route.
+
+1. SETUP AND TARGET
+Let X=(Z/nZ)^D,V=n^D,U_0=im(d_1^*) for the actual forward curl, and
+U=U_0^g. Counting norm is used until explicit division byV. Put
+a=c/(16D), H=c n^2, v=(1,...,1)/sqrt(g), B=H I_g-(H-a)vv^T,
+and A_{(i,j,alpha),(i',j',beta)}=delta_ii' delta_jj' B_alpha,beta,
+constant in x. Define Q_A as231B. Let r_min be the minimum true restricted
+rank over channel-separable finite linear C=direct_sum C_alpha for which
+some penalty Phi(0)=0 yields
+ V^-1 Q_A(z)+Phi(Cz)>=c||z||_V^2 for every z in U.
+The candidate proves r_min=Theta_D(n^(2D-2)). This is an order statement,
+not an exact leading constant or minimal rank formula. The231B full budget
+F<=D^2(1+alpha_D)V and h=Dg remain unchanged.
+
+2. REAL COEXACT LAPLACIAN BASIS
+The scalar forward torus Laplacian L=sum_i(partial_i^+)^*partial_i^+
+acts componentwise. It preserves U_0, since constant forward differences,
+their adjoints and curl commute. On each nonzero frequency its eigenvalue is
+lambda(k)=4 sum_i sin^2(pi k_i/n)>0. There are D-1 coexact complex
+polarizations per nonzero frequency and zero at zero frequency. Conjugate
+pairing gives a real orthonormal eigenbasis f_s, s=1,...,d_0,
+d_0=(D-1)(V-1), with the same full multiset of eigenvalues counted over all
+nonzero frequencies, each repeated D-1 times. A real symmetric operator
+restriction also supplies this basis directly. In particular
+ lambda_s>=16/n^2 and lambda_s<=4D.
+Writing z_alpha=sum_s z_{alpha,s}f_s and z_s=(z_{alpha,s})_alpha gives
+ ||z||^2=sum_s||z_s||^2, Q_A(z)=sum_s lambda_s z_s^T B z_s.
+No claim that a single physical spatial component is coexact is used.
+
+3. EXPLICIT CHANNEL-SEPARABLE ROWS
+For each s set
+ k_s=min(g,ceil(max(0,g(2c/lambda_s-a)/(H-a)))).
+Observe z_{alpha,s}/sqrt(V) exactly when alpha<=k_s. Thus each row belongs
+to one internal channel, although it is a nonlocal real spatial observation.
+The selected row representers form an orthogonal subset of the full real
+coexact basis of U. Consequently the actual restricted rank is
+ r_C=sum_s k_s, exactly, not the listed output dimension of a redundant map.
+The rows may be extended to all fields by the same inner products f_s;
+the restoring inequality claimed here is only on U.
+
+4. KERNEL COERCIVITY
+If k_s=g, the corresponding mode has no unobserved coordinates in ker C.
+Otherwise its unobserved internal principal block of B, of size g-k_s, is
+ H I_{g-k_s}-(H-a)/g 11^T,
+whose least eigenvalue is a+(H-a)k_s/g. The definition of k_s ensures
+ lambda_s[a+(H-a)k_s/g]>=2c.
+When max(...) is zero, a lambda_s>=2c already and the same conclusion
+holds. Thus Q_A(x)>=2c||x||^2 for every x in ker(C|U).
+No commutation of an arbitrary row projector with energy was assumed;
+these deliberately constructed rows are whole actual Laplacian modes.
+
+5. A FINITE PENALTY ON ALL OF U
+Let R be the counting orthogonal projection onto the selected row space inU.
+For any z=x+y with x=(I-R)z,y=Rz, x lies in ker C and x is orthogonal y.
+The energy operator on U has norm at most M=4DH, since 0<A<=H I and
+the gradient energy norm is at most4D. Positivity and Cauchy give
+ Q_A(x+y)>=2c||x||^2-2M||x||||y||
+ >=c||x||^2-(M^2/c)||y||^2.
+Also ||Cz||^2=V^-1||y||^2. Taking the finite explicit
+ K=c+M^2/c and Phi(w)=K||w||^2 proves
+ V^-1 Q_A(z)+K||Cz||^2>=c||z||_V^2.
+K is profile/size dependent, not claimed uniform or optimal. In particular
+exactly c coercivity on the kernel was not incorrectly used to infer a
+finite penalty in the presence of cross terms: the kernel margin is2c.
+
+6. ROW COUNT AND COMPLETE FINITE GREEN TRACE
+Because H-a>=H/2, the ceiling formula always gives
+ k_s<=1+4g/(n^2 lambda_s), including when its argument is negative or
+the outer min applies. Therefore
+ r_C<=d_0+(4g/n^2)sum_s lambda_s^-1.
+Choose centered integer representatives for each frequency with |k_i|<=n/2;
+for even n choose only one representative of each Nyquist coordinate.
+The sine chord bound gives lambda(k)>=16|k|_2^2/n^2. Put N=floor(n/2).
+Overcount by all integer lattice points of max norm r, r=1,...,N.
+There are at most (2r+1)^D-(2r-1)^D<=2D3^(D-1)r^(D-1) of them.
+Each has |k|_2>=r. Since D>=3,
+ sum_{r=1}^N r^(D-3)<=N^(D-2)<=n^(D-2).
+Consequently
+ sum_{k!=0}lambda(k)^-1
+ <=[D3^(D-1)/8] V = G_D V.
+This is an explicit finite estimate, not an infinite-volume hypothesis.
+The real coexact multiset yields sum_s lambda_s^-1<=(D-1)G_D V.
+Thus
+ r_C <= (D-1)(V-1)+4(D-1)G_D gV/n^2.
+With g=V=n^D and D>=3, V<=n^(2D-2), giving
+ r_min <=(D-1)(1+4G_D)n^(2D-2).
+Nyquist overcounting only enlarges the upper bound; there is no complex-to-real
+factor of two. The exact mode count d_0 is already real.
+
+7. MATCHING LOWER ORDER AND OBSERVATION BOUNDARY
+The exact231B necessary bound applies to every allowed map and any penalty
+vanishing at zero:
+ r_C >=g(D-1)(V-1)/[2(1+8D n^2)].
+Using V-1>=V/2 and 1+8D n^2<=(1+8D)n^2 gives
+ r_min >=[(D-1)/(4(1+8D))]n^(2D-2).
+Together these are the claimed two positive D-only order constants.
+The lower theorem's proof is fully retained in231B; its full budget includes
+all strong eigenvalues. A mixed internal observation for this same profile
+still restores with rank d_0=O_D(V). Hence the sharp-order result concerns
+fixed-basis channel-separable observations, not all linear maps. Growing g=V
+is essential to this family; no fixed-g theorem, physical mass gap,
+covariant/continuum statement, all-profile optimum, numerical grade or
+historical originality is claimed. D=2 is outside the capped convention.
+
+REVIEW AND GROUPING
+Separate source audit required for this exact new upper construction; do not
+inherit231B acceptance for it. Elementary Fourier, principal-block and Green
+trace mechanisms are classical. Consolidate with229/230/231, not a new tiny
+paper. No scientific or formal execution has been performed for this unit.
