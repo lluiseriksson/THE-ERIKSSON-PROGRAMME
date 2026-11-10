@@ -155,6 +155,11 @@
       "path": "papers/flat-coarse-rank/research/capped-matrix225/source-audit/source-review225.txt",
       "bytes": 10575,
       "sha256": "7f66e9160d7ddd7721509e8a63aa3857f4f1d2ebe89239ad18437e523d148333"
+    },
+    {
+      "sha256": "bf05135bf64453acb876752a2e852d7e4a9b6a3895f1ee7af6fd2bf5638f5dd9",
+      "path": "papers/flat-coarse-rank/research/capped-matrix225/finite/MANIFEST.json",
+      "bytes": 1394
     }
   ],
   "representation": "Raw source/reports/runtime/finite output bytes; no EOL normalization"
