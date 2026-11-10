@@ -1,0 +1,28 @@
+{
+  "verdict": "accept_with_limits",
+  "unit": "231B",
+  "source_commit": "dbaca106b4def20c1b9d674ec34cfb9a56794cd7",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-10_channel-separable231B.txt",
+  "source_sha256_raw": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f",
+  "blocking_findings": [],
+  "material_scope_findings": [],
+  "editorial_findings": [],
+  "whole_proof_checked": true,
+  "inherited_acceptance": false,
+  "necessary_rank": "g(D-1)(V-1)/[2(1+8D n^2)]",
+  "full_budget": "D^2 V[1+(g-1)min(1,alpha_D n^(-D))]",
+  "budget_upper": "D^2(1+alpha_D)V",
+  "rank_to_additive_budget_divergence": "n^(D-2), fixed D>=3",
+  "mixed_escape_rank": "d_0=(D-1)(V-1)",
+  "limits": [
+    "Fixed specified internal basis and direct-sum channel-separable linear observations are essential.",
+    "D>=3,n>=2,g=V=n^D; internal dimension grows. No D2 or fixed-g impossibility.",
+    "D4 is a finite algebraic observation-class result, not a physical mass-gap statement.",
+    "Necessary super-additive rank only; no optimal rank or matching hF claim.",
+    "Same profile admits mixed observation of rank d_0 with penalty c.",
+    "No execution, PDF assessment, grade, independent reproduction, formal certification or priority finding."
+  ],
+  "new_execution": false,
+  "numerical_grade": null,
+  "original231A_unchanged": true
+}
