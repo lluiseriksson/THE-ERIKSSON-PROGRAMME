@@ -33,3 +33,7 @@ papers/flat-coarse-rank/integrated-revision/revision226/** -text
 
 # Exact226 compilation, source audits and visual evidence.
 papers/flat-coarse-rank/evidence/manuscript226/** -text
+
+# Preserve raw229sharp-rank draft and subsequent full audits.
+papers/flat-coarse-rank/research/2026-11-10_sharp-coexact229.txt -text
+papers/flat-coarse-rank/research/sharp-coexact229/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space
