@@ -1,0 +1,111 @@
+\section{Necessary product order for full-vector common partitions}\label{sec:common-rank}
+We prove Theorem~\ref{thm:common-rank} by an explicit positive diagonal
+family. The proof concerns all vector fields, as in Theorem~\ref{thm:matrix},
+rather than the smaller coexact domain of the endpoint lower theorem.
+It uses only local fields and finite-dimensional rank-nullity.
+
+\subsection{The coefficient family and every local channel}
+Let $n=3m+3$ and choose centers
+\[
+ x_j=(3j+1,1,\ldots,1),\qquad 0\le j<m.
+\]
+They lie away from the periodic wrap boundary. With
+$\sigma=\alpha_D^{1/P}c$, define
+\[
+ a_0=\min\{c/(8D),\sigma/2\}>0,\qquad
+ M=r n^D,\qquad H=\sigma M>\sigma.
+\]
+In the canonical direction/component basis $(i,k)$ of $\R^{Dh}$ let
+$A(x)$ be diagonal, with entries
+\begin{equation}\label{eq:rank-profile}
+ \lambda_{i,k}(x)=
+ \begin{cases}
+ a_0,&k=1\text{ and }x\in\{x_j,x_j-e_i\}\text{ for some }j,\\
+ H,&\text{otherwise}.
+ \end{cases}
+\end{equation}
+At a center all $D$ direction channels for component one are weak; at an
+incoming start only its specified direction/component channel is weak.
+All eigenvalues are positive. For each fixed direction the starts $x_j$
+and $x_j-e_i$ are distinct. Across centers their first coordinates lie in
+disjoint sets $\{3j,3j+1\}$. Channels with different direction labels remain
+distinct even when they share a start. There are therefore exactly $2Dm$
+weak channels.
+
+Since $a_0\le\sigma/2$, each weak channel has capped cost one in
+\eqref{eq:cap}. Every other channel has capped cost
+$\alpha_Dc^PH^{-P}=M^{-P}$. Thus, including all strong channels,
+\begin{equation}\label{eq:rank-budget}
+ F_c(A)=2Dm+(M-2Dm)M^{-P},\qquad
+ 2Dm\le F_c(A)\le2Dm+1.
+\end{equation}
+Indeed $0\le M-2Dm\le M$ and $P>1$, so the tail is at most
+$M^{1-P}\le1$. Increasing $h$ increases $H$ and keeps this strong tail
+bounded; it introduces no uncontrolled $h$-sized budget contribution.
+The choice of $H$ is permitted by the arbitrary finite profile hypothesis.
+
+\subsection{The actual low space and the restriction rank}
+Let $U_j(x)=1_{\{x_j\}}(x)e_1$, where $e_1\in\R^h$ is the first
+canonical unit vector. These fields are orthonormal in counting units.
+Their only nonzero direction-labelled forward differences are $-e_1$ at
+$x_j$ and $+e_1$ at $x_j-e_i$, for each direction $i$. Both original
+starts are assigned coefficient $a_0$ by \eqref{eq:rank-profile}; there
+are no further wrap contributions. Consequently
+\[
+ Q_A(U_j)=2Da_0\le c/4.
+\]
+No nearest-neighbor edge joins distinct centers, and their gradient-start
+supports are disjoint. Hence the quadratic cross terms vanish and
+\begin{equation}\label{eq:rank-lowspace}
+ L_m=\operatorname{span}_{\R}\{U_0,\ldots,U_{m-1}\},\quad
+ \dim L_m=m,\quad
+ Q_A(U)\le(c/4)\sum_x\|U(x)\|^2\quad(U\in L_m).
+\end{equation}
+These are general vector functions. No divergence or coexact property is
+asserted for them.
+
+For any common partition $\mathcal R$ into $R$ nonempty rectangles, its
+actual rows on this space are
+\[
+ q_B\left(\sum_jt_jU_j\right)
+ =V^{-1/2}|B|^{-1/2}
+       \left(\sum_{j:x_j\in B}t_j\right)e_1.
+\]
+Each rectangle supplies at most one scalar functional on $L_m$, so
+$\rank(C_{\mathcal R}|_{L_m})\le R$. If $R<m$, rank-nullity gives a
+nonzero $U\in L_m$ with $C_{\mathcal R}U=0$. Coercivity with any finite
+quadratic penalty, after multiplication by $V$, would imply
+\[
+ c\sum_x\|U(x)\|^2\le Q_A(U)
+                    \le(c/4)\sum_x\|U(x)\|^2,
+\]
+a contradiction. Thus every successful common partition has $R\ge m$.
+The same argument works for any penalty on these linear observations with
+$\Phi(0)=0$, without a differentiability assumption on that penalty.
+
+The full field-space rank is exactly $hR$, not merely a padded output
+dimension. To see this, for each $B$ choose a site $z\in B$. A field
+supported at $z$ with value $\sqrt{V|B|}\,e_k$ has observation $e_k$ in
+row $B$ and zero in every other row. These fields show surjectivity onto
+all $hR$ row coordinates. Therefore necessary genuine rank is at least
+$hm$. Since $F_c(A)\le2Dm+1\le(2D+1)m$, this proves
+\eqref{eq:product-lower}.
+
+\subsection{Joint growth and the measurement-class restriction}
+Set $h=m$. The necessary rank is at least $m^2$, while
+$h+F_c(A)\le(2D+1)m+1$. Their ratio tends to infinity for fixed $D,c$.
+Thus a dimension-only $C_D(h+F_c(A))$ bound fails for these common
+full-vector partitions, even with arbitrary finite penalty. The product
+lower bound and Theorem~\ref{thm:matrix} have matching $hF_c(A)$ order
+along this family, since $F_c(A)\ge2Dm$ makes $1+F_c(A)$ comparable to
+$F_c(A)$. Sharp coefficients, additive constants and per-profile optimality
+are not determined.
+
+The extra factor $h$ measures the cost of retaining every component mean
+on every common partition member; it does not count $h$ independent tests
+of the one-component low space. The argument does not apply to distinct
+componentwise partitions, projected or channel-adapted rows, or compressed
+postprocessed outputs. It requires no external theorem about the rank of
+those broader observation classes. These elementary rank and local-field
+arguments carry no claim of historical priority, a new general principle,
+formal verification, or physical transfer.
