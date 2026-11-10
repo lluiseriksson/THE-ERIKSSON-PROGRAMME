@@ -1,0 +1,83 @@
+DATED AUTHOR/OPERATOR COMPANION — 2026-11-10
+Exact unchanged226C PDF SHA25628cb2a7502e05cd8588aa6294f07a7eca5e0e452cce1bf5e4f09e9ec3c89e1a6.
+This is a response supplement, not a revision, referee report or new assessment.
+Original first numerical report, response and context remain unchanged.
+Scientific importance3.25/10; native overall3stars; criteria4/4/2/3/3;
+minor_revision; no unresolved main-invalidating objection from that reading.
+OpenAI Codex exposed as based on GPT-6; exact backend/effort unknown;
+independence unknown. No human peer review or acceptance is claimed.
+
+1. CLASSICAL ATTRIBUTION / PRIORITY
+The request for a more precise comparison is accepted. CDPX Section6,
+Theorem6.1 gives a classical dyadic-ring partition/count mechanism based on
+final, branching and chaining nodes. Brudnyi AppendixII supplies a related
+weighted-tree/basic-path approximation algorithm; AppendixI treats ring covers.
+These are substantive constructive predecessors, not merely background citations.
+The finite manuscript's applications retain classical mechanisms. Its explicit
+adaptations include finite atomic coefficient mass, odd integer descendants,
+actual original-start edge weights, retained intra-ring interfaces, matrix
+spectral replacement/singleton endpoint refinement and the separate explicit
+coexact weak-endpoint family. These descriptions identify what is proved here;
+they do not prove that no classical theorem already implies the statements.
+Historical priority, exact equivalence/non-equivalence and exhaustive closest
+predecessor coverage remain unestablished. No positive novelty conclusion is
+substituted for the review's two-star novelty judgment.
+Primary passages checked by the parent after the report:
+https://people.math.sc.edu/pencho/Publications/BV9707.pdf Section6/Theorem6.1;
+https://arxiv.org/html/1511.03971v1 AppendixII and introductory algorithm references.
+No third-party paper is redistributed in the source package.
+
+2. PROOF-DEPENDENCY GUIDE
+A.2: integer geometry and collars.
+A.3: unweighted BV extension without changing coefficients.
+A.4: scalar original-start weighted ring gap, using A.2/A.3.
+A.5: heavy-chain grouping/count with atomic singleton treatment.
+A.6: rectangular means retain full intra-ring energy.
+A.2–A.6 -> A.1: complete arbitrary-positive-scalar construction.
+A.1 -> Section2 -> Theorem1.1: matrix positive replacement, singleton
+refinement, full signed correction and finite profile-dependent penalty.
+A.1/CorollaryA.2 + layer cake -> Theorem1.3: weak-moment upper order.
+Section3 -> Theorem1.2: common-full-vector lower bound on GENERAL fields.
+Section4 -> Theorem1.4: explicit actualCOEXACT weak-endpoint lower bound.
+These lower domains must not be conflated. A later separate228candidate is
+not part of this assessed PDF and changes none of its judgments or statements.
+
+3. PROGRAMME SHORTHAND
+PR29=20/41,TermSource0 is a conservative external programme-status record,
+not a theorem, probability, completion percentage or mathematical hypothesis.
+It supplies no physical/continuum implication. The finite results here do not
+change that record.
+
+4. PRESENTATION
+The reviewer correctly identifies the spare final bibliography page and dense
+BV display. The exact PDF remains unchanged after this first assessment; its
+page20 contains the complete third reference, not missing mathematical text.
+The supplied render/visual checks found no clipped equation. This companion
+does not claim to have fixed that typesetting economy or earned a new score.
+
+5. PREPARATION HISTORY AND CURRENT STATUS
+Section5 is the frozen preparation-time record. Complete226B source rejection
+for the omitted nonnegative auxiliary depth remains intact. Corrected226C was
+subsequently fully source-audited and rendered in own ColabLinux. The first
+exactPDF numerical review occurred after compilation and is supplied here in
+full, without altering the historical PDF disclosure that it was pending then.
+The review is not independent/blind/human; memory/provider-history isolation
+was unverified even though a fresh no-inheritance context was requested.
+
+6. LIMITS RETAINED
+Constants are conservative; no efficient implementation, sharp per-profile
+rank, negative-depth-uniform penalty or channel-adapted impossibility is
+established. The matrix upper is finite all-field component-gradient; the
+coexact weak lower retains centered differentiability and a local quadratic
+penalty upper bound. No covariant/interacting producer, weighted-curl identity,
+continuum construction or physical massgap follows.
+
+7. REPRODUCTION / PUBLICATION
+The actual document production has ten zero tool exits and66 verified render
+payloads, with own runtime released and separately read back inactive. Those
+facts are the parent's documentary production checks, not experiments replayed
+by the numerical reviewer or a formal/all-size verification. Original224/225
+selected diagnostics keep their original scopes and reports.
+This is a working-paper candidate on the existing AIRR record. It is not
+editorial acceptance. New native artifact permission/deposit and verifiable
+public release remain separate gates; no receipt is inferred from this packet.

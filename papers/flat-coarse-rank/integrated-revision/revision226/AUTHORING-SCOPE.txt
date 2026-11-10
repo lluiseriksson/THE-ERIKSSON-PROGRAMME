@@ -1,0 +1,26 @@
+Manuscript226 authoring operation started2026-11-10.
+The PDF skill marker succeeded exactly once immediately before this first authoring command.
+Do not run it again for this manuscript's edits, compilation or corrections.
+
+One proposed linked successor to existing AIRR record ARR-2026-7EPM3V3DP796BBRR v13.
+Proposed title: Rectangular observations for finite matrix gradients:
+critical budgets and the weak endpoint.
+
+Main mathematics: complete scalar222 construction as proved appendix input;
+arbitrary symmetric matrix capped-budget rectangular theorem225 with some finite
+profile-dependent K; weak-endpoint224 actual coexact rank obstruction and matching
+worst-case logarithmic loss. All are finite original-start gradient forms.
+No interacting/curl/continuum theorem, formal certification, established priority,
+per-profile optimal rank or efficient algorithm. No numerical grade yet.
+
+Put principal statements near the beginning; complete proofs, coherent notation,
+primary closest-predecessor comparison qualified for unestablished equivalence,
+one short Model assessments and review context section, compact provenance appendix.
+Historical operational logs/reviews remain complete external companions, not repeated
+throughout mathematical exposition. Do not inherit223C scores or imply current
+assessment. Any new exact PDF requires its own first declared numerical review.
+
+Publication223C PDF/report immutable. Native publication/copies/catalogue observed;
+readback API403 after server terms changed from2.0/1.8 to2.1/1.9. No new legal assent,
+permission, native receipt or current-version grade may be invented. Prepare and
+review independently while preserving that concrete readback limitation.

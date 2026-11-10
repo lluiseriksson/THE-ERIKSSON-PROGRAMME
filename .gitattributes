@@ -28,3 +28,8 @@ papers/flat-coarse-rank/research/2026-11-10_coexact-partition228.txt -text
 # Exact228selected coexact rank diagnostic source.
 scripts/coexact_partition_rank_diagnostic228.py -text
 papers/flat-coarse-rank/research/coexact-partition228-diagnostics/** -text
+# Preserve frozen226B manuscript and author source manifests.
+papers/flat-coarse-rank/integrated-revision/revision226/** -text
+
+# Exact226 compilation, source audits and visual evidence.
+papers/flat-coarse-rank/evidence/manuscript226/** -text
