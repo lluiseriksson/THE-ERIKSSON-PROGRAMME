@@ -1,0 +1,218 @@
+{
+  "representation": "SHA256 of original raw file bytes, without newline/encoding normalization. New audit outputs UTF-8 without BOM, LF, final newline.",
+  "inputs": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\diagnostic-source-audit\\context.json",
+      "bytes": 1606,
+      "sha256_raw": "8fb47b317278fb55575b5c155b263b04577ed33a51d5ba64f017cead64bff3b4"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\diagnostic-source-audit\\fullreport.txt",
+      "bytes": 11260,
+      "sha256_raw": "48c9efd8f399802b44b5d9db647eee828105231e279ef06a4a53415b918ea257"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\diagnostic-source-audit\\hashes.json",
+      "bytes": 2064,
+      "sha256_raw": "e5e1d6f0ca462c8c77ab5abb9a6103ebec7a97f203f3368fd543714979bcf30b"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\diagnostic-source-audit\\verdict.json",
+      "bytes": 1839,
+      "sha256_raw": "4c6279409651fdb09206ee83624b90a2d75588257a9357909cd0fe90030a6907"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\diagnostic229A-verified.json",
+      "bytes": 12594,
+      "sha256_raw": "4a368d4e2484c27005f39473a3c2f35394cb09d2f04b6ecbf562e7011e4094f7"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\execution-preregistration229A.json",
+      "bytes": 1657,
+      "sha256_raw": "777cdaf6a5494cbe667fa6eb0bb34153fe97951b9853df3091f2d02786b49165"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\readback229A.sh",
+      "bytes": 766,
+      "sha256_raw": "929cfcf9aa269350dd29508f53862205bcab49d70247b81a46375e32f1eb05ff"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\run_diagnostic229A.py",
+      "bytes": 4591,
+      "sha256_raw": "88adee6defd010e8d15469b798313b55b3fcecab916c957db0f9c1c4a5eacc8e"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\run229A.sh",
+      "bytes": 1606,
+      "sha256_raw": "4fb6bcbc273064daafac8b465b15640fd26887cf188b7479180d23df632c0202"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\runtime229A-backend-readback.exit",
+      "bytes": 2,
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\runtime229A-backend-readback.txt",
+      "bytes": 44,
+      "sha256_raw": "dec807c11992d9001acb723d969c49727402fe62c5e6cbd3899944bfdd03c140"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\source-audit\\context.json",
+      "bytes": 1562,
+      "sha256_raw": "7af335114234317d95a08e93443f99eb56c5f722e61b40ee56e3232c640e1eca"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\source-audit\\fullreport.txt",
+      "bytes": 11011,
+      "sha256_raw": "c4462653be053a53837d7bcf0933b5ea5286d739a3e0ce9e0e611dfbbc6de436"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\source-audit\\hashes.json",
+      "bytes": 1487,
+      "sha256_raw": "d3312bba1ec9439ef2d13f2ddd765196c7573a6d3f20e4bff22a9dad860e3d49"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\source-audit\\verdict.json",
+      "bytes": 1625,
+      "sha256_raw": "563cebc2875f914c784d60480bd202ddfcc56702c42fea2549605c17a8502550"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\attempt-a\\allocation229.exit",
+      "bytes": 2,
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\attempt-a\\allocation229.log",
+      "bytes": 70,
+      "sha256_raw": "392c9492fa53b8a65ea0e12af19de420c4ada5686f00edc50b1cd04250f5a0d2"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\attempt-a\\download229.exit",
+      "bytes": 2,
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\attempt-a\\download229.log",
+      "bytes": 158,
+      "sha256_raw": "4444ab33c2ff0712a1113ee31783fb04fd352aebb541f668965a566def42b191"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\attempt-a\\execution229.exit",
+      "bytes": 2,
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\attempt-a\\execution229.log",
+      "bytes": 1088,
+      "sha256_raw": "9426a660cc7d71ebaa7187d5201ba864ad243fe8f626924bf2ff6a75aab5ad57"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\attempt-a\\release229.exit",
+      "bytes": 2,
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\attempt-a\\release229.log",
+      "bytes": 75,
+      "sha256_raw": "f70e37837e28113f63334e77ab3c4fe6089ed5444033e1480dad5ad51d26bf6f"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\attempt-a\\runtime229-open-requested.txt",
+      "bytes": 21,
+      "sha256_raw": "51b5bc7de39300cd2de0b788c8f36d3b73bc43847c3996853352b1ba75363222"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\attempt-a\\runtime229-release-finished.txt",
+      "bytes": 21,
+      "sha256_raw": "e25c5d93b575be5f30a7297b7090a5555ca4299df4794ea49aa63761f7368aa7"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\attempt-a\\tep229-diagnostics.zip",
+      "bytes": 13532,
+      "sha256_raw": "96aa5649a272c1c61b189eceb7faa21eb9a08cf01dae3c60df044c706155d5e9"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\coexact_partition_rank_diagnostic228.py",
+      "bytes": 5819,
+      "sha256_raw": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\MANIFEST.json",
+      "bytes": 1867,
+      "sha256_raw": "004a19421948c0ccfa34d7a96db22a38047036242c44abdac0088278cf3152b7"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\normal.dependency.json",
+      "bytes": 202,
+      "sha256_raw": "3a999cae2883966529f1e3c0c56f26e1cb48ed6e3caaef6c66eaae7b41b52fff"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\normal.exit",
+      "bytes": 2,
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\normal.stderr",
+      "bytes": 0,
+      "sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\normal.stdout",
+      "bytes": 7038,
+      "sha256_raw": "9e73270bf9cfa2c34e8b48df7bfecee354f3f889d8d04077c82cf8e6ce41dd70"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\optimized.dependency.json",
+      "bytes": 202,
+      "sha256_raw": "fca54d6950536f0d0d636780a9ab155c44bb42d9c6144490d06173297ea92ae5"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\optimized.exit",
+      "bytes": 2,
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\optimized.stderr",
+      "bytes": 0,
+      "sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\optimized.stdout",
+      "bytes": 7038,
+      "sha256_raw": "9e73270bf9cfa2c34e8b48df7bfecee354f3f889d8d04077c82cf8e6ce41dd70"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\report.json",
+      "bytes": 1070,
+      "sha256_raw": "baabe2dd4186e83fc15a1c8c58ad81120e07d0926c52f28d0db1aa57fa102d18"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\sharp_coexact_rank_diagnostic229.py",
+      "bytes": 5812,
+      "sha256_raw": "e59ef4b6311407f7f2ec98fe7328fe38de76fb9efb2f52f6814dd6415ab017fb"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_sharp-coexact229\\exact229A\\sharp-coexact229-draft.txt",
+      "bytes": 8529,
+      "sha256_raw": "8b8457bdacc242150492890e6b08503356a6c9328ce787501239528eb303da70"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\diagnostic-execution-audit\\fullreport.txt",
+      "bytes": 9769,
+      "sha256_raw": "7428b808a8262e7819668b5a5363b78ef608e572b2b324539490bfa21f0ec707"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\diagnostic-execution-audit\\verdict.json",
+      "bytes": 1262,
+      "sha256_raw": "e4defd6418e7b66b8cb0b7a7987819b192d2ab6fcb4c366e28255a1a8103b18d"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\diagnostic-execution-audit\\context.json",
+      "bytes": 1309,
+      "sha256_raw": "36bff287b992f3938d969c496078d071a9783267196596550f6014e967d705ba"
+    }
+  ],
+  "self_hash": "Excluded to avoid recursion; final response supplies hashes.json digest."
+}
