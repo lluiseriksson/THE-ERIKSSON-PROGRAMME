@@ -1,0 +1,19 @@
+{
+  "unit": 229,
+  "recorded_at": "2026-11-10T20:01:45.067098+00:00",
+  "statement": "Determine the sharp dimension-only lower bound for actual coexact image rank of a common partition retaining all vector means.",
+  "status": "Analytical candidate derived before this record; separate exact-source audit in progress. No preregistered execution or inherited228verdict.",
+  "hypotheses": "D>=2,g>=1,n>=1 finite periodic equal-sided torus; Rnonempty blocks, commonfullvector means; coexact=im(actualforwardcurl adjoint).",
+  "mechanism": "Identify W intersect Uperp as constants+block-gradient potentials; inject meanzero potential space into scalar blockconstants via forward drift sum_jpartial_j+ and the finite irreducible maximum principle. Candidate rank>=g(D-1)(R-1), coordinatefibre equality.",
+  "falsifier": "Actual closed-field harmonic mode not covered by constants+gradient, drift injection failure, adjoint/conjugacy defect or actual partition below proposed rank.",
+  "abandonment": "Preserve counterexample and abandon defective mechanism if uncorrectable or after3units without substantial progress. No class expansion to evade refutation.",
+  "source_sha": "1af074718e5d122c5ef02d287461750833b44c77",
+  "source_raw_sha256": "8b8457bdacc242150492890e6b08503356a6c9328ce787501239528eb303da70",
+  "independent_theorem_candidate": true,
+  "review_independence": "Not claimed; separate involvedAI source role, not human/blind review.",
+  "scientific_execution": false,
+  "grade": null,
+  "new_paper": false,
+  "hypotheses_eliminated": [],
+  "next_action": "Complete source audit and preserve full objections. Meanwhile finish actual226C AIRR page/timestamp verification and native publication closeout. Group related rank results rather than create a corollary paper."
+}

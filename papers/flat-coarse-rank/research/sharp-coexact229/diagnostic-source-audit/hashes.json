@@ -1,0 +1,52 @@
+{
+  "algorithm": "SHA256",
+  "commit": "ef39a6a2bd60aa58260d63620a47f18a1eb0c856",
+  "captures": [
+    {
+      "file": "capture/sharp_coexact_rank_diagnostic229.py",
+      "git_path": "scripts/sharp_coexact_rank_diagnostic229.py",
+      "bytes": 5812,
+      "sha256": "e59ef4b6311407f7f2ec98fe7328fe38de76fb9efb2f52f6814dd6415ab017fb",
+      "representation": "raw Git blob stdout, no normalization"
+    },
+    {
+      "file": "capture/coexact_partition_rank_diagnostic228.py",
+      "git_path": "scripts/coexact_partition_rank_diagnostic228.py",
+      "bytes": 5819,
+      "sha256": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c",
+      "representation": "raw Git blob stdout, no normalization"
+    }
+  ],
+  "D_main_snapshot": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-229\\sharp_coexact_rank_diagnostic229.py",
+  "D_main_matches_raw_Git": true,
+  "analytical_source_reference": {
+    "commit": "1af074718e5d122c5ef02d287461750833b44c77",
+    "raw_sha256": "8b8457bdacc242150492890e6b08503356a6c9328ce787501239528eb303da70",
+    "scope": "Previously audited analytical theorem; not newdiagnosticexecution"
+  },
+  "capture_method": "Binary git-show stdout BaseStream to WriteAllBytes",
+  "outputs": [
+    {
+      "file": "fullreport.txt",
+      "bytes": 11260,
+      "sha256": "48c9efd8f399802b44b5d9db647eee828105231e279ef06a4a53415b918ea257",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "verdict.json",
+      "bytes": 1839,
+      "sha256": "4c6279409651fdb09206ee83624b90a2d75588257a9357909cd0fe90030a6907",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "context.json",
+      "bytes": 1606,
+      "sha256": "8fb47b317278fb55575b5c155b263b04577ed33a51d5ba64f017cead64bff3b4",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    }
+  ],
+  "self_hash": "Provided separately in final handoff; not recursively embedded."
+}

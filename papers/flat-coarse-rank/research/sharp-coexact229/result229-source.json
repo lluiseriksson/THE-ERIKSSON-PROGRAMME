@@ -1,0 +1,60 @@
+{
+  "unit": 229,
+  "recorded_at": "2026-11-10T20:01:45.067098+00:00",
+  "statement": "Determine the sharp dimension-only lower bound for actual coexact image rank of a common partition retaining all vector means.",
+  "status": "STANDALONE_SHARP_COEXACT_RANK_THEOREM_SOURCE_AUDITED_SELECTED_NEW_GATE_PENDING",
+  "hypotheses": "D>=2,g>=1,n>=1 finite periodic equal-sided torus; Rnonempty blocks, commonfullvector means; coexact=im(actualforwardcurl adjoint).",
+  "mechanism": "Identify W intersect Uperp as constants+block-gradient potentials; inject meanzero potential space into scalar blockconstants via forward drift sum_jpartial_j+ and the finite irreducible maximum principle. Candidate rank>=g(D-1)(R-1), coordinatefibre equality.",
+  "falsifier": "Actual closed-field harmonic mode not covered by constants+gradient, drift injection failure, adjoint/conjugacy defect or actual partition below proposed rank.",
+  "abandonment": "Preserve counterexample and abandon defective mechanism if uncorrectable or after3units without substantial progress. No class expansion to evade refutation.",
+  "source_sha": "1af074718e5d122c5ef02d287461750833b44c77",
+  "source_raw_sha256": "8b8457bdacc242150492890e6b08503356a6c9328ce787501239528eb303da70",
+  "independent_theorem_candidate": true,
+  "review_independence": "Not claimed; separate involvedAI source role, not human/blind review.",
+  "scientific_execution": false,
+  "grade": null,
+  "new_paper": false,
+  "hypotheses_eliminated": [],
+  "next_action": "Audit the separately pinned229diagnostic source before any ownColab execution, then perform bounded21case normal/-O checks with real drift/harmonic/projected-class mutations. Finish226C actual public-page/native release closeout; group rank results. No rescore or PDF change.",
+  "source_audit": {
+    "unit": 229,
+    "commit": "1af074718e5d122c5ef02d287461750833b44c77",
+    "git_path": "papers/flat-coarse-rank/research/2026-11-10_sharp-coexact229.txt",
+    "draft_sha256_raw_bytes": "8b8457bdacc242150492890e6b08503356a6c9328ce787501239528eb303da70",
+    "verdict": "accept_with_limits",
+    "load_bearing_objections": [],
+    "material_scope_findings": [],
+    "editorial_findings": [
+      {
+        "id": "E1",
+        "lines": "94-105",
+        "finding": "Standalone229D>=2versus conditional228matrix-budgetfamilyD>=3 should be explicit in later consolidation.",
+        "effect": "Nonblocking; conditional reuse already invokes228hypotheses."
+      }
+    ],
+    "checks": {
+      "actual_forward_adjoint_signs": "accepted",
+      "finite_Fourier_closed_decomposition": "accepted, including real/conjugate and n1cases",
+      "annihilator_formula": "rank(C|U)=DR-D-dimF exact",
+      "forward_drift_injectivity": "accepted by real finite maximum principle",
+      "target_space": "site-weighted meanzero blockconstants, dimensionR-1",
+      "internal_channels": "literal directsum rank multiplication by g",
+      "sharp_universal_rank": "g(D-1)(R-1), accepted",
+      "fibre_sharpness": "n=Rattains equality for eachR; not per-partition optimality",
+      "conditional228hFconstant": "accepted under228hypotheses",
+      "primary_context": "limited author-source background supported, no priority finding",
+      "old228execution_scope": "no new sharp-bound gate execution claimed"
+    },
+    "scientific_execution": false,
+    "formal_result": false,
+    "numerical_grade": null,
+    "new_paper": false,
+    "original_evidence_untouched": true,
+    "report": "fullreport.txt"
+  },
+  "answer": "rank(C^g|im(d1*)^g)>=g(D-1)(R-1), sharp on coordinate fibres n=R; exact annihilator formula DR-D-dimF and actual potential dimension <=R-1 proved by forward drift maximum principle.",
+  "scope_clarification": "Dated response to229E1: the standalone rank theorem has D>=2. Its conditional fixedL16coefficient-budget paragraph retains ALL228hypotheses, in particular D>=3,m>=4. It supplies no D2matrix-budget theorem. The original audited draft remains unchanged and its UNREVIEWED heading/historical PDF-timeout wording are dated preparation, not current status. The separate primary-reading229.txt records the later successful author-host book passage reading. No grade or prior228execution transfers.\n",
+  "formal_result": false,
+  "numerical_grade": null,
+  "updated_at": "2026-11-10T20:10:42.761320+00:00"
+}

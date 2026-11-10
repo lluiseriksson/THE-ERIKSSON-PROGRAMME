@@ -1,0 +1,33 @@
+{
+  "verdict": "accept_with_limits",
+  "audit": "229A post-execution evidence",
+  "source_commit": "ef39a6a2bd60aa58260d63620a47f18a1eb0c856",
+  "blocking_findings": [],
+  "editorial_findings": [],
+  "archive_sha256_raw": "96aa5649a272c1c61b189eceb7faa21eb9a08cf01dae3c60df044c706155d5e9",
+  "archive_members": 13,
+  "manifest_payloads_verified": 12,
+  "exits": {
+    "optimized": 0,
+    "normal": 0
+  },
+  "stdout_bytes_equal": true,
+  "stdout_sha256_raw": "9e73270bf9cfa2c34e8b48df7bfecee354f3f889d8d04077c82cf8e6ce41dd70",
+  "completed_cases": 21,
+  "all_D2n2_partitions": 15,
+  "rejected_controls": 3,
+  "actual_optimize_flags": [
+    0,
+    1
+  ],
+  "dependency_path_and_hash_verified": true,
+  "recorded_release_supported": true,
+  "limits": [
+    "One recorded runtime with normal and -O modes; no independent clone or algorithm replay.",
+    "Selected 21 cases and three controls only; no full L16 coefficient-budget family or all-size execution.",
+    "No new scientific execution by this auditor, formal proof, novelty/priority claim, numerical grade or PDF assessment.",
+    "Retained logs support historical lifecycle/release; no fresh live backend poll or billed-compute total."
+  ],
+  "numerical_grade": null,
+  "new_execution_by_auditor": false
+}
