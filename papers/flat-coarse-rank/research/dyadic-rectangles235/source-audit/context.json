@@ -1,0 +1,31 @@
+{
+  "role": "Same involved separate-role AI mathematical source auditor",
+  "exposed_identity": "Codex based on GPT-6",
+  "exact_backend": "unknown/not exposed",
+  "reasoning_effort": "unknown/not exposed",
+  "history": "224/225/227/226B-C/228/229/230/231A-B/233/232A-B/234 source/evidence work plus related operational reviews.",
+  "parent_fabricator_and_framing": true,
+  "shared_account_system_context": true,
+  "independence": "not established",
+  "blind": false,
+  "human": false,
+  "no_inbound_during_audit": true,
+  "complete_new_source_read": true,
+  "exact_inputs_captured": [
+    "231B",
+    "233",
+    "234"
+  ],
+  "new_execution": false,
+  "pdf_or_numerical_review_read": false,
+  "source_status_git_mutation": false,
+  "other_chat_automation_access": false,
+  "limits": [
+    "Exact constant231B coupled family only; D>=3,n=2^m,m>=1,g=V.",
+    "Fixed-basis component-adapted rectangular maps; explicit upper shares one cube partition across D spatial components per channel.",
+    "Full-field kernel/projection argument then restriction to actual coexact domain; no coexact preservation of block averages assumed.",
+    "Matching order, not exact optimum or constants; arbitrary-n rectangles and arbitrary profiles remain outside the theorem.",
+    "Finite size/profile-dependent penalty; no efficiency, conditioning, grade, priority, formal or physical result.",
+    "Future grouped consolidation only; frozen232B and its assessment unchanged."
+  ]
+}

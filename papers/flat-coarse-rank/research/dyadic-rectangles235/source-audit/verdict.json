@@ -1,0 +1,26 @@
+{
+  "verdict": "accept_with_limits",
+  "unit": 235,
+  "source_commit": "2d72013205c7cfaf51771a819425d17f4d3b53b4",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-10_dyadic-rectangles235.txt",
+  "source_sha256_raw": "4ccc3829df28810f801204b385360bf361dea484f5b73dfdb5b227d0faefc06f",
+  "blocking_findings": [],
+  "material_scope_findings": [],
+  "editorial_findings": [],
+  "kernel_margin_full_fields": "2c",
+  "allocation": "k_ell=3g ell^2/n^2, disjoint; total=g-g/n^2",
+  "restricted_rank_upper": "[3D/(1-2^(2-D))]n^(2D-2)",
+  "restricted_rank_lower": "[(D-1)/(4(1+8D))]n^(2D-2)",
+  "result": "Minimum actual component-adapted rectangular rank Theta_D(n^(2D-2)) for this dyadic subfamily",
+  "limits": [
+    "Exact constant231B coupled family only; D>=3,n=2^m,m>=1,g=V.",
+    "Fixed-basis component-adapted rectangular maps; explicit upper shares one cube partition across D spatial components per channel.",
+    "Full-field kernel/projection argument then restriction to actual coexact domain; no coexact preservation of block averages assumed.",
+    "Matching order, not exact optimum or constants; arbitrary-n rectangles and arbitrary profiles remain outside the theorem.",
+    "Finite size/profile-dependent penalty; no efficiency, conditioning, grade, priority, formal or physical result.",
+    "Future grouped consolidation only; frozen232B and its assessment unchanged."
+  ],
+  "new_execution": false,
+  "numerical_grade": null,
+  "originals_unchanged": true
+}

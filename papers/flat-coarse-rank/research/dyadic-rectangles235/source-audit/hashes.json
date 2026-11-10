@@ -1,0 +1,49 @@
+{
+  "representation": "SHA256 of exact raw bytes. Binary git-show captures, no normalization. Report outputs UTF8 no BOM LF final newline.",
+  "git_referents": {
+    "input231B": "dbaca106b4def20c1b9d674ec34cfb9a56794cd7",
+    "candidate235": "2d72013205c7cfaf51771a819425d17f4d3b53b4",
+    "input233": "a1da5307a7b91e0d57f110c624eb3f9eefc03919",
+    "input234": "4a171fda109903d0c3cf993612dd00eb70d600f6"
+  },
+  "captures": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-235\\source-audit\\capture\\channel-separable231B-git.txt",
+      "bytes": 7789,
+      "sha256_raw": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-235\\source-audit\\capture\\dyadic-rectangles235-git.txt",
+      "bytes": 8851,
+      "sha256_raw": "4ccc3829df28810f801204b385360bf361dea484f5b73dfdb5b227d0faefc06f"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-235\\source-audit\\capture\\hierarchy234-git.txt",
+      "bytes": 5755,
+      "sha256_raw": "bcc64b5415300a4ca2ad8a389d0bed1e0848aad0ecd8a3d0f15c716f0b210a15"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-235\\source-audit\\capture\\sharp-separable233-git.txt",
+      "bytes": 6864,
+      "sha256_raw": "e244cff296a5fe3b833162a0a759a3a6a1d2cde4eef469261a91653b4af699da"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-235\\source-audit\\fullreport.txt",
+      "bytes": 12158,
+      "sha256_raw": "90cc6d7d99909587e9ae8a039ab5cbb5b34b610ef44285003a08ae28f7289fbf"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-235\\source-audit\\verdict.json",
+      "bytes": 1481,
+      "sha256_raw": "f7bc7cb178d4d43dad3229e3c30260c39532a9f4d5a2726942de645f99dd9140"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-235\\source-audit\\context.json",
+      "bytes": 1465,
+      "sha256_raw": "e1cee2fa930810374b41dd8c6ddbe6a4b1f90354827ab32668dbfcf874b2a82b"
+    }
+  ],
+  "self_hash": "Excluded to avoid recursion; supplied in final response."
+}
