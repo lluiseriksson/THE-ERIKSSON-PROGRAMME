@@ -1,0 +1,66 @@
+{
+  "source_commit": "a1da5307a7b91e0d57f110c624eb3f9eefc03919",
+  "raw_files": [
+    {
+      "file": "question233.json",
+      "bytes": 1571,
+      "sha256": "831d3247846590b5b72ef53b6efe57cc4416d48becfe5c33780b5ab4e4bc56ab"
+    },
+    {
+      "file": "result233-verified.json",
+      "bytes": 4515,
+      "sha256": "dfa854da3a6abc3c3ca62987bbba7d44ca068aaa0cf90b4b7fa825103b555b0d"
+    },
+    {
+      "file": "source-audit/capture/231b-source-audit/context.json",
+      "bytes": 1447,
+      "sha256": "cebeccf4918be269d882f20c9741df3a9cc96a6a69b5e4ea7510966e416a4dd7"
+    },
+    {
+      "file": "source-audit/capture/231b-source-audit/fullreport.txt",
+      "bytes": 12984,
+      "sha256": "45d3ec9141036e57b8edf80b96cec79240bd8bc3d8340913a0e530b27c24fe7a"
+    },
+    {
+      "file": "source-audit/capture/231b-source-audit/hashes.json",
+      "bytes": 3391,
+      "sha256": "a95419be9c2ba80a1b4006c126344e5366fd1eee4453e3fddce04d1ed96513f3"
+    },
+    {
+      "file": "source-audit/capture/231b-source-audit/verdict.json",
+      "bytes": 1352,
+      "sha256": "d05e35b0ea62fe6563355d2d57819e82c171e62819e9c3cfa2affba9239b4f0a"
+    },
+    {
+      "file": "source-audit/capture/channel-separable231B-git.txt",
+      "bytes": 7789,
+      "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+    },
+    {
+      "file": "source-audit/capture/sharp-separable233-git.txt",
+      "bytes": 6864,
+      "sha256": "e244cff296a5fe3b833162a0a759a3a6a1d2cde4eef469261a91653b4af699da"
+    },
+    {
+      "file": "source-audit/context.json",
+      "bytes": 1407,
+      "sha256": "3eececc037b27f4201380740fca328dcc3802e356da16b6f5f0fe9bfe2bf3f11"
+    },
+    {
+      "file": "source-audit/fullreport.txt",
+      "bytes": 12890,
+      "sha256": "a3eb256b962d65914dcf1ba1d216e4371e38cbd0227fb32c7ec016e0acccb671"
+    },
+    {
+      "file": "source-audit/hashes.json",
+      "bytes": 4511,
+      "sha256": "adbf22df203991cd664bfb0069e80bf8c9279f577efa8710e9f60d5762196578"
+    },
+    {
+      "file": "source-audit/verdict.json",
+      "bytes": 1561,
+      "sha256": "3a67a6c382e55e176d06fc9af6e54785eed9b89e1d4d35515c937ef00f84a733"
+    }
+  ],
+  "no_new_scientific_execution_or_grade": true
+}

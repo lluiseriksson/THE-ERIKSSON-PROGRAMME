@@ -1,0 +1,48 @@
+{
+  "unit": 231,
+  "recorded_at": "2026-11-10T20:51:20.186098+00:00",
+  "statement": "Does additive actual coexact restoring rank fail for all fixed-basis channel-separable linear maps on the explicit positive coupled family in every D>=3?",
+  "status": "Substantive231B improvement to D>=3 prepared; separate exact source audit running.",
+  "hypotheses": "D>=3,n>=2,g=V=n^D,h=Dg; actual coexact domain; H=c n²,a=c/(16D); chosen-basis internal separability retained.",
+  "mechanism": "Same actual-domain trace bound with corrected smaller strong coefficient: fullF<=D²(1+alpha_D)V and rank>=g(D-1)(V-1)/[2(1+8D n²)]. Mixed escape rank(D-1)(V-1).",
+  "falsifier": "Wrong coexact dimension or projection, lost strong eigenvalue multiplicity, energy or normalization error, failed mixed escape.",
+  "abandonment": "Retain any refutation; abandon uncorrectable mechanism or change route after three units without substantive mathematical progress.",
+  "source_sha": "dbaca106b4def20c1b9d674ec34cfb9a56794cd7",
+  "source_raw_sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f",
+  "scientific_execution": false,
+  "formal_verification": false,
+  "review_independence": "Not claimed; separate involved AI source audit.",
+  "grade": null,
+  "new_paper": false,
+  "hypotheses_eliminated": [],
+  "next_action": "Complete exact231B source audit without inheriting231A verdict; preserve both complete reports, bibliography boundary and source hashes. Integrate229/230 with protected checks. AIRR deployment remains blocked; no native mark-published without exact public proof.",
+  "accepted_predecessor": {
+    "source": "23fbb3188defaaa7c8106f9a6cbec1e3f4cadc58",
+    "raw_sha256": "7e198215808b91d0bb7d5bf79068187014d5dcf5532a85eb0f6496b087439684",
+    "verdict": {
+      "verdict": "accept_with_limits",
+      "unit": 231,
+      "source_commit": "23fbb3188defaaa7c8106f9a6cbec1e3f4cadc58",
+      "source_path": "papers/flat-coarse-rank/research/2026-11-10_channel-separable231.txt",
+      "source_sha256_raw": "7e198215808b91d0bb7d5bf79068187014d5dcf5532a85eb0f6496b087439684",
+      "blocking_findings": [],
+      "material_scope_findings": [],
+      "editorial_findings": [],
+      "necessary_rank": "g(D-1)(V-1)/[2(1+8D n^4)]",
+      "full_budget": "D^2 V[1+(g-1)min(1,alpha_D n^(-2D))]",
+      "budget_upper": "D^2 V+D^2 alpha_D",
+      "mixed_escape_rank": "d_0=(D-1)(V-1)",
+      "limits": [
+        "Fixed specified internal basis and direct-sum channel-separable linear observations are essential.",
+        "D>=5,n>=2,g=V=n^D; no D4 or fixed-g obstruction follows.",
+        "Necessary super-additive rank bound only; not a sharp rank or matching hF result.",
+        "Same profile admits cross-internal mixed observation of rank d_0 with penalty c.",
+        "No scientific execution, formal certificate, numerical grade, PDF assessment, independent reproduction or priority finding."
+      ],
+      "new_execution": false,
+      "numerical_grade": null,
+      "originals_unchanged": true
+    },
+    "limits": "D>=5 with H=cn4 only; complete original report preserved. No inherited acceptance for successor."
+  }
+}

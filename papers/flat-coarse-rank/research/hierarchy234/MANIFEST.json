@@ -1,0 +1,52 @@
+{
+  "source": "4a171fda109903d0c3cf993612dd00eb70d600f6",
+  "files": [
+    {
+      "file": "question234.json",
+      "bytes": 1733,
+      "sha256_raw": "2f199e6f327af096a5b9033cec40c06c9baf42d587d0a726467111951b45530b"
+    },
+    {
+      "file": "result234-verified.json",
+      "bytes": 4196,
+      "sha256_raw": "61a0776f51ef36bcbdda609098b1fbd860b64899444ea855be7ed2e1e14fa84c"
+    },
+    {
+      "file": "source-audit/capture/channel-separable231B-git.txt",
+      "bytes": 7789,
+      "sha256_raw": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+    },
+    {
+      "file": "source-audit/capture/hierarchy234-git.txt",
+      "bytes": 5755,
+      "sha256_raw": "bcc64b5415300a4ca2ad8a389d0bed1e0848aad0ecd8a3d0f15c716f0b210a15"
+    },
+    {
+      "file": "source-audit/capture/sharp-separable233-git.txt",
+      "bytes": 6864,
+      "sha256_raw": "e244cff296a5fe3b833162a0a759a3a6a1d2cde4eef469261a91653b4af699da"
+    },
+    {
+      "file": "source-audit/context.json",
+      "bytes": 1402,
+      "sha256_raw": "766ac4f3673af614ba7dc09e49c02d9f13ef2517e736ec2fc4eb625827995f4b"
+    },
+    {
+      "file": "source-audit/fullreport.txt",
+      "bytes": 10011,
+      "sha256_raw": "44ae3056ed4a52c2e8bd2f52defcebb2fb66bea2d5c124b41c1e7eb5428af63c"
+    },
+    {
+      "file": "source-audit/hashes.json",
+      "bytes": 1889,
+      "sha256_raw": "da829d541682e2818573f95ca597b541ea9315a13d8f96ffebdfd7559bd167e0"
+    },
+    {
+      "file": "source-audit/verdict.json",
+      "bytes": 1278,
+      "sha256_raw": "9c93bdf3599ec17b6e006bbbcaf8a573bdc8efb5bb8d54e4fe1fd46e89cb899b"
+    }
+  ],
+  "not_in_frozen232B": true,
+  "grade": null
+}

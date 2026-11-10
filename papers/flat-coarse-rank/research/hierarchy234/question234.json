@@ -1,0 +1,19 @@
+{
+  "unit": 234,
+  "recorded_at": "2026-11-10T21:48:27.857611+00:00",
+  "statement": "On the exact231B coupled family, are the unrestricted and common-full-vector restoring rank minima exactly d0 and g*d0, completing233 intermediate order on one same profile?",
+  "status": "Analytical consolidation candidate derived before record; separate exact source audit in progress.",
+  "hypotheses": "D>=3,n>=2,g=V=n^D,actual U0=im(d1*) and U=U0^g; positive constant231Bprofile; finiteLINEAR observations, arbitraryPhi(0)=0; commonmap means SAME partition and normalizedrows in every internalchannel.",
+  "mechanism": "All weak-polarizationTU0 has energy<=c/4: Cmustinject thisd0dimensionalspace. Mixedprojectionattainsd0. CommonC0 repeatedg times mustinjectU0, so actualrank=g*d0; singletoncommonrowsattain.",
+  "falsifier": "Noninjective lowspace restoration, incorrect commonmap directsum/volume, invalid mixed upper or changed class/domain.",
+  "abandonment": "Retain refutations; abandon invalid mechanism if uncorrectable or after3unitswithoutsubstantialprogress. No separate tiny paper or silently changed rowclass.",
+  "source_sha": "4a171fda109903d0c3cf993612dd00eb70d600f6",
+  "source_raw_sha256": "bcc64b5415300a4ca2ad8a389d0bed1e0848aad0ecd8a3d0f15c716f0b210a15",
+  "scientific_execution": false,
+  "hypotheses_eliminated": [],
+  "new_paper": false,
+  "grade": null,
+  "frozen232B_unchanged": true,
+  "not_in_232B_assessment": true,
+  "next_action": "Finish exact234 source audit as FUTURE grouped consolidation, no grade inheritance. In parallel complete first exact232B numerical review and assess its actual objections before preparing any publication. Preserve external v14Pages block and native queue."
+}

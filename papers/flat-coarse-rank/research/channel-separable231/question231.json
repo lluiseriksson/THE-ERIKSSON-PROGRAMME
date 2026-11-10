@@ -1,0 +1,19 @@
+{
+  "unit": 231,
+  "recorded_at": "2026-11-10T20:51:20.186098+00:00",
+  "statement": "Does an O_D(h+F) true coexact rank restoring bound fail for arbitrary fixed-basis internally channel-separable linear maps on positive constant coupled profiles in D>=5?",
+  "status": "Analytical candidate derived before record; separate exact source audit in progress.",
+  "hypotheses": "D>=5,n>=2,g=n^D,h=Dg; actual forward-curl-adjoint coexact domain; constant positive internal matrix with one weak uniform polarization; observation rows may mix sites/spatial components within one internal channel, but not different internal channels.",
+  "mechanism": "Actual-domain row projections and weak-polarization trace average force rank >=g(D-1)(V-1)/[2(1+8D n^4)] although h+F=O_D(V). Mixed observations restore with rank (D-1)(V-1), delimiting chosen-basis separability.",
+  "falsifier": "Wrong coexact dimension or projection, lost strong eigenvalue multiplicity, energy or normalization error, failed mixed escape.",
+  "abandonment": "Retain any refutation; abandon uncorrectable mechanism or change route after three units without substantive mathematical progress.",
+  "source_sha": "23fbb3188defaaa7c8106f9a6cbec1e3f4cadc58",
+  "source_raw_sha256": "7e198215808b91d0bb7d5bf79068187014d5dcf5532a85eb0f6496b087439684",
+  "scientific_execution": false,
+  "formal_verification": false,
+  "review_independence": "Not claimed; separate involved AI source audit.",
+  "grade": null,
+  "new_paper": false,
+  "hypotheses_eliminated": [],
+  "next_action": "Finish exact231 source audit and primary-source novelty boundary. Preserve230 full audit and integrate229/230 through protected small PRs. Complete226C native publication only after actual AIRR exact-page verification."
+}

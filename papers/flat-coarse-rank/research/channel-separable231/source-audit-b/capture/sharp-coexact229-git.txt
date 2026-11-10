@@ -1,0 +1,126 @@
+UNIT229: SHARP UNIVERSAL COMMON-PARTITION RANK ON THE ACTUAL COEXACT DOMAIN
+UNREVIEWED SOURCE CANDIDATE. No execution, formal certificate, numerical grade or new paper.
+
+Question and chronology
+After completing228's source and selected-diagnostic audits, can its quotient-graph
+loss1/D be removed by identifying the annihilator of actual coexact observations?
+The candidate below was derived analytically before this record was written. This
+is not a preregistered numerical success and no earlier228 verdict transfers to it.
+One active question: the sharp dimension-only rank lower bound for a common
+partition retaining every vector-component mean on a finite periodic coexact domain.
+Hypotheses: D>=2,g>=1, equal periodic n>=1, nonempty partition blocks, all components.
+Mechanism: the forward-drift maximum principle injects admissible scalar potentials
+into scalar block constants of global mean zero. Falsifier: a closed non-gradient
+mode beyond constants, failure of that injection, or a partition rank below the bound.
+Abandonment: preserve any actual counterexample; abandon this mechanism if an
+uncorrectable annihilator/maximum-principle defect remains, or after3units without
+substantial progress. Do not widen the observation class to evade a counterexample.
+
+1. Definitions (one internal channel)
+T=(Z/nZ)^D, V=n^D. Real scalar functions and real vector fields carry their usual
+finite Euclidean inner products; multiplying all by the common volume factor
+changes no rank or adjoint-image statement. Let partial_j^+ f(x)=f(x+e_j)-f(x).
+The scalar gradient Gf has components partial_j^+f. Define the forward curl
+(d_1u)_{ij}=partial_i^+u_j-partial_j^+u_i for i<j. The actual coexact domain is
+U=im(d_1^*), not the output codomain, and therefore U^perp=ker(d_1).
+With antisymmetric B_{ij}, B_{ji}=-B_{ij}, d_1^*B has component
+sum_j partial_j^-B_{ij}, where partial_j^-f(x)=f(x)-f(x-e_j). This is the actual
+codifferential convention used in228. The two signs follow from
+(partial_j^+)^*=-partial_j^-; no central difference or continuum curl is substituted.
+
+For a partition P={B_1,...,B_R} of T into nonempty subsets, let S be the real
+R-dimensional scalar block-constant space and W=S^D the DR-dimensional vector
+block-constant space. Observe all components by
+(Cu)_{a,i}=|B_a|^(-1/2) sum_{x in B_a}u_i(x).
+The adjoint range of C is W, since each nonzero block factor is invertible.
+For g channels use U^g and the direct sum C^g, with h=Dg real components.
+
+THEOREM. For every such partition,
+  rank(C^g|U^g) >= g(D-1)(R-1).
+This lower bound is sharp as a dimension-only bound: coordinate-fibre partitions
+with n=R attain equality for every R>=1. For D=1 the analogous bound is0 and
+the coexact domain is0; D>=2 is the nontrivial case.
+
+2. Complete finite closed-field decomposition
+We show ker(d_1)=constant vector fields direct-sum im(G).
+Complexify and use finite Fourier characters exp(2*pi*i*k.x/n). Write
+q_j(k)=exp(2*pi*i*k_j/n)-1. At frequency k the closed-field equations are
+q_i uhat_j-q_j uhat_i=0. If k!=0, some q_l!=0; thus uhat_j=q_j(uhat_l/q_l)
+for every j, including indices q_j=0. Equivalently uhat=q*phihat, with
+phihat=(sum_j conjugate(q_j)*uhat_j)/(sum_j|q_j|^2).
+Set phihat(0)=0. For a real field the displayed formula has the correct conjugate
+symmetry, so it defines a real scalar phi of mean zero. Its gradient equals every
+nonzero-frequency mode of u. The zero-frequency vector is constant. Conversely
+constants and gradients have zero forward curl; their intersection is0 because a
+periodic gradient has global component mean zero, and G has only constant kernel.
+This also handles n=1: there are no nonzero modes, U=0 and a nonempty partition has R=1.
+No imported topological or physical identification is required for this finite claim.
+
+3. Annihilator identity and forward drift
+Let F={phi:T->R : sum_x phi=0 and Gphi in W}. Since constants lie in W and every
+periodic gradient has zero component means, Section2 gives the direct-sum identity
+W intersect U^perp = constant vectors direct-sum G(F).
+G is injective on mean-zero scalars, hence this intersection has dimension D+dim F.
+Finite adjoint rank-nullity, applied to the projection of C^* onto U, gives exactly
+  rank(C|U)=dim W-dim(W intersect U^perp)=DR-D-dim F.               (1)
+This is a restricted-image rank, not an assumption that all DR outputs are independent.
+
+Define the scalar forward drift L=sum_j partial_j^+. Its kernel on real scalar
+functions consists only of constants. Indeed, at a point of global maximum, each
+forward increment is nonpositive. If Lphi=0, all these increments vanish. Therefore
+each forward coordinate neighbour also attains the maximum. Iterating the forward
+steps reaches every point of the finite torus, including via periodic wrap, so phi
+is constant. For n=1 this assertion is immediate. Thus L is injective on mean-zero
+scalars. Neither reversibility nor aperiodicity of the corresponding directed walk
+is needed; reachability and the finite maximum principle suffice.
+
+If phi belongs to F, every gradient component is in S, so Lphi is in S. Also its
+global sum vanishes by telescoping periodic differences. Consequently
+  L:F -> S intersect 1^perp
+is injective. The target has dimension R-1, because S has dimension R and the global
+sum is a nonzero functional on S. Hence dim F<=R-1. Substituting in (1) proves
+rank(C|U)>=(D-1)(R-1). Independent internal channels form literal direct sums of
+input spaces and output rows; ranks add, proving the stated g-channel result.
+
+4. Sharpness
+Take n=R and let B_a={x:x_1=a}, a=0,...,n-1. Every scalar phi(x)=f(x_1) with
+sum_{a=0}^{n-1}f(a)=0 belongs to F: its first forward derivative is constant on
+each B_a, and the remaining components vanish. These functions form a space of
+dimension n-1=R-1. Section3 bounds dim F by R-1, hence equality holds in (1):
+rank(C|U)=(D-1)(R-1), and rank(C^g|U^g)=g(D-1)(R-1).
+For R=1 the claim is the zero-mean identity and both sides are0. No rectangle
+connectivity, coefficient hypotheses or assumed hR row rank enter the general bound.
+
+5. Relation to228, conditional reuse of its separately audited construction
+Section3 strengthens228's g(R-1)/D rank lemma without changing its coexact domain
+or full-vector common-partition class. The weaker original proof remains valid.
+For the specific fixedL16family already source-audited in228, coercivity on its
+actual m-dimensional lowspace still forces R>=ceil(m/2). For m>=4 the new theorem
+therefore gives rank>=g(D-1)m/4=h(D-1)m/(4D). Its separately derived budget bound
+F_c(A)<=kappa_D*m+1<=(kappa_D+1)m then implies
+  rank >= h(D-1)F_c(A)/(4D(kappa_D+1)).
+Only this paragraph depends on228's coefficient/bump construction. The sharp rank
+theorem and its proof are standalone. This draft does not execute that family,
+rerun228's selected cases or pretend their preregistered gate tested this new bound.
+The old selected outputs are observationally compatible, not a new numerical verdict.
+
+6. Sources, originality and limits
+The finite maximum-principle mechanism is classical, as is discrete Hodge/Fourier
+decomposition. Primary author source for Markov-chain background: Levin and Peres,
+Markov Chains and Mixing Times, second edition, author index
+https://pages.uoregon.edu/dlevin/MARKOV/ . Its linked mcmt2e.pdf timed out in the
+current browser lookup; no full-book inspection or exact-new-bound absence is claimed.
+Primary related discrete-torus source inspected at its abstract and forward-difference
+definitions: V.Sushch, arXiv:2202.03923v1, Sections2-3,
+https://arxiv.org/html/2202.03923v1 . It treats a two-dimensional discrete Hodge model;
+no equivalence of all conventions or attribution of this partition-rank statement
+to that paper is asserted. Section2 above proves the needed finite convention directly.
+Limited primary comparison establishes classical mechanisms, not historical priority
+or non-equivalence to an existing partition-rank theorem. The candidate contribution
+is an exact annihilator formula and sharp universal bound within this programme.
+No efficient partition algorithm, coefficient-producing theorem, optimal coercivity
+penalty, broader projected/component-adapted observation obstruction, formal Lean
+verification, independent reproduction or physical/continuum result is asserted.
+Group this with227/228 and the related rectangular programme; do not create a paper
+for this constant improvement alone. The assessed226C PDF, reports and score remain
+unchanged and do not cover this source. PR29 remains20/41,TermSource0.

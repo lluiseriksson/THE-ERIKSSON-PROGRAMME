@@ -1,0 +1,68 @@
+{
+  "unit": 233,
+  "recorded_at": "2026-11-10T20:59:02.384846+00:00",
+  "statement": "Is the necessary Omega_D(n^(2D-2)) true channel-separable restoring rank for the exact231B coupled family attained up to D-only constants?",
+  "status": "MATCHING_TRUE_CHANNEL_SEPARABLE_COEXACT_RANK_ORDER_SOURCE_AUDITED",
+  "hypotheses": "D>=3,n>=2,g=V=n^D,positive constant231B coefficient family; actual forward coexact U; internally channel-separable linear rows may be nonlocal across spatial modes.",
+  "mechanism": "Real coexact Laplacian modes; observe ceil(g(2c/lambda-a)/(H-a)) channels per mode with truncation. Kernel margin2c permits explicit finite penalty. Finite Green trace bound counts rows.",
+  "falsifier": "Wrong mode multiplicity/real rank, failed internal principal-block gap, missing volume factor, insufficient strict kernel margin or divergent Green count.",
+  "abandonment": "Preserve counterexample and abandon uncorrectable mechanism or change route after3units without substantive progress.",
+  "source_sha": "a1da5307a7b91e0d57f110c624eb3f9eefc03919",
+  "source_raw_sha256": "e244cff296a5fe3b833162a0a759a3a6a1d2cde4eef469261a91653b4af699da",
+  "scientific_execution": false,
+  "grade": null,
+  "new_paper": false,
+  "hypotheses_eliminated": [],
+  "next_action": "Consolidate233 with229/230/231B into full manuscript232; distinguish Green constant notation, audit entire new source, produce/render exact PDF on own Colab and obtain genuine first exact-PDF assessment before publication. Preserve226C old PDF/grade and existing native receipt; its Pages publication remains blocked.",
+  "updated_at": "2026-11-10T21:02:11.052751+00:00",
+  "source_audit": {
+    "verdict": "accept_with_limits",
+    "unit": 233,
+    "source_commit": "a1da5307a7b91e0d57f110c624eb3f9eefc03919",
+    "source_path": "papers/flat-coarse-rank/research/2026-11-10_sharp-separable233.txt",
+    "source_sha256_raw": "e244cff296a5fe3b833162a0a759a3a6a1d2cde4eef469261a91653b4af699da",
+    "blocking_findings": [],
+    "material_scope_findings": [],
+    "editorial_findings": [
+      {
+        "id": "E1",
+        "severity": "nonblocking consolidation notation",
+        "finding": "G_D denotes the Green-trace constant here but a different weighted-gap constant in226C; standalone proof is explicit, distinguish symbols on consolidation."
+      }
+    ],
+    "upper_rank": "(D-1)(1+4G_D)n^(2D-2), G_D=D3^(D-1)/8",
+    "lower_rank": "[(D-1)/(4(1+8D))]n^(2D-2)",
+    "kernel_margin": "2c",
+    "finite_penalty": "K=c+(4DH)^2/c",
+    "result": "r_min=Theta_D(n^(2D-2))",
+    "inherited_acceptance": false,
+    "limits": [
+      "Exact231B coupled family only: fixed D>=3,n>=2,c>0,g=V=n^D.",
+      "Fixed-basis channel-separable finite linear maps; spatially nonlocal mode rows are allowed.",
+      "Theta_D rank order, not exact constant/minimal-rank formula, general-profile upper theorem or efficient algorithm.",
+      "Finite size/profile-dependent penalty; no uniform optimal penalty.",
+      "Mixed cross-internal map still has cheaper rank d_0; no all-linear or basis-free obstruction.",
+      "No scientific execution, formal certification, priority finding, physical result, grade or PDF assessment."
+    ],
+    "new_execution": false,
+    "numerical_grade": null,
+    "originals_unchanged": true
+  },
+  "results": [
+    "Exact231B family has minimum restoring restricted rank Theta_D(n^(2D-2)) in the specified fixed-basis internally channel-separable class.",
+    "Constructed real-mode rows have kernel margin2c and finite penalty K=c+(4DH)^2/c; row count via complete finite Green trace.",
+    "Mixed internal observations still achieve O_D(V), so no arbitrary-map/basis-free obstruction."
+  ],
+  "tests": [
+    "Separate complete exact-source audit; actual raw captures/report hashes checked. No execution/formal proof."
+  ],
+  "refutations": [],
+  "limitations": [
+    "Exact231B coupled family only: fixed D>=3,n>=2,c>0,g=V=n^D.",
+    "Fixed-basis channel-separable finite linear maps; spatially nonlocal mode rows are allowed.",
+    "Theta_D rank order, not exact constant/minimal-rank formula, general-profile upper theorem or efficient algorithm.",
+    "Finite size/profile-dependent penalty; no uniform optimal penalty.",
+    "Mixed cross-internal map still has cheaper rank d_0; no all-linear or basis-free obstruction.",
+    "No scientific execution, formal certification, priority finding, physical result, grade or PDF assessment."
+  ]
+}
