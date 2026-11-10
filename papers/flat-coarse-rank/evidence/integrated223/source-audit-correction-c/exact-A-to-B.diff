@@ -1,0 +1,80 @@
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex b/papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex
+index 89821a36..6cf10f10 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex
+@@ -277,7 +277,9 @@ interface discard excluded by the earlier canonical example.
+ \subsection{Attribution, audit and executable evidence}
+ Brudnyi~\cite{brudnyi221}, Sections~1--2 and Appendices~I--II, and its cited
+ predecessors already develop dyadic-ring approximation and related tree
+-mechanisms. Remark~I.2 includes boundary-touching inner cubes. Neither
++mechanisms. Cohen--DeVore--Petrushev--Xu~\cite{cdpx223} give a classical
++bivariate BV approximation setting, also with dyadic rings; that
++function-approximation problem is not asserted to originate here. Remark~I.2 includes boundary-touching inner cubes. Neither
+ ring decomposition, BV/Sobolev machinery, boundary touching nor heavy-tree
+ compression is asserted to be a new general principle here. This section
+ supplies the explicit finite integer coefficient-only original-energy
+@@ -286,7 +288,10 @@ an atomic coefficient mass is handled by terminal singletons, rather than
+ silently importing continuum absolute continuity.
+ 
+ The original analytical draft is at programme source
+-\texttt{c993dff04868d01d37b6ec87e0417da3c91a1330}; its raw-byte SHA-256 is
++\begin{center}\scriptsize
++\texttt{c993dff04868d01d37b6ec87e0417da3c91a1330}.
++\end{center}
++Its raw-byte SHA-256 is
+ \begin{center}\scriptsize
+ \texttt{f2cd7941ccc8e9fa30e3a8742d5e814b0e4bcdc83ded16426b48b78c7deac057}.
+ \end{center}
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex b/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex
+index d453bb9b..43cc0186 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex
+@@ -1939,16 +1939,16 @@ any verification status. Earlier exact PDFs and assessments remain preserved.
+ 
+ \section{Model assessments and review context}\label{sec:model-context}
+ This is a changed exact-artifact successor of the public version12 working paper.
+-The exact predecessor is the95-page PDF with SHA-256
++The exact predecessor is the 95-page PDF with SHA-256
+ \begin{center}\scriptsize
+ \texttt{78bcb10ac82b7b920281542a311a28bf70132c73a4a1dbacf90c62b62eb9bf83}.
+ \end{center}
+-Its first numerical AI review gave4.00/10 overall and criterion stars4/4/3/3/3,
++Its first numerical AI review gave 4.00/10 overall and criterion stars 4/4/3/3/3,
+ with a minor-revision recommendation. Its complete original report and factual
+ model/context limitations remain at
+ \href{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v12/\#model-assessments}{the immutable version12 assessment record}.
+ The page92 Brudnyi wording was publicly qualified there; this new manuscript
+-explicitly includes RemarkI.2 and its boundary-touching holes. The original
++explicitly includes Remark~I.2 and its boundary-touching holes. The original
+ assessed version12 PDF and score are unchanged. Older reports remain attached
+ to their exact artifacts; no grade, resolved-objection status or independence
+ claim transfers to this changed PDF.
+@@ -1956,7 +1956,7 @@ claim transfers to this changed PDF.
+ The new construction222 received a complete analytical source audit returning
+ \emph{accept with limits}, with no load-bearing error found and three minor
+ write-up clarifications addressed here. This is an involved AI source review
+-with retained198--221 history and shared account/filesystem/provider, not a
++with retained 198--221 history and shared account/filesystem/provider, not a
+ fresh blind review, verified independent audit, numerical PDF grade or human
+ peer review. Exposed identity is OpenAI Codex, described as based on GPT-6;
+ the exact served backend and reasoning effort are unknown. The complete
+@@ -1982,7 +1982,7 @@ comparison is limited. Earlier separately scoped formal endpoints do not
+ formally certify the new proof. The finite scalar-gradient rectangular
+ construction is now supplied in Section~\ref{sec:balanced223}; variable-weight
+ curl replacement, interacting/covariant producers and the physical continuum
+-problem remain separate and unproved. PR29 stays20/41 with TermSource0.
++problem remain separate and unproved. PR29 stays 20/41 with TermSource~0.
+ 
+ \section{The finite rectangular question and its constructive answer}
+ For fixed $D\geq3,c>0,N_c\geq2,M$, do all actual scalar profiles
+@@ -2654,6 +2654,10 @@ acceptance or new verified public release.
+ \input{balanced-rings223.tex}
+ 
+ \begin{thebibliography}{99}
++\bibitem{cdpx223} A. Cohen, R. DeVore, P. Petrushev and H. Xu,
++\emph{Nonlinear approximation and the space $BV(\mathbb R^2)$},
++American Journal of Mathematics 121 (1999), 587--628.
++\url{https://people.math.sc.edu/pencho/Publications/BV9707.pdf}.
+ \bibitem{ads221} S. Andres, J.-D. Deuschel and M. Slowik,
+ \emph{Invariance principle for the random conductance model in a degenerate ergodic environment},
+ Annals of Probability 43(4) (2015), 1866--1891; arXiv:1306.2521v5 (2019),

@@ -1,0 +1,12 @@
+{
+  "source": "a28e0f24523b4bc2ec33b1abff104935a0a3b9a5",
+  "archive_sha256": "a5ba30c9157de628c999f3c79d6567fc0d08ec17e5361f0e02a21a06ee0ea5f9",
+  "manifest_members": 166,
+  "bad": [],
+  "status": "RENDERED_PENDING_VISUAL_REVIEW",
+  "warnings": [],
+  "pages": 100,
+  "pdf_sha256": "ddf7bd858f1d1c1a135758ce76146e7d7fa8bb7a7fbc447f94e45dbeec5ec9db",
+  "numerical_grade": null,
+  "not_current_candidate": "Superseded before numerical review to address source consistencyR1-R5"
+}

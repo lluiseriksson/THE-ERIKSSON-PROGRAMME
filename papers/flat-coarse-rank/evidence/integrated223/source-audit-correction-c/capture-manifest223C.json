@@ -1,0 +1,292 @@
+{
+  "A_commit": "1e30fc310acf1361ccc532f2f186b38e4f6634e2",
+  "B_commit": "a28e0f24523b4bc2ec33b1abff104935a0a3b9a5",
+  "C_commit": "ddd2cf605c1715a03d2e87991e920c0ec760e527",
+  "representation": "Raw Git stdout/source bytes; no normalization",
+  "git_captures": [
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex",
+      "capture": "A/balanced-rings223.tex",
+      "bytes": 15888,
+      "sha256": "715aaf0ac64e0491db0f21ff78b4ade9f5bd12482371bf8bb966d7ccb0c46c82",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex",
+      "capture": "C/balanced-rings223.tex",
+      "bytes": 16119,
+      "sha256": "6877841cde546f8920c39b98a5dfef8af385b1a2d5a4842f95a9dd36985b3dc2",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/boundary-transfer.tex",
+      "capture": "A/boundary-transfer.tex",
+      "bytes": 11918,
+      "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/boundary-transfer.tex",
+      "capture": "C/boundary-transfer.tex",
+      "bytes": 12065,
+      "sha256": "e3d1b9fc6a642c0ac68dfdd3bccda442bfe25ae63e2a8ee713cea12fd5fcd155",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/detour-separation.tex",
+      "capture": "A/detour-separation.tex",
+      "bytes": 8394,
+      "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/detour-separation.tex",
+      "capture": "C/detour-separation.tex",
+      "bytes": 8394,
+      "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex",
+      "capture": "A/flat_critical_integrated.tex",
+      "bytes": 149844,
+      "sha256": "9b831e241f3d7b0206881b49ebd415ab96e98ef725de86ef18a8d5bb51b2e6c4",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex",
+      "capture": "C/flat_critical_integrated.tex",
+      "bytes": 150243,
+      "sha256": "2b916abb82de709f52a9671fa3f1e9c6019bf2224127c2c111ac1de6cab1acc6",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex",
+      "capture": "A/geometry-boundaries221.tex",
+      "bytes": 18599,
+      "sha256": "3af7eea5607ca74342e9265207ad68bbdec812d2a56769b1e4deda613ea08252",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex",
+      "capture": "C/geometry-boundaries221.tex",
+      "bytes": 18748,
+      "sha256": "b2bb2dfb39538ce05eac0a6835ef4534491e514219a165cb9d634a9383577a50",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex",
+      "capture": "A/joint-binary.tex",
+      "bytes": 8980,
+      "sha256": "d149c8d9733feb9dd55efe0d00a9a68664c37088b4b8ba35a7d187933c510d1f",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex",
+      "capture": "C/joint-binary.tex",
+      "bytes": 9104,
+      "sha256": "084213b6b6fb6f864b82e2bfa0551775cce878ea9a1b0054eb30ab77e83d6c6c",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/laminates-green.tex",
+      "capture": "A/laminates-green.tex",
+      "bytes": 20803,
+      "sha256": "4a573061166dcb39824bea1aaf8a8e237dbcf2ab4a7c19be57e54cff02d13b55",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/laminates-green.tex",
+      "capture": "C/laminates-green.tex",
+      "bytes": 20803,
+      "sha256": "4a573061166dcb39824bea1aaf8a8e237dbcf2ab4a7c19be57e54cff02d13b55",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/partial-invariance.tex",
+      "capture": "A/partial-invariance.tex",
+      "bytes": 9037,
+      "sha256": "bba932a34bef4ac01ca24047487a0fab5cb3e98c6dc3e010041e7b5d91a5cda7",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/partial-invariance.tex",
+      "capture": "C/partial-invariance.tex",
+      "bytes": 9037,
+      "sha256": "bba932a34bef4ac01ca24047487a0fab5cb3e98c6dc3e010041e7b5d91a5cda7",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/partition.tex",
+      "capture": "A/partition.tex",
+      "bytes": 12856,
+      "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/partition.tex",
+      "capture": "C/partition.tex",
+      "bytes": 12856,
+      "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/physical-cycle.tex",
+      "capture": "A/physical-cycle.tex",
+      "bytes": 15608,
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/physical-cycle.tex",
+      "capture": "C/physical-cycle.tex",
+      "bytes": 15608,
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/shells.tex",
+      "capture": "A/shells.tex",
+      "bytes": 11932,
+      "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/shells.tex",
+      "capture": "C/shells.tex",
+      "bytes": 11932,
+      "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/sobolev.tex",
+      "capture": "A/sobolev.tex",
+      "bytes": 9493,
+      "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/sobolev.tex",
+      "capture": "C/sobolev.tex",
+      "bytes": 9623,
+      "sha256": "1cb480d4d67b67e4e1e4181c391f620bf21c2558fe4002f239e149eaa81bf712",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show 1e30fc310acf1361ccc532f2f186b38e4f6634e2:papers/flat-coarse-rank/integrated-revision/revision223/spatial-geometry.tex",
+      "capture": "A/spatial-geometry.tex",
+      "bytes": 21749,
+      "sha256": "3e658054bca885ec7bd2f018b33c1f122e54f3038c39282279fa61e9a9ac7a2b",
+      "contains_cr": false
+    },
+    {
+      "origin": "git show ddd2cf605c1715a03d2e87991e920c0ec760e527:papers/flat-coarse-rank/integrated-revision/revision223/spatial-geometry.tex",
+      "capture": "C/spatial-geometry.tex",
+      "bytes": 21749,
+      "sha256": "3e658054bca885ec7bd2f018b33c1f122e54f3038c39282279fa61e9a9ac7a2b",
+      "contains_cr": false
+    },
+    {
+      "origin": "git diff 1e30fc310acf1361ccc532f2f186b38e4f6634e2 ddd2cf605c1715a03d2e87991e920c0ec760e527 -- papers/flat-coarse-rank/integrated-revision/revision223/",
+      "capture": "exact-A-to-C.diff",
+      "bytes": 11185,
+      "sha256": "1123a758dcd6e9d1d09cee06e8d0061bf761271e3195dee06e079639918f54a4",
+      "contains_cr": false
+    },
+    {
+      "origin": "git diff 1e30fc310acf1361ccc532f2f186b38e4f6634e2 a28e0f24523b4bc2ec33b1abff104935a0a3b9a5 -- papers/flat-coarse-rank/integrated-revision/revision223/",
+      "capture": "exact-A-to-B.diff",
+      "bytes": 5365,
+      "sha256": "bc0564acd48461c63cd4daa77606185737b496dc9156d8ae7a8fb2958a23ab80",
+      "contains_cr": false
+    },
+    {
+      "origin": "git diff a28e0f24523b4bc2ec33b1abff104935a0a3b9a5 ddd2cf605c1715a03d2e87991e920c0ec760e527 -- papers/flat-coarse-rank/integrated-revision/revision223/",
+      "capture": "exact-B-to-C.diff",
+      "bytes": 6219,
+      "sha256": "94ca9b3b8fd761c066d97e65bd6f12fb8221eecb8b91985381002f1fc43b3a26",
+      "contains_cr": false
+    }
+  ],
+  "comparisons": [
+    {
+      "file": "balanced-rings223.tex",
+      "byte_identical": false
+    },
+    {
+      "file": "boundary-transfer.tex",
+      "byte_identical": false
+    },
+    {
+      "file": "detour-separation.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "flat_critical_integrated.tex",
+      "byte_identical": false
+    },
+    {
+      "file": "geometry-boundaries221.tex",
+      "byte_identical": false
+    },
+    {
+      "file": "joint-binary.tex",
+      "byte_identical": false
+    },
+    {
+      "file": "laminates-green.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "partial-invariance.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "partition.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "physical-cycle.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "shells.tex",
+      "byte_identical": true
+    },
+    {
+      "file": "sobolev.tex",
+      "byte_identical": false
+    },
+    {
+      "file": "spatial-geometry.tex",
+      "byte_identical": true
+    }
+  ],
+  "balanced_proof_prefix_exactly_unchanged": true,
+  "preserved_original_context": [
+    {
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-223\\source-audit\\report223-source.txt",
+      "capture": "original-report223-source.txt",
+      "bytes": 18404,
+      "sha256": "566efd027c8eaf7d5a6b4b0e1ae1dfdaddffe50abfa9b21b38e7bf896245b317"
+    },
+    {
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-223\\source-audit\\audit223-source.json",
+      "capture": "original-audit223-source.json",
+      "bytes": 7264,
+      "sha256": "d6a595aef4e0e9f11dc23969faee0c37bd7f15bd2d41ec7f360ad0126ac51dae"
+    },
+    {
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-223\\source-audit\\capture-manifest223.json",
+      "capture": "original-capture-manifest223.json",
+      "bytes": 18088,
+      "sha256": "8e275e70451c4108aa3c4732cdd66398b1e84733ae8696148f854cb920c4683a"
+    },
+    {
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-223\\source-audit\\interruption223.txt",
+      "capture": "original-interruption223.txt",
+      "bytes": 730,
+      "sha256": "7605a1386491c430a95de79aff8615cbace8fca77515ec00f3db00f27f96e177"
+    }
+  ]
+}

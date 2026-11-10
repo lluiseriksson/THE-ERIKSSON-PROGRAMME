@@ -1,0 +1,9 @@
+AUDIT223 INTERRUPTION RECORD
+Resumed date: 2026-11-10
+Exact source: 1e30fc310acf1361ccc532f2f186b38e4f6634e2
+
+The resume assignment states: "Prior turn failed with usage-limit error before any verdict".
+No completed source223 verdict or numerical review existed before this resumption; the evidence folder contained the capture manifest and captures.
+The full underlying platform exception text is not visible to this auditor. This record does not reconstruct or invent it.
+The existing capture-manifest223.json and source captures were preserved and their hashes checked again.
+The same involved audit context resumed. No new agent, model/provider/account switch, scientific execution, render, grade or source mutation was used.

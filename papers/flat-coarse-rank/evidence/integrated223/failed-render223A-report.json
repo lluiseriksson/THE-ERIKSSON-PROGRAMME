@@ -1,0 +1,85 @@
+{
+  "source_sha": "1e30fc310acf1361ccc532f2f186b38e4f6634e2",
+  "source_inputs": {
+    "balanced-rings223.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex",
+      "sha256": "715aaf0ac64e0491db0f21ff78b4ade9f5bd12482371bf8bb966d7ccb0c46c82"
+    },
+    "boundary-transfer.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/boundary-transfer.tex",
+      "sha256": "b212df92560d7ae3f6f3bd3d2f8619f26172b478c008737d099adf30f9cc86e0"
+    },
+    "detour-separation.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/detour-separation.tex",
+      "sha256": "d56fbeaee52e210110e11e87597c7f8ce25d3d46aeeab9d7455588082bc160a8"
+    },
+    "flat_critical_integrated.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/flat_critical_integrated.tex",
+      "sha256": "9b831e241f3d7b0206881b49ebd415ab96e98ef725de86ef18a8d5bb51b2e6c4"
+    },
+    "geometry-boundaries221.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/geometry-boundaries221.tex",
+      "sha256": "3af7eea5607ca74342e9265207ad68bbdec812d2a56769b1e4deda613ea08252"
+    },
+    "joint-binary.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/joint-binary.tex",
+      "sha256": "d149c8d9733feb9dd55efe0d00a9a68664c37088b4b8ba35a7d187933c510d1f"
+    },
+    "laminates-green.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/laminates-green.tex",
+      "sha256": "4a573061166dcb39824bea1aaf8a8e237dbcf2ab4a7c19be57e54cff02d13b55"
+    },
+    "partial-invariance.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/partial-invariance.tex",
+      "sha256": "bba932a34bef4ac01ca24047487a0fab5cb3e98c6dc3e010041e7b5d91a5cda7"
+    },
+    "partition.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/partition.tex",
+      "sha256": "b76593ea452f24ef7c206a9c61cab4a9c35dd7425d95d8f28bf77134d1a9cfff"
+    },
+    "physical-cycle.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/physical-cycle.tex",
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c"
+    },
+    "shells.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/shells.tex",
+      "sha256": "646c65637664d98af18d58d914c312743b1cff77a5d6db99e2a51e0af0bc6f4a"
+    },
+    "sobolev.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/sobolev.tex",
+      "sha256": "80c4a34aaa9ba9ff840e195ddee32a2f3af7201e9d05f51243130bf571b12a54"
+    },
+    "spatial-geometry.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/spatial-geometry.tex",
+      "sha256": "3e658054bca885ec7bd2f018b33c1f122e54f3038c39282279fa61e9a9ac7a2b"
+    }
+  },
+  "started_utc": "2026-11-09T06:40:49.412224+00:00",
+  "tool_exits": {
+    "apt-update": 0,
+    "apt-install": 0,
+    "tex-version": 0,
+    "poppler-version": 0,
+    "latex-first": 0,
+    "latex-second": 0,
+    "latex-final": 0,
+    "pdfinfo": 0,
+    "text": 0,
+    "render": 0
+  },
+  "compute_units_billed": null,
+  "formal_or_scientific_replay": false,
+  "tex_version": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)\nkpathsea version 6.3.5\nCopyright 2023 Han The Thanh (pdfTeX) et al.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the pdfTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the pdfTeX source.\nPrimary author of pdfTeX: Han The Thanh (pdfTeX) et al.\nCompiled with libpng 1.6.43; using libpng 1.6.43\nCompiled with zlib 1.3; using zlib 1.3\nCompiled with xpdf version 4.04\n",
+  "poppler_version": "pdftoppm version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n",
+  "pdfinfo": "Title:           Coarse information and finite rank obstructions for flat lattice Hodge forms\nSubject:         Finite weighted observations and rectangular constructions\nKeywords:        flat lattice, Hodge form, inverse moment, rectangular partition, laminate\nAuthor:          Lluis Eriksson\nCreator:         LaTeX with hyperref\nProducer:        pdfTeX-1.40.25\nCreationDate:    Mon Nov  9 00:00:00 2026 UTC\nModDate:         Mon Nov  9 00:00:00 2026 UTC\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           100\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       916573 bytes\nOptimized:       no\nPDF version:     1.5\n",
+  "layout_warnings": [
+    "Overfull \\hbox (34.36049pt too wide) in paragraph at lines 288--290"
+  ],
+  "status": "FAILED_PRESERVED",
+  "pages": 100,
+  "pdf_sha256": "056f2471a834007a200877af1e6e126ab108f1b186a86ed60cd87c46177d2134",
+  "pdf_bytes": 916573,
+  "finished_utc": "2026-11-09T06:42:49.426591+00:00",
+  "elapsed_seconds": 120.01452644799997,
+  "child_maxrss_kib": 127652
+}

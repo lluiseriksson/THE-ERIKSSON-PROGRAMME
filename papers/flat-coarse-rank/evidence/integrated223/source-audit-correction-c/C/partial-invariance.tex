@@ -1,0 +1,175 @@
+\clearpage
+\section{Rectangular observations with fewer than $D$ variable coordinates}
+\label{sec:partial188}
+The one-coordinate dependence in the laminate theorem can be weakened to
+arbitrary dependence on any $k<D$ coordinates. The construction below uses
+the complete finite Sobolev proof already included in this manuscript.
+It retains at least one exactly invariant coordinate. No local spectral
+estimate or successful partition is added as an unproved input.
+
+Put $p=D/2$, fix $1\le k<D$, and set $d=D-k$. In this section define
+\[
+ \rho=(2/3)^d,\qquad C_D=4A_DD^{1/p},\qquad
+ F_{D,k}=\frac{2^D3^d}{1-\rho},
+\]
+where $A_D$ is the explicit constant in
+\eqref{eq:rectangle-unweighted-derived}. These constants are not optimal.
+\begin{theorem}\label{thm:partial188}
+Let $D\ge3$, $n\ge2$, $c>0$, and let
+$a(x)=\alpha(x_1,\ldots,x_k)>0$ on $(\mathbb Z/n\mathbb Z)^D$.
+There is a disjoint axis-aligned integer rectangular partition $\mathcal P$,
+independent of the field, such that for every scalar real or complex field
+\[
+ c\|u\|^2\le\E_a(u)+c\|C_{\mathcal P}u\|^2,\qquad
+ C_{\mathcal P}u=(\sqrt{|R|}\,\overline u_R)_{R\in\mathcal P},
+\]
+and
+\begin{equation}\label{eq:partial-count188}
+ \#\mathcal P\le2^d+F_{D,k}(cC_D)^p\sum_Xa^{-p}.
+\end{equation}
+If $\mu=\operatorname{mean}(a)\ge1$ and
+$\operatorname{mean}((\mu/a)^p)\le M$, then for an $h$-component field the
+output dimension is at most
+\[
+ h\bigl[2^d+F_{D,k}(cC_D)^p2^pM\bigr]
+ \max\{1,n^D/(1+\mu)^p\}.
+\]
+The energy inequality holds coordinatewise on all fields, and hence on an
+actual coexact subspace. Output dimensions are over the selected scalar
+field; double them for complex fields counted over the reals.
+\end{theorem}
+
+\subsection{Local energy derived from the original coefficients}
+For a cut rectangle $R$ with volume $V$, longest side $L$ and
+$\kappa=L^2/V^{2/D}$, the established finite inequality
+\eqref{eq:rectangle-weighted-derived} gives
+\begin{equation}\label{eq:partial-local188}
+ \operatorname{Var}_R(u)\le A_D D^{1/p}\kappa
+      \Bigl(\sum_Ra^{-p}\Bigr)^{1/p}\E_{a,R}(u).
+\end{equation}
+Indeed H\"older uses $q=2D/(D+2)$ and $q/(2-q)=p$, and each original
+starting vertex contributes at most $D$ internal edges. Reflection has
+already been completed in the unweighted proof; no reflected weights,
+enlarged-region energies or assumed Poincar\'e constant enter here.
+A singleton has zero variance. Internal cut edges are a subset of the
+actual periodic positive starts, including when $n=2$; closing and
+cross-cell contributions may be discarded as nonnegative.
+
+\subsection{A balanced base tree and actual extrusion}
+The base domain is $\{0,\ldots,n-1\}^k$. For a base rectangle $Q$, let
+$m(Q)$ be its longest integer side and $b(Q)=\sum_Q\alpha^{-p}$.
+Set $\theta=(cC_D)^{-p}$. Split a node precisely when
+$m\ge2$ and $m^d b(Q)>\theta$. Each non-singleton coordinate is bisected
+into consecutive floor and ceiling halves; singleton coordinates stay
+unchanged. Accept equality and never split a base singleton.
+
+All side lengths at a node differ by at most one, by induction from the
+root cube. Bisecting $m$ and $m-1$ preserves this property, also for mixed
+lengths one and two. At least one parent side has length $m$, so every
+child has longest side $m'$ satisfying
+\begin{equation}\label{eq:partial-child188}
+ m/3\le\lfloor m/2\rfloor\le m'\le\lceil m/2\rceil\le2m/3
+ \qquad(m\ge2).
+\end{equation}
+The tree terminates, has at most $2^k$ children per internal node, and
+all base sides at a node with $m\ge2$ are at least $m/2$.
+
+For each leaf $Q$, partition each of the $d$ invariant coordinates into
+$r=\lceil n/m\rceil$ consecutive balanced intervals of lengths
+$\lfloor n/r\rfloor$ or $\lceil n/r\rceil$. Every such length lies in
+$[m/2,m]$. The upper bound follows from $n\le rm$. For $r\ge2$,
+$n\ge(r-1)m+1$ implies
+$\lfloor n/r\rfloor\ge\lfloor(m+1)/2\rfloor\ge m/2$; for $r=1$,
+$m=n$. Thus every full rectangle $R=Q\times Z$ has $\kappa\le4$.
+These rectangles partition the actual torus representatives, with no
+wrapping or overlap. If $m=1$, every resulting full rectangle is a singleton.
+
+Exact invariance, rather than a sampled favourable fibre, gives
+\[
+ \sum_Ra^{-p}=|Z|b(Q)\le m^d b(Q).
+\]
+For a non-singleton leaf, \eqref{eq:partial-local188} therefore yields
+$c\operatorname{Var}_R(u)\le\E_{a,R}(u)$. Singleton leaves need no mass
+acceptance condition, since their residual variance is zero. Summing and
+using orthogonal mean decomposition proves the actual inequality with
+$K=c$ in Theorem~\ref{thm:partial188} for all fields simultaneously.
+
+\subsection{Terminal charging and the critical rank count}
+Write $w(Q)=m(Q)^{-d}$. Every internal node satisfies
+\[
+ w(Q)<\theta^{-1}b(Q).
+\]
+Let $T$ be internal nodes with no internal children. These nodes are
+pairwise disjoint in the base lattice. Assign each internal node to any
+terminal internal descendant. Nodes assigned to a fixed terminal $J$ lie
+on its ancestor path at distinct depths. By \eqref{eq:partial-child188},
+ancestor weights decay by at least the factor $\rho=(2/3)^d<1$, whence
+\begin{equation}\label{eq:partial-charge188}
+ \sum_{Q\text{ internal}}w(Q)
+ \le\frac{1}{1-\rho}\sum_{J\in T}w(J)
+ \le\frac{\theta^{-1}}{1-\rho}\sum_{\text{base}}\alpha^{-p}.
+\end{equation}
+Only terminal internal nodes are charged as disjoint; all internal nodes
+are not incorrectly treated as disjoint.
+
+Every child has weight at most $3^d$ times its parent's weight. Exact
+leaf-weight telescoping and the arity bound give
+\[
+ \sum_{Q\text{ leaf}}w(Q)
+ \le n^{-d}+2^k3^d\sum_{Q\text{ internal}}w(Q).
+\]
+A base leaf creates exactly $\lceil n/m\rceil^d\le(2n/m)^d$ full cells.
+Multiplying by $(2n)^d$, applying \eqref{eq:partial-charge188}, and using
+$n^d\sum_{\text{base}}\alpha^{-p}=\sum_Xa^{-p}$ proves
+\eqref{eq:partial-count188}. The accepted root case has one cell and no
+internal charges; singleton leaves remain in the telescoping identity.
+Finally the moment condition gives
+$\sum_Xa^{-p}\le Mn^D/\mu^p\le2^pMn^D/(1+\mu)^p$, proving the stated
+output budget. This completes the analytical proof.
+
+\subsection{Verification, attribution and remaining boundary}
+The exact source188 proof is pinned at
+\texttt{0178b02bf26381633726edb82758e1c7ccb9aefd}; its complete involved-model
+source audit and all limitations are retained under
+\path{papers/flat-coarse-rank/research/evidence188/} in the source map above.
+The audit found no blocking mathematical gap. It did not perform a formal
+rebuild or scientific replay. Separate finite tree, geometry, inverse-mass
+and rank diagnostics were then executed at
+\texttt{b9d9dfdee043a62ec5d30926e215f8a581507b70}: two fresh own Linux Colab
+clones, each in normal and optimized modes, produced four identical payloads.
+Each checked 648 rational fixtures and rejected six actual mutated controls.
+All twelve child exit files contain zero. These checks are not local spectral
+computations, all-size proof or independent research replication; their
+coefficients are restricted to squares to keep inverse powers rational.
+The all-size claim rests on the analytical argument above.
+
+Weighted Sobolev and adaptive-tree mechanisms are classical. The targeted
+primary comparison in source187--188 includes Cruz-Uribe, Dal and Rodney,
+\emph{Degenerate Sobolev and Poincar\'e inequalities via extrapolation},
+arXiv:2608.20498v1, Theorem 4.5
+(\url{https://arxiv.org/html/2608.20498v1}), and Claros, P\'erez and Zheng,
+\emph{From generalized Poincar\'e to Poincar\'e--Sobolev inequalities via
+self-improving methods}, arXiv:2606.08556v1, Appendix C
+(\url{https://arxiv.org/html/2606.08556v1}). Their inspected continuum and
+summability statements are context, not imported premises or a priority
+certificate. Broader approximation literature still requires comparison.
+
+\paragraph{Model assessments and review context.}
+The source audit used the historically involved OpenAI Codex agent with a
+configured gpt-6-astra context. Effective served backend and reasoning setting
+were unexposed; shared history, workspace, account and provider context do not
+establish blindness or independence. Its full report, L1--L5 limitations and
+factual inspection scope remain preserved. Neither that source audit nor the
+full revision187 PDF assessment supplies a grade for this changed PDF. This
+complete artifact requires its own numerical overall and criterion stars,
+with all objections retained; no human peer review or editorial acceptance
+is inferred.
+
+At $k=D$, the argument has $d=0$ and $\rho=1$, so the ancestor sum in
+\eqref{eq:partial-charge188} is no longer controlled. This is a limitation
+of the present method, not a counterexample to general rectangular means.
+Approximate invariance and arbitrary real-coefficient implementation or
+numerical stability are not established. Constants are nonoptimal upper-order
+bounds, not minimum-rank claims. This invariant-coordinate argument alone does not handle arbitrary profiles;
+Section~\ref{sec:balanced223} supplies their finite scalar-gradient construction.
+Physical interacting/continuum questions remain separate.

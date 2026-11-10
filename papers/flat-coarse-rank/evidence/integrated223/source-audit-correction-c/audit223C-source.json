@@ -1,0 +1,142 @@
+{
+  "verdict": "accept_with_limits",
+  "scope": "bounded corrective source review223C",
+  "commits": {
+    "A": "1e30fc310acf1361ccc532f2f186b38e4f6634e2",
+    "B": "a28e0f24523b4bc2ec33b1abff104935a0a3b9a5",
+    "C": "ddd2cf605c1715a03d2e87991e920c0ec760e527"
+  },
+  "directory": "papers/flat-coarse-rank/integrated-revision/revision223",
+  "C_blobs": {
+    "balanced_rings": {
+      "bytes": 16119,
+      "sha256": "6877841cde546f8920c39b98a5dfef8af385b1a2d5a4842f95a9dd36985b3dc2"
+    },
+    "root": {
+      "bytes": 150243,
+      "sha256": "2b916abb82de709f52a9671fa3f1e9c6019bf2224127c2c111ac1de6cab1acc6"
+    }
+  },
+  "capture": {
+    "method": "Raw git show/diff stdout BaseStream; WriteAllBytes; no normalization",
+    "git_captures": 29,
+    "all13_A_and_C_files": true,
+    "three_exact_diffs": true,
+    "manifest": "capture-manifest223C.json",
+    "manifest_sha256": "b604425e44ae8a6d530784fc958ce5ce034064e672fb2a90522f698e996f8eb1",
+    "A_to_C_diff_sha256": "1123a758dcd6e9d1d09cee06e8d0061bf761271e3195dee06e079639918f54a4"
+  },
+  "original_rejection": {
+    "full_report_reread": true,
+    "preserved_unchanged": true,
+    "still_reject_for_A": true,
+    "report_sha256": "566efd027c8eaf7d5a6b4b0e1ae1dfdaddffe50abfa9b21b38e7bf896245b317",
+    "audit_sha256": "d6a595aef4e0e9f11dc23969faee0c37bd7f15bd2d41ec7f360ad0126ac51dae",
+    "interruption_sha256": "7605a1386491c430a95de79aff8615cbace8fca77515ec00f3db00f27f96e177"
+  },
+  "delta": {
+    "A_to_C": {
+      "files": 6,
+      "insertions": 35,
+      "deletions": 17
+    },
+    "A_to_B": {
+      "files": 2,
+      "insertions": 16,
+      "deletions": 7
+    },
+    "B_to_C": {
+      "files": 5,
+      "insertions": 19,
+      "deletions": 10
+    },
+    "changed": [
+      "balanced-rings223.tex",
+      "boundary-transfer.tex",
+      "flat_critical_integrated.tex",
+      "geometry-boundaries221.tex",
+      "joint-binary.tex",
+      "sobolev.tex"
+    ],
+    "byte_identical": [
+      "detour-separation.tex",
+      "laminates-green.tex",
+      "partial-invariance.tex",
+      "partition.tex",
+      "physical-cycle.tex",
+      "shells.tex",
+      "spatial-geometry.tex"
+    ],
+    "balanced_proof_prefix_before_attribution_exactly_unchanged": true,
+    "theorem_constants_or_hypotheses_changed": false
+  },
+  "corrections": {
+    "R1": "closed: boundary-transfer is historical/method-scoped and points to scalar construction",
+    "R2": "closed: current predecessor consistently version12",
+    "R3": "closed: independent-layer route alone lacks count; balanced-ring construction separately supplies it",
+    "R4": "closed: cube lemma alone is not the complete solution, no stale current-open descriptor",
+    "R5": "closed: binary/comparison section alone lacks general control; later construction supplies it",
+    "optional_matrix": "correctly limited unresolved question to general matrix coefficients"
+  },
+  "additional_changes": {
+    "source_SHA_centering": "same40-character identifier, source typography only; no layout result certified",
+    "spacing": "prose only; values preserved",
+    "CDPX": "primary PDF confirms bibliographic metadata and bivariate BV dyadic-ring context; not imported as finite weighted theorem"
+  },
+  "new_objections": [],
+  "context": {
+    "task": "/root/defect_plane198_audit",
+    "exposed_model": "Codex, an agent based on GPT-6",
+    "exact_hidden_model": "unknown",
+    "backend": "unknown",
+    "reasoning_effort": "unknown",
+    "fresh_context": false,
+    "prior_context": [
+      "198",
+      "216",
+      "217",
+      "218",
+      "219",
+      "220",
+      "221A",
+      "221B",
+      "222",
+      "223A"
+    ],
+    "shared_history_filesystem_account": true,
+    "independence_claim": false,
+    "blind_review": false,
+    "human_peer_review": false,
+    "new_agent_or_model_provider_account_switch": false,
+    "inbound_messages_during_check": false
+  },
+  "actions": {
+    "source_branch_pr_score_or_status_changes": false,
+    "other_chat_or_automation_access": false,
+    "scientific_execution": false,
+    "diagnostic_execution": false,
+    "mathematical_python": false,
+    "lean": false,
+    "lake": false,
+    "oracle": false,
+    "tests": false,
+    "build": false,
+    "render": false,
+    "runtime": false
+  },
+  "primary_source": "https://people.math.sc.edu/pencho/Publications/BV9707.pdf",
+  "limits": [
+    "bounded corrective delta only",
+    "prior analytic proof acceptance retained for unchanged mathematics",
+    "no exhaustive novelty/equivalence assessment",
+    "no scientific replay/formal proof/independence attestation",
+    "no remote assessment or runtime provenance authentication",
+    "no numerical/PDF grade or old-grade transfer",
+    "no publication permission/public-status mutation"
+  ],
+  "numerical_grade": null,
+  "pdf_grade": null,
+  "stars": null,
+  "prior_grade_inherited": false,
+  "output_representation": "UTF-8 without BOM, LF, final newline"
+}

@@ -1,0 +1,312 @@
+\section{Coefficient-selected rectangular means for arbitrary scalar profiles}
+\label{sec:balanced223}
+This section supplies the finite component-gradient construction asked for
+in Section~27. It uses the original positive-start scalar coefficient and
+retains the edges crossing rectangular observation pieces inside a ring.
+It does not identify a variable-weight curl/divergence form with that gradient
+form. The balanced-ring, BV and tree mechanisms are classical;
+historical originality of this finite specialization is unestablished.
+
+\subsection{Statement and actual observations}
+Let integers $D\ge3$, $n\ge1$, and $c>0$ be fixed, and put
+$X=\{0,\ldots,n-1\}^D$. For any finite scalar profile $a(x)>0$ define
+\[
+ P=D/2,\quad b=2^D,\quad J=2D,\qquad
+ C_{\rm ext}=1+J\{2J(1+12J)+1\},\qquad
+ G_D=2^{2D+10}D^2C_{\rm ext}^{\,2}.
+\]
+Write $S(A)=\sum_{x\in A}a(x)^{-P}$ and
+$t=(cG_D)^{-P}/b$. Every internal edge below keeps its original positive
+start, and all sums and norms initially use counting measure.
+\begin{theorem}\label{thm:balanced223}
+There is a partition $\mathcal R$ of $X$ into nonempty axis-aligned integer
+rectangles, determined by $a$ and fixed geometric conventions alone, such that
+\[
+ \#\mathcal R\le2D\{1+(2b+3)S(X)/t\},
+\]
+and, simultaneously for every real field $f$,
+\begin{equation}\label{eq:balanced223-final}
+ \sum_{i,x:\ x,x+e_i\in X}a(x)|f(x+e_i)-f(x)|^2
+ +c\sum_{B\in\mathcal R}\frac1{|B|}\Bigl(\sum_{x\in B}f(x)\Bigr)^2
+ \ge c\sum_{x\in X}|f(x)|^2.
+\end{equation}
+The original periodic energy also satisfies this inequality, by adding
+its nonnegative wrap terms. For $h=D(N_c^2-1)$ real components the same
+partition has output dimension $h\#\mathcal R$ and penalty $\Phi(y)=c\|y\|^2$.
+\end{theorem}
+\begin{corollary}\label{cor:balanced223-moment}
+If $\mu\ge1$ and
+$n^{-D}\sum_x(\mu/a(x))^{D/2}\le M$, the actual normalized rectangular
+means satisfy the rank order in \eqref{ap:eq:rank}, with $K=c$ and safe constant
+\[
+ C_{\rm rect}=2Dh\{1+(2b+3)b(cG_D)^P2^PM\}.
+\]
+The exact arithmetic mean and envelope $1\le a\le2\mu$ are unnecessary
+for this sufficiency. The inverse-moment hypothesis is still assumed;
+it is not deduced from an arithmetic mean.
+\end{corollary}
+\begin{proof}
+$S(X)\le Mn^D\mu^{-P}\le2^PM\max\{1,n^D/(1+\mu)^P\}$, since
+$\mu\ge1$. Insert $1/t=b(cG_D)^P$ into the theorem. Apply its scalar
+inequality to each of the $h$ real components. Dividing energy and squared
+norms by $V=n^D$ gives observation rows
+$V^{-1/2}|B|^{-1/2}\sum_B f=\sqrt{|B|/V}\,\operatorname{mean}_B f$.
+The all-field inequality restricts to divergence-zero fields, and linear
+means with the displayed quadratic penalty supply the original local data.
+\end{proof}
+
+\subsection{Balanced integer nodes and actual collars}
+Split every coordinate interval with at least two sites into its floor/ceiling
+halves; a singleton remains unchanged. Use coordinate order $1,\ldots,D$,
+lower before upper, and lexicographic order on children. Each node has at
+most $b$ children, and all side lengths differ by at most one. At global
+depth $k$ the nonempty intervals have lengths $h_k$ or $h_k+1$, until they
+are singletons, where $h_k=\max\{1,\lfloor n/2^k\rfloor\}$.
+
+Consider a proper descendant $I$ of an ancestor $Q$, at global depth $k$,
+and set $h_0=h_k$. Every side of $I$ belongs to $[h_0,2h_0]$.
+Every positive clearance from $I$ to the boundary of $Q$ is a union of
+depth-$k$ intervals, so is at least $h_0$. This uses the global $h_0$,
+not the smallest side of this particular $I$: at odd sizes that substitution
+can be false. If every side of $Q$ is at least two, a proper descendant
+is shorter in every direction, so each axis has at least one positive
+clearance. If the smallest side of $Q$ is one, every side is one or two;
+each proper descendant is a corner singleton. That small case is treated
+separately below.
+
+For the large case put $\Omega=Q\setminus I$. Expand $I$ by exactly $h_0$
+on every face with positive clearance, leaving a boundary-touching face
+unchanged, and call the resulting rectangle $B$. Its side lengths $\ell_i$
+lie in $[2h_0,4h_0]$. The collar $A=B\setminus I$ is covered by the actual
+positive-clearance face slabs: normal width $h_0$ and all other sides those
+of $B$. There are between $D$ and $J=2D$ slabs, each contained in $\Omega$.
+For slabs $S_i,S_j$ with distinct normals, direct product counting gives
+\begin{equation}\label{eq:balanced223-overlap}
+ \frac{|S_i|}{|S_i\cap S_j|}=\frac{\ell_j}{h_0}\le4,
+ \qquad \frac{|S_i|}{|S_j|}=\frac{\ell_j}{\ell_i}\le2.
+\end{equation}
+Choose the first slab as root; attach every distinct-normal slab directly
+to it, and its opposite slab, if present, through the first slab with a
+different normal. This tree has depth at most two.
+
+\subsection{An unweighted BV extension, with every hole-crossing edge}
+For a finite product rectangle $S$ of longest side at most $4h_0$, write
+$V_1(S)=\sum_S|f-\operatorname{mean}_S f|$ and let $\mathrm{TV}_S(f)$
+be the sum of $|df|$ over its actual internal edges. Then
+\begin{equation}\label{eq:balanced223-L1}
+ V_1(S)\le2h_0\mathrm{TV}_S(f).
+\end{equation}
+Indeed on an interval with $m$ sites, averaging pair paths bounds the
+coefficient of its $r$th edge by $2r(m-r)/m\le m/2$.
+Commuting coordinate-average projections contract $L^1$; telescoping their
+product and applying this interval inequality fibrewise proves
+\eqref{eq:balanced223-L1}, without an additional factor $D$.
+
+Let $m_i$ be the mean on $S_i$ and let $c_0$ be the root mean.
+Averaging on the actual intersection and using
+\eqref{eq:balanced223-overlap} gives
+$|S_i||m_i-m_j|\le4\{V_1(S_i)+V_1(S_j)\}$.
+For a depth-two path $i,p,r$, the second edge costs the volume ratio
+$|S_i|/|S_p|\le2$, so
+\[
+ |S_i||m_i-m_r|
+ \le4V_1(S_i)+12V_1(S_p)+8V_1(S_r)
+ \le12\sum_j V_1(S_j).
+\]
+Direct paths satisfy the same safe upper bound. Covering $A$ and counting
+each actual edge at most $J$ times yields, with $P_D=2J(1+12J)$,
+\begin{equation}\label{eq:balanced223-collar}
+ \sum_A|f-c_0|\le(1+12J)\sum_jV_1(S_j)
+ \le P_Dh_0\mathrm{TV}_A(f).
+\end{equation}
+
+At each positive-clearance hole face take the adjacent outside layer
+of width $h_0$, with tangential sides those of $I$. It is contained in
+$A$. On a normal fibre its nearest value satisfies
+\[
+ |f(\mathrm{first})-c_0|
+ \le h_0^{-1}\sum_{\mathrm{fibre}}|f-c_0|
+       +\sum_{\mathrm{fibre}}|df|.
+\]
+Sum over all actual faces and use \eqref{eq:balanced223-collar}.
+The sum of hole-crossing jumps to the constant $c_0$ is at most
+$J(P_D+1)\mathrm{TV}_A(f)$. Fill $I$ by $c_0$ and leave $f$ unchanged
+on $\Omega$, obtaining $\widetilde f$ on $Q$. Internal hole differences
+vanish; the added variation consists precisely of these crossing faces.
+Therefore
+\begin{equation}\label{eq:balanced223-BV}
+ \mathrm{TV}_Q(\widetilde f)
+ \le C_{\rm ext}\mathrm{TV}_\Omega(f).
+\end{equation}
+Boundary-touching faces create no exterior edge; at $h_0=1$ the fibre
+gradient sum is zero. No coefficient is extended, reflected, averaged or
+reassigned. In particular \eqref{eq:balanced223-BV} makes no weighted
+quadratic trace-extension claim of the kind excluded earlier.
+
+\subsection{Actual critical Sobolev and weighted gap on a ring}
+Here are the finite details needed to pass from BV to the original energy.
+For $T\subset\{0,\ldots,m-1\}^D$ with $|T|\le m^D/2$, the occupied-fibre
+argument and the discrete projection inequality give
+\[
+ |\partial T|\ge\sum_i|\pi_iT|-D|T|/m
+ \ge D|T|^{(D-1)/D}-D|T|/m
+ \ge c_{\rm iso}|T|^{(D-1)/D},\quad
+ c_{\rm iso}=D(1-2^{-1/D})\ge\tfrac12.
+\]
+Each occupied nonfull fibre supplies an edge, while full fibres number at
+most $|T|/m$. The projection inequality
+$|T|^{D-1}\le\prod_i|\pi_iT|$ is the finite Loomis--Whitney inequality;
+it follows from iterated H\"older, or the finite projection argument used
+in the earlier Sobolev section. A singleton cube has only zero variance.
+Median parts, finite coarea and Minkowski consequently imply
+\[
+ \inf_z\|u-z\|_{D/(D-1)}\le(2/c_{\rm iso})\mathrm{TV}(u)
+\]
+on the cube. On a rectangle of aspect at most two, fold a cube of its
+longest side onto it: in each coordinate first visit the interval in
+order, repeat its final endpoint and reflect until the prescribed length.
+Every vertex and edge has at most two preimages per coordinate; the
+initial product block maps identically onto the rectangle. Restriction
+and the variation multiplicity at most $2^D$ give the safe constant
+$C_{\rm full}=2^{D+1}/c_{\rm iso}$ for that rectangle, still unweighted.
+
+Apply this bound and \eqref{eq:balanced223-BV} to an indicator on $\Omega$.
+For every real $z$,
+$\|1_T-z\|_{r,\Omega}\ge\frac12\min\{|T|,|\Omega\setminus T|\}^{1/r}$,
+where $r=D/(D-1)$. Thus $\Omega$ has relative edge isoperimetric constant
+\[
+ c_\Omega=c_{\rm iso}/(2^{D+2}C_{\rm ext}).
+\]
+Coarea gives $\|g\|_r\le c_\Omega^{-1}\mathrm{TV}_\Omega(g)$ for
+nonnegative $g$ supported on at most half the vertices. With a median $m_f$
+of $f$, take $w=(f-m_f)_+$ or $(m_f-f)_+$ and put
+\[
+ \alpha=2(D-1)/D,\qquad q=2D/(D+2),\qquad q'=2D/(D-2).
+\]
+Then $\alpha r=2$ and $(\alpha-1)q'=2$. The power-difference inequality,
+H\"older and degree at most $2D$ yield
+\[
+ \mathrm{TV}(w^\alpha)
+ \le2\alpha D^{1/q'}\|dw\|_q\|w\|_2^{\alpha-1}.
+\]
+In fact the $q'$th power of the endpoint factor sums to at most
+$2^{q'}D\sum_xw(x)^2$. Divide only when $w\ne0$. The positive and
+negative truncated $q$-edge energies sum to at most the original one;
+since $2/q\ge1$, their squared bounds combine to give
+\begin{equation}\label{eq:balanced223-q}
+ \sum_\Omega|f-\operatorname{mean}_\Omega f|^2
+ \le K_\Omega^2\Bigl(\sum_{\Omega\text{ edges}}|df|^q\Bigr)^{2/q},
+ \qquad K_\Omega=2\alpha D^{1/q'}/c_\Omega.
+\end{equation}
+Only now use weights, on the original retained positive-start edges:
+\[
+ \Bigl(\sum |df|^q\Bigr)^{2/q}
+ \le\Bigl(\sum_{\Omega\text{ edges}}a(\mathrm{start})^{-D/2}\Bigr)^{2/D}
+       \E_a(f;\Omega)
+ \le\{DS(\Omega)\}^{2/D}\E_a(f;\Omega).
+\]
+Here $q/(2-q)=D/2$, and at most $D$ retained edges start at one vertex.
+Since $\alpha\le2$, $c_{\rm iso}\ge1/2$ and $2/q'+2/D=1$,
+$K_\Omega^2D^{2/D}\le2^{2D+10}DC_{\rm ext}^{\,2}\le G_D$.
+Full balanced rectangles obey the same safe bound without removing a hole.
+
+For the small nodes with a singleton direction, $Q$, or $Q$ minus a corner,
+is a connected graph with at most $b$ vertices whenever nonempty. Pair paths
+of length at most $b-1$ give variance at most $b^2\E_1$.
+Each internal edge satisfies
+$a(\mathrm{start})^{-D/2}\le S(\Omega)$, so
+$\E_1\le S(\Omega)^{2/D}\E_a$. As $G_D\ge b^2$, this proves in every case
+\begin{equation}\label{eq:balanced223-gap}
+ \sum_\Omega|f-\operatorname{mean}_\Omega f|^2
+ \le G_DS(\Omega)^{2/D}\E_a(f;\Omega).
+\end{equation}
+A singleton has zero variance. Empty groups are never output.
+
+\subsection{Coefficient-only heavy-chain compression and complete count}
+Give each vertex mass $a(x)^{-P}$ and call a tree node heavy if its mass is
+strictly greater than $t$. If the root is light, output it. Otherwise let
+$L$ be the number of terminal heavy nodes and $B_h$ the number with at
+least two heavy children. Terminal heavy nodes are disjoint, so
+$L\le S(X)/t$. Finite tree counting gives $B_h\le L-1$.
+After contracting unary paths, there are at most $B_h+L-1$ skeleton edges
+and possibly a root-leading chain; hence at most $B_h+L\le2L-1$ maximal
+unary chains. The bound is on chains, not their unrestricted total length.
+
+At a unary node $Q\to Q'$ the increment $Q\setminus Q'$ is the union of
+at most $b-1$ light children, of mass at most $(b-1)t$. Traverse a maximal
+chain from ancestor toward descendant, closing a group when the cumulative
+mass first reaches $t$. A closed group is a balanced ancestor ring
+$Q_i\setminus Q_j$ of mass in $[t,bt)$; a residual is output only if nonempty,
+and has mass less than $t$. Across all chains the disjoint closed groups
+number at most $S(X)/t$, while residuals number at most $2L-1$.
+At branching or terminal heavy internal nodes output each light child;
+at a heavy singleton terminal output the singleton. Such cubes/singletons
+number at most $b(B_h+L)\le b(2L-1)$.
+
+These groups partition $X$: a unary ring excludes the endpoint heavy
+subtree, which is then handled at the endpoint; branching processing
+recurses into every heavy child and outputs all remaining children.
+Thus their total number is at most
+\[
+ S(X)/t+(2L-1)+b(2L-1)\le1+(2b+3)S(X)/t.
+\]
+Each nonsingleton group has mass at most
+$bt=(cG_D)^{-D/2}$, so \eqref{eq:balanced223-gap} gives residual gap at least
+$c$. Heavy singleton mass may exceed this threshold, but its variance is
+zero and its mean captures its entire norm.
+
+\subsection{Rectangular rows while retaining intra-ring interfaces}
+Partition $Q\setminus I$ by the first coordinate outside $I$: preceding
+coordinates belong to $I$, the current coordinate is below or above $I$,
+and later coordinates fill $Q$. This gives at most $2D$ nonempty integer
+rectangles. Cubes and singletons require one rectangle. With
+$q_A(f)=|A|^{-1/2}\sum_A f$, Cauchy gives
+$q_\Omega(f)^2\le\sum_{B\subset\Omega}q_B(f)^2$.
+The actual regional gap therefore implies
+\[
+ \E_a(f;\Omega)+c\sum_{B\subset\Omega}q_B(f)^2\ge c\|f\|_\Omega^2.
+\]
+Crucially $\E_a(f;\Omega)$ retains all edges between rectangular pieces
+of this same ring; no separate gap is asserted for each piece.
+Distinct regions are disjoint, so summing discards only nonnegative edges
+between different regions. The full energy dominates their internal sum.
+The count of rectangles is at most $2D$ times the region count, proving
+Theorem~\ref{thm:balanced223}. This directly avoids the internal-cell
+interface discard excluded by the earlier canonical example.
+
+\subsection{Attribution, audit and executable evidence}
+Brudnyi~\cite{brudnyi221}, Sections~1--2 and Appendices~I--II, and its cited
+predecessors already develop dyadic-ring approximation and related tree
+mechanisms. Remark~I.2 includes boundary-touching inner cubes. Neither
+ring decomposition, BV/Sobolev machinery, boundary touching nor heavy-tree
+compression is asserted to be a new general principle here. This section
+supplies the explicit finite integer coefficient-only original-energy
+adapter; its exact historical priority remains unestablished. In particular,
+an atomic coefficient mass is handled by terminal singletons, rather than
+silently importing continuum absolute continuity.
+
+The original analytical draft is at programme source
+\texttt{c993dff04868d01d37b6ec87e0417da3c91a1330}; its raw-byte SHA-256 is
+\begin{center}\scriptsize
+\texttt{f2cd7941ccc8e9fa30e3a8742d5e814b0e4bcdc83ded16426b48b78c7deac057}.
+\end{center}
+The full involved AI source audit accepted it with limits and no load-bearing
+error; its report, factual shared-context limits and requested minor
+clarifications are retained in the source/evidence packet. The explicit
+$n\ge1,c>0$, nonempty-residual and fixed-order conventions above address
+those clarifications without changing constants or the proof.
+Separate own Colab normal and optimized executions at that source had
+actual exits zero and identical output: 216 selected geometries,
+648 BV checks, 200 coefficient partitions, 71,232 regional-field and
+800 global-field inequalities, and three rejected real negative controls.
+The counted within-ring cross-piece edges number 1,668. These selected
+exact-rational checks do not constitute an all-size executable proof,
+formal certification or two independent fresh-clone reproductions.
+The runtime was released and separately read back inactive; billed units
+are unknown. No local scientific execution was used.
+
+This result closes the stated finite scalar-gradient rectangular
+construction analytically. It supplies no covariant/interacting coefficient
+producer, variable-weight curl replacement or physical continuum theorem.
+PR29 remains at 20/41 with TermSource zero. This changed manuscript requires
+its own exact-PDF assessment; no numerical grade transfers from version~12.

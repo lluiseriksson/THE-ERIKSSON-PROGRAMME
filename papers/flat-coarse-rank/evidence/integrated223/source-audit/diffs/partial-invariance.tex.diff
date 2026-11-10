@@ -1,0 +1,13 @@
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision221/partial-invariance.tex b/papers/flat-coarse-rank/integrated-revision/revision223/partial-invariance.tex
+index 4b3e29d8..30481b27 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision221/partial-invariance.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/partial-invariance.tex
+@@ -170,5 +170,6 @@ At $k=D$, the argument has $d=0$ and $\rho=1$, so the ancestor sum in
+ of the present method, not a counterexample to general rectangular means.
+ Approximate invariance and arbitrary real-coefficient implementation or
+ numerical stability are not established. Constants are nonoptimal upper-order
+-bounds, not minimum-rank claims. The sole unrestricted critical rectangular
+-question remains open, and physical interacting/continuum questions stay separate.
++bounds, not minimum-rank claims. This invariant-coordinate argument alone does not handle arbitrary profiles;
++Section~\ref{sec:balanced223} supplies their finite scalar-gradient construction.
++Physical interacting/continuum questions remain separate.

@@ -1,0 +1,412 @@
+\section{Selected shell observations and geometric limits}\label{sec:geometry221}
+This section groups one positive local construction with two sharp limits
+on extending it. All energies below use counting measure and original
+positive-axis starting-site coefficients. Write
+\[
+ V_Y(f)=\sum_Y|f-\overline f_Y|^2,\qquad
+ E_{a,Y}(f)=\sum_{x,x+e_j\in Y}a(x)|f(x+e_j)-f(x)|^2.
+\]
+No coefficient reflection or endpoint averaging is implicit. Normalized
+counting means are $q_Y(f)=|Y|^{-1/2}\sum_Y f$. Dividing every term by
+the ambient volume gives the probability-normalized convention used earlier.
+The local construction does not cover the whole domain. The first limit
+concerns a smaller internal-cell certificate; the second concerns an actual
+annular graph. Neither is a counterexample to the unrestricted full-domain
+question in Section~27.
+
+\subsection{Coefficient-selected unit shells with disjoint faces}
+\begin{theorem}\label{thm:selected221}
+Let $D\ge3$, $d=D-1$, $P=D/2$, $p=d/2$, $q=2d/(d+2)$,
+$L\ge1$ an integer, $z\in\mathbb Z^D$, and $\mu>0$. In the nonwrapping integer lattice, on
+$\Omega=\{x\in\mathbb Z^D:L\le\|x-z\|_\infty\le2L-1\}$ let $a(x)>0$ and put
+$B=\sum_\Omega(\mu/a)^P$. There is a coefficient-only selected
+$k\in\{L,\ldots,2L-1\}$ whose shell $A_k=\{x\in\mathbb Z^D:\|x-z\|_\infty=k\}$ has exactly $2D$
+disjoint rectangular faces $F$, such that for every real $f$
+\begin{equation}\label{eq:selected221}
+ \sum_F V_F(f)\le \frac{C_DB^{2/D}}{\mu}\sum_F E_{a,F}(f)
+ \le \frac{C_DB^{2/D}}{\mu}E_{a,A_k}(f).
+\end{equation}
+Here $K_2=2$ and, for $d\ge3$,
+\[
+ K_d=\frac{2\alpha_d d^{1/q'}}{d(1-2^{-1/d})},\quad
+ \alpha_d=\frac{2(d-1)}d,\quad q'=\frac{2d}{d-2},\qquad
+ C_D=4K_d^2 3^{2d/q}d^{2/d}.
+\]
+In particular $C_3=2592$. If $cC_DB^{2/D}/\mu\le1$, these actual
+means give
+\[
+ E_{a,A_k}(f)+c\sum_F|q_F(f)|^2\ge c\sum_{A_k}|f|^2.
+\]
+The same assertion holds coordinatewise without an additional vector-dimension
+factor. It supplies local rank $2D$ per scalar coordinate only.
+\end{theorem}
+\begin{proof}
+Set $b=\mu/a$, $W_j=\sum_{A_j}b^P$ and choose the least minimizer of
+$W_j$. Disjoint radial layers give $W_k\le B/L$. Relative to $z$, take
+\[
+ F_{i,\sigma}=[-k+1,k-1]^{i-1}\times\{\sigma k\}
+                 \times[-k,k]^{D-i},\qquad \sigma\in\{-1,1\}.
+\]
+The first coordinate attaining absolute value $k$ assigns each shell site
+to a unique face. Each tangential side has $2k-1$ or $2k+1$ sites;
+the faces are nonempty, including $k=1$, and $|F|\le(4L)^d$.
+
+We spell out the adapter to the complete counting cube Sobolev proof
+retained earlier in this manuscript. Fold the $(2k+1)$-site interval
+onto each $(2k\pm1)$-site tangential interval by the endpoint-repeating
+walk $0,1,\ldots,\ell-1,\ell-1,\ldots,0,0,\ldots$.
+Every site has between one and three preimages. Every internal edge has
+at most three preimages: for $k\ge2$ the walk takes at most two steps
+beyond its first traversal, while for $k=1$ the possible lengths are
+one and three. The constant one-site map has no nonconstant edges.
+The product fold therefore multiplies an unweighted edge sum by at most
+$3^d$. For its extension $\widetilde f$, minimizing over constants gives
+$V_F(f)\le V_{Q_{2k+1}}(\widetilde f)$. Thus the proved cube inequality
+with exponent $q$ gives
+\[
+ V_F(f)\le K_d^2 3^{2d/q}
+                 \left(\sum_{e\subset F}|df(e)|^q\right)^{2/q}.
+\]
+This fold is entirely unweighted; reversing an edge transports no
+coefficient. Apply H\"older next on the original face edges:
+\[
+ \left(\sum_{e\subset F}|df|^q\right)^{2/q}
+ \le\frac{d^{1/p}}\mu E_{a,F}(f)
+               \left(\sum_F b^p\right)^{1/p}.
+\]
+Every site starts at most $d$ such edges. Since $p<P$,
+\[
+ \left(\sum_Fb^p\right)^{1/p}
+ \le |F|^{1/p-1/P}W_k^{1/P}
+ \le(4L)^{2/D}(B/L)^{2/D}\le4B^{2/D}.
+\]
+Here $d(1/p-1/P)=2/D$ is the radial cancellation. Summing over faces
+uses disjoint retained edges. Finally
+$\sum_{A_k}|f|^2=\sum_FV_F(f)+\sum_F|q_F(f)|^2$ proves the penalty
+assertion. All starting sites, including incoming ones, occur in the
+actual edge sums; no local moment has been assumed.
+\end{proof}
+
+The scale cannot be improved to $o(L^2)/\mu$ on homogeneous profiles.
+Indeed $a=\mu$ gives $B=(4L-1)^D-(2L-1)^D\le(4L)^D$.
+For every candidate radius and $f(x)=x_2-z_2$, the face $F_{1,+}$
+alone has variance $(2k+1)^d((2k+1)^2-1)/12$, whereas
+$E_{a,A_k}(f)\le\mu|A_k|\le2D\mu(2k+1)^d$. Consequently
+\[
+ \frac{\sum_FV_F(f)}{E_{a,A_k}(f)}
+ \ge\frac{L^2}{6D\mu}\ge\frac{B^{2/D}}{96D\mu}.
+\]
+This uses the whole shell energy, including its face interfaces. It is
+an all-candidate-radii lower scale bound. A unit shell has only order
+$L^{D-1}$ sites: its $2D$ observations do not cover the unselected
+layers or interior. Repeating independently on order $L$ layers costs
+order $L$ rows. A global covering and charging theorem at the original
+target count remains missing.
+
+\subsection{Sharp rank cost of discarding canonical interfaces}
+\begin{theorem}\label{thm:filament221}
+Fix $D\ge3$, integer $s\ge1$, $R=s^D$, $n=2R+1$, and
+$X=\{-R,\ldots,R\}^D$, $N=n^D$. Let $a=A=s^2$ on the $2D$
+punctured coordinate half-axes and $a=H=n^2$ elsewhere. Its actual
+mean $\mu$ satisfies $1\le a\le2\mu$, $\mu\ge1$, and
+\[
+ 1\le\frac1N\sum_X(\mu/a)^{D/2}<2D+1,\qquad
+ \max\{1,(n/\sqrt{1+\mu})^D\}\le2^{D/2}.
+\]
+For the actual full energy one rectangular mean suffices:
+\begin{equation}\label{eq:fullfil221}
+ E_{a,X}(f)+c_D|q_X(f)|^2\ge c_D\|f\|_2^2,
+ \qquad c_D=[64D^2(2D+1)]^{-1}.
+\end{equation}
+For any coordinate permutation $\pi$, partition instead by the first
+nonzero coordinate, with the origin as a singleton. Let $P_0$ be its
+$2D+1$ normalized means and $E_{\mathrm{int},\pi}$ its retained
+internal-cell energy. Set $\ell=32D(D+1)s$ and
+$m_s=\lfloor(R-1)/(4\ell)\rfloor$. If real-linear maps $C,V$ and
+any $\Phi$ with $\Phi(0)=0$ obey, for all $f$ or near zero,
+\[
+ E_{\mathrm{int},\pi}(f)+K\|P_0f\|^2+\Phi(Cf)+\langle f,Vf\rangle
+ \ge c_D\|f\|^2,
+\]
+then $\rank C+\rank V\ge2m_s$. No symmetry or positivity of $V$
+is needed, and $K$ may be any finite scalar. This growing repair cost
+has matching order $\Theta_D(s^{D-1})$ by an explicit refinement.
+\end{theorem}
+\begin{proof}
+There are $w=2DR$ weak sites. With $P=D/2$,
+\[
+ \mu=H-\frac{w(H-A)}N,\qquad S:=\sum_Xa^{-P}=2D+1-w/N.
+\]
+Since $N\ge2R3^{D-1}$, $w/N\le D/3^{D-1}\le1/3$ and
+$\mu\ge2H/3$. The stated moment equals $(\mu/H)^PS<2D+1$;
+its lower bound is Jensen. The target factor follows from $\mu\ge H/2$.
+The earlier complete cube proof and original-start H\"older give
+\[
+ V_X(f)\le K_D^2(DS)^{2/D}E_{a,X}(f)
+          \le64D^2(2D+1)E_{a,X}(f).
+\]
+For clarity, its constant satisfies $K_D\le8\sqrt D$:
+$D(1-2^{-1/D})\ge1/2$ follows from
+$(1-1/(2D))^D\ge1/2$, while $\alpha_D\le2$ and
+$D^{1/q'}\le\sqrt D$. The variance identity proves
+\eqref{eq:fullfil221}. Periodic wrap edges, if added, only help it.
+
+The canonical cells are
+\[
+ B_{i,+}=\{x:x_{\pi(j)}=0\ (j<i),\ 1\le x_{\pi(i)}\le R\},
+\]
+with all later coordinates free in $[-R,R]$; define $B_{i,-}$ using
+$[-R,-1]$ and include $\{0\}$. These disjoint integer rectangles
+cover $X$. Their final pair are weak half-axes for every $\pi$.
+For $R\ge2$, the mean-zero linear field $f_t=t-(R+1)/2$ on one final half-axis,
+zero elsewhere, has
+\[
+ P_0f=0,\qquad
+ \frac{E_{\mathrm{int},\pi}(f)}{\|f\|^2}
+       =\frac{12s^2}{R(R+1)}\longrightarrow0.
+\]
+In the actual energy, each transverse incoming edge starts at a
+two-nonzero-coordinate site and carries $H$, not $A$. Therefore any
+field supported on the final two half-axes has
+$E_{a,X}(f)\ge(D-1)H\|f\|^2$. The omitted interfaces explain the
+certificate failure without contradicting the full-energy bound.
+
+To obtain the rank obstruction, use the signed tent on $0\le t\le4\ell$:
+\[
+ g(t)=\begin{cases}t&0\le t\le\ell,\\
+ 2\ell-t&\ell\le t\le3\ell,\\t-4\ell&3\ell\le t\le4\ell.
+ \end{cases}
+\]
+It has zero endpoints and sum, and
+\[
+ \sum g^2=2\ell(2\ell^2+1)/3,\qquad\sum|dg|^2=4\ell.
+\]
+Place $m_s$ copies on consecutive intervals
+$[1+4\ell j,1+4\ell(j+1)]$ of each final half-axis, indexed by its
+absolute coordinate. Nonzero supports and edge differences do not
+overlap; shared endpoints are zero. Their span $G_s\subset\ker P_0$
+has dimension $2m_s$, and for every $f\in G_s$
+\[
+ E_{\mathrm{int},\pi}(f)=\rho_s\|f\|^2,\qquad
+ \rho_s=\frac{6s^2}{2\ell^2+1}
+ \le\frac3{[32D(D+1)]^2}\le c_D/4.
+\]
+The last step is $4(D+1)^2\ge3(2D+1)$. If combined repair rank
+is smaller than $2m_s$, rank-nullity supplies nonzero
+$f\in G_s\cap\ker C\cap\ker V$. All repair terms vanish;
+scaling toward zero also treats a neighborhood inequality. This
+contradicts the prescribed lower bound. The statement is vacuous when
+$m_s=0$, and asymptotically $m_s$ has order $s^{D-1}$.
+
+For the upper repair order, split each canonical cell's strong complement
+by its first nonzero later coordinate. There are $2(D-i)$ strong
+rectangles per $B_{i,\pm}$, hence $2D(D-1)$ in total, each with
+coefficient $H=n^2$ and largest side at most $n$. Split each of the
+$2D$ weak axes into $R/s=s^{D-1}$ intervals of length $s$ and retain
+the origin. The total is
+\[
+ J_s=1+2D(D-1)+2Ds^{D-1}.
+\]
+The proved interval-product inequality
+$V_B\le L_B(L_B-1)\sum_{e\subset B}|df|^2/4$ gives
+$E_{a,B}\ge4V_B$ for every nonconstant cell. Singletons have zero
+variance. Summing and using the normalized mean identity gives
+coercivity with penalty $c_D$ on these $J_s$ means even for the refined
+internal energy. That energy is at most $E_{\mathrm{int},\pi}$, so
+these rows also repair the original certificate (take
+$\Phi(Cf)=c_D\|P_{\mathrm{ref}}f\|^2$ and a nonnegative base penalty).
+This proves the matching order without an optimal multiplicative constant.
+\end{proof}
+
+This theorem stops transferring a shell gap to these canonical full-volume
+cells while dropping their interfaces for free. It applies to every order
+selected from $a$, but not to every rectangular partition. Indeed its
+one-cell full-energy solution is explicit. The scalar tents have not been
+proved coexact or divergence constrained.
+
+\subsection{An actual off-center annular slowdown of sharp order}
+\begin{theorem}\label{thm:offcenter221}
+For $D\ge3$ and integer $s\ge2$, put $d=D-1$, $L=s^D$, $Q=4L+1$,
+\[
+ X=\{0,\ldots,4L\}^D,\quad I=\{1,\ldots,2L\}^D,
+ \quad\Omega=X\setminus I,\quad N=Q^D-(2L)^D.
+\]
+On the plate $F=\{x_1=0,\ 1\le x_j\le2L\ (j>1)\}$ set
+$a=A=s^{2d}$, and set $a=H=Q^2$ elsewhere in $\Omega$.
+Its actual mean obeys $\mu\ge1$, $1\le a\le2\mu$, and
+\[
+ 1\le M_a:=N^{-1}\sum_\Omega(\mu/a)^{D/2}
+           <2(1+2^d).
+\]
+Nevertheless the best Poincar\'e constant for the actual nonwrapping
+annular energy satisfies
+\[
+ \frac{s^2}{12d}\le
+ \sup_{f\ \text{nonconstant}}\frac{V_\Omega(f)}{E_{a,\Omega}(f)}
+ \le B_Ds^2,\qquad B_D=25J(1+8J),\quad J=2D.
+\]
+Thus the thickness-uniform centered critical-moment formula cannot extend
+to arbitrary off-center holes without a quantitative geometric condition.
+The full cube obtained by filling the hole admits one rectangular mean.
+\end{theorem}
+\begin{proof}
+With $w=(2L)^d$ and $P=D/2$, exact counting gives
+\[
+ \mu=H-w(H-A)/N,\qquad
+ S:=\sum_\Omega a^{-P}=2^d+(N-w)/Q^D.
+\]
+Indeed $A^P=L^d$. Since
+$w/N\le[2(2^D-1)L]^{-1}\le1/14$, $\mu\ge13H/14\ge H/2$.
+Jensen gives $M_a\ge1$, and
+\[
+ M_a=\mu^P S/N
+ \le\frac{1+2^d}{1-2^{-D}}<2(1+2^d).
+\]
+Let $h(t)=\min(t-1,2L-t)$ on $1\le t\le2L$ and put
+$f(0,x_2,\ldots,x_D)=\prod_{j>1}h(x_j)$ on $F$, zero elsewhere.
+Direct finite sums give
+\[
+ \sum h=L(L-1),\qquad
+ T:=\sum h^2=\frac{(L-1)L(2L-1)}3,\qquad
+ \sum|dh|^2=2L-2.
+\]
+The normal incoming edge starts outside $X$, and the outgoing edge enters
+$I$; both are absent. At every tangential plate boundary $h=0$, so all
+strong incoming or outgoing boundary edges have zero difference.
+No intercell edge in $\Omega$ is discarded. Consequently
+\[
+ \|f\|^2=T^d,\quad \sum f=[L(L-1)]^d,\quad
+ E_{a,\Omega}(f)=Ad(2L-2)T^{d-1}.
+\]
+Cauchy on the $w$-site support gives $V_\Omega(f)\ge\|f\|^2/2$,
+whereas $E_{a,\Omega}(f)/\|f\|^2=6dA/[L(2L-1)]\le6d/s^2$.
+This proves the lower bound. Subtracting its mean yields a mean-zero
+witness with the same energy and variance. Meanwhile the multiplier
+in the centered formula is bounded independently of $s$:
+\[
+ Q^2(S/N)^{2/D}
+ \le\left(\frac{1+2^d}{1-2^{-D}}\right)^{2/D}.
+\]
+Thus no dimension-only constant can supply that off-center formula.
+
+For the matching upper bound, cover $\Omega$ by $J=2D$ actual slabs
+\[
+ S_{i,-}=\{x:x_i=0\},\qquad
+ S_{i,+}=\{x:2L+1\le x_i\le4L\},
+\]
+with all other coordinates free in $[0,4L]$. Their volumes are
+$v_-=Q^d$ and $v_+=2LQ^d$. Root a tree at $S_{1,+}$, attach every
+slab with different normal to that root, and attach $S_{1,-}$ to
+$S_{2,+}$. Paths have length at most two, join distinct normals,
+and every parent is fat. Descendant volume is no larger than the
+volume of any slab on its root path.
+
+Write $E_i^0$ for a slab's unweighted internal energy, $m_i$ for its
+mean, and $Z=\sum_iE_i^0$. The interval-product proof gives
+$V_{S_i}\le Q^2E_i^0/4$. To control means without an inverse
+overlap-width factor, for any nonempty subinterval $T_0$ of a
+$Q$-site interval $B$, Jensen and path Cauchy give
+\[
+ |\overline g_B-\overline g_{T_0}|^2
+ \le\frac1{Q|T_0|}\sum_{x\in B,y\in T_0}|g(x)-g(y)|^2
+ \le Q\sum_{e\subset B}|dg(e)|^2.
+\]
+Averaging over identical fibers of $S_i$ in another slab's normal
+direction gives
+\[
+ |m_i-\overline f_{S_i\cap S_j}|^2\le Q^2E_i^0/v_i.
+\]
+The restricted width may be one or $2L$. Applying this on both sides
+of an intersection yields
+$|m_i-m_j|^2\le2Q^2(E_i^0/v_i+E_j^0/v_j)$.
+Along a root path use Cauchy, its length at most two and volume
+monotonicity; each intermediate energy occurs at most twice. Hence
+$v_i|m_i-m_{\rm root}|^2\le8Q^2Z$. The cover and variance identity
+now give, for every real $g$,
+\begin{align*}
+ V_\Omega(g)&\le\sum_i\{V_{S_i}(g)+v_i|m_i-m_{\rm root}|^2\}\\
+ &\le(1/4+8J)Q^2Z
+ \le J(1/4+8J)Q^2 E_\Omega^0(g)
+ \le B_Ds^2E_{a,\Omega}(g).
+\end{align*}
+Here every actual edge is counted at most $J$ times, $a\ge A$,
+$Q\le5L$, and $L^2/A=s^2$. For $D=3$, $B_3=7350$.
+
+Finally fill $I$ with coefficient $H$ and extend the same plate field
+by zero. The exact identity is
+\[
+ E_{a,X}(f)=E_{a,\Omega}(f)+A\|f\|^2.
+\]
+The restored normal edge starts on the weak plate, so the coefficient
+is $A$, not $H$. All other added differences are zero. On the full
+cube $\sum_Xa^{-P}<1+2^d$, and the complete cube bound used above gives
+\[
+ V_X(g)\le64D^2(1+2^d)E_{a,X}(g).
+\]
+Thus $c_X=[64D^2(1+2^d)]^{-1}$ and the one mean $q_X$ supply
+$E_{a,X}+c_X|q_X|^2\ge c_X\|g\|^2$ for every $g$.
+\end{proof}
+
+Exact centering has not been proved the weakest sufficient condition;
+quantitative clearance might suffice. The annular quotient of order
+$s^{-2}$ is a finite scalar Neumann quotient, not a physical mass gap.
+The full-domain unrestricted question and coexact restrictions remain
+untouched. An initial unreviewed candidate note incorrectly called the
+restored edge strong and incoming. Its original and pre-freeze correction
+are retained; the theorem and its regression fixture use the weak outgoing
+start. No failed scientific execution was hidden or rerun to change that
+criterion.
+
+\subsection{Comparison, evidence and remaining question}
+Radial selection, folds, finite Sobolev/H\"older, product tents and
+rank-nullity are classical. The weighted method should be compared with
+Andres--Deuschel--Slowik~\cite{ads221}, Section~3.1, Proposition~3.5 of arXiv:1306.2521v5: its conductance and cutoff setup is not this finite-face
+construction. Birman--Solomyak's adaptive cube partitions~\cite{birman221} do not supply
+an unsupported zero-smoothness partition theorem here.
+Brudnyi~\cite{brudnyi221}, Sections~1--2 and Appendix~I, treats
+function-dependent approximation on dyadic rings. Appendix~I, Remark~I.2,
+also treats boundary-touching dyadic inner cubes; an exclusively strictly
+interior description would be incomplete. Those classical results do not by
+themselves verify the particular integer original-start weighted adapter
+required here. Section~\ref{sec:balanced223} derives that adapter explicitly;
+no claim that arbitrary shifted holes have uniform geometry is made. Exact priority of these quantitative specializations
+is unestablished; this limited primary comparison is not exhaustive.
+
+The frozen analytical source commits are
+\begin{center}\scriptsize
+\begin{tabular}{ll}
+selected shell218 & \texttt{e040475e37bf6b7440625df41c723738dbe3dbd8}\\
+internal certificate219 & \texttt{5298926f130f3d680dfaa633bbf82e780bd0af84}\\
+off-center annulus220 & \texttt{0c79cd67a002c24a305b70cf707c420aa1bd9ae3}
+\end{tabular}
+\end{center}
+Their complete source reports, objections, supplied context and original
+finite transcripts are retained under the corresponding research folders.
+All three received accept-with-limits source verdicts in a continuing,
+shared-context Codex task; this is role-separated but not independent or
+blinded review. Exact hidden backend identity is unattested. Source218
+required only a citation locator correction after its freeze, preserved
+as a bounded text delta; sources219 and220 required no mathematical
+correction after review. These reports are distinct from this changed
+PDF's required numerical assessment.
+
+Actual owned Colab normal and optimized diagnostics agreed in each unit.
+Source218 checked 160 fields, 960 face/fold cases, 192 moment cases,
+20 scale cases and three rejected negative controls. Source219 checked
+60 small-grid fields, 1680 refined-cell cases, six linear witnesses,
+ten profiles, four low-space cases and three rejected negative controls.
+Source220 checked 20 fields on four small geometries, 120 slab bounds,
+200 directional transports, 120 root bounds, five fields on one full
+weighted profile, five filled-cube cases, six closed-profile cases and
+three rejected negative controls. These are selected finite rational
+diagnostics, not all-size machine proofs, new Lean results or two-fresh-clone
+terminal reproduction. Runtime allocation, real exits, source hashes and
+release/readback records are preserved; billed compute units are unknown.
+
+One positive local input has been derived from the coefficients, and two
+specific extension routes have been stopped by proofs. These local results
+alone did not supply a full-domain partition and count. Section~\ref{sec:balanced223}
+now derives them for the original scalar-gradient question by a different
+balanced-ring mechanism. Earlier stopped harmonic-cost, common-refinement,
+canonical interface-discard and unconditional off-center routes remain stopped. PR29 remains at 20/41 and
+TermSource $=0$. No interacting or continuum conclusion follows.

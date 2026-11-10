@@ -1,0 +1,142 @@
+SOURCE INTEGRATION AUDIT223 — FULL REPORT
+Started: 2026-11-09. Resumed/completed: 2026-11-10.
+Verdict: reject this exact integration pending bounded source-consistency corrections.
+
+No load-bearing mathematical omission was found in balanced-rings223.tex compared with the accepted222 draft and precise addendum. Its finite scalar-gradient construction remains analytically valid within the original source-audit limits. The integration is nevertheless incomplete: an explicit scalar “remains open” statement and a contradictory predecessor remain, together with legacy unqualified missing/open/pending-control wording that needs method/historical scoping. This is an integration rejection, not a new counterexample to222 or a numerical/PDF assessment.
+
+1. Frozen referent and exact captures
+Commit: 1e30fc310acf1361ccc532f2f186b38e4f6634e2
+Repository: C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108
+Directory: papers/flat-coarse-rank/integrated-revision/revision223
+New balanced-rings223.tex:
+ 15888 bytes; raw Git-LF SHA-256
+ 715aaf0ac64e0491db0f21ff78b4ade9f5bd12482371bf8bb966d7ccb0c46c82
+Root flat_critical_integrated.tex:
+ 149844 bytes; raw Git-LF SHA-256
+ 9b831e241f3d7b0206881b49ebd415ab96e98ef725de86ef18a8d5bb51b2e6c4
+All source captures preserve exact git show SHA:path stdout BaseStream bytes, saved with WriteAllBytes, without normalization. These two files have no CR bytes.
+Comparison baseline:
+ 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64,
+ papers/flat-coarse-rank/integrated-revision/revision221.
+All13 current TeX files,12 baseline files and every corresponding diff were captured. The accepted original222 draft, addendum, full report/JSON and selected original execution records were also preserved.
+Own output folder:
+ D:\Datos\the-eriksson-programme\autonomia\evidencia-223\source-audit
+Capture manifest: capture-manifest223.json
+SHA-256, UTF-8 LF:
+ 8e275e70451c4108aa3c4732cdd66398b1e84733ae8696148f854cb920c4683a
+The manifest/captures created before interruption were retained unchanged and their hashes rechecked on resumption.
+
+2. Interruption, actual context and limits
+The resume assignment states: “Prior turn failed with usage-limit error before any verdict”.
+No completed audit223 verdict or numerical review existed before this resumption. The platform's full literal exception text is not visible to this auditor and is not reconstructed. interruption223.txt preserves that limited factual record.
+Interruption-record SHA-256, UTF-8 LF:
+ 7605a1386491c430a95de79aff8615cbace8fca77515ec00f3db00f27f96e177
+This is the SAME continuing /root/defect_plane198_audit task, retaining198/216/217/218/219/220/221A/221B/222 involvement, filesystem/account and prior reports. It is not a fresh, independent or blinded review, and not human peer review.
+Actually exposed description: Codex, an agent based on GPT-6. Exact hidden selected backend/model identifier and reasoning effort are unknown. No new agent, provider/account switch or separately selected model was used.
+The entire new balanced-ring section, complete root delta and all other TeX deltas were read. The original222 proof and addendum were compared in full; the prior full report remains part of this involved context. Status language across all13 files was searched and its surrounding scope inspected. Existing old pages were not comprehensively re-proved.
+No inbound message arrived during active work other than the explicit assignment to resume the interrupted audit. No scientific program, diagnostic, mathematical Python, Lean, Lake, oracle, test, build, render or runtime was executed. Only source/text/git/hash operations were used. No frozen source, branch, PR, programme status, score or other record was edited. No other chat/automation was accessed.
+No numerical grade, stars, exact-PDF grade, new originality finding or permission to publish is supplied. An ungraded render of223A, if present elsewhere, was not inspected and does not determine this verdict.
+
+3. Actual delta and completeness
+Six pre-existing files are byte-identical to221B:
+ boundary-transfer.tex; detour-separation.tex; partition.tex;
+ physical-cycle.tex; shells.tex; sobolev.tex.
+Six pre-existing files changed:
+ flat_critical_integrated.tex; geometry-boundaries221.tex;
+ joint-binary.tex; laminates-green.tex; partial-invariance.tex;
+ spatial-geometry.tex.
+balanced-rings223.tex is new.
+Thus “copies except targeted scope updates” is accurate as a source-layout description, but not every old scope statement was actually updated.
+The root adds a corollary environment used by the new section, rewrites the abstract and theorem map around the scalar construction, updates several current-open statements, adds the new input once, and replaces assessment context with a new no-inheritance statement. The new proof and corollary labels exist, and the prior cube/interval dependencies remain included.
+The other changed old files contain targeted status/attribution wording rather than altered mathematical proofs. The preserved stopped-route results remain scoped as failures of particular methods, not erased or promoted to global counterexamples.
+
+4. Required correction R1 — explicit contradictory OPEN statement
+boundary-transfer.tex, lines242–243:
+“The main fully variable fixed-moment actual-rectangle question remains open.”
+This unchanged sentence directly contradicts the root abstract, the renamed Question27 section and the new balanced-ring theorem/corollary's affirmative finite scalar-gradient answer.
+Make it historical or local to the boundary-transfer mechanism, and point to Section balanced223 for the now-supplied scalar construction. Preserve the actual trace/harmonic-cost counterexamples and their limits. This is a definite missed integration edit, not a mathematical objection to either set of proofs.
+
+5. Required correction R2 — predecessor contradiction
+flat_critical_integrated.tex, lines2749–2750:
+The historical-v8 bibliography parenthetical still says the immediate predecessor of “this candidate” is version11.
+The opening and new assessment context identify version12 as the immediate predecessor. Update the current-parent parenthetical to version12, or explicitly attach it to an earlier historical candidate. The historical v8 citation/link itself can remain.
+This repeats a current-parent consistency failure; it is not resolved by the general statement that older artifacts are historical.
+
+6. Remaining scope cleanup R3–R5
+These passages must be reconciled for the requested complete current-status integration:
+R3, geometry-boundaries221.tex, lines103–104:
+“A global covering and charging theorem at the original target count remains missing.”
+Its location is the selected-shell218 subsection, and the direct independent-layer method still does not supply that theorem. But the sentence is unqualified, while balanced223 now supplies a full-domain construction by another mechanism. Say that direct repetition/this local route alone does not supply the count, with a reference to the later different balanced-ring solution. The revised end of geometry-boundaries221 already uses the correct distinction; the earlier sentence was missed.
+R4, sobolev.tex, lines9–10:
+The old fragment says it claims no solution of “the open critical rectangular-partition problem.” Its own cube proof is correctly only a supporting lemma, but calling the problem currently open is stale in this manuscript. Use “then-open”/historical language, or say this fragment alone does not solve the question and cross-reference balanced223.
+R5, joint-binary.tex, lines172–173:
+The closing status paragraph says the sole unrestricted question “continues to require actual control of intermediate coefficient levels.” That mathematical requirement is not false, but the legacy status phrasing implies it is still an unsupplied link. Scope it explicitly to the binary/comparison section alone and acknowledge the later general construction, consistently with the updated opening of the same file.
+R3–R5 are method/historical-scope corrections, not new proof gaps. R1 and R2 alone already require rejection of the exact current integration.
+
+7. Statements that should NOT be indiscriminately closed
+Root line2026, “It does not construct the unresolved local rectangular observation,” lies in the general matrix-gradient discussion with noncommuting/signed matrix coefficients. The new theorem is for a common positive SCALAR coefficient. It does not resolve that general matrix observation problem. The sentence may profitably say “for these general matrix coefficients,” but it should not be replaced by a false general-matrix closure.
+The lower-moment shells section still says what would be required to exploit its particular thin-shell input and that its overlapping slabs are not the target partition. balanced223 uses a different critical-moment ring mechanism. Those section-scoped limitations remain valid.
+The supplied-cube section's statement that its own hypotheses/construction do not alone resolve the unrestricted problem is also valid. So are physical/continuum open statements, runtime/optimality nonclaims and all stopped-route counterexamples.
+The necessary fix is consistent scope, not deletion of all negative or unresolved language.
+
+8. Proof fidelity: statement, constants and odd-size geometry
+The new section faithfully integrates the accepted draft:
+ original draft hash f2cd7941ccc8e9fa30e3a8742d5e814b0e4bcdc83ded16426b48b78c7deac057;
+ precise addendum hash 2e0396adb9029db384c34fcf270cedef5187cde1f5805097475a8c2982f48514.
+The exact original report/JSON hashes remain6d229bc87db95769d7fd153d8e39afc6954bb07707923ac64b607ca6043b667e and372d61b96955ac2e42e5eb0f9854e45c4b633b6e6d23281aa12400165d1a5908.
+D>=3,n>=1,c>0 and finite positive a are now explicit. Fixed axis/child/slab order, ancestor-to-descendant grouping and nonempty residual conventions address the three earlier clarifications without new hypotheses or constants.
+P=D/2,b=2^D,J=2D,
+ P_D=2J(1+12J),
+ C_ext=1+J(P_D+1),
+ G_D=2^(2D+10)D^2 C_ext^2,
+ t=(cG_D)^(-P)/b
+are unchanged.
+Global floor/ceiling halving gives side lengths h_k or h_k+1, with h_k=max(1,floor(n/2^k)). For a descendant hole use its global depth, not the depth of Q or that hole's own minimum side. Positive clearance is a union of intervals of that depth and is at least h_k. The n=3 large-child clearance-one attack is still handled.
+For Q with all sides>=2, the descendant is shorter in every direction. Expanding each positive-clearance face by h_k gives B-side lengths in[2h_k,4h_k]. Slabs have normal width h_k and actual overlap/volume ratios<=4 and<=2. If Q has a singleton direction, every side is1 or2 and the corner-singleton small case is separately treated. No odd/small geometry premise was omitted.
+
+9. Proof fidelity: BV trace and critical weighted gap
+The interval L1 variance coefficient2r(m-r)/m<=m/2, commuting L1-contractive coordinate averages, and longest side<=4h_0 yield V1<=2h_0 TV. Actual intersection averaging gives the coefficient4; the depth-two path gives4V1_i+12V1_p+8V1_r. Edge multiplicity<=J gives P_D h_0 TV_A. These constants and actual-geometry qualifications are retained.
+The outside h_0-layer at every positive-clearance face has tangential sides of I. Its fiber endpoint estimate bounds all actual hole-crossing jumps. Boundary-touching faces create no exterior edges; h_0=1 has no fiber gradient. Filling the hole by c_0 therefore costs at most C_ext TV_Omega. This is UNWEIGHTED variation; no weighted extension or coefficient reassignment was inserted.
+Finite cube edge isoperimetry follows the occupied/nonfull fibers and the existing finite projection proof. Median/coarea/Minkowski yield the stated conservative BV constant. Aspect-two folding has at most two preimages per coordinate, including singleton cases, and is unweighted only.
+The indicator norm lower bound and the constant-fill extension give
+ c_Omega=c_iso/(2^(D+2)C_ext).
+With alpha=2(D-1)/D,q=2D/(D+2),q'=2D/(D-2), the identities alpha*r=2 and(alpha-1)q'=2 hold. Degree<=2D gives the exact power/Holder endpoint factor. Median recombination needs no extra factor. Then
+ K_Omega^2 D^(2/D)<=2^(2D+10)D C_ext^2<=G_D
+is correct.
+Only afterward is weighted Holder applied to ORIGINAL retained Omega edges, using at most D starts per site and exponent q/(2-q)=D/2. No hole coefficient, reflected weight or moved incoming start appears.
+For the small Boolean-cube/corner graphs, paths of length<=b-1 give the safe b^2 E1 bound, and E1<=S(Omega)^(2/D)Ea; G_D>=b^2. Singleton variance is zero. Thus the regional critical bound is complete. Full rectangles admit the same conservative constant without a hole.
+
+10. Proof fidelity: complete heavy-tree partition and count
+Heavy means mass>t. Terminal heavy nodes are disjoint, so L<=S/t, and branching count B_h<=L-1. Contracted unary chains number at most B_h+L<=2L-1, including a possible root-leading chain.
+Each unary increment contains at most b-1 light children, mass<=(b-1)t. Closing at the first cumulative mass>=t produces a nested-node ring of mass in[t,bt); a nonempty residual has mass<t. The geometry really is ancestor-minus-descendant, not an arbitrary hole.
+Closed groups are disjoint and count<=S/t. The residual count is<=2L-1. Branching/terminal internal nodes output light children; heavy singleton terminals output themselves, giving at most b(B_h+L)<=b(2L-1) other regions. Unary rings exclude the endpoint subtree, which is processed separately, so there is neither an uncovered heavy branch nor double coverage.
+This yields1+(2b+3)S/t regions; light-root and singleton-root cases are safe. Every nonsingleton has mass<=bt=(cG_D)^(-D/2), hence actual residual gap>=c. Heavy singletons need no false positive gap. The fixed-order construction is coefficient-only and finite; no algorithmic complexity claim was added.
+
+11. Proof fidelity: rectangular means, original energy and h
+Each ring splits into at most2D nonempty first-exterior-coordinate rectangles; cubes/singletons need one. The mean comparison q_Omega^2<=sum q_B^2 is the correct Cauchy inequality.
+The proof retains EVERY actual edge crossing rectangular pieces of the SAME ring. It uses that regional gap and larger sum of rectangle-mean penalties. It does not infer a separate gap on every observation rectangle. Summing over disjoint regions discards only nonnegative inter-region edges, exactly avoiding219's failed internal-cell certificate.
+This proves the stated rectangle count and K=c global inequality. Periodic wrap occurrences add nonnegative energy, including the small-n conventions. Counting rows are |B|^(-1/2)sum_B f; dividing all squared quantities by V=n^D gives V^(-1/2)q_B, with no missing N factor.
+The actual original ap:eq:energy is a unit-spacing positive-start componentwise gradient with ONE shared scalar a(x). Its real field dimension is h=D(N_c^2-1). Applying the SAME partition componentwise gives output dimension h#R and unchanged penalty coefficient. The all-field bound restricts to divergence-zero fields; no claim that the means preserve the constraint is needed.
+For mu>=1 and the original critical moment,
+ S<=Mn^D mu^(-P)<=2^P M max{1,n^D/(1+mu)^P}.
+Substituting1/t=b(cG_D)^P and multiplying by h gives exactly the new C_rect. It is a new safe target-order constant, not the previous spectral theorem's numerical constant or a sharp rank.
+The stated finite scalar-gradient closure is justified by this analytic construction. It is not a variable-weight curl identity, a general matrix-coefficient construction, a physical producer or a continuum result.
+
+12. Brudnyi, assessment context and finite evidence
+The changed geometry-boundaries comparison now expressly includes Appendix I Remark I.2 and boundary-touching dyadic holes. balanced-rings223 also cites Appendices I–II, says the ring/BV/tree methods are classical and treats atomic masses by heavy singletons rather than importing continuum absolute continuity. These are accurate qualifications compared with the primary context already read in the222 audit. No fresh novelty or exhaustive equivalence claim is supplied.
+The root's new assessment context correctly distinguishes222's involved source audit from a new exact-PDF assessment, discloses shared prior history and unknown backend/effort, and prohibits grade inheritance/resampling. Its first current assessment is not invented.
+The captured original222 stdout files agree byte-for-byte; recorded exit files contain exactly0 followed by LF. Their counts match the new section:216 geometries,648 BV,200 partitions,71232 regional-field,800 global-field,3 rejected controls and1668 counted within-ring cross-piece edge occurrences.
+Those are retained selected diagnostics, not premises of the mathematical proof, a replay by this auditor, all-size machine proof, new Lean evidence or independent fresh-clone reproduction.
+The original draft's initial UNREVIEWED label and prior audit's then-pending-diagnostics statement are correctly preserved as historical context. The addendum explains their chronology without changing source/report bytes.
+Service-side runtime ownership/release, billed units and the remote version12 PDF/hash/score/page count were not independently authenticated here. The manuscript's statements about them remain retained provenance assertions, not new measurements. No PDF was inspected. The bibliography contradiction R2 is internally visible regardless of remote access.
+
+13. Final disposition
+Reject exact1e30fc310acf1361ccc532f2f186b38e4f6634e2 as a COMPLETE source integration:
+- Fix the explicit global scalar OPEN contradiction in boundary-transfer.
+- Fix the current-parent v11/v12 contradiction.
+- Scope the remaining selected-shell missing-count, Sobolev open-problem and binary pending-control passages consistently with the new result.
+Do not falsely close the general matrix-coefficient or physical/continuum problems; keep section-specific stopped-route limitations.
+The full balanced-ring mathematical integration passes this involved analytic reading and preserves the accepted222 statement/proof/addendum. The rejection is for missed current-status integration edits, not a mathematical falsifier, a grade or a change to previous source verdicts.
+No source/status edit was made by this auditor.
+
+Report representation: UTF-8 without BOM, LF, final newline.

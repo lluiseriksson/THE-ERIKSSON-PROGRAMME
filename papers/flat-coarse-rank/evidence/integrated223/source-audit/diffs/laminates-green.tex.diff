@@ -1,0 +1,14 @@
+diff --git a/papers/flat-coarse-rank/integrated-revision/revision221/laminates-green.tex b/papers/flat-coarse-rank/integrated-revision/revision223/laminates-green.tex
+index d5624a9e..166c46ff 100644
+--- a/papers/flat-coarse-rank/integrated-revision/revision221/laminates-green.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision223/laminates-green.tex
+@@ -400,7 +400,8 @@ The exact source proofs and replay entrypoints are
+ \path{scripts/laminated_rectangles185.py}.
+ Complete raw replay archives are also included in this integrated source package.
+ 
+-The sole unrestricted critical rectangular question remains open.
++The unrestricted finite scalar-gradient construction is supplied later in
++Section~\ref{sec:balanced223}; this Green-certificate route alone does not prove it.
+ A proposed extension must derive genuine transverse or all-fibre control
+ from its coefficient hypotheses; one favourable fibre is insufficient.
+ The strong Green test alone is abandoned at and below the critical

@@ -1,0 +1,175 @@
+\section{Joint trace discrepancies and constructive binary partitions}
+\label{sec:binary200}
+A failed comparison need not prevent a successful choice of observations.
+We first strengthen the preceding harmonic-cost diagnostic, then record a
+binary scalar corollary of the existing threshold construction.
+The corollary uses actual internal energy, not separate exterior
+minimizers. The general intermediate-coefficient construction is supplied later in
+Section~\ref{sec:balanced223}; this binary corollary alone does not prove it.
+
+\subsection{A growing-dimensional discrepancy}
+Use the family of Theorem~\ref{thm:boundary195-aggregate} on the subsequence
+$n=s^{2D}$, $H=s^4$, with even $s\ge2$ and $D\ge4$. Put $d=D-1$,
+$m=n/2$ and $T=(\mathbb Z/n\mathbb Z)^d$. The exact actual mean and
+moment bounds there still hold: $\frac23H\le\mu<H$, $1\le a\le2\mu$
+and $1\le M_a<3$.
+For $y\ne0$ retain $R_y=\{(0,y),(1,y)\}$, and let $U$ be their union.
+Define two distinct quadratic forms on real traces:
+\[
+ S_U(u)=\min_{f|_U=u}E_a(f),\qquad
+ B_{\rm sep}(u)=\sum_{y\ne0}Q_{R_y}(u|_{R_y}).
+\]
+The grounded-block argument above makes $S_U$ well defined with constant
+kernel; it is positive definite on the counting-mean-zero trace hyperplane.
+The separate summands minimize different global fields.
+Write $C_d=d3^{d-1}/2$, $K_d=3+2C_d$ and $\beta_D=4+2\pi^2d$.
+\begin{proposition}\label{prop:jb200-rank}
+For each fixed $A>0$ and all sufficiently large even $s$, any real-linear
+maps $C:\mathbb R^U\to F$ and $V:\mathbb R^U\to\mathbb R^U$, and any
+function $\Phi$ with $\Phi(0)=0$, satisfying
+\[
+ B_{\rm sep}(u)\le A S_U(u)+\Phi(Cu)+\langle u,Vu\rangle
+\]
+for all traces, or on a neighborhood of zero, must obey
+\[
+ \rank C+\rank V\ge L_s=(2s^{D-2}+1)^{D-1}-1
+ \ge n^{(D-2)(D-1)/(2D)}.
+\]
+No symmetry or positivity of $V$, or continuity of $\Phi$, is required.
+\end{proposition}
+\begin{proof}
+The five-change comparison in the preceding theorem gives the individually
+minimized pair form $g_y(v_0-v_1)^2$ with $g_y\ge H/K_d$; hence
+$Q_{R_y}=(g_y-1)(v_0-v_1)^2$.
+Set $R=s^{D-2}$, so $R^2=n/H$ and $R<n/2$. The real Fourier space on $T$
+with frequencies $|k_i|\le R$ has dimension $(2R+1)^d$: the frequency
+box is conjugation symmetric and contains no nonzero Nyquist character.
+Evaluation at zero is a nonzero functional since constants belong to the
+space. Its kernel $G_R^0$ therefore has dimension $L_s$.
+For $g\in G_R^0$ put $u_g(0,y)=g(y)$ and $u_g(1,y)=-g(y)$ for $y\ne0$.
+These traces are mean zero; the map is injective because $g(0)=0$, and
+$\|u_g\|^2=2\|g\|^2$. For $H\ge2K_d$,
+\[
+ B_{\rm sep}(u_g)=4\sum_{y\ne0}(g_y-1)|g(y)|^2
+ \ge (H/K_d)\|u_g\|^2.
+\]
+Here the coefficient $g_y$ of the pair form is distinct from the field $g$.
+
+Let $\sigma(t)=1$ on $0,m+1,\ldots,n-1$ and $-1$ on $1,\ldots,m$.
+The extension $f_g(t,y)=\sigma(t)g(y)$ is globally mean zero, regardless of
+the mean of $g$. Its longitudinal energy is exactly
+$8\|g\|^2+4(H-1)|g(0)|^2=8\|g\|^2$. Its transverse energy is
+\[
+ \sum_y\big[(n-2)H+2+(H-1)\mathbf1_{y=0}\big]
+       \sum_{l=1}^d|D_lg(y)|^2\le nH E_T(g).
+\]
+The derivatives $D_lg(0)$ have not been set to zero. Fourier support gives
+$E_T(g)\le4\pi^2dR^2\|g\|^2/n^2$. Therefore
+\[
+ S_U(u_g)\le E_a(f_g)\le(8+4\pi^2d)\|g\|^2
+                      =\beta_D\|u_g\|^2.
+\]
+When $H>AK_d\beta_D$, every nonzero vector in this $L_s$-dimensional
+trace space violates $B_{\rm sep}\le A S_U$. If the combined rank of
+$C,V$ were less than $L_s$, their joint kernel in that space would contain
+a nonzero vector. Both repair terms vanish there. Scaling that vector
+toward zero also handles a neighborhood-only inequality. Finally
+$L_s\ge s^{(D-2)(D-1)}$ gives the displayed power of $n$.
+\end{proof}
+The same subspace gives at least $L_s$ generalized eigenvalues of
+$B_{\rm sep}/S_U$ at least $H/(K_d\beta_D)$ on the mean-zero trace
+hyperplane, by finite-dimensional min--max. This necessity is not shown
+sharp or sufficient. Its exponent is below the allowed $n^{D-1}$ count
+for this family. It does not rule out growing-rank repairs or selectable
+partitions, and does not address $D=3$ through this comparison.
+
+\subsection{Binary corollary of the existing threshold construction}
+The following is an explicit specialization of
+Section~\ref{ap:sec:spatial-new}, not a new construction.
+\begin{proposition}\label{thm:jb200-binary}
+Let $D\ge3,n\ge3$ be integers, $c>0,H\ge1$, $p=D/2$, $N=n^D$,
+and let $a:(\mathbb Z/n\mathbb Z)^D\to\{1,H\}$ have exact mean $\mu$
+and $N^{-1}\sum_x(\mu/a(x))^p\le M$. There is a nonwrapping integer
+rectangle partition with normalized scalar means
+\[
+ (Pf)_R=\frac{\sum_R f}{\sqrt{N|R|}},\qquad
+ \|f\|_N^2=N^{-1}\sum_X|f|^2,
+\]
+satisfying, for every real scalar $f$,
+\begin{align}
+ N^{-1}E_a(f)+c\|Pf\|_2^2&\ge c\|f\|_N^2,\label{eq:jb200-penalty}\\
+ \rank P&\le2^p\big[(1+\sqrt c)^D+2DM\big]
+ \max\{1,(n/\sqrt{1+\mu})^D\}.\label{eq:jb200-count}
+\end{align}
+Here $E_a(f)=\sum_{x,i}a(x)|D_if(x)|^2$ uses positive-start weights.
+No upper envelope $a\le2\mu$ is required; $H$ need not be attained.
+\end{proposition}
+\begin{proof}
+Use the threshold construction of Section~\ref{ap:sec:spatial-new} with
+$\tau=H$. Its geometric and internal-energy argument uses only $a\ge1$;
+the standing upper envelope in that section is unused in this argument.
+For $H>1$ the set $\{a<H\}$ consists of coefficient-one vertices, whose
+actual moment contribution gives $\#\{a<H\}\le MN/\mu^p$.
+For $H=1$ that set is empty. Thus the earlier rectangle count, with
+$B_c=(1+\sqrt c)^D$ and $1\le\mu\le H$, gives
+\[
+ J\le B_c\max(1,N/H^p)+2DMN/\mu^p
+ \le(B_c+2DM)\max(1,N/\mu^p).
+\]
+Dividing the scalar version of~\eqref{ap:eq:globalmeans} by $N$ gives
+\eqref{eq:jb200-penalty}, since $P=C_{\mathcal P}/\sqrt N$.
+The $J$ rows have disjoint nonempty supports, so their rank is $J$.
+Finally $1+\mu\le2\mu$ proves~\eqref{eq:jb200-count}.
+The singleton branch of the earlier construction also covers $H<c/4$.
+\end{proof}
+For constant $f=1$, both squared normalized norms equal one and the energy
+is zero, so $K\ge c$ is necessary in this convention; the construction
+attains $K=c$ without claiming minimum rank. For $r$ independent real
+components the means have $rJ$ scalar coordinates, not $J$.
+The two-plane comparison family above is included: a failed prescribed
+comparison coexists with successful selectable observations.
+
+\subsection{A failed extension to intermediate values}
+For even $n$ put $a=H/2$ on half the vertices and $a=H$ on the rest, with
+$H\ge2$. Then $\mu=3H/4$, $a\le2\mu$, and
+\[
+ M_a=\tfrac12[(3/2)^p+(3/4)^p]
+\]
+is independent of $H$. Nevertheless the attempted unit-cost bound
+$|\{a<H\}|\le M_aN/\mu^p$ would require $H^p\le2^p+1$, and fails for
+larger $H$. The actual moment does not pay unit cost per intermediate
+vertex. Rounding these coefficients down to one changes the hypotheses.
+This is a falsifier of that cardinal lemma, not of the target partition
+statement: the same field is uniformly strong at scale $H/2$. A derived
+multilevel construction remains necessary for the unrestricted question.
+
+\subsection{Model assessments and review context}
+The comparison continuation and earlier binary corollary are recorded in
+source units 197--199. Inventory correction201 identifies the binary result
+as a direct corollary already available from the earlier threshold section;
+source198 is a special case, and source201A reproduces earlier threshold
+results. None is counted here as a new mathematical advance. Revision202
+removes the duplicate proof while retaining its historical sources and reports.
+Complete exact-source reports and preparing-agent responses are retained
+with the immutable manifest. Source198 supplies a special-case check rather
+than another paper. The separate Codex audit tasks were fresh
+\texttt{fork\_turns=none} tasks with inherited configuration and shared
+filesystem/account. The exposed description was Codex based on GPT-6;
+precise served backend and reasoning effort were not exposed. No model,
+statistical or organizational independence, human peer review or formal
+verification is claimed. The full adverse findings remain attached,
+including scalar/component rank, unproved optimality or runtime complexity,
+and unestablished priority. No previous PDF grade transfers to this changed
+manuscript; an exact-PDF numerical assessment and visible stars are still
+required before a new publication-ready claim.
+
+The Fourier, Schur, rank-nullity, Poincare and rectangle-cutting ingredients
+are classical. The comparison diagnostic and earlier threshold corollary separate a
+failed comparison from a successful binary-class construction; their
+originality is not established by this limited primary-source comparison.
+No physical hypothesis of Yang--Mills is removed. The continuum remains
+open; PR29 stays recorded at 20/41 with TermSource0, not newly certified by
+these source audits. This binary/comparison section alone does not supply
+the required control of arbitrary intermediate coefficient levels. The later
+Section~\ref{sec:balanced223} derives that control, complete cover and
+count for the finite scalar-gradient question.
