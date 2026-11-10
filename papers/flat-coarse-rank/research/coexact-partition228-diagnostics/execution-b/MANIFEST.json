@@ -1,0 +1,49 @@
+{
+  "files": [
+    {
+      "file": "coexact-common-rank228-draft.txt",
+      "bytes": 8775,
+      "sha256": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e"
+    },
+    {
+      "file": "coexact_partition_rank_diagnostic228.py",
+      "bytes": 5819,
+      "sha256": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c"
+    },
+    {
+      "file": "normal.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "normal.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "normal.stdout",
+      "bytes": 2620,
+      "sha256": "cc1a1bd9523417a98864ae509a6d41b90a04e02a68d76d2f6618629e5bd0d117"
+    },
+    {
+      "file": "optimized.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "optimized.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "optimized.stdout",
+      "bytes": 2620,
+      "sha256": "cc1a1bd9523417a98864ae509a6d41b90a04e02a68d76d2f6618629e5bd0d117"
+    },
+    {
+      "file": "report.json",
+      "bytes": 946,
+      "sha256": "e2e72c7f54278afbde41982843deb391038dcd566170e593747832cb0e5975e8"
+    }
+  ]
+}

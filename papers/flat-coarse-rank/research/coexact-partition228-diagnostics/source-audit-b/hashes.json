@@ -1,0 +1,52 @@
+{
+  "algorithm": "SHA256",
+  "B_source_raw_sha256": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c",
+  "A_source_raw_sha256": "6c1d7b85bd0e7174101b795a97f14f213c61a6888e628c361453f61c60fc4cbe",
+  "captures": [
+    {
+      "file": "capture/coexact_partition_rank_diagnostic228.py",
+      "bytes": 5819,
+      "sha256": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c",
+      "representation": "raw source bytes or raw no-index diff stdout as file identifies",
+      "normalization": "none"
+    },
+    {
+      "file": "capture/script-a-to-b.patch",
+      "bytes": 3523,
+      "sha256": "e0e16eda4ccaa10ed5d3c9d449b4c8cb5937da8f4d7326940d555043b9a9cbe0",
+      "representation": "raw source bytes or raw no-index diff stdout as file identifies",
+      "normalization": "none"
+    }
+  ],
+  "original_A_audit_raw_UTF8_LF_hashes": {
+    "fullreport.txt": "62380659b751a661ec624c3824a002e653e43e7b38cf8c69761b6e56e222d0f1",
+    "verdict.json": "990077df1bcceedd3fa5cbd0351bd59af6171f7b6eddf9811720c2bb4df5d183",
+    "context.json": "34d151fa044a4a6433aa0c90bebe5826bb84730d2f0c9b442ef419f2f975bbe4",
+    "hashes.json": "d145d3ac1596dd3ef82b78e13e72ee1fd6b26c105dec8c60138499973ed822c4"
+  },
+  "original_integrity": "All aboveAhashesmatchpriorhandoff; no original edits",
+  "outputs": [
+    {
+      "file": "fullreport.txt",
+      "bytes": 8542,
+      "sha256": "5baa2f211c9e74fa0dd8ba227bbb0ceb1a16ce5969e828cfb13a89ae29f2dffb",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "verdict.json",
+      "bytes": 1713,
+      "sha256": "74b98931d517124a9488863256156248f46bc0da961dccc930f2f3f05184b4f2",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "context.json",
+      "bytes": 1633,
+      "sha256": "14def614897aeb869c10e6d1eb743e9b4798c0285ef640847e7255e842436619",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    }
+  ],
+  "self_hash": "Given separately in final handoff; not recursively embedded."
+}

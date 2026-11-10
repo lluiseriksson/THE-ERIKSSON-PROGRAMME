@@ -1,0 +1,37 @@
+{
+  "unit": 228,
+  "artifact": "coexact_partition_rank_diagnostic228.py",
+  "raw_sha256": "6c1d7b85bd0e7174101b795a97f14f213c61a6888e628c361453f61c60fc4cbe",
+  "verdict": "reject",
+  "rejection_scope": "Acceptance-protocol finding, not analytical lemma or observed mathematical diagnostic failure.",
+  "blocking_findings": [
+    {
+      "id": "M1",
+      "lines": "86-98",
+      "finding": "No explicit completed-case/control-set/count acceptance check before CHECKED status and ten-case/three-control success prose.",
+      "governance": "Programme Operational Governance Charter requires explicit checked acceptance counter before certifier success publication. Applying that requirement to CHECKED is disclosed as audit interpretation; script does not literally emit PASS.",
+      "required": "Explicit need on intended10completedcases and required3controls/actualrejectedcount before status return; no source edit performed."
+    }
+  ],
+  "mathematical_findings": [],
+  "checks": {
+    "actual_delta_signs_shifts_and_internal_indices": "accepted",
+    "all_twoform_basis_image": "accepted",
+    "divergence_and_mean": "necessary consequences checked, not sole coexact membership test",
+    "arbitrary_nonempty_partition_labels": "accepted",
+    "normalized_row_scaling": "analytical rank invariance, no square-root approximation",
+    "fractionfree_integer_rank": "rank-preserving row operations and gcd reductions",
+    "bound": "D*actual_image_rank>=g(R-1), no hR assumption",
+    "selected_cases": "10staticallypresent; completedcountnotexplicitlyguarded",
+    "negative_controls": "3realfield/outputmutations mathematicallymeaningful, notexecuted"
+  },
+  "nonblocking_limits": [
+    "The /content sentinel is not proof of owned Colab/Linux runtime.",
+    "Counting-row rank invariance is analytical, not an executed normalized-row implementation test.",
+    "Only new rank lemma cases; no fixedL16multi-bump coefficient/budget family execution or all-size proof."
+  ],
+  "tests_executed": false,
+  "numerical_grade": null,
+  "analytical228verdict_unchanged": true,
+  "report": "fullreport.txt"
+}

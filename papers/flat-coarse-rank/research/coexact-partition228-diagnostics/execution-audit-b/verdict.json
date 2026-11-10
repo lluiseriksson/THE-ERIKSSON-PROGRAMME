@@ -1,0 +1,57 @@
+{
+  "unit": 228,
+  "artifact": "actual selected diagnostic B execution evidence",
+  "scientific_source_commit": "b0fa153f3cc2a790e659177127de27a03231a11f",
+  "verdict": "accept_with_limits",
+  "blocking_findings": [],
+  "archive": {
+    "sha256_raw_bytes": "cda632040ffa9eee46c692bced1fbe9e1c9fae2d46aa05e2dafacd2c6efd80fc",
+    "bytes": 10271,
+    "unique_entries": 10,
+    "manifest_payloads_verified": 9,
+    "all_extracted_files_match": true
+  },
+  "source_pins": {
+    "script": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c",
+    "proof": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e",
+    "raw_Git_b0fa_matches": true
+  },
+  "execution_evidence": {
+    "normal_exit": 0,
+    "optimized_exit": 0,
+    "stderr_both_empty": true,
+    "stdout_both_bytes": 2620,
+    "identical_raw_stdout_sha256": "cc1a1bd9523417a98864ae509a6d41b90a04e02a68d76d2f6618629e5bd0d117",
+    "accepted_cases": 10,
+    "rejected_named_controls": 3,
+    "reported_ranks": [
+      0,
+      0,
+      0,
+      14,
+      4,
+      4,
+      8,
+      9,
+      52,
+      90
+    ],
+    "lifecycle_all_four_exits": 0,
+    "recorded_backend_readback_exit": 0,
+    "recorded_backend_readback": "No active sessions found on server",
+    "runtime_count": 1,
+    "mode_count": 2
+  },
+  "source_audit_history": "Original A reject and B accept_with_limits read in full and hash-matched unchanged; original rejection was protocol interpretation, not observed mathematical failure.",
+  "nonblocking_provenance_note": "Requested228scriptpathnotpresentatparent-contextmain80ee; actualexecutionisboundtob0fa, not a certified80ee/PR205sciencebinding.",
+  "limits": [
+    "Ten selected rank-lemma cases only; fullL16bump/budgetfamily not executed.",
+    "One runtime/two modes are not independent fresh-clone replay.",
+    "No new auditor scientific execution or live runtime polling.",
+    "Runtime CPU/high-memory ownership and resource values are recorded execution-role evidence, not independently measured by auditor.",
+    "No all-size executable proof, formal certification, novelty, physical result or numerical paper grade."
+  ],
+  "numerical_grade": null,
+  "new_execution_by_auditor": false,
+  "report": "fullreport.txt"
+}

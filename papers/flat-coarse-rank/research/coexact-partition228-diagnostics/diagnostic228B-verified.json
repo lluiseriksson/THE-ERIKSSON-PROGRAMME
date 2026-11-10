@@ -1,0 +1,185 @@
+{
+  "unit": 228,
+  "scientific_source_commit": "b0fa153f3cc2a790e659177127de27a03231a11f",
+  "archive_sha256_raw_bytes": "cda632040ffa9eee46c692bced1fbe9e1c9fae2d46aa05e2dafacd2c6efd80fc",
+  "archive_bytes": 10271,
+  "manifest_payloads_checked": 9,
+  "actual_report": {
+    "started_utc": "2026-11-10T19:24:39.408234+00:00",
+    "source_context": "sourceb0fa153f3cc2a790e659177127de27a03231a11f",
+    "input_pins": {
+      "coexact_partition_rank_diagnostic228.py": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c",
+      "coexact-common-rank228-draft.txt": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e"
+    },
+    "python": "3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]",
+    "runtime": "Own ColabLinux CPU highmemory; no Windows scientific execution",
+    "compute_units_billed": null,
+    "exits": {
+      "normal": 0,
+      "optimized": 0
+    },
+    "source_audit_pending": false,
+    "scope": "Selected new coexact-rank lemma only; full L16bump/matrix budget family is not executed.",
+    "status": "FINITE_DIAGNOSTICS_CHECKED",
+    "normal_optimized_output_equal": true,
+    "finished_utc": "2026-11-10T19:24:40.388388+00:00",
+    "elapsed_seconds": 0.9803206319999163,
+    "child_maxrss_kib": 105968
+  },
+  "selected_output": {
+    "accepted_cases": 10,
+    "cases": [
+      {
+        "D": 3,
+        "R": 1,
+        "columns_actual_delta_basis": 3,
+        "g": 1,
+        "lower_denominator": 3,
+        "lower_numerator": 0,
+        "n": 1,
+        "output_rows": 3,
+        "partition": "root",
+        "true_image_rank": 0
+      },
+      {
+        "D": 3,
+        "R": 1,
+        "columns_actual_delta_basis": 6,
+        "g": 2,
+        "lower_denominator": 3,
+        "lower_numerator": 0,
+        "n": 1,
+        "output_rows": 6,
+        "partition": "root",
+        "true_image_rank": 0
+      },
+      {
+        "D": 3,
+        "R": 1,
+        "columns_actual_delta_basis": 24,
+        "g": 1,
+        "lower_denominator": 3,
+        "lower_numerator": 0,
+        "n": 2,
+        "output_rows": 3,
+        "partition": "root",
+        "true_image_rank": 0
+      },
+      {
+        "D": 3,
+        "R": 8,
+        "columns_actual_delta_basis": 24,
+        "g": 1,
+        "lower_denominator": 3,
+        "lower_numerator": 7,
+        "n": 2,
+        "output_rows": 24,
+        "partition": "singletons",
+        "true_image_rank": 14
+      },
+      {
+        "D": 3,
+        "R": 2,
+        "columns_actual_delta_basis": 48,
+        "g": 2,
+        "lower_denominator": 3,
+        "lower_numerator": 2,
+        "n": 2,
+        "output_rows": 12,
+        "partition": "parity",
+        "true_image_rank": 4
+      },
+      {
+        "D": 3,
+        "R": 3,
+        "columns_actual_delta_basis": 81,
+        "g": 1,
+        "lower_denominator": 3,
+        "lower_numerator": 2,
+        "n": 3,
+        "output_rows": 9,
+        "partition": "stripes",
+        "true_image_rank": 4
+      },
+      {
+        "D": 3,
+        "R": 3,
+        "columns_actual_delta_basis": 162,
+        "g": 2,
+        "lower_denominator": 3,
+        "lower_numerator": 4,
+        "n": 3,
+        "output_rows": 18,
+        "partition": "diagonal3",
+        "true_image_rank": 8
+      },
+      {
+        "D": 3,
+        "R": 4,
+        "columns_actual_delta_basis": 81,
+        "g": 1,
+        "lower_denominator": 3,
+        "lower_numerator": 3,
+        "n": 3,
+        "output_rows": 12,
+        "partition": "disconnected4",
+        "true_image_rank": 9
+      },
+      {
+        "D": 3,
+        "R": 27,
+        "columns_actual_delta_basis": 81,
+        "g": 1,
+        "lower_denominator": 3,
+        "lower_numerator": 26,
+        "n": 3,
+        "output_rows": 81,
+        "partition": "singletons",
+        "true_image_rank": 52
+      },
+      {
+        "D": 4,
+        "R": 16,
+        "columns_actual_delta_basis": 192,
+        "g": 2,
+        "lower_denominator": 4,
+        "lower_numerator": 30,
+        "n": 2,
+        "output_rows": 128,
+        "partition": "singletons",
+        "true_image_rank": 90
+      }
+    ],
+    "negative_controls": {
+      "dropping_transverse_outputs_breaks_bound": true,
+      "one_wrong_shift_rejected": true,
+      "wrong_codifferential_sign_rejected": true
+    },
+    "negative_controls_rejected": 3,
+    "projected_measurement_counterexample": {
+      "D": 3,
+      "R": 3,
+      "columns_actual_delta_basis": 81,
+      "g": 1,
+      "lower_denominator": 3,
+      "lower_numerator": 2,
+      "n": 3,
+      "output_rows": 3,
+      "partition": "stripes",
+      "true_image_rank": 0
+    },
+    "scope": "Ten selected actual coexact delta-image rank matrices; nonzero normalized row-scaling invariance; three real field/output mutations. Does not execute the fixedL16multi-bump coefficient/budget family, prove all sizes, certify historical novelty, provide numerical paper grade or independent clone replay.",
+    "status": "SELECTED_EXACT_COEXACT_RANK_LEMMA_DIAGNOSTICS_CHECKED"
+  },
+  "source_audit": "diagnostic-source-audit-b:accept_with_limits",
+  "runtime_open_requested_utc": "2026-11-10T19:23:50Z",
+  "runtime_release_finished_utc": "2026-11-10T19:24:45Z",
+  "limits": [
+    "Ten selected exact integer matrices only; not all-size proof or full L16 coefficient-budget-family execution.",
+    "One own runtime, normal/-O are not independent clone replays.",
+    "No formal verification, novelty priority, new manuscript grade or physical gap claim."
+  ],
+  "scientific_execution": true,
+  "new_paper": false,
+  "numerical_grade": null
+}

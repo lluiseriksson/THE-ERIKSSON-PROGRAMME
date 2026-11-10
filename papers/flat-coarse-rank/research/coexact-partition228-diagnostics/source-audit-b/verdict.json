@@ -1,0 +1,32 @@
+{
+  "unit": 228,
+  "artifact": "diagnostic-b/coexact_partition_rank_diagnostic228.py",
+  "raw_sha256": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c",
+  "verdict": "accept_with_limits",
+  "blocking_findings": [],
+  "material_findings": [],
+  "prior_M1": "Resolved: explicit10completedcase gate, exact3controlnames, per-name actualTrue checks and3completedrejection gate all precede CHECKED return.",
+  "old_rejection_scope": "Original source did not literally emit PASS; prior reviewer applied charter success-counter rule to CHECKED declaration. Prior rejection was not an observed mathematical failure and remains immutable.",
+  "checks": {
+    "complete_B_and_diff": "read",
+    "generator_signs_shifts": "accepted",
+    "actual_full_delta_image_basis": "accepted",
+    "divergence_and_means": "necessary consequences correctly checked",
+    "partition_nonemptiness": "accepted",
+    "normalized_rank": "analytical invertible row scaling",
+    "exact_rank": "integer rank-preserving elimination/gcd",
+    "counter_gates": "all checked before status",
+    "selected_cases": "10fixedspecifications, not executed",
+    "controls": "3actualfield/outputmutations with mandatoryexactkeys/results/count",
+    "bare_assert_acceptance": "none"
+  },
+  "execution": "Not performed; normal/-O and freshBwrapper pending in parent role",
+  "limits": [
+    "Selected new rank lemma only; no fullL16coefficient/budgetfamily or all-size execution.",
+    "/content guard is not runtime ownership authentication.",
+    "No numerical grade, independent replay, priority or formal certification."
+  ],
+  "original_A_source_and_reports_untouched": true,
+  "numerical_grade": null,
+  "report": "fullreport.txt"
+}

@@ -1,0 +1,291 @@
+{
+  "algorithm": "SHA256",
+  "inputs": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\diagnostic228B-verified.json",
+      "bytes": 5711,
+      "sha256": "1aac559c8a81a4c83469f5762d2b364ddc073fc4242be9889d10342a500543de",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\execution-preregistration228B.json",
+      "bytes": 1600,
+      "sha256": "95abd01d043b1cc2cb73e4039c3385e946ffd139cfc2fe8e611eafbacd685c23",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\run_diagnostic228B.py",
+      "bytes": 3384,
+      "sha256": "ddb5b1c283313bf00dae96fc4d9c1d041feb3205aac3aea7ee1645b69de7d94a",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\run228B.sh",
+      "bytes": 1610,
+      "sha256": "d057ff1a4b4de2ae0f6ac9a1d9359c75c86a493b23c119c8888a12b78e22b9f8",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\runtime228B-backend-readback.txt",
+      "bytes": 44,
+      "sha256": "dec807c11992d9001acb723d969c49727402fe62c5e6cbd3899944bfdd03c140",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\runtime228B-backend-readback.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\attempt-b\\allocation228.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\attempt-b\\allocation228.log",
+      "bytes": 70,
+      "sha256": "59e908b7b96fd3813a35ce2980e1a196700cea240a42325f8c7add9c2f89cf26",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\attempt-b\\download228.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\attempt-b\\download228.log",
+      "bytes": 162,
+      "sha256": "c67f0362cbb52ac1908e65594767d551c6f6637be33167811034febda6d097c1",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\attempt-b\\execution228.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\attempt-b\\execution228.log",
+      "bytes": 968,
+      "sha256": "2e84dad9864d814a178030fb4f6217df6a3f2058b931272ed33479ea3354ed37",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\attempt-b\\release228.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\attempt-b\\release228.log",
+      "bytes": 75,
+      "sha256": "db189b610f0f0c60809bd4d673c57433a7ff83e8149e543a33e096e4bf897473",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\attempt-b\\runtime228-open-requested.txt",
+      "bytes": 21,
+      "sha256": "6d49c64a0508155a100f298731740e5e6d7ff41d712066e3c99a3b3a11d984e1",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\attempt-b\\runtime228-release-finished.txt",
+      "bytes": 21,
+      "sha256": "25588e7fbfd7762e6217515e1ed0f045cf1859f29b4e9dc16849c1c0cec1f81b",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\attempt-b\\tep228-diagnostics.zip",
+      "bytes": 10271,
+      "sha256": "cda632040ffa9eee46c692bced1fbe9e1c9fae2d46aa05e2dafacd2c6efd80fc",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\exact228B\\coexact_partition_rank_diagnostic228.py",
+      "bytes": 5819,
+      "sha256": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\exact228B\\coexact-common-rank228-draft.txt",
+      "bytes": 8775,
+      "sha256": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\exact228B\\MANIFEST.json",
+      "bytes": 1387,
+      "sha256": "1e595a5bf0e4e18d8597f9073e7d1fd40742d6eb59fdad764df5c5ea24252116",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\exact228B\\normal.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\exact228B\\normal.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\exact228B\\normal.stdout",
+      "bytes": 2620,
+      "sha256": "cc1a1bd9523417a98864ae509a6d41b90a04e02a68d76d2f6618629e5bd0d117",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\exact228B\\optimized.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\exact228B\\optimized.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\exact228B\\optimized.stdout",
+      "bytes": 2620,
+      "sha256": "cc1a1bd9523417a98864ae509a6d41b90a04e02a68d76d2f6618629e5bd0d117",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_coexact-partition228\\exact228B\\report.json",
+      "bytes": 946,
+      "sha256": "e2e72c7f54278afbde41982843deb391038dcd566170e593747832cb0e5975e8",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\diagnostic-source-audit\\fullreport.txt",
+      "bytes": 10646,
+      "sha256": "62380659b751a661ec624c3824a002e653e43e7b38cf8c69761b6e56e222d0f1",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\diagnostic-source-audit\\verdict.json",
+      "bytes": 2104,
+      "sha256": "990077df1bcceedd3fa5cbd0351bd59af6171f7b6eddf9811720c2bb4df5d183",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\diagnostic-source-audit\\context.json",
+      "bytes": 1430,
+      "sha256": "34d151fa044a4a6433aa0c90bebe5826bb84730d2f0c9b442ef419f2f975bbe4",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\diagnostic-source-audit\\hashes.json",
+      "bytes": 1440,
+      "sha256": "d145d3ac1596dd3ef82b78e13e72ee1fd6b26c105dec8c60138499973ed822c4",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\diagnostic-source-audit-b\\fullreport.txt",
+      "bytes": 8542,
+      "sha256": "5baa2f211c9e74fa0dd8ba227bbb0ceb1a16ce5969e828cfb13a89ae29f2dffb",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\diagnostic-source-audit-b\\verdict.json",
+      "bytes": 1713,
+      "sha256": "74b98931d517124a9488863256156248f46bc0da961dccc930f2f3f05184b4f2",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\diagnostic-source-audit-b\\context.json",
+      "bytes": 1633,
+      "sha256": "14def614897aeb869c10e6d1eb743e9b4798c0285ef640847e7255e842436619",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\diagnostic-source-audit-b\\hashes.json",
+      "bytes": 2140,
+      "sha256": "85652c2dae46f5bc82674617b9b566056626525c2baf8af53d143019ea2f78f7",
+      "representation": "raw original file bytes; extractedZIPfilesalsoverifiedagainstrawdecompressedentries",
+      "normalization": "none"
+    }
+  ],
+  "raw_Git_pins": {
+    "commit": "b0fa153f3cc2a790e659177127de27a03231a11f",
+    "script_path": "scripts/coexact_partition_rank_diagnostic228.py",
+    "script_bytes": 5819,
+    "script_sha256": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c",
+    "proof_path": "papers/flat-coarse-rank/research/2026-11-10_coexact-partition228.txt",
+    "proof_bytes": 8775,
+    "proof_sha256": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e",
+    "representation": "raw binary git-show stdout without checkoutconversion/normalization"
+  },
+  "retained_wrapper_match": {
+    "D_copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\run_diagnostic228B.py",
+    "executed_path_reference": "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\_tmp\\run_diagnostic228B.py",
+    "both_raw_sha256": "ddb5b1c283313bf00dae96fc4d9c1d041feb3205aac3aea7ee1645b69de7d94a",
+    "limitation": "Currentretainedcopiesmatch; notanindependentprocessattestation"
+  },
+  "context_main_note": "Directlookupof228scriptat80ee9132d06e2ba8417b9907150594a893c1d99breportedabsent; not used as scientific source binding.",
+  "outputs": [
+    {
+      "file": "fullreport.txt",
+      "bytes": 10534,
+      "sha256": "f57fbc45c10758657a5f5096201c50f6a88ca9559f18a2f6e0a73c36f71b0b88",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "verdict.json",
+      "bytes": 2229,
+      "sha256": "ac909a0238ac60fe295c20a9c1d788555ce8e369d648f0db279b280ee9b3f3d3",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "context.json",
+      "bytes": 1686,
+      "sha256": "9527de9d0dd23c949a7ecb3c0a9d6d051f8fe61c744bb66a0cf340c1608c6648",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    }
+  ],
+  "self_hash": "Provided separately in final handoff; not recursively embedded."
+}
