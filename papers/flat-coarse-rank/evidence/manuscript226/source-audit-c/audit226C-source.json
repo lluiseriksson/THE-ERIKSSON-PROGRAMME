@@ -1,0 +1,42 @@
+{
+  "artifact": "manuscript226-source-c",
+  "commit": "2d3237501569f6afac8a44d524a5d6db59f63c39",
+  "root_sha256_raw_git_blob": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3",
+  "verdict": "accept_with_limits",
+  "reading_scope": "All6completecurrentTeX and13actualcompanions read;19actualfrozenfilescaptured; not merely a delta check.",
+  "load_bearing_objections": [],
+  "material_findings": [],
+  "editorial_findings": [],
+  "prior_B_findings": {
+    "M1": "Resolved on C: explicitly chosen finite nonnegative spectral depth, valid singleton lower bound and K.",
+    "E1": "Resolved on C: report identities narrowed to listed reports, absence of separate scalar-audit identity explicitly disclosed.",
+    "B_original_verdict": "Remains reject for its original referent; complete original4artifacts unchanged and hash-matched."
+  },
+  "checks": {
+    "scalar_complete_proof": "accepted",
+    "all_h_extension_and_normalized_rows": "accepted",
+    "matrix_rotated_signed_originalstart_wrap_proof": "accepted",
+    "optional_singleton_derivation": "accepted with explicit M>=0",
+    "common_fullvector_hF_rank": "accepted within stated class",
+    "coexact_weak_endpoint": "accepted",
+    "logarithmic_matching_order": "accepted as worst-case family statement",
+    "front_theorem_fidelity": "accepted",
+    "raw_manifest": "14listedentriesmatch;19actualfilescaptured",
+    "D_source_c_snapshots": "15rootfilesmatchbothdesignatedsnapshots",
+    "source_inputs": "27existingrawidentitiesmatch",
+    "original_B_reports": "4capturedfilesmatchoriginalDreportsandpriorhandoff",
+    "structural_text": "60labels63references,no duplicates or missing targets"
+  },
+  "limits": [
+    "Source-only mathematical reading; no compilation, render, numerical/PDF grade or formal certification.",
+    "Matrix finite K may depend on actual negative depth; no K=c assertion for signed forms.",
+    "Common-fullvector lower bound is all-field and class-restricted; coexact endpoint lower bound retains centered differentiable/local-quadratic assumptions.",
+    "Worst-case order only; no per-profile optimality, sharp constants, efficient algorithm, priority or physical transfer.",
+    "Parent-supplied B layout outcome not observed or used to validate C."
+  ],
+  "numerical_or_pdf_grade": null,
+  "compiled_or_rendered": false,
+  "scientific_execution": false,
+  "original_evidence_edited": false,
+  "report": "report226C-source.txt"
+}

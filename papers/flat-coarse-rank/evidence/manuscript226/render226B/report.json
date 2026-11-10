@@ -1,0 +1,55 @@
+{
+  "source_sha": "2e97589506d593fe29a72a48bfd55a1a113df9d1",
+  "source_inputs": {
+    "common-rank.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision226/common-rank.tex",
+      "sha256": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b"
+    },
+    "matrix-proof.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision226/matrix-proof.tex",
+      "sha256": "f4c8a52ebd4632d2e8c2e202444a2e057e8fdd04a450b1fa84e6ef3ef3cf809b"
+    },
+    "rectangular_matrix.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision226/rectangular_matrix.tex",
+      "sha256": "c014c3f4e8946500a03e2c403317df10128e5c3d9c1eaf02e46f847e04814c08"
+    },
+    "review-context.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision226/review-context.tex",
+      "sha256": "4652b46cfc9e3cbf90de3db0fd7232508ec03866871fcb7fce251b551e65ad0d"
+    },
+    "scalar-rings.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision226/scalar-rings.tex",
+      "sha256": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0"
+    },
+    "weak-endpoint.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision226/weak-endpoint.tex",
+      "sha256": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7"
+    }
+  },
+  "started_utc": "2026-11-10T18:24:08.533836+00:00",
+  "tool_exits": {
+    "apt-update": 0,
+    "apt-install": 0,
+    "tex-version": 0,
+    "poppler-version": 0,
+    "latex-first": 0,
+    "latex-second": 0,
+    "latex-final": 0,
+    "pdfinfo": 0,
+    "text": 0,
+    "render": 0
+  },
+  "compute_units_billed": null,
+  "formal_or_scientific_replay": false,
+  "tex_version": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)\nkpathsea version 6.3.5\nCopyright 2023 Han The Thanh (pdfTeX) et al.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the pdfTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the pdfTeX source.\nPrimary author of pdfTeX: Han The Thanh (pdfTeX) et al.\nCompiled with libpng 1.6.43; using libpng 1.6.43\nCompiled with zlib 1.3; using zlib 1.3\nCompiled with xpdf version 4.04\n",
+  "poppler_version": "pdftoppm version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n",
+  "pdfinfo": "Title:           Rectangular observations for finite matrix gradients: critical budgets and the weak endpoint\nSubject:         \nKeywords:        \nAuthor:          Lluis Eriksson\nCreator:         LaTeX with hyperref\nProducer:        pdfTeX-1.40.25\nCreationDate:    Mon Nov  9 00:00:00 2026 UTC\nModDate:         Mon Nov  9 00:00:00 2026 UTC\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           19\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       418082 bytes\nOptimized:       no\nPDF version:     1.5\n",
+  "layout_warnings": [],
+  "status": "RENDERED_PENDING_VISUAL_REVIEW",
+  "pages": 19,
+  "pdf_sha256": "4fca28519121049614faab887732b609f08806bb6cecc3c6aeebd24b49abab32",
+  "pdf_bytes": 418082,
+  "finished_utc": "2026-11-10T18:26:11.324763+00:00",
+  "elapsed_seconds": 122.79099536600006,
+  "child_maxrss_kib": 129248
+}

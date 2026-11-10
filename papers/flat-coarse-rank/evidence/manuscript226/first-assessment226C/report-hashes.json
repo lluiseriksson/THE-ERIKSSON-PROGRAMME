@@ -1,0 +1,26 @@
+{
+  "self_exclusion": "report-hashes.json does not self-hash; caller may record its raw-byte digest externally",
+  "algorithm": "SHA-256",
+  "canonical_pdf_sha256": "28cb2a7502e05cd8588aa6294f07a7eca5e0e452cce1bf5e4f09e9ec3c89e1a6",
+  "created_at": "2026-11-10T19:39:24.8052592+01:00",
+  "reports": [
+    {
+      "bytes": 16682,
+      "sha256": "bd00e31013a1bdbf1f2766b25665af17ab7792aae8fcdff3c50670393a1d7272",
+      "representation": "Exact saved UTF-8 file bytes; no normalization",
+      "name": "scientific-review.txt"
+    },
+    {
+      "bytes": 3944,
+      "sha256": "0846434a3d04a32fa0b125d2e0b99ac4b94808e27e56c080ec270324345767b1",
+      "representation": "Exact saved UTF-8 file bytes; no normalization",
+      "name": "response.json"
+    },
+    {
+      "bytes": 18457,
+      "sha256": "2d1fe32e616fe9528c798e5d2a8385295c90a0a7304a070635d9e1793907892a",
+      "representation": "Exact saved UTF-8 file bytes; no normalization",
+      "name": "review-context.json"
+    }
+  ]
+}
