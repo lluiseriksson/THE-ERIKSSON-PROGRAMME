@@ -15,3 +15,8 @@ scripts/weak_endpoint_diagnostic224.py -text
 papers/flat-coarse-rank/research/capped-matrix225/** -text
 papers/flat-coarse-rank/research/2026-11-10_capped-matrix225.txt -text
 scripts/capped_matrix_rectangles_diagnostic225.py -text
+
+# Exact227 draft, audit and scientific source.
+papers/flat-coarse-rank/research/common-partition227/** -text
+papers/flat-coarse-rank/research/2026-11-10_common-partition227.txt -text
+scripts/common_partition_rank_diagnostic227.py -text

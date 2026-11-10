@@ -1,0 +1,49 @@
+{
+  "files": [
+    {
+      "file": "common-partition-rank227-draft.txt",
+      "bytes": 6907,
+      "sha256": "12f9aacb7491b7e2a70a594350a38dd089ca1f2eaf00df79a30c6d663855db36"
+    },
+    {
+      "file": "common_partition_rank_diagnostic227.py",
+      "bytes": 5466,
+      "sha256": "7736f6960a8e981ea6ab79e83209e090a74239d45fc6f71d0f7c5ea5d360a4aa"
+    },
+    {
+      "file": "normal.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "normal.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "normal.stdout",
+      "bytes": 3938,
+      "sha256": "5f93da45d436129e242be089ccd7ba3547d77af7647f199f7e5ed961d01365a9"
+    },
+    {
+      "file": "optimized.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "optimized.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "optimized.stdout",
+      "bytes": 3938,
+      "sha256": "5f93da45d436129e242be089ccd7ba3547d77af7647f199f7e5ed961d01365a9"
+    },
+    {
+      "file": "report.json",
+      "bytes": 843,
+      "sha256": "6acf2bd425a3ca26f851a3f884b729d55a4cee0d78695e32a63dab33509f9ded"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "unit": 227,
+  "created_at": "2026-11-10T18:11:51.492659+00:00",
+  "question": {
+    "statement": "Can the common-partition full-vector rectangle means of225 achieve C_D(h+F) uniformly in the numberh of components, instead of the derived product h(1+F)?",
+    "hypotheses": "D>=3,c>0,h>=1; actual finite forward stack-gradient with positive diagonal local matrices allowed; every common partition piece contributes ALL h component rows. Not channel-adapted subcollections/component-dependent partitions or general spectral observations.",
+    "mechanism": "m separated one-component delta fields and exactly2Dm weak direction-labelled starts; all remaining channels strong enough for cap contribution<=1. Restriction rank of R common full-vector mean rows to lowspace<=R, so actual fullrank>=hm; h=m rules out C_D(h+F).",
+    "falsifier": "Wrong channel/start count, lowspace overlap/energy, cap normalization, common-partition restriction rank or h=m quantifiers defeats this draft.",
+    "abandonment": "After3 substantive unsuccessful units preserve failures and change this exact mechanism or name missing lemma.",
+    "status": "UNREVIEWED_SOURCE_DRAFT_SEPARATE_AUDIT_RUNNING",
+    "draft": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-227\\common-partition-rank227-draft.txt",
+    "draft_sha256": "12f9aacb7491b7e2a70a594350a38dd089ca1f2eaf00df79a30c6d663855db36",
+    "units_without_substantive_progress": 0,
+    "no_grade_or_PDF": true
+  },
+  "new_result": null,
+  "hypotheses_eliminated": [],
+  "verified_refutations": [],
+  "scientific_execution": false,
+  "priority": "225PR202 exact checks and focused manuscript226 authoring continue independently. Group any accepted227 refinement with matrix upper theorem; no standalone small paper."
+}
