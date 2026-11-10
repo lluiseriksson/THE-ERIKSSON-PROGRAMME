@@ -1,0 +1,14 @@
+{
+  "opened_requested": "2026-11-10T18:17:39Z",
+  "release_finished": "2026-11-10T18:18:23Z",
+  "own_runtime": "tep227-a-own-cpu",
+  "backend_server_inactive": true,
+  "scientific_seconds": 0.895515094999837,
+  "child_maxrss_kib": 105200,
+  "compute_units_billed": null,
+  "actual_exits": {
+    "normal": 0,
+    "optimized": 0
+  },
+  "normal_optimized_identical": true
+}
