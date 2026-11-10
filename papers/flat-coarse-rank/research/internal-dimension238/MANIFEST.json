@@ -1,0 +1,55 @@
+{
+  "source_sha": "fd8a3b8760d18a44b4349dcac1d4e03ed2c36886",
+  "files": [
+    {
+      "file": ".gitattributes",
+      "bytes": 9,
+      "sha256_raw": "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992"
+    },
+    {
+      "file": "internal-dimension238.txt",
+      "bytes": 7686,
+      "sha256_raw": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+    },
+    {
+      "file": "result238-verified.json",
+      "bytes": 3279,
+      "sha256_raw": "072b3ac03073fb5ca32748b6d524d9a2a7f6979f8385022d72f47cb0bdedf33d"
+    },
+    {
+      "file": "source-audit/capture/internal-dimension238-git.txt",
+      "bytes": 7686,
+      "sha256_raw": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+    },
+    {
+      "file": "source-audit/capture/rank-penalty237-git.txt",
+      "bytes": 5765,
+      "sha256_raw": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+    },
+    {
+      "file": "source-audit/capture/rectangles-all-sizes236B-git.txt",
+      "bytes": 9388,
+      "sha256_raw": "b29ea47b3949ba2b8130e38ef7c395c115e600e595d0c6476032a031b03ebc1a"
+    },
+    {
+      "file": "source-audit/context.json",
+      "bytes": 1411,
+      "sha256_raw": "6eda8c5f4ddd144820c6be699029f39b98e2ca446d9f673b437bbc3a6fcc9ddb"
+    },
+    {
+      "file": "source-audit/fullreport.txt",
+      "bytes": 12389,
+      "sha256_raw": "03a3d80eb0676cc91ca01564a01734d8964ee559c76e9b387a053aff8a45664b"
+    },
+    {
+      "file": "source-audit/hashes.json",
+      "bytes": 1900,
+      "sha256_raw": "dbd80e12ddd157e04c4ca8ff5832f472c12dcdd143009a610ec3ed331541ae8d"
+    },
+    {
+      "file": "source-audit/verdict.json",
+      "bytes": 1354,
+      "sha256_raw": "334a347c23d2f54d08b13f2eeced7a5f9e56bb6c5e1836fbfbbd05932b4bfea4"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "verdict": "accept_with_limits",
+  "unit": 238,
+  "source_commit": "fd8a3b8760d18a44b4349dcac1d4e03ed2c36886",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-10_internal-dimension238.txt",
+  "source_sha256_raw": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42",
+  "blocking_findings": [],
+  "material_scope_findings": [],
+  "editorial_findings": [],
+  "new_g_range": "All integers g>=n^2",
+  "allocation_bound": "S/g<=5/6+93/(32n)<1 for n>=32",
+  "actual_rank_order": "Theta_D(g n^(D-2))",
+  "explicit_map_penalty_order": "Theta_D(c n^2), normalized",
+  "full_budget_upper": "D^2(V+alpha_D g)",
+  "changed_g_lower_rederived": true,
+  "limits": [
+    "Exact positive constant family, D>=3,n>=2,any integer g>=n^2; not fixed g as n grows.",
+    "Canonical partitions shared across D components within each fixed internal channel; no mixed rows or arbitrary rescaling.",
+    "Uniform D-only rank order g n^(D-2) and explicit-map normalized penalty order c n^2.",
+    "Full budget is O_D(V+g), not uniformly O_D(V) for g>V.",
+    "No arbitrary-profile, optimal constant, implementation, practical utility, priority or physical result.",
+    "No execution, PDF/grade transfer, original edits;236A failure and prior reports preserved."
+  ],
+  "new_execution": false,
+  "numerical_grade": null,
+  "originals_unchanged": true
+}
