@@ -1,0 +1,33 @@
+{
+  "role": "Same involved separate-role AI mathematical source auditor",
+  "exposed_identity": "Codex based on GPT-6",
+  "exact_backend": "unknown/not exposed",
+  "reasoning_effort": "unknown/not exposed",
+  "history": "224/225/227/226B-C/228/229/230/231A-B/233/232A-B/234/235/236B/237/238 source/evidence and related operational reviews.",
+  "parent_fabricator_and_framing": true,
+  "shared_account_system_context": true,
+  "independence": "not established",
+  "blind": false,
+  "human": false,
+  "no_inbound_during_audit": true,
+  "complete239_read": true,
+  "exact_needed_inputs": [
+    "238",
+    "236B",
+    "237"
+  ],
+  "new_execution": false,
+  "pdf_or_numerical_review_read": false,
+  "source_status_git_mutation": false,
+  "other_chat_automation_access": false,
+  "credential_access": false,
+  "no_clone": true,
+  "limits": [
+    "Exact positive profile, D>=3,n>=2,all integers g>=1; fixed internal basis and canonical local partition means.",
+    "Uniform minimum actual rank Theta_D(V+gV/n^2), not a general coefficient-profile theorem.",
+    "Normalized sufficient K=c+4DH only; no new sharp penalty lower for g<n^2.",
+    "Full budget O_D(V+g); fixed-g rank growth does not establish a universal additive-rank obstruction.",
+    "No rescaled/mixed-row lower, exact constant, practical conditioning, implementation, priority or physical result.",
+    "No execution, PDF/grade transfer or original changes;236A failure retained."
+  ]
+}
