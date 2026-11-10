@@ -1,0 +1,60 @@
+{
+  "files": [
+    {
+      "file": "candidate236A-normalization-correction.txt",
+      "bytes": 9423,
+      "sha256_raw": "66509fe16c686d148978d3b51d7cc9425eef50d401ae89d9816e2129ed813e55"
+    },
+    {
+      "file": "rectangles-all-sizes236B.txt",
+      "bytes": 9388,
+      "sha256_raw": "b29ea47b3949ba2b8130e38ef7c395c115e600e595d0c6476032a031b03ebc1a"
+    },
+    {
+      "file": "result236-verified.json",
+      "bytes": 4030,
+      "sha256_raw": "e60bab5dcbf31d3fc31a97fa0cab75b3d1716095900ddeb34f367b56f283243b"
+    },
+    {
+      "file": "source-audit-b/capture/candidate236A-normalization-correction.txt",
+      "bytes": 9423,
+      "sha256_raw": "66509fe16c686d148978d3b51d7cc9425eef50d401ae89d9816e2129ed813e55"
+    },
+    {
+      "file": "source-audit-b/capture/channel-separable231B-git.txt",
+      "bytes": 7789,
+      "sha256_raw": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+    },
+    {
+      "file": "source-audit-b/capture/dyadic-rectangles235-git.txt",
+      "bytes": 8851,
+      "sha256_raw": "4ccc3829df28810f801204b385360bf361dea484f5b73dfdb5b227d0faefc06f"
+    },
+    {
+      "file": "source-audit-b/capture/rectangles-all-sizes236B-git.txt",
+      "bytes": 9388,
+      "sha256_raw": "b29ea47b3949ba2b8130e38ef7c395c115e600e595d0c6476032a031b03ebc1a"
+    },
+    {
+      "file": "source-audit-b/context.json",
+      "bytes": 1608,
+      "sha256_raw": "b182ff7d697e5797a326218a483bd9fa728c913ab2ca1538fe2469ae669b5c44"
+    },
+    {
+      "file": "source-audit-b/fullreport.txt",
+      "bytes": 12948,
+      "sha256_raw": "ca13d18959e2ae804b920958252e02f45c7f5e3afca4cc5aaba1e94d864a41b6"
+    },
+    {
+      "file": "source-audit-b/hashes.json",
+      "bytes": 2322,
+      "sha256_raw": "0b940b97ccf450e4d328fd9d5c57ed19c58554e14d58cd61fc1fb9263cbb7337"
+    },
+    {
+      "file": "source-audit-b/verdict.json",
+      "bytes": 1553,
+      "sha256_raw": "f641dc730166d02f455534dc802b8f3882d2ebf982d548fe7a1cf656a86839af"
+    }
+  ],
+  "source_sha": "6aebcb8502bdf4485b9de8bcf720d681f09389f8"
+}

@@ -1,0 +1,29 @@
+{
+  "verdict": "accept_with_limits",
+  "unit": "236B",
+  "source_commit": "6aebcb8502bdf4485b9de8bcf720d681f09389f8",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-10_rectangles-all-sizes236.txt",
+  "source_sha256_raw": "b29ea47b3949ba2b8130e38ef7c395c115e600e595d0c6476032a031b03ebc1a",
+  "blocking_findings": [],
+  "material_scope_findings": [],
+  "editorial_findings": [],
+  "integer_allocation_verified": true,
+  "all_n_at_least_2": true,
+  "kernel_margin_full_fields": "2c",
+  "counting_penalty": "V[c+(4DH)^2/c]",
+  "small_size_counting_penalty": "cV",
+  "result": "Minimum actual restricted rank Theta_D(n^(2D-2)) for all integer n>=2 on exactfamily",
+  "preserved236A_defect": "Missing V in counting penalty; explicit constant-field counterexample retained in report.",
+  "no235_defect": true,
+  "limits": [
+    "Exact231B profile, D>=3,n>=2,g=V; no arbitrary-profile or fixed-g theorem.",
+    "Canonical per-internal-channel rectangular partitions shared across D spatial components; fixed internal basis.",
+    "Counting convention uses K=V[c+(4DH)^2/c], equivalent to235 normalized coefficient.",
+    "All-field kernel/projection proof then restriction to actual coexact domain; no preservation by block averages assumed.",
+    "Theta rank order only; no optimal constant, practical algorithm, uniform conditioning or physical result.",
+    "236A normalization failure and original235 bytes/reports preserved; no PDF/assessment transfer."
+  ],
+  "new_execution": false,
+  "numerical_grade": null,
+  "originals_unchanged": true
+}

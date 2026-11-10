@@ -1,0 +1,26 @@
+{
+  "verdict": "accept_with_limits",
+  "unit": 237,
+  "source_commit": "aca0efa966a210cfb48a88bdef79d14b1d2a64d5",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-10_rank-penalty237.txt",
+  "source_sha256_raw": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3",
+  "blocking_findings": [],
+  "material_scope_findings": [],
+  "editorial_findings": [],
+  "normalized_upper": "c+4DH=c(1+4Dn^2)",
+  "canonical_actual_rank_lower": "K>=3c g d_0/(4r_actual)",
+  "fixed236_penalty_order": "Theta_D(c n^2)",
+  "same236_rows": true,
+  "trace_no_coexact_preservation_assumed": true,
+  "limits": [
+    "Exact231B/236 positive profile and canonical per-channel full partition means in the fixed internal basis.",
+    "Normalized coefficient K; counting convention multiplies by V.",
+    "Upper sharpens the same236 map using its full-field2c kernel margin; no coexact invariance of block projections assumed.",
+    "Lower uses actual restricted rank with fixed canonical weights; excludes rescaling, mixed rows and nonlinear penalties.",
+    "Theta_D(cn^2) for fixed236 map family; no upper for every economical arbitrary map or optimal constant.",
+    "No execution, PDF/grade transfer, priority, general-profile/fixed-g/physical result;236A failure preserved."
+  ],
+  "new_execution": false,
+  "numerical_grade": null,
+  "originals_unchanged": true
+}

@@ -1,0 +1,155 @@
+236 — Canonical local rectangles for every integer side length
+Author-role analytical candidate; not a numerical/formal certificate or priority claim.
+This extends235 on the unchanged explicit231B profile. It is NOT in frozen232B.
+
+1. Statement and conventions.
+Let D>=3, n>=2 an integer, c>0, V=g=n^D, h=Dg. The vertex torus is
+X=(Z/nZ)^D, with every forward edge (i,j) labelled even when n=2.
+For z:X->{R^D}^g put E(z)=sum_{i,j,k,alpha}|z_{k,alpha}(i+e_j)-z_{k,alpha}(i)|^2.
+All inner products here use counting measure. Let v=(1,...,1)/sqrt(g),
+a=c/(16D), H=c n^2, and B=H I_g-(H-a)vv^T. The directional coefficient
+A_{(j,k,alpha),(j',k',beta)}=delta_jj' delta_kk' B_alpha,beta is the
+SAME strictly positive constant matrix field as231B. Q_A is its actual
+forward-gradient quadratic form, with no covariant/continuum interpretation.
+For f_k(i)=sum_alpha v_alpha z_{k,alpha}(i), s_alpha=z_alpha-v_alpha f,
+orthogonality gives ||z||^2=||f||^2+sum_alpha||s_alpha||^2 and
+Q_A(z)=a E(f)+H sum_alpha E(s_alpha).
+
+Each internal channel alpha may have its own partition Pi_alpha of X into
+integer rectangles, shared across its D spatial components. Its canonical
+rows are C_{alpha,k,S}(z)=V^(-1/2)|S|^(-1/2) sum_{i in S}z_{k,alpha}(i).
+No row mixes internal channels or uses a spatial eigenvector.
+There are such partitions with N_out <= C_D n^(2D-2) and
+Q_A(z)+K||Cz||^2 >= c||z||^2 for ALL fields z,
+K=V[c+(4DH)^2/c]. In the finite small-size construction K=cV also suffices.
+On the actual flat coexact domain U=U_0^g, U_0=im(d_1^*), the minimum
+actual restricted rank among canonical channel-adapted rectangular maps
+restoring this same inequality with some finite penalty is Theta_D(n^(2D-2)).
+Here d_1 is the standard forward curl on spatial one-forms, and rank means
+rank(C|_U), not the number of displayed rows. This proves removal of235's
+dyadic restriction; no new regional-gap or partition hypothesis is assumed.
+
+2. Nested partitions for n>=32.
+Set J=ceil(log_2 n). For 0<=j<=J, partition {0,...,n-1} at the integer
+endpoints floor(kn/2^j), k=0,...,2^j, discarding empty intervals. Let Pi_j
+be the Cartesian product partition, and P_j its orthogonal counting-measure
+block-average projection, applied to each spatial component.
+The partitions are nested: a coarse endpoint with index k is the fine
+endpoint with index2k. Empty fine intervals do not affect the union or nesting.
+Pi_0={X}, and every nonempty Pi_J interval has length1, so P_J=I.
+For 0<=j<J let L_j=ceil(n/2^j)>=2. Each parent rectangle in Pi_j has all
+side lengths at most L_j. Put E_j=P_{j+1}-P_j. Nesting of the orthogonal
+projections implies E_j are mutually orthogonal projections with
+sum_{j=0}^{J-1}E_j=I-P_0. This identity has no periodic divisibility assumption.
+
+3. Derive the regional variance estimate; do not postulate it.
+For a path of length L>=2 with edges between consecutive vertices, the
+Neumann graph Laplacian has eigenvectors cos(pi k(t+1/2)/L), k=0,...,L-1,
+and eigenvalues 4 sin^2(pi k/(2L)). Substitution checks the interior and both
+endpoints; orthogonality is the finite geometric-series identity. Their L
+nonzero mutually orthogonal vectors form a basis. The first positive
+eigenvalue is >=4/L^2, since sin x>=2x/pi on [0,pi/2]. Length1 factors
+are constant and have no variance. For a rectangle, tensor products of these
+bases give the Cartesian-product spectrum as sums. Every nonconstant mode
+has eigenvalue >=4/L_j^2. Consequently variance on each Pi_j rectangle is
+at most (L_j^2/4) times its internal forward-edge energy.
+Sum over disjoint parents and discard only nonnegative inter-parent/wrap
+edges in the actual labelled torus energy. Thus for any field w,
+||E_j w||^2 <= ||w-P_jw||^2 <= (L_j^2/4) E(w).              (236.1)
+The first inequality follows because E_j is a subprojection of I-P_j.
+This also covers rectangles with singleton factors, and n=2 edge labels
+cause no difficulty in the independent small-size construction below.
+
+4. Integer channel budget.
+Let r_j=ceil(5g L_j^2/(8n^2)), 0<=j<J. Choose disjoint channel sets I_j
+of these cardinalities; a channel in I_j uses the CHILD partition Pi_{j+1}.
+Every remaining channel uses Pi_0. We prove that this assignment is possible.
+Since L_j<=n 2^(-j)+1,
+sum_j L_j^2 <= (4/3)n^2+4n+J.
+Hence S=sum_j r_j <= g[5/6+5/(2n)+5J/(8n^2)]+J.
+For n>=32 one has J<=n/4. At J=5 this is n=32. At J>=6,
+n>2^(J-1), and 2^(J-3)>=J follows by induction from J=6, since
+2J>=J+1. Thus J<n/4 in this case. Also g=n^D>=n^3, so
+S/g <= 5/6+85/(32n)+1/(4n^2) < 1                         (236.2)
+for n>=32; the right side decreases in n and its value at32 is less than1.
+In particular the integer S<=g-1. Enumerating the channels and allocating
+successive disjoint groups is explicit; no basis choice or eigenvalue tie
+breaking enters the observation map. Leftovers use the single root rectangle.
+
+5. Kernel coercivity, with no double charging.
+If Cz=0, every block sum vanishes, including for root channels. Therefore
+every spatial/internal component has global mean0, as do f and each s_alpha.
+For alpha in I_j, P_{j+1}z_alpha=0, so E_j z_alpha=0 and
+E_j s_alpha=-v_alpha E_j f. Applying236.1 separately to these channels yields
+T:=H sum_alpha E(s_alpha)
+ >= H sum_j [4 r_j/(g L_j^2)]||E_j f||^2
+ >= (5/2)c sum_j||E_j f||^2 = (5/2)c||f||^2.             (236.3)
+Each internal channel occurs in at most one group: its energy is charged
+exactly once in this sum. Root leftovers are simply discarded here.
+The actual torus scalar gap on mean-zero fields is
+lambda_1=4 sin^2(pi/n)>=16/n^2 for n>=2. (Finite Fourier diagonalization,
+sin(pi/n)>=2/n; the n=2 labelled two-edge convention gives lambda_1=4.)
+Applying this componentwise gives the SEPARATE estimate
+T>=16c sum_alpha||s_alpha||^2.                           (236.4)
+Use four fifths of236.3 plus one fifth of236.4, rather than adding both
+full energies. This gives
+T >= 2c||f||^2+(16/5)c sum_alpha||s_alpha||^2 >=2c||z||^2.
+Since aE(f)>=0, Q_A has kernel margin2c on ALL fields in ker C.
+This avoids any assertion that a block projection preserves coexactness.
+
+6. Pass from the kernel to a finite full-field penalty.
+Let R be the orthogonal block-average projection with the selected partition
+in each internal channel. Directly from the row normalization,
+||Cz||^2=V^(-1)||Rz||^2 and ker R=ker C. Write z=x+y with
+x=(I-R)z and y=Rz; these are orthogonal in the ALL-field Hilbert space.
+The positive operator L_A representing Q_A satisfies ||L_A||<=M=4DH,
+because B<=H I and the torus scalar Laplacian has norm<=4D. Thus
+Q_A(z) >=2c||x||^2-2M||x||||y|| >=c||x||^2-(M^2/c)||y||^2.
+Consequently Q_A(z)+V(c+M^2/c)||Cz||^2 >=c||z||^2.       (236.5)
+Thus K=V[c+(4DH)^2/c] is the explicit finite penalty for the counting
+energy/norm convention of this source. Equivalently, dividing the entire
+inequality by V gives Q_A/V+[c+(4DH)^2/c]||Cz||^2>=c||z||^2/V,
+exactly the normalized convention of235. There is no discrepancy in235.
+All counts and actual-rank claims are independent of this finite normalization.
+
+7. Output count for n>=32.
+Pi_{j+1} has at most 2^(D(j+1)) nonempty cells. Since n/2^j>1 for j<J,
+L_j<=2n/2^j and r_j<= (5g/2)4^(-j)+1. Therefore
+N_fine<=D 2^D [(5g/2) sum_{j<J}2^((D-2)j)+sum_{j<J}2^(Dj)].
+Since 2^J<2n, the two sums are at most
+(2n)^(D-2)/(2^(D-2)-1), (2n)^D/(2^D-1), respectively. Thus
+N_fine<=C1_D n^(2D-2)+C2_D n^D,
+C1_D=D 2^D (5/2) 2^(D-2)/(2^(D-2)-1),
+C2_D=D 2^D 2^D/(2^D-1).
+Root leftovers contribute at most Dg=D n^D. Since D>=3, n^D<=n^(2D-2),
+the complete output count is <=(C1_D+C2_D+D)n^(2D-2).
+On actual coexact U every component has mean0, so root rows vanish there;
+actual restricted rank is in particular <=the stated full output count.
+
+8. All small integer sizes, and the matching lower bound.
+For 2<=n<32 take singleton partitions for every channel. Then R=I and
+||Cz||^2=V^(-1)||z||^2. Since Q_A>=0, K=cV suffices for all fields.
+There are DgV=D n^(2D) <=961D n^(2D-2) rows. The common larger finite
+penalty V[c+(4DH)^2/c] also suffices. Let
+C_D=max(961D,C1_D+C2_D+D). Sections2–8 prove the upper bound for EVERY n>=2
+on the SAME profile, not by altering H, a, g or the domain for small n.
+The231B lower bound applies to ALL internally channel-separable linear maps,
+including these canonical rectangular maps, and any finite penalty (more
+generally any observation term Phi with Phi(0)=0). Its explicit bound is
+r>=g(D-1)(V-1)/[2(1+8D n^2)]
+ >=[(D-1)/(4(1+8D))] n^(2D-2), since V-1>=V/2.
+Hence the minimum actual restricted rectangular rank is Theta_D(n^(2D-2))
+for all integer n>=2, with the hypotheses and class fixed above.
+
+9. Limits and retained negative result.
+This removes exactly the dyadic-size assumption of235; it does not prove a
+universal coefficient-profile theorem, fixed internal dimension result,
+uniform/well-conditioned penalty, numerical implementation or physical gap.
+The initial local draft236A mixed counting and normalized conventions in
+its opening K statement; its own Section6 exposed the missing V. The original
+draft is preserved in evidence, corrected before source freeze/audit;235 itself
+uses the correct normalized energy/norm throughout and is not refuted.
+No execution was used or claimed. Classical
+path spectra/multiscale projections alone provide no historical priority.
+This candidate and its eventual audit belong with234/235 in a future grouped
+consolidation; none inherits frozen232B's4.10 assessment.

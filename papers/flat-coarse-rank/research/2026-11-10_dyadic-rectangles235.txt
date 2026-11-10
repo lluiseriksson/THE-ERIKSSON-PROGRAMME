@@ -1,0 +1,146 @@
+UNIT235. CONSTRUCTIVE RECTANGULAR MATCHING ORDER ON THE DYADIC COUPLED FAMILY
+Analytical candidate,2026-11-10; separate source audit pending.
+Future grouped consolidation, NOT part of frozen232B PDF5595e89c and not
+covered by its numerical assessment. Inputs exact231Bdbaca106 and233a1da5307
+for their explicitly proved coefficient profile/coexact necessary rank.
+No execution, formal certificate, priority or physical result.
+
+QUESTION. For dyadic n=2^m, can the matched separable order be attained by
+canonical integer rectangular means, instead of spatially nonlocal real
+eigenmodes? Retain fixedD>=3,g=V=n^D,c>0 and the exact same coupled profile.
+Mechanism: assign disjoint groups of internal channels to dyadic cube means;
+charge one orthogonal spatial band per group via a proved finite Neumann gap.
+Disjoint channel groups avoid charging one gradient energy at every scale.
+Falsifier: wrong band/kernel identity, failed Neumann constant, excessive
+channel count, loss of a strong-component norm, false coexact projection or
+normalization/actual-rank mistake. Abandon an uncorrectable mechanism, retain
+all failures, or change route after3units without substantive progress.
+This is a theorem for a stated dyadic subfamily, not an arbitrary-size or
+general-profile hypothesis elimination. No new tiny paper or grade transfer.
+
+1. FIXED PROFILE AND DYADIC SPATIAL PROJECTIONS
+Let X={0,...,n-1}^D with periodic forward differences, n=2^m,m>=1,
+V=n^D,g=V,h=Dg. Let c>0,a=c/(16D),H=cn^2,v=(1,...,1)/sqrt(g), and
+B=H I_g-(H-a)vv^T. The gradient coefficient is constant,
+A_(i,j,alpha),(i',j',beta)=delta_ii' delta_jj' B_alpha,beta.
+Counting energy and norm are Q_A and ||.||; normalized quantities divide byV.
+This is exactly231B's positive profile. At every site its full eigenvalue
+multiplicities are D^2 weak a and D^2(g-1) strong H. With P=D/2 and
+alpha_D=(3/4)^D(D/2)(D/(D-2))^(D-1), its full capped budget is
+F=D^2 V[1+(g-1)min(1,alpha_D n^-D)]<=D^2(1+alpha_D)V.
+The weak cap cost is1 since alpha_D^(2/D)>=9/16 and a/c=1/(16D).
+No strong eigenvalues are omitted. The original matrix is not component
+block diagonal in this fixed internal basis.
+
+For ell=1,2,...,n restricted to powers of two, P_ell is counting orthogonal
+projection onto fields constant on the disjoint aligned cubes of side ell.
+Every such cube is an integer rectangle in the fixed chart. P_1=I,
+P_n=global mean, P_ell P_(2ell)=P_(2ell) P_ell=P_(2ell).
+For ell=1,2,...,n/2 define E_ell=P_ell-P_(2ell). These are mutually
+orthogonal projections and sum_ell E_ell=I-P_n. Statements apply to each
+spatial vector component, and summing preserves their norm identities.
+
+2. FINITE LOCAL GAP, PROVED WITHOUT A REGIONAL HYPOTHESIS
+For a scalar path {0,...,L-1}, the quadratic form sum_(t=0)^(L-2)
+|w(t+1)-w(t)|^2 has the real eigenvectors
+b_k(t)=cos(pi*k*(t+1/2)/L), k=0,...,L-1.
+The associated matrix has diagonal1 at endpoints,2 inside, and offdiagonal-1.
+Using mirror values b_k(-1)=b_k(0) and b_k(L)=b_k(L-1), the cosine addition
+identity gives eigenvalue4sin^2(pi*k/(2L)) at every site, including endpoints.
+Finite cosine sums show these vectors are orthogonal and nonzero (norm^2 L
+for k=0,L/2 otherwise); hence they form a basis. Tensor products give the
+D-cube internal-edge eigenvalues4sum_i sin^2(pi*k_i/(2L)). Constants are the
+only zero mode; the first positive eigenvalue is4sin^2(pi/(2L))>=4/L^2,
+by the sine chord bound. Thus on any cube of side L>=2,
+ ||w-mean_cube(w)||^2<=L^2/4 * sum_internal_original_starts |D_i^+ w|^2.
+For L=2ell, summing over the aligned parent cubes and discarding only
+nonnegative inter-parent/wrap edges gives, for every torus vector field w,
+ ||E_ell w||^2<=||w-P_(2ell)w||^2<=ell^2 * E(w),
+where E(w)=sum_i||D_i^+w||^2 is the ACTUAL full periodic energy. This also
+handles n=2, where the extra labelled wrap edges are merely discarded.
+There is no presumed mean/envelope or regional-gap hypothesis here.
+
+3. AN EXACT INTEGER CHANNEL ALLOCATION
+Assign disjoint internal channel groups I_ell of size
+k_ell=3g ell^2/n^2=3n^(D-2)ell^2, for ell=1,2,...,n/2 dyadic.
+These are positive integers. Since sum_ell ell^2=(n^2-1)/3,
+sum_ell k_ell=g-g/n^2. Exactly g/n^2=n^(D-2) channels remain.
+Assign the side-ell cube partition to every channel in I_ell, using that
+same partition for all D spatial components of that channel. The remaining
+channels use the single root cube X. Consecutive groups in increasing ell,
+and lexicographically listed cubes, give an entirely explicit assignment.
+No eigenbasis or degenerate-mode tie-breaking is used; no choice depends onu.
+
+For a cube S of the partition chosen for internal channel alpha, include
+the canonical component rows V^-1/2 |S|^-1/2 sum_(x in S) u_j,alpha(x),
+j=1,...,D. Call the resulting linear map C. It belongs to the component-
+adapted rectangular class, and even uses one common spatial partition within
+each internal channel. It never mixes different internal channels in a row.
+
+4. KERNEL MARGIN ON THE FULL FIELD SPACE
+Every kernel field z satisfies P_ell z_alpha=0 on assigned channels and
+P_n z_alpha=0 on root channels. In particular all component global means
+vanish. Put f=sum_alpha v_alpha z_alpha and s_alpha=z_alpha-v_alpha f.
+Then ||z||^2=||f||^2+sum_alpha||s_alpha||^2 and
+Q_A(z)=a E(f)+H sum_alpha E(s_alpha). All f,s_alpha have zero component mean.
+For alpha in I_ell, E_ell z_alpha=0 by nested projections, so
+E_ell s_alpha=-v_alpha E_ell f. The local gap just proved gives
+E(s_alpha)>=||E_ell f||^2/(g ell^2).
+Sum ONLY over the disjoint groups, charging each channel once:
+H sum_alpha E(s_alpha)>=H sum_ell[k_ell/(g ell^2)]||E_ell f||^2
+ =3c sum_ell||E_ell f||^2=3c||f||^2.
+Separately the forward torus gap4sin^2(pi/n)>=16/n^2 implies
+H sum_alpha E(s_alpha)>=16c sum_alpha||s_alpha||^2.
+Use two-thirds of the first bound plus one-third of the second, not the sum
+of two full copies of the same energy. Therefore
+Q_A(z)>=2c||f||^2+(16c/3)sum_alpha||s_alpha||^2>=2c||z||^2
+for EVERY z in ker C on the FULL ambient field space.
+No decomposition of the actual coexact domain by spatial component is used.
+The kernel itself supplied the zero means; they are not new field hypotheses.
+
+5. EXPLICIT FINITE PENALTY AND ALL-FIELD RESTORATION
+Let R be the counting orthogonal block-average projection, using each
+channel's assigned partition on every spatial component. On the full field
+space ker R=ker C and ||Cz||^2=V^-1||Rz||^2 exactly. This R need not
+preserve the coexact image: the following argument is deliberately all-field.
+For z=x+y, x=(I-R)z,y=Rz, x and y are orthogonal and Q_A(x)>=2c||x||^2.
+The positive energy operator has norm M<=4DH, since all differences are
+differences of isometries and 0<A<=H I. Dropping Q_A(y)>=0 and applying
+Young's inequality gives
+ Q_A(z)>=2c||x||^2-2M||x||||y||>=c||x||^2-(M^2/c)||y||^2.
+Consequently finite K=c+(4DH)^2/c restores
+ V^-1 Q_A(z)+K||Cz||^2>=c||z||_V^2
+for ALL fields. It therefore also restores on the actual flat coexact domain
+U=U0^g, U0=im(d1*) with real dimension d0=(D-1)(V-1) per channel.
+No uniform-in-size penalty or practical conditioning claim is made.
+
+6. COMPLETE ROW COUNT AND TRUE COEXACT MATCHING ORDER
+The full listed output count is
+N_out=D sum_ell k_ell (n/ell)^D+Dg/n^2
+ =3D gV/n^2 sum_ell ell^(2-D)+Dg/n^2
+ <=[3D/(1-2^(2-D))]n^(2D-2)+D n^(D-2).
+The denominator is positive because D>=3. The geometric sum is over the
+finite dyadic scales, so its infinite upper bound adds no hypothesis.
+Each real component's partition indicators are independent on the full field
+space and different components are separate coordinates, giving full rankN_out.
+On U every component has zero global mean, by telescoping the actual
+periodic adjoint differences. Thus all root-channel rows vanish on U, and
+the actual restricted rank satisfies
+ rank(C|U)<=[3D/(1-2^(2-D))]n^(2D-2).
+This is an upper bound by the remaining outputs, not a false independence
+claim for spatial components of U. No h*#P substitution is used.
+
+Every component-adapted rectangular map is internally channel-separable.
+The exact231B necessary bound hence gives, for any such restoring map and
+any penalty Phi(0)=0,
+ rank(C|U)>=g(D-1)(V-1)/[2(1+8Dn^2)]
+ >=[(D-1)/(4(1+8D))]n^(2D-2).
+Together these prove minimum actual component-adapted RECTANGULAR restoring
+rank Theta_D(n^(2D-2)) on this dyadic-size subfamily of the SAME profile.
+The same order therefore holds for the smaller constructed class sharing a
+partition across D spatial components within each internal channel.
+This replaces the earlier nonlocal eigenmode upper by explicit local cube
+means HERE; arbitrary n and arbitrary coupled profiles remain outside this
+claim. Common full-vector partitions still require full actual rank g*d0
+by234, whereas unrestricted mixed observations attain d0. No tiny separate
+paper, new score, basis-free/fixed-g impossibility or physical conclusion.
