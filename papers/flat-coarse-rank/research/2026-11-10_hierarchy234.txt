@@ -1,0 +1,94 @@
+UNIT234. EXACT EXTREMAL RANKS ON THE SAME COUPLED COEXACT FAMILY
+Analytical consolidation candidate,2026-11-10; source audit pending.
+This short related result is for a future grouped consolidation, NOT a new
+paper or a modification of frozen232B PDF5595e89c. No232B grade applies.
+Inputs: actual231B source dbaca106b4def20c1b9d674ec34cfb9a56794cd7 and
+matching233 source a1da5307a7b91e0d57f110c624eb3f9eefc03919. Their finite
+proofs/limits are retained. No execution, priority or physical claim.
+
+BOUNDED QUESTION. Do the unrestricted and common-full-vector observation
+classes have exact minimal actual ranks d0 and g*d0 on the SAME positive
+constant profile as233, completing its intermediate separable order?
+Retain D>=3,n>=2,g=V=n^D,actual flat forward coexact U=U0^g, and linear
+finite observations with arbitrary penalty Phi(0)=0. Mechanism: injectivity
+on the uniformly polarized lowspace T U0, plus exact common-map direct sum.
+Falsifier: a noninjective observation restoring coercivity on that lowspace,
+a broken direct-sum identity, changed normalized domain, or invalid mixed
+upper map. Abandon an uncorrectable mechanism, preserving refutation; change
+route after3units without substantive progress. Never expand row classes
+silently or turn a classical rank corollary into a separate paper.
+
+1. SETUP AND A LOWSPACE FOR ALL ITS VECTORS
+Let X=(Z/nZ)^D,V=n^D,U0=im(d1*) for the actual forward curl, and
+d0=(D-1)(V-1). Let U=U0^g with counting norm. Put c>0,a=c/(16D),
+H=cn^2,v=(1,...,1)/sqrt(g),B=H I_g-(H-a)vv^T. At every site
+A_(i,j,alpha),(i',j',beta)=delta_ii' delta_jj' B_alpha,beta.
+This is exactly231B's constant positive profile, with normalized energy
+V^-1 Q_A and full capped budget F<=D^2(1+alpha_D)V, h=Dg.
+Define the isometry T:U0->U by (Tf)_alpha=v_alpha f. The difference bound
+sum_i||D_i^+f||^2<=4D||f||^2 gives, for EVERY f in U0,
+ Q_A(Tf)=a sum_i||D_i^+f||^2<=c/4 ||f||^2.
+No selection of a few modes or spatial components is made in this lowspace.
+
+2. EXACT UNRESTRICTED MINIMUM
+If linear C:U->finite real output restores
+ V^-1 Q_A(z)+Phi(Cz)>=c V^-1||z||^2 for every z in U,
+with Phi(0)=0, then C restricted to T U0 must be injective. Otherwise a
+nonzero Tf in its kernel would have energy at most c/4 times its norm and
+contradict that inequality. Consequently rank(C|U)>=d0.
+
+Let W=T* so Wz=sum_alpha v_alpha z_alpha, and observe every spatial
+component of Wz at every site with factor V^-1/2. W maps U onto U0
+because WT=I, hence this mixed observation has actual rank exactly d0.
+The orthogonal split z=TWz+z_s remains coexact and commutes with all forward
+differences because internal mixing is spatially constant. Its energy splits
+into weak a and strong H contributions. Every coexact component has global
+mean zero. The actual forward torus Laplacian gap lambda1>=16/n^2 gives
+ Q_A(z_s)>=H lambda1||z_s||^2>=c||z_s||^2.
+Also ||Cz||^2=V^-1||Wz||^2=V^-1||TWz||^2. Adding penalty c||Cz||^2,
+and discarding nonnegative weak energy, proves the required inequality.
+Therefore the minimum actual rank among ALL finite linear observation maps
+with some allowed restoring penalty is EXACTLY d0, not merely O_D(V).
+No nonlinear observation map rank is defined or asserted here.
+
+3. EXACT COMMON-FULL-VECTOR MINIMUM
+For any partition P of X into nonempty cells, let C0_P act on a D-vector
+field by all normalized spatial-component means
+ V^-1/2 |B|^-1/2 sum_{x in B} f_j(x), for B in P,j=1,...,D.
+The common full-vector map on U is the literal direct sum
+ C_P=direct_sum_{alpha=1}^g C0_P,
+all using the SAME partition and row normalization. Hence
+ C_P(Tf)=(v_alpha C0_P f)_alpha.
+Every v_alpha is nonzero. If C0_P|U0 had a nonzero kernel f, C_P(Tf)
+would vanish, contradicting the lowspace coercivity argument in section2.
+Thus C0_P|U0 is injective for ANY restoring common map. Its actual rank is
+d0, and rank(C_P|U)=g*d0 by the internal direct sum. This is the ENTIRE
+dimension of U. No listed-output-count h*#P is substituted for actual rank.
+The conclusion does not assert a minimal number of partition cells.
+
+The singleton partition is common and rectangular. Its rows are z_j,alpha(x)
+times V^-1/2, so squared output norm is V^-1||z||^2. Since Q_A>=0,
+penalty c times that norm restores coercivity on U, and its actual rank is
+g*d0. Therefore the minimum common full-vector restricted rank is EXACTLY
+g*d0, both for arbitrary-cell partitions and for integer rectangular ones.
+The necessity proof even applies when C0 is any same linear channel map,
+repeated in every internal channel, but is not asserted for unequal maps.
+
+4. ONE PROFILE, THREE CLASSES, AND LIMITS
+Together with the separately proved233 result, the SAME positive profile
+and actual coexact domain have minima
+ unrestricted linear maps: d0=(D-1)(V-1),
+ fixed-basis internally channel-separable linear maps: Theta_D(n^(2D-2)),
+ common full-vector partitions: g*d0=(D-1)V(V-1).
+The separable upper rows in233 may be spatially nonlocal and need not be
+rectangular. No matching upper for component-adapted RECTANGULAR maps is
+deduced. The comparison is asymptotic in n for fixed D>=3 and g=V; no
+strict separation of all three minima at every small n is claimed.
+Changing internal basis changes the separable class, whereas a common map
+retaining all components has the direct-sum restriction just used. Nothing
+here supplies a fixed-g, basis-free all-linear obstruction, uniform penalty,
+general-profile optimum, efficient algorithm, physical mass gap or continuum
+result. Historical originality is unestablished; these are elementary
+linear-algebra consequences of the exact lowspace, grouped with233 rather
+than published as a tiny standalone paper. No numerical score is requested
+or inherited, and the frozen232B manuscript is unchanged by this note.

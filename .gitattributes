@@ -50,3 +50,6 @@ papers/flat-coarse-rank/research/2026-11-10_channel-separable231B.txt -text
 
 papers/flat-coarse-rank/research/2026-11-10_sharp-separable233.txt -text
 papers/flat-coarse-rank/research/sharp-separable233/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space
+
+papers/flat-coarse-rank/research/2026-11-10_hierarchy234.txt -text
+papers/flat-coarse-rank/research/hierarchy234/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space
