@@ -1,0 +1,61 @@
+{
+  "unit": 234,
+  "recorded_at": "2026-11-10T21:48:27.857611+00:00",
+  "statement": "On the exact231B coupled family, are the unrestricted and common-full-vector restoring rank minima exactly d0 and g*d0, completing233 intermediate order on one same profile?",
+  "status": "EXACT_SAME_PROFILE_EXTREMAL_RANKS_SOURCE_AUDITED",
+  "hypotheses": "D>=3,n>=2,g=V=n^D,actual U0=im(d1*) and U=U0^g; positive constant231Bprofile; finiteLINEAR observations, arbitraryPhi(0)=0; commonmap means SAME partition and normalizedrows in every internalchannel.",
+  "mechanism": "All weak-polarizationTU0 has energy<=c/4: Cmustinject thisd0dimensionalspace. Mixedprojectionattainsd0. CommonC0 repeatedg times mustinjectU0, so actualrank=g*d0; singletoncommonrowsattain.",
+  "falsifier": "Noninjective lowspace restoration, incorrect commonmap directsum/volume, invalid mixed upper or changed class/domain.",
+  "abandonment": "Retain refutations; abandon invalid mechanism if uncorrectable or after3unitswithoutsubstantialprogress. No separate tiny paper or silently changed rowclass.",
+  "source_sha": "4a171fda109903d0c3cf993612dd00eb70d600f6",
+  "source_raw_sha256": "bcc64b5415300a4ca2ad8a389d0bed1e0848aad0ecd8a3d0f15c716f0b210a15",
+  "scientific_execution": false,
+  "hypotheses_eliminated": [],
+  "new_paper": false,
+  "grade": null,
+  "frozen232B_unchanged": true,
+  "not_in_232B_assessment": true,
+  "next_action": "Keep234 for future grouped consolidation, excluded from exact232B score. Next bounded question: attain233order with canonical dyadic rectangular means on the same dyadic-size coupled subfamily, replacing nonlocal eigenmode rows there. No claim of arbitrary-size/profile hypothesis elimination.",
+  "updated_at": "2026-11-10T22:02:42.514759+00:00",
+  "source_audit": {
+    "verdict": "accept_with_limits",
+    "unit": 234,
+    "source_commit": "4a171fda109903d0c3cf993612dd00eb70d600f6",
+    "source_path": "papers/flat-coarse-rank/research/2026-11-10_hierarchy234.txt",
+    "source_sha256_raw": "bcc64b5415300a4ca2ad8a389d0bed1e0848aad0ecd8a3d0f15c716f0b210a15",
+    "blocking_findings": [],
+    "material_scope_findings": [],
+    "editorial_findings": [],
+    "unrestricted_minimum": "d_0=(D-1)(V-1)",
+    "common_fullvector_minimum": "g d_0=(D-1)V(V-1)",
+    "both_exact_attainments_checked": true,
+    "linear_observations_only": true,
+    "limits": [
+      "Exact231B/233 coupled family and actual coexact domain only, D>=3,n>=2,g=V.",
+      "Observations are finite linear maps; penalties may be arbitrary but Phi(0)=0.",
+      "Common class is literal full-vector repeated same-partition map; no compression/projected-output/unequal-channel extension.",
+      "Intermediate233 order permits nonlocal rows; no matching component-adapted rectangular upper or strict all-small-n three-way ordering.",
+      "Future grouped consolidation only; no modification or assessment extension to frozen232B.",
+      "No execution, PDF/grade review, formal certificate, priority or physical result."
+    ],
+    "new_execution": false,
+    "numerical_grade": null,
+    "originals_unchanged": true
+  },
+  "results": [
+    "Same exact231Bfamily: unrestricted actual restoring rank minimum exactlyd0; commonfullvector partition minimum exactlyg*d0.",
+    "Both endpoint minima attained; with233 this gives same-profile three-class hierarchy."
+  ],
+  "tests": [
+    "Complete separate involvedAI source audit and all raw source/report hashes verified. No execution."
+  ],
+  "refutations": [],
+  "limitations": [
+    "Exact231B/233 coupled family and actual coexact domain only, D>=3,n>=2,g=V.",
+    "Observations are finite linear maps; penalties may be arbitrary but Phi(0)=0.",
+    "Common class is literal full-vector repeated same-partition map; no compression/projected-output/unequal-channel extension.",
+    "Intermediate233 order permits nonlocal rows; no matching component-adapted rectangular upper or strict all-small-n three-way ordering.",
+    "Future grouped consolidation only; no modification or assessment extension to frozen232B.",
+    "No execution, PDF/grade review, formal certificate, priority or physical result."
+  ]
+}

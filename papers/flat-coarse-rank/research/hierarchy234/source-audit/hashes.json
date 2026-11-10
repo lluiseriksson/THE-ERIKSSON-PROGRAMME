@@ -1,0 +1,43 @@
+{
+  "representation": "SHA256 of exact raw bytes. Git capture binary stdout, no normalization. New reports UTF8 no BOM LF final newline.",
+  "git_referents": {
+    "candidate234": "4a171fda109903d0c3cf993612dd00eb70d600f6",
+    "input231B": "dbaca106b4def20c1b9d674ec34cfb9a56794cd7",
+    "input233": "a1da5307a7b91e0d57f110c624eb3f9eefc03919"
+  },
+  "captures": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-234\\source-audit\\capture\\channel-separable231B-git.txt",
+      "bytes": 7789,
+      "sha256_raw": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-234\\source-audit\\capture\\hierarchy234-git.txt",
+      "bytes": 5755,
+      "sha256_raw": "bcc64b5415300a4ca2ad8a389d0bed1e0848aad0ecd8a3d0f15c716f0b210a15"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-234\\source-audit\\capture\\sharp-separable233-git.txt",
+      "bytes": 6864,
+      "sha256_raw": "e244cff296a5fe3b833162a0a759a3a6a1d2cde4eef469261a91653b4af699da"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-234\\source-audit\\fullreport.txt",
+      "bytes": 10011,
+      "sha256_raw": "44ae3056ed4a52c2e8bd2f52defcebb2fb66bea2d5c124b41c1e7eb5428af63c"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-234\\source-audit\\verdict.json",
+      "bytes": 1278,
+      "sha256_raw": "9c93bdf3599ec17b6e006bbbcaf8a573bdc8efb5bb8d54e4fe1fd46e89cb899b"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-234\\source-audit\\context.json",
+      "bytes": 1402,
+      "sha256_raw": "766ac4f3673af614ba7dc09e49c02d9f13ef2517e736ec2fc4eb625827995f4b"
+    }
+  ],
+  "self_hash": "Excluded to avoid recursion; supplied in final response."
+}
