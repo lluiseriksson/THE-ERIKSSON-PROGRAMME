@@ -1,0 +1,22 @@
+{
+  "unit": 228,
+  "role": "same involved AI source auditor, parent fabricator",
+  "exposed_identity": "System: AI assistant accessed via API. Developer: Codex, agent based on GPT-6.",
+  "exact_backend_and_effort": "Not exposed; unknown.",
+  "prior_involvement": "224/logarithmic224,225,227,226B/C,228analytical,AIRRcompatibility and scriptA audits retained in this context.",
+  "shared_context": "Parent framing/shared account/system; no independent, blind, human or independently selected-model claim.",
+  "inbound_during_B": "None received",
+  "inputs": "Complete108line5819byteBsource plus boundedA-to-Bdiff; oldsource and4originalAaudit hashes checked unchanged",
+  "prior_rule_interpretation": "Original A does not literally print PASS; explicit counter requirement was applied to semantic CHECKED success publication. B now satisfies that interpretation.",
+  "execution_context": "Parent says no scientific execution yet; freshBwrapper to be prepared after source acceptance. No wrapper/run outcome read or assumed.",
+  "no_local_tests_science_Lean_build_render_runtime": true,
+  "no_source_status_Git_mutation": true,
+  "no_otherchat_or_automation": true,
+  "no226_numeric_report_or_pdf_read": true,
+  "no_prior_evidence_edits": true,
+  "disposable_clone_created": false,
+  "output_representation": "Original complete UTF-8 without BOM, LF, final newline",
+  "source_capture": "Exact raw bytes without normalization",
+  "diff_capture": "Raw git -c core.autocrlf=false diff --no-index stdout; exit1expected for differences",
+  "root": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\diagnostic-source-audit-b"
+}
