@@ -1,4 +1,4 @@
-240 — Sharp canonical penalty scale for every internal dimension
+240B — Sharp canonical penalty scale for every internal dimension
 Author-role proof candidate. No execution, grade, priority or physical claim.
 Uses the SAME239 local observation maps and exact positive coefficient family.
 
@@ -9,9 +9,8 @@ forward-gradient energy Q_A with directional matrix delta_jj' delta_kk' B.
 The actual domain U=U_0^g has U_0=im(d_1^*),d0=(D-1)(V-1).
 C is EXACTLY an explicit239 canonical rectangle map; fix the following
 priority to make its case choice unambiguous:
-(i) g<4096: all channels singleton;
-(ii) g>=4096 and g>=n^2: the238 all-scale map, with its small-n singleton
-fallback if n<32 (that fallback cannot in fact occur in case(ii));
+(i) g<4096 OR n<32: all channels singleton;
+(ii) otherwise, g>=n^2: the238 all-scale map (now n>=32);
 (iii) 4096<=g<n^2: the239 coarse-plus-one-tail map.
 These choices have239's full count <=L_D(V+gV/n^2). Changing priority in
 an overlap to another valid singleton prescription is harmless but is not needed.
@@ -27,7 +26,7 @@ This does not claim the exact leading constants or an upper for every map
 of that rank. Counting-energy/norm penalty coefficients are V times these K.
 
 2. The group data from the actual239 construction.
-In case(ii), n>=64 and all bands E_j=P_(j+1)-P_j, j<J=ceil(log_2 n),
+In case(ii), n>=32 and all bands E_j=P_(j+1)-P_j, j<J=ceil(log_2 n),
 sum to I-P_0. Their parent side bound L_j=ceil(n/2^j)>=2 satisfies
 ||E_j w||^2<=(L_j^2/4)E(w) for ALL fields w.
 There are disjoint groups I_j, sizes r_j=ceil(5gL_j^2/(8n^2)), whose
@@ -88,8 +87,9 @@ differences of m vanish. Apply240.4 to w. The coefficient32cb>=c because
 b>=1, so its observation term on m also supplies at least c||m||^2.
 This proves240.0 on ALL fields, not only U or fields with an extra mean
 hypothesis. In case(i), R=I and normalized K=c suffices directly; 32cb
-is larger and therefore valid. The large bounded singleton fallback cannot
-contradict an order statement with D-only constants from239's count bound.
+is larger and therefore valid. The singleton branches retain239's count: bounded g costs <=4095DV,
+and bounded n costs <=961DgV/n^2. Both fit its D-only constant, so neither
+contradicts the stated rank/penalty order.
 No block projection is assumed to preserve coexactness at any step.
 
 5. Matching lower with ACTUAL rank and fixed canonical weights.
@@ -111,6 +111,13 @@ The rank theorem remains239's proved actual-rank theorem, not a claim that
 every economical map restores or enjoys this upper penalty.
 
 6. Scope and adverse history.
+The initial240A incorrectly claimed case(ii) forces n>=64 and excludes its
+small-n singleton fallback. Exact counterexamples n=2,g=4096 and n=32,g=4096
+were supplied by the separate audit. That source/report is preserved REJECT.
+This240B explicitly assigns every n<32 to singletons and only uses the band
+argument for n>=32; all other positive-form/trace arguments are unchanged.
+No main inequality counterexample was found by that reading, but the incorrect
+case assertions were load-bearing scope statements and required this repair.
 The new order agrees with g=1 having singleton K=c and with the old g>=n^2
 range's cn^2 growth. It replaces no previous failure or grade;239 correctly
 withheld this stronger penalty result, and frozen232B still has its own older
