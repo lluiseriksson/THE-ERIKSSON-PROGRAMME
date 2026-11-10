@@ -1,0 +1,57 @@
+{
+  "unit": 237,
+  "recorded_at": "2026-11-10T22:41:19.720153+00:00",
+  "objective": "Determine sharp normalizedpenaltyscale at economicalactualcanonicalrank for SAME236rows",
+  "status": "MATCHING_CANONICAL_RANK_PENALTY_SCALE_SOURCE_AUDITED",
+  "source_sha": "aca0efa966a210cfb48a88bdef79d14b1d2a64d5",
+  "source_sha256_raw": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3",
+  "results": [
+    "SAME236localrectangularmap admits normalizedK=c+4DH=O_D(cn²), improving previoussufficientO_D(cn4).",
+    "ANY statedcanonicalperchannelpartitionmaprestoringonactualU obeysK>=3cgd0/(4r_actual); same236mapat rankO_D(n2D-2) has minimumK=Theta_D(cn²).",
+    "Uniformnormalizedpenalty incompatiblewith economicalrankorder in exactfamily/fixedcanonicalweights."
+  ],
+  "tests": [
+    "FullseparateinvolvedAI exactsourceaudit withallrawhashes checked. No scientificexecution/formalreplay."
+  ],
+  "hypotheses_eliminated": [],
+  "refutations": [],
+  "limits": [
+    "Exact231B/236 positive profile and canonical per-channel full partition means in the fixed internal basis.",
+    "Normalized coefficient K; counting convention multiplies by V.",
+    "Upper sharpens the same236 map using its full-field2c kernel margin; no coexact invariance of block projections assumed.",
+    "Lower uses actual restricted rank with fixed canonical weights; excludes rescaling, mixed rows and nonlinear penalties.",
+    "Theta_D(cn^2) for fixed236 map family; no upper for every economical arbitrary map or optimal constant.",
+    "No execution, PDF/grade transfer, priority, general-profile/fixed-g/physical result;236A failure preserved."
+  ],
+  "originality": "Unestablished; classicalPSD/trace tools, selectedprimarycomparisons recorded, no proof of nonimplication bypredecessors.",
+  "source_audit": {
+    "verdict": "accept_with_limits",
+    "unit": 237,
+    "source_commit": "aca0efa966a210cfb48a88bdef79d14b1d2a64d5",
+    "source_path": "papers/flat-coarse-rank/research/2026-11-10_rank-penalty237.txt",
+    "source_sha256_raw": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3",
+    "blocking_findings": [],
+    "material_scope_findings": [],
+    "editorial_findings": [],
+    "normalized_upper": "c+4DH=c(1+4Dn^2)",
+    "canonical_actual_rank_lower": "K>=3c g d_0/(4r_actual)",
+    "fixed236_penalty_order": "Theta_D(c n^2)",
+    "same236_rows": true,
+    "trace_no_coexact_preservation_assumed": true,
+    "limits": [
+      "Exact231B/236 positive profile and canonical per-channel full partition means in the fixed internal basis.",
+      "Normalized coefficient K; counting convention multiplies by V.",
+      "Upper sharpens the same236 map using its full-field2c kernel margin; no coexact invariance of block projections assumed.",
+      "Lower uses actual restricted rank with fixed canonical weights; excludes rescaling, mixed rows and nonlinear penalties.",
+      "Theta_D(cn^2) for fixed236 map family; no upper for every economical arbitrary map or optimal constant.",
+      "No execution, PDF/grade transfer, priority, general-profile/fixed-g/physical result;236A failure preserved."
+    ],
+    "new_execution": false,
+    "numerical_grade": null,
+    "originals_unchanged": true
+  },
+  "grade": null,
+  "not_in_frozen232B": true,
+  "new_small_paper": false,
+  "next_action": "Group235-237oneprotectedPR; bounded238examines whether g=nD can be weakened to arbitraryintegerg>=n² with sameH and matchingrank g*nD-2. CompleteAIRRcatalogueconcurrencyfix/tests independently."
+}
