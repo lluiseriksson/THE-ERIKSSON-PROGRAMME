@@ -1,0 +1,88 @@
+{
+  "archive": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\tep226C-assessed-package.zip",
+  "sha256": "069e1dd1fe533a728bcbc84382f074c8b9e809208e478b2b50a0c31d5ccca661",
+  "bytes": 5978123,
+  "subjects_verified": 11,
+  "manifest": {
+    "status": "ASSESSED_WORKING_PAPER_CANDIDATE_NOT_NATIVE_DEPOSITED_OR_PUBLISHED",
+    "source_sha": "2d3237501569f6afac8a44d524a5d6db59f63c39",
+    "canonical_sha256": "28cb2a7502e05cd8588aa6294f07a7eca5e0e452cce1bf5e4f09e9ec3c89e1a6",
+    "scientific_importance": 3.25,
+    "overall_stars": 3,
+    "criteria": [
+      4,
+      4,
+      2,
+      3,
+      3
+    ],
+    "recommendation": "minor_revision",
+    "first_only_numerical_review": true,
+    "independence": "unknown",
+    "files": [
+      {
+        "path": "assessment-binding226C.json",
+        "bytes": 500,
+        "sha256": "be95548406b4ed5747981acea118a9384e54283c18386c256cffaa6e93cf38bb"
+      },
+      {
+        "path": "author-response226C.txt",
+        "bytes": 5182,
+        "sha256": "02cc8d01497d867c8a9992f3a8cf3c8d4183b200e7009b9bdaed86321eaad35d"
+      },
+      {
+        "path": "bound-model-response226C.json",
+        "bytes": 4013,
+        "sha256": "2b2c219f4a1868f4ab97e928a3e0a296236d78464fe4ed75d9bde66f9f57832c"
+      },
+      {
+        "path": "first-assessment226C/report-hashes.json",
+        "bytes": 1014,
+        "sha256": "d75ab088c5cdf6c3485cc355ab52734a18da9b16ced71d9988d0d5a6b0238153"
+      },
+      {
+        "path": "first-assessment226C/response.json",
+        "bytes": 3944,
+        "sha256": "0846434a3d04a32fa0b125d2e0b99ac4b94808e27e56c080ec270324345767b1"
+      },
+      {
+        "path": "first-assessment226C/review-context.json",
+        "bytes": 18457,
+        "sha256": "2d1fe32e616fe9528c798e5d2a8385295c90a0a7304a070635d9e1793907892a"
+      },
+      {
+        "path": "first-assessment226C/scientific-review.txt",
+        "bytes": 16682,
+        "sha256": "bd00e31013a1bdbf1f2766b25665af17ab7792aae8fcdff3c50670393a1d7272"
+      },
+      {
+        "path": "locked226C.json",
+        "bytes": 1268,
+        "sha256": "a1ffe63df3f65440bd51c232b4123f261fbb212057befd084a40bba32a064c54"
+      },
+      {
+        "path": "rectangular_matrix226C.pdf",
+        "bytes": 419361,
+        "sha256": "28cb2a7502e05cd8588aa6294f07a7eca5e0e452cce1bf5e4f09e9ec3c89e1a6"
+      },
+      {
+        "path": "tep226C-review.zip",
+        "bytes": 5389176,
+        "sha256": "3a19ef58929bf566099b182aa4e691210b508565ca4afa71112848e61df81b0d"
+      },
+      {
+        "path": "tep226C-source-preassessment.zip",
+        "bytes": 175277,
+        "sha256": "5522ce136c89e6d0228dc06038ed807bf0e370d2b4bbce15b9e223cd6e72523c"
+      }
+    ]
+  },
+  "native_grant_attempt": {
+    "exit": 2,
+    "HTTP": 403,
+    "message": "AIRR HTTP 403. Permission is inactive or its terms changed. Inspect status before replacing it.",
+    "replaced_credential": false,
+    "invented_receipt": false
+  },
+  "next_action": "Resolve documented legacy-contract version compatibility through formal authorized AIRR code/rule changes, preserving original actual authority and all quota/security gates; continue source228 investigation. No new human response or receipt simulated."
+}

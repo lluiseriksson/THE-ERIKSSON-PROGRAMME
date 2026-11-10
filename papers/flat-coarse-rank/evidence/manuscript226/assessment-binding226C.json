@@ -1,0 +1,7 @@
+{
+  "original_response_sha256": "0846434a3d04a32fa0b125d2e0b99ac4b94808e27e56c080ec270324345767b1",
+  "bound_response_sha256": "2b2c219f4a1868f4ab97e928a3e0a296236d78464fe4ed75d9bde66f9f57832c",
+  "only_change": "Add proposed author version UUID after first exact-PDF assessment; all scientific judgments unchanged. Not a native receipt.",
+  "version_id": "arr:version:ccd9fd43-ebe6-45a4-a6e0-21c5a0b572fb",
+  "pdf_sha256": "28cb2a7502e05cd8588aa6294f07a7eca5e0e452cce1bf5e4f09e9ec3c89e1a6"
+}
