@@ -1,0 +1,55 @@
+UNIT228B SELECTED EXECUTION EVIDENCE AUDIT
+Verdict: accept_with_limits
+No blocking mismatch was found in the archive, extracted payloads, source pins, semantic exits, selected outputs or recorded lifecycle. This accepts the documented selected lemma diagnostic evidence only. It assigns no manuscript grade and supplies no new scientific execution.
+
+EXACT REFERENTS AND READING
+Scientific source commit:b0fa153f3cc2a790e659177127de27a03231a11f.
+Archive:D:\Entregas\the-eriksson-programme\2026-11-10_coexact-partition228\attempt-b\tep228-diagnostics.zip.
+Archive raw SHA256:cda632040ffa9eee46c692bced1fbe9e1c9fae2d46aa05e2dafacd2c6efd80fc;10271bytes.
+Extracted counterpart:D:\Entregas\the-eriksson-programme\2026-11-10_coexact-partition228\exact228B.
+The verified-summary JSON, complete original A/B diagnostic source-audit reports/verdicts/contexts/hash manifests, archive manifest/payload evidence, semantic normal/optimized exits/stdout/stderr, report, retained execution wrapper/preregistration/shell lifecycle script, lifecycle logs/exits/timestamps and recorded backend-readback files were read. ZIP inspection and hashing did not execute the diagnostic or its wrapper.
+
+1. RAW ARCHIVE AND EXTRACTED MANIFEST
+The actual archive has the declared10271bytes and raw SHA256. It contains ten uniquely named regular payload entries:MANIFEST.json plus nine listed subjects. Every decompressed entry's byte length/SHA256 matches its extracted exact228B file; the extracted directory has exactly those ten files. Each of the nine manifest subjects matches its declared raw bytes and hash. The manifest does not recursively hash itself; the archive hash binds its representation.
+The script is5819bytes, SHA256f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c. The analytical draft is8775bytes, SHA25641144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e. Both match the previously audited exact sources and their raw Git blobs at b0fa153f3cc2a790e659177127de27a03231a11f, at scripts/coexact_partition_rank_diagnostic228.py and papers/flat-coarse-rank/research/2026-11-10_coexact-partition228.txt respectively. Thus the actually archived science script is the corrected B script, not rejected A.
+The archived report's parsed contents exactly match diagnostic228B-verified.json.actual_report, and parsed normal output exactly matches its selected_output. The verified summary is therefore a faithful summary here; its claim is not accepted merely because that parent-produced file says verified.
+
+2. ORIGINAL A/B SOURCE VERDICTS REMAIN DISTINCT
+All four original A source-audit hashes and all four original B hashes match their original handoffs. A rejected source6c1d7b85...only for the missing explicit success-counter protocol. It did not literally print PASS and was not observed to fail a mathematical case; the review explicitly applied the charter's success-publication rule to CHECKED. B at f6a0a5fd...added the actual completed-case and named-control acceptance gates and received accept_with_limits before execution.
+The preregistration binds B, the exact proof and B audit manifest SHA25685652c2dae46f5bc82674617b9b566056626525c2baf8af53d143019ea2f78f7. That audit identity matches the original B manifest. The wrapper's source_audit_pending=false flag is not itself an audit certificate; the actual matching source-audit evidence was read. No original rejection, qualified acceptance, source or context file was rewritten by this execution audit.
+
+3. ACTUAL SEMANTIC MODES, EXITS AND OUTPUTS
+normal.exit and optimized.exit each contain exactly the two raw bytes0LF, not an empty sentinel or a filename-only success cue. Both stderr files are empty. Each stdout is2620bytes, and both raw SHA256digests are identical:
+cc1a1bd9523417a98864ae509a6d41b90a04e02a68d76d2f6618629e5bd0d117.
+The retained wrapper explicitly invokes the exact pinned B script via[sys.executable,...] once with no optimization flag and once with['-O']; it records actual subprocess return codes and raw stdout/stderr before accepting. Its retained D copy and the referenced C:_tmp execution copy have identical raw SHA256ddb5b1c283313bf00dae96fc4d9c1d041feb3205aac3aea7ee1645b69de7d94a. Lifecycle execution points to that wrapper path. This supports the recorded semantic normal/-O modes; it is not independent process attestation or an auditor rerun.
+The actual output declares accepted_cases=10, contains exactly the ten selected case records, and declares the three expected negative control names with actual JSONtrue values and negative_controls_rejected=3. These agree with B's explicit pre-success gates. Report status is FINITE_DIAGNOSTICS_CHECKED; diagnostic status is SELECTED_EXACT_COEXACT_RANK_LEMMA_DIAGNOSTICS_CHECKED. No failure.txt or contradictory failed-status payload is present.
+
+4. SELECTED RANK VALUES AND REAL MUTATIONS
+The reported true image ranks in specification order are0,0,0,14,4,4,8,9,52,90:
+ D3,n1,g1,root:R1,rank0;
+ D3,n1,g2,root:R1,rank0;
+ D3,n2,g1,root:R1,rank0;
+ D3,n2,g1,singletons:R8,rank14;
+ D3,n2,g2,parity:R2,rank4;
+ D3,n3,g1,stripes:R3,rank4;
+ D3,n3,g2,diagonal3:R3,rank8;
+ D3,n3,g1,disconnected4:R4,rank9;
+ D3,n3,g1,singletons:R27,rank52;
+ D4,n2,g2,singletons:R16,rank90.
+Each satisfies the stated D*rank>=g(R-1). The recorded two-form column counts3,6,24,24,48,81,162,81,81,192and output row counts agree with the source's complete basis enumeration and block/component layout. Nontrivial ranks differ from hR; the execution did not substitute codomain size for true coexact image rank. These values were inspected as evidence, not recomputed by running Gaussian elimination here.
+The wrong codifferential sign and wrong periodic shift controls are both reported rejected by actual backward-divergence/mean consequences, as required by the reviewed generator mutations. The transverse-output deletion control records the stripe projection with R3,g1,D3,three output rows and true rank0, which fails its positive lower numerator2. All three negative-control booleans are present and true. Normalized-row rank correspondence remains the analytical nonzero diagonal scaling argument in the audited script, not a separate executed irrational normalization implementation.
+
+5. PREREGISTRATION, LIFECYCLE AND RELEASE
+The retained B preregistration pins exactly the script/proof, ten cases, three named controls, normal/-O equality, selected-lemma-only scope and B source-audit identity. Its prepared_utc19:23:29.521193precedes the recorded runtime-open request19:23:50and wrapper start19:24:39.408234. The older recorded_at and explicit B-correction history are retained; no A execution is inferred from the rejected preparation.
+The shell lifecycle names one session, tep228-b-own-cpu, requests high memory, executes the wrapper, downloads the archive and stops that same session. Allocation/execution/download/release exit files each contain actual0LF. Logs show session ready, wrapper's matching report/archive digest, successful download and session termination. The wrapper report finishes19:24:40.388388; the release-finished timestamp is19:24:45. The request-to-release recorded window is55seconds, including setup/teardown; it is not an independently measured exact connected-runtime duration.
+The report records Python3.13.18with GCC13.3.0, elapsed wrapper time0.9803206319999163seconds and child maxrss105968KiB. These are retained execution measurements, not values newly measured by this auditor. CPU/high-memory ownership is supported by the named allocation command and execution-role records, not merely the script's /content path sentinel. Billed compute units remain unknown.
+The recorded backend readback text says[colab] No active sessions found on server., with raw exit0LF. Together with stop logs it supports the documented released/inactive readback. No new live poll or current runtime inspection was performed by this auditor.
+
+6. LIMITS, MAIN-HEAD CONTEXT AND VERDICT
+This was one recorded owned runtime with two child interpreter modes against the same pinned inputs. No independent fresh-clone reproduction occurred; indeed the wrapper fetches the two pinned raw sources rather than providing a two-clone terminal replay. Two modes with equal output are not two independent witnesses. The evidence is limited to ten selected finite image matrices and three real field/output mutations for the new rank lemma. It does not execute the fixedL16multi-bump coefficient/budget family, prove the analytical theorem for all sizes, certify a formal result, establish novelty/priority, prove physical consequences or grade a manuscript. The verified summary and report expressly preserve those limits.
+The execution referent remains b0fa153f3cc2a790e659177127de27a03231a11f. The assignment separately names main head80ee9132d06e2ba8417b9907150594a893c1d99b. A direct raw lookup of scripts/coexact_partition_rank_diagnostic228.py at that head reported the path absent. Therefore this audit does not bind these228science paths to80eeor certify a PR205integration claim; the parent-supplied first-source merge context must not replace the verified b0fa source identity. This does not invalidate the matching b0fa archive or assess a different manuscript/source PR. It is a nonblocking provenance boundary for this execution unit.
+No blocking mismatch was found. The actual selected normal/-O evidence, counters and mutations are accepted with the above limits. No new run, PDF/rescoring or original assessment was performed. All prior exact-source and numerical records remain unchanged.
+
+MODEL/ROLE AND OPERATIONS CONTEXT
+This is the same involved AI auditor context as prior224/logarithmic224,225,227,226B/C,228analytical and diagnostic A/Bsource reviews, with retained parent framing and shared account/system. It is a different audit role from the execution/fabrication role, not blind, independent-human or independently selected-model review. The exposed identity is Codex based on GPT-6; the exact served backend and effort are unknown. No inbound message arrived while this audit ran.
+Only the authorized four audit files were written. All local activity was reading, archive/JSON inspection and hashing of evidence; no diagnostic, wrapper, scientific calculation, Lean/build/render/runtime or new terminal reproduction was executed. No source/status/Git mutation, other-chat/automation access,226 numerical-report/PDF read or original evidence edit occurred. No disposable clone was created. No numerical grade, new paper or independent-reproduction claim is supplied.

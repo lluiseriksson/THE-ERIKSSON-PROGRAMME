@@ -1,0 +1,22 @@
+{
+  "unit": 228,
+  "role": "execution-evidence auditor, same previously involved AI source-auditor context",
+  "exposed_identity": "System: AI assistant accessed via API. Developer: Codex, agent based on GPT-6.",
+  "exact_backend_and_effort": "Not exposed; unknown.",
+  "prior_history": "224/logarithmic224,225,227,226B/C,228analytical,diagnosticA/B and AIRRcompatibility source reviews retained.",
+  "shared_context": "Parent framing/shared account/system/environment; no independent, blind, human or independently selected-model review claim.",
+  "inbound_while_auditing": "None received",
+  "evidence_read": "Verified228Bsummary, complete A/Bsource audits, ZIP and exact228Bpayloads, retainedBprereg/wrapper/shell/lifecycle logs and recorded backend readback",
+  "source_binding": "RawGitb0fa script/proof match accepted pins; requested228scriptabsentatcontextmain80ee, so no80eesciencebinding certified.",
+  "actual_auditor_actions": "Read archive/JSON/text, compare raw hashes/bytes and document recorded outputs; no Gaussian/rank calculation, diagnostic run or runtime invocation.",
+  "no_new_scientific_execution": true,
+  "no_live_runtime_poll": true,
+  "no_source_status_Git_mutation": true,
+  "no_otherchat_automation": true,
+  "no_pdf_or_numeric_report_read": true,
+  "no_original_evidence_edit": true,
+  "disposable_clone_created": false,
+  "output_representation": "Original complete UTF-8 without BOM, LF, final newline",
+  "runtime_and_resource_truth": "Retained role-produced lifecycle/report measurements checked for consistency, not independently witnessed live",
+  "root": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\diagnostic-execution-audit-b"
+}
