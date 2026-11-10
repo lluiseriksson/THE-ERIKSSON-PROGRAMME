@@ -1,0 +1,112 @@
+[
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/allocation222.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/archive-verified222.json",
+    "bytes": 1919,
+    "sha256": "9e4e83760ec4c63d02907f32035e862d8e016307437e035370f60d7d42054893"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/download222.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/execution222.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/manifest222.json",
+    "bytes": 845,
+    "sha256": "faa216123a8f7f500be8952d589fcbecf9cede2046448ca2e337fed8ea181a79"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/normal.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/normal.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/normal.stdout.json",
+    "bytes": 482,
+    "sha256": "0b444349e304629b9723812a9b2888fe619d3021009b4b6126511210855ea34e"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/optimized.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/optimized.stderr.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/optimized.stdout.json",
+    "bytes": 482,
+    "sha256": "0b444349e304629b9723812a9b2888fe619d3021009b4b6126511210855ea34e"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/primary-comparison222.txt",
+    "bytes": 1463,
+    "sha256": "9d2dee15c88a60eb0b5b43cfae7b21da1343d0f683819465078ae45160d15053"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/release222.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/report222.json",
+    "bytes": 637,
+    "sha256": "2d54b133801e406009aa6b9f00ed26b0894dcf758dc747a342730526ac19c65e"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/run_diagnostic222.py",
+    "bytes": 2773,
+    "sha256": "a77103438c848d54815e5acb773adc2d827b5ed652f5dcf6235cd0d460882247"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/runtime222-backend-readback.exit",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/runtime222-backend-readback.txt",
+    "bytes": 44,
+    "sha256": "dec807c11992d9001acb723d969c49727402fe62c5e6cbd3899944bfdd03c140"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/runtime222-open-requested.txt",
+    "bytes": 21,
+    "sha256": "73326a121e2e7f9a123cfa70cb5417c5d08dda6501eca03e65d6f1eb89bdbe75"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/runtime222-release-finished.txt",
+    "bytes": 21,
+    "sha256": "57e7bb527d6e4d9a2f10da062be27a38159a5ef0a9baffb688d2a30cff4a4473"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/STATUS.txt",
+    "bytes": 2275,
+    "sha256": "087462edfe50f524b4f8945af6efebdb610b488a7311f3228d3e03c1c0f402a6"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/tep222-diagnostic.zip",
+    "bytes": 12119,
+    "sha256": "fca0a427cc4206dd8436e054fc9c6c2aba223725288d27332ec52e521ccf1dcb"
+  },
+  {
+    "path": "papers/flat-coarse-rank/evidence/balanced-ring222/verify_evidence222.py",
+    "bytes": 2618,
+    "sha256": "b32893c2495d4e0dc0ba98a374a27ff865d8252b4a2670d37e3c03d2a67dbd3a"
+  }
+]

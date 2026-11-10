@@ -1,0 +1,205 @@
+UNIT222 -- UNREVIEWED ANALYTICAL CANDIDATE, 2026-11-09
+Not a theorem closure, not a formal result, not an assessed PDF.
+Source context: integrated221B 86c19e1bd5b18cfe39f6c53685489b0d7cc75a64,
+original scalar-gradient Question27 / ap:eq:energy and ap:eq:rank.
+The frozen public221 PDF and its first numerical assessment stay unchanged.
+
+PREREGISTRATION (one bounded subquestion of the same sole main question)
+Statement: Can balanced integer dyadic rings, measured by actual critical
+coefficient mass, produce a complete rectangular partition with K=c and
+cardinality O_D(1+c^(D/2) sum_x a(x)^(-D/2))?
+Hypotheses: D>=3, finite integer cube, scalar a(x)>0, original positive-start
+component gradient energy. No assumed cover, spectral gap or weighted extension.
+Mechanism: prove UNWEIGHTED BV constant-fill extension on balanced rings;
+derive their actual critical Sobolev inequality; compress unary heavy chains;
+replace a ring mean by the means of <=2D rectangular pieces while RETAINING
+all within-ring cross-piece energy edges.
+Falsifier: a balanced-ring geometry violating the extension bound, an omitted
+edge or thin/singleton geometry, a heavy-tree count with unbounded ratio, or
+a profile/field violating the final actual-energy inequality. Any one defeats
+the present proof. Failure of this proof is not a negative answer to Question27.
+Abandonment: stop this exact argument on a load-bearing counterexample; after
+three substantive unsuccessful correction units, retain failures and change
+mechanism or name the precise unresolved lemma. No reset of stopped219/220 routes.
+Audit and Colab finite diagnostics remain REQUIRED, not yet performed for222.
+Classical mechanisms throughout; priority/originality unestablished.
+
+CONVENTIONS AND PROPOSED CONCLUSION
+X={0,...,n-1}^D, P=D/2, b=2^D. All norms/sums counting unless stated.
+E_a(f;Omega)=sum_{i,x:x,x+e_i in Omega} a(x)|f(x+e_i)-f(x)|^2.
+Nonwrapping edges have their ORIGINAL positive-start coefficient; no reassignment.
+S(Omega)=sum_{x in Omega} a(x)^(-P), TV_Omega unweighted internal edge L1 sum.
+Proposed explicit safe constants:
+J=2D, P_D=2J(1+12J), C_ext=1+J(P_D+1),
+G_D=2^(2D+10) D^2 C_ext^2,
+t=(c G_D)^(-D/2)/b.
+Claim to audit: an actual coefficient-only integer rectangular partition has
+R_rect <= 2D[1+(2b+3) S(X)/t] and
+E_a(f;X)+c sum_B |B|^-1 (sum_B f)^2 >= c sum_X f^2.
+The same partition is used for every real field and for all components.
+Periodic wrap edges only add nonnegative energy. For h=D(N_c^2-1) components,
+actual output dimension is h R_rect, not N_c R_rect.
+
+1. BALANCED INTEGER TREE AND GEOMETRY
+Split every coordinate interval of length >=2 into floor/ceil halves; length1
+stays unchanged. Nodes have <=b children, root X, leaves singleton, and every
+node's coordinate lengths differ by at most1 (hence aspect <=2).
+At global depth k all nonempty coordinate intervals have length h or h+1,
+h=max(1,floor(n/2^k)). A descendant hole I at depth k has side lengths in[h,2h].
+Every positive clearance from I to any ancestor Q boundary is a union of
+depth-k intervals, so is >=h. Use GLOBAL h, not min side of this particular I.
+If min side(Q)>=2, each proper descendant is shorter in every coordinate;
+each axis has at least one positive clearance. If min side(Q)=1, Q has only
+length1/2 sides, <=b vertices, and a proper descendant is a corner singleton.
+Then Q\I is a Boolean hypercube minus a corner: connected if nonempty,
+possibly a singleton. This case will use elementary finite path estimates.
+
+2. ACTUAL BV EXTENSION FOR A LARGE BALANCED RING
+Let Omega=Q\I with min side(Q)>=2 and I proper. Expand I by exactly h along
+each face with positive clearance, clipped to Q; call resulting box B.
+Its side lengths ell_i belong to[2h,4h]. A=B\I is covered by the actual slabs
+S_v indexed by positive-clearance hole faces: normal width h, all other
+coordinates full B. There are between D and J slabs; each is contained in Omega.
+For two slabs with distinct normal directions,
+v_i/|S_i intersect S_j|=ell_j/h<=4 and v_i/v_j=ell_j/ell_i<=2.
+Choose any root slab. Attach all distinct-normal slabs directly to root;
+attach its opposite slab (if present) via any slab with another normal.
+The slab tree has depth <=2. This is an actual geometry, not an assumed cover.
+
+For a product interval rectangle S with longest side <=4h,
+V1(S):=sum_S |f-mean_S f| <=2h TV_S(f).
+Proof: coordinate averaging operators commute and contract L1; telescope
+Id-product(P_i). In one interval of length m, averaging pair paths gives
+sum|u-mean u| <=(m/2) sum|du|. Sum in the other coordinates.
+
+For adjacent slab means m_i,m_j and volumes v_i,v_j, averaging over overlap:
+v_i |m_i-m_j| <=4[V1(S_i)+V1(S_j)].
+For depth2 path i,p,r, v_i/v_p<=2 gives
+v_i|m_i-m_r| <=4V1_i+12V1_p+8V1_r <=12 sum_j V1_j.
+Direct paths are bounded by4 sum V1. Put c0=m_root. Cover A, sum over slabs,
+and count every actual edge at most J times:
+sum_A |f-c0| <=(1+12J) sum_j V1_j <=P_D h TV_A(f).
+
+For each positive-clearance hole face, take its outside adjacent h-layer T_i,
+normal length h and tangential intervals equal those of I. T_i is a subset
+of A. Along each normal fibre, the boundary value satisfies
+|f(first)-c0| <=h^-1 sum_fibre|f-c0|+sum_fibre|df|.
+Consequently the sum over all actual hole-crossing face values is <=
+J[h^-1 sum_A|f-c0|+TV_A] <=J(P_D+1)TV_A.
+Extend f to Q by the CONSTANT c0 inside I. No edges external to Q are used.
+All added nonzero jumps are precisely those hole-crossing faces, so
+TV_Q(f_ext) <=C_ext TV_Omega(f).
+No coefficient is extended or averaged. This is NOT a weighted energy
+extension statement and does not contradict the earlier weighted trace failures.
+
+3. CRITICAL SOBOLEV ON THE ACTUAL RING
+Cube relative edge isoperimetry: for T subset{0,...,m-1}^D of size <=m^D/2,
+boundary(T) >=D|T|^((D-1)/D)-D|T|/m
+ >=c_iso |T|^((D-1)/D), c_iso=D(1-2^(-1/D))>=1/2.
+Reason: direction-i partial fibres each supply >=1 actual edge, while full
+fibres number <=|T|/m; sum projections and apply discrete Loomis--Whitney/AMGM.
+Median/coarea/Minkowski then give inf_z ||u-z||_{D/(D-1)} <=(2/c_iso) TV(u).
+To get any aspect<=2 rectangle, fold a cube of maximum side N onto it in
+each coordinate: first list 0,...,m_i-1, then repeat endpoint and reflect
+until N entries. Every vertex has1..2 preimages per coordinate; each edge
+has <=2 preimages per coordinate. Original rectangle embeds in the cube.
+Thus inf_z ||u-z||_r <=C_full TV(u), C_full=2^(D+1)/c_iso.
+This fold is UNWEIGHTED only.
+
+Apply full-rectangle inequality to constant-fill extension of 1_T for
+T subset Omega. For every real z,
+||1_T-z||_{r,Omega} >=(1/2)min(|T|,|Omega\T|)^(1/r), r=D/(D-1).
+Hence Omega relative isoperimetry with
+c_Omega=c_iso/(2^(D+2) C_ext).
+For nonnegative g supported on at most half Omega, coarea/Minkowski gives
+||g||_r <=c_Omega^-1 TV_Omega(g).
+
+Take median m of f, w+=(f-m)+, w-=(m-f)+. Let alpha=2(D-1)/D,
+q=2D/(D+2), q'=2D/(D-2); alpha r=2 and (alpha-1)q'=2.
+For w=w+ or w-, power difference and Holder give
+TV(w^alpha) <=2 alpha D^(1/q') ||dw||_q ||w||_2^(alpha-1),
+because every vertex has <=2D incident internal edges and
+sum_edges(w_x^(alpha-1)+w_y^(alpha-1))^q' <=2^q' D sum_x w_x^2.
+Divide when w nonzero; zero case immediate. With K=2 alpha D^(1/q')/c_Omega,
+||w||_2 <=K ||dw||_q. The two truncated edge q-energies sum to <=||df||_q^q.
+Since2/q>=1, summing their squared bounds gives
+sum_Omega|f-mean_Omega f|^2 <=K^2 (sum_edges |df|^q)^(2/q).
+Only NOW apply weighted Holder on ORIGINAL Omega edges:
+(sum_edges |df|^q)^(2/q) <=[sum_edges a(start)^(-D/2)]^(2/D) E_a(f;Omega)
+ <=[D S(Omega)]^(2/D) E_a(f;Omega).
+K^2 D^(2/D) <=G_D is deliberately loose: alpha<=2,c_iso>=1/2,
+D^(2/q')D^(2/D)=D, so K^2 D^(2/D)<=2^(2D+10)D C_ext^2<=G_D.
+Full aspect<=2 rectangles obey the same bound without removing a hole.
+
+Small case min side(Q)=1: Q or Q\corner has <=b vertices, connected unless
+empty, and each simple path length <=b-1. Pair-path variance gives
+Var <=b^2 E_1. Any original internal edge has a(start)^-P <=S(Omega),
+hence E_1<=S(Omega)^(2/D)E_a. G_D>=b^2; singleton variance0.
+Therefore all actual tree cubes/rings satisfy
+Var_Omega(f)<=G_D S(Omega)^(2/D) E_a(f;Omega).
+
+4. COMPRESSED COEFFICIENT-MASS PARTITION
+Give each vertex weight w=a^-P. A tree node is heavy iff mass>t.
+If root light, output root. Otherwise let L be terminal heavy nodes, B the
+number of heavy nodes with >=2 heavy children. Heavy terminals are disjoint
+and each mass>t, so L<=S(X)/t, and B<=L-1 by finite rooted tree counting.
+Heavy nodes with exactly one heavy child form maximal unary chains; their
+number is <=B+L<=2L-1. (Contract chains; each ends at a branching/terminal node.)
+At unary Q->Q', the increment Q\Q' consists of <=b-1 light children, so has
+mass <=(b-1)t. Greedily group consecutive increments along a chain until
+their accumulated mass first reaches >=t; each group is a balanced ring
+Q_i\Q_j with mass < b t. At chain end a residual ring has mass<t.
+All closed groups across all chains are disjoint, so number<=S(X)/t;
+residual groups number<=2L-1. At branching/terminal heavy internal nodes
+output each light child cube (mass<=t). At heavy singleton terminals output
+the singleton, whose variance is0. Such cubes/singletons number<=b(B+L).
+These regions are disjoint and cover X; count <=1+(2b+3)S(X)/t.
+Each nonsingleton has mass<=b t=(cG_D)^(-D/2), so its actual Neumann gap>=c.
+The algorithm uses coefficients/tree only and never f.
+
+5. RECTANGULAR OBSERVATIONS WITHOUT INTERFACE LOSS
+For each ring Q\I, split by the first coordinate outside I: preceding
+coordinates in I, current coordinate below/above I, remaining coordinates
+full Q. This partitions the ring into <=2D actual axisaligned integer
+rectangles. Empty pieces are omitted. Cubes/singletons need one piece.
+Write q_B(f)=|B|^-1/2 sum_B f. For each ring, Cauchy gives
+|q_Omega(f)|^2 <=sum_{B subset Omega}|q_B(f)|^2.
+The actual ring Poincare bound therefore yields
+E_a(f;Omega)+c sum_{B subset Omega}|q_B(f)|^2>=c||f||_Omega^2.
+Critically E_a(f;Omega) RETAINS edges crossing the rectangular pieces of
+the SAME ring. Sum disjoint regions and use E_a(f;X)>=sum_regions E_a(f;Omega).
+Only edges between distinct regions are discarded. This avoids exactly the
+canonical first-nonzero-coordinate internal-certificate obstruction219.
+Summing gives proposed conclusion with K=c. Add periodic wrap terms freely.
+On probability-normalized field norms, divide energy/norms by V=n^D and use
+the observation coordinate V^-1/2 q_B=sqrt(|B|/V) mean_B f.
+
+6. ORIGINAL CRITICAL MOMENT AND SCOPE CHECK
+Original ap:eq:energy is explicitly the scalar positive-start componentwise
+gradient form Q_w(U)=sum_{x,i,j} a(x)||d_i U_j(x)||^2, with h=D(N_c^2-1).
+Its Question27 is exactly unrestricted rectangular means with finite locally
+quadratic penalty; K=c would be stronger. This proposed proof is componentwise
+on all fields, so would include its divergence-zero restriction IF fully valid.
+It does not identify a variable-weight curl/divergence form with this gradient
+form; no interacting/covariant coefficient producer or physical continuum claim.
+For mu>=1 and V^-1 sum(mu/a)^P<=M,
+S(X)<=M n^D mu^-P <=2^P M max{1,(n/sqrt(1+mu))^D}.
+Thus proposed constant for output dimension is
+2D h [1+(2b+3) b (cG_D)^P 2^P M].
+Exact arithmetic mean and envelope1<=a<=2mu would be unnecessary for this
+sufficiency (mu>=1 used only in conversion). This is NOT yet an eliminated
+hypothesis: full source audit and finite adversarial verification are pending.
+
+NEXT REQUIRED EVIDENCE
+Audit global-depth geometry at odd n, singleton directions and boundary holes;
+trace/overlap constants; median/power/isoperimetry; heavy-tree exact cover and
+count; original energy dictionary; quantifiers and actual rank h R_rect.
+Prepare disconnected Colab diagnostics in normal/-O with real corruptions:
+odd/prime sizes, touching/corner/center rings, unary/branching/light/heavy leaves,
+exact cover/rectangle disjointness, count, actual edges/gradient fields,
+small-case degenerate cubes, and a deliberate interface-discard mutation.
+Primary novelty comparison must include Brudnyi AppendixI RemarkI.2 (including
+boundary-touching holes), Birman--Solomyak adaptive approximation and existing
+scalar Neumann Sobolev results. No new priority claim from a failed search.
+Do not change221PDF, its score, PR29=20/41/TermSource0 or the main OPEN status
+until concrete new evidence passes the appropriate gates.

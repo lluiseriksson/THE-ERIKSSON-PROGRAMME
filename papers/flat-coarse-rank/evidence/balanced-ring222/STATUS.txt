@@ -1,0 +1,31 @@
+Analytically accepted222: coefficient-only scalar rectangular construction.
+The full involved source audit returned accept_with_limits, with no load-bearing
+error; three minor clarifications are recorded in the separate author addendum.
+The original UNREVIEWED draft and all original audit statements are unchanged.
+The finite scalar Question27 has a complete proposed analytic solution accepted
+on that source reading and separately checked on selected Colab cases. Remote
+integration checks and a new exact manuscript review are still required.
+The draft is frozen at raw Git source c993dff04868d01d37b6ec87e0417da3c91a1330.
+Its actual energy retains within-ring edges across the rectangular observation pieces.
+It proposes an unweighted BV extension, then original weighted Holder, then a
+compressed coefficient-mass tree. No weighted trace-extension assumption is imported.
+
+Actual own Colab finite diagnostics: normal and optimized exits0 and identical
+stdout;216 geometries,648 BV checks,200 partitions,71232 regional-field and800
+global-field inequalities,1668 counted within-ring cross-piece edges;3 real
+negative controls rejected. Only the declared selected D3/D4 cases are verified.
+The run consumed14.599980136999989 child wall seconds and106488KiB peak child RSS.
+Allocation06:18:50Z, release06:20:15Z on9November2026; separate backendinactive.
+Billed compute units unknown. No all-size machine proof, formal theorem or two
+independent fresh-clone reproduction. No local scientific execution.
+
+Original local orchestration exit127 (wrong WSL distribution, no runtime opened)
+is retained in the private222 dossier. Existing Ubuntu-24.04 CLI was used without
+install/authentication changes. A premature read-only archive verification reached
+the still-absent backend sentinel and failed; it was rerun unchanged only after
+the actual separate readback completed. This was not a new scientific trial.
+
+Classical dyadic-ring approximation and endpoint methods are already in Brudnyi2015
+and prior work. A programme-local adapter could close Question27 without establishing
+historical originality. Published integrated221B PDF and original4/10 assessment
+remain unchanged; PR29=20/41,TermSource0 and physical continuum status unchanged.
