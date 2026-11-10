@@ -23,3 +23,6 @@ scripts/common_partition_rank_diagnostic227.py -text
 
 # Preserve frozen226B manuscript and author source manifests.
 papers/flat-coarse-rank/integrated-revision/revision226/** -text
+
+# Exact226 compilation, source audits and visual evidence.
+papers/flat-coarse-rank/evidence/manuscript226/** -text

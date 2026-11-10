@@ -1,0 +1,182 @@
+{
+  "artifact": "manuscript226-source-c complete source audit",
+  "commit": "2d3237501569f6afac8a44d524a5d6db59f63c39",
+  "capture_method": "Exactcommit git-show stdout BaseStream copied as raw bytes; exact prefix enumerated by git ls-tree",
+  "hash_algorithm": "SHA256",
+  "actual_inventory": {
+    "total": 19,
+    "TeX": 6,
+    "root_companions": 9,
+    "B_audit_companions": 4
+  },
+  "captured_files": [
+    {
+      "file": "captured-source/AUTHORING-REPORT-source-a.txt",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/AUTHORING-REPORT-source-a.txt",
+      "bytes": 5031,
+      "sha256_raw_git_blob": "8cd5c057ec6b7129100294302beab0312d9eec6ae124e4026eb00eacb9caaf0f",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/AUTHORING-REPORT-source-b.txt",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/AUTHORING-REPORT-source-b.txt",
+      "bytes": 4331,
+      "sha256_raw_git_blob": "f68d86c21f599d9868f44ad2a2cd4144cc24d27d057a1306adaf41f91eba6460",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/AUTHORING-REPORT.txt",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/AUTHORING-REPORT.txt",
+      "bytes": 4487,
+      "sha256_raw_git_blob": "a20862ac84b70d6a7a9eaaee9ab9c779d0a624163de87238081cfe2844b4ab9c",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/AUTHORING-SCOPE.txt",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/AUTHORING-SCOPE.txt",
+      "bytes": 1709,
+      "sha256_raw_git_blob": "e22b24ed4c13662c2a671904b1518002d70b5eeaeb6fdcd48a19d2ebd7b3e650",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/common-rank.tex",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/common-rank.tex",
+      "bytes": 5213,
+      "sha256_raw_git_blob": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/matrix-proof.tex",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/matrix-proof.tex",
+      "bytes": 7469,
+      "sha256_raw_git_blob": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/rectangular_matrix.tex",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/rectangular_matrix.tex",
+      "bytes": 15141,
+      "sha256_raw_git_blob": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/review-context.tex",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/review-context.tex",
+      "bytes": 5266,
+      "sha256_raw_git_blob": "9be1438be6ec128f6852faa1affa6f85a6c6ca9e9a4570a84a20f676b21dbd57",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/scalar-rings.tex",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/scalar-rings.tex",
+      "bytes": 13858,
+      "sha256_raw_git_blob": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/SOURCE-A-TO-B-CHANGES.json",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/SOURCE-A-TO-B-CHANGES.json",
+      "bytes": 2514,
+      "sha256_raw_git_blob": "b0c21f8cc7d94fcdb48cf782394cd52e1c1e8b1a5aabb9d646888f8b63e413e7",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/source-audit-b/audit226B-source.json",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/source-audit-b/audit226B-source.json",
+      "bytes": 2433,
+      "sha256_raw_git_blob": "1a332b8b990a5b13e6fbeda910848e123bf7a15ba484686a3586cb84fdf6e4ce",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/source-audit-b/capture-manifest226B.json",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/source-audit-b/capture-manifest226B.json",
+      "bytes": 6421,
+      "sha256_raw_git_blob": "c1c377af18f407cab43bf83d620b19a14261f86cff5d9fa54a355701c0b891d0",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/source-audit-b/context226B-source.json",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/source-audit-b/context226B-source.json",
+      "bytes": 2035,
+      "sha256_raw_git_blob": "01b92d2cc01cb625b80a11d13002b062108d916b32a467179936cf4576d2a686",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/source-audit-b/report226B-source.txt",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/source-audit-b/report226B-source.txt",
+      "bytes": 17164,
+      "sha256_raw_git_blob": "596ec5f5ab04f6d0d49c44457b2d19887062e560277eee0476cc1766c960e1f8",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/SOURCE-B-TO-C-CHANGES.json",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/SOURCE-B-TO-C-CHANGES.json",
+      "bytes": 2578,
+      "sha256_raw_git_blob": "cbb7984d286d916548d6394261535194ad0533982eb78b749e3493abdf62008c",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/SOURCE-INPUTS.json",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/SOURCE-INPUTS.json",
+      "bytes": 7516,
+      "sha256_raw_git_blob": "66cc352da31b52eb980c12c07d6165aff34089d16457ae290f1a3567cf0249c3",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/SOURCE-MANIFEST.json",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/SOURCE-MANIFEST.json",
+      "bytes": 2508,
+      "sha256_raw_git_blob": "c5e8ddf19ab50ab1a906a1291e09a8edf84e7f7d5478f2fd90f93b7b2e09c9c0",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/STRUCTURAL-CHECK.json",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/STRUCTURAL-CHECK.json",
+      "bytes": 909,
+      "sha256_raw_git_blob": "e3f90b0ca050cc9e271cc281cc05a595a2336ea8bff8a6ccbbfe0dd27f362106",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    },
+    {
+      "file": "captured-source/weak-endpoint.tex",
+      "git_path": "papers/flat-coarse-rank/integrated-revision/revision226/weak-endpoint.tex",
+      "bytes": 11284,
+      "sha256_raw_git_blob": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7",
+      "representation": "raw binary git-show stdout; no checkout conversion or normalization"
+    }
+  ],
+  "verification": {
+    "given_root_matrix_context_hashes_match": true,
+    "three_other_TeX_match_B_and_C_map": true,
+    "all14source_manifest_entries_match": true,
+    "manifest_itself_captured": true,
+    "all15rootfiles_match_bothDsource_c_snapshots": true,
+    "all27source_input_identities_match": true,
+    "all4B_audit_artifacts_match_originals": true,
+    "complete6fileB_Cmap_verified": true,
+    "full_current_read_not_delta_only": true
+  },
+  "output_files": [
+    {
+      "file": "report226C-source.txt",
+      "bytes": 15923,
+      "sha256": "73324742fe75c4080a39dfcef0db0a4294995f08318946c046534fd308976f69",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "audit226C-source.json",
+      "bytes": 2440,
+      "sha256": "d24c114ee42162c238bae1f34078912b5a06bd6570423ce5592db15a214c88ce",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "context226C-source.json",
+      "bytes": 2030,
+      "sha256": "fabc45a99dff78e18673831b81da931711c9c52d59e4113acdc908cb9f9f8b42",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    }
+  ],
+  "self_hash": "Provided separately in final handoff, not recursively embedded."
+}
