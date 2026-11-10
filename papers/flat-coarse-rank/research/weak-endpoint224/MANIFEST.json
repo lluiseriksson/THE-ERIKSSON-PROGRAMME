@@ -1,0 +1,190 @@
+{
+  "files": [
+    {
+      "path": "papers/flat-coarse-rank/research/2026-11-10_weak-endpoint224.txt",
+      "bytes": 10723,
+      "sha256": "7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/execution-preregistration224.json",
+      "bytes": 716,
+      "sha256": "6a5803aa492b24649521e5a38c5f4fb2cbe847d4cdf2c2e713c11400843d8997"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/finite/MANIFEST.json",
+      "bytes": 1375,
+      "sha256": "93078ac59e8235668bd7d241a46d43f53d5e79969dee1bcd11519436313c4fd1"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/finite/normal.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/finite/normal.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/finite/normal.stdout",
+      "bytes": 28918,
+      "sha256": "831243999c428225c8a8b5aec23cf0ac1d31f035c65ca327199c2bce04925e4f"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/finite/optimized.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/finite/optimized.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/finite/optimized.stdout",
+      "bytes": 28918,
+      "sha256": "831243999c428225c8a8b5aec23cf0ac1d31f035c65ca327199c2bce04925e4f"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/finite/report.json",
+      "bytes": 825,
+      "sha256": "41b6abd8f2bad7ecbd523a50a1bf877a247b7d68eb4d21a7f70e8a725b2a2194"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/finite/weak-endpoint224-draft.txt",
+      "bytes": 10723,
+      "sha256": "7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/finite/weak_endpoint_diagnostic224.py",
+      "bytes": 5278,
+      "sha256": "2107b9c7efdf5454c64703be1a06f7aa083c23a17183f8e30d67f4b487991527"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/PREREGISTRATION224.json",
+      "bytes": 3198,
+      "sha256": "1d93a2e52f069f71a49b4dc3201ac676926d96eba340d10f6a0ec92b1e2c72dc"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/README.md",
+      "bytes": 2581,
+      "sha256": "e8afc342c00a281c678354b081dd529bd981695d9513c4b1d505f612ee7971ad"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/result224.json",
+      "bytes": 4374,
+      "sha256": "58aea5d0bc1bfa2a42c1decca2acdb4fde9d48d241223a9a506d7d41169f87a1"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/run224A.sh",
+      "bytes": 1605,
+      "sha256": "635680b38e84e6c4d3adca492309d4700b42b2db8c58b4eb6409ec1f631aff68"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/run_diagnostic224.py",
+      "bytes": 23933,
+      "sha256": "36c907429d43c43e261f97a5280b7773e3199e1c62da6b224ef975853aea9fdf"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/runtime/allocation224.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/runtime/download224.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/runtime/execution224.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/runtime/execution224.log",
+      "bytes": 905,
+      "sha256": "4f6ceaba33f9e7d7faee2ec287be14e767859d06b48227e2aefa9196fc4239a2"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/runtime/release224.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/runtime/runtime224-open-requested.txt",
+      "bytes": 21,
+      "sha256": "222809c85fce086141601a572d358d467d56549ef55cd713e2a1a36de24f0975"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/runtime/runtime224-release-finished.txt",
+      "bytes": 21,
+      "sha256": "7b61d15c1118ae37f3959e53f1ee74754d2e9fab8626b59649fc19a5794474dd"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/runtime224A-backend-readback.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/runtime224A-backend-readback.txt",
+      "bytes": 44,
+      "sha256": "dec807c11992d9001acb723d969c49727402fe62c5e6cbd3899944bfdd03c140"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/runtime224A.json",
+      "bytes": 396,
+      "sha256": "9546a5afb89ba3d655552137ce404ad0d352065d4a655d9f1ee51ced995f93c3"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/source-audit/context224.json",
+      "bytes": 1751,
+      "sha256": "705c630ae5ca4e847f70c3ad1724ed9dbb04fdb63b5057ac17ed2e4c4a2fdc9b"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/source-audit/hashes224.json",
+      "bytes": 1394,
+      "sha256": "e8fa487b2064cab078c7e62322412a0857112bfdf4522c88870de7a5b4af1627"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/source-audit/response224.json",
+      "bytes": 1583,
+      "sha256": "c4a505203e57de977bedd939982f7c6ab74880e78dfff5e42093b82d9d917336"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/source-audit/source-review224.txt",
+      "bytes": 9647,
+      "sha256": "1cba1146abdefd21acb62fcee9bdb3f7bd7da8ab33e0c1d0986d9d9cdc0030da"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/source-audit-logarithmic/context.json",
+      "bytes": 1643,
+      "sha256": "7394994ce0c6a67e3fc1158203ed0d2db902ba76249e8a665805089b62b4071d"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/source-audit-logarithmic/fullsource-review.txt",
+      "bytes": 8726,
+      "sha256": "d65b596bf1f3107f4ebe59f2b4ca2df574a56e55d8bfc77ac7a909c3039b1cf6"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/source-audit-logarithmic/hashes.json",
+      "bytes": 1904,
+      "sha256": "5a8f28547dbc117e0fc3b9effe3db1a9a278ba11f99b04856d1b20ed6f28b186"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/source-audit-logarithmic/response.json",
+      "bytes": 1685,
+      "sha256": "a2774d27d6851d84bde7eb4ec9ff383fc744adeda3c9110267822106c7c89553"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/weak-endpoint224/weak-endpoint224-logarithmic-addendum.txt",
+      "bytes": 3743,
+      "sha256": "0720cedc459361539c9cedf95b7b186831a6ab9414ea27c859918203a39fb059"
+    },
+    {
+      "path": "scripts/weak_endpoint_diagnostic224.py",
+      "bytes": 5278,
+      "sha256": "2107b9c7efdf5454c64703be1a06f7aa083c23a17183f8e30d67f4b487991527"
+    }
+  ],
+  "representation": "Raw unchanged draft/reports/execution; additive log corollary accepted source-only. No original grade/PDF edit."
+}

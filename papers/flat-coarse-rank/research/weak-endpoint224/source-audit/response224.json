@@ -1,0 +1,31 @@
+{
+  "unit": 224,
+  "verdict": "accept_with_limits",
+  "audit_type": "fixed-draft analytical source audit",
+  "draft_sha256_raw_UTF8_LF": "7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c",
+  "preregistration_sha256_raw_file": "1d93a2e52f069f71a49b4dc3201ac676926d96eba340d10f6a0ec92b1e2c72dc",
+  "load_bearing_objections": [],
+  "checks": {
+    "actual_coexact_field": "accepted",
+    "all_positive_start_edges": "accepted including upper outgoing starts",
+    "C1_constants_and_norm": "accepted",
+    "packing_and_disjointness": "accepted",
+    "exact_mean_and_envelope": "accepted",
+    "strict_weak_distribution": "accepted",
+    "full_moment_growth": "accepted",
+    "finite_penalty_rank_obstruction": "accepted for centered differentiable observations with local quadratic upper penalty"
+  },
+  "limitations": [
+    "Exact source-only audit; no numerical or formal execution.",
+    "Observation universality retains C_n(0)=0, differentiability at zero, local quadratic upper penalty and local coercivity.",
+    "External original source222 energy conventions and theorem not independently inspected; the draft-stated positive-start scalar energy is the audited convention.",
+    "Novelty and priority unestablished.",
+    "No implication for physical producers, interacting fields, continuum limit or mass gap.",
+    "No frozen223C numerical assessment or PDF read or modified.",
+    "Required future diagnostics remain unperformed."
+  ],
+  "scientific_execution": false,
+  "numerical_score": null,
+  "formal_result": false,
+  "report": "source-review224.txt"
+}

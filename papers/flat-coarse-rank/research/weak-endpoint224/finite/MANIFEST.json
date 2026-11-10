@@ -1,0 +1,49 @@
+{
+  "files": [
+    {
+      "file": "normal.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "normal.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "normal.stdout",
+      "bytes": 28918,
+      "sha256": "831243999c428225c8a8b5aec23cf0ac1d31f035c65ca327199c2bce04925e4f"
+    },
+    {
+      "file": "optimized.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "optimized.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "optimized.stdout",
+      "bytes": 28918,
+      "sha256": "831243999c428225c8a8b5aec23cf0ac1d31f035c65ca327199c2bce04925e4f"
+    },
+    {
+      "file": "report.json",
+      "bytes": 825,
+      "sha256": "41b6abd8f2bad7ecbd523a50a1bf877a247b7d68eb4d21a7f70e8a725b2a2194"
+    },
+    {
+      "file": "weak-endpoint224-draft.txt",
+      "bytes": 10723,
+      "sha256": "7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c"
+    },
+    {
+      "file": "weak_endpoint_diagnostic224.py",
+      "bytes": 5278,
+      "sha256": "2107b9c7efdf5454c64703be1a06f7aa083c23a17183f8e30d67f4b487991527"
+    }
+  ]
+}

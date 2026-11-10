@@ -1,0 +1,66 @@
+UNREVIEWED ANALYTICAL ADDENDUM224 -- 2026-11-10
+Related to the same weak critical endpoint question; not a separate paper.
+Keep original224 draft, source verdict and exact223C numerical report immutable.
+
+SHARP ORDER OF THE UNAVOIDABLE LOGARITHMIC LOSS
+Assume D>=3,c>0,Nc>=2, original1<=a<=2mu, actual arithmetic meanmu>=1.
+Set P=D/2, Y(x)=mu/a(x), normalized counting probability on X_n, and
+W=sup_(tau>0) tau^P P_X(Y>tau)<=M_w.
+Because a>=1,0<Y<=mu. The finite layer-cake identity gives exactly
+ E[Y^P]=P integral_0^mu tau^(P-1) P_X(Y>tau) d tau.
+Bounding probability by1 on(0,1), and by M_w tau^(-P) on[1,mu], yields
+ E[Y^P]<=1+P M_w log(mu).
+This also holds atmu=1: the second integral is zero. No finite atom at a
+strict cutoff affects an ordinary integral. This is an elementary finite
+distribution calculation, not a new general integration theorem.
+
+The explicit full-moment rectangular construction222, as written in frozen
+manuscript223C Theorem41.1 and Corollary41.2, has a bound affine in the
+actual normalized full moment. Write its constants exactly as follows:
+ b=2^D, J=2D,
+ C_ext=1+J[2J(1+12J)+1],
+ G_D=2^(2D+10) D^2 C_ext^2,
+ h=D(Nc^2-1), T=max{1,n^D/(1+mu)^P}.
+Its coefficient-only normalized rectangle observations, with penalty K=c,
+have output dimension at most
+ 2D h [1+(2b+3)b(cG_D)^P 2^P E[Y^P]] T.
+Substituting the layer-cake bound gives the same construction under only W<=M_w,
+with dimension at most
+ 2D h {1+(2b+3)b(cG_D)^P 2^P [1+P M_w log(mu)]} T.
+The dependence is logarithmic in the coefficient scale mu; no missing
+coercivity, extension, partition or geometry certificate is assumed.
+This statement relies on the existing full-moment theorem as an analytic
+input, not on the selected224 diagnostic cases or a new formal verification.
+
+The already explicit224 family has W<=1, T bounded independently ofm, and
+every centered differentiable observation with any finite local quadratic
+upper penalty must have derivative rank>=m on its actual coexact low space.
+For its fixedD,c scales, epsilon=4^(-k),L_top=2^(m-1)L_0, and
+ H/2<=mu<=H=epsilon L_0^2 4^(m-1).
+Therefore
+ log(mu)=2(m-1)log2+log(epsilon L_0^2)+theta_m,
+ with -log2<=theta_m<=0.
+The upper bound is attained in ORDER on this family: rank is at least a
+positive fixedD,c multiple of1+log(mu), for all sufficiently largem, while
+the construction above gives a constant multiple of1+log(mu) since T is
+bounded and M_w=1. The constants are not claimed sharp, and no per-profile
+optimality claim is made. In particular a uniform o(log(mu)) replacement
+for the scale factor cannot hold across the entire weak-bound class.
+
+SCOPE AND FALSIFIER
+The positive bound is all-field scalar component-gradient with actual
+coefficient-selected rectangular means; its restriction to divergence-zero
+is automatic. The negative lower bound is on actual coexact fields and
+the centered differentiable/local-quadratic class. Do not broaden that
+negative result to arbitrary noncentered/nondifferentiable penalties.
+No general matrix rectangular, variable-weight curl, interacting/covariant
+coefficient producer, continuum or physical massgap theorem is asserted.
+PR29 remains20/41,TermSource0. The primary mechanisms (layer cake,
+strong-versus-weak endpoint and disjoint low modes) are classical; historical
+priority and non-equivalence of this finite specialization remain unestablished.
+
+Required separate source audit: check the written explicit222/223C constants,
+energy convention and normalized observations against the actual source,
+the layer-cake endpoint atmu=1 and strict atoms, and logarithmic-order lower
+bound from the actual224 family. Any mismatch blocks this addendum; preserve
+the earlier independently scoped224 source verdict. No new numerical grade.

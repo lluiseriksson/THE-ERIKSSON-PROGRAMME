@@ -1,0 +1,28 @@
+{
+  "unit": 224,
+  "assignment": "bounded source-only logarithmic addendum audit",
+  "role": "same separately spawned source-auditor context as original224",
+  "exposed_identity": "System: AI assistant accessed via API. Developer: Codex, agent based on GPT-6.",
+  "exact_model_identifier": "Not exposed; exact model/variant not asserted.",
+  "prior_context": "Original224 audit retained in this same context, including draft, preregistration and primary Frank comparison reading. Parent supplied new addendum assignment and exact hashes.",
+  "inbound_during_addendum": "None received",
+  "independence_claim": "None; not blind, independently selected, or human review",
+  "primary_inputs": [
+    "weak-endpoint224-logarithmic-addendum.txt raw hash0720cedc459361539c9cedf95b7b186831a6ab9414ea27c859918203a39fb059",
+    "Frozen git blob balanced-rings223.tex at ddd2cf605c1715a03d2e87991e920c0ec760e527",
+    "Previously inspected exact224 draft and original audit context"
+  ],
+  "operations": [
+    "Read addendum and complete authorized frozen source section via git show",
+    "Hash exact raw git-show bytes using redirected binary stdout",
+    "Write and verify four new output artifacts",
+    "Hash initial original reports for immutability reference"
+  ],
+  "no_scientific_execution": true,
+  "no_source_edits": true,
+  "no_pdf_or_numerical_report_access": true,
+  "no_otherchat_or_automation_access": true,
+  "disposable_clone_created": false,
+  "output_representation": "UTF-8 without BOM, LF, final newline; original complete output",
+  "root": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-224\\source-audit-logarithmic"
+}

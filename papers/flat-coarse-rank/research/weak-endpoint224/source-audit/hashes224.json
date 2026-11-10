@@ -1,0 +1,36 @@
+{
+  "unit": 224,
+  "algorithm": "SHA256",
+  "inputs": [
+    {
+      "file": "weak-endpoint224-draft.txt",
+      "sha256": "7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c",
+      "representation": "raw source file bytes; assignment labels UTF-8 LF",
+      "normalization": "none"
+    },
+    {
+      "file": "PREREGISTRATION224.json",
+      "sha256": "1d93a2e52f069f71a49b4dc3201ac676926d96eba340d10f6a0ec92b1e2c72dc",
+      "representation": "raw file bytes",
+      "normalization": "none"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "source-review224.txt",
+      "sha256": "1cba1146abdefd21acb62fcee9bdb3f7bd7da8ab33e0c1d0986d9d9cdc0030da",
+      "representation": "raw UTF-8 without BOM, LF, final newline; no normalization during hashing"
+    },
+    {
+      "file": "response224.json",
+      "sha256": "c4a505203e57de977bedd939982f7c6ab74880e78dfff5e42093b82d9d917336",
+      "representation": "raw UTF-8 without BOM, LF, final newline; no normalization during hashing"
+    },
+    {
+      "file": "context224.json",
+      "sha256": "705c630ae5ca4e847f70c3ad1724ed9dbb04fdb63b5057ac17ed2e4c4a2fdc9b",
+      "representation": "raw UTF-8 without BOM, LF, final newline; no normalization during hashing"
+    }
+  ],
+  "self_hash": "Not included: a manifest cannot ordinarily contain its own raw-byte hash. The final handoff supplies the manifest raw-byte SHA256 separately."
+}

@@ -1,0 +1,46 @@
+{
+  "algorithm": "SHA256",
+  "inputs": [
+    {
+      "file": "weak-endpoint224-logarithmic-addendum.txt",
+      "sha256": "0720cedc459361539c9cedf95b7b186831a6ab9414ea27c859918203a39fb059",
+      "representation": "raw input bytes; supplied UTF-8 LF",
+      "normalization": "none"
+    },
+    {
+      "file": "papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex",
+      "commit": "ddd2cf605c1715a03d2e87991e920c0ec760e527",
+      "git_blob": "6cf10f10194e781f39cf48e96a4ada40956bbb91",
+      "sha256": "6877841cde546f8920c39b98a5dfef8af385b1a2d5a4842f95a9dd36985b3dc2",
+      "representation": "raw git-show stdout bytes, 16119 bytes",
+      "normalization": "none"
+    }
+  ],
+  "original_audit_raw_UTF8_LF_hashes": {
+    "source-review224.txt": "1cba1146abdefd21acb62fcee9bdb3f7bd7da8ab33e0c1d0986d9d9cdc0030da",
+    "response224.json": "c4a505203e57de977bedd939982f7c6ab74880e78dfff5e42093b82d9d917336",
+    "context224.json": "705c630ae5ca4e847f70c3ad1724ed9dbb04fdb63b5057ac17ed2e4c4a2fdc9b",
+    "hashes224.json": "e8fa487b2064cab078c7e62322412a0857112bfdf4522c88870de7a5b4af1627"
+  },
+  "outputs": [
+    {
+      "file": "fullsource-review.txt",
+      "sha256": "d65b596bf1f3107f4ebe59f2b4ca2df574a56e55d8bfc77ac7a909c3039b1cf6",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "response.json",
+      "sha256": "a2774d27d6851d84bde7eb4ec9ff383fc744adeda3c9110267822106c7c89553",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "context.json",
+      "sha256": "7394994ce0c6a67e3fc1158203ed0d2db902ba76249e8a665805089b62b4071d",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    }
+  ],
+  "self_hash": "Provided separately in final handoff; not recursively embedded."
+}

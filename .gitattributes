@@ -5,3 +5,8 @@ papers/flat-coarse-rank/evidence/balanced-ring222/** -text
 papers/flat-coarse-rank/research/2026-11-09_balanced-ring222*.txt -text
 papers/flat-coarse-rank/integrated-revision/revision223/** -text
 papers/flat-coarse-rank/evidence/integrated223/** -text
+
+# Exact224draft, complete original audits and finite transcripts.
+papers/flat-coarse-rank/research/weak-endpoint224/** -text
+papers/flat-coarse-rank/research/2026-11-10_weak-endpoint224.txt -text
+scripts/weak_endpoint_diagnostic224.py -text
