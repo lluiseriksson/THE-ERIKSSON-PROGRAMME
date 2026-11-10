@@ -1,0 +1,24 @@
+{
+  "role": "Involved separate-role AI source/evidence auditor",
+  "exposed_model": "Codex based on GPT-6",
+  "exact_backend": "not exposed",
+  "effort": "not exposed",
+  "history": "Same involved context: 224/225/227, 226B/C, 228/229 source and diagnostic work, prior selected execution evidence and related operational reviews.",
+  "shared_account_and_parent_framing": true,
+  "parent_is_fabricator_preparer": true,
+  "independent": false,
+  "blind": false,
+  "human": false,
+  "scientific_execution_by_auditor": false,
+  "source_audit_and_theorem_separate": true,
+  "actions": "Read complete assigned evidence and original source audits; inspect JSON/ZIP/raw hashes and arithmetic; write only four new audit outputs.",
+  "no_pdf_or_numerical_reports_read": true,
+  "no_other_chat_or_automation_access": true,
+  "no_inbound_during_audit": true,
+  "limits": [
+    "One recorded runtime with normal and -O modes; no independent clone or algorithm replay.",
+    "Selected 21 cases and three controls only; no full L16 coefficient-budget family or all-size execution.",
+    "No new scientific execution by this auditor, formal proof, novelty/priority claim, numerical grade or PDF assessment.",
+    "Retained logs support historical lifecycle/release; no fresh live backend poll or billed-compute total."
+  ]
+}
