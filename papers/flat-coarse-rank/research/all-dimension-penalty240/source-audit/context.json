@@ -1,0 +1,21 @@
+{
+  "role": "Same involved separate-role AI exact mathematical source auditor",
+  "exposed_identity": "Codex based on GPT-6",
+  "exact_backend": "unknown/not exposed",
+  "reasoning_effort": "unknown/not exposed",
+  "history": "224/225/227/226B-C/228/229/230/231A-B/233/232A-B/234/235/236B/237/238/239 and related source/evidence reviews.",
+  "parent_fabricator_and_framing": true,
+  "shared_account_system_context": true,
+  "independence": "not established",
+  "blind": false,
+  "human": false,
+  "no_inbound_during_audit": true,
+  "complete240_read": true,
+  "new_execution": false,
+  "pdf_or_numerical_review_read": false,
+  "source_status_git_mutation": false,
+  "other_chat_automation_access": false,
+  "credential_access": false,
+  "no_clone": true,
+  "rejection_scope": "False auxiliary case implications/inconsistent branch coverage; no counterexample to main inequality found."
+}

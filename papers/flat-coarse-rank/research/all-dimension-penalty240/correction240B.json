@@ -1,0 +1,14 @@
+{
+  "recorded_at": "2026-11-10T23:05:33.363891+00:00",
+  "old_source_sha": "dce1e1d16450f7f182aed36bc5841210d65e78dd",
+  "old_source_sha256": "1063184ff5af9b86a4e52c11d9706e6736d37a7113351c84302891092672af04",
+  "old_verdict": "REJECT_blockingcaseanalysis",
+  "counterexamples": [
+    "n=2,g=4096",
+    "n=32,g=4096"
+  ],
+  "repair": "Explicitn<32singletonbranch; actualn>=32allbandrange; boundedncountjustification. Maininequalityretainedsubjectnewaudit.",
+  "new_source_sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814",
+  "new_audit": "PENDING",
+  "grade": null
+}

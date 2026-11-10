@@ -1,0 +1,28 @@
+{
+  "verdict": "accept_with_limits",
+  "unit": "240B",
+  "source_commit": "b25f6a46f6e274a6315565ea34c367b81400a82a",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-11_all-dimension-penalty240.txt",
+  "source_sha256_raw": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814",
+  "blocking_findings": [],
+  "material_scope_findings": [],
+  "editorial_findings": [],
+  "resolved240A_finding": "M1 corrected by g<4096 OR n<32 singleton priority and n>=32 all-scale branch; both singleton count bounds explicit.",
+  "original240A_verdict": "reject unchanged",
+  "complete_B_reread": true,
+  "section3_identical_to_A": true,
+  "section5_identical_to_A": true,
+  "normalized_sufficient_K": "32c min(g,n^2)",
+  "least_K_order": "Theta_D(c min(g,n^2))",
+  "limits": [
+    "Exact positive family and canonical per-channel local partition means in the fixed internal basis.",
+    "Normalized K; counting coefficients multiply by V.",
+    "Least coefficient Theta_D(c min(g,n^2)) for this explicit239 map; no upper for every map of economical rank.",
+    "Fixed row weights essential; no arbitrary rescaling, mixed rows, general/signed matrices or nonlinear-penalty tradeoff.",
+    "No execution, PDF/grade transfer, priority, practical implementation or physical result.",
+    "240A remains rejected with original counterexamples and all report bytes preserved."
+  ],
+  "new_execution": false,
+  "numerical_grade": null,
+  "originals_unchanged": true
+}
