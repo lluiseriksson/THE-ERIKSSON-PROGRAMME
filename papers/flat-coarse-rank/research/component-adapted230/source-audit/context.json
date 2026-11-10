@@ -1,0 +1,30 @@
+{
+  "role": "Same involved separate-role AI source auditor",
+  "exposed_identity": "Codex based on GPT-6",
+  "exact_backend": "unknown/not exposed",
+  "reasoning_effort": "unknown/not exposed",
+  "history": "224/logarithmic224,225,227,226B/C,228/229 analytical, diagnostic and execution-evidence reviews; related operational reviews.",
+  "parent_fabricator_and_framing": true,
+  "shared_account_system_context": true,
+  "independence": "not established",
+  "blind": false,
+  "human": false,
+  "no_inbound_during_audit": true,
+  "full_sources_read": [
+    "230 exact Git and D draft",
+    "Frozen226C six complete TeX files",
+    "228 exact positive-family source",
+    "229 exact sharp-rank source plus clarification"
+  ],
+  "scientific_execution": false,
+  "pdf_or_numerical_report_read": false,
+  "other_chat_automation_access": false,
+  "source_or_git_mutation": false,
+  "no_disposable_clone": true,
+  "limits": [
+    "Retains actual real-field-component block diagonality; no arbitrary cross-component coupled additive theorem.",
+    "Finite profile-dependent penalty only; count constants are D-only, penalty uniformity is not asserted.",
+    "Adapted rank upper bound is on actual coexact restricted image; full output still includes h-2 root rows.",
+    "No new execution, full-family runtime check, formal certificate, independent replay, numerical grade, PDF assessment, priority or physical result."
+  ]
+}

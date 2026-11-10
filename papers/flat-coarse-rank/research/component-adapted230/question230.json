@@ -1,0 +1,17 @@
+{
+  "unit": 230,
+  "recorded_at": "2026-11-10T20:32:09.296498+00:00",
+  "statement": "For actual component-block-diagonal finite gradient forms, do per-component rectangular partitions give additive h+F output size and an actual coexact rank O(F) escape from common-full-vector product necessity?",
+  "status": "Analytical candidate derived before record; exact separate source audit in progress, no execution/grade.",
+  "hypotheses": "D>=3,n>=1,h>=1,c>0; finite symmetric A block diagonal by real field component, arbitrary signed directional coupling inside eachDbyDblock. Per-component coefficient-only partitions, same chart/normalized means. Explicit228positive family for escape. Block-diagonal assumption is retained, not eliminated for arbitrary coupled A.",
+  "mechanism": "Literal h1rectangular theorem per actual block; exact spectral/form sum and maxK. For228family, strongH root means suffice; actualcoexact globalmeanszero leaves only2weak components, rank<=2a_D+b_DF while common maps requireOmega_D(m²).",
+  "falsifier": "Hidden h dependence, incorrect volume/c normalization, spectrum union failure, strongHgap failure, changed/coexact-domain split or inadequate lowspace common-rank argument.",
+  "abandonment": "Preserve any counterexample; abandon invalid mechanism if uncorrectable or after3units without substantive progress. Do not reframe a new block hypothesis as a general hypothesis elimination.",
+  "source_sha": "348537ed8496a05c388476ce8985a12b2e87e398",
+  "source_raw_sha256": "5653a586ad4b2a6d1600926a5ef0e43e5c57f44ca4729ee8c89ae6c5e1510f91",
+  "scientific_execution": false,
+  "new_paper": false,
+  "grade": null,
+  "hypotheses_eliminated": [],
+  "next_action": "Finish exact230source audit; preserve full objections. Complete actual226C Pages/native publication once normal retry succeeds, with no administrative bypass."
+}
