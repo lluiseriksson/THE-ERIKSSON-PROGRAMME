@@ -1,0 +1,38 @@
+{
+  "unit": 227,
+  "algorithm": "SHA256",
+  "input": {
+    "file": "common-partition-rank227-draft.txt",
+    "sha256": "12f9aacb7491b7e2a70a594350a38dd089ca1f2eaf00df79a30c6d663855db36",
+    "representation": "raw source bytes",
+    "normalization": "none"
+  },
+  "analytic_input225_report_hashes": {
+    "source-review225.txt": "7f66e9160d7ddd7721509e8a63aa3857f4f1d2ebe89239ad18437e523d148333",
+    "response225.json": "42fa9c6e1e952e6d0ef59bfc1025a40c9ac27aeb86913cbc80c29eb9fab7b04d",
+    "context225.json": "8168796317cad37093b6fdc6057e28320ea6ebf518252d52294e572faa3e7fae",
+    "hashes225.json": "9b179e73eac66430957deec10b8dcc168f0820dcdacea2ec1d1615628c339d9e"
+  },
+  "analytic_input_representation": "Prior225 report raw UTF-8 without BOM, LF, final newline; hashes matched before227 output writing",
+  "outputs": [
+    {
+      "file": "source-review227.txt",
+      "sha256": "b7e13c5147f073670ab9140cb8c4e71574cb984ba66823e4c06bf18f4b089f5d",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "response227.json",
+      "sha256": "82f55dd954fd8bd4b0398bdd6bb7453a221119b942bb5c12e85aca421a03faa0",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "context227.json",
+      "sha256": "71cd7a94e081891ed060e472ca38c80a6d24595c8bda2cf157539c84dcd62c3f",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    }
+  ],
+  "self_hash": "Given separately in final handoff; not recursively embedded."
+}

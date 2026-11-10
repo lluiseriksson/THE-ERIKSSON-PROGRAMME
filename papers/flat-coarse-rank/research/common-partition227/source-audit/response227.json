@@ -1,0 +1,30 @@
+{
+  "unit": 227,
+  "verdict": "accept_with_limits",
+  "draft_sha256_raw_bytes": "12f9aacb7491b7e2a70a594350a38dd089ca1f2eaf00df79a30c6d663855db36",
+  "load_bearing_objections": [],
+  "checks": {
+    "actual_positive_diagonal_profile": "accepted",
+    "weak_direction_labelled_channels": "exactly 2Dm",
+    "full_budget": "2Dm+(r n^D-2Dm)(r n^D)^(-P), in [2Dm,2Dm+1]",
+    "incoming_outgoing_original_starts": "all included; no additional nonzero wrap edges",
+    "low_space": "actual general-vector m-dimensional delta space, not coexact",
+    "restriction_rank": "at most number of partition members",
+    "true_full_space_observation_rank": "h times number of partition members",
+    "h_equals_m": "rules out uniform C_D(h+F) for this class",
+    "product_order": "worst-case hF lower matches225 O_D(h(1+F)) upper"
+  },
+  "limits": [
+    "Common full-vector partition observations only; not channel-adapted, nonlocal or compressed observation classes.",
+    "All-field domain; not a coexact or divergence-zero lower bound.",
+    "Existing225 upper theorem reused as analytic input.",
+    "No sharp constants, per-profile optimality, priority, physical or continuum conclusion.",
+    "No selected cases or mutations executed; no numerical grade or formal certification."
+  ],
+  "scientific_execution": false,
+  "numerical_grade": null,
+  "new_paper": false,
+  "prior224_225_reports_untouched": true,
+  "files226_accessed": false,
+  "report": "source-review227.txt"
+}

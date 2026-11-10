@@ -1,0 +1,20 @@
+{
+  "unit": 227,
+  "role": "bounded source auditor; same spawned context as224 and225 audits",
+  "exposed_identity": "System: AI assistant accessed via API. Developer: Codex, agent based on GPT-6.",
+  "exact_model_identifier": "Not exposed in visible context; no exact model/variant asserted.",
+  "prior_context": "Both224 source audits and225 audit retained in this same context; parent supplied227 assignment and exact hash.",
+  "inbound_during227": "None received",
+  "independence_claim": "None; not blind, independent-human or independently selected-model review",
+  "research_input": "Exact common-partition-rank227-draft.txt only newly read research artifact",
+  "existing_analytic_input": "Accepted-with-limits225 matrix rectangular upper theorem from same auditor context",
+  "operational_reads": "Hash identity of prior225 reports, matching original handoff",
+  "no_scientific_execution": true,
+  "no_source_edits": true,
+  "no226_files_or_author_contact": true,
+  "no_pdf_or_numerical_review_access": true,
+  "no_otherchat_or_automation_access": true,
+  "disposable_clone_created": false,
+  "output_representation": "Original complete UTF-8 without BOM, LF, final newline",
+  "outputs": "Only the four authorized files in evidencia-227/source-audit"
+}
