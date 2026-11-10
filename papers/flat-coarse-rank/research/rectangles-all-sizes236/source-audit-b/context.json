@@ -1,0 +1,34 @@
+{
+  "role": "Same involved separate-role AI mathematical source auditor",
+  "exposed_identity": "Codex based on GPT-6",
+  "exact_backend": "unknown/not exposed",
+  "reasoning_effort": "unknown/not exposed",
+  "history": "224/225/227/226B-C/228/229/230/231A-B/233/232A-B/234/235 source/evidence and related operational reviews.",
+  "parent_fabricator_and_framing": true,
+  "shared_account_system_context": true,
+  "independence": "not established",
+  "blind": false,
+  "human": false,
+  "no_inbound_during_audit": true,
+  "complete_sources_read": [
+    "Exact236B",
+    "Exact231B",
+    "Exact235",
+    "Preserved236A normalization-correction record"
+  ],
+  "new_execution": false,
+  "pdf_or_numerical_review_read": false,
+  "historical_grade_reference": "Encountered only as source history; not recertified or transferred",
+  "source_status_git_mutation": false,
+  "credential_access": false,
+  "other_chat_automation_access": false,
+  "no_clone": true,
+  "limits": [
+    "Exact231B profile, D>=3,n>=2,g=V; no arbitrary-profile or fixed-g theorem.",
+    "Canonical per-internal-channel rectangular partitions shared across D spatial components; fixed internal basis.",
+    "Counting convention uses K=V[c+(4DH)^2/c], equivalent to235 normalized coefficient.",
+    "All-field kernel/projection proof then restriction to actual coexact domain; no preservation by block averages assumed.",
+    "Theta rank order only; no optimal constant, practical algorithm, uniform conditioning or physical result.",
+    "236A normalization failure and original235 bytes/reports preserved; no PDF/assessment transfer."
+  ]
+}
