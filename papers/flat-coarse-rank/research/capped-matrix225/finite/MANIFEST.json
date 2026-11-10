@@ -1,0 +1,49 @@
+{
+  "files": [
+    {
+      "file": "capped-matrix-rectangles225-draft.txt",
+      "bytes": 8113,
+      "sha256": "a9c4bcbc3b8764b2e2cf84b7906ae5fe9ed3fa96c5f5ae22c68eb665a0f7d448"
+    },
+    {
+      "file": "capped_matrix_rectangles_diagnostic225.py",
+      "bytes": 6632,
+      "sha256": "c53c38691d00a20b5168abc7cc4483e07b1c95444f99229fa866714d9f97c474"
+    },
+    {
+      "file": "normal.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "normal.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "normal.stdout",
+      "bytes": 3370,
+      "sha256": "4c1e22143a8bc7d6ec08b48315f6fe1da0dc65772533ac8ac5c66875e68912c8"
+    },
+    {
+      "file": "optimized.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "optimized.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "optimized.stdout",
+      "bytes": 3370,
+      "sha256": "4c1e22143a8bc7d6ec08b48315f6fe1da0dc65772533ac8ac5c66875e68912c8"
+    },
+    {
+      "file": "report.json",
+      "bytes": 849,
+      "sha256": "c03a14063455989cbba6e5ce0d32e87d354b519ea703a855a29b393e40b64843"
+    }
+  ]
+}

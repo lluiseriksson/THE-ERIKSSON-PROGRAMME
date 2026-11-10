@@ -1,0 +1,14 @@
+{
+  "opened_requested": "2026-11-10T17:54:56Z",
+  "release_finished": "2026-11-10T17:55:35Z",
+  "own_runtime": "tep225-a-own-cpu",
+  "backend_server_inactive": true,
+  "scientific_seconds": 2.261464344000018,
+  "child_maxrss_kib": 104952,
+  "compute_units_billed": null,
+  "actual_exits": {
+    "normal": 0,
+    "optimized": 0
+  },
+  "normal_optimized_identical": true
+}

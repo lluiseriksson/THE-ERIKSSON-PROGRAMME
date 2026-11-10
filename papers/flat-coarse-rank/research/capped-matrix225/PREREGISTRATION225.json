@@ -1,0 +1,23 @@
+{
+  "unit": 225,
+  "created_at": "2026-11-10T17:26:14.349819+00:00",
+  "question": {
+    "statement": "Does the actual capped local eigenchannel budget for arbitrary finite symmetric stack-gradient matrices control a coefficient-only integer rectangular partition with normalized component means and some finite quadratic penalty?",
+    "hypotheses": "D>=3,n>=1,h>=1,c>0; actual scalar-forward-gradient stack du and finite symmetric A(x), no commuting/sign-depth/geometric certificate. No physical curl dictionary.",
+    "mechanism": "Positive local spectral replacement, scalarlambda_min construction222, isolate bad-start/forward endpoints by rectangle refinement, charge full rotated correction to actual singleton values.",
+    "falsifier": "A missing directional/cross-channel/periodic start, failed cap/count/normalization or a bounded-budget family defeating every rectangle partition and finite quadratic penalty.",
+    "abandonment": "After3unsuccessful substantive units preserve failures and change this mechanism or identify concrete missing lemma; source rejection is not a theorem.",
+    "status": "UNREVIEWED_DRAFT225_SEPARATE_SOURCE_AUDIT_RUNNING",
+    "draft": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-225\\capped-matrix-rectangles225-draft.txt",
+    "draft_sha256": "a9c4bcbc3b8764b2e2cf84b7906ae5fe9ed3fa96c5f5ae22c68eb665a0f7d448",
+    "new_question_replaces_resolved224": true,
+    "units_without_substantive_progress": 0
+  },
+  "new_result": null,
+  "new_grade": null,
+  "new_PDF": false,
+  "scientific_execution": false,
+  "hypotheses_eliminated": [],
+  "verified_refutations": [],
+  "priority": "Complete actual223public release verification/native reconciliation;225source work independent while deployment runs."
+}
