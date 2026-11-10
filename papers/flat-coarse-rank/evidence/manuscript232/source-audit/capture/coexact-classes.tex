@@ -1,0 +1,251 @@
+\section{Sharp rank on the actual coexact domain}\label{sec:sharp-coexact}
+The general-field obstruction in Section~\ref{sec:common-rank} counts full
+row rank $hR$. On a coexact domain those rows have relations, so that count
+cannot simply be reused. We calculate their actual annihilator instead.
+
+\subsection{Closed fields and the annihilator formula}
+For one internal channel, $\mathcal U_0^\perp=\ker d_1$ by finite
+adjoint duality. We first prove the real decomposition
+\begin{equation}\label{eq:closed-decomposition}
+ \ker d_1=\{\text{constant vector fields}\}\oplus\operatorname{im}G,
+ \qquad (G\phi)_j=D_j^+\phi.
+\end{equation}
+Complexify and use the finite characters
+$\exp(2\pi\mathrm i k\cdot x/n)$. At frequency $k$ put
+$q_j(k)=\exp(2\pi\mathrm i k_j/n)-1$. The closed equations are
+$q_i\widehat u_j-q_j\widehat u_i=0$. If $k\ne0$, some $q_\ell\ne0$,
+and the equations force $\widehat u_j=q_j\widehat u_\ell/q_\ell$ for
+all $j$, including those with $q_j=0$. A coordinate-free choice of potential is
+\[
+ \widehat\phi(k)=
+ \frac{\sum_j\overline{q_j(k)}\widehat u_j(k)}{\sum_j|q_j(k)|^2}
+ \quad(k\ne0),\qquad \widehat\phi(0)=0.
+\]
+For real $u$ this formula has conjugate symmetry, hence gives a real
+mean-zero $\phi$. Its gradient supplies every nonzero-frequency mode;
+the zero mode is a constant vector. Conversely constants and gradients
+are closed. A periodic gradient has zero component means, so its
+intersection with constant vectors is zero. The kernel of $G$ consists
+of constants because forward coordinate steps connect the torus.
+This proves \eqref{eq:closed-decomposition}, including $n=1$.
+It also yields the useful real dimension identity
+\begin{equation}\label{eq:coexact-dimension}
+ \dim\mathcal U_0=DV-[D+(V-1)]=(D-1)(V-1).
+\end{equation}
+Real and complex dimensions here agree by complexification of a real map;
+there is no doubling from conjugate frequencies. Forward Nyquist symbols
+are $-2$, rather than the spurious zero of a central difference.
+
+For a partition into $R$ nonempty sets, let $S$ be the $R$-dimensional
+scalar block-constant space and $W=S^D$. The adjoint range of its full
+mean map is $W$: all row scaling factors in \eqref{eq:rows} are nonzero.
+Define the real potential space
+\[
+ \mathcal F=\{\phi:\sum_x\phi(x)=0,\ G\phi\in W\}.
+\]
+Constants lie in $W$, and all gradient component means vanish. Therefore
+\eqref{eq:closed-decomposition} gives the direct sum
+\[
+ W\cap\mathcal U_0^\perp
+ =\{\text{constant vectors}\}\oplus G\mathcal F.
+\]
+Since $G$ is injective on mean-zero functions, this intersection has
+dimension $D+\dim\mathcal F$. The adjoint of the restricted map is
+$P_{\mathcal U_0}C^*$. Finite rank-nullity consequently gives the exact formula
+\begin{equation}\label{eq:annihilator-rank}
+ \rank(C|_{\mathcal U_0})=DR-D-\dim\mathcal F.
+\end{equation}
+This formula is for the actual restricted image, not its listed output size.
+
+\subsection{Forward maximum principle and sharpness}
+Let $\mathcal L=\sum_jD_j^+$. If a real $\phi$ satisfies
+$\mathcal L\phi=0$, choose a site of global maximum. Every forward
+increment there is nonpositive and their sum is zero, so each is zero.
+Every forward neighbor is another maximum. Iterating these steps reaches
+every torus site, including inverse movements by periodic wrap. Thus
+$\phi$ is constant. At $n=1$ this is immediate. This is the classical
+finite irreducible-chain maximum principle; see Levin--Peres,
+Lemma~1.16~\cite{levinperes}. Here $\mathcal L=D(P_{\rm walk}-I)$ for
+the uniform forward-coordinate walk. Neither reversibility nor
+aperiodicity is needed. We claim no new maximum principle.
+
+For $\phi\in\mathcal F$, every component of $G\phi$ lies in $S$.
+Thus $\mathcal L\phi\in S$, with global sum zero by telescoping.
+The maximum principle proves that
+\[
+ \mathcal L:\mathcal F\longrightarrow S\cap1^\perp
+\]
+is injective. The target has dimension $R-1$, since the global-sum
+functional on $S$ is the nonzero weighted sum of block values with weights
+$|B|$. Hence $\dim\mathcal F\le R-1$. Substitution into
+\eqref{eq:annihilator-rank} proves $(D-1)(R-1)$ for one channel.
+The input and output maps for $g$ independent internal channels are literal
+direct sums, so ranks add and prove \eqref{eq:sharp-rank}.
+
+For sharpness set $n=R$ and $B_a=\{x:x_1=a\}$.
+Every $\phi(x)=f(x_1)$ with $\sum_af(a)=0$ belongs to $\mathcal F$:
+its first forward derivative is constant on each fibre, and all others
+vanish. These potentials form an $(R-1)$-dimensional space. The preceding
+upper bound gives equality in \eqref{eq:annihilator-rank}, and then equality
+in \eqref{eq:sharp-rank}. At $R=1$ the common global means vanish on the
+coexact domain and both sides are zero. Sharpness concerns the allowed
+family of tori with $n=R$, not every fixed pair $(n,R)$.
+
+\subsection{A complete fixed-size coexact coefficient family}
+For the coefficient consequence we retain $D\ge3$ and $m\ge4$.
+Let $L=16$, $g=m$, $h=Dg$, $n=m(L+3)+3$ and $V=n^D$.
+Use the compact product field in \eqref{eq:bumpfield}, with internal
+unit vector $e_1\in\R^g$, translated by
+\[
+ q_t=(1+t(L+3),1,\ldots,1),\quad0\le t<m,
+ \qquad B_t=q_t+\{0,\ldots,L\}^D.
+\]
+Lemma~\ref{lem:bump} and its preceding support proof apply to this exact
+field: the norm is nonzero, the unit-gradient Rayleigh bound is $K_D/L^2$,
+and every nonzero original forward start lies in $B_t$. The last
+first-coordinate endpoint is $m(L+3)-2<n-1$, and the other endpoints are
+$L+1<n-1$. Successive boxes have two unused sites between them.
+Thus there are no wrap collisions and complete field and gradient-start
+supports are disjoint. Their span $E_m\subset\mathcal U$ is truly
+$m$-dimensional. Only spatial components $1,2$ of internal channel $1$
+are active on $E_m$.
+
+Put $r=Dh$, $M=rV$, $\sigma=\alpha_D^{1/P}c$ and define
+\begin{equation}\label{eq:coexact-family}
+ \begin{gathered}
+ a_0=\min\{\sigma/2,cL^2/(4K_D)\}>0,\qquad H=\sigma M,\\
+ A_{(i,j,\alpha),(i',j',\alpha')}(x)=
+ \delta_{ii'}\delta_{jj'}\delta_{\alpha\alpha'}\lambda_{i,j,\alpha}(x),\\
+ \lambda_{i,j,\alpha}(x)=
+ \begin{cases}
+ a_0,&x\in\bigcup_tB_t,\ j\in\{1,2\},\ \alpha=1,\\
+ H,&\text{otherwise}.
+ \end{cases}
+ \end{gathered}
+\end{equation}
+The triple denotes gradient direction, spatial field component and
+internal channel. This defines an actual positive diagonal matrix on all
+$r=D^2g$ gradient coordinates at every start. The constant $K_D$ is the
+bump Rayleigh constant of Lemma~\ref{lem:bump}, not the observation penalty.
+Every nonzero derivative of each bump has coefficient $a_0$, so on $E_m$
+\begin{equation}\label{eq:fixed-coexact-low}
+ Q_A(U)\le a_0(K_D/L^2)\sum_x\|U(x)\|^2
+                  \le(c/4)\sum_x\|U(x)\|^2.
+\end{equation}
+All norm and energy cross terms vanish by disjoint supports.
+
+The number of weak local direction/component/site channels is exactly
+$W_*=2Dm(L+1)^D=\kappa_Dm$, with $\kappa_D=2D17^D$.
+This count includes zero-derivative entries assigned $a_0$; none are dropped.
+The boxes are disjoint and $r\ge2D$, so $W_*\le M$.
+Each weak cap cost is one; every strong cost is $M^{-P}$. Hence the full budget is
+\begin{equation}\label{eq:fixed-coexact-budget}
+ F_c(A)=W_*+(M-W_*)M^{-P}\in[\kappa_Dm,\kappa_Dm+1].
+\end{equation}
+The strong tail is bounded by $M^{1-P}\le1$, using $P>1$.
+No arithmetic-mean or envelope condition is asserted for this matrix family.
+
+If a common partition with $R$ members restores coercivity on $\mathcal U$
+with $\Phi(0)=0$, its restriction to $E_m$ has rank at most $2R$.
+Indeed every row has only the two active real component coordinates there.
+If $2R<m$, a nonzero low-space kernel vector contradicts coercivity and
+\eqref{eq:fixed-coexact-low}, after multiplying by $V$.
+Thus $R\ge\lceil m/2\rceil$. The sharp rank bound independently yields
+\[
+ \rank(C_{\mathcal R}|_{\mathcal U})
+ \ge g(D-1)(\lceil m/2\rceil-1)
+ \ge g(D-1)m/4= h(D-1)m/(4D).
+\]
+Here $\lceil m/2\rceil-1\ge m/4$ for $m\ge4$.
+Using $F_c(A)\le(\kappa_D+1)m$ proves \eqref{eq:coexact-product} and
+completes Theorem~\ref{thm:sharp-coexact}. With $g=m$, necessary rank is
+at least $(D-1)m^2/4$ whereas $h+F_c(A)\le(D+\kappa_D+1)m$.
+The all-field matrix upper bound restricts to $\mathcal U$, giving the
+matching worst-case product order up to dimensional constants.
+The universal rank theorem allows $D=2$; this coefficient application
+retains $D\ge3$ throughout.
+
+\section{Component-adapted rectangles and a structured escape}\label{sec:adapted}
+We prove Theorem~\ref{thm:adapted} and compare maps on the same coefficient
+family and actual coexact domain, without changing either energy.
+
+\subsection{Block spectra and a common finite penalty}
+Under the component-block-diagonal hypothesis, a fixed permutation of
+gradient coordinates gives actual $D\times D$ blocks $A^k(x)$ and
+\[
+ Q_A(u)=\sum_{k=1}^h Q_{A^k}(u_k),\qquad
+ F_c(A)=\sum_{k=1}^hF_c(A^k).
+\]
+The spectral identity holds because the full multiset is the disjoint
+union of block spectra, including all nonpositive multiplicities and cap
+threshold equalities. No spatially varying rotation is performed.
+For each actual block apply Theorem~\ref{thm:matrix} with $h=1$.
+Here $h=1$ means a single real scalar field with a $D$-coordinate gradient,
+not a single spatial direction. It supplies a partition $\mathcal R_k$ with
+\[
+ \#\mathcal R_k\le a_D+b_DF_c(A^k),\qquad
+ V^{-1}Q_{A^k}(u_k)+K_k\sum_{B\in\mathcal R_k}|q_{k,B}(u)|^2
+                      \ge cV^{-1}\sum_x|u_k(x)|^2,
+\]
+where $K_k\ge c$ is finite. All these partitions are fixed from their
+blocks before $u$ is chosen. Taking $K=\max_kK_k$ and summing proves
+\eqref{eq:adapted-bound}. There is no rescaling of $c$ or $V$ by $h$.
+The constants $a_D,b_D$ depend only on $D$.
+On the full field space each component's disjoint nonempty block rows are
+independent, and different components have independent coordinates.
+Thus actual full rank equals $N_{\rm out}$; on a constrained domain it
+may decrease. The coefficient-block hypothesis is essential to this proof.
+
+\subsection{Root observations for the strong components}
+For $n\ge2$ the unweighted forward torus gradient has first nonzero
+Laplacian eigenvalue
+\begin{equation}\label{eq:torus-gap}
+ \lambda_1=4\sin^2(\pi/n)\ge16/n^2.
+\end{equation}
+Indeed Fourier symbols give eigenvalues
+$\sum_i4\sin^2(\pi k_i/n)$; the least nonzero one has exactly one
+nonzero coordinate of smallest distance from zero. The chord bound
+$\sin t\ge2t/\pi$ on $[0,\pi/2]$ gives the inequality.
+Conjugate pairing gives the same real Poincare bound. The constant
+component is handled separately, so no statement about a nonzero gap at
+$n=1$ is needed.
+For the family \eqref{eq:coexact-family},
+\[
+ \sigma/c=\alpha_D^{2/D}
+ =(3/4)^2[(D/2)(D/(D-2))^{D-1}]^{2/D}\ge9/16.
+\]
+Consequently $H\lambda_1\ge9crn^{D-2}\ge c$.
+Writing $f=\mean_Xf+f_0$ gives
+\begin{equation}\label{eq:root-strong}
+ V^{-1}H\sum_{x,i}|D_i^+f(x)|^2+c|\mean_Xf|^2
+                                      \ge cV^{-1}\sum_x|f(x)|^2.
+\end{equation}
+The observation here is exactly $q_X(f)=\mean_Xf$.
+
+Only the two real components $(j,\alpha)=(1,1),(2,1)$ are weak.
+Apply the $h=1$ matrix theorem to each, obtaining at most
+$2a_D+b_D(F_1+F_2)\le2a_D+b_DF_c(A)$ rows in total.
+Choose only the root mean for each of the remaining $h-2$ globally strong
+components. One maximum of $c$ and the two finite weak-component
+penalties yields an all-field inequality with at most
+$h-2+2a_D+b_DF_c(A)$ outputs.
+Every real component of a coexact field has zero global sum, since it is
+a sum of periodic backward differences. Hence all these $h-2$ strong
+root rows vanish identically on $\mathcal U$. Restricting the already
+proved inequality to that domain gives
+\[
+ \rank(C_{\rm ad}|_{\mathcal U})\le2a_D+b_DF_c(A).
+\]
+This does not split a coexact spatial vector into independently variable
+spatial components, nor assert independence of the remaining weak rows.
+It proves \eqref{eq:adapted-escape} and Theorem~\ref{thm:adapted}.
+
+For this same family $hF_c(A)\ge D\kappa_Dm^2$ and the adapted rank is
+at most $2a_D+b_D(\kappa_Dm+1)$. Their ratio tends to zero. In contrast,
+Theorem~\ref{thm:sharp-coexact} forces common full-vector maps to have
+restricted rank at least $(D-1)m^2/4$. Thus no positive uniform
+$\gamma_DhF_c(A)$ lower bound extends to all component-adapted maps.
+Refining their different partitions to a common partition and adding
+every vector component changes the map and can add the very rank
+charged by the common-class lower bound. No optimal adapted rank,
+efficient algorithm or arbitrary coupled-matrix additive theorem is inferred.

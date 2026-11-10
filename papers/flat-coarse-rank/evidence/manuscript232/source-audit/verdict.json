@@ -1,0 +1,29 @@
+{
+  "verdict": "accept_with_limits",
+  "unit": 232,
+  "source_commit": "6be80f215d70640116f86f273975c1119b6fbdbd",
+  "source_prefix": "papers/flat-coarse-rank/integrated-revision/revision232/",
+  "root_sha256_raw": "9234a4084d6c0db7754d3a13581b80f69a844e7ddc95f1eed21945c74e6883e6",
+  "author_manifest_sha256_raw": "b439ea993896f0473d0e3e4d158fc6f1b271ad49fdc742efecd3b82e112fd460",
+  "complete_tex_files_read": 10,
+  "whole_source_audit": true,
+  "inherited_acceptance": false,
+  "blocking_findings": [],
+  "material_scope_findings": [],
+  "editorial_findings": [],
+  "packet_files_raw_D_Git_verified": 66,
+  "labels": 93,
+  "reference_uses": 113,
+  "missing_or_duplicate_targets": [],
+  "limits": [
+    "Exact whole integrated source only; no PDF/build/render/visual QA result.",
+    "General-field full rank, coexact restricted rank and observation classes remain distinct.",
+    "Adapted additive theorem retains actual component-block diagonality; coupled matching result retains fixed-basis channel separation and growing g=V.",
+    "D2 only for standalone common coexact rank; capped coefficient applications D>=3.",
+    "Finite profile-dependent penalties; no exact profilewise ranks, efficient algorithm, priority or physical/continuum result.",
+    "No scientific execution, formal certificate, independent replay or numerical grade; predecessor assessment belongs to its exact old artifact."
+  ],
+  "new_execution": false,
+  "numerical_grade": null,
+  "originals_unchanged": true
+}

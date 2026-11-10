@@ -1,0 +1,108 @@
+{
+  "artifact": 232,
+  "prepared_at": "2026-11-10T21:11:55.542997+00:00",
+  "status": "WHOLE_INTEGRATED_SOURCE_ACCEPTED_WITH_LIMITS_PDF_NOT_YET_PRODUCED",
+  "source_sha": "6be80f215d70640116f86f273975c1119b6fbdbd",
+  "source_files": [
+    {
+      "file": "class-statements.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/class-statements.tex",
+      "bytes": 5148,
+      "sha256": "f8cf1ab6ff210f2c8ef61058bbdf517dcdd6f4dd072fd6c56408db28a200d3de"
+    },
+    {
+      "file": "coexact-classes.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/coexact-classes.tex",
+      "bytes": 12509,
+      "sha256": "71010b9bd1efb453248bb6278485804e590e28b72dd316b12acaa2b1d383b318"
+    },
+    {
+      "file": "common-rank.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/common-rank.tex",
+      "bytes": 5213,
+      "sha256": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b"
+    },
+    {
+      "file": "coupled-channels.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/coupled-channels.tex",
+      "bytes": 6469,
+      "sha256": "7f30175962ed10fd74be257c1fedb2ac4885789b630ce7172c981f7cb4814994"
+    },
+    {
+      "file": "matching-modes.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/matching-modes.tex",
+      "bytes": 7710,
+      "sha256": "d1220e54cb019bd0722bbdaebd4c94075457f826ddc1afd911b6b03b87b043db"
+    },
+    {
+      "file": "matrix-proof.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/matrix-proof.tex",
+      "bytes": 7469,
+      "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    {
+      "file": "rectangular_matrix.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/rectangular_matrix.tex",
+      "bytes": 17049,
+      "sha256": "9234a4084d6c0db7754d3a13581b80f69a844e7ddc95f1eed21945c74e6883e6"
+    },
+    {
+      "file": "review-context.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/review-context.tex",
+      "bytes": 5337,
+      "sha256": "64c4203bfd082d82f0f53a9af1518b47c7e14e3448104dd2bdefe9200dddc56c"
+    },
+    {
+      "file": "scalar-rings.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/scalar-rings.tex",
+      "bytes": 13858,
+      "sha256": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0"
+    },
+    {
+      "file": "weak-endpoint.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/weak-endpoint.tex",
+      "bytes": 11284,
+      "sha256": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7"
+    }
+  ],
+  "author_manifest_sha256": "b439ea993896f0473d0e3e4d158fc6f1b271ad49fdc742efecd3b82e112fd460",
+  "new_mathematical_question": false,
+  "source_audit": {
+    "verdict": "accept_with_limits",
+    "unit": 232,
+    "source_commit": "6be80f215d70640116f86f273975c1119b6fbdbd",
+    "source_prefix": "papers/flat-coarse-rank/integrated-revision/revision232/",
+    "root_sha256_raw": "9234a4084d6c0db7754d3a13581b80f69a844e7ddc95f1eed21945c74e6883e6",
+    "author_manifest_sha256_raw": "b439ea993896f0473d0e3e4d158fc6f1b271ad49fdc742efecd3b82e112fd460",
+    "complete_tex_files_read": 10,
+    "whole_source_audit": true,
+    "inherited_acceptance": false,
+    "blocking_findings": [],
+    "material_scope_findings": [],
+    "editorial_findings": [],
+    "packet_files_raw_D_Git_verified": 66,
+    "labels": 93,
+    "reference_uses": 113,
+    "missing_or_duplicate_targets": [],
+    "limits": [
+      "Exact whole integrated source only; no PDF/build/render/visual QA result.",
+      "General-field full rank, coexact restricted rank and observation classes remain distinct.",
+      "Adapted additive theorem retains actual component-block diagonality; coupled matching result retains fixed-basis channel separation and growing g=V.",
+      "D2 only for standalone common coexact rank; capped coefficient applications D>=3.",
+      "Finite profile-dependent penalties; no exact profilewise ranks, efficient algorithm, priority or physical/continuum result.",
+      "No scientific execution, formal certificate, independent replay or numerical grade; predecessor assessment belongs to its exact old artifact."
+    ],
+    "new_execution": false,
+    "numerical_grade": null,
+    "originals_unchanged": true
+  },
+  "PDF": null,
+  "render": null,
+  "first_exact_PDF_assessment": null,
+  "authorization": "Existing continuous user instruction covers preparation/review/publication through actual native per-artifact grants; no routine new human reply is required. Actual gates still pending; no new native request.",
+  "originality": "Unestablished; primary-source comparison retained, classical mechanisms credited.",
+  "next_action": "Run ownColabLinux document production from exact6be80f21 tenTeX inputs; preserve every actual tool exit and failure, stop runtime and separately read backend, verify exact archive/hash and visually inspect every resulting page. Then first genuine exact-PDF assessment; do not inherit226Cscore.",
+  "audit_directory": "source-audit",
+  "audit_manifest_sha256": "a607cf322ff6542884b63025b6e5dc91364c94ebb11854b7d66e3c8b9fbcfa47",
+  "checked_at": "2026-11-10T21:20:14.923488+00:00"
+}
