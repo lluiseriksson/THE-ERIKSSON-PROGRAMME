@@ -1,0 +1,57 @@
+{
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "version": "v14",
+  "canonical_sha256": "28cb2a7502e05cd8588aa6294f07a7eca5e0e452cce1bf5e4f09e9ec3c89e1a6",
+  "provider": "OpenAI",
+  "model_id": "Codex, exposed as based on GPT-6; exact backend and effort unknown",
+  "assessed_at": "2026-11-10T19:38:37.2407408+01:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "unknown",
+  "recommendation": "minor_revision",
+  "millennium_score": 3.25,
+  "overall_stars": 3,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "Full text proof reading and adversarial boundary checks found no main-invalidating gap; no formal or numerical replay was performed."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Actual-start weights, complete endpoint correction, ring interfaces and lower-bound domains are explicit; scalar BV and tree proofs are dense but coherent."
+    },
+    "novelty": {
+      "stars": 2,
+      "basis": "Classical ring/tree, spectral replacement and rank mechanisms dominate. Exact finite/coexact combinations are candidates; priority and non-equivalence remain unestablished."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "Substantive finite observation bounds with matching restricted product and weak-endpoint orders; no continuum or Millennium transfer is established."
+    },
+    "reproducibility": {
+      "stars": 3,
+      "basis": "Self-contained finite proofs and an identified exact PDF support inspection. Historical diagnostics, source identity and execution claims were not replayed."
+    }
+  },
+  "summary": "The exact 20-page PDF gives coherent finite coefficient-selected rectangular observation bounds, a common-full-vector product obstruction, and a coexact weak-endpoint logarithmic lower family. Full proof reading found no main-invalidating defect. The value is a precise finite synthesis rather than a new general spectral principle. Minor revision should sharpen the comparison with classical partition algorithms, improve the dependency guide, and clean up presentation. Scientific importance is 3.25/10; overall_stars is its rounded value, not a separate quality score.",
+  "strengths": [
+    "Complete scalar BV, weighted ring-gap and heavy-chain proof, retaining actual original-start weights and intra-ring interfaces.",
+    "Matrix replacement charges the entire signed stacked correction and isolates every affected forward endpoint.",
+    "Actual compact coexact low fields establish the logarithmic obstruction for the explicitly centered differentiable/local-quadratic class.",
+    "The common-partition product lower bound clearly distinguishes genuine full-domain row rank from its one-component low restriction."
+  ],
+  "weaknesses": [
+    "Historical priority and exact non-equivalence to classical approximation and tree-partition theorems remain unestablished.",
+    "Constants are very large and no practical implementation, sharp rank or uniform negative-depth penalty is supplied.",
+    "Proof dependencies are dense; unexplained programme shorthand and an almost empty final reference page distract from the mathematics."
+  ],
+  "potential_errors": [
+    "No new actual counterexample was found. The corrected nonnegative spectral-depth choice avoids the auxiliary negative-M error described in the manuscript.",
+    "Historical diagnostic and source-audit claims inside Section 5 were not independently checked and must not be treated as verified by this review."
+  ],
+  "strong_novelty_candidates": [
+    "The precise finite coefficient-only rectangular synthesis for arbitrary local symmetric stacked-gradient matrices, with capped budget and full endpoint correction.",
+    "The explicit actual-mean weak-critical family of flat coexact fields forcing logarithmic dimension for all observations in the stated local class."
+  ],
+  "unresolved_material_objections": [],
+  "version_id": "arr:version:ccd9fd43-ebe6-45a4-a6e0-21c5a0b572fb"
+}

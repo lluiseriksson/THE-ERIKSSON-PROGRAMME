@@ -1,0 +1,27 @@
+MANUSCRIPT226C AUTHORING REPORT — source-c
+Role: FABRICATOR only. Corrected preparation dated 2026-11-10.
+
+TRIGGER AND PRESERVED REJECTION
+The complete source audit of 226B at commit 2e97589506d593fe29a72a48bfd55a1a113df9d1 rejected the exact artifact for material auxiliary defect M1. Its report found no load-bearing defect in the principal theorems. M1 was an error in this author's optional singleton-partition derivation: the stated parameter M was not constrained to be nonnegative before multiplying a gradient upper bound by -M. The audit's literal n=1,A=Id,M=-1,nonzero-constant-field counterexample is preserved in full. The audit also identified E1, an overbroad description of prior scalar-audit report identities. Nothing about the original verdict or its referent was amended.
+All four original 226B audit/context/capture files are unchanged external companions identified by exact raw-byte SHA256 in SOURCE-INPUTS.json. The report is 596ec5f5ab04f6d0d49c44457b2d19887062e560277eee0476cc1766c960e1f8. The complete original report, not a substituted summary, remains at D:\Datos\the-eriksson-programme\autonomia\evidencia-226\source-audit-b\report226B-source.txt.
+
+EXACT BOUNDED SOURCE CHANGES
+matrix-proof.tex: replace the optional unqualified premise with an explicit chosen spectral depth M=max{0,max_x[-lambda_min(A(x))]}. This finite choice is nonnegative and satisfies A(x)>=-MId at every site. The following lower bound Q_A>=-4DM||u||^2 and singleton K=c+4DM now use the required sign. The main 225 proof, its L and K=c+4DL, counts and all preceding estimates are unchanged.
+review-context.tex: distinguish the included standalone scalar proof from the listed 224/225/227 source audits. Narrow complete-report identity claims to those exact listed reports; explicitly state no separate original scalar-audit report is identified. Add the complete 226B rejection context, its M1 counterexample and E1 finding, without replacing its verdict. State that corrected 226C awaits a fresh whole-source audit and its first exact numerical assessment is absent. No result of an ongoing 226B render is assumed.
+rectangular_matrix.tex: preparation version/date line becomes manuscript 226C, corrected preparation version; no theorem or other mathematical text changes.
+common-rank.tex,scalar-rings.tex,weak-endpoint.tex are byte-identical to source-b. SOURCE-B-TO-C-CHANGES.json supplies every TeX before/after hash and the exact change map. All source-a/source-b D snapshots are preserved. Historical authoring reports are retained as AUTHORING-REPORT-source-a.txt and AUTHORING-REPORT-source-b.txt, with their original bytes.
+
+STATIC STRUCTURE AND DEPENDENCY REVIEW
+Six TeX sources, 60 unique labels, 63 ref/eqref uses, no missing targets or duplicate labels; begin/end environment counts agree per file. No old Section 27/ap:eq:rank/proof-omitted remnant. This is static text inspection, not a role-separated mathematical audit, TeX execution or rendering. Scalar->matrix, layer cake/scalar->weak upper, actual coexact bumps->weak lower, and diagonal channels/rank-nullity->common-partition lower dependencies are otherwise unchanged. M1 is corrected by making the nonnegative spectral-depth choice explicit; no new computation or outside theorem is invoked.
+
+STATUS AND LIMITS
+This is the author's correction, not an audit acceptance. Fresh different-role full 226C source audit, Colab compilation/render QA and any exact numerical assessment remain pending. No grade is inherited. No PDF marker rerun, scientific computation, TeX/render/Lean execution, Git-tracked-file/branch/status/commit change, original audit/PDF edit, credential access, automation or other chat access occurred. No disposable clone was created. Page count and layout remain unobserved in this role. The parent's ongoing 226B render is separate historical work, never treated here as a grade or corrected-source validation.
+
+EXACT TEX SOURCE HASHES
+SHA256 of exact raw bytes, no normalization:
+350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b  common-rank.tex
+9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8  matrix-proof.tex
+3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3  rectangular_matrix.tex
+9be1438be6ec128f6852faa1affa6f85a6c6ca9e9a4570a84a20f676b21dbd57  review-context.tex
+ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0  scalar-rings.tex
+6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7  weak-endpoint.tex

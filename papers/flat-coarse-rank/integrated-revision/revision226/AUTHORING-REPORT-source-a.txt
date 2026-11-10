@@ -1,0 +1,28 @@
+MANUSCRIPT226 AUTHORING REPORT — source-a
+Role: FABRICATOR only. Preparation date: 2026-11-10.
+
+Deliverable: rectangular_matrix.tex plus four standard-LaTeX input files.
+Title: Rectangular observations for finite matrix gradients: critical budgets and the weak endpoint.
+Proposed linked successor to AIRR ARR-2026-7EPM3V3DP796BBRR v13.
+No PDF, TeX compilation, render, numerical grade, scientific calculation, Lean execution, or publication was performed by this role. The parent retains Colab compilation/rendering and appoints a different source auditor. The PDF authoring marker had already succeeded exactly once before AUTHORING-SCOPE.txt; it was not rerun.
+
+CONTENT AND PROOF DEPENDENCIES
+1. The front section precisely defines actual periodic forward starts, arbitrary symmetric onsite matrices on r=Dh coordinates, scaled component rows q_B, and capped local eigenchannel budget. Principal matrix and both endpoint theorems appear before their proofs.
+2. Scalar appendix: entire mathematical proof from frozen balanced-rings223.tex is retained. BV collars and hole-crossing edges -> actual critical Sobolev -> original-start weighted ring gap -> coefficient-mass heavy-chain compression -> up to2D rectangle rows per group. The only source changes are local context/crossreference adaptation, explicit energy/row convention, arbitrary h extension by summing the exact scalar inequality, r-to-s exponent rename to reserve r=Dh globally, and removal of historical operational prose to external evidence. No constants or mathematical estimates were weakened.
+3. Matrix proof: spectral split including all equality/nonpositive channels -> positive replacement -> min-eigenvalue scalar moment -> complete scalar partition -> exact point-isolation count -> normalized Hilbert Cauchy -> full rotated correction at all original bad starts and periodic forward endpoints -> K=c+4DL and explicit full dimension count. No commutation, geometry or local-gap assumption is introduced. A short derivation of the optional full-singleton bound is included.
+4. Weak endpoint: exact finite layer cake -> full-moment scalar corollary -> logarithmic rectangular upper bound. Separately: compact globally C1 beta product -> actual delta B and all boundary starts -> explicit safe finite norm/energy constants -> geometric scale packing -> actual mean and envelope -> strict weak distribution -> m-dimensional coexact low space -> centered differentiable/local-quadratic derivative injectivity -> growing full moment and matching worst-case logarithmic order. No per-profile optimality or generic noncentered obstruction is claimed.
+5. Review context: no current manuscript grade; prior source audit roles involved AI and unknown true backend, shared context and parent framing; no independent/blind/human claim. Full prior audit reports and adverse/scope findings remain unchanged external files listed with exact hashes in SOURCE-INPUTS.json. Selected224/225 finite diagnostics are explicitly distinguished from all-size/formal/two-fresh-clone proof.
+
+STATIC SOURCE CHECK AND LIMITS
+STRUCTURAL-CHECK.json records54 unique labels,52 ref/eqref uses, no unresolved or duplicate labels, four existing input files, and no Section27/ap:eq:rank/proof-omitted remnant. Begin/end environment counts agree per input/root. This is a text-structure check and author dependency review; it is not a role-separated mathematical audit or TeX compile.
+Classical primary references are given by exact version/author PDF. Bibliographic title/metadata was checked against the primary sites; no exhaustive novelty search was done. Novelty, priority and non-equivalence remain unestablished.
+
+Unresolved author concerns: page count, line/URL breaks, rendered equations, exact compiled references and visual layout await parent-owned Colab TeX/render QA. Content is designed for roughly18-28pages without padding, but no compiled page count is asserted. A different source auditor must assess the combined exact source, especially the faithfully transcribed scalar appendix and the normalized/counting convention transition. No specific mathematical defect was identified by this author; this is not an audit verdict. No tracked file, Git branch/status/commit, automation/chat, credential, frozen PDF/review or existing audit was edited. No disposable clone was created.
+
+EXACT TEX SOURCE HASHES
+SHA-256 of exact raw file bytes, no normalization. Root and added inputs UTF-8 without BOM; scalar appendix retains source line-ending representation except editing insertions. These are raw-byte identities, not normalized Git-blob assertions.
+f4c8a52ebd4632d2e8c2e202444a2e057e8fdd04a450b1fa84e6ef3ef3cf809b  matrix-proof.tex
+5925613568acc898cc11c1337a29c5c279f62d1436b66eef399a19cd3deb68d3  rectangular_matrix.tex
+a07dd57c598b6e331bcea6cd1597580df9bc66db35f45d947f9d176d85474a1b  review-context.tex
+ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0  scalar-rings.tex
+6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7  weak-endpoint.tex

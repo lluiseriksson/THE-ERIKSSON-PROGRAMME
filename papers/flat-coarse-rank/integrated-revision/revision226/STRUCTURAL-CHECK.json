@@ -1,0 +1,45 @@
+{
+  "artifact": "226C",
+  "kind": "Static text structure only; no mathematical audit or TeX execution",
+  "tex_files": 6,
+  "labels": 60,
+  "references": 63,
+  "unresolved": [],
+  "duplicate_labels": [],
+  "environments": [
+    {
+      "file": "common-rank.tex",
+      "begin": 4,
+      "end": 4
+    },
+    {
+      "file": "matrix-proof.tex",
+      "begin": 13,
+      "end": 13
+    },
+    {
+      "file": "rectangular_matrix.tex",
+      "begin": 21,
+      "end": 21
+    },
+    {
+      "file": "review-context.tex",
+      "begin": 3,
+      "end": 3
+    },
+    {
+      "file": "scalar-rings.tex",
+      "begin": 10,
+      "end": 10
+    },
+    {
+      "file": "weak-endpoint.tex",
+      "begin": 17,
+      "end": 17
+    }
+  ],
+  "forbidden_dangling_patterns_found": 0,
+  "compilation": "Not performed",
+  "render": "Not performed",
+  "scientific_execution": "None"
+}

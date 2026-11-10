@@ -1,0 +1,50 @@
+{
+  "from": "source-a",
+  "to": "source-b",
+  "byte_regime": "SHA-256 raw file bytes without normalization",
+  "files": [
+    {
+      "file": "common-rank.tex",
+      "source_a_sha256": null,
+      "source_b_sha256": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b",
+      "status": "added"
+    },
+    {
+      "file": "matrix-proof.tex",
+      "source_a_sha256": "f4c8a52ebd4632d2e8c2e202444a2e057e8fdd04a450b1fa84e6ef3ef3cf809b",
+      "source_b_sha256": "f4c8a52ebd4632d2e8c2e202444a2e057e8fdd04a450b1fa84e6ef3ef3cf809b",
+      "status": "byte-identical"
+    },
+    {
+      "file": "rectangular_matrix.tex",
+      "source_a_sha256": "5925613568acc898cc11c1337a29c5c279f62d1436b66eef399a19cd3deb68d3",
+      "source_b_sha256": "c014c3f4e8946500a03e2c403317df10128e5c3d9c1eaf02e46f847e04814c08",
+      "status": "changed"
+    },
+    {
+      "file": "review-context.tex",
+      "source_a_sha256": "a07dd57c598b6e331bcea6cd1597580df9bc66db35f45d947f9d176d85474a1b",
+      "source_b_sha256": "4652b46cfc9e3cbf90de3db0fd7232508ec03866871fcb7fce251b551e65ad0d",
+      "status": "changed"
+    },
+    {
+      "file": "scalar-rings.tex",
+      "source_a_sha256": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0",
+      "source_b_sha256": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0",
+      "status": "byte-identical"
+    },
+    {
+      "file": "weak-endpoint.tex",
+      "source_a_sha256": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7",
+      "source_b_sha256": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7",
+      "status": "byte-identical"
+    }
+  ],
+  "change_map": {
+    "rectangular_matrix": "Abstract explicit O_D(h(1+F)); near-front full-vector common-partition theorem; eq:weak-def aligned; common-rank input and roadmap;226B preparation date",
+    "other": "Input manifest extends227 identities; source-a author report retained asAUTHORING-REPORT-source-a.txt; new authorreport and staticcheck",
+    "preserved_mathematics": "matrix-proof.tex,scalar-rings.tex,weak-endpoint.tex byte-identical tosource-a",
+    "common_rank": "New complete227 proof: actual2Dm channel family, exact budget and strong tail, general-field delta low space, restriction rank<=R, full-space rankhR, h=m and product order",
+    "review_context": "Explicit Codex/OpenAI GPT6 drafting assistance; exact backend/effortunknown;227 source-only audit context and no227 diagnostic claim"
+  }
+}

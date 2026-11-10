@@ -1,0 +1,20 @@
+{
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "record_id": "arr:record:eeb507b1-b6c7-4996-bc62-a4e7c416be00",
+  "version": "v14",
+  "version_id": "arr:version:ccd9fd43-ebe6-45a4-a6e0-21c5a0b572fb",
+  "canonical_sha256": "28cb2a7502e05cd8588aa6294f07a7eca5e0e452cce1bf5e4f09e9ec3c89e1a6",
+  "canonical_bytes": 419361,
+  "pages": 20,
+  "source_sha": "2d3237501569f6afac8a44d524a5d6db59f63c39",
+  "parent_version_id": "arr:version:be398c87-1bbf-4831-b06e-e4b1f2fa1e53",
+  "parent_sha256": "c99f59936f7ac58dc4af25443d3a3a17932d6b1651542285feb65d6781f3814e",
+  "pdf": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript226\\rectangular_matrix226C.pdf",
+  "prepared_at": "2026-11-10T18:41:57.930900+00:00",
+  "native_permission": "NOT YET REQUESTED; proposed author version UUID binds artifact only, not receipt/permission/publication",
+  "first_review_original_sha256": "0846434a3d04a32fa0b125d2e0b99ac4b94808e27e56c080ec270324345767b1",
+  "scientific_importance": 3.25,
+  "overall_stars": 3,
+  "recommendation": "minor_revision",
+  "review_context": "Fresh requested context; same account/system/filesystem; memory disabled/provider history unverified; independence unknown; exact backend/effort unknown; no human/blind/independent claim."
+}
