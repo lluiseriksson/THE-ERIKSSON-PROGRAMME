@@ -182,7 +182,7 @@ or uniform conditioning has been asserted.
 B still has eigenvalues a once and H with multiplicity g-1 regardless of v.
 Thus the original full capped budget is unchanged,
  F=D^2 V[1+(g-1)min(1,alpha_D n^(-D))] <=D^2(V+alpha_D g),
-alpha_D=(16D)^(-D/2), and h+F=O_D(V+g). No extra budget channel is omitted.
+alpha_D=(3/4)^D (D/2) (D/(D-2))^(D-1), and h+F=O_D(V+g). No extra budget channel is omitted.
 The proof derives weighted partitions and coercivity; it does not merely
 place an unproved decomposition in a structure or assume a new regional gap.
 The removed requirement is exact uniform polarization WITHIN a prescribed
@@ -204,3 +204,11 @@ physical spectral gap or continuum result follows. Classical ingredients
 are finite Neumann gaps, orthogonal projections, greedy weights, Young and
 trace. Group this with235-240 in one future consolidation. Frozen232B has
 no241 result and inherits no changed grade. Preserve all original failures.
+
+8. Corrected241B and preserved original rejection.
+Original241A changed the inherited capped-budget constant incorrectly.
+The separate audit supplied D=4,n=2,g=2,nu=Lambda=1,uniformv: the original
+budget is337, whereas241A claimed65537/256. That exact source remains
+REJECTED. This241B restores the original alpha_D from226C/231B/238;
+Sections1-6, all partitions, rank/penalty claims and their proofs are unchanged.
+The repaired source requires its own full source audit, not inherited approval.
