@@ -1,0 +1,41 @@
+{
+  "unit": 225,
+  "algorithm": "SHA256",
+  "inputs": [
+    {
+      "file": "capped-matrix-rectangles225-draft.txt",
+      "sha256": "a9c4bcbc3b8764b2e2cf84b7906ae5fe9ed3fa96c5f5ae22c68eb665a0f7d448",
+      "representation": "raw source bytes",
+      "normalization": "none"
+    },
+    {
+      "file": "papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex",
+      "commit": "ddd2cf605c1715a03d2e87991e920c0ec760e527",
+      "sha256": "6877841cde546f8920c39b98a5dfef8af385b1a2d5a4842f95a9dd36985b3dc2",
+      "representation": "raw Git blob bytes, hash established in prior logarithmic audit",
+      "normalization": "none"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "source-review225.txt",
+      "sha256": "7f66e9160d7ddd7721509e8a63aa3857f4f1d2ebe89239ad18437e523d148333",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "response225.json",
+      "sha256": "42fa9c6e1e952e6d0ef59bfc1025a40c9ac27aeb86913cbc80c29eb9fab7b04d",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "context225.json",
+      "sha256": "8168796317cad37093b6fdc6057e28320ea6ebf518252d52294e572faa3e7fae",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    }
+  ],
+  "prior224_report_integrity": "All eight original and logarithmic source-audit report hashes matched their prior handoffs before225 output writing; no writes to those artifacts.",
+  "self_hash": "Given separately in final handoff, not recursively embedded."
+}

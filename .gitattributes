@@ -10,3 +10,8 @@ papers/flat-coarse-rank/evidence/integrated223/** -text
 papers/flat-coarse-rank/research/weak-endpoint224/** -text
 papers/flat-coarse-rank/research/2026-11-10_weak-endpoint224.txt -text
 scripts/weak_endpoint_diagnostic224.py -text
+
+# Preserve exact225 source and complete original audit.
+papers/flat-coarse-rank/research/capped-matrix225/** -text
+papers/flat-coarse-rank/research/2026-11-10_capped-matrix225.txt -text
+scripts/capped_matrix_rectangles_diagnostic225.py -text

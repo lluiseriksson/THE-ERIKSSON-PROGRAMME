@@ -1,0 +1,36 @@
+{
+  "unit": 225,
+  "verdict": "accept_with_limits",
+  "draft_sha256_raw_bytes": "a9c4bcbc3b8764b2e2cf84b7906ae5fe9ed3fa96c5f5ae22c68eb665a0f7d448",
+  "load_bearing_objections": [],
+  "analytic_input": {
+    "commit": "ddd2cf605c1715a03d2e87991e920c0ec760e527",
+    "path": "papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex",
+    "label": "thm:balanced223",
+    "raw_git_blob_sha256": "6877841cde546f8920c39b98a5dfef8af385b1a2d5a4842f95a9dd36985b3dc2"
+  },
+  "checks": {
+    "spectral_cap_equality": "accepted including equality at sigma and all nonpositive channels",
+    "positive_replacement_and_scalar_trace": "accepted",
+    "scalar_theorem_application_and_constants": "accepted",
+    "pure_rectangle_refinement": "accepted",
+    "normalized_Cauchy_scaling": "accepted",
+    "all_direction_internal_mixing": "accepted via operator inequality",
+    "positive_start_and_periodic_wrap_charge": "accepted including n=1 and n=2",
+    "uniform_in_u_penalty": "K=c+4DL finite for each profile",
+    "count_and_output_rank": "accepted; hR on full field space"
+  },
+  "limits": [
+    "Existing scalar theorem is an analytic input, not freshly recertified in full.",
+    "K may depend without uniform bound on negative spectral depth; K=c is not claimed for signed forms.",
+    "Finite actual gradient-stack forms only; no curl, physical, covariant or continuum transfer.",
+    "No optimal constants/rank, novelty or priority established.",
+    "No numerical diagnostics, grade, Lean or formal certification."
+  ],
+  "required_diagnostics": "Unperformed",
+  "source_edits": false,
+  "prior224_reports_untouched": true,
+  "numerical_grade": null,
+  "new_paper": false,
+  "report": "source-review225.txt"
+}

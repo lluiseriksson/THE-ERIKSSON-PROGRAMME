@@ -1,0 +1,23 @@
+{
+  "unit": 225,
+  "role": "bounded source auditor; same spawned agent context as both224 audits",
+  "exposed_identity": "System: AI assistant accessed via API. Developer: Codex, an agent based on GPT-6.",
+  "exact_model_identifier": "Not exposed in visible context; no exact model or variant asserted.",
+  "inherited_context": "Original224 and logarithmic224 audit context, governance instructions, parent supplied225 question and draft hash.",
+  "inbound_while_auditing": "None received",
+  "independence_claim": "None; not blind, independent-human or independently selected-model review",
+  "sources": [
+    "Exact capped-matrix-rectangles225-draft.txt",
+    "Previously inspected complete frozen balanced-rings223.tex section; first55 lines reread in225 by git show",
+    "Existing same-context224 audit history"
+  ],
+  "operational_reads": "Hashes of eight prior224 report artifacts, matching prior handoffs",
+  "scientific_execution": false,
+  "otherchat_or_automation_access": false,
+  "pdf_or_numerical_report_access": false,
+  "source_edits": false,
+  "disposable_clone_created": false,
+  "new_outputs": "Only the four authorized225 source-audit artifacts",
+  "output_representation": "Original complete UTF-8 without BOM, LF, final newline",
+  "source_numbering": "Exact thm:balanced223 label used; compiled theorem number not independently checked"
+}
