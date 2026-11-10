@@ -1,0 +1,144 @@
+UNIT230: COMPONENT-ADAPTED RECTANGLES AND AN ACTUAL COEXACT ESCAPE FAMILY
+UNREVIEWED analytical source candidate. No execution, numerical grade or new paper.
+
+Question and chronology
+Can component-specific rectangular partitions reduce the product hF budget to an
+additive h+F budget for component-block-diagonal forms, and does this give a useful
+counterexample to extending228/229's common-full-vector rank necessity to that class?
+The candidate argument was derived before this record was written, not observed in
+a numerical campaign. Hypotheses and observation class are explicit below. Mechanism:
+apply the existing fully derived h=1 construction to actual component blocks, use
+exact spectral additivity and one maximum finite penalty, then exploit actual
+coexact zero means in the explicit228positive diagonal family. Falsifier: failure
+of block spectral/form additivity, a hidden h-dependent scalar constant, an incorrect
+strong-channel gap/normalization or a changed coexact domain. Abandon the construction
+if an uncorrectable defect remains, or after3units without substantial progress.
+
+1. Precise input and the retained structural hypothesis
+D>=3,n>=1,h>=1,c>0; X=(Z/nZ)^D,V=n^D,P=D/2. The forward gradient stack uses
+the actual starts: du(x)=(u_k(x+e_i)-u_k(x))_{i=1,...,D;k=1,...,h}.
+Assume A(x) is real finite symmetric and BLOCK DIAGONAL BY FIELD COMPONENT:
+A_{(i,k),(j,l)}(x)=0 whenever k!=l. Directional coupling inside each actual DbyD
+block A^k(x) is unrestricted and may be signed. This assumption is retained,
+not proved for arbitrary coupled matrices or moved into a new structure.
+Then Q_A(u)=sum_k Q_{A^k}(u_k) with the same unnormalized energy convention as226C.
+
+For any finite symmetric local matrix profile, use exactly226C's local budget
+F_c(A)=nu_0+sum_{x,j:lambda_j(x)>0}min{1,alpha_D*c^P*lambda_j(x)^(-P)},
+alpha_D=(D/2)(D/(D-2))^(D-1)(3/4)^D. Eigenvalues carry multiplicity and nu_0
+counts every nonpositive eigenvalue at every original start. A fixed permutation
+reorders A into its hcomponent blocks; its local spectrum is their disjoint union.
+Therefore F_c(A)=sum_k F_c(A^k), exactly, including nonpositive channels.
+
+The observation class is now component-adapted: each real component k has its own
+coefficient-only integer-rectangle partition P_k of the SAME chart X. Rows are
+q_{k,B}(u)=V^(-1/2)|B|^(-1/2)sum_{x in B}u_k(x), B in P_k.
+The map C_ad collects these scalar rows. It is not required to retain all vector
+components for every block of a single common partition. No field-dependent choice
+of rows, nonlinear observation, arbitrary eigenfunction row or spatially varying
+component rotation is allowed or needed.
+
+2. Additive all-field theorem for the declared block class
+Let B_D be the explicit D-only tree-count constant in226C, and put
+ a_D=2D(1+B_D), b_D=2D*max{B_D/alpha_D,D+1}.
+THEOREM A. For the actual profiles in Section1, component-only partitions exist with
+ N_out=sum_k #P_k <= a_D*h+b_D*F_c(A),
+and a finite coefficient-dependent K>=c such that for every real field u,
+ V^(-1)Q_A(u)+K||C_ad u||^2 >= c||u||_V^2.
+
+Proof. Apply226C Theorem1.1 (capped-budget rectangular observations), with its
+complete h=1 proof, separately to each actual DbyD block A^k. It gives P_k fixed
+by that block before u_k, #P_k<=a_D+b_DF_c(A^k), and finite K_k>=c satisfying
+V^(-1)Q_{A^k}(u_k)+K_k sum_{B in P_k}|q_{k,B}(u)|^2>=cV^(-1)sum_x|u_k(x)|^2.
+The spectral-union identity proves the displayed output count on summation. Taking
+K=max_k K_k preserves every nonnegative observation term and yields the summed
+inequality. All normalizations use the same V and c; no rescaling by h occurs.
+The scalar constants a_D,b_D depend only on D. On the entire field space the row
+map has rank N_out: per component, disjoint nonempty block indicators are linearly
+independent, and different components occupy independent input coordinates.
+On any specified subspace its actual restricted rank is at most N_out.
+This proves a structured-class theorem, not an arbitrary coupled-matrix additive
+theorem, an optimal K, an efficient implementation or a new proof of226C's input.
+
+3. The actual positive diagonal family from228, with its original hypotheses
+Fix D>=3,m>=4,L=16,g=m,h=Dg and n=m(L+3)+3. Let E_m and its disjoint complete
+gradient-start boxes B_t be exactly those of the source-audited228construction.
+They are actual flat coexact fields: only spatial components1/2 in internal
+channel1 are nonzero. No decomposition of the coexact domain by physical component
+is assumed. Define kappa_D=2D(L+1)^D and use228's positive diagonal matrices:
+sigma=alpha_D^(1/P)c, r=Dh, M=rV, H=sigma M;
+a_0=min{sigma/2,cL^2/(4K_D)}>0, where K_D is228's unit-bump Rayleigh constant,
+not a proposed observation-penalty coefficient.
+Every derivative direction for the two active real field components receives a_0
+on union_t B_t; every other coefficient is H. These matrices satisfy Section1's
+block-diagonal hypothesis (indeed each component block is a scalar multiple of I_D).
+The separately proved228identities, used without an execution claim, are
+ F=F_c(A) in[kappa_D*m,kappa_D*m+1],
+ V^(-1)Q_A(U)<=(c/4)||U||_V^2 for all U in E_m, dim E_m=m.
+The full original-start supports, periodic wrap and coexact identity are part of
+that referenced proof, not new boundary assumptions or output-rank substitutions.
+
+4. Strong components need only their root mean
+For n>=2 the unweighted forward torus Laplacian has nonzero spectral gap
+lambda_1=4sin^2(pi/n)>=16/n^2. The elementary inequality follows from
+sin t>=2t/pi on[0,pi/2]. The Fourier formula follows directly from the symbols
+e^(2pi i k_j/n)-1, summed in squared absolute value; no continuum spectrum is used.
+Also sigma/c=alpha_D^(2/D)>=(3/4)^2=9/16, since D/2>=1 and D/(D-2)>1.
+For every strong component, Hlambda_1>=9c*r*n^(D-2)>=c. Hence, writing f=mean(f)+f_0,
+ V^(-1)H sum_{x,i}|partial_i^+f|^2+c|mean(f)|^2>=c||f||_V^2.
+This is precisely the single root observation q_X(f)=mean(f), with penalty c.
+The family has n>=79, so the n=1 boundary is not involved in this application.
+
+For each of the TWO weak components apply the actual h=1 theorem as in Section2.
+Their partitions have total row count at most2a_D+b_D(F_1+F_2)<=2a_D+b_DF.
+For all remaining h-2components choose only the root mean. A single maximum of c
+and the two weak-channel finite penalties gives coercivity for every field, by
+the same exact summation argument; N_out<=h-2+2a_D+b_DF.
+
+On the ACTUAL flat coexact domain every real component has zero global sum,
+because U=d_1^*B is a sum of periodic backward differences. Therefore all h-2
+strong root rows vanish identically on that domain. The actual restricted image
+rank of this coercive component-adapted map is consequently bounded by
+ rank(C_ad|H_coex^g)<=2a_D+b_DF.                                  (A)
+This step restricts an already proved all-field inequality. It does NOT split
+H_coex^g into independently variable physical components or assume hR row rank.
+In this explicit family F=O_D(m); the actual coexact rank in(A) is O_D(m),
+uniformly as g=m and h=Dm grow.
+
+5. A useful class-boundary counterexample, not a contradiction of228/229
+For the SAME A and actual coexact domain, any common partition retaining all
+vector means, with any penalty Phi satisfying Phi(0)=0 that restores ccoercivity,
+has #P>=ceil(m/2) by228's m-dimensional actual lowspace/kernel argument. The sharp
+standalone229rank theorem then gives
+ rank(C_P|H_coex^g)>=g(D-1)(ceil(m/2)-1)>=(D-1)m^2/4.              (B)
+By(A) there nevertheless exists a coefficient-only component-adapted rectangular
+coercive map of actual rank at most2a_D+b_D(kappa_D*m+1). Thus a purported universal
+positive lower bound gamma_D*hF for ALL component-adapted maps, with gamma_D>0,
+is false: the upper rank/hF ratio is bounded by
+ [2a_D+b_D(kappa_D*m+1)]/[D*kappa_D*m^2], which tends to0 as m grows.
+This explicitly verifies that the common-full-vector observation hypothesis is
+essential for the product-rank obstruction; it does not refute either correctly
+restricted theorem. Refining the different P_k to one common partition and then
+adding ALL vector means changes the map and can add the very rank charged in(B).
+
+6. Provenance, originality, verification and limits
+Primary mathematical input is the complete226C h=1 theorem/proof frozen at
+2d3237501569f6afac8a44d524a5d6db59f63c39, exact20-page PDF
+28cb2a7502e05cd8588aa6294f07a7eca5e0e452cce1bf5e4f09e9ec3c89e1a6.
+The proof/positive family228is source5f95554837c5a6dc9e47be674cadf7d82bf27048,
+later merge-preserved in PR205. The sharp rank source229is
+1af074718e5d122c5ef02d287461750833b44c77, with its full separate source audit and
+explicit D>=3qualification for the conditional coefficient family. Its selected
+21case execution at ef39a6a2 is not execution of the present coefficient family.
+
+Direct-sum spectra, summation of quadratic inequalities and the finite Fourier
+Poincare calculation are classical. This is a structural consequence and a useful
+explicit observation-class escape within the programme, not a historical-priority
+finding or a proposed separate paper of small corollaries. No external predecessor
+absence, optimal adapted rank, general coupled-matrix additive bound, physical
+coefficient producer, interacting/covariant identity, continuum or mass gap is claimed.
+No scientific execution or formal certificate for this draft is supplied. Do not
+inherit226C's score, rewrite its assessed PDF, or claim229's selected diagnostics
+tested this new family. Consolidate the related rank/class-boundary results later.
+The block-diagonal matrix hypothesis is deliberately retained; it has not been
+eliminated or proved for arbitrary matrices. PR29 remains20/41,TermSource0.

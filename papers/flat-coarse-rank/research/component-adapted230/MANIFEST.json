@@ -1,0 +1,93 @@
+{
+  "source_commit": "348537ed8496a05c388476ce8985a12b2e87e398",
+  "raw_files": [
+    {
+      "file": "question230.json",
+      "bytes": 1877,
+      "sha256": "14c2ecd4cc817fa8d06d54614ef466001a998e58d06ada4cb02318f60f415990"
+    },
+    {
+      "file": "result230-verified.json",
+      "bytes": 4521,
+      "sha256": "24d8e7353023f0adba0f4aaabc50b772ff86a14c6f7a77a793b9c0637a97b7ca"
+    },
+    {
+      "file": "source-audit/capture/226c/common-rank.tex",
+      "bytes": 5213,
+      "sha256": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b"
+    },
+    {
+      "file": "source-audit/capture/226c/matrix-proof.tex",
+      "bytes": 7469,
+      "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    {
+      "file": "source-audit/capture/226c/rectangular_matrix.tex",
+      "bytes": 15141,
+      "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+    },
+    {
+      "file": "source-audit/capture/226c/review-context.tex",
+      "bytes": 5266,
+      "sha256": "9be1438be6ec128f6852faa1affa6f85a6c6ca9e9a4570a84a20f676b21dbd57"
+    },
+    {
+      "file": "source-audit/capture/226c/scalar-rings.tex",
+      "bytes": 13858,
+      "sha256": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0"
+    },
+    {
+      "file": "source-audit/capture/226c/weak-endpoint.tex",
+      "bytes": 11284,
+      "sha256": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7"
+    },
+    {
+      "file": "source-audit/capture/CLARIFICATION229.txt",
+      "bytes": 493,
+      "sha256": "e6ece6ae4a5e154e4bb78168cd534dc0a912e46a1d1f96bdeeb353ede8bea956"
+    },
+    {
+      "file": "source-audit/capture/coexact-partition228-git.txt",
+      "bytes": 8775,
+      "sha256": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e"
+    },
+    {
+      "file": "source-audit/capture/component-adapted230-draft.txt",
+      "bytes": 9711,
+      "sha256": "5653a586ad4b2a6d1600926a5ef0e43e5c57f44ca4729ee8c89ae6c5e1510f91"
+    },
+    {
+      "file": "source-audit/capture/component-adapted230-git.txt",
+      "bytes": 9711,
+      "sha256": "5653a586ad4b2a6d1600926a5ef0e43e5c57f44ca4729ee8c89ae6c5e1510f91"
+    },
+    {
+      "file": "source-audit/capture/sharp-coexact229-git.txt",
+      "bytes": 8529,
+      "sha256": "8b8457bdacc242150492890e6b08503356a6c9328ce787501239528eb303da70"
+    },
+    {
+      "file": "source-audit/context.json",
+      "bytes": 1417,
+      "sha256": "594eec6d83c0e44d7fc92f213205b246c6b3281e0c484c94bf0358f82a70cdb8"
+    },
+    {
+      "file": "source-audit/fullreport.txt",
+      "bytes": 14447,
+      "sha256": "7a505952ca6846d152591bb4817750940fc9737121e8ea898c3d85f7b4e7b0a3"
+    },
+    {
+      "file": "source-audit/hashes.json",
+      "bytes": 5509,
+      "sha256": "5273d0986fd83acd03d8a20d2897ab9a2f0c28c9363682c881cb3faf2908d2e0"
+    },
+    {
+      "file": "source-audit/verdict.json",
+      "bytes": 1220,
+      "sha256": "ae70317ce62bc7bcd282720304c84916782bb53ab0111fbdc87013ea0cdc31db"
+    }
+  ],
+  "scientific_execution": false,
+  "grade": null,
+  "separate_AI_role_not_independence": true
+}
