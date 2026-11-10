@@ -1,0 +1,22 @@
+{
+  "verified_at": "2026-11-10T21:26:39.264896+00:00",
+  "source_sha": "6be80f215d70640116f86f273975c1119b6fbdbd",
+  "archive": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\attempt-a\\tep232A-review.zip",
+  "archive_sha256": "cb90267e04861514afd2186d1df7fbc26f265245b6998658530462a2de964242",
+  "archive_bytes": 67106,
+  "manifest_subjects_verified": 30,
+  "status": "FAILED_DOCUMENT_PRODUCTION_PRESERVED_NO_VALID_PDF",
+  "literal_cause": "Undefined control sequence mathscr in matching-modes.tex line36",
+  "actual_latex_first_exit": 1,
+  "CLI_transport_execution_exit": 0,
+  "transport_zero_not_production_success": true,
+  "valid_PDF": false,
+  "numerical_assessment": null,
+  "producer_elapsed_seconds": 125.01802560900003,
+  "child_maxrss_kib": 129372,
+  "request_utc": "2026-11-10T21:20:51Z",
+  "release_finished_utc": "2026-11-10T21:23:35Z",
+  "compute_units_billed": null,
+  "own_runtime_released_and_separate_backend_inactive": true,
+  "next_action": "Preserve source6be and all failed logs/archive; make minimal typography-only correction in new source232B, qualify exact diff then fresh own runtime production. No inherited score or extra human confirmation."
+}

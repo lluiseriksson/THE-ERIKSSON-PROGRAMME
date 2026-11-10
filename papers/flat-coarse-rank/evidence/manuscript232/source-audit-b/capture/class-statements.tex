@@ -1,0 +1,106 @@
+\subsection{Observation classes on the actual coexact domain}\label{sec:classes-front}
+A coexact one-cochain has spatial components $j=1,\ldots,D$ and internal
+channels $\alpha=1,\ldots,g$. Thus $h=Dg$; we identify its real components
+with pairs $(j,\alpha)$. For one internal channel write
+$\mathcal U_0=\operatorname{im}(d_1^*)$, where
+\[
+ (d_1u)_{ij}=D_i^+u_j-D_j^+u_i\quad(i<j),\qquad
+ D_i^+f(x)=f(x+e_i)-f(x).
+\]
+The adjoint uses counting inner products on independent $i<j$ two-cochain
+coordinates. With antisymmetric extension of those coordinates,
+$(d_1^*B)_j=\sum_iD_i^-B_{ji}$, exactly the domain
+\eqref{eq:coexact}. With $g$ channels the domain is
+$\mathcal U=\mathcal U_0^g$. A common volume normalization changes none of
+these images or ranks.
+
+Three observation classes must be distinguished. A common full-vector
+partition retains every component mean on each member. A component-adapted
+map chooses its own rectangle partition for each real component. A
+channel-separable linear map may mix all sites and spatial components
+within each fixed internal channel, but its rows do not mix distinct
+internal channels. Component-adapted rows belong to this last class.
+A global internal rotation changes what ``channel-separable'' means.
+
+\begin{theorem}[Sharp common-partition coexact rank]\label{thm:sharp-coexact}
+For this theorem alone let $D\ge2$, $n,g\ge1$. For any partition into $R$
+nonempty subsets, its full-vector mean map satisfies
+\begin{equation}\label{eq:sharp-rank}
+ \rank(C_{\mathcal R}|_{\mathcal U})\ge g(D-1)(R-1).
+\end{equation}
+The bound is sharp as a dimension-only bound: with $n=R$, coordinate-fibre
+partitions attain equality for every $R\ge1$. No geometric hypothesis on
+the partition is required.
+For $D\ge3$ there is a positive diagonal coefficient family, specified in
+\eqref{eq:coexact-family}, for which every restoring common full-vector
+partition, with any penalty vanishing at zero, has
+\begin{equation}\label{eq:coexact-product}
+ \rank(C_{\mathcal R}|_{\mathcal U})
+ \ge \frac{h(D-1)}{4D(\kappa_D+1)}F_c(A),\qquad
+ \kappa_D=2D\,17^D.
+\end{equation}
+For that family $m\ge4$, $g=m$, $h=Dm$ and
+$\kappa_Dm\le F_c(A)\le\kappa_Dm+1$. Hence product order is necessary
+for actual restricted rank on the coexact domain, not just for the
+unrestricted output dimension $hR$.
+\end{theorem}
+
+Define the dimensional constants
+\begin{equation}\label{eq:adapt-constants}
+ a_D=2D(1+B_D),\qquad b_D=2D\max\{B_D/\alpha_D,D+1\}.
+\end{equation}
+They must not be confused with the coefficient profile $a(x)$ or the
+balanced-tree branching bound $b=2^D$.
+
+\begin{theorem}[Additive component-adapted rectangles]\label{thm:adapted}
+Suppose $D\ge3$ and $A(x)$ is block diagonal by the actual real field
+component: $A_{(i,k),(j,\ell)}(x)=0$ for $k\ne\ell$. Its $D\times D$
+blocks may be signed and may couple directions. There are coefficient-only
+rectangle partitions $\mathcal R_k$, with rows
+\[
+ q_{k,B}(u)=V^{-1/2}|B|^{-1/2}\sum_{x\in B}u_k(x),
+ \qquad B\in\mathcal R_k,
+\]
+and a finite coefficient-dependent $K\ge c$ such that
+\begin{equation}\label{eq:adapted-bound}
+ N_{\rm out}=\sum_k\#\mathcal R_k\le a_Dh+b_DF_c(A),\qquad
+ V^{-1}Q_A(u)+K\|C_{\rm ad}u\|^2\ge c\normn{u}^2.
+\end{equation}
+This is an all-field inequality. On the exact family of
+\eqref{eq:coexact-family}, a choice of such maps has
+\begin{equation}\label{eq:adapted-escape}
+ \rank(C_{\rm ad}|_{\mathcal U})\le2a_D+b_DF_c(A)=O_D(m),
+\end{equation}
+whereas every restoring common full-vector partition has restricted rank
+at least $(D-1)m^2/4$. The component-block-diagonal coefficient hypothesis
+is retained; it is not asserted for arbitrary coupled profiles.
+\end{theorem}
+
+The next obstruction concerns a larger observation class but coupled
+coefficients. Its internal dimension grows with the torus size.
+\begin{theorem}[A fixed-basis channel-separable obstruction]\label{thm:separable}
+Let $D\ge3$, $n\ge2$, $V=n^D$, $g=V$, $h=Dg$ and
+$d_0=(D-1)(V-1)$. There is an explicit constant positive coupled profile
+\eqref{eq:coupled-profile} with
+\[
+ h+F_c(A)\le L_DV,\qquad L_D=D+D^2(1+\alpha_D),
+\]
+for which every channel-separable linear observation $C$ restoring
+$c$-coercivity on $\mathcal U$ with any penalty $\Phi(0)=0$ has actual rank
+\begin{equation}\label{eq:separable-lower}
+ \rank(C|_{\mathcal U})\ge
+ \frac{g(D-1)(V-1)}{2(1+8Dn^2)}.
+\end{equation}
+Consequently no uniform $C_D(h+F_c(A))$ bound holds in this fixed-basis
+channel-separable class, even for positive constant coefficients.
+For the very same profile, cross-channel mixing admits a restoring map
+of actual rank $d_0=O_D(h+F_c(A))$ and penalty coefficient $c$.
+Thus this is neither an obstruction for all linear observations nor a
+basis-invariant impossibility. It gives no fixed-$g$ impossibility.
+\end{theorem}
+
+For this exact family, Appendix~\ref{sec:matching-modes} constructs allowed
+channel-separable real-mode rows and proves the matching minimum-rank order
+$r_{\min}=\Theta_D(n^{2D-2})$, with explicit dimensional constants in
+Theorem~\ref{thm:matching-modes}. Its finite penalty is
+$K=c+(4DH)^2/c$, with $H=cn^2$. These rows may be nonlocal and are not claimed rectangular.

@@ -1,0 +1,345 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=28mm]{geometry}
+\usepackage{microtype,booktabs,array}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks[2]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\E}{\mathcal E}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\mean}{\operatorname{mean}}
+\newcommand{\Id}{\mathrm I}
+\newcommand{\normn}[1]{\|#1\|_{V}}
+\newcommand{\Prob}{\mathbb P_X}
+\newcommand{\Expect}{\mathbb E_X}
+\title{Rectangular observations for finite matrix gradients:\\observation classes and critical endpoints}
+\author{Lluis Eriksson}
+\date{10 November 2026 --- manuscript 232, offline integrated source candidate}
+\hypersetup{pdftitle={Rectangular observations for finite matrix gradients: observation classes and critical endpoints},pdfauthor={Lluis Eriksson}}
+\begin{document}
+\maketitle
+\begin{abstract}
+We study which observation classes restore coercivity of actual finite forward
+gradient forms. Arbitrary finite symmetric onsite matrices admit coefficient-only
+common rectangular means with output dimension $O_D(h(1+F_c(A)))$, where $F_c(A)$
+is a capped local eigenchannel budget and the finite penalty may depend on
+negative depth. On the actual flat coexact domain we derive the sharp universal
+common-partition rank bound $g(D-1)(R-1)$, including its annihilator formula and
+an attaining fibre family. Explicit coexact low fields make product order
+necessary for common full-vector partitions. Component-adapted rectangles instead
+give an additive $O_D(h+F_c(A))$ bound for component-block-diagonal coefficients
+and escape that obstruction on the same family. For constant internally coupled
+coefficients, fixed-basis channel-separable observations can again require
+super-additive actual coexact rank of sharp order $\Theta_D(n^{2D-2})$; a cheap
+mixed observation demonstrates why
+that obstruction is basis dependent. The scalar weak critical endpoint has
+matching worst-case logarithmic upper and lower order. Complete scalar BV,
+weighted-gap, tree, matrix, coexact and endpoint proofs are included.
+The mechanisms are classical; priority, sharp profilewise ranks, efficient
+algorithms and physical or continuum transfer are not established.
+\end{abstract}
+
+\section{Objects, principal results and scope}\label{sec:main}
+A small number of spatial averages can restore coercivity even when local
+coefficients are very small or have negative channels. Two issues must be
+kept separate: how many averages are needed, and how large a penalty must be
+placed on them. We control the first by a capped coefficient budget while
+allowing the second to depend on the entire finite profile. At the scalar
+weak endpoint a logarithmic loss in the coefficient scale is unavoidable in
+the worst case.
+
+\subsection{The actual finite form and observation rows}
+Except in the standalone coexact rank theorem, $D\ge3$, $n\ge1$ and $h\ge1$ are integers, $c>0$,
+\[
+ X=(\Z/n\Z)^D,\qquad V=n^D,\qquad P=D/2,\qquad r=Dh.
+\]
+We represent $X$ by the fixed chart $\{0,\ldots,n-1\}^D$.
+For $u:X\to\R^h$ the forward stack is
+\[
+ du(x)=\bigl(u(x+e_i)-u(x)\bigr)_{i=1}^D\in\R^r.
+\]
+All additions in this expression are periodic. Given a finite real symmetric
+$r\times r$ matrix $A(x)$ at each original start $x$, define
+\begin{equation}\label{eq:actual}
+ Q_A(u)=\sum_{x\in X}du(x)^{\mathsf T}A(x)du(x),
+ \qquad \normn{u}^2=V^{-1}\sum_x\|u(x)\|^2.
+\end{equation}
+No common eigenbasis or sign assumption is imposed on $A(x)$.
+For a scalar profile $a>0$ we write
+\[
+ Q_a(u)=\sum_{x,i}a(x)\|u(x+e_i)-u(x)\|^2.
+\]
+In particular, the coefficient is always evaluated at the forward start;
+it is never moved to the endpoint or averaged over an edge.
+
+An integer rectangle is a nonempty product of consecutive intervals in the
+fixed chart. It need not be a periodic rectangle crossing the chart boundary.
+For such a rectangle $B$ define the vector row
+\begin{equation}\label{eq:rows}
+ q_B(u)=V^{-1/2}|B|^{-1/2}\sum_{x\in B}u(x)
+       =\sqrt{|B|/V}\,\mean_B u.
+\end{equation}
+For a partition $\mathcal R$ put
+$C_{\mathcal R}u=(q_B(u))_{B\in\mathcal R}$, with the Euclidean product norm.
+Its output dimension is $h\#\mathcal R$; on the full field space its rows
+are independent, so its rank equals that dimension. A coefficient-only
+partition is fixed by the coefficient profile and deterministic geometric
+conventions before the field $u$ is chosen.
+
+\subsection{An arbitrary symmetric matrix theorem}
+The constants used below are intentionally conservative:
+\begin{align}\label{eq:constants}
+ b&=2^D,\quad J=2D,\quad
+ C_{\rm ext}=1+J\{2J(1+12J)+1\},\nonumber\\
+ G_D&=2^{2D+10}D^2C_{\rm ext}^2,\qquad
+ B_D=(2b+3)bG_D^P,\\
+ \alpha_D&=\frac D2\left(\frac D{D-2}\right)^{D-1}
+                      \left(\frac34\right)^D.\nonumber
+\end{align}
+Here $G_D$ is the scalar weighted-gap constant and $B_D$ is the resulting
+tree-count constant. Let $\lambda_j(x)$, $1\le j\le r$, be the eigenvalues
+of $A(x)$, counted with multiplicity. Let $\nu_0$ count all its nonpositive
+local eigenvalues over all $x$. Define
+\begin{equation}\label{eq:cap}
+ F_c(A)=\nu_0+
+ \sum_{x,j:\lambda_j(x)>0}
+       \min\{1,\alpha_D c^P\lambda_j(x)^{-P}\}.
+\end{equation}
+These are local coefficient eigenvalues, not the eigenvalues of the global
+operator associated with $Q_A$.
+
+\begin{theorem}[Capped-budget rectangular observations]\label{thm:matrix}
+For every profile $A$ in \eqref{eq:actual} there is a coefficient-only
+partition $\mathcal R$ into integer rectangles such that
+\begin{equation}\label{eq:matrix-count}
+ h\#\mathcal R\le
+ 2Dh\left[1+B_D+
+       \max\left\{\frac{B_D}{\alpha_D},D+1\right\}F_c(A)\right].
+\end{equation}
+There is a finite coefficient-dependent $K$ such that, simultaneously for all
+$u:X\to\R^h$,
+\begin{equation}\label{eq:matrix-coercive}
+ V^{-1}Q_A(u)+K\|C_{\mathcal R}u\|^2\ge c\normn{u}^2.
+\end{equation}
+One may take $K=c+4DL$, with $L$ explicitly defined in
+\eqref{eq:negative-depth}. Neither the partition nor $K$ depends on $u$.
+\end{theorem}
+
+The budget caps the cost of each sufficiently small positive channel at one
+and assigns the same unit cost to each nonpositive channel. Its count thus
+does not grow with negative depth. The penalty $K$ can grow with that depth;
+\eqref{eq:matrix-coercive} makes no assertion that $K=c$ for signed forms.
+The elementary singleton partition has $hV$ outputs and also admits a finite
+penalty for every finite symmetric form. One may choose whichever of that
+partition and Theorem~\ref{thm:matrix} has fewer outputs. No optimal dimension,
+sharp coefficient, or efficient implementation is asserted.
+
+\subsection{The cost of a common full-vector partition}
+The dimension in Theorem~\ref{thm:matrix} concerns a common partition with
+all $h$ component means on each spatial member. The following refinement
+shows why this measurement class can require a product of $h$ and the budget.
+
+\begin{theorem}[Necessary product order for common partitions]\label{thm:common-rank}
+Fix $D\ge3$ and $c>0$. For every pair of integers $m,h\ge1$ there is an actual positive
+diagonal matrix profile on $X_n$, $n=3m+3$, with exactly $2Dm$ weak
+direction-labelled channels and
+\[
+ 2Dm\le F_c(A)\le2Dm+1.
+\]
+If a common partition $\mathcal R$ outputs all $h$ means
+\eqref{eq:rows} and satisfies \eqref{eq:matrix-coercive} for every general
+field $u:X_n\to\R^h$ with any finite quadratic penalty coefficient, then
+\begin{equation}\label{eq:product-lower}
+ \rank C_{\mathcal R}=h\#\mathcal R\ge hm
+                  \ge\frac{hF_c(A)}{2D+1}.
+\end{equation}
+Thus no bound $C_D(h+F_c(A))$ holds uniformly in $h$ in this class:
+setting $h=m$ makes the ratio of necessary rank to $h+F_c(A)$ diverge.
+Together with Theorem~\ref{thm:matrix}, this gives matching worst-case
+$hF_c(A)$ order, up to dimensional constants, in joint $h,F_c(A)$ growth.
+The lower family consists of general vector fields and is not claimed to
+be coexact or divergence-free. It does not address component-dependent
+partitions, channel-adapted means, or postprocessed measurement classes.
+\end{theorem}
+\subsection{The scalar endpoint and the precise lower-bound domain}
+For a positive scalar profile let
+\begin{equation}\label{eq:weak-def}
+ \begin{aligned}
+ \mu&=V^{-1}\sum_xa(x),&Y(x)&=\mu/a(x),\\
+ W(a,\mu)&=\sup_{\tau>0}\tau^P\Prob(Y>\tau),&
+ T(n,\mu)&=\max\{1,n^D/(1+\mu)^P\},
+ \end{aligned}
+\end{equation}
+where $\Prob$ is normalized counting probability. The strict superlevel
+convention in this definition is used throughout.
+
+\begin{theorem}[Weak endpoint upper bound]\label{thm:weakupper}
+Suppose $1\le a\le2\mu$ and $W(a,\mu)\le M_w$, with $\mu$ the actual
+arithmetic mean. For every $h\ge1$ there is a coefficient-only rectangular
+partition with
+\begin{equation}\label{eq:weak-upper-count}
+ h\#\mathcal R\le
+ 2Dh\left\{1+2^Pc^PB_D[1+P M_w\log\mu]\right\}T(n,\mu)
+\end{equation}
+and
+\begin{equation}\label{eq:scalar-coercive}
+ V^{-1}Q_a(u)+c\|C_{\mathcal R}u\|^2\ge c\normn{u}^2
+ \quad(u:X\to\R^h).
+\end{equation}
+\end{theorem}
+
+To state the lower bound without an unspecified Hodge domain, fix $g\ge1$.
+A flat one-cochain is $U=(U_1,\ldots,U_D)$ with $U_j:X\to\R^g$;
+we regard it as an $h=Dg$ component field in $Q_a$.
+For antisymmetric two-cochains $B_{ij}=-B_{ji}:X\to\R^g$, define
+\begin{equation}\label{eq:coexact}
+ D_i^-f(x)=f(x)-f(x-e_i),\qquad
+ (\delta B)_j=-\sum_iD_i^-B_{ij},\qquad
+ \mathcal H_{\rm coex}(X)=\{\delta B:B\text{ antisymmetric}\}.
+\end{equation}
+Backward divergence $\sum_jD_j^-U_j$ vanishes on this space by commutation
+and antisymmetry. The energy on it is precisely the scalar component-gradient
+$Q_a(U)$, with all its original forward starts; no weighted curl identity
+is used to define or replace that energy.
+
+\begin{theorem}[Weak endpoint obstruction and worst-case order]\label{thm:weaklower}
+Fix $D\ge3$, $c>0$ and $g\ge1$. For every integer $m\ge1$ there are $n_m$,
+a profile $a_m$ with actual mean $\mu_m$, and an $m$-dimensional real
+subspace $E_m\subset\mathcal H_{\rm coex}(X_{n_m})$ such that
+\begin{align}\label{eq:lower-data}
+ 1\le a_m\le2\mu_m,\qquad W(a_m,\mu_m)&\le1,\nonumber\\
+ Q_{a_m}(U)&\le(c/4)\sum_x\|U(x)\|^2\quad(U\in E_m),\\
+ T(n_m,\mu_m)&\le C(D,c),\qquad
+ \Expect(\mu_m/a_m)^P\ge\frac{m}{2^P16^D}.\nonumber
+\end{align}
+Suppose an observation $C$ from a neighborhood of zero in
+$\mathcal H_{\rm coex}(X_{n_m})$ to a finite-dimensional real normed space
+$F$ is differentiable at zero and $C(0)=0$. Suppose also that
+$\Phi(y)\le K\|y\|^2$ near zero for some finite $K$, and that locally
+\begin{equation}\label{eq:local-coercive}
+ c\sum_x\|U(x)\|^2\le Q_{a_m}(U)+\Phi(C(U)).
+\end{equation}
+Then $DC(0)|_{E_m}$ is injective and $\dim F\ge m$.
+For this fixed-parameter sequence $m$ is comparable to $1+\log\mu_m$ for
+large $m$. Thus the logarithmic loss in Theorem~\ref{thm:weakupper} has
+matching worst-case order. This is not a claim of optimal rank for every
+individual profile.
+\end{theorem}
+
+The centered, differentiable and local quadratic assumptions are part of
+the lower theorem. Its penalty need not have a uniform bound as $m$ varies.
+A common division of energy and squared field norm by $V$ gives the same
+rank conclusion. The full critical moment grows along the lower family,
+so this family does not contradict the strong-moment scalar theorem.
+
+\input{class-statements}
+
+\subsection{Classical predecessors, contribution and proof dependencies}
+This is an integrated successor source for the existing AIRR record
+\texttt{ARR-2026-7EPM3V3DP796BBRR}, following its exact version~14
+(manuscript~226C). It consolidates the same finite-gradient question rather
+than presenting separate papers for its rank refinements. A new source is
+not the same reviewed artifact as its predecessor.
+
+The scalar construction uses substantive classical predecessors:
+Cohen--DeVore--Petrushev--Xu~\cite{cdpx223}, Section~6 and Theorem~6.1,
+explicitly organize dyadic rings through final, branching and chaining nodes;
+Brudnyi~\cite{brudnyi221}, Appendix~II, gives weighted-tree/basic-path
+approximation mechanisms, with ring covers in Appendix~I.
+Those constructions are pertinent prior art, not merely background mentions.
+The finite implementation here treats atomic coefficient mass, odd integer
+subdivision, original-start edge weights and retained intra-ring interfaces.
+The matrix application uses local spectral replacement and exact endpoint
+refinement; the coexact applications use explicit low fields and restricted
+image rank. These are descriptions of the proved adaptations, not proofs
+that no classical theorem already implies them. Historical priority,
+exact equivalence/non-equivalence and exhaustive predecessor coverage remain
+unestablished. The elementary forward maximum principle is explicitly
+attributed where it is used in Section~\ref{sec:sharp-coexact}.
+
+Frank~\cite{frank}, Theorems~2.1 and~3.1, provides the classical
+Cwikel/CLR and operator-valued context. A weak multiplier condition there
+must be distinguished from the weak spatial coefficient distribution here.
+Our matrix proof invokes no global CLR estimate. The positive $\alpha_D$
+normalizes the cap; another fixed positive normalization changes the
+corresponding constants. Spectral replacement, direct-sum spectra, BV,
+tree compression, layer cake and finite projection/rank principles are
+classical. No new general principle is claimed.
+
+The central dependency map is as follows. Every named input is proved
+within this manuscript, including the shared bump used by two different
+coefficient families.
+\begin{center}\small
+\begin{tabular}{p{0.27\linewidth}p{0.64\linewidth}}
+\toprule
+Result & Proof dependencies and domain\\
+\midrule
+Scalar foundation & Appendix~\ref{sec:balanced223}: integer collars $\to$
+BV extension $\to$ original-start weighted ring gap $\to$ compressed
+heavy chains $\to$ rectangular means, retaining intra-ring interfaces.\\
+Matrix upper & Scalar foundation $\to$ Section~\ref{sec:matrixproof}:
+positive replacement, endpoint refinement and full signed correction;
+all fields.\\
+Common lower bounds & Section~\ref{sec:common-rank}: general-field deltas.
+Section~\ref{sec:sharp-coexact}: closed-field decomposition, maximum
+principle and actual coexact low fields; these ranks are distinct.\\
+Adapted upper/escape & The $h=1$ matrix theorem, exact block spectra and
+the forward torus gap, in Section~\ref{sec:adapted}.\\
+Weak endpoint & Scalar moment corollary plus layer cake for the upper;
+Lemma~\ref{lem:bump}, geometric scales and derivative-kernel scaling for
+the actual coexact lower, in Section~\ref{sec:endpoint}.\\
+Coupled obstruction & Actual coexact dimension and row-space projections
+inside that domain and real-mode upper rows with a finite Green trace;
+Appendices~\ref{sec:coupled}--\ref{sec:matching-modes}. Internal dimension grows
+and the observation basis is fixed.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The full-vector common partition, component-adapted partition and fixed-basis
+channel-separable classes cannot be interchanged in a rank comparison.
+Restricted rank always means the actual image dimension of the stated
+map on the stated domain. In particular the coexact argument never
+substitutes the full-space count $hR$ for restricted rank.
+All results concern finite unit-spacing component-gradient forms. No
+interacting/covariant coefficient producer, variable-weight curl identity,
+continuum construction or Yang--Mills solution follows. External programme
+bookkeeping is omitted from the proof because it supplies no mathematical
+hypothesis or inference here.
+\input{matrix-proof}
+\input{common-rank}
+\input{coexact-classes}
+\input{weak-endpoint}
+\input{review-context}
+\appendix
+\input{scalar-rings}
+\input{coupled-channels}
+\input{matching-modes}
+\begin{thebibliography}{9}
+\small\setlength{\itemsep}{2pt}
+\bibitem{frank} R.~L.~Frank,
+\emph{Cwikel's theorem and the CLR inequality}, arXiv:1206.3325v1 (2012),
+Theorems~2.1 and~3.1. \url{https://arxiv.org/abs/1206.3325v1}.
+\bibitem{brudnyi221} Yu.~Brudnyi,
+\emph{Nonlinear Piecewise Polynomial Approximation and Multivariate $BV$
+spaces of a Wiener--L.~Young Type.~I}, arXiv:1511.03971v1 (2015).
+\url{https://arxiv.org/abs/1511.03971v1}.
+\bibitem{cdpx223} A.~Cohen, R.~DeVore, P.~Petrushev and H.~Xu,
+\emph{Nonlinear approximation and the space $BV(\R^2)$},
+American Journal of Mathematics \textbf{121} (1999), 587--628.
+Author PDF: \url{https://people.math.sc.edu/pencho/Publications/BV9707.pdf}.
+\bibitem{levinperes} D.~A.~Levin and Y.~Peres, with contributions by
+E.~L.~Wilmer, \emph{Markov Chains and Mixing Times}, second edition,
+American Mathematical Society, 2017, Lemma~1.16.
+Author PDF: \url{https://pages.uoregon.edu/dlevin/MARKOV/markovmixing.pdf}.\end{thebibliography}
+\end{document}

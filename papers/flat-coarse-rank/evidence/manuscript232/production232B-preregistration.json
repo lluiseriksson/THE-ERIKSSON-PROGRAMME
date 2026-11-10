@@ -1,0 +1,51 @@
+{
+  "prepared_at": "2026-11-10T21:30:11.220525+00:00",
+  "source": "f83ee8a84b3ecc27470ed8a92ea61eb627d86445",
+  "inputs": {
+    "class-statements.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/class-statements.tex",
+      "sha256": "f8cf1ab6ff210f2c8ef61058bbdf517dcdd6f4dd072fd6c56408db28a200d3de"
+    },
+    "coexact-classes.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/coexact-classes.tex",
+      "sha256": "71010b9bd1efb453248bb6278485804e590e28b72dd316b12acaa2b1d383b318"
+    },
+    "common-rank.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/common-rank.tex",
+      "sha256": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b"
+    },
+    "coupled-channels.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/coupled-channels.tex",
+      "sha256": "7f30175962ed10fd74be257c1fedb2ac4885789b630ce7172c981f7cb4814994"
+    },
+    "matching-modes.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/matching-modes.tex",
+      "sha256": "39dd10b98834df585125db6b5498fd5995734b7fe87528c50d2fa76c10f253de"
+    },
+    "matrix-proof.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/matrix-proof.tex",
+      "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    "rectangular_matrix.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/rectangular_matrix.tex",
+      "sha256": "9234a4084d6c0db7754d3a13581b80f69a844e7ddc95f1eed21945c74e6883e6"
+    },
+    "review-context.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/review-context.tex",
+      "sha256": "64c4203bfd082d82f0f53a9af1518b47c7e14e3448104dd2bdefe9200dddc56c"
+    },
+    "scalar-rings.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/scalar-rings.tex",
+      "sha256": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0"
+    },
+    "weak-endpoint.tex": {
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/weak-endpoint.tex",
+      "sha256": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7"
+    }
+  },
+  "exact_full_source_audit_manifest_sha256": "06226943a558dcfa2914d0f807a1e7146683e2ad0704b3467a5d74688cfaee34",
+  "execution": "NOT_YET_RUN",
+  "runtime": "Own ColabLinux CPU highmemory, unique232-a config, release then separate backend observation",
+  "production": "PDF/document rendering only, not formal or scientific theorem execution",
+  "grade": null
+}

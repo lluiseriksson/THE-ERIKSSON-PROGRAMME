@@ -1,0 +1,27 @@
+{
+  "role": "Same involved separate-role AI bounded exact-source auditor",
+  "exposed_identity": "Codex based on GPT-6",
+  "exact_backend": "unknown/not exposed",
+  "reasoning_effort": "unknown/not exposed",
+  "history": "Prior224/225/227/226B-C/228/229/230/231A-B/233 and232A source/evidence work plus related operational reviews.",
+  "shared_account_context_parent_framing": true,
+  "independence": "not established",
+  "blind": false,
+  "human": false,
+  "no_inbound_during_audit": true,
+  "prior_fullreport_read": true,
+  "corrected_matching_read_in_full": true,
+  "all10_raw_comparison": true,
+  "failure_summary_read": true,
+  "full_failure_archive_or_live_backend_reverified": false,
+  "new_execution": false,
+  "pdf_or_numerical_assessment_read": false,
+  "source_status_git_mutation": false,
+  "limits": [
+    "Bounded exact-source correction audit against full232A source report; no new independent whole-proof review.",
+    "Nine files byte-identical; matching-modes differs only in two mathscr to mathcal control names.",
+    "Local mathcal L overlap with earlier drift is explicit and nonblocking; do not equate the two operators.",
+    "No successful build/PDF/visual QA/grade or new execution inferred; failed232A production remains failed.",
+    "All original mathematical scope and involved-role limits remain."
+  ]
+}

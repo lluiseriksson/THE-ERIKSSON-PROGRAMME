@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_912/2119191601.py", line 26, in <cell line: None>
+    for stage in ['first','second','final']:run(['pdflatex','-interaction=nonstopmode','-halt-on-error','rectangular_matrix.tex'],'latex-'+stage)
+                                            ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_912/2119191601.py", line 14, in run
+    if code:raise RuntimeError(name+' exited '+str(code))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: latex-first exited 1

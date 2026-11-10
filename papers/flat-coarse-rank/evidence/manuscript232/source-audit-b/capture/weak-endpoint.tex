@@ -1,0 +1,257 @@
+\section{The weak critical endpoint}\label{sec:endpoint}
+The positive and negative results use the same scalar original-start energy.
+The positive estimate holds on every component field. The negative estimate
+is already forced on the precisely defined coexact subspace
+\eqref{eq:coexact}.
+
+\subsection{Finite layer cake and the upper estimate}
+Since $a\ge1$, its actual mean obeys $\mu\ge1$ and $0<Y\le\mu$.
+For each value $y$ in this finite distribution,
+\[
+ y^P=P\int_0^\mu\tau^{P-1}1_{\{\tau<y\}}\,d\tau.
+\]
+Summing over $X$ proves the exact identity
+\begin{equation}\label{eq:layercake}
+ \Expect Y^P=P\int_0^\mu\tau^{P-1}\Prob(Y>\tau)\,d\tau
+                   \le1+P M_w\log\mu.
+\end{equation}
+The contribution on $(0,1)$ is at most one, and on $[1,\mu]$ we use
+$\Prob(Y>\tau)\le M_w\tau^{-P}$. At $\mu=1$ the second integral is zero;
+in fact the actual mean and $a\ge1$ then force $a\equiv1$.
+Atoms at strict cutoffs change no ordinary integral. The envelope
+$a\le2\mu$ is retained in the theorem but is not needed for this step.
+
+Corollary~\ref{cor:balanced223-moment} in the appendix, with the actual
+moment $M=\Expect Y^P$, gives
+\[
+ h\#\mathcal R\le2Dh[1+2^Pc^PB_DM]T(n,\mu),
+\]
+and the normalized inequality \eqref{eq:scalar-coercive} with penalty $c$.
+Substitution of \eqref{eq:layercake} proves
+Theorem~\ref{thm:weakupper}. Its geometry and gap are supplied by the
+complete scalar construction, rather than by a separate assumed certificate.
+
+\subsection{A compact product bump on the actual coexact domain}
+We now prove Theorem~\ref{thm:weaklower}. Fix a unit vector $e\in\R^g$.
+Define a globally $C^1$ function
+\[
+ \beta(s)=\begin{cases}s^2(1-s)^2,&0\le s\le1,\\0,&s\notin[0,1].\end{cases}
+\]
+We use $\beta$ for the bump to distinguish it from the critical exponent
+$P$. Both $\beta$ and $\beta'$ vanish at the endpoints. On $[0,1]$,
+\[
+ \beta'(s)=2s(1-s)(1-2s),\qquad
+ \beta''(s)=2-12s+12s^2.
+\]
+Thus $0\le\beta\le1$, $|\beta'|\le2$, and $\beta'$ is globally
+$2$-Lipschitz: its interior second derivative has absolute value at most two,
+and the zero extension has no derivative jump.
+
+For an integer $L\ge16$ divisible by $16$, put
+\[
+ \psi_L(x)=\prod_{i=1}^D\beta(x_i/L),\qquad x\in\Z^D,
+\]
+and define the one-cochain
+\begin{equation}\label{eq:bumpfield}
+ U_1=D_2^-\psi_L\,e,\qquad U_2=-D_1^-\psi_L\,e,
+ \qquad U_j=0\quad(j\ge3).
+\end{equation}
+Taking $B_{12}=\psi_Le$, $B_{21}=-\psi_Le$ and all other $B_{ij}=0$
+in \eqref{eq:coexact} gives exactly \eqref{eq:bumpfield}, including its
+signs. Therefore $U=\delta B$ and
+\[
+ \sum_jD_j^-U_j=D_1^-D_2^-\psi_Le-D_2^-D_1^-\psi_Le=0.
+\]
+Every component has zero mean by telescoping. The same identities hold
+exactly on any torus large enough to contain this support away from wraps.
+
+The one-dimensional lattice sequence $f(t)=\beta(t/L)$ is supported at
+$t=1,\ldots,L-1$, and $D^-f$ is supported at $t=1,\ldots,L$.
+It follows from the product formula that $U$ is supported in
+$\{0,\ldots,L\}^D$ and vanishes on every lower coordinate face $x_i=0$.
+If $D_i^+U_j(x)\ne0$, its original start belongs to this same box.
+Indeed the only potentially external incoming start is $x_i=-1$; its next
+endpoint is on the zero lower face, so both field values vanish. Upper
+outgoing starts $x_i=L$ can contribute and are included. In all other
+coordinates an external coordinate makes both terms zero. This verifies the
+boundary-start condition needed below with no interior-only energy convention.
+
+\begin{lemma}[Finite bump constants]\label{lem:bump}
+Let $\E_1(U)=\sum_{x,i,j}\|D_i^+U_j(x)\|^2$ on $\Z^D$. Then
+\begin{align}\label{eq:bumpbounds}
+ \E_1(U)&\le U_D L^{D-4},& U_D&=32D\,2^D,\nonumber\\
+ \sum_x\|U(x)\|^2&\ge\eta_D L^{D-2},&
+ \eta_D&=\frac9{2^{D+12}256^{2(D-1)}}.
+\end{align}
+In particular, with $K_D=U_D/\eta_D$,
+\begin{equation}\label{eq:bumprayleigh}
+ \E_1(U)\le (K_D/L^2)\sum_x\|U(x)\|^2.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The Lipschitz bound on $\beta'$ bounds each same-coordinate second finite
+difference by $2/L^2$. For different coordinates the product of two first
+differences is bounded by $4/L^2$. All unused factors have magnitude at most
+one. At most $2D$ component/direction pairs are nonzero; each has at most
+$(L+1)^D\le2^DL^D$ original starts by the support analysis. The common
+squared bound $16/L^4$ gives the first line of \eqref{eq:bumpbounds},
+including the upper outgoing starts.
+
+For the norm, take $x_2=L/8+1,\ldots,L/4$, exactly $L/8$ sites,
+and $x_i\in[L/4,3L/4]$ for every $i\ne2$, at least $L/2$ sites each.
+On each backward step in coordinate two, the mean-value point belongs to
+$[1/8,1/4]$, where $\beta'\ge3/32$. On the other coordinates
+$\beta\ge1/256$ on $[1/4,3/4]$. Hence
+\[
+ \|U_1(x)\|\ge\frac3{32L}256^{-(D-1)}
+\]
+on all these sites. Squaring and multiplying by
+$(L/8)(L/2)^{D-1}$ gives the stated $\eta_D$. It is strictly positive,
+so division yields \eqref{eq:bumprayleigh}.
+\end{proof}
+
+\subsection{Geometric scales, exact mean and the weak distribution}
+Choose an integer $k\ge0$ such that $\varepsilon=4^{-k}$ satisfies
+$\varepsilon K_D\le c/4$. This choice depends on $D,c$ and is fixed
+while $m$ varies. Put
+\begin{equation}\label{eq:scales}
+ L_0=2^{\max\{4,k\}},\quad L_j=2^jL_0\ (0\le j<m),\quad
+ L_*=L_{m-1},\quad n=16L_*,\quad H=\varepsilon L_*^2.
+\end{equation}
+Every $L_j$ is divisible by $16$, and $\varepsilon L_0^2\ge1$.
+Place boxes
+\[
+ B_j=q_j+\{0,\ldots,L_j\}^D,\quad
+ q_{0,1}=1,\quad q_{j+1,1}=q_{j,1}+L_j+3,\quad
+ q_{j,i}=1\ (i\ge2).
+\]
+Their first-coordinate intervals have two unused sites between successive
+boxes. The rightmost endpoint is $\sum_jL_j+3m-2$.
+Since $\sum_jL_j<2L_*$ and $m\le2^{m-1}\le L_*/16$,
+this is less than $3L_*+1<n$. Other coordinates also lie strictly inside
+the chart. Thus no support or gradient-start support collides periodically.
+Translate \eqref{eq:bumpfield} into each $B_j$, obtaining $U^{(j)}$.
+Their field supports and their complete original gradient-start supports
+are disjoint.
+
+Define the actual scalar coefficient by
+\begin{equation}\label{eq:weakprofile}
+ a(x)=\begin{cases}\varepsilon L_j^2,&x\in B_j,\\
+ H,&x\notin\bigcup_jB_j.
+ \end{cases}
+\end{equation}
+The boxes are disjoint and the top box has the same coefficient as the
+background. In particular $1\le a\le H$. Define its mean by its actual sum:
+\begin{equation}\label{eq:exactmean}
+ \mu=V^{-1}\sum_xa(x)
+    =H-V^{-1}\sum_j|B_j|(H-\varepsilon L_j^2).
+\end{equation}
+This is not a freely adjusted normalization. With
+\[
+ C_{\rm vol}=\frac{2^D}{1-2^{-D}},
+\]
+the geometric series and $(L_j+1)^D\le2^DL_j^D$ imply
+\[
+ \sum_j|B_j|\le C_{\rm vol}L_*^D,\qquad
+ V^{-1}\sum_j|B_j|\le C_{\rm vol}/16^D<1/2.
+\]
+It follows that
+\begin{equation}\label{eq:meanbounds}
+ H/2\le\mu\le H,\qquad \mu\ge1,\qquad 1\le a\le H\le2\mu.
+\end{equation}
+The separate inequality $\mu\ge1$ follows directly from $a\ge1$,
+including when $H/2<1$.
+
+We check $W(a,\mu)\le1$ with strict cutoffs. If
+$0<\tau\le\mu/H$, then $\tau\le1$ and
+$\tau^P\Prob(Y>\tau)\le1$. If $\tau>\mu/H$, the background and top
+box are absent. The boxes contributing to $Y>\tau$ satisfy
+$\varepsilon L_j^2<\mu/\tau$. If there is any such box, let $j$ be the
+largest qualifying index. They form an initial segment and have total
+volume at most $C_{\rm vol}L_j^D$. Consequently
+\begin{align}\label{eq:weakcheck}
+ \tau^P\Prob(Y>\tau)
+ &\le C_{\rm vol}(\mu/\varepsilon)^P/V\nonumber\\
+ &\le C_{\rm vol}L_*^D/(16L_*)^D<1.
+\end{align}
+If no box qualifies the probability is zero. Equality at a coefficient atom
+excludes that box under the strict criterion and cannot increase the bound.
+This proves the weak distribution assertion for every $m$, including $m=1$.
+
+\subsection{The low space and every finite local quadratic penalty}
+Every nonzero gradient of $U^{(j)}$ has its original start in $B_j$,
+where \eqref{eq:weakprofile} has coefficient $\varepsilon L_j^2$.
+All wrap terms vanish for these nonwrapping supports. Thus the complete
+energy, not merely its interior contribution, is
+\begin{equation}\label{eq:weightedbump}
+ Q_a(U^{(j)})=\varepsilon L_j^2\E_1(U^{(j)})
+ \le\varepsilon K_D\sum_x\|U^{(j)}(x)\|^2
+ \le(c/4)\sum_x\|U^{(j)}(x)\|^2.
+\end{equation}
+The norm bound in Lemma~\ref{lem:bump} makes every $U^{(j)}$ nonzero.
+Disjoint field supports give norm orthogonality; disjoint gradient-start
+supports give vanishing quadratic-energy cross terms. The same inequality
+therefore holds on
+\[
+ E_m=\operatorname{span}_{\R}\{U^{(0)},\ldots,U^{(m-1)}\}
+       \subset\mathcal H_{\rm coex}(X),\qquad \dim E_m=m.
+\]
+This proves an actual low subspace, with no local eigenfunction or gap
+assumption. From \eqref{eq:scales} and \eqref{eq:meanbounds},
+\begin{equation}\label{eq:targetbounded}
+ T(n,\mu)\le\left(16\sqrt{2/\varepsilon}\right)^D.
+\end{equation}
+The right side is independent of $m$.
+
+For clarity the finite-dimensional obstruction is proved directly. If
+$DC(0)|_{E_m}$ has a nonzero kernel vector $U$, differentiability and
+$C(0)=0$ imply $C(tU)=o(t)$. For sufficiently small $t$, the assumed
+upper bound on the penalty gives
+\[
+ \Phi(C(tU))\le K\|C(tU)\|^2=o(t^2).
+\]
+Apply \eqref{eq:local-coercive} to $tU$, use the low-space inequality,
+and divide by $t^2$. Letting $t\to0$ would imply
+\[
+ c\sum_x\|U(x)\|^2\le(c/4)\sum_x\|U(x)\|^2,
+\]
+a contradiction. Therefore the derivative is injective on $E_m$ and
+$\dim F\ge\rank(DC(0)|_{E_m})=m$. No uniformity of $K$ between profiles
+was used. Positivity or differentiability of $\Phi$ is unnecessary; only
+its stated finite quadratic upper bound is used. Common normalization of
+energy and field norm changes none of this finite-dimensional argument.
+
+Finally, disjoint boxes, $|B_j|\ge L_j^D$ and $\mu\ge H/2$ give
+\begin{equation}\label{eq:fullmomentgrowth}
+ \Expect(\mu/a)^P
+ \ge V^{-1}\sum_{j=0}^{m-1}L_j^D
+                   \left(\frac\mu{\varepsilon L_j^2}\right)^P
+ =\frac{m(\mu/\varepsilon)^P}{V}
+ \ge\frac m{2^P16^D}.
+\end{equation}
+This establishes every part of \eqref{eq:lower-data} and explains why the
+strong-moment theorem is not contradicted.
+
+\subsection{The matching order and its quantifiers}
+For fixed $D,c$, $\varepsilon$ and $L_0$ remain fixed. Equations
+\eqref{eq:scales} and \eqref{eq:meanbounds} imply
+\begin{equation}\label{eq:logmean}
+ \log\mu=2(m-1)\log2+\log(\varepsilon L_0^2)+\theta_m,
+ \qquad -\log2\le\theta_m\le0.
+\end{equation}
+Thus $m/(1+\log\mu)\to1/(2\log2)$.
+The lower bound just proved forces output dimension at least a positive
+fixed-parameter multiple of $1+\log\mu$ for large $m$.
+Theorem~\ref{thm:weakupper}, with $h=Dg$, $M_w=1$ and
+\eqref{eq:targetbounded}, gives an upper bound of the same order on these
+profiles. In particular, no bound proportional to
+$T(n,\mu)\,o(\log\mu)$ can hold uniformly over the weak-bound class for
+the centered differentiable/local-quadratic observations under discussion.
+This proves the final assertion of Theorem~\ref{thm:weaklower}.
+
+The conclusion is a worst-case comparison across profiles. It does not
+state that each profile needs a logarithm or identify its minimal rank.
+The lower construction also does not cover a nonzero observation baseline
+with an unrelated positive penalty at that baseline, nondifferentiable
+encodings, or penalties outside the stated local quadratic class. Those
+assumptions matter to the argument rather than merely to its presentation.

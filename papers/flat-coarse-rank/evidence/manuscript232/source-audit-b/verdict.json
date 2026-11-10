@@ -1,0 +1,32 @@
+{
+  "verdict": "accept_with_limits",
+  "unit": "232B",
+  "source_commit": "f83ee8a84b3ecc27470ed8a92ea61eb627d86445",
+  "baseline_commit": "6be80f215d70640116f86f273975c1119b6fbdbd",
+  "source_prefix": "papers/flat-coarse-rank/integrated-revision/revision232/",
+  "raw_tex_compared": 10,
+  "byte_identical_files": 9,
+  "changed_file": "matching-modes.tex",
+  "new_matching_sha256_raw": "39dd10b98834df585125db6b5498fd5995734b7fe87528c50d2fa76c10f253de",
+  "change": "Exactly two mathscr to mathcal control replacements, lines36 and60.",
+  "mathematical_content_unchanged": true,
+  "blocking_findings": [],
+  "editorial_findings": [
+    {
+      "id": "E1",
+      "severity": "nonblocking",
+      "finding": "mathcal L now locally denotes the positive Laplacian in matching-modes and the earlier forward drift in coexact-classes; both definitions explicit, no incorrect inference found."
+    }
+  ],
+  "original_reports_unchanged": true,
+  "production_success_claimed": false,
+  "new_execution": false,
+  "numerical_grade": null,
+  "limits": [
+    "Bounded exact-source correction audit against full232A source report; no new independent whole-proof review.",
+    "Nine files byte-identical; matching-modes differs only in two mathscr to mathcal control names.",
+    "Local mathcal L overlap with earlier drift is explicit and nonblocking; do not equate the two operators.",
+    "No successful build/PDF/visual QA/grade or new execution inferred; failed232A production remains failed.",
+    "All original mathematical scope and involved-role limits remain."
+  ]
+}

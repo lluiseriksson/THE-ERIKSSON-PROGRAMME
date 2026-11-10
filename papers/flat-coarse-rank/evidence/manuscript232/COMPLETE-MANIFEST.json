@@ -1,8 +1,9 @@
 {
   "representation": "Every exact raw file except this nonrecursive manifest",
-  "source_commit": "6be80f215d70640116f86f273975c1119b6fbdbd",
-  "whole_source_audit_manifest_sha256": "a607cf322ff6542884b63025b6e5dc91364c94ebb11854b7d66e3c8b9fbcfa47",
-  "source_audit_only_no_render_or_grade_inheritance": true,
+  "original_source_commit": "6be80f215d70640116f86f273975c1119b6fbdbd",
+  "corrected_source_commit": "f83ee8a84b3ecc27470ed8a92ea61eb627d86445",
+  "A_production": "Failed actual latex1, CLItransport0 notsuccess; originalfullarchive onD identified byhash",
+  "B_production": "Separate gate; source qualification notrender/grade",
   "files": [
     {
       "file": "author/AUTHORING-REPORT.txt",
@@ -335,14 +336,64 @@
       "sha256_raw": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7"
     },
     {
+      "file": "failed-production232A/failure.txt",
+      "bytes": 610,
+      "sha256_raw": "f40f9e8cad553d1340090523f079daaf477abc4155be86beb02bc9bf704d9467"
+    },
+    {
+      "file": "failed-production232A/latex-first.exit",
+      "bytes": 2,
+      "sha256_raw": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "file": "failed-production232A/latex-first.stderr",
+      "bytes": 0,
+      "sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "failed-production232A/latex-first.stdout",
+      "bytes": 15137,
+      "sha256_raw": "3128ea69165754dd3cdd6327e24fd6e751a0a46b5e847cf565c4da89864e82cf"
+    },
+    {
+      "file": "failed-production232A/report.json",
+      "bytes": 3353,
+      "sha256_raw": "d1585d04416625c9f9707c6beeb9cbfb6795958e60d216315f0f5631534ac66d"
+    },
+    {
+      "file": "failed-production232A/runtime232A-backend-readback.exit",
+      "bytes": 2,
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "failed-production232A/runtime232A-backend-readback.txt",
+      "bytes": 44,
+      "sha256_raw": "dec807c11992d9001acb723d969c49727402fe62c5e6cbd3899944bfdd03c140"
+    },
+    {
+      "file": "production232A-failure-verified.json",
+      "bytes": 1215,
+      "sha256_raw": "b9702f90c79cc619ad4c9f5805e8a6a8f5e19f6220dcc913439a61a1cfd63c3e"
+    },
+    {
       "file": "production232A-preregistration.json",
       "bytes": 2643,
       "sha256_raw": "cf268538a8a791da91b3804ce6abcf900e103eb74b64780e94c78b8826156f3b"
     },
     {
+      "file": "production232B-preregistration.json",
+      "bytes": 2643,
+      "sha256_raw": "422b39aec5984a195a5d274de5eabc50824bd7f1c8d0e9dcb5dbb7f1a2f23d33"
+    },
+    {
       "file": "render232A.py",
       "bytes": 6355,
       "sha256_raw": "24abe8ae106c87776b1bb0b2676c4d3862b284a8f3fe976b40664d66e22739fe"
+    },
+    {
+      "file": "render232B.py",
+      "bytes": 6355,
+      "sha256_raw": "8709fa6c640096e6b7de1c66058b5b385726b5b7e3bef951d8c8d68509cf8dd2"
     },
     {
       "file": "source-audit/capture/class-statements.tex",
@@ -415,6 +466,76 @@
       "sha256_raw": "d3940cca48edb77fdb2d9c4977fc919909c431d33d13d3d05fb424febc3b942c"
     },
     {
+      "file": "source-audit-b/capture/class-statements.tex",
+      "bytes": 5148,
+      "sha256_raw": "f8cf1ab6ff210f2c8ef61058bbdf517dcdd6f4dd072fd6c56408db28a200d3de"
+    },
+    {
+      "file": "source-audit-b/capture/coexact-classes.tex",
+      "bytes": 12509,
+      "sha256_raw": "71010b9bd1efb453248bb6278485804e590e28b72dd316b12acaa2b1d383b318"
+    },
+    {
+      "file": "source-audit-b/capture/common-rank.tex",
+      "bytes": 5213,
+      "sha256_raw": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b"
+    },
+    {
+      "file": "source-audit-b/capture/coupled-channels.tex",
+      "bytes": 6469,
+      "sha256_raw": "7f30175962ed10fd74be257c1fedb2ac4885789b630ce7172c981f7cb4814994"
+    },
+    {
+      "file": "source-audit-b/capture/matching-modes.tex",
+      "bytes": 7710,
+      "sha256_raw": "39dd10b98834df585125db6b5498fd5995734b7fe87528c50d2fa76c10f253de"
+    },
+    {
+      "file": "source-audit-b/capture/matrix-proof.tex",
+      "bytes": 7469,
+      "sha256_raw": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    {
+      "file": "source-audit-b/capture/rectangular_matrix.tex",
+      "bytes": 17049,
+      "sha256_raw": "9234a4084d6c0db7754d3a13581b80f69a844e7ddc95f1eed21945c74e6883e6"
+    },
+    {
+      "file": "source-audit-b/capture/review-context.tex",
+      "bytes": 5337,
+      "sha256_raw": "64c4203bfd082d82f0f53a9af1518b47c7e14e3448104dd2bdefe9200dddc56c"
+    },
+    {
+      "file": "source-audit-b/capture/scalar-rings.tex",
+      "bytes": 13858,
+      "sha256_raw": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0"
+    },
+    {
+      "file": "source-audit-b/capture/weak-endpoint.tex",
+      "bytes": 11284,
+      "sha256_raw": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7"
+    },
+    {
+      "file": "source-audit-b/context.json",
+      "bytes": 1335,
+      "sha256_raw": "5638f971d3669545180ba36c394be25fb67b224a75db566e844a8b941d02c51d"
+    },
+    {
+      "file": "source-audit-b/fullreport.txt",
+      "bytes": 7517,
+      "sha256_raw": "52674182a090818426178b40be9b0001213f3fefbd66eb9bd29e55a4cdff1846"
+    },
+    {
+      "file": "source-audit-b/hashes.json",
+      "bytes": 7548,
+      "sha256_raw": "06226943a558dcfa2914d0f807a1e7146683e2ad0704b3467a5d74688cfaee34"
+    },
+    {
+      "file": "source-audit-b/verdict.json",
+      "bytes": 1561,
+      "sha256_raw": "3bd9e933423be987f5d6413981b3f45b902f8627abce95d35a17b0faccf52d49"
+    },
+    {
       "file": "source232-prepared.json",
       "bytes": 3864,
       "sha256_raw": "84ae44c68638d236c8ed029c47d133e03ad337f3d5b8b998c2373a8068f737ba"
@@ -423,6 +544,16 @@
       "file": "source232-verified.json",
       "bytes": 5408,
       "sha256_raw": "83c4baf815f8f9b1277ee13e3f19be206c37dbcace224821e7c424c190ad019d"
+    },
+    {
+      "file": "source232B-prepared.json",
+      "bytes": 5156,
+      "sha256_raw": "2d88ddb23fdd277468ee551e3f0e04bab423b2ce292b9d1cbc65af32e4e20361"
+    },
+    {
+      "file": "source232B-verified.json",
+      "bytes": 6995,
+      "sha256_raw": "65be7ef348649900f679fb3922091eaccc5914ada06b7cb069c04eb2a9e08407"
     }
   ]
 }

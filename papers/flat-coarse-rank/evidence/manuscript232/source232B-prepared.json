@@ -1,0 +1,104 @@
+{
+  "artifact": 232,
+  "prepared_at": "2026-11-10T21:27:57.129530+00:00",
+  "status": "232B_TYPOGRAPHIC_CORRECTION_EXACT_DIFFERENTIAL_AUDIT_PENDING",
+  "source_sha": "f83ee8a84b3ecc27470ed8a92ea61eb627d86445",
+  "source_files": [
+    {
+      "file": "class-statements.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/class-statements.tex",
+      "bytes": 5148,
+      "sha256": "f8cf1ab6ff210f2c8ef61058bbdf517dcdd6f4dd072fd6c56408db28a200d3de"
+    },
+    {
+      "file": "coexact-classes.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/coexact-classes.tex",
+      "bytes": 12509,
+      "sha256": "71010b9bd1efb453248bb6278485804e590e28b72dd316b12acaa2b1d383b318"
+    },
+    {
+      "file": "common-rank.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/common-rank.tex",
+      "bytes": 5213,
+      "sha256": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b"
+    },
+    {
+      "file": "coupled-channels.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/coupled-channels.tex",
+      "bytes": 6469,
+      "sha256": "7f30175962ed10fd74be257c1fedb2ac4885789b630ce7172c981f7cb4814994"
+    },
+    {
+      "file": "matching-modes.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/matching-modes.tex",
+      "bytes": 7710,
+      "sha256": "39dd10b98834df585125db6b5498fd5995734b7fe87528c50d2fa76c10f253de"
+    },
+    {
+      "file": "matrix-proof.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/matrix-proof.tex",
+      "bytes": 7469,
+      "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    {
+      "file": "rectangular_matrix.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/rectangular_matrix.tex",
+      "bytes": 17049,
+      "sha256": "9234a4084d6c0db7754d3a13581b80f69a844e7ddc95f1eed21945c74e6883e6"
+    },
+    {
+      "file": "review-context.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/review-context.tex",
+      "bytes": 5337,
+      "sha256": "64c4203bfd082d82f0f53a9af1518b47c7e14e3448104dd2bdefe9200dddc56c"
+    },
+    {
+      "file": "scalar-rings.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/scalar-rings.tex",
+      "bytes": 13858,
+      "sha256": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0"
+    },
+    {
+      "file": "weak-endpoint.tex",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision232/weak-endpoint.tex",
+      "bytes": 11284,
+      "sha256": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7"
+    }
+  ],
+  "author_manifest_sha256": "b439ea993896f0473d0e3e4d158fc6f1b271ad49fdc742efecd3b82e112fd460",
+  "new_mathematical_question": false,
+  "source_audit": "New exactB differential qualification pending; no PDF assessment exists.",
+  "PDF": null,
+  "render": null,
+  "first_exact_PDF_assessment": null,
+  "authorization": "Existing continuous user instruction covers preparation/review/publication through actual native per-artifact grants; no routine new human reply is required. Actual gates still pending; no new native request.",
+  "originality": "Unestablished; primary-source comparison retained, classical mechanisms credited.",
+  "next_action": "Qualify exactB source then fresh ownColab232-b production, actual per-tool exits required; CLI transport0 alone never success. Preserve originalA source, full audit and failure archive.",
+  "predecessor_source_sha": "6be80f215d70640116f86f273975c1119b6fbdbd",
+  "changed_files": [
+    "matching-modes.tex"
+  ],
+  "change": "Exactly two mathscr->mathcal Laplacian font controls, no mathematical change; all nine other sources byte-identical.",
+  "original_failed_production": {
+    "verified_at": "2026-11-10T21:26:39.264896+00:00",
+    "source_sha": "6be80f215d70640116f86f273975c1119b6fbdbd",
+    "archive": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\attempt-a\\tep232A-review.zip",
+    "archive_sha256": "cb90267e04861514afd2186d1df7fbc26f265245b6998658530462a2de964242",
+    "archive_bytes": 67106,
+    "manifest_subjects_verified": 30,
+    "status": "FAILED_DOCUMENT_PRODUCTION_PRESERVED_NO_VALID_PDF",
+    "literal_cause": "Undefined control sequence mathscr in matching-modes.tex line36",
+    "actual_latex_first_exit": 1,
+    "CLI_transport_execution_exit": 0,
+    "transport_zero_not_production_success": true,
+    "valid_PDF": false,
+    "numerical_assessment": null,
+    "producer_elapsed_seconds": 125.01802560900003,
+    "child_maxrss_kib": 129372,
+    "request_utc": "2026-11-10T21:20:51Z",
+    "release_finished_utc": "2026-11-10T21:23:35Z",
+    "compute_units_billed": null,
+    "own_runtime_released_and_separate_backend_inactive": true,
+    "next_action": "Preserve source6be and all failed logs/archive; make minimal typography-only correction in new source232B, qualify exact diff then fresh own runtime production. No inherited score or extra human confirmation."
+  }
+}

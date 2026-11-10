@@ -1,0 +1,173 @@
+\section{Matching channel-separable order for the coupled family}\label{sec:matching-modes}
+The obstruction in Appendix~\ref{sec:coupled} is sharp in order for its
+precise family and row class. We construct a nonlocal, channel-separable
+map from real coexact Laplacian modes. This supplies no general-profile
+upper bound and no rectangularity claim for these new rows.
+
+Let $r_{\min}$ be the minimum actual restricted rank among finite
+channel-separable linear maps on $\mathcal U$ for which some penalty
+vanishing at zero restores $c$-coercivity for the fixed profile
+\eqref{eq:coupled-profile}. This class is nonempty: observe a complete
+basis of $\mathcal U$, whose squared observations with coefficient $c$
+control its norm since the energy is positive. Possible ranks are
+integers between zero and $\dim\mathcal U$, so the minimum rank exists.
+Define a separate finite Green-trace constant
+\begin{equation}\label{eq:green-constant}
+ \mathfrak G_D=D\,3^{D-1}/8.
+\end{equation}
+It is distinct from the scalar weighted-gap constant $G_D$ in
+\eqref{eq:constants}.
+
+\begin{theorem}[Matching order in the fixed-basis class]\label{thm:matching-modes}
+For $D\ge3$, $n\ge2$, $g=V=n^D$ and the exact profile
+\eqref{eq:coupled-profile},
+\begin{equation}\label{eq:matching-order}
+ \frac{D-1}{4(1+8D)}n^{2D-2}
+ \le r_{\min}\le (D-1)(1+4\mathfrak G_D)n^{2D-2}.
+\end{equation}
+The upper map constructed below has a finite quadratic penalty with
+$K=c+(4DH)^2/c$. Thus $r_{\min}=\Theta_D(n^{2D-2})$ for this family
+and observation class. This is not an exact leading constant, efficient
+algorithm, all-profile optimum or uniform-penalty result.
+\end{theorem}
+
+\subsection{Real modes and the exact energy decomposition}
+The scalar forward torus Laplacian
+$\mathcal L=\sum_i(D_i^+)^*D_i^+$ acts componentwise on spatial vectors.
+It is real symmetric and commutes with curl and its adjoint, hence
+preserves $\mathcal U_0$. Its eigenvalue at nonzero frequency $k$ is
+\[
+ \lambda(k)=4\sum_i\sin^2(\pi k_i/n)>0.
+\]
+There are $D-1$ coexact polarizations at every nonzero frequency and
+none at zero, by \eqref{eq:closed-decomposition}. Conjugate pairs give
+$2(D-1)$ real modes for those two frequencies, and self-conjugate
+frequencies give $D-1$ real modes. Equivalently the real symmetric
+restriction has a real counting-orthonormal eigenbasis
+$f_s$, $1\le s\le d_0=(D-1)(V-1)$, with this same full eigenvalue
+multiset. There is no further real/complex factor of two.
+The torus estimate \eqref{eq:torus-gap} and the symbols give
+\[
+ 16/n^2\le\lambda_s\le4D.
+\]
+Expand $z_\alpha=\sum_sz_{\alpha,s}f_s$ and put
+$z_s=(z_{\alpha,s})_{\alpha=1}^g$. Orthonormality gives
+\begin{equation}\label{eq:mode-energy}
+ \|z\|^2=\sum_s\|z_s\|^2,\qquad
+ Q_A(z)=\sum_s\lambda_s z_s^{\mathsf T}Bz_s.
+\end{equation}
+For the second identity,
+$\langle df_s,df_t\rangle=\langle f_s,\mathcal Lf_t\rangle
+=\lambda_t\delta_{st}$; the constant internal matrix $B$ does not
+alter that calculation. It also holds within degenerate eigenspaces.
+No independence of the individual spatial components as coexact domains
+is asserted.
+
+\subsection{Selected real coordinates and a strict kernel margin}
+For each real mode let
+\begin{equation}\label{eq:mode-selection}
+ k_s=\min\left\{g,
+ \left\lceil\max\left\{0,\frac{g(2c/\lambda_s-a)}{H-a}\right\}\right\rceil
+ \right\}.
+\end{equation}
+Observe $V^{-1/2}z_{\alpha,s}$ for $\alpha\le k_s$.
+Each row uses one internal channel and may mix sites and spatial components.
+The row representers $e_\alpha f_s$ are an orthonormal subset on
+$\mathcal U$, so the actual restricted rank is exactly
+\begin{equation}\label{eq:selected-rank}
+ r_C=\sum_sk_s.
+\end{equation}
+The rows are selected from the fixed profile/mode data before the field.
+They extend to all fields by the same inner products, but the inequality
+claimed here is on $\mathcal U$.
+
+In a kernel field, the first $k_s$ internal coordinates of mode $s$
+vanish. If $k_s=g$ nothing remains. Otherwise the remaining principal
+block of $B$ is
+\[
+ H I_{g-k_s}-\frac{H-a}{g}\,11^{\mathsf T},
+\]
+whose least eigenvalue is $a+(H-a)k_s/g$. The ceiling in
+\eqref{eq:mode-selection} implies
+$\lambda_s[a+(H-a)k_s/g]\ge2c$ whenever its positive argument applies.
+If the maximum argument is zero, $a\lambda_s\ge2c$ already.
+If the outer truncation applies there is no unobserved part of that mode.
+Thus \eqref{eq:mode-energy} proves the strict kernel bound
+\begin{equation}\label{eq:kernel-margin}
+ Q_A(x)\ge2c\|x\|^2\quad(x\in\ker(C|_{\mathcal U})).
+\end{equation}
+These are deliberately chosen whole real Laplacian modes; no commutation
+of an arbitrary observation projection with the energy was assumed.
+
+\subsection{A finite penalty on all of the actual domain}
+Let $R$ be the counting orthogonal projection onto the selected row space
+inside $\mathcal U$, and split $z=x+y$, $x=(I-R)z$, $y=Rz$.
+Then $x$ is in the kernel, $x\perp y$, and
+$\|Cz\|^2=V^{-1}\|y\|^2$ exactly.
+The positive energy operator on $\mathcal U$ has norm at most
+$M_*=4DH$, from $A\le HI$ and the full gradient norm bound $4D$.
+Dropping $Q_A(y)\ge0$, applying \eqref{eq:kernel-margin} and bounding
+the cross term gives
+\begin{align*}
+ Q_A(x+y)&\ge2c\|x\|^2-2M_*\|x\|\|y\|\\
+ &\ge c\|x\|^2-(M_*^2/c)\|y\|^2.
+\end{align*}
+The last step is Young's inequality. Hence the finite choice
+$K=c+M_*^2/c$ yields
+\[
+ V^{-1}Q_A(z)+K\|Cz\|^2\ge c\normn{z}^2.
+\]
+The margin is $2c$, not merely $c$: one unit of $c$ was spent controlling
+the cross term. No uniform or optimal penalty is inferred.
+
+\subsection{Ceiling count and the finite Green trace}
+Since $a/H=1/(16Dn^2)<1/2$, $H-a\ge H/2$.
+Whether the maximum argument is positive, zero or truncated,
+\[
+ k_s\le1+\frac{4g}{n^2\lambda_s},\qquad
+ r_C\le d_0+\frac{4g}{n^2}\sum_s\lambda_s^{-1}.
+\]
+The ceiling cost is $d_0$, rather than $gd_0$.
+Choose centered integer representatives of each frequency with
+$|k_i|\le n/2$, taking only one Nyquist representative in each even
+coordinate. The sine chord estimate gives
+$\lambda(k)\ge16|k|_2^2/n^2$.
+For $N=\lfloor n/2\rfloor$, overcount nonzero frequencies by every
+integer point on max-norm shells $\ell=1,\ldots,N$.
+Each shell has at most
+\[
+ (2\ell+1)^D-(2\ell-1)^D
+ \le2D(2\ell+1)^{D-1}
+ \le2D\,3^{D-1}\ell^{D-1}
+\]
+points. The first inequality follows by integrating $Dt^{D-1}$ over
+the interval of length two. On that shell $|k|_2\ge\ell$.
+Since $D\ge3$,
+$\sum_{\ell=1}^N\ell^{D-3}\le N^{D-2}\le n^{D-2}$,
+including $D=3$. Therefore the complete finite sum satisfies
+\begin{equation}\label{eq:finite-green}
+ \sum_{k\ne0}\lambda(k)^{-1}
+ \le\frac{n^2}{16}\,2D3^{D-1}\sum_{\ell=1}^N\ell^{D-3}
+ \le\mathfrak G_DV.
+\end{equation}
+Odd sizes and Nyquist overcounting only enlarge this upper estimate.
+Multiplying by the real coexact multiplicity gives
+$\sum_s\lambda_s^{-1}\le(D-1)\mathfrak G_DV$. Thus
+\[
+ r_C\le(D-1)(V-1)+4(D-1)\mathfrak G_DgV/n^2
+ \le(D-1)(1+4\mathfrak G_D)n^{2D-2}.
+\]
+Here $g=V=n^D$ and $V\le n^{2D-2}$. The estimate need not beat the
+trivial full dimension at small sizes; the actual truncation still
+ensures $r_C\le gd_0$.
+
+Finally Appendix~\ref{sec:coupled} applies to every allowed map and any
+penalty vanishing at zero. With $V-1\ge V/2$ and
+$1+8Dn^2\le(1+8D)n^2$, its necessary bound is at least
+$[(D-1)/(4(1+8D))]n^{2D-2}$. Combining proves
+\eqref{eq:matching-order}. The mixed map of the preceding appendix still
+has actual rank $d_0=O_D(V)$ on this same profile. Matching the separable
+order therefore strengthens the fixed-basis comparison without producing
+an all-linear, basis-free, fixed-$g$, all-profile or physical obstruction.
+The Fourier, principal-block, Young and finite-shell mechanisms used here
+are classical; no historical-priority or formal-execution claim is made.

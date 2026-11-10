@@ -1,0 +1,174 @@
+{
+  "representation": "SHA256 of exact raw bytes. Git capture binary stdout, no normalization. Report outputs UTF8 no BOM LF final newline.",
+  "source_commit": "f83ee8a84b3ecc27470ed8a92ea61eb627d86445",
+  "baseline_commit": "6be80f215d70640116f86f273975c1119b6fbdbd",
+  "comparison": [
+    {
+      "file": "class-statements.tex",
+      "old_sha256_raw": "f8cf1ab6ff210f2c8ef61058bbdf517dcdd6f4dd072fd6c56408db28a200d3de",
+      "new_sha256_raw": "f8cf1ab6ff210f2c8ef61058bbdf517dcdd6f4dd072fd6c56408db28a200d3de",
+      "bytes": 5148,
+      "byte_identical": true
+    },
+    {
+      "file": "coexact-classes.tex",
+      "old_sha256_raw": "71010b9bd1efb453248bb6278485804e590e28b72dd316b12acaa2b1d383b318",
+      "new_sha256_raw": "71010b9bd1efb453248bb6278485804e590e28b72dd316b12acaa2b1d383b318",
+      "bytes": 12509,
+      "byte_identical": true
+    },
+    {
+      "file": "common-rank.tex",
+      "old_sha256_raw": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b",
+      "new_sha256_raw": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b",
+      "bytes": 5213,
+      "byte_identical": true
+    },
+    {
+      "file": "coupled-channels.tex",
+      "old_sha256_raw": "7f30175962ed10fd74be257c1fedb2ac4885789b630ce7172c981f7cb4814994",
+      "new_sha256_raw": "7f30175962ed10fd74be257c1fedb2ac4885789b630ce7172c981f7cb4814994",
+      "bytes": 6469,
+      "byte_identical": true
+    },
+    {
+      "file": "matching-modes.tex",
+      "old_sha256_raw": "d1220e54cb019bd0722bbdaebd4c94075457f826ddc1afd911b6b03b87b043db",
+      "new_sha256_raw": "39dd10b98834df585125db6b5498fd5995734b7fe87528c50d2fa76c10f253de",
+      "bytes": 7710,
+      "byte_identical": false
+    },
+    {
+      "file": "matrix-proof.tex",
+      "old_sha256_raw": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "new_sha256_raw": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "bytes": 7469,
+      "byte_identical": true
+    },
+    {
+      "file": "rectangular_matrix.tex",
+      "old_sha256_raw": "9234a4084d6c0db7754d3a13581b80f69a844e7ddc95f1eed21945c74e6883e6",
+      "new_sha256_raw": "9234a4084d6c0db7754d3a13581b80f69a844e7ddc95f1eed21945c74e6883e6",
+      "bytes": 17049,
+      "byte_identical": true
+    },
+    {
+      "file": "review-context.tex",
+      "old_sha256_raw": "64c4203bfd082d82f0f53a9af1518b47c7e14e3448104dd2bdefe9200dddc56c",
+      "new_sha256_raw": "64c4203bfd082d82f0f53a9af1518b47c7e14e3448104dd2bdefe9200dddc56c",
+      "bytes": 5337,
+      "byte_identical": true
+    },
+    {
+      "file": "scalar-rings.tex",
+      "old_sha256_raw": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0",
+      "new_sha256_raw": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0",
+      "bytes": 13858,
+      "byte_identical": true
+    },
+    {
+      "file": "weak-endpoint.tex",
+      "old_sha256_raw": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7",
+      "new_sha256_raw": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7",
+      "bytes": 11284,
+      "byte_identical": true
+    }
+  ],
+  "original232A_reports": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit\\context.json",
+      "bytes": 1832,
+      "sha256_raw": "2c96cc2828b1215732d00798eee1413970d853e9df7b6eab1704b34c184fc3de"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit\\fullreport.txt",
+      "bytes": 18103,
+      "sha256_raw": "af3f2e77b1c95834944e1b707d88a21f045ea65b812edcc5ab16c1d09153b9e5"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit\\hashes.json",
+      "bytes": 18162,
+      "sha256_raw": "a607cf322ff6542884b63025b6e5dc91364c94ebb11854b7d66e3c8b9fbcfa47"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit\\verdict.json",
+      "bytes": 1493,
+      "sha256_raw": "d3940cca48edb77fdb2d9c4977fc919909c431d33d13d3d05fb424febc3b942c"
+    }
+  ],
+  "failure_summary": {
+    "sha256_raw": "b9702f90c79cc619ad4c9f5805e8a6a8f5e19f6220dcc913439a61a1cfd63c3e",
+    "bytes": 1215,
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\production232A-failure-verified.json"
+  },
+  "captures": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\capture\\class-statements.tex",
+      "bytes": 5148,
+      "sha256_raw": "f8cf1ab6ff210f2c8ef61058bbdf517dcdd6f4dd072fd6c56408db28a200d3de"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\capture\\coexact-classes.tex",
+      "bytes": 12509,
+      "sha256_raw": "71010b9bd1efb453248bb6278485804e590e28b72dd316b12acaa2b1d383b318"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\capture\\common-rank.tex",
+      "bytes": 5213,
+      "sha256_raw": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\capture\\coupled-channels.tex",
+      "bytes": 6469,
+      "sha256_raw": "7f30175962ed10fd74be257c1fedb2ac4885789b630ce7172c981f7cb4814994"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\capture\\matching-modes.tex",
+      "bytes": 7710,
+      "sha256_raw": "39dd10b98834df585125db6b5498fd5995734b7fe87528c50d2fa76c10f253de"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\capture\\matrix-proof.tex",
+      "bytes": 7469,
+      "sha256_raw": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\capture\\rectangular_matrix.tex",
+      "bytes": 17049,
+      "sha256_raw": "9234a4084d6c0db7754d3a13581b80f69a844e7ddc95f1eed21945c74e6883e6"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\capture\\review-context.tex",
+      "bytes": 5337,
+      "sha256_raw": "64c4203bfd082d82f0f53a9af1518b47c7e14e3448104dd2bdefe9200dddc56c"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\capture\\scalar-rings.tex",
+      "bytes": 13858,
+      "sha256_raw": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\capture\\weak-endpoint.tex",
+      "bytes": 11284,
+      "sha256_raw": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\fullreport.txt",
+      "bytes": 7517,
+      "sha256_raw": "52674182a090818426178b40be9b0001213f3fefbd66eb9bd29e55a4cdff1846"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\verdict.json",
+      "bytes": 1561,
+      "sha256_raw": "3bd9e933423be987f5d6413981b3f45b902f8627abce95d35a17b0faccf52d49"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\source-audit-b\\context.json",
+      "bytes": 1335,
+      "sha256_raw": "5638f971d3669545180ba36c394be25fb67b224a75db566e844a8b941d02c51d"
+    }
+  ],
+  "self_hash": "Excluded to avoid recursion; supplied in final response."
+}
