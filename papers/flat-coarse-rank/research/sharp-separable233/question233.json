@@ -1,0 +1,17 @@
+{
+  "unit": 233,
+  "recorded_at": "2026-11-10T20:59:02.384846+00:00",
+  "statement": "Is the necessary Omega_D(n^(2D-2)) true channel-separable restoring rank for the exact231B coupled family attained up to D-only constants?",
+  "status": "Analytical candidate derived before record; separate exact source audit in progress.",
+  "hypotheses": "D>=3,n>=2,g=V=n^D,positive constant231B coefficient family; actual forward coexact U; internally channel-separable linear rows may be nonlocal across spatial modes.",
+  "mechanism": "Real coexact Laplacian modes; observe ceil(g(2c/lambda-a)/(H-a)) channels per mode with truncation. Kernel margin2c permits explicit finite penalty. Finite Green trace bound counts rows.",
+  "falsifier": "Wrong mode multiplicity/real rank, failed internal principal-block gap, missing volume factor, insufficient strict kernel margin or divergent Green count.",
+  "abandonment": "Preserve counterexample and abandon uncorrectable mechanism or change route after3units without substantive progress.",
+  "source_sha": "a1da5307a7b91e0d57f110c624eb3f9eefc03919",
+  "source_raw_sha256": "e244cff296a5fe3b833162a0a759a3a6a1d2cde4eef469261a91653b4af699da",
+  "scientific_execution": false,
+  "grade": null,
+  "new_paper": false,
+  "hypotheses_eliminated": [],
+  "next_action": "Finish exact233 mathematical source audit; preserve full report and original231B lower theorem. Integrate protected229/230 research PRs, prepare grouped232 source without inherited grade. AIRR native publication remains blocked by publicPages timeout."
+}
