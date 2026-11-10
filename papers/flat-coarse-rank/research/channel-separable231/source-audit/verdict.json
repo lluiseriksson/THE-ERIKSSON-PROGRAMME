@@ -1,0 +1,24 @@
+{
+  "verdict": "accept_with_limits",
+  "unit": 231,
+  "source_commit": "23fbb3188defaaa7c8106f9a6cbec1e3f4cadc58",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-10_channel-separable231.txt",
+  "source_sha256_raw": "7e198215808b91d0bb7d5bf79068187014d5dcf5532a85eb0f6496b087439684",
+  "blocking_findings": [],
+  "material_scope_findings": [],
+  "editorial_findings": [],
+  "necessary_rank": "g(D-1)(V-1)/[2(1+8D n^4)]",
+  "full_budget": "D^2 V[1+(g-1)min(1,alpha_D n^(-2D))]",
+  "budget_upper": "D^2 V+D^2 alpha_D",
+  "mixed_escape_rank": "d_0=(D-1)(V-1)",
+  "limits": [
+    "Fixed specified internal basis and direct-sum channel-separable linear observations are essential.",
+    "D>=5,n>=2,g=V=n^D; no D4 or fixed-g obstruction follows.",
+    "Necessary super-additive rank bound only; not a sharp rank or matching hF result.",
+    "Same profile admits cross-internal mixed observation of rank d_0 with penalty c.",
+    "No scientific execution, formal certificate, numerical grade, PDF assessment, independent reproduction or priority finding."
+  ],
+  "new_execution": false,
+  "numerical_grade": null,
+  "originals_unchanged": true
+}

@@ -1,0 +1,48 @@
+{
+  "representation": "SHA256 of raw Git blob bytes captured from binary git-show stdout, no encoding/newline normalization. New reports UTF8 without BOM, LF final newline.",
+  "git_referents": {
+    "candidate231": "23fbb3188defaaa7c8106f9a6cbec1e3f4cadc58",
+    "coexact229": "1af074718e5d122c5ef02d287461750833b44c77",
+    "matrix226C": "2d3237501569f6afac8a44d524a5d6db59f63c39"
+  },
+  "captures": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-231\\source-audit\\capture\\226c-matrix-proof.tex",
+      "bytes": 7469,
+      "sha256_raw": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-231\\source-audit\\capture\\226c-rectangular_matrix.tex",
+      "bytes": 15141,
+      "sha256_raw": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-231\\source-audit\\capture\\channel-separable231-git.txt",
+      "bytes": 7455,
+      "sha256_raw": "7e198215808b91d0bb7d5bf79068187014d5dcf5532a85eb0f6496b087439684"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-231\\source-audit\\capture\\sharp-coexact229-git.txt",
+      "bytes": 8529,
+      "sha256_raw": "8b8457bdacc242150492890e6b08503356a6c9328ce787501239528eb303da70"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-231\\source-audit\\fullreport.txt",
+      "bytes": 12524,
+      "sha256_raw": "26d1b7d0a5e21f6f675e85d531751cf122d925ef2188dd36d986bc12cd40258a"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-231\\source-audit\\verdict.json",
+      "bytes": 1150,
+      "sha256_raw": "c855cd2292be4c0fd21c95365671c26b47d5159eec6856e0803fef5710e51b7b"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-231\\source-audit\\context.json",
+      "bytes": 1419,
+      "sha256_raw": "a50663aec203bad66db873d031b52660c9fb23c2f1255f7c71c3f1dad47d9100"
+    }
+  ],
+  "self_hash": "Excluded to avoid recursion; supplied in final response."
+}

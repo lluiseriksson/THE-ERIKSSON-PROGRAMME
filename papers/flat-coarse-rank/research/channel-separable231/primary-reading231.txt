@@ -1,0 +1,8 @@
+Primary-source novelty boundary, 2026-11-10. Not an exhaustive search or originality certificate.
+
+Srinivasa, Davenport and Romberg, Sample complexity bounds for localized sketching, AISTATS2020, PMLR108:3275-3284.
+Publisher record: https://proceedings.mlr.press/v108/srinivasa20a.html
+Author paper: https://proceedings.mlr.press/v108/srinivasa20a/srinivasa20a.pdf
+Read abstract, section2 coherence definitions/equation6, and Theorem1. Their setting uses block-diagonal random sketch matrices for approximate multiplication and ridge regression. Sample allocation depends on block coherence. This establishes that block-separable versus mixed sketches and block orientation are established subjects. The present candidate concerns deterministic coercivity restoration on the actual finite coexact domain, arbitrary zero-at-zero penalties, and the full capped coefficient budget; the statements read do not directly establish that candidate. That distinction is an inference, not predecessor absence. Classical trace averaging is not claimed novel. Further literature comparison is necessary before any originality claim or standalone publication.
+
+Searches included channel-separable/coexact gradient rank, distributed block-diagonal sketching lower bounds, and coordinate-sampling coherence. Nonprimary search-result summaries were not used as evidence. Existing related rank/observation results should be grouped; no separate small paper or numerical score is created here.

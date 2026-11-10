@@ -1,0 +1,9 @@
+UNREVIEWED strengthening candidate discovered after freezing231A and while its source audit was running. Do not amend the audited source or attribute this to its audit.
+
+The n^4 choice of H in231A is needlessly large. With D>=3, g=V=n^D and H=c n^2, the exact full budget becomes
+F=D^2 V[1+(V-1)min(1,alpha_D n^-D)] <=D^2(1+alpha_D)V.
+All weak multiplicities and trace steps remain unchanged; a=c/(16D).
+The same proof would force r_C>=g(D-1)(V-1)/[2(1+8D n^2)], of order n^(2D-2), so its ratio to h+F diverges as n^(D-2) for EVERY D>=3, including D=4 as a finite abstract statement. The mixed escape remains valid because H lambda_1>=16c.
+
+The alpha_D defined in226 requires D>2, so this does not claim D=2. Still chosen-basis internal-channel-separable observations only, no physical mass gap, arbitrary-map obstruction, priority, execution or grade.
+After the frozen231A audit returns, prepare explicit successor231B and obtain its separate exact source audit; do not silently inherit231A acceptance. Retain231A and its complete report.
