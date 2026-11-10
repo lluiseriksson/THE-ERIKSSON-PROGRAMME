@@ -1,0 +1,147 @@
+UNREVIEWED ANALYTICAL CANDIDATE225 -- 2026-11-10
+One new bounded question after weak-endpoint224/logarithmic-order source audit.
+Do not modify the assessed223C PDF, reports, grades or native receipt.
+
+QUESTION AND PREREGISTRATION
+Can the actual capped local eigenchannel budget for arbitrary symmetric
+matrix gradient coefficients control a coefficient-only partition into
+integer rectangles, with actual normalized component means and some finite
+quadratic penalty? No assumed geometric/local-gap/extension certificate.
+Mechanism: positive spectral replacement, scalar minimum-eigenvalue
+construction222, then isolate only endpoints of selected bad starts by
+finite rectangle refinement. Falsifier: uncharged cross-channel energy,
+wrong endpoint orientation, refinement count/normalization loss, or an
+actual bounded-budget counterexample to every such partition/finite penalty.
+Abandon after3 unsuccessful substantive units on this exact mechanism;
+preserve rejections. No hypothesis is removed before its proof survives audit.
+
+FINITE ACTUAL OBJECTS
+D>=3,n>=1,h>=1,c>0; X=(Z/nZ)^D, V=n^D and r=Dh.
+Use the actual common counting inner product, u:X->R^h, and forward starts
+ du(x)=(u(x+e_i)-u(x))_(i=1..D) in R^r.
+A(x) is any finite real symmetric r by r matrix; matrices at different
+sites need not commute. Set Q_A(u)=sum_x du(x)^T A(x)du(x).
+Norm and energy may both be divided byV. No weighted curl identity or
+interacting/covariant dictionary is assumed or proved.
+
+Write P=D/2 and the classical finite spectral constant
+ alpha_D=(D/2)(D/(D-2))^(D-1)(3/4)^D >0.
+Let nu_0 count all nonpositive local eigenvalues with multiplicity, and
+ F_c(A)=nu_0+sum_(x,j:lambda_j(x)>0) min{1,alpha_D c^P lambda_j(x)^(-P)}.
+These are actual local coefficients, not eigenvalues of the global operator.
+All eigenvalues are finite; F is finite and nonnegative. Define
+ sigma=alpha_D^(1/P)c,
+ S_x=the local spectral subspace of A(x) for eigenvalues<=sigma,
+ N=sum_x dim(S_x), I={x:dim(S_x)>0}.
+Then exactly
+ F=N+alpha_D c^P sum_(unselected channels) lambda^(-P).
+There is no assumption on channel orientation, sign depth or shared eigenbasis.
+
+PROPOSED RECTANGULAR THEOREM
+Let b=2^D,J=2D,C_ext=1+J[2J(1+12J)+1],
+ G_D=2^(2D+10)D^2 C_ext^2,
+ B_D=(2b+3)b G_D^P.
+There exists a coefficient-only partition into nonempty integer rectangles B
+whose h-component observation rows are
+ C_B u=V^(-1/2)|B|^(-1/2) sum_(x inB)u(x).
+The actual output dimension h times the number of rectangles is bounded by
+ 2Dh [1+B_D+max{B_D/alpha_D,D+1} F_c(A)].
+For a finite profile-dependent K, simultaneously for every u,
+ V^(-1)Q_A(u)+K sum_B ||C_Bu||^2 >= c V^(-1)sum_x||u(x)||^2.
+K need not equalc for signed forms and need not be uniform in negative depth.
+The coefficient-selected partition and K do not depend onu. This is a
+finite constructive upper bound, not an optimal constant/rank/algorithm claim.
+
+1. ACTUAL POSITIVE LOCAL REPLACEMENT
+Set T=sigma+c(1+N)>sigma. Replace each selected local eigenvalue byT,
+leaving every unselected eigenvalue and local eigenspace unchanged; call
+the actual resulting positive definite matrix A_T(x).
+This is defined by the spectral projector of the original finite matrix;
+degenerate eigenvalues at the cutoff are all selected, with no basis choice.
+For N=0 no coefficient is changed. Set a_T(x)=lambda_min(A_T(x))>0.
+The actual quadratic form satisfies
+ Q_(A_T)(u)>=sum_x a_T(x) sum_i||u(x+e_i)-u(x)||^2.
+This is pointwise matrix positivity, not a substituted weighted curl form.
+Also lambda_min(A_T)^(-P)<=tr(A_T^(-P)), so
+ c^P sum_x a_T(x)^(-P)
+ <=c^P sum_(unselected)lambda^(-P)+N(c/T)^P
+ <=(F-N)/alpha_D+1,
+since P>=1 and N/(1+N)^P<=1. For N=0 the last+1 is merely harmless.
+
+2. DERIVED SCALAR PARTITION AS THE EXISTING ANALYTIC INPUT
+The full arbitrary-positive-scalar construction222, in frozen source223C
+Theorem41.1 (thm:balanced223), uses t=(cG_D)^(-P)/b and gives a spatial
+rectangle count at most
+ R_0<=2D[1+(2b+3)b(cG_D)^P sum_x a_T(x)^(-P)].
+It is valid without the earlier a>=1/exactmean/envelope restrictions.
+Its h component extension gives, on normalized counting units,
+ V^(-1)Q_(A_T)(u)+c||C_0u||^2>=c||u||_(normalized)^2,
+because the actual matrix energy dominates the scalar minimum energy.
+Thus
+ R_0<=2D[1+B_D(1+(F-N)/alpha_D)].
+The construction depends only on a_T, hence only on the actual A profile.
+This invokes an existing derived BV/ring theorem, not a new assumed certificate.
+
+3. POINT ISOLATION REFINEMENT AND ITS EXACT COUNT
+Let Z=I union union_(i=1..D)(I+e_i), with periodic addition for endpoints.
+Then |Z|<=(D+1)|I|<=(D+1)N.
+Refine the scalar partition so that every z inZ is a singleton rectangle.
+For each point z not already a singleton, its current rectangle R minus{z}
+is a disjoint union of at most2D integer rectangles: assign a point to its
+first coordinate different fromz, then to the lower or upper side. Empty
+pieces are omitted. The singleton plus those pieces replaceR, increasing
+the spatial rectangle count by at most2D. Earlier isolated singletons stay
+unchanged since partition members are disjoint. This works in a fixed
+coordinate chart0,...,n-1 even when an original forward endpoint wraps.
+After at most|Z| steps,
+ R<=R_0+2D|Z|<=R_0+2D(D+1)N.
+Normalized Cauchy on every refined parent rectangle gives
+ ||C_0u||^2<=||C_refu||^2, with the same Euclidean h component norm.
+For the isolated points, V^(-1)sum_(z inZ)||u(z)||^2<=||C_refu||^2.
+No measurement of gradients or nonrectangular set is left in the output.
+
+4. CHARGE EVERY SIGNED MATRIX CORRECTION TO THE ACTUAL ISOLATED POINTS
+If N=0, set L=0. Otherwise let
+ L=max_(selected local eigenvalues)(T-lambda), finite and positive.
+The actual local difference0<=A_T(x)-A(x)<=L Id is supported at x inI.
+For all u, retaining each original forward start and every internal/directional
+cross-channel contribution through this operator inequality,
+ 0<=Q_(A_T)(u)-Q_A(u)
+ <=L sum_(x inI)||du(x)||^2
+ <=2L sum_(x inI)[D||u(x)||^2+sum_i||u(x+e_i)||^2]
+ <=4D L sum_(z inZ)||u(z)||^2.
+Each site has at mostD incoming starts in the latter sum and its own
+coefficient is at mostD. This includes parallel period-two edges. At n=1
+all derivatives vanish, so the same upper bound is harmless.
+Dividing byV and applying the isolated singleton observation inequality yields
+ V^(-1)(Q_(A_T)-Q_A)(u)<=4DL||C_refu||^2.
+Combining with step2 and monotonicity under refinement proves the claimed
+inequality with the explicit finite K=c+4DL. It is a genuine uniform-in-u
+quadratic penalty, rather than a profile-independent assertion aboutc alone.
+
+5. COMPLETE COUNT
+The count from steps2-3 is
+ hR<=2Dh[1+B_D+B_D(F-N)/alpha_D+(D+1)N]
+ <=2Dh[1+B_D+max{B_D/alpha_D,D+1}F],
+because0<=N<=F. This proves the stated dimension bound. The elementary
+full singleton partition also has hV outputs and works with a finite
+penalty for any finite symmetric form; one may choose the better partition.
+No claim of the sharper spectral coefficient1 or exactlyh+F outputs is made.
+
+SCOPE, LIMITS, AND REQUIRED CHECKS
+If correct, this would close the bounded finite matrix rectangular question
+for SOME finite quadratic penalty and the capped budget up to explicit
+dimension constants. It would not prove K=c for signed forms, sharp constants,
+efficient algorithms, physical coefficient producers, continuum results,
+or a novelty/priority claim. It is stronger than a positive trace-moment
+corollary, but its mechanisms (spectral replacement, scalar domination,
+singleton refinement and quadratic point control) are classical.
+The frozen223C current-open wording stays historically unchanged; any later
+manuscript must disclose the new source/result and receive its own assessment.
+PR29=20/41,TermSource0 unchanged. No numerical grade/PDF/publication here.
+
+Before promotion: role-separated source audit of the actual222/223C scalar
+statement and every count/normalization/positive-start/rotated-channel step;
+selected owned-Colab normal/-O finite rational matrix/partition diagnostics
+with actual rotated indefinite channels, wrap starts and refinement mutations.
+No local scientific execution or all-size formal verification is claimed.

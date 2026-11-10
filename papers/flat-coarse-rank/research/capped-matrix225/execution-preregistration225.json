@@ -1,0 +1,11 @@
+{
+  "input_pins": {
+    "capped_matrix_rectangles_diagnostic225.py": "c53c38691d00a20b5168abc7cc4483e07b1c95444f99229fa866714d9f97c474",
+    "capped-matrix-rectangles225-draft.txt": "a9c4bcbc3b8764b2e2cf84b7906ae5fe9ed3fa96c5f5ae22c68eb665a0f7d448"
+  },
+  "cases": "7finiteD4 rational matrix families; n1,2,3/h1,2; rotated direction/internal channels, exact refinement cover/count;4actual matrix/field/wrap/normalization mutations",
+  "source_audit_pending": false,
+  "interpretation": "No all-size/formal/independent verification; failures retained; proof not promoted before separate source audit",
+  "runtime": "Own isolated Colab225A CPU/highmemory; prepare disconnected/release at end",
+  "local_scientific_execution": false
+}

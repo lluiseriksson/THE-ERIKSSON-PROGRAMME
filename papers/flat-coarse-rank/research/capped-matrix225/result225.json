@@ -1,0 +1,97 @@
+{
+  "unit": 225,
+  "checked_at": "2026-11-10T17:58:13.595283+00:00",
+  "status": "ANALYTICAL_CAPPED_MATRIX_RECTANGULAR_THEOREM_SOURCE_AUDITED_SELECTED_FINITE_DIAGNOSTICS_VERIFIED",
+  "objective": "Derive actual coefficient-only normalized rectangular means for arbitrary finite symmetric matrix gradient coefficients under the capped local eigenchannel budget, allowing some finite profile-dependent quadratic penalty",
+  "source_sha": "d4d658623ab8602f6ddba73c93e3a012817fa486",
+  "draft_sha256": "a9c4bcbc3b8764b2e2cf84b7906ae5fe9ed3fa96c5f5ae22c68eb665a0f7d448",
+  "source_review_sha256": "7f66e9160d7ddd7721509e8a63aa3857f4f1d2ebe89239ad18437e523d148333",
+  "source_review": {
+    "unit": 225,
+    "verdict": "accept_with_limits",
+    "draft_sha256_raw_bytes": "a9c4bcbc3b8764b2e2cf84b7906ae5fe9ed3fa96c5f5ae22c68eb665a0f7d448",
+    "load_bearing_objections": [],
+    "analytic_input": {
+      "commit": "ddd2cf605c1715a03d2e87991e920c0ec760e527",
+      "path": "papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex",
+      "label": "thm:balanced223",
+      "raw_git_blob_sha256": "6877841cde546f8920c39b98a5dfef8af385b1a2d5a4842f95a9dd36985b3dc2"
+    },
+    "checks": {
+      "spectral_cap_equality": "accepted including equality at sigma and all nonpositive channels",
+      "positive_replacement_and_scalar_trace": "accepted",
+      "scalar_theorem_application_and_constants": "accepted",
+      "pure_rectangle_refinement": "accepted",
+      "normalized_Cauchy_scaling": "accepted",
+      "all_direction_internal_mixing": "accepted via operator inequality",
+      "positive_start_and_periodic_wrap_charge": "accepted including n=1 and n=2",
+      "uniform_in_u_penalty": "K=c+4DL finite for each profile",
+      "count_and_output_rank": "accepted; hR on full field space"
+    },
+    "limits": [
+      "Existing scalar theorem is an analytic input, not freshly recertified in full.",
+      "K may depend without uniform bound on negative spectral depth; K=c is not claimed for signed forms.",
+      "Finite actual gradient-stack forms only; no curl, physical, covariant or continuum transfer.",
+      "No optimal constants/rank, novelty or priority established.",
+      "No numerical diagnostics, grade, Lean or formal certification."
+    ],
+    "required_diagnostics": "Unperformed",
+    "source_edits": false,
+    "prior224_reports_untouched": true,
+    "numerical_grade": null,
+    "new_paper": false,
+    "report": "source-review225.txt"
+  },
+  "archive_sha256": "37b2bf66276aa38898cf1fd5f8bc122a6f905d39b8665256534a256274c6f048",
+  "archive_bytes": 10299,
+  "manifest_subjects_verified": 9,
+  "runtime": {
+    "opened_requested": "2026-11-10T17:54:56Z",
+    "release_finished": "2026-11-10T17:55:35Z",
+    "own_runtime": "tep225-a-own-cpu",
+    "backend_server_inactive": true,
+    "scientific_seconds": 2.261464344000018,
+    "child_maxrss_kib": 104952,
+    "compute_units_billed": null,
+    "actual_exits": {
+      "normal": 0,
+      "optimized": 0
+    },
+    "normal_optimized_identical": true
+  },
+  "finite_checks": {
+    "matrix_families": 7,
+    "actual_fields_checked": 131,
+    "negative_controls": {
+      "bare_mean_normalization_mutation_rejected": true,
+      "forward_endpoint_omission_rejected": true,
+      "full_matrix_offdiagonal_omission_rejected": true,
+      "periodic_endpoint_omission_rejected": true
+    },
+    "scope": "Seven finite rational original-start matrix families; actual rotated direction/internal channels and wraps. Uses one coarse root mean only in selected small tori where its positive gap is known. Not all-size222construction replay, machine proof, independent reproduction, novelty finding or physical theorem."
+  },
+  "result": "For actual finite forward stack-gradient Q_A, arbitrary finite symmetric onsite matrices admit a coefficient-only integer rectangle partition with output dimension<=2Dh[1+B_D+max(B_D/alpha_D,D+1)F_c(A)] and actual normalized means. A derived finite K=c+4DL restores c coercivity uniformly in all fields.",
+  "mechanism": "Positive local spectral replacement, proved scalar222lambda_min construction, exact singleton endpoint rectangle refinement, normalized Cauchy, full rotated signed correction charged to actual original-start endpoints.",
+  "hypotheses_eliminated": [
+    {
+      "removed": "Common positive scalar coefficient restriction in finite normalized-rectangle sufficiency",
+      "replacement": "Actual arbitrary finite symmetric onsite Dh-by-Dh matrix coefficients with capped eigenchannel budget; explicit derived partition and finite profile-dependent K",
+      "proof": "All construction/count/energy estimates derived in exact225source; existing full scalar theorem is a proved analytic input, not a new assumed local-gap certificate.",
+      "formal": false,
+      "physical": false
+    }
+  ],
+  "refutations": [],
+  "limits": [
+    "Existing scalar222construction remains analytic input; no new formal/all-size executable proof.",
+    "K may depend on negative depth and coefficient profile; no K=c claim for signed forms.",
+    "Explicit dimension constants are conservative; no sharp rank, complexity or per-profile optimality.",
+    "No new general matrix spectral principle or established historical priority.",
+    "Only finite component-gradient stack; no weighted-curl/covariant/interacting/continuum or physical massgap theorem."
+  ],
+  "PR29": "20/41,TermSource0 unchanged",
+  "new_PDF": false,
+  "new_grade": null,
+  "new_publication": false,
+  "next_action": "Preserve complete raw source/audit/finite evidence in small PR with exact-head checks; consolidate224endpoint and225matrix constructions in a genuine new manuscript version, without editing graded223C or inheriting its score."
+}

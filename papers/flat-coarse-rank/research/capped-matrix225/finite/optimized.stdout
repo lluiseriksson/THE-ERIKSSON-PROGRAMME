@@ -1,0 +1,108 @@
+{
+  "D": 4,
+  "P": 2,
+  "alpha": "81/16",
+  "cases": [
+    {
+      "F": "4",
+      "N": 4,
+      "bare_mean_normalization_mutation_rejected": false,
+      "fields_checked": 17,
+      "forward_endpoint_omission_rejected": false,
+      "full_matrix_offdiagonal_omission_rejected": false,
+      "h": 1,
+      "kind": "all",
+      "n": 1,
+      "periodic_endpoint_omission_rejected": false,
+      "rectangles": 1
+    },
+    {
+      "F": "20622501/8179600",
+      "N": 0,
+      "bare_mean_normalization_mutation_rejected": true,
+      "fields_checked": 17,
+      "forward_endpoint_omission_rejected": false,
+      "full_matrix_offdiagonal_omission_rejected": false,
+      "h": 1,
+      "kind": "none",
+      "n": 2,
+      "periodic_endpoint_omission_rejected": false,
+      "rectangles": 1
+    },
+    {
+      "F": "3583164876349/463325262400",
+      "N": 4,
+      "bare_mean_normalization_mutation_rejected": true,
+      "fields_checked": 21,
+      "forward_endpoint_omission_rejected": true,
+      "full_matrix_offdiagonal_omission_rejected": true,
+      "h": 2,
+      "kind": "one",
+      "n": 2,
+      "periodic_endpoint_omission_rejected": false,
+      "rectangles": 11
+    },
+    {
+      "F": "3583164876349/463325262400",
+      "N": 4,
+      "bare_mean_normalization_mutation_rejected": true,
+      "fields_checked": 21,
+      "forward_endpoint_omission_rejected": true,
+      "full_matrix_offdiagonal_omission_rejected": true,
+      "h": 2,
+      "kind": "wrap",
+      "n": 2,
+      "periodic_endpoint_omission_rejected": true,
+      "rectangles": 11
+    },
+    {
+      "F": "27166181/1635920",
+      "N": 4,
+      "bare_mean_normalization_mutation_rejected": true,
+      "fields_checked": 17,
+      "forward_endpoint_omission_rejected": true,
+      "full_matrix_offdiagonal_omission_rejected": true,
+      "h": 1,
+      "kind": "one",
+      "n": 3,
+      "periodic_endpoint_omission_rejected": false,
+      "rectangles": 15
+    },
+    {
+      "F": "698069437424041/29652816793600",
+      "N": 4,
+      "bare_mean_normalization_mutation_rejected": true,
+      "fields_checked": 21,
+      "forward_endpoint_omission_rejected": true,
+      "full_matrix_offdiagonal_omission_rejected": true,
+      "h": 2,
+      "kind": "wrap",
+      "n": 3,
+      "periodic_endpoint_omission_rejected": true,
+      "rectangles": 15
+    },
+    {
+      "F": "64",
+      "N": 64,
+      "bare_mean_normalization_mutation_rejected": false,
+      "fields_checked": 17,
+      "forward_endpoint_omission_rejected": false,
+      "full_matrix_offdiagonal_omission_rejected": true,
+      "h": 1,
+      "kind": "all",
+      "n": 2,
+      "periodic_endpoint_omission_rejected": false,
+      "rectangles": 16
+    }
+  ],
+  "negative_controls": {
+    "bare_mean_normalization_mutation_rejected": true,
+    "forward_endpoint_omission_rejected": true,
+    "full_matrix_offdiagonal_omission_rejected": true,
+    "periodic_endpoint_omission_rejected": true
+  },
+  "negative_controls_rejected": 4,
+  "scope": "Seven finite rational original-start matrix families; actual rotated direction/internal channels and wraps. Uses one coarse root mean only in selected small tori where its positive gap is known. Not all-size222construction replay, machine proof, independent reproduction, novelty finding or physical theorem.",
+  "sigma": "9/4",
+  "status": "SELECTED_EXACT_MATRIX_REFINEMENT_DIAGNOSTICS_CHECKED"
+}
