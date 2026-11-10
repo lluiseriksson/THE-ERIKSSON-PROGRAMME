@@ -1,18 +1,11 @@
 {
-  "artifact": "226B",
-  "kind": "Static source structure only; not execution or an audit",
+  "artifact": "226C",
+  "kind": "Static text structure only; no mathematical audit or TeX execution",
   "tex_files": 6,
   "labels": 60,
   "references": 63,
   "unresolved": [],
   "duplicate_labels": [],
-  "input_files": [
-    "matrix-proof.tex",
-    "common-rank.tex",
-    "weak-endpoint.tex",
-    "review-context.tex",
-    "scalar-rings.tex"
-  ],
   "environments": [
     {
       "file": "common-rank.tex",

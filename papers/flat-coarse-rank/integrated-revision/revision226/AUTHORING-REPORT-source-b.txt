@@ -1,0 +1,29 @@
+MANUSCRIPT226B AUTHORING REPORT — source-b
+Role: FABRICATOR only. Preparation date: 2026-11-10.
+
+This bounded revision incorporates the related 227 common-partition rank-dependence result in the same manuscript, plus two requested editorial repairs. Source-a D snapshots, manifest and original report are unchanged. Its historical authoring report is additionally retained here as AUTHORING-REPORT-source-a.txt. No PDF marker was rerun.
+
+SOURCE FILES
+Root rectangular_matrix.tex; inputs matrix-proof.tex, common-rank.tex, weak-endpoint.tex, review-context.tex, scalar-rings.tex. SOURCE-INPUTS.json adds the exact 227 draft and full audit/context hashes to prior 224/225/scalar identities. SOURCE-A-TO-B-CHANGES.json is the requested exact file-hash/change map. SOURCE-MANIFEST.json identifies the complete source-b packet except itself by raw-byte SHA256.
+
+BOUNDED CHANGES
+Root abstract now explicitly says O_D(h(1+F_c(A))) and identifies necessary worst-case product order for common partitions retaining all component means. Near-front Theorem thm:common-rank states the measurement class, general-field scope, exact weak-channel count, budget bounds, genuine rank lower bound, h=m contradiction and matching product order. New common-rank.tex contains the complete proof using a0=min(c/(8D),sigma/2), H=sigma*r*n^D, exactly2Dm direction-labelled weak channels, the full bounded strong tail, complete incoming/outgoing delta-field energy, restriction rank<=R, actual full-space rank hR, and h=m divergent ratio. No external additive spectral theorem is stated or used, and no coexact restriction is asserted for 227. Component-dependent, channel-adapted and postprocessed measurement classes are explicitly outside this lower bound. There is no priority/general-principle/physical/formal claim.
+Root eq:weak-def now has aligned rows. Model assessments and review context now explicitly discloses Codex/OpenAI GPT-6 drafting assistance, unknown exact served backend/effort, and separation from involved AI source-audit roles and the named author Lluis Eriksson. The exact manuscript remains numerically unassessed at preparation, with no inherited 223 score.227 evidence is described only as a qualified source audit; no227 diagnostics claimed.
+
+PRESERVED PROOFS
+matrix-proof.tex, weak-endpoint.tex and scalar-rings.tex are byte-identical to source-a. No 225/224/scalar mathematical statement, constant or proof was altered. Existing source-a report and D snapshots were read only, never changed. All prior original audits/PDFs remain untouched.
+
+AUTHOR DEPENDENCY/STATIC CHECK
+Matrix upper proof still depends only on the complete scalar appendix and its exact normalization;227 lower depends only on the explicit positive diagonal family and elementary rank-nullity, with Theorem matrix used afterward for the worst-case upper/lower order comparison.224 endpoint upper/lower dependencies remain unchanged. STRUCTURAL-CHECK.json records 6 TeX files, 60 unique labels, 63 ref/eqref uses, no unresolved/duplicate references, five inputs, balanced begin/end counts per file and no old Section 27/ap:eq:rank/proof-omitted remnant. These are static text checks and an author's dependency description, not a separate mathematical audit.
+
+REMAINING LIMITS
+No compilation, rendering, scientific diagnostic, Lean/build execution or numerical grading was performed. Page count and visual equation/URL layout remain unmeasured. The different 226B source auditor and parent-owned Colab compilation/render QA remain required. No specific mathematical defect identified by this author; no source-audit verdict asserted. No Git-tracked file/branch/commit/status, credential, automation, other chat or frozen prior evidence was edited; no disposable clone was created.
+
+EXACT TEX HASHES
+SHA256 of exact raw file bytes, no normalization:
+350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b  common-rank.tex
+f4c8a52ebd4632d2e8c2e202444a2e057e8fdd04a450b1fa84e6ef3ef3cf809b  matrix-proof.tex
+c014c3f4e8946500a03e2c403317df10128e5c3d9c1eaf02e46f847e04814c08  rectangular_matrix.tex
+4652b46cfc9e3cbf90de3db0fd7232508ec03866871fcb7fce251b551e65ad0d  review-context.tex
+ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0  scalar-rings.tex
+6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7  weak-endpoint.tex

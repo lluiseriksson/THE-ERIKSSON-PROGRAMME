@@ -144,7 +144,9 @@ number is compatible with arbitrarily negative selected eigenvalues, since
 the penalty absorbs the actual finite correction. When $N=0$, the correction
 vanishes and $K=c$. For a positive scalar profile the sharper direct scalar
 construction also has $K=c$ without selecting or replacing any channels.
-For completeness, if $A(x)\ge-M\Id$ for all $x$, then
+For completeness, choose
+$M=\max\{0,\max_x[-\lambda_{\min}(A(x))]\}$, so $M\ge0$
+and $A(x)\ge-M\Id$ for all $x$. Then
 $Q_A(u)\ge-4DM\sum_x\|u(x)\|^2$, because
 $\sum_x\|du(x)\|^2\le4D\sum_x\|u(x)\|^2$.
 For the singleton partition $\|C_{\mathcal R}u\|^2=\normn{u}^2$,

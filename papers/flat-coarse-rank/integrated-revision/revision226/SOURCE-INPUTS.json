@@ -1,5 +1,5 @@
 {
-  "manuscript": "226B",
+  "manuscript": "226C",
   "role": "FABRICATOR",
   "byte_regime": "Exact raw bytes as read; SHA-256; no normalization",
   "scalar_frozen_commit": "ddd2cf605c1715a03d2e87991e920c0ec760e527",
@@ -120,6 +120,34 @@
       "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-227\\source-audit\\source-review227.txt",
       "bytes": 8752,
       "sha256_raw_file": "b7e13c5147f073670ab9140cb8c4e71574cb984ba66823e4c06bf18f4b089f5d"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-226\\source-audit-b\\audit226B-source.json",
+      "bytes": 2433,
+      "sha256_raw_file": "1a332b8b990a5b13e6fbeda910848e123bf7a15ba484686a3586cb84fdf6e4ce"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-226\\source-audit-b\\capture-manifest226B.json",
+      "bytes": 6421,
+      "sha256_raw_file": "c1c377af18f407cab43bf83d620b19a14261f86cff5d9fa54a355701c0b891d0"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-226\\source-audit-b\\context226B-source.json",
+      "bytes": 2035,
+      "sha256_raw_file": "01b92d2cc01cb625b80a11d13002b062108d916b32a467179936cf4576d2a686"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-226\\source-audit-b\\report226B-source.txt",
+      "bytes": 17164,
+      "sha256_raw_file": "596ec5f5ab04f6d0d49c44457b2d19887062e560277eee0476cc1766c960e1f8"
     }
-  ]
+  ],
+  "prior_complete_source_audit": {
+    "artifact": "226B",
+    "commit": "2e97589506d593fe29a72a48bfd55a1a113df9d1",
+    "verdict": "reject",
+    "material_finding": "M1 missing nonnegative M in optional singleton auxiliary bound",
+    "editorial_finding": "E1 blanket historical report identity too broad",
+    "current226C": "Author correction only; fresh whole-source audit pending; exact numerical assessment absent"
+  }
 }

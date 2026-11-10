@@ -1,5 +1,5 @@
 {
-  "artifact": "manuscript226-source-b",
+  "artifact": "manuscript226-source-c",
   "byte_regime": "SHA-256 exact raw bytes; no normalization",
   "files": [
     {
@@ -8,9 +8,14 @@
       "sha256_raw_file": "8cd5c057ec6b7129100294302beab0312d9eec6ae124e4026eb00eacb9caaf0f"
     },
     {
-      "file": "AUTHORING-REPORT.txt",
+      "file": "AUTHORING-REPORT-source-b.txt",
       "bytes": 4331,
       "sha256_raw_file": "f68d86c21f599d9868f44ad2a2cd4144cc24d27d057a1306adaf41f91eba6460"
+    },
+    {
+      "file": "AUTHORING-REPORT.txt",
+      "bytes": 4487,
+      "sha256_raw_file": "a20862ac84b70d6a7a9eaaee9ab9c779d0a624163de87238081cfe2844b4ab9c"
     },
     {
       "file": "AUTHORING-SCOPE.txt",
@@ -24,18 +29,18 @@
     },
     {
       "file": "matrix-proof.tex",
-      "bytes": 7405,
-      "sha256_raw_file": "f4c8a52ebd4632d2e8c2e202444a2e057e8fdd04a450b1fa84e6ef3ef3cf809b"
+      "bytes": 7469,
+      "sha256_raw_file": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
     },
     {
       "file": "rectangular_matrix.tex",
-      "bytes": 15131,
-      "sha256_raw_file": "c014c3f4e8946500a03e2c403317df10128e5c3d9c1eaf02e46f847e04814c08"
+      "bytes": 15141,
+      "sha256_raw_file": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
     },
     {
       "file": "review-context.tex",
-      "bytes": 4159,
-      "sha256_raw_file": "4652b46cfc9e3cbf90de3db0fd7232508ec03866871fcb7fce251b551e65ad0d"
+      "bytes": 5266,
+      "sha256_raw_file": "9be1438be6ec128f6852faa1affa6f85a6c6ca9e9a4570a84a20f676b21dbd57"
     },
     {
       "file": "scalar-rings.tex",
@@ -48,14 +53,19 @@
       "sha256_raw_file": "b0c21f8cc7d94fcdb48cf782394cd52e1c1e8b1a5aabb9d646888f8b63e413e7"
     },
     {
+      "file": "SOURCE-B-TO-C-CHANGES.json",
+      "bytes": 2578,
+      "sha256_raw_file": "cbb7984d286d916548d6394261535194ad0533982eb78b749e3493abdf62008c"
+    },
+    {
       "file": "SOURCE-INPUTS.json",
-      "bytes": 6087,
-      "sha256_raw_file": "db36c4bcbc221f713655794fb2b339e27d48ff5380ad47b0d87bed084b8aaa3a"
+      "bytes": 7516,
+      "sha256_raw_file": "66cc352da31b52eb980c12c07d6165aff34089d16457ae290f1a3567cf0249c3"
     },
     {
       "file": "STRUCTURAL-CHECK.json",
-      "bytes": 1050,
-      "sha256_raw_file": "09fdb4ae41f109d98cc9208f303f7a6d26382bd57ed2aacca6526ab21622233b"
+      "bytes": 909,
+      "sha256_raw_file": "e3f90b0ca050cc9e271cc281cc05a595a2336ea8bff8a6ccbbfe0dd27f362106"
     },
     {
       "file": "weak-endpoint.tex",

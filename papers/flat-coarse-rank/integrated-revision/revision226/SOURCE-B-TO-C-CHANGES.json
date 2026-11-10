@@ -1,0 +1,50 @@
+{
+  "from": "source-b",
+  "to": "source-c",
+  "byte_regime": "SHA-256 exact raw bytes without normalization",
+  "files": [
+    {
+      "file": "common-rank.tex",
+      "source_b_sha256": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b",
+      "source_c_sha256": "350550313a26186fc99b26dbfa09880e6cf05702b2a7c09f3eb8bb4af0069c0b",
+      "status": "byte-identical"
+    },
+    {
+      "file": "matrix-proof.tex",
+      "source_b_sha256": "f4c8a52ebd4632d2e8c2e202444a2e057e8fdd04a450b1fa84e6ef3ef3cf809b",
+      "source_c_sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "status": "changed"
+    },
+    {
+      "file": "rectangular_matrix.tex",
+      "source_b_sha256": "c014c3f4e8946500a03e2c403317df10128e5c3d9c1eaf02e46f847e04814c08",
+      "source_c_sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3",
+      "status": "changed"
+    },
+    {
+      "file": "review-context.tex",
+      "source_b_sha256": "4652b46cfc9e3cbf90de3db0fd7232508ec03866871fcb7fce251b551e65ad0d",
+      "source_c_sha256": "9be1438be6ec128f6852faa1affa6f85a6c6ca9e9a4570a84a20f676b21dbd57",
+      "status": "changed"
+    },
+    {
+      "file": "scalar-rings.tex",
+      "source_b_sha256": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0",
+      "source_c_sha256": "ccd5279b9ab02e9a336bfb828fec3b9a35415583205ccb7dfa0189e624d249f0",
+      "status": "byte-identical"
+    },
+    {
+      "file": "weak-endpoint.tex",
+      "source_b_sha256": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7",
+      "source_c_sha256": "6f753c5b0105a594b30a18b4d8725eea3503bc28565dd5bc678eedc506f3d8e7",
+      "status": "byte-identical"
+    }
+  ],
+  "change_map": {
+    "matrix_proof": "M1: replace unqualified auxiliary parameter M by explicit nonnegative spectral depth max(0,max_x[-lambda_min(A(x))]); rest unchanged",
+    "preserved": "common-rank.tex,scalar-rings.tex,weak-endpoint.tex byte-identical; main225proof unchanged except optional remark correction",
+    "root": "226B preparation date/version becomes226C corrected preparation",
+    "evidence": "All four original226B audit/context/capture files externally identified by exact raw hashes; historical226B authorreport retained; new staticcheck/report/manifest",
+    "review_context": "E1: identify only listed224/225/227 source reports, not an unidentified original scalar-audit companion; preserve full226B reject/M1/E1context; fresh completeC audit pending; first numerical assessment absent"
+  }
+}

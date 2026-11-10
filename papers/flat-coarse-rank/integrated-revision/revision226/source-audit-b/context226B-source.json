@@ -1,0 +1,26 @@
+{
+  "artifact": "manuscript226B",
+  "role": "different-role complete source auditor from fabricator",
+  "exposed_identity": "System: AI assistant accessed via API. Developer: Codex, agent based on GPT-6.",
+  "exact_model_and_effort": "Not exposed in visible context; no exact served backend or effort asserted.",
+  "involvement_history": "Same agent context performed original224, logarithmic224,225 and227 source audits; retained those arguments and reports. Separate226 fabricator was not contacted.",
+  "shared_context": "Parent-provided framing, shared account/system/environment and retained prior audit context; not blind, independent-human or independently selected-model review.",
+  "inbound_during_audit": "None received",
+  "new_reads": [
+    "All6frozen226B TeX files and7authorized companion files",
+    "Historical224/225 result records referenced by source-input manifest",
+    "Primary Brudnyi1511.03971v1, CDPX author reference PDF and Frank1206.3325v1"
+  ],
+  "source_identity_work": "Raw binary git-show captures; manifest and bothDsource-b snapshot hash checks; preserved source-a hash-map check; frozen scalar blob diff; source-only label inspection",
+  "no_scientific_execution": true,
+  "no_TeX_build_render_Lean_runtime": true,
+  "no_source_status_or_original_evidence_edits": true,
+  "no226_or223_pdf_or_numerical_report_access": true,
+  "primary_reference_pdf_exception": "CDPX classical cited author PDF was read through web for attribution, not a226/223 manuscript PDF",
+  "no_otherchat_or_automation_access": true,
+  "disposable_clone_created": false,
+  "render_result": "Not observed; no parent render success assumed",
+  "outputs": "Only report226B-source.txt,audit226B-source.json,context226B-source.json,capture-manifest226B.json and13authorized raw captured source/companion files under source-audit-b",
+  "report_representation": "Original complete UTF-8 without BOM, LF, final newline",
+  "captured_representation": "Exact raw Git blob bytes; original line endings preserved without normalization"
+}
