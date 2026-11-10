@@ -1,0 +1,49 @@
+{
+  "representation": "SHA256 of exact raw bytes. Binary git-show captures, no normalization. New reports UTF8 no BOM LF final newline.",
+  "git_referents": {
+    "input236B": "6aebcb8502bdf4485b9de8bcf720d681f09389f8",
+    "input237": "aca0efa966a210cfb48a88bdef79d14b1d2a64d5",
+    "input238": "fd8a3b8760d18a44b4349dcac1d4e03ed2c36886",
+    "candidate239": "9a7f2113ba9ca9344bfb7bb1d31c8859ca6a5993"
+  },
+  "captures": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-239\\source-audit\\capture\\all-internal-dimensions239-git.txt",
+      "bytes": 8074,
+      "sha256_raw": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-239\\source-audit\\capture\\internal-dimension238-git.txt",
+      "bytes": 7686,
+      "sha256_raw": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-239\\source-audit\\capture\\rank-penalty237-git.txt",
+      "bytes": 5765,
+      "sha256_raw": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-239\\source-audit\\capture\\rectangles-all-sizes236B-git.txt",
+      "bytes": 9388,
+      "sha256_raw": "b29ea47b3949ba2b8130e38ef7c395c115e600e595d0c6476032a031b03ebc1a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-239\\source-audit\\fullreport.txt",
+      "bytes": 12953,
+      "sha256_raw": "a446098ba97c0a6885c93e714448c95a6c02f5a872c85cc2215ddb304946286c"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-239\\source-audit\\verdict.json",
+      "bytes": 1347,
+      "sha256_raw": "bd9ecfae4addfa38a2d34c9470c9e01df456420dec01b95467f9b669aa166417"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-239\\source-audit\\context.json",
+      "bytes": 1448,
+      "sha256_raw": "8c6bc0bd3b3f9cc51c0f6f14941c9f8ad47f3bfd122479135f07fd9c5fa47223"
+    }
+  ],
+  "self_hash": "Excluded to avoid recursion; supplied in final response."
+}

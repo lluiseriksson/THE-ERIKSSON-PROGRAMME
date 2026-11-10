@@ -1,0 +1,27 @@
+{
+  "verdict": "accept_with_limits",
+  "unit": 239,
+  "source_commit": "9a7f2113ba9ca9344bfb7bb1d31c8859ca6a5993",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-10_all-internal-dimensions239.txt",
+  "source_sha256_raw": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757",
+  "blocking_findings": [],
+  "material_scope_findings": [],
+  "editorial_findings": [],
+  "all_g_at_least_1": true,
+  "middle_tail_group_upper": 6,
+  "middle_budget": "S/g<=5/6+93/(32sqrt(g))<1",
+  "actual_rank_order": "Theta_D(V+gV/n^2)",
+  "normalized_sufficient_penalty": "c+4DH",
+  "new_sharp_penalty_claim_below_n_squared": false,
+  "limits": [
+    "Exact positive profile, D>=3,n>=2,all integers g>=1; fixed internal basis and canonical local partition means.",
+    "Uniform minimum actual rank Theta_D(V+gV/n^2), not a general coefficient-profile theorem.",
+    "Normalized sufficient K=c+4DH only; no new sharp penalty lower for g<n^2.",
+    "Full budget O_D(V+g); fixed-g rank growth does not establish a universal additive-rank obstruction.",
+    "No rescaled/mixed-row lower, exact constant, practical conditioning, implementation, priority or physical result.",
+    "No execution, PDF/grade transfer or original changes;236A failure retained."
+  ],
+  "new_execution": false,
+  "numerical_grade": null,
+  "originals_unchanged": true
+}

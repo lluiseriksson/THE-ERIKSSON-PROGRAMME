@@ -1,0 +1,32 @@
+{
+  "role": "Same involved separate-role AI mathematical source auditor",
+  "exposed_identity": "Codex based on GPT-6",
+  "exact_backend": "unknown/not exposed",
+  "reasoning_effort": "unknown/not exposed",
+  "history": "224/225/227/226B-C/228/229/230/231A-B/233/232A-B/234/235/236B/237 source/evidence and related operational reviews.",
+  "parent_fabricator_and_framing": true,
+  "shared_account_system_context": true,
+  "independence": "not established",
+  "blind": false,
+  "human": false,
+  "no_inbound_during_audit": true,
+  "complete_sources_read": [
+    "Exact238",
+    "Exact236B",
+    "Exact237"
+  ],
+  "new_execution": false,
+  "pdf_or_numerical_review_read": false,
+  "source_status_git_mutation": false,
+  "other_chat_automation_access": false,
+  "credential_access": false,
+  "no_clone": true,
+  "limits": [
+    "Exact positive constant family, D>=3,n>=2,any integer g>=n^2; not fixed g as n grows.",
+    "Canonical partitions shared across D components within each fixed internal channel; no mixed rows or arbitrary rescaling.",
+    "Uniform D-only rank order g n^(D-2) and explicit-map normalized penalty order c n^2.",
+    "Full budget is O_D(V+g), not uniformly O_D(V) for g>V.",
+    "No arbitrary-profile, optimal constant, implementation, practical utility, priority or physical result.",
+    "No execution, PDF/grade transfer, original edits;236A failure and prior reports preserved."
+  ]
+}

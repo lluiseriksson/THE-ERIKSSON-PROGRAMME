@@ -1,0 +1,32 @@
+{
+  "verdict": "reject",
+  "unit": 240,
+  "source_commit": "dce1e1d16450f7f182aed36bc5841210d65e78dd",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-11_all-dimension-penalty240.txt",
+  "source_sha256_raw": "1063184ff5af9b86a4e52c11d9706e6736d37a7113351c84302891092672af04",
+  "blocking_findings": [
+    {
+      "id": "M1",
+      "severity": "blocking exact-source case-analysis defect",
+      "locations": [
+        "Section1 lines13-14",
+        "Section2 line30",
+        "Section4 lines90-92"
+      ],
+      "finding": "Case(ii) can have n<32 singleton fallback and n<64; source asserts that fallback impossible and n>=64.",
+      "counterexamples": [
+        "D=3,n=2,g=4096,c>0: case(ii) but singleton fallback required.",
+        "D=3,n=32,g=4096,c>0: case(ii) but n>=64 false."
+      ],
+      "calibration": "These refute auxiliary case assertions, not inequality240.0; singleton positivity makes that inequality hold on the witnesses.",
+      "required_resolution": "Correct actual case implications and explicitly cover all singleton branches in a new source; do not silently reinterpret current text."
+    }
+  ],
+  "other_algebraic_blockers": [],
+  "PSD_band_and_trace_estimates": "No separate defect found on actual group branches",
+  "main_inequality_counterexample_found": false,
+  "source_repaired_by_auditor": false,
+  "new_execution": false,
+  "numerical_grade": null,
+  "originals_unchanged": true
+}
