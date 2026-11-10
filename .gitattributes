@@ -21,6 +21,9 @@ papers/flat-coarse-rank/research/common-partition227/** -text
 papers/flat-coarse-rank/research/2026-11-10_common-partition227.txt -text
 scripts/common_partition_rank_diagnostic227.py -text
 
+# Exact228coexact restricted-rank source and complete audit.
+papers/flat-coarse-rank/research/coexact-partition228/** -text
+papers/flat-coarse-rank/research/2026-11-10_coexact-partition228.txt -text
 # Preserve frozen226B manuscript and author source manifests.
 papers/flat-coarse-rank/integrated-revision/revision226/** -text
 

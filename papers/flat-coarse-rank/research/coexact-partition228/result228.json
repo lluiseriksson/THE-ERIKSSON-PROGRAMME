@@ -1,0 +1,84 @@
+{
+  "unit": 228,
+  "recorded_at": "2026-11-10T18:51:38.143346+00:00",
+  "status": "ANALYTICAL_COEXACT_TRUE_RANK_PRODUCT_OBSTRUCTION_SOURCE_AUDITED_NO_EXECUTION",
+  "objective": "Extend common-full-vector product-rank necessity from general fields to the actual flat coexact domain, measuring actual restricted rank.",
+  "source_sha_context": "2d3237501569f6afac8a44d524a5d6db59f63c39",
+  "draft_sha256": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e",
+  "source_review": {
+    "unit": 228,
+    "verdict": "accept_with_limits",
+    "draft_sha256_raw_bytes": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e",
+    "load_bearing_objections": [],
+    "material_scope_findings": [],
+    "editorial_findings": [
+      {
+        "id": "E1",
+        "line": 138,
+        "finding": "Draft says226C undergoing first assessment; assignment says completed. Not independently verified, may be historical draft-time wording.",
+        "recommendation": "Date or neutralize that status in a later consolidation; preserve exact226C PDF and original assessment.",
+        "blocking": false
+      }
+    ],
+    "checks": {
+      "quotient_graph_rank": "accepted with loops, parallel columns and arbitrary nonempty blocks",
+      "codifferential_signs_and_shifts": "accepted",
+      "normalized_incidence_projection": "invertible diagonal row scaling preserves rank",
+      "internal_direct_sum": "rank multiplies by g",
+      "full_coexact_rank_lemma": "rank>=g(R-1)/D, no hR assumption",
+      "fixed_bump_and_all_original_starts": "accepted using declared full224/226C proof",
+      "packing_and_disjointness": "accepted",
+      "weak_channel_count": "exactly kappa_D m=2D m17^D",
+      "full_budget": "F=kappa_D m+(M-kappa_D m)M^-P, in[kappa_D m,kappa_D m+1]",
+      "lowspace_restriction_rank": "at most2R",
+      "consequence": "true coexact rank>=hF/[4D^2(kappa_D+1)] for m>=4",
+      "joint_growth": "g=m defeats uniform additive h+F; worst-case hF order matches restricted225upper"
+    },
+    "analytic_inputs": "Previously fully read224 compact bump proof and complete226C presentation;225 all-field upper theorem",
+    "limits": [
+      "Common full-vector partition measurement class only; broader adapted/projected/compressed/nonlocal classes excluded.",
+      "No arithmetic mean/envelope condition for this arbitrary finite matrix family.",
+      "No profile optimality, sharp constants, efficient algorithm, formal certification, historical priority or physical transfer.",
+      "No228 selected execution; future diagnostics need own preregistration.",
+      "No226score or original assessment read or changed."
+    ],
+    "numerical_grade": null,
+    "scientific_execution": false,
+    "new_paper": false,
+    "report": "report228-source.txt"
+  },
+  "new_lemma": "For any nonempty partition into R blocks, rank(C|H_coex^g)>=g(R-1)/D, by actual delta-two-cochain outputs and connected union of direction-labelled quotient graphs.",
+  "derived_family": "FixedL16 coexact bumps give a genuine m-dimensional lowspace, exact positive diagonal coefficients with F in[kappa_D m,kappa_D m+1] and lowspace restriction rank<=2R. Hence R>=ceil(m/2), and true full-coexact restricted rank>=hF/[4D^2(kappa_D+1)] for m>=4.",
+  "hypotheses_eliminated": [
+    {
+      "removed": "General-field-domain requirement in the common-full-vector product-rank obstruction227",
+      "proof": "Explicit actual coexact bump lowspace plus independently derived restricted-rank lemma; not an assumed hR codomain rank or transferred domain structure.",
+      "retained": "Common partition retaining every component mean, finite component-gradient matrices; no adapted/projected/nonlocal measurement claim.",
+      "verification": "Complete separate involvedAI source audit; no formal/selected execution."
+    }
+  ],
+  "refutations": [
+    {
+      "claim": "A dimension-only uniform C_D(h+F) bound suffices for true restricted rank of common-full-vector partition means on the coexact domain.",
+      "counterexample": "Derived positive diagonal family with g=m,h=Dm; actual restricted rank grows at leastm^2/(4D), while h+F is at most(D+kappa_D+1)m."
+    }
+  ],
+  "scientific_execution": false,
+  "numerical_grade": null,
+  "new_paper": false,
+  "publication": false,
+  "chronology_note": "Draft parent had not yet received completion of226firstassessment; later completed226C report is separate. Original draft/chronology finding retained, and frozen226C PDF/review unchanged.",
+  "limits": [
+    "Common full-vector partition measurement class only; broader adapted/projected/compressed/nonlocal classes excluded.",
+    "No arithmetic mean/envelope condition for this arbitrary finite matrix family.",
+    "No profile optimality, sharp constants, efficient algorithm, formal certification, historical priority or physical transfer.",
+    "No228 selected execution; future diagnostics need own preregistration.",
+    "No226score or original assessment read or changed."
+  ],
+  "artifacts": [
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\coexact-common-rank228-draft.txt",
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\source-audit"
+  ],
+  "next_action": "Preserve small source/audit PR, prepare one bounded exact selected diagnostic preregistration and ownColab execution; do not alter frozen226C to inherit its grade.",
+  "PR29": "20/41,TermSource0 unchanged"
+}

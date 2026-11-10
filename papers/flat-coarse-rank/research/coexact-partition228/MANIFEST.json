@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "path": "papers/flat-coarse-rank/research/2026-11-10_coexact-partition228.txt",
+      "bytes": 8775,
+      "sha256": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/coexact-partition228/result228.json",
+      "bytes": 5496,
+      "sha256": "9eb807e22d8d3567f3e80eb05a58bb7ae0c79c26b506b39eadd238f2a881d434"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/coexact-partition228/source-audit/captured-source/coexact-common-rank228-draft.txt",
+      "bytes": 8775,
+      "sha256": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/coexact-partition228/source-audit/context228.json",
+      "bytes": 1677,
+      "sha256": "2d6404f9884c666ed0bc94b8552c99fd87b409c479a20a83cf3d67d1cd101ff8"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/coexact-partition228/source-audit/hashes228.json",
+      "bytes": 1362,
+      "sha256": "535476933958494e1ad48514e737ef7c466b6bd5cb7a1438a51445b8dd1c840e"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/coexact-partition228/source-audit/report228-source.txt",
+      "bytes": 12373,
+      "sha256": "646c3f2c4554fe59a9feb06b05f39e5e36bca853072c8d1a15f2ccf73f7c8a31"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/coexact-partition228/source-audit/response228.json",
+      "bytes": 2210,
+      "sha256": "8815a412f005253c2d4a78258712ac31ab813a17a940e7c6970119bb4b5456df"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/coexact-partition228/STATUS.txt",
+      "bytes": 538,
+      "sha256": "d74ece8299101120e73de457fd694f362f9da6452cebb002082a0bb44eedf1e5"
+    }
+  ]
+}
