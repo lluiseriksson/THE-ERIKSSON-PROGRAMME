@@ -1,0 +1,156 @@
+{
+  "scientific_source": "bf2dfc93dc7a97bc23b234478fc060676ae29485",
+  "files": [
+    {
+      "path": "papers/flat-coarse-rank/research/2026-11-10_common-partition227.txt",
+      "bytes": 6907,
+      "sha256": "12f9aacb7491b7e2a70a594350a38dd089ca1f2eaf00df79a30c6d663855db36"
+    },
+    {
+      "path": "scripts/common_partition_rank_diagnostic227.py",
+      "bytes": 5466,
+      "sha256": "7736f6960a8e981ea6ab79e83209e090a74239d45fc6f71d0f7c5ea5d360a4aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/finite/common-partition-rank227-draft.txt",
+      "bytes": 6907,
+      "sha256": "12f9aacb7491b7e2a70a594350a38dd089ca1f2eaf00df79a30c6d663855db36"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/finite/common_partition_rank_diagnostic227.py",
+      "bytes": 5466,
+      "sha256": "7736f6960a8e981ea6ab79e83209e090a74239d45fc6f71d0f7c5ea5d360a4aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/finite/normal.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/finite/normal.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/finite/normal.stdout",
+      "bytes": 3938,
+      "sha256": "5f93da45d436129e242be089ccd7ba3547d77af7647f199f7e5ed961d01365a9"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/finite/optimized.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/finite/optimized.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/finite/optimized.stdout",
+      "bytes": 3938,
+      "sha256": "5f93da45d436129e242be089ccd7ba3547d77af7647f199f7e5ed961d01365a9"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/finite/report.json",
+      "bytes": 843,
+      "sha256": "6acf2bd425a3ca26f851a3f884b729d55a4cee0d78695e32a63dab33509f9ded"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/PREREGISTRATION227.json",
+      "bytes": 1789,
+      "sha256": "72a6b61a6b75d524948fe32d64b742080d9a520e6ca97d49bd35719ea5769e22"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/README.md",
+      "bytes": 1635,
+      "sha256": "e50c7412a37d49d81a7593e08597879698d3ba2a25e4af8bbb5528de597eb4f3"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/result227.json",
+      "bytes": 8531,
+      "sha256": "ceffb801586c52a1748537733d1c6288fa1817ceb51a450359224aa4d596ea76"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/run227A.sh",
+      "bytes": 1608,
+      "sha256": "b499b7a3699997cd2139ad70a166f71a1758d8e70cf6d4cf6c7e851831f4f89c"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/run_diagnostic227.py",
+      "bytes": 19135,
+      "sha256": "21c9fa492477298fd3e3a5df44441e90b6ae7c130e8983ceefb743e828387f13"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/runtime/allocation227.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/runtime/download227.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/runtime/execution227-original-log.txt",
+      "bytes": 923,
+      "sha256": "ceefde62507b512ac4c2413552c6bed0207a79f5b7bc525372666cc3dd4cd06e"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/runtime/execution227.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/runtime/release227.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/runtime/runtime227-open-requested.txt",
+      "bytes": 21,
+      "sha256": "e40af8e8c92f2131baaefa0113555859eeabff47f1105895969ba723a367eb3c"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/runtime/runtime227-release-finished.txt",
+      "bytes": 21,
+      "sha256": "5d0579ea98bc80d5cb38a7b4b3e2b9eacfe84cbe443bd4613f598fbd0bcf00f8"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/runtime227A-backend-readback.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/runtime227A-backend-readback.txt",
+      "bytes": 44,
+      "sha256": "dec807c11992d9001acb723d969c49727402fe62c5e6cbd3899944bfdd03c140"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/runtime227A.json",
+      "bytes": 385,
+      "sha256": "c5ee907594bdf54f539fcf03212666fda143adb8a23c847aa2ccd95e3a234ba2"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/source-audit/context227.json",
+      "bytes": 1263,
+      "sha256": "71cd7a94e081891ed060e472ca38c80a6d24595c8bda2cf157539c84dcd62c3f"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/source-audit/hashes227.json",
+      "bytes": 1599,
+      "sha256": "5d938cd323dbfa6103008b7a4fbf10067988f057b72ce146b9462b8547b775ca"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/source-audit/response227.json",
+      "bytes": 1468,
+      "sha256": "82f55dd954fd8bd4b0398bdd6bb7453a221119b942bb5c12e85aca421a03faa0"
+    },
+    {
+      "path": "papers/flat-coarse-rank/research/common-partition227/source-audit/source-review227.txt",
+      "bytes": 8752,
+      "sha256": "b7e13c5147f073670ab9140cb8c4e71574cb984ba66823e4c06bf18f4b089f5d"
+    }
+  ],
+  "representation": "Raw bytes without EOL normalization"
+}
