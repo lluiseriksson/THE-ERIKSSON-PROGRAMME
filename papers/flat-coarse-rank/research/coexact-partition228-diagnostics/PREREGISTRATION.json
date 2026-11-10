@@ -3,7 +3,7 @@
   "recorded_at": "2026-11-10T19:14:45.446157+00:00",
   "scope": "Selected new coexact true-image-rank lemma only; not full fixedL16multi-bump coefficient/budget-family execution",
   "proof_sha256": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e",
-  "script_sha256": "6c1d7b85bd0e7174101b795a97f14f213c61a6888e628c361453f61c60fc4cbe",
+  "script_sha256": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c",
   "cases": 10,
   "parameters": "D3n1/2/3,g1/2;D4n2g2; root,singletons,stripes,parity,diagonal3,disconnected4",
   "expected_checks": "Actual complete delta-two-cochain image matrices, exact integer row rank, direct coexact/divergence/mean values, D*rank>=g*(R-1), normal/-Oidentical outputs",
@@ -16,5 +16,7 @@
   "local_scientific_execution": false,
   "runtime": "Own ColabLinux CPU/highmemory; prepared disconnected, release after unit",
   "grade": null,
-  "independent_replay": false
+  "independent_replay": false,
+  "version": "B",
+  "correction": "Original6c1script source audit rejected missing explicit success counters/set checks; no run occurred. Bchecks10completedcases and3named rejected controls before success. Mathematics/generators/rank algorithm unchanged."
 }

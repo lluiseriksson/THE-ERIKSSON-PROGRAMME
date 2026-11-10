@@ -84,17 +84,25 @@ def run():
     need(exact_rank([[2,4],[1,2]])==1,'Rank dependent control')
     need(exact_rank([[0,1,2],[1,0,3],[0,0,1]])==3,'Rank pivot control')
     specifications=[(3,1,1,'root'),(3,1,2,'root'),(3,2,1,'root'),(3,2,1,'singletons'),(3,2,2,'parity'),(3,3,1,'stripes'),(3,3,2,'diagonal3'),(3,3,1,'disconnected4'),(3,3,1,'singletons'),(4,2,2,'singletons')]
-    cases=[]
+    cases=[];accepted_cases=0
     for D,n,g,kind in specifications:
         case=matrix_rank(D,n,g,kind)
         need(D*case['true_image_rank']>=case['lower_numerator'],'228lemma selected exact rank')
         cases.append(case)
+        accepted_cases+=1
+    need(accepted_cases==10 and len(cases)==10,'Ten completed selected cases required before success')
     sites=list(itertools.product(range(3),repeat=3));x=(0,0,0)
     sign=plaquette(x,0,1,0,3,1,3,'wrong_codifferential_sign')
     wrong_shift=plaquette(x,0,1,0,3,1,3,'one_wrong_shift')
     projected=matrix_rank(3,3,1,'stripes',project_one=True)
     controls={'wrong_codifferential_sign_rejected':not valid_coexact_consequences(sign,sites,3,1,3),'one_wrong_shift_rejected':not valid_coexact_consequences(wrong_shift,sites,3,1,3),'dropping_transverse_outputs_breaks_bound':3*projected['true_image_rank']<projected['lower_numerator']}
-    need(all(controls.values()),'Actual field/output mutations must be detected')
-    return {'status':'SELECTED_EXACT_COEXACT_RANK_LEMMA_DIAGNOSTICS_CHECKED','cases':cases,'negative_controls':controls,'negative_controls_rejected':len(controls),'scope':'Ten selected actual coexact delta-image rank matrices; nonzero normalized row-scaling invariance; three real field/output mutations. Does not execute the fixedL16multi-bump coefficient/budget family, prove all sizes, certify historical novelty, provide numerical paper grade or independent clone replay.','projected_measurement_counterexample':projected}
+    required_controls={'wrong_codifferential_sign_rejected','one_wrong_shift_rejected','dropping_transverse_outputs_breaks_bound'}
+    need(set(controls)==required_controls,'All three named controls required')
+    rejected_controls=0
+    for name in sorted(required_controls):
+        need(controls[name] is True,'Actual field/output mutation not rejected: '+name)
+        rejected_controls+=1
+    need(rejected_controls==3,'Three completed rejected controls required before success')
+    return {'status':'SELECTED_EXACT_COEXACT_RANK_LEMMA_DIAGNOSTICS_CHECKED','cases':cases,'accepted_cases':accepted_cases,'negative_controls':controls,'negative_controls_rejected':rejected_controls,'scope':'Ten selected actual coexact delta-image rank matrices; nonzero normalized row-scaling invariance; three real field/output mutations. Does not execute the fixedL16multi-bump coefficient/budget family, prove all sizes, certify historical novelty, provide numerical paper grade or independent clone replay.','projected_measurement_counterexample':projected}
 
 if __name__=='__main__':print(json.dumps(run(),sort_keys=True))

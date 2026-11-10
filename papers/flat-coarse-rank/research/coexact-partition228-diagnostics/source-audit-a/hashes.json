@@ -1,0 +1,37 @@
+{
+  "algorithm": "SHA256",
+  "source": {
+    "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-228\\coexact_partition_rank_diagnostic228.py",
+    "capture": "capture/coexact_partition_rank_diagnostic228.py",
+    "bytes": 5234,
+    "sha256": "6c1d7b85bd0e7174101b795a97f14f213c61a6888e628c361453f61c60fc4cbe",
+    "representation": "raw original source bytes",
+    "normalization": "none",
+    "capture_method": "ReadAllBytes/WriteAllBytes; source/capturehashmatch"
+  },
+  "comparison_analytical_draft_sha256": "41144cb827392d4853ef9459274c3106d095b014e237492816582bba19c4520e",
+  "outputs": [
+    {
+      "file": "fullreport.txt",
+      "bytes": 10646,
+      "sha256": "62380659b751a661ec624c3824a002e653e43e7b38cf8c69761b6e56e222d0f1",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "verdict.json",
+      "bytes": 2104,
+      "sha256": "990077df1bcceedd3fa5cbd0351bd59af6171f7b6eddf9811720c2bb4df5d183",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    },
+    {
+      "file": "context.json",
+      "bytes": 1430,
+      "sha256": "34d151fa044a4a6433aa0c90bebe5826bb84730d2f0c9b442ef419f2f975bbe4",
+      "representation": "raw UTF-8 without BOM, LF, final newline",
+      "normalization": "none"
+    }
+  ],
+  "self_hash": "Provided separately in final handoff; not recursively embedded."
+}
