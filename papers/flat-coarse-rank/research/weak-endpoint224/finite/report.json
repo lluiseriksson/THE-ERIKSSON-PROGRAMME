@@ -1,0 +1,21 @@
+{
+  "started_utc": "2026-11-10T17:06:48.211985+00:00",
+  "source_context": "main814fa4b57b1b4756d5c5eb84daa4612177e092e9",
+  "input_pins": {
+    "weak_endpoint_diagnostic224.py": "2107b9c7efdf5454c64703be1a06f7aa083c23a17183f8e30d67f4b487991527",
+    "weak-endpoint224-draft.txt": "7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c"
+  },
+  "python": "3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]",
+  "runtime": "Own Colab Linux CPU high-memory; no scientific work on Windows",
+  "compute_units_billed": null,
+  "exits": {
+    "normal": 0,
+    "optimized": 0
+  },
+  "status": "FINITE_DIAGNOSTICS_CHECKED",
+  "finished_utc": "2026-11-10T17:06:48.836662+00:00",
+  "elapsed_seconds": 0.6246193320000089,
+  "child_maxrss_kib": 105200,
+  "normal_optimized_output_equal": true,
+  "source_audit_pending": true
+}

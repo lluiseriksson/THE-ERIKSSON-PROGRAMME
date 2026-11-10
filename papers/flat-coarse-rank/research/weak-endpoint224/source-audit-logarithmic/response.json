@@ -1,0 +1,31 @@
+{
+  "unit": 224,
+  "component": "logarithmic addendum",
+  "verdict": "accept_with_limits",
+  "addendum_sha256_raw_bytes": "0720cedc459361539c9cedf95b7b186831a6ab9414ea27c859918203a39fb059",
+  "frozen_commit": "ddd2cf605c1715a03d2e87991e920c0ec760e527",
+  "frozen_source_path": "papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex",
+  "frozen_source_sha256_raw_git_blob": "6877841cde546f8920c39b98a5dfef8af385b1a2d5a4842f95a9dd36985b3dc2",
+  "load_bearing_objections": [],
+  "checks": {
+    "finite_layer_cake": "accepted",
+    "mu_one_and_strict_atoms": "accepted",
+    "explicit_constants": "exact match",
+    "scalar_positive_start_energy": "actual source inspected and matches",
+    "normalized_rectangular_means": "V^-1/2 |B|^-1/2 sum_B f; penalty K=c",
+    "logarithmic_upper_bound": "accepted using existing full-moment theorem",
+    "logarithmic_lower_order": "accepted along fixed D,c family",
+    "profile_optimality": "not claimed and not established"
+  },
+  "limits": [
+    "Existing full-moment theorem used as analytic input; no complete fresh theorem recertification.",
+    "Lower bound retains centered differentiable observations and finite local quadratic upper penalty.",
+    "Matching order is worst case along the constructed family, not every profile or sharp constants.",
+    "Compiled theorem numbering not independently checked; exact source labels identify referents.",
+    "No scientific execution, numerical grade, new paper, originality finding or physical conclusion."
+  ],
+  "original_reports_untouched": true,
+  "frozen_numerical_report_and_pdf_accessed": false,
+  "numerical_grade": null,
+  "report": "fullsource-review.txt"
+}

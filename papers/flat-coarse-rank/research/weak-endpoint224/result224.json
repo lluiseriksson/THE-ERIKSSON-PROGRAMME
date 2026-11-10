@@ -1,0 +1,80 @@
+{
+  "unit": 224,
+  "checked_at": "2026-11-10T17:12:46.663358+00:00",
+  "status": "ANALYTICAL_WEAK_ENDPOINT_COUNTEREXAMPLE_SOURCE_AUDITED_SELECTED_DIAGNOSTICS_VERIFIED",
+  "draft_sha256": "7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c",
+  "full_source_review_sha256": "1cba1146abdefd21acb62fcee9bdb3f7bd7da8ab33e0c1d0986d9d9cdc0030da",
+  "source_review": {
+    "unit": 224,
+    "verdict": "accept_with_limits",
+    "audit_type": "fixed-draft analytical source audit",
+    "draft_sha256_raw_UTF8_LF": "7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c",
+    "preregistration_sha256_raw_file": "1d93a2e52f069f71a49b4dc3201ac676926d96eba340d10f6a0ec92b1e2c72dc",
+    "load_bearing_objections": [],
+    "checks": {
+      "actual_coexact_field": "accepted",
+      "all_positive_start_edges": "accepted including upper outgoing starts",
+      "C1_constants_and_norm": "accepted",
+      "packing_and_disjointness": "accepted",
+      "exact_mean_and_envelope": "accepted",
+      "strict_weak_distribution": "accepted",
+      "full_moment_growth": "accepted",
+      "finite_penalty_rank_obstruction": "accepted for centered differentiable observations with local quadratic upper penalty"
+    },
+    "limitations": [
+      "Exact source-only audit; no numerical or formal execution.",
+      "Observation universality retains C_n(0)=0, differentiability at zero, local quadratic upper penalty and local coercivity.",
+      "External original source222 energy conventions and theorem not independently inspected; the draft-stated positive-start scalar energy is the audited convention.",
+      "Novelty and priority unestablished.",
+      "No implication for physical producers, interacting fields, continuum limit or mass gap.",
+      "No frozen223C numerical assessment or PDF read or modified.",
+      "Required future diagnostics remain unperformed."
+    ],
+    "scientific_execution": false,
+    "numerical_score": null,
+    "formal_result": false,
+    "report": "source-review224.txt"
+  },
+  "archive_sha256": "242dfee5fc75ce022d5dc89d83fa970eab55425bc384b6b6c9fd45d492790396",
+  "archive_bytes": 33847,
+  "manifest_subjects_verified": 9,
+  "runtime": {
+    "own_runtime": "tep224-a-own-cpu",
+    "opened_requested": "2026-11-10T17:06:09Z",
+    "release_finished": "2026-11-10T17:06:57Z",
+    "backend_readback_inactive": true,
+    "scientific_elapsed_seconds": 0.6246193320000089,
+    "child_maxrss_kib": 105200,
+    "compute_units_billed": null,
+    "actual_exits": {
+      "normal": 0,
+      "optimized": 0
+    },
+    "normal_optimized_identical": true
+  },
+  "finite_check_summary": {
+    "direct_tensor_cases": 6,
+    "actual_coexact_case": {
+      "D": 3,
+      "L": 16,
+      "actual_divergence_zero": true,
+      "energy": "27968522799445207375616",
+      "high_boundary_mask_mutation_rejected": true,
+      "nonzero_original_starts": 4560,
+      "norm": "120034298149342362798080",
+      "upper_start_omission_rejected": true
+    },
+    "profile_cases": 15,
+    "negative_controls_rejected": 3
+  },
+  "result": "The weak inverse D/2 distribution bound<=1 cannot replace the full inverse moment in a uniform target-order rank theorem for centered differentiable finite observations with finite locally quadratic upper penalty on actual finite scalar coexact fields. Explicit m-lowspace while target bounded; full moment grows, so no refutation of222.",
+  "hypotheses_eliminated": [],
+  "refuted_proposal": "Replace full critical inverse moment by weak critical distribution while retaining target-order observation rank in the stated centered local class.",
+  "formal_verification": false,
+  "novelty_priority": "Unestablished; classical disjoint-well/endpoint/rank mechanisms. Primary Frank1206.3325v1 supplies context, not this result or priority.",
+  "physics": "No interacting/covariant/continuum or physical massgap conclusion. PR29=20/41,TermSource0 unchanged.",
+  "new_PDF": false,
+  "new_grade": null,
+  "new_publication": false,
+  "next_action": "Commit complete analytical224 source/audit and finite evidence on small branch after223 exact-head merge. Preserve centered/local-quadratic and original-start conventions; group endpoint necessity with critical construction, not separate tiny paper. Main priority remains223 verified public release."
+}

@@ -1,0 +1,192 @@
+UNREVIEWED ANALYTICAL CANDIDATE224 -- 2026-11-10
+Not a closed theorem, numerical assessment, formal result or publication.
+Do not change the frozen101page223C PDF or its first declared assessment.
+Context: constructive scalar-gradient result222, merged main814fa4b57b1b4756d5c5eb84daa4612177e092e9;
+manuscript223C source ddd2cf605c1715a03d2e87991e920c0ec760e527.
+
+ONE NEW ACTIVE BOUNDED QUESTION
+For fixed D>=3,N_c>=2,c>0, can the full original critical moment be replaced
+by the weak critical distribution bound
+ W(a,mu)=sup_{tau>0} tau^(D/2) n^-D #{x:mu/a(x)>tau} <= M_w
+while retaining target-order finite-dimensional rectangular observations and
+some finite locally quadratic penalty on actual divergence-zero flat fields?
+Original profile constraints remain a>=1, exact arithmetic mean mu>=1,
+a<=2mu; the energy remains the ORIGINAL component-gradient scalar repair.
+Mechanism to test: disjoint geometrically scaled weak cubes, padded actual
+coexact product bumps, and the original rank-nullity obstruction. Each scale
+would contribute one low mode while weak distribution cost stays bounded.
+Falsifier of this candidate: any omitted high-start boundary edge, failed
+coexact/orthogonality identity, coefficient/moment/envelope violation, bad
+uniform bump constant or scale packing. A proof failure is not a new theorem.
+Abandonment: preserve all failures; stop on a load-bearing counterexample;
+after3 substantive unsuccessful units change this exact mechanism or identify
+the precise missing lemma. This does not reopen the stopped219/220 routes.
+
+PROPOSED RESULT AND SCOPE
+For each D>=3,c>0, produce a sequence with W<=1, the original coefficient
+constraints, and an m-dimensional ACTUAL COEXACT subspace with
+ Q_a(U)<=c/4 ||U||^2,
+while max{1,(n/sqrt(1+mu))^D} is bounded independently of m. Every differentiable
+finite observation with a finite locally quadratic penalty then needs output
+dimension>=m. This would rule out the WEAKENED moment statement even for
+arbitrary differentiable observations, not merely a chosen rectangle algorithm.
+The full original moment of this family grows at least linearly in m; hence
+the construction would NOT refute the proved full-moment sufficient result222.
+Nothing concerns interacting/covariant fields, physical coefficient producers,
+or a continuum mass gap. Historical originality remains unestablished.
+
+1. A COMPACT C1 PRODUCT BUMP AND ACTUAL COEXACT COCHAIN
+Set p(s)=s^2(1-s)^2 for0<=s<=1 and zero outside. Then p is globally C1,
+0<=p<=1, |p'|<=2 and p' is globally2-Lipschitz. Inside[0,1], p''=2-12s+12s^2
+has absolute value<=2; p and p' vanish at both endpoints, so no derivative
+jump or distributional endpoint atom is being ignored.
+For L divisible by16 and L>=16, let
+ psi_L(x)=product_{i=1}^D p(x_i/L) on the integer lattice, extended by zero.
+Choose a real unit internal vector e in R^(N_c^2-1). Define
+ A_1(x)=D_2^- psi_L(x) e,
+ A_2(x)=-D_1^- psi_L(x) e,
+ A_j=0 for j>=3,
+where D_i^-f(x)=f(x)-f(x-e_i).
+This is the actual codifferential of the two-cochain B_12=psi_L e,
+B_21=-psi_L e with delta B_j=-sum_i D_i^- B_ij. Thus A is coexact, and
+sum_i D_i^- A_i=D_1^-D_2^-psi_L-D_2^-D_1^-psi_L=0 identically.
+The same definitions on a sufficiently larger torus give these identities
+without a substituted field space. Each component's mean is zero.
+
+Support/orientation guard: A is supported in {0,...,L}^D and vanishes on
+every lower coordinate face x_i=0. For every ORIGINAL positive-start edge
+on which D_i^+ A_j is nonzero, the START belongs to {0,...,L}^D. A possible
+incoming start at x_i=-1 has next endpoint on a zero lower face and adds
+zero energy. The upper outgoing starts x_i=L are INCLUDED. This guard must
+be independently checked; replacing it by interior-only edges is invalid.
+
+2. SAFE ALL-SIZE BUMP CONSTANTS
+The one-coordinate second finite difference of p(x/L) is bounded by2/L^2.
+A mixed first/first difference in different coordinates is bounded by4/L^2.
+There are only2D nonzero component/direction types; at most(L+1)^D<=2^D L^D
+starts per type. Hence the actual unweighted full gradient energy satisfies
+ E_1(A)<=U_D L^(D-4), U_D=32D 2^D.
+This includes every boundary start, not just an interior Hessian integral.
+
+For a lower norm bound, use x_2=L/8+1,...,L/4, exactly L/8 sites, and
+x_i in[L/4,3L/4] for i!=2, at least L/2 sites each. On each backward
+step in the second coordinate, the mean-value point lies in[1/8,1/4], where
+ p'(s)=2s(1-s)(1-2s)>=3/32.
+For the other coordinates, p(s)>=1/256 on[1/4,3/4]. Therefore A_1 has
+magnitude at least3/(32L) *256^(-(D-1)) on these selected sites, and
+ ||A||^2 >= eta_D L^(D-2),
+ eta_D=9/[2^(D+12) *256^(2(D-1))].
+Set K_D=U_D/eta_D. Thus
+ E_1(A)/||A||^2 <=K_D/L^2.
+Constants are deliberately very loose, finite and dimension-only.
+
+3. CHOOSE A FIXED SMALL SCALAR AND GEOMETRIC SCALES
+Fix c>0. Choose an integer k>=0 such that epsilon=4^(-k) satisfies
+ epsilon K_D<=c/4.
+Let L_0=2^max(4,k), L_j=2^j L_0 for j=0,...,m-1, and n=16 L_(m-1).
+Thus every scale is divisible by16 and epsilon L_0^2>=1. The n and scale
+sizes may be enormous for the safe constants; no feasible dense numerical
+grid at these sizes is claimed or required by the analytical construction.
+
+Place nonwrapping boxes
+ B_j=q_j+{0,...,L_j}^D,
+with first coordinate q_(0,1)=1 and
+q_(j+1,1)=q_(j,1)+L_j+3; all other q_(j,i)=1.
+Their first-coordinate intervals are disjoint with two-site gaps. They fit
+inside X_n: sum_j L_j<2L_(m-1), and3m<=3L_(m-1)/16, so the right edge is
+less than3L_(m-1)+1<n. Other coordinates also fit. No periodic support
+collision occurs. Translate the actual cochain above by q_j, obtaining A^(j).
+Supports, ORIGINAL gradient-start supports and norms of different fields
+are disjoint. In particular their quadratic-energy cross terms are zero.
+
+Define H=epsilon L_(m-1)^2 and the actual site coefficient
+ a(x)=epsilon L_j^2 on B_j,
+ a(x)=H outside their union.
+The top box has the same value H as the background. Every a>=1 and a<=H.
+This same scalar a multiplies every derivative/internal component.
+
+4. EXACT MEAN AND ORIGINAL ENVELOPE
+Let V=n^D and mu=V^-1 sum_X a. This is the ACTUAL arithmetic mean,
+not a free renormalization. Put
+ C_vol=2^D/(1-2^(-D)).
+Since(L_j+1)^D<=2^D L_j^D and the scales double,
+ sum_j |B_j| <=C_vol L_(m-1)^D.
+The occupied fraction is at most C_vol/16^D<1/2 for D>=3. Therefore
+ H/2<=mu<=H, mu>=1, and 1<=a(x)<=H<=2mu.
+The exact mean formula is
+ mu=H-V^-1 sum_j |B_j|(H-epsilon L_j^2).
+All original positivity, mean and upper-envelope conventions are retained.
+
+5. WEAK CRITICAL MOMENT IS AT MOST1
+Write P=D/2 and Y=mu/a. For0<tau<=mu/H, tau^P P_X(Y>tau)<=tau^P<=1.
+For tau>mu/H, only boxes whose epsilon L_j^2<mu/tau contribute. If no box
+qualifies the count is0. Otherwise let j be the largest qualifying index.
+Their total count is at most C_vol L_j^D, so
+ tau^P V^-1 #{Y>tau}
+ <= C_vol (mu/epsilon)^P/V
+ <= C_vol L_(m-1)^D/(16 L_(m-1))^D
+ =C_vol/16^D<1.
+This uses the strict inequality exactly as stated; no atom at the cutoff
+is dropped. Consequently W(a,mu)<=1 for EVERY m.
+It is a weak-L^P coefficient distribution bound, not the original full moment.
+
+6. LOW COEXACT SUBSPACE ON THE FULL ACTUAL TORUS
+By the positive-start support guard in1, all nonzero derivatives of A^(j)
+start inside B_j. Hence its FULL original periodic component-gradient energy is
+ Q_a(A^(j))=epsilon L_j^2 E_1(A^(j))
+ <=epsilon K_D ||A^(j)||^2 <=c/4 ||A^(j)||^2.
+The torus wrap terms are all zero for these nonwrapping supports. Disjoint
+norm and edge-start supports make the same inequality hold for every linear
+combination in span{A^(0),...,A^(m-1)}. The norm lower bound ensures that
+each field is nonzero, so this is a real m-dimensional actual coexact space.
+There is no assumed local eigenvalue or gap certificate: the fields and
+their actual complete energy are explicitly constructed and bounded.
+
+7. TARGET COUNT STAYS BOUNDED, SO EVERY OBSERVATION NEEDS TOO MUCH RANK
+Since mu>=H/2 and n=16L_(m-1),
+ max{1,(n/sqrt(1+mu))^D} <=(16 sqrt(2/epsilon))^D,
+a constant depending on D,c through epsilon but NOT m.
+Suppose C_n is differentiable at0, C_n(0)=0, values in a finite-dimensional
+real normed space F_n, and Phi_n(y)<=K_n||y||^2 near0 for some finite K_n.
+If dim F_n<m, its derivative has a nonzero kernel vector U in the low
+coexact space. Then C_n(tU)=o(t), Phi_n(C_n(tU))<=o(t^2), whereas
+Q_a(tU)<=c/4 t^2 ||U||^2. The asserted local coercivity inequality
+c||tU||^2<=Q_a(tU)+Phi_n(C_n(tU)) is impossible after division by t^2
+and t->0. This allows a different finite K_n for each n; no uniform penalty
+bound is added. Thus actual output dimension>=m.
+In particular no rank bound C(D,c,N_c,M_w) times the original target scale
+can hold uniformly under W<=1, even before requiring rectangular means.
+For the fixed scale sequence, m grows proportionally to log n up to a
+constant depending on D,c. This is an actual full-domain low-mode rank
+obstruction, not the cost of a sufficient minimum/Green/internal certificate.
+
+8. WHY THE FULL-MOMENT THEOREM222 IS NOT REFUTED
+All boxes are disjoint, |B_j|>L_j^D and mu>=H/2. Thus
+ V^-1 sum_X (mu/a)^P
+ >= V^-1 sum_j L_j^D (mu/(epsilon L_j^2))^P
+ =m (mu/epsilon)^P/V
+ >=m/(2^P16^D).
+So the original full critical moment grows at least linearly in m. It is
+NOT uniformly bounded on this family. The strong-moment theorem222 can
+pay a rank proportional to that mass; the weak endpoint cannot. No original
+full-moment hypothesis has been disproved, and no physical conclusion follows.
+
+PRIMARY CONTEXT AND REQUIRED NEXT GATES
+Classical disjoint-well/rank and strong-vs-weak endpoint mechanisms are expected.
+Frank, arXiv:1206.3325v1, Introduction and Theorem2.1, explicitly distinguishes
+a weak multiplier condition from a strong integrability condition in Cwikel's
+bound. That theorem is not contradicted and is not a novelty certificate for
+this finite coefficient/coexact specialization. Primary source actually read:
+https://arxiv.org/html/1206.3325v1
+No exhaustive novelty/equivalence search or original-priority claim is made.
+
+REQUIRED BEFORE PROMOTION
+Role-separated full source audit: verify bump C1 extension and discrete
+boundary starts, norm and energy constants, placement, weak strict cutoff,
+actual exact mean/envelope, coexact/m-dimensional span and arbitrary-penalty
+rank argument. Prepare selected own-Colab normal/-O exact-rational/tensor
+diagnostics with actual coefficient/edge/moment mutations. No local scientific
+execution, large-grid allocation or full-size numerical verification is claimed.
+Do not add a new tiny standalone paper; group any accepted endpoint necessity
+result with the critical-moment construction and its original full reports.
+The frozen223C PDF and its first numerical review remain immutable.

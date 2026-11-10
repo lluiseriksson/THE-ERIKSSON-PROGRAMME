@@ -1,0 +1,11 @@
+{
+  "input_pins": {
+    "weak_endpoint_diagnostic224.py": "2107b9c7efdf5454c64703be1a06f7aa083c23a17183f8e30d67f4b487991527",
+    "weak-endpoint224-draft.txt": "7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c"
+  },
+  "cases": "6exact1D sums; actualD3L16coexact fields and complete original starts;15exact huge coefficient profilesD3,4,5/m1,2,4,8,16;3actual boundary/distribution controls",
+  "source_audit_pending": true,
+  "interpretation": "No all-size/formal/independent verification; failures retained; proof not promoted before separate source audit",
+  "runtime": "Own isolated Colab224A CPU/highmemory; prepare disconnected/release at end",
+  "local_scientific_execution": false
+}

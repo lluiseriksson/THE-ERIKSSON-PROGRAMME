@@ -1,0 +1,14 @@
+{
+  "own_runtime": "tep224-a-own-cpu",
+  "opened_requested": "2026-11-10T17:06:09Z",
+  "release_finished": "2026-11-10T17:06:57Z",
+  "backend_readback_inactive": true,
+  "scientific_elapsed_seconds": 0.6246193320000089,
+  "child_maxrss_kib": 105200,
+  "compute_units_billed": null,
+  "actual_exits": {
+    "normal": 0,
+    "optimized": 0
+  },
+  "normal_optimized_identical": true
+}

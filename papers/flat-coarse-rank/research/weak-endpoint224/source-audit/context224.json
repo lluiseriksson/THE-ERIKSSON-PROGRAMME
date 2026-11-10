@@ -1,0 +1,34 @@
+{
+  "unit": 224,
+  "role": "source auditor in separately spawned agent context",
+  "exposed_identity": "System: AI assistant accessed via API. Developer: Codex, an agent based on GPT-6.",
+  "exact_model_identifier": "Not exposed in the visible task context; no exact model or variant asserted.",
+  "parent_context": "Inherited visible user global AGENTS instructions, environment and tool instructions, and parent audit assignment. Parent supplied draft hash, audit targets, comparison source and scope limitations.",
+  "isolation": "No inbound message received while auditing. Parent framing was available before audit. This is not a blind, independent-human, or independently selected-model review.",
+  "environment": {
+    "cwd": "C:\\Users\\lluis\\Documents\\Codex\\2026-10-29\\mi",
+    "shell": "powershell",
+    "task_date": "2026-11-10",
+    "timezone": "Europe/Stockholm"
+  },
+  "tools_used": [
+    "functions.exec for PowerShell reading, hashing and writing the four authorized outputs",
+    "web primary-source open of Frank arXiv1206.3325v1"
+  ],
+  "research_inputs": [
+    "weak-endpoint224-draft.txt",
+    "PREREGISTRATION224.json",
+    "Frank arXiv1206.3325v1 Introduction and Theorem 2.1"
+  ],
+  "governance_inputs": [
+    "D:\\LEEME.md",
+    "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\CLAUDE.md",
+    "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md"
+  ],
+  "prohibited_work_performed": false,
+  "source_edits": false,
+  "disposable_clone_created": false,
+  "previous224review_claimed": false,
+  "file_encoding": "UTF-8 without BOM; LF; final newline",
+  "report_provenance": "Original complete audit text generated in this role; no prior review imported."
+}

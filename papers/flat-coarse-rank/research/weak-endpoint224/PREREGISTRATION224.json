@@ -1,0 +1,28 @@
+{
+  "unit": 224,
+  "status": "PREREGISTERED_UNREVIEWED_FULL_ANALYTICAL_COUNTEREXAMPLE_CANDIDATE",
+  "question": {
+    "statement": "Can the full inverse D/2 moment in the actual finite scalar component-gradient rectangular theorem be replaced by sup_tau tau^(D/2) n^-D #{mu/a>tau}<=Mweak, retaining target-order observations and some finite locally quadratic penalty on actual divergence-zero fields?",
+    "hypotheses": "D>=3,Nc>=2,c>0; a>=1,exact arithmetic meanmu>=1,a<=2mu; weak critical distribution bound only. Do not assume the full moment. Same original positive-start component-gradient repair energy and actual coexact subdomain.",
+    "mechanism": "Geometrically scaled disjoint weak boxes and actual compact C1 product coexact fields. Derive all boundary-start energies and an m-dimensional low space while weak critical bound<=1 and target remains bounded; use rank-nullity against all differentiable finite observations.",
+    "falsifier": "An omitted original-start high edge, failed coexact/disjointness/constant/mean/weak-moment bound, bad packing or a positive theorem invalidating this proposed family defeats the draft. No unreviewed counterexample is reported as proved.",
+    "abandonment": "Preserve all negative evidence; stop on load-bearing counterexample; after3 substantive unsuccessful units change this exact mechanism or name precise missing lemma. Old stopped routes remain stopped.",
+    "status": "UNREVIEWED ANALYTICAL DRAFT224; no source audit or scientific run yet; not a replacement for223 numerical assessment",
+    "source_context": "main814fa4b57b1b4756d5c5eb84daa4612177e092e9; frozen manuscript223Cddd2cf605c1715a03d2e87991e920c0ec760e527",
+    "source_draft": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-224\\weak-endpoint224-draft.txt",
+    "raw_UTF8_LF_sha256": "7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c",
+    "primary_comparison": "Frank arXiv1206.3325v1 Introduction and Theorem2.1 distinguish strong spatial integrability from weak spectral-multiplier bound. Classical endpoint/disjoint-well mechanisms; priority for finite coefficient/coexact specialization unestablished. No contradiction of Frank or full-moment222 claimed.",
+    "units_completed_without_substantive_progress": 0
+  },
+  "draft": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-224\\weak-endpoint224-draft.txt",
+  "draft_sha256": "7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c",
+  "created_at": "2026-11-10T16:43:33.810865+00:00",
+  "hypotheses_eliminated": [],
+  "verified_refutations": [],
+  "formal_results": [],
+  "scientific_execution": false,
+  "new_paper_or_PDF": false,
+  "new_grade": null,
+  "priority": "Complete223 first exact-PDF numerical review/publication; meanwhile prepare224 offline. Source audit224 only after current numerical reviewer is idle; no inbound while reviewing.",
+  "next_action": "Independently audit exact224 draft, especially original boundary starts, C1 bump ratio, exact mean/envelope, strict weak cutoff and actual coexact rank. Then prepare owned Colab normal/-O exact tensor diagnostics with real mutations; do not allocate huge dense lattices."
+}

@@ -1,0 +1,43 @@
+LOGARITHMIC ADDENDUM224: COMPLETE SOURCE REVIEW
+Verdict: accept_with_limits
+Role: bounded analytical addendum audit; no numerical grade or new paper.
+
+EXACT REFERENTS
+Addendum: D:\Datos\the-eriksson-programme\autonomia\evidencia-224\weak-endpoint224-logarithmic-addendum.txt
+Raw-byte SHA256, supplied and matched: 0720cedc459361539c9cedf95b7b186831a6ab9414ea27c859918203a39fb059.
+Frozen source commit: ddd2cf605c1715a03d2e87991e920c0ec760e527.
+Frozen path: papers/flat-coarse-rank/integrated-revision/revision223/balanced-rings223.tex.
+Git blob object: 6cf10f10194e781f39cf48e96a4ada40956bbb91.
+Raw git-show blob SHA256: 6877841cde546f8920c39b98a5dfef8af385b1a2d5a4842f95a9dd36985b3dc2; 16119 bytes; no checkout conversion or normalization.
+Original224 draft previously read in this auditor role: raw UTF-8 LF SHA256 7a94460f2cbbaf6ac291d64981a7ae6e79590067f315923b615f842d6a0b211c.
+The initial224 audit's four files were hashed at this assignment's start and are untouched. This report is a new bounded addendum, not a retrospective amendment of the original verdict.
+Line citations below refer to physical lines in the addendum or named frozen source file, starting at one. Frozen source was inspected using git show, including its complete section; no PDF was rendered or read. The theorem and corollary are identified by thm:balanced223 and cor:balanced223-moment; compiled theorem numbering was not independently checked.
+
+LOAD-BEARING OBJECTIONS
+None found. The layer-cake corollary, the constants as transcribed, the normalized positive-start scalar energy convention, and the matching logarithmic order are correct under the stated assumptions and the existing full-moment theorem as analytic input.
+
+1. FINITE LAYER CAKE, MU=1, AND ATOMS
+Addendum lines 6-15 assume mu>=1, a>=1 and use normalized counting measure. Hence 0<Y=mu/a<=mu. For every individual y in this finite distribution, y^P=P integral_0^mu tau^(P-1) 1_(tau<y) d tau. Finite summation gives the exact displayed identity without any measure-theoretic exchange issue.
+On (0,1) the probability is at most one, contributing at most one. On [1,mu], the assumed strict weak bound gives probability at most M_w tau^-P, contributing P M_w log(mu). The possible overestimate on the first interval is harmless. Thus E[Y^P]<=1+P M_w log(mu).
+At mu=1, that latter interval has zero length. In fact the actual mean plus a>=1 forces a identically one, so Y=1 and the full moment equals one exactly. Strict cutoff atoms at tau=1, tau=mu, or any intermediate Y value alter no ordinary integral. The weak supremum is still over strict superlevel sets; no equality atom was added or removed to change its definition. The derivation does not require M_w>=1 as an additional hypothesis. The upper envelope a<=2mu is retained by the problem but not needed for this integration step.
+
+2. THE ACTUAL FULL-MOMENT SOURCE CONSTANTS
+Frozen source lines 14-19 state P=D/2, b=2^D, J=2D, C_ext=1+J{2J(1+12J)+1}, G_D=2^(2D+10)D^2 C_ext^2 and t=(cG_D)^(-P)/b. These agree exactly with addendum lines 20-23. Source lines 25 and 34-35 give output dimension at most 2Dh[1+(2b+3)S(X)/t], h=D(N_c^2-1), and Phi(y)=c||y||^2.
+Put M_actual=E[Y^P]. Then exactly S(X)=n^D mu^-P M_actual. Since mu>=1, ((1+mu)/mu)^P<=2^P. With T=max{1,n^D/(1+mu)^P}, it follows that S(X)<=2^P M_actual T. As T>=1, inserting this and 1/t=b(cG_D)^P gives
+ dim(output)<=2Dh[1+(2b+3)b(cG_D)^P 2^P M_actual]T.
+This is precisely addendum line 26 and agrees with the frozen source corollary's constant at lines 38-53. Substitution of section 1 gives line 29 without altering the construction or penalty. The coefficient-dependent partition needs neither an added moment certificate nor a changed energy; its finite full moment always exists and is now bounded analytically by the weak hypothesis and scale cutoff.
+This audit verifies the transcription, normalization and application of the named full-moment theorem. It does not constitute a new independent all-size reproof or formal certification of the theorem's entire BV/ring construction. Its proof is used as an explicit existing analytic input, as the addendum itself says at lines 32-33.
+
+3. POSITIVE-START ENERGY AND ACTUAL NORMALIZED MEANS
+Frozen source lines 19-20 explicitly retain original positive starts. Lines 29-31 display sum_(i,x:x,x+e_i in X) a(x)|f(x+e_i)-f(x)|^2, with the coefficient evaluated at the start x. Lines 33-35 add nonnegative periodic wrap terms and apply this same scalar inequality to h actual real components. There is no weight average, reversed-start coefficient, curl substitution, or missing need for a wrap cancellation in the upper bound.
+Source lines 51-55 divide energy and squared norm by V=n^D and define each actual observation row as V^-1/2 |B|^-1/2 sum_B f = sqrt(|B|/V) mean_B f. The observation penalty is c times the squared Euclidean norm of these rows. Thus K=c remains exact with normalized energy and norm. Bare unscaled arithmetic means with the same unweighted penalty would be a different statement; the phrase normalized rectangular means in this addendum refers to these explicitly scaled rows.
+The original224 lower family was audited with counting-measure energy Q_a=sum_(x,i,j) a(x)|D_i^+ A_j(x)|^2 and counting norm. Dividing both by V preserves the low-space Rayleigh bound. For each fixed n the two norms differ by a positive constant, so differentiability, rank-nullity, and a finite local quadratic penalty assumption remain valid under this normalization. All nonzero lower-family derivative starts are inside their weak boxes, including upper outgoing starts; torus wrap terms vanish there. Therefore the inspected frozen source and the224 argument concern the same scalar positive-start component-gradient energy, with only a common normalization difference. The upper theorem holds on all real component fields; its restriction to divergence-zero or coexact fields follows without a separate certificate.
+
+4. MATCHING LOGARITHMIC ORDER AND ITS QUANTIFIERS
+For fixed D,c the224 choice of k, epsilon and L_0 stays fixed while m grows. Write alpha=epsilon L_0^2>=1. Its mean bounds give mu=alpha 4^(m-1) rho_m with 1/2<=rho_m<=1. Taking natural logarithms yields exactly addendum lines 41-42, theta_m=log(rho_m) in [-log2,0]. Consequently log(mu) tends to infinity and m/(1+log(mu)) tends to 1/(2log2). In particular m is bounded below by a positive constant depending only on fixed D,c times 1+log(mu), for all sufficiently large m.
+The original centered differentiable/local-quadratic argument forces derivative rank at least m on its actual m-dimensional coexact low space. This is a rank statement, and hence also a lower bound on finite output dimension. Its target T remains between one and the fixed number (16sqrt(2/epsilon))^D. The positive construction here has M_w=1 and dimension O_(D,c,N_c)(1+log(mu)) on this family. Thus upper and lower dependence match in asymptotic order along the family. Even a uniform bound proportional to T times o(log(mu)) fails there, because T is uniformly bounded above.
+This is worst-case order across the weak-bound class with fixed parameters, not an assertion that every profile needs logarithmic rank, not sharp constants, and not exact minimal rank for this family or for arbitrary profiles. The negative conclusion retains centered observations, differentiability at zero, finite local quadratic upper penalty, and a coercivity inequality in a neighborhood of zero. It does not apply to arbitrary noncentered, nondifferentiable or nonquadratic encodings. The upper construction is linear and centered and therefore lies in the compared class.
+
+LIMITS AND GOVERNANCE
+No scientific execution, numerical diagnostic, Lean, build, render, runtime, other-chat or automation access occurred. The four original source-audit files were neither edited nor replaced. No frozen223C numerical report or PDF was inspected or altered; the historical executable-evidence prose in the authorized frozen source section was visible but supplies no fresh execution, numerical grade or certification here. No disposable clone was created. Existing source reading in this same audit-role context and parent-provided framing are disclosed; this is not independent, blind or human review.
+This addendum is an elementary analytical corollary within the existing endpoint question, not a new paper. It does not refute the full-moment theorem, establish profile optimality or priority, produce general matrix/curl/covariant results, or imply a continuum or physical mass-gap theorem. PR29/TermSource status is not reassessed. The defensible promotion is only that the fixed addendum survives this source-only check under the stated existing theorem input and scope limits.
