@@ -1,0 +1,33 @@
+{
+  "unit": 229,
+  "commit": "ef39a6a2bd60aa58260d63620a47f18a1eb0c856",
+  "artifact": "scripts/sharp_coexact_rank_diagnostic229.py",
+  "main_raw_sha256": "e59ef4b6311407f7f2ec98fe7328fe38de76fb9efb2f52f6814dd6415ab017fb",
+  "dependency_raw_sha256": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c",
+  "verdict": "accept_with_limits",
+  "blocking_findings": [],
+  "material_findings": [],
+  "checks": {
+    "full_actual_sources": "both read and captured from exactGit",
+    "partition_enumeration": "15unique canonical restricted-growth words, exhaustive for4sites",
+    "actual_coexact_image": "complete two-form generator images, correctly transposed outputs",
+    "scalar_gradient_constraints": "block anchor differences; dimF=V-1-constraint_rank",
+    "annihilator_formula": "g*(DR-D-dimF), compared against independently constructed image matrix",
+    "sharp_bound": "g(D-1)(R-1)",
+    "drift": "actual forward rows, rankV-1",
+    "fibre_equality": "required only for3coordinate-fibre cases",
+    "case_gate": "21completedcases required",
+    "control_gate": "exact3names, actualTrue and rejected==3 before CHECKED",
+    "bare_assert_acceptance": "none"
+  },
+  "limits": [
+    "Future execution must stage/hash the exact imported228B module; ordinary import does not self-verify its source.",
+    "Import does not run base.run(); no automatic extra228ten-case replay.",
+    "/content sentinel does not authenticate runtime ownership or mode; normal/-O wrapper evidence still required.",
+    "Selected new lemma only; no fullL16budgetfamily, all-size formal proof, novelty, independent replay or numerical grade."
+  ],
+  "execution_performed": false,
+  "numerical_grade": null,
+  "analytical_theorem_verdict": "Separate exact1af074718e5d122c5ef02d287461750833b44c77 remains unchanged",
+  "report": "fullreport.txt"
+}

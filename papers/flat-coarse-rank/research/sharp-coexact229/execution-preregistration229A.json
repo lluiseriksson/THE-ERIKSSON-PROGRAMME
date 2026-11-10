@@ -1,0 +1,40 @@
+{
+  "unit": 229,
+  "prepared_at": "2026-11-10T20:15:09.931915+00:00",
+  "source_sha": "ef39a6a2bd60aa58260d63620a47f18a1eb0c856",
+  "inputs": {
+    "sharp_coexact_rank_diagnostic229.py": {
+      "path": "scripts/sharp_coexact_rank_diagnostic229.py",
+      "sha256": "e59ef4b6311407f7f2ec98fe7328fe38de76fb9efb2f52f6814dd6415ab017fb"
+    },
+    "coexact_partition_rank_diagnostic228.py": {
+      "path": "scripts/coexact_partition_rank_diagnostic228.py",
+      "sha256": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c"
+    },
+    "sharp-coexact229-draft.txt": {
+      "path": "papers/flat-coarse-rank/research/2026-11-10_sharp-coexact229.txt",
+      "sha256": "8b8457bdacc242150492890e6b08503356a6c9328ce787501239528eb303da70"
+    }
+  },
+  "source_review_manifest_sha256": "e5e1d6f0ca462c8c77ab5abb9a6103ebec7a97f203f3368fd543714979bcf30b",
+  "source_audit_pending": false,
+  "case_count": 21,
+  "all_four_site_D2n2_partitions": 15,
+  "other_fixed_cases": 6,
+  "controls": [
+    "Actual central drift Nyquist kernel",
+    "Omitted constant-vector harmonic dimension",
+    "Actual projected transverse-output class"
+  ],
+  "modes": [
+    "normal",
+    "optimized"
+  ],
+  "must_match_output_bytes": true,
+  "actual_dependency_path_hash_and_optimize_flag_required": true,
+  "scientific_execution": "NOT_YET_RUN",
+  "new_paper": false,
+  "grade": null,
+  "runtime": "Own ColabLinux CPU/highmemory, separate session/config, prepare disconnected then release and backendreadback",
+  "scope": "New sharp rank lemma only; no fullL16budgetfamily, independent clone replay, formal proof or priority claim."
+}

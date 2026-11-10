@@ -1,0 +1,18 @@
+Dated primary-source follow-up after source1af074718e5d122c5ef02d287461750833b44c77 was frozen.
+The original draft's mcmt2e.pdf timeout remains a true historical observation.
+Subsequently the author's other existing PDF URL was successfully opened:
+https://pages.uoregon.edu/dlevin/MARKOV/markovmixing.pdf
+Levin and Peres, Markov Chains and Mixing Times, second edition, Lemma1.16,
+printedpage12/PDFpages27-28. It gives the finite irreducible-chain harmonic
+constancy argument by propagation of a maximum. The draft's forward drift is
+D(P-I) for the uniform forward-coordinate walk. This confirms a classical
+mechanism, not novelty of the candidate partition-rank combination. No full-book
+absence search or priority claim is made. Only the cited passage was inspected.
+
+Sushch, arXiv:2202.03923v1, Section2 equations2.6-2.8 and Proposition3.4,
+https://arxiv.org/html/2202.03923v1
+Forward differences and a two-dimensional discrete Hodge decomposition were read.
+They provide primary background; the exact arbitrary-D convention needed in229
+is proved directly there. No claim that Sushch states or fails to state the new
+partition-rank bound follows from this limited reading. No full copyrighted book
+or article text is redistributed in this companion.

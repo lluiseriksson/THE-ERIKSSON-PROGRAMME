@@ -1,0 +1,23 @@
+{
+  "started_utc": "2026-11-10T20:16:14.662798+00:00",
+  "source_context": "sourceef39a6a2bd60aa58260d63620a47f18a1eb0c856",
+  "input_pins": {
+    "sharp_coexact_rank_diagnostic229.py": "e59ef4b6311407f7f2ec98fe7328fe38de76fb9efb2f52f6814dd6415ab017fb",
+    "coexact_partition_rank_diagnostic228.py": "f6a0a5fde053b6430ba0545a88bbed3844e4fb576a175a9ab07173180f8d3b5c",
+    "sharp-coexact229-draft.txt": "8b8457bdacc242150492890e6b08503356a6c9328ce787501239528eb303da70"
+  },
+  "python": "3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]",
+  "runtime": "Own ColabLinux CPU highmemory; no Windows scientific execution",
+  "compute_units_billed": null,
+  "exits": {
+    "normal": 0,
+    "optimized": 0
+  },
+  "source_audit_pending": false,
+  "scope": "Selected sharp229rank/annihilator/drift/fibre checks only; fullL16coefficient-budgetfamily is not executed.",
+  "status": "FINITE_DIAGNOSTICS_CHECKED",
+  "normal_optimized_output_equal": true,
+  "finished_utc": "2026-11-10T20:16:15.962650+00:00",
+  "elapsed_seconds": 1.2999844319999738,
+  "child_maxrss_kib": 106484
+}
