@@ -1,0 +1,110 @@
+{
+  "recorded_at": "2026-11-11T10:47:44.679943+00:00",
+  "first_numerical_exact_PDF_round": true,
+  "canonical_sha256": "d45a17a4142204628189441b9133aa1027b0d7577a56dc5de6c576d2af6102e7",
+  "bytes": 355193,
+  "pages": 9,
+  "frozen_source": "568c971fac32caf33dce6ab4b14f2730788c3eb2",
+  "TeX_raw_sha256": "87e3100bdc8c948497195e3666075ae45618d10959f88347f3c9ed7e15986e01",
+  "sourceZIP_raw_sha256": "28744fe41cc41a4b0f4da56dc1e0ff22872599e800faef428c848400c188312d",
+  "exposed_interface": "Codex/OpenAI",
+  "exposed_model_description": "based on GPT-6",
+  "actual_served_backend_version": "unknown",
+  "actual_reasoning_effort": "unknown",
+  "task_name_not_model_identity": true,
+  "role": "Involved shared-account/context analytical AI reviewer; prior250B first-assessment role and earlier programme/source history inherited",
+  "blind": false,
+  "independent_demonstrated": false,
+  "human_peer_review": false,
+  "fresh_provider": false,
+  "prior250B": "Different20pagePDF381da284... had original4.50/10,visible in current manuscript; unchanged and not reevaluated or transferred here",
+  "current_score": 4.0,
+  "overall_stars": 4,
+  "overall_rule": "floor(importance+0.5); separate from criterion arithmetic mean",
+  "criterion_stars": {
+    "correctness_confidence": 4,
+    "rigor": 4,
+    "novelty": 2,
+    "significance": 2,
+    "reproducibility": 4
+  },
+  "recommendation": "major_revision",
+  "material_objections": [
+    {
+      "id": "255B-M1",
+      "status": "OPEN",
+      "severity": "material",
+      "scope": "Originality/priority",
+      "finding": "Exact historical novelty of the specialized formulas and rectangle obstruction remains unestablished. Classical spectral/coarse-mode principles are not new merely because explicitly specialized; limited primary reading proves neither novelty nor prior implication."
+    },
+    {
+      "id": "255B-M2",
+      "status": "OPEN",
+      "severity": "material",
+      "scope": "Stand-alone significance/practical relevance",
+      "finding": "Coherent as one companion note, but wider importance beyond a finite worked example is not demonstrated: no application, implemented solver, full-operator conditioning or resolution of the canonical coexact log question. The n-independent unrestricted K is not a practical efficiency theorem."
+    },
+    {
+      "id": "255B-M3",
+      "status": "OPEN",
+      "severity": "material",
+      "scope": "Scope/editorial interpretation; no fatal finite defect found",
+      "finding": "Retain orthogonal D3/D4 exact minima versus fixed-angle asymptotic order, ambient versus actual coexact domains, unrestricted versus canonical rows and actual rank versus count. Neither negative example settles arbitrary canonical O(n) partitions. No physical/continuum, formal, independent peer-review or unconditional acceptance claim follows."
+    }
+  ],
+  "text_read": "Complete actual9page32475byte extraction",
+  "original_PNG_pages_individually_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "visual_observation": "No blocking clipping, overlap, missing glyph or visible right-margin protrusion; actual symbols checked onpages4,6,7,9; residual bibliography underfull notice retained",
+  "complete_other_readings": [
+    "manuscript-source-audit/fullreport.txt",
+    "manuscript-format-delta-b-audit/fullreport.txt",
+    "production-c-returned-audit/fullreport.txt",
+    "candidate-b-visual-QA.json",
+    "source-preparation/SOURCE-MAPPING.json",
+    "source-preparation/inputs/source247.txt"
+  ],
+  "source_binding_only_not_complete_mathematical_reading": [
+    "Current TeX raw hash",
+    "115file sourceZIP raw hash; not115new full source readings or110new input audits"
+  ],
+  "engineering_evidence": "Attributed full retained engineering report:27children0,twofreshsame-sourceclonefinal PDFs equal,9renderpages,cleanup,ownstop and backendinactive. Not execution independently performed by this reviewer.",
+  "primary_readings": [
+    {
+      "url": "https://www.numdam.org/item/CRMATH_2011__349_23-24_1255_0.pdf",
+      "extent": "Original selected Section2 setup,Definitions2.3-2.4,Theorem2.5 and adjacent introduction/statement context; not full proof/numerical audit"
+    },
+    {
+      "url": "https://link.springer.com/article/10.1007/s00211-013-0576-y",
+      "extent": "Publisher abstract/metadata; incidental metrics ignored"
+    },
+    {
+      "url": "https://strathprints.strath.ac.uk/44827/1/10.1007_s00211_013_0576_y.pdf",
+      "extent": "Selected original Definitions3.4,3.7,3.9,Lemma3.21,Theorem3.22,Corollary3.23 and size qualification; not complete assumptions/proofs/implementation/numerical audit"
+    }
+  ],
+  "direct_DOI_resolvers": "Both direct DOI opens unavailable through webtool; successful primary copies used. No inference of paper expiry/absence or priority from failed lookup.",
+  "priority_or_exact_equivalence_certified": false,
+  "external_fulltext_PDF_redistributed": false,
+  "science_build_render_Lean_or_runtime_executed": false,
+  "source_or_PDF_modified": false,
+  "desktop_CUA_used": false,
+  "other_chat_messages_or_automation_changes": false,
+  "expense_or_model_provider_transfer": false,
+  "resampling_for_better_score": false,
+  "native_grant_receipt_deposit_publication_acceptance_created": false,
+  "native_schema_check": "Actual source required-key literal read without importing application; model-input keys/lengths and numeric mapping checked. Native normalizer still supplies operator-controlled fields and validates selected public metadata.",
+  "proposed_identity_status": "Author-proposed only,not native receipt/permission/publication",
+  "dated_source_freeze_wording": "Subsequent production/this review belong to dated exact-hash sidecars; originalPDF remains unchanged",
+  "report": "scientific-review.txt",
+  "response": "response-native.json"
+}

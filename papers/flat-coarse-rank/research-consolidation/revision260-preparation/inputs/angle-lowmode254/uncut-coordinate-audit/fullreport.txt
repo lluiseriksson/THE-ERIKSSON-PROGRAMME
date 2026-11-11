@@ -1,0 +1,94 @@
+AUDITORÍA ANALÍTICA ACOTADA: FALSADOR DE UNA COORDENADA SIN CORTAR
+11 de noviembre de2026.
+Conclusión: el falsador enunciado es correcto con sus hipótesis y convención del curl. No se han encontrado objeciones matemáticas bloqueantes. Se acepta solamente este corolario/falsador acotado; no se resuelve O(n) frente a n log n, no se transfiere ninguna cota ambiental al espacio coexacto y no se modifica ni se amplía la evaluación del PDF250B.
+
+1. Referente exacto y representación del hash
+Nota leída COMPLETA:
+D:\Datos\the-eriksson-programme\autonomia\evidencia-251\q251-uncut-coordinate-falsifier.txt
+SHA256 de sus bytes originales en disco, sin ninguna normalización:
+a0b75328741b96142716727e33795e71caedf3b7b6a46384118343bfdac1f71d
+Tamaño:5673 bytes. Contiene87 bytes LF,0 bytes CR y no tiene BOM UTF-8. No es una captura de un blob Git ni un hash de texto normalizado: se identifica el archivo concreto leído en D:.
+Se conserva una copia exacta mediante lectura y escritura de bytes, note-exact.txt, en este directorio de auditoría. Su SHA256 coincide. El original no se ha editado. Los hashes de la nota, copia, informe y contexto constan en hashes.json; el hash del propio manifiesto se devuelve aparte para evitar autorreferencia.
+
+2. Hipótesis y objeto de la comprobación
+D>=3, n par>=4, c>0, V=n^D. Los coeficientes son los del checkerboard ortogonal: P(x) es el proyector sobre el primer canal interno en paridad par y sobre el segundo en paridad impar; a=c/(16D),H=cn^2. B(x) es diagonal en la base interna ORIGINAL. Los gradientes son los positivos periódicos y se ponderan en su FUENTE, sin trasladar pesos al extremo de llegada.
+El dominio es U_0^2, donde U_0=im(d_1^*) para(d_1v)_(ij)=partial_i v_j-partial_j v_i,i<j, con adjunto respecto del producto escalar de conteo. Las componentes independientes de la dos-forma son las de i<j. Las observaciones son las medias rectangulares canónicas de cada canal original, compartiendo su partición entre componentes espaciales. No se permite mezclar canales internos mediante observaciones nuevas.
+La afirmación examinada es condicional: si en UN canal cada celda tiene alguna dirección completa{0,...,n-1}, aunque esa dirección cambie de celda a celda, el mapa no puede restaurar el objetivo c en U_0^2 con una penalización finita Phi y Phi(0)=0. La partición del otro canal puede ser arbitrariamente fina.
+
+3. Función real, pares fuertes, media cero y no trivialidad
+Fijado el canal r, su paridad de fuente fuerte es p_1=1 o p_2=0. Sea m=n/2>=2. La función
+ F_r(t)=cos(2pi floor(((t-p_r) mod n)/2)/m)
+está bien definida sobre los residuos de Z/nZ. Para cada j=0,...,m-1 toma el mismo valor en los dos residuos{p_r+2j,p_r+2j+1} módulo n. Estos pares son disjuntos y cubren todos los residuos. Para r=1 incluyen correctamente el par{n-1,0}; no se omite el salto periódico.
+Su suma es2sum_j cos(2pi j/m)=0, por la suma finita de las m raíces de la unidad, válida también para m=2. No es la función nula: F_r(p_r)=1. La exclusión n=2 es real y necesaria para este testigo: allí m=1, la función propuesta sería constante1 y el espacio de funciones constantes en el único par con media cero sería{0}. Esta auditoría no extiende la conclusión a n=2.
+Con b=(1,-1,0,...,0), se define z_(k,r)(x)=b_k F_r(t(x)),t(x)=sum_i x_i mod n, y el otro canal es0. Es un campo real no nulo, pues existe una capa t=p_r y b no es0. Cada capa de t tiene exactamente n^(D-1) sitios, de modo que cada componente de z tiene media global cero.
+
+4. Soporte de Fourier y condición espacial exacta
+Se puede utilizar la base unitaria de caracteres V^(-1/2)exp(2pi i ell dot x/n) para el producto escalar de conteo. La expansión finita de F_r en un carácter de Z/nZ, compuesta con t(x), sólo produce frecuencias diagonales ell=(j,...,j). Su coeficiente de frecuencia0 desaparece porque la media de F_r es0.
+En cualquier frecuencia diagonal no nula, xi_i=exp(2pi i j/n)-1 es el MISMO número para todos los i y no es0. El coeficiente espacial u del campo es un múltiplo escalar de b; la normalización elegida de Fourier sólo cambia ese múltiplo, no la identidad siguiente:
+ sum_i conjugate(xi_i)u_i=conjugate(xi_1)*scalar*sum_i b_i=0.
+Además S=sum_i|xi_i|^2=D|exp(2pi i j/n)-1|^2>0. No se divide por0: en la frecuencia0 se pone la dos-forma a0, y las demás frecuencias no diagonales del testigo también son0.
+Media cero y una condición de divergencia no se usan como sustituto de pertenencia coexacta. La pertenencia se comprueba mediante una preimagen explícita, como sigue.
+
+5. Signo del adjunto del curl y preimagen
+Para el gradiente positivo, la identidad de suma periódica da
+ partial_i^* f(x)=f(x-e_i)-f(x),
+cuyo símbolo es conjugate(xi_i). Con el curl enunciado y componentes de dos-forma i<k, el componente k del adjunto es
+ (d_1^*psi)_k=sum_(i<k)conjugate(xi_i)psi_(ik)
+                 -sum_(i>k)conjugate(xi_i)psi_(ki).
+El signo MENOS de la segunda suma es el que corresponde a partial_k u_i-partial_i u_k en la componente(k,i),k<i. No hay un signo global adicional ni un factor2 al contar las componentes independientes i<k.
+Definiendo psi_(ik)=(xi_i u_k-xi_k u_i)/S para i<k, la sustitución da
+ (d_1^*psi)_k
+ =[sum_(i!=k)|xi_i|^2 u_k-xi_k sum_(i!=k)conjugate(xi_i)u_i]/S
+ =u_k-xi_k[sum_i conjugate(xi_i)u_i]/S
+ =u_k.
+Por tanto la fórmula de la nota devuelve z, NO -z. La cancelación del término i=k está correctamente incluida al pasar de la primera línea a la segunda. Esto establece la pertenencia a la imagen del adjunto real especificado, sin invocar un teorema externo de Hodge o suponer invariancia coexacta de las medias.
+
+6. Realidad de la dos-forma
+El campo z es real, por lo que sus coeficientes de frecuencias conjugadas se conjugan. También xi(-ell)=conjugate(xi(ell)) y S(-ell)=S(ell) es real. La fórmula para psi conserva esa simetría conjugada. En una frecuencia diagonal de Nyquist, cuando aparece, xi_i=-2 es real y el coeficiente u es real; por ello psi también lo es allí. La frecuencia0 se ha fijado a0.
+La transformada inversa proporciona, en consecuencia, una dos-forma REAL en el toro finito, con d_1^*psi=z. Su tamaño puede depender de n; aquí no se necesita una cota de la preimagen. Se ha demostrado un testigo no nulo en el dominio ACTUAL U_0^2, no solamente un campo ambiental con divergencia nula.
+
+7. Energía fuerte exactamente nula
+En el canal r el peso H aparece precisamente en fuentes con paridad p_r. Todo paso positivo en cualquier dirección, incluso al envolver el toro, aumenta t por1 módulo n. Si la fuente es fuerte, t=p_r+2j y t+1 es el otro miembro de SU mismo par. Por tanto F_r(t+1)=F_r(t) y todas las partial_i z_(k,r) se anulan en esas fuentes.
+El otro canal es idénticamente0. Como B(x) es diagonal en la base original y las únicas derivadas potencialmente no nulas del canal r parten de fuentes de peso a, TODAS las contribuciones fuertes se anulan exactamente y Q_B(z)=a E(z). No se ha cambiado un peso de entrada por uno de salida, ni se han identificado etiquetas periódicas distintas.
+Cada desplazamiento positivo T_i es una isometría de conteo sobre el campo completo, de modo que ||T_i z-z||<=2||z||. Al elevar al cuadrado y sumar las D direcciones,
+ E(z)<=4D||z||^2,
+ Q_B(z)<=a4D||z||^2=(c/4)||z||^2.
+Las componentes espaciales ya están incluidas en la norma; no se necesita otro factor D. La energía débil no se declara0. La cota es exacta en el sentido de argumento analítico, aunque no se afirma que sea el valor óptimo del cociente energético.
+
+8. Medias nulas para cualquier dirección completa, celda por celda
+Sea S una celda rectangular del canal r y elija UNA de sus direcciones completas j. Fijadas todas las otras coordenadas, al recorrer x_j=0,...,n-1 la fase t(x) recorre cada residuo de Z/nZ exactamente una vez. Por tanto
+ sum_(x_j=0)^(n-1)F_r(t(x))=sum_t F_r(t)=0.
+Sumar después sobre los demás intervalos de la celda mantiene el valor0. Multiplicar por cualquier b_k y por el peso canónico V^(-1/2)|S|^(-1/2) no altera esa anulación. Así desaparecen TODAS las medias de componentes espaciales de esa celda.
+Este argumento vale para cualquier dirección completa; no exige que todas las celdas dejen sin cortar la misma dirección. El MISMO testigo funciona simultáneamente para todas ellas. El otro canal no puede rescatarlo aunque observe cada sitio, porque allí el campo entero es0. Se concluye Cz=0 sin suponer que la proyección de medias preserve U_0^2.
+
+9. Contradicción con cualquier penalización admitida
+Con Phi(0)=0, el campo no nulo y realmente coexacto construido satisface
+ V^(-1)Q_B(z)+Phi(Cz)=V^(-1)Q_B(z)
+ <=c||z||^2/(4V)<c||z||^2/V.
+La última desigualdad es estricta porque c>0, V>0 y ||z||>0. Ninguna magnitud finita, no linealidad o dependencia en n de la penalización puede cambiar su valor en la observación0. Se contradice el objetivo de restauración exactamente en el dominio solicitado.
+El canal r se elige indistintamente entre1 y2, usando su paridad fuerte correspondiente. Por contraposición, un mapa restaurador necesita en CADA canal al menos una celda que sea propia en TODAS las coordenadas. Es una condición necesaria, no suficiente. La nota no afirma lo contrario.
+
+10. Objeciones, alcance y uso como falsador
+Objeciones matemáticas bloqueantes: ninguna encontrada.
+Límites que deben acompañar el resultado:
+- Sólo elimina la clase explícita en la que cada celda de algún canal deja completa alguna coordenada. No elimina particiones arbitrarias de O(n) celdas, que pueden ser propias en todas las direcciones.
+- Tener una celda totalmente cortada no demuestra restauración ni detección de todo el espacio de baja energía. El testigo aquí comprobado no da por sí solo una cuenta asintótica o una cota logarítmica.
+- No decide O(n) frente a n log n, no transfiere la cota ambiental251 al dominio coexacto y no modifica el problema retenido.
+- Es una especialización concreta del mecanismo de pares fuertes descrito como253. Esta auditoría verifica directamente el testigo y su preimagen de curl; NO es una nueva certificación del conjunto de253, cuya fuente completa no se ha revisado aquí.
+- n=2 está excluido y no se incorpora por continuidad o analogía.
+- La convención del adjunto es la del curl indicado con pares independientes i<j y producto escalar de conteo; no debe cambiarse la normalización de las dos-formas al reutilizar la fórmula.
+No se modifica ni se incorpora nada al PDF250B, no se extiende su evaluación anterior y no se produce nueva nota numérica, paper o afirmación histórica de prioridad. No hay conclusión física, de continuo, de optimalidad o de implementación.
+
+11. Identidad real, límites de revisión y operaciones
+Ésta es una revisión analítica por el mismo auditor IA involucrado en tareas anteriores, con contexto persistente y compartiendo infraestructura/cuenta/configuración. No se afirma independencia, revisión ciega, revisión humana ni remuestreo independiente de modelo o proveedor.
+Descripción realmente expuesta:Codex, agente basado en GPT-6. Identificador exacto del backend/modelo servido, versión y esfuerzo de razonamiento efectivos: no expuestos y desconocidos. OpenAI/Codex es el contexto de interfaz expuesto; identidad de la cuenta, encaminamiento del proveedor, suscripción, cuotas y límites de uso no se han inspeccionado y permanecen desconocidos.
+Se ha usado sólo lectura de texto, razonamiento en papel, edición del informe y operaciones de bytes/hash. No se ha ejecutado un cálculo matemático, oráculo, Lean/Lake, compilación o prueba de Windows. No se ha usado CUA ni enviado mensajes a otros chats. No se han cambiado fuentes, repositorios, ramas, estados, automatizaciones, publicación ni PDF. No se ha abierto un nuevo problema activo ni fabricado una nota de investigación. No se ha creado un clon ni queda limpieza pendiente.
+Las instrucciones globales de almacenamiento y gobernanza ya leídas en esta tarea persistente siguen aplicándose. Los únicos archivos creados están en el directorio de evidencia solicitado. La nota original se comprobará de nuevo al publicar el manifiesto de hashes para confirmar que el referente continúa siendo el mismo.
+
+12. Entrega
+Directorio:D:\Datos\the-eriksson-programme\autonomia\evidencia-251\uncut-coordinate-audit.
+fullreport.txt:este informe completo, UTF-8 sin BOM, LF y LF final.
+note-exact.txt:copia de los bytes originales de la nota, sin normalización.
+context.json:identidad, conclusión y límites operativos explícitos.
+hashes.json:enlace entre rutas, representaciones, tamaños y SHA256 de nota/copia/informe/contexto. El hash del propio manifiesto se devuelve fuera de él.
+Conclusión final: falsador correcto y acotado; sin objeciones bloqueantes, con los límites anteriores. Revisión terminada, sin ampliación al PDF250B ni resolución del problema O(n) frente a n log n.

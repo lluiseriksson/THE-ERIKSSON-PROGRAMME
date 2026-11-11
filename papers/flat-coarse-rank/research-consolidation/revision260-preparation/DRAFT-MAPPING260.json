@@ -1,0 +1,27 @@
+{
+  "status": "UNREVIEWED_NEW_GROUPED_MANUSCRIPT_SOURCE_ONLY_NO_PDF",
+  "existing_paper": "ARR-2026-597T88D7WZ98HR0Z",
+  "proposed_route": "linked substantive revision, not a new small paper",
+  "old_exact_PDF": "d45a17a4142204628189441b9133aa1027b0d7577a56dc5de6c576d2af6102e7",
+  "base_source": "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\papers\\flat-coarse-rank\\research-consolidation\\revision255-preparation\\checkerboard_observations255.tex",
+  "base_sha256_raw": "87e3100bdc8c948497195e3666075ae45618d10959f88347f3c9ed7e15986e01",
+  "new_files": {
+    "checkerboard_observations260.tex": {
+      "bytes": 47103,
+      "sha256_raw": "9c24b70685a5a7ae9301555170fa84acafd9f17524734775b1e9bca7cce822d9"
+    },
+    "temporal_matching260.tex": {
+      "bytes": 15287,
+      "sha256_raw": "632c46463ac4f18ff1594af6ef5c860867287c78f3b0b692c119fd60373249b7"
+    }
+  },
+  "added_mathematics": "one full259 temporal theorem with radial-cutoff proof, actual coexact preimage, observation zeros, norm and energy; fixed/bounded-cut corollaries and rapid resonant counterexample; new actual nonwrapping refined family261C,36n-24 rows, full construction",
+  "not_included": "unreviewed260 golden family; independent256 Fourier witness remains existing source evidence",
+  "new_grade": null,
+  "build": false,
+  "visual_QA": false,
+  "source_audit": false,
+  "next_gate": "assemble full source mapping/inputs, freeze and source-audit exact new manuscript before owned-Colab production",
+  "source_repair": "260A-M1: cyclic extension versus nonwrapping canonical class explicitly distinguished; no split-cell invisibility inference",
+  "source_acceptance": "PENDING_NEW261C_AND_LAYOUT_SOURCE_DELTA"
+}

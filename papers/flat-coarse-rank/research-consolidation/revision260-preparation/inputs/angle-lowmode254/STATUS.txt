@@ -1,0 +1,37 @@
+254 — grouped analytical extension of251--253
+
+The source angle-lowmode254A.txt proves a finite unrestricted observation
+upper for every fixed positive angle between the two weak lines. The cutoff
+R=ceil(sqrt(D/(4delta))),delta=1-cos(theta), gives2Dn min(n,2R+1)^(D-1)
+real rows and normalized penalty2c/delta, independent of n. The lower ranks
+are derived inside the original ambient/coexact spaces. The order-n upper
+no longer requires orthogonality; exact arbitrary-angle minima are not claimed.
+
+The negative companion refutes simply extending the mean-only orthogonal map
+to0<theta<=1/4: an explicit original real coexact cosine field has every strong
+component mean zero and energy below target. Spectral enrichment supplies the
+missing transverse modes in the positive construction.
+
+The uncut-coordinate note is a bounded canonical-partition falsifier for even
+n>=4: if every cell in either channel leaves some coordinate complete, the
+same actual coexact witness annihilates all observations. It is a corollary,
+not a new paper or an asymptotic logarithmic lower bound.
+
+Full exact-source AI reports, contexts and raw captures are retained here.
+These are involved analytical readings sharing account/context; not independent,
+blind, human, peer review, numerical verification or Lean formalization.
+No score is assigned. Each source keeps its original pre-audit wording and hash;
+the corresponding complete report states the result of its later reading.
+
+The limited primary comparison identifies local spectral selection as established
+literature. Specific historical priority and practical relevance remain unproved.
+These results belong with251--253 in a future consolidated manuscript. Do not
+publish separate papers for the two corollaries or inherit any250B assessment.
+
+One active question remains251: canonical original-channel rectangular means on
+the actual coexact D3 checkerboard, O(n) or necessarily nlogn? The unrestricted
+construction and its lower ranks do not settle it. At angles tending to zero,
+count constants and penalty diverge; theta0 is excluded. Whole-operator condition
+number, efficient implementation, nonlinear observation lower bounds, physical
+Yang--Mills mass gap and continuum are not conclusions. PR29=20/41;TermSource=0.
+The published exact250B PDF/first4.50assessment/threeOPENobjections remain intact.

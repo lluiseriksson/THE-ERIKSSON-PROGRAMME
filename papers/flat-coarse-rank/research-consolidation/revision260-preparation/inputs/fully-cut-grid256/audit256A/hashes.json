@@ -1,0 +1,94 @@
+{
+  "verdict": "ACCEPT_FINITE_COUNTEREXAMPLE_FOR_THIS_PARTITION_ONLY",
+  "source_commit": "d77142dbe214a9df2dfd5ffa057c736796e6a8ad",
+  "source_path": "papers/flat-coarse-rank/research-consolidation/fully-cut-grid256/capacity-counterexample256A.txt",
+  "source_sha256": "1364094dfff6cc2cfcbc306717b2b4667d49401e00fd2c7d00fb132add9c07a6",
+  "source_bytes": 11746,
+  "source_local_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-256\\capacity-counterexample256A.txt",
+  "source_unchanged_and_raw_captures_verified_before_issue": true,
+  "files": [
+    {
+      "path": "capture/capacity-counterexample256A-exact-git.txt",
+      "bytes": 11746,
+      "sha256": "1364094dfff6cc2cfcbc306717b2b4667d49401e00fd2c7d00fb132add9c07a6",
+      "representation": "Exact raw bytes; no normalization",
+      "CR_bytes": 0,
+      "LF_bytes": 214,
+      "UTF8_BOM": false
+    },
+    {
+      "path": "capture/capacity-counterexample256A-local.txt",
+      "bytes": 11746,
+      "sha256": "1364094dfff6cc2cfcbc306717b2b4667d49401e00fd2c7d00fb132add9c07a6",
+      "representation": "Exact raw bytes; no normalization",
+      "CR_bytes": 0,
+      "LF_bytes": 214,
+      "UTF8_BOM": false
+    },
+    {
+      "path": "capture/gitattributes256-exact-git.txt",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "representation": "Exact raw bytes; no normalization",
+      "CR_bytes": 0,
+      "LF_bytes": 1,
+      "UTF8_BOM": false
+    },
+    {
+      "path": "capture/source253B-exact-git.txt",
+      "bytes": 14606,
+      "sha256": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2",
+      "representation": "Exact raw bytes; no normalization",
+      "CR_bytes": 0,
+      "LF_bytes": 241,
+      "UTF8_BOM": false
+    },
+    {
+      "path": "capture/source255B-definitions-exact-git.tex",
+      "bytes": 29571,
+      "sha256": "87e3100bdc8c948497195e3666075ae45618d10959f88347f3c9ed7e15986e01",
+      "representation": "Exact raw bytes; no normalization",
+      "CR_bytes": 0,
+      "LF_bytes": 596,
+      "UTF8_BOM": false
+    },
+    {
+      "path": "context.json",
+      "bytes": 1745,
+      "sha256": "20667db3e8f02b4344588637193388c3badcf3f954e4b4015ed94dae5b7decc7",
+      "representation": "UTF-8 without BOM; LF with final LF",
+      "CR_bytes": 0,
+      "LF_bytes": 28,
+      "UTF8_BOM": false
+    },
+    {
+      "path": "fullreport.txt",
+      "bytes": 22429,
+      "sha256": "db45b2b5b88b11dc6062f2dc3d59ff8c6c1f11128701751b6977c95754f910fd",
+      "representation": "UTF-8 without BOM; LF with final LF",
+      "CR_bytes": 0,
+      "LF_bytes": 123,
+      "UTF8_BOM": false
+    },
+    {
+      "path": "raw-git-subjects.json",
+      "bytes": 1384,
+      "sha256": "557e8074fd1dd1d4459ec744923ce64797f679ccfd478f7f76d4fc548957e432",
+      "representation": "UTF-8 without BOM; LF with final LF",
+      "CR_bytes": 0,
+      "LF_bytes": 30,
+      "UTF8_BOM": false
+    },
+    {
+      "path": "verdict.json",
+      "bytes": 1731,
+      "sha256": "a73bc4da6da2152482ea7fac6385284d90d8e7e85ac2570f2f2764b58762860a",
+      "representation": "UTF-8 without BOM; LF with final LF",
+      "CR_bytes": 0,
+      "LF_bytes": 27,
+      "UTF8_BOM": false
+    }
+  ],
+  "self_hash_excluded": "Returned externally to avoid self-reference",
+  "new_numeric_grade": null
+}

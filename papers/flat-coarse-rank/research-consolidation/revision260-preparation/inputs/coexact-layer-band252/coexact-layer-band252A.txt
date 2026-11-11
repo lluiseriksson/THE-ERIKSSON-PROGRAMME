@@ -1,0 +1,156 @@
+252A -- ANALYTICAL CANDIDATE: actual coexact low band for two-line checkerboards
+11 November2026. Parent fabrication, pending separate source audit. No runtime,
+formal proof, priority or numerical grade. Related progress on active question251;
+not a new question/paper and not inserted into frozen manuscript250B.
+
+THEOREM
+Fix D>=3, even n>=2, c>0, X=(Z/nZ)^D,V=n^D, g=2 original channels,
+positive a=c/(16D), H=cn^2. At source parity l=sum_i x_i mod2 use
+B(x)=a v_l v_l^T+H s_l s_l^T, where v_l is a unit weak-line vector and
+s_l a unit perpendicular. The two unoriented weak lines are distinct,
+principal angle theta in(0,pi/2]. Keep the ACTUAL original source-weighted
+forward form Q=sum_(x,i,r) (partial_i z_r)^T B(x)partial_i z_r, with
+all positive forward labels, counting norm and r=1..D spatial components.
+Let U0=im d1* for original forward curl (unordered2-form indices, counting
+adjoint), and U=U0^2, NOT an auxiliary coordinate domain.
+
+There is an explicitly constructed REAL linear subspace W subset U with
+ dim_R W=(D-1)(n-2), and Q(w)<=c||w||^2/4 for EVERY w in W.
+Thus ANY linear observation map C:U->F into any finite-dimensional real
+space, even allowing mixed internal/spatial/nonlocal rows, that satisfies
+ Q(z)/V+Phi(Cz)>=c||z||^2/V for all z in U,
+with finite Phi and Phi(0)=0, must have ACTUAL rank(C|U)>=(D-1)(n-2).
+In particular any restoring canonical map has full output count at least
+that rank. No size-uniform penalty or original-basis row restriction is
+needed for this lower. The observed map is not rotated in the proof.
+
+For D3,n>=4 the bound2(n-2)>=n excludes o(n) actual rank and full count;
+combined with249's canonical O_theta(n(1+lnn)) upper it leaves the logarithm
+OPEN. For D4 the bound3(n-2) is only order n for actual COEXACT rank, not
+order n^2. The separate251 ambient canonical count optimum Theta(n^2) does
+not transfer to this restricted rank. Fixed-positive-angle upper constants
+and their possible divergence remain as in249; this lower's dimension
+constant has no theta loss. No useful conditioning at theta->0 follows.
+
+1. ACTUAL PAIRED SUM-LAYER FUNCTION SPACES
+Put m=n/2 and t(x)=sum_i x_i mod n. Evenness makes parity of t agree with
+actual site parity, including wrap labels. For each l=0,1 let F_l be the
+space of real functions f:Z_n->R such that
+ f(l+2j)=f(l+2j+1) for all j in Z_m (indices mod n), and sum_t f(t)=0.
+The m pairs are disjoint and cover all n residues. For l1 the last pair is
+{n-1,0}. A function is determined by m pair values b_j with sum_j b_j=0,
+because sum_t f(t)=2 sum_j b_j. Hence dim_R F_l=m-1, including m1 where
+the space is zero. This dimension is derived, not an assumed low-band size.
+Every f(t(x)) has spatial mean n^(D-1)sum_t f(t)=0.
+
+2. THE STRONG-NORMAL COORDINATES ARE AN INVERTIBLE PROOF MAP
+Let S be the real2by2 matrix with rows s0^T and s1^T. Unit normals give
+det(S)^2=1-(s0 dot s1)^2=sin^2(theta)>0, so S is invertible. This is derived
+from the actual two distinct weak lines; no external frame certificate or
+well-conditioned-subset hypothesis is introduced. These coordinates are
+only used to BUILD original fields, not to change the observed rows/domain.
+
+Choose independently f_(l,r) in F_l for l=0,1 and r=1..D-1, and define
+ f_(l,D)=-sum_(r=1..D-1) f_(l,r).
+For each spatial r define the ORIGINAL internal vector field
+ z_r(x)=S^(-1) ( f_(0,r)(t(x)), f_(1,r)(t(x)) )^T.
+Let W be the image of this actual real linear map. Each scalar function
+can be recovered as s_l dot z_r at every residue; t:X->Z_n is onto.
+S invertible and the independent first D-1 functions therefore make the
+map injective. Its real parameter dimension is2(D-1)(m-1)=(D-1)(n-2).
+Every original internal channel has mean zero. Also sum_r z_r(x)=0
+pointwise by the definition of the Dth functions and linearity of S^(-1).
+Every original component is a function of t(x) alone.
+
+3. MEMBERSHIP IN THE ORIGINAL COEXACT IMAGE IS PROVED
+We give an actual finite Fourier preimage, not just assume a divergence
+condition implies membership. Expand the scalar functions on Z_n in its
+finite complex characters exp(2pi i k t/n). Mean zero removes k0; their
+original real values imply conjugate symmetry. On X the corresponding
+frequency is (k,...,k), not an artificial componentwise Fourier domain.
+For each original internal channel and nonzero k, the forward multiplier
+vector is xi=(exp(2pi i k/n)-1)(1,...,1), with xi!=0. The vector Fourier
+coefficient u=(u_1,...,u_D) satisfies sum_r u_r=0 because sum_r z_r=0.
+Therefore sum_r conjugate(xi_r)u_r=0.
+
+The actual forward-curl symbol is (d1u)_(ij)=xi_i u_j-xi_j u_i for i<j.
+Expanding its counting adjoint yields
+ d1* d1 u=(sum_i |xi_i|^2)u-xi(sum_i conjugate(xi_i)u_i).
+For the coefficients above the last term vanishes. Define actual Fourier
+2-form coefficients
+ psi_(ij)=(xi_i u_j-xi_j u_i)/(sum_i |xi_i|^2), i<j,
+and psi0=0. Their adjoint curl equals u. Nonzero frequencies are finite
+and the denominator is strictly positive, so this defines a genuine finite
+2-form. Conjugate symmetry of xi and u under k->-k gives conjugate symmetry
+of psi; inverse Fourier transform is REAL. At self-conjugate k=n/2 the
+multiplier and coefficients are real and the same formula applies directly.
+Consequently each original internal channel of z lies in actual im(d1*).
+Thus W subset U0^2 with its stated exact REAL dimension. No unproved Hodge
+comparison, physical preimage or Nyquist-mode omission is hidden in this step.
+
+4. THE ACTUAL STRONG TERMS VANISH ON EVERY VECTOR OF W
+At a source x of parity l, t(x)=l+2j for one j; each ACTUAL forward label
+has t(x+e_i)=t(x)+1 mod n. Since f_(l,r) belongs to F_l,
+ s_l dot (z_r(x+e_i)-z_r(x))
+ = f_(l,r)(t+1)-f_(l,r)(t)=0.
+This holds for every r and i, every wrap and every parameter in W. Hence
+the difference lies along the ACTUAL weak line v_l at that source. The
+orthonormal pair v_l,s_l gives
+ (partial_i z_r)^T B(x)partial_i z_r=a|partial_i z_r|^2.
+Summing yields the exact ORIGINAL quadratic identity Q(z)=a E(z) on W,
+where E=sum_(x,i,r)|partial_i z_r|^2 in original Euclidean coordinates.
+We have not merely bounded an auxiliary normal-coordinate energy. In
+particular the inverse-normal map's possibly large norm causes no angle
+loss in the ORIGINAL Rayleigh bound that follows.
+
+Counting-isometric shifts give E(z)<=4D||z||^2 for all original fields,
+by |z(x+e_i)-z(x)|^2<=2|z(x+e_i)|^2+2|z(x)|^2. All labelled directions
+are counted, including n2 multiplicities. With a=c/(16D),
+ Q(z)=aE(z)<=c||z||^2/4 on ALL of the constructed W.
+This is a derived low-energy space for the actual positive profile; no
+assumed regional/coexact gap or weak-field abstract structure replaces it.
+
+5. ACTUAL RANK, CANONICAL NORMALIZATION AND ENDPOINTS
+If rank(C|U)<dim W, rank-nullity applied to its restriction W gives some
+nonzero w in W with Cw=0. The stated restoring target at this actual w in U,
+using Phi(0)=0, would require Q(w)>=c||w||^2 after multiplying by V.
+Section4 gives Q(w)<=c||w||^2/4, a contradiction. Therefore
+ rank(C|U)>=(D-1)(n-2).
+This is an ACTUAL restricted-rank lower, not substitution of dimF, full
+output rows or an ambient rank. It applies to any linear C and finite
+Phi(0)=0, regardless of mixed/nonlocal rows or their normalization.
+For canonical normalized rows Phi=K||.||^2 is a special case, so full
+count>=actualrank and the stated consequence follows without losing V.
+
+At n2, m1 makes both F_l zero and the theorem's dimension/lower is0.
+No nonexistent nonconstant layer mode or positive bound is claimed there.
+For n>=4 the construction is nonzero and D3 gives2(n-2)>=n. The angle
+assumption theta>0 is used to prove S invertible; at theta0 this proof
+does not apply and no constant-projector result is refuted. For each
+positive theta the lower constant is independent of its size. This says
+nothing about useful conditioning of coordinates or a uniform upper as
+theta varies with n. The statement may be applied at each positive angle,
+but the249 fixed-angle upper's asymptotics still require their own scope.
+
+6. WHAT THIS ADVANCES AND WHAT REMAINS OPEN
+This supplies an explicit actual coexact low band and rank lower of order n
+for this two-line checkerboard, including nonorthogonal distinct weak lines.
+It does not repeat the invalid ambient projection shortcut identified in251:
+there is no use of (I-R)w in the domain argument at all. The only rank-nullity
+kernel vector lies inside the explicitly constructed W subset U0^2.
+The different ambientD4 canonical count lower251 remains stronger in its
+ALL-FIELD scope; no coexact n^2 optimum is inferred. D3 n versus nlogn on
+canonical coexact observations is still OPEN, so active question251 remains.
+This is related source progress for a future grouped consolidation, not a new
+small paper or change to exact manuscript250B/PDF381da284.../any old grade.
+
+No historical novelty, practical solver, formal verification, efficient
+implementation, continuum theorem, interacting producer or physical mass gap
+is established. Strong-network/kernel dimensions and finite Fourier inversion
+are classical mechanisms; the exact current profile/domain statement needs
+result-specific primary-source implication comparison before claiming priority.
+Falsifiers: S is singular for the stated distinct lines; the pair spaces fail
+wrap/dimension claims; actual coexact preimage formula has a sign/conjugacy
+defect; a strong source label has nonzero normal difference; or rank-nullity
+uses a vector outside W. All failure reports must be preserved. This is a
+candidate pending a complete fresh separate-role analytical source audit.

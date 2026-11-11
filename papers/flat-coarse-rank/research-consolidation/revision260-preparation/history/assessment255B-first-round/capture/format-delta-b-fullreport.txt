@@ -1,0 +1,62 @@
+AUDITORÍA ACOTADA DEL DELTA DE MAQUETACIÓN255B
+11 de noviembre de 2026. Sin nueva evaluación numérica, compilación o PDF.
+
+VEREDICTO
+ACEPTADO SOLAMENTE EL DELTA DE FUENTE. Los dos cambios preservan las matemáticas, la igualdad coseno, el hash histórico y el contexto de la evaluación anterior. No se encontró modificación adicional del TeX. Esta conclusión no constituye aceptación visual del futuro PDF255B ni atribuye el informe matemático255A a unos bytes que no leyó entonces.
+
+1. REFERENTES EXACTOS
+Fuente A:
+D:\Datos\the-eriksson-programme\autonomia\evidencia-255\source-preparation\checkerboard_observations255.tex
+29527 bytes; SHA25643eeed4d2f3c4156e9d54db44309501f42beb357d0c9256f1c5a830f9b12918d.
+Fuente B:
+D:\Datos\the-eriksson-programme\autonomia\evidencia-255\source-preparation-b\checkerboard_observations255.tex
+29571 bytes; SHA25687e3100bdc8c948497195e3666075ae45618d10959f88347f3c9ed7e15986e01.
+Diff leído completo:
+D:\Datos\the-eriksson-programme\autonomia\evidencia-255\formatting255B.diff
+1978 bytes; SHA256604de3dbc30d1d1d8e259ec73e1b0101bb986cbd5279b8caf5be4196de0a8b42.
+Explicación leída completa:
+D:\Datos\the-eriksson-programme\autonomia\evidencia-255\source-preparation-b\PRODUCTION-LAYOUT-CORRECTION255B.txt
+1870 bytes; SHA256de70dc2fc49b48ac24a90b10d5aa393c73ff8e3d87880aa6874dfb1813b6538a.
+Informe matemático ORIGINAL255A preservado:
+D:\Datos\the-eriksson-programme\autonomia\evidencia-255\manuscript-source-audit\fullreport.txt
+21609 bytes; SHA2560226e3402fc2ada4349e0acdc5dd8174e3b372ac9f1654dd0a55b6b91330dfa3.
+Todos estos hashes identifican bytes de archivos locales, sin normalización y sin captura nueva de Git. Se conservaron siete copias RAW, incluyendo también los dos JSON originales de trazabilidad, dentro de capture/.
+
+2. MÉTODO Y ALCANCE DE LA COMPARACIÓN
+El TeX A había sido leído completo en la auditoría matemática anterior. En este encargo se leyeron completos el diff y su explicación, se comprobaron los dos pasajes y se comparó TODO el texto A/B mediante una sustitución literal de exactamente esos dos segmentos únicos. Aplicar esas dos sustituciones a A reproduce B carácter por carácter. No se hizo una nueva revisión matemática integral del manuscrito ni una lectura de PDF. Los hashes RAW fijan por separado ambas representaciones.
+El diff contiene exactamente dos hunks: el primero situado alrededor de la antigua línea365 y el segundo alrededor de la antigua línea545. No hay cambios en otras secciones, teoremas, símbolos, referencias, cuantificadores, constantes, dominio, conteos, normas o clases de filas. La conclusión de conservación no depende sólo de la descripción del autor: se comprobó que las dos sustituciones literales agotan el archivo nuevo.
+
+3. PRIMER HUNK: IGUALDAD COSENO
+La igualdad antigua en matemáticas inline era
+ n^{D-2} sum_{y_1=0}^{n-1} cos(2pi y_1/n)=0.
+En B son idénticos el exponente, variable y extremos de suma, argumento del coseno, denominador n y valor0. Sólo cambian los delimitadores inline por delimitadores display, la posición del punto y el salto de línea antes de Hence. La puntuación no se convierte en un símbolo matemático nuevo.
+Se conserva el contexto: parametrización x=(y,s-sum y) de una capa de suma, seguida de la conclusión de que todas las medias G_(l,s) se anulan en toda dirección interna constante y componente espacial. No se cambia una suma de capa por una suma global, no se pierde el caso n=2 ni la normalización, y no se amplía la clase de observaciones. La prueba matemática permanece la misma que se examinó en A.
+
+4. SEGUNDO HUNK: HASH HISTÓRICO Y GRAMÁTICA
+El hash impreso sigue siendo EXACTAMENTE
+381da284637d6abcd2922ff649550a45243c2000fe16cc5efc65336f5765df2d.
+Permanece atribuido al PDF precedente de20 páginas; no es un hash del nuevo manuscrito255 ni del primer PDF255A. El texto precedente cambia de una aposición con coma a has SHA256, el hash pasa a un entorno center con small y texttt, y la frase siguiente comienza It was separately assessed en vez de was separately assessed. El antecedente de It sigue siendo aquel PDF precedente.
+No cambia ninguna cifra de la evaluación histórica, escala, recomendación, número de objeciones abiertas o restricción de aplicabilidad. Se conserva expresamente que esa evaluación sólo corresponde a los bytes anteriores, que no se asigna aquí calificación y que no se hereda ninguna. La declaración de etapa inicial sin evaluación exacta del nuevo PDF permanece. La gramática no transforma una evaluación histórica en la del sucesor ni implica cierre de objeciones.
+El entorno center agrupa el cambio de tamaño de fuente; se trata de una instrucción de presentación. No se afirma que por sí misma garantice la ausencia de desbordamiento al compilar: eso debe inspeccionarse sobre el PDF producido.
+
+5. INPUTS Y MAPPING
+SOURCE-MAPPING.json y SOURCE-INPUTS.json de source-preparation coinciden en RAW con las capturas de la auditoría255A. Se volvieron a verificar los110 archivos de entrada contra los tamaños y hashes declarados en SOURCE-INPUTS.json; todos coinciden.
+Precisión importante: source-preparation-b contiene el nuevo TeX y la explicación de maquetación; no contiene una segunda copia de SOURCE-MAPPING ni de las110 entradas. La conservación verificada es la del árbol original retenido y referenciado, no una afirmación de que existan copias B de archivos ausentes. El delta de TeX no cambia esas dependencias. El futuro paquete de producción deberá mantener su vínculo explícito con los inputs conservados. No se exige aquí una nueva escritura o duplicación del paquete.
+
+6. LÍMITES DE LA CONCLUSIÓN
+Objeciones matemáticas o de conservación bloqueantes al delta: ninguna encontrada.
+Se acepta sólo que B es una transformación de presentación y gramática que conserva los dos contenidos examinados y deja todo lo demás igual. El informe matemático A sigue referido exclusivamente a su fuente43eeed4d...; este informe nuevo registra la comparación con87e3100b..., sin reescribir la historia del anterior.
+La explicación atribuye al proceso anterior dos PDF iguales de355276 bytes, SHA256b5d25315963ef5f5246bf374bd02eb10a6e5cefed64d7343a80eff3f5bf431ae, nueve páginas,27 hijos con salida0, limpieza de clones y detención del runtime. También atribuye al padre la inspección visual de las nueve páginas y los dos desbordamientos. Son hechos declarados en la explicación, NO comprobaciones propias de este auditor en este encargo. No se inspeccionaron esos PDF, páginas, logs o runtime. No se afirma una aceptación visual de A o B.
+No se produjo revisión numérica, calificación, muestreo de modelo o publicación de255A/B. La afirmación de que A no fue calificado ni depositado procede del encargo y la explicación; esta auditoría no realizó consultas externas de publicación. El PDF250B histórico no se modificó ni regraduó. No se valida aquí un futuro build, extracto, render o PDF y sus hashes; esa producción requerirá sus propios referentes.
+
+7. IDENTIDAD Y OPERACIONES
+Auditor IA involucrado, mismo contexto persistente y cuenta/infraestructura/sistema de archivos compartidos. No se afirma independencia, ceguera, revisión humana, otro proveedor ni remuestreo. Descripción realmente expuesta: Codex, agente basado en GPT-6. Backend/modelo servido exacto, versión y esfuerzo efectivos no expuestos: desconocidos. OpenAI/Codex es la interfaz expuesta; cuenta, encaminamiento, suscripción, cuotas y límites no se inspeccionaron.
+Operaciones: lectura de textos, comparación literal de fuente, comprobación de bytes y hashes, copias RAW y redacción del informe. No se ejecutó computación matemática, compilación, Lean/Lake, pruebas de Windows, CUA, render, modificación de PDF ni mensajes a otros chats. No se mutaron fuentes, Git, estados, automatizaciones o publicación. Únicamente se crearon archivos en evidencia-255/manuscript-format-delta-b-audit. No se creó clon ni queda limpieza pendiente.
+
+8. ENTREGA
+fullreport.txt: informe completo nuevo del delta, UTF-8 sin BOM, LF final.
+delta-verification.json: comprobaciones y correspondencia de siete capturas RAW con rutas originales.
+context.json: identidad, alcance y veredicto.
+hashes.json: tamaños, representaciones y hashes de todos los artefactos, excluido el propio manifiesto cuyo hash se devuelve externamente.
+capture/: fuentes A/B, diff, explicación, mapping, inputs manifest e informe A original, todos RAW sin normalización.
+Revisión cerrada: delta aceptado; no nueva evaluación matemática integral o numérica, no aceptación visual ni atribución retroactiva de informes.

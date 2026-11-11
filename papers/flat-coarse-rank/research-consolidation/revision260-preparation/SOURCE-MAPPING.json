@@ -1,0 +1,55 @@
+{
+  "existing_paper": "ARR-2026-597T88D7WZ98HR0Z",
+  "proposal": "substantive linked revision only; no new deposit yet",
+  "sections": {
+    "2": "253B sections1--2;254A sections1--3",
+    "3": "253B exact actual ranks",
+    "4": "254A positive-angle cutoff",
+    "5": "254 negative mean-only companion",
+    "6": "251A ambient canonical lower only; cited247 upper",
+    "7": "251 uncut-coordinate coexact falsifier",
+    "8": "259A full cyclic-extension temporal theorem;257A Section3 cutoff;258A conventions. Nonwrapping canonical product partitions inherit the necessary bound. Rapid wrapped24n example is cyclic-extension only, not a canonical chart-refinement failure. Additional261C direct nonwrapping chart-refinement counterexample: actual36n-24 full rows, six-tag cover of all refined chart corners, explicit field zeros and original energy; not an inferred split-cell result.",
+    "9": "general canonical Q251 remains open",
+    "10": "full involved model context and historical255B first exact-PDF assessment only"
+  },
+  "prior_exact_pdf": {
+    "sha256_raw": "d45a17a4142204628189441b9133aa1027b0d7577a56dc5de6c576d2af6102e7",
+    "importance": 4.0,
+    "overall_stars": 4,
+    "recommendation": "major_revision",
+    "material_objections_open": 3,
+    "applicable_to_new_manuscript": false
+  },
+  "new_PDF": null,
+  "new_score": null,
+  "new_source_audit": null,
+  "golden260_result_included": false,
+  "formal_verification": false,
+  "priority": "unestablished",
+  "active_question": "Q251 only; actual canonical coexact D3 O(n) versus logarithm OPEN",
+  "scope_repair": {
+    "original_rejected_source": "f507f918b999eb8fff81e930d40fe4ff8010f1e9",
+    "objection": "260A-M1",
+    "original_report_sha256_raw": "733c45a5de717069d2dbf764af84ddc255e56fc8fe3721af73499264f3ff9bfd",
+    "status": "Explicit class-boundary repair; delta source review pending; original report immutable",
+    "new_grade": null
+  },
+  "new_refinement_source": {
+    "commit": "1a01fa019069e0f5a7392601ddb3c7a3febe222d",
+    "source_sha256_raw": "3072c4dd7d74e166d9a2d3363ab0480138ef60cf8a0e755519882794cf16f607",
+    "full_report_sha256_raw": "cf92b2932c7ffb21b6163fdadd244f2cbd7e3c3a21313f1db6d397c73405c4df",
+    "count": "36n-24",
+    "new_manuscript_delta_acceptance": null
+  },
+  "candidate_B": {
+    "PDF_sha256_raw": "3ce30a056053bf4477bb2530f10fd3a31ce94ea0f8c3960ac917556af493659c",
+    "pages": 13,
+    "bytes": 389245,
+    "two_fresh_matching_builds": true,
+    "all_lifecycle_and_inactive_backend_verified": true,
+    "visually_final": false,
+    "observed_layout_repairs": "long provenance hash line and orphan final bibliography item",
+    "grade": null,
+    "superseded_before_any_exact_PDF_assessment": true
+  }
+}

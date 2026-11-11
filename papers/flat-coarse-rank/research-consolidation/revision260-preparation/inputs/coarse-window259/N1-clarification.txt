@@ -1,0 +1,14 @@
+259A: retained nonblocking audit clarification N1,11November2026.
+This sidecar accompanies the frozen proof2f370a7da850b8066a9afe95c523e49bd1ef725e;
+it does not rewrite its bytes, supersede the full report or assign a grade.
+
+The tagged matching designates(K-1)q SHARED slots whose displacement is0,
+and q REPLACED slots whose displacement is<=S. A replaced slot can also
+have displacement0. Thus there are AT LEAST(K-1)q zero-displacement pairs
+in total, rather than an exclusive total exactly equal to(K-1)q.
+The source's 'Exactly' sentence describes its two designated slot classes.
+The translation sum uses precisely the valid upper bounds for these classes:
+(K-1)q|u|^2 + q(|u|+S)^2. It never assumes that replacements move positively.
+All estimates and conclusions are unchanged. The full original audit retains
+this wording issue and all other limitations; analytical acceptance is scoped
+and does not constitute independent peer review or publication acceptance.

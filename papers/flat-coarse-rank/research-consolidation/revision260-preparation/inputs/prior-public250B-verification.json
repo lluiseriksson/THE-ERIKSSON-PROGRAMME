@@ -1,0 +1,133 @@
+{
+  "checked_at": "2026-11-11T08:23:00.946491+00:00",
+  "public_url": "https://airr.science/papers/ARR-2026-5XANPRA7E891Q9FZ/versions/v1/",
+  "HTTP": 200,
+  "HTML_sha256": "c2869f2e6851fba2abdd12353ebc3295857b7dd4d38559db4927b19196b205d0",
+  "actual_release_timestamp_visible": "2026-11-11T08:00:32Z",
+  "published_as": "working_paper",
+  "accepted_collection": false,
+  "canonical_PDF_url": "https://airr.science/papers/ARR-2026-5XANPRA7E891Q9FZ/versions/v1/ARR-2026-5XANPRA7E891Q9FZ-v1.pdf",
+  "canonical_pdf_sha256": "381da284637d6abcd2922ff649550a45243c2000fe16cc5efc65336f5765df2d",
+  "canonical_pdf_bytes": 450099,
+  "first_AI_importance": 4.5,
+  "overall_stars": 5,
+  "criterion_stars": [
+    4,
+    4,
+    3,
+    3,
+    4
+  ],
+  "original_recommendation": "major_revision",
+  "material_objections_open": 3,
+  "complete_report_file_bindings_publicly_verified": [
+    {
+      "path": "assessment250B-first-round/primary-reading-notes.txt",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-first-round/primary-reading-notes.txt",
+      "HTTP": 200,
+      "bytes": 634,
+      "sha256": "de74da8a0285082d4a3580a4111e7e8f9fff47816b7a07ee8cd3372ebb8e7d4a",
+      "anonymous": true
+    },
+    {
+      "path": "assessment250B-first-round/prompt.txt",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-first-round/prompt.txt",
+      "HTTP": 200,
+      "bytes": 3832,
+      "sha256": "b41bd67547e6027f652f0b59e9a77a30acd42a03617b15a9653b68d00b4ab9b8",
+      "anonymous": true
+    },
+    {
+      "path": "assessment250B-first-round/report-hashes.json",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-first-round/report-hashes.json",
+      "HTTP": 200,
+      "bytes": 4734,
+      "sha256": "7ab1e86b520838743acf3afcd3d698b0bd3da984f1c35909e67125d07767c153",
+      "anonymous": true
+    },
+    {
+      "path": "assessment250B-first-round/response.json",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-first-round/response.json",
+      "HTTP": 200,
+      "bytes": 7097,
+      "sha256": "5fa85ab47d42c169eaac45bcfcb8c22ddc76d268011c506887aae2acd5a65393",
+      "anonymous": true
+    },
+    {
+      "path": "assessment250B-first-round/review-context.json",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-first-round/review-context.json",
+      "HTTP": 200,
+      "bytes": 2753,
+      "sha256": "026e75a2372c5b0c8e5d6b499cda190c9ba9681cd72158d660623452a6f974a0",
+      "anonymous": true
+    },
+    {
+      "path": "assessment250B-first-round/scientific-review.txt",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-first-round/scientific-review.txt",
+      "HTTP": 200,
+      "bytes": 16182,
+      "sha256": "9fcb86d4b85ab8b9ac908bcde754761f88bd8c447a66c0fd3e00faf44b9e8ef1",
+      "anonymous": true
+    },
+    {
+      "path": "assessment250B-native-format/clarification-context.json",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-native-format/clarification-context.json",
+      "HTTP": 200,
+      "bytes": 1947,
+      "sha256": "761170530b397ae3e27d72eca1aae34048e1ed3ed55f7658d46923c969450738",
+      "anonymous": true
+    },
+    {
+      "path": "assessment250B-native-format/clarification.txt",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-native-format/clarification.txt",
+      "HTTP": 200,
+      "bytes": 1328,
+      "sha256": "a813261217bedaeb35296c3aaf7f5dac4a10071baeb67f6b63054164508ee494",
+      "anonymous": true
+    },
+    {
+      "path": "assessment250B-native-format/field-mapping.json",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-native-format/field-mapping.json",
+      "HTTP": 200,
+      "bytes": 2003,
+      "sha256": "528767b5d72781a52a35360afe72daa1cdac9f757de162aec6ffaae864f726fb",
+      "anonymous": true
+    },
+    {
+      "path": "assessment250B-native-format/hashes.json",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-native-format/hashes.json",
+      "HTTP": 200,
+      "bytes": 1856,
+      "sha256": "5bf58c0f52d1d2daacb631fc91ba0f241b4ad83139ca63fd054f1a1d1352c221",
+      "anonymous": true
+    },
+    {
+      "path": "assessment250B-native-format/parent-task.txt",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-native-format/parent-task.txt",
+      "HTTP": 200,
+      "bytes": 1196,
+      "sha256": "b2ad366af744f027ff3db18d20b9112e50b1030efba928831725e7c9d3a32223",
+      "anonymous": true
+    },
+    {
+      "path": "assessment250B-native-format/response-native.json",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/assessment250B-native-format/response-native.json",
+      "HTTP": 200,
+      "bytes": 6775,
+      "sha256": "d8aa642e78f8090a054f295859763a1436a1d29ec64b35039d5eba2045dff2f1",
+      "anonymous": true
+    },
+    {
+      "path": "author-response250B.txt",
+      "url": "https://raw.githubusercontent.com/arr-research/arr-research.github.io/main/papers/2026/11/5X/ARR-2026-5XANPRA7E891Q9FZ/author-response250B.txt",
+      "HTTP": 200,
+      "bytes": 3364,
+      "sha256": "59cabdf376e51554fa8a9a894c27d70fb7e4efb785d1b048c2598064591902f5",
+      "anonymous": true
+    }
+  ],
+  "human_or_independent_review": false,
+  "statistics_queried": false,
+  "browser_or_desktop_control_used": false,
+  "native_intake_published_flag": "SEPARATE_READBACK_PENDING"
+}

@@ -1,0 +1,221 @@
+MANUSCRIPT SOURCE AUDIT260A
+
+EXACT SUBJECT: f507f918b999eb8fff81e930d40fe4ff8010f1e9
+checkerboard_observations260.tex SHA256(raw Git/source bytes):
+35a2be5eb77a223c8f88ba552f0754045fecb97fae75d63b16c22da2224b75b1
+
+VERDICT: WITHHOLD_MANUSCRIPT_SOURCE_ACCEPTANCE_PENDING_EXPLICIT_CYCLIC_VERSUS_CHART_CLASS_BOUNDARY
+
+One material scope/presentation defect is identified below. The added temporal
+calculation is analytically supported as a theorem for its explicitly defined
+CYCLIC product-slice means. No fatal error was found in its cutoff, actual
+coexact membership, exact zeros, nonzero norm or source-energy estimates.
+That mathematical conclusion is not permission to call the rapid example a
+member of the earlier nonwrapping-chart canonical class. The frozen manuscript
+must explicitly distinguish the two before production/public interpretation.
+
+This is a source-stage review, not an exact-PDF reading or numerical assessment.
+No grade, visual QA, successful TeX build, formal verification, independent
+review, human peer review, novelty or journal acceptance is established.
+
+1. ACTUAL CONTEXT AND READING
+
+Separate child session /root/grouped260_manuscript_source_audit of the involved
+programme. The parent conversation, construction and old summaries were visible.
+This is not blind or independently demonstrated review. The actually exposed
+identity is Codex/OpenAI; the served backend, version and reasoning effort are
+not independently exposed here. No named external model service was used.
+No inbound parent messages arrived during the audit. No branch/source/PR body
+was modified. The whole target manuscript was read in three consecutive blocks.
+The whole259 proof,257 Section3, SOURCE-MAPPING, original255B scientific-review
+and original native assessment/context were read for the checks specified below.
+All190 SOURCE-INPUTS entries were checked for raw byte size and SHA256; this is
+binding verification, NOT a claim that all190 files received fresh scientific
+readings. The whole source packet is retained exactly as subjects, including
+the historical report and its old captures. All governance charter and first100
+CLAUDE lines were read. No PR/body existed for this assignment; capture/hash of
+a PR body is therefore not applicable. The complete assignment is retained.
+The inherited full conversation is not exportable through a supplied tool; its
+visibility is disclosed, not falsely represented by a partial transcript.
+
+2. MATERIAL OBJECTION260A-M1: TWO DIFFERENT RECTANGLE CLASSES
+
+OPEN, material, manuscript scope/public interpretation.
+Line112 defines canonical rectangles as products of NONWRAPPING chart
+intervals. Line532 introduces arbitrary CYCLIC interval partitions without an
+explicit class-extension declaration or a stated relation to the earlier class.
+The subsequent theorem uses 'every original mean' and a class count; the rapid
+example at lines709--711 uses a singleton and its CYCLIC complement with24n
+full rows. For an interior singleton, that complement wraps in the fixed chart
+and is not one nonwrapping interval. These cells are thus generally not members
+of the canonical class defined in Section1. This is a real class boundary, not
+a change to the coefficient form or coexact domain.
+
+Concrete check without a numerical programme: for any n>=32 of the rapid
+family, t_1=kappa=n/4+2 is strictly between1 and n-1. Its complement in Z_n
+is {0,...,kappa-1} union {kappa+1,...,n-1}. It is one cyclic interval but two
+nonwrapping chart intervals. The claimed24n count is valid in the CYCLIC class,
+not a count of that same fixed-chart canonical partition.
+
+Necessary repair: say explicitly that Section8 proves a theorem for an enlarged
+cyclic-interval product-slice observation class, retaining the same source form,
+normalization and coexact domain. State that its restrictions to NONWRAPPING
+product-slice partitions do give the corresponding canonical necessary bound.
+Label the rapid24n family as a counterexample in the cyclic extension, not a
+canonical chart-family counterexample. Explain that splitting wrapped cells
+into chart rectangles creates extra separate means and an invisible vector for
+their SUM need not annihilate each refined mean. Therefore refinement alone
+does not transport this failure example or its exact24n count back to the
+original canonical class. Update abstract/interpretation/source mapping with
+the same boundary. Alternatively prove an actual chart-grid failure separately.
+No such extra theorem is demanded to retain the correctly labelled cyclic one.
+
+The section's local cyclic hypotheses are mathematically explicit, so this
+objection does NOT refute the259 theorem on its admitted class. It prevents
+unqualified manuscript acceptance/publication readiness in the combined text.
+
+3. RADIAL CUTOFF RE-DERIVATION
+
+R=n/4>=8 and L=log((R+1)/3). The cutoff is zero for rho<=2, one for rho>=R.
+For a nonconstant edge the inner radius is2<=r<R. A square boundary of radiusr
+has8r+4 labelled nearest-neighbor crossings when direction is ignored; since
+r+1<=R<=n/4 there is no antipodal ambiguity. Each positive-labelled edge is
+counted once whether directed inward or outward. The logarithmic increment is
+at most1/((r+1)L). Summing32r/((r+1)^2 L^2), bounding by a harmonic integral,
+then log(R+1)<=2log((R+1)/3), gives64/L. No sign/orientation loss occurs.
+
+For deficit norm, the dyadic group has at most4(R+1)^2/4^j sites. The group
+upper bound on deficit remains valid when clipping gives f=0, because then
+log((R+1)/(rho+1))/L>=1. The series80/27<4 and log2<1 yield16(R+1)^2/L^2,
+and R+1<=n/2 yields4n^2/L^2. Translation along a shortest periodic path and
+the l2 triangle inequality give the stated(|u|_1+d(p,p'))sqrt(64/L) bound.
+This is a fresh analytical check; no finite computation was run.
+
+4. TAGGED WINDOW AND MINIMUM BOUNDS
+
+F_i has Kq tagged entries even if positions repeat or K>=n. The K-1 shared
+layers map bijectively to the next window at the same positions; outgoing
+E_i entries map to incoming E_(i+K) by its bottleneck matching. These are
+designated classes, and the text correctly allows replaced entries also to
+be stationary. No global coherent labels are needed. A squared maximum is
+bounded by a sum, giving4KqV/L^2 for ||1-eta||^2. The minimum Lipschitz
+inequality gives64q/L times[(K-1)|u|^2+(|u|+S)^2], hence
+K|u|^2+2|u|S+S^2. With no longitudinal shift identity matching gives64Kq|u|^2/L.
+Summing over n slices adds n. These statements include the seam and long K;
+the tags are an auxiliary cutoff recipe, not observations.
+
+5. ACTUAL CURL ADJOINT, ZEROS AND ENERGY
+
+For independent two-form components, partial_h^*=-delta_h. With only psi23
+equal to phi=delta2delta3Psi, the true adjoint is(0,delta3phi,-delta2phi).
+Thus P=(0,delta2delta3^2,-delta2^2delta3) as printed. The component sums vanish.
+The actual cell sums telescope to four terminal corners applied to delta3Psi
+or minus delta2Psi. Initial-endpoint predecessors are terminal endpoints of
+the previous cyclic interval. Whole-cycle factors cancel. Eta's zero radius2
+neighborhood covers the backward e2/e3 neighbors needed for those differences.
+Taking channel2 zero therefore annihilates exactly the stated CYCLIC means
+with their unchanged positive normalization and produces z in actual U0^2.
+
+The period-four wave gives w=(2,-2,-2,2); at odd sources w is unchanged by
+every positive step. Its pointwise field norm square is8 and norm square8V.
+4|n handles all seams. For convolution commutators, each nonzero P component
+has absolute coefficient sum8 and transverse shift radius3; the squared bound
+is2*(8*3)^2*64nKq/L=73728nKq/L. Transverse derivative components have sum16
+and radius4; longitudinal derivative components have shifts0/1 and transverse
+radius3. Their squared displacement factors are16K and9K+6S+S^2. The maximum
+A_K therefore bounds every term, and each derivative commutator norm is at
+most16sqrt(64nqA_K/L). Six direction/component squares give98304nqA_K/L.
+Restricting to original odd sources is valid because eta partial_h z0=0 there;
+the form's strong source is never shifted.
+
+The two-term norm split gives64KqV/L^2+147456nKq/L, and n<=V weakens the
+second term as printed. L>=2^22Kq makes the coefficient at most2^-38+9/256<2.
+Reverse triangle yields ||P Psi||>sqrt(2V), proving the field itself nonzero.
+H=cn^2 times strong error is<=3cV/8<3c||z||^2/16. Forward-shift isometry gives
+weak energy<=12a||z||^2=c||z||^2/4. Their sum is strictly below7c||z||^2/16.
+All constants, norms and original weights in that cyclic-class calculation
+are supported. No hidden abstract-gap assumption was found.
+
+6. CONSEQUENCES AND RAPID FAMILY
+
+Finite matchings attain S_K, so the theorem applied at each K gives its
+necessary inequality for every K. Fixed cuts have S1=0,A1=16. Uniformly
+bounded one-step motion gives a uniformly bounded A1. Hence q is at least
+a constant times L, and3nq gives the stated nlogn necessary full-row count
+within those product classes. This applies in particular to their nonwrapping
+subclasses once that relation is stated explicitly. It is no global canonical
+lower bound. Variable q across slices and other partitions are not covered.
+
+For dyadic n, kappa=n/4+2 has gcd(kappa,n)=2. Four steps translate by8, so
+S4<=8 and A4<=max(64,36+48+64)=148. The threshold is2^20*148. The next
+corner at t_i+kappa is at least kappa from old x2 values t_i,t_i-1 because
+kappa<n/2-1; translation attains kappa. The orbit size is n/2. These are
+valid statements for the cyclic singleton/complement partition and prove its
+failure for sufficiently huge dyadic n. They do not establish failure of the
+chart refinement, as objection260A-M1 explains.
+
+7. RETAINED251--254 SCOPE AND HISTORY
+
+Sections2--7 were read afresh in the new manuscript. The two-layer symbol has
+eigenvalues D+/-|T| and its gap lower follows from division by D+|T|<=2D.
+All n=2 forward labels are kept. The actual coexact image of the special
+component projection is derived using layer-averaged divergence and an actual
+Fourier curl-adjoint preimage; dimension(D-1)(n-2) and ambient Dn are distinguished.
+The low-energy whole-kernel injection argument gives sharp unrestricted ranks
+only in orthogonal D3/D4. The positive-angle construction uses orthogonality
+in Y=Sz, then the singular-value return to the original norm. Tail saturation
+P=I is handled, and no projection invariance on U is assumed. Lower ranks at
+fixed positive angle use real coexact pair functions. This proves order n,
+not nonorthogonal exact minima or uniform theta->0 constants.
+
+The small-angle bisector cosine has a real actual coexact preimage and zero
+sum on each component layer. Its bound1/(4D)+pi^2theta^2<17/24 is consistent
+with theta<=1/4 and pi^2<10. Ambient canonical lower uses only ambient
+u=(I-R)w; the manuscript explicitly refuses its unjustified transfer to U.
+The uncut-cell witness quantifies over possibly different full coordinates
+per cell and remains restricted to n>=4. No new substantive error in these
+retained arguments was found. The cited247 upper is treated as a cited input;
+this audit did not independently rederive every step of247 or all190 inputs.
+
+The historical report was read in full and the native/context records checked.
+The new prose matches the old exact d45a17...6102e7 PDF's4.00/10 importance,
+4/10 overall, major_revision and three open material objections. These are
+plainly historical; no grade is transferred or resampled. No declaration closes
+old priority/relevance objections. The manuscript openly limits novelty and
+practical interpretation and keeps physical gap, continuum and Q251 open.
+The new review section's GPT-6-family wording is attribution of recorded old
+review identities, not a new external provider call by this auditor.
+
+8. NONBLOCKING PRESENTATION / PRODUCTION ITEMS
+
+N1: at line655 T denotes both a finite convolution and, in T^r, its shift
+basis. Rename the operator to mathcal T or use explicit tau^r to avoid an
+unnecessary ambiguity. The intended commutator formula is evident from context
+and mathematical proof; this is not a discovered constant error.
+N2: 'channel1', 'radius2', 'sources251--254' and similar compressed strings
+should receive ordinary word spacing. This is presentation, not mathematics.
+N3: a compact domain/class/count/rank comparison table would help preserve the
+earlier review's navigation request, but absence of that table is not a theorem
+failure. The new cyclic-versus-chart row-class boundary MUST be correct first.
+No obvious unmatched environment or undefined custom macro was identified by
+reading, but actual TeX compilation and all-page visual QA were not performed.
+The frozen SourceCommit must be injected by the Linux builder as intended.
+
+9. BINDING CHECK AND DISPOSITION
+
+All190 manifest entries matched their byte sizes and raw SHA256. The manuscript
+Git blob equals the retained raw target bytes. Full input/history packet plus
+exact governance subjects are retained under subjects/. The audit manifest
+lists every retained file except itself with raw representations and hashes.
+The manifest's own raw hash is returned separately. No Python assert participates
+in acceptance; the file-binding checks use explicit exceptions. Those checks
+are not a scientific certifier. No compilation, numerical calculation, Lean,
+oracle, sustained computation, Colab runtime or UI control was used. No clone
+was created and no cleanup debt exists. No source/branch mutation occurred.
+
+Do not represent this frozen manuscript as source-accepted or publication-ready.
+Preserve this report and objection260A-M1 unchanged. Repair the class declaration,
+scope of the rapid example and related interpretation at a NEW exact commit,
+then obtain a bounded delta audit of that genuine repair. This is correction of
+a source defect, not resampling an exact PDF to improve a score. No PDF has been
+assessed in this task, and no opinion about a future score is supplied.

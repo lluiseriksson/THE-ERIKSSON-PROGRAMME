@@ -1,0 +1,74 @@
+{
+  "paper_id": "ARR-2026-5XANPRA7E891Q9FZ",
+  "version": "v1",
+  "identity_status": "AUTHOR_PROPOSED_ONLY_NOT_NATIVE_RECEIPT_OR_PUBLICATION",
+  "canonical_sha256": "381da284637d6abcd2922ff649550a45243c2000fe16cc5efc65336f5765df2d",
+  "provider": "OpenAI",
+  "model_id": "Codex (based on GPT-6; exact served backend/version and reasoning effort unknown)",
+  "assessed_at": "2026-11-11T06:19:25.869856+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "unknown",
+  "recommendation": "major_revision",
+  "millennium_score": 4.5,
+  "overall_stars": 5,
+  "overall_stars_scale": 10,
+  "overall_stars_rule": "Nearest integer with half rounded upward: floor(importance+0.5); overall importance is not the mean of the separate criteria.",
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "All20textpages and all20original pagePNGs read; direct adversarial checks of the actual coexact domain, MSS augmentation/prefix induction, normalization, single energy budget, rank/penalty traces, strong graph transport, endpoint/fallback and mesh constants found no definite fatal mathematical error. Analytical AI confidence only, not formal certification."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Explicit finite proofs with actual original source labels, period2, restricted rank, singleton priority, zero rows, constants and finite completion. The non-elementary MSS input is stated and directly matched to its primary version. No formal proof or efficient selection algorithm is supplied."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Precise matched q-uniform actual rank/fixed-weight penalty orders and the identical-local-spectrum observation-class comparison are plausible specialist novelty candidates. Main mechanisms are classical; exact predecessor implication and historical priority remain unresolved after limited primary checks."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "A coherent finite observation-class contribution, with a substantial hypothesis boundary from spatially constant to checkerboard weak spaces. Fixed-basis/internal-separability assumptions, potentially growing internal dimension, large constants/penalties, existential selection and absent applications limit broader importance."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Complete finite definitions/proofs, exact PDF/source binding and all20rendered pages inspected. Parent supplied matching-clone and actual Linux render closure evidence; I performed no independent execution or proof-assistant verification. Lexicographic existence is not a demonstrated practical implementation."
+    }
+  },
+  "summary": "The exact20-page PDF presents apparently correct finite theorems: sharp actual coexact rank order qV+gV/n^2 under a spatially constant coherent weak projector, a matching fixed-map coefficient order, and original-channel canonical checkerboard upper constructions showing spatial constancy is substantive. Scientific importance4.50/10 is a specialist AI opinion, not probability or physical Yang-Mills progress. No definite fatal mathematical error was found; exact priority and demonstrated practical/broader relevance still require substantive external judgment. Journal recommendation major_revision; transparent working-paper deposit is distinct from acceptance.",
+  "strengths": [
+    "The actual flat curl-adjoint domain, original forward source weighting and period-two multiplicities are retained.",
+    "The MSS added signed count coordinate controls both Gram and cardinality in one partition, including zero rows; prefix whitening is not circular.",
+    "Disjoint channel groups spend strong energy once, with correct normalized observation and counting coefficient conventions.",
+    "Actual-rank lower bounds and the fixed-map penalty trace bound cancel weak dimension correctly and avoid coexact invariance of arbitrary averaging.",
+    "Checkerboard strong cycles/graphs, point estimates with constant-mode mass, both layer norms, original singleton isolation and complete row counts are derived.",
+    "Small-input, threshold-equality, singleton and fixed-positive-angle cases are explicit; large finite penalties and unresolved optimality are stated honestly."
+  ],
+  "weaknesses": [
+    "Exact historical novelty and implication by nearby operator-adapted/coarse-space literature remain unestablished.",
+    "Very large constants, existential selection, nonlocal observations and potentially large penalties limit demonstrated practical relevance.",
+    "The lower theorem requires a spatially constant weak projector, coherence and original internal channel separability; it is not basis-free.",
+    "Checkerboard upper bounds do not determine minimum actual rank, logarithmic necessity, uniform penalty or general varying-angle orders.",
+    "No application, efficient implementation, interacting producer, continuum result or physical mass-gap implication is supplied.",
+    "Source/review history is lengthy; an intact supplement and present-artifact sidecar would improve navigation without editing the already assessed PDF."
+  ],
+  "potential_errors": [
+    "No definite mathematical error or counterexample was found within the exact stated finite hypotheses; this is limited analytical reading rather than exhaustive/formal verification.",
+    "The quoted SOURCE-NOT-BUILT phrase onpage19 is source-stage explanatory history with the actual full source printed above, not an unresolved actual build value. A current sidecar should clarify subsequent compilation/render/assessment.",
+    "The manuscript MSS theorem was matched to the primary statement, but the full external MSS proof and all cited predecessor proofs were not re-audited."
+  ],
+  "strong_novelty_candidates": [
+    "Matched actual coexact restoring rank order qV+gV/n^2 uniformly in q for spatially constant coherent weak projectors under original channel-separable observations, subject to exact priority scrutiny.",
+    "Matched least normalized coefficient order c min(g/q,n^2) for the particular economical fixed-weight canonical map, subject to priority scrutiny.",
+    "Same-local-spectrum positive checkerboards with explicitly realized original canonical rectangle observations and subvolume full counts, showing the spatial-constancy hypothesis cannot simply be removed from a per-profile lower."
+  ],
+  "unresolved_material_objections": [
+    "M1: Historical priority and exact implication by predecessors remain unestablished; limited primary readings are not an originality certificate.",
+    "M2: Practical/wider relevance, conditioning with the admitted large penalties, applications and efficient implementation remain unestablished.",
+    "M3: Retain finite observation-class, basis/separability/coherence and constant-projector hypotheses and the fixed-map penalty scope; no unconditional editorial acceptance or physical/continuum conclusion follows."
+  ],
+  "publication": false,
+  "acceptance": false,
+  "new_grade_inherited_from_predecessor": false,
+  "first_exact_PDF_round": true
+}

@@ -1,0 +1,59 @@
+{
+  "recorded_at_utc": "2026-11-11T14:29:34.307376+00:00",
+  "task": "/root/moving_cut258_source_audit",
+  "verdict": "ACCEPT_ANALYTICAL_OBSTRUCTION_FOR_BOUNDED_MATCHING_PRODUCT_SLICES_ONLY",
+  "exact_commit": "d7840f33a5e20120565f3d5803dfabb32802de95",
+  "proof_sha256_raw": "0c99070cdea4a3c7edf7168a8dfd2eb6eca96b08ed21e5002c003424ee7d66dc",
+  "proof_git_blob": "e48129257476ed9cae22b45aa5800b2cd1ef354f",
+  "dependency_commit": "fed201fd10f952a04e638c324dc0e1359711911a",
+  "dependency_sha256_raw": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc",
+  "dependency_read_scope": "Section3 cutoff lemma freshly rederived; no prior audit verdict inherited",
+  "model_identity_exposed": "Codex/OpenAI, GPT-6 family; exact served backend/version/effort not exposed",
+  "independence": "Separate child session within same involved programme; parent conversation and construction visible; not blind or independently established",
+  "numerical_grade": null,
+  "formal_verification": false,
+  "numerical_experiment": false,
+  "external_novelty_audit": false,
+  "inbound_parent_messages_during_audit": false,
+  "PR_body_capture": "N/A: no PR/body existed in assignment",
+  "PR_normalized_body_hash": null,
+  "runtime_created": false,
+  "disposable_clone_created": false,
+  "source_or_branch_modified": false,
+  "subject_count": 4,
+  "subjects": [
+    {
+      "path": "subjects/bounded-matching-obstruction258A.txt",
+      "bytes": 12392,
+      "sha256_raw": "0c99070cdea4a3c7edf7168a8dfd2eb6eca96b08ed21e5002c003424ee7d66dc",
+      "source": "d7840f33a5e20120565f3d5803dfabb32802de95:papers/flat-coarse-rank/research-consolidation/moving-cut-product258/bounded-matching-obstruction258A.txt",
+      "read_scope": "Entire proof read and analytically rederived",
+      "representation": "Exact raw bytes, no normalization"
+    },
+    {
+      "path": "subjects/capacity-class-obstruction257A.txt",
+      "bytes": 11285,
+      "sha256_raw": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc",
+      "source": "fed201fd10f952a04e638c324dc0e1359711911a:papers/flat-coarse-rank/research-consolidation/fixed-cut-product257/capacity-class-obstruction257A.txt",
+      "read_scope": "Section3 one-corner cutoff lemma directly relied upon and rederived; full raw source retained as context; no prior audit verdict imported",
+      "representation": "Exact raw bytes, no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256_raw": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "source": "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "read_scope": "Entire charter directly read",
+      "representation": "Exact raw bytes, no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256_raw": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "source": "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\CLAUDE.md",
+      "read_scope": "First75 lines directly read; full raw file retained as governance context",
+      "representation": "Exact raw bytes, no normalization"
+    }
+  ],
+  "review_context_limit": "Full inherited account conversation is not exportable by a tool. prompt.txt is the complete supplied assignment, not a fictitious complete account transcript."
+}

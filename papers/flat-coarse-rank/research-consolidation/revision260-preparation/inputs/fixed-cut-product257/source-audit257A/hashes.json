@@ -1,0 +1,67 @@
+{
+  "representation": "Exact raw bytes, no normalization; manifest does not hash itself",
+  "subject_count": 3,
+  "subjects": [
+    {
+      "path": "subjects/capacity-class-obstruction257A.txt",
+      "bytes": 11285,
+      "sha256_raw": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc",
+      "source": "fed201fd10f952a04e638c324dc0e1359711911a:papers/flat-coarse-rank/research-consolidation/fixed-cut-product257/capacity-class-obstruction257A.txt",
+      "read_scope": "Entire proof read and analytically rederived",
+      "normalization": "none"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256_raw": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "source": "fed201fd10f952a04e638c324dc0e1359711911a:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "read_scope": "Entire charter read",
+      "normalization": "none"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256_raw": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "source": "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\CLAUDE.md",
+      "read_scope": "First75 lines directly read; entire raw file retained as context",
+      "normalization": "none"
+    }
+  ],
+  "files": [
+    {
+      "path": "full-report.txt",
+      "bytes": 11294,
+      "sha256_raw": "451146cc9dcd6bea95e2f7b33d3f510fa5c84bb66fdef23da80a822aa7e03cb2"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 1723,
+      "sha256_raw": "acad8c64d90de9c6a59a36349c82c692612f0740f70d73947c387394b2b507d1"
+    },
+    {
+      "path": "review-context.json",
+      "bytes": 2499,
+      "sha256_raw": "3bd5c48ba262ce35611fe5731ae7bf214c7fc32579a6604d9aba183017bcd58c"
+    },
+    {
+      "path": "seal_audit257A.py",
+      "bytes": 5847,
+      "sha256_raw": "0debdf2e6a6357227525b8e1fb0dc56d9b90f13102fb3e8b1dcbc01c36d35adf"
+    },
+    {
+      "path": "subjects/capacity-class-obstruction257A.txt",
+      "bytes": 11285,
+      "sha256_raw": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256_raw": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256_raw": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    }
+  ]
+}

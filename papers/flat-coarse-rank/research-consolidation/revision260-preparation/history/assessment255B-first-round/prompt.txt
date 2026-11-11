@@ -1,0 +1,94 @@
+FIRST EXACT-PDF SCIENTIFIC ASSESSMENT OF CONSOLIDATION255B
+One genuine numerical first round; no target score and no resampling to improve it.
+
+Exact target:
+D:\Datos\the-eriksson-programme\autonomia\evidencia-255\production-c\attempt-c\returned\evidence\checkerboard_observations255.pdf
+355193 raw bytes,9pages, SHA256d45a17a4142204628189441b9133aa1027b0d7577a56dc5de6c576d2af6102e7.
+Title: Canonical and unrestricted observations in a finite checkerboard gradient model.
+Frozen production source568c971fac32caf33dce6ab4b14f2730788c3eb2;
+TeX87e3100bdc8c948497195e3666075ae45618d10959f88347f3c9ed7e15986e01.
+Read ALL9pages of actual extraction at the same directory/checkerboard_observations255.txt
+and visually inspect ALL9original PNGs page-1.png..page-9.png there (or their
+byte-verified viewed copies in D:\Capturas\the-eriksson-programme\2026-11-11_manuscript255\candidate-b).
+Use view_image for file images, not desktop/browser control. Do not treat source
+text alone, contact sheets or parent/gate conclusions as your exact-PDF reading.
+
+Perform an adversarial mathematical reading of all theorems/proofs and boundaries:
+actual source-weighted forward labels/period2; real curl-adjoint preimages and
+Nyquist; exact orthogonal ambient/coexact ranks versus full counts; positive-angle
+S-Gram/cutoff/normalized K and original-domain return; mean-only small-angle
+counterexample; ambient canonical lower whose (I-R)w is not known coexact; uncut
+cell falsifier and exclusion of n2. Check that all comparison domains/classes
+match. Judge correctness confidence, rigor, actual novelty and scientific
+importance separately. Classical spectral/minimax/coarse-mode mechanisms do not
+become original merely because these finite calculations are self-contained.
+Do not promote this to a physical Yang--Mills gap, continuum result or PR29 progress.
+
+Current full evidence, for factual context and source comparison:
+- source255B-exact-git.zip in evidencia-255:115source files and110scientific inputs;
+  full sources247/248/251/252/253/254 and prior involved analytical reports.
+- manuscript-source-audit/fullreport.txt (0226e340...), manuscript-format-delta-b-audit/fullreport.txt
+  (a37162ca...), production-c-returned-audit/fullreport.txt (a8546d9d...),
+  candidate-b-visual-QA.json. Parent read full reports and verified raw subjects.
+- Actual C production has27real child exits0, two fresh same-source clones with
+  identical raw PDFs, complete per-pass native retention,9rendered pages,115source
+  and110input closure, both clones removed, own stop0 and separate backend0 with
+  literal No active sessions. No independent provider/hardware or Lean proof.
+- A rejected unexecuted runner and first ungraded255A PDFb5d253... with two layout
+  protrusions remain preserved; final255B fixes presentation before any numerical
+  review. Final overfull count0; one bibliography-URL Underfull notice remains,
+  with actual page readable/in-margin. No first score exists for255A or255B.
+
+Prior paper250B is different:20pages, hash381da284..., its own historical first
+assessment4.50 and three open objections are visible and correctly identified
+in the manuscript. Do NOT inherit its score, close its objections, regrade its
+bytes or use later source results to repair its assessment. This visibility and
+your earlier involvement make this reading nonblind/involved, not independent.
+
+Check limited novelty positioning against primary sources actually available:
+Spillane et al.2011 DOI10.1016/j.crma.2011.10.021 (original paper at Numdam,
+Definitions2.3--2.4/Theorem2.5) and2014 DOI10.1007/s00211-013-0576-y (publisher
+abstract/metadata and institution-hosted original). Record exact read extent,
+objections and source implication. Do not claim exhaustive historical priority,
+read inaccessible whole papers or purchase anything. No arbitrary general web
+secondary source replaces primary evidence. Originality/relevance may remain open.
+
+Author-proposed identity ONLY, before any native grant/receipt/publication:
+paper_id ARR-2026-597T88D7WZ98HR0Z, version v1,
+version_id arr:version:6c269773-95a8-437d-bf09-5c7bc5490273.
+The proposal groups the distinct251--254 results as one companion research
+working paper citing250B, not individual corollary papers or a silent replacement
+of the broader old text. Its suitability as a standalone contribution is part
+of your scientific judgment. No intake/permission rejection has occurred for255;
+rights, quotas, native exact-artifact grant/receipt and public release remain
+separate genuine later operations. Proposed identifiers are not native receipts.
+
+Save a COMPLETE substantive scientific-review.txt, not merely a score/summary,
+to evidencia-255\assessment255B-first-round. Include strengths, possible errors,
+all material objections with stable IDs/status OPEN/severity and precise scope,
+priority/relevance limits, recommendation and honest importance0..10. If fatal,
+say so and give the actual falsifier. Do not mutate source/PDF/ratings or fix
+the manuscript during this round. No human, blind, peer or independent label.
+
+Also save response-native.json using ONLY these native format keys:
+paper_id,version,version_id,canonical_sha256,provider,model_id,assessed_at,
+prompt_version,independence,recommendation,millennium_score,overall_stars,
+criteria,summary,strengths,weaknesses,potential_errors,strong_novelty_candidates,
+unresolved_material_objections.
+Use canonical_sha256 above; actual UTC assessed_at; prompt_version ARR-ASSESS-1.0;
+provider OpenAI and model_id only the actually exposed identity, with exact
+served backend/version/effort unknown if not exposed. Do not infer a model from
+task names. Native independence may be unknown, with involved/shared context
+spelled out in the report/context. No assessment_id/source_response_sha256:
+those are controlled by the later native normalizer, not this reviewer.
+millennium_score is this round's importance0..10, NOT Yang--Mills progress;
+overall_stars is integer floor(importance+0.5) on0..10, not an average of criteria.
+criteria keys correctness_confidence,rigor,novelty,significance,reproducibility:
+each has stars0..5 and basis explaining the actual reading. No requested grade.
+
+Save actual prompt.txt, review-context.json with real identity/context/access,
+all raw read/captured subjects (including exact PDF/pages/extraction/source
+bindings), and report-hashes.json. Preserve whole reports and all actual values.
+No repeat call to improve the score, transfer to another provider, additional
+expense, CUA or other-chat messages. Parent sends no inbound messages while
+the round runs. Report final paths/hashes, actual read extent and all objections.

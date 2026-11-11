@@ -1,0 +1,146 @@
+\section{Finite spectral and projection facts}\label{sec:finite}
+This section derives the local estimates used later; a regional gap is not
+an additional hypothesis.
+
+\begin{lemma}[Actual Fourier domain and periodic gap]\label{lem:fourier}
+The dimension in \eqref{eq:domain} is $d_0=(D-1)(V-1)$. Every element of
+$\UU_0$ has mean zero. On every componentwise mean-zero field,
+\[
+ \En(f)\geq\frac{16}{n^2}\norm f^2,
+ \qquad\text{while on every field }\En(f)\leq4D\norm f^2.
+\]
+\end{lemma}
+\begin{proof}
+Use the counting-orthonormal characters
+$V^{-1/2}\exp(2\pi i\ell\cdot x/n)$ with
+$\ell\in\{0,\ldots,n-1\}^D$. The forward difference multiplier is
+$\xi_i(\ell)=\exp(2\pi i\ell_i/n)-1$. Its energy multiplier is
+$4\sum_i\sin^2(\pi\ell_i/n)$, which is at most $4D$.
+At a nonzero frequency at least one term is at least
+$4\sin^2(\pi/n)\geq16/n^2$, by concavity of sine on $[0,\pi/2]$;
+the case $n=2$ gives equality and retains the actual forward labels.
+
+The curl symbol is $v\mapsto\xi\wedge v$. When $\xi\ne0$, its kernel is
+$\C\xi$, so the adjoint image has complex dimension $D-1$; at zero frequency
+that image is zero. Conjugate frequencies pair to give twice their complex
+dimension as a real dimension. At self-conjugate frequencies each $\xi_i$ is
+real ($0$ or $-2$), and the real adjoint image has dimension $D-1$ directly.
+Summing gives $(D-1)(V-1)$, without an omitted period-two mode. The zero
+frequency is absent, proving the mean-zero assertion. The upper energy bound
+also follows from the counting isometry of every shift.
+\end{proof}
+
+\begin{lemma}[Finite counting Neumann basis]\label{lem:neumann}
+On an $\ell$-vertex path, $\ell\geq2$, the counting-orthonormal vectors are
+\[
+ \phi_0(t)=\ell^{-1/2},\qquad
+ \phi_j(t)=\sqrt{2/\ell}\cos\frac{\pi j(t+1/2)}\ell
+ \quad(1\leq j<\ell),
+\]
+with eigenvalues $4\sin^2(\pi j/(2\ell))$. A singleton has only its constant
+mode. On any product rectangle with side lengths at most $L$, the counting
+variance is at most $L^2/4$ times its internal edge energy, also for vector
+fields; singleton factors contribute zero variance.
+\end{lemma}
+\begin{proof}
+For $\theta=\pi j/\ell$, interior second differences of
+$\cos(\theta(t+1/2))$ multiply it by $2(1-\cos\theta)$. The virtual endpoint
+values $f(-1)=f(0)$ and $f(\ell)=f(\ell-1)$ give precisely endpoint degree
+one. For an integer $1\leq r<2\ell$,
+\[
+ \sum_{t=0}^{\ell-1}\cos\frac{\pi r(t+1/2)}\ell
+ =\frac{\sin(\pi r)}{2\sin(\pi r/(2\ell))}=0.
+\]
+The denominator is nonzero in this range. Product-to-sum, with the $r=0$
+sum equal to $\ell$, proves the stated orthogonality and normalization.
+The needed sums $j+j'$ are at most $2\ell-2$. There are $\ell$ orthonormal
+vectors, so this is a complete basis.
+
+Tensor products diagonalize the product-path energy. Since
+$\sin t\geq2t/\pi$ on $[0,\pi/2]$, every nonconstant product mode has
+eigenvalue at least $4/L^2$. Removing the constant mode gives the variance
+bound by expansion in this finite basis. If the entire rectangle is a
+singleton there is no positive eigenvalue to invoke and the variance is zero.
+Sum the scalar inequalities for vector fields. No dimension factor is lost.
+\end{proof}
+
+For an integer $j\geq0$ partition each coordinate chart into the nonempty
+intervals
+\[
+ \{\lfloor rn/2^j\rfloor,\ldots,\lfloor(r+1)n/2^j\rfloor-1\},
+ \qquad0\leq r<2^j,
+\]
+and take their products. Call the partition $\mathcal P_j$ and its counting
+averaging projection $\Pi_j$. Every coarse endpoint is an even-index fine
+endpoint, so the partitions are nested after empty intervals are omitted.
+There are at most $2^{Dj}$ cells and their sides have length at most
+$L_j=\lceil n/2^j\rceil$. In particular $\Pi_0$ is global averaging.
+
+\begin{lemma}[Actual spatial pieces]\label{lem:pieces}
+Fix $k\geq0$. The operators
+\[
+ \Delta_j=\Pi_{j+1}-\Pi_j\quad(0\leq j<k),\qquad
+ \Delta_k=I-\Pi_k
+\]
+are mutually orthogonal projections with sum $I-\Pi_0$. For every field $f$,
+\begin{equation}\label{eq:piecegap}
+ \norm{\Delta_jf}^2\leq\frac{L_j^2}{4}\En(f)
+ \quad(0\leq j\leq k).
+\end{equation}
+For $j<k$, $\Delta_j$ is a subprojection of $\Pi_{j+1}$; the tail is a
+subprojection of the singleton observation $I$.
+\end{lemma}
+\begin{proof}
+Nested averaging projections satisfy $\Pi_i\Pi_j=\Pi_{\min(i,j)}$.
+Their differences and the displayed tail are therefore orthogonal projections
+and telescope. Apply Lemma~\ref{lem:neumann} on every parent cell of
+$\mathcal P_j$ and sum. Its internal edges are a subset of the original
+labelled periodic edges, counted once. Other edges add nonnegative energy.
+This gives $\norm{(I-\Pi_j)f}^2\leq L_j^2\En(f)/4$.
+Each $\Delta_j$ is a subprojection of $I-\Pi_j$, proving
+\eqref{eq:piecegap}, including the single tail. The subprojection statements
+follow from the same identities. Wrap edges are never inserted into a
+Neumann cell as fictitious interior edges.
+\end{proof}
+
+\begin{lemma}[Finite kernel-to-all-field completion]\label{lem:completion}
+Let $L$ be a positive semidefinite operator on a finite real Hilbert space,
+let $R$ be an orthogonal projection, and suppose
+$\ip u{Lu}\geq(c+\delta)\norm u^2$ on $\ker R$, with $c,\delta>0$.
+If $\norm{L-cI}\leq M$, then
+\begin{equation}\label{eq:completion}
+ \ip z{Lz}+\left(M+\frac{2M^2}{\delta}\right)\norm{Rz}^2
+ \geq c\norm z^2\quad\text{for all }z.
+\end{equation}
+For \eqref{eq:energy} with $0<B(x)\leq HI$, one may take $M=4DH+c$.
+\end{lemma}
+\begin{proof}
+Write $z=u+v$, $u=(I-R)z$, $v=Rz$, and $F=L-cI$.
+Then $\ip u{Fu}\geq\delta\norm u^2$, $\ip v{Fv}\geq-M\norm v^2$, and
+\[
+ 2|\ip u{Fv}|\leq2M\norm u\norm v
+ \leq\frac\delta2\norm u^2+\frac{2M^2}\delta\norm v^2.
+\]
+After adding the displayed penalty a nonnegative $\delta\norm u^2/2$ remains.
+The final operator bound follows from Lemma~\ref{lem:fourier}'s upper energy
+bound and $B(x)\leq HI$. Nothing requires $R$ to preserve a later restricted
+domain. Constants must still be controlled by $R$ or a kernel margin; they
+are not silently discarded by this lemma.
+\end{proof}
+
+\begin{lemma}[Original-coordinate singleton isolation]\label{lem:isolation}
+Given $A$ distinct points in the original $D$-dimensional chart, there is a
+partition into at most $1+2DA$ nonempty integer rectangles in which every
+specified point is a singleton.
+\end{lemma}
+\begin{proof}
+Start with the whole chart. In the rectangle containing the next point,
+cut before and after its first coordinate and retain the two possible side
+rectangles. Continue only within the middle slice, through the remaining
+coordinates. At most $2D$ side rectangles and the desired singleton replace
+one rectangle, a net increase at most $2D$. Omit empty pieces. Disjoint
+coverage follows from the first coordinate at which a point differs from
+the anchor. Earlier singleton anchors lie in other rectangles and remain
+unchanged; an already-singleton point costs zero. Iteration proves the count.
+This uses no global tensor-grid propagation of cuts or point separation.
+\end{proof}

@@ -1,0 +1,4 @@
+Primary sources actually read in this round,not full-paper re-audits:
+2011 Numdam original:https://www.numdam.org/item/CRMATH_2011__349_23-24_1255_0.pdf ;selected Section2 setup,Definitions2.3-2.4,Theorem2.5,adjacent context.
+2014 publisher abstract/metadata:https://link.springer.com/article/10.1007/s00211-013-0576-y ;institutional original:https://strathprints.strath.ac.uk/44827/1/10.1007_s00211_013_0576_y.pdf ;selected Definitions3.4,3.7,3.9,Lemma3.21,Theorem3.22,Corollary3.23 and size qualification.
+Exact primary comparison and limits are in the fullreport. No externalfulltextPDF is copied into this packet; no complete assumption/proof/implementation/numerical or historical-equivalence audit is claimed. Direct DOI opens failed but primary copies succeeded; no purchase or access bypass.

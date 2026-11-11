@@ -1,0 +1,42 @@
+{
+  "task": "Bounded analytical audit of uncut-coordinate falsifier",
+  "source_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-251\\q251-uncut-coordinate-falsifier.txt",
+  "source_sha256": "a0b75328741b96142716727e33795e71caedf3b7b6a46384118343bfdac1f71d",
+  "source_bytes": 5673,
+  "source_representation": "Raw filesystem bytes; no normalization; not Git blob",
+  "source_still_matches_capture": true,
+  "files": [
+    {
+      "name": "note-exact.txt",
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-251\\uncut-coordinate-audit\\note-exact.txt",
+      "bytes": 5673,
+      "sha256": "a0b75328741b96142716727e33795e71caedf3b7b6a46384118343bfdac1f71d",
+      "CR_bytes": 0,
+      "LF_bytes": 87,
+      "UTF8_BOM": false,
+      "final_LF": true
+    },
+    {
+      "name": "fullreport.txt",
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-251\\uncut-coordinate-audit\\fullreport.txt",
+      "bytes": 12885,
+      "sha256": "ce69e2a7af429b1ea3a31c1d38ee9a9b310a1879af54b12a2651f75a98db3559",
+      "CR_bytes": 0,
+      "LF_bytes": 94,
+      "UTF8_BOM": false,
+      "final_LF": true
+    },
+    {
+      "name": "context.json",
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-251\\uncut-coordinate-audit\\context.json",
+      "bytes": 1760,
+      "sha256": "ea311ab40246df52eff15ae0af1e8d6775a0b51f5c386f723787babde3b76402",
+      "CR_bytes": 0,
+      "LF_bytes": 36,
+      "UTF8_BOM": false,
+      "final_LF": true
+    }
+  ],
+  "self_hash_excluded": "Manifest hash returned externally to avoid self-reference",
+  "new_numeric_score": null
+}

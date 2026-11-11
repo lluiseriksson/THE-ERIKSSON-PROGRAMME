@@ -1,0 +1,209 @@
+Q251 / 258A: MOVING AND INDEPENDENTLY DEFORMING PRODUCT CUTS
+11 November 2026. Frozen analytical candidate, awaiting separate source audit.
+This is grouped research source, not a new paper, PDF, formal proof or grade.
+The published255B PDF and its assessment remain unchanged.
+Priority and wider relevance are unestablished. No physical-gap or continuum claim.
+
+EXACT DEPENDENCY
+The only mathematical lemma imported is the explicitly proved one-corner
+cutoff estimate in Section3 of257A, frozen Git
+fed201fd10f952a04e638c324dc0e1359711911a, proof raw SHA256
+8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc.
+That source and its separate involved analytical audit are retained by merge
+6ee7ae3b2a023bc61c65503fdd84d5c945c1b0f9. The argument here rederives the
+image membership, moving-cut geometry, commutator bounds and final constants.
+No energy/gap assumption is packaged into a structure or taken as an input.
+
+THEOREM PROPOSED
+Let n>=32,4|n,V=n^3,c>0,a=c/48,H=cn^2. On X=(Z/nZ)^3 use
+ partial_h f(x)=f(x+e_h)-f(x), delta_h f(x)=f(x)-f(x-e_h).
+Channel1 has source weight H at odd x1+x2+x3 and a at even sources;
+channel2 has opposite parity, in the original orthogonal internal basis.
+ Q(z)=sum_(x,h,alpha) b_alpha(x)|partial_h z_alpha(x)|^2,
+ ||z||^2=sum_(x,alpha)|z_alpha(x)|^2.
+The actual spatial domain in each channel is U0=im(d1^*) for the forward curl.
+
+At each i in Z/nZ, choose nonempty cyclic interval partitions
+ J_(i,1),...,J_(i,M2(i)) and K_(i,1),...,K_(i,M3(i)).
+Their product q=M2(i)M3(i)>=1 is the SAME integer at all slices, but the
+intervals, cut locations, and even the two factor counts may depend on i.
+Channel1 cells are {i} x J_(i,j) x K_(i,k), with their original component means
+ C_(S,r,1)=(V|S|)^(-1/2) sum_(x in S) z_(r,1)(x).
+They give exactly3nq full channel1 rows. Channel2 cells can be arbitrary;
+the constructed channel2 field is identically zero.
+
+Let E_i be the Cartesian product of the two sets of terminal interval
+endpoints at slice i. Thus E_i contains exactly q distinct transverse points.
+Suppose for every cyclic adjacent pair i,i+1 there exists a BIJECTION
+ beta_i:E_i -> E_(i+1)
+whose matched points have periodic l1 distance <=B, for an integer B>=0.
+Periodic l1 distance is the minimum |r2|+|r3| over integer representatives
+of the difference modulo n. This is a concrete finite geometric condition.
+No common translation, fixed cuts, global point labels or zero permutation
+after one trip around x1 are required. Bijections may change at each step.
+Put R=n/4, L=log((R+1)/3), M=max(4,3+B).
+
+If L>=2^18 M^2 q, there is an explicit REAL nonzero z=(d1^*psi,0) such that
+every original mean in BOTH channels is exactly zero and
+ Q(z)<=(7/16)c||z||^2<c||z||^2.
+Consequently no quadratic penalty on these observations restores c.
+Recovery in this class requires
+ q > L/(2^18 M^2), or 3nq > 3nL/(2^18 M^2).
+For B bounded independently of n this is a necessary order n log n row count.
+For growing B only the displayed quantitative tradeoff is asserted.
+This is not a lower bound for arbitrary canonical or nonproduct partitions.
+All constants and existence thresholds are deliberately unoptimized.
+
+1. ACTUAL REAL PREIMAGE AND EXACT MEANS
+For any real periodic scalar Psi, put phi=delta2delta3Psi and take the real
+two-form psi23=phi, psi12=psi13=0. Direct adjunction of
+ (d1u)23=partial2u3-partial3u2,
+using partial_h^*=-delta_h gives
+ z1=d1^*psi=(0,delta3phi,-delta2phi)
+    =(0,delta2delta3^2Psi,-delta2^2delta3Psi)=:P Psi.
+This is membership in the original image; no projection is used. Full
+component sums vanish by periodic telescoping of a first difference.
+At fixed i, summing z2 over J=[A,C] and K=[D,F] produces the four-corner
+difference of delta3Psi at (C,F),(A-1,F),(C,D-1),(A-1,D-1).
+The z3 sum is the negative four-corner difference of delta2Psi there.
+All these points belong to E_i since each starting endpoint minus1 is the
+preceding interval's terminal endpoint in that slice. A wrapping interval
+obeys the same telescoping identity; a whole-cycle factor cancels exactly.
+Thus all slice-i means vanish if delta2Psi=delta3Psi=0 on E_i. This argument
+does not compare cut positions or factor counts between different slices.
+
+2. MOVING MINIMUM CUTOFF AND ITS DEFICIT
+For p in Y=(Z/nZ)^2 let rho_p be periodic l-infinity distance and
+ f_p(y)=clip_[0,1](log((rho_p(y)+1)/3)/L).
+The imported257A Section3 lemma gives, with original transverse counting norm,
+ E_Y(f_p)=sum_(y,h=2,3)|partial_h f_p(y)|^2<=64/L,
+ ||1-f_p||_Y^2<=4n^2/L^2.                                  (1)
+Its hypotheses are exactly R>=8, R=n/4 and the L used here. Translations
+preserve both estimates, including all cyclic seams.
+Define the real scalar eta(i,y)=min_(p in E_i) f_p(y). It is periodic in i,
+because the data are indexed by Z/nZ. It lies in[0,1] and vanishes within
+transverse radius2 of every p in E_i. At each slice,
+ 1-eta(i,y)=max_(p in E_i)(1-f_p(y)),
+so (1) gives ||1-eta(i,.)||_Y^2<=4qn^2/L^2. Summing the n slices yields
+ ||1-eta||_X^2<=4qV/L^2.                                   (2)
+
+3. DERIVE MOVING TRANSLATION BOUNDS FROM ACTUAL BIJECTIONS
+First, any transverse shift u satisfies
+ ||f_p(.+u)-f_p||_Y<=|u|_1 sqrt(64/L),                     (3)
+by a shortest integer representative path, repeated triangle inequality,
+translation invariance, and (1). Negative shifts and seams are included.
+More generally
+ ||f_(p')(.+u)-f_p||_Y<=(|u|_1+B) sqrt(64/L)
+if p'=beta_i(p), because the two cutoffs are translates of the same radial
+function and p'-p has an integer representative of l1 norm<=B.
+For any two finite real lists indexed by the same set,
+ |min a_p-min b_p|<=max_p|a_p-b_p|.
+Apply this pointwise, use the bijection beta_i to index the second slice,
+square, bound max by sum, then sum over y. It follows that
+ ||eta(i+1,.+u)-eta(i,.)||_Y^2
+ <=sum_(p in E_i)||f_(beta_i(p))(.+u)-f_p||_Y^2
+ <=64q(|u|_1+B)^2/L.                                      (4)
+For no longitudinal shift, the same proof uses the identity matching and
+gives 64q|u|_1^2/L, without B. In particular the argument does not require
+fixed point labels across three slices, let alone across the entire cycle.
+At i=n-1, use the explicitly required matching beta_(n-1) to E_0; hence the
+longitudinal seam is checked, without an assumption of trivial holonomy.
+
+Let T^(r1,u)F(i,y)=F(i+r1,y+u). Summing (4) or its r1=0 variant over i gives,
+for the ONLY longitudinal shifts needed below, r1 in {0,1},
+ ||T^(r1,u)eta-eta||_X
+ <=sqrt(64nq/L) (|u|_1+B r1).                              (5)
+No estimate for unrestricted long longitudinal shifts is asserted or needed.
+Equations(4)-(5) are derived from the geometric inputs, not assumed bounds
+on a manufactured cutoff, weighted operator or coexact projection.
+
+4. KEEP THE ORIGINAL LOW WAVE, NOT A MOVING PHASE
+Take Psi0(x)=sin(pi*(x1+x2+x3)/2). The wave phase is the ORIGINAL total
+coordinate; it is not transported with the cut positions. Its period4
+identities give delta2delta3Psi0=2cos(pi*sumx/2), and
+ z0=P Psi0=(0,w,-w), with w=(2,-2,-2,2) on total residues0,1,2,3.
+Thus |z0(x)|^2=8, ||z0||^2=8V, and |Psi0|<=1. At every original odd source,
+w(x+e_h)=w(x), for each h, so partial_h z0 vanishes there exactly.
+Set Psi=eta Psi0, z1=P Psi. At each p in E_i the cutoff is zero at p and
+its backward e2/e3 neighbors. Hence delta2Psi=delta3Psi=0 there, for that i.
+Section1 proves exact invisibility of all channel1 means. Channel2 is zero.
+
+5. FULL CONVOLUTION COMMUTATORS, WITH LONGITUDINAL MOTION INCLUDED
+For any finite convolution A=sum_r a_r T^r, algebra gives exactly
+ A(etaPsi0)-eta A(Psi0)=sum_r a_r(T^r eta-eta)T^rPsi0.
+Since |Psi0|<=1, the l2 triangle inequality and (5) imply
+ ||A(etaPsi0)-eta A(Psi0)||_X
+ <=sqrt(64nq/L) sum_r |a_r|(|r2|+|r3|+B r1),              (6)
+provided all its longitudinal shifts have r1 in{0,1}.
+Each nonzero P component is a product of THREE transverse backward
+differences: coefficient l1 sum<=8, r1=0, transverse radius<=3. Therefore
+ ||P(etaPsi0)-eta z0||^2<=2*(8*3)^2*64nq/L
+                         =73728nq/L.                     (7)
+For partial2P and partial3P, the l1 sum is<=16, r1=0 and transverse
+radius<=4. For partial1P, r1 is0 or1, the transverse radius is<=3 and
+the coefficient l1 sum is<=16. Thus the radius term in (6) is<=M for all
+six direction/nonzero-component pairs. On original odd sources,
+eta partial_h z0=0, so restriction of the full norm bound yields
+ sum_(odd x,h)|partial_h z1(x)|^2
+ <=6*(16M)^2*64nq/L=98304M^2 nq/L.                        (8)
+The original source weight has not been moved to a target. Equation(8)
+does not treat eta as independent of x1: the B term in(5)-(6) explicitly
+controls that change. No differentiability of the minimum is needed.
+
+6. NONZERO FIELD AND ORIGINAL WEIGHTED ENERGY
+Split z1-z0=(eta-1)z0+[P(etaPsi0)-eta z0]. By(2),(7), |z0(x)|^2=8,
+and the two-term squared-norm inequality,
+ ||z1-z0||^2<=16||1-eta||_X^2+147456nq/L
+ <=(64q/L^2+147456q/L)V,                                  (9)
+where the final coarse bound uses n<=V. Since M>=4, the hypothesis
+L>=2^18M^2q implies L>=2^22q. As q>=1, the coefficient in(9) is at most
+2^-38+9/256<2. The reverse triangle inequality gives
+ ||z1||>sqrt(8V)-sqrt(2V)=sqrt(2V), so the actual field is nonzero.
+Multiplying (8) by H=cn^2 gives the original strong contribution at most
+ 98304M^2 cqV/L<=(3/8)cV<(3/16)c||z1||^2.                 (10)
+Here 98304/2^18=3/8 exactly. The weak-source contribution is at most the
+full unweighted energy times a. Each forward difference has norm<=2||z1||,
+so summing all three directions bounds it by12a||z1||^2=c||z1||^2/4.
+Together with(10), Q(z)<7c||z||^2/16. This proves the stated weak bound.
+All potentials and fields are finite, periodic and real; their membership,
+invisibility and nonzero norm have been derived. Any quadratic form of the
+zero vector of all means is zero, regardless of size-dependent coefficients.
+
+7. A QUANTITATIVE SEARCH REDUCTION, NOT GLOBAL CLOSURE
+For these finite corner sets define the actual bottleneck motion
+ B_* = max_i min_(bijections beta:E_i->E_(i+1))
+               max_(p in E_i) dist_l1(p,beta(p)).
+All sets are finite of equal nonzero cardinality, so every minimum and maximum
+exists and B_* is a nonnegative integer. Hence the theorem always applies
+with the geometrically determined B_*. The necessary inequality becomes
+ L < 2^18 q max(4,3+B_*)^2.                                (11)
+For a family with q<=Q fixed and L>=2^22Q, (11) forces
+ B_* > sqrt(L/(2^18Q))-3.                                 (12)
+Indeed the alternative max=4 would contradict L>=2^22Q; then solve (11)
+for3+B_*, using q<=Q. Thus any prospective O(n)-row recovery family in THIS
+product-slice class must have increasingly rapid corner motion, at least the
+quantitative lower bound(12). Bounded-motion families are excluded.
+
+Independent deformation is genuinely allowed: if two or more transverse
+endpoints move at different bounded increments while the slice partitions
+remain nonempty, product endpoint matchings meet the hypothesis with the
+sum of the two endpoint-motion bounds. A common transverse translation is
+unnecessary. Arbitrary cyclic adjacent matchings, even with nontrivial
+permutation on returning around x1, are also allowed.
+These are weaker geometric restrictions than stationary cuts or translated
+copies of one fixed grid. They remain restrictions: (11) can be inconclusive
+for rapidly jumping cuts, and the proof says nothing about general nonproduct
+canonical rectangle partitions. No unconditional hypothesis elimination or
+global nlogn optimum is recorded. The finite parameter regime is nonvacuous:
+stationary data B=0 recover257A and meet the threshold for arbitrarily large
+4-divisible n at fixed q; genuinely varying bounded data can also have such n.
+
+The classical capacity/minimum machinery is not claimed as original. The
+bounded primary comparison for257 remains relevant, but no exhaustive prior
+equivalence search for this application has been completed. The constants
+are huge, the physical continuum remains open, and analytical validity must
+be kept separate from novelty, significance and any future PDF assessment.
+Next under the SAME activeQ251: test rapidly jumping product cuts or derive
+an obstruction without bounded bottleneck motion. Preserve any failed gap,
+counterexample or missing coexact-energy lemma; do not create a separate
+small paper or carry over the255B score.

@@ -1,0 +1,30 @@
+Q251 /256: scoped analytical finite counterexample; research source, not a paper.
+
+The original candidate proof is frozen unchanged at d77142dbe214a9df2dfd5ffa057c736796e6a8ad.
+Its first-phase CANDIDATE label is retained as provenance. The later complete
+analytical source audit db45b2b5b88b11dc6062f2dc3d59ff8c6c1f11128701751b6977c95754f910fd
+accepted the stated theorem without blocking defects. Parent read it in full
+and verified all9rawsubjects. Full report, context, captures and manifest here.
+Same-account involved AI analytical review; no formal/independent/human peer
+review or numerical grade. No later evidence is silently inserted into the
+original mathematical proof; this package records that later audit separately.
+
+Result: n=64N, harmonic h_N>=128pi^2, D3 original orthogonal checkerboard,
+a=c/48,H=cn^2. The particular fully-cut grid {i}xJxK (J,K singleton0 or
+its complement) in both channels has24n full rows. An explicit REAL curl23
+potential produces a nonzero field in actualU_0^2 with ALL rows0 and
+Q<=5c||z||^2/8. Every quadratic penalty on that partition therefore fails
+restoration atc. The actual original norm/source labels are retained.
+
+This closes THAT grid negatively. It does not refute all O(n)partitions,
+prove a global logarithmic lower or resolve the sole activeQ251. The enormous
+harmonic threshold is an existence bound, not a feasible numerical test or
+optimized constant. ClassicalGreen/Fouriermechanism; specific historical
+priority and wider relevance unestablished after the bounded primary reading.
+Do not turn this research source into a separate small-corollary paper.
+
+The actual coexact correction and exact marginal/point constraints are proved,
+not assumed in a new capability structure or supplied by Hodge projection.
+All256material is EXCLUDED from the frozen255B PDF/first4.00assessment.
+No score is inherited or assigned here. PR29 remains20/41;TermSource=0;
+physical mass gap and continuum stayOPEN. No Windows build/Lean/numeric test.
