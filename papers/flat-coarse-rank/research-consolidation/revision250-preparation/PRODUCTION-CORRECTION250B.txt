@@ -1,0 +1,23 @@
+250B bounded editorial successor to exact source1659b5397ffa30e5315b2b3963d9ed661ee5f611.
+Actual250A production preserved in D evidencia250 production-preparation/attempt-a.
+Three first-clone TeX passes exited0 and produced a20-page PDF, but the production
+gate correctly rejected an overfull59.38974pt inline full SourceCommit paragraph.
+No second clone, rendering, visual review, reproduction or numerical assessment
+was reached. The CLI returned0 despite Python RuntimeError, so inner FAILED_PRESERVED
+and native logs remain authoritative. Own session stopped; separate backend inactive.
+
+This successor makes only two manuscript editorial changes:
+1. Center the complete actual SourceCommit on its own small monospaced line.
+2. Resolve source audit N1 by explicitly assigning8/9 to strongbudget and1/9 to
+   the global-gap inequality. The subsequent correct displayed inequality is unchanged.
+No theorem, hypothesis, formula constant, observation row, proof mechanism or
+source binder changes. Question249 remains excluded. STATIC-SOURCE-CHECK.json is
+the immutable earlier source-A text inspection, not a fresh250B inspection.
+
+The production script separately needs a bounded correction: its literal Rerun
+warning match also matched a harmless package metadata line (Package:rerunfilecheck,
+Rerun checks for auxiliary files). Classify actual rerun instructions, retain the
+full native logs and warning inventory, and do not ignore real rerun/layout warnings.
+The original script, complete failure archive and reports remain unchanged.
+New source/pins/production delta audit is required before a new owned runtime.
+No old PDF grade is transferred and no assessment250A occurred.
