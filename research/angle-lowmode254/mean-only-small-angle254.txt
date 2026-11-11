@@ -1,0 +1,87 @@
+254 NEGATIVE COMPANION -- the orthogonal component-MEAN map does not simply
+extend to small positive angles, even on the actual coexact domain.
+11 November2026. Analytical candidate; separate exact-source audit required.
+Related to254A and question251, no new paper, assessment, physical or formal claim.
+
+Let D>=3, even n>=2,c>0,V=n^D,a=c/(16D),H=cn^2. In the ORIGINAL two-channel
+basis let v0=(1,0), v1=(cos(theta),sin(theta)), with0<theta<=1/4 radians.
+Let s_l be unit perpendiculars and B(x)=a v_l v_l^T+H s_l s_l^T at source
+parityl. Keep the exact original forward gradient, counting norm and actual
+coexact domain U=im(d1*)^2. Put
+ w=(cos(theta/2),sin(theta/2)),
+ f(x)=cos(2pi x1/n),
+ z_D(x)=w f(x), z_r(x)=0 for r!=D.
+This is a real nonzero original field. We prove it is actually in U and has
+ Q(z)<c||z||^2,
+but EVERY complete strong-component mean is zero. Therefore observing only
+these means, with ANY finite penalty Phi(0)=0, cannot restore targetc.
+
+OBSERVATIONS COVERED
+For each parityl and each residue s of parityl, let
+ G_(l,s)={x:sum_i x_i belongs to{s,s+1} mod n}.
+These are the same actual strong components used for the two normal coordinates
+in253/254A. For any original internal row vector b in R2 and any spatial r,
+the scalar mean sum_(x in G_(l,s)) b dot z_r(x) is zero. Thus the failure
+includes original-channel component means, normal-coordinate component means,
+and ANY linear combinations of those means. It does not cover enriched
+transverse Fourier observations or arbitrary O(n) rectangular maps.
+
+ACTUAL COEXACT MEMBERSHIP
+The mean of f is zero for n>=2. Its original Fourier support is k=e1 and
+k=-e1, possibly the SAME real Nyquist mode at n2. At either nonzero supported
+frequency, the forward vector xi has only its first entry nonzero. The spatial
+coefficient u has only its Dth entry possibly nonzero. Since D!=1,
+ sum_i conjugate(xi_i)u_i=0.
+Define the independent two-form coefficients
+ psi_ij=(xi_i u_j-xi_j u_i)/(sum_i |xi_i|^2),i<j.
+The denominator is positive; expansion of the forward curl's counting adjoint
+gives d1*psi=u. Conjugate symmetry, including the real n2 mode, gives a REAL
+inverse two-form. This holds separately in both original internal channels.
+Hence the specified field is in the ACTUAL U, without assuming Hodge
+surjectivity, a domain replacement or projection invariance.
+
+ALL COMPONENT MEANS VANISH EXACTLY
+For a sum layer s write x=(y1,...,y_(D-1),s-sum y) modn. Then x1=y1, so
+ sum_(x:sumx=s) f(x)=n^(D-2) sum_(y1=0)^(n-1)cos(2pi y1/n)=0.
+The other layer s+1 has the same zero sum. Consequently every G_(l,s) mean
+of f is zero. This argument includes the wrap pair{n-1,0} and n2, where
+the single G is the whole torus. Multiplication by w, any b and any canonical
+V^(-1/2)|G|^(-1/2) normalization preserves zero. All covered observations vanish.
+
+EXACT SOURCE-WEIGHTED ENERGY AND STRICT LOW BOUND
+For both l=0,1,
+ |v_l dot w|^2=cos^2(theta/2), |s_l dot w|^2=sin^2(theta/2).
+Thus w^T B(x)w equals the SAME scalar
+ beta=a cos^2(theta/2)+H sin^2(theta/2)
+at every source, not merely after a parity average. The field changes only
+under forward direction1. Since f is a real character eigenfunction of the
+positive periodic scalar Laplacian, including n2 with its original labels,
+ E(z)=4sin^2(pi/n)||z||^2.
+This also follows directly by expanding the squared difference and summing
+the finite sine/cosine character. Hence
+ Q(z)/||z||^2
+ =4sin^2(pi/n)[a cos^2(theta/2)+cn^2 sin^2(theta/2)].
+Use sin(pi/n)<=pi/n, sin(theta/2)<=theta/2, cos^2<=1 and also sin^2(pi/n)<=1:
+ Q(z)/(c||z||^2)<=1/(4D)+pi^2 theta^2
+ <=1/12+pi^2/16 <1/12+10/16=17/24<1.
+The final strict elementary bound uses pi^2<10. No numerical eigenvalue
+calculation, asymptotic limit, source relabelling or zero strong-energy
+assertion is needed: strong energy is small and positive at positive angle.
+
+As z!=0 and every covered observation equals0,
+ Q(z)/V+Phi(Cz)=Q(z)/V<c||z||^2/V.
+Thus the conjecture that the SAME mean-only construction restores targetc
+at every fixed positive angle is REFUTED on actual U for this explicit interval.
+The result does not disprove an order-n enriched unrestricted construction:
+254A precisely retains transverse modes that this example has and the means
+miss. It does not assert failure at every nonorthogonal angle, find a sharp
+critical angle, or solve the canonical-rectangle question251.
+
+SCOPE/PROVENANCE
+All observations, source weights, periods and the original real coexact field
+are explicit. The failure is inside the actual requested domain and does not
+transfer an ambient count into a coexact lower bound. Finite harmonic tests
+and spectral enrichment are classical; independent originality and historical
+priority are unestablished. No new PDF version, grade, paper, formal proof,
+physical mass gap or continuum result is claimed. PR29 remains20/41;TermSource=0.
+Group with251--254 if consolidated; keep exact published250B unchanged.
