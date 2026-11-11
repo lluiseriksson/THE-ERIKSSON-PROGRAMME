@@ -1,0 +1,874 @@
+{
+  "representation": "Raw Git UTF8/LF or original binary; authored UTF8 reports; no normalization",
+  "self_hash_excluded": true,
+  "source_A": "1659b5397ffa30e5315b2b3963d9ed661ee5f611",
+  "source_B": "4ec599da41521ecfdadd7d2aee69faab8b3819f1",
+  "files": [
+    {
+      "sha256_raw": "5f1b8d331d33f9c7512d6d08654396970938f01fa3b29fbd44c67a3e367ba717",
+      "bytes": 4198,
+      "path": "A-to-B.diff"
+    },
+    {
+      "sha256_raw": "6c981a04d9be99820d96e0efa95eb5b81882e7f2ff204b8ce291a9f07708687e",
+      "bytes": 408,
+      "path": "capture-attemptA-failure.txt"
+    },
+    {
+      "sha256_raw": "8e4da14974805f9cc6e300cad0d8fbe6a4308551c9a7ce54618f556273ee57f6",
+      "bytes": 30123,
+      "path": "capture-manifest.json"
+    },
+    {
+      "sha256_raw": "396f9b75e5f540d868a4380a3849832185fbf5f1a20a44884c9954750f318241",
+      "bytes": 4642,
+      "path": "capture-successor.ps1"
+    },
+    {
+      "sha256_raw": "fcc880899fc19175fb26d13a0c2b282857b7af2679646094e25b530615681136",
+      "bytes": 4724,
+      "path": "capture.ps1"
+    },
+    {
+      "sha256_raw": "5b71c5f16ee5518f8c780d7d17d8ee8881924cc697d987088bf3ce545a3fecb4",
+      "bytes": 1865,
+      "path": "context.json"
+    },
+    {
+      "sha256_raw": "8c9ef95e2055828b4174e6e806b56a190c5228b5cddb3d937148b870516f130b",
+      "bytes": 10561,
+      "path": "fullreport.txt"
+    },
+    {
+      "sha256_raw": "32e77ba74569ff5b4dd6cf19138644d12843935dbbd6e5e36e349ccccbee4cfe",
+      "bytes": 892,
+      "path": "original-A-bindings.json"
+    },
+    {
+      "sha256_raw": "5776dc244c0559658919ab4afd1b73bb13c4b1ef1896db77cb60028c3c7d9d1f",
+      "bytes": 2595956,
+      "path": "source250B-raw-git.zip"
+    },
+    {
+      "sha256_raw": "a514e0a060807de2e74f209cbc32e81cf3a321bd091ba5090bcc6e05c7aae0c0",
+      "bytes": 1926,
+      "path": "verdict.json"
+    },
+    {
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "path": "actual-A-failure/backend-readback.exit"
+    },
+    {
+      "sha256_raw": "dec807c11992d9001acb723d969c49727402fe62c5e6cbd3899944bfdd03c140",
+      "bytes": 44,
+      "path": "actual-A-failure/backend-readback.log"
+    },
+    {
+      "sha256_raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "path": "actual-A-failure/backend-readback.stderr.log"
+    },
+    {
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "path": "actual-A-failure/execution.exit"
+    },
+    {
+      "sha256_raw": "e681da7b0dee296c3095a61bafe522892571a4cab50a6718750383af2b62de32",
+      "bytes": 186,
+      "path": "actual-A-failure/execution.log"
+    },
+    {
+      "sha256_raw": "5db2071161aee0604bd3a17c367322d7d8b4278a0f3772b15119e5b8d16ac0ba",
+      "bytes": 1606,
+      "path": "actual-A-failure/execution.stderr.log"
+    },
+    {
+      "sha256_raw": "e452514fdefefae934517490cf0e675efdca09cb1a5e61fa50eb42e49d7c5c7e",
+      "bytes": 29219,
+      "path": "actual-A-failure/build-state/first/finalpass/canonical_rectangles250.log"
+    },
+    {
+      "sha256_raw": "798cf5fe2836f7c99d110ed07a7bf4213a439438b34bee14afcdab92f2cfdc35",
+      "bytes": 488,
+      "path": "actual-A-failure/evidence/failure.txt"
+    },
+    {
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "path": "actual-A-failure/evidence/latex-first-finalpass.exit"
+    },
+    {
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "path": "actual-A-failure/evidence/latex-first-firstpass.exit"
+    },
+    {
+      "sha256_raw": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "path": "actual-A-failure/evidence/latex-first-secondpass.exit"
+    },
+    {
+      "sha256_raw": "f14a84057948313626300077d25e0e3934feecf25dde6a77f37fb930aaae460d",
+      "bytes": 130659,
+      "path": "actual-A-failure/evidence/report.json"
+    },
+    {
+      "sha256_raw": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "bytes": 8,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/.gitattributes"
+    },
+    {
+      "sha256_raw": "2b1a762b4cfa89498ce01dc7b008b46baec07b011fd7ffb9c8f2a40ce68ef948",
+      "bytes": 1180,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/AUTHORING-SCOPE.txt"
+    },
+    {
+      "sha256_raw": "d637fdd95611a7163a6a78992531e10d52f274dbfe20ee37a1829e69cd429ba3",
+      "bytes": 3042,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/canonical_rectangles250.tex"
+    },
+    {
+      "sha256_raw": "3c507fe9cf8ff99f71835d536cbf655e31db22107feecaf58df17e986281afb4",
+      "bytes": 6653,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/checkerboard250.tex"
+    },
+    {
+      "sha256_raw": "f6b83adb3d9ecb3622723224d1c58d749ec3e37920e7c1fdcea07b30d45b8d84",
+      "bytes": 3217,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/COMPARISON235-248.md"
+    },
+    {
+      "sha256_raw": "491bfc8fb0300101aec1af5dbb8d396463a72b51bb0722d0e6056de472f9fa77",
+      "bytes": 14642,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/context250.tex"
+    },
+    {
+      "sha256_raw": "6ef355ed73177a2845fe468e68eec85184c4d39047448de18d0e268020c6a33f",
+      "bytes": 6931,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/finite250.tex"
+    },
+    {
+      "sha256_raw": "00c6f83ef3707d6136ca2ee3f087c4d7fa4d2934796ef4c450e6867ff4149c06",
+      "bytes": 14700,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/fixed250.tex"
+    },
+    {
+      "sha256_raw": "2bb9af96b0a0abe97a9aed3c441f8f04f1be3d91d52d7a65d3bdc3689c1053e3",
+      "bytes": 10986,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/points250.tex"
+    },
+    {
+      "sha256_raw": "82703205e60de0d670844d3d19eaee76de7cdd6cae4fece4ec2c9387199cc91e",
+      "bytes": 1684,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/PRODUCTION-CORRECTION250B.txt"
+    },
+    {
+      "sha256_raw": "44a04cb5ff4b2a212995a0801b358f05c78cd28136420a067267769362c6b703",
+      "bytes": 9781,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/setup250.tex"
+    },
+    {
+      "sha256_raw": "800d0ac374474bac33b8ecabb67a121b05310ae030f1d6b4e3102bf36a07bd95",
+      "bytes": 57007,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/SOURCE-INPUTS.json"
+    },
+    {
+      "sha256_raw": "4be7c04154ea54ae2b0c4bc8dd082a5fac7c073136bb937fc63344a332ac4cb0",
+      "bytes": 13501,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/SOURCE-MAPPING.json"
+    },
+    {
+      "sha256_raw": "3c66aa8e71f343cd46e7ca266fe5ef306d385e61bcadeb4b3eb7faf140b36eb6",
+      "bytes": 2787,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/STATIC-SOURCE-CHECK.json"
+    },
+    {
+      "sha256_raw": "ca030e2a91a7640ee69d184a1449a5edf81d2acec23dfbec2e994dafb385a11e",
+      "bytes": 2177768,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/grouped235-248-source-audits.zip"
+    },
+    {
+      "sha256_raw": "26ee1282462f2a457f75dbbe2e4ab9bd384143aecc5d475aab348b3c8221621a",
+      "bytes": 375,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/pdf-operation-marker250-original.json"
+    },
+    {
+      "sha256_raw": "4ccc3829df28810f801204b385360bf361dea484f5b73dfdb5b227d0faefc06f",
+      "bytes": 8851,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source235.txt"
+    },
+    {
+      "sha256_raw": "b29ea47b3949ba2b8130e38ef7c395c115e600e595d0c6476032a031b03ebc1a",
+      "bytes": 9388,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source236.txt"
+    },
+    {
+      "sha256_raw": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3",
+      "bytes": 5765,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source237.txt"
+    },
+    {
+      "sha256_raw": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42",
+      "bytes": 7686,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source238.txt"
+    },
+    {
+      "sha256_raw": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757",
+      "bytes": 8074,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source239.txt"
+    },
+    {
+      "sha256_raw": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814",
+      "bytes": 8232,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source240.txt"
+    },
+    {
+      "sha256_raw": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03",
+      "bytes": 12657,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source241.txt"
+    },
+    {
+      "sha256_raw": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc",
+      "bytes": 9624,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source242.txt"
+    },
+    {
+      "sha256_raw": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459",
+      "bytes": 13385,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source243.txt"
+    },
+    {
+      "sha256_raw": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a",
+      "bytes": 11932,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source244.txt"
+    },
+    {
+      "sha256_raw": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d",
+      "bytes": 7772,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source245.txt"
+    },
+    {
+      "sha256_raw": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842",
+      "bytes": 7600,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source246.txt"
+    },
+    {
+      "sha256_raw": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03",
+      "bytes": 10720,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source247.txt"
+    },
+    {
+      "sha256_raw": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675",
+      "bytes": 17708,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/accepted/source248.txt"
+    },
+    {
+      "sha256_raw": "2227ae6ad57c9cc79d84c585fe6f42e06de58a89f48ccfa870e0d6a723c7f01f",
+      "bytes": 10979,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture-manifest.json"
+    },
+    {
+      "sha256_raw": "898f405036d0d5d140f171e3e637e634e8fef2bb10d19e4eb3b42ee5179da06e",
+      "bytes": 1829,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/context.json"
+    },
+    {
+      "sha256_raw": "0b848c38e333e1c0b0ca3797983ba72ebc7169df30057615ffed24eb00f8e5bb",
+      "bytes": 21247,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/fullreport.txt"
+    },
+    {
+      "sha256_raw": "432424205841fbae5455fa4a790f21d55644585f532e33008f78eeeb27dd317b",
+      "bytes": 3767,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/hashes.json"
+    },
+    {
+      "sha256_raw": "4b19d5c93dc9f8c0838859802c23305b7ce5d9300c1a82503fbfcec68badc6f9",
+      "bytes": 1105,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/primary-reading-mss.txt"
+    },
+    {
+      "sha256_raw": "0421919b8c3df7abc3d2e7f937f9e0a0c54ae38d15b4ebdaa660ffb4232dc6e4",
+      "bytes": 2555,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/verdict.json"
+    },
+    {
+      "sha256_raw": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "bytes": 7469,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture/226C-matrix-proof-git.tex"
+    },
+    {
+      "sha256_raw": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3",
+      "bytes": 15141,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture/226C-rectangular-matrix-git.tex"
+    },
+    {
+      "sha256_raw": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814",
+      "bytes": 8232,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture/all-dimension-penalty240B-git.txt"
+    },
+    {
+      "sha256_raw": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757",
+      "bytes": 8074,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture/all-internal-dimensions239-git.txt"
+    },
+    {
+      "sha256_raw": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03",
+      "bytes": 12657,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture/balanced-polarization241B-git.txt"
+    },
+    {
+      "sha256_raw": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f",
+      "bytes": 7789,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture/channel-separable231B-git.txt"
+    },
+    {
+      "sha256_raw": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42",
+      "bytes": 7686,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture/internal-dimension238-git.txt"
+    },
+    {
+      "sha256_raw": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3",
+      "bytes": 5765,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture/rank-penalty237-git.txt"
+    },
+    {
+      "sha256_raw": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459",
+      "bytes": 13385,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture/two-weak-directions243-git.txt"
+    },
+    {
+      "sha256_raw": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a",
+      "bytes": 11932,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture/uniform-weak-dimension244-git.txt"
+    },
+    {
+      "sha256_raw": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc",
+      "bytes": 9624,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit244/capture/upper-delocalization242-git.txt"
+    },
+    {
+      "sha256_raw": "7cad9be858be5cadd9e6bbd50e514d74418809bc637c82959c08e2247d72528b",
+      "bytes": 11303,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture-manifest.json"
+    },
+    {
+      "sha256_raw": "af5b6190407ed8c59ec401e7b11a3114b75b5716770347d1e90402789f01bcbf",
+      "bytes": 1721,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/context.json"
+    },
+    {
+      "sha256_raw": "816084b351a0a2d70c70de9fd6d4fedb282510618dd8c4a4b9cf76625ec5151e",
+      "bytes": 18044,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/fullreport.txt"
+    },
+    {
+      "sha256_raw": "b61e2002afc710c36584b520e29f663b80a94601b1a1cb83b84ef7576d533a84",
+      "bytes": 3786,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/hashes.json"
+    },
+    {
+      "sha256_raw": "c4ddfcb92b296e4e3385812b1f915af64b448d804f02ddf707c26baa3861256c",
+      "bytes": 3141,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/verdict.json"
+    },
+    {
+      "sha256_raw": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "bytes": 7469,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/226C-matrix-proof-git.tex"
+    },
+    {
+      "sha256_raw": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3",
+      "bytes": 15141,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/226C-rectangular-matrix-git.tex"
+    },
+    {
+      "sha256_raw": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814",
+      "bytes": 8232,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/all-dimension-penalty240B-git.txt"
+    },
+    {
+      "sha256_raw": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757",
+      "bytes": 8074,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/all-internal-dimensions239-git.txt"
+    },
+    {
+      "sha256_raw": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03",
+      "bytes": 12657,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/balanced-polarization241B-git.txt"
+    },
+    {
+      "sha256_raw": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f",
+      "bytes": 7789,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/channel-separable231B-git.txt"
+    },
+    {
+      "sha256_raw": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d",
+      "bytes": 7772,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/checkerboard-projector245-git.txt"
+    },
+    {
+      "sha256_raw": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42",
+      "bytes": 7686,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/internal-dimension238-git.txt"
+    },
+    {
+      "sha256_raw": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3",
+      "bytes": 5765,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/rank-penalty237-git.txt"
+    },
+    {
+      "sha256_raw": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459",
+      "bytes": 13385,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/two-weak-directions243-git.txt"
+    },
+    {
+      "sha256_raw": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a",
+      "bytes": 11932,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/uniform-weak-dimension244-git.txt"
+    },
+    {
+      "sha256_raw": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc",
+      "bytes": 9624,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit245/capture/upper-delocalization242-git.txt"
+    },
+    {
+      "sha256_raw": "fdda6257d1db3a2f74d57a3a5eba18864f3cb69b877216a82d98c36878ec5933",
+      "bytes": 12259,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture-manifest.json"
+    },
+    {
+      "sha256_raw": "1983cc9fb5ae8254e27364d415d2e1f795edc0c4f9c4b9313c83746ea2633371",
+      "bytes": 1721,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/context.json"
+    },
+    {
+      "sha256_raw": "bf2abafa45c9dc601753dd0c0e19da0db02723a2116a3bf86d30cea8ede47c11",
+      "bytes": 19395,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/fullreport.txt"
+    },
+    {
+      "sha256_raw": "fad05c9e5441ed5614419259e345d7ab8724ec1368636a7cfa1bd8d5d764cb4e",
+      "bytes": 4021,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/hashes.json"
+    },
+    {
+      "sha256_raw": "db8560bf9f34a8dbe8f17dc173374e6e510bbd76c137d83c1e98083140fd7fec",
+      "bytes": 3138,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/verdict.json"
+    },
+    {
+      "sha256_raw": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "bytes": 7469,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/226C-matrix-proof-git.tex"
+    },
+    {
+      "sha256_raw": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3",
+      "bytes": 15141,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/226C-rectangular-matrix-git.tex"
+    },
+    {
+      "sha256_raw": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814",
+      "bytes": 8232,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/all-dimension-penalty240B-git.txt"
+    },
+    {
+      "sha256_raw": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757",
+      "bytes": 8074,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/all-internal-dimensions239-git.txt"
+    },
+    {
+      "sha256_raw": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03",
+      "bytes": 12657,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/balanced-polarization241B-git.txt"
+    },
+    {
+      "sha256_raw": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f",
+      "bytes": 7789,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/channel-separable231B-git.txt"
+    },
+    {
+      "sha256_raw": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d",
+      "bytes": 7772,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/checkerboard-projector245-git.txt"
+    },
+    {
+      "sha256_raw": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42",
+      "bytes": 7686,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/internal-dimension238-git.txt"
+    },
+    {
+      "sha256_raw": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3",
+      "bytes": 5765,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/rank-penalty237-git.txt"
+    },
+    {
+      "sha256_raw": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842",
+      "bytes": 7600,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/small-angle-projector246-git.txt"
+    },
+    {
+      "sha256_raw": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459",
+      "bytes": 13385,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/two-weak-directions243-git.txt"
+    },
+    {
+      "sha256_raw": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a",
+      "bytes": 11932,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/uniform-weak-dimension244-git.txt"
+    },
+    {
+      "sha256_raw": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc",
+      "bytes": 9624,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit246/capture/upper-delocalization242-git.txt"
+    },
+    {
+      "sha256_raw": "022d518205285c6d5307ff7e125103cb3e0d8547c90fb86a91a292474e15a096",
+      "bytes": 13202,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture-manifest.json"
+    },
+    {
+      "sha256_raw": "f42e3be4d74abb37c28d5835ff78b86bc09b227d4799a573741b56edffeee181",
+      "bytes": 1728,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/context.json"
+    },
+    {
+      "sha256_raw": "d620efd8c47cb4fecdb81fe1c951e60e329f3523a9902242015601b8ca47e9ab",
+      "bytes": 19987,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/fullreport.txt"
+    },
+    {
+      "sha256_raw": "b2ba345135c7f8d1e42573c2c075fa61f00bcca92922438de0159748c5d5de74",
+      "bytes": 4249,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/hashes.json"
+    },
+    {
+      "sha256_raw": "7a88b7905155397ac76b579b38f8ed378fbbafcfcaec227132ff208a2d3c9fbc",
+      "bytes": 3398,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/verdict.json"
+    },
+    {
+      "sha256_raw": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "bytes": 7469,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/226C-matrix-proof-git.tex"
+    },
+    {
+      "sha256_raw": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3",
+      "bytes": 15141,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/226C-rectangular-matrix-git.tex"
+    },
+    {
+      "sha256_raw": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814",
+      "bytes": 8232,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/all-dimension-penalty240B-git.txt"
+    },
+    {
+      "sha256_raw": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757",
+      "bytes": 8074,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/all-internal-dimensions239-git.txt"
+    },
+    {
+      "sha256_raw": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03",
+      "bytes": 12657,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/balanced-polarization241B-git.txt"
+    },
+    {
+      "sha256_raw": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f",
+      "bytes": 7789,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/channel-separable231B-git.txt"
+    },
+    {
+      "sha256_raw": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d",
+      "bytes": 7772,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/checkerboard-projector245-git.txt"
+    },
+    {
+      "sha256_raw": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42",
+      "bytes": 7686,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/internal-dimension238-git.txt"
+    },
+    {
+      "sha256_raw": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03",
+      "bytes": 10720,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/point-anchors247-git.txt"
+    },
+    {
+      "sha256_raw": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3",
+      "bytes": 5765,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/rank-penalty237-git.txt"
+    },
+    {
+      "sha256_raw": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842",
+      "bytes": 7600,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/small-angle-projector246-git.txt"
+    },
+    {
+      "sha256_raw": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459",
+      "bytes": 13385,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/two-weak-directions243-git.txt"
+    },
+    {
+      "sha256_raw": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a",
+      "bytes": 11932,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/uniform-weak-dimension244-git.txt"
+    },
+    {
+      "sha256_raw": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc",
+      "bytes": 9624,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit247/capture/upper-delocalization242-git.txt"
+    },
+    {
+      "sha256_raw": "4d5daf6dd6df0f2ed2f693d56005ef0498cfe4e6f3344f019e43a130481301f5",
+      "bytes": 14950,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture-manifest.json"
+    },
+    {
+      "sha256_raw": "1f79131f0fbd9758e982f977cb106fcbbe7e1a4b06f7e41a46f779f0ce37a2b6",
+      "bytes": 1766,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/context.json"
+    },
+    {
+      "sha256_raw": "a6faea7524e92b500f591cb755aac97805bc88bfc62d1b943764bc12decade89",
+      "bytes": 21545,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/fullreport.txt"
+    },
+    {
+      "sha256_raw": "aa1e446dfa74e56fb40d34af3c4aceec313a5b95a28e9b0d1a03a0979882f144",
+      "bytes": 4486,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/hashes.json"
+    },
+    {
+      "sha256_raw": "8336cda30e2e7cc7ef10b410c0e035cc4fa6193e11edf37216a9304838bfb24e",
+      "bytes": 3856,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/verdict.json"
+    },
+    {
+      "sha256_raw": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "bytes": 7469,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/226C-matrix-proof-git.tex"
+    },
+    {
+      "sha256_raw": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3",
+      "bytes": 15141,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/226C-rectangular-matrix-git.tex"
+    },
+    {
+      "sha256_raw": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814",
+      "bytes": 8232,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/all-dimension-penalty240B-git.txt"
+    },
+    {
+      "sha256_raw": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757",
+      "bytes": 8074,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/all-internal-dimensions239-git.txt"
+    },
+    {
+      "sha256_raw": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03",
+      "bytes": 12657,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/balanced-polarization241B-git.txt"
+    },
+    {
+      "sha256_raw": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f",
+      "bytes": 7789,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/channel-separable231B-git.txt"
+    },
+    {
+      "sha256_raw": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d",
+      "bytes": 7772,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/checkerboard-projector245-git.txt"
+    },
+    {
+      "sha256_raw": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675",
+      "bytes": 17708,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/critical-point-anchors248-git.txt"
+    },
+    {
+      "sha256_raw": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42",
+      "bytes": 7686,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/internal-dimension238-git.txt"
+    },
+    {
+      "sha256_raw": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03",
+      "bytes": 10720,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/point-anchors247-git.txt"
+    },
+    {
+      "sha256_raw": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3",
+      "bytes": 5765,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/rank-penalty237-git.txt"
+    },
+    {
+      "sha256_raw": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842",
+      "bytes": 7600,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/small-angle-projector246-git.txt"
+    },
+    {
+      "sha256_raw": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459",
+      "bytes": 13385,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/two-weak-directions243-git.txt"
+    },
+    {
+      "sha256_raw": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a",
+      "bytes": 11932,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/uniform-weak-dimension244-git.txt"
+    },
+    {
+      "sha256_raw": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc",
+      "bytes": 9624,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/audits/unit248/capture/upper-delocalization242-git.txt"
+    },
+    {
+      "sha256_raw": "66509fe16c686d148978d3b51d7cc9425eef50d401ae89d9816e2129ed813e55",
+      "bytes": 9423,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/historical-corrections/evidencia-236__candidate236A-normalization-correction.txt"
+    },
+    {
+      "sha256_raw": "ca13d18959e2ae804b920958252e02f45c7f5e3afca4cc5aaba1e94d864a41b6",
+      "bytes": 12948,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/historical-corrections/evidencia-236__source-audit-b__fullreport.txt"
+    },
+    {
+      "sha256_raw": "1063184ff5af9b86a4e52c11d9706e6736d37a7113351c84302891092672af04",
+      "bytes": 7703,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/historical-corrections/evidencia-240__candidate240A-rejected.txt"
+    },
+    {
+      "sha256_raw": "7527ba803af6be74bf28dd609c7b048823d944d32c853db9da2cab9214a2362c",
+      "bytes": 10686,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/historical-corrections/evidencia-240__source-audit__fullreport.txt"
+    },
+    {
+      "sha256_raw": "48332e9b585c518889e598646ba2b3899d378d72262a96b9abe9574cd99d20aa",
+      "bytes": 1430,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/historical-corrections/evidencia-240__source-audit__verdict.json"
+    },
+    {
+      "sha256_raw": "59907005dc2184e7dcb380f06f7cad09ffd3ff247145bff1707ad3ef1b1865d1",
+      "bytes": 12143,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/historical-corrections/evidencia-241__candidate241A-rejected.txt"
+    },
+    {
+      "sha256_raw": "45f6868a6c75940d61b249567dc295fe3d04acca14b12d9ffe6b30638aa8ad6f",
+      "bytes": 17331,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/historical-corrections/evidencia-241__source-audit__fullreport.txt"
+    },
+    {
+      "sha256_raw": "4d0e62105f70910e38f4ed00980de628d48f469b9efbb8b2a3d2f97c00d4d427",
+      "bytes": 2597,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/historical-corrections/evidencia-241__source-audit__verdict.json"
+    },
+    {
+      "sha256_raw": "704360f387e6c4081cf99a3d9a3f237e58ee34ead82786c9bce687fd10850219",
+      "bytes": 568,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/historical-corrections/evidencia-242__N1-base-case-clarification.txt"
+    },
+    {
+      "sha256_raw": "31a6fefe743d37c327867fd46acfc1093f7dc4e341025e2200fdd1768faf9765",
+      "bytes": 315,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/historical-corrections/evidencia-243__C1-singleton-priority.txt"
+    },
+    {
+      "sha256_raw": "68d6e8a80b51861477931b06a02ff149128f0b1a4d1ab2b75830e1182d526431",
+      "bytes": 1545,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/primary-reading/evidencia-237__limited-primary-comparison237.txt"
+    },
+    {
+      "sha256_raw": "d39223ba4f585c704b82d19b898a393eeeeb1d064e0c9805c27dbe9be9feb7f6",
+      "bytes": 3250,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/primary-reading/evidencia-241__limited-primary-comparison241.txt"
+    },
+    {
+      "sha256_raw": "bbb6c68ca8303e15aed7e27f978e7d63def6d29366d1284569e7f9a552fcf825",
+      "bytes": 1260,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/primary-reading/evidencia-244__primary-input-MSS244.json"
+    },
+    {
+      "sha256_raw": "4b19d5c93dc9f8c0838859802c23305b7ce5d9300c1a82503fbfcec68badc6f9",
+      "bytes": 1105,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/primary-reading/evidencia-244__source-audit__primary-reading-mss.txt"
+    },
+    {
+      "sha256_raw": "ca03ae91b95a2d9e555d759d7c59f02a93963362da20c6d61669450d5e75dbcd",
+      "bytes": 1392,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/primary-reading/evidencia-245__limited-primary-comparison245.txt"
+    },
+    {
+      "sha256_raw": "3f01cc2d84af293a6eb8d80297a5646803d2f1903d75698760740db15592830a",
+      "bytes": 1347,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/primary-reading/evidencia-247__limited-primary-comparison247.txt"
+    },
+    {
+      "sha256_raw": "2a70528b0a13370b8a2c01e6edc908263d0d6918418e7e4f731fe1e801470781",
+      "bytes": 2150,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/primary-reading/comparison250/context.json"
+    },
+    {
+      "sha256_raw": "2f55c12afc77931cdcd787d8276644c7919b43c74380743d3291128d4f28f48b",
+      "bytes": 4982,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/primary-reading/comparison250/manifest.json"
+    },
+    {
+      "sha256_raw": "6225531e648b8092a42407328fd0fdd47440ab3906f7b74651bedf3ca5045beb",
+      "bytes": 11688,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/primary-reading/comparison250/primary-comparison-report.txt"
+    },
+    {
+      "sha256_raw": "2210507f86a652533790d609c6afeac26c726868992f34be1afcea4169e1e4e5",
+      "bytes": 1543,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/prior-review232B/assessment232B-codex/report-hashes.json"
+    },
+    {
+      "sha256_raw": "e05cc1bb5dea2cf3a43713b2d380d9afa3920c8e4ee3d350b95f4eb492c53e4f",
+      "bytes": 6674,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/prior-review232B/assessment232B-codex/response.json"
+    },
+    {
+      "sha256_raw": "8b7519d3eaf46b67ade6ec409ffea095206564af65c99deb3fd2d7f2ddd610d9",
+      "bytes": 10437,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/prior-review232B/assessment232B-codex/review-context.json"
+    },
+    {
+      "sha256_raw": "9619c2a5b971bdeca22c7654587229bd1ade8cb44b1b355cf1a7aecbbcdb50e9",
+      "bytes": 21047,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/prior-review232B/assessment232B-codex/scientific-review.txt"
+    },
+    {
+      "sha256_raw": "da6c46c80963149c0f57a97347fb492e81de72bcd734a9c9eef91d412d031e2e",
+      "bytes": 3745,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/prior-review232B/assessment232B-protocol-clarification/clarification-context.json"
+    },
+    {
+      "sha256_raw": "7cc16099252b1a0576d9dfb28e5c54b7f7fb0a011da5a03b64a469641634a407",
+      "bytes": 2535,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/prior-review232B/assessment232B-protocol-clarification/clarification-hashes.json"
+    },
+    {
+      "sha256_raw": "da5866d832d7a82af1aa5ed72d3df63552837e6ce14b931609ff4144fd631f15",
+      "bytes": 5955,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/prior-review232B/assessment232B-protocol-clarification/protocol-addendum.txt"
+    },
+    {
+      "sha256_raw": "12d5d04f87bca41ebcdec874bab4002e0672c716dab1f5bb90e61a4029254eea",
+      "bytes": 7393,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/prior-review232B/assessment232B-protocol-clarification/response-native.json"
+    },
+    {
+      "sha256_raw": "86aa0588974f9e26940aa44fc0aa222c83c35214a41f31ca40481190d7146c06",
+      "bytes": 16808,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/prior-review232B/author-response232B/author-response232B.txt"
+    },
+    {
+      "sha256_raw": "558dfaba866d60738c48e8c012006537235b05461b82cc7ccef09818d8ccd8ab",
+      "bytes": 3354,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/prior-review232B/author-response232B/context.json"
+    },
+    {
+      "sha256_raw": "789ca59e21a2c0640e2192b7aacb8d5ea01e4b06ad88a1f34d97833c94cd6c6f",
+      "bytes": 2945,
+      "path": "capture/papers/flat-coarse-rank/research-consolidation/revision250-preparation/inputs/prior-review232B/author-response232B/hashes.json"
+    }
+  ],
+  "subject_count": 173
+}

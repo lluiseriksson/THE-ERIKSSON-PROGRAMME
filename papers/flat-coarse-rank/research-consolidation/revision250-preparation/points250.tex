@@ -1,0 +1,228 @@
+\section{Distributed point anchors in dimensions three and four}\label{sec:points}
+We prove the two smaller full counts in Theorem~\ref{thm:checker}.
+The finite point estimate uses all constant modes and counting factors.
+Its dimension dependence is classical in character; the exact inequalities
+needed here are derived rather than imported from a continuum estimate.
+
+\begin{lemma}[Finite balanced-box point estimates]\label{lem:point}
+Let $p=2$ or $3$, let $L\geq1$ be an integer, and let $Q$ be a product of
+$p$ integer paths with lengths $\ell_i\in[L/2,L]$. Use counting norm and
+internal edge energy $\En_Q$, each path edge once. At any $b\in Q$,
+$f(b)=0$ implies
+\begin{equation}\label{eq:pointbox}
+ \norm f_Q^2\leq
+ \begin{cases}
+ 13L^2(1+\ln L)\En_Q(f),&p=2,\\
+ 113L^3\En_Q(f),&p=3.
+ \end{cases}
+\end{equation}
+Here $\norm f_Q^2$ denotes $\sum_{y\in Q}|f(y)|^2$.
+\end{lemma}
+\begin{proof}
+Put $N=\prod_i\ell_i$. If $N=1$ the anchored function is zero, so assume
+$N>1$. In particular $L\geq2$. The tensor basis from
+Lemma~\ref{lem:neumann} has point values and eigenvalues
+\[
+ |\phi_\nu(b)|^2\leq2^p/N,\qquad
+ \lambda_\nu=4\sum_i\sin^2\frac{\pi\nu_i}{2\ell_i}
+       \geq\frac{4|\nu|^2}{L^2}\quad(\nu\ne0),
+ \qquad0\leq\nu_i<\ell_i.
+\]
+A singleton factor forces its index to zero. All indices are nonnegative
+cosine indices; no signed-frequency multiplicity is suppressed.
+On the shell $r=\max_i\nu_i\geq1$, for $p=2$ there are at most
+$2r+1\leq3r$ indices, and for $p=3$ at most
+$3r^2+3r+1\leq7r^2$. Since $|\nu|^2\geq r^2$ and $r\leq L-1$,
+\[
+ \sum_{\nu\ne0}|\nu|^{-2}\leq
+ \begin{cases}3(1+\ln L),&p=2,\\7L,&p=3.\end{cases}
+\]
+The first bound follows from
+$\sum_{r=1}^{L-1}r^{-1}\leq1+\ln L$ by integration; the second is the
+finite sum of at most $L-1$ terms each bounded by seven.
+Consequently the nonconstant diagonal inverse satisfies
+\begin{equation}\label{eq:finiteGreen}
+ G_Q(b,b):=\sum_{\nu\ne0}\frac{|\phi_\nu(b)|^2}{\lambda_\nu}
+ \leq\begin{cases}
+ 3L^2(1+\ln L)/N\leq12(1+\ln L),&p=2,\\
+ 14L^3/N\leq112,&p=3,
+ \end{cases}
+\end{equation}
+using $N\geq L^p/2^p$.
+Expand $f=\sum a_\nu\phi_\nu$ in this counting-orthonormal basis.
+Cauchy--Schwarz gives
+$|f(b)-\bar f|^2\leq G_Q(b,b)\En_Q(f)$, where $\bar f$ is its arithmetic
+mean. The constant-mode mass is $N|\bar f|^2$, not $|\bar f|^2$.
+If $f(b)=0$, this mass is at most $12L^2(1+\ln L)\En_Q$ when $p=2$,
+and $112L^3\En_Q$ when $p=3$, because $N\leq L^p$.
+The positive spectral gap separately bounds the variance by $L^2\En_Q/4$.
+Adding the orthogonal constant and variance parts proves \eqref{eq:pointbox}:
+$12+1/4<13$, and $112L^3+L^2/4\leq113L^3$.
+The $N=1$ case includes $L=1$ and any permissible all-singleton product.
+Thus no nonexistent positive gap or lost normalization is used. Point values
+were bounded uniformly, so a corner anchor is permitted without an additional
+boundary trace assumption.
+\end{proof}
+
+\subsection{The full strong graph in original coordinates}
+Let $p=D-1$, with $D=3$ or $4$. Fix an original scalar spatial/channel
+component and its strong-source parity $A$. For every residue $s$ of that
+parity set, with $y\in(\Z/n\Z)^p$,
+\begin{equation}\label{eq:paircoordinates}
+ x_s(y)=(y_1,\ldots,y_p,s-\textstyle\sum_i y_i)\pmod n,
+ \quad u_s(y)=z(x_s(y)),\quad v_s(y)=z(x_s(y)+e_D).
+\end{equation}
+The first map is a bijection onto sum layer $s$; the shifted map is a
+bijection onto layer $s+1$. Even $n$ makes residue parity agree with original
+site parity. The $n/2$ pairs $\{s,s+1\}$ cover all sum residues disjointly,
+including $\{n-1,0\}$ for odd source parity. Their pair norms therefore sum
+to the original scalar counting norm exactly.
+
+The actual strong $+e_D$ edge is $u_s(y)$--$v_s(y)$. For $1\leq i\leq p$,
+$x_s(y+e_i)+e_D=x_s(y)+e_i$, so the other strong edges are
+$u_s(y)$--$v_s(y+e_i)$. They are \emph{all} $D$ outgoing strong labels,
+not a surrogate subset with reassigned endpoint weights. Their exact energy is
+\begin{equation}\label{eq:pairenergy}
+ E_s=\sum_y|u_s(y)-v_s(y)|^2+
+          \sum_{y,i=1}^p|u_s(y)-v_s(y+e_i)|^2.
+\end{equation}
+A cross edge followed by a rung connects $u_s(y)$ to $u_s(y+e_i)$; all source
+translations are generated and every target has a rung, proving connectivity.
+At $n=2$ the heads $y,y+e_i$ are distinct. The induced source-torus energy
+may repeat an undirected neighbor pair, but every original forward label is
+retained. Translations remain bijections.
+
+Insert $v_s(y+e_i)$ between $u_s(y+e_i)$ and $u_s(y)$ and square with factor
+two. For the labelled source energy this proves
+\begin{equation}\label{eq:graphcomparison}
+ \En_p(u_s):=\sum_{y,i=1}^p|u_s(y+e_i)-u_s(y)|^2
+ \leq2p\sum_y|u_s-v_s|^2+2\sum_{y,i}|u_s(y)-v_s(y+e_i)|^2
+ \leq2pE_s.
+\end{equation}
+The repeated-rung factor is exactly $2p$, also at period two. Summing $HE_s$
+over all layer pairs, both channels and all spatial components gives a lower
+part of the original $Q_B$; weak-source terms are only discarded as positive.
+
+\subsection{Balanced quantiles and both layer norms}
+For an integer $1\leq m\leq n$, partition each source coordinate into
+\[
+ I_j=\{\lfloor jn/m\rfloor,\ldots,\lfloor(j+1)n/m\rfloor-1\},
+ \qquad0\leq j<m.
+\]
+These are nonempty paths with lengths $\lfloor n/m\rfloor$ or
+$L=\lceil n/m\rceil$. If $L=1$ all are singletons; otherwise a shorter side
+is $L-1\geq L/2$. Every product cell therefore meets the exact hypotheses
+of Lemma~\ref{lem:point}. Anchor its lowest-coordinate corner as a source
+value $u_s(b)=0$, at the actual original point $x_s(b)$.
+Cell internal edges are a subset of \eqref{eq:graphcomparison}, counted once;
+across-cell and wrap edges are discarded as nonnegative.
+Define
+\[
+ X_2=L^2(1+\ln L),\qquad X_3=L^3.
+\]
+Lemma~\ref{lem:point} and \eqref{eq:graphcomparison} give
+$\norm{u_s}^2\leq52X_2E_s$ for $p=2$ and
+$\norm{u_s}^2\leq678X_3E_s$ for $p=3$.
+Rungs also give $\norm{v_s}^2\leq2\norm{u_s}^2+2\sum|v_s-u_s|^2$.
+As $X_p\geq1$, both original layers satisfy
+\begin{equation}\label{eq:pairnorm}
+ \norm{u_s}^2+\norm{v_s}^2\leq
+ \begin{cases}158X_2E_s,&p=2,\\2036X_3E_s,&p=3.\end{cases}
+\end{equation}
+Here $3\cdot52+2=158$ and $3\cdot678+2=2036$; no target-layer mass is omitted.
+These formulas remain valid at singleton cells because the anchored source
+value is zero and the rung still controls its target.
+
+There are $(n/2)m^p$ distinct source anchors per channel: the cell corners
+are distinct, \eqref{eq:paircoordinates} is a bijection, and different source
+layers are disjoint. Both channels together have $A=nm^p$ channel-labelled
+anchors. Use the \emph{same} anchor sites for all $D$ spatial components in
+that channel. Although source-coordinate cells need not be original rectangles,
+only their original \emph{point} sites are observed. Applying
+Lemma~\ref{lem:isolation} independently to the two channels gives actual
+canonical partitions with
+\begin{equation}\label{eq:pointcount}
+ N_{\rm out}\leq2D+2D^2A=2D+2D^2nm^p.
+\end{equation}
+The initial rows and every channel/component factor are included. Original
+chart representatives, not wrapping rectangles or diagonal averages, realize
+the points. A block-kernel field is zero at every required anchor; extra
+nonpoint means only narrow this kernel.
+
+\subsection{Dimension three: the critical logarithmic mesh}
+Take $D=3$, $T_n=1+\ln n$, and let $m$ be the least positive integer with
+$m^2\geq4096T_n$. If $m\leq n$, then $L\leq2n/m$ and $L\leq n$, giving
+\[
+ X_2=L^2(1+\ln L)\leq\frac{4n^2}{m^2}T_n\leq n^2/1024.
+\]
+Sum \eqref{eq:pairnorm} over the disjoint pairs, channels and components.
+Since $H=cn^2$, a field zero at the prescribed anchors satisfies
+\begin{equation}\label{eq:D3gap}
+ Q_B(z)\geq\frac{H}{158X_2}\norm z^2
+          \geq\frac{1024}{158}c\norm z^2\geq4c\norm z^2,
+\end{equation}
+because $4\cdot158=632<1024$. Put $\rho=\sqrt{4096T_n}\geq1$.
+Minimality yields $m=\lceil\rho\rceil\leq2\rho$, so $m^2\leq16384T_n$.
+The complete count \eqref{eq:pointcount} is therefore
+\[
+ N_{\rm out}\leq6+18nm^2\leq6+294912nT_n<2^{19}nT_n.
+\]
+We used $nT_n\geq1$ and $294912+6<524288$, without divisibility or exact-square
+assumptions.
+
+If $m>n$, minimality gives $(m-1)^2<4096T_n$ and the integers satisfy
+$n\leq m-1$. The all-channel singleton fallback has
+\[
+ N_{\rm out}=6n^3<24576nT_n<2^{19}nT_n,\qquad K=c.
+\]
+This covers every ineligible even $n$, including $n=2$ and $n=m-1$.
+At $m=n$ the mesh branch is allowed and its source cells are singleton;
+\eqref{eq:D3gap} still follows from the derived rung bound. Thus no guessed
+large-size cutoff, empty mesh cell or unproved singleton gap is used.
+
+\subsection{Dimension four: a three-dimensional source mesh}
+For $D=4$, first take $n\geq256$ and let $m$ be the least positive integer
+with $m^3\geq65536n$. The integer $n$ itself is eligible because
+$n^2\geq65536$, so $m\leq n$. Also $L\leq2n/m$ and
+\[
+ X_3=L^3\leq8n^3/m^3\leq n^2/8192.
+\]
+The other case of \eqref{eq:pairnorm} now gives, on the actual anchor kernel,
+\begin{equation}\label{eq:D4gap}
+ Q_B(z)\geq\frac{8192}{2036}c\norm z^2\geq4c\norm z^2,
+ \qquad4\cdot2036=8144<8192.
+\end{equation}
+For $\rho=(65536n)^{1/3}\geq256$, $m=\lceil\rho\rceil\leq2\rho$, hence
+$m^3\leq524288n$. Thus $A=nm^3\leq524288n^2$ and
+\[
+ N_{\rm out}\leq8+32A\leq8+2^{24}n^2\leq2^{25}n^2.
+\]
+At $n=256$ one has $m=n$ exactly; singleton source cells and their rungs
+are valid in \eqref{eq:D4gap}. Noncubes are covered by the same ceiling
+argument. For even $n<256$, use all-channel singletons:
+$N_{\rm out}=8n^4<524288n^2<2^{25}n^2$ and $K=c$.
+No three-dimensional source-cell estimate is applied in that fallback.
+
+\subsection{Finite completion, constants and actual restricted rank}
+For either mesh the canonical block kernel obeys
+$Q_B(u)\geq4c\norm u^2$ by \eqref{eq:D3gap} or \eqref{eq:D4gap}.
+Lemma~\ref{lem:completion} with $\delta=3c$ and $M=4DH+c$ proves the
+all-field inequality with exactly \eqref{eq:pointK}. Dividing by $V$ and
+using \eqref{eq:RC} gives the stated canonical normalization. On a constant
+field $Q_B=0$ and $\mathcal Rz=z$; the finite coefficient is at least $c$,
+so these constants are paid. The conservative mesh coefficient can grow as
+$cn^4$; in the fallbacks $\mathcal R=I,K=c$ directly.
+Restrict only after this all-field proof to the original $\UU_0^2$.
+Its actual rank is at most the full count, with no assumed row independence
+or coexact invariance of block averaging. This completes
+Theorem~\ref{thm:checker}(ii)--(iii).
+
+The same positive stack still has $D^2$ weak and $D^2$ strong eigenvalues per
+site. Formula~\eqref{eq:fixedcap} with $q=1,g=2$, including its original
+$\alpha_3=729/128$ or $\alpha_4=81/16$, is unchanged and has order $V$.
+These improved observations do not reduce the inherited capped budget.
+Neither the logarithm in this particular finite construction nor its point
+count is asserted necessary for every permitted partition. The present
+point proof is for \emph{orthogonal} lines only; it is distinct from the
+fixed-angle plane result and supplies no claimed solution to its unproved
+point-anchor analogue.

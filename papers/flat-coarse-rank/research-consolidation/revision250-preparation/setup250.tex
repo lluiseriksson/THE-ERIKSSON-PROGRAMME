@@ -1,0 +1,208 @@
+\section{The observation class and the main results}\label{sec:setup}
+The problem is to restore a fixed coercivity target using few permitted
+observations. Two distinctions matter: the dimension of a displayed output
+space versus its actual rank on the stated domain, and a finite penalty versus
+a penalty bounded independently of the lattice size. We keep both explicit.
+The proofs concern one positive family of finite operators, rather than a
+uniform theorem for arbitrary matrix profiles.
+
+\subsection{Actual finite gradients and the coexact domain}
+Fix integers $D\geq3$, $n\geq2$ and $g\geq1$, and write
+\[
+ X=(\Z/n\Z)^D,\qquad V=n^D,\qquad
+ \mathcal H_g=(\R^D\otimes\R^g)^X.
+\]
+All unqualified inner products and norms use counting measure. Put
+$\partial_i f(x)=f(x+e_i)-f(x)$, retaining every positive forward label,
+including period-two multiplicities. For $z\in\mathcal H_g$ let
+\[
+ \En(z)=\sum_{x\in X}\sum_{i,k=1}^D\sum_{\alpha=1}^g
+       |\partial_i z_{k,\alpha}(x)|^2.
+\]
+For a real one-form $v$ define
+$(d_1v)_{ij}=\partial_i v_j-\partial_j v_i$ for $i<j$.
+The adjoint uses the counting inner products, with each unordered pair $i<j$
+counted once. Our domain is
+\begin{equation}\label{eq:domain}
+ \UU_0=\im d_1^*,\qquad \UU=\UU_0^g\subset\mathcal H_g,
+ \qquad d_0:=\dim_\R\UU_0=(D-1)(V-1).
+\end{equation}
+The dimension identity is proved in Lemma~\ref{lem:fourier}. No artificial
+componentwise replacement of this domain is used.
+
+For a positive symmetric $g\times g$ field $B(x)$ set
+\begin{equation}\label{eq:energy}
+ Q_B(z)=\sum_{x\in X}\sum_{i,k=1}^D
+       (\partial_i z_k(x))^T B(x)\partial_i z_k(x).
+\end{equation}
+The coefficient is evaluated at the actual forward \emph{source} $x$.
+The full gradient-stack profile is $\mathcal A(x)=I_{D^2}\otimes B(x)$;
+there are $D^2g$ local eigenvalues, while the field has $h=Dg$ components.
+This notation does not assert an identity with an interacting or continuum
+operator.
+
+\subsection{Canonical observations and normalization}
+For each original internal channel $\alpha$, choose a partition
+$\mathcal P_\alpha$ of $\{0,\ldots,n-1\}^D$ into nonempty integer rectangles
+$S=\prod_i\{a_i,\ldots,b_i\}$. Different channels may have different partitions;
+within a channel the partition is shared across all spatial components $k$.
+The canonical observation map has rows
+\begin{equation}\label{eq:canonical}
+ (Cz)_{\alpha,k,S}=V^{-1/2}|S|^{-1/2}
+             \sum_{x\in S}z_{k,\alpha}(x),\qquad
+ N_{\rm out}=D\sum_\alpha|\mathcal P_\alpha|.
+\end{equation}
+These are unrotated, fixed-weight component means. No mixed internal row or
+subsequent dimension-reducing channel mixture is part of this class.
+Let $\mathcal R$ be the counting orthogonal block projection replacing each
+component by its arithmetic mean on its channel's rectangles. Then
+\begin{equation}\label{eq:RC}
+ \norm{Cz}^2=V^{-1}\norm{\mathcal Rz}^2.
+\end{equation}
+The \emph{actual rank} is $r(C)=\rank(C|_\UU)$, which need not be $N_{\rm out}$.
+We call $C$ restoring at target $c>0$ if some finite $K\geq0$ gives
+\begin{equation}\label{eq:restoring}
+ V^{-1}Q_B(z)+K\norm{Cz}^2\geq cV^{-1}\norm z^2
+ \quad(z\in\UU).
+\end{equation}
+We separately state when the same inequality holds on all of $\mathcal H_g$.
+On these \emph{same} rows the counting-energy convention uses coefficient $VK$.
+Arbitrary row rescaling would change the penalty question and is excluded.
+The projection $\mathcal R$ is not assumed to preserve $\UU$.
+
+\subsection{Sharp order for a fixed weak space}
+Let $1\leq q\leq g$, $\Lambda\geq1$, and let $P$ be a spatially constant
+rank-$q$ orthogonal projector satisfying
+\begin{equation}\label{eq:coherence}
+ P_{\alpha\alpha}\leq\Lambda q/g\quad(1\leq\alpha\leq g).
+\end{equation}
+With $c>0$ fixed put
+\begin{equation}\label{eq:profile}
+ a=\frac{c}{16D},\qquad H=cn^2,\qquad
+ B=HI_g-(H-a)P,\qquad b=\min\{g/q,n^2\}.
+\end{equation}
+There is no lower bound on nonzero diagonal entries of $P$ and no prescribed
+well-conditioned subset of channels.
+
+\begin{theorem}[Fixed weak space]\label{thm:fixed}
+For \eqref{eq:profile}--\eqref{eq:coherence} there are coefficient-only canonical
+partitions such that
+\begin{equation}\label{eq:fixedupper}
+ N_{\rm out}\leq L_{D,\Lambda}(qV+gV/n^2),\qquad
+ Q_B(z)/V+32cb\norm{Cz}^2\geq c\norm z^2/V
+ \quad(z\in\mathcal H_g).
+\end{equation}
+One valid constant is
+\[
+ C_0=2^{24},\quad
+ A_D=\frac{D2^D(17/16)}{2^{D-2}-1},\quad
+ L_{D,\Lambda}=A_D+4352D+\frac{17}{4}DC_0\Lambda.
+\]
+Every restoring internally channel-separable linear map, even beyond canonical
+rectangles, has actual rank
+\begin{equation}\label{eq:ranklower}
+ r\geq\max\left\{qd_0,
+ \frac{gd_0}{2\Lambda(1+8Dn^2)}\right\}.
+\end{equation}
+This rank bound only uses the restoring inequality at zero observation; it
+also holds for any finite penalty $\Phi(Cz)$ with $\Phi(0)=0$ in place of the
+quadratic penalty. Consequently the minimum canonical restoring actual rank
+has order $qV+gV/n^2$, with constants depending only on $D,\Lambda$.
+For the particular constructed canonical map, its least quadratic coefficient
+on either $\UU$ or all fields satisfies
+\begin{equation}\label{eq:penaltyorder}
+ \frac{3(D-1)}{16\Lambda L_{D,\Lambda}}cb
+ \leq K_{\min}\leq32cb.
+\end{equation}
+All constants are independent of $q,g,n,c$.
+\end{theorem}
+Here channel-separable means a direct sum of linear maps, one acting on each
+original channel's entire $D$-component field. No lower bound for internally
+mixed maps is asserted. The coefficient order in \eqref{eq:penaltyorder}
+concerns a fixed constructed map, not an upper bound for every map of that rank.
+The construction is a finite existence prescription; neither efficient search
+nor a practical condition number is established.
+
+\subsection{Spatial variation with the same local spectra}
+For even $n$ let $p(x)=\sum_i x_i\bmod2$, which is well-defined on the torus.
+For $g=2,q=1,\Lambda=2$, set
+\begin{equation}\label{eq:checker}
+ P(x)=\begin{cases}e_1e_1^T,&p(x)=0,\\e_2e_2^T,&p(x)=1,\end{cases}
+ \qquad B(x)=HI_2-(H-a)P(x),
+\end{equation}
+with the same $a,H$ from \eqref{eq:profile}. Only spatial constancy of $P$
+has been removed; local eigenvalues, positivity, upper coherence, observed
+basis, canonical weights and actual domain are unchanged.
+
+\begin{theorem}[Orthogonal checkerboard]\label{thm:checker}
+For \eqref{eq:checker} and every even $n\geq2$:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item For every $D\geq3$ a canonical map with
+$N_{\rm out}=2D(n^{D-1}+1)$ restores $c$ on all fields with a finite coefficient.
+\item For $D=3$ a canonical map with
+$N_{\rm out}\leq2^{19}n(1+\ln n)$ restores $c$ on all fields.
+\item For $D=4$ a canonical map with
+$N_{\rm out}\leq2^{25}n^2$ restores $c$ on all fields.
+\end{enumerate}
+In (ii)--(iii), the non-singleton construction has the sufficient normalized
+coefficient
+\begin{equation}\label{eq:pointK}
+ K=M+\frac{2M^2}{3c},\qquad M=4DH+c;
+\end{equation}
+the explicit singleton fallbacks use $K=c$. Actual rank on $\UU_0^2$ is at
+most the corresponding full count. These are upper bounds, not optimality,
+matching lower bounds, logarithmic necessity or uniform-penalty statements.
+\end{theorem}
+In particular a universal per-profile $\Omega(V)$ rank lower cannot be extended
+from constant $P$ merely by retaining the same positive local spectra and
+pointwise coherence. This does not refute a worst-case lower over a larger
+class containing constant profiles, or a lower with an additional uniform
+penalty restriction.
+
+\begin{theorem}[Fixed-angle plane construction]\label{thm:angle}
+Replace the two projectors in \eqref{eq:checker} by any two fixed distinct weak
+lines with principal angle $\theta\in(0,\pi/2]$, in the original observed basis.
+Let $\kappa=1-|\cos\theta|$ and $m_\theta=\lceil4/\sqrt\kappa\rceil$.
+For every $D\geq3$ and even $n\geq2$ there is an all-field restoring canonical
+map with
+\[
+ N_{\rm out}\leq2Dm_\theta(n^{D-1}+1)
+\]
+and a finite penalty. When $n\geq m_\theta$, \eqref{eq:pointK} suffices;
+otherwise the singleton fallback has $K=c$.
+\end{theorem}
+For fixed $\theta,D$ this is $o(V)$, with constants allowed to diverge as
+$\theta\downarrow0$. We prove no $n$-dependent-angle order and no extension of
+the point-anchor orders in Theorem~\ref{thm:checker}(ii)--(iii) to nonorthogonal
+lines. That separate question is outside the present theorem list.
+
+\subsection{The unchanged capped budget and proof roadmap}
+To fix the normalization inherited by these examples, define for positive
+local gradient-stack eigenvalues $\lambda_j(x)$
+\begin{equation}\label{eq:cap}
+ \alpha_D=\left(\frac34\right)^D\frac D2
+       \left(\frac D{D-2}\right)^{D-1},\qquad
+ F_c(\mathcal A)=\sum_{x,j}\min\{1,\alpha_D(c/\lambda_j(x))^{D/2}\}.
+\end{equation}
+For the fixed-space family, $a$ has multiplicity $qD^2$ and $H$ has
+multiplicity $(g-q)D^2$ per site. Its weak cap equals one, so
+\begin{equation}\label{eq:fixedcap}
+ F_c(\mathcal A)=D^2V[q+(g-q)\min\{1,\alpha_Dn^{-D}\}]
+ \leq D^2(qV+\alpha_Dg).
+\end{equation}
+Indeed $\alpha_D(16D)^{D/2}\geq(3\sqrt D)^D>1$.
+Thus $h+F_c(\mathcal A)=O_D(qV+g)$; we do not identify it with the optimal
+rank expression $qV+gV/n^2$. For both checkerboards the same formula with
+$q=1,g=2$ is unchanged. In particular
+\[
+ \alpha_3=729/128,\quad \alpha_4=81/16,\qquad
+ F_c=D^2V[1+\min\{1,\alpha_Dn^{-D}\}],\quad h=2D.
+\]
+Every cap and multiplicity is retained.
+
+Section~\ref{sec:finite} derives all elementary finite spectral and projection
+facts. Section~\ref{sec:fixed} proves Theorem~\ref{thm:fixed}; its sole
+non-elementary input is the explicitly stated primary MSS theorem.
+Sections~\ref{sec:checkerproof}--\ref{sec:points} prove the actual strong-graph,
+plane and point constructions. Scope, limited primary comparisons and exact
+source/review context are separated in Section~\ref{sec:context}.

@@ -1,0 +1,133 @@
+239 — Local rectangular rank for every internal dimension
+Author-role analytical proof candidate. No execution, grade or priority claim.
+This removes238's threshold g>=n^2; it does not change the coefficient mechanism.
+
+1. Precise theorem and normalization.
+Let D>=3, integer n>=2, ANY integer g>=1,c>0,V=n^D,h=Dg.
+Keep the positive constant profile with v_alpha=1/sqrt(g),a=c/(16D),
+H=cn^2,B=H I_g-(H-a)vv^T, and directional matrix
+A_(j,k,alpha),(j',k',beta)=delta_jj' delta_kk' B_alpha,beta.
+Q_A is the counting actual forward-gradient energy. The true domain is
+U=U_0^g,U_0=im(d_1^*) for the flat forward curl and its counting adjoint,
+d0=dim_R U_0=(D-1)(V-1). Internal coordinates are in the specified fixed basis.
+For each internal channel take its own integer rectangular partition, shared
+across D spatial components, listing all canonical component means
+C_(alpha,k,S)z=V^(-1/2)|S|^(-1/2)sum_(i in S)z_(k,alpha)(i).
+There is an explicit such C with full output count
+N_out<=L_D[V+g V/n^2] and normalized coercivity
+Q_A(z)/V+K||Cz||^2>=c||z||^2/V for ALL fields z,
+with finite K=c+4DH=c(1+4Dn^2).
+The minimum ACTUAL rank r=rank(C|_U) among restoring canonical maps is
+Theta_D(V+g V/n^2), uniformly over all n>=2,g>=1.
+No sharp penalty order for the newly covered g<n^2 range is claimed here.
+The older238/237 sharp cn^2 assertion remains valid in their stated range.
+
+2. Two ranges already supplied by proved constructions.
+If g>=n^2,238 constructs all-size rectangles with N_out<=C_D g V/n^2
+and full-field2c kernel margin, hence the stated penalty. The proof derives
+the local Neumann gap and channel allocation for actual g, not g=V.
+Since V<=gV/n^2, its count has the desired form.
+If g<4096, use singleton partitions in EVERY channel. Their count DgV
+is <=4095D V, and normalized K=c suffices since Q_A>=0. The larger common
+K also suffices. These two cases cover their overlap consistently, including
+g=1 and all small n. A bounded constant threshold does not conceal g growth.
+It remains to construct the map when 4096<=g<n^2; necessarily n>sqrt(g)>=64.
+
+3. Coarse bands plus ONE fine tail, not a rounded channel per fine scale.
+Set s=sqrt(g), k=floor(log_2 s), so k>=6,2^k<=s<2^(k+1),2^k<n.
+Let Pi_j be the Cartesian floor-quantile partitions of the n-torus for
+j=0,...,k: endpoints floor(t n/2^j), omitting empty intervals. Let P_j
+be counting block-average projections and L_j=ceil(n/2^j).
+These partitions are nested, P_0 global averaging, and E_j=P_(j+1)-P_j
+for0<=j<k are orthogonal projections. Set E_tail=I-P_k. Then E_tail
+is orthogonal to every coarse E_j and sum_(j<k)E_j+E_tail=I-P_0.
+The same elementary Neumann path/tensor argument as236/238 gives
+||E_j w||^2<=(L_j^2/4)E(w) for j<k, and
+||E_tail w||^2=||w-P_kw||^2<=(L_k^2/4)E(w).             (239.1)
+The tail estimate is ONE parent-variance estimate, not the sum of all finer
+band estimates. Therefore it carries no hidden log n charge. The finite
+path spectrum4sin^2(pi t/(2L)) gives gap>=4/L^2; tensor the parent
+rectangles and add only nonnegative inter-parent/wrap edges. No coefficient,
+regional-gap assumption, changed domain or nonlocal observation is introduced.
+
+Allocate r_j=ceil(5g L_j^2/(8n^2)) DISTINCT channels to child Pi_(j+1)
+for j<k, and r_tail=ceil(5g L_k^2/(8n^2)) OTHER channels to SINGLETONS.
+Every leftover channel receives the root. Coarse groups and tail group are
+disjoint. Crucially, only the tail group uses finest singleton means.
+
+4. Prove the revised integer budget fits.
+Let m=k+1. For k>=6,2^(k-2)>=k+1 by induction (16>=7 at6, doubling
+preserves the next inequality). Thus m<=s/4. The finite geometric bounds
+give sum_(j=0)^k L_j^2<=4n^2/3+4n+m. Consequently S=sum_(j<k)r_j+r_tail
+satisfies S/g<=5/6+5/(2n)+5m/(8n^2)+m/g.
+Since n>s and m<=s/4, this is at most
+5/6+93/(32s)<=5/6+93/2048<1.                            (239.2)
+This includes EVERY ceiling and the tail's own integer allocation. Thus S<=g-1
+and consecutive disjoint groups exist. Also L_k<=n/2^k+1 gives
+g L_k^2/n^2 <=(s/2^k+s/n)^2 <(2+1)^2=9,
+so r_tail=ceil(5g L_k^2/(8n^2))<=6.                     (239.3)
+There is no assumption that g is square or dyadic; s is only a real bound.
+
+5. Full-field kernel margin with each channel charged once.
+Kernel partition sums imply every component of z has mean0. Split
+f=sum_alpha v_alpha z_alpha,s_alpha=z_alpha-v_alpha f; the orthogonal norm
+identity holds and Q_A(z)=aE(f)+T, T=H sum_alpha E(s_alpha).
+For a coarse group, child means vanish, giving E_j s_alpha=-v_alpha E_j f.
+For a tail channel z_alpha=0 everywhere, so E_tail s_alpha=-v_alpha E_tail f.
+Use239.1 on the DISTINCT groups, with its appropriate parent bound, to obtain
+T>=H sum_(j<k)[4r_j/(gL_j^2)]||E_j f||^2
+    +H[4r_tail/(gL_k^2)]||E_tail f||^2
+ >=(5/2)c[sum_(j<k)||E_j f||^2+||E_tail f||^2]=(5/2)c||f||^2.
+Every strong channel energy is charged at most once, including the entire
+fine tail as one term. Separately zero means and the labelled torus gap
+4sin^2(pi/n)>=16/n^2 give T>=16c sum_alpha||s_alpha||^2.
+The convex combination4/5 and1/5 proves Q_A>=2c||z||^2 in the FULL kernel.
+For the full block projection R, ||Cz||^2=||Rz||^2/V. With x=(I-R)z,y=Rz,
+PSD polarization and ||L_A||<=M=4DH give Q_A(z)>=Q_A(x)/2-Q_A(y)
+>=c||x||^2-M||y||^2. Add(c+M)||Rz||^2 and divide by V. This proves
+the stated all-field penalty, without assuming R preserves coexactness.
+
+6. Count coarse rows, tail rows and every root.
+Since j<k implies n/2^j>1, L_j<=2n/2^j and
+r_j<=(5g/2)4^(-j)+1. Child cell count is <=2^(D(j+1)). Hence
+N_coarse<=A_D g 2^((D-2)k)+B_D 2^(Dk)
+ <=(A_D+B_D)g^(D/2)<=(A_D+B_D)V,
+A_D=D2^D(5/2)/(2^(D-2)-1), B_D=D2^D/(2^D-1).
+Here2^k<=sqrt(g) and g<n^2; D>=3 makes both geometric denominators positive.
+The at most6 singleton tail channels contribute <=6DV. Root leftovers
+contribute <=Dg<=DV because g<n^2<=n^D. Thus
+N_out<=(A_D+B_D+7D)V in this intermediate range.
+Together with Section2, choose
+L_D=max(C_D,4095D,A_D+B_D+7D). This proves the uniform all-range bound.
+Restricted rank is <=the displayed full count; zero root rows on U may
+further reduce it. No independence of nonroot restrictions is presumed.
+
+7. Actual lower bounds: retain both, even when g is fixed.
+For any internally channel-separable linear map restoring on U with any
+finite penalty Phi(0)=0,238's rederived general-g kernel/trace argument gives
+r>=b_D g V/n^2, b_D=(D-1)/(4(1+8D)). It uses row-space projections
+INSIDE U_0, so is valid for allg>=1 and not only the old g>=n^2 range.
+A SECOND lower bound is necessary when g<n^2: T0f=(v_alpha f)_alpha is an
+isometry from U_0 into U and Q_A(T0f)=aE(f)<=c||f||^2/4.
+If C T0 f=0 for any nonzero f, restoration would force Q_A(T0f)>=c||f||^2,
+a contradiction. Thus C T0 is injective and r>=d0>=(D-1)V/2.
+Combining r>=a_D V,a_D=(D-1)/2 and r>=b_D g V/n^2 yields
+r>=[min(a_D,b_D)/2](V+gV/n^2).                          (239.4)
+These bounds apply to the canonical class, and Section6 supplies its actual
+upper. Therefore both its minimum restoring rank and this successful explicit
+map's actual rank have the claimed Theta_D(V+gV/n^2) order uniformly in g.
+
+8. Boundaries and retained limitations.
+The equalityg=V and thresholdg>=n^2 are both absent from this theorem. The
+observation-class restriction, fixed internal basis, canonical weights, exact
+positive constant coefficient family and finite actual flat coexact domain
+remain essential. Full capped budget is still exactly
+F=D^2V[1+(g-1)min(1,alpha_D n^(-D))]<=D^2(V+alpha_Dg),
+so h+F=O_D(V+g); no tail multiplicity or budget regime is silently removed.
+For fixed g this rank order is merely O_D(V), not a universal additive-rank
+obstruction. The normalized sufficient penalty here is O_D(cn^2); its optimal
+order for the new g<n^2 map has NOT been proved by this result. Arbitrary
+row rescaling, internally mixed observations, practical conditioning, efficient
+implementation, historical priority, general coefficients or physical/continuum
+transfer are not claimed. Preserve original236A failure and all earlier reports.
+Group with235–238, never as a tiny new paper or a regrading of frozen232B.

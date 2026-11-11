@@ -1,0 +1,202 @@
+244 -- Uniform growing weak dimension via simultaneous frame/count halving
+Author-role analytical candidate; exact-source different-role audit REQUIRED.
+No computation, formal check, grade, priority, efficient algorithm or physics claim.
+
+1. Statement and conventions.
+Let D>=3,n>=2,1<=q<=g be integers,c>0,Lambda>=1,V=n^D.
+Let P be an orthogonal projector of rank q in the FIXED observed basis R^g,
+P_aa<=Lambda q/g. Put a=c/(16D),H=cn^2,B=HI-(H-a)P.
+Repeat B on actual D derivative directions and D spatial components, with
+counting forward periodic gradients/curl and U=U0^g, U0=im d1*,
+d0=(D-1)(V-1), exactly as243. Canonical channel-separated rectangle rows
+are V^(-1/2)|S|^(-1/2)sum_S z_(k,alpha), shared partitions across k.
+There exists a coefficient-only choice, WITHOUT rotating observed channels,
+whose FULL row count is <=L_(D,Lambda)(qV+gV/n^2), uniformly in q,g,n,c,
+and on ALL fields
+ Q_A(z)/V+32c min(g/q,n^2)||Cz||^2>=c||z||^2/V.       (244.1)
+Minimum restoring ACTUAL rank is Theta_(D,Lambda)(qV+gV/n^2).
+The constructed map's least normalized quadratic penalty is
+Theta_(D,Lambda)(c min(g/q,n^2)). Every constant below is independent of q.
+The q=2 restriction of243 is removed by deriving actual matrix groups,
+not by assuming an isotropic subset, scalar trace surrogate or fractional row.
+
+2. Classical primary input and simultaneous halving lemma.
+Primary input: Marcus, Spielman, Srivastava, Interlacing Families II:
+Mixed Characteristic Polynomials and the Kadison-Singer Problem,
+arXiv:1306.3969v4 (2014), Theorem1.4, printed p3, PDF index2:
+https://arxiv.org/abs/1306.3969v4
+https://arxiv.org/pdf/1306.3969
+Its finite-support random-vector theorem gives an outcome with norm at most
+(1+sqrt(epsilon))^2 when covariance sums to identity and each expected squared
+norm is at most epsilon. We apply that proved theorem, not a new MSS claim.
+Its stated frame corollary does not itself supply cardinalities; derive them:
+
+Let actual w_i in R^q, i in I, m=|I|, sum w_i w_i^T=I_q.
+Set delta=max_i ||w_i||^2+1/m (or any upper bound).
+For independent uniform sigma_i in {-1,1} and j_i in {1,2}, define
+ b_i=(w_i,sigma_i/sqrt(m)), v_i=sqrt(2)e_(j_i) tensor b_i.
+These are independent four-outcome vectors in R^(2(q+1)). Cross expectations
+vanish by signs, so sum E v_i v_i^T=I_(2(q+1)); E||v_i||^2<=2delta.
+MSS yields an actual assignment with norm <=(1+sqrt(2delta))^2.
+On either diagonal block, taking the leading q-dimensional principal block
+and the last scalar entry proves, for S_j={i:j_i=j},
+ G_j<= (1/2+e)I_q, |S_j|/m<=1/2+e,
+ e=sqrt(2delta)+delta.
+Since the two original Grams sum to identity and counts sum to m, also
+ G_j>= (1/2-e)I_q, |S_j|/m>=1/2-e.                  (244.2)
+Signs were only an auxiliary existence device. Original vectors are neither
+signed, split nor rescaled in the actual groups. Select the lexicographically
+first feasible channel partition; finite existence suffices, no efficient
+method or oracle run is claimed. Zero frame rows are INCLUDED in counts.
+
+3. Repeated halving with uniform conditioning and cardinalities.
+Choose orthonormal U in R^(g by q), UU^T=P, by deterministic Gram--Schmidt
+on P e_i. Write rows u_alpha; sum u_alpha u_alpha^T=I_q and
+max ||u_alpha||^2<=d=Lambda q/g. Start I_0={1,...,g}.
+On I_t let G_t=sum u_alpha u_alpha^T, m_t=|I_t|. Whiten only for selecting
+the next subset: w_alpha=G_t^(-1/2)u_alpha. The ORIGINAL channels are observed.
+Use244.2 on the whitened vectors and the actual m_t, take a deterministic
+child I_(t+1); its complement is removed. Define eta_t=2sqrt(2delta_t)+2delta_t.
+Then
+ (1-eta_t)G_t/2 <=G_(t+1)<=(1+eta_t)G_t/2,
+ (1-eta_t)m_t/2 <=m_(t+1)<=(1+eta_t)m_t/2.           (244.3)
+
+Fix C0=2^24. For any integer k>=0 with 4^k<=g/(C0 Lambda q), we can perform
+2k successive halvings, and for every 0<=t<=2k have
+ (15/16)2^(-t)I_q<=G_t<=(17/16)2^(-t)I_q,
+ (15/16)g2^(-t)<=m_t<=(17/16)g2^(-t).               (244.4)
+Here is a noncircular proof of existence. At any earlier stage with244.4,
+ delta_t<= (16/15)2^t (Lambda q/g+1/g)
+         <=(32/15)2^t d,
+since Lambda q>=1. In particular the current Gram is invertible. Geometric
+sums over t<2k bound the total error by
+ sum eta_t <=12 sqrt(d4^k)+5d4^k
+            <=12/4096+5/2^24 <1/256.                (244.5)
+Indeed sum_(t<2k)2^(t/2)=(2^k-1)/(sqrt(2)-1), and
+2sqrt(2)sqrt(32/15)/(sqrt(2)-1)<12; twice32/15<5 bounds the linear sum.
+Partial sums obey the same estimate. For nonnegative eta with sum S<1,
+ product(1-eta)>=1-S, product(1+eta)<=1/(1-S).
+Induct from G_0=I,m_0=g: at each step previous244.4 supplies the delta bound,
+the partial sum gives products between255/256 and256/255, strictly within
+15/16 and17/16, and thus proves244.4 at the next step. All eta<1 and both
+children have positive Gram and cardinality. This justifies every whitening;
+it never assumes future good conditioning. For k=0 there are no halvings.
+
+4. Spatial stopping and derived actual matrix groups.
+Let M=min(n/32,sqrt(g/(C0 Lambda q))). If M<1 use ALL-channel singletons.
+This priority includes n<32 OR g<C0 Lambda q. No frame lemma is needed there.
+Otherwise let k=floor(log2 M), run exactly2k halvings as above. For j<k let
+ J_j=I_(2j) minus I_(2j+2), and J_tail=I_(2k).
+These disjoint sets exhaust ALL original channels, including zero rows.
+Their ORIGINAL (unwhitened) Grams obey
+ sum_(alpha in J_j)u_alpha u_alpha^T
+  >=[(15/16)-(17/16)/4]4^(-j)I_q=(43/64)4^(-j)I_q,
+ G_tail>=(15/16)4^(-k)I_q.                          (244.6)
+
+Use nested floor-quantile integer-rectangle spatial partitions Pi_j,
+with average projections P_j, L_j=ceil(n/2^j), E_j=P_(j+1)-P_j for j<k,
+and ONE E_tail=I-P_k. Their sum is I-P_0, they are mutually orthogonal,
+and for vector fields ||E_j f||^2<=L_j^2 E(f)/4, including the tail.
+These are the actual finite path Neumann/tensor estimates of241B--243,
+not an extra regional-gap hypothesis. Since2^k<=n/32,
+ L_j<=(33/32)n2^(-j) for j<=k.
+Set lambda_j=5L_j^2/(8n^2), also for the tail. Then
+ lambda_j<=(5445/8192)4^(-j)<(43/64)4^(-j),
+because43/64=5504/8192. Thus244.6 proves G_(J_j)>=lambda_j I_q
+and G_tail>=lambda_tail I_q. These are actual matrix lower bounds, not traces.
+J_j channels observe all child cells Pi_(j+1); tail channels observe singletons.
+Every channel has exactly one such partition. There are no omitted roots.
+k=0 means every channel is a singleton, with G_tail=I>=5I/8, consistently.
+
+5. Count all rows with constants independent of q.
+Group cardinality |J_j|<=m_(2j)<=(17/16)g4^(-j). Child Pi_(j+1) has at most
+2^(D(j+1)) cells. Therefore with
+ A_D=D2^D(17/16)/(2^(D-2)-1),
+ N_coarse<=A_D g2^((D-2)k)<=A_D gV/n^2 (D>=3).
+Also2^k>M/2, so
+ |J_tail|<=(17/16)g4^(-k)
+  <(17/4)max(1024g/n^2,C0 Lambda q)
+  <=4352g/n^2+(17/4)C0 Lambda q.
+Multiply by DV for every singleton row. One valid single constant is
+ L_(D,Lambda)=A_D+4352D+(17/4)D C0 Lambda.           (244.7)
+It bounds total count by L(qV+gV/n^2). If M<1, singleton count DgV is
+<=1024DgV/n^2 when n<32, or <=DC0 Lambda qV when g<C0 Lambda q.
+Both are also paid by244.7. Equalities at the thresholds use the k>=0 branch;
+no unproved large-size condition is applied to boundary/small inputs.
+No linear independence of restricted observation rows is assumed.
+
+6. All-field coercivity, one strong energy, canonical normalization.
+For componentwise mean-zero z write f=U^Tz (q D-component fields), s=z-Uf.
+Then Q_A=aE(f)+T, T=H sum_alpha E(s_alpha), ||z||^2=||f||^2+||s||^2.
+Applying Young as243 with theta=1/10, the path/tensor estimate and disjoint
+actual channel groups give
+ T>=(9/10)sum_j(4H/L_j^2)<E_j f,G_(J_j)E_j f>
+      -36 sum_j(H/L_j^2)sum_(alpha in J_j)||E_j z_alpha||^2.
+The first term is >=(9/4)c||f||^2 by the derived matrix lower bounds.
+Each E_j is a subprojection of its channel's child observation (identity at
+tail). L_j>=n2^(-j) implies H/L_j^2<=c4^j<=c4^k.
+Let b=min(g/q,n^2)>=1. The stopping rule gives4^k<=b, hence
+ T+36cb||Rz||^2>=(9/4)c||f||^2.
+Separately the labelled periodic gap gives T>=16c||s||^2. Convex weights
+8/9 and1/9 spend ONE T and yield
+ T+32cb||Rz||^2>=2c||f||^2+(16/9)c||s||^2>=c||z||^2.
+Add nonnegative aE(f). Every partition observes all global constants;
+RP_0=P_0R=P_0 and32cb>=c, so the orthogonal constant split extends to ALL z.
+In the priority singleton case R=I and K=c suffices, hence also32cb.
+Finally ||Cz||^2=||Rz||^2/V proves244.1 on the original canonical rows.
+No projection is required to preserve coexactness; weak coordinates and
+whitening never rotate observed fields. This is existence, not a practical
+implementation or well-conditioned solve guarantee.
+
+7. Matching actual rank and least fixed-weight coefficient.
+Weak T0:U0^q -> U, T0 f=Uf, is an isometry of dimension qd0 and
+Q_A(T0 f)=aE(f)<=c||f||^2/4. For arbitrary restoring internally separable
+linear C, let S_alpha be its row-space projection INSIDE U0, S direct sum,
+r=rank(C|U)=sum rank S_alpha. Then
+ trace(T0* S T0)=sum P_aa rank S_alpha<=Lambda q r/g.
+A unit weak vector satisfies t=||S T0 f||^2<=Lambda r/(g d0).
+Actual u=(I-S)T0 f is coexact and in ker C, ||u||^2=1-t. PSD polarization
+and E(w)<=4D||w||^2 give Q_A(u)<=c/2+8DHt.
+Restoration with ANY finite Phi satisfying Phi(0)=0 implies
+ r>=g d0/[2Lambda(1+8Dn^2)].                        (244.8)
+Independently C T0 must be injective (otherwise its nonzero weak kernel
+violates the c lower), so r>=q d0. Since d0>=(D-1)V/2 and
+1+8Dn^2<=(1+8D)n^2, the maximum of these bounds controls
+qV+gV/n^2 with constant depending only D,Lambda. Count244.7 gives the match.
+
+For canonical R each R_alpha|U0 is a contraction, its squared singular value
+sum at most its actual rank. Weighted trace on the qd0 weak space is
+<=Lambda q r/g. Coercivity with coefficient K therefore requires
+ K Lambda q r/g >=(3c/4)q d0,
+or K>=3cgd0/(4Lambda r). Our fixed constructed map has r<=L(qV+gV/n^2), so
+ K>=3(D-1)c/[8Lambda L] *g/(q+g/n^2)
+   >=3(D-1)c/[16Lambda L] min(g/q,n^2).
+Combined with32cb this proves the claimed least coefficient order uniformly
+in q. A least coefficient is attained as the endpoint of a nonempty closed
+intersection of restoring half-lines. Lower bound is on U; upper on ALL fields.
+Counting convention uses VK on these SAME rows; arbitrary rescaling is excluded.
+
+8. Original caps, scope, priority and retained failures.
+Keeping ORIGINAL alpha_D=(3/4)^D(D/2)(D/(D-2))^(D-1), full gradient budget is
+ F=D^2V[q+(g-q)min(1,alpha_D n^(-D))]<=D^2(qV+alpha_D g).
+Thus h+F=O_D(qV+g), h=Dg, with every cap/multiplicity retained. For q=g
+there is no strong tail: M<1, singleton map r=gd0,K=c, b=1 agrees with orders.
+For q=1 this gives a new proof of242, uniformly and without positive minimum
+row weights. Coordinate weak q-planes without fixed coherence can use q
+singleton channels plus strong roots, rank qd0,K=c. Such a plane has P_aa=1
+and is inadmissible for fixedLambda when g>Lambda q; within that range the
+extra gV/n^2 term is controlled by qV, so there is no contrary coherent example.
+
+The specific removed restriction is FIXED weak dimension2. Fixed upper coherence,
+constant positive profile a/H, finite actual flat/coexact domain, canonical fixed
+observed basis and channel-separated rectangle observations remain. MSS supplies
+a classical nontrivial theorem; our application derives simultaneous cardinality,
+conditioning, spatial budget and restoring estimates. No claim of historical
+originality for that application is made: a comprehensive frame/finite-element
+literature implication audit is still missing. The2019 differential-form paper
+has only had its abstract read. No signed/spatially varying coefficients,
+efficient algorithm, verified implementation, formal certificate, physical mass
+gap or continuum conclusion follows. PR29 stays20/41,TermSource=0.
+Keep241A rejection,242N1 and243C1 and all raw audits. Group with235--243 in a
+future manuscript; frozen232B contains none of234--244 and its4.10 assessment
+does not transfer. One active question is244 until its exact-source audit closes.

@@ -1,0 +1,104 @@
+{
+  "task": "Bounded primary-source comparison for planned manuscript250",
+  "access_date": "2026-11-11",
+  "primary_work_count": 4,
+  "focused_discovery_query_count": 3,
+  "search_is_exhaustive": false,
+  "sources": [
+    {
+      "id": "S1",
+      "authors": "Adam W. Marcus; Daniel A. Spielman; Nikhil Srivastava",
+      "title": "Interlacing Families II: Mixed Characteristic Polynomials and The Kadison-Singer Problem",
+      "version": "arXiv:1306.3969v4",
+      "url": "https://arxiv.org/pdf/1306.3969v4",
+      "read_this_pass": "Theorem1.4 statement, printed3/PDF index2",
+      "prior_reading_reused": "Corollary1.5 statement and block-lifting proof, printed3-4, earlier244 audit",
+      "not_read": "Full interlacing proof",
+      "local_PDF_copy": false,
+      "raw_PDF_hash": null
+    },
+    {
+      "id": "S2",
+      "authors": "Gregory F. Lawler; Vlada Limic",
+      "title": "Random Walk: A Modern Introduction",
+      "url": "https://www.math.uchicago.edu/~lawler/srwbook.pdf",
+      "format": "Author-hosted289-page draft; date/version unidentified in inspected frontmatter; pagination differs from publisher edition",
+      "read": [
+        "4.3 opening and Theorem4.3.1, printed81-82; surrounding proof-outline excerpts",
+        "4.4.1/Theorem4.4.4 and simple-walk formula, printed88; surrounding proof-opening excerpts",
+        "6.7 opening definition/equations6.50-6.51, printed152-153",
+        "Table of contents for section/page identification"
+      ],
+      "not_read": "Complete proofs, chapters or book",
+      "local_PDF_copy": false,
+      "raw_PDF_hash": null
+    },
+    {
+      "id": "S3",
+      "authors": "N. Spillane; V. Dolean; P. Hauret; F. Nataf; C. Pechstein; R. Scheichl",
+      "title": "Abstract robust coarse spaces for systems of PDEs via generalized eigenproblems in the overlaps",
+      "publication": "Numerische Mathematik126(4),741-770,2014; DOI10.1007/s00211-013-0576-y",
+      "author_discovery_url": "https://www.cmap.polytechnique.fr/~spillane/?page=publications",
+      "url": "https://strathprints.strath.ac.uk/44827/1/10.1007_s00211_013_0576_y.pdf",
+      "format_read": "Author-linked institutional journal PDF,30pages; not identified as an author preprint",
+      "read": "Selected abstract/setup; Lemma2.11/proof; Definitions3.7/3.9; Assumptions2.1/3.12/3.13; Lemma3.21 excerpts; Theorem3.22/Corollary3.23 and size warning",
+      "PDF_indices_of_selected_reading": "0-4,8-9,12,14-15,17-18",
+      "not_read": "Full proof, implementation and numerical sections",
+      "HAL_document_attempt": "https://hal.science/hal-01094003/document",
+      "HAL_result": "Inaccessible through tool; no document content claimed read or version classification inferred",
+      "local_PDF_copy": false,
+      "raw_PDF_hash": null
+    },
+    {
+      "id": "S4",
+      "authors": "Andrea Braides; Valeria Chiado Piat; Andrey Piatnitski",
+      "title": "Discrete double-porosity models",
+      "version_read": "arXiv:1406.1752v1,6June2014, from PDF header",
+      "url": "https://arxiv.org/pdf/1406.1752",
+      "abstract_url": "https://arxiv.org/abs/1406.1752",
+      "read": "Abstract/introduction excerpts; Section2 connectivity/model assumptions; Theorem5.1 statement and preceding decomposition",
+      "PDF_indices_of_selected_reading": "0-2,9-10",
+      "not_read": "Gamma-convergence proof, gradient flows or full paper",
+      "local_PDF_copy": false,
+      "raw_PDF_hash": null
+    }
+  ],
+  "comparison_inputs_from_prior_exact_source_audits": [
+    {
+      "unit": 244,
+      "commit": "98d1b4e230895bf03147a987d5db7545680f154a",
+      "raw_sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+    },
+    {
+      "unit": 245,
+      "commit": "4d7540064d4825dd6b06493537ec657538eb8ee8",
+      "raw_sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+    },
+    {
+      "unit": 246,
+      "commit": "b162e24e683f870bb296075805048c06f97b4d0f",
+      "raw_sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+    },
+    {
+      "unit": 247,
+      "commit": "4d120ad03bd6dc9a5828e780bb2873eaf144a9c5",
+      "raw_sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+    },
+    {
+      "unit": 248,
+      "commit": "457d356199e5d1fe99ebc24eb8964a0793cf9738",
+      "raw_sha256": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+    }
+  ],
+  "input_capture_status": "Identifiers reused from previous exact-source records in this persistent auditor context; no new Git or raw input capture in this reading pass",
+  "manuscript250_received_or_audited": false,
+  "artifacts": [
+    "primary-comparison-report.txt",
+    "context.json",
+    "manifest.json"
+  ],
+  "authored_representation": "UTF-8,LF,final newline",
+  "artifact_hashes_computed": false,
+  "hash_note": "No native process/runtime invoked for hashing; this is a provenance/read-extent manifest, not a byte certificate",
+  "third_party_PDF_redistribution": false
+}

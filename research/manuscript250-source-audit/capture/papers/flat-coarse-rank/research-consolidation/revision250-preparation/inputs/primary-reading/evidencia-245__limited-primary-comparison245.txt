@@ -1,0 +1,21 @@
+Limited primary reading, 2026-11-11, after candidate245 was frozen.
+Primary: Braides, Chiado Piat, Piatnitski, Discrete double-porosity models,
+arXiv:1406.1752v1 (2014): https://arxiv.org/abs/1406.1752v1
+PDF https://arxiv.org/pdf/1406.1752v1
+Actually read: abstract and introduction on PDF pages1--2, including the
+microscopic strong/weak interaction model and discussion of connected graphs.
+Full paper/theorems NOT read; no raw PDF redistributed or hash claimed.
+
+The source already studies periodic high-contrast lattice energies and explains
+that connectivity through strong bonds controls the relevant phases. Therefore
+neither high-contrast periodic examples nor the general importance of strong-bond
+geometry is novel here. Candidate245's specific canonical rectangle/coexact rank
+counterexample has not been compared theorem-by-theorem with that paper or its
+references. Priority and non-implication remain UNESTABLISHED. This limited lookup
+supports a closer literature queue, not a novelty certificate or an assertion
+that the source proves or disproves the specific candidate245 statement.
+
+Candidate referent:4d7540064d4825dd6b06493537ec657538eb8ee8,
+SHA2566e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d.
+Its separate exact-source mathematical audit is pending at this note's creation.
+Do not inherit any PDF score, numerical stars, human or independent review.

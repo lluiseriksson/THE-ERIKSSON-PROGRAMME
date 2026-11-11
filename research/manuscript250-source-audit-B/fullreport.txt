@@ -1,0 +1,162 @@
+SOURCE250B — bounded editorial successor audit
+OriginalA:1659b5397ffa30e5315b2b3963d9ed661ee5f611
+ExactB:4ec599da41521ecfdadd7d2aee69faab8b3819f1
+Branch:codex/tep-manuscript250B-source-20261111
+Prefix:papers/flat-coarse-rank/research-consolidation/revision250-preparation
+Date:11November2026
+
+VERDICT: ACCEPT_BOUNDED_EDITORIAL_SOURCE_DELTA. No material scientific defect
+was established in this exact A-to-B delta. The only two changed manuscript
+passages concern source-commit typography and the explicit order of an already
+correct convex combination. The added correction note truthfully retains A's
+failed production and old static report. All mathematical theorem statements,
+hypotheses, constants, equations, domains, observation rows and proof mechanisms
+are unchanged. This is NOT a B compiler/render/visual/reproduction pass, exact-
+PDF assessment, numerical score, publication or launch qualification. The actual
+new engineering pipeline/pins must receive their own bounded gate before launch.
+
+1. Exact delta and raw boundary
+The exact Git diff was read in full. It lists only:
+  added PRODUCTION-CORRECTION250B.txt;
+  modified context250.tex, one provenance paragraph;
+  modified fixed250.tex, one prose sentence and its repeated existing inequality.
+No other prefix file changes. An exact-commit Git archive captures all151Bfiles.
+All151extracted sizes/SHA256 values match their current checkout counterparts;
+148old files match A's original raw capture unchanged. The remaining two are the
+two displayed editorial replacements, plus the one new correction note. All137
+SOURCE-INPUTS payload sizes/hashes still match. The complete inventory, comparison
+and capture method are in capture-manifest.json/capture-successor.ps1. There is
+no text normalization: TeX is exact Git UTF-8/LF and binaries keep original bytes.
+
+The main TeX interface is unchanged, still the same six input names and seven
+root TeX files, same preamble, SourceCommit macro default, theorem declarations
+and build-facing main name. Five of the seven root TeX files are byte-identical
+to A. The two changed passages were read with their surrounding arguments;
+the earlier complete seven-file source audit is preserved rather than claimed
+freshly repeated. No new theorem or249point-angle result is introduced.
+
+2. Actual A failure and truthful diagnosis
+The original returned ZIP was rehashed at the supplied exact value
+48fcb78a9c865f55ac81d10c7ba9d8abf78797a463134cf67105d6c46790e3ac.
+Selected report/failure/native final-log and three TeX exit files were extracted
+DIRECTLY from that bound ZIP into this audit and compared with the parent's
+returned files. I read the actual failure traceback, relevant final native
+diagnostics, structured production status/child records, CLI execution transcript
+and separate backend query. This is a bounded failure-cause reading, not a new
+full archive/manifest audit or a visual reading of its PDF.
+
+The report says FAILED_PRESERVED with no detected preservation errors, and only
+first-clone first/second/final TeX passes, each actual/recorded0 and no timeout.
+The final native log explicitly reports a20page450078byte PDF, but also an
+Overfull hbox59.38974pt at context lines138–144. Its immediately following text
+contains the long inline full1659b539... source identifier in the prose paragraph.
+Thus a genuine layout rejection exists independently of the warning parser's
+other match. There was no second clone or render command in the recorded command
+list; that path stopped at the first-clone final-warning guard.
+
+The other selected blocker is the ordinary package identity/description line
+for rerunfilecheck, with words “Rerun checks for auxiliary files”. This describes
+the loaded package; it is not an instruction that the document needs another
+pass. The correction note properly distinguishes this false literal Rerun match
+from the real overflowing paragraph. It does NOT relabel A as rendered, reviewed,
+reproduced or assessed. The actual execution.log retains the inner
+FAILED_PRESERVED record followed by RuntimeError, while execution.exit records
+CLI0. Therefore CLI0 alone cannot establish inner success. The new note makes
+that operational boundary explicit instead of hiding the failure.
+
+The copied separate backend query has actual0 and literal No active sessions
+found on server. This supports the stated observed post-stop inactivity; it
+does not prove uninterrupted cleanup, billing or future readiness. I allocated
+or stopped no runtime and make no new consumption claim.
+
+3. SourceCommit typography change
+Before B the full SourceCommit was inline in a prose paragraph after the words
+printed as, directly matching the native overfull cause. B changes that passage
+to a separate center environment in small monospaced type. The complete actual
+macro value is retained, with no truncated/hash-shortened provenance, hard-coded
+invented SHA or changed default. The center environment is correctly closed;
+small/typewriter declarations are scoped within it. The following SOURCE-NOT-
+BUILT/default and actual-commit requirements remain explicit.
+
+This is a reasonable targeted typographic correction to the observed cause.
+It does not change any mathematical statement or source identity protocol.
+Whether the whole B PDF has no overflows, correct line breaks, stable pagination
+and readable tables must be observed in its actual new Linux build/render and
+full visual review. In particular the old20page count is A's count, not a
+verified B count. No style change here can supply an unrun second clone or
+transfer an earlier PDF assessment.
+
+4. N1 convex-combination wording closure
+The original exact-source audit identified a nonblocking ordered-language
+ambiguity: the intended8/9of strongbudget plus1/9of the global gap could be
+read in the reverse order from the prose. Its following displayed bound was
+already mathematically correct. B now assigns the weights explicitly:
+8/9of eq:strongbudget, and1/9of T>=16c||s||². It repeats that existing global-
+gap inequality only to identify it. The resulting displayed inequality,
+T+32cb||Rz||² >=2c||f||²+(16/9)c||s||², is byte-unchanged.
+Both inputs were proved in A and their combination remains correct. The source
+does not spend strong energy twice; a convex combination of two bounds for the
+same T still bounds T. N1 is therefore closed by wording, not by assuming a new
+energy bound, moving a hypothesis, changing weights or changing constants.
+
+5. Historical source reports and manuscript context
+STATIC-SOURCE-CHECK.json is deliberately byte-identical to A. Its old context/
+fixed hashes are NOT the new B source hashes, so it must not be used as a fresh
+current-source pass. The new correction note explicitly labels it the immutable
+earlier source-A inspection. The current B capture manifest supplies the new
+raw bindings; the historical report is retained rather than rewritten.
+
+The old A whole-source report, verdict, context and hash manifest rehash at
+their original identities (fullreport4972e7bc...;verdict7ea4a2c2...;
+contextb6a2ce7f...;manifest97ca13a7...). A's acceptance remains source-only and
+its N1 record remains historically true. The new B note closes N1 prospectively,
+not by changing the earlier verdict. The new note accurately states that A's
+failed production reached no visual review, reproduction or numerical assessment.
+It also identifies the required separate production warning-classification fix.
+This audit does not inspect or accept that new engineering implementation.
+
+The scientific context, bounded primary-reading limitations, unresolved historical
+priority and practical-conditioning issues, actual domain and finite penalty
+qualifications remain unchanged. The source-stage default is still not acceptable
+in a deliverable PDF; the actual full B commit must be supplied at build time.
+The dated source-preparation context and failed A history must continue to be
+distinguished from any later actual B production/assessment. Earlier232B4.10/10
+is visible historical context only; no score is inherited and no new grade was
+requested or supplied in this source gate. Physical mass gap and continuum are
+still OPEN; PR29's20/41andTermSource=0 are unchanged.
+
+6. Scope and remaining gates
+This exact editorial delta preserves the previously read finite mathematical
+arguments; it establishes no new mathematical result. No remaining material
+source-delta blocker was found. A final filled B pipeline still needs a separate
+engineering/source-pin/actual-inner-success gate, owned Linux execution, complete
+returned evidence checks, actual two-clone PDF-byte comparison, complete page
+rendering/visual inspection and its first exact-PDF numerical assessment. The
+harmless package metadata must not hide actual rerun instructions, font/glyph or
+layout diagnostics. None of those runtime or editorial outcomes is inferred here.
+
+7. Factual review/operation context and preserved capture failure
+This is the same involved AI source-auditor role, with persistent prior A audit,
+parent framing, shared filesystem/account/provider and earlier score exposure.
+It is not independent, blind, human or fresh-provider/model resampling. Exposed
+identity:Codex, based on GPT-6; exact served backend/version/effort are unknown.
+No author was contacted and no inbound message was used during this audit.
+
+Only read-only Git/source/failure records, hashes/archive data handling and this
+new audit subtree were used. No imports/tests/Lean/TeX/render/mathematical runtime,
+allocation, source/Git/state/native/chat/automation mutation or new grade occurred.
+No disposable clone was created. SourceB has no PR, hence no BPR body capture;
+the existing PR217 containing A is not modified or re-audited by this task.
+
+The first local DATA capture attempt completed git archive0, then its git diff
+output argument was incorrectly expanded and Git returned nonzero. The script
+stopped before extraction/manifest, without a false pass. Original capture.ps1
+and capture-attemptA-failure.txt are retained. capture-successor.ps1 corrected
+only the output-path argument and used that same successful exact-commit archive;
+the successor completed its151/148/137raw checks. This was not a scientific test,
+production retry or rewrite of the original failure. Both capture methods are
+included in the final raw audit manifest.
+
+Disposition:ACCEPT_BOUNDED_EDITORIAL_SOURCE_DELTA at4ec599da41521ecfdadd7d2aee69faab8b3819f1.
+Read this report and verify its bindings. Do not interpret it as BPDF/launch/
+assessment/publication qualification.

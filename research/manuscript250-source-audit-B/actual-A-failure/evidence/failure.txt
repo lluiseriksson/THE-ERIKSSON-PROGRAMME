@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_4185/2244977497.py", line 122, in <cell line: None>
+    require(not warnings,'Final layout/reference/glyph warnings retained: '+label)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_4185/2244977497.py", line 15, in require
+    if not ok: raise ValueError(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Final layout/reference/glyph warnings retained: first

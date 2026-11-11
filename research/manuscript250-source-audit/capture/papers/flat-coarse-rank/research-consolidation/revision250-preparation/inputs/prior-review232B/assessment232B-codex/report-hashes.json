@@ -1,0 +1,30 @@
+{
+  "format": "raw-byte-report-hashes-1.0",
+  "algorithm": "SHA-256",
+  "representation": "Exact raw on-disk bytes; no newline, encoding, Unicode or other normalization",
+  "report_encoding": "UTF-8 without BOM; each digest refers to the original saved file bytes",
+  "generated_at": "2026-11-10T22:51:35.7781274+01:00",
+  "files": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\scientific-review.txt",
+      "byte_size": 21047,
+      "sha256": "9619c2a5b971bdeca22c7654587229bd1ade8cb44b1b355cf1a7aecbbcdb50e9"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\response.json",
+      "byte_size": 6674,
+      "sha256": "e05cc1bb5dea2cf3a43713b2d380d9afa3920c8e4ee3d350b95f4eb492c53e4f"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\review-context.json",
+      "byte_size": 10437,
+      "sha256": "8b7519d3eaf46b67ade6ec409ffea095206564af65c99deb3fd2d7f2ddd610d9"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\rectangular_matrix232B.pdf",
+      "byte_size": 505936,
+      "sha256": "5595e89c1bcbec1d9b1ae35053a76e6a962f67b45d5d1ac483e5b7a60c9b9be0"
+    }
+  ],
+  "self_hash_policy": "This manifest lists the three original review artifacts and exact assessed PDF. It cannot contain its own raw-byte hash without self-reference; its separately computed digest may accompany delivery."
+}

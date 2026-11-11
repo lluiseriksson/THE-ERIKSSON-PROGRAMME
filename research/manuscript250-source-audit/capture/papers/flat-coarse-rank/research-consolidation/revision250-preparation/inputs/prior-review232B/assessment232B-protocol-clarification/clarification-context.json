@@ -1,0 +1,68 @@
+{
+  "format": "same-round-protocol-clarification-context-1.0",
+  "clarification_prepared_at": "2026-11-10T22:57:04.6763025+01:00",
+  "original_assessed_at": "2026-11-10T22:50:03.7810586+01:00",
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "proposed_version": "v15",
+  "version_id_status": "No native version UUID exists in this assignment; none invented",
+  "canonical_sha256": "5595e89c1bcbec1d9b1ae35053a76e6a962f67b45d5d1ac483e5b7a60c9b9be0",
+  "provider": "OpenAI",
+  "model_id": "Codex (based on GPT-6; exact served backend and reasoning effort unknown)",
+  "precise_backend": "unknown",
+  "reasoning_effort": "unknown",
+  "independence": "unknown",
+  "human_review": false,
+  "blind_review": false,
+  "original_predecessor_score_exposure": "Original PDF pages 20-21 exposed predecessor score; context preserved",
+  "clarification_type": "Protocol clarification of SAME first assessment, not second round",
+  "triggering_rule": {
+    "location": "scripts/assessmentlib.py lines 210-212",
+    "content": "Nonempty unresolved_material_objections is incompatible with accept/minor_revision; major_revision or reject required",
+    "provenance": "Provided by parent in the bounded clarification assignment; validator was not independently reread or executed here"
+  },
+  "original_scientific_recommendation": "minor_revision",
+  "conservative_native_recommendation": "major_revision",
+  "original_recommendation_preserved": true,
+  "unchanged_scores": {
+    "millennium_score": 4.1,
+    "overall_stars": 4,
+    "correctness_confidence": 4,
+    "rigor": 4,
+    "novelty": 3,
+    "significance": 3,
+    "reproducibility": 4
+  },
+  "exact_original_fields_changed_in_native_projection": [
+    "recommendation",
+    "summary"
+  ],
+  "original_summary_preserved_as_prefix": true,
+  "criterion_bases_preserved_verbatim": true,
+  "all_three_material_objections_preserved_verbatim": true,
+  "unresolved_material_objections": [
+    "Historical novelty of the rank and coupled-family results remains unestablished; the limited primary-source lookup does not constitute an exhaustive literature audit.",
+    "Practical usefulness and conditioning with the allowed finite profile-dependent penalties are unresolved; no actual application or efficient implementation is demonstrated.",
+    "No fatal correctness objection remains from this reading, but the recommendation is not unconditional editorial acceptance and the results must retain their finite, class-specific, basis/growth and penalty hypotheses."
+  ],
+  "changes_explained": "Conservative major_revision retains actual material issues rather than removing/softening/relabeling them. The original conditional minor opinion remains history and appears explicitly in the native summary.",
+  "original_files_preserved": [
+    "scientific-review.txt",
+    "response.json",
+    "review-context.json",
+    "report-hashes.json"
+  ],
+  "files_read_during_clarification": [
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\response.json"
+  ],
+  "originals_hashed_before_and_after": true,
+  "new_manuscript_reading": false,
+  "new_bibliography_research": false,
+  "new_scientific_assessment": false,
+  "rescore_or_resampling": false,
+  "computation_build_render_or_replay": false,
+  "original_source_status_or_git_mutation": false,
+  "external_model_service_spend_or_contract": false,
+  "native_schema_execution": "Not executed; projection checked directly for the supplied incompatibility and preservation invariants",
+  "publication_or_receipt_or_acceptance_created": false,
+  "outputs_only_in": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-protocol-clarification"
+}

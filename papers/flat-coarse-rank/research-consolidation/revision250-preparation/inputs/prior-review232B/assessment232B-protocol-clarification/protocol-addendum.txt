@@ -1,0 +1,32 @@
+PROTOCOL CLARIFICATION OF THE SAME FIRST EXACT-PDF ASSESSMENT
+Written 2026-11-10, following the first report; precise timezone-aware preparation time is in clarification-context.json.
+
+Exact PDF: rectangular_matrix232B.pdf, 505936 bytes, 30 pages, raw-byte SHA-256 5595e89c1bcbec1d9b1ae35053a76e6a962f67b45d5d1ac483e5b7a60c9b9be0.
+Original response: response.json, 6674 bytes, raw-byte SHA-256 e05cc1bb5dea2cf3a43713b2d380d9afa3920c8e4ee3d350b95f4eb492c53e4f.
+Paper ARR-2026-7EPM3V3DP796BBRR; proposed author-successor label v15 only, without a native version UUID.
+
+This is a bounded protocol clarification, not a new scientific review, PDF revision, second assessment round, numerical rescore or attempt to improve a score. I have performed no new manuscript reading, literature research, mathematical computation, rendering or review resampling. I read the already completed response for exact preservation and hashed the four originals. All four original files remain unmodified and retain their original byte identities.
+
+Factual classification conflict
+The original report and response express a conditional specialist-venue scientific opinion of minor_revision and retain three entries under unresolved_material_objections. The follow-up assignment supplies the native validation rule at scripts/assessmentlib.py lines 210–212: a nonempty unresolved_material_objections array is incompatible with accept or minor_revision and requires major_revision or reject. I have not independently reopened or executed that validator during this clarification. The supplied rule describes a genuine classification mismatch in my original response. It is not a newly discovered mathematical counterexample, but neither may it be bypassed by removing, weakening, or relabeling the retained objections.
+
+Conservative native classification
+I choose major_revision for response-native.json. The existing report identifies unresolved priority coverage and practical usefulness/conditioning, and explicitly conditions editorial acceptance on specialist novelty judgment. Those material matters have not been resolved. Retaining them as open objections requires a category indicating substantive unresolved work before a favorable native disposition. major_revision truthfully conveys that conservative native position. reject is not required by the report: the same report found no definite fatal mathematical error and identified a coherent limited specialist contribution. This choice changes neither mathematical findings nor numeric evaluation; it reconciles the native categorical field with the material objections actually retained.
+
+The original minor_revision scientific opinion remains visible in the immutable scientific-review.txt and response.json and is explicitly preserved in the native response summary. It is not retroactively rewritten as though the original evaluator had issued major_revision. Conversely, consumers of the native response must not present this clarification as continued minor_revision or unconditional acceptance. The native classification for this same first round is major_revision, accompanied by the original conditional opinion and this explanation. Both records should travel together.
+
+Unchanged numerical judgment
+Scientific importance remains 4.10/10, overall stars remain 4/10, and correctness_confidence/rigor/novelty/significance/reproducibility remain 4/4/3/3/4 on five-star scales. All five original textual criterion bases are retained exactly. The score is scientific importance for the finite claims, not a probability or Millennium-problem forecast. The assessed_at field remains the real original assessment timestamp 2026-11-10T22:50:03.7810586+01:00, because this is that same assessment. The actual later clarification preparation time is separately recorded in context.
+
+All three original unresolved-material entries, unchanged verbatim
+1. Historical novelty of the rank and coupled-family results remains unestablished; the limited primary-source lookup does not constitute an exhaustive literature audit.
+2. Practical usefulness and conditioning with the allowed finite profile-dependent penalties are unresolved; no actual application or efficient implementation is demonstrated.
+3. No fatal correctness objection remains from this reading, but the recommendation is not unconditional editorial acceptance and the results must retain their finite, class-specific, basis/growth and penalty hypotheses.
+
+Scope of response-native.json
+This complete model-authored native projection preserves every original response field except recommendation and summary. recommendation is major_revision. summary retains the original summary verbatim and appends a clear protocol clarification preserving the original conditional minor opinion while explaining the conservative native category. All strengths, weaknesses, potential errors, novelty candidates and all three unresolved material objections are unchanged. No objections have been reclassified as nonmaterial, no scoring criterion has been softened, and no scientific reevaluation is represented.
+
+Model and status limits
+Provider OpenAI; exposed identity Codex, based on GPT-6. Exact backend and reasoning effort remain unknown. The original review was a separate agent role but was not demonstrated independent, human or blind; the predecessor score was visible inside the PDF. Those limits continue unchanged. This clarification uses no external model service, contract or spend. It creates no receipt, native version UUID, acceptance, publication or new scientific gate closure. The document remains a private working draft awaiting actual publication gates.
+
+The companion hash manifest identifies raw bytes without normalization, preserves the four original hashes and records the three new clarification artifacts. Its own digest is computed separately to avoid self-reference. No original source, manuscript, status file or Git state was edited.

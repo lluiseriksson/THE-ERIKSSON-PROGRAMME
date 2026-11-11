@@ -1,0 +1,163 @@
+242 — Deriving away the positive lower-coordinate hypothesis
+Author-role analytical candidate; separate exact-source audit required.
+Grouped with235-241. No execution, PDF score, historical priority or application.
+
+1. The stronger, precisely delimited statement.
+Keep D>=3,n>=2,g>=1 integers,c>0,V=n^D,a=c/(16D),H=cn^2,
+B=H I-(H-a)vv^T and the actual constant gradient-stack form from241B.
+Let v be ANY real unit vector satisfying ONLY
+                  v_alpha^2 <= Lambda/g,
+for a fixed Lambda>=1 independent of n,g,c. Zero coordinates are allowed.
+There is NO lower bound nu/g, no restriction on signs, and no assumed
+positive mass in any prescribed subset of internal coordinates.
+Canonical per-channel integer-rectangle means in the same fixed basis can
+be constructed with
+ N_out <= L_(D,Lambda)(V+gV/n^2),
+ Q_A(z)/V+32c min(g,n^2)||Cz||^2 >=c||z||^2/V             (242.1)
+for ALL fields. On actual U=im(d_1^*)^g, the minimum restoring rank is
+Theta_(D,Lambda)(V+gV/n^2); for the fixed constructed map its least normalized
+restoring quadratic penalty is Theta_(D,Lambda)(c min(g,n^2)).
+The positive lower-coordinate assumption of241B is eliminated by the
+following ACTUAL sorted construction and cardinality proof, not replaced by
+a supplied grouping, basis change, rescaled rows or new coefficient condition.
+
+2. A finite sorted-prefix lemma with zeros and indivisible mass.
+Write w_alpha=v_alpha^2>=0, sum w_alpha=1, max w_alpha<=Lambda/g.
+Order actual channel indices by nonincreasing w_alpha, breaking ties by
+their original index. This assigns different partitions to original channels;
+it neither mixes the fields nor changes the coordinate basis or row weights.
+For successive prescribed lambda_q>0 choose the shortest unused prefix
+whose total mass M_q reaches lambda_q. Suppose
+                 sum_q(lambda_q+Lambda/g) <15/16.        (242.2)
+The usual last-channel bound gives lambda_q<=M_q<lambda_q+Lambda/g;
+zero channels cannot be the first last channel to cross a positive threshold.
+The same induction as241B shows each prefix exists: before any request,
+used mass is strictly less than the sum of its preceding upper budgets,
+so unused mass exceeds the remaining requested masses and overshoot budgets.
+In particular unused mass is always >1/16, even after the last group.
+
+If m channels remain, their mean weight is >1/(16m)>=1/(16g).
+For any integer t<=m, the first t remaining weights, still nonincreasing,
+have average at least the average of all m. This elementary statement follows
+by comparing the first-t mean with every following weight, or by summing
+the pairwise order inequalities; it remains true with zero suffixes.
+Let t=ceil(16g lambda_q). If t<=m the first t weights already have mass
+>t/(16g)>=lambda_q, hence the shortest prefix uses no more than t.
+If t>m the existing shortest prefix uses at most m<t. In all cases
+               |I_q|<=ceil(16g lambda_q)<=16g lambda_q+1. (242.3)
+This is derived from actual sorted weights and the globally paid budget.
+No individual positive lower bound or unproved lower subset mass is assumed.
+
+3. Apply the lemma to the full integer family, including both fallbacks.
+Use241B's priority unchanged:
+(i) g<4096Lambda^2 OR n<32Lambda: all channels observe singletons;
+(ii) otherwise g>=n^2: all scales j=0,...,J-1,J=ceil(log_2 n);
+(iii) otherwise g<n^2: k=floor(log_2 sqrt(g)), coarse j<k plus ONE tail.
+Use exactly the floor-quantile partitions Pi_j, orthogonal average P_j,
+L_j=ceil(n/2^j), pieces E_j=P_(j+1)-P_j and, in(iii),E_tail=I-P_k.
+For each piece request lambda_q=5 L_q^2/(8n^2). Coarse groups observe
+the child partition; the tail group observes singletons; unused channels root.
+
+The two weighted-budget estimates241B.3-4 use ONLY max w_alpha<=Lambda/g,
+the unit norm and case thresholds. They never use nu or any lower coordinate.
+Explicitly in(ii),J<=n/4,n>=32Lambda,g>=n^2, so
+ sum_q(lambda_q+Lambda/g)
+ <=5/6+5/(2n)+5J/(8n^2)+Lambda J/g
+ <=5/6+93/1024 <15/16.                                  (242.4)
+In(iii),s=sqrt(g)>=64Lambda,n>s,m=k+1<=s/4, so
+ sum_q(lambda_q+Lambda/g)
+ <=5/6+5/(2n)+5m/(8n^2)+Lambda m/g
+ <=5/6+93/2048 <15/16.                                  (242.5)
+The stricter15/16 comparison is justified by15/16-5/6=5/48 and
+93/1024<5/48. Thus sorted-prefix feasibility AND cardinality242.3 are
+derived in every nontrivial case, with all overshoots and the tail paid.
+No infinite fine-scale sum is inserted in the one-tail case.
+
+4. Row count without nu, even when some v_alpha vanish.
+For a coarse piece,242.3 gives
+ |I_j|<=10g L_j^2/n^2+1 <=40g4^(-j)+1,
+since L_j<=2n/2^j. Each observed child partition has at most2^(D(j+1))
+rectangles per assigned channel, each with D canonical component means.
+Define
+ A'_D=40D2^D/(2^(D-2)-1), B_D=D2^D/(2^D-1).
+Summing the actual positive geometric series for j<t bounds coarse rows by
+           A'_D g2^((D-2)t)+B_D2^(Dt).                 (242.6)
+For(ii),t=J,2^J<2n,V<=gV/n^2, giving
+ N_coarse <=[2^(D-2)A'_D+2^D B_D]gV/n^2.
+Roots cost at most Dg<=DgV/n^2. For(iii),t=k and2^k<=sqrt(g)<n,
+so N_coarse<=(A'_D+B_D)V. The actual tail satisfies
+ gL_k^2/n^2<9 as before, hence
+ |I_tail|<=ceil(10gL_k^2/n^2)<=90.
+Its singleton rows cost at most90DV, and roots cost Dg<=DV.
+In(i), the unchanged singleton count DgV is at most4096D Lambda^2 V
+when its g threshold applies; otherwise it is at most1024D Lambda^2 gV/n^2.
+Consequently, for example,
+ L_(D,Lambda)=max(4096D Lambda^2,
+                 2^(D-2)A'_D+2^D B_D+D,
+                 A'_D+B_D+91D)
+controls all cases by V+gV/n^2. This constant depends only on D,Lambda.
+Actual restricted rank is at most full row count; no row independence is assumed.
+
+5. Why the full-field inequality and optimal penalty still follow.
+For each actual group, M_q>=lambda_q and groups are disjoint. These are
+the only group properties needed in241B's Section5 apart from which
+partitions are assigned. Zeros and the order of indices do not affect them.
+For clarity, split any mean-zero z as f=sum v_alpha z_alpha and
+s_alpha=z_alpha-v_alpha f; ||z||^2=||f||^2+sum||s_alpha||^2,
+Q_A=aE(f)+T,T=H sum E(s_alpha). The actual parent-variance bound
+||E_q w||^2<=L_q^2 E(w)/4 and
+||p-q'||^2>=(9/10)||q'||^2-9||p||^2 imply
+ T>= (9/10)sum_q(4HM_q/L_q^2)||E_qf||^2
+       -36 sum_q(H/L_q^2)sum_(alpha in I_q)||E_qz_alpha||^2.
+Actual M_q>=5L_q^2/(8n^2) supplies the weak coefficient(9/4)c.
+In(ii),H/L_q^2<=cn^2; in(iii),L_q>=n/sqrt(g), so H/L_q^2<=cg.
+Writing b=min(g,n^2), each negative term is bounded by36cb||Rz||^2:
+E_q is a subprojection of the assigned child average, or of identity for
+the tail, and each channel energy is charged once in disjoint groups.
+The full orthogonal pieces sum to I-P_0, hence
+                   T+36cb||Rz||^2 >=(9/4)c||f||^2.
+Independently the labelled torus gap gives T>=16c sum||s_alpha||^2.
+The convex8/9 and1/9 split proves T+32cb||Rz||^2>=c||z||^2 without
+spending two copies of T. All global constants are controlled because
+RP_0=P_0R=P_0 and32cb>=c. Singleton case(i) has R=I,K=c.
+Finally ||Cz||^2=||Rz||^2/V for the SAME fixed canonical weights, proving242.1.
+No block projection is assumed to preserve the actual coexact space.
+
+For lower bounds on U=U_0^g, d0=(D-1)(V-1), the proof241B.6 uses
+only that v is unit and max v_alpha^2<=Lambda/g, not a positive minimum.
+Inside-domain channel row-space projections have weighted compression trace
+<=Lambda r/g. The unit weak coexact field T0f=(v_alpha f) and actual
+kernel vector(I-R)T0f force
+ r>=g d0/[2Lambda(1+8Dn^2)]. Independently CT0 is injective, so r>=d0.
+Together with242.6 this proves the claimed minimum ACTUAL rank order.
+For canonical fixed-weight R, its restriction to U_0 is a contraction,
+and the same trace gives K>=3cgd0/(4Lambda r). Using the constructed count,
+             K>=3(D-1)c min(g,n^2)/(16Lambda L_(D,Lambda)).
+The constructive32cb upper therefore matches its least normalized penalty
+order. These traces do not require all coordinates of v to be nonzero.
+The corresponding counting coefficient is VK, not K; arbitrary row rescaling
+and internally mixed observations remain outside these comparisons.
+
+6. Original budget, retained boundary and honest status.
+The eigenvalues are unaffected by v, even with zero coordinates, so the
+ORIGINAL capped budget remains
+ F=D^2V[1+(g-1)min(1,alpha_D n^(-D))]<=D^2(V+alpha_D g),
+ alpha_D=(3/4)^D (D/2) (D/(D-2))^(D-1), h=Dg.
+Thus h+F=O_D(V+g), including every cap regime. The original241A wrong
+constant and counterexample remain rejected; this source retains241B's repair.
+The hypotheses nu>0 and v_alpha^2>=nu/g have now been removed without
+adding a replacement subset assumption: the residual1/16 and prefix count
+are proved from the original unit norm, upper cap and actual allocated budgets.
+
+Upper delocalization itself remains a fixed-constant hypothesis. For v=e_1,
+one weak singleton channel plus strong root observations has actual rank d0
+and K=c (strong mean-zero gap and every constant mode are paid). Taking
+g=n^D makes r/(gV/n^2) tend to0 for D>=3. This refutes an unrestricted
+unit-v lower, but is not admissible for fixedLambda as g grows, since
+max v_alpha^2=1>Lambda/g. No arbitrary concentration result is claimed.
+Classical tools are finite gaps, orthogonal projections, sorted finite weights,
+Young and trace. A new separate-role exact-source proof check is required. No Lean,
+numerical execution, efficient implementation, practical conditioning, priority,
+general/signed coefficient theorem, physical gap or continuum follows.
+The later2019 differential-form predecessor comparison remains open.
+Group242 with235-241; no separate small paper and no score transfer to232B.

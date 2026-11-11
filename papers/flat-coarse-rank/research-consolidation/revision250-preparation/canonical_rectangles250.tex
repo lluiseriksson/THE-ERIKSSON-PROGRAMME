@@ -1,0 +1,67 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage{enumitem,microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\ifdefined\pdftrailerid\pdftrailerid{}\fi
+\ifdefined\pdfsuppressptexinfo\pdfsuppressptexinfo=-1\fi
+\providecommand{\SourceCommit}{SOURCE-NOT-BUILT}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Exp}{\mathbb E}
+\newcommand{\En}{\mathcal E}
+\newcommand{\UU}{\mathcal U}
+\newcommand{\Id}{I}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\title{Canonical rectangle observations for matrix gradients:\\
+fixed weak spaces and checkerboard counterexamples}
+\author{Lluis Eriksson\\\small Independent researcher}
+\date{Source preparation: 11 November 2026\\\small Revision 250}
+\hypersetup{pdftitle={Canonical rectangle observations for matrix gradients: fixed weak spaces and checkerboard counterexamples},pdfauthor={Lluis Eriksson}}
+\begin{document}
+\maketitle
+\begin{abstract}
+We study finite positive matrix-weighted gradients on a periodic lattice, with
+observations restricted to normalized rectangular means in a fixed internal
+basis. For a spatially constant rank-$q$ weak projector in $\R^g$ satisfying
+$P_{\alpha\alpha}\leq\Lambda q/g$, the minimum actual restoring rank on the
+flat coexact domain has order $q n^D+g n^{D-2}$, uniformly in $q$.
+An explicit choice of original-channel rectangle partitions attains this order.
+For this constructed map, the least quadratic coefficient has order
+$c\min(g/q,n^2)$. The construction uses a stated theorem of
+Marcus--Spielman--Srivastava, augmented to control both Gram matrices and
+cardinalities, and derived finite Neumann estimates.
+Spatial constancy is substantive. On an exact positive two-channel checkerboard
+with the same local spectra and fixed basis, full output counts are
+$O(n\log n)$ in dimension three and $O(n^2)$ in dimension four, with finite
+size-dependent penalties. We derive the point estimates, actual strong graphs,
+integer meshes and original-rectangle realization. A separate plane construction
+works at every fixed nonzero angle between the two weak lines.
+These are finite observation-class results; optimal checkerboard rank, practical
+conditioning and historical priority remain unresolved.
+\end{abstract}
+\tableofcontents
+\input{setup250}
+\input{finite250}
+\input{fixed250}
+\input{checkerboard250}
+\input{points250}
+\input{context250}
+\end{document}

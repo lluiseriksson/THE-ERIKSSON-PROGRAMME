@@ -1,0 +1,265 @@
+MANUSCRIPT250 — exact whole-source analytical audit
+Source:1659b5397ffa30e5315b2b3963d9ed661ee5f611
+Branch:codex/tep-manuscript250-source-20261111
+Prefix:papers/flat-coarse-rank/research-consolidation/revision250-preparation
+Main:canonical_rectangles250.tex
+Date:11 November2026
+
+VERDICT: ACCEPT_WITH_NONBLOCKING_WORDING_NOTE for the exact finite mathematical
+statements and proofs in this frozen source. No material mathematical defect was
+established in the fresh complete reading of all seven manuscript TeX files.
+N1 below is an order-of-weights wording ambiguity; the immediately following
+display is obtained by the stated two valid inequalities with the weights in
+the correct order. It does not require a new mathematical hypothesis or change
+the theorem. This verdict is source-only, not a compiled/rendered/visually read
+PDF verdict, numerical importance score, formal proof, novelty certificate,
+permission, publication or editorial acceptance. Those are separate gates.
+
+1. Exact object and reading boundary
+I freshly read the complete main, setup250.tex, finite250.tex, fixed250.tex,
+checkerboard250.tex, points250.tex and context250.tex, including the abstract,
+all main statements, every displayed proof, the correspondence appendix and
+complete bibliography/review context. The statements of older244–248 are not
+substitutes for reading this consolidation. SOURCE-MAPPING.json was read and
+its fourteen accepted-source raw sizes/hashes checked against this packet.
+SOURCE-INPUTS.json's137declared raw payloads were all hash/size checked. The
+retained244–248 verdicts, selected earlier244/246 statement/input passages,
+bounded primary-comparison report, and prior232B assessment response were
+consulted for correspondence/context. I did not freshly reread every old235–248
+proof or every old full audit, and make no such claim. The self-contained250
+proofs, rather than an inherited acceptance, are the scientific object here.
+
+Read-only git archive at the exact commit captured the complete150-file prefix
+to source250-raw-git.zip. Its extracted150files were compared byte-for-byte by
+size/SHA256 with the checkout, and their paths with the exact tracked inventory.
+All150matched, with no normalization. The seven TeX sources are raw Git UTF-8/LF
+as captured, not PowerShell-transcoded content. capture-manifest.json records
+the complete150identities and137binder check. capture.ps1 is retained as the
+actual data/hash/Git capture method. No disposable clone was created, so there
+is no clone cleanup debt. No PR exists for this audit: PR-body capture/hash is
+not applicable, rather than invented. No source or Git mutation was performed.
+
+2. Actual domain, source weighting and normalization
+The field has Dgcomponents/site, while the repeated local gradient stack has
+D²g eigenvalues/site. These counts are consistently separated. The positive
+forward differences retain all labels, including at period two, and B(x) is
+evaluated at the forward source. The domain is the actual real im(d1*) in each
+original internal channel. The Fourier proof correctly handles conjugate pairs
+and self-conjugate frequencies: at nonzero frequency the curl symbol's kernel
+has dimension one, the adjoint image dimension D−1, and the zero image vanishes.
+Thus d0=(D−1)(V−1), with componentwise mean zero; it is not an artificial
+componentwise substitute. The energy multiplier lies between16/n² and4D on
+the stated nonzero/all-frequency spaces, respectively. At n=2 the lower is
+an equality and the actual repeated forward labels are not removed.
+
+Canonical rows are V^(-1/2)|S|^(-1/2) sums. Their norm is exactly V^(-1) times
+the squared counting block-projection norm. Consequently normalized K becomes
+VK on these SAME rows in a counting-energy inequality, or K on the projection
+norm after clearing V. All-field restoration is proved before restriction.
+Nothing assumes that averaging preserves im(d1*) or that full output count
+equals the restricted rank. These distinctions survive both theorem families.
+
+3. Elementary finite spectral and projection steps
+The path cosine functions satisfy the endpoint degree-one matrix conditions;
+the finite cosine-sum identity and product-to-sum yield a complete counting
+orthonormal basis. The least positive tensor mode gives L²/4 variance control.
+Singleton factors/all-singleton boxes are handled without an invented positive
+eigenvalue. Nested floor-quantile dyadic partitions have every coarse endpoint
+among the fine endpoints. Thus the projection differences and tail are mutually
+orthogonal and telescope to I−Pi0. The parent-cell variance bound applies to
+each piece, and child observations dominate the appropriate piece norm.
+Internal Neumann edges are actual edges; wrap/cross-cell edges are discarded
+nonnegatively, not inserted with another convention.
+
+The completion lemma is valid in the ambient finite Hilbert space: split into
+kerR and imR, use the explicit delta/2 Young bound on the cross term, and pay
+M+2M²/delta. Its operator upper M=4DH+c follows from the full forward-gradient
+upper. It includes constants when the kernel margin/observations require it.
+Original-coordinate singleton isolation replaces one box by at most2Dside
+pieces and the singleton, so the net increase is at most2D per point. It is an
+arbitrary allowed rectangle partition, not a tensor-grid propagation claim.
+
+4. MSS input freshly checked and simultaneous cardinality
+The version-pinned primary Theorem1.4 in arXiv:1306.3969v4 was freshly opened
+and its statement checked: independent finite-support vectors, summed expected
+covariance identity, expected squared norm at most epsilon, and a positive-
+probability spectral outcome. The manuscript states this input faithfully.
+The nearby block-lifting corollary/proof opening was also inspected, not the
+complete interlacing proof. primary-input-reading.txt records the exact extent.
+No third-party PDF was saved or redistributed and no raw PDF hash is invented.
+
+In the manuscript's augmentation, independent signs remove the off-diagonal
+count covariance; independent labels give identity on both blocks after the
+sqrt2 factor. Expected squared norm is at most2delta. A single MSS outcome
+therefore bounds the leading Gram and scalar count entry in each label block;
+complementation gives BOTH lower bounds for the SAME original partition.
+Zero rows still carry their count coordinate. Whitening/signs are selection
+coordinates and do not rotate, mix, split or rescale observed original fields.
+Lexicographic choice establishes a finite coefficient-only prescription,
+without an efficient implementation or new paving-priority assertion.
+
+5. Recursive whitening, stopping and all rows
+The next whitening uses an already positive Gram. From the currently justified
+15/16bounds, delta_t≤(32/15)2^t d follows using Lambda q≥1. The geometric
+majorant12sqrt(d4^k)+5d4^k<1/256 is correct at C0=2^24. Its prefix reading
+does not assume future conditioned subsets: current loose bounds imply the
+next error; product bounds improve them inside15/16–17/16. This proves all
+2ksteps, including positive cardinality and k=0 with no step.
+
+Original bands I_(2j) minus I_(2j+2) have Gram at least43/64·4^(-j); the tail
+has15/16·4^(-k). The mesh bound supplies lambda_j≤5445/8192·4^(-j), strictly
+below5504/8192=43/64, also payable at the tail. The one-tail convention and
+all-channel singleton priority are explicit. The coarse geometric sum is
+valid for D≥3. Its factor A_D and tail estimates4352g/n²+(17/4)C0Lambda q,
+multiplied by every D V singleton row, fit the displayed L_(D,Lambda).
+The small branches n<32 and g<C0Lambda q are separately paid by that same
+constant. Equality thresholds, q=g, q=1, zero frame rows and k=0 cause no gap.
+
+6. One strong-energy budget and the nonblocking wording note
+Constancy of the weak projector permits the orthogonal weak/strong split of
+both norm and energy. On each actual channel band only its own strong energy
+is spent; disjoint channel bands let the regional inequalities be summed once.
+The elementary9/10−9norm inequality is valid. Actual unwhitened Gram bounds
+then give the displayed strongbudget T≥(9/4)c||f||²−36cb||Rz||², with no extra
+q or strong-energy factor. The negative terms are controlled by child/tail
+subprojections, disjoint bands, H/L_j²≤c4^k and4^k≤b. Independently the global
+gap gives T≥16c||s||². Taking8/9of strongbudget and1/9of the latter gives
+EXACTLY T+32cb||Rz||²≥2c||f||²+(16/9)c||s||². Constants are paid by RPi0=Pi0
+and32cb≥c; the priority branch R=I is directly valid.
+
+N1, NONBLOCKING: fixed250.tex says “with weights8/9and1/9of this inequality
+and [strongbudget]” immediately after T≥16c||s||². A strictly ordered reading
+of “this … and” reverses the intended assignment. The subsequent displayed
+arithmetic unambiguously uses8/9 strongbudget and1/9 global-gap inequality,
+and those two inequalities were already proved. For easier reading, spell
+that order explicitly in a later editorial correction. This is not a missing
+estimate, altered constant or counterexample to the theorem. I did not edit it.
+
+7. Actual-rank lower and fixed constructed-map coefficient
+The row-space projections S_alpha are taken inside actual U0. Thus their
+direct sum has actual rank r and the same kernel as C. The constant internal
+weak embedding has dimension qd0 and preserves actual U; its energy is at most
+c/4. The trace is sum P_aa rankS_alpha≤Lambda q r/g. Dividing by the ACTUAL
+qd0 dimension cancels q, yielding a unit weak field with t≤Lambda r/(gd0).
+(I−S)w remains in U and lies in the true kernel. PSD polarization and the
+4DH upper give c(1−t)≤c/2+8Dcn²t. The displayed second lower bound follows.
+Injectivity on all weak fields separately gives r≥qd0. Their maximum has the
+stated order with constants depending only on D,Lambda. A finite Phi with
+Phi(0)=0 is used only at zero observation, so that extension is legitimate.
+
+For canonical rows, restriction of each block projection is a contraction
+even when its image leaves U0. Its Hilbert–Schmidt squared norm is at most
+its actual restricted rank, and equal kernels identify this with C's rank.
+Tracing the weak-field restoring inequality cancels q again and gives
+K≥3cgd0/(4Lambda r). Inserting the constructed upper count and the elementary
+harmonic-denominator comparison gives the stated cb lower coefficient.
+The coefficient claim is properly restricted to this PARTICULAR constructed
+map, on U or all fields, not a global minimum across maps (all singletons
+permit K=c). Admissible K form a nonempty closed set with the established
+lower bound, so a least K exists. No uniform conditioning is inferred.
+
+8. One-plane checkerboard and fixed-angle plane theorem
+The orthogonal checkerboard's actual strong source parity is correct in each
+original channel. Its selected +e1/+eD graph decomposes into disjoint2ncycles;
+the translation order is exactly n, parity distinguishes the two vertex sets,
+and period two retains distinct labels. Plane x_D=0 meets each cycle in two
+adjacent vertices. The remaining Dirichlet path has2n−2free vertices and
+denominator2n−1, giving the strictly positive delta_n=c(4n−1)/(2n−1)².
+The exact singleton-plane/complement partition has the stated full count.
+Completion gives a finite all-field coefficient, without a size-uniform claim.
+
+For two fixed nonorthogonal weak lines, the two strong-normal Gram eigenvalues
+are1±|cos theta|, giving the one kappa loss. The two parity energies are actual
+distinct source-weighted contributions. Normal coordinates are proof-only;
+observing every original channel at plane singletons makes both functionals
+zero there. Floor-quantile planes have the stated cyclic gaps, and every
+free segment has2ell−2vertices, including zero free vertices for adjacent
+planes. All cyclic wraps and n=m are valid. m=ceil4/sqrtkappa pays the full
+4c margin. Slab partitions and n<m singleton fallback include every original
+row/component. Theta=0, uniform-theta and a nonorthogonal point-order theorem
+are explicitly outside the statement. This is not merely a relabeling of a
+supplied regional gap; the finite gap and canonical realization are proved.
+
+9. Finite point inequalities, actual paired graph and both layer masses
+The finite tensor cosine basis has point mass≤2^p/N and eigenvalue≥4|nu|²/L².
+Nonnegative-index shells have at most3r or7r²indices for p=2or3, respectively.
+The resulting Green bounds12(1+lnL) and112 follow from balanced lengths;
+constant-mode mass includes its necessary factor N. Adding the variance gives
+13L²(1+lnL) and113L³, including N=1. These are derived finite estimates, not
+an unsupported quotation of an infinite-lattice Green theorem.
+
+The map x_s(y) bijects onto an actual sum layer. At even n the n/2source-parity
+layer pairs cover all vertices disjointly, including the odd-parity wrap pair.
+The rungs and p cross edges account for ALL Dstrong labels. A cross followed
+by its rung generates a source translation; energy comparison spends each
+rung at most2p, giving factors4/6. Both source and target norms are controlled,
+not just u:3·52+2=158 and3·678+2=2036. Balanced quantile cells permit their corner
+anchors; singleton cells reduce to the controlled rung case. Source-coordinate
+boxes are not observed as illicit diagonal rectangles: only original points
+are isolated by the original-rectangle lemma, independently per channel.
+The full count2D+2D² n m^p includes both channels, all Dcomponents and initial
+rows; no restricted-rank independence is assumed.
+
+10. D3/D4 thresholds, fallbacks, completion and unchanged caps
+D3's least m²≥4096(1+lnn), when m≤n, gives X≤n²/1024 and kernel gap≥1024c/158>
+4c. Minimality gives m²≤16384(1+lnn), hence the full2^19 n(1+lnn) bound.
+When m>n, n²<4096(1+lnn) pays6n³singletons, K=c; m=n also remains valid.
+D4's n≥256 and least m³≥65536n ensure m≤n, L³≤n²/8192 and kernel gap≥8192c/
+2036>4c. m³≤524288n pays8+32A≤2^25 n². At n=256,m=n the source cells are
+singleton and the rung bound remains legitimate; even n<256 uses the separate
+8n^4singleton fallback. All ceilings and additive constants fit the stated bounds.
+Completion with delta=3c and M=4DH+c pays all fields and constants, with finite
+possibly O(cn^4) normalized coefficient. Restriction to U0² is only afterward.
+No optimal checkerboard rank, log necessity, matching lower or uniform penalty
+is claimed. The orthogonal point theorem is not conflated with the angle plane
+theorem. Full D² weak/strong multiplicities and original alpha_D are retained:
+alpha3=729/128, alpha4=81/16. Their unchanged capped budget remains order V.
+
+11. Positioning, source history and remaining scientific questions
+The manuscript states its principal contribution as an exact finite restricted-
+observation construction/comparison, without a new universal Green, Neumann,
+coarse-space or MSS principle. It incorporates the limited four-work primary
+comparison and explicitly treats GenEO as a serious adaptive coarse-space
+predecessor. A full reduction to its exact domain/row/rank/penalty quantifiers
+is unresolved; failure to establish such a reduction is NOT called novelty.
+The Lawler draft/version/reading extent, Braides limited reading, older other
+limited citations and inaccessible full-text limitations are described rather
+than inflated into full-literature review. This audit rechecked MSS's stated
+input; it did not perform a new exhaustive priority or all-predecessor audit.
+Historical originality and practical usefulness/conditioning/implementation
+remain unresolved. These are substantive limits, not closed by this source verdict.
+
+The source mapping appropriately replaces earlier specialized maps by a common
+MSS construction rather than asserting identical old/new maps. The raw binder
+retains adverse236A/240A/241A history, corrected sources and242/243clarifications;
+those rejected originals are not reclassified as passes. The actual earlier232B
+importance4.10/10 and its three material issues are visibly historical context,
+not this manuscript's score or current-PDF assessment. Context states that no250
+PDF had been produced at source freeze, so later compilation does not make that
+dated source-stage statement a claim of present runtime outcome. The actual
+SourceCommit must still be supplied by the gated build; the default is only a
+source-stage placeholder and no PDF containing it should be delivered.
+
+12. Scope of disposition and factual context
+This is an analytical AI source reading with a fresh separate task role from
+the author, but shared filesystem/account/provider/parent framing and inherited
+context. It is NOT independent, blind, human or fresh-provider/model resampling.
+The earlier232B score and objections were visible; no new numerical assessment
+was requested, created or inherited. Exposed identity is Codex, based on GPT-6;
+exact served backend, version, reasoning effort and sampling are unexposed and
+unknown. Account routing, quotas and service limits were not inspected.
+
+Operations were read-only instructions/source/Git reads, hash/data capture,
+one primary web opening and dedicated audit artifact editing only. No Lean,
+Lake, numerical oracle, local/compiler/runtime test, import, TeX build, PDF
+render/grade, allocation, publication/native receipt, state/chat/automation/
+Git mutation, author contact or new249proof occurred. No clone was created.
+Compilation dependencies and page layout still need actual Linux production,
+returned-evidence checks and every-page visual inspection; the production
+engineering chain was not audited here. No exact-PDF correctness/relevance
+score follows from this source gate. Physical mass gap and continuum remain
+OPEN; PR29's20/41andTermSource=0 are untouched.
+
+Disposition: exact source accepted with the nonblocking N1wording note and all
+stated scientific/operational limits. Parent must read this full report and
+verify the supplied raw bindings before treating the source gate as complete.

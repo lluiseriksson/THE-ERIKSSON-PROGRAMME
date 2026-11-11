@@ -1,0 +1,81 @@
+{
+  "checked_at": "2026-11-11T04:04:37.7290267+01:00",
+  "method": "Read-only text/hash inspection, not TeX execution, a compiler parse or mathematical test",
+  "main": "canonical_rectangles250.tex",
+  "TeX_files": [
+    {
+      "file": "canonical_rectangles250.tex",
+      "bytes": 3042,
+      "sha256": "d637fdd95611a7163a6a78992531e10d52f274dbfe20ee37a1829e69cd429ba3",
+      "left_right_count": 0,
+      "environment_nesting": "balanced",
+      "representation": "UTF8 no BOM, LF only; no normalization after freeze"
+    },
+    {
+      "file": "checkerboard250.tex",
+      "bytes": 6653,
+      "sha256": "3c507fe9cf8ff99f71835d536cbf655e31db22107feecaf58df17e986281afb4",
+      "left_right_count": 0,
+      "environment_nesting": "balanced",
+      "representation": "UTF8 no BOM, LF only; no normalization after freeze"
+    },
+    {
+      "file": "context250.tex",
+      "bytes": 14622,
+      "sha256": "cd9094104a7c9ccc7acf820a03fdf4aaa32fc1fe348fcccc50556ddc608b2fb6",
+      "left_right_count": 0,
+      "environment_nesting": "balanced",
+      "representation": "UTF8 no BOM, LF only; no normalization after freeze"
+    },
+    {
+      "file": "finite250.tex",
+      "bytes": 6931,
+      "sha256": "6ef355ed73177a2845fe468e68eec85184c4d39047448de18d0e268020c6a33f",
+      "left_right_count": 1,
+      "environment_nesting": "balanced",
+      "representation": "UTF8 no BOM, LF only; no normalization after freeze"
+    },
+    {
+      "file": "fixed250.tex",
+      "bytes": 14686,
+      "sha256": "ea65ea8a163c73f428b4ba84abf627fd9d4e941fd16ac12812422e838833e699",
+      "left_right_count": 1,
+      "environment_nesting": "balanced",
+      "representation": "UTF8 no BOM, LF only; no normalization after freeze"
+    },
+    {
+      "file": "points250.tex",
+      "bytes": 10986,
+      "sha256": "2bb9af96b0a0abe97a9aed3c441f8f04f1be3d91d52d7a65d3bdc3689c1053e3",
+      "left_right_count": 0,
+      "environment_nesting": "balanced",
+      "representation": "UTF8 no BOM, LF only; no normalization after freeze"
+    },
+    {
+      "file": "setup250.tex",
+      "bytes": 9781,
+      "sha256": "44a04cb5ff4b2a212995a0801b358f05c78cd28136420a067267769362c6b703",
+      "left_right_count": 3,
+      "environment_nesting": "balanced",
+      "representation": "UTF8 no BOM, LF only; no normalization after freeze"
+    }
+  ],
+  "root_inputs": [
+    "setup250.tex",
+    "finite250.tex",
+    "fixed250.tex",
+    "checkerboard250.tex",
+    "points250.tex",
+    "context250.tex"
+  ],
+  "labels": 61,
+  "duplicate_labels": [],
+  "unresolved_refs": [],
+  "bibitems": 7,
+  "unresolved_cites": [],
+  "raw_input_files_verified": 137,
+  "scientific_proof_placeholder_found": false,
+  "whole_source_audit_performed": false,
+  "TeX_compile_render_or_assessment": false,
+  "page_count_verified": false
+}

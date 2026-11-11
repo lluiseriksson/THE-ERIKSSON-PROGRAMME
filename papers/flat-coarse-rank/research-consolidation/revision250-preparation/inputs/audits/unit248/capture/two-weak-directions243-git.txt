@@ -1,0 +1,229 @@
+243 — Two weak directions from actual finite-frame channel groups
+Author-role analytical candidate. Separate exact-source audit required.
+No execution, grade, priority, implementation, physical or continuum claim.
+
+1. Statement and retained conventions.
+Let D>=3,n>=2,g>=2 be integers,c>0,V=n^D,a=c/(16D),H=cn^2.
+Let P be an orthogonal projector of rank EXACTLY2 on R^g, with
+                   P_alpha,alpha <=2Lambda/g
+for fixed Lambda>=1. Set B=H I_g-(H-a)P and repeat B on the actual
+D derivative directions and D spatial components as in241-242.
+Coexact domain is U=U_0^g,U_0=im(d_1^*),d0=(D-1)(V-1), with the
+actual counting forward curl/adjoint and labelled periodic gradient energy.
+Canonical rows remain V^(-1/2)|S|^(-1/2)sum_S z_(k,alpha), one
+integer-rectangle partition for each original internal channel, shared across k.
+There is a coefficient-only choice with
+ N_out<=L_(D,Lambda)(V+gV/n^2),
+ Q_A(z)/V+32c min(g,n^2)||Cz||^2>=c||z||^2/V             (243.1)
+for ALL fields. The minimum restoring actual rank in this canonical class is
+Theta_(D,Lambda)(V+gV/n^2), and the constructed fixed map has least
+normalized quadratic coefficient Theta_(D,Lambda)(c min(g,n^2)).
+This removes the one-dimensional-weak-space restriction only by proving the
+rank2 case, not for arbitrary weak dimension. Upper coordinate coherence,
+fixed basis, positive constant coefficients, canonical weights and the finite
+actual flat domain remain. Constants below are intentionally large; no useful
+conditioning or efficient implemented method is claimed.
+
+2. Actual tight frame and finite angular bins.
+Choose an orthonormal g-by2 matrix U with UU^T=P. A coefficient-only
+deterministic choice is Gram--Schmidt on P e_1,...,P e_g, taking the first
+two independent columns with positive normalization. Rank2 guarantees them.
+Write u_alpha in R^2 for row alpha, w_alpha=||u_alpha||^2<=delta=2Lambda/g.
+Then sum_alpha u_alpha u_alpha^T=I_2 and sum_alpha w_alpha=2.
+Zero rows will receive root observations and require no angle or division.
+
+Fix K=2048 and epsilon=1/256. Partition projective angles [0,pi) into
+K half-open bins of length pi/K, with representative angle at each left
+endpoint. Nonzero u_alpha defines an unoriented rank1 projector
+P_alpha=u_alpha u_alpha^T/w_alpha and is assigned its actual bin.
+Let P_l denote the representative projector. For rows in that bin,
+ ||P_alpha-P_l||=|sin(theta_alpha-theta_l)|<=pi/K<1/512<epsilon.
+Signs do not change projectors. Bin endpoint conventions and original-index
+tie breaking remove ambiguity. This uses the elementary bound pi<4.
+Let M_l=sum_(alpha in l)w_alpha and S_l=sum_(alpha in l)w_alpha P_alpha.
+
+Discard every bin with M_l<32delta from nonroot allocation. Its positive
+matrix is <=M_l I_2, so all discarded bins together cost at most32Kdelta I_2.
+Every remaining, regular bin has M_l>=32delta and hence each row weight
+is <=M_l/32. Regular bin matrices satisfy
+                 sum_regular S_l >=(1-32Kdelta)I_2.       (243.2)
+No well-conditioned subset or matrix group has been assumed here.
+
+3. Cumulative quantiles in each regular bin: actual disjoint groups.
+Let lambda_q>0 be the spatial-band requests to be chosen below. Define
+             beta_q=(32/31)(lambda_q+2Kdelta),
+and suppose B_total=sum_q beta_q<15/16. In every regular bin, sort its
+positive row weights nonincreasingly, tie breaking by original index.
+For t_q=sum_(r<=q)beta_r, cut at the shortest prefix reaching t_q M_l.
+All cuts exist because t_q<1 and the bin mass is M_l. Use the difference
+between successive cut prefixes as the channels I_(l,q). Successive cuts
+can coincide; an individual bin group may be empty. Different q groups
+are disjoint, and all remaining rows receive roots.
+If mu_(l,q) is that group's mass, prefix overshoots lie in [0,delta], so
+              |mu_(l,q)-beta_q M_l|<=delta.               (243.3)
+Using the actual maximum within the bin strengthens the same inequality.
+
+Before a nonempty next group, prior selected mass is at most
+B_total M_l+delta <(15/16+1/32)M_l=31M_l/32.
+Thus remaining mass is >M_l/32; initially it is M_l, so the base case
+is direct, without a false strict comparison of two empty sums.
+If m_l rows are in this bin, every sorted remaining prefix has average
+at least its remaining overall mean, which is >M_l/(32m_l).
+The additional mass needed for the next cut is <=beta_q M_l, since the
+preceding cut already reached t_(q-1)M_l. If it is nonpositive, the group
+is empty. Otherwise the same finite-prefix argument as242 gives
+                  |I_(l,q)|<=ceil(32m_l beta_q).
+If the ceiling exceeds remaining cardinality, feasibility supplies the
+existing cut before the end; no nonexistent entries are counted. Summing
+over regular bins, using sum m_l<=g, proves
+                   |I_q|<=32g beta_q+K,                 (243.4)
+where I_q is the union of the actual I_(l,q). No positive minimum row
+weight, scalar subset-mass condition or fractional channel is introduced.
+
+4. Prove a MATRIX lower bound for each actual group.
+Let G_(l,q)=sum_(alpha in I_(l,q))w_alpha P_alpha.
+The representative approximation and243.3 give
+ ||G_(l,q)-beta_q S_l||
+ <=delta+epsilon(mu_(l,q)+beta_q M_l)
+ <=(1+epsilon)delta+2epsilon beta_q M_l.
+Summing regular bins and sum M_l<=2 gives
+ G_q=sum_l G_(l,q)
+ >=[beta_q(1-32Kdelta-4epsilon)-K(1+epsilon)delta]I_2.
+Whenever32Kdelta<=1/64, 4epsilon=1/64 implies the first coefficient
+is >=(31/32)beta_q. As K(1+epsilon)delta<=2Kdelta,
+                       G_q>=lambda_q I_2.              (243.5)
+This is the actual requested weak-frame Gram matrix, not merely its trace.
+It is derived for the disjoint quantile groups. Empty contributions in a
+particular bin cause no problem because the signed approximation243.3
+was included before summing. A whole group cannot be rank-deficient when
+lambda_q>0, as243.5 proves, rather than assumes.
+
+5. Actual spatial bands, thresholds and all budgets.
+Use this priority:
+(i) g<(512KLambda)^2 OR n<256KLambda: all channels singleton;
+(ii) otherwise g>=n^2: all scales j<J=ceil(log_2 n);
+(iii) otherwise g<n^2: k=floor(log_2 sqrt(g)), coarse j<k plus ONEtail.
+The same floor-quantile spatial partitions Pi_j have P_j their average
+projections, L_j=ceil(n/2^j), E_j=P_(j+1)-P_j. In(iii) use E_tail=I-P_k.
+Their orthogonal sum is I-P_0 and ||E_q f||^2<=L_q^2 E(f)/4, including
+vector-valued f. This is the finite path Neumann/tensor estimate proved in
+241B/242; no new regional-gap hypothesis is supplied. Set
+                     lambda_q=5 L_q^2/(8n^2).
+Coarse I_q observes child Pi_(j+1); tail I_tail observes singletons;
+every unused or discarded/zero row channel observes the root.
+
+In(ii), n>=256KLambda>=32, g>=n^2 and J<=n/4. Thus
+ sum lambda_q<=5/6+85/(32n),
+ sum beta_q=(32/31)[sum lambda_q+2JKdelta]
+          <=(32/31)[5/6+(85/32+KLambda)/n]
+          <=(32/31)[5/6+117/8192] <7/8<15/16.            (243.6)
+Here delta=2Lambda/g; 2JKdelta<=KLambda/n. The final bound uses
+KLambda>=1 and n>=256KLambda. The strict7/8 comparison is exact:
+5/6+117/8192=20831/24576, whereas (31/32)(7/8)=20832/24576.
+In(iii), s=sqrt(g)>=512KLambda,n>s,m=k+1<=s/4. The identical bounds
+with n replaced by s give
+ sum beta_q<=(32/31)[5/6+(85/32+KLambda)/s]<7/8.          (243.7)
+Both estimates pay the additive2Kdelta for EVERY group, including the tail.
+Further, in(ii), g>=n^2>=(256KLambda)^2>=4096KLambda;
+in(iii),g>=(512KLambda)^2>=4096KLambda.
+Consequently32Kdelta=64KLambda/g<=1/64, as required by243.5.
+Thus matrix feasibility and cardinality are proved in all nontrivial cases.
+
+6. Count every canonical row.
+From243.4 and the actual beta,
+ |I_q|<=(640/31)gL_q^2/n^2+(4096/31)KLambda+K
+       <=21gL_q^2/n^2+134KLambda.                       (243.8)
+For coarse j, L_j<=2n/2^j, so |I_j|<=84g4^(-j)+134KLambda.
+Each assigned channel has at most2^(D(j+1)) child cells and D component rows.
+Define A_D=84D2^D/(2^(D-2)-1), B_D=134D2^D/(2^D-1).
+Summing j<t gives
+           N_coarse<=A_D g2^((D-2)t)+B_D KLambda2^(Dt).
+In(ii),2^J<2n and V<=gV/n^2 imply
+ N_coarse<=[2^(D-2)A_D+2^DB_D KLambda]gV/n^2.
+Root leftovers cost at most Dg<=DgV/n^2.
+In(iii),2^k<=sqrt(g)<n gives N_coarse<=(A_D+B_D KLambda)V.
+The tail has gL_k^2/n^2<9, hence243.8 bounds its channels by
+189+134KLambda. Its singleton rows cost <=D(189+134KLambda)V;
+roots cost Dg<=DV. In(i), singleton cost DgV is bounded by
+D(512KLambda)^2 V when the g threshold applies, and otherwise by
+D(256KLambda)^2 gV/n^2. Therefore a valid finite constant is
+ L_(D,Lambda)=max(D(512KLambda)^2,
+ 2^(D-2)A_D+2^DB_D KLambda+D,
+ A_D+B_D KLambda+D(190+134KLambda)).
+It depends only on D,Lambda (K=2048 is fixed), not n,g,c or a smallest
+nonzero frame row. Restricted rank is bounded by the full count; no
+independence of restrictions is assumed. Small cases are deliberately
+paid by a large constant, not misclassified as satisfying a large-size rule.
+
+7. Full-field coercivity from the actual matrix groups.
+For componentwise mean-zero z let f=U^T z be TWO D-component fields,
+s=z-Uf. Then ||z||^2=||f||^2+||s||^2 and Q_A=aE(f)+T,
+T=H sum_alpha E(s_alpha). All fields have mean0 and U^T s=0.
+For alpha in I_q use Young with p=E_qz_alpha and q'=u_alpha E_qf.
+The parent estimate and disjoint groups give
+ T>=(9/10)sum_q (4H/L_q^2)<E_qf,G_q E_qf>
+       -36 sum_q(H/L_q^2)sum_(alpha in I_q)||E_q z_alpha||^2.
+By243.5 and actual lambda, the first term is >=(9/4)c||f||^2.
+As before H/L_q^2<=c b, b=min(g,n^2), and each E_q is a subprojection
+of its channel's child observation, or identity at the tail. Thus
+                    T+36cb||Rz||^2>=(9/4)c||f||^2.
+The labelled torus gap independently gives T>=16c||s||^2. Convex weights
+8/9 and1/9 spend ONE T and prove T+32cb||Rz||^2>=c||z||^2.
+Add aE(f)>=0. Global constants split orthogonally because RP_0=P_0R=P_0,
+and32cb>=c pays every constant mode. Singleton branch(i) has R=I,K=c.
+Finally ||Cz||^2=||Rz||^2/V proves243.1 for ALL fields. No block average
+is assumed to preserve coexactness; no internally mixed observed row is used.
+
+8. Matching ACTUAL rank and fixed-weight penalty lower.
+The weak embedding T0:f in U_0^2 -> Uf in U is an isometry of dimension
+2d0 and Q_A(T0f)=aE(f)<=c||f||^2/4. For any internally separable restoring
+linear C, let S_alpha be row-space projections INSIDE U_0, S their direct sum,
+r=rank(C|U)=sum rank(S_alpha). Weighted compression has
+ trace(T0^* S T0)=sum_alpha ||u_alpha||^2 rank(S_alpha)<=2Lambda r/g.
+Thus some unit f has t=||ST0f||^2<=Lambda r/(g d0). Actual u=(I-S)T0f
+is coexact, lies in ker C and has norm^2=1-t. PSD polarization and
+E(w)<=4D||w||^2 imply Q_A(u)<=c/2+8DHt. Restoration at zero observation
+for any finite Phi with Phi(0)=0 yields
+            r>=g d0/[2Lambda(1+8Dn^2)].                 (243.9)
+Independently C T0 is injective on U_0^2, so r>=2d0. With d0>=(D-1)V/2,
+these necessary bounds and Section6 prove the stated minimum rank order.
+
+For canonical full block R, restrictions R_alpha|U_0 are contractions
+whose squared-singular-value sums are at most their actual ranks. On the
+2d0-dimensional weak space their weighted trace is <=2Lambda r/g.
+Weak-field restoration therefore implies
+        K(2Lambda r/g)>=(3c/4)(2d0),
+or K>=3cgd0/(4Lambda r). For the constructed map r<=L(V+gV/n^2), hence
+        K>=3(D-1)c min(g,n^2)/(16Lambda L).
+Together with32cb this proves its least normalized coefficient order.
+The least coefficient exists as the endpoint of a nonempty closed
+intersection of restoring half-lines. The lower is on U and upper on all
+fields. Counting convention uses VK on the same fixed rows; arbitrary
+rescaling, nonlinear penalty-size bounds and every-map upper bounds are excluded.
+
+9. Original budget, boundaries and honest scope.
+The positive gradient matrix has weak eigenvalue a with multiplicity2D^2
+and strong H with multiplicity(g-2)D^2 at each site. Retaining the ORIGINAL
+alpha_D=(3/4)^D(D/2)(D/(D-2))^(D-1), its full capped budget is
+ F=D^2V[2+(g-2)min(1,alpha_D n^(-D))]<=D^2(2V+alpha_D g).
+Thus h+F=O_D(V+g),h=Dg, with all caps retained; g=2 has no strong tail.
+No241A changed-cap error is reused. Without fixed upper coherence, the
+coordinate weak plane span(e_1,e_2) uses two singleton weak channels and
+strong roots, rank2d0 with K=c. Taking g=n^D gives a growing escape from
+a universal unstructured gV/n^2 lower. This plane has P_aa=1 and is
+inadmissible for fixedLambda once g>2Lambda. Every strong constant is paid.
+
+The new ingredient is the derived actual2x2 Gram lower through finite
+angular bins, discarded-mass accounting and sorted cumulative quantiles.
+It is not a supplied frame partition. Auxiliary choices of weak coordinates
+do not rotate or mix the observed internal fields. The result treats only
+rank2 weak planes, positive spatially constant coefficients, canonical
+per-channel rectangles and the actual finite flat domain. Large constants
+and lack of a practical conditioning claim are explicit. Matrix approximation,
+finite gaps, quantiles, Young and trace are classical tools; historical
+priority and implication by the2019 differential-form predecessor remain
+unestablished. No general weak dimension, signed/spatially varying matrix,
+efficient implementation, physical spectral gap or continuum result follows.
+Preserve all earlier failures, source audits and raw reports. Group243 with
+235-242 in a future consolidation, never a tiny new paper. Frozen232B has
+none of234-243 and no numerical score transfers to this proof candidate.

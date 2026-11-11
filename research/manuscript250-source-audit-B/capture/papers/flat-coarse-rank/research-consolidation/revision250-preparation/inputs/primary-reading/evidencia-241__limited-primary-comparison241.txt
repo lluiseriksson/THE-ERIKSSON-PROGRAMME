@@ -1,0 +1,52 @@
+241 primary-source comparison — limited lookup, not historical-priority verification
+Recorded2026-11-11 local /2026-11-10 UTC. Exact-source mathematical audit separate.
+
+A newly identified closer predecessor requiring full comparison is:
+Max Budninskiy, Houman Owhadi and Mathieu Desbrun,
+Operator-adapted wavelets for finite-element differential forms,
+Journal of Computational Physics388(2019),144-177,
+DOI10.1016/j.jcp.2019.02.018.
+Primary institutional metadata/abstract actually read:
+https://authors.library.caltech.edu/records/8j84b-1ep03
+Primary author-hosted full text identified:
+https://geometry.caltech.edu/pubs/BOD19.pdf
+
+The institutional abstract describes an operator-adapted multiresolution for
+scalar/vector differential forms, scale-orthogonal operator blocks, linear
+differential constraints including divergence-freeness, and model reduction.
+Thus neither using differential forms/coexact constraints nor vector-valued
+operator adaptation is itself an originality claim available to this programme.
+Those concepts precede241 and must be acknowledged in any future consolidation.
+
+The full PDF was NOT read in this lookup. The actual web reader returned:
+"Failed to fetch https://geometry.caltech.edu/pubs/BOD19.pdf: (400) Content length is too large: 11567467".
+The publisher abstract endpoint actually returned403 Forbidden:
+https://www.sciencedirect.com/science/article/abs/pii/S0021999119301354
+The institutional abstract is available; unavailable full-text tool output is
+not evidence of absent overlap, lack of rights or novelty. No paywall bypass.
+No third-party full text is redistributed in programme artifacts.
+
+Before claiming historical priority/non-implication, compare the full paper's
+allowed measurement functions, operator-dependent basis construction, norms,
+growth in internal dimension, fixed canonical per-channel rectangle restriction,
+and any rank-versus-penalty optimality statements with the precise241 family.
+241's own proof gives actual weighted partitions and traces for a finite family;
+this alone does not establish a new theorem relative to the predecessor.
+Especially do not infer non-implication merely because one uses finite lattices
+and the other finite-element forms. An explicit reduction or obstruction would
+be needed. Working-paper novelty objection remains OPEN.
+
+Other primary records reconfirmed, without a new full-text rereading:
+Malqvist--Peterseim, Localization of Elliptic Multiscale Problems,
+https://arxiv.org/abs/1110.0692v4 (2013 revision of2011preprint),
+and Levi--Santagati--Tabacco--Vallarino, Poincare inequalities on graphs,
+https://arxiv.org/abs/2203.12530v2 (2023revision).
+Their prior detailed limited comparisons are preserved in237; this lookup
+does not redo or upgrade that evidence. Graph gaps, averaging kernels and
+multiscale spaces are classical mechanisms, not asserted programme inventions.
+
+Searches were focused on vector/coexact multiresolution and elliptic coarse
+observations. This is a limited literature check, not an exhaustive search,
+independent review, mathematical falsification or priority certificate.
+The exact frozen232B PDF/first4.10assessment are unchanged. This later note
+must not be represented as work performed by its first reviewer.
