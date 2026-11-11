@@ -1,0 +1,33 @@
+{
+  "recorded_at": "2026-11-11T03:28:25.4739173+01:00",
+  "role": "Parent-authorized involved author/preservation role; no new independent review",
+  "source_commit": "457d356199e5d1fe99ebc24eb8964a0793cf9738",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-11_critical-point-anchors248.txt",
+  "source_sha256": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675",
+  "complete_original_report_read_here": true,
+  "parent_explicit_complete_report_and_verdict_read": true,
+  "raw_audit_subjects_verified": 19,
+  "manifest_sha256": "aa1e446dfa74e56fb40d34af3c4aceec313a5b95a28e9b0d1a03a0979882f144",
+  "report_sha256": "a6faea7524e92b500f591cb755aac97805bc88bfc62d1b943764bc12decade89",
+  "verdict": "ACCEPT_D3_CRITICAL_POINT_ANCHOR_UPPER_WITH_SCOPE",
+  "result": "Exact D3 orthogonal checkerboard: full rows<=2^19 n(1+ln n), finite all-field restoration, actual coexact rank no larger than count",
+  "hypotheses": "Evenn>=2,c>0,g2q1Lambda2,a=c/48,H=cn^2; actualsourceweightedforwardstack, originalbasis/channelrectangles/canonicalweights, sameU0^2",
+  "penalty": "MeshK=M+2M^2/(3c),M=12H+c; singletonfallbackK=c; finite not uniform",
+  "not_claimed": [
+    "optimal rank",
+    "logarithmic necessity",
+    "all-angle extension",
+    "general variable projector theorem",
+    "constantP244 refutation",
+    "uniform penalty",
+    "formal/numerical certificate",
+    "priority",
+    "independent/blind/human judgment",
+    "new paper or PDF grade"
+  ],
+  "shared_account_and_prior_AI_involvement": true,
+  "exact_backend_and_effort": "unknown",
+  "new_grade": null,
+  "state_checkpoint_or_Git_changed_here": false,
+  "next249_statement_only": true
+}
