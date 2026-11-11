@@ -156,7 +156,7 @@ g=n^D makes r/(gV/n^2) tend to0 for D>=3. This refutes an unrestricted
 unit-v lower, but is not admissible for fixedLambda as g grows, since
 max v_alpha^2=1>Lambda/g. No arbitrary concentration result is claimed.
 Classical tools are finite gaps, orthogonal projections, sorted finite weights,
-Young and trace. A new independent-source proof check is required. No Lean,
+Young and trace. A new separate-role exact-source proof check is required. No Lean,
 numerical execution, efficient implementation, practical conditioning, priority,
 general/signed coefficient theorem, physical gap or continuum follows.
 The later2019 differential-form predecessor comparison remains open.
