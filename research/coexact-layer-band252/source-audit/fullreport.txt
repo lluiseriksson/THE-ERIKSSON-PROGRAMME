@@ -1,0 +1,213 @@
+252A — ACTUAL COEXACT LOW-BAND ANALYTICAL SOURCE AUDIT
+Candidate:d55daa2a3af56039a4e29ada2f7200acf7127d733d640df13c1941ad7c56a677
+Issued11November2026. No Git source commit or PR supplied for this D-frozen candidate.
+
+VERDICT: ACCEPT_WITH_LIMITS for the displayed actual-domain low-band construction
+and its any-linear-observation rank consequence. No material mathematical defect
+or concrete counterexample was established. In particular the curl-adjoint
+preimage, REAL dimension, actual source parity and original-coordinate Rayleigh
+bound close analytically; the previous251ambient projection gap is not reused.
+This is a fresh analytical source audit, not a formal/executed theorem, numerical
+PDF assessment, historical-priority certificate or publication decision.
+
+1. Object, reading and exact capture
+The complete252A candidate was freshly read, including every hypothesis, formula,
+endpoint, rank consequence and stated falsifier. Its local raw SHA256 matches
+the supplied frozen identity. Complete source246 and249A were freshly read for
+the actual two-line source-weighted family and all-field canonical upper
+interface; complete251's current full report was read for its ambient/coexact
+boundary and explicit projection obstruction. Their249/251verdicts were also
+read. The setup250domain/forward-curl definitions and finite250Fourier-domain
+opening were reread as selected background passages, not a new whole250audit.
+
+Eight actual relied-on raw files were copied with matching before/after sizes
+and SHA256 into capture/. capture-manifest.json names their real origin paths,
+sizes and raw identities; this report/context records the reading boundary.
+No normalization or invented Git
+capture is used. The older source246/249and250 files are retained prior bytes,
+not current252 theorem proofs. This audit checks the new252 argument directly.
+No source, state, previous report, frozen250BPDF/grade or Git branch was changed.
+
+2. Actual family and the pair spaces
+The form uses B(x)=a v_l v_l^T+H s_l s_l^T at the ACTUAL forward source parity,
+with a=c/(16D), H=cn², Dspatial components and two ORIGINAL internal channels.
+All Dpositive forward labels are retained. The weak/strong pair at each source
+is orthonormal in R². The actual domain is U0², U0=im d1* for the original
+forward curl on unordered i<j pairs with counting adjoint. These are the same
+finite domain and conventions needed by the claim, not an auxiliary scalar
+domain substituted into a physical assertion.
+
+For n=2m, t(x)=sum x_i modn has fibers of exactly n^(D−1)vertices and parity
+equal to actual site parity. Wrapping any spatial coordinate changes t by1
+modn; evenness makes this parity statement valid at the wrap as well.
+For l=0 the m pairs are{0,1},{2,3},…; for l=1 they are{1,2},{3,4},…,{n−1,0}.
+Both lists are disjoint covers. F_l therefore consists of mreal pair values
+with one independent sum-zero constraint. Its dimension is m−1, also m=1.
+Mean-zero on Z_n gives mean-zero on X by the exact fiber multiplicity, not
+by a continuum or asymptotic averaging argument.
+
+3. Inverse-normal construction and REAL dimension
+The matrix S has the two real unit strong normals as its rows. det(S)² is
+1−(s0·s1)²=sin²theta>0. Distinct unoriented weak lines with theta>0 genuinely
+give invertibility; there is no supplied frame or well-conditioned-subset
+hypothesis. S may be ill-conditioned for a small angle, but invertibility
+is enough for the parameter map used here.
+
+The first D−1functions in each F_l are independent parameters; the Dth is
+their negative sum and still belongs to that SAME linear space. Applying
+S^(-1) componentwise produces an original R²field, and all spatial components
+are functions of t(x) only. The sum over spatial components vanishes pointwise.
+Both original channels have mean zero because every f_l,r does. Applying the
+rows of S recovers all f_l,r from the original z, and t:X→Z_n is onto.
+Consequently the parameter map is injective. Its EXACT REAL dimension is
+2(D−1)(m−1)=(D−1)(n−2). This dimension was derived in real function spaces;
+there is no missing real/complex factor or independent-mode count assumed.
+The construction changes fields for a proof; it does not rotate the observed C.
+
+4. The actual curl-adjoint formula: sign and conjugation checked
+Each scalar function f(t) has a finite Fourier expansion on Z_n. Its modes
+become actual lattice frequencies(k,…,k) on X. Zero mean removes k=0.
+For nonzero k, put zeta=exp(2pi i k/n)−1 and xi=zeta(1,…,1). The original
+channel's vector coefficient u satisfies sum_r u_r=0, hence
+sum_r conjugate(xi_r)u_r=conjugate(zeta)sum_r u_r=0.
+
+Writing C_xi u for the actual curl symbol, (C_xi u)_ij=xi_i u_j−xi_j u_i,
+its counting adjoint in component r is
+  (C_xi*psi)_r = sum_(i<r) conjugate(xi_i)psi_ir
+                 −sum_(j>r) conjugate(xi_j)psi_rj.
+Substitution gives
+  (C_xi*C_xi u)_r = |xi|² u_r −xi_r sum_i conjugate(xi_i)u_i.
+This verifies the manuscript's sign, conjugation placement and lack of an
+extraneous factor2 for the UNORDERED two-form convention. Thus the displayed
+psi_ij=(xi_i u_j−xi_j u_i)/sum_i|xi_i|² has actual adjoint curl u on each
+used nonzero frequency, with a strictly positive denominator. Zero coefficients
+are set at k=0. This is an actual finite Fourier preimage, not an assumed
+equivalence between a divergence constraint and coexactness.
+
+S is real, so the original field coefficients have conjugate symmetry.
+xi(−k)=conjugate(xi(k)) and the denominator is real and symmetric, giving
+psi(−k)=conjugate(psi(k)). The resulting two-form is REAL. At the self-conjugate
+k=n/2, the multipliers and coefficients are real and the same formula is valid.
+In fact the paired functions have zero coefficient at that Nyquist mode, but
+the proof does not need to discard a problematic mode or divide by zero.
+No 0frequency component remains. Each ORIGINAL internal channel is therefore
+in actual im(d1*), proving W⊂U0² with the previously derived real dimension.
+
+5. Actual strong terms vanish, including EVERY label and wrap
+At a source with parity l, t=l+2j and each positive spatial label leads to
+t+1modn. Membership of f_l,r in F_l gives f_l,r(t+1)−f_l,r(t)=0 for EVERY r,
+including the constructed Dth component. Thus the normal component s_l·partial_i
+z_r is exactly zero. This applies to all i, to the odd-parity pair{n−1,0},
+and to any linear combination of parameters in W, not just a basis vector.
+
+Every original difference lies in the actual weak line v_l at that source.
+Since(v_l,s_l)is an orthonormal pair, the ORIGINAL local energy equals a
+times the ORIGINAL squared difference norm. Hence Q(z)=aE(z) EXACTLY on W.
+The large Hterm is zero; it has not been discarded without proof or replaced
+by an auxiliary coordinate energy. In particular the potentially large norm
+of S^(-1) introduces no extra angle factor: the ensuing estimate uses the
+original Euclidean norm on the very same original z.
+
+Counting-isometric shifts give E(z)≤4D||z||² on every original field. Summing
+the elementary two-endpoint bound counts every positive forward label, including
+period-two multiplicities. Therefore Q(z)=aE(z)≤c||z||²/4 for ALL z∈W. No regional
+gap, unproved Hodge comparison, physical producer or supplied low band replaces
+these derived steps.
+
+6. Actual restricted rank and the finite penalty
+If rank(C|U)<dimW then its restriction to W has a nonzero real kernel vector w.
+This w is already in the explicitly proved W⊂U. At Cw=0 the given target and
+Phi(0)=0 imply Q(w)≥c||w||² after multiplying by V. The derived low-energy
+bound is Q(w)≤c||w||²/4, a strict contradiction for nonzero w and c>0.
+Thus rank(C|U)≥(D−1)(n−2), exactly as claimed. No continuity, nonnegative
+penalty, quadratic coefficient size or row locality is needed beyond the stated
+finite penalty and value0at0. The proof only uses that one value.
+
+This is an ACTUAL restricted-rank bound, not a comparison with dimF or full
+rows. The codomain can contain mixed internal/spatial and nonlocal rows.
+For the canonical subclass, full output count≥actual rank and K||Cz||² is an
+admissible Phi. The factors V on the energy/target cancel correctly at zero
+observation; there is no missing normalization or hidden row rescaling.
+
+7. Endpoints and attempted falsifiers
+At n=2, m=1and both F_l are zero, so W={0}and the claimed dimension/lower is0.
+No nonconstant mode or positive endpoint lower is invented. For every even
+n≥4 the parameter space is nonzero. At the first case n=4, each F_l has one
+free pair value b,−b; its flat source differences and opposite-parity wrap
+remain exact. Independent first D−1choices with the negative-sum last component
+give precisely2(D−1)real parameters. This is a hand-checked endpoint of the
+general construction, not a numerical test or exhaustive enumeration.
+
+At theta=pi/2, S can be orthogonal up to signs and all arguments stay valid.
+For arbitrarily small positive theta it remains invertible; the original
+Rayleigh identity, rather than a bound through its inverse norm, avoids angle
+loss. At theta=0 the inverse construction fails, exactly as excluded. Odd n
+also fails the stated parity hypothesis and is not silently included.
+Possible sign/conjugacy, source-parity, pair-count, wrap, real-dimension and
+domain falsifiers were checked by the explicit algebra above. No concrete
+counterexample within the actual hypotheses was established. These checks
+were analytical only, without imports, code tests or mathematical runtime.
+
+8. What this resolves and what it does NOT transfer
+For D3,n≥4,2(n−2)≥n. The accepted249fixed-angle all-field canonical upper also
+provides an actual coexact upper O_theta(n(1+lnn)). Thus252supplies an actual
+coexact Omega(n) lower for this family, even against arbitrary linear rows,
+but the canonical n versus nlogn gap remains OPEN. This is genuine actual-
+domain progress, not the invalid ambient projection shortcut.
+
+For D4 the new restricted-rank lower is only3(n−2)=Omega(n). The251report's
+Theta(n²)optimum concerns AMBIENT canonical counts/ranks for its exact
+ORTHOGONAL checkerboard and ALL-FIELD target. It does not imply a coexact
+Omega(n²)lower, and no arbitrary-angle ambient251extension is established by
+this audit. In any future summary keep that orthogonal scope explicit when
+contrasting251with252's every-positive-angle statement.
+
+The251obstruction was read in full: a legal block projection can take an
+already coexact carrier outside the coexact space, so applying a restricted
+target at(I−R)w is unjustified without a new domain proof.252does not form
+that corrected vector at all. Its only rank-nullity vector lies inside W⊂U,
+whose membership has an explicit curl-adjoint preimage. No unproved invariance
+of rectangle averaging has been introduced under another name.
+
+The lower dimension constant is independent of theta for every positive
+angle. This supplies no well-conditioned coordinates, sharp angle dependence,
+uniform upper or subvolume asymptotic when theta varies with n. The249upper's
+fixed-angle scope still matters. There is no matching coexact D4 optimum,
+logarithmic necessity, implemented solver, formal verification, continuum or
+physical mass-gap conclusion. Classical finite Fourier/kernel mechanisms and
+this exact profile/domain statement still require result-specific primary
+implication/priority comparison before any originality claim. No such network
+lookup or priority certificate was performed here.
+
+9. Scientific and review limits
+No material blocker was found for the exact displayed theorem. All fixed
+positive coefficients, two distinct weak lines, even-period parity, original
+forward source weighting, counting adjoint convention and actual finite U0²
+domain remain explicit hypotheses. The low band and its dimension/preimage
+are proved rather than transferred into an assumed structure. This removes
+the need to assume an appropriate actual-domain low band for THIS lower-bound
+argument; it does not remove a physical Yang–Mills hypothesis.
+
+The source remains separate from frozen manuscript250B and any exact PDF.
+No inherited grade, numerical importance, publication/acceptance, new small
+paper or answer closing the active logarithmic question follows. PR29's20/41
+andTermSource=0, continuum and physical mass-gap OPEN status are unchanged.
+
+This is the same involved Codex AI source-auditor role, separate from the
+parent fabricator, sharing inherited context, framing, filesystem/account/
+provider and prior source audits. Independence, blinding, human peer review
+and fresh-provider/model resampling are not established. Exposed identity:
+Codex, based on GPT-6; exact served backend/version/reasoning effort/sampling
+are unexposed and unknown. No author contact or inbound message occurred.
+
+10. Operations and disposition
+Only local source/instruction reading, raw copies, SHA256/size checks and this
+new evidence subtree were used. No desktop/UI control, network, WSL, native
+service, Git mutation, state/chat/automation change, imports/tests/numerical
+oracle/Lean/TeX/render, runtime allocation, new PDF or numerical score occurred.
+No disposable clone was created and there is no cleanup debt.
+
+Disposition:ACCEPT_WITH_LIMITS for exact252A analytical source at the bound
+raw SHA only. Parent must read this complete report and verify capture/hash
+closure before recording acceptance. Keep active251's coexact logarithmic
+question, D4rank gap, priority and practical-conditioning limits open.

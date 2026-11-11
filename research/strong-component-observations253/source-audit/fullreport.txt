@@ -1,0 +1,247 @@
+EXACT ANALYTICAL AUDIT253B -- STRONG-COMPONENT MEANS AND UNRESTRICTED RANK MINIMA
+Issued11November2026. Verdict: ACCEPT_WITH_LIMITS.
+Exact subject rawSHA2567cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2,
+14606bytes, no normalization. B was read in full and remains unchanged.
+
+1. Disposition and precise claim
+I found no material mathematical defect in the stated exact ORTHOGONAL
+D3/D4 theorem. The actual strong graph, its complete two-layer symbol and
+finite gap, the all-field coefficient K=c, the SPECIAL coexact image of its
+component-average projection and both exact unrestricted linear rank minima
+follow analytically. The exact minima are Dn on the full ambient space and
+(D-1)(n-2) on actual U0^2, including0 for the latter at n2. Actual full
+rows of the attaining map are Dn even when its restriction has smaller rank.
+This is a source correctness judgment, not a formal/executed/PDF/importance
+or originality certificate. No numerical grade is supplied.
+
+The supports of these means are not original rectangles for n>=4. Hence
+this is not a canonical-rectangle O(n) construction or solution of the
+active canonical/coexact D3 logarithmic question. The D4 comparison with
+251+247 is valid on the SAME ambient domain: canonical ambient order n^2
+versus unrestricted ambient exact Dn. It supplies no canonical-coexact
+order n^2 lower and does not conflate ambient full rows with restricted rank.
+
+2. Source identity and fresh reading extent
+I freshly read the complete253B and the complete preliminary253A, the
+complete247 source and complete251A source. I read the opening45lines of248
+for its actual family/domain and upper statement, and selected sections7-9
+of my earlier251 report, including the explicit rectangular-projection
+non-preservation example. Complete raw files are captured even where only
+these portions were newly reread. I also read the complete252A source for
+comparison context; its separate verdict is neither consulted nor required
+to close the self-contained253B proof. Reading252 here is not a new stand-alone
+assessment of that source. Seven exact raw inputs are captured with sizes,
+hashes, original paths and actual reading extents in capture-manifest.json.
+
+247 raw e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03;
+248 raw93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675;
+251A raw23d171fa5f9d9be8eef9bd02b8a19d2958e9de02cc30757a22e4582a6fd871a8.
+These are fresh local raw-byte checks, not fresh Git/remote verification.
+Original commit identifiers remain provenance only in this gate.
+
+3. Exact strong components with original labels
+For channel1 the strong sources are odd; for channel2 they are even. At
+an actual strong-source sum residue s, x_s(y) bijects the p=D-1 source torus
+onto sum layer s and its e_D shift onto layer s+1. Even n makes the n/2
+pairs disjoint and exhaustive within each original channel, including the
+wrap pair{n-1,0}. No strong edge leaves its sum-layer pair.
+The e_D label gives the rung u(y)-t(y), while
+x_s(y+e_i)+e_D=x_s(y)+e_i gives every other original strong outgoing label.
+Thus the displayed E_s is the exact scalar strong graph energy. Rungs and
+crosses connect u_y to u_(y+e_i); these translations generate the whole
+source torus and rungs attach every target. Each pair is connected, and
+therefore constants are its only zero-energy scalar fields. Period2 retains
+all original labels; there is no undirected-edge deduplication or target
+reweighting. The counting norms on X layers equal the u/t counting norms
+under the bijections, with no missing layer multiplicity.
+
+4. Two-layer Fourier symbol and derived finite gap
+Counting-orthonormal characters of the finite source torus turn a forward
+target shift into exp(i theta_i)T. Hence the energy per mode really is
+|U-T|^2+sum_i|U-exp(i theta_i)T|^2. For column(U,T), the Hermitian matrix
+is [[D,-S],[-conjugate(S),D]], S=1+sum_i exp(i theta_i), up to an equivalent
+simultaneous Fourier sign convention. Its characteristic polynomial gives
+D+/-|S| and full BOTH-LAYER norm |U|^2+|T|^2.
+
+The identity D^2-|sum_j a_j|^2=sum_(i<j)|a_i-a_j|^2 for D unit complex
+numbers is exact by expansion. At nonzero source frequency, at least one
+term |1-exp(2pi i k_i/n)|^2 is at least4sin^2(pi/n)>=16/n^2. The first
+comparison uses the minimum on the discrete nonzero frequency grid, including
+its reflection k_i->n-k_i; the second uses sine concavity on[0,pi/2].
+Dividing the full identity by D+|S|<=2D proves
+D-|S|>=8/(Dn^2). The upper eigenvalue is at least D, also above that bound
+for D3/D4,n>=2. At zero source frequency the eigenvalues are0 and2D;
+the zero vector direction U=T is exactly the one total-component constant.
+Removing its TOTAL counting mean removes this one kernel direction without
+discarding the zero-frequency antisymmetric layer mode.
+
+Parseval therefore gives E_s>=8/(Dn^2)||f-mean_G f||^2. Complex conjugate
+modes give the same real inequality, and at self-conjugate frequencies the
+matrix has real coefficients and obeys it directly. At n2 all phases are
+plus/minus1 and the same labelled energy/spectrum calculation holds. There
+is no additional zero mode, hidden Nyquist exception, assumed graph gap or
+continuum approximation. The numerical constants here were derived by paper
+reasoning only; no numerical spectrum or mathematical program was executed.
+
+5. All-field observation inequality and exact normalization
+All strong components partition original vertices within each scalar channel;
+different channels and spatial r are distinct coordinate supports. Summing
+the derived gaps yields Q>=8H/(Dn^2)||(I-R_strong)z||^2, since weak terms
+are nonnegative and discarded once. H=cn^2 gives(8/D)c, at least2c for
+D3/D4. Orthogonality of this actual component-averaging projection then gives
+Q+c||R_strong z||^2>=c||z||^2 on EVERY original ambient field.
+This step does not split weak energy into commuting blocks or spend the
+same strong energy twice; no weak-energy invariance is needed.
+
+Each mean row is exactly V^(-1/2)|G|^(-1/2)sum_G in one ORIGINAL scalar
+spatial/channel component. Consequently ||C_strong z||^2=||R_strong z||^2/V.
+Dividing the inequality by V gives normalized K=c, and the coefficient on
+these SAME rows in counting energy is Vc. Global constants are observed
+and paid by c, not dropped. The coefficient being independent of n is not
+a condition-number bound: the upper norm of Q can still grow with H.
+
+6. Special coexact image: forward/backward signs and necessity
+For any actual z in im(d1*) in one original channel, periodic sums of
+adjoint differences give mean zero in each spatial component. Also d1d0=0
+by commuting forward differences, so d0*d1*=0 and the backward divergence
+of z vanishes. With layer averages A_r(t), every shift by -e_r bijects
+layer t to layer t-1. Averaging that divergence gives exactly
+sum_r A_r(t-1)-sum_r A_r(t)=0, the sign convention in the source.
+Thus F(t)=sum_r A_r(t) is constant. Summing over t gives zero by the
+componentwise mean-zero property, so F(t)=0 for each t.
+
+The strong component mean has value[A_r(s)+A_r(s+1)]/2 on the pair,
+because both layers have the same number n^(D-1) of sites. It is therefore
+a function of t alone, pair constant, mean zero in each component and with
+spatial component sum zero at every t. This proves the first inclusion
+R_strong(U0^2) subset W0, separately for each channel's actual even/odd
+pairing. It is a derived property of THIS averaging projection. It says
+nothing about arbitrary original rectangular block projections.
+
+7. Actual curl-adjoint preimage and sufficiency of those conditions
+For a mean-zero vector function of t=sum_i x_i with pointwise spatial sum
+zero, its finite X frequencies are(k,...,k), k nonzero. The actual forward
+multiplier is xi=q(1,...,1), q=exp(2pi i k/n)-1 nonzero. Its coefficient
+u has sum_r u_r=0, hence sum_r conjugate(xi_r)u_r=0.
+
+For clarity, the source's d1*d1 notation is the adjoint product d1^*d1.
+With (d1u)_ij=xi_i u_j-xi_j u_i for unordered i<j, the rth adjoint component
+is sum_(i<r)conjugate(xi_i)psi_ir - sum_(j>r)conjugate(xi_j)psi_rj.
+Substituting d1u gives |xi|^2u_r-xi_r sum_i conjugate(xi_i)u_i, exactly
+the source's sign and conjugation formula. Therefore psi_ij=(xi_i u_j-
+xi_j u_i)/|xi|^2 has actual adjoint curl u. The denominator is strictly
+positive; assigning zero to the absent constant mode defines a genuine
+finite 2-form. At opposite frequencies xi and u both conjugate, so psi
+conjugates as well, and the inverse Fourier form is REAL. At the self-
+conjugate n/2 frequency xi and u are real, requiring no special exception.
+This explicitly proves membership in actual im(d1*), not a supplied Hodge
+surjectivity or assumption that divergence-free automatically suffices.
+
+It follows that W0 subset U0^2. Every w in W0 is constant on each actual
+strong component, so R_strong w=w. Both directions now give the EXACT
+equality R_strong(U0^2)=W0 and establish the special invariance. Unlike
+the non-preserving rectangular map in251's example, this projection has
+actually been proved to carry U0^2 into itself by its layer-mean structure.
+
+8. Dimension, actual restricted rank and all endpoints
+In one channel there are m=n/2 independent pair values for a scalar
+pair-constant function; its global mean-zero condition is their single
+sum-zero condition because each pair has equal size. The scalar dimension
+is m-1. Choosing D-1 such functions freely and setting the last to their
+negative sum imposes pointwise spatial sum zero without another hidden
+constraint. Thus each channel contributes(D-1)(m-1), and the direct sum
+of the two original channels gives dim_R W0=(D-1)(n-2).
+Kernel equality of C_strong and R_strong holds on the whole ambient space,
+so it also holds after restriction; rank(C_strong|U0^2)=dim R_strong(U0^2)
+is exactly that dimension. It is not replaced by the full Dn row count.
+
+At n2, each channel has a single component G=X, and W0 has dimension0.
+Actual coexact fields have zero spatial-component means, so C_strong is
+zero on that domain. The already established all-field inequality therefore
+gives the target on U0^2 with no nonzero observation at all: rank0 is
+indeed attained, not just a vacuous lower. The ambient map still has2D=Dn
+independent global mean rows and ambient rank2D. Both endpoint claims close.
+
+9. Exact minima and finite penalty scope
+The full scalar strong graph is the disjoint union of its connected pairs.
+Its vector/channel strong-energy kernel is exactly fields constant on these
+components, of real dimension D*n/2*2=Dn. On this ENTIRE linear space,
+all actual strong differences vanish, so Q=aE, not merely an auxiliary
+normal-coordinate bound. Isometric shifts give E<=4D||w||^2; hence
+Q<=c||w||^2/4. Any restoring linear observation map must be injective on
+this actual low-energy space, since a nonzero vector in its observation
+kernel would violate Q>=c||w||^2. This holds for any finite Phi with
+Phi(0)=0. Thus ambient rank>=Dn. The explicit map has rank Dn and the
+proved K=c target, proving the EXACT ambient minimum.
+
+The intersection of that strong kernel with U0^2 is W0: inclusion one way
+was proved; if w is in the intersection, R_strong w=w, so it belongs to
+R_strong(U0^2)=W0. On W0 the same Q=aE<=c||w||^2/4 holds. Rank-nullity
+WITHIN this actual coexact subspace forces restricted rank at least
+(D-1)(n-2) for any restoring linear map, including internally/spatially
+mixed or nonlocal ones. The restriction of C_strong attains precisely
+that rank and restoration. This closes the EXACT coexact minimum without
+requiring the separately assessed252 source. No nonlinear-observation
+rank theorem is inferred; Phi may be nonlinear but C remains linear.
+
+The low-energy argument needs no invariant eigenspace for the full weak+
+strong operator, nor a uniform penalty for arbitrary maps. It is a genuine
+kernel argument on a constructed subspace; the attaining quadratic map
+has the separately proved uniform coefficient c on its fixed normalized rows.
+
+10. Shape and same-domain comparison
+For n>=4 each G has size2n^(D-1)<V, yet every original coordinate projection
+is the full n-element chart: with D>=2 another coordinate can adjust the
+sum to s. A Cartesian product rectangle with all coordinate projections
+full would equal X, contradicting that size. The supports are therefore
+not original axis-aligned chart rectangles. At n2 G=X is the stated
+harmless root exception. Expressing a component mean through singleton
+rows and postmixing would not turn its reduced output into an allowed
+canonical-rectangle map; the source makes no such substitution.
+
+Fresh251A gives the universal AMBIENT canonical count lower of order
+n^(D-2), and fresh247 supplies the D4 AMBIENT canonical upper of order n^2
+on the identical coefficients and normalized target. Those canonical rows
+have ambient rank equal to their full count. Comparing that D4 optimum
+with the present unrestricted AMBIENT exact Dn is legitimate; it does not
+compare unlike domains. The coexact unrestricted exact(D-1)(n-2) remains
+distinct from any canonical restricted-rank optimum. Source248's D3
+canonical upper and the related252 lower do not close the logarithm.
+
+11. Preliminary A, findings and remaining limits
+The retained A text states a self-contained O(n) upper and only a conditional
+order matching via252. B adds the explicit coexact-image/preimage/rank and
+both exact minima before this253 audit; no A verdict was transferred.
+This audit leaves A and B raw bytes unchanged and does not grade A.
+No material blocker or nonblocking correction was established in exact B.
+
+All conclusions concern the exact ORTHOGONAL finite checkerboard at D3/D4,
+positive a/H, original source labels and unrestricted linear observations.
+They are not an all-angle component-mean upper, practical solver or bounded
+condition number. The gap is for this finite graph and target scaling,
+not a physical spectral gap or continuum result. The active D3 canonical/
+coexact n-versus-nlogn question remains OPEN. Classical graph Fourier,
+component means, finite Hodge inversion and nullspace dimension methods
+are not certified as novel here. A result-specific primary-source implication/
+priority comparison remains necessary for any originality claim. No score,
+importance, peer acceptance or human/independent verification is supplied.
+
+12. Factual context and operations
+Same involved AI analytical auditor as the previous249/251 tasks, separately
+assigned from parent fabricator, with inherited parent context and shared
+filesystem/account/provider. This is not blind, independent, human or
+fresh-provider/model resampling. Exposed identity: Codex, an agent based
+on GPT-6; exact served backend/model version and reasoning effort are
+unexposed/unknown. No author contact or inbound message occurred in this gate.
+
+Only source/instruction reading, exact raw copying, hashing and editing this
+new audit subtree occurred. No desktop/UI, WSL, network, native service,
+mathematical executable/import/test/oracle/Lean/TeX/render, Git mutation,
+state/chat/automation change, publication, receipt/permission operation or
+grade occurred. No disposable clone was created; cleanup debt is absent.
+The raw input capture manifest records actual reading extents without
+claiming full new readings of the partial248/earlier251-report inputs.
+
+Disposition: ACCEPT_WITH_LIMITS for exact253B source only. Parent must read
+this full report and verify raw capture/hash closure before conservation
+or acceptance records. No manuscript250B source/PDF/grade was altered.

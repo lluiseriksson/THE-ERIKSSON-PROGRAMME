@@ -1,0 +1,26 @@
+[
+  {
+    "capture": "capture/all-field-checkerboard-count251A.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-251\\all-field-checkerboard-count251A.txt",
+    "bytes": 9529,
+    "sha256_raw": "23d171fa5f9d9be8eef9bd02b8a19d2958e9de02cc30757a22e4582a6fd871a8",
+    "normalization": "none; exact original raw bytes",
+    "actual_reading_extent": "complete"
+  },
+  {
+    "capture": "capture/source247.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-preparation\\raw-tree\\inputs\\accepted\\source247.txt",
+    "bytes": 10720,
+    "sha256_raw": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03",
+    "normalization": "none; exact original raw bytes",
+    "actual_reading_extent": "complete freshly"
+  },
+  {
+    "capture": "capture/source248.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-preparation\\raw-tree\\inputs\\accepted\\source248.txt",
+    "bytes": 17708,
+    "sha256_raw": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675",
+    "normalization": "none; exact original raw bytes",
+    "actual_reading_extent": "fresh opening60lines for exact family/domain/upper statement; entire file captured, full proof not reread for251"
+  }
+]
