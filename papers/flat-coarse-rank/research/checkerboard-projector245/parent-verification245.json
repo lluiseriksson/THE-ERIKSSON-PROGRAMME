@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-11-11T01:15:14.300881+00:00",
+  "source_sha": "4d7540064d4825dd6b06493537ec657538eb8ee8",
+  "source_sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d",
+  "verdict": "ACCEPT_COUNTEREXAMPLE_TO_UNIVERSAL_SPATIALLY_VARIABLE_RANK_LOWER",
+  "complete_report_read": true,
+  "raw_audit_subjects_verified": 16,
+  "manifest_sha256": "b61e2002afc710c36584b520e29f663b80a94601b1a1cb83b84ef7576d533a84",
+  "result": "Positive spatially varying coherent checkerboard admits canonical all-field finite-penalty restoration with actualrank<=2D(n^(D-1)+1)=o(V)",
+  "refuted_hypothesis": "Universal per-profile Omega(V) lower after dropping only spatialconstancy P, with arbitraryfinitepenalties",
+  "not_refuted": [
+    "244 with its explicit constant-P hypothesis",
+    "Worst-case lower over the enlarged class, which still contains constant profiles",
+    "A separately stated lower requiring a size-uniform penalty upper"
+  ],
+  "retained_hypotheses": "g2,q1,Lambda2; positive a=c/(16D),H=cn^2; originalfixedbasis/weights/channelrectangles/actualcoexactdomain; evenn>=2,D>=3",
+  "penalty": "FiniteexplicitK_n=M+2M^2/delta_n; no uniform/optimalpenaltyclaim",
+  "formal_execution": false,
+  "grade": null,
+  "priority": "UNESTABLISHED; limited primary1406.1752 introduction read only",
+  "independence_established": false
+}
