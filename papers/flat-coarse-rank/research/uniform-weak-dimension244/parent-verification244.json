@@ -1,0 +1,24 @@
+{
+  "unit": 244,
+  "source_sha": "98d1b4e230895bf03147a987d5db7545680f154a",
+  "source_sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a",
+  "verdict": "ACCEPT_UNIFORM_WEAK_DIMENSION_THEOREM_WITH_SCOPE",
+  "raw_audit_subjects_verified": 16,
+  "full_report_read": true,
+  "audit_manifest_sha256": "432424205841fbae5455fa4a790f21d55644585f532e33008f78eeeb27dd317b",
+  "proved_hypothesis_removal": "Rank exactly2 weak subspace extended to every1<=q<=g with constants independent ofq; actual Gram/count groups derived through classical MSS1.4, auxiliary signed count coordinate and proved recursive conditioning",
+  "rank": "Theta_(D,Lambda)(qV+gV/n^2)",
+  "least_normalized_penalty": "Theta_(D,Lambda)(cmin(g/q,n^2)); allfield upper32cmin(g/q,n^2)",
+  "retained_hypotheses": [
+    "Fixed upper coherence Paa<=Lambda q/g",
+    "Positive spatially constant a=c/(16D),H=cn^2",
+    "Fixed observed basis; canonical channel-separated integer rectangles",
+    "Actual finite flat coexact domain"
+  ],
+  "formal_or_numerical_execution": false,
+  "grade": null,
+  "not_in_frozen232B": true,
+  "priority": "UNESTABLISHED",
+  "independence_established": false,
+  "classical_primary_input": "MSS1306.3969v4 Theorem1.4; published proof used, not re-proved"
+}
