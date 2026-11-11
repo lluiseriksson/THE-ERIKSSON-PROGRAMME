@@ -1,5 +1,5 @@
 {
-  "scientific_input_commit": "8485cfb2b8b11bb5acd240d8a0b133457bbfe2a1",
+  "scientific_input_commit": "8485cfb2b8b11bb5acd240d8a0b133457bbfe2a1 with additional frozen261C input1a01fa019069e0f5a7392601ddb3c7a3febe222d and complete audit at66dbb428c6ea8c8b83b9224b76d0095e045b7326",
   "base_manuscript_source_commit": "568c971fac32caf33dce6ab4b14f2730788c3eb2",
   "representation": "Exact raw copied source/audit/history bytes; no normalization; no historical grade transferred",
   "files": [
@@ -742,6 +742,61 @@
       "path": "inputs/prior-public250B-verification.json",
       "bytes": 6425,
       "raw_sha256": "9f3721e49a79edbbfa81116971dc126a9a33e175df0e319fe487b29c4110364d"
+    },
+    {
+      "path": "inputs/refined-chart261/refined-chart-counterexample261C.txt",
+      "bytes": 8199,
+      "raw_sha256": "3072c4dd7d74e166d9a2d3363ab0480138ef60cf8a0e755519882794cf16f607"
+    },
+    {
+      "path": "inputs/refined-chart261/source-audit261C/assignment.txt",
+      "bytes": 1559,
+      "raw_sha256": "ec580c4316871f29cee2385d29f71d70ed7aa35b9c6bd821e4ed2d6a3940bd0d"
+    },
+    {
+      "path": "inputs/refined-chart261/source-audit261C/audit-manifest.json",
+      "bytes": 2322,
+      "raw_sha256": "6a2e16ff4f400e90eae9d64043a07947c5b300441c180001887c075c7e7a80c2"
+    },
+    {
+      "path": "inputs/refined-chart261/source-audit261C/full-report.txt",
+      "bytes": 14065,
+      "raw_sha256": "cf92b2932c7ffb21b6163fdadd244f2cbd7e3c3a21313f1db6d397c73405c4df"
+    },
+    {
+      "path": "inputs/refined-chart261/source-audit261C/review-context.json",
+      "bytes": 4131,
+      "raw_sha256": "b99392b9a1e8f19fbea3c44007b8fe04055e0334ad3e437e1f75df8aa2d50e62"
+    },
+    {
+      "path": "inputs/refined-chart261/source-audit261C/subjects/capacity-class-obstruction257A.txt",
+      "bytes": 11285,
+      "raw_sha256": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc"
+    },
+    {
+      "path": "inputs/refined-chart261/source-audit261C/subjects/CLAUDE.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "inputs/refined-chart261/source-audit261C/subjects/coarse-window-obstruction259A.txt",
+      "bytes": 11351,
+      "raw_sha256": "03c71a1a4a652a6d28bc38acc43b7a2227796a300d673e1611f65417bb50557f"
+    },
+    {
+      "path": "inputs/refined-chart261/source-audit261C/subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "inputs/refined-chart261/source-audit261C/subjects/prior-manuscript-source-audit260A-full-report.txt",
+      "bytes": 13920,
+      "raw_sha256": "733c45a5de717069d2dbf764af84ddc255e56fc8fe3721af73499264f3ff9bfd"
+    },
+    {
+      "path": "inputs/refined-chart261/source-audit261C/subjects/refined-chart-counterexample261C.txt",
+      "bytes": 8199,
+      "raw_sha256": "3072c4dd7d74e166d9a2d3363ab0480138ef60cf8a0e755519882794cf16f607"
     },
     {
       "path": "inputs/source247.txt",

@@ -8,7 +8,7 @@
     "5": "254 negative mean-only companion",
     "6": "251A ambient canonical lower only; cited247 upper",
     "7": "251 uncut-coordinate coexact falsifier",
-    "8": "259A full cyclic-extension temporal theorem;257A Section3 cutoff;258A conventions. Nonwrapping canonical product partitions inherit the necessary bound. Rapid wrapped24n example is cyclic-extension only, not a canonical chart-refinement failure.",
+    "8": "259A full cyclic-extension temporal theorem;257A Section3 cutoff;258A conventions. Nonwrapping canonical product partitions inherit the necessary bound. Rapid wrapped24n example is cyclic-extension only, not a canonical chart-refinement failure. Additional261C direct nonwrapping chart-refinement counterexample: actual36n-24 full rows, six-tag cover of all refined chart corners, explicit field zeros and original energy; not an inferred split-cell result.",
     "9": "general canonical Q251 remains open",
     "10": "full involved model context and historical255B first exact-PDF assessment only"
   },
@@ -33,5 +33,23 @@
     "original_report_sha256_raw": "733c45a5de717069d2dbf764af84ddc255e56fc8fe3721af73499264f3ff9bfd",
     "status": "Explicit class-boundary repair; delta source review pending; original report immutable",
     "new_grade": null
+  },
+  "new_refinement_source": {
+    "commit": "1a01fa019069e0f5a7392601ddb3c7a3febe222d",
+    "source_sha256_raw": "3072c4dd7d74e166d9a2d3363ab0480138ef60cf8a0e755519882794cf16f607",
+    "full_report_sha256_raw": "cf92b2932c7ffb21b6163fdadd244f2cbd7e3c3a21313f1db6d397c73405c4df",
+    "count": "36n-24",
+    "new_manuscript_delta_acceptance": null
+  },
+  "candidate_B": {
+    "PDF_sha256_raw": "3ce30a056053bf4477bb2530f10fd3a31ce94ea0f8c3960ac917556af493659c",
+    "pages": 13,
+    "bytes": 389245,
+    "two_fresh_matching_builds": true,
+    "all_lifecycle_and_inactive_backend_verified": true,
+    "visually_final": false,
+    "observed_layout_repairs": "long provenance hash line and orphan final bibliography item",
+    "grade": null,
+    "superseded_before_any_exact_PDF_assessment": true
   }
 }

@@ -45,7 +45,8 @@ matching over every number of slices. Its restriction to nonwrapping
 canonical product slices gives a logarithmic count loss for fixed or
 bounded-motion cuts. A rapid helical grid in the cyclic extension fails
 through a short resonance; its wrapped complements are outside the
-nonwrapping canonical class.
+nonwrapping canonical class. A separate construction with added chart-boundary
+cutoff centres excludes its nonwrapping refinement with $36n-24$ full rows.
 The general canonical coexact three-dimensional question, linear count
 versus a possible logarithmic loss, remains open. These are finite analytical results;
 we establish neither historical priority, formal verification nor a physical
@@ -61,7 +62,7 @@ number bound or a new general principle of spectral enrichment. Our purpose is
 to keep the coefficients, observed rows and domain explicit enough to compare
 their different rank and count requirements.
 
-The manuscript consolidates the programme's analytical sources 251--254 and 256--259,
+The manuscript consolidates the programme's analytical sources 251--254, 256--259 and261C,
 rather than presenting their corollaries as separate papers. A preceding
 working paper treats broader canonical constructions~\cite{eriksson250}.
 The present manuscript is a proposed substantial revision of the existing
@@ -656,8 +657,9 @@ normalization. Take channel 2 identically zero. This constructs an actual
 real $z=(P\Psi,0)\in U$ annihilating all observed rows.
 
 \subsection{Nonzero norm and original energy}
-Direct period-four differences give $z_0=P\Psi_0=(0,w,-w)$ with successive
-$w$ values $(2,-2,-2,2)$. Thus $|z_0(x)|^2=8$,
+Direct period-four differences give
+\[z_0=P\Psi_0=(0,w,-w),\qquad w=(2,-2,-2,2).\]
+Thus $|z_0(x)|^2=8$,
 $\norm{z_0}^2=8V$, and at every original odd source all $\partial_hz_0$
 vanish, including across seams because $4\mid n$.
 For a finite convolution $\mathcal T=\sum_r a_r\tau^r$, where $\tau^r$
@@ -739,13 +741,105 @@ $24n$ count nor its failure is transferred to that chart refinement.
 The theorem does not assert that every rapidly moving $O(n)$ family fails.
 
 
+\subsection{A separate counterexample for nonwrapping chart cells}
+The previous cyclic example does not imply failure of its chart refinement.
+We now construct a new cutoff that annihilates every refined mean separately.
+This gives a counterexample inside the original nonwrapping canonical class.
+
+\begin{proposition}\label{prop:chartrefinement}
+Let $n=2^m$, $m\geq5$, $\kappa=n/4+2$ and $t_i=\kappa i\bmod n$.
+At slice $i$ partition the second-coordinate chart into the nonempty members
+of $[0,t_i-1]$, $\{t_i\}$ and $[t_i+1,n-1]$, and the third coordinate
+into $\{0\}$ and $[1,n-1]$. Use these nonwrapping product cells in both
+original channels, with first coordinate $\{i\}$. Their exact full count is
+$36n-24$. If
+\begin{equation}\label{eq:chartthreshold}
+ L\geq2^{18}\cdot6\cdot148,
+\end{equation}
+there is a real nonzero $z\in U$ with each of these original means zero and
+$Q(z)<7c\norm z^2/16$. This particular canonical family therefore cannot
+restore target $c$ with any finite quadratic observation penalty.
+\end{proposition}
+\begin{proof}
+Since $\gcd(\kappa,n)=2$, the orbit visits each even position twice.
+Thus $t_i=0$ occurs twice, $t_i=n-1$ never occurs, and all other $t_i$ are
+interior. There are four cells per channel at the two zero slices and six
+at each other slice. Counting all spatial rows in both channels gives
+$2\cdot3\{2\cdot4+(n-2)\cdot6\}=36n-24$.
+
+For interior $t_i$, the actual terminal second-coordinate endpoints are
+$t_i-1,t_i,n-1$; for $t_i=0$ they are $0,n-1$. The third-coordinate
+endpoints are $0,n-1$. Let $G_i$ be the six-entry tagged list obtained
+from $t_i,t_i-1\bmod n,n-1$, each paired with those two third-coordinate
+endpoints. It covers every actual corner, including the extra chart
+boundary. At $t_i=0$ some positions coincide but retain their tags.
+Six is a covering-list count, not an assertion of six cells at every slice.
+
+The identity $4\kappa=n+8$ gives a same-tag matching from $G_i$ to
+$G_{i+4}$: four entries translate by $(8,0)$ and two are stationary.
+Form the 24-entry window $F_i$ from $G_i,G_{i+1},G_{i+2},G_{i+3}$ and
+let $\eta(i,y)$ be the minimum of the associated radial functions $f_p$.
+The designated 18 shared entries remain stationary between consecutive
+windows; the six replaced entries have displacement at most8. Directly
+using~\eqref{eq:radial} and the minimum inequality gives
+\begin{align*}
+ \norm{1-\eta}_X^2&\leq4\cdot4\cdot6V/L^2,\\
+ \norm{\eta(i+1,\cdot+u)-\eta(i,\cdot)}_Y^2
+ &\leq\frac{64\cdot6}{L}
+       \{4|u|_1^2+16|u|_1+64\}.
+\end{align*}
+Without longitudinal shift the bound is $64\cdot4\cdot6|u|_1^2/L$.
+These explicit estimates remain valid with repeated centres. We have not
+applied the constant-cell-count theorem to this varying four/six-cell map.
+
+Set $\Psi=\eta\Psi_0$ and use the actual potential and field
+$z=(P\Psi,0)$ from the preceding proof. At every actual refined corner,
+$\eta$ and its backward transverse neighbours vanish. For each individual
+chart interval, its initial-endpoint predecessor is a terminal endpoint of
+the preceding interval, with $-1=n-1$ at the chart boundary. Every one of
+the four corners in the telescoped cell sum is therefore covered by $G_i$.
+Both needed first differences of $\Psi$ vanish there, so each separately
+normalized refined mean is zero. No zero sum on a union is used to infer
+zero sums on its pieces. The actual curl-adjoint formula proves real
+membership in $U$.
+
+For the convolution shifts used by $P$ and its derivatives, the translation
+factors are bounded by $A=\max\{64,36+48+64\}=148$. The same coefficient
+sums, now applied to the explicit six-centre estimates above, give
+\begin{align*}
+ \norm{P(\eta\Psi_0)-\eta z_0}^2
+    &\leq73728n\cdot4\cdot6/L,\\
+ \sum_{x\text{ odd},h}|\partial_h(P\Psi)(x)|^2
+    &\leq98304n\cdot6\cdot148/L,\\
+ \norm{P\Psi-z_0}^2
+    &\leq(64\cdot24/L^2+147456\cdot24/L)V.
+\end{align*}
+Threshold~\eqref{eq:chartthreshold} implies $L\geq2^{22}\cdot24$.
+The last coefficient is at most $2^{-38}+9/256<2$, so
+$\norm{P\Psi}>\sqrt{2V}$. The field itself is nonzero. Multiplying the
+strong estimate by the original $H=cn^2$ bounds strong energy by
+$3cV/8<3c\norm z^2/16$; weak energy is at most
+$12a\norm z^2=c\norm z^2/4$. This proves the strict $7c/16$ bound.
+All observation penalties vanish on the zero mean vector.
+\end{proof}
+
+This is a newly constructed invisible field for this particular
+nonwrapping refinement. It does not retroactively validate a split-cell
+inference for the old cyclic field. The threshold is enormous and
+unoptimized, and no general impossibility of canonical $O(n)$ partitions
+or global canonical logarithmic lower bound follows.
+
+
 \section{Interpretation and remaining question}
 The sharp orthogonal ranks count the actual strong kernel and its explicitly
 derived coexact image. Positive-angle enrichment pays a deteriorating
 singular-value comparison by retaining finitely many transverse modes per
 component. The temporal matching theorem supplies an actual invisible coexact field
 for the cyclic product-slice extension, including a rapidly moving
-resonant example outside the nonwrapping canonical class. Its restricted quantifiers do not settle the general canonical
+resonant example outside the nonwrapping canonical class. The separate
+chart-refinement construction adds the previously missing boundary corners
+and gives a new counterexample within that class. These restricted
+quantifiers do not settle the general canonical
 count optimum. The small-angle counterexample explains why that enrichment cannot
 simply be replaced by an assertion that the old means still suffice.
 The canonical ambient lower instead uses a real oscillatory carrier and an
@@ -764,7 +858,7 @@ remain open; the programme's PR29 accounting remains $20/41$, with
 \texttt{TermSource=0}.
 
 \section{Model assessments and review context}
-The analytical source texts 251--254 and 256--259 received complete involved
+The analytical source texts 251--254, 256--259 and261C received complete involved
 AI source readings. Their exact source bytes, full reports, objections and
 context must remain in the reproducibility package. The temporal proof
 uses the designated shared-slot wording specified in the retained 259
@@ -796,13 +890,16 @@ threshold is not a demonstrated practical regime. Neither a deposit nor
 Working-paper status constitutes editorial acceptance or human peer review.
 
 \section*{Reproducibility and provenance}
-Scientific inputs are frozen programme sources 251--254 and 256--259.
+Scientific inputs are frozen programme sources 251--254, 256--259 and261C.
 The source archive must retain their raw bytes, complete analytical reports
 and context, this manuscript's mapping, the frozen Git commit and all actual
 production logs. In particular the temporal theorem is derived in source 259
-at commit\texttt{2f370a7da850b8066a9afe95c523e49bd1ef725e}; its full audit
-and clarification were integrated unchanged through merge
-\texttt{8485cfb2b8b11bb5acd240d8a0b133457bbfe2a1}.
+at the frozen commit
+\begin{quote}\small\ttfamily 2f370a7da850b8066a9afe95c523e49bd1ef725e\end{quote}
+Its full audit and clarification were integrated unchanged through merge
+\begin{quote}\small\ttfamily 8485cfb2b8b11bb5acd240d8a0b133457bbfe2a1\end{quote}
+The separate nonwrapping refinement construction is frozen at
+\begin{quote}\small\ttfamily 1a01fa019069e0f5a7392601ddb3c7a3febe222d\end{quote}
 The separate golden-orbit working derivation 260 is excluded from this
 manuscript: no unreviewed frontier result is promoted here.
 
@@ -813,7 +910,10 @@ production and review facts belong to dated sidecars linked to the exact
 PDF hash. The original published version remains immutable. The frozen
 production source is \texttt{\SourceCommit}.
 
+\begingroup
+\small
 \begin{thebibliography}{9}
+\setlength{\itemsep}{3pt}
 \bibitem{spillane2011}
 N. Spillane, V. Dolean, P. Hauret, F. Nataf, C. Pechstein and R. Scheichl,
 A robust two-level domain decomposition preconditioner for systems of PDEs,
@@ -835,4 +935,5 @@ gradient model, AIRR Working paper, ARR-2026-597T88D7WZ98HR0Z,
 version 1 (2026).
 \url{https://airr.science/papers/ARR-2026-597T88D7WZ98HR0Z/versions/v1/}.
 \end{thebibliography}
+\endgroup
 \end{document}
