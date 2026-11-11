@@ -1,0 +1,240 @@
+{
+  "format": "exact-pdf-review-context-1.0",
+  "assessed_at": "2026-11-10T22:50:03.7810586+01:00",
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "proposed_author_version": "v15",
+  "version_binding_status": "Proposed author successor only; no native version UUID supplied or invented",
+  "provider": "OpenAI",
+  "model_id": "Codex (based on GPT-6; exact served backend and reasoning effort unknown)",
+  "exact_backend": "unknown",
+  "reasoning_effort": "unknown",
+  "human_reviewer": false,
+  "blind_review": false,
+  "demonstrated_independence": false,
+  "independence": "unknown",
+  "reviewer_role": "fresh separate exact-PDF analytical reviewer agent",
+  "model_memory_and_provider_history": "Unknown. A fresh fork and separated fabrication/audit roles do not demonstrate separate model weights, account, provider history or human independence.",
+  "parent_context": "Initial assignment specified exact artifact and requested substantive adversarial checks; no target score. No inbound parent messages during the audit. No other chats or automations accessed.",
+  "review_round": "First and only numerical assessment round of this exact PDF in this assignment; no resampling.",
+  "predecessor_exposure": {
+    "other_numerical_reports_read": false,
+    "prior_version_pdfs_read": false,
+    "source_audit_reports_read": false,
+    "pdf_itself_discloses_predecessor": true,
+    "location": "Pages 20-21, Section 7",
+    "exposed_content": "Predecessor exact-artifact identity, score 3.25/10, rounded stars 3, criteria 4/4/2/3/3 and minor_revision, plus audit/workflow history",
+    "consequence": "Review was not blind or score-blind; these historical statements were exposure, not evidence for present claims or an inherited numerical result."
+  },
+  "exact_pdf": {
+    "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\rectangular_matrix232B.pdf",
+    "raw_byte_sha256": "5595e89c1bcbec1d9b1ae35053a76e6a962f67b45d5d1ac483e5b7a60c9b9be0",
+    "bytes": 505936,
+    "pages": 30,
+    "identity_verified_before_reading": true,
+    "verification": "PowerShell Get-FileHash SHA256 and file Length before manuscript reading; pdfinfo later independently confirmed page count/title/author/size",
+    "title": "Rectangular observations for finite matrix gradients: observation classes and critical endpoints",
+    "author": "Lluis Eriksson",
+    "metadata_creation_date_utc": "2026-11-09T00:00:00Z",
+    "metadata_modification_date_utc": "2026-11-09T00:00:00Z",
+    "metadata_date_meaning": "Fixed SOURCE_DATE_EPOCH reproducibility convention supplied in the assignment, not publication date",
+    "actual_document_production": "2026-11-10 ownColab production reported by parent, separately from fixed PDF metadata; underlying production log was not replayed by reviewer",
+    "status": "Private working draft awaiting real publication gates; not accepted or published by this report"
+  },
+  "actual_reading": {
+    "text_path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\rectangular_matrix.txt",
+    "text_pages_read": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "complete_pdf_text_read": true,
+    "extraction_regenerated": false,
+    "extraction_correspondence": "Existing extraction reported produced from exact PDF. Correspondence was not independently regenerated; selected formulas checked against supplied page images.",
+    "contact_sheets": [
+      {
+        "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\contact-01.jpg",
+        "pages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "visually_inspected": true
+      },
+      {
+        "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\contact-02.jpg",
+        "pages": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "visually_inspected": true
+      },
+      {
+        "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\contact-03.jpg",
+        "pages": [
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "visually_inspected": true
+      },
+      {
+        "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\contact-04.jpg",
+        "pages": [
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "visually_inspected": true
+      },
+      {
+        "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\contact-05.jpg",
+        "pages": [
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "visually_inspected": true
+      }
+    ],
+    "original_resolution_pages": [
+      {
+        "page": 12,
+        "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\page-12.png",
+        "detail": "original",
+        "visually_inspected": true
+      },
+      {
+        "page": 23,
+        "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\page-23.png",
+        "detail": "original",
+        "visually_inspected": true
+      },
+      {
+        "page": 24,
+        "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\page-24.png",
+        "detail": "original",
+        "visually_inspected": true
+      },
+      {
+        "page": 28,
+        "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\page-28.png",
+        "detail": "original",
+        "visually_inspected": true
+      },
+      {
+        "page": 29,
+        "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\page-29.png",
+        "detail": "original",
+        "visually_inspected": true
+      },
+      {
+        "page": 30,
+        "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\exact232B\\page-30.png",
+        "detail": "original",
+        "visually_inspected": true
+      }
+    ],
+    "other_full_resolution_pages_inspected": [],
+    "visual_limits": "All pages inspected in five contact sheets; only the six listed individual pages at original resolution. No full-resolution glyph-by-glyph audit of the other pages."
+  },
+  "other_files_read": [
+    "D:\\LEEME.md",
+    "C:\\Users\\lluis\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.1104.22356\\skills\\pdf\\SKILL.md",
+    "D:\\Proyectos\\the-eriksson-programme\\CLAUDE.md",
+    "D:\\Proyectos\\the-eriksson-programme\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md"
+  ],
+  "governance_reading_extent": "Retrieved repository role and execution rules and applicable governance charter; initial combined output was bounded/truncated, not represented as complete line-by-line reading of every CLAUDE.md section.",
+  "primary_bibliography": [
+    {
+      "source": "Cohen-DeVore-Petrushev-Xu, Nonlinear approximation and the space BV(R2)",
+      "url": "https://people.math.sc.edu/pencho/Publications/BV9707.pdf",
+      "extent": "Introduction and extracted portions around Section 6, final/branching/chaining definitions and Theorem 6.1 statement/start of proof, printed pages 604-607",
+      "complete_work_read": false
+    },
+    {
+      "source": "Brudnyi, arXiv:1511.03971v1",
+      "url": "https://arxiv.org/html/1511.03971v1",
+      "extent": "Introduction, selected Section 4 basic-path passages, Appendix II through its basic-path count as exposed by retrieval, end of Appendix I",
+      "complete_work_read": false
+    },
+    {
+      "source": "Frank, arXiv:1206.3325v1",
+      "url": "https://arxiv.org/html/1206.3325v1",
+      "additional_url": "https://arxiv.org/abs/1206.3325v1",
+      "extent": "Abstract, introduction and Section 2 around Theorem 2.1 and Corollary 2.2; no complete check of Theorem 3.1",
+      "complete_work_read": false
+    },
+    {
+      "source": "Levin-Peres, Markov Chains and Mixing Times",
+      "url": "https://pages.uoregon.edu/dlevin/MARKOV/markovmixing.pdf",
+      "extent": "Two retrieval attempts timed out; source text not obtained and lemma numbering unverified",
+      "complete_work_read": false
+    }
+  ],
+  "literature_limits": "Primary-source excerpts only, no exhaustive historical priority audit, no secondary sources. Bibliographic metadata and stated portions do not prove exact theorem equivalence.",
+  "tools_and_execution": {
+    "used": [
+      "exec_command for read-only files, hashes, date and pdfinfo plus output writing",
+      "view_image for existing contact sheets and individual images",
+      "web for primary bibliography",
+      "apply_patch for new scientific-review.txt only"
+    ],
+    "scientific_or_numerical_computation": false,
+    "lean_lake_build": false,
+    "tex_build": false,
+    "local_render": false,
+    "new_pdf_extraction": false,
+    "colab_execution": false,
+    "terminal_reproduction": false,
+    "external_model_service": false,
+    "external_model_spend_or_contract": false,
+    "original_source_status_or_git_mutated": false,
+    "files_written_only_in": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex",
+    "tool_limits": "No source-verdict labels treated as mathematical premises. Tool metadata discovery occurred, but no discovered chat, automation, connected-service or other review data was accessed. An initial oversized report-write command was rejected before execution; the report was then written inside the new allowed directory with apply_patch. No original input was changed."
+  },
+  "score_semantics": "4.10/10 is the reviewer scientific-importance judgment for these actual finite claims, not a probability; overall_stars 4 uses floor(score+0.5) with 1..10 clamping.",
+  "assessment_limits": "AI analytical assessment only; not independent/human/blind review, formal certificate, proof of priority, receipt, acceptance, publication or scientific execution."
+}

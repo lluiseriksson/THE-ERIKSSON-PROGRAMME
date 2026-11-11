@@ -1,0 +1,124 @@
+240 — Sharp canonical penalty scale for every internal dimension
+Author-role proof candidate. No execution, grade, priority or physical claim.
+Uses the SAME239 local observation maps and exact positive coefficient family.
+
+1. Statement, fixed rows and conventions.
+Let D>=3,n>=2,g>=1 be integers and c>0,V=n^D. Retain
+a=c/(16D),H=cn^2,v_alpha=1/sqrt(g),B=H I-(H-a)vv^T and actual
+forward-gradient energy Q_A with directional matrix delta_jj' delta_kk' B.
+The actual domain U=U_0^g has U_0=im(d_1^*),d0=(D-1)(V-1).
+C is EXACTLY an explicit239 canonical rectangle map; fix the following
+priority to make its case choice unambiguous:
+(i) g<4096: all channels singleton;
+(ii) g>=4096 and g>=n^2: the238 all-scale map, with its small-n singleton
+fallback if n<32 (that fallback cannot in fact occur in case(ii));
+(iii) 4096<=g<n^2: the239 coarse-plus-one-tail map.
+These choices have239's full count <=L_D(V+gV/n^2). Changing priority in
+an overlap to another valid singleton prescription is harmless but is not needed.
+Canonical rows are V^(-1/2)|S|^(-1/2)sum_S z_(k,alpha). The full counting
+orthogonal block-average projection R satisfies ||Cz||^2=||Rz||^2/V.
+Let b=min(g,n^2). For these SAME rows,
+Q_A(z)/V+32cb||Cz||^2 >= c||z||^2/V                     (240.0)
+for ALL fields z. On U, the least normalized restoring quadratic coefficient
+for this fixed map is Theta_D(cb), uniformly in all n,g. Thus the economical
+rank and penalty scales are simultaneously attained:
+ rank(C|U)=Theta_D(V+gV/n^2), K_min=Theta_D(c min(g,n^2)).
+This does not claim the exact leading constants or an upper for every map
+of that rank. Counting-energy/norm penalty coefficients are V times these K.
+
+2. The group data from the actual239 construction.
+In case(ii), n>=64 and all bands E_j=P_(j+1)-P_j, j<J=ceil(log_2 n),
+sum to I-P_0. Their parent side bound L_j=ceil(n/2^j)>=2 satisfies
+||E_j w||^2<=(L_j^2/4)E(w) for ALL fields w.
+There are disjoint groups I_j, sizes r_j=ceil(5gL_j^2/(8n^2)), whose
+channels observe child partition P_(j+1); every leftover observes P_0.
+In case(iii), k=floor(log_2 sqrt(g)); the orthogonal pieces are the coarse
+E_j,j<k, plus E_tail=I-P_k. They also sum to I-P_0. Each piece has
+its parent-side constant L_q and bound ||E_qw||^2<=L_q^2 E(w)/4.
+Groups have r_q=ceil(5gL_q^2/(8n^2)); the tail group uses singletons,
+the coarse groups child partitions, and roots cover all remaining channels.
+All integer feasibility/count proofs are already supplied by239/238, not
+replaced by a new group hypothesis in this theorem.
+The actual piece/group data satisfy two estimates in BOTH cases:
+ 4H r_q/(g L_q^2) >= (5/2)c, and H/L_q^2 <= cb.          (240.1)
+The first is immediate from the actual ceilings and H=cn^2.
+For(ii), L_q>=1 and b=n^2, so H/L_q^2<=cn^2.
+For(iii), every index j<=k has L_j>=n/2^j>=n/sqrt(g),
+including the tail index k. Hence H/L_j^2<=cg, and b=g.
+Only the stated ranges justify these respective inequalities; g is never
+substituted for n^2 outside the middle range or conversely.
+
+3. Direct observed-field estimate; no operator-norm-squared cross loss.
+First take any field z whose every component has global mean0. Split
+f=sum_alpha v_alpha z_alpha,s_alpha=z_alpha-v_alpha f. Then
+||z||^2=||f||^2+sum||s_alpha||^2 and Q_A(z)=aE(f)+T,
+T=H sum_alpha E(s_alpha). All f and s_alpha have zero global mean.
+For any real Hilbert-space vectors p,q, direct expansion/Young gives
+||p-q||^2 >= (9/10)||q||^2-9||p||^2.                   (240.2)
+Apply it to p=E_q z_alpha and q=v_alpha E_q f, so
+||E_q s_alpha||^2 >= 9/(10g)||E_q f||^2-9||E_q z_alpha||^2.
+The parent variance bound and DISJOINT groups imply
+T>=sum_q (4H/L_q^2)sum_(alpha in I_q)||E_q s_alpha||^2
+ >=(9/10)sum_q[4H r_q/(gL_q^2)]||E_q f||^2
+    -36 sum_q[H/L_q^2]sum_(alpha in I_q)||E_q z_alpha||^2
+ >=(9/4)c||f||^2-36cb||Rz||^2.                         (240.3)
+Every channel's energy is charged once; the entire fine tail is ONE piece
+in its distinct group. Mean-zero f and the full orthogonal decomposition
+give sum_q||E_qf||^2=||f||^2. There is no unbounded sum over fine scales.
+To justify the negative-term estimate, for a coarse group E_q is a
+subprojection of that channel's observed P_(j+1), and for a tail group
+the observation is identity. Thus ||E_q z_alpha||<=||R_alpha z_alpha||.
+Disjoint groups give sum_q sum_(alpha in I_q)||E_q z_alpha||^2<=||Rz||^2.
+Root leftovers are not in that sum and only add nonnegative projection norm.
+This is valid for NON-kernel z; no vanished observation is assumed.
+
+Separately, the actual torus gap4sin^2(pi/n)>=16/n^2 and the zero means
+give T>=16c sum_alpha||s_alpha||^2. Take8/9 of240.3 after moving its
+negative term left, and1/9 of this strong-gap bound. The result is
+T+32cb||Rz||^2 >=2c||f||^2+(16/9)c sum||s_alpha||^2
+ >=c||z||^2.                                          (240.4)
+Adding aE(f)>=0 and dividing by V proves240.0 on mean-zero fields.
+This is a convex split of ONE T; it does not spend two full energy copies.
+
+4. Global means and the singleton case.
+Every partition block projection preserves constants and the global mean:
+R P_0=P_0 R=P_0, componentwise. Thus z=m+w, m=P_0z,w=(I-P_0)z,
+has orthogonal m,w and orthogonal Rm=m,Rw. Q_A(z)=Q_A(w), since forward
+differences of m vanish. Apply240.4 to w. The coefficient32cb>=c because
+b>=1, so its observation term on m also supplies at least c||m||^2.
+This proves240.0 on ALL fields, not only U or fields with an extra mean
+hypothesis. In case(i), R=I and normalized K=c suffices directly; 32cb
+is larger and therefore valid. The large bounded singleton fallback cannot
+contradict an order statement with D-only constants from239's count bound.
+No block projection is assumed to preserve coexactness at any step.
+
+5. Matching lower with ACTUAL rank and fixed canonical weights.
+For any canonical per-channel map restoring on U with finite K,237's trace
+argument applies for every g: weak coexact T0f=(v_alpha f)_alpha has
+Q_A(T0f)<=c||f||^2/4, so K||RT0f||^2>=3c||f||^2/4.
+Each contraction R_alpha|U_0 has squared singular values summing to at most
+rank(C_alpha|U_0). Summing on a real orthonormal U_0 basis yields trace
+<=r/g with r=rank(C|U), so K>=3cgd0/(4r).
+For the fixed239 map, r<=L_D(V+gV/n^2) and d0>=(D-1)V/2. Consequently
+K >= [3(D-1)/(8L_D)] c g/(1+g/n^2)
+ >= [3(D-1)/(16L_D)] c min(g,n^2).                     (240.5)
+Indeed when g<=n^2 the denominator is at most2, and otherwise write the
+fraction as n^2/(1+n^2/g)>=n^2/2. The upper32cb and lower240.5 establish
+the least-penalty order uniformly in n,g. K>0 and a least coefficient exists
+as the finite lower endpoint of closed restoring half-lines over all fields.
+Arbitrary rescaling of rows would invalidate this K statement and is excluded.
+The rank theorem remains239's proved actual-rank theorem, not a claim that
+every economical map restores or enjoys this upper penalty.
+
+6. Scope and adverse history.
+The new order agrees with g=1 having singleton K=c and with the old g>=n^2
+range's cn^2 growth. It replaces no previous failure or grade;239 correctly
+withheld this stronger penalty result, and frozen232B still has its own older
+bounds, original material objections and first report. This theorem uses
+the same exact positive profile, canonical norms, fixed basis and finite actual
+domain. No arbitrary/signed coefficient result, basis-free mixed-row lower,
+implemented efficient algorithm, practical usefulness, exact leading constant,
+historical priority or physical/continuum consequence is established.
+The tools (finite Neumann estimates, orthogonal partitions, Young and trace)
+are classical. Group240 with235–239 as one substantive consolidation and
+preserve236A's normalization counterexample and all prior raw reports.

@@ -1,0 +1,317 @@
+\section{A fixed coherent weak space}\label{sec:fixed}
+We prove Theorem~\ref{thm:fixed}. Write $\mathsf U\in\R^{g\times q}$ for an
+orthonormal basis of $\im P$, so $\mathsf U\mathsf U^T=P$. One deterministic
+choice is Gram--Schmidt on the first independent columns of $P$, in original
+index order. If $u_\alpha\in\R^q$ is its $\alpha$th row, then
+\begin{equation}\label{eq:frame}
+ \sum_{\alpha=1}^g u_\alpha u_\alpha^T=I_q,\qquad
+ \norm{u_\alpha}^2=P_{\alpha\alpha}\leq d:=\Lambda q/g.
+\end{equation}
+These coordinates serve the proof and channel selection. The observed fields
+remain the original $z_{k,\alpha}$.
+
+\subsection{The primary MSS input and an added count coordinate}
+We use precisely the following classical theorem of
+Marcus--Spielman--Srivastava \cite[Theorem 1.4, p.~3]{MSS}, in its version-pinned
+arXiv statement.
+\begin{theorem}[MSS finite-support theorem]\label{thm:MSS}
+Let independent finitely supported random vectors $v_1,\ldots,v_m\in\C^N$
+satisfy $\sum_i\Exp(v_iv_i^*)=I_N$ and
+$\Exp\norm{v_i}^2\leq\varepsilon$ for every $i$, where $\varepsilon>0$.
+With positive probability,
+\[
+ \norm{\sum_i v_iv_i^*}\leq(1+\sqrt\varepsilon)^2.
+\]
+\end{theorem}
+We use this published theorem, not a proof or computational verification of it.
+The simultaneous cardinality assertion needed next is not simply assumed
+from a frame-partition corollary.
+
+\begin{lemma}[Simultaneous Gram and count halving]\label{lem:halving}
+Suppose $\sum_{i\in I}w_iw_i^T=I_q$, $m=|I|$, and
+$\delta=\max_i\norm{w_i}^2+1/m$. There is a partition $I=S_1\sqcup S_2$
+such that, for both $j=1,2$,
+\begin{equation}\label{eq:half}
+ (\tfrac12-e)I_q\leq\sum_{i\in S_j}w_iw_i^T\leq(\tfrac12+e)I_q,
+ \qquad \tfrac12-e\leq |S_j|/m\leq\tfrac12+e,
+ \quad e=\sqrt{2\delta}+\delta.
+\end{equation}
+All original rows, including zero rows, are counted.
+\end{lemma}
+\begin{proof}
+Independently for every $i$, choose a uniform sign $\sigma_i\in\{-1,1\}$
+and a uniform label $a_i\in\{1,2\}$, also independent within each pair.
+Set $b_i=(w_i,\sigma_i/\sqrt m)\in\R^{q+1}$ and
+$v_i=\sqrt2 e_{a_i}\otimes b_i\in\R^{2(q+1)}$.
+The sign removes the off-diagonal covariance with the last coordinate:
+\[
+ \Exp(b_ib_i^T)=\diag(w_iw_i^T,1/m),\qquad
+ \sum_i\Exp(v_iv_i^T)=I_{2(q+1)}.
+\]
+Each vector has four possible outcomes and squared norm
+$2(\norm{w_i}^2+1/m)\leq2\delta$. Theorem~\ref{thm:MSS} therefore supplies
+one common outcome with norm at most $(1+\sqrt{2\delta})^2$.
+In each label block, the sum is $2\sum_{i:a_i=j}b_ib_i^T$.
+Its leading principal block gives the upper Gram bound, and its last scalar
+entry gives the upper count bound, both with
+$(1+\sqrt{2\delta})^2/2=1/2+e$. Complementing the \emph{same} partition gives
+both lower bounds. Signs do not alter the original Grams or cardinalities.
+In particular a zero $w_i$ still has its count coordinate. The finite set of
+feasible original-channel partitions has a lexicographically first member;
+this specifies existence without claiming an efficient search.
+\end{proof}
+
+\subsection{Recursive whitening with a noncircular error bound}
+Start with $I_0=\{1,\ldots,g\}$ and write
+$G_t=\sum_{\alpha\in I_t}u_\alpha u_\alpha^T$, $m_t=|I_t|$.
+When $G_t$ is positive, whiten \emph{only for selection}:
+$w_\alpha=G_t^{-1/2}u_\alpha$. Apply Lemma~\ref{lem:halving}, choose a
+deterministic child $I_{t+1}$, and set
+\[
+ \delta_t=\max_{\alpha\in I_t}\norm{G_t^{-1/2}u_\alpha}^2+1/m_t,
+ \qquad\eta_t=2\sqrt{2\delta_t}+2\delta_t.
+\]
+Congruence by $G_t^{1/2}$ gives
+\begin{equation}\label{eq:recurrence}
+ \frac{1-\eta_t}{2}G_t\leq G_{t+1}\leq\frac{1+\eta_t}{2}G_t,
+ \quad\frac{1-\eta_t}{2}m_t\leq m_{t+1}\leq\frac{1+\eta_t}{2}m_t.
+\end{equation}
+
+\begin{lemma}[Uniform conditioned prefixes]\label{lem:prefix}
+Put $C_0=2^{24}$. If $4^k\leq g/(C_0\Lambda q)$, then $2k$ successive
+halvings exist, and for every $0\leq t\leq2k$,
+\begin{equation}\label{eq:prefix}
+ \frac{15}{16}2^{-t}I_q\leq G_t\leq\frac{17}{16}2^{-t}I_q,
+ \qquad\frac{15}{16}g2^{-t}\leq m_t\leq\frac{17}{16}g2^{-t}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Assume only the already established bounds at a current stage. Then
+\[
+ \delta_t\leq\frac{16}{15}2^t(d+1/g)
+       \leq\frac{32}{15}2^t d,
+\]
+because $\Lambda q\geq1$. The current Gram is invertible, justifying that
+stage's whitening. Over any justified prefix of $t<2k$, geometric sums give
+\begin{equation}\label{eq:error}
+ \sum_{t<2k}\eta_t\leq12\sqrt{d4^k}+5d4^k
+ \leq\frac{12}{4096}+\frac5{2^{24}}<\frac1{256}.
+\end{equation}
+Here the displayed full sum denotes a majorant for every justified prefix,
+not an assumption that future stages exist. Indeed
+$\sum_{t<2k}2^{t/2}=(2^k-1)/(\sqrt2-1)$ and
+\[
+ \frac{2\sqrt2\sqrt{32/15}}{\sqrt2-1}<12,
+ \qquad 2(32/15)<5.
+\]
+For example $\sqrt2<3/2$, $\sqrt{32/15}<3/2$ and
+$(\sqrt2-1)^{-1}=\sqrt2+1<5/2$ already bound the first expression by
+$45/4<12$. Also $d4^k\leq2^{-24}$; the last numerator in
+\eqref{eq:error} is $49157<65536$ over denominator $2^{24}$.
+
+For nonnegative errors with sum $S<1$,
+$\prod(1-\eta_t)\geq1-S$ and
+$\prod(1+\eta_t)\leq1/(1-S)$.
+Start from $G_0=I_q,m_0=g$. The current loose bounds give the next error
+bound; the resulting prefix products lie between $255/256$ and $256/255$,
+strictly within $15/16$ and $17/16$. Applying \eqref{eq:recurrence} proves
+\eqref{eq:prefix} at the next stage. This completes a prefix induction and
+proves existence of all stages, rather than assuming their conditioning.
+Every $\eta_t<1$, and both children have positive Gram and positive count.
+The case $k=0$ contains no halving and is immediate.
+\end{proof}
+
+\subsection{Stopping, original groups and the full row count}
+Set
+\begin{equation}\label{eq:stop}
+ M_* =\min\left\{\frac n{32},\sqrt{\frac g{C_0\Lambda q}}\right\}.
+\end{equation}
+If $M_*<1$, give \emph{all} channels singleton partitions. This priority
+covers $n<32$ or $g<C_0\Lambda q$, including zero frame rows. It will be
+counted and checked separately. Otherwise put $k=\lfloor\log_2M_*\rfloor$
+and run exactly $2k$ halvings. For $0\leq j<k$ let
+$J_j=I_{2j}\setminus I_{2j+2}$, and let $J_k=I_{2k}$ denote the one tail.
+These disjoint sets exhaust all original channels. Their \emph{unwhitened}
+Grams satisfy
+\begin{equation}\label{eq:groupgram}
+ G_{J_j}\geq\frac{43}{64}4^{-j}I_q\ (j<k),\qquad
+ G_{J_k}\geq\frac{15}{16}4^{-k}I_q.
+\end{equation}
+The first constant is $(15/16)-(17/64)$, using a lower parent and upper
+later subset in their Loewner difference. These are matrix bounds, not traces.
+
+Use the actual spatial pieces of Lemma~\ref{lem:pieces}. Since
+$2^k\leq n/32$, their parent lengths satisfy
+\[
+ L_j\leq\frac{33}{32}n2^{-j}\quad(0\leq j\leq k).
+\]
+Define $\lambda_j=5L_j^2/(8n^2)$, including the tail. Then
+\begin{equation}\label{eq:lambda}
+ \lambda_j\leq\frac{5445}{8192}4^{-j}
+       <\frac{43}{64}4^{-j},
+ \qquad \frac{43}{64}=\frac{5504}{8192}.
+\end{equation}
+Thus \eqref{eq:groupgram} implies $G_{J_j}\geq\lambda_jI_q$ for every
+piece, also the tail. Give channels in $J_j$ the child partition
+$\mathcal P_{j+1}$ when $j<k$, and channels in $J_k$ the singleton partition.
+Every original channel receives exactly one partition. At $k=0$ all channels
+belong to the singleton tail; $G_{J_0}=I_q\geq5I_q/8$ directly.
+
+For $j<k$, $|J_j|\leq(17/16)g4^{-j}$. Hence, with the constant $A_D$ in
+Theorem~\ref{thm:fixed},
+\[
+ N_{\rm coarse}\leq D2^D\frac{17}{16}g
+              \sum_{j=0}^{k-1}2^{(D-2)j}
+ \leq A_Dg2^{(D-2)k}\leq A_DgV/n^2.
+\]
+The sum is zero at $k=0$. Since $2^k>M_*/2$,
+\[
+ |J_k|\leq\frac{17}{16}g4^{-k}
+ <\frac{17}{4}\max\{1024g/n^2,C_0\Lambda q\}
+ \leq4352g/n^2+\frac{17}{4}C_0\Lambda q.
+\]
+Multiply by $DV$ for every singleton row to obtain
+$N_{\rm out}\leq L_{D,\Lambda}(qV+gV/n^2)$.
+In the priority branch the full count $DgV$ is at most
+$1024DgV/n^2$ if $n<32$, or $DC_0\Lambda qV$ if $g<C_0\Lambda q$;
+the same stated constant pays both. Equalities at either threshold use the
+$k\geq0$ branch. No large-size inference is applied at an ineligible input.
+
+\subsection{All-field coercivity with one strong-energy budget}
+First take $z$ with componentwise mean zero. Put $f=\mathsf U^Tz$ and
+$s=z-\mathsf U f$. These are $q$ weak forms and $g$ strong remainder forms,
+respectively; $\mathsf U^Ts=0$. Because $\mathsf U$ is spatially constant,
+\begin{equation}\label{eq:split}
+ \norm z^2=\norm f^2+\norm s^2,\qquad
+ Q_B(z)=a\En(f)+T,\qquad T=H\sum_\alpha\En(s_\alpha).
+\end{equation}
+For each actual group the parent-cell estimate gives
+\[
+ H\sum_{\alpha\in J_j}\En(s_\alpha)
+ \geq\frac{4H}{L_j^2}\sum_{\alpha\in J_j}\norm{\Delta_js_\alpha}^2.
+\]
+The channel groups are disjoint: summing these inequalities spends $T$ once.
+Since $\Delta_js_\alpha=\Delta_jz_\alpha-u_\alpha\cdot\Delta_j f$, use
+\[
+ \norm{p-v}^2\geq\frac9{10}\norm v^2-9\norm p^2.
+\]
+The difference is $10\norm p^2-2\ip p v+\norm v^2/10\geq0$.
+Using the actual Grams and \eqref{eq:lambda} yields
+\begin{align}\label{eq:strongbudget}
+ T&\geq\frac9{10}\sum_{j=0}^k\frac{4H}{L_j^2}
+       \ip{\Delta_j f}{G_{J_j}\Delta_j f}
+       -36\sum_{j=0}^k\frac H{L_j^2}
+                     \sum_{\alpha\in J_j}\norm{\Delta_jz_\alpha}^2\nonumber\\
+ &\geq\frac94c\norm f^2-36cb\norm{\mathcal Rz}^2.
+\end{align}
+The positive pieces sum to $\norm f^2$ by mean zero and their orthogonality.
+For the negative term, $\Delta_j$ is a subprojection of its channel's child
+observation, or of $I$ at the tail. Also $L_j\geq n2^{-j}$ gives
+$H/L_j^2\leq c4^j\leq c4^k$, and stopping implies $4^k\leq b$.
+Disjoint channel groups therefore bound the negative sum by the displayed
+single observation norm. No factor $q$ or extra copy of strong energy is used.
+
+Independently Lemma~\ref{lem:fourier} gives $T\geq16c\norm s^2$.
+Take the convex combination with weights $8/9$ and $1/9$ of this inequality
+and \eqref{eq:strongbudget}. It gives
+\[
+ T+32cb\norm{\mathcal Rz}^2
+ \geq2c\norm f^2+\frac{16}{9}c\norm s^2\geq c\norm z^2.
+\]
+Add $a\En(f)\geq0$. In the priority branch $\mathcal R=I$ and $K=c$
+already suffice, so $32cb$ do also.
+
+Finally every channel partition observes every global constant:
+$\mathcal R\Pi_0=\Pi_0\mathcal R=\Pi_0$. Its constant and mean-zero images
+are orthogonal, $Q_B$ ignores constants, and $32cb\geq c$ pays their full
+norm. This proves the all-field statement and, by \eqref{eq:RC}, the precise
+normalization in \eqref{eq:fixedupper}. Strong constants on zero weak-frame
+rows are included, not assigned a nonexistent spectral gap.
+
+\subsection{Actual-rank lower bound and the cancellation of weak dimension}
+Let $C=\bigoplus_\alpha C_\alpha$ be any internally channel-separable linear
+map on $\UU$. Let $S_\alpha$ be its row-space orthogonal projection
+\emph{inside} $\UU_0$, and $S=\bigoplus_\alpha S_\alpha$. Then
+$r=\rank(C|_\UU)=\sum_\alpha\rank S_\alpha$ and $\ker C=\ker S$.
+The weak embedding $T_0:\UU_0^q\to\UU$, $T_0f=\mathsf U f$, is an isometry
+of real domain dimension $qd_0$. Constant internal coefficients preserve the
+actual coexact space. Lemma~\ref{lem:fourier} gives
+\begin{equation}\label{eq:weakenergy}
+ Q_B(T_0f)=a\En(f)\leq\frac c4\norm f^2.
+\end{equation}
+Taking a real orthonormal weak basis gives
+\begin{equation}\label{eq:ranktrace}
+ \tr(T_0^*ST_0)=\sum_\alpha P_{\alpha\alpha}\rank S_\alpha
+       \leq\frac{\Lambda q}{g}r.
+\end{equation}
+Averaging over dimension $qd_0$ therefore supplies a \emph{unit} $f$ with
+$t=\norm{ST_0f}^2\leq\Lambda r/(gd_0)$: the two $q$ factors cancel.
+Set $w=T_0f$ and $u=(I-S)w$. Then $u\in\UU$, $Cu=0$ and
+$\norm u^2=1-t$. Positive-semidefinite polarization gives
+\[
+ Q_B(u)\leq2Q_B(w)+2Q_B(Sw)\leq c/2+8DHt.
+\]
+The last step uses $Q_B(v)\leq4DH\norm v^2$ on actual fields.
+At zero observation the restoring inequality, even with any finite
+$\Phi$ satisfying $\Phi(0)=0$, implies
+$c(1-t)\leq c/2+8Dcn^2t$. Thus
+$t\geq[2(1+8Dn^2)]^{-1}$, proving the second bound in
+\eqref{eq:ranklower} by \eqref{eq:ranktrace}.
+
+Independently $CT_0$ must be injective, since a nonzero weak field in its
+kernel would violate restoration by \eqref{eq:weakenergy}. Hence $r\geq qd_0$.
+Since $d_0\geq(D-1)V/2$ and
+$1+8Dn^2\leq(1+8D)n^2$, their maximum is at least
+\[
+ \frac{D-1}{8\Lambda(1+8D)}(qV+gV/n^2).
+\]
+Together with the actual canonical construction this proves the rank order.
+Both a minimum on $\UU$ and a minimum requiring all-field restoration obey
+these orders, because the lower is already on $\UU$ and the upper is all-field.
+There is no output-dimension substitution in the lower argument.
+
+\subsection{Least coefficient for the constructed fixed weights}
+For a canonical map, $\mathcal R_\alpha|_{\UU_0}$ is a contraction into the
+ambient one-channel field space; its squared singular values sum to at most
+its actual rank. That rank equals $\rank(C_\alpha|_{\UU_0})$ by their equal
+kernels in \eqref{eq:RC}, even if the projection image leaves $\UU_0$.
+Consequently
+\[
+ \tr(T_0^*\mathcal R^*\mathcal RT_0)
+ =\sum_\alpha P_{\alpha\alpha}
+             \norm{\mathcal R_\alpha|_{\UU_0}}_{\rm HS}^2
+ \leq\frac{\Lambda q}{g}r.
+\]
+Restoration on weak fields and \eqref{eq:weakenergy} require
+$K\norm{\mathcal RT_0f}^2\geq(3c/4)\norm f^2$.
+Sum a real orthonormal weak basis and cancel $q$ to obtain
+\begin{equation}\label{eq:Ktrace}
+ K\geq\frac{3cgd_0}{4\Lambda r}.
+\end{equation}
+For the constructed map $r\leq L_{D,\Lambda}(qV+gV/n^2)$, so
+\[
+ K\geq\frac{3(D-1)c}{8\Lambda L_{D,\Lambda}}
+          \frac g{q+g/n^2}
+ \geq\frac{3(D-1)c}{16\Lambda L_{D,\Lambda}}\min\{g/q,n^2\}.
+\]
+The last comparison follows by considering which denominator term is larger.
+The sufficient all-field $32cb$ proves the opposite bound. A least coefficient
+exists: the admissible set is a nonempty closed intersection of restoring
+half-lines in $K$, bounded below by \eqref{eq:Ktrace}. This works on $\UU$
+or all fields for the same map. These statements complete
+Theorem~\ref{thm:fixed}.
+
+\begin{remark}[Endpoints and the role of coherence]\label{rem:endpoints}
+For $q=g$, $P=I$ and $M_*<1$; there is no strong complement. The singleton
+map has actual rank $gd_0$ and sufficient $K=c$, with $b=1$. The singleton
+priority also makes $n=2$, $n<32$ and $g<C_0\Lambda q$ explicit, rather than
+an extrapolation of whitening. At $n=32$ or $g=C_0\Lambda q$, $k=0$ is
+permitted and the one singleton tail is valid.
+Without coherence a coordinate weak $q$-plane can use singleton weak channels
+and one root on each strong channel, with actual rank $qd_0$ and $K=c$;
+Lemma~\ref{lem:fourier} controls strong mean-zero forms and the roots pay
+strong constants. But its diagonal entries equal one, so it is inadmissible
+for fixed $\Lambda$ when $g>\Lambda q$. In the remaining range the extra
+$gV/n^2$ term is controlled by a $\Lambda$-dependent multiple of $qV$.
+This supplies no contrary coherent example.
+\end{remark}

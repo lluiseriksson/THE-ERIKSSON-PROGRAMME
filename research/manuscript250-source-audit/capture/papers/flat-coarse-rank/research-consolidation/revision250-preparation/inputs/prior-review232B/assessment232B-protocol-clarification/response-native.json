@@ -1,0 +1,67 @@
+{
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "version": "v15",
+  "canonical_sha256": "5595e89c1bcbec1d9b1ae35053a76e6a962f67b45d5d1ac483e5b7a60c9b9be0",
+  "provider": "OpenAI",
+  "model_id": "Codex (based on GPT-6; exact served backend and reasoning effort unknown)",
+  "assessed_at": "2026-11-10T22:50:03.7810586+01:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "unknown",
+  "recommendation": "major_revision",
+  "millennium_score": 4.1,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "All 30 text pages and proofs were read; adversarial checks found no definite counterexample or fatal gap in the exact stated finite results. This is analytical AI confidence, not formal verification or exhaustive certification."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The scalar collar/BV/weighted-gap/tree chain, complete signed correction, actual coexact annihilator ranks, full channel budgets, bump supports and strict-kernel-margin matching construction are supplied with explicit hypotheses. Some finite projection/folding steps are compressed and deserve easier checking."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The sharp common-partition coexact rank and matched fixed-basis coupled comparison are plausible novelty candidates. Classical tree/ring predecessors were checked in primary-source excerpts. Historical priority and exact implication by previous results remain unestablished."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "A coherent specialist finite observation-class contribution, especially comparisons on identical coefficient families. Growing internal dimension, basis dependence, nonlocal upper rows, potentially large penalties and absence of demonstrated applications limit broader importance."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "The finite definitions, coefficient families, constants and proofs are explicit and exact PDF identity is verified. No scientific execution, build, new rendering or independent terminal replay was performed; executable mode tie-breaking and practical algorithms are not established."
+    }
+  },
+  "summary": "Analytical review of the exact 30-page PDF finds a coherent and apparently correct finite coercivity theory distinguished by allowed observations: capped-budget common rectangles, sharp actual coexact common-partition rank, a component-adapted escape on identical coefficients, a constant coupled fixed-basis separability gap with matching order, and a weak-endpoint logarithmic lower family. Scientific importance is 4.10/10, not a probability. Minor revision is an AI opinion for a specialist venue, conditional on normal editorial novelty judgment. v15 is a proposed author successor only; no receipt, version UUID, acceptance or publication is created. The PDF itself exposes a predecessor score; this is not blind or demonstrated independent review. Protocol clarification of the SAME first round: the immutable original expressed a conditional specialist-venue minor_revision scientific opinion. Because all three unresolved_material_objections remain open and unchanged, the native nonempty-material-objection rule requires a conservative major_revision classification. No scientific rereview or numerical rescore occurred: importance 4.10/10, overall stars 4, criteria 4/4/3/3/4 remain unchanged. Read the original report and protocol-addendum.txt together; this is not unconditional acceptance or publication.",
+  "strengths": [
+    "Original forward starts, incoming edges, wrap multiplicities and V-normalized observations are handled explicitly.",
+    "Signed matrix replacement controls full rotated corrections through endpoint refinement, with negative depth honestly transferred to the finite penalty.",
+    "The exact coexact annihilator formula yields the sharp universal g(D-1)(R-1) bound and an attaining fibre family without substituting output size for restricted rank.",
+    "Common and adapted maps are compared on the same actual positive diagonal family with all strong budget channels retained.",
+    "Appendices B-C prove matching actual rank order Theta_D(n^(2D-2)) for the specified constant coupled family, counting real/Nyquist modes and spending a strict 2c kernel margin correctly.",
+    "The endpoint lower family has genuine coexact bumps, actual arithmetic means and complete gradient-start supports; the centered differentiable/local quadratic penalty assumptions are substantive and explicit."
+  ],
+  "weaknesses": [
+    "Historical priority remains unresolved, and the scalar BV/ring/tree mechanisms are classical finite adaptations rather than a demonstrated new general method.",
+    "Free profile-dependent penalties may produce poor conditioning; economical rank alone gives no robust sensing/control guarantee or practical algorithm.",
+    "The strongest coupled gap uses growing g=V and a fixed internal basis; its upper observations are nonlocal and only a special constant profile is treated.",
+    "Sharp universal dimension bounds and special-family order comparisons do not give profilewise minimal ranks or leading constants.",
+    "No external application, interacting coefficient producer, continuum construction or physical reduction is supplied.",
+    "Operational/predecessor history occupies about two pages and could move intact to a supplement; a present-artifact note would clarify the dated source-freeze wording."
+  ],
+  "potential_errors": [
+    "No definite mathematical error or counterexample was found in the exact stated finite results; this statement is limited to the analytical reading described in the full report.",
+    "Levin-Peres Lemma 1.16 numbering was not externally verified because the author PDF timed out twice; the maximum-principle argument in this manuscript was checked directly.",
+    "The extraction loses some mathematical typography; original page 12 was inspected to verify the essential conjugate q_j in the Fourier potential numerator, and original pages 28-30 confirmed the Green-trace notation and ceiling rule. These are not identified PDF errors."
+  ],
+  "strong_novelty_candidates": [
+    "The exact annihilator formula for common full-vector means on the flat coexact domain and its sharp dimension-only universal bound, subject to specialist priority checking.",
+    "An explicit identical-coefficient comparison separating common full-vector restricted rank from component-adapted rectangular restricted rank.",
+    "The constant coupled growing-channel example with matching fixed-basis channel-separable actual rank order, together with a cheap mixed observation on that same family."
+  ],
+  "unresolved_material_objections": [
+    "Historical novelty of the rank and coupled-family results remains unestablished; the limited primary-source lookup does not constitute an exhaustive literature audit.",
+    "Practical usefulness and conditioning with the allowed finite profile-dependent penalties are unresolved; no actual application or efficient implementation is demonstrated.",
+    "No fatal correctness objection remains from this reading, but the recommendation is not unconditional editorial acceptance and the results must retain their finite, class-specific, basis/growth and penalty hypotheses."
+  ]
+}

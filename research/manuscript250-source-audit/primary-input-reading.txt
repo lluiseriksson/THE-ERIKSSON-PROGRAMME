@@ -1,0 +1,11 @@
+Fresh primary input reading for source250 audit,11November2026
+URL:https://arxiv.org/pdf/1306.3969v4
+Primary header:arXiv:1306.3969v4,14April2014;21PDFpages.
+Read:Theorem1.4, printed3/PDFindex2, all stated random-vector hypotheses and
+spectral conclusion; nearby Corollary1.5 and block-lifting proof opening across
+printed3–4/PDFindices2–3. Not the complete interlacing proof or whole paper.
+The manuscript's finite-support MSS statement agrees with this primary input.
+The manuscript derives its additional signed count-coordinate application; no
+unstated cardinality clause is attributed to the cited theorem.
+Access:web tool primaryPDF textual opening, no local PDF download/redistribution,
+no raw-PDF byte hash invented. Source250's wider priority remains unresolved.

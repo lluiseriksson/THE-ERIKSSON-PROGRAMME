@@ -1,0 +1,94 @@
+EXACT-SOURCE ANALYTIC AUDIT245
+Issued 2026-11-11. Verdict: ACCEPT THE COUNTEREXAMPLE TO THE PROPOSED SPATIALLY VARIABLE EXTENSION.
+No blocking mathematical defect or counterexample to the candidate was found. The selected source-weighted cycles, plane anchors, strict finite Dirichlet margin, admissible canonical rectangle partition and explicit finite quadratic penalty are valid. They provide an all-field restoring map of output count o(V), hence actual coexact rank o(V), after removing spatial constancy of P. This does NOT refute244 with its explicit constant-P hypothesis, a worst-case obstruction still witnessed by constant profiles, or a lower theorem with an additional prescribed uniform penalty bound. No grade, formal verification, priority judgment or publication approval is issued.
+
+1. Exact referent and byte provenance
+Repository: C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108.
+Frozen commit: 4d7540064d4825dd6b06493537ec657538eb8ee8.
+Path: papers/flat-coarse-rank/research/2026-11-11_checkerboard-projector245.txt.
+Raw capture command: git -C "C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108" show 4d7540064d4825dd6b06493537ec657538eb8ee8:papers/flat-coarse-rank/research/2026-11-11_checkerboard-projector245.txt.
+Fresh capture method: Git process StandardOutput.BaseStream directly to a byte buffer, then WriteAllBytes. No text decoding, newline normalization or BOM insertion. Git exit0. Captured source:7772 bytes,128 LF bytes,0 CR bytes.
+Exact Git blob/LF SHA256, no normalization:6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d.
+The COMPLETE245 source was read adversarially. The D evidencia-245/candidate245.txt copy was compared directly byte by byte and was identical to this captured Git blob.
+Eleven earlier actual Git raw captures were reused by direct-byte copy from evidencia-244/source-audit/capture, with each original SHA256 checked. Together with245 there are twelve raw scientific subjects:245,244,243,242,241B,239,240B,238,231B,237,and the original226C matrix-proof.tex and rectangular_matrix.tex. capture-manifest.json records every exact original commit/path/command, fresh/reused method, reuse origin, bytes, raw SHA256 and CR/LF count. Each original226C blob retains its original one CR byte. No normalized-LF digest replaces its raw digest.
+Earlier definitions and the original capped functional are scientific source context, not inherited model-grade authority. The new counterexample needs no MSS or other external non-elementary theorem: its path eigenvalue and quadratic completion are derived below. No external PDF was generated, rendered, graded or newly relied upon to prove245. Previous failures and reports remain at their own immutable referents.
+
+2. Precisely what hypothesis changes
+For every D>=3, even n>=2 and c>0, put V=n^D,g=2,q=1,Lambda=2,a=c/(16D),H=cn^2. Parity p(x)=sum_i x_i mod2 is well-defined on the torus BECAUSE n is even: replacing a representative by x_i+n changes its parity by0. Every positive coordinate step, including a wrap, flips parity.
+At even parity P(x)=e_1e_1^T; at odd parity P(x)=e_2e_2^T. Each is an orthogonal rank1 projector and its diagonal entries are<=1=Lambda q/g. B(x)=HI_2-(H-a)P(x) has exactly a,H at every site and is positive. It is repeated over D derivative directions and D spatial components, in the same fixed observed basis.
+The coefficient is evaluated at the actual positive forward SOURCE, not moved to the endpoint or averaged over the edge. Channel1 has strong source coefficient H at odd sites; channel2 has it at even sites. No sign, weak depth, local eigenvalue, coherence constant, row normalization or domain change is introduced. g,q,Lambda are fixed independent of n,c. Only spatial constancy of the weak projector is removed from the original constant-profile family. Even n is a legitimate unbounded subfamily of the enlarged n>=2 class, sufficient to disprove a uniform per-profile lower.
+The actual coexact domain remains U=U_0^2,U_0=im(d_1^*) for the actual counting forward curl/adjoint. All-field restoration below automatically restricts to that domain; no substitute divergence or quadratic form is used.
+
+3. Selected strong graph: actual forward labels and cycle coverage
+Fix a channel and call its strong-source parity A. Select ONLY positive forward edges from A vertices in directions e_1 and e_D. These two directions are distinct for D>=3. An A vertex has precisely those two selected outgoing edges. An opposite-parity vertex has precisely the two selected incoming edges from x-e_1 and x-e_D. These predecessor vertices are distinct for n>=2. Hence the selected undirected labelled graph has degree2 at every vertex.
+For any A vertex w_0, let w_t=w_0+t(e_D-e_1) and b_t=w_t+e_D, t in Z/nZ. Translation e_D-e_1 has exact order n because its D coordinate advances by1 mod n. Thus the n w_t are distinct. The n b_t are distinct by translation, and parity separates the two sets. The selected edges are exactly
+ w_t--b_t, the actual +e_D edge from w_t;
+ b_t--w_(t+1), the actual +e_1 edge from w_(t+1),
+since w_(t+1)+e_1=b_t. Likewise w_t+e_1=b_(t-1). Every selected incident edge at every listed vertex is accounted for. Thus these2n vertices form one connected2n-cycle and no selected edge leaves it.
+Orbits of the A vertices under e_D-e_1 partition all A vertices; shifting them by e_D partitions all opposite-parity vertices. Therefore the cycles are disjoint and cover every vertex. There are V/(2n) cycles per channel, consistent with even n. The same argument uses the other source parity for channel2.
+At n=2 this is a genuine4-cycle: the two w vertices differ in both coordinates1,D, while the two b vertices are their opposite-parity neighbors. Distinct selected directions give distinct edges. The reverse edge in the SAME direction has opposite-parity source and is weak, so it is not a second selected strong edge. No factor2 is silently inserted or removed. Every selected term is one actual forward term weighted H; all excluded terms remain nonnegative.
+
+4. Plane anchors, including periodic endpoints
+Let Pi={x:x_D=0}. On each cycle w_t has D coordinate w_(0,D)+t mod n, so exactly one w_t lies in Pi. b_s has D coordinate w_(0,D)+s+1 mod n, so exactly one b_s lies in Pi, with s=t-1. They are distinct by parity and adjacent through the selected +e_1 edge w_t--b_(t-1), even if that edge wraps coordinate1. Thus every cycle meets Pi in EXACTLY two adjacent anchors.
+An incoming +e_D wrap may run from a free vertex with x_D=n-1 to the zero anchor with x_D=0. It is still an actual selected edge with its original strong source, and is a legitimate boundary edge in the Dirichlet estimate. Nothing about wrapping changes the pointwise observation or shifts its coefficient. The plane is an original coordinate plane, not a diagonal slab or a rotated basis.
+
+5. Strict Dirichlet estimate: correct path length and factors
+Take a scalar field zero on Pi. On a2n-cycle, the two adjacent zero vertices leave m=2n-2 free vertices. Deleting only their zero-zero edge leaves a path with m free vertices and two zero endpoints, with m+1=2n-1 retained edges.
+Its Dirichlet matrix has diagonal2 and adjacent off-diagonal entries-1. The vectors sin(pi k r/(m+1)),1<=r<=m, have eigenvalues2-2cos(pi k/(m+1))=4sin^2(pi k/(2(m+1))). The m distinct eigenvalues yield a basis. Thus the smallest eigenvalue is4sin^2(pi/[2(2n-1)]). Using sin t>=2t/pi on[0,pi/2] gives the lower4/(2n-1)^2.
+This is the quadratic form sum of edge differences squared with each selected edge once, matching the actual graph energy convention. At n=2,m=2 the exact smallest eigenvalue is1; the source's lower4/9 is conservative and valid. The zero-zero edge contributes0. Summing cycles, both channels and all D spatial components adds neither a missing volume factor nor a factor2.
+The selected terms therefore imply, for every full field zero pointwise on Pi,
+ Q_A(z)>=4H/(2n-1)^2 ||z||^2=(c+delta_n)||z||^2,
+ delta_n=c[4n^2/(2n-1)^2-1]=c(4n-1)/(2n-1)^2>0.
+The algebra is exact. This is a STRICT finite margin for every even n>=2, though the chosen lower delta_n is not uniform in n. Other strong directions and every weak term are discarded only because they are nonnegative. No harmonic replacement, continuum approximation or regional-gap assumption is needed.
+
+6. Canonical rectangle class and full output count
+For each original internal channel use every point of Pi as its own singleton rectangle, n^(D-1) cells, and the one remaining box
+ {0,...,n-1}^(D-1) x {1,...,n-1}.
+It is nonempty because n>=2. These are disjoint, nonwrapping integer product rectangles in the original chart and cover all vertices. The partition need not be a Cartesian-product grid with all cuts propagated through the complement. The inherited class permits arbitrary per-channel rectangle partitions;244's floor-grid construction is not an extra restriction on its general rank-lower class. Indeed that lower was proved for the larger class of ALL internally channel-separable linear maps.
+Both channels may use this same partition, shared across spatial components. All rows are exactly V^(-1/2)|S|^(-1/2)sum_S z_(k,alpha). There are2D(n^(D-1)+1) full rows. Let R be the full counting orthogonal block projection. Disjoint nonempty rectangles give ||Cz||^2=||Rz||^2/V and ker C=ker R. A field in ker R is POINTWISE zero on Pi; its extra zero mean over the large complement box only narrows that kernel. Thus the strict estimate above holds on the full ker R.
+Observing only ONE average over Pi would not force those pointwise zero anchors; the source does not make that shortcut. Its actual singleton rows are what supply the Dirichlet hypothesis. No claim of independent rows after coexact restriction is required.
+
+7. Finite quadratic penalty by explicit completion
+Let L_A be the symmetric finite matrix of the actual Q_A. Variable B(x) still satisfies0<B(x)<=HI, hence
+ 0<=Q_A(z)<=Hsum_i||partial_i^+z||^2<=4DH||z||^2,
+because shifts are counting isometries. This includes period2 labelled multiplicity. Thus0<=L_A<=4DH I. Write F=L_A-cI to avoid confusing this global shifted matrix with the original local coefficient A(x). Then ||F||<=M=4DH+c.
+Decompose z=u+v with u=(I-R)z in ker R,v=Rz. The strict kernel estimate gives<u,Fu>>=delta_n||u||^2. Also<v,Fv>>=-M||v||^2 and2|<u,Fv>|<=2M||u||||v||. Young gives
+ 2M||u||||v||<=(delta_n/2)||u||^2+(2M^2/delta_n)||v||^2.
+Therefore
+ <z,Fz>+[M+2M^2/delta_n]||Rz||^2>=(delta_n/2)||u||^2>=0.
+With K_n=M+2M^2/delta_n this is exactly
+ Q_A(z)+K_n||Rz||^2>=c||z||^2.
+Every denominator is positive and every quantity finite for each even n,c>0. In particular no infinite penalty, limiting Schur complement or unproved injection criterion is substituted for the displayed coefficient. M already includes the shifted c term, so no extra missing+c is required.
+Divide by V and use the exact projection identity to obtain Q_A(z)/V+K_n||Cz||^2>=c||z||^2/V for ALL fields. If the same C rows are used in an unnormalized equation, its coefficient is V K_n; the K_n above multiplies the counting R norm and the normalized C norm. No free row rescaling is used.
+All constants are included by this all-field completion. Directly, a constant field has Q_A=0,Rz=z and K_n>=M>=c, so constants are indeed paid. R need not preserve the coexact space because the argument is on the full space before restriction.
+K_n can be very large and n-dependent; the source makes no bounded-penalty claim. Its displayed conservative delta_n can make K_n grow on the scale c n^5 at fixed D. Such growth is permitted when refuting a rank necessity that allowed ANY finite penalty.
+
+8. Actual rank and exact quantified refutation
+Restricting the successful full-field C to the unchanged actual U=U_0^2 gives a successful restoring map there. Its actual rank r=rank(C|U) obeys
+ r<=2D(n^(D-1)+1),
+ r/V<=2D(1/n+1/n^D)->0
+along even n at fixed D. Independence of the restricted rows is irrelevant: an upper count is enough. In particular no false decomposition of U_0 by spatial components or substitution of a modified coexact domain occurs.
+For fixed g=2,q=1,Lambda=2, the244 target qV+gV/n^2=V+2V/n^2 is at least V. Thus any positive constant depending only on D,Lambda times that target eventually exceeds the rank of this successful map. There can be no uniform PER-PROFILE Omega(V) minimum-restoring-rank lower over the enlarged spatially varying family with arbitrary finite restoring penalties.
+This conclusion is not a refutation of244's constant-P theorem. Nor does it refute a WORST-CASE lower over the enlarged class, since constant profiles remain members of that class. It also does not establish failure of a new lower with a separately imposed size-uniform penalty upper. Source245 expressly supplies only a finite n-dependent coefficient. It does not determine the optimal rank or penalty for this checkerboard field.
+The constant-profile proof uses a fixed global weak embedding whose energy is aE(f) and whose image is actual coexact. A spatially varying local weak basis cannot simply be substituted into that step: forward differences would act on it and it need not preserve the domain. The actual counterexample makes the nontransfer precise without claiming every variable projector has small restoring rank.
+
+9. Original capped budget and all other assumptions retained
+At each site there are D^2 weak eigenvalues a and D^2 strong H, exactly as in the fixed g=2,q=1 constant family. The original cap uses alpha_D=(3/4)^D(D/2)(D/(D-2))^(D-1). Weak cost is1 because alpha_D(16D)^(D/2)>=(3sqrt(D))^D>1, and strong cost remains min(1,alpha_D n^(-D)). Hence
+ F=D^2V[1+min(1,alpha_D n^(-D))], h=2D.
+Since the bracket lies in[1,2], h+F=Theta_D(V), with saturation and every gradient multiplicity retained. Spatial permutation of the same two local eigenvalues changes neither this functional nor positivity. The241A altered-alpha error is not reintroduced.
+No internal mixing, arbitrary row scale, diagonal slab, negative channel, vanishing weak coefficient, changed source-weight convention, alternate domain or infinite penalty is hidden. Only constancy of P has been relaxed. The even-period subfamily is explicit and is sufficient for the asserted contradiction.
+
+10. Adversarial checks, limits and priority
+Checked on paper: parity across every wrap; the actual strong-source direction labels; n=2 and distinct e_1/e_D edges; order-n translation, disjoint cycle coverage and no escaping edge; exactly two distinct adjacent anchors; boundary edges across x_D wrap; m=2n-2 Dirichlet free sites and m+1 edge denominator; all channel/spatial multiplicities; complement nonemptiness and partition class; full kernel vs pointwise plane zero; positive strict delta; operator norm and cross-term factors; normalization and all constants; actual rank upper and even-n limit; local capped budget and unchanged fixed g,q,Lambda. None yielded a blocking defect.
+The result is an essential-hypothesis boundary for a proposed extension, not a general spatially varying classification, minimum-rank theorem, practical solver, conditioning result or physical/continuum claim. Cycles, finite sine eigenvectors and finite-dimensional quadratic completion are classical. Historical priority for this construction remains unestablished; no exhaustive literature search was performed. Earlier raw audits,241A rejection,242N1,243C1 and frozen assessments remain unchanged and are not transferred. Future grouping is not permission to submit or publish a new paper.
+
+11. Operational and factual model context
+Standing storage rules, D:\LEEME.md, active repository CLAUDE.md and Operational Governance Charter remain binding and were read in this persistent task. This is the separate AUDITOR role from fabrication, but the same persistent AI auditor that reviewed earlier units. It is not independent, blind, human, or fresh-model/provider/account resampling. Parent framing and earlier context were visible. No245 fabrication occurred here. Shared filesystem/account and inherited configuration remain shared. No inbound follow-up arrived during this audit.
+Actually exposed description:"Codex, an agent based on GPT-6". Exact deployed backend/model identifier, version and actual reasoning effort are unexposed and unknown. OpenAI/Codex is the exposed interface context. Authentication account, provider routing, subscription/quota and provider/account usage limits were not inspected and are unknown. No separate-provider identity or quota status is invented.
+Only paper reasoning, committed-source reading, text authoring, Git capture/inspection and byte/hash transport occurred. No mathematical executable, numerical/symbolic oracle, Lean/Lake, local build/test, rendering or scientific runtime allocation occurred. No source, branch, repository state, other chat, automation or publication changed. No clone was created and no cleanup is pending. Writes were confined to the requested D evidencia-245/source-audit subtree. Earlier source/report files were read-only and reused captures were copied, not moved or rewritten.
+
+12. Evidence and disposition
+Destination:D:\Datos\the-eriksson-programme\autonomia\evidencia-245\source-audit.
+Complete report:fullreport.txt. Machine verdict:verdict.json. Factual context:context.json. Exact capture binding:capture-manifest.json. Scientific Git bytes:capture\*. Artifact hashes:hashes.json, excluding its own unavoidable self-reference; its external SHA256 is returned at handoff.
+Authored report/JSON files are UTF-8 without BOM, LF only, final LF. Raw captures preserve exact original Git bytes, including the two226C CR bytes identified in the manifest.
+Final: ACCEPT245 at4d7540064d4825dd6b06493537ec657538eb8ee8, rawSHA6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d, as a counterexample to the proposed universal spatially variable rank-lower extension, with the limits above. No blocking defect found. No numerical grade, stars, PDF review, formal verification, execution or originality certificate was requested or produced.

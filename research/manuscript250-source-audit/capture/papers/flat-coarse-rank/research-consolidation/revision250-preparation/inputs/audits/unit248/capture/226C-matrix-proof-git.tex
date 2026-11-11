@@ -1,0 +1,156 @@
+\section{Positive replacement and exact rectangular refinement}\label{sec:matrixproof}
+We prove Theorem~\ref{thm:matrix}. Every step uses the actual matrix profile
+on the forward stack in \eqref{eq:actual}. In particular, positivity is
+used to discard wrap terms only after replacing the signed profile.
+
+\subsection{The spectral split and scalar inverse moment}
+Set
+\[
+ \sigma=\alpha_D^{1/P}c,
+ \qquad S_x=1_{(-\infty,\sigma]}(A(x))\R^r,
+ \qquad N=\sum_x\dim S_x,\qquad I=\{x:S_x\ne\{0\}\}.
+\]
+Here $1_{(-\infty,\sigma]}(A(x))$ is the spectral projector. A degenerate
+eigenspace at the cutoff is selected in full, so no choice of basis within
+it enters the construction. Every nonpositive channel is selected. A positive
+selected channel contributes exactly one to the capped budget, and an
+unselected channel contributes its uncapped inverse power. Consequently
+\begin{equation}\label{eq:cap-exact}
+ F_c(A)=N+\alpha_Dc^P
+                \sum_{x,j:\lambda_j(x)>\sigma}\lambda_j(x)^{-P},
+ \qquad 0\le N\le F_c(A),\quad |I|\le N.
+\end{equation}
+Equality $\lambda=\sigma$ is included in $N$.
+
+Put $T=\sigma+c(1+N)>\sigma$. Replace every selected eigenvalue by $T$,
+leaving all unselected eigenvalues and every local spectral subspace
+unchanged, and denote the resulting positive definite matrix by $A_T(x)$.
+For $N=0$ this changes nothing. With
+$a_T(x)=\lambda_{\min}(A_T(x))>0$, pointwise matrix positivity gives
+\begin{equation}\label{eq:scalar-domination}
+ Q_{A_T}(u)\ge Q_{a_T}(u).
+\end{equation}
+This controls the complete stacked vector, including all directional and
+internal mixing. It requires no commutation between distinct matrices.
+Moreover, the largest eigenvalue of $A_T(x)^{-P}$ is at most its trace, hence
+\begin{align}\label{eq:replacement-moment}
+ c^P\sum_xa_T(x)^{-P}
+ &\le c^P\sum_x\tr(A_T(x)^{-P})\nonumber\\
+ &=c^P\sum_{\lambda_j(x)>\sigma}\lambda_j(x)^{-P}
+                  +N(c/T)^P\\
+ &\le \frac{F_c(A)-N}{\alpha_D}+1.\nonumber
+\end{align}
+The last inequality uses $T\ge c(1+N)$ and
+$N/(1+N)^P\le1$ for $P\ge1$. When $N=0$ the extra one is harmless.
+
+\subsection{The scalar partition is derived, not assumed}
+Theorem~\ref{thm:balanced223} in Appendix~\ref{sec:balanced223} applies to
+every finite positive $a_T$, without an arithmetic-mean, lower-envelope or
+upper-envelope condition. Its partition $\mathcal R_0$, combined with
+\eqref{eq:scalar-domination}, satisfies
+\begin{equation}\label{eq:positive-observation}
+ c\normn{u}^2\le V^{-1}Q_{A_T}(u)+c\|C_{\mathcal R_0}u\|^2,
+\end{equation}
+by summing the same scalar inequality over all $h$ real components.
+If $R_0=\#\mathcal R_0$, its exact count and
+\eqref{eq:replacement-moment} yield
+\begin{align}\label{eq:initial-count}
+ R_0&\le2D\left[1+(2b+3)b(cG_D)^P\sum_xa_T(x)^{-P}\right]\nonumber\\
+ &\le2D\left[1+B_D\left(1+\frac{F_c(A)-N}{\alpha_D}\right)\right].
+\end{align}
+There is no auxiliary local-gap or extension hypothesis in this application:
+the scalar construction and its gap are proved in the appendix.
+
+\subsection{Isolating every affected endpoint}
+Let
+\begin{equation}\label{eq:endpoints}
+ Z=I\cup\bigcup_{i=1}^D(I+e_i),\qquad |Z|\le(D+1)|I|\le(D+1)N,
+\end{equation}
+where the translations are periodic. We refine $\mathcal R_0$ so that each
+$z\in Z$ is a singleton member. Order $Z$ lexicographically in the fixed
+chart. If $z$ is not already a singleton, let $R$ be its current rectangle.
+Partition $R\setminus\{z\}$ according to the first coordinate in which a
+point differs from $z$, and according to whether it is smaller or larger in
+that coordinate. Earlier coordinates are fixed to those of $z$, later
+coordinates range over their original intervals, and the differing coordinate
+ranges below or above $z$. Each nonempty piece is an integer rectangle.
+There are at most $2D$ such pieces. Adding $\{z\}$ replaces one rectangle
+by at most $2D+1$, increasing the count by at most $2D$.
+Earlier isolated points lie in disjoint singleton members and remain intact.
+Thus the final partition $\mathcal R$ satisfies
+\begin{equation}\label{eq:refined-count}
+ R:=\#\mathcal R\le R_0+2D|Z|\le R_0+2D(D+1)N.
+\end{equation}
+A wrapping forward endpoint is simply its chart representative in $Z$;
+this causes no alteration of the rectangle argument.
+
+For each original parent $B$ and its final pieces $B_k$,
+\[
+ q_B(u)=\sum_k\sqrt{|B_k|/|B|}\,q_{B_k}(u),\qquad
+ \sum_k|B_k|/|B|=1.
+\]
+Hilbert-space Cauchy with these exact weights proves
+\begin{equation}\label{eq:refine-monotone}
+ \|C_{\mathcal R_0}u\|^2\le\|C_{\mathcal R}u\|^2,
+ \qquad V^{-1}\sum_{z\in Z}\|u(z)\|^2
+                      \le\|C_{\mathcal R}u\|^2.
+\end{equation}
+The second assertion holds because each $z\in Z$ contributes the singleton
+row $V^{-1/2}u(z)$. The remaining rows are still only component means on
+rectangles; no gradient or nonrectangular observation has been introduced.
+
+\subsection{Charging the complete signed correction}
+Define the finite number
+\begin{equation}\label{eq:negative-depth}
+ L=\begin{cases}
+ 0,&N=0,\\
+ \displaystyle\max_{x,j:\lambda_j(x)\le\sigma}(T-\lambda_j(x)),&N>0.
+ \end{cases}
+\end{equation}
+The spectral construction gives
+$0\le A_T(x)-A(x)\le L\Id$, with zero difference for $x\notin I$.
+This is an operator inequality on all $r$ coordinates; in particular it
+bounds all rotated off-diagonal contributions together. It does not assign
+signs to individual cross terms. Therefore
+\begin{align}\label{eq:correction}
+ 0\le Q_{A_T}(u)-Q_A(u)
+ &\le L\sum_{x\in I}\|du(x)\|^2\nonumber\\
+ &\le2L\sum_{x\in I}
+      \left[D\|u(x)\|^2+\sum_i\|u(x+e_i)\|^2\right]\\
+ &\le4DL\sum_{z\in Z}\|u(z)\|^2.\nonumber
+\end{align}
+Indeed each site has its own bad-start multiplicity at most $D$ and at most
+$D$ incoming direction-labelled starts. All their endpoints belong to $Z$.
+This counts parallel edges at period two separately, as required by the
+actual form. At $n=1$ every difference vanishes and the estimate remains
+valid. No periodic term has been dropped from the signed correction.
+
+Insert \eqref{eq:correction} into \eqref{eq:positive-observation}, divide
+the point sum by $V$, and use \eqref{eq:refine-monotone}. This proves
+\eqref{eq:matrix-coercive} with $K=c+4DL$. The count is
+\begin{align*}
+ hR&\le2Dh\left[1+B_D+\frac{B_D}{\alpha_D}(F_c(A)-N)
+                                      +(D+1)N\right]\\
+ &\le2Dh\left[1+B_D+
+                 \max\{B_D/\alpha_D,D+1\}F_c(A)\right],
+\end{align*}
+using the nonnegativity of both $N$ and $F_c(A)-N$. This completes the proof
+of Theorem~\ref{thm:matrix}.
+
+\begin{remark}[What the cap does and does not control]\label{rem:cap}
+The only use of the budget after the local spectral split is the exact
+identity \eqref{eq:cap-exact}. In particular its control of observation
+number is compatible with arbitrarily negative selected eigenvalues, since
+the penalty absorbs the actual finite correction. When $N=0$, the correction
+vanishes and $K=c$. For a positive scalar profile the sharper direct scalar
+construction also has $K=c$ without selecting or replacing any channels.
+For completeness, choose
+$M=\max\{0,\max_x[-\lambda_{\min}(A(x))]\}$, so $M\ge0$
+and $A(x)\ge-M\Id$ for all $x$. Then
+$Q_A(u)\ge-4DM\sum_x\|u(x)\|^2$, because
+$\sum_x\|du(x)\|^2\le4D\sum_x\|u(x)\|^2$.
+For the singleton partition $\|C_{\mathcal R}u\|^2=\normn{u}^2$,
+so $K=c+4DM$ proves its asserted finite-penalty alternative.
+The matrix construction establishes an existence bound with explicit
+constants, rather than a sharp spectral rank formula.
+\end{remark}
