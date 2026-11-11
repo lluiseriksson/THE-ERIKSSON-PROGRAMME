@@ -1,0 +1,48 @@
+{
+  "recorded_at_utc": "2026-11-11T13:31:18.226937+00:00",
+  "task": "/root/fixed_cut257_source_audit",
+  "verdict": "ACCEPT_ANALYTICAL_OBSTRUCTION_FOR_FIXED_CUT_PRODUCT_SLICES_ONLY",
+  "exact_commit": "fed201fd10f952a04e638c324dc0e1359711911a",
+  "proof_sha256_raw": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc",
+  "git_blob": "127d3eb9dee11b6a45532c228c2c2fb896cec51e",
+  "model_identity_exposed": "Codex/OpenAI, GPT-6 family; exact served backend/version/effort not exposed",
+  "independence": "Separate child session of same involved programme; inherited parent conversation including construction; not blind or independently established",
+  "numerical_grade": null,
+  "formal_check": false,
+  "numerical_experiment": false,
+  "external_literature_audit": false,
+  "inbound_messages_received_during_audit": false,
+  "PR_body_capture": "N/A: no PR/body existed in audit assignment",
+  "PR_normalized_body_hash": null,
+  "runtime_created": false,
+  "disposable_clone_created": false,
+  "source_or_branch_mutated": false,
+  "subject_count": 3,
+  "subjects": [
+    {
+      "path": "subjects/capacity-class-obstruction257A.txt",
+      "bytes": 11285,
+      "sha256_raw": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc",
+      "source": "fed201fd10f952a04e638c324dc0e1359711911a:papers/flat-coarse-rank/research-consolidation/fixed-cut-product257/capacity-class-obstruction257A.txt",
+      "read_scope": "Entire proof read and analytically rederived",
+      "normalization": "none"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256_raw": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "source": "fed201fd10f952a04e638c324dc0e1359711911a:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "read_scope": "Entire charter read",
+      "normalization": "none"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256_raw": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "source": "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\CLAUDE.md",
+      "read_scope": "First75 lines directly read; entire raw file retained as context",
+      "normalization": "none"
+    }
+  ],
+  "review_context_limit": "Full inherited model conversation is not exported by a tool. This file explicitly records its visibility and limits; prompt.txt is the complete supplied audit assignment, not a fictitious full account transcript."
+}
