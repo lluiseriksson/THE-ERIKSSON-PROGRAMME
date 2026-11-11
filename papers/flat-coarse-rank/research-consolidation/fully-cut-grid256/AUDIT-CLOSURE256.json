@@ -1,0 +1,14 @@
+{
+  "mathematical_source_commit": "d77142dbe214a9df2dfd5ffa057c736796e6a8ad",
+  "mathematical_file_sha256_raw": "1364094dfff6cc2cfcbc306717b2b4667d49401e00fd2c7d00fb132add9c07a6",
+  "later_audit_fullreport_sha256_raw": "db45b2b5b88b11dc6062f2dc3d59ff8c6c1f11128701751b6977c95754f910fd",
+  "audit_manifest_sha256_raw": "30272fa911679a64f4fc01ee4641a5a000a904a0e61a6f3d851834fa54f431fc",
+  "parent_read_complete_report": true,
+  "parent_raw_subjects_verified": 9,
+  "later_package_changes": "Adds exact audit records and bounded bibliography; original certified commit/file retained unchanged in ancestry",
+  "numerical_grade": null,
+  "formal_or_independent_peer_review": false,
+  "global_Q251": "OPEN",
+  "single_grid_candidate": "CLOSED_NEGATIVE",
+  "prior255B_score_applies": false
+}

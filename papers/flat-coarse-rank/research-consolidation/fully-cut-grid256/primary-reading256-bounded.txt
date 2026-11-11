@@ -1,0 +1,58 @@
+256 — BOUNDED PRIMARY-SOURCE NOVELTY CHECK,11November2026
+Separate from frozen candidate256A; no input to255B's PDF or4.00assessment.
+No affirmative historical-priority or independent-originality claim.
+
+Sources actually opened/read (selected portions, not full-paper audits):
+
+1. Robert B.Ellis, Discrete Green's functions for products of regular graphs,
+arXiv:math/0309080v2,8September2003.
+https://arxiv.org/abs/math/0309080
+https://arxiv.org/pdf/math/0309080
+Read abstract/introduction, Section2 inverse/pseudoinverse definitions,
+cycle Fourier eigensystem Lemma1, Section5.1 Theorem7 and its stated proof,
+Corollary6 Fourier torus sum, and adjacent product-eigensystem discussion.
+The paper explicitly develops spectral Green representations for regular
+graph products and tori. Hence representing an inverse graph energy by
+Fourier modes is established machinery, not itself novelty in256.
+My finite strong-parity/curl23 trace-Gram calculation is a different specified
+operator/domain/observation problem. These selected passages do not establish
+that the exact24n fully-cut-grid witness or its constants were known or new.
+No assertion that Ellis proves my checkerboard counterexample is made.
+
+2. Jakub Sistek et al., Application of the parallel BDDC preconditioner to the
+Stokes flow, arXiv:1101.1775v3,12January2011; journal reference Computers &
+Fluids46,429-435,2011, DOI10.1016/j.compfluid.2011.01.002.
+https://arxiv.org/abs/1101.1775
+https://arxiv.org/pdf/1101.1775
+Read primary arXiv metadata and actual PDF abstract/initial context only.
+It reports an implemented BDDC treatment of Taylor-Hood Stokes systems.
+This confirms preexisting numerical coarse-constraint work for incompressible
+problems; it does not prove equivalence to the torus/curl-image model here.
+No comparison of full hypotheses/proofs/experiments or benchmark superiority
+was performed. The PDF footer's2018date is not used to redetermine the explicit
+arXiv version history/journal2011reference.
+
+3. Tu and Wang, A BDDC algorithm for the Stokes problem with weak Galerkin
+discretizations, primary NSF-hosted manuscript:
+https://par.nsf.gov/servlets/purl/10070290
+Read available abstract/initial text only. It identifies edge/face velocity
+averages and mean subdomain pressure as coarse data. Later find requests
+returned502; no full theorem or priority audit was completed for this source.
+Publisher access for the Sistek journal page returned403; the real arXiv
+abstract/PDF remained accessible. An unavailable lookup does not establish
+expiry, absent rights or authorization to bypass access controls.
+
+Searches included point constraints/domain decomposition/logarithmic,
+discrete Green/two-dimensional torus, and Stokes/BDDC/corner constraints.
+Search-engine crawl dates were not treated as publication dates. Tertiary
+summaries appeared but are not relied upon for mathematical claims.
+
+Disposition: the Green/Fourier/constrained-energy mechanism is classical.
+The specific candidate remains an unverified analytical proof until its source
+audit finishes; even a favorable audit would establish only scoped analytical
+correctness, not formal verification, historical originality or broad relevance.
+Exact previous implication of the256result was neither found nor excluded by
+this bounded reading. Practical relevance is especially limited by the enormous
+harmonic threshold and by refuting only ONE partition. Preserve these objections
+and group any eventual result with related canonical/coexact work; no separate
+paper or new stars are inferred from this note. No external PDF is redistributed.

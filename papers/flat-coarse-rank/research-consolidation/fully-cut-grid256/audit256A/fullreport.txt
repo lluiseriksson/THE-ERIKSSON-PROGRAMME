@@ -1,0 +1,123 @@
+AUDITORÍA MATEMÁTICA EXACTA DE FUENTE256A
+11 de noviembre de2026. Sin experimento, compilación, prueba formal o calificación.
+
+VEREDICTO
+ACEPTADO EL CONTRAEJEMPLO FINITO EN SU ALCANCE DECLARADO. No se ha encontrado defecto matemático bloqueante. Para n=64N con h_N>=128*pi^2, la construcción produce un campo REAL, no nulo, en el dominio coexacto original, anulado por todas las24n filas de la partición indicada y con Q<=5c||z||^2/8<c||z||^2. Queda cerrada negativamente ESTA elección de partición fully-cut, no la clase de particiones O(n). La pregunta global251 sigue abierta. Este informe no cambia un contador de rutas ni clasifica el avance en un estado externo: su lectura y verificación por el padre son posteriores y separadas.
+La conclusión es una revisión analítica de bytes concretos por un auditor IA involucrado, no una certificación independiente, humana, formal, de prioridad o de relevancia práctica. No se asigna nota y no se extiende la evaluación de255B a256A.
+
+1. REFERENTE EXACTO, CAPTURA Y ALCANCE DE LECTURA
+Fuente leída COMPLETA en la copia D y ligada a su blob Git exacto:
+commit d77142dbe214a9df2dfd5ffa057c736796e6a8ad
+ruta papers/flat-coarse-rank/research-consolidation/fully-cut-grid256/capacity-counterexample256A.txt
+11746 bytes; SHA256 RAW1364094dfff6cc2cfcbc306717b2b4667d49401e00fd2c7d00fb132add9c07a6.
+Copia local original:
+D:\Datos\the-eriksson-programme\autonomia\evidencia-256\capacity-counterexample256A.txt
+Su hash coincide con el blob, sin normalizar finales de línea ni usar el texto del checkout como representación sustituta. Ambas representaciones RAW quedan capturadas por separado. La fuente no se editó.
+Se capturó también .gitattributes del mismo directorio/commit:8 bytes, SHA256705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da, contenido '* -text'. La enumeración Git de ese directorio tiene sólo esos dos archivos. No se verificó mediante red el push o estado remoto de la rama y no se necesita para fijar este referente local exacto.
+Definiciones capturadas directamente del commit568c971fac32caf33dce6ab4b14f2730788c3eb2:
+- papers/flat-coarse-rank/research-consolidation/revision255-preparation/checkerboard_observations255.tex,29571 bytes, SHA25687e3100bdc8c948497195e3666075ae45618d10959f88347f3c9ed7e15986e01;
+- papers/flat-coarse-rank/research-consolidation/revision255-preparation/inputs/strong-component-observations253/strong-component-observations253B.txt,14606 bytes, SHA2567cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2.
+Se leyeron las definiciones pertinentes255 de campos originales, conteo, fuente, gradiente, curl adjunto, U y filas canónicas. El253B completo había sido leído en esta misma tarea persistente; se fija de nuevo su blob RAW y se usan sus convenciones explícitas, no una supuesta nueva evaluación de todo253/255. La construcción256 se comprobó íntegramente desde su propio texto, rederivando los pasos siguientes. El informe previo de restricciones49fc5a... es antecedente, no una premisa que sustituya las comprobaciones de signos o de kernel.
+Método de captura Git: flujo binario de git show COMMIT:RUTA a memoria/archivo de bytes, sin decodificación/re-codificación, normalización o mutación Git. raw-git-subjects.json registra rutas, commits, tamaños y hashes. No se usó ZIP, runtime ni llamada remota.
+
+2. PERFIL, PARTICIÓN, ADJUNTO REAL Y RESTRICCIONES
+D=3, n=64N, a=c/48,H=cn^2,c>0 y V=n^3. El canal1 es fuerte en fuentes IMPARES y débil en pares. La paridad es coherente con las vueltas porque n es par. El canal2 tiene paridades opuestas, pero el campo construido en él es0. Se mantienen todos los rótulos positivos y todas las componentes espaciales en la norma de conteo.
+La partición en AMBOS canales tiene4n rectángulos: {i}xJxK con J,K={0} o I={1,...,n-1}. Los tamaños1,n-1,n-1,(n-1)^2 son positivos. Son productos de intervalos enteros no envolventes; cada factor es propio. El conteo completo es3*2*4n=24n y cada fila es(V|S|)^(-1/2)sum_S. Ninguna fila se rota o reescala. El hecho de que todos los factores estén cortados evita el falsador uncut anterior, pero no certifica restauración.
+Con delta_j=I-T_j^(-1), el adjunto de conteo del gradiente positivo es partial_j^*=-delta_j. El curl con índices independientes i<j produce, para psi_23=phi y las demás componentes de dos-forma0,
+ d_1^*psi=(0,-partial_3^*phi,partial_2^*phi)=(0,delta_3 phi,-delta_2 phi).
+Es un signo EXACTO, sin factor2 ni corrección global. Si phi es real se obtiene una preimagen real concreta en U_0. En el otro canal la preimagen es0. No se supone una caracterización abstracta por divergencia ni se aplica una proyección Hodge. Las medias componentes globales son0 por telescopaje.
+Para un slice x_1=i, sean p el valor(0,0), A y B las sumas sobre las líneas j=0 y k=0, y T la suma completa. Las sumas celulares son(p,A-p,B-p,T-A-B+p), transformación invertible. Aplicada a z_2=delta_3 phi, dos sumas totales/de línea se anulan por telescopaje y quedan delta_3 phi(i,0,0) y R_i(0)-R_i(-1). Aplicada a z_3=-delta_2 phi quedan delta_2 phi(i,0,0) y S_i(0)-S_i(-1), con signos globales que no cambian sus ceros. Por tanto anular ambas derivadas puntuales y ambos residuos marginales es necesario y suficiente DENTRO del ansatz. Los factores canónicos positivos no alteran la equivalencia. Las expresiones periódicas incluyen el enlace con n-1; no se impone una condición artificial de borde sobre I.
+
+3. CAMPO BAJO Y SUS DOS FRECUENCIAS
+Sea p=pi/2 y phi_0=exp(ip sum x)+exp(-ip sum x). Como4 divide n es una función real periódica. La suma en cualquiera de las coordenadas transversales es0 porque sus frecuencias ±n/4 no son0. Con delta_j positivo hacia atrás, q(s)=delta_j phi_0 tiene valores(2,-2,-2,2) en s=0,1,2,3. Así z_0=(0,q,-q), y ||z_0||^2=8V EXACTAMENTE. En cada fuente impar,1->2 y3->0 módulo4 conservan q. Todo paso positivo cambia s en1, también al envolver el toro. Todas las diferencias fuertes del canal1 de z_0 son por tanto0.
+Las derivadas puntuales de phi_0 en(i,0,0) tienen coeficientes(1+i,1-i) en las frecuencias x_1=p y p+pi=-p módulo2pi. Aquí i dentro de un coeficiente es la unidad imaginaria; el índice del slice sólo figura en el exponencial. Son el vector t=e de la construcción. Las dos derivadas transversales tienen el mismo par de coeficientes, no coeficientes intercambiados o de signo opuesto.
+
+4. BANDA FINITA Y ORTOGONALIDAD EN EL COSET IMPAR
+Con m=4N, F contiene los offsets enteros |j|,|l|<=m salvo(0,0). Las dos frecuencias k_w=(p,p+u,p+v),k'_w=k_w+pi(1,1,1), u=2pi j/n,v=2pi l/n son caracteres del toro. En índices de frecuencia sus primeras coordenadas son16N y48N; las otras dos están en[12N,20N] o[44N,52N]. Por eso las2|F| frecuencias son distintas, no hay alias entre bloques, y ninguna frecuencia transversal es0. En particular TODOS los R_i y S_i de phi_* se anulan exactamente para cualquier coeficiente, no sólo aproximadamente o en promedio sobre i.
+En fuentes impares, exp(ik'_w dot x)=-exp(ik_w dot x), mientras exp(ik'_h)-1=-(exp(ik_h)+1). Sus dos signos se cancelan: partial_h f=exp(ik dot x)(d_h A+s_h B), con el SIGNO POSITIVO escrito en la nota. Para la derivada backward transversal, los multiplicadores son m_j=1-exp(-ik_j) y p_j=1+exp(-ik_j). El signo menos de la componente espacial3 se pierde sólo al elevar su módulo al cuadrado, legítimamente; no se elimina antes de fijar el campo.
+Para una diferencia q de dos frecuencias del toro, la suma sobre fuentes impares es
+ sum_(x impar)exp(iq dot x)=(V/2)[1_(q=0)-1_(q=pi(1,1,1))].
+Esto se obtiene del indicador(1-(-1)^(sum x))/2 y la ortogonalidad en el toro completo. El único alias extra es el desplazamiento pi en TODAS las coordenadas, ya reunido dentro del bloque. Distintos w no se relacionan así. En consecuencia E_str=(V/2)sum_w y_w^*M_w y_w, con el factor V/2 correcto para exponenciales SIN normalización de Fourier. En el Parseval de norma sobre TODOS los sitios el factor será V, no V/2. Se mantienen separadas estas dos medidas.
+
+5. MATRICES L,M: SIGNOS, EIGENVALORES Y CONSTANTES
+La matriz de un gradiente escalar impar es L=sum_h(d_h,s_h)^*(d_h,s_h). Sus entradas son
+ L_11=2(3-C), L_22=2(3+C),
+ L_12=-2iS, L_21=2iS,
+ C=sum_h cos k_h, S=sum_h sin k_h.
+En particular conjugate(d_h)s_h=exp(-ik_h)-exp(ik_h)=-2i sin k_h; el signo de la entrada fuera de diagonal es correcto. Como sum_h exp(ik_h)=i(1+exp(iu)+exp(iv)), los eigenvalores son2(3±|1+exp(iu)+exp(iv)|).
+Al expandir9-|...|^2 se obtienen2[(1-cos u)+(1-cos v)+(1-cos(u-v))]. Los argumentos satisfacen |u|,|v|<=pi/8, |u-v|<=pi/4. La desigualdad1-cos t>=2t^2/pi^2 es aplicable. Dividir por3+|...|<=6 y multiplicar por2 produce L>=(4/(3pi^2))r_w^2 I. La cota superior L<=12I sigue del módulo<=3. No se omite una rama del símbolo.
+Para j=2,3, los módulos cuadrados de m_j,p_j están entre2-2sin(pi/8)>1 y4. Con D_j=diag(m_j,p_j), M=D_3^*LD_3+D_2^*LD_2 es la suma de las energías de ambas componentes espaciales. Así
+ (8/(3pi^2))r_w^2 I<=M_w<=96I.
+Puesto que w!=0, r_w>0 y M_w es Hermitiana estrictamente positiva, invertible. No se incluye el bloque cero cuyo modo bajo sería singular. El uso de complejos en esta etapa es la extensión sesquilineal del conteo real, y se prueba la realidad al final.
+Para y_0=(1,1), la expansión exacta d_h m_j+s_h p_j=2[exp(ik_h)+exp(-ik_j)] es correcta. Es2i[exp(iw_h)-exp(-iw_j)] con w_1=0,w_2=u,w_3=v, y su módulo es<=2|w_h+w_j|<=4r_w. Hay seis términos(h,j), de modo que y_0^*M_w y_0<=96r_w^2. No se sustituye este cociente de un vector particular por un eigenvalor universal; se usa luego mediante una desigualdad de rango1 válida.
+
+6. TRACE GRAM: POSITIVIDAD Y COTA ARMÓNICA
+T_w=diag((m_2+m_3)/2,(p_2+p_3)/2) tiene entradas1+i*zeta y1-i*zeta, zeta=(exp(-iu)+exp(-iv))/2. Re zeta>=cos(pi/8) y |Im zeta|<=sin(pi/8). Para ambas entradas, el módulo de la parte real es>=1-sin(pi/8)>0 y el de la parte imaginaria es>=cos(pi/8), por lo que su módulo cuadrado es>=2-2sin(pi/8)>1. Se justifica así T T^*>=I sin suponer falsamente |zeta|=1.
+Si g_w=T_w y_0 y e=(1+i,1-i), entonces ||g_w-e||^2=2|zeta-1|^2<=(|u|+|v|)^2/2<=r_w^2. Esto usa |exp(-iu)-1|<=|u| y la desigualdad del cuadrado de la suma. Los signos opuestos de los dos errores están conservados.
+Por Cauchy-Schwarz en el producto definido por M, para todo vector b,
+ |b^*y_0|^2<=(b^*M^(-1)b)(y_0^*M y_0).
+Luego M^(-1)>=y_0 y_0^*/(96r_w^2) en orden Loewner. Multiplicar por T da T M^(-1)T^*>=g_w g_w^*/(96r_w^2). La desigualdad elemental |a+d|^2>=|a|^2/2-|d|^2 y la cota del error g_w-e implican
+ T M^(-1)T^*>=(1/(192r_w^2))ee^*-(1/96)I.
+Independientemente, M<=96I y TT^*>=I dan T M^(-1)T^*>=I/96. No se suman dos estimaciones incompatibles gastando dos veces una misma energía: se usa la primera sólo en F_in y la segunda sólo en F_out.
+Los conteos son |F|=(8N+1)^2-1=64N^2+16N e |F_in|=(2N+1)^2-1=4N^2+4N. Por tanto |F_out|-|F_in|=56N^2+8N, y
+ G=sum_F T M^(-1)T^*>=alpha ee^*+beta I,
+ alpha=(1/192)sum_(F_in)r_w^(-2), beta=(56N^2+8N)/96>0.
+Cada shell max(|j|,|l|)=s,1<=s<=N, tiene8s puntos y j^2+l^2<=2s^2. Así su contribución a sum1/r_w^2 es>=n^2/(pi^2 s), y alpha>=n^2 h_N/(192pi^2). Ésta es una desigualdad FINITA explícita, no una hipótesis de capacidad o un límite de continuo.
+Como ||e||^2=4 y t=e, inversión de matrices positivas da
+ t^*G^(-1)t<=4/(beta+4alpha)<=1/alpha<=192pi^2/(n^2h_N).
+G es estrictamente positiva por beta>0, luego su inversa existe. No se infiere una cota de su inversa de un simple elemento diagonal sin controlar el resto del espacio.
+
+7. SOLUCIÓN EXACTA, SIMETRÍA DE SWAP Y REALIDAD
+Los coeficientes y_w=M_w^(-1)T_w^*G^(-1)t están definidos para el conjunto finito F. Se verifica por suma que sum T_w y_w=t EXACTAMENTE. También sum y_w^*M_w y_w=t^*G^(-1)t por hermiticidad. Para cualquier otra familia factible y+h, sum T h=0 hace desaparecer el término cruzado, y la energía aumenta en sum h^*M h>0 si h!=0. Es un mínimo único sobre el espacio complejo sujeto a las dos restricciones complejas, no una selección de minimizador cuya simetría se presuponga.
+Al intercambiar j,l, L permanece igual, D_2 y D_3 se intercambian y T permanece igual, por lo que M,T son idénticos. La factibilidad, objetivo y F se conservan. La unicidad prueba y_(j,l)=y_(l,j). Reindexar la suma demuestra sum m_2 A=sum m_3 A y sum p_2 B=sum p_3 B. La restricción promediada es por tanto cada una de las DOS restricciones puntuales reales requeridas, con coeficientes t_1 y t_2, no sólo su promedio.
+Para dejar explícita la conjugación, sea J la matriz que intercambia las dos entradas. Se tiene k'_-w=-k_w y k_-w=-k'_w módulo2pi; además
+ D_j(-w)=J conjugate(D_j(w))J,
+ L(-w)=J conjugate(L(w))J,
+ M(-w)=J conjugate(M(w))J,
+ T(-w)=J conjugate(T(w))J.
+Conjugación del potencial envía y_w a J conjugate(y_-w). Su objetivo es el mismo real no negativo; su restricción se transforma en J conjugate(t)=t, ya que t_2=conjugate(t_1). Es la MISMA minimización estrictamente positiva. Su unicidad da A_w=conjugate(B_-w), B_w=conjugate(A_-w). Por correspondencia de frecuencias, phi_* es REAL. No se necesita tomar una parte real que altere arbitrariamente los coeficientes o aproximar el rastro, ni se supone una invariancia Hodge de las medias.
+Ninguna frecuencia de la banda es Nyquist o cero en la coordenada1: sus índices son16N o48N con n=64N. Las conjugadas se emparejan exactamente como arriba. Las funciones están bien definidas para todo entero N>=1 antes de imponer el umbral armónico; no hay excepción autoconjugada escondida.
+
+8. ANULACIÓN EXACTA DE LAS24n FILAS Y DOMINIO
+En x=(i,0,0), las derivadas delta_2 phi_* y delta_3 phi_* tienen coeficientes t_1 en exp(ipi) y t_2 en exp(i(p+pi)i), por el swap anterior. Son exactamente las derivadas de phi_0. Por tanto ambas derivadas puntuales de phi=phi_0-phi_* son0 en CADA i. Sus dos marginales transversales son identicamente0, ya que lo son para ambas partes por exclusión de frecuencia0. No se sustituyen los residuos marginales por una mera pequeñez.
+La equivalencia de sumas de la sección2 implica entonces todas las observaciones cero. Las filas de la componente espacial1 y del otro canal son0 punto a punto; las ocho sumas no triviales por slice de las componentes2,3 se anulan por las cuatro identidades. Se cubren24n filas completas con los factores de norma prescritos. La corrección no cambia la partición, no observa un campo transformado ni introduce celdas diagonales.
+Phi es REAL por las dos construcciones. Tomar psi_23=phi da la preimagen REAL explícita y muestra z en el U_0 ORIGINAL del canal1; el campo completo(z,0) está en U_0^2. Es una prueba de imagen efectiva, no sólo divergencia cero y media cero. No se modifica posteriormente mediante una proyección que pueda perder Cz=0.
+
+9. NORMA REAL, ENERGÍA FUERTE Y DÉBIL
+De la cota del Gram y la identidad del coset,
+ H E_str(z(phi_*))=cn^2(V/2)sum y^*M y<=96pi^2 cV/h_N.
+El factor V/2 sigue presente; no se normaliza de nuevo al pasar a energía fuente. Todo w!=0 tiene r_w^2>=(2pi/n)^2. La cota inferior de M da M_w>=32/(3n^2)I. El Parseval sobre los2|F| caracteres distintos del TORO COMPLETO da
+ ||z(phi_*)||^2=V sum_w[(|m_2|^2+|m_3|^2)|A_w|^2+(|p_2|^2+|p_3|^2)|B_w|^2]
+ <=8V sum_w||y_w||^2
+ <=(3n^2/4)V sum_w y_w^*M_w y_w
+ <=144pi^2 V/h_N.
+Ésta es la norma del campo original con ambas componentes espaciales, no la norma del potencial ni de un par de coordenadas auxiliares. La conjugación que hace real el campo no introduce otro factor2: todos los caracteres, incluidas las parejas conjugadas, ya están en ese Parseval.
+Si h_N>=128pi^2, la última cota es<=9V/8<2V. Frente a ||z_0||^2=8V, la desigualdad triangular inversa da ||z_0-z(phi_*)||^2>=(sqrt(8V)-sqrt(2V))^2=2V. En particular el campo real observado no es0; phi no nula no se usa por sí sola para inferirlo. La pérdida al relajar9V/8 a2V es conservadora y válida.
+Las diferencias fuertes de z_0 son0 en las fuentes IMPARES originales, luego la parte fuerte de la energía de z es EXACTAMENTE H E_str(z(phi_*)); no hay término cruzado con z_0 en esa parte. Es<=3cV/4, y ||z||^2>=2V la hace<=3c||z||^2/8.
+La parte débil, en fuentes PARES de ese canal, es<=a E(z), pues se descarta sólo la restricción del conjunto de fuentes y los términos añadidos son no negativos. Cada desplazamiento periódico es una isometría de conteo y ||T_h-I||<=2; las tres direcciones dan E(z)<=12||z||^2. Como a=c/48, la parte débil es<=c||z||^2/4. Esta estimación no duplica la energía fuerte como si se gastara otra vez un presupuesto: es una cota superior independiente de la parte débil en su propio conjunto de fuentes.
+Se obtiene exactamente Q(z)<=3c||z||^2/8+c||z||^2/4=5c||z||^2/8<c||z||^2. Ningún peso se ha evaluado en la llegada ni reemplazado por una media de paridad. Las constantes H,a y todos los factores de norma se mantienen.
+Como Cz=0, cualquier penalización finita Phi(Cz) con Phi(0)=0, incluidos pesos cuadráticos arbitrarios por fila o una forma cuadrática completa en las observaciones, vale0 en este campo. La desigualdad normalizada falla también: Q(z)/V+Phi(Cz)<c||z||^2/V. La afirmación de fracaso de restauración no depende de elegir K pequeño ni de un límite de penalización infinita.
+
+10. UMBRAL, EXTREMOS Y CUANTIFICADORES
+El perfil se afirma sólo para n=64N con h_N>=128pi^2. No se afirma fallo de esta partición para TODO n par ni para n=2. En particular el resultado anterior de que en n=2 esta partición observa singletons no entra en conflicto con256A. Las identidades y estimaciones intermedias están bien definidas para N>=1; la condición armónica simplemente selecciona tamaños mucho mayores.
+La integral de1/t en[k,k+1] es<=1/k, por lo que h_N>=ln(N+1). N=ceil(exp(128pi^2)) satisface el umbral; también todo N posterior, luego hay infinitos tamaños finitos. Esta existencia usa sólo desigualdades simbólicas. No se calculó tal entero ni se asignaron coeficientes en un experimento. El umbral enorme no representa viabilidad, precisión numérica demostrada o un cruce óptimo. No se afirma uniformidad sobre otras particiones, otros canales fuertes, perfiles o ángulos.
+
+11. HALLAZGOS ADVERSOS, LÍMITES Y ESTADO DEL RESULTADO
+Defectos bloqueantes o contraejemplos encontrados a los enunciados precisos: ninguno. En particular se comprobaron los puntos que podían invalidar la prueba: signo positivo del término B en fuentes impares; signo imaginario del L; factor V/2 y alias de paridad; dos componentes espaciales en M; bloque cero excluido; positividad de T sin suponer |zeta|=1; error negativo de F_in pagado por F_out; unicidad compleja antes de imponer realidad/swap; dos rastros puntuales y marginales EXACTOS; prueba de no nulidad de z; y pago separado de energía fuerte/débil en fuentes originales.
+Límites materiales que permanecen:
+- Sólo se descarta UNA partición de24n filas completamente cortadas, para la secuencia de tamaños y umbral declarados. No se descarta toda partición O(n) ni todas las24n particiones.
+- La igualdad de restricciones anterior, por sí sola, no daba energía baja; aquí esa pieza adicional está demostrada para este campo concreto. No se convierte en una cota de clase o una necesidad general de capacidad logarítmica.
+- No se prueba mínimo canónico, pérdida logarítmica universal, restauración O(n), condicionamiento útil, implementación eficiente, ni eliminación general de hipótesis.
+- La constante y escala de existencia son deliberadamente enormes y no optimizadas. La fórmula finita de coeficientes no es evidencia de implementación ni estabilidad aritmética.
+- La herramienta de Green/Gram y suma armónica es clásica. No se realizó una comparación nueva de prioridad o equivalencia con antecedentes y no se afirma originalidad.
+- Q251 sigue siendo la única pregunta activa y está ABIERTA globalmente. Sólo se cierra negativamente el candidato de rejilla retenido. No se modifica aquí su contador ni un estado externo, y el padre debe leer este informe y verificar sus hashes antes de registrar progreso.
+- Fuente/PDF255B, evaluación previa, candidato público y cualquier otra publicación permanecen intactos; esta nota está fuera de esos bytes. No se reevalúa ni hereda su calificación. No se toca AIRR u otro repositorio/estado.
+No se crea paper, evaluación científica numérica, certificado Lean, resultado físico o de continuo. El informe afirma corrección analítica limitada, no revisión de revista o prueba formal.
+
+12. IDENTIDAD REAL Y OPERACIONES
+Auditor IA involucrado en tareas anteriores, misma tarea/contexto persistente y cuenta, infraestructura y sistema de archivos compartidos. No es independencia, ceguera, revisión humana, otro proveedor o remuestreo. Descripción realmente expuesta: Codex, agente basado en GPT-6. Identificador exacto del backend/modelo servido, versión y esfuerzo efectivos no expuestos: desconocidos. OpenAI/Codex es la interfaz expuesta; identidad de cuenta, encaminamiento, suscripción, cuotas y límites no se inspeccionaron.
+Operaciones: lectura textual, razonamiento analítico, lectura Git local de blobs/listado, copias de bytes, hashes y escritura de informe/contexto/veredicto. No se ejecutó cálculo matemático, experimento, oráculo numérico, Lean/Lake, build, prueba de Windows, render, runtime científico o llamada remota. No se usó CUA ni se enviaron mensajes a otros chats durante la revisión. No se modificaron nota, fuentes, rama, Git, publicación, estados propios o ajenos, automatizaciones, contador de rutas o PDF. Se escribió sólo dentro de evidencia-256/capacity-counterexample256A-audit. No se creó clon ni queda limpieza pendiente.
+
+13. ARTEFACTOS Y CIERRE
+capture/ conserva cinco sujetos RAW:256A de Git,256A local,.gitattributes,253B y255B de los commits declarados. raw-git-subjects.json liga los cuatro blobs Git a commits/rutas/tamaños/hashes. fullreport.txt contiene esta revisión completa; verdict.json y context.json declaran alcance e identidad sin calificación. hashes.json contiene todos los hashes y representaciones, excluido su propio hash devuelto externamente. Los informes nuevos usan UTF-8 sin BOM, LF y LF final; las capturas son RAW sin normalización. La copia original256A se vuelve a verificar al emitir el manifiesto.
+Revisión cerrada: contraejemplo finito aceptado para esta rejilla, pregunta canónica global251 abierta, sin intervención en255B o publicación.
