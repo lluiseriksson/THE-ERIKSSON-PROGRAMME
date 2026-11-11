@@ -1,0 +1,50 @@
+264A bounded primary-source comparison, 11 November 2026.
+This note records the actual scope read, not an exhaustive novelty review.
+No source manuscript/PDF was downloaded into the research repository.
+
+NIST DLMF, section3.3(i), equations3.3.1-3.3.3:
+https://dlmf.nist.gov/3.3.i
+Read rendered text/formulas for distinct real or complex nodes and the
+degree-bounded Lagrange polynomial/product basis. The three-node evaluation
+used in264A is a direct instance of this classical identity. Its particular
+nodes and uniform coefficient bounds must still be paid by264A itself.
+No originality attaches to Lagrange interpolation or nodal polynomials.
+
+Gregory F. Lawler and Vlada Limic, Random Walk: A Modern Introduction,
+author-hosted PDF, section4.4.1, theorem4.4.4 (PDF page88, printed88):
+https://www.math.uchicago.edu/~lawler/srwbook.pdf
+Read the extracted theorem statement and bounded surrounding text, including
+the Fourier-integral proposition4.4.3 and part of the proof opening. The
+two-dimensional potential kernel has classical logarithmic asymptotics.
+This is background for logarithmic energy budgets, not a theorem about
+our weighted coexact rectangle means, and is not used as a missing lemma.
+The full289-page book and full theorem proof have NOT been read here.
+No new PDF visual-review claim is made for this bibliography lookup.
+
+James Rickett and Antoine Guitton, author/institution-hosted report:
+Multi-dimensional Fourier transforms in the helical coordinate system:
+https://sepwww.stanford.edu/data/media/public/docs/sep105/james1/paper_html/index.html
+Read the HTML abstract and navigation. Helical-coordinate/Fourier relations
+are established background; that report concerns helical boundary systems
+and a one-dimensional FFT isomorphism. It does not by its abstract establish
+the different nonwrapping weighted coexact counterexample in264A. No complete
+article/derivation reading or novelty exclusion is claimed.
+
+Actual search queries also included Fourier annihilating polynomial boundary
+trace coexact checkerboard elliptic coarse space logarithmic capacity. Search
+results did not establish an exact prior theorem OR its absence. Third-party
+summaries, search dates and search rankings are not mathematical evidence.
+No reliance on those summaries for correctness, novelty or priority.
+
+Comparison with own frozen sources:261C covers a special nonwrapping slope;
+263A covers cyclic unions for every even slope but explicitly excludes
+refinements.264A must pay six boundary-gradient tags directly using a new
+division-free potential and tensor annihilation. Whether that paid argument
+is correct is the separate exact-source analytical audit, not this lookup.
+
+Correction/formal status: proposed analytical construction; no Lean/oracle,
+numerical experiment or executed mathematical test. Historical originality:
+UNESTABLISHED after this bounded comparison. Relevance: possible exclusion
+of a specified canonical family at a deliberately impractical threshold,
+not arbitrary canonical impossibility, a practical algorithm or Yang-Mills.
+No assessment score, blind/independent review or publication is claimed.

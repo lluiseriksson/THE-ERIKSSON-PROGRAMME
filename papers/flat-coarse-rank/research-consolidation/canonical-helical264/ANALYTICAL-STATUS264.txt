@@ -1,0 +1,66 @@
+264A exact-source analytical status, 11 November 2026.
+
+Read this status WITH the unchanged historical candidate and full audit.
+Audited source97c5c98c7fbfa3923cfcebabe77847010af13b08;
+proof raw/Git/worktree SHA256
+f92e578af4472c725edada4f5f5686d705645017b31510beda93e0fcdfe4f63d.
+The historical UNREVIEWED label is preserved on those frozen bytes; a later
+actual source audit now supports the stated theorem with the two minor
+clarifications below. No formal or numerical verification is asserted.
+
+Verdict:
+ACCEPT_ANALYTICAL_CANONICAL_KAPPA_2_MOD4_COUNTEREXAMPLE_WITH_MINOR_SOURCE_CLARIFICATIONS.
+No material theorem failure found. Parent read the COMPLETE20682-byte report,
+actual context and assignment and verified all11 raw manifested files.
+Full report raw SHA256:
+5da66bd0e5bc049ff804dca428ecf4b332efa6e64f1b18a955a701904fe1d645.
+Audit manifest raw SHA256:
+ad55083ae80d793c9b845d2106c76a7ee97d138b7a4a740dc0394d93e18534b5.
+Full audit/context/assignment/eight raw subjects are under source-audit264A/.
+No omitted minor finding or compressed substitute for the report is intended.
+
+264A-N1, auxiliary strictness: in Section3 use
+ Q_H(F)<=2^27 c(L^2+J^2)
+for ALL pairs; the strict version holds when (L,J)!=(0,0). At the base it
+would say0<0, which is false. Correction terms all have J=mj nonzero. The
+base energy is independently computed exactly as64c. The all-case primitive
+Q(F)<=2^28c(1+L^2+J^2) and the final strict theorem are unaffected. This
+clarification is explicit and the original mistaken strictness is retained.
+
+264A-N2, phase notation: Section7 'At p0=i' means
+ zeta0=exp(2pi i p0/n)=i, with integer frequency p0=n/4.
+The displayed amplitudes, norm512 and energy64c use this correct phase.
+
+Accepted boundary: for EVERY kappa=2mod4, original a=c/48,H=cn^2 model,
+dyadic n satisfying log(n/1024)>=2^84, the specified actual nonwrapping
+36n-24-row canonical map has a REAL NONZERO actual-coexact invisible field
+with Q<(7/32)c||z||^2. The six chart-gradient traces, actual curl preimage,
+three-node interpolation, two polynomial annihilators, no aliases and
+bounded overlap16 were paid directly. Cyclic zeros were not transferred
+to refined pieces. No Gram bound or Diophantine hypothesis was assumed.
+
+This refutes this concrete canonical candidate FAMILY at the stated enormous
+size threshold, including golden slopes. It does not eliminate every
+canonical O(n) map, treat kappa divisible by4/odd or nonlinear motion, give
+a practical solver, establish a logarithmic optimum or close generalQ251.
+No hypotheses are claimed eliminated by moving them into a structure.
+The standard algebra/interpolation machinery is not claimed original;
+bounded primary notes leave historical originality UNESTABLISHED.
+
+Model assessments and review context: author and auditor are involved
+Codex/OpenAI assistants in the same programme, with inherited/shared context.
+Exact served backend/model version/effort unavailable. Not blind, not
+independently established, no external model service, new score or peer
+review. This is a source audit, not an exact-PDF assessment. No public260C
+PDF, first-round5.0 assessment, open objections, native receipt or release
+was modified. No new manuscript, deposit, acceptance or publication here.
+No runtime, Lean/Lake, oracle, local build or mathematical code was executed.
+PR29 remains20/41 and TermSource=0; physical gap and continuum remain OPEN.
+
+Next mathematical work stays under soleQ251: identify which actual additional
+boundary traces a genuinely different canonical map imposes and prove a
+matching energy lower bound or explicit invisible witness. Do not infer
+universal canonical impossibility from this affine family. After three
+units without a new derived bound/witness, retain failures and change the
+mechanism or state its concrete obstruction. Group related accepted results
+for a future substantial revision rather than another small paper.
