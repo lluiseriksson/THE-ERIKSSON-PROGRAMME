@@ -1,0 +1,247 @@
+SOURCE AUDIT262A -- EXACT HELICAL FOURIER / ACTUAL COEXACT TRACE REDUCTION
+
+VERDICT: ACCEPT_ANALYTICAL_EXACT_COMPLEX_BLOCK_REDUCTION_WITH_CONJUGATION_CLARIFICATION
+
+Exact subject commit:fd095658fc3973481e0781cadf63adad13e8187a.
+Proof Git/raw SHA256:
+2564f6b307bd7e93db5722714af5041391b30da615a59b7f5a6f80762791a0e9.
+The private source, frozen Git blob and working-tree source agree byte-for-byte.
+
+No material error was found in the exact reduction: shear multipliers, four
+trace equations and n factors, actual coexact image/potential and zero mode,
+source-weighted Hermitian pairs and complex-block Rayleigh characterization
+are analytically supported. There is one NONBLOCKING wording correction:
+individual w-blocks are generally NOT closed under complex conjugation.
+Conjugation permutes the block family, as the actual real-minimum proof already
+allows. The final falsifier list should not treat nonclosure of an individual
+block as itself a refutation. Details and a concrete example appear in Section8.
+
+This accepts only a finite exact characterization for the CYCLIC24n family.
+No estimate of gamma relative to c, recovery/failure theorem, actual new witness,
+hypothesis elimination, formal/numerical verification, novelty, score or physical
+spectral-gap consequence is established. The note must not be used as an assumed
+trace-Gram bound or transferred to the nonwrapping chart refinement.
+
+1. CONTEXT, READ SCOPE AND BOUNDARY
+
+This is a new source task in the same involved child session
+/root/grouped260_manuscript_source_audit. Inherited programme/construction and
+earlier reports are visible. It is not blind or independently demonstrated
+review. Actually exposed identity is Codex/OpenAI; exact served backend/version/
+effort is not independently exposed and is not inferred from a task name or
+another reviewer. No named external model service was used. No inbound parent
+message arrived after assignment while this audit ran.
+
+The whole262A note was read and every substantive algebraic step was freshly
+rederived below. At exactfb3, the manuscript's actual form/domain/observation
+definitions were read directly, and its curl conventions are the same as the
+whole manuscript previously read in this session. The whole golden260B source
+was read directly at62566b65 to confirm the selected family and the limited
+status of its earlier criterion result. No prior audit verdict was used as a
+mathematical assumption. Governance was read earlier in full in this same child
+session and exact current subjects are retained; CLAUDE first100 lines were read
+earlier and the complete current file is captured as context. No primary-source
+novelty search was performed, and no originality finding is supplied.
+
+No mathematical code, numerical experiment, compiler, Lean/Lake, runtime,
+network or reviewed executable was run. Local actions were git/file reads,
+raw hashes and retention writes only. No branch/source/state/other audit,
+AIRR case, PR426, publication or automation was altered. No disposable clone
+was created, so no cleanup debt exists. No PR/body existed for this task;
+capture/normalized-body hash is N/A. Exact assignment and subjects are retained.
+The inherited full chat is not tool-exportable; its visibility is disclosed
+rather than replaced by an invented full context export.
+
+2. SHEAR AND FOURIER MULTIPLIERS
+
+The map(i,y,z)->(i,y+kappa i,z) is a bijection of the finite torus regardless
+of gcd(kappa,n): for each unchanged i, the y map is a translation. Applying
+it independently to each physical spatial component/channel is a unitary
+reindexing for counting norm. It is not a tensor pullback that silently mixes
+spatial components. Therefore the actual physical differences must have the
+printed sheared multipliers, rather than being replaced by naive y/i gradients.
+
+Indeed u(x1,x2,x3)=f(x1,x2-kappa x1,x3). A physical e1 step becomes
+(i+1,y-kappa,z), e2 becomes(i,y+1,z), e3 becomes(i,y,z+1). The unitary
+n^-3/2 Fourier characters consequently have multipliers
+d1=exp[2pi i(w-kappa p)/n]-1,d2=exp[2pi ip/n]-1,d3=exp[2pi iq/n]-1.
+The physical frequency is(w-kappa p,p,q), an invertible relabelling of all
+frequencies with inverse w=k1+kappa k2. There is no continuum derivative,
+approximate phase or determinant factor. Parseval preserves the original norm.
+
+3. FOUR ACTUAL CELL SUMS AND NORMALIZATION FACTORS
+
+At a slice, the sheared cells really are y=0 versus its complement and z=0
+versus its complement. For one component/channel the four sums are P,
+L2-P,L3-P,T-L2-L3+P. The linear transformation between these four sums and
+(P,L2,L3,T) is invertible by successive additions. Since every cell is nonempty
+and the original mean factors are strictly positive, zero observations are
+equivalent to P=L2=L3=T=0. This is an exact zero-kernel equivalence, not an
+assertion that the full normalized observation norms are unitarily identical.
+
+Expand f by the inverse n^-3/2 transform, then apply the n^-1/2 transform in i.
+For P_i=f(i,0,0), summing i contributes n, giving n^-1 sum_(p,q) fhat(w,p,q).
+For L2_i=sum_z f(i,0,z), the z sum contributes n and selects q=0; the remaining
+i transform leaves sum_p fhat(w,p,0) with factor1. Similarly L3hat(w) is
+sum_q fhat(w,0,q). Summing both transverse directions gives
+That(w)=n fhat(w,0,0). These are exactly the printed n factors.
+
+Thus each w,r,channel has the four TRACE equations. They retain all24n raw
+full observations, two channels*three spatial components*four cells*n slices.
+Neither independence after restricting to actual coexact fields nor rank equal
+to full count is presumed. There is no arbitrary choice of Fourier test rows:
+TRACE is derived from the actual cell sums.
+
+4. ACTUAL COEXACT IMAGE AND ZERO MODE
+
+At a nonzero physical frequency, the true forward curl is d wedge on independent
+j<l components. Its adjoint's j component is
+sum_(l<j)conj(dl)A_lj - sum_(l>j)conj(dl)A_jl.
+The contraction by conj(d) vanishes on this image, by antisymmetry. Conversely
+for conj(d) dot v=0, insert A_jl=(dj vl-dl vj)/|d|^2. Both ranges of l yield
+|dl|^2 vj-dj conj(dl)vl; adding them yields
+(|d|^2 vj-dj sum_l conj(dl)vl)/|d|^2=vj.
+The sign and conjugations are correct, and no factor2 enters because only
+independent two-form components are counted. This proves BOTH directions of
+the actual im(d1*) characterization. It is not an unjustified replacement by
+an abstract divergence-free subspace.
+
+All d components vanish only at physical zero, equivalent here to w=p=q=0.
+At that frequency the adjoint is zero, so v=0 is necessary; a vacuous divergence
+equation alone would be insufficient. The note explicitly imposes this exclusion.
+For other frequencies denominator|d|^2 is positive. Set the zero-frequency
+potential to zero and inverse transform the explicit nonzero-frequency potentials
+to obtain the actual preimage. If field coefficients obey real conjugation,
+d(-k)=conj d(k) makes these potentials obey it as well, including real Nyquist
+frequencies. The construction applies separately to each original channel.
+
+5. SOURCE PARITY AND EXACT HERMITIAN ENERGY
+
+The golden kappa=4floor(alpha n/4)+2 is even. Therefore physical parity
+x1+x2+x3 equals(1+kappa)i+y+z=i+y+z modulo2. Multiplication by its character
+shifts sheared frequency by h=(n/2,n/2,n/2). Its physical first-coordinate
+shift is n/2-kappa n/2, congruent to n/2 because kappa is even. Thus every
+physical theta_j is shifted by pi. This is the essential parity fact; a
+general odd kappa would not give the same displayed pair formula.
+
+For channel1, b0=(a+H)/2,b1=(a-H)/2 gives b0+b1=a at even sources and
+b0-b1=H at odd sources, as required. Channel2 reverses b1 and the two source
+weights. For one spatial component, with pair coefficients(v,v'), the parity
+cross term of the actual energy has M12=b1 sum conj(dj)d'_j. Since
+d'_j=-exp(i theta_j)-1,
+(exp(-i theta_j)-1)(-exp(i theta_j)-1)=2i sin(theta_j).
+Therefore M12=2i b1 S and M21=-2i b1 S. The diagonal values are b0D and
+b0(12-D), since sum|exp(i theta_j)+1|^2=12-D. The signs, conjugate symmetry,
+weak coefficient and ORIGINAL source parity are exactly retained. No weight
+has been evaluated at a displaced target and no internal channel is rotated.
+
+Taking each unordered k,k+h pair once gives the full energy without a factor2
+loss: its off-diagonal quadratic terms already include the conjugate pair of
+cross contributions. The original a,H are positive, so this energy remains a
+positive finite Hermitian form; the displayed complex off-diagonal is not an
+extra assumed operator. The sum runs independently over physical spatial
+components and the two original channels.
+
+6. CLOSED BLOCK FAMILY AND CONSTRAINED RAYLEIGH MINIMUM
+
+Every energy coupling changes w by n/2, so the sets of w labels{w,w+n/2},
+w=0,...,n/2-1, define an orthogonal direct-sum family with2n^2 frequencies
+per block. The p/q half-period shift also remains inside that block. Each TRACE
+equation uses one w and arbitrary p,q, so it stays in the same block. Actual
+coexact constraints act at a single frequency; the zero-mode exclusion lies
+in the block containing zero. Thus the complex constrained kernel decomposes
+as the sum of these n/2 block kernels. Each has eight raw TRACE equations per
+r/channel, namely four equations for each of its two w values. This is a raw
+count only, with independence explicitly unassumed.
+
+For a nonzero global vector the norm is the sum of block norms and energy is
+the sum of block energies. Its quotient is a norm-weighted average of nonempty
+block quotients, bounded below by their smallest infimum. Conversely a complex
+block vector embeds into the global kernel with unchanged quotient. Finite-
+dimensional unit spheres give minima on nonzero block kernels; empty ones may
+be assigned+infinity as the source says. In this n>=32 model nonzero kernels
+also exist by a simple dimension bound: globally the complex actual coexact
+space has dimension4(n^3-1), while at most24n independent observation equations
+are imposed. Hence the global unit-kernel minimum is a genuine finite minimum,
+not an unnoticed all-empty case. No trace-Gram lower estimate is used.
+
+7. REAL VERSUS COMPLEX MINIMA
+
+The physical coefficient form, curl-adjoint map and cell observations are real.
+Write a complex actual-kernel field u=x+i y. Its actual preimage may also be
+split into real/imaginary parts, so x,y are each actual coexact, and their
+observations separately vanish. Q(u)=Q(x)+Q(y) and||u||^2=||x||^2+||y||^2.
+At least one nonzero part has quotient no larger than the complex quotient.
+The reverse inequality follows because real fields form a subset of complex
+ones. Thus real and complex global minima coincide. A minimizing complex block
+can therefore yield a real minimizing global field after pairing/splitting,
+even when the individual block is not conjugation invariant.
+
+Conjugation sends(w,p,q) to(-w,-p,-q). Because -h=h modulo n, it maps the
+w block to the block with representative -w modulo n/2. Under this map
+D is unchanged,S changes sign and M(-k)=conj M(k), so the energy/domain/
+trace block family is stable. Some blocks map to themselves; others are
+exchanged in pairs. The note's actual real/imaginary argument and reference
+to conjugate blocks accommodate that fact and are correct.
+
+8. NONBLOCKING CLARIFICATION262A-N1
+
+The final list calls 'nonclosed block under conjugation' a falsifier. Taken
+literally as EACH individual w block, that phrase is false: for n=32 the block
+{w=1,17} is conjugated to{31,15}, the different block represented by15.
+This is a concrete counterexample to an INDIVIDUAL-block closure requirement,
+not to the reduction. The correct property is closure of the BLOCK FAMILY
+under conjugation, or pairing a block with its conjugate when constructing
+a real field. The preceding source paragraph already says that conjugate
+blocks can be paired and proves equality by physical real/imaginary parts;
+it never needs every block individually closed. Therefore this is a minor
+falsifier-wording correction, not a material error in gamma_n characterization.
+
+Recommended precise sidecar/next-source wording: a falsifier would be failure
+of conjugation to preserve the full constrained block family or an unsupported
+claim that a single unpaired complex block is already a real field. Preserve
+the original frozen source and this finding; do not silently rewrite it or
+propagate an individual-block closure assertion downstream.
+
+9. SCOPE, FINITE PENALTY AND WHAT REMAINS OPEN
+
+The reduction derives an exact finite constrained matrix characterization;
+it supplies no estimate for gamma_n/c. It is not a low-energy witness and
+does not prove positive restoration. Small/degenerate curl multipliers are
+handled in the domain characterization, but quantitative control of their
+interaction with all TRACE equations and phases w remains missing. The old
+Diophantine spacing result does not automatically control those matrices.
+The note does not assume such a trace-Gram estimate or hide it in a structure.
+
+A true actual-kernel vector with quotient<c refutes restoration. A strictly
+positive margin gamma_n>c on the finite kernel would support a SEPARATE
+finite-dimensional penalty argument for that fixed n; any uniform-in-n claim
+needs its own stated estimate and proof. Equality gamma_n=c alone need not
+give a finite penalty because off-kernel couplings can remain. These are
+appropriately conditional future tasks, not proved recovery in the note.
+
+The selected singleton/complement family is CYCLIC24n only. It has not become
+the original nonwrapping canonical class or the separately constructed36n-24
+refinement. No result here transfers to that refinement's additional means.
+This continues soleQ251 and makes no new paper/score, originality, hypothesis-
+elimination, physical gap, continuum or general canonical optimum claim.
+PR29 remains20/41,TermSource=0. After three units without an actual gamma
+estimate or witness, the precise unresolved trace/curl bound should be retained
+and the mechanism changed, as the note says.
+
+10. RETENTION AND EXECUTION
+
+Five exact Git subjects are captured: full262A note, fullfb3 manuscript,
+full golden260B note, full current governance and CLAUDE. Scientific read
+scope is given above; full-file retention is not a claim that every other
+manuscript theorem was newly audited in this task. The private262A note's
+raw bytes match the exact Git subject; all textual hashes identify raw byte
+representations without normalization. The packet includes complete assignment,
+full unabridged report, context and subjects, each manifested with size/SHA256.
+The manifest excludes itself and its raw hash is separately returned.
+No Python assert decides byte acceptance. No mathematical program or reviewed
+code was executed; all proof checks described above were analytical. No source,
+branch, state, other audit, publication or runtime was touched, and no cleanup
+debt exists. The original UNREVIEWED source label remains historical and must
+be paired with this exact-commit report, not silently upgraded to a new paper,
+formal proof, numerical result or independent model assessment.
