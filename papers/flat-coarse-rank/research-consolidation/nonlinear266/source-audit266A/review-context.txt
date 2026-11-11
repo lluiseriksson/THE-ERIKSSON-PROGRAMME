@@ -1,0 +1,33 @@
+ACTUAL REVIEW CONTEXT266A
+Reviewer: Codex/OpenAI, child /root/grouped260_manuscript_source_audit.
+Exact served backend, version and effort are not exposed; none inferred.
+Involved same-session reviewer with inherited programme, author and prior
+audit context. NOT blind, independent review or independently commissioned
+peer review. Prior264A report was authored in this involved session and is
+fully retained/read again as an explicit existing-result dependency. No new
+originality, formal verification, numerical validation, PDF or score review.
+
+Current task read scope: entire266A subject; entire253B text (first170 lines
+and remainder in separate reads); entire current264 README; full existing264A
+audit report, including both minor objections; current environment and immutable
+audit governance sections reread. Whole governance/CLAUDE and actualfb3 source
+definitions were read earlier in this same session. Original264A proof was
+read in full and analytically audited earlier in this session; its exact
+97c5 Git bytes are captured again. This is not a fresh wholesale264 re-audit
+or a fresh historical theorem audit of all captured governance documents.
+Full266 analytical reasoning appears in full-report.txt. Captures and read
+scope are deliberately distinguished. Full inherited chat is not tool-exported;
+its visibility is disclosed instead of pretending a verbatim full-chat capture.
+
+No mathematical executable, Lean/Lake, numerical experiment, oracle, compiler,
+test, runtime, network or external model service was used. Git/file/hash and
+retention operations only. No source, branch, state, other audit, public paper,
+grade, PR, body, automation or chat changed. No agents contacted. No incoming
+parent message during audit. No PR/body exists; body hash N/A. No runtime or
+new-worktree cleanup debt. The retention helper performs only metadata and
+byte comparisons, not a scientific proof or mathematical computation.
+
+Source Git blob and checkout raw bytes match assigned SHA256 without newline
+normalization. Subject bindings give exact origin/representation. If a private
+same-name note exists its readback is recorded below; it is not the referent.
+Private note raw SHA256 3e44b4e22e7d2c5b5d328fdcf1da407795e6e5baeda268e90b486010d2c85a91; exact subject match True.

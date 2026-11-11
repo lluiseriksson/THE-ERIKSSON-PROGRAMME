@@ -1,0 +1,30 @@
+267A bounded primary context,11 November2026 UTC. Not exhaustive novelty.
+
+Lawler and Limic, Random Walk: A Modern Introduction, author-hosted PDF:
+https://www.math.uchicago.edu/~lawler/srwbook.pdf
+Earlier actual bounded reading of section4.4.1/theorem4.4.4 and surrounding
+Fourier-integral text is retained in evidence263/264. The2D potential kernel
+has classical logarithmic asymptotics. This is background, not a result
+about our two-layer graph or canonical coexact means. No fresh full-book
+reading or use of an unproved external Green estimate is claimed in267A.
+
+Bartuccelli, Deane and Zelik, Asymptotic expansions and extremals for the
+critical Sobolev and Gagliardo-Nirenberg inequalities on a torus:
+https://arxiv.org/abs/1012.2061
+Read the author-submitted abstract/metadata only. It treats critical
+two-dimensional logarithmic interpolation for zero-mean periodic functions.
+The full31-page article/theorems were not read here. Its abstract supports
+classical logarithmic background, not the exact discrete weighted statement
+or a priority claim about our observation map. No theorem is imported.
+
+Rivest2001 primary comparison in primary-reading266-rivest.txt explicitly
+credits the identical i+2i² permutation as prior mathematics. The current
+programme's253B already proves the true strong graph, gap and rank context.
+267A derives its finite point inverse/shell bound and penalty directly;
+correctness must come from its own proof/audit, not this literature lookup.
+
+No absence of a search result proves novelty. The new exact observation-map
+combination has UNESTABLISHED historical originality and wider relevance.
+Do not confuse this point-evaluation estimate with entropy log-Sobolev
+inequalities returned by broad searches; those results were not used.
+No scores, provider transfers, new working paper or publication claims.

@@ -1,0 +1,71 @@
+{
+  "self_excluded": true,
+  "artifacts": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1808,
+      "sha256": "a6082b67324169b6dbfd1321e80690398a5fe981bde9ee175bb28aa45e514ad9",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 11237,
+      "sha256": "6245b2234eafab1f76422d5daa39e482976ea787a9e0246321e4907593c828b2",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "review-context.txt",
+      "bytes": 2319,
+      "sha256": "1440f0961add3569d362057c3731d7f8bc7fa76819e312ef4ac4c8f9a09ddb7e",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 2619,
+      "sha256": "50df72f11a67dc6ce91d32dc519a4d399e11afb4f3a21e073681b31caf6ea030",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/canonical-helical-counterexample264A.txt",
+      "bytes": 13980,
+      "sha256": "f92e578af4472c725edada4f5f5686d705645017b31510beda93e0fcdfe4f63d",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/nonlinear-strong-kernel266A.txt",
+      "bytes": 9661,
+      "sha256": "3e44b4e22e7d2c5b5d328fdcf1da407795e6e5baeda268e90b486010d2c85a91",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/prior-full-report264A.txt",
+      "bytes": 20682,
+      "sha256": "5da66bd0e5bc049ff804dca428ecf4b332efa6e64f1b18a955a701904fe1d645",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/README264.txt",
+      "bytes": 442,
+      "sha256": "a0c48b5e05582407f9d258104be42d157500510e60c4f0ff9aae53c284b24e24",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/strong-component-observations253B.txt",
+      "bytes": 14606,
+      "sha256": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2",
+      "representation": "raw retained bytes; no normalization"
+    }
+  ]
+}
