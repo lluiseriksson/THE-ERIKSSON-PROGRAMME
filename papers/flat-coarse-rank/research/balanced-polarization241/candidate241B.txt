@@ -1,0 +1,214 @@
+241 — Balanced polarizations: simultaneous local rank and penalty orders
+Author-role analytical candidate. Requires separate exact-source audit.
+No new execution, PDF, score, priority or physical consequence.
+
+1. Statement and exact retained family.
+Let D>=3,n>=2,g>=1 be integers,c>0,V=n^D. Let real v be any UNIT vector
+in the specified internal basis satisfying
+             nu/g <= v_alpha^2 <= Lambda/g,
+where 0<nu<=1<=Lambda are fixed constants independent of n,g,c.
+Set a=c/(16D),H=cn^2,B=H I_g-(H-a)vv^T and the actual constant
+gradient-stack matrix A_(j,k,alpha),(j',k',beta)=delta_jj' delta_kk' B_alpha,beta.
+Keep U=U_0^g, U_0=im(d_1^*) for the actual flat forward curl and counting
+adjoint, d0=(D-1)(V-1), and the canonical per-channel rectangular rows
+       C_(alpha,k,S)z=V^(-1/2)|S|^(-1/2) sum_(i in S) z_(k,alpha)(i).
+There are explicit channel partitions with full row count
+       N_out <= L_(D,nu,Lambda) [V+g V/n^2]
+and, writing b=min(g,n^2), full-field coercivity
+       Q_A(z)/V +32cb ||Cz||^2 >= c||z||^2/V.                 (241.1)
+The minimum restoring ACTUAL rank in this canonical class is
+Theta_(D,nu,Lambda)(V+gV/n^2). For the constructed fixed canonical map,
+the least normalized restoring quadratic coefficient is
+Theta_(D,nu,Lambda)(c min(g,n^2)). Counting penalty coefficients are V times K.
+This proves that exact uniform v_alpha=1/sqrt(g) is unnecessary within
+the stated balanced class. It does not derive balance from arbitrary data.
+Signs of v_alpha are unrestricted. No basis-free or unbalanced claim follows.
+
+2. Actual partitions and a greedy weighted allocation, not an assumed grouping.
+Write w_alpha=v_alpha^2; these positive weights sum to1. For any successive
+requested masses lambda_q>0, choose the shortest consecutive unused channel
+group I_q whose mass M_q=sum_(alpha in I_q)w_alpha is >=lambda_q.
+Each completed group has
+       lambda_q <= M_q <lambda_q+Lambda/g,
+and its cardinality obeys
+       |I_q| <= g M_q/nu < (g lambda_q+Lambda)/nu.             (241.2)
+If sum_q(lambda_q+Lambda/g)<1, all groups exist disjointly: before each
+selection the unused mass exceeds the sum of remaining requested masses
+plus their possible overshoots, in particular exceeds the current request.
+The shortest prefix therefore reaches that request. This induction derives
+the grouping from the actual v, including all indivisible-weight overshoots.
+Every leftover channel will observe the root partition. No fractional channel
+is permitted; no row is rescaled by v_alpha or by a free normalization.
+
+Use the following case priority:
+(i) g<4096 Lambda^2 OR n<32 Lambda: every channel observes singletons;
+(ii) otherwise g>=n^2: the all-scale construction below;
+(iii) otherwise g<n^2: the coarse-plus-one-tail construction below.
+In(ii), n>=32 Lambda>=32. In(iii), sqrt(g)>=64 Lambda and n>sqrt(g).
+These are real threshold comparisons on integer n,g, not false square/dyadic
+implications. In particular n=2,g=4096,Lambda=1 is in(i).
+
+Let Pi_j be the floor-quantile Cartesian partitions with endpoints
+floor(t n/2^j), empty intervals omitted; P_j their counting average projections,
+L_j=ceil(n/2^j), P_0 the global average. They are nested because every even
+fine endpoint is the corresponding parent endpoint. The actual finite path
+eigenvalues 4sin^2(pi t/(2L)) and sin x>=2x/pi on [0,pi/2] give the
+parent Neumann estimate, tensorized over each rectangle,
+       ||(P_(j+1)-P_j)f||^2 <= L_j^2 E(f)/4.
+Here E is the counting sum of squared forward differences, with all torus
+wrap/multiplicity edges retained; adding nonnegative inter-parent edges is valid.
+For a terminal partition also ||(I-P_k)f||^2<=L_k^2 E(f)/4.
+These estimates hold for arbitrary D-component fields, not only coexact ones.
+
+In(ii), J=ceil(log_2 n), P_J=I, use E_j=P_(j+1)-P_j, 0<=j<J.
+Request lambda_j=5 L_j^2/(8 n^2) and assign I_j to child Pi_(j+1).
+In(iii), s=sqrt(g), k=floor(log_2 s)>=6. Use E_j, j<k, and ONE
+tail E_tail=I-P_k, requested mass lambda_tail=5 L_k^2/(8 n^2).
+Assign coarse I_j to child Pi_(j+1), and the tail group to singletons.
+The tail is one parent-variance estimate, not a sum over finer scales.
+In either case sum_q E_q=I-P_0 orthogonally.
+
+3. Weighted feasibility in every range.
+For(ii), J<=n/4 for n>=32 (check 32<=n<64 directly, then dyadic induction).
+The elementary finite geometric bound is
+       sum_(j<J) L_j^2 <=4n^2/3+4n+J.
+Thus total requested masses plus all greedy overshoots are at most
+       5/6+5/(2n)+5J/(8n^2)+Lambda J/g
+       <=5/6+(85+8Lambda)/(32n)
+       <=5/6+93/1024 <1,                                (241.3)
+using g>=n^2, n>=32Lambda and Lambda>=1.
+For(iii), m=k+1<=s/4: for k>=6, k+1<=2^(k-2)<=s/4, proved by induction.
+The same finite geometric bound through k yields
+       sum_(j<=k)lambda_j + m Lambda/g
+       <=5/6+5/(2n)+5m/(8n^2)+Lambda m/g
+       <=5/6+(85+8Lambda)/(32s)
+       <=5/6+93/2048 <1.                                (241.4)
+Here n>s>=64Lambda. Equations241.3-4 prove the greedy construction is
+actually executable for all stated n,g,v; neither group existence nor a
+rounding budget has been moved to an extra hypothesis.
+
+4. Count the actual canonical observations.
+Define A_D=D2^D(5/2)/(2^(D-2)-1) and B_D=D2^D/(2^D-1).
+For each coarse j, L_j<=2n/2^j, so241.2 gives
+       |I_j| <= (5g/(2nu))4^(-j)+Lambda/nu.
+Each channel in that group has at most2^(D(j+1)) child rectangles, each
+with D component means. Summing the two positive geometric series, the
+coarse row count through j<t is at most
+       (A_D/nu) g 2^((D-2)t)+(B_D Lambda/nu)2^(Dt).       (241.5)
+For(ii), t=J and 2^J<2n, so it is at most
+       [(2^(D-2)A_D+2^D B_D Lambda)/nu] gV/n^2,
+using V<=gV/n^2. Root leftovers add at most Dg<=DgV/n^2 since D>=3,n>=2.
+For(iii), t=k, 2^k<=sqrt(g)<n, so241.5 is at most
+       (A_D+B_D Lambda)V/nu.
+Moreover g L_k^2/n^2 <=(s/2^k+s/n)^2<9. Therefore the tail group has
+       |I_tail| <(45/8+Lambda)/nu,
+and contributes at most D(45/8+Lambda)V/nu rows. Root leftovers add
+Dg<=DV. These inequalities concern full row count; they do not presume
+the nonroot restrictions to U_0 are independent.
+In(i), singleton cost is DgV. If g<4096Lambda^2, this is at most
+4096D Lambda^2 V. Otherwise n<32Lambda, so it is at most
+1024D Lambda^2 gV/n^2. Thus, for example, the finite constant
+L_(D,nu,Lambda)=max(4096D Lambda^2,
+ (2^(D-2)A_D+2^D B_D Lambda)/nu+D,
+ (A_D+B_D Lambda+D(45/8+Lambda))/nu+D)
+controls every case's N_out by V+gV/n^2. No parameter n,g,c is hidden in L.
+
+5. Full-field penalty estimate with the SAME fixed canonical rows.
+Let R be the full per-channel orthogonal block projection. Exactly
+||Cz||^2=||Rz||^2/V. First suppose each component of z has global mean0.
+Split f=sum_alpha v_alpha z_alpha, s_alpha=z_alpha-v_alpha f.
+Since v is unit, ||z||^2=||f||^2+sum_alpha||s_alpha||^2 and
+Q_A(z)=aE(f)+T, T=H sum_alpha E(s_alpha). All these fields have mean0.
+For any piece q and alpha in I_q, use
+       ||p-q'||^2 >=(9/10)||q'||^2-9||p||^2
+with p=E_q z_alpha, q'=v_alpha E_q f. The parent estimate and disjoint
+groups imply, charging each strong channel energy at most ONCE,
+ T >= sum_q(4H/L_q^2)sum_(alpha in I_q)||E_q s_alpha||^2
+   >=(9/10)sum_q (4H M_q/L_q^2)||E_q f||^2
+       -36 sum_q(H/L_q^2)sum_(alpha in I_q)||E_q z_alpha||^2.
+By the actual requested masses, 4H M_q/L_q^2>=(5/2)c.
+Also H/L_q^2<=cb: in(ii) b=n^2; in(iii), j<=k gives L_j>=n/sqrt(g)
+and b=g. For coarse groups E_q<=P_(j+1)=R_alpha; for the tail R_alpha=I.
+Consequently the negative-term sum is <=36cb||Rz||^2, and
+       T+36cb||Rz||^2 >=(9/4)c||f||^2.                  (241.6)
+Independently the labelled torus gap 4sin^2(pi/n)>=16/n^2 gives
+       T>=16c sum_alpha||s_alpha||^2.
+Take8/9 of241.6 and1/9 of this last inequality: it spends ONE T and gives
+       T+32cb||Rz||^2 >=2c||f||^2+(16/9)c sum||s_alpha||^2
+                         >=c||z||^2.
+Adding aE(f)>=0 proves241.1 on zero-mean fields. Every block projection
+preserves global constants and averages, R P_0=P_0 R=P_0. Split arbitrary
+z=P_0z+(I-P_0)z orthogonally; Q ignores the first term, while the two R
+images remain orthogonal and32cb>=c. Thus241.1 holds on ALL fields.
+In(i), R=I and normalized K=c already suffices. No preservation of
+coexactness by R is assumed, and no internally mixed observation was used.
+
+6. Actual-rank lower bounds: recompute the weighted trace.
+This part applies to every internally channel-separable linear restoring C
+on U with ANY finite penalty Phi(Cu), Phi(0)=0; the penalty lower below
+then specializes to canonical fixed weights and quadratic coefficients.
+Let R_alpha now denote orthogonal row-space projections INSIDE U_0, let
+R=direct-sum R_alpha, r=sum rank(R_alpha)=rank(C|U), and T0f=(v_alpha f)_alpha.
+T0 is an isometry U_0 -> U. The compression is positive, and
+       trace(T0^* R T0)=sum_alpha v_alpha^2 rank(R_alpha)<=Lambda r/g.
+Choose a unit f in U_0 with t=||R T0f||^2<=Lambda r/(g d0).
+Set u=(I-R)T0f, so Cu=0, ||u||^2=1-t, and u is ACTUALLY coexact.
+The forward lattice bound E(w)<=4D||w||^2 and PSD quadratic polarization
+give, as in231B but now with the weighted t,
+       Q_A(u)<=2Q_A(T0f)+2Q_A(RT0f)<=8Da+8DH t.
+Restoration at Cu=0 therefore yields
+       c(1-t)<=c/2+8Dcn^2 t,
+       r>=g d0/[2Lambda(1+8Dn^2)]
+         >=[(D-1)/(4Lambda(1+8D))] gV/n^2.              (241.7)
+There is also r>=d0>=(D-1)V/2, since Q_A(T0f)=aE(f)<=c||f||^2/4
+makes C T0 injective on U_0. Combining these inequalities gives the matching
+Theta_(D,nu,Lambda)(V+gV/n^2) restoring rank together with Section4.
+The restriction to canonical maps is a subclass for this lower bound.
+
+For canonical projection R with these fixed weights and quadratic K,
+restoration of T0f gives K||RT0f||^2>=3c||f||^2/4.
+Here R_alpha need not preserve U_0. Its restriction to U_0 is a contraction
+with squared-singular-value sum at most its actual rank. Summing over a
+real orthonormal U_0 basis again gives trace<=Lambda r/g and hence
+       K>=3c g d0/(4Lambda r).
+For the constructed map r<=L_(D,nu,Lambda)(V+gV/n^2), so
+       K>=3(D-1)c min(g,n^2)/(16Lambda L_(D,nu,Lambda)).  (241.8)
+Together with32cb this proves the simultaneous least-penalty order.
+A least coefficient exists as the endpoint of the nonempty closed
+intersection of restoring half-lines; no least-rank equality with row count
+or uniform conditioning has been asserted.
+
+7. Scope, budget and negative boundaries.
+B still has eigenvalues a once and H with multiplicity g-1 regardless of v.
+Thus the original full capped budget is unchanged,
+ F=D^2 V[1+(g-1)min(1,alpha_D n^(-D))] <=D^2(V+alpha_D g),
+alpha_D=(3/4)^D (D/2) (D/(D-2))^(D-1), and h+F=O_D(V+g). No extra budget channel is omitted.
+The proof derives weighted partitions and coercivity; it does not merely
+place an unproved decomposition in a structure or assume a new regional gap.
+The removed requirement is exact uniform polarization WITHIN a prescribed
+balanced class. Fixed nu,Lambda, positive constant rank-one weak family,
+fixed basis, finite actual flat domain and canonical row normalization remain.
+Without balance, v=e_1 admits one weak singleton channel and root observations
+on all strong channels. On U, its rank is d0 because roots vanish there;
+for n>=4, Q on strong mean-zero channels is >=16c||z||^2, and the weak
+singleton observations with K=c control the weak channel. Therefore a
+uniform gV/n^2 lower bound cannot hold over all unbalanced unit vectors.
+This explicit escape is a boundary check, not a refutation of241.7: for g>1,
+v=e_1 violates nu/g>0 in its zero coordinates. On all fields the strong
+constants need K>=c on the root rows too, which K=c supplies; no constant
+mode was silently dropped. The same argument works for all n>=2 by the
+labelled gap, but n>=4 is enough for the growing-parameter escape.
+No historical priority, practical implementation, application, nonlinear
+penalty lower, arbitrary row rescaling, signed/general coefficient theorem,
+physical spectral gap or continuum result follows. Classical ingredients
+are finite Neumann gaps, orthogonal projections, greedy weights, Young and
+trace. Group this with235-240 in one future consolidation. Frozen232B has
+no241 result and inherits no changed grade. Preserve all original failures.
+
+8. Corrected241B and preserved original rejection.
+Original241A changed the inherited capped-budget constant incorrectly.
+The separate audit supplied D=4,n=2,g=2,nu=Lambda=1,uniformv: the original
+budget is337, whereas241A claimed65537/256. That exact source remains
+REJECTED. This241B restores the original alpha_D from226C/231B/238;
+Sections1-6, all partitions, rank/penalty claims and their proofs are unchanged.
+The repaired source requires its own full source audit, not inherited approval.

@@ -1,0 +1,99 @@
+SOURCE-ONLY ANALYTIC AUDIT241
+Issued 2026-11-11. Verdict: REJECT EXACT SOURCE AS WRITTEN / CORRECTION REQUIRED.
+No blocking defect was found in the core balanced-polarization row construction, full-field inequality (241.1), actual-rank order, or fixed-canonical penalty order. Section7 does contain a false exact inherited capped-budget assertion. That material finding is isolated below; it is not a counterexample to the main coercivity inequality. No grade, PDF, formal/numerical certificate, priority verdict, or publication approval is issued.
+
+1. Exact referent and raw capture
+Repository: C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108.
+Assigned branch: codex/tep-balanced-polarization241-20261111. The audit attaches to commit44902fda690f3d2fb9a5a2ceb23ec123039f0df3, path papers/flat-coarse-rank/research/2026-11-11_balanced-polarization241.txt, not to the mutable branch.
+Capture command: git -C "C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108" show 44902fda690f3d2fb9a5a2ceb23ec123039f0df3:papers/flat-coarse-rank/research/2026-11-11_balanced-polarization241.txt.
+Method: process StandardOutput.BaseStream direct to a byte buffer, then WriteAllBytes. No text decoding, pipeline normalization, newline conversion or BOM insertion. Git exit0. Exact source:12143 bytes,206 LF,0 CR; SHA25659907005dc2184e7dcb380f06f7cad09ffd3ff247145bff1707ad3ef1b1865d1 (exact Git blob/LF, no normalization). The D evidence candidate241.txt was directly compared byte by byte and was identical. The full candidate was read.
+Every captured scientific input has its exact source commit/path/command, bytes, SHA256 and CR/LF counts in capture-manifest.json. Inputs read in full include239 at9a7f2113ba9ca9344bfb7bb1d31c8859ca6a5993 (8074 bytes; d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757), corrected240B atb25f6a46f6e274a6315565ea34c367b81400a82a (8232 bytes; d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814), and238 atfd8a3b8760d18a44b4349dcac1d4e03ed2c36886 (7686 bytes; d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42).
+Also captured and read:231B and237 as present at the frozen241 commit; original226C matrix-proof.tex and rectangular_matrix.tex at2d3237501569f6afac8a44d524a5d6db59f63c39. Each226C raw blob contains one CR byte; those bytes were preserved and are not represented as normalized LF. Original226C is primary evidence for the inherited budget, rather than a later model report.
+
+2. Blocking finding B1: original capped-budget normalization changed
+Location: candidate241 Section7, lines183-185, especially185.
+The source says the original full capped budget is unchanged but sets alpha_D=(16D)^(-D/2). The original226C rectangular_matrix.tex lines106-107 and113-116 defines instead
+ alpha_old=(3/4)^D (D/2) (D/(D-2))^(D-1),
+ F_c(A)=nu_0+sum_{x,j:lambda_j(x)>0}min(1,alpha_old(c/lambda_j(x))^(D/2)).
+The same alpha_old and cost are explicitly retained in231B Section2 and238 Section6. Changing v while keeping the coefficient eigenvalues fixed cannot change this previously prescribed cap normalization.
+
+Exact admissible counterexample: D=4,n=2,g=2,c>0,nu=Lambda=1,v=(1,1)/sqrt(2). Then V=16,a=c/64,H=4c. At each site A has16 weak and16 strong eigenvalues. The original alpha_old=81/16; weak cost is capped at1, strong cost is81/256. Thus
+ F_original=16*16*(1+81/256)=337.
+The candidate's alpha_new=1/4096 instead gives
+ F_claimed=16*16*(1+1/65536)=65537/256,
+which is unequal to337. Its displayed upper with alpha_new is16*(16+2/4096)=256+1/128, also below the actual337. Both the inherited exact budget assertion and the stated upper constant therefore fail. This example lies in valid case(i) and satisfies even exact uniform balance. It uses direct paper arithmetic, not executed numerical testing.
+
+B1 does not refute the core row/coercivity/rank/penalty theorem. Replacing the erroneous constant by alpha_old yields exactly
+ F_original=D^2 V[1+(g-1)min(1,alpha_old n^(-D))]
+             <=D^2(V+alpha_old g),
+so h+F_original=O_D(V+g) still holds. Alternatively alpha_new could define a DIFFERENT capped functional if explicitly introduced; it cannot be called the original unchanged budget. No source repair was made. A repaired source is a new audit referent, and is not automatically accepted by this report.
+
+3. Retained hypotheses, nonvacuity and arbitrary signs
+Uniform unit vectors satisfy the stated fixed0<nu<=1<=Lambda balance for every n,g, so the family is nonempty. For a given balanced v, w_alpha=v_alpha^2>0 and sum w=1. Allocation and traces use these actual squares. The split along the actual unit v works for all sign patterns. Equivalently a diagonal internal sign change preserves coexactness, energy and canonical observation norms. No exact uniform-polarization assumption reappears.
+Lower balance nu controls channel cardinality; upper balance Lambda controls overshoots and the lower-bound trace. They remain explicit hypotheses, not consequences of arbitrary data. Constants may depend on D,nu,Lambda but not on n,g,c.
+
+4. Shortest-prefix grouping and every indivisible overshoot
+Before its last channel, a shortest prefix reaching lambda has mass strictly below lambda. The final channel weighs at most Lambda/g, so lambda<=M<lambda+Lambda/g. Since each channel weighs at least nu/g, |I|<=gM/nu<(g lambda+Lambda)/nu. Exact hits, one-channel groups and highly nonuniform allowed weights cause no exception.
+If the sum of requested masses plus all possible Lambda/g overshoots is below1, after any completed group prefix its used mass is below its allocated upper budget. The remaining mass exceeds the sum of remaining upper budgets, hence the next request. A shortest prefix therefore exists. This is a valid finite induction giving actual disjoint groups; it does not assume fractional channels or group feasibility. Leftovers are assigned the root.
+The priority is essential and correct: first(i) g<4096Lambda^2 OR n<32Lambda; then(ii) g>=n^2; otherwise(iii). Outside(i), case(ii) has n>=32Lambda>=32. Case(iii) has s=sqrt(g)>=64Lambda,n>s,k=floor(log_2 s)>=6. Thus n=2,g=4096,Lambda=1 is correctly in(i), while n=32,g=4096,Lambda=1 can be in(ii). Equality thresholds, nonintegral Lambda, nonsquare g and non-dyadic n are covered.
+
+5. Actual rectangles, band projections and spectral estimates
+Floor-quantile partitions are nested because every coarse endpoint occurs at an even fine index; empty intervals can be omitted. Cell side lengths are at most L_j=ceil(n/2^j). P_0 is global averaging and P_J=I for J=ceil(log_2 n). Projection differences E_j=P_(j+1)-P_j are mutually orthogonal. In case(iii), I-P_k is one orthogonal tail, and all pieces sum exactly to I-P_0.
+For an ell-site path the first positive Neumann eigenvalue4sin^2(pi/(2ell))>=4/ell^2 by sin x>=2x/pi. Singleton factors have zero variance. Tensor products give parent variance<=L_j^2/4 times its internal edge energy, without a factorD. Adding other nonnegative labelled torus edges only increases energy. Each E_j is a subprojection of I-P_j, so its bound follows. The terminal tail uses one parent-variance estimate, not a sum over finer scales.
+The periodic labelled gap4sin^2(pi/n)>=16/n^2 holds for every n>=2. At n=2, labelled forward edges retain their correct parallel multiplicity and yield gap4=16/n^2. These finite cosine/Fourier statements can be checked directly on paper; no regional gap is assumed.
+
+6. Both weighted feasibility budgets
+The ceiling bound L_j<=n/2^j+1 gives sum L_j^2<=4n^2/3+4n+m over any m initial indices. In case(ii), m=J<=n/4 for n>=32. Therefore requests plus all overshoots are at most
+ 5/6+5/(2n)+5J/(8n^2)+Lambda J/g
+ <=5/6+(85+8Lambda)/(32n)
+ <=5/6+93/1024<1.
+Here g>=n^2,n>=32Lambda, and(85+8Lambda)/Lambda<=93 because Lambda>=1. No overshoot has been counted as1/g when the actual bound is Lambda/g.
+In case(iii), m=k+1<=2^(k-2)<=s/4 for k>=6, using the elementary induction beginning16>=7. With n>s and s>=64Lambda the same calculation gives
+ 5/6+5/(2n)+5m/(8n^2)+Lambda m/g
+ <=5/6+(85+8Lambda)/(32s)
+ <=5/6+93/2048<1.
+This pays the tail's own overshoot too. The greedy construction is thus derived for all assigned large-parameter cases.
+
+7. Full row count, roots, tail, and singleton fallbacks
+For coarse j, L_j<=2n/2^j implies |I_j|<=(5g/(2nu))4^(-j)+Lambda/nu. Each channel has D times at most2^(D(j+1)) child cells. The two positive geometric sums give the displayed(241.5), with
+ A_D=D2^D(5/2)/(2^(D-2)-1), B_D=D2^D/(2^D-1).
+D>=3 makes both denominators positive. In(ii),2^J<2n and V<=gV/n^2 give its stated upper; root leftovers cost at mostDg<=DgV/n^2.
+In(iii),2^k<=s<n gives g2^((D-2)k)<=g^(D/2)<V and2^(Dk)<V. Also gL_k^2/n^2<9, so tail cardinality is below(45/8+Lambda)/nu; its singleton rows cost at mostD(45/8+Lambda)V/nu. Roots cost Dg<=DV because g<n^2<=V.
+In(i), bounded g costs at most4096D Lambda^2 V. If only bounded n supplies the fallback, DgV<1024D Lambda^2 gV/n^2. The stated L constant dominates both. Thus all cases have full row count<=L(V+gV/n^2), with no hidden n,g,c dependence. Restricted-row independence is neither needed nor asserted.
+
+8. Full-field coercivity and ONE strong-energy allocation
+For zero-mean fields, f=sum v_alpha z_alpha and s_alpha=z_alpha-v_alpha f give sum v_alpha s_alpha=0 and exact norm/energy splitting, Q_A=aE(f)+T with T=H sum E(s_alpha). This uses the actual unit vector, including arbitrary signs.
+The Young inequality is valid: subtracting its stated right side from ||p-q||^2 yields10||p||^2-2<p,q>+(1/10)||q||^2>=0. Its application yields the actual group mass M_q coefficient. Parent variance bounds give(4H/L_q^2)||E_qs_alpha||^2<=HE(s_alpha). Disjoint groups charge each channel energy at most once. Actual M_q>=5L_q^2/(8n^2) gives4HM_q/L_q^2>=(5/2)c.
+In(ii),H/L_q^2<=cn^2; in(iii), L_q>=n/s gives H/L_q^2<=cg. Both are cb for b=min(g,n^2). For coarse selected channels E_q is a subprojection of the observed child projection; tail observations are identity. Disjointness therefore bounds the negative term by36cb||Rz||^2. Orthogonal exhaustion of mean-zero f gives
+ T+36cb||Rz||^2>=(9/4)c||f||^2.
+Separately the torus gap yields T>=16c sum||s_alpha||^2. Taking8/9 of the first and1/9 of the second spends exactly ONE T and proves T+32cb||Rz||^2>=2c||f||^2+(16/9)c sum||s_alpha||^2>=c||z||^2. Add aE(f)>=0.
+Every block projection preserves constants and global averages: RP_0=P_0R=P_0. Mean and mean-zero images remain orthogonal, Q ignores constants, and32cb>=c pays every constant mode. Thus(241.1) holds on ALL fields. In(i),R=I and K=c already suffices. No block projection is assumed to preserve coexactness.
+Normalization is exact: ||Cz||^2=||Rz||^2/V. With these same fixed C rows, multiplication of the normalized inequality by V makes its counting coefficient VK. Arbitrary row rescaling is excluded.
+
+9. Actual coexact rank and weighted compression
+For actual flat forward curl, every nonzero frequency has nonzero q=(exp(2pi i k_i/n)-1)_i. The wedge map q wedge has rankD-1; its adjoint image has that dimension. Zero frequency contributes0. Conjugate pairing gives real d0=(D-1)(V-1), including period-two self-conjugate frequencies. Coexact components have global mean0 by telescoping. Constant internal mixing preserves this actual domain.
+For an arbitrary channel-separable restoring linear map use row-space projections INSIDE U_0, not the full block projections. T0:f->(v_alpha f) is an isometry and trace(T0^*RT0)=sum w_alpha rank(R_alpha)<=Lambda r/g. A real unit f therefore has t=||RT0f||^2<=Lambda r/(g d0). The vector u=(I-R)T0f is actually coexact, Cu=0 and||u||^2=1-t.
+The lattice upper E(w)<=4D||w||^2 and PSD polarization give Q_A(u)<=8Da+8DHt. Restoration at Cu=0 with Phi(0)=0 forces c(1-t)<=c/2+8Dcn^2t, yielding(241.7), including its simplified constant. This rank obstruction also works for arbitrary finite penalties in that linear/separable observation class, since only their value at0 was used.
+Independently Q_A(T0f)<=c||f||^2/4 makes C T0 injective for every restoring map, hence r>=d0>=(D-1)V/2. Combining the two lower bounds gives a fixed positive multiple of V+gV/n^2. Together with the full-count upper this proves the minimum restoring ACTUAL rank order in the canonical class. Output count has not been substituted for an actual-rank lower bound.
+
+10. Fixed-canonical weighted penalty lower
+For this argument R is instead the full block projection and may take coexact inputs outside U_0. Each restriction R_alpha|U_0 is a contraction; its squared-singular-value sum is at most its actual restricted rank. Weighted by w_alpha<=Lambda/g and summed on a real orthonormal U_0 basis, this gives trace<=Lambda r/g. Weak-field restoration then forces K>=3cgd0/(4Lambda r).
+The constructed map has r<=L(V+gV/n^2); using d0>=(D-1)V/2 and g/(1+g/n^2)>=min(g,n^2)/2 yields exactly(241.8). The upper32cb and this lower prove the least coefficient order. In the singleton branch b is bounded by constants depending only on Lambda, so its actual full-field least coefficient c is consistent with the order.
+A least coefficient exists as the lower endpoint of the nonempty closed intersection of restoring half-lines, with kernel inequalities satisfied by the constructive upper. Weak fields give a strictly positive lower endpoint. The lower on U and upper on all fields work under either interpretation of the fixed-map restoration domain. No claim of a nonlinear penalty-size lower or a constructive upper for every economical map is made.
+
+11. Unbalanced escape and scope
+For v=e_1, channel1 singletons plus roots on all other channels have restricted rank d0 on U. Strong mean-zero channels have energy>=16c times squared norm, and K=c on the singleton weak channel controls its norm. On all fields the roots additionally pay the strong constants with K=c. This works for all n>=2 under the labelled convention.
+To see a genuinely growing escape, take g=n^D and let n grow: d0/(gV/n^2) has order n^(2-D), tending to0 for D>=3. Hence the universal unbalanced gV/n^2 lower is impossible. For g>1 this v violates positive lower balance on its zero coordinates; it does not refute the balanced result.
+No additional blocker to the core rank/penalty theorem was found. Finite gaps, projection calculus, greedy weights, PSD/Young and trace are elementary/classical ingredients. Priority is unestablished; no exhaustive novelty search was performed. No implemented efficiency, conditioning, optimal leading constants, arbitrary-profile/signed theorem, internally mixed/basis-free lower, physical/coexact application, continuum result or mass gap follows.
+The dependency240B source records the rejected240A case assertions; those statements were read as source history, not inherited audit authority. No prior model grade was imported. Older frozen sources, failures and reports were not changed or regraded. Grouping with235-240 remains a proposed consolidation, not publication or erasure of B1.
+
+12. Operational and factual model context
+D:\LEEME.md, active CLAUDE.md and the repository Operational Governance Charter were read. No nested AGENTS.md was found along the checked repository/papers/flat-coarse-rank/research ancestry. This is the separate AUDITOR role only; no241 fabrication occurred here. This existing task was reused after the earlier unrelated199 audit, rather than freshly spawned for241. Shared filesystem/account and inherited configuration preclude independent-infrastructure/account/model-sampling claims. No inbound follow-up arrived during the audit.
+Actually exposed description: "Codex, an agent based on GPT-6". Exact deployed model/backend/version and actual reasoning effort are not exposed and are unknown. OpenAI/Codex is the exposed interface context; authentication account, provider routing, subscription/quota and usage limits were not inspected and are unknown. No separate-provider independence or quota status is invented. context.json records these limits explicitly.
+Only paper reasoning, committed-source/primary reading, text editing, Git capture/inspection and byte/hash operations occurred. No mathematical executable, symbolic/numerical oracle, Lean/Lake, build/test, rendering or runtime allocation occurred. No source, branch, repository state, chat, automation or publication changed. No clone was created and no cleanup is pending. Writes were confined to this requested D evidence subtree.
+
+13. Issued artifacts and final disposition
+Destination: D:\Datos\the-eriksson-programme\autonomia\evidencia-241\source-audit.
+Complete report: fullreport.txt. Machine verdict: verdict.json. Factual context: context.json. Raw source binding: capture-manifest.json. Exact raw captures: capture\*. Artifact hashes: hashes.json, excluding its own unavoidable self-reference; that manifest's external hash is returned at handoff.
+Authored report/JSON files are UTF-8 without BOM, LF only, final LF. Captured sources retain exact Git bytes including the original226C CR bytes.
+Final: REJECT EXACT241 AS WRITTEN due to B1's false original-budget claim and explicit admissible counterexample. Core balanced-polarization rank/penalty argument: no blocking defect found analytically. Restoring the original budget constant appears sufficient for this finding but requires a new exact-source acceptance. No PDF, stars or numeric assessment was requested or produced.

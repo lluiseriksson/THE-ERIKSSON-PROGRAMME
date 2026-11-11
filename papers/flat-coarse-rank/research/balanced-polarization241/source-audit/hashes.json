@@ -1,0 +1,79 @@
+{
+  "audit_id": 241,
+  "hash_algorithm": "SHA256",
+  "self_reference": "hashes.json excluded; its exact byte hash is returned externally",
+  "files": [
+    {
+      "file": "capture/balanced-polarization241-git.txt",
+      "bytes": 12143,
+      "sha256": "59907005dc2184e7dcb380f06f7cad09ffd3ff247145bff1707ad3ef1b1865d1",
+      "representation": "Exact Git blob bytes, no normalization"
+    },
+    {
+      "file": "capture/all-internal-dimensions239-git.txt",
+      "bytes": 8074,
+      "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757",
+      "representation": "Exact Git blob bytes, no normalization"
+    },
+    {
+      "file": "capture/all-dimension-penalty240B-git.txt",
+      "bytes": 8232,
+      "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814",
+      "representation": "Exact Git blob bytes, no normalization"
+    },
+    {
+      "file": "capture/internal-dimension238-git.txt",
+      "bytes": 7686,
+      "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42",
+      "representation": "Exact Git blob bytes, no normalization"
+    },
+    {
+      "file": "capture/channel-separable231B-git.txt",
+      "bytes": 7789,
+      "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f",
+      "representation": "Exact Git blob bytes, no normalization"
+    },
+    {
+      "file": "capture/rank-penalty237-git.txt",
+      "bytes": 5765,
+      "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3",
+      "representation": "Exact Git blob bytes, no normalization"
+    },
+    {
+      "file": "capture/226C-matrix-proof-git.tex",
+      "bytes": 7469,
+      "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8",
+      "representation": "Exact Git blob bytes, no normalization"
+    },
+    {
+      "file": "capture/226C-rectangular-matrix-git.tex",
+      "bytes": 15141,
+      "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3",
+      "representation": "Exact Git blob bytes, no normalization"
+    },
+    {
+      "file": "capture-manifest.json",
+      "bytes": 6299,
+      "sha256": "091d1473a0e93a9e14d9a422089f8a0f516d0fa6a0abcee387bed57253e44fcf",
+      "representation": "UTF-8 without BOM, LF only, final LF"
+    },
+    {
+      "file": "fullreport.txt",
+      "bytes": 17331,
+      "sha256": "45f6868a6c75940d61b249567dc295fe3d04acca14b12d9ffe6b30638aa8ad6f",
+      "representation": "UTF-8 without BOM, LF only, final LF"
+    },
+    {
+      "file": "verdict.json",
+      "bytes": 2597,
+      "sha256": "4d0e62105f70910e38f4ed00980de628d48f469b9efbb8b2a3d2f97c00d4d427",
+      "representation": "UTF-8 without BOM, LF only, final LF"
+    },
+    {
+      "file": "context.json",
+      "bytes": 1411,
+      "sha256": "de5d15a98b8d49723e095112548c9cf2debe833f90b660dbaa84fdf4d5380339",
+      "representation": "UTF-8 without BOM, LF only, final LF"
+    }
+  ]
+}

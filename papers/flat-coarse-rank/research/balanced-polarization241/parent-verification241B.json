@@ -1,0 +1,22 @@
+{
+  "unit": "241B",
+  "source_sha": "e40c0920f8aa7298aa95e03c3c8618f1ed0703a4",
+  "source_sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03",
+  "source_audit_manifest_sha256": "177d42fb429e129cd93cd00b0ea20769f24600b7e09b57a3894f119e1bd9cd40",
+  "verified_A_subjects": 12,
+  "verified_B_subjects": 14,
+  "original_A_verdict": "REJECT_UNCHANGED",
+  "B_verdict": "ACCEPT_EXACT_CORRECTED_SOURCE_WITH_STATED_SCOPE",
+  "full_report_read": true,
+  "original_failure": "Inherited cap alpha_D wrong; D4n2g2 uniform F337 vs claimed65537/256",
+  "correction": "Original cap restored; Sections1-6 unchanged; all proof claims reread by separate auditor",
+  "scope": "Unit balanced v withfixednu/g<=v_alpha^2<=Lambda/g, fixedbasis positiveconstantfamily actualflatcoexactdomain canonicalrectangleweights",
+  "rank": "Theta_(D,nu,Lambda)(V+gV/n^2)",
+  "least_normalized_penalty": "Theta_(D,nu,Lambda)(c min(g,n^2)); explicit32cmin(g,n^2) allfields",
+  "proved_relaxation": "Exact uniform polarization unnecessary inside the stated balanced class; balance is not derived from general data.",
+  "unbalanced_boundary": "v=e1 has rankd0 viaoneweak-singletonchannel+strongroots, so universal unbalanced gV/n^2 lower false",
+  "novelty": "UNESTABLISHED; new2019operatoradapteddifferentialforms predecessor identified fromprimaryabstract; fullPDF notread inlaterlookup",
+  "formal_or_numeric_execution": false,
+  "new_PDF_or_grade": false,
+  "not_in_frozen232B": true
+}
