@@ -1,0 +1,63 @@
+{
+  "recorded_at": "2026-11-11T17:31:45.980703+00:00",
+  "task": "/root/golden_window260_source_audit",
+  "exact_commit": "62566b653002ee4cd3a480b26dd366baffc5ffad",
+  "verdict": "ACCEPT_ANALYTICAL_ALL_K_FAILURE_OF_THE_STATED_259_SUFFICIENT_CRITERION_WITH_LIMITS",
+  "material_objections": [],
+  "model_identity_exposed": "Codex/OpenAI family; exact served backend/model version/effort unavailable",
+  "independence": "Separate child session of involved programme; inherited parent conversation and construction visible; not blind or independently established",
+  "formal_verification": false,
+  "numerical_experiment": false,
+  "numerical_grade": null,
+  "external_novelty_audit": false,
+  "inbound_parent_messages_during_audit": false,
+  "PR_body_capture": "Not applicable; no PR or body in assignment",
+  "PR_normalized_body_hash": null,
+  "runtime_created": false,
+  "disposable_clone_created": false,
+  "cleanup_pending": false,
+  "source_or_branch_modified": false,
+  "subjects": [
+    {
+      "path": "subjects/golden-window-route-limit260B.txt",
+      "source": "62566b653002ee4cd3a480b26dd366baffc5ffad:papers/flat-coarse-rank/research-consolidation/golden-window260/golden-window-route-limit260B.txt",
+      "bytes": 4405,
+      "sha256_raw": "ab07d9fbba10d1bb5a039fa8e758db4f5b370838a5b79f136754fb507df8888d",
+      "representation": "Exact Git blob bytes via binary git show; no normalization",
+      "read_scope": "Entire source analytically rederived"
+    },
+    {
+      "path": "subjects/README.md",
+      "source": "62566b653002ee4cd3a480b26dd366baffc5ffad:papers/flat-coarse-rank/research-consolidation/golden-window260/README.md",
+      "bytes": 1863,
+      "sha256_raw": "e1f11714f366cb53579ff00233bc099cde356888fa648ea5bff0d14ef4bf1c80",
+      "representation": "Exact Git blob bytes via binary git show; no normalization",
+      "read_scope": "Entire source read; scope checked"
+    },
+    {
+      "path": "subjects/coarse-window-obstruction259A.txt",
+      "source": "2f370a7da850b8066a9afe95c523e49bd1ef725e:papers/flat-coarse-rank/research-consolidation/coarse-window259/coarse-window-obstruction259A.txt",
+      "bytes": 11351,
+      "sha256_raw": "03c71a1a4a652a6d28bc38acc43b7a2227796a300d673e1611f65417bb50557f",
+      "representation": "Exact Git blob bytes via binary git show; no normalization",
+      "read_scope": "Entire source read; criterion definition and quantifiers freshly checked; full prior theorem not recertified"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "source": "62566b653002ee4cd3a480b26dd366baffc5ffad:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256_raw": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "Exact Git blob bytes via binary git show; no normalization",
+      "read_scope": "Entire charter read"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "source": "62566b653002ee4cd3a480b26dd366baffc5ffad:CLAUDE.md",
+      "bytes": 23996,
+      "sha256_raw": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "Exact Git blob bytes via binary git show; no normalization",
+      "read_scope": "First100 lines read; entire file preserved as context"
+    }
+  ],
+  "context_export_limit": "Complete task assignment retained. Full inherited conversation not exportable by provided tool; nonblind visibility disclosed."
+}
