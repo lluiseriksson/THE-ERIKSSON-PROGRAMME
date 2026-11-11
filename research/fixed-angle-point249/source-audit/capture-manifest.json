@@ -1,0 +1,30 @@
+[
+  {
+    "capture": "capture/fixed-angle-point249A-candidate.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-249\\fixed-angle-point249A-candidate.txt",
+    "bytes": 10135,
+    "sha256_raw": "207964b440b7c91bc535739cc323f1fc135be4aac697ad665efb0ea4b7fb5a24",
+    "normalization": "none; exact source bytes"
+  },
+  {
+    "capture": "capture/source247.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-preparation\\raw-tree\\inputs\\accepted\\source247.txt",
+    "bytes": 10720,
+    "sha256_raw": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03",
+    "normalization": "none; exact source bytes"
+  },
+  {
+    "capture": "capture/source248.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-preparation\\raw-tree\\inputs\\accepted\\source248.txt",
+    "bytes": 17708,
+    "sha256_raw": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675",
+    "normalization": "none; exact source bytes"
+  },
+  {
+    "capture": "capture/source246.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-preparation\\raw-tree\\inputs\\accepted\\source246.txt",
+    "bytes": 7600,
+    "sha256_raw": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842",
+    "normalization": "none; exact source bytes"
+  }
+]

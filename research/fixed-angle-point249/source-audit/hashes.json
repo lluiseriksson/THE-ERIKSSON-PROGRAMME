@@ -1,0 +1,47 @@
+{
+  "candidate_sha256_raw": "207964b440b7c91bc535739cc323f1fc135be4aac697ad665efb0ea4b7fb5a24",
+  "files": [
+    {
+      "path": "capture-manifest.json",
+      "bytes": 1400,
+      "sha256_raw": "215815fa8bb3f9bda6ceeee648b4d93efe7ae3a950b3713688e10da12a7e928d"
+    },
+    {
+      "path": "capture/fixed-angle-point249A-candidate.txt",
+      "bytes": 10135,
+      "sha256_raw": "207964b440b7c91bc535739cc323f1fc135be4aac697ad665efb0ea4b7fb5a24"
+    },
+    {
+      "path": "capture/source246.txt",
+      "bytes": 7600,
+      "sha256_raw": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+    },
+    {
+      "path": "capture/source247.txt",
+      "bytes": 10720,
+      "sha256_raw": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+    },
+    {
+      "path": "capture/source248.txt",
+      "bytes": 17708,
+      "sha256_raw": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+    },
+    {
+      "path": "context.json",
+      "bytes": 1308,
+      "sha256_raw": "8db0164767af24fb622eab27cb0c4eeefc4aebc5512311720dde4373b0ef09f7"
+    },
+    {
+      "path": "fullreport.txt",
+      "bytes": 11740,
+      "sha256_raw": "1c08f5eec83982aacb2d111d57d5bafb343ff8359b3ea9b19ccfe6af10e97305"
+    },
+    {
+      "path": "verdict.json",
+      "bytes": 1312,
+      "sha256_raw": "e75eee4a5014c266a43335fdeb3aeb75eabf9f0d060bc74280358b692effcff4"
+    }
+  ],
+  "self_hash_excluded": true,
+  "representation": "Captured source files exact bytes without normalization; authored report and JSON UTF8 no BOM"
+}

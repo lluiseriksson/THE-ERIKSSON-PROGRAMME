@@ -1,0 +1,182 @@
+EXACT ANALYTICAL SOURCE AUDIT249A -- fixed-angle point anchors
+Issued11November2026. VERDICT: ACCEPT_WITH_LIMITS.
+Candidate rawSHA256207964b440b7c91bc535739cc323f1fc135be4aac697ad665efb0ea4b7fb5a24,
+10135bytes, exact received bytes, no normalization.
+
+1. Scope and disposition
+I read the complete249A candidate and freshly read the complete supplied247,
+248 and246 source texts, captured byte-for-byte here. The two finite point
+lemmas are proved inputs, not new assumptions. I found no material mathematical
+defect in the fixed-positive-angle extension as stated. The claimed original-
+coordinate canonical full counts, all-field finite restoring inequality and
+actual restricted-rank uppers follow from the displayed construction. This is
+an analytical source judgment, not an executed/formal/PDF check, novelty or
+importance assessment, human/blind/independent review or numerical score.
+The candidate is separate from frozen manuscript250 source1659b539...; this
+audit does not insert it into that manuscript or assess its whole source.
+
+The bounded result removes orthogonality of the two alternating weak lines
+from the D3/D4 point-anchor uppers, for each fixed theta>0, while paying an
+explicit factor kappa^(-1), kappa=1-|cos(theta)|. Distinctness/positive fixed
+angle, two-line parity structure, positivity, original observed basis,
+canonical weights and finite penalties remain substantive hypotheses.
+
+2. Fresh input identities and their mathematical interfaces
+247 raw e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03
+at stated originalcommit4d120ad03bd6dc9a5828e780bb2873eaf144a9c5 derives the
+balanced three-dimensional counting Neumann point bound113L^3, all-direction
+pair graph comparison6, both-layer constant2036, point isolation and finite
+completion. 248 raw93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675
+at stated originalcommit457d356199e5d1fe99ebc24eb8964a0793cf9738 derives the
+two-dimensional bound13L^2(1+ln L), pair comparison4 and both-layer158.
+I read the finite cosine normalization, eigenvalue and shell/counting proofs,
+not merely their theorem summaries. They control every scalar anchored cell
+and do not require that scalar to be an observed original component. That
+is the precise interface used in249. 246 rawab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842
+derives the same strong-normal Gram principle for plane anchors. Its plane
+theorem is not silently substituted for the new point construction.
+The commit identities above are source-text provenance, not a fresh Git
+recapture or remote verification in this audit; the local input raw hashes
+were freshly checked. No Git operation was used.
+
+3. The two strong energies and original-field norm
+For each parity l, the weak line v_l and a unit perpendicular s_l form an
+orthonormal pair in the actual internal R2, regardless of the relation between
+the two parities. Thus at an l-source the matrix identity
+B=a v_lv_l^T+H s_ls_l^T gives exactly the indicated H-weighted scalar
+functional differences, plus nonnegative weak terms. Summing l partitions
+the original source sites: two entire copies of Q are not being spent.
+The scalar functions w_l=s_l dot z are globally defined with constant
+coefficients, so their forward differences are the corresponding functional
+of the actual forward difference of z.
+
+The sum of outer products of the two strong normals has trace2 and
+determinant1-(s0 dot s1)^2. Its eigenvalues are1+/-|s0 dot s1|, and rotating
+both weak lines by ninety degrees preserves the absolute inner product.
+Consequently its minimum is kappa, with no hidden normalization or assumed
+conditioning certificate. The summed inequality controls the ORIGINAL z
+norm, not an artificially restricted auxiliary domain. At theta=pi/2 it
+gives kappa1; at theta0 it is singular and no conclusion is asserted.
+
+4. Actual paired graphs, labels and pair norm
+For fixed l,k, even n makes residue parity well defined at wraps. The n/2
+pairs of sum residues{s,s+1}, s of parity l, cover every original vertex
+exactly once. The odd family includes{n-1,0}. The source parameterization
+x_s(y) is a bijection onto its layer, and its e_D shift onto the next one.
+The identity x_s(y+e_i)+e_D=x_s(y)+e_i verifies ALL actual p+1=D strong
+outgoing labels: one rung and p cross edges. No opposite endpoint coefficient
+or unlabelled edge convention was substituted. At period2, original labels
+remain counted, including induced source-torus repeated undirected neighbors.
+
+Inserting t_s(y+e_i) between the two source values yields two squared terms.
+Translations of y are bijections, so the rung repeats exactly p times:
+E_p(u)<=2p E_s. Neither the vector Gram nor this comparison presumes that
+w0,w1 are independent scalar fields; each inequality is valid for their
+actual values. Applying the two inequalities and summing is therefore valid.
+
+5. Genuine common point constraints, not mixed observations
+For m<=n, each quantile interval is nonempty and has length floor(n/m) or
+L=ceil(n/m); a shorter length is at least L/2, with L1 handled separately.
+The finite point lemmas apply to every source product cell with its corner
+anchor. Internal cell edges are a subset of the labelled periodic source
+energy and no artificial wrap edge is used as a Neumann edge.
+
+There are(n/2)m^p anchors for each source parity. The two sets have opposite
+actual site parity and cannot coincide, hence the union has exactly n m^p
+physical sites. The candidate isolates that ENTIRE union in BOTH ORIGINAL
+channels. Thus a block-kernel field is zero as an R2 vector at every anchor,
+and both analytic functionals vanish where required. The construction does
+not observe w_l, use a rotated channel, average a diagonal cell, rescale a
+row or assign only one normal to an inadmissible old-channel anchor set.
+This is the essential compatibility step; its row duplication is paid below.
+
+Using the fresh point inputs gives ||u||^2<=52X2 E_s or678X3 E_s. The rung
+bound ||t||^2<=2||u||^2+2E_s gives the WHOLE pair constants158X2 and2036X3,
+since Xp>=1. At singleton source cells u=0 and the target is still paid by
+the rung, so there is no nonexistent positive cell eigenvalue. Summing disjoint
+pairs reproduces each full w_l norm; the actual strong energy and the derived
+Gram then give Q>=kappa H/(C_p Xp)||z||^2 on the ORIGINAL anchor-zero fields.
+The regional gap is a conclusion, not a hypothesis moved into a structure.
+
+6. Mesh thresholds, ceilings and all fallbacks
+D3: m is the least integer with m^2>=4096T/kappa, T=1+ln n. On m<=n,
+X2<=4n^2T/m^2<=kappa n^2/1024, hence the kernel margin is at least
+(1024/158)c>4c. With rho>=1, m=ceil rho<=2rho gives m^2<=16384T/kappa.
+On m>n, n<=m-1 and minimality gives n^2<4096T/kappa. The actual all-channel
+singleton count6n^3 is then less than24576 kappa^(-1)nT. Equality m=n is
+in the valid mesh case with singleton source cells. Natural logarithm is
+positive at every n>=2; no divisibility or large-n assumption was added.
+
+D4: the analogous threshold m^3>=65536n/kappa gives on m<=n,
+L^3<=8n^3/m^3<=kappa n^2/8192 and margin(8192/2036)c>4c because8144<8192.
+The ceiling gives m^3<=524288n/kappa. On m>n, n<=m-1 and minimality give
+n^3<65536n/kappa, so the singleton count8n^4<524288 kappa^(-1)n^2.
+This is valid for every even n, including n2 and the transition m=n; it
+does not rely on the orthogonal predecessor's fixed n>=256 cutoff.
+
+7. Full original-rectangle output count
+The successive-coordinate singleton isolation algorithm replaces one current
+rectangle by at most2D side rectangles and the point singleton. Dropping empty
+pieces preserves a partition into original nonwrapping integer rectangles;
+earlier isolated points cannot be disturbed. Thus each of the two ORIGINAL
+channels needs at most1+2D|A| cells. The shared-across-k convention multiplies
+by D only at the final output count, giving2D+4D^2 n m^p.
+
+D3 mesh count is at most6+589824 kappa^(-1)nT, below2^20 kappa^(-1)nT.
+D4 mesh count is at most8+2^25 kappa^(-1)n^2, below2^26 kappa^(-1)n^2.
+The positive residual constants are paid since kappa<=1,n>=2,T>=1. The
+singleton fallback counts above fit these same bounds. No old orthogonal
+per-channel anchor count is reused without its extra factor. Actual coexact
+rank is only bounded above by the full count; row independence is not claimed.
+
+8. Completion, exact normalization and domain
+Since singleton constraints are among the canonical rows, ker R consists of
+fields vanishing at the common point set, and Q>=4c||u||^2 on that kernel.
+The actual bound B(x)<=HI and counting-isometric shifts give
+0<=L_B<=4DH I, so ||L_B-cI||<=M=4DH+c is safe. Orthogonal block projection
+splits z=u+v with u in ker R, v=Rz. The displayed Young inequality uses
+delta3c, and addition of M+2M^2/(3c) leaves nonnegative(3c/2)||u||^2.
+This proves the all-field inequality. Dividing by V and using
+||Cz||^2=||Rz||^2/V gives exactly the normalized coefficient K; in counting
+energy on the SAME normalized C rows the coefficient is VK. No row scaling
+is hidden. Constants have Q0,Rz=z,K>=c and are paid. In a fallback R=I,K=c
+works directly by positivity. Restricting only AFTER the all-field proof to
+actual U0^2 requires no preservation of that subspace by R or by variable B.
+
+9. Findings and limitations
+No material blocker or counterexample was established in this exact source.
+N1, nonblocking presentation: the plain-text completion uses the inherited
+notation '<u,Fu>>=...' and '<v,Fv>>=...'. Read as >=, as the assignment and
+surrounding derivation specify; it is not executable syntax or a formal
+certificate. A later typeset consolidation should render these as unambiguous
+greater-than-or-equal symbols. No source edit was performed here.
+
+The claim is an upper with loose angle-dependent constants. It supplies no
+matching lower, necessary logarithm, sharp theta dependence, size-uniform
+penalty, practical solver, efficient search, historical-priority certificate,
+interacting model, continuum result or physical mass gap. Fixed theta makes
+the bounds o(V); a varying theta does not supply the same asymptotic conclusion
+without extra growth control. The candidate explicitly acknowledges that.
+The original local eigenvalue multiplicities/caps do not change with theta;
+Lambda2 coherence is automatic for rank-one projectors in R2. This does not
+refute the constant-P theorem244 or a worst-case/uniform-penalty lower.
+
+10. Factual audit context and operations
+Newly assigned AI analytical auditor role, separate from the parent fabricator,
+with inherited parent context/shared filesystem and account/provider. Parent
+framing and proof derivation are visible; no blind, human, independent or
+fresh-provider/model resampling is established. Exposed identity: Codex, an
+agent based on GPT-6. Exact served backend/version and reasoning effort are
+unexposed/unknown. No author contact or inbound message was used during audit.
+Four complete mathematical source texts were read and captured. Governing
+storage/environment/audit-channel instructions were read. Only read-only text,
+hashing and exact capture/report editing occurred. No mathematical executable,
+import/test/oracle/Lean/TeX/render, runtime allocation, network, Git mutation,
+state/native/publication/chat/automation operation, grade or score occurred.
+No disposable clone was created, so there is no clone cleanup debt.
+
+Disposition: ACCEPT_WITH_LIMITS for exact249A analytical source only. Parent
+must read this full report and verify the raw capture manifest before recording
+acceptance or conservation in Git. It supplies neither a manuscript250/PDF
+assessment nor authorization to change that frozen source while its own audit
+is running. Preserve the original source and all earlier adverse reports.
