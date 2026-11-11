@@ -1,0 +1,29 @@
+11 November2026. Formatting correction BEFORE any exact-PDF numerical review.
+
+Initial scientific production source c50c146640ae2dfc2bb5e73bfec2af7f3d64f96d
+and TeX43eeed4d... produced two identical355276-byte nine-page PDFs with raw
+SHA256b5d25315963ef5f5246bf374bd02eb10a6e5cefed64d7343a80eff3f5bf431ae.
+The successful build/render raw packagef0541820... and all per-pass diagnostics,
+sources, actual exit codes and images remain preserved in D: evidence255.
+The actual pipeline had27children exit0 and both owned clones removed. Runtime
+was stopped; a separate backend query returned no active sessions. Those
+production facts do not imply visual acceptance or mathematical formalization.
+
+Parent inspected all9actual pages. Two native overfull warnings correspond to
+visible right-margin protrusions on pages6 and8: the inline cosine sum and the
+historical250B SHA256 line. CandidateA was not visually accepted for delivery,
+not assigned any new importance/stars and not deposited. No review score exists
+to improve by this correction. Published250B bytes and its historical score
+remain unchanged.
+
+The bounded successor changes only those two paragraphs: display the same
+cosine equality separately, and center the same prior SHA256 in a small font.
+The historical sentence receives the grammar adjustment "has SHA256"/"It was".
+No theorem, symbol, constant, hypothesis, actual domain, observation class,
+prior hash, old rating or reference changes. The110scientific inputs and
+SOURCE-MAPPING remain identical. A fresh production source/TeX hash and actual
+matching-clone build/render/visual review are required for the successor.
+
+Do not rewrite the accepted mathematical audit or original successful-build
+evidence to claim they referred to the successor's bytes. Qualify this exact
+source delta separately and retain the source/runner relationships explicitly.
