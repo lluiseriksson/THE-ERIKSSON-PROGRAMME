@@ -1,0 +1,31 @@
+264A primary comparison supplement, 11 November 2026. Bounded reading only.
+
+Efendiev, Galvis, Lazarov and Willems, Robust Domain Decomposition
+Preconditioners for Abstract Symmetric Positive Definite Bilinear Forms,
+https://arxiv.org/abs/1105.1131
+Read the author-submitted abstract, not the full paper. It develops stable
+decompositions and local-eigenfunction coarse spaces with contrast/mesh
+robustness, with scalar elliptic, mixed, Stokes and Brinkman applications.
+Thus broad claims of inventing spectral coarse spaces or contrast-robust
+coarse corrections would be untenable. The abstract does not establish the
+specific original-channel nonwrapping rectangle-map theorem in264A, and
+its absence from the abstract does not establish novelty.
+
+Bootland, Dolean, Nataf and Tournier, A robust and adaptive GenEO-type domain
+decomposition preconditioner for H(curl) problems in three-dimensional
+general topologies, v3 revised16 May2025:
+https://arxiv.org/abs/2311.18783
+https://arxiv.org/html/2311.18783v3
+Read the abstract and bounded opening motivation through the contributions
+paragraph; not the full theorem analysis, numerics or article. It treats
+positive Maxwell finite-element systems, combines scalar-gradient near-kernel
+information with local spectral enrichment, and discusses topological and
+coefficient obstacles. It is relevant prior context, but is a different
+operator, space and observation class from264A. In particular, no transfer
+from our finite weighted coexact model to Maxwell/Yang-Mills follows.
+
+No theorem of these papers is used to fill a gap in264A. These lookups do
+not prove priority, comprehensive novelty or practical usefulness. A future
+grouped manuscript must compare the precise operators, observations and
+quantifiers before making a relevance claim. This is neither a new paper
+nor a model score or peer review.
