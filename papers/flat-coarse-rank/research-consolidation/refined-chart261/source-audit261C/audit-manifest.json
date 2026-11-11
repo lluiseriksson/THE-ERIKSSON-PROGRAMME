@@ -1,0 +1,61 @@
+{
+  "exact_commit": "1a01fa019069e0f5a7392601ddb3c7a3febe222d",
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1559,
+      "sha256_raw": "ec580c4316871f29cee2385d29f71d70ed7aa35b9c6bd821e4ed2d6a3940bd0d",
+      "representation": "Raw retained bytes; no normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 14065,
+      "sha256_raw": "cf92b2932c7ffb21b6163fdadd244f2cbd7e3c3a21313f1db6d397c73405c4df",
+      "representation": "Raw retained bytes; no normalization"
+    },
+    {
+      "path": "review-context.json",
+      "bytes": 4131,
+      "sha256_raw": "b99392b9a1e8f19fbea3c44007b8fe04055e0334ad3e437e1f75df8aa2d50e62",
+      "representation": "Raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/capacity-class-obstruction257A.txt",
+      "bytes": 11285,
+      "sha256_raw": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc",
+      "representation": "Raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256_raw": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "Raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/coarse-window-obstruction259A.txt",
+      "bytes": 11351,
+      "sha256_raw": "03c71a1a4a652a6d28bc38acc43b7a2227796a300d673e1611f65417bb50557f",
+      "representation": "Raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256_raw": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "Raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/prior-manuscript-source-audit260A-full-report.txt",
+      "bytes": 13920,
+      "sha256_raw": "733c45a5de717069d2dbf764af84ddc255e56fc8fe3721af73499264f3ff9bfd",
+      "representation": "Raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/refined-chart-counterexample261C.txt",
+      "bytes": 8199,
+      "sha256_raw": "3072c4dd7d74e166d9a2d3363ab0480138ef60cf8a0e755519882794cf16f607",
+      "representation": "Raw retained bytes; no normalization"
+    }
+  ],
+  "file_count": 9,
+  "self_exclusion": "This manifest excludes itself; its raw SHA256 is separately returned"
+}

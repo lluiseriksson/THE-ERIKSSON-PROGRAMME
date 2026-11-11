@@ -1,0 +1,240 @@
+SOURCE AUDIT261C -- ACTUAL NONWRAPPING CHART-REFINED RAPID GRID
+
+EXACT SUBJECT COMMIT:1a01fa019069e0f5a7392601ddb3c7a3febe222d
+VERDICT: ACCEPT_ANALYTICAL_ACTUAL_NONWRAPPING_REFINED_GRID_COUNTEREXAMPLE_WITH_LIMITS
+
+No material mathematical defect was found in the specified261C construction.
+At its stated threshold, it constructs a real nonzero actual-coexact field
+annihilating every separately observed nonwrapping chart cell and having
+Q(z)<7c||z||^2/16. This is a NEW construction with extra chart-boundary cutoff
+centres, not a deduction that zero means survive refinement of wrapped cells.
+It excludes THIS particular36n-24-row family only. It proves no global O(n)
+impossibility, global canonical nlogn optimum, physical gap or continuum result.
+
+1. ACTUAL REVIEW CONTEXT AND SCOPE
+
+This audit was carried out in the separate child session
+/root/golden_window260_source_audit, reused after its earlier260 audit had
+finished. The parent assigned a new exact261C source and mathematical question.
+Inherited parent conversation, mathematical constructions and previous reports
+were visible. This is not blind review or independently demonstrated review.
+Actually exposed identity: Codex/OpenAI family; the exact served backend/model
+version and reasoning effort are unavailable and are not inferred or borrowed
+from a different agent. No external named-model service was used. No numerical
+grade, exact-PDF review or journal/peer-review acceptance is supplied.
+
+No inbound parent messages arrived during this261C audit after its assignment.
+No source, branch, PR body, native case, grant, publication or autonomy state was
+changed. Only this audit packet was written. No PR/body existed in the task;
+its capture and normalized-body hash are therefore not applicable.
+
+Read the complete261C source at the exact commit above; complete257A source at
+fed201fd10f952a04e638c324dc0e1359711911a, in particular rederive its Section3
+cutoff estimates; complete259A at2f370a7da850b8066a9afe95c523e49bd1ef725e; and
+the COMPLETE original manuscript-source-audit260A report identifying the chart
+scope defect. Governance charter was fully read and first100 CLAUDE lines read
+in this child session, and their exact current-commit subjects are retained.
+The previous audit's verdict is not a mathematical assumption here. This
+report directly rederives all construction, row, norm and energy checks below.
+
+The assignment is preserved in full. The full inherited conversation cannot
+be exported through a provided tool; its nonblind visibility is disclosed,
+not replaced by an invented or partial purported full transcript. No external
+novelty verification was performed in this audit. Classical cutoff and finite
+commutator mechanisms are not claimed to be original.
+
+2. CANONICAL CHART SUPPORTS AND EXACT FULL COUNT
+
+For n=2^m,m>=5, n/4 is divisible by8, so kappa=n/4+2 is2 modulo4 and
+gcd(kappa,n)=2. Hence t_i=kappa*i modn runs through exactly the even residue
+classes, each twice over i=0,...,n-1. In particular0 appears twice, n-1 never
+appears, and every other t_i is an interior chart position from2 to n-2.
+
+For interior t_i, [0,t_i-1],{t_i},[t_i+1,n-1] are three nonempty disjoint
+NONWRAPPING intervals covering the fixed chart. For t_i=0 the first is empty
+and omitted, leaving{0},[1,n-1]. There are two x3 intervals{0},[1,n-1],
+and every longitudinal factor is the singleton{i}. Thus each support is a
+permitted fixed-chart rectangle, with no wrapping or union disguised as one.
+There are6 cells per channel at n-2 slices and4 at2 slices. All three spatial
+component rows, including those that vanish identically in the chosen field,
+count as full observations. With two original channels the total is
+ 2*3*(6(n-2)+4*2)=36n-24.
+The stated(R) count is exact, distinct from the old cyclic24n count.
+
+3. TRUE ENDPOINTS AND SIX-TAG COVER
+
+At an interior t the terminal x2 endpoints are t-1,t,n-1. At t=0 they are
+0,n-1. The predecessors of all initial endpoints are also in these sets:
+for the first chart interval the predecessor of0 is n-1, which is essential.
+The two x3 endpoints are0,n-1. G_i has types t_i,t_i-1 modn,n-1, each with
+both x3 endpoints, hence six tags. It contains every actual terminal-corner
+pair. At t_i=0, the latter two x2 types coincide at n-1, and both retained
+tags remain legal auxiliary centres. A minimum over repeated functions is
+well-defined, while summing the repeated bounds only weakens an upper bound.
+
+The actual corner cardinality varies4/6. No bijection between those varying
+sets is claimed or used. Six is a COVERING-LIST count, not a redefinition of
+the actual cell count or observation map. The proof below therefore does not
+apply a constant-q observation theorem outside its hypotheses.
+
+Since4*kappa=n+8, t_(i+4)=t_i+8 modn. Same-type matching of the six tags sends
+the four t_i/t_i-1 entries by displacement(8,0) and keeps the two n-1 entries
+fixed. Periodic l1 distance is at most8 for every tag. The relation is valid
+for cyclic i as well, because n*kappa=0 modn. It requires no assumed global
+matching or changing label convention when entries coincide.
+
+4. RADIAL INPUT FRESHLY CHECKED
+
+Let R=n/4>=8 and L=log((R+1)/3)>0. For periodic l-infinity radius rho_p,
+f_p=clip_[0,1](log((rho_p+1)/3)/L) lies in[0,1], is zero for rho<=2,
+and is one for rho>=R.
+
+For a nonconstant nearest-neighbour edge the inner radius obeys2<=r<R.
+There are8r+4 undirected square-boundary crossings, counted once among
+positive-labelled forward edges; this is at most32r. Here r+1<=n/4, so no
+antipodal-distance seam invalidates that count. The logarithmic increment
+is at most1/((r+1)L), including clipping. Thus energy is at most
+32/L^2 times sum r/(r+1)^2, itself at most32log(R+1)/L^2. For R>=8,
+log(R+1)<=2log((R+1)/3)=2L. This proves E_Y(f_p)<=64/L.
+
+For the deficit norm, use dyadic groups
+(R+1)/2^(j+1)<rho+1<=(R+1)/2^j. Each has at most4(R+1)^2/4^j sites.
+Its deficit is at most(j+1)log2/L; the inequality is still valid on the
+clipped inner core because log((R+1)/(rho+1))/L>=1 there. Summing squares
+and using sum_(j>=0)(j+1)^2/4^j=80/27<4, log2<1, gives at most
+16(R+1)^2/L^2<=4n^2/L^2. The finite periodic lattice only reduces the sum.
+
+A shortest periodic path and the counting l2 triangle inequality give
+||f_p(.+u)-f_p'||<=(|u|_1+d(p,p'))sqrt(64/L). This includes negative
+transverse shifts and all seams. Only first differences of f are used.
+No abstract capacity, spectral estimate or numerical certificate is assumed.
+
+5. WINDOW, MINIMUM AND TRANSLATION COSTS
+
+F_i has24 tagged entries: four successive six-tag G lists, retaining all
+duplicates. Define eta as their radial-function minimum. Since it includes
+G_i, it is zero on a radius2 neighbourhood of every ACTUAL refined corner
+at slice i. It is real, periodic and between0 and1.
+
+The deficit1-eta is the maximum of24 nonnegative deficits. Bounding squared
+maximum by their sum and summing n slices gives
+||1-eta||_X^2<=24*4*n^3/L^2=4*4*6*V/L^2, namely(3).
+
+Matching consecutive F lists, eighteen designated shared entries remain at
+the same positions; six outgoing entries use the four-step G matching.
+This is a bijection of tagged lists despite positional coincidences.
+Some outgoing entries also remain stationary, correctly allowed by source.
+The minimum Lipschitz inequality, squared maximum bound and radial estimate
+therefore yield64*6/L times[3|u|_1^2+(|u|_1+8)^2], which expands to
+64*6/L times[4|u|_1^2+16|u|_1+64], exactly(4).
+Without longitudinal shift, identity matching gives64*24|u|_1^2/L.
+For transverse radius at most4 that latter factor is at most4*16=64.
+For one longitudinal shift and transverse radius at most3, the factor is
+4*9+16*3+64=148. The zero-longitudinal radius3 cost is at most36.
+Consequently A=148 controls every needed shift; summing slices adds n.
+
+6. ACTUAL ADJOINT AND EVERY SEPARATE MEAN
+
+With forward curl(d1u)ij=partial_i u_j-partial_j u_i and independent two-form
+components, partial_j^*=-delta_j. For only psi23=phi nonzero, direct pairing
+gives d1^*psi=(0,delta3phi,-delta2phi). Taking phi=delta2delta3Psi thus gives
+P Psi=(0,delta2delta3^2Psi,-delta2^2delta3Psi). This is membership in the
+actual image, not only a divergence constraint. Real Psi yields a real field.
+All full component sums vanish by periodic telescoping. Setting channel2
+to zero keeps the two-channel field in the actual U0^2 and kills its means.
+
+For each individual actual cell J=[A,B],K=[C,D], summing the second component
+gives delta3Psi(B,D)-delta3Psi(A-1,D)-delta3Psi(B,C-1)+delta3Psi(A-1,C-1).
+The third component gives the negative corresponding expression in delta2Psi.
+All four corner pairs are actual terminal endpoints, including n-1 whenever
+an initial endpoint is0. They are covered by G_i. Eta vanishes there and
+at each backward e2/e3 neighbour, so delta2Psi and delta3Psi are zero there.
+The first spatial component is identically zero. Hence EACH chart mean
+vanishes separately, with its own positive original normalization. This is
+not a deduction from a vanished sum over two formerly merged subcells.
+
+7. PERIOD-FOUR WAVE AND CONVOLUTION COMMUTATORS
+
+For t=pi*(x1+x2+x3)/2, Psi0=sin t is periodic because4|n.
+delta_j sin t=sin t+cos t, delta2delta3 sin t=2cos t, and the remaining
+difference gives w=(2,-2,-2,2). Therefore z0=P Psi0=(0,w,-w), with pointwise
+norm square8 and full norm square8V. At original odd sources, every forward
+step leaves w unchanged. Thus partial_h z0 vanishes there, including seams.
+
+For any finite convolution T=sum a_r tau^r, subtracting eta*T(Psi0) gives
+sum a_r(tau^r eta-eta)tau^r Psi0 exactly. Multiplication by tau^r Psi0 has
+norm bound1. Each of the two nonzero P components has coefficient l1 sum
+at most8, no longitudinal shift and transverse radius at most3. The previous
+no-longitudinal translation estimate and l2 triangle inequality therefore give
+2*(8*3)^2*64*n*24/L=73728*n*4*6/L, proving(5).
+
+Each of six derivative/nonzero-component pairs has coefficient l1 sum at
+most16. For h=2,3 shifts are transverse of radius at most4. For h=1, shifts
+have x1 displacement0 or1 and transverse radius at most3. Thus every summand
+uses cost at most A=148, and each commutator norm is at most
+16sqrt(64*n*6*A/L). Squaring and summing six pairs gives98304*n*6*A/L.
+Restrict to original odd sites: the term eta partial_h z0 is exactly zero
+there, so this proves(6) for the actual source energy. No strong weight,
+target/source parity or coexact domain is translated in this reasoning.
+
+8. NONZERO FIELD, THRESHOLD AND ENERGY CONSTANTS
+
+The two-term difference z1-z0=(eta-1)z0+[P(etaPsi0)-eta z0] yields
+||z1-z0||^2<=16||1-eta||^2+147456*n*24/L. With(3), and n<=V, this is
+at most[64*24/L^2+147456*24/L]V, exactly(7).
+
+At threshold L>=2^18*6*148, A>=64=16*4 implies L>=2^22*24.
+Thus64*24/L^2<=2^-38/24<=2^-38, and147456*24/L<=9/256.
+Their sum is strictly below2. Reverse triangle therefore gives
+||z1||>sqrt(8V)-sqrt(2V)=sqrt(2V). This proves the FIELD is nonzero.
+
+Multiplying(6) by H=cn^2 gives strong energy at most
+98304*c*V*6*A/L<=3cV/8<3c||z1||^2/16. Each forward shift is an isometry
+in the original counting norm, so ||partial_h z1||<=2||z1||. Summing three
+directions bounds weak energy by12a||z1||^2=c||z1||^2/4. Channel2 is zero.
+Hence Q(z)<7c||z||^2/16<c||z||^2. Any finite quadratic penalty evaluated
+on the vector of zero means vanishes. The threshold is nonvacuous because
+log((2^(m-2)+1)/3) grows without bound as m increases, though it is enormous
+and unoptimized. No practical size threshold or experiment is established.
+
+9. OBJECTIONS, PRIOR FAILURE AND DISPOSITION
+
+Material mathematical objections found in261C: NONE.
+No source repair is required for this exact stated construction and scope.
+
+The complete earlier manuscript-source-audit260A is retained unchanged. Its
+material objection260A-M1 was correct: cyclic complements generally are not
+nonwrapping chart intervals; zero means of unions need not give zero means
+of pieces. This new construction directly kills additional boundary-corner
+differences and thus establishes this particular refined-family result. It
+does NOT retroactively repair the old frozen manuscript or alter its verdict.
+Any revised manuscript must retain the cyclic-versus-chart class distinction,
+use the correct36n-24 chart count, and explicitly derive or cite the new
+construction for the chart example. The old cyclic24n count is not its count.
+
+Limits remain material to interpretation: no theorem for arbitrary varying-q
+sets is proved; six is just this explicit covering recipe. No generic O(n)
+partition is ruled out; no global canonical optimum is established. No hidden
+penalty or projection hypothesis is removed by relocating it into a structure;
+all necessary actual-field properties are directly checked above. The cutoff
+mechanism is classical and broader novelty/relevance is not established by
+this audit. Q251 remains open; PR29=20/41 and TermSource=0 are unchanged,
+as are the open physical gap and continuum problems.
+
+10. EXECUTION, BINDING AND CLEANUP
+
+This was analytical review. No mathematical program, numeric diagnostic,
+Lean/Lake build, compiler, oracle or Colab runtime ran. Local operations were
+git/file reads, audit text writes and hashes only. No disposable clone was
+created, hence no clone cleanup debt exists. Source and branch were unchanged.
+The exact source, dependencies, governance and full prior failure report are
+retained as raw subjects. Every retained packet file except the manifest is
+listed with its exact raw size, SHA256 and representation in that manifest.
+The manifest's own raw hash is separately returned to the parent. No Python
+assert decides acceptance, and byte binding is not called scientific proof.
+
+Packaging incident retained: the first packet-directory creation returned
+FileNotFoundError because evidencia-261 did not yet exist; no packet files were
+created by that failed attempt. Creating its parent directories through the
+same pathlib mkdir call resolved this file-operation issue before final packet
+creation. It is not a mathematical failure or a rerun of a scored assessment.
