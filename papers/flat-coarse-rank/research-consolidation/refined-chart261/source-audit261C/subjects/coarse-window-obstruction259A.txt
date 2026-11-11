@@ -1,0 +1,185 @@
+Q251 /259A: COARSE-TIME WINDOWS AND A RAPID HELICAL COUNTEREXAMPLE
+11November2026. Frozen analytical candidate, awaiting separate source audit.
+Grouped research source, not a standalone paper, PDF, grade or formal proof.
+Priority remains unestablished. No physical-gap or continuum claim.
+
+DEPENDENCIES AND ORIGINAL DOMAIN
+The one-corner cutoff estimate is257A Section3, frozen at
+fed201fd10f952a04e638c324dc0e1359711911a, raw proof SHA256
+8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc.
+The actual-preimage/corner and finite-convolution identities are rederived
+below, with their conventions also explicit in258A, frozen at
+d7840f33a5e20120565f3d5803dfabb32802de95, raw proof SHA256
+0c99070cdea4a3c7edf7168a8dfd2eb6eca96b08ed21e5002c003424ee7d66dc.
+No inherited audit verdict or unknown weighted gap is a mathematical input.
+
+Let n>=32,4|n,V=n^3,c>0,a=c/48,H=cn^2. On X=(Z/nZ)^3 use original
+forward partial_h f(x)=f(x+e_h)-f(x) and delta_h f(x)=f(x)-f(x-e_h).
+Channel1 has source weight H at odd x1+x2+x3, a at even sources;
+channel2 has opposite parity, in the original orthogonal internal basis.
+ Q(z)=sum_(x,h,alpha) b_alpha(x)|partial_h z_alpha(x)|^2,
+ ||z||^2=sum_(x,alpha)|z_alpha(x)|^2.
+Each spatial channel lies in ACTUAL U0=im(d1^*) for
+(d1u)ij=partial_i u_j-partial_j u_i. These are original counting norms.
+
+At each slice x1=i choose two nonempty cyclic interval partitions J_(i,j),
+K_(i,k). Their factor counts can vary, but their product q>=1 is constant.
+The actual cells are {i}xJ_(i,j)xK_(i,k), and their original means are
+ C_(S,r,1)=(V|S|)^(-1/2)sum_(x in S)z_(r,1)(x).
+There are3nq full channel1 rows. The channel2 partition may be arbitrary;
+our channel2 field is zero. Let E_i be the product of the two sets of
+terminal interval endpoints: exactly q distinct transverse corner points.
+
+THEOREM PROPOSED
+Fix an integer K>=1. Suppose for EVERY cyclic i there exists a bijection
+ E_i -> E_(i+K)
+whose matched periodic transverse l1 distance is<=S, for an integer S>=0.
+Indices i+K are modulo n, including the longitudinal seam. No condition on
+one-step corner motion or consistent labels around the cycle is assumed.
+Put L=log((n/4+1)/3) and A=max(16K,9K+6S+S^2).
+If L>=2^18 q A, then there is an explicit real nonzero actual-coexact field
+z=(d1^*psi,0) annihilating every original observation and satisfying
+ Q(z)<=(7/16)c||z||^2<c||z||^2.
+No quadratic penalty on the means can restore c, even with size-dependent
+coefficients. Consequently recovery requires L<2^18qA for every such(K,S).
+For K=1 this recovers258A; it is not a claim of an independent new mechanism.
+For bounded K,S an order nlogn full-row count is necessary only in this class.
+General nonproduct or temporally nonresonant canonical recovery remains open.
+
+1. ACTUAL PREIMAGE AND EXACT VANISHINGS
+For real periodic Psi set phi=delta2delta3Psi, psi23=phi,psi12=psi13=0.
+Since partial_h^*=-delta_h, direct adjunction of forward curl gives
+ z1=d1^*psi=(0,delta3phi,-delta2phi)
+          =(0,delta2delta3^2Psi,-delta2^2delta3Psi)=P Psi.
+All components have zero full sum by periodic first-difference telescoping.
+At any fixed i, summing z2 over a cell's two transverse intervals gives the
+four-corner difference of delta3Psi; the z3 sum is the negative four-corner
+difference of delta2Psi. Every starting endpoint minus1 is a predecessor's
+terminal endpoint, so all four corners lie in E_i. Wrapping intervals obey
+the same identity; a whole-cycle factor cancels exactly. It suffices to make
+delta2Psi=delta3Psi=0 at every point of E_i, separately at every i.
+Positive original mean normalizations do not affect these zeros.
+
+2. BUILD AN AUXILIARY TAGGED WINDOW, NOT A NEW OBSERVATION DOMAIN
+At slice i form the list F_i=[(j,p):0<=j<K,p in E_(i+j)]. It has Kq entries;
+repeated spatial points retain different tags. In particular it covers E_i.
+Match F_i to F_(i+1) as follows: each j>=1 entry goes to tag j-1 at the SAME
+spatial point; each outgoing j=0 entry is sent by the stipulated K-step
+bijection to E_(i+K), occupying tag K-1. This is a bijection of tagged lists.
+Exactly(K-1)q entries are matched with zero displacement, q with displacement
+<=S. It works for K>=n and across the longitudinal seam as well. No global
+label coherence or distinctness of spatial entries is being assumed.
+F_i is solely a constructive cutoff recipe. The actual cells and means are
+still the original q-per-slice ones; no property is moved to a new domain.
+
+3. RADIAL CUTOFFS AND THE SHARPER MOVING TRANSLATION ESTIMATE
+Let R=n/4 and, on Y=(Z/nZ)^2, let rho_p be periodic l-infinity distance.
+Set f_p(y)=clip_[0,1](log((rho_p(y)+1)/3)/L).
+The explicitly proved257A Section3 lemma, with R>=8 and this same L, gives
+ E_Y(f_p)=sum_(y,h=2,3)|partial_h f_p(y)|^2<=64/L,
+ ||1-f_p||_Y^2<=4n^2/L^2.
+It also implies, by a shortest integer representative path and the l2
+triangle inequality, ||f_p(.+u)-f_p||_Y<=|u|_1 sqrt(64/L).
+For two centers matched with distance d, the corresponding shifted-cutoff
+difference norm is at most(|u|_1+d)sqrt(64/L). These are translations of the
+same radial function, including all transverse seams.
+
+Set eta(i,y)=min_((j,p) in F_i) f_p(y). This real periodic function lies in
+[0,1] and is zero within transverse radius2 of E_i. Since its deficit is
+the maximum of Kq nonnegative deficits, squared max<=sum gives
+ ||1-eta||_X^2<=4KqV/L^2.                                  (1)
+For two equally indexed finite real lists, |min a-min b|<=max|a-b|.
+Use the actual tagged-window matching, square, bound max by sum, and sum
+over y. Shared entries cost |u|_1, the q replaced entries cost |u|_1+S:
+ ||eta(i+1,.+u)-eta(i,.)||_Y^2
+ <=(64q/L)[(K-1)|u|_1^2+(|u|_1+S)^2]
+ =(64q/L)[K|u|_1^2+2|u|_1 S+S^2].                        (2)
+With no longitudinal shift, identity matching of all Kq entries gives
+64Kq|u|_1^2/L instead. Summing over i gives the full-X bounds with a factor n.
+No differentiability of a minimum or unsupported long-shift estimate appears.
+Equation(2), rather than Kq(|u|+S)^2, is the sharper shared-window count.
+
+4. LOW WAVE AND FINITE CONVOLUTION COMMUTATORS
+Keep the original wave Psi0=sin(pi*(x1+x2+x3)/2), not a transported phase.
+Its period4 differences give P Psi0=z0=(0,w,-w), w=(2,-2,-2,2).
+Thus |z0(x)|^2=8, ||z0||^2=8V and |Psi0|<=1. At original odd sources all
+partial_h z0 vanish, including every periodic seam since4|n.
+Take Psi=eta Psi0, z1=P Psi and the actual psi from Section1. At each corner
+eta is zero at the corner and its backward e2/e3 neighbors. Both required
+differences of Psi are therefore exactly zero. Every original mean vanishes.
+
+For any finite convolution T=sum_r a_r shift^r, direct algebra gives
+ T(etaPsi0)-eta T(Psi0)
+ =sum_r a_r(shift^r eta-eta)shift^r Psi0.
+Multiplication by shifted Psi0 has norm bound1. Each P component has
+coefficient l1 sum<=8, longitudinal shift0, transverse radius<=3. The
+no-longitudinal version of(2) and the l2 triangle inequality yield
+ ||P(etaPsi0)-eta z0||^2<=2*(8*3)^2*64nKq/L=73728nKq/L.    (3)
+Each partial2P/partial3P component has l1 sum<=16, longitudinal shift0,
+transverse radius<=4, hence squared-radius factor<=16K in these translation
+estimates. Each partial1P component has longitudinal shifts0 or+1,
+transverse radius<=3, and l1 sum<=16. Its +1 factor is<=9K+6S+S^2 by(2),
+and its shift0 factor<=9K. Thus A controls every term's squared-radius cost.
+Every derivative commutator has norm<=16sqrt(64nqA/L). Summing the six
+direction/nonzero-component squared bounds, then restricting to ORIGINAL
+odd sources where eta partial_h z0=0, gives
+ sum_(odd x,h)|partial_h z1(x)|^2<=98304nqA/L.             (4)
+The original source weight has not been translated or replaced by a target
+weight. The cutoff genuinely depends on x1; its motion is accounted for by(2).
+
+5. PROVE A NONZERO FIELD AND THE FINAL ORIGINAL ENERGY BOUND
+The two-term split z1-z0=(eta-1)z0+[P(etaPsi0)-eta z0], (1),(3) imply
+ ||z1-z0||^2<=16||1-eta||_X^2+147456nKq/L
+ <=(64Kq/L^2+147456Kq/L)V,                                (5)
+using n<=V in the last step. A>=16K makes the threshold imply L>=2^22Kq.
+As Kq>=1, the coefficient in(5) is<=2^-38+9/256<2. Reverse triangle proves
+ ||z1||>sqrt(8V)-sqrt(2V)=sqrt(2V).
+The actual field is nonzero, not merely its potential. Multiplying(4) by
+H=cn^2 gives Q_str<=98304cVqA/L<=3cV/8<3c||z1||^2/16.
+Each directional forward difference has norm<=2||z1||, so the weak-source
+part is<=12a||z1||^2=c||z1||^2/4. Hence Q(z)<7c||z||^2/16 with channel2 zero.
+Any quadratic penalty on the identically zero original mean vector vanishes.
+All image membership, exact observation zeros, norm and energy properties
+are derived from the original data; no cutoff-energy/gap hypothesis is assumed.
+
+6. EXPLICIT RAPID HELICAL FAMILY: NEGATIVE CONCLUSION PROPOSED
+Let n=2^m,m>=5, kappa=n/4+2. At slice i put t_i=kappa*i mod n,
+ J_(i,0)={t_i}, J_(i,1)=(Z/nZ)\{t_i},
+ K_0={0}, K_1=(Z/nZ)\{0}.
+Complements are single nonempty cyclic intervals. Both original channels use
+these4n cells, so there are24n full rows. E_i={t_i,t_i-1}x{0,n-1}, q=4.
+The exact identity4*kappa=n+8 implies E_(i+4)=E_i+(8,0) modulo n. Therefore
+choose K=4,S=8, obtaining A=max(64,36+48+64)=148.
+For L>=2^18*4*148=2^20*148 the theorem constructs a real actual-coexact
+nonzero field annihilating all24n rows with energy below c. Such powers of2
+are arbitrarily large; this is a finite existence statement with an enormous,
+unoptimized threshold, not a practical crossover or numerical experiment.
+
+This family has genuinely large adjacent bottleneck motion. Since n>=32,
+kappa=n/4+2<n/2-1. For the point with x2=t_i+kappa at the next slice, its
+nearest old x2 in{t_i,t_i-1} is t_i, at periodic distance kappa; the other
+distance is larger. Matching the two x2 endpoints by their translation, with
+the same x3 endpoints, attains kappa for every corner. Thus B_*=kappa.
+Also gcd(kappa,n)=2, so the translated singleton visits n/2 positions, not
+just two remote patterns. Large adjacent jumps alone do not guarantee
+recovery: the four-step resonance lets the tagged window derive a low-energy
+actual kernel field. The earlier259B Fourier proposal is retained as
+exploratory evidence; this would close that selected candidate negatively.
+
+7. QUANTITATIVE REMAINING FRONTIER AND LIMITS
+Define S_K as the actual worst K-step bottleneck matching distance of E_i.
+Finite equally sized sets ensure that each minimum and maximum exists.
+Recovery must satisfy
+ L<2^18q max(16K,9K+6S_K+S_K^2) for EVERY integer K>=1.     (6)
+This is a derived temporal matching-complexity obstruction, not a global
+nlogn optimum. For bounded K,S_K it gives the scoped nlogn necessary count;
+K=1 recovers258A. Arbitrary rapidly mixing data without short matching
+resonances, variable q across slices and nonproduct canonical maps remain open.
+Classical capacity, minima, triangle and window-cover mechanisms are not
+claimed as original; priority of this application is UNESTABLISHED. Analytical
+correctness must remain separate from novelty and wider significance.
+No new paper/grade, inherited255B assessment, independent model review,
+formal verification, physical spectral gap or continuum construction follows.
+PR29 stays20/41,TermSource=0. The next source audit must check all tagged
+counts, seams, shared-window constants and the explicit rapid-grid application
+before this candidate is recorded as a verified result.
