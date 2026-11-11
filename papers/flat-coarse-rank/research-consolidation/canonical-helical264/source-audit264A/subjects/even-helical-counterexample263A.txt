@@ -1,0 +1,237 @@
+Q251 /263A: FOUR-FREQUENCY CANCELLATION FOR EVERY EVEN LINEAR HELIX
+UNREVIEWED analytical derivation,11November2026. Proposed theorem only until
+the exact source is audited. No computation, formal verification, new paper,
+model grade, historical-priority or physical-gap claim.
+Context: mainaf758ef6195248bfa062edd6814946be9d7ccd5b; exact262A source
+fd095658fc3973481e0781cadf63adad13e8187a, with its conjugate-FAMILY clarification.
+This note supplies a candidate actual invisible field rather than assuming
+a trace-Gram estimate. The published260C PDF and its original5.0 judgment
+are not changed. All original-channel means, source weights and curl image
+below are the actual ones.
+
+1. SELECTED QUESTION, MODEL AND PROPOSED RESULT
+
+Continue soleQ251. Let n=2^m,m>=5,c>0,a=c/48,H=cn^2. On X=Z_n^3 use
+source parity x1+x2+x3. Channel1 has coefficient a at even sources,H at odd;
+channel2 has the reversed coefficients. All spatial components use the
+original positive periodic differences and counting norm. Thus
+ Q(u)=sum_(x,i,r,alpha) b_alpha(x)*|partial_i u_(r,alpha)(x)|^2.
+The actual domain is U=(im d1*)^2, forward curl on independent j<l two-forms.
+
+For ANY even kappa modulo n put t_i=kappa*i modn. In each original channel,
+at slice x1=i use the four cells {t_i}/its cyclic complement in x2 crossed
+with {0}/its cyclic complement in x3. Include all three spatial components:
+the full raw observation count is24n, with the original nonzero normalized
+mean factors. The complementary sets can wrap in the original chart.
+
+PROPOSED THEOREM. If log(n/1056)>=2^26, this cyclic24n family has a real
+nonzero actual-coexact field z annihilating EVERY original mean, with
+                 Q(z)<(25/128)c*||z||^2<c*||z||^2.          (TH)
+No finite penalty Phi(Cz) with Phi(0)=0 restores targetc for this family.
+The constants are deliberately conservative and the threshold is enormous.
+No result is asserted for the nonwrapping refinement, nonlinear slice motion,
+odd slopes, a different coefficient profile, or the general canonical optimum.
+In particular the golden even slope from260B is INCLUDED, despite the failure
+of that earlier sufficient window inequality for every K. That criterion was
+inconclusive, not false; the mechanism here is different.
+
+2. ACTUAL SHEAR, FREQUENCIES, MEANS AND CURL PREIMAGES
+
+Write i=x1,y=x2-kappa*x1,z=x3, a bijective reindexing of the torus, with
+physical spatial components left unchanged. Use unitary n^(-3/2) Fourier
+coefficients in(i,y,z), indexed(w,p,q). Physical differences have multipliers
+ d1=e^(2pi i(w-kappa*p)/n)-1, d2=e^(2pi ip/n)-1,
+ d3=e^(2pi iq/n)-1.
+Parity remains i+y+z since kappa is even. Set h=n/2. A parity multiplication
+couples(w,p,q) only to(w+h,p+h,q+h), shifting all physical phases by pi.
+
+For each spatial component/channel, the four cell sums are
+ P_i, L2_i-P_i, L3_i-P_i, T_i-L2_i-L3_i+P_i,
+where P_i=f(i,0,0), L2_i=sum_z f(i,0,z), L3_i=sum_y f(i,y,0),
+T_i=sum_(y,z) f(i,y,z). Under the unitary Fourier transform in i these are
+equivalently the four zero constraints
+ sum_(p,q) fhat(w,p,q)=0, sum_p fhat(w,p,0)=0,
+ sum_q fhat(w,0,q)=0, fhat(w,0,0)=0 for every w.             (TR)
+Indeed their respective actual transforms are n^-1 times the double sum,
+the two single sums, and n times fhat(w,0,0). Original mean normalization
+does not change their kernels. Hence support avoiding p=0 and q=0 makes
+both line constraints and the fullslice constraint vanish separately.
+
+For a two-form with only A23 nonzero the TRUE curl adjoint is
+ u1=0, u2=-conj(d3)*A23, u3=conj(d2)*A23.
+All fields below are specified with this actual preimage; no abstract
+divergence-free replacement is made. Channel2 is identically zero.
+
+3. AN INVISIBLE-CORRECTION MODE WITH CONTROLLED ENERGY
+
+Let A be the modular inverse of kappa+1 in Z_n; it exists because kappa+1
+is odd. Choose p0=n/4 and w=(kappa+1)*p0 modn. Then w is n/4 or3n/4,
+so w and w+h are distinct. For signed integers ell,j define
+ p=p0+A*ell modn, q=p+j modn, zeta=e^(2pi ip/n), eta=e^(2pi ij/n),
+ b0=1+zeta, b1=1-zeta.
+The physical phases at(w,p,q) are theta=(t-2pi*ell/n,t,t+2pi*j/n),
+with t=2pi*p/n. At its parity partner all phases are shifted by pi.
+
+Assume for now dist(A*ell,nZ)<=n/6 and0<|j|<=n/48. Then t modulo2pi
+lies in[pi/6,5pi/6], because p0 has phase pi/2. In particular
+ |e^(it)-1|>=1/3, |e^(it)+1|>=1/3.                       (D)
+For example2sin(pi/12)>=1/3 follows from sin(s)>=2s/pi on[0,pi/2].
+The distances of p to0,h are at least n/12 and those of q at least n/16;
+the same exclusions hold at the partner. Thus neither line trace can see
+any of these frequencies. There is no zero-frequency curl division.
+
+Define the two-frequency field F_(ell,j) in original channel1 by amplitudes
+ at(w,p,q):       b0*(0,r,-1), r=(e^(-2pi iq/n)-1)/(e^(-2pi ip/n)-1);
+ at(w+h,p+h,q+h): b1*(0,rplus,-1),
+                 rplus=(-e^(-2pi iq/n)-1)/(-e^(-2pi ip/n)-1).
+Other coefficients are zero. Its actual A23 coefficients are respectively
+-b0/conj(d2) and -b1/conj(d2_partner). This proves membership in im d1*
+directly and pays all denominators using(D).
+
+Let Y have amplitudes b0*(0,1,-1),b1*(0,1,-1) at these same two frequencies,
+and E=F-Y. Then ||Y||^2=2*(|b0|^2+|b1|^2)=8. Since
+ r-1=(eta^-1-1)/(1-zeta), rplus-1=(eta^-1-1)/(1+zeta),
+we have ||E||^2<=36*|eta-1|^2<=1, using pi<4 and |j|<=n/48.
+Consequently ||F||^2<=2||Y||^2+2||E||^2<=18.              (N)
+
+Write Q_H=H*sum_(odd sources,i,r)|partial_i(.)|^2 and
+Q_a=a*sum_(even sources,i,r)|partial_i(.)|^2, so Q=Q_H+Q_a in this channel.
+For scalar pair amplitudes b0,b1, the odd-source difference norm for phase
+t+epsilon is exactly(1/2)*|(e^(i(t+epsilon))-1)b0
+                       -(-e^(i(t+epsilon))-1)b1|^2
+                   =2*|e^(i*epsilon)-1|^2.
+There are two nonzero spatial components in Y. It follows exactly that
+ Q_H(Y)=4H*(|e^(-2pi i ell/n)-1|^2+|eta-1|^2)
+       <=256c*(ell^2+j^2).                               (HY)
+The unweighted forward-gradient energy on this three-dimensional torus is
+at most12 times the counting norm, by its Fourier multipliers. Therefore
+ Q_H(E)<=12H*||E||^2<=432H*|eta-1|^2<=27648c*j^2.
+Positivity of Q_H and(N) give
+ Q_H(F)<=2Q_H(Y)+2Q_H(E)<=55808c*(ell^2+j^2),
+ Q_a(F)<=12a*||F||^2<=9c/2.
+Thus a convenient uniform bound is
+       Q(F_(ell,j))<=2^16*c*(1+ell^2+j^2).                (FQ)
+These are actual source-weighted estimates; coefficients are not evaluated
+at target sites, no channel mixtures are observed, and no continuum limit
+or scalar surrogate for the coexact field is used.
+
+4. TWO EXACT CANCELLATIONS, NOT APPROXIMATE TRACE CONTROL
+
+The four point-trace coefficients at w,w+h for spatial2,3 are
+ T_(ell,j)=(b0*r,-b0,b1*rplus,-b1)
+         =T0(p)+(eta^-1-1)*V(p),
+where T0(p)=(1+zeta,-(1+zeta),1-zeta,-(1-zeta)) and
+V(p)=((1+zeta)/(1-zeta),0,(1-zeta)/(1+zeta),0).
+
+For positive j<=n/48 put alpha_plus=eta/(1+eta),alpha_minus=1/(1+eta).
+Their sum is1 and
+alpha_plus*(eta^-1-1)+alpha_minus*(eta-1)=0.
+Hence G_(ell,j)=alpha_plus*F_(ell,j)+alpha_minus*F_(ell,-j)
+has EXACT point trace T0(p), with both line traces still zero.
+Both alpha magnitudes are <=1 since |1+eta|>=1.
+
+For positive ell satisfying dist(A*ell,nZ)<=n/6 write u=e^(2pi i A*ell/n).
+Set beta_plus=1/(1+u),beta_minus=u/(1+u). Again both magnitudes are<=1,
+since |arg u|<=pi/3. Their sum is1 and beta_plus*u+beta_minus*u^-1=1.
+Because T0(p) is affine in zeta, and zeta_(+ell)=i*u,zeta_(-ell)=i/u,
+the FOUR-PACKET field
+ Z_(ell,j)=beta_plus*G_(ell,j)+beta_minus*G_(-ell,j)
+has EXACT point trace T0(p0), independent of ell,j. It is actual coexact,
+has identically zero line/fullslice traces and zero spatial1 component.
+
+Use only1<=ell<=T=floor(n/96) and ell<=j<=2ell. Then |j|<=n/48.
+The four (signed ell,signed j) frequency pairs within Z are distinct, and
+different positive (ell,j) packets have disjoint parity pairs. Indeed A is
+invertible,2ell<n and2j<n. For fixed w, equality of p forces the same signed
+ell; equality of q then forces the same signed j. Parity partners have the
+different w+h. Q couples only a frequency to that parity partner, so both
+counting norm and Q are orthogonal across these disjoint pairs.
+No unproved rank, trace-Gram bound or individual-block conjugation closure
+is assumed. The elementary coefficient bounds and(FQ) therefore give
+             Q(Z_(ell,j))<=2^18*c*(1+ell^2+j^2).           (ZQ)
+
+5. ENOUGH GOOD ell FOR A LOGARITHMIC CORRECTION BUDGET
+
+Let B(M) count1<=ell<=M with dist(A*ell,nZ)<=n/6. Consider phases
+Ar/n mod1 for r=0,...,M and partition the circle into six half-open bins.
+If their occupancies are N_s, sum_s N_s^2>=(M+1)^2/6. Remove the M+1
+diagonal ordered pairs. Any remaining same-bin pair has a good nonzero
+difference +/-ell. For each positive difference there are at most2(M+1)
+ordered pairs. Consequently
+ B(M)>=(M+1)/12-1/2=(M-5)/12>=M/24 for M>=10.              (BC)
+This is uniform in the inverse A; no Diophantine approximation or bounded
+slice motion is required. Circle endpoints cause no exception: points in
+the same bin have ordinary phase distance<1/6, hence periodic distance<=1/6.
+
+For T>=11, finite summation by parts and(BC) imply
+ sum_(good ell<=T)1/ell
+ =B(T)/T+sum_(m=1)^(T-1)B(m)/(m*(m+1))
+ >=(1/24)*sum_(m=10)^(T-1)1/(m+1)
+ >=(1/24)*log((T+1)/11).
+For each ell>=1, sum_(j=ell)^(2ell)1/(1+ell^2+j^2)>=1/(6ell).
+Define the positive finite scalar
+ W=sum_(good ell<=T)sum_(j=ell)^(2ell)1/(1+ell^2+j^2).
+It follows that
+ W>=(1/144)*log((T+1)/11)>(1/144)*log(n/1056).             (W)
+The last inequality uses T=floor(n/96), so T+1>n/96. The stated huge-size
+hypothesis guarantees T>=11, nonempty packets and W>2^26/144.
+
+6. AN ACTUAL INVISIBLE LOW-ENERGY FIELD
+
+Let U0 be the pair with ell=j=0, amplitudes
+(1+i)*(0,1,-1) at(w,p0,p0) and (1-i)*(0,1,-1) at its partner.
+Its actual A23 preimages are the same explicit formula from Section3.
+It has ||U0||^2=8, zero line/fullslice traces and point trace T0(p0).
+All three physical phases equal pi/2, so(HY) gives Q_H(U0)=0.
+The full unweighted gradient energy is6*||U0||^2=48, hence
+                      Q(U0)=48a=c.                     (BASE)
+
+For good ell<=T,ell<=j<=2ell choose weights
+ d_(ell,j)=[1/(1+ell^2+j^2)]/W, whose sum is1, and set
+                 z_complex=U0-sum_(ell,j)d_(ell,j)*Z_(ell,j).
+Every line and fullslice trace vanishes separately. The point trace is
+T0(p0)*(1-sum d)=0 at both w,w+h. All other w traces vanish by support.
+Thus all24n original observations are exactly zero, not merely small.
+The field lies in the ACTUAL curl-adjoint image by the explicit potentials.
+
+The base pair and all correction parity pairs are disjoint. Consequently
+ ||z_complex||^2>=8,
+ Q(z_complex)=c+sum_(ell,j)d_(ell,j)^2*Q(Z_(ell,j))
+             <=c+2^18*c/W
+             <c+(9/16)c=25c/16,
+by(ZQ),(W). Its quotient is therefore<25c/128.
+
+Write z_complex=x+i*y in original physical coordinates. The original curl
+adjoint, observations and coefficients are real, so x,y each are actual
+coexact and invisible, and Q(z_complex)=Q(x)+Q(y), with the analogous norm
+identity. At least one nonzero real part has quotient no larger than the
+complex quotient. Select that part, obtaining(TH). This argument does not
+require an individual unpaired Fourier block to be a real field.
+For that real field, any finite penalty Phi(Cz) with Phi(0)=0 vanishes,
+so it cannot restore targetc. Counting normalization by V cancels from
+this strict kernel obstruction exactly as in the original definition.
+
+7. WHAT THIS DOES AND DOES NOT CLOSE; FALSIFIER / ABANDONMENT
+
+If the derivation survives source audit, the even-linear cyclic family,
+including the golden candidate, is excluded by an actual real invisible
+coexact field at the explicit enormous size threshold. The former small
+window sufficient inequality is no longer the only available mechanism for
+this family. No bound on generic nonlinear motion, original nonwrapping
+refined means, practical solver, historical novelty or physical gap follows.
+The proof uses nonwrapping-chart neither by refinement nor by implication:
+zero on a cyclic union is still NOT enough for its refined pieces.
+General canonical Q251 stays OPEN; PR29 remains20/41,TermSource=0.
+
+Falsifiers: a wrong true-adjoint sign, source parity/odd-projection factor,
+mean n-factor, r/rplus or alpha/beta cancellation, Fourier-pair collision,
+return-count estimate, summation-by-parts constant, weak-energy/base norm,
+or real-field conversion. All must be checked before downstream use.
+No existing theorem assumption is silently discarded into a new structure:
+each actual field, preimage, zero and bound is displayed. This is not a
+numerical experiment, a formal proof or an independent model assessment.
+Do not spin off a separate small paper; group any accepted result with the
+checkerboard research. The next general-canonical mechanism must pay the
+extra nonwrapping chart-boundary traces; this theorem does NOT pay them.
+After three further units without a derived actual new bound/witness,
+identify that precise missing trace estimate and change mechanism.
