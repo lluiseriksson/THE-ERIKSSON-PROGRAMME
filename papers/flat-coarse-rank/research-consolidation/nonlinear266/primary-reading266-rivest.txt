@@ -1,0 +1,25 @@
+266A primary-source novelty/context check, 11 November2026.
+Ronald L. Rivest, Permutation Polynomials Modulo 2^w,
+Finite Fields and Their Applications7 (2001),287-292,
+DOI10.1006/ffta.2000.0282.
+Author-hosted primary PDF:
+https://people.csail.mit.edu/rivest/pubs/Riv01c.pdf
+
+Read the returned complete349-line extracted text of the six-page article;
+no visual PDF audit or independent verification of every theorem is claimed.
+The introduction EXPLICITLY identifies x(2x+1), exactly i+2i^2, as a
+permutation polynomial used in RC6. Theorem1 gives coefficient-parity
+conditions; the subsequent examples include x(a+bx) with a odd,b even.
+Thus the266A modular-bijection fact is known prior mathematics, not an
+original discovery. The short difference-factor proof in266A is a direct
+self-contained verification for this example, not historical priority.
+
+The article is about permutation polynomials/Latin squares, not our weighted
+coexact rectangle observation map. Its existence proves neither novelty
+nor non-novelty of the exact sampling identity/endpoint-budget combination.
+No exhaustive literature review or wider relevance is established here.
+The strong graph/coexact rank are also already253B programme results, and
+the actual target-c counterexample used in the route note is already264A.
+Consequently this work stays grouped as a structural route diagnostic.
+No new target-c quantitative bound, independent witness, paper, PDF score,
+acceptance, peer review, physical gap or continuum claim follows.

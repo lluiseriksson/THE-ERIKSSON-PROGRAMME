@@ -1,0 +1,181 @@
+EXACT-SOURCE ANALYTICAL AUDIT266A
+VERDICT: ACCEPT_SCOPED_STRUCTURAL_NOTE_WITH_NONBLOCKING_PHASE_QUALIFICATION
+MATERIAL FAILURE: none found in the point identity, ranks, admissible nonlinear
+test, incidence statement or narrowly stated shortcut refutation.
+No nonlinear target-c lower bound or invisible low-energy witness is obtained.
+The quantitative no-advance counter remains1, as the assignment requires.
+
+Exact referent b793afa5b805566fb4bf8f84a8245e0e704b8b59.
+Raw subject SHA256 3e44b4e22e7d2c5b5d328fdcf1da407795e6e5baeda268e90b486010d2c85a91.
+Git blob and Windows checkout bytes coincide; no normalization used.
+This verdict is analytical source checking, not a formal proof, score, PDF
+acceptance, originality finding, independent peer review or publication.
+
+1. MODEL AND THE NONLINEAR TEST
+
+The note consistently fixes dyadic n=2^m,m>=2,D3,V=n^3, original orthogonal
+channels, a=c/48,H=cn^2, actual source-weighted forward differences and actual
+coexact image. Strong parity is odd for channel1 and even for channel2, agreeing
+with253B and the original model. No target weighting, domain replacement or
+unproved projection invariance is used.
+
+For t_i even in the chart0,...,n-1, the right interval never empties: its
+endpoint t_i cannot equal the odd n-1. At t_i=0 the first interval is omitted;
+there are4 product cells rather than6. Every remaining interval is nonempty,
+axis aligned and nonwrapping. There are2 channels and3 spatial components,
+so the exact full row count is6[6(n-Z0)+4Z0]=36n-12Z0. This is an actual
+row count, not a coexact rank.
+
+For t_i=2i^2, equality of F(i)=i+2i^2 and F(j) gives
+(i-j)[1+2(i+j)]=0 mod2^m. The second factor is odd and invertible; hence
+i=j modn and F is a permutation. This applies around the periodic endpoint
+as well as to interior representatives. Its increments4i+2 are not constant
+modn for n>=8 (successive increments differ by4, not0 modn). For n4 they
+are constant2 and t_i=2i, as explicitly excluded from nonaffinity claims.
+The zero equation requires1+2v2(i)>=m, including i=0 by divisibility;
+equivalently i divisible by2^ceil((m-1)/2). The number of residues is
+2^(m-ceil((m-1)/2))=2^floor((m+1)/2). Thus the stated exact count and O(n)
+bound are correct. No historical originality of this permutation is claimed.
+
+2. ACTUAL STRONG GRAPH AND ACTUAL COEXACT INTERSECTION
+
+Every designated source layer s has neighbors only in s+1. For source x,
+x -> x+e_j -> x+e_j-e_k is an undirected strong-edge path: the second
+edge is the actual forward k-edge from the source x+e_j-e_k. This remains
+on source sum s. The vectors e1-e3,e2-e3 generate all modn zero-sum
+displacements, so the source layer is connected; each target has a rung.
+The strong components are exactly the displayed layer pairs, including
+the wrap pair when s=n-1. Each has2n^2 sites and each channel has n/2
+components. Positivity of all strong-edge squares gives precisely their
+componentwise constants as ker Q_H. Three spatial components and two
+channels give real dimension3n. These facts are expressly recalled253B.
+
+On functions of S, backward divergence zero says the sum of spatial values
+has zero backward difference, hence is constant; component means force that
+constant zero. Mean-zero component profiles and pointwise sum-zero are thus
+necessary for actual coexactness. They are sufficient here by a true
+preimage, not by a general unsupported divergence-only inference. At nonzero
+diagonal frequency with scalar xi, the curl-adjoint identity is
+d1*d1 u=3|xi|^2 u-xi sum_r conjugate(xi)u_r. For sum_r u_r=0, the displayed
+A_jl=(xi u_l-xi u_j)/(3|xi|^2) therefore maps to u under the actual adjoint.
+The zero frequency is absent by means. Conjugate frequencies produce conjugate
+potentials; at Nyquist xi=-2 is real, so real coefficients remain real. This
+constructs an actual real2-form. Pair profiles have n/2 values with one mean
+condition, two freely chosen spatial profiles per channel; dimension is
+2*2*(n/2-1)=2(n-2). Both description and dimension agree with exact253B.
+The note does not call these recalled ranks new progress.
+
+3. POINT MEANS: NORMALIZATION, ROWS AND RANKS
+
+The singleton (i,t_i,0) is an actual cell for each i, even at t_i=0.
+Its normalized row is V^-1/2 times the point value. There are exactly6n
+rows, one per i/channel/spatial component, with no conflation of full rows
+and restricted ranks. F permutation samples every sum layer exactly once.
+For each component value v_s, two sampled layers have that same value,
+whereas its full strong component has2n^2 vertices. Consequently
+sum_i|w(i,t_i,0)|^2=2sum_s|v_s|^2 and
+||w||^2=2n^2sum_s|v_s|^2. Multiplying the sampled norm by1/V gives exactly
+||C_pt w||^2=||w||^2/(Vn^2). The scale n sqrt(V) is therefore correct.
+It is an isometry on W_H, hence injective there and on W_H intersect U.
+The corresponding restricted ranks3n and2(n-2) are correct. They are not
+claimed as whole-U ranks or the actual full observation map's rank.
+Adding the other actual rows gives only the lower inequality on W_H;
+the note properly avoids claiming equality for the whole C.
+
+4. ACTUAL POTENTIAL AND SIX LABELED TRACE FAMILIES
+
+With partial_j=shift+ -I and delta_j=I-shift-, partial_j*=-delta_j.
+For only A23=delta2delta3 Psi nonzero, the true curl adjoint yields
+u2=delta3 A23 and u3=-delta2 A23, giving precisely P Psi in the source.
+An ordinary chart cell sum telescopes twice to endpoint values of delta3
+Psi for u2 and minus delta2 Psi for u3. The endpoints are x2 in
+{-1,t_i-1,t_i},x3 in{-1,0}; fixed chart -1 is retained. Requiring both
+gradients zero at those tags is a valid sufficient way to kill every
+individual cell mean, with its own normalization. No cyclic-union zero
+is substituted for separate refined means.
+
+For x2=-1, the two sum coordinates are i-1 and i-2. For x2=t_i and
+t_i-1, they are F(i),F(i)-1,F(i)-1,F(i)-2. Every labeled map is a
+permutation because F or i is. Each sum layer thus has6 incidences and
+each two-layer strong component12, separately for each channel's pair
+partition. At zero slices physical tags coincide; counting them with labels
+is legitimate. The number of distinct physical locations is at most12,
+not necessarily12. There is no independence, Gram lower bound, motion
+bound or completed cancellation construction hidden in this count.
+
+5. THE SCALED-TIGHT-FRAME SHORTCUT AND ITS EXACT LOGICAL REFUTATION
+
+The source cites the existing264A theorem only on its admitted affine
+families t_i=kappa i,kappa=2mod4 and sufficiently enormous dyadic sizes.
+Then kappa+1 is odd, F is a permutation, and all assumptions of PT hold.
+The exact97c5 original proof and full existing report are retained. That
+report proves an actual real nonzero coexact observation-kernel field with
+Q<(7/32)c||z||^2 on the actual36n-24-row nonwrapping family. Its two
+minor clarifications concern an auxiliary strict inequality at zero and
+the phase/integer notation; they are fully retained, not erased or upgraded
+to a new proof. This audit does not inherit a new mathematical verdict for
+some modified264 source or pretend a new independent counterexample.
+
+Using that existing actual witness as an attributed premise is sufficient
+to refute the inference that scaled-isometric observation of all of W_H
+alone guarantees target-c on U. Indeed any finite penalty vanishing at0
+still vanishes on this z. If Q_H(z)=0 then z is in W_H, while Cz=0 gives
+C_pt z=0, contradicting PT and z nonzero. Thus Q_H(z)>0 necessarily;
+there is no contradiction with the point identity. The required additional
+control concerns remaining modes/cross effects; a strong-kernel rank or
+exact frame alone is insufficient. The source consistently calls this a
+consequence of264, not an independent quantitative improvement.
+
+6. ALL OBJECTIONS AND SCOPE RESIDUALS
+
+266A-N1 (nonblocking wording qualification): the phase discussion should
+be read as the lack of the fixed affine grouping for the general varying-p
+packet, not a universal claim that every individual 2p i^2 phase is genuinely
+quadratic. For instance p=n/4 gives2p i^2=(n/2)i^2=(n/2)i modn because
+i^2-i is even. Thus special frequencies can linearize. This does not restore
+the full264 moving/fixed tensor grouping, provide its required packets, or
+invalidate any theorem or stated open nonlinear target. The source's
+'cannot be transplanted' is justified as 'not directly by that unchanged
+affine mechanism'; it is not a proof that no adapted nonlinear construction
+could work. This qualification should accompany future reuse. No source
+repair was made and the original sentence is preserved.
+
+Terminology clarification (not an error): 'distinct tagged points' in the
+incidence paragraph means distinct physical locations after identifying
+coincident labels; if labels are kept as part of the point identity there
+are12 incidences by construction. The explicit duplicate warning already
+makes the intended valid counting assertion clear.
+
+Material error: none found. No false factor, sign, missing endpoint, channel
+count, real-preimage exception or coexact/ambient rank substitution was found.
+No new nonlinear invisible field or strict nonlinear kernel lower is supplied.
+In particular a strict kernel lower would need the further finite-penalty
+argument, which the next-task wording explicitly requires. Bounded incidence
+does not eliminate a trace estimate, Hodge/domain-invariance requirement or
+potential-construction task. Nonaffinity and a structural identity do not
+reset the quantitative no-advance counter; it remains1. Sole Q251 remains
+open; no arbitrary-canonical impossibility, logarithmic optimum, physical
+mass gap or continuum theorem is established. PR29=20/41,TermSource=0 remain.
+This audit has no novelty or external-primary-source claim and no PDF grade.
+
+7. EVIDENCE AND ACTUAL LIMITS
+
+All266 source was read and checked analytically; all253B was read to verify
+the recalled setup/ranks. The exact264 witness is an attributed existing
+theorem previously fully audited in this same involved session; its full
+original proof and report, including every minor, are captured. No invented
+independence or blind review is asserted. Exact backend/version/effort is
+unavailable; actual identity is Codex/OpenAI. Assignment and context files
+record shared visibility and the full-read versus retained distinction.
+
+No mathematical executable, experiment, compiler, Lean/Lake, oracle, test,
+runtime, network or external model service was used. Only metadata/file/Git/
+hash operations and retention of this new audit packet occurred. No source,
+Git, state, other report, publication, grade, PR/body or automation changed.
+The source is still historically labeled UNREVIEWED until this own report;
+this exact-commit analytical verdict must not be represented as formal or
+publication acceptance. No PR/body exists and no body hash is invented.
+
+The raw manifest covers every artifact except itself and identifies raw byte
+sizes/SHA256, without newline normalization. Its own SHA is returned separately.
+The complete report is retained without replacing old adverse reports.

@@ -1,0 +1,60 @@
+266A grouped structural route status, 11 November2026.
+Exact audited referent b793afa5b805566fb4bf8f84a8245e0e704b8b59.
+Unchanged original raw/Git/worktree source SHA256:
+3e44b4e22e7d2c5b5d328fdcf1da407795e6e5baeda268e90b486010d2c85a91.
+Historical UNREVIEWED label is preserved on the original frozen bytes;
+read the full own exact-source report WITH this status and that source.
+
+Verdict: ACCEPT_SCOPED_STRUCTURAL_NOTE_WITH_NONBLOCKING_PHASE_QUALIFICATION.
+No material failure found. Parent read the complete11237-byte report,
+context, assignment and bindings and verified all11 raw manifested files.
+Full report SHA256 raw:
+6245b2234eafab1f76422d5daa39e482976ea787a9e0246321e4907593c828b2.
+Manifest SHA256 raw:
+10a3be4f7227701399b3cc933ff79e619bf522f8775cab281aaa9138a9740664.
+Every finding and seven exact subjects are retained in source-audit266A/.
+
+Accepted: actual nonlinear canonical row count, the permutation property,
+correct nonaffinity exception n4, exact point-mean identity on the whole
+actual strong kernel, the separately scoped restricted ranks, and exactly
+twelve labeled endpoint incidences per strong component (duplicates allowed).
+The graph/coexact rank are RECALLED253B results; the permutation polynomial
+is explicitly known prior mathematics (Rivest2001 even names x(2x+1)).
+Neither is a new programme discovery. The target-c counterexample used is
+the existing264A result, not a second independent witness.
+
+266A-N1, nonblocking phase qualification: special individual frequencies
+can linearize2p i^2 modulo n; for example p=n/4 gives(n/2)i^2=(n/2)i.
+The lack of the old fixed affine grouping concerns its GENERAL varying-p
+packet. It is not a proof that every individual phase is nonlinear or that
+no adapted construction can work. Preserve this qualification with future
+use; the frozen sentence is not silently repaired or deleted.
+
+Terminology: twelve incidences count labels with multiplicity; there are
+at most twelve distinct physical tag locations per component, not twelve
+independent equations. Point submap C_pt itself has the exact scaled-tight-
+frame identity. The full canonical partition map C CONTAINS these actual
+point rows and has the stated lower inequality on the strong kernel; no
+exact tight-frame equality for the whole C is claimed. The existing264A
+invisible field kills C, hence C_pt as well. Thus both the exact point-map
+frame shortcut and its use as a sufficient submap criterion for the full
+canonical target are excluded, with these row-class distinctions intact.
+
+No new strict actual kernel lower bound above c OR actual invisible
+low-energy field is obtained for t_i=2i^2. GeneralQ251 remains open.
+Quantitative no-advance count on this nonlinear route is1. Do not reset
+it by recounting253B, the known permutation polynomial or the264 witness.
+After three such units retain failures and change mechanism or identify
+its concrete obstruction. The next bounded objective is a paid actual
+quantitative kernel/penalty result or true coexact witness for this map.
+
+Model assessments and review context: involved Codex/OpenAI author and
+same child/source-review session; inherited/shared programme and prior
+reports visible, exact backend/version/effort unavailable. Not blind or
+independently established review. No external model service, new PDF,
+numerical grade, formal/numerical execution, peer review, acceptance or
+publication. Original260C PDF/assessment/objections remain unchanged.
+This note stays grouped in Git/D, without a new small paper or PR until
+the route has substantial quantitative progress. Historical originality
+of the observation combination remains unestablished after bounded reading.
+PR29=20/41,TermSource=0; physical gap and continuum OPEN.
