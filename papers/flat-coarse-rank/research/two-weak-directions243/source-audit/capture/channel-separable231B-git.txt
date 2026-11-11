@@ -1,0 +1,135 @@
+UNIT231B. ACTUAL COEXACT RANK OBSTRUCTION FOR CHANNEL-SEPARABLE MAPS
+Analytical successor231B, not yet separately audited. Prepared2026-11-10.
+Frozen231A and its complete acceptance-with-limits audit are retained unchanged.
+This substantive improvement H=c n^2 was derived while231A audit was running,
+but was not communicated to that auditor until its audit had concluded.
+231A acceptance is not inherited by this changed statement.
+Scientific inputs: exact forward coexact convention and dimension from
+229 source1af074718e5d122c5ef02d287461750833b44c77. Budget convention from
+226C source2d3237501569f6afac8a44d524a5d6db59f63c39.
+No execution, formal certificate, priority assertion, new paper or grade.
+
+BOUNDED QUESTION AND EXIT
+For D>=3, can arbitrary channel-separable linear observations restore
+coercivity of positive constant coupled gradient forms with true coexact
+restricted rank bounded by C_D(h+F)? The candidate answer is no.
+Retained hypothesis: rows never mix distinct internal channels in the
+specified fixed basis. Within a channel they may mix all sites and all D
+spatial field components. No claim about all linear maps or physical mass gaps.
+Mechanism: spread one weak internal polarization uniformly across g channels;
+trace-average their row-space projections inside the actual coexact domain.
+Falsifier: a wrong actual coexact dimension, projection not preserving that
+domain, hidden multiplicity in the full budget, or a failed energy bound.
+Abandon an uncorrectable mechanism, preserving its counterexample; after three
+units without substantive progress change route. No basis-free restatement.
+
+1. EXACT FINITE SETUP
+Let D>=3, n>=2, X=(Z/nZ)^D, V=n^D, and g=V. Real D-vector fields
+have counting inner product sum_{x,j} f_j(x)z_j(x). Write
+partial_i^+f(x)=f(x+e_i)-f(x), and let d_1 be the actual forward curl.
+Set U_0=im(d_1^*) and U=U_0^g. The codifferential is the actual counting
+adjoint, not a substituted quadratic form. On the periodic flat torus,
+d_0=(D-1)(V-1)=dim_R U_0. One direct verification: a nonzero frequency
+has nonzero q=(exp(2 pi i k_i/n)-1)_i; curl q wedge has rank D-1,
+and its adjoint image is the orthogonal complement of q. Zero frequency
+contributes zero. Conjugate-frequency pairing gives the same real dimension.
+In particular every component of every coexact field has zero global mean.
+There are h=Dg real field components and r=Dh=D^2 g gradient coordinates.
+All row-rank and projection statements below use the actual space U.
+
+Fix c>0, a=c/(16D), H=c n^2, v=(1,...,1)/sqrt(g), and
+B=H I_g-(H-a) v v^T. The coefficient matrix is constant in x and
+A_{(i,j,alpha),(i',j',beta)}=delta_ii' delta_jj' B_alpha,beta.
+It is strictly positive. It couples internal channels while preserving the
+gradient-direction and spatial-component coordinates. Its eigenvalues at
+each site are a with multiplicity D^2 and H with multiplicity D^2(g-1).
+Define Q_A(u)=sum_{x,i,j,alpha,beta} B_alpha,beta
+ partial_i^+u_j,alpha(x) partial_i^+u_j,beta(x).
+Normalized norm is ||u||_V^2=V^-1||u||^2, and normalized energy V^-1 Q_A.
+
+2. FULL CAPPED BUDGET, WITHOUT DROPPING STRONG MULTIPLICITIES
+Use P=D/2 and alpha_D=(3/4)^D (D/2)(D/(D-2))^(D-1), exactly as226C.
+The spectral cost at positive lambda is min(1,alpha_D(c/lambda)^P).
+Let sigma=alpha_D^(1/P)c. Since sigma/c>=9/16 and a/c=1/(16D),
+each weak eigenvalue costs1. Strong cost is at most alpha_D n^(-D).
+Thus the exact full budget is
+ F=D^2 V[1+(g-1)min(1,alpha_D n^(-D))]
+ <=D^2(1+alpha_D)V, since g=V=n^D.
+Consequently h+F <=[D+D^2(1+alpha_D)]V. No negative eigenvalues,
+uncontrolled depth, removed sites or omitted strong tail are involved.
+
+3. CHANNEL-SEPARABLE OBSERVATIONS AND AN ACTUAL-DOMAIN PROJECTION
+Let C=direct_sum_{alpha=1}^g C_alpha, where each C_alpha is any finite
+real linear observation on a full D-vector field, restricted to U_0.
+Only this internal separability is required; rectangular component means
+in230 belong to this class. Set r_C=rank(C|U)=sum_alpha rank(C_alpha|U_0).
+For each alpha let R_alpha be the counting orthogonal projection in U_0
+onto the row-representer space of C_alpha|U_0. R=direct_sum R_alpha is
+an orthogonal projection IN U, with rank r_C and ker R=ker(C|U).
+These projections need not preserve locality, gradients or individual
+spatial components. They do preserve U_0 because they are defined there.
+This is a legitimate decomposition by internal channel; there is no false
+decomposition of U_0 by its individual spatial field components.
+
+Define the isometry T:U_0 -> U by (Tf)_alpha=v_alpha f. Then
+ T^* R T=(1/g)sum_alpha R_alpha,
+ trace(T^* R T)=r_C/g.
+There is a real unit f in U_0 with
+ t=||R Tf||^2 <= r_C/(g d_0).
+Indeed the minimum Rayleigh quotient of the real symmetric positive
+operator T^*RT is at most its trace divided by d_0. Here d_0>0.
+Take u=(I-R)Tf. It lies in the actual coexact U, satisfies Cu=0,
+and has ||u||^2=1-t by orthogonal projection and ||Tf||=1.
+
+4. ENERGY AND NECESSARY TRUE RANK
+For every torus vector field, sum_i ||partial_i^+z||^2<=4D||z||^2,
+since shifts are isometries. On the weak polarization,
+ Q_A(Tf)=a sum_i||partial_i^+f||^2<=4Da.
+Since 0<A<=H I,
+ Q_A(RTf)<=4DH||RTf||^2=4DHt.
+The positive quadratic form inequality Q(x-y)<=2Q(x)+2Q(y) gives
+ Q_A(u)<=8Da+8DHt.
+Suppose an arbitrary penalty Phi on the observation output, with Phi(0)=0,
+satisfies for every actual coexact z
+ V^-1 Q_A(z)+Phi(Cz)>=c||z||_V^2.
+Applying it to u and multiplying by V yields
+ c(1-t)<=8Da+8DHt,
+so t>=(c-8Da)/(c+8DH)=1/[2(1+8D n^2)].
+Combining with the trace bound proves the necessary actual restricted rank
+ r_C >= g(D-1)(V-1)/[2(1+8D n^2)].
+This holds for nonlinear penalties too; only their value at zero was used.
+There is no output-count versus actual-image-rank substitution.
+The case t=1 is harmless; the same algebra remains valid even when u=0.
+
+For fixed D>=3 and n tending to infinity, the lower bound is of order
+n^(2D-2), whereas h+F is O_D(n^D). Their ratio diverges as n^(D-2).
+Thus no constant depending only on D can bound the restoring restricted
+rank by C_D(h+F) for this entire channel-separable class. The profile is
+finite, constant, positive, and its internal dimension varies with n.
+
+5. ESSENTIAL BASIS BOUNDARY: A CHEAP MIXED OBSERVATION EXISTS
+The preceding theorem is not invariant under a change of the internal
+separability basis. For the SAME coefficient profile allow cross-channel
+mixing and observe Wz=sum_alpha v_alpha z_alpha at every site/component,
+with rows V^-1/2 (Wz)_j(x). This map has actual restricted rank d_0.
+Orthogonally split z=T(Wz)+z_strong within U. The split is constant in
+space, hence commutes with forward differences and preserves coexactness.
+All components of z_strong have zero global mean. The first positive
+forward torus Laplacian eigenvalue is lambda_1=4sin^2(pi/n)>=16/n^2.
+Therefore H lambda_1>=16 c>=c, and
+ Q_A(z_strong)>=c||z_strong||^2.
+Adding c times the squared output norm controls the weak part:
+ V^-1 Q_A(z)+c||C_weak z||^2>=c||z||_V^2.
+The rank d_0 is O_D(V)=O_D(h+F). Thus the obstruction cannot be extended
+to arbitrary linear observations, even on this exact family. A fixed
+global internal rotation can expose the cheap weak channel. The result
+identifies a row-class and chosen-basis restriction, not a universal
+spectral-budget failure. The finite obstruction includes D=4, but is not a physical mass-gap result.
+The capped convention requires D>2; no D=2 conclusion is claimed.
+
+REVIEW CONTEXT
+Derived analytically before this question was recorded. Separate source
+audit is required. This finite trace/rank mechanism is elementary; no
+historical originality is claimed without a primary-source search.
+Group with related observation-class results; do not create a tiny paper
+or transfer the226C PDF score. PR29 remains20/41 and TermSource=0.

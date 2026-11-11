@@ -1,0 +1,59 @@
+{
+  "audit_id": 242,
+  "issued_date": "2026-11-11",
+  "verdict": "ACCEPT_WITH_NONBLOCKING_BASE_CASE_WORDING_NOTE",
+  "source_commit": "e9210be23b4a6deba5ea7e09f749a7eb06857dd9",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-11_upper-delocalization242.txt",
+  "source_bytes": 9624,
+  "source_sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc",
+  "source_representation": "Exact Git blob LF, no normalization",
+  "full_source_read": true,
+  "d_candidate_byte_identical": true,
+  "blockers": [],
+  "nonblocking_findings": [
+    {
+      "id": "N1",
+      "section": 2,
+      "lines": [
+        34,
+        35
+      ],
+      "finding": "Before the first request, used mass and preceding upper budgets are both zero; their comparison is equality, not strict",
+      "resolution": "State the base case as unused mass1>total upper budgets; apply strict spent-prefix comparison after at least one completed group",
+      "theorem_impact": "None; feasibility, residual mass and cardinality proof valid with the immediate base case stated"
+    }
+  ],
+  "accepted_analytic_claims": [
+    "sorted actual-weight prefix lemma with zero suffixes and deterministic ties",
+    "all indivisible overshoots and residual mass greater than1/16",
+    "derived cardinality ceil(16g lambda), including t>remaining count",
+    "both total budgets strictly below15/16",
+    "all-scale and one-tail finite partitions and gaps",
+    "full coarse count, tail at most90, every root and singleton fallback",
+    "all-field32c min(g,n^2) coercivity with one T and every constant mode",
+    "actual coexact dimension and internally separable weighted trace rank",
+    "fixed-canonical weighted actual-rank penalty lower and least coefficient",
+    "correct original capped budget and preserved241A rejection",
+    "e1 escape outside fixed-Lambda growing-g family"
+  ],
+  "hypothesis_removed": "positive individual lower bound nu/g",
+  "hypotheses_retained": [
+    "unit v with max v_alpha^2<=Lambda/g for fixedLambda",
+    "positive constant rank-one weak profile",
+    "fixed internal basis and channel separability",
+    "canonical row normalization",
+    "finite actual flat forward/coexact domain"
+  ],
+  "priority": "UNESTABLISHED; no exhaustive search",
+  "formal_or_numerical_verification": false,
+  "mathematical_execution": false,
+  "runtime_allocation": false,
+  "source_mutation": false,
+  "publication_authorized": false,
+  "score": null,
+  "stars": null,
+  "pdf": null,
+  "full_report": "fullreport.txt",
+  "context": "context.json",
+  "capture_manifest": "capture-manifest.json"
+}

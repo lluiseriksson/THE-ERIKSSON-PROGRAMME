@@ -1,0 +1,25 @@
+{
+  "unit": 243,
+  "source_sha": "74dd6bb7938bf6a7522a84349b7a5d90fa907fc0",
+  "source_sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459",
+  "verdict": "ACCEPT_STATED_RANK_TWO_THEOREM_WITH_SCOPE",
+  "source_audit_manifest_sha256": "ff9a6468afbcb92e9b13317c51b78fe20aa9009bf9648f7d8590b57d2825974d",
+  "raw_subjects_verified": 14,
+  "full_report_read": true,
+  "proved_extension": "One-dimensional weak subspace extended specifically to rank2; actualmatrixGramgroups derived from finiteangularbins/quantiles, notassumed.",
+  "rank": "Theta_(D,Lambda)(V+gV/n^2)",
+  "least_normalized_penalty": "Theta_(D,Lambda)(cmin(g,n^2)); allfieldupper32cmin(g,n^2)",
+  "retained_hypotheses": [
+    "rankEXACTLY2 weakorthoprojector",
+    "fixedP_aa<=2Lambda/g",
+    "positiveconstantprofilea=c/(16D),H=cn^2",
+    "fixedbasis and canonicalchannel-separated rows",
+    "actualfiniteflatcoexactdomain"
+  ],
+  "scope_clarification": "Scope clarification C1: explicit singleton fallback(i) takes priority for ALL channels, including zero/discarded frame rows. Root assignment for zero/discarded/unused rows describes only angular branches(ii)/(iii). Original source and issued audit unchanged; allfield constant modes and fullrowcounts are included.",
+  "constants": "Large explicitfixedK2048 andsizefallbacks; no practicalconditioning/efficientimplementation claimed.",
+  "formal_or_numeric_execution": false,
+  "grade": null,
+  "not_in_frozen232B": true,
+  "priority": "UNESTABLISHED"
+}
