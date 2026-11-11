@@ -1,0 +1,24 @@
+BOUNDED PRIMARY-SOURCE COMPARISON,11November2026
+
+1. A. Hurwitz, Ueber die angenaeherte Darstellung der Irrationalzahlen
+durch rationale Brueche, Mathematische Annalen39(1891),279-284.
+https://doi.org/10.1007/BF01206656
+Publisher bibliographic page read. Full text is subscription-only through
+that route; no purchase or claim of full-paper reading was made.
+
+2. N. Andersen and W. Duke, The Minkowski chain and Diophantine approximation,
+arXiv:1908.06157v1(2019), https://arxiv.org/pdf/1908.06157
+Read abstract, introduction and Section2 opening through the explicit
+reciprocal-golden-ratio example, PDFpages1-2. They describe the classical
+quadratic-irrational continued-fraction setting and show that this same
+alpha has all partial quotients1. No later theorem or full-paper audit is
+claimed. Their multivariable Minkowski-chain results are not inputs here.
+
+The elementary algebraic lower bound in260B is proved directly from the
+nonzero integer ell^2+ell*K-K^2. It is not presented as a new number-theory
+result or as an improvement on classical irrational approximation. The
+bounded comparison establishes context only, not historical originality
+of the programme's exact finite-grid application. No exhaustive novelty
+search, practical importance, independent verification or publication
+acceptance follows. The only accepted statement is the exact-scope
+limitation of the stated259 sufficient threshold, as audited separately.
