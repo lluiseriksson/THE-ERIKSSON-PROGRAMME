@@ -1,0 +1,22 @@
+{
+  "role": "exact-source analytical audit without numerical assessment",
+  "identity": "Exposed Codex based on GPT-6",
+  "exact_backend": "unknown",
+  "effort": "unknown",
+  "shared_account_context": true,
+  "prior_programme_engineering_involvement": true,
+  "independent": false,
+  "blind": false,
+  "human": false,
+  "peer_review": false,
+  "formal_verification": false,
+  "originality_or_priority_certified": false,
+  "new_grade": false,
+  "PDF250B_regraded": false,
+  "runtime_or_compilation": false,
+  "source_modified": false,
+  "inbound_during_audit": false,
+  "other_chat_or_author_contact": false,
+  "source_sha256": "d930993bbae35b83cfa0fb4583ce439070f8de2c11d0905d28a861d5a7c89177",
+  "byte_regime": "Exact raw source/captured bytes without text normalization"
+}
