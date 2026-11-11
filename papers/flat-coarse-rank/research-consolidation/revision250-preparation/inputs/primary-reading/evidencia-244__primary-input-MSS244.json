@@ -1,0 +1,12 @@
+{
+  "read_at_utc_date": "2026-11-11",
+  "primary_source": "Marcus, Spielman, Srivastava, Interlacing Families II: Mixed Characteristic Polynomials and the Kadison-Singer Problem, arXiv:1306.3969v4 (2014)",
+  "abstract_url": "https://arxiv.org/abs/1306.3969v4",
+  "pdf_url": "https://arxiv.org/pdf/1306.3969",
+  "actually_read": "Theorem 1.4 and Corollary 1.5, printed page 3, PDF index 2, with the opening proof of Corollary 1.5",
+  "input_paraphrase": "For independent finite-support vectors with total expected outer product equal to identity and each expected squared norm at most epsilon, an outcome has outer-product-sum norm at most (1+sqrt(epsilon))^2. The stated frame partition corollary supplies matrix upper bounds; the extra simultaneous cardinality statement needed by candidate244 is derived in that candidate using an auxiliary signed coordinate.",
+  "scope": "Classical theorem used as a proved input. Candidate244 is not an independent proof of MSS and makes no original-priority claim for its specific application. No exhaustive frame/finite-element implication comparison has been completed.",
+  "third_party_pdf_redistributed": false,
+  "candidate_exact_source": "98d1b4e230895bf03147a987d5db7545680f154a",
+  "candidate_audit": "PENDING"
+}

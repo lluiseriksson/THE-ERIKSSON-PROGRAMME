@@ -1,0 +1,4 @@
+Nonblocking N1 clarification; original source and issued audit unchanged.
+Before the first requested group, spent mass and the empty preceding budget are BOTH0.
+The base case is unusedmass1>the total upper budget<15/16. After at least one completed group, spentmass is STRICTLYbelow its preceding upper budget.
+This supplies the explicit base case used by the issued full analytical audit. No theorem/partition/rank/penalty change, new grade, scientific execution or independent verification is claimed. Future manuscript prose should state this base case explicitly.

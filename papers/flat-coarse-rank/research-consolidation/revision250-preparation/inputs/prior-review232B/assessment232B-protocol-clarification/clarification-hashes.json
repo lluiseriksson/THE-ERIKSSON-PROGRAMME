@@ -1,0 +1,53 @@
+{
+  "format": "same-round-protocol-clarification-hashes-1.0",
+  "generated_at": "2026-11-10T22:57:04.7523846+01:00",
+  "algorithm": "SHA-256",
+  "byte_representation": "Exact raw saved bytes, no normalization; UTF-8 without BOM for new text/JSON",
+  "original_preservation": "All four original digests verified before and after clarification; unchanged",
+  "originals": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\report-hashes.json",
+      "bytes": 1543,
+      "sha256": "2210507f86a652533790d609c6afeac26c726868992f34be1afcea4169e1e4e5"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\response.json",
+      "bytes": 6674,
+      "sha256": "e05cc1bb5dea2cf3a43713b2d380d9afa3920c8e4ee3d350b95f4eb492c53e4f"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\review-context.json",
+      "bytes": 10437,
+      "sha256": "8b7519d3eaf46b67ade6ec409ffea095206564af65c99deb3fd2d7f2ddd610d9"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\scientific-review.txt",
+      "bytes": 21047,
+      "sha256": "9619c2a5b971bdeca22c7654587229bd1ade8cb44b1b355cf1a7aecbbcdb50e9"
+    }
+  ],
+  "new_artifacts": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-protocol-clarification\\protocol-addendum.txt",
+      "bytes": 5955,
+      "sha256": "da5866d832d7a82af1aa5ed72d3df63552837e6ce14b931609ff4144fd631f15"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-protocol-clarification\\response-native.json",
+      "bytes": 7393,
+      "sha256": "12d5d04f87bca41ebcdec874bab4002e0672c716dab1f5bb90e61a4029254eea"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-protocol-clarification\\clarification-context.json",
+      "bytes": 3745,
+      "sha256": "da6c46c80963149c0f57a97347fb492e81de72bcd734a9c9eef91d412d031e2e"
+    }
+  ],
+  "assessed_pdf": {
+    "sha256": "5595e89c1bcbec1d9b1ae35053a76e6a962f67b45d5d1ac483e5b7a60c9b9be0",
+    "bytes": 505936,
+    "pages": 30,
+    "verification": "Verified in original assessment; no new PDF reading or review in this clarification"
+  },
+  "self_hash_policy": "Manifest excludes its own hash to avoid self-reference; separately computed for delivery"
+}
