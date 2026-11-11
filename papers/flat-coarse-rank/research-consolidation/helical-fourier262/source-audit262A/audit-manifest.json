@@ -1,0 +1,55 @@
+{
+  "exact_commit": "fd095658fc3973481e0781cadf63adad13e8187a",
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1701,
+      "sha256_raw": "c6dd5351ac86d0314fb4c73d6ff7fc7132a24d10ca205e41d2e0d4bce7f1672d",
+      "representation": "Exact retained raw bytes, no normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 15085,
+      "sha256_raw": "667e8d5f8f4316aa31d1b462b4e2887e0ebb9934a1d70865231fea71e71270fe",
+      "representation": "Exact retained raw bytes, no normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "review-context.json",
+      "bytes": 3859,
+      "sha256_raw": "d505f5945d291d8926275224c61dbf890272b5badab6cd81eef7c4896262b0b7",
+      "representation": "Exact retained raw bytes, no normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/checkerboard_observations260.tex",
+      "bytes": 47103,
+      "sha256_raw": "9c24b70685a5a7ae9301555170fa84acafd9f17524734775b1e9bca7cce822d9",
+      "representation": "Exact retained raw bytes, no normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256_raw": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "Exact retained raw bytes, no normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/golden-window-route-limit260B.txt",
+      "bytes": 4405,
+      "sha256_raw": "ab07d9fbba10d1bb5a039fa8e758db4f5b370838a5b79f136754fb507df8888d",
+      "representation": "Exact retained raw bytes, no normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/helical-fourier262A.txt",
+      "bytes": 7045,
+      "sha256_raw": "2564f6b307bd7e93db5722714af5041391b30da615a59b7f5a6f80762791a0e9",
+      "representation": "Exact retained raw bytes, no normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256_raw": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "Exact retained raw bytes, no normalization; subjects extracted by binary git show"
+    }
+  ],
+  "file_count": 8,
+  "self_exclusion": "Manifest excludes itself; raw SHA256 returned separately"
+}

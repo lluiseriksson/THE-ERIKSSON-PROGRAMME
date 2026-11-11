@@ -1,0 +1,70 @@
+{
+  "recorded_at": "2026-11-11T20:06:33.222257+00:00",
+  "task": "/root/grouped260_manuscript_source_audit",
+  "task_kind": "New mathematical source-only exact helical reduction audit",
+  "exact_commit": "fd095658fc3973481e0781cadf63adad13e8187a",
+  "proof_sha256_raw": "2564f6b307bd7e93db5722714af5041391b30da615a59b7f5a6f80762791a0e9",
+  "verdict": "ACCEPT_ANALYTICAL_EXACT_COMPLEX_BLOCK_REDUCTION_WITH_CONJUGATION_CLARIFICATION",
+  "material_objections": [],
+  "nonblocking_objections": [
+    {
+      "id": "262A-N1",
+      "finding": "Individual w blocks need not be conjugation invariant. The family is permuted by w->-w modulo n/2; actual real/imag proof is valid. Correct final falsifier wording.",
+      "example": "n32: block{1,17} conjugates to{31,15}, represented by15",
+      "source_modified": false
+    }
+  ],
+  "gamma_bound_obtained": false,
+  "actual_new_invisible_witness_obtained": false,
+  "hypotheses_eliminated": [],
+  "grade": null,
+  "formal_verification": false,
+  "numerical_experiment": false,
+  "model_identity_exposed": "Codex/OpenAI; exact served backend/version/effort unavailable",
+  "independence": "Same involved child source-review session; inherited context visible; not blind or independently established",
+  "inbound_parent_messages": false,
+  "network_runtime_math_program_build_or_reviewed_code_executed": false,
+  "source_branch_state_or_otheraudit_changed": false,
+  "disposable_clone_created": false,
+  "cleanup_pending": false,
+  "PR_body_capture": "N/A: no PR/body existed in assignment",
+  "subjects": [
+    {
+      "path": "subjects/helical-fourier262A.txt",
+      "source": "fd095658fc3973481e0781cadf63adad13e8187a:papers/flat-coarse-rank/research-consolidation/helical-fourier262/helical-fourier262A.txt",
+      "bytes": 7045,
+      "sha256_raw": "2564f6b307bd7e93db5722714af5041391b30da615a59b7f5a6f80762791a0e9",
+      "representation": "Exact binary Git blob, no normalization"
+    },
+    {
+      "path": "subjects/checkerboard_observations260.tex",
+      "source": "fb3ba8d2c0ae52d4a2e909b0fb2df02b2f953bc4:papers/flat-coarse-rank/research-consolidation/revision260-preparation/checkerboard_observations260.tex",
+      "bytes": 47103,
+      "sha256_raw": "9c24b70685a5a7ae9301555170fa84acafd9f17524734775b1e9bca7cce822d9",
+      "representation": "Exact binary Git blob, no normalization"
+    },
+    {
+      "path": "subjects/golden-window-route-limit260B.txt",
+      "source": "62566b653002ee4cd3a480b26dd366baffc5ffad:papers/flat-coarse-rank/research-consolidation/golden-window260/golden-window-route-limit260B.txt",
+      "bytes": 4405,
+      "sha256_raw": "ab07d9fbba10d1bb5a039fa8e758db4f5b370838a5b79f136754fb507df8888d",
+      "representation": "Exact binary Git blob, no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "source": "fd095658fc3973481e0781cadf63adad13e8187a:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256_raw": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "Exact binary Git blob, no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "source": "fd095658fc3973481e0781cadf63adad13e8187a:CLAUDE.md",
+      "bytes": 23996,
+      "sha256_raw": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "Exact binary Git blob, no normalization"
+    }
+  ],
+  "full_read_scope": "Whole262A, whole golden260B, exactfb3 actual setup/operators; fullfb3 manuscript read in previous same-session task and retained here. Every claimed262 algebraic step freshly rederived. Full governance previously read in this same session; first100CLAUDE lines read and complete file retained.",
+  "context_export_limit": "Complete assignment retained; inherited full conversation not tool-exportable; nonblind visibility disclosed"
+}
