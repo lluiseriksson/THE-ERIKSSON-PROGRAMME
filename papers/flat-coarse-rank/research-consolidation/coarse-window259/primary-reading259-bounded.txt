@@ -1,0 +1,27 @@
+259 bounded primary-source comparison,11November2026. Not a priority claim.
+
+Cosco, Nakajima, Schweiger, Asymptotics of the p-capacity in the critical
+regime, arXiv:2112.03661v2,9May2023:
+https://arxiv.org/abs/2112.03661 and https://arxiv.org/pdf/2112.03661
+Primary metadata/abstract reopened for259. The earlier257/258 reading of
+the original PDF covered the graph-capacity definition, critical theorem
+setting and p=2 context. Logarithmic two-dimensional capacity is established
+machinery.259 proves its finite shared-window accounting directly; it neither
+imports a new capacity theorem nor claims the classical cutoff as original.
+
+Drewitz, Sousi, Sun, Symmetric Rearrangements Around Infinity with
+Applications to Levy Processes, arXiv:1110.5592v2,5February2013:
+https://arxiv.org/abs/1110.5592 and https://arxiv.org/pdf/1110.5592
+Primary metadata/abstract reopened; the earlier258 reading covered the PDF
+abstract and initial moving-domain survival setup. Their probabilistic
+moving-trap/rearrangement and process-capacity context is related, but no
+equivalence to this deterministic tagged-window/coexact observation bound
+was derived. No full theorem/proof novelty comparison has been completed.
+
+This reading is bounded, not exhaustive. No absence-of-prior-work inference
+comes from a search miss or unavailable lookup. Dates are primary version
+dates, not crawl dates. External PDFs are not redistributed. Current exact
+dependencies are the explicit257/258 proofs, not these external results.
+Analytical validity, originality and significance remain separate. Priority
+of the specified application is UNESTABLISHED; constants enormous; general
+Q251, physical gap and continuum OPEN. No new paper or grade follows.
