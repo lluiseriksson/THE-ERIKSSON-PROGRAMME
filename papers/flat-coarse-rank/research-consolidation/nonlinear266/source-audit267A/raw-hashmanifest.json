@@ -1,0 +1,65 @@
+{
+  "self_excluded": true,
+  "artifacts": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1897,
+      "sha256": "6cb55ea7e41996652af77370dd35a7268c52a7ed1a5e02f07fb767a5d8b1b784",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 12353,
+      "sha256": "08c8fac1514bdaffc9afa5e67924f0a32cf9bc6e1e18549d53ca53262ad87b9f",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "initial-status.txt",
+      "bytes": 132,
+      "sha256": "b159d950737b42ff5e7f33ee07c33e5b15c215bef46dce705cdd69d2a28549f0",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "review-context.txt",
+      "bytes": 2302,
+      "sha256": "772a8ae2234df190616b16749f0924521f940dbbc26d3b7014e810672beffc07",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 1995,
+      "sha256": "2cf591c10566d90b1ca46eb394ce6eb54e879493a1507ca262ceba97b64b78eb",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/nonlinear-strong-kernel266A.txt",
+      "bytes": 9661,
+      "sha256": "3e44b4e22e7d2c5b5d328fdcf1da407795e6e5baeda268e90b486010d2c85a91",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/nonlinear267A-logarithmic-bound.txt",
+      "bytes": 9821,
+      "sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/strong-component-observations253B.txt",
+      "bytes": 14606,
+      "sha256": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2",
+      "representation": "raw retained bytes; no normalization"
+    }
+  ]
+}
