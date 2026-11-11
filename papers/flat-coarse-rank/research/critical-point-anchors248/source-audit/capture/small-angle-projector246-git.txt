@@ -1,0 +1,118 @@
+246 -- The spatially variable rank escape persists at every fixed nonzero angle
+Author-role analytical candidate. Different-role exact-source audit REQUIRED.
+No execution, formal check, PDF grade, priority or physical claim.
+
+1. Statement and exact scope.
+Fix D>=3,c>0 and two DISTINCT unoriented unit weak lines in R^2, with acute
+angle theta in(0,pi/2]. For every even n>=2 put V=n^D,g=2,q=1,Lambda=2,
+a=c/(16D),H=cn^2. At even sites use P0=v0v0^T, at odd sites P1=v1v1^T,
+with source-weighted B(x)=HI-(H-a)P_(p(x)), repeated over D directions and
+D spatial components. Actual counting forward torus/curl/coexact domain and
+canonical fixed-basis channel-separated rectangle observations are those of245.
+There is a canonical map restoring c on ALL fields with FINITE coefficient and
+ fullcount<=2D m_theta(n^(D-1)+1)=o(V),
+ m_theta=ceil(4/sqrt(kappa)), kappa=1-|cos(theta)|>0.   (246.1)
+Its actual coexact rank is at most the full count. Thus245 is not limited to
+orthogonal alternation: every arbitrarily small FIXED nonzero angle admits
+the escape. Constants may depend on theta and diverge as theta tends to0.
+No assertion for theta depending on n, no optimal rank or penalty is made.
+
+2. Strong normal coordinates are analytical, not observed rows.
+Choose unit strong normals s0 perpendicular v0 and s1 perpendicular v1.
+For each spatial vector component let w0=s0 dot z, w1=s1 dot z. Their Gram
+sum s0s0^T+s1s1^T has eigenvalues1+|s0 dot s1| and1-|s0 dot s1|.
+As |s0 dot s1|=|cos(theta)|,
+ ||w0||^2+||w1||^2>=kappa||z||^2,                  (246.2)
+including sums over sites/components. These are proof coordinates only.
+The actual observations below are original z_(k,alpha) means and singletons,
+with neither internal mixing nor changed canonical weights.
+The strong part of Q includes H times forward differences of w0 from even
+sources, and H times forward differences of w1 from odd sources. Weak terms
+remain nonnegative and are not set to zero. Every local spectrum is a,H and
+every projector obeys P_alpha,alpha<=1=Lambda q/g, independent of theta.
+
+3. Same actual cycles and a finite plane mesh.
+For scalar w_l, select its strong-source +e1 and +eD edges. Exactly as245,
+for that source parity the selected components are disjoint2n-cycles
+ u_t=u0+t(eD-e1), b_t=u_t+eD, t in Z/nZ,
+with edges u_t--b_t and b_t--u_(t+1), using actual +eD/+e1 labels.
+This statement is independent of which constant scalar functional defines w_l.
+Parity is well-defined across wraps because n is even; n=2 gives actual4-cycles.
+Each plane x_D=r meets every cycle in exactly two adjacent vertices, the
+source-parity vertex at that coordinate and its preceding other-parity neighbor.
+
+Write m=m_theta. If n<m, use all-channel singletons, K=c; full count2Dn^D
+is <=2Dm n^(D-1), hence246.1, so no large-size estimate is invoked there.
+If n>=m choose m distinct plane coordinates r_j=floor(jn/m),0<=j<m.
+They start at0 and their cyclic gaps ell_j are positive integers at most
+ L=ceil(n/m)<=2n/m.
+On every cycle the two anchors from one plane are adjacent. Between the
+anchor pair at r_j and the next pair at r_(j+1) there are exactly2ell_j-2
+free vertices (possibly0) with two zero endpoints. For fields zero on all
+the selected planes, the finite Dirichlet eigenvalue on each nonempty segment
+is >=4/(2ell_j-1)^2>=4/(2L-1)^2. If ell_j=1, there are no free vertices and
+the corresponding zero-norm inequality is automatic. Wraparound is included.
+All vertices/edges are accounted for; zero-zero edges add zero.
+Consequently, for the ORIGINAL full field z vanishing on the plane union,
+ Q_A(z)>= [4H/(2L-1)^2](||w0||^2+||w1||^2)
+        >=[4H kappa/(2L-1)^2]||z||^2
+        >[H kappa/L^2]||z||^2
+        >=[c kappa m^2/4]||z||^2>=4c||z||^2.        (246.3)
+If every vertex is an anchor (e.g.n=m), the inequality >=4c is vacuous only
+on the zero field and still valid. Use the non-strict Q>=4c conclusion; no
+strict inequality is asserted on the zero field. Formula246.3's displayed
+strict intermediate step is intended for a nonzero plane-zero field only.
+The normal-coordinate singular value and EACH spatial mesh factor have been
+paid explicitly. No global lower is inferred from merely distinct normals.
+
+4. Canonical partition, counts and actual finite restoring coefficient.
+For n>=m, in EACH original channel take every point on the m planes as a
+singleton, and for each nonempty intervening coordinate interval use the ONE
+full cross-section rectangle {0,...,n-1}^(D-1) x {r_j+1,...,r_(j+1)-1}.
+For the last interval set r_m=n. These are original nonwrapping integer boxes;
+there is no pre-zero interval since r0=0. Empty intervals are omitted.
+Disjointness and coverage are exact. The partition has at most m n^(D-1)+m
+cells and is shared across all components k, with actual canonical rows
+ V^(-1/2)|S|^(-1/2)sum_S z_(k,alpha).
+Thus the full count is <=2Dm(n^(D-1)+1). No tensor-grid propagation of cuts
+through the complementary slabs is required by the canonical partition class.
+
+Let R be the original full block projection. Its kernel vanishes pointwise on
+every selected plane, so246.3 gives <u,(L_A-cI)u>>=3c||u||^2 on ker R.
+Again0<=L_A<=4DH I and ||L_A-cI||<=M=4DH+c.
+Decompose z=u+v with u=(I-R)z,v=Rz. Young on the cross term yields
+ <z,(L_A-cI)z> >=(3c/2)||u||^2-[M+2M^2/(3c)]||v||^2.
+Hence FINITE K_n=M+2M^2/(3c) proves
+ Q_A(z)/V+K_n||Cz||^2>=c||z||^2/V                 (246.4)
+on ALL fields, since ||Cz||^2=||Rz||^2/V. This includes all constants and does
+not require R to preserve the actual coexact space. For n<m, the already chosen
+singleton map uses K=c instead. In both cases actual restricted rank is at
+most the displayed full count. At fixed theta,D the count divided by V tends
+to0 along even n. No bounded-in-n penalty, efficient method or row rescaling
+is hidden in this finite completion; the displayed K may grow like c n^4.
+
+5. Endpoints, refutation scope and preserved evidence.
+At theta=pi/2, kappa=1,m=4, the construction is a nonoptimal variant of245;
+that exactorthogonal source's one-plane proof and complete audit are retained.
+As theta decreases to0, m diverges. At theta=0 the two projectors are identical,
+the analytical normal map is singular and this argument does NOT apply. The
+constant-P rankOmega(V) theorem244 is not contradicted. In particular there
+is no uniform small-angle bound independent of theta and no n-dependent-angle
+claim. The result refutes the proposed PER-PROFILE rank lower in the spatially
+variable class, not its worst-case lower, since constant profiles remain there.
+
+Eigenvalues/multiplicities/caps are unchanged:
+ F=D^2V[1+min(1,alpha_D n^(-D))],
+ alpha_D=(3/4)^D(D/2)(D/(D-2))^(D-1),h=2D,
+so h+F=Theta_D(V). All coefficients stay positive, no local spectrum changes,
+and fixed observed basis/upper coherence/channel-separated canonical weights/
+actual finite flat coexact domain remain. Only spatial constancy is relaxed.
+The proof coordinates do not become supplied observations or an assumed frame.
+Every classical path/Gram/completion step is displayed; historical originality
+is unestablished. The limited primary245 lookup already identifies high-contrast
+strong-bond geometry as prior literature; no exhaustive implication search for
+this specific rank statement has been performed. No new PDF, numerical grade,
+independent/human review, implemented solver, formal proof, physical mass gap
+or continuum conclusion follows. Preserve all earlier failures and source audits;
+group246 with235--245, not a separate small paper. Frozen232B contains none of
+234--246 and its4.10 score does not transfer. PR29 stays20/41,TermSource=0.
