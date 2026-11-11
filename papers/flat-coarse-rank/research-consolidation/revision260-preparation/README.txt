@@ -9,3 +9,8 @@ historical255B assessment are preserved without transferring its4/10 score.
 The next gate is a separate exact-commit manuscript audit, followed by owned
 Colab production with two fresh same-SHA clones and all-page visual review.
 No controller credential, private job or new permission is in this package.
+
+Scope repair260A-M1: temporal theorem is in a CYCLIC extension, restricting
+to nonwrapping canonical product slices. Rapid24n wrapped example remains
+cyclic-only; separate means after chart refinement need not vanish.
+Original f507 source rejection/full report preserved; delta review pending.

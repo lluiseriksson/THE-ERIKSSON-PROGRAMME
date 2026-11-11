@@ -8,7 +8,7 @@
     "5": "254 negative mean-only companion",
     "6": "251A ambient canonical lower only; cited247 upper",
     "7": "251 uncut-coordinate coexact falsifier",
-    "8": "259A full temporal theorem plus257A Section3 radial lemma;258A conventions; N1 designated shared-slot clarification",
+    "8": "259A full cyclic-extension temporal theorem;257A Section3 cutoff;258A conventions. Nonwrapping canonical product partitions inherit the necessary bound. Rapid wrapped24n example is cyclic-extension only, not a canonical chart-refinement failure.",
     "9": "general canonical Q251 remains open",
     "10": "full involved model context and historical255B first exact-PDF assessment only"
   },
@@ -26,5 +26,12 @@
   "golden260_result_included": false,
   "formal_verification": false,
   "priority": "unestablished",
-  "active_question": "Q251 only; actual canonical coexact D3 O(n) versus logarithm OPEN"
+  "active_question": "Q251 only; actual canonical coexact D3 O(n) versus logarithm OPEN",
+  "scope_repair": {
+    "original_rejected_source": "f507f918b999eb8fff81e930d40fe4ff8010f1e9",
+    "objection": "260A-M1",
+    "original_report_sha256_raw": "733c45a5de717069d2dbf764af84ddc255e56fc8fe3721af73499264f3ff9bfd",
+    "status": "Explicit class-boundary repair; delta source review pending; original report immutable",
+    "new_grade": null
+  }
 }

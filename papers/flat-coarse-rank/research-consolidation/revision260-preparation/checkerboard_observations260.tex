@@ -39,10 +39,13 @@ original-channel rectangle means have a necessary ambient count of order
 $n^{D-2}$. This last argument does not apply to the coexact domain, because
 rectangular averaging need not preserve it. A further explicit coexact witness
 excludes partitions whose every cell in either channel leaves a coordinate
-uncut. For a three-dimensional product-slice class, an explicit tagged-window
-cutoff proves a necessary inequality involving corner matching over every
-number of slices. Fixed or bounded-motion cuts require a logarithmic loss
-in full-row count, and a rapid helical grid fails through a short resonance.
+uncut. For an enlarged three-dimensional cyclic product-slice class, an explicit
+tagged-window cutoff proves a necessary inequality involving corner
+matching over every number of slices. Its restriction to nonwrapping
+canonical product slices gives a logarithmic count loss for fixed or
+bounded-motion cuts. A rapid helical grid in the cyclic extension fails
+through a short resonance; its wrapped complements are outside the
+nonwrapping canonical class.
 The general canonical coexact three-dimensional question, linear count
 versus a possible logarithmic loss, remains open. These are finite analytical results;
 we establish neither historical priority, formal verification nor a physical
@@ -524,14 +527,19 @@ one-pair space vanishes; the proposition deliberately excludes that case.
 \section{Temporal matching of product slice corners}\label{sec:temporal}
 We now restrict to $D=3$, $4\mid n$, $n\geq32$, and the orthogonal
 internal basis. Thus $a=c/48$ and $H=cn^2$. This section concerns the actual
-coexact domain $U=U_0^2$ and the original normalized means. It supplies a
-count obstruction for a specified product-slice class, rather than an
-unrestricted lower bound for every canonical partition.
+coexact domain $U=U_0^2$ and the original mean normalization, but permits
+an enlarged observation class: cyclic intervals may wrap in the fixed
+chart. We call this the cyclic extension. Section 1's canonical class
+uses nonwrapping chart intervals and is not redefined here. Every
+nonwrapping product-slice partition is a member of this extension, so
+restricting the theorem to those partitions gives a canonical necessary
+bound. The rapid example below belongs only to the cyclic extension.
+This supplies no unrestricted lower bound for every canonical partition.
 
 At each longitudinal slice $x_1=i$, let $\{J_{i,j}\}_j$ and
 $\{K_{i,k}\}_k$ be nonempty cyclic interval partitions of $\Z_n$ whose
 product of factor counts is the same integer $q$ for every $i$. The cells
-of channel1 are $\{i\}\times J_{i,j}\times K_{i,k}$. Their full spatial-row
+of channel 1 are $\{i\}\times J_{i,j}\times K_{i,k}$. Their full spatial-row
 count is $3nq$. The second channel can use any permitted partition. Write
 $E_i$ for the product of the terminal endpoints of the two interval
 partitions, so that $E_i$ has exactly $q$ distinct transverse points.
@@ -607,7 +615,7 @@ is needed. Define
 \[
  \eta(i,y)=\min_{(j,p)\in F_i} f_p(y).
 \]
-It lies in $[0,1]$ and vanishes within radius2 of $E_i$. Squared maximum
+It lies in $[0,1]$ and vanishes within radius 2 of $E_i$. Squared maximum
 is bounded by the sum of squares, so~\eqref{eq:radial} gives
 \begin{equation}\label{eq:etadeficit}
  \norm{1-\eta}_X^2\leq 4KqV/L^2.
@@ -643,8 +651,8 @@ Use the period-four wave
 $\Psi_0(x)=\sin(\pi(x_1+x_2+x_3)/2)$, and set
 $\Psi=\eta\Psi_0$. At every corner, $\eta$ and its backward transverse
 neighbors vanish. Thus both required differences of $\Psi$ vanish there.
-Every channel1 mean of $P\Psi$ is exactly zero, with its original positive
-normalization. Take channel2 identically zero. This constructs an actual
+Every channel 1 mean of $P\Psi$ is exactly zero, with its original positive
+normalization. Take channel 2 identically zero. This constructs an actual
 real $z=(P\Psi,0)\in U$ annihilating all observed rows.
 
 \subsection{Nonzero norm and original energy}
@@ -652,22 +660,23 @@ Direct period-four differences give $z_0=P\Psi_0=(0,w,-w)$ with successive
 $w$ values $(2,-2,-2,2)$. Thus $|z_0(x)|^2=8$,
 $\norm{z_0}^2=8V$, and at every original odd source all $\partial_hz_0$
 vanish, including across seams because $4\mid n$.
-For a finite convolution $T=\sum_r a_r T^r$, subtraction gives
+For a finite convolution $\mathcal T=\sum_r a_r\tau^r$, where $\tau^r$
+is translation by $r$, subtraction gives
 \[
- T(\eta\Psi_0)-\eta T\Psi_0
- =\sum_r a_r(T^r\eta-\eta)T^r\Psi_0.
+ \mathcal T(\eta\Psi_0)-\eta\mathcal T\Psi_0
+ =\sum_r a_r(\tau^r\eta-\eta)\tau^r\Psi_0.
 \]
-Each nonzero component of $P$ has coefficient absolute sum at most8,
-longitudinal shift0 and transverse radius at most3. Since $|\Psi_0|\leq1$,
+Each nonzero component of $P$ has coefficient absolute sum at most 8,
+longitudinal shift 0 and transverse radius at most 3. Since $|\Psi_0|\leq1$,
 the no-longitudinal translation bound yields
 \begin{equation}\label{eq:pnormerror}
  \norm{P(\eta\Psi_0)-\eta z_0}^2\leq73728nKq/L.
 \end{equation}
 Each component of $\partial_2P$ or $\partial_3P$ has coefficient absolute
-sum at most16 and transverse radius at most4. Its squared translation
+sum at most 16 and transverse radius at most 4. Its squared translation
 factor is at most $16K$. Each component of $\partial_1P$ has coefficient
-absolute sum at most16, longitudinal shifts0 or1 and transverse radius
-at most3. Its factors are bounded by $9K$ and $9K+6S+S^2$ respectively.
+absolute sum at most 16, longitudinal shifts 0 or 1 and transverse radius
+at most 3. Its factors are bounded by $9K$ and $9K+6S+S^2$ respectively.
 Consequently each derivative commutator has norm at most
 $16\sqrt{64nqA_K/L}$. Restricting to original odd sources where
 $\eta\partial_hz_0=0$, and summing the six squared component bounds,
@@ -700,11 +709,13 @@ on the identically zero observation vector.
 For fixed cuts, $S_1=0$ and $A_1=16$. With bounded one-step corner
 motion, $A_1$ stays bounded as well. In either class,
 \eqref{eq:windownecessary} forces $q$ to grow at least proportionally to
-$L$, and hence requires order $n\log n$ full channel1 rows. This conclusion
-is restricted to these classes; arbitrary original-channel rectangle
-partitions and rapidly moving product partitions remain outside it.
+$L$, and hence requires order $n\log n$ full channel 1 rows. This conclusion
+is restricted to these product classes, including their nonwrapping
+canonical subclasses. Arbitrary canonical rectangle partitions and
+rapidly moving product partitions remain outside this count conclusion.
 
-Large adjacent motion does not itself guarantee recovery. For
+In the cyclic extension, large adjacent motion does not itself guarantee
+recovery. For
 $n=2^m$, $m\geq5$, let $\kappa=n/4+2$ and $t_i=\kappa i\bmod n$.
 Use the singleton $\{t_i\}$ and its cyclic complement for the first
 transverse factor, and $\{0\}$ and its complement for the second.
@@ -719,8 +730,13 @@ The adjacent bottleneck is exactly $\kappa$: the next corner with first
 transverse coordinate $t_i+\kappa$ is at least that far from each old
 corner, since $\kappa<n/2-1$; translation realizes that maximum distance.
 Also $\gcd(\kappa,n)=2$, so the orbit visits $n/2$ positions.
-This is a genuinely rapidly moving family with a short resonance. The
-theorem does not assert that every rapidly moving $O(n)$ family fails.
+This is a rapidly moving cyclic family with a short resonance. For an
+interior singleton, its cyclic complement wraps and is not one of the
+nonwrapping chart intervals in Section 1. Splitting a wrapped cell into
+chart rectangles introduces separate means; invisibility of their sum
+does not imply invisibility of each refined mean. Thus neither this
+$24n$ count nor its failure is transferred to that chart refinement.
+The theorem does not assert that every rapidly moving $O(n)$ family fails.
 
 
 \section{Interpretation and remaining question}
@@ -728,8 +744,8 @@ The sharp orthogonal ranks count the actual strong kernel and its explicitly
 derived coexact image. Positive-angle enrichment pays a deteriorating
 singular-value comparison by retaining finitely many transverse modes per
 component. The temporal matching theorem supplies an actual invisible coexact field
-for a specified product-slice class, including a rapidly moving resonant
-example. Its restricted quantifiers do not settle the general canonical
+for the cyclic product-slice extension, including a rapidly moving
+resonant example outside the nonwrapping canonical class. Its restricted quantifiers do not settle the general canonical
 count optimum. The small-angle counterexample explains why that enrichment cannot
 simply be replaced by an assertion that the old means still suffice.
 The canonical ambient lower instead uses a real oscillatory carrier and an
@@ -748,10 +764,10 @@ remain open; the programme's PR29 accounting remains $20/41$, with
 \texttt{TermSource=0}.
 
 \section{Model assessments and review context}
-The analytical source texts251--254 and256--259 received complete involved
+The analytical source texts 251--254 and 256--259 received complete involved
 AI source readings. Their exact source bytes, full reports, objections and
 context must remain in the reproducibility package. The temporal proof
-uses the designated shared-slot wording specified in the retained259
+uses the designated shared-slot wording specified in the retained 259
 clarification. These readings are not human peer reviews, blind readings,
 independent provider samples or Lean verification. The exposed source
 reviewer identity was Codex, based on the OpenAI GPT-6 family; exact served
@@ -760,7 +776,7 @@ account, infrastructure and programme context and had prior involvement.
 
 At this source stage the proposed revision has no exact-PDF numerical
 assessment, successful production claim or visual-review claim. No grade is
-assigned or inherited. The existing255B version1 PDF has SHA256
+assigned or inherited. The existing 255B version 1 PDF has SHA256
 \begin{center}
 \small\texttt{d45a17a4142204628189441b9133aa1027b0d7577a56dc5de6c576d2af6102e7}
 \end{center}
@@ -780,14 +796,14 @@ threshold is not a demonstrated practical regime. Neither a deposit nor
 Working-paper status constitutes editorial acceptance or human peer review.
 
 \section*{Reproducibility and provenance}
-Scientific inputs are frozen programme sources251--254 and256--259.
+Scientific inputs are frozen programme sources 251--254 and 256--259.
 The source archive must retain their raw bytes, complete analytical reports
 and context, this manuscript's mapping, the frozen Git commit and all actual
-production logs. In particular the temporal theorem is derived in source259
+production logs. In particular the temporal theorem is derived in source 259
 at commit\texttt{2f370a7da850b8066a9afe95c523e49bd1ef725e}; its full audit
 and clarification were integrated unchanged through merge
 \texttt{8485cfb2b8b11bb5acd240d8a0b133457bbfe2a1}.
-The separate golden-orbit working derivation260 is excluded from this
+The separate golden-orbit working derivation 260 is excluded from this
 manuscript: no unreviewed frontier result is promoted here.
 
 Linux compilation, extraction and page rendering are production checks;
@@ -816,7 +832,7 @@ ARR-2026-5XANPRA7E891Q9FZ, version 1 (2026).
 \bibitem{eriksson255}
 L. Eriksson, Canonical and unrestricted observations in a finite checkerboard
 gradient model, AIRR Working paper, ARR-2026-597T88D7WZ98HR0Z,
-version1 (2026).
+version 1 (2026).
 \url{https://airr.science/papers/ARR-2026-597T88D7WZ98HR0Z/versions/v1/}.
 \end{thebibliography}
 \end{document}
