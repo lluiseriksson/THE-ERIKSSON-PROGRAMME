@@ -1,0 +1,36 @@
+257: bounded primary-source reading, 11 November 2026.
+Separate from frozen proof257A and its separate source audit. No grade.
+
+Cosco, Nakajima, Schweiger, Asymptotics of the p-capacity in the critical
+regime, arXiv:2112.03661v2 (9 May 2023), actual primary PDF:
+https://arxiv.org/pdf/2112.03661 and https://arxiv.org/abs/2112.03661
+Read PDF abstract, Section1.1 definition, Theorems1.1 and1.2, Remark1.3,
+and Section1.3 paragraph on p=2 (pages1-2). The authors describe reciprocal
+logarithmic capacity for p=d=2 as established, with graph energies and
+point-to-boundary conditions. This is direct evidence that logarithmic
+cutoff/capacity scaling itself is classical. These sections do not supply
+our actual curl-adjoint field, checkerboard source weights, canonical cell
+annihilation, or restricted row-count implication. This comparison is not
+a proof of originality or an exhaustive search for equivalent theorems.
+Our finite estimates are derived in257A; its correctness does not depend
+on importing the sharp constant or asymptotic theorem from this source.
+
+Mandel, Sousedik, Dohrmann, Multispace and Multilevel BDDC,
+arXiv:0712.3977v2 (21 January 2008):
+https://arxiv.org/abs/0712.3977 and https://arxiv.org/pdf/0712.3977
+Read metadata, PDF abstract and introduction only (pages1-2). Their work
+derives polylogarithmic preconditioner bounds for multilevel scalar elliptic
+finite-element settings. This establishes relevant prior coarse-space
+context, without demonstrating equivalence to our observation lower bound.
+No full BDDC theorem or proof comparison has been completed. The PDF's
+2018 title-page date is distinguished from the explicit arXiv version date.
+
+Searches: two dimensional lattice logarithmic cutoff point capacity;
+BDDC corner constraints logarithmic estimates. Search-engine crawl dates
+were not used as publication dates. No tertiary source is relied on.
+No external paper PDF is redistributed in our proof/audit package.
+
+Disposition: priority remains UNESTABLISHED, practical threshold enormous,
+and relevance restricted to fixed transverse cutsets across all x1 slices.
+This is a source result to group with the existing canonical/coexact work,
+not a new short paper or a request to improve255B's assessment.
