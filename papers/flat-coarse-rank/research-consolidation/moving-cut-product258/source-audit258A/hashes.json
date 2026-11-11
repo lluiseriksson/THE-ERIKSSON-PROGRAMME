@@ -1,0 +1,84 @@
+{
+  "representation": "Exact raw bytes, no normalization; manifest does not hash itself",
+  "verdict": "ACCEPT_ANALYTICAL_OBSTRUCTION_FOR_BOUNDED_MATCHING_PRODUCT_SLICES_ONLY",
+  "source_commit": "d7840f33a5e20120565f3d5803dfabb32802de95",
+  "source_sha256_raw": "0c99070cdea4a3c7edf7168a8dfd2eb6eca96b08ed21e5002c003424ee7d66dc",
+  "source_git_blob": "e48129257476ed9cae22b45aa5800b2cd1ef354f",
+  "subject_count": 4,
+  "subjects": [
+    {
+      "path": "subjects/bounded-matching-obstruction258A.txt",
+      "bytes": 12392,
+      "sha256_raw": "0c99070cdea4a3c7edf7168a8dfd2eb6eca96b08ed21e5002c003424ee7d66dc",
+      "source": "d7840f33a5e20120565f3d5803dfabb32802de95:papers/flat-coarse-rank/research-consolidation/moving-cut-product258/bounded-matching-obstruction258A.txt",
+      "read_scope": "Entire proof read and analytically rederived",
+      "representation": "Exact raw bytes, no normalization"
+    },
+    {
+      "path": "subjects/capacity-class-obstruction257A.txt",
+      "bytes": 11285,
+      "sha256_raw": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc",
+      "source": "fed201fd10f952a04e638c324dc0e1359711911a:papers/flat-coarse-rank/research-consolidation/fixed-cut-product257/capacity-class-obstruction257A.txt",
+      "read_scope": "Section3 one-corner cutoff lemma directly relied upon and rederived; full raw source retained as context; no prior audit verdict imported",
+      "representation": "Exact raw bytes, no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256_raw": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "source": "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "read_scope": "Entire charter directly read",
+      "representation": "Exact raw bytes, no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256_raw": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "source": "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\CLAUDE.md",
+      "read_scope": "First75 lines directly read; full raw file retained as governance context",
+      "representation": "Exact raw bytes, no normalization"
+    }
+  ],
+  "files": [
+    {
+      "path": "full-report.txt",
+      "bytes": 11860,
+      "sha256_raw": "715a4273d426b64c5a9e45ca2b8e0be3e79cea6461f00170b23d47faa8269eee"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 1881,
+      "sha256_raw": "f9e6d8985ad5194b4e6685e70d7452d002fe2ebc6b10806c2ca414f23ba35160"
+    },
+    {
+      "path": "review-context.json",
+      "bytes": 3481,
+      "sha256_raw": "8f50c0022be7c923cd322f704d907f74e890ed5f6ee49e0a7ef691a5f50fb42e"
+    },
+    {
+      "path": "seal_source_audit258A.py",
+      "bytes": 18490,
+      "sha256_raw": "ed55d12de8c8548844c237ae9a5dccc3dd52c88e4a2ccfeb38cf7be60305ba0f"
+    },
+    {
+      "path": "subjects/bounded-matching-obstruction258A.txt",
+      "bytes": 12392,
+      "sha256_raw": "0c99070cdea4a3c7edf7168a8dfd2eb6eca96b08ed21e5002c003424ee7d66dc"
+    },
+    {
+      "path": "subjects/capacity-class-obstruction257A.txt",
+      "bytes": 11285,
+      "sha256_raw": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256_raw": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256_raw": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    }
+  ]
+}
