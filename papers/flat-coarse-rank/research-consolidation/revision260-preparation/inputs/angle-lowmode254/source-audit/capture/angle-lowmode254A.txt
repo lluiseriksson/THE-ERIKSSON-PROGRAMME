@@ -1,0 +1,185 @@
+254A -- ANALYTICAL CANDIDATE: unrestricted linear observations at every fixed
+positive angle, with an explicit size-uniform penalty and order-n count.
+11 November2026. Parent fabrication; separate exact-source audit required.
+Grouped extension of251--253, not a standalone paper or a new active question.
+Not in the published exact250B PDF; no inherited grade, formal proof or priority.
+
+STATEMENT AND PRECISE CHANGE OF HYPOTHESIS
+Let D>=3, even n>=2, c>0, X=(Z/nZ)^D,V=n^D. Original fields have D spatial
+components and two internal channels, counting norm. At source parity l use
+ B(x)=a v_l v_l^T+H s_l s_l^T,
+where v_l,s_l form an orthonormal pair, a=c/(16D),H=cn^2. The two unoriented
+weak lines are distinct, with principal angle theta in(0,pi/2]. All original
+forward labels and their source weights remain fixed. Let
+ Q(z)=sum_(x,i,r) (partial_i z_r)^T B(x)partial_i z_r,
+ U=im(d1*)^2 for the actual original forward curl and counting adjoint.
+
+Put delta=1-|s0 dot s1|=1-cos(theta)>0, p=D-1 and
+ R=ceil(sqrt(D/(4delta))), L=min(n,2R+1).
+There is an explicit unrestricted REAL linear map C with exactly
+ Nout=2Dn L^(D-1)
+displayed rows and normalized quadratic coefficient K=2c/delta, such that
+ Q(z)/V+K||Cz||^2>=2c||z||^2/V
+on ALL original ambient fields. Hence target c also holds there and on U.
+At fixed D and fixed positive theta, Nout=O_(D,theta)(n) and K is independent
+of n. The rows may mix the two original internal channels and are nonlocal
+Fourier rows on diagonal strong components. They are NOT canonical original-
+channel axis-aligned rectangle means. No claim of projection invariance on U
+or equality of restricted rank and Nout is used.
+
+In particular, the minimal unrestricted restoring ambient rank lies between
+ Dn and 2Dn L^(D-1).
+On actual U it lies between (D-1)(n-2) and 2Dn L^(D-1).
+Thus both minima have order n as n->infinity at fixed D,theta. Exact minima
+from253 at the orthogonal angle are not extended to arbitrary theta here.
+The hypothesis theta=pi/2 is removed from the ORDER-n unrestricted upper,
+by proving the needed high-mode control, not by assuming a comparison gap.
+The original source family, finite-dimensional domain and fixed positive
+angle remain hypotheses; no physical interacting or continuum one is removed.
+
+1. A PROOF COORDINATE, NOT A CHANGE OF OBSERVATION CLASS OR ORIGINAL DOMAIN
+Let S be the real2by2 matrix with rows s0^T and s1^T. Its Gram matrix has
+diagonal1 and off-diagonal s0 dot s1. Its two eigenvalues are
+1+|s0 dot s1| and delta=1-|s0 dot s1|. Therefore S is invertible and
+ ||Sz||^2>=delta||z||^2
+for the full original field norm, summing all sites and spatial components.
+Set Y_(l,r)(x)=s_l dot z_r(x). This defines actual linear functionals on the
+original field. The scalar Y_l is strongly weighted only on starts of parityl.
+For every original difference the original orthonormal pair gives
+ (partial_i z_r)^T B(x)partial_i z_r
+ =a|v_l dot partial_i z_r|^2+H|partial_i Y_(l,r)|^2.
+Dropping nonnegative weak terms yields Q>=H E_strong(Y), where E_strong
+sums exactly the parityl starts in channel coordinateY_l. There is no loss
+of weak/strong labels and no comparison based on an assumed frame certificate.
+
+2. EXACT STRONG COMPONENTS AND THEIR TWO-LAYER SYMBOL
+For each l and each residue s of parityl let
+ G_(l,s)={x:sum_i x_i belongs to{s,s+1} mod n}.
+These n/2 sets partition X for each l. For y in (Z/nZ)^p put
+ x_s(y)=(y_1,...,y_p,s-sum_i y_i) modn,
+ u(y)=Y_(l,r)(x_s(y)), t(y)=Y_(l,r)(x_s(y)+e_D).
+These are bijections onto the actual two sum layers. Every strong forward
+label stays in this component, including the wrap pair{n-1,0}. Its scalar
+energy, with each original label retained including period2, is exactly
+ E_s=sum_y|u(y)-t(y)|^2+sum_(y,i=1..p)|u(y)-t(y+e_i)|^2.
+Rungs connect the two layers and rung/cross-edge paths generate all source
+translations, so these are connected actual components.
+
+For a counting-orthonormal Fourier character k of (Z/nZ)^p, write
+ T_k=1+sum_(i=1..p)exp(2pi i k_i/n).
+The two-layer Hermitian symbol has diagonalD and off-diagonal -T_k and its
+conjugate, with eigenvalues D-|T_k| and D+|T_k|. Expanding squared moduli gives
+ D^2-|T_k|^2=sum_(0<=i<j<=p)|exp(i theta_i)-exp(i theta_j)|^2,
+theta0=0,theta_i=2pi k_i/n. Hence
+ D-|T_k| >= (1/(2D))sum_(i=1..p)|1-exp(2pi i k_i/n)|^2.
+Both this lower bound and the actual symbol are derived from original labels.
+
+3. KEEPING A FIXED LOW-FREQUENCY CUBE, NOT ONLY THE CONSTANT MODE
+Let |k_i|_n be distance of the residue to0 in Z_n and let
+ A_R={k: |k_i|_n<=R for every i=1..p}.
+It has exactly L^p elements and is closed under conjugation. On each actual
+two-layer component, let P keep BOTH layer Fourier coefficients for k in A_R
+and discard the others. This is a real counting-orthogonal projection on Y:
+conjugate frequencies pair; any self-conjugate/Nyquist coefficients are real.
+Its real dimension per component is 2L^p, including exactly one contribution
+per real Nyquist coefficient, not two. Summing its orthogonal copies over
+l,s,r gives an actual real orthogonal P on the full Y field space.
+
+If A_R is the whole frequency torus, (I-P)Y=0 and the following tail inequality
+is automatic. Otherwise some coordinate of every excluded k has
+ R+1<=|k_i|_n<=n/2.
+Since sin(pi q/n)>=2q/n for0<=q<=n/2,
+ |1-exp(2pi i k_i/n)|^2>=16(R+1)^2/n^2.
+Thus the smaller eigenvalue outside A_R is at least
+ gamma=8(R+1)^2/(Dn^2).
+The larger eigenvalue is >=D and also >=gamma: in the nonempty tail case
+R+1<=n/2, so gamma<=2/D<=D. Finite Parseval, summed over all actual components,
+now gives the DERIVED inequality
+ E_strong(Y)>=gamma||(I-P)Y||^2.
+We included both eigenbranches inside A_R to avoid any assumed basis choice,
+branch projection regularity, missing layer mass or hidden Nyquist exception.
+
+4. EXPLICIT NORMALIZED ORIGINAL-FIELD OBSERVATIONS AND PENALTY
+Choose any explicitly enumerated real orthonormal character basis of A_R on
+each source torus (constant, real sine/cosine pairs and real Nyquist modes).
+Take separate copies on the two layers of every(l,s,r), extend each basis
+function by zero off its original layer, and call them b_j. They form an
+orthonormal real basis of rangeP in Y coordinates. Define on ORIGINAL fields
+ (Cz)_j=V^(-1/2)<b_j,Y_(l,r)>.
+The inner product is counting and Y_(l,r)=s_l dot z_r, so this specifies actual
+linear rows in the original channel coordinates; it does not rotate an already
+prescribed canonical map. There are2L^p rows per component, n/2 components
+per l, two l, and D spatial components: Nout=2DnL^p. Norms satisfy exactly
+ ||Cz||^2=||P(Sz)||^2/V.
+
+Our chosen R gives (R+1)^2>=D/(4delta). Multiplying the proved tail gap by
+H=cn^2 therefore yields H gamma>=2c/delta. In the full-cube case the same
+conclusion on the zero tail holds without invoking a nonexistent outside mode.
+Consequently
+ Q(z)+VK||Cz||^2
+ >=(2c/delta)||(I-P)Sz||^2+(2c/delta)||PSz||^2
+ =(2c/delta)||Sz||^2 >=2c||z||^2.
+Division by V proves the statement. P acts orthogonally on Y, not necessarily
+on the original z norm. We only use its orthogonality in Y and the proved
+singular-value bound to return to the original norm. No assertion that P or
+S^-1 P S preserves U is needed: the inequality holds on the whole ambient
+space before legitimate restriction to the actual U.
+
+5. LOWER RANKS INSIDE THE ACTUAL ORIGINAL SPACES
+For completeness we derive the lower subspaces, rather than supplying their
+dimension. Let m=n/2. For each l let F_l consist of real f:Z_n->R constant on
+the m strong pairs{l+2j,l+2j+1}, with zero sum. Its dimension is m-1.
+For each spatial r<D choose independent f_(l,r) in F_l and set
+f_(l,D)=-sum_(r<D)f_(l,r). Define
+ z_r(x)=S^-1(f_(0,r)(sumx),f_(1,r)(sumx))^T.
+The actual linear map is injective because S is invertible and sumx is onto.
+Its real dimension is2(D-1)(m-1)=(D-1)(n-2). The fields have zero mean in
+each original component and pointwise sum_r z_r=0. At every strong startl
+the corresponding f_l is constant across that actual forward step, so all
+strong normal differences vanish and Q(z)=aE(z)<=4Da||z||^2=c||z||^2/4.
+
+These fields belong to actual U, not merely to a divergence-free replacement:
+their nonzero original Fourier frequencies are (k,...,k), with common forward
+multiplier xi_i=exp(2pi ik/n)-1. For any spatial coefficient u, sum_i u_i=0;
+hence sum_i conjugate(xi_i)u_i=0. Put
+ psi_ij=(xi_i u_j-xi_j u_i)/(sum_i|xi_i|^2),i<j.
+Expansion of the actual unordered-curl adjoint gives d1*psi=u. There is no
+zero frequency; conjugate and Nyquist symmetry make the inverse two-form real.
+This explicitly proves actual coexact membership. A restoring linear map
+with finite Phi(Cz),Phi(0)=0 must be injective on this entire low-energy space,
+otherwise its nonzero kernel witness contradicts the target c inequality.
+Thus its actual restricted rank is at least(D-1)(n-2), including zero at n2.
+
+For the ambient lower, allow arbitrary pair values in every f_(l,r), with no
+mean or spatial-sum constraint and all D spatial components independent.
+S^-1 again injects these2Dm=Dn parameters. Strong differences still vanish
+and Q=aE<=c||z||^2/4 on the whole subspace, including constants. The same
+kernel argument gives ambient restoring rank>=Dn. These are actual ranks;
+the constructed upper's displayed count only bounds rank from above.
+
+6. WHAT IS REMOVED, WHAT IS NOT, AND FALSIFIERS
+At an arbitrarily small fixed positive angle, keeping only strong component
+means need not give the original norm margin. We do NOT assert that it does.
+We keep a finite explicitly bounded collection of transverse low modes per
+component. The new proof pays the comparison loss delta through the cutoff
+R and coefficient K; at fixed theta both are n-independent. As theta->0,
+delta->0, the count constant and K diverge. No uniform-angle conditioning,
+all-angle exact minimum, canonical rectangle construction or practical solver
+efficiency is claimed. At theta=0 S loses invertibility; that case is excluded
+and is not obtained by an unjustified limiting argument.
+
+This is a classical finite Fourier/spectral-cutoff construction specialized to
+the source-weighted checkerboard. Priority and independent originality are
+unestablished; source correctness, originality and relevance are distinct.
+Need compare primary sources and group with251--253 before any manuscript
+revision. Exact250B PDF/first4.50assessment/threeOPENobjections remain unchanged.
+No Lean/Lake/numerical result or physical Yang-Mills/continuum progress follows.
+PR29 stays20/41;TermSource=0. Active question251 remains canonical coexact D3
+O(n) versus nlogn. Our nonrectangular, channel-mixed observations resolve neither.
+
+Falsifiers: S Gram eigenvalue or original-norm factor wrong; a strong label
+connects different alleged components; symbol misses a layer or period2 label;
+real low-cube dimension double counts Nyquist; tail bound or full-cube endpoint
+fails; coefficient/normalization loses V; count claimed to be actual coexact
+rank; P invariance presumed; source-specific unrestricted rows called rectangles.
+Next: exact-source audit, preserve any correction, then group with251--253.

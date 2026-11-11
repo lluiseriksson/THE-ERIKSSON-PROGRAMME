@@ -1,0 +1,62 @@
+{
+  "candidate_sha256_raw": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2",
+  "files": [
+    {
+      "path": "capture-manifest.json",
+      "bytes": 3182,
+      "sha256_raw": "eed554cb919f0b069994b21cffaf95668df0ab87602d3e71fcde4912509791d3"
+    },
+    {
+      "path": "capture/all-field-checkerboard-count251A.txt",
+      "bytes": 9529,
+      "sha256_raw": "23d171fa5f9d9be8eef9bd02b8a19d2958e9de02cc30757a22e4582a6fd871a8"
+    },
+    {
+      "path": "capture/audit251-fullreport.txt",
+      "bytes": 12123,
+      "sha256_raw": "40377d5867620d23295b7c4805199ed32c50a9f4ab121e7fbe1774ce0d94121c"
+    },
+    {
+      "path": "capture/coexact-layer-band252A.txt",
+      "bytes": 9562,
+      "sha256_raw": "d55daa2a3af56039a4e29ada2f7200acf7127d733d640df13c1941ad7c56a677"
+    },
+    {
+      "path": "capture/source247.txt",
+      "bytes": 10720,
+      "sha256_raw": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+    },
+    {
+      "path": "capture/source248.txt",
+      "bytes": 17708,
+      "sha256_raw": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+    },
+    {
+      "path": "capture/strong-component-observations253A.txt",
+      "bytes": 10606,
+      "sha256_raw": "3e1b8cf3797e0e1c37f8f4813b8577eb5b33d88d7c3c2208cb4f6aea122afce5"
+    },
+    {
+      "path": "capture/strong-component-observations253B.txt",
+      "bytes": 14606,
+      "sha256_raw": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2"
+    },
+    {
+      "path": "context.json",
+      "bytes": 1863,
+      "sha256_raw": "06ba39312d6aa58b43681cc7e6a8d2977fedaa30b79abdf269a6bf019bb4ff6b"
+    },
+    {
+      "path": "fullreport.txt",
+      "bytes": 15541,
+      "sha256_raw": "8e74dbd19cbb32238fceb40ca2bb684479dfc8fbe8c5ed499c3ac5fa36d90bce"
+    },
+    {
+      "path": "verdict.json",
+      "bytes": 1461,
+      "sha256_raw": "4a50dea5191203afd0732cfa965a39bdfcf7c74a1dd0a0a4827d73e3a8021ae4"
+    }
+  ],
+  "self_hash_excluded": true,
+  "representation": "Captured inputs exact raw bytes without normalization; authored report/JSON UTF8 no BOM"
+}

@@ -1,0 +1,110 @@
+{
+  "representation": "Raw bytes, no normalization; local .gitattributes preserves Git blobs. Self manifest excluded.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": "angle-lowmode254A.txt",
+      "bytes": 11088,
+      "sha256": "d930993bbae35b83cfa0fb4583ce439070f8de2c11d0905d28a861d5a7c89177"
+    },
+    {
+      "path": "limited-primary-comparison254.txt",
+      "bytes": 2440,
+      "sha256": "3220e5de803d4f4c63e04b847c244d99688614e10c6d65ef167a17f6be1da85c"
+    },
+    {
+      "path": "mean-only-audit/context.json",
+      "bytes": 1774,
+      "sha256": "bb0f5cf66df647a59a39a1100e32310e7de4002a0360c20dc7216ffda37d664e"
+    },
+    {
+      "path": "mean-only-audit/fullreport.txt",
+      "bytes": 11933,
+      "sha256": "e0ba92af173899e1575a29350ce88e47df26c49f5322f737efad694985513bdc"
+    },
+    {
+      "path": "mean-only-audit/hashes.json",
+      "bytes": 1592,
+      "sha256": "d366aa3645c519f09335cb6342ce5d31f45054540fcde64e3d090500a98c9ef8"
+    },
+    {
+      "path": "mean-only-audit/note-exact.txt",
+      "bytes": 4918,
+      "sha256": "6d69deaaa3bd2cef5a8bce31943311c513986c6d36b84fc4dcda03e8868898b6"
+    },
+    {
+      "path": "mean-only-small-angle254.txt",
+      "bytes": 4918,
+      "sha256": "6d69deaaa3bd2cef5a8bce31943311c513986c6d36b84fc4dcda03e8868898b6"
+    },
+    {
+      "path": "q251-uncut-coordinate-falsifier.txt",
+      "bytes": 5673,
+      "sha256": "a0b75328741b96142716727e33795e71caedf3b7b6a46384118343bfdac1f71d"
+    },
+    {
+      "path": "source-audit/capture/angle-lowmode254A.txt",
+      "bytes": 11088,
+      "sha256": "d930993bbae35b83cfa0fb4583ce439070f8de2c11d0905d28a861d5a7c89177"
+    },
+    {
+      "path": "source-audit/capture/coexact-layer-band252A.txt",
+      "bytes": 9562,
+      "sha256": "d55daa2a3af56039a4e29ada2f7200acf7127d733d640df13c1941ad7c56a677"
+    },
+    {
+      "path": "source-audit/capture/strong-component-observations253B.txt",
+      "bytes": 14606,
+      "sha256": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2"
+    },
+    {
+      "path": "source-audit/context.json",
+      "bytes": 797,
+      "sha256": "2f3e5f2753f8c91a17814115a100a2380b90c81205330e41a2bd11d7df8b6be2"
+    },
+    {
+      "path": "source-audit/fullreport.txt",
+      "bytes": 12892,
+      "sha256": "901876fcabe63e2f763b3e4d706d13b69d8a1a597bf24bde8d7e7f09b1fa3971"
+    },
+    {
+      "path": "source-audit/HASHES.json",
+      "bytes": 932,
+      "sha256": "77b8e69cb976dceedc8f2d7a5e77c71d66a8ab82ab97dd188a3b2a5181fdcf85"
+    },
+    {
+      "path": "source-audit/verdict.json",
+      "bytes": 821,
+      "sha256": "09e681616d6a8fea885ff14207d5f70eec3c5730ac2ce86c9f40da8ff70df5df"
+    },
+    {
+      "path": "STATUS.txt",
+      "bytes": 2352,
+      "sha256": "32d53ef14eb90e34a03c00ea14cadc26738aaef19f68570665935734f8dca308"
+    },
+    {
+      "path": "uncut-coordinate-audit/context.json",
+      "bytes": 1760,
+      "sha256": "ea311ab40246df52eff15ae0af1e8d6775a0b51f5c386f723787babde3b76402"
+    },
+    {
+      "path": "uncut-coordinate-audit/fullreport.txt",
+      "bytes": 12885,
+      "sha256": "ce69e2a7af429b1ea3a31c1d38ee9a9b310a1879af54b12a2651f75a98db3559"
+    },
+    {
+      "path": "uncut-coordinate-audit/hashes.json",
+      "bytes": 1624,
+      "sha256": "63267bbb42ca29f53654acad505c492f1dec9911b04cf7533d37168d78d699c3"
+    },
+    {
+      "path": "uncut-coordinate-audit/note-exact.txt",
+      "bytes": 5673,
+      "sha256": "a0b75328741b96142716727e33795e71caedf3b7b6a46384118343bfdac1f71d"
+    }
+  ]
+}

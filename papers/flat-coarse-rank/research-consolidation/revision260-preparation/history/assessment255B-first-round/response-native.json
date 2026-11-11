@@ -1,0 +1,69 @@
+{
+  "paper_id": "ARR-2026-597T88D7WZ98HR0Z",
+  "version": "v1",
+  "version_id": "arr:version:6c269773-95a8-437d-bf09-5c7bc5490273",
+  "canonical_sha256": "d45a17a4142204628189441b9133aa1027b0d7577a56dc5de6c576d2af6102e7",
+  "provider": "OpenAI",
+  "model_id": "Codex (based on GPT-6; exact served backend/version and reasoning effort unknown)",
+  "assessed_at": "2026-11-11T10:47:44.679943+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "unknown",
+  "recommendation": "major_revision",
+  "millennium_score": 4.0,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "Read all9actual PDF text pages and individually inspected all9original pagePNGs. Adversarial checks of real curl-adjoint preimages/Nyquist, graph spectrum, exact actual ranks, cutoff/angle normalization, both counterexamples and ambient domain boundary found no definite fatal mathematical error. Analytical AI reading only, not formal verification."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Explicit original source-weighted labels, period2, actual coexact image, matched injection lower/constructive upper ranks, transformed-norm return and finite cutoff cases. The canonical ambient proof is not wrongly transferred to U; D4 upper is a cited proved source247 input, checked in full. No proof assistant or independent mathematical execution."
+    },
+    "novelty": {
+      "stars": 2,
+      "basis": "Specific exact formulas and row-class separation are plausible specialist novelty candidates, but historical priority is unestablished. Selected primary Spillane2011/2014 definitions/statements confirm spectral coarse enrichment is established. No exact-equivalence or exhaustive priority audit was performed; self-contained finite calculations alone do not establish originality."
+    },
+    "significance": {
+      "stars": 2,
+      "basis": "A coherent grouped finite benchmark/technical note with useful exact ranks and bounded falsifiers. One prescribed parity toy profile, nonlocal/mixed unrestricted rows, absent application/solver/global condition-number result and the still-open canonical coexact logarithmic question limit demonstrated stand-alone or wider research importance."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Exact355193bytePDF/source/hash binding, all9pages inspected, full source/delta/engineering reports and cited247 source read. Matching clones and27Linux child exits are attributed retained engineering evidence, not my own rerun. Current sourceZIP/TeX hashes checked; not all115source/110input files newly read or scientifically executed."
+    }
+  },
+  "summary": "The exact9-page PDF is a coherent, apparently correct finite technical note: exact orthogonal unrestricted ambient/coexact restoring ranks, a fixed-positive-angle order-n Fourier upper with n-independent row coefficient, a small-angle means-only counterexample, canonical ambient count lower and uncut-cell coexact falsifier. No definite fatal mathematical error was found. Importance4.00/10 is this PDF’s involved AI judgment, not an inherited250B score or physical progress. Exact priority and stand-alone significance beyond a classical-mechanism finite benchmark remain unresolved; recommendation major_revision, distinct from a working-paper deposit or acceptance.",
+  "strengths": [
+    "Actual source-weighted forward labels, period-two conventions and counting-normalized observations are explicit.",
+    "The special strong-component projection’s coexact image and dimension are proved with genuine real curl-adjoint preimages, including Nyquist and zero n2endpoint.",
+    "Matched low-energy injection and explicit mean upper determine both orthogonal unrestricted minimum ranks.",
+    "Positive-angle cutoff rows are actual original-field functionals, with orthogonality used in Y followed by the singular-value return; no unproved U-invariance is needed.",
+    "Small-angle and uncut-cell witnesses are real coexact fields with the advertised kernel properties; their scopes are properly bounded.",
+    "The D4 canonical/unrestricted contrast compares the same ambient domain and coefficients, while the canonical coexact logarithmic question remains explicitly open."
+  ],
+  "weaknesses": [
+    "Exact historical priority and predecessor implication for the specialized formulas are unestablished after bounded primary comparisons.",
+    "The general spectral/minimax/enrichment mechanisms are classical; elementary explicit specialization alone does not demonstrate a new broad principle.",
+    "Stand-alone wider relevance remains modest for one parity toy profile with no application, implemented solver or global condition-number result.",
+    "Unrestricted upper rows are nonlocal and may mix channels; constants deteriorate as angle tends to zero and provide no canonical upper.",
+    "Canonical lower is ambient only; the uncut-cell necessary condition and known logarithmic upper do not resolve the actual coexact canonical minimum.",
+    "A compact domain/class/rank/count/angle/penalty table and precise packaged link to cited247 would improve navigation; historical production/review wording needs later sidecars rather than score inheritance."
+  ],
+  "potential_errors": [
+    "No definite fatal mathematical error or counterexample was found within the exact finite stated hypotheses; this is not a formal or exhaustive certificate.",
+    "Extraction can obscure the conjugation in equation10 and sqrt2 in page7; the actual page images confirm the required symbols, so these are not identified PDF errors.",
+    "Rectangular averaging has not been shown to preserve U. The manuscript correctly limits equation12 to ambient restoration; applying that kernel proof on U would be invalid.",
+    "The fixed-angle theorem does not extend exact orthogonal minima or remain uniform as angle tends to zero; current text states these limits."
+  ],
+  "strong_novelty_candidates": [
+    "Exact orthogonal ambient rank Dn versus actual coexact rank(D-1)(n-2), with a derived preserving component projection, as a specialist finite formula subject to priority scrutiny.",
+    "Same-profile D4 ambient canonical order n2 versus unrestricted exact4n, using the proved canonical upper from cited247, subject to exact-priority judgment.",
+    "Explicit fixed-positive-angle transverse cutoff and the real small-angle means-only falsifier as a transparent finite benchmark, rather than a claimed new spectral-enrichment principle."
+  ],
+  "unresolved_material_objections": [
+    "255B-M1 | OPEN | material | Originality/priority: Exact historical novelty of the specialized formulas and rectangle obstruction remains unestablished. Classical spectral/coarse-mode principles are not new merely because explicitly specialized; limited primary reading proves neither novelty nor prior implication.",
+    "255B-M2 | OPEN | material | Stand-alone significance/practical relevance: Coherent as one companion note, but wider importance beyond a finite worked example is not demonstrated: no application, implemented solver, full-operator conditioning or resolution of the canonical coexact log question. The n-independent unrestricted K is not a practical efficiency theorem.",
+    "255B-M3 | OPEN | material | Scope/editorial interpretation; no fatal finite defect found: Retain orthogonal D3/D4 exact minima versus fixed-angle asymptotic order, ambient versus actual coexact domains, unrestricted versus canonical rows and actual rank versus count. Neither negative example settles arbitrary canonical O(n) partitions. No physical/continuum, formal, independent peer-review or unconditional acceptance claim follows."
+  ]
+}

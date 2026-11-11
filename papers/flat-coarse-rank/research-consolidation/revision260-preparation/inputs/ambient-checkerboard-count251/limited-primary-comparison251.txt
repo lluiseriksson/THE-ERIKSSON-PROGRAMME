@@ -1,0 +1,25 @@
+BOUNDED PRIMARY LOOKUP,11November2026; no priority certificate.
+Two focused searches. Primary author-hosted work inspected:
+Dohrmann and Widlund, An Alternative Coarse Space for Irregular Subdomains and
+an Overlapping Schwarz Algorithm for Scalar Elliptic Problems in the Plane,
+SIAM J.Numer.Anal.50(5),2522–2537(2012), DOI10.1137/110853959.
+https://cs.nyu.edu/~widlund/110853959.pdf
+Also opened14-page NYU reportTR2011-946 for identification:
+https://cs.nyu.edu/media/publications/TR2011-946.pdf
+Read extent: abstract/introduction, selectedSection3setup/Theorem3.1, and the
+Section4discussion of vertex averages/checkerboard coefficients; not full proofs.
+
+The work concerns scalar finite-element Schwarz preconditioning in the plane.
+It uses vertex-based coarse functions and gives condition-number estimates under
+subdomain assumptions. Its discussion shows that replacing point information by
+averages can affect logarithmic behavior, and checkerboard coefficient tests are
+already classical. This cautions against claiming a necessary logarithm from a
+point-based construction alone. It does not itself state the251 candidate's exact
+source-weighted finite D3/D4 original-channel rectangle-count lower. A complete
+implication or non-implication has not been established. This limited reading
+therefore leaves originality unresolved; no search absence proves novelty.
+
+No external PDF is redistributed, no raw-PDF hash is invented, no numerical
+experiment/model score was run. The candidate's ambient/coexact domain boundary
+is its own proof issue, not settled by the cited predecessor. Earlier250 primary
+comparison remains historical context, not an originality audit of251.

@@ -1,0 +1,25 @@
+{
+  "status": "UNREVIEWED_NEW_GROUPED_MANUSCRIPT_SOURCE_ONLY_NO_PDF",
+  "existing_paper": "ARR-2026-597T88D7WZ98HR0Z",
+  "proposed_route": "linked substantive revision, not a new small paper",
+  "old_exact_PDF": "d45a17a4142204628189441b9133aa1027b0d7577a56dc5de6c576d2af6102e7",
+  "base_source": "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\papers\\flat-coarse-rank\\research-consolidation\\revision255-preparation\\checkerboard_observations255.tex",
+  "base_sha256_raw": "87e3100bdc8c948497195e3666075ae45618d10959f88347f3c9ed7e15986e01",
+  "new_files": {
+    "checkerboard_observations260.tex": {
+      "bytes": 40828,
+      "sha256_raw": "35a2be5eb77a223c8f88ba552f0754045fecb97fae75d63b16c22da2224b75b1"
+    },
+    "temporal_matching260.tex": {
+      "bytes": 9766,
+      "sha256_raw": "876aa4850cc40590c3a356737ec877cc8e06d48431fd18ac8376448fb0f6fbe6"
+    }
+  },
+  "added_mathematics": "one full259 temporal theorem with radial-cutoff proof, actual coexact preimage, observation zeros, norm and energy; fixed/bounded-cut corollaries and rapid resonant counterexample",
+  "not_included": "unreviewed260 golden family; independent256 Fourier witness remains existing source evidence",
+  "new_grade": null,
+  "build": false,
+  "visual_QA": false,
+  "source_audit": false,
+  "next_gate": "assemble full source mapping/inputs, freeze and source-audit exact new manuscript before owned-Colab production"
+}

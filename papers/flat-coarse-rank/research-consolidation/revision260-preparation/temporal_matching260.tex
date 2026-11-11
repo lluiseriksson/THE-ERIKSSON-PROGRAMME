@@ -1,0 +1,200 @@
+\section{Temporal matching of product slice corners}\label{sec:temporal}
+We now restrict to $D=3$, $4\mid n$, $n\geq32$, and the orthogonal
+internal basis. Thus $a=c/48$ and $H=cn^2$. This section concerns the actual
+coexact domain $U=U_0^2$ and the original normalized means. It supplies a
+count obstruction for a specified product-slice class, rather than an
+unrestricted lower bound for every canonical partition.
+
+At each longitudinal slice $x_1=i$, let $\{J_{i,j}\}_j$ and
+$\{K_{i,k}\}_k$ be nonempty cyclic interval partitions of $\Z_n$ whose
+product of factor counts is the same integer $q$ for every $i$. The cells
+of channel1 are $\{i\}\times J_{i,j}\times K_{i,k}$. Their full spatial-row
+count is $3nq$. The second channel can use any permitted partition. Write
+$E_i$ for the product of the terminal endpoints of the two interval
+partitions, so that $E_i$ has exactly $q$ distinct transverse points.
+For $K\geq1$, let $S_K$ be the maximum over cyclic $i$ of the minimum
+bottleneck matching distance between $E_i$ and $E_{i+K}$, using the
+periodic transverse $\ell^1$ metric. These extrema exist over finite sets.
+We impose no common labelling around the cycle.
+
+\begin{theorem}\label{thm:temporal}
+Put $L=\log((n/4+1)/3)$. If for some integer $K\geq1$,
+\begin{equation}\label{eq:windowthreshold}
+ L\geq 2^{18}q A_K,\qquad
+ A_K=\max\{16K,9K+6S_K+S_K^2\},
+\end{equation}
+there exists a real nonzero $z\in U$ with every original mean zero and
+$Q(z)<7c\norm z^2/16$. In particular, no finite quadratic penalty on those
+means can restore target $c$. Consequently recovery requires
+\begin{equation}\label{eq:windownecessary}
+ L<2^{18}q\max\{16K,9K+6S_K+S_K^2\}
+ \quad\hbox{for every integer }K\geq1.
+\end{equation}
+The assertion permits $K\geq n$ and includes the longitudinal seam.
+\end{theorem}
+
+We give the constructive proof, including the norm and original-source
+energy bounds. No assumed capacity estimate, projection invariance or
+coexact gap is used as an input.
+
+\subsection{A finite transverse cutoff}
+Let $Y=\Z_n^2$, $R=n/4$, and let $\rho_p$ be periodic $\ell^\infty$
+distance from $p\in Y$. Set
+\[
+ f_p(y)=\min\{1,\max\{0,L^{-1}\log((\rho_p(y)+1)/3)\}\}.
+\]
+It is zero for $\rho_p\leq2$ and one for $\rho_p\geq R$. We claim
+\begin{equation}\label{eq:radial}
+ \sum_{y,h=2,3}|\partial_h f_p(y)|^2\leq\frac{64}{L},
+ \qquad \norm{1-f_p}_Y^2\leq\frac{4n^2}{L^2}.
+\end{equation}
+For a nonconstant edge, the smaller radius is $2\leq r<R$. There are
+$8r+4\leq32r$ forward-labelled edges crossing that square boundary,
+disregarding direction. Since $r+1\leq R\leq n/4$, no antipodal ambiguity
+enters this count. Each scalar increment is at most $1/((r+1)L)$.
+Thus the energy is at most
+\[
+ \frac{32}{L^2}\sum_{r=2}^{R-1}\frac{r}{(r+1)^2}
+ \leq\frac{32\log(R+1)}{L^2}\leq\frac{64}{L},
+\]
+where $R\geq8$ gives $\log(R+1)\leq2L$.
+For the norm, group sites by
+$(R+1)/2^{j+1}<\rho_p+1\leq(R+1)/2^j$, $j\geq0$.
+Each group has at most $4(R+1)^2/4^j$ sites and deficit at most
+$(j+1)\log2/L$. The latter estimate holds also where clipping makes
+$f_p=0$. Since $\sum_{j\geq0}(j+1)^2/4^j=80/27<4$ and $R+1\leq n/2$,
+the deficit norm is at most $16(R+1)^2/L^2\leq4n^2/L^2$.
+This proves~\eqref{eq:radial}. Telescoping a shortest lattice path also gives
+\begin{equation}\label{eq:singletranslation}
+ \norm{f_p(\cdot+u)-f_{p'}}_Y
+ \leq (|u|_1+d(p,p'))\sqrt{64/L}.
+\end{equation}
+Here $|u|_1$ can be any chosen integer representative length, and all seams
+are periodic.
+
+\subsection{Tagged windows and their translation cost}
+Fix $K$ and write $S=S_K$. At slice $i$ take the tagged list
+$F_i=\{(j,p):0\leq j<K,\ p\in E_{i+j}\}$. Repeated spatial points keep
+their tags, so its size is exactly $Kq$ even if $K\geq n$.
+Match $F_i$ to $F_{i+1}$ by keeping the designated $(K-1)q$ shared entries
+at the same spatial position and matching the remaining $q$ outgoing
+entries to $E_{i+K}$ with distance at most $S$. Some replaced entries can
+also be stationary; no claim about the total number of stationary matches
+is needed. Define
+\[
+ \eta(i,y)=\min_{(j,p)\in F_i} f_p(y).
+\]
+It lies in $[0,1]$ and vanishes within radius2 of $E_i$. Squared maximum
+is bounded by the sum of squares, so~\eqref{eq:radial} gives
+\begin{equation}\label{eq:etadeficit}
+ \norm{1-\eta}_X^2\leq 4KqV/L^2.
+\end{equation}
+For two equally indexed real lists, $|\min a-\min b|\leq\max|a-b|$.
+Using the designated matching and~\eqref{eq:singletranslation},
+\begin{align}\label{eq:movingtranslation}
+ \norm{\eta(i+1,\cdot+u)-\eta(i,\cdot)}_Y^2
+ &\leq\frac{64q}{L}\{(K-1)|u|_1^2+(|u|_1+S)^2\}\notag\\
+ &=\frac{64q}{L}(K|u|_1^2+2|u|_1S+S^2).
+\end{align}
+With no longitudinal shift, identity matching of all $Kq$ entries instead
+gives $64Kq|u|_1^2/L$. Summing either bound over $i$ adds a factor $n$.
+The window is only a cutoff recipe; the observed cells remain the original
+$q$ cells per slice.
+
+\subsection{Actual coexact membership and observation zeros}
+Put $\delta_h f(x)=f(x)-f(x-e_h)$. For a real periodic $\Psi$, take
+$\phi=\delta_2\delta_3\Psi$ and the actual two-form potential
+$\psi_{23}=\phi$, $\psi_{12}=\psi_{13}=0$. Since
+$\partial_h^*=-\delta_h$, direct adjunction yields
+\[
+ d_1^*\psi=(0,\delta_2\delta_3^2\Psi,-\delta_2^2\delta_3\Psi)=P\Psi.
+\]
+Every component has zero full sum by telescoping. Summing the second
+component on a cell telescopes to four corner values of $\delta_3\Psi$;
+the third gives the negative four corner values of $\delta_2\Psi$.
+Predecessors of initial endpoints are terminal endpoints of the preceding
+interval. Hence all relevant corners are in $E_i$, including wrap cells.
+A whole-cycle factor cancels identically.
+
+Use the period-four wave
+$\Psi_0(x)=\sin(\pi(x_1+x_2+x_3)/2)$, and set
+$\Psi=\eta\Psi_0$. At every corner, $\eta$ and its backward transverse
+neighbors vanish. Thus both required differences of $\Psi$ vanish there.
+Every channel1 mean of $P\Psi$ is exactly zero, with its original positive
+normalization. Take channel2 identically zero. This constructs an actual
+real $z=(P\Psi,0)\in U$ annihilating all observed rows.
+
+\subsection{Nonzero norm and original energy}
+Direct period-four differences give $z_0=P\Psi_0=(0,w,-w)$ with successive
+$w$ values $(2,-2,-2,2)$. Thus $|z_0(x)|^2=8$,
+$\norm{z_0}^2=8V$, and at every original odd source all $\partial_hz_0$
+vanish, including across seams because $4\mid n$.
+For a finite convolution $T=\sum_r a_r T^r$, subtraction gives
+\[
+ T(\eta\Psi_0)-\eta T\Psi_0
+ =\sum_r a_r(T^r\eta-\eta)T^r\Psi_0.
+\]
+Each nonzero component of $P$ has coefficient absolute sum at most8,
+longitudinal shift0 and transverse radius at most3. Since $|\Psi_0|\leq1$,
+the no-longitudinal translation bound yields
+\begin{equation}\label{eq:pnormerror}
+ \norm{P(\eta\Psi_0)-\eta z_0}^2\leq73728nKq/L.
+\end{equation}
+Each component of $\partial_2P$ or $\partial_3P$ has coefficient absolute
+sum at most16 and transverse radius at most4. Its squared translation
+factor is at most $16K$. Each component of $\partial_1P$ has coefficient
+absolute sum at most16, longitudinal shifts0 or1 and transverse radius
+at most3. Its factors are bounded by $9K$ and $9K+6S+S^2$ respectively.
+Consequently each derivative commutator has norm at most
+$16\sqrt{64nqA_K/L}$. Restricting to original odd sources where
+$\eta\partial_hz_0=0$, and summing the six squared component bounds,
+\begin{equation}\label{eq:strongerror}
+ \sum_{x\text{ odd},h}|\partial_h(P\Psi)(x)|^2
+ \leq98304nqA_K/L.
+\end{equation}
+These are the original strong sources; no weight has been shifted.
+
+By~\eqref{eq:etadeficit}, \eqref{eq:pnormerror} and $n\leq V$,
+\[
+ \norm{P\Psi-z_0}^2\leq
+ \left(64Kq/L^2+147456Kq/L\right)V.
+\]
+The threshold and $A_K\geq16K$ imply $L\geq2^{22}Kq$. The coefficient
+above is at most $2^{-38}+9/256<2$. Reverse triangle therefore gives
+$\norm{P\Psi}>\sqrt{8V}-\sqrt{2V}=\sqrt{2V}$.
+In particular the constructed field, not just its potential, is nonzero.
+Multiplying~\eqref{eq:strongerror} by $H=cn^2$ gives
+\[
+ Q_{\rm strong}(z)\leq98304cVqA_K/L
+ \leq3cV/8<3c\norm z^2/16.
+\]
+Every directional forward difference has norm at most $2\norm z$, so
+$Q_{\rm weak}(z)\leq12a\norm z^2=c\norm z^2/4$.
+Adding proves Theorem~\ref{thm:temporal}. Any quadratic penalty vanishes
+on the identically zero observation vector.
+
+\subsection{Count consequences and a rapidly moving grid}
+For fixed cuts, $S_1=0$ and $A_1=16$. With bounded one-step corner
+motion, $A_1$ stays bounded as well. In either class,
+\eqref{eq:windownecessary} forces $q$ to grow at least proportionally to
+$L$, and hence requires order $n\log n$ full channel1 rows. This conclusion
+is restricted to these classes; arbitrary original-channel rectangle
+partitions and rapidly moving product partitions remain outside it.
+
+Large adjacent motion does not itself guarantee recovery. For
+$n=2^m$, $m\geq5$, let $\kappa=n/4+2$ and $t_i=\kappa i\bmod n$.
+Use the singleton $\{t_i\}$ and its cyclic complement for the first
+transverse factor, and $\{0\}$ and its complement for the second.
+Use these partitions in both original channels. There are $24n$ full rows
+and $E_i=\{t_i,t_i-1\}\times\{0,n-1\}$, so $q=4$.
+The identity $4\kappa=n+8$ gives $S_4\leq8$ and $A_4\leq148$.
+For $L\geq2^{20}\cdot148$, the theorem gives an invisible real nonzero
+coexact field below target. Such dyadic sizes exist, but the threshold is
+enormous and is not a practical crossover estimate.
+
+The adjacent bottleneck is exactly $\kappa$: the next corner with first
+transverse coordinate $t_i+\kappa$ is at least that far from each old
+corner, since $\kappa<n/2-1$; translation realizes that maximum distance.
+Also $\gcd(\kappa,n)=2$, so the orbit visits $n/2$ positions.
+This is a genuinely rapidly moving family with a short resonance. The
+theorem does not assert that every rapidly moving $O(n)$ family fails.

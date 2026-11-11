@@ -1,0 +1,37 @@
+LIMITED PRIMARY COMPARISON FOR254A — 11 November2026
+This is a bounded literature check, not a historical-priority certificate.
+
+Primary source1: N. Spillane, V. Dolean, P. Hauret, F. Nataf, C. Pechstein,
+R. Scheichl, A robust two-level domain decomposition preconditioner for systems
+of PDEs, C. R. Acad. Sci. Paris, Ser.I349(2011),1255--1259.
+DOI10.1016/j.crma.2011.10.021.
+Original paper read: https://www.numdam.org/item/10.1016/j.crma.2011.10.021.pdf
+Abstract, Definitions2.3--2.4 and Theorem2.5 inspected. The authors build
+spectral coarse spaces from local generalized eigenproblems, select modes
+by a spectral threshold, and prove a stable decomposition leading to robust
+preconditioning bounds. This establishes that enriching a coarse space with
+bad local modes is an existing mechanism. Their theorem concerns overlapping
+finite-element spaces and a preconditioner, not the exact source-weighted
+two-line checkerboard with our explicit count, arbitrary observation penalty
+and original coexact restriction. No inference of non-overlap in all literature
+is justified from that difference.
+
+Primary source2: the same authors, Abstract robust coarse spaces for systems
+of PDEs via generalized eigenproblems in the overlaps, Numer.Math.,
+DOI10.1007/s00211-013-0576-y (online2013; volume126,2014).
+Author/institution-hosted original paper:
+https://strathprints.strath.ac.uk/44827/1/10.1007_s00211_013_0576_y.pdf
+Abstract and introductory comparison inspected. They describe local spectral
+selection for heterogeneous systems and relate it to prior spectral algebraic
+multigrid and stable-splitting constructions. Attempts to fetch further theorem
+locations timed out; no full-paper theorem audit of this source is claimed.
+
+Inference and limits.254A's low-mode enrichment is a specialization of an
+established spectral idea, not evidence of a new general principle. Its proposed
+addition to this programme is the explicit original-label two-layer calculation,
+real Fourier row count, angle-dependent cutoff and n-independent normalized
+penalty on the actual finite family. Correctness requires its own source audit;
+priority of this specific specialization is UNESTABLISHED. Practical relevance,
+conditioning and implementation require evidence beyond a finite lower bound.
+Do not transfer either primary paper's robust preconditioner results to254A.
+No full priority search, model assessment, peer review or acceptance is claimed.

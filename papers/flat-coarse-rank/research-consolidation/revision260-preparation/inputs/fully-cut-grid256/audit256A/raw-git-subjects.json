@@ -1,0 +1,30 @@
+[
+  {
+    "capture": "capacity-counterexample256A-exact-git.txt",
+    "commit": "d77142dbe214a9df2dfd5ffa057c736796e6a8ad",
+    "git_path": "papers/flat-coarse-rank/research-consolidation/fully-cut-grid256/capacity-counterexample256A.txt",
+    "bytes": 11746,
+    "sha256": "1364094dfff6cc2cfcbc306717b2b4667d49401e00fd2c7d00fb132add9c07a6"
+  },
+  {
+    "capture": "gitattributes256-exact-git.txt",
+    "commit": "d77142dbe214a9df2dfd5ffa057c736796e6a8ad",
+    "git_path": "papers/flat-coarse-rank/research-consolidation/fully-cut-grid256/.gitattributes",
+    "bytes": 8,
+    "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+  },
+  {
+    "capture": "source255B-definitions-exact-git.tex",
+    "commit": "568c971fac32caf33dce6ab4b14f2730788c3eb2",
+    "git_path": "papers/flat-coarse-rank/research-consolidation/revision255-preparation/checkerboard_observations255.tex",
+    "bytes": 29571,
+    "sha256": "87e3100bdc8c948497195e3666075ae45618d10959f88347f3c9ed7e15986e01"
+  },
+  {
+    "capture": "source253B-exact-git.txt",
+    "commit": "568c971fac32caf33dce6ab4b14f2730788c3eb2",
+    "git_path": "papers/flat-coarse-rank/research-consolidation/revision255-preparation/inputs/strong-component-observations253/strong-component-observations253B.txt",
+    "bytes": 14606,
+    "sha256": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2"
+  }
+]

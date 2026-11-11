@@ -1,0 +1,97 @@
+{
+  "representation": "Exact raw bytes; no normalization; manifest excludes itself",
+  "verdict": "ACCEPT_ANALYTICAL_COARSE_TIME_WINDOW_OBSTRUCTION_AND_STATED_RAPID_GRID_COUNTEREXAMPLE_WITH_LIMITS",
+  "source_commit": "2f370a7da850b8066a9afe95c523e49bd1ef725e",
+  "source_sha256_raw": "03c71a1a4a652a6d28bc38acc43b7a2227796a300d673e1611f65417bb50557f",
+  "source_git_blob": "86dde615150211c295af1d2b42c6fcbc55be0c57",
+  "subject_count": 5,
+  "subjects": [
+    {
+      "path": "subjects/coarse-window-obstruction259A.txt",
+      "bytes": 11351,
+      "sha256_raw": "03c71a1a4a652a6d28bc38acc43b7a2227796a300d673e1611f65417bb50557f",
+      "source": "2f370a7da850b8066a9afe95c523e49bd1ef725e:papers/flat-coarse-rank/research-consolidation/coarse-window259/coarse-window-obstruction259A.txt",
+      "read_scope": "Entire proof read and analytically rederived",
+      "representation": "Exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/capacity-class-obstruction257A.txt",
+      "bytes": 11285,
+      "sha256_raw": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc",
+      "source": "fed201fd10f952a04e638c324dc0e1359711911a:papers/flat-coarse-rank/research-consolidation/fixed-cut-product257/capacity-class-obstruction257A.txt",
+      "read_scope": "Entire source read; imported Section3 cutoff lemma freshly checked; no prior verdict inherited",
+      "representation": "Exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/bounded-matching-obstruction258A.txt",
+      "bytes": 12392,
+      "sha256_raw": "0c99070cdea4a3c7edf7168a8dfd2eb6eca96b08ed21e5002c003424ee7d66dc",
+      "source": "d7840f33a5e20120565f3d5803dfabb32802de95:papers/flat-coarse-rank/research-consolidation/moving-cut-product258/bounded-matching-obstruction258A.txt",
+      "read_scope": "Entire source read; conventions and commutator/norm arguments checked afresh, not previous verdict",
+      "representation": "Exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256_raw": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "source": "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "read_scope": "Entire charter read in two consecutive portions; full local raw bytes retained",
+      "representation": "Exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256_raw": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "source": "C:\\Trabajo\\the-eriksson-programme\\perron-spec-210-20261108\\CLAUDE.md",
+      "read_scope": "First75 lines directly read; entire local raw file retained as context",
+      "representation": "Exact raw bytes; no normalization"
+    }
+  ],
+  "files": [
+    {
+      "path": "full-report.txt",
+      "bytes": 12055,
+      "sha256_raw": "efd44abe8b660b6743caa5219cf2266c9fc2cfe9b686a6c8c17f3c4a41cc9650"
+    },
+    {
+      "path": "prompt.txt",
+      "bytes": 1988,
+      "sha256_raw": "8db1cc5c07b03e59a804d84c64c91b011a7240f03a87768dc6087cffc4394376"
+    },
+    {
+      "path": "review-context.json",
+      "bytes": 3996,
+      "sha256_raw": "dfdb6f1691adfe4b38fe7ebe71e7cbdb5d6050e86ffed3316ce7c79324a4659a"
+    },
+    {
+      "path": "seal_source_audit259A.py",
+      "bytes": 19537,
+      "sha256_raw": "de9082a0aed8750fcbe9bfd7aca160a6bd39152e614643b22011239cfa30ac6f"
+    },
+    {
+      "path": "subjects/bounded-matching-obstruction258A.txt",
+      "bytes": 12392,
+      "sha256_raw": "0c99070cdea4a3c7edf7168a8dfd2eb6eca96b08ed21e5002c003424ee7d66dc"
+    },
+    {
+      "path": "subjects/capacity-class-obstruction257A.txt",
+      "bytes": 11285,
+      "sha256_raw": "8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256_raw": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/coarse-window-obstruction259A.txt",
+      "bytes": 11351,
+      "sha256_raw": "03c71a1a4a652a6d28bc38acc43b7a2227796a300d673e1611f65417bb50557f"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256_raw": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    }
+  ]
+}

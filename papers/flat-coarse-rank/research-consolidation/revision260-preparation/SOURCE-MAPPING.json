@@ -1,0 +1,30 @@
+{
+  "existing_paper": "ARR-2026-597T88D7WZ98HR0Z",
+  "proposal": "substantive linked revision only; no new deposit yet",
+  "sections": {
+    "2": "253B sections1--2;254A sections1--3",
+    "3": "253B exact actual ranks",
+    "4": "254A positive-angle cutoff",
+    "5": "254 negative mean-only companion",
+    "6": "251A ambient canonical lower only; cited247 upper",
+    "7": "251 uncut-coordinate coexact falsifier",
+    "8": "259A full temporal theorem plus257A Section3 radial lemma;258A conventions; N1 designated shared-slot clarification",
+    "9": "general canonical Q251 remains open",
+    "10": "full involved model context and historical255B first exact-PDF assessment only"
+  },
+  "prior_exact_pdf": {
+    "sha256_raw": "d45a17a4142204628189441b9133aa1027b0d7577a56dc5de6c576d2af6102e7",
+    "importance": 4.0,
+    "overall_stars": 4,
+    "recommendation": "major_revision",
+    "material_objections_open": 3,
+    "applicable_to_new_manuscript": false
+  },
+  "new_PDF": null,
+  "new_score": null,
+  "new_source_audit": null,
+  "golden260_result_included": false,
+  "formal_verification": false,
+  "priority": "unestablished",
+  "active_question": "Q251 only; actual canonical coexact D3 O(n) versus logarithm OPEN"
+}

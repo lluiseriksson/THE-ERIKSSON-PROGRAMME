@@ -1,0 +1,63 @@
+{
+  "count": 8,
+  "files": [
+    {
+      "bytes": 9562,
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-252\\coexact-layer-band252A.txt",
+      "path": "capture/source252A.txt",
+      "representation": "Original bytes, no normalization",
+      "sha256_raw": "d55daa2a3af56039a4e29ada2f7200acf7127d733d640df13c1941ad7c56a677"
+    },
+    {
+      "bytes": 7600,
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-preparation\\raw-tree\\inputs\\accepted\\source246.txt",
+      "path": "capture/source246.txt",
+      "representation": "Original bytes, no normalization",
+      "sha256_raw": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+    },
+    {
+      "bytes": 10135,
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-249\\fixed-angle-point249A-candidate.txt",
+      "path": "capture/source249A.txt",
+      "representation": "Original bytes, no normalization",
+      "sha256_raw": "207964b440b7c91bc535739cc323f1fc135be4aac697ad665efb0ea4b7fb5a24"
+    },
+    {
+      "bytes": 12123,
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-251\\source-audit\\fullreport.txt",
+      "path": "capture/report251.txt",
+      "representation": "Original bytes, no normalization",
+      "sha256_raw": "40377d5867620d23295b7c4805199ed32c50a9f4ab121e7fbe1774ce0d94121c"
+    },
+    {
+      "bytes": 1312,
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-249\\source-audit\\verdict.json",
+      "path": "capture/verdict249.json",
+      "representation": "Original bytes, no normalization",
+      "sha256_raw": "e75eee4a5014c266a43335fdeb3aeb75eabf9f0d060bc74280358b692effcff4"
+    },
+    {
+      "bytes": 1216,
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-251\\source-audit\\verdict.json",
+      "path": "capture/verdict251.json",
+      "representation": "Original bytes, no normalization",
+      "sha256_raw": "e59d0071feb20e6a5f40c4a0871cbbf04919edaa720f752553c86e816827cf5d"
+    },
+    {
+      "bytes": 9781,
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-preparation\\raw-tree\\setup250.tex",
+      "path": "capture/setup250-prior.tex",
+      "representation": "Original bytes, no normalization",
+      "sha256_raw": "44a04cb5ff4b2a212995a0801b358f05c78cd28136420a067267769362c6b703"
+    },
+    {
+      "bytes": 6931,
+      "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-preparation\\raw-tree\\finite250.tex",
+      "path": "capture/finite250-prior.tex",
+      "representation": "Original bytes, no normalization",
+      "sha256_raw": "6ef355ed73177a2845fe468e68eec85184c4d39047448de18d0e268020c6a33f"
+    }
+  ],
+  "method": "Read-only local raw copies and SHA256/size comparisons; no Git/UI/network/WSL/scientific execution",
+  "candidate_sha256_raw": "d55daa2a3af56039a4e29ada2f7200acf7127d733d640df13c1941ad7c56a677"
+}

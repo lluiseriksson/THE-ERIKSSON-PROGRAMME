@@ -1,0 +1,37 @@
+258 bounded primary-source comparison,11November2026. No originality claim.
+
+Cosco, Nakajima, Schweiger, Asymptotics of the p-capacity in the critical
+regime, arXiv:2112.03661v2,9May2023:
+https://arxiv.org/abs/2112.03661 and https://arxiv.org/pdf/2112.03661
+Reopened the primary metadata and PDF definition/initial theorem setting;
+the earlier257 reading included Theorem1.2 and p=2 discussion. Reciprocal
+logarithmic capacity in two dimensions is established machinery.258 derives
+its moving-cut transport bound algebraically and does not import an original
+capacity theorem or a sharp constant from this source. These selected
+passages neither establish nor exclude prior equivalence of our exact finite
+coexact checkerboard/canonical-observation tradeoff.
+
+Drewitz, Sousi, Sun, Symmetric Rearrangements Around Infinity with
+Applications to Levy Processes, arXiv:1110.5592v2,5February2013:
+https://arxiv.org/abs/1110.5592 and https://arxiv.org/pdf/1110.5592
+Read the primary abstract and initial introduction through the random-walk
+survival/moving-domain setup (PDFpages1-2). Their work concerns rearrangement
+comparisons for Levy processes, moving traps and process capacities. It
+establishes related prior moving-domain context; I did not derive an
+equivalence to our deterministic adjacent-corner-bijection commutator bound.
+No full theorem/proof comparison has been completed, and no theorem from
+this paper is used as an input to258A.
+
+Searches: capacity moving traps lattice two dimensional; capacity minimum
+Dirichlet subadditivity graph points. No tertiary search result is relied
+upon for the mathematics. Publication/version dates come from primary arXiv
+metadata; crawl dates are not publication dates. External PDFs are not
+redistributed. This is a bounded comparison, not an exhaustive novelty audit.
+
+Disposition: analytical correctness, historical originality and significance
+remain separate. Capacity, minima and translation triangle inequalities are
+classical mechanisms. The potential contribution is the explicit original-
+domain moving-cut source-energy construction and its quantified search
+restriction, if the source audit survives. Priority is UNESTABLISHED, bounds
+are grossly unoptimized, and globalQ251 remains open. No grade, independent
+peer review, physical mass gap or separate paper follows from this note.
