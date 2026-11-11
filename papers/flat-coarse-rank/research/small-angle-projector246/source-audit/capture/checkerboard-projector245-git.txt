@@ -1,0 +1,128 @@
+245 -- Spatial constancy is essential: a coherent checkerboard counterexample
+Author-role analytical candidate. Different-role exact-source audit required.
+No execution, formal verification, PDF grade, priority or physical claim.
+
+1. Bounded question and counterexample statement.
+Does the Omega(V) actual-rank lower of244 survive if only spatial constancy
+of the weak projector is removed? Answer proposed here: NO, even for fixed
+g=2,q=1,Lambda=2 and positive coefficients, in the SAME fixed observed basis.
+For every D>=3 and even n>=2, c>0,V=n^D, let a=c/(16D),H=cn^2.
+At x in (Z/nZ)^D set p(x)=sum_i x_i modulo2, well-defined because n is even.
+For p(x)=0 put P(x)=e1 e1^T; for p(x)=1 put P(x)=e2 e2^T in R^2.
+Let B(x)=HI_2-(H-a)P(x). Repeat it over D derivative directions and D
+spatial vector components, using the ACTUAL counting forward differences.
+Thus the coefficient of |z_(k,alpha)(x+e_i)-z_(k,alpha)(x)|^2 is the
+corresponding diagonal entry B_alpha,alpha(x), evaluated at the source x.
+Coexact U=U0^2,U0=im d1*, and all other conventions are those of244.
+
+Every P(x) has rank1 and P_alpha,alpha(x)<=1=Lambda q/g. Eigenvalues are
+exactly a,H at every site. Positivity, profile, fixed basis, upper coherence,
+canonical weights, channel separation and actual finite domain are retained.
+Only constant P is removed. A canonical per-channel rectangle map with
+ N_out=2D(n^(D-1)+1)
+admits a FINITE nonnegative quadratic coefficient restoring c on ALL fields.
+Consequently its actual rank on U is at most this count=o(V) for fixedD.
+This disproves any uniform positive Omega_D,Lambda(V) lower in that enlarged
+class. No optimized rank order or useful penalty/conditioning claim is made.
+
+2. Actual selected strong-edge cycles, including n=2 labels.
+For channel1, strong outgoing coefficient H occurs at the odd-parity sites;
+for channel2 it occurs at the even-parity sites. Fix one of these channels,
+write A for its strong-source parity, and select ONLY the strong outgoing
+edges in spatial directions e1 and eD. Every vertex has degree2 in this
+selected undirected labelled graph: an A vertex has its two outgoing edges,
+and a vertex of opposite parity has its two incoming edges. These directions
+are distinct since D>=3. With n=2, distinct selected directions still give
+distinct edges; there is no silent loss of labelled forward multiplicity.
+
+For an A-parity base w0 define, for t in Z/nZ,
+ w_t=w0+t(eD-e1), b_t=w_t+eD.
+There are n distinct w_t (the translation has order n), n distinct b_t,
+and parity separates the two sets. Selected edges are w_t--b_t (eD) and
+ b_t--w_(t+1) (the +e1 edge from w_(t+1) to b_t).
+Thus every component is exactly a2n-cycle with these alternating vertices.
+Every vertex belongs to one such component; no selected edge leaves it.
+The same construction applies to the opposite source parity for channel2.
+
+Let Pi={x:x_D=0}. On each cycle exactly one w_t and one b_s belong to Pi.
+Their indices satisfy s=t-1, since x_D(b_s)=x_D(w_s)+1. They are adjacent
+through the selected +e1 edge w_t--b_(t-1). Hence Pi intersects EVERY cycle
+in exactly two adjacent vertices. This uses a real coordinate plane, not
+a diagonal slab or a rotated/mixed observation basis.
+
+3. Strict Dirichlet margin on fields vanishing at Pi.
+Suppose a scalar field v vanishes on Pi. On each selected2n-cycle its two
+adjacent zero vertices leave 2n-2 free vertices in a path with zero endpoints.
+For such a path the exact smallest Dirichlet eigenvalue is
+ 4sin^2(pi/[2(2n-1)]) >=4/(2n-1)^2,
+by the finite sine eigenbasis and sin(t)>=2t/pi on[0,pi/2]. The edge joining
+the two zero vertices contributes zero. The estimate applies also n=2.
+Summing components and then both channels and all D vector components gives
+ Q_A(z)>= [4H/(2n-1)^2]||z||^2=(c+delta_n)||z||^2,
+ delta_n=c[4n^2/(2n-1)^2-1]
+        =c(4n-1)/(2n-1)^2 >0,                       (245.1)
+for ALL fields vanishing pointwise on Pi. Other strong edges and every weak
+edge have nonnegative energy and were merely discarded, not replaced.
+No Fourier approximation, continuum gap or unproved regional hypothesis is
+used. The exact elementary Dirichlet formula supplies the strict margin.
+
+4. Original canonical rectangle partition and finite restoring penalty.
+For EACH original channel choose the partition consisting of
+ - every point of Pi as its own singleton rectangle, n^(D-1) cells;
+ - the ONE remaining integer rectangle
+   {0,...,n-1}^(D-1) x {1,...,n-1}.
+The even n>=2 condition makes the last rectangle nonempty. These cells are
+disjoint, cover every site and are axis-aligned original integer rectangles.
+They need not form a tensor-product grid; the canonical class permits a
+per-channel rectangle partition, as in244. Both channels use the same choice,
+shared across all spatial vector components k. Rows are exactly
+ V^(-1/2)|S|^(-1/2) sum_S z_(k,alpha).
+Full count is2D(n^(D-1)+1). Let R be their full orthogonal block projection,
+so ||Cz||^2=||Rz||^2/V. Every field in ker R vanishes on Pi; its additional
+zero average on the remaining rectangle does not weaken245.1.
+
+For completeness finite-penalty existence is proved, not inferred merely
+from injection on an informal low-energy space. Let L_A be the symmetric
+matrix of Q_A and A=L_A-cI. Because0<B(x)<=HI, forward counting gradients
+satisfy0<=L_A<=4DH I, including n=2. Thus ||A||<=M=4DH+c.
+Decompose z=u+v, u=(I-R)z in ker R, v=Rz. By245.1,
+ <u,Au>>=delta_n||u||^2; also <v,Av>>=-M||v||^2 and
+ 2|<u,Av>|<= (delta_n/2)||u||^2+(2M^2/delta_n)||v||^2.
+It follows that with FINITE positive K_n=M+2M^2/delta_n,
+ Q_A(z)+K_n||Rz||^2-c||z||^2>= (delta_n/2)||u||^2>=0.
+Divide by V to obtain, on ALL fields and therefore on the ACTUAL coexact U,
+ Q_A(z)/V+K_n||Cz||^2>=c||z||^2/V.                 (245.2)
+No arbitrary row rescaling, internally mixed observation, noncanonical
+diagonal slab, altered coexact domain or infinite penalty has been used.
+The very large n-dependent K_n is explicit and permitted here; this is a
+rank counterexample, not a contradiction to a fixed optimal-penalty claim.
+
+5. Exact conclusion, original caps and scope.
+The actual restricted rank r=rank(C|U) obeys
+ r<=N_out=2D(n^(D-1)+1),
+ r/V<=2D(1/n+1/n^D) ->0 along even n.
+For g=2,q=1, the244 target qV+gV/n^2=V+2V/n^2 is at least V.
+Thus no positive lower constant depending onlyD,Lambda can survive this
+single relaxed hypothesis. It is irrelevant whether restricted rows are
+independent: an upper count suffices to contradict an Omega(V) lower.
+
+At every site the original capped functional is still
+ F=D^2V[1+min(1,alpha_D n^(-D))],
+ alpha_D=(3/4)^D(D/2)(D/(D-2))^(D-1), h=2D.
+The weak cap is1 and the strong cap is retained, so h+F=Theta_D(V).
+Changing P spatially only permutes the same local eigenvalues; it does not
+change this budget, set a negative coefficient or make weak energy vanish.
+The example therefore identifies why a rank lower based only on pointwise
+positive spectra and coherence cannot inherit the spatially constant proof.
+
+This is a source-only analytic counterexample to the suggested extension,
+not a refutation of244 or of its explicit constant-P hypothesis. It does
+not establish the minimum rank in this checkerboard family, a practical
+solver, historical priority, a basis-free theorem, physical mass gap or the
+continuum problem. Elementary path gaps/cycles and finite-dimensional
+quadratic completion are classical. No exhaustive literature search for
+this specific construction has been completed. Keep all earlier failures,
+241A rejection,242N1,243C1 and involved AI contexts. Group245 with235--244
+as an essential-hypothesis boundary, not a separate small paper. Frozen232B
+contains none of234--245 and its score does not transfer. PR29 remains20/41,
+TermSource=0. Exact-source different-role audit remains REQUIRED.

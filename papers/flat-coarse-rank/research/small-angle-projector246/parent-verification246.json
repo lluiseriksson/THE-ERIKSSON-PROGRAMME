@@ -1,0 +1,18 @@
+{
+  "recorded_at": "2026-11-11T01:28:23.755430+00:00",
+  "source_sha": "b162e24e683f870bb296075805048c06f97b4d0f",
+  "source_sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842",
+  "verdict": "ACCEPT_FIXED_NONZERO_ANGLE_COUNTEREXAMPLE_WITH_SCOPE",
+  "complete_report_read": true,
+  "raw_audit_subjects_verified": 17,
+  "manifest_sha256": "fad05c9e5441ed5614419259e345d7ab8724ec1368636a7cfa1bd8d5d764cb4e",
+  "result": "Any fixed nonzero weak-line angle admits original-basis canonical restoration with finiteK and rankO_D,theta(n^(D-1))=o(V)",
+  "proved_extension": "245orthogonal line alternation extended to arbitrary fixed theta>0 by actual plane-mesh anchor construction and paid kappa loss",
+  "retained_hypotheses": "Evenn; fixedtheta>0; sameg2q1Lambda2; originalpositivea/H; fixedobservedbasis/channelrectangles/actualcoexactdomain; no uniformpenalty requirement",
+  "no_theta_n_claim": true,
+  "no_optimal_rank_claim": true,
+  "formal_execution": false,
+  "grade": null,
+  "priority": "UNESTABLISHED",
+  "independence_established": false
+}
