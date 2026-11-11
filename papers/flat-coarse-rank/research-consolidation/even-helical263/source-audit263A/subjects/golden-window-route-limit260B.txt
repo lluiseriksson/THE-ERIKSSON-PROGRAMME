@@ -1,0 +1,77 @@
+Q251 / next260B: GOLDEN ORBIT AND FAILURE OF THE PRESENT WINDOW CRITERION
+UNREVIEWED working analytical derivation,11November2026. Not yet a verified
+result, formal proof, experiment, paper or grade. Preserve next260A handoff.
+
+SELECTED FAMILY (UNCHANGED ACTUAL MODEL)
+n=2^m,m>=5; alpha=(sqrt(5)-1)/2; kappa=4floor(alpha*n/4)+2.
+At slice i let t_i=kappa*i modn, J_i,0={t_i}, J_i,1=its cyclic complement,
+K_0={0},K_1=its cyclic complement. Both original channels use4n cells,
+24n full means. Keep a=c/48,H=cn^2, original weights/counting norms and
+actualU0^2. Its q=4 corners are E_i={t_i,t_i-1}x{0,n-1}.
+Since kappa is2 mod4, gcd(kappa,n)=2. Also |kappa-alpha*n|<2 and0<kappa<n;
+the orbit visits n/2 positions. No recovery or low-energy witness is asserted.
+
+PROPOSED ROUTE-BLOCKADE LEMMA, NOT A GAP THEOREM
+Put L=log((n/4+1)/3)>1, and let S_K be the actual K-step bottleneck of E_i.
+For every integer K>=1, I propose to derive
+ L < 2^18 q max(16K,9K+6S_K+S_K^2).
+Consequently the SUFFICIENT low-energy-witness criterion from259A cannot
+fire for ANY K on this family. This only shows that this particular
+inequality is inconclusive; it does NOT prove recovery, a positive gap,
+absence of an invisible witness, or failure of every capacity/window method.
+
+ELEMENTARY DIOPHANTINE LOWER BOUND TO CHECK
+For any K>=1 let ell be a nearest integer to Kalpha, r=ell/K, and let
+alpha'=-(1+sqrt(5))/2 be the other root of x^2+x-1.
+The integer ell^2+ell*K-K^2 is nonzero, since a rational number cannot be a
+root of the monic polynomial x^2+x-1 (the rational-root candidates +/-1 fail).
+Thus |(r-alpha)(r-alpha')|>=1/K^2.
+Also |r-alpha|<=1/(2K) and |r-alpha'|<=sqrt(5)+1/(2K)<3.
+It follows that dist(Kalpha,Z)=K|r-alpha|>1/(3K).             (1)
+The rounding error e=kappa-alpha*n lies strictly between-2 and2, because
+alpha*n/4 is irrational. Distance to nZ is1-Lipschitz, so
+ d_K:=dist(Kkappa,nZ)>n/(3K)-2K.                            (2)
+All these estimates are statements in ordinary integers/reals, not numerical
+experiments or computed interval certificates.
+
+RELATE THE ACTUAL CORNER BOTTLENECK TO THE SHIFT
+Choose a new corner at slice i+K with x2=t_i+Kkappa modulo n. Every old
+corner has x2=t_i or t_i-1. Its periodic x2 distance to this new corner is
+at least d_K-1, by the metric triangle inequality. Periodic transverse l1
+distance is at least its x2 distance. Any bijection must match that new
+corner to some old corner. Therefore
+ S_K>=d_K-1>n/(3K)-2K-1.                                  (3)
+This argument permits arbitrary matching or permutation of x3 endpoints.
+
+SPLIT EVERY K, NOT JUST FIXED K
+If K>=L, the window factor A_K>=16K>=16L, and
+2^18q A_K>=2^22q L>L, since q=4.
+If K<L, (3) gives
+ S_K>n/(3L)-2L-1
+    =4exp(L)/L-4/(3L)-2L-1, since n=12exp(L)-4.
+Use exp(L)>=1+L+L^2/2+L^3/6 for L>0 to get
+ S_K>8/(3L)+3+(2/3)L^2 > L.                               (4)
+The last strict inequality follows because
+(2/3)L^2-L+3=(2/3)(L-3/4)^2+21/8>0.
+Hence A_K>=S_K^2>L^2, and2^18qA_K>2^18qL^2>L since L>1.
+These two cases establish the proposed route-blockade inequality for EVERY K.
+For n>=32, L>=log3>1 (e<3), so its stated domain is nonvacuous.
+
+CONCRETE NEXT WORK, IF THIS DERIVATION SURVIVES A SOURCE AUDIT
+Do not spend three units merely trying longer versions of the259 tagged
+window bound on this family: the explicit criterion is now accounted for.
+The actual kernel gap question is still open. First freeze and audit this
+derivation, or find the actual error; then derive the true helical Fourier
+trace/curl matrix or an explicit non-window coexact witness. The trace slope
+1+kappa is odd/invertible modulo n, but no uniform trace-Gram lower bound
+or weighted projection is assumed. Varying critical-band phase can make
+curl multipliers degenerate; this is a concrete missing estimate to resolve.
+
+Falsifier of this working lemma: error in the rational-root bound, rounding,
+corner bottleneck comparison, K split or constants. Falsifier/closure of the
+underlying recovery candidate: actual real invisible witness Q<c, or derived
+strict actual kernel gap>c with a finite-penalty argument. Those are distinct.
+After3substantive units with no derived Fourier/curl/trace advance, name the
+precise missing lemma and switch mechanism. No Colab runtime is allocated.
+Priority/importance unestablished; no independent review or score; Q251,
+physical gap and continuum remain OPEN, PR29=20/41,TermSource=0.

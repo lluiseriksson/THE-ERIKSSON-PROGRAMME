@@ -1,0 +1,15 @@
+Q251 /263A bounded primary comparison,11November2026.
+This subsequent bibliography note is outside the frozen source/audit assignment. No importance grade, originality finding or full predecessor-implication proof is supplied.
+
+1. Gregory F. Lawler and Vlada Limic, Random Walk: A Modern Introduction, author-hosted draft.
+https://www.math.uchicago.edu/~lawler/srwbook.pdf
+Read the title/contents, the extracted statement of Theorem4.4.4 in section4.4.1 (PDFindex87, printed88) and adjacent displayed potential-kernel context. Did not read the full book or the full theorem proof. The statement exhibits logarithmic two-dimensional potential-kernel asymptotics. This supports treating the general logarithmic potential mechanism as established background. It does not itself verify the original two-channel coexact domain, four helical mean constraints, paired-frequency cancellations or constants in263A. The proof in263A derives its own finite harmonic bound rather than assuming a random-walk asymptotic theorem. A screenshot request returned no inspectable image in this tool transcript, so no visual formula inspection is claimed.
+
+2. James Rickett and Antoine Guitton, Multi-dimensional Fourier transforms in the helical coordinate system, Stanford Exploration Project, webpage dated9/5/2000.
+https://sep.stanford.edu/data/media/public/docs/sep105/james1/paper_html/index.html
+https://sepwww.stanford.edu/data/media/public/docs/sep105/james1/paper_html/node4.html
+The previous262 bounded reading covered the available HTML abstract/index and wavenumber-section text, including available formula alt-text; some displayed formula alt-text is truncated. It did not inspect every equation image or the whole theory. This clarifies the reading scope rather than inventing an exhaustive comparison. Helical Fourier relabelling is prior machinery; our exact torus shear is not silently identified with that boundary construction.
+
+Queries for this unit: site.math.uchicago.edu Lawler Limic random walk potential kernel logarithm two dimensions pdf; site.arxiv.org two dimensional torus Green function logarithmic Fourier point capacity. Only the actual author/institutional primary pages above are relied on; search snippets/secondary mirrors were not used as a proof.
+
+Interpretation: the proposed263A contribution is a scoped actual-field counterexample covering every even-linear cyclic24n family, with paid curl preimages, exact observation zeros and an explicit conservative threshold. Its historical originality remains UNESTABLISHED. General Fourier/logarithmic-capacity methods are not presented as inventions. Relevance, if source-verified, is refuting a concrete recovery-candidate class including the golden orbit, not proving arbitrary canonical O(n) impossibility or a physical/continuum result. Keep accepted results grouped with checkerboard research rather than creating another small paper. No published PDF or original assessment is changed.
