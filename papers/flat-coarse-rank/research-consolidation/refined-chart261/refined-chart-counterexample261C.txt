@@ -1,0 +1,140 @@
+Q251 /261C: A NONWRAPPING CHART REFINEMENT WITH A NEW INVISIBLE FIELD
+11November2026. Frozen analytical candidate, awaiting source audit.
+This is a grouped research result, not a standalone paper, PDF or grade.
+It is NOT inferred by splitting a previously invisible cyclic cell sum.
+The cutoff below is constructed anew to kill every refined cell separately.
+
+ACTUAL MODEL AND ACTUAL CANONICAL PARTITION
+Let n=2^m,m>=5,c>0,a=c/48,H=cn^2,V=n^3. Use the original D3 orthogonal
+checkerboard forward form and counting norm, with channel1 strong at odd
+sources, channel2 strong at even sources, actual U0^2=im(d1^*)^2.
+Let kappa=n/4+2, t_i=kappa*i modn. At each slice x1=i take the nonempty
+NONWRAPPING x2 chart intervals from
+ [0,t_i-1], {t_i}, [t_i+1,n-1],
+omitting an empty interval, and x3 intervals {0},[1,n-1]. All cell x1
+factors are {i}. Use this exact partition in both original channels,
+with each spatial component observed by (V|S|)^(-1/2)sum_S z_r,alpha.
+
+kappa is2 modulo4, hence gcd(kappa,n)=2. Its orbit consists of all even
+positions, each visited twice over n slices. Thus t_i=n-1 never occurs;
+t_i=0 occurs exactly twice, and other t_i are interior. There are4 cells
+at each of those two slices and6 cells at each other slice, per channel.
+The full number of original rows is therefore
+ 2*3*[2*4+(n-2)*6]=36n-24.                                 (R)
+No wrapping support or merged/substituted observation is used in(R).
+
+CLAIM TO AUDIT
+Put L=log((n/4+1)/3). If
+ L >= 2^18 *6*148,                                         (T)
+there is a real nonzero actual-coexact z, all36n-24 means zero, with
+ Q(z)<(7/16)c||z||^2<c||z||^2.
+Consequently this particular nonwrapping O(n)-row moving refinement cannot
+restore target c with any finite quadratic penalty on its actual means.
+The condition is huge and unoptimized; powers of2 satisfying it exist.
+No failure of all O(n) partitions or canonical nlogn optimum is asserted.
+
+1. COVER THE ACTUAL TERMINAL CORNERS, INCLUDING NEW CHART BOUNDARIES
+For an interior t_i the actual terminal x2 endpoints are t_i-1,t_i,n-1;
+for t_i=0 they are0,n-1. The x3 terminal endpoints are0,n-1 in every slice.
+Define the SIX-ENTRY TAGGED list G_i by the three x2 formulas
+ t_i, t_i-1 modn, n-1,
+each paired with x3=0,n-1, keeping tags even if spatial positions coincide.
+Thus G_i covers every actual refined-cell corner, including the stationary
+chart boundary n-1. At t_i=0 some entries coincide; this does not change
+the six tags or introduce new observations. No constant actual cell count
+or bijection between the varying-size actual corner sets is assumed.
+
+Since4*kappa=n+8, match G_i to G_(i+4) by the same six tags. The four
+entries of types t_i,t_i-1 translate by8 modulo n and the two entries of
+type n-1 stay fixed. All matched periodic transverse l1 distances are<=8.
+This explicit matching exists across the longitudinal seam as well.
+
+2. EXPLICIT CUTOFF AND TAGGED WINDOW ESTIMATES
+Use the finite radial function from257A Section3, on Y=Zn^2:
+ R=n/4, rho_p=periodic l-infinity distance,
+ f_p=clip_[0,1](log((rho_p+1)/3)/L).
+Its directly proved original counting estimates are
+ E_Y(f_p)<=64/L, ||1-f_p||_Y^2<=4n^2/L^2.                  (1)
+These particular estimates, not a presumed abstract capacity/gap hypothesis,
+are the source dependency at fed201fd10f952a04e638c324dc0e1359711911a,
+proof capacity-class-obstruction257A.txt, rawSHA256
+8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc.
+By telescoping a periodic path,
+ ||f_p(.+u)-f_p'||<= (|u|_1+d(p,p'))sqrt(64/L).             (2)
+
+At i form the24-entry tagged list F_i from G_i,G_(i+1),G_(i+2),G_(i+3).
+Define eta(i,y)=min_(tag,p in F_i) f_p(y). It is real and periodic in[0,1]
+and zero within transverse radius2 of every ACTUAL refined corner at i.
+Squared maximum<=sum and(1) give
+ ||1-eta||_X^2<=4*4*6*V/L^2.                              (3)
+Match F_i to F_(i+1): the designated18 shared entries stay fixed, while
+the remaining6 use the explicit G_i to G_(i+4) matching of distance<=8.
+Some replaced entries are also stationary; no exact stationary-total claim.
+For a transverse integer translation u, the min Lipschitz inequality,(2)
+and squared maximum<=sum give
+ ||eta(i+1,.+u)-eta(i,.)||_Y^2
+ <=(64*6/L)[3|u|_1^2+(|u|_1+8)^2]
+ =(64*6/L)[4|u|_1^2+16|u|_1+64].                         (4)
+Without longitudinal shift, identity matching gives64*4*6|u|_1^2/L.
+These are explicit estimates for this partition; six counts the covering
+tags, NOT a redefinition of its original varying4/6 cells per slice.
+For convolution shifts of transverse length<=4 with no longitudinal shift,
+the squared factor is<=64. For shifts0 or1 in x1 and transverse length<=3,
+it is<=36+48+64=148. Hence A=148 bounds all the needed factors.
+
+3. ACTUAL COEXACT PREIMAGE AND SEPARATE REFINED ZEROS
+Put delta_j f(x)=f(x)-f(x-e_j),
+ Psi0=sin(pi*(x1+x2+x3)/2), Psi=eta*Psi0,
+ phi=delta2delta3Psi, psi23=phi,psi12=psi13=0.
+Direct adjunction partial_j^*=-delta_j gives the original field
+ z1=d1^*psi=(0,delta2delta3^2Psi,-delta2^2delta3Psi)=P Psi.
+Set channel2 to zero, so z=(z1,0) is in actual U0^2. All components
+have zero full sum by periodic telescoping.
+Summing z1,2 over an ACTUAL refined cell telescopes in x2 and one x3
+difference to the four terminal corners applied to delta3Psi. Summing z1,3
+gives minus the corresponding corner difference of delta2Psi. Initial-
+endpoint predecessors are terminal endpoints of the previous chart interval,
+with -1=n-1 at the chart boundary. Every such corner is covered by G_i.
+Eta is zero at those corners and their backward e2/e3 neighbors, so both
+required first differences of Psi vanish there. EACH separate refined mean
+therefore vanishes. This argument does not use invisibility of a union's sum.
+
+4. NONZERO FIELD AND ORIGINAL SOURCE ENERGY
+The period-four wave satisfies z0=P Psi0=(0,w,-w),w=(2,-2,-2,2),
+||z0||^2=8V,|z0(x)|^2=8,|Psi0|<=1. Every forward difference of z0 is
+zero at ORIGINAL odd sources. Its periodic seams obey this because4|n.
+For any finite convolution T=sum_r a_r tau^r, direct subtraction gives
+ T(etaPsi0)-eta*T(Psi0)=sum_r a_r(tau^r eta-eta)tau^r Psi0.
+Each P component has absolute coefficient sum<=8, x1 shift0 and transverse
+radius<=3. The no-longitudinal version of(4) gives
+ ||P(etaPsi0)-eta*z0||^2<=73728*n*4*6/L.                   (5)
+Each derivative component has coefficient sum<=16. Transverse derivatives
+have radius<=4; x1 derivatives have longitudinal shifts0/1 and transverse
+radius<=3. The factors above bound each squared shift cost by A=148.
+Each derivative commutator norm is<=16sqrt(64*n*6*A/L). Squaring six
+direction/component bounds and restricting to ORIGINAL odd sources yields
+ sum_(odd x,h)|partial_h z1(x)|^2<=98304*n*6*A/L.          (6)
+No source weight or coexact domain is shifted by these estimates.
+
+Splitting z1-z0=(eta-1)z0+[P(etaPsi0)-eta z0], using(3),(5) and n<=V,
+ ||z1-z0||^2 <= (64*4*6/L^2+147456*4*6/L)V.              (7)
+Condition(T), with A>=16*4, implies L>=2^22*4*6. The coefficient in(7)
+is<=2^-38+9/256<2, so ||z1||>sqrt(8V)-sqrt(2V)=sqrt(2V).
+The FIELD is nonzero. Multiplying(6) by H=cn^2 and using(T),
+ Q_strong<=98304*c*V*6*A/L<=3cV/8<3c||z1||^2/16.
+All directional forward difference norms are<=2||z1||; consequently
+Q_weak<=12a||z1||^2=c||z1||^2/4. This proves the claimed7c/16 bound.
+All original means are zero so any finite quadratic observation penalty
+vanishes. The exact nonwrapping refinement is thus excluded at(T).
+
+SCOPE AND FALSIFIERS
+This is a new actual construction covering extra chart corners, not a logical
+refinement of the old cyclic invisible vector. It repairs no old source or
+verdict retroactively. Audit must check true endpoints/count(R), all tags and
+seams, radial input(1), actual separate zeros and constants(3)-(7).
+Potential falsifier: a wrong refined corner/row count, missing boundary,
+unaccounted shift, false coexact preimage or failed norm/energy bound.
+No full O(n) impossibility, physical spectral gap, numerical/formal proof,
+novelty, practical threshold, independence or grade is claimed. Q251 and the
+continuum remain OPEN, PR29=20/41,TermSource=0. Group with existing related
+results rather than publishing an isolated small corollary.
