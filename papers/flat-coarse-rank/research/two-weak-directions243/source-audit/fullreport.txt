@@ -1,0 +1,131 @@
+EXACT-SOURCE ANALYTIC AUDIT243
+Issued 2026-11-11. Verdict: ACCEPT THE STATED RANK-TWO THEOREM WITH ITS RETAINED SCOPE.
+No blocking mathematical defect or counterexample was found. The actual2x2 group Gram lower is derived by the finite-frame construction, rather than assumed. The finite angular errors, discarded mass, cumulative-quantile rounding, all-range row count, full-field coercivity, actual-rank lower, canonical penalty lower and original capped budget survive the paper checks below. One branch interpretation is made explicit: in the singleton fallback, ALL channels including zero rows are singleton; zero/discarded roots describe the angular allocation in the other branches. This is mathematical source acceptance, not a grade, numerical/model resampling, formal verification, priority result or publication approval.
+
+1. Exact referent and raw-byte evidence
+Repository: C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108.
+Commit:74dd6bb7938bf6a7522a84349b7a5d90fa907fc0.
+Path:papers/flat-coarse-rank/research/2026-11-11_two-weak-directions243.txt.
+Capture command: git -C "C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108" show 74dd6bb7938bf6a7522a84349b7a5d90fa907fc0:papers/flat-coarse-rank/research/2026-11-11_two-weak-directions243.txt.
+Method: Git process StandardOutput.BaseStream directly to a byte buffer, followed by WriteAllBytes. No text decoding, pipeline normalization, newline conversion or BOM insertion. Git exit0. Captured source:13385 bytes,229 LF bytes,0 CR bytes.
+Exact Git blob/LF SHA256, no normalization:985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459.
+The complete243 source was read adversarially. D:\Datos\the-eriksson-programme\autonomia\evidencia-243\candidate243.txt was directly compared byte by byte with the raw captured blob and was identical.
+Ten committed scientific sources were captured anew with expected raw hashes checked:243;242 at e9210be23b4a6deba5ea7e09f749a7eb06857dd9;241B at e40c0920f8aa7298aa95e03c3c8618f1ed0703a4;239 at9a7f2113ba9ca9344bfb7bb1d31c8859ca6a5993;240B atb25f6a46f6e274a6315565ea34c367b81400a82a;238 atfd8a3b8760d18a44b4349dcac1d4e03ed2c36886;231B and237 at frozen241A commit44902fda690f3d2fb9a5a2ceb23ec123039f0df3; and original226C matrix-proof.tex and rectangular_matrix.tex at2d3237501569f6afac8a44d524a5d6db59f63c39. Complete capture commands, source paths, bytes, SHA256 and CR/LF counts are in capture-manifest.json. Each226C raw blob retains its one original CR byte; these digests are not silently normalized-LF digests.
+Previous source readings and the original226C primary budget definition remain available in this same auditor context; earlier acceptance or rejection is not substituted for the following new243 proof analysis. No numerical grade is imported. Every prior frozen source/failure/report remains attached to its own referent.
+
+2. Precise retained family, normalization and nonvacuity
+D>=3,n>=2,g>=2 are integers,c>0,V=n^D. P is an actual rankEXACTLY2 orthogonal projector on R^g, with P_aa<=2Lambda/g for fixedLambda>=1. Set a=c/(16D),H=cn^2,B=H I-(H-a)P. The full coefficient A repeats B over all D gradient directions and all D spatial components. It is spatially constant and positive. Q_A is the actual counting forward-gradient form including all direction-labelled periodic edges. U=U_0^g with U_0=im(d_1^*) for actual flat forward curl and counting adjoint; d0=(D-1)(V-1).
+The statement is conditional on the given projector; that is not a vacuous projector family. For example g=2,P=I_2 satisfies the diagonal cap for everyLambda>=1, and delocalized two-column real frames provide growing families. No lower positive row weight or assumed well-conditioned row subset is part of the hypothesis. TraceP=2 and the upper cap imply the derived support bound |{a:P_aa>0}|>=g/Lambda.
+Canonical rows for original channel alpha and spatial component k remain V^(-1/2)|S|^(-1/2)sum_S z_(k,alpha). Each channel has its own integer-rectangle partition shared across k. For the full counting block projection R, ||Cz||^2=||Rz||^2/V exactly. There are no internally mixed observed rows or free rescalings.
+
+3. Actual tight frame, deterministic weak coordinates and angular approximation
+Rank2 permits an orthonormal g-by2 matrix U with UU^T=P; Gram--Schmidt on the first independent columns among Pe_1,...,Pe_g supplies the stated coefficient-only deterministic choice. Positive norm normalization suffices to remove a sign ambiguity in that procedure. This is an auxiliary coordinate choice for the weak plane, not a change of the original internal observation basis.
+Writing row u_alpha and w_alpha=||u_alpha||^2 gives sum u_alpha u_alpha^T=I_2, sum w_alpha=2 and w_alpha=P_aa<=delta=2Lambda/g. Zero rows require neither an angle nor division by w.
+For each positive row, its rank1 projector is invariant under changing the row's sign. Its projective angle has a unique representative in [0,pi); K=2048 half-open bins and left-endpoint representatives cover it, with exact endpoints assigned unambiguously. Original-index tie breaking makes the subsequent weight order deterministic.
+For two rank1 orthogonal projectors in R^2 with angle difference theta, the difference has trace0 and eigenvalues plus/minus|sin(theta)|, so its operator norm is |sin(theta)|. In a bin, 0<=theta<pi/K and therefore
+ ||P_alpha-P_l||<=pi/K<1/512<epsilon=1/256,
+using only pi<4. Near the projective endpoint pi the same last-bin difference bound holds; at pi the representative is0. No orientation or sign continuity is needed.
+
+4. Discarded bins and exact conditioning of regular bins
+Let M_l=sum w_alpha and S_l=sum w_alpha P_alpha for a bin. If M_l<32delta, its positive matrix satisfies0<=S_l<=M_l I_2. There are at mostK bins, so all discarded matrices sum to at most32Kdelta I_2. Since the full sum isI_2,
+ sum_regular S_l>=(1-32Kdelta)I_2.
+Every regular bin has M_l>=32delta>0 and every row weight<=delta<=M_l/32. The exact-threshold bin M_l=32delta is regular and included. Empty/zero bins are discarded without dividing by their mass. Extremely small positive rows are allowed, because only a per-bin mass and maximum are used. When the later small-delta condition holds, discarded bins cannot contain an entire weak direction: their total operator loss is at most1/64. No regular subset conditioning has been imposed as a premise; it is this derived operator inequality.
+
+5. Cumulative cuts, repeated cut indices, empty groups and all base cases
+For each request define beta_q=(32/31)(lambda_q+2Kdelta)>0, t_q=sum_{r<=q}beta_r. Assume temporarily B_total=sum beta_q<15/16; its actual proof comes in Section7 below. In a regular bin sort positive weights nonincreasingly. Since every t_q<1, the shortest prefix reaching t_q M_l exists before or at the finite last positive row. Such shortest-prefix indices are nondecreasing as the targets increase, so differences define disjoint channel groups. If a previous overshoot already reaches the next target, the two cut indices coincide and the group is empty.
+Let A_q be the mass of the cut prefix and e_q=A_q-t_q M_l. Shortest-prefix minimality gives0<=e_q<delta (the source's weaker closed interval[0,delta] suffices). Set A_0=e_0=t_0=0. Then
+ mu_(l,q)=A_q-A_(q-1)=beta_q M_l+e_q-e_(q-1),
+so |mu_(l,q)-beta_q M_l|<=delta, including the FIRST cut, exact target hits and empty groups. For an empty group, beta_q M_l is absorbed by the decrease of the preceding overshoot; the same signed error estimate remains true. A zero weight cannot first cross a positive target and zero rows were excluded from the sorted bin lists.
+Before any later nonempty group, selected mass is at mostB_total M_l+delta<(15/16+1/32)M_l=31M_l/32. Initially selected mass is exactly0 and remaining mass isM_l. Thus every relevant remaining suffix has mass>M_l/32, with a direct valid base case. Source242's strict-empty-budget wording note is not reproduced in this new lemma.
+If m_l is the bin's original positive-row count and r_l rows remain, their mean weight is>M_l/(32r_l)>=M_l/(32m_l). A sorted prefix has average at least that overall mean. Needed additional mass is max(t_qM_l-A_(q-1),0)<=beta_q M_l. If it is0 the group is empty. Otherwise t=ceil(32m_l beta_q) positive rows would already exceed that needed mass when t<=r_l. If t>r_l, feasibility of the target supplies an existing cut with at most r_l<t entries. Therefore
+ |I_(l,q)|<=ceil(32m_l beta_q).
+Summing over regular bins gives |I_q|<=32g beta_q+K. Empty regular-bin groups contribute0. No nonexistent rows, fractional channels, positive minimum weight or supplied matrix-paving hypothesis is hidden in this argument.
+
+6. The actual2x2 Gram lower, not just a trace lower
+For a bin group G_(l,q)=sum_selected w_alpha P_alpha. Inserting its representative P_l gives
+ ||G_(l,q)-beta_q S_l||
+ <=|mu_(l,q)-beta_q M_l|+epsilon(mu_(l,q)+beta_q M_l)
+ <=(1+epsilon)delta+2epsilon beta_q M_l.
+This is valid for an empty contribution as well. Sum these norm errors over at mostK regular bins; sum M_l<=2. In Loewner order,
+ G_q>=beta_q sum_regular S_l-[K(1+epsilon)delta+4epsilon beta_q]I_2
+     >=[beta_q(1-32Kdelta-4epsilon)-K(1+epsilon)delta]I_2.
+When32Kdelta<=1/64 and4epsilon=1/64, the coefficient of beta is at least31/32. Since K(1+epsilon)delta<=2Kdelta,
+ G_q>=((31/32)beta_q-2Kdelta)I_2=lambda_q I_2.
+This proves a positive lower in every weak direction for every actual global group. It is not an inference from scalar mass/trace alone. In particular a whole group cannot be empty or rank1 for lambda_q>0, even though a group's contribution from an individual bin can vanish. An arrangement with almost all rows in one angular cluster cannot evade this argument: the original tight-frame identity and small discarded loss force enough transverse regular mass, and the quantified approximation preserves it.
+
+7. Spatial geometry, priority and exact numerical budgets
+Case(i) is tested first: g<(512KLambda)^2 OR n<256KLambda, all channels singleton. Only outside this fallback does(ii) use g>=n^2; otherwise(iii) has g<n^2. Thus(ii) has n>=256KLambda and g>=n^2; (iii) has s=sqrt(g)>=512KLambda and n>s. KLambda>=2048, in particular>=1. Integer g,n need not be powers or squares.
+The floor-quantile rectangles are nested, because coarse endpoints are even fine endpoints. Parent side lengths are<=L_j=ceil(n/2^j). P_0 is global averaging; P_J=I for J=ceil(log_2 n). Coarse E_j=P_(j+1)-P_j are orthogonal, and the one tail I-P_k in(iii) completes their sum to I-P_0. Empty coordinate intervals are omitted and shorter final cells retained.
+The finite Neumann path gap4sin^2(pi/(2ell))>=4/ell^2, tensorized over a parent rectangle, gives variance<=L_j^2/4 times its internal edge energy. Singleton factors contribute0. Adding nonnegative periodic/interparent edges gives ||E_q f||^2<=L_q^2 E(f)/4 for all vector fields, including the single whole tail. There is no extra factorD or logarithmic fine-tail energy charge.
+Requests are lambda_q=5L_q^2/(8n^2). The geometric ceiling bound sum L_j^2<=4n^2/3+4n+m holds over m initial indices. In(ii),J<=n/4 for n>=32, hence sum lambda<=5/6+85/(32n). Also
+ 2JKdelta=4JKLambda/g<=KLambda/n.
+Therefore
+ sum beta<=(32/31)[5/6+(85/32+KLambda)/n]
+         <=(32/31)[5/6+117/8192]<7/8<15/16.
+The last inequality is exact: the bracket is20831/24576 whereas(31/32)(7/8)=20832/24576. The117 bound uses n>=256KLambda and KLambda>=1; it does not assume Lambda=1 or discard a rounding term.
+In(iii),k=floor(log_2 s) is at least6, and m=k+1<=s/4. Replacing n by the smaller s in the same upper gives
+ sum beta<=(32/31)[5/6+(85/32+KLambda)/s]<7/8,
+now using s>=512KLambda, a still stronger bound. This pays the additive2Kdelta for EVERY request including the tail. Hence the cumulative-cut hypothesis is actually derived.
+The small-delta matrix hypothesis is also derived: in(ii),g>=n^2>=(256KLambda)^2>=4096KLambda; in(iii),g>=(512KLambda)^2>=4096KLambda. Thus32Kdelta=64KLambda/g<=1/64. Equality threshold cases satisfy the non-strict required bound. No group feasibility or Gram condition has been moved into an extra hypothesis.
+
+8. Cardinality constants, coarse rows, tail, roots and fallback
+From |I_q|<=32g beta_q+K, the actual definition gives
+ |I_q|<=(640/31)gL_q^2/n^2+(4096/31)KLambda+K
+       <=21gL_q^2/n^2+134KLambda.
+Here640/31<=21 and4096/31+1<134, with K<=KLambda. For coarse j, L_j<=2n/2^j, hence |I_j|<=84g4^(-j)+134KLambda. Each channel has D means per child rectangle and at most2^(D(j+1)) rectangles. The two positive geometric sums through j<t give
+ N_coarse<=A_D g2^((D-2)t)+B_D KLambda2^(Dt),
+ A_D=84D2^D/(2^(D-2)-1), B_D=134D2^D/(2^D-1).
+D>=3 makes the denominators positive. In(ii),2^J<2n and V<=gV/n^2 give the stated coefficient[2^(D-2)A_D+2^DB_D KLambda]gV/n^2. Roots add at mostDg<=DgV/n^2.
+In(iii),2^k<=s<n gives N_coarse<=(A_D+B_D KLambda)V. Also gL_k^2/n^2<=(s/2^k+s/n)^2<9, so the actual tail cardinality is at most189+134KLambda. Tail singleton rows cost at mostD(189+134KLambda)V; roots cost Dg<=DV. The one-tail construction incurs no allocation per finer scale.
+In(i),full singleton cost DgV is bounded by D(512KLambda)^2V when its g threshold applies. Otherwise n<256KLambda gives cost<=D(256KLambda)^2gV/n^2. The first branch of the stated L constant dominates both. Thus the displayed finite L_(D,Lambda) really controls N_out by V+gV/n^2 in ALL cases. K=2048 is fixed, not a hidden parameter. Actual restricted rank is at most this full count; independence of coexact row restrictions is not assumed.
+Construction interpretation C1: Section2's zero-row roots and the discarded/unused-root rules describe the angular allocation used in(ii)/(iii). The explicit priority(i) overrides allocation and makes ALL channels singleton, including zero rows and rows in what would otherwise be discarded bins. This precedence is required by the stated case split and is unambiguous once it is read as a branching construction. It changes no estimate or theorem; no small-case root-only failure is inferred.
+
+9. Full-field coercivity using the actual matrix groups
+For componentwise mean-zero z, f=U^Tz consists of TWO D-component fields and s=z-Uf satisfies U^Ts=0. Since U is constant and orthonormal, ||z||^2=||f||^2+||s||^2 and Q_A=aE(f)+T with T=Hsum_alpha E(s_alpha). All these fields have mean0.
+Young gives ||p-q'||^2>=(9/10)||q'||^2-9||p||^2, because the difference is10||p||^2-2<p,q'>+(1/10)||q'||^2>=0. Apply it to p=E_qz_alpha, q'=u_alpha E_qf. The parent bound and disjoint groups charge each selected channel energy at most once, yielding
+ T>=(9/10)sum_q(4H/L_q^2)<E_qf,G_q E_qf>
+       -36sum_q(H/L_q^2)sum_selected||E_qz_alpha||^2.
+The actual Gram G_q>=lambda_q I_2 supplies(9/4)c||f||^2 after summing orthogonal pieces. In(ii),H/L_q^2<=cn^2; in(iii),L_q>=n/s implies H/L_q^2<=cg. Both are<=cb with b=min(g,n^2). For coarse channels E_q is a subprojection of the observed child average; for the tail it is a subprojection of identity. Disjointness therefore bounds the negative sum by36cb||Rz||^2 and proves
+ T+36cb||Rz||^2>=(9/4)c||f||^2.
+The labelled periodic gap4sin^2(pi/n)>=16/n^2 gives independently T>=16c||s||^2. At n=2 the actual parallel-edge multiplicity gives gap4=16/n^2. Convex weights8/9 and1/9 spend exactly ONE T and yield T+32cb||Rz||^2>=2c||f||^2+(16/9)c||s||^2>=c||z||^2. Add aE(f)>=0.
+Every partition block projection satisfies RP_0=P_0R=P_0. Constant and mean-zero R images are orthogonal, Q ignores constants and32cb>=c pays every constant mode. In particular zero/discarded root channels in(ii)/(iii) retain observations of their strong constants; in(i)all constants are paid by singleton observations. Case(i)R=I already has K=c. Canonical normalization ||Cz||^2=||Rz||^2/V proves(243.1) on ALL fields. No block projection is assumed to preserve coexactness and no observed internal mixing occurs.
+
+10. Actual coexact dimension, rank-two compression and restoring rank
+For flat forward curl, every nonzero frequency has nonzero vector q=(exp(2pi i k_i/n)-1)_i; the wedge map and its adjoint image have dimensionD-1. Zero frequency gives no coexact contribution. Conjugate pairing, including self-conjugate period-two frequencies, gives real d0=(D-1)(V-1). Every coexact component has global mean0, and constant internal combinations preserve that actual domain.
+The weak embedding T0:U_0^2->U, f->Uf, is an isometry of dimension2d0 with Q_A(T0f)=aE(f)<=c||f||^2/4. For any internally separable restoring linear C, let S_alpha project onto its restricted row space INSIDE U_0 and S be the channel direct sum. Its rank r is the actual rank(C|U). Weighted trace over the two weak coordinates is
+ trace(T0^*ST0)=sum_alpha||u_alpha||^2rank(S_alpha)<=2Lambda r/g.
+A real unit f in the2d0-dimensional weak space therefore has t=||ST0f||^2<=Lambda r/(g d0). Set u=(I-S)T0f. It is actually coexact, Cu=0 and||u||^2=1-t. The upper E(w)<=4D||w||^2 and PSD polarization give Q_A(u)<=c/2+8DHt. Restoration at zero observation, using only Phi(0)=0 for any finite penalty, forces
+ r>=g d0/[2Lambda(1+8Dn^2)].
+Independently C T0 must be injective, because weak energy is at mostc/4 of the norm; hence r>=2d0. Since d0>=(D-1)V/2, the maximum of these lower bounds is a fixed positive multiple of V+gV/n^2. The full-count upper then proves the minimum restoring actual-rank order in the canonical subclass. The factors2 in weak dimension and trace were both retained; neither output count nor a scalar partition rank was substituted for the actual restricted rank.
+
+11. Canonical penalty lower and least-coefficient order
+For canonical full block projection R, each restriction R_alpha|U_0 is a contraction, even though its image may leave U_0. Its squared-singular-value sum is at most its actual restricted rank, equal to that of the corresponding canonical C_alpha|U_0. Over a real orthonormal weak basis of dimension2d0, the weighted Hilbert--Schmidt trace is therefore at most2Lambda r/g.
+Weak-field restoration gives K||RT0f||^2>=3c||f||^2/4. Sum on that basis to obtain K(2Lambda r/g)>=(3c/4)(2d0), or K>=3cgd0/(4Lambda r). For the constructed map r<=L(V+gV/n^2), using d0>=(D-1)V/2 and g/(1+g/n^2)>=min(g,n^2)/2 gives exactly
+ K>=3(D-1)c min(g,n^2)/(16Lambda L).
+Together with the all-field upper32c min(g,n^2), this proves the stated fixed-map least normalized coefficient order. A least coefficient exists as the lower endpoint of a nonempty closed intersection of restoring half-lines, with the kernel already controlled and weak fields giving a positive lower endpoint. The lower on U and upper on all fields support the order under either restoration-domain interpretation for the fixed map.
+In a singleton fallback min(g,n^2) is bounded in terms of Lambda and fixedK, consistent with its full-field least coefficient c. With these SAME canonical C rows, counting convention multiplies the coefficient by V, giving VK. Arbitrary rescaling, nonlinear penalty-size lower bounds and an upper for every economical map remain excluded.
+
+12. Exact original capped budget, all cap regimes and g=2
+The positive coefficient spectrum has a with multiplicity2D^2 and H with multiplicity(g-2)D^2 per vertex. The original226C cap normalization is
+ alpha_D=(3/4)^D(D/2)(D/(D-2))^(D-1).
+Weak eigenchannels have cost1, since alpha_D(16D)^(D/2)>=(3sqrt(D))^D>1. Strong cost remains min(1,alpha_D n^(-D)), including saturation. Thus the exact full budget is
+ F=D^2V[2+(g-2)min(1,alpha_D n^(-D))]
+   <=D^2(2V+alpha_D g).
+With h=Dg this proves h+F=O_D(V+g). At g=2 there is no strong tail; P=I_2 and the exact budget is2D^2V. There is no negative multiplicity or dropped cap. The rejected241A altered-alpha error is not reused; its rejection and the original337 versus65537/256 counterexample remain unchanged at their own source. Increasing weak multiplicity from1 to2 has been explicitly paid here.
+
+13. Boundary attacks, scope and originality limits
+The coordinate weak plane span(e_1,e_2) has a cheap allowed map if upper coherence is dropped: singleton means on the two weak channels and roots on the strong channels give restricted rank2d0, with K=c. Strong mean-zero fields have gap at least16c, and all strong constants are paid by roots on the full space. Taking g=n^D makes2d0/(gV/n^2) of order n^(2-D), tending to0 for D>=3.
+This projector has P_aa=1 on its two active coordinates, so it violates fixed upper coherence for g>2Lambda. It may be admissible for bounded g<=2Lambda, which is consistent with the large singleton fallback and constants depending on Lambda. It does not refute the coherent rank-two theorem. g=2 is likewise a valid fallback with two-dimensional weak space and no strong complement.
+Other symbolic attacks were included above: zero rows, exact regular-bin threshold, all tiny/discarded bins, angular endpoint ties, arbitrary row signs, empty quantile differences, exact target hits, first/last cuts, ceiling larger than remaining count, all constants, period-two edges, non-dyadic/non-square sizes, every root and every cap. None produced a theorem counterexample. No arithmetic or matrix oracle was executed.
+The substantive new step is the derived actual2x2 Gram lower. It proves only the rankEXACTLY2 weak-plane case. No arbitrary weak dimension, basis-free lower, signed/spatially varying profile, practical conditioning or efficient implementation, physical spectral gap or continuum theorem follows. Classical ingredients are finite-dimensional matrix approximation, angular bins, cumulative quantiles, finite gaps, Young, projections and trace. Historical priority and implication by the mentioned2019 differential-form predecessor remain unestablished; no exhaustive primary-literature priority search was performed. Proposed grouping with235-242 is neither publication nor a score transfer to frozen232B.
+
+14. Operational and factual context
+Standing global storage instructions, D:\LEEME.md, active repository CLAUDE.md and Operational Governance Charter remain binding and were read in this auditor task. No execution exception was assumed. This is the separate AUDITOR role from the fabricator, but the same persistent auditor task that previously reviewed241A,241B and242. It is not independent model/account/provider resampling. No243 fabrication occurred here. Shared filesystem/account and inherited configuration remain shared. No inbound follow-up arrived during this audit.
+Actually exposed description: "Codex, an agent based on GPT-6". Exact deployed backend/model identifier, version and actual reasoning-effort setting are unexposed and unknown. OpenAI/Codex is the exposed interface context; authentication account, provider routing, subscription/quota and provider/account usage limits were not inspected and are unknown. No independent-provider identity or quota status is invented.
+Only paper reasoning, scientific-source/primary reading, text authoring, Git capture/inspection and byte/hash operations occurred. No mathematical executable, numerical/symbolic oracle, Lean/Lake, build/test, rendering or runtime allocation occurred. No source, branch, repository state, other chat, automation or publication changed. No clone was created and no cleanup is pending. Writes were confined to the requested D evidencia-243/source-audit subtree. Earlier source failures, acceptances, notes and raw reports were not edited or regraded.
+
+15. Issued artifacts and disposition
+Destination:D:\Datos\the-eriksson-programme\autonomia\evidencia-243\source-audit.
+Complete new report:fullreport.txt. Machine verdict:verdict.json. Factual context:context.json. Raw capture binding:capture-manifest.json. Raw scientific inputs:capture\*. Artifact hashes:hashes.json, excluding its own unavoidable self-reference; its external SHA256 is returned at handoff.
+Authored report/JSON files are UTF-8 without BOM, LF only, final LF. Raw captures preserve exact original Git bytes, including the two226C CR bytes identified in the manifest.
+Final:ACCEPT243 at74dd6bb7938bf6a7522a84349b7a5d90fa907fc0, rawSHA985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459, within its stated scope and explicit singleton-priority interpretation C1. No blocking defect found. Source242's N1 was handled explicitly by the new cumulative-cut base case; original242 is not changed. No numeric grade, stars, PDF review, formal verification, execution or originality certificate was requested or produced.

@@ -1,0 +1,58 @@
+{
+  "audit_id": 243,
+  "issued_date": "2026-11-11",
+  "verdict": "ACCEPT_STATED_RANK_TWO_THEOREM_WITH_SCOPE",
+  "source_commit": "74dd6bb7938bf6a7522a84349b7a5d90fa907fc0",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-11_two-weak-directions243.txt",
+  "source_bytes": 13385,
+  "source_sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459",
+  "source_representation": "Exact Git blob LF, no normalization",
+  "complete_source_read": true,
+  "d_candidate_byte_identical": true,
+  "blockers": [],
+  "scope_clarifications": [
+    {
+      "id": "C1",
+      "clarification": "Explicit case(i) priority makes ALL channels singleton, including zero/discarded rows; zero/discarded-root descriptions apply to the angular allocation in(ii)/(iii)",
+      "theorem_impact": "None; proof/counts include this fallback"
+    }
+  ],
+  "accepted_analytic_checks": [
+    "actual rank-two tight frame and deterministic coefficient-only weak coordinates",
+    "projective bins, arbitrary signs, endpoints, zero rows and operator-norm error",
+    "discarded-bin Loewner loss and regular maximum-to-mass ratio",
+    "cumulative quantiles, overshoots, empty groups, exact ties and direct base case",
+    "derived cardinality bound32g beta+K without minimum row weight",
+    "actual2x2 Gram lower G_q>=lambda_q I2",
+    "all thresholds and exact beta total below7/8 and delta loss at most1/64",
+    "full coarse/tail/root/singleton row counts",
+    "finite Neumann/tensor and labelled torus gaps",
+    "all-field32c min(g,n^2) coercivity, one T and all constants",
+    "actual2d0 weak-space compression and restricted-rank lower",
+    "canonical weighted trace penalty lower and least coefficient",
+    "correct original alpha, doubled weak multiplicity, all caps and g=2",
+    "coordinate-plane escape outside fixed-coherence growing-g family"
+  ],
+  "hypothesis_removed": "one-dimensional weak subspace, extended specifically to rankEXACTLY2",
+  "retained_hypotheses": [
+    "rankEXACTLY2 orthogonal weak projector",
+    "P_aa<=2Lambda/g for fixedLambda",
+    "positive spatially constant rank-two weak family",
+    "fixed internal separability basis",
+    "canonical row weights",
+    "actual finite flat/coexact domain"
+  ],
+  "prior242_N1": "not inherited: direct first-cut base case stated in243",
+  "priority": "UNESTABLISHED; no exhaustive search",
+  "mathematical_execution": false,
+  "formal_or_numerical_verification": false,
+  "runtime_allocation": false,
+  "source_mutation": false,
+  "publication_authorized": false,
+  "score": null,
+  "stars": null,
+  "pdf": null,
+  "full_report": "fullreport.txt",
+  "context": "context.json",
+  "capture_manifest": "capture-manifest.json"
+}
