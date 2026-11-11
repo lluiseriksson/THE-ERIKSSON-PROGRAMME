@@ -1,0 +1,73 @@
+{
+  "exact_commit": "53f0b4ed83cd2fcb224b20be460dab6e5fd5201a",
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 2441,
+      "sha256_raw": "76ac1eb2ee13942590a2143170e91a4c96337e36c3148f8aa44df6c8bfb57be8",
+      "representation": "Exact retained raw bytes without normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 18415,
+      "sha256_raw": "122aad9058787c76fde2c111dc6498ae4be9306b4e3d773f7deed1d0c72ad4f0",
+      "representation": "Exact retained raw bytes without normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "review-context.json",
+      "bytes": 5431,
+      "sha256_raw": "972d706c47f979460a2f6585d586af1e1b4d534ab839a60a9796cae184b243aa",
+      "representation": "Exact retained raw bytes without normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/checkerboard_observations260.tex",
+      "bytes": 47103,
+      "sha256_raw": "9c24b70685a5a7ae9301555170fa84acafd9f17524734775b1e9bca7cce822d9",
+      "representation": "Exact retained raw bytes without normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256_raw": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "Exact retained raw bytes without normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/even-helical-counterexample263A.txt",
+      "bytes": 12998,
+      "sha256_raw": "7318a4097339ccfdb7e2ad9d2d87657fbe376458adbb85b219f7670380c273e9",
+      "representation": "Exact retained raw bytes without normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/golden-window-route-limit260B.txt",
+      "bytes": 4405,
+      "sha256_raw": "ab07d9fbba10d1bb5a039fa8e758db4f5b370838a5b79f136754fb507df8888d",
+      "representation": "Exact retained raw bytes without normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/helical-fourier262A.txt",
+      "bytes": 7045,
+      "sha256_raw": "2564f6b307bd7e93db5722714af5041391b30da615a59b7f5a6f80762791a0e9",
+      "representation": "Exact retained raw bytes without normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256_raw": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "Exact retained raw bytes without normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/README262-conjugate-family.txt",
+      "bytes": 1564,
+      "sha256_raw": "c03c488fa60b33470c99faea711f0a15412d971e08654b3175ff5b87d1f04bdb",
+      "representation": "Exact retained raw bytes without normalization; subjects extracted by binary git show"
+    },
+    {
+      "path": "subjects/README263.txt",
+      "bytes": 596,
+      "sha256_raw": "24f79141c2a557416a2210d9716b00fde617d3fb43f356278e2b0b226963a344",
+      "representation": "Exact retained raw bytes without normalization; subjects extracted by binary git show"
+    }
+  ],
+  "file_count": 11,
+  "self_exclusion": "Manifest excludes itself; raw SHA256 returned separately"
+}
