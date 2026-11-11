@@ -1,0 +1,591 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs}
+\usepackage[margin=27mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\ip}[2]{\langle#1,#2\rangle}
+\DeclareMathOperator{\Rea}{Re}
+\providecommand{\SourceCommit}{\errmessage{A frozen SourceCommit must be supplied}}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\ifdefined\pdfsuppressptexinfo\pdfsuppressptexinfo=15\fi
+\title{Canonical and unrestricted observations in a finite checkerboard gradient model}
+\author{Lluis Eriksson\\\small THE ERIKSSON PROGRAMME}
+\date{11 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We compare two classes of linear observations for a finite, source-weighted,
+two-channel checkerboard gradient form. For orthogonal alternating weak lines
+in dimensions three and four, the minimum restoring unrestricted rank is
+exactly $Dn$ on all fields and $(D-1)(n-2)$ on the actual coexact domain.
+For any fixed positive angle, an explicit transverse Fourier cutoff gives
+an unrestricted observation count of order $n$ and a quadratic penalty
+independent of $n$, with constants depending on the angle and dimension.
+A real coexact counterexample shows that the mean-only orthogonal construction
+does not extend unchanged to small positive angles. In contrast, canonical
+original-channel rectangle means have a necessary ambient count of order
+$n^{D-2}$. This last argument does not apply to the coexact domain, because
+rectangular averaging need not preserve it. A further explicit coexact witness
+excludes partitions whose every cell in either channel leaves a coordinate
+uncut. The canonical coexact three-dimensional question, linear count versus
+a possible logarithmic loss, remains open. These are finite analytical results;
+we establish neither historical priority, formal verification nor a physical
+Yang--Mills spectral gap.
+\end{abstract}
+
+\section{Problem and scope}
+Spectral coarse spaces that retain modes responsible for slow convergence are
+established constructions; see Spillane et al.~\cite{spillane2011,spillane2014}.
+The calculations here concern a particular finite coefficient family and a
+restoring quadratic inequality. They do not prove a preconditioned condition
+number bound or a new general principle of spectral enrichment. Our purpose is
+to keep the coefficients, observed rows and domain explicit enough to compare
+their different rank and count requirements.
+
+The manuscript consolidates the programme's analytical sources 251--254,
+rather than presenting their corollaries as separate papers. A preceding
+working paper treats broader canonical constructions~\cite{eriksson250}.
+The present manuscript is a new, ungraded consolidation draft; its results
+are not covered by the preceding PDF's model assessment.
+
+Fix an integer $D\geq3$, an even integer $n\geq2$, and $c>0$. Write
+\[
+ X=(\Z/n\Z)^D,\quad V=n^D,\quad
+ a=\frac{c}{16D},\quad H=cn^2.
+\]
+We identify the original chart with $\{0,\ldots,n-1\}^D$ and retain all
+positive periodic labels $\partial_i f(x)=f(x+e_i)-f(x)$, including at $n=2$.
+The source parity is $p(x)=\sum_i x_i\pmod2$. For each parity $l=0,1$,
+let $v_l,s_l\in\R^2$ be an orthonormal pair. The two weak lines
+$\R v_0,\R v_1$ have principal angle $\theta\in(0,\pi/2]$. Put
+\[
+ B(x)=a v_{p(x)}v_{p(x)}^T+H s_{p(x)}s_{p(x)}^T.
+\]
+An original field is $z=(z_1,\ldots,z_D)$, with $z_r(x)\in\R^2$.
+All inner products and norms use counting measure, summing sites, spatial
+components and internal channels. Define
+\begin{equation}\label{eq:form}
+ Q(z)=\sum_{x,i,r}(\partial_i z_r(x))^T B(x)\partial_i z_r(x),
+ \qquad E(z)=\sum_{x,i,r}|\partial_i z_r(x)|^2.
+\end{equation}
+The weights in \eqref{eq:form} belong to the source $x$.
+
+For a real spatial one-form $u$, use the forward curl
+$(d_1u)_{ij}=\partial_i u_j-\partial_j u_i$, with independent indices $i<j$.
+Its adjoint is taken for counting measure on those independent components.
+Set $U_0=\im(d_1^*)$ and let $U=U_0^2$ mean one copy for each original
+internal channel. This is the actual coexact domain, not a substitute
+divergence-free space or an abstract low-energy band.
+
+For a domain $A$, a linear map $C:A\to F$ restores target $c$ if
+\begin{equation}\label{eq:restore}
+ V^{-1}Q(z)+K\norm{Cz}^2\geq cV^{-1}\norm{z}^2\quad(z\in A)
+\end{equation}
+for some finite $K\geq0$. The lower bounds below also apply to any finite
+penalty $\Phi(Cz)$ with $\Phi(0)=0$. The rank on $U$ is always the actual
+restricted rank $\rank(C|_U)$.
+
+A canonical map uses a nonempty integer rectangle partition $\mathcal P_\alpha$
+of the original chart for each original channel $\alpha=1,2$, shared by all
+spatial components. Its rows and full count are
+\begin{equation}\label{eq:canonical}
+ (Cz)_{\alpha,r,S}=V^{-1/2}|S|^{-1/2}\sum_{x\in S}z_{r,\alpha}(x),
+ \qquad N_{\rm out}=D(|\mathcal P_1|+|\mathcal P_2|).
+\end{equation}
+The rectangles are products of nonwrapping chart intervals. On the ambient
+space these disjoint, nonzero rows are orthogonal and have rank $N_{\rm out}$.
+On $U$, that equality is not presumed. Unrestricted maps may instead use
+arbitrary real linear rows, including internal-channel mixtures and nonlocal
+Fourier coefficients.
+
+\section{Actual strong components and their spectrum}\label{sec:graph}
+Let $S$ be the $2\times2$ matrix with rows $s_0^T,s_1^T$ and put
+\begin{equation}\label{eq:delta}
+ Y_{l,r}=s_l\cdot z_r,\qquad
+ \delta=1-|s_0\cdot s_1|=1-\cos\theta>0.
+\end{equation}
+The row Gram matrix has eigenvalues $1\pm|s_0\cdot s_1|$. Thus $S$ is
+invertible and $\norm{Sz}^2\geq\delta\norm{z}^2$. This is a proof coordinate;
+we will specify its resulting observations as actual original-field rows.
+Dropping only nonnegative weak terms gives
+\begin{equation}\label{eq:strong}
+ Q(z)\geq H E_{\rm str}(Y),\qquad
+ E_{\rm str}(Y)=\sum_{l,r}\sum_{x:p(x)=l}\sum_i
+ |Y_{l,r}(x+e_i)-Y_{l,r}(x)|^2.
+\end{equation}
+
+For each residue $s$ of parity $l$, define
+\[
+ G_{l,s}=\{x:\textstyle\sum_i x_i\in\{s,s+1\}\pmod n\}.
+\]
+For each $l$ these $n/2$ sets partition $X$. They include the wrap pair
+$\{n-1,0\}$ where appropriate. Put $p=D-1$ and, for $y\in(\Z/n\Z)^p$, set
+\[
+ x_s(y)=(y_1,\ldots,y_p,s-\textstyle\sum_i y_i),\quad
+ u(y)=Y_{l,r}(x_s(y)),\quad t(y)=Y_{l,r}(x_s(y)+e_D).
+\]
+These are bijections onto the actual source and destination layers. Since
+$x_s(y)+e_i=x_s(y+e_i)+e_D$ for $i<D$, the component energy is exactly
+\begin{equation}\label{eq:layers}
+ E_s=\sum_y|u(y)-t(y)|^2+
+       \sum_{y,i<D}|u(y)-t(y+e_i)|^2.
+\end{equation}
+Rungs and cross edges generate every source translation, and every target
+has a rung. The sets $G_{l,s}$ are therefore connected actual strong
+components. No labelled edge has been reassigned or deduplicated.
+
+At a counting-orthonormal Fourier frequency $k\in(\Z/n\Z)^p$, put
+$T_k=1+\sum_{i=1}^p e^{2\pi i k_i/n}$. The Hermitian symbol of
+\eqref{eq:layers} has diagonal $D$ and off-diagonal entries $-T_k$ and its
+conjugate. Its eigenvalues are $D-|T_k|$ and $D+|T_k|$. Expansion gives
+\begin{equation}\label{eq:spectrum}
+ D^2-|T_k|^2=\sum_{0\leq i<j\leq p}|e^{i\vartheta_i}-e^{i\vartheta_j}|^2,
+ \quad \vartheta_0=0,\quad\vartheta_i=2\pi k_i/n.
+\end{equation}
+Consequently
+\begin{equation}\label{eq:gap-symbol}
+ D-|T_k|\geq\frac1{2D}\sum_{i=1}^p|1-e^{2\pi i k_i/n}|^2.
+\end{equation}
+At nonzero $k$, at least one squared term is at least
+$4\sin^2(\pi/n)\geq16/n^2$. At zero frequency the eigenvalues are $0,2D$;
+the zero vector branch is precisely the common constant on both layers.
+The other branch is also at least $8/(Dn^2)$ for $D\geq3,n\geq2$.
+Finite Parseval therefore proves
+\begin{equation}\label{eq:mean-gap}
+ E_s(f)\geq\frac8{Dn^2}\norm{f-\operatorname{mean}_{G_{l,s}}f}^2.
+\end{equation}
+Conjugate Fourier frequencies pair in the real space; real Nyquist
+frequencies obey the same real matrix inequality. All formulas include $n=2$
+with its original positive labels.
+
+\section{Exact unrestricted ranks at the orthogonal angle}
+Assume $D=3$ or $4$, and fix the original basis by
+$v_0=e_1,v_1=e_2$, so channel 1 is strong on odd starts and channel 2 on even
+starts. Let $R_{\rm str}$ average each original channel and spatial component
+over its correct strong components. This is an ambient counting-orthogonal
+projection. Define $C_{\rm str}$ by the normalized complete component means
+as in \eqref{eq:canonical}, replacing rectangles by the corresponding
+$G_{l,s}$. There are $Dn$ full rows and
+\[
+ \norm{C_{\rm str}z}^2=V^{-1}\norm{R_{\rm str}z}^2.
+\]
+
+\begin{theorem}\label{thm:exact}
+For the orthogonal family in $D=3,4$, the minimum unrestricted restoring
+ambient rank is exactly $Dn$. The minimum actual coexact restoring rank is
+exactly $(D-1)(n-2)$, including zero at $n=2$. The same displayed map
+$C_{\rm str}$ attains both ranks and restores target $c$ with $K=c$ on its
+fixed normalized rows.
+\end{theorem}
+\begin{proof}
+Sum \eqref{eq:mean-gap} over all original components. By \eqref{eq:strong},
+\[
+ Q(z)\geq\frac8D c\norm{(I-R_{\rm str})z}^2.
+\]
+Since $8/D\geq2>1$, orthogonality gives
+$Q(z)+c\norm{R_{\rm str}z}^2\geq c\norm{z}^2$ on all original fields.
+This proves the claimed normalized upper without any assertion about
+preservation of $U$.
+
+We next derive that preservation and the restricted rank for this particular
+map. For one internal channel, write its sum-layer averages as
+\[
+ A_r(t)=n^{-(D-1)}\sum_{\sum x_i=t}z_r(x).
+\]
+A coexact field has zero componentwise mean and backward divergence zero,
+by summing adjoint differences and using $d_1d_0=0$. Averaging the divergence
+over layer $t$ shows that $F(t)=\sum_r A_r(t)$ satisfies $F(t-1)-F(t)=0$.
+Its total sum is zero, so $F=0$. On a strong pair $\{s,s+1\}$ the projected
+value is $[A_r(s)+A_r(s+1)]/2$. Hence $R_{\rm str}z$ depends only on
+$t=\sum x_i$, has zero mean, has spatial sum zero pointwise, and is constant
+on the appropriate strong pairs in each channel.
+
+Conversely, any real mean-zero spatial vector function of $t$ whose spatial
+sum is zero is actually coexact. At a nonzero diagonal frequency
+$(j,\ldots,j)$ the forward multipliers are the common value
+$\xi_i=e^{2\pi i j/n}-1$. For its coefficient $u$, $\sum_i u_i=0$, and hence
+$\sum_i\overline{\xi_i}u_i=0$. The independent two-form coefficients
+\begin{equation}\label{eq:preimage}
+ \psi_{ik}=\frac{\xi_i u_k-\xi_k u_i}{\sum_i|\xi_i|^2},\quad i<k,
+\end{equation}
+have actual curl adjoint $u$, since expansion yields
+\[
+ (d_1^*d_1u)_r=(\textstyle\sum_i|\xi_i|^2)u_r
+       -\xi_r\textstyle\sum_i\overline{\xi_i}u_i.
+\]
+There is no zero frequency; conjugation and the real Nyquist mode make the
+inverse two-form real. Thus membership in $\im(d_1^*)$ has been proved.
+
+Let $W_0$ be these functions, additionally constant on each channel's strong
+pairs. With $m=n/2$, the scalar pair-constant mean-zero space has dimension
+$m-1$. Choose $D-1$ such functions per channel and set the last to minus their
+sum. It follows that
+\[
+ R_{\rm str}(U)=W_0,\quad \dim_\R W_0=2(D-1)(m-1)=(D-1)(n-2).
+\]
+Indeed the forward inclusion was derived above, $W_0\subset U$ by
+\eqref{eq:preimage}, and $R_{\rm str}$ is the identity on $W_0$. The kernels
+of $C_{\rm str}|_U$ and $R_{\rm str}|_U$ agree, so its actual rank is this
+dimension. Its ambient rank is $Dn$, because all full rows are disjoint.
+
+Finally the full strong kernel consists of constants on each connected
+component and has dimension $Dn$. Every field $w$ in it has
+$Q(w)=aE(w)\leq4Da\norm w^2=c\norm w^2/4$, by the isometry of forward
+shifts. Its intersection with $U$ is exactly $W_0$, by the two preceding
+directions. Any restoring linear map, with any finite penalty vanishing at
+zero, must be injective on each corresponding low-energy subspace. A nonzero
+kernel vector there contradicts the target. These give both sharp lower
+ranks and complete the proof.
+\end{proof}
+
+For $n\geq4$ a set $G_{l,s}$ projects onto the full chart in every coordinate,
+but has size $2n^{D-1}<n^D$. It cannot be a product rectangle: all its factors
+would then be full. Thus the attaining rows are not canonical rectangle rows.
+The $n=2$ component is the whole torus and is the stated harmless exception.
+This special projection preserves $U$ by proof; no such property is implied
+for other block-averaging maps.
+
+\section{An explicit upper at any fixed positive angle}
+The angle assumption in Theorem~\ref{thm:exact} can be removed for an
+order-$n$ unrestricted upper by retaining transverse modes. We do not extend
+its exact minima to arbitrary angles.
+
+\begin{theorem}\label{thm:angle}
+For all $D\geq3$ and $\theta\in(0,\pi/2]$, put
+\[
+ R=\left\lceil\sqrt{\frac{D}{4\delta}}\right\rceil,\qquad
+ L=\min(n,2R+1),\qquad K=\frac{2c}{\delta}.
+\]
+There is an unrestricted real map with $2DnL^{D-1}$ displayed rows satisfying
+\begin{equation}\label{eq:angleupper}
+ V^{-1}Q(z)+K\norm{Cz}^2\geq2cV^{-1}\norm z^2
+\end{equation}
+on all ambient fields and hence on $U$. Both unrestricted minimum restoring
+ranks have order $n$ as even $n\to\infty$ at fixed $D,\theta>0$.
+\end{theorem}
+\begin{proof}
+On each actual two-layer normal-coordinate component from
+Section~\ref{sec:graph}, let $P$ retain both layer coefficients at frequencies
+\[
+ \mathcal A_R=\{k:|k_i|_n\leq R\text{ for every }i<D\},
+\]
+where $|k_i|_n$ is cyclic distance to zero. There are exactly $L^{D-1}$ such
+frequencies. Conjugate pairs produce sine and cosine real coordinates, and
+each self-conjugate character is counted once. The real dimension is therefore
+$2L^{D-1}$ per component. The direct sum over all $l,s,r$ is an orthogonal
+projection in the $Y$ norm.
+
+Outside the cube, some cyclic coordinate distance is at least $R+1$ and at
+most $n/2$. Thus \eqref{eq:gap-symbol} and $\sin(\pi q/n)\geq2q/n$ give
+the lower eigenvalue bound $\gamma=8(R+1)^2/(Dn^2)$. The upper branch is
+at least $D\geq\gamma$, because a nonempty tail implies
+$\gamma\leq2/D$. By Parseval,
+\[
+ E_{\rm str}(Y)\geq\gamma\norm{(I-P)Y}^2.
+\]
+If the cube is the whole frequency torus, $P=I$ and the zero-tail statement
+is automatic; no nonexistent exterior mode is invoked. This includes $n=2$.
+
+Choose a real orthonormal character basis on each retained layer and extend
+by zero to the other components; denote the resulting vectors by $b_j$.
+They are explicit counting-orthonormal vectors in $Y$ coordinates. Define
+actual original-field rows by
+\[
+ (Cz)_j=V^{-1/2}\ip{b_j}{Y_{l,r}},\qquad Y_{l,r}=s_l\cdot z_r.
+\]
+There are $2L^{D-1}$ rows per component, $n/2$ components per parity,
+two parities and $D$ spatial components. Consequently
+$N_{\rm out}=2DnL^{D-1}$ and $\norm{Cz}^2=\norm{PSz}^2/V$ exactly.
+Our cutoff yields $H\gamma\geq2c/\delta=K$. Therefore
+\[
+ Q(z)+VK\norm{Cz}^2\geq
+ K\norm{(I-P)Sz}^2+K\norm{PSz}^2
+ =K\norm{Sz}^2\geq2c\norm z^2.
+\]
+The same conclusion holds for a full cube using only the observed term.
+Orthogonality is used in the $Y$ norm, followed by the proved singular-value
+bound in \eqref{eq:delta}. We have not assumed that $P$ or $S^{-1}PS$
+preserves $U$; the ambient inequality is restricted only after its proof.
+
+For the lower ranks, let $\mathcal F_l$ consist of mean-zero functions on
+$\Z_n$ constant on the strong pairs $\{l+2j,l+2j+1\}$.
+Its dimension is $m-1$, $m=n/2$. Choose independently
+$f_{l,r}\in\mathcal F_l$ for $r<D$, put
+$f_{l,D}=-\sum_{r<D}f_{l,r}$, and define original fields
+\[
+ z_r(x)=S^{-1}\begin{pmatrix}f_{0,r}(\sum x_i)\\ f_{1,r}(\sum x_i)\end{pmatrix}.
+\]
+This is injective and has real dimension $(D-1)(n-2)$. Every original channel
+has zero mean and pointwise spatial sum zero; the explicit real preimage
+\eqref{eq:preimage} proves membership in $U$. All actual strong normal
+differences vanish. Thus $Q=aE\leq c\norm z^2/4$ on this whole subspace.
+Every restoring map must inject it. Dropping the mean and spatial-sum
+conditions gives $Dn$ independent ambient parameters with the same energy
+bound, and hence the ambient lower rank $Dn$.
+Since $R,K$ are independent of $n$ at fixed $D,\theta$, these lower ranks and
+the constructed upper count give order $n$. The coexact lower is zero at
+$n=2$; no positive endpoint lower is asserted.
+\end{proof}
+
+The count constant and penalty diverge as $\theta\to0$. At $\theta=0$ the
+matrix $S$ is singular, and the theorem does not follow by taking a limit.
+Even at a fixed angle, $K$ is a coefficient on these fixed normalized rows;
+it is not the condition number of the full operator. The observations are
+nonlocal and can mix the original internal channels. No canonical upper has
+been obtained from this construction.
+
+\section{Why complete component means do not suffice at small angles}
+\begin{proposition}\label{prop:smallangle}
+Let $v_0=(1,0)$, $v_1=(\cos\theta,\sin\theta)$ and
+$0<\theta\leq1/4$ radians. For every even $n\geq2$ and $D\geq3$, there is a
+nonzero real $z\in U$ annihilated by all complete strong-component means,
+in any constant original-channel or normal-coordinate direction, with
+$Q(z)/(c\norm z^2)<17/24$. Any finite penalty vanishing at zero therefore
+fails to restore target $c$ for the map consisting only of those means.
+\end{proposition}
+\begin{proof}
+Put $w=(\cos(\theta/2),\sin(\theta/2))$ and let
+$z_D(x)=w\cos(2\pi x_1/n)$, $z_r=0$ for $r\ne D$.
+At its supported original frequencies $\pm e_1$, only the first forward
+multiplier is nonzero and only the $D$th spatial field component is nonzero.
+Thus $\sum_i\overline{\xi_i}u_i=0$, and formula~\eqref{eq:preimage}, now
+with these actual multipliers, constructs its real coexact preimage. At
+$n=2$ the coincident Nyquist mode and preimage are real.
+
+On any sum layer $s$, parameterize $x=(y,s-\sum y)$. Its cosine sum is
+$n^{D-2}\sum_{y_1=0}^{n-1}\cos(2\pi y_1/n)=0$. Hence every $G_{l,s}$
+mean vanishes, in every constant internal direction and every spatial
+component. Normalization and linear combinations of these means do not
+change this conclusion.
+
+The bisector satisfies
+$|v_l\cdot w|^2=\cos^2(\theta/2)$ and
+$|s_l\cdot w|^2=\sin^2(\theta/2)$ for both parities. Thus its source
+quadratic coefficient is the same number
+$\beta=a\cos^2(\theta/2)+cn^2\sin^2(\theta/2)$ at every site.
+The periodic cosine is an exact positive-Laplacian eigenfunction, so
+\[
+ \frac{Q(z)}{\norm z^2}=4\sin^2(\pi/n)
+ \bigl[a\cos^2(\theta/2)+cn^2\sin^2(\theta/2)\bigr].
+\]
+This retains the forward labels also at $n=2$. Using $\sin t\leq t$ and
+$\sin^2(\pi/n)\leq1$ gives
+\[
+ \frac{Q(z)}{c\norm z^2}\leq\frac1{4D}+\pi^2\theta^2
+ \leq\frac1{12}+\frac{\pi^2}{16}<\frac{17}{24}<1.
+\]
+The last strict bound uses $\pi^2<10$. Since every observation is zero,
+the target fails for every admitted penalty. The strong energy is positive
+at positive angle; it was not incorrectly set to zero.
+\end{proof}
+
+This proposition refutes the unchanged mean-only extension for a specific
+angle interval. It neither locates a sharp critical angle nor excludes the
+enriched observations in Theorem~\ref{thm:angle}, which retain transverse
+modes missed by these means.
+
+\section{A canonical ambient count lower bound}\label{sec:canonical}
+Return to the orthogonal original basis $v_0=e_1,v_1=e_2$.
+Let $R$ be the canonical counting-orthogonal block projection, so
+$\ker C=\ker R$ and $\norm{Cz}^2=\norm{Rz}^2/V$.
+
+\begin{theorem}\label{thm:ambientcanonical}
+If a canonical map restores target $c$ on all ambient fields, with any finite
+penalty $\Phi(Cz)$ satisfying $\Phi(0)=0$, then
+\begin{equation}\label{eq:countlower}
+ N_{\rm out}\geq
+ \frac{3DV}{2^{2D+4}(1+8Dn^2)}
+ \geq\frac{3D}{2^{2D+4}(1+8D)}n^{D-2}.
+\end{equation}
+The statement concerns the ambient count and rank. It does not assert this
+lower bound on the actual coexact domain alone.
+\end{theorem}
+\begin{proof}
+First suppose $n\geq4$. Set $m=n/2$, $k=\lfloor m/2\rfloor$ and
+$\varphi=2\pi k/n\in[\pi/3,\pi/2]$. On sum residues put
+$h(2j)=h(2j+1)=\cos(2\varphi j)$. Choose a unit spatial vector $b$ and
+set $z_{r,2}(x)=b_r h(\sum_i x_i)$, $z_{r,1}=0$. Every even-source strong
+difference of channel 2 vanishes. Finite character sums give
+\[
+ \norm z^2=2n^{D-1}\sum_j\cos^2(2\varphi j)\geq V/2.
+\]
+The cyclic labelled difference identity on the $m$ pair values yields
+\[
+ Q(z)=2aD\sin^2\varphi\norm z^2\leq(c/8)\norm z^2.
+\]
+The period-two pair cycle retains both forward labels, so this includes $n=4$.
+
+Write $A=(1+e^{-i\varphi})/2$, $B=(1-e^{-i\varphi})/2$.
+The paired complex carrier is
+$f(t)=Ae^{i\varphi t}+Be^{i(\varphi+\pi)t}$ and $h=\Rea f$.
+Its two frequencies are well-defined on $\Z_n$. Each interval character sum
+is at most $2/|1-e^{i\omega}|\leq2$ for these frequencies, and
+$|A|+|B|\leq\sqrt2$. Factoring over every original rectangle $S$ gives
+\[
+ \left|\sum_{x\in S}h(\sum_i x_i)\right|^2\leq2^{2D+1}.
+\]
+For $w=z/\norm z$, put $t=\norm{Rw}^2$. With the shared spatial-component
+partition and nonempty cells,
+\[
+ t\leq\frac{2^{2D+2}}V\sum_{S\in\mathcal P_2}\frac1{|S|}
+ \leq\frac{2^{2D+2}N_{\rm out}}{DV}.
+\]
+The actual field $u=(I-R)w$ has $Cu=0$ and $\norm u^2=1-t$.
+Ambient restoration requires $Q(u)\geq c(1-t)$.
+On all ambient fields, $B\leq HI$ and forward-shift isometry imply
+$Q(y)\leq4DH\norm y^2$. Positivity of the form then gives
+\[
+ Q(w-Rw)\leq2Q(w)+2Q(Rw)\leq c/4+8Dcn^2t.
+\]
+Consequently $t\geq3/[4(1+8Dn^2)]$. Combining these bounds proves the
+first inequality in \eqref{eq:countlower}; the second follows from
+$1+8Dn^2\leq(1+8D)n^2$.
+
+At $n=2$, use no nonexistent oscillatory pair mode. Each channel partition
+has at least one cell, so $N_{\rm out}\geq2D$. The first right-hand side of
+\eqref{eq:countlower}, divided by $2D$, equals
+$3/[2^{D+5}(1+32D)]<1$. This proves the endpoint directly.
+\end{proof}
+
+In $D=4$ the second constant is $1/11264$. The earlier ambient canonical
+construction in programme source 247, included in the public source package
+of~\cite{eriksson250}, has count at most $2^{25}n^2$. Together these give
+order $n^2$ for the ambient canonical class. Theorem~\ref{thm:exact} gives
+the same-profile ambient unrestricted minimum $4n$. These are comparisons
+of row classes on the same domain, not comparisons of unlike domains.
+The earlier upper is a cited proved input, not a result rederived here.
+
+The indispensable domain boundary in the lower proof is $u=(I-R)w$.
+Even if $b$ is chosen with spatial sum zero so that $w$ is coexact, a
+rectangular block projection need not preserve $U$. Thus $u$ has not been
+shown coexact, and applying a coexact target inequality to it would be
+invalid. The argument supplies no canonical coexact $n^2$ lower in $D=4$.
+In $D=3$ the canonical coexact question of $O(n)$ versus a logarithmic loss
+also remains open; Theorem~\ref{thm:angle} does not settle it.
+
+\section{A coexact falsifier for uncut rectangular cells}
+\begin{proposition}\label{prop:uncut}
+In the orthogonal family, let $n\geq4$ be even. If every cell of the
+canonical partition of either original internal channel has at least one
+full coordinate interval, that map cannot restore target $c$ on $U$ with
+any finite penalty vanishing at zero. The full coordinate direction may
+differ from cell to cell; the other channel may even observe all sites.
+\end{proposition}
+\begin{proof}
+Choose the indicated channel $\alpha$ and its strong-source parity
+$p_1=1,p_2=0$. Set $m=n/2\geq2$ and
+\[
+ F_\alpha(t)=\cos\left(\frac{2\pi}{m}
+ \left\lfloor\frac{(t-p_\alpha)\bmod n}{2}\right\rfloor\right).
+\]
+It is constant on each correct strong pair, including the wrap pair, has
+zero sum and is nonzero. Put
+$z_{r,\alpha}(x)=b_rF_\alpha(\sum_i x_i)$ for
+$b=(1,-1,0,\ldots,0)$, and set the other channel to zero.
+The mean is zero and the spatial sum is zero. Formula~\eqref{eq:preimage}
+constructs its actual real coexact preimage. Its strong differences vanish,
+so $Q(z)=aE(z)\leq c\norm z^2/4$.
+
+For any cell in that channel, fix all coordinates except a complete one.
+As the complete coordinate varies, the sum residue runs through every
+element of $\Z_n$ once. Its $F_\alpha$ sum is zero; summing the remaining
+cell coordinates preserves zero. Thus every spatial mean in that cell
+vanishes. The same field works simultaneously for all cells, irrespective
+of which coordinate is full. The other channel is identically zero.
+Therefore $Cz=0$ and the nonzero coexact field contradicts the target.
+\end{proof}
+
+A necessary condition is consequently that each original channel have at
+least one cell proper in every coordinate. This is not sufficient, gives
+no asymptotic logarithmic count lower, and does not exclude arbitrary
+$O(n)$ partitions with all coordinates cut. At $n=2$ the scalar zero-mean
+one-pair space vanishes; the proposition deliberately excludes that case.
+
+\section{Interpretation and remaining question}
+The sharp orthogonal ranks count the actual strong kernel and its explicitly
+derived coexact image. Positive-angle enrichment pays a deteriorating
+singular-value comparison by retaining finitely many transverse modes per
+component. The small-angle counterexample explains why that enrichment cannot
+simply be replaced by an assertion that the old means still suffice.
+The canonical ambient lower instead uses a real oscillatory carrier and an
+actual ambient kernel projection. Its failure to transfer to $U$ is an
+explicit domain obstruction, not a technical detail that can be omitted.
+
+The remaining question is whether, for the orthogonal $D=3$ family and actual
+$U$, canonical original-channel integer rectangle partitions admit $O(n)$ full
+count with some finite size-dependent quadratic penalty, or whether the
+known logarithmic upper loss is unavoidable. The mean supports and Fourier
+rows used in the unrestricted theorems are not permitted substitutes.
+No theorem here establishes a size-uniform canonical penalty, efficient
+implementation or a full-operator condition number. All results concern a
+finite toy gradient family. The continuum and physical Yang--Mills mass gap
+remain open; the programme's PR29 accounting remains $20/41$, with
+\texttt{TermSource=0}.
+
+\section{Model assessments and review context}
+The mathematical source texts 251--254 received complete involved AI analytical
+readings, with exact raw source hashes, full reports, objections, captures and
+context retained in the reproducibility package. They are not human peer
+reviews, blind readings, independent provider samples or Lean verification.
+The exposed reviewer identity was Codex, based on GPT-6; the exact served
+backend, version and reasoning effort were not exposed. Reviewers shared
+account, infrastructure and programme context and had earlier involvement.
+
+At this initial source freeze, the production draft has not yet received an exact-PDF numerical
+assessment. No score is assigned here and no previous score is inherited.
+The preceding exact 20-page PDF, SHA256
+\texttt{381da284637d6abcd2922ff649550a45243c2000fe16cc5efc65336f5765df2d},
+was separately assessed at importance $4.50/10$, with overall $5/10$ stars,
+recommendation \texttt{major\_revision} and three material objections open.
+That historical assessment concerns only those prior bytes, not this text.
+Its outstanding issues include historical priority, wider practical relevance
+and preserving the finite model's stated scope. They are not resolved by
+copying an assessment into a successor version.
+
+The source audits establish analytical readings of specific finite arguments;
+they do not establish originality. The primary-source comparison is bounded:
+the local spectral enrichment mechanism is established literature, and priority
+of the present specialization remains unestablished. Neither deposition nor
+Working-paper status constitutes editorial acceptance or peer review.
+
+\section*{Reproducibility and provenance}
+Scientific inputs are frozen programme sources 251--254. The source archive
+must retain their raw bytes, complete analytical reports and context, this
+manuscript's mapping, the frozen Git commit and all production logs. Linux
+compilation, extraction and page rendering are separate production checks;
+they do not certify the mathematics or transfer a model score. At this source
+stage, no successful build, visual review or exact-PDF review is claimed.
+Subsequent production and review facts belong to dated sidecars linked to the
+exact PDF hash. The original published version remains immutable.
+The frozen production source is \texttt{\SourceCommit}.
+
+\begin{thebibliography}{9}
+\bibitem{spillane2011}
+N. Spillane, V. Dolean, P. Hauret, F. Nataf, C. Pechstein and R. Scheichl,
+A robust two-level domain decomposition preconditioner for systems of PDEs,
+\emph{C. R. Acad. Sci. Paris, Ser. I} \textbf{349} (2011), 1255--1259.
+\href{https://doi.org/10.1016/j.crma.2011.10.021}{doi:10.1016/j.crma.2011.10.021}.
+\bibitem{spillane2014}
+N. Spillane, V. Dolean, P. Hauret, F. Nataf, C. Pechstein and R. Scheichl,
+Abstract robust coarse spaces for systems of PDEs via generalized eigenproblems
+in the overlaps, \emph{Numer. Math.} \textbf{126} (2014), 741--770.
+\href{https://doi.org/10.1007/s00211-013-0576-y}{doi:10.1007/s00211-013-0576-y}.
+\bibitem{eriksson250}
+L. Eriksson, Canonical rectangle observations for matrix gradients: fixed weak
+spaces and checkerboard counterexamples, AIRR Working paper,
+ARR-2026-5XANPRA7E891Q9FZ, version 1 (2026).
+\url{https://airr.science/papers/ARR-2026-5XANPRA7E891Q9FZ/versions/v1/}.
+\end{thebibliography}
+\end{document}

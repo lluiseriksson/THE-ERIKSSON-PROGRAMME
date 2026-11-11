@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "2": "253B sections1--2;254A sections1--3",
+    "3": "253B all, including derived coexact image/exact minima",
+    "4": "254A, with lower-space proof also252A",
+    "5": "254 negative companion; complete mean-only audit",
+    "6": "251A; ambient only. D4 upper cited as proved source247 input",
+    "7": "251 uncut-coordinate falsifier; complete bounded audit"
+  },
+  "model_context": "Full involved AI source reports retained; no formal/human/blind/independent or exact-PDF numerical review of this manuscript at source stage",
+  "prior_exact_pdf": {
+    "raw_sha256": "381da284637d6abcd2922ff649550a45243c2000fe16cc5efc65336f5765df2d",
+    "importance": 4.5,
+    "applicable_to_new_manuscript": false,
+    "official_source_archive_url": "https://github.com/arr-research/arr-research.github.io/releases/download/ARR-2026-5XANPRA7E891Q9FZ-v1/ARR-2026-5XANPRA7E891Q9FZ-v1-sources.zip",
+    "official_source_archive_sha256": "90bec335b49fbe89be074d26690f7e7567341c41bea24397ada382e32df53807"
+  },
+  "active_question": "251 canonical actual coexact D3 O(n) versus logarithm remains OPEN; no second question activated",
+  "novelty": "Primary comparison limited; spectral coarse selection established, specific priority unestablished"
+}

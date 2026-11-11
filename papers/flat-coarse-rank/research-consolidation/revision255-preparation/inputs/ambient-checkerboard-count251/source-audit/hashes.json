@@ -1,0 +1,42 @@
+{
+  "candidate_sha256_raw": "23d171fa5f9d9be8eef9bd02b8a19d2958e9de02cc30757a22e4582a6fd871a8",
+  "files": [
+    {
+      "path": "capture-manifest.json",
+      "bytes": 1308,
+      "sha256_raw": "89617555c1ce7da03e5e213e0eeee44613b7b2afa714b1c4a1a5d5bf0bf2d656"
+    },
+    {
+      "path": "capture/all-field-checkerboard-count251A.txt",
+      "bytes": 9529,
+      "sha256_raw": "23d171fa5f9d9be8eef9bd02b8a19d2958e9de02cc30757a22e4582a6fd871a8"
+    },
+    {
+      "path": "capture/source247.txt",
+      "bytes": 10720,
+      "sha256_raw": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+    },
+    {
+      "path": "capture/source248.txt",
+      "bytes": 17708,
+      "sha256_raw": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+    },
+    {
+      "path": "context.json",
+      "bytes": 1448,
+      "sha256_raw": "7965b5b637bd46f7746c4f348822c977e6aafac1edd201308ecd0c9be424c311"
+    },
+    {
+      "path": "fullreport.txt",
+      "bytes": 12123,
+      "sha256_raw": "40377d5867620d23295b7c4805199ed32c50a9f4ab121e7fbe1774ce0d94121c"
+    },
+    {
+      "path": "verdict.json",
+      "bytes": 1216,
+      "sha256_raw": "e59d0071feb20e6a5f40c4a0871cbbf04919edaa720f752553c86e816827cf5d"
+    }
+  ],
+  "self_hash_excluded": true,
+  "representation": "Captured input files exact raw bytes without normalization; authored report and JSON UTF8 no BOM"
+}

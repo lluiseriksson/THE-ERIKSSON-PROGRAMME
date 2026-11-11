@@ -1,0 +1,193 @@
+EXACT ANALYTICAL AUDIT251A -- AMBIENT CANONICAL CHECKERBOARD COUNT LOWER
+Issued11November2026. Verdict: ACCEPT_WITH_LIMITS.
+Candidate rawSHA25623d171fa5f9d9be8eef9bd02b8a19d2958e9de02cc30757a22e4582a6fd871a8.
+Full candidate read freshly; no source changes, computation or grade.
+
+1. Disposition and exact boundary
+No material mathematical defect was found in the theorem as an ALL-FIELD
+canonical full-output-count lower for the exact orthogonal checkerboard.
+The carrier, actual source-weighted energy, rectangle cancellation, projection
+mass, ambient kernel correction, every even-size endpoint and displayed
+constants close analytically. Combining with247's ALL-FIELD D4 upper does
+give ambient count/restoring ambient rank Theta(n^2), in this precise class.
+For D3 the result is Omega(n) on ambient counts only and leaves even the
+ambient logarithmic gap open. It provides NO lower on rank(C|U0^2) and does
+NOT solve the active coexact D3 question. The source repeatedly keeps that
+boundary; this acceptance must not be relabeled as a coexact lower.
+
+This is source correctness, not formal/executed/PDF/novelty/importance
+certification. The source itself says candidate pending audit; this report
+is the later source judgment, not an amendment of those historical bytes.
+
+2. Actual family, real carrier and every n>=4
+The exact model uses channel2 strong at even sources and weak at odd sources,
+with actual positive forward-source weights. For n=2m>=4, k=floor(m/2)
+satisfies1<=k<m. If m is even k/m=1/2; if m is odd and at least3,
+k/m=(m-1)/(2m)>=1/3. Hence phi=pi k/m lies in[pi/3,pi/2].
+The paired real carrier h(2j)=h(2j+1)=cos(2phi j) is n-periodic because
+2phi m=2pi k. At each even source every forward label changes its sum
+residue from2j to2j+1, giving zero strong difference. Each odd source changes
+from2j+1 to2(j+1) and incurs only a. This is valid through the wrap n-1->0,
+and all D labels have the same scalar difference; no label is deduplicated.
+The spatial unit polarization v gives sum_r v_r^2=1 exactly.
+
+Every sum residue has n^(D-1) vertices. The finite cos-square sum is m/2
+unless m divides2k, in which case it is m. Therefore ||z||^2 is V/2 or V,
+never zero or below V/2. This includes m2/n4, where the alternating scalar
+mode has full squared mass. The stated identity on the labelled m-cycle
+follows by multiplying its second-difference eigenvalue4sin^2(phi) by h
+and summing. It remains exact at m2 with both forward labels. It yields
+Q(z)=2aDsin^2(phi)||z||^2<=c||z||^2/8, since a=c/(16D).
+Normalizing this REAL field therefore gives a genuine unit w with Q(w)<=c/8.
+The full H=cn^2 profile was retained and its strong part is actually zero,
+not dropped by an artificial coefficient change or auxiliary graph assumption.
+
+3. Two finite characters and ALL legal rectangle sums
+The asserted complex coefficients obey A+B=1 and A-B=exp(-i phi).
+At t2j their carrier is exp(i2phi j); at t2j+1 the extra exp(i phi)
+is canceled by A-B. Thus h is exactly its real part. Both characters are
+n-periodic because phi n=2pi k and n is even. Their coefficients have
+|A|^2+|B|^2=1, so |A|+|B|<=sqrt2 without an omitted factor.
+
+For phi in[pi/3,pi/2], |1-exp(i phi)|=2sin(phi/2)>=1; for phi+pi it
+is2cos(phi/2)>=sqrt2. Neither denominator vanishes. The finite geometric
+sum over ANY consecutive integer interval therefore has magnitude at most2
+for either character, independently of its length or starting point. On a
+nonwrapping original chart rectangle, sum of exp(i omega sum_i x_i)
+factors as the product of those interval sums. The two-character triangle
+bound gives at most sqrt2*2^D, hence squared real-carrier sum at most2^(2D+1).
+Modulo-n reduction of the sum causes no problem because both characters
+are genuinely n-periodic. Root cells, singletons, irregular side lengths and
+cells touching chart boundaries are all included. A whole partition need
+not be a global tensor grid: this estimate applies to each of its product
+rectangles separately. No Fourier observation is introduced into the class.
+
+4. Actual ambient block projection and normalized mass
+For this field only original channel2 is nonzero. The counting orthogonal
+block projection replaces its scalar carrier by its arithmetic mean in each
+cell, the SAME partition across spatial r. Thus its squared mass is exactly
+(1/||z||^2) sum_(S in P2) |sum_S h|^2/|S| after summing sum_r v_r^2=1.
+The norm lower V/2 and preceding squared sum bound give
+t=||Rw||^2<=2^(2D+2) sum_S1/|S| / V<=2^(2D+2)R2/V.
+Each cell is nonempty, and R2<=Nout/D. This proves the displayed final
+t upper with all spatial/channel and normalization factors paid. In
+particular no coexact rank has replaced the actual ambient block count.
+
+The canonical scalar rows on disjoint cells have disjoint supports and
+squared ambient row norm1/V. Distinct spatial components and original channels
+have orthogonal coordinate supports. Consequently every row is nonzero and
+all rows are mutually orthogonal, so rank on the FULL ambient space equals
+Nout. This is precisely where 'ambient rank' and 'full output count' agree;
+the agreement is not asserted after restriction to U0^2.
+
+5. Ambient kernel correction and exact lower constants
+Since R is that actual orthogonal projection, u=(I-R)w is a REAL ambient
+field, Cu=0 and ||u||^2=1-t. All-field restoration may therefore be applied
+at u. The same step works with any finite real penalty Phi satisfying
+Phi(0)=0 because its value at this observation is exactly zero.
+There is no dependence on the magnitude of a quadratic coefficient K.
+
+For every ambient y, B(x)<=HI and counting-isometric forward shifts give
+Q(y)<=4DH||y||^2. This bound has the actual original D directions and
+counts every forward label, including period2. Positive-semidefinite
+polarization yields Q(w-Rw)<=2Q(w)+2Q(Rw)<=c/4+8Dcn^2t.
+The required kernel lower is c(1-t), so
+3/4<=(1+8Dn^2)t, or t>=3/[4(1+8Dn^2)]. Combining the two bounds on t gives
+Nout>=3DV/[2^(2D+4)(1+8Dn^2)], exactly as claimed. Since
+1+8Dn^2<=(1+8D)n^2, b_D=3D/[2^(2D+4)(1+8D)] is valid.
+
+I checked the displayed special constants arithmetically by their fractions:
+b4=12/(4096*33)=1/11264; b3=9/(1024*25)=9/25600.
+No numerical script, test/oracle or finite-case campaign was run.
+
+6. n2 handled without a nonexistent carrier
+Section1 deliberately begins at n4. At n2 each of the two nonempty channel
+partitions contains at least one cell, so Nout>=2D independently of any
+restoration hypothesis. The claimed stronger first bound divided by2D is
+3/[2^(D+5)(1+32D)]<1. Therefore it is paid by that trivial count. The
+second order bound follows from the same denominator inequality. No k0
+mode or unsupported cyclic identity is used at this endpoint.
+
+7. D4 upper interface and exact consequences
+I freshly read the COMPLETE247 source whose raw hash is
+e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03.
+It gives the exact SAME positive orthogonal checkerboard at D4, canonical
+per-original-channel integer rectangles shared over four spatial components,
+all even n>=2, full count<=2^25 n^2 and finite ALL-FIELD restoring coefficient.
+Its all-field proof precedes any restriction to U0^2, so it is a valid upper
+for the present AMBIENT minimum. All singleton fallbacks, original normalization
+and finite coefficients are within that statement. Thus existence plus the
+current universal ambient lower gives the stated Theta(n^2) minimum ambient
+count; orthogonality of the full canonical rows gives the same order for
+ambient restoring rank. It says nothing about a matching restricted rank.
+
+For248 I freshly read the opening60lines, exact family/domain and all-field
+O(n(1+lnn)) statement, not its entire proof anew in this251 audit. Its complete
+raw file was captured at93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675.
+The D3 lower here is only Omega(n), leaving a logarithmic gap even in the
+ambient comparison. The actual coexact question remains separate and open.
+Original commit identifiers in the candidate are provenance, not new Git
+or remote verification by this audit; local raw inputs were freshly hashed.
+
+8. Why the coexact-domain obstruction is real
+The proof needs the restoring target at u=(I-R)w, so it requires the claimed
+ALL-FIELD domain. Block averaging on arbitrary original rectangles does not
+commute with the differential constraint. Even choosing a coexact w does not
+repair this missing membership step. The source correctly refuses that upgrade.
+
+For an explicit illustration of the projection obstruction, at any n>=4
+take the same carrier, v=(e1-e2)/sqrt2, and isolate original point0 in the
+channel2 partition by successive-coordinate cuts; channel1 may use its root.
+The first side cell is {1,...,n-1} times all remaining coordinate charts.
+Let f be the scalar block average of h(sum x). Then f(0)=1 and
+f(e1-e2)=0: the latter site is in that first side cell, and summing any
+remaining full coordinate gives sum_t h(t)=0 since1<=k<m. The projected
+vector field is v f, whose backward divergence at e1 is
+[f(0)-f(e1-e2)]/sqrt2=1/sqrt2, hence it is NOT coexact. The original v h
+is coexact: each nonzero carrier character has equal forward multiplier in
+every spatial coordinate, and v is perpendicular to that multiplier vector;
+there is no zero-frequency component. Equivalently each nonzero Fourier
+mode lies in the actual curl-adjoint image. Thus even this favorable choice
+of w gives u not coexact for a legal canonical partition. This illustration
+uses the unnormalized carrier for the displayed values; normalization only
+multiplies its nonzero divergence by a nonzero scalar. It
+only confirms the method's domain obstruction; it is not a counterexample
+to a possible coexact lower or an answer to the D3 logarithmic question.
+
+9. Findings, hypotheses and claims not made
+No material blocker or nonblocking correction was established for the
+displayed ambient theorem. Its exact rectangle class, shared-k convention,
+orthogonal spatial checkerboard, source weighting, even-size torus, positive
+profile and all-field target remain hypotheses. The kernel proof genuinely
+works without a size-uniform penalty hypothesis and covers finite Phi(0)=0.
+It does not remove the ALL-FIELD condition by shifting it into an unproved
+coexact preservation property; the source explicitly retains that boundary.
+
+The method is elementary finite-character cancellation plus PSD/kernel
+comparison. No historical priority, novelty, sharp constant, practical
+conditioning, implementation, arbitrary-angle lower, formal proof,
+continuum construction or physical mass gap is established. The earlier
+limited primary comparison250 is NOT novelty verification for this new lower.
+A result-specific primary implication/priority comparison is still required
+before a publication originality claim. No old numerical grade transfers.
+
+10. Review context and operations
+Same involved AI auditor role that previously reviewed249A, separate from
+parent fabricator. Inherited context and parent framing are visible, with
+shared filesystem/account/provider; independence, blinding, human peer review
+and fresh-model/provider resampling are NOT established. Exposed identity:
+Codex, an agent based on GPT-6. Exact served backend/model version and actual
+reasoning effort are unexposed and unknown. No author contact or inbound
+message occurred while this gate ran.
+
+Only source/instruction reading, raw copying, hashing and audit-output editing
+occurred. No desktop/UI control, WSL, network, native service command,
+Git mutation, state/chat/automation change, mathematical runtime/import/test/
+oracle/Lean/TeX/render, numerical score, PDF alteration or publication occurred.
+No disposable clone was created and there is no clone cleanup debt.
+Outputs are restricted to the requested NEW evidencia-251/source-audit subtree.
+
+Disposition: ACCEPT_WITH_LIMITS for exact251A AMBIENT analytical source only.
+Parent must read this complete report and verify capture/hash closure before
+recording acceptance. Keep the active coexact D3 question open, retain failed
+routes and the frozen manuscript/PDFs/grades unchanged unless separately gated.
