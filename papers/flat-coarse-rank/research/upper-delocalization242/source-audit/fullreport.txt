@@ -1,0 +1,121 @@
+EXACT-SOURCE ANALYTIC AUDIT242
+Issued 2026-11-11. Verdict: ACCEPT THE STATED THEOREM AND PROOF, WITH ONE NONBLOCKING BASE-CASE WORDING NOTE (N1).
+No blocking mathematical defect was found. Sorting the actual channel weights and using the proved residual mass does replace241B's positive lower-coordinate hypothesis; it does not assume a replacement subset-mass condition. All stated full row-count, full-field coercivity, actual-rank and fixed-canonical penalty orders survive the checks below. This is source-only analytic acceptance, not numerical/model resampling, a grade, formal verification, priority assessment or publication authorization.
+
+1. Exact referent, capture, dependencies and evidence boundary
+Repository: C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108.
+Frozen commit: e9210be23b4a6deba5ea7e09f749a7eb06857dd9.
+Path: papers/flat-coarse-rank/research/2026-11-11_upper-delocalization242.txt.
+Raw capture command: git -C "C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108" show e9210be23b4a6deba5ea7e09f749a7eb06857dd9:papers/flat-coarse-rank/research/2026-11-11_upper-delocalization242.txt.
+Method: the Git process StandardOutput.BaseStream was copied directly to a byte buffer and written with WriteAllBytes. No text decoding/pipeline normalization, newline conversion or BOM insertion intervened. Git exit0. Captured source is9624 bytes,163 LF bytes,0 CR bytes.
+Exact Git blob/LF SHA256, no normalization:1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc.
+The complete242 source was read. The D candidate242.txt was directly compared byte by byte with the raw capture and was identical.
+Nine scientific sources were captured anew from their actual committed Git blobs with expected raw hashes checked. Besides242, they are241B at e40c0920f8aa7298aa95e03c3c8618f1ed0703a4;239 at9a7f2113ba9ca9344bfb7bb1d31c8859ca6a5993;240B atb25f6a46f6e274a6315565ea34c367b81400a82a;238 atfd8a3b8760d18a44b4349dcac1d4e03ed2c36886;231B and237 as present at frozen241A commit44902fda690f3d2fb9a5a2ceb23ec123039f0df3; and original226C matrix-proof.tex and rectangular_matrix.tex at2d3237501569f6afac8a44d524a5d6db59f63c39. The primary226C budget definition was read during the preceding241 audit and is used consistently here. Dependencies remain scientific source inputs, not inherited model-grade authority.
+Capture-manifest.json records every complete source commit/path/command, byte count, SHA256 and CR/LF count. Each original226C blob contains one CR byte; those original bytes were preserved. No normalized-LF digest is substituted for a raw Git digest.
+The present report rederives the changed sorted-weight lemma and the full theorem implications on paper. The earlier241A rejection and241B acceptance remain attached to their own distinct source hashes and are neither altered nor independently resampled by this task.
+
+2. Exact scope, conventions and nonvacuity
+D>=3,n>=2,g>=1 are integers,c>0,V=n^D. The coefficient is spatially constant: a=c/(16D),H=cn^2, B=H I-(H-a)vv^T, and A is B repeated on all D gradient directions and D spatial components. Q_A is the actual counting forward-difference energy, including labelled periodic edges. Coexact domain is U=U_0^g, U_0=im(d_1^*) for actual flat forward curl and counting adjoint. Its real dimension per internal channel is d0=(D-1)(V-1).
+The sole polarization hypothesis is unit v and max_alpha v_alpha^2<=Lambda/g for fixedLambda>=1. Signs are arbitrary and zero entries are allowed. Uniform unit v provides a nonempty instance for every parameter choice. The hypothesis also implies the derived support bound |supp v|>=g/Lambda, but no prescribed support or lower individual weight is assumed or needed.
+For every original internal channel, C lists all D component means over its assigned integer rectangular partition, with rows V^(-1/2)|S|^(-1/2)sum_{i in S}z_(k,alpha)(i). The full counting block projection R satisfies exactly ||Cz||^2=||Rz||^2/V. Each channel may have its own partition, shared across its D spatial components. Sorting selects which partition goes to which original label; it does not mix fields, change the separability basis or rescale canonical rows.
+
+3. Sorted-prefix induction: all requests, zeros and ties
+Let beta=Lambda/g and let finitely many positive requests have upper budgets b_q=lambda_q+beta, with B_total=sum b_q<15/16. Sort actual weights w_alpha=v_alpha^2 in nonincreasing order, with original-index tie breaking. The unused indices after each selected prefix form a sorted suffix.
+Initially unused mass is1>B_total. After r>=1 completed shortest prefixes, each group's final channel crosses a positive threshold, so its preceding partial mass is strictly below lambda_q. The final weight is at most beta. Therefore lambda_q<=M_q<lambda_q+beta=b_q, including exact hits. A zero weight cannot be the channel that first reaches a positive threshold. Consequently used mass is less than sum of the r upper budgets; unused mass exceeds the sum of all remaining upper budgets, since B_total<1. In particular it exceeds the next request. The next shortest prefix exists. This proves the finite induction, including the last group, without assuming enough positive channels in a replacement subset.
+After any positive number of completed groups, used mass<B_total<15/16; before the first it is0. Hence unused mass is always>1/16, including after the final group. There is always at least one unused positive-weight channel; any zero suffix does not threaten that statement. Exact ties merely determine a fixed permitted enumeration and affect none of these inequalities.
+
+N1, nonblocking precision note: source242 Section2 lines34-35 says that "before any request" used mass is strictly less than its preceding upper budgets. Before the FIRST request, both empty quantities are0, so that particular strict comparison should be read as equality in the base case, or limited to a nonempty completed prefix. The base case itself is immediate from1>B_total; the proof above states it explicitly. This is a wording edge case, not a false grouping lemma or an additional mathematical hypothesis. It does not obstruct theorem acceptance.
+
+4. Derive the cardinality without any positive coordinate minimum
+Suppose m channels remain before a request, with total mass W>1/16. Their average is W/m>1/(16m)>=1/(16g). For any integer1<=t<=m, the first t remaining weights have average at least W/m: if t<m, every weight in the suffix is at most the smallest prefix weight, which is at most the prefix average; taking their weighted average proves the claim. For t=m the statement is equality. It remains valid with arbitrary zero suffixes and exact ties.
+Set t=ceil(16g lambda_q), a positive integer. If t<=m, its prefix mass is at least tW/m>t/(16g)>=lambda_q, so the shortest reaching prefix uses at most t channels. If t>m, the already-proved existing prefix has at most m<t channels. Thus
+ |I_q|<=ceil(16g lambda_q)<=16g lambda_q+1.
+The same residual bound applies at every allocation stage because the total budget was paid globally. There is no circular use of the cardinality estimate to prove feasibility. Neither individual positive lower weights nor mass in any prescribed subset enter.
+Symbolic attack examples: withLambda=2 and even g, weights2/g on half the channels and0 on half obey the hypothesis and this lemma; groups are selected from the sorted positive part and leftover zero channels are harmless. For arbitrarily small requests the shortest prefix may be one channel, still bounded by the positive ceiling. Exact hits give M=lambda and retain the strict overshoot upper. A t>m case is covered by feasibility rather than by pretending the array has t entries. These are paper checks, not executed examples.
+
+5. Actual finite geometry, spectral estimates and case priority
+Priority(i): g<4096Lambda^2 OR n<32Lambda, all channels singleton. Outside(i), priority(ii) g>=n^2 uses all scales; otherwise(iii) g<n^2 uses the coarse-plus-one-tail family. Thus(ii) has n>=32Lambda>=32, while(iii) has s=sqrt(g)>=64Lambda,n>s,k=floor(log_2 s)>=6. Equality thresholds and nonintegral Lambda cause no integer inference error. For example n=2,g=4096,Lambda=1 is in(i), whereas n=32,g=4096,Lambda=1 may be in(ii).
+The floor-quantile partitions have endpoints floor(tn/2^j), omitted empty intervals, side lengths<=L_j=ceil(n/2^j). Every coarse endpoint is an even-indexed fine endpoint, so the block-average projections P_j are nested. P_0 is global averaging; for J=ceil(log_2 n),P_J=I. The projection differences E_j=P_(j+1)-P_j are orthogonal. In(iii) the single tail I-P_k completes their orthogonal sum to I-P_0.
+For an ell-site path the first nonzero Neumann eigenvalue4sin^2(pi/(2ell))>=4/ell^2; singleton factors have zero variance. Tensoring over actual parent rectangles gives variance<=L_j^2/4 times internal edge energy, without a factorD. Adding the other nonnegative labelled periodic edges only increases energy. Since E_j<=I-P_j, ||E_jw||^2<=L_j^2 E(w)/4 for every D-component field. The tail uses one such parent-variance estimate, not the sum of all finer scales.
+The labelled torus gap4sin^2(pi/n)>=16/n^2 holds at every n>=2. At n=2 its gap4=16/n^2 retains the actual forward-edge parallel multiplicity. No simple-graph convention is substituted for the actual quadratic form.
+
+6. The stricter15/16 budget is actually proved in all ranges
+For m initial indices the elementary ceiling/geometric estimate is sum L_j^2<=4n^2/3+4n+m. In(ii),J<=n/4 for n>=32, and requests are lambda_j=5L_j^2/(8n^2). With g>=n^2 and n>=32Lambda,
+ sum(lambda_j+Lambda/g)
+ <=5/6+5/(2n)+5J/(8n^2)+Lambda J/g
+ <=5/6+(85+8Lambda)/(32n)
+ <=5/6+93/1024<15/16.
+The last uniform93 uses Lambda>=1; Lambda has not been silently set to1.
+In(iii),m=k+1<=2^(k-2)<=s/4 for k>=6. The same estimate through k, including the tail's request, with n>s>=64Lambda gives
+ sum(lambda_q+Lambda/g)
+ <=5/6+5/(2n)+5m/(8n^2)+Lambda m/g
+ <=5/6+(85+8Lambda)/(32s)
+ <=5/6+93/2048<15/16.
+Indeed15/16-5/6=5/48, and93/1024<5/48 by direct rational comparison. Both bounds pay every indivisible-channel overshoot and the tail's own allocation. A square g, power-of-two size, divisible n, lower coordinate bound or infinite fine-scale sum is unnecessary.
+
+7. Full row count with no nu, every tail and every root
+The proved prefix bound and actual request give |I_j|<=10gL_j^2/n^2+1. At coarse indices n/2^j>=1 and L_j<=2n/2^j, hence |I_j|<=40g4^(-j)+1. A group channel has at most2^(D(j+1)) child rectangles, with D component means per rectangle. The two positive geometric sums through j<t therefore give
+ N_coarse<=A'_D g2^((D-2)t)+B_D2^(Dt),
+ A'_D=40D2^D/(2^(D-2)-1), B_D=D2^D/(2^D-1).
+The denominators are positive for D>=3. In(ii),t=J and2^J<2n give N_coarse<=[2^(D-2)A'_D+2^DB_D]gV/n^2, using V<=gV/n^2. Root leftovers cost at mostDg<=DgV/n^2 because V/n^2>=1.
+In(iii),2^k<=s<n gives g2^((D-2)k)<=g^(D/2)<V and2^(Dk)<V, so N_coarse<=(A'_D+B_D)V. The terminal L_k satisfies
+ gL_k^2/n^2<=(s/2^k+s/n)^2<9.
+Thus |I_tail|<=ceil(10gL_k^2/n^2)<=90, including ceiling values arbitrarily near90. Its singleton rows cost<=90DV. Roots cost Dg<=DV since g<n^2<=V.
+In(i),all singleton rows cost DgV. If g<4096Lambda^2 this is<=4096D Lambda^2V. Otherwise n<32Lambda implies cost<=1024D Lambda^2gV/n^2. The first term of the displayed L constant controls both. Therefore
+ L=max(4096D Lambda^2,2^(D-2)A'_D+2^DB_D+D,A'_D+B_D+91D)
+really bounds the full row count by L(V+gV/n^2). It hides no n,g,c or minimum weight. Restricted rank is at most this full count; independence of restricted rows is not presumed. Empty residual intervals and final shorter boxes are already retained by the floor partitions.
+
+8. Full-field inequality, zero channels, constants and one energy budget
+First suppose every component of z has global mean0. Define f=sum_alpha v_alpha z_alpha, s_alpha=z_alpha-v_alpha f. Because v is unit, sum v_alpha s_alpha=0, ||z||^2=||f||^2+sum||s_alpha||^2, and Q_A=aE(f)+T with T=H sum E(s_alpha). These identities hold even when some v_alpha=0; then s_alpha=z_alpha on those channels.
+For any Hilbert vectors p,q', ||p-q'||^2>=(9/10)||q'||^2-9||p||^2. Subtracting the right side yields10||p||^2-2<p,q'>+(1/10)||q'||^2>=0. Apply it with p=E_qz_alpha and q'=v_alpha E_qf. The parent estimate gives(4H/L_q^2)||E_qs_alpha||^2<=HE(s_alpha). Distinct groups charge each channel's energy at most once, yielding
+ T>=(9/10)sum_q(4HM_q/L_q^2)||E_qf||^2
+       -36sum_q(H/L_q^2)sum_{alpha in I_q}||E_qz_alpha||^2.
+Actual M_q>=5L_q^2/(8n^2) supplies4HM_q/L_q^2>=(5/2)c. In(ii),H/L_q^2<=cn^2; in(iii),L_q>=n/s gives H/L_q^2<=cg. With b=min(g,n^2), both are<=cb.
+For coarse channels E_q is a subprojection of the observed child projection; for tail channels the observation is identity. Disjoint groups therefore bound the total negative term by36cb||Rz||^2. Orthogonal exhaustion of mean-zero f proves
+ T+36cb||Rz||^2>=(9/4)c||f||^2.
+Separately T>=16c sum||s_alpha||^2 by the labelled torus gap. Taking8/9 of the first and1/9 of the second spends exactly ONE T and gives T+32cb||Rz||^2>=2c||f||^2+(16/9)c sum||s_alpha||^2>=c||z||^2. Adding aE(f)>=0 proves the desired estimate on mean-zero fields.
+Each channel block projection preserves constants and global averages, so RP_0=P_0R=P_0. Split arbitrary z into its constant and mean-zero parts; the R images remain orthogonal, Q ignores constants and32cb>=c pays every constant mode. In particular a zero-weight channel's strong constant is paid by its root row, while its mean-zero field is controlled by its strong energy. Case(i)R=I has K=c already. No projection is assumed to preserve coexactness.
+Finally ||Cz||^2=||Rz||^2/V gives(242.1) with the actual fixed canonical rows. Multiplying the normalized equation by V gives coefficient VK on these same rows in counting convention. Arbitrary rescaling and internally mixed observations would change these comparisons and remain excluded.
+
+9. Actual coexact space, weighted rank lower and minimum rank
+For actual flat forward curl, a nonzero Fourier frequency has nonzero vector q=(exp(2pi i k_i/n)-1)_i. The map q wedge has rankD-1 and so does its adjoint image. Zero frequency contributes no coexact field; conjugate pairing gives real d0=(D-1)(V-1), including period-two self-conjugate frequencies. Coexact components have global mean0 by telescoping, and fixed internal linear combinations preserve the actual coexact domain.
+For any internally channel-separable restoring linear C, let S_alpha be its row-space projection INSIDE U_0 and S their direct sum. Put r=sum rank(S_alpha)=rank(C|U). The weak map T0:f->(v_alpha f) is an isometry even with zeros, because sum v_alpha^2=1. Its positive compression satisfies
+ trace(T0^*ST0)=sum v_alpha^2 rank(S_alpha)<=Lambda r/g.
+A real unit f consequently has t=||ST0f||^2<=Lambda r/(g d0). The actual vector u=(I-S)T0f is coexact, Cu=0 and||u||^2=1-t. E(w)<=4D||w||^2 and PSD polarization give Q_A(u)<=8Da+8DHt. Restoration at Cu=0 for any finite penalty Phi with Phi(0)=0 yields c(1-t)<=c/2+8Dcn^2t and hence
+ r>=g d0/[2Lambda(1+8Dn^2)]
+   >=[(D-1)/(4Lambda(1+8D))]gV/n^2.
+No division by v_alpha or positive lower weight occurs.
+Independently Q_A(T0f)=aE(f)<=c||f||^2/4 forces C T0 to be injective, hence r>=d0>=(D-1)V/2. Half the sum of these two lower bounds is a fixed positive multiple of V+gV/n^2. Combining this necessary actual-rank lower with the constructed full-count upper proves the minimum restoring rank order in the canonical class. Root rows vanish on U and can reduce rank; this fact never invalidates a full-count upper or turns it into an asserted lower.
+
+10. Fixed-canonical penalty lower and least endpoint
+For a canonical block projection R, its restriction to U_0 may leave U_0 but is a contraction. Its squared-singular-value sum is at most its actual restricted rank, equal to that of the corresponding canonical C_alpha|U_0. Weighted by v_alpha^2<=Lambda/g and summed on a real orthonormal U_0 basis, this gives sum_l||RT0e_l||^2<=Lambda r/g, regardless of zero coordinates.
+Restoration of weak fields forces K||RT0f||^2>=3c||f||^2/4. Summing over that basis proves K>=3cgd0/(4Lambda r). For the fixed constructed map, r<=L(V+gV/n^2), d0>=(D-1)V/2 and g/(1+g/n^2)>=min(g,n^2)/2 yield
+ K>=3(D-1)c min(g,n^2)/(16Lambda L).
+Together with the all-field upper32c min(g,n^2) this proves the stated least normalized quadratic coefficient order. A finite least coefficient exists as the lower endpoint of the nonempty closed intersection of restoring half-lines; kernel inequalities are satisfied by the constructive upper and weak fields give a positive lower endpoint. The argument provides a lower on U and an upper on all fields, so the claimed order is valid under either domain interpretation for this fixed map.
+In the singleton fallback min(g,n^2) is bounded in terms of Lambda, consistent with full-field least K=c. No nonlinear penalty-size lower or upper for every economical-rank map is claimed.
+
+11. Correct inherited capped budget and preserved original failure
+At each vertex A has a with multiplicityD^2 and H with multiplicityD^2(g-1), unchanged even with zeros in v. The actual original226C cap uses
+ alpha_D=(3/4)^D(D/2)(D/(D-2))^(D-1).
+Its weak cost is1 because alpha_D(16D)^(D/2)>=(3sqrt(D))^D>1. Its strong cost is exactly min(1,alpha_D n^(-D)), with saturation retained. Thus
+ F=D^2V[1+(g-1)min(1,alpha_D n^(-D))]
+   <=D^2(V+alpha_D g),
+and h=Dg gives h+F=O_D(V+g). The formula covers g=1, all n>=2 and every cap regime; no strong tail multiplicity is dropped.
+The old241A error is not reintroduced. For its admissible D=4,n=2,g=2,uniformv example, original/corrected budget is337, its displayed upper is418, and the rejected241A altered-cap value65537/256 remains wrong for the original functional. That old exact source and its rejection remain untouched. Source242 uses the corrected241B normalization.
+
+12. Unbalanced boundary, genuine hypothesis removal and limits
+For v=e_1, one weak singleton channel plus roots on all strong channels has actual restricted rank d0. Strong mean-zero channels are controlled by the gap>=16c; K=c pays the weak singleton channel and, on all fields, the strong constant root modes. Taking g=n^D makes d0/(gV/n^2) of order n^(2-D), tending to0 for D>=3. Thus an unrestricted unit-vector lower would be false.
+For fixedLambda, however, e_1 obeys max v_alpha^2<=Lambda/g only when g<=Lambda. It is eventually inadmissible along that growing-g escape. Bounded-g admissible e_1 examples do not contradict constants depending on Lambda or the singleton fallback. The upper delocalization hypothesis remains essential; removing the positive lower-coordinate bound is a real enlargement, including partially supported unit vectors, but not removal of all polarization structure.
+The removed lower bound is not replaced by an unproved mass-subset assumption: the residual>1/16 is derived from unit total mass and the explicit paid upper budgets; sorted-prefix averages then derive cardinality. This is the load-bearing new mechanism.
+No blocking defect or counterexample to the stated theorem was found. N1 is the sole nonblocking wording note. Fixed basis, canonical weights, positive constant rank-one weak family, actual finite domain and upper delocalization remain. Classical tools are finite gaps, finite sorted weights, projections, Young and trace. No efficient implementation, conditioning, exact optimal leading constants, arbitrary/signed coefficient theorem, mixed-row or basis-free lower, physical/continuum result or mass gap is established. Historical priority remains unestablished; no exhaustive primary-literature search was performed. The source's open2019 differential-form comparison remains open and is not claimed resolved by this audit. Grouping with235-241 does not authorize publication, a new paper, or score transfer.
+
+13. Operational and factual model context
+The standing global storage rules, D:\LEEME.md, active CLAUDE.md and repository Operational Governance Charter remain binding and were read in this auditor task. No exception or runtime permission was assumed. This is a separate AUDITOR role from fabrication, but the same persistent auditor task previously read241A/241B; it is not a fresh independent model/account/provider sample. No242 fabrication occurred here. Shared filesystem/account and inherited configuration remain shared. No inbound follow-up arrived during this audit.
+Actually exposed description: "Codex, an agent based on GPT-6". Exact deployed backend/model identifier, version and actual reasoning-effort setting are not exposed and are unknown. OpenAI/Codex is the exposed interface context; authentication account, provider routing, subscription/quota and provider/account usage limits were not inspected and are unknown. No independent-provider or quota status is invented. No prior numeric grade is imported.
+Only paper reasoning, scientific-source/primary reading, text authoring, Git capture/inspection and byte/hash operations occurred. No mathematical executable, numerical/symbolic oracle, Lean/Lake, build/test, rendering or runtime allocation occurred. No source, branch, repository state, other chat, automation or publication was changed. No clone was created and no cleanup is pending. Writes were confined to the requested D evidencia-242/source-audit subtree.
+
+14. Issued evidence and disposition
+Destination: D:\Datos\the-eriksson-programme\autonomia\evidencia-242\source-audit.
+Complete report: fullreport.txt. Machine verdict: verdict.json. Factual context: context.json. Exact capture binding: capture-manifest.json. Raw scientific source bytes: capture\*. Artifact hashes: hashes.json, excluding its own unavoidable self-reference; its external SHA256 is returned at handoff.
+Authored report and JSON files are UTF-8 without BOM, LF only, final LF. Raw captures retain exact Git bytes, including the two original226C CR bytes documented in the manifest.
+Final: ACCEPT242 at e9210be23b4a6deba5ea7e09f749a7eb06857dd9, exact rawSHA1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc, within its stated scope, with nonblocking note N1. No theorem-blocking defect found. No numeric grade, stars, PDF review, priority judgment, formal verification or execution certificate was requested or produced.

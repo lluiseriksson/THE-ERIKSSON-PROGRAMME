@@ -1,0 +1,24 @@
+{
+  "unit": 242,
+  "source_sha": "e9210be23b4a6deba5ea7e09f749a7eb06857dd9",
+  "source_sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc",
+  "verdict": "ACCEPT_WITH_NONBLOCKING_BASE_CASE_WORDING_NOTE",
+  "source_audit_manifest_sha256": "47b60b5d2a9735b495a229792a36f78df74283b320ca97b9679a1e82f0d4c78a",
+  "raw_subjects_verified": 13,
+  "full_report_read": true,
+  "hypothesis_removed": "Positive minimum coordinate nu/g; zero coordinates nowallowed",
+  "derived_mechanism": "Sorted actualweights + globallypaid budget<15/16 derive residual>1/16 and prefixcardinalityceil(16g lambda), not a newassumedsubsetmass",
+  "retained_hypotheses": [
+    "unitv andfixedmaxv_alpha^2<=Lambda/g",
+    "positiveconstant rankoneweakfamily",
+    "fixedbasis/channelseparablecanonicalweights",
+    "finiteactualflatcoexactdomain"
+  ],
+  "rank": "Theta_(D,Lambda)(V+gV/n^2)",
+  "least_normalized_penalty": "Theta_(D,Lambda)(c min(g,n^2)); allfieldexplicitupper32cmin(g,n^2)",
+  "nonblocking_note": "N1 initialemptyspentmass comparison equality; directbasecase supplied in fullaudit and companionclarification; originalsourceunchanged",
+  "formal_numeric_execution": false,
+  "grade": null,
+  "not_in_frozen232B": true,
+  "priority": "UNESTABLISHED"
+}
