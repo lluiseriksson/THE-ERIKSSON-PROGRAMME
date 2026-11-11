@@ -1,0 +1,21 @@
+Limited primary reading, 2026-11-11, after247 source was frozen.
+Lawler and Limic, Random Walk: A Modern Introduction, author-hosted PDF:
+https://www.math.uchicago.edu/~lawler/srwbook.pdf
+Author bibliography identifying this book:
+https://www.math.uchicago.edu/~lawler/books.html
+Actually read: section4.3 opening and Theorem4.3.1, printed pages81--82
+(PDF indices80--81). Not the full book or its proof/dependency chain.
+
+The primary text treats the Green function in dimensions at least3 and gives
+its inverse-distance-power asymptotic. This confirms that dimension-dependent
+discrete Green/capacity mechanisms are established tools, not discoveries of
+candidate247. Candidate247 instead derives its particular finite-box bound by
+an explicit Neumann eigenbasis and shell count; this lookup has NOT established
+whether the specific canonical rectangle/coexact-rank construction is already
+implied in the literature. Priority and non-implication remain UNESTABLISHED.
+No source theorem is substituted for the candidate's displayed finite proof.
+
+No third-party PDF redistributed or raw PDF hash claimed. No exhaustive search.
+Candidate exactreferent4d120ad03bd6dc9a5828e780bb2873eaf144a9c5,
+SHA256e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03.
+Different-role exact-source audit pending at notecreation. No PDF score inherited.
