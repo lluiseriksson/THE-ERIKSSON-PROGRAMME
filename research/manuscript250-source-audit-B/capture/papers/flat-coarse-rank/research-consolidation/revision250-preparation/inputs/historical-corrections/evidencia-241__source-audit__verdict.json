@@ -1,0 +1,72 @@
+{
+  "audit_id": 241,
+  "issued_date": "2026-11-11",
+  "verdict": "REJECT_EXACT_SOURCE_AS_WRITTEN",
+  "core_rank_penalty_argument": "NO_BLOCKING_DEFECT_FOUND_ANALYTICALLY",
+  "source_commit": "44902fda690f3d2fb9a5a2ceb23ec123039f0df3",
+  "source_path": "papers/flat-coarse-rank/research/2026-11-11_balanced-polarization241.txt",
+  "source_representation": "Exact Git blob LF; no normalization",
+  "source_bytes": 12143,
+  "source_sha256": "59907005dc2184e7dcb380f06f7cad09ffd3ff247145bff1707ad3ef1b1865d1",
+  "full_source_read": true,
+  "evidence_copy_byte_identical": true,
+  "blockers": [
+    {
+      "id": "B1",
+      "section": 7,
+      "lines": [
+        183,
+        184,
+        185
+      ],
+      "finding": "Original capped-budget normalization replaced while called unchanged",
+      "original_alpha": "(3/4)^D (D/2) (D/(D-2))^(D-1)",
+      "candidate_alpha": "(16D)^(-D/2)",
+      "counterexample": {
+        "D": 4,
+        "n": 2,
+        "g": 2,
+        "nu": 1,
+        "Lambda": 1,
+        "polarization": "(1,1)/sqrt(2)",
+        "c": "any c>0",
+        "volume": 16,
+        "a": "c/64",
+        "H": "4c",
+        "original_alpha": "81/16",
+        "candidate_alpha": "1/4096",
+        "original_strong_cost": "81/256",
+        "candidate_strong_cost": "1/65536",
+        "original_F": "337",
+        "candidate_exact_F": "65537/256",
+        "candidate_claimed_upper": "256+1/128",
+        "admissible_balanced_family": true
+      },
+      "scope": "False inherited budget equality and displayed upper constant; no counterexample to core rank/penalty/coercivity",
+      "required_change": "Restore inherited alpha or define a different cap without claiming original unchanged",
+      "repair_applied": false
+    }
+  ],
+  "accepted_analytic_checks": [
+    "greedy actual-weight induction and all overshoots",
+    "case thresholds, all n/g and non-dyadic sizes",
+    "finite Neumann/tensor and labelled torus gaps",
+    "all-scale and one-tail budgets",
+    "coarse-tail-root row counts and singleton fallback",
+    "full-field32c min(g,n^2) with one T",
+    "global constants and canonical normalization",
+    "actual coexact projections/dimension and weighted trace rank",
+    "canonical weighted actual-rank penalty lower",
+    "unbalanced e1 escape"
+  ],
+  "priority": "UNESTABLISHED; no exhaustive search",
+  "execution": "NONE: source-only paper audit",
+  "source_mutation": false,
+  "runtime_allocation": false,
+  "score": null,
+  "pdf": null,
+  "stars": null,
+  "full_report": "fullreport.txt",
+  "context": "context.json",
+  "capture_manifest": "capture-manifest.json"
+}

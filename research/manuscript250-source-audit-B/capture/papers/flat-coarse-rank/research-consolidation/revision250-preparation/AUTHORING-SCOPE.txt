@@ -1,0 +1,15 @@
+SOURCE250 AUTHORING SCOPE — 11 NOVEMBER2026
+One coherent specialist manuscript consolidating accepted235–248, centered on
+constant coherent weak-space rank/penalty theorem244 and precise failure of its
+per-profile spatial extension245–248. Complete proofs, one theorem scope at a time.
+Fixed-angle plane246 is separate from unproved fixed-angle point question249.
+No249proof/source, Git/state/native/runtime/compilation/render/assessment action.
+Parent ran new250PDFmarker EXACTLYONCE with actualexit0, recorded E250/
+pdf-operation-marker250.json. Do NOT rerun. NoPDFexists atsourcepreparationfreeze.
+Main canonical_rectangles250.tex; standardpdfLaTeX only, future gatedexternalbuild.
+Parent supplies actualsourceSHA via SourceCommit macro atcompile; default is
+SOURCE-NOT-BUILT, not an invented commit. Deterministicpdfprimitives are preparation,
+not bitreproducibility until actualtwofreshclonePDFs match. Target25–35pages is
+editorial only, no fabricatedpagecount. All old232Bbytes/grades remain unchanged.
+Author role LluisEriksson with explicitCodex/OpenAIdraftingassistance; exactserved
+backend/effort unknown. Different-role whole-source gate required afterfreeze.

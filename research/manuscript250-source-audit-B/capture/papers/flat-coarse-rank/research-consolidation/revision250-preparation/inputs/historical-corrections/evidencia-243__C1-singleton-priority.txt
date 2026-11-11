@@ -1,0 +1,1 @@
+Scope clarification C1: explicit singleton fallback(i) takes priority for ALL channels, including zero/discarded frame rows. Root assignment for zero/discarded/unused rows describes only angular branches(ii)/(iii). Original source and issued audit unchanged; allfield constant modes and fullrowcounts are included.

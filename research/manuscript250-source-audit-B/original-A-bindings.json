@@ -1,0 +1,22 @@
+[
+  {
+    "sha256_raw": "4972e7bc4fca0b3388ceebf4208134993a9662ad5af75c14cade5f07b4399ad8",
+    "bytes": 18050,
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-audit\\fullreport.txt"
+  },
+  {
+    "sha256_raw": "7ea4a2c285e14336b07765f384facbe6f11fa108083fb7a31e8a526f010f37e1",
+    "bytes": 2120,
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-audit\\verdict.json"
+  },
+  {
+    "sha256_raw": "b6a2ce7f1db27ab24d3539acaa92ad528caa82903ee57b810028cb8153bf3bf6",
+    "bytes": 1589,
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-audit\\context.json"
+  },
+  {
+    "sha256_raw": "97ca13a7391c6012310ccf0ff0b0952ab5393de17b2b1d6200f2c6f2acddc2a8",
+    "bytes": 42558,
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-audit\\hashes.json"
+  }
+]

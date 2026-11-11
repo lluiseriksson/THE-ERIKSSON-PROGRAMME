@@ -1,0 +1,126 @@
+238 — Remove the equality g=n^D from the local rank–penalty family
+Author-role analytical candidate; not an execution, assessment or priority claim.
+Prove the changed hypothesis, rather than assuming a partition or regional gap.
+
+1. Statement.
+Fix D>=3, integer n>=2 and ANY integer g>=n^2, c>0, V=n^D,h=Dg.
+On X=(Z/nZ)^D keep a=c/(16D),H=cn^2,v_alpha=1/sqrt(g),
+B=H I_g-(H-a)vv^T and the actual forward-gradient coefficient
+A_(j,k,alpha),(j',k',beta)=delta_jj' delta_kk' B_alpha,beta.
+Q_A and ||.|| are counting energy/norm. U=U_0^g, U_0=im(d_1^*),
+dim_R U_0=d0=(D-1)(V-1), with the actual flat forward curl and its adjoint.
+Every component of a coexact field has global mean0 by telescoping.
+Observe per-internal-channel integer rectangle partitions, shared across D
+spatial components, with canonical rows
+C_(alpha,k,S)z=V^(-1/2)|S|^(-1/2)sum_(i in S) z_(k,alpha)(i).
+There is an explicit such map with output count <=C_D g n^(D-2) and
+Q_A(z)/V+K||Cz||^2>=c||z||^2/V on ALL fields,
+K=c+4DH=c(1+4Dn^2). Its actual restricted rank on U is Theta_D(g n^(D-2)).
+Among all stated canonical maps that restore on U, the minimum actual rank
+has this order. For this explicit map, its least normalized penalty has
+order Theta_D(cn^2), with D-only constants uniform over g>=n^2.
+This removes the previous equality g=V; it does NOT permit fixed g as n grows.
+
+2. Explicit construction and channel feasibility for n>=32.
+Use the finite236 partitions, now allocate the actual number g of channels.
+Let J=ceil(log_2 n); Pi_j has Cartesian intervals
+[floor(kn/2^j),floor((k+1)n/2^j)), omitting empty intervals. Pi_0 is the
+root, Pi_J singleton, and the partitions are nested because coarse endpoints
+are fine endpoints with doubled index. Let P_j be the counting block-average
+projection, E_j=P_(j+1)-P_j, L_j=ceil(n/2^j) for j<J.
+The E_j are mutually orthogonal projections summing to I-P_0.
+The explicit finite Neumann path/tensor proof in236 gives, for EVERY field w,
+||E_j w||^2<=||w-P_jw||^2<=(L_j^2/4) E(w).              (238.1)
+That proof involves only rectangles/edge labels and n, not g: the path
+eigenvalues are4sin^2(pi k/(2L)), positive gap>=4/L^2; tensor products
+give the largest-side bound and dropping inter-parent/wrap edges adds only
+nonnegative terms. Singleton factors have zero variance. Thus238.1 is a
+derived estimate with the same constant, not a new regional hypothesis.
+Set r_j=ceil(5g L_j^2/(8n^2)); assign DISJOINT channel groups I_j of r_j
+channels to child partition Pi_(j+1), and root to all leftover channels.
+We must prove these groups fit for the new range of g, rather than reuse
+236's old g>=n^3 estimate. Since sum L_j^2<=4n^2/3+4n+J,
+S/g:=(sum r_j)/g<=5/6+5/(2n)+5J/(8n^2)+J/g.
+For n>=32, J<=n/4 as proved by the elementary dyadic induction in236.
+NOW g>=n^2, so J/g<=1/(4n), and therefore
+S/g<=5/6+93/(32n)<1.                                  (238.2)
+At n=32 the second term is93/1024<1/6, and it decreases thereafter.
+Thus S<=g-1; enumeration into consecutive disjoint groups is explicit.
+No fractional channels, eigenbasis selection or ceiling term is suppressed.
+
+3. Full-field kernel margin and finite normalized penalty.
+In ker C every component has mean0. Define f=sum_alpha v_alpha z_alpha,
+s_alpha=z_alpha-v_alpha f. These have zero means, orthogonal norm splitting,
+and Q_A(z)=aE(f)+T, T=H sum_alpha E(s_alpha).
+For alpha in I_j, child means vanish, so E_j s_alpha=-v_alpha E_j f.
+By238.1 and disjointness,
+T>=H sum_j[4r_j/(gL_j^2)]||E_j f||^2>=(5/2)c||f||^2.
+Separately the actual torus gap4sin^2(pi/n)>=16/n^2 yields
+T>=16c sum_alpha||s_alpha||^2. Taking4/5 of the first bound plus1/5 of
+the second proves Q_A(z)>=2c||z||^2 on the FULL-field kernel.
+Let R be the full orthogonal direct-sum block projection. Then
+||Cz||^2=||Rz||^2/V,ker R=ker C,||L_A||<=M=4DH.
+For x=(I-R)z,y=Rz, PSD polarization gives
+Q_A(x+y)>=Q_A(x)/2-Q_A(y)>=c||x||^2-M||y||^2.
+Adding(c+M)||Rz||^2 and dividing by V proves the claimed normalized
+penalty. Block averages need not preserve U; restriction happens afterward.
+All arguments used g only through uniform v, the proved budget and disjoint
+groups, so the changed hypothesis has been proved through the full mechanism.
+
+4. Count all rows and cover all small sizes without changing the profile.
+As in236, L_j<=2n/2^j, r_j<=(5g/2)4^-j+1 and child cell count
+<=2^(D(j+1)). Hence N_fine<=C1_D g n^(D-2)+C2_D n^D,
+where C1_D=D2^D(5/2)2^(D-2)/(2^(D-2)-1) and
+C2_D=D2^D 2^D/(2^D-1). Root leftovers contribute at most Dg.
+The NEW hypothesis g>=n^2 gives n^D<=g n^(D-2); also g<=g n^(D-2).
+Thus N_out<=(C1_D+C2_D+D)g n^(D-2).
+For2<=n<32 take all-channel singleton partitions. Their DgV rows are
+<=961D g n^(D-2), while normalized K=c suffices since Q_A>=0.
+The same larger c+4DH also suffices. Define C_D as the maximum of these
+two D-only constants. No small-size change to a,H,g or U was made.
+Actual restricted rank is at most the full output count; root rows vanish
+on U. There is no need to claim all remaining rows are independent there.
+
+5. Reprove the changed-g actual-rank lower, not an inherited g=V theorem.
+Allow any internally channel-separable linear C=directsum C_alpha on U,
+not necessarily canonical, and any penalty Phi with Phi(0)=0 restoring
+Q_A/V+Phi(Cz)>=c||z||^2/V. Let S_alpha be the orthogonal row-space
+projection of C_alpha|U_0 INSIDE U_0 and S their direct sum. Then
+rank S=r=rank(C|U),ker S=ker(C|U). T0:f->(v_alpha f)_alpha is an isometry.
+The positive operator T0^* S T0 on U_0 has trace r/g, so a real unit f
+has t=||S T0 f||^2<=r/(g d0). Put u=(I-S)T0 f in the ACTUAL domain U.
+It has Cu=0,||u||^2=1-t,Q_A(T0 f)<=4Da and Q_A(S T0 f)<=4DHt.
+PSD inequality Q(x-y)<=2Q(x)+2Q(y) gives Q_A(u)<=8Da+8DHt.
+Restoration on u implies c(1-t)<=8Da+8DHt, hence
+r>=g(D-1)(V-1)/[2(1+8Dn^2)]
+ >=[(D-1)/(4(1+8D))]g n^(D-2).                        (238.3)
+Every step is valid for the present arbitrary g>=n^2 (indeed g>=1).
+There is no substitution of V for g or of output count for actual rank.
+Canonical rectangle maps are a subclass, so Sections2–5 prove matching rank.
+
+6. Matching normalized penalty scale and full capped budget.
+For ANY canonical map in Section1, weak coexact fields T0f satisfy
+Q_A(T0f)<=c||f||^2/4. Thus restoration forces K||RT0f||^2>=3c||f||^2/4.
+The compressed maps R_alpha|U_0 are contractions whose squared singular
+values sum to at most their actual ranks. Summing over an orthonormal
+U_0 basis gives sum_l||RT0e_l||^2<=r/g, so K>=3cgd0/(4r).
+For our map r<=C_D g n^(D-2), this yields
+K>=[3(D-1)/(8C_D)]cn^2. Together with K=c+4DH this proves the stated
+Theta_D(cn^2) scale uniformly over all g>=n^2. Fixed canonical weights are
+essential; arbitrary rescaling or mixed internal rows are excluded.
+The full coefficient spectrum retains all D^2 weak and D^2(g-1) strong
+eigenvalues at EACH vertex. With alpha_D=(3/4)^D(D/2)(D/(D-2))^(D-1),
+its actual capped budget is
+F=D^2 V[1+(g-1)min(1,alpha_D n^(-D))]<=D^2(V+alpha_D g).
+Thus h+F=O_D(V+g), NOT necessarily O_D(V) when g>V. The changed range
+must retain this corrected budget interpretation. No strong tail is dropped.
+
+7. Limits.
+Equality g=n^D is removed, replaced by the proved larger range g>=n^2.
+Growing internal dimension, fixed separability basis, positive constant
+coefficient family, canonical penalty weights and finite lattice are retained.
+No arbitrary-profile/fixed-g theorem, exact optimal constants, implemented
+algorithm, practical utility, originality or physical/continuum gap follows.
+Classical projection/Neumann/PSD/trace mechanisms remain acknowledged.
+Group with235–237. Frozen232B has none of these new results and no score
+is inherited; its original material objections and complete reports remain.

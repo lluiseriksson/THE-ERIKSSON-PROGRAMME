@@ -1,0 +1,294 @@
+248 -- Critical two-dimensional point anchors for the exact D3 checkerboard
+Author-role analytic candidate. DIFFERENT-ROLE EXACT-SOURCE AUDIT REQUIRED.
+No mathematical execution, formal certificate, numerical grade or priority claim.
+
+1. Exact family, domain and proposed theorem.
+Let n>=2 be even, c>0, X=(Z/nZ)^3, V=n^3, and represent sites by
+{0,...,n-1}^3. Write partial_i f(x)=f(x+e_i)-f(x), retaining EVERY positive
+forward label, including period2. An all-field vector is
+ z=(z_(k,alpha)):X -> R^(3x2), k=1,2,3, alpha=1,2.
+All inner products and norms without a subscript are COUNTING sums. Define
+ p(x)=x_1+x_2+x_3 mod2,
+ P(x)=e1 e1^T if p(x)=0, and e2 e2^T if p(x)=1,
+ a=c/48, H=cn^2, B(x)=HI_2-(H-a)P(x).
+Parity is well-defined through the torus wraps because n is even. Set
+ Q_A(z)=sum_(x,k,i) (partial_i z_k(x))^T B(x) partial_i z_k(x),       (248.1)
+where z_k=(z_(k,1),z_(k,2)). Thus the coefficient is evaluated at the ACTUAL
+positive forward SOURCE x. The full gradient-stack matrix is I_9 tensor B(x).
+This is EXACT245 at D=3: g=2,q=1,Lambda=2,h=6, positive a,H, unchanged
+original observed basis; P_alpha,alpha(x)<=1=Lambda q/g. There is no zero,
+negative, rotated or altered coefficient hidden in (248.1).
+
+For precision the actual flat coexact domain is U=U0 direct-sum U0, with
+ U0=im d1*, (d1 v)_(ij)=partial_i v_j-partial_j v_i, 1<=i<j<=3;
+d1* is the adjoint for counting inner products on real finite 1- and 2-forms.
+The result below is first proved on ALL fields, then restricted to this U.
+
+For each ORIGINAL internal channel alpha choose a partition P_alpha into
+nonempty axis-aligned integer rectangles in the original chart. It is shared
+across the three spatial components k, and its canonical rows are EXACTLY
+ (Cz)_(alpha,k,S)=V^(-1/2)|S|^(-1/2) sum_(x in S) z_(k,alpha)(x).
+There is no row rescaling or internal-channel mixing. The full number of rows
+is N_out=3(|P_1|+|P_2|), not a purported rank after restriction to U.
+
+PROPOSED THEOREM. These coefficient-only partitions can be chosen with
+ N_out<=2^19 n(1+ln n),                                           (248.2)
+and a FINITE positive K_n such that, on all fields,
+ Q_A(z)/V+K_n||Cz||^2>=c||z||^2/V.                               (248.3)
+Consequently rank(C|U)<=N_out=O(n(1+ln n)). This improves the exact family's
+old plane upper count 6(n^2+1) asymptotically, without claiming optimality.
+The normalized coefficient will be explicit, can grow like cn^4, and is not
+required to be uniform in n. All logarithms below are natural.
+
+2. A finite COUNTING two-dimensional point-Poincare estimate.
+Let L>=1 be an integer and Q={0,...,ell_1-1}x{0,...,ell_2-1}, where each
+ell_i is an integer in [L/2,L]. Put N=ell_1 ell_2 and
+ E_Q(f)=sum_(i=1,2) sum_(y,y+e_i in Q) |f(y+e_i)-f(y)|^2,
+with each internal path edge counted once, no periodic edge. At ANY b in Q,
+ f(b)=0 implies ||f||_Q^2<=13 L^2(1+ln L) E_Q(f).                 (248.4)
+Here ||f||_Q^2 is the counting sum, not the probability average.
+
+We derive (248.4), including its constant mode. The counting path matrix on
+ell vertices has endpoint degree1, interior degree2 and off-diagonal -1;
+at ell=1 it is the zero matrix. Its counting-orthonormal cosine vectors are
+ phi_0(t)=1/sqrt(ell),
+ phi_j(t)=sqrt(2/ell) cos(pi j(t+1/2)/ell), 1<=j<ell,
+with eigenvalues lambda_j=4sin^2(pi j/(2ell)). To check the formula, the
+interior second difference multiplies cos(theta(t+1/2)) by
+2(1-cos theta); the endpoint follows from the same identity with virtual
+values f(-1)=f(0), f(ell)=f(ell-1) when theta=pi j/ell. Orthogonality follows
+by product-to-sum and the finite cosine identity
+ sum_(t=0)^(ell-1) cos(pi r(t+1/2)/ell)=0 for 1<=r<2ell,
+whose value is sin(pi r)/(2sin(pi r/(2ell))); for r=0 the sum is ell.
+Thus every asserted normalization and eigenvalue follows from finite sums.
+For ell=1 only phi_0 exists. Every squared point value is <=2/ell.
+
+Tensor products give a counting-orthonormal basis phi_kappa on Q, with
+ |phi_kappa(b)|^2<=4/N,
+ lambda_kappa=4sum_(i=1,2) sin^2(pi kappa_i/(2ell_i)),
+ 0<=kappa_i<ell_i.
+For kappa!=0, concavity of sine on [0,pi/2] gives sin t>=2t/pi, hence
+ lambda_kappa>=4sum_i kappa_i^2/ell_i^2>=4|kappa|^2/L^2.            (248.5)
+A singleton factor merely forces its index to zero. If N=1, f(b)=0 forces
+f=0 and (248.4) is immediate; no nonexistent positive gap is invoked.
+Assume N>1 below, so the smallest positive eigenvalue is >=4/L^2.
+
+For L>=2, on the nonnegative-index shell r=max(kappa_1,kappa_2)>=1
+there are at most (r+1)^2-r^2=2r+1<=3r indices, and |kappa|^2>=r^2.
+The actual finite index set is a subset of these shells, even with singleton
+factors. Therefore
+ sum_(kappa!=0)1/|kappa|^2<=3sum_(r=1)^(L-1)1/r<=3(1+ln L).
+The harmonic bound follows by comparison of 1/r, r>=2, with its integral.
+Thus the diagonal inverse on the nonconstant modes obeys
+ G_Q(b,b)=sum_(kappa!=0)|phi_kappa(b)|^2/lambda_kappa
+        <=[L^2/N]3(1+ln L)<=12(1+ln L),                         (248.6)
+since N>=L^2/4. This is a finite COUNTING point trace, with no omitted N.
+
+Expand f in this basis. Its nonconstant energy is
+ E_Q(f)=sum_(kappa!=0)lambda_kappa |a_kappa|^2.
+Cauchy--Schwarz at b gives
+ |f(b)-mean_Q f|^2<=G_Q(b,b) E_Q(f).
+If f(b)=0, then N|mean_Q f|^2<=12N(1+ln L)E_Q(f)
+<=12L^2(1+ln L)E_Q(f). Separately, (248.5) gives
+ ||f-mean_Q f||_Q^2<=L^2 E_Q(f)/4.
+These two parts are orthogonal, so their sum is at most
+ (12+1/4)L^2(1+ln L)E_Q(f)<=13L^2(1+ln L)E_Q(f).
+This proves (248.4). For L=1 both lengths are1, already handled. The point b
+may be a corner or any vertex; no continuum point-capacity theorem is used.
+
+3. Actual two-dimensional paired-layer strong graph.
+Channel1 is strong at odd sources and channel2 at even sources. Fix one
+original channel alpha, one spatial component k, and let A be its strong
+source parity. For every s in Z/nZ of parity A put, for y in (Z/nZ)^2,
+ x_s(y)=(y_1,y_2,s-y_1-y_2) mod n,
+ u_s(y)=z_(k,alpha)(x_s(y)),
+ v_s(y)=z_(k,alpha)(x_s(y)+e_3).
+The first map is a bijection onto the coordinate-sum layer s and the shifted
+map is a bijection onto layer s+1. Residue parity agrees with original site
+parity because n is even. The n/2 layer pairs {s,s+1} are disjoint and cover
+all residues for the chosen A, including {n-1,0} for odd A. Hence summing
+||u_s||^2+||v_s||^2 over these s gives EXACTLY the original scalar norm.
+
+The strong +e_3 edge is u_s(y)--v_s(y); for i=1,2 the identity
+ x_s(y+e_i)+e_3=x_s(y)+e_i mod n
+shows that the strong +e_i edge is u_s(y)--v_s(y+e_i). These are ALL three
+actual outgoing strong labels, and they stay in this pair. Their exact
+unweighted energy is
+ E_s=sum_y|u_s(y)-v_s(y)|^2
+          +sum_(y,i=1,2)|u_s(y)-v_s(y+e_i)|^2.                  (248.7)
+Each pair graph is connected: a cross edge and a rung connect u_s(y) with
+u_s(y+e_i), the two translations generate the source torus, and every v
+has its rung. Connectivity is derived, not a supplied gap certificate.
+The three heads at a source are distinct even at n=2. Induced source-torus
+edges may then repeat an undirected neighbor pair, but we retain their
+positive FORWARD labels and never deduplicate them. All weak-source terms
+are nonnegative. Thus (248.1) is at least H times the sum of (248.7) over
+all strong layer pairs, both channels and all three spatial components.
+
+For any such u_s define the labelled source-torus energy
+ E_2(u_s)=sum_(y,i=1,2)|u_s(y+e_i)-u_s(y)|^2.
+Insert v_s(y+e_i) between the two source values and square with
+|a+b|^2<=2|a|^2+2|b|^2. Translations y->y+e_i are bijections, so summing
+ E_2(u_s)<=4sum_y|u_s(y)-v_s(y)|^2
+                  +2sum_(y,i)|u_s(y)-v_s(y+e_i)|^2<=4E_s.      (248.8)
+The rung coefficient4 is two directions times the factor2. This reasoning
+also holds at period2 with its original multiplicities.
+
+4. Integer mesh, genuine anchors and both norm layers.
+Write T_n=1+ln n and let m be the LEAST positive integer satisfying
+ m^2>=4096 T_n.                                                (248.9)
+If m>n use the all-channel singleton fallback of Section6 below. For now
+assume m<=n, and put L=ceil(n/m), so 1<=L<=n and L<=2n/m.
+Partition each source y coordinate into the m floor-quantile intervals
+ I_j={floor(jn/m),...,floor((j+1)n/m)-1}, 0<=j<m.
+They are nonempty and have lengths floor(n/m) or ceil(n/m). If L=1 all
+lengths are1; otherwise any shorter length is L-1>=L/2. Therefore every
+product cell Q=I_j1 x I_j2 satisfies EXACTLY the heterogeneous length
+hypotheses of (248.4), with this same L.
+
+For each scalar pair choose the lowest-coordinate corner b of each cell
+as a SOURCE anchor, namely the actual original site x_s(b). Use the SAME
+anchor sites for the three spatial components in this internal channel.
+If z vanishes at these anchors, u_s(b)=0 in every cell. The internal edges
+of the disjoint cells are a subset of the labelled E_2 edges, each counted
+once; across-cell and wrap edges are merely discarded as nonnegative.
+Apply (248.4), sum cells and use (248.8). With X_L=L^2(1+ln L)>=1,
+ ||u_s||^2<=13X_L E_2(u_s)<=52X_L E_s.
+Also ||v_s||^2<=2||u_s||^2+2sum_y|v_s(y)-u_s(y)|^2. Thus BOTH layers satisfy
+ ||u_s||^2+||v_s||^2<=156X_L E_s+2E_s<=158X_L E_s.               (248.10)
+No target-layer mass or rung multiplicity has been omitted.
+
+The mesh and monotonicity of the logarithm give
+ X_L<=[4n^2/m^2](1+ln n)<=n^2/1024.                            (248.11)
+Sum (248.10) over the actual disjoint layer pairs, both channels and every
+spatial component. Their norms reproduce the full ORIGINAL norm. Using
+H=cn^2 and (248.11), on fields zero at the actual anchors,
+ Q_A(z)>=H/(158X_L)||z||^2
+       >=(1024/158)c||z||^2=(4096/632)c||z||^2>=4c||z||^2,     (248.12)
+since 4*158=632<1024. This also covers L=1: source cells are singleton
+and source values zero; target values are controlled by the rungs. For a
+zero field every displayed non-strict inequality is valid. All point and
+graph estimates were DERIVED; none is an extra regional hypothesis.
+
+5. Original rectangles, total anchors and complete output count.
+For a fixed channel there are (n/2)m^2 DISTINCT anchors: distinct cell
+corners are distinct y, x_s is a bijection, and different s have disjoint
+source layers. Across the two original channels the number of channel-
+labelled anchors is therefore A=n m^2. It is counted once per channel,
+NOT multiplied by the spatial components until counting actual output rows.
+The y cells need not be original x rectangles: they are PROOF tools only.
+The actual observations constructed next isolate only original point sites.
+
+Start with one original chart rectangle for each channel. To isolate a new
+anchor b=(b_1,b_2,b_3), find its containing rectangle. Split it about b_1
+in coordinate1, retaining the at most two side rectangles; inside the
+middle slice split about b_2, then inside that middle split about b_3.
+At most six side rectangles and the singleton {b} replace one rectangle:
+net increase at most6. Discard empty pieces. Each piece is an original
+axis-aligned nonempty integer rectangle. Disjoint coverage follows from
+the FIRST coordinate in which a point differs from b. Earlier isolated
+anchor singletons lie in other rectangles and are unchanged; if b is
+already singleton its insertion costs0. Original chart representatives
+are used even for anchors defined by modular coordinates, so no wrapping
+or diagonal rectangle is an observation.
+
+Iterating over all anchors gives per-channel partitions with
+ |P_alpha|<=1+6A_alpha, and therefore
+ N_out=3(|P_1|+|P_2|)<=6+18A=6+18n m^2.                        (248.13)
+This includes both channels, all three spatial components and the initial
+six rows. The partitions depend only on the prescribed profile, n and c,
+never on z. They are shared across k within each channel, not a mandatory
+global tensor grid. Extra nonpoint means only narrow the observation kernel.
+
+For the ceiling count set rho=sqrt(4096T_n)>=1. Minimality gives
+m=ceil rho<=rho+1<=2rho, hence m^2<=16384T_n. Thus, in the mesh branch,
+ N_out<=6+294912nT_n<2^19 nT_n,                                (248.14)
+since nT_n>=1 and 294912+6=294918<524288=2^19. No integer-square n,
+perfect mesh divisibility or omitted floor/ceiling assumption is required.
+This loose bound need not improve finite-size counts for small n. The actual
+partition always has at most the all-singleton number of cells.
+
+6. Singleton fallback covers EVERY remaining even n, including n=2.
+If m>n, minimality in (248.9) gives (m-1)^2<4096T_n, and the integers
+satisfy n<=m-1. Hence n^2<4096T_n. Give every site of each original channel
+its own singleton rectangle. Then R=I, N_out=6n^3<24576nT_n<2^19nT_n.
+Positivity of Q_A gives (248.3) directly with K_n=c, since
+||Cz||^2=||z||^2/V for this singleton map. No large-branch graph or cell gap
+is assumed for these n; n=2 and every mesh-ineligible size are included.
+
+7. Explicit FINITE completion from the kernel margin to ALL fields.
+Return to m<=n and let R be the orthogonal counting block projection onto
+fields constant on each chosen channel rectangle, separately for every k.
+For each block it replaces values by their arithmetic mean. Consequently
+ ||Cz||^2=||Rz||^2/V.                                         (248.15)
+Every field in ker R is zero on each corresponding anchor singleton, so
+(248.12) applies to it. No assertion that R preserves U is needed.
+
+Let L_A be the symmetric matrix of Q_A on the full finite real field space.
+Each forward shift is a counting isometry, so
+ ||partial_i f||^2<=4||f||^2. Since 0<B(x)<=HI_2 and there are three
+forward directions, 0<=L_A<=12H I, including period2. Put
+ F=L_A-cI, M=12H+c, K_n=M+2M^2/(3c).                            (248.16)
+Then ||F||<=M and K_n is finite and positive. Write z=u+v with
+u=(I-R)z in ker R and v=Rz. By (248.12),
+ <u,Fu>>=3c||u||^2; <v,Fv>>=-M||v||^2.
+The cross term is bounded, by the elementary two-square inequality, as
+ 2|<u,Fv>|<=2M||u||||v||
+          <=(3c/2)||u||^2+[2M^2/(3c)]||v||^2.
+Therefore
+ Q_A(z)+K_n||Rz||^2-c||z||^2>= (3c/2)||u||^2>=0.               (248.17)
+Divide by V and use (248.15) to obtain precisely (248.3). In the COUNTING
+energy convention on the SAME canonical C rows, the coefficient is V K_n;
+it is not obtained by rescaling the permitted observations. All constant
+fields are paid: Q_A=0 on them, Rz=z, and K_n>=M>=c. In the fallback K_n=c.
+The displayed large-branch K_n is O(cn^4); no useful conditioning or
+size-uniform penalty is claimed, and no infinite-penalty limit is used.
+
+8. Actual restriction, original caps and the critical-log limit.
+The all-field estimate restricts to the SAME U0 direct-sum U0. Its actual
+restoring rank satisfies rank(C|U)<=N_out<=2^19n(1+ln n). This is an upper,
+not equality with the full row count or independence of restricted rows.
+It is o(n^2), improving the earlier exact-D3 plane upper 6(n^2+1) in order.
+No matching lower or proof that the logarithm is necessary is supplied.
+
+The full gradient-stack profile has NINE weak eigenvalues a=c/48 and NINE
+strong eigenvalues H=cn^2 at EVERY site. Retain the ORIGINAL225/226 cap
+ alpha_D=(3/4)^D(D/2)(D/(D-2))^(D-1), P_exponent=D/2;
+thus alpha_3=(27/64)(3/2)9=729/128, NOT a newly chosen normalization.
+Its weak cap is1 because alpha_3*48^(3/2)>1; its strong cost is
+min(1,alpha_3 n^(-3)). There are no nonpositive eigenvalues. Consequently
+ F_c(A)=9V[1+min(1,(729/128)n^(-3))], h=6,                      (248.18)
+with every local eigenvalue, multiplicity and cap retained. In particular
+9V<=F_c(A)<=18V and h+F_c(A)=Theta(V). The improved count changes neither
+the profile nor its original capped budget, coefficient positivity, upper
+coherence, observed basis, channel separation or actual finite domain.
+
+This is ONLY the exact orthogonal checkerboard at D=3 and every even n>=2,
+with finite size-dependent penalties. It is not an all-angle extension,
+general variable-projector theorem, refutation of constant-P244, worst-case
+lower over a class containing constant profiles, or separate uniform-penalty
+lower. Optimal canonical rank/penalty remain OPEN. The finite point estimate
+explains the logarithmic cost in THIS construction; it does not prove a
+universal point-capacity obstruction or logarithmic optimality. Finite
+Neumann, point/Green, graph comparison and rectangle-isolation principles
+are classical; historical originality is unestablished, without exhaustive
+literature implication search or new general-principle assertion.
+
+9. Source/protocol context and exact requested scope.
+The active checkpoint247 requested this single bounded D3 question. This
+candidate derives rather than assumes the suggested constants:13 in (248.4),
+4 in (248.8),158 in (248.10),4096 mesh threshold and the complete2^19 row
+bound including fallback, constants and ceilings. No counterexample to these
+steps was found in this author derivation; that is NOT an accepted audit.
+A DIFFERENT ROLE must review the exact frozen bytes before any acceptance.
+The source proof is self-contained and needs no imported point-capacity or
+continuum theorem. Exact245 source context is candidate245.txt/rawSHA
+6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d;
+247 source context is rawSHAe2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03.
+All prior failed candidates, source audits and235--247 original proofs remain
+unchanged. Group235--248 in ONE later consolidation, not a separate small
+paper or insertion into frozen232B. No mathematical executable/oracle,
+formal proof, local test/build, runtime, PDF render/grade, physical/continuum
+or independent/blind/human-review claim is made. Involved Codex/OpenAI author
+role; exact served backend/effort unknown. No score transfers from232B or
+any predecessor; no Git/state/native/publication action accompanies this text.

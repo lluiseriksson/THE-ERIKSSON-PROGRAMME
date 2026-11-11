@@ -1,0 +1,55 @@
+{
+  "artifact": "Author response to frozen232B",
+  "date": "2026-11-10",
+  "role": "Involved author-assistance role; not an assessment",
+  "named_author": "Lluis Eriksson",
+  "assistant": "Codex/OpenAI exposed as based on GPT-6; exact backend/effort unknown",
+  "involvement": "Authored integrated232 source and performed requested full visualQA; now read the complete original assessment, context, hash record and same-round clarification for this response",
+  "exact_pdf": {
+    "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\rectangular_matrix232B.pdf",
+    "bytes": 505936,
+    "pages": 30,
+    "sha256": "5595e89c1bcbec1d9b1ae35053a76e6a962f67b45d5d1ac483e5b7a60c9b9be0"
+  },
+  "unchanged_judgment": {
+    "scientific_importance": "4.10/10",
+    "overall_stars": 4,
+    "criteria": [
+      4,
+      4,
+      3,
+      3,
+      4
+    ],
+    "original_conditional_opinion": "minor_revision",
+    "current_native_format_recommendation": "major_revision",
+    "same_first_round": true,
+    "new_assessment": false
+  },
+  "responses": {
+    "seven_numbered_objections": "All explicitly addressed; priority/usefulness/conditioning remain open",
+    "all_three_material_entries": "Copied verbatim and preserved as open native material entries",
+    "additional_comments": "Finite projection/folding clarification, selective bibliography limits and lossy-extraction distinction addressed without changing PDF",
+    "later235_236": "Not accessed or relied upon; absent from frozenPDF and cannot close its objections"
+  },
+  "review_limits": "Not human, blind, score-blind or demonstrated independent; predecessor score exposed inPDF; backend/effort/history controls unknown",
+  "inputs_read": [
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\report-hashes.json",
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\response.json",
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\review-context.json",
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-codex\\scientific-review.txt",
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-protocol-clarification\\clarification-context.json",
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-protocol-clarification\\clarification-hashes.json",
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-protocol-clarification\\protocol-addendum.txt",
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\assessment232B-protocol-clarification\\response-native.json",
+    "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\rectangular_matrix232B.pdf"
+  ],
+  "source_PDF_raw_reports_ratings_changed": false,
+  "no_native_remote_credentials_tests_compile_render": true,
+  "outputs_only": [
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-232\\author-response232B",
+    "D:\\Entregas\\the-eriksson-programme\\2026-11-10_manuscript232\\author-response232B"
+  ],
+  "byte_representation": "New text/JSON UTF-8 without BOM; raw-byte hashes, no normalization",
+  "status": "Author response supplied; no acceptance, publication, native import or objection closure claimed"
+}

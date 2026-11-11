@@ -1,0 +1,3201 @@
+{
+  "source_commit": "1659b5397ffa30e5315b2b3963d9ed661ee5f611",
+  "source_branch": "codex/tep-manuscript250-source-20261111",
+  "prefix": "papers/flat-coarse-rank/research-consolidation/revision250-preparation",
+  "main": "canonical_rectangles250.tex",
+  "source_inputs": {
+    ".gitattributes": {
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    "AUTHORING-SCOPE.txt": {
+      "bytes": 1180,
+      "sha256": "2b1a762b4cfa89498ce01dc7b008b46baec07b011fd7ffb9c8f2a40ce68ef948"
+    },
+    "COMPARISON235-248.md": {
+      "bytes": 3217,
+      "sha256": "f6b83adb3d9ecb3622723224d1c58d749ec3e37920e7c1fdcea07b30d45b8d84"
+    },
+    "SOURCE-INPUTS.json": {
+      "bytes": 57007,
+      "sha256": "800d0ac374474bac33b8ecabb67a121b05310ae030f1d6b4e3102bf36a07bd95"
+    },
+    "SOURCE-MAPPING.json": {
+      "bytes": 13501,
+      "sha256": "4be7c04154ea54ae2b0c4bc8dd082a5fac7c073136bb937fc63344a332ac4cb0"
+    },
+    "STATIC-SOURCE-CHECK.json": {
+      "bytes": 2787,
+      "sha256": "3c66aa8e71f343cd46e7ca266fe5ef306d385e61bcadeb4b3eb7faf140b36eb6"
+    },
+    "canonical_rectangles250.tex": {
+      "bytes": 3042,
+      "sha256": "d637fdd95611a7163a6a78992531e10d52f274dbfe20ee37a1829e69cd429ba3"
+    },
+    "checkerboard250.tex": {
+      "bytes": 6653,
+      "sha256": "3c507fe9cf8ff99f71835d536cbf655e31db22107feecaf58df17e986281afb4"
+    },
+    "context250.tex": {
+      "bytes": 14622,
+      "sha256": "cd9094104a7c9ccc7acf820a03fdf4aaa32fc1fe348fcccc50556ddc608b2fb6"
+    },
+    "finite250.tex": {
+      "bytes": 6931,
+      "sha256": "6ef355ed73177a2845fe468e68eec85184c4d39047448de18d0e268020c6a33f"
+    },
+    "fixed250.tex": {
+      "bytes": 14686,
+      "sha256": "ea65ea8a163c73f428b4ba84abf627fd9d4e941fd16ac12812422e838833e699"
+    },
+    "inputs/accepted/source235.txt": {
+      "bytes": 8851,
+      "sha256": "4ccc3829df28810f801204b385360bf361dea484f5b73dfdb5b227d0faefc06f"
+    },
+    "inputs/accepted/source236.txt": {
+      "bytes": 9388,
+      "sha256": "b29ea47b3949ba2b8130e38ef7c395c115e600e595d0c6476032a031b03ebc1a"
+    },
+    "inputs/accepted/source237.txt": {
+      "bytes": 5765,
+      "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+    },
+    "inputs/accepted/source238.txt": {
+      "bytes": 7686,
+      "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+    },
+    "inputs/accepted/source239.txt": {
+      "bytes": 8074,
+      "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+    },
+    "inputs/accepted/source240.txt": {
+      "bytes": 8232,
+      "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+    },
+    "inputs/accepted/source241.txt": {
+      "bytes": 12657,
+      "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+    },
+    "inputs/accepted/source242.txt": {
+      "bytes": 9624,
+      "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+    },
+    "inputs/accepted/source243.txt": {
+      "bytes": 13385,
+      "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+    },
+    "inputs/accepted/source244.txt": {
+      "bytes": 11932,
+      "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+    },
+    "inputs/accepted/source245.txt": {
+      "bytes": 7772,
+      "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+    },
+    "inputs/accepted/source246.txt": {
+      "bytes": 7600,
+      "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+    },
+    "inputs/accepted/source247.txt": {
+      "bytes": 10720,
+      "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+    },
+    "inputs/accepted/source248.txt": {
+      "bytes": 17708,
+      "sha256": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+    },
+    "inputs/audits/unit244/capture-manifest.json": {
+      "bytes": 10979,
+      "sha256": "2227ae6ad57c9cc79d84c585fe6f42e06de58a89f48ccfa870e0d6a723c7f01f"
+    },
+    "inputs/audits/unit244/capture/226C-matrix-proof-git.tex": {
+      "bytes": 7469,
+      "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    "inputs/audits/unit244/capture/226C-rectangular-matrix-git.tex": {
+      "bytes": 15141,
+      "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+    },
+    "inputs/audits/unit244/capture/all-dimension-penalty240B-git.txt": {
+      "bytes": 8232,
+      "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+    },
+    "inputs/audits/unit244/capture/all-internal-dimensions239-git.txt": {
+      "bytes": 8074,
+      "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+    },
+    "inputs/audits/unit244/capture/balanced-polarization241B-git.txt": {
+      "bytes": 12657,
+      "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+    },
+    "inputs/audits/unit244/capture/channel-separable231B-git.txt": {
+      "bytes": 7789,
+      "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+    },
+    "inputs/audits/unit244/capture/internal-dimension238-git.txt": {
+      "bytes": 7686,
+      "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+    },
+    "inputs/audits/unit244/capture/rank-penalty237-git.txt": {
+      "bytes": 5765,
+      "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+    },
+    "inputs/audits/unit244/capture/two-weak-directions243-git.txt": {
+      "bytes": 13385,
+      "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+    },
+    "inputs/audits/unit244/capture/uniform-weak-dimension244-git.txt": {
+      "bytes": 11932,
+      "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+    },
+    "inputs/audits/unit244/capture/upper-delocalization242-git.txt": {
+      "bytes": 9624,
+      "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+    },
+    "inputs/audits/unit244/context.json": {
+      "bytes": 1829,
+      "sha256": "898f405036d0d5d140f171e3e637e634e8fef2bb10d19e4eb3b42ee5179da06e"
+    },
+    "inputs/audits/unit244/fullreport.txt": {
+      "bytes": 21247,
+      "sha256": "0b848c38e333e1c0b0ca3797983ba72ebc7169df30057615ffed24eb00f8e5bb"
+    },
+    "inputs/audits/unit244/hashes.json": {
+      "bytes": 3767,
+      "sha256": "432424205841fbae5455fa4a790f21d55644585f532e33008f78eeeb27dd317b"
+    },
+    "inputs/audits/unit244/primary-reading-mss.txt": {
+      "bytes": 1105,
+      "sha256": "4b19d5c93dc9f8c0838859802c23305b7ce5d9300c1a82503fbfcec68badc6f9"
+    },
+    "inputs/audits/unit244/verdict.json": {
+      "bytes": 2555,
+      "sha256": "0421919b8c3df7abc3d2e7f937f9e0a0c54ae38d15b4ebdaa660ffb4232dc6e4"
+    },
+    "inputs/audits/unit245/capture-manifest.json": {
+      "bytes": 11303,
+      "sha256": "7cad9be858be5cadd9e6bbd50e514d74418809bc637c82959c08e2247d72528b"
+    },
+    "inputs/audits/unit245/capture/226C-matrix-proof-git.tex": {
+      "bytes": 7469,
+      "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    "inputs/audits/unit245/capture/226C-rectangular-matrix-git.tex": {
+      "bytes": 15141,
+      "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+    },
+    "inputs/audits/unit245/capture/all-dimension-penalty240B-git.txt": {
+      "bytes": 8232,
+      "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+    },
+    "inputs/audits/unit245/capture/all-internal-dimensions239-git.txt": {
+      "bytes": 8074,
+      "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+    },
+    "inputs/audits/unit245/capture/balanced-polarization241B-git.txt": {
+      "bytes": 12657,
+      "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+    },
+    "inputs/audits/unit245/capture/channel-separable231B-git.txt": {
+      "bytes": 7789,
+      "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+    },
+    "inputs/audits/unit245/capture/checkerboard-projector245-git.txt": {
+      "bytes": 7772,
+      "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+    },
+    "inputs/audits/unit245/capture/internal-dimension238-git.txt": {
+      "bytes": 7686,
+      "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+    },
+    "inputs/audits/unit245/capture/rank-penalty237-git.txt": {
+      "bytes": 5765,
+      "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+    },
+    "inputs/audits/unit245/capture/two-weak-directions243-git.txt": {
+      "bytes": 13385,
+      "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+    },
+    "inputs/audits/unit245/capture/uniform-weak-dimension244-git.txt": {
+      "bytes": 11932,
+      "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+    },
+    "inputs/audits/unit245/capture/upper-delocalization242-git.txt": {
+      "bytes": 9624,
+      "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+    },
+    "inputs/audits/unit245/context.json": {
+      "bytes": 1721,
+      "sha256": "af5b6190407ed8c59ec401e7b11a3114b75b5716770347d1e90402789f01bcbf"
+    },
+    "inputs/audits/unit245/fullreport.txt": {
+      "bytes": 18044,
+      "sha256": "816084b351a0a2d70c70de9fd6d4fedb282510618dd8c4a4b9cf76625ec5151e"
+    },
+    "inputs/audits/unit245/hashes.json": {
+      "bytes": 3786,
+      "sha256": "b61e2002afc710c36584b520e29f663b80a94601b1a1cb83b84ef7576d533a84"
+    },
+    "inputs/audits/unit245/verdict.json": {
+      "bytes": 3141,
+      "sha256": "c4ddfcb92b296e4e3385812b1f915af64b448d804f02ddf707c26baa3861256c"
+    },
+    "inputs/audits/unit246/capture-manifest.json": {
+      "bytes": 12259,
+      "sha256": "fdda6257d1db3a2f74d57a3a5eba18864f3cb69b877216a82d98c36878ec5933"
+    },
+    "inputs/audits/unit246/capture/226C-matrix-proof-git.tex": {
+      "bytes": 7469,
+      "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    "inputs/audits/unit246/capture/226C-rectangular-matrix-git.tex": {
+      "bytes": 15141,
+      "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+    },
+    "inputs/audits/unit246/capture/all-dimension-penalty240B-git.txt": {
+      "bytes": 8232,
+      "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+    },
+    "inputs/audits/unit246/capture/all-internal-dimensions239-git.txt": {
+      "bytes": 8074,
+      "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+    },
+    "inputs/audits/unit246/capture/balanced-polarization241B-git.txt": {
+      "bytes": 12657,
+      "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+    },
+    "inputs/audits/unit246/capture/channel-separable231B-git.txt": {
+      "bytes": 7789,
+      "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+    },
+    "inputs/audits/unit246/capture/checkerboard-projector245-git.txt": {
+      "bytes": 7772,
+      "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+    },
+    "inputs/audits/unit246/capture/internal-dimension238-git.txt": {
+      "bytes": 7686,
+      "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+    },
+    "inputs/audits/unit246/capture/rank-penalty237-git.txt": {
+      "bytes": 5765,
+      "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+    },
+    "inputs/audits/unit246/capture/small-angle-projector246-git.txt": {
+      "bytes": 7600,
+      "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+    },
+    "inputs/audits/unit246/capture/two-weak-directions243-git.txt": {
+      "bytes": 13385,
+      "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+    },
+    "inputs/audits/unit246/capture/uniform-weak-dimension244-git.txt": {
+      "bytes": 11932,
+      "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+    },
+    "inputs/audits/unit246/capture/upper-delocalization242-git.txt": {
+      "bytes": 9624,
+      "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+    },
+    "inputs/audits/unit246/context.json": {
+      "bytes": 1721,
+      "sha256": "1983cc9fb5ae8254e27364d415d2e1f795edc0c4f9c4b9313c83746ea2633371"
+    },
+    "inputs/audits/unit246/fullreport.txt": {
+      "bytes": 19395,
+      "sha256": "bf2abafa45c9dc601753dd0c0e19da0db02723a2116a3bf86d30cea8ede47c11"
+    },
+    "inputs/audits/unit246/hashes.json": {
+      "bytes": 4021,
+      "sha256": "fad05c9e5441ed5614419259e345d7ab8724ec1368636a7cfa1bd8d5d764cb4e"
+    },
+    "inputs/audits/unit246/verdict.json": {
+      "bytes": 3138,
+      "sha256": "db8560bf9f34a8dbe8f17dc173374e6e510bbd76c137d83c1e98083140fd7fec"
+    },
+    "inputs/audits/unit247/capture-manifest.json": {
+      "bytes": 13202,
+      "sha256": "022d518205285c6d5307ff7e125103cb3e0d8547c90fb86a91a292474e15a096"
+    },
+    "inputs/audits/unit247/capture/226C-matrix-proof-git.tex": {
+      "bytes": 7469,
+      "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    "inputs/audits/unit247/capture/226C-rectangular-matrix-git.tex": {
+      "bytes": 15141,
+      "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+    },
+    "inputs/audits/unit247/capture/all-dimension-penalty240B-git.txt": {
+      "bytes": 8232,
+      "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+    },
+    "inputs/audits/unit247/capture/all-internal-dimensions239-git.txt": {
+      "bytes": 8074,
+      "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+    },
+    "inputs/audits/unit247/capture/balanced-polarization241B-git.txt": {
+      "bytes": 12657,
+      "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+    },
+    "inputs/audits/unit247/capture/channel-separable231B-git.txt": {
+      "bytes": 7789,
+      "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+    },
+    "inputs/audits/unit247/capture/checkerboard-projector245-git.txt": {
+      "bytes": 7772,
+      "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+    },
+    "inputs/audits/unit247/capture/internal-dimension238-git.txt": {
+      "bytes": 7686,
+      "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+    },
+    "inputs/audits/unit247/capture/point-anchors247-git.txt": {
+      "bytes": 10720,
+      "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+    },
+    "inputs/audits/unit247/capture/rank-penalty237-git.txt": {
+      "bytes": 5765,
+      "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+    },
+    "inputs/audits/unit247/capture/small-angle-projector246-git.txt": {
+      "bytes": 7600,
+      "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+    },
+    "inputs/audits/unit247/capture/two-weak-directions243-git.txt": {
+      "bytes": 13385,
+      "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+    },
+    "inputs/audits/unit247/capture/uniform-weak-dimension244-git.txt": {
+      "bytes": 11932,
+      "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+    },
+    "inputs/audits/unit247/capture/upper-delocalization242-git.txt": {
+      "bytes": 9624,
+      "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+    },
+    "inputs/audits/unit247/context.json": {
+      "bytes": 1728,
+      "sha256": "f42e3be4d74abb37c28d5835ff78b86bc09b227d4799a573741b56edffeee181"
+    },
+    "inputs/audits/unit247/fullreport.txt": {
+      "bytes": 19987,
+      "sha256": "d620efd8c47cb4fecdb81fe1c951e60e329f3523a9902242015601b8ca47e9ab"
+    },
+    "inputs/audits/unit247/hashes.json": {
+      "bytes": 4249,
+      "sha256": "b2ba345135c7f8d1e42573c2c075fa61f00bcca92922438de0159748c5d5de74"
+    },
+    "inputs/audits/unit247/verdict.json": {
+      "bytes": 3398,
+      "sha256": "7a88b7905155397ac76b579b38f8ed378fbbafcfcaec227132ff208a2d3c9fbc"
+    },
+    "inputs/audits/unit248/capture-manifest.json": {
+      "bytes": 14950,
+      "sha256": "4d5daf6dd6df0f2ed2f693d56005ef0498cfe4e6f3344f019e43a130481301f5"
+    },
+    "inputs/audits/unit248/capture/226C-matrix-proof-git.tex": {
+      "bytes": 7469,
+      "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+    },
+    "inputs/audits/unit248/capture/226C-rectangular-matrix-git.tex": {
+      "bytes": 15141,
+      "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+    },
+    "inputs/audits/unit248/capture/all-dimension-penalty240B-git.txt": {
+      "bytes": 8232,
+      "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+    },
+    "inputs/audits/unit248/capture/all-internal-dimensions239-git.txt": {
+      "bytes": 8074,
+      "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+    },
+    "inputs/audits/unit248/capture/balanced-polarization241B-git.txt": {
+      "bytes": 12657,
+      "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+    },
+    "inputs/audits/unit248/capture/channel-separable231B-git.txt": {
+      "bytes": 7789,
+      "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+    },
+    "inputs/audits/unit248/capture/checkerboard-projector245-git.txt": {
+      "bytes": 7772,
+      "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+    },
+    "inputs/audits/unit248/capture/critical-point-anchors248-git.txt": {
+      "bytes": 17708,
+      "sha256": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+    },
+    "inputs/audits/unit248/capture/internal-dimension238-git.txt": {
+      "bytes": 7686,
+      "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+    },
+    "inputs/audits/unit248/capture/point-anchors247-git.txt": {
+      "bytes": 10720,
+      "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+    },
+    "inputs/audits/unit248/capture/rank-penalty237-git.txt": {
+      "bytes": 5765,
+      "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+    },
+    "inputs/audits/unit248/capture/small-angle-projector246-git.txt": {
+      "bytes": 7600,
+      "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+    },
+    "inputs/audits/unit248/capture/two-weak-directions243-git.txt": {
+      "bytes": 13385,
+      "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+    },
+    "inputs/audits/unit248/capture/uniform-weak-dimension244-git.txt": {
+      "bytes": 11932,
+      "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+    },
+    "inputs/audits/unit248/capture/upper-delocalization242-git.txt": {
+      "bytes": 9624,
+      "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+    },
+    "inputs/audits/unit248/context.json": {
+      "bytes": 1766,
+      "sha256": "1f79131f0fbd9758e982f977cb106fcbbe7e1a4b06f7e41a46f779f0ce37a2b6"
+    },
+    "inputs/audits/unit248/fullreport.txt": {
+      "bytes": 21545,
+      "sha256": "a6faea7524e92b500f591cb755aac97805bc88bfc62d1b943764bc12decade89"
+    },
+    "inputs/audits/unit248/hashes.json": {
+      "bytes": 4486,
+      "sha256": "aa1e446dfa74e56fb40d34af3c4aceec313a5b95a28e9b0d1a03a0979882f144"
+    },
+    "inputs/audits/unit248/verdict.json": {
+      "bytes": 3856,
+      "sha256": "8336cda30e2e7cc7ef10b410c0e035cc4fa6193e11edf37216a9304838bfb24e"
+    },
+    "inputs/grouped235-248-source-audits.zip": {
+      "bytes": 2177768,
+      "sha256": "ca030e2a91a7640ee69d184a1449a5edf81d2acec23dfbec2e994dafb385a11e"
+    },
+    "inputs/historical-corrections/evidencia-236__candidate236A-normalization-correction.txt": {
+      "bytes": 9423,
+      "sha256": "66509fe16c686d148978d3b51d7cc9425eef50d401ae89d9816e2129ed813e55"
+    },
+    "inputs/historical-corrections/evidencia-236__source-audit-b__fullreport.txt": {
+      "bytes": 12948,
+      "sha256": "ca13d18959e2ae804b920958252e02f45c7f5e3afca4cc5aaba1e94d864a41b6"
+    },
+    "inputs/historical-corrections/evidencia-240__candidate240A-rejected.txt": {
+      "bytes": 7703,
+      "sha256": "1063184ff5af9b86a4e52c11d9706e6736d37a7113351c84302891092672af04"
+    },
+    "inputs/historical-corrections/evidencia-240__source-audit__fullreport.txt": {
+      "bytes": 10686,
+      "sha256": "7527ba803af6be74bf28dd609c7b048823d944d32c853db9da2cab9214a2362c"
+    },
+    "inputs/historical-corrections/evidencia-240__source-audit__verdict.json": {
+      "bytes": 1430,
+      "sha256": "48332e9b585c518889e598646ba2b3899d378d72262a96b9abe9574cd99d20aa"
+    },
+    "inputs/historical-corrections/evidencia-241__candidate241A-rejected.txt": {
+      "bytes": 12143,
+      "sha256": "59907005dc2184e7dcb380f06f7cad09ffd3ff247145bff1707ad3ef1b1865d1"
+    },
+    "inputs/historical-corrections/evidencia-241__source-audit__fullreport.txt": {
+      "bytes": 17331,
+      "sha256": "45f6868a6c75940d61b249567dc295fe3d04acca14b12d9ffe6b30638aa8ad6f"
+    },
+    "inputs/historical-corrections/evidencia-241__source-audit__verdict.json": {
+      "bytes": 2597,
+      "sha256": "4d0e62105f70910e38f4ed00980de628d48f469b9efbb8b2a3d2f97c00d4d427"
+    },
+    "inputs/historical-corrections/evidencia-242__N1-base-case-clarification.txt": {
+      "bytes": 568,
+      "sha256": "704360f387e6c4081cf99a3d9a3f237e58ee34ead82786c9bce687fd10850219"
+    },
+    "inputs/historical-corrections/evidencia-243__C1-singleton-priority.txt": {
+      "bytes": 315,
+      "sha256": "31a6fefe743d37c327867fd46acfc1093f7dc4e341025e2200fdd1768faf9765"
+    },
+    "inputs/pdf-operation-marker250-original.json": {
+      "bytes": 375,
+      "sha256": "26ee1282462f2a457f75dbbe2e4ab9bd384143aecc5d475aab348b3c8221621a"
+    },
+    "inputs/primary-reading/comparison250/context.json": {
+      "bytes": 2150,
+      "sha256": "2a70528b0a13370b8a2c01e6edc908263d0d6918418e7e4f731fe1e801470781"
+    },
+    "inputs/primary-reading/comparison250/manifest.json": {
+      "bytes": 4982,
+      "sha256": "2f55c12afc77931cdcd787d8276644c7919b43c74380743d3291128d4f28f48b"
+    },
+    "inputs/primary-reading/comparison250/primary-comparison-report.txt": {
+      "bytes": 11688,
+      "sha256": "6225531e648b8092a42407328fd0fdd47440ab3906f7b74651bedf3ca5045beb"
+    },
+    "inputs/primary-reading/evidencia-237__limited-primary-comparison237.txt": {
+      "bytes": 1545,
+      "sha256": "68d6e8a80b51861477931b06a02ff149128f0b1a4d1ab2b75830e1182d526431"
+    },
+    "inputs/primary-reading/evidencia-241__limited-primary-comparison241.txt": {
+      "bytes": 3250,
+      "sha256": "d39223ba4f585c704b82d19b898a393eeeeb1d064e0c9805c27dbe9be9feb7f6"
+    },
+    "inputs/primary-reading/evidencia-244__primary-input-MSS244.json": {
+      "bytes": 1260,
+      "sha256": "bbb6c68ca8303e15aed7e27f978e7d63def6d29366d1284569e7f9a552fcf825"
+    },
+    "inputs/primary-reading/evidencia-244__source-audit__primary-reading-mss.txt": {
+      "bytes": 1105,
+      "sha256": "4b19d5c93dc9f8c0838859802c23305b7ce5d9300c1a82503fbfcec68badc6f9"
+    },
+    "inputs/primary-reading/evidencia-245__limited-primary-comparison245.txt": {
+      "bytes": 1392,
+      "sha256": "ca03ae91b95a2d9e555d759d7c59f02a93963362da20c6d61669450d5e75dbcd"
+    },
+    "inputs/primary-reading/evidencia-247__limited-primary-comparison247.txt": {
+      "bytes": 1347,
+      "sha256": "3f01cc2d84af293a6eb8d80297a5646803d2f1903d75698760740db15592830a"
+    },
+    "inputs/prior-review232B/assessment232B-codex/report-hashes.json": {
+      "bytes": 1543,
+      "sha256": "2210507f86a652533790d609c6afeac26c726868992f34be1afcea4169e1e4e5"
+    },
+    "inputs/prior-review232B/assessment232B-codex/response.json": {
+      "bytes": 6674,
+      "sha256": "e05cc1bb5dea2cf3a43713b2d380d9afa3920c8e4ee3d350b95f4eb492c53e4f"
+    },
+    "inputs/prior-review232B/assessment232B-codex/review-context.json": {
+      "bytes": 10437,
+      "sha256": "8b7519d3eaf46b67ade6ec409ffea095206564af65c99deb3fd2d7f2ddd610d9"
+    },
+    "inputs/prior-review232B/assessment232B-codex/scientific-review.txt": {
+      "bytes": 21047,
+      "sha256": "9619c2a5b971bdeca22c7654587229bd1ade8cb44b1b355cf1a7aecbbcdb50e9"
+    },
+    "inputs/prior-review232B/assessment232B-protocol-clarification/clarification-context.json": {
+      "bytes": 3745,
+      "sha256": "da6c46c80963149c0f57a97347fb492e81de72bcd734a9c9eef91d412d031e2e"
+    },
+    "inputs/prior-review232B/assessment232B-protocol-clarification/clarification-hashes.json": {
+      "bytes": 2535,
+      "sha256": "7cc16099252b1a0576d9dfb28e5c54b7f7fb0a011da5a03b64a469641634a407"
+    },
+    "inputs/prior-review232B/assessment232B-protocol-clarification/protocol-addendum.txt": {
+      "bytes": 5955,
+      "sha256": "da5866d832d7a82af1aa5ed72d3df63552837e6ce14b931609ff4144fd631f15"
+    },
+    "inputs/prior-review232B/assessment232B-protocol-clarification/response-native.json": {
+      "bytes": 7393,
+      "sha256": "12d5d04f87bca41ebcdec874bab4002e0672c716dab1f5bb90e61a4029254eea"
+    },
+    "inputs/prior-review232B/author-response232B/author-response232B.txt": {
+      "bytes": 16808,
+      "sha256": "86aa0588974f9e26940aa44fc0aa222c83c35214a41f31ca40481190d7146c06"
+    },
+    "inputs/prior-review232B/author-response232B/context.json": {
+      "bytes": 3354,
+      "sha256": "558dfaba866d60738c48e8c012006537235b05461b82cc7ccef09818d8ccd8ab"
+    },
+    "inputs/prior-review232B/author-response232B/hashes.json": {
+      "bytes": 2945,
+      "sha256": "789ca59e21a2c0640e2192b7aacb8d5ea01e4b06ad88a1f34d97833c94cd6c6f"
+    },
+    "points250.tex": {
+      "bytes": 10986,
+      "sha256": "2bb9af96b0a0abe97a9aed3c441f8f04f1be3d91d52d7a65d3bdc3689c1053e3"
+    },
+    "setup250.tex": {
+      "bytes": 9781,
+      "sha256": "44a04cb5ff4b2a212995a0801b358f05c78cd28136420a067267769362c6b703"
+    }
+  },
+  "started_at": "2026-11-11T03:17:49.599757+00:00",
+  "scientific_or_formal_execution": false,
+  "grade": null,
+  "billing_units": null,
+  "billing_seconds": null,
+  "validated_source_snapshot": "PRESERVED_BEFORE_FIRST_TEX_CHILD",
+  "build_attempts": [
+    {
+      "clone": "first",
+      "pass": "firstpass",
+      "collection_completed": true,
+      "files": [
+        {
+          "path": ".gitattributes",
+          "bytes": 8,
+          "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+        },
+        {
+          "path": "AUTHORING-SCOPE.txt",
+          "bytes": 1180,
+          "sha256": "2b1a762b4cfa89498ce01dc7b008b46baec07b011fd7ffb9c8f2a40ce68ef948"
+        },
+        {
+          "path": "COMPARISON235-248.md",
+          "bytes": 3217,
+          "sha256": "f6b83adb3d9ecb3622723224d1c58d749ec3e37920e7c1fdcea07b30d45b8d84"
+        },
+        {
+          "path": "SOURCE-INPUTS.json",
+          "bytes": 57007,
+          "sha256": "800d0ac374474bac33b8ecabb67a121b05310ae030f1d6b4e3102bf36a07bd95"
+        },
+        {
+          "path": "SOURCE-MAPPING.json",
+          "bytes": 13501,
+          "sha256": "4be7c04154ea54ae2b0c4bc8dd082a5fac7c073136bb937fc63344a332ac4cb0"
+        },
+        {
+          "path": "STATIC-SOURCE-CHECK.json",
+          "bytes": 2787,
+          "sha256": "3c66aa8e71f343cd46e7ca266fe5ef306d385e61bcadeb4b3eb7faf140b36eb6"
+        },
+        {
+          "path": "canonical_rectangles250.aux",
+          "bytes": 10057,
+          "sha256": "85ee435c3cd8d11f70342e8a2c103d2b00275923acf1b5d8d8069b79aa397a42"
+        },
+        {
+          "path": "canonical_rectangles250.log",
+          "bytes": 37535,
+          "sha256": "d6870ba228fcddd3352b95548a167470df291338eaee65ab5d88694b03ecbe92"
+        },
+        {
+          "path": "canonical_rectangles250.out",
+          "bytes": 8035,
+          "sha256": "57973466a21148fdb93883a6a98071eb3dbc1b9c739c953cabb92a8c7aaffaa6"
+        },
+        {
+          "path": "canonical_rectangles250.pdf",
+          "bytes": 438816,
+          "sha256": "7b5e8f5890907da10bfb02ce2a03a878ff4884e34e6137d7ff887849b1ab2584"
+        },
+        {
+          "path": "canonical_rectangles250.tex",
+          "bytes": 3042,
+          "sha256": "d637fdd95611a7163a6a78992531e10d52f274dbfe20ee37a1829e69cd429ba3"
+        },
+        {
+          "path": "canonical_rectangles250.toc",
+          "bytes": 2953,
+          "sha256": "573ba453060b3825986abd3df7429febf69a70ca5b299d8a4a9a134c28ef9ab1"
+        },
+        {
+          "path": "checkerboard250.tex",
+          "bytes": 6653,
+          "sha256": "3c507fe9cf8ff99f71835d536cbf655e31db22107feecaf58df17e986281afb4"
+        },
+        {
+          "path": "context250.tex",
+          "bytes": 14622,
+          "sha256": "cd9094104a7c9ccc7acf820a03fdf4aaa32fc1fe348fcccc50556ddc608b2fb6"
+        },
+        {
+          "path": "finite250.tex",
+          "bytes": 6931,
+          "sha256": "6ef355ed73177a2845fe468e68eec85184c4d39047448de18d0e268020c6a33f"
+        },
+        {
+          "path": "fixed250.tex",
+          "bytes": 14686,
+          "sha256": "ea65ea8a163c73f428b4ba84abf627fd9d4e941fd16ac12812422e838833e699"
+        },
+        {
+          "path": "inputs/accepted/source235.txt",
+          "bytes": 8851,
+          "sha256": "4ccc3829df28810f801204b385360bf361dea484f5b73dfdb5b227d0faefc06f"
+        },
+        {
+          "path": "inputs/accepted/source236.txt",
+          "bytes": 9388,
+          "sha256": "b29ea47b3949ba2b8130e38ef7c395c115e600e595d0c6476032a031b03ebc1a"
+        },
+        {
+          "path": "inputs/accepted/source237.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/accepted/source238.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/accepted/source239.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/accepted/source240.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/accepted/source241.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/accepted/source242.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/accepted/source243.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/accepted/source244.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/accepted/source245.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/accepted/source246.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/accepted/source247.txt",
+          "bytes": 10720,
+          "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+        },
+        {
+          "path": "inputs/accepted/source248.txt",
+          "bytes": 17708,
+          "sha256": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit244/capture-manifest.json",
+          "bytes": 10979,
+          "sha256": "2227ae6ad57c9cc79d84c585fe6f42e06de58a89f48ccfa870e0d6a723c7f01f"
+        },
+        {
+          "path": "inputs/audits/unit244/context.json",
+          "bytes": 1829,
+          "sha256": "898f405036d0d5d140f171e3e637e634e8fef2bb10d19e4eb3b42ee5179da06e"
+        },
+        {
+          "path": "inputs/audits/unit244/fullreport.txt",
+          "bytes": 21247,
+          "sha256": "0b848c38e333e1c0b0ca3797983ba72ebc7169df30057615ffed24eb00f8e5bb"
+        },
+        {
+          "path": "inputs/audits/unit244/hashes.json",
+          "bytes": 3767,
+          "sha256": "432424205841fbae5455fa4a790f21d55644585f532e33008f78eeeb27dd317b"
+        },
+        {
+          "path": "inputs/audits/unit244/primary-reading-mss.txt",
+          "bytes": 1105,
+          "sha256": "4b19d5c93dc9f8c0838859802c23305b7ce5d9300c1a82503fbfcec68badc6f9"
+        },
+        {
+          "path": "inputs/audits/unit244/verdict.json",
+          "bytes": 2555,
+          "sha256": "0421919b8c3df7abc3d2e7f937f9e0a0c54ae38d15b4ebdaa660ffb4232dc6e4"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit245/capture-manifest.json",
+          "bytes": 11303,
+          "sha256": "7cad9be858be5cadd9e6bbd50e514d74418809bc637c82959c08e2247d72528b"
+        },
+        {
+          "path": "inputs/audits/unit245/context.json",
+          "bytes": 1721,
+          "sha256": "af5b6190407ed8c59ec401e7b11a3114b75b5716770347d1e90402789f01bcbf"
+        },
+        {
+          "path": "inputs/audits/unit245/fullreport.txt",
+          "bytes": 18044,
+          "sha256": "816084b351a0a2d70c70de9fd6d4fedb282510618dd8c4a4b9cf76625ec5151e"
+        },
+        {
+          "path": "inputs/audits/unit245/hashes.json",
+          "bytes": 3786,
+          "sha256": "b61e2002afc710c36584b520e29f663b80a94601b1a1cb83b84ef7576d533a84"
+        },
+        {
+          "path": "inputs/audits/unit245/verdict.json",
+          "bytes": 3141,
+          "sha256": "c4ddfcb92b296e4e3385812b1f915af64b448d804f02ddf707c26baa3861256c"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/small-angle-projector246-git.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit246/capture-manifest.json",
+          "bytes": 12259,
+          "sha256": "fdda6257d1db3a2f74d57a3a5eba18864f3cb69b877216a82d98c36878ec5933"
+        },
+        {
+          "path": "inputs/audits/unit246/context.json",
+          "bytes": 1721,
+          "sha256": "1983cc9fb5ae8254e27364d415d2e1f795edc0c4f9c4b9313c83746ea2633371"
+        },
+        {
+          "path": "inputs/audits/unit246/fullreport.txt",
+          "bytes": 19395,
+          "sha256": "bf2abafa45c9dc601753dd0c0e19da0db02723a2116a3bf86d30cea8ede47c11"
+        },
+        {
+          "path": "inputs/audits/unit246/hashes.json",
+          "bytes": 4021,
+          "sha256": "fad05c9e5441ed5614419259e345d7ab8724ec1368636a7cfa1bd8d5d764cb4e"
+        },
+        {
+          "path": "inputs/audits/unit246/verdict.json",
+          "bytes": 3138,
+          "sha256": "db8560bf9f34a8dbe8f17dc173374e6e510bbd76c137d83c1e98083140fd7fec"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/point-anchors247-git.txt",
+          "bytes": 10720,
+          "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/small-angle-projector246-git.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit247/capture-manifest.json",
+          "bytes": 13202,
+          "sha256": "022d518205285c6d5307ff7e125103cb3e0d8547c90fb86a91a292474e15a096"
+        },
+        {
+          "path": "inputs/audits/unit247/context.json",
+          "bytes": 1728,
+          "sha256": "f42e3be4d74abb37c28d5835ff78b86bc09b227d4799a573741b56edffeee181"
+        },
+        {
+          "path": "inputs/audits/unit247/fullreport.txt",
+          "bytes": 19987,
+          "sha256": "d620efd8c47cb4fecdb81fe1c951e60e329f3523a9902242015601b8ca47e9ab"
+        },
+        {
+          "path": "inputs/audits/unit247/hashes.json",
+          "bytes": 4249,
+          "sha256": "b2ba345135c7f8d1e42573c2c075fa61f00bcca92922438de0159748c5d5de74"
+        },
+        {
+          "path": "inputs/audits/unit247/verdict.json",
+          "bytes": 3398,
+          "sha256": "7a88b7905155397ac76b579b38f8ed378fbbafcfcaec227132ff208a2d3c9fbc"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/critical-point-anchors248-git.txt",
+          "bytes": 17708,
+          "sha256": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/point-anchors247-git.txt",
+          "bytes": 10720,
+          "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/small-angle-projector246-git.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit248/capture-manifest.json",
+          "bytes": 14950,
+          "sha256": "4d5daf6dd6df0f2ed2f693d56005ef0498cfe4e6f3344f019e43a130481301f5"
+        },
+        {
+          "path": "inputs/audits/unit248/context.json",
+          "bytes": 1766,
+          "sha256": "1f79131f0fbd9758e982f977cb106fcbbe7e1a4b06f7e41a46f779f0ce37a2b6"
+        },
+        {
+          "path": "inputs/audits/unit248/fullreport.txt",
+          "bytes": 21545,
+          "sha256": "a6faea7524e92b500f591cb755aac97805bc88bfc62d1b943764bc12decade89"
+        },
+        {
+          "path": "inputs/audits/unit248/hashes.json",
+          "bytes": 4486,
+          "sha256": "aa1e446dfa74e56fb40d34af3c4aceec313a5b95a28e9b0d1a03a0979882f144"
+        },
+        {
+          "path": "inputs/audits/unit248/verdict.json",
+          "bytes": 3856,
+          "sha256": "8336cda30e2e7cc7ef10b410c0e035cc4fa6193e11edf37216a9304838bfb24e"
+        },
+        {
+          "path": "inputs/grouped235-248-source-audits.zip",
+          "bytes": 2177768,
+          "sha256": "ca030e2a91a7640ee69d184a1449a5edf81d2acec23dfbec2e994dafb385a11e"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-236__candidate236A-normalization-correction.txt",
+          "bytes": 9423,
+          "sha256": "66509fe16c686d148978d3b51d7cc9425eef50d401ae89d9816e2129ed813e55"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-236__source-audit-b__fullreport.txt",
+          "bytes": 12948,
+          "sha256": "ca13d18959e2ae804b920958252e02f45c7f5e3afca4cc5aaba1e94d864a41b6"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-240__candidate240A-rejected.txt",
+          "bytes": 7703,
+          "sha256": "1063184ff5af9b86a4e52c11d9706e6736d37a7113351c84302891092672af04"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-240__source-audit__fullreport.txt",
+          "bytes": 10686,
+          "sha256": "7527ba803af6be74bf28dd609c7b048823d944d32c853db9da2cab9214a2362c"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-240__source-audit__verdict.json",
+          "bytes": 1430,
+          "sha256": "48332e9b585c518889e598646ba2b3899d378d72262a96b9abe9574cd99d20aa"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-241__candidate241A-rejected.txt",
+          "bytes": 12143,
+          "sha256": "59907005dc2184e7dcb380f06f7cad09ffd3ff247145bff1707ad3ef1b1865d1"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-241__source-audit__fullreport.txt",
+          "bytes": 17331,
+          "sha256": "45f6868a6c75940d61b249567dc295fe3d04acca14b12d9ffe6b30638aa8ad6f"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-241__source-audit__verdict.json",
+          "bytes": 2597,
+          "sha256": "4d0e62105f70910e38f4ed00980de628d48f469b9efbb8b2a3d2f97c00d4d427"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-242__N1-base-case-clarification.txt",
+          "bytes": 568,
+          "sha256": "704360f387e6c4081cf99a3d9a3f237e58ee34ead82786c9bce687fd10850219"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-243__C1-singleton-priority.txt",
+          "bytes": 315,
+          "sha256": "31a6fefe743d37c327867fd46acfc1093f7dc4e341025e2200fdd1768faf9765"
+        },
+        {
+          "path": "inputs/pdf-operation-marker250-original.json",
+          "bytes": 375,
+          "sha256": "26ee1282462f2a457f75dbbe2e4ab9bd384143aecc5d475aab348b3c8221621a"
+        },
+        {
+          "path": "inputs/primary-reading/comparison250/context.json",
+          "bytes": 2150,
+          "sha256": "2a70528b0a13370b8a2c01e6edc908263d0d6918418e7e4f731fe1e801470781"
+        },
+        {
+          "path": "inputs/primary-reading/comparison250/manifest.json",
+          "bytes": 4982,
+          "sha256": "2f55c12afc77931cdcd787d8276644c7919b43c74380743d3291128d4f28f48b"
+        },
+        {
+          "path": "inputs/primary-reading/comparison250/primary-comparison-report.txt",
+          "bytes": 11688,
+          "sha256": "6225531e648b8092a42407328fd0fdd47440ab3906f7b74651bedf3ca5045beb"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-237__limited-primary-comparison237.txt",
+          "bytes": 1545,
+          "sha256": "68d6e8a80b51861477931b06a02ff149128f0b1a4d1ab2b75830e1182d526431"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-241__limited-primary-comparison241.txt",
+          "bytes": 3250,
+          "sha256": "d39223ba4f585c704b82d19b898a393eeeeb1d064e0c9805c27dbe9be9feb7f6"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-244__primary-input-MSS244.json",
+          "bytes": 1260,
+          "sha256": "bbb6c68ca8303e15aed7e27f978e7d63def6d29366d1284569e7f9a552fcf825"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-244__source-audit__primary-reading-mss.txt",
+          "bytes": 1105,
+          "sha256": "4b19d5c93dc9f8c0838859802c23305b7ce5d9300c1a82503fbfcec68badc6f9"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-245__limited-primary-comparison245.txt",
+          "bytes": 1392,
+          "sha256": "ca03ae91b95a2d9e555d759d7c59f02a93963362da20c6d61669450d5e75dbcd"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-247__limited-primary-comparison247.txt",
+          "bytes": 1347,
+          "sha256": "3f01cc2d84af293a6eb8d80297a5646803d2f1903d75698760740db15592830a"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/report-hashes.json",
+          "bytes": 1543,
+          "sha256": "2210507f86a652533790d609c6afeac26c726868992f34be1afcea4169e1e4e5"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/response.json",
+          "bytes": 6674,
+          "sha256": "e05cc1bb5dea2cf3a43713b2d380d9afa3920c8e4ee3d350b95f4eb492c53e4f"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/review-context.json",
+          "bytes": 10437,
+          "sha256": "8b7519d3eaf46b67ade6ec409ffea095206564af65c99deb3fd2d7f2ddd610d9"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/scientific-review.txt",
+          "bytes": 21047,
+          "sha256": "9619c2a5b971bdeca22c7654587229bd1ade8cb44b1b355cf1a7aecbbcdb50e9"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/clarification-context.json",
+          "bytes": 3745,
+          "sha256": "da6c46c80963149c0f57a97347fb492e81de72bcd734a9c9eef91d412d031e2e"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/clarification-hashes.json",
+          "bytes": 2535,
+          "sha256": "7cc16099252b1a0576d9dfb28e5c54b7f7fb0a011da5a03b64a469641634a407"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/protocol-addendum.txt",
+          "bytes": 5955,
+          "sha256": "da5866d832d7a82af1aa5ed72d3df63552837e6ce14b931609ff4144fd631f15"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/response-native.json",
+          "bytes": 7393,
+          "sha256": "12d5d04f87bca41ebcdec874bab4002e0672c716dab1f5bb90e61a4029254eea"
+        },
+        {
+          "path": "inputs/prior-review232B/author-response232B/author-response232B.txt",
+          "bytes": 16808,
+          "sha256": "86aa0588974f9e26940aa44fc0aa222c83c35214a41f31ca40481190d7146c06"
+        },
+        {
+          "path": "inputs/prior-review232B/author-response232B/context.json",
+          "bytes": 3354,
+          "sha256": "558dfaba866d60738c48e8c012006537235b05461b82cc7ccef09818d8ccd8ab"
+        },
+        {
+          "path": "inputs/prior-review232B/author-response232B/hashes.json",
+          "bytes": 2945,
+          "sha256": "789ca59e21a2c0640e2192b7aacb8d5ea01e4b06ad88a1f34d97833c94cd6c6f"
+        },
+        {
+          "path": "points250.tex",
+          "bytes": 10986,
+          "sha256": "2bb9af96b0a0abe97a9aed3c441f8f04f1be3d91d52d7a65d3bdc3689c1053e3"
+        },
+        {
+          "path": "setup250.tex",
+          "bytes": 9781,
+          "sha256": "44a04cb5ff4b2a212995a0801b358f05c78cd28136420a067267769362c6b703"
+        }
+      ]
+    },
+    {
+      "clone": "first",
+      "pass": "secondpass",
+      "collection_completed": true,
+      "files": [
+        {
+          "path": ".gitattributes",
+          "bytes": 8,
+          "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+        },
+        {
+          "path": "AUTHORING-SCOPE.txt",
+          "bytes": 1180,
+          "sha256": "2b1a762b4cfa89498ce01dc7b008b46baec07b011fd7ffb9c8f2a40ce68ef948"
+        },
+        {
+          "path": "COMPARISON235-248.md",
+          "bytes": 3217,
+          "sha256": "f6b83adb3d9ecb3622723224d1c58d749ec3e37920e7c1fdcea07b30d45b8d84"
+        },
+        {
+          "path": "SOURCE-INPUTS.json",
+          "bytes": 57007,
+          "sha256": "800d0ac374474bac33b8ecabb67a121b05310ae030f1d6b4e3102bf36a07bd95"
+        },
+        {
+          "path": "SOURCE-MAPPING.json",
+          "bytes": 13501,
+          "sha256": "4be7c04154ea54ae2b0c4bc8dd082a5fac7c073136bb937fc63344a332ac4cb0"
+        },
+        {
+          "path": "STATIC-SOURCE-CHECK.json",
+          "bytes": 2787,
+          "sha256": "3c66aa8e71f343cd46e7ca266fe5ef306d385e61bcadeb4b3eb7faf140b36eb6"
+        },
+        {
+          "path": "canonical_rectangles250.aux",
+          "bytes": 10060,
+          "sha256": "b6a27157233d585795de1f85cfe1d8c89478b4b00b765c187b00d393d68c394b"
+        },
+        {
+          "path": "canonical_rectangles250.log",
+          "bytes": 29301,
+          "sha256": "eb14fa7312b0de319ecf0b447f0259ed9f88a5466b75fd3dd943ea33db114b25"
+        },
+        {
+          "path": "canonical_rectangles250.out",
+          "bytes": 8035,
+          "sha256": "57973466a21148fdb93883a6a98071eb3dbc1b9c739c953cabb92a8c7aaffaa6"
+        },
+        {
+          "path": "canonical_rectangles250.pdf",
+          "bytes": 449728,
+          "sha256": "ccc46e3f260abe3667db79de58567ed7279e1b18022164d19fc34b55f7afffe3"
+        },
+        {
+          "path": "canonical_rectangles250.tex",
+          "bytes": 3042,
+          "sha256": "d637fdd95611a7163a6a78992531e10d52f274dbfe20ee37a1829e69cd429ba3"
+        },
+        {
+          "path": "canonical_rectangles250.toc",
+          "bytes": 2954,
+          "sha256": "ef95f1ce8719d1b93db993c30ca78af8f843564a0f1dd3294e1e7d7110d4a1e8"
+        },
+        {
+          "path": "checkerboard250.tex",
+          "bytes": 6653,
+          "sha256": "3c507fe9cf8ff99f71835d536cbf655e31db22107feecaf58df17e986281afb4"
+        },
+        {
+          "path": "context250.tex",
+          "bytes": 14622,
+          "sha256": "cd9094104a7c9ccc7acf820a03fdf4aaa32fc1fe348fcccc50556ddc608b2fb6"
+        },
+        {
+          "path": "finite250.tex",
+          "bytes": 6931,
+          "sha256": "6ef355ed73177a2845fe468e68eec85184c4d39047448de18d0e268020c6a33f"
+        },
+        {
+          "path": "fixed250.tex",
+          "bytes": 14686,
+          "sha256": "ea65ea8a163c73f428b4ba84abf627fd9d4e941fd16ac12812422e838833e699"
+        },
+        {
+          "path": "inputs/accepted/source235.txt",
+          "bytes": 8851,
+          "sha256": "4ccc3829df28810f801204b385360bf361dea484f5b73dfdb5b227d0faefc06f"
+        },
+        {
+          "path": "inputs/accepted/source236.txt",
+          "bytes": 9388,
+          "sha256": "b29ea47b3949ba2b8130e38ef7c395c115e600e595d0c6476032a031b03ebc1a"
+        },
+        {
+          "path": "inputs/accepted/source237.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/accepted/source238.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/accepted/source239.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/accepted/source240.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/accepted/source241.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/accepted/source242.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/accepted/source243.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/accepted/source244.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/accepted/source245.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/accepted/source246.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/accepted/source247.txt",
+          "bytes": 10720,
+          "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+        },
+        {
+          "path": "inputs/accepted/source248.txt",
+          "bytes": 17708,
+          "sha256": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit244/capture-manifest.json",
+          "bytes": 10979,
+          "sha256": "2227ae6ad57c9cc79d84c585fe6f42e06de58a89f48ccfa870e0d6a723c7f01f"
+        },
+        {
+          "path": "inputs/audits/unit244/context.json",
+          "bytes": 1829,
+          "sha256": "898f405036d0d5d140f171e3e637e634e8fef2bb10d19e4eb3b42ee5179da06e"
+        },
+        {
+          "path": "inputs/audits/unit244/fullreport.txt",
+          "bytes": 21247,
+          "sha256": "0b848c38e333e1c0b0ca3797983ba72ebc7169df30057615ffed24eb00f8e5bb"
+        },
+        {
+          "path": "inputs/audits/unit244/hashes.json",
+          "bytes": 3767,
+          "sha256": "432424205841fbae5455fa4a790f21d55644585f532e33008f78eeeb27dd317b"
+        },
+        {
+          "path": "inputs/audits/unit244/primary-reading-mss.txt",
+          "bytes": 1105,
+          "sha256": "4b19d5c93dc9f8c0838859802c23305b7ce5d9300c1a82503fbfcec68badc6f9"
+        },
+        {
+          "path": "inputs/audits/unit244/verdict.json",
+          "bytes": 2555,
+          "sha256": "0421919b8c3df7abc3d2e7f937f9e0a0c54ae38d15b4ebdaa660ffb4232dc6e4"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit245/capture-manifest.json",
+          "bytes": 11303,
+          "sha256": "7cad9be858be5cadd9e6bbd50e514d74418809bc637c82959c08e2247d72528b"
+        },
+        {
+          "path": "inputs/audits/unit245/context.json",
+          "bytes": 1721,
+          "sha256": "af5b6190407ed8c59ec401e7b11a3114b75b5716770347d1e90402789f01bcbf"
+        },
+        {
+          "path": "inputs/audits/unit245/fullreport.txt",
+          "bytes": 18044,
+          "sha256": "816084b351a0a2d70c70de9fd6d4fedb282510618dd8c4a4b9cf76625ec5151e"
+        },
+        {
+          "path": "inputs/audits/unit245/hashes.json",
+          "bytes": 3786,
+          "sha256": "b61e2002afc710c36584b520e29f663b80a94601b1a1cb83b84ef7576d533a84"
+        },
+        {
+          "path": "inputs/audits/unit245/verdict.json",
+          "bytes": 3141,
+          "sha256": "c4ddfcb92b296e4e3385812b1f915af64b448d804f02ddf707c26baa3861256c"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/small-angle-projector246-git.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit246/capture-manifest.json",
+          "bytes": 12259,
+          "sha256": "fdda6257d1db3a2f74d57a3a5eba18864f3cb69b877216a82d98c36878ec5933"
+        },
+        {
+          "path": "inputs/audits/unit246/context.json",
+          "bytes": 1721,
+          "sha256": "1983cc9fb5ae8254e27364d415d2e1f795edc0c4f9c4b9313c83746ea2633371"
+        },
+        {
+          "path": "inputs/audits/unit246/fullreport.txt",
+          "bytes": 19395,
+          "sha256": "bf2abafa45c9dc601753dd0c0e19da0db02723a2116a3bf86d30cea8ede47c11"
+        },
+        {
+          "path": "inputs/audits/unit246/hashes.json",
+          "bytes": 4021,
+          "sha256": "fad05c9e5441ed5614419259e345d7ab8724ec1368636a7cfa1bd8d5d764cb4e"
+        },
+        {
+          "path": "inputs/audits/unit246/verdict.json",
+          "bytes": 3138,
+          "sha256": "db8560bf9f34a8dbe8f17dc173374e6e510bbd76c137d83c1e98083140fd7fec"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/point-anchors247-git.txt",
+          "bytes": 10720,
+          "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/small-angle-projector246-git.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit247/capture-manifest.json",
+          "bytes": 13202,
+          "sha256": "022d518205285c6d5307ff7e125103cb3e0d8547c90fb86a91a292474e15a096"
+        },
+        {
+          "path": "inputs/audits/unit247/context.json",
+          "bytes": 1728,
+          "sha256": "f42e3be4d74abb37c28d5835ff78b86bc09b227d4799a573741b56edffeee181"
+        },
+        {
+          "path": "inputs/audits/unit247/fullreport.txt",
+          "bytes": 19987,
+          "sha256": "d620efd8c47cb4fecdb81fe1c951e60e329f3523a9902242015601b8ca47e9ab"
+        },
+        {
+          "path": "inputs/audits/unit247/hashes.json",
+          "bytes": 4249,
+          "sha256": "b2ba345135c7f8d1e42573c2c075fa61f00bcca92922438de0159748c5d5de74"
+        },
+        {
+          "path": "inputs/audits/unit247/verdict.json",
+          "bytes": 3398,
+          "sha256": "7a88b7905155397ac76b579b38f8ed378fbbafcfcaec227132ff208a2d3c9fbc"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/critical-point-anchors248-git.txt",
+          "bytes": 17708,
+          "sha256": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/point-anchors247-git.txt",
+          "bytes": 10720,
+          "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/small-angle-projector246-git.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit248/capture-manifest.json",
+          "bytes": 14950,
+          "sha256": "4d5daf6dd6df0f2ed2f693d56005ef0498cfe4e6f3344f019e43a130481301f5"
+        },
+        {
+          "path": "inputs/audits/unit248/context.json",
+          "bytes": 1766,
+          "sha256": "1f79131f0fbd9758e982f977cb106fcbbe7e1a4b06f7e41a46f779f0ce37a2b6"
+        },
+        {
+          "path": "inputs/audits/unit248/fullreport.txt",
+          "bytes": 21545,
+          "sha256": "a6faea7524e92b500f591cb755aac97805bc88bfc62d1b943764bc12decade89"
+        },
+        {
+          "path": "inputs/audits/unit248/hashes.json",
+          "bytes": 4486,
+          "sha256": "aa1e446dfa74e56fb40d34af3c4aceec313a5b95a28e9b0d1a03a0979882f144"
+        },
+        {
+          "path": "inputs/audits/unit248/verdict.json",
+          "bytes": 3856,
+          "sha256": "8336cda30e2e7cc7ef10b410c0e035cc4fa6193e11edf37216a9304838bfb24e"
+        },
+        {
+          "path": "inputs/grouped235-248-source-audits.zip",
+          "bytes": 2177768,
+          "sha256": "ca030e2a91a7640ee69d184a1449a5edf81d2acec23dfbec2e994dafb385a11e"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-236__candidate236A-normalization-correction.txt",
+          "bytes": 9423,
+          "sha256": "66509fe16c686d148978d3b51d7cc9425eef50d401ae89d9816e2129ed813e55"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-236__source-audit-b__fullreport.txt",
+          "bytes": 12948,
+          "sha256": "ca13d18959e2ae804b920958252e02f45c7f5e3afca4cc5aaba1e94d864a41b6"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-240__candidate240A-rejected.txt",
+          "bytes": 7703,
+          "sha256": "1063184ff5af9b86a4e52c11d9706e6736d37a7113351c84302891092672af04"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-240__source-audit__fullreport.txt",
+          "bytes": 10686,
+          "sha256": "7527ba803af6be74bf28dd609c7b048823d944d32c853db9da2cab9214a2362c"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-240__source-audit__verdict.json",
+          "bytes": 1430,
+          "sha256": "48332e9b585c518889e598646ba2b3899d378d72262a96b9abe9574cd99d20aa"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-241__candidate241A-rejected.txt",
+          "bytes": 12143,
+          "sha256": "59907005dc2184e7dcb380f06f7cad09ffd3ff247145bff1707ad3ef1b1865d1"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-241__source-audit__fullreport.txt",
+          "bytes": 17331,
+          "sha256": "45f6868a6c75940d61b249567dc295fe3d04acca14b12d9ffe6b30638aa8ad6f"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-241__source-audit__verdict.json",
+          "bytes": 2597,
+          "sha256": "4d0e62105f70910e38f4ed00980de628d48f469b9efbb8b2a3d2f97c00d4d427"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-242__N1-base-case-clarification.txt",
+          "bytes": 568,
+          "sha256": "704360f387e6c4081cf99a3d9a3f237e58ee34ead82786c9bce687fd10850219"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-243__C1-singleton-priority.txt",
+          "bytes": 315,
+          "sha256": "31a6fefe743d37c327867fd46acfc1093f7dc4e341025e2200fdd1768faf9765"
+        },
+        {
+          "path": "inputs/pdf-operation-marker250-original.json",
+          "bytes": 375,
+          "sha256": "26ee1282462f2a457f75dbbe2e4ab9bd384143aecc5d475aab348b3c8221621a"
+        },
+        {
+          "path": "inputs/primary-reading/comparison250/context.json",
+          "bytes": 2150,
+          "sha256": "2a70528b0a13370b8a2c01e6edc908263d0d6918418e7e4f731fe1e801470781"
+        },
+        {
+          "path": "inputs/primary-reading/comparison250/manifest.json",
+          "bytes": 4982,
+          "sha256": "2f55c12afc77931cdcd787d8276644c7919b43c74380743d3291128d4f28f48b"
+        },
+        {
+          "path": "inputs/primary-reading/comparison250/primary-comparison-report.txt",
+          "bytes": 11688,
+          "sha256": "6225531e648b8092a42407328fd0fdd47440ab3906f7b74651bedf3ca5045beb"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-237__limited-primary-comparison237.txt",
+          "bytes": 1545,
+          "sha256": "68d6e8a80b51861477931b06a02ff149128f0b1a4d1ab2b75830e1182d526431"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-241__limited-primary-comparison241.txt",
+          "bytes": 3250,
+          "sha256": "d39223ba4f585c704b82d19b898a393eeeeb1d064e0c9805c27dbe9be9feb7f6"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-244__primary-input-MSS244.json",
+          "bytes": 1260,
+          "sha256": "bbb6c68ca8303e15aed7e27f978e7d63def6d29366d1284569e7f9a552fcf825"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-244__source-audit__primary-reading-mss.txt",
+          "bytes": 1105,
+          "sha256": "4b19d5c93dc9f8c0838859802c23305b7ce5d9300c1a82503fbfcec68badc6f9"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-245__limited-primary-comparison245.txt",
+          "bytes": 1392,
+          "sha256": "ca03ae91b95a2d9e555d759d7c59f02a93963362da20c6d61669450d5e75dbcd"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-247__limited-primary-comparison247.txt",
+          "bytes": 1347,
+          "sha256": "3f01cc2d84af293a6eb8d80297a5646803d2f1903d75698760740db15592830a"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/report-hashes.json",
+          "bytes": 1543,
+          "sha256": "2210507f86a652533790d609c6afeac26c726868992f34be1afcea4169e1e4e5"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/response.json",
+          "bytes": 6674,
+          "sha256": "e05cc1bb5dea2cf3a43713b2d380d9afa3920c8e4ee3d350b95f4eb492c53e4f"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/review-context.json",
+          "bytes": 10437,
+          "sha256": "8b7519d3eaf46b67ade6ec409ffea095206564af65c99deb3fd2d7f2ddd610d9"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/scientific-review.txt",
+          "bytes": 21047,
+          "sha256": "9619c2a5b971bdeca22c7654587229bd1ade8cb44b1b355cf1a7aecbbcdb50e9"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/clarification-context.json",
+          "bytes": 3745,
+          "sha256": "da6c46c80963149c0f57a97347fb492e81de72bcd734a9c9eef91d412d031e2e"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/clarification-hashes.json",
+          "bytes": 2535,
+          "sha256": "7cc16099252b1a0576d9dfb28e5c54b7f7fb0a011da5a03b64a469641634a407"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/protocol-addendum.txt",
+          "bytes": 5955,
+          "sha256": "da5866d832d7a82af1aa5ed72d3df63552837e6ce14b931609ff4144fd631f15"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/response-native.json",
+          "bytes": 7393,
+          "sha256": "12d5d04f87bca41ebcdec874bab4002e0672c716dab1f5bb90e61a4029254eea"
+        },
+        {
+          "path": "inputs/prior-review232B/author-response232B/author-response232B.txt",
+          "bytes": 16808,
+          "sha256": "86aa0588974f9e26940aa44fc0aa222c83c35214a41f31ca40481190d7146c06"
+        },
+        {
+          "path": "inputs/prior-review232B/author-response232B/context.json",
+          "bytes": 3354,
+          "sha256": "558dfaba866d60738c48e8c012006537235b05461b82cc7ccef09818d8ccd8ab"
+        },
+        {
+          "path": "inputs/prior-review232B/author-response232B/hashes.json",
+          "bytes": 2945,
+          "sha256": "789ca59e21a2c0640e2192b7aacb8d5ea01e4b06ad88a1f34d97833c94cd6c6f"
+        },
+        {
+          "path": "points250.tex",
+          "bytes": 10986,
+          "sha256": "2bb9af96b0a0abe97a9aed3c441f8f04f1be3d91d52d7a65d3bdc3689c1053e3"
+        },
+        {
+          "path": "setup250.tex",
+          "bytes": 9781,
+          "sha256": "44a04cb5ff4b2a212995a0801b358f05c78cd28136420a067267769362c6b703"
+        }
+      ]
+    },
+    {
+      "clone": "first",
+      "pass": "finalpass",
+      "collection_completed": true,
+      "files": [
+        {
+          "path": ".gitattributes",
+          "bytes": 8,
+          "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+        },
+        {
+          "path": "AUTHORING-SCOPE.txt",
+          "bytes": 1180,
+          "sha256": "2b1a762b4cfa89498ce01dc7b008b46baec07b011fd7ffb9c8f2a40ce68ef948"
+        },
+        {
+          "path": "COMPARISON235-248.md",
+          "bytes": 3217,
+          "sha256": "f6b83adb3d9ecb3622723224d1c58d749ec3e37920e7c1fdcea07b30d45b8d84"
+        },
+        {
+          "path": "SOURCE-INPUTS.json",
+          "bytes": 57007,
+          "sha256": "800d0ac374474bac33b8ecabb67a121b05310ae030f1d6b4e3102bf36a07bd95"
+        },
+        {
+          "path": "SOURCE-MAPPING.json",
+          "bytes": 13501,
+          "sha256": "4be7c04154ea54ae2b0c4bc8dd082a5fac7c073136bb937fc63344a332ac4cb0"
+        },
+        {
+          "path": "STATIC-SOURCE-CHECK.json",
+          "bytes": 2787,
+          "sha256": "3c66aa8e71f343cd46e7ca266fe5ef306d385e61bcadeb4b3eb7faf140b36eb6"
+        },
+        {
+          "path": "canonical_rectangles250.aux",
+          "bytes": 10060,
+          "sha256": "b6a27157233d585795de1f85cfe1d8c89478b4b00b765c187b00d393d68c394b"
+        },
+        {
+          "path": "canonical_rectangles250.log",
+          "bytes": 29219,
+          "sha256": "e452514fdefefae934517490cf0e675efdca09cb1a5e61fa50eb42e49d7c5c7e"
+        },
+        {
+          "path": "canonical_rectangles250.out",
+          "bytes": 8035,
+          "sha256": "57973466a21148fdb93883a6a98071eb3dbc1b9c739c953cabb92a8c7aaffaa6"
+        },
+        {
+          "path": "canonical_rectangles250.pdf",
+          "bytes": 450078,
+          "sha256": "ac5b9e0772d133d09a04ff487aeb50a8932a7f37b28fd656bec466d8a51f7689"
+        },
+        {
+          "path": "canonical_rectangles250.tex",
+          "bytes": 3042,
+          "sha256": "d637fdd95611a7163a6a78992531e10d52f274dbfe20ee37a1829e69cd429ba3"
+        },
+        {
+          "path": "canonical_rectangles250.toc",
+          "bytes": 2954,
+          "sha256": "ef95f1ce8719d1b93db993c30ca78af8f843564a0f1dd3294e1e7d7110d4a1e8"
+        },
+        {
+          "path": "checkerboard250.tex",
+          "bytes": 6653,
+          "sha256": "3c507fe9cf8ff99f71835d536cbf655e31db22107feecaf58df17e986281afb4"
+        },
+        {
+          "path": "context250.tex",
+          "bytes": 14622,
+          "sha256": "cd9094104a7c9ccc7acf820a03fdf4aaa32fc1fe348fcccc50556ddc608b2fb6"
+        },
+        {
+          "path": "finite250.tex",
+          "bytes": 6931,
+          "sha256": "6ef355ed73177a2845fe468e68eec85184c4d39047448de18d0e268020c6a33f"
+        },
+        {
+          "path": "fixed250.tex",
+          "bytes": 14686,
+          "sha256": "ea65ea8a163c73f428b4ba84abf627fd9d4e941fd16ac12812422e838833e699"
+        },
+        {
+          "path": "inputs/accepted/source235.txt",
+          "bytes": 8851,
+          "sha256": "4ccc3829df28810f801204b385360bf361dea484f5b73dfdb5b227d0faefc06f"
+        },
+        {
+          "path": "inputs/accepted/source236.txt",
+          "bytes": 9388,
+          "sha256": "b29ea47b3949ba2b8130e38ef7c395c115e600e595d0c6476032a031b03ebc1a"
+        },
+        {
+          "path": "inputs/accepted/source237.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/accepted/source238.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/accepted/source239.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/accepted/source240.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/accepted/source241.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/accepted/source242.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/accepted/source243.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/accepted/source244.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/accepted/source245.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/accepted/source246.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/accepted/source247.txt",
+          "bytes": 10720,
+          "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+        },
+        {
+          "path": "inputs/accepted/source248.txt",
+          "bytes": 17708,
+          "sha256": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit244/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit244/capture-manifest.json",
+          "bytes": 10979,
+          "sha256": "2227ae6ad57c9cc79d84c585fe6f42e06de58a89f48ccfa870e0d6a723c7f01f"
+        },
+        {
+          "path": "inputs/audits/unit244/context.json",
+          "bytes": 1829,
+          "sha256": "898f405036d0d5d140f171e3e637e634e8fef2bb10d19e4eb3b42ee5179da06e"
+        },
+        {
+          "path": "inputs/audits/unit244/fullreport.txt",
+          "bytes": 21247,
+          "sha256": "0b848c38e333e1c0b0ca3797983ba72ebc7169df30057615ffed24eb00f8e5bb"
+        },
+        {
+          "path": "inputs/audits/unit244/hashes.json",
+          "bytes": 3767,
+          "sha256": "432424205841fbae5455fa4a790f21d55644585f532e33008f78eeeb27dd317b"
+        },
+        {
+          "path": "inputs/audits/unit244/primary-reading-mss.txt",
+          "bytes": 1105,
+          "sha256": "4b19d5c93dc9f8c0838859802c23305b7ce5d9300c1a82503fbfcec68badc6f9"
+        },
+        {
+          "path": "inputs/audits/unit244/verdict.json",
+          "bytes": 2555,
+          "sha256": "0421919b8c3df7abc3d2e7f937f9e0a0c54ae38d15b4ebdaa660ffb4232dc6e4"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit245/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit245/capture-manifest.json",
+          "bytes": 11303,
+          "sha256": "7cad9be858be5cadd9e6bbd50e514d74418809bc637c82959c08e2247d72528b"
+        },
+        {
+          "path": "inputs/audits/unit245/context.json",
+          "bytes": 1721,
+          "sha256": "af5b6190407ed8c59ec401e7b11a3114b75b5716770347d1e90402789f01bcbf"
+        },
+        {
+          "path": "inputs/audits/unit245/fullreport.txt",
+          "bytes": 18044,
+          "sha256": "816084b351a0a2d70c70de9fd6d4fedb282510618dd8c4a4b9cf76625ec5151e"
+        },
+        {
+          "path": "inputs/audits/unit245/hashes.json",
+          "bytes": 3786,
+          "sha256": "b61e2002afc710c36584b520e29f663b80a94601b1a1cb83b84ef7576d533a84"
+        },
+        {
+          "path": "inputs/audits/unit245/verdict.json",
+          "bytes": 3141,
+          "sha256": "c4ddfcb92b296e4e3385812b1f915af64b448d804f02ddf707c26baa3861256c"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/small-angle-projector246-git.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit246/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit246/capture-manifest.json",
+          "bytes": 12259,
+          "sha256": "fdda6257d1db3a2f74d57a3a5eba18864f3cb69b877216a82d98c36878ec5933"
+        },
+        {
+          "path": "inputs/audits/unit246/context.json",
+          "bytes": 1721,
+          "sha256": "1983cc9fb5ae8254e27364d415d2e1f795edc0c4f9c4b9313c83746ea2633371"
+        },
+        {
+          "path": "inputs/audits/unit246/fullreport.txt",
+          "bytes": 19395,
+          "sha256": "bf2abafa45c9dc601753dd0c0e19da0db02723a2116a3bf86d30cea8ede47c11"
+        },
+        {
+          "path": "inputs/audits/unit246/hashes.json",
+          "bytes": 4021,
+          "sha256": "fad05c9e5441ed5614419259e345d7ab8724ec1368636a7cfa1bd8d5d764cb4e"
+        },
+        {
+          "path": "inputs/audits/unit246/verdict.json",
+          "bytes": 3138,
+          "sha256": "db8560bf9f34a8dbe8f17dc173374e6e510bbd76c137d83c1e98083140fd7fec"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/point-anchors247-git.txt",
+          "bytes": 10720,
+          "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/small-angle-projector246-git.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit247/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit247/capture-manifest.json",
+          "bytes": 13202,
+          "sha256": "022d518205285c6d5307ff7e125103cb3e0d8547c90fb86a91a292474e15a096"
+        },
+        {
+          "path": "inputs/audits/unit247/context.json",
+          "bytes": 1728,
+          "sha256": "f42e3be4d74abb37c28d5835ff78b86bc09b227d4799a573741b56edffeee181"
+        },
+        {
+          "path": "inputs/audits/unit247/fullreport.txt",
+          "bytes": 19987,
+          "sha256": "d620efd8c47cb4fecdb81fe1c951e60e329f3523a9902242015601b8ca47e9ab"
+        },
+        {
+          "path": "inputs/audits/unit247/hashes.json",
+          "bytes": 4249,
+          "sha256": "b2ba345135c7f8d1e42573c2c075fa61f00bcca92922438de0159748c5d5de74"
+        },
+        {
+          "path": "inputs/audits/unit247/verdict.json",
+          "bytes": 3398,
+          "sha256": "7a88b7905155397ac76b579b38f8ed378fbbafcfcaec227132ff208a2d3c9fbc"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/226C-matrix-proof-git.tex",
+          "bytes": 7469,
+          "sha256": "9e5887ed4c59204d12c0f86adc97798ec45281e3eb2473d38dc26e0153b469c8"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/226C-rectangular-matrix-git.tex",
+          "bytes": 15141,
+          "sha256": "3ba36a34ad5d3c4a759e100ad0e9db14c9c20a7b07829ceaaa2453038b315eb3"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/all-dimension-penalty240B-git.txt",
+          "bytes": 8232,
+          "sha256": "d4c37b82e9d92c211f20cfa061b827250267fdcd81a7843f310c43af08a33814"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/all-internal-dimensions239-git.txt",
+          "bytes": 8074,
+          "sha256": "d277c4773cca147bc74c4d27a33e129c00d717d4c18e810528e509d519a23757"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/balanced-polarization241B-git.txt",
+          "bytes": 12657,
+          "sha256": "d62cae0af036aab0236bfa5ba47ccd1d59054f5cbda7a999ac4861bdd8c50d03"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/channel-separable231B-git.txt",
+          "bytes": 7789,
+          "sha256": "51c2d492ace34d90aee32602afddc51a81646f7d5e0e4a34cf9d965cd80fea6f"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/checkerboard-projector245-git.txt",
+          "bytes": 7772,
+          "sha256": "6e2aad56076a114189a266532822e5c6d7ac766d7e957cc23a30d79ec471878d"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/critical-point-anchors248-git.txt",
+          "bytes": 17708,
+          "sha256": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/internal-dimension238-git.txt",
+          "bytes": 7686,
+          "sha256": "d32783c5ff5d85fef8cd81be4aa03508d5bb5b675610bb97544fb8fc6a816b42"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/point-anchors247-git.txt",
+          "bytes": 10720,
+          "sha256": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/rank-penalty237-git.txt",
+          "bytes": 5765,
+          "sha256": "2d7a29ed21297733914812736bfa7fb7ce566666c86930a2eede4f67b7ad9fc3"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/small-angle-projector246-git.txt",
+          "bytes": 7600,
+          "sha256": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/two-weak-directions243-git.txt",
+          "bytes": 13385,
+          "sha256": "985dbb4412fa08863d1fbe68dfb883dc04511ea684e54a559c9e15a20c9e4459"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/uniform-weak-dimension244-git.txt",
+          "bytes": 11932,
+          "sha256": "59498789a14e1d80614a0c48b39edd0d98561ef386021b1c89800c6bcc04933a"
+        },
+        {
+          "path": "inputs/audits/unit248/capture/upper-delocalization242-git.txt",
+          "bytes": 9624,
+          "sha256": "1016e0c7edc1bbc131e9ff1d925969df1f0db8653fdca4bd08bd92158d1742fc"
+        },
+        {
+          "path": "inputs/audits/unit248/capture-manifest.json",
+          "bytes": 14950,
+          "sha256": "4d5daf6dd6df0f2ed2f693d56005ef0498cfe4e6f3344f019e43a130481301f5"
+        },
+        {
+          "path": "inputs/audits/unit248/context.json",
+          "bytes": 1766,
+          "sha256": "1f79131f0fbd9758e982f977cb106fcbbe7e1a4b06f7e41a46f779f0ce37a2b6"
+        },
+        {
+          "path": "inputs/audits/unit248/fullreport.txt",
+          "bytes": 21545,
+          "sha256": "a6faea7524e92b500f591cb755aac97805bc88bfc62d1b943764bc12decade89"
+        },
+        {
+          "path": "inputs/audits/unit248/hashes.json",
+          "bytes": 4486,
+          "sha256": "aa1e446dfa74e56fb40d34af3c4aceec313a5b95a28e9b0d1a03a0979882f144"
+        },
+        {
+          "path": "inputs/audits/unit248/verdict.json",
+          "bytes": 3856,
+          "sha256": "8336cda30e2e7cc7ef10b410c0e035cc4fa6193e11edf37216a9304838bfb24e"
+        },
+        {
+          "path": "inputs/grouped235-248-source-audits.zip",
+          "bytes": 2177768,
+          "sha256": "ca030e2a91a7640ee69d184a1449a5edf81d2acec23dfbec2e994dafb385a11e"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-236__candidate236A-normalization-correction.txt",
+          "bytes": 9423,
+          "sha256": "66509fe16c686d148978d3b51d7cc9425eef50d401ae89d9816e2129ed813e55"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-236__source-audit-b__fullreport.txt",
+          "bytes": 12948,
+          "sha256": "ca13d18959e2ae804b920958252e02f45c7f5e3afca4cc5aaba1e94d864a41b6"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-240__candidate240A-rejected.txt",
+          "bytes": 7703,
+          "sha256": "1063184ff5af9b86a4e52c11d9706e6736d37a7113351c84302891092672af04"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-240__source-audit__fullreport.txt",
+          "bytes": 10686,
+          "sha256": "7527ba803af6be74bf28dd609c7b048823d944d32c853db9da2cab9214a2362c"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-240__source-audit__verdict.json",
+          "bytes": 1430,
+          "sha256": "48332e9b585c518889e598646ba2b3899d378d72262a96b9abe9574cd99d20aa"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-241__candidate241A-rejected.txt",
+          "bytes": 12143,
+          "sha256": "59907005dc2184e7dcb380f06f7cad09ffd3ff247145bff1707ad3ef1b1865d1"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-241__source-audit__fullreport.txt",
+          "bytes": 17331,
+          "sha256": "45f6868a6c75940d61b249567dc295fe3d04acca14b12d9ffe6b30638aa8ad6f"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-241__source-audit__verdict.json",
+          "bytes": 2597,
+          "sha256": "4d0e62105f70910e38f4ed00980de628d48f469b9efbb8b2a3d2f97c00d4d427"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-242__N1-base-case-clarification.txt",
+          "bytes": 568,
+          "sha256": "704360f387e6c4081cf99a3d9a3f237e58ee34ead82786c9bce687fd10850219"
+        },
+        {
+          "path": "inputs/historical-corrections/evidencia-243__C1-singleton-priority.txt",
+          "bytes": 315,
+          "sha256": "31a6fefe743d37c327867fd46acfc1093f7dc4e341025e2200fdd1768faf9765"
+        },
+        {
+          "path": "inputs/pdf-operation-marker250-original.json",
+          "bytes": 375,
+          "sha256": "26ee1282462f2a457f75dbbe2e4ab9bd384143aecc5d475aab348b3c8221621a"
+        },
+        {
+          "path": "inputs/primary-reading/comparison250/context.json",
+          "bytes": 2150,
+          "sha256": "2a70528b0a13370b8a2c01e6edc908263d0d6918418e7e4f731fe1e801470781"
+        },
+        {
+          "path": "inputs/primary-reading/comparison250/manifest.json",
+          "bytes": 4982,
+          "sha256": "2f55c12afc77931cdcd787d8276644c7919b43c74380743d3291128d4f28f48b"
+        },
+        {
+          "path": "inputs/primary-reading/comparison250/primary-comparison-report.txt",
+          "bytes": 11688,
+          "sha256": "6225531e648b8092a42407328fd0fdd47440ab3906f7b74651bedf3ca5045beb"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-237__limited-primary-comparison237.txt",
+          "bytes": 1545,
+          "sha256": "68d6e8a80b51861477931b06a02ff149128f0b1a4d1ab2b75830e1182d526431"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-241__limited-primary-comparison241.txt",
+          "bytes": 3250,
+          "sha256": "d39223ba4f585c704b82d19b898a393eeeeb1d064e0c9805c27dbe9be9feb7f6"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-244__primary-input-MSS244.json",
+          "bytes": 1260,
+          "sha256": "bbb6c68ca8303e15aed7e27f978e7d63def6d29366d1284569e7f9a552fcf825"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-244__source-audit__primary-reading-mss.txt",
+          "bytes": 1105,
+          "sha256": "4b19d5c93dc9f8c0838859802c23305b7ce5d9300c1a82503fbfcec68badc6f9"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-245__limited-primary-comparison245.txt",
+          "bytes": 1392,
+          "sha256": "ca03ae91b95a2d9e555d759d7c59f02a93963362da20c6d61669450d5e75dbcd"
+        },
+        {
+          "path": "inputs/primary-reading/evidencia-247__limited-primary-comparison247.txt",
+          "bytes": 1347,
+          "sha256": "3f01cc2d84af293a6eb8d80297a5646803d2f1903d75698760740db15592830a"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/report-hashes.json",
+          "bytes": 1543,
+          "sha256": "2210507f86a652533790d609c6afeac26c726868992f34be1afcea4169e1e4e5"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/response.json",
+          "bytes": 6674,
+          "sha256": "e05cc1bb5dea2cf3a43713b2d380d9afa3920c8e4ee3d350b95f4eb492c53e4f"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/review-context.json",
+          "bytes": 10437,
+          "sha256": "8b7519d3eaf46b67ade6ec409ffea095206564af65c99deb3fd2d7f2ddd610d9"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-codex/scientific-review.txt",
+          "bytes": 21047,
+          "sha256": "9619c2a5b971bdeca22c7654587229bd1ade8cb44b1b355cf1a7aecbbcdb50e9"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/clarification-context.json",
+          "bytes": 3745,
+          "sha256": "da6c46c80963149c0f57a97347fb492e81de72bcd734a9c9eef91d412d031e2e"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/clarification-hashes.json",
+          "bytes": 2535,
+          "sha256": "7cc16099252b1a0576d9dfb28e5c54b7f7fb0a011da5a03b64a469641634a407"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/protocol-addendum.txt",
+          "bytes": 5955,
+          "sha256": "da5866d832d7a82af1aa5ed72d3df63552837e6ce14b931609ff4144fd631f15"
+        },
+        {
+          "path": "inputs/prior-review232B/assessment232B-protocol-clarification/response-native.json",
+          "bytes": 7393,
+          "sha256": "12d5d04f87bca41ebcdec874bab4002e0672c716dab1f5bb90e61a4029254eea"
+        },
+        {
+          "path": "inputs/prior-review232B/author-response232B/author-response232B.txt",
+          "bytes": 16808,
+          "sha256": "86aa0588974f9e26940aa44fc0aa222c83c35214a41f31ca40481190d7146c06"
+        },
+        {
+          "path": "inputs/prior-review232B/author-response232B/context.json",
+          "bytes": 3354,
+          "sha256": "558dfaba866d60738c48e8c012006537235b05461b82cc7ccef09818d8ccd8ab"
+        },
+        {
+          "path": "inputs/prior-review232B/author-response232B/hashes.json",
+          "bytes": 2945,
+          "sha256": "789ca59e21a2c0640e2192b7aacb8d5ea01e4b06ad88a1f34d97833c94cd6c6f"
+        },
+        {
+          "path": "points250.tex",
+          "bytes": 10986,
+          "sha256": "2bb9af96b0a0abe97a9aed3c441f8f04f1be3d91d52d7a65d3bdc3689c1053e3"
+        },
+        {
+          "path": "setup250.tex",
+          "bytes": 9781,
+          "sha256": "44a04cb5ff4b2a212995a0801b358f05c78cd28136420a067267769362c6b703"
+        }
+      ]
+    }
+  ],
+  "preservation_errors": [],
+  "all_warning_lines": {
+    "first": [
+      "Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)",
+      "Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)",
+      "Overfull \\hbox (59.38974pt too wide) in paragraph at lines 138--144",
+      "Underfull \\hbox (badness 1681) in paragraph at lines 162--162",
+      "Underfull \\hbox (badness 1033) in paragraph at lines 162--162",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 164--164",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 174--174",
+      "Underfull \\hbox (badness 5607) in paragraph at lines 174--174",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 180--180",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 184--184",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 186--186",
+      "Underfull \\hbox (badness 4001) in paragraph at lines 226--230",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 232--236",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 232--236"
+    ]
+  },
+  "selected_blocking_warnings": {
+    "first": [
+      "Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)",
+      "Overfull \\hbox (59.38974pt too wide) in paragraph at lines 138--144"
+    ]
+  },
+  "python_version": "3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]",
+  "tex_version": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)\nkpathsea version 6.3.5\nCopyright 2023 Han The Thanh (pdfTeX) et al.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the pdfTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the pdfTeX source.\nPrimary author of pdfTeX: Han The Thanh (pdfTeX) et al.\nCompiled with libpng 1.6.43; using libpng 1.6.43\nCompiled with zlib 1.3; using zlib 1.3\nCompiled with xpdf version 4.04\n",
+  "poppler_version": "pdftoppm version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n",
+  "status": "FAILED_PRESERVED",
+  "finished_at": "2026-11-11T03:20:14.011435+00:00",
+  "commands": [
+    {
+      "name": "apt-update",
+      "argv": [
+        "apt-get",
+        "-qq",
+        "update"
+      ],
+      "cwd": "/content/tep250A",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:17:49.602894+00:00",
+      "finished_at": "2026-11-11T03:17:53.771472+00:00"
+    },
+    {
+      "name": "apt-install",
+      "argv": [
+        "apt-get",
+        "install",
+        "-y",
+        "-qq",
+        "texlive-latex-base",
+        "texlive-latex-recommended",
+        "texlive-latex-extra",
+        "texlive-fonts-recommended",
+        "lmodern",
+        "poppler-utils"
+      ],
+      "cwd": "/content/tep250A",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:17:53.771619+00:00",
+      "finished_at": "2026-11-11T03:20:03.177993+00:00"
+    },
+    {
+      "name": "tex-version",
+      "argv": [
+        "pdflatex",
+        "--version"
+      ],
+      "cwd": "/content/tep250A",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:20:03.178290+00:00",
+      "finished_at": "2026-11-11T03:20:03.191694+00:00"
+    },
+    {
+      "name": "poppler-version",
+      "argv": [
+        "pdftoppm",
+        "-v"
+      ],
+      "cwd": "/content/tep250A",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:20:03.191915+00:00",
+      "finished_at": "2026-11-11T03:20:03.269613+00:00"
+    },
+    {
+      "name": "clone-first",
+      "argv": [
+        "git",
+        "-c",
+        "gc.auto=0",
+        "clone",
+        "--depth",
+        "1",
+        "--single-branch",
+        "--no-checkout",
+        "--branch",
+        "codex/tep-manuscript250-source-20261111",
+        "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git",
+        "/content/tep250A/source-first"
+      ],
+      "cwd": "/content/tep250A",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:20:03.269859+00:00",
+      "finished_at": "2026-11-11T03:20:07.560888+00:00"
+    },
+    {
+      "name": "checkout-first",
+      "argv": [
+        "git",
+        "-c",
+        "gc.auto=0",
+        "checkout",
+        "--detach",
+        "1659b5397ffa30e5315b2b3963d9ed661ee5f611"
+      ],
+      "cwd": "/content/tep250A/source-first",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:20:07.561042+00:00",
+      "finished_at": "2026-11-11T03:20:11.040145+00:00"
+    },
+    {
+      "name": "verify-head-first",
+      "argv": [
+        "git",
+        "-c",
+        "gc.auto=0",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/content/tep250A/source-first",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:20:11.040483+00:00",
+      "finished_at": "2026-11-11T03:20:11.055989+00:00"
+    },
+    {
+      "name": "verify-inventory-first",
+      "argv": [
+        "git",
+        "-c",
+        "gc.auto=0",
+        "ls-tree",
+        "-r",
+        "--name-only",
+        "1659b5397ffa30e5315b2b3963d9ed661ee5f611",
+        "--",
+        "papers/flat-coarse-rank/research-consolidation/revision250-preparation"
+      ],
+      "cwd": "/content/tep250A/source-first",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:20:11.056157+00:00",
+      "finished_at": "2026-11-11T03:20:11.072962+00:00"
+    },
+    {
+      "name": "source-epoch-first",
+      "argv": [
+        "git",
+        "-c",
+        "gc.auto=0",
+        "show",
+        "-s",
+        "--format=%ct",
+        "1659b5397ffa30e5315b2b3963d9ed661ee5f611"
+      ],
+      "cwd": "/content/tep250A/source-first",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:20:11.133094+00:00",
+      "finished_at": "2026-11-11T03:20:11.159270+00:00"
+    },
+    {
+      "name": "latex-first-firstpass",
+      "argv": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "-jobname=canonical_rectangles250",
+        "\\def\\SourceCommit{1659b5397ffa30e5315b2b3963d9ed661ee5f611}\\input{canonical_rectangles250.tex}"
+      ],
+      "cwd": "/content/tep250A/source-first/papers/flat-coarse-rank/research-consolidation/revision250-preparation",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:20:11.159519+00:00",
+      "finished_at": "2026-11-11T03:20:12.036654+00:00"
+    },
+    {
+      "name": "latex-first-secondpass",
+      "argv": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "-jobname=canonical_rectangles250",
+        "\\def\\SourceCommit{1659b5397ffa30e5315b2b3963d9ed661ee5f611}\\input{canonical_rectangles250.tex}"
+      ],
+      "cwd": "/content/tep250A/source-first/papers/flat-coarse-rank/research-consolidation/revision250-preparation",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:20:12.092064+00:00",
+      "finished_at": "2026-11-11T03:20:13.021012+00:00"
+    },
+    {
+      "name": "latex-first-finalpass",
+      "argv": [
+        "pdflatex",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "-jobname=canonical_rectangles250",
+        "\\def\\SourceCommit{1659b5397ffa30e5315b2b3963d9ed661ee5f611}\\input{canonical_rectangles250.tex}"
+      ],
+      "cwd": "/content/tep250A/source-first/papers/flat-coarse-rank/research-consolidation/revision250-preparation",
+      "actual_exit": 0,
+      "recorded_exit": 0,
+      "timed_out": false,
+      "started_at": "2026-11-11T03:20:13.075996+00:00",
+      "finished_at": "2026-11-11T03:20:13.954470+00:00"
+    }
+  ],
+  "child_maxrss_kib": 149628
+}

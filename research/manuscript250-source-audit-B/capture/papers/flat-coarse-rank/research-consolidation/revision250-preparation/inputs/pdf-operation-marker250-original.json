@@ -1,0 +1,11 @@
+{
+  "recorded_at": "2026-11-11T02:35:46.1199025Z",
+  "operation": "create",
+  "expected_output_count": 1,
+  "output_format": "pdf",
+  "actual_marker_exit": 0,
+  "marker_executions_for_250": 1,
+  "pdf_created": false,
+  "compilation_or_rendering": false,
+  "note": "New250 manuscript only. Existing232B marker is not repeated and its frozen PDF/grade unchanged."
+}

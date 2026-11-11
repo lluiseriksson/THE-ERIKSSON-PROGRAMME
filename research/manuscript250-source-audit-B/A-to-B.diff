@@ -1,0 +1,60 @@
+diff --git a/papers/flat-coarse-rank/research-consolidation/revision250-preparation/PRODUCTION-CORRECTION250B.txt b/papers/flat-coarse-rank/research-consolidation/revision250-preparation/PRODUCTION-CORRECTION250B.txt
+new file mode 100644
+index 00000000..12c9dfdf
+--- /dev/null
++++ b/papers/flat-coarse-rank/research-consolidation/revision250-preparation/PRODUCTION-CORRECTION250B.txt
+@@ -0,0 +1,23 @@
++250B bounded editorial successor to exact source1659b5397ffa30e5315b2b3963d9ed661ee5f611.
++Actual250A production preserved in D evidencia250 production-preparation/attempt-a.
++Three first-clone TeX passes exited0 and produced a20-page PDF, but the production
++gate correctly rejected an overfull59.38974pt inline full SourceCommit paragraph.
++No second clone, rendering, visual review, reproduction or numerical assessment
++was reached. The CLI returned0 despite Python RuntimeError, so inner FAILED_PRESERVED
++and native logs remain authoritative. Own session stopped; separate backend inactive.
++
++This successor makes only two manuscript editorial changes:
++1. Center the complete actual SourceCommit on its own small monospaced line.
++2. Resolve source audit N1 by explicitly assigning8/9 to strongbudget and1/9 to
++   the global-gap inequality. The subsequent correct displayed inequality is unchanged.
++No theorem, hypothesis, formula constant, observation row, proof mechanism or
++source binder changes. Question249 remains excluded. STATIC-SOURCE-CHECK.json is
++the immutable earlier source-A text inspection, not a fresh250B inspection.
++
++The production script separately needs a bounded correction: its literal Rerun
++warning match also matched a harmless package metadata line (Package:rerunfilecheck,
++Rerun checks for auxiliary files). Classify actual rerun instructions, retain the
++full native logs and warning inventory, and do not ignore real rerun/layout warnings.
++The original script, complete failure archive and reports remain unchanged.
++New source/pins/production delta audit is required before a new owned runtime.
++No old PDF grade is transferred and no assessment250A occurred.
+diff --git a/papers/flat-coarse-rank/research-consolidation/revision250-preparation/context250.tex b/papers/flat-coarse-rank/research-consolidation/revision250-preparation/context250.tex
+index 930199f4..9832eefc 100644
+--- a/papers/flat-coarse-rank/research-consolidation/revision250-preparation/context250.tex
++++ b/papers/flat-coarse-rank/research-consolidation/revision250-preparation/context250.tex
+@@ -135,8 +135,9 @@ present scope is finite matrix-gradient observations and the stated actual
+ flat coexact domain; there is no interacting producer, continuum result or
+ physical mass-gap conclusion.
+ 
+-The source supplied to a later gated build is printed as
+-\texttt{\SourceCommit}. The default \texttt{SOURCE-NOT-BUILT} marks source
++The source supplied to a later gated build is
++\begin{center}\small\ttfamily\SourceCommit\end{center}
++The default \texttt{SOURCE-NOT-BUILT} marks source
+ preparation only; the build must supply its actual full frozen commit.
+ Prepared PDF metadata controls are not evidence of bit reproducibility.
+ That claim requires actual matching PDFs from two fresh clones, which were
+diff --git a/papers/flat-coarse-rank/research-consolidation/revision250-preparation/fixed250.tex b/papers/flat-coarse-rank/research-consolidation/revision250-preparation/fixed250.tex
+index 096e068a..77e4f3e9 100644
+--- a/papers/flat-coarse-rank/research-consolidation/revision250-preparation/fixed250.tex
++++ b/papers/flat-coarse-rank/research-consolidation/revision250-preparation/fixed250.tex
+@@ -212,8 +212,8 @@ Disjoint channel groups therefore bound the negative sum by the displayed
+ single observation norm. No factor $q$ or extra copy of strong energy is used.
+ 
+ Independently Lemma~\ref{lem:fourier} gives $T\geq16c\norm s^2$.
+-Take the convex combination with weights $8/9$ and $1/9$ of this inequality
+-and \eqref{eq:strongbudget}. It gives
++Take $8/9$ of \eqref{eq:strongbudget} and $1/9$ of the global-gap inequality
++$T\geq16c\norm s^2$. This convex combination gives
+ \[
+  T+32cb\norm{\mathcal Rz}^2
+  \geq2c\norm f^2+\frac{16}{9}c\norm s^2\geq c\norm z^2.

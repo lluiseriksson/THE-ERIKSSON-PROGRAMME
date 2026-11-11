@@ -1,0 +1,115 @@
+\section{Actual checkerboard graphs and plane observations}\label{sec:checkerproof}
+We first prove Theorem~\ref{thm:checker}(i) and Theorem~\ref{thm:angle}.
+Throughout this section $n$ is even. The parity convention at torus wraps is
+part of the family, not an asymptotic simplification.
+
+\subsection{Selected strong cycles and an exact Dirichlet margin}
+For the orthogonal checkerboard, channel one has strong outgoing coefficient
+$H$ at odd sources and channel two at even sources. Fix one original scalar
+spatial/channel component and call its strong-source parity $A$.
+Select only its strong $+e_1$ and $+e_D$ edges. Each $A$ vertex has its two
+selected outgoing edges, while each opposite-parity vertex has its two
+selected incoming edges. The directions are distinct, also at period two.
+For an $A$-parity base $u_0$, define
+\[
+ u_t=u_0+t(e_D-e_1),\qquad v_t=u_t+e_D,\qquad t\in\Z/n\Z.
+\]
+The translation has order exactly $n$, and parity separates the $u$ and $v$
+sets. The selected edges are $u_t$--$v_t$ and $v_t$--$u_{t+1}$, the latter
+being the original $+e_1$ edge from $u_{t+1}$. Thus the selected components
+are disjoint actual $2n$-cycles and cover all vertices. This is a labelled
+finite graph, not a continuum comparison.
+
+Let $\Sigma=\{x:x_D=0\}$. Each cycle has exactly one $u_t\in\Sigma$ and
+one $v_{t-1}\in\Sigma$; they are adjacent. Removing these two zero vertices
+leaves $2n-2$ free vertices between zero endpoints.
+For a path with $N$ free vertices and zero endpoints the sine vectors
+$\sin(\pi jt/(N+1))$, $1\leq j\leq N$, diagonalize its Dirichlet matrix
+with eigenvalues $4\sin^2(\pi j/[2(N+1)])$.
+Indeed the interior second-difference identity gives the eigenvalue and the
+endpoint sines vanish; the $N$ eigenvalues are distinct, so the corresponding
+nonzero orthogonal vectors span the path space. Its first eigenvalue is at
+least $4/(N+1)^2$ by the same sine inequality as before. A path with no free
+vertices has zero norm and requires no positive eigenvalue assertion.
+Consequently every field zero on $\Sigma$ satisfies
+\begin{equation}\label{eq:singleplane-gap}
+ Q_B(z)\geq\frac{4H}{(2n-1)^2}\norm z^2
+       =(c+\delta_n)\norm z^2,
+ \qquad\delta_n=\frac{c(4n-1)}{(2n-1)^2}>0.
+\end{equation}
+Sum the selected cycle estimates over both original channels and all $D$
+spatial components. All other strong edges and all weak terms are merely
+discarded as nonnegative. The edge between adjacent zero anchors contributes
+zero. At $n=2$ these are actual four-cycles; no parallel-label cancellation
+or missing endpoint is used.
+
+In each channel observe every site of $\Sigma$ as a singleton, and the one
+remaining rectangle
+$\{0,\ldots,n-1\}^{D-1}\times\{1,\ldots,n-1\}$.
+It is nonempty because $n\geq2$. This is an exact original-chart partition,
+with $n^{D-1}+1$ cells per channel, shared over spatial components. Its block
+kernel is zero on $\Sigma$. Lemma~\ref{lem:completion}, with
+$M=4DH+c$ and $\delta=\delta_n$, supplies the finite coefficient
+$M+2M^2/\delta_n$. Together with \eqref{eq:RC} this proves
+Theorem~\ref{thm:checker}(i), including every global constant. This particular
+one-plane coefficient is not claimed to have the smaller point/plane-mesh
+penalty order in \eqref{eq:pointK}.
+
+\subsection{Every fixed nonzero angle: proof coordinates only}
+Let the two weak lines be spanned by unit vectors $v_0,v_1$, with principal
+angle $\theta\in(0,\pi/2]$. At parity $\ell$ let $P_\ell=v_\ell v_\ell^T$.
+Choose constant unit strong normals $s_\ell\perp v_\ell$ and, for each spatial
+component, set $w_\ell=s_\ell\cdot z$. The two-dimensional Gram matrix
+$s_0s_0^T+s_1s_1^T$ has eigenvalues $1\pm|s_0\cdot s_1|$, as follows from
+its trace two and determinant $1-|s_0\cdot s_1|^2$. Thus
+\begin{equation}\label{eq:anglegram}
+ \norm{w_0}^2+\norm{w_1}^2\geq\kappa\norm z^2,
+ \qquad\kappa=1-|\cos\theta|>0,
+\end{equation}
+also after summing over sites and spatial components.
+These are auxiliary analytic coordinates, not permitted observed rows.
+The actual energy contains $H$ times differences of $w_0$ from even sources
+and $H$ times differences of $w_1$ from odd sources. All weak terms stay
+positive. The selected two-direction cycle proof applies separately to each
+scalar functional with its own strong-source parity; these energy contributions
+are distinct parts of the actual source-weighted form.
+
+Put $m=\lceil4/\sqrt\kappa\rceil$. If $n<m$, all-channel singletons have
+$K=c$ and count $2Dn^D\leq2Dm n^{D-1}$, proving the stated bound directly.
+If $n\geq m$, choose the $m$ distinct planes with coordinates
+$r_j=\lfloor jn/m\rfloor$, $0\leq j<m$. Their positive cyclic gaps $\ell_j$
+are at most $L=\lceil n/m\rceil\leq2n/m$.
+Each plane meets each selected cycle in an adjacent pair. Between two
+successive anchor pairs there are precisely $2\ell_j-2$ free vertices with
+zero endpoints. If $\ell_j=1$ there are none; otherwise the finite Dirichlet
+estimate gives eigenvalue at least $4/(2\ell_j-1)^2$.
+The wraparound segment is included by the cyclic gap, and zero--zero edges
+add zero. For an original field zero on the plane union, both $w_0,w_1$
+are zero there, hence
+\begin{align}\label{eq:angle-gap}
+ Q_B(z)&\geq\frac{4H}{(2L-1)^2}
+                      (\norm{w_0}^2+\norm{w_1}^2)\nonumber\\
+ &\geq\frac{H\kappa}{L^2}\norm z^2
+ \geq\frac{c\kappa m^2}{4}\norm z^2\geq4c\norm z^2.
+\end{align}
+All inequalities here are non-strict, also at the zero field or when every
+vertex is anchored. No nonexistent singleton Dirichlet eigenvalue is used.
+
+In \emph{each original channel}, observe every point of every selected plane
+as a singleton. For each nonempty interval between planes use the one full
+cross-section rectangle. With $r_0=0$ and $r_m=n$, these intervals are
+$\{r_j+1,\ldots,r_{j+1}-1\}$ in the last coordinate; there is no omitted
+pre-zero interval. Empty slabs are dropped. This is an exact nonwrapping
+original-chart partition with at most $mn^{D-1}+m$ cells per channel.
+It is shared across all spatial components and uses only the rows
+\eqref{eq:canonical}. A kernel field is pointwise zero on the plane union.
+Apply Lemma~\ref{lem:completion} with $\delta=3c$ to
+\eqref{eq:angle-gap}; \eqref{eq:pointK} suffices.
+This proves Theorem~\ref{thm:angle} without mixing observed channels.
+
+At $\theta=\pi/2$, this is a nonoptimal four-plane variant of the preceding
+one-plane construction. At $\theta=0$, $\kappa=0$ and the analytic normal map
+is singular; the proof does not apply and does not refute the constant-$P$
+theorem. Constants depending on a fixed positive $\theta$ may diverge as the
+angle tends to zero. No point-anchor order at a nonorthogonal angle is claimed
+by this plane argument.

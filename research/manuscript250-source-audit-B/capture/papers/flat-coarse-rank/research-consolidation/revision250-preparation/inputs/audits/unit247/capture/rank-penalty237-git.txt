@@ -1,0 +1,93 @@
+237 — Sharp penalty scale at economical canonical rectangular rank
+Author-role proof candidate. No scientific execution, formal certificate or grade.
+This is grouped follow-up to234–236; absent from the frozen232B manuscript.
+
+1. Exact setting and question.
+Keep the exact231B/236 profile: D>=3, integer n>=2,c>0,V=g=n^D,
+h=Dg,a=c/(16D),H=cn^2,B=H I-(H-a)vv^T,v_alpha=1/sqrt(g).
+Q_A is the counting-measure actual forward-gradient energy with directional
+matrix delta_jj' delta_kk' B_alpha,beta. U=U_0^g,U_0=im(d_1^*),
+d0=dim_R U_0=(D-1)(V-1). Write ||z||_V^2=||z||^2/V.
+For each internal channel alpha, choose a partition into integer rectangles,
+shared across the D spatial components. C lists all canonical rows
+V^(-1/2)|S|^(-1/2)sum_{i in S}z_{k,alpha}(i).
+Its actual rank is r=rank(C|_U), not its displayed row count. Let R_alpha
+be the counting orthogonal block-mean projection on one channel's full
+spatial-vector field space, R=directsum_alpha R_alpha. Then
+||Cz||^2=||Rz||^2/V and ker R=ker C. All claims below concern
+Q_A(z)/V+K||Cz||^2 >= c||z||_V^2.                       (237.0)
+K here is the NORMALIZED convention, unlike236's counting coefficient VK.
+
+2. Improve the full-field upper without changing the observation map.
+Use EXACTLY236's explicit partitions, not new rows. Its proved kernel margin
+is Q_A(x)>=2c||x||^2 for all full fields x in ker R. Also Q_A is positive
+semidefinite and Q_A(y)<=M||y||^2 with M=4DH.
+For any positive semidefinite finite form Q, polarization Cauchy–Schwarz
+gives |Q(x,y)|<=sqrt(Q(x)Q(y)); for example apply ordinary Cauchy–Schwarz
+after taking the symmetric positive square root. Since
+2sqrt(pq)<=p/2+2q for nonnegative p,q,
+Q(x+y)>=Q(x)-2sqrt(Q(x)Q(y))+Q(y)>=Q(x)/2-Q(y).          (237.1)
+For z=x+y,x=(I-R)z,y=Rz, this yields
+Q_A(z)>=c||x||^2-M||y||^2.
+Therefore Q_A(z)+(c+M)||Rz||^2>=c(||x||^2+||y||^2),
+and division by V proves237.0 with
+K_up=c+4DH=c(1+4D n^2)                                (237.2)
+on ALL fields, and hence on the actual coexact domain. R is never assumed
+to preserve U. No cross-term of size M^2/c is needed: positivity supplies
+the square-root bound, while the older norm-only Young estimate was looser.
+The n<32 singleton fallback also obeys237.2 since its K=c already suffices
+in this normalized convention. No236 proof or old assessed PDF is altered.
+
+3. Universal rank–penalty lower within this canonical class.
+Let C be ANY map of the stated per-channel full partition-mean form whose
+237.0 holds on U with a finite real coefficient K. It need not be236's map.
+Define the isometry T:U_0->U by (Tf)_alpha=v_alpha f. On its weak
+polarization Q_A(Tf)=a E(f)<=4Da||f||^2=(c/4)||f||^2.
+Insert into237.0 and multiply by V:
+K||RTf||^2 >= (3c/4)||f||^2.                            (237.3)
+Thus K>0 and no such inequality exists with rank zero.
+Choose a counting-orthonormal real basis {e_l}_{l=1}^{d0} of U_0.
+For each alpha let A_alpha=R_alpha restricted to U_0. Its norm is at most1,
+so all singular values are at most1 and
+sum_l||R_alpha e_l||^2=trace(A_alpha^* A_alpha)
+ <=rank(A_alpha)=rank(C_alpha|_(U_0)).                   (237.4)
+The equality of ranks uses only the injective representation of the block
+projection by all normalized block means; it does not assume U_0 invariant
+under R_alpha. Different internal channels have independent domain/codomain
+summands, hence r=sum_alpha rank(C_alpha|_(U_0)). The uniform v gives
+sum_l||RT e_l||^2=(1/g)sum_alpha sum_l||R_alpha e_l||^2<=r/g.
+Summing237.3 on this basis implies
+                    K >= 3c g d0/(4r).                 (237.5)
+This is a lower bound using actual restricted rank, not codomain count or
+rank of a common scalar partition. It requires the canonical row weights:
+arbitrary rescaling of C would destroy a rank-only bound on K. General
+nonlinear penalties, mixed-internal rows or arbitrary observation scalings
+are outside this rank–penalty statement.
+
+4. Consequence for236's economical local rectangle construction.
+Its actual rank satisfies 0<r<=C_D n^(2D-2), with the explicit D-only
+C_D from236 (the all-field output bound suffices as an upper bound on r).
+Since g=n^D and d0=(D-1)(n^D-1)>=(D-1)n^D/2,237.5 implies
+K >= [3(D-1)/(8C_D)] c n^2.                            (237.6)
+Together237.2 and237.6 show that the minimum normalized restoring penalty
+for this FIXED explicit map is Theta_D(c n^2). More generally any sequence
+of stated canonical maps with r<=L_D n^(2D-2) has the same lower order,
+with L_D replacing C_D. Hence a size-uniform normalized penalty cannot
+coexist with that economical actual-rank order in this exact family/class.
+At rank comparable to g d0 the bound allows K of order c; singleton means
+indeed give K=c on the full space. This is a tradeoff, not a claim that
+every map at economical rank succeeds or has the constructive upper bound.
+
+5. What this changes and what it leaves open.
+The old normalized sufficient coefficient c+(4DH)^2/c grew as c n^4;
+the SAME236 observations now have a sufficient coefficient O_D(c n^2),
+and the actual-rank trace lower proves its n^2 growth unavoidable at the
+stated rank order and fixed canonical normalization. Counting coefficients
+are V times these quantities. This does not establish practical usefulness,
+optimal leading constants, efficient implementation, arbitrary coefficients,
+fixed-g conclusions, basis-free lower bounds or a physical/continuum gap.
+It is not a resolution or regrading of the frozen232B report: those exact
+bytes retain the older bound and unresolved implementation/relevance issues.
+The main mechanism is classical PSD polarization and a finite trace bound;
+no original-priority claim or new assessment is made. Group with234–236;
+retain236A's counterexample and every original source/audit/assessment.

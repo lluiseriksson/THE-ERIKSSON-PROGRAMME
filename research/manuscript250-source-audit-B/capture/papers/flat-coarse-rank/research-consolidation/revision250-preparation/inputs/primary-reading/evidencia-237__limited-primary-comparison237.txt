@@ -1,0 +1,7 @@
+Limited primary-source comparison for236/237,10November2026
+
+Målqvist–Peterseim, Localization of Elliptic Multiscale Problems, arXiv1110.0692v4, Sections2.2–2.3, https://arxiv.org/html/1110.0692v4. Read actual weighted local-average operator and its kernel/fine-space splitting. This is a substantial established coarse-observation/kernel mechanism in continuum elliptic approximation. Parent inference: our local-observation mechanism is not new by itself. No deduction of an exact finite internally coupled/coexact rank–penalty result, or proof of non-implication, was established by this selected reading.
+
+Levi–Santagati–Tabacco–Vallarino, Poincare inequalities on graphs, arXiv2203.12530v2, Section2/Theorem2.1, https://arxiv.org/html/2203.12530v2. Read actual finite quasiconvex-set bound and path/Hölder proof. Local graph variance estimates are established; this general bound has volume/diameter dependence and is not our explicit tensor-path constant. Parent inference: proving a needed regional estimate does not establish historical novelty.
+
+Publisher page Cauchy-Schwarz inequalities associated with positive semidefinite matrices, https://www.sciencedirect.com/science/article/pii/002437959090256C, returned403; no full text or attribution details inferred. PSD polarization/trace-rank tools are elementary classical linear algebra and fully proved in237. No exhaustive originality audit or priority claim. These readings do not resolve232B material novelty/usefulness objections; no retrospective regrading.

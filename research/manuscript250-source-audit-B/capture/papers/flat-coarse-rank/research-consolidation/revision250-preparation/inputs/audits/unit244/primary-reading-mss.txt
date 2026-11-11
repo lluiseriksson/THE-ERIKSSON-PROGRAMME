@@ -1,0 +1,5 @@
+PRIMARY READING RECORD -- MSS INPUT FOR AUDIT244
+Read2026-11-11: Adam W. Marcus, Daniel A. Spielman, Nikhil Srivastava, Interlacing Families II: Mixed Characteristic Polynomials and The Kadison-Singer Problem, arXiv:1306.3969v4, printed page3/PDF index2.
+Version-pinned primary PDF:https://arxiv.org/pdf/1306.3969v4
+Theorem1.4 uses independent finitely supported complex random vectors, identity total expected covariance, and expected squared norms bounded by positive epsilon. It guarantees positive probability of sum-outer-product norm at most(1+sqrt(epsilon))^2. Real vectors are admissible. Cardinality is not a separate conclusion of that theorem;244 derives it with an added signed scalar coordinate and epsilon=2delta.
+The theorem statement was read directly through the PDF text extraction, not inferred from the abstract. Remote screenshot was unavailable. No raw PDF was downloaded/hashed, no published-proof re-audit or numerical/formal reproduction was attempted, and no PDF quality/grade assessment was made. This file is an authored reading note, not a byte capture of the external paper.
