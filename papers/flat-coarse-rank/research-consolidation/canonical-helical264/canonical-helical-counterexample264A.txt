@@ -1,0 +1,259 @@
+Q251 /264A: ACTUAL NONWRAPPING EVEN-LINEAR HELICAL REFINEMENTS
+UNREVIEWED analytical candidate, 11 November 2026. No computational or formal
+verification, model grade, priority or physical-gap claim. Base main:
+af758ef6195248bfa062edd6814946be9d7ccd5b. Related frozen263A source:
+53f0b4ed83cd2fcb224b20be460dab6e5fd5201a (cyclic cells ONLY).
+This construction pays the extra chart-boundary traces directly. It does
+not infer refined-cell zeros from cyclic-union zeros. Published260C stays
+unchanged. This is grouped research evidence, not another proposed paper.
+
+1. MODEL, ACTUAL MAP AND PROPOSED THEOREM
+
+Let n=2^m,m>=5,c>0,a=c/48,H=cn^2. Use counting norm on Z_n^3,
+original spatial components and original channels. In channel1 each forward
+difference at an even source x1+x2+x3 has weight a and at an odd source has
+weight H; channel2 has reversed weights. Let Q be the sum of these weighted
+squared forward differences over all spatial components and directions.
+The actual domain is (im d1*)^2, with forward curl d1 on independent two-form
+components j<l. All fields constructed below have channel2 identically zero.
+
+Take ANY kappa=2 mod4 modulo n and t_i=kappa*i modn. At slice x1=i use
+the NONWRAPPING nonempty x2 intervals
+ [0,t_i-1], {t_i}, [t_i+1,n-1]
+(omit the empty first interval if t_i=0) crossed with x3 intervals
+ {0}, [1,n-1].
+The same spatial partition is used for both original channels. Observe the
+original nonzero normalized cell mean of every spatial component. There are
+36n-24 full raw rows: gcd(kappa,n)=2, exactly two slices have t_i=0,
+and t_i never equals n-1. This is a genuine canonical rectangle map.
+
+PROPOSED THEOREM. If log(n/1024)>=2^84 (natural logarithm), this map has
+a real nonzero actual-coexact invisible field z with
+                  Q(z)<(7/32)c ||z||^2<c ||z||^2.            (TH)
+Consequently no finite penalty Phi(Cz), Phi(0)=0, restores target c for
+this concrete family. The threshold is deliberately enormous and has no
+claimed practical significance. Odd slopes, kappa divisible by4, nonlinear
+motion, arbitrary canonical maps and the general O(n) optimum are NOT covered.
+Golden slopes4*floor(alpha*n/4)+2 are covered. No physical spectral gap or
+continuum result follows. Sole active question Q251 remains open in general.
+
+2. ACTUAL CURL PREIMAGE AND THE SIX BOUNDARY TAGS
+
+Write delta_j=I-shift_(-e_j), the negative of the adjoint of the forward
+difference. For any complex scalar potential Psi define
+ P Psi=(0,delta2 delta3^2 Psi,-delta2^2 delta3 Psi).
+This is in the ACTUAL curl-adjoint image: choose A23=delta2 delta3 Psi,
+A12=A13=0, so u2=delta3 A23, u3=-delta2 A23. No inverse multiplier,
+divergence-free substitute or assumed Hodge identity is used.
+
+For a nonwrapping rectangle J=[b,e],K=[f,g], summing u2 telescopes to the
+alternating four corner values of delta3 Psi at x2=b-1,e and x3=f-1,g.
+Summing u3 gives minus the corresponding four values of delta2 Psi.
+All endpoints are evaluated periodically; no rectangle itself wraps.
+It therefore suffices to annihilate BOTH delta2 Psi and delta3 Psi at
+ x1=i, x2 in {-1,t_i-1,t_i}, x3 in {-1,0}, for every i.     (BT)
+There are six tags, with repetitions harmless at t_i=0. This explicitly
+pays the new fixed boundary x2=-1, absent from cyclic-cell reasoning.
+
+3. DIVISION-FREE FOURIER PRIMITIVES AND ENERGY
+
+Use unitary physical Fourier coefficients, normalized n^(-3/2). Write h=n/2,
+p0=n/4, w0=(kappa+1)*p0 modn, A=(kappa+1)^(-1) modn, T=floor(n/1024).
+For 1<=ell<=T and r,s=0,...,8 put
+ X=r*ell, Y=s*ell,
+ lambda_r=p0-kappa*A*r*ell modn,
+ p_rs=p0+A*r*ell+s*ell modn,
+ w_s=w0+kappa*s*ell modn,
+ L=p_rs-lambda_r=(r+s)*ell modn.
+The physical frequency is k=(lambda_r,p_rs,p_rs+J); its parity partner
+is k+(h,h,h). The moving-boundary i frequency is lambda_r+kappa*p_rs=w_s;
+for its partner it is w_s+h because kappa is even. At a fixed x2 boundary
+the i frequencies are lambda_r,lambda_r+h.
+
+Let zeta=exp(2pi i p_rs/n), eta=exp(2pi i J/n), t(z)=1-z^(-1), and
+ C(z)=(1+z)(1+z^(-1))^3=z^(-3)(1+z)^4.
+Specify the potential Psi_rs,J by Fourier coefficients C(zeta),C(-zeta)
+at the pair and zero elsewhere. Let F_rs,J=P Psi_rs,J. Its components at
+the first frequency are
+ u2=t(zeta)*t(zeta*eta)^2*C(zeta),
+ u3=-t(zeta)^2*t(zeta*eta)*C(zeta),
+and at the partner replace zeta by -zeta (eta unchanged).
+
+At J=0 these amplitudes simplify to
+ S(zeta)*(1+zeta,1-zeta)*(0,1,-1), S(z)=(1-z^(-2))^3,
+since t(z)^3 C(z)=S(z)(1+z) and S(-z)=S(z). This remains valid on axes,
+including vanishing amplitudes: no division occurs. Let Y_rs,J have these
+J=0 amplitudes at the same frequency PAIR as F_rs,J, and E=F-Y.
+The following deliberately loose bounds use |t|<=2, |C|<=16, |S|<=8:
+ ||F||^2<=2^16, ||Y||^2<=512,
+ ||E||^2<=40960|eta-1|^2<=2^16|eta-1|^2.                (N)
+Indeed the u2 error is at most128|eta-1| and the u3 error at most64|eta-1|
+at each of the two frequencies, using |t(z eta)-t(z)|=|eta-1|.
+
+Source parity couples only this frequency pair; Q has no cross terms
+between distinct pairs. For scalar pair (1+zeta,1-zeta), the odd-source
+norm of a forward difference with base phase t+epsilon is exactly
+ (1/2)*|(exp(i(t+epsilon))-1)(1+zeta)
+             -(-exp(i(t+epsilon))-1)(1-zeta)|^2
+ =2|exp(i epsilon)-1|^2.
+Thus the actual strong-source energy of Y, with two nonzero components, is
+ Q_H(Y)=4H|S|^2*(|exp(-2pi i L/n)-1|^2+|eta-1|^2)
+       <=2^14 c(L^2+J^2), using pi<4.                       (HY)
+The unweighted forward gradient has energy <=12||.||^2. Hence
+ Q_H(E)<=12H*2^16|eta-1|^2<=3*2^24 c J^2.
+By positivity, Q_H(F)<=2Q_H(Y)+2Q_H(E)<2^27 c(L^2+J^2),
+and Q_a(F)<=12a||F||^2<=2^14 c. Consequently
+ Q(F_rs,J)<=2^28 c(1+L^2+J^2).
+When ell<=j<=2ell and J=m*j, m in {-1,1,2}, L<=16ell and |J|<=2j,
+ Q(F_rs,mj)<=2^36 c(1+ell^2+j^2).                         (FQ)
+These estimates use original source weights, not weights at target sites.
+
+4. EXACT INTERPOLATION IN j FOR BOTH BOUNDARY GRADIENTS
+
+At x2=t_i+u, u in {-1,0}, x3=v in {-1,0}, each of delta2 Psi,delta3 Psi
+has i phase w_s and a Laurent-polynomial coefficient H(zeta,eta).
+At x2=-1 it has phase lambda_r and the same TYPE of polynomial coefficient.
+For every one of these traces the possible powers are
+ zeta^d, -6<=d<=1, and eta^e, -2<=e<=0.                  (LP)
+To check this range: C has powers -3,...,1; one delta has powers0,-1;
+the corner factor is zeta^(u+v)*eta^v with u,v in {-1,0}.
+For delta2 the extra -1 power is in zeta; for delta3 it is in zeta*eta.
+The fixed x2=-1 case is u=-1 without the shear phase. At the partner the
+same statements hold with zeta replaced by -zeta and i frequency shifted
+by h. Factors (-1)^d do not affect any range or annihilation below.
+
+For positive j<=2T write eta=exp(2pi i j/n), xi_m=eta^(-m), m in {-1,1,2},
+and take the degree-two Lagrange weights
+ alpha_m=product_(b in {-1,1,2}, b!=m) (1-xi_b)/(xi_m-xi_b).
+The nodes are distinct since3j<n. Lagrange evaluation at1 gives
+ sum_m alpha_m xi_m^d=1, d=0,1,2.
+For theta=2pi j/n, 3theta<pi. Using
+ |1-exp(i b theta)|<=|b theta|,
+ |exp(i m theta)-exp(i b theta)|>=(2/pi)|m-b|theta,
+and pi<4 gives |alpha_-1|<=4/3, |alpha_1|<=4, |alpha_2|<=4/3;
+in particular all are <=8. Let
+ R_rs,j=sum_m alpha_m F_rs,mj,
+with its actual potential the same combination of Psi_rs,mj.
+By (LP) its boundary-gradient traces agree EXACTLY with those of Psi_rs,0
+at every moving/fixed tag, for both components and both parity frequencies.
+This is a trace identity, not an identity of the fields themselves.
+The three m frequency pairs are disjoint. Thus (FQ) gives
+ Q(R_rs,j)<=3*64*2^36 c(1+ell^2+j^2)
+           <=2^44 c(1+ell^2+j^2).                         (RQ)
+
+5. TENSOR ANNIHILATION PAYS MOVING AND FIXED TAGS TOGETHER
+
+Set u=exp(2pi i A ell/n),v=exp(2pi i ell/n), and define degree8 polynomials
+ a(z)=product_(d=-6,...,1)(z-u^d)=sum_(r=0)^8 a_r z^r,
+ b(z)=product_(d=-6,...,1)(z-v^d)=sum_(s=0)^8 b_s z^s.
+Their constant coefficients have modulus1, even when roots coincide;
+every coefficient has modulus <=2^8. Put
+ c_rs=a_r b_s/(a_0 b_0), so c_00=1 and |c_rs|<=2^16.
+
+Here zeta_rs=i*u^r*v^s. At fixed s a moving-tag trace has a fixed i phase
+w_s; each Laurent monomial zeta_rs^d in (LP) is annihilated upon summing
+over r with coefficients a_r, since a(u^d)=0. At fixed r a fixed-boundary
+trace has fixed phase lambda_r and is annihilated upon summing over s with
+b_s, since b(v^d)=0. For the partner the extra (-1)^d factor is constant
+in r,s and is also killed. Therefore the potential
+ sum_rs c_rs Psi_rs,0 has ALL the boundary-gradient traces (BT) zero.
+
+Define a correction field, together with its explicit potential,
+ Z_ell,j=-sum_((r,s)!=(0,0)) c_rs R_rs,j.                  (Z)
+Its potential's boundary gradients equal those of the BASE Psi_00,0,
+at all six tags, for every i. This follows from the preceding exact
+annihilation and the exact j interpolation, with c_00=1.
+There are80 terms. Their frequency pairs within a packet are distinct
+(proved next); (RQ) yields
+ Q(Z_ell,j)<=80*2^32*2^44 c(1+ell^2+j^2)
+             <2^83 c(1+ell^2+j^2).                       (ZQ)
+
+6. FREQUENCY ALIASING AND BOUNDED OVERLAP, NOT FALSE ORTHOGONALITY
+
+Since kappa=2 mod4, gcd(kappa,n)=gcd(kappa A,n)=2. Both X,Y lie in
+[0,8T], with8T<n/4. Among base frequencies, lambda_r=p0-kappa A X
+uniquely determines X in this interval, and w_s=w0+kappa Y determines Y.
+A physical k determines lambda and p, hence w=lambda+kappa*p, so X,Y
+are determined by the physical pair representative.
+
+A partner of one base frequency cannot be another base frequency: it would
+require kappa A*(X'-X)=h modn. Dividing by2 and inverting the odd kappa A/2
+gives X'-X=n/4 modh, because any odd multiple of n/4 is n/4 modh.
+But |X'-X|<=8T<n/4. This also shows that choosing a parity-pair representative
+cannot conceal an alias. For fixed X,Y, J=q-p has a unique integer
+representative in [-2T,4T], whose length6T is less than n.
+
+At fixed ell, X,Y determine r,s and the three J=-j,j,2j are distinct.
+Hence all80*3 primitive pairs in (Z) are distinct. Across packets, X+Y>0
+since(r,s)!=(0,0). If X>0, any possible ell equals X/r for one r=1,...,8;
+if X=0 use Y/s instead. There are at most8 possible ell. For each such ell,
+J>0 gives at most two choices j (J or J/2); J<0 gives at most one.
+Thus each parity pair occurs in at most16 packets Z_ell,j. The base
+pair X=Y=0,J=0 is absent from all corrections.
+
+The quadratic energy is positive semidefinite on each parity pair. Cauchy-
+Schwarz in that seminorm gives, for arbitrary scalar d_ell,j,
+ Q(sum d_ell,j Z_ell,j)<=16 sum |d_ell,j|^2 Q(Z_ell,j).    (OV)
+Do not claim that different packets are disjoint. The factor16 explicitly
+pays their actual overlap; the base IS energy- and norm-orthogonal to them.
+
+7. HARMONIC BUDGET AND REAL ACTUAL INVISIBLE WITNESS
+
+For every ell=1,...,T use all integers j=ell,...,2ell. Set
+ W=sum_(ell=1)^T sum_(j=ell)^(2ell) 1/(1+ell^2+j^2),
+ d_ell,j=[1/(1+ell^2+j^2)]/W.
+There are ell+1 summands in each row and the denominator is <=6ell^2.
+Therefore
+ W>=(1/6)sum_(ell=1)^T 1/ell >=(1/6)log(T+1)
+   >(1/6)log(n/1024), and sum d_ell,j=1.                 (W)
+No Diophantine return estimate, unproved Gram bound or numerical oracle
+is used. The small polynomial factor C removed the need to divide by
+possibly small curl multipliers.
+
+Let U0=F_00,0 (independent of ell). At p0=i, S=8; the two scalar
+amplitudes are8(1+i),8(1-i), in vector direction(0,1,-1).
+Thus ||U0||^2=512. Strong-source energy is zero in every direction;
+its unweighted gradient energy is6||U0||^2. Hence
+                         Q(U0)=64c.
+Define the explicit potential and field
+ Psi=Psi_00,0-sum_(ell,j) d_ell,j*(potential of Z_ell,j),
+ z_complex=P Psi=U0-sum_(ell,j) d_ell,j Z_ell,j.
+Equations (Z),(BT),(W) give exact zero for every original nonwrapping
+rectangle mean, in both channels. Actual coexactness follows from the
+displayed A23, with no new hypothesis. Base-pair orthogonality yields
+ ||z_complex||^2>=512,
+ Q(z_complex)<=64c+16*2^83 c/W=64c+2^87 c/W.
+If log(n/1024)>=2^84, (W) gives W>2^84/6, so Q(z_complex)<112c.
+The quotient is strictly less than112c/512=(7/32)c.
+
+All operators, observations and weights are real. Real and imaginary
+parts of the explicit potential give actual-coexact invisible real fields;
+their squared norms and energies sum to the complex values. At least one
+is nonzero and has quotient no larger than the complex quotient. This
+proves (TH), subject to exact-source analytical audit.
+
+8. FALSIFIERS, RELATION AND CONTEXT
+
+Check the actual curl signs and source convention; a target-site weight
+substitution invalidates the argument. Attack the endpoint telescoping,
+both Laurent exponent ranges, partner phases, interpolation evaluation,
+and fixed/moving tensor annihilation. An unaccounted parity-pair alias or
+more than16 packet overlaps invalidates (OV) and the quoted threshold.
+All constants above must hold with the original counting normalization.
+
+This is not a cyclic-to-refined implication: new corner traces are paid
+with a different division-free potential, two polynomial annihilators and
+an explicit overlap budget. It generalizes the special-slope261C chart
+construction to all kappa=2 mod4. It does not show arbitrary canonical
+O(n) impossibility. Historical originality and wider relevance remain
+unestablished; Fourier parity pairing, polynomial annihilation, Lagrange
+interpolation and logarithmic harmonic budgets are classical mechanisms.
+No new manuscript, assessment, peer review, acceptance or publication is
+claimed. PR29 stays20/41 and TermSource=0; physical gap and continuum OPEN.
+
+Model assessments and review context: author is the involved Codex/OpenAI
+assistant, exact backend model identifier unavailable in this interface.
+This candidate has no assessment yet. A subsequent source audit must retain
+the full exact-source report, objections, actual model identity/context and
+raw-file manifest. It is not blind or independent merely because a separate
+agent audits it. No scientific score is inherited from any PDF/version.
