@@ -1,0 +1,122 @@
+Q251: EXACT HELICAL FOURIER / ACTUAL COEXACT TRACE REDUCTION 262A
+11 November 2026. UNREVIEWED analytical working note. Not a new paper,
+formal verification, numerical experiment, originality claim or gap result.
+Source context: research main d03bc22bf056c3cb987e0a1823196dcc70b8f658;
+golden260B source62566b653002ee4cd3a480b26dd366baffc5ffad;
+checkerboard sourcefb3ba8d2c0ae52d4a2e909b0fb2df02b2f953bc4.
+The published-candidate PDF and AIRR PR426 are NOT modified by this note.
+
+QUESTION / SCOPE
+Continue the same sole question Q251. For the orthogonal D=3 family,
+n=2^m,m>=5, a=c/48,H=cn^2, use the cyclic24n-row golden family:
+kappa=4floor(alpha*n/4)+2, alpha=(sqrt(5)-1)/2, t_i=kappa*i modn.
+Each internal channel uses slice x1=i and the four products of
+{x2=t_i}, its cyclic complement, {x3=0}, its cyclic complement.
+These wrapped complements are not the original nonwrapping canonical class.
+This note reduces that enlarged family's ACTUAL coexact kernel quotient;
+it does not transfer a result to the refined36n-24 chart family.
+No assumption on a trace-Gram lower bound or coexact preservation by means.
+
+SHEAR AND UNITARY TRANSFORM
+Let i=x1,y=x2-kappa*x1,z=x3 in Z_n. The shear is a bijection even though
+gcd(kappa,n)=2. For each spatial component and original channel set
+f(i,y,z)=u(i,y+kappa*i,z). Define
+  fhat(w,p,q)=n^(-3/2) sum_(i,y,z) f(i,y,z)
+             exp[-2pi*i*(w*i+p*y+q*z)/n].
+All w,p,q range over Z_n. Norm is preserved by finite Fourier orthogonality.
+The physical forward-difference multipliers are
+  d1=exp[2pi*i*(w-kappa*p)/n]-1,
+  d2=exp[2pi*i*p/n]-1, d3=exp[2pi*i*q/n]-1.
+Reason: physical e1 sends (i,y,z) to(i+1,y-kappa,z), e2 sends y to y+1,
+and e3 sends z to z+1. No continuum differential approximation occurs.
+
+ACTUAL FOUR TRACE CONSTRAINTS
+For one component/channel write P_i=f(i,0,0),
+L2_i=sum_z f(i,0,z), L3_i=sum_y f(i,y,0), T_i=sum_(y,z) f(i,y,z).
+The four cell sums are exactly P_i, L2_i-P_i, L3_i-P_i,
+T_i-L2_i-L3_i+P_i. All cell normalization constants are nonzero;
+thus every original observation vanishes iff P=L2=L3=T=0.
+After the unitary n^(-1/2) Fourier transform in i their exact values are
+  Phat(w)=n^(-1) sum_(p,q) fhat(w,p,q),
+  L2hat(w)=sum_p fhat(w,p,0),
+  L3hat(w)=sum_q fhat(w,0,q),
+  That(w)=n*fhat(w,0,0).
+These follow directly by summing exponentials, including their n factors.
+Consequently the kernel constraints for EACH w, spatial r and channel are
+  sum_(p,q) fhat_r(w,p,q)=0; sum_p fhat_r(w,p,0)=0;
+  sum_q fhat_r(w,0,q)=0; fhat_r(w,0,0)=0.               (TRACE)
+They are the actual finite observations, not arbitrary chosen Fourier rows.
+
+ACTUAL COEXACT SUBSPACE, NOT AN ASSUMED SUBSTITUTE
+At a nonzero physical frequency k=(w-kappa*p,p,q), d=(d1,d2,d3) is nonzero.
+For the forward curl with independent j<l indices the symbol is d wedge.
+Its adjoint image is exactly {v:sum_j conj(dj)*vj=0}.
+To verify the reverse inclusion, let v satisfy this equation and set
+  A_jl=(dj*vl-dl*vj)/|d|^2, j<l.
+The jth component of (d wedge)^* A is
+  sum_(l<j) conj(dl)*A_lj - sum_(l>j) conj(dl)*A_jl
+  =(|d|^2*vj-dj*sum_l conj(dl)*vl)/|d|^2 = vj.
+At the zero frequency the adjoint symbol is zero, so require v=0,
+not merely divergence zero. Thus these frequency conditions characterize
+the actual im(d1^*) in both directions. Apply them separately in each
+original channel. The inverse transform of these potentials supplies the
+actual coexact preimage; real fields follow by conjugate pairing.
+
+EXACT SOURCE-WEIGHTED ENERGY PAIRS
+Because kappa is even, source parity x1+x2+x3 equals i+y+z mod2.
+Let h=(n/2,n/2,n/2) in (w,p,q), and pair k with k+h once.
+Write theta=(2pi*(w-kappa*p)/n,2pi*p/n,2pi*q/n),
+  D=sum_j |exp(i*theta_j)-1|^2,
+  S=sum_j sin(theta_j), b0=(a+H)/2.
+For channel1, strong on odd starts, b1=(a-H)/2; for channel2 b1=(H-a)/2.
+Each spatial component has exactly the Hermitian pair energy matrix
+  M_b1(k) = [[b0*D, 2i*b1*S],[-2i*b1*S,b0*(12-D)]].       (ENERGY)
+Indeed the coefficient is b0+b1*(-1)^(i+y+z); at k+h each physical
+theta shifts by pi since kappa is even, and
+sum_j conj(exp(i*theta_j)-1)*(-exp(i*theta_j)-1)=2i*S.
+The diagonal complement is sum_j|exp(i*theta_j)+1|^2=12-D.
+The formula retains the actual weak coefficient and source weights.
+It is summed over spatial r and the two ORIGINAL channels, with no
+channel rotation or undocumented mixed observation.
+
+EXACT BLOCK REDUCTION AND WHAT IS STILL MISSING
+Group w with w+n/2, choosing w=0,...,n/2-1. ENERGY couples only those two
+frequencies; TRACE constraints and actual coexact constraints stay inside
+each block. This yields n/2 orthogonal finite Hermitian constrained blocks.
+Each block has 2*n^2 frequencies, three spatial components and two channels;
+TRACE contributes the stated eight raw constraints per r/channel. Their
+independence or rank is NOT assumed. Total raw observation count remains24n.
+Zero-mode exclusion is imposed in the block containing(w,p,q)=(0,0,0).
+
+Let gamma_n be min Q(u)/||u||^2 over nonzero ACTUAL coexact u satisfying
+all24n original zero observations. Then gamma_n equals the minimum of the
+same Rayleigh quotient of (ENERGY) over the n/2 block kernels defined by
+(TRACE) and the derived actual coexact conditions; empty block kernels
+are assigned infimum+infinity. This follows from the orthogonal block
+sum: a global quotient is the norm-weighted average of nonempty block
+quotients. Conversely embed a minimizing block. Real and complex minima
+agree: the original real energy/domain/observation equations are stable
+under real/imaginary parts, whose quotients average to the complex one;
+conjugate blocks can alternatively be paired for a real field.
+
+No lower bound or upper bound relative to c is obtained by this reduction.
+The concrete missing lemma is a uniform estimate for these constrained
+matrices, including small curl multipliers and all phase w. The easy
+Diophantine spacing from260B alone gives no such estimate.
+Closure/falsifier: an actual nonzero vector satisfying TRACE and the
+coexact conditions with quotient<c refutes recovery for this cyclic family;
+a derived strict gamma_n>c (with appropriate n-uniform claim stated) would
+support a separate finite-dimensional penalty argument. Equality gamma_n=c
+does not by itself establish finite-penalty restoration. No restoration
+or canonical optimality is assumed or claimed here.
+
+Falsifiers of this reduction: wrong shear multiplier, observation n factor,
+curl-adjoint image/sign, source parity/cross-term sign, omitted zero mode,
+or nonclosed block under conjugation. Source audit must test these before
+this note is used downstream. No computation, runtime or numerical claim.
+No hypotheses eliminated; the matrix characterization is derived, not a
+new assumed structure. Originality/relevance of this standard Fourier
+mechanism applied here remains unestablished. Do not split off a paper.
+After three units without a derived gamma estimate or witness, document
+the precise constrained trace/curl estimate and change mechanism.
+PR29 remains20/41,TermSource=0; physical gap and continuum remain OPEN.

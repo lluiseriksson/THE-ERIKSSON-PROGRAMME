@@ -1,0 +1,306 @@
+SOURCE AUDIT263A -- UNIFORM EVEN-LINEAR CYCLIC HELIX COUNTEREXAMPLE
+
+VERDICT: ACCEPT_ANALYTICAL_UNIFORM_EVEN_LINEAR_CYCLIC_COUNTEREXAMPLE_WITH_LIMITS
+
+Exact source53f0b4ed83cd2fcb224b20be460dab6e5fd5201a.
+Proof SHA256(raw Git/private/worktree bytes, identical):
+7318a4097339ccfdb7e2ad9d2d87657fbe376458adbb85b219f7670380c273e9.
+
+No material mathematical defect was found. At the stated enormous threshold,
+the source derives a real nonzero actual-coexact invisible field with
+Q(z)<(25/128)c||z||^2 for EVERY even linear slope modulo dyadic n, for the
+specified CYCLIC24n-row observation family. It pays the actual preimage,
+separate trace zeros, denominator margins, Fourier-pair orthogonality, source
+weights, base energy and uniform correction budget. No bounded-motion,
+Diophantine spacing or trace-Gram estimate is an unproved assumption.
+
+This is an analytical source verdict, not a formal/numerical proof, new paper,
+PDF assessment, grade, originality judgment, independent review or physical-gap
+claim. It supplies no theorem for odd slopes, nonlinear motion, the original
+nonwrapping refinement, general canonical optimality or continuum Yang-Mills.
+
+1. ACTUAL AUDIT CONTEXT AND READ SCOPE
+
+New exact-source task in the same involved child session
+/root/grouped260_manuscript_source_audit. Inherited programme, construction and
+prior source/review context were visible. This was not blind or independently
+established review. Actually exposed identity is Codex/OpenAI; exact served
+backend/version/reasoning effort is unavailable and is not inferred from
+another agent or task name. No outside model service was used. No inbound
+parent messages arrived during this audit. No source/branch/body/state,
+other audit, native case, publication or automation was modified.
+
+Read the entire263A proof and README, the entire262A reduction and its current
+conjugate-family clarification, and the golden260B family definition/criterion
+scope. The whole golden note was read in the earlier same-session262 task and
+its exact full bytes are retained here. Directly read actualfb3 model/curl/mean
+definitions at their exact commit; that whole manuscript was read in earlier
+same-session source audits and is retained as an exact dependency/context
+subject. Governance was read earlier in full in this session and active sections
+were read again; exact current governance/CLAUDE subjects are preserved.
+No prior audit's verdict is used as a mathematical hypothesis: every263A step
+was rederived analytically below, including the six-bin and harmonic argument.
+No primary-source novelty search was made; no priority conclusion follows.
+
+Local operations were Git/file reads, raw hashes and audit retention writes.
+No mathematical executable, numerical diagnostic, reviewed code, compiler,
+Lean/Lake, oracle, test, network or runtime was run. No clone was created;
+no cleanup debt exists. The assigned worktree's untracked parent helper was
+not read, changed or run. No PR/body existed in the assignment; normalized
+body capture/hash is N/A. Complete assignment and actual read/context limits
+are retained. The full inherited chat is not tool-exportable; its visibility
+is disclosed rather than replaced by a purported full transcript.
+
+2. FAMILY, SHEAR, SOURCE PARITY AND TRUE ADJOINT
+
+At each slice there are exactly four nonempty cyclic product cells per
+channel. All three spatial components are observed in both original channels,
+so the full count is2*3*4*n=24n independently of the slope's orbit length.
+Wrapped complementary supports are allowed only in the explicitly enlarged
+cyclic class; they are not declared to be nonwrapping chart rectangles.
+
+The scalar reindexing(i,y,z)->(i,y+kappa i,z) is bijective for any kappa
+because i stays fixed and y is translated; no gcd assumption is needed.
+It preserves counting norm and leaves physical spatial components unchanged.
+Physical forward steps have sheared increments(1,-kappa,0),(0,1,0),(0,0,1),
+so the multipliers d1,d2,d3 printed in263A are exact. For EVEN kappa,
+physical parity=(1+kappa)i+y+z=i+y+z. Multiplication by that parity character
+adds h=n/2 to all three sheared frequency coordinates and shifts every
+physical phase by pi. This retains the actual source weights and gives
+exact two-frequency energy coupling only within the stated parity pairs.
+
+For independent two-form components and forward curl, a sole A23 has true
+adjoint components(0,-conj(d3)A23,conj(d2)A23). This agrees with delta3 phi
+and -delta2 phi in physical coordinates because partial_j^*=-delta_j.
+Thus the explicit A23=-b/conj(d2) really gives b*(0,conj(d3)/conj(d2),-1).
+At the parity partner the same formula uses its actual d2'. All proposed
+fields have genuine displayed two-form preimages, not just a divergence
+constraint or an assumed weighted/Hodge projection property. Channel2 is
+identically zero; arbitrary means in that channel vanish.
+
+3. ACTUAL FOUR TRACES AND FREQUENCY PARAMETRIZATION
+
+For each component/channel, the four cell sums are P,L2-P,L3-P,T-L2-L3+P.
+All cell mean normalizations are nonzero, so their common kernel equals
+P=L2=L3=T=0. Under the unitary i transform the four quantities are
+n^-1 sum_(p,q)fhat, sum_p fhat(w,p,0), sum_q fhat(w,0,q), n fhat(w,0,0).
+The source states these factors correctly. Avoiding p=0 and q=0 ensures
+both line equations and the slice-total equation vanish separately.
+
+Since n is dyadic and kappa is even, kappa+1 is odd and hence invertible;
+let its inverse be A. With p0=n/4,w=(kappa+1)p0, w is n/4 or3n/4, and
+w+h is distinct. For p=p0+A ell and q=p+j,
+(kappa+1)p=w+ell modulo n. Therefore w-kappa p=p-ell modulo n, and
+the physical phases are exactly(t-2pi ell/n,t,t+2pi j/n) modulo2pi.
+There is no real-angle approximation in that congruence. The parity partner
+adds pi to every phase. This works for kappa0 as well as for all other even
+residues, not only kappa2mod4 or the golden choice.
+
+If dist(A ell,nZ)<=n/6, p can be represented in[n/12,5n/12]. Thus t is
+in[pi/6,5pi/6], and both|1-zeta|,|1+zeta| are>=2sin(pi/12)>=1/3.
+For0<|j|<=n/48, q lies in[n/16,7n/16]. These p and q distances from
+both0 and h are respectively at least n/12 and n/16, as claimed. The
+same margins hold at their half-period partners. No line-trace frequency
+or zero-mode curl division is present. Signed ell and signed j obey the
+same estimates because the distance condition is symmetric.
+
+4. CORRECTION PREIMAGE, ERROR NORM AND ENERGY CONSTANTS
+
+Write eta=exp(2pi i j/n),zeta=exp(2pi i p/n),b0=1+zeta,b1=1-zeta.
+Direct fraction subtraction gives
+r-1=(eta^-1-1)/(1-zeta),
+rplus-1=(eta^-1-1)/(1+zeta).
+The signs are correct for the actual conjugate multipliers, including the
+partner's -exp(-2pi iq/n)-1 numerator. Their A23 preimages were checked
+in Section2; denominator margins in Section3 pay both divisions.
+
+For Y with the uncorrected spatial vector(0,1,-1) at the same pair,
+||Y||^2=2(|1+zeta|^2+|1-zeta|^2)=8. E=F-Y has only its second spatial
+component nonzero. The denominator bound and|b0|^2+|b1|^2=4 imply
+||E||^2<=36|eta-1|^2. Using|eta-1|<=2pi|j|/n<=pi/24<1/6 gives
+||E||^2<=1. Hence||F||^2<=2*8+2*1=18. Y and E need not separately
+be coexact: they are only auxiliary ambient comparison fields for a form
+defined on all fields. The actual F does have the explicit coexact preimage.
+
+For a scalar pair b0,b1, projection of the forward derivative to original
+ODD sources has norm square
+one-half times|(exp(i(t+epsilon))-1)b0-(-exp(i(t+epsilon))-1)b1|^2.
+The bracket equals2zeta(exp(i epsilon)-1), yielding2|exp(i epsilon)-1|^2.
+For Y's two nonzero spatial components, epsilons are-2pi ell/n,0,2pi j/n.
+Thus Q_H(Y)=4H(|exp(-2pi i ell/n)-1|^2+|eta-1|^2)
+<=16pi^2 c(ell^2+j^2)<=256c(ell^2+j^2). The original odd-source
+projector's1/2 factor and the two spatial components are both included.
+
+The full unweighted gradient energy is<=12||E||^2, so
+Q_H(E)<=12H*36|eta-1|^2<=27648c j^2 using pi<4. Positivity of Q_H gives
+Q_H(F)<=2Q_H(Y)+2Q_H(E)
+<=512c ell^2+55808c j^2<=55808c(ell^2+j^2).
+Weak energy is<=12a*18=9c/2. Therefore FQ with coefficient2^16 is valid:
+55808<65536 and9/2<65536. No coefficient is evaluated at a target site
+and no internal-channel rotation is used. These are genuine original-form
+upper bounds, not estimates for a scalar surrogate.
+
+5. BOTH EXACT TRACE CANCELLATIONS
+
+The displayed four-entry vector T_(ell,j) is the RAW sum-of-Fourier-coefficients
+point-trace vector for spatial2/3 at w/w+h. By the already stated unitary
+normalization, the actual i-Fourier transform of P is n^-1 times this vector.
+That common factor is immaterial to all equalities/cancellations below; it is
+not a hidden observation-norm estimate. A nonblocking terminology improvement
+is to call T the 'raw point-trace-sum vector' to avoid confusing it with Phat.
+
+The fractions checked above yield T=T0(p)+(eta^-1-1)V(p) exactly, with the
+source's V. For positive j, alpha+=eta/(1+eta),alpha-=1/(1+eta) sum to1,
+and alpha+(eta^-1-1)+alpha-(eta-1)=0. Thus combining F_(ell,j) and
+F_(ell,-j) produces T0(p) exactly. The weights have magnitude<=1 because
+|1+eta|=2cos(pi j/n)>=1 in the stated small-j range. Line/fullslice traces
+remain individually zero; the combination does not reintroduce missing axes.
+
+For positive good ell, let u=exp(2pi i A ell/n), with representative argument
+in[-pi/3,pi/3]. Beta+=1/(1+u),beta-=u/(1+u) have magnitudes<=1, sum1,
+and beta+u+beta-u^-1=1. Since zeta at p0+/-A ell is i*u and i/u, and T0
+is affine in zeta, combining the +ell and-ell G fields gives EXACTLY T0(p0).
+All preimages combine linearly, so Z remains actual coexact. Its spatial1
+component and its line/fullslice traces remain zero. These are two exact
+algebraic cancellations, not an assumed small trace or Gram estimate.
+
+6. DISJOINT FREQUENCY PAIRS AND PACKET ENERGY
+
+Only1<=ell<=T=floor(n/96),ell<=j<=2ell are used. Thus2ell<n,2j<n,
+and j<=n/48. Invertibility of A means that equality of first-w p labels
+forces equal signed ell modulo n. The signed ell values in[-T,T] cannot
+collide except when identical, since2T<n. With p fixed, equality of q forces
+equal signed j; their permitted differences are smaller than n. Different
+positive(ell,j) packets and their four signed components therefore have
+distinct first-w frequencies. Their partner w+h is a different w label, so
+no extra first/partner collision occurs. Within the partner group the same
+injectivity argument applies. The base ell0 pair is disjoint from all of them.
+
+The actual coefficient function is period-two parity, so Q couples a frequency
+only to its own parity partner, not to a different disjoint pair. Counting norm
+and Q consequently decompose orthogonally across these packets. This is stronger
+than norm orthogonality alone and is explicitly justified by the actual source
+weights. Four products of beta/alpha coefficients, each of magnitude<=1,
+and FQ give Q(Z)<=4*2^16 c(1+ell^2+j^2)=2^18 c(1+ell^2+j^2).
+No unproved trace-rank assumption is used. No individual unpaired Fourier
+block is claimed to be real; the conjugate-FAMILY clarification is respected.
+
+7. UNIFORM GOOD-RETURN COUNT AND ABEL/HARMONIC BUDGET
+
+For r=0,...,M place A r/n modulo1 into six half-open bins. Their occupancies
+sum to M+1, so Cauchy-Schwarz gives sum N_s^2>=(M+1)^2/6. Removing the
+M+1 diagonal ordered pairs leaves at least(M+1)(M-5)/6 ordered same-bin
+nonself pairs. Any such pair has a nonzero signed integer difference with
+dist(A ell,nZ)<n/6, hence it contributes to a good positive absolute ell.
+For a fixed positive difference ell, there are2(M+1-ell)<=2(M+1) ordered
+pairs. Therefore2(M+1)B(M)>=(M+1)(M-5)/6 and B(M)>=(M-5)/12.
+For M>=10 this is>=M/24. The bound is uniform in A and uses neither an
+equidistribution theorem nor a Diophantine hypothesis. Same-bin points have
+ordinary separation<1/6, so circle endpoints create no exception. Duplicate
+phases, if present at larger M, also cause no issue for this counting bound;
+the actual application uses M<=T<n.
+
+Finite summation by parts gives the source's identity for sum_good 1/ell.
+Dropping nonnegative terms and using B(m)>=m/24 for m>=10 gives
+at least(1/24)sum_(s=11)^T 1/s. Since1/s>=integral_s^(s+1)dt/t, this is
+at least(1/24)log((T+1)/11). For each ell, there are ell+1 integers
+j=ell,...,2ell and1+ell^2+j^2<=1+5ell^2<=6ell^2. Thus their reciprocal
+sum is>=1/(6ell). These estimates prove
+W>=(1/144)log((T+1)/11)>(1/144)log(n/1056), because T+1>n/96.
+The factor1056=96*11 and the strict final inequality are correct.
+The huge size condition guarantees T>=11 and W>2^26/144>0, so there is
+no empty-sum division or logarithm endpoint problem.
+
+8. BASE FIELD, WEIGHTED CORRECTION AND FINAL CONSTANT
+
+For ell=j0, p=q=p0 and physical first frequency w-kappa p0=p0. All three
+phases are pi/2. The partner is shifted by pi; b0=1+i,b1=1-i and r=rplus1.
+The explicit A23 formulas have nonzero denominators and give the displayed
+base vector amplitudes. Its norm square is8. The odd-source cancellation
+formula at epsilon0 makes Q_H zero in all three directions. The full
+unweighted gradient multiplier sum is6 at EACH of the two frequencies,
+so E(U0)=6*8=48 and Q(U0)=48a=c exactly. The use of unitary Fourier
+coefficients explains norm8 here, rather than the old unscaled8V base wave.
+No volume factor is lost or inherited from the old cutoff construction.
+
+The positive d_(ell,j) sum to1 by the definition of W. Every correction
+packet has the same raw point trace T0(p0) and zero other traces, so U0
+minus their weighted sum has all point traces zero at w/w+h and no support
+at other w labels. Multiplication by the actual common n^-1 trace factor
+preserves these zeros. Every separate original cell mean vanishes, with its
+own positive normalizer. Potentials add linearly, proving actual coexactness.
+
+Base/correction support disjointness gives norm square>=8 and
+Q(z_complex)=c+sum d^2 Q(Z)<=c+2^18 c/W.
+The W bound gives2^18/W<144/256=9/16, so energy<25c/16. Dividing by
+norm square>=8 proves the strict quotient<25c/128, as advertised. This
+also proves the complex FIELD is nonzero without relying on its potential.
+
+9. REAL CONVERSION AND PENALTY OBSTRUCTION
+
+The original physical coefficients, curl adjoint and observations are real.
+The real/imaginary parts of the explicit potential therefore yield real
+actual-coexact parts x,y, each separately invisible. Norm and Q split as
+sums for x and y, so at least one nonzero part has quotient no larger than
+the complex quotient. It is strictly below25c/128 and supplies the stated
+real witness. This argument neither assumes that every individual block is
+conjugation invariant nor requires a complex Fourier packet already to be
+a real field. The earlier262A conjugate-family clarification is respected.
+
+For any finite observation penalty Phi with Phi(0)=0, that real witness
+annihilates the penalty and violates targetc. The original V^-1 factors
+cancel from this strict kernel comparison. The obstruction includes any
+size/slope-dependent finite quadratic coefficient; no uniformity assumption
+on the penalty was needed. It does not say anything about nonzero penalties
+at zero or other altered observation maps.
+
+10. FINDINGS, LIMITS AND NEXT USE
+
+Material mathematical objections found: NONE for TH and its stated family.
+No corrected source or favorable numerical outcome was requested or produced.
+One nonblocking terminology clarification263A-N1 is recorded in Section5:
+T vectors are raw point-trace-sum coefficients; actual Phat includes1/n.
+The source already states that factor in Section2 and uses only exact
+equalities/zeros subsequently. It causes no error in the witness or quotient.
+Preserve the original source and this clarification rather than silently
+changing frozen bytes or inferring an unproved trace-norm identity.
+
+The proof is uniform for ALL even slopes on dyadic sizes admitted by the
+enormous threshold, including the golden even slope in260B. Its predecessor's
+all-window sufficient criterion was inconclusive for that family, not false.
+This different construction supplies an actual invisible vector and thereby
+closes that selected cyclic candidate negatively at the stated sizes.
+It does not derive any nonwrapping refined means or transfer cyclic zeros to
+pieces. The true chart-boundary constraints remain a separate mathematical
+task. Odd slopes, nonlinear motion, broader profiles and a general canonical
+O(n) impossibility/logarithmic optimum are not proved. No original hypothesis
+of a previously stated general theorem is claimed removed by renaming a
+structure; actual fields, preimages, zeros and bounds were directly derived.
+
+Historical novelty/relevance of the cancellation and counting application is
+unestablished. No external primary comparison was conducted in this audit,
+and standard Fourier/Hodge/counting tools are not declared new. Do not spin
+off a small paper or transfer the old260C score. Group this accepted research
+source with related checkerboard results only after genuine future manuscript/
+PDF work and any exact artifact review. Physical spectral gap and continuum
+remain open; PR29 remains20/41,TermSource=0. SoleQ251 remains the active
+general question. No current AIRR PDF, grade, receipt or publication is altered.
+
+11. RETENTION, BYTE REPRESENTATIONS AND EXECUTION
+
+The proof private/Git/worktree byte representations agree and are bound to
+the assigned raw SHA256. Eight subjects are retained: proof, README263,
+fullfb3 manuscript,262A source and current clarificationREADME, golden260B,
+current governance and CLAUDE. Read scopes are disclosed above; full-file
+retention is not a claim of fresh scientific review of all historic content.
+The complete assignment, full report, context and raw subjects are manifested
+with size/SHA256 and no newline normalization. The manifest excludes itself;
+its own raw hash is returned separately. Explicit exceptions govern byte
+checks; no Python assert decides acceptance. Those file-binding operations
+are not a mathematical program or an empirical proof. All calculations in
+this report are analytical derivations, with no numerical certifier/executable.
+No source/branch/state/otheraudit/publication/automation was changed. No runtime
+or disposable clone was created; no cleanup debt exists. Historical UNREVIEWED
+labels remain on the original frozen source and are paired with this exact-
+commit analytical verdict, not silently replaced by claims of formal proof,
+independent peer review, a numerical experiment or a model grade.
