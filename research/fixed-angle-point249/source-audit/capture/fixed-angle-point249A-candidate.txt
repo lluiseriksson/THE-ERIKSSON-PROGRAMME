@@ -1,0 +1,167 @@
+249A ANALYTICAL CANDIDATE -- fixed-angle point anchors in D3 and D4
+11 November2026. Parent fabrication, not audited, not compiled, no score.
+Not part of frozen manuscript250 source1659b5397ffa30e5315b2b3963d9ed661ee5f611.
+One existing active question249 only; this is no new small paper.
+
+STATEMENT AND HYPOTHESES
+Let D=3 or4, even n>=2, c>0, V=n^D, g=2. On X=(Z/nZ)^D
+use actual positive forward labels, counting norms, actual source weights and
+the original two observed channels. Let v0,v1 be fixed unit weak-line vectors,
+principal angle theta in(0,pi/2], fixed independently of n. Put kappa=1-|cos(theta)|
+in(0,1], a=c/(16D), H=c n^2, P_l=v_l v_l^T and
+B(x)=a P_l+H(I-P_l) when sum_i x_i has parity l. Local positivity, spectra,
+g2/q1/Lambda2, gradient-stack I_(D^2) tensor B and original cap are unchanged.
+For z=(z_k)_(k=1..D), Q(z)=sum_(x,i,k) (partial_i z_k(x))^T B(x)partial_i z_k(x).
+Each original channel has its own partition of the original nonwrapping chart
+into integer rectangles, shared across spatial k. Canonical row on S is
+C_(alpha,k,S)z=V^(-1/2)|S|^(-1/2)sum_(x in S) z_(k,alpha)(x).
+R is actual counting block averaging, ||Cz||^2=||Rz||^2/V.
+
+Claim: there exist such partitions restoring c ON ALL FIELDS with full counts
+ D3: Nout <= 2^20 kappa^(-1) n(1+ln n),
+ D4: Nout <= 2^26 kappa^(-1) n^2.
+Their actual rank on the unchanged coexact U0^2, U0=im(d1*) with actual
+forward curl/adjoint, is at most these full counts. On mesh branches one
+sufficient normalized penalty is K=M+2M^2/(3c), M=4DH+c; singleton branches
+use K=c. Thus Q/V+K||Cz||^2>=c||z||^2/V. Counting-energy coefficient is VK
+on the SAME C rows, not K. No optimality/uniform conditioning claim.
+
+ACCEPTED INPUTS, NOT NEW ASSUMED REGIONAL GAPS
+Source247 at4d120ad03bd6dc9a5828e780bb2873eaf144a9c5, rawSHA
+e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03;
+source248 at457d356199e5d1fe99ebc24eb8964a0793cf9738, rawSHA
+93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675.
+Their fully derived finite counting Neumann point estimates: for balanced
+product paths with sides ell_i in[L/2,L], any zero anchor b gives
+ ||f||^2 <=13L^2(1+ln L) E_Q(f) (two source dimensions),
+ ||f||^2 <=113L^3 E_Q(f) (three source dimensions).
+All-singleton cell is separately zero. These are proved inputs; source249's
+new assertion is their transfer to TWO nonorthogonal strong functionals while
+all OBSERVED rows remain original-channel rectangle means. No new source
+gap or transformation-compatibility hypothesis is supplied.
+
+1. DERIVED STRONG-NORMAL GRAM -- PROOF COORDINATES ONLY
+Choose constant unit s_l perpendicular to v_l and set w_(l,k)(x)=s_l dot z_k(x).
+S=s0s0^T+s1s1^T has trace2 and determinant1-(s0 dot s1)^2, hence eigenvalues
+1+/-|s0 dot s1|=1+/-|cos theta|. Therefore at every site/component,
+ |w_(0,k)|^2+|w_(1,k)|^2 >= kappa |z_k|^2.
+Summing gives the corresponding full counting inequality. This change is
+ONLY analytic: no s_l dot z observation is introduced. At parity l,
+xi^T B(x)xi=a|v_l dot xi|^2+H|s_l dot xi|^2, so dropping positive weak terms
+ gives Q(z)>=H sum_(l,k) sum_(x parity l,i)|partial_i w_(l,k)(x)|^2.
+The two displayed strong contributions are actual distinct source-parity
+pieces of Q; they are not two uses of one energy budget.
+
+2. ACTUAL STRONG GRAPHS FOR EACH FUNCTIONAL
+Put p=D-1. For a fixed l,k and each sum residue s with parity l, use
+ x_s(y)=(y_1,...,y_p,s-sum_i y_i) mod n,
+ u_s(y)=w_(l,k)(x_s(y)), t_s(y)=w_(l,k)(x_s(y)+e_D).
+The source layer s and target s+1 each have n^p vertices. Their n/2 pairs
+cover X disjointly for this l, including wrap pair{n-1,0} when l=1.
+Actual outgoing strong labels are the rung u_s(y)--t_s(y) and every cross
+u_s(y)--t_s(y+e_i), i=1..p: x_s(y+e_i)+e_D=x_s(y)+e_i.
+Write E_s as the sum of squared differences of these p+1 labels. Summing
+E_s over s gives EXACTLY the l-source strong energy of this scalar w,
+not an endpoint-weighted or unlabelled surrogate. Rung plus cross gives
+ E_p(u_s)<=2p E_s,
+by inserting t_s(y+e_i) and summing: each rung is used p times. This holds
+at n2 with original label multiplicities. Pair norms sum exactly to||w||^2.
+
+3. A COMMON ORIGINAL POINT SET OBSERVED IN BOTH CHANNELS
+For any1<=m<=n, use m balanced quantile intervals in each source y coordinate,
+endpoints floor(jn/m). Product cells have maxside L=ceil(n/m) and each side
+at least L/2 (when L1 allsingletons). Anchor their low corner b in each source
+layer s, at ORIGINAL point x_s(b), for BOTH l=0 and l=1 families.
+Within each l family there are(n/2)m^p distinct points by layer/cell bijections;
+the two families have different original site parity and are disjoint. Thus
+their union A has EXACTLY n m^p physical points. Give BOTH ORIGINAL channels
+partitions isolating EVERY point in A; the same partitions serve every k.
+An original block-kernel field is pointwise zero at A in both channels, so
+ALL w_(l,k) anchor values vanish. No mixed measured row, rotated rectangle,
+diagonal-cell average or restriction of z to an auxiliary domain is used.
+
+Use the accepted box estimate on each source cell; its internal edges form
+a subset of the labelled E_p energy, so discarded cross/wrap terms are positive.
+For D3, ||u_s||^2<=52 X2 E_s, X2=L^2(1+ln L).
+For D4, ||u_s||^2<=678 X3 E_s, X3=L^3.
+Rungs give ||t_s||^2<=2||u_s||^2+2E_s. Since Xp>=1, the WHOLE pair obeys
+ D3: ||u_s||^2+||t_s||^2<=158 X2 E_s;
+ D4: ||u_s||^2+||t_s||^2<=2036 X3 E_s.
+Singleton source cells cause no difficulty: anchored u_s is zero and rungs
+still pay all target mass. Sum over disjoint pairs, l,k, and use section1:
+ Q(z)>= H/(C_p Xp) sum_(l,k)||w_(l,k)||^2
+       >= kappa H/(C_p Xp)||z||^2
+for original fields zero on A; C2=158,C3=2036. This DERIVES the needed
+original-field kernel margin from the actual form and an explicit finite mesh.
+
+4. EXPLICIT MESHES AND EVERY SMALL-SIZE FALLBACK
+D3: T=1+ln n; let m be least positive integer with m^2>=4096 T/kappa.
+If m<=n, L<=2n/m and L<=n, hence
+ X2<=4n^2 T/m^2<=kappa n^2/1024.
+Thus original anchor-kernel gap >=(1024/158)c>4c.
+Since rho=sqrt(4096T/kappa)>=1, m=ceil rho<=2rho and
+m^2<=16384T/kappa. If m>n, minimality gives
+n^2<4096T/kappa, so all-channel singletons cost
+6n^3<24576 kappa^(-1)nT and K=c. Equality m=n belongs to the mesh branch;
+singleton SOURCE cells are already handled above. No divisibility assumption.
+
+D4: let m be least positive integer with m^3>=65536 n/kappa.
+If m<=n, L<=2n/m, so X3<=8n^3/m^3<=kappa n^2/8192.
+The anchor-kernel gap is >=(8192/2036)c>4c, since8144<8192.
+With rho=(65536n/kappa)^(1/3)>=1, m<=2rho gives
+m^3<=524288n/kappa. If m>n, minimality gives
+n^3<65536n/kappa, hence n^2<65536/kappa. All-channel singletons cost
+8n^4<524288 kappa^(-1)n^2 and K=c. Equality m=n is the valid singleton-cell
+mesh. This formulation handles all even n without an unproved cutoff.
+
+5. ACTUAL ORIGINAL RECTANGLE PARTITIONS AND COMPLETE ROW COUNT
+An arbitrary A-point set in the original Dchart can be isolated by at most
+1+2D|A| integer rectangles: startwholechart; cut before/after the next point
+successively in each coordinate only inside its current rectangle, leaving
+at most2D side rectangles plus that singleton. Netincrease<=2D; dropempty,
+leaveearlier singletonsunchanged. No globalgrid propagation of cuts.
+Apply separately to BOTH original channels, both using the entire union A.
+The full count, including every spatial component and initial row, is
+ Nout<=D*2*(1+2D|A|)=2D+4D^2 n m^p.
+D3mesh: <=6+36*16384 kappa^(-1)nT
+        =6+589824 kappa^(-1)nT<=2^20 kappa^(-1)nT.
+D4mesh: <=8+64*524288 kappa^(-1)n^2
+        =8+2^25 kappa^(-1)n^2<=2^26 kappa^(-1)n^2.
+Use kappa<=1,n>=2,T>=1 for the final constants. Each fallback above costs
+less than its stated bound too. Shared-anchor duplication is paid explicitly;
+the orthogonal predecessor's half-size per-channel anchor set is NOT reused
+with its old count. We only need rank<=fullcount, not row independence.
+
+6. ALL-FIELD COMPLETION AND CONSTANTS
+For either mesh, actual block-kernel Rz=0 implies z|A=0, so Q>=4c||z||^2.
+Let L_B represent Q and F=L_B-cI. Actual shifts give Q<=4DH||z||^2, hence
+||F||<=M=4DH+c. Write z=u+v with u=(I-R)z,v=Rz. Then
+<u,Fu>>=3c||u||^2, <v,Fv>>=-M||v||^2, and
+2|<u,Fv>|<= (3c/2)||u||^2+2M^2/(3c)||v||^2.
+Adding K||Rz||^2 with K=M+2M^2/(3c) yields Q+K||Rz||^2>=c||z||^2.
+Divide by V for the displayed canonical normalization. Global constants
+have Q0 and Rz=z, so K>=c pays them; they are not dropped. In the fallback
+R=I and K=c directly. Only then restrict the all-field theorem to actual U0^2;
+R need not preserve that coexact space. This proves the analytical CLAIM.
+
+LIMITS / FALSIFIER / ABANDONMENT
+This derives removal of ORTHOGONALITY in the earlier point upper bounds for
+each FIXED positive angle, paying explicit kappa^(-1) row constants. Spatial
+period-two two-line structure, fixedbasis, positive a/H and finite penalty
+remain. At theta0, kappa0 and normalGramlosesrank; the proof does not apply.
+One may read the displayed finite bounds for a varying positive angle, but
+no subvolume or angle-uniform asymptotic order then follows without growth
+control; do not claim an n-dependent-angle solution. No sharp theta dependence,
+optimal rank, necessarylog, size-uniform penalty, practicalconditioning,
+implementedsolver, priority, formalverification, continuum or physicalgap.
+Original alphaDcap and D^2weak/D^2strong stackcounts remain unchanged.
+Adverse case: any reuse of only one family in only its old channel would fail
+to force both nonorthogonal w_l anchors; this candidate explicitly observes
+both ORIGINAL channels on the UNION and pays doubled row factor.
+Falsifier: source-parity graph not equal to the displayedlabelledgraph,
+normalGram not supplying kappa on originalfields, sharedanchorpartition not
+originalcanonical, hidden duplicatedenergy/count or unhandledsmalln. A source
+audit may reject; none has occurred. Afterthree bounded units without meaningful
+advance, preserve all failures and change mechanism or identify preciseblocker.
+No novelty assertion: Gram conditioning is elementary and prior Green/capacity/
+coarse-space literature remains to compare. Separate raw source audit needed.
