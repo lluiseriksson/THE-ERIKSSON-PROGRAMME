@@ -1,0 +1,162 @@
+251A -- ANALYTICAL CANDIDATE: ambient canonical count lower for checkerboards
+11 November2026. Parent fabrication; no source audit, execution or grade yet.
+Research on active question251. It does NOT settle the D3 logarithmic question
+on the actual coexact domain. Not inserted into frozen manuscript250B and not
+a separate small paper. All assertions below keep their ALL-FIELD scope.
+
+THEOREM AND SCOPE
+Let D>=3, even n>=2, c>0, X=(Z/nZ)^D,V=n^D, with g=2 original channels.
+Use real fields z_k(x) in R2, k=1..D, counting norm, actual forward labels
+partial_i z(x)=z(x+e_i)-z(x), source parity p(x)=sum_i x_i mod2, and
+ P(x)=e1e1^T at even sources, e2e2^T at odd sources,
+ B(x)=aP(x)+H(I-P(x)), a=c/(16D), H=cn^2,
+ Q(z)=sum_(x,i,k) (partial_i z_k(x))^T B(x)partial_i z_k(x).
+For each original channel alpha, let P_alpha partition the original chart
+{0,...,n-1}^D into nonempty nonwrapping integer rectangles, shared across k.
+Canonical rows are C_(alpha,k,S)z=V^(-1/2)|S|^(-1/2)sum_(x in S)z_(k,alpha)(x).
+Nout=D(|P1|+|P2|). Let R be the counting orthogonal block-averaging projection;
+kerC=kerR and ||Cz||^2=||Rz||^2/V. Its ambient rank is Nout: disjoint cells
+and distinct alpha,k make all nonzero normalized rows mutually orthogonal.
+
+If ANY finite quadratic coefficient K yields
+ Q(z)/V+K||Cz||^2>=c||z||^2/V FOR ALL REAL AMBIENT FIELDS z,
+then
+ Nout >= 3D V/[2^(2D+4)(1+8D n^2)]
+      >= b_D n^(D-2), b_D=3D/[2^(2D+4)(1+8D)].
+The proof only uses the inequality on kerC. Thus the same necessary full-count
+bound holds for any finite penalty Phi(Cz) with Phi(0)=0 in place of K||Cz||^2.
+No size-uniform penalty assumption is supplied or needed.
+
+CONSEQUENCES WITH EXACTLY THIS SCOPE
+D4: b4=1/11264. Together with the proved all-field canonical upper
+Nout<=2^25 n^2 in source247 (4d120ad03bd6dc9a5828e780bb2873eaf144a9c5,
+rawSHA e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03),
+the minimum ambient canonical output count/restoring ambient rank has order n^2.
+Equivalently that all-field D4 point upper has optimal order within this class.
+No sharp constant or practical conditioning conclusion follows.
+D3: b3=9/25600 gives a necessary all-field count Omega(n). The existing
+all-field O(n(1+lnn)) upper in248 leaves the logarithmic gap OPEN. More
+importantly, the present argument does NOT supply this lower on actual U0^2
+alone. It therefore cannot resolve active question251, whose domain is U0^2.
+
+1. A PAIRED OSCILLATORY STRONG-NULL FIELD, EVERY EVEN n>=4
+Put m=n/2, k=floor(m/2), and phi=2pi k/n. For n>=4, k>=1 and
+ phi in[pi/3,pi/2].
+Indeed m>=2, k/m is1/2 for evenm or(m-1)/(2m)>=1/3 for oddm>=3.
+Define a real function on sum residues t in Z_n by
+ h(2j)=h(2j+1)=cos(2phi j), j in Z_m.
+It is well-defined at wraps since2phi m=2pi k. It is constant on every
+source-even adjacent sum-layer pair, not a slowly varying surrogate profile.
+Let v in R^D have norm1; set z_(r,2)(x)=v_r h(sum_i x_i mod n) and
+z_(r,1)(x)=0. At every EVEN source, channel2 is strong, and every outgoing
+forward step changes t=2j to2j+1; that h difference is zero. At an ODD
+source only the a-weighted channel2 term is nonzero, with difference
+cos(2phi(j+1))-cos(2phi j). Coefficients are evaluated at the actual source.
+
+Each sum residue has exactly n^(D-1) original vertices, hence
+ ||z||^2=2 n^(D-1) sum_(j=0..m-1) cos^2(2phi j) >= V/2.
+For the last inequality use cos^2=(1+cos(4phi j))/2. The finite character
+sum is0 unless m divides2k, when every cos^2 is1. Thus the sum is m/2
+or m, and never below m/2. This includes m2,n4. There is no vanished
+normalization or assertion about a nonexistent nonconstant mode at n2.
+
+The labelled cyclic difference on m sites has the identity
+ sum_j (h_(j+1)-h_j)^2=4sin^2(phi) sum_j h_j^2,
+for h_j=cos(2phi j). One proof is to expand the square and use the finite
+character shift, or apply 2h_j-h_(j-1)-h_(j+1)=4sin^2(phi)h_j and sum
+against h_j; the wrap is periodic. At m2 the two forward labels are retained
+and the identity is still exact. Therefore the actual original form obeys
+ Q(z)=aD n^(D-1)*4sin^2(phi) sum_j h_j^2
+     =2aD sin^2(phi)||z||^2 <=(c/8)||z||^2.
+With w=z/||z||, we have norm1, Q(w)<=c/8, for an explicitly constructed
+real field in the ACTUAL checkerboard family, with H=cn^2 unchanged.
+
+2. RECTANGLE SUMS: A UNIFORM FINITE CANCELLATION BOUND
+Set A=(1+exp(-i phi))/2 and B=(1-exp(-i phi))/2. The complex paired carrier
+ f(t)=A exp(i phi t)+B exp(i(phi+pi)t)
+satisfies f(2j)=f(2j+1)=exp(i2phi j); h(t)=Re f(t). Both frequencies are
+well-defined on Z_n since n is even and phi n=2pi k. Also
+ |A|^2+|B|^2=1, so |A|+|B|<=sqrt2.
+For any integer interval I, the elementary finite geometric identity gives
+ |sum_(r in I) exp(i omega r)| <= 2/|1-exp(i omega)|.
+For omega=phi or phi+pi the denominator is at least1, since phi lies in
+[pi/3,pi/2]. Thus each interval sum is at most2. For ANY original chart
+rectangle S=product I_i, multiplicativity of the character gives
+ |sum_(x in S) h(sum_i x_i)|
+ <= (|A|+|B|)2^D <=2^(D+1/2),
+and consequently |sum_S h|^2<=2^(2D+1). This handles short, long, singleton,
+unequal, boundary-touching and root cells. It requires neither divisibility
+by4 nor a tensor-grid restriction on the complete partition. The characters
+are used for an analytic bound, not as permitted observed mixed/Fourier rows.
+
+3. SMALL OBSERVATION-PROJECTION MASS FOR THAT SAME FIELD
+Let R2=|P2|. Only channel2 of w is nonzero. Using the shared-k partition,
+sum_r v_r^2=1, the preceding bound and ||z||^2>=V/2,
+ t:=||Rw||^2
+ = (1/||z||^2) sum_(S in P2) |sum_S h|^2/|S|
+ <= (2^(2D+2)/V) sum_(S in P2) 1/|S|
+ <= (2^(2D+2)/V) R2
+ <= 2^(2D+2) Nout/(D V).
+All cells and spatial factors are counted; every cell is nonempty so
+1/|S|<=1. The other original channel need not share this channel's partition.
+R is the actual ambient orthogonal block projection; no output-dimension
+substitution for an actual COEXACT rank is made.
+
+4. THE ACTUAL KERNEL FIELD AND THE AMBIENT LOWER
+Let u=(I-R)w, so Cu=0 and ||u||^2=1-t. The target inequality ON ALL FIELDS
+at this actual u requires Q(u)>=c(1-t); Phi(0)=0 gives the same conclusion.
+The actual upper B(x)<=HI and isometric forward shifts imply
+ Q(y)<=4DH||y||^2 for every ambient y.
+For example |y(x+e_i)-y(x)|^2<=2|y(x+e_i)|^2+2|y(x)|^2 and sum over
+all actual forward labels yields exactly4D. Positivity/PSD polarization gives
+ Q(w-Rw)<=2Q(w)+2Q(Rw)<=c/4+8D c n^2 t.
+Combining the two inequalities yields
+ t >=3/[4(1+8D n^2)].
+Combine this with section3 to obtain
+ Nout >=3D V/[2^(2D+4)(1+8D n^2)].
+Since1+8D n^2<=(1+8D)n^2, the stated n^(D-2) order follows.
+Nothing about the size or construction of a finite penalty entered this proof.
+
+5. THE EXACT n2 FALLBACK
+For n2 no carrier from section1 is used. Every nonempty partition in each
+of the two original channels has at least one cell, so Nout>=2D. The claimed
+first lower bound at n2 divided by2D is
+ 3/[2^(D+5)(1+32D)]<1.
+Thus this endpoint is valid directly. The second weaker order bound follows
+from the same denominator inequality. All even n>=2 are covered.
+
+6. DOMAIN BOUNDARY AND WHY THIS DOES NOT SOLVE COEXACT251
+The proof uses u=(I-R)w. A channelwise rectangular projection does NOT in
+general preserve U0=im(d1*) for the original forward curl/adjoint. Even if
+one chooses v with sum_r v_r=0 so this particular oscillatory w belongs to
+U0^2, that does not place (I-R)w there. The crucial target inequality at u
+is therefore licensed by ALL-FIELD restoration only. Supplying an unproved
+U0-preservation hypothesis, silently replacing the true domain or claiming
+the fullcount equals rank(C|U0^2) would invalidate the asserted extension.
+No such coexact lower is claimed. The new matching D4 result concerns ambient
+restoring count/rank; the earlier coexact upper remains just an upper.
+The D3 canonical coexact O(n) versus logarithmic question stays ACTIVE and OPEN.
+This source is a substantive all-field comparison and a precise rejected route
+to an unrestricted coexact lower, not a new physical producer or mass gap.
+
+7. POSITIONING, FALSIFIERS AND CONSERVATION
+The method is elementary paired-cycle Fourier cancellation plus a kernel
+projection/energy estimate. No historical originality, efficient implementation,
+sharp constant, uniform penalty, source-weight relaxation, general angle lower,
+formal verification or new importance assessment is established. The retained
+limited primary-source comparison250 discusses classical Green/coarse-space
+mechanisms but is not a priority comparison for this new ambient lower.
+Before any publication, a specific primary-source implication/priority comparison
+for this result remains necessary. Source247 supplies the existing D4 all-field
+upper; it is a proved input with a retained analytical audit, not an assumed gap.
+
+Falsifiers: actual forward source parity/cycle cancellation is wrong; a legal
+rectangle violates the displayed carrier sum bound; normalization loses a factor;
+the constructed u is not in the claimed ambient space; a lower is applied to
+U0^2 without proving membership; or the n2 endpoint uses a nonexistent mode.
+This exact text is a candidate pending fresh separate-role analytical audit.
+No runtime, Lean, oracle, local compilation or scientific numerical check ran.
+No manuscript250B PDF, old grade, native receipt or publication is modified.
+Preserve failures and count this as one bounded251 route unit; if three units
+give no substantive advance on the actual question, record the obstruction and
+change mechanism rather than repeat this projection argument as coexact proof.
