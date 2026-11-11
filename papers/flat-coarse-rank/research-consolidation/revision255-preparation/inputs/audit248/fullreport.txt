@@ -1,0 +1,120 @@
+EXACT-SOURCE ANALYTIC AUDIT248
+Issued 2026-11-11. Verdict: ACCEPT THE STATED D=3 CRITICAL POINT-ANCHOR UPPER BOUND WITH ITS SCOPE.
+No blocking mathematical defect or counterexample was found. The finite counting cosine basis, logarithmic point trace, actual all-direction paired graph, integer mesh/fallback, original-rectangle isolation and finite all-field completion are correct. They give full output count at most2^19 n(1+ln n), hence the same actual coexact rank upper, for the EXACT D3 orthogonal checkerboard. This is not a matching lower, logarithmic necessity, all-angle/general-variable theorem, bounded-penalty result, refutation of constant-P244, grade, formal certificate or priority judgment.
+
+1. Exact source, capture and critical prior reading
+Repository:C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108.
+Frozen commit:457d356199e5d1fe99ebc24eb8964a0793cf9738.
+Path:papers/flat-coarse-rank/research/2026-11-11_critical-point-anchors248.txt.
+Raw command:git -C "C:\Trabajo\the-eriksson-programme\perron-spec-210-20261108" show 457d356199e5d1fe99ebc24eb8964a0793cf9738:papers/flat-coarse-rank/research/2026-11-11_critical-point-anchors248.txt.
+Fresh method:process StandardOutput.BaseStream directly to a byte buffer, then WriteAllBytes. No text decoding, newline normalization or BOM insertion. Git exit0. Source:17708 bytes,294 LF bytes,0 CR bytes.
+Exact Git blob/LF SHA256, no normalization:93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675.
+The COMPLETE candidate was read adversarially. D evidencia-248/candidate248.txt was compared byte by byte with this capture and was identical.
+Critical priors were freshly recaptured from actual commits, with their expected raw hashes checked:245 at4d7540064d4825dd6b06493537ec657538eb8ee8;247 at4d120ad03bd6dc9a5828e780bb2873eaf144a9c5;original226C rectangular_matrix.tex at2d3237501569f6afac8a44d524a5d6db59f63c39. The full245 and247 sources were reread; the226C original constants and capped functional were reread directly in its actual Git bytes. These fresh captures replaced byte-identical reused copies inside this NEW audit packet only.
+Eleven other original raw Git subjects were reused by verified direct-byte copy from evidencia-247/source-audit/capture. The packet therefore has fifteen raw scientific subjects:248,247,246,245,244,243,242,241B,239,240B,238,231B,237,and original226C matrix-proof.tex and rectangular_matrix.tex. Four subjects have fresh Git captures in this audit; eleven are hash-verified reuse. capture-manifest.json records every commit/path/command, exact representation/bytes/SHA256, origin and CR/LF count. Both226C raw blobs retain one original CR byte each; no normalized-LF hash is substituted.
+No prior grade or model verdict is inherited as mathematical evidence. Prior sources, failed candidates and reports remain unchanged. The new proof requires no imported point-capacity, continuum or non-elementary theorem; its finite identities are checked below.
+
+2. Exact D3 form, domain and canonical observations
+n>=2 is even,c>0,V=n^3,g=2,q=1,Lambda=2,h=6,a=c/48,H=cn^2. The weak projector is internal e_1 at even parity and internal e_2 at odd parity. Even period makes parity well-defined under all chart wraps. Each positive B(x)=HI-(H-a)P(x) has eigenvalues a,H, with P_aa<=1=Lambda q/g in the unchanged observed basis.
+Q_A is precisely sum_(x,k,i)(partial_i z_k(x))^T B(x)partial_i z_k(x), for three derivative directions, three spatial components and two original internal channels. Weights are at the actual positive forward SOURCE. The gradient stack is I_9 tensor B(x), not a substituted scalar/curl form. Internal off-diagonal entries happen to vanish in this exact orthogonal family, so scalar component strong energies may be separated legitimately.
+U is the stated direct sum of two copies of im(d_1^*) for actual forward curl(d_1v)_(ij)=partial_i v_j-partial_j v_i and counting adjoint. The proof is first on ALL fields; restriction does not require an observation projection preserving U or an artificial componentwise splitting of that coexact domain.
+Each original channel receives a partition into nonempty original integer rectangles, shared across k. Rows remain V^(-1/2)|S|^(-1/2)sum_S z_(k,alpha). The full count is3(|P_1|+|P_2|), distinct from actual rank after restriction. No internal mixing, row rescaling, diagonal-layer average or tensor-grid restriction is introduced.
+
+3. Finite path normalization, endpoints and orthogonality
+For an ell-site counting path, its matrix has endpoint degree1 and interior degree2 with adjacent entries-1 when ell>=2. For ell=1 it is the zero matrix. The constant eigenvector is1/sqrt(ell). For1<=j<ell the eigenvector is sqrt(2/ell)cos(pi j(t+1/2)/ell) with eigenvalue4sin^2(pi j/(2ell)). Interior differences give2(1-cos theta), while virtual endpoint values f(-1)=f(0),f(ell)=f(ell-1) hold at theta=pi j/ell and give the correct endpoint degree1.
+The finite identity sum_(t=0)^(ell-1)cos(pi r(t+1/2)/ell)=sin(pi r)/(2sin(pi r/(2ell)))=0 for integers1<=r<2ell is correct: its denominator is nonzero in that range. At r=0 the sum isell. Product-to-sum handles j-k (using cosine's evenness if negative) and j+k; the largest needed sum is2ell-2, so no forbidden denominator at2ell appears. It gives orthogonality and squared normell/2 for every nonconstant cosine, and orthogonality to the constant. Thus every normalization asserted in the source follows from finite sums.
+Every squared point value is<=2/ell, with the actual constant1/ell. At ell=1 only that constant exists. This handles the singleton exception explicitly instead of pretending an ell=1 endpoint has degree1 or a nonzero gap.
+
+4. Two-dimensional spectrum and finite harmonic Green bound
+For ell_i in[L/2,L],N=ell_1ell_2, tensor products are counting-orthonormal. At ANY vertex b,|phi_k(b)|^2<=4/N. Eigenvalues add. Concavity of sine yields sin t>=2t/pi for0<=t<=pi/2, hence for nonzero nonnegative integer index k,
+ lambda_k>=4sum_i k_i^2/ell_i^2>=4|k|^2/L^2.
+Singleton factors merely force that index to0. If N=1 an anchored field is identically0, so the lemma is immediate. If N>1 there is a positive gap at least4/L^2; this case necessarily has L>=2.
+For r=max(k_1,k_2)>=1 there are at most(r+1)^2-r^2=2r+1<=3r indices. Also |k|^2>=r^2 and r<=L-1. Therefore
+ sum_(k!=0)1/|k|^2<=3sum_(r=1)^(L-1)1/r<=3(1+ln L).
+The harmonic inequality follows directly by integrating1/t for r>=2; using ln L rather than ln(L-1) is harmless. These are NONNEGATIVE cosine indices, so no missing signed-frequency multiplicity is required. The actual heterogeneous index set may only reduce the shell count.
+It follows that
+ G_Q(b,b)=sum_(k!=0)|phi_k(b)|^2/lambda_k
+  <=(L^2/N)3(1+ln L)<=12(1+ln L),
+because N>=L^2/4. This is the finite counting point inverse, not a probability-normalized or continuum Green function. Aspect control is explicitly required here and derived for the actual mesh later.
+
+5. Constant mode and the13L^2(1+ln L) point estimate
+In the same finite counting basis, E_Q(f)=sum_(k!=0)lambda_k|a_k|^2. Cauchy--Schwarz at b gives |f(b)-mean f|^2<=G_Q(b,b)E_Q(f). With f(b)=0,
+ N|mean f|^2<=12N(1+ln L)E_Q<=12L^2(1+ln L)E_Q.
+The positive gap separately gives ||f-mean f||_Q^2<=L^2E_Q/4. These parts are orthogonal. Since1+ln L>=1, their sum is at most(12+1/4)L^2(1+ln L)E_Q<=13L^2(1+ln L)E_Q.
+There is no omitted N, no substitution of an average norm for a counting norm, and no attempt to control the constant mode from variance alone. The N=1/L=1 cases were already handled by f(b)=0; length1 factors at larger L remain covered. The point can be a corner or interior vertex because the cosine point bound is uniform. No universal logarithmic NECESSITY or continuum point-capacity theorem is inferred from this upper estimate.
+
+6. Actual paired layers and ALL three strong forward labels
+Fix an original scalar spatial/internal component and its strong-source parity A(odd for channel1,even for channel2). For each s mod n of that parity, x_s(y)=(y_1,y_2,s-y_1-y_2) mod n is a bijection of(Z/nZ)^2 onto coordinate-sum layer s. Its e_3 shift is a bijection onto layer s+1. The n/2 pairs{s,s+1} are disjoint and cover every sum residue, including pair{n-1,0} in the odd case. Even n makes residue parity equal actual representative parity across wraps. Thus sum_s(||u_s||^2+||v_s||^2) equals the ORIGINAL scalar norm exactly, with no counting Jacobian.
+The actual +e_3 strong edge is u_s(y)--v_s(y). The identity x_s(y+e_i)+e_3=x_s(y)+e_i for i=1,2 shows the other two are u_s(y)--v_s(y+e_i). These are ALL three strong outgoing labels and none leaves the pair. Rungs plus cross edges connect source vertices by each coordinate translation, and every target has a rung, so the paired graph is genuinely connected rather than assumed so.
+At n=2 the three heads are distinct; induced source-torus edges can repeat an undirected source-neighbor pair but their original positive forward labels remain in every sum. The exact unweighted strong energy is rung sum plus both cross sums, as in(248.7). Weak-source terms are positive and discarded only as nonnegative. Summing H E_s over paired layers, both channels and all three spatial components is an actual lower part of Q_A, not an endpoint-weighted surrogate.
+
+7. Rung factor4 and target-layer factor158
+Insert v_s(y+e_i) between u_s(y+e_i) and u_s(y), square with factor2 and sum. Translation is a bijection even at period2, so
+ E_2(u_s)<=4sum_y|u_s-v_s|^2
+                 +2sum_(y,i)|u_s(y)-v_s(y+e_i)|^2<=4E_s.
+The rung coefficient4 is exactly2 directions times2. This is the D3 comparison, not the old D4 factor6 imported incorrectly.
+Once point anchors are present in every source-coordinate cell, the point lemma and internal-edge subset bound give ||u_s||^2<=13X_L E_2(u_s)<=52X_L E_s, where X_L=L^2(1+ln L)>=1. Rungs give ||v_s||^2<=2||u_s||^2+2sum|v_s-u_s|^2. Consequently
+ ||u_s||^2+||v_s||^2<=156X_L E_s+2E_s<=158X_L E_s.
+The factors13*4=52 and3*52=156 are correct; BOTH original layers are controlled. Neither unanchored target mass nor periodic label multiplicity disappears from this calculation.
+
+8. Least-integer logarithmic mesh and all heterogeneous cells
+Let T_n=1+ln n>1 and m be the least positive integer with m^2>=4096T_n. This is m=ceil(rho),rho=sqrt(4096T_n)>=1. The construction explicitly tests m>n before using a mesh.
+If m<=n, L=ceil(n/m) satisfies1<=L<=n and L<=2n/m. The m intervals I_j={floor(jn/m),...,floor((j+1)n/m)-1} are nonempty disjoint integer paths covering the source chart. Their lengths are floor(n/m) or ceil(n/m). If L=1 all are singleton. If L>=2, a shorter length is L-1>=L/2. Thus EVERY real product cell satisfies the exact balance assumptions used by the Green estimate, with the same L. No square root, divisibility or exact integer square is assumed.
+Choose the lowest corner of each cell as a SOURCE anchor, at the actual original site x_s(b). Use the SAME sites for all three spatial components within that original internal channel. Distinct corners give distinct y, the map is a bijection, and source layers are disjoint. Internal cell edges form a subset of labelled E_2 edges, counted once; cell boundaries and wraps are only discarded as positive terms.
+Log monotonicity and L<=n yield
+ X_L=L^2(1+ln L)<=(4n^2/m^2)T_n<=n^2/1024.
+No ln(n/m) approximation or missing ceiling factor is involved. Then the exact norm reproduction over layers/channels/components and H=cn^2 give
+ Q_A(z)>=H/(158X_L)||z||^2
+       >=(1024/158)c||z||^2>=4c||z||^2
+on fields zero at their corresponding actual anchors. The arithmetic is correct:4*158=632<1024 and1024/158=4096/632. All inequalities are non-strict, valid at zero. At L=1 source cells are singleton and source values are0; the rungs still control target values, so no nonexistent positive singleton gap is used.
+
+9. Original rectangle construction and complete mesh-branch count
+Each channel has(n/2)m^2 DISTINCT original anchors, for total channel-labelled A=n m^2. This does not yet multiply by three spatial components. The source-coordinate cells are proof tools only; their averages are NOT observed.
+Starting with one original chart rectangle per channel, isolate a new point by cutting before/after its first coordinate, then within the middle slice before/after its second, then its third. At most six side rectangles plus the singleton replace one box, so net increase<=6. Disjoint coverage follows from the first coordinate where a point differs from the anchor. All pieces are nonempty original axis-aligned integer products after empty pieces are discarded. Earlier singleton anchors are untouched, distinct later points may already be singleton at zero new cost, and original chart representatives handle modular anchor coordinates.
+Thus each channel has at most1+6A_alpha cells and
+ N_out=3(|P_1|+|P_2|)<=6+18A=6+18n m^2.
+Both channels, all three components and the initial six rows are paid. The canonical class does not require a global Cartesian grid propagating all cuts; extra nonpoint means can only narrow the kernel. There is no logarithmic point-isolation overhead, internal-channel mixing, diagonal-slab average or size oracle.
+Since rho>=1, minimality gives m=ceil rho<=rho+1<=2rho, so m^2<=16384T_n. Therefore
+ N_out<=6+294912nT_n<524288nT_n=2^19nT_n.
+Here18*16384=294912; nT_n>=1 allows paying the additive6, and294912+6<524288. The bound may be loose at small sizes; actual disjoint-box count never exceeds the full singleton count. No independence of restricted coexact rows is asserted.
+
+10. Fallback covers every ineligible n, including the boundary
+If m>n, minimality gives(m-1)^2<4096T_n. Integer n<m means n<=m-1, so n^2<4096T_n. The all-channel singleton map therefore has
+ N_out=6n^3<24576nT_n<2^19nT_n.
+It has R=I and normalized K_n=c by positivity. This covers EVERY remaining even n, including n=2 and the exact integer boundary n=m-1, without a guessed numeric cutoff. If m=n, the mesh branch is permitted, all source cells are singleton, and its derived bound remains valid. Mixed singleton/length2 cells immediately beyond that boundary satisfy the proven aspect bound. No large-size condition is imposed in the fallback or assumed at an ineligible n.
+
+11. Original kernel, explicit finite completion and all constants
+Let R be the full counting orthogonal block projection of the actual channel partitions, separately over k. Then ||Cz||^2=||Rz||^2/V. Its kernel is pointwise zero on every required singleton anchor, so the mesh estimate gives Q_A(u)>=4c||u||^2 on ker R; additional means only narrow that kernel.
+Local positivity and B(x)<=HI imply0<=L_A<=12H I: there are three forward shifts, each difference has squared norm at most4, while spatial/internal components are already included in ||z||^2. The local stack multiplicity9 does not create an extra factor3 in this global operator bound. Let F=L_A-cI,M=12H+c,so||F||<=M.
+Decompose z=u+v,u=(I-R)z,v=Rz. Then<u,Fu>>=3c||u||^2,<v,Fv>>=-M||v||^2, and
+ 2|<u,Fv>|<=2M||u||||v||
+          <=(3c/2)||u||^2+(2M^2/(3c))||v||^2.
+The finite positive K_n=M+2M^2/(3c) therefore gives Q_A(z)+K_n||Rz||^2-c||z||^2>=(3c/2)||u||^2>=0. Divide by V and use the exact R/C identity to obtain(248.3) on ALL fields. No missing+c is required because the shifted matrix and M already include it. In the fallback K_n=c suffices.
+All constants are paid: Q_A=0 on them,Rz=z and K_n>=M>=c. There is no assumption that R preserves actual coexactness, no informal low-energy injection substitute, and no infinite-penalty limit. The same canonical C in counting convention has coefficient V K_n; no observation rescaling is permitted. The conservative mesh coefficient grows at most on the scale c n^4, and no size-uniform penalty or optimal conditioning is established.
+
+12. Actual restriction and critical-log meaning
+The successful full-field estimate restricts to the SAME actual U=U_0 direct-sum U_0. Thus rank(C|U)<=N_out<=2^19n(1+ln n). Full row count is an upper, not the actual rank or an independence assertion. Since(1+ln n)/n->0, this is o(n^2), improving the exact D3 plane upper6(n^2+1) in order. It is also o(V) with V=n^3.
+No matching lower, optimal rank/penalty or proof the logarithm is necessary follows. The finite Green argument explains the logarithm in THIS construction only; other partitions or observations are not excluded. The result is exact D3 ORTHOGONAL checkerboard, not an extension of246's all-fixed-angle count and not a general variable-projector theorem.
+Constant-P244 is not refuted. Nor is a worst-case lower over an enlarged class containing constant profiles, or a lower with a separate size-uniform penalty constraint. Prior245/246/247 proofs remain unchanged; this source supplies a distinct D3 point-anchor construction.
+
+13. Original cap checked at the primary source
+Fresh original226C bytes define alpha_D=(3/4)^D(D/2)(D/(D-2))^(D-1) and cap min(1,alpha_D c^(D/2)lambda^(-D/2)) for positive local eigenvalues. At D=3,
+ alpha_3=(27/64)(3/2)*9=729/128.
+There are NINE weak local gradient eigenvalues a=c/48 and NINE strong H=cn^2 at every site, since the full stack is I_9 tensor B(x). Weak cost is1, as alpha_3*48^(3/2)>1. Strong cost is exactly min(1,(729/128)n^(-3)); no nonpositive channels exist. Therefore
+ F_c(A)=9V[1+min(1,(729/128)n^(-3))], h=6.
+Every cap and multiplicity is retained;9V<=F_c(A)<=18V,so h+F_c(A)=Theta(V). The241A changed-alpha error is not reused. Improving observations changes no local spectrum, positivity, source-weight convention, upper coherence, original basis, canonical weights/channel separation or actual finite domain.
+
+14. Adversarial checks, priority and limits
+Checked on paper: finite cosine orthogonality/product-to-sum range; endpoint and ell=1 matrices; counting vs average normalization; arbitrary corner/vertex trace; N=1 and mixed singleton factors; nonnegative-index shell multiplicity and harmonic logarithm; heterogeneous quantile lengths; all three actual strong forward labels; paired-layer bijections, wraps, disjointness and connectivity; period2 counts; factor4 rung comparison; both norm layers and158 rounding; least-m ceiling bounds, m=n and m=n-1, every fallback; ln L<=ln n; actual source anchors and all row factors; net6 original rectangle isolation; additive initial6 rows; finite completion, constants and normalization; actual restriction; ORIGINAL alpha_3 and all cap counts. No blocking defect was found.
+Finite Neumann/point/Green, graph and rectangle-isolation methods are classical. Historical originality or implication by earlier literature remains unestablished; no exhaustive search was performed. No universal point-capacity obstruction, efficient solver, practical conditioning, implemented certificate, formal proof, physical mass gap or continuum theorem is established. No previous PDF/PR29/TermSource/frozen232B assessment is recertified or transferred. Earlier failures, notes and raw reports remain unchanged; proposed future grouping is not publication authorization.
+
+15. Operational and actual-model context
+Standing global storage instructions, D:\LEEME.md, active CLAUDE.md and Operational Governance Charter remain binding and were read in this persistent task. This is the separate AUDITOR role from fabrication, but the same persistent AI auditor as prior units. It is not independent, blind, human, or fresh-model/provider/account resampling. Parent framing and prior context were visible. No248 fabrication occurred here. Shared filesystem/account and inherited configuration remain shared. No inbound follow-up arrived during this audit.
+Actually exposed description:"Codex, an agent based on GPT-6". Exact deployed backend/model identifier, version and actual reasoning effort are unexposed and unknown. OpenAI/Codex is the exposed interface context. Authentication account, provider routing, subscription/quota and provider/account usage limits were not inspected and are unknown. No separate-provider identity or quota status is invented.
+Only paper reasoning, committed scientific/primary source reading, text authoring, read-only Git capture/inspection and byte/hash transport occurred. No mathematical executable, numerical/symbolic oracle, Lean/Lake, local build/test, rendering or scientific runtime allocation occurred. No Git mutation, source/branch/repository state, other chat, automation or publication was changed. No clone was created and no cleanup is pending. Writes were confined to the requested D evidencia-248/source-audit subtree. Earlier sources/reports were read-only; prior raw captures were copied rather than moved or changed.
+
+16. Artifacts and final disposition
+Destination:D:\Datos\the-eriksson-programme\autonomia\evidencia-248\source-audit.
+Complete report:fullreport.txt. Machine verdict:verdict.json. Factual context:context.json. Raw binding:capture-manifest.json. Scientific Git bytes:capture\*. Artifact hashes:hashes.json, excluding its own unavoidable self-reference; its external SHA256 is returned at handoff.
+Authored report/JSON files are UTF-8 without BOM, LF only, final LF. Raw captures retain exact Git bytes, including the two226C CR bytes recorded in the manifest.
+Final: ACCEPT248 at457d356199e5d1fe99ebc24eb8964a0793cf9738, rawSHA93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675, as the stated exact D3 orthogonal-checkerboard O(n(1+ln n)) all-field finite-penalty construction and actual coexact rank upper. No blocking defect found. No numerical grade, stars, PDF review, formal/execution certificate or historical originality judgment was requested or produced.

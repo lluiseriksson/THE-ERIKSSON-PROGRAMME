@@ -1,0 +1,42 @@
+{
+  "task": "Bounded analytical audit: mean-only small-angle254",
+  "source_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-254\\mean-only-small-angle254.txt",
+  "source_sha256": "6d69deaaa3bd2cef5a8bce31943311c513986c6d36b84fc4dcda03e8868898b6",
+  "source_bytes": 4918,
+  "source_representation": "Raw filesystem bytes; no normalization; not Git blob",
+  "source_still_matches_capture": true,
+  "files": [
+    {
+      "name": "note-exact.txt",
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-254\\mean-only-audit\\note-exact.txt",
+      "bytes": 4918,
+      "sha256": "6d69deaaa3bd2cef5a8bce31943311c513986c6d36b84fc4dcda03e8868898b6",
+      "CR_bytes": 0,
+      "LF_bytes": 87,
+      "UTF8_BOM": false,
+      "final_LF": true
+    },
+    {
+      "name": "fullreport.txt",
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-254\\mean-only-audit\\fullreport.txt",
+      "bytes": 11933,
+      "sha256": "e0ba92af173899e1575a29350ce88e47df26c49f5322f737efad694985513bdc",
+      "CR_bytes": 0,
+      "LF_bytes": 77,
+      "UTF8_BOM": false,
+      "final_LF": true
+    },
+    {
+      "name": "context.json",
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-254\\mean-only-audit\\context.json",
+      "bytes": 1774,
+      "sha256": "bb0f5cf66df647a59a39a1100e32310e7de4002a0360c20dc7216ffda37d664e",
+      "CR_bytes": 0,
+      "LF_bytes": 37,
+      "UTF8_BOM": false,
+      "final_LF": true
+    }
+  ],
+  "self_hash_excluded": "Manifest hash returned externally to avoid self-reference",
+  "new_numeric_grade": null
+}

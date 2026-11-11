@@ -1,0 +1,73 @@
+{
+  "files": [
+    {
+      "sha256_raw": "77260e26791a044eec458863fdb33f3b0c15b1f1f0184fffd16a84d96574f677",
+      "path": "capture-manifest.json",
+      "bytes": 3019
+    },
+    {
+      "sha256_raw": "129b87e7856f03b023871b47bdecc6acc2201aa530f6259c38e14f726689e07b",
+      "path": "capture.ps1",
+      "bytes": 2443
+    },
+    {
+      "sha256_raw": "b574515462b465a591946ff185574467bf23699decf9bca69ea1525866569458",
+      "path": "context.json",
+      "bytes": 1656
+    },
+    {
+      "sha256_raw": "fa81d98edecc740f2431ec82249bb49172e311732167f6b9fb24a15b7607f82b",
+      "path": "fullreport.txt",
+      "bytes": 13525
+    },
+    {
+      "sha256_raw": "b0406476639336792bf45f4753a6828b826511a82e99204362a00dfd9a83956d",
+      "path": "verdict.json",
+      "bytes": 1696
+    },
+    {
+      "sha256_raw": "6ef355ed73177a2845fe468e68eec85184c4d39047448de18d0e268020c6a33f",
+      "path": "capture/finite250-prior.tex",
+      "bytes": 6931
+    },
+    {
+      "sha256_raw": "40377d5867620d23295b7c4805199ed32c50a9f4ab121e7fbe1774ce0d94121c",
+      "path": "capture/report251.txt",
+      "bytes": 12123
+    },
+    {
+      "sha256_raw": "44a04cb5ff4b2a212995a0801b358f05c78cd28136420a067267769362c6b703",
+      "path": "capture/setup250-prior.tex",
+      "bytes": 9781
+    },
+    {
+      "sha256_raw": "ab9ab2195affe3482674538f4553c8c25e6655cfbcc74db68da7ef6d275c8842",
+      "path": "capture/source246.txt",
+      "bytes": 7600
+    },
+    {
+      "sha256_raw": "207964b440b7c91bc535739cc323f1fc135be4aac697ad665efb0ea4b7fb5a24",
+      "path": "capture/source249A.txt",
+      "bytes": 10135
+    },
+    {
+      "sha256_raw": "d55daa2a3af56039a4e29ada2f7200acf7127d733d640df13c1941ad7c56a677",
+      "path": "capture/source252A.txt",
+      "bytes": 9562
+    },
+    {
+      "sha256_raw": "e75eee4a5014c266a43335fdeb3aeb75eabf9f0d060bc74280358b692effcff4",
+      "path": "capture/verdict249.json",
+      "bytes": 1312
+    },
+    {
+      "sha256_raw": "e59d0071feb20e6a5f40c4a0871cbbf04919edaa720f752553c86e816827cf5d",
+      "path": "capture/verdict251.json",
+      "bytes": 1216
+    }
+  ],
+  "candidate_sha256_raw": "d55daa2a3af56039a4e29ada2f7200acf7127d733d640df13c1941ad7c56a677",
+  "subject_count": 13,
+  "self_hash_excluded": true,
+  "representation": "Exact original input bytes, authored UTF8 reports; no normalization"
+}

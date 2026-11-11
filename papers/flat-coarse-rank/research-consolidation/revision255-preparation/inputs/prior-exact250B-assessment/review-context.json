@@ -1,0 +1,72 @@
+{
+  "recorded_at": "2026-11-11T06:19:25.869856+00:00",
+  "role": "Involved first-exact-PDF analytical/scientific AI reviewer in shared account/context",
+  "provider": "OpenAI",
+  "exposed_model": "Codex based on GPT-6",
+  "actual_served_backend_version": "unknown",
+  "actual_reasoning_effort": "unknown",
+  "task_label_is_not_model_identity": true,
+  "independent_review_demonstrated": false,
+  "blind": false,
+  "human_peer_review": false,
+  "fresh_provider": false,
+  "inherited_context": "Parent programme/source-audit history and prior reviews; manuscript itself exposes earlier232B importance4.10/10. This assessment did not inherit its grade.",
+  "later249_251_253_excluded_from_proof_repair_and_score": true,
+  "source_sha": "4ec599da41521ecfdadd7d2aee69faab8b3819f1",
+  "canonical_sha256": "381da284637d6abcd2922ff649550a45243c2000fe16cc5efc65336f5765df2d",
+  "canonical_bytes": 450099,
+  "text_read": "All20pages in three sequential complete extraction ranges, including proofs, context, appendix and references",
+  "original_PNG_pages_individually_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "visual_observation": "All20pages readable; no blocking clipping, overlap, missing page, black square or unreadable table found; this is not a correctness proof",
+  "new_primary_readings": [
+    {
+      "url": "https://arxiv.org/pdf/1306.3969v4",
+      "extent": "Theorem1.4,Corollary1.5 and opening corollary construction,printed pages3-4; not full MSS proof"
+    },
+    {
+      "url": "https://authors.library.caltech.edu/records/8j84b-1ep03",
+      "extent": "Institutional primary abstract/metadata only; no full article or equivalence audit; incidental statistics ignored"
+    }
+  ],
+  "other_predecessor_readings": "Not newly repeated; manuscript reports its own earlier bounded reading extents",
+  "own_scientific_or_build_execution": false,
+  "own_local_render_or_PDF_edit": false,
+  "desktop_browser_UI_used": false,
+  "render_and_clone_evidence": "Parent-supplied exactPDF/renders closure, not my independent rerun; receipt identity/status portion read",
+  "formal_verification": false,
+  "new_permission_receipt_publication_acceptance": false,
+  "resampling_for_score": false,
+  "original_importance": 4.5,
+  "overall_stars": 5,
+  "criterion_stars": {
+    "correctness_confidence": 4,
+    "rigor": 4,
+    "novelty": 3,
+    "significance": 3,
+    "reproducibility": 4
+  },
+  "context_wording": "Dated source-preparation claims onpages18-19 precede subsequent build/render/review; preserve originalPDF and record later events in sidecar",
+  "scientific_review": "scientific-review.txt",
+  "prompt": "prompt.txt"
+}

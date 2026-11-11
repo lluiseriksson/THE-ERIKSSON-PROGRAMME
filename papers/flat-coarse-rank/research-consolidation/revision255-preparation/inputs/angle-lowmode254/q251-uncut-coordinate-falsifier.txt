@@ -1,0 +1,87 @@
+Q251 ROUTE NOTE: AN UNCUT-COORDINATE CELL OBSTRUCTION
+11November2026. Bounded corollary/falsifier, not a new paper or new score.
+The first exact250B PDF/4.50assessment remains unchanged and does not cover this note.
+
+Question retained: can permitted original-channel canonical rectangles achieve
+O(n) full count on the actual coexact D3 orthogonal checkerboard, or is its
+current O(n(1+ln n)) upper logarithm necessary? This note settles neither option.
+It rules out an explicit cheap class of proposed partitions without replacing
+the actual coexact domain or assuming averaging preserves it.
+
+Setup. D>=3, even n>=4, c>0, X=(Z/nZ)^D,V=n^D,g=2. All energies/norms below
+use counting measure. Write t(x)=sum_i x_i mod n and p(x)=t(x) mod2.
+P(x)=e1e1^T at even sources and e2e2^T at odd sources;
+B(x)=H I2-(H-a)P(x), a=c/(16D), H=cn^2.
+QB(z)=sum_(x,i,k) (partial_i z_k(x))^T B(x) partial_i z_k(x), with actual
+forward starts and all original labels. Actual domain is U0^2, U0=im(d1*) for
+(d1v)_ij=partial_i v_j-partial_j v_i, i<j. Canonical rows for channelalpha
+are V^-1/2 |S|^-1/2 sum_(x in S) z_(k,alpha)(x), one nonempty original-chart
+integer rectangle partition per channel, shared across spatial components k.
+
+Statement. If, for either original internal channel r, EVERY rectangle in
+that channel's partition has at least one full cyclic coordinate interval
+{0,...,n-1}, then this observation map cannot restore targetc on actual U0^2
+with any finite penaltyPhi(Cz) satisfyingPhi(0)=0. Different rectangles may
+have different full directions. No condition on the other channel's partition
+is needed, even if it observes every individual site. A restoring map therefore
+needs, in EACH original channel, at least one cell proper in every coordinate.
+This last necessary condition supplies no asymptotic count or logarithmic lower.
+
+Explicit real witness. Let m=n/2>=2 and let p_r be the strong-source parity:
+p_1=1 and p_2=0. For a residue t in{0,...,n-1}, set
+ F_r(t)=cos(2pi floor(((t-p_r) mod n)/2)/m).
+This is constant on each strong pair {p_r+2j,p_r+2j+1} modulo n, including
+the odd-source wrap pair when r=1. Its sum over t is
+2 sum_(j=0)^(m-1) cos(2pi j/m)=0; it is nonzero since F_r(p_r)=1.
+Let spatial v=(1,-1,0,...,0), and set z_(k,r)(x)=v_k F_r(t(x)), with the other
+internal channel identically zero. In particular z is real and nonzero.
+
+Actual coexact membership, derived rather than supplied. Its mean vanishes
+because every residue layer has n^(D-1) sites and sum_t F_r(t)=0. Its Fourier
+support is the diagonal frequencies ell=(j,...,j); there is no zero frequency.
+At such a nonzero frequency let xi_i=exp(2pi i j/n)-1 (the same for every i),
+write u for the spatial Fourier coefficient of z in channelr, and put
+ S=sum_i |xi_i|^2=D|exp(2pi i j/n)-1|^2>0,
+ psi_ik=(xi_i u_k-xi_k u_i)/S for i<k.
+Since u is a scalar multiple of v, sum_i conjugate(xi_i)u_i=0. With the stated
+curl convention the adjoint coefficient in componentk is
+ sum_(i<k) conjugate(xi_i)psi_ik - sum_(i>k) conjugate(xi_i)psi_ki
+ = u_k - xi_k(sum_i conjugate(xi_i)u_i)/S = u_k.
+All other frequencies and the other internal channel of psi are zero.
+At conjugate frequencies xi and u conjugate; at a real Nyquist frequency they
+are real. The constructed two-form is consequently real, and d1*psi=z.
+Thus z belongs to the actual U0^2; no abstract divergence-free replacement,
+external Hodge certificate or assumed coexact invariance of block means is used.
+
+Actual low energy. Channelr has coefficientH precisely at sources of parityp_r.
+There partial_i z is zero for every forward direction, since F_r(t+1)=F_r(t)
+on that strong pair. The other channel is zero everywhere. Hence every actual
+strong contribution vanishes, QB(z)=a E(z). For each periodic forward shift T_i,
+||T_i z-z||<=2||z||, so E(z)<=4D||z||^2 and QB(z)<=c||z||^2/4.
+No relabelling of incoming/outgoing weights, boundary approximation or continuum
+estimate is involved. The n=2 case is deliberately excluded: its paired zero-mean
+one-pair scalar space is zero, so this witness would not exist there.
+
+Observation annihilation. For any cellS in channelr choose one full coordinate
+j. Holding the others fixed, t(x) runs through every residue as x_j runs through
+that coordinate, so sum_(x_j=0)^(n-1)F_r(t(x))=0. Sum over the remaining cell
+coordinates; every spatial-component mean is zero. The other internal channel
+was zero to begin with, so ALL actual observations vanish. Therefore
+ V^-1 QB(z)+Phi(Cz)<=c||z||^2/(4V)<c||z||^2/V,
+which contradicts targetc restoration on this nonzero actual coexact field.
+
+Scope and use. This kills slab/cylinder/column proposals whose every cell in
+one original channel leaves some coordinate wholly uncut, regardless of their
+displayed row count or the finite penalty magnitude. It does NOT kill arbitrary
+O(n)-cell partitions: all their cells may be proper in every coordinate.
+It proves neither canonical coexact nlogn necessity nor canonical O(n) existence,
+and does not transfer the ambient251 lower to coexact fields. It is a direct
+specialization of the already constructed253 strong-kernel mechanism, with an
+explicit real curl-adjoint preimage and elementary rectangle sum. Historical
+novelty/independence is not claimed; no new numerical/formal test, paper, review
+score, physical mass gap, continuum result or PR29/TermSource change follows.
+
+Next falsifier. Any proposed economical construction must demonstrate detection
+of this actual band in BOTH original channels. Focus subsequent work on genuinely
+fully cut cells and their coexact kernel/capacity, instead of repeating slabs or
+using the nonrectangular component means that solved only unrestricted ranks.

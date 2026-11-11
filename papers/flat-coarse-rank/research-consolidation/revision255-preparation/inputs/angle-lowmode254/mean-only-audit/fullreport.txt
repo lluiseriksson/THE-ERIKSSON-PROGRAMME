@@ -1,0 +1,77 @@
+AUDITORÍA ANALÍTICA ACOTADA DE mean-only-small-angle254
+11 de noviembre de 2026
+
+VEREDICTO
+El testigo y el falsador de la extensión ingenua de las medias de componentes fuertes son correctos para D>=3, n par>=2, c>0 y 0<theta<=1/4 radianes, con las convenciones expresadas en la nota. No se han encontrado objeciones matemáticas bloqueantes. La cota probada es de hecho estrictamente menor que 17/24. Se acepta solamente esta conclusión negativa acotada, sin certificar otros resultados de253/254A ni resolver O(n) frente a n log n para observaciones más generales. No se reevalúa ni modifica250B.
+
+1. REFERENTE EXACTO Y LECTURA
+Nota leída completa:
+D:\Datos\the-eriksson-programme\autonomia\evidencia-254\mean-only-small-angle254.txt
+SHA256 de los bytes originales en disco:
+6d69deaaa3bd2cef5a8bce31943311c513986c6d36b84fc4dcda03e8868898b6
+4918 bytes, 87 bytes LF, 0 bytes CR, sin BOM UTF-8. Es un referente de archivo local congelado, no una captura de un blob Git ni texto normalizado. Se conserva copia binaria exacta en note-exact.txt. La fuente no se ha editado. Los hashes y tamaños del informe, contexto y copia se consignan en hashes.json; el hash del propio manifiesto se devuelve externamente para evitar autorreferencia.
+
+2. OBJETO Y CONVENCIONES
+El toro es (Z/nZ)^D, V=n^D; la paridad de la suma es coherente con la periodicidad porque n es par. En la base interna ORIGINAL de dos canales, v_0=(1,0), v_1=(cos(theta),sin(theta)), s_l es cualquier perpendicular UNITARIO a v_l, y B(x)=a v_l v_l^T+H s_l s_l^T en fuente de paridad l, con a=c/(16D), H=cn^2. Cambiar el signo de s_l no cambia B ni las anulaciones de medias.
+El campo tiene componentes espaciales z_D(x)=w f(x), z_r=0 para r!=D, w=(cos(theta/2),sin(theta/2)), f=cos(2pi x_1/n). La norma de conteo suma sitios, componentes espaciales y canales internos; w es unitario. Los gradientes son positivos periódicos y sus pesos se evalúan en la fuente. El dominio actual es im(d_1^*) en cada canal original, con (d_1u)_(ij)=partial_i u_j-partial_j u_i para i<j y producto de conteo sobre estas componentes independientes. No se rota el sistema de observaciones ni se reemplaza este dominio por el espacio ambiental.
+
+3. REALIDAD, NO TRIVIALIDAD Y FRECUENCIAS, INCLUIDO n=2
+El campo es real y no nulo: f=1 en x_1=0 y w tiene norma1. La suma de f en un período es0 para todo n>=2 por la suma de las raíces de la unidad. Sus únicas frecuencias posibles son e_1 y -e_1; cuando n=2 coinciden en una frecuencia de Nyquist real, no se cuentan como modos independientes. No aparece frecuencia cero.
+Con caracteres exp(2pi i k dot x/n) y cualquier normalización coherente con conteo, el símbolo positivo es xi_i=exp(2pi i k_i/n)-1. En estas frecuencias sólo xi_1 es no nulo y xi_D=0, mientras que el coeficiente espacial u sólo tiene componente D. Como D!=1, sum_i conjugate(xi_i)u_i=0. S=sum_i|xi_i|^2=|xi_1|^2>0, también en n=2, donde xi_1=-2. Ninguna fórmula divide por cero.
+
+4. SIGNOS DEL CURL Y PREIMAGEN REAL EXPLÍCITA
+El adjunto de conteo del gradiente positivo es partial_i^*h(x)=h(x-e_i)-h(x), con símbolo conjugate(xi_i). Con componentes i<j, el componente k de d_1^*psi es
+ sum_(i<k) conjugate(xi_i)psi_(ik) - sum_(i>k) conjugate(xi_i)psi_(ki).
+La definición psi_(ij)=(xi_i u_j-xi_j u_i)/S da
+ (d_1^*psi)_k = u_k-xi_k sum_i conjugate(xi_i)u_i/S = u_k.
+Se obtiene +u, no -u. No hay factor2 porque se suman componentes independientes de dos-forma. En este testigo basta la única componente psi_(1D)=xi_1 u_D/|xi_1|^2: la componente D del adjunto es conjugate(xi_1)psi_(1D)=u_D; la componente1 es -conjugate(xi_D)psi_(1D)=0 y las demás son0.
+La fórmula respeta conjugación entre k y -k porque xi(-k)=conjugate(xi(k)), S es real y el campo es real. El modo coincidente de n=2 tiene xi_1 y u_D reales, de modo que psi también es real allí. Al fijar las frecuencias restantes a0, la transformada inversa produce una dos-forma REAL cuya imagen es z. Se realiza por separado en ambos canales originales. Esto demuestra pertenencia al dominio solicitado sin asumir una caracterización abstracta de Hodge o invariancia de proyecciones.
+
+5. GRUPOS Y ANULACIÓN DE TODAS LAS OBSERVACIONES CUBIERTAS
+Para cada l y cada s de paridad l, G_(l,s) reúne las dos capas de suma s y s+1 módulo n. Estas capas se emparejan sin omisiones ni solapamientos dentro de la partición de cada l; el par periódico {n-1,0} está incluido cuando corresponde. En n=2 cada l tiene un solo G, que es el toro entero.
+Para el grafo escalar de las derivadas fuertes del normal s_l, las aristas salen de paridad l y conectan x con x+e_i. Cada G es cerrado para estas aristas. Es además conectado: dentro de la capa de fuentes las rutas de dos aristas realizan desplazamientos e_i-e_j, que generan el subgrupo de suma0, y toda fuente tiene vecinos en la otra capa. Por tanto la descripción por estos G concuerda con los componentes del grafo fuerte. Esta comprobación no supone que los dos normales sean ortogonales entre sí ni que las coordenadas normales constituyan una base ortonormal global.
+Para una capa t cualquiera se parametriza x=(y_1,...,y_(D-1),t-sum y) módulo n. Puesto que D>=3 (D>=2 bastaría aquí), x_1=y_1 es una variable libre, y
+ sum_(sum x=t)f(x)=n^(D-2)sum_(y_1=0)^(n-1)cos(2pi y_1/n)=0.
+Las dos capas tienen por separado suma0. Por ello toda suma en G_(l,s) es0, incluidos el par periódico y n=2. Las componentes espaciales distintas de D son idénticamente0; para D, cualquier fila interna CONSTANTE b da b dot z_D=(b dot w)f y tiene media0. Esto incluye ambos canales originales, ambos normales y cualquier combinación lineal de esas medias. Multiplicar cada fila por su normalización canónica V^(-1/2)|G|^(-1/2) conserva0. Se anulan simultáneamente todos los grupos de ambas paridades, no sólo una media global.
+La conclusión sólo cubre esas medias completas y sus combinaciones. No cubre subgrupos, filas con pesos que dependen del sitio, observaciones de modos transversales o una familia arbitraria de rectángulos. No se invoca una proyección de medias que preserve coexactitud.
+
+6. ENERGÍA EXACTA EN FUENTE Y CASO n=2
+El bisector satisface |v_l dot w|^2=cos^2(theta/2) y |s_l dot w|^2=sin^2(theta/2) para AMBAS paridades. Por tanto w^T B(x)w es exactamente beta=a cos^2(theta/2)+cn^2 sin^2(theta/2) en cada fuente, antes de sumar; no se usa promedio de paridad, traslado de pesos a la llegada ni una aproximación de ángulo pequeño.
+Sólo la derivada espacial positiva1 del componente D cambia el campo. El operador (T_1-I)^*(T_1-I) tiene autovalor 2-exp(2pi i/n)-exp(-2pi i/n)=4sin^2(pi/n) sobre los modos apoyados, y f es una autofunción real. La suma cuadrática de conteo da exactamente
+ E(z)=4sin^2(pi/n)||z||^2,
+ Q(z)/||z||^2=4sin^2(pi/n)[a cos^2(theta/2)+cn^2 sin^2(theta/2)].
+En n=2 el desplazamiento positivo invierte el signo de f; cada diferencia es -2f y su cuadrado es4f^2. Así el autovalor4 y la fórmula siguen siendo correctos con las etiquetas positivas originales. No se reduce la cuenta porque los extremos de una arista se identifiquen como conjunto no orientado.
+Las D componentes espaciales y los dos canales están ya incluidos en la norma. No hay factor D adicional: sólo una derivada cambia este campo. La parte fuerte es estrictamente positiva para theta>0 porque sin(theta/2)>0 y la derivada es no nula; la nota NO la declara cero. La positividad de esa contribución no impide que el cociente total sea menor que c.
+
+7. COTA UNIFORME ESTRICTA
+Dividiendo por c, la parte débil está acotada por 4/(16D)=1/(4D), usando sin^2(pi/n)<=1 y cos^2(theta/2)<=1. La parte fuerte está acotada por
+ 4n^2(pi/n)^2(theta/2)^2=pi^2 theta^2,
+usando sin t<=t para los argumentos positivos indicados. Para D>=3 y theta<=1/4,
+ Q(z)/(c||z||^2)<=1/12+pi^2/16<1/12+10/16=17/24<1.
+La desigualdad estricta usa únicamente pi^2<10. No depende de n grande, no necesita una cota inferior de n distinta de2, ni un valor numérico aproximado de un autovalor. El extremo theta=1/4 está incluido. La expresión exacta y esta estimación no pretenden localizar un ángulo crítico óptimo ni cubrir todos los ángulos no ortogonales.
+
+8. CONTRADICCIÓN CON CUALQUIER PENALIZACIÓN INDICADA
+El mapa C de todas las medias descritas satisface Cz=0 para el campo real, no nulo y coexacto ya construido. Cualquier penalización finita Phi con Phi(0)=0, aunque sea no lineal y dependa de n, vale0 en este campo. Así
+ Q(z)/V+Phi(Cz)=Q(z)/V<c||z||^2/V.
+Se refuta el objetivo de restaurar c con ese mapa de medias, en el dominio ACTUAL. Esto no depende del tamaño de la penalización fuera de0 ni afirma una comparación de dimensiones del espacio ambiental. Añadir sólo combinaciones lineales de estas mismas medias tampoco remedia el ejemplo, pues siguen anulándose.
+
+9. OBJECIONES Y LÍMITES
+No se encuentra objeción matemática bloqueante al enunciado acotado. Deben conservarse los límites siguientes:
+- Se refuta la extensión de este mapa mean-only a todos los ángulos positivos mediante una familia de contraejemplos en 0<theta<=1/4, no se afirma fallo en todo ángulo no ortogonal.
+- No se refuta una construcción enriquecida de orden n, una observación transversal capaz de detectar f ni todo mapa rectangular original de orden n. El testigo tiene precisamente variación transversal a las capas de suma.
+- No se decide O(n) frente a n log n, no se demuestra una cota de rango óptima y no se traslada una cuenta ambiental al dominio coexacto.
+- Se ha leído y comprobado la nota254 completa y su testigo directamente. Las fuentes completas253 y254A no se han reauditado en este encargo; la mención de su contexto o de que254A retiene determinados modos no es una nueva certificación de sus teoremas.
+- La calificación anterior incluida como procedencia en la fuente se conserva únicamente dentro de su copia exacta; este informe no la revisa, repite como evaluación propia ni produce una nueva nota numérica.
+- No se modifica, incorpora al PDF ni reevalúa250B. No se afirma originalidad independiente, prioridad histórica, prueba formal, resultado físico o de continuo.
+
+10. IDENTIDAD Y CONTEXTO REAL DE LA REVISIÓN
+Revisión analítica por el mismo auditor IA involucrado en tareas anteriores, con contexto persistente, infraestructura y cuenta compartidas. No es una revisión independiente, ciega o humana, ni un remuestreo de modelo/proveedor. Descripción realmente expuesta: Codex, agente basado en GPT-6. Backend/modelo servido exacto, versión y esfuerzo efectivos: no expuestos, desconocidos. El contexto de interfaz expuesto es OpenAI/Codex. Identidad de la cuenta, encaminamiento de proveedor, suscripción, cuotas y límites de uso no se han inspeccionado.
+Las normas de almacenamiento y gobernanza leídas en esta tarea persistente siguen aplicándose. Operaciones realizadas: lectura completa, razonamiento analítico, copia de bytes, escritura de este informe y contexto, comprobación de formato y hashes. No se ha ejecutado un cálculo matemático, oráculo, build, Lean/Lake o prueba de Windows. No se ha usado CUA ni enviado mensajes a otros chats. No se han editado fuentes, Git, ramas, estados, automatizaciones, publicación ni PDF. No se ha creado una nueva nota de investigación, clon o problema activo, ni queda limpieza de trabajo pendiente.
+Los únicos archivos nuevos están en el directorio solicitado evidencia-254/mean-only-audit. La fuente se vuelve a verificar al emitir el manifiesto. La revisión queda terminada con este alcance, sin otra auditoría o publicación implícita.
+
+11. ARTEFACTOS
+Directorio: D:\Datos\the-eriksson-programme\autonomia\evidencia-254\mean-only-audit
+note-exact.txt: copia exacta de la nota original, sin normalización.
+fullreport.txt: informe íntegro, UTF-8 sin BOM, LF y LF final.
+context.json: veredicto, identidad y límites explícitos.
+hashes.json: hashes, representaciones y tamaños; su propio hash se devuelve externamente.

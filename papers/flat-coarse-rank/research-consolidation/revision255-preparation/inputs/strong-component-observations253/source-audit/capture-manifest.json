@@ -1,0 +1,58 @@
+[
+  {
+    "capture": "capture/strong-component-observations253B.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-253\\strong-component-observations253B.txt",
+    "bytes": 14606,
+    "sha256_raw": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2",
+    "normalization": "none; exact raw source bytes",
+    "actual_reading_extent": "complete exact audit subject"
+  },
+  {
+    "capture": "capture/strong-component-observations253A.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-253\\strong-component-observations253A.txt",
+    "bytes": 10606,
+    "sha256_raw": "3e1b8cf3797e0e1c37f8f4813b8577eb5b33d88d7c3c2208cb4f6aea122afce5",
+    "normalization": "none; exact raw source bytes",
+    "actual_reading_extent": "complete preliminary source for before-audit strengthening context; not separately graded"
+  },
+  {
+    "capture": "capture/source247.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-preparation\\raw-tree\\inputs\\accepted\\source247.txt",
+    "bytes": 10720,
+    "sha256_raw": "e2ab6a1db6816693617c7e214b98281610b23755a66c4d2f088c12eb0ed17e03",
+    "normalization": "none; exact raw source bytes",
+    "actual_reading_extent": "complete freshly, exact strong graph and D4 all-field canonical upper"
+  },
+  {
+    "capture": "capture/source248.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-250\\source-preparation\\raw-tree\\inputs\\accepted\\source248.txt",
+    "bytes": 17708,
+    "sha256_raw": "93786fa89262fd20d21596f1fdde5799f67518a93d1ab4446a06f9e98638b675",
+    "normalization": "none; exact raw source bytes",
+    "actual_reading_extent": "fresh opening45lines for actual family/domain and upper statement; full raw file captured"
+  },
+  {
+    "capture": "capture/all-field-checkerboard-count251A.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-251\\all-field-checkerboard-count251A.txt",
+    "bytes": 9529,
+    "sha256_raw": "23d171fa5f9d9be8eef9bd02b8a19d2958e9de02cc30757a22e4582a6fd871a8",
+    "normalization": "none; exact raw source bytes",
+    "actual_reading_extent": "complete freshly for same-domain D4 row-class comparison"
+  },
+  {
+    "capture": "capture/audit251-fullreport.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-251\\source-audit\\fullreport.txt",
+    "bytes": 12123,
+    "sha256_raw": "40377d5867620d23295b7c4805199ed32c50a9f4ab121e7fbe1774ce0d94121c",
+    "normalization": "none; exact raw source bytes",
+    "actual_reading_extent": "selected sections7-9 including explicit non-preservation illustration; full raw report captured"
+  },
+  {
+    "capture": "capture/coexact-layer-band252A.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-252\\coexact-layer-band252A.txt",
+    "bytes": 9562,
+    "sha256_raw": "d55daa2a3af56039a4e29ada2f7200acf7127d733d640df13c1941ad7c56a677",
+    "normalization": "none; exact raw source bytes",
+    "actual_reading_extent": "complete source for comparison context only;253B proof does not depend on252 verdict"
+  }
+]

@@ -1,0 +1,173 @@
+253A -- ANALYTICAL CANDIDATE: strong-component means and unrestricted rank order
+11 November2026. Parent fabrication, pending separate exact-source audit.
+Related progress on active D3 canonical/log question251, not another active
+question, not a new small paper and not inserted into frozen manuscript250B.
+No execution, formal proof, novelty or model score is claimed.
+
+THEOREM AND OBSERVATION CLASS
+Fix D=3 or4, even n>=2,c>0,V=n^D,g=2, original real fields with D spatial
+components, actual forward-source weights, and the EXACT ORTHOGONAL checkerboard
+ P_even=e1e1^T, P_odd=e2e2^T,
+ B(x)=aP(x)+H(I-P(x)), a=c/(16D), H=cn^2,
+ Q(z)=sum_(x,i,r) (partial_i z_r)^T B(x)partial_i z_r.
+All norms are counting norms. Forward labels are retained also at period2.
+For channel1 the strong sources have odd parity; for channel2 they have even
+parity. For each of its n/2 strong-source sum residues s, let
+ G_(alpha,s)={x:sum_i x_i modn belongs to{s,s+1}}.
+Each G has2n^(D-1) vertices, and these sets partition X within that channel.
+Define C_strong by rows
+ (C_strong z)_(alpha,r,s)=V^(-1/2)|G_(alpha,s)|^(-1/2)
+                         sum_(x in G_(alpha,s)) z_(r,alpha)(x).
+There are exactly Dn full rows. They do NOT mix internal channels or spatial
+components, but their diagonal sum-layer-pair supports are NOT original
+axis-aligned rectangles when n>=4. This is an allowed UNRESTRICTED LINEAR
+map, not a construction in the canonical RECTANGLE class of question251.
+
+Let R_strong be actual counting orthogonal averaging over those channel
+components, shared across spatial r. Then ||C_strong z||^2=||R_strong z||^2/V,
+and for EVERY original ambient real field,
+ Q(z)/V+c||C_strong z||^2>=c||z||^2/V.
+Thus this SPECIFIC nonrectangular map has sufficient normalized penalty K=c,
+independent of n. On the same normalized rows the counting-energy coefficient
+is Vc. No whole-operator condition-number or practical solver claim follows.
+
+Combining with source252's separately gated ACTUAL coexact lower
+(D-1)(n-2) for every restoring linear map at theta=pi/2, the minimum restoring
+actual linear rank on U0^2 is between(D-1)(n-2) and Dn. For n>=4 and fixed
+D3/D4 it therefore has order n. The same order holds for unrestricted
+ambient restoring rank, since an ambient-restoring map restricts to U0^2.
+This matching consequence is CONDITIONAL on separate acceptance of252A;
+the present explicit upper and spectral proof stand on their own.
+
+For D4,251A separately establishes canonical ALL-FIELD rectangle count
+Theta(n^2). Since canonical rows are mutually orthogonal on the ambient
+space, that is also their ambient rank. Here the unrestricted ambient
+minimum is Theta(n). These are SAME-profile, SAME-ambient-target statements
+in different row classes. Do NOT assert a canonical-coexact n^2 lower:251
+does not provide one. D3 canonical/coexact n versus nlogn remains OPEN.
+
+1. THE ACTUAL STRONG GRAPH, NOT AN AUXILIARY GAP
+Put p=D-1. Fix one scalar original spatial/channel component, strong-source
+parity l, and a sum residue s of that parity. For y in (Z/nZ)^p set
+ x_s(y)=(y_1,...,y_p,s-sum_i y_i) modn,
+ u(y)=z(x_s(y)), t(y)=z(x_s(y)+e_D).
+The two maps biject onto the actual source sum layer s and target s+1.
+These n/2 pairs partition the whole original lattice for that channel,
+including{n-1,0} when s=n-1. Each original strong outgoing label from a
+source has its endpoint inside this same pair. Exactly one label is the
+rung u(y)--t(y); the other p labels are u(y)--t(y+e_i), because
+ x_s(y+e_i)+e_D=x_s(y)+e_i.
+Thus the EXACT scalar strong graph energy on this pair is
+ E_s=sum_y|u(y)-t(y)|^2+sum_(y,i=1..p)|u(y)-t(y+e_i)|^2.
+No weights are reassigned to targets and no actual label is dropped/deduplicated.
+Rungs and cross edges generate every source-coordinate translation; all target
+vertices have a rung. Hence this pair is connected and is a true strong
+component, not a union with an unstated connectivity hypothesis. The Fourier
+proof below also identifies its one-dimensional constant kernel exactly.
+
+2. DERIVED FINITE TWO-LAYER FOURIER SPECTRUM
+Use the counting-orthonormal complex characters of (Z/nZ)^p. At a source
+frequency k=(k_1,...,k_p), put theta_i=2pi k_i/n and theta_0=0. With scalar
+Fourier coefficients U,T, the mode energy is
+ |U-T|^2+sum_(i=1..p)|U-exp(i theta_i)T|^2.
+Its Hermitian2by2 matrix has diagonal D and off-diagonal -S,-conjugate(S),
+where S=1+sum_i exp(i theta_i). Its eigenvalues are D-|S| and D+|S|,
+by the characteristic polynomial(D-lambda)^2-|S|^2.
+
+For D unit complex numbers a_j=exp(i theta_j), j=0..p,
+ D^2-|sum_j a_j|^2=sum_(0<=i<j<=p)|a_i-a_j|^2.
+This follows by expanding both sides into pairwise real inner products.
+Consequently at any NONZERO frequency,
+ D-|S|=[D^2-|S|^2]/[D+|S|]
+       >=[sum_(i=1..p)|1-exp(i theta_i)|^2]/(2D)
+       >=8/(D n^2).
+For the final inequality at least one k_i is nonzero, so its squared term
+is at least4sin^2(pi/n)>=16/n^2 by the finite sine lower on[0,pi/2].
+This includes n2. The other eigenvalue is at least D>=8/(Dn^2).
+At zero frequency the eigenvalues are0 and2D. The zero eigenvector is
+U=T, precisely the constant on BOTH layers of this actual component; the
+other is again above the displayed bound. Hence removing only its TOTAL
+counting mean removes the only kernel vector. All other modes have energy
+at least8/(Dn^2) times their full BOTH-LAYER squared norm.
+
+Parseval gives the real inequality
+ E_s(f)>=8/(Dn^2)||f-mean_(G_s) f||^2.
+Conjugate frequencies pair in the real space; self-conjugate frequencies
+obey the same real2by2 inequality directly. There is no asserted mode count
+or omitted Nyquist exception. At n2 the induced source torus repeats some
+undirected neighbors, but the original forward labels in the displayed
+mode energy remain exactly the ones being summed. No continuum limit or
+supplied spectral gap is being used.
+
+3. SUMMING ACTUAL COMPONENTS AND PAYING THE EXACT OBSERVATIONS
+Sum the preceding inequalities over ALL n/2 strong components per original
+channel, both channels and every spatial r. They have disjoint vertex sets
+within a channel and different original-coordinate supports across channels/r.
+Their counting averaging projection is exactly R_strong. The form Q contains
+H times these strong energies and its remaining a terms are nonnegative.
+Therefore, ON ALL ORIGINAL AMBIENT FIELDS,
+ Q(z)>= (8H/(Dn^2))||(I-R_strong)z||^2
+       = (8/D)c||(I-R_strong)z||^2.
+For D3/D4,8/D>=2>1. Orthogonality of R_strong yields
+ Q(z)+c||R_strong z||^2>=c||z||^2.
+We dropped only nonnegative weak energy; no cross-term estimate, assumed
+invariance of weak energy or duplicate strong-energy spending is needed.
+Divide by V and use the EXACT normalized observation identity to obtain
+the theorem with K=c. Constants are included: Q0 and R_strong z=z, so c
+pays them. n2 has just one component per channel; R_strong is global
+channel/spatial averaging and the same finite Fourier proof still applies.
+
+4. FULL ROWS, ACTUAL RESTRICTED RANK AND SHAPE BOUNDARY
+There are n/2 components per channel, two channels and D spatial components,
+so Nout=Dn exactly. Their nonzero rows have disjoint original supports, hence
+ambient rank=Dn. On actual U0^2 the rank is AT MOST Dn, with no independence
+or preservation of U0^2 by R_strong assumed. Restriction is legitimate because
+the inequality was established on the whole ambient space first. At n2 the
+restriction can have rank0 (root means annihilate U0); no positive asymptotic
+lower at that endpoint is asserted by the conditional252 comparison.
+
+For n>=4 the sum-layer-pair set G is not an original chart product rectangle:
+its projection onto every one coordinate is the full n-element chart, since
+D>=2 permits choosing another coordinate to adjust the sum to s. If G were
+a product rectangle, all its factors would therefore be full, giving G=X.
+But |G|=2n^(D-1)<n^D for n>=4. This proves the shape exclusion explicitly.
+The n2 exception G=X is harmless and separately identified. These are not
+diagonal source-box averages falsely renamed as canonical rectangles.
+
+5. WHAT THE MATCHING STATEMENTS ACTUALLY REQUIRE
+The explicit upper here is self-contained and all-field. The lower yielding
+order n in unrestricted actual rank requires accepted252's separate actual
+coexact low-band construction: ANY restoring linear C must inject that real
+W of dimension(D-1)(n-2), so the minimum restricted rank cannot be o(n).
+Since (D-1)(n-2)>=(D-1)n/2 for n>=4, this matches the present Dn upper in
+order, not exact constants. The ambient unrestricted lower follows as well:
+ambient rank is at least the restricted rank and its restoration includes U0^2.
+The251 D4 canonical ambient lower matches247's canonical ambient upper at
+order n^2; pairing it with this unrestricted ambient order n gives the stated
+row-class comparison on IDENTICAL coefficients. It does not compare unlike
+domains or claim rank(C|U0^2)=Nout for canonical maps.
+
+6. LIMITS, PROVENANCE AND FALSIFIERS
+The exact strong graph appeared as a proved input in247/248. Here its full
+two-layer spectrum and mean-zero gap are derived directly, rather than supplied
+as a hypothesis. Finite graph Fourier spectra, geometric character identities,
+strong-component coarse averages and nullspace counts are classical mechanisms;
+no priority or new general principle is established by this candidate.
+Practical importance/conditioning/implementation need separate evidence. K=c
+is a uniform coefficient on these FIXED normalized rows, not a bound on the
+condition number of Q+cR_strong or a physical spectral gap. Its upper norm can
+still grow with H=cn^2. This is a finite toy gradient family only; physical
+mass gap and continuum remain OPEN, PR29 stays20/41,TermSource=0.
+
+The theorem is ORTHOGONAL. Nonorthogonal source252's lower does not give this
+specific mean-only upper for small angles: its original-norm comparison can
+lose the normal Gram minimum. No all-angle mean-only upper is asserted.
+The original weak/strong multiplicities and cap alphaD remain unchanged.
+No source250B PDF, prior grade, publication record or native permission changes.
+Falsifiers: actual graph has edges between the purported components; the
+two-layer symbol loses an original label or layer mass; the spectrum has an
+extra kernel mode; sine/normalization factors fail; mean supports are called
+rectangles despite section4; or a restricted rank is replaced by full rowcount.
+Separate fresh source audit is required. Preserve all adverse results and
+group this with251/252, not as a standalone small paper. Active coexact D3
+canonical n versus nlogn question remains OPEN and has no claimed solution.
