@@ -1,0 +1,67 @@
+{
+  "gates_reviewed": 10,
+  "nonzero_verified_gate_count": 10,
+  "method": "Analytical source review, not an executable mathematical verifier",
+  "gates": [
+    {
+      "gate": 1,
+      "name": "Actual adjoint signs and real periodic fields",
+      "analytical_verdict": "PASS",
+      "reason": "W13=-psi gives component1=delta3psi, component3=-delta1psi; W23=-psi gives component2=delta3psi, component3=-delta2psi. Period-four sequences are n-periodic because4 dividesn, potentials are real and skew, so these are actuald1* images without a projection or divergence converse."
+    },
+    {
+      "gate": 2,
+      "name": "Amplitude constraints and dimension",
+      "analytical_verdict": "PASS",
+      "reason": "On odd support the q coefficient is a fixed imaginary factor times sum(-1)^r a_r; on even support it is a real factor times sum(-1)^r d_r. The negative q coefficient is the conjugate. Thus exactly one nonzero real functional per amplitude, not two, yields3(m-1) real dimensions."
+    },
+    {
+      "gate": 3,
+      "name": "Fourier exclusion and high membership",
+      "analytical_verdict": "PASS",
+      "reason": "Both transverse frequencies are only\u00b1q, outside0,N. All h amplitudes omit\u00b1q byAMP; differences do not enlarge support. Therefore no surviving frequency is diagonal, includingmixed-sign transverse pairs. Actualw is inO subsetF andrangeXi. No permutationcut assumption is needed for this domain statement."
+    },
+    {
+      "gate": 4,
+      "name": "Both slice parities, wrap and singleton",
+      "analytical_verdict": "PASS",
+      "reason": "At l0, wa=(-ha sigma,0,0), wb=(0,-hb sigma,0), wd=(0,0,-delta1hd sigma). Oddslice2r+1 gives(a,b,d)sigma; evenslice2r gives(0,0,-d)sigma. At i0 the cyclicpredecessor n-1 is odd withhd0, giving exactly the same-even formula. tauodd=2mod4, taueven=0mod4, sigma(tau)=0, so everyT row vanishes."
+    },
+    {
+      "gate": 5,
+      "name": "All P cells and empty intervals",
+      "analytical_verdict": "PASS",
+      "reason": "Oddprefix sigma sum is1, evenprefix sum0; oddcut lies2..n-2 so neitherprefix norsuffix is empty. Fullj/l line sums vanish. Suffixes are negativeprefixes, and everylongthird cell sum is the negativeplane counterpart, withselected-singleton longthird row0. Evenslices have allplaneinterval sums0 includingemptyprefixes. Thus every originalremainingcell is covered, not onlyprefixes."
+    },
+    {
+      "gate": 6,
+      "name": "Exact volume normalization and image J",
+      "analytical_verdict": "PASS",
+      "reason": "a=n^(3/2)sqrt(t) z and similarlyb,d gives the statedthreeindependent weightedconstraints. Prefix/suffix lengths t,n-t-1 andthirdlengthn-1 yield exactly the fourJ entries includingallsquare-roots/signs. Positiveodd t ensures independentconstraints. Plane-prefix coordinates recoverz, soJ isinjective, ||Jz||>=||z||, S hasdimension3m-3 andPw(alpha)=alpha."
+    },
+    {
+      "gate": 7,
+      "name": "Conditional projector and rank",
+      "analytical_verdict": "PASS",
+      "reason": "X=T_F B^-1/2, Pi=I-X*(XX*)daggerX is the orthogonalprojection onto kerX without fullrowrank. K_P=Y PiY*, rank equalsrankY Pi, equalsrankP onF capkerT bywhitening. The explicitS image is already attained in the smallerF caprangeXi capkerT, forcingrank>=3m-3."
+    },
+    {
+      "gate": 8,
+      "name": "Energy lift and compressed floor",
+      "analytical_verdict": "PASS",
+      "reason": "sigma norm\u00b2=n/2, rho norm\u00b2=n, so potentialnorm\u00b2=n\u00b2/4 or n\u00b2/2 timesamplitudenorm\u00b2. Two differences withnorm<=2 give2n\u00b2 or4n\u00b2 fieldbounds. Squaredsum<=3times sum gives12n\u00b2 totalamplitudes; amplitudes\u00b2=n\u00b3sum t|z|\u00b2<=n^4||z||\u00b2. Thus||w||\u00b2<=12n^6||z||\u00b2. B<=12H gives144cn^8||alpha||\u00b2. WhitenedCauchy withPw(alpha)=alpha gives||alpha||^4<=<alpha,K_Palpha><w,Bw>, yieldingthe claimedcompressionfloor, withzeroalphahandledseparately."
+    },
+    {
+      "gate": 9,
+      "name": "Response rank versus the low residual",
+      "analytical_verdict": "PASS",
+      "reason": "No invarianceofS orfullrangeinversefloor follows from thecompressionfloor. Theconstruction doesnot place r(L) inS, bounditsotherparts, or compare thecost to thelowmargin. The source explicitlyretains these gaps; large response rank cannot imply fullcanonicalrecovery or a below-c actualkernelwitness."
+    },
+    {
+      "gate": 10,
+      "name": "Bindings and novelty/scope limits",
+      "analytical_verdict": "PASS",
+      "reason": "Exactsource,judges,289B/286/287 dependencies andgovernance bound inrawmanifest.4|n is sufficient; permutationclaim isrestrictedtodyadicn and provedwithanoddfactor. Abstract-onlybackground is notaprimaryprioritytheorem. No mathematicalexecution, newPDFscore, independent/humanreview, publicationverification, Lean/formalcertification, Yang-Millsgap orQ251resolution isclaimed bythisaudit."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+UNIT290: ANALYTICAL JUDGES BEFORE SOURCE FREEZE
+Prepared 2026-11-12 UTC / 2026-11-13 Europe/Stockholm.
+Base main ff714438096db9520edfee4e3ad9d7eed41f6f97.
+
+Question: after zeroing the original singleton rows and removing ordinary
+and alternating coordinate-2/3 line modes, are the original quadratic-cut
+planar-prefix rows redundant or of sublinear rank on the actual high space?
+Hypotheses: original counting norm, coexact image, source weights, original
+normalized canonical cells; n>=8 divisible by4 and tau_i=2i^2 mod n.
+Mechanism: period-four real potentials, explicit curl-adjoint fields,
+Fourier removal of the two possible diagonal frequencies, exact cell sums.
+Falsifier: any failure of actual coexactness, high-space membership,
+singleton cancellation, normalized cell formula or dimension count.
+Abandonment: reject a failed construction, retain failure; after three
+units without a derived advance on the moving-prefix route identify its
+missing estimate or change mechanism. Never count publication as progress.
+
+Required analytic gates for a separate audit:
+1. Actual d1* signs, periodicity and reality, not a substituted divergence.
+2. One real alternating constraint per amplitude; correct dimension.
+3. Fourier exclusion of diagonal modes and all removed line bands.
+4. Both slice parities, cyclic slice0, every singleton sample.
+5. Prefix/suffix and plane/long-third-cell sums, including empty cells.
+6. Original volume normalization; J injective and ||Jz||>=||z||.
+7. Conditional response projection/rank identity without a full-rank premise.
+8. All constants in lift energy and compressed response floor derived.
+9. Distinguish response rank from rank/energy of the low residual r(L).
+10. Source binding and novelty limits; no Lean, numerical, independent-peer,
+    PDF-grade, acceptance, new AIRR publication or Yang-Mills claim.
+
+No mathematical executable is part of these judges. This is a source proof
+audit, not terminal computational reproduction. No runtime is needed.

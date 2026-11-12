@@ -1,0 +1,9 @@
+{
+  "initial_head": "20569d59f89b55efce508107cf4659f51c4109de",
+  "final_head": "20569d59f89b55efce508107cf4659f51c4109de",
+  "source_sha256": "3dc7e8c67753e0116ab759bde39cf10ccf7b3c688080586722e1296ff84092ac",
+  "judges_sha256": "408694d6994fa43d6e3acb1fb97b495fd8dfeff2116528eb427bd658e6e5f293",
+  "unchanged": true,
+  "analytical_gates_reviewed": 10,
+  "acceptance_basis": "Analytical reasons, no executable mathematical verification"
+}

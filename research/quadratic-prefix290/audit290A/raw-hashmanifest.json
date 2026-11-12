@@ -1,0 +1,81 @@
+{
+  "files": [
+    {
+      "path": "analytical-gates.json",
+      "bytes": 4956,
+      "sha256": "455a7a748f164b85b0ecddf990b1a596a936082ea5986258ab81dee28f265a59"
+    },
+    {
+      "path": "assignment.txt",
+      "bytes": 1567,
+      "sha256": "e7e73955fcea08e56a8b95bf111cd5157dbaabe0eae09a5ac1b64af5b3b164ad"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 1214,
+      "sha256": "e662416b0057a002559e7725018429c4bab9e5f0265b47a680fef8f293f3b6c5"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 7211,
+      "sha256": "78a4374f9a61f44746a92e0ac134fc77d191ddda188739675a57d4e874c03b4b"
+    },
+    {
+      "path": "inspected-input-hashmanifest.json",
+      "bytes": 4017,
+      "sha256": "5a4b0750211d45db615ccedbf95b1e8c69b28e5759cd0c35298ab5ba1611b5eb"
+    },
+    {
+      "path": "stability.json",
+      "bytes": 447,
+      "sha256": "0697f32da3defc039deb3a9740b9d59e70d15b93ad68723deeb48ec01967dd6d"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/judges290.checkout.txt",
+      "bytes": 1997,
+      "sha256": "408694d6994fa43d6e3acb1fb97b495fd8dfeff2116528eb427bd658e6e5f293"
+    },
+    {
+      "path": "subjects/judges290.git.txt",
+      "bytes": 1997,
+      "sha256": "408694d6994fa43d6e3acb1fb97b495fd8dfeff2116528eb427bd658e6e5f293"
+    },
+    {
+      "path": "subjects/line-average-removal287A.txt",
+      "bytes": 11041,
+      "sha256": "55473f9e3683b9b53578b26d54b37eac5a1f2e92aa4de7780d09b1997444c1be"
+    },
+    {
+      "path": "subjects/manuscript289B.tex",
+      "bytes": 54939,
+      "sha256": "579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "subjects/prefix-residual286A.txt",
+      "bytes": 10303,
+      "sha256": "dbfc64f90d55e96c86795090a92765b13edef735eb5048713d435cc30ee27055"
+    },
+    {
+      "path": "subjects/quadratic-prefix290A.checkout.txt",
+      "bytes": 13464,
+      "sha256": "3dc7e8c67753e0116ab759bde39cf10ccf7b3c688080586722e1296ff84092ac"
+    },
+    {
+      "path": "subjects/quadratic-prefix290A.git.txt",
+      "bytes": 13464,
+      "sha256": "3dc7e8c67753e0116ab759bde39cf10ccf7b3c688080586722e1296ff84092ac"
+    }
+  ],
+  "nonzero_retained_artifact_count": 15,
+  "regime": "Exact raw retained bytes; manifest excludes itself"
+}

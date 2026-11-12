@@ -1,0 +1,3 @@
+* -text
+# Preserve frozen audit bytes while treating CRLF as an intentional line ending.
+audit290A/** whitespace=cr-at-eol

@@ -1,0 +1,254 @@
+Q251 /290A: A LINEAR-RANK PREFIX RESPONSE AFTER SINGLETON CANCELLATION
+12 November2026 UTC /13 November2026 Europe/Stockholm.
+Fabrication at main ff714438096db9520edfee4e3ad9d7eed41f6f97.
+Candidate source: separate frozen-source audit required before acceptance.
+
+0. BINDING AND PURPOSE
+
+The model and paid spectral inputs are those of manuscript289B.tex at
+446124a566483e6f1a8d499d801ce60e0abbb9d8, repository
+lluiseriksson/THE-ERIKSSON-PROGRAMME, papers/checkerboard-response/.
+Raw TeX SHA256:579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668.
+The published working-paper version is
+https://airr.science/papers/ARR-2026-0MKJW2Y51J8AQ96A/versions/v2/
+with PDF SHA256:03400cf6c9ecb9d12f7ca3ac0a881683d656e1216466402789262a7bec9cdc62.
+No PDF is changed or assessed here. Earlier source286A derived the exact
+conditional residual cost, and287A removed ordinary/alternating line modes.
+Their endpoint simplification does not establish redundancy for moving cuts.
+
+We construct a linear-sized space of actual remaining-row values attained
+by real high fields with zero singletons and zero removed line modes.
+This refutes a proposed redundancy/o(n)-rank shortcut for those response
+rows. It does NOT refute the quadratic-cut recovery candidate, bound the
+actual low residual cost sharply, or resolve Q251. The construction is
+retained as research toward a grouped result, not a separate small paper.
+
+1. MODEL AND CLAIM
+
+Let X=(Z/nZ)^3 with counting norm, c>0, n>=8 and4|n. Write (i,j,l)
+for coordinates, Delta_s u(x)=u(x+e_s)-u(x), and
+delta_s=Delta_s*=u(x-e_s)-u(x). All coordinates are cyclic.
+Take the actual real coexact space U=im d1*, where
+  (d1*W)_r=sum_s delta_s W_{sr}, W_{sr}=-W_{rs}.
+In particular W13=-psi gives (delta3 psi,0,-delta1 psi), and
+W23=-psi gives (0,delta3 psi,-delta2 psi).
+
+For either original channel epsilon=+1 or-1 let
+ H=cn^2, a=c/48, A0=(H+a)/2, B0=(H-a)/2,
+ b_epsilon(x)=A0+epsilon B0 (-1)^(i+j+l),
+ Q(u)=sum_(x,s,r) b_epsilon(x)|Delta_s u_r(x)|^2.
+A is the operator of Q restricted to U. Let L be its full low spectral
+space, F=U orthogonal-minus L, and B=A_F-cI. The paid spectral separation
+in289B (Proposition low and its proof) gives dim L=n-2, A_L<=c/8,
+B>=13c/3, and L contained in the diagonal-frequency coexact space N_d.
+Put O=U orthogonal-minus N_d; therefore O is contained in F. These facts
+do not require any permutation property of the cut. We will also use the
+elementary bound Q(u)<=12H||u||^2, since b<=H and ||Delta_s||<=2.
+
+For every slice set tau_i to the least residue of2i^2 mod n. Original
+cells are {i} times I times J3, where I is [0,tau_i-1], {tau_i}, or
+[tau_i+1,n-1], and J3 is {0} or [1,n-1]; omit empty cells.
+There is a row per component r, with coefficient
+       (Cu)_(r,cell)=sum_cell u_r / sqrt(n^3 |cell|).
+T consists exactly of {i} times {tau_i} times {0}, so
+       (Tu)_i=n^(-3/2)u(i,tau_i,0).
+P contains ALL other original rows, even if a remaining cell has volume1.
+Thus C=(T,P); no new or rotated observations are substituted.
+
+Set N=n/2. Let Pi_s project onto Fourier modes k_s in{0,N}, s=2,3,
+and Xi=(I-Pi_2)(I-Pi_3). This just removes the indicated coordinate bands.
+Our fields are in F cap ran Xi, independently of any commutation claim.
+
+Theorem. There is an explicit subspace S of the original P-row space,
+of dimension 3n/2-3, and a linear real lift w:S->O cap ran Xi cap ker T,
+such that Pw(alpha)=alpha and
+       <w(alpha),B w(alpha)> <=144 c n^8 ||alpha||^2.       (LIFT)
+For the actual conditional response
+ M_T=T_F B^-1 T_F*,
+ R_T=B^-1-B^-1 T_F* M_Tdagger T_F B^-1,
+ K_P=P_F R_T P_F*,
+where dagger means the finite spectral pseudoinverse, one consequently has
+       rank K_P >=3n/2-3,                                (RANK)
+       <alpha,K_P alpha> >=||alpha||^2/(144 c n^8)
+                    for every alpha in S.                (FLOOR)
+FLOOR is a bound on the compression to S; S need not be invariant under
+K_P. No floor on its entire range or inverse bound on r(L) is asserted.
+
+2. EXPLICIT REAL POTENTIALS
+
+Put m=n/2 and q=n/4. Define the period-four real sequences
+ sigma(j)=sin(pi j/2), kappa(j)=cos(pi j/2), rho(j)=kappa(j)-sigma(j).
+Their nonzero Fourier modes are only q and -q. Directly,
+ sigma(0)=0, sigma(-1)=-1, delta sigma(0)=-1,
+ rho(0)=rho(-1)=1, delta rho(0)=0.
+For t divisible by4 the sum of sigma(j) over0<=j<t is0; for t=2 mod4
+the same sum is1. These follow from the four-term cycle (0,1,0,-1).
+
+Choose three real vectors a,b,d in R^m subject only to
+ sum_(r=0)^(m-1)(-1)^r a_r=0,
+ sum_(r=0)^(m-1)(-1)^r b_r=0,
+ sum_(r=0)^(m-1)(-1)^r d_r=0.                            (AMP)
+Define h_a(2r+1)=-a_r and h_a(2r)=0, similarly h_b, and
+h_d(2r)=-d_r, h_d(2r+1)=0. Each constraint is a nonzero real functional;
+the amplitude space has dimension3(m-1).
+At Fourier frequency q, the exponential factor on odd slices is
+exp(-i pi(2r+1)/2)=-i(-1)^r, and on even slices it is (-1)^r.
+Thus AMP gives hat h_a(+-q)=hat h_b(+-q)=hat h_d(+-q)=0;
+the negative coefficient is the conjugate, not a second real constraint.
+
+Set
+ psi_a(i,j,l)=h_a(i)sigma(j)sigma(l),
+ psi_b(i,j,l)=h_b(i)sigma(j)sigma(l),
+ psi_d(i,j,l)=h_d(i)sigma(j)rho(l),
+ w^a=(delta3 psi_a,0,-delta1 psi_a),
+ w^b=(0,delta3 psi_b,-delta2 psi_b),
+ w^d=(delta3 psi_d,0,-delta1 psi_d), and w=w^a+w^b+w^d.
+Each field is explicitly d1* of a real skew form, hence belongs to the
+actual U; no projection is used. Its Fourier support is contained in
+ k2,k3 in{q,-q}, k1 not in{q,-q}.
+Differences cannot enlarge Fourier support. Since q and -q are neither0
+nor N, w lies in ran Xi. Since no support frequency has k1=k2=k3,
+w is orthogonal to N_d, hence w in O contained in F. In particular no
+constant or harmonic vector has been added to the actual coexact image.
+
+3. SINGLETONS AND ALL ORIGINAL REMAINING ROWS
+
+On the plane l=0 the preceding values give exactly
+ w^a(i,j,0)=(-h_a(i)sigma(j),0,0),
+ w^b(i,j,0)=(0,-h_b(i)sigma(j),0),
+ w^d(i,j,0)=(0,0,-(h_d(i-1)-h_d(i))sigma(j)).
+On odd slice i_r=2r+1 their sum is (a_r,b_r,d_r)sigma(j).
+On even slice2r it is (0,0,-d_r)sigma(j). The cyclic predecessor of
+slice0 is odd and h_d is zero there, so this includes the wraparound.
+
+Because4|n, reducing2i^2 modulo n preserves its residue modulo4:
+ tau_even=0 mod4, tau_odd=2 mod4.
+All tau_i are even and sigma(tau_i)=0. Therefore Tw=0 on every slice.
+Every odd cut has2<=tau_i<=n-2, so its prefix and suffix are nonempty.
+The unnormalized plane-prefix vector sum on odd slice i_r is exactly
+(a_r,b_r,d_r); on every even slice it is zero, including empty prefixes.
+The full j-line sums vanish since all k2 are +-q. Subtracting prefix and
+singleton from the full line gives the negative prefix for the suffix.
+The full l-line sums vanish since all k3 are +-q. Thus, for each of the
+three I intervals, the sum over its long-third cell l=1,...,n-1 is the
+negative of the plane sum. In particular every singleton-long-third row
+is zero. This accounts for ALL original cells and both slice parities.
+
+Let t_r=tau_(2r+1) and set, for components s=1,2,3,
+ z_(r,1)=a_r/sqrt(n^3 t_r),
+ z_(r,2)=b_r/sqrt(n^3 t_r),
+ z_(r,3)=d_r/sqrt(n^3 t_r).
+The set Z of possible z is characterized by three independent constraints
+       sum_r (-1)^r sqrt(t_r) z_(r,s)=0, s=1,2,3.
+It has dimension3m-3. Define Jz in the full original P-row space by the
+following four entries on each odd slice, for each component:
+ plane prefix:       z_(r,s),
+ plane suffix:      -sqrt(t_r/(n-t_r-1)) z_(r,s),
+ long-third prefix: -z_(r,s)/sqrt(n-1),
+ long-third suffix:  sqrt(t_r/((n-t_r-1)(n-1))) z_(r,s).
+All other P entries are zero. Cell lengths and normalization in section1
+give precisely these factors, with n-t_r-1>=1. In particular Pw=Jz.
+J is injective because the selected plane-prefix coordinates recover z,
+and ||Jz||>=||z||. Take S=JZ and w(alpha) from the potentials using the
+unique z with Jz=alpha. This proves the stated dimension and exact lift.
+
+4. ENERGY AND CONDITIONAL RESPONSE
+
+All norms below are counting norms. Orthogonality of sine and cosine gives
+ ||sigma||^2=n/2, ||rho||^2=n,
+ ||psi_a||^2=(n^2/4)||h_a||^2, likewise b,
+ ||psi_d||^2=(n^2/2)||h_d||^2.
+Since ||delta_s||<=2, the two nonzero vector components yield
+ ||w^a||^2<=2n^2||h_a||^2, ||w^b||^2<=2n^2||h_b||^2,
+ ||w^d||^2<=4n^2||h_d||^2.
+Applying ||v1+v2+v3||^2<=3 sum||vj||^2 gives
+ ||w||^2<=12n^2 (||h_a||^2+||h_b||^2+||h_d||^2).
+The parenthesized sum equals n^3 sum_(r,s)t_r|z_(r,s)|^2 and is at most
+n^4||z||^2. Consequently ||w||^2<=12n^6||z||^2. Since B<=12H I,
+       <w,Bw><=144cn^8||z||^2<=144cn^8||alpha||^2,
+which proves LIFT. The deliberately coarse constant and power are not
+advertised as sharp or as useful for the target-c energy inequality.
+
+For completeness put X=T_F B^-1/2, Y=P_F B^-1/2 and
+Pi=I-X*(XX*)dagger X. Finite spectral linear algebra makes Pi the
+orthogonal projector onto ker X even when T_F has dependent rows.
+Then R_T=B^-1/2 Pi B^-1/2 and K_P=Y Pi Y*.
+Whitening sends F cap ker T bijectively to ker X, so
+ rank K_P=rank(Y Pi)=rank(P restricted to F cap ker T).
+This follows also from ker(Y Pi Y*)=ker(Pi Y*). Since the range contains
+S by the explicit lift, RANK follows. It already holds for P restricted
+to the smaller F cap ran Xi cap ker T space.
+
+If v is in F cap ker T, its whitened vector B^1/2 v lies in ker X.
+For every row vector alpha, Cauchy--Schwarz therefore gives
+ |<alpha,Pv>|^2 <= <alpha,K_P alpha><v,Bv>.
+Apply this with alpha in S and v=w(alpha). For alpha nonzero the left
+side is ||alpha||^4; LIFT yields FLOOR after cancellation. At alpha=0
+the claim is immediate. No assertion of K_P-invariance of S is needed.
+
+5. WHAT THIS DOES AND DOES NOT ELIMINATE
+
+This is an explicit counterexample to the assertion that removing the
+ordinary/alternating complete-line bands and cancelling all singletons
+also annihilates the remaining original quadratic-cut rows. Their rank
+on that very subspace is at least3n/2-3, so it is not o(n) or bounded.
+It is a statement about an observation RESPONSE, not the rank of the
+specific low-mode residual. All original model hypotheses are retained;
+no hypothesis has been eliminated from the target theorem.
+
+For a low l, the paid singleton minimizer is
+ f_T(l)=-B^-1 T_F* M_Tdagger T_L l,
+and the actual remaining residual is r(l)=P_L l+P_F f_T(l).
+The exact additional cost from286A is <r(l),K_Pdagger r(l)>.
+The construction above proves neither that r(L) is contained in S nor
+that its complementary part is small. Even if it were contained in S,
+the coarse n^8 lift cost would not establish the desired below-c margin.
+No low-plus-high original full-kernel witness Q<c is provided here.
+No successful target-c recovery, log-loss necessity for all partitions,
+continuum theorem or physical Yang--Mills spectral gap is claimed.
+
+For dyadic n the cut also has the intended permutation property: if
+i+2i^2=j+2j^2 modulo n, then (i-j)(1+2(i+j))=0 modulo n. The second
+factor is odd and hence invertible modulo a power of2, so i=j modulo n.
+Our rank/lift proof itself needs only4|n, not this extra fact. For general
+multiples of4 no permutation assertion is made.
+
+Prior unit281 floating diagnostics at n=4,8,16 found no below-c witness;
+they are not asymptotic proofs. This unit uses a different exact mechanism
+and no new numerical experiment. Prior stopped direct-stream/projection
+routes remain stopped; this does not restart them under another name.
+
+6. MODEL ASSESSMENTS AND REVIEW CONTEXT
+
+Fabrication: the current Codex/OpenAI session, exact backend identifier
+not exposed to this document. Different-session analytic audit is required
+by CLAUDE.md rule4, with complete assignment, source hashes and report to
+be retained separately. No independent human peer review, new exact-PDF
+assessment, inherited score, publication acceptance, formal Lean check or
+computational certification is asserted. The source is research evidence.
+
+Primary comparison consulted12November2026, bounded to abstracts:
+Desbrun, Hirani, Leok and Marsden, Discrete Exterior Calculus,
+https://arxiv.org/abs/math/0508341 (v2,18August2005), describes discrete
+forms/operators on simplicial complexes. It is general background rather
+than a theorem about this periodic cubical sampling model. Our d1* formula
+is proved directly above; discrete differential calculus is not new here.
+Corach, Maestripieri and Stojanoff, Oblique projections and Schur complements,
+https://arxiv.org/abs/math/0006120 (16June2000), relates weighted projections
+and shorted operators. The conditional projection algebra is classical and
+is derived directly above; it is not claimed as a new general theorem.
+Neither abstract establishes priority or novelty for this period-four lift.
+External originality of the specific construction remains UNESTABLISHED.
+
+7. ONE ACTIVE NEXT QUESTION AND STOP RULE
+
+Q251 remains OPEN. Next bounded question: for the quadratic dyadic cut,
+what part of the actual r(L) lies in S, and can the B-minimum cost of its
+remaining part be bounded at a scale comparable with c||l||^2?
+Use the explicit four-row image J and the Fourier formula for f_T; do not
+replace r by arbitrary row data or infer inverse bounds from response rank.
+Falsifier for this lift route: a persistent nonzero residual outside S with
+no controlled lift, or bounds that grow too fast to compare to the paid
+low-mode margin. Retain such negative results. After three substantive
+units without a useful new bound, change mechanism or name the exact
+missing inequality. No new AIRR paper is justified by this lemma alone.

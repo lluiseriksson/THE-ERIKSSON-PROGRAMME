@@ -1,0 +1,196 @@
+Q251 /287A: ALL SECOND- AND THIRD-AXIS LINE MEANS STILL DO NOT REPAIR T
+12 November2026. Analytical fabrication at base
+5efdf550128be83898a675c601fea2929a38b115. Separate source audit required.
+No mathematical executable, formal verification, runtime, PDF or new grade.
+
+1. EXACT MODEL AND A STRONGER NEGATIVE SUBSPACE
+
+Use the actual one-channel real coexact model and original observations of
+279--286. n>=16 even, c>0, H=cn^2, a=c/48, and f(i)=i+tau_i a permutation.
+T consists of the original normalized samples n^-3/2 u(i,tau_i,0).
+L is the entire actual spectral space below c, dim L=d=n-2; F=L-perp in U;
+B=A_F-cI>=13c/3 and A_L<=c/8. J=n^(5/2)T_L:L->E is an isometry.
+All spaces, maps and witnesses ultimately are real. Complex Fourier is only
+a coordinate calculation, with conjugate frequencies paired.
+
+Define Pi_j to be the AMBIENT orthogonal Fourier projector onto frequencies
+with k_j in{0,n/2}, for j=2,3. Let
+ Pi=Pi_2+Pi_3-Pi_2 Pi_3, Xi=I-Pi.
+For every field in range Xi, both ordinary and alternating full-line sums
+vanish in directions2 and3, at every fixed value of the other coordinates.
+Only ordinary sums will be needed for the original cell interpretation.
+
+Put N=n/2, h_N=sum_(j=1)^N1/j,
+ K_n=(48/13)h_N+1/(6n^2-1), delta_n=128K_n^2/(48n^2-1),
+ t_n=N{h_N/(8pi^2)-1-128pi^2}-4K_n-d delta_n,
+ t'_n=t_n-8192K_n^3,
+ k'_n=max(0,ceil((t'_n-2d)/(K_n-2))).
+The claim is an ACTUAL subspace Z' in U with
+ dim Z'>=k'_n, T Z'=0, Xi Z'=Z', and
+ Q(w)<=77c||w||^2/116 for every w in Z'.                 (NEG)
+Moreover liminf dim Z'/n>=13/(768pi^2), uniformly in the permutation cut.
+There are thus eventually many deficient directions even after supplying
+every line mean in TWO coordinate directions, not merely a few added rows.
+Both original channels give a direct sum of dimension at least2k'_n.
+This is not a counterexample for ALL original prefix observations.
+
+2. THE FREQUENCY REMOVAL PRESERVES ACTUAL LOW/HIGH SPACES
+
+By279, U is frequencywise g(k)-perp, with zero frequency absent. Hence
+Pi_j preserves U and commutes with its orthogonal projector. The restricted
+original form A only couples k with k+q, q=(N,N,N). Each Pi_j retains or
+removes a whole such pair, because adding N interchanges0 andN and otherwise
+keeps the frequency outside{0,N}. Thus Pi_j commutes with A on U.
+Every low pair is diagonal k=(u,u,u), u!=0,N, so Xi is identity on L.
+It follows that Xi preserves F and commutes with B and its inverse there.
+Let R=P_F B^-1 P_F, extended by zero off F. Then
+ R'=Xi R Xi
+is exactly the shifted high inverse restricted to F'=Xi F, extended by zero.
+In particular 0<=R'<=R. No claim that an arbitrary projection preserves
+original cell means is made: here the zero line sums follow from explicit
+Fourier support, and the low space is unchanged by a proved pair calculation.
+
+3. KEEPING A UNIFORMLY POSITIVE SELECTED SINGLETON RESPONSE
+
+Let R0 be the actual common-polarization strong inverse of283, so0<=R0<=R.
+Its support projector Q0 retains, in each strong component and each nonzero
+transverse frequency theta=(r,t), the spatial line{1,z}^perp with
+z=(exp(2pi ir/n),exp(2pi it/n),1), on both graph layers. It removes the entire
+theta=0 fibre. The strong matrix is D_theta with spectrum in(0,6], hence
+ H R0>=Q0/6. The common line is inside V=1-perp and has rank1.
+
+In the original Fourier dictionary k=(u+r,u+t,u), Pi_3 selects u=0 modN,
+and Pi_2 selects u=-t modN. Each selects one whole q-pair for every theta.
+Thus they commute with R0 and Q0; set R0'=Xi R0 Xi<=R'.
+Use unnormalized evaluation S:u->(u(i,tau_i,0))_i, so T=n^-3/2 S.
+On W=V^n set K=S(HR0)S*, K'=S(HR0')S*. These equalcn^5 times the
+corresponding normalized singleton responses. Both annihilate W-perp.
+The285 average-polarization identity and one point per graph layer give
+ S Q0 S*|W=(1-n^-2)I_W/2.                                (AVG)
+This is diagonal in selected rows: Q0 is componentwise and layer-diagonal,
+and the selected points contain exactly one point in each graph layer.
+
+The elementary full-band projectors give, on ALL spatial-component rows,
+ S Pi_2 S*=2I/n and S Pi_3 S*=2I/n.                       (BAND)
+Indeed a coordinate-band projector has kernel zero unless both other
+coordinates agree, and at a coincident point its value is2/n. Distinct
+selected points have distinct x1, so every off-diagonal entry vanishes.
+Since Q0 commutes with Pi,0<=Pi Q0<=Pi<=Pi_2+Pi_3. Consequently
+ K'>=S Xi Q0 Xi S*/6
+    >=[(1-n^-2)/12-2/(3n)]I_W
+     =(1-8/n-n^-2)I_W/12 >=I_W/32                       (FLOOR)
+for n>=16. The last expression increases withn and its n=16 value exceeds
+1/32. Also K'<=K<=K_n I_W by282/285. This floor is paid after removing the
+frequency bands; a small trace perturbation alone would NOT justify it.
+
+4. PAYING THE TRACE LOST BY REMOVING BOTH BANDS
+
+Let Delta=K-K'>=0 on W. We prove
+                     tr Delta<=8K_n.                    (LOSS)
+Use strong-component coordinates s=x1+x2+x3, layers(s=2j-1,2j),
+y=(x1,x2), withj in Z_N (exchange the two parities in the other channel).
+For a fixed theta=(r,t), R0 is the same two-layer matrix tensored with its
+rank1 spatial projector in EVERY component; it is identity in the component
+index. Transforming that index givesN equally normalized Fourier modes.
+Pi_3 retains exactly one of those modes, u=0 modN, for every theta.
+Pi_2 retains exactly one, u=-t modN. Both keep the entire two-layer vector.
+The within-layer phases converting to the original Fourier pair are unitary
+and do not change the diagonal matrix element at a vertex. Therefore, for
+each j=2,3 and EACH selected vertex x,
+ tr_spatial[(H R0 Pi_j)(x,x)]=(1/N)tr_spatial[(H R0)(x,x)].
+This follows frequency by frequency even though the selected component
+mode forPi_2 depends ontheta; no averaging over cuts is needed.
+Summing the selected vertices yields
+ tr[S(HR0 Pi_j)S*]=(1/N)tr K <=(1/N)(2n K_n)=4K_n,
+since dim W=2n. Positivity andPi<=Pi_2+Pi_3 prove(LOSS).
+The intersection is only counted in an upper bound; no disjointness of the
+two removed bands is assumed. All traces here are ordinary real traces,
+equal to their complexifications' traces; there is no extra factor2.
+
+5. PAYING OPTIMIZATION AFTER BAND REMOVAL
+
+For a positive definite matrix G on W, let
+ S_E(G)=(P_E G^-1 P_E|E)^-1,
+the actual minimum of<alpha,Galpha> over P_E alpha=y. The285 proof, via
+its mean-eliminated trace and rotation estimate, gives
+                  tr S_E(K)>=t_n.
+This statement uses that intermediate trace directly, not a norm lower
+bound multiplied by dimension, and not an assumed equality with Sigma.
+
+Let A'=K'^-1 i_E S_E(K'), the minimizing lift E->W, wherei_E is inclusion.
+By(FLOOR) and S_E(K')<=K_n I, ||A'||<=32K_n. Testing this lift in the
+minimum forK, and using monotonicity, gives
+ 0<=S_E(K)-S_E(K')<=A'^* Delta A'.
+Taking traces and(LOSS) yields
+ tr S_E(K')>=tr S_E(K)-||A'||^2 trDelta
+                  >=t_n-8192K_n^3=t'_n.                 (SHORT-LOSS)
+Thus complementary singleton coefficients are optimized after the removal;
+they are not suppressed, fixed, or tacitly omitted.
+
+Put M'=T R' T*, Mhat'=cn^5 M'. It dominatesK' extended by zero on W-perp,
+and Mhat'<=K_n I on the full row space. Hence E lies inrange Mhat', and
+the attained optimized response on E is
+ Sigma'=(P_E (Mhat')dagger P_E|E)^-1.
+The same explicit multiplier/square-completion argument as285 is valid:
+ker Mhat' lies inW-perp, and the compressed pseudoinverse is positive onE.
+Minimization monotonicity gives Sigma'>=S_E(K'), so
+             tr Sigma'>=t'_n, 0<Sigma'<=K_n I.           (TRACE)
+If V' is its real spectral subspace for eigenvalues at least2, the286 trace
+count now gives dim V'>=k'_n. Since K_n=O(h_N) and h_N=O(logn), the extra
+loss8192K_n^3 divided by d h_N tends to zero. The limiting lower density
+therefore remains13/(768pi^2). Finite constants are very conservative;
+no small-size success, numerical witness or sharp transition is asserted.
+
+6. ACTUAL FIELDS, AND WHAT THE ORIGINAL REMAINING CELLS SEE
+
+For l in J*V' define f'=-R' T* (M')dagger T_L l and w'=l+f'.
+The proved range inclusion gives Tw'=0. Both l and f' lie inrangeXi and
+actualU. The restricted high inverse identity gives
+ <f',Bf'>=c<Jl,(Sigma')^-1 Jl><=c||l||^2/2.
+Exactly as in286, every linear combination obeys
+ Q(w')-c||w'||^2<=-3c||l||^2/8, ||f'||^2<=3||l||^2/26.
+The mapl->w' is linear and injective by its low projection. This proves
+(NEG), including its simultaneous dimension and77c/116 margin.
+All ordinary and alternating line sums in axes2,3 vanish on this subspace.
+Consequently even all such line observations, with arbitrarily large finite
+positive penalties and arbitrary combinations, cannot repair T at targetc
+for sufficiently large sizes. Their raw count can be ordern^2; the286
+o(n)-additional-row obstruction alone did not establish this result.
+
+For ANY w inrangeXi and any original intervalI inx2 at fixedx1=i, its two
+originalx3 cell rows satisfy exactly
+ C_(I,[1,n-1])w=-C_(I,{0})w/sqrt(n-1),                   (LONG)
+because every fullx3 line sum iszero. Atx3=0 the fullx2 sum isalsozero.
+If alsoTw=0, the unnormalized prefix/suffix sums obey
+ sum_(j<tau_i)w(i,j,0)=-sum_(j>tau_i)w(i,j,0).
+It follows that on Z' the FULL canonical observation C vanishes if and
+only if all the actual prefix rows
+ D_i w=(n^3 tau_i)^-1/2 sum_(0<=j<tau_i)w(i,j,0), tau_i>0,
+vanish in all spatial components and channels. Empty prefixes are omitted.
+When tau_i=0 the suffix is alreadyzero; when tau_i=n-1 the prefix is
+alreadyzero, so endpoint cuts introduce no spurious condition.
+This is a statement about actual fields with proved zero sums, not replacing
+the original map or assuming projections preserve its cells.
+
+Thus the full question has a concrete narrower obstruction test: determine
+the rank/action of these genuine planar prefix rows on Z'. Rank belowdimZ'
+would produce a full original C-kernel counterexample with the same margin.
+No such rank deficiency or energy cancellation for D is proved here. O(n)
+planar prefix rows can still be essential; Q251 remains OPEN. For both
+channels Z'_1 directsum Z'_2 has dimension at least2k'_n and the same margin.
+
+7. PROVENANCE AND NEXT STEP
+
+The Fourier projection, Schur minimization and trace perturbation mechanisms
+are classical finite linear algebra. Prior279/283/285/286 inputs are credited,
+not rediscovered. No model-specific external priority or frontier importance
+has been established. No hypothesis is counted as eliminated and no physical
+Yang-Mills/continuum conclusion follows. This is a genuine stronger negative
+observation result in the fixed finite model, not a new standalone paper.
+Retain the complete source and all audit objections; consolidate related
+285--287 results only with exact new manuscript/PDF review when warranted.
+
+Next within soleQ251: for tau_i=2i^2 modn, derive the actual planar-prefix
+action on the band-removed cancelling subspace, or a quantitative prefix
+residual-cost estimate. Do not revisit all-line-mean repair, now refuted.
+Keep the three-unit no-progress abandonment rule; no repeat281 size sweep.
