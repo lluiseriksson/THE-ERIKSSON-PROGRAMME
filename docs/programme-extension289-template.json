@@ -1,0 +1,12 @@
+{
+  "programme_id": null,
+  "initial_instruction_sha256": "8458953bee142a8d99a6839fef11d1fb004e79681a7ef7df72063ef4479a2d07",
+  "paper_ids": [
+    "ARR-2026-0MKJW2Y51J8AQ96A"
+  ],
+  "author_instruction": "Esta petición autoriza preparar, revisar y tramitar publicación en AIRR de resultados sólidos por las vías existentes, sin pedir confirmaciones repetidas. El dueño, creador y administrador de AIRR, autoriza implementar una delegación continua y revocable para sus manuscritos del programa y cambiar las reglas de AIRR que exijan nuevas confirmaciones por cada PDF. Registra la instrucción inicial real y deriva trazabilidad por hash sin simular nuevas respuestas humanas.",
+  "source_reference": "User-authored scheduled continuation in this chat, automation consolidar-e-investigar-the-eriksson-programme-en-airr, heartbeat 2026-11-12T21:16:38.856Z. Replays standing owner authority of 2026-11-06; NOT a new manual confirmation. Original activation call_221d426e0feb4d8e833a0364277b4a18/0 remains unchanged. This explicit paper is the verified sole-author programme record published today; addition covers its linked revision only, with all native gates retained.",
+  "recorded_at": "2026-11-12T21:16:38.856+00:00",
+  "rights_confirmed": true,
+  "operator_authorship_confirmed": true
+}
