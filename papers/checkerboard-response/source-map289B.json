@@ -1,0 +1,155 @@
+{
+  "status": "Proposed linked revision source; no exact new PDF, review grade, grant, receipt, or publication yet",
+  "base_sha": "9fb521efe3f758bd8c1a1cb22b76161c91d51fbc",
+  "editorial_choices": [
+    "One proposed linked revision, not four small papers. Endpoint partition explicit in title, abstract, theorem, conclusion.",
+    "Keep complete284B spectral/range/response proof chain. Add all load-bearing endpoint proof steps, including exact polarization average, cross-block bound, band-removed floor, sector loss, optimized inverse, real conversion and all cells.",
+    "Omit285 general-permutation optimized norm theorem and286/287 dimension-density/rank corollaries; use their proved intermediate lemmas only and derive those in full. No unsupported general-cut below-target claim.",
+    "Retain286 actual conditional-cost identity and287 planar-prefix equivalence to distinguish remaining moving-cut question from closed endpoint problem.",
+    "Earlier working paper immutable, same author. No old grade, overall stars, acceptance or independent review transferred.",
+    "Historical wording from284 that no invisible below-target field is known is replaced by precise endpoint-versus-optimal partition distinction.",
+    "Source audits involved Codex/OpenAI, backend unexposed. No declared exact-PDF assessment or formal check for this source.",
+    "No physical Yang-Mills/continuum claim. External priority unestablished. Original model assumptions unchanged, no hypothesis counted eliminated.",
+    "SourceCommit macro injection retained; separate build/report/package gates remain.",
+    "B only changes three inline formulas to display math, hides visible link borders while preserving links, and updates source-map name. All A artifacts and full source/engineering reports retained. New production and all-page visual review required before the one first exact-PDF assessment; no grading resample."
+  ],
+  "labels": {
+    "eq:sectorrotation": [
+      "285",
+      "288"
+    ],
+    "thm:useful": [
+      "283"
+    ],
+    "sec:residual": [
+      "286",
+      "287"
+    ],
+    "prop:residual": [
+      "286"
+    ],
+    "lem:green": [
+      "283"
+    ],
+    "thm:endpoint": [
+      "279",
+      "282B",
+      "283",
+      "285",
+      "287",
+      "288"
+    ],
+    "thm:cost": [
+      "280"
+    ],
+    "thm:whole": [
+      "282B"
+    ],
+    "lem:sectorloss": [
+      "288"
+    ],
+    "thm:range": [
+      "280"
+    ],
+    "cor:kernel": [
+      "282B"
+    ],
+    "lem:floorremoved": [
+      "287"
+    ],
+    "lem:image": [
+      "279"
+    ],
+    "prop:low": [
+      "279"
+    ],
+    "lem:cross": [
+      "285"
+    ],
+    "lem:frame": [
+      "280",
+      "283"
+    ],
+    "thm:spectrum": [
+      "279"
+    ]
+  },
+  "manuscript_sha256": "579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668",
+  "primary_comparison": {
+    "Kenyon": {
+      "scope": "Primary abstract refreshed; prior284 retained Theorem7.3 reading for classical logarithmic context",
+      "url": "https://arxiv.org/abs/math-ph/0202018"
+    },
+    "Corach": {
+      "scope": "Primary abstract freshly read: projection/shorted-operator relation only, no detailed theorem or priority claim",
+      "url": "https://arxiv.org/abs/math/0006120"
+    },
+    "LawlerLimic": {
+      "scope": "Prior284 retained bounded reading of1.2/4.4, no fresh full-book read",
+      "url": "https://www.math.uchicago.edu/~lawler/srwbook.pdf"
+    },
+    "date": "2026-11-12",
+    "external_priority": "UNESTABLISHED"
+  },
+  "predecessor": {
+    "status": "Immutable earlier published working paper; prior assessments not transferred",
+    "url": "https://airr.science/papers/ARR-2026-0MKJW2Y51J8AQ96A/versions/v1/",
+    "id": "ARR-2026-0MKJW2Y51J8AQ96A",
+    "version": "v1",
+    "source": "manuscript284B.tex",
+    "public_pdf_sha256": "9f94b0619b37b052aaecfcdfafdc190e0965f950c31d52ef4f9932706d212538",
+    "source_sha256": "11869a9c1a23d9283eb8650d1dd35d0d1422cfa6dc28102f8aa51578e499f733"
+  },
+  "accepted_sources": {
+    "288": {
+      "path": "research/endpoint-sharp288A.txt",
+      "bytes": 12205,
+      "sha256": "f06188b8d72581b600e89326fb18144631c9606e692ea186a7ce53919202724b"
+    },
+    "282B": {
+      "path": "inputs/dual-response282B.txt",
+      "bytes": 17058,
+      "sha256": "c4ba4f8658a98ccfdfeff61a746cc0d459ad172d711b0ea2e6ba70173a572c6d"
+    },
+    "280": {
+      "path": "inputs/cancellation-range280A.txt",
+      "bytes": 10920,
+      "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36"
+    },
+    "286": {
+      "path": "research/prefix-residual286A.txt",
+      "bytes": 10303,
+      "sha256": "dbfc64f90d55e96c86795090a92765b13edef735eb5048713d435cc30ee27055"
+    },
+    "285": {
+      "path": "research/optimized-singleton285A.txt",
+      "bytes": 14656,
+      "sha256": "b545bb56ad6eae379f89f3cd1eff05b81a4bded9ca93df997b129f653d60f38a"
+    },
+    "287": {
+      "path": "research/line-average-removal287A.txt",
+      "bytes": 11041,
+      "sha256": "55473f9e3683b9b53578b26d54b37eac5a1f2e92aa4de7780d09b1997444c1be"
+    },
+    "283": {
+      "path": "inputs/useful-response283A.txt",
+      "bytes": 20089,
+      "sha256": "cdd045c2baf07c90511b3363a8d4abf44acc53fc96d944f104223d181adea5db"
+    },
+    "279": {
+      "path": "inputs/full-coexact-spectrum279A.txt",
+      "bytes": 12104,
+      "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+    }
+  },
+  "byte_regime": "Exact raw bytes; no normalization; paper .gitattributes -text",
+  "manuscript": "manuscript289B.tex",
+  "preserved_289A": {
+    "pdf_pages": 19,
+    "assessment": "None requested or issued",
+    "manuscript_sha256": "90236127708dfc87bb553258a78299497e2e1112d4332126af8df5a29b36980b",
+    "reason": "All19 pages visually read; three overfull inline formula paragraphs moved to displays and visible link boxes hidden before first exact-PDF assessment. No mathematical change.",
+    "source_sha": "9fb521efe3f758bd8c1a1cb22b76161c91d51fbc",
+    "pdf_sha256": "5a1c53ac5c0778e8b402dedfed194d95ba8b49aed17740d6794c52eed1d16250"
+  }
+}
