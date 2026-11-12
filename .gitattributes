@@ -69,3 +69,6 @@ papers/checkerboard-response/research/optimized-singleton285/** -text whitespace
 
 # Preserve exact286 complete audit and scope bytes.
 papers/checkerboard-response/research/prefix-residual286/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space
+
+# Exact287 source audit bytes.
+papers/checkerboard-response/research/line-average-removal287/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space
