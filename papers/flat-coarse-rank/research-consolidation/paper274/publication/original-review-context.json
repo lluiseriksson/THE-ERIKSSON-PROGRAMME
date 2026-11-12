@@ -1,0 +1,38 @@
+{
+  "recorded_at": "2026-11-12T04:28:21.054151+00:00",
+  "actual_identity": "Codex/OpenAI; backend/version/effort unavailable",
+  "inherited_context_visible": true,
+  "blind": false,
+  "independence_established": false,
+  "full_inherited_chat_export_available": false,
+  "old_scores_transferred": false,
+  "first_only_round_for_subject": true,
+  "PDF_pages_text_read": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "individual_original_PNGs_opened": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "parent_production_not_independent_execution": true,
+  "full_source266_273_reports_read": false,
+  "actual_local_retention_hashing_only": true,
+  "private_identifiers_not_release": true,
+  "prompt_sha256_raw": "6442874cf6ec37bb29eb4e1a5f19783b0aa4fc46c807be3d8ce5797941771ed1",
+  "source_commit": "bec9892206b0e9d82bc96ed247895d68d9c25e48"
+}

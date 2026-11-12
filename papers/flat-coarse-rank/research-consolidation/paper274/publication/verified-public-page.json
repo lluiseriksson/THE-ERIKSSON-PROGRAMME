@@ -1,0 +1,41 @@
+{
+  "observed_at": "2026-11-12T05:37:27.870573+00:00",
+  "version_url": "https://airr.science/papers/ARR-2026-451FW8N5MC8KYV5S/versions/v1/",
+  "public_status": "working_paper",
+  "actual_displayed_PDF_url": "https://airr.science/papers/ARR-2026-451FW8N5MC8KYV5S/versions/v1/ARR-2026-451FW8N5MC8KYV5S-v1.pdf",
+  "same_directory_PDF": true,
+  "PDF_bytes": 359042,
+  "PDF_sha256": "63a303bb47c16d5c1877ef37d9dd3511e3064ebafa274e1041afbd998606a9da",
+  "public_native_assessment_id": "arr:assessment:e711b16c-814f-4205-9e51-871ee26bff43",
+  "original_importance": 3.5,
+  "original_overall": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "All nine exact PDF pages read and individually viewed; analytical checks of source parity, actual adjoints, finite Green normalization, endpoint zeros, cutoff constants and complex projection found no definite main-claim-invalidating error. Involved AI reading, not formal verification."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Actual full cells, curl-adjoint preimage, uniform whole-profile inverse, nonzero norm, paid source-weight energy and correction-only scope are explicit. Ancillary affine-example source anchor and a few hypothesis restatements remain desirable."
+    },
+    "novelty": {
+      "stars": 2,
+      "basis": "The low-coverage actual-coexact construction and exact strong-null exclusion are plausible specialist contributions. Logarithmic potential theory and projection stability have classical backgrounds; bounded primary reading does not establish historical priority."
+    },
+    "significance": {
+      "stars": 2,
+      "basis": "Useful separation of coverage, strong-kernel injection and coexactness in a concrete finite family. The enormous threshold, unresolved permutation target and absent solver or optimality result limit broader quantitative relevance."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Exact PDF and TeX hashes checked; returned parent report records two matching fresh builds,113 inputs and27 zero-exit commands. All nine original PNGs viewed. No independent rerun, full241-member audit or cross-platform version-locked environment verification by this assessor."
+    }
+  },
+  "recommendation": "minor_revision",
+  "material_objections": [],
+  "complete_report_links_displayed": 15,
+  "raw_first3_report_files_byte_verified": true,
+  "all89_released_source_members_already_byte_verified": true,
+  "editorial_acceptance": false,
+  "independence_established": false
+}

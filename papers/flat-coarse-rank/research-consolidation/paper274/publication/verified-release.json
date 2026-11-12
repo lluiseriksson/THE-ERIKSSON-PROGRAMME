@@ -1,0 +1,34 @@
+{
+  "observed_at": "2026-11-12T05:19:21.362884+00:00",
+  "public_release": "https://github.com/arr-research/arr-research.github.io/releases/tag/ARR-2026-451FW8N5MC8KYV5S-v1",
+  "published_at": "2026-11-12T05:16:34Z",
+  "exact_pdf_sha256": "63a303bb47c16d5c1877ef37d9dd3511e3064ebafa274e1041afbd998606a9da",
+  "exact_pdf_bytes": 359042,
+  "all_public_package_members_equal": 89,
+  "package_rule": "Actual native iter_package_files excludes generated suffixes including PDFs/logs; canonical PDF is separately verified asset; full production logs/PDFs remain inside the separately packaged complete-production-evidence.zip.",
+  "assets": {
+    "ARR-2026-451FW8N5MC8KYV5S-v1.pdf": {
+      "bytes": 359042,
+      "sha256": "63a303bb47c16d5c1877ef37d9dd3511e3064ebafa274e1041afbd998606a9da",
+      "url": "https://github.com/arr-research/arr-research.github.io/releases/download/ARR-2026-451FW8N5MC8KYV5S-v1/ARR-2026-451FW8N5MC8KYV5S-v1.pdf"
+    },
+    "ARR-2026-451FW8N5MC8KYV5S-v1-sources.zip": {
+      "bytes": 8561149,
+      "sha256": "51db0a0a688fd506c688482f2c9445c3d7a0f61916db0738b46ab57845bf9998",
+      "url": "https://github.com/arr-research/arr-research.github.io/releases/download/ARR-2026-451FW8N5MC8KYV5S-v1/ARR-2026-451FW8N5MC8KYV5S-v1-sources.zip"
+    },
+    "MANIFEST.sha256": {
+      "bytes": 10817,
+      "sha256": "87851ce16e6f45cf8f1542ab75a5ffa494503fe4fa5de97c84cc7083ed04b7d0",
+      "url": "https://github.com/arr-research/arr-research.github.io/releases/download/ARR-2026-451FW8N5MC8KYV5S-v1/MANIFEST.sha256"
+    },
+    "RECORD.json": {
+      "bytes": 3794,
+      "sha256": "473f54377bcaecee1d071be5b9793a69d7b3013354232ffe44db950b999af5f9",
+      "url": "https://github.com/arr-research/arr-research.github.io/releases/download/ARR-2026-451FW8N5MC8KYV5S-v1/RECORD.json"
+    }
+  },
+  "working_paper_only": true,
+  "editorial_acceptance": false,
+  "native_published_marker_verified": false
+}
