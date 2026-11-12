@@ -1,0 +1,9 @@
+{
+  "initial_head": "e3bfbf6261333d19174b3321d889d16d3d6fc7a3",
+  "final_head": "e3bfbf6261333d19174b3321d889d16d3d6fc7a3",
+  "raw_subject_bytes": 10303,
+  "raw_checkout_sha256": "dbfc64f90d55e96c86795090a92765b13edef735eb5048713d435cc30ee27055",
+  "raw_git_blob_sha256": "dbfc64f90d55e96c86795090a92765b13edef735eb5048713d435cc30ee27055",
+  "unchanged": true,
+  "body_capture": "N/A: no PR/body exists"
+}

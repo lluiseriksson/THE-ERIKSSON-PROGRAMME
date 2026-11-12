@@ -1,0 +1,51 @@
+[
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\checkerboard-response\\research\\prefix-residual286A.txt",
+    "path": "subjects/prefix-residual286A.checkout.txt",
+    "bytes": 10303,
+    "sha256": "dbfc64f90d55e96c86795090a92765b13edef735eb5048713d435cc30ee27055",
+    "read_scope": "Entire183-line new source, fresh analytical review"
+  },
+  {
+    "original": "e3bfbf6261333d19174b3321d889d16d3d6fc7a3:papers/checkerboard-response/research/prefix-residual286A.txt",
+    "path": "subjects/prefix-residual286A.git.txt",
+    "bytes": 10303,
+    "sha256": "dbfc64f90d55e96c86795090a92765b13edef735eb5048713d435cc30ee27055",
+    "read_scope": "Exact Git binding identical checkout"
+  },
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\checkerboard-response\\research\\optimized-singleton285A.txt",
+    "path": "subjects/optimized-singleton285A.txt",
+    "bytes": 14656,
+    "sha256": "b545bb56ad6eae379f89f3cd1eff05b81a4bded9ca93df997b129f653d60f38a",
+    "read_scope": "Full source read in immediately preceding285 audit; trace, rotation, shorting and graph identities freshly checked against retained exact source in286"
+  },
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\checkerboard-response\\inputs\\cancellation-range280A.txt",
+    "path": "subjects/cancellation-range280A.txt",
+    "bytes": 10920,
+    "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36",
+    "read_scope": "Full source read in immediately preceding285 audit; original row/range and finite minimization reused explicitly"
+  },
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\flat-coarse-rank\\research-consolidation\\full-spectrum279\\full-coexact-spectrum279A.txt",
+    "path": "subjects/full-coexact-spectrum279A.txt",
+    "bytes": 12104,
+    "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4",
+    "read_scope": "Entire source reread in286, especially original rows and channel dimensions"
+  },
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\CLAUDE.md",
+    "path": "subjects/CLAUDE.md",
+    "bytes": 24408,
+    "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+    "read_scope": "Full read in immediately preceding285 audit; unchanged governance carried into286"
+  },
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13831,
+    "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+    "read_scope": "Full read in immediately preceding285 audit; no-inbound/exact-byte/explicit-check rules applied"
+  }
+]

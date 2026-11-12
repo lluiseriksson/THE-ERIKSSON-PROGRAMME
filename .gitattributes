@@ -66,3 +66,6 @@ papers/flat-coarse-rank/research-consolidation/canonical-helical264/** -text
 
 # Exact285 source audit and provenance bytes.
 papers/checkerboard-response/research/optimized-singleton285/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space
+
+# Preserve exact286 complete audit and scope bytes.
+papers/checkerboard-response/research/prefix-residual286/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space
