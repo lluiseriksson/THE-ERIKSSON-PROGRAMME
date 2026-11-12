@@ -1,0 +1,257 @@
+Q251 / 285A: OPTIMIZING ALL SINGLETON COEFFICIENTS DOES NOT REMOVE THE LOGARITHM
+Analytical candidate, 12 November 2026. Parent fabrication at research base
+4d55ce32f54983977aac175f89e80e9cd0b64278; separate frozen-source audit required.
+No numerical/formal execution, new PDF, numerical assessment or publication.
+Codex/OpenAI involved programme context; exact served backend unavailable.
+
+1. SCOPE AND PREVIOUS PROVED INPUTS
+
+Use the exact model/normalizations of manuscript284B and notes279/280/282B/283A.
+n>=4 even, c>0, H=cn^2, a=c/48; one original channel, actual real U=im d1*.
+A is the ORIGINAL source-weighted form restricted to U. L=1_(0,c)(A)U,
+F=U orthogonal to L, B=A_F-cI, R=P_F B^-1 P_F. No ambient invariance claim.
+Original singleton observations are (Tu)_i=n^-3/2 u(i,tau_i,0), where
+f(i)=i+tau_i mod n is ANY permutation. This includes the dyadic quadratic cut.
+The full canonical C ALSO has prefix/long-cell rows; they are NOT included
+in the optimization in this note. Both original channels obey the same proof.
+
+Paid inputs, not new hypotheses:
+(i) dim L=n-2, A_L<=c/8, B>=13c/3; range(T_F) contains range(T_L).
+(ii) J=n^(5/2) T_L:L->E=T_L L is an isometry. E lies in W=V^n,
+     V={v in R^3:sum v_r=0}. Put N=n/2 and d=2(N-1)=n-2.
+(iii) M=T R T*, 0<=M<=K_n/(c n^5) I, where
+     K_n=(48/13)h_N+1/(6n^2-1), h_N=sum_(j=1)^N 1/j.
+(iv) The selected common-polarization strong inverse R0 from283 satisfies
+     0<=R0<=R. It acts separately in each paired strong component, with
+     Fourier matrix H^-1 D(theta)^-1 tensor P(theta) for theta!=0;
+     it is ZERO on the entire transverse zero fibre. Here
+       D=[[3,-S],[-conj(S),3]], S=1+exp(ia)+exp(ib),
+       Lambda=9-|S|^2=|exp(ia)-1|^2+|exp(ib)-1|^2+|exp(ia)-exp(ib)|^2,
+       P projects onto {1,z}^perp, z=(exp(ia),exp(ib),1).
+     This is an ACTUAL coexact polarization, not a scalar replacement for U.
+(v) In singleton row coordinates E0 consists of equal pair values, lying in
+     V with their component mean zero. Its dimension is d and
+       ||P_E-P_E0||<=epsilon=2/(48n^2-1).
+     For the scalar unit strong graph Green G=Ddagger on 2n^2 vertices,
+       g0=G(x,x)>=h_N/(8pi^2), G(x,y)>=-1.
+     These finite bounds and all normalizations were proved in283.
+
+Define the OPTIMIZED singleton response on E by its quadratic form:
+   <y,Sigma y> = c n^5 min_{alpha in R^(3n), P_E alpha=y} <alpha,M alpha>.
+Thus every E-perpendicular singleton coefficient is allowed, with arbitrary
+size and correlation. We do not restrict alpha to E or require a linear
+choice of the minimizing correction. The minimum is attained, as proved below.
+
+Candidate theorem (OPT):
+   b_n <= ||Sigma|| <= K_n,
+   b_n = [N{h_N/(8pi^2)-1-128pi^2}-4K_n]/[2(N-1)]
+                         -128K_n^2/(48n^2-1).
+In particular (SIMPLE):
+   h_N/(16pi^2)-28-128pi^2 <= ||Sigma||.
+The lower bounds can be negative and are extremely conservative at usable
+finite sizes. Their purpose is an exact divergence statement, not a useful
+numerical threshold. No computational experiment or extrapolation is used.
+
+Candidate corollary (SINGLETON-KERNEL): whenever b_n>8/7, there is a nonzero
+REAL w in U with Tw=0 and Q(w)<c||w||^2. Therefore no finite positive penalty
+on these singleton rows alone restores the target c at all even sizes.
+This does NOT say Cw=0 for the full original canonical observation map.
+
+2. A UNIFORMLY POSITIVE SELECTED RESPONSE ON ALL V-VALUED ROWS
+
+Let K=c n^5 T R0 T* restricted to W. Since R0 is componentwise and the cut
+selects one point in each of the two layers of each component, K is block
+diagonal with N blocks on V plus V:
+                  K_j=[[A0,B_j],[B_j^t,A0]].
+All blocks are real. In the unitary two-dimensional transform,
+   A0=n^-2 sum_(theta!=0) 3P(theta)/Lambda(theta),
+   B_j=n^-2 sum_(theta!=0) zeta_j(theta) S(theta)P(theta)/Lambda(theta),
+where |zeta_j|=1 is the phase for the two selected points; conjugating S
+instead is harmless if the two layers are interchanged. Frequencies pair
+under conjugation, so A0 is real symmetric and B_j real. The spatial trace
+of P is ONE, not two. Normalization is n^-3 H^-1=(c n^5)^-1; the residual
+n^-2 comes from the unitary component Fourier transform.
+
+For each nonzero theta, D has both eigenvalues in (0,6], so D^-1>=I/6.
+The two layer evaluation phases have modulus one; after replacing D^-1 by
+I/6 the quadratic form is diagonal in the two row vectors. Moreover
+   n^-2 sum_(theta!=0) P(theta) = (n^2-1)/(2n^2) P_V.                 (AVG)
+To prove this identity, conjugation makes the sum real. Permuting the three
+coordinates of z, then dividing by its third coordinate, permutes the
+nonzero transverse frequency pairs bijectively modulo n. The associated
+spatial permutation conjugates P. The sum therefore commutes with all
+three-coordinate permutations, annihilates 1, and is scalar on V (a real
+matrix commuting with all such permutations has constant diagonal and
+constant off-diagonal). Its trace is n^2-1, giving (AVG).
+Consequently, on W,
+   kappa I<=K<=K_n I,   kappa=(1-n^-2)/12>=1/16.                    (ELL)
+The upper bound follows from R0<=R and input(iii). Longitudinal row vectors
+parallel to 1 are annihilated by T R0 T*. The actual M is NOT replaced by K;
+K will only provide a lower bound under minimization.
+
+3. THE PAIR-SUM/PAIR-DIFFERENCE CROSS BLOCK IS UNIFORMLY BOUNDED
+
+Let a,b be unique centered frequency angles in [-pi,pi), with rho=|a|+|b|.
+An explicit spanning vector for {1,z}^perp is
+   w=(exp(-ib)-1, 1-exp(-ia), exp(-ia)-exp(-ib)), ||w||^2=Lambda.
+Its three entries have a common factor -2i, real amplitudes, and phases
+   exp(-ib/2), exp(-ia/2), exp(-i(a+b)/2).
+Thus every phase difference has absolute value at most rho/2. Entrywise
+Im(P_jk) is bounded by rho |w_j w_k|/(2Lambda). The Frobenius norm then gives
+                  ||Im P(theta)||<=rho/2.
+No smooth choice of a unit polarization or division by a coordinate is used.
+Because transpose, not adjoint, is relevant to the real B_j,
+   ||(B_j-B_j^t)/2||
+        <= n^-2 sum_(theta!=0) |S| ||Im P||/Lambda
+        <= (3/2)n^-2 sum rho/Lambda.                               (CROSS1)
+The evaluation phase zeta_j never needs a distance estimate.
+
+For centered integer residues r,s, a=2pi r/n,b=2pi s/n, put m=max(|r|,|s|).
+The chord inequality gives Lambda>=4(a^2+b^2)/pi^2. Also
+   rho/(a^2+b^2)<=n/(pi m).
+There are at most8m frequency pairs in shell m and 1<=m<=n/2; the Nyquist
+boundary uses fewer points, not more. Hence
+   n^-2 sum rho/Lambda <= (pi^2/4)*(4/pi)=pi.
+Combining with(CROSS1) yields
+                   ||(B_j-B_j^t)/2||<=3pi/2<=2pi.                  (CROSS)
+This bound is uniform over every original pair separation and permutation cut.
+
+4. PAYING OPTIMIZATION OVER EVERY PAIR DIFFERENCE
+
+Change row coordinates orthogonally to plus=(odd+even)/sqrt2 and
+minus=(odd-even)/sqrt2. This is only an analysis of the ORIGINAL row space,
+not a modified observation map. K_j has blocks
+   X_j=A0+(B_j+B_j^t)/2,
+   Y_j=A0-(B_j+B_j^t)/2,
+   Z_j=(B_j^t-B_j)/2,
+with the off-diagonal block Z_j up to an irrelevant sign.
+For fixed plus vector a_j, minimization over its minus vector gives
+   <a_j,L_j a_j>,  L_j=X_j-Z_j Y_j^-1 Z_j^t.
+By(ELL), Y_j>=kappa I and kappa I<=L_j<=K_n I. The latter lower bound follows
+also by minimizing kappa(||a_j||^2+||minus||^2).
+By(CROSS) the trace of the correction on the two-dimensional V is at most
+   2(2pi)^2/kappa<=128pi^2.
+Input(v), or the spatial trace tr(P_V P(theta))=1 in the Fourier formula,
+gives tr X_j=g0+G(o_j,e_j)>=h_N/(8pi^2)-1. The omitted transverse zero
+optical branch pairs to zero with the equal plus vector, so it adds no term.
+Therefore
+           tr L_j>=h_N/(8pi^2)-1-128pi^2.                          (LOCAL-OPT)
+
+5. PAYING THE REMAINING GLOBAL MEAN DIRECTIONS
+
+Let Lblock=directsum_j L_j on V^N. E0 corresponds to mean-zero plus vectors.
+After minimizing every minus vector, the remaining allowed E0-perpendicular
+directions are exactly the two-dimensional common-plus mean space (and the
+longitudinal null rows, which have no K energy or E0 pairing).
+The effective operator S0 for minimizing K with fixed P_E0 alpha=y is the
+Schur complement of Lblock by this mean space. Its compression part has trace
+at least sum_j tr L_j-2K_n. Its subtracted PSD correction has rank at most2
+and is bounded above by that compression, hence norm at most K_n and trace
+at most2K_n. This uses positivity of the Schur complement, not a rank heuristic.
+It follows that
+   tr S0 >= N{h_N/(8pi^2)-1-128pi^2}-4K_n,
+   ||S0|| >= tr S0/[2(N-1)].                                      (MEAN)
+All means and pair differences have been optimized, not set to zero by fiat.
+
+6. PAYING ROTATION TO THE ACTUAL POSITIVE-WEIGHT USEFUL SPACE
+
+For any positive definite K on W and subspace E' of W, elementary constrained
+minimization gives
+   min_(P_E' alpha=y)<alpha,K alpha>
+       =<y,(P_E' K^-1 P_E'|E')^-1 y>.
+Indeed K alpha must lie in E'; solving for its multiplier proves both the
+formula and attainment. Let S_E(K) denote this inverse compression.
+Both E and E0 have dimension d and projection distance at most epsilon<1.
+Principal two-plane rotations give an orthogonal O on W with O E0=E and
+||O-I||<=2epsilon: on a principal angle theta, ||O-I||=2sin(theta/2)
+<=2sin(theta), while sin(theta)<=epsilon. Use identity on the common/rest space.
+On E0 the two inverse compressions differ by at most
+   ||P_E0(O^t K^-1 O-K^-1)P_E0||<=4epsilon/kappa.
+Their inverses have norm at most K_n by(ELL); the inverse difference identity
+therefore gives
+   ||O^t S_E(K) O-S0||<=4epsilon K_n^2/kappa
+                         <=128K_n^2/(48n^2-1).                    (ROT)
+The comparison is between operators on the identified equal-dimensional
+spaces, not between singular ambient inverses.
+
+7. TRANSFER TO ALL ORIGINAL SINGLETON COEFFICIENTS
+
+Put Mhat=c n^5 M on the full original 3n-dimensional real row space.
+It dominates K extended by zero on W-perpendicular, and Mhat<=K_n I.
+Thus ker Mhat is contained in W-perpendicular and E is contained in range
+Mhat. For any alpha with P_E alpha=y, its W component has the same pairing
+and its K energy equals the full extended K energy. Taking minima gives
+   Sigma>=S_E(K); also Sigma<=K_n I by the admissible choice alpha=y.
+For completeness the minimum defining Sigma is attained even if Mhat is
+singular. The operator P_E Mhatdagger P_E|E is positive definite, because E
+lies in range Mhat. With lambda=(P_E Mhatdagger P_E|E)^-1 y,
+alpha=Mhatdagger lambda is feasible, and its energy is <y,lambda>.
+Every feasible perturbation h has P_E h=0, so <h,Mhat alpha>=<h,lambda>=0;
+PSD then proves minimality. Hence
+               Sigma=(P_E Mhatdagger P_E|E)^-1.                    (SHORT)
+Combining(MEAN),(ROT) proves(OPT), with every E-perpendicular singleton
+direction included. The minimization can only use the original singleton
+coefficients, not hidden prefix/long-cell rows.
+
+For(SIMPLE), K_n<=4h_N<=4N for n>=4: 1/(6n^2-1)<=4h_N/13 pays the small term.
+In(OPT), N/[2(N-1)]<=1 and is at least1/2. Thus its first part is at least
+   h_N/(16pi^2)-(1+128pi^2)-2K_n/(N-1).
+The last fraction is at most16. The rotation term is at most
+   2048N^2/(192N^2-1)<=11,
+since64N^2>=11. This proves the stated SIMPLE bound for every n>=4 even.
+Since h_N>=log(N+1), the optimized response is unbounded, even after all
+singleton corrections. For a proposed fixed upper constant C0, every included
+n with log(n/2+1)>16pi^2(C0+28+128pi^2) contradicts that bound. These sizes
+are only an explicit sufficient threshold, not an estimated sharp transition.
+
+8. ACTUAL SINGLETON-KERNEL COUNTEREXAMPLE, NOT THE FULL CANONICAL KERNEL
+
+Let beta=||Sigma|| and take a real unit eigenvector y in E for that eigenvalue.
+Let l=J* y, so ||l||=1 and T_L l=n^-5/2 y. Since E lies in range M, the
+actual high cancelling field
+   f=-B^-1 T_F* Mdagger T_L l
+satisfies T_F f=-T_L l. By the same finite square completion as280,
+   <f,Bf>=<T_L l,Mdagger T_L l>=c<y,Sigma^-1 y>=c/beta.
+This step uses(SHORT), not the generally invalid inverse of P_E Mhat P_E.
+For w=l+f in actual U, Tw=0, and
+   Q(w)-c||w||^2=<l,(A_L-cI)l>+<f,Bf>
+                         <=-7c/8+c/beta.
+If b_n>8/7 then beta>=b_n>8/7, yielding the strict negative value. The witness
+is specified by actual finite spectral operators and a real eigenvector,
+not a numerically exhibited vector. No floating-point witness is claimed.
+Moreover ||f||^2<=3/(13beta), and for beta>8/7
+   Q(w)/||w||^2 <= c-c(7/8-1/beta)/(1+3/(13beta)).
+This tends to c/8 along the proved beta divergence. Any finite positive
+singleton penalty vanishes on w, so cannot repair this deficient direction.
+One channel's witness extends to the original direct sum by setting the other
+channel to zero. No channel rotation is used.
+
+The non-singleton cell means of w have NOT been estimated or shown zero.
+Thus Q251, which includes those original cells, stays OPEN. What is closed
+is the proposed rescue by arbitrary singleton E-perpendicular corrections,
+and, more strongly, a singleton-only target-c repair for every large size.
+Any successful full-row repair must use the non-singleton rows substantively.
+This is a finite original coexact model statement, not a physical Yang-Mills
+mass gap, continuum result, or claimed external-priority theorem.
+
+9. PRIMARY COMPARISON AND NEXT BOUNDED QUESTION
+
+Schur minimization/shorting is classical. The primary publisher abstract of
+Anderson and Trapp, Shorted Operators II, SIAM J. Appl. Math.28(1975), DOI
+10.1137/0128007, identifies shorting and credits finite-dimensional work to
+Anderson(1971). Corach, Maestripieri and Stojanoff, arXiv:math/0006120, abstract,
+likewise explicitly relates oblique projections and Schur complements.
+Only those primary abstracts were successfully opened in this unit; an author
+PDF mirror timed out. No full-text theorem comparison or priority search is
+claimed. The finite minimizations above are proved here rather than imported
+with unstated hypotheses. Classical 2D Green logarithms remain credited to
+the primary sources already read in282/283/284. Exact model-specific priority
+of this optimized-singleton obstruction is UNESTABLISHED.
+
+Remain within the single active Q251 question. Next mechanism: genuine
+original prefix/long-cell coefficients, whose restricted high response and
+correlation with singleton rows must be paid; alternatively estimate those
+actual non-singleton means of the cancelling field above. Do not repeat the
+refuted unaugmented or all-singleton schemes or the281 size sweep. Abandon a
+new prefix subroute after three substantive units without mathematical advance.
+Retain this candidate and any failed audit unchanged if a defect is found.
