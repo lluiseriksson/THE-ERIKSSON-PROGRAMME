@@ -1,0 +1,204 @@
+Q251 /288A: SHARP LOGARITHMIC KERNEL LOSS FOR THE FULL ENDPOINT PARTITION
+12 November2026. Parent analytical fabrication at base
+29b37070c83d767797ffa7e2deecef72c9a44db2; separate frozen-source audit required.
+No numerical/formal execution, runtime, new manuscript/PDF grade or deposit.
+
+1. THE ORIGINAL FIXED CUT, AND THE NEW CLAIM
+
+Keep279--287's actual real coexact space, original SOURCE weights
+H=cn^2,a=c/48,c>0 and counting norm. Let n>=16 be even and NOW FIX tau_i=0
+for everyi. This is an admissible original canonical partition: x1 slices,
+x2 cells{0},[1,n-1], and x3 cells{0},[1,n-1], in every original spatial
+component/channel. Let C_end denote the FULL collection of these normalized
+cell sums. No changed, projected or rotated observation is substituted.
+
+For one channel let lambda_end(n)=min_(0!=w in U, C_end w=0) Q(w)/||w||^2.
+The space is nonzero: U has dimension2(n^3-1), whereas C_end has at most12n
+real rows, and2(n^3-1)>12n for n>=16. All forms are finite and positive.
+Set N=n/2, h_N=sum_(j=1)^N1/j, K_n=(48/13)h_N+1/(6n^2-1), and
+ b_end(n)=h_N/(16pi^2)-17/2-32(2pi+8)^2
+                                  -256K_n^2/(48n^2-1).
+The claim is the explicit sandwich, whenever b_end(n)>0,
+ c/K_n <= lambda_end(n)
+       <= c pi^2/(2n^2)+16c/[13 b_end(n)].               (ENDPOINT)
+In particular lambda_end(n) is of order c/log n as evenn tends toinfinity:
+the constants in two positive-sided comparisons are independent ofn,c.
+This proves target-c failure for this FULL original fixed-cut partition
+at all sufficiently large sizes. It does not disprove existence of another
+O(n) canonical partition, and does not settle the nonlinear quadratic cut.
+The original two-channel direct sum obeys the same sandwich.
+
+The previous287 construction only gave a constant subtarget upper bound,
+possibly using low frequencies with energy comparable toc. Here a fixed
+lowest nonzero component Fourier sector is retained and its optimized
+response still diverges. This pays the vanishing full-kernel upper bound.
+
+2. PAID INPUTS AND THE LOWEST COMPONENT SECTOR
+
+Use287's removal of both bands k2,k3 in{0,N}: Xi=I-(Pi2+Pi3-Pi2Pi3).
+It preserves actual U and all low L and commutes with A and B=A_F-cI.
+The high inverse R'=Xi P_F B^-1 P_F Xi is genuine on F'=Xi F.
+Its fields have zero ordinary and alternating line sums in axes2 and3.
+T is n^-3/2 evaluation on the original line(i,0,0); J=n^(5/2)T_L is an
+isometry. On W=V^n, V=1-perp in the spatial components, put
+ K=S(HR0)S*, K'=S(HXiR0Xi)S*, S=n^(3/2)T.
+By287, I/32<=K'<=K<=K_n I on W; both vanish on W-perp.
+Their difference Delta is positive semidefinite. The actual normalized
+response Mhat'=cn^5 T R' T* dominates K' and is at mostK_nI.
+
+Translation by2 inx1 preserves the source weights, U, Xi, the sample line
+and all these operators. It induces the same cyclic shift by2 on row data.
+The complex row sector H_1 consists of
+ alpha_i=n^-1/2[a exp(2pi i i/n)+b exp(2pi i(1+N)i/n)],
+witha,b inC^3. Its norm squared is||a||^2+||b||^2. The sector H_1 intersectW
+has complex dimension4, witha,b inV. It corresponds to component character
+exp(2pi i j/N) in the paired layers s=2j-1,2j. Signs of a chosen translation
+action can conjugate this label, without changing any assertion below.
+
+The actual useful space E in this sector has complex dimension2: its low
+preimage is exactly the diagonal pair k=(1,1,1),(1+N,1+N,1+N), with both
+spatial polarizations. There are no other low frequencies withk1=1modN.
+Its A_L eigenvalue is mu_-(1) from279. Rationalizing that expression gives
+ mu_-(1)=12Ha sin^2(2pi/n)/[H+a+sqrt((H+a)^2-4Ha sin^2(2pi/n))]
+        <=6a sin^2(2pi/n)<=c pi^2/(2n^2).                (LOW)
+The denominator is at least2H because H>=a and the square root is at least
+H-a. No continuum approximation is used.
+
+3. A CONSTANT, NOT LOGARITHMIC, LOSS IN THIS SECTOR
+
+We prove the localized operator estimate
+                 ||Delta|H_1||<=8.                     (LOCAL-LOSS)
+It is stronger here than287's global trace loss and is what permits the
+low-frequency construction. Work first on the full6-dimensional row sector,
+so restriction toW only improves the bound. For g=S*alpha the unitary torus
+Fourier transform has values a/n at k1=1 and b/n at k1=1+N, independent of
+k2,k3, andzero elsewhere. Thus each unordered checkerboardpair may be
+represented uniquely by k1=1 and arbitraryk2,k3, with input vector(a,b)/n.
+
+The norm of HR0 on a non-diagonal pair is at most1/delta, where
+ delta=3-|exp(2pi ik1/n)+exp(2pi ik2/n)+exp(2pi ik3/n)|.
+On a removed pair at least one ofk2,k3 is0orN. It cannot be diagonal because
+k1=1. For centered transverse residues r,t, the paid282 sine-chord bound is
+ delta >=8(r^2+t^2)/(3n^2).
+If k3 isfixed at0orN, take r=k1-k3, t=k2-k3; the centeredr has|r|>=1 andt
+ranges over all centered residues. If k2 isfixed at0orN, instead take
+r=k1-k2, t=k3-k2. The same inequality holds: multiplying all three phases
+by one common unitphase leaves the absolute sum unchanged. Again|r|>=1.
+Therefore EACH of the four lines k2=0,N or k3=0,N contributes at most
+ (1/n^2)sum_t 1/delta <=(3/8)sum_(t inZ)1/(1+t^2)
+                       <=(3/8)(1+2*2)=15/8
+to the quadratic response per||alpha||^2. The elementary estimate
+sum_(t>=1)1/t^2<=1+integral_1^infinity x^-2 dx=2 suffices.
+The union contribution is at most4*(15/8)=15/2<=8. Counting intersections
+twice is only an upper bound. The common-polarization projection and omission
+of all other branches reduce the norm, not increase it. The actual band
+projectors commute withR0, so Delta is precisely this positive removed
+response. This proves(LOCAL-LOSS) with all Fourier normalization factors.
+
+4. SHORTING IN THE FIXED SECTOR WITHOUT A LOG-SQUARED LOSS
+
+For tau0 the two selected points in every strong component have the SAME
+relative displacement: their graph coordinates are (2j-1,0),(2j,0).
+The component Green function is translation invariant in its graph plane.
+Thus K has the same local two-point block in every component. In the sector
+H_1, changing to normalized pair-plus and pair-minus row coordinates gives
+the same blocks X,Y,Z as285, now acting onV, with
+ tr X>=h_N/(8pi^2)-1 and ||Z||<=2pi.
+The strong useful space E0 in this sector is the pair-plus copy ofV; its
+global mean restriction is automatic because the component character is
+nonconstant. There is NO additional common-mean elimination in this sector.
+The other source parity uses the same displacement with layer labels changed.
+
+K' need not remain componentwise, but it preserves H_1 by the proved
+translation symmetry. Write its pair-plus/minus blocks asX',Y',Z'. By
+(LOCAL-LOSS), tr X'>=tr X-16 and||Z'||<=2pi+8. By287's genuine floor,
+Y'>=I/32. The minimized operator onE0 inside this sector is the Hermitian
+Schur complement S0'=X'-Z'Y'^-1 Z'^*. Consequently
+ tr S0'>=h_N/(8pi^2)-17-64(2pi+8)^2.                    (BRIGHT)
+The factor64 is2 spatial dimensions times32. Blocks may be complex in this
+sector; every transpose in this Schur expression is the Hermitian adjoint.
+Using only the crude global optimized perturbation bound would loseO(log^2n)
+and fail to prove this conclusion. The bounded crossblock is paid explicitly.
+
+The285 row-space angle bound applies separately in this invariant sector:
+ ||P_E-P_E0||<=epsilon=2/(48n^2-1).
+Indeed both subspaces and projections preserve the component character;
+restriction cannot increase their projection distance. Equal ranks are2.
+A unitary principal-plane identification O:E0->E has||O-I||<=2epsilon.
+The difference of inverse compressions ofK' is at most4epsilon/(1/32).
+Both inverse-compression inverses have norm at mostK_n, so
+ ||O* S_E(K') O-S0'||<=256K_n^2/(48n^2-1).              (ROT)
+Here all operators are restricted to H_1 intersectW. Translation symmetry
+makes the full minimization a direct sum over sectors, so allowing other
+row sectors cannot reduce this sector's shorted form through hidden coupling.
+
+The optimized actual response Sigma'=(P_E(Mhat')dagger P_E|E)^-1 has the
+same sector decomposition. Its finite range/minimization argument is paid
+in287, and it dominates S_E(K'). Combining(BRIGHT),(ROT), then dividing the
+trace by2, gives in this sector
+                  ||Sigma'_1||>=b_end(n).               (RESPONSE)
+Its upper bound isK_n. In particular b_end(n) grows likeh_N/(16pi^2):
+K_n^2/n^2 tends tozero and all the other subtracted terms are constants.
+
+5. A REAL FULL-CANONICAL KERNEL FIELD WITH VANISHING ENERGY
+
+When b_end(n)>0 choose a unit top eigenvector y ofSigma'_1 with eigenvalue
+beta>=b_end(n). Putl=J*y and f=-R'T*(M')dagger T_Ll, whereM'=TR'T*.
+This initially may be complex. The287 range and square-completion identities
+give Tl+Tf=0, ||l||=1 and<f,Bf>=c/beta. Bothl,f lie inrangeXi andactualU.
+They remain in component sector1 by the same translation symmetry. Thus
+||f||^2<=3/(13beta), and using(LOW),
+ Q(l+f)=Q(l)+<f,Bf>+c||f||^2
+       <=c pi^2/(2n^2)+16c/(13beta).                    (ENERGY)
+The norm squared ofl+f is at least1 by spectral orthogonality.
+
+To obtain an actual REAL field, pair this sector with its complex conjugate,
+component sectorN-1. Forn>=16 these are distinct orthogonal characters.
+The real operators andXi preserve conjugation. Replacingl+f bysqrt2 times
+its real part preserves its norm and quadratic energy, because the two
+characters are orthogonal for both the invariant inner product andA.
+The same replacement makes the low part real ofnorm1 and preserves every
+zero observation. This is not a claim that one complex Fourier mode isreal.
+
+ZeroT and allx2,x3line sums imply FULL C_end vanishing: the point cell is
+zero; the two cells with one coordinate0 and the other in[1,n-1] have sums
+equal to the corresponding full line minus thatpoint, hencezero; the final
+[1,n-1] by[1,n-1] cell is the wholeplane minus the two fulllines plus the
+point, hencezero as well. This also follows from287's prefix equivalence
+with the now empty prefix. Normalizations multiply zero and remain original.
+Thus(ENERGY) yields the upper bound in(ENDPOINT). Any finite penalty on the
+originalC_end data vanishes on this actual witness.
+
+For the lower bound,282B's exact full-kernel estimate applies to this cut,
+since f(i)=i is a permutation: Q(w)>=c||w||^2/K_n onactualkerC_end.
+No new estimate or inherited numerical verdict is substituted for that
+proved input. The two-channel direct sum has the same lowerbound and its
+minimum is at most the one-channel upperbound, by zeroing the otherchannel.
+
+Finally h_N/logn->1, K_n/logn->48/13 andb_end(n)/logn->1/(16pi^2).
+Multiplying the bounds bylogn/c gives a positive finite liminf and finite
+limsup (at least13/48 and at most256pi^2/13 respectively). These limits
+prove the claimed order, not an exact asymptotic constant. All thresholds
+remain extremely conservative; no practical small-n counterexample claimed.
+
+6. DISPOSITION AND THE SINGLE ACTIVE QUESTION
+
+This closes the endpoint-partition asymptotic kernel-gap route with a sharp
+order and a genuine full-original-observation counterexample forlarge n.
+It does not conflict with277's above-c numerical values in the smaller
+paired trial space atn4,8,16; those were neither full-U nor asymptotic bounds.
+Q251 still asks about the BEST original canonical partition, including the
+active tau_i=2i^2 modn. The fixed-cut theorem neither solves nor refutes that
+optimization. No logarithmic LOWER bound on optimal total row count follows.
+No physical Yang-Mills or continuum conclusion; PR29 20/41 TermSource=0.
+
+Classical Fourier/Green/shorting methods are credited to the primary context
+retained in284--287. Exact model-specific external originality remains
+UNESTABLISHED; no full-text priority comparison for this theorem is claimed.
+The combined285--288 results now warrant grouped manuscript consolidation
+with the existing284 finite spectral/range results, rather than four small
+papers. A new version needs its own exact PDF, visual check, complete model
+review context and reproducible package; no prior grade transfers.
+Preserve one active research questionQ251. Its next bounded mathematical
+task remains actual nonlinear planar-prefix action or residual cost; abandon
+that subroute after three units without a derived advance. No repeat281 sweep.
