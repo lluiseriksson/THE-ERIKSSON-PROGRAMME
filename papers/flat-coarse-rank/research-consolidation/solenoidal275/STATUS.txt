@@ -1,0 +1,30 @@
+275A: accepted as a scoped analytical construction after a complete separate
+role source audit of 0f987f41340b6f36ce6bb41a413c405918ab5dda.
+Original raw proof SHA256 78b03c4fef7bb50f1375b7f64953fef5a623195ec9af94e10c41ee717051d239.
+Full report and actual involved review context are retained in source-audit275A.
+
+ERRATUM275A-N1: section5's reference to Paper274 section2 should read section1.1,
+Finite model and actual observations. The original audited text remains intact;
+the explicit row formula is correct. No material mathematical failure found.
+
+Derived: real actual curl-adjoint preimage, exact original strong/weak energies
+and norm, full canonical means, and complete parametrization ONLY of the stated
+paired-layer transverse subspace. No actual invisible low-energy vector or
+target-c kernel bound has been proved. No numerical/formal execution or grade.
+
+Projection/longitudinal-trace route counter3, stopped without reset. Q251 stays
+the sole open question. Next mechanism: solve the direct equations2-3 on actual
+stream potentials. For permutation cuts, first eliminate each t_s with its odd
+singleton, then derive the remaining even singleton and rectangle constraints.
+Obtain a quantitative Rayleigh witness or a precise obstruction. A restricted
+subspace obstruction cannot prove the full-space gap. No small standalone paper.
+
+Primary reading: official arXiv math/0508341 abstract and metadata opened
+2026-11-12; authors Desbrun/Hirani/Leok/Marsden,2005. It supplies classical
+discrete forms/vector-field/operator background, not priority evidence for this
+specific restriction. No full-paper novelty review or historical originality
+claimed. https://arxiv.org/abs/math/0508341
+
+PR29 remains20/41,TermSource0; physical gap and continuum OPEN. Original274
+publication and its assessment are unchanged. This unit is retained for later
+substantive grouping, not a new AIRR submission.

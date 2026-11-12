@@ -1,0 +1,51 @@
+{
+  "subject_commit": "0f987f41340b6f36ce6bb41a413c405918ab5dda",
+  "Git_raw_sha256": "78b03c4fef7bb50f1375b7f64953fef5a623195ec9af94e10c41ee717051d239",
+  "checkout_raw_sha256": "78b03c4fef7bb50f1375b7f64953fef5a623195ec9af94e10c41ee717051d239",
+  "raw_equal": true,
+  "explicit_CRLF_to_LF_text_equivalent": true,
+  "artifacts": [
+    {
+      "path": "subjects/layer-stream275A-Git.txt",
+      "origin": "0f987f41340b6f36ce6bb41a413c405918ab5dda:papers/flat-coarse-rank/research-consolidation/solenoidal275/layer-stream275A.txt",
+      "bytes": 7409,
+      "sha256": "78b03c4fef7bb50f1375b7f64953fef5a623195ec9af94e10c41ee717051d239",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/layer-stream275A-checkout.txt",
+      "origin": "actual frozen checkout C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\flat-coarse-rank\\research-consolidation\\solenoidal275\\layer-stream275A.txt",
+      "bytes": 7409,
+      "sha256": "78b03c4fef7bb50f1375b7f64953fef5a623195ec9af94e10c41ee717051d239",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/coverage_coexactness274.tex",
+      "origin": "bec9892206b0e9d82bc96ed247895d68d9c25e48:papers/flat-coarse-rank/research-consolidation/paper274/coverage_coexactness274.tex",
+      "bytes": 29296,
+      "sha256": "fc4d23951bca6bad51ffd2af70a95d439a01eb4202015ff9098878c6bc9c912c",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/coexact-trace-repair273A.txt",
+      "origin": "3aa9367c15f1814403c784ecb97628c45101c00e:papers/flat-coarse-rank/research-consolidation/projection271/coexact-trace-repair273A.txt",
+      "bytes": 8083,
+      "sha256": "5a4051cff938220062e55f5ded7aa8e586fd8ae0daedd78d439e47973cf4be13",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "origin": "0f987f41340b6f36ce6bb41a413c405918ab5dda:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "origin": "0f987f41340b6f36ce6bb41a413c405918ab5dda:CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "exact raw bytes; no normalization"
+    }
+  ]
+}
