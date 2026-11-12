@@ -1,0 +1,170 @@
+278A -- EXPLICIT PAIRED-SPACE FIXED-CUT WITNESS BY LAYER CHARACTERS
+2026-11-12; analytical candidate awaiting separate source audit.
+Base3941d0206575f3aa7a300510a416e0ffedaf231a. No new paper/grade.
+
+1. EXACT CLAIM AND ITS PRE-EXISTING SCOPE
+Let n>=32 be divisible by16, c>0, H=cn^2,a=c/48. Keep original physical
+forward edges, source parity, counting norm, actual U=(im d1*)^2, and ALL
+original component/channel means. Fix tau_i=0 on every slice: x2 cells are
+{0},[1,n-1] and x3 cells are {0},[1,n-1], for every x1=i.
+Let M=n/16 and h_M=sum_(k=1..M)1/k.
+There is an explicit real nonzero field (w,0) IN THE PAIRED275 SUBSPACE,
+annihilating every one of those original normalized rows, with
+  Q(w)/||w||^2 <= c[1/8+3pi^4/(2h_M)].                    (1)
+In particular, if h_M>=4pi^4, then Q(w)<=c||w||^2/2<c||w||^2.
+The condition is nonvacuous along multiples of16 since h_M diverges;
+h_M>=log(M+1) supplies an explicit sufficient size condition. No practical
+small-grid bound is asserted and this is NOT an extrapolation of277 numerics.
+
+The broad fixed-cut obstruction was ALREADY established in257 in actual U,
+for arbitrary fixed transverse product partitions. This is a new explicit
+witness within275's smaller paired class, with a paid harmonic-series bound;
+it does not solve the moving-cut/nonlinear target or justify a duplicate paper.
+Its meaning is to close the fixed-cut control analytically in the precise
+subspace tested in277, and expose where exact cancellation fails to transfer.
+
+2. BASE TWO-DIMENSIONAL FIELD WITH TWO EXACT ZERO VALUES
+On Y=Z_n^2 write coordinates(u,j), backward delta_r=I-shift(-e_r), and
+Lpsi=(delta2psi,-delta1psi,delta1psi-delta2psi), as275. For1<=k,l<=M set
+ theta_k=2pi k/n,
+ lambda_kl=4sin^2(theta_k/2)+4sin^2(theta_l/2),
+ b_kl=sin(theta_k)cos(theta_l/2),
+ S=sum_(k,l=1..M) b_kl^2/lambda_kl^2 >0,
+ a_kl=b_kl/(S lambda_kl^2),
+ psi(u,j)=sum_(k,l=1..M) a_kl sin(theta_k u)cos(theta_l(j+1/2)),
+ t=(0,1,-1),                      V=t+Lpsi.               (2)
+These are finite real periodic functions; lambda>0 and b>0 in this range.
+At j=0, delta2 of each cosine factor is cos(theta_l/2)-cos(-theta_l/2)=0.
+At u=0 AND u=1, delta1 sin(theta_k u)=sin(theta_k). Consequently
+ delta2psi(0,0)=delta2psi(1,0)=0,
+ delta1psi(0,0)=delta1psi(1,0)=sum a_kl b_kl=1.
+Thus V(0,0)=V(1,0)=0 exactly, not approximately. Since every difference
+has zero mean, sum_Y Lpsi=0, and
+ ||V||_Y^2=2n^2+||Lpsi||_Y^2>=2n^2.                      (3)
+Pointwise V has spatial component sum0 and shifted component sum0 by275.
+
+3. LIFT WITH A REAL LAYER CHARACTER AND ACTUAL COEXACTNESS
+For odd s=1,3,...,n-1 define chi_s=(-1)^((s-1)/2) and
+ V_s(i,j)=chi_s V(i-s,j),
+ t_s=chi_s t,      psi_s(i,j)=chi_s psi(i-s,j).             (4)
+The shift commutes with L. There are n/2 layers, an even number, and
+sum_(s odd)chi_s=0. Hence sum_s t_s=0; all hypotheses of275 are DERIVED
+from(2)-(4). Set w(A_s(y))=w(B_s(y))=V_s(y), channel2zero.
+The backward-divergence and zero-global-mean proof275 then applies, with
+the explicit real Fourier curl-adjoint preimage from275 section2. This is
+actual image membership, not an extra assumed structure or Hodge projection.
+Equation(3) gives ||w||^2=2(n/2)||V||_Y^2>=2n^3>0.
+
+4. EXACT CANCELLATION OF ALL ORIGINAL CELLS, INCLUDING TAU0 TOTALS
+For a scalar Fourier mode exp(2pi i(ku+lj)/n), the sum
+ W_i(j)=sum_(s odd) chi_s V(i-s,j)
+has a factor sum_(q=0..n/2-1)(-exp(-4pi i k/n))^q.
+It is zero unless k congruent n/4 or3n/4 modulo n. The support of V is
+the zero frequency and (k,l)=(+/-k0,+/-l0),1<=k0,l0<=M, because L preserves
+frequencies. None has that resonance. Therefore W_i(j)=0 identically.
+
+Let sigma(r)=r for odd r and r-1 for even r modulo n, and
+ E_i(j)=chi_sigma(i+j) V(i-sigma(i+j),j).
+At j=0 the base first coordinate is0 if i odd and1 if i even. The two
+zeros in section2 prove E_i(0)=0 for every i.
+
+The essential TOTAL sum_j E_i(j)=0 must also be proved (276A-N1).
+For a base Fourier mode set epsilon=0 when i+j odd and1 when i+j even.
+Using n divisible4, chi_sigma=exp(pi i(sigma-1)/2) is well-defined on
+odd residues. Its contribution to E is a constant depending on i times
+ exp(i[2pi(l-k)/n+pi/2]j) exp(i[2pi k/n-pi/2]epsilon).
+The last factor is2-periodic in j, hence a linear combination of1 and
+(-1)^j. Summing over all j in Z_n kills both terms unless
+                   l-k congruent +/-n/4 modulo n.        (5)
+For the support in(2), |l-k|<=2M=n/8<n/4; the constant mode also avoids(5).
+Thus the total E sum is exactly0, componentwise. This argument uses complex
+Fourier modes only to prove identities for the real field already defined.
+
+For tau0, left interval is empty, singleton sums E_i(0)=0,W_i(0)=0,
+and right sums follow from their TOTALS. Original x3zero sums are E,
+and x3long sums are2W-E, so all four nonempty cell types vanish in every
+spatial component. Every channel2 row is0. The positive original factor
+1/sqrt(n^3|cell|) therefore leaves every observed row exactly0. No row,
+long cell, global mean or tau0 total has been dropped.
+
+5. STRONG ENERGY BOUND WITH THE ORIGINAL COUNTING FACTORS
+Let E_Y(V)=sum_(y,r=1,2)|V(y+e_r)-V(y)|^2. At a Fourier mode put
+d_r=1-exp(-i theta_r), so lambda=|d_1|^2+|d_2|^2. The squared L symbol is
+ |d_2|^2+|d_1|^2+|d_1-d_2|^2<=3lambda.
+The scalar positive counting Laplacian has eigenvalue lambda. Parseval
+therefore gives E_Y(Lpsi)<=3||Delta_positive psi||_Y^2. The sin/cos modes
+in(2) are mutually orthogonal, each with squared norm n^2/4 (all frequencies
+strictly between zero and Nyquist). Their shifted cosine phases do not
+change orthogonality. Hence
+ E_Y(V)<=3(n^2/4)sum a_kl^2 lambda_kl^2=3n^2/(4S).         (6)
+
+For1<=l<=k<=M, theta_k<=pi/8. The elementary inequalities sin x>=2x/pi
+on[0,pi/2], cos(theta_l/2)>=1/sqrt2, and sin x<=x give
+ b_kl^2>=8k^2/n^2,
+ lambda_kl<=(4pi^2/n^2)(k^2+l^2),
+ b_kl^2/lambda_kl^2>=n^2/(8pi^4 k^2).
+There are k choices1<=l<=k, so
+                S>=n^2 h_M/(8pi^4).
+Combining with(6), E_Y(V)<=6pi^4/h_M.
+All translated layer fields in(4) have equal norm and energy. By275,
+ Q_H/||w||^2=(H/2)E_Y(V)/||V||_Y^2
+             <=(c/4)E_Y(V)<=3pi^4 c/(2h_M).              (7)
+This accounts for both paired layers and every physical component.
+
+6. WEAK ENERGY AND TARGET
+On the odd-layer array with counting norm sum_s,y|V_s(y)|^2, each of the
+three maps V_s(y) -> V_(s+2)(y+e1),V_(s+2)(y+e2),V_(s+2)(y) is a
+permutation, hence an isometry. Each difference has squared norm at most
+4 times that array norm. Therefore the EXACT275 weak form obeys
+ Q_a<=12a sum_s,y|V_s|^2=6a||w||^2=(c/8)||w||^2.          (8)
+This improves the coarse full-space12a estimate only because the physical
+paired norm is twice the odd-layer norm; no weak forward label is omitted.
+Equations(7)-(8) prove(1). If h_M>=4pi^4, strong quotient<=3c/8 and weak
+quotient<=c/8, yielding Q<=c||w||^2/2. The nonzero field and all means
+were proved independently above. Any finite quadratic penalty on those
+means is exactly0, regardless of its size. No numerics are needed.
+
+7. FAILURE OF TRANSFER, ROUTE ACCOUNTING AND FALSIFIERS
+For moving tau_i, the singleton samples become
+ chi_sigma(i+tau_i) V(-tau_i+epsilon,tau_i),
+epsilon=0/1 according to parity of i+tau_i. Our proof pays ONLY the two
+zeros at(0,0),(1,0). It supplies neither these moving zeros nor the partial
+prefix sums. Full E totals and W remain0 under the same lift, but that does
+not pay individual refined cells. In particular no assertion is made for
+tau_i=2i^2 mod n. Imposing extra zeros or changing spectral support would
+require a new paid energy argument. Whole-plane zero remains excluded276.
+
+This is direct-stream unit3: a rigorous candidate control witness, rather
+than another numerical sweep, but the moving-permutation objective is still
+unresolved. The general fixed-cut obstruction was already known internally.
+Do NOT reset the moving-target counter on this control result or publish it
+alone. Close this three-unit direct-stream exploration, retain275-278 grouped,
+and switch within Q251 to a genuinely different moving-cut analysis. Concrete
+block: original E-prefix cancellations plus moving point constraints with a
+uniformly affordable strong energy have not been constructed or excluded.
+No general canonical lower bound, full-U coercivity, Yang-Mills physical gap
+or continuum result follows. PR29 remains20/41,TermSource=0.
+
+Falsifiers for audit: period4 character signs and wrap, shifted cosine zeros,
+all original total/singleton/long rows, resonances k and l-k, Parseval factor
+n^2/4, harmonic lower bound constants, paired weak factor2, and whether prior
+257 already subsumes the claimed global scope. Preserve any failure.
+
+8. NOVELTY AND CONTEXT
+Internal257 already proves fixed-product-cut failure in the larger true
+coexact space, using finite logarithmic cutoffs. No new global fixed-cut
+theorem or priority is claimed here. The new recorded content is an explicit
+band-limited stream/real layer-character witness in the restricted275 class
+and its derived bound. Its significance is methodological/control only until
+the moving geometry is handled. This is not a new frontier paper.
+Primary background read: Lawler and Limic, Random Walk: A Modern Introduction,
+author-hosted https://www.math.uchicago.edu/~lawler/srwbook.pdf,
+section4.4.1, Theorem4.4.4, PDFpage87. It describes logarithmic asymptotics
+of the two-dimensional potential kernel. This supports classical background
+only; its random-walk constants/conventions are NOT used in this proof.
+The harmonic sum, spectral factors and all constants above are derived here.
+Only the indicated bounded passage was read; no exhaustive novelty search
+or priority certificate. No Lean/Colab/executable verification, new AI grade,
+independent/blind/human peer review or publication is claimed by this source.
+Author: current root Codex/OpenAI; exact serving version/effort not independently
+established here. Shared inherited programme context. Separate audit pending.
