@@ -1,0 +1,54 @@
+268A grouped route status,11 November2026 UTC.
+Exact audited referent920ed55ab59215af244f925cc48121043ceb0ec6.
+Original raw/Git/checkout proof SHA256
+f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d.
+The source UNREVIEWED header is preserved as historical bytes. Read it
+with the complete own exact-source report and this subsequent status.
+
+Verdict: ACCEPT_ANALYTICAL_STRUCTURAL_EXACT_STRONG_NULL_EXCLUSION.
+No material failure or minor correction found. Parent read the whole12895-
+byte report, actual context, assignment/bindings and verified all10 raw
+manifested artifacts. Complete report SHA256 raw
+dd0fd9cb43696fe3840d286b05ca8f70a874790876527374ce402e86a9858b17.
+Manifest SHA256 raw
+4c10b852e4d918ef0d2a66b27a0c2cb211c344305770c7789f01b6daa37106f9.
+All full report/context/assignment/status and five exact subjects retained
+in source-audit268A/ without normalizing raw bytes or omitting findings.
+
+Accepted theorem: for EVERY evenn>=4 and ANY chart cut map t_i, the
+specified full actual original-channel slice-cut canonical mean map C
+has kerC intersect kerQ_H={0} on the whole ambient real space, hence
+on actual(im d1*)². No evenness, permutation, affine motion or coverage
+condition on t is used. True left-interval means and singleton means
+give the cyclic midpoint equations; an explicit odd minor proves their
+needed rank for all selections, includingM2. Endpoint cells and both
+channel parities are paid. The scalar primitive is not a curl potential.
+
+This rules out the EXACT strong-source-zero invisible-witness mechanism
+for the entire specified slice-cut family. It does not rule out small
+positive strong energy and supplies no quantitative kernel magnitude,
+targetc recovery, uniform conditioning or finite-penalty estimate here.
+The dyadic/even-cut/permutation hypotheses have been removed ONLY from
+the full-map exact-zero injection consequence of266. They remain on
+their own quantitative/isometric theorems. In particular267's logarithmic
+bound is not extended to arbitrary cuts by this result.
+The point-only example is ambient, not an actual-coexact witness; the
+full map's interval means are essential. No arbitrary-canonical result.
+
+Model assessments and review context: involved Codex/OpenAI author and
+same child audit session, shared/inherited programme and reports visible,
+exact backend/version/effort unavailable. Not blind, independently
+established review, formal or numerical validation, peer review, model
+score or publication acceptance. No executable/runtime/network/service
+was used by this source audit. Historical originality/relevance remain
+unestablished after bounded primary comparison; standard matrix parity
+and253B graph facts are credited. The260C PDF/grade/objections unchanged.
+
+No new paper/PDF/assessment or small standalone PR is created for this
+structural memo; preserve it in Git/D and group later substantial progress.
+Quantitative no-new-bound/witness count is1 since267, not reset by this
+exclusion. After3 such units retain failures and change mechanism or name
+the concrete obstruction. SoleQ251 next must pay positive strong energy
+for a real true-coexact invisible field or prove a nonlinear quantitative
+kernel/penalty bound attaining targetc. PR29=20/41,TermSource=0; physical
+gap and continuum remain OPEN.

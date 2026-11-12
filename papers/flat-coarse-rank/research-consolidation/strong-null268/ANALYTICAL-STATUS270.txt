@@ -1,0 +1,41 @@
+270A subsequent analytical status,12 November2026 UTC.
+Exact audited referent6bd0c274a077350637d9e03059c3b16d1a3aacb4.
+Original raw/Git/checkout source SHA256
+7c47ca9a68bac0c922a0398783560617f1363dc818d5dc44a361f1272f24218f.
+Frozen original UNREVIEWED header is historical, not rewritten.
+Verdict ACCEPT_ANALYTICAL_LOW_COVERAGE_ACTUAL_COEXACT_COUNTEREXAMPLE.
+No material failure or minor correction found. Parent read COMPLETE14547-byte
+report, context, assignment/bindings and checked all10 actual raw members.
+Report raw SHA256 b5dd9cfd6382fac0c092be1d6dae2a925d023208cb5c5d219b038dd68181761f.
+Manifest raw SHA256 ec0a61cc8d644029e4ee57018c84d137d69ee88d33289d4c615a58a6d75fc319.
+
+Original D3 source weights a=c/48,H=cn^2, dyadic log(n/64)>=2^34.
+For ANY cuts in the actual full nonwrapping slice family, if
+K=|image(i+t_i modn)|<=n/32, a REAL nonzero actual-coexact invisible
+field has Q<(c/2)||z||^2. Every finite observation penalty vanishing
+at zero therefore fails targetc for that map. Targetc requires K>n/32
+within this family and at these sizes. This is a proved necessity,
+not a conditioning hypothesis supplied as input or a coverage sufficiency.
+
+The actual zero set has at most4K residues and4K+1 strong-locked paired
+profiles fit an inclusive safe frequency window, includingK=n/32.
+Uniform inverse and direct whole-profile norms incur no mode-count loss.
+True curl preimage, every fixed/moving chart tag includingt=0,n-1,
+finite cutoff, nonzero norm, source-energy and real conversion all paid.
+268 supplies strict Q_H positivity only.269's acceptance did not establish
+this extension; fresh270 report rederives the dimension and uniformity.
+
+No failure for F permutations (including2i^2), arbitrary canonical maps,
+matching logarithmic rate, optimal1/32 or practical size is established.
+No new paper/PDF/score or inherited260 assessment. Group268/269/270 in one
+source PR; quantitative no-advance counter0 after actual witnesses.
+Classical capacity and dimension arguments credited; historical priority
+and broader relevance UNESTABLISHED. Read primary-reading269-bounded.txt
+for the limited author-hosted comparison, not a full novelty search.
+
+Model assessments and review context: involved Codex/OpenAI, shared inherited
+author/programme/prior audit context, exact backend/version/effort unavailable.
+Not blind, independently established, peer review, formal/numerical proof,
+grade or acceptance. Complete original report/context/assignment/raw subjects
+preserved. No mathematical executable/runtime used. Physical gap/continuum
+OPEN,PR29=20/41,TermSource=0. SoleQ251 remains active for remaining maps.

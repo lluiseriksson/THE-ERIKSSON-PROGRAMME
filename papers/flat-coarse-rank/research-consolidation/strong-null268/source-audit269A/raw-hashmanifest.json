@@ -1,0 +1,65 @@
+{
+  "self_excluded": true,
+  "artifacts": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1966,
+      "sha256": "88e6cb9321801095c48ed004d47ad632a632624f93e2151273a6727d375ae32e",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 15156,
+      "sha256": "5b65dc97a8ba7e1c38dd2a7a5ec537624a1435a6ec5c4ee819163dbd37f7af7e",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "initial-status.txt",
+      "bytes": 105,
+      "sha256": "b795cd5e0314c0f1c994cc399ab2a7636bcfd155d2ae1a7a8dcf9e0ba2908d4e",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "review-context.txt",
+      "bytes": 2523,
+      "sha256": "255c76a890d08833fb55bb0586dce0c89fb98264fcfb8674b53ac8883cfb4f78",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 1852,
+      "sha256": "f669c82117d3232f6e73d0279635522bf9aa05357925850b3dd794ca305b0489",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/folded-cut-counterexample269A.txt",
+      "bytes": 11004,
+      "sha256": "dbeb8d70312bc97944096a780636cb38230c619604849327314d5d4a73965de4",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/prior-full-report268A.txt",
+      "bytes": 12895,
+      "sha256": "dd0fd9cb43696fe3840d286b05ca8f70a874790876527374ce402e86a9858b17",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/strong-null-exclusion268A.txt",
+      "bytes": 9370,
+      "sha256": "f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d",
+      "representation": "raw retained bytes; no normalization"
+    }
+  ]
+}

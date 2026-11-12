@@ -1,0 +1,41 @@
+[
+  {
+    "artifact": "subjects/folded-cut-counterexample269A.txt",
+    "commit": "feb324d61b604bd9672b4eafea6e9507cfc799e5",
+    "repository_path": "papers/flat-coarse-rank/research-consolidation/strong-null268/folded-cut-counterexample269A.txt",
+    "bytes": 11004,
+    "sha256": "dbeb8d70312bc97944096a780636cb38230c619604849327314d5d4a73965de4",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/strong-null-exclusion268A.txt",
+    "commit": "920ed55ab59215af244f925cc48121043ceb0ec6",
+    "repository_path": "papers/flat-coarse-rank/research-consolidation/strong-null268/strong-null-exclusion268A.txt",
+    "bytes": 9370,
+    "sha256": "f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/CLAUDE.md",
+    "commit": "feb324d61b604bd9672b4eafea6e9507cfc799e5",
+    "repository_path": "CLAUDE.md",
+    "bytes": 23996,
+    "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "commit": "feb324d61b604bd9672b4eafea6e9507cfc799e5",
+    "repository_path": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13573,
+    "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/prior-full-report268A.txt",
+    "source": "D evidence-268/source-audit268A/full-report.txt",
+    "bytes": 12895,
+    "sha256": "dd0fd9cb43696fe3840d286b05ca8f70a874790876527374ce402e86a9858b17",
+    "representation": "exact existing report raw bytes; no normalization"
+  }
+]
