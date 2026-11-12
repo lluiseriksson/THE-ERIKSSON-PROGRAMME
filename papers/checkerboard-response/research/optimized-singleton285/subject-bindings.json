@@ -1,0 +1,65 @@
+[
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\checkerboard-response\\research\\optimized-singleton285A.txt",
+    "captured": "subjects/optimized-singleton285A.checkout.txt",
+    "bytes": 14656,
+    "sha256": "b545bb56ad6eae379f89f3cd1eff05b81a4bded9ca93df997b129f653d60f38a",
+    "read_scope": "Full 257-line source, analytical audit of all sections"
+  },
+  {
+    "original": "c75527e836396217ef05e7ad9b5898f41f9fcf8c:papers/checkerboard-response/research/optimized-singleton285A.txt",
+    "captured": "subjects/optimized-singleton285A.git.txt",
+    "bytes": 14656,
+    "sha256": "b545bb56ad6eae379f89f3cd1eff05b81a4bded9ca93df997b129f653d60f38a",
+    "read_scope": "Exact Git blob binding; identical checkout bytes"
+  },
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\research\\full-cost281\\useful-response283A.txt",
+    "captured": "subjects/useful-response283A.txt",
+    "bytes": 20089,
+    "sha256": "cdd045c2baf07c90511b3363a8d4abf44acc53fc96d944f104223d181adea5db",
+    "read_scope": "Full text read in this audit; prior source results are explicit dependencies, not independently rediscovered here"
+  },
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\research\\full-cost281\\dual-response282B.txt",
+    "captured": "subjects/dual-response282B.txt",
+    "bytes": 17058,
+    "sha256": "c4ba4f8658a98ccfdfeff61a746cc0d459ad172d711b0ea2e6ba70173a572c6d",
+    "read_scope": "Full text read in this audit; prior source results are explicit dependencies, not independently rediscovered here"
+  },
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\checkerboard-response\\inputs\\cancellation-range280A.txt",
+    "captured": "subjects/cancellation-range280A.txt",
+    "bytes": 10920,
+    "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36",
+    "read_scope": "Full text read in this audit; prior source results are explicit dependencies, not independently rediscovered here"
+  },
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\CLAUDE.md",
+    "captured": "subjects/CLAUDE.md",
+    "bytes": 24408,
+    "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+    "read_scope": "Full text read in this audit; prior source results are explicit dependencies, not independently rediscovered here"
+  },
+  {
+    "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "captured": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13831,
+    "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+    "read_scope": "Full text read in this audit; prior source results are explicit dependencies, not independently rediscovered here"
+  },
+  {
+    "original": "D:\\LEEME.md",
+    "captured": "subjects/D-LEEME.md",
+    "bytes": 16801,
+    "sha256": "3502d37a3f765ea2e867f1379917b25b7d458c03500b682b2b3403210181b1b8",
+    "read_scope": "First 90 lines read for storage governance; full raw file retained"
+  },
+  {
+    "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-285\\optimized-singleton285A.txt",
+    "captured": "subjects/optimized-singleton285A.private.txt",
+    "bytes": 14656,
+    "sha256": "b545bb56ad6eae379f89f3cd1eff05b81a4bded9ca93df997b129f653d60f38a",
+    "read_scope": "Raw identity verification; same subject"
+  }
+]

@@ -63,3 +63,6 @@ papers/flat-coarse-rank/research-consolidation/golden-window260/** -text
 papers/flat-coarse-rank/research-consolidation/helical-fourier262/** -text
 papers/flat-coarse-rank/research-consolidation/even-helical263/** -text
 papers/flat-coarse-rank/research-consolidation/canonical-helical264/** -text
+
+# Exact285 source audit and provenance bytes.
+papers/checkerboard-response/research/optimized-singleton285/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space

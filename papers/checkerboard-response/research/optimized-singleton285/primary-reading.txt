@@ -1,0 +1,8 @@
+Primary comparison285, 12 November2026.
+https://epubs.siam.org/doi/10.1137/0128007
+Publisher abstract opened successfully. Anderson and Trapp, Shorted Operators II, credits finite-dimensional shorting to Anderson1971 and treats positive-operator shorting in Hilbert space. This confirms that the general operation is classical; it does not establish priority for the present lattice estimate. Full article access was not obtained and no payment was made.
+https://arxiv.org/abs/math/0006120
+Primary authors' abstract opened successfully: Corach, Maestripieri and Stojanoff, Oblique projections and Schur complements, submitted16June2000. It connects A-selfadjoint projections with shorted operators. Only the abstract was used; no theorem-level full-text reading claimed.
+https://www.mate.unlp.edu.ar/~demetrio/files/u4/18.pdf
+Author-hosted mirror fetch returned TimeoutError. No claim of expiry, full reading or acquired rights follows.
+The finite Schur minimum, monotonicity and rank/rotation estimates in285A are proved directly. The model-specific novelty remains UNESTABLISHED; prior283 Green logarithms remain credited. No new frontier or independent-discovery label is assigned. The exact original coefficient map includes only genuine singleton rows; all non-singleton original cells remain outside the new counterexample.

@@ -1,0 +1,13 @@
+Unit285 analytical result, 12 November2026
+
+The frozen285A source at c75527e836396217ef05e7ad9b5898f41f9fcf8c passed a complete separate involved analytical source audit. Its raw SHA256 is b545bb56ad6eae379f89f3cd1eff05b81a4bded9ca93df997b129f653d60f38a. The original candidate wording and report are retained unchanged.
+
+All E-perpendicular singleton coefficients have now been optimized, not merely suppressed. The normalized optimized response obeys ||Sigma|| >= h_(n/2)/(16pi^2)-28-128pi^2. Hence it is unbounded with n. The proof also constructs an actual real coexact w with Tw=0 and Q(w)<c||w||^2 whenever the explicit stronger bound b_n exceeds8/7. Any finite singleton-only penalty then vanishes on this deficient direction. This refutes singleton-only target-c repair for sufficiently large included even sizes and every permutation cut. The enormous sufficient threshold is not a practical numerical estimate.
+
+Audit scope clarification: the displayed Rayleigh UPPER BOUND tends to c/8. No equality or convergence of the witness Rayleigh quotient itself is asserted. This clarification records the auditor's interpretive caution without altering the frozen subject.
+
+Full original canonical C includes non-singleton prefix/long-cell rows. Their values on w have not been bounded or shown zero. Q251 stays OPEN; there is no full-C counterexample, physical mass-gap result or continuum theorem. No new formal verification, mathematical executable, Colab runtime, PDF, numerical grade, editorial acceptance or paper publication occurred in285. This is not an independently discovered or blind-reviewed result; actual served model/backend is unexposed. Exact model-specific priority remains unestablished. General shorting and two-dimensional Green logarithms are classical.
+
+Next single active route insideQ251: derive the original non-singleton-row response and its correlation with singleton rows, or estimate those actual means on the constructed cancelling field. A successful full-row repair must use those rows substantively. Preserve the three-unit abandonment rule; do not repeat closed singleton schemes or the281 size sweep. Consolidate this result with related future work, rather than make a small standalone paper.
+
+Raw complete audit archive, including14 hashed subject/context/report artifacts and its original manifest, is retained in D:/Datos/the-eriksson-programme/autonomia/evidencia-285/source-audit285A. Mathematical source dependencies remain in this Git history. No prior audit or numerical score was overwritten.
