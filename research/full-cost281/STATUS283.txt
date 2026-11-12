@@ -1,0 +1,43 @@
+283 analytical result and precise limits
+Frozen source commit3532ce3823414ea3ee710694714a34cbc13de8d6.
+Raw source cdd045c2baf07c90511b3363a8d4abf44acc53fc96d944f104223d181adea5db.
+Complete separate involved audit, context and raw subjects retained in
+source-audit283A; parent read the entire proof/report/context before accepting
+its bounded analytical result. No material failure or required correction.
+No independent-provider, human peer review, formal certificate or model grade.
+
+For one original channel at a time, every even n>=4,c>0,H=cn^2,a=c/48 and
+any permutation cut i+tau_i, let E=T_L L be the original singleton image of
+the true positive-weight low eigenspace. Its shifted high response obeys
+
+ [h_(n/2)/(16*pi^2)-1/2-4*K_n/(48*n^2-1)]/(c*n^5)
+       <= ||P_E M_T P_E|| <= K_n/(c*n^5),
+ K_n=(48/13)*h_(n/2)+1/(6*n^2-1).
+
+For even n>=16 this yields c*n^5*||P_E M_T P_E||>=h_(n/2)/(32*pi^2)-1.
+Lower expressions may be negative at small n. Their divergence proves that
+restriction to unaugmented useful low singleton tests does not restore a
+size-uniform response bound. The quadratic dyadic cut family is included.
+
+The proof uses exact strong components and genuine singleton pairs; finite
+heat positivity and a paid spectral tail; one common ACTUAL coexact
+polarization, with spatial trace1; exact component-mean removal; and an
+explicit positive-weight low-space rotation bound2/(48*n^2-1). This is a
+new derived obstruction within the recorded route, not merely a restricted
+matrix definition or an extrapolation from the281 numerical diagnostic.
+
+This does not prove a below-c physical invisible field, optimal-cost
+logarithmic necessity, or failure of Q251. E-perp singleton and genuine prefix
+coefficients may still change optimized response through cross terms. The
+next research estimate must pay those correlations explicitly. No additional
+kernel coefficient is claimed beyond282B. Both uniform unaugmented response
+routes are closed, and prior paired/projection routes remain stopped.
+
+Group279/280/282B/283A into one coherent manuscript; no separate small283
+paper. A new manuscript still needs its exact PDF, full model-assessment
+context and reproducible package; these source audits are not PDF reviews.
+Primary comparison credits classical planar Green logarithms and heat tools;
+model-specific external originality remains unestablished.
+No runtime, Lean/Lake, mathematical execution, new PDF, grade, submission,
+acceptance or publication in283. PR29 remains20/41,TermSource=0;
+physical Yang-Mills gap and continuum remain open.

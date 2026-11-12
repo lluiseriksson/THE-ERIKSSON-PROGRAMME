@@ -1,0 +1,16 @@
+{
+  "source_commit": "3532ce3823414ea3ee710694714a34cbc13de8d6",
+  "source_sha256": "cdd045c2baf07c90511b3363a8d4abf44acc53fc96d944f104223d181adea5db",
+  "full_source_read": true,
+  "full_report_read": true,
+  "full_context_read": true,
+  "accepted_analytical": true,
+  "verdict": "Accept283A finite USEFUL/SIMPLE obstruction for unaugmented actual low singleton tests; optimized inverse/full target/Q251 remain open",
+  "report_sha256": "bab7cd7ea7a31d4b4df3cede5f485a304e639a8894889b9757edd7b5ef18ba02",
+  "manifest_sha256": "21f5b0c34a55c18f00ef213fc8ecd1c672d16ac636589443e671f08c731927ee",
+  "raw_members_verified": 15,
+  "required_corrections": [],
+  "inbound_messages_during_audit": 0,
+  "root_findings": "All scalar-tail, actual-common-polarization, exact local trace, component mean, positive-weight angle and finite simplification steps read and checked; no material error found. Lower expression need not be positive at small n. No formal verification or external originality claim.",
+  "review_context": "Separate involved Codex/OpenAI session with previous programme context; actual exact backend unexposed, no independence/human review/grade claimed"
+}

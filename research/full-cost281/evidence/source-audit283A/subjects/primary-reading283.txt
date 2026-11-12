@@ -1,0 +1,33 @@
+Primary-source scope check for283,12 November2026.
+
+1. Richard Kenyon, The Laplacian and bar-partial operators on critical planar
+   graphs, arXiv:math-ph/0202018v1 (13 February2002),
+   https://arxiv.org/pdf/math-ph/0202018
+   Bounded reading: definition of positive graph Laplacian on PDF page0;
+   section7.1, Theorem7.3 and opening proof on PDF pages17-18.
+   This primary research paper already gives logarithmic Green-function
+   asymptotics on critical planar graphs, with conductances fixed by its
+   geometry. Thus planar logarithms and Fourier/Green-function mechanisms
+   are prior mathematics. Its infinite-graph normalization is not silently
+   identified with our finite degree-three component or actual-coexact
+   compression. It does not by itself supply the finite paired-observation
+   trace, source-parity bookkeeping, or positive-weight low-space rotation
+   needed in283. These claims require the explicit proof in283.
+
+2. Gregory F. Lawler and Vlada Limic, Random Walk: A Modern Introduction,
+   https://www.math.uchicago.edu/~lawler/srwbook.pdf
+   Bounded additional reading: section1.2 on PDF pages12-13, Poissonization
+   and continuous-time transition probabilities; section4.4 as recorded
+   in282. Continuous-time positivity and two-dimensional logarithmic
+   potential kernels are classical. Our finite heat-kernel tail is derived
+   directly from the displayed finite symbol, not attributed to a theorem
+   for a different graph or extrapolated from an infinite-volume asymptotic.
+
+Search scope: honeycomb torus Green-function/Laplacian queries, followed by
+critical-planar-graph potential-kernel query. Broad search also returned
+continuum-torus and continuum-honeycomb papers; these were not adopted as
+support for our discrete finite model. Only the primary sources above are
+used. This is a bounded check, not an exhaustive priority review. Historical
+originality of the exact283 model-specific comparison remains unestablished.
+No full-book reading, copied pages, long quotation, external referee report,
+formal verification or new publication is claimed.
