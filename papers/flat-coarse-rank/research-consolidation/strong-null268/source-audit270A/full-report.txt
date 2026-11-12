@@ -1,0 +1,246 @@
+EXACT-SOURCE ANALYTICAL AUDIT270A -- LOW DIAGONAL COVERAGE OBSTRUCTION
+
+VERDICT: ACCEPT_ANALYTICAL_LOW_COVERAGE_ACTUAL_COEXACT_COUNTEREXAMPLE
+MATERIAL FAILURE: NONE found. No minor mathematical or metadata correction
+was found necessary. Scope restrictions below are essential to this verdict.
+
+Exact source6bd0c274a077350637d9e03059c3b16d1a3aacb4.
+Raw/Git/checkout SHA256
+7c47ca9a68bac0c922a0398783560617f1363dc818d5dc44a361f1272f24218f.
+No normalization. No PR/body for270; body capture/hash N/A. The assignment's
+old PR232 context is not a new network verification of that unrelated head.
+This is involved analytical checking, not a grade, formal certificate,
+independent review, priority finding or publication acceptance.
+
+1. ACTUAL CLASS, PARAMETERS AND NEW CLAIM
+
+The proof uses original D3 orthogonal source checkerboard, a=c/48,H=cn^2,
+counting norms,V=n^3 and actual forward-curl adjoint, with n dyadic>=1024.
+Channel1 is strong at odd physical sum sources and weak at even sources;
+channel2 remains zero in the construction. Any chart cuts t_i are allowed.
+Each slice has at most3 x2 blocks times2 x3 blocks, observed in all3 spatial
+components and2 channels, hence at most36n full actual rows. Endpoint empty
+blocks are omitted and normalization factors are finite/nonzero. No restricted
+rank or mixed-channel observation is substituted.
+
+F=i+t_i is arbitrary, B=image F and K its number of distinct residues.
+In particular K>=1. The extra small-coverage hypothesis K<=n/32 is explicit;
+it is not a permutation, even-cut, motion or conditioning hypothesis. The
+logarithm threshold is also explicit and extremely large. The proposed
+conclusion is an actual real invisible field below c/2, not a general theorem
+about all O(n) canonical maps. Its contrapositive necessity K>n/32 concerns
+this specified slice family at the stated sizes only.
+
+2. TRUE ADJOINT AND TAGS FOR BOTH CUT ENDPOINTS
+
+The actual forward adjoint has partial_j*=-delta_j. With only A23=
+delta2delta3 Psi, true curl adjunction gives u2=delta3 A23 and
+u3=-delta2 A23, exactly P Psi. This is a true2-form preimage. For each
+individual ordinary chart rectangle, summation of the three differences
+telescopes twice, leaving four endpoint values of delta3 Psi for u2 and
+minusdelta2 Psi for u3. All endpoints belong to
+x2{-1,t_i-1,t_i} times x3{-1,0}. Thus both gradients vanishing at all
+six tags is sufficient for all normalized means separately.
+
+At t_i=0 the left block is absent and two x2 tags coincide. At t_i=n-1
+the right block is absent and t_i=-1 modulo n coincides with the fixed
+boundary. These cases remove requirements rather than add unaccounted
+ones; imposing all six labeled values remains sufficient. No argument
+requires cuts even, and periodic residue evaluation does not turn an
+actual nonwrapping cell into a cyclic union.
+
+3. COVERAGE ZERO SET AND THE INCLUSIVE FREQUENCY BUDGET
+
+Z=B+{-3,-2,-1,0} is the union of four translates of B, so |Z|<=4K.
+Overlaps and wraparound can only reduce its size. There is no requirement
+that B be an interval or have particular parity, nor that F visit each
+value a fixed number of times.
+
+There are4K+1 integer indices r=0,...,4K. Since4K<=n/8, p_r=n/4+r
+lies in the inclusive window[n/4,3n/8]. Its distinct partners p_r+n/2
+lie in[3n/4,7n/8]. These windows are disjoint, avoid zero, and have no
+modn wrap. At K=n/32 exactly, the first window has n/8+1 integer
+frequencies including its upper endpoint, as required, not just n/8.
+The partner window has exactly the same number. Thus all2(4K+1)
+frequencies are distinct/nonzero even at the admitted endpoint. No mode
+shortage, Nyquist collision or lost plus-one occurs.
+
+For phases in[pi/2,3pi/4], both t(zeta) and t(-zeta) have modulus>=1/2.
+Neither1+zeta nor1-zeta vanishes there, so each printed pair is nonzero.
+The pair supports are disjoint; consequently psi_r are linearly independent
+and their span has exactly4K+1 complex dimensions. Applying delta^3 gives
+phi_r exactly by cancellation of its nonzero Fourier multipliers.
+
+The inverse estimate is pointwise in frequency: division by t^3 multiplies
+squared magnitude by at most64. Parseval over disjoint supports gives
+||psi||_S^2<=64||phi||_S^2 for EVERY combination with the same constant,
+regardless of K, number of coefficients or their size. Delta^3 is injective
+on this selected space. Evaluation on Z has at most4K outputs, hence rank
+at most4K; rank-nullity gives a nonzero psi zero on Z and then phi!=0.
+No full rank, small singular value bound, controlled basis coefficient
+vector or matrix-conditioning premise is needed. This is the new dimension
+argument that extends beyond269's special five-point window; its validity
+has been checked here rather than inferred from269 acceptance.
+
+4. STRONG LOCKING AND EVERY ACTUAL MEAN
+
+At an odd source sum s, the partner character has factor(-1)^s=-1. The
+forward pair difference is proportional to
+(zeta-1)(1+zeta)-(-zeta-1)(1-zeta)=0,
+since both products equal zeta^2-1. A physical forward step in any of3
+directions increments S by1. Thus z0=(0,phi(S),-phi(S)) is exactly strong
+locked in channel1. Its counting norm is2n^2||phi||_S^2>0, because each
+residue layer has n^2 points. This is independent of K and the zero set.
+
+For the product Psi=psi(S)chi(x2,x3), at fixed x2=-1,x3=-1/0 all potential
+values used in either first backward gradient lie at transverse radius<=2.
+Chi is identically0 on radius<=8, so both required gradients vanish there.
+At moving tags x2=t_i+u,x3=v,u,v in{-1,0}, the potential S coordinate is
+F(i)+u+v; either backward neighbor subtracts1. The possible shifts are
+precisely contained in{-3,-2,-1,0}, so all such residues lie in Z and
+psi vanishes. This covers arbitrary B, arbitrary cut parity and both
+t_i endpoints, irrespective of chi or its shifted value. Both gradients
+therefore vanish at every tag. Telescoping proves every original normalized
+cell mean zero, separately, and the actual A23 already proves coexactness.
+No union-to-refinement implication, unsupported divergence sufficiency or
+new trace assumption enters.
+
+5. FINITE CUTOFF, CAPACITY AND MASS RECHECKED
+
+R=n/8,T=log(n/64), with chi clipped to0 below radius8 and1 at radiusR.
+Neighbor max radius changes by at most1. Nonzero forward differences cross
+j,j+1 with8<=j<R, and the logarithmic increment is at most1/(Tj).
+Shell j has8j points because j<R<n/2. Counting all2 outgoing edges from
+each of shells j and j+1 bounds relevant directed edges by
+16j+16(j+1)<=48j, including edges directed toward the smaller shell.
+Torus seam edges are outside the varying region and have chi1 on both
+ends, so no extra energy is omitted. Thus
+Echi<=48/T^2 sum_(j=8)^(R-1)1/j<=48(1+T)/T^2<=96/T.
+These are finite estimates; no continuum capacity claim is supplied as data.
+
+Backward first-difference norms equal their forward counterparts by periodic
+reindexing. For any mixed order b>=1, retaining one first difference and
+bounding the rest by operator norm2 gives squared factor4^(b-1)Echi.
+Shifts are unitary. Since the radius<=R square has(2R+1)^2<=n^2/4
+points at admitted n, chi's squared mass is at least3n^2/4. These estimates
+were rederived, not inherited from the validity of269's conclusion.
+
+6. PRODUCT ERROR HAS NO MODE-COUNT LOSS
+
+The backward product rule is delta(fg)=(delta f)g+(shift_- f)delta g.
+Its commuting multi-index expansion is the printed shifted-profile formula.
+For each nonzero spatial component the derivative has order3, so the
+non-beta0 terms have total binomial multiplicity7. Repeated identical terms
+may be counted separately for Cauchy without changing the sum.
+
+At fixed transverse y, x1 runs through every S residue exactly once. Thus
+the x1 sum of a shifted derivative profile square is its exact1D norm,
+not a sum of absolute Fourier coefficients or a mode-count bound. For
+b derivatives on chi, the profile factor has squared bound4^(3-b)||psi||^2,
+and the cutoff factor has4^(b-1)Echi. Their product is16||psi||^2 Echi.
+Seven-term Cauchy costs7*7 per spatial component, so the two components
+cost1568<=2^11. Using the uniform inverse and base norm,
+||E||^2<=2^11||psi||^2 Echi
+<=(2^16 Echi/n^2)||z0||^2.
+No factor4K+1 or conditioning loss appears at any step; all operator norms
+apply directly to the complete profile. This is the central uniformity
+needed by the extension, and it is valid.
+
+Mass and x1 factorization give ||chi*z0||^2>=3||z0||^2/4 and hence
+||chi*z0||>=3||z0||/4. Threshold gives Echi<=96/2^34<2^-26<1.
+With n>=1024, the error bound gives ||E||<=||z0||/4. Triangle inequality
+therefore yields ||z||>=||z0||/2 and ||z||^2>=||z0||^2/4>0. There is
+no unproved nonvanishing or lower Gram assumption for the chosen kernel
+profile; its norm cancels harmlessly in all estimates.
+
+7. ORIGINAL SOURCE ENERGY AND REAL FIELD
+
+At odd sources z0(x+e_j)=z0(x), so a strong difference of chi*z0 equals
+the forward chi difference times z0(x); direction1 contributes0. Dropping
+the odd-source restriction and summing x1 gives2H||phi||^2 Echi, exactly
+c Echi||z0||^2. The original full unweighted three-direction gradient is
+at most12 times counting norm. Hence
+Q_H(E)<=12H||E||^2<=12*2^16 c Echi||z0||^2
+<2^20 c Echi||z0||^2.
+All spatial/channel factors are already included in the norm; no strong
+weight was replaced by a weak one.
+
+Positivity of the ambient quadratic form gives Q_H(z)<=2Q_H(chi*z0)+
+2Q_H(E)<2^22 c Echi||z0||^2<=2^24 c Echi||z||^2.
+The intermediate2^22 bound is deliberately loose and follows from
+2+2^21<2^22. Chi is nonconstant and z0 nonzero, so the strict coefficient
+comparisons are legitimate. CAP/threshold make this strictly below c/4
+times||z||^2. The actual weak-source form is at most a times the full
+gradient, hence Q_a<=12a||z||^2=c||z||^2/4. Their sum proves the strict
+Q<c||z||^2/2 in the original source-weighted form.
+
+Although chi*z0 and E need not be individually coexact, their ambient
+energies are defined and only their sum needs the displayed true preimage.
+All operators, observations and weights are real; real and imaginary
+potential parts yield actual real coexact invisible fields. Energy and
+norm squares split additively, so at least one nonzero real field has
+quotient no greater than the strict complex quotient. The phrase real
+part here allows selecting Re(Psi) or Im(Psi), equivalently Re(-iPsi);
+no individual complex Fourier block is falsely assumed real.
+
+The separately checked268 theorem can be applied to assert strict Q_H>0
+for this nonzero invisible field. It is used only for that ancillary
+positivity sentence, not construction, nonzero norm, invisibility or energy
+upper bound. Its original exact source is retained and was fully checked
+in this same session earlier.269's accepted special folded map likewise
+is not a proof of this extension; every new dimension/uniformity step
+has been independently rederived within this involved analytical task.
+
+8. NECESSITY, ALL FINDINGS AND REMAINING SCOPE
+
+For the admitted map the real field lies in the actual coexact observation
+kernel. Every finite Phi with Phi(0)=0 vanishes on it, so target c restoration
+is impossible. This proves by contrapositive that target c in the specified
+full slice-cut family at admitted sizes requires K>n/32. It does not prove
+sufficiency of that inequality, optimality of1/32, failure for permutations,
+or any conclusion for2i^2 (where K=n). It is not a theorem about arbitrary
+canonical rectangles outside this slice construction or a practical threshold.
+
+Material failure: none found. Minor correction: none identified. The
+inclusive frequency endpoint K=n/32, zero-set collisions, arbitrary cut
+endpoints, true mean/curl signs, norm factors and uniformity in K all survive
+the explicit attacks above. No hypothesis was hidden as coefficient data.
+The assignment's counter0 after269 is context only; no state/counter changed.
+This is another quantitative obstruction within sole Q251, not closure of
+that question, matching logarithmic necessity, a new paper/PDF/grade or a
+historical-originality claim. No primary-source search was performed; standard
+capacity and linear-dimension mechanisms are not declared novel. Physical
+mass gap and continuum remain open, PR29=20/41 and TermSource=0 unchanged.
+
+9. ACTUAL REVIEW CONTEXT AND RETENTION
+
+Actually exposed reviewer identity is involved Codex/OpenAI in the same
+child session /root/grouped260_manuscript_source_audit. Exact served backend,
+version and effort unavailable, none inferred. Inherited author/programme/
+prior audit context is visible; not blind or independent peer review. Entire
+270 was read afresh and every proof step checked analytically. Whole268/269
+were read/audited in prior same-session tasks, exact original sources retained
+as provenance and the narrow268 positivity dependency, not inherited270
+acceptance. Current active governance/environment sections reread; whole
+captures do not overstate fresh full reading of historical instructions.
+Assignment and context retain the exact task and actual visibility; full
+inherited-chat export is unavailable and is not fabricated.
+
+No mathematical executable, experiment, compiler, test, Lean/Lake, oracle,
+Colab runtime, network or external model service was used. Only Git/file/hash
+metadata and this new retention packet were written. No source, branch,
+state, other report/chat/agent, public artifact, PR or automation changed;
+preexisting untracked helpers/old body/candidate copy were unused and untouched.
+No incoming parent message arrived. No PR/body exists for270 and no body hash
+is invented. Existing PR232 status/head is only assignment context, not a
+network audit. No new clone/runtime cleanup debt exists.
+
+Git and checkout exact source bytes match the assigned SHA256 without
+normalization. Complete raw subjects, origin bindings, full assignment,
+actual review context, initial status and this unabridged report are retained.
+The raw manifest covers all artifacts except itself, with byte size and
+SHA256/representation; its own digest is returned separately. Explicit byte
+checks, not Python assert, govern the metadata retention helper. That helper
+is not a mathematical verifier. No prior failures/reports were overwritten.
+Use this bounded exact-source verdict without upgrading it to formal proof,
+model grade, independent review, historical priority or publication acceptance.
