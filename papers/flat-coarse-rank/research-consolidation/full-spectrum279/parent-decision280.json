@@ -1,0 +1,11 @@
+{
+  "source_sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36",
+  "source_commit": "476a18074ed22b439c596ce27dc6074c43ea248f",
+  "report_sha256": "fb2eb18ddb1a4d5e4f92fbb911a930721fa2336ae7e68766c5d6985946634a69",
+  "full_report_read": true,
+  "accepted_analytical": true,
+  "verdict": "ACCEPT_ANALYTICAL_RANGE_EQUALITY_PAID_LIFT_AND_EXACT_SHIFTED_CRITERION",
+  "material_errors": [],
+  "required_corrections": [],
+  "limitations": "Analytical source audit only, involved shared-context reviewer. No mathematical execution, independent/human peer review, grade or publication. Exact target criterion sign and external priority remain open; proved polynomial cost is inadequate for target-c."
+}

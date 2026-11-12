@@ -1,0 +1,36 @@
+Primary-source and scope check280,12 November2026.
+
+Actually read: R.G. Douglas, On Majorization, Factorization, and Range
+Inclusion of Operators on Hilbert Space, Proceedings of the AMS17(1966),
+413-415. Original article, academic-hosted scan:
+https://home.agh.edu.pl/~rudol/Operat/DouglasFactorizationLemma.pdf
+Bounded reading: Theorem1 and its proof on printed413-414, and the final
+paragraph extending the domain spaces. The paper relates operator range
+inclusion, an adjoint quadratic inequality and bounded factorization.
+The finite adjoint construction in280 Section3 is this classical argument,
+not an original result. The model-specific work is the inequality obtained
+from long-cell constancy, the actual curl and diagonal frequency support.
+No source theorem supplies that inequality or the target-c cost estimate.
+
+Boyd/Vandenberghe, Convex Optimization, author PDF request and targeted
+find returned TimeoutError in this unit:
+https://stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf
+This is not counted as a successful primary reading. The finite constrained
+minimum in280 is proved directly by completing a positive quadratic form;
+no novelty is claimed for that standard minimization or pseudoinverse.
+
+Internal reconciliation:279 fully describes actual spectral L/F, including
+zero mode and real multiplicities.267 already pays a logarithmic lower
+bound for the permutation cut;273 already studies positive correction
+cost for a particular projected ansatz.280 does not reopen that stopped
+ansatz or reuse its correction as a candidate witness. Its full-range
+statement concerns every original row combination and all diagonal actual
+fields, with no permutation restriction. The singleton permutation frame
+uses the known266/267 mechanism. Earlier232/250 coexact row-annihilator
+rank machinery is classical/internal background, not newly discovered.
+
+External novelty is unestablished. The search does not prove priority.
+Analytical correctness, novelty and practical relevance remain separate:
+the paid polynomial lift proves feasibility and a bound, but its c*n^6
+energy scale does not resolve target-c recovery or necessity of logarithms.
+No independent physical-gap result or new AIRR paper is claimed.

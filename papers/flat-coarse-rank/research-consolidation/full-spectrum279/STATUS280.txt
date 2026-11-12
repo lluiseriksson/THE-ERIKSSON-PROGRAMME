@@ -1,0 +1,36 @@
+280 exact-source analytical outcome,12 November2026.
+Source commit476a18074ed22b439c596ce27dc6074c43ea248f; raw SHA256
+07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36.
+Candidate header remains preserved; this record supplies bounded acceptance.
+
+Separate involved source audit accepted the full-range/slab proof, explicit
+polynomial lift, real construction, dependent-row quotient, exact shifted
+minimizer/criterion and singleton frame. No material failure or required
+minor correction. Parent read the full report/context. Full report SHA256
+fb2eb18ddb1a4d5e4f92fbb911a930721fa2336ae7e68766c5d6985946634a69;
+raw manifest0e9028e8f4c299f6655f8d952721edbffbc6b2b33b153f958bf2619f992b99bb.
+No numerical or formal execution, Colab allocation, model grade, PDF,
+independent/human peer review or publication occurred. Exact backend is
+unavailable beyond the actual involved Codex/OpenAI role; no name inferred.
+
+Paid result: for every even n>=4 and every original slice cut, non-diagonal
+actual coexact fields realize every original observation realizable on U.
+A real linear lift cancels any diagonal field with squared norm at most
+n^5/[16(n-3)] times its squared norm. This removes the finite feasibility
+assumption, including row dependencies. It does not remove a Yang-Mills
+or target-c quantitative hypothesis. The derived cost upper bound grows
+like c*n^6 and is inadequate for the desired threshold; this failure stays.
+
+The target is exactly a2(n-2)-dimensional sign problem after the proved
+range reduction. That sign remains open for the nonlinear cut. Classical
+factorization/Schur algebra and prior sampling principles are credited;
+external originality remains unestablished. No isolated corollary paper.
+Full-spectrum route: two units, both with substantive proved finite results;
+zero consecutive units without mathematical progress. Earlier paired-stream
+and projection/trace routes remain STOPPED_AT3, not reset or reopened.
+Next: pay the actual shifted high-response estimate, using279's complete
+two-polarization symbols and280's exact dependent-row quotient, or produce
+a concrete negative direction and its actual invisible field. A presumed
+Gram bound, another structure, or restated criterion is not further progress.
+Compare any new bound against267's logarithmic result. Sole questionQ251.
+PR29 remains20/41;TermSource=0; physical gap and continuum remain open.

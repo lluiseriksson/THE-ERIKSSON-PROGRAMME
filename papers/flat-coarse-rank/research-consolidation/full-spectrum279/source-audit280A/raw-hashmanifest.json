@@ -1,0 +1,70 @@
+{
+  "representation": "Exact raw retained bytes; no normalization; manifest self excluded",
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1738,
+      "sha256": "e8fa922defeebf2abfa07c80be22a241111839e9683a1dc2a9b878c9caf9578e"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 1837,
+      "sha256": "a7fb8d68ad3b3308805c0fef13858246296389071339e6a8ab1874a7b4a33989"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 12203,
+      "sha256": "fb2eb18ddb1a4d5e4f92fbb911a930721fa2336ae7e68766c5d6985946634a69"
+    },
+    {
+      "path": "initial-status.txt",
+      "bytes": 218,
+      "sha256": "1d29dbbad4736d02858dc1ff07af9009baa8f41a3eb9e4db999e59b6a3edf2a5"
+    },
+    {
+      "path": "source-stability.json",
+      "bytes": 402,
+      "sha256": "aedd11e3f0366da1a892953f20bd17f335f25e4330c67c6c7486f7eba47cdd66"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 3628,
+      "sha256": "f8f4f66f0c3566e003732ab6dadfec9081aa66ecbdb6cb7123ce2a925ee6f484"
+    },
+    {
+      "path": "subjects/cancellation-range280A.checkout.txt",
+      "bytes": 10920,
+      "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36"
+    },
+    {
+      "path": "subjects/cancellation-range280A.git.txt",
+      "bytes": 10920,
+      "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "subjects/coexact-trace-repair273A.txt",
+      "bytes": 8083,
+      "sha256": "5a4051cff938220062e55f5ded7aa8e586fd8ae0daedd78d439e47973cf4be13"
+    },
+    {
+      "path": "subjects/full-coexact-spectrum279A.txt",
+      "bytes": 12104,
+      "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+    },
+    {
+      "path": "subjects/nonlinear267A-logarithmic-bound.txt",
+      "bytes": 9821,
+      "sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    }
+  ]
+}
