@@ -1,5 +1,3 @@
-Grouped Q251 exact-zero mechanism exclusion, not a separate paper/PDF/grade.
-Read ANALYTICAL-STATUS268.txt, unchanged strong-null-exclusion268A.txt and
-the complete own exact-source report/context/raw manifest. It excludes
-exact strong-zero invisible fields for arbitrary slice cuts. It is not
-target-c coercivity or an extension of267's quantitative constants.
+Grouped soleQ251:268 universal exact-strong-zero exclusion plus269 paid positive-strong-energy folded-map actual-coexact counterexample.
+Read both subsequent ANALYTICAL-STATUS files, unchanged proof sources and COMPLETE source-audit268A/source-audit269A reports/contexts/manifests.
+One grouped source unit, not a paper/PDF/model score or physical result.269 does not refute all canonical maps or the2i^2 permutation.

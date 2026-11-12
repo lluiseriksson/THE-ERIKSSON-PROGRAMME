@@ -1,0 +1,35 @@
+ACTUAL CONTEXT269A -- 12 November2026
+Reviewer: involved Codex/OpenAI child /root/grouped260_manuscript_source_audit.
+Exact served backend, version and effort unavailable; none inferred.
+Inherited programme/author/prior audit context remains visible. Not blind,
+independent peer review or independently established model assessment.
+No new score/PDF, formal, numerical, historical-originality or publication review.
+
+The entire269 source was read afresh and every proof step rederived analytically.
+The268 source was fully read and checked in this same session's preceding task;
+its full exact source and that full report are retained as the explicit premise
+ONLY for strict positivity of the constructed witness's strong energy. The269
+existence, actual invisibility, preimage, norm and energy upper bound were checked
+fresh without268 as a premise. No new full re-audit of268 is claimed. Original
+curl/source/means conventions were read in earlier full-source tasks in this
+same involved session. Governance/CLAUDE and D LEEME previously read in full;
+active environment, immutable-failure and audit-silence sections reread here.
+Captured whole governance files do not imply fresh whole-file rereading.
+Full inherited conversation is not tool-exported and is not fabricated as a
+verbatim captured transcript; actual shared visibility is disclosed instead.
+
+No inbound message after assignment while auditing; no agents contacted. No
+mathematical executable, numerical experiment, Lean/Lake, oracle, compiler,
+test, Colab runtime, network or external model service was used. Only Git/file/
+hash metadata and writing this new retention packet. No source, branch, state,
+other audit, chat/agent, publication, score, automation or PR/body changed.
+Preexisting parent untracked helpers/reading note were not read, executed or
+altered; initial status retains names only. No PR/body exists, hence body
+capture and normalized body hash N/A. No new clone/runtime cleanup debt.
+The retention helper performs byte/hash checks only, not a scientific proof.
+
+Subject Git and checkout raw bytes match the assigned SHA256 without newline
+normalization. Each capture has its exact origin and representation recorded.
+The self-excluding raw manifest covers all retained artifacts; its digest is
+separately returned. Explicit byte checks, not Python assert, decide retention.
+Private same-name root copy SHA256 dbeb8d70312bc97944096a780636cb38230c619604849327314d5d4a73965de4; subject raw equality True.

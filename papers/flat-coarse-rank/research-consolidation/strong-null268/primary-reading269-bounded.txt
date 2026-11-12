@@ -1,0 +1,16 @@
+269A bounded primary comparison,12 November2026 UTC.
+Gregory F. Lawler and Vlada Limic, Random Walk: A Modern Introduction,
+author-hosted draft https://www.math.uchicago.edu/~lawler/srwbook.pdf .
+Web PDF open/find returned289pages; read bounded section6.6 excerpts:
+the two-dimensional recurrent capacity introduction and displayed(6.40),
+Proposition6.6.3 variational statement and Proposition6.6.5 logarithmic
+growth statement. Not the whole book or complete proofs. Definitions of
+capacity there are not silently identified with this torus cutoff energy.
+This establishes classical logarithmic potential-theory context, not the
+specific folded map, true curl, actual tags or constants of269A.
+Our finite cutoff shell bound is paid directly in source, not imported.
+No exact combined priority or relevance established; no absence-of-search
+result is evidence of originality. Earlier261/263/264/256 witness statements
+have different maps/boundaries.268 is qualitative and267 requires F permutation.
+The folded map was inventoried against existing programme source; do not
+publish a standalone small corollary paper or inherit a PDF grade.
