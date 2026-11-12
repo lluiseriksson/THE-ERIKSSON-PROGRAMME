@@ -1,13 +1,13 @@
 [
   {
-    "path": "diagnostic281B.py",
-    "bytes": 20199,
-    "sha256": "495a00952c4869f313c2245c1a089498fe8775dccb789ee617a078271eb23ee0"
+    "path": "diagnostic281C.py",
+    "bytes": 20217,
+    "sha256": "1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3"
   },
   {
     "path": "launch281.py",
-    "bytes": 33497,
-    "sha256": "ecd2954734d75e6f9ddfd9042ff6ea01ad6786fb74033450ced28895362c6f63"
+    "bytes": 33521,
+    "sha256": "e47c0b07d46946ac697d999a0223872127f71fcbbd0e95b0ae058c4322dd37df"
   },
   {
     "path": "capture_cli_atomic.ps1",
@@ -17,7 +17,7 @@
   {
     "path": "run_owned_after_gate.ps1",
     "bytes": 7098,
-    "sha256": "12d2fa20e1c843138b2995159280758aa20f0e000c666b8a8f82498b38f4d8e7"
+    "sha256": "dc25180b23b380ecc9fb3c24978b3dab36f1e6f456377adf48c4fa6621ec179c"
   },
   {
     "path": "readback_after_stop.ps1",

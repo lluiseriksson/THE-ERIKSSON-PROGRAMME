@@ -31,7 +31,7 @@ def launch281_main():
         require(not root.exists() and not nr.exists() and not native.exists() and not Z.exists(),'Fresh own281 launch and diagnostic required')
         E.mkdir(parents=True,exist_ok=False);created=True
         raw=base64.b64decode(encoded,validate=True);require(hashlib.sha256(raw).hexdigest()==expected,'Embedded diagnostic hash differs')
-        path=E/'diagnostic281B.py'
+        path=E/'diagnostic281C.py'
         with path.open('xb') as f:f.write(raw);f.flush();os.fsync(f.fileno())
         require(path.read_bytes()==raw,'Closed actual executable readback differs')
         r['actual_child_started']=True;a=invoke('child',[sys.executable,str(path)],3300)

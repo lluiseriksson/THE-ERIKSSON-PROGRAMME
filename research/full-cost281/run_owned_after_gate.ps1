@@ -1,7 +1,7 @@
 param([Parameter(Mandatory=$true)][ValidatePattern('^[a-f0-9]{64}$')][string]$ApprovedManifestSha256,[Parameter(Mandatory=$true)][ValidatePattern('^[a-f0-9]{40}$')][string]$SourceSha)
 Set-StrictMode -Version Latest
 $ErrorActionPreference='Stop'
-$diagnosticHash='495a00952c4869f313c2245c1a089498fe8775dccb789ee617a078271eb23ee0'
+$diagnosticHash='1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3'
 $constructionBase='4ba7c61adb94d80f4cb985ab78e84d8346171b02'
 . (Join-Path $PSScriptRoot 'capture_cli_atomic.ps1')
 $manifest=Join-Path $PSScriptRoot 'RUNNER-HASHES.json'
