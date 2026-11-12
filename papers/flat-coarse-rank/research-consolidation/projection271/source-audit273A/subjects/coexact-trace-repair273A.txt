@@ -1,0 +1,143 @@
+Q251 /273A -- PAID COEXACT LONGITUDINAL POINT TRACE AND REPAIR COST
+UNREVIEWED analytical candidate,12 November2026 UTC. Basea655e10f29b0444273263adebbb678d3dd6922f4.
+Grouped with271/272, not a paper/PDF/grade, formal or numerical verification.
+
+1. ORIGINAL MODEL AND TWO PROPOSED STATEMENTS
+
+Let n>=4 be even,V=n^3,c>0,H=cn^2, original counting norms and two
+orthogonal channels. Channel1 has source-odd strong edges in all3 spatial
+directions, channel2 source-even, weak a=c/48 on the other sources. Let
+Q_H be the full original strong-source energy. U=(im d1*)^2 is the true
+forward-curl-adjoint image, not a divergence kernel including constants.
+Choose ANY full original nonwrapping slice cuts t_i for which
+F(i)=i+t_i modn is a permutation. No evenness of t_i is required below.
+For every odd residue s, let i_s be the unique i with F(i)=s and put
+v_s=(i_s,t_(i_s),0). These are actual singleton rows of the original C,
+one per original channel1 strong component. Put L=1+log n, natural log.
+
+PROPOSED TRACE THEOREM. For every actual coexact w, writing its channel1
+spatial components w1,w2,w3, the exact inequality is
+ H sum_(s odd)|w1(v_s)+w2(v_s)+w3(v_s)|^2<=6L Q_H(w).       (T)
+This spatial sum is a DERIVED combination of3 actual original point rows,
+not a replacement observation map or an unproved component rotation.
+
+PROPOSED REPAIR COST. If n is divisible by4, let the REAL ambient input
+ u=-2sin(pi x1/2)sin(pi x3/2)e1 in channel1, channel2 zero,
+and P be the TRUE counting coexact projection. Every coexact correction
+r with C(Pu+r)=0 must pay
+                Q_H(r)>=c||u||^2/[48(1+log n)].           (R)
+Such r is coexact whenever Pu+r is coexact, since Pu is already in U.
+No existence of a nonzero corrected witness, upper repair cost, lower
+bound on Q_H(Pu+r), targetc or logarithmic necessity for a kernel is claimed.
+The energy of r can cancel that of Pu in the sum; (R) does NOT exclude it.
+
+2. TRUE COEXACTNESS FORCES A SPATIAL-SUM LAYER IDENTITY
+
+The true forward gradient d0 and curl satisfy d1 d0=0 by commuting shifts.
+Thus actual w=d1*A has d0*w=0, i.e. sum_j delta_j w_j=0, with
+delta_j=I-shift_(-e_j). Also EVERY spatial component has global sum0,
+because its true curl-adjoint formula is a sum of backward differences.
+Both facts follow directly from the actual preimage, not converse assumptions.
+
+Let S=x1+x2+x3 modn, W_j(s)=sum_(S(x)=s)w_j(x), T(s)=sum_j W_j(s).
+Sum the backward-divergence identity over one S-layer. Each shift by-e_j
+bijection sends the layer to s-1, so T(s)-T(s-1)=0. Therefore T is constant.
+The global sum of all components is0, so n times that constant is0; T=0.
+Consequently f=w1+w2+w3 has zero sum on EACH single S-layer, hence on
+each channel1 strong component G_s={S=s or s+1},s odd. This is stronger
+than merely subtracting a component mean; no projection invariance is used.
+
+3. FINITE STRONG-COMPONENT POINT GREEN BOUND, REDERIVED
+
+Actual strong edges from a source-odd site increment S from s to s+1;
+paths e_j then-e_k generate every zero-sum displacement. Thus the G_s
+above are the connected strong components, each with2n^2 vertices.
+Parametrize source x_s(y)=(y1,y2,s-y1-y2), target x_s(y)+e3, y inZ_n^2.
+For scalar values b(y),d(y) their exact strong edge energy is
+ E_s=sum_y|b(y)-d(y)|^2+sum_(y,j=1,2)|b(y)-d(y+e_j)|^2.
+All3 physical forward labels occur once, with original counting norm.
+
+The unitary2D Fourier matrix has diagonal3 and off-diagonals-S,-conj(S),
+where S=1+exp(i theta1)+exp(i theta2),theta_j=2pi k_j/n.
+At k0 its eigenvalues are0,6 and its only zero coordinate is constant
+on both layers. At k!=0 its determinant is
+ D=9-|S|^2=|1-exp(i theta1)|^2+|1-exp(i theta2)|^2
+                              +|exp(i theta1)-exp(i theta2)|^2>0.
+The inverse diagonal is3/D at either layer. At k0, removing the sole
+constant leaves inverse diagonal(1/2)/6=1/12. Finite Cauchy-Schwarz in
+these positive Fourier energy coordinates gives, for any mean-zero f on G_s,
+ |f(v)|^2<=G_n E_s(f), G_n=n^-2[1/12+sum_(k!=0)3/(9-|S|^2)]. (G)
+Point evaluation's squared2D Fourier normalization is1/n^2; this is the
+actual counting point functional, not an assumed Green constant.
+
+Use centered r_j in[-n/2,n/2-1], and finite sine
+ |1-exp(2pi i r_j/n)|^2=4sin^2(pi r_j/n)>=16r_j^2/n^2.
+Dropping only the third nonnegative determinant term,
+ G_n<=1/(12n^2)+(3/16)sum_(r!=0)1/(r1^2+r2^2).
+Each shell max(|r1|,|r2|)=j has at most8j points and denominator>=j^2.
+Thus the sum is at most8sum_(j=1)^(n/2)1/j<=8(1+log(n/2)).
+Nyquist representatives occur once; their possibly smaller shell helps.
+Hence G_n<=1/(12n^2)+(3/2)(1+log(n/2))<=2(1+log n)=2L.
+This is the already classical/267 point mechanism paid again here, not
+inherited as an unproved or differently normalized trace hypothesis.
+
+4. THE ACTUAL COEXACT TRACE INEQUALITY
+
+Apply(G) to f=w1+w2+w3 on G_s. Its component mean is0 by section2.
+For each original edge, |D_j f|^2<=3sum_(r=1)^3|D_j w_r|^2, by finite
+Cauchy. Therefore E_s(f)<=3sum_r E_s(w_r). The selected v_s lie in
+distinct strong components, because F is a permutation; there are n/2.
+Summing the point bounds gives
+ sum_(s odd)|f(v_s)|^2<=3G_n sum_(s odd,r)E_s(w_r)
+                    <=[6L/H] Q_H(w).
+The second original channel contributes nonnegative energy and is not
+mixed into f. This proves(T) with all spatial, channel and H factors.
+Only the actual point rows are used; imposing further original means
+can only narrow the class of possible corrections. No trace rank is assumed.
+
+5. EXPLICIT COST FOR EVERY MEAN-REPAIR OF THE272 INPUT
+
+For completeness, the272 input has Cu=0 for every slice map, since it
+vanishes atx3=0 and sums to0 onx3[1,n-1]; it is independent ofx2.
+Its complex precursor is exp(i pi x1/2)(exp(i pi x3/2)-exp(-i pi x3/2))e1.
+At the two frequencies(n/4,0,+/-n/4), forward symbols are
+g+=(i-1,0,i-1),g-=(i-1,0,-i-1), both squared norm4.
+The actual coexact symbol I-gg*/|g|^2 gives atx3=0
+ (Pu)_1=(Pu)_2=0,
+ (Pu)_3=Re[exp(i pi x1/2)(-1+i)/2].
+This follows by subtracting the two projected e1 coefficients; the third
+difference is-(2i)conj(i-1)/4=(-1+i)/2. Harmonic mode is absent.
+P is real, so the real-part calculation applies to the displayedu.
+For EVERY integer i, the third value is either-1/2 or+1/2.
+
+If r is an actual coexact repair with C(Pu+r)=0, each original point row
+vanishes separately. Thus at every selected v_s, r=-Pu as spatial vectors
+in channel1. Its spatial sum has magnitude1/2, so
+ sum_(s odd)|r1(v_s)+r2(v_s)+r3(v_s)|^2=(n/2)(1/4)=n/8.
+Apply(T): Q_H(r)>=H n/(48L)=c n^3/(48L).
+Finally ||u||^2=4*n*(sum_i sin^2(pi i/2))^2=n^3,
+because n divisible4 makes each sine-square sum n/2. This proves(R).
+In particular a strong-null coexact repair is impossible for this input.
+It does not exclude a paid nonzero-energy repair or bound the final sum's
+energy from below. Even r=-Pu gives finalzero; no nonzero witness is supplied.
+
+6. SCOPE AND FALSIFIERS
+
+The new content is the layer identity plus a paid point trace on actualU
+and its explicit repair-cost consequence, not a new logarithmic kernel
+coercivity, matching rate or a targetc conclusion. The product-profile
+zero ansatz and uncorrectedP transfer remain excluded, but no general
+mean-preserving correction impossibility is inferred. SoleQ251 continues.
+Counter2 for grouped route units since270 if accepted; no reset for this
+repair-cost inequality. At3noadvance units retain failures and change
+mechanism or name a precise obstruction. No standalone small paper/grade.
+
+Attack layer telescoping/globalmeans from TRUE preimage, actual strong
+components, complex Green normalization/Nyquist, spatial factor3,H andn/2
+sample count, real272 phase signs, correction membership and normn^3.
+A lower bound on correction energy must NEVER be presented as one for
+the final corrected field. No executable/formal/numeric verification,
+historical originality or independent peer review claimed. Classical Hodge
+and2D logarithmic point capacity credited; novelty/relevance unestablished.
+Involved Codex/OpenAI author, exact backend unavailable. PR29=20/41,
+TermSource=0, physical gap and continuum OPEN.

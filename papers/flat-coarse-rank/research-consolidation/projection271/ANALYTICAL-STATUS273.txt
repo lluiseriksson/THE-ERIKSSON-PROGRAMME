@@ -1,0 +1,39 @@
+273A subsequent analytical status,12 November2026 UTC.
+Audited3aa9367c15f1814403c784ecb97628c45101c00e.
+Original LF/Git/checkout raw SHA256
+5a4051cff938220062e55f5ded7aa8e586fd8ae0daedd78d439e47973cf4be13.
+Frozen UNREVIEWED source header retained historically, not rewritten.
+Verdict ACCEPT_ANALYTICAL_COEXACT_LONGITUDINAL_TRACE_AND_SCOPED_REPAIR_COST.
+No material failure or minor correction found. Parent read COMPLETE12423-byte
+report, context, assignment/bindings and checked all10 actual raw members.
+Report raw SHA2569c58b9bf5f0477504a6f8e3d9c66ca9d3f43b8ef9ea692baa6db564d9659c2a0.
+Manifest raw28f7a7de198dff74494ccb06d7e7b7449578a3464f3cd30a0ae69b536a1e2eaa.
+
+For evenn>=4, original D3,H=cn^2 and ANY actual slice-cut map with
+F=i+t permutation, TRUEcoexact w obeys
+ H sum_selectedodd |w1+w2+w3|^2<=6(1+log n)Q_H(w).
+Actual preimage forces spatial-sum mean0 on every S-layer; finite original
+strong-component Green bound and factors3/6 are derived. No even-cut
+hypothesis, averaging invariance or supplied trace-Gram bound is used.
+For the272 input at n divisible4, ANY truecoexact correctionr satisfying
+C(Pu+r)=0 pays Q_H(r)>=c||u||^2/[48(1+log n)],||u||^2=n^3.
+
+This bounds ONLY the correction's energy, NOT Q_H(Pu+r). Cross cancellation
+is possible; r=-Pu leaves finalzero. No nonzero invisible witness, optimal
+cost, matching log necessity, targetc, or general correction impossibility.
+This is a useful actualU trace/repair estimate, not a kernel lower bound.
+Counter2 for route units since270, no reset. At3noadvance units retain all
+failures and change mechanism or identify precise obstruction. Rather than
+continue projection-cost corollaries, next mathematical work should tackle
+the actualUkerC variational problem/direct curl potentials with every mean.
+
+Model assessments and review context: involved Codex/OpenAI same-session
+shared inherited author/programme/prior audit context, exact backend/version/
+effort unavailable. Not blind, independently established, peer review, formal/
+numerical proof, grade or publication acceptance. Complete report/context/
+assignment/subjects retained; no mathematical executable/runtime used.
+Classical Hodge/2D point-capacity mechanisms credited, historical originality
+and wider relevance UNESTABLISHED after bounded primary comparison.
+Group271/272/273 in one source PR, not small papers or a newPDF/score.
+Public260C working paper/assessment unaffected; PR29=20/41,TermSource=0,
+physical gap and continuum OPEN. SoleQ251 remains active.

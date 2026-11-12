@@ -1,0 +1,79 @@
+Q251 /272A -- TRUE COEXACT PROJECTION DESTROYS ALL-SLICE-MAP INVISIBILITY
+UNREVIEWED analytical candidate,12 November2026 UTC. Prepared separately
+while271 exact-source audit is frozen. Not accepted by that audit.
+
+Let n be divisible by4, use original D3 torus counting norm and the TRUE
+orthogonal coexact projectionP onto(im d1*)^2, with P0=0. Let C be ANY
+of the full original slice-cut maps under discussion: x1 singletoni,
+x2 nonempty[0,t_i-1],{t_i},[t_i+1,n-1] and x3{0},[1,n-1], all original
+spatial components/channels, any t_i whatsoever. No permutation/evencut
+assumption. Work only in channel1, channel2 zero.
+
+PROPOSED explicit REAL ambient field
+ u(x)=-2sin(pi*x1/2)sin(pi*x3/2)e1
+satisfies Cu=0, while C(Pu)!=0 for EVERY admitted map. In fact at the
+actual singleton(0,t_0,0), the third component of Pu is exactly-1/2.
+This falsifies transfer of mean-kernel membership through the TRUE coexact
+projection, uniformly over this entire slice family, including2i^2.
+It is NOT a coexact invisible witness, and disproves neither targetc
+nor existence of some more careful trace-preserving domain correction.
+
+1. EVERY ORIGINAL MEAN OF THE REAL FIELD IS ZERO
+
+The field is independent ofx2. At x3=0 it is zero, so all cells in that
+x3 singleton slab have zero mean. Also sum_(z=0)^(n-1)sin(pi*z/2)=0
+at n divisible4; since its value at0 is0, the sum from1 throughn-1
+is zero. Thus the other actual x3 block has zero sum as well. Multiplying
+by any x2 interval size or fixed x1 factor preserves zero. Every component
+and both channels' actual normalized means vanish separately. u!=0,
+for example atx1=x3=1. Its lack of coexactness is not ignored: we only
+claim ambient invisibility before applying the actual projection.
+
+2. EXACT FOURIER PROJECTION, WITH NO NUMERICS
+
+Let k=q=n/4, theta=pi/2, and use the unnormalized complex field
+ w(x)=exp(i theta*x1)[exp(i theta*x3)-exp(-i theta*x3)]e1.
+Its real part is exactly the displayedu. Its two nonzero Fourier
+frequencies are(k,0,q) and(k,0,-q), with vector coefficients e1,-e1.
+For actual forward gradient symbol at the two frequencies,
+ g+=(i-1,0,i-1), g-=(i-1,0,-i-1), |g+|^2=|g-|^2=4.
+At nonzero frequencies the TRUE coexact projection is
+ P_g=I-gg*/|g|^2, as follows directly from the true curl-adjoint image.
+The harmonic zero mode does not occur. This formula can be verified
+without assuming a divergence-kernel replacement: for g*v=0 the true
+two-form A_jl=(g_j v_l-g_l v_j)/|g|^2 has adjointv.
+
+At x3=0 the projected complex field is
+ exp(i theta*x1)(P_(g+)e1-P_(g-)e1).
+The first components cancel, because both projection first entries are
+1-|i-1|^2/4=1/2; the second components are0. The third difference is
+ -[(i-1)-(-i-1)]conjugate(i-1)/4
+ =-(2i)(-i-1)/4=(-1+i)/2.
+Therefore (Pw)_3(x1,x2,0)=exp(i theta*x1)(-1+i)/2.
+The real operatorP preserves conjugation, so Pu=Re(Pw), and atx1=0
+the third component is-1/2 for EVERYx2. The actual singleton row at
+(0,t_0,0) in channel1 is thus-1/(2sqrt(V))!=0. No union/refinement,
+normalization, complex-reality or endpoint exception remains.
+
+3. CONSEQUENCE AND REVIEW SCOPE
+
+The image Pu is true coexact by the actual projector, but visible. Thus
+the simple route 'construct an ambient invisible low-energy field and
+applyP' does not automatically provide a true-coexact invisible field,
+even if271's proposed contrast-uniform energy estimate is accepted.
+This exact obstruction is separate from the older251 block-average
+projection failing to preserve the coexact domain. Here the projection
+is the opposite one and its input/output mean-kernel failure is explicit
+for EVERY cut map in the specified full slice family, includingpermutations.
+No energy quotient for this particularu is needed or claimed. Nothing
+rules out tailored ambient inputs, compensatedP, or solving actualUkerC
+directly. Originaltargetc on the remaining maps remains OPEN.
+
+Falsifiers: wrong forward-gradient adjoint/projection symbol, wrong signs
+in the two Fourier coefficients, incorrect conjugation/realpart, or a mean
+that does not vanish for one of the original nonwrapping cells. Require
+own fresh complete exact-source audit before accepting;271 does not cover
+this construction. No historical originality, modelgrade, PDF, independent
+peerreview, formal/numerical computation or physical-gap claim. Involved
+Codex/OpenAI author, exact backend unavailable; same soleQ251,PR29=20/41,
+TermSource=0, physical gap/continuum OPEN.

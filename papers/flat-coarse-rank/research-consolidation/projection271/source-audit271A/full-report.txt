@@ -1,0 +1,189 @@
+EXACT-SOURCE ANALYTICAL AUDIT271A -- TRUE COEXACT ENERGY PROJECTION
+
+VERDICT: ACCEPT_ANALYTICAL_CONTRAST_UNIFORM_COEXACT_PROJECTION_FACTOR4
+MATERIAL FAILURE: NONE found. No minor mathematical or metadata correction
+was found necessary in the assigned source. The scalar-spatial checkerboard
+scope and absent trace-preservation conclusion are essential limitations.
+
+Exact commit ed2746f97c5886a767f8ba34dc71eb2662ee7410.
+Subject Git blob and checkout both exact LF-only raw bytes, SHA256
+ac574de6269d184fe4257a57f07ab86eb15d0a1f1aa8631c387f2825d987eb6d.
+No newline normalization was used. No PR/body exists; body capture/hash N/A.
+This verdict is involved analytical source checking, not formal proof,
+numerical verification, a model grade, independent review or publication.
+
+1. EXACT STATEMENT AND SPATIAL SCALAR SCOPE
+
+The theorem fixes even n>=2, three spatial dimensions, counting norms and
+the actual forward curl on unordered spatial pairs. Within each original
+channel, a and H are nonnegative scalars attached to the two SOURCE parity
+classes and are identical across all forward directions and spatial-vector
+components. Reversed assignment in the other channel is allowed, and the
+original channels are orthogonal. No inequality relating a and H is assumed;
+the weak/strong names do not change the proof if one vanishes or their order
+is reversed. Arbitrary anisotropic or non-checkerboard weights are expressly
+outside scope. This scalar structure is genuinely used in the tuple norm.
+
+The candidate projects onto the actual curl-adjoint image, with harmonic
+constants removed, not the larger divergence-free space. It asserts separate
+factor4 upper bounds for each parity-weighted energy, plus norm contraction.
+It does not claim energy commutation, observation preservation or a lower
+projected norm. Those distinctions are respected throughout the proof.
+
+2. TRUE COMPLEX CURL IMAGE AND THE ZERO MODE
+
+At frequency k, the forward symbol is g_j=e^(2pi i k_j/n)-1 and the curl
+is (g wedge v)_jl=g_jv_l-g_lv_j. Direct adjunction of this unordered-pair
+map gives d1*d1 v=|g|^2v-g(g* v). Thus for nonzero k and g* v=0,
+A_jl=(g_jv_l-g_lv_j)/|g|^2 is a true preimage of v. Conversely antisymmetry
+gives g* d1*=0. The image is exactly the Hermitian orthogonal complement
+of g, not a bilinear-transpose complement. The denominator is positive
+because g=0 only at k0. Hence the actual counting orthogonal symbol is
+P_g=I-gg*/|g|^2 for k!=0.
+
+At k0 the curl and adjoint symbols vanish and their image is{0}, so P0=0.
+This is essential harmonic removal and is explicitly retained. The symbols
+at -k conjugate those at k; therefore the projection maps real fields to
+real fields. It is an orthogonal projection frequencywise, including zero,
+so its counting norm is contractive by Parseval. No unsupported Hodge
+surjectivity or divergence-only sufficiency is assumed.
+
+3. PROJECTOR-ANGLE IDENTITY OVER COMPLEX VECTORS
+
+For nonzero g,h let e=g/|g|,f=h/|h| and alpha=|e* f|, s=sqrt(1-alpha^2).
+A scalar phase change of f makes e* f=alpha real/nonnegative without
+changing ff*. When s>0, f=alpha e+s v with v unit Hermitian-perpendicular
+to e. On this two-dimensional span, ee*-ff* has entries
+[[s^2,-alpha s],[-alpha s,-s^2]]. Its square is s^2 I because
+alpha^2+s^2=1; it vanishes on the orthogonal complement. Thus its operator
+norm is s, and the same norm is ||P_g-P_h||. If s0 the two rank-one
+projections coincide, including arbitrary parallel phase. No real-only
+angle assumption, nonzero sine division or exceptional perpendicular case
+is being hidden. The argument works over C with Hermitian inner products.
+
+4. LEAST SQUARES COEFFICIENT AND RESIDUAL TUPLE
+
+For R_j=g_jA-h_jB, direct expansion gives
+sum_j||R_j||^2=|g|^2||A||^2+|h|^2||B||^2
+-2 Re[(g* h) A*B]. Completing the square in A therefore uses exactly
+rho=(g* h)/|g|^2, not its conjugate. It yields
+|g|^2||A-rho B||^2+[|h|^2-|g*h|^2/|g|^2]||B||^2.
+The last bracket equals|h|^2s^2, proving LS without assumptions on A,B
+or invertibility/conditioning of any evaluation matrix. Every spatial
+component has the same scalar coefficient rho, as the tuple definition needs.
+
+The projected tuple is exactly
+R'_j=P_g R_j+h_j(P_g-P_h)B.
+The first tuple has norm<=||R||. The second has norm
+|h| ||(P_g-P_h)B||<=|h|s||B||<=||R|| by LS. Triangle gives
+||R'||<=2||R|| and squared factor4. In particular a zero original residual
+has zero projected residual; no division by ||R|| was used. Parallel g,h
+are included because their projection difference is0. Replacing B by-B
+proves the same estimate for the plus tuple; all other expressions transform
+consistently and no sign-specific argument is lost.
+
+If g0,h!=0 then actual P0=0 makes projected residual only h_j P_h B,
+whose norm is bounded by the original h_jB. If h0,g!=0 the analogous
+bound uses g_jP_gA. If both0 all tuples vanish. Thus the source's harmonic
+case treatment is correct and even improves the constant on those pairs.
+No nonzero-symbol premise leaks into the global theorem.
+
+5. PARITY SUBLATTICE ORTHOGONALITY AND THE EXACT FACTOR1/2
+
+Eta=(n/2,n/2,n/2) is nonzero and order2 for every even n>=2. Translation
+by eta partitions all n^3 frequencies into distinct unordered pairs, exactly
+n^3/2 of them. For any representative k, e_(k+eta)(x)=epsilon(x)e_k(x),
+epsilon=(-1)^(x1+x2+x3), and h_j=g_j(k+eta)=-e^(2pi i k_j/n)-1.
+Thus the contribution of the pair's forward gradient at a SOURCE is
+e_k(x)(g_jA+epsilon h_jB), with the sign evaluated at that source, not
+its forward neighbor. This exactly matches original source weights.
+
+On a parity sublattice, inner products of two characters can be evaluated
+using its indicator(1 plus/minus e_eta's parity sign)/2. They vanish unless
+their frequencies differ by0 or eta. Therefore different unordered pairs
+are orthogonal on each sublattice, regardless of chosen representatives.
+Each sublattice has V/2 points and |e_k|^2=1/V; its restricted character
+norm squared is precisely1/2. Consequently the odd-source energy is
+(1/2)sum_pairs||g_jA-h_jB||_tuple^2 and even-source energy is
+(1/2)sum_pairs||g_jA+h_jB||_tuple^2. There is no additional volume, pair,
+direction, spatial-component or channel factor. This remains valid at n2:
+eta is still a nonzero order2 element and the parity sets each have V/2
+sites. Original forward labels are retained even when neighbor relations
+repeat as undirected edges.
+
+After applying P, the Fourier coefficients in each pair are P_gA and P_hB.
+Applying the derived factor4 tuple estimate to each exact parity formula
+proves its individual unweighted parity-energy bound. Multiplying by a or
+H>=0 preserves it, including degenerate zero coefficients. Reversing the
+channel assignment only exchanges plus/minus parity formulas, already both
+proved. Summation over original orthogonal channels therefore proves both
+Q_H(Pu)<=4Q_H(u) and Q_a(Pu)<=4Q_a(u), and their total bound. The proof
+does not depend on contrast or on any lower positivity of the weights.
+
+6. ACTUAL CONSEQUENCES AND THE PROFILE-ANSATZ EXCLUSION
+
+The upper energy estimates are valid domain-correction tools. In particular
+Q_H(u)=0 implies Q_H(Pu)=0; this qualitative strong-null preservation is
+consistent with the earlier253 strong-component/coexact structure, but not
+new merely because it is restated. The paid all-field factor4 is the actual
+new operator assertion checked here. Neither it nor ||Pu||<=||u|| supplies
+a lower bound for the projected norm or a preservation of individual C rows.
+Thus an ambient invisible field cannot be declared a nonzero coexact
+invisible field after projection. No trace-preserving correction, target c
+theorem, energy commutation or invisible2i^2 witness is claimed proved.
+
+For a permutation F, its image B is the whole residue circle. Then the
+earlier sufficient zero set B+{-3,-2,-1,0} is the whole circle, and requiring
+that one scalar profile psi vanish there forces psi identically0. This
+correctly excludes that specific all-profile-zero sufficient ansatz, without
+excluding non-product potentials, cancellations of traces, other corrections
+or target-c recovery. It is not a universal impossibility theorem. The251
+block-average projection obstruction concerns a different projection and
+trace/domain requirement, so this statement does not contradict it. No fresh
+whole audit of that earlier obstruction is needed or claimed here.
+
+7. ALL FINDINGS, ROUTE LIMITS AND CONTEXT
+
+Material failure: none found. Minor mathematical/metadata correction: none
+identified. The true adjoint, complex LS conjugation, projector angle,
+parallel/zero-symbol exceptions, original source parity and1/2 factor all
+survive the fresh attacks above. Scalar spatial weights are an explicit
+necessary scope condition for this proof, not an unacknowledged extension
+to arbitrary anisotropy. The exact harmonic removal is correct.
+
+This is an operator-energy lemma, not a new quantitative kernel lower or
+invisible witness for the active route. No route-counter reset is justified
+by this lemma and no state/counter was changed. Sole Q251 remains open;
+historical originality/relevance unestablished. No primary-source comparison
+was performed and classical finite Hodge/projector geometry is not declared
+new. Physical gap/continuum remain open; PR29=20/41,TermSource=0 unchanged.
+No grade, PDF review, new paper or publication acceptance follows.
+
+Actually exposed identity: involved Codex/OpenAI child in the same session,
+with shared inherited author/programme/prior report context. Exact served
+backend, version and effort unavailable, none inferred. Not blind or
+independent peer review. Whole271 read afresh and all proof steps derived
+above without prior acceptance premises. Earlier programme source conventions
+were read in prior tasks; no new full re-audit of those historical sources
+is claimed. Active environment/immutable-audit rules reread; whole retained
+governance files do not overstate fresh read scope. Assignment and actual
+context are complete; full inherited-chat export is unavailable and not
+fabricated as a transcript.
+
+No mathematical executable, experiment, Lean/Lake, oracle, compiler, test,
+Colab runtime, network or external model service used. Only Git/file/hash
+metadata and this new evidence packet were written. Parent untracked helper
+was unused/untouched. No source, branch, state, other report/chat/agent, public
+artifact, PR/body, automation or score changed. No inbound parent message
+arrived while auditing. No PR/body exists; normalized-body hash N/A. No new
+clone/runtime cleanup debt. Metadata helper is not a mathematical verifier.
+
+Exact Git and checkout subject bytes match assigned LF SHA256 without newline
+normalization; this is a raw-byte comparison, not a normalized-text claim.
+Complete raw subjects/bindings, full assignment, actual context, initial
+status and unabridged report retained. Manifest lists every artifact except
+itself with raw byte size, SHA256 and representation; its own digest is
+returned separately. Explicit byte checks, not Python assert, decide retention.
+Prior reports/objections remain immutable. Use this exact analytical verdict
+without inflating it to formal proof, independent review, a grade, historical
+priority or publication acceptance.

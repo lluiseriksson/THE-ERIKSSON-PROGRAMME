@@ -1,0 +1,207 @@
+EXACT-SOURCE ANALYTICAL AUDIT273A -- ACTUAL COEXACT TRACE AND REPAIR COST
+
+VERDICT: ACCEPT_ANALYTICAL_COEXACT_LONGITUDINAL_TRACE_AND_SCOPED_REPAIR_COST
+MATERIAL FAILURE: NONE found. No minor mathematical or metadata correction
+was found necessary. The cost concerns the correction alone, not the final
+corrected field; that limitation is essential and is correctly stated.
+
+Exact commit3aa9367c15f1814403c784ecb97628c45101c00e.
+Git and checkout byte-identical LF-only raw subject SHA256
+5a4051cff938220062e55f5ded7aa8e586fd8ae0daedd78d439e47973cf4be13.
+No normalization. No PR/body exists; body capture/hash N/A. This is involved
+analytical source review, not formal/numerical verification, independent peer
+review, a model/PDF grade, historical priority or publication acceptance.
+
+1. ACTUAL DOMAIN AND THE SPATIAL-SUM LAYER IDENTITY
+
+The theorem fixes even n>=4, original D3 source checkerboard, c>0,H=cn^2,
+counting norms and actual U=(im d1*)^2. Only channel1 spatial components
+enter the trace; channel2 energy is retained as nonnegative in the total.
+The means are the original nonwrapping slice partitions, with arbitrary
+cuts except the explicit F=i+t permutation condition. No even-cut assumption
+is used or needed by this trace argument.
+
+For an actual coexact w=d1*A in a fixed channel, d0*w=0 follows by
+adjunction from d1 d0=0, which itself follows by commuting forward shifts.
+Since d0*=-sum delta_j, this gives sum_j delta_j w_j=0. Also each spatial
+component's global sum is0, because its actual adjoint formula is a sum
+of backward differences. These are necessary implications from a true
+preimage, not a false converse identifying divergence-free fields with U.
+The proof never needs such a converse.
+
+Define W_j(s) as the unnormalized layer sum of w_j. The backward shift in
+coordinate j sends S=s bijectively onto S=s-1. Summing divergence on one
+layer therefore gives sum_j W_j(s)-sum_j W_j(s-1)=0. Their spatial sum T(s)
+is constant. Summing T over all s gives the global sum of all spatial
+components, which is0, so n times this constant vanishes and T(s)=0.
+Thus f=w1+w2+w3 has zero sum on EACH single S layer, hence zero total
+mean on every channel1 strong pair{s,s+1}. This is valid for real or
+complex fields and for both cyclic boundary layers. No averaging projection
+invariance is assumed, and no component mean factor n^2 was accidentally
+introduced because W_j are sums throughout.
+
+2. TRUE STRONG GRAPH AND COUNTING TWO-LAYER SYMBOL
+
+Odd source residue s has all original strong forward targets in s+1.
+The undirected path x -> x+e_j -> x+e_j-e_k joins source points by
+zero-sum generators. e1-e3,e2-e3 generate all zero-sum displacements,
+and every target has a rung. Therefore G_s is exactly a connected strong
+component of2n^2 sites, not an auxiliary union with a supplied gap.
+At source x_s(y)=(y1,y2,s-y1-y2), the e3 target is its paired target at
+y, and e_j for j1,2 reaches the target at y+e_j. Thus the printed scalar
+energy contains the3 original outgoing forward labels once each. Both
+layer masses are included in the counting norm. This holds for any even
+n>=4, with no dyadic assumption or missing wrap component.
+
+Unitary2D Fourier normalization is n^-1. The Hermitian matrix has diagonal3,
+off-diagonals-S,-conjugate(S), S=1+e^(i theta1)+e^(i theta2). At k0 it
+has a constant zero mode and the antisymmetric eigenvalue6. At nonzero k,
+D=9-|S|^2 is the sum of the printed three squared chord lengths. It is
+positive because the first two can both vanish only at k0. Direct inversion
+gives diagonal3/D on either layer. Omitting the unique constant mode at
+k0 leaves squared layer coordinate1/2 divided by6, namely1/12.
+
+3. GREEN DIAGONAL, COMPLEX CAUCHY AND NYQUIST
+
+On total-mean-zero f the component energy is positive definite. Diagonalize
+its finite Hermitian matrix and apply weighted Cauchy to the point evaluation
+coordinates: |sum b_l a_l|^2<=(sum |b_l|^2/lambda_l)
+*(sum lambda_l|a_l|^2). All lambda_l used here are positive. The point
+Fourier normalization contributes1/n^2, so the exact inverse diagonal is
+G_n=n^-2[1/12+sum_(k!=0)3/(9-|S|^2)]. There is no lost2 from the two
+layers: the inverse diagonal and k0 factor1/2 already include them.
+This derives a complex point bound valid also for real fields, not an
+unproved Green, spectral gap or trace-Gram hypothesis.
+
+Centered representatives r_j in[-n/2,n/2-1] occur once, including Nyquist.
+Finite sine gives4sin^2(pi r_j/n)>=16r_j^2/n^2. Dropping the third
+nonnegative term from D yields the printed upper bound
+1/(12n^2)+(3/16)sum_(r!=0)(r1^2+r2^2)^-1.
+The max-radius j shell has at most8j points, each denominator>=j^2;
+the possibly smaller last shell only improves this upper estimate. Sum
+over j1,...,n/2 is therefore<=8(1+log(n/2)). Finally
+G_n<=1/(12n^2)+(3/2)(1+log(n/2))<=2L, L=1+log n.
+Even discarding the favorable log2 term,1/(12n^2)<=1/2<=L/2 suffices.
+All formulas are finite, properly normalized and include nonconstant k0
+and Nyquist coordinates. The classical267 mechanism has been freshly
+checked here, not inherited under a changed mean or norm convention.
+
+4. ACTUAL COEXACT TRACE: SPATIAL FACTOR3 AND SAMPLE COUNT
+
+Apply the point Green bound to f=w1+w2+w3 on each G_s. Its mean is0
+by the actual-domain argument above. Edgewise Cauchy gives
+|D_j f|^2<=3sum_(r1..3)|D_j w_r|^2, hence E_s(f)<=3sum_r E_s(w_r).
+The F permutation gives a unique i_s for each odd source residue s.
+Its actual point v_s lies in G_s and is a true singleton row of C.
+There are exactly n/2 selected points, one in each distinct channel1
+strong component. Neither cut parity nor parity of i_s is relevant.
+
+Sum the point bounds: sum_sodd|f(v_s)|^2<=3G_n sum_(sodd,r)E_s(w_r).
+Multiplying by H yields at most3G_n times channel1 strong energy,
+which is<=3G_n Q_H(w)<=6L Q_H(w). This is exactly T. No factor n^2,
+V,2 or number of points has been inserted into this point-value inequality.
+The points are unnormalized in T; original singleton rows normalized by
+V^-1/2 are only used later to infer exact equality of point values. Channel2
+adds energy without entering the spatial sum, so no internal mixing occurs.
+The longitudinal spatial sum is a derived linear combination of3 actual
+component observations, not a replacement C map or a claimed orthogonal
+component rotation. All other original means can only restrict repairs further.
+
+5. THE REAL272 INPUT AND ITS ENTIRE SELECTED POINT TRACE
+
+For n divisible by4 the real ambient u=-2sin(pi x1/2)sin(pi x3/2)e1
+is periodic and invisible to any full slice map: it vanishes on x3{0}
+and its sine sum on[1,n-1] is0, independently of x2 and fixed x1.
+For the complex precursor e^(i pi x1/2)(e^(i pi x3/2)-e^(-i pi x3/2))e1,
+the two coefficients are e1,-e1 at(n/4,0,+/-n/4). The actual forward
+symbols are g+=(i-1,0,i-1),g-=(i-1,0,-i-1), each squared norm4.
+The actual coexact symbol I-gg*/|g|^2 follows by the true curl-adjoint
+image; the zero mode is absent. At x3=0 its first projected coefficient
+difference cancels(1/2-1/2), its second is0, and its third is
+-(2i)conjugate(i-1)/4=(-1+i)/2.
+
+The projection is real because symbols at opposite frequencies conjugate,
+so the real field's third value there is
+Re[e^(i pi i/2)(-1+i)/2]. For integer x1=i this cycles through
+-1/2,-1/2,+1/2,+1/2, hence always has absolute value1/2. The repeated
+letter i as integer index versus imaginary unit is distinguished by context;
+the trigonometric calculation is unambiguous and does not need a source fix.
+The first two real spatial values remain0, and all are independent of x2.
+This computation was freshly checked, not assumed from272 acceptance.
+
+6. MEMBERSHIP, REPAIR COST AND THE CROSS-CANCELLATION LIMIT
+
+If r is in actual U and C(Pu+r)=0, each individual original component/
+channel singleton row is0. At every selected v_s, r=-Pu as channel1
+spatial vectors. Nonzero normalization V^-1/2 cancels in this equality.
+Thus its spatial sum has absolute value1/2 at all n/2 samples, giving
+sum_sodd|r1(v_s)+r2(v_s)+r3(v_s)|^2=n/8. Applying T to r gives
+Q_H(r)>=Hn/(48L)=cn^3/(48L).
+
+The input norm is4 times the x2 factor n times the x1 and x3 sine-square
+sums, each n/2 at n divisible by4, so ||u||^2=n^3 exactly. This proves
+R with constant48. If instead membership is given for Pu+r, it still
+implies r in U because Pu is already in the same linear space; there is
+no ambient-to-coexact domain gap hidden in applying T.
+
+The conclusion is a lower bound on the correction's energy ONLY. It gives
+no lower bound for Q_H(Pu+r): the positive quadratic form has cross terms
+which can cancel. In particular r=-Pu is coexact and is an admissible
+repair whose final field is0, fully consistent with R. No nonzero invisible
+witness, optimal/upper repair cost, kernel coercivity or target c recovery
+has therefore been supplied. The source explicitly maintains this distinction
+and cannot be read as excluding every paid trace-preserving correction.
+
+7. ALL FINDINGS AND ROUTE SCOPE
+
+Material failure: none found. Minor mathematical or metadata correction:
+none identified. The true-preimage implications, layer shifts, graph labels,
+complex inverse diagonal, Nyquist counting, factor3, H and n/2 normalizations,
+real point phases, actual repair membership and norm n^3 all survive fresh
+analytical attack. No divergence converse, matrix-conditioning estimate or
+coexact projection invariance is used as an unproved premise.
+
+The new result is a paid trace on actual U with a specific repair-cost
+consequence. It is not a new quantitative bound on the observation kernel,
+an actual invisible low-energy witness, a logarithmic necessity theorem,
+optimal cost or target c result. Sole Q251 remains open. Counter2 for these
+grouped route units is consistent with the assignment if accepted; no reset
+is justified by this cost theorem and this child changed no state/counter.
+At the next no-advance threshold the programme should retain what failed
+and change mechanism or identify the precise remaining obstruction, rather
+than count this as the missing nonzero witness.
+
+No historical-originality/relevance claim is validated; no primary-source
+comparison performed. Classical Hodge/layer and2D capacity mechanisms are
+credited. No standalone paper/PDF/grade or publication acceptance follows.
+PR29=20/41,TermSource=0 unchanged, physical gap and continuum remain open.
+
+8. ACTUAL REVIEW CONTEXT AND RAW EVIDENCE
+
+Reviewer is involved Codex/OpenAI child in the same session, with inherited
+programme/author/prior audit context. Exact served backend/version/effort
+unavailable, not inferred. Not blind or independent peer review. Whole273
+read afresh; every required analytic step checked above. Whole267/272 were
+read and audited earlier in this same session and exact original subjects
+retained as explicit context, not new acceptance premises. No fresh wholesale
+re-audit of those old notes claimed. Active immutable/silent audit rules
+reread; whole captured governance does not overstate fresh full reading
+of historical rules. Full assignment and actual context retained; unavailable
+full inherited-chat export is not fabricated as a transcript.
+
+No mathematical executable, experiment, Lean/Lake, oracle, compiler, test,
+Colab runtime, network or external model service used. Only Git/file/hash
+metadata and this new packet were written. Parent untracked helpers/candidate
+copy unused/unread/untouched. No source, branch, state, other report/chat/agent,
+public artifact, score, PR/body or automation changed. No inbound parent
+message arrived. No PR/body exists, normalized hash N/A. No new clone/runtime
+cleanup debt. Retention helper is metadata only, not a mathematical verifier;
+explicit byte checks, not Python assert, govern retention.
+
+Exact Git and checkout source are byte-identical LF text matching the raw
+assigned SHA256, with no newline normalization. Complete raw subjects/origin
+bindings, full assignment/context, initial status and this unabridged report
+are retained. The manifest lists every artifact except itself with raw-byte
+size, representation and SHA256; its own digest is returned separately.
+Old failures/reports remain immutable. Do not upgrade this exact analytical
+verdict to formal proof, independent review, grade, priority or publication.

@@ -1,0 +1,59 @@
+{
+  "self_excluded": true,
+  "artifacts": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1556,
+      "sha256": "635680a93d78ff0231a8cca34ec605f94c474f1b50d81049db297da3cb75eee0",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 9720,
+      "sha256": "8a345adf92a24a32002bd1c3ccc2a3684e39a2c8d1eb1f19534f1ffbac664f86",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "initial-status.txt",
+      "bytes": 74,
+      "sha256": "714f3d42ee02f05b08b3bb8830c0d7da739d340ceaaf993caf2eafca4c578a1c",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "review-context.txt",
+      "bytes": 2076,
+      "sha256": "c90ab75079f3cd84fbd1ff65445289c4ec58b227c1fd63151041b4b8e143a08d",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 1512,
+      "sha256": "3a748c5b28410ee32dff86a98046ea4474563ef8d82646ce5f4338d837569ad2",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/coexact-projection271A.txt",
+      "bytes": 7317,
+      "sha256": "ac574de6269d184fe4257a57f07ab86eb15d0a1f1aa8631c387f2825d987eb6d",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/projection-mean272A.txt",
+      "bytes": 4418,
+      "sha256": "2b0a49fa3b6328fef5d8033549842c0db587082f815e3e4758957e1fa5d91806",
+      "representation": "raw retained bytes; no normalization"
+    }
+  ]
+}

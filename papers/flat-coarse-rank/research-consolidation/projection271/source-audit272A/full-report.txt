@@ -1,0 +1,161 @@
+EXACT-SOURCE ANALYTICAL AUDIT272A -- TRUE COEXACT PROJECTION LOSES MEAN ZEROS
+
+VERDICT: ACCEPT_ANALYTICAL_EXPLICIT_ALL_SLICE_MAP_PROJECTION_MEAN_OBSTRUCTION
+MATERIAL FAILURE: NONE found. No minor mathematical or metadata correction
+was found necessary. The limited mechanism-obstruction scope is essential.
+
+Exact source6d90e2a79c7d4ed4b8037cb4c9fcbdecda461928.
+Subject Git blob and checkout identical LF-only raw bytes, SHA256
+2b0a49fa3b6328fef5d8033549842c0db587082f815e3e4758957e1fa5d91806.
+No normalization. No PR/body exists; body capture/hash N/A. This is involved
+analytical source checking, not formal proof, numerical verification, a model
+grade, independent peer review, historical priority or publication acceptance.
+
+1. ACTUAL SPACE, MAP AND REAL INPUT
+
+For n divisible by4, the displayed real field is periodic on the actual
+three-dimensional torus. It is in the first original internal channel and
+spatial component1; all other original components and the second channel
+are zero. The map C is every original full slice-cut partition with singleton
+x1=i, ordinary nonwrapping x2 blocks and x3{0},[1,n-1]. No cut parity or
+F coverage condition is assumed. This is a statement about that entire
+specified slice family, not every possible canonical rectangle partition.
+
+The input is nonzero: at x1=x3=1 its first scalar value is-2. At x3=0
+the field vanishes, so every actual cell in that slab has zero sum. On
+the second x3 block, the sine sequence has period4 and its sum over a
+complete n-period is0. Its value at0 is0, hence its sum over1,...,n-1
+is also0. Independence of x2 means the sum over any nonempty x2 block
+multiplies this zero by that block's size. The fixed x1 factor is harmless.
+Every actual original normalized scalar/channel cell mean is thus0,
+including slices whose cut is0 or n-1 and whose empty block is omitted.
+This establishes Cu=0 individually, not after combining cells or channels.
+No actual coexactness is claimed for this ambient input.
+
+2. ACTUAL COEXACT PROJECTOR, NOT A DIVERGENCE REPLACEMENT
+
+At a nonzero Fourier frequency, the forward symbol is g_j=e^(2pi i k_j/n)-1.
+The actual unordered-pair curl is g_jv_l-g_lv_j. Direct adjunction gives
+d1*d1 v=|g|^2v-g(g*v), where the star is conjugate transpose. Thus its
+adjoint image is contained in the Hermitian complement g-perp; conversely
+every v with g*v0 has true preimage A_jl=(g_jv_l-g_lv_j)/|g|^2. The
+image is exactly that complement, giving the counting orthogonal projector
+I-gg*/|g|^2. At zero frequency the actual adjoint is0 and P0=0, excluding
+harmonic constants. No unstated Hodge surjectivity or divergence-only domain
+replacement is required. The two frequencies used below are nonzero, so no
+division by0 or harmonic exception arises. The projection acts independently
+in original internal channels and does not introduce channel2 values.
+
+This formula has been freshly rederived for this calculation.271's energy
+upper bound is not a premise for the counterexample. Its exact source is
+retained as context because the candidate explains the remaining trace
+obstruction, not as inherited proof of the new construction.
+
+3. TWO COMPLEX FREQUENCIES AND ALL COEFFICIENT SIGNS
+
+Let theta=pi/2, k=q=n/4. The unnormalized complex field
+w=e^(i theta x1)(e^(i theta x3)-e^(-i theta x3))e1
+has two distinct nonzero frequencies(k,0,q),(k,0,-q), with coefficients
+e1 and-e1. They remain distinct at the shortest admitted n4. Its real
+part is-2sin(theta x1)sin(theta x3)e1, exactly the assigned u: the
+bracket is2i sin(theta x3) and the real part of i e^(i theta x1)
+is-sin(theta x1). No unitary normalization factor is needed because these
+are physical unnormalized exponentials and their scalar coefficients are
+used consistently in the inverse expansion.
+
+The actual forward symbols are
+g+=(i-1,0,i-1), g-=(i-1,0,-i-1).
+Each has squared norm2+2=4. At x3=0 the two exponential x3 factors
+are both1, so Pw=e^(i theta x1)(P_(g+)e1-P_(g-)e1).
+The first coordinates of each projected e1 are1-|i-1|^2/4=1/2 and
+cancel. Their second coordinates vanish. The third projected coordinate
+is-g3 conjugate(g1)/4; their difference is therefore
+-[(i-1)-(-i-1)](-i-1)/4
+=-(2i)(-i-1)/4=(-1+i)/2.
+Equivalently, Pplus's third coordinate is-1/2 and Pminus's is-i/2,
+giving the same difference. This directly checks the conjugation and the
+minus sign on the second Fourier coefficient; no numerical calculation
+or transpose substitution is involved.
+
+4. REALITY AND THE ACTUAL NONZERO NORMALIZED ROW
+
+The Fourier projection symbol at -k is the conjugate of the symbol at k,
+and P0 is real. Hence the actual physical projection commutes with complex
+conjugation and Re(Pw)=P(Re w)=Pu. This is a real operator argument, not
+the false claim that one individual complex Fourier block is real. At x1=0,
+x3=0, the third component of Pw is(-1+i)/2, so the third component of
+Pu is-1/2, independently of x2. The same calculation works for every n
+divisible by4, including n4, with no Nyquist collision or exceptional phase.
+
+Every admitted full map C includes the actual singleton cell(0,t0,0),
+whatever t0 is. The x2 singleton{t0} exists even at either cut endpoint;
+x1{0} and x3{0} are both singletons. Its cardinality is1, so the original
+normalized row in channel1/spatial component3 is its value divided by
+sqrt(V), namely-1/(2sqrt(V)), nonzero. Thus C(Pu)!=0 for EVERY cut map
+in this specified slice family, including permutation maps such as2i^2.
+There is no lost cardinality factor, endpoint row, union/refinement inference
+or original-component mixing. Pu itself is actual coexact by construction
+of the true projection, but is demonstrably visible.
+
+5. PRECISE REFUTATION, ALL FINDINGS AND LIMITS
+
+The source refutes the automatic inference Cu0 implies C(Pu)0 for this
+true coexact projection, uniformly over the stated map family. It does not
+assert that all ambient invisible inputs become visible, or that no tailored
+input/correction can yield an actual coexact invisible field. Its input u
+is not a claimed low-energy or coexact witness, and no energy quotient is
+needed for this mechanism counterexample. It neither proves nor disproves
+original target c on remaining maps, nor excludes compensated projections,
+trace-preserving corrections or direct solution inside U intersect ker C.
+
+The earlier251 block-average obstruction involves a different projection
+and a different direction of domain preservation. It is not contradicted
+by a true coexact projection losing observation zeros.271's separate energy
+bound also does not imply trace preservation and does not validate this
+new explicit calculation by itself. The entire counterexample has instead
+been checked above. No new full audit of251 or271 is claimed in this task.
+
+Material failure: none found. Minor mathematical/metadata correction: none
+identified. Individual actual means, true-adjoint symbol/P0, two-frequency
+signs, squared norms, conjugate product, real-part conversion and exact
+singleton normalization all survive fresh analytical attack. The historical
+candidate header about preparation during271's freeze is treated as source
+provenance, not as current271 acceptance status or an inherited verdict.
+
+This is a mechanism obstruction under sole Q251, not a quantitative kernel
+lower bound or new actual coexact invisible low-energy witness. It does
+not justify resetting that route counter, and this child changed no state
+or counter. Historical originality/relevance unestablished; no primary-source
+comparison was performed. No new paper, PDF, model grade or publication
+acceptance follows. PR29=20/41,TermSource=0 unchanged, physical gap and
+continuum open. No independent or blind review is claimed.
+
+6. ACTUAL CONTEXT, READ SCOPE AND EVIDENCE
+
+Actually exposed reviewer identity is involved Codex/OpenAI child in the
+same session with inherited author/programme/prior audit context. Exact
+served backend/version/effort unavailable and not inferred. Whole272 read
+afresh and all proof steps derived above. Whole271 read/audited in the
+preceding same-session task and exact original retained for context only;
+no inherited acceptance premise is used. Relevant immutable-audit rules
+reread; whole governance/CLAUDE were previously read and their captures do
+not imply fresh wholesale rereading of historical instructions. Full task
+assignment and actual context retained; full inherited-chat export is
+unavailable and not fabricated as a transcript.
+
+No mathematical executable, numerical experiment, Lean/Lake, oracle, compiler,
+test, Colab runtime, network or external model service used. Only Git/file/
+hash metadata and this new packet were written. Parent untracked helper and
+candidate copy unused/unread/untouched. No source, branch, state, other report,
+chat/agent, public artifact, grade, PR/body or automation changed. No inbound
+parent message arrived during audit. No PR/body exists, normalized-body hash
+N/A. No new clone/runtime cleanup debt. Metadata retention is not a scientific
+verifier; explicit byte checks, not Python assert, govern it.
+
+Exact Git blob and checkout match the assigned raw LF SHA256 without newline
+normalization. Complete raw subjects/origin bindings, full assignment/context,
+initial status and this full report are saved. The manifest lists every
+artifact except itself with raw byte length, representation and SHA256; its
+own digest is returned separately. Old failures/reports remain immutable.
+Use this exact analytical verdict without inflating it to formal proof,
+independent review, model grade, historical priority or publication acceptance.
