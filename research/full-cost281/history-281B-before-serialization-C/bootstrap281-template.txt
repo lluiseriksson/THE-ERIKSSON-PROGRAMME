@@ -1,0 +1,76 @@
+"""Notebook-safe standalone281 bootstrap. No inherited notebook argv/__file__."""
+import os,sys,json,hashlib,base64,subprocess,traceback,zipfile,shutil,re
+from pathlib import Path
+from datetime import datetime,timezone
+
+def launch281_main():
+    expected='EMBEDDED_HASH';encoded='EMBEDDED_BASE64'
+    base='4ba7c61adb94d80f4cb985ab78e84d8346171b02'
+    root=Path('/content/tep281-launch');E=root/'launch';nr=Path('/content/tep281-diagnostic')
+    native=Path('/content/tep281-diagnostic-results.zip');Z=Path('/content/tep281-diagnostic-envelope.zip');created=False
+    def utc():return datetime.now(timezone.utc).isoformat()
+    def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+    def require(ok,msg):
+        if not ok:raise ValueError(msg)
+    def atomic_exit(name,code):
+        tmp=E/(name+'.exit.tmp');final=E/(name+'.exit')
+        with tmp.open('x',encoding='ascii',newline='\n') as f:f.write(str(code)+'\n');f.flush();os.fsync(f.fileno())
+        raw=tmp.read_bytes();require(re.fullmatch(rb'-?[0-9]+\n',raw) is not None and int(raw)==code,'Closed decimal child exit invalid')
+        os.replace(tmp,final);require(final.read_bytes()==raw,'Atomic exit readback differs')
+    def invoke(name,argv,timeout):
+        a={'name':name,'argv':argv,'started_at':utc(),'exit':None,'timed_out':False};r['commands'].append(a)
+        with (E/(name+'.stdout')).open('xb') as out,(E/(name+'.stderr')).open('xb') as err:
+            p=subprocess.Popen(argv,cwd=root,stdout=out,stderr=err,env={**os.environ,'OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1','MKL_NUM_THREADS':'1','NUMEXPR_NUM_THREADS':'1','VECLIB_MAXIMUM_THREADS':'1','BLIS_NUM_THREADS':'1'})
+            try:code=p.wait(timeout=timeout)
+            except subprocess.TimeoutExpired:a['timed_out']=True;p.kill();code=p.wait()
+            out.flush();os.fsync(out.fileno());err.flush();os.fsync(err.fileno())
+        a['exit']=code;a['finished_at']=utc();atomic_exit(name,code);return a
+    r={'schema':'TEP281-LAUNCH-1.0','construction_base':base,'diagnostic_source_sha256':expected,'status':'FAILED_PRESERVED','started_at':utc(),'actual_child_started':False,'child_exit':None,'timed_out':False,'commands':[],'billing_units':None,'billing_seconds':None}
+    try:
+        require(os.name=='posix' and Path('/content').is_dir(),'Own Colab Linux only')
+        require(not root.exists() and not nr.exists() and not native.exists() and not Z.exists(),'Fresh own281 launch and diagnostic required')
+        E.mkdir(parents=True,exist_ok=False);created=True
+        raw=base64.b64decode(encoded,validate=True);require(hashlib.sha256(raw).hexdigest()==expected,'Embedded diagnostic hash differs')
+        path=E/'diagnostic281B.py'
+        with path.open('xb') as f:f.write(raw);f.flush();os.fsync(f.fileno())
+        require(path.read_bytes()==raw,'Closed actual executable readback differs')
+        r['actual_child_started']=True;a=invoke('child',[sys.executable,str(path)],3300)
+        r['child_exit']=a['exit'];r['timed_out']=a['timed_out']
+        # Tiny mutation mode is run exactly once per normal/-O configuration;
+        # neither invocation repeats the six-case numerical sweep.
+        for name,argv in [('mutation-normal',[sys.executable,str(path),'--mutations-only']),('mutation-optimized',[sys.executable,'-O',str(path),'--mutations-only'])]:
+            m=invoke(name,argv,90)
+            require(m['exit']==0 and not m['timed_out'],'Actual tiny mutation invocation failed')
+            value=json.loads((E/(name+'.stdout')).read_text(encoding='utf-8'))
+            require(value['schema']=='TEP281-MUTATION-1' and value['source_sha256']==expected and value['original_record_accepted'] is True and len(value['results'])==2 and all(x['rejected'] is True for x in value['results']),'Actual source-bound real mutations not rejected')
+            require(value['optimized']==(name=='mutation-optimized'),'Actual optimization mode differs')
+        if native.is_file():
+            with zipfile.ZipFile(native) as z:report=json.loads(z.read('evidence/report.json'))
+            r['diagnostic_status']=report.get('status');r['diagnostic_actual_source_sha256']=report.get('script_raw_sha256');r['diagnostic_construction_base']=report.get('construction_base')
+        require(r['child_exit']==0 and not r['timed_out'],'Actual standalone281 sweep failed')
+        require(native.is_file() and r.get('diagnostic_status')=='SIX_WHOLE_COEXACT_FINITE_DIAGNOSTICS_RECORDED_NOT_A_CERTIFICATE' and r.get('diagnostic_actual_source_sha256')==expected and r.get('diagnostic_construction_base')==base,'Actual281 source/result gate differs')
+        require(len(r['commands'])==3 and all(x['exit']==0 and not x['timed_out'] for x in r['commands']),'Three actual child captures required')
+        r['status']='FINITE_DIAGNOSTIC_ARTIFACT_CAPTURED_PENDING_PARENT_REVIEW'
+    except Exception:
+        r['failure']=traceback.format_exc()
+        if created:(E/'failure.txt').write_text(r['failure'],encoding='utf-8')
+    finally:
+        r['body_finished_at']=utc()
+        if created:
+            try:
+                if native.is_file():
+                    shutil.copyfile(native,E/'diagnostic-results.zip');r['native_zip_sha256']=sha(native);r['native_zip_bytes']=native.stat().st_size
+                    require(sha(E/'diagnostic-results.zip')==r['native_zip_sha256'],'Retained native ZIP differs')
+                elif (nr/'evidence').is_dir():shutil.copytree(nr/'evidence',E/'partial-native-evidence')
+                receipt=E/'receipt.json'
+                with receipt.open('x',encoding='utf-8',newline='\n') as f:json.dump(r,f,indent=2);f.write('\n');f.flush();os.fsync(f.fileno())
+                require(json.loads(receipt.read_bytes())==r,'Closed receipt readback differs')
+                manifest=[{'path':p.relative_to(root).as_posix(),'bytes':p.stat().st_size,'sha256':sha(p)} for p in sorted(E.rglob('*')) if p.is_file()]
+                (E/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
+                with zipfile.ZipFile(Z,'x',zipfile.ZIP_DEFLATED) as z:
+                    for p in sorted(E.rglob('*')):
+                        if p.is_file():z.write(p,p.relative_to(root).as_posix())
+                r['receipt_sha256']=sha(receipt);r['envelope_sha256']=sha(Z);r['envelope_bytes']=Z.stat().st_size
+            except Exception:r['status']='FAILED_ENVELOPE_PRESERVED';r['envelope_failure']=traceback.format_exc()
+    return r
+print('TEP281_LAUNCH_RESULT '+json.dumps(launch281_main(),sort_keys=True),flush=True)
