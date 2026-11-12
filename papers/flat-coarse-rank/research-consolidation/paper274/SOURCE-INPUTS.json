@@ -1,0 +1,570 @@
+{
+  "representation": "Exact input raw bytes, no normalization",
+  "files": [
+    {
+      "path": "inputs/nonlinear266/.gitattributes",
+      "bytes": 320,
+      "raw_sha256": "2ba6933c99849491b8a7b46797f8dcf86d4c37a3747f4b4badceb56fb9323acd"
+    },
+    {
+      "path": "inputs/nonlinear266/ANALYTICAL-STATUS266.txt",
+      "bytes": 3726,
+      "raw_sha256": "70cd7052fd85a94e526657af2ea8abd505580ff53f2d804974ba57d9770b1df1"
+    },
+    {
+      "path": "inputs/nonlinear266/ANALYTICAL-STATUS267.txt",
+      "bytes": 3641,
+      "raw_sha256": "da742cb903cfd5a432f27876ad346c95a778332255af2ffc2c6d7892ca703336"
+    },
+    {
+      "path": "inputs/nonlinear266/nonlinear-strong-kernel266A.txt",
+      "bytes": 9661,
+      "raw_sha256": "3e44b4e22e7d2c5b5d328fdcf1da407795e6e5baeda268e90b486010d2c85a91"
+    },
+    {
+      "path": "inputs/nonlinear266/nonlinear267A-logarithmic-bound.txt",
+      "bytes": 9821,
+      "raw_sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577"
+    },
+    {
+      "path": "inputs/nonlinear266/primary-reading266-rivest.txt",
+      "bytes": 1510,
+      "raw_sha256": "c706829582cb29e045b46b8498c33318a8a4b1e90c3d13a083366cc721b4b547"
+    },
+    {
+      "path": "inputs/nonlinear266/primary-reading267-bounded.txt",
+      "bytes": 1847,
+      "raw_sha256": "590b8c8471185faae95f09ed308b884ed19f72bc898832847488b3ce56d509fc"
+    },
+    {
+      "path": "inputs/nonlinear266/README.txt",
+      "bytes": 608,
+      "raw_sha256": "b63bfb7cb737af873572c8bbb437cdd04cb9355857943f3e8132ef099d892f6b"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/assignment.txt",
+      "bytes": 1808,
+      "raw_sha256": "a6082b67324169b6dbfd1321e80690398a5fe981bde9ee175bb28aa45e514ad9"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/full-report.txt",
+      "bytes": 11237,
+      "raw_sha256": "6245b2234eafab1f76422d5daa39e482976ea787a9e0246321e4907593c828b2"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/raw-hashmanifest.json",
+      "bytes": 2633,
+      "raw_sha256": "10a3be4f7227701399b3cc933ff79e619bf522f8775cab281aaa9138a9740664"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/review-context.txt",
+      "bytes": 2319,
+      "raw_sha256": "1440f0961add3569d362057c3731d7f8bc7fa76819e312ef4ac4c8f9a09ddb7e"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/subject-bindings.json",
+      "bytes": 2619,
+      "raw_sha256": "50df72f11a67dc6ce91d32dc519a4d399e11afb4f3a21e073681b31caf6ea030"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/subjects/canonical-helical-counterexample264A.txt",
+      "bytes": 13980,
+      "raw_sha256": "f92e578af4472c725edada4f5f5686d705645017b31510beda93e0fcdfe4f63d"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/subjects/CLAUDE.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/subjects/nonlinear-strong-kernel266A.txt",
+      "bytes": 9661,
+      "raw_sha256": "3e44b4e22e7d2c5b5d328fdcf1da407795e6e5baeda268e90b486010d2c85a91"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/subjects/prior-full-report264A.txt",
+      "bytes": 20682,
+      "raw_sha256": "5da66bd0e5bc049ff804dca428ecf4b332efa6e64f1b18a955a701904fe1d645"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/subjects/README264.txt",
+      "bytes": 442,
+      "raw_sha256": "a0c48b5e05582407f9d258104be42d157500510e60c4f0ff9aae53c284b24e24"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit266A/subjects/strong-component-observations253B.txt",
+      "bytes": 14606,
+      "raw_sha256": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit267A/assignment.txt",
+      "bytes": 1897,
+      "raw_sha256": "6cb55ea7e41996652af77370dd35a7268c52a7ed1a5e02f07fb767a5d8b1b784"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit267A/full-report.txt",
+      "bytes": 12353,
+      "raw_sha256": "08c8fac1514bdaffc9afa5e67924f0a32cf9bc6e1e18549d53ca53262ad87b9f"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit267A/initial-status.txt",
+      "bytes": 132,
+      "raw_sha256": "b159d950737b42ff5e7f33ee07c33e5b15c215bef46dce705cdd69d2a28549f0"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit267A/raw-hashmanifest.json",
+      "bytes": 2383,
+      "raw_sha256": "c35e8467f5c99ce834d2e1326a8f26aa46a87017ef8c22340e1d5106b42b4812"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit267A/review-context.txt",
+      "bytes": 2302,
+      "raw_sha256": "772a8ae2234df190616b16749f0924521f940dbbc26d3b7014e810672beffc07"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit267A/subject-bindings.json",
+      "bytes": 1995,
+      "raw_sha256": "2cf591c10566d90b1ca46eb394ce6eb54e879493a1507ca262ceba97b64b78eb"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit267A/subjects/CLAUDE.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit267A/subjects/nonlinear-strong-kernel266A.txt",
+      "bytes": 9661,
+      "raw_sha256": "3e44b4e22e7d2c5b5d328fdcf1da407795e6e5baeda268e90b486010d2c85a91"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit267A/subjects/nonlinear267A-logarithmic-bound.txt",
+      "bytes": 9821,
+      "raw_sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit267A/subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "inputs/nonlinear266/source-audit267A/subjects/strong-component-observations253B.txt",
+      "bytes": 14606,
+      "raw_sha256": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2"
+    },
+    {
+      "path": "inputs/projection271/.gitattributes",
+      "bytes": 260,
+      "raw_sha256": "91be47a11de0b144e893e20f2893bb56e8a1ef4539fd194aec14fb0da5c608ef"
+    },
+    {
+      "path": "inputs/projection271/ANALYTICAL-STATUS271272.txt",
+      "bytes": 3173,
+      "raw_sha256": "b5799f1b82b569889b634879c2ba5df11b89b5d81ea9312f51b113c314f3326b"
+    },
+    {
+      "path": "inputs/projection271/ANALYTICAL-STATUS273.txt",
+      "bytes": 2500,
+      "raw_sha256": "2ea47f97cd342ca0b4624f595a5c19ff2dcf59bca7032aa091376481327facbe"
+    },
+    {
+      "path": "inputs/projection271/coexact-projection271A.txt",
+      "bytes": 7317,
+      "raw_sha256": "ac574de6269d184fe4257a57f07ab86eb15d0a1f1aa8631c387f2825d987eb6d"
+    },
+    {
+      "path": "inputs/projection271/coexact-trace-repair273A.txt",
+      "bytes": 8083,
+      "raw_sha256": "5a4051cff938220062e55f5ded7aa8e586fd8ae0daedd78d439e47973cf4be13"
+    },
+    {
+      "path": "inputs/projection271/primary-reading271-bounded.txt",
+      "bytes": 1385,
+      "raw_sha256": "4cfb3b92c79e3e31c889872079c7a6eea0b33aa4ecd7ca4eec7d8e5052a8916c"
+    },
+    {
+      "path": "inputs/projection271/primary-reading273-bounded.txt",
+      "bytes": 1486,
+      "raw_sha256": "a331539f043bc46badf0c8ea632f4e63c8ae6d8dbd5f3df8b142340e13d13726"
+    },
+    {
+      "path": "inputs/projection271/projection-mean272A.txt",
+      "bytes": 4418,
+      "raw_sha256": "2b0a49fa3b6328fef5d8033549842c0db587082f815e3e4758957e1fa5d91806"
+    },
+    {
+      "path": "inputs/projection271/README.txt",
+      "bytes": 454,
+      "raw_sha256": "9134e520ef4777de47d364e927fd96c48acff3b9bd5f429d1323643b8a0fa7a0"
+    },
+    {
+      "path": "inputs/projection271/source-audit271A/assignment.txt",
+      "bytes": 1803,
+      "raw_sha256": "38653f5b63cc068c164ef10eaaaaf31ddd4d7fc66c5d837a3de29fcab0a1bd1c"
+    },
+    {
+      "path": "inputs/projection271/source-audit271A/full-report.txt",
+      "bytes": 11409,
+      "raw_sha256": "97e753b5c4dfacc2e4753cf9e1ea7112a4119bec4e29ca06f8bfcccd8c2743f5"
+    },
+    {
+      "path": "inputs/projection271/source-audit271A/initial-status.txt",
+      "bytes": 74,
+      "raw_sha256": "714f3d42ee02f05b08b3bb8830c0d7da739d340ceaaf993caf2eafca4c578a1c"
+    },
+    {
+      "path": "inputs/projection271/source-audit271A/raw-hashmanifest.json",
+      "bytes": 1876,
+      "raw_sha256": "a296b96eb72b55e808355f73924f08f57ad8d3a616e92f6ea2ac91a689c72123"
+    },
+    {
+      "path": "inputs/projection271/source-audit271A/review-context.txt",
+      "bytes": 2116,
+      "raw_sha256": "33491b467801799b0a9d21ca3bad233875caa1b22fd39ac74df3fc9f16ebc055"
+    },
+    {
+      "path": "inputs/projection271/source-audit271A/subject-bindings.json",
+      "bytes": 1187,
+      "raw_sha256": "25366bbe017dcd4a94e35ce6847ad2c63d205b4b499f33e39a6ae14ac2c30554"
+    },
+    {
+      "path": "inputs/projection271/source-audit271A/subjects/CLAUDE.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "inputs/projection271/source-audit271A/subjects/coexact-projection271A.txt",
+      "bytes": 7317,
+      "raw_sha256": "ac574de6269d184fe4257a57f07ab86eb15d0a1f1aa8631c387f2825d987eb6d"
+    },
+    {
+      "path": "inputs/projection271/source-audit271A/subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "inputs/projection271/source-audit272A/assignment.txt",
+      "bytes": 1556,
+      "raw_sha256": "635680a93d78ff0231a8cca34ec605f94c474f1b50d81049db297da3cb75eee0"
+    },
+    {
+      "path": "inputs/projection271/source-audit272A/full-report.txt",
+      "bytes": 9720,
+      "raw_sha256": "8a345adf92a24a32002bd1c3ccc2a3684e39a2c8d1eb1f19534f1ffbac664f86"
+    },
+    {
+      "path": "inputs/projection271/source-audit272A/initial-status.txt",
+      "bytes": 74,
+      "raw_sha256": "714f3d42ee02f05b08b3bb8830c0d7da739d340ceaaf993caf2eafca4c578a1c"
+    },
+    {
+      "path": "inputs/projection271/source-audit272A/raw-hashmanifest.json",
+      "bytes": 2112,
+      "raw_sha256": "26686c362101dce7d724d1ebbc45ab77cdf6aae6844f94835fe61c3d62f9db88"
+    },
+    {
+      "path": "inputs/projection271/source-audit272A/review-context.txt",
+      "bytes": 2076,
+      "raw_sha256": "c90ab75079f3cd84fbd1ff65445289c4ec58b227c1fd63151041b4b8e143a08d"
+    },
+    {
+      "path": "inputs/projection271/source-audit272A/subject-bindings.json",
+      "bytes": 1512,
+      "raw_sha256": "3a748c5b28410ee32dff86a98046ea4474563ef8d82646ce5f4338d837569ad2"
+    },
+    {
+      "path": "inputs/projection271/source-audit272A/subjects/CLAUDE.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "inputs/projection271/source-audit272A/subjects/coexact-projection271A.txt",
+      "bytes": 7317,
+      "raw_sha256": "ac574de6269d184fe4257a57f07ab86eb15d0a1f1aa8631c387f2825d987eb6d"
+    },
+    {
+      "path": "inputs/projection271/source-audit272A/subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "inputs/projection271/source-audit272A/subjects/projection-mean272A.txt",
+      "bytes": 4418,
+      "raw_sha256": "2b0a49fa3b6328fef5d8033549842c0db587082f815e3e4758957e1fa5d91806"
+    },
+    {
+      "path": "inputs/projection271/source-audit273A/assignment.txt",
+      "bytes": 1819,
+      "raw_sha256": "a54e351d529fdca8ce10e7f6869fbe427eeefb241715652ae5b843e1dda4c08a"
+    },
+    {
+      "path": "inputs/projection271/source-audit273A/full-report.txt",
+      "bytes": 12423,
+      "raw_sha256": "9c58b9bf5f0477504a6f8e3d9c66ca9d3f43b8ef9ea692baa6db564d9659c2a0"
+    },
+    {
+      "path": "inputs/projection271/source-audit273A/initial-status.txt",
+      "bytes": 174,
+      "raw_sha256": "a5cefc5b496c576a08282fe02cfed0ea7ca610712cc1df06b96bd020dd709f12"
+    },
+    {
+      "path": "inputs/projection271/source-audit273A/raw-hashmanifest.json",
+      "bytes": 2365,
+      "raw_sha256": "28f7a7de198dff74494ccb06d7e7b7449578a3464f3cd30a0ae69b536a1e2eaa"
+    },
+    {
+      "path": "inputs/projection271/source-audit273A/review-context.txt",
+      "bytes": 2126,
+      "raw_sha256": "18c1fae72128e8a62dd3143cc2c8b1398b53e2976c37fa5978034e73fc725c00"
+    },
+    {
+      "path": "inputs/projection271/source-audit273A/subject-bindings.json",
+      "bytes": 1945,
+      "raw_sha256": "c947b987a98d253aae16dd31452221557a3510b6776f7587075442b5b46131f1"
+    },
+    {
+      "path": "inputs/projection271/source-audit273A/subjects/CLAUDE.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "inputs/projection271/source-audit273A/subjects/coexact-trace-repair273A.txt",
+      "bytes": 8083,
+      "raw_sha256": "5a4051cff938220062e55f5ded7aa8e586fd8ae0daedd78d439e47973cf4be13"
+    },
+    {
+      "path": "inputs/projection271/source-audit273A/subjects/nonlinear267A-logarithmic-bound.txt",
+      "bytes": 9821,
+      "raw_sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577"
+    },
+    {
+      "path": "inputs/projection271/source-audit273A/subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "inputs/projection271/source-audit273A/subjects/projection-mean272A.txt",
+      "bytes": 4418,
+      "raw_sha256": "2b0a49fa3b6328fef5d8033549842c0db587082f815e3e4758957e1fa5d91806"
+    },
+    {
+      "path": "inputs/strong-null268/.gitattributes",
+      "bytes": 260,
+      "raw_sha256": "e864ee5c5d33c91f63bafb40c0333c998c6dbe4a92950a01a9550c57bb965c25"
+    },
+    {
+      "path": "inputs/strong-null268/ANALYTICAL-STATUS268.txt",
+      "bytes": 3296,
+      "raw_sha256": "d1b40e6ea48a88ed268e18fc977bcc3a1908d8f7fe7905e8ce8f143ef4c34f87"
+    },
+    {
+      "path": "inputs/strong-null268/ANALYTICAL-STATUS269.txt",
+      "bytes": 2430,
+      "raw_sha256": "826b2aca268c99a307745d53a57e998157b60cd1d1a39b5b67ac607c17e9f80d"
+    },
+    {
+      "path": "inputs/strong-null268/ANALYTICAL-STATUS270.txt",
+      "bytes": 2625,
+      "raw_sha256": "cf732faf03270c76a2a5600c8d7446b740fd611d44e80cd1dce91fc0bf970463"
+    },
+    {
+      "path": "inputs/strong-null268/folded-cut-counterexample269A.txt",
+      "bytes": 11004,
+      "raw_sha256": "dbeb8d70312bc97944096a780636cb38230c619604849327314d5d4a73965de4"
+    },
+    {
+      "path": "inputs/strong-null268/low-coverage270A.txt",
+      "bytes": 7037,
+      "raw_sha256": "7c47ca9a68bac0c922a0398783560617f1363dc818d5dc44a361f1272f24218f"
+    },
+    {
+      "path": "inputs/strong-null268/primary-reading268-bounded.txt",
+      "bytes": 1555,
+      "raw_sha256": "cc9155251fda183c2decc517358963e293d602feafcaa53821509156e0cfcd6a"
+    },
+    {
+      "path": "inputs/strong-null268/primary-reading269-bounded.txt",
+      "bytes": 1139,
+      "raw_sha256": "6d191ebe13c05b2dc6892cb036fadc3d9dd1d3dc30f933f131e8c3020476ea84"
+    },
+    {
+      "path": "inputs/strong-null268/README.txt",
+      "bytes": 452,
+      "raw_sha256": "bffcf23ec1279c484e1e793a57011d0d9f68e613f249d86888f156202fdc8c2e"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit268A/assignment.txt",
+      "bytes": 1917,
+      "raw_sha256": "15f8ae9248c0b5fef96d18e1c65173a1267b1f2b5f5531cb6f3f6334a410b72f"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit268A/full-report.txt",
+      "bytes": 12895,
+      "raw_sha256": "dd0fd9cb43696fe3840d286b05ca8f70a874790876527374ce402e86a9858b17"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit268A/initial-status.txt",
+      "bytes": 71,
+      "raw_sha256": "84dac40035f81ff2a72ed25ad01ef6fb42a7b13f4567ada803426a5c17d2c336"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit268A/raw-hashmanifest.json",
+      "bytes": 2380,
+      "raw_sha256": "4c10b852e4d918ef0d2a66b27a0c2cb211c344305770c7789f01b6daa37106f9"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit268A/review-context.txt",
+      "bytes": 2069,
+      "raw_sha256": "80b71d32e86e1039385384e6ded1cecf9811e7b04e7d18aae733837b56ccc7e7"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit268A/subject-bindings.json",
+      "bytes": 1958,
+      "raw_sha256": "c9c889a340c2fcad5800f3c3331bb01c442c4d9fcea555c7978194641cdcafa9"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit268A/subjects/CLAUDE.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit268A/subjects/nonlinear267A-logarithmic-bound.txt",
+      "bytes": 9821,
+      "raw_sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit268A/subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit268A/subjects/strong-component-observations253B.txt",
+      "bytes": 14606,
+      "raw_sha256": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit268A/subjects/strong-null-exclusion268A.txt",
+      "bytes": 9370,
+      "raw_sha256": "f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit269A/assignment.txt",
+      "bytes": 1966,
+      "raw_sha256": "88e6cb9321801095c48ed004d47ad632a632624f93e2151273a6727d375ae32e"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit269A/full-report.txt",
+      "bytes": 15156,
+      "raw_sha256": "5b65dc97a8ba7e1c38dd2a7a5ec537624a1435a6ec5c4ee819163dbd37f7af7e"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit269A/initial-status.txt",
+      "bytes": 105,
+      "raw_sha256": "b795cd5e0314c0f1c994cc399ab2a7636bcfd155d2ae1a7a8dcf9e0ba2908d4e"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit269A/raw-hashmanifest.json",
+      "bytes": 2368,
+      "raw_sha256": "ae9462da2c6a2ab5f7cae69578fd602f07b6a540906d32fec012824982f7f002"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit269A/review-context.txt",
+      "bytes": 2523,
+      "raw_sha256": "255c76a890d08833fb55bb0586dce0c89fb98264fcfb8674b53ac8883cfb4f78"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit269A/subject-bindings.json",
+      "bytes": 1852,
+      "raw_sha256": "f669c82117d3232f6e73d0279635522bf9aa05357925850b3dd794ca305b0489"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit269A/subjects/CLAUDE.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit269A/subjects/folded-cut-counterexample269A.txt",
+      "bytes": 11004,
+      "raw_sha256": "dbeb8d70312bc97944096a780636cb38230c619604849327314d5d4a73965de4"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit269A/subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit269A/subjects/prior-full-report268A.txt",
+      "bytes": 12895,
+      "raw_sha256": "dd0fd9cb43696fe3840d286b05ca8f70a874790876527374ce402e86a9858b17"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit269A/subjects/strong-null-exclusion268A.txt",
+      "bytes": 9370,
+      "raw_sha256": "f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit270A/assignment.txt",
+      "bytes": 1620,
+      "raw_sha256": "5330e470f1f9913ddbd8b9518647bbf00257abe68fce13e53d222c27c6f3e1a3"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit270A/full-report.txt",
+      "bytes": 14547,
+      "raw_sha256": "b5dd9cfd6382fac0c092be1d6dae2a925d023208cb5c5d219b038dd68181761f"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit270A/initial-status.txt",
+      "bytes": 295,
+      "raw_sha256": "51fff33b15ac31a65af6275185c437a65ebd60d786473ac4ea574c9b4a5b363d"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit270A/raw-hashmanifest.json",
+      "bytes": 2362,
+      "raw_sha256": "ec0a61cc8d644029e4ee57018c84d137d69ee88d33289d4c615a58a6d75fc319"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit270A/review-context.txt",
+      "bytes": 2162,
+      "raw_sha256": "ae95c9b77f03a5b0fa8ec780087975aeaae5489db9a03c4e77becda048143157"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit270A/subject-bindings.json",
+      "bytes": 1942,
+      "raw_sha256": "11b627ac034ee3a4f53ce5ec903b06f84ec67e78d0a22d4c66842ded6b40e6b2"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit270A/subjects/CLAUDE.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit270A/subjects/folded-cut-counterexample269A.txt",
+      "bytes": 11004,
+      "raw_sha256": "dbeb8d70312bc97944096a780636cb38230c619604849327314d5d4a73965de4"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit270A/subjects/low-coverage270A.txt",
+      "bytes": 7037,
+      "raw_sha256": "7c47ca9a68bac0c922a0398783560617f1363dc818d5dc44a361f1272f24218f"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit270A/subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "inputs/strong-null268/source-audit270A/subjects/strong-null-exclusion268A.txt",
+      "bytes": 9370,
+      "raw_sha256": "f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d"
+    },
+    {
+      "path": "inputs/strong-null268/strong-null-exclusion268A.txt",
+      "bytes": 9370,
+      "raw_sha256": "f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d"
+    }
+  ]
+}

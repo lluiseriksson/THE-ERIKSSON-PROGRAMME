@@ -1,0 +1,201 @@
+Q251 /269A: A TRUE COEXACT INVISIBLE FIELD FOR THE NONLINEAR FOLDED CUT
+UNREVIEWED analytical candidate,12 November2026 UTC. Basecc23e87871071df093757bad37a5424ce052e1d4.
+Grouped research, not a new paper/PDF/model grade. No mathematical executable,
+formal or numerical verification. Logarithmic capacity mechanisms are classical;
+historical originality and practical relevance remain unestablished.
+
+1. ACTUAL MODEL, FOLDED MAP AND PROPOSED RESULT
+
+Let n=2^m,m>=10,c>0,a=c/48,H=cn^2,V=n^3. Use original counting norms,
+original spatial components and orthogonal two-channel forward SOURCE weights:
+channel1 weak a at even sum parity,strong H at odd; channel2 reversed.
+Let Q=Q_a+Q_H, actual U=(im d1*)^2 for unordered j<l forward curl.
+
+At x1=i put t_i=((i mod2)-i) modn, in the chart0,...,n-1, so
+F(i)=i+t_i modn=i mod2 in{0,1}. These are even cuts, NOT affine for n>=4:
+successive cut increments alternate0,-2 modulo n. Use nonempty NONWRAPPING
+x2 intervals[0,t_i-1],{t_i},[t_i+1,n-1], crossed with x3 intervals
+{0},[1,n-1], same spatial partition in both original channels. Observe all
+three spatial components with actual factors V^-1/2 |cell|^-1/2.
+t_i=0 exactly at i=0,1, never n-1; hence the full raw row count is36n-24.
+No cyclic-union mean, mixed channel or surrogate observation is used.
+
+PROPOSED THEOREM. If T=log(n/64)>=2^34, there is a REAL nonzero actual
+coexact z with every original cell mean zero and
+                        Q(z)<(c/2)||z||^2<c||z||^2.        (TH)
+No finite penalty Phi(Cz),Phi(0)=0, restores targetc for this actual map.
+Its strong energy is positive (also a consequence of the separately proved
+268 exact-zero exclusion), but this proof pays its small UPPER bound directly.
+This is a new folded-map witness, not a claim for arbitrary cut maps, the
+nonlinear permutation map2i^2, all canonical O(n) maps or physical/continuum.
+The enormous threshold is conservative and has no practical-size claim.
+
+2. TRUE CURL PREIMAGE AND EXACT CHART TAGS
+
+Write S=x1+x2+x3 modn, delta_j=I-shift_(-e_j), delta=I-shift_(-1) on S.
+For a scalar potential Psi define
+ P Psi=(0,delta2 delta3^2 Psi,-delta2^2 delta3 Psi).
+This is in the ACTUAL image: choose A23=delta2 delta3 Psi,A12=A13=0;
+the true curl adjoint gives u2=delta3A23,u3=-delta2A23. Channel2 is zero.
+
+Summing each u2,u3 over a nonwrapping x2-x3 cell telescopes to the four
+endpoint values of delta3 Psi and minus delta2 Psi, respectively. Therefore
+it suffices that BOTH delta2 Psi,delta3 Psi vanish at all six actual tags
+ x1=i,x2 in{-1,t_i-1,t_i},x3 in{-1,0}.                  (BT)
+Duplicated tags and omitted endpoint cells do not invalidate this sufficient
+condition. It kills every original normalized mean separately.
+
+3. SIX STRONG-LOCKED PROFILE MODES WITH FIVE EXACT POTENTIAL ZEROS
+
+Use unitary one-dimensional characters e_k(s)=n^-1/2 exp(2pi iks/n).
+Let h=n/2,p0=n/4,p_r=p0+r for r=0,...,5, zeta_r=exp(2pi ip_r/n),
+t(z)=1-z^-1. Define profile pairs
+ phi_r=(1+zeta_r)e_(p_r)+(1-zeta_r)e_(p_r+h),
+ psi_r=[(1+zeta_r)/t(zeta_r)^3]e_(p_r)
+             +[(1-zeta_r)/t(-zeta_r)^3]e_(p_r+h).
+Then delta^3 psi_r=phi_r. The twelve frequencies are distinct and nonzero
+at admitted n, and the six pairs have disjoint supports. Thus the six
+psi_r are linearly independent and delta^3 is injective on their span.
+
+All p_r phases lie in[pi/2,3pi/4]. Both |t(zeta_r)| and|t(-zeta_r)|
+are at least1/2: use2sin(pi/8)>=1/2 at the closer endpoint and the
+finite sine lower bound. Consequently Parseval gives, for every combination
+ psi=sum_r b_r psi_r, phi=delta^3psi=sum_r b_r phi_r,
+                       ||psi||_S^2<=64||phi||_S^2.        (INV)
+There is NO small-divisor assumption or matrix-conditioning estimate here.
+
+Impose the FIVE complex linear conditions
+                   psi(s)=0 for s=-3,-2,-1,0,1 modn.      (Z)
+The six-dimensional complex profile space maps to five values, so its
+kernel has dimension at least1. Choose any nonzero psi in that kernel.
+This existence is derived by finite dimension, not supplied as data.
+Then phi!=0, and the uniform estimate(INV) applies to that actual choice.
+No presumed rank5 or bounded coefficients of the evaluation matrix are needed.
+
+For an odd source sum s, the forward difference of each phi_r is zero:
+the pair bracket is
+ (zeta_r-1)(1+zeta_r)-(-zeta_r-1)(1-zeta_r)=0.
+Hence the actual base field z0=(0,phi(S),-phi(S)) in channel1 has
+Q_H(z0)=0 in all three physical directions. It equals P[psi(S)] and
+                    ||z0||^2=2n^2||phi||_S^2>0.          (BASE)
+These are exact physical source identities, not an effective scalar energy.
+
+4. AN EXPLICIT FINITE TRANSVERSE LOG CUTOFF
+
+Put R=n/8, and for y=(x2,x3) let r(y)=max(d_n(x2,0),d_n(x3,0)), with
+cyclic integer distance d_n in0,...,n/2. Define the real periodic cutoff
+ chi(y)=0 if r<=8;
+ chi(y)=log(r/8)/T if8<r<R;
+ chi(y)=1 if r>=R,
+where T=log(R/8)=log(n/64). It lies in[0,1]. Write
+ Echi=sum_(y,j=2,3)|chi(y+e_j)-chi(y)|^2.
+
+A neighboring radius changes by at most1. Every nonzero difference crosses
+between radii j,j+1 with8<=j<=R-1, and its magnitude is at most1/(Tj)
+by the logarithm increment bound and clipping. The shell r=j has8j points
+in this range. The number of forward edges whose smaller radius is j is
+at most2*8j+2*8(j+1)<=48j. Thus
+ Echi<=48/T^2 sum_(j=8)^(R-1)1/j
+       <=48(1+T)/T^2<=96/T, since T>=1.                 (CAP)
+This proves the finite capacity bound; no continuum or assumed Green estimate.
+Backward differences have the same squared norm by periodic reindexing.
+For every mixed backward derivative of order b>=1,
+ ||delta^beta chi||_2D^2<=4^(b-1)Echi,                   (HD)
+by keeping one first derivative and using operator norm<=2 for each other
+difference. Shifts are unitary. These are actual lattice estimates.
+
+Outside the square r<=R, chi=1. Since(2R+1)^2<=n^2/4 at admitted n,
+                    sum_y chi(y)^2>=3n^2/4.             (MASS)
+
+5. ACTUAL INVISIBILITY OF THE PRODUCT POTENTIAL
+
+Let Psi(x)=psi(S(x))*chi(x2,x3), and z=P Psi in channel1, channel2 zero.
+At fixed tags x2=-1,x3=-1 or0, the potential values entering delta2 or
+delta3 lie at cyclic distances at most2 from the transverse origin.
+Their chi values are0, so both required boundary gradients vanish.
+
+At moving tags x2=t_i+u,u=-1 or0, x3=v,v=-1 or0, the sum coordinate is
+F(i)+u+v. The potential values for either first backward derivative have
+sum coordinates in{-3,-2,-1,0,1}, because F(i) is0 or1. They are zero
+by(Z), irrespective of chi or its shifted value. Thus BOTH gradients
+vanish at every moving tag as well. Equation(BT) therefore gives Cz=0
+for EVERY original nonwrapping mean. No union-to-refinement implication
+or cancellation only after mixing cells is used. Actual coexactness is
+already supplied by the displayed true A23, not by a divergence condition.
+
+6. PAID PRODUCT ERROR AND NONZERO NORM
+
+Write z=chi*z0+E. Auxiliary chi*z0 and E may be ambient comparison fields;
+only z=P Psi needs the actual coexact image. The exact backward product rule
+for a multi-index alpha of order3 is
+ delta^alpha(psi(S)chi)=sum_(beta<=alpha) binom(alpha,beta)
+             [shift_(-beta)delta^(alpha-beta)psi(S)] delta^beta chi.
+The beta0 term is chi delta^alpha psi. Count the other terms with their
+integer multiplicities: there are2^3-1=7 in each nonzero component of E.
+
+For fixed x2,x3, summing any shifted profile square over x1 gives exactly
+its one-dimensional counting norm. For b=|beta|>=1, the squared norm of
+each product term is therefore at most
+ 4^(3-b)||psi||_S^2 *4^(b-1)Echi=16||psi||_S^2 Echi.
+Cauchy-Schwarz over seven terms gives at most7*7*16=784 times that
+profile-energy factor per component. There are two components. Hence
+ ||E||^2<=2^11||psi||_S^2 Echi
+         <=(2^16 Echi/n^2)||z0||^2, by(INV),(BASE).       (ERR)
+
+The same profile-sum identity and(MASS) give
+ ||chi*z0||^2>=3||z0||^2/4, hence ||chi*z0||>=3||z0||/4.
+The threshold and(CAP) imply Echi<2^-26<1; n>=1024 then makes(ERR)
+||E||<=||z0||/4. Triangle inequality proves
+                        ||z||^2>=||z0||^2/4>0.          (NZ)
+No unproved lower Gram bound or assumed nonvanishing product is used.
+
+7. ORIGINAL STRONG AND WEAK ENERGY, WITH CONSTANTS
+
+At any odd physical source, forward differences of z0 are zero. Thus
+the strong forward difference of chi*z0 is(delta_forward_j chi)*z0(x)
+for j2,3, and zero for j1. Dropping only the odd-source restriction and
+summing profiles over x1 gives
+ Q_H(chi*z0)<=2H||phi||_S^2 Echi=c Echi||z0||^2.
+The full unweighted gradient is<=12 times counting norm on this torus.
+Consequently
+ Q_H(E)<=12H||E||^2<=12*2^16 c Echi||z0||^2
+                         <2^20 c Echi||z0||^2.
+Positivity of this ambient quadratic form yields
+ Q_H(z)<=2Q_H(chi*z0)+2Q_H(E)<2^22 c Echi||z0||^2
+                                  <=2^24 c Echi||z||^2.
+Since Echi<=96/T<=96/2^34<2^-26, this is strictly below(c/4)||z||^2.
+For the remaining ORIGINAL weak-source energy,
+ Q_a(z)<=12a||z||^2=(c/4)||z||^2.
+Combining proves Q(z)<(c/2)||z||^2 for the actual complex field. No
+strong energy is silently assigned the weak coefficient or dropped twice.
+
+All operators, observations and weights are real. The real and imaginary
+parts of Psi give actual real coexact fields, each with zero original
+means; their norm squares and energies add to the complex ones. At least
+one is nonzero and has quotient no greater than the complex quotient.
+This proves the real statement(TH). By the separate268 theorem applied
+to this admitted folded map, its Q_H is necessarily positive. The entire
+upper-bound/witness construction above does not depend on268 as a premise.
+
+8. SCOPE, FALSIFIERS AND REVIEW CONTEXT
+
+Any actual scalar coefficient choice in the proved evaluation kernel and
+the explicit chi give a true two-form A23=delta2delta3(psi(S)chi).
+This pays original coexactness, every mean, nonzero norm and original energy.
+It does not supply a field for2i^2, prove general canonical O(n) failure,
+derive a matching logarithmic rate, improve a practical threshold or solve
+Yang-Mills. No physical mass gap/continuum inference; PR29=20/41,TermSource=0.
+The cutoff/finite-window method is related to earlier programme capacity
+work, but261/263/264 witness acceptance is not a proof of this new map.
+Historical originality is unestablished; no new small paper or inherited grade.
+
+Attack the five potential zeros versus six true chart tags, the actual
+curl signs, phase locking and inverse bound, the six-dimensional profile
+existence, periodic shell count and mixed derivative shifts, the factors
+of n in(ERR), and the source-weighted product energy. Any missing actual
+mean zero or real preimage defeats the proposed witness. A full own exact-
+source analytical audit is required before accepting it or resetting the
+quantitative route counter. Until then it remains a candidate only.
+Involved Codex/OpenAI author, exact backend/version unavailable; no blind
+or independent review, model score, PDF assessment or formal/numerical
+verification claimed. No new active question outside soleQ251.

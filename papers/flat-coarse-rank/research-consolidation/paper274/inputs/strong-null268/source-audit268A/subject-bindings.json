@@ -1,0 +1,42 @@
+[
+  {
+    "artifact": "subjects/strong-null-exclusion268A.txt",
+    "commit": "920ed55ab59215af244f925cc48121043ceb0ec6",
+    "repository_path": "papers/flat-coarse-rank/research-consolidation/strong-null268/strong-null-exclusion268A.txt",
+    "bytes": 9370,
+    "sha256": "f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/strong-component-observations253B.txt",
+    "commit": "920ed55ab59215af244f925cc48121043ceb0ec6",
+    "repository_path": "research/strong-component-observations253/strong-component-observations253B.txt",
+    "bytes": 14606,
+    "sha256": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/nonlinear267A-logarithmic-bound.txt",
+    "commit": "920ed55ab59215af244f925cc48121043ceb0ec6",
+    "repository_path": "papers/flat-coarse-rank/research-consolidation/nonlinear266/nonlinear267A-logarithmic-bound.txt",
+    "bytes": 9821,
+    "sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/CLAUDE.md",
+    "commit": "920ed55ab59215af244f925cc48121043ceb0ec6",
+    "repository_path": "CLAUDE.md",
+    "bytes": 23996,
+    "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "commit": "920ed55ab59215af244f925cc48121043ceb0ec6",
+    "repository_path": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13573,
+    "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "representation": "exact Git blob raw bytes; no normalization"
+  }
+]

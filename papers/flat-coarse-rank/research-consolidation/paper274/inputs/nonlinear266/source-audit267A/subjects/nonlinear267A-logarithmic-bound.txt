@@ -1,0 +1,170 @@
+Q251 /267A: LOGARITHMIC COERCIVITY WITH AN ACTUAL CANONICAL O(n) MAP
+UNREVIEWED analytical candidate,11 November2026, base2278feaabda37b13f269cd5deba83dd07251d412.
+Grouped with266A; no new paper/PDF/model score/formal or numerical execution.
+This is a NEW quantitative derivation, not the prior266 structural identity.
+It does NOT attain targetc, prove logarithmic necessity or close generalQ251.
+The Green-function mechanism is classical; historical originality unestablished.
+
+1. PRECISE MODEL, ACTUAL MAP AND PROPOSED TWO RESULTS
+
+Use n=2^m,m>=2,V=n^3,c>0,a=c/48,H=cn^2. Original source-parity
+orthogonal checkerboard: channel1 weak a at even sources,strong H at odd;
+channel2 reversed. Counting norm, all three spatial components, original
+forward labels. Q=Q_a+Q_H is their actual weighted gradient form.
+Let U=(im d1*)^2 with the actual unordered j<l forward-curl adjoint.
+
+Let t_i be ANY even-valued map of Z_n for which F(i)=i+t_i is a permutation.
+Use the actual nonwrapping partition at x1=i: nonempty x2 intervals
+[0,t_i-1],{t_i},[t_i+1,n-1], crossed with x3 intervals{0},[1,n-1].
+The first interval is omitted at zero; the last never empties since t_i
+is even and n-1 odd. Same spatial partition for both original channels.
+C contains every spatial-component/channel cell mean normalized by
+V^(-1/2)|cell|^(-1/2). Full rows36n-12Z0<=36n, Z0=#{i:t_i=0}.
+In particular it contains point rows at(i,t_i,0), with factor V^(-1/2).
+
+Write L=1+log n (natural log). PROPOSED THEOREM, on ALL ambient real fields:
+ Q(z)/V + [4cn^2/(9L)] ||Cz||^2 >= [c/(9L)] ||z||^2/V.    (T)
+Also, on the actual observation kernel, on all ambient fields,
+             Cz=0 implies Q(z)>=[c/(5L)]||z||^2.          (K)
+Both statements therefore hold on actual U by restriction, with no claim
+that the rectangle averaging projection preserves U. The constants and
+the finite penalty are paid below, not obtained from injection alone.
+
+Examples: all even affine t_i=kappa*i, since kappa+1 is odd; and the
+nonlinear t_i=2i^2, since F(i)-F(j)=(i-j)[1+2(i+j)] has an odd invertible
+second factor modulo2^m. The latter is nonaffine for n>=8, not n4;
+its full rows are36n-12*2^floor((m+1)/2). That permutation fact and266A
+counts are known/recalled, not new claims of originality. No bounded-motion
+or Diophantine condition is assumed on t_i beyond the stated permutation.
+
+2. EXACT ORIGINAL STRONG COMPONENTS AND THEIR TWO-LAYER FORM
+
+For each original scalar channel/spatial component the strong graph has
+components G_s={x:sum_j x_j modn in{s,s+1}}, with s of that channel's
+strong parity. The source-layer paths x -> x+e_j -> x+e_j-e_k generate
+all zero-sum displacements, and every target has a rung. Hence these are
+actual connected components, each of size2n^2, not an assumed auxiliary gap.
+They partition the vertices within each channel. This is already253B's
+graph structure; the argument below rederives only what is needed.
+
+Parametrize source x_s(y)=(y1,y2,s-y1-y2), y in Z_n^2, target x_s(y)+e3.
+For values u(y),v(y), the EXACT unweighted strong energy on this component is
+ E_s= sum_y |u(y)-v(y)|^2
+        +sum_(y,j=1,2)|u(y)-v(y+e_j)|^2.
+Norm is sum_y(|u|^2+|v|^2). The three actual forward labels at each strong
+source appear once; no outgoing/target reassignment or edge deduplication.
+Q_H=H sum E_s over all actual components, channels and spatial components.
+
+Use unitary n^-1 Fourier normalization on the two-dimensional y torus.
+At k=(k1,k2), theta_j=2pi k_j/n, the energy matrix has diagonal3 and
+off-diagonal -S,-conjugate(S), S=1+exp(i theta1)+exp(i theta2).
+Its eigenvalues are3-|S| and3+|S|. At k=0 they are0,6; the zero mode
+is exactly the constant on BOTH layers. For all k,
+ 9-|S|^2=|1-exp(i theta1)|^2+|1-exp(i theta2)|^2
+                          +|exp(i theta1)-exp(i theta2)|^2.      (D)
+This follows by expanding pairwise real parts.
+For centered representatives r_j in[-n/2,n/2-1], finite sine gives
+ |1-exp(i theta_j)|^2=4sin^2(pi r_j/n)>=16r_j^2/n^2.
+At k!=0, (D) and3+|S|<=6 therefore give
+ 3-|S|>=8/(3n^2).
+All other nonconstant modes, including k0 antisymmetric, obey this bound.
+Writing r=f-mean_(G_s)f, actual component counting Poincare is consequently
+                     ||r||^2<=(3n^2/8)E_s(f).             (P)
+No invariance of this averaging on U is needed: this whole argument is
+in the original ambient space, and only the final inequality is restricted.
+
+3. PAID LOGARITHMIC POINT TRACE ON ONE ACTUAL STRONG COMPONENT
+
+For mean-zero r on G_s and any vertex v0 in that component, finite-mode
+Cauchy-Schwarz in the positive energy coordinates gives
+                         |r(v0)|^2<=G_n E_s(r).           (G)
+Here G_n is the diagonal inverse on the nonconstant modes. This is not a
+supplied Green or Gram estimate: the actual diagonal is computed now.
+At k!=0 the inverse2by2 matrix has diagonal3/(9-|S|^2), identical for
+both layers. At k0 the antisymmetric eigenvector has squared coordinate
+1/2 and eigenvalue6, giving1/12. A point evaluation has squared Fourier
+normalization1/n^2. Hence at either layer and any y,
+ G_n=(1/n^2)[1/12 +sum_(k!=0)3/(9-|S(k)|^2)].             (Gexact)
+Equivalently diagonalize each printed2by2 matrix, omit its sole constant
+zero coordinate, and apply scalar Cauchy-Schwarz with reciprocal positive
+eigenvalues to the point-value sum. This proves (G) with (Gexact) directly;
+no spectral-gap or pseudoinverse hypothesis is left in the data.
+
+Using (D),
+ G_n<=1/(12n^2)+(3/16)sum_(r!=0)1/(r1^2+r2^2).
+In the centered n-by-n square, the shell max(|r1|,|r2|)=j contains at
+most8j points, each with r1^2+r2^2>=j^2. For j=1,...,n/2 this yields
+ sum_(r!=0)1/(r1^2+r2^2)<=8 sum_(j=1)^(n/2)1/j
+                           <=8(1+log(n/2)).
+The endpoint shell can have fewer points; the upper bound remains valid.
+Therefore G_n<=1/(12n^2)+(3/2)(1+log(n/2))<=2(1+log n)=2L.   (Gb)
+For the last comparison use1/(12n^2)<=1/2 and L>=1. All estimates are
+finite, cover the Nyquist representatives exactly once, and use no limit.
+
+4. ONE OBSERVED POINT PER COMPONENT, AND THE ACTUAL KERNEL BOUND
+
+F permutation means (i,t_i,0) visits every sum residue once. In every
+strong component select the sample whose sum is its SOURCE residue s.
+It exists uniquely, for each original channel, and is an ACTUAL singleton
+row of C. Selection is shared across spatial components in that channel;
+no mixed observation or replacement map is introduced. Call its vertex v_s.
+
+If Cz=0, f(v_s)=0 for each scalar component restriction f. Writing its
+mean m and residual r gives m=-r(v_s). Orthogonal counting decomposition,
+(P),(G),(Gb) imply
+ ||f||^2=||r||^2+2n^2|m|^2
+ <=[(3/8)+4L] n^2 E_s(f) <=5 n^2 L E_s(f).
+Sum over original components and use Q>=Q_H=cn^2 sum E_s. This proves
+(K) on all ambient fields. Zero-energy/zero-field cases use non-strict
+inequalities throughout. It is not claimed that5 or any other constant
+is sharp. The larger original cell means only add kernel constraints.
+
+5. ALL-FIELD FINITE PENALTY, NOT A FORMAL KERNEL TRANSFER
+
+For arbitrary f, m=f(v_s)-r(v_s), so
+ 2n^2|m|^2<=4n^2|f(v_s)|^2+4n^2|r(v_s)|^2.
+Applying (P),(G),(Gb),
+ ||f||^2<=4n^2|f(v_s)|^2+[(3/8)+8L]n^2E_s(f)
+          <=4n^2|f(v_s)|^2+9n^2L E_s(f).                (A)
+All selected point rows are distinct original channel/spatial rows of C.
+Their total unnormalized squared values are <=V||Cz||^2, since their
+actual singleton normalization is V^-1/2 and all other row squares are
+nonnegative. Summing (A) therefore gives
+ ||z||^2 <=4n^2 V||Cz||^2+(9L/c)Q_H(z)
+         <=4n^2 V||Cz||^2+(9L/c)Q(z).
+Multiply by c/(9LV). This is exactly (T), with the displayed finite K.
+Constants are included and paid by the point rows. K depends on n,c;
+no size-uniform, optimal or original target-c penalty is claimed.
+This direct all-field estimate pays the finite-penalty step and avoids
+assuming coexact invariance or relying on the266 strong-kernel identity
+as a sufficient criterion. It also proves applicability on actual U
+without needing to identify it with a larger divergence-free space.
+
+6. SCOPE, INDEPENDENCE OF THE DERIVATION AND FALSIFIERS
+
+This lower bound/penalty derivation uses actual component Fourier matrices
+and original means. It does not use264A's counterexample as a premise.
+It supplies an explicit logarithmically degraded target for these actual
+canonical O(n)-row maps, including a genuinely nonlinear member. It does
+NOT supply the original targetc, an invisible nonlinear counterexample,
+a matching upper rate, logarithmic necessity for ANY or all canonical maps,
+an optimum, condition-number/solver guarantee, physical gap or continuum.
+The prior affine264A failure at targetc is compatible with (T),(K).
+
+Falsifiers: a missing true strong edge, wrong source/component pairing,
+incorrect inverse diagonal or1/n^2 normalization, missed Nyquist shell,
+failure of the selected actual singleton row or incorrect full mean
+normalization would invalidate the stated constants. All such checks need
+their own exact-source analytical audit before accepting this candidate.
+The permutation F hypothesis remains explicit and is proved only for the
+named nonlinear/affine examples, not for arbitrary even t. No hypothesis
+is declared eliminated by putting it into a structure.
+
+Question remains soleQ251. Next after verification: determine whether this
+logarithmic degradation can be removed on actual U for a specified nonlinear
+map, or produce a genuine actual-coexact low-energy invisible witness;
+do not infer targetc from (T). Historical novelty/relevance require primary
+comparison; classical logarithmic point-capacity mechanisms are not claimed
+original. No new PDF/grade, peer review or publication acceptance. Involved
+Codex/OpenAI author; exact backend unavailable. No formal/numerical execution,
+new runtime or desktop control. PR29=20/41,TermSource=0; physical/continuum OPEN.

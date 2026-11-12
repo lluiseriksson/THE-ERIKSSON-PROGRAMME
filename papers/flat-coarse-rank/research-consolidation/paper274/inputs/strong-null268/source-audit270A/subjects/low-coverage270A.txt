@@ -1,0 +1,133 @@
+Q251 /270A -- LOW DIAGONAL-COVERAGE NECESSITY FOR THE FULL SLICE-CUT MAP
+UNREVIEWED analytical candidate,12 November2026 UTC.
+Prepared while PR232 CI runs; does not change that PR's frozen269 source.
+Not a new paper/PDF/model grade or accepted extension. Same soleQ251.
+
+1. PROPOSED RESULT AND ITS LIMIT
+
+Use the exact original D3 model of269A: n=2^m>=1024,c>0,a=c/48,
+H=cn^2,V=n^3, original orthogonal channels, counting norms, true forward
+curl adjoint, full original nonwrapping slice-cut means. Allow ANY cuts
+t_i in0,...,n-1. Put F(i)=i+t_i modn and K=|image F|. Each slice uses
+the nonempty x2 blocks[0,t_i-1],{t_i},[t_i+1,n-1], times x3{0},[1,n-1],
+times all original components/channels. Full row count is at most36n.
+
+PROPOSED: if log(n/64)>=2^34 and K<=n/32, there is a REAL nonzero
+actual-coexact invisible z with Q(z)<(c/2)||z||^2. No finite observation
+penalty Phi(Cz) with Phi(0)=0 can restore targetc for this map.
+Consequently targetc on this family at these n requires K>n/32.
+No sufficiency, practical threshold, optimal fraction or general canonical
+impossibility is claimed. The permutation F case K=n is outside this result.
+This does not refute t_i=2i^2. No physical-gap/continuum inference.
+
+2. TRUE POTENTIAL AND ACTUAL TAGS, WITHOUT PARITY OF THE CUTS
+
+Write S=x1+x2+x3 modn,delta_j=I-shift_(-e_j),delta=I-shift_(-1) on S.
+For Psi, take A23=delta2delta3 Psi,A12=A13=0, in channel1 only. Its true
+curl-adjoint field is
+ z=P Psi=(0,delta2delta3^2 Psi,-delta2^2delta3 Psi), channel2 zero.
+The signs follow by adjunction of the forward curl. Every actual x2-x3
+cell sum telescopes to four endpoint values of delta3 Psi or minusdelta2 Psi.
+Thus it suffices to kill BOTH gradients at all six tags
+ x1=i,x2 in{-1,t_i-1,t_i},x3 in{-1,0}.
+This remains sufficient at t_i=0 or n-1, with duplicated tags/empty blocks.
+No cut evenness or F-injectivity entered this exact telescoping condition.
+
+3. DIMENSION DERIVED FROM ACTUAL COVERAGE
+
+Let B=image F and Z=B+{-3,-2,-1,0} in Z/n. Then |Z|<=4K.
+Set h=n/2,p0=n/4 and p_r=p0+r for r=0,...,4K. Since K<=n/32,
+ n/4<=p_r<=3n/8.
+There are4K+1 distinct frequencies in this window. Their partners p_r+h
+lie in[3n/4,7n/8], disjoint from it and from zero. Hence all2(4K+1)
+frequencies are distinct/nonzero, including the endpoint K=n/32.
+
+Use unitary e_k(s)=n^-1/2 exp(2pi iks/n),zeta_r=exp(2pi ip_r/n),
+t(z)=1-z^-1, and define
+ phi_r=(1+zeta_r)e_(p_r)+(1-zeta_r)e_(p_r+h),
+ psi_r=(1+zeta_r)/t(zeta_r)^3 e_(p_r)
+          +(1-zeta_r)/t(-zeta_r)^3 e_(p_r+h).
+The profile pairs have disjoint Fourier supports and nonzero coefficients,
+so the psi_r span a space of dimension4K+1. Delta^3psi_r=phi_r.
+All phases are in[pi/2,3pi/4], giving |t(zeta_r)|,|t(-zeta_r)|>=1/2.
+Parseval yields ||psi||_S^2<=64||phi||_S^2 for EVERY combination,
+where phi=delta^3psi. This bound has no dependence on K or coefficients.
+
+Evaluation at Z maps this4K+1 dimensional space to at most4K complex
+values. Rank-nullity supplies NONZERO psi with psi(s)=0 on Z.
+Delta^3 is injective on the selected nonzero frequencies, so phi!=0.
+No rank-maximality, matrix conditioning or coefficient-size hypothesis.
+Even if the zero-set sums overlap modulo n, fewer constraints only help.
+
+For odd source sum s each phi_r has zero forward difference, since
+ (zeta-1)(1+zeta)-(-zeta-1)(1-zeta)=0.
+Thus z0=(0,phi(S),-phi(S)) has zero original channel1 strong-source
+differences in all3 directions; ||z0||^2=2n^2||phi||_S^2>0.
+
+4. ACTUAL CUTOFF AND ALL ORIGINAL MEANS
+
+Let R=n/8,T=log(n/64),r=max(d_n(x2,0),d_n(x3,0)). Put chi=0 for r<=8,
+chi=log(r/8)/T for8<r<R,chi=1 forr>=R. Define Echi as the full2D
+sum of forward squared differences in directions2,3. The finite shell
+argument of269A gives Echi<=96/T and sum_y chi^2>=3n^2/4:
+shellj has8j points, at most48j relevant directed forward edges between
+j,j+1, each difference at most1/(Tj),8<=j<R. Torus seam edges havechi1.
+Sum1/j<=1+T and T>=1. For mixed orderb>=1,
+ ||delta^beta chi||_2D^2<=4^(b-1)Echi,
+by retaining one first difference and bounding others by operator norm2.
+
+Take Psi=psi(S)chi and z=P Psi. At fixed tags x2=-1,x3=-1/0, potential
+values used in either first gradient have transverse radius<=2, sochi0.
+At moving tags x2=t_i+u,x3=v,u,v=-1/0, their S coordinates, including
+the backward neighbor, lie in F(i)+{-3,-2,-1,0}, a subset of Z. Thus
+each potential value itself is zero, whatever chi is. BOTH gradients
+vanish at EVERY tag; every original normalized cell mean is zero.
+These are true chart tags, not cyclic unions or averaged channel traces.
+
+5. CONSTANTS DO NOT DETERIORATE WITH COVERAGE K
+
+Write z=chi*z0+E. For either order3 mixed derivative, the exact backward
+Leibniz formula sums binom(alpha,beta) times
+ [shift_(-beta)delta^(alpha-beta)psi(S)]delta^beta chi.
+The beta0 term is chi*z0; the rest have total multiplicity7 per component.
+At fixed transverse y, the x1 sum of a shifted profile square is its1D
+counting norm. A term with b=|beta|>=1 has squared norm bounded by
+4^(3-b)||psi||_S^2 *4^(b-1)Echi=16||psi||_S^2 Echi.
+Seven-term Cauchy and two components give
+ ||E||^2<=2^11||psi||_S^2Echi
+        <=(2^16 Echi/n^2)||z0||^2.
+This uses the UNIFORM inverse bound, not the number of Fourier modes.
+Mass gives ||chi*z0||>=3||z0||/4. Threshold makesEchi<2^-26<1;
+n>=1024 gives ||E||<=||z0||/4 and ||z||^2>=||z0||^2/4>0.
+
+Odd-source locking implies
+ Q_H(chi*z0)<=2H||phi||_S^2 Echi=c Echi||z0||^2.
+The full unweighted three-direction gradient is<=12 times the norm, so
+ Q_H(E)<=12H||E||^2<2^20 c Echi||z0||^2.
+Consequently
+ Q_H(z)<=2Q_H(chi*z0)+2Q_H(E)
+       <2^24 c Echi||z||^2<(c/4)||z||^2,
+because96/T<=96/2^34<2^-26. Actual weak energy is
+ Q_a(z)<=12a||z||^2=(c/4)||z||^2.
+Thus Q(z)<(c/2)||z||^2. The comparison fields need not separately be
+coexact; their ambient quadratic energies are defined, while z has its
+actual A23 preimage. All operations/weights are real; real/imaginary
+potential parts split norms/energy, so some nonzero real part has no
+larger quotient and retains exact invisibility/coexactness.
+The separately audited268 exact-null exclusion gives Q_H(z)>0 only.
+
+6. REVIEW BOUNDARY AND FALSIFIERS
+
+269A accepted only F={0,1}; it does NOT establish this larger family.
+This candidate requires a fresh exact-source audit before acceptance.
+Attack the4K zero-set bound,4K+1 profile dimension, inclusiveK=n/32
+endpoints, multiplier uniformity, alltags including t=n-1 and the claim
+that product estimates depend on profile norm rather than mode count.
+If those steps fail, preserve the failure; do not move the difficulty
+into a coefficient/conditioning hypothesis or claim formal verification.
+This is a necessary coverage obstruction derived by a true witness,
+not a sufficient coverage theorem or removal of F permutation from267.
+No historical originality, independently established review, grade or
+publication claim. Involved Codex/OpenAI author, exact backend unavailable.
+No mathematical executable/runtime used. PR29=20/41,TermSource=0;
+physical gap and continuum OPEN. Same soleQ251, current counter0 after269.

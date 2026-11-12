@@ -1,0 +1,4 @@
+* -text
+source-audit271A/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+source-audit272A/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+source-audit273A/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -1,0 +1,61 @@
+{
+  "manuscript": "coverage_coexactness274.tex",
+  "manuscript_raw_sha256": "eb5c5e7fbe4ec59ea465a1de02276cb2708d309f2db2f58bec4677f8d1d6689e",
+  "source_base": "0ca5fe675a046791f514de04525b5ea761a72134",
+  "results": [
+    {
+      "section": "2-3",
+      "sources": [
+        "nonlinear267A-logarithmic-bound.txt"
+      ],
+      "referent": "bea6967059f23b25fdab96def70bbe66f8c47785",
+      "fresh_scope_to_audit": "Manuscript directly proves lower bound for all evenn>=4 and anyFpermutation, dropping267 even-cut/dyadic restrictions because the finite graph/point argument uses neither."
+    },
+    {
+      "section": "4",
+      "sources": [
+        "strong-null-exclusion268A.txt"
+      ],
+      "referent": "920ed55ab59215af244f925cc48121043ceb0ec6"
+    },
+    {
+      "section": "5",
+      "sources": [
+        "low-coverage270A.txt",
+        "folded-cut-counterexample269A.txt"
+      ],
+      "referents": [
+        "6bd0c274a077350637d9e03059c3b16d1a3aacb4",
+        "feb324d61b604bd9672b4eafea6e9507cfc799e5"
+      ]
+    },
+    {
+      "section": "6",
+      "sources": [
+        "coexact-projection271A.txt"
+      ],
+      "referent": "ed2746f97c5886a767f8ba34dc71eb2662ee7410"
+    },
+    {
+      "section": "7",
+      "sources": [
+        "projection-mean272A.txt",
+        "coexact-trace-repair273A.txt"
+      ],
+      "referents": [
+        "6d90e2a79c7d4ed4b8037cb4c9fcbdecda461928",
+        "3aa9367c15f1814403c784ecb97628c45101c00e"
+      ]
+    }
+  ],
+  "audits": "Complete original source reports retained in inputs, not inherited exact-PDF grade or acceptance",
+  "pending": [
+    "Own fresh whole-manuscript source audit",
+    "Own Linux production and exactPDF all-page visual review",
+    "New exactPDF numerical model assessment",
+    "Native exact-hash grant/receipt/workingpermission/protectedpublication with actual public byte verification"
+  ],
+  "status": "COMPLETE_MANUSCRIPT_SOURCE_UNREVIEWED_NOT_A_PUBLISHED_PAPER",
+  "new_research_frozen_for_paper_delivery": true,
+  "input_files": 113
+}
