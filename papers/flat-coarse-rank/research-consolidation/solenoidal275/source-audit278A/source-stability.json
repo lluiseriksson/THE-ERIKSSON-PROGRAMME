@@ -1,0 +1,8 @@
+{
+  "commit_before_after": "c2fd19c74cb5d00ff412042cd060de8afaead851",
+  "checkout_sha256_before_after": "a786ef075f621603228e97ed37aea9a24dc300ef1cdbf6d34624d9a309d40934",
+  "checkout_bytes": 9929,
+  "git_blob_sha256": "a786ef075f621603228e97ed37aea9a24dc300ef1cdbf6d34624d9a309d40934",
+  "source_identical_before_after": true,
+  "math_execution": false
+}

@@ -1,0 +1,174 @@
+257A EXACT-SOURCE ANALYTICAL AUDIT — COMPLETE REPORT
+11 November 2026
+
+VERDICT: ACCEPT_ANALYTICAL_OBSTRUCTION_FOR_FIXED_CUT_PRODUCT_SLICES_ONLY.
+This verdict concerns the exact frozen source commit
+fed201fd10f952a04e638c324dc0e1359711911a and proof raw-byte SHA256
+8b92c1aeae67c26832cdd4e53dfcfb62537640d3d2a0a96370e677c3cd1ddbbc.
+The actual Git blob bytes were captured and compared with this digest before
+sealing this report. No proof bytes or repository branch were changed by me.
+There was no PR/body to audit: body capture and normalized body hash are N/A.
+This is an analytical review by a separate child session of the same involved
+Codex programme, not an independent model, human referee, formal check or
+numerical certificate. No grade or stars are assigned.
+
+METHOD AND DIRECT INPUTS
+I read the entire capacity-class-obstruction257A.txt, the repository-wide
+OPERATIONAL-GOVERNANCE-CHARTER.md, and the75line current environment/governance
+prefix of CLAUDE.md. The complete raw CLAUDE.md is retained as context, but
+only that prefix was directly read in this audit. The proof is self-contained;
+I did not use256A as a lemma or inherit its previous audit verdict. I derived
+the algebra, cutoffs, commutators, constants and scope implications below in
+reasoning. No Lean, Lake, oracle, mathematical script, numerical enumeration,
+symbolic calculation engine or Colab runtime was run. File copies, byte hashes
+and Git identity reads provide provenance, not mathematical certification.
+
+1. DOMAIN, PREIMAGE, AND TELESCOPING — ACCEPT
+For forward curl(d1u)23=partial2u3-partial3u2, the two adjoint contributions
+are -partial3^*psi23=delta3psi23 and partial2^*psi23=-delta2psi23. Therefore
+psi23=delta2delta3Psi gives exactly
+z=(0,delta2delta3^2Psi,-delta2^2delta3Psi) in the actual image of d1^*.
+This avoids the false replacement of image membership by divergence freedom.
+Every component's complete sum vanishes by a cyclic first difference.
+
+For a cyclic interval [A,B], sum delta_jF=F(B)-F(A-1), including wrapping
+intervals. Applying that identity twice yields the displayed four-corner
+formula for z2, with delta3Psi evaluated at (B,D),(A-1,D),(B,C-1),(A-1,C-1).
+For z3 the corresponding scalar is -delta2Psi. In a genuine cyclic interval
+partition, each A_j-1 is the terminal endpoint of its predecessor. There are
+M2 and M3 distinct terminal endpoints, hence q=M2M3 distinct corner pairs.
+For a whole-cycle factor the endpoint difference cancels identically, so its
+inclusion creates an unnecessary sufficient condition, not an invalid one.
+If eta is zero at each corner and its backward e2/e3 neighbors, both scalar
+differences of etaPsi0 there vanish for every x1. All cell sums, all three
+spatial component means, and all channel2 means then vanish exactly.
+The positive normalizations do not change these zeros.
+
+2. LOW FIELD AND ORIGINAL STRONG SOURCES — ACCEPT
+delta sin(t)=sin(t)+cos(t), delta cos(t)=cos(t)-sin(t). Thus the mixed second
+difference of sin(t) is2cos(t), and its next difference has the exact residue
+sequence w=(2,-2,-2,2). This gives z0=(0,w,-w), with pointwise squared norm8
+and complete squared norm8V. At odd residue1, w(2)=w(1)=-2; at residue3,
+w(0)=w(3)=2. All forward directions advance the same total residue by1.
+Consequently every ORIGINAL channel1 H-weighted forward-source difference
+of z0 is zero. Divisibility4|n makes this valid at periodic seams as well.
+There is no parity or adjoint-sign reversal hidden in the construction.
+
+3. ONE-CORNER LOGARITHMIC CUTOFF — ACCEPT
+R=n/4>=8 is an integer and L=log((R+1)/3)>0. The clipped logarithm has the
+claimed zero radius2 and plateau radiusR. A nearest-neighbor edge changes
+rho by at most1; only transitions r to r+1 with2<=r<R can carry energy.
+For r+1<=R<=n/4, the square boundary has4(2r+1)=8r+4 crossing edges, each
+counted once by the positive-coordinate forward-edge convention, including
+those represented in the opposite radius orientation. No antipodal square
+seam is reached by these active edges. The conservative32r bound is valid.
+The increment bound1/((r+1)L) follows from log(1+u)<=u and clipping. Hence
+the stated harmonic upper bound holds. For R>=8, log(R+1)>=log9=2log3,
+which is exactly the needed log(R+1)<=2L. This proves E_Y(f_p)<=64/L.
+
+For the deficit bound, only rho<R contributes. Every u=rho+1 in[1,R] belongs
+to one of the stated dyadic half-open bins, including boundary equalities.
+The radius square u<=S has (2floor(S)-1)^2<=4S^2 sites when S>=1, and none
+for S<1. It lies within the ordinary radiusR chart, so no torus multiplicity
+can enlarge this bound. Within the kth bin,
+1-f_p<=log((R+1)/u)/L<=(k+1)log2/L. At rho<=2, this is still an upper bound
+because the unclipped deficit is at least1. At rho>=R there is no deficit.
+The summation sum(k+1)^2/4^k=(1+x)/(1-x)^3 at x=1/4 is80/27<4.
+Together with log2<1 and R+1<=n/2, it gives the claimed4n^2/L^2 bound.
+Inner plateau, outer plateau, dyadic endpoints, and cyclic seams are covered.
+
+4. MINIMUM OF CUTOFFS AND LINEAR q LOSS — ACCEPT
+For arbitrary finite real lists, min is1-Lipschitz in the maximum norm:
+|min a_p-min b_p|<=max|a_p-b_p|. This can be proved in each order by choosing
+the minimizing index of the smaller side. Squaring and bounding the maximum
+by the sum gives energy(min_p f_p)<=sum_p energy(f_p), on each edge and then
+globally. Also1-min f_p=max(1-f_p), whose squared norm is at most the sum of
+the individual squared deficits. Thus BOTH required bounds depend linearly
+on q, uniformly over all corner positions, without any separation condition.
+The minimum can have nonsmooth meeting loci; that is harmless. The subsequent
+argument only needs finite first-difference energy, not smoothness or a
+pointwise high-order derivative formula for the minimum. This is the real
+strengthening over the earlier proposed product cutoff with quadratic q loss.
+
+5. FINITE CONVOLUTION COMMUTATORS — ACCEPT
+A transverse shift is a path of |r2|+|r3| unit shifts; repeated triangle
+inequality and translation invariance give the stated norm bound in terms of
+sqrt(E_Y(eta)). Lifting the transverse function to X gives a factor sqrt(n).
+The finite-convolution commutator identity follows term by term. Multiplication
+by each translated Psi0 has norm bound1, so the weighted coefficient sum in
+(3) follows. This remains valid when the convolution includes x1 shifts,
+because eta has no x1 dependence. The original source weights are not moved.
+
+P has two nonzero components, each a three-difference convolution, coefficient
+l1 bound8 and transverse radius<=3. partial_hP has six direction/component
+instances, coefficient l1 bound16 and radius<=4. Repeated translations may
+combine coefficients, but cannot increase these bounds. Squaring the triangle
+estimate gives2*(8*3)^2=1152 for (4), and6*(16*4)^2=24576 for (5). For the
+strong-source estimate, eta partial_h z0 vanishes at the ORIGINAL odd sites,
+so restriction of the full commutator bound is legitimate. There is no
+unproved weighted product rule, derivative-at-a-minimum claim or Hodge step.
+
+6. REAL NONZERO WITNESS AND FINAL CONSTANTS — ACCEPT
+All functions and finite difference operators are real. The error splits into
+(eta-1)z0 plus the commutator. The two-term squared-norm inequality gives
+16n||1-eta||_Y^2+2304nE_Y(eta), hence
+64qV/L^2+147456nq/L <=(64q/L^2+147456q/L)V.
+At L>=2^22q and q>=1, the two coefficients are bounded by2^-38 and9/256.
+Their sum is strictly below2. Reverse triangle therefore proves ||z1||>sqrt(2V),
+which proves the field itself nonzero, rather than merely the potential.
+Multiplying (5) by H=cn^2 gives at most24576cVE_Y(eta), then
+1572864cqV/L <=(3/8)cV <(3/16)c||z1||^2.
+The exact arithmetic uses1572864=3*2^19 and2^22 in the hypothesis.
+The weak-source sum is bounded by a times the complete unweighted energy;
+each directional difference has norm<=2||z1||, so this is<=12a||z1||^2
+=(c/4)||z1||^2. This possibly overcounts odd edges, which is harmless for
+an upper bound. Adding gives strictly less than(7/16)c||z||^2, stronger than
+the displayed weak inequality. Quadratic penalties on the identically zero
+measurement vector vanish regardless of their coefficients. The obstruction
+is consequently proved for the stated finite model and partition class.
+
+7. NECESSARY COUNT AND NONVACUITY — ACCEPT WITH THE EXPLICIT CLASS LIMIT
+By contraposition, restoration forces q>L/2^22, since the theorem supplies a
+strictly deficient actual-image kernel field whenever q<=L/2^22. The original
+channel1 full-row count is exactly3nq, so its lower bound is3nL/2^22. Since
+L=log n-log12+log(1+4/n), this is an order n log n necessary count in the
+specified class. Cutsets may depend on n, be unbalanced or contain neighboring
+cuts; only their independence of x1 is essential here. For any fixed finite
+M2,M3, arbitrarily large multiples of4 have nonempty intervals and meet the
+threshold. Thus the result is not vacuous, although the threshold is immense.
+
+REMAINING OBJECTIONS / LIMITATIONS (PRESERVE OPEN)
+O1. The global Q251 problem is OPEN. If transverse cuts vary by x1, the union
+of their corner sets may be much larger than q, and this proof's single
+transverse cutoff no longer gives the claimed bound in terms of q per slice.
+It does not settle general canonical or nonproduct rectangle partitions.
+O2. Originality/priority of this precise application is UNESTABLISHED. The
+logarithmic cutoff/capacity/minimum/commutator ingredients are standard. I
+performed no bibliographic equivalence audit; do not call this independent
+novelty or assign importance from its relation to the Yang-Mills programme.
+O3. Constants and threshold are grossly nonoptimized; no practical crossover
+or computational implementation was checked. Analytical existence is the
+claim. This is neither a physical gap nor a continuum construction.
+O4. This audit is not a Lean formalization, numerical reproduction, public
+peer review, acceptance, independent model assessment or PDF review. It gives
+no assessment to257A and cannot inherit255B's score. The source is suitable
+for grouped research integration, not by this verdict a separate publication.
+O5. This separate session inherited parent context including the proposed
+construction and programme history. Blindness or statistical/model/provider
+independence is not established. Exact backend, version, and effort were not
+exposed; the available identity description is Codex/OpenAI, GPT-6 family.
+
+FAILURES FOUND
+No blocking algebraic, cutoff, source-weight, constant, norm or scope defect
+was found in the frozen257A proof. The original product-cutoff handoff was
+not audited or retroactively upgraded here; only its replacement minimum
+construction as fully derived in257A is accepted. No failed gate was altered.
+
+OPERATIONAL BOUNDARY
+No inbound parent notices or partial results arrived while this audit ran.
+No disposable clone, runtime or new worktree was created, so cleanup is N/A.
+No desktop/browser control, compile, numerical experiment, message to another
+chat, repository mutation, PR, publication or automation change occurred.
+The proof snapshot and two governance context subjects are retained with raw
+byte hashes. Full report, exact assignment prompt and review context are
+separate artifacts. Their hashes identify raw bytes with no normalization.

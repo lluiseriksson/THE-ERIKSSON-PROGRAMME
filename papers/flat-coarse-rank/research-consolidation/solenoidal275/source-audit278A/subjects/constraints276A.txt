@@ -1,0 +1,115 @@
+Q251 /276A -- EXACT CELL CONSTRAINTS AND COST OF HIDING A WHOLE PLANE
+2026-11-12 analytical candidate; UNREVIEWED pending separate role audit.
+Base cd7d761e8ec1531b70d95a2269fa3ca9e6630246; uses accepted275A with N1 erratum.
+No numerical/formal execution, new paper or score.
+
+1. ORIGINAL DOMAIN AND GOAL
+Keep n>=4 even,c>0,H=cn^2,a=c/48 and the channel1 paired-layer construction275:
+ V_s=t_s+Lpsi_s, Lpsi=(delta2psi,-delta1psi,delta1psi-delta2psi),
+ w(A_s(y))=w(B_s(y))=V_s(y), channel2=0, odd s in Z_n.
+Every t_s has spatial sum0 and sum_s t_s=0. The actual real curl-adjoint
+preimage, original energies and norm are proved in275, not assumed here.
+All physical channel/component rows of original nonwrapping C_t remain.
+We use cut symbols tau_i, to distinguish them from transverse constants t_s.
+The three nonempty x2 intervals are [0,tau_i-1],{tau_i},[tau_i+1,n-1];
+x3 intervals are {0},[1,n-1]. Rows are (n^3|B|)^(-1/2)sum_Bw_r.
+
+2. EXACT REDUCTION OF ALL SIX CELL TYPES ON EACH SLICE
+For residue r define sigma(r)=r if odd, r-1 modn if even. For fixed i put
+ E_i(j)=V_sigma(i+j)(i,j),     W_i(j)=sum_(s odd)V_s(i,j).
+E is the actual x3=0 trace, not its longitudinal spatial sum. As x3 runs
+through all n residues, each odd s occurs twice in sigma(i+j+x3). Hence
+ sum_(x3=0..n-1)w(i,j,x3)=2W_i(j),
+ sum_(x3=1..n-1)w(i,j,x3)=2W_i(j)-E_i(j).                (1)
+Therefore every original row vanishes iff, for every i and every nonempty
+cut interval I, both vector sums sum_I E_i=0 and sum_I W_i=0. The equivalence
+uses the short-cell sum first and then the long-cell sum; no row is replaced
+in an energy/penalty estimate and no normalization is lost in this zero test.
+All factors are positive finite and original channel2 rows already vanish.
+
+For X=E or W let P_i^X(k)=sum_(j=0..k-1)X_i(j), 0<=k<=n. The exact conditions
+are, componentwise, for every i:
+ P_i^X(tau_i)=0,       X_i(tau_i)=0,       P_i^X(n)=0.     (2)
+Indeed left,singleton,right sums are P(tau),X(tau),P(n)-P(tau)-X(tau).
+When tau=0 or n-1 the empty interval gives an identity and the corresponding
+total condition is redundant, not an extra constraint. Thus endpoint cuts
+and every long-x3 cell are included. These are real linear equations.
+
+3. ELIMINATING TRANSVERSE CONSTANTS FOR PERMUTATION CUTS
+Assume F(i)=i+tau_i modn is a permutation, with inverse i_r. Put
+ y_s^-=(i_s,tau_(i_s)), y_s^+=(i_(s+1),tau_(i_(s+1))) for each odd s,
+ alpha_s=(Lpsi_s)(y_s^-).
+The odd singleton equations E_(i_s)(tau_(i_s))=0 force exactly
+                    t_s=-alpha_s.                       (3)
+Each alpha_s has spatial sum0 because L does. The remaining global zero-mean
+condition is exactly sum_s alpha_s=0, NOT automatically discarded. The even
+singleton equations are exactly
+                (Lpsi_s)(y_s^+)=alpha_s.                 (4)
+After (3), E_i(j)=Lpsi_sigma(i+j)(i,j)-alpha_sigma(i+j).
+Writing Psi=sum_s psi_s, we have W_i(j)=(L Psi)(i,j)-sum_s alpha_s.
+With the required global constraint, W=L Psi pointwise. Thus a complete
+potential-only feasibility system consists of sum_s alpha_s=0, (4),
+the remaining E-prefix and E-total equations from(2), and ALL three W
+equations from(2) with W=L Psi. The odd singleton equations have been used;
+they are not independently assumed again. This proves equivalence within275's
+subspace, not existence of a nonzero solution at low Rayleigh quotient.
+
+For clarity, on an interval [a,b], the first W component telescopes to
+ Psi(i,b)-Psi(i,a-1), with modulo n for a-1. The second component sum is
+ -sum_(j=a..b)[Psi(i,j)-Psi(i-1,j)]. The third is minus their sum.
+Thus setting Psi constant is a SUFFICIENT restriction making all W equations
+automatic, but is NOT proved necessary and may remove possible witnesses.
+The direct constraints, with original energies275(2), can now be attacked
+without unknown layer constants or hidden original means.
+
+4. A TEMPTING SUFFICIENT ANSATZ THAT CANNOT REACH THE TARGET
+One could impose w(i,j,0)=0 for ALL i,j and W_i(j)=0 pointwise, making
+every original mean zero for any cuts. For the275 paired-layer class this
+whole-plane vanishing is too expensive, independently of W or coexactness:
+      Q_H(w) >= [3 c n/(n-2)] ||w||^2.                   (5)
+In particular any nonzero field in this subclass has quotient strictly>3c,
+so cannot be the sought Q<c||w||^2 invisible witness. Adding Q_a>=0 only helps
+the lower bound. This excludes the whole-plane-zero mechanism in the stated
+paired class, not arbitrary coexact fields or the exact cell-sum constraints.
+
+5. ELEMENTARY DERIVATION OF THE COST, INCLUDING ALL FACTORS
+Fix odd s and y1=i. Plane vanishing implies V_s(i,j)=0 at both
+j=s-i and j=s+1-i modulo n, because these are respectively A and B points
+on x3=0. These are adjacent zeros on the y2 cycle. The complementary path
+has L=n-1 edges and n-2 interior vertices, with both endpoints zero.
+For ANY vector sequence z_0=z_L=0, write d_k=z_(k+1)-z_k. For1<=j<L,
+ z_j=((L-j)/L)sum_(k<j)d_k-(j/L)sum_(k>=j)d_k,
+so finite Cauchy-Schwarz gives
+ |z_j|^2 <= [j(L-j)/L] sum_(k=0..L-1)|d_k|^2.
+Summing j, using sum_j j(L-j)/L=(L^2-1)/6, gives
+ sum_(k=0..L-1)|d_k|^2 >= [6/(L^2-1)]sum_(j=1..L-1)|z_j|^2. (6)
+This is an elementary vector Dirichlet path estimate, not an optimal constant.
+On the cycle the one omitted edge joins the two zeros and has energy0;
+thus(6) includes the full cyclic y2 energy and all nonzero vertices. Since
+L^2-1=n(n-2), sum over every i and odd s. Original275 strong energy contains
+this full y2 sum plus nonnegative y1 differences, while ||w||^2=2sum_s,y|V_s|^2.
+Consequently Q_H/||w||^2>=3H/[n(n-2)]=3cn/(n-2), proving(5).
+Wrap, both paired layers, all vector components and the factor2 are explicit.
+No assumed Poincare constant or copied normalized-graph convention is used.
+
+6. SCOPE, FALSIFIERS AND NEXT STEP
+New scoped result: explicit potential-only full-cell system and quantitative
+exclusion of the whole-plane-zero shortcut. Q251 remains OPEN. Do NOT infer
+the same bound from E-prefix cancellations, where E_i(j) need not vanish.
+The next construction must exploit those cancellations, not kill every
+boundary-plane value. Do not revive the stopped projection/longitudinal-trace
+route. This is direct-stream route unit1; no full target-gap/witness progress
+claimed. Group275/276 with later substantive results, no small separate paper.
+
+Attack multiplicity2 in(1), interval endpoints, global sum alpha, even-source
+singleton indexing, telescoping normalization, path endpoints and sharp scope
+of(5). Preserve failures and any corrected version; no grade optimization.
+Classical background: Fan Chung, Spectral Graph Theory, author-hosted CBMS
+lecture notes, https://www.math.ucsd.edu/~fan/cbms.pdf, chapter1 eq1.1 discusses
+Dirichlet sums/Rayleigh quotients with degree-weighted vertex convention.
+Our counting and constant are rederived, not imported from that convention.
+Bounded primary excerpt only inspected; no historical originality or priority
+established for these elementary ingredients or their checkerboard use.
+Author current root Codex/gpt-6-astra; high setting is user-reported.
+No Lean/numerical/executable verification or independent review claimed.
+PR29=20/41,TermSource=0; physical gap and continuum OPEN.

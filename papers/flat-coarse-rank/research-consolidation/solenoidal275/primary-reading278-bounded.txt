@@ -1,0 +1,26 @@
+278 bounded provenance/novelty check, 2026-11-12
+
+Primary author-hosted source:
+Gregory F. Lawler and Vlada Limic, Random Walk: A Modern Introduction,
+https://www.math.uchicago.edu/~lawler/srwbook.pdf
+Tool returned289PDFpages; inspected bounded text around section4.4.1,
+Theorem4.4.4, PDFpage87 (printed88), lines8703ff. The theorem gives a
+logarithmic leading term for the two-dimensional potential kernel with an
+additive constant and a decaying error under its random-walk hypotheses.
+This is classical background for the logarithmic spectral sum, not a theorem
+about our vector field, paired-layer geometry, normalization or observations.
+No source constant is imported:278 derives its own elementary harmonic sum.
+No whole-book reading claimed. No quotation copied into the mathematical note.
+
+Search scope (not evidence of absence): discrete-torus/2D Green capacity;
+divergence-free point-capacity/logarithmic cutoff; author-hosted Lawler/Limic.
+Several search results concerned different continuum unit-length fields or
+rough-set approximation; these were not treated as directly matching278.
+No exhaustive priority check or historical originality certification.
+
+Internal comparison is decisive: capacity-class-obstruction257A.txt was read
+in full. Its larger-domain result already covers every fixed product partition,
+including tau0. Thus278 cannot be presented as a new global fixed-cut theorem.
+Its distinct recorded contribution is explicit membership in275's narrower
+paired class with exact character cancellations and the displayed harmonic
+bound. Group with275-277/control material; no separate publication or new grade.

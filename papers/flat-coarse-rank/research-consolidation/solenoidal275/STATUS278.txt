@@ -1,0 +1,46 @@
+278A accepted analytically after separate involved exact-source audit.
+Audited commit c2fd19c74cb5d00ff412042cd060de8afaead851;
+raw checkout/Git bytes a786ef075f621603228e97ed37aea9a24dc300ef1cdbf6d34624d9a309d40934.
+Full report e8a58fbebb12cf4d86cf784386eacd00d9368d3064da5dc74e223d2047f371fa;
+raw manifest4b2fd9e20464f224ae81e238984b49e8b36e5c52d661daeba6081a4c4d07a3e9.
+Parent read full report/context and verified all15raw manifest members.
+No material or required minor correction. Original source remains immutable.
+
+Result: for tau_i=0,n>=32 divisible16, the explicit real paired275 field has
+all original normalized means0 and Q/||w||^2<=c[1/8+3pi^4/(2h_(n/16))].
+When h_(n/16)>=4pi^4 this is<=c/2, with ||w||^2>=2n^3>0. Actual coexact
+preimage, exact two-point pins, character cancellation of TOTALS/singletons,
+and all strong/weak factors are paid. This is an analytical proof, not a
+floating extension of277, numerical certificate, formal Lean result or new
+physical spectral gap. No mathematical executable/runtime used in278.
+
+Novelty/relevance:257 already proves the broader fixed-product obstruction
+in the full coexact space. This is a restricted paired-space control with a
+different explicit harmonic bound, not a new global theorem or paper.
+Historical priority not established; primary classical background recorded.
+No new assessment score, PDF, acceptance or publication. Reviews use shared
+programme context, actual child backend/version/effort unavailable; not
+independent/blind/human peer review. Preserve original full reports/objections.
+
+ROUTE CLOSURE: direct-stream275-278 has reached its third unit on the moving
+target without resolving nonlinear moving singleton AND prefix cancellations.
+The fixed-cut control DOES NOT reset that counter. Stop this mechanism.
+Projection/longitudinal correction also remains stopped at3. Q251 is OPEN.
+Concrete missing estimate: original moving E-prefix cancellation and moving
+point constraints at affordable strong energy, rather than a full-plane zero.
+
+NEXT ROUTE WITHIN THE SAME Q251: exact spectral analysis of the original
+checkerboard energy on the full actual coexact space. First bounded unit:
+derive the Fourier blocks coupling k and k+(n/2,n/2,n/2), impose the actual
+curl-adjoint image at EACH frequency (including the zero mode), and calculate
+the compressed block spectrum with all degeneracies/reality accounted for.
+Then pull original observations back to explicit modes; never assert that a
+projection preserves their means. This is operator analysis, not reviving the
+failed projected-cutoff construction. Check existing repo for duplication
+before claiming anything new. A useful result must derive eigenvalues or a
+paid low-band estimate; merely introducing a block structure does not count.
+Falsifiers: source-weight/coupling signs, zero/Nyquist dimensions, conjugate
+pairing, or a mismatch of original quadratic forms/observation rows.
+Abandon after3units without a derived substantive result; no blind size sweep.
+No new question is activated beside Q251. PR29=20/41,TermSource=0;
+physical gap and continuum remain OPEN.

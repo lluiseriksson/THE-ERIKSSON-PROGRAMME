@@ -1,0 +1,170 @@
+EXACT-SOURCE ANALYTICAL AUDIT276A -- FULL CELLS AND WHOLE-PLANE COST
+VERDICT: ACCEPT_MAIN_REDUCTION_AND_BOUND_WITH_ENDPOINT_COMMENT_CORRECTION
+MATERIAL MAIN-RESULT FAILURE: NONE found. The full equations(1)-(4) and
+whole-plane bound(5) are valid. One literal endpoint redundancy sentence
+is false at tau0 and is retained as276A-N1 with an explicit counterexample.
+The actual system still KEEPS the necessary total equations, so this does
+not invalidate its stated feasibility equivalence or energy bound. Correct
+the comment before reuse; do not discard total equations at tau0.
+
+Exact source285f02aea7cf04b1e6644c11a1507f8bebd72fa8.
+Git raw 7213bytes SHA256 aaf7c898f0a991b8b202f55710a5d917ac5a9933d8164e766519932456bd0148.
+Checkout raw 7213bytes SHA256 aaf7c898f0a991b8b202f55710a5d917ac5a9933d8164e766519932456bd0148.
+Raw equality True. No captured normalization.
+
+1. ACTUAL SHORT/LONG CELLS AND MULTIPLICITY TWO
+For fixed(i,j), S=i+j+x3 runs once through every residue as x3 runs
+through all n values. Sigma maps exactly two adjacent residues to each
+odd s. The paired275values V_s(i,j) therefore each occur twice, proving
+the whole-column sum2W_i(j). Its x3zero value is E_i(j), so the true
+long block[1,n-1] has sum2W-E. For every original x2 interval, both
+short and long vector sums vanish iff its E sum and W sum vanish.
+This is an exact zero constraint test with all spatial rows, not a
+replacement of their differently normalized penalty map. Every original
+row factor(n^3|B|)^-1/2 is positive finite and channel2 is0. No long cell,
+internal component or normalization disappears in the equivalence.
+
+For any X=E or W, left/singleton/right sums are P(tau),X(tau),
+P(n)-P(tau)-X(tau). Requiring the three displayed conditions(2) is thus
+equivalent to all actual nonempty x2-cell sums0, including either endpoint.
+At tau0, P(0)0 is automatic but X(0)0 AND P(n)0 are still needed.
+At tau=n-1, P(n)=P(n-1)+X(n-1) makes the total condition redundant once
+the other two hold. These distinct endpoint facts are the precise valid
+version of the later overly broad comment addressed in N1 below.
+
+2. PERMUTATION ANCHORS AND THE GLOBAL CONSTANT CONDITION
+Every odd source residue s has unique inverse i_s under the explicit
+F permutation. At its actual singleton E is V_s(y_s^-), so zero forces
+t_s=-Lpsi_s(y_s^-)=-alpha_s. Each alpha has pointwise spatial sum0,
+so the individual t_s spatial constraints follow. However the global
+sum_s t_s0 becomes sum_s alpha_s0 and must remain; the text correctly
+retains it, not assuming it follows from per-layer potential means.
+
+Every even residue is uniquely s+1 for an odd s. Its singleton uses
+the SAME paired V_s at y_s^+, giving exactly Lpsi_s(y_s^+)=alpha_s.
+Thus the odd anchors eliminate all transverse constants, and the even
+anchors are genuine additional constraints, including cyclic s=n-1.
+No cut evenness or inverse-index parity is assumed. The potential constant
+ambiguity does not affect Lpsi or alpha.
+
+After elimination, E is the printed Lpsi_sigma-alpha_sigma. Summing V_s
+gives W=L(sum_s psi_s)-sum_s alpha_s, hence W=L Psi under the REQUIRED
+global condition. A system retaining that global equation, all even E
+singletons, all remaining E-prefix/E-total equations and all three W
+conditions is therefore necessary and sufficient within the275subspace.
+Conversely a potential solution reconstructs t=-alpha, pays original
+global mean and every original row. This does not assert low-energy
+feasibility or span arbitrary actual U.
+
+W1=delta2Psi telescopes on[a,b] to Psi(i,b)-Psi(i,a-1); W2=-delta1Psi
+has exactly the printed row-difference sum, and W3=-W1-W2. A constant
+Psi makes Wpointwise0, a sufficient but not proved necessary restriction.
+The source does not promote it to a consequence of the actual cell equations.
+
+3. WHOLE-PLANE ZEROS GIVE ADJACENT ZEROS IN EACH TRANSVERSE CYCLE
+For each odd s and fixed y1=i, an A_s point lies on x3=0 at j=s-i;
+the paired B_s point lies there at j=s+1-i. Hence w(i,j,0)0 for ALL
+plane points forces V_s(i,j)0 at these two adjacent j residues, including
+the wrap adjacent pair(n-1,0). The result uses only paired values, so no
+extra coexactness or W0 premise is needed for this lower-bound argument.
+This is much stronger than E-prefix/cell cancellation, and the source
+explicitly keeps that restriction separate.
+
+The omitted direct cycle edge joins the two zeros and has energy0. The
+remaining path has exactly L=n-1 edges and n-2 interior vertices, visiting
+every remaining cycle vertex once. This is not a path of length n or n-2,
+and no second nonzero boundary mass is lost.
+
+4. VECTOR BRIDGE ESTIMATE AND ALL CONSTANTS
+For z0=zL0 and d_k=z_(k+1)-z_k, total sum d0. Thus the displayed bridge
+expression for z_j has coefficients(L-j)/L on j early edges and-j/L
+on L-j later edges. Their squared coefficient sum is
+j(L-j)^2/L^2+(L-j)j^2/L^2=j(L-j)/L.
+Vector Cauchy therefore gives |z_j|^2<=j(L-j)/L times the SAME full
+path energy. Summing j1..L-1 uses sum_jj(L-j)/L=(L^2-1)/6 exactly,
+so path energy>=6/(L^2-1) times the interior squared norm. No scalar-only
+argument or vector-dimension factor is missing. The constant need not be
+optimal; the derived bound is valid also at smallest n4,L3.
+
+With L=n-1, L^2-1=n(n-2). Sum over every i and odd s; this is the full
+y2 forward-cycle energy, while the y1 strong terms are nonnegative.
+Original275 Q_H is H times these transverse vector energies and its norm
+is TWICE sum_s,y|V_s|^2. Consequently
+Q_H(w)>=3H/[n(n-2)]||w||^2=3cn/(n-2)||w||^2.
+All paired layers, wrap edges, spatial components and source coefficient
+H=cn^2 are included. For nonzero w, n/(n-2)>1 gives strictly>3c,
+and adding Q_a>=0 cannot help obtain the desired quotient<c. This
+quantitatively excludes only the whole-plane-zero shortcut in this class,
+not arbitrary coexact fields or cancellation-feasible solutions of(2).
+
+5.276A-N1: FALSE TOTAL-REDUNDANCY COMMENT AT THE ZERO CUT
+The source says: 'When tau=0 or n-1 the empty interval gives an identity
+and the corresponding total condition is redundant, not an extra constraint.'
+Taken to apply to BOTH endpoints, its total-redundancy assertion is false
+at tau0. There P(0)0 is the empty-left identity, but P(n)0 encodes the
+nonempty right block after X(0)0; it is not redundant.
+
+A counterexample even within275's class: n4,all t_s0, only psi_1(i,j)=
+f(i)q(j) nonzero, where f0=1,f1=f2=f3=0 and q1=1,q0=q2=q3=0.
+Then Psi=psi1 and W=L Psi. At i0,j0, W0vector0 because q0=q3=0;
+P_0^W(0)0 trivially. But sum_jW_0(j)=(0,-1,1), not0: the first
+component telescopes, the second is-minus(delta1f)(0)sum q=-1 and
+the third is+1. Therefore the empty-prefix and singleton conditions at
+tau0 do NOT imply the total condition, and the true long/right cell
+constraints can fail. This is an analytical explicit falsifier of the
+comment, not an executed numerical experiment.
+
+At tau=n-1 the total IS redundant under prefix+singleton, as explained
+above. Replace the comment with these distinct cases. Importantly, the
+actual displayed system(2) and Section3 potential-only system retain all
+totals, including tau0, and the proof of(5) never uses that redundancy
+claim. Therefore the main cell equivalence, constant elimination and
+energy theorem remain valid with this nonblocking source clarification.
+No source was repaired or the original sentence silently discarded here.
+
+6. ALL FINDINGS, DEPENDENCIES AND NEXT ROUTE
+Material main-result failure: none found. N1 is an actual false ancillary
+endpoint explanation, not merely a notation preference; retain the above
+falsifier and correct it before reuse. No other error found in multiplicity2,
+alpha-global condition, even anchors, Widentity, original normalization,
+path endpoints, vector coefficient sum or factor2norm. Original275's N1
+cross-reference erratum is properly preserved in its status, not silently
+rewritten. Its actual preimage/energies are explicit prior inputs; no
+unsupported Hodge assumption enters the present constrained system.
+
+This is a direct-stream route unit1 with a scoped quantitative obstruction
+to a particular sufficient ansatz, not a new full target-c kernel bound
+or actual invisible low-energy field. Failure on this restricted class
+does not prove full coexact coercivity. The stopped projection/longitudinal
+route should not be revived or its counter reset by this result. Next
+work must exploit actual cell cancellations rather than kill the whole
+plane. SameQ251 remains open; no new paper, model score or solved
+question follows. This child changed no programme state or counter.
+
+Classical path/Dirichlet and stream background is credited. The source's
+bounded primary excerpt is not a historical originality finding and this
+no-network audit did not inspect that external document. No priority or
+broader significance certification. PR29=20/41,TermSource0,physicalgap/
+continuum open. Reported author-root model/user-high setting is not
+independent evidence for this child reviewer's backend or independence.
+
+7. ACTUAL CONTEXT AND RETENTION
+Same involved Codex/OpenAI child with inherited author/programme/prior
+audit context, exact served backend/version/effort unavailable and not
+inferred. No blind/independent/human review, grade or PDF assessment.
+Whole276read afresh and all mathematics above checked analytically.
+Source275was read/audited in the preceding same-session task; needed
+coordinate/energy assumptions and status erratum reinspected, complete
+original report hash-bound and retained, not inherited276acceptance.
+No inbound message during audit, no new agent/model contacted. Full
+inherited-chat export unavailable and not fabricated.
+
+No mathematical executable/numerics/Lean/Lake/oracle, compiler,test,
+runtime, network/service or model call used. Only Git/file/hash metadata
+and this exclusive packet written. No source/branch/state/other report/
+chat/agent/grade/automation changed. No new clone/runtime cleanup debt.
+Metadata writer uses explicit checks, not Python assert, and is not a
+scientific verifier. Exact original sources/status/report, assignment,
+actual context and complete findings retained with raw representations.
+The self-excluding manifest gives every artifact size/SHA256, with its
+own digest returned separately. No old failure/objection was overwritten.
