@@ -1,0 +1,14 @@
+{
+  "full_report_read": true,
+  "accepted_analytical": true,
+  "verdict": "Accept282B finite LOG obstruction, cost and actual-coexact KERNEL; target-c and external priority open",
+  "source_sha": "36f5f46028cedf50880da08d0368cb8644ebc1a8",
+  "source_sha256": "c4ba4f8658a98ccfdfeff61a746cc0d459ad172d711b0ea2e6ba70173a572c6d",
+  "report_sha256": "62dfd43ebae0ae1e01fe6154c8483508099b8158553f5f50e0883982f5de1d19",
+  "prior_N1_preserved_and_corrected": true,
+  "full_A_B_delta_read": true,
+  "no_inbound_during_B_audit": true,
+  "formal_verification": false,
+  "model_grade": false,
+  "utc": "2026-11-12T14:24:10.5193549Z"
+}

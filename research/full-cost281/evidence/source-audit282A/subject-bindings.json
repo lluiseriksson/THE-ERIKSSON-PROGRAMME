@@ -1,0 +1,93 @@
+[
+  {
+    "path": "subjects/dual-response282A.checkout.txt",
+    "origin": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\research\\full-cost281\\dual-response282A.txt",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 15642,
+    "sha256": "e1e9fd75ea4cfe448e65e781290e33475426abc5d1d073f807e0f870e9d0d4c4"
+  },
+  {
+    "path": "subjects/dual-response282A.git.txt",
+    "origin": "14039070bf5cd852ab3be5e88e2dd20e75680ef8:research/full-cost281/dual-response282A.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 15642,
+    "sha256": "e1e9fd75ea4cfe448e65e781290e33475426abc5d1d073f807e0f870e9d0d4c4"
+  },
+  {
+    "path": "subjects/primary-reading282.txt",
+    "origin": "14039070bf5cd852ab3be5e88e2dd20e75680ef8:research/full-cost281/primary-reading282.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 1176,
+    "sha256": "40719f13ee0ea6c9e4f6f0e9d9d1b5c73e139daf3901acb65010366235aa7bf9"
+  },
+  {
+    "path": "subjects/full-coexact-spectrum279A.txt",
+    "origin": "14039070bf5cd852ab3be5e88e2dd20e75680ef8:papers/flat-coarse-rank/research-consolidation/full-spectrum279/full-coexact-spectrum279A.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 12104,
+    "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+  },
+  {
+    "path": "subjects/cancellation-range280A.txt",
+    "origin": "14039070bf5cd852ab3be5e88e2dd20e75680ef8:papers/flat-coarse-rank/research-consolidation/full-spectrum279/cancellation-range280A.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 10920,
+    "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36"
+  },
+  {
+    "path": "subjects/nonlinear267A-logarithmic-bound.txt",
+    "origin": "14039070bf5cd852ab3be5e88e2dd20e75680ef8:papers/flat-coarse-rank/research-consolidation/nonlinear266/nonlinear267A-logarithmic-bound.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 9821,
+    "sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577"
+  },
+  {
+    "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "origin": "14039070bf5cd852ab3be5e88e2dd20e75680ef8:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 13573,
+    "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+  },
+  {
+    "path": "subjects/CLAUDE.md",
+    "origin": "14039070bf5cd852ab3be5e88e2dd20e75680ef8:CLAUDE.md",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 23996,
+    "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+  },
+  {
+    "path": "initial-status.txt",
+    "origin": "actual initial Git status, not a no-concurrent-untracked-work assertion",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 185,
+    "sha256": "3d824b239dfa261b549a02c6e95e6e49edba7d78e0f183d75233c8afc284cc35"
+  },
+  {
+    "path": "assignment.txt",
+    "origin": "/root exact task payload",
+    "representation": "UTF-8 LF transcription",
+    "bytes": 1280,
+    "sha256": "00daaf2d21f41dbd7cebd510b0599a8f8aa586779de356a87ac2b55801af9d22"
+  },
+  {
+    "path": "context.txt",
+    "origin": "actual role/read/limits disclosure",
+    "representation": "UTF-8 LF",
+    "bytes": 1995,
+    "sha256": "46882fa293d71634cd46a1ece243056aa32025b1fce5b738189baea6a2644103"
+  },
+  {
+    "path": "full-report.txt",
+    "origin": "analytical proof checks and N1 objection",
+    "representation": "UTF-8 LF",
+    "bytes": 12468,
+    "sha256": "a67b4c4375973a21f9cd1c96810eb64263d82000ad20d5d84b91d84bde350a36"
+  },
+  {
+    "path": "source-stability.json",
+    "origin": "actual metadata and channel observations",
+    "representation": "UTF-8 LF JSON",
+    "bytes": 444,
+    "sha256": "282b78f4efb2992761741d20fc25f3c78e532fc59fe29f3676cdf72529de23f0"
+  }
+]

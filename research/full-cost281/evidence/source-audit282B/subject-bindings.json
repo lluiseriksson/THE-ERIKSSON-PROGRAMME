@@ -1,0 +1,72 @@
+[
+  {
+    "path": "subjects/00-dual-response282B.txt",
+    "origin": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\research\\full-cost281\\dual-response282B.txt",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 17058,
+    "sha256": "c4ba4f8658a98ccfdfeff61a746cc0d459ad172d711b0ea2e6ba70173a572c6d"
+  },
+  {
+    "path": "subjects/01-A-to-B-full-delta.diff",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-282\\A-to-B-full-delta.diff",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 3790,
+    "sha256": "7fddebc7ba21049d16629297c97eebca7fd49863e19bcab11b6a51404050c433"
+  },
+  {
+    "path": "subjects/02-full-report.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-282\\source-audit282A\\full-report.txt",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 12468,
+    "sha256": "a67b4c4375973a21f9cd1c96810eb64263d82000ad20d5d84b91d84bde350a36"
+  },
+  {
+    "path": "subjects/03-context.txt",
+    "origin": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-282\\source-audit282A\\context.txt",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 1995,
+    "sha256": "46882fa293d71634cd46a1ece243056aa32025b1fce5b738189baea6a2644103"
+  },
+  {
+    "path": "subjects/04-OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "origin": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 13831,
+    "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+  },
+  {
+    "path": "subjects/05-CLAUDE.md",
+    "origin": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\CLAUDE.md",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 24408,
+    "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+  },
+  {
+    "path": "subjects/06-full-coexact-spectrum279A.txt",
+    "origin": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\flat-coarse-rank\\research-consolidation\\full-spectrum279\\full-coexact-spectrum279A.txt",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 12104,
+    "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+  },
+  {
+    "path": "subjects/07-cancellation-range280A.txt",
+    "origin": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\flat-coarse-rank\\research-consolidation\\full-spectrum279\\cancellation-range280A.txt",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 10920,
+    "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36"
+  },
+  {
+    "path": "subjects/08-nonlinear267A-logarithmic-bound.txt",
+    "origin": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\flat-coarse-rank\\research-consolidation\\nonlinear266\\nonlinear267A-logarithmic-bound.txt",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 9821,
+    "sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577"
+  },
+  {
+    "path": "subjects/dual-response282B.git.txt",
+    "origin": "36f5f46028cedf50880da08d0368cb8644ebc1a8:research/full-cost281/dual-response282B.txt",
+    "representation": "exact Git blob bytes; no normalization",
+    "bytes": 17058,
+    "sha256": "c4ba4f8658a98ccfdfeff61a746cc0d459ad172d711b0ea2e6ba70173a572c6d"
+  }
+]

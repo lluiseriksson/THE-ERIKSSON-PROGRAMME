@@ -1,0 +1,86 @@
+{
+  "algorithm": "SHA256 raw bytes, no normalization",
+  "self_excluded": "raw-hashmanifest.json",
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1262,
+      "sha256": "4bcfc1d1c8c0469bd05b61a740317fbb164573f19298a7737f0fea72464b7d7f"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 529,
+      "sha256": "b2be5db9fa30fcf274d2ff7a3946ba221d13e80b9731d8d246aede4e7b4c2347"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 8811,
+      "sha256": "62dfd43ebae0ae1e01fe6154c8483508099b8158553f5f50e0883982f5de1d19"
+    },
+    {
+      "path": "retention-writer.py",
+      "bytes": 13831,
+      "sha256": "8a7caa356e65f79bdaaa98e26e1845966fe1645f95a520b4c6fe334b224afb88"
+    },
+    {
+      "path": "source-stability.json",
+      "bytes": 376,
+      "sha256": "d96798a4e2c7f8eb96e20f3f29c4a3ae9d8ec7c4d408738f8f17cf49da0b813a"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 3520,
+      "sha256": "0f09333a66ff9ddcb51d2e1bf9de065f4a7b35f3fef0f6ae7f90b4d353911d08"
+    },
+    {
+      "path": "subjects\\00-dual-response282B.txt",
+      "bytes": 17058,
+      "sha256": "c4ba4f8658a98ccfdfeff61a746cc0d459ad172d711b0ea2e6ba70173a572c6d"
+    },
+    {
+      "path": "subjects\\01-A-to-B-full-delta.diff",
+      "bytes": 3790,
+      "sha256": "7fddebc7ba21049d16629297c97eebca7fd49863e19bcab11b6a51404050c433"
+    },
+    {
+      "path": "subjects\\02-full-report.txt",
+      "bytes": 12468,
+      "sha256": "a67b4c4375973a21f9cd1c96810eb64263d82000ad20d5d84b91d84bde350a36"
+    },
+    {
+      "path": "subjects\\03-context.txt",
+      "bytes": 1995,
+      "sha256": "46882fa293d71634cd46a1ece243056aa32025b1fce5b738189baea6a2644103"
+    },
+    {
+      "path": "subjects\\04-OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "subjects\\05-CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects\\06-full-coexact-spectrum279A.txt",
+      "bytes": 12104,
+      "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+    },
+    {
+      "path": "subjects\\07-cancellation-range280A.txt",
+      "bytes": 10920,
+      "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36"
+    },
+    {
+      "path": "subjects\\08-nonlinear267A-logarithmic-bound.txt",
+      "bytes": 9821,
+      "sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577"
+    },
+    {
+      "path": "subjects\\dual-response282B.git.txt",
+      "bytes": 17058,
+      "sha256": "c4ba4f8658a98ccfdfeff61a746cc0d459ad172d711b0ea2e6ba70173a572c6d"
+    }
+  ]
+}

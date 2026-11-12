@@ -1,0 +1,44 @@
+282 analytical result and limits
+Source subject B:36f5f46028cedf50880da08d0368cb8644ebc1a8.
+Raw proof B:c4ba4f8658a98ccfdfeff61a746cc0d459ad172d711b0ea2e6ba70173a572c6d.
+Original A remains at14039070bf5cd852ab3be5e88e2dd20e75680ef8,
+raw hash e1e9fd75ea4cfe448e65e781290e33475426abc5d1d073f807e0f870e9d0d4c4.
+Author/fabrication role: involved Codex/OpenAI production260 agent, with
+parent mathematical suggestions explicitly retained in construction context.
+Exact serving backend/version not established. Separate audit and parent
+decision, with complete objections/context, are retained under evidencia-282.
+This status note does not replace their verdict or claim provider independence.
+
+For each original channel, even n>=4, H=cn^2,a=c/48,c>0 and any cut
+whose i+tau_i permutes residues, the genuine singleton shifted response obeys
+
+ h_(n/2)/(24*pi^2*c*n^5) <= ||M_T||
+       <= ((48/13)*h_(n/2)+1/(6*n^2-1))/(c*n^5).
+
+The lower bound uses parity-balanced trace transfer and one actual coexact
+polarization per transverse pair. The upper bound uses exact fibre Parseval
+and a paid finite harmonic sum. Hence a uniform scalar bound on all singleton
+dual vectors at the c^-1*n^-5 scale is false. The same scalar bound on the
+entire original row response is false by principal compression.
+
+This closes that specific overstrong estimate, including for the quadratic
+dyadic cut. It does not close Q251, prove logarithmic necessity for the
+original observation kernel, or rule out restricted useful-dual estimates.
+The paid c/K_n low-cancellation bound yields a kernel coefficient better
+than267 on the common actual-coexact domain, but retains logarithmic loss.
+The contrary comparison in282A was caught by audit objection N1;282B
+preserves A and its report and explicitly proves the corrected consequence.
+It remains inadequate for target c. No hypothesis is declared proved
+merely by introducing a Gram matrix or lifting structure.
+
+The next mechanism must retain useful low-data geometry or exploit correlated
+original singleton/prefix coefficients. Neither a new size sweep nor another
+blanket response-norm hypothesis is warranted. Keep this result grouped with
+279-281 for later consolidation; it is not an isolated corollary paper.
+
+Verification here is analytical source reading and a separate involved audit.
+No Lean, Lake, oracle, numerical execution or Colab allocation in282.
+Classical logarithmic Green/potential-kernel behavior is credited in the
+bounded primary comparison. Exact model-specific external priority remains
+unestablished. No PDF, model grade, peer review, acceptance or publication.
+PR29 remains20/41;TermSource=0; physical Yang-Mills gap and continuum open.

@@ -1,0 +1,309 @@
+Q251 /282B: A PAID LOGARITHMIC OBSTRUCTION FOR THE FULL SINGLETON DUALSPACE
+Analytical fabrication, 12 November 2026. Source base
+42eb3dc081de06a5a3d6344317472d3f7bcc6471.
+Bounded research note for separate exact-source review; NOT self-accepted.
+No executable mathematics, numerical test, runtime, formal proof, grade,
+paper or publication. No external originality or independent-review claim.
+Version B preserves282A and its full audit. Required objection N1 corrected:
+the proved cost estimate does improve267's numerical coercivity coefficient,
+although it neither changes logarithmic order nor reaches the target c.
+Section6 now proves this consequence; no LOG constant or hypothesis changed.
+
+1. PRECISE QUESTION, MODEL, AND NEGATIVE RESULT
+
+Retain279/280's original actual coexact space, original source weights and
+unrotated observations. Let n>=4 be even, c>0, H=cn^2, a=c/48, and work first
+in ONE original channel. Its scalar weight is H on one source parity and
+a on the other. Spatial components are not rotated. The other channel is
+handled by precisely the same proof with the two parities exchanged.
+The real counting-norm coexact space U=im d1* has dimension2(n^3-1).
+A is the self-adjoint operator of the original full quadratic form restricted
+to U, not an ambient-operator invariance assertion. By279, the entire spectral
+space L below c has dimension n-2 in this channel. Put F=U orthogonal to L,
+B=A_F-cI>0 and R=P_F B^(-1)P_F on ambient vector fields, extended by zero
+off F. From279, B>=13c/3 on F. Zero Fourier harmonics remain absent.
+
+Let tau_i in Z_n be any cut for which f(i)=i+tau_i mod n is a permutation,
+and put x_i=(i,tau_i,0). Select the GENUINE singleton
+cell rows T, separately in all three original spatial components:
+                  (Tu)_i=n^(-3/2)u(x_i).
+Thus T is a row submap of the full original C; it does not change C.
+The singleton shifted high response is
+             M_T=T_F B^(-1)T_F*=T R T*.
+All operator norms below use the ordinary counting norm on the 3n original
+singleton coefficients. Define h_N=sum_(j=1)^N 1/j, N=n/2, and
+                K_n=(48/13)h_N+1/(6n^2-1).
+
+The concrete result proved here is the TWO-SIDED finite bound
+
+ h_N/(24 pi^2 c n^5) <= ||M_T|| <= K_n/(c n^5).           (LOG)
+
+Consequently n^5 c ||M_T|| grows at least logarithmically along these even
+sizes. There is no n-independent constant K satisfying
+                M_T <= K/(c n^5) I                      (UNIFORM)
+on the entire singleton dualspace. This is a rigorous obstruction to that
+specific uniform-response strategy, with all sums and multiplicities paid.
+It is not a proof that Q251 fails, not a lower bound for the full original
+cancellation cost, and not a logarithmic obstruction restricted to T_L L.
+
+Mechanism: the singleton permutation supplies an exact transverse-fibre
+Parseval identity for the upper bound; the parity-balanced singleton set and
+one genuine cheap coexact polarization per non-diagonal q-pair supply the
+trace lower bound. Classical Fourier/trace arguments are not claimed as new.
+This pays a quantitative obstruction beyond merely introducing a Schur
+matrix. The already proved267 logarithmic mechanism remains credited.
+Section6 improves its printed kernel coefficient on the common domain,
+but does not change logarithmic order. That improvement alone is not the
+substantive obstruction result or a separate paper-sized contribution.
+
+2. COORDINATES AND THE EXACT SINGLETON FOURIER-FIBRE IDENTITY
+
+Use unitary Fourier convention u(x)=n^(-3/2)sum_k uhat(k)e^(2pi i k.x/n).
+Write k=(t+r,t+s,t), with r,s,t in Z_n; this is a bijection of frequencies.
+Let q=(n/2,n/2,n/2). Adding q changes t by n/2 and leaves (r,s) unchanged.
+Consequently every fixed (r,s) fibre consists of exactly n/2 unordered
+q-pairs. The diagonal fibres are EXACTLY r=s=0, not all r=s.
+
+For singleton coefficient vectors alpha_i in C^3, g=T*alpha is supported at
+x_i with value n^(-3/2)alpha_i. Therefore
+ ghat(t+r,t+s,t)
+   = n^(-3)sum_i alpha_i
+           exp[-2pi i{t(i+tau_i)+r i+s tau_i}/n].         (DATA)
+No n^3 or sqrt(n^3) factor has been dropped: one n^(-3/2) comes from T*
+and the other from the unitary forward transform.
+
+The permutation f is the only cut assumption in the estimates. The active
+nonlinear family tau_i=2i^2 mod n, n=2^m>=4, satisfies it: equality f(i)=f(j)
+gives (i-j)(1+2(i+j))=0 mod2^m; the second factor is odd and hence invertible,
+so i=j. For each fixed r,s, Fourier orthogonality in t gives EXACTLY
+
+ sum_t |ghat(t+r,t+s,t)|^2=n^(-5)sum_i|alpha_i|^2.       (FIBRE)
+
+This holds componentwise and hence for the full three-component vector.
+It neither asserts that g is coexact nor assumes projection preserves C.
+The coexact/spectral projections are applied only through R in Section3.
+
+3. ACTUAL RESPONSE UPPER BOUND, INCLUDING ALL POLARIZATIONS
+
+Put
+ delta(r,s)=3-|1+exp(2pi i r/n)+exp(2pi i s/n)|.
+It is zero exactly at (r,s)=(0,0). It does not depend on t.
+279's full actual coexact block calculation proves that the smallest
+strong-only eigenvalue on each non-diagonal q-pair is H delta(r,s),
+attained in a genuine transverse polarization. Every other polarization
+is at least this large. Adding the positive weak part cannot decrease it.
+Every non-diagonal block lies entirely in F, and279 also proves
+                  H delta(r,s)>=16c/3.
+It follows, on each entire non-diagonal coexact block, that
+ (A-cI)^(-1) <= 1/[H delta(r,s)-c] I
+             <=16/[13 c n^2 delta(r,s)] I.             (PAIR-UP)
+The inequality follows from c/(H delta)<=3/16, not an assumed Green bound.
+Ambient data projected to its actual block can only decrease its norm.
+
+On the diagonal fibre F contains only the positive-weight high polarizations
+(plus the exceptional q plane; the zero plane is absent). By279 their
+eigenvalues are at least6H. Thus the diagonal contribution to <g,Rg> is
+at most (6cn^2-c)^(-1)sum_t|ghat(t,t,t)|^2.
+Using(FIBRE) on every fibre, with no requirement that alpha arise from L,
+
+ <alpha,M_T alpha> <= n^(-5)||alpha||^2/c
+       {16/(13n^2) sum_((r,s)!=0)1/delta(r,s)
+                                      +1/(6n^2-1)}.    (SUM-UP)
+
+The sum is finite and will now be paid rather than left as a hypothesis.
+For angles theta_r,theta_s, direct expansion gives
+ 9-|1+e^(i theta_r)+e^(i theta_s)|^2
+   =4{sin^2(pi r/n)+sin^2(pi s/n)+sin^2(pi(r-s)/n)}.
+Divide by3+|1+e^(i theta_r)+e^(i theta_s)|<=6 to obtain
+ delta(r,s)>=(2/3){sin^2(pi r/n)+sin^2(pi s/n)}.
+For centered distances R0=min(r,n-r), S0=min(s,n-s), the elementary chord
+sin(pi R0/n)>=2R0/n on0<=R0<=n/2 yields
+           delta(r,s)>=8(R0^2+S0^2)/(3n^2).
+
+Represent each residue uniquely by an integer in [-N,N-1], N=n/2.
+The number of represented pairs with max(|r|,|s|)=j is at most8j. This
+bound includes the truncated boundary j=N; no boundary duplication occurs.
+On that shell r^2+s^2>=j^2. Therefore
+ sum_((r,s)!=0)1/delta(r,s)
+   <=(3n^2/8)sum_(j=1)^N(8j)/j^2
+   =3n^2 h_N.                                         (LATTICE-UP)
+Substitution into(SUM-UP) proves the upper half of(LOG).
+
+4. EXACT TRACE TRANSFER FROM PHYSICAL SINGLETONS
+
+The original forward curl, its actual image, and the original weighted form
+commute with translations whose coordinate sum is even. Their spectral
+projections, including P_F, therefore commute with these translations, as
+does R. The even-sum translation group is transitive on each vertex parity.
+Thus tr_C3 R(x,x) has just two possible values d_even,d_odd, without any
+claim that individual spatial polarizations are scalar.
+
+Since n is even, the parity of x_i is the parity of i+tau_i, equivalently
+the parity of f(i) as a residue mod n. Since f is a permutation, exactly
+n/2 singleton points have each parity. No even-valued-cut assumption is
+needed. Each vertex parity has n^3/2 vertices.
+Using the actual n^(-3/2) normalization of EACH singleton row gives
+
+ tr(M_T)=n^(-3)sum_i tr_C3 R(x_i,x_i)
+        =n^(-3)(n/2)(d_even+d_odd)
+        =n^(-5) tr_F(B^(-1)).                          (TRACE)
+
+Parity balance alone suffices for this trace identity; here it is supplied
+by the same permutation assumption as(FIBRE). Complexification has the same trace/eigenvalues as the
+underlying real self-adjoint operator, so this is also a real statement.
+In particular the large response direction obtained below can be chosen
+real. No complex vector is silently advertised as a physical real field.
+
+5. A CHEAP TRUE POLARIZATION ON EVERY NONDIAGONAL PAIR
+
+For each (r,s)!=0 and each of its n/2 q-pairs,279 supplies an ACTUAL coexact
+unit vector with strong-only energy H delta(r,s). The weak-only part obeys
+       Q_weak(v)<=a sum_(x,j,component)|Delta_j v|^2
+                  <=12a ||v||^2=c/4 ||v||^2.
+This uses the full counting-gradient Fourier bound sum_j|g_j|^2<=12;
+there is no unknown comparison constant. Rayleigh's principle on this
+same actual block therefore gives a full eigenvalue lambda satisfying
+           lambda<=cn^2 delta(r,s)+c/4.
+The entire non-diagonal block belongs to F, so lambda-c>0 by279. Hence
+ 1/(lambda-c)>=1/[cn^2 delta(r,s)] .                    (PAIR-LOW)
+Indeed lambda-c<=cn^2 delta-3c/4<cn^2 delta; positivity justifies taking
+reciprocals. Only ONE eigenvalue per q-pair is used. The second transverse
+polarization and other eigenvalues are not double-counted or discarded
+from the actual operator; their positive trace contributions are simply
+omitted in this lower estimate. The n choices of t make exactly n/2
+distinct q-pairs for each (r,s), as established in Section2. Thus
+
+ tr_F(B^(-1)) >=1/(2cn)sum_((r,s)!=0)1/delta(r,s).       (SUM-LOW)
+
+For an explicit lower sum, retain just the DISTINCT residue pairs
+               r=j, 1<=s<=j, 1<=j<=N.
+None is (0,0). The endpoint j=N is used once as residue n/2, with no
+negative endpoint copy. Since modulus is at least real part,
+ delta(r,s)<=2-cos(2pi r/n)-cos(2pi s/n)
+           <=2pi^2(r^2+s^2)/n^2
+           <=4pi^2 j^2/n^2.
+The elementary inequality1-cos x<=x^2/2 is valid on these whole angles;
+no small-angle approximation is assumed. There are exactly j choices of s
+on the retained row r=j. Consequently
+
+ sum_((r,s)!=0)1/delta(r,s)
+    >=sum_(j=1)^N j*n^2/(4pi^2 j^2)
+    =n^2 h_N/(4pi^2).
+Equations(SUM-LOW),(TRACE) give
+       tr_F(B^(-1))>=n h_N/(8pi^2 c),
+       tr(M_T)>=h_N/(8pi^2 c n^4).
+M_T is positive semidefinite on a space of dimension3n. Its largest
+eigenvalue is at least its trace divided by3n, proving
+             ||M_T||>=h_N/(24pi^2 c n^5).
+This is the lower half of(LOG), with all true-block multiplicities paid.
+
+Since h_N>=integral_1^(N+1) dx/x=log(N+1), the lower bound diverges after
+scaling by c n^5. For any fixed proposed constant K in(UNIFORM), all
+even n with log(n/2+1)>24pi^2 K contradict it. In particular this holds along
+the active dyadic quadratic family. This is a finite explicit
+inequality, not an inference from the six observed281 values or a numerical
+extrapolation. The constants are not claimed optimal.
+
+6. WHAT THESE SAME SINGLETON TESTS DO PAY FOR THE TRUE FULL COST
+
+For l in L,280's genuine singleton frame is
+                  ||Tl||^2=n^(-5)||l||^2.
+Embed alpha=Tl into the full original rowspace by putting zero on every
+non-singleton row. With y=C_L l, the real pairing <alpha,y>=||Tl||^2;
+its high-response quadratic form for the FULL original M is exactly
+<Tl,M_T Tl>. By(LOG)'s upper bound,
+          <Tl,M_T Tl><=K_n/(c n^10)||l||^2.
+The exact280 dual variational formula on the proved dependent-row quotient
+allows any scalar multiple t alpha. Optimizing
+             2t n^(-5)||l||^2
+                   -t^2 K_n/(c n^10)||l||^2
+at t=c n^5/K_n proves the paid estimate
+
+   <C_L l,Mdagger C_L l> >=(c/K_n)||l||^2.              (COST-LOW)
+
+For l=0 this is immediate; for l!=0 no inverse or nonzero pairing is
+assumed without the explicit singleton frame. This is an actual shifted
+high-cancellation cost estimate, not a parameterized Gram assumption.
+Its logarithmic deterioration is inadequate for the desired sign against
+D_L=cI-A_L, where7c/8<=D_L<c. In particular this proof does not give the
+target-c positivity. Nevertheless it improves267's printed numerical kernel
+coefficient, as follows;282A's contrary comparison was incorrect (audit N1).
+For any actual invisible w=l+f, orthogonality and the shifted decomposition give
+
+ Q(w)=<l,A_L l>+<f,Bf>+c||f||^2
+     >=(c/K_n)||l||^2+c||f||^2
+     >=(c/K_n)||w||^2.                                 (KERNEL)
+
+Here A_L is nonnegative, the high part f cancels C_L l and so pays COST-LOW,
+and K_n>1 because n>=4 and h_(n/2)>=3/2. This is on actual U, whereas267's
+ambient-field estimate has a larger domain; no new ambient bound is claimed.
+Put L0=1+log n. Since h_(n/2)<=1+log(n/2)<=L0 and
+1/(6n^2-1)<=1/95<(4/13)L0, we have K_n<4L0<5L0.
+Thus c/K_n strictly improves267's coefficient c/(5L0) wherever the stated
+assumptions overlap, and implies the simpler bound Q(w)>=c/(4L0)||w||^2.
+Both original channels obey the proof separately, so summing gives the same
+coefficient on their original direct sum. This remains logarithmically
+degraded; it is neither target c, a sharp constant nor a claim of historical
+originality. It is not a new paper-sized result by itself. Failure to pay
+the target-c sign remains explicitly retained.
+
+The lower half of(LOG) shows that replacing K_n by an n-uniform bound on
+the ENTIRE singleton dualspace cannot repair that proof. This is the new
+concrete obstruction. It does NOT show that a refined upper bound only
+for alpha in T_L L must deteriorate. The response-maximizing singleton
+directions may have little or no useful pairing with a given C_L l.
+Moreover let J embed singleton coefficients isometrically into the full
+original rowspace by putting zero on every other genuine row. Then
+                 M_T=J* M J,  hence ||M||>=||M_T||.
+The proof is direct: T=J*C, so T_F B^(-1)T_F*=J*M J; testing a unit vector
+J alpha in the full rowspace bounds the compression norm by ||M||.
+Thus a scalar n-uniform bound M<=K/(c n^5)I on the ENTIRE original rowspace
+also fails. Simply adding prefix rows cannot repair that blanket norm bound.
+Nor does it exclude optimizing additional genuine prefix/long-cell rows,
+whose coefficients can reduce the response while preserving the low pairing.
+The full C cancellation cost may therefore behave better than the uniform
+singleton-response norm. No claim of a nonlinear-cut counterexample or
+logarithmic necessity for Q251 follows from(LOG).
+
+7. BOUNDED DISPOSITION, FALSIFIER, AND WHAT REMAINS UNPAID
+
+Candidate substantive outcome for separate review: a finite two-sided
+logarithmic estimate for the actual unrestricted singleton high-response
+operator, and consequently a rigorous failure of the n-uniform operator
+bound(UNIFORM). This is distinct from merely rewriting280's criterion or
+running another size/channel sweep. No assertion of acceptance is made here.
+
+Hypotheses are exactly the original model, even n>=4, c>0 and a cut whose
+f(i)=i+tau_i is a permutation, as specified in Section1. The active dyadic
+quadratic cut is an explicit included subfamily, not an extra hypothesis.
+No independent coexact lifting, full row rank,
+Gram bound, projector-preserved observation, ambient invariance, numerical
+rank, asymptotic sampling conjecture or extra energy comparison was assumed.
+The proof uses279's paid spectral blocks/gaps and280's paid frame/range.
+An order-four translation symmetry may further split the data, but symmetry
+alone is not counted as this result and is not needed for any estimate above.
+
+Falsifiers: an error in the singleton Fourier normalization, a failure of
+the exact permutation fibre identity, an omitted/duplicated transverse
+q-pair, a false actual strong eigenvector bound or weak form bound, or
+a failure of parity covariance of the restricted spectral resolvent would
+invalidate the corresponding estimate. The separate auditor should check
+the full source and the n/2 pair count, not just its summary or constants.
+
+Remaining concrete quantitative problem: prove a geometry-aware sharp response
+estimate on the useful singleton subspace T_L L, or construct explicit full original
+prefix/singleton dual combinations with sufficiently small response and
+controlled low pairing. The trace obstruction warns against substituting
+a uniform scalar bound on all raw singleton OR full original row coefficients.
+Such a restricted or
+augmented bound must be DERIVED; introducing it as another hypothesis or
+restating a Schur complement is not further progress. No additional numeric
+size sweep is proposed. If the useful-subspace/prefix mechanism fails within
+the programme's bounded-unit rule, retain the actual failed estimate and
+name the missing quantitative lemma or change mechanism.
+
+This note remains grouped with279-281. Q251 stays open. Classical finite
+Fourier/trace/resolvent tools and prior267/279/280 content are credited;
+external originality is unestablished. No physical Yang-Mills spectral gap,
+continuum result, new model grade, publication, git/state/automation change
+or local mathematical execution occurred. PR29 stays20/41;TermSource=0.

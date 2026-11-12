@@ -1,0 +1,187 @@
+Q251 /280A: HIGH-MODE RANGE EQUALITY FOR THE ORIGINAL CELL OBSERVATIONS
+Analytical candidate,12 November2026; source base bf405d2df330d2e34c4773b5ebc3bd8fdd8e8979.
+No mathematical executable, formal verification, runtime, paper or grade.
+
+1. ORIGINAL MODEL AND THE CLAIM THAT IS ACTUALLY PAID
+
+Let n>=4 be even and retain279A's original counting-norm U=(im d1*)^2,
+forward curl d1, checkerboard SOURCE weights H=cn^2,a=c/48,c>0 and full
+restricted-form operator A_U, so Q(u)=<u,A_U u>. All spaces here are real;
+unitary complex Fourier coordinates are used only to prove real identities.
+At each x1=i take any tau_i in{0,...,n-1}, nonempty x2 intervals
+[0,tau_i-1],{tau_i},[tau_i+1,n-1], and x3 cells{0},[1,n-1]. C is the FULL
+original channel/spatial-component map with each cell sum normalized by
+(n^3 |cell|)^(-1/2). No permutation, even-cut or motion assumption is needed
+until Section6. These rows partition each original component's vertices.
+
+Let N be the actual coexact fields supported only at diagonal frequencies
+k=(t,t,t),t!=0. They are precisely vector profiles u(x)=v(x1+x2+x3)
+with componentwise mean zero and spatial sum v1+v2+v3=0, separately in
+each channel, by279's explicit curl preimage. Thus dim_R N=4(n-1).
+Put O=U orthogonal-complement N. In279's notation L is the ENTIRE spectral
+space below c, dim L=2(n-2), L subset N, and F=U orthogonal-complement L.
+The true full-form high bound is A_F>=16c/3, and O subset F. Write C_N,
+C_O,C_L,C_F for actual restrictions, never for changed observation rows.
+
+The new geometric conclusions to be proved are
+              range C_O = range(C|U) = range C_F,           (RANGE)
+and the explicit dual estimate, for every real row vector alpha,
+ ||C_N*alpha||^2 <= K_n ||C_O*alpha||^2,
+              K_n = n^5/[16(n-3)].                         (ANGLE)
+As a consequence there is a linear map R:N->O with
+         C_O R=-C_N,             ||R||^2<=K_n.             (LIFT)
+In particular EVERY prescribed low spectral part l has an exactly invisible
+actual extension l+R l. This proves feasibility using the real cell geometry;
+it does not assume surjectivity/full row rank or transfer it into a structure.
+The lifting bound is polynomial and far too large to prove below-c energy.
+
+2. THE LONG THIRD-COORDINATE CELL FORCES THE ANNIHILATOR
+
+Let C_amb denote the same map on all ambient vector fields, P_U the counting
+orthogonal projection onto U, and g=C_amb*alpha. Because the actual third-
+coordinate partition is{0},[1,n-1], g(i,j,k) is independent of k for
+1<=k<=n-1 at each fixed i,j. Normalization only changes its constant value.
+All three components and both channels have this property, regardless of
+how their x2 cut intervals change with i. Since U=im d1*, elementary
+adjoint orthogonality gives U^perp=ker d1. Therefore
+                     d1 g=d1 P_U g.                       (CURL)
+
+Each component of d1 g is independent of k=x3 on1<=k<=n-2:
+Delta1 and Delta2 differentiate two values from the same long x3 interval;
+Delta3 g vanishes there. Consequently
+           Delta3 d1 g=0 on the slab 1<=x3<=n-3.          (SLAB)
+This is why n>=4 is required. It is a fact about the original adjoint rows,
+not an assertion that P_U preserves cell means or long-cell constancy.
+
+First suppose C_O*alpha=0. Then v=P_U g lies in N. Each component of
+d1 v is a function of s=x1+x2+x3 alone. Independence of x3 at1 and2 in
+(CURL) says its values at i+j+1 and i+j+2 are equal for every i,j. All
+residues occur as i+j+1, so that component is constant. Its total sum is0
+because it is a curl of periodic differences. Hence d1 v=0. But v lies
+in U and ker d1=U^perp, so v=0. Thus ker C_O*=ker(C|U)*. Orthogonal
+complements in the finite-dimensional row space prove the first equality
+in(RANGE); O subset F subset U proves the second. This includes dependent
+rows and any globally zero row combinations. No inverse has been assumed.
+
+3. PAYING A QUANTITATIVE LIFT, RATHER THAN JUST RANGE NOTATION
+
+For general alpha decompose v=P_U g=d+o in N direct-sum O. On the slab
+of(SLAB), Delta3 d1 d=-Delta3 d1 o. The left side depends only on s, so
+its squared counting norm is equally distributed among the n x3 slices.
+It follows exactly that
+ ||Delta3 d1 d||^2
+   =n/(n-3)||Delta3 d1 d||^2_slab
+   <=n/(n-3)||Delta3 d1 o||^2
+   <=48n/(n-3)||o||^2.                                   (UPPER)
+Indeed |g3|^2<=4 and the forward-curl squared symbol norm is at most
+D=sum_j|gj|^2<=12 (unordered j<l counting forms, no factor two).
+
+For d at a nonzero diagonal frequency put z=exp(2pi i t/n), gj=z-1.
+Since d is actual coexact, its coefficient is perpendicular to(1,1,1).
+The curl identity gives ||d1 dhat||^2=3|z-1|^2||dhat||^2; the extra
+Delta3 factor gives3|z-1|^4||dhat||^2. For all t!=0,
+ |z-1|^2>=4 sin^2(pi/n)>=16/n^2.
+Parseval therefore yields
+              ||Delta3 d1 d||^2>=768/n^4 ||d||^2.         (LOWER)
+Combining(UPPER),(LOWER) gives(ANGLE) with the printed K_n, since
+d=C_N*alpha,o=C_O*alpha. The Nyquist diagonal t=n/2 is included.
+
+For completeness, the standard finite factorization step is explicit.
+Define T on range C_O* by T(C_O*alpha)=C_N*alpha. Inequality(ANGLE)
+makes T well-defined and bounds its norm by sqrt(K_n). Extend it by zero
+on the orthogonal complement in O. Taking adjoints gives C_O T*=C_N.
+Thus R=-T* proves(LIFT). This is the classical Douglas factorization
+argument; the original-cell estimate(ANGLE), not that argument, is the
+model-specific content. No actual observation or coexact domain is changed.
+
+In particular for l in L, h=R l belongs to O subset F, cancels every
+original mean, and has ||h||^2<=K_n||l||^2. Since b(x)<=H and the counting
+gradient symbol satisfies D<=12, A_U<=12H I. Thus
+ <h,(A_F-cI)h><=(12H-c)K_n||l||^2.                        (COSTUP)
+This is an explicit finite upper bound on cancellation cost. It grows
+like c n^6 and supplies NO subtarget witness. It is retained as a paid
+but quantitatively inadequate bound, not advertised as a solution.
+
+4. EXACT SHIFTED COST WITH ALL ROW DEPENDENCIES RETAINED
+
+Let S=range(C|U) in the full row space, B=A_F-cI on F, and D_L=cI-A_L
+on L. By279, B>=13c/3 I and 7c/8 I<=D_L<cI. Define
+ M=C_F B^(-1) C_F* on the ORIGINAL full row space.
+For any alpha, <alpha,M alpha>=||B^(-1/2)C_F*alpha||^2. Hence
+ker M=ker C_F*=S^perp by(RANGE). Thus M is strictly positive on S,
+has range S, and its Moore-Penrose inverse Mdagger is the ordinary inverse
+on S and zero on S^perp. This proves precisely the allowed inverse domain;
+no claim that all raw rows are independent is made.
+
+For any l in L set y=C_L l, automatically in S, and
+              f_*=-B^(-1)C_F* Mdagger y.                 (MINIMIZER)
+Then C_F f_*=-M Mdagger y=-y. For another feasible f=f_*+h, C_F h=0,
+and <h,B f_*>=-<C_F h,Mdagger y>=0. Thus the attained minimum is
+ min_(f in F:C_F f=-C_L l) <f,B f> = <y,Mdagger y>.        (EXACTCOST)
+This follows by direct completion of the square; it is not a supplied
+Gram hypothesis. In particular it is bounded above by(COSTUP).
+
+The original target on the whole invisible subspace is now equivalent to
+ C_L* Mdagger C_L - D_L being positive semidefinite on L. (CRITERION)
+Indeed every w in U has a unique spectral decomposition l+f. For Cw=0,
+ Q(w)-c||w||^2=-<l,D_L l>+<f,B f>.
+Use(EXACTCOST). Conversely a negative direction of(CRITERION), combined
+with(MINIMIZER), is a nonzero actual invisible field of Rayleigh quotient
+below c. All feasible directions l are admitted by the proved range
+equality, so there is no untested side condition hiding a bad direction.
+This criterion has dimension exactly2(n-2), not the full4(n^3-1).
+The algebra of constrained minimization is classical; no novelty is
+claimed for a Schur complement by itself. The positivity in(CRITERION)
+has NOT been proved or assumed. This is the remaining quantitative task.
+
+5. AN IMMEDIATE RANK CONSEQUENCE, WITHOUT A NEW RANK ASSUMPTION
+
+(RANGE) implies P_L(ker(C|U))=L by the explicit extension l+R l.
+So ker(C|U) contains a linear subspace of dimension2(n-2) whose low
+projection is bijective onto L: the graph of R restricted to L. Its
+vectors are generally not small-energy, by(COSTUP). One cannot discard
+an entire low direction on the ground that its original means are nonzero.
+This is compatible with268's ker C intersect ker Q_H={0}: the high part
+can spend positive, or very large, strong energy. It does not reopen the
+stopped projection/trace ansatz; no prescribed projected input is repaired.
+
+6. EXACT LOW-OBSERVATION FRAME FOR THE NONLINEAR CANDIDATE
+
+If Fcut(i)=i+tau_i permutes Z_n, select only the actual singleton cells
+{i} times{tau_i} times{0}, separately in all original channels/components.
+Call this row submap T. For any l in L subset N, write l(x)=v(s). Then
+ ||l||^2=n^2 sum_s |v(s)|^2, while
+ ||T l||^2=n^(-3)sum_i |v(Fcut(i))|^2=n^(-5)||l||^2.       (FRAME)
+Thus T_L* T_L=n^(-5)I on the ENTIRE positive-weight low space. In
+particular C_L is injective, although every low part still has a full
+invisible extension by Section5. The point-permutation identity is the
+same mechanism already used for strong components in266/267, extended
+here to the exact positive-weight low space, not a new sampling principle.
+
+For tau_i=2i^2 mod n at dyadic n, permutation follows directly: if
+i+2i^2=j+2j^2 mod2^m, then(i-j)(1+2(i+j))=0 mod2^m. The second factor
+is odd, hence invertible, giving i=j. No numerical permutation test or
+unproved nonlinear sampling hypothesis is needed. This proves(FRAME)
+for the active nonlinear cut but does not establish(CRITERION)'s sign.
+
+7. LIMITS, FALSIFIER, AND NEXT SUBSTANTIVE TEST
+
+The range/feasibility hypothesis has been proved for every original cut
+map, with a paid polynomial lifting bound. This is the unit's substantive
+geometric advance; abstract Gram notation and classical minimization alone
+would not count. The target-c quantitative estimate remains open. In
+particular the upper bound(COSTUP) is unusably large for that target and
+does not improve267's existing c/[5(1+log n)] kernel lower bound. No new
+paper should be made out of this isolated reduction.
+Falsifiers: an actual adjoint row failing long-cell constancy; any nonzero
+diagonal actual field in the projected row space; a violation of(ANGLE);
+an invisible field not covered by the cost decomposition; or a normalization
+error in(FRAME). The retained audit must test the exact source afresh.
+Next: compute/pay the shifted high-response matrix M on the actual singleton
+and prefix rows for the nonlinear cut, using279's full two-polarization
+symbols and the exact dependent-row quotient S. Test(CRITERION), not just
+C_L injectivity, and preserve failed estimates. Introducing another
+structure/Gram bound without proving it is not progress. No repeated
+paired numerical sweep. The sole question stays Q251; old paired-stream
+and longitudinal routes stay STOPPED_AT3. No physical spectral gap or
+continuum consequence; PR29=20/41,TermSource=0. External priority unknown.
