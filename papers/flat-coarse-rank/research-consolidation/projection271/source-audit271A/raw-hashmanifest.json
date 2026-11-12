@@ -1,0 +1,53 @@
+{
+  "self_excluded": true,
+  "artifacts": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1803,
+      "sha256": "38653f5b63cc068c164ef10eaaaaf31ddd4d7fc66c5d837a3de29fcab0a1bd1c",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 11409,
+      "sha256": "97e753b5c4dfacc2e4753cf9e1ea7112a4119bec4e29ca06f8bfcccd8c2743f5",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "initial-status.txt",
+      "bytes": 74,
+      "sha256": "714f3d42ee02f05b08b3bb8830c0d7da739d340ceaaf993caf2eafca4c578a1c",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "review-context.txt",
+      "bytes": 2116,
+      "sha256": "33491b467801799b0a9d21ca3bad233875caa1b22fd39ac74df3fc9f16ebc055",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 1187,
+      "sha256": "25366bbe017dcd4a94e35ce6847ad2c63d205b4b499f33e39a6ae14ac2c30554",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/coexact-projection271A.txt",
+      "bytes": 7317,
+      "sha256": "ac574de6269d184fe4257a57f07ab86eb15d0a1f1aa8631c387f2825d987eb6d",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "raw retained bytes; no normalization"
+    }
+  ]
+}

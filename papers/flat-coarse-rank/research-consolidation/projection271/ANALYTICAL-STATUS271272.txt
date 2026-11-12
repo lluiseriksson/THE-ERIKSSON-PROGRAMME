@@ -1,0 +1,49 @@
+271/272 subsequent grouped analytical status,12 November2026 UTC.
+Read unchanged sources with their COMPLETE own exact-source reports/context,
+assignments, origin bindings and raw manifests. Historical UNREVIEWED headers
+remain unchanged; they do not replace this subsequent status.
+
+271A accepted at ed2746f97c5886a767f8ba34dc71eb2662ee7410:
+ACCEPT_ANALYTICAL_CONTRAST_UNIFORM_COEXACT_PROJECTION_FACTOR4.
+Raw LF source ac574de6269d184fe4257a57f07ab86eb15d0a1f1aa8631c387f2825d987eb6d.
+For evenn>=2 and scalar-spatial parity source weights any nonnegativea,H,
+the TRUE counting coexact P, including P0=0, has separate bounds
+Q_H(Pu)<=4Q_H(u),Q_a(Pu)<=4Q_a(u). Constant independent of contrast/n;
+not optimality or arbitrary anisotropy. True image, complex LS, projector
+angle and exact parity factor1/2 paid. No energy commutation assumed.
+Report11409B raw97e753b5c4dfacc2e4753cf9e1ea7112a4119bec4e29ca06f8bfcccd8c2743f5.
+Manifest a296b96eb72b55e808355f73924f08f57ad8d3a616e92f6ea2ac91a689c72123.
+
+272A accepted at6d90e2a79c7d4ed4b8037cb4c9fcbdecda461928:
+ACCEPT_ANALYTICAL_EXPLICIT_ALL_SLICE_MAP_PROJECTION_MEAN_OBSTRUCTION.
+Raw LF source2b0a49fa3b6328fef5d8033549842c0db587082f815e3e4758957e1fa5d91806.
+For n divisible4, REAL ambientu=-2sin(pi x1/2)sin(pi x3/2)e1 in channel1
+has EVERY actual full slice-cut mean zero for ANY cuts, yet trueP produces
+(Pu)_3(0,t0,0)=-1/2, so actual normalized row=-1/(2sqrt(V))!=0.
+This refutes only AUTOMATIC ambient-invisible-to-coexact-invisible transfer,
+not targetc, all tailored corrections, or existence of other witnesses.
+Report9720B raw8a345adf92a24a32002bd1c3ccc2a3684e39a2c8d1eb1f19534f1ffbac664f86.
+Manifest26686c362101dce7d724d1ebbc45ab77cdf6aae6844f94835fe61c3d62f9db88.
+
+No material failure or minor correction found in either fresh audit.
+Parent read BOTH entire reports, actual contexts/assignments/bindings and
+verified8+9 raw members. Source proofs unchanged.271 does not validate272;
+272's true projection and Fourier arithmetic were freshly checked.
+Earlier251 uses a DIFFERENT block-average projection and domain direction.
+
+Model assessments and review context: involved Codex/OpenAI with shared
+inherited author/programme/prior reports, exact backend/version/effort
+unavailable. Not blind, independently established, peer review, numerical/
+formal proof, grade or acceptance. No mathematical executable/runtime used.
+Classical Hodge/projector geometry credited; bounded primary context only,
+historical originality and wider relevance UNESTABLISHED.
+
+New independent operator bound and useful mechanism counterexample; neither
+is a fresh actual-coexact invisible low-energy witness nor quantitative
+kernel bound for the remaining permutation route. Counter1 for this grouped
+unit since270, no reset. After3noadvance units retain failures and change
+mechanism/name concrete obstruction. SoleQ251 next needs a PAID mean-
+preserving correction or direct bound on actualU intersectkerC. No new
+standalone small paper/PDF/score/PR; retain pushedGit/D grouped for later
+substantial consolidation. Public260C PDF/assessment is unrelated to these
+new source results. PR29=20/41,TermSource=0, physical gap/continuum OPEN.

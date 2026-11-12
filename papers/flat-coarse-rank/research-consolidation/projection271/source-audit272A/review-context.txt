@@ -1,0 +1,31 @@
+ACTUAL REVIEW CONTEXT272A -- 12 November2026
+Involved Codex/OpenAI child /root/grouped260_manuscript_source_audit.
+Exact served backend/version/effort unavailable; none inferred. Same-session
+programme/author/prior audit context visible. Not blind or independent peer
+review; no model score/PDF/formal/numerical/publication acceptance.
+
+Entire272A source read afresh, all explicit means and complex arithmetic
+rederived analytically. Entire271A read/audited in the preceding same-session
+task and exact original retained for context, not inherited acceptance of272.
+The actual projection formula is freshly checked in this report. No new full
+re-audit of271 or251 block-average obstruction claimed. Current active audit
+immutability/silence rules reread; full CLAUDE/governance and D LEEME were read
+earlier in this session. Whole captures do not imply fresh full rereading of
+every historical instruction. Full inherited-chat export unavailable; not
+invented as a transcript. Actual shared visibility disclosed instead.
+
+No inbound parent messages during audit; no agents contacted. No math executable,
+Lean/Lake, oracle, numerical experiment, compiler, test, Colab runtime, network
+or external model service used. Only Git/file/hash metadata and new retention
+packet. No source, branch, state, other audit/chat/agent, public artifact, grade,
+automation or PR/body changed. Preexisting parent untracked helper/candidate
+copy unused, unread and untouched; initial-status captures only their names.
+No PR/body exists, normalized-body hash N/A. No new clone/runtime cleanup debt.
+Retention helper is metadata only, not a mathematical verifier; explicit byte
+checks, not Python assert, govern retention.
+
+Exact Git and checkout subject bytes coincide and are LF-only, matching the
+assigned raw LF SHA256 with no normalization. Origin bindings and the raw
+self-excluding manifest identify every artifact. Manifest digest returned
+separately. All prior reports and objections remain unchanged.
+No private root same-name copy present at checked path.
