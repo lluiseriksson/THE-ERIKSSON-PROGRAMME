@@ -1,0 +1,58 @@
+267A quantitative analytical status,11 November2026 UTC.
+Audited source bea6967059f23b25fdab96def70bbe66f8c47785.
+Unchanged proof raw/Git/checkout SHA256
+d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577.
+The original UNREVIEWED header is historical. Read the exact own report
+with the source; no source edit or inherited266 verdict establishes this result.
+
+Verdict: ACCEPT_ANALYTICAL_ALL_FIELD_LOGARITHMIC_BOUND_AND_FINITE_PENALTY.
+No material failure or minor correction found in this exact source. Parent
+read the whole12353-byte report, actual context, assignment and bindings,
+and verified all10 raw manifested artifacts. Full report SHA256 raw
+08c8fac1514bdaffc9afa5e67924f0a32cf9bc6e1e18549d53ca53262ad87b9f.
+Manifest SHA256 raw
+c35e8467f5c99ce834d2e1326a8f26aa46a87017ef8c22340e1d5106b42b4812.
+The whole report, context, assignment, initial status and five exact subjects
+are retained in source-audit267A/, with no omitted report or objection.
+
+For the ORIGINAL orthogonal source-weighted D3 model, dyadic n>=4,
+a=c/48,H=cn²,V=n³, ANY even-valued t with F(i)=i+t_i a permutation,
+the actual nonwrapping canonical36n-12Z0-row map satisfies, L=1+logn:
+ Q/V+[4cn²/(9L)]||Cz||² >= [c/(9L)]||z||²/V on ALL ambient real fields;
+ Cz=0 implies Q(z)>=[c/(5L)]||z||².
+Thus both hold on ACTUAL (im d1*)² by restriction, without coexact
+invariance of a rectangle projection or a divergence-only substitute.
+Examples include all even affine slopes and t_i=2i² (nonaffine for n>=8).
+The proof pays the true two-layer inverse diagonal, Nyquist shell, singleton
+normalization and finite-penalty step. No unproved trace/Gram gap is assumed.
+
+This is a fresh quantitative derivation, not a consequence of264's witness
+or266's strong-kernel injection. The nonlinear quantitative no-advance
+counter can now reset to0 for this actual bound; targetc is STILL OPEN.
+It does not prove a matching upper rate, logarithmic necessity/optimality,
+arbitrary-canonical impossibility, practical solver or condition number,
+uniform penalty, physical mass gap or continuum result. The permutation
+and exact model hypotheses remain explicit; hypotheses_eliminated stays[].
+
+Historical originality is UNESTABLISHED after bounded primary comparison.
+Critical2D logarithmic point-capacity/Fourier mechanisms and the nonlinear
+permutation are classical;253B's strong components/ranks are prior programme
+results. The bounded novelty note does not fill a missing proof hypothesis.
+
+Model assessments and review context: involved Codex/OpenAI author and same
+child-session auditor, shared/inherited context, exact backend/version/effort
+unavailable. Not blind or independently established review, no external
+model service, numerical grade, new PDF, formal/numerical execution, peer
+review, acceptance or publication. Source correctness is analytical, not
+Lean-certified. The260C exact PDF and original5/10 review/open objections
+are unchanged and do NOT assess266/267. Both full source reports are retained
+in one grouped branch; do not create another small-corollary paper.
+PR29=20/41,TermSource=0; physical gap and continuum remain OPEN.
+
+Next within soleQ251: remove the logarithmic loss on actual U for a concrete
+nonlinear map or construct a genuine actual-coexact invisible low-energy
+field; targetc needs its own strict kernel/finite-penalty proof. Preserve
+failed estimates; after3 units without fresh quantitative progress change
+mechanism or identify the concrete obstruction. Source referents must be
+preserved by merge/FF and all actual current-head required/core checks read
+before integration, no squash/rebase or auto-merge shortcut.

@@ -1,0 +1,33 @@
+REVIEW CONTEXT267A -- 12 November2026
+Reviewer is involved Codex/OpenAI child /root/grouped260_manuscript_source_audit.
+Exact served backend/version/effort unavailable; none inferred from roles.
+Same-session inherited author/programme and prior audit context is visible.
+This is not blind or independent review, not independent peer review, not a
+grade, not a PDF review and not formal or numerical verification.
+
+Full267A source was read afresh in this task and every displayed mathematical
+step rederived analytically. The source is self-contained for this proof.
+253B and266A were fully read earlier in this same session and their exact
+current-commit bytes are retained as provenance, not inherited acceptance
+premises. No whole fresh253/266 re-audit is claimed. Full governance and CLAUDE
+were previously read in this session; active environment/audit-silence and
+immutability rules were reread. D LEEME storage instructions reread. Captured
+whole governance files are not a claim of fresh whole-file reading here.
+No264 source, witness or verdict is a premise of this267 derivation.
+
+No mathematical executable, Lean/Lake, oracle, numerical experiment, test,
+compiler, runtime, network or external model service ran. Git/file/hash and
+new packet retention only. The metadata helper is not a mathematical verifier.
+No source, branch, state, other audit, public PDF, score, PR/body, automation
+or other agent/chat changed. No inbound parent message while auditing. No
+PR/body exists; body capture and normalized-body hash N/A. No new clone or
+runtime cleanup debt. Preexisting untracked parent helpers/reading note were
+not read, executed or changed; initial-status preserves their names only.
+An attempted README.txt read found no such file; none is an assigned input.
+Full inherited conversation cannot be tool-exported and is not pretended
+captured; this context truthfully discloses its visibility and limitation.
+
+Exact subject Git and checkout raw bytes match assigned SHA256 without newline
+normalization. All retained artifact raw hashes and sizes are in the manifest;
+the self-excluding manifest's own digest is separately reported.
+Private same-name copy SHA256 d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577; raw subject equality True.

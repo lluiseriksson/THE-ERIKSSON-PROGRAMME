@@ -1,0 +1,158 @@
+Q251 /268A: NO EXACT STRONG-ZERO INVISIBLE FIELD FOR ANY SLICE CUT MAP
+UNREVIEWED analytical candidate,11 November2026 UTC; main0ddf811bb6ca6b094e15bb9761f86695fab96ed4.
+Grouped research route note, not a new paper/PDF/grade. No mathematical
+executable, formal or numerical verification. Historical originality unknown.
+253B's actual strong components are recalled, not rediscovered. The previous
+267 logarithmic theorem remains subject to ITS stated permutation condition.
+
+1. PRECISE SCOPE AND PROPOSED THEOREM
+
+Let n>=4 be ANY EVEN integer (not necessarily dyadic),V=n^3,c>0,
+a=c/48,H=cn^2, original orthogonal checkerboard in three spatial dimensions.
+In channel1 the original forward SOURCE weight is H at odd sum parity,a
+at even; channel2 is reversed. Let Q=Q_a+Q_H be the actual weighted
+gradient energy over all three spatial components and both original channels.
+The actual coexact domain is U=(im d1*)^2 with forward curl on j<l forms.
+
+Take ANY cut map t:Z_n->{0,...,n-1}, with NO parity, permutation, affine,
+motion, coverage or Diophantine requirement. At each x1=i partition x2
+into nonempty members of[0,t_i-1],{t_i},[t_i+1,n-1], and x3 into
+{0},[1,n-1]. Omit empty intervals at either endpoint. These are genuine
+nonwrapping chart boxes; use the same partition in both channels and all
+original spatial-component means, normalized V^-1/2 |cell|^-1/2.
+Call the full actual map C. If Z0=#{i:t_i=0},Zlast=#{i:t_i=n-1}, its
+full raw row count is36n-12(Z0+Zlast), between24n and36n.
+
+PROPOSED THEOREM, on the WHOLE original ambient real space:
+                  ker C intersect ker Q_H = {0}.           (TH)
+Thus any nonzero actual-coexact invisible field for any admitted cut map
+must spend STRICTLY POSITIVE original strong-source energy. An exact
+strong-zero ansatz cannot give the required target-c counterexample here.
+This is NOT a quantitative bound above c, target-c recovery, a uniform
+conditioning statement, logarithmic necessity, or arbitrary-canonical theorem.
+The old264 invisible fields are compatible: their strong energy is positive.
+
+2. FINITE CYCLIC MIDPOINT LEMMA, WITH AN EXPLICIT ODD MINOR
+
+Lemma. For a finite real cyclic sequence A_0,...,A_(M-1), if every
+(A_j+A_(j+1))/2 belongs to the range{A_0,...,A_(M-1)}, then A is constant.
+No rationality of its values or multiplicity/permutation condition is assumed.
+
+Proof. M1 is immediate. For M>=2 choose an index sigma(j) such that
+ 2 A_sigma(j)-A_j-A_(j+1)=0, with j+1 cyclic. Sigma may repeat values.
+Let B be the integer M-by-M coefficient matrix with rows
+ 2 e_sigma(j)-e_j-e_(j+1).
+Reduce B modulo2. It is I+P, with P the cyclic next-coordinate shift.
+Keep rows j=0,...,M-2 and columns1,...,M-1. In their natural order the
+result modulo2 is lower bidiagonal with all diagonal entries1: the first
+row retains only e1; each later row retains e_j and e_(j+1). Its determinant
+is1 in F2. The corresponding INTEGER minor is therefore odd, nonzero.
+Rank over R is at least M-1. Every row sums to0, so constants are in the
+kernel and rank is at most M-1. Hence ker_R B consists exactly of constants,
+proving the lemma. This is a direct finite determinant argument, not a
+supplied full-rank hypothesis or an assertion that the original A is rational.
+
+3. ACTUAL STRONG KERNEL AND A SCALAR PRIMITIVE
+
+Fix ONE original spatial/channel scalar component of w with Q_H(w)=0.
+Let p in{0,1} be that channel's strong-source parity. Since all strong
+edge weights are positive, every designated outgoing edge difference is0.
+Its actual connected components are the layer pairs
+ G_s={x:S(x) in{s,s+1}}, S=x1+x2+x3 modn, s of parity p.
+Indeed x -> x+e_j -> x+e_j-e_k is a two-edge undirected strong path on
+the source layer, and e1-e3,e2-e3 generate every zero-sum displacement
+modulo n. All targets have a rung. No strong edge leaves the paired layers.
+This proves actual connectivity for every even n, including the wrap pair.
+Consequently w(x)=f(S(x)), with f(s)=f(s+1) whenever s has parity p.
+This is253B's already established actual strong-graph structure, restated
+and paid here; it is not an auxiliary graph or replacement of U by divergence.
+
+Now also suppose Cw=0 in this scalar component. Summing its individual
+zero cell sums over the genuine partition gives the actual global sum0.
+Each residue layer has n^2 sites, hence sum_(s in Z_n) f(s)=0.
+There is a periodic scalar primitive G on Z_n with
+                   G(s+1)-G(s)=f(s).
+For example choose G(0)=0 and cumulatively sum f; the zero sum gives
+G(n)=G(0). This G is ONLY a scalar primitive of the strong-kernel profile,
+not an asserted curl potential or a preimage for an arbitrary field.
+
+For s of parity p, equality f(s)=f(s+1) means
+             G(s+1)=[G(s)+G(s+2)]/2.                     (H)
+Thus G is midpoint-harmonic on the residue parity1-p. Define the cyclic
+M=n/2 values A_j=G(p+2j), indices modulo n. Their adjacent midpoints
+are precisely all the values of G on parity1-p, by(H).
+
+4. TRUE CELL MEANS FORCE EVERY MIDPOINT TO BE A NONHARMONIC VALUE
+
+Write F(i)=i+t_i modn; no permutation or parity property of F is used.
+The ACTUAL singleton cell(i,t_i,0) has zero mean, so
+                         f(F(i))=0.                       (PT)
+For t_i>0 the ACTUAL cell{i}x[0,t_i-1]x{0} has zero mean, giving
+ 0=sum_(x2=0)^(t_i-1) f(i+x2)=G(F(i))-G(i).              (LEFT)
+All sum arguments are periodic. The original cell does not wrap in x2;
+periodicity of f/G merely evaluates its genuine sums. At t_i=0 this
+interval is omitted but F(i)=i, so(LEFT) holds identically. At t_i=n-1
+the interval is nonempty and the same formula holds. Nonzero normalized
+row factors do not change any of these zero-sum constraints.
+
+Take ANY i of harmonic parity1-p. If F(i) has parity p, (LEFT) directly
+says G(i)=G(F(i)), one of the A-values. If F(i) has parity1-p, (PT)
+says G(F(i)+1)=G(F(i)), and F(i)+1 has parity p because n is even.
+Together with(LEFT), again G(i)=G(F(i)+1) is one of the A-values.
+These exhaust all cases, even when F is many-to-one or t_i is odd.
+
+Therefore EVERY adjacent midpoint(A_j+A_(j+1))/2 belongs to the range
+of A itself. The lemma forces A constant. Equation(H) makes every other
+G value that same constant, so f=G(.+1)-G(.) is identically0.
+This proves w=0 in the chosen scalar component. Apply the same proof
+to all three spatial components in both original channels. Q_H(w)=0
+is a sum of nonnegative scalar edge energies, so each scalar argument
+applies separately. This proves(TH) on all ambient real fields, hence
+also on the ACTUAL U by restriction. No coexact projection invariance
+or unsupported divergence-only sufficiency is needed.
+
+5. WHAT HAS AND HAS NOT BEEN REMOVED
+
+The even-valued t/F-permutation restrictions of266's point-sampling identity
+are NOT needed for(TH). They were not moved into a structure: both cases
+of arbitrary F(i) were directly proved using genuine left-interval means,
+and the needed midpoint rank was established by an explicit odd minor.
+But this does NOT remove the permutation condition from267's logarithmic
+quantitative theorem, nor prove its same constants for arbitrary maps.
+266's EXACT point-submap isometry is not asserted for this larger class.
+
+For example take t_i=(i mod2)-i modn. Then F(i) is0 at even i,1 at odd
+i. Its point samples miss many strong components for n>=4. In channel2,
+the ambient scalar indicator of G_2={S=2,3} is in ker Q_H and invisible
+to that POINT SUBMAP alone. The full C nevertheless satisfies(TH), because
+the left-interval rows supply essential additional information. This
+indicator is only an ambient point-submap illustration, not an actual
+coexact witness or a counterexample to(TH).
+
+No target-c restoration follows from injectivity on the exact strong kernel:
+the actual affine264 counterexamples already demonstrate that failure.
+There is no lower constant for Q_H on ker C derived here, no estimate for
+approximate strong-zero fields, no conditioning/size-uniform penalty and
+no assertion of arbitrary canonical O(n) impossibility. The exact-zero
+counterexample mechanism is eliminated for the specified entire slice-cut
+family only; positive-but-small strong energy remains a possible route.
+
+This is not a new independently constructed low-energy field.253B's graph,
+266's special identity and267's quantitative bound are retained as prior
+results. No numerical grade/PDF/working-paper acceptance, historical priority,
+physical gap or continuum claim. Classical finite matrix parity reasoning
+is not declared original. Involved Codex/OpenAI author; exact backend/version
+unavailable. This source is UNREVIEWED until its own exact-source report.
+
+6. NEXT FALSIFIER AND ROUTE COUNTER
+
+SoleQ251 remains: originaltargetc for actual-coexact canonical O(n) maps.
+Attack the odd minor, M2 case, channel harmonic parity, periodic primitive,
+actual left-cell row at BOTH chart endpoints and the two F-parity cases.
+Any failure there invalidates(TH). Do not use(TH) as a substitute for
+a quantitative trace/energy estimate or a real true-coexact preimage.
+This structural exact-zero exclusion supplies no NEW quantitative bound
+or witness: count1 unit since267 on that quantitative route, not0. After
+3 units without fresh quantitative progress retain failures and change
+mechanism or identify the concrete obstruction. Group this note, no separate
+small paper. PR29=20/41,TermSource=0; physical gap and continuum remain OPEN.

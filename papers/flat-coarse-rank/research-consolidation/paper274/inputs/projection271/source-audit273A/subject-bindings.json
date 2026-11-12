@@ -1,0 +1,42 @@
+[
+  {
+    "artifact": "subjects/coexact-trace-repair273A.txt",
+    "commit": "3aa9367c15f1814403c784ecb97628c45101c00e",
+    "repository_path": "papers/flat-coarse-rank/research-consolidation/projection271/coexact-trace-repair273A.txt",
+    "bytes": 8083,
+    "sha256": "5a4051cff938220062e55f5ded7aa8e586fd8ae0daedd78d439e47973cf4be13",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/nonlinear267A-logarithmic-bound.txt",
+    "commit": "bea6967059f23b25fdab96def70bbe66f8c47785",
+    "repository_path": "papers/flat-coarse-rank/research-consolidation/nonlinear266/nonlinear267A-logarithmic-bound.txt",
+    "bytes": 9821,
+    "sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/projection-mean272A.txt",
+    "commit": "6d90e2a79c7d4ed4b8037cb4c9fcbdecda461928",
+    "repository_path": "papers/flat-coarse-rank/research-consolidation/projection271/projection-mean272A.txt",
+    "bytes": 4418,
+    "sha256": "2b0a49fa3b6328fef5d8033549842c0db587082f815e3e4758957e1fa5d91806",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/CLAUDE.md",
+    "commit": "3aa9367c15f1814403c784ecb97628c45101c00e",
+    "repository_path": "CLAUDE.md",
+    "bytes": 23996,
+    "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "representation": "exact Git blob raw bytes; no normalization"
+  },
+  {
+    "artifact": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "commit": "3aa9367c15f1814403c784ecb97628c45101c00e",
+    "repository_path": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13573,
+    "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "representation": "exact Git blob raw bytes; no normalization"
+  }
+]

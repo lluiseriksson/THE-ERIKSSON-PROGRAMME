@@ -1,0 +1,30 @@
+ACTUAL REVIEW CONTEXT271A -- 12 November2026
+Reviewer: involved Codex/OpenAI child /root/grouped260_manuscript_source_audit.
+Exact served backend/version/effort unavailable; none inferred. Same-session
+programme/author/prior audit context visible. Not blind or independent peer
+review; no model score, PDF review, formal/numerical or publication acceptance.
+
+Entire271A source read afresh and every displayed proof step rederived in
+full-report.txt. Its proof is self-contained; no prior source acceptance is
+an input. Actual curl/energy conventions and earlier253/266-270 sources were
+read in full in prior same-session tasks. No new full re-audit of those old
+notes or251 projection obstruction claimed here. Governance/CLAUDE and D LEEME
+previously read in this session; relevant environment, immutable-failure and
+audit-silence rules reread here. Whole captured governance files do not imply
+fresh whole-file rereading of every historical instruction. Full inherited-chat
+export is unavailable and is not invented; actual shared visibility disclosed.
+
+No inbound parent messages during audit; no other agents contacted. No math
+executable, Lean/Lake, oracle, numerical experiment, compiler, test, Colab
+runtime, network or external model service used. Only Git/file/hash metadata
+and new packet retention. No source, branch, state, other report/chat/agent,
+public artifact, grade, automation or PR/body changed. Parent untracked helper
+not read/executed/altered; initial status captures only its name. No PR/body
+exists, so body capture/normalized-body hash N/A. No new clone/runtime cleanup
+debt. Metadata retention helper is not a mathematical verifier; byte checks
+are explicit and do not use Python assertions as acceptance gates.
+
+Git and checkout source are byte-identical LF-only raw subject, not normalized
+CRLF text; SHA256 matches assignment. Origin bindings and raw manifest identify
+every capture. Self-excluding manifest's own digest separately returned.
+Private root copy raw SHA256 ac574de6269d184fe4257a57f07ab86eb15d0a1f1aa8631c387f2825d987eb6d; raw equality True.

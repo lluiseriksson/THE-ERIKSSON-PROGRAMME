@@ -1,0 +1,211 @@
+EXACT-SOURCE ANALYTICAL AUDIT268A -- UNIVERSAL SLICE-CUT STRONG-NULL EXCLUSION
+
+VERDICT: ACCEPT_ANALYTICAL_STRUCTURAL_EXACT_STRONG_NULL_EXCLUSION
+MATERIAL FAILURE: NONE found. No minor mathematical or metadata correction
+was found necessary in the assigned source. All scope limits below remain.
+
+Exact source920ed55ab59215af244f925cc48121043ceb0ec6.
+Subject raw/Git/checkout SHA256
+f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d.
+No normalization was applied. No PR/body exists and no body hash is invented.
+This is involved analytical checking of the exact source, not formal proof,
+numerical verification, a PDF/model grade, independent review or publication.
+
+1. DOMAIN, CUT MAP, ACTUAL ROWS AND ENDPOINTS
+
+The theorem is stated on every original ambient real field, for any even
+n>=4 (not merely powers of2), positive c and H=cn^2. The original orthogonal
+source checkerboard gives channel1 odd strong sources and channel2 even
+strong sources. All spatial/channel scalar edge energies are nonnegative.
+No target-source reassignment, rotation or hidden coexact sufficiency enters.
+
+For every arbitrary representative t_i in0,...,n-1, the x2 intervals form a
+genuine nonwrapping chart partition after empty endpoint intervals are omitted.
+There are3 x2 intervals except at either endpoint, where there are2. The
+two endpoints are distinct for n>=4; hence no slice is counted twice in
+Z0+Zlast. Crossing with two nonempty x3 intervals and singleton x1, then
+with3 spatial components and2 channels, gives
+6[6n-2(Z0+Zlast)]=36n-12(Z0+Zlast), between24n and36n.
+These are full raw rows, not a restricted-rank assertion. Every normalized
+row has a finite positive nonzero normalization. Therefore zero mean is
+equivalent to zero unnormalized cell sum.
+
+The singleton(i,t_i,0) always exists. The left cell with x2[0,t_i-1],x3{0}
+exists exactly when t_i>0, including the last-endpoint case t_i=n-1. At zero
+it is genuinely absent, and the proof correctly uses an identity instead.
+No required endpoint cell has been lost or invented.
+
+2. FINITE CYCLIC MIDPOINT LEMMA: REPEATED SELECTIONS AND M2
+
+For a finite real cyclic list A, the hypothesis that every adjacent midpoint
+is a value somewhere in the list permits an arbitrary index choice sigma(j)
+for each midpoint. Sigma need not be injective, surjective or preserve any
+multiplicity. Each equation is exactly the printed row of the integer matrix
+B=2selection-I-P. Its row sum is0, so the constant vector is in its real
+kernel and its real rank is at most M-1.
+
+Modulo2 the selection term vanishes and signs disappear, leaving I+P.
+For rows0,...,M-2 and columns1,...,M-1, row0 retains only column1;
+rowj for j>=1 retains columns j and j+1. With retained columns numbered
+in order, these are lower-bidiagonal entries on and directly below the
+diagonal, all equal1. The cyclic wrap row is the omitted final row.
+Its determinant is1 over F2, so the corresponding integer minor is odd,
+nonzero as an integer and hence nonzero over R. Rank is therefore at least
+M-1 regardless of sigma. Together with the row sums it is exactly M-1
+and its real kernel is precisely constants. This argument applies to real
+values, with no rationality hypothesis on A.
+
+For M2 the retained minor is the single row0/column1 entry. In B it is
+2*indicator(sigma(0)=1)-1, equal1 or-1. It is nonzero as required. Modulo2,
+I+P still has the two distinct coordinates in that row. Thus the shortest
+relevant case n4,M2 is covered; M1 is separately immediate in the lemma.
+No assumed rank or unstated irreducibility condition remains.
+
+3. ORIGINAL STRONG COMPONENTS FOR ALL EVEN N
+
+Fix one original scalar channel/spatial component. A strong source with sum
+s has all its forward targets in s+1. The path
+x -> x+e_j -> x+e_j-e_k is an undirected path of actual strong edges:
+the second edge is the forward k-edge from source x+e_j-e_k. It stays
+within source residue s. The differences e1-e3 and e2-e3 generate every
+zero-sum displacement over Z_n, for any n, without requiring invertibility
+of a nonunit. Every target vertex has a rung from a source. No actual strong
+edge connects this pair to another source pair. Thus the exact components
+are G_s={S=s,s+1}, indexed by s of channel parity p, including the wrap pair.
+
+For even n these n/2 pairs partition all residue layers. Each layer has
+n^2 vertices, so the components have2n^2 vertices. Zero Q_H forces every
+scalar strong-edge square to vanish and hence its scalar field is constant
+on each actual component. It therefore has precisely the profile f(S), with
+f(s)=f(s+1) for s of parity p. This recalls253B graph facts but also supplies
+the needed connectivity argument afresh. No coexact or divergence argument
+is used here, appropriately for an ambient theorem.
+
+4. GLOBAL SUM, PERIODIC PRIMITIVE AND THE CORRECT HARMONIC PARITY
+
+If all actual C rows vanish, sum their zero unnormalized cell sums over the
+genuine partition in this one scalar component. This gives global scalar
+sum0. Since each residue layer has n^2 vertices, sum_s f(s)=0. This is
+valid independently per channel and spatial component, not merely after
+mixing components or normalizations.
+
+The cumulative sum G with G(0)=0 and G(s+1)-G(s)=f(s) extends periodically
+because the total profile sum is0. It is only a scalar cyclic primitive,
+not a two-form or a curl preimage for the original field. For strong s of
+parity p, f(s)=f(s+1) implies
+G(s+1)-G(s)=G(s+2)-G(s+1), i.e. G(s+1) is the midpoint of G(s),G(s+2).
+Thus harmonic values are at parity1-p, and the nonharmonic cyclic list
+A_j=G(p+2j), j modM=n/2, has exactly those harmonic values as its adjacent
+midpoints. This parity remains valid for p1 and the wrap pair: G(n)=G(0)
+and even n make parity well defined throughout. The proof has not reversed
+the channels' harmonic parity.
+
+5. GENUINE LEFT AND POINT CONSTRAINTS FOR ARBITRARY F
+
+The actual singleton zero gives f(F(i))=0 for F(i)=i+t_i modn. The true
+left-cell zero when t_i>0 gives
+sum_(x2=0)^(t_i-1) f(i+x2)=G(i+t_i)-G(i)=G(F(i))-G(i)=0.
+The scalar sum may cross the residue chart in its arguments, but the cell
+itself remains nonwrapping in x2; periodicity of G makes the telescoping
+identity valid. At t_i=0, F(i)=i, so this equality is tautological without
+claiming an absent row. At t_i=n-1 the left cell is present and exactly
+the same telescoping applies. No right-cell condition is needed individually;
+the full partition was already used for global mean0.
+
+For any harmonic-parity i, there are exactly two possible F parities.
+If F(i) has parity p, LEFT places G(i)=G(F(i)) directly in the A range.
+If F(i) has parity1-p, PT gives G(F(i)+1)=G(F(i)), where F(i)+1 has
+parity p, including cyclic endpoint F(i)=n-1. Combining with LEFT again
+places G(i) in the A range. No injectivity, surjectivity, coverage or evenness
+of t is used. In the second case t_i=0 poses no problem: PT still supplies
+the equality to its opposite-parity successor. The cases exhaust all maps.
+
+Every harmonic G value, equivalently every adjacent A midpoint, is therefore
+in the range of A. The proved lemma makes A constant. The midpoint identities
+make the other-parity G values equal the same constant, hence G is constant
+on all residues. Its difference f is identically0, proving the scalar field
+zero. Repetition over all3 spatial components and2 channels is legitimate
+because Q_H is a sum of nonnegative scalar terms and C contains all their
+separate rows. This proves TH on the entire real ambient space, and therefore
+on actual U simply by restriction. No averaging-invariance assertion or
+identification of actual U with a larger divergence-free space is needed.
+
+6. POINT-SUBMAP EXAMPLE AND STRICT SCOPE
+
+For t_i=(i mod2)-i modn interpreted as its chart representative, F(i) is0
+for even i and1 for odd i. All t_i are valid cut values; no permutation is
+claimed. In channel2 the strong parity is p0, so G_2={S=2,3} is an actual
+component for every admitted even n>=4. Its ambient scalar indicator is
+constant on each strong component and therefore in ker Q_H. Both sampled
+sum residues0,1 miss this component, so all rows of the point submap vanish.
+This field is not in the kernel of the full C, by TH. It is also not being
+called actual coexact: its nonzero scalar global mean would in fact prevent
+membership in the actual curl-adjoint image. The source explicitly labels
+it only an ambient point-submap illustration and does not disguise it as a
+target-c or actual-coexact counterexample.
+
+The theorem removes the even-cut/F-permutation restriction ONLY for this
+structural zero-intersection conclusion in the specified slice-cut family.
+The unrestricted F cases and finite midpoint rank are directly proved;
+they are not merely encoded as a new assumption. It does not establish267's
+quantitative point Green argument with its same constants for arbitrary F,
+nor266's exact point-isometry for arbitrary cuts. Those hypotheses stay on
+their respective theorems. Recalled253 graph results are not rediscoveries.
+
+TH excludes an EXACT strong-zero invisible witness for every such cut map.
+It does not estimate positive-but-small strong energy, restore original
+target c, control a uniform penalty/conditioning, prove logarithmic necessity,
+establish arbitrary-canonical impossibility or produce a new low-energy
+field. For each fixed finite map qualitative injectivity can imply some
+positive separation by finite-dimensional compactness, but no magnitude
+above c or size-uniform quantitative constant is derived here. The source's
+'no lower constant derived' wording is appropriately about lack of an
+estimate, not a false denial of such finite-dimensional consequences.
+
+The earlier affine264 fields are mentioned only for compatibility and the
+already known shortcut failure; neither is a premise of the fresh268 proof.
+The present argument independently forces positive Q_H for any nonzero
+full-C kernel vector, irrespective of actual coexactness. Sole Q251 and the
+physical/continuum questions remain open. PR29=20/41,TermSource=0 unchanged.
+
+7. ALL FINDINGS, COUNTER AND ACTUAL REVIEW LIMITS
+
+Material failure: none found. Minor mathematical or metadata correction:
+none identified. The odd minor, M2 exception, channel parity, actual endpoint
+rows, normalization of zero means and arbitrary-F parity branches all pass
+the analytical attacks recorded above. The proof works for every even n>=4;
+no dyadic inverse or hidden permutation assumption was imported from266/267.
+
+This is a structural mechanism exclusion, not a new quantitative bound or
+witness. The assigned quantitative no-new-bound/witness counter remains1
+since267; this audit changes no state/counter and does not reset it for a
+structural result. Historical originality is not established and classical
+finite matrix parity reasoning is not claimed new. No primary-source search
+was performed, no grade or new paper/PDF acceptance follows.
+
+Actually exposed reviewer identity is Codex/OpenAI, exact served backend,
+version and effort unavailable. Same involved child context includes prior
+programme/author/audit messages; this is not blind, independent or peer review.
+Entire268 source was read afresh and every step checked analytically above.
+253/267 exact sources retained as provenance were read fully earlier in this
+same session, not freshly re-audited in full for this task. Governance active
+audit/environment rules were reread; whole-file captures do not overstate
+fresh read scope. Assignment/context preserve the exact current task and
+actual shared visibility; a full inherited-chat export is not available and
+is not fabricated.
+
+No mathematical executable, numerical experiment, Lean/Lake, oracle, compiler,
+test, runtime, network or external model service was used. Only file/Git/hash
+metadata and new evidence retention occurred. No source, branch, state, other
+audit/chat/agent, automation, public artifact or PR/body changed. No inbound
+parent message arrived. No PR/body exists; its normalized body hash is N/A.
+No new clone/runtime cleanup debt exists. Metadata helpers are not mathematical
+verifiers and explicit byte checks, not Python assertions, govern retention.
+
+The exact source Git and checkout raw bytes match the assigned SHA256 with
+no newline normalization. Complete subjects, bindings, assignment, context,
+initial status and this full unabridged report are retained. The raw manifest
+records every artifact except itself, including size/representation/SHA256;
+its own digest is separately returned. Prior failures/reports remain untouched.
+Use this exact analytical verdict with the unchanged frozen source, without
+upgrading it to formal verification, independent review, grading or publication.

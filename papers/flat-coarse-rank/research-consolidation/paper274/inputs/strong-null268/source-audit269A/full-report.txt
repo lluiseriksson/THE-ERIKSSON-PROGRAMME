@@ -1,0 +1,250 @@
+EXACT-SOURCE ANALYTICAL AUDIT269A -- FOLDED-CUT ACTUAL COEXACT WITNESS
+
+VERDICT: ACCEPT_ANALYTICAL_FOLDED_MAP_ACTUAL_COEXACT_COUNTEREXAMPLE
+MATERIAL FAILURE: NONE found. No minor mathematical or metadata correction
+was found necessary in the assigned source. Scope and dependency limits below
+are part of this bounded verdict, not a grade or formal certificate.
+
+Exact source feb324d61b604bd9672b4eafea6e9507cfc799e5.
+Raw/Git/checkout subject SHA256
+dbeb8d70312bc97944096a780636cb38230c619604849327314d5d4a73965de4.
+No byte normalization. No PR/body exists; body capture/hash N/A.
+
+1. TRUE MODEL AND THE FOLDED NONWRAPPING MAP
+
+The proof fixes dyadic n=2^m,m>=10, original D3 orthogonal checkerboard,
+channel1 odd strong sources/even weak sources, a=c/48,H=cn^2,V=n^3,
+counting norms and actual forward curl adjoint. The second channel remains
+zero. No internal rotation, target weighting or domain replacement is used.
+
+For t_i=((i mod2)-i)modn, cuts are even and F(i)=i mod2 has image{0,1}.
+The cut differences are0 on even-to-odd steps and-2 on odd-to-even steps,
+including the cyclic endpoint. These are distinct modulo n for n>=4,
+so this map is genuinely nonaffine in the stated regime. The only zero cuts
+are i0,1: the representatives cover0,-2,...,-(n-2), each twice. No cut
+equals the odd n-1. There are6 chart cells in each ordinary slice and4
+in these two zero slices; times3 spatial components and2 channels this
+is36n-24 full raw rows. They are actual nonwrapping intervals, not cyclic
+unions, and every scalar/channel normalized mean is separately observed.
+No F-permutation theorem is being silently invoked for this many-to-one map.
+
+2. ACTUAL CURL SIGNS AND INDIVIDUAL CELL TELESCOPING
+
+For partial_j=shift_(+e_j)-I, its counting adjoint is-delta_j with
+delta_j=I-shift_(-e_j). With only A23=delta2delta3 Psi nonzero, actual
+forward-curl adjunction gives u2=delta3 A23 and u3=-delta2 A23, hence the
+displayed P Psi. This is a true2-form preimage for the field, not merely
+an asserted divergence equation. Complex coefficients are allowed for the
+intermediate construction because the actual operators are real linear.
+
+Summing u2=delta2delta3^2 Psi over an actual x2-x3 chart cell telescopes
+to four endpoint values of delta3 Psi; summing u3 gives minus the four
+delta2 Psi values. The relevant endpoints are x2{-1,t_i-1,t_i} crossed
+with x3{-1,0}, retaining the fixed chart boundary. Thus vanishing of BOTH
+first gradients on all six tags suffices for every original individual
+mean, with its nonzero normalization. Duplicates or absent empty endpoint
+cells do not make this sufficient condition false. No refined-mean claim
+is inferred from a zero sum on a larger cyclic union.
+
+3. SIX PROFILE PAIRS, INVERSE BOUND AND FIVE ZERO CONDITIONS
+
+Unitary one-dimensional e_k normalization makes their counting norms1.
+At n>=1024, the six p_r=n/4+r and their partners p_r+n/2 are twelve
+distinct nonzero residues; partners occupy a disjoint window. Each profile
+has nonzero coefficients, and the six pair supports are disjoint. The six
+psi_r are therefore linearly independent and delta^3 is injective on their
+span, since its multipliers t(zeta_r),t(-zeta_r) do not vanish. Applying
+delta^3 to their printed coefficients gives phi_r exactly.
+
+The p_r phases lie between pi/2 and3pi/4: the upper bound only requires
+n>=40 and is safe at admitted sizes. Both reciprocal multipliers have
+modulus at most2^3 because |t|>=1/2, with the smaller endpoint controlled
+by2sin(pi/8)>=1/2. Squaring gives each inverse multiplier<=64. Parseval
+on the twelve disjoint frequencies proves INV for every combination,
+independently of its coefficients or the evaluation map's conditioning.
+
+Evaluation at the five distinct residues -3,-2,-1,0,1 is a linear map from
+a6-dimensional complex profile space into C^5. Rank is at most5, so there
+is a nonzero psi satisfying all five zeros. No rank5 assertion, determinant
+bound, coefficient size or unstated small-divisor hypothesis is required.
+Injectivity of delta^3 on this span then proves phi!=0. INV holds for
+this selected kernel vector exactly as for every combination.
+
+At an odd source s, the pair's forward difference has bracket
+(zeta-1)(1+zeta)-(-zeta-1)(1-zeta). Both products equal zeta^2-1, so
+the bracket vanishes. The factor from the parity partner is(-1)^s=-1,
+as required. A physical forward step in any direction increments S by1,
+so the channel1 base field(0,phi(S),-phi(S)) has zero actual strong-source
+differences in all directions. It is P[psi(S)] because all backward
+differences on a pure S profile equal delta. Each S layer has n^2 vertices;
+two spatial components give ||z0||^2=2n^2||phi||_S^2>0. These factors are
+consistent with the unitary1D profile normalization, without a hidden V.
+
+4. FINITE PERIODIC LOG CUTOFF: EDGE COUNT, DERIVATIVES AND MASS
+
+R=n/8 is an integer below n/2. The cutoff is periodic through cyclic
+distance, equals0 on radius<=8,1 on radius>=R, and logarithmic between,
+with T=log(R/8)=log(n/64). The theorem makes T>=2^34, in particular>=1.
+Neighboring max radii differ by at most1. Nonzero differences cross j,j+1
+with8<=j<=R-1; clipping at both ends agrees with the same logarithmic
+increment estimate<=1/(Tj). Edges near cyclic-distance n/2 are outside
+the support of differences and contribute0, so no torus seam is omitted.
+
+For j<R the square shell has exactly8j points. Forward edges crossing
+between j,j+1 can be bounded by all2 outgoing edges from shell j plus
+all2 outgoing edges from shell j+1: at most16j+16(j+1)<=48j.
+This is a safe overcount including edges directed toward the smaller shell,
+not a missing orientation. Thus Echi<=48/T^2 sum_(j=8)^(R-1)1/j.
+The harmonic sum<=1+log(R/8)=1+T gives CAP<=96/T. Backward first differences
+have the same norm by reindexing. For any mixed higher backward derivative,
+keep one first derivative and bound every remaining difference by operator
+norm2; shifts are unitary. This gives squared factor4^(b-1)Echi, as HD.
+
+The square of radius<=R has(2R+1)^2 points, at most n^2/4 at n>=1024.
+Outside it chi=1, so sum chi^2>=3n^2/4. Including the boundary would only
+improve the lower bound. CAP, HD and MASS are finite lattice statements;
+no continuum capacity theorem, Green hypothesis or asymptotic equality
+is needed or claimed.
+
+5. ALL SIX ACTUAL TAGS ARE KILLED BY THE FIVE PROFILE ZEROS
+
+At fixed x2=-1 and x3=-1 or0, each potential value used by delta2 or
+delta3 has transverse distances at most2. Chi is0 there, so both gradients
+vanish whatever the S profile is. At moving x2=t_i+u,x3=v with u,v in
+{-1,0}, potential sum coordinate is F(i)+u+v, with F in{0,1}. Its backward
+neighbor for either first derivative subtracts1. All coordinates therefore
+lie in{-3,-2,-1,0,1}, precisely the imposed zero set. Each relevant potential
+value vanishes regardless of chi or its shifted value. Both gradients vanish
+at every moving tag, even when tags duplicate or wrap as residue arguments.
+This pays the true fixed boundary and every refined chart cell separately.
+Thus Cz=0 for the actual normalized full map, and z already has its true
+A23 preimage. There is no lost gradient, corner, channel or endpoint row.
+
+6. MIXED BACKWARD PRODUCT RULE AND THE ERROR CONSTANT
+
+The exact first product rule is delta(fg)=(delta f)g+(shift_- f)(delta g).
+Commuting coordinates and shifts gives precisely the printed multi-index
+formula: the beta derivatives on chi are paired with shift_(-beta) on
+the remaining profile derivative. The beta0 term is chi delta^alpha psi.
+For alpha=(1,2) or(2,1) in directions2,3, total order3, binomial
+multiplicities total2^3-1=7 beyond beta0. Treating a coefficient2 as two
+identical summands is legitimate for the ensuing seven-term Cauchy bound.
+
+For fixed transverse y, the x1 sum of any shifted profile derivative is
+its exact1D counting norm, because x1 runs over every S residue. Applying
+operator norm2 for3-b profile derivatives gives squared factor4^(3-b).
+HD gives4^(b-1)Echi for the transverse factor. Their product is therefore
+16||psi||_S^2 Echi for every term, with no additional n or V factor.
+Seven-term Cauchy gives7*7*16=784 per spatial component. Two components
+give1568<=2^11. Combining INV with BASE,
+2^11*64||phi||_S^2 Echi=(2^16 Echi/n^2)||z0||^2.
+Thus ERR has exactly the claimed coefficient. The comparison fields chi*z0
+and E need not be coexact individually, since the energy is ambient-defined;
+the constructed z itself is coexact from P Psi.
+
+7. NONZERO NORM, ORIGINAL STRONG ENERGY AND WEAK ENERGY
+
+The same x1 profile-sum factorization and MASS give
+||chi*z0||^2>=3||z0||^2/4, hence its norm>=3||z0||/4 (a deliberately
+weaker bound than sqrt(3)/2). CAP and T threshold give Echi<2^-26<1.
+With n>=1024, ERR then gives ||E||<=||z0||/4. Triangle inequality yields
+||z||>=||z0||/2 and NZ>=||z0||^2/4>0. Neither a lower trace Gram bound
+nor an assumed nonzero product is being supplied as data.
+
+At an odd physical source, z0(x+e_j)=z0(x), so the strong difference of
+chi*z0 is exactly(chi(y+e_j)-chi(y))*z0(x); j1 is0. Dropping the odd-source
+restriction only increases the nonnegative sum. Summing x1 gives two profile
+norms for the two spatial components. Thus
+Q_H(chi*z0)<=2H||phi||_S^2 Echi=c Echi||z0||^2.
+The original full three-direction forward-gradient form has operator norm
+at most12: each direction difference has squared norm<=4, summed over3.
+Hence Q_H(E)<=12H||E||^2<=12*2^16 c Echi||z0||^2
+<2^20 c Echi||z0||^2. No channel or spatial factor is missing because
+their counting norms are already included in ||E||^2.
+
+The positive ambient quadratic form inequality Q_H(a+b)<=2Q_H(a)+2Q_H(b)
+then yields Q_H(z)<2^22 c Echi||z0||^2<=2^24 c Echi||z||^2.
+The strict coefficient comparison is valid: z0!=0 and the cutoff is genuinely
+nonconstant, so Echi>0. CAP and threshold give96/2^34<2^-26, which makes
+2^24 Echi<1/4. Thus Q_H(z)<(c/4)||z||^2. Finally the remaining actual
+weak-source form is bounded above by a times the full unweighted gradient:
+Q_a(z)<=12a||z||^2=(c/4)||z||^2. Their sum is strictly below c/2 times
+the actual field norm. Strong energy was never assigned weak weight or
+discarded to prove this upper bound; original source weights were used.
+
+8. REAL CONVERSION, PENALTY FAILURE AND POSITIVE STRONG ENERGY
+
+All operators/means/weights are real. Splitting the scalar potential into
+real and imaginary parts produces actual real coexact fields, each invisible.
+Their energies and norm squares add to those of the complex construction.
+At least one part is nonzero, and if both nonzero parts had quotient above
+the complex quotient their weighted average could not equal it. Selecting
+a part with quotient no greater proves the strict real TH. No real-block
+conjugation assumption or inherited Fourier-pair reality is needed.
+
+For any finite Phi with Phi(0)=0, the observation penalty vanishes on this
+real nonzero witness, so original target c cannot be restored. Common1/V
+normalizations cancel in its strict kernel quotient. This is a counterexample
+for this particular actual nonwrapping folded map, not every nonlinear map.
+
+Strictly positive strong energy follows by applying the previously proved268
+zero-intersection theorem to this admitted cut map and this real nonzero
+invisible field. The exact268 source and full prior report are retained.
+That theorem was fully analytically checked in this same session's prior
+task; it is an explicit existing dependency for positivity only. None of
+the construction, invisibility, norm or upper-energy steps above depends
+on268. Its structural acceptance was not used to validate the new269 witness.
+
+9. ALL FINDINGS, ROUTE ACCOUNTING AND SCOPE
+
+Material failure: none found. Minor mathematical/metadata corrections: none
+identified. The six-versus-five linear existence, bounded delta inverse,
+odd-source phase sign, exact tags, shell orientation/count, mixed shifts,
+norm factors, error coefficient and energy thresholds have all been freshly
+attacked above. No unproved matrix conditioning, numerical experiment,
+surrogate mean or divergence-only preimage remains in the proof.
+
+This is a new quantitative witness for the specified folded cut, not a
+new grade/paper/PDF, historical-originality finding or independent result
+assessment. It gives no witness for the permutation map2i^2, no general
+canonical O(n) impossibility, no matching log necessity/rate or practical
+size guarantee. The conservative huge threshold is explicit. Sole Q251,
+physical gap and continuum remain open; PR29=20/41,TermSource=0 unchanged.
+Classical cutoff/capacity mechanisms are not declared original. No external
+primary-source comparison or originality/relevance audit was performed.
+
+The assigned quantitative route counter was1 while this candidate was being
+audited. This fresh report accepts its actual quantitative witness; parent
+may account for that advance after reading the full report. No state/counter
+was modified by this child, and mere candidate submission or268 structure
+was not counted as quantitative success.
+
+10. ACTUAL IDENTITY, CONTEXT, READS AND RETENTION
+
+Reviewer is involved Codex/OpenAI child /root/grouped260_manuscript_source_audit,
+with inherited author/programme/prior audit context visible. Exact served
+backend/version/effort unavailable, none inferred. Not blind or independent
+peer review; no model score, formal proof, numerical certificate or publication
+acceptance. Whole269 was read afresh and all proof steps rederived. Whole268
+was read/audited in the preceding same-session task and retained as the narrow
+positivity dependency, not freshly wholesale re-audited here. Governance active
+environment and audit rules reread; whole captured files are not a claim of
+fresh complete reading of every historical instruction. Full assignment and
+actual context are retained; a full inherited-chat export is unavailable and
+is not invented.
+
+No mathematical executable, Lean/Lake, oracle, numerical experiment, compiler,
+test, Colab runtime, network or external model service ran. Only Git/file/hash
+metadata and this new packet were written. Preexisting parent untracked files
+were untouched/unread/unexecuted. No source, branch, state, other report, public
+artifact, score, automation or chat/agent changed; no PR/body exists. No inbound
+parent message arrived while auditing. No new clone/runtime cleanup debt exists.
+The retention helper is a byte/hash operation, not a mathematical verifier.
+
+Git and checkout source bytes match the assigned raw SHA256 with no newline
+normalization. Complete subjects and origin bindings, the full assignment,
+review context, initial status and this unabridged report are saved. The raw
+manifest lists every artifact except itself with byte length, representation
+and SHA256, with its own digest separately returned. All old reports/objections
+remain unchanged. The exact-source verdict must not be inflated to formal or
+independent review, a grade or publication acceptance.

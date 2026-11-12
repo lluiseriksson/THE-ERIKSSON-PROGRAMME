@@ -1,0 +1,29 @@
+ACTUAL CONTEXT268A -- 12 November2026
+Involved reviewer Codex/OpenAI, same child /root/grouped260_manuscript_source_audit.
+Exact served backend/version/effort is unavailable; none inferred. Shared
+inherited programme/author/prior audit context visible; not blind or independent
+review, not independently commissioned peer review. No grade/PDF/formal review.
+
+Entire268A source was read afresh and all its proof steps checked analytically.
+The proof is self-contained.253B was fully read earlier in this same session;
+267A was fully read and audited in the immediately prior same-session task.
+Their exact present Git blobs are retained for provenance/scope comparison,
+not as inherited acceptance premises for268. No fresh full re-audit of those
+prior notes is claimed. Full governance/CLAUDE and D LEEME were previously
+read in this session; active environment, immutable-failure and audit-silence
+sections were reread at this task. Whole captured governance files are not
+a claim of fresh whole-file reading. Full inherited chat is not tool-exported;
+visibility is truthfully disclosed rather than a fabricated full transcript.
+
+No inbound parent messages arrived during audit. No agents contacted. No math
+executable, Lean/Lake, oracle, numerical experiment, compiler, test, runtime,
+network or external model service ran. Only Git/file/hash metadata and new
+packet retention. No source, branch, state, other audit/chat/agent, score,
+public artifact, automation or PR/body changed. No PR/body exists; body capture
+and normalized-body hash N/A. No new clone/runtime cleanup debt. The metadata
+retention helper is not a mathematical verifier and uses explicit byte checks.
+
+Source Git blob and checkout raw bytes match assigned SHA256 without newline
+normalization. Full artifact bindings are in subject-bindings.json and the
+self-excluding raw manifest. The manifest's own digest is separately returned.
+Private root same-name copy raw SHA256 f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d; exact subject equality True.

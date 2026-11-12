@@ -1,0 +1,157 @@
+Q251 /266A: A NONLINEAR CANONICAL TEST AND THE STRONG-KERNEL FRAME TRAP
+UNREVIEWED analytical source, 11 November2026; base358028cb6a33a801f171ad38e9025dccf5d8124a.
+Grouped route note, NOT a new paper/score or independent target-c witness.
+Strong-graph structure and actual coexact rank already appear in253B; do
+not count their rediscovery as a new result. The audited264A witness is
+also not a new counterexample here. This note derives an exact canonical
+point-sampling identity, gives a genuinely nonlinear admissible test, and
+states precisely what neither its identity nor its endpoint count proves.
+
+1. SINGLE QUESTION, MODEL AND NEW TEST
+
+Continue soleQ251: can original-channel canonical nonwrapping rectangle
+means with O(n) full rows restore targetc on the actual coexact orthogonal
+three-dimensional checkerboard, or is a larger loss necessary?
+Use n=2^m,m>=2,V=n^3,c>0,a=c/48,H=cn^2, counting norm, original spatial
+components and two original channels. Q=Q_a+Q_H is the original forward-
+SOURCE weighted gradient form. Strong-source parity is odd in channel1,
+even in channel2. U=(im d1*)^2 with the actual forward curl on j<l two-forms.
+No internal mixing, target-site weights or averaging-invariance assumption.
+
+For an even-valued map t:Z_n->Z_n, partition each x1=i slice into nonempty
+nonwrapping x2 intervals[0,t_i-1],{t_i},[t_i+1,n-1] and x3 intervals
+{0},[1,n-1]. Omit an empty first interval. The right interval is nonempty
+because t_i is even and n-1 odd. Use the same spatial partition in both
+channels and observe all three spatial-component normalized means.
+Write F(i)=i+t_i modn. Suppose F is a PERMUTATION, an explicit hypothesis.
+
+Concrete new test: t_i=2i^2 modn. Here
+ F(i)-F(j)=(i-j)[1+2(i+j)].
+The second factor is odd, hence a unit modulo2^m. Equality F(i)=F(j)
+therefore forces i=j modulo n; finiteness gives bijection. This is an
+elementary permutation-polynomial fact, not a historical-originality claim.
+Its increments t_(i+1)-t_i=4i+2 are nonconstant modulo n for n>=8, so
+at those sizes this test is genuinely non-affine. At n4 it happens to
+equal the affine map2i; exclude n4 from any non-affinity claim.
+
+If Z0=number of i with t_i=0, the full raw count is36n-12Z0: six cells
+except four at each zero slice, times both channels and three components.
+For t_i=2i^2, 2i^2=0 mod2^m iff i is divisible by2^ceil((m-1)/2).
+Thus Z0=2^floor((m+1)/2), and Nfull=36n-12*2^floor((m+1)/2)=O(n).
+These are actual chart rectangles, not cyclic unions or diagonal supports.
+
+2. ACTUAL STRONG KERNEL -- RECALLED AND PAID, NOT A NEW DISCOVERY
+
+Let S(x)=x1+x2+x3 modn. In one scalar original spatial/channel component,
+the strong graph connects each source of the designated parity to its
+three forward neighbors. A source layer S=s is joined only to target
+layer S=s+1. A two-edge path source x -> x+e_j -> x+e_j-e_k realizes
+e_j-e_k on the source layer. The vectors e1-e3,e2-e3 generate every
+zero-sum displacement modulo n, so the source layer is connected, and
+every target has a rung to it. Thus the actual components are precisely
+ G_(alpha,s)={x:S(x) in{s,s+1}}, s of that channel's strong parity.
+Each has2n^2 sites, with n/2 components per channel. Positivity of the
+squared original strong-edge differences proves that ker Q_H consists
+exactly of fields constant on each such component. Call this ambient
+space W_H. Its real dimension is3*2*(n/2)=3n.
+
+This is the253B strong graph, not a new auxiliary graph or assumed gap.
+For context the already derived actual-coexact intersection has dimension
+2(n-2), not the ambient3n count. Its description is the component-pair-
+constant vector functions of S, with componentwise global mean zero and
+pointwise sum of spatial components zero, separately per channel. Necessity:
+actual im d1* has zero component means and backward divergence zero;
+for functions of S, divergence says their spatial sum is constant, and
+the means make that constant zero. Sufficiency: at each nonzero diagonal
+Fourier frequency(k,k,k), let xi=exp(2pi ik/n)-1, u the vector coefficient,
+sum_r u_r=0. The actual two-form preimage is
+ A_jl=(xi*u_l-xi*u_j)/(3|xi|^2), j<l, with zero coefficient at k=0.
+Expanding d1* gives u because sum_r conjugate(xi)u_r=0. Conjugate
+frequencies pair, including the real Nyquist case, so the preimage is real.
+There are n/2 pair values; choose two zero-mean profiles freely and the
+third as their negative sum. Per channel dimension2(n/2-1), hence2(n-2)
+over both. This reproduces253B's exact result and supplies its referent,
+not a new rank claim or a replacement of coexactness by divergence alone.
+
+3. EXACT POINT-OBSERVATION IDENTITY ON THAT STRONG KERNEL
+
+Each actual partition above contains the singleton cell(i,t_i,0).
+Let C_pt select only its normalized rows for both original channels and
+all spatial components; there are exactly6n full rows. The normalization
+is V^(-1/2) since the cell size is1. For w in W_H, write v_(alpha,r,s)
+for its constant value on a strong component. Because F is a permutation,
+the sampled sums S(i,t_i,0)=F(i) visit each sum layer once. Each strong
+component therefore receives exactly TWO point samples, one per layer.
+Consequently, separately for each original channel/spatial component,
+ sum_i |w_(r,alpha)(i,t_i,0)|^2=2 sum_s |v_(alpha,r,s)|^2,
+ ||w_(r,alpha)||^2=2n^2 sum_s |v_(alpha,r,s)|^2.
+Summing all six original components proves the EXACT counting identity
+             ||C_pt w||^2=||w||^2/(V n^2), w in W_H.      (PT)
+Thus n*sqrt(V)*C_pt is isometric on W_H; it is not merely injective.
+The restricted ranks are3n on W_H and2(n-2) on W_H intersect U.
+These ranks concern that restricted point map, NOT the rank of C_pt on
+the whole actual U, NOT full-map rank and NOT a target-c theorem.
+The complete actual means C contain C_pt, hence
+ ||Cw||^2>=||w||^2/(Vn^2) on W_H. Other rectangular means need not vanish
+and no exact equality for the whole C is asserted.
+
+4. EXACT SIX-TAG INCIDENCE BUDGET FOR THE ACTUAL POTENTIAL ROUTE
+
+For the actual potential P Psi=(0,delta2 delta3^2 Psi,-delta2^2 delta3 Psi),
+with real two-form A23=delta2 delta3 Psi, individual chart-cell means
+telescope to delta2 Psi and delta3 Psi at the six tags
+ x1=i,x2 in{-1,t_i-1,t_i},x3 in{-1,0}.
+The two fixed families have sum coordinates i-1 and i-2. The four moving
+families have coordinates F(i),F(i)-1,F(i)-1,F(i)-2. Every one of these
+six LABELED maps from i to S is bijective. Therefore each sum layer
+receives exactly six tag INCIDENCES, and each actual strong component
+exactly twelve. Coincident tags, especially at t_i=0, count repeatedly;
+there are at most twelve distinct tagged points per component. This is
+not a claim of twelve independent equations or any positive Gram bound.
+Both gradient traces must still be annihilated to kill every refined mean.
+
+5. WHAT IS REFUTED, WHAT REMAINS OPEN
+
+The inference 'an isometrically observed whole strong kernel suffices for
+target-c recovery on actual U' is FALSE without a further actual control
+of the remaining modes/cross effects. There is already a concrete witness
+WITHIN THIS ORIGINAL CANONICAL CLASS: take any affine t_i=kappa*i with
+kappa=2mod4 and the enormous dyadic sizes in264A. Then F=(kappa+1)i is
+a permutation and (PT) holds exactly. Yet the original264A source
+97c5c98c7fbfa3923cfcebabe77847010af13b08, with both audited minor
+clarifications, supplies a real actual-coexact z with Cz=0 and
+Q(z)<(7/32)c||z||^2. Necessarily Q_H(z)>0 by (PT), so this does not
+contradict the exact strong-kernel observation identity. It disproves the
+stated shortcut even with an exactly scaled tight frame, not just a
+dimension count. This is a consequence of the EXISTING witness, not a
+second independent counterexample, and is grouped rather than papered.
+
+For t_i=2i^2, (PT), the canonical row count and the twelve-incidence
+statement are proved here. No actual invisible low-energy field OR strict
+target-c kernel lower bound is supplied for this nonlinear map. In
+particular the264A affine tensor annihilator cannot be transplanted:
+its grouping requires lambda+kappa*p independent of one packet index
+at moving tags. The nonlinear phase is lambda*i+2p*i^2, which lacks
+that fixed affine frequency grouping. Bounded incidence is not bounded
+motion, a trace-Gram lower bound, coexact projection invariance or a
+completed potential construction. Do not rename any of those assumptions
+as data or treat them as eliminated hypotheses.
+
+Next bounded task within Q251: on this actual nonlinear canonical map,
+derive a strict actual kernel lower bound above c with a paid finite-
+penalty argument, or a real actual-coexact invisible field with Q<c norm^2.
+Use the explicit original weighted form and all six chart traces. Falsifier:
+failure of an actual mean zero, true preimage, source-weighted inequality,
+or a claimed uniform quantitative trace estimate invalidates the candidate.
+After three units without a new actual quantitative bound/witness, preserve
+failures and change mechanism or name the precise obstruction. This first
+structural unit gives NO new target-c bound/witness; do not reset that
+quantitative no-advance counter by counting the recalled253B results.
+
+Model assessments and review context: involved Codex/OpenAI author, exact
+backend/version/effort unavailable. This new source is unreviewed until
+its own exact-source report; no blind/independent review, formal/numerical
+verification, model score or new PDF is claimed. Standard graph connectivity
+and permutation algebra are not claimed original. Published260C and its
+first assessment/objections are unchanged. PR29 stays20/41,TermSource=0;
+physical gap and continuum OPEN. No new active question outside Q251.

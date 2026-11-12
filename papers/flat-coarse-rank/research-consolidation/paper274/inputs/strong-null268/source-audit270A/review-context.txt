@@ -1,0 +1,32 @@
+ACTUAL REVIEW CONTEXT270A -- 12 November2026
+Involved Codex/OpenAI child /root/grouped260_manuscript_source_audit.
+Exact served backend/version/effort unavailable, none inferred. Inherited
+programme/author/prior audit context visible. Not blind or independent peer
+review; no model score, PDF review, formal/numerical or publication acceptance.
+
+Entire270A was read afresh and its new extension and all reused analytic
+estimates rederived in the full report. Whole269A and268A were fully read
+and audited in prior same-session tasks; exact original sources are retained
+as provenance, not inherited acceptance of270.268 is a separate premise only
+for the optional strict Q_H positivity sentence. No new full wholesale re-audit
+of268/269 is claimed. Full governance/CLAUDE and D LEEME previously read in
+this session; active environment/immutable-failure/audit-silence rules reread
+here. Whole captured files are not a claim of fresh full rereading of every
+historical instruction. Full inherited-chat export is unavailable and not
+fabricated; shared visibility is disclosed instead.
+
+No incoming message after assignment while auditing; no agents contacted.
+No mathematical executable, numerical experiment, compiler, test, Lean/Lake,
+oracle, Colab runtime, network or external model service used. Only Git/file/
+hash metadata and new packet retention. No source, branch, state, other report,
+public artifact, chat/agent, automation or PR changed. Parent untracked helpers,
+candidate copy and old PR body were not read, executed or altered. Status is
+captured only as names. No PR/body exists for270; normalized body hash N/A.
+Old PR232 is assignment context, not a newly network-verified PR assessment.
+No new clone/runtime cleanup debt. The retention helper is metadata only,
+not a mathematical verifier; explicit byte checks, no Python assert.
+
+Exact Git blob and checkout source bytes match the assigned SHA256 without
+newline normalization. The raw self-excluding manifest covers all artifacts;
+its own digest is separately returned. Exact origins in subject-bindings.
+No private root same-name copy present at checked path.

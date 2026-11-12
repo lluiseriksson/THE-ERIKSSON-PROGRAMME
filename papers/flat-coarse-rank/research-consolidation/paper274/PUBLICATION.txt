@@ -1,0 +1,36 @@
+Paper274 publication closure — 2026-11-12
+
+Coverage and coexactness in checkerboard slice observations, Lluis Eriksson.
+Public working paper, not editorial acceptance or human peer review.
+https://airr.science/papers/ARR-2026-451FW8N5MC8KYV5S/versions/v1/
+https://github.com/arr-research/arr-research.github.io/releases/tag/ARR-2026-451FW8N5MC8KYV5S-v1
+Published at 2026-11-12T05:16:34Z.
+
+Frozen scientific source: bec9892206b0e9d82bc96ed247895d68d9c25e48.
+Exact PDF: 359042 bytes, 9 pages, raw SHA256
+63a303bb47c16d5c1877ef37d9dd3511e3064ebafa274e1041afbd998606a9da.
+Exact manuscript raw SHA256:
+fc4d23951bca6bad51ffd2af70a95d439a01eb4202015ff9098878c6bc9c912c.
+The public immutable release carries the PDF, sources, full production evidence,
+original reports and actual model context. Its89 source members were verified
+against the audited public source f483d8750121a8f2b01635bb2d527283b2e179a2.
+AIRR merge f23d088542561bba43b349c48545728ab230ab9f; chronology merge
+8dec99c60012791cf6d6d2e694cff1129fe20a3a. Both followed successful head checks.
+
+SOURCE-MAPPING.json is the immutable PRE-PRODUCTION snapshot. Its pending/status
+fields describe that earlier stage, not current publication. No historical
+snapshot, manuscript byte, original assessment or failed attempt is rewritten.
+publication/verified-release.json likewise records the earlier public check
+before native closure; native-published-observation.json records the later
+authenticated GET showing published:true. These are different observation times.
+
+Original assessment: importance3.50/10, overall4/10, Minor Revision, four minor
+items and no open material objection. Full original report/context retained here.
+OpenAI/Codex, actual served backend/version/effort unavailable; involved inherited
+programme context, independence not established. No regrading occurred.
+The public version identifiers replaced provisional private identifiers only;
+the full original response and correction context are in the release package.
+
+This consolidation adds no new theorem, formal certificate, historical-priority
+claim or physical gap. Q251 remains OPEN. PR29=20/41; TermSource=0; continuum OPEN.
+The projection/repair route counter remains2; publication does not reset it.

@@ -1,0 +1,131 @@
+Q251 /271A -- CONTRAST-UNIFORM ENERGY STABILITY OF THE TRUE COEXACT PROJECTION
+UNREVIEWED analytical candidate,12 November2026 UTC. Basee7b57d0064207bd8900da5fc955ee29c6332e489.
+Grouped research tool, not a paper/PDF/model grade, formal or numerical proof.
+
+1. ACTUAL STATEMENT AND LIMIT
+
+Let n>=2 be even, Lambda=(Z/n)^3, with counting norms and true forward
+curl d1 on unordered spatial pairs j<l. In each ORIGINAL channel let
+the forward source weight be a>=0 on even sum sites,H>=0 on odd sites,
+or the reversed assignment. Let Q_a,Q_H denote the corresponding weak
+and strong source energies over all3 forward directions and components.
+Weights are scalar in spatial directions within a fixed source/channel.
+Both original channels are orthogonal and may be summed independently.
+
+Let P be the counting orthogonal projection onto ACTUAL(im d1*)^2,
+not just the divergence-free space including harmonic constants.
+PROPOSED THEOREM, for EVERY ambient field u:
+ Q_H(Pu)<=4 Q_H(u), Q_a(Pu)<=4 Q_a(u), hence Q(Pu)<=4 Q(u). (T)
+The constant4 is independent of n, a,H and their contrast; no optimality.
+Also ||Pu||<=||u||. No hypothesis of energy commutation is assumed.
+
+This is an energy-stable domain correction, NOT an invisibility-preserving
+one. It does not prove C(Pu)=0 from Cu=0 for the canonical rectangular map.
+It supplies neither targetc nor a new true-coexact invisible counterexample
+for F-permutation2i^2, nor a physical mass gap/continuum result. The means
+constraint remains a separate explicit obstruction, not removed by(T).
+
+2. ACTUAL PROJECTION SYMBOL, INCLUDING HARMONIC REMOVAL
+
+Use unitary characters e_k(x)=n^-3/2 exp(2pi i k.x/n).
+Put g_j(k)=exp(2pi i k_j/n)-1 and |g|^2=sum_j|g_j|^2.
+At k!=0 the actual curl-adjoint image is g(k)^perp in C^3. Indeed the
+curl symbol is (g wedge v)_jl=g_j v_l-g_l v_j. For v with g* v=0,
+ A_jl=(g_j v_l-g_l v_j)/|g|^2
+is a true2-form preimage: its adjoint component is
+ (|g|^2 v_j-g_j sum_l conjugate(g_l)v_l)/|g|^2=v_j.
+Conversely g* times the adjoint is zero by antisymmetry. Thus the actual
+orthogonal projection at nonzero k is P_g=I-gg*/|g|^2. At k=0 it is
+P_0=0, because the actual adjoint symbol is zero; constants are excluded.
+This derives the image instead of replacing it with a larger kernel.
+Symbols at conjugate frequencies conjugate, so real fields are preserved.
+
+3. AN ELEMENTARY TWO-VECTOR ESTIMATE, PAID DIRECTLY
+
+For nonzero g,h in C^3, A,B in C^3 define the tuple
+ R=(g_j A-h_j B)_(j=1,2,3), with sum-of-component squared norm.
+Let e=g/|g|,f=h/|h| and s^2=1-|e*f|^2.
+The rank-one projection difference has norm
+ ||P_g-P_h||=s.
+To verify, adjust f by a unit scalar so e*f=alpha>=0, then for s>0
+write f=alpha e+s v with v unit and perpendicular to e. On span(e,v),
+ (ee*-ff*)=[[s^2,-alpha s],[-alpha s,-s^2]],
+whose square is s^2 I; it vanishes on the perpendicular complement.
+If s=0 the projections coincide. This proves the identity over C as well.
+
+Least squares in A, or completing its square component by component, gives
+ ||R||^2=|g|^2||A-(g*h)/|g|^2 B||^2
+          +[|h|^2-|g*h|^2/|g|^2]||B||^2
+         >=|h|^2 s^2||B||^2.                            (LS)
+Here g*h=sum_j conjugate(g_j)h_j, and its scalar multiplies each spatial
+component of B. This is a derived residual bound, not a conditioning input.
+
+The projected residual is exactly
+ R'=(g_j P_g A-h_j P_h B)_j
+    =(P_g R_j)_j+(h_j(P_g-P_h)B)_j.
+The first tuple has norm<=||R||; the second has norm
+ |h| ||(P_g-P_h)B||<=|h|s||B||<=||R|| by(LS).
+Triangle inequality yields ||R'||<=2||R||, hence squared<=4||R||^2.
+This argument also covers g,h parallel without division by s.
+Replacing B by -B gives the identical bound for g_j A+h_j B.
+
+If g=0,h!=0, with the ACTUAL projection P_0=0, both conclusions reduce
+to ||h_j P_h B||_j<=||h_j B||_j, and similarly if h=0,g!=0.
+The case both zero is trivial. Thus harmonic removal causes no exception.
+
+4. EXACT ORIGINAL SOURCE PARITY PAIRS AND NORMALIZATION
+
+Let eta=(n/2,n/2,n/2). Partition all frequencies into unordered pairs
+{k,k+eta}, choosing one representative per pair. They are distinct for
+even n>=2. In a fixed original channel write A=uhat(k),B=uhat(k+eta),
+g=g(k),h=g(k+eta), so h_j=-exp(2pi i k_j/n)-1.
+At a source x of sum parity epsilon=(-1)^(x1+x2+x3), the forward
+gradient contribution of this pair is
+ e_k(x)(g_j A+epsilon h_j B).
+On the even source sublattice the two characters agree; on odd they
+are negatives. Distinct unordered pairs are orthogonal on EACH parity
+sublattice: sum_(epsilon fixed) e_k conjugate(e_l) is nonzero only
+if k-l is0 or eta. Each parity has n^3/2 sites, and the unitary
+character magnitude squared is1/n^3. Consequently, EXACTLY,
+ sum_(x odd,j)|D_j u(x)|^2=(1/2)sum_pairs||(g_j A-h_j B)_j||^2,
+ sum_(x even,j)|D_j u(x)|^2=(1/2)sum_pairs||(g_j A+h_j B)_j||^2.
+No missing volume, pair-count, spatial or channel factor is suppressed.
+
+Applying the derived residual estimate to each tuple after projection,
+and multiplying by the nonnegative original H or a, proves both bounds(T).
+The reversed channel simply swaps the two parity identities, so the same
+proof applies; sum the original orthogonal channels. Degenerate a=0 or
+H=0 is allowed. Zero Fourier modes use the actual P_0 already treated.
+Thus(T) is a finite exact estimate independent of contrast, including
+the programme's a=c/48,H=cn^2. No executable computation is involved.
+
+5. WHAT THIS DISCHARGES, AND WHAT IT DOES NOT
+
+A contrast-uniform upper bound for the TRUE coexact projection is now
+derived, rather than assumed as a data field or confused with commutation.
+In particular it preserves the exact strong-null kernel, a consequence
+consistent with the earlier253 component/coexact description. That
+qualitative preservation alone is not new; the paid all-field factor4 is
+the candidate quantitative tool. Norm contraction alone does not give a
+lower bound for ||Pu||, and(T) alone does not preserve any individual mean.
+An ambient invisible witness cannot therefore be declared a coexact one.
+The previous block-average projection obstruction in251 is not contradicted:
+that is a different projection with different domain/trace requirements.
+
+For the permutation case the earlier fixed-profile zero-set method also
+stalls exactly: image F=Z/n makes B+{-3,-2,-1,0}=Z/n, so imposing all
+those potential zeros forces psi=0. This rejects that sufficient-constraint
+ansatz, not all potential constructions or the possibility of targetc.
+The next required step is a paid trace-preserving correction or an actual
+coexact variational bound. No such missing step is claimed proved here.
+
+Falsifiers: wrong true-adjoint symbol or P0, complex-conjugation error in
+LS, false projector-angle norm, lost parity/pair normalization, or a source
+coefficient depending on spatial direction invalidating the stated scalar
+parity form. Arbitrary anisotropic or non-checkerboard weights are outside
+this theorem. Historical originality/relevance UNESTABLISHED; finite Hodge
+symbols and projection geometry are classical. Require a full own exact-
+source analytical audit before accepting(T); prior source acceptance is not
+validation. No independent/blind review, grade or formal/numerical proof.
+Involved Codex/OpenAI author, exact backend/version unavailable. SoleQ251;
+PR29=20/41,TermSource=0, physical gap and continuum remain OPEN.

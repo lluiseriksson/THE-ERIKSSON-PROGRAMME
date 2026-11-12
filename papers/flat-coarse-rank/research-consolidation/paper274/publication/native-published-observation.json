@@ -1,0 +1,12 @@
+{
+  "observed_at": "2026-11-12T05:51:47.361554+00:00",
+  "phase": "after-mark",
+  "native_submission": "SUB-C43B923E4EE9B956",
+  "published": true,
+  "exact_pdf_sha256": "63a303bb47c16d5c1877ef37d9dd3511e3064ebafa274e1041afbd998606a9da",
+  "exact_pdf_bytes": 359042,
+  "scan_status": "clean",
+  "status": "eligible",
+  "owning_child_authenticated_GET": true,
+  "mutation_performed_by_reader": false
+}

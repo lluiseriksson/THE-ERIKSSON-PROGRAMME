@@ -1,0 +1,23 @@
+268A bounded primary context,11 November2026 UTC. No exhaustive novelty.
+Chris Godsil, More Linear Algebra, version26/11/2021, author-hosted notes:
+https://www.math.uwaterloo.ca/~cgodsil/quagmire/linalg2/pdfs/LA2.pdf
+Read the returned rank-nullity excerpt in section1.3 and bounded incidence/
+rank excerpt2.1, plus the author's course outline. These establish standard
+linear-algebra/incidence-rank background, not this specific observation-map
+result. The full284-page notes and a specific binary-cycle theorem were NOT
+read or imported here.268A pays its cyclic minor directly, without an
+external rank hypothesis. Classical matrix parity arguments are not claimed
+original. Exact historical priority of the combined statement is unknown.
+
+The attempted rank-slide PDF lookup was rejected by the tool for18.6MB
+content length; the attempted Clemson author-hosted incidence-code article
+timed out. Neither was read, and no absence/expiry/priority inference follows.
+Third-party textbook mirrors, Q&A and summaries were not used as evidence.
+
+Programme inventory:253B already proves the actual strong components and
+coexact rank.256A gives a corrected positive-strong-energy counterexample
+for one fully-cut grid, not an exact strong-zero witness.266 proves a
+point-submap identity under F permutation;267 gives its own logarithmic
+coercivity with that assumption.268A must establish its larger arbitrary-
+cut exact-zero exclusion by its own source proof/audit; it does not extend
+267's quantitative constants. No new paper, model score or novelty claim.

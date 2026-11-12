@@ -1,0 +1,36 @@
+269A subsequent analytical status,12 November2026 UTC.
+Frozen referent feb324d61b604bd9672b4eafea6e9507cfc799e5.
+Proof raw/Git/checkout SHA256 dbeb8d70312bc97944096a780636cb38230c619604849327314d5d4a73965de4.
+Original UNREVIEWED source header is retained historically, without rewriting.
+Verdict ACCEPT_ANALYTICAL_FOLDED_MAP_ACTUAL_COEXACT_COUNTEREXAMPLE.
+No material failure or minor correction found. Parent read COMPLETE15156-byte
+report, context, assignment and bindings; verified all10 actual raw members.
+Full report raw SHA256 5b65dc97a8ba7e1c38dd2a7a5ec537624a1435a6ec5c4ee819163dbd37f7af7e.
+Raw manifest SHA256 ae9462da2c6a2ab5f7cae69578fd602f07b6a540906d32fec012824982f7f002.
+
+Actual result: dyadic n>=1024 with log(n/64)>=2^34, original D3 source
+weights a=c/48,H=cn^2, folded t_i=((i mod2)-i)modn, full36n-24 actual
+nonwrapping means. There exists a REAL nonzero actual-coexact invisible
+field with Q<(c/2)||z||^2. Any finite observation penalty vanishing at0
+cannot restore targetc for this particular map. True A23 supplied; every
+cell mean, nonzero norm and original strong-source energy are paid.
+Six mode pairs/five potential zeros plus an explicit finite logarithmic
+cutoff provide the witness.268 implies Q_H>0 only;269 construction and
+upper bound were freshly audited without using268 to validate them.
+
+The foldmap is nonaffine but F has only two values. No counterexample for
+the nonlinear permutation2i^2, no general canonical impossibility, no
+matching logarithmic rate or practical threshold. Originaltargetc on other
+maps, physical gap and continuum remain OPEN. PR29=20/41,TermSource=0.
+This fresh quantitative witness resets the soleQ251 no-advance counter to0.
+The earlier268 status/counter1 remains its immutable historical record.
+
+Model assessments and review context: involved Codex/OpenAI author/reviewer,
+shared inherited programme and prior audits, exact backend/version/effort
+unavailable. Not blind, independently established, peer review, formal or
+numerical verification, grade or publication acceptance. Full context and
+all findings retained in source-audit269A; no source audit excerpt substitutes
+for the complete report. No mathematical executable/runtime used.
+Historical originality UNESTABLISHED; classical capacity methods credited.
+No new small paper/PDF/grade; group268+269 in one source PR. Public260C PDF,
+assessment and open objections do not cover these new source results.

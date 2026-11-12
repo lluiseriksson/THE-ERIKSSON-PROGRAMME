@@ -1,0 +1,205 @@
+EXACT-SOURCE ANALYTICAL AUDIT267A -- LOGARITHMIC CANONICAL COERCIVITY
+
+VERDICT: ACCEPT_ANALYTICAL_ALL_FIELD_LOGARITHMIC_BOUND_AND_FINITE_PENALTY
+MATERIAL FAILURE: NONE found. No minor mathematical or metadata error requiring
+correction was found in the assigned source. Explicit scope limitations below
+remain essential. This is a fresh analytical checking of the267 derivation,
+not acceptance inherited from266, a model grade or formal verification.
+
+Exact commit bea6967059f23b25fdab96def70bbe66f8c47785.
+Subject raw/Git/checkout SHA256
+d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577.
+No newline normalization. No PR/body exists; no body referent invented.
+
+1. MODEL, ACTUAL CANONICAL PARTITION AND PERMUTATION HYPOTHESIS
+
+The note fixes n=2^m,m>=2,V=n^3,c>0, a=c/48,H=cn^2 and actual orthogonal
+original-channel source weights. Q_a and Q_H are nonnegative and Q_H is
+exactly H times all designated strong outgoing forward-edge squares. The
+odd-source channel1/even-source channel2 conventions agree with the original
+model; no source/target weights or spatial/internal components are swapped.
+
+Each x1=i slice is an actual nonwrapping product partition in x2 and x3.
+Even t_i cannot equal n-1; thus the last x2 interval is always nonempty.
+Only the first interval vanishes at t_i=0. There are6 product cells otherwise
+and4 at zero, multiplied by3 spatial components and2 channels. Consequently
+the actual full count36n-12Z0<=36n is correct. It does not assert restricted
+coexact independence. The actual singleton cell(i,t_i,0) is always present
+with normalization V^-1/2, including zero slices.
+
+The explicit hypothesis F(i)=i+t_i permutation is not derived for all even
+maps. The examples meet it: even affine slopes have odd invertible kappa+1;
+for2i^2 the difference factors as(i-j)[1+2(i+j)], with odd invertible second
+factor. Its nonaffinity for n>=8 and exceptional affine n4 case are correct.
+The zero count2^floor((m+1)/2) follows from divisibility of i by
+2^ceil((m-1)/2). These are appropriately recalled structural facts.
+
+2. TRUE STRONG COMPONENTS AND TWO-LAYER ENERGY
+
+A strong-source sum residue s has all three outgoing targets in s+1. The
+undirected two-edge path x -> x+e_j -> x+e_j-e_k connects source points by
+e_j-e_k, and these generate the zero-sum submodule. Every target has a rung.
+Thus G_s is exactly one connected pair of sum layers, size2n^2, with n/2
+such components in each channel. No edge joins two claimed components.
+
+With source x_s(y)=(y1,y2,s-y1-y2), its e3 endpoint is the paired target
+at y, and its e_j endpoint(j=1,2) is the paired target at y+e_j, since
+x_s(y+e_j)+e3=x_s(y)+e_j. The printed energy therefore contains all three
+actual strong outgoing labels exactly once. The counting mass is both
+layers, not just source mass. Summing over components/channel/spatial
+components gives exactly Q_H=H sum E_s. Wrap layer pairs pose no exception.
+
+Unitary2D Fourier normalization n^-1 preserves counting norm. For each k,
+E is |U-V|^2+|U-e^(i theta1)V|^2+|U-e^(i theta2)V|^2, hence matrix
+[[3,-S],[-conjugate(S),3]], S=1+e^(i theta1)+e^(i theta2), up to the
+equivalent conjugate-order convention. Its eigenvalues are3 plus/minus |S|.
+At k0 there is exactly the constant two-layer zero eigenvector and the
+antisymmetric eigenvalue6. Expanding |S|^2 proves the three-term identity D.
+
+For centered residues r_j in[-n/2,n/2-1], sin(pi|r_j|/n)>=2|r_j|/n,
+including |r_j|=n/2. Thus each squared difference>=16r_j^2/n^2.
+For nonzero k, at least one integer r_j is nonzero, so D>=16/n^2.
+Dividing by3+|S|<=6 gives3-|S|>=8/(3n^2). The upper branch and the k0
+antisymmetric mode satisfy this same bound. Removing the total component
+mean removes precisely the sole constant zero mode. Parseval then gives
+||r||^2<=(3n^2/8)E_s, exactly P. No assumed gap or domain invariance enters.
+
+3. POINT EVALUATION AND THE EXACT GREEN DIAGONAL
+
+On the finite-dimensional total-mean-zero two-layer space, the positive
+energy coordinates can be diagonalized orthonormally. Express point
+evaluation in those coordinates and apply weighted Cauchy-Schwarz:
+|sum b_j a_j|^2<=(sum |b_j|^2/lambda_j)(sum lambda_j|a_j|^2).
+Every lambda_j is strictly positive after omitting the unique constant
+mode; therefore this is valid without a pseudoinverse assumption supplied
+as data. It proves the desired evaluation inequality with that reciprocal
+diagonal. It also applies to complex coefficients, hence to real fields.
+
+For each nonzero k, direct inversion of the printed2by2 matrix gives diagonal
+3/(9-|S|^2) on either layer. At k0, the normalized antisymmetric vector has
+squared coordinate1/2 on either layer and eigenvalue6, contributing1/12.
+The evaluation Fourier factor has modulus1/n, hence squared1/n^2. Therefore
+G_n=n^-2[1/12+sum_(k!=0)3/(9-|S(k)|^2)] exactly as printed. There is no
+factor2 lost from the two layers: their inverse diagonal and the1/2 at k0
+already account for them. Translation in y and exchange of layer diagonal
+leave this value unchanged, so it bounds every selected point.
+
+Using D>=16(r1^2+r2^2)/n^2 cancels the outer n^-2 and gives
+G_n<=1/(12n^2)+(3/16)sum_(r!=0)(r1^2+r2^2)^-1. Each max-norm shell j
+in the centered square has at most8j points and each denominator is at
+least j^2. The j=n/2 shell has missing positive boundary points, which
+only lowers its count. Centered representatives cover all frequencies,
+including Nyquist, once; no omitted/doubled boundary mode is needed.
+The shell sum is bounded by8 H_(n/2)<=8[1+log(n/2)]. Thus
+G_n<=1/(12n^2)+(3/2)[1+log(n/2)]<=2L, L=1+log n.
+The last inequality follows even after discarding the favorable log2 term:
+1/(12n^2)<=1/2<=L/2. Constants are non-sharp but valid for every n>=4.
+The logarithmic point estimate G is therefore analytically paid in full.
+
+4. SELECTED ACTUAL SOURCE POINTS AND THE KERNEL CONSTANT5
+
+F permutation visits each sum residue once among the actual singleton
+cells. For each channel component G_s choose the unique sample of source
+residue s. This is a point in that true component, and its original
+channel/spatial row is contained in C. Different source residues give
+distinct selected spatial samples within a channel; channel/spatial labels
+make the total selected rows distinct. The selection can be shared by all
+three spatial components without mixing them. In fact the same permutation
+also gives a target sample, but only one point per component is needed.
+
+If Cz=0, every selected point value f(v_s)=0. Write f=m+r with mean-zero
+r. Then m=-r(v_s), E_s(r)=E_s(f), and the exact counting decomposition is
+||f||^2=||r||^2+2n^2|m|^2. P and G_n<=2L give
+||f||^2<=[3/8+4L]n^2 E_s(f)<=5Ln^2 E_s(f), since L>=1.
+Summation over disjoint scalar component spaces and H=cn^2 then yields
+||z||^2<=(5L/c)Q_H(z)<=(5L/c)Q(z), i.e. K with c/(5L).
+The other actual means only shrink the observation kernel. Zero-energy
+cases require no division by E: the inequalities remain non-strict and
+force a zero field when a constant has a zero selected value. Constants
+5 and the factors2n^2, cn^2 are all consistent with original counting norms.
+
+5. ALL-FIELD FINITE PENALTY AND CONSTANTS4,9
+
+For general f, m=f(v_s)-r(v_s). The scalar inequality |a-b|^2<=2|a|^2+
+2|b|^2 gives2n^2|m|^2<=4n^2|f(v_s)|^2+4n^2|r(v_s)|^2. Combining with
+P and G_n<=2L gives
+||f||^2<=4n^2|f(v_s)|^2+[3/8+8L]n^2E_s(f)
+<=4n^2|f(v_s)|^2+9Ln^2E_s(f), again because L>=1.
+No false kernel-to-finite-penalty implication is being used: this is a
+direct estimate for every original ambient field.
+
+Each selected normalized singleton row is f(v_s)/sqrt(V). Sum of its
+unnormalized square equals V times its row square. Distinctness and
+nonnegativity of all extra row squares give sum_selected|f(v_s)|^2
+<=V||Cz||^2. Summing the preceding component inequality thus gives
+||z||^2<=4n^2 V||Cz||^2+(9L/c)Q_H(z)
+<=4n^2 V||Cz||^2+(9L/c)Q(z).
+Multiplication by c/(9LV) is exactly
+Q/V+[4cn^2/(9L)]||Cz||^2>=[c/(9L)]||z||^2/V.
+The coefficient4cn^2/(9L), the target c/(9L) and every V factor agree
+with the displayed theorem T. There is no extra V or n^2 normalization
+missing. Constant ambient fields are paid by the selected point rows;
+the argument does not silently restrict to mean-zero ambient fields.
+
+6. ACTUAL DOMAIN, PROVENANCE, ALL OBJECTIONS AND LIMITS
+
+The entire derivation is in the original ambient real vector space.
+Therefore restriction to actual U=(im d1*)^2 is automatically valid.
+No assertion that rectangular averaging preserves U, no replacement by
+divergence-free space, no true-preimage construction or coexact projection
+invariance is needed for this direction. The source does not claim one.
+The result depends on the explicit F permutation assumption and the exact
+orthogonal source profile; these have not been eliminated or generalized.
+
+No material missing assumption, sign error, numerical factor, lost layer,
+Nyquist exception, row-rank substitution or normalization error was found.
+No minor mathematical correction is proposed. The missing README attempted
+read is only a file-discovery fact, not a scientific defect or required
+input. Preexisting parent untracked files were left untouched and unused.
+
+This IS a new quantitative derivation relative to266's structural identity:
+it pays a logarithmic point trace on the true strong graph and a direct
+all-field finite penalty. Its validity was checked afresh above, without
+using264's witness or266's acceptance as a theorem premise. It reaches only
+the degraded target c/(9L) and kernel lower c/(5L). In particular neither
+establishes original target c, a uniform penalty, a matching upper rate,
+logarithmic necessity, a nonlinear invisible witness, an optimum or closure
+of sole Q251. A lower bound tending to0 does not prove any actual low-energy
+kernel vector exists. It is compatible with the earlier affine target-c
+counterexample but does not depend on it. Practical/solver conditioning,
+physical mass gap and continuum statements remain unproved and unclaimed.
+
+Classical graph Fourier/Green point-capacity reasoning is explicitly labeled
+classical. No primary-source novelty comparison was performed; originality
+and relevance remain unestablished. PR29=20/41,TermSource=0 remain unchanged.
+No new paper/PDF/grade or publication acceptance follows. The prior counter
+was1 during this audit; no state/counter was modified. Parent may account
+for this validated quantitative result after reading the full exact report,
+not merely on candidate submission or structural recall.
+
+7. ACTUAL REVIEW CONTEXT AND EVIDENCE CLOSURE
+
+This is involved Codex/OpenAI analytical review in the same child session
+with inherited parent/programme/prior report context, not blind or independent
+peer review. Exact served backend/version/effort is unavailable and not
+inferred. Full267 source was read afresh; retained253/266 provenance was read
+in full earlier in this session, not newly fully re-audited. Current relevant
+governance/storage sections were reread. Assignment and review-context record
+the full task, read scope, actual context and limitations. Full inherited
+chat cannot be tool-exported and is not pretended captured.
+
+No mathematical executable, numerical experiment, test, compiler, Lean/Lake,
+oracle, runtime, network or external model service ran. All mathematics above
+is analytical derivation. Only Git/file/hash reads and this new evidence
+packet were written. No source, Git, state, other report, score, PR/body,
+public artifact, automation or other chat/agent was changed. No inbound
+parent message arrived while auditing. No clone/runtime cleanup debt exists.
+
+Git source and checkout subject bytes match the assigned raw SHA256. Exact
+subjects and bindings, complete assignment/context, initial status and this
+full report are retained. The manifest lists all artifacts except itself
+with raw byte length and SHA256 without normalization; its own digest is
+returned separately. This retention helper is not a mathematical verifier
+and no Python assert decides byte acceptance. Historical source UNREVIEWED
+labels remain intact; use this exact-source report without upgrading it to
+formal proof, independent review, model scoring or publication acceptance.
