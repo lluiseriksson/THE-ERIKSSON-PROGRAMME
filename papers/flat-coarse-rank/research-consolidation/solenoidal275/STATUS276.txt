@@ -1,0 +1,30 @@
+276A main equations and whole-plane bound accepted analytically, with one
+false ancillary endpoint comment corrected HERE before reuse. Original source
+285f02aea7cf04b1e6644c11a1507f8bebd72fa8 and unabridged audit remain immutable.
+
+MANDATORY ERRATUM276A-N1: at tau=0 only P(0)=0 is automatic; X(0)=0 AND
+P(n)=0 remain required. At tau=n-1, P(n)=P(n-1)+X(n-1) makes the total
+redundant under the other two. Never drop P(n)=0 at tau=0. The original
+displayed system retains all totals and is correct; its blanket redundancy
+comment is false. The audit gives a real275-class counterexample at n4.
+Read constraints276A.txt ONLY together with this erratum.
+
+Accepted scoped result: full original short/long cells reduce exactly to
+E/W prefix,singleton,total constraints; permutation anchors eliminate layer
+constants while retaining sum alpha=0. For paired fields vanishing on the
+ENTIRE x3=0 plane, Q_H >=3cn/(n-2)||w||^2. This excludes that shortcut for
+a target-below-c witness, not actual cell cancellations or the full U space.
+
+No full-Q251 gap/witness, numerical/formal execution, new grade, originality
+certificate, independent review or new paper. Direct-stream route unit1;
+projection/trace route stays stopped at3. Preserve full failed comment and
+its falsifier. Next seek cancellations rather than pointwise plane zeros.
+
+Primary-source scope: search returned author-hosted Fan Chung CBMS chapter1
+Dirichlet-sum/Rayleigh excerpt. Full PDF open then failed HTTP502. No full
+PDF reading claimed. Classical ingredient derived independently on paper;
+historical priority not established. https://www.math.ucsd.edu/~fan/cbms.pdf
+
+Review: involved Codex/OpenAI, actual backend/version/effort unavailable;
+inherited programme context, not independent peer review. PR29=20/41,
+TermSource=0; physical gap and continuum OPEN. No changes to published274.

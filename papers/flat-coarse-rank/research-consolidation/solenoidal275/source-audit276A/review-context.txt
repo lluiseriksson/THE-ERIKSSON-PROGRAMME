@@ -1,0 +1,24 @@
+ACTUAL SCIENTIFIC SOURCE AUDIT276A -- 12 November2026
+Same involved Codex/OpenAI child /root/grouped260_manuscript_source_audit,
+with inherited author/programme/prior audits. Exact backend/version/effort
+unavailable; none inferred from source author's reported root model. Separate
+assigned role, not blind or independently established model/human review.
+No grade/PDF/novelty/acceptance assessment.
+
+Whole276source read afresh; every equation, endpoint, constant-elimination
+step and vector-path bound analytically checked in full report. Source275
+was fully read/audited in preceding same-session task; its relevant paired
+coordinates/energy/actual-image assumptions reinspected, with full original
+report retained and hash-bound. STATUS erratum read; no new wholesale275
+re-audit or inherited276 acceptance. Governance/CLAUDE/D LEEME previously
+read in session. No external primary source opened; cited bounded background
+is attributed source context, not a novelty certificate. Full inherited-chat
+export unavailable and not fabricated.
+
+No incoming message during audit, no new agents/models contacted. No numerical,
+mathematical executable, Lean/Lake/oracle, compiler, test, runtime, network or
+service used. Only file/Git/hash metadata and this new exclusive evidence
+packet. Metadata writer uses explicit byte checks, not Python assert; no
+reviewed program or mathematical computation was run. No source/branch/state/
+other report/chat/agent/grade/automation change. No new clone/runtime cleanup
+debt. Source frozen raw representations preserved, no edit to correct N1.
