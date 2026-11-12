@@ -1,0 +1,9 @@
+{
+  "initial_head": "f1d7dd052e05acaf7fc6a5143f3ce384e8a6d8f6",
+  "final_head": "f1d7dd052e05acaf7fc6a5143f3ce384e8a6d8f6",
+  "bytes": 12205,
+  "checkout_sha256": "f06188b8d72581b600e89326fb18144631c9606e692ea186a7ce53919202724b",
+  "git_blob_sha256": "f06188b8d72581b600e89326fb18144631c9606e692ea186a7ce53919202724b",
+  "unchanged": true,
+  "body_capture": "N/A: no PR/body exists"
+}

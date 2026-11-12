@@ -72,3 +72,6 @@ papers/checkerboard-response/research/prefix-residual286/** -text whitespace=cr-
 
 # Exact287 source audit bytes.
 papers/checkerboard-response/research/line-average-removal287/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space
+
+# Exact288 complete analytical audit bytes.
+papers/checkerboard-response/research/endpoint-sharp288/** -text whitespace=cr-at-eol,-blank-at-eof,-trailing-space
