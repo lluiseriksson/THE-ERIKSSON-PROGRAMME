@@ -1,0 +1,44 @@
+Bounded primary-source and internal-priority check279, 12 November2026.
+
+Primary source actually opened/read in this unit:
+M. Faust and F. Sottile, Critical Points of Discrete Periodic Operators,
+author-hosted February2024 version, arXiv2206.13649, section1.2, printed
+pages5-6 (PDF indices4-5), formulas(1)-(4), plus opening abstract.
+https://franksottile.github.io/research/pdf/CPoDPO.pdf
+It describes the Fourier/Floquet transformation of a periodic discrete
+operator into a finite matrix depending on characters of the translation
+group. This is established background;279 does not claim novelty for that
+reduction. Their matrix acts on a periodic graph's fundamental domain.
+The particular compression onto the actual discrete curl-adjoint image,
+the missing zero coefficient, and the original finite observation rows in
+279 are derived explicitly here, not inferred from that general method.
+Only the indicated bounded passages were read; not the whole28-page paper.
+
+Attempted primary/reference check for principal angles:
+A. Bjorck and G.H. Golub, Numerical Methods for Computing Angles Between
+Linear Subspaces, Mathematics of Computation27(123),1973,579-594.
+https://www.ams.org/mcom/1973-27-123/S0025-5718-1973-0348991-3/
+https://rainbow.ldeo.columbia.edu/~alexeyk/BjoerckGolub1973.pdf
+AMS page/PDF and academic mirror returned403 to the web reader in this
+unit. Search metadata identified the reference but does not count as a
+full primary-text reading or a proof of279's special compression identity.
+The trace/intersection argument in279 proves that identity directly.
+
+Internal comparison actually read:
+256 capacity-counterexample256A sections3-4: scalar two-frequency strong
+block and its use for a restricted potential family are already present.
+253B retained in revision260-preparation/inputs/strong-component-observations253:
+sections2-4 already prove strong-component gap and exact restricted rank.
+267 nonlinear267A-logarithmic-bound sections2-3: full ambient graph blocks,
+coarse nonconstant gap, and logarithmic point Green bound already present.
+268 strong-null-exclusion268A sections1-3: qualitative kernel exclusion,
+not uniform conditioning.275 and276: paid actual-image and paired formulas.
+
+No external priority is established by this search. A search failing to
+find the exact four-root formula is not evidence of originality. The useful
+within-programme addition is the complete positive-weight coexact spectrum
+and exact identification of the whole subtarget space. Strong-kernel count,
+Fourier methods, SVD and existence of a transverse gap are not new claims.
+Relevance: this replaces a restricted test family by a complete description
+of all low modes for Q251, while leaving the observation-cancellation cost
+open. No separate small-corollary paper or AIRR submission is made.

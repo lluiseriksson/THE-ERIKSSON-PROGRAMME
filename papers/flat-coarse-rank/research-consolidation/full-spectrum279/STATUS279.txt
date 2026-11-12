@@ -1,0 +1,36 @@
+279 exact-source analytical outcome, 12 November2026.
+Frozen source3015e4284a2441fdbe65e893169f446fb9cff4d4,
+raw SHA2563c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4.
+Source candidate header preserved; acceptance is recorded here separately.
+
+Separate involved source auditor accepted the complete original restricted
+coexact spectrum and low/high split, with no material error or required
+correction. Parent read its full report and context. Report SHA256
+2f86e493f19f47628276c2852ec255144204311e93ee5e4f0d1deefc9fa71a36.
+Full reports, assignment, context, subjects and raw manifest are retained.
+No numerical grade, independent/human review, executable/formal proof,
+runtime, new PDF or publication was produced. Backend identity unavailable
+beyond actual Codex/OpenAI role; no inherited named-model assessment.
+
+Substantive result: complete four-root spectrum for every nonexceptional
+checkerboard pair on actual U, plus the exceptional zero/q plane. At the
+original Q251 weights, the entire spectral interval(0,c) has real dimension
+2(n-2), all its roots<=c/8, and the full orthogonal complement>=16c/3.
+Actual original normalized cell rows are explicit in those coordinates.
+This describes every low mode, not merely a paired stream test family.
+
+No Yang-Mills hypothesis or target-c observation estimate is eliminated.
+The prior strong-kernel dimension and transverse-gap existence are credited;
+Fourier/SVD are classical, external priority not established. Sources and
+failed primary lookup recorded in primary-reading279-bounded.txt.
+
+Q251 remains the only active question. Old paired-stream and longitudinal
+projection routes remain STOPPED_AT3. The full-spectrum route has one unit,
+with a substantive exact result and zero consecutive nonprogress units.
+Next: derive the actual minimal high-mode cost of cancelling C l, using
+the shifted form Q-cI on the high space, including range constraints and
+dependent rows. Then pay a bound or construct a counterexample for nonlinear
+tau_i=2i^2 mod n, dyadic n. An assumed Gram estimate or notation-only Schur
+complement does not remove a hypothesis. Compare with267's logarithmic bound.
+Keep279 grouped for a later substantive manuscript; no small-corollary paper.
+PR29=20/41; TermSource=0; physical spectral gap and continuum remain open.

@@ -1,0 +1,214 @@
+Q251 /256A — ACTUAL COEXACT COUNTEREXAMPLE TO ONE FULLY-CUT24n GRID
+11November2026. CANDIDATE PROOF — NOT YET AUDITED. No numerical experiment.
+This is research source, not a separate paper, assessment or publication.
+It is excluded from the immutable255B PDF and its first4.00/10 assessment.
+Originality/priority and practical relevance are UNESTABLISHED. The harmonic
+sum/Green-Gram mechanism is classical; only this explicit finite construction
+is proposed here. No physical Yang-Mills or continuum claim.
+
+Conventions reference: source253B/255B at scientific Git568c971fac32caf33dce6ab4b14f2730788c3eb2,
+retained by mergee22fabdec33818e833310165b51c1b634289e1be. The separate
+four-constraint audit49fc5a907300fd74af314d2cbdfb3ff9201d962f4b48d21334d245953bfb460d
+fixes the actual curl-adjoint sign. All identities needed below are proved again.
+
+THEOREM PROPOSED
+Let N>=1 be an integer, h_N=sum_{s=1}^N 1/s, and h_N>=128*pi^2.
+Set n=64N, V=n^3, D=3, c>0, a=c/48 and H=c*n^2. On X=(Z/nZ)^3 let
+s(x)=x1+x2+x3 mod n. Use the original two orthogonal internal channels:
+ b1(x)=H at odd s(x), a at even s(x); b2 has the opposite parity.
+For real spatial fields z_alpha in the ACTUAL U0=im(d1^*) define
+ Q(z)=sum_{x,h=1..3,alpha=1,2} b_alpha(x)|partial_h z_alpha(x)|^2,
+ ||z||^2=sum_{x,alpha}|z_alpha(x)|^2,
+ partial_h f(x)=f(x+e_h)-f(x).
+All component and edge norms use the original counting norm/source weights.
+
+In BOTH original channels take the integer rectangle partition
+ {i} x J x K, i=0,...,n-1, J,K independently {0} or I={1,...,n-1}.
+There are4n nonempty cells/channel and24n full spatial/channel rows
+ C_{S,r,alpha}(z)=(V|S|)^(-1/2) sum_{x in S} z_{r,alpha}(x).
+Every coordinate factor is proper; no uncut-coordinate hypothesis applies.
+
+There exists a nonzero REAL z=(d1^*psi,0), with only psi23 nonzero, such that
+ EVERY one of these24n rows is zero and Q(z)<= (5/8)c||z||^2.
+Consequently NO choice of quadratic penalties on this partition, including
+arbitrary size-dependent coefficients, restores Q>=c||z||^2 on actualU0^2.
+This refutes this ONE explicit O(n) partition, not all O(n) partitions.
+No optimal canonical rank/count or general nlogn lower follows.
+
+There are infinitely many such finite n: h_N>=log(N+1), so, for example,
+N=ceil(exp(128*pi^2)) suffices. This threshold is deliberately enormous;
+no practical crossover, numerical construction or optimal constant is claimed.
+
+1. REAL POTENTIAL AND EXACT OBSERVATION CONDITIONS
+Put delta_j phi=phi(x)-phi(x-e_j). With the forward curl convention
+ (d1u)ij=partial_i u_j-partial_j u_i for i<j,
+partial_j^*=-delta_j. A real two-form psi23=phi, psi12=psi13=0 gives
+ z(phi)=d1^*psi=(0,delta3phi,-delta2phi).
+This explicit preimage proves membership in actualU0; divergence-free alone
+would not suffice. Every component has zero sum by telescoping.
+
+For fixed x1=i, all four JxK cell sums of any scalar u vanish exactly when
+its point value u(0,0), the two complete line sums through that point, and
+its full-slice sum vanish. Indeed cell sums in order00,0I,I0,II are
+ (p,A-p,B-p,T-A-B+p), with an invertible inclusion-exclusion inverse.
+Applied to z(phi), telescoping eliminates two line sums and both full-slice
+sums. Thus its observations vanish exactly when, for every i,
+ delta3phi(i,0,0)=delta2phi(i,0,0)=0,
+ R_i(0)=R_i(-1), S_i(0)=S_i(-1),
+ R_i(k)=sum_j phi(i,j,k), S_i(j)=sum_k phi(i,j,k).
+All means have positive normalizing factors. No wrapped cell or modified norm
+is introduced. The zero second channel contributes no further restriction.
+
+We construct phi whose two transverse marginals R_i,S_i are identically zero
+and whose two point differences vanish. No Hodge projection will be applied.
+
+2. LOW FIELD WITH ZERO ORIGINAL STRONG ENERGY
+Let p=pi/2 and phi0(x)=exp(i*p*s(x))+exp(-i*p*s(x))=2cos(p*s(x)).
+It is real and periodic because4 divides n. Its two transverse marginals are0.
+Writing q(s)=delta_j phi0, for any j, q takes the values2,-2,-2,2 on the
+four successive residue classes0,1,2,3. Therefore
+ z0=z(phi0)=(0,q,-q), ||z0||^2=8V.
+For every odd source s, q(s+1)=q(s), including the periodic seam.
+Thus EVERY original channel1 strong-edge difference of z0 is0.
+Its point trace at(i,0,0) is determined by the two x1 Fourier coefficients
+ t=(m0,p0)=(1+i,1-i): both delta2phi0 and delta3phi0 have this trace pair.
+Here p0 is a coefficient name, not the frequency p.
+
+3. ORIGINAL STRONG-ENERGY FOURIER BLOCK, INCLUDING ALL FACTORS
+Set m=4N and F={ (j,l) in Z^2: |j|,|l|<=m, (j,l)!=(0,0) }.
+For w=(j,l) write u=2*pi*j/n, v=2*pi*l/n, r_w^2=u^2+v^2, and
+ k_w=(p,p+u,p+v), k'_w=k_w+pi*(1,1,1) modulo2pi.
+Every frequency is an actual n-periodic frequency. All2|F|frequencies are
+distinct: k has x1 frequency p, k' has -p, and the offsets do not alias.
+All x2/x3 frequencies lie near p or -p, at distance<=pi/8, and avoid0.
+For coefficients y_w=(A_w,B_w) consider
+ phi_*(x)=sum_{w in F}[ A_w exp(i*k_w.x)+B_w exp(i*k'_w.x) ].
+Its two transverse marginals vanish identically, regardless of coefficients.
+
+Define d_h=exp(i*k_h)-1, s_h=exp(i*k_h)+1,
+ m_j=1-exp(-i*k_j), p_j=1+exp(-i*k_j), j=2,3.
+For a scalar mode pair f=A exp(ik.x)+B exp(ik'.x), its forward difference
+at an ODD source is exp(ik.x)(d_h A+s_h B). Distinct w-blocks are orthogonal
+on the odd-source sublattice: its only extra Fourier alias is pi*(1,1,1),
+already within each pair. Hence, with no normalized Fourier coefficients,
+ E_str(z(phi_*)) := sum_{odd sources x,h}|partial_h z(phi_*)(x)|^2
+       = (V/2) sum_{w in F} y_w^* M_w y_w,
+ M_w=D_3^* L_w D_3+D_2^* L_w D_2, D_j=diag(m_j,p_j),
+ L_w=sum_h (d_h,s_h)^*(d_h,s_h)
+    =2[[3-C,-i*S],[i*S,3+C]],
+ C=sum_h cos(k_h), S=sum_h sin(k_h).
+The complex calculation is only a construction device; reality is proved below.
+
+The eigenvalues of L_w are2(3 +/- |1+exp(iu)+exp(iv)|).
+Since |u|,|v|<=pi/8,
+ 9-|1+exp(iu)+exp(iv)|^2
+ =2[(1-cos u)+(1-cos v)+(1-cos(u-v))]
+ >=(4/pi^2)[u^2+v^2+(u-v)^2] >=(4/pi^2)r_w^2.
+Here 1-cos t>=2t^2/pi^2 for |t|<=pi. Dividing by3+|...|<=6 shows
+ L_w >=(4/(3*pi^2))r_w^2 I, and L_w<=12 I.
+Also |m_j|^2,|p_j|^2>=2-2sin(pi/8)>1, and each is<=4. Consequently
+ (8/(3*pi^2))r_w^2 I <=M_w<=96 I.                 (3.1)
+In particular every M_w is strictly positive and invertible.
+
+For y0=(1,1), a direct expansion gives
+ d_h m_j+s_h p_j=2[exp(i*k_h)+exp(-i*k_j)].
+Put w1=0,w2=u,w3=v. Its absolute value is at most2|w_h+w_j|<=4r_w.
+Summing the six squared terms h=1,2,3; j=2,3 gives
+ y0^* M_w y0<=96r_w^2.                            (3.2)
+
+4. TRACE GRAM MATRIX AND AN ELEMENTARY HARMONIC LOWER
+Let T_w=diag((m2+m3)/2,(p2+p3)/2) and e=(1+i,1-i)=t.
+Write zeta=(exp(-iu)+exp(-iv))/2. Its real part is>=cos(pi/8), and
+|Im zeta|<=sin(pi/8). Since the two diagonal entries of T are1+i*zeta
+and1-i*zeta, their squared absolute values are>=2-2sin(pi/8)>1.
+Thus T_w T_w^*>=I. Also g_w=T_w y0 satisfies
+ ||g_w-e||^2<=u^2+v^2=r_w^2.                      (4.1)
+Indeed its two errors are opposite multiples of zeta-1 and
+2|zeta-1|^2<=(|u|+|v|)^2/2<=u^2+v^2.
+
+Define the2x2 Hermitian trace Gram matrix
+ G=sum_{w in F} T_w M_w^(-1) T_w^*.
+Let F_in consist of offsets |j|,|l|<=N except(0,0), and F_out=F\F_in.
+By (3.1), every summand is>=I/96. By Cauchy-Schwarz in the positive M_w
+inner product and (3.2), M_w^(-1)>=y0 y0^*/(96r_w^2).
+For every complex vector b, |b^*g_w|^2 >= (1/2)|b^*e|^2-r_w^2||b||^2.
+Using the latter bound inside and I/96 outside gives the exact Loewner bound
+ G >= alpha e e^*+beta I,
+ alpha=(1/192)sum_{F_in}1/r_w^2,
+ beta=(|F_out|-|F_in|)/96=(56N^2+8N)/96>0.         (4.2)
+The count uses |F|=4m(m+1)=64N^2+16N and |F_in|=4N(N+1).
+On the integer Chebyshev shell max(|j|,|l|)=s there are8s points and
+j^2+l^2<=2s^2. Therefore
+ sum_{F_in}1/r_w^2 >=(n^2/(4*pi^2))sum_{s=1}^N4/s
+                         =(n^2/pi^2)h_N,
+ alpha>=n^2*h_N/(192*pi^2).
+In particular G is positive definite, and inverse order in (4.2) implies
+ t^*G^(-1)t <=4/(beta+4alpha)<=1/alpha
+                         <=192*pi^2/(n^2*h_N).   (4.3)
+No continuum asymptotic, capacity assumption or numerical eigenvalue estimate
+has been invoked: this is a finite sum and a2x2 inverse bound.
+
+5. EXACT REAL CORRECTION, NOT MERELY SMALL TRACE ERROR
+Choose the actual coefficients by the finite explicit formula
+ y_w=M_w^(-1)T_w^*G^(-1)t.
+Then sum_w T_w y_w=t exactly, and
+ sum_w y_w^*M_w y_w=t^*G^(-1)t.                  (5.1)
+Equivalently they uniquely minimize this strictly positive quadratic form
+under that exact averaged trace constraint; completing the square proves it.
+
+The set F and M_w,T_w are invariant under swapping j,l and spatial axes2,3.
+Uniqueness therefore gives A_{j,l}=A_{l,j} and B_{j,l}=B_{l,j}.
+It follows that sum m2 A=sum m3 A=t1, and sum p2 B=sum p3 B=t2;
+the averaged trace constraint is thus BOTH actual point-derivative constraints.
+
+Complex conjugation of phi_* sends the coefficient family to
+ (A_w,B_w) -> (conjugate(B_{-w}),conjugate(A_{-w})).
+Its averaged trace becomes(conjugate(t2),conjugate(t1))=t. The band is closed
+under this operation and the original strong energy is real, so it preserves
+the same strictly positive minimization problem. Uniqueness proves that
+phi_* is real. This supplies an actual REAL potential without a post-hoc
+Hodge projection or an unsupported invariance assertion about rectangle means.
+
+At x=(i,0,0), both delta2phi_* and delta3phi_* have exactly the trace
+ exp(i*p*i)t1+exp(i*(p+pi)*i)t2, the same as phi0.
+Thus phi=phi0-phi_* has zero point derivatives for every i. Both potentials
+have identically zero transverse marginals. Section1 now proves that
+z=z(phi) annihilates ALL24n original canonical rows, exactly.
+
+6. ORIGINAL NORM AND ENERGY, INCLUDING NONZERO FIELD
+By (4.3),(5.1), H=c*n^2 and section3,
+ H E_str(z(phi_*)) <=96*pi^2*c*V/h_N.            (6.1)
+For every w, r_w^2>=(2*pi/n)^2. Thus (3.1) gives
+ M_w >=32/(3n^2) I.
+Counting Parseval in the2|F|distinct frequencies, and |m_j|,|p_j|<=2,
+ ||z(phi_*)||^2 <=8V sum_w||y_w||^2
+ <=(3n^2/4)V sum_w y_w^*M_w y_w
+ <=144*pi^2*V/h_N.                              (6.2)
+This controls the actual field, not just the potential or a transformed norm.
+As h_N>=128*pi^2, (6.2) is<=9V/8<2V. Since ||z0||^2=8V, the triangle
+inequality yields ||z||^2>=(sqrt(8V)-sqrt(2V))^2=2V; in particular z!=0.
+
+Every original strong difference of z0 is0. Hence the strong part of Q(z)
+is exactly H E_str(z(phi_*)), at most(3/4)cV by (6.1), and thus
+at most(3/8)c||z||^2.
+The weak part is at most a times the full unweighted forward-gradient energy.
+Each periodic forward difference has operator norm<=2, so it is at most
+4D*a||z||^2=(c/4)||z||^2. This does not change a source to its target or
+quietly assume a constant strong weight everywhere.
+Combining gives Q(z)<=(5/8)c||z||^2<c||z||^2, as proposed.
+All added observation penalties are0 on this actual nonzero field.
+
+7. LIMITS AND NEXT USE
+Pending adversarial audit: all matrix signs/factors, Gram lower/counts, real
+constraint symmetries, Parseval/norm and original-weight constants must be
+checked before this candidate is called a result. A failure must be retained.
+No formal Lean/numerical verification, independent review or historical
+priority is claimed. No new paper or reassessment of255B is authorized by
+this candidate. Its harmonic threshold is an existence proof, not feasible
+experimental evidence or an optimized bound.
+If correct it closes the retained24n fully-cut-grid candidate NEGATIVELY in
+the ACTUAL coexact domain, removing the earlier missing actual curl-adjoint
+correction. It still does not refute every O(n) canonical partition or prove
+an nlogn canonical minimum. Q251 remains the sole active mathematical question;
+the next route would need another partition or a genuinely class-wide bound.
+PR29 remains20/41 and TermSource=0. Physical mass gap and continuum stay OPEN.

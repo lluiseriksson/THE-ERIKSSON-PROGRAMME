@@ -1,0 +1,80 @@
+{
+  "representation": "Exact raw retained bytes; no normalization; manifest self excluded",
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1619,
+      "sha256": "d59c02a8e725cc92c173d1067d439da0ebce1d5b4dee25284c91087febdf8974"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 2058,
+      "sha256": "c3db98da03e9d4b14e3cab4902255333892a82174cdda94a4658dd3260a6ac35"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 13608,
+      "sha256": "2f86e493f19f47628276c2852ec255144204311e93ee5e4f0d1deefc9fa71a36"
+    },
+    {
+      "path": "initial-status.txt",
+      "bytes": 186,
+      "sha256": "e6af253318e7a022a8d5450fe2656b57aab415df5c428bfe83b3f89ed825b1e8"
+    },
+    {
+      "path": "source-stability.json",
+      "bytes": 402,
+      "sha256": "638bfc68053b5d980424aac4c5e7756485ce0f89285cb792e8308fc7a71e8ab5"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 4450,
+      "sha256": "d02c461cdb217831ea28e0d11d587f7b820a5b964646903b6734dec3aebb2398"
+    },
+    {
+      "path": "subjects/capacity-counterexample256A.txt",
+      "bytes": 11746,
+      "sha256": "1364094dfff6cc2cfcbc306717b2b4667d49401e00fd2c7d00fb132add9c07a6"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "subjects/full-coexact-spectrum279A.checkout.txt",
+      "bytes": 12104,
+      "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+    },
+    {
+      "path": "subjects/full-coexact-spectrum279A.git.txt",
+      "bytes": 12104,
+      "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+    },
+    {
+      "path": "subjects/layer-stream275A.txt",
+      "bytes": 7409,
+      "sha256": "78b03c4fef7bb50f1375b7f64953fef5a623195ec9af94e10c41ee717051d239"
+    },
+    {
+      "path": "subjects/nonlinear267A-logarithmic-bound.txt",
+      "bytes": 9821,
+      "sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "subjects/strong-component-observations253B.txt",
+      "bytes": 14606,
+      "sha256": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2"
+    },
+    {
+      "path": "subjects/strong-null-exclusion268A.txt",
+      "bytes": 9370,
+      "sha256": "f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d"
+    }
+  ]
+}

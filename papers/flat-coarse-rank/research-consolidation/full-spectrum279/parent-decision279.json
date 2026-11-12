@@ -1,0 +1,11 @@
+{
+  "source_sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4",
+  "source_commit": "3015e4284a2441fdbe65e893169f446fb9cff4d4",
+  "report_sha256": "2f86e493f19f47628276c2852ec255144204311e93ee5e4f0d1deefc9fa71a36",
+  "full_report_read": true,
+  "accepted_analytical": true,
+  "verdict": "ACCEPT_ANALYTICAL_FULL_ACTUAL_COEXACT_SPECTRUM_AND_SUBTARGET_SPLIT",
+  "material_errors": [],
+  "required_corrections": [],
+  "limitations": "Analytical source audit only, involved shared-context reviewer, no numerical or formal execution, no independent peer review, grade or publication. Q251 cancellation cost and external priority remain open."
+}

@@ -1,0 +1,100 @@
+[
+  {
+    "path": "subjects/full-coexact-spectrum279A.checkout.txt",
+    "origin": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\flat-coarse-rank\\research-consolidation\\full-spectrum279\\full-coexact-spectrum279A.txt",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 12104,
+    "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+  },
+  {
+    "path": "subjects/full-coexact-spectrum279A.git.txt",
+    "origin": "3015e4284a2441fdbe65e893169f446fb9cff4d4:papers/flat-coarse-rank/research-consolidation/full-spectrum279/full-coexact-spectrum279A.txt",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 12104,
+    "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+  },
+  {
+    "path": "subjects/capacity-counterexample256A.txt",
+    "origin": "3015e4284a2441fdbe65e893169f446fb9cff4d4:papers/flat-coarse-rank/research-consolidation/fully-cut-grid256/capacity-counterexample256A.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 11746,
+    "sha256": "1364094dfff6cc2cfcbc306717b2b4667d49401e00fd2c7d00fb132add9c07a6"
+  },
+  {
+    "path": "subjects/strong-component-observations253B.txt",
+    "origin": "3015e4284a2441fdbe65e893169f446fb9cff4d4:papers/flat-coarse-rank/research-consolidation/revision260-preparation/inputs/strong-component-observations253/strong-component-observations253B.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 14606,
+    "sha256": "7cb843738d07abe9c26019de5c5e05db421c80f6afe5da7f1108020410f1b1d2"
+  },
+  {
+    "path": "subjects/nonlinear267A-logarithmic-bound.txt",
+    "origin": "3015e4284a2441fdbe65e893169f446fb9cff4d4:papers/flat-coarse-rank/research-consolidation/nonlinear266/nonlinear267A-logarithmic-bound.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 9821,
+    "sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577"
+  },
+  {
+    "path": "subjects/strong-null-exclusion268A.txt",
+    "origin": "3015e4284a2441fdbe65e893169f446fb9cff4d4:papers/flat-coarse-rank/research-consolidation/strong-null268/strong-null-exclusion268A.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 9370,
+    "sha256": "f332436eecb67aac1ec59ddf18fe98262926881ce41f25daf97d4d2757fa156d"
+  },
+  {
+    "path": "subjects/layer-stream275A.txt",
+    "origin": "3015e4284a2441fdbe65e893169f446fb9cff4d4:papers/flat-coarse-rank/research-consolidation/solenoidal275/layer-stream275A.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 7409,
+    "sha256": "78b03c4fef7bb50f1375b7f64953fef5a623195ec9af94e10c41ee717051d239"
+  },
+  {
+    "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "origin": "3015e4284a2441fdbe65e893169f446fb9cff4d4:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 13573,
+    "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+  },
+  {
+    "path": "subjects/CLAUDE.md",
+    "origin": "3015e4284a2441fdbe65e893169f446fb9cff4d4:CLAUDE.md",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 23996,
+    "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+  },
+  {
+    "path": "initial-status.txt",
+    "origin": "git status --porcelain at audit referent",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 186,
+    "sha256": "e6af253318e7a022a8d5450fe2656b57aab415df5c428bfe83b3f89ed825b1e8"
+  },
+  {
+    "path": "assignment.txt",
+    "origin": "/root exact task payload",
+    "representation": "UTF-8 LF transcription",
+    "bytes": 1619,
+    "sha256": "d59c02a8e725cc92c173d1067d439da0ebce1d5b4dee25284c91087febdf8974"
+  },
+  {
+    "path": "context.txt",
+    "origin": "actual audit context",
+    "representation": "UTF-8 LF",
+    "bytes": 2058,
+    "sha256": "c3db98da03e9d4b14e3cab4902255333892a82174cdda94a4658dd3260a6ac35"
+  },
+  {
+    "path": "full-report.txt",
+    "origin": "auditor analytical reasoning",
+    "representation": "UTF-8 LF",
+    "bytes": 13608,
+    "sha256": "2f86e493f19f47628276c2852ec255144204311e93ee5e4f0d1deefc9fa71a36"
+  },
+  {
+    "path": "source-stability.json",
+    "origin": "actual metadata checks",
+    "representation": "UTF-8 LF JSON",
+    "bytes": 402,
+    "sha256": "638bfc68053b5d980424aac4c5e7756485ce0f89285cb792e8308fc7a71e8ab5"
+  }
+]
