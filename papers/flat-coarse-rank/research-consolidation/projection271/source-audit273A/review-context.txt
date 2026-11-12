@@ -1,0 +1,31 @@
+ACTUAL REVIEW CONTEXT273A -- 12 November2026
+Reviewer: involved Codex/OpenAI child /root/grouped260_manuscript_source_audit.
+Exact served backend/version/effort unavailable; none inferred. Inherited
+programme/author/prior audit context visible. Not blind or independent peer
+review; no grade, PDF review, formal/numerical or publication acceptance.
+
+Whole273A source read afresh and every proof step rederived in full-report.
+Whole267/272 were read and audited earlier in this same session; exact original
+subjects retained as explicit context, not inherited acceptance premises.
+The Green calculation, actualcoexact layer implication, real272 phase and
+repair argument were freshly inspected. No new wholesale audit of the old
+notes claimed. Full governance/CLAUDE and D LEEME previously read; active
+immutable-audit/silence sections reread here, environment rules remain active.
+Whole captures do not imply fresh full reading of every historical rule.
+Full inherited-chat export unavailable; not fabricated as a transcript.
+
+No inbound parent messages during audit; no other agents contacted. No math
+executable, numerical experiment, Lean/Lake, oracle, compiler, test, Colab
+runtime, network or external model service used. Only Git/file/hash metadata
+and new packet retention. No source, branch, state, other report/chat/agent,
+public artifact, score, PR/body or automation changed. Parent untracked helpers
+and candidate copy unused/unread/untouched; initial status captures names only.
+No PR/body exists; body capture/normalized hash N/A. No new clone/runtime
+cleanup debt. Retention helper is metadata, not a mathematical verifier, and
+explicit byte checks, not Python assert, govern it.
+
+Exact Git blob and checkout subject are byte-identical LF-only raw text,
+matching assignment SHA256 without normalization. Origin bindings and raw
+self-excluding manifest cover retained artifacts; manifest digest separately
+returned. No old failure/report/objection overwritten.
+Private same-name root copy SHA256 5a4051cff938220062e55f5ded7aa8e586fd8ae0daedd78d439e47973cf4be13; raw equality True.

@@ -1,0 +1,65 @@
+{
+  "self_excluded": true,
+  "artifacts": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1819,
+      "sha256": "a54e351d529fdca8ce10e7f6869fbe427eeefb241715652ae5b843e1dda4c08a",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 12423,
+      "sha256": "9c58b9bf5f0477504a6f8e3d9c66ca9d3f43b8ef9ea692baa6db564d9659c2a0",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "initial-status.txt",
+      "bytes": 174,
+      "sha256": "a5cefc5b496c576a08282fe02cfed0ea7ca610712cc1df06b96bd020dd709f12",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "review-context.txt",
+      "bytes": 2126,
+      "sha256": "18c1fae72128e8a62dd3143cc2c8b1398b53e2976c37fa5978034e73fc725c00",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 1945,
+      "sha256": "c947b987a98d253aae16dd31452221557a3510b6776f7587075442b5b46131f1",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/coexact-trace-repair273A.txt",
+      "bytes": 8083,
+      "sha256": "5a4051cff938220062e55f5ded7aa8e586fd8ae0daedd78d439e47973cf4be13",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/nonlinear267A-logarithmic-bound.txt",
+      "bytes": 9821,
+      "sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "raw retained bytes; no normalization"
+    },
+    {
+      "path": "subjects/projection-mean272A.txt",
+      "bytes": 4418,
+      "sha256": "2b0a49fa3b6328fef5d8033549842c0db587082f815e3e4758957e1fa5d91806",
+      "representation": "raw retained bytes; no normalization"
+    }
+  ]
+}
