@@ -1,0 +1,80 @@
+--- preserved-initial/diagnostic281A.py
++++ preferred/diagnostic281B.py
+@@ -8,6 +8,7 @@
+ import scipy
+ import scipy.linalg as la
+ import scipy.sparse as sp
++import importlib.metadata as metadata
+ 
+ BASE='4ba7c61adb94d80f4cb985ab78e84d8346171b02'
+ ROOT=Path('/content/tep281-diagnostic');E=ROOT/'evidence'
+@@ -25,6 +26,7 @@
+     finite(a,p.name)
+     with p.open('xb') as f:np.save(f,a,allow_pickle=False);f.flush();os.fsync(f.fileno())
+ def relative(a,b):return float(la.norm(a-b))/max(1.0,float(la.norm(a)),float(la.norm(b)))
++def matrix_relative(a,b):return float(la.norm(a-b))/max(np.finfo(float).tiny,float(la.norm(a)),float(la.norm(b)))
+ def check(value,label):require(np.isfinite(value) and value<=TOL,label+' residual '+repr(value))
+ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+ 
+@@ -136,7 +138,7 @@
+     vals=la.eigvalsh((K+K.T)/2);cmp=relative(vals,np.sort(lam));check(cmp,'Independent physical curl-image full spectrum')
+     Cphys=np.zeros((len(labels),3*v))
+     for row,(i,I,J,r) in enumerate(labels):Cphys[row,r*v+coords[i,np.array(I)[:,None],np.array(J)[None,:]].ravel()]=1/np.sqrt(v*len(I)*len(J))
+-    CU=Cphys@U;gram=relative(CU@CU.T,C@C.conj().T);check(gram,'Independent physical C_U row Gram')
++    CU=Cphys@U;gram=matrix_relative(CU@CU.T,C@C.conj().T);check(gram,'Independent physical C_U row Gram')
+     _,sr,Vh=la.svd(CU,full_matrices=True,check_finite=True,lapack_driver='gesvd');rcut=REL*float(sr[0]);rrank=int(np.sum(sr>rcut));Z=Vh[rrank:].T
+     require(Z.shape[1]>0,'Independent n4 numerical invisible kernel empty')
+     reduced=Z.T@K@Z;ev,vec=la.eigh((reduced+reduced.T)/2,subset_by_index=[0,0],check_finite=True)
+@@ -151,10 +153,10 @@
+     try:
+         labels=cells(n);dump(directory/'original-row-labels.json',[{'i':i,'I':I,'J':J,'component':j,'channel':channel} for i,I,J,j in labels]);lam,C,parts,L,F=blocks(n,channel,labels,directory)
+         CL=C[:,L];CF=C[:,F];DL=1-lam[L];BF=lam[F]-1;M=(CF/BF[None,:])@CF.conj().T
+-        herm=relative(M,M.conj().T);check(herm,'Shifted high-response Hermitian');M=(M+M.conj().T)/2
++        herm=matrix_relative(M,M.conj().T);check(herm,'Shifted high-response Hermitian');M=(M+M.conj().T)/2
+         mu,W=la.eigh(M,check_finite=True);finite(mu,'M eigenvalues');cut=REL*float(np.max(np.abs(mu)));keep=mu>cut
+         require(float(mu[0])>=-TOL*max(1.,float(np.max(mu))),'M materially negative')
+-        Winv=W[:,keep]/np.sqrt(mu[keep])[None,:];Mdag=Winv@Winv.conj().T;range_res=relative(M@Mdag@CL,CL)
++        Winv=W[:,keep]/np.sqrt(mu[keep])[None,:];Mdag=Winv@Winv.conj().T;range_res=matrix_relative(M@Mdag@CL,CL)
+         cost=CL.conj().T@Mdag@CL;eta=cost/np.sqrt(DL[:,None]*DL[None,:]);eta=(eta+eta.conj().T)/2;etas,V=la.eigh(eta,check_finite=True)
+         coeff=np.zeros(len(lam),complex);coeff[L]=V[:,0]/np.sqrt(DL);y=CL@coeff[L];coeff[F]=-(CF.conj().T@(Mdag@y))/BF
+         u=field_from_coeff(n,parts,coeff);originalQ=physical_energy(u,channel);predQ=float(np.sum(lam*np.abs(coeff)**2));prednorm=float(np.vdot(coeff,coeff).real)
+@@ -162,12 +164,17 @@
+         checks={'spectral_physical_Q':abs(originalQ-predQ)/max(1.,abs(originalQ),abs(predQ)),'spectral_physical_norm':abs(info['norm_squared']-prednorm)/max(1.,prednorm),'original_rows_vs_unitary_rows':relative(row,C@coeff),'range_CL_in_M':range_res}
+         save(directory/'shifted-high-response-M.npy',M);save(directory/'M-all-eigenvalues.npy',mu);save(directory/'M-discarded-eigenvalues.npy',mu[~keep]);save(directory/'M-pseudoinverse.npy',Mdag);save(directory/'eta-matrix.npy',eta);save(directory/'eta-all-eigenvalues.npy',etas);save(directory/'lowest-shifted-cost-full-coefficients.npy',coeff);save(directory/'complex-field.npy',u);save(directory/'complex-curl-preimage-fft.npy',pre);save(directory/'complex-original-C.npy',row)
+         r.update(original_rows=len(labels),whole_per_channel_dimension=len(lam),low_dimension=len(L),high_dimension=len(F),low_eigenvalues=lam[L].tolist(),high_min=float(np.min(lam[F])),M={'relative_cutoff':REL,'absolute_cutoff':cut,'numerical_rank':int(np.sum(keep)),'all_eigenvalues':mu.tolist(),'discarded_eigenvalues':mu[~keep].tolist(),'range_residual':range_res,'rank_status':'Floating cutoff diagnostic only; no exact rank certificate'},eta_eigenvalues=etas.tolist(),eta_min=float(etas[0]),eta_meaning='Eigenvalue of D_L^-1/2 C_L* Mdag C_L D_L^-1/2; NOT a physical Rayleigh quotient',complex_witness=info,assembly_checks=checks)
+-        components=[]
++        components=[];eligibility=1e-12*info['norm_squared']
++        r['real_component_original_norm_squared_eligibility_threshold']=eligibility
++        r['real_component_policy']='Fixed relative norm cutoff1e-12; normalize every eligible component to unit counting norm, then require actual original-field integrity before selecting. Preserve original and normalized vectors.'
+         for name,v in [('real',u.real),('imaginary',u.imag)]:
+             vn=float(np.vdot(v,v).real);save(directory/(name+'-field.npy'),v)
+-            if vn<=np.finfo(float).tiny:components.append({'name':name,'norm_squared':vn,'nonzero':False});continue
+-            vi,vp,vr=physical_integrity(v,channel,labels);save(directory/(name+'-curl-preimage-fft.npy'),vp);save(directory/(name+'-original-C.npy'),vr);components.append({'name':name,'nonzero':True,**vi})
+-        candidates=[x for x in components if x['nonzero']];require(bool(candidates),'Both real components vanish');chosen=min(candidates,key=lambda x:x['physical_Rayleigh'])
++            if vn<eligibility or vn<=np.finfo(float).tiny:components.append({'name':name,'original_norm_squared':vn,'eligible':False,'reason':'Below fixed relative component-size cutoff'});continue
++            normalized=v/np.sqrt(vn);save(directory/(name+'-normalized-field.npy'),normalized)
++            vi,vp,vr=physical_integrity(normalized,channel,labels);save(directory/(name+'-curl-preimage-fft.npy'),vp);save(directory/(name+'-original-C.npy'),vr)
++            valid=all(np.isfinite(value) and value<=TOL for value in vi['checks'].values())
++            components.append({'name':name,'original_norm_squared':vn,'eligible':True,'normalized_integrity_valid':bool(valid),**vi})
++        candidates=[x for x in components if x['eligible'] and x['normalized_integrity_valid']];require(bool(candidates),'No eligible normalized real component passes original physical integrity; candidate ambiguous/failing and retained');chosen=min(candidates,key=lambda x:x['physical_Rayleigh'])
+         r['real_components']=components;r['selected_real_component']=chosen['name'];r['selected_real_Rayleigh']=chosen['physical_Rayleigh']
+         r['below_one_finite_witness_integrity_verified']=bool(chosen['physical_Rayleigh']<1 and all(np.isfinite(v) and v<=TOL for v in chosen['checks'].values()) and all(np.isfinite(v) and v<=TOL for v in checks.values()))
+         if n==4:r['independent_n4']=independent_n4(channel,labels,lam,C,directory)
+@@ -199,8 +206,16 @@
+     require(not ROOT.exists() and not ZIP.exists(),'Fresh owned281 roots required');E.mkdir(parents=True)
+     report={'schema':'TEP281-FULL-COST-1','construction_base':BASE,'script_raw_sha256':sha(Path(__file__)),'started_at':utc(),'fixed_n':[4,8,16],'channels':[1,2],'cut':'2i^2 mod n','relative_pseudoinverse_cutoff':REL,'integrity_tolerance':TOL,'status':'FAILED_PRESERVED','cases':[],'billing_units':None,'independent_provider_replication':False,'limitations':'Selected finite classical floating-point exploration only. Numerical ranks, no exact rank certificate, no all-n/gap/novelty or continuum conclusion. Eta is not Rayleigh. Actual elapsed runtime is not a billed quantity.'}
+     try:
+-        shutil_source=E/'diagnostic281A.py';shutil_source.write_bytes(Path(__file__).read_bytes())
++        shutil_source=E/'diagnostic281B.py';shutil_source.write_bytes(Path(__file__).read_bytes())
+         dump(E/'native-environment.json',{'python':sys.version,'platform':platform.platform(),'numpy':np.__version__,'scipy':scipy.__version__,'packages':{name:{'path':str(Path(module.__file__)),'sha256':sha(Path(module.__file__))} for name,module in [('numpy',np),('scipy',scipy)]},'thread_environment':{key:os.environ.get(key) for key in ['OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS']}})
++        package_files=[]
++        for name in ('numpy','scipy'):
++            distribution=metadata.distribution(name)
++            for item in sorted(distribution.files or [],key=str):
++                if str(item).endswith(('.so','.pyd','/RECORD','/METADATA')):
++                    physical=Path(distribution.locate_file(item))
++                    if physical.is_file():package_files.append({'distribution':name,'version':distribution.version,'relative_file':str(item),'bytes':physical.stat().st_size,'sha256':sha(physical)})
++        dump(E/'package-native-file-hashes.json',{'meaning':'Actual native extension and distribution RECORD/METADATA bytes; provenance capture, not an authenticity certification or package lock','files':package_files})
+         config=io.StringIO()
+         with contextlib.redirect_stdout(config):np.show_config();scipy.show_config()
+         (E/'native-build-config.txt').write_text(config.getvalue(),encoding='utf-8')
