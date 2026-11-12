@@ -1,0 +1,80 @@
+{
+  "representation": "Exact raw retained bytes; no normalization; self excluded",
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1558,
+      "sha256": "8519c4e297aa254ea364245b8eac8c9272c897230a95e81413988e33a0fdc66f"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 2010,
+      "sha256": "4650030553c170caffcef3780747d7af17a3321eafc84a203ef9149dff22bdef"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 13358,
+      "sha256": "a56c858ed3ca2bc8d15126bec8012f8cb6008c128ed25e208044e56aac935be2"
+    },
+    {
+      "path": "initial-status.txt",
+      "bytes": 144,
+      "sha256": "9030f928e23f2948dd0380667194ff85662312ff8956cad0a1b302f092974a5d"
+    },
+    {
+      "path": "source-stability.json",
+      "bytes": 437,
+      "sha256": "119f2b9dce6e67525c8beeb0dab55567ff73b09f3b8c702027127c72b10b9e37"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 4099,
+      "sha256": "6d4c52c64399c154a5e5770a7f036ab43e507f68e25ea36443a644a03920c586"
+    },
+    {
+      "path": "subjects/A-to-B-full-delta.diff",
+      "bytes": 9179,
+      "sha256": "f526920c5e2b1fe279fb6998ed6529505a2d3b1671de20ce4d3d876eb0292f4f"
+    },
+    {
+      "path": "subjects/actual-A-to-B-git-diff.txt",
+      "bytes": 9474,
+      "sha256": "841dd0fbcf34c81a6adcaab9ffd5095be7755077c708c54c4ffcac698e4302d2"
+    },
+    {
+      "path": "subjects/cancellation-range280A.txt",
+      "bytes": 10920,
+      "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36"
+    },
+    {
+      "path": "subjects/CONSTRUCTION281.md",
+      "bytes": 10041,
+      "sha256": "cbc3ab6da824fee22e0910c7e748f267f93eb267e5890511f14c04c53a4f5ba5"
+    },
+    {
+      "path": "subjects/diagnostic281A.git.py",
+      "bytes": 18443,
+      "sha256": "6676e83c85354d6163271407de0e34094d3ff1595ffcfed82fdb451faf0fa50c"
+    },
+    {
+      "path": "subjects/diagnostic281B.checkout.py",
+      "bytes": 20199,
+      "sha256": "495a00952c4869f313c2245c1a089498fe8775dccb789ee617a078271eb23ee0"
+    },
+    {
+      "path": "subjects/diagnostic281B.git.py",
+      "bytes": 20199,
+      "sha256": "495a00952c4869f313c2245c1a089498fe8775dccb789ee617a078271eb23ee0"
+    },
+    {
+      "path": "subjects/full-coexact-spectrum279A.txt",
+      "bytes": 12104,
+      "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    }
+  ]
+}

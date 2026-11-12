@@ -1,0 +1,18 @@
+281B pre-execution parent engineering block,12 November2026.
+Frozen B495a00952c4869f313c2245c1a089498fe8775dccb789ee617a078271eb23ee0.
+No runtime allocated and no parent-authority relay issued for B.
+
+Static source defect: h=tuple((np.array(k)+q)%n) creates NumPy integer
+scalars, and list(h) is inserted into the block audit object. The dump()
+helper calls plain json.dump without a NumPy encoder. Therefore blocks.json
+serialization is not executable as written. This is a parent code-reading
+finding, not an observed runtime failure or a mathematical counterexample.
+
+The earlier separate analytical B audit found no blocker; its actual report
+a56c858ed3ca2bc8d15126bec8012f8cb6008c128ed25e208044e56aac935be2 remains
+immutable and does not override this engineering defect. The provisional
+parent engineering review is supplemented, not retroactively rewritten.
+B is NOT authorized for execution. Fabricator was asked for a minimal C
+serialization conversion, preserving B, its exact wrappers/manifests and
+all prior reports. C needs its own source/version review and a new factual
+report-read relay. No numerical cutoffs/cases may change to improve results.

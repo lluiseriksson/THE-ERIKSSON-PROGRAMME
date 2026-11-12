@@ -1,2 +1,3 @@
 * -text
 *.diff -whitespace
+evidence/** whitespace=trailing-space,space-before-tab,cr-at-eol

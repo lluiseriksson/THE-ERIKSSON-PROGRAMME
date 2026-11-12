@@ -1,0 +1,81 @@
+281 retention engineering review, 12 November 2026
+
+Scope: static review of the complete root helper retain281.py and complete
+research/full-cost281/RESULT281.txt. I read returned-inspection.json (including
+the initially truncated channel2 n4 portion in a separate read), outer-report,
+release.log, backend-readback.log, runtime-open-requested.txt and runtime-
+release-finished.txt; I read the existing state's last_checkpoint and active
+Q251 structure to check the proposed update against actual current fields.
+No helper, numerical source, test, runtime, network, git action or state update
+was executed by this reviewer. Only reads and this new review file were made.
+This is not an audit of the mathematics I previously fabricated, a numerical
+rerun, a scientific assessment, a grade, or independent-provider replication.
+Actual involved identity: Codex/OpenAI, same programme context; exact backend
+model identity unavailable.
+
+Disposition: no concrete retention blocker identified for the exact inspected
+helper and current returned-inspection/result inputs, CONDITIONAL on the
+helper's intentionally pending complete returned-audit and genuine parent-read
+decision gates being satisfied. Those two files were absent during this read;
+the helper presently stops before any delivery/state mutation. Their absence
+is the declared work sequence, not a request for new human approval. I have
+not read or accepted the still-future returned-audit report.
+
+Retention/state behavior:
+- The first gate requires parent full-report-read and finite-diagnostic
+  acceptance, plus exact full returned-report SHA256. The sourceB/sourceC and
+  returned audit raw manifests are checked by size and hash before retention.
+- Remote branch/head equality and protected foreign-file hashes are fail-closed
+  checks. I did not run those checks or claim current remote/hash results.
+- Literal inactive backend text and exact decimal exit0 are required together;
+  actual inspected release says Session terminated and inspected backend says
+  No active sessions found on server. Outer records allocation/execution/
+  download/release0 and the expected actual C source pin. The returned report
+  gate, not CLI0 alone, supplies the remaining returned-evidence acceptance.
+- The present inspection has exactly the six intended n/channel cases, all
+  completed, all below-one flags false. The helper's outcome guard agrees with
+  those actual inputs. No eta value is written as physical Rayleigh and no
+  hypothesis elimination, refutation, paper, grade or publication is invented.
+- Delivery is a new directory, containing the full source folder, complete
+  audit folders, actual attempt including downloadable envelope, parent records
+  and retained inspection/helper sources. The native evidence is retained
+  inside the actual envelope/native ZIP, not dependent on a C-only extraction.
+  Source-preparation/history packets already remain on D separately.
+- Delivery member hashes are checked before checkpoint/state publication.
+  Checkpoint and state use exclusive temporary files, flush/fsync, same-path
+  replacement and byte readback. The old state bytes are checked immediately
+  before replacement, preserving an observed competing update. Checkpoint is
+  written first, and the updated state binds its actual hash and old state hash.
+- The current state has last_checkpoint280 and the expected active-question
+  dictionary. Updating full-spectrum units2->3 and consecutive no-substantive-
+  progress0->1 matches RESULT281's explicitly limited negative search. Q251
+  stays OPEN; stopped routes, PR29 and continuum status are not reopened.
+
+RESULT281 accuracy versus the read returned records:
+All six eta/selected-real-Rayleigh table entries match the inspection. The
+two independent-assembly n4 minima12.075719014521187/8.243399217554877 match.
+Ranks53/109/245, maximum reported energy residual about5.12e-13 and maximum
+range residual below1.90e-14 agree. All eligible real/imaginary components in
+the inspection have valid unit-normalized physical checks. Both actual
+mutation outputs accept the unchanged record, reject both real mutations and
+record the correct normal/-O modes; three actual exits are decimal0. Native
+Python3.13.18/NumPy2.4.6/SciPy1.16.3 and retained thread environment1 match.
+Native ZIP and envelope hashes match the read receipt/outer summary. Counts12
+outer/183 native are accurately attributed to the parent's inspection; this
+review did not independently rehash every returned member. Runtime endpoints
+match the retained text files and are correctly called an operational upper
+window, not billed duration. The unknown billing claim remains unknown.
+The bounded-negative-search disposition and eta-versus-Rayleigh distinction
+are accurate. Failure history is explicitly retained rather than rewritten.
+The proposed next mathematical mechanism is a plan, not an achieved result.
+
+Operational limits (no invented blocker): this helper is a one-shot retention
+step, not a resumable transaction manager. A failure after a partial delivery
+or checkpoint requires explicit recovery; it does not silently overwrite the
+old directory/checkpoint. Its optimistic old-byte check is not a cross-process
+compare-and-swap lock: a single writer must remain in force through state
+replacement. No concurrent state writer was observed or simulated here. The
+complete returned-audit gate must cover the exact evidence already inspected;
+this static helper review does not substitute for that audit or revalidate
+all raw native artifacts. No new permission or repeated owner confirmation
+is required by this review.

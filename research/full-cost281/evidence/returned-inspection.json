@@ -1,0 +1,790 @@
+{
+  "outer_members_verified": 12,
+  "native_members_verified": 183,
+  "receipt": {
+    "schema": "TEP281-LAUNCH-1.0",
+    "construction_base": "4ba7c61adb94d80f4cb985ab78e84d8346171b02",
+    "diagnostic_source_sha256": "1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3",
+    "status": "FINITE_DIAGNOSTIC_ARTIFACT_CAPTURED_PENDING_PARENT_REVIEW",
+    "started_at": "2026-11-12T13:29:19.470597+00:00",
+    "actual_child_started": true,
+    "child_exit": 0,
+    "timed_out": false,
+    "commands": [
+      {
+        "name": "child",
+        "argv": [
+          "/usr/bin/python3",
+          "/content/tep281-launch/launch/diagnostic281C.py"
+        ],
+        "started_at": "2026-11-12T13:29:19.476605+00:00",
+        "exit": 0,
+        "timed_out": false,
+        "finished_at": "2026-11-12T13:29:52.439013+00:00"
+      },
+      {
+        "name": "mutation-normal",
+        "argv": [
+          "/usr/bin/python3",
+          "/content/tep281-launch/launch/diagnostic281C.py",
+          "--mutations-only"
+        ],
+        "started_at": "2026-11-12T13:29:52.443808+00:00",
+        "exit": 0,
+        "timed_out": false,
+        "finished_at": "2026-11-12T13:29:52.763247+00:00"
+      },
+      {
+        "name": "mutation-optimized",
+        "argv": [
+          "/usr/bin/python3",
+          "-O",
+          "/content/tep281-launch/launch/diagnostic281C.py",
+          "--mutations-only"
+        ],
+        "started_at": "2026-11-12T13:29:52.767780+00:00",
+        "exit": 0,
+        "timed_out": false,
+        "finished_at": "2026-11-12T13:29:54.092642+00:00"
+      }
+    ],
+    "billing_units": null,
+    "billing_seconds": null,
+    "diagnostic_status": "SIX_WHOLE_COEXACT_FINITE_DIAGNOSTICS_RECORDED_NOT_A_CERTIFICATE",
+    "diagnostic_actual_source_sha256": "1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3",
+    "diagnostic_construction_base": "4ba7c61adb94d80f4cb985ab78e84d8346171b02",
+    "body_finished_at": "2026-11-12T13:29:54.100867+00:00",
+    "native_zip_sha256": "b2d77cbb2808e8bf1f8ddb7826002d9a226bf155a733036933f383acca0b6f81",
+    "native_zip_bytes": 73658800
+  },
+  "command_captures": [
+    {
+      "mode": "child",
+      "exit_text": "0\n",
+      "stdout_bytes": 1146,
+      "stderr_bytes": 0
+    },
+    {
+      "mode": "mutation-normal",
+      "exit_text": "0\n",
+      "stdout_bytes": 423,
+      "stderr_bytes": 0
+    },
+    {
+      "mode": "mutation-optimized",
+      "exit_text": "0\n",
+      "stdout_bytes": 422,
+      "stderr_bytes": 0
+    }
+  ],
+  "mutations": {
+    "mutation-normal": {
+      "schema": "TEP281-MUTATION-1",
+      "optimized": false,
+      "source_sha256": "1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3",
+      "original_record_accepted": true,
+      "results": [
+        {
+          "mutation": "changed_recorded_energy",
+          "rejected": true,
+          "reason": "recorded_energy_scaled residual 0.5"
+        },
+        {
+          "mutation": "added_harmonic_constant",
+          "rejected": true,
+          "reason": "global_mean_scaled residual np.float64(0.7071067811865475)"
+        }
+      ]
+    },
+    "mutation-optimized": {
+      "schema": "TEP281-MUTATION-1",
+      "optimized": true,
+      "source_sha256": "1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3",
+      "original_record_accepted": true,
+      "results": [
+        {
+          "mutation": "changed_recorded_energy",
+          "rejected": true,
+          "reason": "recorded_energy_scaled residual 0.5"
+        },
+        {
+          "mutation": "added_harmonic_constant",
+          "rejected": true,
+          "reason": "global_mean_scaled residual np.float64(0.7071067811865475)"
+        }
+      ]
+    }
+  },
+  "status": "SIX_WHOLE_COEXACT_FINITE_DIAGNOSTICS_RECORDED_NOT_A_CERTIFICATE",
+  "native_environment": {
+    "python": "3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "numpy": "2.4.6",
+    "scipy": "1.16.3",
+    "packages": {
+      "numpy": {
+        "path": "/usr/local/lib/python3.13/dist-packages/numpy/__init__.py",
+        "sha256": "92a46f791e453926d3292af2582b89995a289475f0eaaea71a949823200b838a"
+      },
+      "scipy": {
+        "path": "/usr/local/lib/python3.13/dist-packages/scipy/__init__.py",
+        "sha256": "a72412a5c62442876e073a01da1910c84b7214d1382380b71a873b470420dd68"
+      }
+    },
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  "started_at": "2026-11-12T13:29:19.715264+00:00",
+  "finished_at": "2026-11-12T13:29:49.524730+00:00",
+  "cases": [
+    {
+      "n": 4,
+      "channel": 1,
+      "status": "FIXED_FINITE_FLOATING_DIAGNOSTIC_RECORDED",
+      "original_rows": 60,
+      "whole_per_channel_dimension": 126,
+      "low_dimension": 2,
+      "high_dimension": 124,
+      "high_min": 12.257442115130015,
+      "eta_min": 19.365182518343648,
+      "eta_eigenvalues": [
+        19.365182518343648,
+        23.62263189201955
+      ],
+      "eta_meaning": "Eigenvalue of D_L^-1/2 C_L* Mdag C_L D_L^-1/2; NOT a physical Rayleigh quotient",
+      "selected_real_component": "imaginary",
+      "selected_real_Rayleigh": 12.192422611804822,
+      "below_one_finite_witness_integrity_verified": false,
+      "complex_witness": {
+        "norm_squared": 1.6408585661314832,
+        "physical_Q": 20.00604108447515,
+        "physical_Rayleigh": 12.192422611804833,
+        "checks": {
+          "backward_divergence_scaled": 3.717574483223858e-16,
+          "global_mean_scaled": 2.897600478527365e-18,
+          "curl_adjoint_preimage_reconstruction_scaled": 2.34745441578751e-16,
+          "original_C_scaled": 7.6829848613431745e-16,
+          "recorded_energy_scaled": 0.0
+        }
+      },
+      "real_components": [
+        {
+          "name": "real",
+          "original_norm_squared": 1.5984113951336454,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 1.0,
+          "physical_Q": 12.192422611804833,
+          "physical_Rayleigh": 12.192422611804833,
+          "checks": {
+            "backward_divergence_scaled": 2.33246537865223e-16,
+            "global_mean_scaled": 7.806255641895632e-18,
+            "curl_adjoint_preimage_reconstruction_scaled": 1.4616510218423548e-16,
+            "original_C_scaled": 7.692292121638041e-16,
+            "recorded_energy_scaled": 0.0
+          }
+        },
+        {
+          "name": "imaginary",
+          "original_norm_squared": 0.04244717099783748,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 1.0000000000000002,
+          "physical_Q": 12.192422611804826,
+          "physical_Rayleigh": 12.192422611804822,
+          "checks": {
+            "backward_divergence_scaled": 1.9635259947340783e-15,
+            "global_mean_scaled": 1.1005586668084919e-17,
+            "curl_adjoint_preimage_reconstruction_scaled": 8.7149626528169675e-16,
+            "original_C_scaled": 7.156044289953672e-16,
+            "recorded_energy_scaled": 0.0
+          }
+        }
+      ],
+      "assembly_checks": {
+        "spectral_physical_Q": 0.0,
+        "spectral_physical_norm": 2.7064441690246053e-16,
+        "original_rows_vs_unitary_rows": 1.9636698568559372e-17,
+        "range_CL_in_M": 1.1356333183839743e-14
+      },
+      "independent_n4": {
+        "method": "Independent real physical forward-curl adjoint SVD image; physical weighted differences; original spatial cells",
+        "curl_rank_diagnostic": 126,
+        "curl_relative_cutoff": 1e-10,
+        "curl_absolute_cutoff": 3.4641016151377556e-10,
+        "dimension_expected": 126,
+        "full_spectrum_relative_residual": 9.799321295689636e-16,
+        "original_C_U_rowGram_relative_residual": 1.5724522718745133e-15,
+        "C_U_numerical_rank": 53,
+        "C_U_absolute_cutoff": 1.2500000000000005e-11,
+        "C_U_nullity": 73,
+        "direct_kernel_minimum": 12.075719014521187,
+        "direct_kernel_witness": {
+          "norm_squared": 0.9999999999999991,
+          "physical_Q": 12.075719014521184,
+          "physical_Rayleigh": 12.075719014521194,
+          "checks": {
+            "backward_divergence_scaled": 1.3447687826524466e-15,
+            "global_mean_scaled": 1.960305211172087e-16,
+            "curl_adjoint_preimage_reconstruction_scaled": 6.050699795135562e-16,
+            "original_C_scaled": 5.1080647500581024e-17,
+            "recorded_energy_scaled": 2.9420307598481905e-16
+          }
+        }
+      },
+      "failure": null,
+      "M_summary": {
+        "relative_cutoff": 1e-10,
+        "absolute_cutoff": 1.3361333810074147e-13,
+        "numerical_rank": 53,
+        "smallest_retained": 3.725851434298544e-06,
+        "discarded_eigenvalues": [
+          -3.012036966216743e-19,
+          -2.8407395022336864e-19,
+          -2.4208385971171737e-19,
+          -2.0421120034345205e-19,
+          -7.995259014539802e-20,
+          1.6769393402413003e-19,
+          1.9478866175893886e-19
+        ],
+        "range_residual": 1.1356333183839743e-14
+      }
+    },
+    {
+      "n": 4,
+      "channel": 2,
+      "status": "FIXED_FINITE_FLOATING_DIAGNOSTIC_RECORDED",
+      "original_rows": 60,
+      "whole_per_channel_dimension": 126,
+      "low_dimension": 2,
+      "high_dimension": 124,
+      "high_min": 12.257442115130015,
+      "eta_min": 11.119758832390579,
+      "eta_eigenvalues": [
+        11.119758832390579,
+        15.831142752619005
+      ],
+      "eta_meaning": "Eigenvalue of D_L^-1/2 C_L* Mdag C_L D_L^-1/2; NOT a physical Rayleigh quotient",
+      "selected_real_component": "real",
+      "selected_real_Rayleigh": 8.286267664542816,
+      "below_one_finite_witness_integrity_verified": false,
+      "complex_witness": {
+        "norm_squared": 1.3888810153978244,
+        "physical_Q": 11.508639847788395,
+        "physical_Rayleigh": 8.286267664542823,
+        "checks": {
+          "backward_divergence_scaled": 4.005689129633381e-16,
+          "global_mean_scaled": 7.724671346066867e-18,
+          "curl_adjoint_preimage_reconstruction_scaled": 2.632207776694936e-16,
+          "original_C_scaled": 9.811740958131884e-16,
+          "recorded_energy_scaled": 1.5434985045097325e-16
+        }
+      },
+      "real_components": [
+        {
+          "name": "real",
+          "original_norm_squared": 0.011852559860943954,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 1.0,
+          "physical_Q": 8.286267664542816,
+          "physical_Rayleigh": 8.286267664542816,
+          "checks": {
+            "backward_divergence_scaled": 3.825626967854125e-15,
+            "global_mean_scaled": 3.705370968959021e-18,
+            "curl_adjoint_preimage_reconstruction_scaled": 1.591116292752856e-15,
+            "original_C_scaled": 9.904408957078605e-16,
+            "recorded_energy_scaled": 0.0
+          }
+        },
+        {
+          "name": "imaginary",
+          "original_norm_squared": 1.3770284555368801,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 1.0000000000000004,
+          "physical_Q": 8.286267664542827,
+          "physical_Rayleigh": 8.286267664542823,
+          "checks": {
+            "backward_divergence_scaled": 2.137325227098473e-16,
+            "global_mean_scaled": 9.697399036122159e-19,
+            "curl_adjoint_preimage_reconstruction_scaled": 1.6904585110614615e-16,
+            "original_C_scaled": 9.819112820897456e-16,
+            "recorded_energy_scaled": 0.0
+          }
+        }
+      ],
+      "assembly_checks": {
+        "spectral_physical_Q": 1.5434985045097325e-16,
+        "spectral_physical_norm": 3.1974604370473017e-16,
+        "original_rows_vs_unitary_rows": 2.258151858305065e-17,
+        "range_CL_in_M": 1.893384616259882e-14
+      },
+      "independent_n4": {
+        "method": "Independent real physical forward-curl adjoint SVD image; physical weighted differences; original spatial cells",
+        "curl_rank_diagnostic": 126,
+        "curl_relative_cutoff": 1e-10,
+        "curl_absolute_cutoff": 3.4641016151377556e-10,
+        "dimension_expected": 126,
+        "full_spectrum_relative_residual": 9.343014514340611e-16,
+        "original_C_U_rowGram_relative_residual": 1.5529130219586983e-15,
+        "C_U_numerical_rank": 53,
+        "C_U_absolute_cutoff": 1.2500000000000005e-11,
+        "C_U_nullity": 73,
+        "direct_kernel_minimum": 8.243399217554877,
+        "direct_kernel_witness": {
+          "norm_squared": 0.9999999999999999,
+          "physical_Q": 8.243399217554892,
+          "physical_Rayleigh": 8.243399217554893,
+          "checks": {
+            "backward_divergence_scaled": 1.5934454411018824e-15,
+            "global_mean_scaled": 7.523823029120125e-17,
+            "curl_adjoint_preimage_reconstruction_scaled": 6.445813308041017e-16,
+            "original_C_scaled": 4.7958572821455635e-17,
+            "recorded_energy_scaled": 1.7239071334721969e-15
+          }
+        }
+      },
+      "failure": null,
+      "M_summary": {
+        "relative_cutoff": 1e-10,
+        "absolute_cutoff": 1.3362282073590548e-13,
+        "numerical_rank": 53,
+        "smallest_retained": 3.6752557125674948e-06,
+        "discarded_eigenvalues": [
+          -2.496039683423187e-19,
+          -1.8592320043212197e-19,
+          -2.873211928972662e-20,
+          -2.1283155344861338e-20,
+          -1.8073315038647202e-20,
+          7.150521354103923e-20,
+          1.8896617348695198e-19
+        ],
+        "range_residual": 1.893384616259882e-14
+      }
+    },
+    {
+      "n": 8,
+      "channel": 1,
+      "status": "FIXED_FINITE_FLOATING_DIAGNOSTIC_RECORDED",
+      "original_rows": 120,
+      "whole_per_channel_dimension": 1022,
+      "low_dimension": 6,
+      "high_dimension": 1016,
+      "high_min": 12.943963718255674,
+      "eta_min": 3.1120558372543288,
+      "eta_eigenvalues": [
+        3.1120558372543288,
+        3.533117124000074,
+        4.569270451482672,
+        4.56927045148377,
+        6.860525006657764,
+        6.860525006659827
+      ],
+      "eta_meaning": "Eigenvalue of D_L^-1/2 C_L* Mdag C_L D_L^-1/2; NOT a physical Rayleigh quotient",
+      "selected_real_component": "real",
+      "selected_real_Rayleigh": 2.6136833569561913,
+      "below_one_finite_witness_integrity_verified": false,
+      "complex_witness": {
+        "norm_squared": 1.3088415568950271,
+        "physical_Q": 3.420897394149162,
+        "physical_Rayleigh": 2.613683356956191,
+        "checks": {
+          "backward_divergence_scaled": 5.157126447746256e-16,
+          "global_mean_scaled": 3.3727960278791255e-18,
+          "curl_adjoint_preimage_reconstruction_scaled": 2.7624143473162224e-16,
+          "original_C_scaled": 4.117789133576777e-17,
+          "recorded_energy_scaled": 5.685966327051874e-14
+        }
+      },
+      "real_components": [
+        {
+          "name": "real",
+          "original_norm_squared": 1.1502987590655658,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 1.0000000000000002,
+          "physical_Q": 2.6136833569561917,
+          "physical_Rayleigh": 2.6136833569561913,
+          "checks": {
+            "backward_divergence_scaled": 3.8704983451930404e-16,
+            "global_mean_scaled": 4.944099460402632e-18,
+            "curl_adjoint_preimage_reconstruction_scaled": 2.16367644347456e-16,
+            "original_C_scaled": 3.920784562291972e-17,
+            "recorded_energy_scaled": 0.0
+          }
+        },
+        {
+          "name": "imaginary",
+          "original_norm_squared": 0.15854279782946074,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 1.0000000000000004,
+          "physical_Q": 2.6136833569561926,
+          "physical_Rayleigh": 2.6136833569561913,
+          "checks": {
+            "backward_divergence_scaled": 1.080831580498215e-15,
+            "global_mean_scaled": 2.1737661181679196e-18,
+            "curl_adjoint_preimage_reconstruction_scaled": 4.955997213054264e-16,
+            "original_C_scaled": 5.2911161066079256e-17,
+            "recorded_energy_scaled": 0.0
+          }
+        }
+      ],
+      "assembly_checks": {
+        "spectral_physical_Q": 5.685966327051874e-14,
+        "spectral_physical_norm": 6.785988838917643e-16,
+        "original_rows_vs_unitary_rows": 9.242628817584681e-18,
+        "range_CL_in_M": 9.249617688451884e-15
+      },
+      "independent_n4": null,
+      "failure": null,
+      "M_summary": {
+        "relative_cutoff": 1e-10,
+        "absolute_cutoff": 1.6101540917610016e-14,
+        "numerical_rank": 109,
+        "smallest_retained": 8.582258997924262e-07,
+        "discarded_eigenvalues": [
+          -1.593814358591569e-20,
+          -1.2900110007308903e-20,
+          -1.9568286835631912e-21,
+          -1.1689472454151899e-21,
+          1.0769754163724395e-21,
+          1.1988468154600568e-21,
+          3.944523312260495e-21,
+          5.432449280541854e-21,
+          5.575347365783312e-21,
+          1.4070400763706635e-20,
+          2.0215042521067742e-20
+        ],
+        "range_residual": 9.249617688451884e-15
+      }
+    },
+    {
+      "n": 8,
+      "channel": 2,
+      "status": "FIXED_FINITE_FLOATING_DIAGNOSTIC_RECORDED",
+      "original_rows": 120,
+      "whole_per_channel_dimension": 1022,
+      "low_dimension": 6,
+      "high_dimension": 1016,
+      "high_min": 12.943963718255674,
+      "eta_min": 2.260519996440148,
+      "eta_eigenvalues": [
+        2.260519996440148,
+        2.591632211937097,
+        4.232211252793073,
+        4.232211252794109,
+        5.84466800383866,
+        5.8446680038403915
+      ],
+      "eta_meaning": "Eigenvalue of D_L^-1/2 C_L* Mdag C_L D_L^-1/2; NOT a physical Rayleigh quotient",
+      "selected_real_component": "real",
+      "selected_real_Rayleigh": 2.0128690227318207,
+      "below_one_finite_witness_integrity_verified": false,
+      "complex_witness": {
+        "norm_squared": 1.2445044405052386,
+        "physical_Q": 2.5050244369451917,
+        "physical_Rayleigh": 2.0128690227318216,
+        "checks": {
+          "backward_divergence_scaled": 3.7734008613879425e-16,
+          "global_mean_scaled": 4.6864811486462934e-18,
+          "curl_adjoint_preimage_reconstruction_scaled": 2.1658686453541512e-16,
+          "original_C_scaled": 8.475862340338759e-17,
+          "recorded_energy_scaled": 7.747109443016919e-14
+        }
+      },
+      "real_components": [
+        {
+          "name": "real",
+          "original_norm_squared": 0.5660469798658387,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 0.9999999999999993,
+          "physical_Q": 2.0128690227318193,
+          "physical_Rayleigh": 2.0128690227318207,
+          "checks": {
+            "backward_divergence_scaled": 3.7636180702942927e-16,
+            "global_mean_scaled": 8.802447243604234e-18,
+            "curl_adjoint_preimage_reconstruction_scaled": 2.62791339686366e-16,
+            "original_C_scaled": 8.342748244096641e-17,
+            "recorded_energy_scaled": 0.0
+          }
+        },
+        {
+          "name": "imaginary",
+          "original_norm_squared": 0.6784574606394,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 1.0000000000000002,
+          "physical_Q": 2.0128690227318224,
+          "physical_Rayleigh": 2.012869022731822,
+          "checks": {
+            "backward_divergence_scaled": 3.934772596143115e-16,
+            "global_mean_scaled": 1.8248164539724978e-18,
+            "curl_adjoint_preimage_reconstruction_scaled": 2.1876734138409259e-16,
+            "original_C_scaled": 8.578643057630116e-17,
+            "recorded_energy_scaled": 0.0
+          }
+        }
+      ],
+      "assembly_checks": {
+        "spectral_physical_Q": 7.747109443016919e-14,
+        "spectral_physical_norm": 3.5684019710670783e-16,
+        "original_rows_vs_unitary_rows": 8.636002972746139e-18,
+        "range_CL_in_M": 8.406708751847566e-15
+      },
+      "independent_n4": null,
+      "failure": null,
+      "M_summary": {
+        "relative_cutoff": 1e-10,
+        "absolute_cutoff": 1.610157887439544e-14,
+        "numerical_rank": 109,
+        "smallest_retained": 8.577411577153948e-07,
+        "discarded_eigenvalues": [
+          -1.7528866081604358e-20,
+          -8.693379637367903e-21,
+          -4.765623174422015e-21,
+          -1.3274798319995175e-21,
+          -1.3196363564454452e-21,
+          -1.1375153472296904e-21,
+          -4.837263789735233e-22,
+          1.9075539966495726e-21,
+          2.764795268509147e-21,
+          1.3258340901098372e-20,
+          1.691929825479356e-20
+        ],
+        "range_residual": 8.406708751847566e-15
+      }
+    },
+    {
+      "n": 16,
+      "channel": 1,
+      "status": "FIXED_FINITE_FLOATING_DIAGNOSTIC_RECORDED",
+      "original_rows": 264,
+      "whole_per_channel_dimension": 8190,
+      "low_dimension": 14,
+      "high_dimension": 8176,
+      "high_min": 13.106138384450436,
+      "eta_min": 2.0334693633815064,
+      "eta_eigenvalues": [
+        2.0334693633815064,
+        2.196198525161168,
+        2.1961985251619534,
+        2.2161651818554335,
+        2.352770231440741,
+        2.5968647735965398,
+        2.596864773599516,
+        2.599611042999517,
+        2.7501500487774004,
+        3.6147296663671096,
+        4.075067396600864,
+        4.0750673966054825,
+        6.436462984057719,
+        6.436462984063626
+      ],
+      "eta_meaning": "Eigenvalue of D_L^-1/2 C_L* Mdag C_L D_L^-1/2; NOT a physical Rayleigh quotient",
+      "selected_real_component": "imaginary",
+      "selected_real_Rayleigh": 1.9019871776226642,
+      "below_one_finite_witness_integrity_verified": false,
+      "complex_witness": {
+        "norm_squared": 1.145769462160774,
+        "physical_Q": 2.179238825541412,
+        "physical_Rayleigh": 1.9019871776226673,
+        "checks": {
+          "backward_divergence_scaled": 2.975702718867362e-16,
+          "global_mean_scaled": 5.076466857475904e-18,
+          "curl_adjoint_preimage_reconstruction_scaled": 2.4209352282018603e-16,
+          "original_C_scaled": 1.7926905132726176e-17,
+          "recorded_energy_scaled": 4.026728362116798e-13
+        }
+      },
+      "real_components": [
+        {
+          "name": "real",
+          "original_norm_squared": 0.11655916830445455,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 1.0000000000000009,
+          "physical_Q": 1.9019871776226909,
+          "physical_Rayleigh": 1.901987177622689,
+          "checks": {
+            "backward_divergence_scaled": 5.994931658955877e-16,
+            "global_mean_scaled": 2.4807534471858343e-18,
+            "curl_adjoint_preimage_reconstruction_scaled": 4.3264099393272315e-16,
+            "original_C_scaled": 1.8325883983238016e-17,
+            "recorded_energy_scaled": 0.0
+          }
+        },
+        {
+          "name": "imaginary",
+          "original_norm_squared": 1.0292102938563192,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 1.0000000000000004,
+          "physical_Q": 1.9019871776226651,
+          "physical_Rayleigh": 1.9019871776226642,
+          "checks": {
+            "backward_divergence_scaled": 2.5265148565190894e-16,
+            "global_mean_scaled": 5.650169702482825e-18,
+            "curl_adjoint_preimage_reconstruction_scaled": 2.276098543650079e-16,
+            "original_C_scaled": 1.787893956558235e-17,
+            "recorded_energy_scaled": 0.0
+          }
+        }
+      ],
+      "assembly_checks": {
+        "spectral_physical_Q": 4.026728362116798e-13,
+        "spectral_physical_norm": 5.813855551001078e-16,
+        "original_rows_vs_unitary_rows": 2.723289259535743e-18,
+        "range_CL_in_M": 1.303528404637268e-14
+      },
+      "independent_n4": null,
+      "failure": null,
+      "M_summary": {
+        "relative_cutoff": 1e-10,
+        "absolute_cutoff": 2.0082508287842487e-15,
+        "numerical_rank": 245,
+        "smallest_retained": 4.9748360374134505e-08,
+        "discarded_eigenvalues": [
+          -9.718783488860073e-22,
+          -6.428856194653323e-22,
+          -4.028541202022325e-22,
+          -2.6469779601696886e-22,
+          -1.852884572118782e-22,
+          -5.293955920339377e-23,
+          -5.293955920339377e-23,
+          -4.032837285302512e-23,
+          -3.7492308891582923e-23,
+          -3.412769869028293e-23,
+          1.680877152319103e-23,
+          4.7126679037425597e-23,
+          5.679797527787427e-23,
+          1.024258244588195e-22,
+          1.0275972746211804e-22,
+          1.3399645927704547e-22,
+          6.22217034568816e-22,
+          8.449614065156933e-22,
+          1.343807752602685e-21
+        ],
+        "range_residual": 1.303528404637268e-14
+      }
+    },
+    {
+      "n": 16,
+      "channel": 2,
+      "status": "FIXED_FINITE_FLOATING_DIAGNOSTIC_RECORDED",
+      "original_rows": 264,
+      "whole_per_channel_dimension": 8190,
+      "low_dimension": 14,
+      "high_dimension": 8176,
+      "high_min": 13.106138384450436,
+      "eta_min": 1.8318017351393219,
+      "eta_eigenvalues": [
+        1.8318017351393219,
+        1.8723029479188713,
+        1.918532530620546,
+        1.9185325306211543,
+        2.0958599580907626,
+        2.117882947195645,
+        2.22473293193588,
+        2.2247329319383495,
+        2.6573739231508937,
+        3.309573503816395,
+        4.058141564433437,
+        4.058141564437953,
+        6.2726510499316035,
+        6.272651049937049
+      ],
+      "eta_meaning": "Eigenvalue of D_L^-1/2 C_L* Mdag C_L D_L^-1/2; NOT a physical Rayleigh quotient",
+      "selected_real_component": "imaginary",
+      "selected_real_Rayleigh": 1.6955646656601273,
+      "below_one_finite_witness_integrity_verified": false,
+      "complex_witness": {
+        "norm_squared": 1.1958654258966126,
+        "physical_Q": 2.0276671610348957,
+        "physical_Rayleigh": 1.6955646656601273,
+        "checks": {
+          "backward_divergence_scaled": 4.023539723650003e-16,
+          "global_mean_scaled": 1.086795185572537e-18,
+          "curl_adjoint_preimage_reconstruction_scaled": 2.2181700656419255e-16,
+          "original_C_scaled": 1.409338515685213e-17,
+          "recorded_energy_scaled": 5.118376937610246e-13
+        }
+      },
+      "real_components": [
+        {
+          "name": "real",
+          "original_norm_squared": 0.003628610657873176,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 1.0000000000000002,
+          "physical_Q": 1.695564665660147,
+          "physical_Rayleigh": 1.6955646656601466,
+          "checks": {
+            "backward_divergence_scaled": 5.529857096843136e-15,
+            "global_mean_scaled": 1.566918462850226e-18,
+            "curl_adjoint_preimage_reconstruction_scaled": 2.3055296216650786e-15,
+            "original_C_scaled": 4.284781351491927e-17,
+            "recorded_energy_scaled": 0.0
+          }
+        },
+        {
+          "name": "imaginary",
+          "original_norm_squared": 1.192236815238739,
+          "eligible": true,
+          "normalized_integrity_valid": true,
+          "norm_squared": 1.0000000000000004,
+          "physical_Q": 1.695564665660128,
+          "physical_Rayleigh": 1.6955646656601273,
+          "checks": {
+            "backward_divergence_scaled": 2.7086598128477056e-16,
+            "global_mean_scaled": 1.6867350563771378e-18,
+            "curl_adjoint_preimage_reconstruction_scaled": 2.1676858154219292e-16,
+            "original_C_scaled": 1.3912125858379156e-17,
+            "recorded_energy_scaled": 0.0
+          }
+        }
+      ],
+      "assembly_checks": {
+        "spectral_physical_Q": 5.118376937610246e-13,
+        "spectral_physical_norm": 5.570307497397991e-16,
+        "original_rows_vs_unitary_rows": 3.4187088954974196e-18,
+        "range_CL_in_M": 1.0212020103852445e-14
+      },
+      "independent_n4": null,
+      "failure": null,
+      "M_summary": {
+        "relative_cutoff": 1e-10,
+        "absolute_cutoff": 2.0082506040141405e-15,
+        "numerical_rank": 245,
+        "smallest_retained": 4.974975331277981e-08,
+        "discarded_eigenvalues": [
+          -1.9113794669221795e-21,
+          -1.0513406745910424e-21,
+          -6.882407931335285e-22,
+          -2.7278062817985594e-22,
+          -1.220653245761461e-22,
+          -5.293955920339377e-23,
+          -2.7942006933589204e-23,
+          1.3526432341543705e-23,
+          4.6006791239971995e-23,
+          7.48048262119675e-23,
+          1.0587911840678754e-22,
+          1.0587911840678754e-22,
+          1.0587911840678754e-22,
+          1.3660480807365634e-22,
+          1.5442858524954107e-22,
+          2.470987124635706e-22,
+          3.8296623682194545e-22,
+          6.662655231991511e-22,
+          1.0015702372740303e-21
+        ],
+        "range_residual": 1.0212020103852445e-14
+      }
+    }
+  ]
+}

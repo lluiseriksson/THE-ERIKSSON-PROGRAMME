@@ -1,0 +1,46 @@
+281C parent engineering execution-source review,12 November2026.
+Exact source commit2fe5302a25a6726e280b55f78c111be381dc3177;
+diagnostic1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3;
+operative manifest308c1b627d0c4b2833bd5f6d70ef0372f16e3a8e9fdbb577cf66ab2868247be9.
+
+Root's actual read context: full A, complete A-B change and full B-C change,
+full standalone/lifecycle/capture/readback logic, final thread-environment
+change and exact C source/hash rebinding. These reads reconstruct the full
+C source; no separate claim of executing, importing or testing it locally.
+The code was fabricated by a different involved session. Shared context,
+no independent provider, human peer review or inferred backend identity.
+
+The provisional B engineering review is superseded for execution by this
+record, and the discovered B serialization block remains in parent-block281B.
+B's mathematical audit had missed that engineering defect; it stays intact,
+and no B execution was authorized or attempted. C converts the partner
+frequency tuple entries explicitly to Python int before recording list(h)
+in plain JSON. This preserves residues/indexing, pair membership and all
+numerical matrices while repairing the serialization leaf type. The sole
+other diagnostic change is its retained source filename. Full B-C diff is
+preserved; no case/cutoff/threshold/model parameter changed.
+
+Other diagnostic JSON constructions were inspected: original cells use
+Python range/loop integers; eigenvalue/vector scalar lists use tolist();
+norms/energies/ranks/status predicates explicitly convert float/int/bool;
+NumPy arrays remain binary npy artifacts rather than raw JSON leaves.
+The static finding is not presented as a successfully executed JSON test.
+Actual run success and full returned evidence remain mandatory.
+
+C launch and outer gate now bind the exact C raw hash and filename. The
+notebook-safe standalone child, three actual invocation receipts, requested
+thread environment before imports, full failure/native-ZIP retention,
+atomic decimal exits, own unique CPU session, finally-stop and separate
+backend readback remain as reviewed for B. All frozen B wrappers/manifests
+were retained before rebinding. Five operative file hashes must be checked
+again by the actual launch gate. No credential contents were read or stored.
+
+Conclusion: C is suitable for the predeclared six-case floating diagnostic,
+ONLY after the genuine C-specific mathematical report is fully read and
+accepted. The root relay must name C, its actual source commit, this report
+and that C-specific report. This is an engineering judgment, not a result,
+certificate, all-n conclusion, new score or permission to publish a paper.
+Keep numerical caveats from source: rank truncation, relative/absolute
+residual scales, unvalidated sign near1, same-environment assemblies and
+selected real-component cutoff. A true below-one flag is at most a candidate
+pending full physical/evidence inspection and subsequent exact validation.

@@ -1,0 +1,90 @@
+{
+  "representation": "Exact raw bytes; no normalization; self excluded",
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1280,
+      "sha256": "dc9355cdaa33fe336655a167681ecd40608cae3fb8406a698afb3a58db27c48a"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 1545,
+      "sha256": "c24502e1ad6c0ada0824e26fdd6a25ebd806e47153aaf2374ba89c51e4104673"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 9938,
+      "sha256": "34d7c668be024c92da9ab35e9b9e41bfe786b9fb193a60d00eedecca6735c5ea"
+    },
+    {
+      "path": "prior-B-immutable/assignment.txt",
+      "bytes": 1558,
+      "sha256": "8519c4e297aa254ea364245b8eac8c9272c897230a95e81413988e33a0fdc66f"
+    },
+    {
+      "path": "prior-B-immutable/context.txt",
+      "bytes": 2010,
+      "sha256": "4650030553c170caffcef3780747d7af17a3321eafc84a203ef9149dff22bdef"
+    },
+    {
+      "path": "prior-B-immutable/full-report.txt",
+      "bytes": 13358,
+      "sha256": "a56c858ed3ca2bc8d15126bec8012f8cb6008c128ed25e208044e56aac935be2"
+    },
+    {
+      "path": "prior-B-immutable/raw-hashmanifest.json",
+      "bytes": 2534,
+      "sha256": "5b44590747d6fcc23ea4539bce23d6f16e3fc90be4b9c2c48a386a271012ed0f"
+    },
+    {
+      "path": "source-stability.json",
+      "bytes": 813,
+      "sha256": "b02c5bd3121071ff94cbd46c37054a05e7f7a0ae69899e37ad45eac5791087f5"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 4789,
+      "sha256": "550c6b1610981fc684d6ef6439ac22b211888e5ec6d5b71b982ee3d4d560e0aa"
+    },
+    {
+      "path": "subjects/actual-B-to-C.diff",
+      "bytes": 2183,
+      "sha256": "fc043b3103a2e0c41cd88a5d5a2b3fe8d265ceadd6b5e07a493a9e173e2b51bd"
+    },
+    {
+      "path": "subjects/cancellation-range280A.txt",
+      "bytes": 10920,
+      "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36"
+    },
+    {
+      "path": "subjects/diagnostic281A.git.py",
+      "bytes": 18443,
+      "sha256": "6676e83c85354d6163271407de0e34094d3ff1595ffcfed82fdb451faf0fa50c"
+    },
+    {
+      "path": "subjects/diagnostic281B.git.py",
+      "bytes": 20199,
+      "sha256": "495a00952c4869f313c2245c1a089498fe8775dccb789ee617a078271eb23ee0"
+    },
+    {
+      "path": "subjects/diagnostic281C.checkout.py",
+      "bytes": 20217,
+      "sha256": "1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3"
+    },
+    {
+      "path": "subjects/diagnostic281C.git.py",
+      "bytes": 20217,
+      "sha256": "1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3"
+    },
+    {
+      "path": "subjects/full-coexact-spectrum279A.txt",
+      "bytes": 12104,
+      "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+    },
+    {
+      "path": "version-event.txt",
+      "bytes": 1099,
+      "sha256": "17a5e5b754ab9c3a25abde2bd99b2cc19957644690043b2bc16f667a49cd336e"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "full_report_read": true,
+  "accepted_finite_diagnostic": true,
+  "report_sha256": "f3bed71ffc7ee019d5dd5f52b33d675f49a148558101e37fe3245399623ceb25",
+  "source_sha256": "1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3",
+  "scope": "Fixed finite floating record only; no exact theorem, grade or hypothesis elimination",
+  "prior_factual_review_preserved": true,
+  "sealed_replacement_read": true,
+  "root_retention_helper_changes_after_review": "Changed gate/path to new sealed report, retained both complete reviews and engineering review; added incident to state",
+  "utc": "2026-11-12T13:40:20.6911982Z"
+}

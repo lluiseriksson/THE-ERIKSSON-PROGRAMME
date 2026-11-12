@@ -1,0 +1,14 @@
+{
+  "source": "2fe5302a25a6726e280b55f78c111be381dc3177",
+  "diagnostic_source_sha256": "1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3",
+  "runner_manifest_sha256": "308c1b627d0c4b2833bd5f6d70ef0372f16e3a8e9fdbb577cf66ab2868247be9",
+  "parent_full_mathematical_report_read": true,
+  "parent_full_engineering_report_read": true,
+  "mathematical_accepted": true,
+  "engineering_accepted": true,
+  "mathematical_report_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-281\\source-audit281C\\full-report.txt",
+  "mathematical_report_sha256": "34d7c668be024c92da9ab35e9b9e41bfe786b9fb193a60d00eedecca6735c5ea",
+  "engineering_report_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-281\\parent-engineering-review281C.txt",
+  "engineering_report_sha256": "8d3fab8dcae6f376b802db0e6844d1ed64dfabe5586722a3152e3d4fea26510d",
+  "utc": "2026-11-12T13:28:26.6157916Z"
+}

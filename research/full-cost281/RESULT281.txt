@@ -1,0 +1,83 @@
+281C: fixed full-coexact diagnostic, 12 November 2026
+Executed source commit 2fe5302a25a6726e280b55f78c111be381dc3177.
+Raw source SHA256 1236317735c636c10bb241c29957a102089d00fa34cc53b8e7a433ed7df708c3.
+
+Six predeclared cases completed on the thread-owned Linux Colab CPU runtime,
+without parameter adaptation. All original channels, original canonical cells,
+both true coexact polarizations and all frequencies were included. H=n^2,
+a=1/48, target c=1 and tau_i=2i^2 mod n. This is a floating diagnostic,
+not a mathematical certificate, formal proof or all-n conclusion.
+
+n  channel   minimum shifted-cost eta     selected physical Rayleigh
+4     1          19.365182518343648           12.192422611804822
+4     2          11.119758832390579            8.286267664542816
+8     1           3.1120558372543288           2.6136833569561913
+8     2           2.260519996440148            2.0128690227318207
+16    1           2.0334693633815064           1.9019871776226642
+16    2           1.8318017351393219           1.6955646656601273
+
+No selected real field has Rayleigh below1. Eta is the dimensionless
+shifted-cancellation criterion of280; it is NOT a physical Rayleigh minimum.
+The selected fields minimize shifted high cost for a selected low direction,
+not physical Rayleigh over the entire invisible space. The separately
+assembled n4 physical kernel minima are12.075719014521187 and8.243399217554877,
+respectively, consistent with this distinction. This is a second assembly
+in the same environment, not independent replication or exact rank proof.
+
+All six physical/spectral/range checks passed the fixed tolerance1e-8.
+The largest reported spectral/physical energy residual is about5.12e-13;
+range residuals are at most1.90e-14. Pseudoinverse numerical ranks are53,109,245
+for n4,8,16, in both channels. All discarded eigenvalues and all vectors are
+retained. A wide observed separation around the fixed1e-10 relative cutoff
+does not establish exact rank or interval-certified sign. Unit-normalized
+real and imaginary components separately passed original physical checks.
+
+The unchanged record passed and both actual mutations (wrong energy,
+added harmonic constant) were rejected in normal and python-O invocations.
+All three actual children exited0. Python3.13.18, NumPy2.4.6, SciPy1.16.3;
+native extension hashes and requested thread limits1 are retained.
+
+Native output ZIP SHA256:
+b2d77cbb2808e8bf1f8ddb7826002d9a226bf155a733036933f383acca0b6f81
+Transport envelope SHA256:
+caa2b10a55e17c28a3a569df738824e10440c2e3c967e2738738653e0d22f61e
+Parent verified12 outer and183 native manifest members by bytes and hashes.
+Actual stop reported Session terminated; separate backend query reported
+No active sessions found on server. Allocation-request to release-finished
+interval13:28:26.7585324Z to13:31:15.8740559Z is an operational upper window,
+not billed duration or measured billable units. Actual child timestamps are
+retained separately. No desktop control, local numerical execution or purchase.
+
+Failures and audit context remain visible: B's np.int64 JSON leaf defect was
+caught before execution by the parent but missed by the first source auditor.
+C repairs representation only; B/report/diff remain immutable. A shell wrapper
+around the successful backend readback incorrectly tested LASTEXITCODE, which
+was not set by that .NET process wrapper, and raised a spurious readback error.
+The actual atomic backend-readback.exit is0 and its literal log is inactive;
+no backend retry or mathematical rerun occurred. Initial source diff-check
+flagged trailing spaces in a preserved raw diff; the historical failed check
+is not rewritten as a pass. Later diff attributes preserve raw diff evidence.
+The final evidence diff check also flagged retained CRLF endings as trailing
+whitespace. Evidence attributes now recognize CR-at-EOL while retaining other
+whitespace checks and exact raw bytes; the original failed check is preserved.
+
+The parent also sent a status/results message while the first returned-output
+review was running, violating the charter's no-inbound boundary. That complete
+involved factual review remains in returned-audit281C and cannot supply the
+sealed audit gate. A different session was assigned the unchanged artifacts
+with silence maintained; its separate report is required before retention
+acceptance. This is a procedural correction, no numerical rerun or regrading.
+
+Disposition: useful bounded negative search, no new hypothesis eliminated,
+no proved lower bound, no counterexample, no new paper or score. Q251 remains
+OPEN; this is one unit without substantial mathematical advance on the full
+spectral route. Stopped paired/projection routes stay stopped. PR29 remains
+20/41, TermSource=0; physical Yang-Mills gap and continuum remain open.
+
+Next: seek a proved upper bound on the high-response quadratic form on
+explicit low-observation dual test vectors, then turn the variational dual
+formula for y*Mdag*y into a genuine cancellation-cost lower bound. Pay every
+frequency/block sum and its n-dependence. Merely rephrasing Schur complements,
+assuming a Gram bound, or extending the same size sweep is not progress.
+If this route cannot pay the bound within two further units, retain the
+obstruction and change mechanism under the three-unit rule.
