@@ -1,0 +1,183 @@
+Q251 /286A: A LINEAR-SIZED SINGLETON KERNEL AND THE EXACT PREFIX RESIDUAL
+12 November2026. Parent analytical fabrication at base
+cb62b7a4ccd7555fe92e733edd3d50e523e1fd3b. Separate frozen-source audit required.
+No numerical/formal execution, new PDF, grade, acceptance or publication.
+
+1. ORIGINAL MODEL AND PAID INPUTS
+
+Use the actual real one-channel coexact U, restricted source form A, low L,
+high F, B=A_F-cI, T and E of285A. n>=4 even, c>0, H=cn^2, a=c/48;
+f(i)=i+tau_i is a permutation. T is the original normalized singleton map.
+Put N=n/2, d=n-2, h_N=sum_(j=1)^N 1/j,
+K_n=(48/13)h_N+1/(6n^2-1), delta_n=128K_n^2/(48n^2-1).
+We use the proved full low spectral space dim L=d, A_L<=c/8,
+B>=13c/3, and the isometry J=n^(5/2)T_L:L->E.
+On the singleton row space put M=T_F B^-1 T_F*, Mhat=c n^5 M.
+The optimized response from285 is the positive definite operator
+Sigma=(P_E Mhatdagger P_E|E)^-1, with Sigma<=K_n I.
+All perpendicular singleton coefficients are included in this inverse.
+
+The actual full cell map is C=(T,P). P contains all the remaining nonempty
+cells {i} times I times J3, where I is [0,tau_i-1], {tau_i}, or
+[tau_i+1,n-1], and J3 is {0} or [1,n-1], excluding singleton cells already
+in T. Each spatial component has the original coefficient
+   (n^3 |cell|)^(-1/2) sum_cell u_r.
+Empty cells are omitted. No rotated, projected or substituted observation
+is introduced. P may include a singleton-valued cell when an endpoint
+interval has length1; it means ALL remaining rows, not necessarily only
+cells of volume>1. This distinction matters at boundary cuts.
+The geometric range theorem280 supplies range C_F=range(C|U).
+Thus every low l admits a full high cancellation; it is not assumed here.
+
+2. TRACE INFORMATION RETAINED BY THE285 PROOF
+
+Define
+ t_n=N{h_N/(8pi^2)-1-128pi^2}-4K_n-d delta_n.
+Then tr Sigma>=t_n. To verify rather than infer this from a norm lower
+bound, use the actual intermediates of285: its mean-eliminated operator S0
+on E0 has trace at least N{h_N/(8pi^2)-1-128pi^2}-4K_n. The orthogonal
+identification O:E0->E satisfies
+ ||O* S_E(K) O-S0||<=delta_n,
+and the actual optimized Sigma dominates S_E(K). Trace monotonicity and
+|tr D|<=d||D|| on this d-dimensional space prove the displayed bound.
+This explicitly uses the trace in285, not d times its norm lower bound.
+
+Let V be the real spectral subspace of Sigma for eigenvalues at least2,
+and m=dim V. Since K_n>2 for every n>=4, spectral counting gives
+ tr Sigma <= m K_n+2(d-m).
+Consequently
+ m >= k_n := max(0, ceil((t_n-2d)/(K_n-2))).                  (COUNT)
+The inequality itself ensures k_n<=d. The ceiling is literal; a negative
+lower expression yields only0, not a small-size counterexample.
+
+These constants imply a uniform-in-cut asymptotic density:
+ liminf_(n even ->infinity) m/n >= 13/(768pi^2).              (DENSITY)
+Indeed h_N diverges, K_n/h_N ->48/13, N/d ->1/2,
+4K_n/(d h_N)->0 and delta_n/h_N->0. The last limit follows from
+h_N<=1+log N and delta_n=O(h_N^2/n^2). Thus
+t_n/(d h_N)->1/(16pi^2), and division of(COUNT) by n gives(DENSITY).
+Every limiting assertion follows from these elementary bounds; no numerical
+extrapolation or sharpness is claimed. Equivalently, for each fixed
+eta<13/(768pi^2), all sufficiently large included even sizes have m>=eta n.
+
+3. AN ACTUAL NEGATIVE SUBSPACE, NOT A COLLECTION OF INDIVIDUAL WITNESSES
+
+For l in L define the LINEAR high cancellation
+ F_T l=-B^-1 T_F* Mdagger T_L l, and W_T l=l+F_T l.
+The range property in285 proves T W_T l=0. Its square-completion identity
+gives
+ <F_T l,B F_T l>=c<Jl,Sigma^-1 Jl>.
+For l in L_bad=J*V this is at most(c/2)||l||^2. Every linear combination
+in L_bad obeys the same inequality, because it is a spectral subspace.
+Since L and F are orthogonal actual spectral spaces,
+ Q(W_T l)-c||W_T l||^2 <=-(3c/8)||l||^2,
+ ||F_T l||^2<=3||l||^2/26, and ||W_T l||^2<=29||l||^2/26.
+Thus the actual m-dimensional subspace Z=W_T(L_bad) satisfies
+ T Z=0, and Q(w)<= (77c/116)||w||^2 for every w in Z.       (SUBSPACE)
+W_T is injective since its low projection is l. No unproved simultaneous
+choice of cancelling eigenvectors or diagonalization of A_L and Sigma is
+used. The uniform energy margin follows from the form bound A_L<=c/8.
+
+Let D:U->Y be ANY finite-dimensional real linear additional observation,
+including arbitrary correlations or combinations of original remaining rows.
+If rank(D|Z)<m, rank-nullity gives nonzero w in Z with Dw=0. Then Tw=Dw=0
+and(SUBSPACE) prevents a target-c lower bound with any finite positive
+quadratic penalties on T and D. In particular rank D<m is impossible for
+such a repair. This is an ADDITIONAL-rank requirement after keeping all
+original singletons, not the old total rank lower bound from dim L.
+For the original two-channel orthogonal direct sum, apply this construction
+in each channel. Their direct sum has dimension at least2k_n, still obeys
+(SUBSPACE), and is invisible to both singleton maps. Additional rows may
+mix channels arbitrarily; they must have rank at least2k_n on this subspace.
+Hence any successful added-row family has asymptotic total real rank at
+least (13/(384pi^2)-o(1))n. In particular o(n) extra scalar observations
+cannot repair the singleton map. This does not refute a full O(n)-row repair.
+
+4. PAYING THE REMAINING ORIGINAL ROWS BY A CONDITIONAL RESPONSE
+
+All operators in this section are finite real operators on the actual F.
+Define X=T_F B^-1/2 and Y=P_F B^-1/2. Here P_F means restriction of the
+observation P to F, not an orthogonal projection. Then M=XX*.
+The operator Pi=I-X* Mdagger X is the orthogonal projector onto ker X:
+X* Mdagger X is symmetric, idempotent and has range range X*, as follows
+from the finite spectral inverse on range XX*. In particular X Pi=0.
+Put
+ R_T=B^-1/2 Pi B^-1/2
+    =B^-1-B^-1 T_F* Mdagger T_F B^-1,
+ K_P=P_F R_T P_F*
+    =P_F B^-1 P_F*-P_F B^-1 T_F* Mdagger T_F B^-1 P_F*,
+ r(l)=P_L l+P_F F_T l
+     =(P_L-P_F B^-1 T_F* Mdagger T_L)l.                 (RESIDUAL)
+K_P is positive semidefinite, possibly singular; no invertibility claim.
+These formulas include all singleton/remaining-row cross-correlations.
+
+For every l, range equality280 gives f_full with C_F f_full=-C_L l.
+Then z=f_full-F_T l satisfies T_F z=0 and P_F z=-r(l).
+Writing z=B^-1/2 v gives v in ker X and Yv=-r(l).
+Thus r(l) belongs to range(Y Pi)=range(Y Pi Y*)=range K_P. The middle
+range equality holds because ker(Y Pi Y*)=ker(Pi Y*) in finite dimension.
+This pays feasibility for the actual rows, even when they are dependent.
+
+The least B-cost correction after the singleton minimizer is
+ z_*(l)=-R_T P_F* K_Pdagger r(l).
+It has T_F z_*=0 and P_F z_*=-r(l). Its B-cost is
+ <z_*,B z_*>=<r(l),K_Pdagger r(l)>, since R_T B R_T=R_T.
+Every competing correction differs by h with T_F h=P_F h=0; the cross
+term with B z_* vanishes (use the whitened projector Pi). This proves
+minimality directly. Also <F_T l,Bz>=0 for EVERY z in ker T_F, because
+B F_T l=-T_F* Mdagger T_L l. The full attained minimum therefore equals
+ min_(f in F:C_F f=-C_L l)<f,Bf>
+    = c<Jl,Sigma^-1 Jl>+<r(l),K_Pdagger r(l)>.          (COST-SPLIT)
+This is an identity for original normalized rows, not an assumption about
+a favorable Gram matrix or preservation of cell means by projection.
+
+Put D_L=cI-A_L. The exact full-C kernel target-c criterion is
+ c J*Sigma^-1 J+r* K_Pdagger r-D_L >=0 on L.            (CRITERION)
+To see equivalence, every kernel field is l+f with this feasible high part.
+Its shifted form is -<l,D_L l>+<f,Bf>. The attained minimum is(COST-SPLIT);
+any homogeneous additional high field has nonnegative B-energy.
+This criterion concerns Q>=c||.||^2 on ker C. A strictly positive margin,
+not just this semidefinite condition, suffices for finite target-c penalties;
+we do not silently promote kernel equality into a finite-penalty theorem.
+
+On L_bad, a necessary consequence of(CRITERION) is the paid lower demand
+       <r(l),K_Pdagger r(l)> >= (3c/8)||l||^2.          (DEMAND)
+Thus r restricted to L_bad must be injective, so rank r>=m. In the two-
+channel problem the rank demand is at least2k_n. This identifies the
+specific residual that original remaining rows must detect with sufficient
+conditional cost, rather than merely counting their nominal number.
+The generic Schur algebra is classical; the new model-specific quantitative
+content here is the large actual below-target singleton kernel, its robust
+77c/116 margin, and the residual-rank obstruction after retaining T.
+
+5. LIMITS, PRIMARY COMPARISON AND NEXT FALSIFIABLE STEP
+
+Q251 remains OPEN. There are O(n) remaining original rows, so their number
+does not contradict this necessary linear rank. No upper/lower estimate
+of K_Pdagger on the actual r(L_bad) has been derived here. No full Cw=0
+counterexample, target-c recovery, continuum limit or physical mass gap.
+No hypothesis is counted as eliminated: this is an analytic obstruction
+and an exact reduction with all source-model assumptions retained.
+All-singleton285 and sparse-added-row286 routes are now closed negatively;
+do not spend three further units re-deriving them.
+
+Primary abstracts freshly consulted12November2026:
+Anderson and Trapp, Shorted Operators II,
+https://epubs.siam.org/doi/10.1137/0128007
+identifies shorting of positive operators and credits earlier finite-
+dimensional work. Corach, Maestripieri and Stojanoff,
+https://arxiv.org/abs/math/0006120
+connects oblique projections and Schur complements. Only abstracts were
+read this unit, not full theorems. Rank-nullity and finite spectral counting
+are elementary classical mechanisms, not originality claims. Exact external
+priority of the combined model-specific result is UNESTABLISHED.
+
+Continue the sole question Q251 using the quadratic dyadic cut tau_i=2i^2
+modn and the ORIGINAL P rows above. Next bounded task: derive bounds on
+r(L_bad) and K_P from the explicit Fourier cell sums in279, retaining the
+conditional subtraction. Falsifier for recovery is an l with residual cost
+below <l,D_L l>-c<Jl,Sigma^-1 Jl>; falsifier for the obstruction route is a
+derived sufficiently positive full residual-cost bound. After three units
+without a new derived bound, retain failures and identify the missing lemma
+or change mechanism. Group285/286 with further substantive results; do not
+create separate small papers. No prior PDF grade transfers to this text.

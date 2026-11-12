@@ -1,0 +1,69 @@
+{
+  "inspected_input_count": 9,
+  "inputs": [
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\quadratic-prefix290\\quadratic-prefix290A.txt",
+      "path": "subjects/quadratic-prefix290A.checkout.txt",
+      "bytes": 13464,
+      "sha256": "3dc7e8c67753e0116ab759bde39cf10ccf7b3c688080586722e1296ff84092ac",
+      "read_scope": "Entire source read, fresh analytical attack against all ten judges"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\quadratic-prefix290\\judges290.txt",
+      "path": "subjects/judges290.checkout.txt",
+      "bytes": 1997,
+      "sha256": "408694d6994fa43d6e3acb1fb97b495fd8dfeff2116528eb427bd658e6e5f293",
+      "read_scope": "Entire preregistered judges read, all ten gates separately addressed"
+    },
+    {
+      "original": "20569d59f89b55efce508107cf4659f51c4109de:research/quadratic-prefix290/quadratic-prefix290A.txt",
+      "path": "subjects/quadratic-prefix290A.git.txt",
+      "bytes": 13464,
+      "sha256": "3dc7e8c67753e0116ab759bde39cf10ccf7b3c688080586722e1296ff84092ac",
+      "read_scope": "Exact frozen Git identity verified"
+    },
+    {
+      "original": "20569d59f89b55efce508107cf4659f51c4109de:research/quadratic-prefix290/judges290.txt",
+      "path": "subjects/judges290.git.txt",
+      "bytes": 1997,
+      "sha256": "408694d6994fa43d6e3acb1fb97b495fd8dfeff2116528eb427bd658e6e5f293",
+      "read_scope": "Exact frozen Git identity verified"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\checkerboard-response\\manuscript289B.tex",
+      "path": "subjects/manuscript289B.tex",
+      "bytes": 54939,
+      "sha256": "579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668",
+      "read_scope": "Explicit exact dependency, prior involved full analytical review retained; relevant dictionary/range/residual support checked in290, no claim of fresh whole-PDF review"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\checkerboard-response\\research\\prefix-residual286A.txt",
+      "path": "subjects/prefix-residual286A.txt",
+      "bytes": 10303,
+      "sha256": "dbfc64f90d55e96c86795090a92765b13edef735eb5048713d435cc30ee27055",
+      "read_scope": "Explicit exact dependency, prior involved full analytical review retained; relevant dictionary/range/residual support checked in290, no claim of fresh whole-PDF review"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\papers\\checkerboard-response\\research\\line-average-removal287A.txt",
+      "path": "subjects/line-average-removal287A.txt",
+      "bytes": 11041,
+      "sha256": "55473f9e3683b9b53578b26d54b37eac5a1f2e92aa4de7780d09b1997444c1be",
+      "read_scope": "Explicit exact dependency, prior involved full analytical review retained; relevant dictionary/range/residual support checked in290, no claim of fresh whole-PDF review"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\CLAUDE.md",
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "read_scope": "Raw identical to prior full-read governance; mandatory separate source-audit/environment/no-inbound/explicit-check rules applied"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "read_scope": "Raw identical to prior full-read governance; mandatory separate source-audit/environment/no-inbound/explicit-check rules applied"
+    }
+  ],
+  "byte_regime": "Exact raw bytes, no normalization"
+}

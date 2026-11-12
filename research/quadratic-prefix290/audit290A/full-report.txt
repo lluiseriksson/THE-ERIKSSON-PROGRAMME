@@ -1,0 +1,45 @@
+290A COMPLETE ADVERSARIAL ANALYTICAL SOURCE AUDIT
+VERDICT: BOUNDED_ANALYTICAL_ACCEPTANCE. All10 preregistered analytical gates reviewed; explicit nonzero reviewed count10. No material failure or requiredminor correction identified. This is a bounded source derivation verdict, not independent peer review, globalQ251 resolution, a numerical/formal certificate or publication claim.
+
+REFERENT AND CONTEXT
+FrozenHEAD20569d59f89b55efce508107cf4659f51c4109de, baseff714438096db9520edfee4e3ad9d7eed41f6f97. Exact290A rawSHA2563dc7e8c67753e0116ab759bde39cf10ccf7b3c688080586722e1296ff84092ac; Git andcheckout equal. Fullsource andjudges read. Thefollowingten gatefindings are the complete analytical disposition, with preciseactualreadscope and exactassignment separately retained. Role is involvedCodex/OpenAI separatefromfabrication, exactservedbackend unexposed; no independentdiscovery/blind/humanreview attribution.
+
+1. Actual adjoint signs and real periodic fields
+W13=-psi gives component1=delta3psi, component3=-delta1psi; W23=-psi gives component2=delta3psi, component3=-delta2psi. Period-four sequences are n-periodic because4 dividesn, potentials are real and skew, so these are actuald1* images without a projection or divergence converse.
+
+2. Amplitude constraints and dimension
+On odd support the q coefficient is a fixed imaginary factor times sum(-1)^r a_r; on even support it is a real factor times sum(-1)^r d_r. The negative q coefficient is the conjugate. Thus exactly one nonzero real functional per amplitude, not two, yields3(m-1) real dimensions.
+
+3. Fourier exclusion and high membership
+Both transverse frequencies are only±q, outside0,N. All h amplitudes omit±q byAMP; differences do not enlarge support. Therefore no surviving frequency is diagonal, includingmixed-sign transverse pairs. Actualw is inO subsetF andrangeXi. No permutationcut assumption is needed for this domain statement.
+
+4. Both slice parities, wrap and singleton
+At l0, wa=(-ha sigma,0,0), wb=(0,-hb sigma,0), wd=(0,0,-delta1hd sigma). Oddslice2r+1 gives(a,b,d)sigma; evenslice2r gives(0,0,-d)sigma. At i0 the cyclicpredecessor n-1 is odd withhd0, giving exactly the same-even formula. tauodd=2mod4, taueven=0mod4, sigma(tau)=0, so everyT row vanishes.
+
+5. All P cells and empty intervals
+Oddprefix sigma sum is1, evenprefix sum0; oddcut lies2..n-2 so neitherprefix norsuffix is empty. Fullj/l line sums vanish. Suffixes are negativeprefixes, and everylongthird cell sum is the negativeplane counterpart, withselected-singleton longthird row0. Evenslices have allplaneinterval sums0 includingemptyprefixes. Thus every originalremainingcell is covered, not onlyprefixes.
+
+6. Exact volume normalization and image J
+a=n^(3/2)sqrt(t) z and similarlyb,d gives the statedthreeindependent weightedconstraints. Prefix/suffix lengths t,n-t-1 andthirdlengthn-1 yield exactly the fourJ entries includingallsquare-roots/signs. Positiveodd t ensures independentconstraints. Plane-prefix coordinates recoverz, soJ isinjective, ||Jz||>=||z||, S hasdimension3m-3 andPw(alpha)=alpha.
+
+7. Conditional projector and rank
+X=T_F B^-1/2, Pi=I-X*(XX*)daggerX is the orthogonalprojection onto kerX without fullrowrank. K_P=Y PiY*, rank equalsrankY Pi, equalsrankP onF capkerT bywhitening. The explicitS image is already attained in the smallerF caprangeXi capkerT, forcingrank>=3m-3.
+
+8. Energy lift and compressed floor
+sigma norm²=n/2, rho norm²=n, so potentialnorm²=n²/4 or n²/2 timesamplitudenorm². Two differences withnorm<=2 give2n² or4n² fieldbounds. Squaredsum<=3times sum gives12n² totalamplitudes; amplitudes²=n³sum t|z|²<=n^4||z||². Thus||w||²<=12n^6||z||². B<=12H gives144cn^8||alpha||². WhitenedCauchy withPw(alpha)=alpha gives||alpha||^4<=<alpha,K_Palpha><w,Bw>, yieldingthe claimedcompressionfloor, withzeroalphahandledseparately.
+
+9. Response rank versus the low residual
+No invarianceofS orfullrangeinversefloor follows from thecompressionfloor. Theconstruction doesnot place r(L) inS, bounditsotherparts, or compare thecost to thelowmargin. The source explicitlyretains these gaps; large response rank cannot imply fullcanonicalrecovery or a below-c actualkernelwitness.
+
+10. Bindings and novelty/scope limits
+Exactsource,judges,289B/286/287 dependencies andgovernance bound inrawmanifest.4|n is sufficient; permutationclaim isrestrictedtodyadicn and provedwithanoddfactor. Abstract-onlybackground is notaprimaryprioritytheorem. No mathematicalexecution, newPDFscore, independent/humanreview, publicationverification, Lean/formalcertification, Yang-Millsgap orQ251resolution isclaimed bythisaudit.
+
+ADDITIONAL ADVERSARIAL CHECKS AND LIMITS
+The period-four values delta sigma(0)=-1 and delta rho(0)=0 follow fromthe cyclicsequences exactly; rho0=rho-1=1, so wd affects onlycomponent3 ontheplane. This ensures thethree independentcomponent amplitudes are not contaminated bypotentialcross terms. Distinctoddprefix coordinates make thelift injective evenif thethreepotentialfields have otherlinearrelations awayfromtheplane. At n8, q and-q are stilldistinct andoutside0,N, so no exceptional-mode degeneration occurs. No emptyoddprefix/suffix is invoked; evencut endpoints contributezero asproved. All normalizations are original, includingpossiblevolume-one P cells.
+
+The energyestimate is deliberatelycoarse and valid forbothsourceparities sinceonlyb<=H isused; no spatial/channelrotation or ambientinvariance assumption is needed. B upperbound follows onactualF fromA<=12HI, whileB lowerpositivity comesfromthepaidfullrestricted spectrum. Conditional projector/rank derivation doesnot needf to beaper mutation, and the theorem deliberatelycoversmultiplesof4 beyondpowersof2. The later lowresidualnotation doesnot addapermutationclaim forsuchn: originalrange280 already supplieslowfeasibility forarbitrarycuts. The source clearlydistinguishes rankP on a largehighkernel fromrankr(L), anditscompressionfloor isnotmisrepresented asaninversebound onarbitraryrows.
+
+No materialobjection found. Remaininglimitations are real andexplicit: actualr(L) overlapwithS isunknown, complementaryresiduallifts uncontrolled, n^8cost inadequate fortargetc, model-specificexternaloriginality unestablished, andno separatepaper warranted bythislemma alone. Previouslystoppedroutes remainstopped. This rejects theproposedresponse-rowredundancy/o(n)-rank shortcut onthe statedsubspace, notthequadraticcut recoverycandidate orbestcanonicalQ251.
+
+RETENTION AND OPERATIONS
+Inspectedinputmanifest andrawsubjectcopies identify source/judges andthreeboundinputs, including289B atcommitted446124a566483e6f1a8d499d801ce60e0abbb9d8. Governance innewworktree isbyte-equal totheearlierfull-readCLAUDE/charter. No newpublication wasverified: sourceURL/PDFhash are sourcecontext only. Explicitif/raise checks usedforretention; no Pythonassert. Onlytext/Git/hash/copy/JSONmetadata work, nomathematicalexecutable, test,compiler/Lean/runtime, network, modelspend,newagent, source/state/Gitmutation orinboundmessage. No toolfailure, no disposablecloneorcleanupdebt. Source/judges/HEAD checkedagainatsealing. Fullassignment/context/gates/inputhashes andfinalrawmanifest retained; priorreportsunchanged.

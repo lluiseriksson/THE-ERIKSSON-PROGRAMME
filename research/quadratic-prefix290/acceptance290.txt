@@ -1,0 +1,23 @@
+SOURCE DISPOSITION: BOUNDED ANALYTICAL ACCEPTANCE
+Source commit20569d59f89b55efce508107cf4659f51c4109de.
+Source rawSHA2563dc7e8c67753e0116ab759bde39cf10ccf7b3c688080586722e1296ff84092ac.
+
+The separate audit reviewed all10 preregistered gates and found no material
+correction. Its full report, assignment, context, inspected inputs and raw
+manifest are retained in audit290A/. All15 manifest members were separately
+read from disk and their exact byte counts and SHA256 values matched.
+Report rawSHA25678a4374f9a61f44746a92e0ac134fc77d191ddda188739675a57d4e874c03b4b.
+Manifest rawSHA256519dd6a6cc25c7bb0ffd5beee4198cd72e9ffd6eac2b17beed13e0ff9c43aad5.
+
+The candidate-status line in frozen290A records its fabrication stage; the
+source was not edited to erase that chronology. This disposition accepts
+the explicit lift, dimension3n/2-3, and coarse compressed response floor
+under the stated source hypotheses. It is not a mathematical execution,
+Lean verification, independent peer review, external originality finding,
+PDF assessment, new AIRR publication or solution of Q251. Audit context is
+involved Codex/OpenAI, exact backend unexposed, different fabrication/audit
+sessions. No hypotheses are counted eliminated.
+
+Next action is the actual residual-image/energy comparison in section7,
+not another rank-counting paper. The previous endpoint working paper stays
+unchanged. The three failed-route counters remain historically intact.
