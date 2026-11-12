@@ -1,0 +1,100 @@
+[
+  {
+    "path": "subjects/useful-response283A.checkout.txt",
+    "origin": "C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\research\\full-cost281\\useful-response283A.txt",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 20089,
+    "sha256": "cdd045c2baf07c90511b3363a8d4abf44acc53fc96d944f104223d181adea5db"
+  },
+  {
+    "path": "subjects/useful-response283A.git.txt",
+    "origin": "3532ce3823414ea3ee710694714a34cbc13de8d6:research/full-cost281/useful-response283A.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 20089,
+    "sha256": "cdd045c2baf07c90511b3363a8d4abf44acc53fc96d944f104223d181adea5db"
+  },
+  {
+    "path": "subjects/dual-response282B.txt",
+    "origin": "3532ce3823414ea3ee710694714a34cbc13de8d6:research/full-cost281/dual-response282B.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 17058,
+    "sha256": "c4ba4f8658a98ccfdfeff61a746cc0d459ad172d711b0ea2e6ba70173a572c6d"
+  },
+  {
+    "path": "subjects/primary-reading283.txt",
+    "origin": "3532ce3823414ea3ee710694714a34cbc13de8d6:research/full-cost281/primary-reading283.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 2091,
+    "sha256": "74b41bbab332dc548307140d087ad044fd23c73006f4eb4b6ce03a089dbd0800"
+  },
+  {
+    "path": "subjects/full-coexact-spectrum279A.txt",
+    "origin": "3532ce3823414ea3ee710694714a34cbc13de8d6:papers/flat-coarse-rank/research-consolidation/full-spectrum279/full-coexact-spectrum279A.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 12104,
+    "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"
+  },
+  {
+    "path": "subjects/cancellation-range280A.txt",
+    "origin": "3532ce3823414ea3ee710694714a34cbc13de8d6:papers/flat-coarse-rank/research-consolidation/full-spectrum279/cancellation-range280A.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 10920,
+    "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36"
+  },
+  {
+    "path": "subjects/nonlinear267A-logarithmic-bound.txt",
+    "origin": "3532ce3823414ea3ee710694714a34cbc13de8d6:papers/flat-coarse-rank/research-consolidation/nonlinear266/nonlinear267A-logarithmic-bound.txt",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 9821,
+    "sha256": "d230517007827689df2807132c156ac50adef02838ff80ff0d71425b9cb15577"
+  },
+  {
+    "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "origin": "3532ce3823414ea3ee710694714a34cbc13de8d6:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 13573,
+    "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+  },
+  {
+    "path": "subjects/CLAUDE.md",
+    "origin": "3532ce3823414ea3ee710694714a34cbc13de8d6:CLAUDE.md",
+    "representation": "exact Git blob; no normalization",
+    "bytes": 23996,
+    "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+  },
+  {
+    "path": "initial-status.txt",
+    "origin": "actual initial Git status",
+    "representation": "exact raw bytes; no normalization",
+    "bytes": 201,
+    "sha256": "7a45ba3e4cdbbd0e4b9d8ba86aecd61b3c1f5fc67986db38401a13e39bdf00ff"
+  },
+  {
+    "path": "assignment.txt",
+    "origin": "/root exact task payload",
+    "representation": "UTF-8 LF transcription",
+    "bytes": 2030,
+    "sha256": "0219a443cf074c1b5d866b3b7861411499b15339b27c0f7773091ea5cb80d73f"
+  },
+  {
+    "path": "context.txt",
+    "origin": "actual audit identity/read/limits disclosure",
+    "representation": "UTF-8 LF",
+    "bytes": 1840,
+    "sha256": "09c492f6535dc16d7518569d3bd9cdc709127a694b49a98f82fb15215b4ff431"
+  },
+  {
+    "path": "full-report.txt",
+    "origin": "full analytical proof audit",
+    "representation": "UTF-8 LF",
+    "bytes": 13626,
+    "sha256": "bab7cd7ea7a31d4b4df3cede5f485a304e639a8894889b9757edd7b5ef18ba02"
+  },
+  {
+    "path": "source-stability.json",
+    "origin": "actual metadata/channel checks",
+    "representation": "UTF-8 LF JSON",
+    "bytes": 444,
+    "sha256": "94ad7b7e541ab6b7597d525cc3d8141189bdfcc2eb30bd93d51c3ba8a3418de8"
+  }
+]

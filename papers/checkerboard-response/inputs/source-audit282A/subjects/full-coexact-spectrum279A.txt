@@ -1,0 +1,201 @@
+Q251 /279A: FULL ACTUAL-COEXACT CHECKERBOARD SPECTRUM
+Analytical candidate, 12 November 2026. No executable/formal verification.
+Source based on main ff714438096db9520edfee4e3ad9d7eed41f6f97.
+Grouped research note, not a manuscript, assessment, or publication.
+
+1. SCOPE, CONVENTIONS, AND WHAT IS NEW WITHIN THIS ROUTE
+
+Let n>=2 be even, X=(Z/nZ)^3, with counting norms, and H>=a>0.
+Put chi(x)=(-1)^(x1+x2+x3), A=(H+a)/2, B=(H-a)/2.
+The original scalar forward SOURCE weights in channel 1 are H on odd
+vertices and a on even vertices: b_1=A-B chi. Channel 2 has b_2=A+B chi.
+For vector fields w=(w_1,w_2), each w_epsilon:X->R^3, the original form is
+ Q(w)=sum_(epsilon,x,j,r) b_epsilon(x)
+                       |w_epsilon,r(x+e_j)-w_epsilon,r(x)|^2.
+We use epsilon=-1 for channel 1 and epsilon=+1 for channel 2 below.
+The actual space U=(im d1*)^2 uses the counting adjoint of the forward curl
+ (d1 u)_(j,l)=Delta_j u_l-Delta_l u_j, j<l.
+No paired-layer restriction from275 is imposed. No spatial or channel
+rotation is applied to the observations. The associated operator throughout
+is the self-adjoint operator of the RESTRICTED quadratic form on U; we do
+not claim that the ambient weighted gradient operator preserves U.
+
+Prior256 already derives a scalar checkerboard two-frequency strong block.
+Prior253B/267 already derive the strong graph spectrum and a positive gap
+off its component constants. Prior275 supplies an explicit Fourier curl
+preimage. Those mechanisms are credited, not rediscovered. Here all positive
+weights, both actual transverse polarization planes, the missing zero mode,
+all multiplicities, and the full original observation rows are treated
+together. Section7 locates the ENTIRE subtarget spectral space, rather than
+a chosen low-energy ansatz. This does not prove Q251 or establish external
+priority. Classical Fourier decomposition/SVD is not claimed as new.
+
+2. THE ACTUAL IMAGE AT EACH FREQUENCY, INCLUDING ZERO
+
+Use the unitary convention u(x)=n^(-3/2) sum_k uhat(k) exp(2 pi i k.x/n).
+Set theta_j=2 pi k_j/n and g_j(k)=exp(i theta_j)-1. Then Delta_j has
+symbol g_j. For a skew array T_(j,l)=-T_(l,j), the actual adjoint symbol is
+ (d1* T)_l=sum_j conjugate(g_j) T_(j,l).
+Its image is contained in g^perp={v:sum_j conjugate(g_j)v_j=0}.
+For k!=0, D=|g|^2>0, and every such v has the explicit preimage
+ T_(j,l)=(g_j v_l-g_l v_j)/D.
+Indeed the displayed adjoint gives v_l-g_l(g*v)/D=v_l. Thus the image is
+EXACTLY g^perp, of complex dimension2. At k=0, d1*=0 and its image is
+{0}, not a three-dimensional unconstrained constant mode. This also proves
+the absence of harmonic constants. For real fields, all these formulas
+respect conjugation at -k, so the preimage can be chosen real. Each channel
+has real dimension2(n^3-1), equal to its complexification's dimension.
+
+3. ORIGINAL TWO-FREQUENCY FORM, WITH ITS CROSS-TERM SIGN
+
+Write q=(n/2,n/2,n/2) in X. Multiplication by chi shifts k to k+q.
+These unordered pairs partition the frequencies, with no fixed pair member.
+For one such pair set h=g(k+q), D'=|h|^2, Gamma=g*h. Directly,
+ h_j=-exp(i theta_j)-1, D'=12-D,
+ Gamma=sum_j (exp(-i theta_j)-1)(-exp(i theta_j)-1)
+      =2i sum_j sin(theta_j).
+For coefficients x=uhat(k), y=uhat(k+q), the EXACT original channel form is
+ A D |x|^2 + A D' |y|^2 + 2 epsilon B Re(Gamma x* y).       (BLOCK)
+The expression x*y denotes the Hermitian scalar product. The cross term
+comes from summing chi times the product of the two Fourier modes in each
+forward difference; there is no extra factor n^3 or 1/2. Thus its ambient
+matrix is [ A D I3, epsilon B Gamma I3;
+            epsilon B conjugate(Gamma) I3, A D' I3 ].
+For k,k+q nonzero its actual domain is g^perp direct-sum h^perp.
+
+4. TWO POLARIZATIONS: THEIR COUPLING IS DERIVED, NOT ASSUMED
+
+Let E,F be any isometries C^2->C^3 with ranges g^perp,h^perp, respectively.
+The compressed block has diagonal A D I2,A D' I2 and off-diagonal
+epsilon B Gamma E*F. Put rho=|Gamma|/sqrt(D D'), between0 and1 by Cauchy.
+The two singular values of E*F are exactly1 and rho:
+the two planes have a common unit vector, giving one singular value1,
+while both projections are contractions so no singular value exceeds1.
+For P_g=I-gg*/D, P_h=I-hh*/D,
+ trace(P_g P_h)=3-1-1+|g*h|^2/(D D')=1+rho^2.
+This is the sum of the two squared singular values of E*F, giving the
+remaining squared singular value rho^2. This argument also covers
+coincident planes (rho=1) and orthogonal normals (rho=0).
+Taking an ordinary singular-value decomposition of E*F and absorbing the
+phase of epsilon Gamma splits the form into two Hermitian 2-by-2 blocks
+with diagonals A D,A D' and coupling moduli B|Gamma| and B|Gamma|rho.
+Consequently the FOUR eigenvalues for each nonexceptional pair/channel are
+ lambda_1,+/- = 6A +/- sqrt(A^2(D-6)^2+B^2|Gamma|^2),       (S1)
+ lambda_2,+/- = 6A +/- sqrt(A^2(D-6)^2
+                                    +B^2|Gamma|^4/(D D')). (S2)
+No preferred transverse basis is needed; scalar Gamma=0 simply kills both
+couplings. Repeated roots are retained with their algebraic multiplicities.
+Since rho<=1, lambda_1,-<=lambda_2,-<=lambda_2,+<=lambda_1,+.
+
+5. EXCEPTIONAL PAIR, REALITY, AND COMPLETE DIMENSION CHECK
+
+For the pair{0,q}, x at0 is ABSENT. At q, h=(-2,-2,-2), so the sole plane
+is h^perp of dimension2, and its two eigenvalues are12A. They are not the
+zero roots of an uncompressed scalar pair. Formula(S2)'s denominator is
+never used at this pair. Both channels have the same spectrum: changing
+epsilon is removed by multiplying the second coefficient by -1.
+There are n^3/2-1 nonexceptional pairs and one exceptional pair. The total
+per-channel multiplicity is4(n^3/2-1)+2=2(n^3-1), exactly Section2.
+The two-channel total is4(n^3-1). No actual modes have been omitted.
+Complex conjugation maps a pair to its negative pair and commutes with the
+real operator. Real eigenspace dimensions equal those of complexification;
+one must combine conjugate pairs, or use the real fixed space of a
+self-conjugate pair. This includes k=-k and k+q=-k. These statements follow
+by taking real/imaginary parts of a complex eigenvector of a real matrix:
+its complex eigenspace is the complexification of its real eigenspace.
+They do not assert that a lone nonreal Fourier coefficient is a real field.
+All eigenvalues are strictly positive for a>0: Q>=a sum|Delta u|^2 and
+an actual field has zero global mean. For n=2 there are still seven
+nonzero frequencies per channel; the same pair count applies.
+
+6. THE STRONG-ONLY LIMIT, AND AN EXPLICIT NONDIAGONAL GAP
+
+Set a=0 for this paragraph (H>0); this means the original strong-source
+form Q_H, not the full form. Put C0=sum_j cos(theta_j), S0=sum_j sin(theta_j).
+Since D-6=-2C0 and Gamma=2iS0, its smallest pair eigenvalue is
+ lambda_1,-(Q_H)=H(3-|sum_j exp(i theta_j)|).               (STRONG)
+It is achieved in the true coexact space, by Section4, and is zero exactly
+when all three unit phases agree, by equality in the triangle inequality.
+At such nonexceptional diagonal pairs g and h are parallel, rho=1, so
+the zero eigenvalue has multiplicity2 per channel. The exceptional pair
+has only the positive eigenvalue6H. Therefore dim ker(Q_H|U)=2(n-2)
+over R for both channels together. The paired strong-kernel profile from
+253B and its actual-coexact rank count are consistent with this count.
+
+If the three frequency residues are not all equal, at least TWO of their
+three pairwise differences are nonzero modulo n. Each corresponding
+sin^2((theta_j-theta_l)/2) is at least sin^2(pi/n). Expanding gives
+ 9-|sum_j exp(i theta_j)|^2=4 sum_(j<l)sin^2((theta_j-theta_l)/2).
+Divide by3+|sum_j exp(i theta_j)|<=6. Hence every such pair obeys
+ lambda_min(Q_H)>= (4H/3)sin^2(pi/n)>=16H/(3n^2).           (TRANSVERSE)
+The last step uses sin(pi/n)>=2/n for n>=2, the concavity chord on[0,pi/2].
+This is a derived elementary bound, not a supplied Poincare assumption.
+It sharpens the coarser off-component gap used in267, but that gap's
+existence and graph mechanism were already known. No novelty claim is
+made for the constant improvement alone.
+
+7. EXACT LOCATION AND DIMENSION OF THE ENTIRE SUBTARGET SPACE
+
+Now specialize to Q251's ORIGINAL H=cn^2,a=c/48,c>0. Non-diagonal pairs
+have all full-form eigenvalues>=16c/3 by (TRANSVERSE) and Q>=Q_H.
+For a diagonal nonexceptional pair k=(t,t,t), t!=0,n/2, theta=2pi t/n,
+the two distinct eigenvalues, each of multiplicity2 per channel, are
+ mu_-(t)=3(H+a)-3 sqrt((H+a)^2-4Ha sin^2(theta)),
+ mu_+(t)=3(H+a)+3 sqrt((H+a)^2-4Ha sin^2(theta)).           (DIAGONAL)
+Because H>=a and0<=sin^2<=1, 0<mu_-<=6a=c/8 and mu_+>=6H.
+The exceptional eigenvalue6(H+a) is also>=6H. Thus the spectral space
+ L=1_(0,c)(Q|U)U has real dimension EXACTLY2(n-2), and consists precisely
+of the low eigenvectors(DIAGONAL) at the (n/2-1) nonexceptional diagonal
+pairs, with both transverse polarizations and both original channels.
+For n=2, L={0}. On the orthogonal complementary space F in U,
+                  Q(f)>=16c/3 ||f||^2.                   (HIGH)
+On L, Q(l)<=c/8 ||l||^2. Since L,F are spectral spaces, the FULL form
+has no cross term: Q(l+f)=Q(l)+Q(f). This is an exact decomposition of
+all actual fields, not merely a low-dimensional test family. L at a>0
+is not identified with the a=0 strong kernel without proof; its within-
+pair eigenvectors depend on both H and a.
+This is useful for reducing Q251 to the cost of cancelling ORIGINAL
+observations of these low modes by high modes. It does NOT suffice that
+C be injective on L: a nonzero f can cancel C l, and its minimal energy
+cost must still be paid. No preservation of C under a projector is assumed.
+
+8. FULL ORIGINAL CELL ROWS IN THESE COORDINATES
+
+For each original channel epsilon, spatial component r, and nonempty
+nonwrapping cell Bcell={i} times I times J, the normalization is
+ C_(epsilon,r,Bcell)u=(n^3 |Bcell|)^(-1/2) sum_(x in Bcell)u_epsilon,r(x).
+Define T_I(k2)=sum_(j in I)exp(2pi i k2 j/n), and T_J similarly. Direct
+substitution of the unitary Fourier convention gives the exact row
+ C_(epsilon,r,Bcell)u
+ =1/(n^3 sqrt(|Bcell|)) sum_k uhat_epsilon,r(k)
+       exp(2pi i k1 i/n) T_I(k2) T_J(k3).                 (ROW)
+This sum includes BOTH frequencies of each pair with their own values
+of all three factors; the zero coefficient is absent on U. The endpoints
+I=[0,tau_i-1],{tau_i},[tau_i+1,n-1] and J={0},[1,n-1] are used as-is,
+with empty cells omitted. At a zero frequency component T_I=|I| directly,
+so no removable geometric-sum division is necessary. The physical rows
+are real after imposing the conjugation relations from Section5.
+To express C on L or F, insert the corresponding eigenvectors of the
+printed compressed blocks into(ROW); the formula applies separately to
+each original channel and r. We do not replace these by adapted channel
+means, by component averages, or by projected means. There is no assertion
+that the low and high observations are orthogonal.
+
+9. FALSIFIER, NEXT STEP, AND SCOPE LIMITS
+
+Any inconsistency in the actual curl-adjoint image, the sign/factor of
+(BLOCK), transverse singular values, zero/Nyquist multiplicities, or an
+original field outside the diagonal pairs with Rayleigh quotient below
+16c/3 falsifies the corresponding claim. Review this exact source afresh.
+The next bounded mechanism is to derive the finite minimal high-energy
+cost for cancelling C l using(HIGH) and the explicit rows, then estimate
+that cost for the one nonlinear cut tau_i=2i^2 modn (dyadic n). A merely
+assumed Gram bound is not progress. Compare against267's already proved
+c/(5(1+log n)) kernel bound; do not repeat it as a new target-c result.
+The sole active question remains Q251; the prior moving paired-stream and
+longitudinal-trace routes remain STOPPED_AT3. No assertion of O(n) success,
+logarithmic necessity, or moving-cut impossibility follows from279A.
+No Lean/Lake/oracle/numerical test or runtime has been used here. Historical
+originality remains unestablished; this is a finite discrete operator result,
+not a physical Yang-Mills spectral gap. PR29 remains20/41,TermSource=0;
+the continuum remains open. Keep this note grouped with related results.

@@ -1,0 +1,123 @@
+Q251 /275A -- EXACT SOLENOIDAL TWO-LAYER REDUCTION
+Analytical candidate, 2026-11-12; UNREVIEWED until separate source audit.
+Base ff714438096db9520edfee4e3ad9d7eed41f6f97. No paper or new score.
+
+1. SCOPE
+n>=4 even, c>0, a=c/48, H=cn^2. Original forward differences,
+counting adjoints and source-parity weights of Paper274. Use channel1;
+channel2 is identically zero. Every physical spatial component is retained.
+This constructs an actual coexact subspace with exact original energies and
+every original rectangular observation. It does NOT assert a low-energy
+invisible vector, target-c coercivity, logarithmic necessity or optimality.
+
+For odd s in Z_n put A_s(y)=(y1,y2,s-y1-y2), B_s(y)=A_s(y)+e3,
+y in Z_n^2. These pairs partition all n^3 sites, with source A odd, B even.
+Let T_j f(y)=f(y-e_j), delta_j=I-T_j, j=1,2. Choose real potentials psi_s
+and real constant vectors t_s in R^3 with
+  t_s,1+t_s,2+t_s,3=0,       sum_(s odd) t_s=0.
+Define L psi=(delta2 psi, -delta1 psi, delta1 psi-delta2 psi),
+       V_s=t_s+L psi_s,
+       w(A_s(y))=w(B_s(y))=V_s(y).                         (1)
+Potentials are modulo constants. No harmonic component is smuggled into U.
+
+2. ACTUAL DIVERGENCE AND A CURL-ADJOINT PREIMAGE
+For each s, sum_j V_s,j=0 pointwise. Also
+ T1 V_s,1+T2 V_s,2+V_s,3=0,
+because T1 delta2-T2 delta1+delta1-delta2=0 by commutation.
+At A_s(y), the three incoming backward neighbors are respectively
+B_(s-2)(y-e1), B_(s-2)(y-e2), B_(s-2)(y). At B_s(y), they are
+A_s(y-e1), A_s(y-e2), A_s(y). Hence the actual backward divergence
+sum_j[w_j(x)-w_j(x-e_j)] vanishes at EVERY site. All periodic wrap edges
+are included, including s=n-1 to s+2=1.
+Each delta_j has total sum0, so sum_x w(x)=2n^2 sum_s t_s=0.
+
+To prove image membership rather than impose it, take the unitary 3D Fourier
+transform. For k!=0 set g_j=exp(2pi i k_j/n)-1 and
+  Ahat_jl=(g_j what_l-g_l what_j)/|g|^2, j<l;
+set Ahat(0)=0 and extend antisymmetrically. The backward-divergence equation
+is sum_j conjugate(g_j) what_j=0. The actual counting adjoint satisfies
+ (d1* Ahat)_j=sum_l conjugate(g_l) Ahat_lj
+ =what_j-g_j sum_l conjugate(g_l)what_l/|g|^2=what_j.
+At0 both sides vanish by the proved total mean condition. This is an actual
+finite preimage, and conjugate symmetry makes its inverse transform real.
+Thus (w,0) belongs to (im d1*)^2. No Hodge theorem is assumed as a premise.
+
+3. EXACT ORIGINAL ENERGIES AND NORM
+At odd A_s(y), forward targets are B_s(y+e1), B_s(y+e2), B_s(y).
+At even B_s(y), forward targets are A_(s+2)(y+e1), A_(s+2)(y+e2),
+A_(s+2)(y). Summing all labels and vector components gives identities
+ ||w||^2 =2 sum_s sum_y |V_s(y)|^2,
+ Q_H(w)=H sum_s sum_y [|V_s(y+e1)-V_s(y)|^2
+                              +|V_s(y+e2)-V_s(y)|^2],
+ Q_a(w)=a sum_s sum_y [|V_(s+2)(y+e1)-V_s(y)|^2
+                    +|V_(s+2)(y+e2)-V_s(y)|^2
+                    +|V_(s+2)(y)-V_s(y)|^2].              (2)
+Here |.| is the Euclidean norm in all three physical components. No boundary
+start is dropped, and no factor3 is inferred from an isotropic surrogate.
+The missing third strong term is EXACTLY zero by the paired-layer choice.
+The second original channel contributes zero, not a negative discarded cost.
+
+4. THE SUBSPACE IS PARAMETRIZED COMPLETELY, NOT ALL OF U
+Within paired-layer fields w(A_s)=w(B_s)=V_s, restrict to pointwise
+sum_j V_s,j=0 and shifted sum_j(T_j V_s,j)=0 (T3=I) separately for every s.
+Every such real V_s has form t_s+L psi_s. Indeed, write V_s=(p,q,-p-q).
+The second identity is delta1 p+delta2 q=0. At nonzero 2D frequency put
+d_j=1-exp(-2pi i k_j/n). The solution line of d1 phat+d2 qhat=0
+is exactly (phat,qhat)=(d2,-d1) psihat: if d2!=0 take psihat=phat/d2;
+otherwise d1!=0, phat=0, take psihat=-qhat/d1. The zero mode is t_s.
+Choosing psihat(0)=0 fixes its constant ambiguity. This construction respects
+conjugation, so psi_s can be real. The global zero-mean requirement becomes
+exactly sum_s t_s=0. This is a parametrization of the specified subspace,
+NOT a parametrization of arbitrary coexact fields or a bound for their optimum.
+
+5. EVERY ORIGINAL OBSERVATION, WITH ITS ORIGINAL NORMALIZATION
+Represent residues S=x1+x2+x3 in0..n-1. Define s(x)=S if S odd, S-1 modn
+if S even. Then w(x)=V_s(x)(x1,x2), with coordinates interpreted modulo n.
+For any of the original nonwrapping cells B of Paper274 section2 and spatial
+component r, the exact channel1 row is
+ (n^3 |B|)^(-1/2) sum_(x in B) [t_s(x),r+(L psi_s(x))_r(x1,x2)]. (3)
+The channel2 row is0. In particular singleton, left, right and x3-long cells
+are all present; no mean-preservation claim follows merely from divergence.
+For any prescribed cuts, (3)=0 for EVERY cell/component is precisely C_t w=0.
+Together with (2), this is an explicit constrained quadratic problem on
+potentials and transverse layer constants, with no unproved coexactness
+condition. Its optimization has NOT been performed here.
+
+6. FAILURE OF THE PREVIOUS TRACE ROUTE ON THIS ENTIRE SUBSPACE
+For (1), w1+w2+w3=0 at every site. Thus the longitudinal trace of273 is
+identically0 throughout this nonzero subspace, irrespective of cuts.
+For example set all psi=0, t_1=(1,-1,0), t_3=(-1,1,0), other t=0.
+This is a nonzero actual coexact field for every even n>=4. It has Q_H=0.
+For permutation F(i)=i+t_i(cut), every odd component has a selected singleton;
+one in s=1 sees a nonzero vector, so this example is NOT invisible. This is
+consistent with the strong-null exclusion268; no contradictory counterexample
+is claimed. Its purpose is to show that longitudinal trace alone loses the
+transverse component data even after coexactness and zero means are paid.
+
+The projection/longitudinal-correction route has now supplied no target-c
+kernel estimate or actual low-energy invisible witness in three grouped units
+(271/272,273,275). Preserve its results, stop that route, and move within the
+SAME Q251 to the direct constrained problem (2)-(3). Required next advance:
+either a nonzero feasible family with derived Rayleigh quotient<c for a
+specified permutation (e.g. F(i)=i+2i^2 on dyadic n), or a quantitative
+obstruction to that construction. Failure on this restricted subspace cannot
+prove the full coexact gap. No count reset or solved question is claimed here.
+
+7. NOVELTY, FALSIFIERS, AND REVIEW CONTEXT
+Discrete curl/stream-function constructions and Hodge geometry are classical.
+Primary bounded comparison: Desbrun, Hirani, Leok, Marsden, Discrete Exterior
+Calculus, arXiv:math/0508341,2005; author-deposited abstract describes discrete
+forms/vector fields/operators on simplicial complexes. This is background,
+not evidence of priority for this paired cubical checkerboard restriction.
+https://arxiv.org/abs/math/0508341
+No exhaustive novelty search or original-research publication claim is made.
+The exact specialized formulas are derived here; significance remains bounded
+until an actual constrained energy estimate or witness is obtained.
+
+Attack the backward-neighbor indexing, curl-adjoint sign and zero mode,
+reality, even/odd wrap, energy multiplicities, completeness restriction,
+full cell sums and normalization. Any failure stays in the record. No Lean,
+numeric, executable, independent model or human peer verification occurred.
+Author: current root Codex/gpt-6-astra per exposed instruction; high setting
+reported by user, not independently measured. Inherited programme context.
+PR29=20/41,TermSource=0; physical gap and continuum OPEN.

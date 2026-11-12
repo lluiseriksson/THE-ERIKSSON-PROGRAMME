@@ -1,0 +1,10 @@
+{
+  "commit_before_after": "14039070bf5cd852ab3be5e88e2dd20e75680ef8",
+  "raw_checkout_sha256_before_after": "e1e9fd75ea4cfe448e65e781290e33475426abc5d1d073f807e0f870e9d0d4c4",
+  "checkout_bytes": 15642,
+  "git_blob_sha256": "e1e9fd75ea4cfe448e65e781290e33475426abc5d1d073f807e0f870e9d0d4c4",
+  "source_identical_before_after": true,
+  "whole_worktree_unchanged_claimed": false,
+  "math_execution": false,
+  "inbound_messages_during_audit": 0
+}

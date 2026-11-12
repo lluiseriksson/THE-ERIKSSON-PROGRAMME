@@ -1,0 +1,51 @@
+{
+  "status": "First consolidated manuscript draft; separate manuscript-source audit, remote build, visual PDF review and exact-PDF assessment are not supplied by antecedent source acceptance",
+  "source_base": "a41834748e78a10bada853015044e4bd90d436f5",
+  "manuscript": "manuscript284A.tex",
+  "frozen_input_manifest": {
+    "path": "SOURCE-INPUTS.json",
+    "sha256": "0fa11e98a02f2ca3648350b87dfb367c04d071acb5bcf8d70966cb46eeac682d",
+    "modified_by_fabricator": false
+  },
+  "accepted_sources": {
+    "279": {"path": "inputs/full-coexact-spectrum279A.txt", "sha256": "3c5ed85c6b4bc0dc527bbcd2da888a20fb9874d7fdfa627cc3a7ed1e50da7ef4"},
+    "280": {"path": "inputs/cancellation-range280A.txt", "sha256": "07cace7a525b13f2b0711f8a456c71c573c935c3d3176e588cdc308c6bd79c36"},
+    "282B": {"path": "inputs/dual-response282B.txt", "sha256": "c4ba4f8658a98ccfdfeff61a746cc0d459ad172d711b0ea2e6ba70173a572c6d"},
+    "283A": {"path": "inputs/useful-response283A.txt", "sha256": "cdd045c2baf07c90511b3363a8d4abf44acc53fc96d944f104223d181adea5db"}
+  },
+  "labels": {
+    "lem:image": ["279"],
+    "thm:spectrum": ["279"],
+    "prop:low": ["279"],
+    "eq:Fourierrow": ["279"],
+    "thm:range": ["280"],
+    "thm:cost": ["279", "280"],
+    "eq:dual": ["280", "282B"],
+    "lem:frame": ["280", "283A"],
+    "thm:whole": ["279", "282B"],
+    "cor:kernel": ["280", "282B"],
+    "rem:comparison": ["282B"],
+    "lem:green": ["282B", "283A"],
+    "thm:useful": ["279", "280", "282B", "283A"]
+  },
+  "editorial_choices_and_omissions": [
+    "All load-bearing finite mathematics for the selected chain is proved in the manuscript; internal sources are provenance rather than substitutes for missing proofs.",
+    "Per-channel statements are used consistently; their direct sum gives twice the low-space dimension and the same constants. No original row/channel rotation is introduced.",
+    "The useful-space proof is organized into component Green, actual common polarization, and positive-weight rotation subsections rather than retaining the research note's numbered stages.",
+    "The separate lift upper cost, polynomially inadequate for target c, is retained after the exact cancellation theorem.",
+    "The scalar dual variational identity is proved by completing the square on the already proved dependent-row quotient; no new hypothesis is inserted.",
+    "The stronger c/K_n kernel coefficient and corrected common-domain comparison are retained from282B. The earlier282A false no-improvement comparison is excluded; its immutable source/audit history remains in inputs.",
+    "Prior274 coverage counterexamples, projection examples, finite penalties and discovery claims are not reprinted. The prior public working paper is cited and the actual-versus-ambient domain difference is explicit.",
+    "The exploratory281 numerical campaign, ranks, scores and arrays are omitted as proof premises and no numerical result is promoted to a theorem.",
+    "The source notes' automation counters, checkpoint instructions, Q251 identifier and PR29 bookkeeping are omitted from scholarly exposition; the unresolved mathematical target and lack of continuum/physical gap consequence remain explicit.",
+    "No claim of external novelty, exact-PDF acceptance, independent or human review, score or publication acceptance is imported from prior artifacts. Model-assessment context is version-specific and remains explicit.",
+    "The full source notes and actual source-audit objections/corrections are retained in frozen inputs; manuscript source review is still required. No new theorem beyond these sources is intended.",
+    "SourceCommit is visibly injected by the future remote builder; SOURCE-NOT-BUILT remains an honest placeholder before actual production. No PDF was created by this fabricator."
+  ],
+  "primary_comparison": {
+    "Kenyon": {"url": "https://arxiv.org/abs/math-ph/0202018", "scope": "Theorem7.3 and retained bounded reading: classical critical-planar Green logarithms; no imported finite/coexact normalization"},
+    "LawlerLimic": {"url": "https://www.math.uchicago.edu/~lawler/srwbook.pdf", "scope": "Retained bounded readings of sections1.2 and4.4/Theorem4.4.4: classical heat/2D potential kernels; finite proof given directly"},
+    "prior274": {"url": "https://airr.science/papers/ARR-2026-451FW8N5MC8KYV5S/versions/v1/", "status": "Prior public programme working paper per parent fresh verification; its assessment is not inherited"}
+  },
+  "assessment_context": {"actual_involved_identity": "Codex/OpenAI; exact backend model identifier unavailable", "shared_programme_context": true, "fabricator_is_own_acceptance_auditor": false, "independent_provider_or_human_review_claimed": false, "transferred_score": null, "exact_PDF_assessment": "Not performed during text-only preparation; any later assessment must be a separate hash-bound artifact"}
+}

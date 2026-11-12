@@ -1,0 +1,770 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsthm,hyperref}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\ifdefined\pdfsuppressptexinfo\pdfsuppressptexinfo=15\fi
+\setlength{\textwidth}{6.15in}
+\setlength{\oddsidemargin}{0.175in}
+\setlength{\evensidemargin}{0.175in}
+\setlength{\textheight}{8.7in}
+\setlength{\topmargin}{-0.3in}
+\providecommand{\SourceCommit}{SOURCE-NOT-BUILT}
+\newcommand{\R}{\mathbf R}
+\newcommand{\C}{\mathbf C}
+\newcommand{\Z}{\mathbf Z}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\ip}[2]{\langle#1,#2\rangle}
+\newcommand{\e}{\mathrm e}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\Rea}{Re}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{Spectral Reduction and Logarithmic Observation Response\\
+in a Discrete Coexact Model}
+\author{Lluis Eriksson}
+\date{12 November 2026\\\small Draft: source consolidation; not yet PDF-reviewed}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We study a finite counting-norm vector-field model on an even three-dimensional
+torus, with checkerboard source weights and componentwise rectangular cell
+means. On the actual image of the forward curl adjoint, we derive the complete
+two-polarization Fourier spectrum, including the missing zero mode and the
+exceptional frequency pair. For weights $H=cn^2$ and $a=c/48$, the entire
+subtarget spectral space has dimension $n-2$ per channel. The original high
+modes realize every observation realized by the full coexact space; an
+explicit polynomial lifting estimate and an exact shifted cancellation-cost
+criterion follow. For permutation singleton cuts, we prove finite logarithmic
+upper and lower bounds for the high-response operator, and show that the
+logarithmic growth persists after compression to useful positive-weight low
+data. This rules out two uniform response estimates, without deciding the
+optimized cancellation problem. A logarithmic lower bound for invisible
+coexact fields is also proved. All arguments are finite and analytical.
+Two-dimensional Green-function logarithms are classical; originality of the
+precise model-specific comparisons is unestablished. No continuum or physical
+Yang--Mills spectral-gap conclusion is asserted.
+\end{abstract}
+
+\section{Scope and relation to classical logarithms}
+Checkerboard weights couple two Fourier frequencies, while a curl-adjoint
+domain imposes two transverse polarizations and removes the harmonic zero
+mode. Keeping these restrictions and the original observation rows together
+is essential: neither a scalar block alone nor injectivity of observations
+on low modes settles cancellation by high modes.
+
+The argument below proceeds from the complete restricted spectrum to an
+original-row range theorem, then to a finite cancellation criterion and
+quantitative response estimates. The final obstruction concerns direct
+response bounds, including their compression to useful low data. It does
+not determine the inverse problem after correlated dual directions are
+optimized.
+
+Logarithmic Green functions in two dimensions are established mathematics.
+Kenyon's Theorem~7.3 gives logarithmic Green-function asymptotics in the
+critical planar graph setting~\cite{Kenyon}; Lawler and Limic develop
+continuous-time walks and the two-dimensional potential kernel, including
+Theorem~4.4.4~\cite{LawlerLimic}. Their graph, volume and operator
+normalizations are not identified with the finite component graph or the
+coexact compression used here. We derive every finite normalization and
+tail estimate needed below. These bounded primary-source comparisons do
+not establish priority for the precise finite statements, and the classical
+logarithmic mechanism is not claimed as new.
+
+The prior programme working paper \emph{Coverage and coexactness in
+checkerboard slice observations}~\cite{Eriksson274} treats coverage
+counterexamples, coexact projection issues and a logarithmic ambient-field
+bound. We do not present those findings as new here or inherit that
+artifact's assessments. The present argument centers on the whole actual
+restricted spectrum, exact high-mode range and cost, and the two response
+obstructions. Its improved numerical kernel coefficient has a restricted
+actual-coexact domain, as made explicit in Remark~\ref{rem:comparison}.
+
+\section{The original model and observations}\label{sec:model}
+Let $n\ge4$ be even and $X=(\Z/n\Z)^3$. All physical norms and adjoints use
+counting measure. For $u:X\to\R^3$, put
+\[
+ \Delta_j u(x)=u(x+e_j)-u(x),\qquad
+ (d_1u)_{j\ell}=\Delta_j u_\ell-\Delta_\ell u_j\quad(j<\ell).
+\]
+The norm on two-forms counts each pair $j<\ell$ once. Our actual domain is
+$U=\im d_1^*$, not an abstract divergence-free space with freely added
+constants. We prove its exact Fourier description in Section~\ref{sec:spectrum}.
+
+There are two original channels, indexed by $\varepsilon\in\{-1,+1\}$.
+Write $\chi(x)=(-1)^{x_1+x_2+x_3}$ and, initially, let $H\ge a>0$.
+Set $A_0=(H+a)/2$, $B_0=(H-a)/2$, and
+\begin{equation}\label{eq:originalQ}
+ b_\varepsilon(x)=A_0+\varepsilon B_0\chi(x),\qquad
+ Q_\varepsilon(u)=\sum_{x,j,r}b_\varepsilon(x)|\Delta_j u_r(x)|^2.
+\end{equation}
+Thus $\varepsilon=-1$ has strong weight $H$ on odd source vertices; the
+other channel exchanges the two parities. Write $A_\varepsilon$ for the
+self-adjoint operator of this form \emph{restricted to $U$}. We do not
+assert that the ambient weighted-gradient operator preserves $U$.
+The two-channel form and domain are the original direct sum.
+
+For each $i\in\Z_n$ choose $\tau_i\in\{0,\ldots,n-1\}$. The original
+nonwrapping cells are
+\[
+ \{i\}\times I\times J,\quad
+ I\in\{[0,\tau_i-1],\{\tau_i\},[\tau_i+1,n-1]\},\quad
+ J\in\{\{0\},[1,n-1]\},
+\]
+with empty intervals omitted. Every spatial component and channel is
+observed separately, with
+\begin{equation}\label{eq:C}
+ (Cu)_{r,B}=\frac{1}{\sqrt{n^3|B|}}\sum_{x\in B}u_r(x).
+\end{equation}
+No channel rotation, adapted mean or projected row replaces these observations.
+Unless stated otherwise, proofs are per channel; direct sums give the same
+constants for both channels.
+
+Our quantitative specialization is
+\begin{equation}\label{eq:special}
+             H=cn^2,\qquad a=c/48,\qquad c>0.
+\end{equation}
+When $f(i)=i+\tau_i\pmod n$ is a permutation, denote by $T$ the genuine
+singleton submap
+\begin{equation}\label{eq:T}
+             (Tu)_i=n^{-3/2}u(i,\tau_i,0).
+\end{equation}
+The quadratic cut $\tau_i=2i^2\pmod n$ has this property for dyadic $n$:
+$f(i)=f(j)$ implies $(i-j)(1+2(i+j))=0\pmod n$, and the second factor is
+odd and hence invertible.
+
+\section{Complete spectrum on the actual coexact domain}\label{sec:spectrum}
+Use the unitary convention
+\[
+ u(x)=n^{-3/2}\sum_k\widehat u(k)\e^{2\pi i k\cdot x/n},\qquad
+ g_j(k)=\e^{2\pi i k_j/n}-1.
+\]
+Complexification is used for calculation; real multiplicities are recovered
+without doubling the complex dimension.
+
+\begin{lemma}[The actual image]\label{lem:image}
+At $k\ne0$, the Fourier image of $d_1^*$ is $g(k)^\perp$ of dimension two;
+at $k=0$ it is zero. Consequently $\dim_\R U=2(n^3-1)$.
+\end{lemma}
+\begin{proof}
+For a skew array $W_{j\ell}=-W_{\ell j}$,
+$(d_1^*W)_\ell=\sum_j\overline{g_j}W_{j\ell}$, which is orthogonal to
+$g$. Conversely, for $v\perp g$ and $D=|g|^2>0$, set
+\[
+              W_{j\ell}=\frac{g_jv_\ell-g_\ell v_j}{D}.
+\]
+Its adjoint image is $v_\ell-g_\ell(g^*v)/D=v_\ell$. At zero all symbols
+vanish. The formula respects conjugation at negative frequencies, so real
+fields have real preimages. Counting the nonzero frequencies proves the
+dimension and excludes harmonic constants.
+\end{proof}
+
+Let $q=(n/2,n/2,n/2)$ and consider an unordered pair $\{k,k+q\}$. Put
+$h=g(k+q)$, $D=|g|^2$, $D'=|h|^2$ and $\Gamma=g^*h$. Direct calculation gives
+\begin{equation}\label{eq:symbols}
+ D'=12-D,\qquad \Gamma=2i\sum_j\sin(2\pi k_j/n).
+\end{equation}
+
+\begin{theorem}[All restricted eigenvalues]\label{thm:spectrum}
+For a nonexceptional pair, both frequencies being nonzero, the four
+eigenvalues per channel are
+\begin{align}\label{eq:roots}
+ \lambda_{1,\pm}&=6A_0\pm\sqrt{A_0^2(D-6)^2+B_0^2|\Gamma|^2},\\
+ \lambda_{2,\pm}&=6A_0\pm\sqrt{A_0^2(D-6)^2+
+                           B_0^2|\Gamma|^4/(DD')}.\notag
+\end{align}
+Repeated roots retain their multiplicities. The pair $\{0,q\}$ has only
+the $q$ plane and its two eigenvalues are $12A_0$. These blocks exhaust
+$U$: their total multiplicity is $4(n^3/2-1)+2=2(n^3-1)$ per channel.
+Both original channels have the same spectrum.
+\end{theorem}
+\begin{proof}
+For coefficients $x=\widehat u(k)$, $y=\widehat u(k+q)$, the original
+source-weighted form is exactly
+\[
+ A_0D|x|^2+A_0D'|y|^2+2\varepsilon B_0\Rea(\Gamma x^*y).
+\]
+Indeed multiplication by $\chi$ shifts frequency by $q$, and summing the
+three forward differences gives $g^*h$ with no extra volume factor.
+Choose isometries $E,F:\C^2\to\C^3$ onto $g^\perp,h^\perp$. The compressed
+block has diagonal $A_0DI_2,A_0D'I_2$ and off-diagonal
+$\varepsilon B_0\Gamma E^*F$.
+
+The singular values of $E^*F$ are $1$ and
+$\rho=|\Gamma|/\sqrt{DD'}$. The planes have a common unit vector, and their
+projections $P_g=I-gg^*/D$, $P_h=I-hh^*/D'$ satisfy
+$\tr(P_gP_h)=1+|\Gamma|^2/(DD')$. This proves the two singular values,
+including coincident or orthogonally normal planes. Singular-value
+decomposition and absorption of the coupling phase give two scalar
+two-by-two blocks with coupling moduli $B_0|\Gamma|$ and $B_0|\Gamma|\rho$.
+Their eigenvalues are~\eqref{eq:roots}.
+
+At zero the first coefficient is absent by Lemma~\ref{lem:image}; at $q$
+the remaining plane has $D'=12$. Changing the channel sign is conjugation
+by a sign on the second coefficient. Complex conjugation takes each block
+to its negative-frequency block and commutes with the real form, so the
+real eigenspace dimensions equal those of the complexification. The count
+above is therefore also the real count, not twice that count.
+\end{proof}
+
+\begin{proposition}[The whole low space]\label{prop:low}
+Under~\eqref{eq:special}, let $L=1_{(0,c)}(A_\varepsilon)U$ and
+$F=U\ominus L$. Then
+\[
+ \dim L=n-2,\qquad A_L\le(c/8)I,\qquad A_F\ge(16c/3)I.
+\]
+The space $L$ consists exactly of the low branches at nonexceptional
+diagonal pairs $k=(t,t,t)$; both transverse polarizations are retained.
+\end{proposition}
+\begin{proof}
+First keep only the strong source weight, setting $a=0$. Put
+$S=\sum_j\e^{2\pi i k_j/n}$. Formula~\eqref{eq:roots} gives the attained
+smallest coexact pair eigenvalue $H(3-|S|)$. It vanishes exactly when the
+three phases agree. At such a nonexceptional diagonal pair both couplings
+have the same singular value and the zero multiplicity is two. The
+exceptional pair contributes no zero mode. Thus the actual strong kernel
+has dimension $n-2$ per channel.
+
+If the residues are not all equal, at least two pairwise differences are
+nonzero. The identity
+\[
+ 9-|S|^2=4\sum_{j<\ell}\sin^2\!\left(\frac{\pi(k_j-k_\ell)}n\right)
+\]
+and division by $3+|S|\le6$ show
+$H(3-|S|)\ge(4H/3)\sin^2(\pi/n)\ge16H/(3n^2)$.
+Here $\sin(\pi/n)\ge2/n$ is the concavity chord on $[0,\pi/2]$.
+Adding the positive weak form preserves this lower bound.
+
+At a diagonal nonexceptional pair, $\theta=2\pi t/n$, the two roots,
+each with multiplicity two, are
+\[
+ \mu_\pm=3(H+a)\pm3\sqrt{(H+a)^2-4Ha\sin^2\theta}.
+\]
+They satisfy $0<\mu_-\le6a=c/8$ and $\mu_+\ge6H$. The exceptional
+eigenvalue is $6(H+a)\ge6H$. There are $n/2-1$ nonexceptional diagonal
+pairs, proving the count and the complete separation. In particular no
+other low direction has been silently omitted.
+\end{proof}
+
+\section{Original rows and a paid range theorem}\label{sec:range}
+For a cell $B=\{i\}\times I\times J$, direct substitution gives
+\begin{equation}\label{eq:Fourierrow}
+ (Cu)_{r,B}=\frac1{n^3\sqrt{|I||J|}}\sum_k\widehat u_r(k)
+       \e^{2\pi i k_1i/n}
+       \left(\sum_{j\in I}\e^{2\pi i k_2j/n}\right)
+       \left(\sum_{\ell\in J}\e^{2\pi i k_3\ell/n}\right).
+\end{equation}
+Each pair member has its own three factors. The zero coefficient is absent
+on $U$. Finite sums, rather than a geometric quotient at zero, fix the
+normalization without removable singularities.
+
+Let $N_d$ be the actual diagonal Fourier space: its fields have the form
+$u(x)=v(x_1+x_2+x_3)$ with mean-zero $v$ and $v_1+v_2+v_3=0$. This follows
+from Lemma~\ref{lem:image}. Thus $\dim N_d=2(n-1)$ and $L\subset N_d$.
+Put $O=U\ominus N_d$. The following result permits every original low
+observation to be cancelled by actual high modes, including row dependencies.
+
+\begin{theorem}[Range equality and explicit lift]\label{thm:range}
+For every original cut, whether or not $f$ is a permutation,
+\[
+       \ran C_O=\ran(C|_U)=\ran C_F.
+\]
+There is a linear $R_d:N_d\to O$ such that
+\[
+ C_OR_d=-C_{N_d},\qquad
+ \norm{R_d}^2\le K_n^{\rm lift}:=\frac{n^5}{16(n-3)}.
+\]
+\end{theorem}
+\begin{proof}
+For any original row coefficient $\alpha$, put $g=C_{\rm amb}^*\alpha$,
+where the ambient map uses precisely~\eqref{eq:C}. For fixed $x_1,x_2$,
+$g$ is constant in $x_3$ on $1,\ldots,n-1$, because that is a single long
+third-coordinate cell. Let $v=P_Ug$. Since $U^\perp=\ker d_1$,
+$d_1g=d_1v$. Every component of this curl is independent of $x_3$ on
+$1,\ldots,n-2$; its third difference therefore vanishes on $1,\ldots,n-3$.
+
+If $C_O^*\alpha=0$, then $v\in N_d$. Each component of $d_1v$ depends
+only on $s=x_1+x_2+x_3$. Equality of its values at $x_3=1,2$, for all
+$x_1,x_2$, forces equal values at adjacent residues of $s$. It is constant,
+and its sum is zero because it is a periodic curl. Hence $d_1v=0$ and
+$v\in U\cap U^\perp=0$. We have proved equality of the annihilators of
+$\ran C_O$ and $\ran(C|_U)$. Finite-dimensional orthogonal complementation
+gives the first range equality; $O\subset F\subset U$ gives the other.
+
+For the quantitative claim decompose $v=d+o\in N_d\oplus O$. On the slab
+$1\le x_3\le n-3$, $\Delta_3d_1d=-\Delta_3d_1o$. The first expression
+depends only on $s$, so its squared norm is equally distributed among
+the $n$ third-coordinate slices. Since the curl symbol has squared norm
+at most $12$ and $|g_3|^2\le4$,
+\[
+ \norm{\Delta_3d_1d}^2\le\frac{48n}{n-3}\norm{o}^2.
+\]
+At a nonzero diagonal frequency $z=\e^{2\pi it/n}$ the same squared symbol
+on $d$ is $3|z-1|^4$. Using $|z-1|^2\ge16/n^2$ gives
+$\norm{\Delta_3d_1d}^2\ge768n^{-4}\norm d^2$. Consequently
+\begin{equation}\label{eq:anglelift}
+       \norm{C_{N_d}^*\alpha}^2
+       \le K_n^{\rm lift}\norm{C_O^*\alpha}^2.
+\end{equation}
+Define $S(C_O^*\alpha)=C_{N_d}^*\alpha$. Inequality~\eqref{eq:anglelift}
+makes this well-defined on its range, with norm at most $\sqrt{K_n^{\rm lift}}$.
+Extend it by zero on the orthogonal complement. Then $C_OS^*=C_{N_d}$,
+and $R_d=-S^*$ proves the claim. This is a proved factorization, not an
+assumed inverse or a full-row-rank assertion.
+\end{proof}
+
+\section{The exact shifted cancellation criterion}\label{sec:cost}
+Under~\eqref{eq:special}, set $B=A_F-cI$, $D_L=cI-A_L$ and
+\[
+ M=C_FB^{-1}C_F^*,\qquad S_C=\ran(C|_U).
+\]
+Proposition~\ref{prop:low} gives $B\ge13c/3$ and $7c/8\le D_L<cI$.
+Theorem~\ref{thm:range} implies $\ker M=S_C^\perp$. Thus $M$ is invertible
+on $S_C$, and $M^\dagger$ denotes that inverse extended by zero.
+
+\begin{theorem}[Exact cost, with dependent rows]\label{thm:cost}
+For every $l\in L$,
+\begin{align}\label{eq:mincost}
+ \min_{f\in F:\ C_Ff=-C_Ll}\ip f{Bf}
+       &=\ip{C_Ll}{M^\dagger C_Ll},\\
+ f_*&=-B^{-1}C_F^*M^\dagger C_Ll.\notag
+\end{align}
+Consequently $Q(w)\ge c\norm w^2$ for all $w\in U\cap\ker C$ if and only if
+\begin{equation}\label{eq:criterion}
+                  C_L^*M^\dagger C_L-D_L\ge0\quad\hbox{on }L.
+\end{equation}
+Its dimension is $n-2$ per original channel, or $2(n-2)$ on their direct sum.
+\end{theorem}
+\begin{proof}
+Let $y=C_Ll\in S_C$. Then $C_Ff_*=-MM^\dagger y=-y$. For every other
+feasible $f=f_*+h$, $C_Fh=0$ and
+$\ip h{Bf_*}=-\ip{C_Fh}{M^\dagger y}=0$. Expanding the square proves
+the minimum. For $w=l+f$ the spectral splitting gives
+\[
+        Q(w)-c\norm w^2=-\ip l{D_Ll}+\ip f{Bf}.
+\]
+Use the attained minimum in both directions. Every $l$ is feasible by
+Theorem~\ref{thm:range}, so no extra range assumption hides a bad direction.
+\end{proof}
+
+The lift also pays an explicit but inadequate upper bound:
+$\ip{R_dl}{BR_dl}\le(12H-c)K_n^{\rm lift}\norm l^2$, because
+$A\le12HI$ and $R_dl\in O\subset F$. This grows like $cn^6$ and does not
+decide~\eqref{eq:criterion}.
+For later use the corresponding dual identity is
+\begin{equation}\label{eq:dual}
+ \ip y{M^\dagger y}
+   =\sup_\alpha\{2\Rea\ip\alpha y-\ip\alpha{M\alpha}\},\qquad y\in S_C.
+\end{equation}
+It follows by completing the square on $S_C$; components in $S_C^\perp$
+pair and respond to zero.
+
+\begin{lemma}[Singleton frame]\label{lem:frame}
+If $f$ is a permutation, $T^*T=n^{-5}I$ as a form on all of $N_d$.
+In particular this holds on $L$ and on the strong kernel.
+\end{lemma}
+\begin{proof}
+For $u(x)=v(s)$, $\norm u^2=n^2\sum_s|v(s)|^2$, whereas
+$\norm{Tu}^2=n^{-3}\sum_i|v(f(i))|^2=n^{-3}\sum_s|v(s)|^2$.
+\end{proof}
+
+\section{Whole singleton response and an invisible-field bound}\label{sec:whole}
+Define $R=P_FB^{-1}P_F$ extended by zero and $M_T=TRT^*$. Put
+$N=n/2$, $h_N=\sum_{j=1}^N1/j$ and
+\begin{equation}\label{eq:Kn}
+                   K_n=\frac{48}{13}h_N+\frac1{6n^2-1}.
+\end{equation}
+
+\begin{theorem}[Finite whole-response bounds]\label{thm:whole}
+For every permutation cut and either original channel,
+\begin{equation}\label{eq:whole}
+ \frac{h_N}{24\pi^2cn^5}\le\norm{M_T}\le\frac{K_n}{cn^5}.
+\end{equation}
+No fixed constant bounds $cn^5\norm{M_T}$ for all such sizes. The same
+blanket scalar bound fails for the entire original-row response $M$.
+\end{theorem}
+\begin{proof}
+Write $k=(t+r,t+s,t)$ and
+$\delta(r,s)=3-|1+\e^{2\pi ir/n}+\e^{2\pi is/n}|$.
+For $g=T^*\alpha$,
+\[
+ \widehat g(t+r,t+s,t)=n^{-3}\sum_i\alpha_i
+   \e^{-2\pi i\{tf(i)+ri+s\tau_i\}/n}.
+\]
+Since $f$ is a permutation, orthogonality in $t$ gives the exact identity
+\begin{equation}\label{eq:fibre}
+       \sum_t|\widehat g(t+r,t+s,t)|^2=n^{-5}\norm\alpha^2.
+\end{equation}
+The pair shift $q$ changes only $t$ by $n/2$. Every transverse $(r,s)$
+therefore contains exactly $n/2$ unordered pairs, and only $(0,0)$ is
+diagonal. Off that fibre, Proposition~\ref{prop:low} and its strong-form
+calculation give
+\[
+ (A-cI)^{-1}\le\frac1{cn^2\delta-c}I
+             \le\frac{16}{13cn^2\delta}I.
+\]
+The last step uses $cn^2\delta\ge16c/3$. On the diagonal high space the
+bound is $1/[c(6n^2-1)]$. Projections cannot increase the input norm.
+Thus~\eqref{eq:fibre} gives
+\begin{equation}\label{eq:responseupper}
+ \ip\alpha{M_T\alpha}\le\frac{\norm\alpha^2}{cn^5}
+ \left\{\frac{16}{13n^2}\sum_{(r,s)\ne0}\frac1\delta
+                           +\frac1{6n^2-1}\right\}.
+\end{equation}
+For unique centered residues in $[-N,N-1]^2$, the sine identity in the
+proof of Proposition~\ref{prop:low} implies
+\[
+ \delta\ge\frac23\{\sin^2(\pi r/n)+\sin^2(\pi s/n)\}
+          \ge\frac8{3n^2}(r^2+s^2).
+\]
+At most $8j$ centered sites have $\max(|r|,|s|)=j$. Therefore
+\begin{equation}\label{eq:latticesums}
+ \sum_{(r,s)\ne0}\frac1\delta\le3n^2h_N,
+ \qquad
+ \sum_{(r,s)\ne0}\frac1\delta\ge\frac{n^2h_N}{4\pi^2}.
+\end{equation}
+For the lower inequality retain $r=j$, $1\le s\le j$, $1\le j\le N$.
+These are distinct residues and
+$\delta\le2-\cos(2\pi r/n)-\cos(2\pi s/n)\le4\pi^2j^2/n^2$.
+The upper inequality and~\eqref{eq:responseupper} prove the upper norm.
+
+For the lower norm, even-sum translations preserve $U$, the source form,
+$F$ and $R$. They are transitive on each vertex parity. The spatial trace
+of $R(x,x)$ therefore has two values. The sampled vertex parity is that
+of $f(i)$, so exactly half the singleton points have each parity. Compared
+with $n^3/2$ vertices of each parity, the row normalization gives
+\begin{equation}\label{eq:tracewhole}
+                  \tr M_T=n^{-5}\tr_F B^{-1}.
+\end{equation}
+On each non-diagonal pair one genuine strong-minimizing polarization has
+energy $cn^2\delta$. The weak form is at most $12a=c/4$ on a unit vector.
+Rayleigh's principle supplies a full eigenvalue
+$\lambda\le cn^2\delta+c/4$. It belongs to $F$; hence
+$(\lambda-c)^{-1}\ge(cn^2\delta)^{-1}$. There are exactly $n/2$ such
+pairs per transverse fibre. Consequently
+\[
+ \tr_F B^{-1}\ge\frac1{2cn}\sum_{(r,s)\ne0}\frac1\delta
+              \ge\frac{nh_N}{8\pi^2c}.
+\]
+The largest eigenvalue of a PSD operator on $3n$ rows is at least its
+trace divided by $3n$. This proves the lower half of~\eqref{eq:whole}.
+Since $h_N\ge\log(N+1)$, the scaled norm diverges. Finally, inserting
+singleton coefficients by zeros is an isometry $J$ with $T=J^*C$, so
+$M_T=J^*MJ$ and $\norm M\ge\norm{M_T}$. No independent-row assumption
+is used in this compression argument.
+\end{proof}
+
+\begin{corollary}[A paid logarithmic kernel bound]\label{cor:kernel}
+For every $w\in U\cap\ker C$ under a permutation cut,
+\begin{equation}\label{eq:kernel}
+ Q(w)\ge\frac c{K_n}\norm w^2
+             \ge\frac c{4(1+\log n)}\norm w^2.
+\end{equation}
+The same coefficient holds for the original two-channel direct sum.
+\end{corollary}
+\begin{proof}
+For $l\in L$, insert $\alpha=Tl$ into the singleton coordinates of the full
+rowspace. Its pairing with $y=C_Ll$ is $n^{-5}\norm l^2$, and
+Theorem~\ref{thm:whole} bounds its response by
+$K_n\norm l^2/(cn^{10})$. Optimize~\eqref{eq:dual} along $t\alpha$ at
+$t=cn^5/K_n$ to obtain
+$\ip{C_Ll}{M^\dagger C_Ll}\ge(c/K_n)\norm l^2$.
+For an invisible $w=l+f$, the high part is feasible and
+\[
+ Q(w)=\ip l{A_Ll}+\ip f{Bf}+c\norm f^2
+       \ge(c/K_n)\norm l^2+c\norm f^2
+       \ge(c/K_n)\norm w^2,
+\]
+since $K_n>1$. Put $L_0=1+\log n$. The inequalities
+$h_N\le1+\log(n/2)\le L_0$ and
+$1/(6n^2-1)\le1/95<(4/13)L_0$ give $K_n<4L_0$.
+The proofs are channelwise, so summation preserves the coefficient.
+\end{proof}
+
+\begin{remark}[Coefficient and domain comparison]\label{rem:comparison}
+The coefficient $c/K_n$ strictly exceeds the prior working-paper benchmark
+$c/[5(1+\log n)]$~\cite{Eriksson274} on overlapping hypotheses. That estimate allowed
+ambient fields under additional cut restrictions;~\eqref{eq:kernel} is on
+the actual coexact domain with a permutation cut. The numerical improvement
+does not extend the larger ambient domain, change logarithmic order, or
+establish the target $c$. In particular $c/K_n$ is inadequate to dominate
+$D_L\ge7c/8$ in~\eqref{eq:criterion}.
+\end{remark}
+
+\section{Logarithmic response persists on useful low data}\label{sec:useful}
+Let $E=T_LL$ and let $P_E$ be the ordinary singleton row-space projection.
+Lemma~\ref{lem:frame} gives $P_E=n^5T_LT_L^*$ and $\dim E=n-2$.
+
+\begin{theorem}[Useful-space obstruction]\label{thm:useful}
+For every even $n\ge4$ and permutation cut,
+\begin{equation}\label{eq:useful}
+ \frac{h_N/(16\pi^2)-1/2-4K_n/(48n^2-1)}{cn^5}
+ \le\norm{P_EM_TP_E}\le\frac{K_n}{cn^5}.
+\end{equation}
+For even $n\ge16$ the lower bound implies
+\begin{equation}\label{eq:simpleuseful}
+        cn^5\norm{P_EM_TP_E}\ge\frac{h_N}{32\pi^2}-1.
+\end{equation}
+Thus a uniform response bound fails even for unaugmented tests $\alpha=T_Ll$.
+The lower expressions need not be positive at small sizes.
+\end{theorem}
+
+\subsection{A finite component Green estimate}
+Let $K$ be the actual strong kernel. For strong weight on odd vertices,
+the strong scalar graph has $N$ components, the paired layers
+$(s=2j-1,s=2j)$, $s=x_1+x_2+x_3$. On each layer use coordinates
+$y=(x_1,x_2)$; $x_3$ is determined. The three strong edges from an odd
+vertex have target coordinates $y,y+e_1,y+e_2$ in the even layer. The
+unit-weight scalar component Laplacian $D$ is degree three on $2n^2$
+vertices, with transverse Fourier matrix
+\[
+ \begin{pmatrix}3&-S(r,s)\\-\overline{S(r,s)}&3\end{pmatrix},\qquad
+ S(r,s)=1+\e^{2\pi ir/n}+\e^{2\pi is/n}.
+\]
+Its eigenvalues are $\delta=3-|S|$ and $\delta_+=3+|S|$. Only $\delta(0,0)$
+vanishes, proving connectedness. Interchanging source parity gives the
+same graph with paired layers $(2j,2j+1)$.
+
+\begin{lemma}[Component Green bounds]\label{lem:green}
+For $G=D^\dagger$, the diagonal value $g_0$ is constant and
+\[
+                   g_0\ge\frac{h_N}{8\pi^2},\qquad
+                   G(x,y)\ge-1\quad\hbox{for all }x,y.
+\]
+\end{lemma}
+\begin{proof}
+Translations within layers and layer exchange with reflection act
+transitively on vertices. The diagonal spectral formula is
+\[
+ g_0=\frac1{2n^2}\left\{
+       \sum_{(r,s)\ne0}\frac1\delta+\sum_{r,s}\frac1{\delta_+}\right\}.
+\]
+The lower lattice sum in~\eqref{eq:latticesums} gives the diagonal bound.
+For the off-diagonal bound use the finite heat kernel $p_t=\exp(-tD)$.
+It is entrywise nonnegative, since $D=3I-\mathrm{Adj}$ and
+$\exp(t\mathrm{Adj})$ has a nonnegative power series. Hence the integral
+representation
+\[
+ G(x,y)=\int_0^\infty\{p_t(x,y)-(2n^2)^{-1}\}\,dt
+\]
+is bounded below by $-1/2$ on $0\le t\le n^2$. For the tail,
+$p_t-P_{\rm const}$ is PSD with constant diagonal. Cauchy--Schwarz bounds
+each entry by that diagonal, its trace divided by $2n^2$. The absolute
+tail is therefore at most
+\[
+            \frac1{2n^2}\sum_{\lambda\ne0}
+                         \frac{\e^{-n^2\lambda}}\lambda.
+\]
+For the $\delta$ branch use $\delta\ge8(r^2+s^2)/(3n^2)$ and the at-most
+$8j$ shell count. Its contribution is at most
+\[
+ \frac32\sum_{j\ge1}\frac{\e^{-(8/3)j^2}}j
+       \le\frac32\sum_{j\ge1}(1/8)^j=\frac3{14}.
+\]
+Here $\e^{8/3}>8$ follows already from four nonnegative Taylor terms.
+The $n^2$ high-branch eigenvalues are at least $3$, giving a contribution
+at most $\e^{-3n^2}/6\le1/6$. Thus
+$G(x,y)\ge-1/2-3/14-1/6=-37/42\ge-1$. No positivity of the Green function
+or an isolated low band was assumed.
+\end{proof}
+
+\subsection{The scalar component inside the actual coexact space}
+Put $V=(1,1,1)^\perp$. The strong kernel $K$ consists exactly of component
+constants $v_j\in V$ with $\sum_jv_j=0$. Such fields have mean-zero
+diagonal Fourier coefficients in $V$, so Lemma~\ref{lem:image} puts them
+in $U$. Their dimension $2(N-1)=n-2$ equals the full strong-kernel count.
+Every permutation singleton map selects one point in each $s$ layer,
+hence one point $o_j,e_j$ in each layer of each component. The space
+$E_0=T_KK$ consists of equal pair values in $V$, with component mean zero.
+
+The next construction prevents an ambient scalar inverse from being
+mistaken for an actual coexact inverse. At transverse $(r,s)\ne0$, let
+$z=(\e^{2\pi ir/n},\e^{2\pi is/n},1)$ and
+$W_{r,s}=\{(1,1,1),z\}^\perp$, a line in $V$. For frequencies
+$k=(t+r,t+s,t)$ and $k+q$, both $g(k)$ and $g(k+q)$ are linear combinations
+of $z$ and $(1,1,1)$. Thus $W_{r,s}$ lies in both actual coexact planes,
+and is independent of $t$. Its two coefficient directions form an invariant
+first-polarization subspace of the strong block, with eigenvalues
+$H\delta,H\delta_+$. Retaining this line in the transverse Fourier
+transform of each two-layer component gives actual coexact fields. The
+projector onto the line depends only on transverse frequency, so it acts
+inside each component and does not mix components.
+
+Let $R_0$ be this selected strong inverse, zero on the entire diagonal
+transverse fibre. It is $H^{-1}$ times the component scalar inverse with
+spatial projector $P_{W_{r,s}}$. On every non-diagonal actual block,
+\[
+           0<B=A-cI\le A_H-3cI/4\le A_H,
+\]
+because $0\le A_a\le cI/4$. Positive matrix inversion gives
+$B^{-1}\ge A_H^{-1}\ge R_0$. The last comparison keeps an invariant
+polarization of the strong inverse. All such blocks lie in $F$, while
+the remaining diagonal part of $R$ is positive. Extending by zero gives
+$R\ge R_0$ globally. This comparison never inverts the strong kernel and
+never compares inverses on the rotated diagonal low modes.
+
+For the normalized pair vector
+$p_j=(\delta_{o_j}+\delta_{e_j})/\sqrt2$, taking spatial trace against
+$P_V$ removes the polarization orientation:
+$\tr(P_VP_{W_{r,s}})=1$. The omitted diagonal transverse high branch
+would contribute zero: its layer vector is $(1,-1)/\sqrt2$, constant in
+transverse coordinates, and pairs to zero with $p_j$. The scalar zero
+branch is already zero in $G$. Therefore the local useful-pair trace is
+\begin{equation}\label{eq:localtrace}
+ n^{-3}H^{-1}\ip{p_j}{Gp_j}
+   =\frac{g_0+\Rea G(o_j,e_j)}{cn^5}
+   \ge\frac{h_N/(8\pi^2)-1}{cn^5}.
+\end{equation}
+There is no factor two from $V$: only one common polarization was retained
+per transverse frequency. The other positive contributions are omitted in
+a lower estimate, not removed from the original model.
+
+The component mean-zero projection is $I_N-N^{-1}11^*$, with diagonal
+$1-1/N$. Since $R_0$ is componentwise, summing~\eqref{eq:localtrace}
+and using $R\ge R_0$ proves
+\begin{equation}\label{eq:strongtrace}
+ \tr(P_{E_0}M_T)\ge\frac{N-1}{cn^5}
+                            \left(\frac{h_N}{8\pi^2}-1\right).
+\end{equation}
+This is a useful strong-kernel compression trace, not the blanket trace
+in~\eqref{eq:tracewhole}. Arbitrary separation of $o_j,e_j$ is allowed.
+
+\subsection{Positive-weight rotation and conclusion}
+We must not identify $L$ with $K$. On each nonexceptional diagonal pair
+the strong scalar block has eigenvalues $0,6H$, tensored with $V$.
+The weak perturbation has norm at most $c/4$, and the true low eigenvalue
+is at most $c/8$. For its unit eigenvector $l=l_0+l_1$ in the strong
+low/high basis, the high equation gives
+\[
+ (6H-\lambda)l_1=-P_{\rm high}A_al,\qquad
+ \norm{l_1}\le\frac{c/4}{6cn^2-c/8}
+                     =:\epsilon_n=\frac2{48n^2-1}.
+\]
+The norm difference of two rank-one projections is the sine of their
+angle, as follows by writing the projections in the strong orthonormal
+basis. Tensoring with $V$ and taking the orthogonal sum over pairs gives
+$\norm{P_L-P_K}\le\epsilon_n$. The exceptional and non-diagonal low
+projections are both zero.
+
+By Lemma~\ref{lem:frame}, $n^{5/2}T$ is an isometry on all $N_d$, so
+$\norm{P_E-P_{E_0}}\le\epsilon_n$. Both ranks are $d=n-2$; their
+difference has rank at most $2d$ and trace norm at most $2d\epsilon_n$.
+Using Theorem~\ref{thm:whole},
+\[
+ |\tr((P_E-P_{E_0})M_T)|\le\frac{2d\epsilon_nK_n}{cn^5}.
+\]
+Combine this with~\eqref{eq:strongtrace}, divide by $d=2(N-1)$ and use
+PSD norm at least average eigenvalue. The result is the lower half of
+\eqref{eq:useful}; the upper half follows by orthogonal compression.
+
+For $n\ge16$, $D_n=48n^2-1\ge12287$ and
+$(192/13)/D_n\le1/(32\pi^2)$, since $\pi<4$ implies
+$6144\pi^2<98304<13\cdot12287$. Also
+$4/[(6n^2-1)D_n]<1/2$. Formula~\eqref{eq:Kn} therefore gives
+$4K_n/D_n\le h_N/(32\pi^2)+1/2$, which proves~\eqref{eq:simpleuseful}.
+Since $h_N\ge\log(N+1)$, the scaled useful norm diverges.
+
+The derivation is valid after complexification; the original response and
+useful projection are real, with the same traces and eigenvalues. A
+maximizing direction can be chosen real. Moreover the isometry
+$n^{5/2}T_L:L\to E$ proves the exact identity
+\[
+ \sup_{l\ne0}\frac{cn^{10}\ip{T_Ll}{M_TT_Ll}}{\norm l^2}
+                   =cn^5\norm{P_EM_TP_E}.
+\]
+This is a large dual response, not a physical Rayleigh quotient.
+
+\section{What the obstructions leave open}\label{sec:limits}
+Theorems~\ref{thm:whole} and~\ref{thm:useful} exclude uniform scalar
+response estimates on the complete singleton rowspace and on its direct
+useful low-data subspace. Adding original prefix rows does not repair a
+blanket full-row norm estimate, since it retains the singleton compression.
+It can nevertheless change an optimized dual problem.
+
+In fact, for useful data an added singleton coefficient in $E^\perp$ has
+zero low pairing but may lower response through cross terms. Correlated
+prefix or long-cell coefficients may do the same. The corresponding
+optimized response involves an inverse or Schur complement, which is not
+determined by a large direct compression. No theorem here asserts that
+all singleton methods fail, that the best full cancellation cost must
+lose a logarithm, or that an invisible field has quotient below $c$.
+The sign in~\eqref{eq:criterion} remains unresolved for the quadratic cut.
+
+The polynomial lift and the logarithmic kernel bound are paid finite
+estimates, with their inadequate target-$c$ strength explicitly retained.
+No selected numerical finite-size result is used as a proof premise, and
+no numerical rank, formal verification or continuum limit is asserted.
+These statements concern this discrete counting-norm family; they are not
+a physical Yang--Mills spectral gap or a resolution of the continuum
+problem. The classical logarithmic mechanism and the model-specific
+finite comparisons should be distinguished from any future claim of
+external originality, which remains unestablished here.
+
+\section*{Model assessments and review context}
+This is the first consolidated manuscript source, marked draft. The
+antecedent research sources underwent separate involved analytical source
+audits in the same Codex/OpenAI programme context. Those sessions shared
+programme history; no provider independence, blind review or human peer
+review is claimed. The exact backend model identifiers were unavailable,
+and no more specific identities are inferred. The source audits concern
+the finite analytical statements, not an exact PDF of this manuscript.
+
+The consolidation itself still requires its separate exact-source review,
+a reproducible remote build and visual inspection of the returned PDF.
+At source preparation, an exact-PDF scientific assessment is pending. Any
+later assessment, if supplied in deposit metadata, is a separate hash-bound
+artifact with its own actual model identity, context and objections. No score, stars, acceptance
+decision or assessment of an earlier artifact is transferred to this
+version. The full original reports, objections, corrections and context
+belong in the accompanying evidence package. AI-assisted preparation and
+involved source checks are not represented as independent peer review or
+publication acceptance. The listed author is the programme owner; no
+affiliation or completed personal review is invented.
+
+\appendix
+\section{Source and build provenance}\label{app:provenance}
+This source consolidates four accepted analytical research records: the
+complete restricted spectrum, the original-row range and cost argument,
+the whole-response estimates with corrected kernel-coefficient comparison,
+and the useful-space response obstruction. The accompanying
+\texttt{source-map284A.json} binds theorem labels to their exact raw source
+hashes and discloses editorial omissions. All load-bearing proofs are
+included above; those records are provenance, not missing mathematical
+premises.
+
+The build system is intended to inject the exact source commit before
+inputting this file. Its value for this rendering is
+\begin{center}\texttt{\SourceCommit}\end{center}
+The placeholder \texttt{SOURCE-NOT-BUILT} means that an actual build commit
+has not been injected. This text-only draft has not been locally compiled
+or visually PDF-reviewed. Reproducible PDF bytes, page inspection and
+artifact hashes must be recorded for the actual later build; no such
+verification is fabricated in this source.
+
+\begin{thebibliography}{9}
+\bibitem{Eriksson274}
+L. Eriksson, \emph{Coverage and coexactness in checkerboard slice observations},
+programme working paper, AIRR, version~1 (2026).
+\url{https://airr.science/papers/ARR-2026-451FW8N5MC8KYV5S/versions/v1/}.
+
+\bibitem{Kenyon}
+R. Kenyon, \emph{The Laplacian and $\bar\partial$ operators on critical planar
+graphs}, arXiv:math-ph/0202018 (2002), especially Theorem~7.3.
+\url{https://arxiv.org/abs/math-ph/0202018}.
+
+\bibitem{LawlerLimic}
+G. F. Lawler and V. Limic, \emph{Random Walk: A Modern Introduction},
+Cambridge University Press, 2010. Author-hosted text, Sections~1.2 and~4.4,
+especially Theorem~4.4.4.
+\url{https://www.math.uchicago.edu/~lawler/srwbook.pdf}.
+\end{thebibliography}
+\end{document}

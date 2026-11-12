@@ -1,0 +1,18 @@
+Primary-source comparison,12 November2026; bounded reading, not priority proof.
+
+Gregory F. Lawler and Vlada Limic, Random Walk: A Modern Introduction,
+author-hosted text https://www.math.uchicago.edu/~lawler/srwbook.pdf
+Read via web PDF extraction: Chapter4.4, Proposition4.4.3, Theorem4.4.4
+and opening proof on PDF pages86-88 (printed87-89). The Fourier integral
+representation and logarithmic two-dimensional potential-kernel asymptotic
+are classical. The displayed simple-walk leading coefficient is2/pi.
+The proof isolates a harmonic sum from return probabilities.
+
+This source does not treat our finite checkerboard actual-coexact resolvent,
+quadratic-cut singleton map or its exact normalization. It prevents claiming
+that a two-dimensional inverse-symbol logarithm or harmonic-shell mechanism
+is new. Any282 model-specific norm comparison must be proved directly, with
+its own finite multiplicities. Historical priority for that precise comparison
+is unestablished; this bounded source check is not exhaustive novelty review.
+No full-book reading or external theorem covering the original full-cell
+target is claimed. No copied pages or long quotation retained here.
