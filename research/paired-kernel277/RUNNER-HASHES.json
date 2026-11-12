@@ -1,0 +1,27 @@
+[
+  {
+    "path": "diagnostic277B.py",
+    "bytes": 16878,
+    "sha256": "256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5"
+  },
+  {
+    "path": "launch277.py",
+    "bytes": 27556,
+    "sha256": "f2bef9bd0899600b75eb9cddf9583e1fc88fe5ba6e2b135cac8edcc89d54f9f7"
+  },
+  {
+    "path": "capture_cli_atomic.ps1",
+    "bytes": 2607,
+    "sha256": "4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b"
+  },
+  {
+    "path": "run_owned_after_gate.ps1",
+    "bytes": 6972,
+    "sha256": "8f8c65c77b7fed4db297c89e6fefa6b92fc191814584515d112d53f4d394b8b6"
+  },
+  {
+    "path": "readback_after_stop.ps1",
+    "bytes": 924,
+    "sha256": "b7ea99f7e277bf52278532de685ac3cc4033f2b7bc6415b10b7941a1746fdba2"
+  }
+]

@@ -1,0 +1,44 @@
+--- immutable-A/diagnostic277.py
++++ preferred-B/diagnostic277B.py
+@@ -156,18 +156,21 @@
+             'norm_physical_vs275_scaled':abs(norm-n275)/max(1.0,abs(norm),abs(n275)),
+             'Q_physical_vs275_scaled':abs(q-(h275+a275))/max(1.0,abs(q),abs(h275+a275)),
+             'Rayleigh_vs_eigensolver_scaled':abs(q/norm-expected_lambda)/max(1.0,abs(q/norm),abs(expected_lambda))}
+-    for key,value in checks.items():require(np.isfinite(value) and value<=TOL,'Witness integrity check failed '+key)
++    np.save(case/'physical-witness.npy',field,allow_pickle=False);np.save(case/'curl-preimage-fft.npy',Ahat,allow_pickle=False);np.save(case/'curl-preimage-real.npy',realA,allow_pickle=False);np.save(case/'observed-rows.npy',rowvec,allow_pickle=False)
++    # Preserve computed residuals and arrays BEFORE an integrity failure propagates.
++    dump(case/'physical-integrity-values.json',{k:(value if np.isfinite(value) else str(value)) for k,value in checks.items()})
++    for key,value in checks.items():require(np.isfinite(value) and value<=TOL,'Witness integrity check failed '+key+' = '+repr(value))
+     for value,name in [(field,'physical witness'),(Ahat,'FFT preimage'),(realA,'real preimage'),(rowvec,'rows')]:finite(value,name)
+-    np.save(case/'physical-witness.npy',field,allow_pickle=False);np.save(case/'curl-preimage-fft.npy',Ahat,allow_pickle=False);np.save(case/'curl-preimage-real.npy',realA,allow_pickle=False);np.save(case/'observed-rows.npy',rowvec,allow_pickle=False)
+     return {'norm_squared':norm,'Q_physical':q,'Q_H_physical':qh,'Q_a_physical':qa,'Rayleigh_Q_over_counting_norm':q/norm,'norm275':n275,'Q_H275':h275,'Q_a275':a275,'checks':checks,'preimage_pair_order':['12','13','23'],'FFT_normalization':'ortho','tolerance':TOL}
+ 
+ def one_case(n,cut_name,B,T,K,G,assembly):
+     case=E/(str(n)+'-'+cut_name);case.mkdir();report={'n':n,'cut':cut_name,'c':1.0,'H':n*n,'a':1.0/48,'dimension':B.shape[1],'construction':'EXACT275 paired class, channel1; channel2zero','psi_gauge':'psi_s(0,0)=0','constant_basis':'(1,0,-1),(0,1,-1) per odd layer except last, subtract same from last','assembly_comparisons':assembly,'status':'FAILED_PRESERVED','started_at':utc()}
+     try:
+         tau=np.array([(2*i*i)%n if cut_name=='nonlinear' else 0 for i in range(n)],dtype=int);report['tau']=tau.tolist();report['F']=[(i+int(tau[i]))%n for i in range(n)]
+-        C,CL,labels=rows(n,tau);R=(C@B).tocsr();Ralt=(CL@T).tocsr();comp=sparse_comparison(R,Ralt);require_comparison(comp,'all original rows vs276 E/W')
++        C,CL,labels=rows(n,tau);R=(C@B).tocsr();Ralt=(CL@T).tocsr();comp=sparse_comparison(R,Ralt)
+         report.update(original_rows=len(labels),channel2_zero_rows=sum(x['channel']==2 for x in labels),row_assembly_comparison=comp)
+-        dump(case/'row-labels.json',labels);sp.save_npz(case/'R-original-cells.npz',R)
++        dump(case/'row-labels.json',labels);sp.save_npz(case/'R-original-cells.npz',R);sp.save_npz(case/'R-EW276.npz',Ralt)
++        require_comparison(comp,'all original rows vs276 E/W')
+         dense=R.toarray();U,s,Vh=la.svd(dense,full_matrices=True,check_finite=True,lapack_driver='gesvd');finite(s,'singular values');finite(Vh,'right singular vectors')
+         cutoff=RELATIVE_SVD*float(s[0]) if len(s) else 0.0;rank=int(np.sum(s>cutoff));nullity=B.shape[1]-rank
+         report['SVD']={'relative_cutoff':RELATIVE_SVD,'absolute_cutoff':cutoff,'all_singular_values':s.tolist(),'rank':rank,'nullity':nullity,'meaning':'Floating-point diagnostic, not an exact rank certificate','driver':'gesvd'}
+@@ -179,11 +182,15 @@
+             Kz=np.asfortranarray(Z.T@(K@Z));Gz=np.asfortranarray(Z.T@(G@Z));Kz=(Kz+Kz.T)*0.5;Gz=(Gz+Gz.T)*0.5
+             finite(Kz,'reduced physicalK');finite(Gz,'reduced physicalG')
+             values,vectors=la.eigh(Kz,Gz,subset_by_index=[0,0],driver='gvx',overwrite_a=True,overwrite_b=True,check_finite=True)
++            finite(values,'generalized eigenvalues');finite(vectors,'generalized eigenvectors')
+             lam=float(values[0]);coeff=vectors[:,0];theta=Z@coeff;u=np.asarray(B@theta).ravel();finite(theta,'eigenvector parameters');finite(u,'witness')
+             pivot=int(np.argmax(np.abs(theta)))
+             if theta[pivot]<0:theta=-theta;u=-u;coeff=-coeff
+             norm=float(np.linalg.norm(u));require(norm>0 and np.isfinite(norm),'Zero generalized witness');theta/=norm;u/=norm;coeff/=norm
+             np.save(case/'eigenvector-parameters.npy',theta,allow_pickle=False);np.save(case/'eigenvector-null-coordinates.npy',coeff,allow_pickle=False)
++            eig_residual=Z.T@(K@theta-lam*(G@theta));eig_scale=max(1.0,float(np.linalg.norm(K@theta)),abs(lam)*float(np.linalg.norm(G@theta)))
++            report['reduced_generalized_eigen_residual_scaled']=float(np.linalg.norm(eig_residual))/eig_scale
++            require(np.isfinite(report['reduced_generalized_eigen_residual_scaled']) and report['reduced_generalized_eigen_residual_scaled']<=TOL,'Generalized reduced eigen-equation residual')
+             report['minimum_eigenvalue']=lam;report['witness']=physical_checks(n,u,case,C,labels,theta,T,lam);report['status']='FINITE_FLOATING_DIAGNOSTIC_COMPLETED'
+         report['limitations']='Only selected n4,8,16/cuts and exact275 restricted subspace; no rank certificate, continuum/physicalgap/coercivity/novelty proof or adaptive threshold search.'
+     except Exception:report['failure']=traceback.format_exc();(case/'failure.txt').write_text(report['failure'],encoding='utf-8')

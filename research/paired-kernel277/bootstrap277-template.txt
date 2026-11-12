@@ -1,0 +1,60 @@
+"""Notebook-safe277 launch; raw source embedding, actual standalone child receipt."""
+import os,sys,json,hashlib,base64,subprocess,traceback,zipfile,shutil,re
+from pathlib import Path
+from datetime import datetime,timezone
+def launch277_main():
+    expected='EMBEDDED_HASH';encoded='EMBEDDED_BASE64'
+    base='801004ccd85170de6b39146decd34cc6400c2060'
+    root=Path('/content/tep277-launch');E=root/'launch'
+    Z=Path('/content/tep277-diagnostic-envelope.zip');native=Path('/content/tep277-diagnostic-results.zip');nr=Path('/content/tep277-diagnostic');created=False
+    def utc():return datetime.now(timezone.utc).isoformat()
+    def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+    def require(ok,msg):
+        if not ok:raise ValueError(msg)
+    r={'schema':'TEP277-LAUNCH-1.0','construction_base':base,'diagnostic_source_sha256':expected,'status':'FAILED_PRESERVED','started_at':utc(),'actual_child_started':False,'child_exit':None,'timed_out':False,'billing_units':None,'billing_seconds':None}
+    try:
+        require(os.name=='posix' and Path('/content').is_dir(),'Own Colab Linux only')
+        require(not root.exists() and not nr.exists() and not Z.exists() and not native.exists(),'Fresh own277 launch/diagnostic required')
+        E.mkdir(parents=True,exist_ok=False);created=True
+        data=base64.b64decode(encoded,validate=True);require(hashlib.sha256(data).hexdigest()==expected,'Embedded diagnostic hash differs')
+        path=E/'diagnostic277B.py'
+        with path.open('xb') as f:f.write(data);f.flush();os.fsync(f.fileno())
+        require(path.read_bytes()==data,'Actual closed executable readback differs')
+        argv=[sys.executable,str(path)];r['child_argv']=argv
+        with (E/'child.stdout').open('xb') as out,(E/'child.stderr').open('xb') as err:
+            child=subprocess.Popen(argv,cwd=root,stdout=out,stderr=err);r['actual_child_started']=True;r['child_started_at']=utc()
+            try:code=child.wait(timeout=3300)
+            except subprocess.TimeoutExpired:r['timed_out']=True;child.kill();code=child.wait()
+            out.flush();os.fsync(out.fileno());err.flush();os.fsync(err.fileno())
+        r['child_exit']=code;r['child_finished_at']=utc();temp=E/'child.exit.tmp';final=E/'child.exit'
+        with temp.open('x',encoding='ascii',newline='\n') as f:f.write(str(code)+'\n');f.flush();os.fsync(f.fileno())
+        b=temp.read_bytes();require(re.fullmatch(rb'-?[0-9]+\n',b) is not None and int(b)==code,'Closed actual exit invalid');os.replace(temp,final);require(final.read_bytes()==b,'Actual exit readback differs')
+        if native.is_file():
+            with zipfile.ZipFile(native) as z:report=json.loads(z.read('evidence/report.json'))
+            r['diagnostic_status']=report.get('status');r['diagnostic_actual_source_sha256']=report.get('script_raw_sha256');r['diagnostic_construction_base']=report.get('construction_base')
+        require(code==0 and not r['timed_out'],'Actual standalone277 child failed')
+        require(native.is_file() and r['diagnostic_status']=='SIX_FIXED_FINITE_DIAGNOSTICS_RECORDED_NOT_A_CERTIFICATE' and r['diagnostic_actual_source_sha256']==expected and r['diagnostic_construction_base']==base,'Actual277 results/source gate differs')
+        r['status']='FINITE_DIAGNOSTIC_ARTIFACT_CAPTURED_PENDING_PARENT_REVIEW'
+    except Exception:
+        r['failure']=traceback.format_exc()
+        if created:(E/'failure.txt').write_text(r['failure'],encoding='utf-8')
+    finally:
+        r['body_finished_at']=utc()
+        if created:
+            try:
+                if native.is_file():
+                    shutil.copyfile(native,E/'diagnostic-results.zip');r['native_zip_sha256']=sha(native);r['native_zip_bytes']=native.stat().st_size
+                    require(sha(E/'diagnostic-results.zip')==r['native_zip_sha256'],'Retained native ZIP differs')
+                elif (nr/'evidence').is_dir():shutil.copytree(nr/'evidence',E/'partial-native-evidence')
+                receipt=E/'receipt.json'
+                with receipt.open('x',encoding='utf-8',newline='\n') as f:json.dump(r,f,indent=2);f.write('\n');f.flush();os.fsync(f.fileno())
+                require(json.loads(receipt.read_bytes())==r,'Closed receipt readback differs')
+                manifest=[{'path':p.relative_to(root).as_posix(),'bytes':p.stat().st_size,'sha256':sha(p)} for p in sorted(E.rglob('*')) if p.is_file()]
+                (E/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
+                with zipfile.ZipFile(Z,'x',zipfile.ZIP_DEFLATED) as z:
+                    for p in sorted(E.rglob('*')):
+                        if p.is_file():z.write(p,p.relative_to(root).as_posix())
+                r['receipt_sha256']=sha(receipt);r['envelope_sha256']=sha(Z);r['envelope_bytes']=Z.stat().st_size
+            except Exception:r['status']='FAILED_ENVELOPE_PRESERVED';r['envelope_failure']=traceback.format_exc()
+    return r
+print('TEP277_LAUNCH_RESULT '+json.dumps(launch277_main(),sort_keys=True),flush=True)

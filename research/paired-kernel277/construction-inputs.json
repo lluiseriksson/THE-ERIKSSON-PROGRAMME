@@ -1,0 +1,21 @@
+{
+  "construction_base": "801004ccd85170de6b39146decd34cc6400c2060",
+  "files": [
+    {
+      "repository_path": "papers/flat-coarse-rank/research-consolidation/solenoidal275/layer-stream275A.txt",
+      "raw_checkout_sha256": "78b03c4fef7bb50f1375b7f64953fef5a623195ec9af94e10c41ee717051d239",
+      "bytes": 7409
+    },
+    {
+      "repository_path": "papers/flat-coarse-rank/research-consolidation/solenoidal275/constraints276A.txt",
+      "raw_checkout_sha256": "aaf7c898f0a991b8b202f55710a5d917ac5a9933d8164e766519932456bd0148",
+      "bytes": 7213
+    },
+    {
+      "repository_path": "papers/flat-coarse-rank/research-consolidation/solenoidal275/STATUS276.txt",
+      "raw_checkout_sha256": "88016277ae53f5c7d2bf8a8bfbaf5bc93e6772f6f25511a463be0fd79b091735",
+      "bytes": 1852
+    }
+  ],
+  "runtime_math_executed": false
+}
