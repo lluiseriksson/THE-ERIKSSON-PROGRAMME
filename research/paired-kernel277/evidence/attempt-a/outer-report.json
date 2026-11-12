@@ -1,0 +1,45 @@
+{
+  "parent_authorized_source": "d747448b51e8caa76e1c0c3abca194eb857dde1d",
+  "construction_base": "801004ccd85170de6b39146decd34cc6400c2060",
+  "actual_diagnostic_source_sha256": "256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5",
+  "runner_manifest_sha256": "a5f17d851dfc4eba031af32950b03af3dcc87a3004115337a880314cd6e155da",
+  "actual_cli_exits": {
+    "allocation": 0,
+    "execution": 0,
+    "download": 0,
+    "release": 0
+  },
+  "actual_standalone_receipt_verified": true,
+  "failure": null,
+  "bootstrap_summary": {
+    "actual_child_started": true,
+    "billing_seconds": null,
+    "billing_units": null,
+    "body_finished_at": "2026-11-12T10:21:44.596732+01:00",
+    "child_argv": [
+      "/usr/bin/python3",
+      "/content/tep277-launch/launch/diagnostic277B.py"
+    ],
+    "child_exit": 0,
+    "child_finished_at": "2026-11-12T10:21:44.58682+01:00",
+    "child_started_at": "2026-11-12T10:21:37.54435+01:00",
+    "construction_base": "801004ccd85170de6b39146decd34cc6400c2060",
+    "diagnostic_actual_source_sha256": "256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5",
+    "diagnostic_construction_base": "801004ccd85170de6b39146decd34cc6400c2060",
+    "diagnostic_source_sha256": "256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5",
+    "diagnostic_status": "SIX_FIXED_FINITE_DIAGNOSTICS_RECORDED_NOT_A_CERTIFICATE",
+    "envelope_bytes": 966091,
+    "envelope_sha256": "9ee788820bc751f053c24bf5b97386a06e505aaffbc2a50f35a3591b903dc1a8",
+    "native_zip_bytes": 993691,
+    "native_zip_sha256": "4568c8d0160df38fc4e31618eb0457f2380565d543996a9067a600e8ded312f0",
+    "receipt_sha256": "bf64df12cae50b9e1d362d042e77ec7b4dbe18e069d34f474f77126f9b3b5b35",
+    "schema": "TEP277-LAUNCH-1.0",
+    "started_at": "2026-11-12T10:21:37.53775+01:00",
+    "status": "FINITE_DIAGNOSTIC_ARTIFACT_CAPTURED_PENDING_PARENT_REVIEW",
+    "timed_out": false
+  },
+  "runtime_type": "own CPU high-memory",
+  "billing_units": null,
+  "status": "Diagnostic artifact transport only; full returned mathematics/source audit and literal inactive backend still required",
+  "certificate": false
+}

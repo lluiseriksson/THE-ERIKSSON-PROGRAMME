@@ -1,0 +1,17 @@
+{
+  "source": "d747448b51e8caa76e1c0c3abca194eb857dde1d",
+  "diagnostic_source_sha256": "256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5",
+  "runner_manifest_sha256": "a5f17d851dfc4eba031af32950b03af3dcc87a3004115337a880314cd6e155da",
+  "parent_full_mathematical_report_read": true,
+  "parent_full_engineering_report_read": true,
+  "mathematical_accepted": true,
+  "engineering_accepted": true,
+  "mathematical_report_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-277\\source-audit277A\\full-report.txt",
+  "mathematical_report_sha256": "a5675e10d28b47ab06568f36886ab176a3e1b2dd760f436b668695c613943d6a",
+  "engineering_report_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-277\\parent-engineering-review.txt",
+  "engineering_report_sha256": "11f2e22dfe51923af601c44df3d40dbe2814a4ea08714df72f53864748d51cdd",
+  "recorded_at": "2026-11-12T09:20:21.4271281Z",
+  "scope": "Six fixed diagnostic cases only, no certificate or publication",
+  "audit_members_verified": 10,
+  "committed_raw_blob": "41c4612ef907366b1f45cda6c46d3d99156bea28"
+}

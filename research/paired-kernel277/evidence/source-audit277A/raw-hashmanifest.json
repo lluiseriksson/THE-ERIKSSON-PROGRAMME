@@ -1,0 +1,65 @@
+{
+  "self_excluded": true,
+  "artifacts": [
+    {
+      "path": "A-to-B-text-diff.patch",
+      "bytes": 5452,
+      "sha256": "ad31a6b4bf1dc00db4654a459055068fe77e12920832d830acff735c99ac6f6a",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "assignment-and-version-events.txt",
+      "bytes": 1727,
+      "sha256": "6194fd7ab49279f0ce0e4bb0d48b87587705047b39ba9e236d0266c559b52234",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 13751,
+      "sha256": "a5675e10d28b47ab06568f36886ab176a3e1b2dd760f436b668695c613943d6a",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "review-context.txt",
+      "bytes": 2197,
+      "sha256": "46b01f0bd969c237ee626e04a3c220c7616fccad3b73d1a68c054057eb7cd7cb",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subject-bindings.json",
+      "bytes": 2227,
+      "sha256": "76bf95a03b5028fbbace7ba423bb5a5c6a9772da506bf9d9569ada21b956aced",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/constraints276A.txt",
+      "bytes": 7213,
+      "sha256": "aaf7c898f0a991b8b202f55710a5d917ac5a9933d8164e766519932456bd0148",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/diagnostic277-A.py",
+      "bytes": 16060,
+      "sha256": "ba9f495125acad9f6ddd12d64564f7e966324ebc52eb8677dc4ee75427f3d984",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/diagnostic277-B.py",
+      "bytes": 16878,
+      "sha256": "256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/layer-stream275A.txt",
+      "bytes": 7409,
+      "sha256": "78b03c4fef7bb50f1375b7f64953fef5a623195ec9af94e10c41ee717051d239",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "exact raw bytes; no normalization"
+    }
+  ]
+}

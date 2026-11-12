@@ -1,0 +1,32 @@
+ACTUAL MATHEMATICAL/IMPLEMENTATION SOURCE AUDIT277 -- 12 November2026
+Same involved Codex/OpenAI child /root/grouped260_manuscript_source_audit,
+with shared author/programme/prior275/276 audit context. Exact backend/version/
+effort unavailable, not inferred. Separate assigned reviewer role, NOT blind/
+independently established peer review/model identity, no grade or PDF review.
+
+Whole initial16060-byte A read and hashed ba9f... . During inspection the
+parent reported an overlapping fabrication write. A direct second hash of
+the SAMEprimary path actually returned256362... and16878bytes, confirming
+the concurrent version difference. Parent then confirmed A restored and B
+retained as a separate immutable sibling. Both hashes/lengths were verified;
+whole B was read in full as selected execution target, with the A/B delta
+and all relevant unchanged mathematics inspected. No partial B was treated
+as approved. Two actual inbound version notices are retained; no false
+uninterrupted freeze/no-inbound claim is made. After the confirmed B-target
+boundary no further inbound message occurred before closure. Final A/B
+readback must equal the captured frozen hashes. No reviewed code executed.
+
+Earlier275/276 sources were read/audited in full in this same session;
+relevant coordinates/energy/cell constraints and endpoint N1 correction were
+reinspected analytically, not a new wholesale predecessor regrade. Exact
+original sources retained. Governance/CLAUDE/D LEEME previously read in this
+session. Full inherited-chat export unavailable and not fabricated.
+
+No mathematical/numerical executable, NumPy/SciPy import, syntax compilation,
+test, Lean/Lake/oracle, runtime, network or model/service call was used.
+Only file/Git/hash/JSON/text-diff metadata and new evidence retention. The
+retention helper never imports/runs reviewed scripts and uses explicit byte
+checks rather than assert. No source/branch/state/other audit/chat/agent/
+grade/automation change, no new agent, no clone/runtime cleanup debt.
+These are static mathematical/source findings, not observed numeric output,
+environment readiness, operational runner approval or a guarantee of success.

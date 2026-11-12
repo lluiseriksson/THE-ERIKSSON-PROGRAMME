@@ -1,0 +1,78 @@
+277 RETURNED-OUTPUT INTERPRETATION REVIEW — 12 November 2026
+
+VERDICT: ACCEPT AS SIX BOUNDED FLOATING-POINT DIAGNOSTIC OBSERVATIONS.
+No below-target candidate was found in these six cases. No rank certificate,
+exact row-kernel theorem, lower bound on the full coexact space, target-c
+coercivity, asymptotic law or Q251 solution follows.
+
+Inputs read:
+returned-inspection.json, raw SHA256
+792758be2f1022c36c403cca139abafb50b967abfae98f8ec96e4e1857e7da41;
+returned-a/native/evidence/report.json, raw SHA256
+35abda054e35cee95d088c6ea1d1aa5c2153158cf3442c98f6442ee8dff5f46f.
+The latter's six case results/statuses were inspected directly by JSON field
+reading; this did not execute the diagnostic or recompute its linear algebra.
+
+The recorded script hash is the selected, source-audited B:
+256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5,
+construction base801004ccd85170de6b39146decd34cc6400c2060.
+The receipt records actual child exit0, no timeout and the expected noncertificate
+status. Parent reports complete verification of6outer/79native members, empty
+child stderr, own stop and literal inactive backend. Those are attributed
+returned engineering observations, not a new independent archive/lifecycle
+audit or backend query by this reviewer. Billing fields remain unknown/null.
+
+With c=1, the estimated constrained generalized minima are:
+             nonlinear tau_i=2i² mod n       zero tau_i=0
+ n=4         35.2791666667                   16.0208333333
+ n=8          6.44798198467                   3.82211940186
+ n=16         5.10441674901                   2.40317761403
+All six native statuses are FINITE_FLOATING_DIAGNOSTIC_COMPLETED. Their
+independently recomputed physical Rayleigh quotients agree to the reported
+tolerances. Norms are approximately1; row/physical divergence/global mean/
+FFT-preimage reality/reconstruction and form comparisons satisfy the fixed
+1e-8 gates. The reported largest reduced eigen-equation residual is about
+4.45e-14; the physical/eigensolver relative quotient discrepancies remain
+about2.53e-13 or smaller. No recorded integrity failure is present.
+
+Numerical rank/nullity pairs are nonlinear31/1,70/188,158/1896 and
+zero25/7,53/205,109/1945 at n4,8,16, respectively. They use the declared
+relative SVD cutoff1e-10. The retained/discarded singular-value separation is
+clearly visible in the returned inspection, but is not an exact-rank proof.
+Small residuals establish finite numerical consistency, not exact invisibility
+or a certified global minimum. The term 'witness' in saved filenames denotes
+the numerical candidate, not a proved low-energy invisible counterexample.
+
+The supported conclusion is narrow: within275's paired-layer transverse
+subspace, at these two cuts and these three fixed sizes, this implementation
+did not produce an approximate candidate with quotient below1. All six
+estimated minima exceed1. This does not exclude a different actual-coexact
+field, another size or a different feasible mechanism. In particular the
+decreasing sequence of estimates does not justify extrapolating a limiting
+gap, predicting a crossing or extending the run through size/cutoff hunting.
+No theorem about the full U or original target c has been verified.
+
+NEXT ANALYTIC STEP, STILL SOLE Q251:
+Use the exact276 potential-only cell equations: eliminate t_s at odd
+singletons while retaining sum_s alpha_s=0; retain even-anchor equalities,
+E-prefix AND E-total constraints (including the necessary total at tau0),
+and all W=L(sum_s psi_s) cell constraints. Seek an analytic family exploiting
+cell cancellations, with its actual275 source-weighted energy paid, or a
+precise obstruction for that specified family. Do not force the entire
+x3=0 plane to zero, which276 already excludes quantitatively. Do not impose
+sum_s psi_s constant as if it were necessary, or revive an uncorrected
+projection/longitudinal-trace transfer. A future candidate needs exact mean
+constraints, nonzero actual field and a derived quotient; these diagnostics
+do not supply them. Direct-stream counter2 without full-target progress is
+consistent with the parent's accounting; no counter/state was changed here.
+
+ACTUAL REVIEW CONTEXT:
+Same involved Codex/OpenAI child with inherited author/programme/source-audit
+context; exact backend/version/effort unavailable, not inferred. No independent
+replication, blind/human review, numerical model grade, novelty or publication
+assessment. No diagnostic code, NumPy/SciPy, mathematical executable, runtime,
+network, compiler, Lean or oracle was run. Only file/JSON reading and raw hashes
+plus this separate review note; no source/state/frozen source-audit packet or
+other report/chat/agent was altered and no other agent contacted. The full
+numeric arrays and all native logs were not independently re-audited here.
+No new theorem or score, no physical/continuum claim. Q251 remains open.

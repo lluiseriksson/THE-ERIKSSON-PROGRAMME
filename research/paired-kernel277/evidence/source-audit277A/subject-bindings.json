@@ -1,0 +1,44 @@
+{
+  "construction_base": "801004ccd85170de6b39146decd34cc6400c2060",
+  "selected_execution_target": "B",
+  "A": "ba9f495125acad9f6ddd12d64564f7e966324ebc52eb8677dc4ee75427f3d984",
+  "B": "256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5",
+  "artifacts": [
+    {
+      "path": "subjects/diagnostic277-A.py",
+      "origin": "frozen restored A C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\research\\paired-kernel277\\diagnostic277.py",
+      "bytes": 16060,
+      "sha256": "ba9f495125acad9f6ddd12d64564f7e966324ebc52eb8677dc4ee75427f3d984",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/diagnostic277-B.py",
+      "origin": "selected frozen B C:\\Trabajo\\the-eriksson-programme\\solenoidal-layers275-20261112\\research\\paired-kernel277\\diagnostic277B.py",
+      "bytes": 16878,
+      "sha256": "256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/layer-stream275A.txt",
+      "origin": "0f987f41340b6f36ce6bb41a413c405918ab5dda:papers/flat-coarse-rank/research-consolidation/solenoidal275/layer-stream275A.txt",
+      "bytes": 7409,
+      "sha256": "78b03c4fef7bb50f1375b7f64953fef5a623195ec9af94e10c41ee717051d239",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/constraints276A.txt",
+      "origin": "285f02aea7cf04b1e6644c11a1507f8bebd72fa8:papers/flat-coarse-rank/research-consolidation/solenoidal275/constraints276A.txt",
+      "bytes": 7213,
+      "sha256": "aaf7c898f0a991b8b202f55710a5d917ac5a9933d8164e766519932456bd0148",
+      "representation": "exact raw bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "origin": "801004ccd85170de6b39146decd34cc6400c2060:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "exact raw bytes; no normalization"
+    }
+  ],
+  "diff_representation": "decoded UTF8 line diff; raw A/B captures are authoritative"
+}

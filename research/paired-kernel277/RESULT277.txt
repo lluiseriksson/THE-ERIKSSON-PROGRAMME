@@ -1,0 +1,72 @@
+277: SIX FIXED PAIRED-SPACE NUMERICAL DIAGNOSTICS -- NOT A THEOREM
+Recorded 2026-11-12; executed source commit
+d747448b51e8caa76e1c0c3abca194eb857dde1d, raw selected B
+256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5.
+Construction base801004ccd85170de6b39146decd34cc6400c2060.
+
+Actual result: all six preselected cases completed with the original physical
+forms/observations and integrity checks. None produced Q/||u||^2<1 (c=1).
+These are floating-point constrained eigenminimum estimates in the restricted
+paired coexact class275, with the full original rows276. They are NOT certified
+lower bounds, exact ranks, exact invisible witnesses or a solution of Q251.
+
+ n  cut tau_i       dim  numeric rank  nullity   estimated minimum
+ 4  2i^2 mod n       32       31          1       35.279166666666676
+ 4  0                32       25          7       16.020833333333353
+ 8  2i^2 mod n      258       70        188        6.447981984668916
+ 8  0               258       53        205        3.822119401858777
+16  2i^2 mod n     2054      158       1896        5.104416749012746
+16  0              2054      109       1945        2.403177614028050
+
+The cutoff was fixed before running at1e-10 times the largest singular value.
+All singular values, actual cutoff, eigenvectors, original cell rows, physical
+field, real/FFT curl-adjoint preimage, sparse B/K/G and full reports are retained.
+The smallest retained singular value across cases was0.0037557128167121185;
+discarded values were below9.21e-17. This observed separation is not an exact
+rank proof. All physical divergence/mean/row/FFT/energy/mass and eigen residual
+checks met the frozen1e-8 threshold; worst reported Rayleigh comparison was
+2.5282481961800714e-13. Physical versus275 matrix discrepancies are retained,
+not described as exact machine equality. No threshold, n or cut was adapted.
+
+At n16,tau0 the physical strong quotient is about2.2788247347475092, below
+the whole-plane-zero bound3n/(n-2) from276. This is compatible with276: the
+computed field uses cell cancellations and is not claimed to vanish on the
+entire x3=0 plane. It supplies no below-c witness, no contradiction to276 and
+no asymptotic/full-U conclusion. No numerical inference is promoted to proof.
+
+Actual operation: dedicated Colab Linux CPU/high-memory session
+tep277-diagnostic-own-cpu; no desktop control or local mathematical execution.
+Local lifecycle request09:20:28.1362822Z to release-finished09:21:48.9333997Z,
+80.7971175seconds including allocation/transport; NOT billed or exact connected
+time. Standalone child09:21:37.544350Z to09:21:44.586820Z, exit0, full stdout
+retained, stderr empty. Allocation/exec/download/stop CLI exits all0. Separate
+backend query returned literally 'No active sessions found on server.'
+Billing compute units unknown/null. No GPU, additional purchase or contract.
+Python3.13.18, NumPy2.4.6, SciPy1.16.3 recorded by the actual child.
+
+Envelope966091bytes, raw SHA256
+9ee788820bc751f053c24bf5b97386a06e505aaffbc2a50f35a3591b903dc1a8.
+Native ZIP993691bytes, raw SHA256
+4568c8d0160df38fc4e31618eb0457f2380565d543996a9067a600e8ded312f0.
+Parent verified6 outer and79 native manifest members, the actual closed decimal
+child exit, executed source hash and complete six-case JSON diagnostics.
+No second fresh clone/independent execution or terminal reproducibility claimed.
+
+Review context: separate involved fabricator and mathematical-source reviewer;
+parent engineering review before allocation. Full source reports, actual version
+event A/B, objections, shared context and identity limitations preserved. No
+independent/blind/human peer review, new AI grade, manuscript or publication.
+
+Interpretation and next bounded action:
+Direct-stream route now2 units since275; the six-case diagnostic does not reset
+the counter or establish substantial target progress. Projection/longitudinal
+route remains stopped at3. Q251 remains the sole active question and OPEN.
+Next derive an ANALYTIC exact-cancellation family or obstruction using the275
+potentials and276 E/W equations, retaining tau0 totals/global means. Fixed-cut
+layer-character symmetry can be examined only as a bounded mechanism, with
+explicit original rows and energy paid; no new larger numerical sweep is queued.
+Success requires a derived below-c original coexact witness or a substantive
+proved restriction. After a third unit without such advance, retain the failure,
+identify the concrete missing estimate and switch route. Group275-277 with a
+later substantive result; no separate paper from these diagnostic values.
+PR29 remains20/41,TermSource=0; physical gap and continuum remain OPEN.

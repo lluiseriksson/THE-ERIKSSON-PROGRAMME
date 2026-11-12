@@ -1,0 +1,216 @@
+STATIC MATHEMATICAL/IMPLEMENTATION SOURCE AUDIT277A -- SELECTED B
+VERDICT: ACCEPT_B_FOR_BOUNDED_OWNED_LINUX_FLOATING_DIAGNOSTIC
+No blocking mathematical/implementation defect found for the selected six
+floating-point diagnostics. This approves source semantics only, subject to
+separate engineering/lifecycle gates and actual returned-output checks.
+It is not an executed experiment, exact-rank/kernel certificate, mathematical
+theorem, independent replication, PDF/model grade or target-c conclusion.
+
+Selected B: diagnostic277B.py,16878raw bytes,
+SHA256256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5.
+Restored original A: diagnostic277.py,16060raw bytes,
+SHA256ba9f495125acad9f6ddd12d64564f7e966324ebc52eb8677dc4ee75427f3d984.
+Construction base801004ccd85170de6b39146decd34cc6400c2060.
+The scripts were untracked frozen raw subjects at assignment, not falsely
+claimed already Git-bound to the base commit. Their raw pins are primary.
+
+1. ACTUAL VERSION EVENT AND FULL READ
+Initial primary A was read completely and its raw hash verified. The same
+path later ACTUALLY hashed to B256362... during an overlapping fabrication
+write, matching the parent's reported version event. A was subsequently
+restored, B placed at its own sibling path, and both exact raw pins verified.
+Whole B was then read, not merely the reported delta. The final verdict is
+for selected B, with A retained as history. The two inbound operational
+updates and disrupted initial freeze are disclosed; no uninterrupted
+no-inbound/frozen-A audit claim is invented. No further inbound after the
+confirmed selected-B boundary occurred before closure. Final readback of
+both files matches their captured raw hashes.
+
+2. PHYSICAL BASIS AND INDEPENDENT LAYER BASIS
+With m=n/2,N=n^2, the m(N-1)stream coordinates fix psi_s(0,0)0. The
+remaining2(m-1)coordinates use(1,0,-1),(0,1,-1) in each odd layer except
+last, subtracting the same from last. Thus each t_s spatial sum0 and global
+sum_st_s0 are exactly encoded. Dimension m(N-1)+2(m-1)=n^3/2+n/2-2.
+There is no retained potential constant gauge or lost global t constraint.
+
+The direct stencil maps a unit potential at(i,j) to component1+1 there
+and-1at(i,j+1), component2-1there and+1at(i+1,j), component3-1at(i+1,j)
+and+1at(i,j+1). This is exactly(delta2,-delta1,delta1-delta2) with
+backward delta. The physical add function computes k=s-i-j or that plus1,
+so duplicates each value on the true A_s/B_s pair, with all wraps. The
+channel1physical vector has3n^3entries; channel2zero is explicit.
+
+Independent T uses a row-index shift reading y-e_j under np.roll step+1,
+so D=I-T is also the true backward difference. Its vertically stacked
+components and block-diagonal layer order match the direct basis's column
+coordinates; constants are assembled separately with the same global
+last-layer subtraction. The two constructions are injective: L has only
+constant kernel removed by gauge, its component means vanish, and remaining
+layer constants are independent of those mean-zero stream contributions.
+Thus G=Btranspose B is positive definite mathematically in this parameter
+space. This is the restricted275space, not all actual U.
+
+3. ORIGINAL ENERGY AND MASS ASSEMBLY
+Physical forward jumps use np.roll ids step-1, reading x+e_j. The source
+weights repeat each source's odd H=n^2/even a=1/48 over its3components,
+not target weights. K adds jumptranspose diag(weights)jump for all3
+directions; Python multiplication precedence makes the printed sparse
+expression exactly this symmetric quadratic form. G is Btranspose B,
+not an assumed Euclidean parameter identity. c is fixed1 and stated so.
+
+T's independent strong form uses the two within-layer transverse forward
+differences; the third strong paired difference is exactly0. Its weak
+form shifts to next odd layer(s+2) together with y+e1,y+e2 or no transverse
+shift. Galt=2Ttranspose T pays both equal layers. These are exactly275
+original source energies/norm, including wrap and all spatial components.
+Physical/layer K and G and symmetry are compared as whole sparse matrices,
+not only on the selected eigenvector. No dense physical Laplacian or factor3
+surrogate is substituted. Finite data guards and comparison tolerances are
+explicit; actual comparisons are not claimed passed before running.
+
+4. EVERY ACTUAL OBSERVATION AND THE276 ENDPOINT CORRECTION
+Rows enumerate each slice, all nonempty left/singleton/right blocks and
+x3zero/long blocks, then both original channels and all3components. The
+factor is1/sqrt(n^3*|cell|). Channel2 rows are kept in labels/matrix as
+identical zeros, not omitted from claimed full row count. Physical C sums
+actual cell sites; no union replaces refined cells.
+
+The separate layer row map has E at sigma(i+j) for x3zero and2sum V_s-E
+for the long block, with the SAMEoriginal row normalizer. The2W-E terms
+are added once per j after the inner k loop, not multiplied erroneously
+by n-1 a second time. Sigma/even-wrap indexing is correct. R=C B is
+compared with CL T for all rows, preserving the multiplicity2. Actual
+right/long rows remain at tau0, so276A-N1's false total-redundancy comment
+is NOT implemented. Tau=n-1 is also handled by omitting only its empty
+right interval, though not one of the chosen six numerical cut cases.
+
+No constant elimination through alpha is needed: the full parameter basis
+already carries the t/global constraints and the actual row kernel imposes
+all odd/even anchors/prefix/totals implicitly. The fixed cuts are precisely
+nonlinear tau_i=2i^2modn and tau0 at n4,8,16. All sizes are even/dyadic;
+the nonlinear diagonal is indeed permutation at these sizes, and n4's
+nonaffinity exception is not falsely called a new theorem. No adaptive
+cut/size or rank-threshold search is present.
+
+5. SVD KERNEL AND GENERALIZED EIGENMINIMUM
+Full SVD uses gesvd and full_matricesTrue, so Vh has all d right directions
+even when observation rows are fewer than parameters. Rank is the count
+of singular values above the fixed1e-10*smax, nullity d-rank and Z the
+remaining orthonormal right directions. All singular values, driver and
+cutoffs are reported. If the row matrix were0, cutoff0 correctly gives
+rank0. Nullity0 is recorded with no fabricated minimum or witness.
+
+The restriction uses Kz=Ztranspose K Z and Gz=Ztranspose G Z. The latter
+is the TRUEcounting mass, not identity; mathematical basis injectivity and
+independent Z make it positive definite. Generalized symmetric eigh gvx
+computes the smallest eigenpair with subset[0,0]. Its Cholesky/positivity
+failure propagates to retained failure, rather than replacing mass or
+regularizing it to force a number. Symmetrization removes numerical roundoff
+only after whole-form symmetry comparison, not a hidden energy model change.
+B explicitly checks finite eigenvalues/eigenvectors. Parameter/physical
+vectors are finite, pivot sign standardized and physical counting norm
+normalized to1. The projected generalized eigen-equation residual is
+recomputed from UNMODIFIED K,G,Z, not the overwritten dense solver buffers.
+
+These are NUMERICAL nullspace/minimum estimates at a fixed cutoff, not
+exact algebraic rank or certified constrained lower bounds. A small observed
+Rayleigh quotient with small row residual would be diagnostic evidence,
+not an exactly invisible theorem. Failure to find a small value in this
+restricted space cannot prove full-Q251 coercivity. The code's repeated
+floating/noncertificate limitations correctly retain that scope.
+
+6. PHYSICAL CHECKS, ACTUAL FFT PREIMAGE AND NORMALIZATIONS
+Physical forward differences independently recompute QH from odd sources,
+Qa from even sources and Qtotal, with all3directions and components.
+Direct Python loops over original row labels independently reconstruct
+the normalized cell sums and compare with C u. Backward divergence and
+each spatial global mean are measured directly at physical sites. Layer
+norm/energies are independently recomputed from Ttheta, including norm2.
+The Rayleigh quotient is recomputed on the normalized physical field and
+compared to the generalized eigenvalue, not assumed from a parameter norm.
+
+FFT acts only on3physical axes with normortho; g_j=e^(2pi ik_j/n)-1
+matches that forward-difference convention. The antisymmetric-pair Ahat
+formula has correct complex numerator/division by|g|^2, with only actual
+zero mode set0. The global mean is measured, not silently treated as an
+allowed harmonic component. Pair order12,13,23 is explicitly saved.
+Inverse FFT imaginary residual is checked before using real A. The direct
+real-space reconstruction sends A_jl to component j via delta_lA and
+component l via-minusdelta_jA: the code's incoming-minus-source signs
+indeed give these. This is the TRUEcurl adjoint, not projection applied
+as an allegedly trace-preserving correction. Reconstruction, divergence,
+mean, norm, energy, row and Rayleigh residuals all must be finite<=1e-8
+at their recorded scales. Conjugate/Nyquist reality is therefore checked
+on the returned diagnostic candidate, not presumed for unpaired blocks.
+
+Scaled residuals remain floating tolerances, not exact zero guarantees.
+Normalized original-row residuals should not later be described as exact
+unnormalized sums. The saved arrays/scales make their actual meaning
+inspectable. No threshold pass or numerical output is asserted by this
+static reading.
+
+7. A/B DELTA AND FAILURE RETENTION
+The B changes inspected in full retain the same basis/forms/rows/SVD/
+eigenpair/FFT mathematics and fixed six-case scope. They save both R and
+R-EW276 before row-comparison failure, add finite eigenvalue/eigenvector
+guards and the reduced generalized eigen-equation residual, and save
+physical arrays plus every computed integrity value BEFORE an integrity
+guard can throw. This avoids A's loss of the computed physical checks
+when a later guard fails. They do not adapt parameters, improve a grade
+or weaken a predicate. A remains preserved as an earlier fabrication,
+not the execution target approved by this verdict.
+
+Cases retain FAILED_PRESERVED with traceback if a guard fails, continue
+recording the other fixed cases, then overall failure if any case failed.
+Empty numerical kernel is a separately labeled legitimate outcome, not
+a manufactured eigenvalue. Fresh root/archive guards prevent overwriting
+an old result. The summary/manifest/ZIP retain available evidence on normal
+exception paths. Early imports or process loss can still prevent inner
+archive completion; outer engineering must retain actual child/stdout/stderr
+and handle actual runtime cleanup. Failure before forms returns may also
+leave only its exception rather than assembled matrices. This is a bounded
+failure-evidence limitation, not a source claim that every crash retains
+all arrays. No actual failure/success is fabricated here.
+
+8. NONBLOCKING LIMITS AND REQUIRED NEXT OBSERVATIONS
+No required mathematical/source repair is identified for selected B.
+The source has no exact-rank certificate, interval/rational reconstruction,
+condition-number bound or independent replication. The entire nullspace
+basis residual/Gram conditioning is not separately certified; the selected
+field has explicit physical/row/eigen residual gates. Those limitations are
+acceptable for the honestly labeled finite floating-point diagnostic, not
+for promoting its output to a theorem. Internal names'witness' or'minimum'
+must remain attached to that diagnostic status in downstream summaries.
+
+NumPy/SciPy/runtime readiness, actual wall time, outer hash/pinning/upload,
+native child exits, archive binding, all six outcomes and stop/backend
+cleanup are separate engineering/returned-output requirements. This audit
+ran none of them and promises no numerical value or executable success.
+Any actual failed check must remain failed without threshold/size selection
+to manufacture the desired answer. No new scientific result, score,
+novelty/priority claim, public paper or Q251 solution follows from source
+approval. Original model/physical/continuum limits remain open.
+
+9. ACTUAL ROLE, BOUNDARY AND EVIDENCE
+Same involved Codex/OpenAI child with inherited author/programme/prior
+audits; exact backend/version/effort unavailable, not inferred. Separate
+assigned role does not establish blind/independent/human peer review.
+Initial A and whole selected B read, with complete mathematics/delta
+inspected. Source275/276were fully read/audited earlier in this session;
+required formulas and N1endpoint distinction reinspected, exact sources
+retained, not inherited numerical execution. Two inbound version notices
+and the ACTUALLYobserved A-to-B concurrent hash change are preserved.
+No false continuous-A-freeze/no-inbound claim. After B was confirmed as
+the immutable selected target, no further inbound message arrived before
+closure. Full inherited-chat export unavailable and not fabricated.
+
+No math/numerical executable, NumPy/SciPy import, syntax compile/test,
+Lean/oracle, runtime, network or model/service call used. Only file/Git/
+hash/JSON/text-diff metadata and exclusive retention. No source/branch/
+state/other audit/chat/agent/grade/automation changed, no new agents or
+cleanup debt. Metadata writer never executes reviewed scripts, uses
+explicit checks and is not a scientific verifier. Both selected raw
+files are rehashed after retention; any later change invalidates this
+source referent. Exact A/B, original275/276/governance, full task/version
+events/context/report/diff and raw bindings are saved. The self-excluding
+manifest records every raw size/SHA256 and its own digest is returned.

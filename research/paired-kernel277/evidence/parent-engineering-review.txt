@@ -1,0 +1,67 @@
+277B parent engineering/source execution review, 2026-11-12
+Subject: research/paired-kernel277, construction base
+801004ccd85170de6b39146decd34cc6400c2060.
+Selected diagnostic raw SHA256:
+256362a3d76b4c3609d3bba9f58966ddf05776f27f1789f6a151ada99735ada5.
+Operative five-file manifest raw SHA256:
+a5f17d851dfc4eba031af32950b03af3dcc87a3004115337a880314cd6e155da.
+
+Role: root inspected code fabricated by a different involved session,
+production260_engineering_audit. Root read complete diagnostic A, complete
+A-to-B diff, bootstrap executable logic, lifecycle, readback and capture helper.
+Root did not fabricate numerical source or lifecycle. No independent/blind or
+human peer review claim, no model assessment grade. Exact serving model/version
+not established by this engineering artifact. Prior shared programme context.
+
+Result: acceptable for the six bounded exploratory floating-point cases AFTER
+the separate mathematical source report is fully read and accepted by parent.
+This is not acceptance of numerical results before execution, a certificate,
+a general gap proof, a formal result, or permission to publish a new paper.
+
+Checks actually performed by parent:
+- Read physical basis: backward-difference impulse signs; paired A/B map;
+  potential gauge; two transverse constants per layer except last, compensated
+  on last layer. Independent layer operator agrees on paper.
+- Read all three original forward-edge quadratic forms, original odd-source
+  H=n^2/even-source a=1/48, physical counting mass and paired identity checks.
+- Read actual rectangles (all nonempty endpoints, both x3 intervals and all
+  six channel/component rows). Channel2 rows explicit zeros. E/W assembly
+  provides a second formulation, not a replacement physical observation.
+- Read fixed SVD cutoff and true generalized Gram eigenproblem; B adds finite
+  eigenpair and reduced equation checks. Physical row/divergence/mean/real
+  curl-adjoint reconstruction and Rayleigh recomputation remain mandatory.
+- No acceptance relies on Python assert. Finite numeric output is diagnostic
+  only. No interval/rank certificate or terminal replication is claimed.
+- Six cases only: n4,8,16, tau_i=2i^2 mod n and tau_i=0. No adaptation.
+- Bootstrap writes the frozen executable outside the fresh diagnostic root,
+  calls a standalone Python child, excludes inherited notebook argv/__file__,
+  captures full stdout/stderr and real exit after termination, and has a bounded
+  3300 second wait. It retains partial failure evidence when available.
+- Envelope carries exact source bytes, native output ZIP, receipt and raw
+  manifest. CLI0 cannot substitute for the standalone child's exit/report.
+- Lifecycle uses its own tep277 configuration/session, CPU/high-memory,
+  read-only existing ADC path, no purchases, no extra service/model contracts.
+  Allocation gated by exact manifest and two actual report hashes. Download
+  hash/size and native receipt checked; stop is attempted in finally; separate
+  literal backend readback still required. No control of owner's desktop.
+- Capture helper is byte-identical to the previously used274 helper:
+  4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b.
+- Five operative file sizes/raw hashes checked by parent PowerShell metadata
+  operation. Embedded base64 decoded as bytes ONLY (not executed),16878 bytes,
+  raw SHA256 equal to selected B. All checks matched.
+
+Limitations/objections retained:
+The mathematical code has not yet executed. Source review is not testing.
+There is no full runtime Git clone; the standalone source is byte-pinned and
+will be linked to a parent-frozen Git commit in the authority relay. No terminal
+two-clone reproduction claim. Floating SVD rank is cutoff-dependent. A small
+residual does not prove an exact invisible witness; a minimum above1 at these
+sizes does not establish any asymptotic/full-U lower bound. No result may be
+silently promoted to a theorem. Exact billing units unavailable, record null.
+Parent must inspect complete returned case reports and all raw manifests,
+including failures, and verify stopped backend before closing the unit.
+
+Version event: A was originally relayed during a fabricator evidence-retention
+patch. Exact A bytes were restored and retained; B is a distinct artifact.
+No mathematical assembly changed in B. This is not a repeated score/review
+attempt to raise an assessment. No numerical source was run on Windows.
