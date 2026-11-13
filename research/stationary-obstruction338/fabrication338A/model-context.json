@@ -1,0 +1,83 @@
+{
+  "task": "Question338 bounded analytical fabrication",
+  "status": "NEGATIVE_METHOD_UNIT_ORIGINAL_GAP_QUESTION_UNRESOLVED",
+  "claims": [
+    "Explicit admissible stationary matching does not imply weighting matching; constructed witness retains positive gap",
+    "Pure product tilt and natural rare one-level spike fail as proposed collapsing mechanisms",
+    "Entropy/reverse-HC conductance bound excludes macroscopic stationary bottlenecks but leaves rare-cut power loss"
+  ],
+  "not_claimed": [
+    "No counterexample to the requested positive-gap conclusion",
+    "No proof of uniform positive gap under all stationary hypotheses",
+    "No general critical moment-transfer inequality between pi_h and r_h",
+    "No accepted theorem before separate-role review, new paper, score, priority, formal or physical upgrade"
+  ],
+  "identity": {
+    "actor": "/root/exact322_pdf_first_assessment",
+    "provider": "OpenAI/Codex",
+    "role": "Continuing involved fabricator; prior related source reviews and exact322B PDF assessment",
+    "actual_served_backend_version": "unknown; not attested",
+    "actual_reasoning_effort": "unknown; not attested",
+    "historical_requested_configuration": "Initial historical assessment requested gpt-6-astra/high; not an attestation for338",
+    "independence": "not claimed",
+    "technical_isolation": "unknown/not established; shared filesystem/provider and continuing context"
+  },
+  "read_coverage": [
+    "Literal338 assignment and prior involved334/335 context",
+    "Relevant current governance environment sections and current raw identities; full governance/storage instructions previously read in continuing context",
+    "Source334 exact input retained to identify weighting hypotheses, not used to infer stationary theorem",
+    "Targeted primary PDF statements listed in primary-reading.txt; not cover-to-cover papers"
+  ],
+  "not_read": [
+    "No running335 audit or336 fabrication outputs",
+    "No current335 manuscript inspection required for338",
+    "No exhaustive source literature or broad novelty clearance"
+  ],
+  "attempts": [
+    {
+      "unit": 1,
+      "route": "Product tilts and one-level spike",
+      "outcome": "Exact stationary singleton matching kills pure tilt; stationary cap prevents natural rare spike cut from closing; no full family-gap theorem claimed"
+    },
+    {
+      "unit": 2,
+      "route": "Direct replacement by weighting theorem",
+      "outcome": "Explicit four-character admissible family has nonzero r singleton; direct exact-matching conversion refuted; this family has positive gap"
+    },
+    {
+      "unit": 3,
+      "route": "Symmetric bridge entropy and reverse-hypercontractive conductance",
+      "outcome": "Bounded-mass cuts controlled; eta>1 leaves u^(eta-1) loss at rare cuts; uniform question unresolved"
+    }
+  ],
+  "stop_decision": "Three substantive units retained; abandon these mechanisms as a completed solution instead of silently extrapolating or opening endless plans",
+  "tools": [
+    "PowerShell file reads/writes/copies/raw hashes and read-only git metadata",
+    "apply_patch on exclusively assigned untracked draft files",
+    "Primary web search/open/find; no browser UI or external application writes"
+  ],
+  "not_performed": [
+    "No mathematical script/numerical/CAS/Lean/build/test/runtime",
+    "No local or remote sustained computation",
+    "No source/manuscript/state/branch/PR mutation",
+    "No contact with335 auditor or336 fabricator; no agent spawn",
+    "No self-audit or numerical rating"
+  ],
+  "inbound_during_task": "No mathematical coordination message received after assignment during this fabrication",
+  "observations": [
+    "Assigned context HEAD17c966... belongs to335 worktree; actual research staging remains159fb...; both recorded without branch mutation",
+    "Primary PDF heading search returned no match; transition phrase located intended formulas",
+    "No read/hash/copy failure observed before terminal retention"
+  ],
+  "workspace": {
+    "stage": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\_drafts\\question338",
+    "retention": "D:/Datos/the-eriksson-programme/autonomia/evidencia-338/fabrication338A",
+    "initial_status": [
+      "?? _drafts/",
+      "?? _tmp/"
+    ],
+    "final_state": "final-workspace-state.json",
+    "cleanup": "cleanup.json",
+    "manifest": "MANIFEST.json binds raw retained payloads except itself"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "stage": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\_drafts\\question338",
+  "retention": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-338\\fabrication338A",
+  "copied_files": 8,
+  "all_raw_hashes_match": true,
+  "files": [
+    {
+      "path": "final-workspace-state.json",
+      "bytes": 812,
+      "sha256": "5c6b381b4289c42ca6fbdf6643a1aa1beed8b2337c49ec8568858481d027cc8b"
+    },
+    {
+      "path": "full-fabrication-report.txt",
+      "bytes": 9550,
+      "sha256": "1ec0e6a88f001aeffe6404c5b9953b0baf26ed2197f49c7e82f06b5234b9bf07"
+    },
+    {
+      "path": "input-manifest.json",
+      "bytes": 1485,
+      "sha256": "8670c9965356154b93115af4a5ccc72964fa863a8993fa481905aebf742c00d1"
+    },
+    {
+      "path": "input-source334A.txt",
+      "bytes": 15935,
+      "sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022"
+    },
+    {
+      "path": "model-context.json",
+      "bytes": 4418,
+      "sha256": "7b45bef13b5607a7249bbabe33b481ba60b2bfbd6879d31f43a12b1ddb5d4cd5"
+    },
+    {
+      "path": "primary-reading.txt",
+      "bytes": 2403,
+      "sha256": "578cb5d0ce4053869d8fcc2284debd9b4cdfe05c8fdb482481619336a991f8d2"
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 2003,
+      "sha256": "573e794a9ec4348de2af8f09b9e155f9592f3aa72932975483798ac48bfcee74"
+    },
+    {
+      "path": "source338A.txt",
+      "bytes": 17991,
+      "sha256": "4730774d3e550531c1854cdb476f929dcfbf145364c64cb81752b1fb8dff246f"
+    }
+  ]
+}
