@@ -1,0 +1,9 @@
+298 package boundary. Critical endpoint analysis added to the existing grouped paper.
+No numerical exact-PDF assessment is inherited. The first assessment of this
+new PDF is pending. Prior score/report history identifies its own exact PDF.
+Primary comparison is limited; no external priority or independence claimed.
+The accepted source theorem distinguishes a small-budget sufficient region
+from collapse for every B>2, and does not identify the optimal critical budget.
+Original audit manifests describe their full retained capture scope; the
+source package subset is enumerated by SOURCE-INPUTS298.json. Third-party
+full texts and protected private credentials are not redistributed.
