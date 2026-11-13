@@ -1,0 +1,26 @@
+UNIT291 ANALYTICAL JUDGES -- 13November2026 UTC
+Base efb0e1188792c810b130584f3792e2424676a6c6.
+One question: does the actual low residual escape the290 lift image, and
+can that escape and its conditional energy be bounded quantitatively?
+Hypotheses: original model, either channel, dyadic n>=8, c>0, actual
+coexact space, quadratic cut and every original normalized row retained.
+Mechanism: full sectional sums, fixed transverse polarization, exact
+two-by-two high blocks, paid singleton minimizer and conditional cost.
+Falsifier: wrong block/phase, exceptional frequency, real count, original
+row reconstruction, cost feasibility or a reversed norm inequality.
+Abandonment: no inference of target-c recovery from a vanishing lower bound;
+after three units without useful derived progress retain failures and switch
+mechanism or identify the missing inequality. This is the second unit of
+the moving-prefix route; it is not another endpoint/logarithm derivation.
+
+Separate audit must inspect the entire new source and these nine gates:
+1. Paid model inputs and real dimension of L_v, including conjugate pairs.
+2. Actual common-polarization reducing block; gamma and its conjugation.
+3. Exact n^-5/2 sample normalization and even-cut partner phase.
+4. Exceptional0,N and the weighted-shift inversion on nonzero indices.
+5. Constant6A0 in the Fourier-to-sectional estimate, no absent zero mode.
+6. Paid range, singleton isometry and positive lower bound on its cost.
+7. Reconstruction from all original rows, D S=0 and ||D||<=n^(5/2).
+8. Complement distance, injectivity and actual pseudoinverse-cost lower bound.
+9. Scope/novelty limits, all assumptions retained, no Q251/physical conclusion.
+No mathematical executable, numerical certification or PDF grade requested.
