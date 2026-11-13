@@ -1,0 +1,5 @@
+Group the accepted309/310 results into the existing transfer-kernel manuscript: derive the scalar tail optimum, its strict/non-strict attainment distinction, exact finite-parity realization and actual two-eigenvalue collapse for sub-two budgets. Preserve all19 previous308 proofs and the unresolved universal spectral boundary; add2 complete proof environments.
+
+Retain complete309A failure and correctedB reports,310 report/context/assignment and original manifests. Explicitly exclude3 private third-party fulltext captures. Preserve the exact v5 PDF and its first assessment with all6 reservations solely as historical evidence; no grade transfer. Credit classical moment duality and Gluck's uniform essential-radius theorem.
+
+Judges311 were committed before this integration. Require distinct frozen document audit, required checks and unchanged normal merge. Separate audited production, own-Colab paired reproduction, every-page QA, first exact-PDF assessment and native/publication gates remain pending. No new compiled or assessed PDF is claimed.

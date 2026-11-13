@@ -1,0 +1,126 @@
+a4d0736b57eb27ce7ae7de479d62df2bc2edb6b0 | SOURCE313A ANALYTICAL AUDIT | PASS
+Audit date: 2026-11-13. Exact candidate, not a branch-wide endorsement.
+
+1. Verdict and bindings
+PASS for the analytical candidate against all six registered source gates J1-J6, within the explicit scope below. I found no blocking mathematical objection. This is not merger acceptance, CI success, formal verification, numerical certification, paper assessment or external originality clearance.
+
+Worktree: C:\Trabajo\the-eriksson-programme\cutoff-floor313-20261113
+Candidate: a4d0736b57eb27ce7ae7de479d62df2bc2edb6b0
+Base: ff4068b4ebfab156fddf635a12ae1d5637470afd
+Registration: 1c00922a3884004d31bc05ecad586c702ddd9f38
+Candidate path: research/cutoff-floor313/cutoff-floor313A.txt
+Judges path: papers/marginal-transfer/judges313.txt
+PR: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/260
+Capture command: gh pr view 260 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid
+Body representation: JSON-decode body; replace CRLF by LF, then remaining CR by LF; remove all terminal LF characters; append exactly one LF; encode UTF-8 without BOM.
+Expected and observed normalized body: 1043 bytes, SHA256 7b6a6639594900754fc1795af46d299d7a5b59c32f9fe2cc38027680824e55fb.
+Both initial and final headRefOid and local HEAD equal the candidate SHA. Initial/final captures and machine-readable stability records are retained beside this report.
+The judges are byte-identical in registration and candidate. Git history has registration immediately before candidate; the base-to-candidate diff adds only judges313 and candidate313. Registration is before detailed source, not before the disclosed analytical exploration.
+
+Selected SHA256 bindings (exact unnormalized Git blob payload bytes):
+candidate313: a3082541a6aead361e74b8a77eb2256eeca408097bae60cd4e932dc9d0d39d22
+judges313 registered: 97015003d363f545b9a2970996c29786c1f9a01316aeea8fbb0b809fbf4e30a0
+manuscript308 cited: a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb
+source299 cited: 00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03
+The raw-byte manifest gives every retained file's length, SHA256 and representation. Git blob captures were copied from stdout's byte stream, without text decoding/reencoding. Checkout copies are separately named and must not be conflated with Git blob bytes.
+
+2. J1: exact claim, conventions and constructive endpoint -- PASS
+Fix rho in (0,1), s=(1+rho)/(1-rho)>1 and k_s<K<1. The function g(K)=C_s(1-K)K^(s-1) lies strictly between zero and one: g(k_s)=1, g(1)=0 and g' has the sign of (s-1)-sK, negative here. Thus the proposed budget is strictly between one and two.
+
+The source proves a density for every L>=1 with r>=K, E r=1, E[r^s 1_{r>K}]<=1+g(K), and actual lambda1,lambda2 tending to one. These inequalities imply the same assertion for every fixed floor 0<b<=K and every larger budget. They do not assert pointwise equality r=K everywhere, equality of the tail moment in each finite dimension, or finite-dimensional zero gap. The phrase attained constructive upper budget refers to admissibility at that numerical budget, not its optimality over all collapsing families.
+
+Uniform probability normalization is maintained throughout. With A=M_sqrt(r) Q, AA*=T_r and A*A=S_r. These are same-size finite square matrices, so their full spectra agree, including zeros and multiplicities. For r>=K>0 they are positive definite. P_rho has strictly positive coordinate entries, hence T_r has a simple Perron eigenvalue at each L. Its finite gap is strictly positive, compatible with collapse only as L tends to infinity.
+
+3. Exact inherited299/308 family rechecked, not accepted by prior verdict -- PASS
+I read research/critical299/critical299A.txt directly at commit49705281f05ab18b71bd9ebc2da1985a0433340c, especially sections3-4. I read papers/marginal-transfer/manuscript308A.tex directly at commit8ac81a6f3f70aa552cc957d45abaf3f0fab90e65: the balanced-critical theorem and proof around lines835-932, and thm:critical-exact and proof around lines941-1097. Its candidate-worktree version is unchanged from that cited commit. This check did not use earlier acceptance records as proof.
+
+Interpreting R_n as the product of n individually normalized factors w_delta=(1+delta y)/N(delta), its exact s moment is one. In the one-bit Walsh basis H(delta)=N^-1[[1,delta sqrt(rho)],[delta sqrt(rho),rho]]. Direct diagonalization gives the stated kappa. With d>0 sufficiently small and delta_n=d n^-1/3, Taylor expansion of these even analytic functions gives:
+log N=(s-1)delta^2/2+O(delta^4);
+log kappa=[rho/(1-rho)-(s-1)/2]delta^2+O(delta^4)=O(delta^4).
+The critical cancellation is exact. Since n delta_n^4=d^4 n^-1/3 tends to zero, kappa(delta_n)^n tends to one and b_n=kappa^-n tends to one. Thus the full n-bit ||H_n|| tends to one, a fact needed for the amplitude mismatch, not merely boundedness of a normalized density.
+
+For fixed 0<t<s,
+log E R_n^t=n[t(t-s)delta_n^2/2+O(delta_n^4)].
+The leading coefficient is strictly negative, n delta_n^2=d^2 n^1/3 tends to infinity, and the remainder tends to zero. This proves all stated interior moments vanish, including t=1, theta and s-theta. Constants need not be uniform at t=0,s. It gives Z_n=1+b_n E R_n tending to one.
+
+For F_n=P_n+b_n H_n, each positive summand has norm one. Factor F_n=C C* with C=[P_n^1/2, sqrt(b_n) H_n^1/2]. The block diagonal of C*C has two top eigenvalues exactly one. The cross norm is eta_n=sqrt(b_n) tau(delta_n)^n, where
+tau^2=[1+rho^2+sqrt((1-rho^2)^2+4rho^2 delta^2)]/(2N).
+Its logarithmic quadratic coefficient is -rho/[2(1-rho^2)], negative. Thus eta_n tends to zero. The off-diagonal self-adjoint perturbation has exactly that norm. Weyl bounds lambda1<=1+eta_n and lambda2>=1-eta_n; F_n>=P_n gives lambda1>=1. For large n the second bound is positive and corresponds to a genuine eigenvalue in the C C* spectrum, not an extra zero of C*C. Consequently both actual leading eigenvalues of F_n tend to one. Dividing by Z_n is unnecessary in313's comparison and no normalization has been silently dropped.
+
+4. J2: growing dyadic law and Walsh norm -- PASS
+With k=floor(L^1/3), M=floor(L/(2k)), n=L-kM, eventually all are positive. We have n>=L/2, k tending to infinity, M asymptotic to L^(2/3)/2, and M/k tending to infinity. The retained tilt dimension n tends to infinity even though it need not increase strictly at every integer L.
+
+For p*=(s-1)(1-K)/K in (0,1), p=floor(2^k p*)/2^k eventually lies in [p*/2,p*]. It converges to p*. The number 2^k p is an integer between one and 2^k-1. Thus the indicated finite H_L exists, and the parities realize its law exactly under the product probability measure. With v=K+(1-K)/p, A=K+(v-K)I has mean one; v>K, v tends to v*=sK/(s-1)>1 and v<=2v*-K<2v*=V. No cube is assumed to realize non-dyadic p* exactly.
+
+Every nonconstant Walsh coefficient of F_L is at most E|F_L|=1 in absolute value, as F_L is nonnegative. There are at most 2^k-1 of them. A substituted character has support consisting of at least one entire M-bit block. Acting on chi_S, Q M_chi_U Q is a weighted permutation with weight rho^(|U|/2+|S outside U|). Its largest weight rho^(|U|/2) is attained by S subset U; this is its exact norm, not merely a matrix-entry bound. The resulting operator difference is at most (2^k-1)rho^(M/2). Its logarithm is bounded by k log2+(M/2)logrho, tending to minus infinity because M/k tends to infinity. The growing coefficient count is paid for explicitly.
+
+For y>K, minimizing y^s/(y-K) gives y=v* and minimum C_s K^(s-1); for y<=K the affine expression C_s K^(s-1)(y-K) is nonpositive. Integration yields p v^s>=g(K). Thus d_L>=0 exactly, not just eventually or up to rounding error; continuity gives d_L tending to zero. This also verifies the relevant inherited scalar310 assertion directly.
+
+5. J3: clipping, event and mean compensation -- PASS
+theta=min(1,s/2) satisfies 0<theta<s and 0<s-theta<s in both ranges 1<s<2 and s>=2. Its moment a_n(theta)>0 vanishes. Therefore c_n=a_n(theta)^(1/(2theta)) is strictly positive and tends to zero. For U=(R-c)_+, Markov's inequality gives
+P(U>0)=P(R>c)<=a_n(theta)/c^theta=sqrt(a_n(theta)).
+The equality R=c is excluded from the strict event and included in U=0; no endpoint mass is lost.
+
+Also 0<=R-U=min(R,c)<=c, so the multiplier norm is at most c. As ||Q||=1, ||Q M_(U-R) Q||<=c with no dimension factor. The mean m'=E U lies between zero and E R=a_n(1), hence tends to zero.
+
+Eventually p>=p*/2 and m'<1-K. After beta in (0,1] has been defined, gamma=beta m'/p is nonnegative and tends to zero. The density r=A-gamma I+beta U has exactly mean one because p gamma=beta m'. On the low sector r=K+beta U>=K. On the high sector its constant term is
+v-gamma=K+(1-K-beta m')/p>K.
+Thus the full density stays strictly positive and respects the floor K. This argument needs neither total normalization nor a subtraction on the low sector. Since beta>0, the low sector's strict tail is exactly U>0; the high sector is wholly above K. These facts hold jointly for one sufficiently large L0.
+
+6. J4: noninteger powers and exact amplitude reserve -- PASS
+For c>0,z>=0 define Delta=(c+z)^s-c^s-z^s. Convexity/integration gives Delta>=0. After division by c^s, if y=z/c<=1, the mean value theorem gives Delta/c^s<=s2^(s-1)y<=s2^(s-1)y^theta. If y>=1, exchange c,z and use theta<=1. This proves the homogeneous displayed inequality with B_s=s2^(s-1) for real noninteger s>1 as well. At z=0 both sides vanish.
+
+Here is the full two-sector accounting, to test the risk of a missing coefficient. In the low sector, restricted to U>0, the conditional contribution is at most
+K^s P(U>0)+beta^s E U^s
++B_s[K^(s-theta) E U^theta+K^theta E U^(s-theta)].
+In the high sector, monotonicity removes the nonnegative gamma subtraction for an upper bound, leaving at most
+v^s+beta^s E U^s
++B_s[v^(s-theta) E U^theta+v^theta E U^(s-theta)].
+For these mixed terms beta^theta,beta^(s-theta)<=1 has already been used. Averaging with independent background probabilities1-p,p gives a combined coefficient exactly one on beta^s E U^s. Replacing U by R and v by V, and bounding the two weighted mixed coefficients by their sum, yields
+tail <=p v^s+beta^s+E_L
+with precisely the stated E_L. The probability term can be overestimated by K^s sqrt(a_n(theta)); no missing factor1-p is needed. Every term in E_L is positive and finite, and tends to zero. No s-moment limit is inferred from convergence in probability.
+
+Since d_L>=0 and E_L>0, e_L=d_L+E_L>=0 and tends to zero. Eventually e_L<1/2 and beta=(1-e_L)^(1/s) lies in (0,1], tends to one, and satisfies beta^s=1-e_L exactly. Therefore
+tail <=g(K)+d_L+1-e_L+E_L=1+g(K).
+The reserve covers both dyadic excess and mixed/probability errors. The possible loss of s-moment from clipping only improves this upper bound.
+
+A single existential L0 can enforce p>0, block positivity, e_L<1/2 and m'<1-K for every later L by the proved limits. Replacing each earlier dimension by r_L=1 gives mean one, floor K<1 and strictK-tail cost1<=1+g(K). It has no effect on the limiting eigenvalues. The source does not promise an effective L0.
+
+7. J5: actual spectral comparison after all changes -- PASS
+Tensorization gives
+S_r=(Q_b M_A Q_b-gamma Q_b M_I Q_b) tensor P_t
+       +beta P_b tensor(Q_t M_U Q_t).
+Subtract B_L=P_b tensor(P_t+b_n H_n). Expanding into four terms gives exactly:
+(a) growing-parity difference, norm at most(2^k-1)rho^(M/2);
+(b) mean compensation, norm at most gamma since0<=I<=1;
+(c) clipping, norm at most beta c_n;
+(d) amplitude mismatch, norm at most|beta-b_n| ||H_n||.
+The tensor factors have norm one where used. All four errors tend to zero. In particular gamma has a bounded denominator, beta,b_n both tend to one, and ||H_n|| tends to one, so there is no hidden growing multiplier.
+
+P_b is positive definite with largest eigenvalue one. F_n is positive definite, and its eigenvalues multiply those of P_b in B_L. Thus lambda1(B_L)=lambda1(F_n). The two eigenvectors consisting of constant background times the first and second tilt eigenvectors give two actual product eigenvalues, so lambda2(F_n)<=lambda2(B_L)<=lambda1(F_n). This provides top control as well as the second lower bound. Both tend to one. Weyl's finite-dimensional bound then transfers both limits to S_r, and exact A*A/AA* transfers them to T_r. Their ratio tends to one because lambda1 tends to a nonzero value. These are not conclusions based solely on two trial vectors.
+
+8. J6: scope, predecessors and literature -- PASS as source-scope gate
+Source310 TheoremA requires b<K and a strict budget above1+g(K);313 derives b=K and the exact upper budget by changing the construction. These are real removed restrictions. Its sharp scalar background law is not promoted to a lower bound for arbitrary collapsing transfer families. The sufficient uniform gap region tau<2-K^(s-1) remains separate. The unexplored interval, K<=k_s, b>K, varyingrho and external priority remain outside this theorem.
+
+The base-to-candidate diff does not modify source309A,309B,310,308 or draft311. The preserved309 failure record identifies the false added floor extension at b=1 or b>1; mean one and r>=1 force r=1, and r>1 everywhere is impossible. That failure remains genuine, with its original referent. No repair is being credited to the old failed artifact.
+
+The strict-event choice is essential. At a low-sector point with U=0 the density is exactly K, excluded from r>K. Changing the event to r>=K would include that low atom and make the entire moment count because all densities obey r>=K. The proof cannot simply be relabelled for a non-strict event.
+
+Targeted fresh primary checks:
+- Bertsimas/Popescu, section2 and Theorem2.1, give moment-constrained optimization and a pointwise dual-bound method. This is context for the elementary affine minorant, not a claim that their general theorem directly proves this real-power spectral endpoint. https://web.mit.edu/~dbertsim/www/papers/ioana/Optimal-inequalities-in-probability-theory-A-convex-optimization-approach-SIAM15.pdf
+- Mossel/Oleszkiewicz/Sen v5, introduction1.1, equation1.1 and its tensorization discussion, state the standard two-point hypercontractive inequality. For Q with nonconstant eigenvalue sqrt(rho), the endpoint exponent identities used in the cited family agree. https://arxiv.org/html/1108.1210v5
+- Gluck v6, section5 before and including Theorem5.1, explicitly addresses a uniform bound on essential spectral radius, with no estimate there on larger discrete eigenvalues. That particular conclusion alone cannot bound the top-two ratio of finite matrices. The surrounding discussion refers to stronger Markov results elsewhere; no exhaustive exclusion of such implications is claimed. https://arxiv.org/html/1802.09422v6
+These limited readings support the stated distinctions. They do not establish originality, novelty, priority or importance. No comparison score is issued.
+
+9. Objections, limitations and unwaived gates
+Blocking mathematical objections: none found.
+Nonblocking editorial observation O1: source313's plain-text R_n formula omits brackets around each normalized factor. The exact moment formula, cited299/308 definitions and subsequent claims unambiguously identify the intended product of (1+delta y_i)/N(delta). A later manuscript should bracket that factor explicitly. If instead read as dividing the entire product only once by N, the claimed moments would be false. This audit evaluates the coherent, explicitly source-bound definition above, not that inconsistent parsing.
+Scope limitation O2: an attained upper budget is proved, not a universal optimal threshold or equality of all finite tail costs. The candidate already states this accurately.
+Evidence limitation O3: this is another involved OpenAI/Codex context with shared filesystem/provider; no human or provider-independent review.
+Operational limitation O4: I did not execute, bypass or waive actual required CI. Source J6's requirement for required checks and an unchanged normal merge remains a future integration prerequisite. This PASS cannot be used as a CI waiver, squash/rebase authorization or approval of a changed SHA/body. Any changed source needs its own binding and review.
+Publication limitation O5: no PDF was created or assessed, no numerical/formal certification is claimed, and no inherited score transfers. Any later grouped manuscript and exact PDF need their own prescribed assessment. No standalone paper is approved.
+All observations are retained here. No source mutation was made during the audit.
+
+10. Final operational record
+The final-state.json record confirms the identical candidate SHA, PR head/body and clean worktree, with final checkout hashes equal to initial copied subjects. The registration/candidate judge payloads are identical. All new files are under the specified evidence directory. No disposable clone was made; no cleanup is pending.
+Verdict remains PASS for this exact analytical source under unchanged judges313, with the explicit unwaived integration and publication boundaries above.

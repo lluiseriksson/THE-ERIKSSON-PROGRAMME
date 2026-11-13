@@ -1,0 +1,227 @@
+\section{Attaining the constructive cutoff budget}\label{sec:attained-cutoff}
+The preceding fixed-background argument uses strict slack in both the
+floor and the tail budget. We now remove both restrictions. The cutoff
+event remains strictly $r>K$; mass exactly at $K$ is essential.
+
+\begin{theorem}\label{thm:attained-cutoff}
+Fix $0<\rho<1$, $s=(1+\rho)/(1-\rho)$, and
+\[
+ k_s=\frac{s-1}{s}<K<1,\qquad
+ g(K)=\frac{s^s}{(s-1)^{s-1}}(1-K)K^{s-1}.
+\]
+For every integer $L\ge1$ there is a strictly positive density $r_L$
+on the uniform Boolean cube such that
+\[
+ \mathbb Er_L=1,\qquad r_L\ge K,\qquad
+ \mathbb E[r_L^s\mathbf1_{r_L>K}]\le1+g(K),
+\]
+and $\lambda_1(T_{r_L})\to1$, $\lambda_2(T_{r_L})\to1$.
+Consequently $\gap(T_{r_L})\to0$. The same family meets every
+prescribed floor $0<b\le K$ and every budget $\tau\ge1+g(K)$.
+This is an attained constructive upper budget, not a claim that
+$1+g(K)$ is the optimal threshold over all collapsing families.
+\end{theorem}
+
+\begin{proof}
+All expectations below use normalized uniform probability. Write
+$Q_d=P_{\sqrt\rho,d}$. For positive $r$, the full spectra of
+$T_r=M_{\sqrt r}P_{\rho,d}M_{\sqrt r}$ and $S_r=Q_dM_rQ_d$
+agree, by the $AA^*/A^*A$ identity with $A=M_{\sqrt r}Q_d$.
+
+\emph{The inherited balanced tilt.}
+Use the explicit family in the proof of
+Theorem~\ref{thm:critical-exact}. Fix a sufficiently small $d>0$ and set
+\[
+ \delta_n=dn^{-1/3},\qquad
+ N(\delta)=\left(\frac{(1+\delta)^s+(1-\delta)^s}{2}\right)^{1/s},
+ \qquad
+ R_n(y)=\prod_{i=1}^n\left(\frac{1+\delta_n y_i}{N(\delta_n)}\right).
+\]
+In particular, the normalization is applied to every product factor.
+Define
+\[
+ H_n=Q_nM_{R_n}Q_n,\qquad
+ \kappa(\delta)=\frac{1+\rho+
+ \sqrt{(1-\rho)^2+4\rho\delta^2}}{2N(\delta)},\qquad
+ b_n=\kappa(\delta_n)^{-n},\qquad
+ F_n=P_{\rho,n}+b_nH_n.
+\]
+The earlier proof gives
+\begin{equation}\label{eq:attained-inherited}
+ b_n\to1,\quad \|H_n\|=\kappa(\delta_n)^n\to1,\quad
+ \lambda_1(F_n)\to1,\quad\lambda_2(F_n)\to1,
+ \quad\mathbb ER_n^s=1.
+\end{equation}
+These are conclusions for that explicit family, not additional hypotheses.
+For completeness, its interior moments have the exact expression
+\[
+ a_n(t):=\mathbb ER_n^t
+ =\left(\frac{(1+\delta_n)^t+(1-\delta_n)^t}
+ {2N(\delta_n)^t}\right)^n\longrightarrow0\qquad(0<t<s).
+\]
+Indeed their logarithm is
+$n[t(t-s)\delta_n^2/2+O(\delta_n^4)]$.
+At the critical exponent, $\log\kappa(\delta)=O(\delta^4)$.
+The block Gram comparison proved earlier has two diagonal top
+eigenvalues one and an off-diagonal norm tending to zero; it controls
+the actual two leading eigenvalues of $F_n$. Its second lower bound
+is eventually positive, so it is not an added zero of the Gram matrix.
+
+\emph{Growing finite background laws.}
+The scalar optimizer from Proposition~\ref{prop:background-optimum} has
+\[
+ v_*=\frac{sK}{s-1}>1,\qquad
+ p_*=\frac{(s-1)(1-K)}K\in(0,1),\qquad p_*v_*^s=g(K).
+\]
+For sufficiently large $L$ choose
+\[
+ k=\lfloor L^{1/3}\rfloor,\quad
+ M=\left\lfloor\frac{L}{2k}\right\rfloor,\quad n=L-kM,
+ \qquad p=p_L=\frac{\lfloor2^kp_*\rfloor}{2^k},
+ \qquad v=v_L=K+\frac{1-K}{p}.
+\]
+Then $p\in[p_*/2,p_*]$, $p\to p_*$, $v\to v_*$ and
+$v\le V:=2v_*$. Also $k,M,n\to\infty$, $n\ge L/2$ and
+$M/k\to\infty$. Choose exactly $2^kp$ patterns in $\{-1,1\}^k$,
+and let $f_L$ take value $v$ there and $K$ elsewhere.
+Replace its $k$ signs by the parities of $k$ disjoint blocks of $M$
+bits. Call the resulting background $A_L$, with high-sector indicator
+$I_L$. Independent unbiased parities give
+\[
+ \mathbb EI_L=p,\qquad A_L=K+(v-K)I_L,\qquad\mathbb EA_L=1.
+\]
+For a nonempty Walsh support $U$,
+\[
+ Q_dM_{\chi_U}Q_d\chi_S
+ =\rho^{|U|/2+|S\setminus U|}\chi_{S\mathbin\triangle U}.
+\]
+Thus this weighted permutation has norm exactly $\rho^{|U|/2}$.
+Each Walsh coefficient of $f_L$ has absolute value at most
+$\mathbb E f_L=1$, and there are at most $2^k-1$ nonconstant ones.
+Every substituted support has size at least $M$, so
+\begin{equation}\label{eq:attained-parity}
+ \|Q_{kM}M_{A_L}Q_{kM}-P_{\rho,kM}\|
+ \le(2^k-1)\rho^{M/2}\longrightarrow0.
+\end{equation}
+The limit follows from $k\log2+(M/2)\log\rho\to-\infty$.
+In particular, the growing number of coefficients is explicitly
+controlled. The scalar affine minorant gives
+\begin{equation}\label{eq:attained-dyadic-excess}
+ d_L:=p_Lv_L^s-g(K)\ge0,\qquad d_L\to0.
+\end{equation}
+No uniform finite cube is assumed to realize a non-dyadic $p_*$ exactly.
+
+\emph{Clipping, exact mean, and the amplitude reserve.}
+Put $\theta=\min(1,s/2)$, so both $\theta$ and $s-\theta$ lie in $(0,s)$.
+For $n=n_L$ define
+\[
+ c_n=a_n(\theta)^{1/(2\theta)},\qquad
+ U_n=(R_n-c_n)_+,\qquad m'_n=\mathbb EU_n.
+\]
+Then $c_n\to0$, $m'_n\le a_n(1)\to0$, and
+\begin{equation}\label{eq:attained-clipping}
+ \mathbb P(U_n>0)\le\sqrt{a_n(\theta)},\qquad
+ \|Q_nM_{U_n-R_n}Q_n\|\le c_n.
+\end{equation}
+The first inequality is Markov's inequality at $c_n$; the second uses
+$0\le R_n-U_n\le c_n$ and $\|Q_n\|=1$.
+Equality $R_n=c_n$ is in the complement of the strict event.
+
+For real $s>1$, $c>0$ and $z\ge0$, the mixed-power bound is
+\begin{equation}\label{eq:attained-mixed}
+ 0\le(c+z)^s-c^s-z^s
+ \le B_s\bigl(c^{s-\theta}z^\theta+c^\theta z^{s-\theta}\bigr),
+ \qquad B_s=s2^{s-1}.
+\end{equation}
+To see the upper bound, divide by $c^s$. For $z/c\le1$ the
+mean value theorem bounds the difference by $B_s(z/c)$, which is
+at most $B_s(z/c)^\theta$. For $z/c\ge1$ exchange $c,z$.
+The lower bound follows by integrating a positive derivative.
+Thus this estimate does not require an integer exponent.
+Set
+\begin{align*}
+ E_L={}&K^s\sqrt{a_n(\theta)}\\
+ &+B_s\bigl[(K^{s-\theta}+V^{s-\theta})a_n(\theta)
+ +(K^\theta+V^\theta)a_n(s-\theta)\bigr],\\
+ e_L={}&d_L+E_L.
+\end{align*}
+Both are nonnegative and tend to zero. Eventually $e_L<1/2$ and
+$m'_n<1-K$. On that range let
+\begin{equation}\label{eq:attained-density}
+ \beta_L=(1-e_L)^{1/s},\qquad
+ \gamma_L=\frac{\beta_Lm'_n}{p_L},\qquad
+ r_L(x,y)=A_L(x)-\gamma_L I_L(x)+\beta_LU_n(y).
+\end{equation}
+Here $0<\beta_L\le1$, $\beta_L\to1$ and $\gamma_L\to0$.
+The mean is exactly $1-p_L\gamma_L+\beta_Lm'_n=1$.
+The low sector has density $K+\beta_LU_n\ge K$; on the high sector,
+\[
+ v_L-\gamma_L=K+\frac{1-K-\beta_Lm'_n}{p_L}>K.
+\]
+Thus mean compensation has not lowered the floor. It acts only
+on the high sector, and no global normalization is applied.
+
+On the low sector the strict event is precisely $U_n>0$. Apply
+\eqref{eq:attained-mixed} with $c=K$ and $z=\beta_LU_n$, restricted
+to that event. Its constant contribution is at most
+$K^s\mathbb P(U_n>0)$. The high sector is entirely above $K$;
+discarding the nonnegative subtraction $\gamma_L$ gives an upper
+bound from \eqref{eq:attained-mixed} with $c=v_L$.
+Averaging these bounds with probabilities $1-p_L,p_L$, the
+coefficient of $\beta_L^s\mathbb EU_n^s$ is exactly one.
+Use $U_n\le R_n$, $v_L\le V$, $\beta_L\le1$,
+$\mathbb ER_n^s=1$, and \eqref{eq:attained-clipping}. The two mixed
+terms are bounded by those defining $E_L$. Hence
+\begin{equation}\label{eq:attained-exact-budget}
+ \mathbb E[r_L^s\mathbf1_{r_L>K}]
+ \le p_Lv_L^s+\beta_L^s+E_L
+ =g(K)+d_L+1-e_L+E_L=1+g(K).
+\end{equation}
+The reserve pays for the dyadic excess and every retained tail error.
+No convergence of $s$-moments was inferred from convergence in probability.
+
+\emph{The actual leading eigenvalues.}
+Write $P_b=P_{\rho,kM}$, $P_t=P_{\rho,n}$ and similarly $Q_b,Q_t$.
+By linearity and tensorization,
+\[
+ S_{r_L}=(Q_bM_{A_L}Q_b-\gamma_LQ_bM_{I_L}Q_b)\otimes P_t
+ +\beta_LP_b\otimes(Q_tM_{U_n}Q_t).
+\]
+Compare with $B_L=P_b\otimes F_n$. Since $0\le I_L\le1$,
+\eqref{eq:attained-parity} and \eqref{eq:attained-clipping} imply
+\begin{align*}
+ \|S_{r_L}-B_L\|
+ &\le(2^k-1)\rho^{M/2}+\gamma_L
+       +\beta_Lc_n+|\beta_L-b_n|\|H_n\|\longrightarrow0.
+\end{align*}
+All four errors vanish by the established limits.
+Both tensor factors of $B_L$ are positive definite and
+$\lambda_1(P_b)=1$. Therefore
+\[
+ \lambda_1(B_L)=\lambda_1(F_n),\qquad
+ \lambda_2(F_n)\le\lambda_2(B_L)\le\lambda_1(F_n).
+\]
+The lower bound uses two actual product eigenvectors with constant
+background factor. In view of \eqref{eq:attained-inherited}, both
+leading eigenvalues of $B_L$ tend to one. Weyl's self-adjoint
+perturbation bound transfers both limits to $S_{r_L}$, and the
+full-spectrum identity transfers them to $T_{r_L}$. This controls
+the top eigenvalue as well as the second; two trial vectors alone
+would not suffice.
+
+Choose one $L_0$ so that every eventual condition above holds for
+all $L\ge L_0$. For $1\le L<L_0$ set $r_L=1$. Its floor is at
+least $K$, its mean is one, and its strict $K$-tail cost is
+$1\le1+g(K)$. This supplies every dimension without changing the
+limits. No effective estimate of $L_0$ is asserted.
+\end{proof}
+
+For the non-strict event $r_L\ge K$, every point contributes and the
+tail becomes the total moment. The theorem therefore cannot be
+relabeled with a non-strict event. The scalar optimization, clipping
+and perturbation tools are classical; this construction and its
+source audit do not establish external priority. The unresolved
+universal interval between the sufficient region
+$\tau<2-K^{s-1}$ and this constructive upper budget remains.
+No marginal matching, locality, heat-bath gap or physical conclusion
+is added to the separate families proved earlier.

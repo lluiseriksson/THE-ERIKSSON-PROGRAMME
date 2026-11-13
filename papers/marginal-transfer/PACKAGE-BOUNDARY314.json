@@ -1,0 +1,14 @@
+{
+  "scope": "Grouped314 manuscript; no new PDF or score. Complete313 source report/context/assignment and original manifests; complete311 document and engineering reports retained. All21 old proofs/20 statements unchanged.",
+  "new_exclusions": [
+    {
+      "audit": "document-audit311A",
+      "path": "frozen311.raw-git.zip",
+      "bytes": 19976377,
+      "raw_sha256": "208b98f3782da6632430b1d27db688e97b112d3dd0d4ea0f710a2d0588f301f1",
+      "reason": "Redundant full frozen Git source archive; exact original remains on D. Source commit 8a961dceb8e21687f3ed3325051a618a425279c5 and complete original manifest/reports retained."
+    }
+  ],
+  "inherited_boundary": "PACKAGE-BOUNDARY311.json remains exact: three complete third-party primary-source captures excluded and historical308 input subset explicitly declared. No new third-party full text, credential or private submission payload.",
+  "archival_scope": "Original private audit packets remain complete on D. Public evidence subsets are not claimed to be complete copies of those packets."
+}

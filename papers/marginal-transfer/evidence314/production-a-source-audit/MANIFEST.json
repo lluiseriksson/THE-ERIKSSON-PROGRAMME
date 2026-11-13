@@ -1,0 +1,167 @@
+{
+  "schema": "raw-evidence-manifest/v1",
+  "created_at": "2026-11-13T16:00:22.679639+00:00",
+  "scope": "All files recursively in this new engineering audit directory except MANIFEST.json; source-input-verification.json binds all846 raw source objects without executing them.",
+  "files": [
+    {
+      "path": "ASSIGNMENT.txt",
+      "bytes": 1433,
+      "sha256": "26979f0cbf484f53e95f363d83e079b6ceb28c720de43132c3dd40412f3c18fb"
+    },
+    {
+      "path": "CONTEXT.md",
+      "bytes": 2799,
+      "sha256": "27b6e50d9f29881787075229340a0b9f8789a84aa575e62520c7cafc15ae40c2"
+    },
+    {
+      "path": "final-stability.json",
+      "bytes": 1392,
+      "sha256": "3ce3534e1372f7621479906d8ddb70e959eaca8c366f3855b3dcde72f6d60144"
+    },
+    {
+      "path": "inherited-input-and-judges-bindings.json",
+      "bytes": 287,
+      "sha256": "e6ca04f1f386ae2cb09b5121b7990aa1268c862673b917c31e1d1e546f53e359"
+    },
+    {
+      "path": "judges-commit-history.txt",
+      "bytes": 127,
+      "sha256": "677ce9fb119ca984d0a531c38ed031ae8245b6df8a5ae93025c6acc04e7b3f83"
+    },
+    {
+      "path": "pr258-body.txt",
+      "bytes": 1055,
+      "sha256": "8a623bcd29aa5d96c8733401b256845f5f5779667e1aedb356b514716774f55a"
+    },
+    {
+      "path": "pr258-final.json",
+      "bytes": 1945,
+      "sha256": "fc35cb3fd3f6149f70e25d548d068a54287fac2a777f6da634d8986460de4aeb"
+    },
+    {
+      "path": "pr258-initial.json",
+      "bytes": 1945,
+      "sha256": "fc35cb3fd3f6149f70e25d548d068a54287fac2a777f6da634d8986460de4aeb"
+    },
+    {
+      "path": "prior308-ASSIGNMENT.txt",
+      "bytes": 1310,
+      "sha256": "d65c96519de15ee1200d6ba29cd6cd353289adeb4aeb0c6e4d51e9b31d90ab30"
+    },
+    {
+      "path": "prior308-CONTEXT.md",
+      "bytes": 2498,
+      "sha256": "22acd1a4b912c954cf4637842884ea87710c7dd46fb9bcb80c12a911f060e5bf"
+    },
+    {
+      "path": "prior308-MANIFEST.json",
+      "bytes": 5233,
+      "sha256": "d6cc467b1b312ecc2669a526bf48711cbc08ed6734b5d008ce5047cd797e2993"
+    },
+    {
+      "path": "prior308-REPORT.md",
+      "bytes": 10875,
+      "sha256": "bc6e0257dc34fd2dbfd161a3752987de7a15ff40fb500cf7fa2942bdb2722ec0"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 11696,
+      "sha256": "e08df68de7c35ae5ef39859a624a689be84f5e3383fe1c232c42f36f260f4fa4"
+    },
+    {
+      "path": "runner308-to311.diff",
+      "bytes": 12298,
+      "sha256": "b24eea6196c1012ae986e220152535622c6e8b41620999aa1ba25464e2752a20"
+    },
+    {
+      "path": "source-input-verification.json",
+      "bytes": 375703,
+      "sha256": "d7edc56888b209645248951438caa48b8561719dca4f5e726a15725925d46755"
+    },
+    {
+      "path": "source-paper-tree.raw",
+      "bytes": 124492,
+      "sha256": "a598dd6ace886a144ed5acb05ffef042c9cc9bc3b0d3fe60f2a48a794a611b2d"
+    },
+    {
+      "path": "static-verification.json",
+      "bytes": 3186,
+      "sha256": "91029b47eab82da6527c52c835c6a61c6fdf91d37609fcc1278af91437a36086"
+    },
+    {
+      "path": "subjects/build311.py",
+      "bytes": 10827,
+      "sha256": "86d6f5ee350fd6713be90ba2cb159049322516f094048b834710da9de6e9d09c"
+    },
+    {
+      "path": "subjects/capture_cli_atomic.ps1",
+      "bytes": 2607,
+      "sha256": "4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "subjects/judges311.txt",
+      "bytes": 2723,
+      "sha256": "76899f90c08eb786a09f621b4e5f8ee6c0e1d6c2636e5c46ddf9078b55392474"
+    },
+    {
+      "path": "subjects/manuscript311A.tex",
+      "bytes": 86374,
+      "sha256": "422892d2cde2e5df2f06959fb76b7dc514981bf822be6cc359e422c93ac36cc3"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "subjects/PACKAGE-BOUNDARY311.json",
+      "bytes": 1627,
+      "sha256": "645f35aa57427386b29a26d9132c8f190e1cd2cd1c9305e2e34382a13ba1646d"
+    },
+    {
+      "path": "subjects/prior308-build308.py",
+      "bytes": 10730,
+      "sha256": "bc1a350373958ba8647f2bddffadc2b234eca162e23fcdafaa65f220e229dd2f"
+    },
+    {
+      "path": "subjects/prior308-capture_cli_atomic.ps1",
+      "bytes": 2607,
+      "sha256": "4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b"
+    },
+    {
+      "path": "subjects/prior308-readback_after_stop.ps1",
+      "bytes": 934,
+      "sha256": "6e076ea344803887fc8e4ca20c37392def92a95dc1659364af7a2387c6c21907"
+    },
+    {
+      "path": "subjects/prior308-run_owned_after_gate.ps1",
+      "bytes": 4206,
+      "sha256": "02115b995ea47df97c2ca8cd82be71afe6fdbfc7a917b512d1bc618be60e2af8"
+    },
+    {
+      "path": "subjects/readback_after_stop.ps1",
+      "bytes": 934,
+      "sha256": "468cd9f1d4c59de070e90fce453b1ad22ec1d7c5efdc2cf57792de0f52df75ad"
+    },
+    {
+      "path": "subjects/run_owned_after_gate.ps1",
+      "bytes": 4206,
+      "sha256": "e5edbbd6c0e4d5967c2d0676e6c3499539659636d7af0b66ead08f91d92236c7"
+    },
+    {
+      "path": "subjects/RUNNER-HASHES.json",
+      "bytes": 605,
+      "sha256": "2823684ef51d17b17ee0a54c782ff2f2f47e396cd1ac24fac7b30cc09c10e5c1"
+    },
+    {
+      "path": "subjects/SOURCE-INPUTS311.json",
+      "bytes": 179679,
+      "sha256": "be1c724f920efcee38d68a8123b42e32f618315ba1df29432b35bc21ab5b056e"
+    }
+  ]
+}

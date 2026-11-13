@@ -1,0 +1,47 @@
+[
+  {
+    "path": "manuscript311A.tex",
+    "bytes": 86374,
+    "raw_sha256": "422892d2cde2e5df2f06959fb76b7dc514981bf822be6cc359e422c93ac36cc3"
+  },
+  {
+    "path": "background311-section.tex",
+    "bytes": 10811,
+    "raw_sha256": "be1a2278ceb528e205bc855e5e1047c0c15bc3feb8d47fcf4b4cb0967268c17b"
+  },
+  {
+    "path": "judges311.txt",
+    "bytes": 2723,
+    "raw_sha256": "76899f90c08eb786a09f621b4e5f8ee6c0e1d6c2636e5c46ddf9078b55392474"
+  },
+  {
+    "path": "PACKAGE-BOUNDARY311.json",
+    "bytes": 1627,
+    "raw_sha256": "645f35aa57427386b29a26d9132c8f190e1cd2cd1c9305e2e34382a13ba1646d"
+  },
+  {
+    "path": "SOURCE-INPUTS311.json",
+    "bytes": 179679,
+    "raw_sha256": "be1c724f920efcee38d68a8123b42e32f618315ba1df29432b35bc21ab5b056e"
+  },
+  {
+    "path": "evidence311/source-inputs/parity-tail309B.txt",
+    "bytes": 10276,
+    "raw_sha256": "b48d856408065319264420bc031ba699a4352f5246b6f79c27e5d382596761ac"
+  },
+  {
+    "path": "evidence311/source-inputs/background310A.txt",
+    "bytes": 14735,
+    "raw_sha256": "b68d5439a6eafad23023251795a9ac8d8bea40620670ad51b03c3c2d7a6314bc"
+  },
+  {
+    "path": "evidence311/historical-exact308/ARR-2026-7KV9Y9ASX48H7A7N-v5.pdf",
+    "bytes": 478376,
+    "raw_sha256": "450b6afa4e49a34f5fa36958b36b302ad1e266832aa271f857522aecfd3c6444"
+  },
+  {
+    "path": "evidence311/historical-exact308/outputs/full-scientific-report.txt",
+    "bytes": 32801,
+    "raw_sha256": "5fee3343f6766245f9d6ed8537d3bae7532c5a6027825831d0810a3ae233466d"
+  }
+]

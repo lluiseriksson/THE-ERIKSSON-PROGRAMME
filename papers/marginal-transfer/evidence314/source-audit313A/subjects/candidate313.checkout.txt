@@ -1,0 +1,111 @@
+EXACT CUTOFF FLOOR AND ATTAINED CONSTRUCTIVE TAIL BUDGET -- SOURCE313A
+Registration1c00922a3884004d31bc05ecad586c702ddd9f38; parentff4068b4ebfab156fddf635a12ae1d5637470afd. Analytical candidate requiring separate audit. This refines the same fixed-K critical-tail question, not a new research route or standalone paper. No numerical/formal verification or external-priority claim. Original309A failed comparison and corrected309B remain distinct; accepted310 and uncompiled311 are not retroactively changed.
+
+1. Statement and conventions
+Fix0<rho<1, s=(1+rho)/(1-rho)>1, k_s=(s-1)/s, C_s=s^s/(s-1)^(s-1), and k_s<K<1. Put g(K)=C_s(1-K)K^(s-1), so0<g(K)<1. For every integer L>=1 there exists a strictly positive density r_L on the uniform Boolean cube {-1,1}^L such that
+ E r_L=1, r_L>=K, E[r_L^s 1_{r_L>K}]<=1+g(K),
+ lambda1(T_r_L)->1, lambda2(T_r_L)->1, gap(r_L)->0.
+Here T_r=M_sqrt(r) P_{rho,L} M_sqrt(r), P has Walsh eigenvalues rho^|S|, Q_L=P_{sqrt(rho),L}, S_r=Q_L M_r Q_L, and gap=1-lambda2/lambda1. The full spectra of T_r and S_r agree by AA*/A*A with A=M_sqrt(r)Q_L. Eigenvalues are decreasing, with multiplicity; probabilities and expectations are normalized uniform, not counting.
+
+Consequently any prescribed0<b<=K is a valid fixed floor for this same family, and every tail budget tau>=1+g(K) is allowed. The novelty within the prior construction is removal of BOTH the strict budget slack and strict floor b<K. The displayed value is an attained constructive upper bound for collapse, not a proven optimal universal boundary. No statement is made for K<=k_s, varyingrho, b>K, locality, code marginal matching, heat-bath gaps, continuum physics or Yang-Mills. The event is strictly r>K: the construction uses an atom exactly at K, which the event excludes.
+
+2. Exact inherited balanced tilt, and the facts needed here
+Use the explicit balanced family proved in manuscript308A at8ac81a6f3f70aa552cc957d45abaf3f0fab90e65, the theorem labelled thm:critical-exact and its proof, with the same source299 analytical derivation49705281f05ab18b71bd9ebc2da1985a0433340c. Fix a sufficiently small d>0, delta_n=d n^(-1/3),
+ N(delta)=(((1+delta)^s+(1-delta)^s)/2)^(1/s),
+ R_n(y)=product_{i=1}^n(1+delta_n y_i)/N(delta_n),
+ H_n=Q_n M_R_n Q_n,
+ kappa(delta)=[1+rho+sqrt((1-rho)^2+4rho delta^2)]/[2N(delta)],
+ b_n=kappa(delta_n)^(-n), Z_n=1+b_n E R_n,
+ F_n=P_{rho,n}+b_n H_n.
+The old balanced density is w_n=(1+b_nR_n)/Z_n. The proved facts are
+ b_n->1, Z_n->1, ||H_n||=kappa(delta_n)^n->1,
+ lambda1(F_n)->1 and lambda2(F_n)->1,
+ E R_n^s=1, a_n(t):=E R_n^t->0 for each fixed0<t<s.
+For clarity these are actual matrix and scalar conclusions, not new hypotheses about an unspecified family. The interior moments have the exact expression
+ a_n(t)=[((1+delta_n)^t+(1-delta_n)^t)/(2N(delta_n)^t)]^n.
+Their logarithm is n[t(t-s)delta_n^2/2+O(delta_n^4)], tending to minus infinity. The top one-site eigenvalue of H_n is kappa. At criticals, the quadratic coefficient in logkappa cancels, hence n logkappa(delta_n)->0. For the eigenvalues of F_n, the established block-Gram comparison has both diagonal top eigenvalues1 and off-diagonal norm eta_n->0. It bounds the actual first eigenvalue above by1+eta_n and the actual second below by1-eta_n; nonzero Gram spectra coincide. Thus both limits are1 before or after normalization by Z_n->1. These facts were separately checked in the full310 source audit. The present proof requires no new execution of that family.
+
+3. Growing dyadic background laws without an uncontrolled Walsh sum
+The sharp scalar background law from310 has lower atomK, high atom
+ v_*=sK/(s-1)>1, high probability p_*=(s-1)(1-K)/K in(0,1),
+and high cost p_*v_*^s=g(K). For largeL define
+ k=k_L=floor(L^(1/3)), M=M_L=floor(L/(2k)), n=n_L=L-kM,
+ p=p_L=floor(2^k p_*)/2^k, v=v_L=K+(1-K)/p.
+Eventually k,M,n>=1, p in[p_*/2,p_*], p->p_*, v->v_* and v<=V:=2v_*. All these assertions follow from k->infinity, dyadic rounding error<2^(-k), and v<=K+2(1-K)/p_*=2v_*-K<V. Both M,n tend to infinity, n>=L/2, while M/k->infinity.
+
+Choose any set H_L of exactly2^k p sign patterns among {-1,1}^k, for example the first such patterns in lexicographic order. Define F_L(z)=v on H_L and K otherwise, so E F_L=1. Split kM background bits into k disjoint M-bit blocks, replace each signz_i by its block parity, and call the resulting function A_L(x). Let I_L(x) be the indicator that the parity pattern is in H_L. The block parities are independent unbiased signs, hence E I_L=p and A_L=K+(v-K)I_L has exactly the stated law and mean1.
+
+For any nonempty Walsh setU on d bits,
+ Q_d M_chi_U Q_d chi_S
+ =rho^(|U|/2+|S outside U|) chi_{S symmetric_difference U}.
+This weighted permutation has exact operator normrho^|U|/2. Every nonconstant Walsh coefficient of F_L has absolute value at most E F_L=1 because F_L>=0 and |chi_I|=1. There are at most2^k-1 such coefficients, and each substituted nonempty character has degree at leastM. Therefore
+ ||Q_{kM} M_A_L Q_{kM}-P_{rho,kM}||
+ <=(2^k-1)rho^(M/2)->0.                                      (1)
+Indeed log(2^k rho^(M/2))=k log2+(M/2)logrho tends to minus infinity since M/k->infinity andlogrho<0. This explicit growing-coefficient bound replaces310's fixed-function estimate; no dimension-uniform bound on the number of coefficients is assumed.
+
+The scalar result310, or its direct affine minorant y^s1_{y>K}>=C_sK^(s-1)(y-K), gives
+ d_L:=p v^s-g(K)>=0, and d_L->0.                              (2)
+This law has an exact low atomK and high atomv>K, so the strict-event objective is exactlyp v^s. Continuity atp_* gives the limit. No finite uniform cube is presumed to realize a non-dyadicp_* exactly.
+
+4. Clipping the tilt and controlling the exact tail error
+Set theta=min(1,s/2), so0<theta<s and0<s-theta<s. With n=n_L put
+ c_n=a_n(theta)^(1/(2theta))>0,
+ U_n=(R_n-c_n)_+,
+ m'_n=E U_n.
+Then c_n->0,0<=U_n<=R_n,m'_n<=a_n(1)->0. Also
+ P(U_n>0)=P(R_n>c_n)<=a_n(theta)/c_n^theta=sqrt(a_n(theta))->0, (3)
+ ||Q_n M_(U_n-R_n) Q_n||<=c_n,                               (4)
+because0<=R_n-U_n=min(R_n,c_n)<=c_n and||Q_n||=1. Exact equalityR_n=c_n belongs to the complement of the strict event and is harmless.
+
+For any c>0,z>=0 and reals>1 the elementary homogeneous estimate is
+ 0<=(c+z)^s-c^s-z^s
+ <=B_s[c^(s-theta)z^theta+c^theta z^(s-theta)], B_s=s2^(s-1). (5)
+Forz/c<=1 the mean value theorem gives an upper bound B_s(z/c), at most B_s(z/c)^theta; forz/c>=1 interchangec,z. Nonnegativity follows from convexity or integration of the positive derivative. Thus(5) is valid for noninteger exponents and both powers on its right are interior powers with vanishinga_n.
+
+Define an explicit nonnegative error, with V=2v_* fixed,
+ E_L=K^s sqrt(a_n(theta))
+     +B_s[(K^(s-theta)+V^(s-theta))a_n(theta)
+           +(K^theta+V^theta)a_n(s-theta)].                    (6)
+All terms tend to zero. Let e_L=d_L+E_L>=0. For all sufficiently largeL, e_L<1/2 and m'_n<1-K. On that range define
+ beta_L=(1-e_L)^(1/s) in(0,1],
+ gamma_L=beta_L m'_n/p_L,
+ r_L(x,y)=A_L(x)-gamma_L I_L(x)+beta_L U_n(y).                 (7)
+Then beta_L->1 and gamma_L->0. Its mean is exactly
+ E r_L=1-p_L gamma_L+beta_L m'_n=1.
+On the low sector it equalsK+beta_LU_n>=K. On the high sector its constant part is
+ v_L-gamma_L=K+(1-K-beta_L m'_n)/p_L>K.
+Thus the global floor is exactly at leastK without any normalization that could move it belowK. In particular r_L is strictly positive. The vanished mean is compensated only in the high sector, where there is strict room; it is not subtracted from every point.
+
+The low-sector strict event is exactlyU_n>0. Apply(5) withc=K,z=beta_L U_n restricted to that event. The constant part contributes at mostK^s P(U_n>0). The s-power contributes at mostbeta_L^s E U_n^s, and the mixed contributions are bounded by their unrestricted counterparts. In the high sector all points are strictly aboveK. There,
+ (v_L-gamma_L+beta_L U_n)^s<=(v_L+beta_L U_n)^s,
+so(5) withc=v_L bounds its full expectation. Averaging the two sectors, usingbeta_L<=1,v_L<=V,U_n<=R_n,E R_n^s=1, and(3), yields the exact upper bound
+ E[r_L^s 1_{r_L>K}]<=p_L v_L^s+beta_L^s+E_L
+ =g(K)+d_L+1-e_L+E_L=1+g(K).                                (8)
+In this estimate the s-power terms have combined coefficient(1-p)+p=1; the two mixed-term bounds and low-sector probability are bounded by(6). No convergence of s-moments is inferred from convergence in probability. Unlike310's use ofu<K, this proof deliberately exploits the mass exactly at the strict cutoff.
+
+5. Actual top two eigenvalues survive all modifications
+Let P_b=P_{rho,kM}, P_t=P_{rho,n}; Q_b,Q_t denote the corresponding square-root noise operators. Tensorization and linearity give
+ S_r=[Q_b M_A_L Q_b-gamma_L Q_b M_I_L Q_b] tensor P_t
+      +beta_L P_b tensor(Q_t M_U_n Q_t).
+Compare this to B_L=P_b tensor F_n, using the explicit inheritedF_n fromsection2. The triangle inequality,0<=I_L<=1,||P_b||=||P_t||=||Q_b||=||Q_t||=1,(1) and(4) imply
+ ||S_r-B_L||
+ <=(2^k-1)rho^(M/2)+gamma_L
+     +beta_L c_n+|beta_L-b_n| ||H_n|| ->0.                   (9)
+Here ||H_n||->1 and beta_L,b_n->1. Every error is explicit and vanishes; no rate or unproved compactness assertion is needed.
+
+P_b is positive definite with top eigenvalue1. F_n is positive definite. Hence lambda1(B_L)=lambda1(F_n), and
+ lambda2(F_n)<=lambda2(B_L)<=lambda1(F_n).
+The lower inequality uses the actual two product eigenvectors with constant background factor, not trial vectors as a substitute for top control. Since both leading eigenvalues ofF_n tend to1, the first two ofB_L tend to1. Weyl's finite self-adjoint eigenvalue bound and(9) give the same two limits forS_r andT_r. Thus gap(r_L)->0. Each finiteT_r has strictly positive entries and a simple Perron eigenvalue; exact finite degeneracy is not claimed.
+
+Choose a singleL0 such that for allL>=L0 all positivity, dyadic, moment and error conditions used above hold. For1<=L<L0 setr_L=1. Its mean is1, floorK<1holds and its strictK-tail cost is1<=1+g(K). This extends the result to every integer dimension without changing the limits. L0 is existential, with no asserted effective bound or numerical computation. This completes the theorem.
+
+6. What was removed, and what remains open
+Theorem310 required0<b<K and a strict tail-budget slack above1+g(K). Formula(7), supported by clipping and a high-sector mean correction, proves the strongerfloorr>=K. Formula(8), supported by growing dyadiclaws and an explicit amplitude reservee_L, gives the exact upper-budget endpoint. Neither removal is a renaming of a desired conclusion as an assumption. The construction is explicit once sufficientlylargeL is chosen; all finite quantities are formulas or finite uniform expectations of the explicitR_n.
+
+The scalar boundm_s(K)=g(K) forK>k_s is sharp among mean-one scalarbackgrounds. This theorem does NOT prove that every collapsing transfer family must have tailbudget>=1+g(K). The general sufficient gap regiontau<2-K^(s-1) survives. The interval between that region and this attained construction remains open. It is not justified to add an escaped unit to a scalar inequality for an arbitrary family. For the non-strict eventr>=K the entire density contributes its total moment, so the strict theorem cannot be relabelled as a non-strict one. Forb>K the earlier total-moment regime is separate; b=1forcesr1,b>1isempty. No claim here extends external originality or resolves physical/continuum assumptions.
+
+7. Primary-source and review context
+The explicit moment-duality method is classical: Bertsimas and Popescu, Optimal Inequalities in Probability Theory: A Convex Optimization Approach, SIAM Journal on Optimization15(3),780-804(2005), DOI10.1137/S1052623401399903. Their author manuscript's section2 and Theorem2.1 were read in the prior310 comparison; this is inherited targeted context, not a fresh exhaustive novelty search. Primary author link:https://web.mit.edu/~dbertsim/www/papers/ioana/Optimal-inequalities-in-probability-theory-A-convex-optimization-approach-SIAM15.pdf.
+The Walsh/noise framework is classical Boolean product analysis; Mossel,Oleszkiewicz,Sen, On reverse hypercontractivity, arXiv1108.1210v5. Gluck, Spectral gaps for hyperbounded operators, arXiv1802.09422v6, Theorem5.1 already gives uniform essential-spectral-radius estimates, which by themselves do not bound the top-two ratio of finite matrices. That scope distinction is not an originality proof. These targeted primary readings and their actual contexts are preserved in the310 source audit; no fresh full-text novelty clearance is claimed for313.
+
+The parentfabricator derived the clipping, high-sector mean correction and shrinking amplitude reserve while311 was frozen for its document audit. Those ideas are not imported into that auditor's context during its frozen reading. A different agent must now attack the exact313 source under unchangedjudges313. Shared provider/filesystem does not establish review independence. No new PDF or score exists; any eventual integration is grouped with the current moment/tail manuscript and requires its own exact-PDF assessment. All failed gates stay bound to their original referents.

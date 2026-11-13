@@ -1,0 +1,56 @@
+{
+  "verdict": "PASS_GROUPED_SOURCE_INTEGRATION",
+  "candidate_sha": "8a961dceb8e21687f3ed3325051a618a425279c5",
+  "pr": 258,
+  "body_capture": "gh pr view 258 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid",
+  "body_representation": "JSON decoded; CRLF then CR to LF; terminal LF trimmed; exactly one LF appended; UTF-8 without BOM",
+  "body_bytes": 1055,
+  "body_sha256": "8a623bcd29aa5d96c8733401b256845f5f5779667e1aedb356b514716774f55a",
+  "judges_commit": "b7d1fc093e5aef060cae757e99fe4792e96fcfac",
+  "gates": {
+    "D4": "PASS",
+    "D2": "PASS",
+    "D5": "PASS for frozen separate audit portion only; all production/publication stages pending",
+    "D3": "PASS",
+    "D1": "PASS"
+  },
+  "blocking_objections": [],
+  "nonblocking_observations": [
+    "Density gap shorthand is undefined at manuscript lines1544 and1708; use gap(T_r) or define shorthand.",
+    "Introduction retains stale final-section navigation.",
+    "Original309A visible-path terminal CR drift is preserved and must not be described as raw identity.",
+    "Auditor supplied prior310 non-strict clarification; this is involved integration review, not fresh independence."
+  ],
+  "historical_reservations_preserved": [
+    "O1 originality",
+    "O2 specialized impact",
+    "O3 endpoint quantitative utility",
+    "O4 navigation",
+    "O5 primary-comparison limits",
+    "O6 evidence/independence limits"
+  ],
+  "input_raw_bindings": 846,
+  "input_mismatches": 0,
+  "old_proofs_unchanged": 19,
+  "old_statements_unchanged": 18,
+  "new_proofs": 2,
+  "retention_items": 101,
+  "retained_identical": 98,
+  "declared_exclusions": 3,
+  "remaining_gates": [
+    "Required CI",
+    "Unchanged normal merge",
+    "Separate pinned production-runner audit",
+    "Owned Colab paired fresh-clone reproduction and runtime release/readback",
+    "Every-page visual QA",
+    "First exact-new-PDF assessment with full context/report",
+    "Native linked permission and published catalogue reconciliation",
+    "Public byte checks"
+  ],
+  "new_scientific_score": false,
+  "pdf_assessed": false,
+  "independent_review": false,
+  "cleanup_pending": [],
+  "report": "full-report.txt",
+  "stability": "stability.json"
+}

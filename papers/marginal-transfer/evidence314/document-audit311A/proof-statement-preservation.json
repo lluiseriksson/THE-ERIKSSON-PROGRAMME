@@ -1,0 +1,254 @@
+{
+  "old_proof_count": 19,
+  "new_proof_count": 21,
+  "old_statement_count": 18,
+  "new_statement_count": 20,
+  "proofs_unchanged": true,
+  "statements_unchanged": true,
+  "new_section_exact_embedded": true,
+  "representation": "UTF-8 re-encoding of .NET ReadAllText regex-extracted complete environments; original newline characters retained, no normalization",
+  "proofs": [
+    {
+      "index": 1,
+      "old_sha256": "f2fc849028776029786e2da45d0b5fba0beb90bbe79eeae67d9e0279a419dc13",
+      "new_sha256": "f2fc849028776029786e2da45d0b5fba0beb90bbe79eeae67d9e0279a419dc13",
+      "exact_text_match": true
+    },
+    {
+      "index": 2,
+      "old_sha256": "371dbb6cfe274b7dfdc525273ec9197dbed8b7f530759d05b0de574013c8aa3d",
+      "new_sha256": "371dbb6cfe274b7dfdc525273ec9197dbed8b7f530759d05b0de574013c8aa3d",
+      "exact_text_match": true
+    },
+    {
+      "index": 3,
+      "old_sha256": "cb31440d691e555a53eb4c1b4868126e692bc72a916d252c20f22cf4796e8131",
+      "new_sha256": "cb31440d691e555a53eb4c1b4868126e692bc72a916d252c20f22cf4796e8131",
+      "exact_text_match": true
+    },
+    {
+      "index": 4,
+      "old_sha256": "6b350d42ca0442d7b8926754a8df3c87489525be203666dc4d2b4c00bb3f8637",
+      "new_sha256": "6b350d42ca0442d7b8926754a8df3c87489525be203666dc4d2b4c00bb3f8637",
+      "exact_text_match": true
+    },
+    {
+      "index": 5,
+      "old_sha256": "743b35c021e97188eaa2797d0219a9b795aab832c7d6a688026ad37aac03c717",
+      "new_sha256": "743b35c021e97188eaa2797d0219a9b795aab832c7d6a688026ad37aac03c717",
+      "exact_text_match": true
+    },
+    {
+      "index": 6,
+      "old_sha256": "fb41ce6487b06a7419d3ab93cedbdaa69b47c1868260cf81a4db07506d7f1adf",
+      "new_sha256": "fb41ce6487b06a7419d3ab93cedbdaa69b47c1868260cf81a4db07506d7f1adf",
+      "exact_text_match": true
+    },
+    {
+      "index": 7,
+      "old_sha256": "e57e4e0f421a695eb1841d7c693cc8147ba1d21f325cc9a86dbf68131bfe0659",
+      "new_sha256": "e57e4e0f421a695eb1841d7c693cc8147ba1d21f325cc9a86dbf68131bfe0659",
+      "exact_text_match": true
+    },
+    {
+      "index": 8,
+      "old_sha256": "30ec83a785c560b30ebd491090d887ce1389f662d1e80dc7aacd5d77b7bbacfc",
+      "new_sha256": "30ec83a785c560b30ebd491090d887ce1389f662d1e80dc7aacd5d77b7bbacfc",
+      "exact_text_match": true
+    },
+    {
+      "index": 9,
+      "old_sha256": "97a398fdb27c3f14eee982ebd0be6c7192f64b70cc1c94af703d9dd94abab8e7",
+      "new_sha256": "97a398fdb27c3f14eee982ebd0be6c7192f64b70cc1c94af703d9dd94abab8e7",
+      "exact_text_match": true
+    },
+    {
+      "index": 10,
+      "old_sha256": "947805e99a628e8a9934d89bd86b81c7849b14a9c21d895ba3bad66099bbb4b3",
+      "new_sha256": "947805e99a628e8a9934d89bd86b81c7849b14a9c21d895ba3bad66099bbb4b3",
+      "exact_text_match": true
+    },
+    {
+      "index": 11,
+      "old_sha256": "d2e8412edb486ab46580ca527abe2723f668def316a6639e9bef891d79b5bfab",
+      "new_sha256": "d2e8412edb486ab46580ca527abe2723f668def316a6639e9bef891d79b5bfab",
+      "exact_text_match": true
+    },
+    {
+      "index": 12,
+      "old_sha256": "3c37fddecaa9c5fb7c99ce12934fc3b7bd181108144be40252d5dbf58d825fa2",
+      "new_sha256": "3c37fddecaa9c5fb7c99ce12934fc3b7bd181108144be40252d5dbf58d825fa2",
+      "exact_text_match": true
+    },
+    {
+      "index": 13,
+      "old_sha256": "fe0edd586f45aaf97761d7c8d28f20506ec8cd1c96f52f53f0e2c4a9820a1583",
+      "new_sha256": "fe0edd586f45aaf97761d7c8d28f20506ec8cd1c96f52f53f0e2c4a9820a1583",
+      "exact_text_match": true
+    },
+    {
+      "index": 14,
+      "old_sha256": "57765e183d5cd3533c2451f8b43c24db857dcb5070525586b0f95624504d198e",
+      "new_sha256": "57765e183d5cd3533c2451f8b43c24db857dcb5070525586b0f95624504d198e",
+      "exact_text_match": true
+    },
+    {
+      "index": 15,
+      "old_sha256": "83196dbb18646b5d23fe747eca65dd36b1c0c0d12e9effd0d71437a144a2f544",
+      "new_sha256": "83196dbb18646b5d23fe747eca65dd36b1c0c0d12e9effd0d71437a144a2f544",
+      "exact_text_match": true
+    },
+    {
+      "index": 16,
+      "old_sha256": "4a7ee00dd40a079a588d301c436881e1c2ed851f5661b3ce27834f639c7cf106",
+      "new_sha256": "4a7ee00dd40a079a588d301c436881e1c2ed851f5661b3ce27834f639c7cf106",
+      "exact_text_match": true
+    },
+    {
+      "index": 17,
+      "old_sha256": "750f2d081148f9e56186017652f7f0bf25fddb5a2bd410c4a3df0a7c8323c097",
+      "new_sha256": "750f2d081148f9e56186017652f7f0bf25fddb5a2bd410c4a3df0a7c8323c097",
+      "exact_text_match": true
+    },
+    {
+      "index": 18,
+      "old_sha256": "9aeaa49be7e60cd6181bd19ad595972937dada64cf23a69f5b4abe15ad40ba27",
+      "new_sha256": "9aeaa49be7e60cd6181bd19ad595972937dada64cf23a69f5b4abe15ad40ba27",
+      "exact_text_match": true
+    },
+    {
+      "index": 19,
+      "old_sha256": "e48f9441c154fc23832f62ff369fdfde18f3ec73ced8df28ece4e49c71b48923",
+      "new_sha256": "e48f9441c154fc23832f62ff369fdfde18f3ec73ced8df28ece4e49c71b48923",
+      "exact_text_match": true
+    }
+  ],
+  "statements": [
+    {
+      "index": 1,
+      "environment": "theorem",
+      "exact_text_match": true,
+      "old_sha256": "23879c8f1ad29f1fdcc2ec6ed94be4ded6c1b4972f905ab952025609aaaafaed",
+      "new_sha256": "23879c8f1ad29f1fdcc2ec6ed94be4ded6c1b4972f905ab952025609aaaafaed"
+    },
+    {
+      "index": 2,
+      "environment": "lemma",
+      "exact_text_match": true,
+      "old_sha256": "5df652e674ffc641314d312cbda2cb05304eed834787137577b0331eb8083757",
+      "new_sha256": "5df652e674ffc641314d312cbda2cb05304eed834787137577b0331eb8083757"
+    },
+    {
+      "index": 3,
+      "environment": "proposition",
+      "exact_text_match": true,
+      "old_sha256": "691c6dcf41ed624686e1f36cb749afa93fc3a25af7eede838e1431cbf0909c39",
+      "new_sha256": "691c6dcf41ed624686e1f36cb749afa93fc3a25af7eede838e1431cbf0909c39"
+    },
+    {
+      "index": 4,
+      "environment": "lemma",
+      "exact_text_match": true,
+      "old_sha256": "035211e972041674a66904128065639c163969af82adfe75ba501020b5006ffa",
+      "new_sha256": "035211e972041674a66904128065639c163969af82adfe75ba501020b5006ffa"
+    },
+    {
+      "index": 5,
+      "environment": "proposition",
+      "exact_text_match": true,
+      "old_sha256": "823471a25f409982ffe6c9c9c1ee36663f3e7dba956967eb1b515a87b2e008c5",
+      "new_sha256": "823471a25f409982ffe6c9c9c1ee36663f3e7dba956967eb1b515a87b2e008c5"
+    },
+    {
+      "index": 6,
+      "environment": "corollary",
+      "exact_text_match": true,
+      "old_sha256": "40e3be46307a94ebee4612bcaa4464d78bc7d0254ad4d0a62a87c3960c5d051b",
+      "new_sha256": "40e3be46307a94ebee4612bcaa4464d78bc7d0254ad4d0a62a87c3960c5d051b"
+    },
+    {
+      "index": 7,
+      "environment": "theorem",
+      "exact_text_match": true,
+      "old_sha256": "84d7d05951982f21a0dd5e7253e794543223e984d84483cecb8c8979d866e68e",
+      "new_sha256": "84d7d05951982f21a0dd5e7253e794543223e984d84483cecb8c8979d866e68e"
+    },
+    {
+      "index": 8,
+      "environment": "corollary",
+      "exact_text_match": true,
+      "old_sha256": "f719e9f7a64730697d024307ad70ffcc28cf50118d78422ec4882af995f044cd",
+      "new_sha256": "f719e9f7a64730697d024307ad70ffcc28cf50118d78422ec4882af995f044cd"
+    },
+    {
+      "index": 9,
+      "environment": "theorem",
+      "exact_text_match": true,
+      "old_sha256": "4a38e6ec50295c2cc33928cea525be7a111c0abefff568a51d6ed4ae6ecdd1c2",
+      "new_sha256": "4a38e6ec50295c2cc33928cea525be7a111c0abefff568a51d6ed4ae6ecdd1c2"
+    },
+    {
+      "index": 10,
+      "environment": "theorem",
+      "exact_text_match": true,
+      "old_sha256": "f92fc42cee25df369805cd0748efdf94014121fc9fcf2325beb5fa6d3315866d",
+      "new_sha256": "f92fc42cee25df369805cd0748efdf94014121fc9fcf2325beb5fa6d3315866d"
+    },
+    {
+      "index": 11,
+      "environment": "theorem",
+      "exact_text_match": true,
+      "old_sha256": "49b3cd3c329989bd9bf89a00acd54e561bc9673c258959d36d943a7438769778",
+      "new_sha256": "49b3cd3c329989bd9bf89a00acd54e561bc9673c258959d36d943a7438769778"
+    },
+    {
+      "index": 12,
+      "environment": "theorem",
+      "exact_text_match": true,
+      "old_sha256": "daeb4f8437206362f128c1a16e8a14b8acea42d77a2303de7002a8cfdc149ab7",
+      "new_sha256": "daeb4f8437206362f128c1a16e8a14b8acea42d77a2303de7002a8cfdc149ab7"
+    },
+    {
+      "index": 13,
+      "environment": "theorem",
+      "exact_text_match": true,
+      "old_sha256": "2b845c8978bd0895859bc4fbc51d79686a0d568e7bdf37817ad329c6f0e0275c",
+      "new_sha256": "2b845c8978bd0895859bc4fbc51d79686a0d568e7bdf37817ad329c6f0e0275c"
+    },
+    {
+      "index": 14,
+      "environment": "theorem",
+      "exact_text_match": true,
+      "old_sha256": "1771c6ae8fe61fd1b26e68ed6ea1f367ffcf0235e1624111096f2ea5d8f695c3",
+      "new_sha256": "1771c6ae8fe61fd1b26e68ed6ea1f367ffcf0235e1624111096f2ea5d8f695c3"
+    },
+    {
+      "index": 15,
+      "environment": "proposition",
+      "exact_text_match": true,
+      "old_sha256": "f38828b136eeb0fee04646225b99c1dea63b3ee0157fe0878f7950a00c3ed3de",
+      "new_sha256": "f38828b136eeb0fee04646225b99c1dea63b3ee0157fe0878f7950a00c3ed3de"
+    },
+    {
+      "index": 16,
+      "environment": "proposition",
+      "exact_text_match": true,
+      "old_sha256": "b56fd5a4dea6291e63cbb9e1c786dfea003227e3aa3fdd505b450649739b100d",
+      "new_sha256": "b56fd5a4dea6291e63cbb9e1c786dfea003227e3aa3fdd505b450649739b100d"
+    },
+    {
+      "index": 17,
+      "environment": "theorem",
+      "exact_text_match": true,
+      "old_sha256": "d99c4908d508f03db463251988d40d4effe40c0a3243f02922a974173b3e6fc2",
+      "new_sha256": "d99c4908d508f03db463251988d40d4effe40c0a3243f02922a974173b3e6fc2"
+    },
+    {
+      "index": 18,
+      "environment": "corollary",
+      "exact_text_match": true,
+      "old_sha256": "e0f4ef0818483a0fe8086ffa8bce91572452a037531204f775d090d1e0f9fce6",
+      "new_sha256": "e0f4ef0818483a0fe8086ffa8bce91572452a037531204f775d090d1e0f9fce6"
+    }
+  ]
+}

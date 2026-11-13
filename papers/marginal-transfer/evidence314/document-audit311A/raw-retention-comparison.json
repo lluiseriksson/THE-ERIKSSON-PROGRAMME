@@ -1,0 +1,1012 @@
+[
+  {
+    "group": "309A",
+    "path": "assignment-received.txt",
+    "original_bytes": 1867,
+    "original_sha256": "6253f4d7e4238b1cf8de309742ff19db517ee2f55bf52bf9a1ff305b984e4007",
+    "target_exists": true,
+    "target_sha256": "6253f4d7e4238b1cf8de309742ff19db517ee2f55bf52bf9a1ff305b984e4007",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "context-and-scope.txt",
+    "original_bytes": 4260,
+    "original_sha256": "1010f11e319a8a8fbbde038c2fe952599b26cda44b1a1d6290e2b6b46d8aa393",
+    "target_exists": true,
+    "target_sha256": "1010f11e319a8a8fbbde038c2fe952599b26cda44b1a1d6290e2b6b46d8aa393",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "final-state.json",
+    "original_bytes": 1422,
+    "original_sha256": "ffe01dbfe0fb098439af6f39a9e88dc51e4f892088a7da10ff543b7c1484cedd",
+    "target_exists": true,
+    "target_sha256": "ffe01dbfe0fb098439af6f39a9e88dc51e4f892088a7da10ff543b7c1484cedd",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "full-report.txt",
+    "original_bytes": 17793,
+    "original_sha256": "9e3cf288978aca5f1dc1355ef93c166d59bace158f22f8a39ecc5f885cd2f993",
+    "target_exists": true,
+    "target_sha256": "9e3cf288978aca5f1dc1355ef93c166d59bace158f22f8a39ecc5f885cd2f993",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "git-metadata.txt",
+    "original_bytes": 1052,
+    "original_sha256": "50a588f3cac79762b5d8914c9ef3be76a762ab9218a123562f3a8f0d0b5ef9c9",
+    "target_exists": true,
+    "target_sha256": "50a588f3cac79762b5d8914c9ef3be76a762ab9218a123562f3a8f0d0b5ef9c9",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "pr256-final-body.normalized.txt",
+    "original_bytes": 888,
+    "original_sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+    "target_exists": true,
+    "target_sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "pr256-final-capture.json",
+    "original_bytes": 959,
+    "original_sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+    "target_exists": true,
+    "target_sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "pr256-initial-body.normalized.txt",
+    "original_bytes": 888,
+    "original_sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+    "target_exists": true,
+    "target_sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "pr256-initial-capture.json",
+    "original_bytes": 959,
+    "original_sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+    "target_exists": true,
+    "target_sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "primary-reading.txt",
+    "original_bytes": 2155,
+    "original_sha256": "413d15a769d2a75530f7e1ee7918cc57077a1450654d51051921f7da4e087b24",
+    "target_exists": true,
+    "target_sha256": "413d15a769d2a75530f7e1ee7918cc57077a1450654d51051921f7da4e087b24",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "raw-hashmanifest.json",
+    "original_bytes": 4630,
+    "original_sha256": "5e595c0f10158880b5c6cd1fcec957d3d22bb553f4e200a57d9f9c06a6420a85",
+    "target_exists": true,
+    "target_sha256": "5e595c0f10158880b5c6cd1fcec957d3d22bb553f4e200a57d9f9c06a6420a85",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "raw-hashmanifest.sha256",
+    "original_bytes": 88,
+    "original_sha256": "554d7c8655a237d1d488f0a93fe99602c619fddf517f756ad8e7ab91d1673f53",
+    "target_exists": true,
+    "target_sha256": "554d7c8655a237d1d488f0a93fe99602c619fddf517f756ad8e7ab91d1673f53",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "source-bindings.json",
+    "original_bytes": 3275,
+    "original_sha256": "f1feae6725360b7fc1a284348248bff1b779984cb2cca5086f5a513efb72a623",
+    "target_exists": true,
+    "target_sha256": "f1feae6725360b7fc1a284348248bff1b779984cb2cca5086f5a513efb72a623",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "subjects\\CLAUDE.git-lf.md",
+    "original_bytes": 23996,
+    "original_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "target_exists": true,
+    "target_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "subjects\\critical299A.git-lf.txt",
+    "original_bytes": 11309,
+    "original_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "target_exists": true,
+    "target_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "subjects\\judges309-candidate.git-blob-cr.txt",
+    "original_bytes": 3098,
+    "original_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "target_exists": true,
+    "target_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "subjects\\judges309-preregistered.git-blob-cr.txt",
+    "original_bytes": 3098,
+    "original_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "target_exists": true,
+    "target_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "subjects\\manuscript308A.git-lf.tex",
+    "original_bytes": 73400,
+    "original_sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+    "target_exists": true,
+    "target_sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "subjects\\OPERATIONAL-GOVERNANCE-CHARTER.git-lf.md",
+    "original_bytes": 13573,
+    "original_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "target_exists": true,
+    "target_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309A",
+    "path": "subjects\\parity-tail309A.git-lf.txt",
+    "original_bytes": 9834,
+    "original_sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+    "target_exists": true,
+    "target_sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "a-path-representation-observation.json",
+    "original_bytes": 1189,
+    "original_sha256": "de20d92ecda5524b18f6e3a8c50fe6ff15efc05ca590666c8fb27cf71e42dd78",
+    "target_exists": true,
+    "target_sha256": "de20d92ecda5524b18f6e3a8c50fe6ff15efc05ca590666c8fb27cf71e42dd78",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "assignment-received.txt",
+    "original_bytes": 1278,
+    "original_sha256": "2ca8c189c8ff1c4e359ffc24514eb484cbd591dff9a85f69eb9146109840c321",
+    "target_exists": true,
+    "target_sha256": "2ca8c189c8ff1c4e359ffc24514eb484cbd591dff9a85f69eb9146109840c321",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "context-and-prior-involvement.txt",
+    "original_bytes": 4568,
+    "original_sha256": "b809f2fabb6eca4890d91c592f3e97242d7200dd5b65e869ddbe17d315e8ee88",
+    "target_exists": true,
+    "target_sha256": "b809f2fabb6eca4890d91c592f3e97242d7200dd5b65e869ddbe17d315e8ee88",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "final-state.json",
+    "original_bytes": 1694,
+    "original_sha256": "f3897ef2813263dd47f1a9d5ef59a64a0338ed2f30834da8786354eb0d40f815",
+    "target_exists": true,
+    "target_sha256": "f3897ef2813263dd47f1a9d5ef59a64a0338ed2f30834da8786354eb0d40f815",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "full-report.txt",
+    "original_bytes": 17557,
+    "original_sha256": "5ec6d4957792691a27c2444aafd018a487ac160c2637998889396be8e7679db0",
+    "target_exists": true,
+    "target_sha256": "5ec6d4957792691a27c2444aafd018a487ac160c2637998889396be8e7679db0",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "git-metadata.txt",
+    "original_bytes": 1283,
+    "original_sha256": "830215f6c490f75e1f61105446bbb58cfe07dd5ef5283111338cc596cff5d2c7",
+    "target_exists": true,
+    "target_sha256": "830215f6c490f75e1f61105446bbb58cfe07dd5ef5283111338cc596cff5d2c7",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "original-a-to-b-text-diff.txt",
+    "original_bytes": 3596,
+    "original_sha256": "801310af093eab3c3f14c5cb93ceed9c9f5ce8782ba4f28a612b70a931174c0a",
+    "target_exists": true,
+    "target_sha256": "801310af093eab3c3f14c5cb93ceed9c9f5ce8782ba4f28a612b70a931174c0a",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "pr256-B-final-body.normalized.txt",
+    "original_bytes": 1001,
+    "original_sha256": "5f4132bcc371e0efe99d3ba78093d55c225309032b48d5d3d2b07f9398e8517b",
+    "target_exists": true,
+    "target_sha256": "5f4132bcc371e0efe99d3ba78093d55c225309032b48d5d3d2b07f9398e8517b",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "pr256-B-final-capture.json",
+    "original_bytes": 1072,
+    "original_sha256": "3273048fb977ac4db15fd200753116646d7c2b2ff17e043aacab77ac7f09d5a8",
+    "target_exists": true,
+    "target_sha256": "3273048fb977ac4db15fd200753116646d7c2b2ff17e043aacab77ac7f09d5a8",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "pr256-B-initial-body.normalized.txt",
+    "original_bytes": 1001,
+    "original_sha256": "5f4132bcc371e0efe99d3ba78093d55c225309032b48d5d3d2b07f9398e8517b",
+    "target_exists": true,
+    "target_sha256": "5f4132bcc371e0efe99d3ba78093d55c225309032b48d5d3d2b07f9398e8517b",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "pr256-B-initial-capture.json",
+    "original_bytes": 1072,
+    "original_sha256": "3273048fb977ac4db15fd200753116646d7c2b2ff17e043aacab77ac7f09d5a8",
+    "target_exists": true,
+    "target_sha256": "3273048fb977ac4db15fd200753116646d7c2b2ff17e043aacab77ac7f09d5a8",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "primary-reading.txt",
+    "original_bytes": 1784,
+    "original_sha256": "0ffd93f5f6de18c1a4a031347283d515f82cf3fabafece5d8057ced606830a55",
+    "target_exists": true,
+    "target_sha256": "0ffd93f5f6de18c1a4a031347283d515f82cf3fabafece5d8057ced606830a55",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-preservation-checks.json",
+    "original_bytes": 4548,
+    "original_sha256": "983c38a626b53e9b6354d460a88a99ac346f3314c8203e55acb0c92d8bdd38e7",
+    "target_exists": true,
+    "target_sha256": "983c38a626b53e9b6354d460a88a99ac346f3314c8203e55acb0c92d8bdd38e7",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "raw-hashmanifest.json",
+    "original_bytes": 12832,
+    "original_sha256": "141a464b7a79ad2aa5b74953bd181e4f439ed8eff958a06302791557c5d7102d",
+    "target_exists": true,
+    "target_sha256": "141a464b7a79ad2aa5b74953bd181e4f439ed8eff958a06302791557c5d7102d",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "raw-hashmanifest.sha256",
+    "original_bytes": 88,
+    "original_sha256": "ce0cb8eecedeed357ca4566f8deb408dba5129178f6d1743832d754cc0d1b253",
+    "target_exists": true,
+    "target_sha256": "ce0cb8eecedeed357ca4566f8deb408dba5129178f6d1743832d754cc0d1b253",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "source-bindings.json",
+    "original_bytes": 3556,
+    "original_sha256": "90c1b39d4673bb5a93cd172c33d65d0674291b8973dc51d8b1d8bce96e51347d",
+    "target_exists": true,
+    "target_sha256": "90c1b39d4673bb5a93cd172c33d65d0674291b8973dc51d8b1d8bce96e51347d",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\assignment-received.txt",
+    "original_bytes": 1867,
+    "original_sha256": "6253f4d7e4238b1cf8de309742ff19db517ee2f55bf52bf9a1ff305b984e4007",
+    "target_exists": true,
+    "target_sha256": "6253f4d7e4238b1cf8de309742ff19db517ee2f55bf52bf9a1ff305b984e4007",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\context-and-scope.txt",
+    "original_bytes": 4260,
+    "original_sha256": "1010f11e319a8a8fbbde038c2fe952599b26cda44b1a1d6290e2b6b46d8aa393",
+    "target_exists": true,
+    "target_sha256": "1010f11e319a8a8fbbde038c2fe952599b26cda44b1a1d6290e2b6b46d8aa393",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\final-state.json",
+    "original_bytes": 1422,
+    "original_sha256": "ffe01dbfe0fb098439af6f39a9e88dc51e4f892088a7da10ff543b7c1484cedd",
+    "target_exists": true,
+    "target_sha256": "ffe01dbfe0fb098439af6f39a9e88dc51e4f892088a7da10ff543b7c1484cedd",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\full-report.txt",
+    "original_bytes": 17793,
+    "original_sha256": "9e3cf288978aca5f1dc1355ef93c166d59bace158f22f8a39ecc5f885cd2f993",
+    "target_exists": true,
+    "target_sha256": "9e3cf288978aca5f1dc1355ef93c166d59bace158f22f8a39ecc5f885cd2f993",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\git-metadata.txt",
+    "original_bytes": 1052,
+    "original_sha256": "50a588f3cac79762b5d8914c9ef3be76a762ab9218a123562f3a8f0d0b5ef9c9",
+    "target_exists": true,
+    "target_sha256": "50a588f3cac79762b5d8914c9ef3be76a762ab9218a123562f3a8f0d0b5ef9c9",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\pr256-final-body.normalized.txt",
+    "original_bytes": 888,
+    "original_sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+    "target_exists": true,
+    "target_sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\pr256-final-capture.json",
+    "original_bytes": 959,
+    "original_sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+    "target_exists": true,
+    "target_sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\pr256-initial-body.normalized.txt",
+    "original_bytes": 888,
+    "original_sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+    "target_exists": true,
+    "target_sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\pr256-initial-capture.json",
+    "original_bytes": 959,
+    "original_sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+    "target_exists": true,
+    "target_sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\primary-reading.txt",
+    "original_bytes": 2155,
+    "original_sha256": "413d15a769d2a75530f7e1ee7918cc57077a1450654d51051921f7da4e087b24",
+    "target_exists": true,
+    "target_sha256": "413d15a769d2a75530f7e1ee7918cc57077a1450654d51051921f7da4e087b24",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\raw-hashmanifest.json",
+    "original_bytes": 4630,
+    "original_sha256": "5e595c0f10158880b5c6cd1fcec957d3d22bb553f4e200a57d9f9c06a6420a85",
+    "target_exists": true,
+    "target_sha256": "5e595c0f10158880b5c6cd1fcec957d3d22bb553f4e200a57d9f9c06a6420a85",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\raw-hashmanifest.sha256",
+    "original_bytes": 88,
+    "original_sha256": "554d7c8655a237d1d488f0a93fe99602c619fddf517f756ad8e7ab91d1673f53",
+    "target_exists": true,
+    "target_sha256": "554d7c8655a237d1d488f0a93fe99602c619fddf517f756ad8e7ab91d1673f53",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\source-bindings.json",
+    "original_bytes": 3275,
+    "original_sha256": "f1feae6725360b7fc1a284348248bff1b779984cb2cca5086f5a513efb72a623",
+    "target_exists": true,
+    "target_sha256": "f1feae6725360b7fc1a284348248bff1b779984cb2cca5086f5a513efb72a623",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\subjects\\CLAUDE.git-lf.md",
+    "original_bytes": 23996,
+    "original_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "target_exists": true,
+    "target_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\subjects\\critical299A.git-lf.txt",
+    "original_bytes": 11309,
+    "original_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "target_exists": true,
+    "target_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\subjects\\judges309-candidate.git-blob-cr.txt",
+    "original_bytes": 3098,
+    "original_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "target_exists": true,
+    "target_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\subjects\\judges309-preregistered.git-blob-cr.txt",
+    "original_bytes": 3098,
+    "original_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "target_exists": true,
+    "target_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\subjects\\manuscript308A.git-lf.tex",
+    "original_bytes": 73400,
+    "original_sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+    "target_exists": true,
+    "target_sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\subjects\\OPERATIONAL-GOVERNANCE-CHARTER.git-lf.md",
+    "original_bytes": 13573,
+    "original_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "target_exists": true,
+    "target_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "prior-a-raw\\subjects\\parity-tail309A.git-lf.txt",
+    "original_bytes": 9834,
+    "original_sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+    "target_exists": true,
+    "target_sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "subjects\\critical299A.git-blob.txt",
+    "original_bytes": 11309,
+    "original_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "target_exists": true,
+    "target_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "subjects\\current-path309A.git-blob.txt",
+    "original_bytes": 9835,
+    "original_sha256": "aaa5b9abc04c567d1378f6e1708964a122db3262d0f7b5d53d6888b6e7deae92",
+    "target_exists": true,
+    "target_sha256": "aaa5b9abc04c567d1378f6e1708964a122db3262d0f7b5d53d6888b6e7deae92",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "subjects\\gitattributes.git-blob.txt",
+    "original_bytes": 68,
+    "original_sha256": "df1f81df3b31b7bb8b1547b7e253fe6c16ddc2266fc892058dc2ef3e026464c6",
+    "target_exists": true,
+    "target_sha256": "df1f81df3b31b7bb8b1547b7e253fe6c16ddc2266fc892058dc2ef3e026464c6",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "subjects\\judges309-candidate.git-blob.txt",
+    "original_bytes": 3098,
+    "original_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "target_exists": true,
+    "target_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "subjects\\judges309-preregistered.git-blob.txt",
+    "original_bytes": 3098,
+    "original_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "target_exists": true,
+    "target_sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "subjects\\manuscript308A.git-blob.tex",
+    "original_bytes": 73400,
+    "original_sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+    "target_exists": true,
+    "target_sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "subjects\\original309A.git-blob.txt",
+    "original_bytes": 9834,
+    "original_sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+    "target_exists": true,
+    "target_sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "subjects\\parity-tail309B.git-blob.txt",
+    "original_bytes": 10276,
+    "original_sha256": "b48d856408065319264420bc031ba699a4352f5246b6f79c27e5d382596761ac",
+    "target_exists": true,
+    "target_sha256": "b48d856408065319264420bc031ba699a4352f5246b6f79c27e5d382596761ac",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "309B",
+    "path": "subjects\\README.git-blob.txt",
+    "original_bytes": 353,
+    "original_sha256": "acff59045049d69708d6183955031a67252865e93089712209b6984b0d564deb",
+    "target_exists": true,
+    "target_sha256": "acff59045049d69708d6183955031a67252865e93089712209b6984b0d564deb",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "assignment.txt",
+    "original_bytes": 1890,
+    "original_sha256": "0089556c4128979673ac6f2cfcfe622b8a13916b573e9ad96c2e78a6ebb9f7cb",
+    "target_exists": true,
+    "target_sha256": "0089556c4128979673ac6f2cfcfe622b8a13916b573e9ad96c2e78a6ebb9f7cb",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "byte-hash-manifest.json",
+    "original_bytes": 8206,
+    "original_sha256": "cfd22378211609843b01614c0a8b7e6a28d78535f19bedf98b08208501abea80",
+    "target_exists": true,
+    "target_sha256": "cfd22378211609843b01614c0a8b7e6a28d78535f19bedf98b08208501abea80",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "candidate-diff.git.txt",
+    "original_bytes": 44,
+    "original_sha256": "065bc6bf29f6573160a0c0b55c7f2fb301f45127b825160d565ab45295f223fe",
+    "target_exists": true,
+    "target_sha256": "065bc6bf29f6573160a0c0b55c7f2fb301f45127b825160d565ab45295f223fe",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "charter.checkout.md",
+    "original_bytes": 13831,
+    "original_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+    "target_exists": true,
+    "target_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "CLAUDE.checkout.md",
+    "original_bytes": 24408,
+    "original_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+    "target_exists": true,
+    "target_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "context.txt",
+    "original_bytes": 999,
+    "original_sha256": "9634ca5b6cbb36644ecb764816b3cf00d44e574ac17cf86e35056b1c5f1ddc66",
+    "target_exists": true,
+    "target_sha256": "9634ca5b6cbb36644ecb764816b3cf00d44e574ac17cf86e35056b1c5f1ddc66",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "critical299.frozen.git.txt",
+    "original_bytes": 11309,
+    "original_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "target_exists": true,
+    "target_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "drive-instructions.checkout.md",
+    "original_bytes": 16801,
+    "original_sha256": "3502d37a3f765ea2e867f1379917b25b7d458c03500b682b2b3403210181b1b8",
+    "target_exists": true,
+    "target_sha256": "3502d37a3f765ea2e867f1379917b25b7d458c03500b682b2b3403210181b1b8",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "full-report.txt",
+    "original_bytes": 24005,
+    "original_sha256": "28a3d0e297440002d9d0366097072669802ad15294cc85246bfd393b7c260f88",
+    "target_exists": true,
+    "target_sha256": "28a3d0e297440002d9d0366097072669802ad15294cc85246bfd393b7c260f88",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "head.final.txt",
+    "original_bytes": 41,
+    "original_sha256": "a6f15bac7c4b5cc83189a5543abc8a592f3ec901b2516443976655a9f81a210e",
+    "target_exists": true,
+    "target_sha256": "a6f15bac7c4b5cc83189a5543abc8a592f3ec901b2516443976655a9f81a210e",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "head.initial.txt",
+    "original_bytes": 41,
+    "original_sha256": "a6f15bac7c4b5cc83189a5543abc8a592f3ec901b2516443976655a9f81a210e",
+    "target_exists": true,
+    "target_sha256": "a6f15bac7c4b5cc83189a5543abc8a592f3ec901b2516443976655a9f81a210e",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "judges310.candidate.git.txt",
+    "original_bytes": 3609,
+    "original_sha256": "f4404073a0d7df56529d01ecc27b8b4c3d88a148f5f25b7d6bc4df59ce27eb42",
+    "target_exists": true,
+    "target_sha256": "f4404073a0d7df56529d01ecc27b8b4c3d88a148f5f25b7d6bc4df59ce27eb42",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "judges310.registered.git.txt",
+    "original_bytes": 3609,
+    "original_sha256": "f4404073a0d7df56529d01ecc27b8b4c3d88a148f5f25b7d6bc4df59ce27eb42",
+    "target_exists": true,
+    "target_sha256": "f4404073a0d7df56529d01ecc27b8b4c3d88a148f5f25b7d6bc4df59ce27eb42",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "manifest.sha256.txt",
+    "original_bytes": 90,
+    "original_sha256": "9dbfda06187c79a8030fc51ed7f43e4116b1656012fa2f1eee91507ce07c1dce",
+    "target_exists": true,
+    "target_sha256": "9dbfda06187c79a8030fc51ed7f43e4116b1656012fa2f1eee91507ce07c1dce",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "manuscript308.frozen.git.tex",
+    "original_bytes": 73400,
+    "original_sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+    "target_exists": true,
+    "target_sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "parent-pr257-body.txt",
+    "original_bytes": 1045,
+    "original_sha256": "fb847e53333685eb1d4059626632a75d6307d9519517b5294d88f5ee74b97706",
+    "target_exists": true,
+    "target_sha256": "fb847e53333685eb1d4059626632a75d6307d9519517b5294d88f5ee74b97706",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "parent-pr257-initial.json",
+    "original_bytes": 1904,
+    "original_sha256": "d687b357f033cecde8ca55a86c61a3ecf2635200aed13eb47eaaa3738ec2bab4",
+    "target_exists": true,
+    "target_sha256": "d687b357f033cecde8ca55a86c61a3ecf2635200aed13eb47eaaa3738ec2bab4",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "pr257.body.final.normalized.txt",
+    "original_bytes": 1045,
+    "original_sha256": "fb847e53333685eb1d4059626632a75d6307d9519517b5294d88f5ee74b97706",
+    "target_exists": true,
+    "target_sha256": "fb847e53333685eb1d4059626632a75d6307d9519517b5294d88f5ee74b97706",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "pr257.body.normalized.txt",
+    "original_bytes": 1045,
+    "original_sha256": "fb847e53333685eb1d4059626632a75d6307d9519517b5294d88f5ee74b97706",
+    "target_exists": true,
+    "target_sha256": "fb847e53333685eb1d4059626632a75d6307d9519517b5294d88f5ee74b97706",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "pr257.final.raw.json",
+    "original_bytes": 1116,
+    "original_sha256": "97415320eaf01cc850f78b7872ba0a6483184e07ff8c951d9702ae7466c5fe36",
+    "target_exists": true,
+    "target_sha256": "97415320eaf01cc850f78b7872ba0a6483184e07ff8c951d9702ae7466c5fe36",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "pr257.initial.raw.json",
+    "original_bytes": 1116,
+    "original_sha256": "97415320eaf01cc850f78b7872ba0a6483184e07ff8c951d9702ae7466c5fe36",
+    "target_exists": true,
+    "target_sha256": "97415320eaf01cc850f78b7872ba0a6483184e07ff8c951d9702ae7466c5fe36",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "primary-bertsimas-popescu.pdf",
+    "original_bytes": 254804,
+    "original_sha256": "1eceb8733ef9d56e45cda38b55afcb0d624a6eff9d1949e6801d402065d3063a",
+    "target_exists": false,
+    "target_sha256": null,
+    "declared_exclusion": true,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "primary-gluck-v6.html",
+    "original_bytes": 508616,
+    "original_sha256": "6a4a886182430e316d9b8fbf2c0b1e3f6dca56a0588750fd2252f7b2d22003ac",
+    "target_exists": false,
+    "target_sha256": null,
+    "declared_exclusion": true,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "primary-mos-v5.html",
+    "original_bytes": 1070285,
+    "original_sha256": "2656883dc19880003631ad84488310ea2092f1aeae998024e04196727b31df34",
+    "target_exists": false,
+    "target_sha256": null,
+    "declared_exclusion": true,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "provenance.git.txt",
+    "original_bytes": 1070,
+    "original_sha256": "30707bf2c3bc2a8ab91b8668ef8d90ad28773c0f9189a00f6d49240b6ade7c6d",
+    "target_exists": true,
+    "target_sha256": "30707bf2c3bc2a8ab91b8668ef8d90ad28773c0f9189a00f6d49240b6ade7c6d",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "source310.git.txt",
+    "original_bytes": 14735,
+    "original_sha256": "b68d5439a6eafad23023251795a9ac8d8bea40620670ad51b03c3c2d7a6314bc",
+    "target_exists": true,
+    "target_sha256": "b68d5439a6eafad23023251795a9ac8d8bea40620670ad51b03c3c2d7a6314bc",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "stability.json",
+    "original_bytes": 887,
+    "original_sha256": "c666ca5a1a832a20cdfb29062ce32afff3e1afa5fcd085e29d77914b775bc1c1",
+    "target_exists": true,
+    "target_sha256": "c666ca5a1a832a20cdfb29062ce32afff3e1afa5fcd085e29d77914b775bc1c1",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "status.final.txt",
+    "original_bytes": 0,
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "target_exists": true,
+    "target_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "status.initial.txt",
+    "original_bytes": 0,
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "target_exists": true,
+    "target_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "310A",
+    "path": "verdict.json",
+    "original_bytes": 1447,
+    "original_sha256": "249fa882a6ca80000cc777a28bb2e452b461dceac7e8acf43974cd0088207afa",
+    "target_exists": true,
+    "target_sha256": "249fa882a6ca80000cc777a28bb2e452b461dceac7e8acf43974cd0088207afa",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "historical308-outputs",
+    "path": "full-scientific-report.txt",
+    "original_bytes": 32801,
+    "original_sha256": "5fee3343f6766245f9d6ed8537d3bae7532c5a6027825831d0810a3ae233466d",
+    "target_exists": true,
+    "target_sha256": "5fee3343f6766245f9d6ed8537d3bae7532c5a6027825831d0810a3ae233466d",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "historical308-outputs",
+    "path": "importance-assessment.json",
+    "original_bytes": 1983,
+    "original_sha256": "4df2b527d0df263067fa4c07cb4bee3d7704a9b0e8ec1e0a4314085055ba5547",
+    "target_exists": true,
+    "target_sha256": "4df2b527d0df263067fa4c07cb4bee3d7704a9b0e8ec1e0a4314085055ba5547",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "historical308-outputs",
+    "path": "model-context.json",
+    "original_bytes": 4675,
+    "original_sha256": "94cf0b24e1c0cb6cc1df131b5091b4db203c8c9f373a1d173f4c24f3a379a4e2",
+    "target_exists": true,
+    "target_sha256": "94cf0b24e1c0cb6cc1df131b5091b4db203c8c9f373a1d173f4c24f3a379a4e2",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "historical308-outputs",
+    "path": "native-response.json",
+    "original_bytes": 6281,
+    "original_sha256": "98ff5b0d2487da69ed14bfb1a55f547bdf585f7a4ab8e6de8fd4764e5dc967f4",
+    "target_exists": true,
+    "target_sha256": "98ff5b0d2487da69ed14bfb1a55f547bdf585f7a4ab8e6de8fd4764e5dc967f4",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "historical308-outputs",
+    "path": "output-manifest.json",
+    "original_bytes": 1214,
+    "original_sha256": "dbf1baf5c944e5a2e10d6b316c08e9cd85a42c9bdbb25747aecd1824dfd82ef6",
+    "target_exists": true,
+    "target_sha256": "dbf1baf5c944e5a2e10d6b316c08e9cd85a42c9bdbb25747aecd1824dfd82ef6",
+    "declared_exclusion": false,
+    "consistent": true
+  },
+  {
+    "group": "historical308-outputs",
+    "path": "received-assignment.txt",
+    "original_bytes": 2274,
+    "original_sha256": "0acbf0277bcff92328b9b282ef2fbf08e618ed59fe07de0f33f174f6de7389c1",
+    "target_exists": true,
+    "target_sha256": "0acbf0277bcff92328b9b282ef2fbf08e618ed59fe07de0f33f174f6de7389c1",
+    "declared_exclusion": false,
+    "consistent": true
+  }
+]

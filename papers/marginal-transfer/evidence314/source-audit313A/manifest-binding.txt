@@ -1,0 +1,4 @@
+Manifest hashes name exact on-disk UTF8 file bytes, with no normalization.
+b8321f70345c1568e582a35039fdd032b2bbd0c12c6eb3c9d5cd5a1fda1f8b0c  raw-hashmanifest.json
+8c2b3e0a1a987cd39d5f0933110a900be2fda3d1de0da358981130390393b91f  raw-hashmanifest.sha256
+58bd70217ff3c600e00fdfa176568fa40202b6115c63ca69f1126e4d811332b7  full-report.txt

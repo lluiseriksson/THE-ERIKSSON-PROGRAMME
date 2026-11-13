@@ -1,0 +1,17 @@
+{
+  "checked_utc": "2026-11-13T16:11:10.8629996Z",
+  "source_sha": "a4d0736b57eb27ce7ae7de479d62df2bc2edb6b0",
+  "full_report_and_context_read": true,
+  "manifest_entries_verified": 22,
+  "report_sha256": "58bd70217ff3c600e00fdfa176568fa40202b6115c63ca69f1126e4d811332b7",
+  "manifest_sha256": "b8321f70345c1568e582a35039fdd032b2bbd0c12c6eb3c9d5cd5a1fda1f8b0c",
+  "decision": "Accept analytical source313 J1-J6; no CI/merge/PDF/priority or independence claim",
+  "removed_restrictions": [
+    "strict floor b<K: construction proves r>=K",
+    "strict slack tau>1+g(K): construction proves tail<=1+g(K)"
+  ],
+  "remaining_observations": [
+    "Bracket each normalized tilt factor in manuscript",
+    "Constructive upper budget only; universal threshold not proved"
+  ]
+}
