@@ -1071,6 +1071,11 @@
       "sha256": "c55d23bec401ce5699cd2aedcbf6ccc3b37efd5b4d37191e8e3ae7da304d2941"
     },
     {
+      "sha256": "3e5e82fc72e044ea9af807a2030b73dbb94800d2cd1775302063b2eee761ba1e",
+      "bytes": 19,
+      "path": "papers/marginal-transfer/evidence339/.gitattributes"
+    },
+    {
       "bytes": 1889,
       "sha256": "e1ff0a6cab91062772bf562e65d9fa6cfb83676e829f2594d6124c24058e21f2",
       "path": "papers/marginal-transfer/evidence339/document-audit335A/assignment.txt"
