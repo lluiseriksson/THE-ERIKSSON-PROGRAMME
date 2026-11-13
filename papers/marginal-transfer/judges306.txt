@@ -1,0 +1,10 @@
+JUDGES306 — CUTOFF ONE, BEFORE ACCEPTANCE OF A CANDIDATE
+Question: can the fixed-cutoff endpoint construction be made to satisfy E[r^s 1_{r>1}]<=1 in every dimension, with totalmoment<=2, arbitraryfloorb<1 and actualgapcollapse? Can the same family then cover allK>=1, whileK<1 at this tailcap guaranteespositivegap?
+Preparatory reasoning disclosed: normalize the actual299 tilt by its own first moment; the ratio becomes product(1+delta*x), whose fractional moment has a strictly negative quadratic exponent. Choose the coefficient using P(R>E R), not P(R>K-1). No separate paper; hold uncompiled305 while this bounded question is audited.
+G1: Derive exact likelihood ratio from source299 definitions and show P(R>ER)->0 for delta=dL^(-1/3), fixed0<t<1, with actualTaylor remainder and order oflimits. Do not infer this from R->0 alone.
+G2: Exact meanone/positivity and q>1 event; prove allL tail<=1 using the actualevent, handle zero coefficients, and show coefficients->1.
+G3: Reprove actual leadingeigenvalue limits and criticalmoment->2 through source-bound299 Gramcomparison; no restricted eigenvalue substitution.
+G4: Exact convex totalbudgetdilution preserves tail at1 and fullspectrumlimit; finiteprefix enforcesanyfloorb<1. Samefamily allK>=1 bymonotonicity;Theta1 genuinelyderived.
+G5: For0<=K<1, tailmoment<=1 andmeanone implytotalmoment<=1+K^(s-1)<2 and thus explicitpositivegap. No claimthis is theoptimalgeneral threshold orconstant.
+G6: Stateproved restrictionremoval K>1 and perKfamilydependence only afteraudit; classicalfractionalmoment mechanism, no externalpriority/formal/numerical/physicalclaim. Preserve305and303limits as their historicalcorrectstatements. Frozenexactsource/body anddistinctaudit mandatory beforeacceptance.
+Falsifier: nonvanishingprobabilityatmean, failed strict-tail event/dilution, or nonvanishingGramerror. If anygatefails preservefailure and revise ratherthanmovehypothesistoa structure. Oneactivequestion306 only; terminate route afterthreeunitswithoutsubstantialprogress.

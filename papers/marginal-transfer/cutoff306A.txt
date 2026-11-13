@@ -1,0 +1,57 @@
+CUTOFF ONE AND A SINGLE FAMILY FOR ALL LARGER CUTOFFS — CANDIDATE306A
+Judges306 registered03ffe342d6db76476509ab93f5adeaedb769b629. Analytical candidate, no new PDF or score. Source303 fixedK>1 was correctly limited; this new argument uses additional first-moment-relative information and does not retrospectively change that source or its review. Group with300-303, not as a standalone paper.
+
+1. Statement
+Fix0<rho<1, s=(1+rho)/(1-rho)>1, and0<b<1. There exists a SINGLE density family r_L on uniform Boolean cubes, L>=1, satisfying
+ E r_L=1, r_L>=b, E r_L^s<=2,
+ E[r_L^s 1_{r_L>1}]<=1 for every L,
+ lambda1(T_r_L)->1, lambda2(T_r_L)->1, gap(T_r_L)->0. (1)
+The SAME family obeys E[r_L^s1_{r_L>K}]<=1 for every K>=1 and everyL. Moreover r_L->1 in probability, E r_L^s->2, and Theta=lim_{J->infinity}sup_L E[r_L^s1_{r_L>J}]=1.
+In contrast, for0<=K<1, every meanone nonnegative density with E[r^s1_{r>K}]<=1 has
+ gap(T_r)>=1-((1+K^(s-1))/2)^(1/s)>0. (2)
+This does not claim the optimal lower constant or a complete tail-budget classification belowK1. It resolves the previously excluded endpointK1 and removes the construction's dependence onK>=1.
+
+2. Exact additional information from the product tilt
+Use the actual source299 at49705281f05ab18b71bd9ebc2da1985a0433340c, research/critical299/critical299A.txt, equivalently the retained manuscript299A exact-budget proof. For sufficiently small fixed d>0 let delta_L=d L^(-1/3),
+ n(delta)=( ((1+delta)^s+(1-delta)^s)/2 )^(1/s),
+ R_L(x)=product_{i=1}^L (1+delta_L x_i)/n(delta_L),
+ m_L=E R_L=n(delta_L)^(-L)>0. (3)
+The factorization uses independent uniform bits and E(1+delta*x)=1 exactly. Hence
+ R_L/m_L=product_{i=1}^L(1+delta_L x_i). (4)
+For any fixed0<t<1,
+ E(R_L/m_L)^t = ( ((1+delta_L)^t+(1-delta_L)^t)/2 )^L. (5)
+For |delta|<=d<1 the bracket is positive and its logarithm is an even smooth function. Taylor's theorem with bounded fourth derivative on that compact interval gives
+ log( ((1+delta)^t+(1-delta)^t)/2 ) = t(t-1)delta^2/2+O_t,d(delta^4). (6)
+Indeed the value atzero is0, its first and third derivatives vanish by evenness, and its second derivative is t(t-1). The finite fourth-derivative bound is enough; no numerical remainder is claimed. Multiplying byL yields negative leading term t(t-1)d^2 L^(1/3)/2 and remainder O(d^4 L^(-1/3)). Thus (5) tends tozero. Markov at threshold1 proves
+ P(R_L>m_L)<=E(R_L/m_L)^t ->0. (7)
+This does NOT follow from R_L->0 alone and is the extra ingredient missing from303. It is an elementary fractional-moment calculation for a product likelihood ratio, not a new general probability method.
+Source299 also proves E R_L^s=1, E R_L^u->0 for every fixed0<u<s, m_L<=1, and a positive balancing coefficient beta_L->1 such that
+ w_L=(1+beta_L R_L)/Z_L, Z_L=1+beta_L m_L->1,
+has both actual leading transfer eigenvalues tending toone. The coefficient beta here is299's a; a below is different. Small finitely many omitted dimensions may use R_L=1,m_L=1; all limits persist and all bounds below remain valid.
+
+3. Mean-relative coefficients and exact tail atone
+Set p_L=P(R_L>m_L)^(1/s), a_L=1-p_L, A_L=1-a_L m_L, q_L=A_L+a_L R_L.
+All coefficients lie in[0,1]; E q_L=1 exactly. By(7), a_L->1 and A_L->1, while R_L->0 in probability by any interior moment. Thus q_L->1 in probability and q_L>=A_L eventually gives everyfloorb<1.
+The exact identity q_L-1=a_L(R_L-m_L) shows that when a_L>0 the events {q_L>1} and {R_L>m_L} coincide. When a_L=0, q_L=1 and its strict tail is empty. In both cases {q_L>1} is contained in {R_L>m_L}. Minkowski for s>1 gives
+ ||q_L1_{q_L>1}||s
+ <= A_L P(q_L>1)^(1/s)+a_L||R_L1_{q_L>1}||s
+ <=p_L+a_L=1, (8)
+since A_L<=1 and||R_L||s=1. This proves the exact allL tailmoment<=1 at cutoffone. p_L=0 likewise causes no division; event inclusion then makes the strict tail empty. These arguments do not replace a strict event by a weak one at an atom.
+
+4. Actual spectrum and total moment
+Let Q=P_sqrt(rho), S(v)=Q M_v Q and T_v=M_sqrt(v) P_rho M_sqrt(v). Endpoint forward hypercontractivity L2->L^{2s/(s-1)}, followed by Holder with1/s+2/(2s/(s-1))=1, gives ||QM_hQ||<=||h||s for all realh. Therefore ||QM_R_L Q||<=1. Linearity gives
+ ||S(q_L)-S(w_L)|| <= |A_L-1/Z_L|+|a_L-beta_L/Z_L| ->0. (9)
+The coefficient limits and the uniformly bounded multiplier control the full operator. For X=M_sqrt(v)Q, T_v=XX* and S(v)=X*X are square matrices with identical spectra including zeros and multiplicities. The finite-dimensional min-max perturbation bound transfers both source299 leading limits to the actual T_q. Its gap tends tozero.
+Independently E q_L^s>=A_L^s+a_L^s E R_L^s->2 by superadditivity. For fixed T>0, q_L^s1_{R_L<=T} converges in probability toone and is bounded by(1+T)^s; splitting any small neighborhood ofone from its probability-small complement proves expectation->1 on these varying probability spaces. On R_L>T, q_L<=1+R_L and q_L^s<=(1+1/T)^s R_L^s, so the tail expectation is atmost(1+1/T)^s. Thus limsup E q_L^s<=1+(1+1/T)^s; sendTtoinfinity. Together M_L:=E q_L^s->2.
+
+5. Exact total cap, floor and simultaneous cutoffs
+If M_L<=2 set epsilon_L=0; otherwise set epsilon_L=(M_L-2)/(M_L-1). The denominator is used only whenM_L>2. Then0<=epsilon_L<1 and epsilon_L->0. Put v_L=(1-epsilon_L)q_L+epsilon_L. Convexity gives E v_L^s<=(1-epsilon_L)M_L+epsilon_L<=2, and E v_L=1.
+Since epsilon_L<1, v_L>1 iff q_L>1. On this event v_L<=q_L, so v_L^s1_{v_L>1}<=q_L^s1_{q_L>1} pointwise. Equation(8) is preserved at cutoffone. The Gram difference is epsilon_L(P_rho-S(q_L)), tending tozero because ||S(q_L)||->1. Both actual leadingeigenvalues still tend toone. Also v_L-1=(1-epsilon_L)(q_L-1), proving v_L->1 in probability. Source299's universal two-sign estimate gives2lambda2(T_v)^s<=E v_L^s<=2 and hence E v_L^s->2.
+Because v_L>=A_L->1, replace a finite prefix by r_L=1 and retainv_L afterwards to enforce the prescribedfloor. Prefix densities have meanone,totalmomentone and EMPTY STRICT tailaboveone. Thus every allL bound and every limit survives. For every K>=1, pointwise r_L^s1_{r_L>K}<=r_L^s1_{r_L>1}, so the SAME sequence works simultaneously for all these cutoffs; it does not depend onK.
+For each fixedJ>1, bounded truncation r_L^s1_{r_L<=J} has expectation->1, while totalmoment->2. Thus the J-tail tends toone and H(J)>=1. The uniform tailbound atone gives H(J)<=1. Hence H(J)=1 for everyJ>1 andTheta1. Each finite matrix has a positivePerrongap, despite the vanishing dimension-uniform infimum. Totalcap2 is an inequality in each dimension, not asserted equality there.
+
+6. The opposite side of the cutoff
+If0<=K<1 andr>=0 hasmeanone andtailmoment<=1, then pointwise r^s1_{r<=K}<=K^(s-1)r. This includesK0, where bothsides arezero. Therefore E r^s<=1+K^(s-1)<2. The two-sign estimate299 andlambda1>=1 give lambda2/lambda1<=lambda2<=(E r^s/2)^(1/s), proving(2). ForK0 Jensen further forcesr=1; the displayed bound is not claimed optimal. The cutoff belowone is fixed for a commonpositivebound; no uniformity asKapproachesone is asserted.
+
+7. Provenance and limits
+This construction proves the formerly excludedK1 case; it removes rather than assumes a desired tail property, using the actualsource299 likelihood ratio. Classical forward hypercontractivity, min-max and fractional-moment estimates are credited mechanisms. No broad priority search or originality conclusion follows. Fixedrho andglobalweights remain; no Perronstationary marginal matching, finite-range interaction, localheat-bath, physicalgap, continuum or Yang-Mills claim is supplied. No mathematical computation, Lean verification, runtime, freshPDF, numericalgrade, human or independent-provider review is claimed. PR29 remains20/41,TermSource0. A distinct frozen-source/bodyaudit must acceptG1-G6 before this candidate is used in a replacement consolidated manuscript; preserve305 and all prior reports unchanged.
