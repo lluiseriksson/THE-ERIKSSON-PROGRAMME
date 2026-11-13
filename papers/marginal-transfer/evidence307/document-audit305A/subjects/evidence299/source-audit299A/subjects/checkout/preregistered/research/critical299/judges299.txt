@@ -1,0 +1,22 @@
+UNIT299 — PREREGISTERED CRITICAL MOMENT-BUDGET QUESTION
+Registered before accepting or auditing the proposed proof. Preparatory unreviewed reasoning exists and is retained separately; this is not a claim of blind discovery.
+
+Question: for fixed 0<rho<1 and s=(1+rho)/(1-rho), is B*=2^(1/s) the exact threshold for dimension-free positive normalized gaps of T_r=sqrt(r) P_rho sqrt(r), under r>=0, E r=1 and ||r||s<=B on uniform Boolean cubes of dimension L>=1?
+
+Proposed theorem: for B<B*, gap>=1-B/B*>0 (not claimed to be the optimal positive gap value). For B>=B*, no dimension-free positive lower bound exists, even for strictly positive densities with any prescribed fixed floor b in (0,1). B=1 must agree with uniform density. No rate claim at the critical budget, no physical/local/marginal-matching conclusion for the collapse family.
+
+Hypotheses: fixed rho, critical s, fixed B>=1; normalized uniform measure; actual multiplicative transfer congruence, descending eigenvalues with multiplicity; at least two total states. The fixed-floor counterexamples may replace a finite prefix with r=1.
+
+Mechanism: positivity and the positive/negative parts of a second eigenvector allocate two disjoint critical moment budgets; endpoint hypercontractivity bounds each. The balanced critical product tilt of unit298 has moment mass tending to2 and first two actual eigenvalues tending to1. Convex dilution to the exact boundary plus an endpoint operator-norm perturbation closes equality.
+
+Falsifier: a valid density violating 2*lambda2(T_r)^s<=E r^s; an invalid support/sign argument; failure of the balanced moment limit2; nonvanishing boundary dilution or loss of actual spectral collapse. Any such finding blocks the corresponding conclusion. Numerical agreement cannot replace proof.
+
+G1. Prove the nodal-sign bound for actual T, including r with zeros, rank-one case, multiplicities, positivity of the Perron vector on active support and nonzero sign parts. Do not assume a second eigenvector is balanced under the base measure.
+G2. Derive the endpoint exponents exactly: p=1+rho, p/(2-p)=s; show the restricted Holder/hypercontractive quadratic-form bound and lambda1>=1 with the normalized measure.
+G3. State only a sufficient positive gap below B* and an exact budget threshold; do not claim optimal positive gap values. Check B=1 and fixed-parameter/dimension quantifiers.
+G4. Bind the balanced family to actual unit298 definitions and independently verify needed expansions: log kappa=O(delta^4), log tau=-c delta^2+O(delta^4), log m=-(s-1)delta^2/2+O(delta^4), delta=d L^(-1/3). Derive a->1, Z->1 and both top actual eigenvalues->1.
+G5. Prove E R^s=1 and E R^t->0 for every fixed0<t<s; prove a global scalar cross-term bound sufficient for E r^s->2. All exponents must be in(0,s); a_L and normalizations must be included.
+G6. At B=B*, define dilution for both sides of the norm limit with no zero-denominator ambiguity. Prove epsilon->0, exact normalization/norm bound, endpoint Q(rtilde-r)Q norm control, transfer of eigenvalues to actual T, and arbitrary fixed density floor after finite-prefix completion. No unproved convergence rate.
+G7. Preserve prior partial critical results and their exact-PDF rating as history. Source audit is not a new PDF assessment. No external priority, formal proof, independent human/provider review, local Gibbs, physical mass-gap or continuum claim. Compare relevant primary sources before asserting novelty.
+
+Abandonment: a material failure in G1/G2 ends the proposed sharp lower-threshold route unless repaired analytically; a failure in G4-G6 downgrades to the proven strict-side statement, with equality explicitly open. After three units without substantive progress change route or name the concrete obstruction. No new active unrelated question.

@@ -1,0 +1,144 @@
+{
+  "schema": "source-audit-manifest-v1",
+  "verdict": "ACCEPT",
+  "candidate_sha": "9bc257640fc98ea9dd88317238fbdf0cbec79c95",
+  "judges_sha": "add50ba426e1fc8746d14c232d387cd5f0e5ae84",
+  "pr_body_capture_method": "gh pr view 250 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid",
+  "pr_body_normalization": "parse body; CRLF/CR to LF; trim terminal LF; append one LF; UTF-8 no BOM",
+  "pr_body_bytes": 841,
+  "pr_body_sha256": "ed46bd015ff28cf2fbb22abca8dc31025dc3e9d51935a1e9ea430eb1d40a9f88",
+  "mathematical_execution": "none",
+  "review_context": "Separate involved Codex/OpenAI auditor with300-302 continuation retained; same environment; no independent-provider/human claim",
+  "public_bundle_exclusions": [
+    "PRIVATE-MOS-1108.1210v5.pdf"
+  ],
+  "files": [
+    {
+      "file": "ASSIGNMENT.txt",
+      "bytes": 1530,
+      "sha256": "7aae6a9e0b7005775a493e4ac4bab74dd0fac6292fe4b25874781bd22900ec63",
+      "subject": "audit-created evidence ASSIGNMENT.txt",
+      "read_scope": "authored or captured during current audit",
+      "representation": "raw file bytes as written; no hash normalization",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "CLAUDE.git.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "subject": "9bc257640fc98ea9dd88317238fbdf0cbec79c95:CLAUDE.md",
+      "read_scope": "full retained audit300 read; unchanged diff and raw hash",
+      "representation": "raw Git blob bytes; no normalization",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "CONTEXT.md",
+      "bytes": 2842,
+      "sha256": "817abda0436e5bbbf9ae15cc5daf8acdae17ba4705a88616e74ba517628d7769",
+      "subject": "audit-created evidence CONTEXT.md",
+      "read_scope": "authored or captured during current audit",
+      "representation": "raw file bytes as written; no hash normalization",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "critical299A.git.txt",
+      "bytes": 11309,
+      "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+      "subject": "49705281f05ab18b71bd9ebc2da1985a0433340c:research/critical299/critical299A.txt",
+      "read_scope": "full retained audit300 read; unchanged blob; exact product R and balanced density, universal two-sign moment estimate",
+      "representation": "raw Git blob bytes; no normalization",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "finite-tail303A.git.txt",
+      "bytes": 7567,
+      "sha256": "64bf0f7f87c5d3a0cdfa56ef00c5e130626473c53dc8c2d19d7e2611f18c70c5",
+      "subject": "9bc257640fc98ea9dd88317238fbdf0cbec79c95:papers/marginal-transfer/finite-tail303A.txt",
+      "read_scope": "full fresh read and analytical six-gate rederivation",
+      "representation": "raw Git blob bytes; no normalization",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "judges303.git.txt",
+      "bytes": 2808,
+      "sha256": "d896879b7fb0180ded9f84a2ad32e86824780d9205f417440125f4aeae8b55a2",
+      "subject": "add50ba426e1fc8746d14c232d387cd5f0e5ae84:papers/marginal-transfer/judges303.txt",
+      "read_scope": "full fresh read",
+      "representation": "raw Git blob bytes; no normalization",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "OPERATIONAL-GOVERNANCE-CHARTER.git.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "subject": "9bc257640fc98ea9dd88317238fbdf0cbec79c95:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "read_scope": "full retained audit300 read; unchanged diff and raw hash",
+      "representation": "raw Git blob bytes; no normalization",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "pr250-body.normalized.txt",
+      "bytes": 841,
+      "sha256": "ed46bd015ff28cf2fbb22abca8dc31025dc3e9d51935a1e9ea430eb1d40a9f88",
+      "subject": "PR250 body",
+      "read_scope": "full",
+      "representation": "JSON body; CRLF/CR -> LF; strip final LF; one final LF; UTF-8 no BOM",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "pr250-capture.json",
+      "bytes": 910,
+      "sha256": "f7e0de5d76b25465dd8cddcfafffb767eb7da2ff977f1106676bf63d825bf91c",
+      "subject": "gh pr view 250 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid",
+      "read_scope": "full",
+      "representation": "command JSON string saved UTF-8 no BOM plus LF; raw saved bytes hashed",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "PRIVATE-MOS-1108.1210v5.pdf",
+      "bytes": 515516,
+      "sha256": "49da0d2da85f9090348ff33f1c6e7bd7d3ac9f43c7cedb26a072323d997c2179",
+      "subject": "https://arxiv.org/pdf/1108.1210v5",
+      "read_scope": "introduction equation1.1 and tensorization reread via primary web PDF; broader convention reading retained from300",
+      "representation": "raw private PDF copied from source-audit300A; no normalization",
+      "exclude_from_public_bundle": true
+    },
+    {
+      "file": "PRIVATE-SOURCES.md",
+      "bytes": 812,
+      "sha256": "b65581d7e354cf5e0aa2b44e37c7729cd2a0f7a972bcdadc90337a67782358cf",
+      "subject": "audit-created evidence PRIVATE-SOURCES.md",
+      "read_scope": "authored or captured during current audit",
+      "representation": "raw file bytes as written; no hash normalization",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "PROVENANCE.json",
+      "bytes": 899,
+      "sha256": "9b3f0f260f23f7737cd7f0f657f1c1d9446e7a3e8bde951ea3a9cc04cceca549",
+      "subject": "audit-created evidence PROVENANCE.json",
+      "read_scope": "authored or captured during current audit",
+      "representation": "raw file bytes as written; no hash normalization",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 16707,
+      "sha256": "497afc56428f0b04c2e4608ba7fbb991f75f1c6f6925dd48d392990b4bc83200",
+      "subject": "audit-created evidence REPORT.md",
+      "read_scope": "authored or captured during current audit",
+      "representation": "raw file bytes as written; no hash normalization",
+      "exclude_from_public_bundle": false
+    },
+    {
+      "file": "sharp-tail302A.git.txt",
+      "bytes": 9570,
+      "sha256": "f5a62867880c8ac895746962a3c6a9778394bfe575d0e6165dacc623f3df3346",
+      "subject": "a41f341608012146dc5c4e5dc10bb02a90a3dd11:papers/marginal-transfer/sharp-tail302A.txt",
+      "read_scope": "full retained audit302 read; unchanged source; finite-prefix Theta identity and prior finite-cutoff theorem",
+      "representation": "raw Git blob bytes; no normalization",
+      "exclude_from_public_bundle": false
+    }
+  ],
+  "self_hash_excluded": "MANIFEST.json omitted to avoid self-reference"
+}

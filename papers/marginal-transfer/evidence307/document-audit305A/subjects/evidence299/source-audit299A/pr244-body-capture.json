@@ -1,0 +1,10 @@
+{
+  "method": "gh pr view 244 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid,url,title; raw stdout saved; JSON body decoded",
+  "normalization": "UTF-8 without BOM; CRLF/lone CR converted to LF; trailing LF removed then exactly one LF appended",
+  "bytes": 827,
+  "sha256": "f37b8bedb5470dac5e7c4cfe7ba4d56b321e7d285c276c3570d1f13609c63e61",
+  "head": "49705281f05ab18b71bd9ebc2da1985a0433340c",
+  "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/244",
+  "title": "Candidate exact critical moment-budget threshold for Boolean transfer gaps",
+  "utc": "2026-11-13T05:58:28.2761737Z"
+}

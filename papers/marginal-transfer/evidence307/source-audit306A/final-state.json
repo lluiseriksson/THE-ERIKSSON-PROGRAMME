@@ -1,0 +1,33 @@
+{
+  "verdict": "ACCEPT",
+  "candidate": "476940ce788fb3e75cc8594e57af9fde226f7e83",
+  "preregistration": "03ffe342d6db76476509ab93f5adeaedb769b629",
+  "pr_body_normalized_bytes": 998,
+  "pr_body_normalized_sha256": "ebc7fabf190320d64c3846e34b2b28e9c1925a3f6dfbe0911d034275f014c68a",
+  "pr_capture_command": "gh pr view 253 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid",
+  "body_regime": "JSON decoded; CRLF and CR to LF; trim terminal LF; append one LF; UTF-8 without BOM",
+  "initial_final_pr_binding_equal": true,
+  "gates": [
+    "G1 ACCEPT",
+    "G2 ACCEPT",
+    "G3 ACCEPT",
+    "G4 ACCEPT",
+    "G5 ACCEPT",
+    "G6 ACCEPT"
+  ],
+  "git_status_porcelain": [],
+  "required_ci": "separate, not audited",
+  "integration": "not performed; PR250 must precede PR253",
+  "inbound_messages_received_after_assignment": 0,
+  "disposable_clone_created": false,
+  "cleanup_pending": false,
+  "third_party_reference_pdfs_in_package": false,
+  "private_reference_pdf_policy": "private=true; excluded_from_public=true",
+  "actual_served_model": "unknown",
+  "actual_effort": "unknown",
+  "same_provider": true,
+  "shared_filesystem": true,
+  "human_review": false,
+  "technical_isolation": false,
+  "utc_capture": "2026-11-13T14:14:42.1558023Z"
+}

@@ -1,0 +1,96 @@
+CRITICAL DENSITY TAILS AND NORMALIZED TRANSFER GAPS — CANDIDATE300A
+Status: analytical candidate, not yet separately audited or formally verified.
+Preregistered judges:493d0aa62345fe537b7414f7cbc8d2a01d16b636, papers/marginal-transfer/judges300.txt.
+No numerical computation is used. This belongs to the existing transfer manuscript, not a proposed standalone small-corollary paper.
+
+1. Setting and precise claim
+
+On the uniform probability space {-1,1}^L, L>=1, fix 0<rho<1 and set s=(1+rho)/(1-rho), p=1+rho, a=1-rho, theta=1/s^2. Let r>=0, Er=1. Write P=P_rho, Q=P_sqrt(rho), and T=M_sqrt(r) P M_sqrt(r). Descending eigenvalues are counted with multiplicity, including the zero block off {r>0}; gap(T)=1-lambda2/lambda1.
+
+Claim A. For K>=1 satisfying
+  E[r^s 1_{r>K}] <= 8^(-s),                                    (1)
+put B_K=(K^(s-1)+8^(-s))^(1/s). Then
+  gap(T) >= min{1/2, 2*8^(-s^2)*K^(1-s^2)/B_K} >0.             (2)
+All constants depend only on rho,K, not L or r. They are not claimed sharp.
+
+Claim B. For a sequence of such densities on possibly varying cubes, uniform integrability of their critical powers,
+  lim_{K->infinity} sup_L E[r_L^s 1_{r_L>K}]=0,                 (3)
+implies a dimension-free positive normalized gap. More concretely, suppose a nonnegative nondecreasing function psi tends to infinity and
+  sup_L E[r_L^s psi(r_L)] <= C < infinity.
+Choose a finite K>=1 with psi(K)>0 and C/psi(K)<=8^(-s). Then (2) holds uniformly. The critical moment itself may have an arbitrarily large finite bound. A fixed diverging Orlicz factor is an additional assumption, not a consequence of a mere critical Ls bound.
+
+Claim C. For the diluted exact-budget collapsing sequence of unit299, with any prescribed fixed floor b<1, r_L tends to1 in probability, E r_L^s tends to2, and for each fixed K>1,
+  E[r_L^s 1_{r_L>K}] ->1.                                    (4)
+Thus that counterexample fails (3). This does not claim that (3) is necessary for all positive-gap families.
+
+2. Classical inequalities and an endpoint multiplier estimate
+
+We use Boolean forward hypercontractivity ||Qf||2<=||f||p and reverse hypercontractivity
+  <f,Pg> >= ||f||a ||g||a   for f,g>=0.                       (5)
+The convention is the probability-normalized cube and eigenvalue rho^|S| on Walsh character S. These are classical; see Mossel, Oleszkiewicz and Sen, On Reverse Hypercontractivity, arXiv:1108.1210v5. For functions with zeros, (5) follows by applying the positive-function inequality to f+epsilon,g+epsilon and taking epsilon down to0 on the finite space. Quasi-norms for a<1 are used only algebraically, never via a false triangle inequality.
+
+For any w>=0 and ||h||2=1, Holder with conjugate exponents 2/p and 2/(2-p) gives
+  ||sqrt(w)h||p^2 <= ||w||_{p/(2-p)} = ||w||s.
+Consequently
+  ||Q sqrt(w)h||2^2 <= ||w||s.                               (6)
+This also bounds ||M_sqrt(w)P M_sqrt(w)|| by ||w||s. Equivalently, for signed w, duality of forward hypercontractivity gives
+  ||Q M_w Q||_{2->2} <= ||w||s.                              (7)
+Indeed |<u,Q M_w Q v>|<=||w||s ||Qu||_{2s/(s-1)}||Qv||_{2s/(s-1)}, and the two latter norms are at most ||u||2,||v||2 because 2s/(s-1)=1+1/rho.
+
+The total critical moment satisfies
+  E r^s <= K^(s-1) E[r 1_{r<=K}]+8^(-s)
+          <= K^(s-1)+8^(-s).
+Thus lambda1<=B_K by (6). Also lambda1>=1: use the unit vector sqrt(r), whose Rayleigh quotient is <r,Pr> >=(Er)^2=1 since every Walsh eigenvalue of P is nonnegative. T is positive semidefinite.
+
+3. Sign support and truncation
+
+On S={r>0}, every entry of T is strictly positive. Its active Perron eigenvalue is simple and its Perron vector strictly positive. Off S, T vanishes. If |S|=1 then lambda2=0 and gap=1, proving (2). More generally, if lambda2<1/2, lambda1>=1 gives gap>1/2, also sufficient. We henceforth assume lambda2>=1/2.
+
+Choose a real unit eigenvector h for lambda2. Since lambda2>0, h vanishes off S. It is orthogonal to the active Perron vector and therefore has nonzero positive and negative parts. Write
+  h=u h_+ - v h_-,  u,v>0, u^2+v^2=1,
+where h_+,h_- are nonnegative, disjointly supported unit vectors. This is not a balance condition under the uniform measure. Let D=<h_+,T h_->>0. Taking inner products of Th=lambda2 h with h_+ and h_- gives
+  A_+=<h_+,T h_+>=lambda2+(v/u)D,
+  A_-=<h_-,T h_->=lambda2+(u/v)D.                            (8)
+In particular A_+,A_->=lambda2.
+
+For either sign, let f=sqrt(r)h_sign, f_low=f1_{r<=K}, f_high=f1_{r>K}. From (8), ||Qf||2>=sqrt(lambda2)>=1/sqrt(2). Apply (6) with w=r1_{r>K}, so (1) gives ||Qf_high||2<=1/sqrt(8). The ordinary L2 triangle inequality, with Qf=Qf_low+Qf_high, then yields
+  ||Qf_low||2 >=1/sqrt(2)-1/sqrt(8)=1/sqrt(8).
+Forward hypercontractivity implies ||f_low||p>=1/sqrt(8), while pointwise r<=K on this part gives ||f_low||2<=sqrt(K).
+
+The interpolation identity
+  1/p=theta/a+(1-theta)/2, theta=(1-rho)^2/(1+rho)^2
+follows by substitution. Power-Holder, valid also for 0<a<1, gives
+  ||g||p <= ||g||a^theta ||g||2^(1-theta).
+For completeness, write |g|^p=(|g|^a)^(theta p/a)(|g|^2)^((1-theta)p/2); the two displayed exponents are in (0,1) and sum to1, so ordinary Holder applies before taking the p-th root. The already-proved positive lower p-norm ensures g=f_low is nonzero. Therefore, for each sign,
+  ||f_low||a >=8^(-1/(2theta))*K^(-(1-theta)/(2theta)).        (9)
+
+4. Cross term and actual gap
+
+Positivity of P and (5), followed by (9) for both signs, show
+  D=<sqrt(r)h_+,P sqrt(r)h_->
+    >=<f_{+,low},P f_{-,low}>
+    >=8^(-1/theta)K^(-(1-theta)/theta)
+     =8^(-s^2)K^(1-s^2).                                   (10)
+The compression of T to span{h_+,h_-} is [[A_+,D],[D,A_-]]. By (8), (u,-v) is an eigenvector with eigenvalue lambda2. Its other eigenvalue is
+  lambda2+D(v/u+u/v)=lambda2+D/(uv).
+The Rayleigh maximum in this subspace is at most lambda1, so lambda1-lambda2>=D/(uv)>=2D. Dividing by lambda1<=B_K proves the second alternative in (2). Together with the earlier cases this proves Claim A. Multiplicity of lambda2 causes no difficulty because the argument applies to any real second eigenvector orthogonal to the simple Perron vector.
+
+5. Uniform integrability and Orlicz consequence
+
+Condition (3) supplies one finite K for (1), simultaneously for all dimensions. This proves Claim B without a separate power strictly greater than s. For its quantitative assertion, r>K implies psi(r)>=psi(K), whence E[r^s1_{r>K}]<=C/psi(K). Examples include psi(t)=log(1+t)^alpha with any fixed alpha>0 and a uniform bound on that moment. No claim is made that the relevant Orlicz moment follows from ||r||s<=B. Conversely, a uniform s+epsilon moment implies (3) by the elementary bound E[r^s1_{r>K}]<=K^(-epsilon)E r^(s+epsilon), so the tail assumption covers the previously proved supercritical moment regime.
+
+6. Critical counterexample's escaped moment
+
+Use precisely the balanced product-tilt family and dilution in research/critical299/critical299A.txt at SHA49705281f05ab18b71bd9ebc2da1985a0433340c, reproduced in papers/marginal-transfer/evidence299/critical299A.txt and Theorem13 of manuscript299A.tex at6f9b27f59e3b105a872c773ed4d38d027536655b. Denote its undiluted density by q_L=(1+a_L R_L)/Z_L. Its proved limits are a_L->1, Z_L->1, E R_L^s=1, E R_L^t->0 for every fixed0<t<s, E q_L^s->2, and both leading eigenvalues of T_{q_L} tend to1. These are explicit dependencies on that analytical result, not new independent certification of it.
+
+Markov's inequality with any fixed0<t<s yields R_L->0 in probability. Hence q_L->1 in probability. The exact-budget density is r_L=(1-epsilon_L)q_L+epsilon_L with epsilon_L->0 (and a possible finite prefix r_L=1), so r_L->1 in probability too. The established endpoint perturbation estimate (7) gives lambda2(T_{r_L})->1. Its exact budget is E r_L^s<=2. The already-proved two-sign-region inequality from unit299 is 2 lambda2(T_{r_L})^s<=E r_L^s. Squeezing proves E r_L^s->2 without presuming dilution preserves moments directly.
+
+Fix K>1. The bounded function F_K(x)=x^s1_{x<=K}, x>=0, is continuous at1. Convergence in probability to1 gives E F_K(r_L)->1, also on varying probability spaces: for any eta>0 choose a neighborhood of1 where |F_K-1|<=eta, bound the complement by (K^s+1) times its probability, and then let eta down to0. Subtracting from E r_L^s->2 proves (4). Finite-prefix modification has no effect. The critical endpoint collapse is therefore supported by a nonvanishing tail of the critical moment, even though the densities approach1 in probability and retain the prescribed positive floor.
+
+7. Prior work, status and relevance
+
+Tail criteria for spectral gaps and uniformly integrable operators are established theory, not an invention here. Wang, Criteria of Spectral Gap for Markov Operators, arXiv:1305.4460v6, introduction and Theorem1.1, characterizes the gap of an ergodic invariant Markov operator's symmetrization using an operator tail norm below1. Its stated tail norm takes a supremum over unit L2 inputs. Our explicit hypothesis instead concerns a family of density powers under the uniform base measures. A quantitative change-of-measure implication has not been established in this note; this distinction is not a novelty certificate. Primary source inspected: https://arxiv.org/pdf/1305.4460v6 .
+
+Miclo, On hyperboundedness and spectrum of Markov operators, Section6/Proposition11, already records a norm-budget gap transition at2 for L2-to-L4 Markov norms. That precedent remains relevant to unit299 and supplies no standalone originality claim for this tail application: https://perso.math.univ-toulouse.fr/miclo/files/2012/04/hyperboundedness.pdf . The sign-part compression and forward/reverse inequalities are inherited classical mechanisms. We have a direct quantitative proof specialized to the fixed Boolean congruence, subject to separate audit; external priority remains unresolved.
+
+This candidate replaces strict power-exponent slack by explicit critical-tail control, and identifies the escaped moment in the previously constructed failure family. It does not eliminate all integrability hypotheses, prove necessity of uniform integrability, compute an optimal gap constant, combine moment control with the code family's marginal matching, or say anything about local Gibbs dynamics, a physical spectral gap, or the Yang-Mills continuum limit. No numerical exact-PDF grade is assigned or inherited. If no material value beyond known theory is established, retain as a grouped technical extension, not a separate paper.

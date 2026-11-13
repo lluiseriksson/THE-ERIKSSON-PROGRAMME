@@ -1,0 +1,58 @@
+{
+  "paper_id": "ARR-2026-7KV9Y9ASX48H7A7N",
+  "version": "v2",
+  "version_id": "PENDING_PARENT_ALLOCATED_VERSION_ID",
+  "canonical_sha256": "a8b265c715f8c7748b60767555b2e8343402626d623e30fe9729a74f9e01474d",
+  "provider": "OpenAI",
+  "model_id": "not_exposed",
+  "assessed_at": "2026-11-13T03:20:00+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.00,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "The completed analytical review found no substantive error in the code construction, stationary marginal invariance, parity spectrum or upper-density-only gap proof, including zero support and hypercontractive normalization. This is fallible involved AI review, not formal verification."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Explicit hypotheses, finite constants, proved coding dependencies, normalization and support treatment make the proof chains rigorous. The sign-part compression and interpolation were checked in the completed review. This criterion is newly assigned from that analysis, not renamed from clarity."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The joint weighting/stationary marginal obstruction and explicit density complement are plausible useful syntheses. The classical ingredients and limited historical comparison leave external priority unestablished."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "The paper substantively separates marginal information from relaxation for a specified transfer family and identifies sufficient extra density information. Concrete applications, fixed-range/local relevance and broad physical consequences remain unestablished."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Self-contained analytical proofs, explicit constants, PDF/source identities and supplied page inspection support checking. The completed review did not independently rebuild or rerender the PDF or audit the entire advertised source package."
+    }
+  },
+  "summary": "First native AIRR rubric calibration of the already completed assessment of this exact nine-page PDF, not a second review or resampling. The substantive verdict is unchanged: no mathematical error identified, suitable for transparently labelled working-paper circulation with improvements and limitations. A native score of 4.00 means strong: explicit sound specialized results, with originality, sharpness and broader applications insufficiently established for a stronger classification. It is not an average or conversion of the preserved original generic 7.4/10 arithmetic mean. Rigor is newly assigned from the completed proof analysis; original clarity 8/10 is not relabelled. This is an involved OpenAI/Codex assessment; served backend and reasoning setting are not exposed, the author owns AIRR, and no human peer review or provider independence is claimed. The version identifier is pending administrative allocation. Publish this addendum with the original report and count them as one review.",
+  "strengths": [
+    "Explicit code-based positive weights preserve linear-order product marginals while exponentially many normalized transfer eigenvalues approach one exponentially fast.",
+    "Code symmetry proves the same marginal equality for the actual Perron stationary law, avoiding conflation of weighting and stationary laws.",
+    "The exact parity transfer spectrum correctly separates the transfer family from single-site heat-bath dynamics.",
+    "The upper-density-only dimension-free gap proof handles zero densities without a hidden lower-density assumption; sign-part compression avoids small-sign-mass loss.",
+    "The manuscript clearly excludes fixed-range Gibbs, local-dynamics, continuum and physical mass-gap conclusions."
+  ],
+  "weaknesses": [
+    "O1 - Originality not established (substantive positioning issue, not a proof failure). Pages 8-9 provide honest but short comparisons. Before claiming a major original theorem, compare Theorem 7 with quantitative positivity-improving/hyperbounded-operator results and compare Theorem 1 with known code-supported small-noise or transfer constructions. Supply exact hypotheses and conclusions, rather than relying on title-level differences or absence of search hits. The present caveat is adequate for a working paper.",
+    "O2 - Quantitative sharpness is largely unexplored (research limitation). At B=1 the density is exactly one and the true gap is 1-rho, while the displayed bound is 2^(-2 e_rho). The deterioration as rho tends to one is particularly severe. Corollary 8 consequently supplies a necessary exponential rate which need not match the construction's rate. Add an explicit elementary benchmark and explain which parameter regimes, if any, make the bound numerically informative. No current theorem is false because of this loss.",
+    "O3 - Application relevance remains narrow (research limitation). The examples allow global many-body weights and full-configuration transitions. A concrete application within that class would clarify why retaining both weighting and stationary marginals matters beyond a logical obstruction. Do not use the word Ising in the title as evidence of fixed-range physical relevance; the body already supplies the correct restriction.",
+    "O4 - Clarify one sign-part step (minor exposition). On page 7, add a line explaining that lambda_2 h_+<=T_r h_+ holds on the positive support by the eigenrelation and elsewhere by positivity, with the same argument for h_-. Also identify that the final lower bound <f,P_rho f>>=lambda_2 uses integration against the unit h. The proof as printed is valid, but these are its least immediate transitions.",
+    "O5 - Reproduction claims should remain qualified (evidence limitation). This review verified object hashes, source existence, text and supplied page images; it did not rebuild the PDF or independently bind raster output to that build. The advertised source package and preregistered analytical checks were not audited here. Publish an exact manifest and a build recipe if reproducibility is used as a public assessment criterion. Do not label this report a successful build reproduction or machine proof.",
+    "O6 - Minor presentation density. The abstract is long, and page 7 concentrates the entire new argument into tightly packed formulas. A short paragraph describing the sign-parts/cross-entry strategy would improve accessibility. No clipping, overlapping equations, missing page numbers, or visibly broken references were found in the supplied nine pages."
+  ],
+  "potential_errors": [],
+  "strong_novelty_candidates": [
+    "Candidate only, priority not established: the exact joint conclusion of linear-order weighting and stationary marginal matching with exponentially many slow transfer modes.",
+    "Candidate only, priority not established: the explicit dimension-free upper-density-only congruence gap bound permitting zeros, using ordinary/reverse hypercontractivity and sign-part compression."
+  ],
+  "unresolved_material_objections": []
+}

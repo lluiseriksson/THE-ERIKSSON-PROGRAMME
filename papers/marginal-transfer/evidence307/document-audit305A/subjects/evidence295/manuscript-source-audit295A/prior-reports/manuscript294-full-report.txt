@@ -1,0 +1,43 @@
+294A NEW WHOLE-MANUSCRIPT/SEVEN-FILE SOURCE-DELTA AUDIT
+VERDICT: PASS_BOUNDED_MANUSCRIPT_SOURCE_DELTA at7b19b6a7b0317c638e3c41d91ddfa56733415cc9. The new manuscript is a faithful complete source-level transfer of the accepted294 research proof. No material mathematical/transcription defect or mandatory source correction found. A nonblocking production-package closure note is retained below; this is not PDF/layout acceptance, grading, publication or a new broad originality verdict.
+
+EXACT SUBJECT AND SCOPE
+Whole471-line papers/marginal-transfer/manuscript294A.tex read, rawSHA256ebbf6c77baff589ea9d41b088d6a1261c8cc2f6785fd8607771de72ba9e1cb7a. EntireSOURCE-INPUTS4members and attributes read/verified. Exactdelta from8c0afed is ONLY7added paths underpapers/marginal-transfer. All7checkoutfiles equal rawGitblobs. All4 declaredinputs match their exactrawsize/SHA256 and originalcheckoutcopies. The source/judges match the priorproof/preregistration, and the manuscriptproofs are checked in full ratherthan inheriting a PDFscore. Fullbinary/textdiff andinputbinding metadata retained.
+
+PRIOR FREEZE EXCEPTION IS NOT ERASED
+The earlier governingreportcb535c1ba256bdc4e294dabeb841699e926f61eaa8bb54d6ef172a478faa7ddd remains unchanged: its mathematicalverdict concerned8c0afed only, andit correctly refusedapprovalof7b19b6a7's newmanuscript becauseHEADchanged duringtheoldreading. Parentnow explicitly acknowledgedintentional drafting/commit duringthatreading and requestedthisnewexactHEADaudit. All26oldrawartifacts plusoldmanifest are verified/copiedunchanged here, includingbothhelperfailures andtheactualfreezeexception. Thisnewreading resolvesonlythenew7-file sourcecontent at7b19b6a7; itdoesnotretroactively turntheoldrun intofreezecompliance. No oldjudge/report/score is reinterpreted.
+
+COMPLETE TRANSFER FINDINGS
+1. Complete code input
+Lemma1 carries both primal and dual union bounds, includes full-rank failure, pays the entropy estimate and floor/ceiling conventions, and proves labelled projection surjectivity. The manuscript main choice strengthens the source's sufficient h(alpha)<R to h(alpha)<R/2, which is feasible and implies all required inequalities. No unsupported explicit code or fast-encoding theorem is claimed.
+
+2. Finite positive spectral estimate and constant7
+The strictly positive mixture, a>=1/(2m), row-sum bound, principal interlacing, outside PSD trace<=eta and cross norm<=sqrt eta reproduce the full source argument. Division uses lambda1>=a and does not require1-s positive. Fixed-beta R/gamma choices and eta yield4exp(-gamma L)+3exp(-beta L)<=7exp(-gamma L), for every nonleading index2..m. Eigenvalue multiplicities, strict finite Perron separation and eventual k<L are correctly stated.
+
+3. Actual stationary tuple
+The full-config Perron Doob transition is positive, stochastic, reversible with pi=v² and similar to A/lambda1. Code-translation symmetry plus unique normalized positive Perron vector forces pi code-invariant; surjective projections give every marginal translation and exact uniform tuples. The manuscript does not confuse pi withmu or silently use a heat-bath operator.
+
+4. Parity full spectrum and sharp control
+Complement-character matrices retain the correct row/column factors and determinantDelta=(1-t²)rho^L. All2^(L-1) blocks are counted. The s0 upperroot is Perron and s1 upperroot is second; the empty/full lowerroot cannot overtake it. Comparing upperroot/z gives z1/z0 and then tanh(2beta). L2,t->1 gives sharp supremum, not finite hard-support equality. The earlier conditional heat-bath gap is explicitly distinguished, so no dynamic relabelling occurs.
+
+5. Certificate and nonoverclaim
+The certificate is literally a function ofL,beta and labelled marginal tuples ofmu/pi, valid on all strictly positive weights. Equal product input forces at most7exp(-gamma L), not a claim that product dynamics itself is slow or every functional vanishes. Global interactions, exponentially small weights and full-configuration dynamics are explicit; no fixed-range Gibbs, local generator, uniform density, entropy, physicalgap or metastable-set claim is made.
+
+6. Citations and source/review context
+Both own predecessors are named accurately as different mechanisms, and the elementary coding/PF/interlacing/Doob methods remain credited classical. The primary-reference scope agrees with the prior bounded readings; no new search or priority certification is inherited. Exact backend unknown/involved review, no human/provider-independent review, no oldPDFgrade, and author/platform ownership conflict are disclosed. The source commit macro is an unbuilt placeholder until separate production, not an existing reproducibility claim.
+
+7. Seven-file raw package and remaining production closure
+All7 paths are additions only; all4 input sizes/hashes match packageGit rawbytes and originalcheckout bytes. Old predecessor originalGitLF versus checkoutCRLF is explicitly a byte-regime difference, while newpackageattributes -text preserve the declared rawcopies. SOURCE-INPUTS correctly pins proof8c0afed and saysreviewpending. The current7-file bundle does not yet contain complete auditreports; the manuscript's source-package-retention wording must be realized by the final accompanying reproduction/evidence package. This NEW D packet supplies complete immutable oldhistory pluscurrentreport, but isnot itself a finished publicproductionpackage. Retain/link both auditcontexts andfreezeexception beforepublication; no mathematical correction is required.
+
+ADDITIONAL ADVERSARIAL CHECKS
+The code lemma's strict-weight event is bounded by an inclusive binomial sum, valid evenwhen deltaL isinteger; its dual condition excludes allnonzero weights throughfloor(alphaL), exactlywhat isneeded. Both rate inequalities are strict, so ceilRL only changes finite thresholds. The principalcodeblock mayhave1-s negative atsmallsize, butthe spectralupperbound remainsvalid because actuallambda1>=a andpositivity arehandledseparately. Theoutside perturbationneednotbePSD asawhole: triangleboundonitsPSDdiagonalpart andsymmetriccrosspart iswhat theproofuses. No spectralcontinuity/hard-support limit ishiddeninmainconstruction.
+
+Perronstationarymatching isnot an inferencefrominputmarginals alone: thecodegroupcommuteswiththeactualweightedmatrix andPFuniqueness isused. Thisextraargument appears in full. The parity proof coversnegative t andL2/equal-sizeblocks because rootsdependont²; identificationofthetop2usesbothupperandlowerrootcomparisons. Its uniformceiling isasharp supremum overt,L, not an attainedstrict-positive t1example. Alltranscriptioncoefficients andrho/tanh scalings matchtheacceptedproof.
+
+NONBLOCKING PACKAGE READINESS NOTE
+Current7files are a frozenpre-production sourcebundle; SOURCE-INPUTS sayssourceauditpending. The sentence that anaccompanyingsourcepackage retainscompleteanalyticalaudit mustnot beusedas evidence that those reports arealreadyinside these7Gitfiles. Theyarenot. The finalpublic/reproduciblepackage shouldcarryorlinkthecompletegoverningold/newreports, contexts andfreezehistory, notmerelyanacceptancelabel. This is a later packaging/evidenceclosure obligation, not a missingmathematicalpremise and not a reason toinheritanyscore. No freshPDF/scientificgrade orpublication isapprovedbythisgate. The fulloldandnewauditrecord is retainedinthisnewprivateDpacket now.
+
+No other materialorrequiredminorcorrection found. This is morethan adirectrenaming ofeitherownpredecessor becausebothmarginaltuples andmanyslowmodes areadded, butproofmethodsremainclassical andglobalpriority/frontierrelevanceunestablished. Theconclusionshold ontheexplicit arbitrarypositiveweight class, notmorephysical/local classes. No new search needed orperformed, no priorproof orLeanstatus promoted into294formalverification.
+
+OPERATIONS AND FINAL STABILITY
+InvolvedCodex/OpenAI separate-session role, exactservedbackend/model/effort unexposed; notindependent/blind/humanpeerreview. Noincomingmessage, source/Git/state mutation, externalmodelscore, compiler/test/runtime/mathcode, network ornewagent inthisnewaudit. Concurrentengineeringreading is taskcontextonly andwasnotcontacted. Explicitmetadataif/raisechecks, noPythonassert. Nohelperfailure inthisNEW audit; olderfailures arepreservedasolderhistory. HEAD/all7subjectscheckedagainatsealing. Exactassignment/context, sevenfiles,4inputbindings, diff, completeoldpacket andfinalrawmanifest retained; nodisposablecloneorcleanupdebt.

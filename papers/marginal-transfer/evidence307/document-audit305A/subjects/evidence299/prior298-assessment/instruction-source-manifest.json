@@ -1,0 +1,30 @@
+[
+  {
+    "path": "D:\\LEEME.md",
+    "bytes": 16801,
+    "raw_sha256": "3502d37a3f765ea2e867f1379917b25b7d458c03500b682b2b3403210181b1b8",
+    "use": "Instructions only, not scientific evidence",
+    "representation": "Exact stored bytes, no normalization"
+  },
+  {
+    "path": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\CLAUDE.md",
+    "bytes": 24408,
+    "raw_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+    "use": "Instructions only, not scientific evidence",
+    "representation": "Exact stored bytes, no normalization"
+  },
+  {
+    "path": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13831,
+    "raw_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+    "use": "Instructions only, not scientific evidence",
+    "representation": "Exact stored bytes, no normalization"
+  },
+  {
+    "path": "C:\\Users\\lluis\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.1111.10934\\skills\\pdf\\SKILL.md",
+    "bytes": 7978,
+    "raw_sha256": "5e14b4b8f944dc5e678ee703dfacf583010431d64d5d829902c5b2541f736c89",
+    "use": "Instructions only, not scientific evidence",
+    "representation": "Exact stored bytes, no normalization"
+  }
+]

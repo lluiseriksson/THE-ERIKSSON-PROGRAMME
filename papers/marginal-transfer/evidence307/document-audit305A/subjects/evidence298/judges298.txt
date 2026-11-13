@@ -1,0 +1,39 @@
+298: critical density-moment budget question, 2026-11-13.
+Recorded after the author developed candidate arguments on paper, before a
+source audit. This is not a blind pre-discovery registration.
+
+One question: at s=(1+rho)/(1-rho), does a dimension-free bound on ||r||_s
+force a dimension-free gap for T=M_sqrt(r) P_rho M_sqrt(r)?
+Target: a small-budget positive theorem and a large-budget counterexample,
+not the exact critical budget. All norms use uniform cube probability.
+
+Hypotheses: fixed 0<rho<1, critical s, mean-one nonnegative density.
+Positive side: a sufficiently small fixed B-1. Negative side: every fixed B>2,
+strictly positive densities, including a uniform positive lower bound.
+Mechanism: endpoint hypercontractivity bounds Q(r-1)Q; for collapse, balance
+the top eigenvalues of the uniform block and one dimension-dependent product
+tilt, then estimate their cross square-root norm in a two-channel Gram matrix.
+
+G1: exact normalization, positivity, uniform moment bound for every integer L,
+    and an explicit dimension-independent lower density floor for collapse.
+G2: endpoint hypercontractive exponents and the actual transfer spectrum;
+    no substitution of a heat-bath generator or stationary-law marginal claim.
+G3: complete scalar derivation of moment-near-one => ||r-1||_s small, for all s>1.
+G4: exact one-bit top eigenvalue and cross norm; analytic remainder justification
+    for the vanishing quadratic coefficient and the negative cross coefficient.
+G5: balancing coefficient uniformly bounded with kappa(delta_L)^L tending to1;
+    fixed rho,s,B, L-dependent tilt only; no hidden L-dependent moment budget.
+G6: Gram nonzero-spectrum equivalence and multiplicities, top two eigenvalues,
+    and a gap upper bound tending to zero; constants and cutoff honestly stated.
+G7: comparison with published297 v2 strict regimes and classical primary sources;
+    no claim that the critical budget is optimal or original priority established.
+G8: explicit preservation of unsuccessful preliminary routes; no Lean or
+    numerical verification claimed. One separate full-source audit of a frozen
+    commit, no inbound messages while auditor works.
+
+Falsifiers: any failed gate, wrong sign in the cross-norm expansion, failure of
+the budget to hold for fixed B>2, or an invalid multiplicity/normalization step.
+Abandon after three units without substantial progress, or a fatal obstruction
+not repairable under the unchanged target; retain all failures. Do not modify
+a failed gate. Consolidate with the same paper, not a separate small-corollary
+publication. Exact-budget optimization is outside this unit's target.

@@ -1,0 +1,74 @@
+{
+  "candidate": "375047fac74dee4e464031f7e5b4d2368d5276fa",
+  "body_bytes": 1157,
+  "body_sha256": "211e1681aa56a5a7461d6f4a5d73ee2b887cb8e5edb94f54041d0db7a09f1dfd",
+  "judges_unchanged": true,
+  "labels": 40,
+  "refs": 49,
+  "duplicate_labels": [],
+  "missing_refs": [],
+  "citations": 17,
+  "bibitems": 11,
+  "missing_cites": [],
+  "old_proofs": 14,
+  "new_proofs": 18,
+  "old_proof_preservation": [
+    {
+      "old_proof_index": 1,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 2,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 3,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 4,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 5,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 6,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 7,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 8,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 9,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 10,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 11,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 12,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 13,
+      "byte_text_preserved": true
+    },
+    {
+      "old_proof_index": 14,
+      "byte_text_preserved": true
+    }
+  ],
+  "source_commit_placeholder": true
+}

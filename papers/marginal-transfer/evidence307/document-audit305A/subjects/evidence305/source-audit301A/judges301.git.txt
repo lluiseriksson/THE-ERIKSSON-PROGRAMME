@@ -1,0 +1,17 @@
+UNIT301 — CRITICAL MOMENT UNIFORM INTEGRABILITY IS NOT NECESSARY
+Preregistered before accepting or auditing the candidate; preparatory reasoning exists in evidencia-300/prospective301-nonnecessity-unreviewed.txt. Not a blind-discovery claim. Unit300's mathematical question is analytically closed; its required integration checks continue without changing its accepted SHA. This is the only new active mathematical question.
+
+Question: can a fixed-rho Boolean transfer family have a uniformly positive normalized gap although its critical density powers fail uniform integrability, with arbitrarily large finite limiting critical moments and an arbitrarily prescribed positive density floor below one?
+Setting: fixed 0<rho<1, s=(1+rho)/(1-rho), uniform L-cubes, r>=0, Er=1, actual T_r=sqrt(r)P_rho sqrt(r), gap=1-lambda2/lambda1. Dimensions L>=1, eigenvalues with multiplicities.
+Candidate mechanism: one vertex spike of size c*2^(L/s), normalized to mean one. Compare the isospectral Q M_r Q, Q=P_sqrt(rho), to P_rho by an exact rank-one norm. Critical moments can escape without leaving a nonvanishing operator perturbation.
+Candidate conclusion: for any M>1, B>M^(1/s), and 0<b<1, a family with r>=b, ||r||s<=B, Er^s->M, and for each fixed K>1, E[r^s 1(r>K)]->M-1>0, while gap->1-rho and inf_L gap>0. The finite prefix may be replaced by r=1. Strict budget slack B>M^(1/s) is deliberate; no exact upper budget equality is claimed.
+
+G1: Verify normalization, positivity, moment limit M, critical-tail limit and failure of UI across varying finite probability spaces. Quantify the choice c=(M-1)^(1/s)>0.
+G2: Show any prescribed floor b and budget B are satisfied after a finite prefix replacement, preserving all limits. In particular M can exceed2; the example must not rely only on the previously proved small-budget stability theorem299.
+G3: Prove spectral equivalence of sqrt(r)P_rho sqrt(r) and Q M_r Q with multiplicity; compute the norm of Q M_{1_z} Q using the probability-normalized coordinate vector and no missing factor2^L.
+G4: Derive ||Q M_r Q-P_rho|| <= [c*2^(-L(1-1/s))+c*a_rho^L]/Z_L, a_rho=(1+rho)/2^(2rho/(1+rho))<1. Prove strict inequality analytically throughout0<rho<1. No numerical witness.
+G5: Deduce actual lambda1->1, lambda2->rho, hence gap->1-rho and positive infimum over all L, handling multiplicities and the finite prefix. Do not replace the actual gap by a Rayleigh quotient in a restricted space.
+G6: Compare the two-antipodal spike obstruction296 and its point threshold, the critical-budget299 theorem, and the sufficient UI condition300. Explicitly separate base-density moment tails from invariant-measure operator-tail criteria in Wang (arXiv:1305.4460v6). Classical rank-one perturbation and spectral estimates are not claimed novel.
+
+Falsifier: a wrong normalization/rank-one factor, a_rho>=1 in the permitted range, failure of isospectrality or of actual second-eigenvalue convergence, or a family whose high moments become uniformly integrable. Any such defect blocks the candidate until an identified repair is audited as a new candidate.
+Abandonment: if this is only a direct known example, retain as a grouped explanatory limit of300, not a separate paper or originality claim. No extra numerical grade or exact-PDF review. No local, fixed-range Gibbs, heat-bath, marginal-matching, physical-gap, or Yang-Mills implication. No need to compute numerically or open a runtime for this analytical unit.

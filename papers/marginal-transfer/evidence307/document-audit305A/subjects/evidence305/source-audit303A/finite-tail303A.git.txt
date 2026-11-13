@@ -1,0 +1,73 @@
+A FIXED-CUTOFF ENDPOINT OBSTRUCTION — CANDIDATE303A
+Judges registered in judges303.txt at add50ba42. Analytical candidate awaiting separate audit. This closes a distinct finite-cutoff endpoint left open by302's asymptotic sharpness statement; group it with300-302, not as a new paper. No new PDF or numerical score.
+
+1. Statement
+Fix0<rho<1, s=(1+rho)/(1-rho), any fixed cutoff K>1, and any density floor0<b<1. There is a sequence r_L on uniform Boolean L-cubes, L>=1, with
+ Er_L=1, r_L>=b, E r_L^s<=2,
+ E[r_L^s1_{r_L>K}]<=1 for every L,
+ lambda1(T_{r_L})->1, lambda2(T_{r_L})->1, gap(T_{r_L})->0. (1)
+Furthermore r_L->1 in probability, E r_L^s->2 and Theta=lim_{J->infinity}sup_L E[r_L^s1_{r_L>J}]=1. K is fixed before constructing the sequence and is not changed with L. The separate cutoff K=1 is not addressed. Thus the finite-cutoff theorem of302 with tau<1 cannot in general include tau=1, even under the exact critical total budget2^(1/s) and any fixed positive floor below one.
+
+2. Exact source inputs and a normalized modification
+Use the actual product tilt R_L from source299 at49705281f05ab18b71bd9ebc2da1985a0433340c, research/critical299/critical299A.txt. Its proved properties are
+ R_L>0, E R_L^s=1, E R_L^t->0 for every fixed0<t<s. (2)
+In particular m_L:=E R_L->0 since1<s, and m_L<=1 by Jensen. For a positive beta_L->1, the balanced density
+ w_L=(1+beta_L R_L)/Z_L, Z_L=1+beta_L m_L->1,
+has both actual leading transfer eigenvalues tending to1. These are the source299 balanced-family conclusions before its final dilution; this note does not infer them from a PDF score. All arguments concern sufficiently large L where needed. Any omitted finite initial dimensions may use R_L=1, preserving (2) and all subsequent all-L bounds.
+
+Set
+ p_L=P(R_L>K-1)^(1/s), a_L=1-p_L,
+ A_L=1-a_L m_L, q_L=A_L+a_L R_L. (3)
+Here0<=p_L<=1 and0<=a_L<=1, and m_L<=1 gives0<=A_L<=1. Exactly E q_L=A_L+a_L m_L=1 and q_L>=0. Markov at any fixed0<t<s gives P(R_L>K-1)<=E R_L^t/(K-1)^t->0; hence p_L->0, a_L->1 and A_L->1. Also R_L->0 in probability by the same interior-moment input, so q_L->1 in probability. For every prescribed b<1, q_L>=A_L>=b eventually. No dimensionwise cutoff is substituted for K.
+
+3. Tail bound at the fixed cutoff, in every dimension
+If q_L>K, then a_L R_L>K-A_L>=K-1. Since a_L<=1, this implies R_L>K-1. Thus
+ {q_L>K} subset {R_L>K-1}. (4)
+Minkowski is legitimate because s>1. On the event in (4),
+ ||q_L1_{q_L>K}||s
+ <=A_L P(q_L>K)^(1/s)+a_L||R_L1_{q_L>K}||s
+ <=p_L+a_L=1. (5)
+We used A_L<=1 and ||R_L||s=1; no factor of cube cardinality is omitted. Raising to s proves E[q_L^s1_{q_L>K}]<=1 exactly for every L. If a_L=0, q_L=1 and its K-tail is empty. If p_L=0, the event inclusion makes that tail empty as well. Thus neither endpoint of the coefficient interval requires division or a limiting exception.
+
+4. Actual eigenvalues and limiting moment
+Let Q=P_sqrt(rho). Endpoint hypercontractivity and Holder give
+ ||Q M_h Q||<=||h||s
+for any real h, in the probability-normalized operator norm. In particular ||Q M_{R_L}Q||<=1. The Gram operator for q_L is
+ S(q_L)=A_L P_rho+a_L Q M_{R_L}Q.
+The reference operator is
+ S(w_L)=Z_L^(-1)P_rho+(beta_L/Z_L)Q M_{R_L}Q.
+Since ||P_rho||=1,
+ ||S(q_L)-S(w_L)||
+ <=|A_L-Z_L^(-1)|+|a_L-beta_L/Z_L| ->0. (6)
+The coefficients tend to the same respective limits; the operator factor is uniformly bounded by one. Finite-dimensional min-max estimates therefore transfer both leading eigenvalue limits from S(w_L) to S(q_L). For every nonnegative density v, S(v)=Q M_v Q and T_v=M_sqrt(v)P_rho M_sqrt(v) are A*A and AA* of A=M_sqrt(v)Q, square matrices of the same size, hence exactly isospectral with multiplicities. Thus lambda1(T_q),lambda2(T_q)->1. Their normalized gap tends to zero; no restricted-subspace eigenvalue is substituted for the second actual eigenvalue.
+
+We also need E q_L^s->2 before imposing the exact total budget. Nonnegative superadditivity of x^s for s>1 gives
+ E q_L^s>=A_L^s+a_L^s E R_L^s=A_L^s+a_L^s->2.
+For the upper bound fix a real T>0. On R_L<=T, the variables q_L^s1_{R_L<=T} converge in probability to1 and are bounded by(1+T)^s, so their expectations tend to1. On R_L>T,
+ q_L^s<=(1+R_L)^s<=(1+1/T)^s R_L^s,
+whose expectation is at most(1+1/T)^s. Hence limsup_L E q_L^s<=1+(1+1/T)^s. Let T tend to infinity. Together these inequalities prove E q_L^s->2. This proof uses a cutoff T only to establish a moment limit; it does not alter the fixed hypothesis cutoff K in (1).
+
+5. Exact total budget by a tail-monotone dilution
+Write M_L=E q_L^s, necessarily at least1 by Jensen. If M_L<=2 put epsilon_L=0; if M_L>2 put
+ epsilon_L=(M_L-2)/(M_L-1).
+In the latter case the denominator is positive,0<epsilon_L<1, and in all cases epsilon_L->0 because M_L->2. Define
+ v_L=(1-epsilon_L)q_L+epsilon_L. (7)
+Then E v_L=1 and convexity gives
+ E v_L^s<=(1-epsilon_L)M_L+epsilon_L<=2. (8)
+The dilution does not increase the tail above the same K>1. If v_L>K, then q_L>1 and v_L<=q_L; in fact q_L>K as well. Therefore pointwise
+ v_L^s1_{v_L>K}<=q_L^s1_{q_L>K},
+and (5) proves the required tail bound for v_L. This is not a claim about thresholds below one or arbitrary changes of cutoff.
+
+The transformed difference is exactly
+ S(v_L)-S(q_L)=epsilon_L(P_rho-S(q_L)).
+Its norm tends to zero because epsilon_L->0 and ||S(q_L)||=lambda1(T_q)->1. Min-max and isospectrality preserve lambda1(T_v),lambda2(T_v)->1 and gap collapse. Also v_L->1 in probability. The already-audited universal two-sign estimate299 gives
+ 2 lambda2(T_v)^s<=E v_L^s<=2,
+so E v_L^s->2. This is an actual moment squeeze, not an assumption that dilution preserves critical moments.
+
+6. Floor, finite prefix and the asymptotic tail
+Since q_L>=A_L->1 and1>=A_L, equation (7) gives v_L>=A_L. Choose L0 with A_L>=b for all L>=L0. Finally set r_L=1 for1<=L<L0 and r_L=v_L otherwise. Every prefix density has mean1, floor1>=b, critical moment1<=2 and an empty tail above K>1. All tail densities satisfy (1). Both eigenvalue limits, convergence in probability and the critical moment limit are unchanged. Strict positivity then holds in every dimension; the individual finite-dimensional Perron gap is positive but its infimum is zero.
+The accepted302 finite-prefix identity, or its direct proof using r_L->1 in probability and E r_L^s->2, gives Theta=1. This is consistent with both the all-L bound at the fixed K and the exact limiting total budget. It strengthens302's endpoint example without altering or invalidating that earlier source.
+
+7. Limits and provenance
+The new modification explicitly constructs its coefficients from the finite base measure and proves its tail and norm constraints. It does not assume away a residual hypothesis. Its only non-elementary inputs are the classical endpoint hypercontractive estimate and the source-bound balanced family299 already analytically audited. The tail event inclusion, Minkowski estimate and convex dilution are elementary; no external priority claim is supported by this construction alone. Group it with the preceding tail and budget results in the same manuscript. Do not add a separate small-paper deposit.
+The cutoff K=1, optimal positive constants below tau=1, simultaneous varying rho, stationary marginal matching, local/fixed-range dynamics and a physical/continuum gap are not claimed. No numerical or symbolic execution, Lean proof, runtime, fresh PDF, inherited score, independent-provider or human review is asserted. PR29 remains20/41, TermSource=0. Acceptance awaits a separate audit against judges303; prior reports and their exact candidates stay unchanged.

@@ -1,0 +1,53 @@
+{
+  "algorithm": "sha256",
+  "byte_representation": "raw actual retained bytes, no normalization",
+  "member_count": 9,
+  "members": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1026,
+      "raw_sha256": "eae86a916a76d59792e965010cc5d291567c8c173740ceb9c9c81f091f43cdd4"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 850,
+      "raw_sha256": "861537206eec71a1b49baf7db5e00380f50bd60d829a01490737be2f34b23e79"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 9086,
+      "raw_sha256": "7017f9e5612b68848f172f6bbaac5e08b7a497e6e0485443622c805da35d995f"
+    },
+    {
+      "path": "stability.json",
+      "bytes": 420,
+      "raw_sha256": "42d10a120791970c6dc075a84de06f8219a4c3c996572a7ce74d10c02bd44362"
+    },
+    {
+      "path": "subjects/judges297.txt",
+      "bytes": 2322,
+      "raw_sha256": "6fc6ca983e67add5715f3d5ea124eff9f88a748a0822f30cd8394093ff2ab935"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "raw_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "subjects/prior-comparison296.txt",
+      "bytes": 9088,
+      "raw_sha256": "56d652d4c064a6ad765f851c91c9e156045784b8c0ae75f1ae767e64dcd7d002"
+    },
+    {
+      "path": "subjects/two-tilt297A.txt",
+      "bytes": 6309,
+      "raw_sha256": "4ee9a219eaea537fb290941d5af4ba39f4d306e1f14b94315a46c63b35916304"
+    },
+    {
+      "path": "URLs-readscope.txt",
+      "bytes": 1950,
+      "raw_sha256": "2250276ef2aaa38b58ef1fa97f2db2a602055ab49f1b02bf9e4872595531bf7e"
+    }
+  ],
+  "excluded_only": "raw-hashmanifest.json"
+}

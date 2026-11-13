@@ -1,0 +1,353 @@
+{
+  "representation": "raw copied bytes; no normalization",
+  "included_audit_files": [
+    {
+      "path": "evidence305/source-audit300A/ASSIGNMENT.txt",
+      "bytes": 1866,
+      "raw_sha256": "6e35878c3e7e32c1fc1d1e4e13403e0e20bd8e178099c4f21b09388022ad59b7"
+    },
+    {
+      "path": "evidence305/source-audit300A/CLAUDE.git.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "evidence305/source-audit300A/CONTEXT.md",
+      "bytes": 2794,
+      "raw_sha256": "4760f5c0b18a747b6cc4f590b1064852ddc2b532e440316c3ac2b245630e6808"
+    },
+    {
+      "path": "evidence305/source-audit300A/critical-tail300A.git.txt",
+      "bytes": 10513,
+      "raw_sha256": "e21e48baba2e45e87ee5fedd3334f9a2a425250f2e33f325b4b130cd67db99f8"
+    },
+    {
+      "path": "evidence305/source-audit300A/critical299A.original.git.txt",
+      "bytes": 11309,
+      "raw_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03"
+    },
+    {
+      "path": "evidence305/source-audit300A/critical299A.reproduced.git.txt",
+      "bytes": 11309,
+      "raw_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03"
+    },
+    {
+      "path": "evidence305/source-audit300A/judges300.git.txt",
+      "bytes": 3432,
+      "raw_sha256": "4238cfc90ccc10215c821afce16f6551a835e2bdf86a11506da59b8dcd5c73f2"
+    },
+    {
+      "path": "evidence305/source-audit300A/MANIFEST.json",
+      "bytes": 7348,
+      "raw_sha256": "ff3a82260f86938cd984963874fdf7604f011baf32c4ee01d154beb26b06de7c"
+    },
+    {
+      "path": "evidence305/source-audit300A/manuscript299A.git.tex",
+      "bytes": 56218,
+      "raw_sha256": "6b0c330c283e4f40d1711f4c2e358fdb3edf2ed73d70ac5fb87a55ca96514c64"
+    },
+    {
+      "path": "evidence305/source-audit300A/OPERATIONAL-GOVERNANCE-CHARTER.git.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "evidence305/source-audit300A/pr247-body.normalized.txt",
+      "bytes": 992,
+      "raw_sha256": "4e239b272a60914efaddca88198edf4ac59864eb78a0c268a08455951179adb9"
+    },
+    {
+      "path": "evidence305/source-audit300A/pr247-capture.json",
+      "bytes": 1061,
+      "raw_sha256": "82e6cb891b8d0099d3bc0f77e692e409f06ee6e9db1eb5dc5098683ea66fdde3"
+    },
+    {
+      "path": "evidence305/source-audit300A/PROVENANCE.json",
+      "bytes": 823,
+      "raw_sha256": "8e7b3826124530639576f76b638b502c2f7df9c5d0e924cb20a72d3bd41754e4"
+    },
+    {
+      "path": "evidence305/source-audit300A/REPORT.md",
+      "bytes": 18846,
+      "raw_sha256": "aadcfc8f8c89e584a66fef0b7ff1e8b0a38cf8fbeef180742917d8d4810b03d5"
+    },
+    {
+      "path": "evidence305/source-audit301A/ASSIGNMENT.txt",
+      "bytes": 1650,
+      "raw_sha256": "06e3b70ff8f229266ad736da0dbb5d80bfaa9703318c2dfb416afceca6c8d79c"
+    },
+    {
+      "path": "evidence305/source-audit301A/CLAUDE.git.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "evidence305/source-audit301A/CONTEXT.md",
+      "bytes": 2709,
+      "raw_sha256": "e1f19cb813cb3ab87ceab58a60c6c8f707b1c92997f44a6b8a17197dbc68561f"
+    },
+    {
+      "path": "evidence305/source-audit301A/critical-tail300A.git.txt",
+      "bytes": 10513,
+      "raw_sha256": "e21e48baba2e45e87ee5fedd3334f9a2a425250f2e33f325b4b130cd67db99f8"
+    },
+    {
+      "path": "evidence305/source-audit301A/critical299A.git.txt",
+      "bytes": 11309,
+      "raw_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03"
+    },
+    {
+      "path": "evidence305/source-audit301A/finite-moment296A.git.txt",
+      "bytes": 8414,
+      "raw_sha256": "c952d3eea07c82156cc368d36f7ed6aed818be5afa16c39e52f899f64788aa28"
+    },
+    {
+      "path": "evidence305/source-audit301A/judges301.git.txt",
+      "bytes": 3448,
+      "raw_sha256": "ba150db49dde907b6931762f560b0ef33354585ed8b7b422ea66625deb16e8e1"
+    },
+    {
+      "path": "evidence305/source-audit301A/MANIFEST.json",
+      "bytes": 7468,
+      "raw_sha256": "a5b999ca1bdd404e3110651265f7a4c50ef39cb510b3b9e55171d762b648fada"
+    },
+    {
+      "path": "evidence305/source-audit301A/OPERATIONAL-GOVERNANCE-CHARTER.git.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "evidence305/source-audit301A/pr248-body.normalized.txt",
+      "bytes": 874,
+      "raw_sha256": "6640eb52c35caf10786c51ec49c146ee8f131288fc5011be56d6c2439749a090"
+    },
+    {
+      "path": "evidence305/source-audit301A/pr248-capture.json",
+      "bytes": 943,
+      "raw_sha256": "11d5f5edb92f02b40dad88c68cd48a4dc3b7ccd06cd10799158e637f476e2824"
+    },
+    {
+      "path": "evidence305/source-audit301A/PRIVATE-SOURCES.md",
+      "bytes": 874,
+      "raw_sha256": "949e21671b4ca465ae3c71a1cc4e621e789be0aa1fae96375fed69fd02d86a71"
+    },
+    {
+      "path": "evidence305/source-audit301A/PROVENANCE.json",
+      "bytes": 785,
+      "raw_sha256": "cba2540f0c4007bd5cf50fc86b1df37bf37a24600427da7f94fa37bab47800f6"
+    },
+    {
+      "path": "evidence305/source-audit301A/REPORT.md",
+      "bytes": 14997,
+      "raw_sha256": "2c58b8bbaeeb0e5a1497f223033b8393cec6faf53dad24eb16f739d0501a1f23"
+    },
+    {
+      "path": "evidence305/source-audit301A/ui-nonnecessity301A.git.txt",
+      "bytes": 8476,
+      "raw_sha256": "ff601419270947d5d3831455876e5163f39a93b04befac4e39b15d7186206741"
+    },
+    {
+      "path": "evidence305/source-audit302A/ASSIGNMENT.txt",
+      "bytes": 1540,
+      "raw_sha256": "140283a10a9e5e89334118e527810c41e46ab29aea6d81a44efc0bda49438b5a"
+    },
+    {
+      "path": "evidence305/source-audit302A/CLAUDE.git.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "evidence305/source-audit302A/CONTEXT.md",
+      "bytes": 2680,
+      "raw_sha256": "97e1cce875390515148b1c4c87ec6cbab9dfbfb8e6daa2e73991642310dab0a4"
+    },
+    {
+      "path": "evidence305/source-audit302A/critical-tail300A.git.txt",
+      "bytes": 10513,
+      "raw_sha256": "e21e48baba2e45e87ee5fedd3334f9a2a425250f2e33f325b4b130cd67db99f8"
+    },
+    {
+      "path": "evidence305/source-audit302A/critical299A.git.txt",
+      "bytes": 11309,
+      "raw_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03"
+    },
+    {
+      "path": "evidence305/source-audit302A/judges302.git.txt",
+      "bytes": 2943,
+      "raw_sha256": "5150dcb4e930ef54dc244cc8dac7bcfcc2efd0dbb5ffb1fae22f67f7de943753"
+    },
+    {
+      "path": "evidence305/source-audit302A/MANIFEST.json",
+      "bytes": 8491,
+      "raw_sha256": "d57723ee3d4fd76ea752494c327e0ffc20653cc1284594418c7d428f00ec0722"
+    },
+    {
+      "path": "evidence305/source-audit302A/OPERATIONAL-GOVERNANCE-CHARTER.git.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "evidence305/source-audit302A/pr249-body.normalized.txt",
+      "bytes": 911,
+      "raw_sha256": "1d37b92eff2c584ad4b0db89fac647e41bc9e5156b3893a5d63c236c3459a883"
+    },
+    {
+      "path": "evidence305/source-audit302A/pr249-capture.json",
+      "bytes": 980,
+      "raw_sha256": "2656b36afbaa983ee2edb1b2b7945278a1761b08e2dd4dcd4c9dabfff7bc03ba"
+    },
+    {
+      "path": "evidence305/source-audit302A/PRIVATE-SOURCES.md",
+      "bytes": 883,
+      "raw_sha256": "8544f5bd6809dc41ac383c70f7b1de7b4653c7e747b61317755dc490191c1770"
+    },
+    {
+      "path": "evidence305/source-audit302A/PROVENANCE.json",
+      "bytes": 922,
+      "raw_sha256": "371b12f6f3f5c881029fb6291c0aacef5ef3bb9ae64e02ea710b063a232e41d2"
+    },
+    {
+      "path": "evidence305/source-audit302A/REPORT.md",
+      "bytes": 18448,
+      "raw_sha256": "61548f0c8bbb963ad628b328f56547f7599704f8b0514f2c7b6cf0722c22bd7b"
+    },
+    {
+      "path": "evidence305/source-audit302A/sharp-tail302A.git.txt",
+      "bytes": 9570,
+      "raw_sha256": "f5a62867880c8ac895746962a3c6a9778394bfe575d0e6165dacc623f3df3346"
+    },
+    {
+      "path": "evidence305/source-audit302A/ui-nonnecessity301A.git.txt",
+      "bytes": 8476,
+      "raw_sha256": "ff601419270947d5d3831455876e5163f39a93b04befac4e39b15d7186206741"
+    },
+    {
+      "path": "evidence305/source-audit303A/ASSIGNMENT.txt",
+      "bytes": 1530,
+      "raw_sha256": "7aae6a9e0b7005775a493e4ac4bab74dd0fac6292fe4b25874781bd22900ec63"
+    },
+    {
+      "path": "evidence305/source-audit303A/CLAUDE.git.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "evidence305/source-audit303A/CONTEXT.md",
+      "bytes": 2842,
+      "raw_sha256": "817abda0436e5bbbf9ae15cc5daf8acdae17ba4705a88616e74ba517628d7769"
+    },
+    {
+      "path": "evidence305/source-audit303A/critical299A.git.txt",
+      "bytes": 11309,
+      "raw_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03"
+    },
+    {
+      "path": "evidence305/source-audit303A/finite-tail303A.git.txt",
+      "bytes": 7567,
+      "raw_sha256": "64bf0f7f87c5d3a0cdfa56ef00c5e130626473c53dc8c2d19d7e2611f18c70c5"
+    },
+    {
+      "path": "evidence305/source-audit303A/judges303.git.txt",
+      "bytes": 2808,
+      "raw_sha256": "d896879b7fb0180ded9f84a2ad32e86824780d9205f417440125f4aeae8b55a2"
+    },
+    {
+      "path": "evidence305/source-audit303A/MANIFEST.json",
+      "bytes": 6937,
+      "raw_sha256": "e4033825e73163b972109a127bacfb402d83c59facd35fbbddcfbbe11eb4d25d"
+    },
+    {
+      "path": "evidence305/source-audit303A/OPERATIONAL-GOVERNANCE-CHARTER.git.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "evidence305/source-audit303A/pr250-body.normalized.txt",
+      "bytes": 841,
+      "raw_sha256": "ed46bd015ff28cf2fbb22abca8dc31025dc3e9d51935a1e9ea430eb1d40a9f88"
+    },
+    {
+      "path": "evidence305/source-audit303A/pr250-capture.json",
+      "bytes": 910,
+      "raw_sha256": "f7e0de5d76b25465dd8cddcfafffb767eb7da2ff977f1106676bf63d825bf91c"
+    },
+    {
+      "path": "evidence305/source-audit303A/PRIVATE-SOURCES.md",
+      "bytes": 812,
+      "raw_sha256": "b65581d7e354cf5e0aa2b44e37c7729cd2a0f7a972bcdadc90337a67782358cf"
+    },
+    {
+      "path": "evidence305/source-audit303A/PROVENANCE.json",
+      "bytes": 899,
+      "raw_sha256": "9b3f0f260f23f7737cd7f0f657f1c1d9446e7a3e8bde951ea3a9cc04cceca549"
+    },
+    {
+      "path": "evidence305/source-audit303A/REPORT.md",
+      "bytes": 16707,
+      "raw_sha256": "497afc56428f0b04c2e4608ba7fbb991f75f1c6f6925dd48d392990b4bc83200"
+    },
+    {
+      "path": "evidence305/source-audit303A/sharp-tail302A.git.txt",
+      "bytes": 9570,
+      "raw_sha256": "f5a62867880c8ac895746962a3c6a9778394bfe575d0e6165dacc623f3df3346"
+    }
+  ],
+  "excluded_audit_files": [
+    {
+      "path": "evidence305/source-audit300A/D-LEEME.checkout.md",
+      "bytes": 16801,
+      "raw_sha256": "3502d37a3f765ea2e867f1379917b25b7d458c03500b682b2b3403210181b1b8",
+      "reason": "Unrelated local storage index; private operational context"
+    },
+    {
+      "path": "evidence305/source-audit300A/Miclo-hyperboundedness.pdf",
+      "bytes": 261476,
+      "raw_sha256": "f0a990a75683c959ce54a6e371fd627b010c3a9e7433cc72eff9bdbb75f1b9bc",
+      "reason": "Private third-party reference; no redistribution permission asserted"
+    },
+    {
+      "path": "evidence305/source-audit300A/MOS-1108.1210v5.pdf",
+      "bytes": 515516,
+      "raw_sha256": "49da0d2da85f9090348ff33f1c6e7bd7d3ac9f43c7cedb26a072323d997c2179",
+      "reason": "Private third-party reference; no redistribution permission asserted"
+    },
+    {
+      "path": "evidence305/source-audit300A/Wang-1305.4460v6.pdf",
+      "bytes": 189103,
+      "raw_sha256": "e11cc264a62fe1ea6e73f2332abab523eefc78ff58ab82eac447b0eb8752e417",
+      "reason": "Private third-party reference; no redistribution permission asserted"
+    },
+    {
+      "path": "evidence305/source-audit301A/PRIVATE-Wang-1305.4460v6.pdf",
+      "bytes": 189103,
+      "raw_sha256": "e11cc264a62fe1ea6e73f2332abab523eefc78ff58ab82eac447b0eb8752e417",
+      "reason": "Private third-party reference; no redistribution permission asserted"
+    },
+    {
+      "path": "evidence305/source-audit302A/PRIVATE-Miclo-hyperboundedness.pdf",
+      "bytes": 261476,
+      "raw_sha256": "f0a990a75683c959ce54a6e371fd627b010c3a9e7433cc72eff9bdbb75f1b9bc",
+      "reason": "Private third-party reference; no redistribution permission asserted"
+    },
+    {
+      "path": "evidence305/source-audit302A/PRIVATE-MOS-1108.1210v5.pdf",
+      "bytes": 515516,
+      "raw_sha256": "49da0d2da85f9090348ff33f1c6e7bd7d3ac9f43c7cedb26a072323d997c2179",
+      "reason": "Private third-party reference; no redistribution permission asserted"
+    },
+    {
+      "path": "evidence305/source-audit302A/PRIVATE-Wang-1305.4460v6.pdf",
+      "bytes": 189103,
+      "raw_sha256": "e11cc264a62fe1ea6e73f2332abab523eefc78ff58ab82eac447b0eb8752e417",
+      "reason": "Private third-party reference; no redistribution permission asserted"
+    },
+    {
+      "path": "evidence305/source-audit303A/PRIVATE-MOS-1108.1210v5.pdf",
+      "bytes": 515516,
+      "raw_sha256": "49da0d2da85f9090348ff33f1c6e7bd7d3ac9f43c7cedb26a072323d997c2179",
+      "reason": "Private third-party reference; no redistribution permission asserted"
+    }
+  ],
+  "omissions_disclosed": true,
+  "original_manifests_unchanged": true
+}

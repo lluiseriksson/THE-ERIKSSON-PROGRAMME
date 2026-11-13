@@ -1,0 +1,232 @@
+294A / MARGINAL INDISTINGUISHABILITY AND SLOW TRANSFER SPECTRA
+13 November2026. Cross-paper synthesis candidate; separate audit required.
+Preregistration c0091b78d9bc9a746ac03dd8e31ff9ef3879fdb6.
+
+1. QUESTION, CONVENTIONS AND RESULT
+
+The owner's13November instruction asks to cross the closed papers rather
+than indefinitely extend one auxiliary calculation. We combine the literal
+marginal-input framework of parity_positive (revision215) with the positive
+diagonal transfer congruences of congruence_spectrum. Q251 is parked, still
+open; no previous route counter is reset. One active question here:
+Can exact product marginals through a positive fraction of all coordinates
+certify a volume-uniform gap for a fixed-coupling positive Ising transfer?
+
+Let Omega_L=F_2^L, Hamming distance d(x,y), beta>0 fixed and q=exp(-2beta).
+The symmetric kernel M_beta(x,y)=q^d(x,y) is a positive scalar multiple
+of exp(beta sum_i (-1)^(x_i+y_i)). Its tensor factors [[1,q],[q,1]] are
+positive definite. For a strictly positive probability mu on Omega_L put
+ A_mu=diag(sqrt(mu)) M_beta diag(sqrt(mu)).
+Let lambda_1>lambda_2>=...>0 be its eigenvalues. PF strictness holds since
+all entries are positive. Write gap(A_mu)=1-lambda_2/lambda_1.
+For uniform u_L, tensorization gives lambda_2/lambda_1=(1-q)/(1+q)=tanh beta,
+independent of L. A positive scalar normalization does not change ratios.
+
+We prove: for every beta>0 there are alpha,R,gamma>0 such that for all
+sufficiently large L a strictly positive mu_L has ALL labelled marginals
+on <=floor(alpha L) coordinates exactly uniform product, while at least
+2^ceil(RL)-1 non-Perron eigenvalues satisfy
+           lambda_j/lambda_1 >=1-7 exp(-gamma L).
+The Perron Doob stationary law pi_L ALSO has exactly those same marginals.
+Thus weighting-law marginals, stationary-law marginals, or both together
+cannot certify a positive volume-uniform transfer gap on this class.
+This concerns arbitrary positive weights, not fixed-range Gibbs weights.
+
+A negative control is essential: the single parity family from215, despite
+its arbitrarily small heat-bath gap, has transfer ratio at most tanh(2beta)
+for every L>=2 and every |t|<1. Its heat-bath conclusion cannot simply be
+relabeled as a transfer conclusion. We prove that too, with the full blocks.
+
+2. CLASSICAL CODE INPUT WITH A SELF-CONTAINED EXISTENCE PROOF
+
+Let h(p)=-p log_2 p-(1-p)log_2(1-p). Fix 0<alpha,delta<1/2 and0<R<1 with
+             h(alpha)<R<1-h(delta).
+For k=ceil(RL), a binary linear code C of dimension k, minimum nonzero
+weight at least delta L, and dual minimum weight >floor(alpha L) exists
+whenever k<L and
+        2^(k-L(1-h(delta)))+2^(-k+L h(alpha))<1.       (CODE-GATE)
+This gate holds for all sufficiently large L by the strict inequalities.
+
+Proof. Take a uniformly random k by L binary matrix G. For fixed nonzero
+v in F_2^k, vG is uniform in F_2^L. Union bound over v shows that the chance
+some vG has weight <delta L is at most2^(k-L(1-h(delta))). This event
+includes a rank failure (vG=0); its absence makes G injective on messages.
+For fixed nonzero w in F_2^L, Gw is uniform in F_2^k. Union bound over
+weights1,...,floor(alpha L) bounds the chance some such w has Gw=0 by
+2^(-k+L h(alpha)). The two bounds summing to <1 prove joint existence.
+We used sum_(j<=pL) binom(L,j)<=2^(L h(p)) for p<1/2. To see it, set
+z=p/(1-p)<1; every z^j with j<=pL is >=z^(pL), so the binomial sum is
+at most z^(-pL)(1+z)^L=2^(Lh(p)). Strict-weight events are bounded by
+this same inclusive sum. All floor/ceiling conventions are thus paid.
+
+For every set S of at most floor(alpha L) columns, G_S has rank |S|:
+a nontrivial relation would give a nonzero dual word supported in S.
+Uniform codewords therefore project uniformly onto F_2^S. Conversely,
+this argument identifies exactly the standard code/orthogonal-array
+mechanism; neither the code existence nor k-wise independence is new.
+
+3. A STRICTLY POSITIVE WEIGHT AND A FINITE SPECTRAL BOUND
+
+More generally let C be ANY binary linear code of size m>=2 and minimum
+nonzero weight d_C, with every coordinate projection of size <=r surjective.
+Let0<eta<=1/2 and set
+     mu=(1-eta) Uniform(C)+eta Uniform(Omega_L).
+All entries are positive and every <=r marginal is exactly uniform.
+Put a=(1-eta)/m+eta/2^L and s=(m-1) exp(-2beta d_C).
+We claim, for every2<=j<=m,
+  0<1-lambda_j(A_mu)/lambda_1(A_mu)
+       <=2s+2m(sqrt(eta)+eta).                        (FINITE)
+The lower strict inequality follows from PF and positivity; it need not
+be quantitatively uniform. The upper bound can be vacuous at small L.
+
+Proof. On the coordinate subspace indexed by C, the principal block is
+A_CC=a M_CC. Its diagonal entries are a; each off-diagonal entry in M_CC
+is <=exp(-2beta d_C). The symmetric row-sum bound gives all eigenvalues
+of M_CC in[1-s,1+s]. For completeness the operator norm of M_CC-I is
+at most its maximum absolute row sum s, e.g. by Cauchy--Schwarz with
+row/column absolute sums. Principal interlacing yields lambda_m(A)>=a(1-s).
+Every j<=m obeys the same lower bound. Also lambda_1(A)>=a by a coordinate
+Rayleigh vector, even if1-s is negative.
+
+Split A into C and C-complement. The outside block is positive semidefinite,
+so its norm is at most its trace, which is eta(1-m/2^L)<=eta. The cross
+block B satisfies
+ ||B||^2<=||B||_F^2
+   <=(sum_C mu)(sum_outside mu)<=eta,
+since every M_xy^2<=1. The off-diagonal block matrix [[0,B],[B*,0]] has
+norm ||B||; hence the difference from diag(a M_CC,0) has norm at most
+sqrt(eta)+eta. Therefore lambda_1(A)<=a(1+s)+sqrt(eta)+eta and
+lambda_1-lambda_j<=2as+sqrt(eta)+eta. Divide by lambda_1>=a and use
+a>=(1-eta)/m>=1/(2m) to obtain FINITE. No limiting eigenvalue argument,
+hard-support identification, numerical experiment or assumed gap is used.
+
+4. LINEAR-ORDER MARGINALS AND EXPONENTIALLY MANY SLOW MODES
+
+Fix beta>0. Choose delta=1/4 and
+ R=min{[1-h(1/4)]/2, beta/(4 ln2)} >0.
+Choose any0<alpha<1/2 with h(alpha)<R, for example h(alpha)<R/2.
+Let gamma=beta/2-R ln2 >=beta/4>0.
+Take codes from section2 for all sufficiently large L, m=2^ceil(RL),
+and set eta=exp(-2beta L)/m^2. This is positive and <=1/4.
+Since d_C>=L/4 and m<=2 exp(R ln2 L),
+ 2s<=4 exp(-gamma L).
+Further,
+ 2m(sqrt eta+eta)=2 exp(-beta L)+2 exp(-2beta L)/m
+                 <=3 exp(-beta L)<=3 exp(-gamma L).
+FINITE gives the stated7 exp(-gamma L) upper bound for every2<=j<=m.
+There are m-1 such nonleading eigenvalues. Their multiplicities are counted
+normally, with no assertion they coincide. The whole tensor matrix has
+2^L eigenvalues and k<L ensures these indices exist.
+
+A concrete symbolic parameter choice at beta=1 is delta=1/4,R=1/16,
+alpha=1/256, gamma=1/2-(ln2)/16. Both entropy inequalities can be verified
+analytically or by a separately certified computation; this optional choice
+is NOT an input to the theorem and no numerical validation is claimed here.
+The main theorem uses only the displayed entropy inequalities and CODE-GATE.
+
+5. THE ACTUAL PERRON STATIONARY LAW, NOT JUST THE INPUT WEIGHT
+
+Choose the PF eigenvector v>0 with sum_x v_x^2=1. Define
+ P(x,y)=A_mu(x,y) v_y/(lambda_1 v_x), pi(x)=v_x^2.
+The eigenvector equation gives row sum1, and
+ pi(x)P(x,y)=v_x A_mu(x,y)v_y/lambda_1=pi(y)P(y,x).
+Thus P is a strictly positive reversible transition matrix with stationary
+pi; it is similar to A_mu/lambda_1, so its nontrivial eigenvalues and
+its discrete-time spectral gap are exactly the ratios above.
+
+For every c in C, addition x->x+c preserves mu, Hamming distance and A_mu.
+The associated permutation commutes with A_mu. It takes normalized positive
+PF vectors to normalized positive PF vectors; uniqueness gives v_(x+c)=v_x.
+Thus pi is C-translation invariant. If projection C->F_2^S is surjective,
+then every translation on F_2^S is the image of a c in C. The S-marginal
+of pi is invariant under all translations, hence is exactly uniform.
+Therefore BOTH mu and pi have the required labelled product marginals.
+For uniform weight, v is uniform and pi=u_L, and P has ratio tanh beta.
+No claim pi=mu is made or used in the constructed nonuniform case.
+
+6. NEGATIVE CONTROL: PARITY SLOW HEAT-BATH DOES NOT IMPLY SLOW TRANSFER
+
+Use spin characters chi_S on Omega_L and the strictly positive law
+mu_t=2^-L(1+t chi_[L]), |t|<1, from revision215. Let rho=tanh beta in(0,1).
+The unweighted row-normalized transfer P_beta=M_beta/(1+q)^L acts on
+chi_S by rho^|S|. Up to an overall scalar the weighted congruence is
+D_t P_beta D_t, D_t=diag sqrt(1+t chi_[L]). It is similar, using invertible
+D_t, to P_beta D_t^2. Multiplication by chi_[L] takes chi_S to chi_(S^c).
+Consequently the unordered complement pair {S,S^c} has coefficient block
+  [[rho^s, t rho^s],[t rho^(L-s),rho^(L-s)]], s=|S|,
+and eigenvalues
+ (z_s +/- sqrt(z_s^2-4Delta))/2,
+ z_s=rho^s+rho^(L-s), Delta=(1-t^2)rho^L.
+These2^(L-1) blocks exhaust the spectrum with multiplicity. They are
+positive since Delta>0 and z_s>0. The largest z_s is z_0=1+rho^L.
+Among proper pairs the largest is z_1=rho+rho^(L-1). The plus-root is
+increasing in z, while the minus-root in the empty/full pair is <=rho^L,
+and every proper plus-root is >=rho^min(s,L-s). In particular the s=1
+plus-root is >=rho. Thus for L>=2 the Perron root is the s=0 plus-root,
+and lambda_2 is the s=1 plus-root. Upper roots of other pairs are smaller;
+all their lower roots are no larger than their upper roots.
+
+For z>=2sqrt Delta, the plus-root divided by z is
+(1+sqrt(1-4Delta/z^2))/2, an increasing function of z. It follows that
+ lambda_2/lambda_1 <= z_1/z_0
+       =(rho+rho^(L-1))/(1+rho^L) <=2rho/(1+rho^2)=tanh(2beta).
+The penultimate step writes the ratio as rho(1+b)/(1+rho^2 b) with
+b=rho^(L-2)<=1; it increases with b. Equality in the limiting t->1
+and L=2 shows the uniform bound is sharp as a supremum. This holds even
+though revision215's single-site heat-bath gap tends to zero at fixedL.
+The two dynamics are genuinely different. A direct parity-only transfer
+proposal is therefore rejected, not recycled as an alleged consequence.
+
+7. LITERAL CERTIFICATE CONSEQUENCE AND SCOPE
+
+Define M_r(nu)=(nu_S: S subset[L], |S|<=r), retaining coordinate labels.
+At fixed beta, suppose a lower-gap certificate is a function of L,beta,
+M_floor(alpha L)(mu) and/or M_floor(alpha L)(pi), and is valid for every
+strictly positive weight in this transfer class. On the constructed laws
+its input equals that of the uniform product law at the same L. Its value
+must therefore be <=7exp(-gamma L) whenever it claims a valid lower bound.
+It cannot certify a positive constant independent of L at the product input.
+This does NOT say all functions of marginal input vanish, or that the actual
+product chain is slow; its gap is exactly1-tanh beta. Full conditionals,
+density lower bounds, operator entries or code membership are extra input.
+The construction permits exponentially small weights and many-body spatial
+interactions. It does not refute a theorem with uniform positivity constants,
+fixed-range Gibbs structure, local generators or other absent assumptions.
+No continuum Yang--Mills, physical mass gap, spatial mixing or entropy-
+tensorization theorem is asserted. The many-mode conclusion is spectral;
+no metastable-set or mixing-time asymptotic beyond its consequences is
+claimed without a separate proof.
+
+8. SOURCES, NOVELTY AND REVIEW CONTEXT
+
+Own sources: papers/parity-barriers/revision215/parity_positive.tex
+(full conditional heat-bath vs literal marginal inputs) and
+papers/congruence-spectrum/congruence_spectrum.tex (congruence and fusion).
+The existing fusion pair does not preserve all pair marginals. The parity
+example has a different dynamical spectrum, as section6 explicitly proves.
+The synthesis adds a full-positive transfer construction with linear-order
+matching in BOTH weight and stationary law, and exponentially many slow
+modes. It is not merely a relabeling of either predecessor.
+
+Coding ingredients, entropy union bounds, PF uniqueness, interlacing and
+Doob conjugation are classical. Primary literature checked13November2026:
+- Alon, Goldreich, Mansour, Almost k-wise independence versus k-wise
+  independence (2003), author manuscript https://www.wisdom.weizmann.ac.il/~oded/PSX/agm.pdf.
+  This concerns almost vs exact independence; it is background, not the
+  transfer spectral theorem proved here.
+- Linear Time Encodable Binary Code Achieving GV Bound with Linear Time
+  Encodable Dual Achieving GV Bound, ITCS2026 article28,
+  https://drops.dagstuhl.de/storage/00lipics/lipics-vol362-itcs2026/html/LIPIcs.ITCS.2026.28/LIPIcs.ITCS.2026.28.html.
+  Simultaneously good primal/dual codes are established prior work, stronger
+  algorithmically than our elementary existence proof; do not claim a new code.
+- Congruence predecessor public AIRR record ARR-2026-7S1XA3PZEB9QM8FQ v1.
+A targeted search found no exact matching transfer/marginal theorem, but
+absence of a found match is not a proof of originality. Specific priority
+and frontier relevance remain unestablished pending adversarial assessment.
+No new numerical computation, Lean proof or PDF assessment is claimed.
+
+Model assessments and review context: this involved Codex/OpenAI session
+fabricated the proof. A distinct involved session must check the frozen
+source against judges294 before acceptance. Exact backend unexposed; no
+independence, human peer review or grade claimed. A future manuscript/PDF
+must receive its own first exact-hash assessment and retain all objections.

@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-11-13T12:05:17.468505+00:00",
+  "source_sha": "49705281f05ab18b71bd9ebc2da1985a0433340c",
+  "verdict": "ACCEPT",
+  "full_report_read": true,
+  "context_read": true,
+  "gates": "G1-G7 unchanged",
+  "full_report": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\full-report-resumed-final.md",
+  "full_report_raw_sha256": "1774c5cdf606820968a0ad258f32a0c4ad43a5179b60826068ea86e55d92a745",
+  "manifest_sha256": "9cc017f93632a3c7b64d17582fb0cfbcc23ef437715bd8895cbc3254906502fa",
+  "raw_manifest_files_verified": 39,
+  "interruption": "Earlier usage-limit error retained; normal authorized resumed audit completed. No purchase or model/account change.",
+  "objections": [
+    "Nonblocking unbracketed quadratic coefficient prose; displayed formula correct; draft manuscript uses explicit brackets."
+  ],
+  "new_pdf_score": null,
+  "formal_verification": false,
+  "external_priority_established": false,
+  "independent_human_or_provider_review": false
+}

@@ -1,0 +1,19 @@
+{
+  "date_utc": "2026-11-13T13:52:33.5598369Z",
+  "repository": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113",
+  "head": "9bc257640fc98ea9dd88317238fbdf0cbec79c95",
+  "branch": "codex/tep-finite-tail303-20261113",
+  "head_parent": "add50ba426e1fc8746d14c232d387cd5f0e5ae84",
+  "status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "pr_head": "9bc257640fc98ea9dd88317238fbdf0cbec79c95",
+  "pr_body_bytes": 841,
+  "pr_body_sha256": "ed46bd015ff28cf2fbb22abca8dc31025dc3e9d51935a1e9ea430eb1d40a9f88",
+  "judges_diff": null,
+  "prior_sources_and_rules_diff": null,
+  "source299_blob": "650f87caf3fc972eb55350d6ef43b2fa12f1f094",
+  "source302_blob": "f01598eefd15faba0cc981ee007c8c66bbea5e62",
+  "integration_order": "PR249 unchanged source must integrate before PR250; required checks not executed or certified by this audit; assignment reports PR248 already merged"
+}

@@ -1,0 +1,9 @@
+AUTHOR RESPONSE TO HISTORICAL V4 ASSESSMENT299 — NOT A NEW REVIEW
+Original exactPDF51d6ceeca54f3d782ed552074c0a320e715cd345502f25ce5387c2b380f732eb. Original first-round report and all seven objections remain byte-identical in prior299-assessment. Its score does not apply to305. These are author statements pending document audit and new exact-PDF review.
+O1: Expanded Miclo comparison explicitly distinguishes the fourth power of the L2-to-L4 norm budget and the fixed Boolean density congruence. No claim the present theorem improves or escapes every consequence of that literature.
+O2: External priority remains unresolved. New tail constructions do not themselves establish priority.
+O3: Global weights and fixed transfer convention remain; no local/fixed-range, physical or continuum conclusion.
+O4: Finite cutoff sufficient constant is explicit; optimal positive constants, constructive floor cutoff and exact-endpoint rate remain unclaimed. New endpoint proof does not resolve all quantitative usability limitations.
+O5: Added an introductory result map distinguishing code, tilt and tail families; no joint-properties inference.
+O6: Roadmap now highlights exact moment and tail endpoints; removed procedural access-status prose from scientific comparison while preserving historic reports.
+O7: Identity, reproduction and analytical review remain distinct. No formal proof, independent-provider or human peer-review claim. The new PDF has not yet been assessed or reproduced.

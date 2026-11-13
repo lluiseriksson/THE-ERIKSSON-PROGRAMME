@@ -1,0 +1,27 @@
+commit 476940ce788fb3e75cc8594e57af9fde226f7e83
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 15:08:31 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 15:08:31 2026 +0100
+
+    Construct critical-tail endpoint at cutoff one simultaneously for all larger cutoffs
+
+commit 03ffe342d6db76476509ab93f5adeaedb769b629
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 15:07:21 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 15:07:21 2026 +0100
+
+    Register cutoff-one endpoint research gates
+
+commit 9bc257640fc98ea9dd88317238fbdf0cbec79c95
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 14:46:18 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 14:46:18 2026 +0100
+
+    Construct fixed-cutoff endpoint collapse with exact critical budget
+
+Registered/candidate judges blob IDs:
+590d0cb05b07a02aabe3859ead842c51c55b0c65
+590d0cb05b07a02aabe3859ead842c51c55b0c65

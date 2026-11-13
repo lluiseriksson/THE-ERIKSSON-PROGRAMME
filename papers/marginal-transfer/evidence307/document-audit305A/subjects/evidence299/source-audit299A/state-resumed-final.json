@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-13T12:02:44.9251935Z",
+  "audit_status": "New resumed ACCEPT; no verdict inherited from interrupted attempt",
+  "head": "49705281f05ab18b71bd9ebc2da1985a0433340c",
+  "branch": "codex/tep-critical-budget299-20261113",
+  "status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "candidate_raw_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+  "gate_raw_sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+  "normalized_pr_body_sha256": "f37b8bedb5470dac5e7c4cfe7ba4d56b321e7d285c276c3570d1f13609c63e61",
+  "prior_raw_manifest_sha256": "7873e7891c52d77995909bb3f42e37559f4fb32dba092dec7cfd077af1aeff39",
+  "interruption": "Reported external usage limit; prior files retained as unissued drafts",
+  "quota_or_model_changes": false,
+  "source_or_pr_changes": false,
+  "cleanup_pending": false
+}

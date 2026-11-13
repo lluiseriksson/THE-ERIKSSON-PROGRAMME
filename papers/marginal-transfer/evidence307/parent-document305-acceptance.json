@@ -1,0 +1,13 @@
+{
+  "source_sha": "375047fac74dee4e464031f7e5b4d2368d5276fa",
+  "manifest_sha256": "5a97623c1ae513c453707e7381dd9f3fd0bf7acfb7137ba3b2ad3569ef4d5e97",
+  "preflight_note": "First parent checker used path instead of the actual file key and stopped before acceptance; corrected to observed manifest schema, every member then matched. No evidence file changed.",
+  "report_sha256": "1c36c91fd888c6a82c3908b529599ce10fcd711a545cf06d70a2a6c57416923c",
+  "context_read": true,
+  "G8": "Not executed or waived",
+  "raw_files_verified": 286,
+  "runtime_opened": false,
+  "verdict": "ACCEPT G1-G7 only",
+  "full_report_read": true,
+  "new_PDF_score": null
+}

@@ -1,0 +1,7 @@
+commit bde2906f902593f01c20bb7db075a36d5d307206
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 04:28:43 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 04:28:43 2026 +0100
+
+    base7bc007b6: preregister finite-moment transfer-gap question296

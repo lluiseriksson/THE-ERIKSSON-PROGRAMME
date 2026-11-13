@@ -1,0 +1,125 @@
+{
+  "scope": "Every package file except this manifest and its separate checksum; manifest checksum stored in raw-hashmanifest.sha256",
+  "files": [
+    {
+      "path": "assignment-received.txt",
+      "bytes": 1980,
+      "sha256": "96eb42e54b601083d9daa0384d25382051288558e2bcaaba2f8cd460ca6c3e6c",
+      "byte_regime": "UTF-8 no BOM evidence text; LF unless preserved source capture explicitly states otherwise"
+    },
+    {
+      "path": "context-and-scope.txt",
+      "bytes": 3572,
+      "sha256": "dadf92f059c52513c7508e8e48a0b5ccddb3a2e32c3e95dcc050a64b1c8ec91d",
+      "byte_regime": "UTF-8 no BOM evidence text; LF unless preserved source capture explicitly states otherwise"
+    },
+    {
+      "path": "final-state.json",
+      "bytes": 1291,
+      "sha256": "3a8315b4fa1dce9397ca00a963f17ae28e6a1fdf8dec20475a66006c0c8cc5c2",
+      "byte_regime": "UTF-8 no BOM JSON as serialized by PowerShell ConvertTo-Json; no line-ending normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 15049,
+      "sha256": "162886d47786d6ca8420578f504af65f76614741730fdff8afd18f267e00dbd9",
+      "byte_regime": "UTF-8 no BOM evidence text; LF unless preserved source capture explicitly states otherwise"
+    },
+    {
+      "path": "git-metadata.txt",
+      "bytes": 1049,
+      "sha256": "dd32200b3b335f0c706a921103825802a85daff4a0302ffdb670e3c12c581579",
+      "byte_regime": "UTF-8 no BOM evidence text; LF unless preserved source capture explicitly states otherwise"
+    },
+    {
+      "path": "pr253-final-body.normalized.txt",
+      "bytes": 998,
+      "sha256": "ebc7fabf190320d64c3846e34b2b28e9c1925a3f6dfbe0911d034275f014c68a",
+      "byte_regime": "JSON-decoded PR body; CRLF/CR->LF; trim terminal LF + one LF; UTF-8 no BOM"
+    },
+    {
+      "path": "pr253-final-capture.json",
+      "bytes": 1067,
+      "sha256": "cff06292c762834e5ba8efb981e948d17a445f8822e12a58b7cd799eadee8bcc",
+      "byte_regime": "gh JSON stdout text captured as UTF-8 no BOM with one appended LF; not raw HTTP bytes"
+    },
+    {
+      "path": "pr253-first-body.normalized.txt",
+      "bytes": 998,
+      "sha256": "ebc7fabf190320d64c3846e34b2b28e9c1925a3f6dfbe0911d034275f014c68a",
+      "byte_regime": "JSON-decoded PR body; CRLF/CR->LF; trim terminal LF + one LF; UTF-8 no BOM"
+    },
+    {
+      "path": "pr253-first-capture.json",
+      "bytes": 1067,
+      "sha256": "cff06292c762834e5ba8efb981e948d17a445f8822e12a58b7cd799eadee8bcc",
+      "byte_regime": "gh JSON stdout text captured as UTF-8 no BOM with one appended LF; not raw HTTP bytes"
+    },
+    {
+      "path": "primary-reading.txt",
+      "bytes": 2604,
+      "sha256": "6c3111a4fba1f355bd593ac4b3eb9481b13df73f3f60a97077a5ff36f4cc5b1d",
+      "byte_regime": "UTF-8 no BOM evidence text; LF unless preserved source capture explicitly states otherwise"
+    },
+    {
+      "path": "source-bindings.json",
+      "bytes": 2144,
+      "sha256": "860078af7c633137dd38759218d3873dd9e978603b3e09c0ec48fe376f8e2ee2",
+      "byte_regime": "UTF-8 no BOM JSON as serialized by PowerShell ConvertTo-Json; no line-ending normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.git-blob.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "byte_regime": "exact Git blob bytes; no normalization"
+    },
+    {
+      "path": "subjects/critical299A-source49705281.git-blob.txt",
+      "bytes": 11309,
+      "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+      "byte_regime": "exact Git blob bytes; no normalization"
+    },
+    {
+      "path": "subjects/cutoff306A.git-blob.txt",
+      "bytes": 7829,
+      "sha256": "c51adfc68a82b3a0db7f9671bbbde195818bfd9851ecd2ff31e4b6077d145f4e",
+      "byte_regime": "exact Git blob bytes; no normalization"
+    },
+    {
+      "path": "subjects/finite-tail303A.git-blob.txt",
+      "bytes": 7567,
+      "sha256": "64bf0f7f87c5d3a0cdfa56ef00c5e130626473c53dc8c2d19d7e2611f18c70c5",
+      "byte_regime": "exact Git blob bytes; no normalization"
+    },
+    {
+      "path": "subjects/judges306-candidate.git-blob.txt",
+      "bytes": 2023,
+      "sha256": "203bb96363b50e830c73d5b8ab2599405ab64a4c1d40f02b4c07ebad6914ad43",
+      "byte_regime": "exact Git blob bytes; no normalization"
+    },
+    {
+      "path": "subjects/judges306-preregistered.git-blob.txt",
+      "bytes": 2023,
+      "sha256": "203bb96363b50e830c73d5b8ab2599405ab64a4c1d40f02b4c07ebad6914ad43",
+      "byte_regime": "exact Git blob bytes; no normalization"
+    },
+    {
+      "path": "subjects/LEEME.disk-bytes.md",
+      "bytes": 16801,
+      "sha256": "3502d37a3f765ea2e867f1379917b25b7d458c03500b682b2b3403210181b1b8",
+      "byte_regime": "exact disk bytes; no normalization"
+    },
+    {
+      "path": "subjects/manuscript299A.git-blob.tex",
+      "bytes": 56218,
+      "sha256": "6b0c330c283e4f40d1711f4c2e358fdb3edf2ed73d70ac5fb87a55ca96514c64",
+      "byte_regime": "exact Git blob bytes; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.git-blob.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "byte_regime": "exact Git blob bytes; no normalization"
+    }
+  ]
+}

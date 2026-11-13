@@ -1,0 +1,218 @@
+[
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\assignment-received.txt",
+    "expected_sha256": "467ba9f7919f92de059ca8f4f2f387b643058de15782d238400080074500ea09",
+    "actual_sha256": "467ba9f7919f92de059ca8f4f2f387b643058de15782d238400080074500ea09",
+    "expected_bytes": 1956,
+    "actual_bytes": 1956,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\context-and-scope.txt",
+    "expected_sha256": "9b8f87db2f6e1e05d79d9b203ee361c4cd06150b80a97e10a8fdd090e1faba82",
+    "actual_sha256": "9b8f87db2f6e1e05d79d9b203ee361c4cd06150b80a97e10a8fdd090e1faba82",
+    "expected_bytes": 4686,
+    "actual_bytes": 4686,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\final-state.json",
+    "expected_sha256": "e63a27ecf0b86cc37642c3a295a4f279eed91c110fb302f3ba950b5d3b1e5c40",
+    "actual_sha256": "e63a27ecf0b86cc37642c3a295a4f279eed91c110fb302f3ba950b5d3b1e5c40",
+    "expected_bytes": 830,
+    "actual_bytes": 830,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\full-report.md",
+    "expected_sha256": "ec265bb201207cd9a7b1283203a2c9df13902ec6475290eb9d458e15176e5e2b",
+    "actual_sha256": "ec265bb201207cd9a7b1283203a2c9df13902ec6475290eb9d458e15176e5e2b",
+    "expected_bytes": 17521,
+    "actual_bytes": 17521,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\input-manifest.json",
+    "expected_sha256": "a9a79dedebb8753b33fbd6e896195e871772450293dd27a73edd3cd49b27e5a1",
+    "actual_sha256": "a9a79dedebb8753b33fbd6e896195e871772450293dd27a73edd3cd49b27e5a1",
+    "expected_bytes": 11239,
+    "actual_bytes": 11239,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\judge-table.md",
+    "expected_sha256": "90f1bdca4e66afca6918b51299920486b5bf67316fcf88a1e32bde478f8c6590",
+    "actual_sha256": "90f1bdca4e66afca6918b51299920486b5bf67316fcf88a1e32bde478f8c6590",
+    "expected_bytes": 2386,
+    "actual_bytes": 2386,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-body-capture.json",
+    "expected_sha256": "eb29803f3ebeb228e08e67e50f1b0b1069c751de6d531e030b8d52eafa9f8401",
+    "actual_sha256": "eb29803f3ebeb228e08e67e50f1b0b1069c751de6d531e030b8d52eafa9f8401",
+    "expected_bytes": 633,
+    "actual_bytes": 633,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-body-normalized.txt",
+    "expected_sha256": "f37b8bedb5470dac5e7c4cfe7ba4d56b321e7d285c276c3570d1f13609c63e61",
+    "actual_sha256": "f37b8bedb5470dac5e7c4cfe7ba4d56b321e7d285c276c3570d1f13609c63e61",
+    "expected_bytes": 827,
+    "actual_bytes": 827,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-files.json",
+    "expected_sha256": "8b42fb358c8520775016d1a29daa2cec630f087c40d75b4456f10428bcb50432",
+    "actual_sha256": "8b42fb358c8520775016d1a29daa2cec630f087c40d75b4456f10428bcb50432",
+    "expected_bytes": 320,
+    "actual_bytes": 320,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-final-body-normalized.txt",
+    "expected_sha256": "f37b8bedb5470dac5e7c4cfe7ba4d56b321e7d285c276c3570d1f13609c63e61",
+    "actual_sha256": "f37b8bedb5470dac5e7c4cfe7ba4d56b321e7d285c276c3570d1f13609c63e61",
+    "expected_bytes": 827,
+    "actual_bytes": 827,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-final-snapshot.json",
+    "expected_sha256": "9f563ded6b1d4ffebb96d3011f42f8a7a8d93810e623263735026e30e12f0dc4",
+    "actual_sha256": "9f563ded6b1d4ffebb96d3011f42f8a7a8d93810e623263735026e30e12f0dc4",
+    "expected_bytes": 1056,
+    "actual_bytes": 1056,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-snapshot.json",
+    "expected_sha256": "9f563ded6b1d4ffebb96d3011f42f8a7a8d93810e623263735026e30e12f0dc4",
+    "actual_sha256": "9f563ded6b1d4ffebb96d3011f42f8a7a8d93810e623263735026e30e12f0dc4",
+    "expected_bytes": 1056,
+    "actual_bytes": 1056,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\primary-reading-notes.md",
+    "expected_sha256": "293d088e9b616b1fd4fa4a7aa43017710f00ce20bcb9569241d2470e7acb82dc",
+    "actual_sha256": "293d088e9b616b1fd4fa4a7aa43017710f00ce20bcb9569241d2470e7acb82dc",
+    "expected_bytes": 1807,
+    "actual_bytes": 1807,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\accepted298-manuscript\\papers\\marginal-transfer\\manuscript298A.tex",
+    "expected_sha256": "a01b9793fe66bd7b3e49c2ee62eb50bfc2f4d43d8bad7949aaaa637e3dfc7c28",
+    "actual_sha256": "a01b9793fe66bd7b3e49c2ee62eb50bfc2f4d43d8bad7949aaaa637e3dfc7c28",
+    "expected_bytes": 46979,
+    "actual_bytes": 46979,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\accepted298-source\\research\\critical298\\critical298A.txt",
+    "expected_sha256": "e68c9d1c168323123ce639268877b2cc5b544fc418dab8d54ff59667f9502fe7",
+    "actual_sha256": "e68c9d1c168323123ce639268877b2cc5b544fc418dab8d54ff59667f9502fe7",
+    "expected_bytes": 9194,
+    "actual_bytes": 9194,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\candidate\\CLAUDE.md",
+    "expected_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+    "actual_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+    "expected_bytes": 24408,
+    "actual_bytes": 24408,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\candidate\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "expected_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+    "actual_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+    "expected_bytes": 13831,
+    "actual_bytes": 13831,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\candidate\\research\\critical299\\critical299A.txt",
+    "expected_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "actual_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "expected_bytes": 11309,
+    "actual_bytes": 11309,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\candidate\\research\\critical299\\judges299.txt",
+    "expected_sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "actual_sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "expected_bytes": 3799,
+    "actual_bytes": 3799,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\preregistered\\research\\critical299\\judges299.txt",
+    "expected_sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "actual_sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "expected_bytes": 3799,
+    "actual_bytes": 3799,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\accepted298-manuscript\\papers\\marginal-transfer\\manuscript298A.tex",
+    "expected_sha256": "a01b9793fe66bd7b3e49c2ee62eb50bfc2f4d43d8bad7949aaaa637e3dfc7c28",
+    "actual_sha256": "a01b9793fe66bd7b3e49c2ee62eb50bfc2f4d43d8bad7949aaaa637e3dfc7c28",
+    "expected_bytes": 46979,
+    "actual_bytes": 46979,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\accepted298-source\\research\\critical298\\critical298A.txt",
+    "expected_sha256": "e68c9d1c168323123ce639268877b2cc5b544fc418dab8d54ff59667f9502fe7",
+    "actual_sha256": "e68c9d1c168323123ce639268877b2cc5b544fc418dab8d54ff59667f9502fe7",
+    "expected_bytes": 9194,
+    "actual_bytes": 9194,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\candidate\\CLAUDE.md",
+    "expected_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "actual_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "expected_bytes": 23996,
+    "actual_bytes": 23996,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\candidate\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "expected_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "actual_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "expected_bytes": 13573,
+    "actual_bytes": 13573,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\candidate\\research\\critical299\\critical299A.txt",
+    "expected_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "actual_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "expected_bytes": 11309,
+    "actual_bytes": 11309,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\candidate\\research\\critical299\\judges299.txt",
+    "expected_sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "actual_sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "expected_bytes": 3799,
+    "actual_bytes": 3799,
+    "match": true
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\preregistered\\research\\critical299\\judges299.txt",
+    "expected_sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "actual_sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "expected_bytes": 3799,
+    "actual_bytes": 3799,
+    "match": true
+  }
+]

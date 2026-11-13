@@ -1,0 +1,50 @@
+Critical298 primary-source comparison, parent reading, 2026-11-13.
+This is a limited scope comparison, not a priority certificate or independent
+assessment. No third-party full text is redistributed in this note.
+
+1. Mossel, Oleszkiewicz and Sen, On Reverse Hypercontractivity,
+https://arxiv.org/html/1108.1210v5 , Section1.1 Eq(1.1) and following
+tensorization paragraph, read directly in the primary author manuscript.
+They recall the classical Boolean hypercontractive inequality, including the
+endpoint time, and explicitly state tensorization. Taking input exponent2,
+output q=2s/(s-1), and e^(-t)=sqrt(rho) gives rho<=1/(q-1).
+At s=(1+rho)/(1-rho) equality holds. This is exactly the classical input
+in critical298 TheoremA. We claim neither that inequality nor its exponent
+as new. Scalar norm control and eigenvalue perturbation in A are elementary.
+
+2. Glueck, Spectral gaps for hyperbounded operators,
+https://arxiv.org/abs/1802.09422 , version6, author abstract read.
+The abstract treats positive power-bounded operators mapping an Lp space
+into a strictly higher Lq and bounds the essential spectral radius below1.
+That abstract does not identify the second eigenvalue uniformly over the
+finite cube sequence in298. Endpoint control here is only an L2 operator
+bound after inserting the density. No theorem-level novelty conclusion is
+deduced from this abstract. The prior297 package retains the fuller separate
+comparison and its limitations.
+
+3. Gross, Invariance of intrinsic hypercontractivity under perturbation of
+Schroedinger operators, https://arxiv.org/abs/2412.20282 , version2,
+author abstract read. It concerns additive potentials and ground-state
+transformations and explicitly announces dimension-independent bounds.
+We have not identified those additive operators with the discrete weighted
+transfer congruence in298. The density floor in TheoremB bounds inverse
+moments, so missing inverse control is NOT a valid claimed distinction.
+No implication or contradiction is asserted without the operator/exponent
+correspondence. The previous297 whole-manuscript discussion is preserved.
+
+4. Programme predecessor: published paper ARR-2026-7KV9Y9ASX48H7A7N v2,
+https://airr.science/papers/ARR-2026-7KV9Y9ASX48H7A7N/versions/v2/
+actual exact public PDF SHA256
+3a379495c22afc732f17d6e855a9129a3c4173d9ccd28c1138c36e8c57df26c3.
+The strict supercritical and subcritical results leave s=s_c open.
+298 uses the same actual transfer family and Ls reference measure. Its
+balanced single-tilt family compares the uniform component spectrally,
+instead of retaining it as a nonvanishing additive error. The small-budget
+bound and B>2 collapse answer different portions of the critical budget
+range; the exact threshold remains open. This comparison is internal and
+does not establish external originality or independence.
+
+An exploratory broad search for critical spectral gaps/hypercontractivity
+returned unrelated sphere-Poisson and diffusion results. Those were not
+used as theorem evidence. Limited search failure is not evidence of novelty.
+Before publication, retain this scope statement and the separate audit.
