@@ -1,0 +1,23 @@
+{
+  "canonical_sha256": "55d07066bd947482fa2e41f312ca6da614f4ec142f8ee9348b85f5f9d2de31d1",
+  "scale": "AIRR native 0.00-10.00 Millennium high-ceiling research scale; not a school grade, mean of criteria, probability, or percent progress",
+  "overall_millennium_score": 4,
+  "overall_stars": 4,
+  "importance_if_correct_score": 3.5,
+  "basis": "The exact marginal obstruction and normalized-gap moment threshold are useful specialized operator/probability results. The strict-regime match and balanced critical example support substantive importance. Classical ingredients, global weights, incomplete priority assessment, partial endpoint budget, and no established broader application limit the importance. No Millennium-problem resolution or reduction is established.",
+  "criteria_scale": "Separate 1-5 diagnostic stars",
+  "criteria": {
+    "correctness_confidence": 4,
+    "rigor": 4,
+    "novelty": 3,
+    "significance": 3,
+    "reproducibility": 4
+  },
+  "unresolved_material_mathematical_objections": [],
+  "novelty_uncertainties": [
+    "External historical priority unestablished",
+    "No exhaustive implication check against all perturbation literature",
+    "Aida author preprint checked only for relevant setting and main estimate, not entire final article"
+  ],
+  "recommendation": "minor_revision"
+}
