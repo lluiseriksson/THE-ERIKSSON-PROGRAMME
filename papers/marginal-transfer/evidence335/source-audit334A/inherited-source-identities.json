@@ -1,0 +1,23 @@
+[
+  {
+    "commit": "7da3f567d2329a8225d03052c08c554387020fcb",
+    "path": "research/truncation324/source324A.txt",
+    "historical_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+    "current_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+    "identical": true
+  },
+  {
+    "commit": "e0f704a47d11d926246f38bd3f7320c1649dfc30",
+    "path": "research/one-sided330/source330A.txt",
+    "historical_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+    "current_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+    "identical": true
+  },
+  {
+    "commit": "8980d71cca205fcc164803f51ac4c7038536413b",
+    "path": "research/finite-scale331/source331A.txt",
+    "historical_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+    "current_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+    "identical": true
+  }
+]

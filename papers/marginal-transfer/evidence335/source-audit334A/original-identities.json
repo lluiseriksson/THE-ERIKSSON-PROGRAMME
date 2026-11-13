@@ -1,0 +1,154 @@
+{
+  "utc": "2026-11-13T22:58:19.8338010Z",
+  "fabrication_manifest_sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+  "fabrication_checks": [
+    {
+      "path": "cleanup.json",
+      "match": true
+    },
+    {
+      "path": "final-workspace-state.json",
+      "match": true
+    },
+    {
+      "path": "full-fabrication-report.txt",
+      "match": true
+    },
+    {
+      "path": "inbound-parent-context.txt",
+      "match": true
+    },
+    {
+      "path": "input-manifest.json",
+      "match": true
+    },
+    {
+      "path": "input-source324A.txt",
+      "match": true
+    },
+    {
+      "path": "input-source330A.txt",
+      "match": true
+    },
+    {
+      "path": "input-source331A-git-lf.txt",
+      "match": true
+    },
+    {
+      "path": "model-context.json",
+      "match": true
+    },
+    {
+      "path": "received-assignment.txt",
+      "match": true
+    },
+    {
+      "path": "source334A.txt",
+      "match": true
+    }
+  ],
+  "originals": [
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\cleanup.json",
+      "capture": "fabrication334A/cleanup.json",
+      "bytes": 458,
+      "sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\final-workspace-state.json",
+      "capture": "fabrication334A/final-workspace-state.json",
+      "bytes": 446,
+      "sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\full-fabrication-report.txt",
+      "capture": "fabrication334A/full-fabrication-report.txt",
+      "bytes": 6700,
+      "sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\inbound-parent-context.txt",
+      "capture": "fabrication334A/inbound-parent-context.txt",
+      "bytes": 481,
+      "sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\input-manifest.json",
+      "capture": "fabrication334A/input-manifest.json",
+      "bytes": 936,
+      "sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\input-source324A.txt",
+      "capture": "fabrication334A/input-source324A.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\input-source330A.txt",
+      "capture": "fabrication334A/input-source330A.txt",
+      "bytes": 10458,
+      "sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\input-source331A-git-lf.txt",
+      "capture": "fabrication334A/input-source331A-git-lf.txt",
+      "bytes": 9162,
+      "sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\MANIFEST.json",
+      "capture": "fabrication334A/MANIFEST.json",
+      "bytes": 2093,
+      "sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\model-context.json",
+      "capture": "fabrication334A/model-context.json",
+      "bytes": 4807,
+      "sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\received-assignment.txt",
+      "capture": "fabrication334A/received-assignment.txt",
+      "bytes": 1476,
+      "sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\source334A.txt",
+      "capture": "fabrication334A/source334A.txt",
+      "bytes": 15935,
+      "sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\pr-pinned.json",
+      "capture": "originals/01-pr-pinned.json",
+      "bytes": 1340,
+      "sha256": "495c60a5f4e6a729a3524e8198419d76df2cde70f220395503559f0c4225e9d3"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\pr-body-normalized.txt",
+      "capture": "originals/02-pr-body-normalized.txt",
+      "bytes": 1111,
+      "sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\source-audit324A\\full-report.txt",
+      "capture": "originals/03-full-report.txt",
+      "bytes": 17231,
+      "sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\source-audit324A\\context.txt",
+      "capture": "originals/04-context.txt",
+      "bytes": 4150,
+      "sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-332\\document-audit332A\\context.txt",
+      "capture": "originals/05-context.txt",
+      "bytes": 4858,
+      "sha256": "fc3b91bdbae51ce001d8dfa6f30ef3b388f63d9aafb76d0cdb7731f59f48e97d"
+    }
+  ]
+}

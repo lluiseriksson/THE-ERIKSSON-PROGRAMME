@@ -1,0 +1,84 @@
+{
+  "task": "MANUSCRIPT335A offline grouped fabrication; not audit or rerating",
+  "status": "DRAFT_NOT_ACCEPTED_TRANSLATION_AUDIT_PENDING",
+  "identity": {
+    "actor": "/root/exact322_pdf_first_assessment",
+    "provider": "OpenAI/Codex",
+    "role": "Involved fabricator of source334 and manuscript335; prior related scientific and engineering review assignments",
+    "actual_served_backend_version": "unknown; not attested",
+    "actual_reasoning_effort": "unknown; not attested",
+    "historical_request": "Initial historical PDF assignment requested gpt-6-astra/high; not an attestation for this task",
+    "independence": "not claimed",
+    "technical_isolation": "not established; shared filesystem/provider and continuing context"
+  },
+  "prior_involvement": [
+    "Exact322B one numerical PDF assessment retained unchanged",
+    "Engineering source326, analytical source329 and source331 audit assignments",
+    "Complete source334 fabrication, including retained failures and historical parent advice",
+    "Current335 translation from own334 proof; cannot supply its separate-role audit"
+  ],
+  "read_coverage": [
+    "Complete manuscript332A: all 3518 lines, recovered after output truncation",
+    "Complete SOURCE-INPUTS332.json: 101 inherited entries",
+    "Complete source334A and fabrication334 full-report/context/manifest",
+    "After terminal delivery only: complete source-audit334A full-report.txt, context.txt and assignment.txt; all 37 manifested payload hashes and 38 copied files",
+    "Applicable D:/LEEME.md, repository CLAUDE.md, operational governance charter"
+  ],
+  "not_claimed_read": [
+    "Not every historical audit referenced by the inherited332 manifest freshly read",
+    "No running audit or other agent output inspected",
+    "Optional parent primary-literature-parent334.txt not read",
+    "No335 PDF exists or was read"
+  ],
+  "methods": [
+    "Analytical manuscript drafting and source-to-LaTeX translation",
+    "File reading/editing/copying, raw SHA256, read-only git metadata and no-index diff",
+    "Metadata and JSON editing only; no executable mathematics"
+  ],
+  "not_performed": [
+    "No math/CAS/numerical script, formal test, Lean, build or runtime",
+    "No PDF generation, rendering, visual QA or score",
+    "No branch/tracked source/PR/state.json mutation",
+    "No agent spawn or auditor contact",
+    "No fresh web search or comprehensive priority search",
+    "No self-audit or new audit verdict"
+  ],
+  "inbound": {
+    "assignment_file": "received-assignment.txt",
+    "terminal334_parent_message": "inbound-parent-context.txt",
+    "timing": "Received after complete new mathematical section and first candidate manuscript were written; before terminal preparation",
+    "effect": "Read completed334 report/context, verify and retain full payload, replace pending334 wording with accurate accepted-source/pending335 status",
+    "audit_no_inbound_claim": "Not applicable to this fabrication; no running auditor was contacted"
+  },
+  "observations": [
+    "Initial combined read and later2351-2850 read truncated; missing material recovered in smaller complete reads",
+    "Git diff autocrlf warning concerned future Git treatment only; current raw LF source unchanged by Git",
+    "Tried absent source-audit334A/model-context.json; recovered by reading actual context.txt",
+    "No execution-based scientific validation performed"
+  ],
+  "limitations": [
+    "Existential nonoptimal global alpha and dimension cutoff",
+    "Exact critical moment budget and exact weighting marginals; no approximate-matching or varying-parameter extension",
+    "Quadratic comparison takes L limit inferior at each fixed C before subsequent C-down-zero comparison",
+    "Distinct audit role is involved same-provider, not independent/blind/formal/human review",
+    "Historical scores remain bound to historical PDF hashes only",
+    "No exact finite-C profile or optimal small-C coefficient"
+  ],
+  "artifacts": {
+    "source": "manuscript335A.tex",
+    "new_section": "section335.tex",
+    "diff": "manuscript332-to-335.diff",
+    "candidate_source_manifest": "SOURCE-INPUTS335.json",
+    "base_inputs": [
+      "manuscript332A-input.tex",
+      "SOURCE-INPUTS332-input.json"
+    ],
+    "complete334_bundles": [
+      "evidence335/fabrication334A",
+      "evidence335/source-audit334A"
+    ],
+    "future_audit": "Only planned destination with null files/hash in candidate manifest",
+    "retention": "D:/Datos/the-eriksson-programme/autonomia/evidencia-335/fabrication335A",
+    "raw_manifest": "MANIFEST.json excludes itself"
+  }
+}
