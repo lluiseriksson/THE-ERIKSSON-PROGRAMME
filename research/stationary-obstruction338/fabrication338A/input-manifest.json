@@ -1,0 +1,32 @@
+{
+  "assigned_context_head": "17c9661524abd72ac84aad02f124e70062cbd6d4",
+  "actual_research_staging_head": "159fb24d89ad3b6bf37cd0c0a867edb41fc0ff7b",
+  "inputs": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\source334A.txt",
+      "bytes": 15935,
+      "sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "representation": "Raw on-disk bytes, no normalization"
+    },
+    {
+      "path": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "representation": "Raw on-disk bytes, no normalization"
+    },
+    {
+      "path": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "representation": "Raw on-disk bytes, no normalization"
+    },
+    {
+      "path": "D:\\LEEME.md",
+      "bytes": 17126,
+      "sha256": "5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f",
+      "representation": "Raw on-disk bytes, no normalization"
+    }
+  ],
+  "primary_web_inputs": "primary-reading.txt records versions/URLs/read scope; no downloaded raw PDF or invented PDF hash",
+  "source334_use": "Identifies old weighting hypotheses for contrast only; no substitution for stationary hypotheses"
+}

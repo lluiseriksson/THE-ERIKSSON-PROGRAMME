@@ -1,0 +1,20 @@
+{
+  "assigned_context_head": "17c9661524abd72ac84aad02f124e70062cbd6d4",
+  "initial_staging_head": "159fb24d89ad3b6bf37cd0c0a867edb41fc0ff7b",
+  "final_staging_head": "159fb24d89ad3b6bf37cd0c0a867edb41fc0ff7b",
+  "branch": "codex/tep-uniform-gap334-20261113",
+  "initial_status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "final_status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "tracked_diff": [],
+  "source338_raw_sha256": "4730774d3e550531c1854cdb476f929dcfbf145364c64cb81752b1fb8dff246f",
+  "source338_bytes": 17991,
+  "source334_current_raw_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+  "representation": "Raw on-disk bytes; own texts UTF8 without BOM and LF; input334 copied unnormalized",
+  "observation_scope": "Endpoint observations only, no continuous monitoring"
+}

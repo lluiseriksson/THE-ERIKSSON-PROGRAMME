@@ -1,0 +1,14 @@
+QUESTION338 TARGETED PRIMARY READING -- 2026-11-14
+
+1. Georgiou, T. T.; Pavon, M. Positive contraction mappings for classical and quantum Schrodinger systems. arXiv1405.6650v3, 7 October2014. https://arxiv.org/pdf/1405.6650
+Read the abstract/classical scope and the returned classical Theorem2 context, equations18-22: positive space-time scaling potentials give transition probabilities by multiplying the prior transition by the potential ratio. The assigned one-step symmetric formula was proved directly in source338A, not inferred from convergence of a Sinkhorn iteration. No quantum result is used. Full29-page paper not read.
+
+2. Ben-Aroya, A.; Regev, O.; de Wolf, R. A Hypercontractive Inequality for Matrix-Valued Functions with Applications to Quantum Computing. Author-hosted PDF: https://homepages.cwi.nl/~rdewolf/publ/qc/matrixbeckner.pdf
+Read introduction equation1, uniform probability norm and Walsh multiplier definitions. Used only the ordinary scalar L_(1+rho)-to-L2 contraction of P_sqrt(rho), implying <1_A,P_rho1_A><=mu(A)^(2/(1+rho)). No matrix-valued or quantum conclusion is used. Full17-page paper not read.
+
+3. Mossel, E.; Oleszkiewicz, K.; Sen, A. On Reverse Hypercontractivity. arXiv1108.1210v5, 4 December2012. https://arxiv.org/pdf/1108.1210
+Read introduction equation1.2 and its stated tensorization on the unbiased Boolean cube. For input q=1-rho and output q'=q/(q-1), the noise condition is rho^2=(1-q)/(1-q'); reverse Holder yields the bilinear inequality used in source338A. This is the Boolean constant, not the different general finite-space theorem in equation1.3. Full35-page paper not read.
+
+Search queries: 'Schrodinger bridge spectral gap stationary density Sinkhorn hypercontractivity'; 'Sinkhorn scaling spectral gap bounded density reversible Markov kernel'. Search outputs included current Sinkhorn spectral-stability and bridge papers. Their abstracts were reconnaissance, not theorem premises; no exact-duplicate or novelty verdict was reached. Only the three primary inputs above are used/cited in the source. No primary PDF was downloaded or raw-byte hashed; URLs, versions when exposed, and read scope are reported instead of invented source hashes.
+
+Retrieval observation: PDF text find for 'III. SCHR' returned no match; 'transition probabilities' located the relevant classical formulas. No mathematical failure is inferred from that search miss.
