@@ -1,0 +1,13 @@
+EXTERNAL INTERRUPTION AND RESUMPTION RECORD
+
+The resumption assignment reports that the preceding unit299 attempt ended at a usage limit without a delivered verdict. This is retained as a reported external interruption, not a mathematical failure or a failed gate. A literal provider rejection message is not available in the visible record, so none is invented.
+
+The preceding attempt had saved source copies, primary-reading notes, gate reasoning, hashes, a file named full-report.md containing a proposed ACCEPT, and a file named final-state.json. These are preserved byte-for-byte as provisional, unissued artifacts. Their filenames and draft acceptance text do not establish that an acceptance was delivered. No acceptance is inherited from them.
+
+On resumption the exact candidate, full unchanged judges, HEAD, branch, PR head/body and two-file scope were reread. The full argument was re-evaluated analytically, including the support/sign argument, endpoint Holder exponents, moment cross terms, dilution at equality and all-dimension floor completion. Existing evidence is reusable only after its byte identity is checked. The newly differentiated full-report-resumed-final.md is the operative report for the delivered resumed verdict.
+
+The resumption instruction itself begins the resumed audit period; it is not silently omitted from the context record. No further inbound audit notice was received during resumed work. The system/environment date and tool-skill notices supply operating context and no mathematical findings.
+
+No quota was bought, no billing or model/provider setting was changed, no alternate account was used, and no action was taken to bypass a limit. Only the already available authorized model and tools were used. No other chat was contacted. Sources, judges, branch, PR, prior publication and prior assessments remained untouched.
+
+New/final artifacts are named with resumed-final or resume as appropriate. Earlier partial artifacts and their original raw-hashmanifest.json remain present, separately identifiable and unmodified. The final manifest binds both the preserved interruption record and the newly issued report.

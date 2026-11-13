@@ -1,0 +1,50 @@
+[
+  {
+    "object_spec": "476940ce788fb3e75cc8594e57af9fde226f7e83:papers/marginal-transfer/cutoff306A.txt",
+    "file": "subjects\\cutoff306A.git-blob.txt",
+    "git_blob": "122e86a9fbafc1b8fe85c083260232d71dd5d88c",
+    "raw_blob_bytes_verified": true
+  },
+  {
+    "object_spec": "476940ce788fb3e75cc8594e57af9fde226f7e83:papers/marginal-transfer/judges306.txt",
+    "file": "subjects\\judges306-candidate.git-blob.txt",
+    "git_blob": "590d0cb05b07a02aabe3859ead842c51c55b0c65",
+    "raw_blob_bytes_verified": true
+  },
+  {
+    "object_spec": "03ffe342d6db76476509ab93f5adeaedb769b629:papers/marginal-transfer/judges306.txt",
+    "file": "subjects\\judges306-preregistered.git-blob.txt",
+    "git_blob": "590d0cb05b07a02aabe3859ead842c51c55b0c65",
+    "raw_blob_bytes_verified": true
+  },
+  {
+    "object_spec": "49705281f05ab18b71bd9ebc2da1985a0433340c:research/critical299/critical299A.txt",
+    "file": "subjects\\critical299A-source49705281.git-blob.txt",
+    "git_blob": "650f87caf3fc972eb55350d6ef43b2fa12f1f094",
+    "raw_blob_bytes_verified": true
+  },
+  {
+    "object_spec": "476940ce788fb3e75cc8594e57af9fde226f7e83:papers/marginal-transfer/finite-tail303A.txt",
+    "file": "subjects\\finite-tail303A.git-blob.txt",
+    "git_blob": "f7468bd1394fb73f88c87f7f52badc3fc059d9fd",
+    "raw_blob_bytes_verified": true
+  },
+  {
+    "object_spec": "476940ce788fb3e75cc8594e57af9fde226f7e83:papers/marginal-transfer/manuscript299A.tex",
+    "file": "subjects\\manuscript299A.git-blob.tex",
+    "git_blob": "b128acbc4b03bbd1b702625cd33772887f3ed65e",
+    "raw_blob_bytes_verified": true
+  },
+  {
+    "object_spec": "476940ce788fb3e75cc8594e57af9fde226f7e83:CLAUDE.md",
+    "file": "subjects\\CLAUDE.git-blob.md",
+    "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+    "raw_blob_bytes_verified": true
+  },
+  {
+    "object_spec": "476940ce788fb3e75cc8594e57af9fde226f7e83:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "file": "subjects\\OPERATIONAL-GOVERNANCE-CHARTER.git-blob.md",
+    "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+    "raw_blob_bytes_verified": true
+  }
+]

@@ -1,0 +1,15 @@
+# DOCUMENT305 review context
+
+This is a separate involved Codex/OpenAI document/source audit within the same shared environment, continued in the auditor context that previously reviewed sources300,301,302,303. Those readings, reasoning, acceptance reports and limitations were retained. It is not a blind restart, four independent replications, provider-independent review, or human peer review. Exact served backend version and reasoning setting are not exposed; no specific model configuration is certified.
+
+The task record preserves prior300-303 assignments as context; DOCUMENT305 is the only active assignment. Earlier preparatory reasoning and an uncompiled300-302 draft were disclosed by the author. Judges305 precede acceptance of the integrated303 document/package, not all prior thought. No claim of pre-reasoning blinding is made.
+
+The full historical exact-PDF299 assessment, its numerical rating, requested configuration, actual exposure qualifications, complete report, all seven objections, assignment and response were read during this review. This exposure is explicit. Its PDF identity is 51d6ceeca54f3d782ed552074c0a320e715cd345502f25ce5387c2b380f732eb. No score was assigned to305 and no score or editorial/human standing transfers.
+
+Read scope: full manuscript305A.tex and original manuscript299A.tex comparison; registered judges305; SOURCE-INPUTS305 inventory; PACKAGE-BOUNDARY305; public-subset inventory; complete reports, contexts, assignments and original manifests300-303 (retained original readings and package copies); all historical299 assessment files and the seven-point author response; parent acceptance metadata. The remaining legacy package files were raw-hash checked as inventory subjects, not all newly scientifically re-reviewed. The manifest distinguishes this scope.
+
+Primary bibliography: retained targeted reading of MOS reverse hypercontractivity, Wang spectral tail norm and Miclo hyperboundedness; fresh web reading confirmed Miclo Theorem1 and Section6/Proposition11, and the MOSv5/Wangv6 primary records. This is not an exhaustive novelty search. No new third-party PDF file was downloaded or copied into this305 evidence directory. Original private PDFs and D storage-index entries remain only in their prior private evidence directories; the public manifests disclose their omissions without claiming inclusion.
+
+No source, PR body, other chat, service, runtime or repository state was modified. No inbound guidance was requested or used during review. No subagent was created. Permitted filesystem reads, raw hashes, Git/PR metadata, mechanical source comparison and reference-key checking were used; no mathematical experiment, test, Lean execution, TeX build, Colab session, PDF rendering, deposit, receipt or public readback was performed.
+
+The author owns/administers AIRR. This audit does not imply editorial acceptance, human peer review, legal permission, publication authorization or an exact-PDF assessment. G8 remains pending/not yet executable, not waived. PR249 then PR250 must precede PR252 integration; required CI and normal merge are separate.

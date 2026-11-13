@@ -1,0 +1,151 @@
+{
+  "schema": "source-audit-manifest-v1",
+  "verdict": "ACCEPT",
+  "candidate_sha": "14f6c1afda58d925cdf1481ecb7791d0ade9395b",
+  "judges_sha": "493d0aa62345fe537b7414f7cbc8d2a01d16b636",
+  "pr_body_capture_method": "gh pr view 247 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid",
+  "pr_body_normalization": "parse JSON body; CRLF/CR -> LF; trim trailing LF; append one LF; UTF-8 no BOM",
+  "pr_body_bytes": 992,
+  "pr_body_sha256": "4e239b272a60914efaddca88198edf4ac59864eb78a0c268a08455951179adb9",
+  "mathematical_execution": "none",
+  "review_context": "Separate involved Codex/OpenAI subtask in same environment; no human/provider independence claimed",
+  "files": [
+    {
+      "file": "ASSIGNMENT.txt",
+      "bytes": 1866,
+      "sha256": "6e35878c3e7e32c1fc1d1e4e13403e0e20bd8e178099c4f21b09388022ad59b7",
+      "subject": "audit-created evidence ASSIGNMENT.txt",
+      "read_scope": "authored or provenance captured during this audit",
+      "representation": "raw file bytes as written; no normalization for hashing"
+    },
+    {
+      "file": "CLAUDE.git.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "subject": "14f6c1afda58d925cdf1481ecb7791d0ade9395b:CLAUDE.md",
+      "read_scope": "full operational instructions",
+      "representation": "raw Git blob bytes; no normalization"
+    },
+    {
+      "file": "CONTEXT.md",
+      "bytes": 2794,
+      "sha256": "4760f5c0b18a747b6cc4f590b1064852ddc2b532e440316c3ac2b245630e6808",
+      "subject": "audit-created evidence CONTEXT.md",
+      "read_scope": "authored or provenance captured during this audit",
+      "representation": "raw file bytes as written; no normalization for hashing"
+    },
+    {
+      "file": "critical-tail300A.git.txt",
+      "bytes": 10513,
+      "sha256": "e21e48baba2e45e87ee5fedd3334f9a2a425250f2e33f325b4b130cd67db99f8",
+      "subject": "14f6c1afda58d925cdf1481ecb7791d0ade9395b:papers/marginal-transfer/critical-tail300A.txt",
+      "read_scope": "full; all claims and proof",
+      "representation": "raw Git blob bytes; no normalization"
+    },
+    {
+      "file": "critical299A.original.git.txt",
+      "bytes": 11309,
+      "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+      "subject": "49705281f05ab18b71bd9ebc2da1985a0433340c:research/critical299/critical299A.txt",
+      "read_scope": "full; dependency checked analytically",
+      "representation": "raw Git blob bytes; no normalization"
+    },
+    {
+      "file": "critical299A.reproduced.git.txt",
+      "bytes": 11309,
+      "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+      "subject": "6f9b27f59e3b105a872c773ed4d38d027536655b:papers/marginal-transfer/evidence299/critical299A.txt",
+      "read_scope": "full; identical original blob",
+      "representation": "raw Git blob bytes; no normalization"
+    },
+    {
+      "file": "D-LEEME.checkout.md",
+      "bytes": 16801,
+      "sha256": "3502d37a3f765ea2e867f1379917b25b7d458c03500b682b2b3403210181b1b8",
+      "subject": "D:\\LEEME.md",
+      "read_scope": "full storage instructions",
+      "representation": "raw copied checkout bytes; no normalization"
+    },
+    {
+      "file": "judges300.git.txt",
+      "bytes": 3432,
+      "sha256": "4238cfc90ccc10215c821afce16f6551a835e2bdf86a11506da59b8dcd5c73f2",
+      "subject": "493d0aa62345fe537b7414f7cbc8d2a01d16b636:papers/marginal-transfer/judges300.txt",
+      "read_scope": "full",
+      "representation": "raw Git blob bytes; no normalization"
+    },
+    {
+      "file": "manuscript299A.git.tex",
+      "bytes": 56218,
+      "sha256": "6b0c330c283e4f40d1711f4c2e358fdb3edf2ed73d70ac5fb87a55ca96514c64",
+      "subject": "6f9b27f59e3b105a872c773ed4d38d027536655b:papers/marginal-transfer/manuscript299A.tex",
+      "read_scope": "exact critical budget theorem and full proof; balanced family and prior-work context; not full manuscript audit",
+      "representation": "raw Git blob bytes; no normalization"
+    },
+    {
+      "file": "Miclo-hyperboundedness.pdf",
+      "bytes": 261476,
+      "sha256": "f0a990a75683c959ce54a6e371fd627b010c3a9e7433cc72eff9bdbb75f1b9bc",
+      "subject": "https://perso.math.univ-toulouse.fr/miclo/files/2012/04/hyperboundedness.pdf",
+      "read_scope": "Theorem 1, Section 5 Theorem 10 Orlicz extension, Section 6 Proposition 11 and context",
+      "representation": "raw downloaded PDF bytes; no normalization"
+    },
+    {
+      "file": "MOS-1108.1210v5.pdf",
+      "bytes": 515516,
+      "sha256": "49da0d2da85f9090348ff33f1c6e7bd7d3ac9f43c7cedb26a072323d997c2179",
+      "subject": "https://arxiv.org/pdf/1108.1210v5",
+      "read_scope": "introduction (1.1)-(1.2), tensorization, Remark 1.13, surrounding forward/reverse sections via web PDF reader",
+      "representation": "raw downloaded PDF bytes; no normalization"
+    },
+    {
+      "file": "OPERATIONAL-GOVERNANCE-CHARTER.git.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "subject": "14f6c1afda58d925cdf1481ecb7791d0ade9395b:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "read_scope": "full",
+      "representation": "raw Git blob bytes; no normalization"
+    },
+    {
+      "file": "pr247-body.normalized.txt",
+      "bytes": 992,
+      "sha256": "4e239b272a60914efaddca88198edf4ac59864eb78a0c268a08455951179adb9",
+      "subject": "PR247 body",
+      "read_scope": "full",
+      "representation": "JSON body parsed; CRLF/CR to LF; trim trailing LF; one terminal LF; UTF-8 without BOM"
+    },
+    {
+      "file": "pr247-capture.json",
+      "bytes": 1061,
+      "sha256": "82e6cb891b8d0099d3bc0f77e692e409f06ee6e9db1eb5dc5098683ea66fdde3",
+      "subject": "gh pr view 247 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid",
+      "read_scope": "full",
+      "representation": "captured command JSON string UTF-8 without BOM plus one LF; raw file hashed"
+    },
+    {
+      "file": "PROVENANCE.json",
+      "bytes": 823,
+      "sha256": "8e7b3826124530639576f76b638b502c2f7df9c5d0e924cb20a72d3bd41754e4",
+      "subject": "audit-created evidence PROVENANCE.json",
+      "read_scope": "authored or provenance captured during this audit",
+      "representation": "raw file bytes as written; no normalization for hashing"
+    },
+    {
+      "file": "REPORT.md",
+      "bytes": 18846,
+      "sha256": "aadcfc8f8c89e584a66fef0b7ff1e8b0a38cf8fbeef180742917d8d4810b03d5",
+      "subject": "audit-created evidence REPORT.md",
+      "read_scope": "authored or provenance captured during this audit",
+      "representation": "raw file bytes as written; no normalization for hashing"
+    },
+    {
+      "file": "Wang-1305.4460v6.pdf",
+      "bytes": 189103,
+      "sha256": "e11cc264a62fe1ea6e73f2332abab523eefc78ff58ab82eac447b0eb8752e417",
+      "subject": "https://arxiv.org/pdf/1305.4460v6",
+      "read_scope": "introduction, both operator-tail definitions, UI definition, Theorem 1.1 and nearby remarks",
+      "representation": "raw downloaded PDF bytes; no normalization"
+    }
+  ],
+  "self_hash_excluded": "MANIFEST.json excluded to avoid self-reference; all listed hashes are raw file bytes"
+}

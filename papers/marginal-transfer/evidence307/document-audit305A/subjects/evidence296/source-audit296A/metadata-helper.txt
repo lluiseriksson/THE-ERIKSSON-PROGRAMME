@@ -1,0 +1,76 @@
+from pathlib import Path
+import subprocess,json,hashlib
+W=Path(r'C:\Trabajo\the-eriksson-programme\prefix-rank290-20261113');E=Path(r'D:\Datos\the-eriksson-programme\autonomia\evidencia-296\source-audit296A');HEAD='e1873a4517c6526da6dd5a18fb6edc99a28cea64'
+def h(b):return hashlib.sha256(b).hexdigest()
+def req(c,m):
+ if not c:raise RuntimeError(m)
+def git(*a):return subprocess.check_output(['git','-C',str(W),*a])
+def put(p,b):
+ p=E/p;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b)
+req(not E.exists(),'exclusive packet exists');E.mkdir(parents=True);req(git('rev-parse','HEAD').decode().strip()==HEAD,'HEAD mismatch')
+paths=['research/finite-moment296/judges296.txt','research/finite-moment296/finite-moment296A.txt','research/bounded-density295/bounded-density295A.txt','CLAUDE.md','docs/OPERATIONAL-GOVERNANCE-CHARTER.md'];bindings=[]
+for p in paths:
+ raw=(W/p).read_bytes();blob=git('show',HEAD+':'+p);req(raw.replace(b'\r\n',b'\n')==blob.replace(b'\r\n',b'\n'),'Git/check out text differs '+p)
+ put(Path('subjects/checkout')/p,raw);put(Path('subjects/git')/p,blob);bindings.append({'path':p,'checkout_bytes':len(raw),'checkout_raw_sha256':h(raw),'git_bytes':len(blob),'git_raw_sha256':h(blob),'checkout_LF_sha256':h(raw.replace(b'\r\n',b'\n'))})
+candidate=bindings[1];req(candidate['checkout_LF_sha256']=='c952d3eea07c82156cc368d36f7ed6aed818be5afa16c39e52f899f64788aa28','candidate pin')
+pre=git('rev-parse','bde2906f').decode().strip();req(pre=='bde2906f902593f01c20bb7db075a36d5d307206','prereg pin');req(git('show',pre+':research/finite-moment296/judges296.txt').replace(b'\r\n',b'\n')==(W/paths[0]).read_bytes().replace(b'\r\n',b'\n'),'judges not prereg exact')
+put(Path('input-bindings.json'),json.dumps(bindings,indent=2).encode());put(Path('preregistration.txt'),git('show','--format=fuller','--no-patch',pre))
+assignment='''New mathematical G1-G10 source audit UNIT296, one activequestion. FrozenHEAD e1873a4517c6526da6dd5a18fb6edc99a28cea64 at C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113. Read research/finite-moment296/judges296.txt preregcommitbde2906f; complete candidate finite-moment296A.txt rawLFc952d3eea07c82156cc368d36f7ed6aed818be5afa16c39e52f899f64788aa28. Claim uniformLs density with s>(1+rho)/(1-rho) gives explicit dimension-free gap min(1/2,(2B)^(-2e)), e=2rho s/((1-rho)(s(1-rho)-1-rho)); noLinfinity/lower bound. Complementcounterexample for1<s<log2/log(2/(1+rho)), everyB>1, normalizedpositivebackgroundplus2antipodalrarespikes hasboundedLsbutexponentiallycollapsing ACTUALtransfergap with3explicitrates. Intermediateregion/endpointsunresolved; no sharpthreshold/priorityclaim. Checkallproofsteps particularlyHolderexponents, lambda1<=B withfiniteLs, signinterpolation, absentpositiveeigenvectoroutsideS, crossblockL2rowmass v^L anddecayeta<1. Auditmusttryrefute, preservefailures. No computation/runtime/Lean/build, onlyanalyticalread/hash/edit. PrimaryMOS1108.1210v5 ifneeded, parentwebalsoidentifiedAida2001 Schrodingerhyperboundedgap andMiclo/Wang asrelevantcomparisons, nooriginalityestablished. Do not modifycandidate/head/PR/state; freezeuntilverdict. Savecompletefullreport/context/assignment/inputs/hashmanifest D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-296\\source-audit296A. No otherchats/messages. DistinctinvolvedOpenAI/Codex, no inventedbackend or independentpeerreview.'''
+put(Path('assignment.txt'),assignment.encode())
+primary='''Primary read for this audit: https://arxiv.org/abs/1108.1210 and https://arxiv.org/pdf/1108.1210v5, Mossel/Oleszkiewicz/Sen, On reverse hypercontractivity, revision5 December2012. Browser supplied abstract plus PDF introduction pages1-3, especially displayed1.1 ordinary Boolean condition and1.2 reverse Boolean condition/tensorization. Only these sections read, not complete35page paper. Browser references turn732view0/turn733view0 retained here only as tool provenance, not external references. The Boolean half-factor in reverse time is essential; the abstract's general finite-space factor is weaker and is not substituted. No primary PDF copied into evidence. Reverse bilinear consequence derived analytically below via p'=p/(p-1). Aida/Miclo/Wang comparisons mentioned by parent were NOT independently read here and no equivalence or novelty conclusion made. No broad prior-art search. Browser reads succeeded, no failed helper or math execution.'''
+put(Path('primary-reading.txt'),primary.encode())
+context='''Involved separate Codex/OpenAI session, prior programme294/295 production and source audit context; parent fabricated this candidate, this session audits. Actual served backend/version/effort not exposed; not independent, blind, human peer review or formal/numerical verification. Full296 candidate and all10judges read analytically, full295A sign-method predecessor read to distinguish adaptation and support-zero convention, operative governance read in preceding same-context production task and raw retained again. No prior acceptance imported as proof. Actual primary MOS intro read through web solely to verify classical thresholds. No thirdpartyPDF retained. All signs/constants argued analytically, no executable mathematics, numerical experiment, symbolic tool, tests, compiler, Lean, runtime/model service or reviewscore. Metadata helper only file/Git/hash/JSON/retention; explicit checks no assert. No source/Git/PR/state changes, otheragents/chats or incoming messages. No helper failure. Actual raw versus LF hashes separately labeled.'''
+put(Path('context.txt'),context.encode())
+report='''296A COMPLETE ADVERSARIAL ANALYTICAL SOURCE AUDIT
+VERDICT: ACCEPT_BOUNDED_ANALYTICAL_SOURCE, G1-G10 all10 accepted, exactHEAD e1873a4517c6526da6dd5a18fb6edc99a28cea64, candidate LF SHA256c952d3eea07c82156cc368d36f7ed6aed818be5afa16c39e52f899f64788aa28. No material error or counterexample found after the attacks detailed below. No edits/conditional patch accepted. This is a finite Boolean transfer-spectrum theorem and counterregime, not a PDF assessment, external priority certificate, full programme solution or physicalgap.
+
+G1 NORMALIZATION/SUPPORT — ACCEPT
+Noise point-coordinate matrix has entries tensor[[a,b],[b,a]], fixes uniform measure, is PSD with Walsh eigenvalues rho^degree. Uniform-space and standard Euclidean matrices coincide under common2^(L/2) basis scaling. Congruence bysqrt(r) remains PSD. E r=1 makes sqrt(r) a unit vector, so its Rayleigh quotient is<r,P r>; Walsh constant gives>=1. SupportS nonempty; positive entries onS give simple Perron eigenvalue. Positive-eigenvalue vectors vanish offS since zero rows force lambda w=0 there. A second positive eigenvector orthogonal to Perron onS has both signs; cannot be nonzero one-signed. Rankone support has lambda2zero and full-space gap1. Full list includes zeros and dimension>=2 atL>=1.
+
+G2 Ls PERRON UPPER — ACCEPT
+For real unit h, f=sqrt(r)h, quadratic form equals||P_sqrt(rho)f||2^2<=||f||_(1+rho)^2. A0=2s/(s+1) exceeds1+rho exactly when s(1-rho)>1+rho. Probability-space norm monotonicity and Holder1/A0=1/(2s)+1/2 yield||f||A<=||sqrt(r)||2s||h||2<=sqrt(B). Thus1<=lambda1<=B; no Linfinity is used. This is valid also when r vanishes. All f finite on finite cube, so largeQ/negative auxiliary reverse norms introduce no hidden integrability condition.
+
+G3 EXPONENTS — ACCEPT
+A=1+rho, p=1-rho, t=(1+rho)/rho. Ordinary Boolean P_rho:A->t has threshold sqrt((A-1)/(t-1))=rho, and P_sqrt(rho):A->2 has thresholdsqrt(rho). Holder1/Q=1/s+1/t givesQ=s(1+rho)/(s rho+1+rho). Algebra:Q-A=A[s(1-rho)-1-rho]/(s rho+1+rho)>0 precisely in stated sufficient regime. ThusQ>A>1 and Holder exponents s/Q,t/Q exceed1. From nonnegative lambda2 f<=rP f obtain||f||Q<=(B/lambda2)||f||A. No division by r occurs.
+
+G4 REVERSE/INTERPOLATION/SIGN — ACCEPT
+Positivity plus eigenrelation gives subeigen inequality for each normalized sign part at its positive support; at its zero coordinates RHS nonnegative. Multiplication bysqrt(r) pays zeros safely. Integrating against unit signpart and ordinary hypercontractivity giveslambda2<=<f,P f><=||f||A^2. Interpolation1/A=theta/p+(1-theta)/Q has0<theta<1. Applying ordinary Holder to f^A powers uses conjugate exponents greater1 despite p<1; no false p-quasinorm triangle. Combining with Qbound and dividing positive||f||A yields||f||p>=||f||A(B/lambda2)^(-(1-theta)/theta). Algebra e=Q(A-p)/(p(Q-A))=2rho s/[(1-rho)(s(1-rho)-1-rho)] exactly as printed.
+Classical bilinear input checked against actual Boolean MOS equation1.2, not weaker general finite-space abstract. Let p'=p/(p-1)=-(1-rho)/rho. Half-log threshold from p to p' equals(1/2)log((1-p')/(1-p))=-logrho. Reverse Holder for positive functions then gives<f,P_rho g>>=||f||p||g||p. Add positiveepsilon before taking epsilon down to0; final norms are positivep only and finite-space continuity handles zeros. The stated convention t_time=-logrho is correct. No erroneous factor2.
+
+G5 UNIFORM GAP CONSTANT — ACCEPT
+Each signpart has||f||p>=sqrt(lambda2)(B/lambda2)^(-e). CrossentryD>=lambda2(B/lambda2)^(-2e)>0. Compression in orthonormal signparts has eigenvector(c,-d), eigenvalue lambda2, and other eigenvaluelambda2+D(d/c+c/d)=lambda2+D/(cd). Variational bound<=lambda1, cd<=1/2 implygap>=2D/lambda1. In the branchlambda2>=lambda1/2>=1/2, 2lambda2/lambda1>=1 and B/lambda2<=2B; sincee>0, gap>=(2B)^(-2e). Other branchgap>1/2. Exact equalitylambda2=lambda1/2 belongs to first branch and causes no strictness issue. Finalmin formula valid. This sharper prefactor relative295 does not misuselambda1<=B; normalizedsecond/top comparison itself supplies>=1.
+
+G6 STRICTPOSITIVE SPIKE/ALLL/B — ACCEPT
+For every B>1, epsilon=(B-1)/2^(1/s)>0. Antipodes distinct at everyL>=1. Z=1+2epsilon2^(-L(1-1/s)) equals exact numerator mean. Densitypositive and normalized. Minkowski s>1 bounds numerator norm by1+epsilon2^(L/s)(2/2^L)^(1/s)=B; dividingZ>=1 preserves it for ALLL, not only asymptotic. Denominator tends1; point height grows, so no uniformLinfinity cap. No claimed stationarymarginal preservation.
+
+G7 ACTUAL SECOND EIGENVALUE/CROSSBLOCK — ACCEPT
+Two-coordinateprincipalblock isD[[1,zeta^L],[zeta^L,1]] withD=(1+z_L)a^L/Z. Interlacing giveslambda2>=D(1-zeta^L) for full actualT, not only unrelated dynamics. Top>=D. Complement density is1/Z, so complementary principal P block norm<=1/Z<=1. RectangularK row amplitudes sqrt(1+z_L)/Z times noiseentries. Sum of squares full noiserow equals(a^2+b^2)^L=v^L, v=(1+rho^2)/2. Two rows yield||K||^2<=Frobenius^2<=2(1+z_L)v^L/Z^2; omitted withinC entries only reduce. Symmetricoffdiag block has norm||K||, not2||K||. Weyl/triangle giveslambda1<=D(1+zeta^L)+1+||K|| (loose but valid). Combininglambda1>=D andinterlacing yieldsgap<=[2D zeta^L+1+||K||]/D. All factors correct, includingL1 emptycomplement: actualK0 but looseboundstill valid.
+
+G8 THREE EXPLICIT DECAYS — ACCEPT
+Z<=1+2epsilon and1+z_L>=epsilon2^(L/s) imply1/D<=((1+2epsilon)/epsilon)kappa^-L. Dividingcrossnorm byD cancelsZ and yieldssqrt2/sqrt(1+z_L)(sqrt(v)/a)^L<=sqrt(2/epsilon)eta^L. kappa=2^(1/s)a>1 exactly when s<log2/log(1/a). zeta=b/a strictly0..1. eta^2=2^(-1/s)v/a^2=v/(a kappa)<v/a<1 since rho^2<rho. Allthree exponentialrates below1. Finiteprefactors may be large forBnear1 andsmallL estimateuninformative, explicitlyallowed. B=1 cannot supportthis family and is excluded from obstruction.
+
+G9 REGIMES/BOUNDARIES — ACCEPT
+t0=(1-rho)/(1+rho) lies0..1, 1/a=1+t0, s_point=log2/log(1+t0) ands_c=1/t0. log(1+t0)>t0log2 implies s_point<s_c; denominator<log2 impliess_point>1. Strict intervals disjoint, endpoints/intermediate not resolved. B1Jensen equalityforcesr1 (finiteprobability) andnoisegap1-rho; candidate correctlycalls uniformbound weak, notsharp. No necessity claimed at sufficientthreshold, no assertion covers s=s_point or s_c.
+
+G10 RELATION/NOVELTY/RELEVANCE — ACCEPT IN LIMITEDSCOPE
+This is a substantive finite-moment strengthening beyond pointwisecap295 plus explicitnegativeintegrabilityregime for the SAME congruence. Mathematical correctness does not establish originaldiscovery. Hypercontractive/reverseHolder/interpolation/Perron/interlacing/compression are classical and credited; methodlargelyextends295. Parentidentified hyperbounded/Schrodinger priorwork remains a real equivalence/noveltycomparison debt. Only MOS introductoryBoolean formulas read as primary by thisauditor, not Aida/Miclo/Wang/Gross fulltheorems. No priority, sharpthreshold, stationarymarginal, localGibbs/heatbath, YangMills/physical/continuumclaim accepted. Grouping with294/295 ratherthan separatepaper is faithfully stated.
+
+OBJECTIONS/IMPROVEMENTS
+Materialobjections: NONE. NonblockingN1:296 only cites reverseHolder/epsilon derivation compactly; importing explicitp'andhalf-log check from295 would make standalone exposition clearer, but exact steps are valid and supplied above, no sourcepatch neededforacceptance. NonblockingN2: finiteLs operatorperturbation literature comparison remains incomplete and may subsume sufficient theorem; preserve unestablishedpriority language. No forced new literaturegrade or claim that thisnote eliminates all finite-moment uncertainty. No numericalpercentage, formal certificate or PDFscore.
+
+STABILITY/TOOLS/READSCOPE
+All10 preregistered gates independently analyzed above; nonzero acceptedcount10 checked in retention metadata, not generated from mathematicalexecution. Exact preregjudges match commitbde2906f902593f01c20bb7db075a36d5d307206; rawGit/checkout/LFbinding explicit. Allcandidate/proof source read in full. Metadata-only helper for file/Git/hash/JSON/retention; no executablemath, tests, compiler,Lean,runtime, reviewed-codeimport or source/PR/state edit. Primarybrowser reads succeeded. Shared involvedCodex/OpenAI, exactbackendunexposed, no independent/humanreview. No incomingmessage, no helperfailure. FinalHEAD/source/judges rechecked unchanged. Full originalassignment/context/rawsubjects/primaryreadlimits/manifest retained.
+'''
+put(Path('full-report.txt'),report.encode());put(Path('gate-count.json'),json.dumps({'gates':list(range(1,11)),'accepted_count':10,'material_objections':0,'verdict':'ACCEPT_BOUNDED_ANALYTICAL_SOURCE'},indent=2).encode())
+req(git('rev-parse','HEAD').decode().strip()==HEAD,'finalHEAD drift')
+for f in bindings:req(h((W/f['path']).read_bytes())==f['checkout_raw_sha256'],'source drift '+f['path'])
+put(Path('stability.json'),json.dumps({'initial_head':HEAD,'final_head':HEAD,'all5_inspected_checkout_subjects_unchanged':True,'gates_checked':10,'no_source_mutations':True},indent=2).encode());put(Path('metadata-helper.txt'),Path(__file__).read_bytes())
+files=[]
+for p in sorted(E.rglob('*')):
+ if p.is_file():
+  b=p.read_bytes();files.append({'path':p.relative_to(E).as_posix(),'bytes':len(b),'sha256':h(b)})
+put(Path('raw-hashmanifest.json'),json.dumps({'files':files},indent=2).encode())
+req(len(files)>0,'empty retention')
+for f in files:
+ b=(E/f['path']).read_bytes();req(h(b)==f['sha256'] and len(b)==f['bytes'],'retention mismatch')
+print(json.dumps({'verdict':'ACCEPT_BOUNDED_ANALYTICAL_SOURCE','accepted_gates':10,'members':len(files),'report_sha256':h((E/'full-report.txt').read_bytes()),'manifest_sha256':h((E/'raw-hashmanifest.json').read_bytes())},indent=2))

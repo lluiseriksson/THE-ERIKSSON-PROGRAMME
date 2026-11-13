@@ -1,0 +1,170 @@
+UNIT296: FINITE-MOMENT DENSITY CONTROL AND A RARE-SPIKE OBSTRUCTION
+Analytical candidate; separate audit required. Raw UTF-8 text; no computation.
+
+1. Convention and question
+Let u_L be uniform probability on {0,1}^L, L>=1, and fix0<rho<1.
+P_rho is the Boolean noise operator: its transition matrix is the L-fold
+tensor product of [[a,b],[b,a]], a=(1+rho)/2,b=(1-rho)/2. All Lp expressions
+below use u_L. For r>=0 with E r=1 let T_r=sqrt(r) P_rho sqrt(r).
+Its eigenvalues are in decreasing order with multiplicity, including zeros.
+Define gap(T_r)=1-lambda2/lambda1. This is the same eigenvalue ratio as the
+Ising transfer congruence with rho=tanh(beta), after a positive scalar rescaling.
+There is no assertion about heat-bath dynamics, finite-range interactions,
+physical mass gaps or a continuum limit.
+
+Theorem A (finite Ls sufficient condition).
+Fix s>(1+rho)/(1-rho), B>=1. Every such density with ||r||_s<=B satisfies
+
+ gap(T_r) >= min{1/2,(2B)^(-2e)} >0,
+ e=2 rho s / [(1-rho)(s(1-rho)-1-rho)].
+
+This is independent of L and requires neither an L-infinity bound nor a
+positive lower bound. Zeros in r are allowed.
+
+2. Proof of Theorem A
+Set A=1+rho, p=1-rho, t=1+1/rho and
+Q=st/(s+t)=s(1+rho)/(s rho+1+rho).
+The condition on s says exactly Q>A. In particular Q>A>1>p>0.
+We use the classical Boolean hypercontractivity statements
+
+ ||P_{sqrt(rho)} f||_2 <= ||f||_A,
+ ||P_rho f||_t <= ||f||_A,
+ <f,P_rho g> >= ||f||_p ||g||_p for f,g>=0.
+
+The first two have respective noise thresholds sqrt((A-1)/(2-1))
+=sqrt(rho) and sqrt((A-1)/(t-1))=rho. The last is the reverse
+bilinear inequality with (1-p)^2=rho^2. It follows from reverse
+hypercontractivity, reverse Holder and positive-epsilon approximation.
+Only positive p-moments of f,g remain, so zeros are harmless. These are
+classical inequalities, not new results; see Mossel-Oleszkiewicz-Sen,
+On Reverse Hypercontractivity, arXiv1108.1210v5, equations1.1-1.2,
+tensorization and reverse duality. The noise convention is t_time=-log(rho).
+
+T_r is positive semidefinite, because P_rho has positive Walsh eigenvalues.
+For its top eigenvalue, testing the unit vector sqrt(r) gives
+lambda1 >= <r,P_rho r> >= (E r)^2=1.
+For any real unit vector h, f=sqrt(r)h and
+<h,T_r h>=||P_{sqrt(rho)} f||_2^2 <= ||f||_A^2.
+Put A0=2s/(s+1). The assumed s implies A0>A. On a probability space,
+||f||_A<=||f||_{A0}<=||sqrt(r)||_{2s}||h||_2<=sqrt(B)
+by Holder, since1/A0=1/(2s)+1/2. Therefore lambda1<=B.
+No pointwise bound on r occurred in this argument.
+
+If lambda2<lambda1/2, the gap is greater than1/2. Otherwise lambda2>=1/2.
+On S={r>0}, T_r has strictly positive entries and a simple Perron eigenvalue;
+outside S its rows and columns vanish. An eigenvector w at positive lambda2
+vanishes off S and is orthogonal to the strictly positive Perron vector on S.
+Thus w has both signs. Write w=c h_+ - d h_-, with c,d>0,
+c^2+d^2=1 and nonnegative orthonormal h_+,h_- of disjoint supports.
+On the positive support the eigenrelation gives
+lambda2 h_+=T_r h_+ -(d/c)T_r h_- <= T_r h_+;
+outside that support the inequality follows from positivity and h_+=0.
+The negative part has the identical conclusion with c,d interchanged.
+
+For either h=h_+ or h_-, put f=sqrt(r)h. Multiplication by sqrt(r) yields
+lambda2 f<=r P_rho f, without dividing by r. Holder with1/Q=1/s+1/t
+and the second ordinary hypercontractive inequality give
+
+ ||f||_Q <= (B/lambda2)||f||_A.
+
+Integration of lambda2 h<=T_r h against the unit h gives
+lambda2<=<f,P_rho f><=||f||_A^2, so ||f||_A>=sqrt(lambda2).
+Let theta in(0,1) solve1/A=theta/p+(1-theta)/Q. Ordinary Holder applied
+to powers gives ||f||_A<=||f||_p^theta ||f||_Q^(1-theta), even though
+p<1; this uses no triangle inequality for a p-quasinorm. Consequently
+
+ ||f||_p >= sqrt(lambda2)(B/lambda2)^(-e),
+ e=(1-theta)/theta=Q(A-p)/(p(Q-A))
+   =2 rho s / [(1-rho)(s(1-rho)-1-rho)].
+
+The cross entry D=<h_+,T_r h_->=<f_+,P_rho f_-> therefore satisfies
+D>=lambda2(B/lambda2)^(-2e)>0 by the reverse inequality.
+The compression to span(h_+,h_-) has eigenvector(c,-d) at lambda2.
+Writing its diagonal entries x,y, the eigenrelation says
+x-lambda2=D d/c and y-lambda2=D c/d. Its other eigenvalue is
+lambda2+D/(cd). By the variational principle and cd<=1/2,
+lambda1-lambda2>=D/(cd)>=2D.
+Thus in the present case
+
+ gap(T_r)>= (2lambda2/lambda1)(B/lambda2)^(-2e)
+           >= (2B)^(-2e),
+
+because2lambda2/lambda1>=1 and lambda2>=1/2. Combining the two cases
+proves Theorem A. If S has one point, lambda2=0 and gap=1, already covered.
+All other support-zero cases were handled without a lower-density hypothesis.
+
+3. Counterregime: uniform finite moments can still permit gap collapse
+Define s_point=log(2)/log(2/(1+rho)). Fix1<s<s_point and any B>1.
+Let epsilon=(B-1)/2^(1/s)>0 and write z_L=epsilon 2^(L/s).
+For the two antipodal vertices0^L,1^L define
+
+ r_L(x)=[1+z_L(1_{0^L}(x)+1_{1^L}(x))]/Z_L,
+ Z_L=1+2epsilon 2^(-L(1-1/s)).
+
+These vertices are distinct for everyL>=1. Thus E r_L=1 and r_L>0.
+The triangle inequality in Ls, s>1, gives
+||1+z_L(1_0+1_1)||_s <=1+z_L(2/2^L)^(1/s)=B.
+Since Z_L>=1, ||r_L||_s<=B for everyL. Meanwhile the pointwise maximum
+diverges as L grows; this family is unavailable under a uniform L-infinity cap.
+
+Put a=(1+rho)/2, b=(1-rho)/2, v=(1+rho^2)/2 and define
+kappa=2^(1/s)a>1, eta=2^(-1/(2s))*sqrt(v)/a,
+zeta=b/a in(0,1).
+The actual transfer operators of these strictly positive densities satisfy
+
+ gap(T_{r_L}) <= 2 zeta^L + ((1+2epsilon)/epsilon) kappa^(-L)
+                         + sqrt(2/epsilon) eta^L.
+
+Each term decays exponentially. In particular, bounded Ls alone cannot
+ensure a dimension-uniform positive gap throughout this low-s regime.
+
+4. Proof of the counterregime spectral estimate
+Use the standard Euclidean matrix of T_r; multiplication by the constant
+normalization of the L2(u_L) basis leaves this matrix unchanged. Split the
+two antipodal coordinates C from the others. On C the principal block is
+
+ D_L [[1,zeta^L],[zeta^L,1]], D_L=(1+z_L)a^L/Z_L.
+
+Principal interlacing gives lambda2>=D_L(1-zeta^L), and a coordinate
+Rayleigh quotient gives lambda1>=D_L. Outside C the density is1/Z_L,
+so the complementary block is(1/Z_L) times a principal submatrix of the
+positive contraction P_rho, and its norm is at most1/Z_L<=1.
+For the rectangular cross block K, the squared sum of a full row of P_rho
+is (P_rho^2)(x,x)=v^L. Therefore
+
+ ||K||^2 <= ||K||_F^2 <= 2(1+z_L)v^L/Z_L^2.
+
+The symmetric off-diagonal block matrix has norm||K||. Hence
+lambda1 <= D_L(1+zeta^L)+1+||K||, which with interlacing and lambda1>=D_L
+gives gap<=2zeta^L+1/D_L+||K||/D_L.
+As Z_L<=1+2epsilon and1+z_L>=epsilon2^(L/s),
+
+ 1/D_L <= ((1+2epsilon)/epsilon)kappa^(-L),
+ ||K||/D_L <= sqrt(2/epsilon)[2^(-1/(2s))*sqrt(v)/a]^L.
+
+This proves the explicit estimate. The strict low-s condition says kappa>1.
+Moreover eta^2=v/(a*kappa)<v/a<1, since0<rho<1 implies rho^2<rho.
+Thus all three rates are strictly below1. L=1 and an empty complementary
+block cause no issue: the norm bounds remain valid and the estimate need
+not be informative at smallL. No stationary-law marginal assertion is made
+for this spike family; only the actual transfer eigenvalue gap is estimated.
+
+5. Boundary, sharpness and literature limitations
+For t0=(1-rho)/(1+rho) in(0,1), s_point=log2/log(1+t0), while
+s_c=(1+rho)/(1-rho)=1/t0. Strict concavity of log gives
+log(1+t0)>t0 log2, so1<s_point<s_c. The two proved regimes do not overlap.
+The entire intermediate interval and both endpoints remain unresolved here;
+neither threshold is claimed sharp. At B=1, Jensen implies r=1, and the
+actual gap is1-rho. This benchmark displays weakness of the sufficient bound.
+
+The positive theorem extends the sign-part method of unit295 by choosing
+hypercontractive exponents around1+rho and applying Holder to an Ls weight.
+The negative theorem uses rare-spike concentration plus a full cross-block
+norm bound, rather than merely comparing two heat-bath equilibrium modes.
+Ordinary/reverse hypercontractivity, Holder interpolation, principal
+interlacing and positive-matrix compression are classical. No external
+priority is asserted. General hyperbounded-operator and Schrodinger
+perturbation literature remains relevant; a precise implication comparison
+is necessary before a stronger originality claim. Group with294/295 rather
+than publishing a separate minor-corollary note. No numerical or formal
+verification has been performed or is needed for this analytical candidate.

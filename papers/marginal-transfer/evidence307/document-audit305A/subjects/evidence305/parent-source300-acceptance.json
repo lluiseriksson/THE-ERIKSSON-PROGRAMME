@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-11-13T13:00:54.544127+00:00",
+  "source_sha": "14f6c1afda58d925cdf1481ecb7791d0ade9395b",
+  "judges_sha": "493d0aa62345fe537b7414f7cbc8d2a01d16b636",
+  "verdict": "ACCEPT",
+  "full_report_read": true,
+  "context_read": true,
+  "raw_files_verified": 17,
+  "manifest_sha256": "ff3a82260f86938cd984963874fdf7604f011baf32c4ee01d154beb26b06de7c",
+  "report_sha256": "aadcfc8f8c89e584a66fef0b7ff1e8b0a38cf8fbeef180742917d8d4810b03d5",
+  "gates": "G1-G7",
+  "nonblocking_qualifications": [
+    "Miclo threshold2 is fourth power of L2-to-L4 norm, not raw norm",
+    "General nondecreasing psi defines a weighted moment, not necessarily a Young function or Luxemburg norm"
+  ],
+  "formal_verification": false,
+  "independent_human_or_provider_review": false,
+  "new_PDF_score": null,
+  "external_priority_established": false
+}

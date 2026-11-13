@@ -1,0 +1,15 @@
+Unit299 source-package boundary
+This grouped manuscript adds the exact critical moment-budget threshold and
+the equality construction to the retained marginal/transfer results. It is
+a new artifact: no prior PDF score transfers to it. Exact new PDF production,
+visual QA and first numerical assessment remain pending at this source commit.
+The source audit's interrupted attempt remains provisional historical evidence;
+full-report-resumed-final.md is the delivered analytical verdict. All previous
+raw files and the interruption record are retained unchanged.
+The source audit manifests identify their original absolute capture paths and
+byte regimes. SOURCE-INPUTS299.json binds the actual packaged relative bytes.
+The prior298-assessment directory preserves the earlier exact-PDF report and
+schema correction history, not a rating of299. Parent-source299-acceptance.json
+is a dated source acceptance observation; it does not accept this new manuscript.
+No third-party full texts or protected credentials are included. General sign
+splitting and hypercontractivity are classical; external priority is unresolved.

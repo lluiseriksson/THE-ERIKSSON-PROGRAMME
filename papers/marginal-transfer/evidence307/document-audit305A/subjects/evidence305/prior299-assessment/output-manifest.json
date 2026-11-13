@@ -1,0 +1,37 @@
+{
+  "created_at": "2026-11-13T12:41:04.4960242+00:00",
+  "assessment_round": 1,
+  "paper_id": "ARR-2026-7KV9Y9ASX48H7A7N",
+  "version_id": "arr:version:64d43ea4-df87-4a7e-b973-e1c25d68d38c",
+  "pdf_sha256": "51d6ceeca54f3d782ed552074c0a320e715cd345502f25ce5387c2b380f732eb",
+  "hash_algorithm": "SHA256",
+  "native_response_format_check": "Parsed as JSON; exact top-level and five criterion keys match supplied example; ratings and PDF binding checked. The supplied format is not a formal JSON Schema.",
+  "self_excluded": "This manifest lists the five delivered content files. Its own hash is reported separately to avoid a circular self-hash.",
+  "files": [
+    {
+      "path": "full-scientific-report.txt",
+      "bytes": 26338,
+      "raw_sha256": "ce3f7aaa64a128ddb7f27af842a252265fd641958c001694d66d376466c1a44c"
+    },
+    {
+      "path": "importance-assessment.json",
+      "bytes": 2088,
+      "raw_sha256": "6e5fd03d1f2653948fcc6ad33d49c53a23d805c03274c940665b845060c3944d"
+    },
+    {
+      "path": "model-context.json",
+      "bytes": 4326,
+      "raw_sha256": "cb680cf6226d79bec91e93ca9217020a659e8dc0a23bb4d7984c811b852e479a"
+    },
+    {
+      "path": "native-response.json",
+      "bytes": 6978,
+      "raw_sha256": "aaeb325aec86fbc9172540902d2d00fad6f2c6d07b72c310d5a43f4fe2dc01ea"
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 2216,
+      "raw_sha256": "04eb3f8510d9b7269749911f273f3493e9620880fdc0fd28cfcb9fa5cd69ae6a"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1060,
+      "sha256": "a10f2974dc35268df7db1a5ef167533ad375e41a1b1b85be999447048144232f"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 709,
+      "sha256": "2dfac8b308cb439b041e6c42d00adc7f3730225e799efeb646b5d59d24551a31"
+    },
+    {
+      "path": "full-comparison.txt",
+      "bytes": 9088,
+      "sha256": "56d652d4c064a6ad765f851c91c9e156045784b8c0ae75f1ae767e64dcd7d002"
+    },
+    {
+      "path": "metadata-helper.txt",
+      "bytes": 13810,
+      "sha256": "c0c51df8cb545e61035e84e91bbb5dbb5ff69bc108446383fcc64c6179b5da63"
+    },
+    {
+      "path": "source-urls-and-readscope.json",
+      "bytes": 1064,
+      "sha256": "846967436b6e0b3734ca16932b1d487ff301e8685f676e4b8c56b3b0c191c16d"
+    },
+    {
+      "path": "stability.json",
+      "bytes": 329,
+      "sha256": "794e4c5042feb2ed64e63f0d27ae82fc24ae7667693bcdd73f5cc987f28cfd8c"
+    },
+    {
+      "path": "subjects/finite-moment296A.txt",
+      "bytes": 8414,
+      "sha256": "c952d3eea07c82156cc368d36f7ed6aed818be5afa16c39e52f899f64788aa28"
+    },
+    {
+      "path": "subjects/judges296.txt",
+      "bytes": 2318,
+      "sha256": "2f2ce70574ec8f12bde54f81d9a08eaf65e211a0f7385f0748ef1fd0a0f71a22"
+    }
+  ]
+}

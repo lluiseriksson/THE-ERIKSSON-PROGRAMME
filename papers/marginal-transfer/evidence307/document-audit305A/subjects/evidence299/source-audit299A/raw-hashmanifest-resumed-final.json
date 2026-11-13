@@ -1,0 +1,236 @@
+[
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\assignment-received.txt",
+    "bytes": 1956,
+    "sha256": "467ba9f7919f92de059ca8f4f2f387b643058de15782d238400080074500ea09",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\assignment-resume-received.txt",
+    "bytes": 555,
+    "sha256": "978e1aff099a487444e4d6984a4ef5b5463a1156d6cc26b3b89086db96a66f3a",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\context-and-scope.txt",
+    "bytes": 4686,
+    "sha256": "9b8f87db2f6e1e05d79d9b203ee361c4cd06150b80a97e10a8fdd090e1faba82",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\context-resumed-final.txt",
+    "bytes": 6734,
+    "sha256": "e7aa29fc1714fb2bcd88de8febfdc4f5cd09ea6607c82c4609ab20ce3822a749",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\final-state.json",
+    "bytes": 830,
+    "sha256": "e63a27ecf0b86cc37642c3a295a4f279eed91c110fb302f3ba950b5d3b1e5c40",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\full-report-resumed-final.md",
+    "bytes": 19407,
+    "sha256": "1774c5cdf606820968a0ad258f32a0c4ad43a5179b60826068ea86e55d92a745",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\full-report.md",
+    "bytes": 17521,
+    "sha256": "ec265bb201207cd9a7b1283203a2c9df13902ec6475290eb9d458e15176e5e2b",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\input-manifest-resumed-final.json",
+    "bytes": 13712,
+    "sha256": "874ad2a03178cb41bd492403a26abcc684fed693c1ab81ae4f596713d0fb43c8",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\input-manifest.json",
+    "bytes": 11239,
+    "sha256": "a9a79dedebb8753b33fbd6e896195e871772450293dd27a73edd3cd49b27e5a1",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\interruption-and-resumption.txt",
+    "bytes": 2157,
+    "sha256": "1b8310cd113be496512169ed631126c8b2e9f9bb1e9b911767a78f29c3e05900",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\judge-table-resumed-final.md",
+    "bytes": 2850,
+    "sha256": "573183d4b0616ddb1b7a968adf2672b8576f98a521c85365fb9051d8b611bfbd",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\judge-table.md",
+    "bytes": 2386,
+    "sha256": "90f1bdca4e66afca6918b51299920486b5bf67316fcf88a1e32bde478f8c6590",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-body-capture.json",
+    "bytes": 633,
+    "sha256": "eb29803f3ebeb228e08e67e50f1b0b1069c751de6d531e030b8d52eafa9f8401",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-body-normalized.txt",
+    "bytes": 827,
+    "sha256": "f37b8bedb5470dac5e7c4cfe7ba4d56b321e7d285c276c3570d1f13609c63e61",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-files.json",
+    "bytes": 320,
+    "sha256": "8b42fb358c8520775016d1a29daa2cec630f087c40d75b4456f10428bcb50432",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-final-body-normalized.txt",
+    "bytes": 827,
+    "sha256": "f37b8bedb5470dac5e7c4cfe7ba4d56b321e7d285c276c3570d1f13609c63e61",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-final-snapshot.json",
+    "bytes": 1056,
+    "sha256": "9f563ded6b1d4ffebb96d3011f42f8a7a8d93810e623263735026e30e12f0dc4",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-resumed-body-normalized.txt",
+    "bytes": 827,
+    "sha256": "f37b8bedb5470dac5e7c4cfe7ba4d56b321e7d285c276c3570d1f13609c63e61",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-resumed-snapshot.json",
+    "bytes": 1262,
+    "sha256": "e8afa130a847823f231640729354cb9c050687204e32e67481354ccf9d07ee97",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\pr244-snapshot.json",
+    "bytes": 1056,
+    "sha256": "9f563ded6b1d4ffebb96d3011f42f8a7a8d93810e623263735026e30e12f0dc4",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\primary-reading-notes.md",
+    "bytes": 1807,
+    "sha256": "293d088e9b616b1fd4fa4a7aa43017710f00ce20bcb9569241d2470e7acb82dc",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\raw-hashmanifest.json",
+    "bytes": 10539,
+    "sha256": "7873e7891c52d77995909bb3f42e37559f4fb32dba092dec7cfd077af1aeff39",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\resume-prior-evidence-checks.json",
+    "bytes": 11084,
+    "sha256": "1b6e3da987574d060623257c8bb3c6ed018d489ccd56c2ff2bb4dab6bc63c373",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\resume-stability.json",
+    "bytes": 1316,
+    "sha256": "b3f4e334d0e3d45d0f426c6edd0fcab752fadc87b883bbc47f242cdcb80ceee8",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\state-resumed-final.json",
+    "bytes": 877,
+    "sha256": "2e0f80665ff5c513863ffccb88626642a8a4ae10f92bba78094a71793e1ec099",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\accepted298-manuscript\\papers\\marginal-transfer\\manuscript298A.tex",
+    "bytes": 46979,
+    "sha256": "a01b9793fe66bd7b3e49c2ee62eb50bfc2f4d43d8bad7949aaaa637e3dfc7c28",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\accepted298-source\\research\\critical298\\critical298A.txt",
+    "bytes": 9194,
+    "sha256": "e68c9d1c168323123ce639268877b2cc5b544fc418dab8d54ff59667f9502fe7",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\candidate\\CLAUDE.md",
+    "bytes": 24408,
+    "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\candidate\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13831,
+    "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\candidate\\research\\critical299\\critical299A.txt",
+    "bytes": 11309,
+    "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\candidate\\research\\critical299\\judges299.txt",
+    "bytes": 3799,
+    "sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\checkout\\preregistered\\research\\critical299\\judges299.txt",
+    "bytes": 3799,
+    "sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\accepted298-manuscript\\papers\\marginal-transfer\\manuscript298A.tex",
+    "bytes": 46979,
+    "sha256": "a01b9793fe66bd7b3e49c2ee62eb50bfc2f4d43d8bad7949aaaa637e3dfc7c28",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\accepted298-source\\research\\critical298\\critical298A.txt",
+    "bytes": 9194,
+    "sha256": "e68c9d1c168323123ce639268877b2cc5b544fc418dab8d54ff59667f9502fe7",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\candidate\\CLAUDE.md",
+    "bytes": 23996,
+    "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\candidate\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13573,
+    "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\candidate\\research\\critical299\\critical299A.txt",
+    "bytes": 11309,
+    "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\candidate\\research\\critical299\\judges299.txt",
+    "bytes": 3799,
+    "sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  },
+  {
+    "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-299\\source-audit299A\\subjects\\git-blob\\preregistered\\research\\critical299\\judges299.txt",
+    "bytes": 3799,
+    "sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+    "representation": "Actual saved raw bytes; no hash-time normalization; source and PR regimes specified in input/capture records"
+  }
+]

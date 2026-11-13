@@ -1,0 +1,48 @@
+{
+  "candidate": "375047fac74dee4e464031f7e5b4d2368d5276fa",
+  "source_inputs_blob": "9be7a56f62cb5315a86d3f325504693d959b3fc7",
+  "source_inputs_bytes": 53452,
+  "source_inputs_sha256": "1322fb6d1c05da3acbd2b898287a88ffbae044df9c8a22adb7e19c9886835f76",
+  "original_manifest_coverage": [
+    {
+      "audit": 300,
+      "original_entries": 17,
+      "unaccounted": 0
+    },
+    {
+      "audit": 301,
+      "original_entries": 15,
+      "unaccounted": 0
+    },
+    {
+      "audit": 302,
+      "original_entries": 17,
+      "unaccounted": 0
+    },
+    {
+      "audit": 303,
+      "original_entries": 14,
+      "unaccounted": 0
+    }
+  ],
+  "judges_ancestors": [
+    {
+      "commit": "868d80c81da95387198db3e3e860a769a42f2332",
+      "ancestor": true
+    },
+    {
+      "commit": "add50ba426e1fc8746d14c232d387cd5f0e5ae84",
+      "ancestor": true
+    },
+    {
+      "commit": "51cb36abe877336df1e87d047b4f6e43b028adc4",
+      "ancestor": true
+    }
+  ],
+  "final_head": "375047fac74dee4e464031f7e5b4d2368d5276fa",
+  "final_normalized_body_bytes": 1157,
+  "final_normalized_body_sha256": "211e1681aa56a5a7461d6f4a5d73ee2b887cb8e5edb94f54041d0db7a09f1dfd",
+  "tracked_changes": [],
+  "pdf_files_in_audit_directory": [],
+  "legacy_review": "hash identity only unless read scope explicitly identifies retained/full reading"
+}

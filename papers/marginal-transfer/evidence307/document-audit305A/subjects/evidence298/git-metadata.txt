@@ -1,0 +1,14 @@
+Captured UTC: 2026-11-13T04:50:08.1193159Z Frozen SHA: 2d1d27c4ba5f677e7f51092c6479735ba9ba59fa HEAD: 2d1d27c4ba5f677e7f51092c6479735ba9ba59fa Branch: codex/tep-critical298-20261113 Registered gate commit: c4f88b14b0ef615153365a7d2feed5d0227c5881 Status (untracked directories not opened):
+?? _drafts/
+?? _tmp/
+Git eol metadata:
+i/lf    w/crlf  attr/                 	CLAUDE.md
+i/lf    w/crlf  attr/                 	docs/OPERATIONAL-GOVERNANCE-CHARTER.md
+i/lf    w/crlf  attr/                 	docs/SURFACE-CLOSURE-NOTES.md
+i/lf    w/lf    attr/-text            	papers/marginal-transfer/manuscript297A.tex
+i/lf    w/lf    attr/                 	research/critical298/critical298A.txt
+i/lf    w/lf    attr/                 	research/critical298/judges298.txt
+i/lf    w/lf    attr/                 	research/two-tilt297/two-tilt297A.txt
+Gate blob at registration and frozen SHA:
+3a3b5f27f887b8590d76b2ed9020c09346b5d66a
+3a3b5f27f887b8590d76b2ed9020c09346b5d66a

@@ -1,0 +1,32 @@
+{
+  "operation": "Schema-only correction of original assessment; not a second vote",
+  "target_pdf_raw_sha256": "55d07066bd947482fa2e41f312ca6da614f4ec142f8ee9348b85f5f9d2de31d1",
+  "original_response_raw_sha256": "7f373402792f6b34b2dce8e337c8bfb167b3e32515eaa6064e38e19f4cbda2cc",
+  "only_changed_field": "independence",
+  "old_value": "not_independent_same_provider_fresh_context_shared_filesystem_isolation_unverified",
+  "new_value": "unknown",
+  "representation": "Exact stored bytes; no normalization",
+  "scope": "Four correction outputs; this manifest and detached digest excluded to avoid circular hashing",
+  "files": [
+    {
+      "path": "schema-corrected-response.json",
+      "bytes": 5277,
+      "raw_sha256": "da15318308be7ae0a32590e44800a011eef28323d00dc9460a6247b04090f86e"
+    },
+    {
+      "path": "received-correction-assignment.txt",
+      "bytes": 1275,
+      "raw_sha256": "bb4c8ac15e0a4abfdb6c4955d3666610909975c31ded908517d65618051ce025"
+    },
+    {
+      "path": "schema-correction-addendum.txt",
+      "bytes": 5386,
+      "raw_sha256": "7afab9bc3cbe57b31574fe76efd3b1c66defa6e84af8213d936d4d0ee2a9b629"
+    },
+    {
+      "path": "correction-verification.json",
+      "bytes": 2327,
+      "raw_sha256": "d835a254c7f391279d78e3d9e31a7c85754d46b52d30c98237ba1233e3148344"
+    }
+  ]
+}

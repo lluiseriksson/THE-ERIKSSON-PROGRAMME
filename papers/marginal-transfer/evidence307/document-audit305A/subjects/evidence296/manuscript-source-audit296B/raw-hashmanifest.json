@@ -1,0 +1,84 @@
+{
+  "files": [
+    {
+      "path": "82-input-bindings.json",
+      "bytes": 18120,
+      "sha256": "43a6fcb4836291128b614cddb3b790dc5f9d53e50d56534bad8861e57987fa2c"
+    },
+    {
+      "path": "assignment.txt",
+      "bytes": 765,
+      "sha256": "0a3796718cb3bc25a62a6a635090fa26393a84e183c717f3221800c7d95e8178"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 677,
+      "sha256": "422a8bea008f8108137aa540b8caa75fa2424999afdcb5d63a517da179f20a6e"
+    },
+    {
+      "path": "exact-git-diff.txt",
+      "bytes": 2366,
+      "sha256": "c3a6bbe59489ad4331029cc5046f3fcc88935792f1200d611a41ff30bbc79274"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 3336,
+      "sha256": "029965dc6501256c4701be34813cba019f6dcb0c460b7925af5ec5811b5e7617"
+    },
+    {
+      "path": "metadata-helper.txt",
+      "bytes": 9346,
+      "sha256": "c055f0a1b4a69b550bc98c046a7688ecfdbd1686da03bcace662691829293ea4"
+    },
+    {
+      "path": "prior/full-BLOCK-report.txt",
+      "bytes": 9976,
+      "sha256": "899396298e8c0c2fdf5f0ab80f94521b211fcb7534ffdbd39243613db03fd8dc"
+    },
+    {
+      "path": "prior/raw-hashmanifest.json",
+      "bytes": 20122,
+      "sha256": "41f5c140326977c8e4eb4afb35d5d4a5ee65de872c894a44fcc7faddefe4a043"
+    },
+    {
+      "path": "repair-bindings.json",
+      "bytes": 862,
+      "sha256": "2e3ab9119af8ffa9413da7c0f34d70ed69795df60f4feff72b1b8ee50832b624"
+    },
+    {
+      "path": "stability.json",
+      "bytes": 239,
+      "sha256": "11c57c76dd5714aed5e4f2fbcf4ea8ae981d2e3d7a8e835bdeb42f9deeb2d685"
+    },
+    {
+      "path": "subjects/after/finite-moment296-section.tex",
+      "bytes": 6724,
+      "sha256": "537c93916efb44ee78a3812c77998de8306577bfce111724e5330e761d7bb4f9"
+    },
+    {
+      "path": "subjects/after/manuscript296A.tex",
+      "bytes": 37060,
+      "sha256": "8769395a778c01e3506c74229a87f552e4b49162cabc6c1c07060d9cb44edbe2"
+    },
+    {
+      "path": "subjects/before/finite-moment296-section.tex",
+      "bytes": 6723,
+      "sha256": "aa6fb6f2c7563e345598813cc71cc857ca00786c88b3cd7950f6e6f54b2a01af"
+    },
+    {
+      "path": "subjects/before/manuscript296A.tex",
+      "bytes": 37059,
+      "sha256": "f29c10972f4baa06dbd9d566fa310c7064381e1b98fdb9c943a0ebc0eb0b0879"
+    },
+    {
+      "path": "subjects/SOURCE-INPUTS296.json",
+      "bytes": 17051,
+      "sha256": "feddec036d45476933463beb44c081bff267ba5062233d2ed86a16c79f1cd0d5"
+    },
+    {
+      "path": "subjects/source-transcription-failure.txt",
+      "bytes": 803,
+      "sha256": "1dda4bb2f5b8ad2ef72726cd9f2022e8edc461fa6eb0dab3f0159c44d43640eb"
+    }
+  ]
+}

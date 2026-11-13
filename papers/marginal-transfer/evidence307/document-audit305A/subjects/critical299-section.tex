@@ -1,0 +1,183 @@
+\section{The exact critical moment budget}\label{sec:critical-exact}
+The preceding balanced construction has a sharper limiting moment than
+the triangle inequality used to obtain its all-dimension rate bound.
+Combining that limit with a sign decomposition of a second eigenvector
+identifies the entire critical budget boundary. Throughout this section,
+all norms and expectations use uniform probability on $\{-1,1\}^L$.
+
+\begin{theorem}[Exact critical budget]\label{thm:critical-exact}
+Fix $0<\rho<1$, $s=(1+\rho)/(1-\rho)$, and $B_*=2^{1/s}$.
+For every $L\ge1$ and $r\ge0$ with $\mathbb Er=1$,
+\begin{equation}\label{eq:two-sign-budget}
+ 2\lambda_2(T_r)^s\le\mathbb Er^s.
+\end{equation}
+Consequently $\|r\|_s\le B<B_*$ implies
+\[
+ \gap(T_r)\ge 1-B/B_*>0.
+\]
+For each fixed $b\in(0,1)$ there are strictly positive densities
+$\widetilde r_L$, for every $L\ge1$, such that
+\[
+ \mathbb E\widetilde r_L=1,\qquad
+ \|\widetilde r_L\|_s\le B_*,\qquad
+ \widetilde r_L\ge b,\qquad
+ \gap(T_{\widetilde r_L})\longrightarrow0.
+\]
+Thus the infimum of the gap over all dimensions and densities with
+$\|r\|_s\le B$ is positive exactly for $1\le B<B_*$.
+The same classification holds with any prescribed fixed floor
+$r\ge b$, $0<b<1$. The positive lower bound displayed above is not
+asserted optimal; no convergence rate at $B=B_*$ is asserted.
+\end{theorem}
+
+\begin{proof}
+\emph{Two sign regions.}
+Put $Q=P_{\sqrt\rho}$ and $p=1+\rho=2s/(s+1)$.
+Endpoint Boolean hypercontractivity gives $\|Qg\|_2\le\|g\|_p$.
+For $h$ supported on $C$, H\"older's inequality gives
+\begin{align}
+ \langle h,T_rh\rangle
+ &=\|Q(\sqrt r\,h)\|_2^2\nonumber\\
+ &\le\|\sqrt r\,h\|_p^2
+ \le\bigl(\mathbb E[r^s\mathbf1_C]\bigr)^{1/s}\|h\|_2^2.
+ \label{eq:restricted-moment}
+\end{align}
+Indeed, before raising to $2/p$, the conjugate exponents are
+$2/(2-p)$ and $2/p$, and $p/(2-p)=s$.
+
+On its nonempty active support $A=\{r>0\}$, the matrix $T_r$
+is strictly entrywise positive. It has a simple positive Perron root
+and a Perron vector strictly positive on $A$. Its other coordinates
+form a zero block. If $\lambda_2=0$,~\eqref{eq:two-sign-budget}
+is immediate. Otherwise a real second eigenvector $f$ vanishes off
+$A$ and is orthogonal to the Perron vector. Both its positive and
+negative parts $f_+,f_-$ are therefore nonzero, including when
+$\lambda_2$ has multiplicity greater than one.
+Entrywise positivity gives
+\[
+ \lambda_2\|f_+\|_2^2
+ =\langle f_+,T_rf_+\rangle-\langle f_+,T_rf_-\rangle
+ \le\langle f_+,T_rf_+\rangle.
+\]
+Applying~\eqref{eq:restricted-moment} on $\{f>0\}$ yields
+$\lambda_2^s\le\mathbb E[r^s\mathbf1_{\{f>0\}}]$.
+The negative part gives the analogous bound on $\{f<0\}$.
+Adding over these disjoint regions proves~\eqref{eq:two-sign-budget}.
+No mean-zero condition under uniform measure is imposed on $f$.
+Finally $\sqrt r$ is a unit vector and
+\[
+ \lambda_1(T_r)\ge\langle r,P_\rho r\rangle
+ \ge(\mathbb Er)^2=1
+\]
+by the nonnegative Walsh eigenvalues. This proves the positive gap
+bound below $B_*$. At $B=1$, strict Jensen forces $r=1$ and the
+actual gap is $1-\rho$.
+
+\emph{The balanced family's exact moment.}
+Use the single-site quantities $n,w,m,H,\kappa,\tau$ from
+Theorem~\ref{thm:critical-large}, with any sufficiently small fixed
+$d>0$ and $\delta_L=dL^{-1/3}$. This step does not impose the
+earlier condition involving $B>2$. Define
+\[
+ a_L=\kappa(\delta_L)^{-L},\quad
+ R_L=\prod_{i=1}^Lw_{\delta_L}(x_i),\quad
+ Z_L=1+a_Lm(\delta_L)^L,\quad
+ r_L=(1+a_LR_L)/Z_L.
+\]
+The critical expansions already proved give $a_L\to1$ and
+$m(\delta_L)^L\to0$, hence $Z_L\to1$. For the latter limit,
+$\log m(\delta)=-(s-1)\delta^2/2+O(\delta^4)$ and
+$L\delta_L^2\to\infty$, whereas $L\delta_L^4\to0$.
+The overlap $\eta_L=\sqrt{a_L}\tau(\delta_L)^L$ tends to zero.
+More explicitly, the quadratic coefficient of $\log\tau$ is
+\[
+ \frac12\left[\frac{\rho^2}{1-\rho^2}-\frac{s-1}{2}\right]
+ =-\frac{\rho}{2(1-\rho^2)}.
+\]
+The same Gram comparison, now without a prescribed all-$L$ budget,
+gives $1\le\lambda_1(S_L)\le1+\eta_L$ and
+$\lambda_2(S_L)\ge1-\eta_L$ for
+$S_L=P_\rho+a_LH(\delta_L)^{\otimes L}$.
+For large $L$, the second bound is positive, so it corresponds to
+a nonzero eigenvalue rather than an added Gram zero.
+Since $QM_{r_L}Q=S_L/Z_L$, both of its top eigenvalues tend to one.
+They are the actual eigenvalues of $T_{r_L}$: for
+$X=M_{\sqrt{r_L}}Q$, the square matrices $X^*X$ and $XX^*$
+have identical spectra, including zeros and multiplicities.
+
+For each fixed $0<t<s$, direct single-site expansion yields
+\[
+ \log\mathbb Ew_\delta^t
+ =\frac{t(t-s)}2\delta^2+O(\delta^4).
+\]
+Thus $\mathbb ER_L^t\to0$, while $\mathbb ER_L^s=1$ exactly.
+The remainders may depend on fixed $t$; no uniformity near the
+endpoints is needed. Set $\theta=\min\{1,s/2\}$.
+Both $\theta$ and $s-\theta$ belong to $(0,s)$, and
+\begin{equation}\label{eq:moment-cross}
+ 0\le(1+y)^s-1-y^s
+ \le s2^{s-1}\bigl(y^\theta+y^{s-\theta}\bigr),\qquad y\ge0.
+\end{equation}
+For $0\le y\le1$, the mean-value theorem bounds the left side by
+$s2^{s-1}y\le s2^{s-1}y^\theta$. For $y\ge1$, apply that
+bound to $1/y$ and multiply by $y^s$, obtaining
+$s2^{s-1}y^{s-1}\le s2^{s-1}y^{s-\theta}$.
+The lower bound follows from $s>1$.
+Substitute $y=a_LR_L$ in~\eqref{eq:moment-cross} and take expectations.
+The two interior moments vanish and $a_L\to1$, so
+\[
+ \mathbb E(1+a_LR_L)^s=1+a_L^s+o(1)\longrightarrow2.
+\]
+Dividing by $Z_L^s\to1$ proves
+$B_L:=\|r_L\|_s\to2^{1/s}=B_*$.
+
+\emph{The exact boundary and a prescribed floor.}
+Each $r_L$ is nonconstant, so $B_L>1$. Put
+\[
+ \varepsilon_L=\begin{cases}
+ 0,&B_L\le B_*,\\
+ (B_L-B_*)/(B_L-1),&B_L>B_*,
+ \end{cases}
+ \qquad \widetilde r_L=(1-\varepsilon_L)r_L+\varepsilon_L.
+\]
+The only denominator used is positive. Since $B_L\to B_*>1$,
+we have $0\le\varepsilon_L<1$ and $\varepsilon_L\to0$.
+Normalization and positivity persist, and Minkowski gives
+\[
+ \|\widetilde r_L\|_s
+ \le(1-\varepsilon_L)B_L+\varepsilon_L\le B_*.
+\]
+Because $Z_L>1$, both $r_L$ and $1$ are at least $1/Z_L$,
+so the mixture has that same floor.
+
+For signed $h$, the dual endpoint estimate
+$\|Qf\|_q\le\|f\|_2$, $q=2s/(s-1)$, and H\"older with
+$1/s+2/q=1$ give $\|QM_hQ\|\le\|h\|_s$. Hence
+\[
+ \|QM_{\widetilde r_L-r_L}Q\|
+ \le\varepsilon_L\|1-r_L\|_s
+ \le\varepsilon_L(1+B_L)\longrightarrow0.
+\]
+Weyl's bound and the exact $X^*X/XX^*$ spectral identity imply
+that both top eigenvalues of $T_{\widetilde r_L}$ still tend to one.
+Its normalized gap therefore tends to zero. This argument requires
+neither pointwise upper control nor a square-root multiplier estimate.
+
+Given fixed $0<b<1$, eventually $1/Z_L\ge b$. Replace the finite
+initial segment by the constant density $1$. Every stated constraint
+then holds for every $L\ge1$, with the same limiting gap. The same
+sequence is admissible for all $B\ge B_*$. Each finite transfer
+matrix remains strictly positive, so its individual gap is positive;
+only the dimension-free infimum vanishes. A floor $b=1$ would force
+the uniform density and is explicitly excluded.
+\end{proof}
+
+The sign-region argument is classical. In the additive lattice setting,
+Biskup and K\"onig~\cite[Lemma~4.5 and Eq.~(4.29)]{BiskupKoenig}
+bound the second eigenvalue using the two sign regions and split a
+potential budget between them. Here endpoint hypercontractivity gives
+the restricted $s$-moment estimate, while the balanced construction
+and vanishing dilution attain the boundary asymptotically. This
+comparison credits the mechanism; it does not establish historical
+priority of the exact multiplicative-cube classification. The new
+family makes no matching-marginal or fixed-range interaction claim.

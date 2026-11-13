@@ -1,0 +1,90 @@
+SOURCE AUDIT306A — ACCEPT
+
+Exact referent
+Candidate commit: 476940ce788fb3e75cc8594e57af9fde226f7e83.
+Candidate source: papers/marginal-transfer/cutoff306A.txt.
+Preregistered judges: 03ffe342d6db76476509ab93f5adeaedb769b629:papers/marginal-transfer/judges306.txt.
+PR253 capture method: gh pr view 253 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid.
+Body regime: JSON-decode body, CRLF/CR -> LF, trim terminal LF, append exactly one LF, UTF-8 without BOM.
+Normalized body: 998 bytes; SHA-256 ebc7fabf190320d64c3846e34b2b28e9c1925a3f6dfbe0911d034275f014c68a.
+Verdict is analytical acceptance of G1-G6 and the claims in that exact source/body. It is neither a CI result nor an integration, manuscript/PDF, numerical or formal certification. No score is assigned.
+
+Scope and independence
+I am the distinct assigned auditor, not this candidate's fabricator. The provider and filesystem are shared with the parent. The actual served model/effort are unknown. The context is a fresh assignment context, not technical isolation; there is no claim of human, independent-provider or statistical independence. No inbound message was received while deriving this verdict. No other chats or runtimes were accessed. Only reading, metadata, hashes and evidence writes were performed. No mathematical script, numerical experiment, local test, build, Lean or Colab execution was used. No clone was created and no cleanup is pending. The full assignment and context are adjacent files.
+
+Executive finding
+The proposed endpoint is proved. Fix rho in(0,1), s=(1+rho)/(1-rho), and a prescribed b in(0,1). One family, independent of K, has mean1, floor b, s-moment at most2 and strict s-tail above1 at most1 in every dimension; both actual leading eigenvalues tend to1. Thus its normalized gap tends to0, and the same family meets the tail bound for every K>=1. For each fixed K in[0,1), the stated positive bound follows from the two-sign estimate. There is no retrospective upgrade of source303 or historical305. The additional fact is the probability estimate relative to E R, not the already known convergence R->0.
+
+The judges precede the candidate: git log shows candidate476940ce's immediate parent is03ffe342d. Their judges306 blobs are identical, Git blob ID590d0cb05b07a02aabe3859ead842c51c55b0c65. I read judges306 and cutoff306A in full, source299 at its named source commit in full, source303 in full, and the retained manuscript299A exact-budget proof. I did not substitute prior verdicts for the load-bearing arguments.
+
+G1 — ACCEPT: actual source ratio and the vanishing probability at the mean
+Write E for uniform probability on the L-cube. The source299 single-site weight is w_delta(x)=(1+delta x)/n(delta), with n(delta)^s=E(1+delta x)^s. Independence gives R=product w_delta, E R=n(delta)^(-L)=m>0 and E R^s=1 exactly. Therefore R/m=product(1+delta x) exactly; no unknown normalization or balancing coefficient survives in this ratio.
+
+Fix rho, hence s, then a sufficiently small fixed d in(0,1), and any fixed t in(0,1). Define F_t(z)=log(((1+z)^t+(1-z)^t)/2). The bracket is strictly positive on[-d,d]. The function is C^4 there (indeed smooth), even, with F_t(0)=F_t'(0)=F_t'''(0)=0 and F_t''(0)=t(t-1). Set C=max_{|z|<=d}|F_t''''(z)|/24, finite by continuity. Taylor with remainder yields
+ |F_t(z)-t(t-1)z^2/2| <= C z^4.
+This supplies an actual bounded remainder, without requiring a numerical enclosure. At delta_L=d L^(-1/3),
+ log E(R_L/m_L)^t = L F_t(delta_L)
+ <= -t(1-t)d^2 L^(1/3)/2 + C d^4 L^(-1/3) -> -infinity.
+Thus E(R/m)^t->0. Positivity and Markov at threshold1 imply P(R>m)<=E(R/m)^t->0. Strict versus weak threshold does not cause a problem for this upper bound. Neither an interchange of t and L nor a uniform bound as t approaches an endpoint is used. The product R/m has expectation1 for every L even while its fractional moment vanishes; rare values account for that, so there is no contradiction.
+
+For comparison, R->0 alone does not establish the needed relative event: a positive deterministic R=m tending to0 illustrates why information at an L-dependent threshold is distinct (its strict event is empty, but other R=mY with fixed nondegenerate mean-one Y has nonvanishing P(R>m)). The candidate proves the additional fact directly rather than making that inference.
+
+G2 — ACCEPT: mean, coefficients and strict tail in all dimensions
+Hölder/Jensen gives m<=||R||_s=1. With p=P(R>m)^(1/s), a=1-p, A=1-am, all coefficients belong to[0,1], and q=A+aR is nonnegative with E q=1 exactly. G1 gives a->1; the source interior moment at exponent1 gives m->0; hence A->1. Since R->0 in probability, q->1 in probability and q>=A provides every fixed floor b<1 eventually.
+
+Crucially q-1=a(R-m). If a>0, {q>1}={R>m}. If a=0, q=1, and its strict event is empty. Therefore in all cases E_q:={q>1} is contained in{R>m}. Minkowski on the normalized probability space gives
+ ||q 1_Eq||_s <= A P(E_q)^(1/s)+a||R 1_Eq||_s
+ <= p+a=1.
+Raising to s is valid and proves the claimed tail cap exactly, for every L. No tail event is silently weakened at an atom. p=0 requires no division; the inclusion makes the event probability zero. On a finite cube that means it is empty. a=0 likewise causes no exceptional formula. Replacing an omitted finite set of tilt dimensions by R=m=1 gives p=0, a=1, A=0, q=1 and preserves these all-L arguments. Final floor enforcement uses a separate finite prefix of densities equal to1.
+
+G3 — ACCEPT: actual spectrum and moment; source299 rederived
+First, the non-elementary forward hypercontractive input has the correct endpoint. The uniform Boolean noise Q=P_sqrt(rho) maps L^{1+rho} to L^2 and L^2 to L^{1+1/rho} contractively. Since 1+1/rho=2s/(s-1), Hölder with exponents(s,2s/(s-1),2s/(s-1)) gives, for real h,
+ |<f,QM_h Qg>| <= ||h||_s ||f||_2 ||g||_2.
+Thus ||QM_h Q||<=||h||_s. MOS Eq.(1.1) and its tensorization paragraph explicitly supply this classical endpoint with time -log(sqrt(rho)); reverse hypercontractivity is not being used.
+
+I checked source299's balanced construction rather than assuming it. On one bit, H=n^(-1)[[1,sqrt(rho)delta],[sqrt(rho)delta,rho]], positive definite for |delta|<1. Its largest eigenvalue is
+ kappa=(1+rho+sqrt((1-rho)^2+4rho delta^2))/(2n).
+Expanding the even analytic functions gives log n=(s-1)delta^2/2+O(delta^4) and log kappa=(rho/(1-rho)-(s-1)/2)delta^2+O(delta^4)=O(delta^4). Hence beta_L=kappa(delta_L)^(-L)->1. Also m_L=exp(-((s-1)/2)d^2 L^(1/3)+O(L^(-1/3)))->0 and Z=1+beta m->1.
+
+The overlap squared is the norm of Q_1 H Q_1=n^(-1)[[1,rho delta],[rho delta,rho^2]]. Calling its norm tau^2 yields
+ log tau=1/2(rho^2/(1-rho^2)-(s-1)/2)delta^2+O(delta^4)
+ =-rho/(2(1-rho^2))delta^2+O(delta^4).
+Thus eta_L=sqrt(beta_L)tau(delta_L)^L->0. All remainders are bounded on a sufficiently small fixed compact interval by analyticity; multiplying by L makes fourth-order errors vanish while the strictly negative quadratic term diverges in magnitude.
+
+Set U=P_rho+beta H^{tensor L}=AA*+BB*, with A=Q and B=sqrt(beta)(H^(1/2))^{tensor L}. The diagonal blocks of the block Gram matrix for[A B] each have norm1 and a top eigenvalue1. Its off-diagonal perturbation has norm||A*B||=eta_L. The diagonal block matrix consequently has first and second eigenvalues1, and min-max gives lambda1(U)<=1+eta and lambda2(U)>=1-eta (for the latter, eta<1 ensures that the positive second Gram eigenvalue is not one of the additional zeros). Monotonicity also gives lambda1(U)>=1. Thus both actual leading eigenvalues of S(w)=U/Z tend to1. This controls the full space, not a two-vector compression used as an equality.
+
+For every nonnegative v, X=M_sqrt(v)Q is square of dimension2^L. S(v)=X*X and T_v=XX* have precisely the same eigenvalues, including zero multiplicities. There is no restricted-eigenvalue substitution. Since ||QM_R Q||<=1,
+ ||S(q)-S(w)|| <= |A-1/Z|+|a-beta/Z| ->0.
+The finite-dimensional perturbation inequality follows immediately by inserting the operator-norm bound into every Rayleigh quotient in min-max; it has no dimension-dependent constant. Both actual eigenvalues of T_q therefore tend to1 and their ratio tends to1.
+
+I independently checked the interior moments needed above. At fixed u in(0,s), log E w_delta^u=[u(u-1)-u(s-1)]delta^2/2+O(delta^4)=u(u-s)delta^2/2+O(delta^4). Therefore E R_L^u->0. Taking u=1 gives m->0, and any such u gives R->0 in probability.
+
+For M_L=E q_L^s, superadditivity gives M_L>=A_L^s+a_L^s E R_L^s->2. To prove the upper limit, fix T>0 before taking L->infinity. q_L^s 1_{R_L<=T}->1 in probability and is bounded by(1+T)^s; hence its expectation tends to1. This bounded-convergence-in-probability fact is valid on varying spaces: for a bound C, E|Y-1|<=epsilon+(C+1)P(|Y-1|>epsilon). On R>T, q<=1+R<=(1+1/T)R, so that part's expected s-power is at most(1+1/T)^s. Taking limsup in L, then T->infinity, proves M_L->2. This is an ordered pair of limits, not an assumption of uniform integrability at exponent s.
+
+G4 — ACCEPT: total cap, dilution, finite prefix, single family and Theta
+If M<=2 use epsilon=0. If M>2 use epsilon=(M-2)/(M-1). The latter denominator exceeds1, so 0<epsilon<1; as M_L->2 the sequence epsilon_L->0. Put v=(1-epsilon)q+epsilon. It has mean1, and convexity gives
+ E v^s <= (1-epsilon)M+epsilon <=2.
+When M>2 the right hand side equals2 by direct algebra; no equality of the actual moment is asserted. Since epsilon<1, v-1=(1-epsilon)(q-1), so {v>1}={q>1} exactly, and on this event v<=q. Consequently the strict s-tail of v is pointwise bounded by that of q. A perturbation towards1 would not have this same event property for arbitrary thresholds below1; the endpoint is precisely what has been proved.
+
+The full Gram difference is S(v)-S(q)=epsilon(P_rho-S(q)); its norm tends to0 since ||S(q)||=lambda1(T_q)->1. Thus both actual leading eigenvalues of T_v still tend to1. Also v->1 in probability, and v>=A because both q and1 are at least A. Choose L0 once, depending only on rho,d,b, such that A_L>=b for all L>=L0. Set r_L=1 below L0 and v_L thereafter. Each prefix term has mean1, floor1, moment1 and empty strict tail above1. All-L constraints and all asymptotic claims follow. Positive entries of P_rho and the positive floor make each finite T_r strictly positive; Perron simplicity gives a positive individual gap. Only its uniform lower infimum collapses.
+
+For completeness the two-sign source299 estimate used in the moment squeeze is valid: T_r is positive semidefinite; if lambda2>0, a real second eigenvector supported on{r>0} is orthogonal to the positive Perron vector there and has two nonzero sign parts. For a part h supported on C, endpoint hypercontractivity and Hölder give <h,T_r h><=(E r^s1_C)^(1/s)||h||_2^2. Pairing the eigenvalue equation with each sign part and using entrywise nonnegative cross terms gives lambda2^s<=E r^s1_C on each of two disjoint regions. Adding yields2lambda2^s<=E r^s. If lambda2=0 it is immediate. The zero coordinates and eigenvalue multiplicity cause no exception. Applying this to v shows2lambda2(T_v)^s<=E v^s<=2, hence E v^s->2. The final finite prefix leaves that limit unchanged.
+
+There is no K in the coefficients of this construction. For all real K>=1, {r>K} subset {r>1}, giving the claimed inequality simultaneously for all K and L. For any fixed J>1, r^s1_{r<=J}->1 in probability, bounded by J^s; its expectation tends to1. Subtracting from E r^s->2 shows E r^s1_{r>J}->1. Thus H(J):=sup_L E r_L^s1_{r_L>J}>=1. The endpoint all-L tail cap bounds H(J)<=1, so H(J)=1 for every J>1 and Theta=lim_{J->infinity}H(J)=1. No interchange of supremum and limit is needed. The strict inequality J>1 is essential to this particular bounded-truncation argument; the candidate observes it.
+
+G5 — ACCEPT: fixed cutoffs below1
+For0<=K<1 and mean-one nonnegative r, on {r<=K}, r^s=r*r^(s-1)<=K^(s-1)r. When K=0 both sides vanish. Thus the assumed strict tail cap gives
+ E r^s <=1+K^(s-1)<2.
+Testing T_r on the unit vector sqrt(r) gives lambda1>=<r,P_rho r>>=1 by the nonnegative Walsh eigenvalues and constant coefficient E r=1. Combined with the above two-sign bound,
+ lambda2/lambda1<=lambda2<=[(1+K^(s-1))/2]^(1/s),
+so gap>=1-[(1+K^(s-1))/2]^(1/s)>0, as stated. At K=0 Jensen forces r=1. The resulting displayed bound is generally weaker than the actual gap there; optimality is expressly not claimed. The bound is for fixed K,rho and not uniform as K tends to1 or rho to an endpoint.
+
+G6 — ACCEPT: scope, history, provenance and presentation
+The source303 file explicitly assumes K>1 and makes its p_L depend on P(R_L>K-1). Its proof is correct in that scope; it does not derive the relative-mean estimate needed here. Candidate306 provides that extra estimate, uses it to remove the exclusion of K=1, and removes dependence of the family on K>=1. This is a new result relative to those retained statements, not a declaration of external priority. Historical305 is not rewritten or claimed already to contain this endpoint. I did not assess any PDF or alter a historical report.
+
+Primary sources and applicability were checked: MOS2012 Eq.(1.1) and tensorization provide the forward hypercontractive convention; Biskup-Koenig2015 Lemma4.5 and Eq.(4.29) provide a primary additive sign-region/budget comparison. The latter is provenance for a mechanism and does not itself prove a multiplicative-cube classification. Fractional-moment Markov for the product ratio, bounded Taylor remainder, min-max, convex dilution and the tail arguments are classical mechanisms or explicitly derived here. No external novelty claim is established by this targeted reading, and none is licensed by this verdict. Details and URLs are in primary-reading.txt. Third-party PDFs were not saved locally; future retained copies must be flagged private and excluded from public packages.
+
+The mathematical theorem concerns fixed rho and global densities on Boolean cubes. It does not supply matched Perron-stationary marginals, finite-range/local interactions, heat-bath dynamics, a physical mass gap, a continuum statement or Yang-Mills progress. The PR body has this appropriate narrower scope and accurately identifies the additional mechanism and limitations. Consolidate this result with300-303; it is not grounds for a separate small paper. Required CI remains an independent condition; PR250 must precede PR253. Integrate only the audited SHA unchanged according to governance, never by an unreviewed rebased or squashed surrogate. This audit itself performs no integration.
+
+Final decision
+ACCEPT for G1,G2,G3,G4,G5,G6, bound exclusively to candidate476940ce788fb3e75cc8594e57af9fde226f7e83 and the normalized998-byte PR253 body SHA-256ebc7fabf190320d64c3846e34b2b28e9c1925a3f6dfbe0911d034275f014c68a, captured by the exact command and normalization stated above. No blocking mathematical objection was found. Exact-byte first/final captures and a per-file byte/SHA-256 manifest accompany this report. Changes to source or PR claims require a fresh applicable review; unchanged CI or dependency obligations remain separate.

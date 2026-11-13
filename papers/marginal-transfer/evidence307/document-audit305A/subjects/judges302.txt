@@ -1,0 +1,15 @@
+UNIT302 — SHARP ASYMPTOTIC CRITICAL-TAIL BUDGET
+Registration before accepting/auditing candidate302. Preparatory algebra refined the sign-truncation proof300; not a blind-discovery claim. Mathematical questions300 and301 are analytically closed; source301 integration checks remain separate. Only this new question is active.
+Question: is one unit of escaped critical moment the exact worst-case boundary for dimension-uniform normalized gaps at fixed rho?
+Setting: uniform Boolean L-cubes,0<rho<1 fixed,s=(1+rho)/(1-rho),r_L>=0,Er_L=1,T_r=sqrt(r)P_rho sqrt(r). Theta=lim_{K->infinity} sup_L E[r_L^s 1(r_L>K)], allowing infinity.
+Candidate: Theta<1 guarantees inf_L gap(T_r)>0. There is a collapsing family with Theta=1. Stable families also exist for every finite Theta>0, so Theta>=1 is not by itself a collapse criterion.
+Finite-cutoff mechanism: for K>=1 and tail budget0<=tau<1, set t=tau^(1/(2s)), m=(1+t)/2, delta=(1-t)/2, B_K=(K^(s-1)+tau)^(1/s). Candidate lower bound min{1-m^2, 2 delta^(2s^2) K^(1-s^2)/B_K}. This replaces300's convenient small numerical threshold by its maximal universal limiting threshold.
+
+G1: Define Theta and all quantifiers, prove monotone-limit existence, obtain one finite K and tau<1 from Theta<1. Include nonnegative densities with zeros and rank-one support.
+G2: Re-derive the exact finite-cutoff bound, checking the split at lambda2=m^2, tail norm bound t, positive truncated norm delta, interpolation exponent1/s^2, sign compression, lambda1 bounds, and repeated eigenvalues. No optimization claim for the positive-gap constant.
+G3: Verify Theta=1 for exactly the audited299 collapsing family, not merely the iterated limit of tails. Give the finite-prefix argument needed to control sup_L before K->infinity; use the audited300 convergence results explicitly.
+G4: Verify Theta=M-1 for exactly the audited301 stable-spike family; preserve strict norm-budget slack and prefix replacement. This must distinguish sharp worst-case boundary from an if-and-only-if criterion for each individual family.
+G5: With a uniform critical norm bound B, prove Theta<=B^s-1 using mean normalization and a uniform truncated first-moment estimate. Compare with299's better direct small-budget bound; no spurious independent novelty.
+G6: Identify which sufficient hypothesis is genuinely weakened and which remains. Compare invariant-measure operator-tail criteria only under their actual hypotheses. No external originality or standalone small-paper claim, numerical grade, formal proof, local dynamics or Yang-Mills implication.
+
+Falsifier: a collapsing normalized family with Theta<1; a wrong factor or invalid eigenvalue normalization in the finite bound; or a failure to exchange the supremum/limit correctly in G3/G4. Abandon or revise under a new candidate if any gate fails. If the exact boundary is directly known, retain as a grouped explicit application. No runtime or local mathematical calculation needed.

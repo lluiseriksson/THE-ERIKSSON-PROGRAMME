@@ -1,0 +1,476 @@
+diff --git "a/D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-305\\document-audit305A\\manuscript299A.original.git.tex" "b/C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\papers\\marginal-transfer\\manuscript305A.tex"
+index b128acbc4..76e2e75df 100644
+--- "a/D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-305\\document-audit305A\\manuscript299A.original.git.tex"
++++ "b/C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\papers\\marginal-transfer\\manuscript305A.tex"
+@@ -1,3 +1,4 @@
++% DOCUMENT305: grouped sources300-303; exact-PDF assessment pending.
+ \documentclass[11pt]{article}
+ \usepackage[margin=1in]{geometry}
+ \usepackage[T1]{fontenc}
+@@ -24,38 +25,45 @@
+ \begin{document}
+ \maketitle
+ \begin{abstract}
+-Fix a positive Ising coupling. We construct strictly positive weights on
+-Boolean cubes whose labelled marginals on every set of at most a fixed
+-positive fraction of the coordinates equal the uniform product marginals,
+-while exponentially many normalized eigenvalues of the weighted transfer
+-kernel approach one exponentially fast in the number of coordinates.
+-The stationary law of the Perron Doob transform has exactly the same
+-marginals as well. The unweighted product kernel has a dimension-independent
+-gap. The construction combines binary codes with positive primal and dual
+-distances, a positive product admixture, and a finite block-norm estimate.
+-We prove the coding input by a direct entropy union bound and give explicit
+-finite spectral constants. As a negative control, we calculate the full
+-transfer spectrum of a single positive parity tilt: unlike its single-site
+-heat-bath gap, its transfer gap stays uniformly positive at fixed coupling.
+-Conversely, for the Boolean noise parameter $0<\rho<1$, density moments
+-of order $s>(1+\rho)/(1-\rho)$ give an explicit dimension-independent
+-transfer gap, without pointwise upper or positive lower bounds and even
+-allowing zero weights. For every $1<s<(1+\rho)/(1-\rho)$ and every
+-$B>1$, we construct normalized densities with $\|r_L\|_s\le B$ and
+-$r_L\ge1/B$ whose gaps collapse exponentially. Two antipodal product
+-tilts and a Gram-matrix comparison supply this converse. At the critical
+-exponent $s=(1+\rho)/(1-\rho)$, we identify the exact budget boundary
+-$B_*=2^{1/s}$. Budgets $B<B_*$ give a dimension-independent positive
+-gap. At $B_*$ and above, gaps can collapse even with any prescribed
+-fixed density floor strictly below one. The lower bound separates
+-the two sign regions of a second eigenvector. The converse balances
+-one product tilt against the uniform channel, evaluates its limiting
+-critical moment, and dilutes it to meet the exact boundary budget.
+-For $B>2$ we also retain an explicit stretched-exponential rate. The ingredients are classical and external
+-priority of these joint conclusions is not established. Global many-body
+-weights are allowed; no fixed-range Gibbs or local-dynamics claim follows.
++Fix a positive Ising coupling. We construct strictly positive Boolean
++weights whose labelled marginals on every set of at most a fixed positive
++fraction of coordinates equal uniform product marginals, while exponentially
++many normalized transfer eigenvalues approach one exponentially fast.
++The Perron stationary law has the same marginals. Binary codes with positive
++primal and dual distances, a positive product admixture, and finite block
++estimates supply the construction. An exact parity spectrum distinguishes
++transfer relaxation from single-site heat-bath relaxation.
++Conversely, for Boolean noise parameter $0<\rho<1$, density moments of order
++$s>(1+\rho)/(1-\rho)$ imply a dimension-independent normalized transfer gap,
++even allowing zero weights. Below this exponent, every norm budget $B>1$
++admits positive densities with exponentially collapsing gaps.
++At the critical exponent $s=(1+\rho)/(1-\rho)$ the exact worst-case norm
++boundary is $B_*=2^{1/s}$: smaller budgets give a positive gap, whereas
++at $B_*$ and above collapse is possible with any prescribed density floor
++below one. We also identify the sharp worst-case boundary for the
++asymptotic escaped critical moment
++$\Theta=\lim_{K\to\infty}\sup_L\mathbb E[r_L^s\mathbf1_{r_L>K}]$.
++The condition $\Theta<1$ gives an explicit uniform gap, while a collapsing
++family has $\Theta=1$. More strongly, at every fixed cutoff $K>1$
++collapse is possible with tail moment at most one and total moment at most
++two in every dimension. Nevertheless stable one-vertex spikes realize every
++finite $\Theta>0$, so critical-power uniform integrability is sufficient
++but not necessary. These conclusions use classical hypercontractivity,
++sign compression, balanced product tilts and rank-one perturbations.
++External priority is unestablished. Global many-body weights are allowed;
++no fixed-range Gibbs, local-dynamics or physical-gap conclusion follows.
+ \end{abstract}
+ 
++
++The constructions serve different conclusions. The code family in
++Theorem~\ref{thm:main} preserves labelled marginals and produces many slow
++transfer modes. The product tilts in Theorems~\ref{thm:tilts}
++and~\ref{thm:critical-exact} establish the moment-budget boundary, without
++the code family's marginal matching. The final section gives a sufficient
++tail condition, stable counterexamples to its necessity, and collapse at
++the finite-cutoff endpoint in Theorem~\ref{thm:finite-tail-endpoint}.
++These are separate families; their properties are not asserted jointly.
++
+ \section{The question and the transfer convention}
+ Local marginal agreement and rapid relaxation are different kinds of
+ information. The distinction is familiar in limited independence and
+@@ -542,6 +550,15 @@ collapse under a uniform maximum-density bound. These are statements
+ about this transfer family, not single-site heat-bath dynamics.
+ The constants are not claimed optimal.
+ 
++The moment analysis separates universal guarantees from adverse examples.
++The two strict exponent regimes are followed by auxiliary critical estimates
++and an explicit rate, then the exact critical-budget theorem. The final
++critical-tail section gives the sharp escaped-moment and fixed-cutoff
++boundaries, and a stable
++counterexample to necessity of uniform integrability. Earlier partial
++estimates are retained for their explicit rate and proof dependencies;
++they are not additional independent discoveries.
++
+ \section{Density-moment threshold: the two strict regimes}
+ \label{sec:finite-moment}
+ A pointwise density cap is stronger than necessary. We next replace it
+@@ -749,7 +766,7 @@ $1<s<\log2/\log(2/(1+\rho))$; it remains valid but is superseded here
+ by the product-tilt construction.
+ 
+ 
+-\section{The critical exponent: small and large moment budgets}
++\section{Auxiliary critical estimates and an explicit rate}
+ At $s=s_c=(1+\rho)/(1-\rho)$ the size of the moment budget matters.
+ We give a sufficient stability condition near $B=1$ and a counterexample
+ for every $B>2$. These preliminary bounds are retained for their quantitative content.
+@@ -1098,6 +1115,308 @@ priority of the exact multiplicative-cube classification. The new
+ family makes no matching-marginal or fixed-range interaction claim.
+ 
+ 
++% UNCOMPILED DRAFT for a grouped revision; requires source302 audit and document review.
++\section{The escaped critical-moment boundary}
++\label{sec:critical-tails}
++Fix $0<\rho<1$ and $s=(1+\rho)/(1-\rho)$ throughout this section.
++Expectations and norms refer to the uniform Boolean measure. Write
++$Q=P_{\sqrt\rho}$ and $T_r=M_{\sqrt r}P_\rho M_{\sqrt r}$, where
++$r\ge0$ and $\mathbb E r=1$. For a family indexed by $L\ge1$, define
++\[
++ H(K)=\sup_L\mathbb E[r_L^s\mathbf1_{r_L>K}],\qquad
++ \Theta=\lim_{K\to\infty}H(K)=\inf_{K\ge1}H(K).
++\]
++The nonnegative monotone limit is allowed to be infinite. Uniform
++integrability of the critical powers is the special case $\Theta=0$.
++
++\begin{theorem}[Finite cutoff below one]\label{thm:critical-tail}
++Suppose $K\ge1$, $0\le\tau<1$, and
++$\mathbb E[r^s\mathbf1_{r>K}]\le\tau$. Put
++\[
++ t=\tau^{1/(2s)},\quad m=\frac{1+t}{2},\quad d=\frac{1-t}{2},\quad
++ B_K=(K^{s-1}+\tau)^{1/s}.
++\]
++Then
++\[
++ \gap(T_r)\ge
++ \min\left\{1-m^2,\frac{2d^{2s^2}K^{1-s^2}}{B_K}\right\}>0.
++\]
++In particular, $\Theta<1$ implies a dimension-independent positive gap.
++No optimality is claimed for the displayed positive constant.
++\end{theorem}
++\begin{proof}
++For $w\ge0$ and $\|h\|_2=1$, H\"older and forward hypercontractivity,
++with $p=1+\rho$ and $p/(2-p)=s$, give
++\[
++ \|Q\sqrt w h\|_2^2\le\|\sqrt w h\|_p^2\le\|w\|_s.
++\]
++Since $r^s\mathbf1_{r\le K}\le K^{s-1}r$, the total moment is at most
++$K^{s-1}+\tau$. Thus $\lambda_1(T_r)\le B_K$. The unit vector
++$\sqrt r$ also gives $\lambda_1\ge\langle r,P_\rho r\rangle\ge1$
++by the nonnegative Walsh spectrum.
++If the active support has one point, $\lambda_2=0$ and the gap is one.
++If $\lambda_2<m^2$, the gap is greater than $1-m^2$.
++
++Otherwise choose a real second eigenvector, orthogonal to the positive
++active Perron vector. Write it as $u h_+-v h_-$, with $u,v>0$,
++$u^2+v^2=1$, and disjointly supported nonnegative unit vectors
++$h_+,h_-$. Their uniform means need not be equal. Set
++$D=\langle h_+,T_rh_-\rangle>0$. The eigenvector equations give
++\[
++ A_+=\lambda_2+(v/u)D,\qquad A_-=\lambda_2+(u/v)D,
++ \quad A_\pm=\langle h_\pm,T_rh_\pm\rangle.
++\]
++For each sign split $f=\sqrt r h_\pm$ at $r=K$. Then
++$\|Qf\|_2\ge m$ and $\|Qf_{\rm high}\|_2\le t$, so
++\[
++ \|Qf_{\rm low}\|_2\ge d,\qquad
++ \|f_{\rm low}\|_p\ge d,\qquad
++ \|f_{\rm low}\|_2\le\sqrt K.
++\]
++For $a=1-\rho$ and $\theta=s^{-2}$ the identity
++$1/p=\theta/a+(1-\theta)/2$ and power-H\"older give
++$\|g\|_p\le\|g\|_a^\theta\|g\|_2^{1-\theta}$.
++This applies ordinary H\"older to powers and requires no quasi-norm
++triangle inequality. The positive lower $p$-norm permits division;
++hence $\|f_{\rm low}\|_a\ge d^{1/\theta}K^{-(1-\theta)/(2\theta)}$.
++Positivity and reverse hypercontractivity yield
++\[
++ D\ge\langle f_{+,\rm low},P_\rho f_{-,\rm low}\rangle
++ \ge d^{2s^2}K^{1-s^2}.
++\]
++The sign compression has eigenvalues $\lambda_2$ and
++$\lambda_2+D/(uv)$. Its largest eigenvalue is at most $\lambda_1$,
++so $\lambda_1-\lambda_2\ge2D$. Dividing by $\lambda_1\le B_K$
++proves the bound, including repeated second eigenvalues.
++Finally, if $\Theta<1$, choose $\Theta<\tau<1$ and a single finite
++$K$ with $H(K)\le\tau$. The same constants then apply to every $L$.
++\end{proof}
++
++Uniform integrability is sufficient but stronger than needed. For example,
++a bound $\sup_L\mathbb E[r_L^s\psi(r_L)]\le C<\infty$ with a
++nonnegative nondecreasing function $\psi$ diverging at infinity implies
++$H(K)\le C/\psi(K)$ when $\psi(K)>0$. This is a weighted-moment
++condition; an arbitrary such $\psi$ need not be a Young function or
++define a Luxemburg norm. A fixed $s+\varepsilon$ moment bound also
++implies $H(K)\le K^{-\varepsilon}\sup_L\mathbb E r_L^{s+\varepsilon}$.
++Neither condition follows from a mere critical-moment bound.
++
++A total bound $\sup_L\|r_L\|_s\le B$ does imply
++\begin{equation}\label{eq:tail-total-budget}
++ \Theta\le B^s-1.
++\end{equation}
++Indeed $\mathbb E[r_L\mathbf1_{r_L>K}]\le B^sK^{1-s}$, while Jensen
++for $X_L=r_L\mathbf1_{r_L\le K}$ gives
++$\mathbb E X_L^s\ge(1-B^sK^{1-s})_+^s$. Subtraction and the limit
++$K\to\infty$ prove~\eqref{eq:tail-total-budget}. For $B<2^{1/s}$ this
++recovers a positive gap. The direct exact-budget theorem already gives
++the stronger explicit lower bound $1-B/2^{1/s}$.
++
++
++\begin{proposition}[Escaped moment with a stable gap]\label{prop:stable-spike}
++For any $M>1$, $B>M^{1/s}$, and $0<b<1$, there are densities $r_L$
++with $\mathbb E r_L=1$, $r_L\ge b$, $\|r_L\|_s\le B$, and
++\[
++ \mathbb E r_L^s\to M,\qquad
++ \mathbb E[r_L^s\mathbf1_{r_L>K}]\to M-1\quad(K>1\text{ fixed}),
++\]
++while $\gap(T_{r_L})\to1-\rho$ and
++$\gap(T_{r_L})\ge(1-\rho)/2$ for every $L\ge1$.
++\end{proposition}
++\begin{proof}
++Set $N=2^L$, $c=(M-1)^{1/s}$, choose a vertex $z_L$, and first put
++\[
++ q_L=\frac{1+cN^{1/s}\mathbf1_{z_L}}{Z_L},\qquad
++ Z_L=1+cN^{1/s-1}.
++\]
++These densities have mean one, lower bound $1/Z_L\to1$, and moments
++\[
++ \mathbb E q_L^s=
++ \frac{1-N^{-1}+(N^{-1/s}+c)^s}{Z_L^s}\longrightarrow1+c^s=M.
++\]
++For each fixed $K>1$ only the exceptional vertex eventually exceeds
++$K$, and its contribution tends to $c^s=M-1$.
++
++The operators $T_{q_L}$ and $S_L=QM_{q_L}Q$ are isospectral, including
++multiplicities, since they are $AA^*$ and $A^*A$ for
++$A=M_{\sqrt{q_L}}Q$. In probability-normalized $L^2$, the vector
++$e_z=\sqrt N\mathbf1_{z_L}$ is a unit vector and
++$M_{\mathbf1_{z_L}}=|e_z\rangle\langle e_z|$. Therefore
++\[
++ S_L=\frac{P_\rho+cN^{1/s}Q|e_z\rangle\langle e_z|Q}{Z_L},
++ \qquad
++ \|Q|e_z\rangle\langle e_z|Q\|
++ =\langle e_z,P_\rho e_z\rangle
++ =\left(\frac{1+\rho}{2}\right)^L.
++\]
++It follows that $\|S_L-P_\rho\|\le\delta_L$, where
++\[
++ \delta_L=\frac{c d_\rho^L+c a_\rho^L}{Z_L},\quad
++ d_\rho=2^{-(1-1/s)},\quad
++ a_\rho=\frac{1+\rho}{2^{2\rho/(1+\rho)}}.
++\]
++Both bases lie strictly between zero and one. For $a_\rho$, strict
++convexity of $t\log t$ on $[1,2]$ gives
++$(1+\rho)\log(1+\rho)<2\rho\log2$.
++
++The largest two eigenvalues of $P_\rho$ are $1$ and $\rho$, counting
++multiplicity. The min-max principle bounds the changes in both by
++$\delta_L$. Also $\langle1,S_L1\rangle=1$, so $\lambda_1(S_L)\ge1$.
++Consequently
++\[
++ \left|\frac{\lambda_2(S_L)}{\lambda_1(S_L)}-\rho\right|
++ \le(1+\rho)\delta_L.
++\]
++Choose $L_0$ so that for every $L\ge L_0$ the floor and norm bounds
++hold and $c(d_\rho^L+a_\rho^L)\le(1-\rho)/(2(1+\rho))$. Existence
++uses $B^s>M$ and the strict exponential contractions. Finally set
++$r_L=1$ for $L<L_0$ and $r_L=q_L$ otherwise. The prefix has gap
++$1-\rho$; the tail has the asserted common bound. All limits persist.
++\end{proof}
++
++\begin{proposition}[Sharpness and nonnecessity of the tail criterion]
++\label{prop:sharp-tail}
++The universal guarantee $\Theta<1$ cannot be extended to $\Theta\le1$:
++the exact-budget family of Theorem~\ref{thm:critical-exact} has
++$\Theta=1$ and gaps tending to zero. For every finite $\Theta_0>0$,
++there are nevertheless families with $\Theta=\Theta_0$ and a uniform
++positive gap, even with an arbitrarily prescribed density floor below
++one. Thus $\Theta\ge1$ is necessary for collapse, but not sufficient.
++\end{proposition}
++\begin{proof}
++First suppose $r_L\to1$ in probability and $\mathbb E r_L^s\to M<\infty$.
++For each fixed $K>1$, the function $F_K(x)=x^s\mathbf1_{x\le K}$ is
++bounded and continuous at one, so $\mathbb E F_K(r_L)\to1$.
++This follows by splitting a neighborhood of one from its probability-small
++complement and works on the varying cubes. Therefore the tail moments
++tend to $M-1$ for every such $K$, giving $\Theta\ge M-1$.
++For the upper bound fix $\varepsilon>0$ and $K_0>1$. For all sufficiently
++large $L$, the total moment is at most $M+\varepsilon$ and
++$\mathbb E F_{K_0}(r_L)\ge1-\varepsilon$. For every $K\ge K_0$ their
++tail moments are then at most $M-1+2\varepsilon$. A larger cutoff kills
++the tails of the finitely many remaining finite functions. Taking the
++supremum over all $L$, then $K\to\infty$ and $\varepsilon\downarrow0$,
++proves $\Theta=M-1$. This finite-prefix step is required; the fixed-$K$
++limit alone would not justify exchanging the supremum and cutoff limit.
++
++The diluted balanced family of Theorem~\ref{thm:critical-exact} satisfies
++$r_L\to1$ in probability: its tilt has every smaller positive moment
++tending to zero, while the balancing and dilution parameters tend to one
++and zero, respectively. Also $\lambda_2(T_{r_L})\to1$ and
++$2\lambda_2^s\le\mathbb E r_L^s\le2$, so the critical moment tends to
++two. Hence $\Theta=1$, while that family's gap tends to zero.
++Finally apply Proposition~\ref{prop:stable-spike} with
++$M=1+\Theta_0$. Its densities converge to one in probability, have
++critical moment tending to $M$, and keep the positive gap there proved.
++Thus $\Theta=\Theta_0$. Its strict total-budget slack and finite-prefix
++replacement remain part of the construction.
++\end{proof}
++
++\begin{theorem}[The fixed-cutoff endpoint]\label{thm:finite-tail-endpoint}
++For every fixed $K>1$ and $0<b<1$, there are densities $r_L$ with
++\[
++ \mathbb E r_L=1,\qquad r_L\ge b,\qquad \mathbb E r_L^s\le2,
++ \qquad \mathbb E[r_L^s\mathbf1_{r_L>K}]\le1
++\]
++for every $L\ge1$, but $\lambda_1(T_{r_L}),\lambda_2(T_{r_L})\to1$.
++Moreover $r_L\to1$ in probability, $\mathbb E r_L^s\to2$, and
++$\Theta=1$. Thus the finite-cutoff guarantee in
++Theorem~\ref{thm:critical-tail} cannot include $\tau=1$ for $K>1$,
++even under the exact total moment cap and a prescribed positive floor.
++The family may depend on $K$ and $b$; the case $K=1$ is not settled.
++\end{theorem}
++\begin{proof}
++Use the undiluted product tilt $R_L$ from the proof of
++Theorem~\ref{thm:critical-exact}. It satisfies
++\[
++ R_L>0,\qquad \mathbb E R_L^s=1,\qquad
++ \mathbb E R_L^t\longrightarrow0\quad(0<t<s).
++\]
++Write $m_L=\mathbb E R_L\le1$. The same proof supplies coefficients
++$\beta_L\to1$ such that $w_L=(1+\beta_LR_L)/Z_L$, with
++$Z_L=1+\beta_Lm_L\to1$, has both leading eigenvalues tending to one.
++Here $\beta_L$ denotes the balancing coefficient previously called
++$a_L$; the new coefficient below is different.
++Define
++\[
++ p_L=\mathbb P(R_L>K-1)^{1/s},\quad a_L=1-p_L,\quad
++ A_L=1-a_Lm_L,\quad q_L=A_L+a_LR_L.
++\]
++All three coefficients $p_L,a_L,A_L$ belong to $[0,1]$, and
++$\mathbb E q_L=1$. Markov's inequality at any fixed $0<t<s$ gives
++$p_L\to0$, because $K-1>0$. Hence $a_L,A_L\to1$ and
++$q_L\to1$ in probability. On $E_L=\{q_L>K\}$, one has
++$a_LR_L>K-A_L\ge K-1$, so $E_L\subset\{R_L>K-1\}$.
++Minkowski, with $s>1$, now gives the all-dimension estimate
++\[
++ \|q_L\mathbf1_{E_L}\|_s
++ \le A_L\mathbb P(E_L)^{1/s}+a_L\|R_L\mathbf1_{E_L}\|_s
++ \le p_L+a_L=1.
++\]
++No division by $a_L$ occurs; its zero endpoint gives $q_L=1$.
++
++Put $S(v)=QM_vQ$. Endpoint forward hypercontractivity maps $L^2$
++to $L^{2s/(s-1)}$ with norm at most one. H\"older therefore gives
++$\|QM_hQ\|\le\|h\|_s$ for every real $h$. In particular,
++$\|QM_{R_L}Q\|\le1$, and
++\[
++ \|S(q_L)-S(w_L)\|
++ \le |A_L-Z_L^{-1}|+|a_L-\beta_L/Z_L|\longrightarrow0.
++\]
++The square matrices $S(v)$ and $T_v$ are $X^*X$ and $XX^*$ for
++$X=M_{\sqrt v}Q$, so are isospectral with multiplicities. The
++min-max perturbation bound thus transfers both actual leading
++eigenvalue limits to $T_{q_L}$.
++
++We next prove $M_L:=\mathbb E q_L^s\to2$. The lower bound is
++$M_L\ge A_L^s+a_L^s\mathbb E R_L^s\to2$. For a fixed $T>0$,
++$q_L^s\mathbf1_{R_L\le T}$ converges in probability to one and is
++bounded by $(1+T)^s$, so its expectation tends to one. On $R_L>T$,
++$q_L^s\le(1+1/T)^sR_L^s$. Consequently
++$\limsup_L M_L\le1+(1+1/T)^s$. Letting $T\to\infty$ proves the
++claim. This auxiliary truncation does not change the prescribed $K$.
++
++Set $\varepsilon_L=0$ when $M_L\le2$, and otherwise set
++$\varepsilon_L=(M_L-2)/(M_L-1)$. Then $0\le\varepsilon_L<1$ and
++$\varepsilon_L\to0$. The mean-one density
++$v_L=(1-\varepsilon_L)q_L+\varepsilon_L$ satisfies, by convexity,
++\[
++ \mathbb E v_L^s\le(1-\varepsilon_L)M_L+\varepsilon_L\le2.
++\]
++If $v_L>K>1$, then $q_L\ge v_L>K$, so pointwise
++$v_L^s\mathbf1_{v_L>K}\le q_L^s\mathbf1_{q_L>K}$. The original
++tail cap is preserved. Also
++$S(v_L)-S(q_L)=\varepsilon_L(P_\rho-S(q_L))\to0$ in operator norm,
++since $\|S(q_L)\|\to1$. Both eigenvalue limits persist, as does
++convergence in probability to one. The two-sign estimate
++\eqref{eq:two-sign-budget} gives
++$2\lambda_2(T_{v_L})^s\le\mathbb E v_L^s\le2$, and hence the
++critical moment tends to two.
++
++Since $v_L\ge A_L\to1$, replace a finite initial segment by $r_L=1$
++and use $r_L=v_L$ thereafter to impose $r_L\ge b$ in every dimension.
++The prefix has empty tail above $K$, and all limits are unchanged.
++For each fixed $J>1$, the bounded truncation
++$r_L^s\mathbf1_{r_L\le J}$ has expectation tending to one. Thus the
++$J$-tail tends to one, giving $H(J)\ge1$. For $J\ge K$, the
++all-dimension $K$-tail bound also gives $H(J)\le1$. Therefore
++$H(J)=1$ for every $J\ge K$ and $\Theta=1$.
++\end{proof}
++
++Each finite matrix in this construction has a positive Perron gap;
++the gaps tend to zero with dimension. The two moment caps are
++inequalities in each dimension, with total moment equality asserted
++only in the limit. At $K=1$ the displayed probability coefficient is
++identically one, so this construction does not resolve that case.
++
++
++These are worst-case statements about a specialized fixed Boolean
++congruence. Scalar tails under the base measure are not the operator-tail
++functionals under a Perron invariant measure in~\cite{Wang}. The cutoff
++bound refines the same sign-truncation proof; it is not an independent
++method or a claim of historical priority. The qualitative boundary is
++sharp, while the positive constant is not optimized.
++
+ \section{Comparison with hyperbounded and perturbation results}
+ The value $s_c$ is the classical Boolean hypercontractive boundary,
+ not a new integrability scale. Indeed, for $a_s=2s/(s+1)$, the
+@@ -1115,9 +1434,11 @@ The inequalities and matrix arguments used above are classical. Related
+ literature already supplies both qualitative gap criteria and, under
+ different hypotheses, dimension-independent quantitative perturbation
+ bounds. Miclo's Theorem~1 in~\cite{Miclo} gives a gap for ergodic
+-self-adjoint hyperbounded Markov operators. Its Proposition~11 explains
+-why a general quantitative gap does not follow from hyperboundedness
+-alone. Wang's Theorem~1.1 in~\cite{Wang} gives a tail-norm criterion
++self-adjoint hyperbounded Markov operators. Section~6 and
++Proposition~11 also discuss a norm-budget transition at two for the
++fourth power of an $L^2$-to-$L^4$ Markov norm; this is an important
++precedent for budget thresholds, not the raw density norm used here.
++Hyperboundedness alone does not give a general quantitative gap. Wang's Theorem~1.1 in~\cite{Wang} gives a tail-norm criterion
+ for the gap of an invariant Markov operator's symmetrization.
+ These fixed-space conclusions must not be confused with a bound uniform
+ over a family of increasing dimensions.
+@@ -1148,9 +1469,7 @@ uses an additive Schr\"odinger form with a derivation and chain-rule
+ hypotheses, together with ground-state and weak-Poincar\'e inputs.
+ Its setup and Theorem~10 were read in a targeted comparison; no
+ identification of those hypotheses with this multiplicative Boolean
+-transfer congruence has been established. Earlier reports' incomplete
+-access statements remain historical records, not the present access status.
+-No external priority, improvement over this literature, or exhaustive
++transfer congruence has been established. No external priority, improvement over this literature, or exhaustive
+ novelty clearance is asserted.
+ 
+ \section{Relation to predecessors and reproducibility}
+@@ -1182,7 +1501,13 @@ The earlier spike proof is retained there in
+ \path{evidence296/finite-moment296A.txt}; the balanced critical proof and
+ its complete source audit are retained in \texttt{evidence298}.
+ The exact-budget proof, registered checks and full analytical source
+-audit are retained in \texttt{evidence299}. Historical partial results
++audit are retained in \texttt{evidence299}. The full analytical reports,
++contexts, assignments and source bindings for the grouped tail results are
++in \texttt{evidence305}. Its public-subset manifest explicitly identifies
++private reference PDFs and an unrelated local directory index omitted from
++the original audit manifests; no redistribution of these files is implied.
++The exact v4 PDF assessment is preserved there solely as historical evidence,
++with all seven objections and a separate author response. Historical partial results
+ and exact-PDF reviews keep their original artifact identities; this
+ revision neither changes those reports nor inherits their grades.
+ Document reproduction is a separate check of exact bytes
+@@ -1192,9 +1517,14 @@ and layout, not an independent proof of the theorems.
+ OpenAI/Codex assisted the mathematical synthesis and manuscript preparation.
+ The fabrication session is involved in the work. A distinct involved
+ Codex/OpenAI session audits the frozen mathematical source; exact served
+-backend versions and reasoning settings are not exposed, so no particular
++backend versions and reasoning settings are not exposed for these source
++audits, so no particular
+ model version or provider independence is asserted. Analytical source
+ review is not human peer review and supplies no inherited PDF rating.
++The tail audits300--303 used one distinct auditor context with its earlier
++readings retained, not four blind or provider-independent reviews. The
++historical v4 PDF review records a requested configuration separately from
++what was actually exposed; its rating applies only to its original PDF.
+ Any assessment attached to this manuscript must identify the exact final
+ PDF hash, its actual review context, complete report, scores and objections.
+ The manuscript does not incorporate a grade from another version or paper.

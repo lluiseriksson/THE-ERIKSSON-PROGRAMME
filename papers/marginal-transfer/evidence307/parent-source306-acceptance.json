@@ -1,0 +1,18 @@
+{
+  "context_read": true,
+  "verdict": "ACCEPT G1-G6",
+  "hypotheses_eliminated": [
+    "K>1 restriction: exact strict cutoff1 proved",
+    "PerK construction dependence: one family simultaneously works allK>=1"
+  ],
+  "judges_sha": "03ffe342d6db76476509ab93f5adeaedb769b629",
+  "full_report_read": true,
+  "external_priority_established": false,
+  "review_context": "Distinct fresh-assignment auditor, sharedprovider/filesystem; no technical isolation or human independence",
+  "manifest_sha256": "e5f2bb039197ad39cd3723ad549f95d8666ddcdd705d2e6e1de9a3ff73f5fdc8",
+  "formal_verification": false,
+  "raw_files_verified": 20,
+  "new_PDF_score": null,
+  "report_sha256": "162886d47786d6ca8420578f504af65f76614741730fdff8afd18f267e00dbd9",
+  "source_sha": "476940ce788fb3e75cc8594e57af9fde226f7e83"
+}

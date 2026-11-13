@@ -1,0 +1,18 @@
+UNIT300 — CRITICAL MOMENT TAIL CONTROL
+Registered before acceptance/audit of the candidate, after preparatory unreviewed reasoning. Not a claim of blind discovery. Unit299's mathematical question is closed; its publication continues separately.
+
+Question: can a uniform critical-moment tail bound restore a dimension-free normalized transfer gap for arbitrary finite total critical budget?
+Setting: uniform Boolean cubes, fixed 0<rho<1, s=(1+rho)/(1-rho), r>=0, Er=1, T=sqrt(r)P_rho sqrt(r). Actual descending eigenvalues including zeros and multiplicities; gap=1-lambda2/lambda1.
+Candidate: if a fixed K>=1 satisfies E[r^s 1_{r>K}]<=8^(-s), then with B_K=(K^(s-1)+8^(-s))^(1/s), gap>=min(1/2,2*8^(-s^2)*K^(1-s^2)/B_K)>0. No optimum claim. Consequently uniform integrability of critical moments suffices, including a fixed Orlicz moment bound with a diverging extra factor. This is an additional tail hypothesis, not proof that a bounded critical moment suffices.
+Mechanism: truncate each second-eigenvector sign part after multiplying by sqrt(r); endpoint hypercontractivity controls the discarded tail, interpolation and reverse hypercontractivity force a positive cross term, and sign compression bounds the actual spectral gap.
+Falsifier: a valid family satisfying one fixed K bound with collapsing gaps, an invalid truncated norm estimate, wrong interpolation/reverse exponent, or failure to control actual lambda1/lambda2. Numerical agreement is not proof.
+
+G1: Establish active-support/Perron/sign handling, rank one, repeated second eigenvalues, lambda1>=1 and lambda1<=B_K without assuming uniform-mean-zero eigenvectors.
+G2: Prove endpoint tail estimate ||Q sqrt(r)1_{r>K} h||2<=1/sqrt(8) for ||h||2=1, Q=P_sqrt(rho). Derive total moment bound from Er=1.
+G3: For lambda2>=1/2 derive ||Q f_low||2>=1/sqrt(8) for each normalized sign part. Show ||f_low||2<=sqrt(K), ||f_low||_(1+rho)>=1/sqrt(8), and interpolation exponent theta=1/s^2 with a=1-rho, including zero functions and quasi-norm powers.
+G4: Derive cross term D>=8^(-s^2)K^(1-s^2) by reverse hypercontractivity and positivity. Verify compression eigenvalue difference D/(uv), uv<=1/2 and the normalization by lambda1. Handle lambda2<1/2 separately.
+G5: State uniform integrability and a quantitative Orlicz consequence with all quantifiers. Clearly distinguish a new tail assumption from eliminating all critical integrability restrictions. Do not infer an optimal constant or necessity/equivalence of UI.
+G6: In the exact299 diluted balanced family show r_L->1 in probability but E r_L^s->2, and for every fixed K>1 the tail moment tends to1. Bind the prior family to its exact source; no change of construction or unexplained eigenvalue premise.
+G7: Compare existing primary operator-tail/uniform-integrability results and distinguish density tails under the base measure from operator tails under the Perron measure. No novelty by failed search, no independent/human/formal/local/physical claim. Preserve negative cases.
+
+Abandonment: a failed estimate blocks the displayed constant/theorem; revise only with an explicitly new candidate under unchanged judges. If this is a direct known result, retain as an explicit application, not a new standalone paper. Group with the transfer manuscript only after material added value and review. After three unproductive units change route or record the concrete obstruction. No other active new mathematical question.

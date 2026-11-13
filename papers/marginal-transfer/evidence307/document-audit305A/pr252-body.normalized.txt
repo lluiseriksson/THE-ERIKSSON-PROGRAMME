@@ -1,0 +1,5 @@
+Prepare one linked manuscript revision grouping sources300–303: the finite-cutoff tail bound below one, sharp asymptotic escaped-moment boundary, stable examples at every finite positive escaped moment, and collapse at the fixed-cutoff endpoint for each K>1 with total moment at most two. Preserve previous marginal and moment results, separate construction families, unresolved K=1, fixed-rho scope and no external-priority claim.
+
+Include complete source audit reports and contexts, all original manifests with explicit private-reference exclusions, raw package bindings, and the unchanged historical v4 PDF assessment with all seven objections and an author response. No rating transfers to this manuscript. Judges305 were committed before accepting the integrated candidate; the earlier partial uncompiled draft is disclosed.
+
+A separate frozen-document audit, required checks and unchanged predecessor integration precede paired fresh Colab PDF reproduction, visual inspection and first exact-PDF assessment. No PDF has been compiled, assessed or published from this candidate. Integrate PR249 then PR250 before this PR; no local mathematical build.

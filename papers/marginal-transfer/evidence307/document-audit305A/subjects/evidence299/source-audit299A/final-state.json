@@ -1,0 +1,22 @@
+{
+  "utc": "2026-11-13T06:03:27.4471745Z",
+  "head": "49705281f05ab18b71bd9ebc2da1985a0433340c",
+  "branch": "codex/tep-critical-budget299-20261113",
+  "status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "candidate_checkout_raw_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+  "gate_checkout_raw_sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+  "pr_head": "49705281f05ab18b71bd9ebc2da1985a0433340c",
+  "pr_body_normalized_sha256": "f37b8bedb5470dac5e7c4cfe7ba4d56b321e7d285c276c3570d1f13609c63e61",
+  "pr_body_normalized_bytes": 827,
+  "pr_files": [
+    "research/critical299/critical299A.txt",
+    "research/critical299/judges299.txt"
+  ],
+  "historical298_diff": [],
+  "gate_diff": [],
+  "no_disposable_clone": true,
+  "cleanup_pending": false
+}

@@ -1,0 +1,112 @@
+TWO ANTIPODAL PRODUCT TILTS: STRICT SUBCRITICAL COUNTEREXAMPLES
+Author-side analytical source, 2026-11-13. Not formally verified. No priority
+claim. Preregistered checks: judges297.txt at09f33348d067f6dadad67c8ec0b11c875659eb78.
+
+THEOREM. Fix 0<rho<1, 1<s<s_c=(1+rho)/(1-rho), and B>1.
+On the uniformly measured cube {-1,1}^L, let P_rho be the product noise
+operator, with one-site Walsh matrix diag(1,rho). There are strictly positive
+densities r_L with E r_L=1 and ||r_L||_s<=B and constants kappa>1 and
+0<omega<kappa, independent of L, such that, for every integer L>=1,
+
+  0 < 1-lambda_2(T_L)/lambda_1(T_L)
+       <= 2(omega/kappa)^L + epsilon^{-1} kappa^{-L},
+  T_L = M_sqrt(r_L) P_rho M_sqrt(r_L), epsilon=(B-1)/2.
+
+The strict positivity of the gap is the Perron theorem for a strictly
+entrywise-positive matrix; its upper bound is the substantive conclusion.
+No claim is made at s=s_c or about labelled marginals of the Perron law.
+
+PROOF.
+1. Define, for a tilt 0<delta<1 to be fixed below,
+ n(delta)=[((1+delta)^s+(1-delta)^s)/2]^(1/s),
+ w_+(x)=(1+delta*x)/n(delta), w_-(x)=(1-delta*x)/n(delta), x in{-1,1}.
+Strict convexity gives n>1. The one-site Ls norms equal1 and expectations
+equal m=1/n in(0,1). Let R_+,L=product_i w_+(x_i), and similarly R_-,L.
+Product probability gives ||R_+,L||_s=||R_-,L||_s=1 and E R_+,L=E R_-,L=m^L.
+Set Z_L=1+2epsilon m^L and
+ r_L=(1+epsilon(R_+,L+R_-,L))/Z_L.
+All values are strictly positive, E r_L=1, and the triangle inequality gives
+ ||r_L||_s <= (1+2epsilon)/Z_L <= B.
+Here all parameters except L are fixed. In fact r_L>=1/(1+2epsilon)=1/B;
+the construction needs unbounded upper peaks, not small density values.
+
+2. Write Q=P_sqrt(rho). It is positive definite and Q^2=P_rho. The matrices
+T_L=AA* and S_L=A*A with A=M_sqrt(r_L) Q have exactly the same eigenvalues,
+including multiplicities (A is square and invertible). Moreover,
+ Z_L S_L=P_rho+epsilon(X_L+Y_L),
+ X_L=H_+ tensor ... tensor H_+, Y_L=H_- tensor ... tensor H_-,
+ H_+=Q_1 M_w+ Q_1, H_-=Q_1 M_w- Q_1.
+In the orthonormal Walsh basis (1,x),
+ H_+ = n^{-1} [[1,delta sqrt(rho)],[delta sqrt(rho),rho]],
+ H_- = n^{-1} [[1,-delta sqrt(rho)],[-delta sqrt(rho),rho]].
+Both are positive definite, conjugate by diag(1,-1), and have the same
+simple largest eigenvalue
+ kappa(delta)=[1+rho+sqrt((1-rho)^2+4rho delta^2)]/[2n(delta)].
+
+3. Near delta=0 these are smooth positive functions. Direct differentiation
+of the displayed formula gives (log kappa)'(0)=0 and
+ (log kappa)''(0)=2rho/(1-rho)-(s-1)>0
+because s<s_c. Also kappa(0)=1. Continuity of the second derivative, or
+Taylor's theorem with a remainder o(delta^2), therefore yields kappa>1
+for every sufficiently small positive delta. Fix one such delta<1 once.
+This argument proves existence for each fixed triple(rho,s,B); it does not
+claim a uniform delta or a uniform exponential rate as s approaches s_c.
+
+4. Set omega=||H_+^(1/2) H_-^(1/2)||_2. Positive definiteness gives omega>0;
+submultiplicativity gives omega<=kappa. In finite dimension the norm is
+attained. If omega=kappa at a unit vector v, both inequalities in
+ ||H_+^(1/2) H_-^(1/2)v|| <= sqrt(kappa)||H_-^(1/2)v|| <= kappa
+must be equalities. Equality in the second makes v a top eigenvector of
+H_-; thus H_-^(1/2)v=sqrt(kappa)v. Equality in the first then makes v a
+top eigenvector of H_+. The common eigenvalue would be kappa, so
+ (H_+-H_-)v=0. But H_+-H_-=n^{-1}[[0,2delta sqrt(rho)],
+ [2delta sqrt(rho),0]] is invertible. This contradiction proves omega<kappa.
+No orthogonality of their top eigenvectors is assumed.
+
+5. Let N=2^L>=2. Set C=[sqrt(X_L),sqrt(Y_L)], an N-by-2N matrix.
+Then CC*=X_L+Y_L, and
+ C*C=[[X_L,sqrt(X_L)sqrt(Y_L)],
+       [sqrt(Y_L)sqrt(X_L),Y_L]].
+The square roots tensorize since H_+ and H_- are positive definite. Thus
+ ||sqrt(X_L)sqrt(Y_L)||=omega^L.
+The block diagonal D=diag(X_L,Y_L) has its two largest eigenvalues both
+equal to kappa^L: each block has largest eigenvalue kappa^L and none larger.
+The selfadjoint off-diagonal block E=C*C-D has norm omega^L (square E and
+use the largest singular value). Weyl's variational bound therefore gives
+ lambda_1(C*C)<=kappa^L+omega^L,
+ lambda_2(C*C)>=kappa^L-omega^L>0.
+The positive eigenvalues of CC* and C*C coincide with multiplicity. The
+former is positive definite with N>=2 positive eigenvalues; the latter has
+these N eigenvalues and N additional zeros. Consequently these same bounds
+apply to lambda_1(X_L+Y_L) and lambda_2(X_L+Y_L), also for L=1. Further,
+X_L+Y_L>=X_L implies lambda_1(X_L+Y_L)>=kappa^L.
+
+6. P_rho is positive definite with operator norm1. Loewner monotonicity
+and the preceding bounds, for F_L=Z_L S_L, give
+ lambda_1(F_L)<=epsilon(kappa^L+omega^L)+1,
+ lambda_2(F_L)>=epsilon(kappa^L-omega^L),
+ lambda_1(F_L)>=epsilon kappa^L.
+Subtract and divide by the positive leading eigenvalue:
+ 1-lambda_2(F_L)/lambda_1(F_L)
+ <=(2epsilon omega^L+1)/(epsilon kappa^L).
+The scalar Z_L cancels, and spectral equivalence in step2 gives the theorem
+for the actual T_L. Since omega/kappa<1 and kappa^{-1}<1, this decays
+exponentially in L. No estimate of the Perron eigenvector is used. QED.
+
+CONNECTION AND LIMITATIONS.
+296 proves a positive dimension-free gap under ||r||_s<=B for every fixed
+s>s_c. This counterexample proves failure for every 1<s<s_c, even with
+r_L>=1/B. Thus s_c separates the two strict regimes. The critical case
+s=s_c is not decided. The earlier two-point-spike counterexample remains
+valid in its narrower interval, but is no longer needed to cover that regime.
+The final grouped manuscript should replace its open-intermediate-interval
+claim by this strict-regime result and retain the earlier source as history.
+The uniform component ensures positivity; the two tilted products provide
+two nearly degenerate spectral blocks. This connects the positive mixture
+mechanism of294 to the moment/transfer representation of296. It asserts
+neither low-order product marginals nor locality of the resulting logarithmic
+weight. Ordinary/reverse hypercontractivity in296 and elementary product
+matrix estimates here are established tools; novelty of their particular
+combination remains unestablished pending primary-source comparison.
+No Lean, executable numerical experiment, human peer review or physical
+Yang-Mills spectral gap is claimed. The proof is analytic and dimension-finite.
