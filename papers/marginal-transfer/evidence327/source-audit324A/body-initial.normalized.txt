@@ -1,0 +1,5 @@
+Adds a proposed dimension-free endpoint high-degree hypercontractive bound by duality, truncation and the distribution-sensitive inequality of Kirshner--Samorodnitsky (Theorem1.8, arXiv1909.11929v1). A finite relative-entropy identity and explicit fourth-order expansion pay the quadratic deficit rather than assuming it.
+
+The claimed consequence replaces k^2/(L log(L+1))->infinity by k/sqrtL->infinity for exact weighting-law marginals and bounded critical density norm. Full low-block cancellation and actual top-two eigenvalue limits are included. No necessity, k~sqrtL, novelty, formal verification, physical gap or independent-review claim. This is a candidate source, not a separate paper; frozen322B stays unchanged.
+
+Validation: source preparation only; no local computation. Twelve adverse checks fixed before terminal separate-agent audit. Preserve both exploratory notes and every failed gate. Normal exact-SHA integration only after terminal audit and required checks. Research source323 remains accepted unchanged.

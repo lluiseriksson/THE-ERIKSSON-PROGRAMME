@@ -1,0 +1,14 @@
+{
+  "kind": "Read-only ancestry/scope correction, not a merge execution",
+  "merge_base": "adc39300b0f3b6b3b0a5acad762dcdd826ae6391",
+  "head_parent": "adc39300b0f3b6b3b0a5acad762dcdd826ae6391",
+  "three_dot_delta": [
+    "A\tresearch/sharp-tail325/source325A.txt"
+  ],
+  "source324_at_base": [
+    "100644 blob c9e70b6fc4a88d9c9965f176db28780210da772b\tresearch/truncation324/source324A.txt"
+  ],
+  "source324_at_head": [],
+  "source324_at_merge_base": [],
+  "interpretation": "Initial two-dot tree difference displayed D for324 because324 was added on the base side after the common ancestor. The actual PR three-dot delta and GitHub files contain only325 addition. No325-side deletion of324 is proposed. Normal merge must preserve base-side324; integration remains parent obligation."
+}

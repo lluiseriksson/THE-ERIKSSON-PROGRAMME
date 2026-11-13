@@ -1,0 +1,28 @@
+QUESTION324 supplementary derivation B -- pay the missing rate-function identity
+Exploratory analytical continuation of question324-truncation.txt, not audited, not incorporated into frozen322B. No mathematical program executed.
+
+Let rho in(0,1), q=1+rho, d=(1-rho)/2, epsilon=(1-sqrt(rho))/2, so d=2epsilon(1-epsilon). Under the correlated sign law P, P(++ )=P(-- )=(1-d)/2=q/4, and P(+-)=P(-+)=d/2=(2-q)/4. This law has full support. Constrain both empirical negative-sign proportions to sigma=(1-t)/2, for small t>=0. Every joint probability table with those marginals is
+ nu(--)=sigma-x, nu(-+)=nu(+-)=x, nu(++)=1-sigma-x,
+with0<=x<=sigma. Its entropy in base2 is
+ H2(nu)=H2(sigma)+sigma H2(x/sigma)+(1-sigma)H2(x/(1-sigma)).
+Therefore
+ -D2(nu||P)=H2(sigma)-1+sigma H2(x/sigma)+(1-sigma)H2(x/(1-sigma))
+ +(1-2x)log2(1-d)+2x log2(d).
+Maximizing overx is EXACTLY phi(sigma,d) as defined in Kirshner--Samorodnitsky Section2.1.6. Thus phi(sigma,d)= -Ijoint(t,t)/ln2, where Ijoint is the minimum natural relative entropy under the two mean constraints. No asymptotic counting or unproved large-deviation equivalence is needed for this finite probability variational identity.
+
+For t sufficiently small, the strictly positive reference law has covariance matrix [[1,rho],[rho,1]], positive definite. The analytic inverse theorem applied to the gradient of its log-MGF provides a unique small pair of tilts realizing the constrained means. The entropy minimizer is that exponential tilt: writing its density proportional to exp(lambda1 X+lambda2 Y) gives the KL identity D(nu||P)=D(nu||P_lambda)+lambda1 t+lambda2 t-log E_P exp(lambda1 X+lambda2 Y). Nonnegativity of the first term proves minimization, with equality forP_lambda. Symmetry under swappingX,Y and local uniqueness imply lambda1=lambda2=lambda. Consequently the diagonal log-MGF K(lambda)=log E_P exp(lambda(X+Y)) yields exactly
+ Ijoint(t,t)=2t lambda-K(lambda), K'(lambda)=2t.
+Its expansion and inversion are those written in noteA, and hold analytically in t nearzero.
+
+The entropy deficit I1(t)=ln2[1-H2((1-t)/2)] is even analytic with leading t²/2. The eta definition has1-H2(sigma)=q x/(q-1). Hence the natural concentration argument r=(ln2)x=(q-1)I1(t)/q, an analytic function ofv=t² with positive linear coefficient(q-1)/(2q); it has a local analytic inverse inr. Combining the expansions gives
+ -ln2 eta(x,epsilon)=(1/2)Ijoint(t,t)-I1(t)/q
+ =[(q-1)(2-q)/(12q³)]t⁴+O(t⁶)
+ =[(2-q)/(3q(q-1))]r²+O(r³), r=(ln2)x.
+All constants are for fixedrho, not uniform asrho approaches0 or1.
+The explicit Section2.1.7 eta definition is continuous on its full compact admissible interval[0,(q-1)/q]. Lemma2.14 supplies strict negativity forx>0 at fixed0<epsilon<1/2. Therefore the quotient[-ln2 eta(x,epsilon)]/[(ln2)x]² extends continuously and positively tozero; its compact minimum C_rho>0 pays exactly the global modulus assumed in noteA. Its minimum is not asserted equal to its local coefficient.
+
+Thus the truncation argument of noteA has a proposed unconditional analytical completion, contingent only on the explicitly cited Theorem1.8 and Lemma2.14. Its signed-tail use is legitimate: Q has a positive kernel and ||Qf||2<=||Q|f|||2, so the attributed bound also controls signed functions; H_m is used only as an L2 contraction after applyingQ to the tail. No Fourier property of |f| is required. The bound remains valid if an assumed large-tail case would force the concentration argument above the admissible interval: that case is then empty, not a use of eta outside its domain.
+
+Candidate conclusion: with a=(-lnrho)/[4(1-q/2)], c=a(q-1)/2 and m>=1,
+ ||QH_m||_(2->p)<=rho^(m/4)+exp(-cm)+exp(-C_rho c²m²/L), p=q/(q-1).
+Consequently exact weighting-law marginals through k with k/sqrtL->infinity and bounded criticalLs imply ||S-P_rho||->0 and actualgap->1-rho. This removes the logarithmic sufficient-condition loss in323 if terminal audit confirms every identity. It does not settle k~sqrtL or necessity. No novelty, independent-review or formal-verification claim. Keep this candidate out of the already frozen322B production; decide grouping only after its own terminal source audit. The current323 bound remains accepted and intact.
