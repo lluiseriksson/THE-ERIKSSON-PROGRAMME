@@ -1,0 +1,23 @@
+{
+  "initial_head": "a7c35e2736a72d557423e162909a4b89dee4089f",
+  "final_head": "a7c35e2736a72d557423e162909a4b89dee4089f",
+  "initial_status": [
+    "?? _drafts/",
+    "?? prepare311.py",
+    "?? prepare314.py",
+    "?? prepare_manuscript327.ps1"
+  ],
+  "final_status": [
+    "?? _drafts/",
+    "?? prepare311.py",
+    "?? prepare314.py",
+    "?? prepare_manuscript327.ps1"
+  ],
+  "tracked_diff": [],
+  "base_source_sha256": "aac7e90edf54f3a41a5cc90f475670bba77f411e98b886db06b8debe71f93d6b",
+  "base_manifest_sha256": "cc438134dc64787c08e59916084698130f6287c2a2c9d73dd0cda5f88601da9f",
+  "candidate_source_sha256": "1dcdcd85b606b9bc04365b3aadaf183e4282d5c964ef062df7d2c0362a3e1808",
+  "candidate_manifest_known_entries": 154,
+  "planned_pending_audits": 1,
+  "observations": "Endpoint reads only; no continuous monitoring. No repository mutation performed by this fabricator."
+}

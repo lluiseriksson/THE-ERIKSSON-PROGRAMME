@@ -1,0 +1,94 @@
+SOURCE331A -- An explicit achievable gap profile at finite square-root matching order
+Lluis Eriksson, with disclosed OpenAI/Codex analytical assistance.
+Analytical candidate; no executable mathematics, formal verification, PDF assessment, historical-priority or independence claim. Group with324/325/329/330 in the same evolving work; not a separate corollary paper.
+
+SOLE QUESTION AFTER330
+For k_L/sqrt(L)->C in(0,infinity), can the odd-erasure construction give an explicit positive-density spectral limit at the exact critical cap? This is an achievable-profile question, not a universal lower bound or optimality claim. Hypotheses: fixedrho in(0,1), s=(1+rho)/(1-rho), any fixedfloor b in(0,1), uniform probability cube. Mechanism: take tilt energy a sufficiently large fixed multiple of the odd erasure degree, retain the quartic loss instead of discarding it, and compare the complete block spectra. Falsifier: a wrong fourth-order coefficient, insufficient one-sided/norm control at finite scale, or misordered second eigenvalue. Abandon after three units without a proof or useful obstruction. The universal positive-gap question at fixedC remains open.
+
+DEFINITIONS AND CLAIM
+P_t chi_A=t^|A|chi_A, Q=P_sqrt(rho), S_r=Q M_r Q and T_r=M_sqrt(r)P_rho M_sqrt(r). Eigenvalues decrease with multiplicity, and gap=1-lambda2/lambda1. Write a_s=(s-1)/2, B*=2^(1/s), C_s=max(1,s-1), and
+ gamma_rho=s(s^2-1)/24=rho(1+rho)/[6(1-rho)^3]>0.
+Choose once and for all a finite K>=4 sufficiently large that
+ a_s K>2+1/(2K)+log K,
+ a_s K>(1/2)log(e C_s K).                                  (A)
+Such K exists because the left side grows linearly and the right sides logarithmically. It depends onrho, notC orL.
+
+For every integer sequence1<=k_L<=L with k_L/sqrtL->C in(0,infinity), there exist densities r_L>=b, E r_L=1, ||r_L||_s<=B*, and all nonconstant Fourier coefficients throughk_L equalzero, such that
+ lambda1(T_r)->1,
+ lambda2(T_r)->max{rho, exp(-gamma_rho K^2 C^2)}.             (B)
+Consequently the achieved gap limit is
+ min{1-rho, 1-exp(-gamma_rho K^2 C^2)}
+ <=min{1-rho, gamma_rho K^2 C^2}.                            (C)
+This is an upper bound on what can be achieved by suitable densities (and hence on a corresponding infimum), not a lower bound for all densities. No claim thatK is optimal is made.
+
+SCALE AND PRODUCT
+Letm be the smallest odd integer>=k. Thenm/sqrtL->C, m->infinity andm+1<=L eventually. Setu=Km, delta=sqrt(u/L); then delta->0,
+ Ldelta^4=u^2/L->K^2 C^2, Ldelta^6=u^3/L^2->0.
+Define n(delta)=(((1+delta)^s+(1-delta)^s)/2)^(1/s) and
+ R(x)=product_i[(1+delta x_i)/n(delta)], mu=E R=n(delta)^(-L).
+Thus E R^s=1, logmu=-a_s K m+O(1)->-infinity.
+At z=sum_i x_i put g_z(t)=(1+t)^((L+z)/2)(1-t)^((L-z)/2)=sum_j K_j(z)t^j. Letq_m=sum_(j=0)^m K_j(z)delta^j andp=mu(q_m-1). Thenp has meanzero and exactly the degree1..m coefficients ofR.
+
+ERASURE ESTIMATES AT FINITE K
+Homogeneous Boolean hypercontractivity for s>2, and L^s<=L^2 on a probability space for1<s<=2, give ||K_j||_s<=C_s^(j/2)sqrt(binom(L,j)). Therefore
+ ||p||_s<=mu m (e C_s u/m)^(m/2),
+since the summands (C_s u)^(j/2)/sqrt(j!) increase throughm andm!>=(m/e)^m. The logarithm of this bound is at most
+ m[-a_s K+(1/2)log(e C_s K)]+logm+O(1)->-infinity            (D)
+by(A). This is a direct polynomial estimate, not an L^s-contractive sharp-projection assumption.
+
+For the pointwise lower bound, the following source330 estimates require onlyu>=4m,delta<1,m+1<=L, notu/m->infinity. Their derivation is repeated to check this distinction.
+When|z|<=2Ldelta, putr=m/(Ldelta)=delta/K<1. On|t|=r,
+ log|g_z(t)|<=|z|r+Lr^2/2.
+This follows from log(1+y)<=y applied to the positive squared moduli of1+t and1-t. Cauchy's coefficient estimate anddelta/r=K yield
+ |p|<=mu m exp(2m+m^2/(2u))(u/m)^m=:eta_L.
+Its logarithm equals
+ m[-a_s K+2+1/(2K)+logK]+logm+O(1)->-infinity               (E)
+by(A). ThusR-p>=-eta_L centrally.
+For negativez=-w<=-2Ldelta, the identity(1-t^2)g'=(z-Lt)g gives, withA_j=(-1)^j g^(j)(0),
+ A_0=1,A_1=w,A_(j+1)=wA_j-j(L-j+1)A_(j-1).
+Asw^2>=4Lu>=4mL, induction givesA_j/A_(j-1)>=w/2>0 throughm. The termsdelta^j A_j/j! increase because their ratios are at leastdelta w/(2j)>=u/m=K>=1. Pairing consecutive terms of the odd alternatingq_m givesq_m<=0, soR-p>=0 there.
+For positivez>=2Ldelta and every0<=t<=delta, putd=1-t^2. Differentiation gives
+ d g^(j+1)=[z-(L-2j)t]g^(j)-j(L-j+1)g^(j-1).
+Hereg>0,g'/g>=z/(2d), andz^2>=4Lu>=16mL. Induction yieldsg^(j)/g^(j-1)>=z/(4d)>0 throughj=m+1: the next ratio is at least[z/2-4jLd/z]/d>=z/(4d). Taylor's integral remainder is consequently nonnegative, yieldingg(delta)-q_m>=0 andR-p>=mu. These three regions cover the cube. Thus inf(R-p)>=-eta_L witheta_L->0. FixedK satisfying(A) preserves both desired conclusions even though the stronger small-sup-norm criterion need not hold.
+
+QUARTIC TRANSFER LOSS
+In the one-site Walsh basis,
+ H=n(delta)^(-1)[[1,delta sqrt(rho)],[delta sqrt(rho),rho]], D=diag(1,rho).
+Letkappa be its largest eigenvalue. Its exact numerator before division byn is
+ ell=[1+rho+sqrt((1-rho)^2+4rho delta^2)]/2
+ =1+[rho/(1-rho)]delta^2-[rho^2/(1-rho)^3]delta^4+O_rho(delta^6).
+Writingrho=(s-1)/(s+1) gives
+ logell=(s-1)delta^2/2-[(s-1)^2(s+2)/8]delta^4+O_s(delta^6),
+ logn=(s-1)delta^2/2-[(s-1)(s^2+s-3)/12]delta^4+O_s(delta^6).
+Subtracting cancels the quadratic and gives
+ logkappa=-s(s^2-1)delta^4/24+O_s(delta^6).
+Thereforekappa^L->t_C=exp(-gamma_rho K^2 C^2) in(0,1).
+For tau=||D^(1/2)H^(1/2)||, the exact formula is
+ tau^2=[1+rho^2+sqrt((1-rho^2)^2+4rho^2 delta^2)]/[2n(delta)].
+Thus logtau=-rho delta^2/[2(1-rho^2)]+O_rho(delta^4), whence tau^L->0: the negative term has orderm->infinity and the remainder isO(1).
+
+FULL SPECTRUM AND CAP CLOSURE
+Use no balancing coefficientc here. LetZ=1+mu->1 andv=(1+R)/Z. Its sandwich is F/Z withF=P_rho+H^(tensor L). The Gram operator of the two positive summands differs from diag(P_rho,H^(tensor L)) by an off-diagonal operator of normtau^L->0. The first block has largest eigenvalues1,rho. The second block has largest eigenvaluekappa^L->t_C<1 and all other eigenvalues at mostkappa^L. Eventuallykappa^L<1, so the block diagonal's first two eigenvalues are exactly1 andmax(rho,kappa^L). Min-max gives the same limits for the Gram operator. Both limits arepositive; hence these are the actual first two eigenvalues ofF via the nonzero square-product spectrum, not extraGram zeros. Division byZ preserves the limits in(B).
+
+For every fixed0<t<s, logE R^t=-t(s-t)K m/2+O(1)->-infinity, whileER^s=1. Withtheta=min(1,s/2), the elementary inequality
+ 0<=(1+y)^s-1-y^s<=s2^(s-1)(y^theta+y^(s-theta)), y>=0,
+impliesE(1+R)^s->2, so||v||_s->B*. The inequality follows by a mean-value bound on[0,1] and reciprocal substitution above1.
+Noww=(1+R-p)/Z has meanone, exact Fourier zeros throughm, andw>=(1-eta_L)/Z->1 as a uniform lower bound. Also||w-v||_s=||p||_s/Z->0. Thusw>=b eventually andB_L=||w||_s->B*. Endpoint hypercontractivity and Holder imply||QM_fQ||<=||f||_s for signedf, since1/s+2/(1+1/rho)=1. Hence the erasure preserves both actual spectral limits.
+IfB_L<=B*, chooseeps=0; otherwiseeps=(B_L-B*)/(B_L-1)->0. Setr=(1-eps)w+eps. Minkowski gives the exact finite cap||r||_s<=B*, while mean, floor and all Fourier zeros persist. Its sandwich perturbation is at mosteps(B_L+1)->0. ForA=QM_sqrt(r), S_r=AA* andT_r=A*A have the same full finite spectra, so(B) follows forT. The normalized gap limit is(C). For the finitely many excluded initial dimensions use r=1; this affects no limit.
+
+ATTRIBUTION AND BOUNDARY
+Source319 supplies the critical product/Gram/cap mechanism;330 supplies the odd one-sided erasure estimates, checked here with finite ratios and explicit exponential margins(A). Classical inputs are hypercontractivity, Cauchy/Taylor estimates, Walsh expansions and min-max. The new calculation retains the quartic loss to give an achievable finite-C profile. It is not claimed historically novel or optimal, and does not establish that every admissible density has positive limiting gap. ForC>0 the displayed family has a strictly positive limit. AsC decreases tozero this upper profile decreases quadratically, but these are separate fixed-C families, not an interchange ofL/C limits. No Perron stationary-law marginals, local interaction, continuum or physical Yang-Mills result follows. PR29 stays20/41 andTermSource=0.
+
+FIXED ADVERSE CHECKS
+C1 fixedK existence independentofC, integeroddm and every-index patch.
+C2 u=Km at finiteC: Ldelta4 bounded, Ldelta6 vanishing; no false balanced-limit reuse.
+C3 exact Fourier identity and probability normalization.
+C4 Ls erasure exponent including C_s and factorial.
+C5 central coefficient margin(A), constant remainder and logm.
+C6 negative odd pairing and positive all-t derivative recurrence atfiniteK.
+C7 exact quartic coefficient and rho/s conversion.
+C8 cross-block decay despite nonzero quartic total loss.
+C9 full top-two ordering max(rho,t_C), not blindlyt_C.
+C10 cap interpolation and signed sandwich norm with floor.
+C11 achievable upper profile versus universal bound/optimality, fixedC versus doublelimit.
+C12 no rating, independence, priority, formal or physical overclaim; group existing work.
