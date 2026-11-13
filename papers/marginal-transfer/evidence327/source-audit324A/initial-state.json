@@ -1,0 +1,105 @@
+{
+  "utc": "2026-11-13T20:40:04.3422178Z",
+  "head": "7da3f567d2329a8225d03052c08c554387020fcb",
+  "branch": "codex/tep-truncation324-20261113",
+  "pr_head": "7da3f567d2329a8225d03052c08c554387020fcb",
+  "pr_base": "e501846f787b6a83130c5aa1ddea402079b7e754",
+  "body_bytes": 1029,
+  "body_sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3",
+  "status": [
+    "?? prepare311.py",
+    "?? prepare314.py"
+  ],
+  "git_captures": [
+    {
+      "path": "CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "capture_blob": "3f92d869d7f624e76381559aab5e6f2efec0f8a7",
+      "matches_git": false
+    },
+    {
+      "path": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "capture_blob": "b7df3ea3706a9c5f0ce7b55795362051a7c0094d",
+      "matches_git": false
+    },
+    {
+      "path": "research/marginal-moment319/source319A.txt",
+      "bytes": 9977,
+      "sha256": "ef37729f5605cddb865cabbbd7c5aa9d00ced3068a76f8cbe7af44ea6112b29e",
+      "git_blob": "3a2431d30af2b335d831a5d8ff16d9933a6e10f8",
+      "capture_blob": "3dc3402446bc0aca4be05fa4a7aa114cb4fc63f1",
+      "matches_git": false
+    },
+    {
+      "path": "research/quadratic-deficit323/source323A.txt",
+      "bytes": 8829,
+      "sha256": "403ff8ae112dda41aeab377e53e27be7c23db117cc03ec00b8f762a1b27d9403",
+      "git_blob": "b7f3d59539dee9a0589c48b078fd8d378b1bcde4",
+      "capture_blob": "575a931cc343b7de59427d5775d1bc45e16e3fd7",
+      "matches_git": false
+    },
+    {
+      "path": "research/truncation324/source324A.txt",
+      "bytes": 13658,
+      "sha256": "08393e1ac10c588124735ba6786575c80e1d19761740b01cf705220fb1fe3722",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "capture_blob": "28ed661015c97831e8950e2603418a938746c66b",
+      "matches_git": false
+    }
+  ],
+  "subjects": [
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\research\\truncation324\\source324A.txt",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit324A\\subjects\\01-source324A.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\prepare311.py",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit324A\\subjects\\02-prepare311.py",
+      "bytes": 8193,
+      "sha256": "b82abb0b2d779f7172376a5970b00fbfefe334781d09221f53c8d6c2a3edeab9"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\prepare314.py",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit324A\\subjects\\03-prepare314.py",
+      "bytes": 7238,
+      "sha256": "f77617fb961971c2829911c8d94e504d2afaff4f795fbd568304af093a74b015"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\source324A.txt",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit324A\\subjects\\04-source324A.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\question324-truncation.txt",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit324A\\subjects\\05-question324-truncation.txt",
+      "bytes": 5322,
+      "sha256": "12042f2e13c2027732bbba23f66b037e2e25af069829449cfc834b5a096926e3"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\question324-rate-identity.txt",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit324A\\subjects\\06-question324-rate-identity.txt",
+      "bytes": 4213,
+      "sha256": "0f69145819e29e2f9aa629038729df2a8710f950bb5b6f19590d2968bfdcb01d"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\pr-body324.txt",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit324A\\subjects\\07-pr-body324.txt",
+      "bytes": 1029,
+      "sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\papers\\marginal-transfer\\manuscript322B.tex",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit324A\\subjects\\08-manuscript322B.tex",
+      "bytes": 129075,
+      "sha256": "73073a786fdc65206b716f0cd44c47b31043258fc68477c41917763c6518b545"
+    }
+  ]
+}

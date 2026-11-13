@@ -1,0 +1,45 @@
+{
+  "reason": "Initial Git archive members were CRLF-converted; all five raw blob comparisons failed. Kept initial archive, extracted members and observations. Direct binary cat-file captures below use no text conversion.",
+  "captures": [
+    {
+      "path": "CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "raw_capture_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "matches_git": true
+    },
+    {
+      "path": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "raw_capture_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "matches_git": true
+    },
+    {
+      "path": "research/marginal-moment319/source319A.txt",
+      "bytes": 9805,
+      "sha256": "5b527cd6c8fbad390258a9c439534222c0094139cac7a5813edb6415b20e39a3",
+      "git_blob": "3a2431d30af2b335d831a5d8ff16d9933a6e10f8",
+      "raw_capture_blob": "3a2431d30af2b335d831a5d8ff16d9933a6e10f8",
+      "matches_git": true
+    },
+    {
+      "path": "research/quadratic-deficit323/source323A.txt",
+      "bytes": 8749,
+      "sha256": "2de9fb0027e02ade7e3920352a5a3593154778c8cd478d5bb7fecd066bac0bfc",
+      "git_blob": "b7f3d59539dee9a0589c48b078fd8d378b1bcde4",
+      "raw_capture_blob": "b7f3d59539dee9a0589c48b078fd8d378b1bcde4",
+      "matches_git": true
+    },
+    {
+      "path": "research/truncation324/source324A.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "raw_capture_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "matches_git": true
+    }
+  ]
+}
