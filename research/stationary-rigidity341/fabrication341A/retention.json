@@ -1,0 +1,9 @@
+{
+  "utc": "2026-11-13T23:56:16.1195087Z",
+  "source": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\_drafts\\rare341",
+  "destination": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\fabrication341A",
+  "payloads_verified": 13,
+  "status": "Byte-identical copies",
+  "cleanup": "No disposable clone/worktree created; own C source staging retained for parent integration; complete retained D copy verified",
+  "nothing_only_in_C": true
+}

@@ -1,0 +1,153 @@
+SOURCE338A -- Stationary-density constraints: a bounded analytical obstruction unit
+FABRICATION ONLY. Status: ORIGINAL GAP QUESTION UNRESOLVED. No admissible collapsing family and no uniform positive-gap theorem are claimed. The complete results below rule out elementary candidate mechanisms, refute exact transfer of marginal constraints to the weighting density, and isolate rare stationary cuts as the remaining obstruction for one conductance route. They require separate-role review before acceptance. No new paper, score, formal or historical-priority claim is made.
+
+1. ASSIGNED QUESTION, HYPOTHESES AND STOP RULE
+Fix rho in (0,1), s=(1+rho)/(1-rho), 0<b<1 and C>0. Let mu be uniform probability on {-1,1}^L and P=P_rho the Boolean noise operator. For h>0 define
+ Z=<h,Ph>, pi=h Ph/Z, lambda=1/E[h/(Ph)], r=lambda h/(Ph).
+The question imposes pi>=b, E pi=1, E pi^s<=2 and zero nonconstant Walsh coefficients of pi through an integer k_L with k_L/sqrt L->C. It asks for a uniform positive normalized gap of the actual transfer T_r=M_sqrt(r) P M_sqrt(r), or a counterexample with gap tending to zero. There is NO assumed critical moment cap or exact matching on r. Those hypotheses cannot be moved by terminology.
+The mechanism investigated is the symmetric Schrodinger/Doob coupling, first tested on explicit tilts and one-level spikes, then on a direct conversion to the old weighting theorem, then on entropy and reverse-hypercontractive conductance. Three substantive units are recorded below. The stop decision is to abandon the direct-conversion and this coarse conductance mechanism as a proof of the assigned uniform gap, because a precisely identified small-mass obstruction remains. This is an honest negative method unit, not a solution of the original dichotomy. No further candidate family is asserted without checking all four stationary constraints.
+
+2. EXACT PARAMETRIZATION AND GAP IDENTITY
+Let psi=sqrt(h Ph). Since sqrt(r) psi=sqrt(lambda) h, direct multiplication gives T_r psi=lambda psi. Its entries are strictly positive, so the positive eigenvector is the Perron vector and lambda is the Perron root. Also E r=1 by definition. The squared Perron density normalized to mean one is psi^2/Z=pi, exactly as assigned.
+The associated Markov matrix is
+ K_h(x,y)=P(x,y)h(y)/(Ph)(x).                                  (2.1)
+Its rows sum to one. Its reversible stationary probability is mu(x)pi(x), because the stationary edge measure is
+ W(x,y)=mu(x)P(x,y)h(x)h(y)/Z=W(y,x).                           (2.2)
+Conjugation by psi identifies K_h with T_r/lambda. Therefore their ordered normalized spectra agree, and
+ gap(T_r)=inf_{Var_pi f>0} E_h(f,f)/Var_pi(f),
+ E_h(f,f)=(1/(2Z)) sum_{x,y} mu(x)P(x,y)h(x)h(y)(f(x)-f(y))^2.  (2.3)
+These are finite matrix identities; no existence theorem for scaling an arbitrarily prescribed pi is being assumed. P has nonnegative spectrum rho^j, so T_r and K_h also have nonnegative spectrum. All norms and entropy densities below use mu unless another probability is specified.
+
+For a nonempty proper subset A let h_A=h 1_A, h_B=h 1_{A^c}, and put
+ a=<h_A,Ph_A>, c=<h_B,Ph_B>, d=<h_A,Ph_B>, Z=a+c+2d.
+Writing u=pi(A)=E[pi 1_A] and delta=d/Z gives
+ a/Z=u-delta, c/Z=1-u-delta,
+ conductance(A)=W(A,A^c)/pi(A)=delta/u.                         (2.4)
+In particular the two self-energies alone do not decide the gap. These identities retain the cross energy d explicitly.
+
+3. UNIT ONE -- EXPLICIT PRODUCT TILTS AND ONE-LEVEL SPIKES
+3.1 Product tilts cannot meet the singleton requirement nontrivially.
+For h(x)=product_i(1+t_i x_i), |t_i|<1, tensorization gives
+ Z=product_i(1+rho t_i^2),
+ pi(x)=product_i[1+a_i x_i], a_i=(1+rho)t_i/(1+rho t_i^2).
+Thus exactly uniform singleton marginals of pi force every t_i=0. Since k_L>=1 eventually in the assigned regime, a pure positive product tilt cannot be an admissible nonconstant counterexample. This observation does not cover mixtures of tilts or a corrected product.
+
+3.2 The natural bottleneck of a rare one-level spike is not asymptotically closed.
+Let h=1+t 1_A with t>=0, a0=mu(A), w=<1_A,P1_A>, and suppose E pi^s<=2. Write B=2^(1/s). The exact formulas are
+ Z=1+2t a0+t^2 w,
+ u=pi(A)=(1+t)(a0+t w)/Z,
+ conductance(A)=(a0-w)/(a0+t w).                               (3.1)
+Holder gives u<=B a0^(1-1/s). In particular u->0 whenever a0->0. Also
+ Z-1=2t a0+t^2 w <=2uZ,
+so Z<=1/(1-2u) for u<1/2 and Z->1 along any such rare-set sequence.
+Ordinary Boolean hypercontractivity, with Q=P_sqrt(rho), gives
+ w=||Q1_A||_2^2 <=||1_A||_(1+rho)^2
+  =a0^(2/(1+rho))=a0^(1+1/s).                                (3.2)
+The numerator defining u includes t^2 w, hence t^2 w<=uZ. Consequently
+ (t w/a0)^2 <=uZ w/a0^2 <=BZ.                                 (3.3)
+Combining (3.1)-(3.3),
+ conductance(A)>= [1-a0^(1/s)]/[1+sqrt(BZ)],
+ liminf conductance(A)>=1/(1+sqrt B)>0 when a0->0.              (3.4)
+This uses only the stationary critical moment bound; exact marginals and the floor are not needed for the displayed obstruction. It rules out A itself as the proposed increasingly isolated spike. It does NOT bound every possible subset of A, nor prove the whole family's spectral gap, nor construct exact marginal corrections.
+For A a single point, a stronger elementary estimate is possible: p=P(x,x)=((1+rho)/2)^L, a0=2^-L, and
+ (tp)^2 <=BZ a0^(-1/s)p.
+Here a0^(-1/s)p=[(1+rho)2^(-2rho/(1+rho))]^L tends to zero. To check the base is less than one, differentiate F(rho)=log(1+rho)-2rho log2/(1+rho): its derivative has the sign of 1+rho-2log2, and F(0)=F(1)=0, so F<0 in the interior. Thus tp->0 and the point's escape probability (1-p)/(1+tp) tends to one. The most elementary point-trap proposal fails particularly strongly.
+Disposition of unit one: no counterexample. The positive results are limited to the explicitly stated families and candidate cuts.
+
+4. UNIT TWO -- EXACT STATIONARY MATCHING DOES NOT TRANSFER TO r
+Proposition (admissible stationary constraints with a nonzero weighting singleton).
+For every fixed rho,b,C as assigned, and every integer sequence k_L/sqrt L->C with 1<=k_L<=L, there are positive h_L such that pi_h>=b, E pi_h^s<=2, and pi_h has exactly uniform marginals through k_L, but the corresponding r_h has a nonzero singleton Walsh coefficient in every sufficiently large dimension. The constructed family has a uniform positive gap; it refutes only the conversion step, not the target positive-gap conjecture.
+
+Proof. For large L let j=k_L+1, so j+1<=L. Let D={1}, A={2,...,j+1}, and B0=A union D. Denote X=chi_D, Y=chi_A; X and Y are independent uniform signs. Let alpha=rho^j and choose one sufficiently small fixed t>0, as specified below. Define
+ h=1+tY+tXY-alpha t^2 X.                                      (4.1)
+Then
+ Ph=1+alpha tY+rho alpha tXY-rho alpha t^2 X.
+Both functions use only the four-character subgroup {1,X,Y,XY}. The coefficient of X in h Ph is exactly
+ -(1+rho)alpha t^2+(alpha+rho alpha)t^2=0.
+Its constant coefficient is
+ Z=1+(1+rho)alpha t^2+rho alpha^2 t^4.                         (4.2)
+The only other possible nonconstant coefficients are Y and XY, whose degrees j,j+1 exceed k_L. Hence pi=hPh/Z has all the required Fourier zeros exactly, not approximately.
+
+For t<1/6 and 0<alpha<=1,
+ 1-3t <=h,Ph<=1+3t.
+It follows that R(t)^(-1)<=pi<=R(t), where
+ R(t)=[(1+3t)/(1-3t)]^2.
+Choose t sufficiently small that R(t)<=min(1/b,2^(1/s)). Then pi>=b and pi^s<=2 pointwise, so its critical moment cap follows. Its mean is exactly one by (4.2). These inequalities have strict room available because b<1 and 2^(1/s)>1.
+
+It remains to show that the weighting singleton is genuinely nonzero. Write f=h/(Ph), so r=f/E f. Averaging first over Y, for X=+1 and X=-1 respectively gives the exact rational expressions
+ F_+(alpha,t)=
+ [(1-alpha t^2)(1-rho alpha t^2)-2alpha(1+rho)t^2]
+ /[(1-rho alpha t^2)^2-alpha^2(1+rho)^2t^2],
+ F_-(alpha,t)=
+ [(1+alpha t^2)(1+rho alpha t^2)]
+ /[(1+rho alpha t^2)^2-alpha^2(1-rho)^2t^2].                   (4.3)
+Thus fhat(D)=(F_+-F_-)/2. The denominators are positive for the chosen small t because they are products of positive Ph values. Expanding these explicit rational expressions at t=0 gives
+ fhat(D)=-2alpha(1-rho alpha)t^2+O_rho(alpha t^4),              (4.4)
+uniformly for alpha in [0,1]. Here is a justification of the uniform remainder, rather than an unsupported limit exchange: both expressions are analytic on a common neighborhood of [0,1] times {t=0}; their difference is even in t, vanishes identically at alpha=0 and vanishes at t=0. After removing its alpha t^2 factor the quotient extends analytically, with value -2(1-rho alpha) at t=0. Compactness of alpha in [0,1] bounds the remaining t^2 coefficient and remainder. Since 1-rho alpha>=1-rho>0, shrinking the same fixed t if necessary makes fhat(D)<0 for every alpha in (0,1]. Finally E f>0, so rhat(D)<0 as well. This extra choice is compatible with the earlier stationary floor and moment choices.
+
+For any excluded initial dimensions set h=1; all stationary constraints then hold. The eventual nonzero weighting singleton proves that exact stationary marginal matching is not exact matching of r, even at the assigned square-root scale and even with generous stationary floor/moment room.
+
+To verify that this is not a disguised gap-collapse claim, let a1=1-3t and c1=1+3t. In (2.3), h(x)h(y)>=a1^2 and pi<=c1^2/Z. The noise Poincare inequality follows directly from its Walsh spectrum:
+ E_P(f,f)>= (1-rho) Var_mu(f).
+Also Var_pi(f)<=E_pi[(f-E_mu f)^2]<=c1^2 Var_mu(f)/Z. Therefore
+ gap(T_r)>= (a1/c1)^2(1-rho)>0                               (4.5)
+for this family. This completes every asserted property.
+
+Disposition of unit two: a direct invocation of source334 after replacing 'weighting density' by 'stationary density' is invalid. No general inequality ||r_h||_s<=||pi_h||_s, or its reverse, has been proved or refuted here; it must not be inferred from this Fourier example. The precise failed conversion is the needed exact low-block compression: the displayed stationary hypotheses do not force rhat(D)=0.
+
+5. UNIT THREE -- A GENERAL CONDUCTANCE BOUND WITH A RARE-MASS LOSS
+The following bounds hold with only pi=hPh/Z and E pi^s<=2. They do not use exact marginals or the pointwise floor and consequently cannot be advertised as having exploited those extra assumptions.
+
+Lemma (entropy bounds a scaling potential's low norm).
+For any nonzero g>=0, set a=<g,Pg>>0 and sigma=g Pg/a, a probability density. For 0<q<2,
+ ||g||_q >=sqrt(a) exp[-(1/q-1/2) Ent_mu(sigma)],              (5.1)
+where Ent_mu(sigma)=E[sigma log sigma].
+Proof. Let R(x,y)=mu(x)P(x,y), and let V have density g(x)g(y)/a relative to R. Its two marginals are mu sigma by symmetry. On V's support,
+ D(V||R)=2 E_sigma log g-log a.
+The elementary conditional relative-entropy decomposition gives D(V||R)>=D(mu sigma||mu)=Ent_mu(sigma). Explicitly the difference is the sigma-average of nonnegative relative entropies of the conditional y laws. Next the nonnegativity of relative entropy of mu sigma with respect to mu g^q/Eg^q gives
+ q E_sigma log g <=Ent_mu(sigma)+log E g^q.
+Combining the two displays and dividing by q proves (5.1). Zeros of g cause no ambiguity because sigma and V vanish there; equivalently one may use a positive approximation and continuity. All sums are finite. This proof uses elementary entropy identities, not an asserted new Schrodinger existence theorem.
+
+Corollary (cut conductance away from stationary mass zero).
+Let q=1-rho and
+ eta=1/2+s^2/[2(s-1)]>1,
+ c_s=2^(-s/(s-1)), c'_s=c_s 2^(-3eta).
+For every nonempty proper A with u=pi(A)<=1/2 and delta=W(A,A^c),
+ delta >=c_s (u-delta)^eta (1-u-delta)^eta,                    (5.2)
+ conductance(A)>=min{1/2,c'_s u^(eta-1)}.                     (5.3)
+In particular, for each fixed epsilon>0 all cuts with epsilon<=pi(A)<=1/2 have conductance bounded below by a positive constant depending only on rho,epsilon.
+
+Proof. Use g=h_A and a as in (2.4), and set A0=a/Z=u-delta. Since P is positive and h_A<=h,
+ sigma_A=h_A Ph_A/a <=pi/A0 pointwise.
+Thus E sigma_A^s<=2/A0^s. Jensen under the probability mu sigma_A gives
+ Ent_mu(sigma_A)<=log(E sigma_A^s)/(s-1)
+ <=[log2-s log A0]/(s-1).                                   (5.4)
+For q=1-rho one has 1/q-1/2=s/2. Substitution into (5.1) yields
+ ||h_A||_q/sqrt Z >=2^(-s/[2(s-1)]) A0^eta.                   (5.5)
+The same bound for h_B uses B0=c/Z=1-u-delta.
+
+The Boolean two-function reverse-hypercontractive inequality is
+ <f,P_rho g> >=||f||_(1-rho)||g||_(1-rho) for f,g>=0.          (5.6)
+For precision, it follows from the ordinary Boolean reverse theorem at input exponent q=1-rho and output exponent q'=q/(q-1)<0: its noise condition is rho^2<=(1-q)/(1-q')=rho^2. Reverse Holder then gives <f,Pg>>=||f||_q||Pg||_q'. Reverse Holder itself follows by ordinary Holder applied to (f Pg)^q(Pg)^(-q). Nonnegative inputs follow by positive approximation; P of a nonzero nonnegative input is strictly positive on this cube. The reverse theorem is an attributed external input, checked in Mossel--Oleszkiewicz--Sen, introductory equation(1.2) and its stated tensorization, not independently reproved here.
+Combining (5.5) for both sides with (5.6) proves (5.2). If delta>=u/2, (5.3) is immediate. Otherwise A0>u/2 and B0=1-u-delta>=1-3u/2>=1/4. Then (5.2) implies delta/u>=c_s (u/2)^eta(1/4)^eta/u=c'_s u^(eta-1), proving (5.3).
+Finally eta-1=(s^2-s+1)/[2(s-1)]>0. The power loss therefore tends to zero for rare stationary cuts; it is not a dimension-free Cheeger lower bound.
+
+For completeness, a collapsing actual gap would indeed force such rare cuts, rather than merely escape this particular test function. Let Phi be the minimum conductance over 0<pi(A)<=1/2. The standard finite reversible Cheeger bound gap>=Phi^2/2 has a short proof here. For nonnegative f supported on stationary mass at most1/2, level-set integration gives
+ sum_{x,y}W(x,y)|f(x)^2-f(y)^2|>=2Phi ||f||_(2,pi)^2.
+Cauchy--Schwarz and stationarity bound its left side by
+ sqrt[sum W(f(x)-f(y))^2 sum W(f(x)+f(y))^2]
+ <=sqrt[8 E_h(f,f)||f||_(2,pi)^2].
+Thus E_h(f,f)>=Phi^2||f||_(2,pi)^2/2. For arbitrary real f subtract a stationary median and apply this to the positive and negative parts. Each support has mass at most1/2, their Dirichlet forms sum to at most E_h(f,f), and their squared norms sum to at least Var_pi(f). This proves the bound. If the gap tends to zero, then Phi<=sqrt(2 gap) tends to zero. Choose minimizing cuts in each finite cube; (5.3) forces their stationary masses to tend to zero after taking complements as needed.
+
+6. PRECISE UNRESOLVED OBSTRUCTION AND ABANDONMENT
+The three units have not proved the original uniform positive gap and have not constructed an admissible collapsing family. The result is a negative method unit with proved subclaims:
+- Pure product tilts cannot satisfy the required singleton stationary marginals, and the natural rare-set bottleneck in a one-level spike cannot close under the stationary critical cap.
+- Exact matching of pi does not imply exact matching of r. The four-character construction meets ALL assigned stationary constraints and explicitly violates a weighting singleton, while retaining a positive gap. Therefore the old weighting-density low-compression identity cannot simply be assumed.
+- Entropy plus ordinary reverse hypercontractivity excludes cuts of macroscopic stationary mass from a collapsing sequence, but leaves the explicit factor u^(eta-1). Since eta>1, this bound degenerates precisely at rare stationary cuts. The floor pi>=b only gives u>=b mu(A), which can be as small as b 2^-L, and does not by itself remove this loss. Exact low Fourier moments of pi do not enter (5.1)-(5.6); pretending they have already paid for this loss would be unjustified.
+Stop decision: abandon direct transfer of the hypotheses and this unrefined entropy-conductance estimate as a complete solution after these three units. A further legitimate advance would need either a rare-cut estimate that genuinely uses exact stationary matching at k~sqrt L, a different spectral argument connecting pi matching to h/Ph, or an actual positive h family satisfying all stationary constraints with an actual vanishing normalized gap. None is supplied here. This is a precise obstruction for the current mechanisms, not an impossibility theorem for every proof method and not a counterexample to the assigned conjecture.
+
+7. PRIMARY INPUTS AND SCOPE
+The multiplicative transition formula is consistent with Georgiou and Pavon, Positive contraction mappings for classical and quantum Schrodinger systems, arXiv1405.6650v3, classical Theorem2/equations(18)-(22), https://arxiv.org/pdf/1405.6650 . Here (2.1)-(2.3) were proved directly; no general scaling-convergence or spectral-stability conclusion is imported.
+Ordinary Boolean hypercontractivity and Walsh normalization were checked in Ben-Aroya, Regev and de Wolf, A Hypercontractive Inequality for Matrix-Valued Functions with Applications to Quantum Computing, introduction equation(1), https://homepages.cwi.nl/~rdewolf/publ/qc/matrixbeckner.pdf . Only its scalar classical input is used in (3.2).
+The reverse Boolean inequality was checked in Mossel, Oleszkiewicz and Sen, On Reverse Hypercontractivity, arXiv1108.1210v5, introduction equation(1.2), https://arxiv.org/pdf/1108.1210 . The equal-exponent bilinear consequence (5.6) and its exact rho conversion are spelled out above. No generic-product-space constant is substituted for the unbiased Boolean constant.
+The web search also exposed current Sinkhorn literature, but no result from those search abstracts is used as a premise or as a novelty clearance. This was targeted input checking, not a comprehensive priority search. All new identities, expansions and bounds are analytical, with no executable mathematical experiment, CAS, Lean or runtime. This work is involved same-provider fabrication and requires separate review if the parent decides the negative unit is substantive enough to retain as an accepted result.

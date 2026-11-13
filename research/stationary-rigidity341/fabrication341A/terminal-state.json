@@ -1,0 +1,11 @@
+{
+  "utc": "2026-11-13T23:55:54.1887368Z",
+  "input_head": "a7b055dd4c2a4893b1c186a5ed3e99e0c0243e43",
+  "observed_head": "a7b055dd4c2a4893b1c186a5ed3e99e0c0243e43",
+  "tracked_mutation_by_this_agent": false,
+  "source_sha256": "07872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f",
+  "source_bytes": 12276,
+  "source_regime": "UTF8-noBOM LF raw; no normalization for hashing",
+  "status": "FABRICATION_COMPLETE_PENDING_SEPARATE_AUDIT",
+  "original_gap_question": "UNRESOLVED"
+}

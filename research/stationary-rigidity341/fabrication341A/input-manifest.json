@@ -1,0 +1,40 @@
+{
+  "source_head": "a7b055dd4c2a4893b1c186a5ed3e99e0c0243e43",
+  "files": [
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\stationary-obstruction338\\source338A.txt",
+      "retained": "inputs/source338A.txt",
+      "bytes": 17991,
+      "sha256": "4730774d3e550531c1854cdb476f929dcfbf145364c64cb81752b1fb8dff246f",
+      "representation": "Raw copied bytes; no normalization"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-338\\source-audit338A\\full-audit-report.txt",
+      "retained": "inputs/audit338-full-report.txt",
+      "bytes": 17275,
+      "sha256": "a6a3b4ddb4da048d15e781f414afdb971003d4b2c2a0089f428d8b0476b0535c",
+      "representation": "Raw copied bytes; no normalization"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-338\\source-audit338A\\model-context.txt",
+      "retained": "inputs/audit338-context.txt",
+      "bytes": 2669,
+      "sha256": "85e5418e2595e4b71638b4616b8c30fb72ddcd2900b63f1e889b59e3397646d4",
+      "representation": "Raw copied bytes; no normalization"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\CLAUDE.md",
+      "retained": "inputs/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "representation": "Raw copied bytes; no normalization"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "retained": "inputs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "representation": "Raw copied bytes; no normalization"
+    }
+  ]
+}
