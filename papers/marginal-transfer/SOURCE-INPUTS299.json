@@ -855,8 +855,8 @@
     },
     {
       "path": "critical299-section.tex",
-      "bytes": 7602,
-      "raw_sha256": "8067d52d231d4d5a1175777268ad96c079fd8e1c51c3c8522912f2b2e7e7cc38"
+      "bytes": 7601,
+      "raw_sha256": "82e3cb8a3ff557356992da1952217b5ae06bef35c4852e53415e06a60245c098"
     },
     {
       "path": "PACKAGE-BOUNDARY299.txt",
