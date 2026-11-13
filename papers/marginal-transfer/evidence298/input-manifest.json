@@ -1,0 +1,114 @@
+[
+  {
+    "source": "CLAUDE.md",
+    "representation": "actual-checkout-raw-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\checkout\\CLAUDE.md",
+    "bytes": 24408,
+    "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+  },
+  {
+    "source": "CLAUDE.md",
+    "representation": "git-blob-raw-LF-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\git-lf\\CLAUDE.md",
+    "bytes": 23996,
+    "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+  },
+  {
+    "source": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "representation": "actual-checkout-raw-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\checkout\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13831,
+    "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+  },
+  {
+    "source": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "representation": "git-blob-raw-LF-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\git-lf\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13573,
+    "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+  },
+  {
+    "source": "docs/SURFACE-CLOSURE-NOTES.md",
+    "representation": "actual-checkout-raw-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\checkout\\docs\\SURFACE-CLOSURE-NOTES.md",
+    "bytes": 252719,
+    "sha256": "a0038d29adcacd5a56ab1fa1dfa5a6257145fd4807ec0d4af829db159d7c7461"
+  },
+  {
+    "source": "docs/SURFACE-CLOSURE-NOTES.md",
+    "representation": "git-blob-raw-LF-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\git-lf\\docs\\SURFACE-CLOSURE-NOTES.md",
+    "bytes": 248274,
+    "sha256": "18e86639fa4e932347ab971daaed0b983bf40f63a27f8b252c8c0045388973f2"
+  },
+  {
+    "source": "research/critical298/judges298.txt",
+    "representation": "actual-checkout-raw-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\checkout\\research\\critical298\\judges298.txt",
+    "bytes": 2640,
+    "sha256": "2bd465dc190781cb940d998295c59c80f476465bfb6bc3551a1126a4edbc8dc1"
+  },
+  {
+    "source": "research/critical298/judges298.txt",
+    "representation": "git-blob-raw-LF-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\git-lf\\research\\critical298\\judges298.txt",
+    "bytes": 2640,
+    "sha256": "2bd465dc190781cb940d998295c59c80f476465bfb6bc3551a1126a4edbc8dc1"
+  },
+  {
+    "source": "research/critical298/critical298A.txt",
+    "representation": "actual-checkout-raw-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\checkout\\research\\critical298\\critical298A.txt",
+    "bytes": 9194,
+    "sha256": "e68c9d1c168323123ce639268877b2cc5b544fc418dab8d54ff59667f9502fe7"
+  },
+  {
+    "source": "research/critical298/critical298A.txt",
+    "representation": "git-blob-raw-LF-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\git-lf\\research\\critical298\\critical298A.txt",
+    "bytes": 9194,
+    "sha256": "e68c9d1c168323123ce639268877b2cc5b544fc418dab8d54ff59667f9502fe7"
+  },
+  {
+    "source": "research/two-tilt297/two-tilt297A.txt",
+    "representation": "actual-checkout-raw-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\checkout\\research\\two-tilt297\\two-tilt297A.txt",
+    "bytes": 6309,
+    "sha256": "4ee9a219eaea537fb290941d5af4ba39f4d306e1f14b94315a46c63b35916304"
+  },
+  {
+    "source": "research/two-tilt297/two-tilt297A.txt",
+    "representation": "git-blob-raw-LF-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\git-lf\\research\\two-tilt297\\two-tilt297A.txt",
+    "bytes": 6309,
+    "sha256": "4ee9a219eaea537fb290941d5af4ba39f4d306e1f14b94315a46c63b35916304"
+  },
+  {
+    "source": "papers/marginal-transfer/manuscript297A.tex",
+    "representation": "actual-checkout-raw-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\checkout\\papers\\marginal-transfer\\manuscript297A.tex",
+    "bytes": 39739,
+    "sha256": "6a11703ec5e957a7b78f18d0ef0d33c5f0c45f881e52c0f4903abaf51c999923"
+  },
+  {
+    "source": "papers/marginal-transfer/manuscript297A.tex",
+    "representation": "git-blob-raw-LF-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\git-lf\\papers\\marginal-transfer\\manuscript297A.tex",
+    "bytes": 39739,
+    "sha256": "6a11703ec5e957a7b78f18d0ef0d33c5f0c45f881e52c0f4903abaf51c999923"
+  },
+  {
+    "source": "D:\\LEEME.md",
+    "representation": "actual-file-raw-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\subjects\\drive-leeme.md",
+    "bytes": 16801,
+    "sha256": "3502d37a3f765ea2e867f1379917b25b7d458c03500b682b2b3403210181b1b8"
+  },
+  {
+    "source": "exact-visible-assignment-text",
+    "representation": "UTF-8-text-transcription-with-terminal-newline; raw-saved-bytes-no-normalization",
+    "copy": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-298\\source-audit298A\\assignment-received.txt",
+    "bytes": 1921,
+    "sha256": "25ff43e0b38b92226c97d8107f7ebc4c27d7f6d4c66b503f22b767eddca3d7a9"
+  }
+]
