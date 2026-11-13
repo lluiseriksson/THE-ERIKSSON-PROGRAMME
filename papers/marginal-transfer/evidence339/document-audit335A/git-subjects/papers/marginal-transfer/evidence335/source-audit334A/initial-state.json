@@ -1,0 +1,80 @@
+{
+  "utc": "2026-11-13T22:57:57.0858920Z",
+  "head": "159fb24d89ad3b6bf37cd0c0a867edb41fc0ff7b",
+  "parent": "f427ee960bd42d091a01c8db13e32ef70712dac0",
+  "branch": "codex/tep-uniform-gap334-20261113",
+  "pr_head": "159fb24d89ad3b6bf37cd0c0a867edb41fc0ff7b",
+  "pr_base": "f427ee960bd42d091a01c8db13e32ef70712dac0",
+  "body_bytes": 1111,
+  "body_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+  "status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "delta": [
+    "A\tresearch/uniform-gap334/source334A.txt"
+  ],
+  "subjects": [
+    {
+      "path": "research/uniform-gap334/source334A.txt",
+      "bytes": 15935,
+      "sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "git_blob": "7034fcc897f3b3ccee401a9477b65c100547bd19",
+      "capture_blob": "7034fcc897f3b3ccee401a9477b65c100547bd19",
+      "blob_match": true,
+      "working_bytes": 15935,
+      "working_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022"
+    },
+    {
+      "path": "research/truncation324/source324A.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "capture_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "blob_match": true,
+      "working_bytes": 13658,
+      "working_sha256": "08393e1ac10c588124735ba6786575c80e1d19761740b01cf705220fb1fe3722"
+    },
+    {
+      "path": "research/one-sided330/source330A.txt",
+      "bytes": 10458,
+      "sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "git_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "capture_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "blob_match": true,
+      "working_bytes": 10555,
+      "working_sha256": "8fe28352ef8dcad39ba2cd3777456207873d111e8571e03c7045618f3f0487a4"
+    },
+    {
+      "path": "research/finite-scale331/source331A.txt",
+      "bytes": 9162,
+      "sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "git_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+      "capture_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+      "blob_match": true,
+      "working_bytes": 9162,
+      "working_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535"
+    },
+    {
+      "path": "CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "capture_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "blob_match": true,
+      "working_bytes": 24408,
+      "working_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "capture_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "blob_match": true,
+      "working_bytes": 13831,
+      "working_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    }
+  ],
+  "private_leeme_sha256": "5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f"
+}

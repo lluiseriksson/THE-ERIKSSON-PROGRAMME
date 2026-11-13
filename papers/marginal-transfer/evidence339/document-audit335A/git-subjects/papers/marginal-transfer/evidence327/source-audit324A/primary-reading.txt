@@ -1,0 +1,9 @@
+PRIMARY READING324 -- 2026-11-13, bounded scope
+
+Naomi Kirshner and Alex Samorodnitsky, A moment ratio bound for polynomials and some extremal properties of Krawchouk polynomials and Hamming spheres, arXiv1909.11929v1.
+https://arxiv.org/html/1909.11929v1
+https://arxiv.org/pdf/1909.11929v1
+
+Read the noise/probability conventions, exact Theorem1.8 in HTML and PDF, the complete definitions of alpha, phi, tilde-phi, eta and eta_p in Sections2.1.6--2.1.7, Lemma2.14 and its proof, plus the relevant endpoint properties in Lemma2.13. The upper inequality is exact; the separate near-tightness factor is not an upper-bound prefactor. The definitions use binary entropy and the inverse branch on[0,1/2]. The argument's noise conversion and full concentration domain were checked against these statements.
+
+The paper's discussion already identifies concentration-sensitive improvement and a square-root concentration scale; these are attributed prior inputs, not novelty evidence for324. No exhaustive search for an equivalent high-degree-tail or density-marginal consequence was performed. No historical priority is certified. The finite entropy-table identity, local analytic expansion and operator deductions are checked separately in the report. No complete third-party text is republished here, and no claim to have reverified all69 pages is made.

@@ -1,0 +1,35 @@
+{
+  "scope": "Text representation and retained-note comparison only; no mathematical execution",
+  "archive_representation_comparisons": [
+    {
+      "path": "CLAUDE.md",
+      "archive_matches_raw_after_CRLF_to_LF": true
+    },
+    {
+      "path": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "archive_matches_raw_after_CRLF_to_LF": true
+    },
+    {
+      "path": "research/marginal-moment319/source319A.txt",
+      "archive_matches_raw_after_CRLF_to_LF": true
+    },
+    {
+      "path": "research/quadratic-deficit323/source323A.txt",
+      "archive_matches_raw_after_CRLF_to_LF": true
+    },
+    {
+      "path": "research/truncation324/source324A.txt",
+      "archive_matches_raw_after_CRLF_to_LF": true
+    }
+  ],
+  "retained_notes": [
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\question324-truncation.txt",
+      "complete_note_present_in_source": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\question324-rate-identity.txt",
+      "complete_note_present_in_source": true
+    }
+  ]
+}

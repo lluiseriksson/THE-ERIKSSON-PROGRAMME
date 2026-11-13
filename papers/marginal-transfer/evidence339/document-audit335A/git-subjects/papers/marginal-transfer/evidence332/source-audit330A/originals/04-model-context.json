@@ -1,0 +1,95 @@
+{
+  "task": "SOURCE329A terminal analytical audit, separate from all prior assignments",
+  "actor": "AI assistant subagent /root/exact322_pdf_first_assessment",
+  "verdict": "PASS_SCOPED_ANALYTICAL_THEOREMS",
+  "checks": {
+    "C1": "PASS; detailed reasoning and scope in full-analytical-report.txt",
+    "C2": "PASS; detailed reasoning and scope in full-analytical-report.txt",
+    "C3": "PASS; detailed reasoning and scope in full-analytical-report.txt",
+    "C4": "PASS; detailed reasoning and scope in full-analytical-report.txt",
+    "C5": "PASS; detailed reasoning and scope in full-analytical-report.txt",
+    "C6": "PASS; detailed reasoning and scope in full-analytical-report.txt",
+    "C7": "PASS; detailed reasoning and scope in full-analytical-report.txt",
+    "C8": "PASS; detailed reasoning and scope in full-analytical-report.txt",
+    "C9": "PASS; detailed reasoning and scope in full-analytical-report.txt",
+    "C10": "PASS; detailed reasoning and scope in full-analytical-report.txt",
+    "C11": "PASS; detailed reasoning and scope in full-analytical-report.txt",
+    "C12": "PASS; detailed reasoning and scope in full-analytical-report.txt"
+  },
+  "model_context": {
+    "original_requested_model": "gpt-6-astra",
+    "original_requested_effort": "high",
+    "request_scope": "Original thread assignment; no new model override requested in SOURCE329A assignment",
+    "actual_served_backend": "unknown; not attested",
+    "actual_version": "unknown; not attested",
+    "actual_reasoning_effort": "unknown; not attested",
+    "independence": "unknown; no independence claim",
+    "isolation": "Shared filesystem/provider; technical isolation not attested",
+    "prior_context": "Same agent previously delivered exact322B scientific and catalogue326 engineering reports. These were neither rescored nor revised. No running audit output was read or contacted."
+  },
+  "read_coverage": [
+    "Entire exact source329A, 95 lines, from working-tree read and numbered raw Git blob",
+    "Entire source319A and literature319.md, with inherited critical-product/Gram/moment/interpolation expressions checked analytically",
+    "Applicable repository CLAUDE.md Part I and operational rules, full OPERATIONAL-GOVERNANCE-CHARTER.md; D:/LEEME.md storage rules; relevant ancestor/research/source-folder AGENTS absence checked",
+    "Initial/final local HEAD, branch, committed diff scope and live GitHub PR275 metadata/body",
+    "Targeted primary-research-paper scalar hypercontractivity equation and k-wise Fourier characterization/erasure passages"
+  ],
+  "methods": [
+    "Analytical reasoning; no executable mathematics",
+    "PowerShell filesystem editing, raw SHA-256 hashes and git read-only inspection",
+    "git cat-file binary stdout copied to memory and files without text transformation",
+    "GitHub get_pr_info read-only connector",
+    "web search/open/find for primary literature",
+    "apply_patch for own staged evidence only"
+  ],
+  "not_performed": [
+    "No Python or other mathematical scripts",
+    "No builds, tests, symbolic algebra, numerical experiments, Lean, runtime allocation or execution",
+    "No source/branch/body mutation, PR comment or merge",
+    "No external originality clearance or numerical rating",
+    "No agent spawn, parent contact or inspection of running audit outputs"
+  ],
+  "observations": [
+    {
+      "id": "O1",
+      "severity": "LOW_NONBLOCKING",
+      "location": "source329A lines11-21,51",
+      "summary": "Make inherited P_t, eigenvalue order and normalized-gap conventions explicit for standalone readers."
+    },
+    {
+      "id": "O2",
+      "severity": "LOW_NONBLOCKING",
+      "location": "lines60-62",
+      "summary": "Spell out shrinking the failed-limit witness epsilon for log(eL)/log L conversion."
+    },
+    {
+      "id": "O3",
+      "severity": "LOW_NONBLOCKING",
+      "location": "lines24,54-60",
+      "summary": "Explicitly fill finitely many early delta values in Theorem2's sufficiency sequence."
+    }
+  ],
+  "failed_or_limited_observations": [
+    "Initial combined governance output truncated; relevant audit-regime excerpt reread in smaller calls.",
+    "Beckner1975 PDF open exposed cover/metadata text only; theorem text not claimed as read.",
+    "PMC article open returned browser/reCAPTCHA interstitial; excluded as substantive evidence. Accessible primary research paper provided endpoint formulation.",
+    "No failed mathematical run hidden: none was performed."
+  ],
+  "primary_sources": [
+    {
+      "url": "https://homepages.cwi.nl/~rdewolf/publ/qc/matrixbeckner.pdf",
+      "coverage": "Introduction scalar hypercontractivity equation(1) and operator/Fourier definitions, printed page1; not whole paper"
+    },
+    {
+      "url": "https://www.mit.edu/~andoni/papers/kwise.pdf",
+      "coverage": "Fact2.3 and Section3.1 coefficient-erasure/positivity discussion, with introduction context; not whole paper"
+    }
+  ],
+  "scope_limit": "Claims in source324/325 and PR29/TermSource background were not independently reaudited. Theorems1-2 do not use them. Scoped validity does not establish a universal density threshold.",
+  "evidence_workflow": {
+    "stage": "C:/Trabajo/the-eriksson-programme/_tmp/source-audit329a",
+    "retain": "D:/Datos/the-eriksson-programme/autonomia/evidencia-329/source-audit329A",
+    "cleanup": "Stage files removed only after retained raw-byte comparison; cleanup outcome recorded separately.",
+    "manifest": "Raw-byte SHA-256, excludes itself. No normalization except explicitly labeled PR body."
+  }
+}

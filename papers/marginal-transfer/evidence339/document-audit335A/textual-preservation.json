@@ -1,0 +1,481 @@
+{
+  "kind": "Source-text comparison only; no compilation or mathematical execution",
+  "blocks": [
+    {
+      "kind": "theorem",
+      "label": "thm:main",
+      "old_offset": 7074,
+      "new_offset": 7598,
+      "exact_preserved": true
+    },
+    {
+      "kind": "lemma",
+      "label": "lem:code",
+      "old_offset": 8966,
+      "new_offset": 9490,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 9571,
+      "new_offset": 10095,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proposition",
+      "label": "prop:finite",
+      "old_offset": 11251,
+      "new_offset": 11775,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:interlace",
+      "old_offset": 11854,
+      "new_offset": 12378,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 13598,
+      "new_offset": 14122,
+      "exact_preserved": true
+    },
+    {
+      "kind": "lemma",
+      "label": "lem:symmetry",
+      "old_offset": 14635,
+      "new_offset": 15159,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 14807,
+      "new_offset": 15331,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 15323,
+      "new_offset": 15847,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proposition",
+      "label": "prop:parity",
+      "old_offset": 16429,
+      "new_offset": 16953,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 17167,
+      "new_offset": 17691,
+      "exact_preserved": true
+    },
+    {
+      "kind": "corollary",
+      "label": "cor:certificate",
+      "old_offset": 18992,
+      "new_offset": 19516,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 19451,
+      "new_offset": 19975,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:density",
+      "old_offset": 21348,
+      "new_offset": 21872,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:hyperinputs",
+      "old_offset": 21727,
+      "new_offset": 22251,
+      "exact_preserved": true
+    },
+    {
+      "kind": "corollary",
+      "label": "cor:densitygrowth",
+      "old_offset": 25364,
+      "new_offset": 25888,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 25626,
+      "new_offset": 26150,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:moment",
+      "old_offset": 27101,
+      "new_offset": 27625,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 27449,
+      "new_offset": 27973,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:tilts",
+      "old_offset": 30139,
+      "new_offset": 30663,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 30665,
+      "new_offset": 31189,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:critical-small",
+      "old_offset": 35644,
+      "new_offset": 36168,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 36172,
+      "new_offset": 36696,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:critical-large",
+      "old_offset": 37705,
+      "new_offset": 38229,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 38056,
+      "new_offset": 38580,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:critical-exact",
+      "old_offset": 42242,
+      "new_offset": 42766,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:restricted-moment",
+      "old_offset": 43165,
+      "new_offset": 43689,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:critical-tail",
+      "old_offset": 50169,
+      "new_offset": 50693,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 50663,
+      "new_offset": 51187,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proposition",
+      "label": "prop:stable-spike",
+      "old_offset": 53723,
+      "new_offset": 54247,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 54128,
+      "new_offset": 54652,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proposition",
+      "label": "prop:sharp-tail",
+      "old_offset": 55985,
+      "new_offset": 56509,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 56509,
+      "new_offset": 57033,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:finite-tail-endpoint",
+      "old_offset": 58218,
+      "new_offset": 58742,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 58923,
+      "new_offset": 59447,
+      "exact_preserved": true
+    },
+    {
+      "kind": "corollary",
+      "label": "cor:cutoff-below-one",
+      "old_offset": 63561,
+      "new_offset": 64085,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 63800,
+      "new_offset": 64324,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proposition",
+      "label": "prop:background-optimum",
+      "old_offset": 65173,
+      "new_offset": 65697,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 65773,
+      "new_offset": 66297,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:background-collapse",
+      "old_offset": 67319,
+      "new_offset": 67843,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:318-background-decay",
+      "old_offset": 67924,
+      "new_offset": 68448,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:attained-cutoff",
+      "old_offset": 75851,
+      "new_offset": 76375,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:attained-inherited",
+      "old_offset": 76535,
+      "new_offset": 77059,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:scalar-envelope",
+      "old_offset": 85521,
+      "new_offset": 86045,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 86193,
+      "new_offset": 86717,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:universal-tail",
+      "old_offset": 88935,
+      "new_offset": 89459,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:317-forward",
+      "old_offset": 89580,
+      "new_offset": 90104,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:growing-collapse",
+      "old_offset": 105802,
+      "new_offset": 106397,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:critical-signed-322",
+      "old_offset": 106304,
+      "new_offset": 106899,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:marginal-ui",
+      "old_offset": 110478,
+      "new_offset": 111073,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 111032,
+      "new_offset": 111627,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:linear-marginal-rigidity",
+      "old_offset": 112555,
+      "new_offset": 113150,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:high-level-endpoint-322",
+      "old_offset": 113046,
+      "new_offset": 113641,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:quadratic-marginal-rigidity",
+      "old_offset": 115917,
+      "new_offset": 116512,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:323-parameterization",
+      "old_offset": 116667,
+      "new_offset": 117262,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:square-root-tail",
+      "old_offset": 121869,
+      "new_offset": 122613,
+      "exact_preserved": true
+    },
+    {
+      "kind": "lemma",
+      "label": "lem:327-modulus",
+      "old_offset": 123364,
+      "new_offset": 124108,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 123798,
+      "new_offset": 124542,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:327-witness",
+      "old_offset": 126582,
+      "new_offset": 127326,
+      "exact_preserved": true
+    },
+    {
+      "kind": "corollary",
+      "label": "cor:327-marginals",
+      "old_offset": 129989,
+      "new_offset": 130733,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 130589,
+      "new_offset": 131333,
+      "exact_preserved": true
+    },
+    {
+      "kind": "lemma",
+      "label": "lem:332-erasure",
+      "old_offset": 133863,
+      "new_offset": 134606,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:332-derivative",
+      "old_offset": 134806,
+      "new_offset": 135549,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:332-subroot",
+      "old_offset": 137482,
+      "new_offset": 138225,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "eq:332-kappa",
+      "old_offset": 137945,
+      "new_offset": 138688,
+      "exact_preserved": true
+    },
+    {
+      "kind": "theorem",
+      "label": "thm:332-finite-c",
+      "old_offset": 141554,
+      "new_offset": 142297,
+      "exact_preserved": true
+    },
+    {
+      "kind": "proof",
+      "label": "",
+      "old_offset": 142597,
+      "new_offset": 143340,
+      "exact_preserved": true
+    }
+  ],
+  "duplicate_labels": [],
+  "undefined_refs": [],
+  "undefined_cites": [],
+  "section_exact_substring": true,
+  "section_sha256": "4063ad6f525512feffeb81d60cb7f10ab9a47d02423f03ab9df06c4e034c4e27",
+  "manifest_sha256": "e54b6b829b4b6509c01005a2352f3cb76c5baf66de42ede2f2395a6896a8882e",
+  "main_sha256": "addb9ecf25577e3c368d3e0475d0728817168740c398d55dc8aa57d173e1aa8e"
+}

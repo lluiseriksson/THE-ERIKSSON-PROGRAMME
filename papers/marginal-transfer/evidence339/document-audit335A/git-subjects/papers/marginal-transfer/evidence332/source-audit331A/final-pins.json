@@ -1,0 +1,35 @@
+{
+  "initial": {
+    "head": "8980d71cca205fcc164803f51ac4c7038536413b",
+    "base": "9ebc05d64c20d7074863ef294f940b4b3a3b1f03",
+    "local_head": "8980d71cca205fcc164803f51ac4c7038536413b",
+    "source_bytes": 9162,
+    "source_raw_git_lf_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+    "body_bytes": 933,
+    "body_normalized_sha256": "627c4ef50d3120eae536f44b3790372c8522effe01951683079d4f367df2ab66"
+  },
+  "final": {
+    "observed_utc": "2026-11-13T22:20:30.2056719Z",
+    "head": "8980d71cca205fcc164803f51ac4c7038536413b",
+    "branch": "codex/tep-finite-scale331-20261113",
+    "source_bytes": 9162,
+    "source_raw_git_lf_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+    "status": [
+      "?? _drafts/",
+      "?? _tmp/"
+    ],
+    "changes": [
+      "A\tresearch/finite-scale331/source331A.txt"
+    ],
+    "live_pr_head": "8980d71cca205fcc164803f51ac4c7038536413b",
+    "live_pr_base": "9ebc05d64c20d7074863ef294f940b4b3a3b1f03",
+    "decoded_body_equals_initial": true,
+    "body_bytes": 933,
+    "body_normalized_sha256": "627c4ef50d3120eae536f44b3790372c8522effe01951683079d4f367df2ab66"
+  },
+  "representations": {
+    "source": "Raw Git blob/LF bytes via git cat-file binary redirected stdout; no text normalization",
+    "body": "Assigned gh JSON decoding; reviewer used GitHub connector decoded body. CRLF to LF, TrimEnd, append one LF, UTF-8 without BOM."
+  },
+  "result": "MATCH"
+}

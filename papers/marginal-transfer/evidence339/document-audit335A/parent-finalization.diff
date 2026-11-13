@@ -1,0 +1,42 @@
+diff --git "a/C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\_drafts\\audit335A\\git-subjects\\papers\\marginal-transfer\\evidence335\\fabrication335A\\manuscript335A.tex" "b/C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\_drafts\\audit335A\\git-subjects\\papers\\marginal-transfer\\manuscript335A.tex"
+index 0cb4550b2..347d56ec4 100644
+--- "a/C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\_drafts\\audit335A\\git-subjects\\papers\\marginal-transfer\\evidence335\\fabrication335A\\manuscript335A.tex"
++++ "b/C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\_drafts\\audit335A\\git-subjects\\papers\\marginal-transfer\\manuscript335A.tex"
+@@ -1,4 +1,4 @@
+-% DOCUMENT335A: offline candidate; source334 accepted, separate translation audit pending.
++% DOCUMENT335A: grouped square-root transition; exact manuscript/PDF assessments retained separately.
+ \documentclass[11pt]{article}
+ \usepackage[margin=1in]{geometry}
+ \usepackage[T1]{fontenc}
+@@ -24,9 +24,7 @@
+ \date{14 November 2026}
+ \begin{document}
+ \maketitle
+-\noindent\emph{Draft 335A. Source334 has passed its separate analytical
+-review; its integration here remains subject to the manuscript335 review gate.
+-This draft is not an accepted or numerically assessed revision.}\par\medskip
++
+ \begin{abstract}
+ We compare exact marginal agreement and density-moment control for finite
+ Boolean Ising transfer operators. Positive code-based weights can preserve
+@@ -3627,16 +3625,16 @@ record. The positive global constant is existential, no numerical dimension
+ cutoff is supplied, and the proof depends on exact matching and the critical
+ budget. The audit establishes neither historical priority nor formal
+ verification. The auditor had substantial prior related source and document
+-involvement. A separate audit of this manuscript translation remains pending;
+-source acceptance does not accept or publish this draft.
++involvement. Source acceptance alone does not establish manuscript or PDF acceptance;
++their exact-artifact assessments are recorded separately.
+ The same involved Codex/OpenAI context fabricated source334 and this
+ translation and had earlier performed the v8 exact-PDF and source331
+ assessments, among other recorded source assignments. Shared provider,
+ filesystem and prior context do not establish independence, blindness or
+ technical isolation. Exact served backend version and reasoning effort
+ are not attested. The complete fabrication record, source identities,
+-failures and context are retained; the pending manuscript audit has no
+-invented outcome or hash. This preparation supplies no new numerical
++failures and context are retained. No later assessment outcome or hash
++is presumed in this preparation. This text supplies no numerical
+ rating, formal proof, priority finding or human peer review.
+ 
+ The one-sided erasure and finite-ratio profile received exact-source

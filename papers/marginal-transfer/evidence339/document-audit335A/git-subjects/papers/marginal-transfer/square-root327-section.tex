@@ -1,0 +1,260 @@
+\section{Endpoint noise tails and the square-root scale}
+\label{sec:square-root-tail}
+This section removes the logarithmic loss in the preceding sufficient
+condition and determines the exact vanishing scale of the operator norm
+used in its proof. The two conclusions have different scopes: sharpness
+for an operator norm is not necessity for nonnegative weighting densities.
+All norms below use uniform probability measure on the Boolean cube.
+Fix $0<\rho<1$, put $q_0=1+\rho$, $p_0=q_0/(q_0-1)=1+1/\rho$,
+and write $Q=P_{\sqrt\rho}$. Let $H_m$ be the orthogonal Walsh projection
+onto degrees at least $m$, with $H_m=0$ if $m>L$.
+
+\begin{theorem}[Endpoint tail bound and exact vanishing scale]
+\label{thm:square-root-tail}
+There is $C_\rho>0$, depending only on the fixed parameter $\rho$, such that,
+for $1\leq m\leq L$,
+\begin{equation}\label{eq:327-tail-upper}
+ N_L(m):=\|QH_m\|_{2\to p_0}
+ \leq \rho^{m/4}+e^{-cm}+\exp(-C_\rho c^2m^2/L),
+ \qquad c=\frac{(-\log\rho)(q_0-1)}{8(1-q_0/2)}.
+\end{equation}
+For every sequence of positive integers $m_L$,
+\[
+ N_L(m_L)\longrightarrow0
+ \quad\Longleftrightarrow\quad m_L/\sqrt L\longrightarrow\infty.
+\]
+More precisely, if $m_L/\sqrt L\to C\in[0,\infty)$, then
+\begin{equation}\label{eq:327-tail-lower}
+ \liminf_{L\to\infty}N_L(m_L)
+ \geq \exp\!\left(-\frac{1-\rho^2}{12\rho}C^2\right).
+\end{equation}
+In particular $N_L(m_L)\to1$ when $m_L=o(\sqrt L)$.
+No equality for the positive-$C$ transition profile is asserted.
+\end{theorem}
+
+We first establish the quantitative modulus needed for the upper bound.
+Our external input is the distribution-sensitive hypercontractive theorem
+of Kirshner and Samorodnitsky, Theorem~1.8 and Lemma~2.14 in
+\url{https://arxiv.org/html/1909.11929v1}. With
+$\epsilon=(1-\sqrt\rho)/2$ and
+$x=L^{-1}\log_2(\|f\|_{q_0}/\|f\|_1)$, their theorem gives
+\begin{equation}\label{eq:327-KS}
+ \|Qf\|_2\leq 2^{L\eta(x,\epsilon)}\|f\|_{q_0}.
+\end{equation}
+Its argument belongs to $[0,(q_0-1)/q_0]$. Their function is continuous
+there and strictly negative for positive argument. We use this attributed
+inequality; we do not claim a new proof of that theorem.
+
+\begin{lemma}[Quadratic modulus of the concentration deficit]
+\label{lem:327-modulus}
+For the fixed parameters above there is $C_\rho>0$ such that
+\[
+ -\log(2)\eta(x,\epsilon)\geq C_\rho(\log(2)x)^2
+ \qquad (0\leq x\leq(q_0-1)/q_0).
+\]
+The continuous quotient at zero has value
+$(2-q_0)/(3q_0(q_0-1))>0$. The global constant is not claimed to equal
+this local value, or to be uniform as $\rho$ approaches either endpoint.
+\end{lemma}
+\begin{proof}
+Write $d=(1-\rho)/2=2\epsilon(1-\epsilon)$ and consider signs $(X,Y)$
+with probabilities $q_0/4$ on each equal pair and $(2-q_0)/4$ on each
+unequal pair. All four probabilities are positive. For
+$\sigma=(1-t)/2$, any joint table with both negative-sign marginals
+equal to $\sigma$ has entries
+\[
+ \nu(--)=\sigma-z,\quad \nu(-+)=\nu(+-)=z,\quad
+ \nu(++)=1-\sigma-z,\qquad 0\leq z\leq\sigma.
+\]
+For $t\geq0$, its base-two entropy is
+$H_2(\sigma)+\sigma H_2(z/\sigma)+(1-\sigma)H_2(z/(1-\sigma))$,
+with boundary values understood by continuity. Thus
+\begin{align*}
+ -D_2(\nu\Vert P)={}&H_2(\sigma)-1
+   +\sigma H_2(z/\sigma)+(1-\sigma)H_2(z/(1-\sigma))\\
+ &+(1-2z)\log_2(1-d)+2z\log_2d.
+\end{align*}
+Maximizing this expression over $z$ is exactly the definition of
+$\phi(\sigma,d)$ in Section~2.1.6 of the cited source. Consequently
+$\phi(\sigma,d)=-I(t,t)/\log2$, where $I(t,t)$ is the minimum natural
+relative entropy subject to the two mean constraints. This is an identity
+between finite probability tables, requiring no asymptotic identification
+of a large-deviation rate.
+
+Near zero, the covariance matrix
+$\left(\begin{smallmatrix}1&\rho\\\rho&1\end{smallmatrix}\right)$
+is positive definite. The analytic inverse function theorem applied to
+the gradient of the joint log moment-generating function produces a unique
+small tilt realizing means $(t,t)$. If $P_\lambda$ denotes that tilt,
+the identity
+\[
+ D(\nu\Vert P)=D(\nu\Vert P_\lambda)
+  +\lambda_1t+\lambda_2t-\log\mathbb E_Pe^{\lambda_1X+\lambda_2Y}
+\]
+proves that it minimizes entropy. Swap symmetry and local uniqueness
+give $\lambda_1=\lambda_2=\lambda$. Therefore, with natural logarithms,
+\[
+ K(\lambda)=\log\left(\frac{q_0}{2}\cosh(2\lambda)
+                          +\frac{2-q_0}{2}\right),\qquad
+ I(t,t)=2t\lambda-K(\lambda),\quad K'(\lambda)=2t.
+\]
+Writing $b=q_0/3-q_0^2/2$, analytic expansion and inversion give
+\begin{align*}
+ K(\lambda)&=q_0\lambda^2+b\lambda^4+O(\lambda^6),\\
+ \lambda&=t/q_0-2bt^3/q_0^4+O(t^5),\\
+ I(t,t)&=t^2/q_0+(q_0/2-1/3)t^4/q_0^3+O(t^6).
+\end{align*}
+Also $I_1(t)=\log2[1-H_2((1-t)/2)]=t^2/2+t^4/12+O(t^6)$.
+The definition of $\eta$ in Section~2.1.7 of the cited source has
+$1-H_2(\sigma)=q_0x/(q_0-1)$. Hence, setting $u=(\log2)x$,
+\[
+ u=\frac{q_0-1}{q_0}I_1(t),\qquad
+ -\log2\,\eta(x,\epsilon)=\tfrac12 I(t,t)-I_1(t)/q_0.
+\]
+The first relation has an analytic inverse in $t^2$ near zero. Substitution
+in the second gives
+\[
+ -\log2\,\eta(x,\epsilon)
+ =\frac{(q_0-1)(2-q_0)}{12q_0^3}t^4+O(t^6)
+ =\frac{2-q_0}{3q_0(q_0-1)}u^2+O(u^3).
+\]
+Continuity and strict negativity of $\eta$ away from zero, supplied by
+the cited definition and lemma, now make the quotient a positive
+continuous function on a compact interval. Its positive minimum proves
+the assertion.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:square-root-tail}]
+Self-adjointness, commutation and finite-dimensional duality give
+$N_L(m)=\|H_mQ\|_{q_0\to2}$. Normalize $\|f\|_{q_0}=1$ and put
+$a=(-\log\rho)/[4(1-q_0/2)]$, $M=e^{am}$, so $c=a(q_0-1)/2$.
+Decompose $f=b+t$ according to $|f|\leq M$ and $|f|>M$.
+The bounded part satisfies $\|b\|_2\leq M^{1-q_0/2}$, whence
+\[
+ \|H_mQb\|_2\leq\rho^{m/2}M^{1-q_0/2}=\rho^{m/4}.
+\]
+Here the projection is used only in $L^2$, with its spectral multiplier;
+no $L^{p_0}$ contraction of a Fourier cutoff is assumed.
+
+For the tail, $\|t\|_1\leq e^{-a(q_0-1)m}$ and $\|t\|_{q_0}\leq1$.
+If $\|t\|_{q_0}\leq e^{-cm}$, ordinary endpoint hypercontractivity
+bounds $\|H_mQt\|_2$ by $e^{-cm}$. Otherwise
+$\log(\|t\|_{q_0}/\|t\|_1)\geq cm$, and
+\eqref{eq:327-KS} with Lemma~\ref{lem:327-modulus} bounds it by
+$\exp(-C_\rho c^2m^2/L)$.
+For signed functions, the positive kernel gives
+$|Qt|\leq Q|t|$, so the same refined estimate applies. A zero tail is
+harmless; a case forcing a concentration argument above its admissible
+interval is empty. Adding the two possible tail bounds yields
+\eqref{eq:327-tail-upper}. If $m_L/\sqrt L\to\infty$, each displayed
+term vanishes on indices $m_L\leq L$, while the other indices give
+the zero operator.
+
+For the converse, for $0<t<1$ define the unit $L^2$ product
+\[
+ f_{L,t}(x)=\prod_{i=1}^L\frac{1+tx_i}{\sqrt{1+t^2}}.
+\]
+Its Walsh coefficient at $A$ is $t^{|A|}/(1+t^2)^{L/2}$, so exactly
+\[
+ \|(I-H_m)f_{L,t}\|_2^2
+ =\Pr\{\operatorname{Bin}(L,t^2/(1+t^2))<m\}.
+\]
+Ordinary endpoint hypercontractivity and the triangle inequality imply
+\begin{equation}\label{eq:327-witness}
+ N_L(m)\geq\|Qf_{L,t}\|_{p_0}
+ -\sqrt{\Pr\{\operatorname{Bin}(L,t^2/(1+t^2))<m\}}.
+\end{equation}
+In particular the projection, not the original positive product, is the
+high-degree witness. It may be signed.
+
+Product factorization gives $\log\|Qf_{L,t}\|_{p_0}=LF_\rho(t)$, where
+\[
+ F_\rho(t)=\frac1{p_0}\log\frac{(1+\sqrt\rho\,t)^{p_0}
+                                  +(1-\sqrt\rho\,t)^{p_0}}2
+                  -\frac12\log(1+t^2).
+\]
+Both bases are positive near zero, so this is even analytic also for
+noninteger $p_0$. Expanding
+$\mathbb E(1+zX)^{p_0}=1+A z^2+Bz^4+O(z^6)$ with
+$A=p_0(p_0-1)/2$ and $B=p_0(p_0-1)(p_0-2)(p_0-3)/24$ gives
+\[
+ \frac1{p_0}\log\mathbb E(1+zX)^{p_0}
+ =\frac{p_0-1}{2}z^2
+ -\frac{(p_0-1)(p_0^2+p_0-3)}{12}z^4+O(z^6).
+\]
+The quadratic terms cancel since $(p_0-1)\rho=1$, and thus
+$F_\rho(t)=-d_\rho t^4+O_\rho(t^6)$, where
+$d_\rho=(1-\rho^2)/(12\rho)>0$.
+
+Suppose $m_L/\sqrt L\to C<\infty$. Fix $A>C$ and set
+$t_L^2=A/\sqrt L$. Then $Lt_L^4=A^2$ and $Lt_L^6\to0$, so the
+first term in \eqref{eq:327-witness} tends to $e^{-d_\rho A^2}$.
+The binomial mean is $\mu_L=A\sqrt L/(1+A/\sqrt L)$ and its
+variance is at most $\mu_L$. For large $L$,
+$\mu_L-m_L\geq(A-C)\sqrt L/2$; Chebyshev's inequality bounds
+the low-tail probability by $\mu_L/(\mu_L-m_L)^2=O_{A,C}(L^{-1/2})$.
+Taking the lower limit in \eqref{eq:327-witness}, then the supremum over
+fixed $A>C$, proves \eqref{eq:327-tail-lower}. There is no interchange
+of nonuniform limits. At $C=0$, the endpoint upper bound $N_L(m)\leq1$
+proves convergence to one.
+Finally, if $m_L/\sqrt L$ fails to tend to infinity, it has a bounded
+subsequence and then a subsequence converging to a finite $C$.
+The positive lower bound on that subsequence precludes $N_L(m_L)\to0$.
+\end{proof}
+
+\begin{corollary}[Marginal rigidity without the logarithmic loss]
+\label{cor:327-marginals}
+Let $r_L\geq0$, $\mathbb E r_L=1$, and
+$\|r_L\|_s\leq B$ for $s=(1+\rho)/(1-\rho)$ and fixed finite $B$.
+Assume all weighting-law marginals on at most $k_L$ coordinates are
+uniform. If $k_L/\sqrt L\to\infty$, then
+\[
+ \|S_{r_L}-P_\rho\|_{2\to2}\to0,\qquad
+ \lambda_1(T_{r_L})\to1,\quad\lambda_2(T_{r_L})\to\rho,
+ \qquad \gap(T_{r_L})\to1-\rho.
+\]
+The norm conclusion concerns $S_{r_L}=QM_{r_L}Q$; it does not assert
+$\|T_{r_L}-P_\rho\|\to0$ for $T_{r_L}=M_{\sqrt{r_L}}P_\rho M_{\sqrt{r_L}}$.
+\end{corollary}
+\begin{proof}
+Put $d=\lfloor k_L/2\rfloor$, let $\Pi$ project onto degrees at most
+$d$, and let $H=I-\Pi=H_{d+1}$. With $h=r_L-1$ and $D=QM_hQ$,
+exact matching gives $\Pi D\Pi=0$: the Walsh entry uses
+$\widehat h(A\mathbin\triangle C)$ with $|A\mathbin\triangle C|\leq2d\leq k_L$.
+Consequently $D=HD+\Pi DH$. Since $1/s+2/p_0=1$,
+H\"older's inequality and endpoint hypercontractivity bound each block
+by $(B+1)N_L(d+1)$; for the projected low factor use
+$\|Q\Pi f\|_{p_0}\leq\|\Pi f\|_2\leq\|f\|_2$.
+Thus $\|D\|\leq2(B+1)N_L(d+1)\to0$. If $k_L=L$, exact matching
+already forces $r_L=1$. Self-adjoint eigenvalue perturbation yields the
+top two limits for $S_{r_L}$. With $A=QM_{\sqrt{r_L}}$ we have
+$S_{r_L}=AA^*$ and $T_{r_L}=A^*A$; their full finite spectra agree,
+including zeros. This proves the asserted eigenvalue and normalized-gap
+limits even when the densities vanish.
+\end{proof}
+
+\paragraph{Scope and relation to earlier results.}
+The new sufficient condition supersedes the logarithmic scale of
+Theorem~\ref{thm:quadratic-marginal-rigidity}; that earlier bound remains
+valid. Together with Theorem~\ref{thm:growing-collapse}, it leaves a
+genuine density question near the square-root scale and in the gap
+between fixed sub-square-root powers and that scale. The signed witness
+in \eqref{eq:327-witness} does not supply a nonnegative mean-one density
+with exact marginals and a collapsing transfer gap. Nor does equality
+of spectra of $S_r,T_r$ give equality of their distances to $P_\rho$.
+For example, $r=1+t\chi_{[L]}$, $0<t<1$, has uniform proper marginals
+and bounded critical norm. Writing $\sqrt r=a+b\chi_{[L]}$ gives
+$2ab=t$, so the $\{1,\chi_{[L]}\}$ off-diagonal entry of
+$T_r-P_\rho$ is $t(1+\rho^L)/2\geq t/2$, whereas
+$\|S_r-P_\rho\|=t\rho^{L/2}\to0$.
+These distinctions correct the ambiguous norm wording of the previous
+version without changing its formally stated $S_r$ theorem.
+
+Endpoint hypercontractivity, Fourier projections, entropy tilting and
+product norm factorization are classical inputs. The refined inequality
+is attributed explicitly above. Existing tail-space literature also
+contains square-root phenomena; this fact alone neither identifies nor
+excludes an antecedent of this precise endpoint operator theorem.
+Historical originality remains unestablished. These are finite-cube
+results with global weights, not fixed-range Gibbs, local-dynamics,
+physical-gap or continuum results.

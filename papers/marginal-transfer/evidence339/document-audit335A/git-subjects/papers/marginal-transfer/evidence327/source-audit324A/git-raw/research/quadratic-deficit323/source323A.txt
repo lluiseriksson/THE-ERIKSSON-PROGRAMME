@@ -1,0 +1,80 @@
+SOURCE323A: Quantitative critical rigidity above the square-root logarithmic scale
+Author: Lluis Eriksson with disclosed OpenAI/Codex assistance.
+Status: analytical candidate; no terminal audit, formal proof, numerical execution, PDF assessment or publication yet. Consolidate with319/321/322; not a separate corollary paper.
+
+STATEMENT AND NORMALIZATION
+On the uniform probability cube {-1,1}^L, fix 0<rho<1, s=(1+rho)/(1-rho), p=2s/(s-1)=1+1/rho>2 and Q=P_sqrt(rho). Let r>=0, E r=1, ||r||_s<=B with B independent of L. Suppose the weighting law r u_L has exactly uniform marginals on every subset of at most k coordinates, where k is an integer, 0<=k<=L. Set S=Q M_r Q and T=M_sqrt(r) P_rho M_sqrt(r). There exists c_p>0, depending only on p, such that
+ ||S-P_rho|| <=2(B+1)sqrt(L+1) exp[-c_p(floor(k/2)+1)^2/L]
+for 0<=k<L. If k=L then r=1 and S=P_rho exactly. In particular the weaker bound with exponent -c_p k^2/(4L) holds for all0<=k<=L. If k_L^2/[L ln(L+1)] tends to infinity, then the norm difference tends to zero, lambda1(T)->1, lambda2(T)->rho, and gap(T)=1-lambda2/lambda1 tends to1-rho. L>=1 is implicit. No constant is claimed uniform as rho approaches0 or1.
+
+PUBLISHED INPUT
+Kirshner and Samorodnitsky, A moment ratio bound for polynomials and some extremal properties of Krawchouk polynomials and Hamming spheres, arXiv:1909.11929v1, Theorem1.3 and Propositions2.6/2.7:
+https://arxiv.org/html/1909.11929v1
+https://arxiv.org/pdf/1909.11929v1
+Their homogeneous moment bound reads ||f_j||_p<=2^{L psi(p,j/L)/p}||f_j||_2 for homogeneous degree j<=L/2. The function psi(p,x) is continuous on[0,1/2], psi(p,0)=0, strictly concave for p>2, with derivative (p/2)log2(p-1) at zero. These are cited external theorems, not results of this programme.
+Proposition2.6 gives, with binary entropy H and x=a(p,delta),
+ psi=(p-1)+log2[(1-delta)^p+delta^p]-(p/2)H(x)-p x log2(1-2delta),
+ x=(1/2-delta)[(1-delta)^(p-1)-delta^(p-1)]/[(1-delta)^p+delta^p].
+The author has read these statements, their definitions and the proof of the third assertion of Proposition2.7 (HTML lines1562-1606, including Lemma5.3), not reverified the full homogeneous moment theorem. That proof gives the first derivative and strict concavity; it does not justify replacing strict concavity by a quadratic modulus without a further argument. The elementary expansion below is derived explicitly from their formula. No novelty is claimed for the expansion itself.
+
+1. QUADRATIC DEFICIT DERIVATION
+Put z=1-2delta and A(z)=((1+z)^p+(1-z)^p)/2. Write h(x)=-x ln x-(1-x)ln(1-x), using natural logs. The constants in Proposition2.6 cancel, yielding exactly
+ ln(2) psi(p,x)=ln A(z)-(p/2)h(x)-p x ln z,
+ x=z A'(z)/(p A(z)).
+For any fixed real p>2, A is positive and even analytic near z=0. Direct binomial expansion followed by ln(1+t) gives
+ ln A(z)=a2 z^2+b4 z^4+O(z^6),
+ a2=p(p-1)/2,
+ b4=p(p-1)(p-2)(p-3)/24-p^2(p-1)^2/8
+   =-p(p-1)(p^2+p-3)/12.
+With v=z^2 and a=p-1, b=4b4/p, the implicit equation becomes
+ x=a v+b v^2+O(v^3).
+Since a>0, the analytic inverse function theorem applies near0:
+ v=x/a-b x^2/a^3+O(x^3),
+ ln v=ln x-ln a-b x/a^2+O(x^2),
+ ln A=(p/2)x-b4 x^2/a^2+O(x^3).
+Also h(x)=-x ln x+x-x^2/2+O(x^3). Substitution cancels x ln x and the linear constants, giving
+ ln(2) psi(p,x)=(p/2)ln(p-1)x+[p/4+b4/(p-1)^2]x^2+O(x^3)
+ =(p/2)ln(p-1)x-p^2(p-2)x^2/[12(p-1)]+O(x^3).
+All remainders here are for fixed p as x decreases to0. Thus
+ Delta_p(x):=x ln(p-1)/2-ln(2)psi(p,x)/p
+ =p(p-2)x^2/[12(p-1)]+O(x^3).
+In particular the limiting coefficient is strictly positive for every fixed p>2. It vanishes at p=2, consistent with psi(2,x)=0; p=2 is excluded from the theorem.
+
+2. GLOBAL QUADRATIC LOWER BOUND AND ALL LEVELS
+Let y=min(x,1-x) and a_p(x)=Delta_p(y)+(x-y)ln(p-1)/2 for x in[0,1]. Strict concavity of psi proves Delta_p(y)>0 for0<y<=1/2. Hence a_p(x)>0 for every x>0, including a_p(1)=ln(p-1)/2. For x near0 the preceding calculation gives a_p(x)/x^2 tending to C_p=p(p-2)/[12(p-1)]>0. Thus this quotient extends continuously and positively to the compact interval[0,1]. Its minimum c_p is positive. This defines an existence constant, not an unproved explicit global value C_p. Consequently a_p(x)>=c_p x^2 throughout[0,1].
+For degree j<=L/2 the external homogeneous bound and rho=1/(p-1) imply
+ ||Q f_j||_p<=exp[-L a_p(j/L)]||f_j||_2
+ <=exp[-c_p j^2/L]||f_j||_2.
+For j>L/2 multiply f_j by total parity chi_[L]. This preserves all Lp norms and maps the degree to L-j; applying the bound there, then the original noise multiplier rho^(j/2), gives the identical estimate. This does not assert commutation between parity and Q. At j=L the parity-reduced degree is0 and the same expression holds.
+Let m=floor(k/2), Pi project onto degrees<=m, and H=I-Pi. For arbitrary f, orthogonality in L2, triangle inequality in Lp and Cauchy--Schwarz across the levels give
+ ||Q Hf||_p<=sum_{j=m+1}^L exp[-c_p j^2/L]||f_j||_2
+ <=sqrt(L+1) exp[-c_p(m+1)^2/L]||f||_2.
+Ordinary endpoint hypercontractivity gives ||Q||_(2->p)<=1; also ||QPi||_(2->p)<=1.
+
+3. MARGINAL CANCELLATION AND OPERATOR ESTIMATE
+Write h=r-1 and D=Q M_h Q. Exact weighting-law marginals imply hhat(A)=0 for all|A|<=k, including the constant coefficient. Matrix elements of Pi D Pi are rho^((|A|+|C|)/2) hhat(A symmetric_difference C), zero because |A symmetric_difference C|<=2m<=k. Therefore Pi D Pi=0 and D=H D+Pi D H.
+For unit u,v, Holder with1/s+2/p=1 bounds
+ |<u,H Dv>|=|E[h(QHu)(Qv)]|
+ <=(B+1)sqrt(L+1)exp[-c_p(m+1)^2/L].
+The other block uses QPi u and QHv and has the same bound. Adding yields the stated norm estimate. If k=L all nonconstant coefficients of r vanish, so the conclusion is exact with no tail argument needed. Since m+1>=k/2, the weaker bound holds uniformly. Its logarithm is bounded by ln[2(B+1)]+(1/2)ln(L+1)-c_p k^2/(4L), tending to minus infinity under the claimed sufficient condition.
+Finally S and T are the two square products AA* and A*A, where A=Q M_sqrt(r), so their full eigenvalue lists agree including zeros. Norm perturbation of the two leading eigenvalues1,rho of P_rho gives the actual top-two eigenvalue limits. Mean one gives lambda1>=1. This proves the normalized gap limit even if r has zeros.
+
+SCOPE / HYPOTHESIS REMOVED / REMAINING GAP
+The positive linear-fraction hypothesis of321 is replaced by the weaker proved sufficient condition k^2/(L ln(L+1))->infinity, with the same dimension-independent critical norm budget B, including B=2^(1/s). No uniform integrability of r^s, density floor, supercritical moment, positivity beyond nonnegativity, or local dependence is assumed. These are weighting-law marginals, not Perron stationary marginals. The result is a finite Boolean transfer-operator statement, not a physical mass gap or continuum bridge.
+Together with319 collapse for every fixed k=floor(L^alpha),alpha<1/2, this brackets the polynomial scale. It does NOT establish a sharp square-root threshold, necessity of the logarithm, rigidity for k merely greater than sqrt(L), or any assertion at k comparable to sqrt(L). Do not remove the logarithm without new proof. The constant c_p may deteriorate with p. Novelty of this spectral application remains unestablished by the targeted literature check; all inherited moment input is explicitly credited.
+No locally executed numerical test or Lean verification is claimed. The algebra and functional analysis above are the evidence proposed for terminal source audit. Preserve all failures. Group this improvement with319/321 in322 rather than issuing a separate paper.
+
+FIXED ADVERSE CHECKS
+C1: Exact probability normalization, s,p,rho relation and external Theorem1.3 scope for realp>2.
+C2: Proposition2.6 variable substitution, factor2 and natural/binary log conversion.
+C3: Analyticity for realp and the b4 coefficient by explicit expansion.
+C4: Inverse function and remainder orders, especially multiplication of ln v remainder by x.
+C5: Quadratic coefficient, its positivity and excluded p=2/nonuniform endpoint limits.
+C6: Compact positive quotient on[0,1], parity endpoint and no unjustified explicit global constant.
+C7: Parity norm reduction and noise exponent at original degree.
+C8: Orthogonal-level sum and sqrt(L+1) prefactor retained.
+C9: Exact low-low block cancellation, integer k,m and k=L edge case.
+C10: Signed Holder crossblocks and actual operator/spectral conclusions despite zeros.
+C11: Logarithmic sufficient condition versus unsupported sharpness/necessity claims.
+C12: Attribution/novelty/weighting-law/physical scope and grouping with322.
+Falsifier: failure of any algebraic sign/normalization or a counterexample satisfying the exact hypotheses. Abandon an unproved stronger scale after3units without substantive progress; retain the actual proven sufficient bound and failure records.

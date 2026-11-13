@@ -1,0 +1,67 @@
+{
+  "originals": [
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\pr-pinned.json",
+      "capture": "originals/01-pr-pinned.json",
+      "bytes": 1704,
+      "sha256": "bbdbdb77982fbdeb7747a86b3f9d095b06767fddd3ee2649650158619dbb1453"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\pr-body-normalized.txt",
+      "capture": "originals/02-pr-body-normalized.txt",
+      "bytes": 1475,
+      "sha256": "018ea2323a7baa7776132fe3f7e82ed4389709ef1cf1e91b1bcebef7884b7f3e"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\manuscript335A.tex",
+      "capture": "originals/03-manuscript335A.tex",
+      "bytes": 173928,
+      "sha256": "addb9ecf25577e3c368d3e0475d0728817168740c398d55dc8aa57d173e1aa8e"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\SOURCE-INPUTS335.json",
+      "capture": "originals/04-SOURCE-INPUTS335.json",
+      "bytes": 51141,
+      "sha256": "e54b6b829b4b6509c01005a2352f3cb76c5baf66de42ede2f2395a6896a8882e"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\parent-preaudit-finalization.txt",
+      "capture": "originals/05-parent-preaudit-finalization.txt",
+      "bytes": 1766,
+      "sha256": "04f8a65ae2b5813d707ffe982b772abcb0606d133cb2f561dc1f1145004af6b5"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\primary-literature-parent334.txt",
+      "capture": "originals/06-primary-literature-parent334.txt",
+      "bytes": 3001,
+      "sha256": "3acc7f039a447e466fd4b81e6d4816439efce1196cc418f0603733da5aecfe9a"
+    }
+  ],
+  "working_representation_differences": [
+    {
+      "path": "CLAUDE.md",
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "working_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "working_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    }
+  ],
+  "private_leeme_sha256": "5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f",
+  "protected_untracked": [
+    {
+      "path": "prepare311.py",
+      "sha256": "b82abb0b2d779f7172376a5970b00fbfefe334781d09221f53c8d6c2a3edeab9"
+    },
+    {
+      "path": "prepare314.py",
+      "sha256": "f77617fb961971c2829911c8d94e504d2afaff4f795fbd568304af093a74b015"
+    },
+    {
+      "path": "prepare_manuscript327.ps1",
+      "sha256": "3184877af621208495a3663ff7f376a2349296074019e7a4ecb9200d11b4ad98"
+    }
+  ]
+}

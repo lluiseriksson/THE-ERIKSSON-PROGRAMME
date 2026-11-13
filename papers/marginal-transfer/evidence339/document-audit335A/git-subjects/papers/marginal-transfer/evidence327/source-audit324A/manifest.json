@@ -1,0 +1,169 @@
+{
+  "representation": "Raw bytes without normalization. Exact Git captures are in git-blobs; initial git-raw captures failed Git identity and are preserved as CRLF evidence. PR normalized body separately identified.",
+  "exclusions": [
+    "manifest.json",
+    "manifest.sha256"
+  ],
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1619,
+      "sha256": "a6ae75cb0c001137871cf7aca9fda233aea9bcb7495b924459a32fb287b6068c"
+    },
+    {
+      "path": "body-final.normalized.txt",
+      "bytes": 1029,
+      "sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3"
+    },
+    {
+      "path": "body-initial.normalized.txt",
+      "bytes": 1029,
+      "sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 4150,
+      "sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e"
+    },
+    {
+      "path": "final-state.json",
+      "bytes": 2909,
+      "sha256": "ca39d4c687f0f27432430cf33861fdaeb8957b9abafdea17503aecc3a981952c"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 17231,
+      "sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770"
+    },
+    {
+      "path": "git-blobs/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "git-blobs/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "git-blobs/research/marginal-moment319/source319A.txt",
+      "bytes": 9805,
+      "sha256": "5b527cd6c8fbad390258a9c439534222c0094139cac7a5813edb6415b20e39a3"
+    },
+    {
+      "path": "git-blobs/research/quadratic-deficit323/source323A.txt",
+      "bytes": 8749,
+      "sha256": "2de9fb0027e02ade7e3920352a5a3593154778c8cd478d5bb7fecd066bac0bfc"
+    },
+    {
+      "path": "git-blobs/research/truncation324/source324A.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6"
+    },
+    {
+      "path": "git-raw/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "git-raw/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "git-raw/research/marginal-moment319/source319A.txt",
+      "bytes": 9977,
+      "sha256": "ef37729f5605cddb865cabbbd7c5aa9d00ced3068a76f8cbe7af44ea6112b29e"
+    },
+    {
+      "path": "git-raw/research/quadratic-deficit323/source323A.txt",
+      "bytes": 8829,
+      "sha256": "403ff8ae112dda41aeab377e53e27be7c23db117cc03ec00b8f762a1b27d9403"
+    },
+    {
+      "path": "git-raw/research/truncation324/source324A.txt",
+      "bytes": 13658,
+      "sha256": "08393e1ac10c588124735ba6786575c80e1d19761740b01cf705220fb1fe3722"
+    },
+    {
+      "path": "git-subjects.zip",
+      "bytes": 33342,
+      "sha256": "8b6b016c9e40c84ff3773e998475952dfd24b5680b795d5930251ed33b7c25b6"
+    },
+    {
+      "path": "initial-state.json",
+      "bytes": 4896,
+      "sha256": "c88ad4b24687f0474f6bdba7b0d589697bed598f34da3798dcd79050ca553a9f"
+    },
+    {
+      "path": "pr271-final.json",
+      "bytes": 1158,
+      "sha256": "788bfedab1fb19e6b8eef1b67019be5d1751339beb3c50f717361be6e32524b0"
+    },
+    {
+      "path": "pr271-initial.json",
+      "bytes": 1158,
+      "sha256": "788bfedab1fb19e6b8eef1b67019be5d1751339beb3c50f717361be6e32524b0"
+    },
+    {
+      "path": "primary-reading.txt",
+      "bytes": 1348,
+      "sha256": "f1f7e300890e83330d8e2cfbf0543b41ef2021ecc7b29acb00a79b0908451083"
+    },
+    {
+      "path": "raw-blob-capture-correction.json",
+      "bytes": 1932,
+      "sha256": "1deff57677dfac5a0e9012731236a0c8f9a3478fbf6449bc20a43b267ee3a7cb"
+    },
+    {
+      "path": "representation-and-notes.json",
+      "bytes": 1123,
+      "sha256": "ec8ad7b1f00e3d0e49b1ab2c469bb1dca6d745e7448a2518fdc6d8e90a1350d4"
+    },
+    {
+      "path": "source324A-final.git.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6"
+    },
+    {
+      "path": "subjects/01-source324A.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6"
+    },
+    {
+      "path": "subjects/02-prepare311.py",
+      "bytes": 8193,
+      "sha256": "b82abb0b2d779f7172376a5970b00fbfefe334781d09221f53c8d6c2a3edeab9"
+    },
+    {
+      "path": "subjects/03-prepare314.py",
+      "bytes": 7238,
+      "sha256": "f77617fb961971c2829911c8d94e504d2afaff4f795fbd568304af093a74b015"
+    },
+    {
+      "path": "subjects/04-source324A.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6"
+    },
+    {
+      "path": "subjects/05-question324-truncation.txt",
+      "bytes": 5322,
+      "sha256": "12042f2e13c2027732bbba23f66b037e2e25af069829449cfc834b5a096926e3"
+    },
+    {
+      "path": "subjects/06-question324-rate-identity.txt",
+      "bytes": 4213,
+      "sha256": "0f69145819e29e2f9aa629038729df2a8710f950bb5b6f19590d2968bfdcb01d"
+    },
+    {
+      "path": "subjects/07-pr-body324.txt",
+      "bytes": 1029,
+      "sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3"
+    },
+    {
+      "path": "subjects/08-manuscript322B.tex",
+      "bytes": 129075,
+      "sha256": "73073a786fdc65206b716f0cd44c47b31043258fc68477c41917763c6518b545"
+    }
+  ]
+}
