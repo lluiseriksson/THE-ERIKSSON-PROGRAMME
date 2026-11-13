@@ -1,0 +1,26 @@
+{
+  "artifact_raw_sha256": "450b6afa4e49a34f5fa36958b36b302ad1e266832aa271f857522aecfd3c6444",
+  "assessed_at": "2026-11-13T15:03:15+00:00",
+  "assessment_type": "qualitative importance explanation; not a sixth native criterion",
+  "native_significance_criterion": {
+    "stars": 3,
+    "scale": "1 to 5",
+    "basis": "If correct and original, the results give useful sharp worst-case classifications and information obstructions for weighted Boolean noise/transfer operators. No demonstrated consequence for fixed-range Gibbs models, local dynamics, physical mass gaps, or a broader recognized open problem supports a higher impact rating."
+  },
+  "scope": "Specialized finite-dimensional weighted Boolean noise/Ising transfer kernels with arbitrary global densities.",
+  "most_substantive_claims": [
+    "Exact critical moment-budget classification including equality and prescribed floors.",
+    "Simultaneous all-dimension cutoff-one tail endpoint and stable escaped-moment counterexamples.",
+    "Joint input/Perron high-order marginals with exponentially many slow transfer modes."
+  ],
+  "established_if_claims_hold": "Sharp limits of scalar density and marginal summaries as universal transfer-gap certificates in the declared operator class.",
+  "not_established": [
+    "External historical priority.",
+    "A new hypercontractive scale or general spectral method.",
+    "A fixed-range Gibbs or local-dynamics result.",
+    "A physical mass gap, continuum Yang-Mills statement, or Millennium Prize resolution.",
+    "Broad downstream impact beyond the demonstrated specialized class."
+  ],
+  "why_overall_is_4": "The complete sharp endpoints and controlled constructions are a clear, technically serious contribution candidate. Restricted demonstrated relevance and unestablished originality prevent assigning broad, exceptional, or field-shaping significance. The overall score is not the mean of the five criterion stars.",
+  "separate_numeric_importance_score": null
+}

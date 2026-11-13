@@ -1,0 +1,5 @@
+Construct a bounded parity background on one growing Boolean block and a balanced critical product tilt on another. Prove the exact Walsh multiplier norm, actual leading eigenvalue limits and strict moving-cutoff moments. For 2-2^(1/s)<K<1 and b<K, collapse occurs with every strict budget 1+(2-K)^s/2<tau<2.
+
+Active source309B preserves source309A and its complete FAIL report. That audit accepted the main construction but found the added b>K comparison missing b<1. B restricts that comparison to K<b<1 and explicitly treats b=1 as uniform and b>1 as infeasible. Judges309 are unchanged; no failed gate is amended.
+
+Keep the sufficient region tau<2-K^(s-1), unresolved optimal curve/equality and unestablished external priority. Exact308 PDF/review remains unchanged. This is source for later grouped integration, not a separate small paper. Require a new frozen B audit, all required checks and unchanged normal merge after PR255. No local mathematical execution or numerical/formal verification.

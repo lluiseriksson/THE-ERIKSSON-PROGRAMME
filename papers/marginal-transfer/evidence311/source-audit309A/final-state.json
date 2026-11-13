@@ -1,0 +1,39 @@
+{
+  "verdict": "FAIL/REVISE",
+  "candidate": "6d316907aa8804d156d965af940ba8d7ae553f41",
+  "judges": "9b330688f3fc7defd0213470d02e8875eff4adee",
+  "pr_body_bytes": 888,
+  "pr_body_sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+  "initial_final_binding_equal": true,
+  "blocking_issue": "Source309A line87: b>K threshold application lacks b<1; b=1 forces uniform density with gap1-rho even at total cap2",
+  "principal_theorem": "analytically sound with stated b<K<1",
+  "gate_status": [
+    "J1 ACCEPT",
+    "J2 ACCEPT",
+    "J3 ACCEPT",
+    "J4 ACCEPT",
+    "J5 REVISE: line87 floor scope",
+    "J6 ACCEPT: procedure only; CI/integration separate"
+  ],
+  "required_ci": "not certified",
+  "integration": "not performed; any accepted revision requires unchanged normal merge after PR255",
+  "source_or_judges_mutated": false,
+  "inbound_messages_received": 0,
+  "prior306_context_retained": true,
+  "same_provider": true,
+  "shared_filesystem": true,
+  "actual_model": "unknown",
+  "actual_effort": "unknown",
+  "human_review": false,
+  "technical_isolation": false,
+  "exact308_assessment_agent_or_report_accessed": false,
+  "pdf308_accessed_or_changed": false,
+  "clone_created": false,
+  "cleanup_pending": false,
+  "third_party_pdfs_retained": false,
+  "git_status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "utc": "2026-11-13T15:09:08.7979953Z"
+}

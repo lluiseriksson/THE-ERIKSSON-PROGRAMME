@@ -1,0 +1,21 @@
+diff --git a/research/parity-tail309/parity-tail309A.txt b/research/parity-tail309/parity-tail309B.txt
+index 401ce5856..c6d2094ae 100644
+--- a/research/parity-tail309/parity-tail309A.txt
++++ b/research/parity-tail309/parity-tail309B.txt
+@@ -1,5 +1,5 @@
+-PARITY BACKGROUNDS AND A SUB-TWO TAIL BUDGET BELOW CUTOFF ONE — SOURCE309A
+-Judges309 registered9b330688f; parent source8ac81a6f3f70aa552cc957d45abaf3f0fab90e65. Analytical candidate for a later grouped revision. The frozen308 PDF/review is unaffected. No numerical/formal verification or independent historical-priority claim.
++PARITY BACKGROUNDS AND A SUB-TWO TAIL BUDGET BELOW CUTOFF ONE — SOURCE309B
++Judges309 registered9b330688f; parent source8ac81a6f3f70aa552cc957d45abaf3f0fab90e65. Analytical candidate for a later grouped revision. Original309A failed J5 because its added b>K comparison omitted b<1; its source and complete report are retained. This B candidate changes only that extension and identity note; all principal construction/proof text and judges remain unchanged. The frozen308 PDF/review is unaffected. No numerical/formal verification or independent historical-priority claim.
+ 
+ 1. Conventions and bounded statement
+ On the uniform Boolean cube Omega_L={-1,1}^L, let P_L have Walsh multipliers rho^|S|, with fixed0<rho<1, and Q_L=P_{sqrt(rho),L}. For a positive mean-one density r define T_r=M_sqrt(r) P_L M_sqrt(r) and gap=1-lambda2(T_r)/lambda1(T_r). Eigenvalues are in decreasing order with multiplicity. Put s=(1+rho)/(1-rho)>1.
+@@ -84,7 +84,7 @@ The interval foru exists because 2-2^(1/s)<K and b<K. Its inequalityu>2-2^(1/s)
+ 7. Remaining gap in the classification and cross-paper significance
+ For an arbitrary mean-one nonnegative density with fixed0<K<1 and K-tail moment<=tau, the elementary inequality r^s1_{r<=K}<=K^(s-1)r implies E r^s<=K^(s-1)+tau. Theorem13 of the exact308 source then guarantees
+  gap(T_r)>=1-((K^(s-1)+tau)/2)^(1/s)>0
+-when tau<2-K^(s-1). This sufficient region remains intact. Our upper construction establishes collapse above1+(2-K)^s/2 for K>2-2^(1/s), b<K. No equality or optimal boundary between these regions is claimed. When b>K, every density is entirely above the cutoff, so the condition is a total moment cap; the old exact total-budget threshold2 applies. This observation is not asserted for the strict equality floorb=K.
++when tau<2-K^(s-1). This sufficient region remains intact. Our upper construction establishes collapse above1+(2-K)^s/2 for K>2-2^(1/s), b<K. No equality or optimal boundary between these regions is claimed. When K<b<1, every density is entirely above the cutoff, so the condition is a total moment cap; the old exact total-budget threshold2 applies within that fixed-floor range. When b=1, the mean-one condition forces r=1 and the gap is1-rho at every dimension, regardless of allowing a larger budget; when b>1, the mean-one class is empty. No classification is asserted here for the strict equality floorb=K.
+ 
+ The synthesis is substantive in the active route: it joins the bounded parity multiplier (whose own transfer gap is stable) to a rare balanced critical tilt on disjoint coordinates. The parity component can redistribute the scalar K-tail moment while its smoothed multiplication perturbation vanishes. Neither component alone gives this sub-two K<1 tail conclusion in the stated form. No external-priority claim follows; the Fourier, tensor-product, min-max and product-tilt mechanisms are classical or explicitly inherited. This source belongs with the existing marginal/moment paper, not a separate short corollary paper.
+ 

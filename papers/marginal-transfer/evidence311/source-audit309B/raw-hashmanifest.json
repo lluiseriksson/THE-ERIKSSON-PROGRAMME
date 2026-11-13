@@ -1,0 +1,306 @@
+{
+  "scope": "All files including archived A manifest/checksum, except this root manifest and its own root checksum. Raw byte counts and SHA-256; no implicit normalization.",
+  "files": [
+    {
+      "path": "a-path-representation-observation.json",
+      "bytes": 1189,
+      "sha256": "de20d92ecda5524b18f6e3a8c50fe6ff15efc05ca590666c8fb27cf71e42dd78",
+      "contains_cr": true,
+      "representation": "UTF-8 no BOM PowerShell JSON serialization; no line normalization"
+    },
+    {
+      "path": "assignment-received.txt",
+      "bytes": 1278,
+      "sha256": "2ca8c189c8ff1c4e359ffc24514eb484cbd591dff9a85f69eb9146109840c321",
+      "contains_cr": false,
+      "representation": "UTF-8 no BOM LF evidence text"
+    },
+    {
+      "path": "context-and-prior-involvement.txt",
+      "bytes": 4568,
+      "sha256": "b809f2fabb6eca4890d91c592f3e97242d7200dd5b65e869ddbe17d315e8ee88",
+      "contains_cr": false,
+      "representation": "UTF-8 no BOM LF evidence text"
+    },
+    {
+      "path": "final-state.json",
+      "bytes": 1694,
+      "sha256": "f3897ef2813263dd47f1a9d5ef59a64a0338ed2f30834da8786354eb0d40f815",
+      "contains_cr": true,
+      "representation": "UTF-8 no BOM PowerShell JSON serialization; no line normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 17557,
+      "sha256": "5ec6d4957792691a27c2444aafd018a487ac160c2637998889396be8e7679db0",
+      "contains_cr": false,
+      "representation": "UTF-8 no BOM LF evidence text"
+    },
+    {
+      "path": "git-metadata.txt",
+      "bytes": 1283,
+      "sha256": "830215f6c490f75e1f61105446bbb58cfe07dd5ef5283111338cc596cff5d2c7",
+      "contains_cr": false,
+      "representation": "UTF-8 no BOM LF evidence text"
+    },
+    {
+      "path": "original-a-to-b-text-diff.txt",
+      "bytes": 3596,
+      "sha256": "801310af093eab3c3f14c5cb93ceed9c9f5ce8782ba4f28a612b70a931174c0a",
+      "contains_cr": false,
+      "representation": "UTF-8 no BOM LF evidence text"
+    },
+    {
+      "path": "pr256-B-final-body.normalized.txt",
+      "bytes": 1001,
+      "sha256": "5f4132bcc371e0efe99d3ba78093d55c225309032b48d5d3d2b07f9398e8517b",
+      "contains_cr": false,
+      "representation": "JSON-decoded PR body; CRLF/CR->LF; terminal exactly one LF; UTF-8 no BOM"
+    },
+    {
+      "path": "pr256-B-final-capture.json",
+      "bytes": 1072,
+      "sha256": "3273048fb977ac4db15fd200753116646d7c2b2ff17e043aacab77ac7f09d5a8",
+      "contains_cr": false,
+      "representation": "gh stdout JSON text encoded UTF-8 no BOM plus terminal LF; not raw HTTP"
+    },
+    {
+      "path": "pr256-B-initial-body.normalized.txt",
+      "bytes": 1001,
+      "sha256": "5f4132bcc371e0efe99d3ba78093d55c225309032b48d5d3d2b07f9398e8517b",
+      "contains_cr": false,
+      "representation": "JSON-decoded PR body; CRLF/CR->LF; terminal exactly one LF; UTF-8 no BOM"
+    },
+    {
+      "path": "pr256-B-initial-capture.json",
+      "bytes": 1072,
+      "sha256": "3273048fb977ac4db15fd200753116646d7c2b2ff17e043aacab77ac7f09d5a8",
+      "contains_cr": false,
+      "representation": "gh stdout JSON text encoded UTF-8 no BOM plus terminal LF; not raw HTTP"
+    },
+    {
+      "path": "primary-reading.txt",
+      "bytes": 1784,
+      "sha256": "0ffd93f5f6de18c1a4a031347283d515f82cf3fabafece5d8057ced606830a55",
+      "contains_cr": false,
+      "representation": "UTF-8 no BOM LF evidence text"
+    },
+    {
+      "path": "prior-a-preservation-checks.json",
+      "bytes": 4548,
+      "sha256": "983c38a626b53e9b6354d460a88a99ac346f3314c8203e55acb0c92d8bdd38e7",
+      "contains_cr": true,
+      "representation": "UTF-8 no BOM PowerShell JSON serialization; no line normalization"
+    },
+    {
+      "path": "prior-a-raw/assignment-received.txt",
+      "bytes": 1867,
+      "sha256": "6253f4d7e4238b1cf8de309742ff19db517ee2f55bf52bf9a1ff305b984e4007",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/context-and-scope.txt",
+      "bytes": 4260,
+      "sha256": "1010f11e319a8a8fbbde038c2fe952599b26cda44b1a1d6290e2b6b46d8aa393",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/final-state.json",
+      "bytes": 1422,
+      "sha256": "ffe01dbfe0fb098439af6f39a9e88dc51e4f892088a7da10ff543b7c1484cedd",
+      "contains_cr": true,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/full-report.txt",
+      "bytes": 17793,
+      "sha256": "9e3cf288978aca5f1dc1355ef93c166d59bace158f22f8a39ecc5f885cd2f993",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/git-metadata.txt",
+      "bytes": 1052,
+      "sha256": "50a588f3cac79762b5d8914c9ef3be76a762ab9218a123562f3a8f0d0b5ef9c9",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/pr256-final-body.normalized.txt",
+      "bytes": 888,
+      "sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/pr256-final-capture.json",
+      "bytes": 959,
+      "sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/pr256-initial-body.normalized.txt",
+      "bytes": 888,
+      "sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/pr256-initial-capture.json",
+      "bytes": 959,
+      "sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/primary-reading.txt",
+      "bytes": 2155,
+      "sha256": "413d15a769d2a75530f7e1ee7918cc57077a1450654d51051921f7da4e087b24",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/raw-hashmanifest.json",
+      "bytes": 4630,
+      "sha256": "5e595c0f10158880b5c6cd1fcec957d3d22bb553f4e200a57d9f9c06a6420a85",
+      "contains_cr": true,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/raw-hashmanifest.sha256",
+      "bytes": 88,
+      "sha256": "554d7c8655a237d1d488f0a93fe99602c619fddf517f756ad8e7ab91d1673f53",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/source-bindings.json",
+      "bytes": 3275,
+      "sha256": "f1feae6725360b7fc1a284348248bff1b779984cb2cca5086f5a513efb72a623",
+      "contains_cr": true,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/subjects/CLAUDE.git-lf.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/subjects/critical299A.git-lf.txt",
+      "bytes": 11309,
+      "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/subjects/judges309-candidate.git-blob-cr.txt",
+      "bytes": 3098,
+      "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+      "contains_cr": true,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/subjects/judges309-preregistered.git-blob-cr.txt",
+      "bytes": 3098,
+      "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+      "contains_cr": true,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/subjects/manuscript308A.git-lf.tex",
+      "bytes": 73400,
+      "sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/subjects/OPERATIONAL-GOVERNANCE-CHARTER.git-lf.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "prior-a-raw/subjects/parity-tail309A.git-lf.txt",
+      "bytes": 9834,
+      "sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+      "contains_cr": false,
+      "representation": "Exact archived A Git blob; byte-identical to original A evidence; no normalization"
+    },
+    {
+      "path": "source-bindings.json",
+      "bytes": 3556,
+      "sha256": "90c1b39d4673bb5a93cd172c33d65d0674291b8973dc51d8b1d8bce96e51347d",
+      "contains_cr": true,
+      "representation": "UTF-8 no BOM PowerShell JSON serialization; no line normalization"
+    },
+    {
+      "path": "subjects/critical299A.git-blob.txt",
+      "bytes": 11309,
+      "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+      "contains_cr": false,
+      "representation": "Exact Git blob; no normalization"
+    },
+    {
+      "path": "subjects/current-path309A.git-blob.txt",
+      "bytes": 9835,
+      "sha256": "aaa5b9abc04c567d1378f6e1708964a122db3262d0f7b5d53d6888b6e7deae92",
+      "contains_cr": true,
+      "representation": "Exact Git blob; no normalization"
+    },
+    {
+      "path": "subjects/gitattributes.git-blob.txt",
+      "bytes": 68,
+      "sha256": "df1f81df3b31b7bb8b1547b7e253fe6c16ddc2266fc892058dc2ef3e026464c6",
+      "contains_cr": false,
+      "representation": "Exact Git blob; no normalization"
+    },
+    {
+      "path": "subjects/judges309-candidate.git-blob.txt",
+      "bytes": 3098,
+      "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+      "contains_cr": true,
+      "representation": "Exact Git blob; no normalization"
+    },
+    {
+      "path": "subjects/judges309-preregistered.git-blob.txt",
+      "bytes": 3098,
+      "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+      "contains_cr": true,
+      "representation": "Exact Git blob; no normalization"
+    },
+    {
+      "path": "subjects/manuscript308A.git-blob.tex",
+      "bytes": 73400,
+      "sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+      "contains_cr": false,
+      "representation": "Exact Git blob; no normalization"
+    },
+    {
+      "path": "subjects/original309A.git-blob.txt",
+      "bytes": 9834,
+      "sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+      "contains_cr": false,
+      "representation": "Exact Git blob; no normalization"
+    },
+    {
+      "path": "subjects/parity-tail309B.git-blob.txt",
+      "bytes": 10276,
+      "sha256": "b48d856408065319264420bc031ba699a4352f5246b6f79c27e5d382596761ac",
+      "contains_cr": false,
+      "representation": "Exact Git blob; no normalization"
+    },
+    {
+      "path": "subjects/README.git-blob.txt",
+      "bytes": 353,
+      "sha256": "acff59045049d69708d6183955031a67252865e93089712209b6984b0d564deb",
+      "contains_cr": true,
+      "representation": "Exact Git blob; no normalization"
+    }
+  ]
+}

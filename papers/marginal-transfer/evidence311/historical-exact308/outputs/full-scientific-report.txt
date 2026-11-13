@@ -1,0 +1,253 @@
+FIRST EXACT-PDF SCIENTIFIC ASSESSMENT — exact308
+Product Marginals and Density-Moment Thresholds for Ising Transfer Kernels
+Lluis Eriksson; manuscript dated 13 November 2026
+
+ASSESSMENT AND ARTIFACT BINDING
+
+This is one numerical scientific assessment of the supplied exact PDF, for a Working-paper route. It is not editorial acceptance, human peer review, formal certification, a statement of provider independence, or a rating of another version.
+
+PDF: manuscript308A.pdf
+Raw SHA-256: 450b6afa4e49a34f5fa36958b36b302ad1e266832aa271f857522aecfd3c6444
+Size: 478376 bytes; 22 pages.
+Declared source commit: 8ac81a6f3f70aa552cc957d45abaf3f0fab90e65.
+Input manifest raw SHA-256: b879e656257ba03d4b42dc03a167051a436508d48de8cf0549571771c37cd56c.
+All 33 listed input files were checked against their byte counts and raw hashes; there were zero mismatches.
+
+Native identifiers supplied in identifiers.json:
+paper_id ARR-2026-7KV9Y9ASX48H7A7N
+version v5
+version_id arr:version:2bb4beea-94ee-4a72-bc87-fbffcc4ecffd
+These are draft-linked identifiers, explicitly not a grant, submission receipt, or acceptance. Their inclusion here does not change that status.
+
+The entire 22-page paper was read using its supplied page images, text extraction, and selected exact TeX. Every image page-01.png through page-22.png was individually opened and inspected at its actual supplied size. No clipped mathematical content or overlapping equations were observed. The images and extraction are bound to the manifest; their claimed production from the PDF is supported by the supplied production report. I verified bytes, but did not independently rerender or rebuild the PDF. The production report is provenance evidence, not a mathematical review.
+
+VERDICT
+
+Millennium score: 4.00 / 10.00.
+Public whole-star display: 4 — Strong.
+Scientific recommendation: minor_revision.
+Meaning here: retain as a technically serious Working paper with the qualifications below; improve the contribution comparison and navigation. This is not an editorial admission recommendation.
+
+Five native criterion ratings, each out of five:
+- Correctness confidence: 4. The central proofs withstand the analytical checks described below. No concrete counterexample or invalidating proof gap was identified. This is a single AI reading, not extraordinary independent verification.
+- Rigor and completeness: 4. The manuscript explicitly handles zero densities, active support, multiplicities, the normalization of eigenvalue ratios, finite prefixes, and endpoint inequalities. Its exact-boundary arguments are substantially more complete than a heuristic concentration example.
+- Novelty relative to sources actually checked: 3. The joint code/Perron-marginal conclusion and exact critical-density/tail endpoints remain plausible contribution candidates. Their ingredients and important conceptual precedents are classical. This search does not establish priority or a new general method.
+- Significance if the claims hold: 3. The paper supplies useful sharp obstructions and classifications for a specified Boolean transfer family. It does not demonstrate consequences for fixed-range Gibbs models, local dynamics, physical mass gaps, or a broader outstanding problem.
+- Reproducibility / independent inspectability: 4. The finite-dimensional proofs, explicit formulas, exact source, images, and hash-bound packet make the claims inspectable. The code selection is existential, critical constructions use implicit constants and finite-prefix choices, and public source availability/build reproducibility were not independently replayed in this review.
+
+The overall number is a judgment on the substantive contribution, not an arithmetic average of these criterion stars and not a probability that every theorem is correct. The exact endpoint work merits the “Strong” anchor. Unresolved priority and restricted demonstrated impact do not support the higher anchors for broad, exceptional, field-shaping, or historic work. There is no Millennium Prize solution claimed or assessed.
+
+SCIENTIFIC CONTRIBUTION AND SCOPE
+
+The paper considers the positive congruence A_mu = diag(sqrt(mu)) M_beta diag(sqrt(mu)), where M_beta(x,y) = exp(-2 beta d(x,y)). Equivalently, up to an irrelevant scalar, it studies T_r = M_sqrt(r) P_rho M_sqrt(r), rho = tanh(beta), in uniform-probability L2 on the Boolean cube. Its gap is the normalized separation of the largest two eigenvalues. For r with zeros, the full matrix includes its zero eigenvalues.
+
+There are three related but distinct pieces:
+1. A positive admixture of a code-uniform law and the uniform law yields exact product marginals through a linear fraction of all coordinates, both for the input law and for the Perron stationary law. Exponentially many nonleading normalized transfer eigenvalues approach one.
+2. For the same operator class, the density moment exponent s_c = (1+rho)/(1-rho) separates universal stability from adverse examples. At s = s_c, the exact norm-budget boundary is 2^(1/s), including collapse at the boundary with any prescribed floor b<1.
+3. At that critical exponent, escaped scalar moment below one guarantees a gap. Equality can collapse even with a simultaneous all-dimension tail cap at cutoff one and total moment at most two. Conversely, stable spikes show that a positive escaped moment, even arbitrarily large but finite, need not cause collapse.
+
+The paper does not assert that one family realizes all three sets of properties simultaneously. This is made explicit in the abstract and maintained in the proofs. The distinctions between input mu, density r, Perron law pi, transfer gap, and heat-bath gap are essential and are respected.
+
+CLAIM-BY-CLAIM ADVERSARIAL FINDINGS
+
+1. Conventions, Theorem 1, Lemma 2, Proposition 3, Lemma 4; pages 1–5.
+
+The tensor factor [[1,q],[q,1]], 0<q<1, is positive definite and entrywise positive. The transfer normalization agrees with the Boolean noise multipliers. The uniform ratio is rho. Thus Perron strictness at each finite size is compatible with a dimension-dependent gap tending to zero.
+
+The code existence proof correctly counts failure of row rank among the small primal-word events. The primal and dual union bounds use strict entropy slack, while the floor/ceiling choices introduce only a bounded term in k=ceil(RL). The inclusive entropy sum is a legitimate upper bound for the strict-weight bad event. No independence of the two bad events is needed. Dual distance ensures surjectivity of every required coordinate projection, and uniform messages then give exact labelled uniform marginals.
+
+The concentration estimate does not merely substitute a singular hard-support limit. On the code block the diagonal is a and the off-diagonal norm is bounded by a s. Outside the code, positive semidefiniteness bounds the norm by the trace, and the cross block has Frobenius norm at most sqrt(eta). Interlacing supplies the required lower bound for each j<=m, and the separate coordinate Rayleigh quotient gives lambda_1>=a. This yields the finite inequality even when its upper bound is vacuous. The bound does not require s<1.
+
+The selected eta=e^(-2 beta L)/m^2 and rate R give the stated constant 7 and exponent gamma>0; the number of slow nonleading modes is m-1, with multiplicities counted. No claim of exact degeneracy is being smuggled into the argument.
+
+For the stationary law, translation by each codeword commutes with the matrix. Uniqueness of the positive unit Perron vector forces its invariance, and surjectivity of the coordinate projections transfers that invariance to each marginal. This is a genuine additional conclusion beyond agreement of the weighting-law marginals. The Doob formula is stochastic and reversible and has the normalized spectrum by diagonal similarity.
+
+Finding: no invalidating objection identified. The mechanism is an elementary synthesis of known code geometry and finite-matrix perturbation tools; it is not a new code construction or an efficient code-selection algorithm.
+
+2. Proposition 5 and Corollary 6; pages 5–6.
+
+The parity block comes from similarity to P_rho M_(1+t chi_[L]), not a claim that the congruence is itself diagonal in the character basis. Complement pairs exhaust the basis; their traces and determinant match the stated roots. For L>=2, the largest proper-pair trace is the size-one trace. The empty/full lower root cannot displace that upper root as the second eigenvalue. The ratio bound by tanh(2 beta) follows from the monotonicity of the upper-root-to-trace ratio, with equality only approached in the stated limit.
+
+The distinction from the supplied parity predecessor is sound: its conditional resampling generator differs from this transfer operator. Fixed-size heat-bath degeneration does not prove transfer degeneration.
+
+The marginal-certificate corollary follows from identical literal inputs at the same L and beta. It only limits a lower bound valid over the whole declared weight class. It does not imply that the actual product chain is slow or invalidate a theorem using full conditionals or a smaller weight class.
+
+Finding: no error identified. The corollary has a restricted but precise information-theoretic meaning.
+
+3. Theorem 7 and Corollary 8; pages 7–8.
+
+The proof uses all norms in L2(u_L), so sqrt(r) is a unit vector and lambda_1>=<r,P_rho r>>=1. The upper bound lambda_1<=B uses the density cap. If a second eigenvalue is nonzero, its eigenvector is supported on the active set and must change sign there. A one-point active support is separately covered.
+
+The forward hypercontractive exponent q*=1+rho^(-2) is the correct 2-to-q exponent. The reverse bilinear inequality at p*=1-rho is consistent with the tensorized Boolean reverse inequality in Mossel–Oleszkiewicz–Sen, equations (1.1)–(1.2). Passing to zeros through positive approximants is legitimate, without defining negative moments of zero-valued functions.
+
+The sign-part subeigenvector inequality and interpolation yield a positive cross entry. The 2-by-2 compression has the second eigenvector as an eigenvector and the other eigenvalue lambda_2+d/(st), so the variational comparison is valid even for imbalanced sign parts. The stated e_rho and conservative gap constant agree with these steps. Rearrangement gives Corollary 8; it is only a necessary density-growth condition for collapse.
+
+Finding: no error identified. The constants are poor in extreme parameters, as can be expected from this proof; sharpness of these constants is neither proved nor claimed.
+
+4. Theorem 9; pages 8–9.
+
+The exponent Q=s(1+rho)/(s rho+1+rho) exceeds A=1+rho precisely in the strict supercritical regime. The two forward hypercontractive mappings used in the proof have the correct noise thresholds. Hölder supplies lambda_1<=B without a pointwise cap; zeros create no division problem.
+
+The second-eigenvector sign decomposition and interpolation at p=1-rho produce the claimed exponent e. The factor 2 lambda_2/lambda_1 is at least one in the retained case, and lambda_2>=1/2 follows from lambda_1>=1. This verifies the stated lower gap bound.
+
+Finding: no error identified. The critical divergence of this quantitative bound is not an endpoint proof; the manuscript correctly supplies a different critical argument.
+
+5. Theorem 10; pages 9–10.
+
+The positive density is normalized by Z_L, has the claimed moment budget by Minkowski, and has floor at least 1/B. The equality of the spectra of M_sqrt(r) P_rho M_sqrt(r) and Q M_r Q follows from square AA* and A*A; no invertibility is needed for the later zero-density applications.
+
+The one-bit eigenvalue expansion has positive quadratic coefficient precisely for s<s_c. For the two tilted factors, equality in the product norm bound would force a common top eigenvector. Their difference is invertible for delta>0, so the cross norm is strictly smaller than the common top norm. The doubled Gram matrix has additional zeros, but its first two positive eigenvalues agree with those of the sum. The proof accounts for this and for L=1.
+
+The uniform component contributes a norm-one positive term. It is controlled as an error only in this supercritical-growth construction, where kappa>1. The gap estimate follows after cancellation of Z_L.
+
+Finding: no error identified. This is a substantive spectral step beyond merely observing failure of a norm-one hypercontractive inequality. It supplies two nearly leading modes, not just growth of the top norm.
+
+6. Theorem 11; pages 11–12.
+
+The endpoint operator estimate ||Q M_h Q||<=||h||_s is valid for signed h by the dual forward hypercontractive mapping and Hölder. The separate estimates of ||r-1||_s from the critical moment use valid convexity/Taylor bounds, including at r=0. They give lambda_2<=rho+||r-1||_s and lambda_1>=1, hence the displayed sufficient gap bound.
+
+Finding: no error identified. It is an auxiliary estimate with useful quantitative form, not the final exact boundary.
+
+7. Theorem 12; pages 12–13.
+
+At the critical exponent, log kappa has zero quadratic coefficient, while the log cross norm with the uniform factor has a negative quadratic coefficient. The choice delta_L=d L^(-1/3) makes L delta_L^2 grow and L delta_L^4 vanish. Thus balancing by a_L=kappa(delta_L)^(-L) keeps the two diagonal top eigenvalues equal and makes the cross norm tend to zero. The stated bound on a_L follows from the small-d choice for B>2. The Gram/Weyl argument applies to the actual first two eigenvalues.
+
+Finding: no error identified. Here the uniform factor is a leading spectral component; discarding it as a perturbative nuisance would break the critical argument, and the manuscript does not do so.
+
+8. Theorem 13; pages 13–15.
+
+The restricted-support endpoint estimate (17) follows from p=1+rho=2s/(s+1) and Hölder, with the density s-moment restricted to the support of h. For a second eigenvector, each nonzero sign region requires at least lambda_2^s of that moment. Disjointness gives 2 lambda_2^s<=E r^s. The proof requires sign change relative to the positive Perron vector, not uniform mean zero. Multiplicity of lambda_2 is harmless.
+
+The balanced family has all intermediate positive moments of its tilt tending to zero, its s-moment fixed at one, and balancing coefficient tending to one. Inequality (18) controls the mixed powers and proves that the total density s-moment tends to two. This is stronger than the triangle inequality used in Theorem 12.
+
+The norm dilution uses a positive denominator because the density is nonconstant. Its coefficient tends to zero, the endpoint multiplier bound controls the resulting operator perturbation, and both leading eigenvalues still tend to one. Replacing a finite prefix imposes any fixed floor b<1 without changing the limit. The excluded b=1 would force r=1 and cannot yield collapse.
+
+Finding: no invalidating gap identified in the exact equality case. The sharp boundary concerns existence or failure of a uniform gap over the entire class; it does not claim that every density at or above the boundary is slow. The lower bound below the boundary is expressly not asserted to be optimal.
+
+9. Theorem 14 and inequality (19); pages 15–16.
+
+The high-density part of each sign vector has Q-image norm at most tau^(1/(2s)). In the high-eigenvalue case, the full image has norm at least m, leaving a low-density image of norm at least d=(1-t)/2. Ordinary triangle inequality is being used in L2, not at a quasi-norm exponent below one. The low part has L2 norm at most sqrt(K).
+
+The interpolation identity with theta=s^(-2), p=1+rho, and a=1-rho is correct. Reverse hypercontractivity then gives the positive lower bound on the cross entry and the displayed compression estimate. If Theta<1, one finite K works for the whole family by the definition of the monotone tail envelope. The estimate on total moments uses r^s 1_(r<=K)<=K^(s-1)r.
+
+Inequality (19) properly controls the lost first moment by B^s K^(1-s), then uses Jensen on the low truncation. It does not illegitimately interchange a supremum and a pointwise limit.
+
+Finding: no error identified. The threshold is a universal sufficient criterion, not a necessary condition for each stable family.
+
+10. Proposition 15 and Proposition 16; pages 17–18.
+
+The normalization of the one-vertex spike and its probability-space rank-one vector are correct. Its perturbation norm has exponential base (1+rho)/2^(2rho/(1+rho)), which is strictly less than one for 0<rho<1 by strict convexity of t log t. The normalization error also decays. Thus the actual top two eigenvalues converge to those of P_rho. The finite prefix is needed to meet the specified floor, norm slack, and uniform lower gap in every dimension.
+
+The proof that convergence in probability to one plus convergence of the total s-moment to M implies Theta=M-1 includes the required finite-prefix cutoff argument. Fixed-K convergence alone would not suffice, but that is not the proof given. The endpoint family has total moment tending to two by the two-sign bound and its cap, and therefore Theta=1. Stable spikes realize every finite positive escaped moment.
+
+Finding: no error identified. Escaped moment at least one is necessary for a collapsing family, not sufficient; the manuscript says this explicitly.
+
+11. Theorem 17 and Corollary 18; pages 18–20.
+
+The extra estimate P(R_L>E R_L)->0 is proved relative to the tilt's own mean, using a fixed fractional moment of R_L/m_L. This is materially stronger than convergence of R_L to zero in probability and is correctly established. Choosing a_L=1-P(R_L>m_L)^(1/s) makes the strict-tail Minkowski estimate at cutoff one at most one. It is not an argument with a cutoff drifting with L.
+
+The comparison of S(q_L) with the previously balanced family uses the endpoint norm bound for Q M_(R_L) Q, so coefficients converging to one suffice for spectral convergence. The moment limit two follows from the lower superadditivity bound and a bounded-low/tail truncation. Convex dilution reduces the total moment to at most two and preserves the strict event above one and its tail cap, while its operator perturbation vanishes. A finite prefix enforces the prescribed floor. The same tail bound automatically works for every K>=1, without choosing a different family for different K.
+
+For K<1, Corollary 18 combines the cap on the high tail with the elementary bound on the low part, giving a total moment strictly below two. K=0 is valid since s>1 and the low integrand vanishes. There is no claim of uniformity as K approaches one.
+
+Finding: no counterexample or missing endpoint step identified. This is the strongest refinement within the critical-tail portion, but it refines the same balanced-tilt/sign-truncation method rather than introducing an unrelated mechanism.
+
+PRIMARY-LITERATURE COMPARISON AND ACTUAL READING SCOPE
+
+The following are the primary sources actually consulted. Reads were targeted, not full independent verifications of every cited paper. The conclusions below are deliberately limited to that scope.
+
+[1] Mossel, Oleszkiewicz, Sen, On Reverse Hypercontractivity, arXiv:1108.1210v5.
+https://arxiv.org/pdf/1108.1210v5
+Read: introductory Boolean forward and reverse inequalities (1.1)–(1.2), their time convention, tensorization statements, and related returned portions.
+Relevance: these support the paper's exponent conventions. The hypercontractive scale and reverse inequality are established tools; they are not this manuscript's discoveries. I did not independently reprove the source's full general-space results.
+
+[2] Biskup and König, Eigenvalue order statistics for random Schrödinger operators with doubly-exponential tails, author manuscript, 21 April 2015.
+https://www.wias-berlin.de/people/koenig/www/PPP4PAM-CMP-final.pdf
+Read: setup/abstract and section 4.3, especially Lemma 4.5, its sign-region proof, and the budget split in equation (4.29).
+Relevance: this is a concrete precedent for splitting a second eigenfunction into two sign regions and distributing a potential budget. It limits methodological novelty. The additive lattice model in the inspected passage is not the exact multiplicative-cube density classification proved here.
+
+[3] Miclo, On hyperboundedness and spectrum of Markov operators, author manuscript.
+https://perso.math.univ-toulouse.fr/miclo/files/2012/04/hyperboundedness.pdf
+Read: abstract, Markov/ergodicity definitions and Theorem 1; portions of section 5; section 6 including Proposition 11, the two-point example, and its norm-budget discussion.
+Relevance: a gap from ergodic self-adjoint hyperboundedness and a threshold at two for a fourth-power 2-to-4 operator norm are prior results. That norm is not E r^s. The inspected argument does not by itself establish the present fixed-kernel density-budget theorem. A quantitative change-of-measure implication remains unproved, not disproved.
+
+[4] Wang, Criteria of Spectral Gap for Markov Operators, arXiv:1305.4460v6.
+https://arxiv.org/pdf/1305.4460v6
+Read: operator/invariant-measure setup, the tail-norm definitions, Theorem 1.1, and relevant adjoining remarks.
+Relevance: operator-tail conditions for gaps have substantial precedent. Wang's supremum over functions in the invariant L2 space is not the manuscript's scalar r^s-tail envelope under u_L. No automatic equivalence between them was established in this assessment.
+
+[5] Gross, Invariance of intrinsic hypercontractivity under perturbation of Schrödinger operators, arXiv:2412.20282v2.
+https://arxiv.org/html/2412.20282v2
+Read: introduction, additive Schrödinger and ground-state setup, Theorem 2.2 including its moment hypotheses and dimension-independent gap conclusion, and associated explanatory remarks.
+Relevance: dimension-independent perturbative gap results already exist. The inspected theorem concerns a Riemannian additive form with moments of both e^V and e^(-V). The lower floors in the manuscript's counterexamples already control inverse-density moments; one cannot dismiss Gross solely by invoking missing inverse control. The unestablished correspondence is the operator/form and exponent mapping. The manuscript accurately recognizes this.
+
+[6] Glück, Spectral gaps for hyperbounded operators, arXiv:1802.09422v6.
+https://arxiv.org/pdf/1802.09422v6
+Read: abstract, definition of essential spectral radius, Theorem 1.1, and introductory description of uniform versions.
+Relevance: these are strong prior hyperboundedness results. An essential-spectral-radius bound alone is not a quantitative bound on the second eigenvalue of an arbitrary finite matrix. No exhaustive comparison with all extensions in this paper was performed.
+
+[7] Brehm and Resch, Linear Time Encodable Binary Code Achieving GV Bound with Linear Time Encodable Dual Achieving GV Bound, ITCS 2026.
+https://doi.org/10.4230/LIPIcs.ITCS.2026.28
+https://drops.dagstuhl.de/storage/00lipics/lipics-vol362-itcs2026/html/LIPIcs.ITCS.2026.28/LIPIcs.ITCS.2026.28.html
+Read: publisher metadata, abstract and introduction, including the stated primal/dual coding objective and GV comparison.
+Relevance: simultaneous primal and dual quality is established prior work, with much stronger algorithmic goals than this manuscript's existence lemma. I did not review the full encoding construction.
+
+[8] Alon, Goldreich, Mansour, Almost k-wise independence versus k-wise independence.
+https://www.wisdom.weizmann.ac.il/~oded/PSX/agm.pdf
+Read: abstract and beginning of the introduction.
+Relevance: limited independence is established background. This limited read does not provide a direct historical attribution for the dual-distance projection equivalence, and the manuscript does not claim otherwise.
+
+[9] Aida, An estimate of the gap of spectrum of Schrödinger operators which generate hyperbounded semigroup.
+https://www.ms.u-tokyo.ac.jp/~aida/paper/preprint/handai3.pdf
+Attempted direct access repeatedly; the browsing tool returned timeout errors. A search located the primary URL, but the substantive preprint and its Theorem 10 were NOT read in this assessment. The manuscript's assertion that its author previously read that theorem was not adopted as my own verification. The Aida comparison remains a limitation of this external check. Gross's discussion is not a substitute for reading Aida.
+
+[10] Supplied scientific predecessors, not assessment reports:
+prior-congruence.tex: targeted read of the antipodal/fusion concentration sections and finite positive-weight consequence.
+prior-parity215.tex: scientific law, conditional-generator spectrum, marginal obstruction, and scope statements; surrounding supplied text was also encountered.
+source294A.txt: full supplied analytical synthesis source.
+These support the narrow claim that exact308 adds joint high-order marginal matching to the earlier concentration example and a transfer calculation distinct from the heat-bath example. I did not inspect external predecessor review records, numerical grades, development repositories, or the historical audits referenced on page 21.
+
+A small primary-literature search also queried Boolean density/spectral-gap/hypercontractive and noise-operator/multiplicative Schrödinger combinations. It did not yield an independently established exact match. This is not novelty clearance. One broad query incidentally returned the title/abstract snippet of an older public version of this same paper; that result was not opened or used, and no previous rating was exposed. No old scores were searched for or inherited.
+
+ORIGINALITY AND IMPORTANCE JUDGMENT
+
+The code result is an effective synthesis, with the Perron-law marginal invariance and many-mode conclusion its clearest combined feature. Its proof is short because the coding and matrix inputs are standard; this is a strength for inspectability, but it is not evidence of a new coding technique.
+
+The moment work is more substantial than a demonstration that weights can produce a small gap. Its strongest feature is the exact worst-case classification at a fixed noise parameter, especially equality at the critical budget with a floor, followed by the simultaneous cutoff-one endpoint. The stable-spike family also makes an important logical distinction: a sufficient tail condition need not be necessary.
+
+The critical exponent itself is the classical hypercontractive exponent. Sign splitting, Gram comparisons, rank-one perturbations, and finite-prefix replacement are established mechanisms. The paper appropriately admits this. The remaining candidate novelty is the precise application and attainment statements for this congruence class. I found no inspected source proving exactly those combined statements, but this limited comparison cannot establish priority.
+
+If correct and original in that restricted sense, the results should be useful to researchers studying weighted noise operators and information-limited spectral certificates. They demonstrate rigorously why exact low-order marginals and certain scalar moment summaries can mislead about relaxation. No concrete downstream application, broadly recognized open problem, or general framework beyond this product-kernel class is resolved here. That constrains significance, independently of the apparent correctness of the proofs.
+
+COMPLETE OBJECTIONS AND RESERVATIONS RETAINED
+
+O1 — Originality remains unresolved (substantive research-positioning objection; not a counterexample).
+The nearest sources already contain the exponent scale, sign-domain budget splitting, qualitative gap criteria, and norm-budget transitions. The paper states that priority is unestablished, which is honest but does not supply positive evidence of external originality. A concise theorem-by-theorem comparison identifying the exact additional conclusion and whether a quantitative transfer from existing results can be ruled out would strengthen its contribution claim. This review does not claim such a reduction exists.
+
+O2 — Demonstrated impact is specialized (significance limitation).
+The allowed weights are globally interacting and dimension dependent; the Doob chain updates full configurations. The exact-marginal family and moment-boundary families are separate. There is no proved consequence for a specified fixed-range Gibbs class, local relaxation, or physical mass gap. These are correctly disclosed restrictions, not errors. They must remain attached to any public characterization of importance.
+
+O3 — Quantitative utility at the sharp endpoints is limited (scope limitation).
+The exact budget and tail classifications are sharp as qualitative worst-case boundaries, but no optimal positive gap constant or endpoint convergence rate is supplied. The code choice and the critical constants/prefixes are existential. Consequently the paper does not yet give a practical size threshold for realizing a prescribed small gap under a prescribed floor. Such a bound is not needed for the stated theorems; it would materially improve their usability.
+
+O4 — The presentation separates related results correctly but is unnecessarily costly to navigate (minor revision).
+The long abstract and successive auxiliary critical estimates can make the exact final classification hard to locate. A compact dependency/conclusion guide, and shorter treatment or relocation of superseded budget ranges while retaining their rate content, would help. This is an exposition request, not a demand to remove valid proofs or rerun the assessment.
+
+O5 — External comparison has a concrete unfilled check (review limitation).
+Aida's primary preprint could not be accessed in this review. Several other primary reads were targeted statements/sections rather than full papers. Hence neither the manuscript's complete comparative discussion nor priority has been exhaustively verified. The author-hosted Miclo citation also lacks normal publication metadata in the bibliography; adding a date/version and publication information where known would aid traceability. None of this establishes that a cited theorem is false or misused.
+
+O6 — Evidence portability and independence are bounded (review/provenance limitation).
+The exact packet is internally hash-consistent and the production log reports two matching builds, but I did not independently reproduce them, fetch the public source tree, or verify the public availability of all promised retained evidence. The assignment forbade executable mathematical checks, build/Lean replay, service mutations, and historical audit reading. This AI review has shared provider/filesystem limitations and no verified served backend identity. Its numerical assessment cannot replace human domain review or formal verification.
+
+No unresolved objection identified in this assessment currently invalidates a stated main mathematical result. Accordingly the native unresolved_material_objections and potential_errors arrays are empty. That records the outcome of this finite review, not proof that no error exists. O1–O6 remain in full and are not discarded merely because they are not theorem-invalidating.
+
+REPRODUCIBILITY AND REVIEW BOUNDARIES
+
+The work performed was document reading, hash/byte verification, primary-source browsing, manual mathematical assessment, and writing this report. No numerical mathematical experiment, symbolic computation, test suite, build, Lean/Lake run, Colab execution, repository mutation, upload, submission, or external message was performed. Hashing and JSON/file validation are artifact checks, not mathematical verification. Absence of numerical tests is not itself a defect in a self-contained analytical paper.
+
+Only the authorized input packet, its parent manifest, relevant primary literature, and the environment's applicable document/storage instructions were read. The page-21 references to historical audit directories were not followed. No agent or chat was spawned or consulted during the review. No incoming task message or author rebuttal was received during the assessment.
+
+Requested configuration: gpt-6-astra / high. The request is recorded as a request, not an observed backend fact. Exact served model identifier and actual reasoning setting are not exposed through independent telemetry available here. Provider/context label: OpenAI/Codex. The new assignment has no visible inherited parent dialogue about the manuscript, but technical isolation, disabled memory, and provider independence are not established. Independence is conservatively recorded as unknown.
+
+This first exact308 result is complete. It is not a search for a desired score, is not conditional on a favorable response from the author, and is not transferable to a different PDF. Any future changed artifact would require its own identity and process; this report and all reservations must remain unchanged as the historical assessment of the hash above.
+

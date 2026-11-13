@@ -1,0 +1,34 @@
+{
+  "verdict": "ANALYTICAL_SOURCE_PASS",
+  "candidate_sha": "cc97b0588e69f4af3edf721a591d18b17417228d",
+  "pr": 257,
+  "body_capture": "gh pr view 257 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid",
+  "body_normalization": "JSON-decode; CRLF then CR to LF; trim terminal LF; append exactly one LF; UTF-8 without BOM",
+  "body_bytes": 1045,
+  "body_sha256": "fb847e53333685eb1d4059626632a75d6307d9519517b5294d88f5ee74b97706",
+  "judges_registration": "5161f9f9ce51ff53a08261e5537ab4ca5d1c56c1",
+  "judges": {
+    "J2": "PASS",
+    "J1": "PASS",
+    "J6": "PASS for separate frozen source audit only",
+    "J3": "PASS with nonblocking non-strict-event clarification",
+    "J5": "PASS with limited literature/priority scope",
+    "J4": "PASS"
+  },
+  "blocking_findings": [],
+  "nonblocking_findings": [
+    "Full non-strict scalar infimum/attainment classification is not stated in the source; supplement in report.",
+    "Future grouped literature comparison should explicitly acknowledge Glueck Theorem 5.1 uniform essential-radius result.",
+    "External originality remains unestablished; no exhaustive literature comparison."
+  ],
+  "remaining_gates": [
+    "Required CI",
+    "Unchanged normal merge"
+  ],
+  "independent_provider": false,
+  "pdf_assessed": false,
+  "no_mathematical_execution": true,
+  "cleanup_pending": [],
+  "report": "full-report.txt",
+  "stability": "stability.json"
+}

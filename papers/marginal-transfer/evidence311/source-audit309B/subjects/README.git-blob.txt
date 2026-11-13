@@ -1,0 +1,1 @@
+Active candidate: parity-tail309B.txt. Original309A is immutable failed history: its main construction passed J1-J4, but the b>K comparison wrongly omitted b<1. Full report/context/raw bindings retained in source-audit309A. Judges309 unchanged. SourceB requires its own exact-SHA/body review before acceptance; no prior score/PDF/publication affected.

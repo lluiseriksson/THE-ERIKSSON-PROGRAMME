@@ -1,0 +1,24 @@
+{
+  "original_a": {
+    "object_spec": "6d316907aa8804d156d965af940ba8d7ae553f41:research/parity-tail309/parity-tail309A.txt",
+    "file": "subjects/original309A.git-blob.txt",
+    "git_blob": "401ce5856aa94c42408a27fdd9498f51929c78f9",
+    "bytes": 9834,
+    "sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+    "contains_cr": false,
+    "raw_git_blob_verified": true
+  },
+  "current_a_path": {
+    "object_spec": "4e0a30274f0e5479788990d24eda043f8b057933:research/parity-tail309/parity-tail309A.txt",
+    "file": "subjects/current-path309A.git-blob.txt",
+    "git_blob": "0275d686dac9882c7d5899b3702f75295279ed56",
+    "bytes": 9835,
+    "sha256": "aaa5b9abc04c567d1378f6e1708964a122db3262d0f7b5d53d6888b6e7deae92",
+    "contains_cr": true,
+    "raw_git_blob_verified": true
+  },
+  "current_path_byte_identical": false,
+  "current_path_equals_original_plus_cr_before_terminal_lf": true,
+  "archived_raw_a_byte_identical": true,
+  "interpretation": "Nonblocking representation drift at visible original A path; exact frozen A is still preserved by original commit and archived raw subject. Do not call visible A blob byte-identical."
+}

@@ -1,0 +1,33 @@
+{
+  "assessment": "exact308-first-round",
+  "pdf_raw_sha256": "450b6afa4e49a34f5fa36958b36b302ad1e266832aa271f857522aecfd3c6444",
+  "input_manifest_raw_sha256": "b879e656257ba03d4b42dc03a167051a436508d48de8cf0549571771c37cd56c",
+  "files": [
+    {
+      "path": "full-scientific-report.txt",
+      "bytes": 32801,
+      "raw_sha256": "5fee3343f6766245f9d6ed8537d3bae7532c5a6027825831d0810a3ae233466d"
+    },
+    {
+      "path": "native-response.json",
+      "bytes": 6281,
+      "raw_sha256": "98ff5b0d2487da69ed14bfb1a55f547bdf585f7a4ab8e6de8fd4764e5dc967f4"
+    },
+    {
+      "path": "importance-assessment.json",
+      "bytes": 1983,
+      "raw_sha256": "4df2b527d0df263067fa4c07cb4bee3d7704a9b0e8ec1e0a4314085055ba5547"
+    },
+    {
+      "path": "model-context.json",
+      "bytes": 4675,
+      "raw_sha256": "94cf0b24e1c0cb6cc1df131b5091b4db203c8c9f373a1d173f4c24f3a379a4e2"
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 2274,
+      "raw_sha256": "0acbf0277bcff92328b9b282ef2fbf08e618ed59fe07de0f33f174f6de7389c1"
+    }
+  ],
+  "self_exclusion": "This manifest excludes itself to avoid self-referential hashing. Its raw hash is returned separately."
+}

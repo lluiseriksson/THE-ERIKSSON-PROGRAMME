@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-11-13T15:40:01.930559+00:00",
+  "release_url": "https://github.com/arr-research/arr-research.github.io/releases/tag/ARR-2026-7KV9Y9ASX48H7A7N-v5",
+  "publishedAt": "2026-11-13T15:36:21Z",
+  "assets": [
+    {
+      "name": "ARR-2026-7KV9Y9ASX48H7A7N-v5-sources.zip",
+      "bytes": 80121309,
+      "sha256": "eaf035961307d89efa5c6f95fa38d56f35095572db0d3e0d98084e8583227e61",
+      "url": "https://github.com/arr-research/arr-research.github.io/releases/download/ARR-2026-7KV9Y9ASX48H7A7N-v5/ARR-2026-7KV9Y9ASX48H7A7N-v5-sources.zip",
+      "anonymous_HTTP200": true
+    },
+    {
+      "name": "ARR-2026-7KV9Y9ASX48H7A7N-v5.pdf",
+      "bytes": 478376,
+      "sha256": "450b6afa4e49a34f5fa36958b36b302ad1e266832aa271f857522aecfd3c6444",
+      "url": "https://github.com/arr-research/arr-research.github.io/releases/download/ARR-2026-7KV9Y9ASX48H7A7N-v5/ARR-2026-7KV9Y9ASX48H7A7N-v5.pdf",
+      "anonymous_HTTP200": true
+    },
+    {
+      "name": "MANIFEST.sha256",
+      "bytes": 152167,
+      "sha256": "47341a84aa93a2cec772bf247d3a74431f120fc242c582df3023a06984903565",
+      "url": "https://github.com/arr-research/arr-research.github.io/releases/download/ARR-2026-7KV9Y9ASX48H7A7N-v5/MANIFEST.sha256",
+      "anonymous_HTTP200": true
+    },
+    {
+      "name": "RECORD.json",
+      "bytes": 8479,
+      "sha256": "4e13aeaa78fd484ec6f2e99420baa0dfcf9b648cff510dec1747299f96217cce",
+      "url": "https://github.com/arr-research/arr-research.github.io/releases/download/ARR-2026-7KV9Y9ASX48H7A7N-v5/RECORD.json",
+      "anonymous_HTTP200": true
+    }
+  ],
+  "package_members_exact": 957,
+  "canonical_PDF_unchanged": true,
+  "full_assessment_retained_exact": true,
+  "authentication_used": false,
+  "landing_and_native_published_pending": true
+}

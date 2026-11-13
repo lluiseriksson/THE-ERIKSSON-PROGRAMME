@@ -1,0 +1,83 @@
+[
+  {
+    "object_spec": "4e0a30274f0e5479788990d24eda043f8b057933:research/parity-tail309/parity-tail309B.txt",
+    "file": "subjects/parity-tail309B.git-blob.txt",
+    "git_blob": "c6d2094aef4f7af1030e4ce03f13e553def9e31f",
+    "bytes": 10276,
+    "sha256": "b48d856408065319264420bc031ba699a4352f5246b6f79c27e5d382596761ac",
+    "contains_cr": false,
+    "raw_git_blob_verified": true
+  },
+  {
+    "object_spec": "4e0a30274f0e5479788990d24eda043f8b057933:research/parity-tail309/parity-tail309A.txt",
+    "file": "subjects/current-path309A.git-blob.txt",
+    "git_blob": "0275d686dac9882c7d5899b3702f75295279ed56",
+    "bytes": 9835,
+    "sha256": "aaa5b9abc04c567d1378f6e1708964a122db3262d0f7b5d53d6888b6e7deae92",
+    "contains_cr": true,
+    "raw_git_blob_verified": true
+  },
+  {
+    "object_spec": "6d316907aa8804d156d965af940ba8d7ae553f41:research/parity-tail309/parity-tail309A.txt",
+    "file": "subjects/original309A.git-blob.txt",
+    "git_blob": "401ce5856aa94c42408a27fdd9498f51929c78f9",
+    "bytes": 9834,
+    "sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+    "contains_cr": false,
+    "raw_git_blob_verified": true
+  },
+  {
+    "object_spec": "4e0a30274f0e5479788990d24eda043f8b057933:papers/marginal-transfer/judges309.txt",
+    "file": "subjects/judges309-candidate.git-blob.txt",
+    "git_blob": "be6783ff11418c7993d3622f6ebcb72788623e78",
+    "bytes": 3098,
+    "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "contains_cr": true,
+    "raw_git_blob_verified": true
+  },
+  {
+    "object_spec": "9b330688f3fc7defd0213470d02e8875eff4adee:papers/marginal-transfer/judges309.txt",
+    "file": "subjects/judges309-preregistered.git-blob.txt",
+    "git_blob": "be6783ff11418c7993d3622f6ebcb72788623e78",
+    "bytes": 3098,
+    "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "contains_cr": true,
+    "raw_git_blob_verified": true
+  },
+  {
+    "object_spec": "8ac81a6f3f70aa552cc957d45abaf3f0fab90e65:papers/marginal-transfer/manuscript308A.tex",
+    "file": "subjects/manuscript308A.git-blob.tex",
+    "git_blob": "2885c197125d8fcd820fc7868d5bd2cf5be74e7a",
+    "bytes": 73400,
+    "sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+    "contains_cr": false,
+    "raw_git_blob_verified": true
+  },
+  {
+    "object_spec": "49705281f05ab18b71bd9ebc2da1985a0433340c:research/critical299/critical299A.txt",
+    "file": "subjects/critical299A.git-blob.txt",
+    "git_blob": "650f87caf3fc972eb55350d6ef43b2fa12f1f094",
+    "bytes": 11309,
+    "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "contains_cr": false,
+    "raw_git_blob_verified": true
+  },
+  {
+    "object_spec": "4e0a30274f0e5479788990d24eda043f8b057933:research/parity-tail309/.gitattributes",
+    "file": "subjects/gitattributes.git-blob.txt",
+    "git_blob": "0b063817bbef2fea5bb438754c01c4658ca78122",
+    "bytes": 68,
+    "sha256": "df1f81df3b31b7bb8b1547b7e253fe6c16ddc2266fc892058dc2ef3e026464c6",
+    "contains_cr": false,
+    "raw_git_blob_verified": true
+  },
+  {
+    "object_spec": "4e0a30274f0e5479788990d24eda043f8b057933:research/parity-tail309/README.txt",
+    "file": "subjects/README.git-blob.txt",
+    "git_blob": "68052335d89402ceb47b245f52ae175f27a8d627",
+    "bytes": 353,
+    "sha256": "acff59045049d69708d6183955031a67252865e93089712209b6984b0d564deb",
+    "contains_cr": true,
+    "raw_git_blob_verified": true
+  }
+]

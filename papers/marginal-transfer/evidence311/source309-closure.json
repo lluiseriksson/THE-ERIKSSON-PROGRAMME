@@ -1,0 +1,15 @@
+{
+  "normal_merge_parent_confirmed": true,
+  "manifest_sha256": "141a464b7a79ad2aa5b74953bd181e4f439ed8eff958a06302791557c5d7102d",
+  "required_checks": "honesty and lake build YangMillsCore + oracle successful",
+  "publication": "Research source only; no new assessed PDF",
+  "recorded_at": "2026-11-13T15:34:42.5273320Z",
+  "prior_fail_preserved": true,
+  "raw_files_verified": 43,
+  "full_report_read": true,
+  "source_merge_sha": "5b01ed0edbdcd20dcdf72dbf94ccc791264a8757",
+  "report_sha256": "5ec6d4957792691a27c2444aafd018a487ac160c2637998889396be8e7679db0",
+  "observation": "Visible A path has one added CR; exact raw archived A and original commit unchanged",
+  "full_context_read": true,
+  "source_sha": "4e0a30274f0e5479788990d24eda043f8b057933"
+}
