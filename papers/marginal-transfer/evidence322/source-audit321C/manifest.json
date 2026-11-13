@@ -1,0 +1,130 @@
+{
+  "format": "raw-byte-sha256-v1",
+  "normalization": "none; PR decoded-normalized body is a separately named file",
+  "excludes": [
+    "manifest.json",
+    "manifest.sha256"
+  ],
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1778,
+      "sha256": "e920fe49b280d60e3c72a4f9fcfaef49568b81e29befab1d7d0765ba0449cfd9"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 3442,
+      "sha256": "1f144e7cbe2b6e433ffe4015f1ee9e04cff27788ca213f34f59be6b9485affc0"
+    },
+    {
+      "path": "final-state.json",
+      "bytes": 3387,
+      "sha256": "fa8892bc0762343ab62d4d31379ae84432269493c20e1822f3c5395ecca5dd94"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 13442,
+      "sha256": "904655f89d7f55d7421e3e0bd9197a6de7e3ebb30bc09547f60c62a61e1230fb"
+    },
+    {
+      "path": "initial-state.json",
+      "bytes": 4138,
+      "sha256": "23dcd63ec136597033a7e33189a6d69999124b0c8a1a78cfbfea38902314e12b"
+    },
+    {
+      "path": "pr268-auditor-final-body.txt",
+      "bytes": 998,
+      "sha256": "35e394b1b279a34e35f60e705a9149050230f2bf167e1d2a471a5a6b49c7cc02"
+    },
+    {
+      "path": "pr268-auditor-final.json",
+      "bytes": 1069,
+      "sha256": "373a74e5e85d8d458326f6a04e5485d227d96cd7464a6710a3edb663f9ce457e"
+    },
+    {
+      "path": "pr268-auditor-initial-body.txt",
+      "bytes": 998,
+      "sha256": "35e394b1b279a34e35f60e705a9149050230f2bf167e1d2a471a5a6b49c7cc02"
+    },
+    {
+      "path": "pr268-auditor-initial.json",
+      "bytes": 1069,
+      "sha256": "373a74e5e85d8d458326f6a04e5485d227d96cd7464a6710a3edb663f9ce457e"
+    },
+    {
+      "path": "primary-reading.txt",
+      "bytes": 1313,
+      "sha256": "ac52f21bf67b25b13693774611ecb3ccda69fd43bce5d1da98b7d8e6d80479cc"
+    },
+    {
+      "path": "source321C-final.txt",
+      "bytes": 7219,
+      "sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e"
+    },
+    {
+      "path": "subjects/01-source321C.txt",
+      "bytes": 7219,
+      "sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e"
+    },
+    {
+      "path": "subjects/02-source321C.txt",
+      "bytes": 7219,
+      "sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e"
+    },
+    {
+      "path": "subjects/03-linear-marginal321.txt",
+      "bytes": 2847,
+      "sha256": "2e24a83d6ed92997aaee72c2a42069f95217b6e35dde7fb85c8b7052c67ab109"
+    },
+    {
+      "path": "subjects/04-linear-marginal321B.txt",
+      "bytes": 7351,
+      "sha256": "ce8e318d5704a1913ef3b7d12a9996ba170d8e9794fff9883322e183400581bd"
+    },
+    {
+      "path": "subjects/05-source319A.txt",
+      "bytes": 9806,
+      "sha256": "a26ed41f43e038238636fb026fc71bc2302b41a08c08a97ffa6f06ac3d3cc936"
+    },
+    {
+      "path": "subjects/06-full-report.txt",
+      "bytes": 17096,
+      "sha256": "dbbeb43dc840d0fe6de4c0f73a8ae49edf3ab6ba9aafb021fadd196a76ea5a0c"
+    },
+    {
+      "path": "subjects/07-CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/08-OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "subjects/09-LEEME.md",
+      "bytes": 17126,
+      "sha256": "5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f"
+    },
+    {
+      "path": "subjects/10-pr268-initial.json",
+      "bytes": 1196,
+      "sha256": "821ce0cc30c50a704126cd29a0315037f47cd144af6df8d9d4485f3759a49413"
+    },
+    {
+      "path": "subjects/11-pr268-normalized-body.txt",
+      "bytes": 998,
+      "sha256": "35e394b1b279a34e35f60e705a9149050230f2bf167e1d2a471a5a6b49c7cc02"
+    },
+    {
+      "path": "subjects/source319A.git.txt",
+      "bytes": 9805,
+      "sha256": "5b527cd6c8fbad390258a9c439534222c0094139cac7a5813edb6415b20e39a3"
+    },
+    {
+      "path": "subjects/source321C.git.txt",
+      "bytes": 7219,
+      "sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+LINEAR-MARGINAL321 -- provisional analytic consequence, not a separate paper
+Question: For which fixed fractions c can growing exact weighting-law marginals force operator convergence under a fixed critical Ls cap? This narrows the unsolved linear regime after319. It is a grouped companion, not a claim of optimality or priority.
+Hypotheses: fixed0<rho<1, s=(1+rho)/(1-rho), mean-one r_L>=0 on the uniform L-cube, ||r_L||_s<=B<infinity, exact uniform marginals through k_L<=L.
+Candidate sufficient condition:
+ liminf k_L/L > c0 = 2(s^2-1)log(2)/(s+2(s^2-1)log(2)).
+Then ||Q M_rL Q-P_rho|| tends to0 exponentially, and gap(T_rL)->1-rho. This condition is sufficient only;319 leaves a wide gap between sub-square-root collapse and this linear-order rigidity.
+
+Derivation to audit.
+For each x, choose any set of k coordinates. Its marginal atom has probability2^-k, so mu_L(x)<=2^-k. Consequently ||r_L||_infinity<=2^(L-k). For any fixed q>s,
+ E r^q <=||r||_infinity^(q-s) E r^s,
+ ||r||_q<=B^(s/q)2^((L-k)(1-s/q)).
+Set sigma(q)=(q-1)/(q+1)>rho and t(q)=sqrt(rho/sigma)<1. The exact low-low Walsh block vanishes through m=floor(k/2). The proof of319's strict-exponent estimate applies dimension by dimension even with a dimension-dependent norm bound. It gives
+ ||S_r-P_rho||<=2[B^(s/q)2^((L-k)(1-s/q))+1] t(q)^(floor(k/2)+1).
+Since floor(k/2)+1>=k/2, the first term is at most
+ 2 B^(s/q) exp((L-k)(1-s/q)log2 - k log(sigma/rho)/4).
+The second term tends exponentially to zero for k>=cL with c>0. Define
+ F(q,c)=(1-c)(1-s/q)log2 - c log(sigma(q)/rho)/4.
+F(s,c)=0 and
+ partial_q F(s,c)=(1-c)log2/s - c/[2(s^2-1)].
+This is negative exactly when c>c0. For any c strictly between c0 and liminf k_L/L, choose fixed q>s sufficiently close to s so F(q,c)<0. For large L, k_L/L>=c. F decreases in c, so the exponential first term decays uniformly. A fixed positive decay constant follows by continuity; it need not be computed numerically. Self-adjoint perturbation gives lambda1->1,lambda2->rho, hence the gap limit.
+
+Falsifiers/checks: invalid atom bound; normalization mismatch; wrong critical q-noise relation; wrong off-by-one in projection decay; reversed derivative sign; hidden dimension dependence in q choice; failure to distinguish weighting-law/Perron marginals. Abandon/redirect after three units without substantial progress on the remaining linear regime; do not inflate this straightforward consequence into its own paper.
+Status: parent-derived paper calculation only, no external audit, numerical/Lean execution, exact PDF assessment or priority claim. Classical ingredients are marginal atom bounds, Holder interpolation, Boolean hypercontractivity and the already audited319 projection argument. It is a manuscript companion and possible starting boundary for a harder construction/necessity question. No physical or continuum statement.

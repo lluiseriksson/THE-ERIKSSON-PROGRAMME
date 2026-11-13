@@ -1,0 +1,84 @@
+{
+  "utc": "2026-11-13T19:30:48.6997128Z",
+  "head": "2bfe5e0c3fe8da0267c54f9b6557893ae2a1999c",
+  "parent": "d698e144419a667bcd21515cdba71d144b507918",
+  "status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "pr_head": "2bfe5e0c3fe8da0267c54f9b6557893ae2a1999c",
+  "body_bytes": 998,
+  "body_sha256": "35e394b1b279a34e35f60e705a9149050230f2bf167e1d2a471a5a6b49c7cc02",
+  "subjects": [
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\linear-marginal321\\source321C.txt",
+      "bytes": 7219,
+      "sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-321\\source321C.txt",
+      "bytes": 7219,
+      "sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-321\\linear-marginal321.txt",
+      "bytes": 2847,
+      "sha256": "2e24a83d6ed92997aaee72c2a42069f95217b6e35dde7fb85c8b7052c67ab109",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-321\\linear-marginal321B.txt",
+      "bytes": 7351,
+      "sha256": "ce8e318d5704a1913ef3b7d12a9996ba170d8e9794fff9883322e183400581bd",
+      "unchanged": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\marginal-moment319\\source319A.txt",
+      "bytes": 9806,
+      "sha256": "a26ed41f43e038238636fb026fc71bc2302b41a08c08a97ffa6f06ac3d3cc936",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-319\\source-audit319A\\full-report.txt",
+      "bytes": 17096,
+      "sha256": "dbbeb43dc840d0fe6de4c0f73a8ae49edf3ab6ba9aafb021fadd196a76ea5a0c",
+      "unchanged": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "unchanged": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\LEEME.md",
+      "bytes": 17126,
+      "sha256": "5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-321\\pr268-initial.json",
+      "bytes": 1196,
+      "sha256": "821ce0cc30c50a704126cd29a0315037f47cd144af6df8d9d4485f3759a49413",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-321\\pr268-normalized-body.txt",
+      "bytes": 998,
+      "sha256": "35e394b1b279a34e35f60e705a9149050230f2bf167e1d2a471a5a6b49c7cc02",
+      "unchanged": true
+    }
+  ],
+  "head_stable": true,
+  "body_stable": true,
+  "all_originals_stable": true,
+  "verdict": "PASS analytical C1-C12 with explicit published external input; no CI waiver, priority claim, PDF score or execution"
+}

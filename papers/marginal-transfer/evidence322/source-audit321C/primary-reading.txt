@@ -1,0 +1,9 @@
+PRIMARY READING -- bounded scope, 2026-11-13
+
+Naomi Kirshner and Alex Samorodnitsky, A moment ratio bound for polynomials and some extremal properties of Krawchouk polynomials and Hamming spheres, arXiv:1909.11929v1 (26 September2019).
+https://arxiv.org/html/1909.11929v1
+https://arxiv.org/pdf/1909.11929v1
+
+Read the exact Theorem1.3 and Proposition2.7, normalized Walsh conventions in1.1.2, continuity definitions in2.1.2--2.1.4, and the nearby proof of the concavity assertion. The theorem covers real exponents at least2 and homogeneous degrees through half the dimension. Its upper estimate has no polynomial loss; the separate near-extremality comparison is not an upper-bound loss. The proposition supplies the origin value, derivative and strict concavity used by the candidate. The authors already discuss homogeneous spectral projection norms and parity complementation. No independent priority claim for those ingredients is justified.
+
+Reading was targeted, not a reconstruction of the entire69-page proof. No exhaustive literature or priority search was performed. The joint density/marginal/spectral conclusion is an application evaluated in the report, not a claimed new hypercontractive inequality. No quantitative uniform curvature claim at zero is imported from the adjective used for concavity.

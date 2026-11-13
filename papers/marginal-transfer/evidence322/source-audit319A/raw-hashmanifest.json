@@ -1,0 +1,143 @@
+{
+  "scope": "Complete retained audit payload excluding manifest and its separate noncircular SHA256 binding",
+  "files": [
+    {
+      "path": "adverse-attacks.txt",
+      "bytes": 3311,
+      "sha256": "2397db832663d43f52b3b6eeb418d91b49623d91f0a68bcbf59d2bf9ff8ac982",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "assignment-received.txt",
+      "bytes": 1851,
+      "sha256": "272bb2549c83633afd6272c1b10a4b15ffb8b2fdd5cbf6f4280f11fde7c946f2",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "context-and-scope.txt",
+      "bytes": 3793,
+      "sha256": "a47b7a52bbbc2ac06784e61df4959f9527f1745a0c5a406bb32caccee567fcee",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "final-state.json",
+      "bytes": 2762,
+      "sha256": "cc0b1e303fa8bffdab8fa9323d137b0762e213f874cf334ea9c81aa6b3d917ac",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 17096,
+      "sha256": "dbbeb43dc840d0fe6de4c0f73a8ae49edf3ab6ba9aafb021fadd196a76ea5a0c",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "initial-state.json",
+      "bytes": 3131,
+      "sha256": "5686581104b9a574129c031b0a3f6afd9eedf1f55a6de2864850bd749310b984",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "pr266-auditor-final-body.txt",
+      "bytes": 1314,
+      "sha256": "5647b6a9efa60cbba9ca5cdba3c58f629fd19d9d7ef311115168473f10544ed3",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "pr266-auditor-final.json",
+      "bytes": 1389,
+      "sha256": "67bce55ea7a0ad50854666ef9e638f445dcddbaff25f555c1ba9d2d9df8f8d42",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "pr266-auditor-initial-body.txt",
+      "bytes": 1314,
+      "sha256": "5647b6a9efa60cbba9ca5cdba3c58f629fd19d9d7ef311115168473f10544ed3",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "pr266-auditor-initial.json",
+      "bytes": 1389,
+      "sha256": "67bce55ea7a0ad50854666ef9e638f445dcddbaff25f555c1ba9d2d9df8f8d42",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "primary-literature-notes.txt",
+      "bytes": 3361,
+      "sha256": "550a8a383fedc9a7f53d81697bed07eb9c9d18132a955b6dced42930aa7e4f8e",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/01-source319A.txt",
+      "bytes": 9806,
+      "sha256": "a26ed41f43e038238636fb026fc71bc2302b41a08c08a97ffa6f06ac3d3cc936",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/02-checks319.txt",
+      "bytes": 1237,
+      "sha256": "55dfbe337867b304d16d9e77b1bb647059dd4373770494b2417677f5a396d934",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/03-literature319.md",
+      "bytes": 1928,
+      "sha256": "e3fbfe570aa118e71a3c58b2bb43ec87a40e52302dec1cc76ad88aef113f2c74",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/04-CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/05-OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/06-LEEME.md",
+      "bytes": 17126,
+      "sha256": "5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/07-pr266-initial.json",
+      "bytes": 1547,
+      "sha256": "6d465224df5ed0294457d252958667a37f293cb38ab48a19577cd8bcd529a68a",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/08-pr266-normalized-body.txt",
+      "bytes": 1314,
+      "sha256": "5647b6a9efa60cbba9ca5cdba3c58f629fd19d9d7ef311115168473f10544ed3",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/checks319.git.txt",
+      "bytes": 1236,
+      "sha256": "6b768177f797cb57678afc059ee27fb887804e6942aeed4b41cc4a2ce14ff5bc",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/literature319.git.md",
+      "bytes": 1927,
+      "sha256": "ad2065d43a8de3ca8f1d80b47ca79824358bfe39546fa7915d61778ae87099f6",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/predecessor318.git.tex",
+      "bytes": 110231,
+      "sha256": "1ea3598636d490e6d3d542557301c61dbd6219b2927ed98357de7b248f30d2fd",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    },
+    {
+      "path": "subjects/source319A.git.txt",
+      "bytes": 9805,
+      "sha256": "5b527cd6c8fbad390258a9c439534222c0094139cac7a5813edb6415b20e39a3",
+      "representation": "Raw on-disk bytes; see context for capture encoding; no hash normalization"
+    }
+  ]
+}

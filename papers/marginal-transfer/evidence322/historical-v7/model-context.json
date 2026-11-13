@@ -1,0 +1,135 @@
+{
+  "assessment_kind": "one first numerical AI assessment of exact supplied PDF",
+  "assessment_rounds_performed": 1,
+  "resampling": false,
+  "identity": {
+    "observable_provider": "OpenAI",
+    "observable_application": "Codex",
+    "requested_model_id": "gpt-6-astra",
+    "requested_reasoning_effort": "high",
+    "served_backend_model_id": null,
+    "served_backend_version": null,
+    "served_reasoning_effort": null,
+    "backend_and_effort_attestation": "not exposed or independently verified",
+    "manuscript_preparation_in_this_reviewer_context": false,
+    "provider_family_shared_with_manuscript_preparation": true,
+    "filesystem_shared": true,
+    "technical_workspace_isolation": "unknown",
+    "memory_isolation": "unknown",
+    "independence": "unknown",
+    "human_peer_review": false,
+    "formal_verification": false,
+    "fresh_assignment_context": "Received the task assignment and general environment/instructions; no parent manuscript-development conversation or prior numerical scores were supplied. Technical freshness/isolation is not independently attested."
+  },
+  "artifact": {
+    "paper_id": "ARR-2026-7KV9Y9ASX48H7A7N",
+    "version": "v7",
+    "version_id": "arr:version:a96788cf-8f70-4ddf-b94c-175b0b843f8f",
+    "pdf_name": "manuscript318A.pdf",
+    "pdf_sha256": "ad708fafb3de9fc83cd2dc05443f34b2792da94a20d0bf1b1cd7b8ca41b9340c",
+    "pdf_bytes": 547362,
+    "page_count": 33,
+    "tex_sha256": "1ea3598636d490e6d3d542557301c61dbd6219b2927ed98357de7b248f30d2fd",
+    "input_manifest_sha256": "457c2534cd1c848255a951e2dc640cb36e7c7b29a344730df1d5c0c046cbb092",
+    "manifest_entries_verified": 44,
+    "input_hash_or_size_mismatches": [],
+    "printed_source_commit": "d7e35107e2826d7a9342bdce30b50a3a725ec3dc",
+    "identifier_status": "DRAFT_LINKED_IDENTIFIERS_NOT_GRANT_OR_RECEIPT; no publication or grant independently claimed"
+  },
+  "read_coverage": {
+    "pdf_method": "Read entire supplied text extraction and individually displayed all 33 supplied actual page PNGs; hashed PDF raw bytes. No new PDF parser/extraction/render/build was run.",
+    "pdf_pages_viewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
+    ],
+    "main_manuscript_all_numbered_claims_and_proofs_read": true,
+    "main_manuscript_sections_read": "1–17, abstract, review context and references",
+    "main_tex_coverage": "Targeted source reads: theorem/section/reference inventory and external URLs; lines 1641–1696 around mixed-power/cutoff proof and lines 1964–2197 covering scalar envelope and universal necessity proof; cross-reference search located line 1679. Not a claim of full line-by-line TeX reading.",
+    "source294A": "Complete analytical source read.",
+    "prior_parity215": "Complete supplied TeX read.",
+    "prior_congruence": "Scientific sections 1–6 and relation-to-prior-work section read (source lines 1–831, with the section-boundary overlap); later formalization/build appendices were not relied on or audited.",
+    "native_packet_metadata": "Native rubric, response template, identifiers, operator context and production report read. Production report treated as supplied provenance, not a newly verified build or proof.",
+    "external_primary_literature": "Targeted passages in 12 primary sources; precise scope and URLs are recorded in full-scientific-report.txt. No claim of exhaustive full-source reading."
+  },
+  "tools_used": [
+    "functions.exec orchestration",
+    "exec_command / PowerShell: read-only file reading and search, administrative hashes, creation of exclusive review outputs",
+    "view_image: supplied page-01.png through page-33.png",
+    "web.run: targeted primary-source open/find/search; attempted source PDF screenshots returned references but no usable images in this tool forwarding, so literature judgments used retrieved text",
+    "clock.curr_time"
+  ],
+  "operations_not_performed": [
+    "executable mathematical calculations or numerical experiments",
+    "Lean or formal proof replay",
+    "PDF rebuild, text regeneration or page rerender",
+    "external compute runtime",
+    "source or PR mutation",
+    "inspection of other agent output",
+    "inspection of previous assessment reports or prior numerical scores",
+    "communication to parent while running",
+    "additional assessor sampling or subagent delegation"
+  ],
+  "exposure_and_failures": [
+    {
+      "kind": "initial_text_output_truncation",
+      "detail": "The first large text-output call was truncated. Missing middle coverage was recovered by bounded page-range reads; every page was also displayed as PNG. No completeness claim relies on the truncated span."
+    },
+    {
+      "kind": "primary_source_fetch_timeout",
+      "detail": "The Bertsimas–Popescu DOI endpoint https://doi.org/10.1137/S1052623401399903 timed out. The author-hosted MIT published PDF was then opened successfully. The failure remains documented."
+    },
+    {
+      "kind": "incidental_search_exposure",
+      "detail": "A broad literature search returned a public older AIRR v2 abstract for the same title. The returned excerpt contained no numerical score. The record and assessments were not opened, and the result was excluded from the judgment. Subsequent searches excluded airr.science/Eriksson."
+    },
+    {
+      "kind": "historical_context_within_required_manuscript",
+      "detail": "The exact manuscript and curated predecessors describe historical audits, corrections and objection counts. Those passages were read as supplied manuscript context, not as acceptance evidence; no original historical report was inspected."
+    },
+    {
+      "kind": "derivative_provenance_limit",
+      "detail": "Supplied PDF text/PNG correspondence is supported by the packet production report and observed cross-consistency, not an independent extraction or render in this review."
+    }
+  ],
+  "output_policy": "Exclusive outputs in assessment318-first-round/outputs; no input modifications. MANIFEST.json records raw output bytes except its own self-referential hash. Its hash is returned separately.",
+  "scientific_conclusion": {
+    "recommendation": "minor_revision",
+    "millennium_score": 4.6,
+    "overall_stars": 5,
+    "definite_nonfatal_errors": 1,
+    "unresolved_invalidating_mathematical_objections": [],
+    "external_priority": "unestablished",
+    "broad_physical_or_millennium_consequence": "not established or claimed"
+  }
+}
