@@ -1,0 +1,16 @@
+{
+  "initial_head": "a502f9b688cbbc2036dccc2692636eb5be0db412",
+  "final_head": "a502f9b688cbbc2036dccc2692636eb5be0db412",
+  "subjects": {
+    "sectional-rebase292A.txt": {
+      "bytes": 11863,
+      "sha256": "7ca695a7773241d5d140bcb1acd1175c0931e1049860fda203c827b78cbbb467"
+    },
+    "judges292.txt": {
+      "bytes": 1523,
+      "sha256": "c2dd486fb33553a24b53a90906bf424c807f5ced1f302602e9254c15d4b09bcb"
+    }
+  },
+  "unchanged": true,
+  "analytical_gates_reviewed": 8
+}
