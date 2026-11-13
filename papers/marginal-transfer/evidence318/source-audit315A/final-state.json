@@ -1,0 +1,22 @@
+{
+  "observed_utc": "2026-11-13T16:57:04.1107442Z",
+  "initial_head": "4629c93c51e8ab3acfb849a823208e62a5e6e191",
+  "final_head": "4629c93c51e8ab3acfb849a823208e62a5e6e191",
+  "initial_worktree_status": [],
+  "final_worktree_status": [],
+  "initial_pr_head": "4629c93c51e8ab3acfb849a823208e62a5e6e191",
+  "final_pr_head": "4629c93c51e8ab3acfb849a823208e62a5e6e191",
+  "body_capture_command": "gh pr view 262 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid",
+  "body_regime": "JSON-decode; CRLF/CR to LF; trim terminal LF; append exactly one LF; UTF8 without BOM",
+  "initial_body_sha256": "dc769c537b54c18630ab60fcffd6d10a4df118bd577e759f6764c6e34e8a0773",
+  "final_body_sha256": "dc769c537b54c18630ab60fcffd6d10a4df118bd577e759f6764c6e34e8a0773",
+  "final_body_bytes": 986,
+  "candidate_checkout_initial_sha256": "ea45127ad40d62ee3931cc80d20645417f3ab15ca7180c677282c0e33fab1e4e",
+  "candidate_checkout_final_sha256": "ea45127ad40d62ee3931cc80d20645417f3ab15ca7180c677282c0e33fab1e4e",
+  "judges_checkout_initial_sha256": "bbb092af1889b8b78a09df701600fad4b93f8b656a47bb6fcd92b654f5c28dde",
+  "judges_checkout_final_sha256": "bbb092af1889b8b78a09df701600fad4b93f8b656a47bb6fcd92b654f5c28dde",
+  "judges_prereg_candidate_raw_equal": true,
+  "stable": true,
+  "no_disposable_clone": true,
+  "cleanup_pending": false
+}

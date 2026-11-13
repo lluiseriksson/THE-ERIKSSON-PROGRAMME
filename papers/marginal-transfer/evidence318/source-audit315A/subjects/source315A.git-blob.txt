@@ -1,0 +1,159 @@
+TAIL-ENVELOPE315A -- exact scalar envelope, sufficient transfer-gap consequence
+Analytical source; no new standalone paper, numerical experiment or formal proof.
+Detailed writing follows judges commit1505d58e240769a996176fa9086cbd8e5a476308.
+The parent disclosed the candidate formulas in exploration314 before registration.
+
+1. Statement and convention
+
+Fix s>1 and (s-1)/s<K<1. Write a=1-K,
+  p_*=(s-1)a/K, C_s=s^s/(s-1)^(s-1), g=C_s a K^(s-1).
+Then 0<p_*<1 and 0<g<1. For 0<p<=1 define
+  h(p)=(a+Kp)^s/p^(s-1).
+For every finite tau>=g, let p_tau be the unique point of (0,p_*]
+such that h(p_tau)=tau. Define U(tau)=tau+K^s(1-p_tau).
+
+THEOREM A. Among all nonnegative random variables r on probability spaces,
+with E r=1 and E[r^s 1_{r>K}]<=tau, the class is empty if tau<g.
+For tau>=g, its maximum total moment is exactly U(tau), attained by
+  P(r=K)=1-p_tau, P(r=v_tau)=p_tau,
+  v_tau=K+a/p_tau>K.
+The event is strictly r>K. This statement imposes no lower density floor
+on the admissible class, although the maximizing two-point law has floor K.
+
+At tau=g the only admissible law is this two-point law with p_tau=p_*.
+On a finite uniformly weighted Boolean cube, it exists at tau=g if and only
+if p_* is dyadic (and in dimension L precisely when 2^L p_* is integral).
+For tau>g, the supremum over all finite uniform Boolean cubes is U(tau).
+There are positive witnesses with floor K, in every sufficiently large
+dimension, with tail cost<=tau and total moment tending to U(tau).
+Exact attainment on a particular cube requires its high probability to be
+p_tau; it is not asserted when that number is non-dyadic.
+
+2. Scalar proof
+
+The derivative has sign determined by
+  h'(p)/h(p) = sK/(a+Kp) - (s-1)/p
+            = [Kp-(s-1)a]/[p(a+Kp)].
+Thus h decreases strictly from infinity to h(p_*)=g on (0,p_*],
+and increases strictly from g to h(1)=1 on [p_*,1]. This proves the
+root existence and uniqueness claimed above and g<1.
+
+For an admissible r, put H={r>K}, p=P(H), m=E[r 1_H]. Since K<1 and
+E r=1, p>0. On H^c the mean is at most K(1-p), hence
+  m >= 1-K(1-p)=a+Kp.
+Conditional Jensen on H gives
+  E[r^s 1_H] >= m^s/p^(s-1) >= h(p) >= g.                 (A1)
+If the finite tail cap holds, the total moment is finite because r<=K
+on H^c. Equation(A1) excludes tau<g. When tau>=g it also forces
+p>=p_tau: every p<p_tau lies on the decreasing branch and has h(p)>tau.
+Consequently
+  E r^s = E[r^s 1_H]+E[r^s 1_{H^c}]
+        <= tau+K^s(1-p) <= tau+K^s(1-p_tau)=U(tau).       (A2)
+The stated two-point law has mean K(1-p_tau)+p_tau v_tau=1.
+Its high value exceeds K, its strict tail equals
+p_tau v_tau^s=h(p_tau)=tau, and its total moment equals U(tau).
+This proves the exact maximum on general probability spaces.
+
+At tau=g all inequalities in(A1) are equalities. Strict monotonicity
+on either side of p_* gives p=p_*. The lower event has mean exactly
+K(1-p_*), hence r=K almost surely there, since 0<=r<=K. Strict convexity
+in conditional Jensen forces r to be the constant v_* on H. This is the
+unique law; neither event has probability zero. A uniform cube can realize
+that law exactly if and only if its high-event probability p_* is an
+integer multiple of 2^-L. This proves the equality-budget obstruction.
+
+For tau>g, p_tau<p_*. Choose, for all sufficiently large L,
+  p_L = (floor(2^L p_tau)+1)/2^L.
+Then p_tau<p_L<p_* and p_L tends to p_tau. Give exactly 2^L p_L cube
+vertices the value K+a/p_L and give the others the value K. The mean is
+one; the strict tail is h(p_L)<h(p_tau)=tau. The total moment is
+h(p_L)+K^s(1-p_L), which tends to U(tau) by continuity. These witnesses
+are positive, have floor K, and use no dynamics or locality assumption.
+For a fixed cube, equality in(A2) requires p=p_tau and r=K on the lower
+event; the mean and tail equalities then force equality in conditional
+Jensen, giving exactly the same two-point law. This establishes the
+attainment qualification. There is no claim of a dimension-free error
+rate in this source.
+
+3. Sufficient spectral consequence, not an exact spectral threshold
+
+Fix 0<rho<1 and s=(1+rho)/(1-rho). On the uniform L-dimensional Boolean
+cube, let P_rho be the noise operator and
+  T_r = M_sqrt(r) P_rho M_sqrt(r).
+For r>=0 with E r=1 let lambda1>=lambda2>=0 be its two largest eigenvalues,
+counting the zero block if necessary, and gap(T_r)=1-lambda2/lambda1.
+For L>=1, the previously proved two-sign hypercontractive compression is
+  2 lambda2^s <= E r^s,        lambda1>=1.                (S1)
+Exact source reference: manuscript314A.tex, Theorem13, source commit
+b72cfbcb74275ff7f80b6c262cb003c5cc6ea8eb, proof displayed(16)-(17).
+
+For clarity about this dependency: a real second eigenvector is orthogonal
+to the positive Perron vector on the active support, so it has both signs
+unless lambda2=0, in which case the bound is immediate. Entrywise positivity
+and its eigenequation bound the Rayleigh quotient of each sign part below
+by lambda2. Endpoint forward hypercontractivity bounds that quotient above
+by (E[r^s 1_C])^(1/s), where C is the sign support. Summing the two disjoint
+supports gives the first inequality in(S1). The unit vector sqrt(r) has
+Rayleigh quotient <r,P_rho r> >= (E r)^2=1 by nonnegative Walsh multipliers,
+which gives the second inequality. No mean-zero assertion for the second
+eigenvector in uniform measure and no floor assumption is used.
+
+For every tau>=g with U(tau)<2, Theorem A and(S1) give the dimension-free
+  gap(T_r) >= 1 - [U(tau)/2]^(1/s) > 0.                 (S2)
+This includes densities with zeros. If tau<g, the scalar class is empty;
+that is an explicit feasibility conclusion rather than a positive-gap
+theorem about an existing family.
+
+There is a unique q in (0,p_*) with
+  h(q)+K^s(1-q)=2.
+Indeed the left side decreases strictly there, diverges at zero, and at
+p_* equals g+K^s(1-p_*)<2, because g<1 and K^s(1-p_*)<1.
+Put tau_c=h(q)=2-K^s(1-q). Then
+  2-K^(s-1) < 2-K^s < tau_c < 2,      tau_c>g.
+The strict first inequality uses 0<K<1 and s>1; the second uses q>0;
+the third uses q<1. As tau grows from g to infinity, p_tau decreases
+continuously and U(tau) increases strictly from a number below2 to infinity.
+Thus U(tau)<2 exactly for g<=tau<tau_c. This is a strictly larger sufficient
+tail-budget interval than the earlier crude condition tau<2-K^(s-1).
+
+At tau=tau_c, the bound(S2) is zero. The two-point law attains scalar total
+moment2, but that does NOT imply that its transfer gap collapses or that
+the inequalities in(S1) are simultaneously saturated. Theorem A is exact
+as scalar optimization; tau_c is only a sufficient spectral boundary.
+The universal spectral threshold remains open. In particular this source
+does not close the gap to the constructive collapse budget1+g(K) attained
+by Theorem21 of manuscript314. No grade or assessment of that PDF transfers.
+
+4. Closed scalar crossing for s=2
+
+Here K>1/2 and a=1-K. Expansion gives
+  h(p)=a^2/p+2aK+K^2p,
+  h(p)+K^2(1-p)=a^2/p+2K-K^2.
+The unique crossing at2 is therefore
+  q=(1-K)^2/[2-2K+K^2],
+  tau_c=2-K^2/[2-2K+K^2].
+For example K=3/4 gives tau_c=25/17, improving the old sufficient budget
+5/4. The separate constructive collapse budget is7/4. The interval between
+25/17 and7/4 remains unclassified by these sufficient/construction results.
+These fractions follow exact algebra; no numerical oracle was run.
+
+5. Scope, prior mechanism and falsifier
+
+Conditional Jensen, a two-point extremal law and scalar moment optimization
+are classical. Relevant primary methodological reference: D.Bertsimas and
+I.Popescu, Optimal Inequalities in Probability Theory: A Convex Optimization
+Approach, SIAM Journal on Optimization15(3)(2005),780-804,
+https://doi.org/10.1137/S1052623401399903 . This citation credits the general
+moment-optimization framework; it is not evidence that this exact formula is
+new or absent there. No external priority claim is made. The inherited
+Boolean hypercontractive input and the exact two-sign proof are identified
+in source314; this note requires neither formal verification nor numerical
+experiments to present its analytical argument, and claims neither.
+
+Refutation targets: an admissible law violating(A1) or(A2), an overlooked
+root branch, failure of the dyadic cap at tau>g, a non-dyadic equality-budget
+cube law, or an invalid transfer use of(S1). The exact scalar witness does
+not certify a sharp spectral result. No fixed-range Gibbs, heat-bath,
+physical mass-gap or continuum conclusion follows. This note belongs with
+the existing grouped paper if a future revision warrants it; it is not a
+standalone paper or a reason to delay the already frozen314/v6 release.

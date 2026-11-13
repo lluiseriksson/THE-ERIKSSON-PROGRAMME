@@ -1,0 +1,16 @@
+{
+  "scope": "Grouped318 manuscript: complete315/317 source reports/context/assignment/manifests and historicalv6 exactPDF/completeassessmentoutputs; no inheritedscore",
+  "new_exclusions": [
+    {
+      "reason": "Historical context only; not a reissued314 assessment. Originalmanifest is not claimed to describe this subset.",
+      "retained": "ExactPDF and originalinputmanifest plus completeoutputs",
+      "artifact": "Original314 assessment input packet",
+      "omitted": "Other original314 input files, including page renders and predecessor scientificinputs, remain intact on D and in originalpublication where applicable"
+    }
+  ],
+  "source_audit315_317": "Complete original packets retained, no full third-party primary text was included in these packets.",
+  "privacy": "No credentials, private intake payloads, or new third-party fulltexts.",
+  "inherited_boundary": "PACKAGE-BOUNDARY314.json and predecessors remain exact. Existing omissions are unchanged.",
+  "representation": "Raw copied bytes; no normalization",
+  "whitespace_preservation": "Original raw audit packets keep CRLF. Two git-metadata captures keep original four-space blank commit-message lines; exact-file whitespace attributes describe these archived byte representations. New source and mathematical text are not exempted. Initial formatting failures remain on D."
+}

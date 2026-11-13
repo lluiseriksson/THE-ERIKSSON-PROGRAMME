@@ -1,0 +1,8 @@
+TARGETED PRIMARY READING317A, 2026-11-13
+MORSS: https://www.cs.cmu.edu/~odonnell/papers/nicd.pdf
+Author-hosted PDF,27 pages. Read printed p5 (Theorems3.1/3.2, Corollary3.3), AppendixA printed pp24-26 including the two-function proof on p25. Verified the noise convention, allowed nonnegative functions and endpoint exponents against317. No exhaustive originality comparison.
+MOS: https://arxiv.org/html/1108.1210v5
+Read introduction1.1 and equations1.1-1.3; Corollary1.11; section6, especially Corollary6.4 and its positivity approximation. Used as context and a check that general-space constants are not substituted for the sharp unbiased-cube bound. Prior readings from313/315 remain in context.
+Cattiaux: https://www.numdam.org/item/AFST_2005_6_14_4_609_0.pdf
+Read abstract, introduction/framework printed609-610, bounded-perturbation Proposition2.2 on612 and nearby perturbed-measure/semigroup discussion, including the spectral-gap discussion around617. OCR omits some formulas; no unseen formula or full-paper review is asserted. No claimed equivalence to the Boolean multiplicative congruence.
+The screenshot requests through the available functions transport returned reference-only text. No rendered-page visual inspection is claimed. No third-party full PDF was redistributed into this audit package. These are targeted source-reading notes, not external-priority clearance.

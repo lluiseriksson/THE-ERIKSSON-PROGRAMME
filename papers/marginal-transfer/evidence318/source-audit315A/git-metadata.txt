@@ -1,0 +1,29 @@
+commit 4629c93c51e8ab3acfb849a823208e62a5e6e191
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 17:51:35 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 17:51:35 2026 +0100
+
+    Prove scalar strict-tail envelope315A (Git LF text; spectral sufficiency only)
+
+commit 1505d58e240769a996176fa9086cbd8e5a476308
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 17:49:59 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 17:49:59 2026 +0100
+
+    Register tail-envelope315 judges (Git LF text; exploratory formulas disclosed)
+
+commit 06d1938c049569427d658548c57c6203404c7929
+Merge: c4c6e5127 b72cfbcb7
+Author:     Lluis Eriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 17:39:51 2026 +0100
+Commit:     GitHub <noreply@github.com>
+CommitDate: Fri Nov 13 17:39:51 2026 +0100
+
+    Merge pull request #261 from lluiseriksson/codex/tep-cutoff-endpoint314-20261113
+    
+    Group the attained cutoff budget and exact floor into the moment manuscript
+BASE-TO-CANDIDATE PATH DIFF
+A	research/tail-envelope315/judges315.txt
+A	research/tail-envelope315/source315A.txt

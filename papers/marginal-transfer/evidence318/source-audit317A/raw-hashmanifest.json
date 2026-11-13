@@ -1,0 +1,236 @@
+{
+  "scope": "All retained317 audit files except manifests and manifest-binding.txt; exact raw bytes, no hidden normalization",
+  "candidate": "4d7a94d4a649a997a1f01a8f8f477e3be20fec66",
+  "entries": [
+    {
+      "path": "assignment-received.txt",
+      "bytes": 1897,
+      "sha256": "6cd5b9bd309c7ba0e680dd429bb49e8ffe4d0a8d798063abe94326a1ec569880",
+      "byte_representation": "Exact retained UTF8 text bytes; SHA covers file as stored",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 1,
+      "utf8_bom": false
+    },
+    {
+      "path": "context-and-scope.txt",
+      "bytes": 3635,
+      "sha256": "951c0e70fef752e5f1e9f6ec556d2e0f8992097ecaf9d47d61174eac7a54c29d",
+      "byte_representation": "Exact retained UTF8 text bytes; SHA covers file as stored",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 11,
+      "utf8_bom": false
+    },
+    {
+      "path": "final-state.json",
+      "bytes": 1678,
+      "sha256": "67377db3fc210a54d1dad8d6162913648f927972b3cf4584e37ae9b95ff1bd6a",
+      "byte_representation": "Exact retained UTF8 text bytes; SHA covers file as stored",
+      "crlf_count": 34,
+      "bare_cr_count": 0,
+      "bare_lf_count": 1,
+      "utf8_bom": false
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 18461,
+      "sha256": "fc324b7d9eb72a58bcdbaaa18cbd973de5f8785c9a4a3a2385f63a462dd22c63",
+      "byte_representation": "Exact retained UTF8 text bytes; SHA covers file as stored",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 96,
+      "utf8_bom": false
+    },
+    {
+      "path": "git-metadata.txt",
+      "bytes": 1160,
+      "sha256": "307646b8115c59af5059a8ccd711eb2310ed7ec568f5a03faa0e293e4ffaa101",
+      "byte_representation": "Exact retained UTF8 text bytes; SHA covers file as stored",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 29,
+      "utf8_bom": false
+    },
+    {
+      "path": "initial-state.json",
+      "bytes": 303,
+      "sha256": "3aa5382c7d47c96e8c80adfda123b042840fad15545061dbfe2884be0e133bbf",
+      "byte_representation": "Exact retained UTF8 text bytes; SHA covers file as stored",
+      "crlf_count": 7,
+      "bare_cr_count": 0,
+      "bare_lf_count": 1,
+      "utf8_bom": false
+    },
+    {
+      "path": "pr264-body-final.utf8-lf.txt",
+      "bytes": 1070,
+      "sha256": "ffa4d359a507210f3d77940f0e6194162c89f43293b3383c18a121403550034c",
+      "byte_representation": "JSON-decoded PR body; CRLF/CR to LF; trim terminal LF; append exactly one LF; UTF8 no BOM",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 5,
+      "utf8_bom": false
+    },
+    {
+      "path": "pr264-body-initial.utf8-lf.txt",
+      "bytes": 1070,
+      "sha256": "ffa4d359a507210f3d77940f0e6194162c89f43293b3383c18a121403550034c",
+      "byte_representation": "JSON-decoded PR body; CRLF/CR to LF; trim terminal LF; append exactly one LF; UTF8 no BOM",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 5,
+      "utf8_bom": false
+    },
+    {
+      "path": "pr264-final.json",
+      "bytes": 1141,
+      "sha256": "05c16ce851437619169199318e23b8ca364702cb8f27a435941175c006d51aa4",
+      "byte_representation": "Exact retained UTF8 text bytes; SHA covers file as stored",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 1,
+      "utf8_bom": false
+    },
+    {
+      "path": "pr264-initial.json",
+      "bytes": 1141,
+      "sha256": "05c16ce851437619169199318e23b8ca364702cb8f27a435941175c006d51aa4",
+      "byte_representation": "Exact retained UTF8 text bytes; SHA covers file as stored",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 1,
+      "utf8_bom": false
+    },
+    {
+      "path": "primary-reading.txt",
+      "bytes": 1386,
+      "sha256": "0a83d7a612ab204331509cc0f7c31372f0dfe37b81cbb15c33c5aea00d93663a",
+      "byte_representation": "Exact retained UTF8 text bytes; SHA covers file as stored",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 8,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/charter.git-blob.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "byte_representation": "Exact Git blob stdout bytes; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 258,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/CLAUDE.git-blob.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "byte_representation": "Exact Git blob stdout bytes; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 412,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/judges317-candidate.git-blob.txt",
+      "bytes": 2900,
+      "sha256": "b77bee087822276b13f270528233a4fe71765cef0e602b3693b40f89e2bc04d3",
+      "byte_representation": "Exact Git blob stdout bytes; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 10,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/judges317-preregistered.git-blob.txt",
+      "bytes": 2900,
+      "sha256": "b77bee087822276b13f270528233a4fe71765cef0e602b3693b40f89e2bc04d3",
+      "byte_representation": "Exact Git blob stdout bytes; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 10,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/judges317.checkout.txt",
+      "bytes": 2900,
+      "sha256": "b77bee087822276b13f270528233a4fe71765cef0e602b3693b40f89e2bc04d3",
+      "byte_representation": "Exact raw filesystem copy; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 10,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/manuscript314-cited.git-blob.tex",
+      "bytes": 97173,
+      "sha256": "403e9a503aaf8ebffbdd97f8aa6267f6eec9e9e567c8eb625891ca9e13a310dc",
+      "byte_representation": "Exact Git blob stdout bytes; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 2174,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/parent-pr264-body.raw.txt",
+      "bytes": 1070,
+      "sha256": "ffa4d359a507210f3d77940f0e6194162c89f43293b3383c18a121403550034c",
+      "byte_representation": "Exact raw filesystem copy; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 5,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/parent-pr264-initial.raw.json",
+      "bytes": 2012,
+      "sha256": "33415c50c6324d5d7fec4607ff58d4c0d9ced23c496abab6c2a1209ba4c07cc2",
+      "byte_representation": "Exact raw filesystem copy; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 0,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/source313-cited.git-blob.txt",
+      "bytes": 13113,
+      "sha256": "a3082541a6aead361e74b8a77eb2256eeca408097bae60cd4e932dc9d0d39d22",
+      "byte_representation": "Exact Git blob stdout bytes; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 111,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/source315-cited.git-blob.txt",
+      "bytes": 8589,
+      "sha256": "ea45127ad40d62ee3931cc80d20645417f3ab15ca7180c677282c0e33fab1e4e",
+      "byte_representation": "Exact Git blob stdout bytes; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 159,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/source317A.checkout.txt",
+      "bytes": 12299,
+      "sha256": "7de72f28f51db5d45c1a7bee4295c26c1b86afc4aa7f399980ad2490bd4bdc3d",
+      "byte_representation": "Exact raw filesystem copy; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 86,
+      "utf8_bom": false
+    },
+    {
+      "path": "subjects/source317A.git-blob.txt",
+      "bytes": 12299,
+      "sha256": "7de72f28f51db5d45c1a7bee4295c26c1b86afc4aa7f399980ad2490bd4bdc3d",
+      "byte_representation": "Exact Git blob stdout bytes; no normalization",
+      "crlf_count": 0,
+      "bare_cr_count": 0,
+      "bare_lf_count": 86,
+      "utf8_bom": false
+    }
+  ]
+}

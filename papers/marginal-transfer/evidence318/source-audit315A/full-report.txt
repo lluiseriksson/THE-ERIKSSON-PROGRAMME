@@ -1,0 +1,138 @@
+4629c93c51e8ab3acfb849a823208e62a5e6e191 | SOURCE315A ANALYTICAL AUDIT | PASS
+Date: 2026-11-13. Same involved auditor context as313, explicitly not blind or independent.
+
+1. Verdict and exact referents
+PASS for the analytical source against J1-J6. No blocking mathematical defect was found. J6 is satisfied as a frozen-source/context/scope obligation; actual required CI and unchanged normal integration remain separate, unwaived prerequisites. This is neither overall integration acceptance nor a PDF/paper score.
+
+Candidate: 4629c93c51e8ab3acfb849a823208e62a5e6e191
+Registration: 1505d58e240769a996176fa9086cbd8e5a476308
+Parent/base: 06d1938c049569427d658548c57c6203404c7929
+Worktree: C:\Trabajo\the-eriksson-programme\cutoff-floor313-20261113
+Source: research/tail-envelope315/source315A.txt
+Judges: research/tail-envelope315/judges315.txt
+Dependency: papers/marginal-transfer/manuscript314A.tex at b72cfbcb74275ff7f80b6c262cb003c5cc6ea8eb
+PR: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/262
+
+PR capture method, initial and final:
+gh pr view 262 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid
+Body representation: JSON-decode body, CRLF to LF, remaining CR to LF, remove all terminal LF, append exactly one LF, UTF-8 without BOM.
+Frozen normalized body: 986 bytes, SHA256 dc769c537b54c18630ab60fcffd6d10a4df118bd577e759f6764c6e34e8a0773.
+
+Raw Git blob SHA256 values, without text normalization:
+source315A: ea45127ad40d62ee3931cc80d20645417f3ab15ca7180c677282c0e33fab1e4e
+judges315: bbb092af1889b8b78a09df701600fad4b93f8b656a47bb6fcd92b654f5c28dde
+manuscript314 dependency: 403e9a503aaf8ebffbdd97f8aa6267f6eec9e9e567c8eb625891ca9e13a310dc
+The registered and candidate judge blobs agree byte-for-byte. A raw manifest records separate checkout and Git-blob copies; those regimes must not be silently conflated.
+
+The source and registration disclose prior parent exploration. Registration is before detailed writing, not before candidate discovery. The base-to-source diff adds only the two315 text files. No older failure,314 source or PDF is repaired or regraded here.
+
+2. J1: feasibility, conditional Jensen and equality law -- PASS
+Throughout, s>1, a=1-K>0 and k_s<K<1 imply 0<p_*=(s-1)a/K<1. The strict event H={r>K} must have positive probability: otherwise r<=K almost surely contradicts mean one. This avoids dividing by zero in conditional Jensen. Write p=P(H) and m=E[r 1_H]. On H^c, 0<=r<=K, so
+m=1-E[r 1_Hc]>=1-K(1-p)=a+Kp.
+Finite tail cap gives finite s moment on H; on H^c the s moment is bounded by K^s. Thus no unproved integrability is used. Conditional Jensen for the strictly convex function x^s yields
+E[r^s 1_H]>=p(m/p)^s=m^s/p^(s-1)>=h(p).
+This also works if p=1; there is no conditional expectation on the possibly empty low event.
+
+The logarithmic derivative of h is
+[Kp-(s-1)a]/[p(a+Kp)],
+with positive denominator. Consequently p_* is its unique minimum on(0,1], h(p_*)=s^s a K^(s-1)/(s-1)^(s-1)=g, and 0<g<1 because p_*<1 and h increases strictly from p_* to h(1)=1. The tail cap is therefore infeasible for tau<g, on any probability space.
+
+At tau=g, tail>=h(p)>=g must be equality everywhere. The unique minimizer forces p=p_*. Equality in the mean inequality gives E[(K-r)1_Hc]=0 and hence r=K almost surely on H^c. Equality in strict Jensen gives a single high value m/p_*=K+a/p_*=sK/(s-1)>K. Both event probabilities are strictly between zero and one. Thus the law, up to null sets and rearrangement of its atoms in the probability space, is unique. This is uniqueness of the distribution, not of its placement on a fixed space.
+
+3. J2: lower root and exact total-moment maximum -- PASS
+As p decreases to zero, h(p) is asymptotic to a^s p^(1-s) and diverges. On(0,p_*], it is continuous and strictly decreasing onto[g,infinity). Each finite tau>=g therefore has exactly one lower root p_tau in that interval. There can be a second root on the upper branch for g<tau<1; the statement correctly does not claim global uniqueness on(0,1]. When tau=1 the upper root can be p=1. Neither affects the needed implication:
+if p<p_tau, then p is on the lower decreasing branch and h(p)>tau;
+therefore every feasible law has p>=p_tau.
+
+The low s-moment is at most K^s(1-p), without a density floor. Combining it with the actual tail cap gives
+E r^s<=tau+K^s(1-p)<=tau+K^s(1-p_tau)=U(tau).
+No assumption r>=K is used for this universal upper bound.
+
+The two-point law at K and v_tau=K+a/p_tau has mean
+K(1-p_tau)+p_tau v_tau=K+a=1.
+Its high value exceeds K, so its strict tail is exactly
+p_tau v_tau^s=(a+Kp_tau)^s/p_tau^(s-1)=tau.
+Its low moment equals K^s(1-p_tau). It thus attains U(tau) on an appropriately chosen two-atom probability space, for every finite tau>=g. This is an actual maximum over all laws, not merely a supremum or limiting construction. It is not a promise that every preassigned probability space can realize the required atomic probability.
+
+For completeness, equality in the total bound requires p=p_tau because K^s>0, saturated tail, and low moment K^s(1-p). Since x^s<K^s for0<=x<K, the last equality forces r=K on the low event. The mean then fixes m=a+Kp_tau. Tail equality equals h(p_tau), so strict Jensen forces the constant high value. Thus the same law is the unique maximizing distribution for every finite tau>=g, not only at the minimum budget. The source's fixed-cube attainment qualification is justified.
+
+4. J3: Boolean dyadics, minimum-budget obstruction and approximation -- PASS
+Every event on a uniform L-cube has probability j/2^L. At tau=g the law is uniquely the one with high probability p_*. Thus non-dyadic p_* makes the admissible class empty on every finite uniform cube, despite feasibility on a general two-atom space. If p_* is dyadic, it is realizable exactly in each dimension for which2^L p_* is integral; assigning the two prescribed values suffices. There is no hidden substitute law at the same budget.
+
+For tau>g, the lower root satisfies p_tau<p_*. Define
+p_L=(floor(2^L p_tau)+1)/2^L.
+It always exceeds p_tau, including when p_tau itself is dyadic. Its excess is at most2^-L and tends to zero. For all sufficiently large L it lies strictly below p_*<1, so the number of high vertices is an integer strictly between zero and2^L. The witnesses have values K and K+a/p_L, both positive, with mean one and exact floor K.
+
+Because this approximation stays on the decreasing branch, h(p_L)<h(p_tau)=tau. This is the crucial budget-preserving direction; rounding down would in general exceed the cap. Their total moments
+h(p_L)+K^s(1-p_L)
+converge by continuity to U(tau). Hence the supremum over all finite cubes is U(tau), and there is a witness in every sufficiently large dimension. At a particular finite cube exact attainment requires p_tau to be an allowed event probability; if it is allowed the two-point assignment realizes it. No claim of attainment on every cube is made. The source does not assert an all-small-dimensions sequence under a budget that might be infeasible there.
+
+5. J4: inherited S1, sufficient spectral consequence and crossing -- PASS
+I read the cited314 TeX directly at its frozen commit, not its PDF assessment. The shared theorem counter makes thm:critical-exact Theorem13; the relevant source labels are eq:two-sign-budget and eq:restricted-moment, with the mean-one Rayleigh bound immediately after the sign argument (around source lines950-1015). No build was used to recreate printed equation numbers.
+
+For fixed0<rho<1 and s=(1+rho)/(1-rho), let Q=P_sqrt(rho). The active support A={r>0} is nonempty. T_r is positive semidefinite and strictly entrywise positive on A, with an all-zero block outside A. If lambda2=0, S1 is immediate. Otherwise an associated real eigenvector vanishes off A and is orthogonal to the positive Perron vector on A, so both sign parts are nonzero. Multiplicity of lambda2 causes no problem.
+
+With alpha=1+rho=2s/(s+1), endpoint hypercontractivity and Holder give, for a vector h supported in C,
+<h,T_r h>=||Q(sqrt(r)h)||_2^2
+<=||sqrt(r)h||_alpha^2
+<=(E[r^s 1_C])^(1/s)||h||_2^2.
+Here alpha/(2-alpha)=s, and the expectations are normalized uniform. Entrywise positivity makes the cross term between f_+ and f_- nonnegative. Pairing the eigen-equation with either sign part therefore bounds that sign-part Rayleigh quotient below by lambda2. Each disjoint sign region must carry s moment at least lambda2^s; their sum yields2lambda2^s<=E r^s. No false uniform-measure mean-zero condition is imposed.
+
+Also sqrt(r) is a unit vector, and its Rayleigh quotient is <r,P_rho r>>=(E r)^2=1 by nonnegative Walsh eigenvalues. Thus lambda1>=1, also for densities with zeros. The scalar upper bound consequently gives
+lambda2/lambda1<=lambda2<=[U(tau)/2]^(1/s),
+which proves S2 when U(tau)<2. This uses exactly the already established S1; no scalar witness is being promoted into a spectral extremizer.
+
+To check the unique crossing, define F(p)=h(p)+K^s(1-p). On(0,p_*), h'<0, so F'=h'-K^s<0. At p_* its value is g+K^s(1-p_*)<2; at zero it diverges. There is exactly one q in(0,p_*) with F(q)=2. Set tau_c=h(q). Since q<p_*, tau_c>g. The identity
+tau_c=2-K^s(1-q)
+and0<q<1 give2-K^s<tau_c<2. Because0<K<1 and s>1, K^(s-1)>K^s, so
+2-K^(s-1)<2-K^s<tau_c.
+This proves strict enlargement over the prior sufficient boundary, including a nonempty feasible interval near tau_c.
+
+The lower inverse p_tau is continuous and strictly decreasing as tau increases from g. Thus U(tau)=tau+K^s(1-p_tau) is continuous and strictly increasing, starts below2 and diverges. It crosses2 exactly at tau_c. The positive-gap region furnished here is precisely g<=tau<tau_c. For tau<g, emptiness is explicit; on cubes the additional minimum-budget dyadic restriction still applies.
+
+At tau_c, the algebraic lower bound is zero. A scalar law of total moment two does not force2lambda2^s=2, lambda1=1, a small finite gap, or collapse in a sequence. These implications were deliberately attacked and do not follow; the source expressly avoids them. The exactness is scalar. The universal spectral boundary remains unresolved by this note. The frozen314 Theorem21 statement, also read, supplies the distinct constructive upper budget1+g(K); its proof was the313 work already audited in this same context.
+
+6. J5: s=2 algebra, scope and primary comparison -- PASS
+For s=2, h(p)=a^2/p+2aK+K^2p, hence
+F(p)=a^2/p+2K-K^2.
+Solving F(q)=2 gives q=a^2/D with D=2-2K+K^2=1+a^2. Therefore1-q=1/D and
+tau_c=2-K^2/D,
+exactly as stated. The general crossing proof already places this solution on the low branch. At K=3/4, D=17/16 and K^2/D=9/17, so tau_c=25/17. The earlier bound is2-K=5/4, and g=4(1-K)K=3/4 gives collapse budget1+g=7/4. Exact fraction comparison gives5/4<25/17<7/4. No numeric oracle was used.
+
+The source says the interval between the sufficient and constructive values remains unclassified by these results. The upper constructive endpoint itself is available from314; this wording must not be turned into a claim that collapse at7/4 is unknown. No claim is made of optimality at25/17.
+
+Actual targeted primary reading, refreshed during this audit:
+Bertsimas/Popescu, SIAM J. Optimization15(3),780-804(2005), section2 including Theorem2.1 (printed pp784-785), author-hosted article:
+https://web.mit.edu/~dbertsim/www/papers/ioana/Optimal-inequalities-in-probability-theory-A-convex-optimization-approach-SIAM15.pdf
+The inspected material formulates optimization over laws with moments and proves a pointwise dual-bound principle. This supports methodological attribution. I did not inspect the entire article for the exact315 formula, assert its absence there, or invoke their strong-duality theorem to prove315. The present elementary conditional-Jensen proof stands on its own. No bibliography was invented or claimed exhaustive.
+
+Mossel/Oleszkiewicz/Sen, arXiv1108.1210v5, introduction1.1/eq1.1 and adjacent tensorization discussion:
+https://arxiv.org/html/1108.1210v5
+These lines state classical uniform two-point hypercontractivity and tensorization. For Q's nonconstant multiplier sqrt(rho), the source's alpha=1+rho endpoint agrees with that bound. This is a check of the inherited classical input, not historical priority for the two-sign application or315.
+
+Only these targeted portions were freshly compared. The earlier313 readings remain in context and are not independent witnesses. External originality and priority are not established. There is no numerical/formal certification, local dynamics, fixed-range Gibbs, physical mass gap or continuum consequence, and no separate paper or PDF rating.
+
+7. J6: freeze, shared context, preservation and integration -- PASS within audit scope
+This is the same involved313 auditor context assigned a new frozen source task. The literal assignment and actual context limits are retained. No unsolicited inbound message or consultation occurred during315 reading. No314 PDF assessment or grade was accessed. The315 source and judges were not edited. The candidate/PR body are frozen at the exact identities above, with initial and final checks stored separately.
+
+The two repository governance files are unchanged from the313 reading. Registration precedes detailed source in git; prior pencil exploration is openly acknowledged rather than labelled blind preregistration. The315 diff adds only source and judges, preserving prior failed artifacts and frozen314/v6.
+
+Actual required CI and unchanged normal merge are future gates, not conclusions of this source audit. This PASS cannot authorize squash/rebase, a changed source SHA, altered judges, changed PR body or missing required checks. No publication state, PDF score or acceptance of314 is inferred. The work may be grouped later if warranted; this review supplies no reason to delay or mutate314/v6.
+
+8. Adversarial objections and outcomes
+A. Wrong-root attack: h(p)=tau can have two roots. Rejected as a defect because p_tau is explicitly the unique LOWER-branch root, and the proof uses only the valid p>=p_tau implication.
+B. Hidden floor attack: the scalar bound might require r>=K. Rejected; only0<=r<=K on H^c is used. Floor K is a witness property, not a hypothesis of the upper bound.
+C. Non-dyadic minimum-budget alternative law: could a different cube law attain g? Rejected by strict equality conditions; the law is unique, so the obstruction is real and correctly stated.
+D. Approximation cap loss: dyadic rounding can overshoot tau. Rejected for the proposed direction; p_L>p_tau on the decreasing branch strictly lowers h.
+E. General supremum mistaken for maximum: rejected for arbitrary laws, where the explicit two-atom witness attains U. For cubes only the qualified supremum is asserted.
+F. Infinite-moment loophole: rejected; finite tail cap plus bounded low sector gives finite total moment.
+G. Zero-support spectral failure: rejected; the active support/Perron argument and lambda2=0 case explicitly cover zeros.
+H. Scalar saturation used as spectral collapse: this would be invalid, but is expressly disclaimed, not used.
+I. No low-branch crossing or incorrect s2 fractions: rejected by strict derivative, endpoint limits and the displayed exact algebra.
+J. Independent/blind review claim: prohibited and not made; previous313 involvement is recorded.
+No blocking mathematical objection survives these checks. No source repair is requested.
+
+9. Final evidence boundary
+Initial and final metadata show local HEAD and PR262 head unchanged, identical986-byte normalized body and hash, unchanged candidate/judges checkout hashes, registered/candidate judge equality and clean worktree. Final-state.json contains the explicit comparisons. All new315 evidence is in the specified D: directory. Old313 evidence is unchanged. No disposable clone was created and no cleanup is pending.
+The raw-byte manifest includes retained source inputs, assignment, context, full report and state captures. It names normalization regimes and excludes only its own manifest/binding files to avoid self-reference.
+PASS applies solely to the exact source identified above, with all unwaived boundaries retained.
