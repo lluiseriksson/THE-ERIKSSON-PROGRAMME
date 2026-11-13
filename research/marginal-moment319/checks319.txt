@@ -1,0 +1,17 @@
+Fixed analytical checks for source319A, before audit
+1. Verify all normalization/spectrum conventions on uniform probability.
+2. Recompute one-site H, kappa and tau and their second-order coefficients.
+3. Check L delta^4->0, L delta^2->infinity and k logL=o(L delta^2).
+4. Check actual two eigenvalues via Gram multiplicity, not merely trial vectors.
+5. Verify every interior t moment and real-s mixed-power bound.
+6. Verify exact Fourier erasure, sup bound, mean and eventual positivity.
+7. Check exact norm-budget dilution, denominator and preservation of all zeros.
+8. Check eventual floor plus uniform finite-prefix replacement.
+9. Attack TheoremB projection identity and cutoff order of limits.
+10. Check supercritical exponent/noise relation and degree damping exponent.
+11. Distinguish weighting-law marginals from Perron-stationary marginals.
+12. Assess novelty only against directly read primary sources; classical erasure
+is already documented. Preserve all objections, including failed candidate.
+Falsifier: an incorrect step in A/B, actual eigenvalue mismatch, loss of exact
+marginals/positivity/cap, or primary work already establishing the same joint
+spectral/moment assertion. No gate output may rely on a Python assert.
