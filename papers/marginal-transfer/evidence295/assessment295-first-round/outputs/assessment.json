@@ -1,0 +1,62 @@
+{
+  "schema": "exact-pdf-scientific-assessment-v1",
+  "assessment_round": "first exact-PDF assessment of manuscript295A",
+  "date": "2026-11-13",
+  "reviewer": {
+    "identity": "OpenAI/Codex",
+    "served_model_identifier": null,
+    "served_reasoning_setting": null,
+    "agent_task": "/root/exact295_pdf_first_assessment",
+    "context": "Separate review agent in the same involved author workflow and provider; parent authored material. Assignment plus global instructions/environment supplied, without parent authoring history or older ratings. Not human peer review, institutional independence, blind review or provider-independent replication.",
+    "older_ratings_read_or_used": false,
+    "inbound_parent_followups_before_verdict": false,
+    "author_owns_airr": true
+  },
+  "object": {
+    "title": "Product Marginals, Density Bounds and Slow Spectra of Ising Transfer Kernels",
+    "pdf_path": "D:\\Entregas\\the-eriksson-programme\\2026-11-13_density-complement295\\manuscript295A.pdf",
+    "pdf_sha256_raw": "a8b265c715f8c7748b60767555b2e8343402626d623e30fe9729a74f9e01474d",
+    "pdf_size_bytes": 314890,
+    "pages_reviewed": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "source_commit_declared_and_existence_checked": "52ffff00d9a1bf0a27339b4e53332c311091501a",
+    "tex_checkout_sha256_raw": "a86fca564e522020f69edb9f0b569e8683df6cb1effd7cc5bda44bbd6218c277",
+    "tex_git_blob_at_source_commit": "25c8af2899c85bded66969dcd2a92e893c326ae6",
+    "text_sha256_raw": "6e10554d0b461d311c191a09f32212862db6496ff0cfe055c4e3b1d0a5cb667f"
+  },
+  "method": {
+    "all_supplied_page_images_visually_inspected": true,
+    "analytical_proof_reading": true,
+    "primary_literature_checked": true,
+    "pdf_independently_rendered": false,
+    "source_to_pdf_build_reproduced": false,
+    "mathematical_computation_run": false,
+    "formal_verification_claimed": false,
+    "scope": "Finite-dimensional transfer spectra, including dimension-uniform bounds at fixed density cap and coupling; no physical mass gap or continuum theorem."
+  },
+  "overall": {
+    "score_out_of_10": 7.4,
+    "stars_out_of_5": 3.7,
+    "aggregation": "Unweighted arithmetic mean of five criteria; stars equal score divided by two.",
+    "reason": "Strong correctness and clear explicit proofs; originality and wider significance remain moderately supported rather than established."
+  },
+  "criteria": {
+    "correctness": {"score_out_of_10": 9.0, "stars_out_of_5": 4.5, "reason": "No substantive error found in all proof chains, including zero-density support and reverse-hypercontractive normalization; fallible analytical AI review, not formal verification."},
+    "clarity": {"score_out_of_10": 8.0, "stars_out_of_5": 4.0, "reason": "Precise operator definitions, constants and scope; dense abstract and sign-part proof need minor explanatory expansion."},
+    "originality": {"score_out_of_10": 6.0, "stars_out_of_5": 3.0, "reason": "Potentially useful joint synthesis and explicit density complement, based on classical methods; targeted literature check does not establish priority."},
+    "significance": {"score_out_of_10": 6.0, "stars_out_of_5": 3.0, "reason": "Useful separation of marginal information and relaxation in a specialized transfer family; no concrete fixed-range or physical application and no sharp quantitative theory demonstrated."},
+    "reproducibility": {"score_out_of_10": 8.0, "stars_out_of_5": 4.0, "reason": "Self-contained analytical proofs, explicit constants and object identities; build, rendered-image provenance and advertised full audit package not independently reproduced here."}
+  },
+  "recommendation": "Suitable for transparently labelled working-paper deposit with this complete assessment and limitations. Deeper literature comparison and application positioning requested before a substantial-novelty journal claim. Not human peer review or editorial acceptance.",
+  "blocking_mathematical_error_identified": false,
+  "objections": [
+    {"id": "O1", "type": "substantive positioning", "text": "Historical originality is not established. Compare exact hypotheses and conclusions with quantitative positivity-improving/hyperbounded-operator results and code-supported transfer/noise constructions before claiming major novelty."},
+    {"id": "O2", "type": "quantitative research limitation", "text": "Sharpness is unexplored: at B=1 the exact gap is 1-rho, but the bound is 2^(-2e_rho), severely weaker near rho=1. Include this benchmark and explain useful parameter regimes; Corollary 8 need not have a sharp exponent."},
+    {"id": "O3", "type": "application relevance", "text": "Global many-body weights and full-configuration transitions limit physical/local relevance. Supply a concrete application of the joint marginal obstruction within the stated class. No fixed-range Gibbs or continuum inference is justified."},
+    {"id": "O4", "type": "minor exposition", "text": "Explain the pointwise sign-part inequality on and off each sign support and the integrated unit-norm step yielding <f,P_rho f> >= lambda_2. Current proof is valid but compressed."},
+    {"id": "O5", "type": "evidence limitation", "text": "This assessment did not rebuild the PDF, independently bind rendered images to that build, or inspect the advertised complete source audit package. Publish a manifest/build recipe; do not call this review successful build reproduction or machine proof."},
+    {"id": "O6", "type": "minor presentation", "text": "Abstract and page 7 are dense. Add a short explanation of the sign-parts/cross-entry proof strategy. No visual clipping or broken references was found in the supplied pages."}
+  ],
+  "full_report": "scientific-report.md",
+  "exact_assignment_and_context": "assignment-context.txt",
+  "hash_representation": "Raw bytes with no normalization; output text UTF-8 LF without BOM; on-disk input text hashed as stored."
+}

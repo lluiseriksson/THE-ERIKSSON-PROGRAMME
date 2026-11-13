@@ -1,0 +1,12 @@
+297 package boundary. New exact-PDF assessment pending; no score inherited.
+Prior295 scores, generic/native rubric reconciliation, all objections and
+assessment context remain historical evidence for PDFa8b265..., not297 ratings.
+296A source transcription BLOCK and corrected296B reports remain immutable;
+neither296 production namespace was allocated. New297 manuscript incorporates
+the accepted finite-moment sufficient theorem and strict subcritical two-tilt
+converse. Critical endpoint and priority remain unresolved.
+Original audit manifests are retained as originally issued; they describe
+their full private capture scope and are not claims every historical capture
+is redistributed here. SOURCE-INPUTS297.json enumerates this public source
+subset. Third-party full texts are not redistributed. Source production and
+exact-PDF reports will be attached after actual execution/review.

@@ -1,0 +1,163 @@
+{
+  "algorithm": "sha256",
+  "byte_representation": "actual raw retained bytes, no normalization",
+  "member_count": 31,
+  "members": [
+    {
+      "path": "assignment.txt",
+      "bytes": 828,
+      "raw_sha256": "1fa0b0c4cb1f0a94c83803a36e697ab284270b89b4d0b703c04cdfd6f30a0320"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 776,
+      "raw_sha256": "2c1d4b9d23099daee47ce5cd32a0fe6b8924e86be76698d9b0b5dcf8053225ec"
+    },
+    {
+      "path": "final-stability.json",
+      "bytes": 396,
+      "raw_sha256": "7944264b0cdfe5c9063bb816804f4aee5e76960cff0e232821779ffb08bc403d"
+    },
+    {
+      "path": "full-Git-delta.diff",
+      "bytes": 2399,
+      "raw_sha256": "a065b38f8f9b2a823cb361d971ca60d02bec3ad749ce7cc0a830e059e07998b6"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 8073,
+      "raw_sha256": "b8ab6fcb371aaf506f9a98742dd5c953664e814c68cfc90ff9093a993f1064f0"
+    },
+    {
+      "path": "input-bindings.json",
+      "bytes": 25505,
+      "raw_sha256": "8749c1167246cbb27ce7a7e571ae0cec0f718bd33c82f2d510a613820f4d4667"
+    },
+    {
+      "path": "runner-bindings.json",
+      "bytes": 1617,
+      "raw_sha256": "44b62d065dc354a3b4f011d70c28cce60ec3271c0703cd8951fc2c3d4ffb5f9d"
+    },
+    {
+      "path": "subjects/prior/blocked-mathematical-context.txt",
+      "bytes": 1434,
+      "raw_sha256": "03af4b9c72551bb93453f52f27cabacb93d165acf4d76dd1a6003449999a14c6"
+    },
+    {
+      "path": "subjects/prior/blocked-mathematical-manuscript-report.txt",
+      "bytes": 9976,
+      "raw_sha256": "899396298e8c0c2fdf5f0ab80f94521b211fcb7534ffdbd39243613db03fd8dc"
+    },
+    {
+      "path": "subjects/prior/context.txt",
+      "bytes": 853,
+      "raw_sha256": "5b915ec433cf45f570cfd9605cc763265291d320e09fadfa6347acfff8fd3ec6"
+    },
+    {
+      "path": "subjects/prior/full-report.txt",
+      "bytes": 12351,
+      "raw_sha256": "7d7c0b7017b8eecb9ec28774f9d92f2be2d99465669bb26c82ddc58ece3585da"
+    },
+    {
+      "path": "subjects/prior/raw-hashmanifest.json",
+      "bytes": 23233,
+      "raw_sha256": "863c26f42a0836fd1a37cd90db546d5bf43d5b8c31ecdc592feeb56b2cf132c6"
+    },
+    {
+      "path": "subjects/runner-a/build296.py",
+      "bytes": 10583,
+      "raw_sha256": "84f8b766291d8f0b7cf41aa469b6bc7f1b0a4d31c6eef231b1ac94d8e23712db"
+    },
+    {
+      "path": "subjects/runner-a/capture_cli_atomic.ps1",
+      "bytes": 2607,
+      "raw_sha256": "4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b"
+    },
+    {
+      "path": "subjects/runner-a/exact-replacement-map.json",
+      "bytes": 384,
+      "raw_sha256": "c91ed330123c05622ef69a462cab4cf5039781cb4c9b4933d105b1766eb4abea"
+    },
+    {
+      "path": "subjects/runner-a/readback_after_stop.ps1",
+      "bytes": 934,
+      "raw_sha256": "e27622743122903443cee69fd407511435cf0567b9b343898bb3ddd4a9897ab1"
+    },
+    {
+      "path": "subjects/runner-a/run_owned_after_gate.ps1",
+      "bytes": 4206,
+      "raw_sha256": "c6fa5d7512a701c148412f428177dc6f6071219139c6d00ab61c8b53beb93d57"
+    },
+    {
+      "path": "subjects/runner-a/RUNNER-HASHES.json",
+      "bytes": 604,
+      "raw_sha256": "8194db2a068d55923f691f5b06fb8dc505233efa4f4b208a6ad8929d5073fade"
+    },
+    {
+      "path": "subjects/runner-b/build296.py",
+      "bytes": 10583,
+      "raw_sha256": "8a5b1110075d61243046b48eb154f52bb612d898f07c0c5ef575ad3ed67fb439"
+    },
+    {
+      "path": "subjects/runner-b/capture_cli_atomic.ps1",
+      "bytes": 2607,
+      "raw_sha256": "4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b"
+    },
+    {
+      "path": "subjects/runner-b/exact-replacement-map.json",
+      "bytes": 442,
+      "raw_sha256": "e5d239f3db9db7258197b70d12cb9fc23791e344d10706341ff73391e3caf4ab"
+    },
+    {
+      "path": "subjects/runner-b/readback_after_stop.ps1",
+      "bytes": 934,
+      "raw_sha256": "617acf62b9ee13eaca9f9e923d0d031ff9242792347e87ea5dbb25719ebf0d59"
+    },
+    {
+      "path": "subjects/runner-b/run_owned_after_gate.ps1",
+      "bytes": 4206,
+      "raw_sha256": "d7800a13e3d5d94976529aa5b3b0718b1a470ccf68b03dc6a103c05b12226cc8"
+    },
+    {
+      "path": "subjects/runner-b/RUNNER-HASHES.json",
+      "bytes": 604,
+      "raw_sha256": "b5ce10ab2a416d1ecbe20e732ce8d54a6e661d153c7e5bcc659a4ae7725b19db"
+    },
+    {
+      "path": "subjects/SOURCE-INPUTS296.json",
+      "bytes": 17051,
+      "raw_sha256": "feddec036d45476933463beb44c081bff267ba5062233d2ed86a16c79f1cd0d5"
+    },
+    {
+      "path": "subjects/source-transcription-failure.txt",
+      "bytes": 803,
+      "raw_sha256": "1dda4bb2f5b8ad2ef72726cd9f2022e8edc461fa6eb0dab3f0159c44d43640eb"
+    },
+    {
+      "path": "subjects/tex-after/finite-moment296-section.tex",
+      "bytes": 6724,
+      "raw_sha256": "537c93916efb44ee78a3812c77998de8306577bfce111724e5330e761d7bb4f9"
+    },
+    {
+      "path": "subjects/tex-after/manuscript296A.tex",
+      "bytes": 37060,
+      "raw_sha256": "8769395a778c01e3506c74229a87f552e4b49162cabc6c1c07060d9cb44edbe2"
+    },
+    {
+      "path": "subjects/tex-before/finite-moment296-section.tex",
+      "bytes": 6723,
+      "raw_sha256": "aa6fb6f2c7563e345598813cc71cc857ca00786c88b3cd7950f6e6f54b2a01af"
+    },
+    {
+      "path": "subjects/tex-before/manuscript296A.tex",
+      "bytes": 37059,
+      "raw_sha256": "f29c10972f4baa06dbd9d566fa310c7064381e1b98fdb9c943a0ebc0eb0b0879"
+    },
+    {
+      "path": "tex-delta-bindings.json",
+      "bytes": 701,
+      "raw_sha256": "f05046e30e2944356f267318760222a7b37b7250e237473be50a211af42a3381"
+    }
+  ],
+  "excluded_only": "raw-hashmanifest.json"
+}

@@ -1,0 +1,89 @@
+{
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1032,
+      "sha256": "dee411301bd35b342f67ff5612d4f5914a1dd53005d8e6b3ac5e9fdaec558981"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 891,
+      "sha256": "8313db84a084ef398047299ffe17d280ae686f51936fcc682f642c8c3814395d"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 7693,
+      "sha256": "abfa23d53920f9fef5b258e764d6e6682dc8349b9a21ac25a1211e7acc1bf4f6"
+    },
+    {
+      "path": "gate-count.json",
+      "bytes": 199,
+      "sha256": "ffec43840e9266e76f7377c52b15994780a4c908d84c3b952043ed3c8857495f"
+    },
+    {
+      "path": "input-bindings.json",
+      "bytes": 1426,
+      "sha256": "8110fa4a1b0db30688f66d73dccb7f086e7c6a446209e3a9ec66ea3f940013f2"
+    },
+    {
+      "path": "metadata-helper.txt",
+      "bytes": 12994,
+      "sha256": "732e0e0c86b767502b7832d47f0b3f1950984d5d850dc5da298c88fe5d946ebf"
+    },
+    {
+      "path": "preregistration.txt",
+      "bytes": 298,
+      "sha256": "85d5b00bb70456482766f00481e53c4b91f39f5698f82ab046f984dec89cb56b"
+    },
+    {
+      "path": "stability.json",
+      "bytes": 260,
+      "sha256": "26a5ac14d4995fff16066549f34fc219d63103d5f66fa88a7a8cd444cb8fd5a4"
+    },
+    {
+      "path": "subjects/checkout/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/checkout/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "subjects/checkout/research/two-tilt297/judges297.txt",
+      "bytes": 2322,
+      "sha256": "6fc6ca983e67add5715f3d5ea124eff9f88a748a0822f30cd8394093ff2ab935"
+    },
+    {
+      "path": "subjects/checkout/research/two-tilt297/two-tilt297A.txt",
+      "bytes": 6309,
+      "sha256": "4ee9a219eaea537fb290941d5af4ba39f4d306e1f14b94315a46c63b35916304"
+    },
+    {
+      "path": "subjects/comparison/finite-moment296A.txt",
+      "bytes": 8414,
+      "sha256": "c952d3eea07c82156cc368d36f7ed6aed818be5afa16c39e52f899f64788aa28"
+    },
+    {
+      "path": "subjects/git/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "subjects/git/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "subjects/git/research/two-tilt297/judges297.txt",
+      "bytes": 2322,
+      "sha256": "6fc6ca983e67add5715f3d5ea124eff9f88a748a0822f30cd8394093ff2ab935"
+    },
+    {
+      "path": "subjects/git/research/two-tilt297/two-tilt297A.txt",
+      "bytes": 6309,
+      "sha256": "4ee9a219eaea537fb290941d5af4ba39f4d306e1f14b94315a46c63b35916304"
+    }
+  ]
+}

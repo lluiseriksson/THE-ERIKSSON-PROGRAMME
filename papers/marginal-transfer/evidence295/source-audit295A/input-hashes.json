@@ -1,0 +1,14 @@
+[
+  {
+    "name": "bounded-density295A.txt",
+    "checkout_raw_sha256": "5fbd9247e933f6f4d00110e2e6d37923a2292588601a8322df26a5ec80c38e53",
+    "original_D_mirror_raw_sha256": "5fbd9247e933f6f4d00110e2e6d37923a2292588601a8322df26a5ec80c38e53",
+    "retained_raw_sha256": "5fbd9247e933f6f4d00110e2e6d37923a2292588601a8322df26a5ec80c38e53"
+  },
+  {
+    "name": "judges295.txt",
+    "checkout_raw_sha256": "4773f9ddb9a21b71c6551ad9634fff89da5b417ba1b9a28b88dbfbd5a12842fc",
+    "original_D_mirror_raw_sha256": "4773f9ddb9a21b71c6551ad9634fff89da5b417ba1b9a28b88dbfbd5a12842fc",
+    "retained_raw_sha256": "4773f9ddb9a21b71c6551ad9634fff89da5b417ba1b9a28b88dbfbd5a12842fc"
+  }
+]

@@ -1,0 +1,16 @@
+295 preregistered source gates, before committing the candidate proof.
+
+One question: for fixed positive Ising coupling, does a uniform UPPER bound on density relative to product force a dimension-independent Perron transfer gap, even with no positive lower density bound?
+Class: uniform Boolean product u_L, r>=0, E_u r=1, r<=B with fixed B>=1; same noise/transfer congruence as294. Zero weights may be handled on their actual support, with zero eigenvalues retained in the full-space list. No locality or marginal-matching assumption.
+Mechanism: ordinary and reverse Boolean hypercontractivity, positive/negative parts of a second eigenvector as subeigenfunctions, interpolation, two-dimensional compression. Avoid a hidden lower bound on r or on the Perron vector.
+Falsifier: fixed beta,B sequence with gap->0, or failure of one displayed hypercontractive convention, sign-part bound, interpolation exponent or compression identity.
+Abandon: stop at first failed gate; after3 units with no paid dimension-free bound, preserve failure and change mechanism or identify the missing estimate. No numerical execution authorized here.
+
+G1. Exact scalar/convention link to294; normalized uniform Lp spaces, rho=tanh(beta), A=sqrt(r) P_rho sqrt(r). Prove1<=lambda1<=B, including zero density.
+G2. Primary-source verification of ordinary and reverse hypercontractive inputs with precise exponents/time; explain extension from positive to nonnegative functions. Classical inputs not claimed new.
+G3. Second-eigenvector positive/negative parts: both nonzero whenlambda2>0, pointwise subeigen inequalities, and dimension-free Lq/L2 bounds for the weighted sign parts WITHOUT any positive lower-density assumption.
+G4. Lp/L2/Lq interpolation for0<p<1<2<q, exact exponent simplified; no use of Banach duality where invalid.
+G5. Explicit2x2 compression, correct eigenvalue ordering and a gap bound that does not deteriorate when one sign part has small norm.
+G6. Split lambda2<lambda1/2 versus complement; pay every constant and derive a strictly positive B,beta-only lower bound, valid also for rank1/support1.
+G7. Relate exponential gap collapse to necessary exponential upper-density growth without claiming new marginal hypothesis elimination, locality, physical Yang-Mills or continuum consequences.
+G8. Compare classical bounded-potential/positivity-improving literature. Distinguish correctness from external priority; a verified known theorem is not marketed as a frontier discovery. If sound, group this complementary result into the existing294 line, not a small standalone paper.

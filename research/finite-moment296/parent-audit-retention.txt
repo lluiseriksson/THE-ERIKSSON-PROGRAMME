@@ -1,0 +1,7 @@
+296A parent readback: complete report and context read; all 19 retained raw members SHA256 checked on 2026-11-13.
+Exact proof commit e1873a4517c6526da6dd5a18fb6edc99a28cea64.
+Full report beb80440fc22ef1c586886bf47f02e3a08486991b73644ea778b2c4944638a69.
+Manifest 38f9d1653eb4db468c12b6362fffdb50184ccc28cd8d1773d186bb1a15f4dea1.
+All 10 preregistered analytical gates accepted, no material error found. No Lean, numerical or formal verification performed.
+Finite Ls removes pointwise upper-density and lower-density assumptions in the stated high-moment regime. Strictly positive low-moment counterfamily is for the actual transfer operator. Intermediate range/endpoints and external originality unresolved.
+This result will be consolidated with 294 and 295 in one linked revision, not split into a separate corollary paper. Unpublished exact295 PDF and its single review (original generic rubric plus transparent first native calibration) remain historical. No 295 score applies to a changed296 PDF; a new exact-artifact review will be required.

@@ -1,0 +1,120 @@
+\begin{theorem}\label{thm:tilts}
+Fix $0<\rho<1$, $1<s<s_c:=(1+\rho)/(1-\rho)$ and $B>1$.
+There are strictly positive mean-one densities $r_L$, for every $L\ge1$,
+with $\|r_L\|_s\le B$ and $r_L\ge1/B$, and constants
+$\kappa>1$ and $0<\omega<\kappa$, independent of $L$, such that
+\[
+ 0<\gap(T_{r_L})\le
+ 2(\omega/\kappa)^L+\varepsilon^{-1}\kappa^{-L},
+ \qquad \varepsilon=(B-1)/2.
+\]
+Thus a uniform positive lower density does not prevent exponential gap
+collapse throughout the strict subcritical moment regime.
+\end{theorem}
+\begin{proof}
+Relabel the cube as $\{-1,1\}^L$. For a fixed tilt $0<\delta<1$, put
+\[
+ n=\left(\frac{(1+\delta)^s+(1-\delta)^s}{2}\right)^{1/s},
+ \qquad w_\pm(x)=\frac{1\pm\delta x}{n},\qquad m=n^{-1}.
+\]
+Strict convexity gives $n>1$, while $\|w_\pm\|_s=1$ and
+$\mathbb E w_\pm=m$. Define $R_{\pm,L}(x)=\prod_i w_\pm(x_i)$ and
+\[
+ Z_L=1+2\varepsilon m^L,\qquad
+ r_L=\frac{1+\varepsilon(R_{+,L}+R_{-,L})}{Z_L}.
+\]
+Product integration gives $\|R_{\pm,L}\|_s=1$ and
+$\mathbb E R_{\pm,L}=m^L$. Hence $r_L>0$, $\mathbb E r_L=1$,
+$\|r_L\|_s\le(1+2\varepsilon)/Z_L\le B$, and
+$r_L\ge1/Z_L\ge1/B$.
+
+Write $Q=P_{\sqrt\rho}$. Since $Q^2=P_\rho$, the matrices
+$T_{r_L}=AA^*$ and $S_L=A^*A$, with $A=M_{\sqrt{r_L}}Q$,
+have identical spectra, including multiplicities. Here $M_f$ denotes
+multiplication by $f$. Direct expansion gives
+\[
+ Z_L S_L=P_\rho+\varepsilon(X_L+Y_L),\qquad
+ X_L=H_+^{\otimes L},\quad Y_L=H_-^{\otimes L},
+\]
+where the one-site matrices, in the orthonormal Walsh basis $(1,x)$, are
+\[
+ H_\pm=\frac1n
+ \begin{pmatrix}1&\pm\delta\sqrt\rho\\
+                 \pm\delta\sqrt\rho&\rho\end{pmatrix}.
+\]
+They are positive definite and conjugate by $\diag(1,-1)$. Their common
+simple top eigenvalue is
+\[
+ \kappa(\delta)=
+ \frac{1+\rho+\sqrt{(1-\rho)^2+4\rho\delta^2}}{2n(\delta)}.
+\]
+At zero, $\kappa(0)=1$, $(\log\kappa)'(0)=0$, and differentiation yields
+\[
+ (\log\kappa)''(0)=\frac{2\rho}{1-\rho}-(s-1)>0.
+\]
+All functions are smooth near zero. Taylor's theorem therefore gives
+$\kappa>1$ for every sufficiently small positive $\delta$. Fix one such
+$\delta<1$. This choice depends on $\rho,s$ and is independent of $L$;
+no uniform exponential rate as $s\uparrow s_c$ is asserted.
+
+Set $\omega=\|H_+^{1/2}H_-^{1/2}\|$. Positive definiteness and
+submultiplicativity give $0<\omega\le\kappa$. If equality held, norm
+attainment at a unit vector $v$ would force equality in both steps of
+\[
+ \|H_+^{1/2}H_-^{1/2}v\|
+ \le\sqrt\kappa\,\|H_-^{1/2}v\|\le\kappa.
+\]
+The second equality makes $v$ a top eigenvector of $H_-$; the first
+then makes it a top eigenvector of $H_+$. But $H_+-H_-$ has zero
+diagonal and nonzero equal off-diagonal entries, so is invertible.
+It cannot annihilate their common top eigenvector. Thus $\omega<\kappa$.
+
+For $N=2^L\ge2$, use the $N$-by-$2N$ matrix
+$C=[\sqrt{X_L},\sqrt{Y_L}]$. Its two Gram matrices satisfy
+\[
+ CC^*=X_L+Y_L,\qquad
+ C^*C=\begin{pmatrix}
+ X_L&\sqrt{X_L}\sqrt{Y_L}\\
+ \sqrt{Y_L}\sqrt{X_L}&Y_L
+ \end{pmatrix}.
+\]
+The block diagonal part has its two largest eigenvalues equal to
+$\kappa^L$. Tensorization of positive square roots and of operator
+norms gives $\|\sqrt{X_L}\sqrt{Y_L}\|=\omega^L$, which is also the
+norm of the self-adjoint off-diagonal perturbation. The variational
+eigenvalue bound consequently gives
+\[
+ \lambda_1(X_L+Y_L)\le\kappa^L+\omega^L,\qquad
+ \lambda_2(X_L+Y_L)\ge\kappa^L-\omega^L>0.
+\]
+Indeed $C^*C$ and $CC^*$ have the same $N$ positive eigenvalues,
+with $N$ additional zeros only in $C^*C$, so both leading bounds
+transfer even when $L=1$. Also $X_L+Y_L\ge X_L$ gives
+$\lambda_1(X_L+Y_L)\ge\kappa^L$.
+
+Finally $P_\rho$ is positive semidefinite of norm one. For
+$F_L=Z_L S_L$, the variational principle and norm bound imply
+\[
+ \lambda_1(F_L)\le\varepsilon(\kappa^L+\omega^L)+1,
+ \qquad \lambda_2(F_L)\ge\varepsilon(\kappa^L-\omega^L),
+ \qquad \lambda_1(F_L)\ge\varepsilon\kappa^L.
+\]
+Subtracting and dividing gives the claimed upper bound. The scalar
+$Z_L$ cancels from the ratio, and $S_L$ and the actual $T_{r_L}$
+have the same spectrum. Its entrywise positivity gives strict Perron
+separation at every finite $L$. Both terms in the upper bound decay
+exponentially, although the bound can exceed one at small $L$.
+\end{proof}
+
+Theorems~\ref{thm:moment} and~\ref{thm:tilts} separate the two strict
+regimes at the same value $s_c$. The critical case $s=s_c$ remains open
+here. At $B=1$, Jensen forces $r=1$ and the actual gap is $1-\rho$;
+the sufficient lower bound is not claimed optimal. The tilted family
+does not claim product marginals for its weighting or stationary law.
+It isolates the moment obstruction for the same transfer operator,
+whereas Theorem~\ref{thm:main} isolates the marginal-information
+obstruction. The earlier two-point-spike construction in the retained
+analytical sources covers the narrower interval
+$1<s<\log2/\log(2/(1+\rho))$; it remains valid but is superseded here
+by the product-tilt construction.
+
