@@ -1,0 +1,211 @@
+Q251 /293A: OFF-DIAGONAL COEXACT EXTENSION OF BAND-REMOVED PLANE TRACES
+13November2026. Candidate source, separate audit required.
+Base05584799e2218d7d9de9f35af0fc8336e56ea94e.
+
+1. THE MISSING FEASIBILITY AND THE STATEMENT
+
+The292 audit correctly distinguished full-cell feasibility in F from
+feasibility in the smaller Xi F. Unit287 had proved singleton feasibility
+there, not full-prefix feasibility. We prove the stronger range directly,
+using actual coexact fields; it is not introduced as a structure assumption.
+
+Let8 divide n, n>=8, N=n/2, q=n/4 and u=n/8. All frequency indices are
+residues modulo n. Physical norms and row norms are ordinary counting norms.
+Use forward differences Delta_j h(x)=h(x+e_j)-h(x), adjoints delta_j,
+and the actual real coexact space U=im d1* on (Z/n)^3. Its unitary Fourier
+fiber at nonzero k is g(k) perpendicular in C^3, with
+ g_j(k)=exp(2pi i k_j/n)-1. Its zero coefficient is absent.
+Let N_d be the actual diagonal-frequency coexact space and O=U minus N_d
+orthogonally. Let Xi remove modes with k2 or k3 in{0,N}. Write Tr h for
+the physical trace h(i,j,0), not a normalized average.
+
+Define H_plane to be the real vector plane fields h(i,j) whose unitary
+two-dimensional Fourier coefficients vanish when k2 is0 orN. We construct
+a real linear operator E:H_plane -> Xi O with
+              Tr(Eh)=h,
+              ||Eh||^2 <=(9/2)n^3 ||h||^2.             (EXTENSION)
+No assumption on a cut, on a sample permutation or on a Green response is
+needed for this trace theorem. Construction and constants are explicit.
+
+For the original cell map C associated with ANY cuts0<=tau_i<n, this gives
+       range(C restricted to Xi O)=range(C restricted to Xi U). (RANGE)
+In the original checkerboard source model, O subset F and Xi fixes L;
+hence also range(C|Xi F)=range(C|Xi U), so all original low data are
+attainable by actual high fields in Xi F. For any l in L a cancelling
+field f in Xi O satisfies
+       C f=-C l,   <f,Bf><=54c n^4||l||^2.             (LOW-LIFT)
+The upper bound is coarse. It establishes feasibility, not target-c
+recovery or a below-c full-kernel witness.
+
+2. AN EXPLICIT PAIR SELECTION THAT NEVER USES A DIAGONAL FIBER
+
+Fix a plane frequency p=(p1,p2), p2 notin{0,N}. Choose a set J_p of two
+opposite third-coordinate frequencies as follows:
+ J_p={q,-q}, unless p1=p2=q or p1=p2=-q;
+ J_(q,q)={u,u+N};
+ J_(-q,-q)={-u,-u-N}.
+Each set contains two distinct residues, separated by N, neither0 norN.
+The exceptional sets avoid their corresponding diagonal value p1=p2.
+In all other cases either p1!=p2 or their common value is notq,-q.
+Thus no (p1,p2,r), r in J_p, is diagonal; all are nonzero.
+The sets also satisfy J_(-p)=-J_p. The two exceptional plane frequencies
+are negatives of each other. On the rest, {q,-q} is self-conjugate as a
+set. No self-conjugate plane frequency occurs in H_plane, because p2 is
+neither0 norN. These observations include n=8 and every wraparound index.
+
+3. TWO ACTUAL COEXACT PLANES SPAN ALL VECTOR TRACE DATA
+
+For each r in J_p let g_r=g(p1,p2,r), and let
+       P_r=I-g_r g_r*/||g_r||^2
+be the Hermitian orthogonal projector onto the actual coexact fiber.
+Define S_p=sum_(r in J_p) P_r. We prove
+                   S_p >= [2/(9n^2)] I_3.             (FLOOR)
+
+Write a=(g_1(p),g_2(p)), and the two normals as (a,b),(a,b'), where
+b=exp(2pi i r/n)-1 and b'=-exp(2pi i r/n)-1. Then |b-b'|=2 and
+the exact Gram determinant is
+ ||(a,b)||^2||(a,b')||^2-|<(a,b),(a,b')>|^2=4||a||^2.
+This is obtained by expanding both sides; it is valid for complex a,b.
+Both normal norms squared are at most12. If rho is the absolute inner
+product of their unit normals, this gives
+         1-rho^2 >=||a||^2/36.
+The normals are nonparallel, since a is nonzero (p2!=0) and b!=b'.
+The sum of their rank-one unit-normal projectors has eigenvalues1+rho,
+1-rho,0. Therefore S_p, which is2I minus that sum, has eigenvalues
+1-rho,1+rho,2. In particular
+ min spec S_p=1-rho >=(1-rho^2)/2 >=||a||^2/72.
+Finally |g_2(p)|=2|sin(pi p2/n)|>=2sin(pi/n)>=4/n. The last inequality
+is the concavity chord sin x>=2x/pi on[0,pi/2]. Thus ||a||^2>=16/n^2,
+proving FLOOR. This floor is for actual fiber projections, not an assumed
+Gram matrix; S_p is invertible at every allowed plane frequency.
+
+4. EXACT TRACE, REALITY AND ACTUAL CURL-ADJOINT REALIZATION
+
+For h in H_plane define the three-dimensional Fourier coefficients
+  hat(Eh)(p1,p2,r)=sqrt(n) P_r S_p^-1 hat h(p1,p2), r in J_p,
+and set every other coefficient to zero. Here hat h is the unitary2D
+transform and hat(Eh) the unitary3D transform. A trace has Fourier rule
+  hat(Tr w)(p1,p2)=n^-1/2 sum_r hat w(p1,p2,r).
+This follows by substituting the3D inverse and performing the two plane
+sums with unitary2D normalization. Thus the constructed trace is exactly
+n^-1/2 sqrt(n) S_p S_p^-1 hat h=hat h, with no scale mismatch.
+
+All occupied frequencies have p2,r outside{0,N}, so Eh lies in range Xi.
+They are non-diagonal by section2, so Eh is orthogonal to N_d. Each
+coefficient lies in the actual g-perpendicular plane. To verify actual
+image membership construct, at every occupied k, the skew coefficients
+ W_(j,l)(k)=[g_j(k) hat(Eh)_l(k)-g_l(k) hat(Eh)_j(k)]/||g(k)||^2.
+Then sum_j conjugate(g_j)W_(j,l)=hat(Eh)_l. Set all other W coefficients
+to zero. Hence Eh=d1*W, not just a field satisfying a substituted divergence.
+Since J_(-p)=-J_p, g(-k)=conjugate(g(k)), and h is real, the projectors,
+S_p inverses, constructed field and skew potential all obey conjugate
+pairing. They therefore define real physical fields and a real linear E.
+
+Parseval and P_r^2=P_r give, frequency by frequency,
+ sum_(r in J_p)||hat(Eh)(p,r)||^2
+   =n <hat h,S_p^-1(sum P_r)S_p^-1 hat h>
+   =n <hat h,S_p^-1 hat h>
+   <=(9/2)n^3||hat h||^2.
+Summing proves EXTENSION. The construction has no harmonic/zero-frequency
+component, and no projection that might change observations is applied
+after its plane trace is set.
+
+5. ALL ORIGINAL CELLS AND THE SMALLER-DOMAIN RANGE
+
+Original cells are {i} times I times J, with I=[0,tau_i-1],{tau_i},
+or[tau_i+1,n-1], J={0} or[1,n-1]; empty cells omitted. Each vector
+component row is sum_cell w_r/sqrt(n^3 |cell|). The proof works for every
+choice of tau_i; no permutation property is invoked.
+Take any w in Xi U, and h=Tr w. Its plane transform has no p2=0,N modes,
+so h belongs to H_plane. Since w has no k3=0 modes,
+sum_(k=0)^(n-1) w(i,j,k)=0 at every i,j. The same holds for Eh.
+They have identical plane traces; therefore their sums over k=1,...,n-1
+are also identical, each being minus that same plane value. Summing over
+any I proves equality for EVERY original plane and long-third cell, with
+the original normalization and each spatial component: C(E Tr w)=Cw.
+This includes singleton and remaining volume-one cells and handles empty
+intervals by omission. No equality between differently normalized rows is
+assumed; equality is between the same row evaluated on two fields.
+Thus C(Xi U) is contained in C(Xi O). The reverse inclusion is immediate.
+This proves RANGE by an actual explicit linear lift, not a dimension count.
+
+6. LOW-MODE CANCELLATION AND ITS ENERGY
+
+Use the original source parameters H=cn^2,a=c/48,c>0, either channel,
+and the actual restricted low/high decomposition from289B. Its paid
+spectral facts are L subset N_d, O subset F, B=A_F-cI>=13c/3.
+Low diagonal pairs never use frequencies0,N, so Xi acts identically on L.
+Xi preserves U and F: each removed band contains complete checkerboard
+pairs k,k+(N,N,N), so its projector commutes with the restricted A.
+Consequently Xi O subset Xi F subset Xi U, which with RANGE gives the
+claimed equalities of all three observation ranges.
+
+For l in L write l(i,j,k)=phi(i+j+k), with a vector profile phi. Each
+residue of i+j+k occurs n^2 times, whereas each i+j residue occurs n times.
+Thus ||Tr l||^2=||l||^2/n. Put f=-E Tr l. It belongs to Xi O subset F,
+and section5 gives Cf=-Cl. Moreover
+ ||f||^2<=(9/2)n^2||l||^2.
+Because b_epsilon<=H and each forward difference has norm at most2,
+Q(f)<=12H||f||^2. Hence
+ 0<=<f,Bf>=Q(f)-c||f||^2<=54c n^4||l||^2,
+as asserted. This is true for arbitrary cuts and requires no sample-frame
+isometry. The power and constant are not asserted optimal.
+
+7. THE FULL PREFIX PSEUDOINVERSE IS NOW FEASIBLE ON Xi F
+
+On F let R'=Xi B^-1 Xi, extended by zero off Xi F. The commutation just
+proved makes it the actual inverse of B on Xi F. Let
+ M'=T_F R' T_F*, f'_T(l)=-R' T_F* (M')dagger T_L l,
+ R'_T=R'-R' T_F* (M')dagger T_F R',
+ r'(l)=P_L l+P_F f'_T(l), K'_P=P_F R'_T P_F*.
+Our full cancelling f=-E Tr l pays T feasibility before M' is inverted.
+Then f-f'_T lies in Xi F cap ker T and has P-value -r'(l). Whitening on
+Xi F gives range K'_P equal to the attainable P-values on that kernel,
+exactly as in286; thus r'(l) is in range K'_P. The attained full minimum
+within Xi F is therefore
+ min_(f in Xi F:Cf=-Cl)<f,Bf>
+   =<T_L l,(M')dagger T_L l>+<r'(l),(K'_P)dagger r'(l)>
+   <=54c n^4||l||^2.                                    (PAID-RANGE)
+Every original prefix row is retained. The old290/291 residuals and their
+estimates are not substituted for r'. This closes the precise feasibility
+obligation identified by the292 audit rather than assuming it in notation.
+
+8. SCOPE, NOVELTY, REVIEW AND NEXT STEP
+
+This is a finite-dimensional real linear extension/range theorem with an
+explicit norm bound, for8|n and arbitrary original cuts. It proves the
+previously unpaid full-prefix feasibility in Xi F. It does not remove
+positivity, coexactness or any other assumption of the source model. No
+spectral gap of physical Yang--Mills, continuum limit, target-c recovery,
+sharp energy estimate or below-c original full-kernel witness follows.
+The cn^4 full-cost ceiling is far above the relevant order-c deficit.
+
+The low spectral inputs are from manuscript289B, source446124a566483e6f1a8d499d801ce60e0abbb9d8,
+rawSHA256579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668;
+its exact text is retained in research/quadratic-prefix290/audit290A/subjects/.
+The actual coexact Fourier image formula is re-derived by the explicit W
+above. The292 feasibility caution is retained with its full audit. Older
+zero-sectional-lift, complete-line-only and fixed-endpoint routes stay
+closed/parked. This is the first unit of the new Xi full-prefix mechanism,
+not a reset of the three-unit failure of the former lift route.
+
+Model assessments and review context: fabricated by this involved
+Codex/OpenAI session, exact backend unexposed. A distinct analytic source
+audit must check all eight gates before acceptance; no independence, human
+peer review, numerical/Lean verification, PDF grade or publication claimed.
+The elementary two-projector spectrum and discrete differential operators
+are classical. Primary background: Desbrun, Hirani, Leok and Marsden,
+Discrete Exterior Calculus, https://arxiv.org/abs/math/0508341, abstract
+context only (simplicial calculus, not this cubical sampling theorem).
+Specific external originality of this extension is UNESTABLISHED. Do not
+publish a small standalone paper; group with meaningful prefix-energy work.
+
+Next sole Q251 question: with full Xi feasibility now paid, derive an
+estimate of the actual remaining r'-cost at the low deficit scale using
+original prefix Fourier cross-correlations for tau_i=2i^2 mod n. The
+available287 low bad subspace already pays singleton cost<=c||l||^2/2;
+a remaining cost<3c||l||^2/8 on one nonzero such direction would suffice
+for a below-target kernel witness. No such bound is proved here. Keep
+the exact original rows and conditional subtraction. After three units
+without a useful estimate or concrete counterexample, retain failures
+and identify the missing inequality or change mechanism.

@@ -1,0 +1,86 @@
+{
+  "files": [
+    {
+      "path": "analytical-gates.json",
+      "bytes": 5022,
+      "sha256": "d8ef3cb731ef3a609dc71c9eb62c215ea5d0147603ab01d4c034ea9392270554"
+    },
+    {
+      "path": "assignment.txt",
+      "bytes": 1459,
+      "sha256": "935a79c97010e70da87f17233a810a94e8ab615986ad681e099d8b618c341099"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 1065,
+      "sha256": "f2ce0dc8971687131b464baead812071fbf9925c9de6bc95c295fae0e347a155"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 7818,
+      "sha256": "6c434cc5ab64b6e41b5a094de35806b41ff8891aa466e423e2368f79b1e67850"
+    },
+    {
+      "path": "inspected-input-hashmanifest.json",
+      "bytes": 4551,
+      "sha256": "9b0225d261f0bdd667399b010bb8dd558eac0f2d383850550bcf91c0af5266c0"
+    },
+    {
+      "path": "stability.json",
+      "bytes": 494,
+      "sha256": "ba3bfcaf3729eaa1f50eb29d55e437771baa55a171e42af16eb8264a09f87538"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/git-judges292.txt",
+      "bytes": 1523,
+      "sha256": "c2dd486fb33553a24b53a90906bf424c807f5ced1f302602e9254c15d4b09bcb"
+    },
+    {
+      "path": "subjects/git-sectional-rebase292A.txt",
+      "bytes": 11863,
+      "sha256": "7ca695a7773241d5d140bcb1acd1175c0931e1049860fda203c827b78cbbb467"
+    },
+    {
+      "path": "subjects/judges292.txt",
+      "bytes": 1523,
+      "sha256": "c2dd486fb33553a24b53a90906bf424c807f5ced1f302602e9254c15d4b09bcb"
+    },
+    {
+      "path": "subjects/line-average-removal287A.txt",
+      "bytes": 11041,
+      "sha256": "55473f9e3683b9b53578b26d54b37eac5a1f2e92aa4de7780d09b1997444c1be"
+    },
+    {
+      "path": "subjects/manuscript289B.tex",
+      "bytes": 54939,
+      "sha256": "579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "subjects/prefix-residual286A.txt",
+      "bytes": 10303,
+      "sha256": "dbfc64f90d55e96c86795090a92765b13edef735eb5048713d435cc30ee27055"
+    },
+    {
+      "path": "subjects/sectional-rebase292A.txt",
+      "bytes": 11863,
+      "sha256": "7ca695a7773241d5d140bcb1acd1175c0931e1049860fda203c827b78cbbb467"
+    },
+    {
+      "path": "subjects/sectional-residual291A.txt",
+      "bytes": 12372,
+      "sha256": "c3634a25f05eebc2f1c7cbcd6c447eb44c0f00acacd2aa0b1f36f68413b0384c"
+    }
+  ],
+  "nonzero_retained_artifact_count": 16,
+  "regime": "Exact raw bytes; manifest excludes itself"
+}

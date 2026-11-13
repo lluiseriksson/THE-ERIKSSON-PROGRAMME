@@ -1,0 +1,21 @@
+UNIT293: PAY FULL-PREFIX FEASIBILITY BEFORE INVERTING ITS RESPONSE
+13November2026. Base05584799e2218d7d9de9f35af0fc8336e56ea94e.
+Question: can every allowed band-removed plane trace be extended to an
+actual band-removed OFF-DIAGONAL coexact field, with an explicit norm bound?
+Hypotheses:8 dividesn,n>=8; counting norm; original forward curl adjoint;
+plane x3=0; no k2=0,n/2 trace modes. Original cut can be arbitrary.
+Mechanism: two opposite third-coordinate frequencies, sum of the two
+actual coexact fiber projections, real conjugate pairing, exact trace.
+Falsifier: a diagonal mode retained, nonreal extension, incorrect Fourier
+normalization, noninvertible fiber sum, wrong norm bound or original-row
+equality. Reject rather than assume the disputed feasibility.
+Separate analytic audit gates:
+1. Frequency selection, all exceptional indices and conjugate pairing.
+2. Actual coexact fibers and explicit skew-potential realization.
+3. Wedge identity, projector-sum eigenvalue floor2/(9n^2).
+4. Plane trace normalization and extension norm squared<=9n^3/2.
+5. All original cell rows, zero third-line sums and range equality.
+6. Low-plane norm squared=||l||^2/n and54cn^4 energy bound.
+7. Actual smaller-domain conditional residual range, not just T range.
+8. Scope, priority limits, retained old-route closure and no target-c claim.
+No numerical execution, formal check, new PDF score or standalone paper.

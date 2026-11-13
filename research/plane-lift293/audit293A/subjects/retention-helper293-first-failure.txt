@@ -1,0 +1,8 @@
+Metadata-retention helper first attempt, actual process exit1.
+2026-11-13. No mathematical executable was run.
+Python parsing failed before executing any helper statements:
+File audit_source293.py, line41
+SyntaxError: unterminated string literal (detected at line41)
+Cause: unescaped apostrophe in the single-quoted prose string "292'scaution".
+The complete first failed helper bytes are retained in retention-helper293-first-failed.txt.
+No audit packet/PASS was produced by this failed attempt. Corrected only retention prose quoting, retained this failure, and then resumed metadata sealing. Scientific source/HEAD/judges untouched.

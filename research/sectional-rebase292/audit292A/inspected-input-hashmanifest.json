@@ -1,0 +1,76 @@
+{
+  "inputs": [
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\sectional-rebase292\\sectional-rebase292A.txt",
+      "path": "subjects/sectional-rebase292A.txt",
+      "bytes": 11863,
+      "sha256": "7ca695a7773241d5d140bcb1acd1175c0931e1049860fda203c827b78cbbb467",
+      "read_scope": "Entire text read, all eight analytical gates attacked"
+    },
+    {
+      "original": "a502f9b688cbbc2036dccc2692636eb5be0db412:research/sectional-rebase292/sectional-rebase292A.txt",
+      "path": "subjects/git-sectional-rebase292A.txt",
+      "bytes": 11863,
+      "sha256": "7ca695a7773241d5d140bcb1acd1175c0931e1049860fda203c827b78cbbb467",
+      "read_scope": "Exact Git identity verified"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\sectional-rebase292\\judges292.txt",
+      "path": "subjects/judges292.txt",
+      "bytes": 1523,
+      "sha256": "c2dd486fb33553a24b53a90906bf424c807f5ced1f302602e9254c15d4b09bcb",
+      "read_scope": "Entire text read, all eight analytical gates attacked"
+    },
+    {
+      "original": "a502f9b688cbbc2036dccc2692636eb5be0db412:research/sectional-rebase292/judges292.txt",
+      "path": "subjects/git-judges292.txt",
+      "bytes": 1523,
+      "sha256": "c2dd486fb33553a24b53a90906bf424c807f5ced1f302602e9254c15d4b09bcb",
+      "read_scope": "Exact Git identity verified"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\quadratic-prefix290\\audit290A\\subjects\\prefix-residual286A.txt",
+      "path": "subjects/prefix-residual286A.txt",
+      "bytes": 10303,
+      "sha256": "dbfc64f90d55e96c86795090a92765b13edef735eb5048713d435cc30ee27055",
+      "read_scope": "Exact paid input; full text read in earlier involved audits; relevant286 conditional cost and287 floor/subspace passages reread in292,289/291 dictionary and obstruction retained explicitly"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\quadratic-prefix290\\audit290A\\subjects\\line-average-removal287A.txt",
+      "path": "subjects/line-average-removal287A.txt",
+      "bytes": 11041,
+      "sha256": "55473f9e3683b9b53578b26d54b37eac5a1f2e92aa4de7780d09b1997444c1be",
+      "read_scope": "Exact paid input; full text read in earlier involved audits; relevant286 conditional cost and287 floor/subspace passages reread in292,289/291 dictionary and obstruction retained explicitly"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\quadratic-prefix290\\audit290A\\subjects\\manuscript289B.tex",
+      "path": "subjects/manuscript289B.tex",
+      "bytes": 54939,
+      "sha256": "579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668",
+      "read_scope": "Exact paid input; full text read in earlier involved audits; relevant286 conditional cost and287 floor/subspace passages reread in292,289/291 dictionary and obstruction retained explicitly"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\sectional-residual291\\sectional-residual291A.txt",
+      "path": "subjects/sectional-residual291A.txt",
+      "bytes": 12372,
+      "sha256": "c3634a25f05eebc2f1c7cbcd6c447eb44c0f00acacd2aa0b1f36f68413b0384c",
+      "read_scope": "Exact paid input; full text read in earlier involved audits; relevant286 conditional cost and287 floor/subspace passages reread in292,289/291 dictionary and obstruction retained explicitly"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\CLAUDE.md",
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "read_scope": "Same raw governance as earlier full-read sources; separate role/raw bytes/no-inbound/environment rules applied"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "read_scope": "Same raw governance as earlier full-read sources; separate role/raw bytes/no-inbound/environment rules applied"
+    }
+  ],
+  "nonzero_inspected_input_count": 10,
+  "byte_regime": "Exact raw bytes, no normalization"
+}

@@ -1,0 +1,54 @@
+{
+  "nonzero_analytical_gate_count": 8,
+  "method": "Analytical source review, not executable mathematics",
+  "gates": [
+    {
+      "gate": 1,
+      "name": "Frequency selection and real pairing",
+      "verdict": "PASS",
+      "reason": "Default{q,-q} is antipodal, separatedbyN. Onlyplanediagonalp=(q,q),(-q,-q) couldmakeonechoice aphysicaldiagonal; theirspecialpairs{u,u+N} and{-u,-u-N} avoidthecorrespondingq or-q. Everychosenr isoutside0,N. At n8 theseare{2,6},special{1,5}/{7,3}, withno collision/zero/diagonal. J_-p=-J_p holds, whileallowedp2 excludesallselfconjugateplaneindices. Otherp1=p2 valuescannotcoincidewithdefaultthirdchoices."
+    },
+    {
+      "gate": 2,
+      "name": "Actual coexact fibers and skew potential",
+      "verdict": "PASS",
+      "reason": "EachP_r=I-g_rg_r*/|g_r|\u00b2 is theHermitianactualg-perp projection. p2!=0 guaranteesnonzero g. CoefficientsP_r S^-1h areactualcoexact, and W_jl=(g_j uhat_l-g_l uhat_j)/|g|\u00b2 gives sumconjg_j W_jl=uhat_l sinceg*uhat=0. Skewsigns matchforwardcurladjoint. Zero/nonselectedcoefficients arezero, so noharmonicterm. Conjugationg(-k)=conjg(k) andJ_-p=-J_p carriesP,S^-1,E andW into theirconjugates, givingrealphysicalfields and real-linearE."
+    },
+    {
+      "gate": 3,
+      "name": "Complex Gram determinant and floor",
+      "verdict": "PASS",
+      "reason": "ForA=||a||\u00b2, determinant=(A+|b|\u00b2)(A+|bprime|\u00b2)-|A+conjb*bprime|\u00b2=A|b-bprime|\u00b2=4A, validcomplex. Normsquared product<=144 gives1-rho\u00b2>=A/36. Nonparallelnormals yieldS eigenvalues1-rho,1+rho,2. Hence min>=A/72. Sincep2!=0, |g2|>=2sin(pi/n)>=4/n, givingA>=16/n\u00b2 andfloor2/(9n\u00b2). No assumedGram or complextranspose substitution."
+    },
+    {
+      "gate": 4,
+      "name": "Trace normalization and extension bound",
+      "verdict": "PASS",
+      "reason": "Unitary2Dtrace of3Dfield satisfies hhat=n^-1/2 sum_r what(p,r). The construction sqrt(n)P_r S^-1hhat thereforetracesexactlytohhat. Parseval withP_r\u00b2=P_r andHermitianS^-1 givesfrequencyenergy n<hhat,S^-1hhat>, boundedby(9/2)n\u00b3|hhat|\u00b2. Differentp do notduplicate3Dfrequencies. Everyoccupiedk2,k3 avoidsbands andeveryfrequency isoffdiagonal, so E mapsintoXiO withtheprintednormconstant, notjustambientspace."
+    },
+    {
+      "gate": 5,
+      "name": "All normalized original cells and actual range",
+      "verdict": "PASS",
+      "reason": "Forw inXiU, Trw hasallowedp2support andbothw andETrw havefullthirdcoordinate sumzero pointwise. Equalplanevalues implyequal sumsoverthirdlonginterval, thenequalcell sumsforeachoriginalI andcomponent. Comparingthesamerowoneachfield keepsnormalizationsexact, includingendpoint/empty/volume-onecells. Thus C(ETrw)=Cw explicitly. XiO subsetXiU givesreverseinclusion, so range equalityholds forarbitrarycuts, notmerelysingletons orrowdimension."
+    },
+    {
+      "gate": 6,
+      "name": "Low trace count and54cn4 energy",
+      "verdict": "PASS",
+      "reason": "ActualL liesondiagonalnonexceptionalpairs, withcoordinatesoutside0,N. Xi fixesL and preservesU/F/O bywholecheckerboardpair support. ConsequentlyXiO subsetXiF subsetXiU extendsrangeequality. Forl=phi(i+j+k), everyresidueoccursn\u00b2timesinvolumeandntimesonplane, giving||Trl||\u00b2=||l||\u00b2/n. f=-ETrl isactualXiO high, hasCf=-Cl, norm\u00b2<=(9/2)n\u00b2||l||\u00b2. B>=0onF andQ<=12H||f||\u00b2 yield0<=<f,Bf><=54cn^4||l||\u00b2. No samplepermutation orframe isused."
+    },
+    {
+      "gate": 7,
+      "name": "Smaller-domain conditional feasibility now paid",
+      "verdict": "PASS",
+      "reason": "CommutationofXi withB onF makesRprime theactualB-inverse onXiF. The explicitfullcancellingf firstputsT_Ll inrangeMprime, so singletonpseudoinverse/minimizer islegitimate. Differencef-fprime_T lies inXiF capkerT withP-value-rprime. Whitenedconditionalresponse thenhasexactlytheattainableP range, so rprime is inrangeKprime_P beforeinversion. B-squarecompletion gives theattainedadditivecost insideXiF, boundedbytheexplicit54cn4competitor. This genuinely discharges the292 caution, notbyassumingfullXi-prefixrangeinnotation."
+    },
+    {
+      "gate": 8,
+      "name": "Scope, route preservation and next quantitative task",
+      "verdict": "PASS",
+      "reason": "Maintrace/range theoremneeds8|n>=8 andarbitrarycuts; source-modelenergypartusespaidcheckerboardspectrum. n8needsno287floor. Oldparkedroutesarenotrestarted; newmechanismpaysapreviouslymissingexplicitrange. cn4ceiling isnotc-scale, targetrecovery orbelow-cfullkernelwitness. 287badsubspacecomparisonapplieswhereitsn>=16/conservativeconditionshold; actualXi-singletonminimizer isthenewbaseline, notoldr/q. Noexternalpriority, independence, PDFscore/Lean/runtime/publication/physicalgapclaim."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+292A COMPLETE ADVERSARIAL ANALYTICAL ROUTE-EXIT SOURCE REPORT
+VERDICT: BOUNDED_ANALYTICAL_ACCEPTANCE. Eight of eight preregistered analytical gates reviewed; explicit nonzero count8. No material failure or mandatory correction found. One nonblocking forward-scope caution is retained below: fullprefix feasibility insideXiF is not supplied by287 and must not be assumed in the next mechanism. Present nested minima have paid ranges and are valid.
+
+EXACT REFERENT AND INVOLVEMENT
+FrozenHEADa502f9b688cbbc2036dccc2692636eb5be0db412, base7c2111835599eefe983b7771a550b6bbd6556030. Exact292A rawSHA2567ca695a7773241d5d140bcb1acd1175c0931e1049860fda203c827b78cbbb467 matchesGit. Whole292 source andalljudges read. Exactbound286/287/289/291 inputs captured andhash/Git verified, withpreciseactualreadscope retained. Priorinvolvedprogrammecontext disclosed: separateCodex/OpenAI audit, exactbackendunexposed, notindependent/blind/humanpeerreview ordiscoveryattribution. No mathematicalexecution, grade, publication ororiginalprioritycertification.
+
+COMPLETE EIGHT-GATE FINDINGS
+1. Signs, definitions and original G=DP
+f_T is the negative cancelling highfield, so it equals minus291 f(l); w_T=l+f_T matches291 l-f. The reconstructed G is unnormalized, D multiplies originalP rows bysqrt(n³|cell|) andsumsactualvolumes; G=DP onkerT includes allotherpointcells/emptycellomission. Low diagonal meanzero givesGl=0. r=P_Ll+P_Ff_T andq=P_Ll+P_Ff_TG are distinct originalrow residuals.
+
+2. Sectional feasibility on the correct range
+Fulloriginalrange280/289 givesf_full cancellingC. Its totalfield hasT=G=0, so h=f_full-f_T is inkerT withGh=-g_T. WhitenedattainableG range isrange(G_F B^-1/2 Pi_T), which equalsrange(G_F R_TG_F*) byrangeAA*=rangeA. Thusg_T is inrangeM_G before using its pseudoinverse. No fullrowrank or freelyaddedobservation isassumed.
+
+3. Nested projectors and additive attained costs
+Pi_T is the orthogonalprojection onto kerX. WithY=G_F B^-1/2, Pi_TY*(Y Pi_TY*)daggerY Pi_T is the projection withinrangePi_T onto rangePi_TY*. Its subtraction gives projection onto kerX capkerY, without assumingthetwo originalconstraintprojections commute. ConsequentlyR_TG isPSD, R_TG B R_TG=R_TG andbothconstraintsannihilateit. z_G sign cancelsg_T; Bcross terms againstf_T andhomogeneousTGfields vanish bywhitening. TG-COST is attained. Fullf_full-f_TG paysq inrangeK_P|TG, gives thenegative residualminimizer and FULL-COST. No constraint/row/cost discarded.
+
+4. Actual rebasing and failure of transferring291
+Comparingthefullminimumwith286 cancelsE_T andgivesoldr-cost=E_G+newq-cost, notoldr-costplusE_G. Dq=G(l+f_TG)=0 exactly, butkerD is notS. Fornonzerol in291L_v, oldG(l+f_T) isstrictlypositiveinnorm; newG(l+f_TG)=0. Thus the attempted unchanged SECTION conclusion onthenewfield is actuallyfalse, while291 remainscorrect aboutitsoriginalminimizer. The costdifferenceis genuinelypaidE_G.
+
+5. Uniform32c ceiling via the selected inverse
+R0prime isPSD onactualF, supportedinXiF and dominatedbyB^-1. CongruenceZ=B^1/2R0primeB^1/2 gives0<=Z<=I, henceZ²<=Z andR0prime B R0prime<=R0prime. M0 annihilatesWperp, is>=I/(32cn^5) onW, soitsrangeisexactlyW. Actualy=T_Ll belongsW andnorm²=n^-5||l||². The competitor-R0primeT_F*M0daggery is feasible forT andG; itsBenergy is boundedabove, not incorrectlyequalledtoitsselectedinversecost. Thatcost<=32cn^5||y||²=32c||l||², payingCEILING as a287corollary.
+
+6. Large287 subspace and remaining3c/8 demand
+The287 simultaneous realXi-high cancellation onL_badprime has cost<=c||l||²/2 andGl+GfXi=0, so TGminimum<=thatcost. ThisyieldsBAD-CEILING andE_G<=c||l||²/2-E_T. The exactsamekprimeformula/asymptotic are recalled, allowedzerofinitesizecount, nointersectionwith291L_vassumed. Fullkernelcriterionrequirescost>=D_L>=7cI/8; subtractingthejointceiling leaves qconditionalcost>=3cI/8. A strictreverse direction inthissubspace givesactualbelowtargetfullkernel; satisfyingMISSINGonlythere wouldnotprove recoveryonallL.
+
+7. New-information boundary and remaining feasibility
+Nestedshorting isclassical; bothceilings areexplicit287consequences, notnewfrontier/hypothesiselimination. Noneofthecurrentidentities omitsfeasibility; fullrowrangeandtheexplicit287competitor paytheirranges. Thelastprefixcost isstillunboundedand291oldr lowerbound cannotbetransferredtoq. Forwardcaution:287 providesXi-constrainedsingletonfeasibility, NOT fullprefixfeasibilityinsideXiF. AnynewXi-baselineprefixoptimization mustproveitsactualresidualrange orretain infeasibility asanobstruction. Thepresentreportdoesnotclaimthat strongerfuturefeasibility, so thisisnonblocking scopeguidance.
+
+8. Honest route exit and one genuine next mechanism
+Thezero-sectional290lift/extrapolation route isparked afterthreeunitswithoutc-scalefullprefixestimate; publication/algebraicrenaming do notresetit. Olderprojection/directstream/line-onlyroutesremainstopped. Thenextmechanism isoriginalprefixFouriercrosscorrelation onthepaidXi-singletonbaseline, withtheactualconditionaldeficitcomparison orconcreteobstruction required. It mustpayallremainingrows/ranges andnotreuseasectionalrankcount. Q251, physicalgapandexternalpriorityremainopen; no score/PDF/publication/independenceclaim.
+
+ADDITIONAL CHECKS AND OBJECTIONS
+OnkerT, R_T B actsastheidentity: writingh=B^-1/2v withv inrangePi_T givesR_T B h=h. This explicitlyjustifiestheBorthogonalityofz_G tothehomogeneouskerT capkerG, ratherthanassumingordinaryorthogonalprojectionscommute. Thesameidentitywiththenestedprojector justifiesthelastresidualcorrectionanditscrosscost. Everypseudoinverse isusedonlyaftertheoriginalfeasiblef_full or theexplicitcompetitor suppliesitsrange. TheunnormalizedG valuesareconsistentthroughg_T,M_G,z_G,E_G; rescalingisnotsecretlyusedtoimprovecost.
+
+The32c competitor isnot necessarilytheexactTGminimizer anditsBenergy neednot equal<y,M0daggery>. Theprintedinequality isthecorrectone fromthepositivecontraction. Thisdistinction isessential andwaschecked. Itrequiresno commutationofR0primewithB. SupportinXiF givesGzero directlyfromabsenceofk2/k3zero-frequencybands. Thelowerdimensionalbadsubspace canbeemptyatpractical sizes, soitsasymptoticrecall isnotapracticalwitness. The3c/8conditionalprefixdemand remainsnecessaryonly; no leaptofullrecoveryoruniformgap occurs.
+
+NONBLOCKING FORWARD-SCOPE CAUTION
+The nextXi-baseline task must not import fullC feasibility from280 into the smallerXiF domain automatically.287 paysT cancellation there anditsenergy, while280 paysfullC cancellation inF. Theforthcomingconditionalprefixrange onXiF needsitsownproof or anexplicitinfeasibilitybranch. Current292 FULL-COST usesTGwithinF andtheoriginalfullrange, soitisunaffected. This is retainedasfutureproof-obligation guidance, notacurrentmathematicalfailure orrequiredsourcepatch.
+
+Noothermaterial/minorobjection found. Theattemptedtransferof291SECTION toq iscorrectlyrejectedbyanactualpaidcounterconstruction. Noestimatefromthisreport decidesMISSING, givesac-scalefullprefixbound, eliminatesamodelhypothesis orsolvesQ251. Routeexit ishonest: ceilingsare287corollariesandnestedalgebraclassical, notanindependentfrontierdiscovery. Theoneproposednewmechanism genuinelychanges theunpaidquantitytooriginalprefixcrosscorrelation, withalloriginalrows andactualremainingcost retained. Exactexternalpriority remainsunestablished.
+
+RETENTION AND OPERATIONS
+Explicitreviewcount8 andnonzeroinspectedinput/outputcounts retained. Allchecks useif/raise, noPythonassert. Onlytext/Git/hash/copy/JSONmetadata operations; no code/mathruntime, tests,compiler/Lean,network,newagent/modelspend, source/state/Gitmutation orinboundmessage. No toolfailure, no clone/cleanupdebt. Current source/judges/HEAD checkedagainatsealing. Fullassignment/context/gates/inputhashes andrawmanifest storedinthisexclusivepacket, earlierreports unchanged.

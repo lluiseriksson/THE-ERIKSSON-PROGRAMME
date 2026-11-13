@@ -1,0 +1,54 @@
+{
+  "nonzero_analytical_gate_count": 8,
+  "method": "Analytical source review, not executable mathematical certification",
+  "gates": [
+    {
+      "gate": 1,
+      "name": "Signs, definitions and original G=DP",
+      "verdict": "PASS",
+      "reason": "f_T is the negative cancelling highfield, so it equals minus291 f(l); w_T=l+f_T matches291 l-f. The reconstructed G is unnormalized, D multiplies originalP rows bysqrt(n\u00b3|cell|) andsumsactualvolumes; G=DP onkerT includes allotherpointcells/emptycellomission. Low diagonal meanzero givesGl=0. r=P_Ll+P_Ff_T andq=P_Ll+P_Ff_TG are distinct originalrow residuals."
+    },
+    {
+      "gate": 2,
+      "name": "Sectional feasibility on the correct range",
+      "verdict": "PASS",
+      "reason": "Fulloriginalrange280/289 givesf_full cancellingC. Its totalfield hasT=G=0, so h=f_full-f_T is inkerT withGh=-g_T. WhitenedattainableG range isrange(G_F B^-1/2 Pi_T), which equalsrange(G_F R_TG_F*) byrangeAA*=rangeA. Thusg_T is inrangeM_G before using its pseudoinverse. No fullrowrank or freelyaddedobservation isassumed."
+    },
+    {
+      "gate": 3,
+      "name": "Nested projectors and additive attained costs",
+      "verdict": "PASS",
+      "reason": "Pi_T is the orthogonalprojection onto kerX. WithY=G_F B^-1/2, Pi_TY*(Y Pi_TY*)daggerY Pi_T is the projection withinrangePi_T onto rangePi_TY*. Its subtraction gives projection onto kerX capkerY, without assumingthetwo originalconstraintprojections commute. ConsequentlyR_TG isPSD, R_TG B R_TG=R_TG andbothconstraintsannihilateit. z_G sign cancelsg_T; Bcross terms againstf_T andhomogeneousTGfields vanish bywhitening. TG-COST is attained. Fullf_full-f_TG paysq inrangeK_P|TG, gives thenegative residualminimizer and FULL-COST. No constraint/row/cost discarded."
+    },
+    {
+      "gate": 4,
+      "name": "Actual rebasing and failure of transferring291",
+      "verdict": "PASS",
+      "reason": "Comparingthefullminimumwith286 cancelsE_T andgivesoldr-cost=E_G+newq-cost, notoldr-costplusE_G. Dq=G(l+f_TG)=0 exactly, butkerD is notS. Fornonzerol in291L_v, oldG(l+f_T) isstrictlypositiveinnorm; newG(l+f_TG)=0. Thus the attempted unchanged SECTION conclusion onthenewfield is actuallyfalse, while291 remainscorrect aboutitsoriginalminimizer. The costdifferenceis genuinelypaidE_G."
+    },
+    {
+      "gate": 5,
+      "name": "Uniform32c ceiling via the selected inverse",
+      "verdict": "PASS",
+      "reason": "R0prime isPSD onactualF, supportedinXiF and dominatedbyB^-1. CongruenceZ=B^1/2R0primeB^1/2 gives0<=Z<=I, henceZ\u00b2<=Z andR0prime B R0prime<=R0prime. M0 annihilatesWperp, is>=I/(32cn^5) onW, soitsrangeisexactlyW. Actualy=T_Ll belongsW andnorm\u00b2=n^-5||l||\u00b2. The competitor-R0primeT_F*M0daggery is feasible forT andG; itsBenergy is boundedabove, not incorrectlyequalledtoitsselectedinversecost. Thatcost<=32cn^5||y||\u00b2=32c||l||\u00b2, payingCEILING as a287corollary."
+    },
+    {
+      "gate": 6,
+      "name": "Large287 subspace and remaining3c/8 demand",
+      "verdict": "PASS",
+      "reason": "The287 simultaneous realXi-high cancellation onL_badprime has cost<=c||l||\u00b2/2 andGl+GfXi=0, so TGminimum<=thatcost. ThisyieldsBAD-CEILING andE_G<=c||l||\u00b2/2-E_T. The exactsamekprimeformula/asymptotic are recalled, allowedzerofinitesizecount, nointersectionwith291L_vassumed. Fullkernelcriterionrequirescost>=D_L>=7cI/8; subtractingthejointceiling leaves qconditionalcost>=3cI/8. A strictreverse direction inthissubspace givesactualbelowtargetfullkernel; satisfyingMISSINGonlythere wouldnotprove recoveryonallL."
+    },
+    {
+      "gate": 7,
+      "name": "New-information boundary and remaining feasibility",
+      "verdict": "PASS",
+      "reason": "Nestedshorting isclassical; bothceilings areexplicit287consequences, notnewfrontier/hypothesiselimination. Noneofthecurrentidentities omitsfeasibility; fullrowrangeandtheexplicit287competitor paytheirranges. Thelastprefixcost isstillunboundedand291oldr lowerbound cannotbetransferredtoq. Forwardcaution:287 providesXi-constrainedsingletonfeasibility, NOT fullprefixfeasibilityinsideXiF. AnynewXi-baselineprefixoptimization mustproveitsactualresidualrange orretain infeasibility asanobstruction. Thepresentreportdoesnotclaimthat strongerfuturefeasibility, so thisisnonblocking scopeguidance."
+    },
+    {
+      "gate": 8,
+      "name": "Honest route exit and one genuine next mechanism",
+      "verdict": "PASS",
+      "reason": "Thezero-sectional290lift/extrapolation route isparked afterthreeunitswithoutc-scalefullprefixestimate; publication/algebraicrenaming do notresetit. Olderprojection/directstream/line-onlyroutesremainstopped. Thenextmechanism isoriginalprefixFouriercrosscorrelation onthepaidXi-singletonbaseline, withtheactualconditionaldeficitcomparison orconcreteobstruction required. It mustpayallremainingrows/ranges andnotreuseasectionalrankcount. Q251, physicalgapandexternalpriorityremainopen; no score/PDF/publication/independenceclaim."
+    }
+  ]
+}

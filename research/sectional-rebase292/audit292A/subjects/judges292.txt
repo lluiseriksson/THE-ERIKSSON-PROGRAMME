@@ -1,0 +1,23 @@
+UNIT292 ANALYTICAL ROUTE-EXIT JUDGES --13November2026
+Base7c2111835599eefe983b7771a550b6bbd6556030.
+Question: can the actual sectional residual obstruction291 survive after
+paying to impose sectional sums, and does it settle full-prefix energy?
+Original model only; dyadicn>=16,c>0, original cells and coexact image.
+Mechanism: nested constrained minima plus the already proved287 competitor.
+Falsifier: infeasible pseudoinverse, incorrect energy cross term, loss of
+original rows, wrong use of a selected inverse, or reusing a bound on a
+different residual. No new original theorem or publication grade requested.
+Exit rule: this is the third unit of the290 lift route. If no target-scale
+full-prefix estimate results, park that route, retain the failed implication
+and identify the missing estimate; do not restart complete-line observations.
+
+Eight separate-source audit gates:
+1. Exact definitions, signs and the original reconstruction G=D P on ker T.
+2. Feasibility of sectional data in range(G R_T G*) via full-row range.
+3. Nested whitened projector and both attained additive cost identities.
+4. Actual residual changes; zero-sectional identity and291 non-transfer.
+5. Bound32c via selected287 inverse, including R0' B R0'<=R0'.
+6. Large bad-subspace comparison and remaining deficit>=3c/8.
+7. Explicit new/missing-information boundary:287 corollary, no independent
+   discovery, no full-prefix cost bound, no eliminated model hypothesis.
+8. Honest route closure, stopped-route preservation and one next question.
