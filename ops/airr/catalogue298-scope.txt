@@ -1,0 +1,29 @@
+Catalogue298: supervised factual predecessor reconciliation only.
+
+Purpose: replace the exact installed sole-author v1 catalogue tuple with the
+already public and independently downloaded v2 of ARR-2026-7KV9Y9ASX48H7A7N.
+This creates no grant, permission, receipt, scope, quota exemption or publication.
+Any future manuscript uses the ordinary exact native linked-revision flow.
+
+The complete separate source report and context are in catalogue298-audit/.
+Raw development file:6984bytes SHA256
+18aaecbe03959004d5e5bb3d0f23cc8a31fb86859f274c78dbedf579f9909c6b.
+Audited normalized Git-LF derivative:6890bytes SHA256
+19777c3c8be260f9327217350ff1363528a76224a7aaa554280562a2e25fbfd3.
+The normalization replaces CRLF with LF; both representations were inspected.
+The report is initially a file-source verdict, not a future commit attestation.
+
+Apply only with the existing authenticated operator route, exact source hash,
+real service interpreter/import/environment checks, secure existing paths and
+mode/ownership, exclusive issuance maintenance and no other catalogue writers.
+The helper itself enforces exact old entry, exact public PDF, no active unused
+historical grants, durable private backup, unrelated entries unchanged and
+atomic replacement with byte/mode/owner readback. Never override a refusal.
+
+Monitored recovery remains required. An exceptional db.close() can bypass
+restart; final catalogue-read errors can bypass result retention. Normal app
+import can touch existing service directory permissions before the PDF check.
+These inherited limits are explicitly retained, not represented as automatic
+recovery guarantees. Capture actual command output/exit and verify service and
+native health afterward. Preserve all partial evidence on failure; no blind retry
+and no presumed JSON rollback from a SQL rollback.
