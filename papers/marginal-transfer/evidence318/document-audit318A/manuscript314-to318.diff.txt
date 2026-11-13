@@ -1,0 +1,386 @@
+--- original314
++++ frozen318
+@@ -1,4 +1,4 @@
+-% DOCUMENT314: grouped attained-cutoff extension; exact-new-PDF assessment pending.
++% DOCUMENT318: grouped scalar envelope and universal strict-tail threshold; exact-new-PDF assessment pending.
+ \documentclass[11pt]{article}
+ \usepackage[margin=1in]{geometry}
+ \usepackage[T1]{fontenc}
+@@ -54,9 +54,12 @@
+ For $k_s=(s-1)/s<K<1$, finite parity backgrounds also give collapse
+ at the attained tail budget $1+C_s(1-K)K^{s-1}<2$,
+ with density floor exactly at least $K$, where
+-$C_s=s^s/(s-1)^{s-1}$. We solve the associated scalar background
+-optimization, while leaving the universal spectral threshold at such
+-cutoffs unresolved. External priority is unestablished. Global many-body weights are allowed;
++$C_s=s^s/(s-1)^{s-1}$. We prove that this is the exact universal
++strict-tail threshold: every smaller budget yields an explicit uniform
++gap for arbitrary nonnegative densities, without a density floor.
++The proof combines reverse hypercontractivity, normalized sign compression
++and truncation; a sharp scalar total-moment envelope supplies a simpler
++intermediate bound. External priority is unestablished. Global many-body weights are allowed;
+ no fixed-range Gibbs, local-dynamics or physical-gap conclusion follows.
+ \end{abstract}
+ 
+@@ -71,7 +74,12 @@
+ Section~\ref{sec:background} then optimizes finite parity backgrounds
+ to extend the sub-two tail-budget collapse region below cutoff one.
+ Section~\ref{sec:attained-cutoff} attains the constructive budget
+-and allows the floor to equal the cutoff.
++and allows the floor to equal the cutoff. Theorem~\ref{thm:scalar-envelope}
++gives the exact scalar total-moment envelope. Theorem~\ref{thm:universal-tail}
++then proves necessity of the constructed tail budget for every collapsing
++family. Readers interested in this sharp tail classification can start at
++Sections~\ref{sec:scalar-envelope}--\ref{sec:universal-tail}, using
++Theorem~\ref{thm:attained-cutoff} for the matching endpoint.
+ These are separate families; their properties are not asserted jointly.
+ 
+ \section{The question and the transfer convention}
+@@ -1585,11 +1593,11 @@
+ Writing the finite Walsh expansion
+ $F=1+\sum_{I\ne\varnothing}\widehat F(I)\chi_I$ and putting
+ $D_F=\sum_{I\ne\varnothing}|\widehat F(I)|$, block substitution gives
+-\[
++\begin{equation}\label{eq:318-background-decay}
+  \|Q_{kM}M_{a_M}Q_{kM}-P_{\rho,kM}\|
+  \le \sum_{I\ne\varnothing}|\widehat F(I)|\rho^{M|I|/2}
+- \le D_F\rho^{M/2}\longrightarrow0.                 \tag{31}
+-\]
++ \le D_F\rho^{M/2}\longrightarrow0.
++\end{equation}
+ Large fixed amplitudes or coefficients do not obstruct this limit.
+ 
+ \emph{The inherited critical family and actual eigenvalues.}
+@@ -1643,11 +1651,11 @@
+ 
+ \emph{Noninteger moments and the moving strict cutoff.}
+ Let $\theta=\min(1,s/2)$. For $c>0,z\ge0$,
+-\[
++\begin{equation}\label{eq:318-mixed-powers}
+  0\le(c+z)^s-c^s-z^s
+  \le s2^{s-1}\big(c^{s-\theta}z^\theta+
+-                   c^\theta z^{s-\theta}\big).       \tag{32}
+-\]
++                   c^\theta z^{s-\theta}\big).
++\end{equation}
+ To prove this, divide by $c^s$ and put $y=z/c$. For $y\le1$,
+ the mean value theorem bounds $(1+y)^s-1-y^s$ by
+ $s2^{s-1}y\le s2^{s-1}y^\theta$. For $y\ge1$ interchange
+@@ -1712,13 +1720,12 @@
+  \gap(r)\ge1-\left(\frac{K^{s-1}+\tau}{2}\right)^{1/s}>0
+  \quad\hbox{if }\tau<2-K^{s-1}.
+ \]
+-Neither this sufficient boundary nor $1+m_s(K)$ is proved to be
+-the universal spectral threshold. In particular, adding an escaped
+-unit to the scalar optimum is justified for the construction above;
+-it is not a lower bound for every possible collapsing family.
+-Theorem~\ref{thm:attained-cutoff} below attains this constructive
+-budget with floor $b=K$; the intervening universal interval remains
+-unclassified. For $K<b<1$ the event contains every point
++This sufficient estimate alone does not identify the universal spectral
++threshold. The construction justifies adding an escaped unit to the scalar
++optimum only for that particular family. Theorem~\ref{thm:attained-cutoff}
++attains this budget with floor $b=K$, while the separate necessary estimate
++in Theorem~\ref{thm:universal-tail} proves its universal optimality.
++For $K<b<1$ the event contains every point
+ and reduces to the total-moment condition. At $b=1$ mean one forces
+ $r=1$ and gap $1-\rho$; at $b>1$ the class is empty. The earlier
+ source309A omitted $b<1$ in its additional comparison; its failed
+@@ -1947,12 +1954,246 @@
+ tail becomes the total moment. The theorem therefore cannot be
+ relabeled with a non-strict event. The scalar optimization, clipping
+ and perturbation tools are classical; this construction and its
+-source audit do not establish external priority. The unresolved
+-universal interval between the sufficient region
+-$\tau<2-K^{s-1}$ and this constructive upper budget remains.
++source audit do not establish external priority. The next two sections
++improve the sufficient estimate and prove that the constructed upper
++budget is the exact universal strict-tail threshold.
+ No marginal matching, locality, heat-bath gap or physical conclusion
+ is added to the separate families proved earlier.
+ 
++
++\section{The exact scalar envelope at a strict cutoff}\label{sec:scalar-envelope}
++This section sharpens the elementary sufficient estimate above. It is
++useful for explicit bounds, but scalar optimality alone does not settle
++the spectral question. Section~\ref{sec:universal-tail} supplies that step.
++Throughout these two sections fix $0<\rho<1$, $s=(1+\rho)/(1-\rho)$,
++$k_s=(s-1)/s<K<1$, and put
++\[
++ a=1-K,\quad p_*=(s-1)a/K,\quad C_s=\frac{s^s}{(s-1)^{s-1}},
++ \quad g=C_saK^{s-1},\quad h(p)=\frac{(a+Kp)^s}{p^{s-1}}.
++\]
++Then $0<p_*<1$ and $0<g<1$. For $\tau\ge g$ let $p_\tau$ be the
++unique solution of $h(p_\tau)=\tau$ in $(0,p_*]$, and set
++$U(\tau)=\tau+K^s(1-p_\tau)$.
++
++\begin{theorem}\label{thm:scalar-envelope}
++Among nonnegative random variables on arbitrary probability spaces with
++$\mathbb Er=1$ and $\mathbb E[r^s\mathbf1_{r>K}]\le\tau$, the class is
++empty for $\tau<g$. For $\tau\ge g$ the maximum of $\mathbb Er^s$ is
++$U(\tau)$, attained by the law with value $K$ of probability $1-p_\tau$
++and value $K+a/p_\tau$ of probability $p_\tau$.
++At $\tau=g$ this is the unique admissible law; a uniform $L$-cube realizes
++it precisely when $2^Lp_*$ is integral. For $\tau>g$, the supremum over
++all finite uniform Boolean cubes is $U(\tau)$, approached by positive
++mean-one densities with floor $K$ and strict tail at most $\tau$.
++\end{theorem}
++\begin{proof}
++Logarithmic differentiation gives
++\[
++ \frac{h'(p)}{h(p)}=\frac{Kp-(s-1)a}{p(a+Kp)}.
++\]
++Thus $h$ decreases from infinity to $h(p_*)=g$ on $(0,p_*]$, then
++increases to $h(1)=1$. For an admissible $r$, write
++$p=\mathbb P(r>K)>0$ and $m=\mathbb E[r\mathbf1_{r>K}]$.
++The complementary mean is at most $K(1-p)$, so $m\ge a+Kp$.
++Conditional Jensen yields
++\[
++ \tau\ge\mathbb E[r^s\mathbf1_{r>K}]
++ \ge m^s/p^{s-1}\ge h(p)\ge g.
++\]
++It also forces $p\ge p_\tau$. Consequently
++\[
++ \mathbb Er^s\le\tau+K^s(1-p)\le U(\tau).
++\]
++The stated two-point law has mean one, strict tail $h(p_\tau)=\tau$
++and total moment $U(\tau)$, proving attainment. If $\tau=g$, every
++inequality above is equality: $p=p_*$, the lower value is almost surely
++$K$, and strict convexity forces a constant upper value. This proves
++uniqueness and the finite-cube integrality condition.
++For $\tau>g$, choose
++$p_L=(\lfloor2^Lp_\tau\rfloor+1)/2^L$. Eventually
++$p_\tau<p_L<p_*$ and $p_L\to p_\tau$. Assign value $K+a/p_L$ to
++exactly $2^Lp_L$ vertices and $K$ to the others. Its mean is one and its
++strict tail $h(p_L)<\tau$, whereas its total moment tends to $U(\tau)$.
++Exact attainment on a specified cube requires the high probability
++$p_\tau$ to be realizable there; no irrational probability is assigned
++to a finite uniform event.
++\end{proof}
++
++The earlier sign compression, $2\lambda_2^s\le\mathbb Er^s$ and
++$\lambda_1\ge1$, now gives
++\[
++ \gap(T_r)\ge1-[U(\tau)/2]^{1/s}>0\qquad(U(\tau)<2).
++\]
++There is a unique $q_0\in(0,p_*)$ with
++$h(q_0)+K^s(1-q_0)=2$, since this expression decreases strictly from
++infinity to a value below two. Its tail budget
++$\tau_c=2-K^s(1-q_0)$ satisfies
++$2-K^{s-1}<2-K^s<\tau_c<2$; $U(\tau)<2$ exactly when
++$g\le\tau<\tau_c$. For $s=2$ direct expansion gives
++\[
++ q_0=\frac{(1-K)^2}{2-2K+K^2},\qquad
++ \tau_c=2-\frac{K^2}{2-2K+K^2}.
++\]
++In particular $K=3/4$ gives $\tau_c=25/17$, improving the elementary
++$5/4$. This is only a sufficient spectral bound: a scalar extremizer
++with total moment two need not saturate the two eigenvalue inequalities.
++The moment optimization is an application of classical conditional
++Jensen and extremal-law reasoning; see~\cite{BertsimasPopescu} for the
++general method, without an assertion of priority for this formula.
++
++\section{The universal strict-tail threshold}\label{sec:universal-tail}
++The missing link is a necessary escaping-moment estimate for an arbitrary
++collapsing family. Reverse hypercontractivity forces one normalized sign
++part of a second eigenvector to have a small low quasi-norm. Truncation
++then forces its energy into the high-density region. This proves the
++additional unit of tail cost, without assuming the constructed density
++floor or an a priori decomposition into background and tilt.
++
++\begin{theorem}\label{thm:universal-tail}
++Fix the parameters above. For every $g\le\tau<1+g$ there is an explicit
++constant $\gamma_0>0$, depending only on $\rho,K,\tau$, such that every
++nonnegative mean-one density on every finite uniform Boolean cube with
++$\mathbb E[r^s\mathbf1_{r>K}]\le\tau$ satisfies
++$\gap(T_r)>\gamma_0$. No positive lower bound on $r$ is required.
++For $\tau<g$ the class is empty. At $\tau=1+g$, and hence at every larger
++budget, Theorem~\ref{thm:attained-cutoff} gives a positive family with
++floor $K$ and gap tending to zero. Thus $1+g$ is the exact universal
++strict-tail collapse threshold for $k_s<K<1$.
++\end{theorem}
++\begin{proof}
++Write $B=\tau+K^s$, $p=1-\rho$, $q=1+\rho$ and
++$\theta=1/s^2$. Classical forward and reverse Boolean
++hypercontractivity~\cite[Theorem~3.1 and Corollary~3.3]{MORSS} give
++\begin{align}
++ \langle F,P_\rho F\rangle
++   &=\|P_{\sqrt\rho}F\|_2^2\le\|F\|_q^2,\label{eq:317-forward}\\
++ \langle F,P_\rho G\rangle&\ge\|F\|_p\|G\|_p
++                 \quad(F,G\ge0).\label{eq:317-reverse}
++\end{align}
++The reverse inequality has parameter condition
++$\rho\le\sqrt{(1-p)(1-p)}$, with equality here, and permits zeros.
++The quantities at exponent $p<1$ are quasi-norms; no triangle inequality
++for them will be used. H\"older with $q/(2-q)=s$ gives
++\[
++ \|\sqrt z\,h\|_q^2\le(\mathbb Ez^s)^{1/s}\|h\|_2^2
++ \quad(z\ge0).
++\]
++Since $\mathbb Er^s\le B$, this implies $\lambda_1\le B^{1/s}$.
++The unit vector $\sqrt r$ has Rayleigh quotient
++$\langle r,P_\rho r\rangle\ge(\mathbb Er)^2=1$, so
++$\lambda_1\ge1$.
++
++Put $\gamma=1-\lambda_2/\lambda_1$. If $\lambda_2=0$, the gap is one
++and the assertion is immediate. Otherwise work on the active set
++$\{r>0\}$. The restricted matrix has strictly positive entries and a
++strictly positive Perron vector. A normalized real second eigenvector
++vanishes off this set, is orthogonal to the Perron vector, and therefore
++has both signs. Write it as $v=f_+-f_-$, with disjoint nonnegative parts,
++$a=\|f_+\|_2>0$, $b=\|f_-\|_2>0$, $a^2+b^2=1$, and
++$c=\langle f_+,T_rf_-\rangle>0$. The eigenvector equation implies
++\[
++ \langle f_+,T_rf_+\rangle=\lambda_2a^2+c,\qquad
++ \langle f_-,T_rf_-\rangle=\lambda_2b^2+c.
++\]
++The compression to the orthonormal pair $u=f_+/a,w=f_-/b$ is
++\[
++ \lambda_2I+c\begin{pmatrix}a^{-2}&(ab)^{-1}\\(ab)^{-1}&b^{-2}\end{pmatrix}.
++\]
++Its upper eigenvalue is $\lambda_2+c/(a^2b^2)\le\lambda_1$.
++Thus the \emph{normalized} cross term obeys
++\[
++ d=\langle u,T_rw\rangle=c/(ab)
++       \le(\lambda_1-\lambda_2)ab\le B^{1/s}\gamma/2.
++\]
++Both sign Rayleigh quotients are at least $\lambda_2$.
++Apply~\eqref{eq:317-reverse} to $\sqrt r\,u$ and $\sqrt r\,w$.
++Choose the sign vector $h$ with the smaller $p$ quasi-norm after
++multiplication by $\sqrt r$. For $F=\sqrt r\,h$ we obtain
++\begin{equation}\label{eq:317-sign}
++ \|F\|_p\le(B^{1/s}\gamma/2)^{1/2},\qquad
++ \langle F,P_\rho F\rangle\ge\lambda_2\ge1-\gamma.
++\end{equation}
++The argument tolerates arbitrarily unbalanced sign norms $a,b$.
++
++Fix $M>K$, let $F_0=F\mathbf1_{r\le M}$,
++$F_1=F\mathbf1_{r>M}$, and $H_M=\mathbb E[r^s\mathbf1_{r>M}]$.
++One checks $1/q=\theta/p+(1-\theta)/2$. Ordinary H\"older applied to
++$Z^q=(Z^p)^{\theta q/p}(Z^2)^{(1-\theta)q/2}$ proves
++\[
++ \|Z\|_q\le\|Z\|_p^\theta\|Z\|_2^{1-\theta}.
++\]
++The two powers are positive and sum to one, so this use of H\"older has
++exponents greater than one even though $p<1$.
++Since $\|F_0\|_2\le\sqrt M$ and $\|F_0\|_p\le\|F\|_p$,
++\eqref{eq:317-forward} and~\eqref{eq:317-sign} yield
++\[
++ E_0:=\langle F_0,P_\rho F_0\rangle
++       \le M^{1-\theta}(B^{1/s}\gamma/2)^\theta.
++\]
++The same forward estimate and H\"older yield
++$E_1:=\langle F_1,P_\rho F_1\rangle\le H_M^{1/s}$.
++The Hilbert-space triangle after applying $P_{\sqrt\rho}$ gives
++$\sqrt{\langle F,P_\rho F\rangle}\le\sqrt{E_0}+\sqrt{E_1}$.
++Consequently
++\begin{equation}\label{eq:317-escape}
++ H_M\ge\left[\sqrt{1-\gamma}
++ -M^{(1-\theta)/2}(B^{1/s}\gamma/2)^{\theta/2}\right]_+^{2s}.
++\end{equation}
++For a collapsing family with fixed $B$, this implies
++$\liminf H_M\ge1$ for each fixed $M$.
++
++Put $A=C_sK^{s-1}$, so $g=A(1-K)$. The pointwise scalar inequality
++\[
++ z^s\mathbf1_{z>K}\ge A(z-K)\qquad(z\ge0)
++\]
++holds because its right side is nonpositive below $K$, whereas
++$z^s/(z-K)$ has its global minimum $A$ at $z=sK/(s-1)$ above $K$.
++Apply it to $z=r\mathbf1_{r\le M}$ on the original probability space.
++Since $\mathbb E[r\mathbf1_{r>M}]\le B/M^{s-1}$, the middle strict
++tail costs at least $g-AB/M^{s-1}$. It is disjoint from the high tail,
++so
++\begin{equation}\label{eq:317-budget}
++ \tau\ge H_M+g-AB/M^{s-1}.
++\end{equation}
++For any collapsing family, first fix $M$, use~\eqref{eq:317-escape},
++and then send $M\to\infty$ in~\eqref{eq:317-budget}. This gives
++$\tau\ge1+g$. No density floor or exchange of moment limits is involved.
++
++For an explicit positive bound, let $\varepsilon=1+g-\tau\in(0,1]$ and
++\begin{align*}
++ M&=\max\{K+1,(4AB/\varepsilon)^{1/(s-1)}\},\\
++ D&=1-(1-3\varepsilon/4)^{1/(2s)},\\
++ \gamma_0&=\min\{D/4,\,
++ 2B^{-1/s}(D/4)^{2/\theta}M^{-(1-\theta)/\theta}\}.
++\end{align*}
++These constants are finite and positive, with $\gamma_0<1$.
++If $\gamma\le\gamma_0$, the subtracted core term in
++\eqref{eq:317-escape} is at most $D/4$ and
++$\sqrt{1-\gamma}\ge1-\gamma\ge1-D/4$. Hence
++\[
++ H_M\ge(1-D/2)^{2s}>(1-D)^{2s}=1-3\varepsilon/4.
++\]
++But~\eqref{eq:317-budget} gives
++$H_M\le\tau-g+\varepsilon/4=1-3\varepsilon/4$, a contradiction.
++Thus $\gamma>\gamma_0$. The empty regime $\tau<g$ was proved in
++Theorem~\ref{thm:scalar-envelope}; equality $\tau=g$ is included whenever
++the finite-cube class exists. Finally Theorem~\ref{thm:attained-cutoff}
++uses exactly this $\rho,s,K$ and strict event, and supplies collapse at
++$1+g$ with floor $K$. This completes the sharpness assertion.
++\end{proof}
++
++For $s=2$, $\rho=1/3$ and $K=3/4$, the exact threshold is
++$1+4(1/4)(3/4)=7/4$. The intermediate scalar bound $25/17$ remains
++valid and can be numerically much simpler than the conservative explicit
++constant above. Neither scalar optimality nor the construction alone
++proved the universal threshold: the necessary escape
++estimate~\eqref{eq:317-escape} closes that gap. External priority of this
++specific synthesis is unestablished. Its inputs are classical; related
++transmission of log-Sobolev and spectral-gap inequalities for perturbed
++diffusion measures is studied, for example, in~\cite{Cattiaux}.
++Those generator/measure results are not silently identified with the
++finite transfer-matrix statement here. This theorem does not add marginal
++matching, finite-range interactions or a physical interpretation.
+ 
+ \section{Comparison with hyperbounded and perturbation results}
+ The value $s_c$ is the classical Boolean hypercontractive boundary,
+@@ -2068,6 +2309,15 @@
+ A redundant complete frozen311 source archive remains private on D;
+ the public subset declares its exact hash and original Git source, while
+ retaining the full reports and original manifest. No report is shortened.
++The sharp scalar envelope (source315) and reverse-hypercontractive necessity
++argument (source317) are grouped here with the attained construction.
++Their complete source reports, contexts and fixed judges are retained in
++\texttt{evidence318}. The earlier exact v6 PDF, its full first-round
++assessment and all six reservations are historical evidence, not a rating
++of this revision. Its two explicitly forced equation numbers are replaced
++by ordinary sequential numbering; the corresponding mathematical displays
++are unchanged. The previous claim that the universal strict-tail interval
++was unresolved is superseded by Theorem~\ref{thm:universal-tail}.
+ Document reproduction is a separate check of exact bytes
+ and layout, not an independent proof of the theorems.
+ 
+@@ -2104,6 +2354,13 @@
+ audit's notation and navigation observations are also addressed, with all
+ twenty-one prior proofs and twenty prior statement environments preserved.
+ None of these source checks is an exact-PDF assessment or human review.
++The scalar-envelope and universal-tail source checks use a distinct
++involved auditor context with prior source313 readings retained. They are
++not blind or provider-independent reviews. The historical v6 PDF review
++requested gpt-6-astra with high reasoning effort, with served backend and
++effort not independently attested. Its full report remains bound to its
++original PDF. The new mathematical claims require assessment on this
++revision's exact final PDF and do not inherit its numerical rating.
+ Any assessment attached to this manuscript must identify the exact final
+ PDF hash, its actual review context, complete report, scores and objections.
+ The manuscript does not incorporate a grade from another version or paper.
+@@ -2152,6 +2409,17 @@
+ Exact Heat-Bath Spectrum and Optimal Variance Tensorization,
+ AIRR, ARR-2026-5HRC3PS9HZ9WDAA5, version 2 (2026).
+ \href{https://airr.science/papers/ARR-2026-5HRC3PS9HZ9WDAA5/versions/v2/}{Public working paper}.
++\bibitem{MORSS}
++E. Mossel, R. O'Donnell, O. Regev, J. E. Steif and B. Sudakov,
++Non-interactive correlation distillation, inhomogeneous Markov chains,
++and the reverse Bonami-Beckner inequality,
++\emph{Israel Journal of Mathematics} \textbf{154} (2006), 299--336.
++\href{https://www.cs.cmu.edu/~odonnell/papers/nicd.pdf}{Author manuscript}.
++\bibitem{Cattiaux}
++P. Cattiaux, Hypercontractivity for perturbed diffusion semigroups,
++\emph{Annales de la Facult\'e des Sciences de Toulouse}
++\textbf{14}(4) (2005), 609--628.
++\href{https://www.numdam.org/item/AFST_2005_6_14_4_609_0/}{Publisher archive}.
+ \bibitem{MOS}
+ E. Mossel, K. Oleszkiewicz and A. Sen,
+ On Reverse Hypercontractivity, arXiv:1108.1210v5 (2012).

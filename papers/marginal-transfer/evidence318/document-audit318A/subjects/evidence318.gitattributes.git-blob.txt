@@ -1,0 +1,3 @@
+* -text whitespace=cr-at-eol
+source-audit315A/git-metadata.txt whitespace=cr-at-eol,-blank-at-eol
+source-audit317A/git-metadata.txt whitespace=cr-at-eol,-blank-at-eol

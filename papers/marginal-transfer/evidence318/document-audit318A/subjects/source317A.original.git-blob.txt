@@ -1,0 +1,86 @@
+UNIVERSAL STRICT-TAIL THRESHOLD VIA REVERSE HYPERCONTRACTIVITY -- SOURCE317A
+Judges0f03eb338c2273f9257b4710b092902aacec165b; base8362769e88d86fda1618df62fb396195f1b4a9f2. Analytical candidate requiring adverse audit. Pencil exploration preceded registration and is disclosed. No new PDF, score, numerical or formal certification. This is the necessity half of the same grouped strict-tail problem; the existing313/314 construction supplies sharpness.
+
+1. Precise claim and conventions
+Fix 0<rho<1, s=(1+rho)/(1-rho), k_s=(s-1)/s<K<1, C_s=s^s/(s-1)^(s-1), A=C_s K^(s-1), g=A(1-K). Then 0<g<1. On each finite cube {-1,1}^L, L>=1, use normalized uniform expectation and the Boolean noise operator P=P_rho with Walsh eigenvalues rho^|S|. For any nonnegative density r with E r=1 let T=M_sqrt(r) P M_sqrt(r). Write lambda1>=lambda2>=0 for its first two eigenvalues, including zeros, and gamma=1-lambda2/lambda1.
+For every fixed tau<1+g, all such r with E[r^s 1_{r>K}]<=tau have a dimension-independent strictly positive gamma bound. No lower bound on r is assumed. If tau<g the class is empty. If g<=tau<1+g, the explicit bound in section6 applies. Conversely the already proved313 family has r_L>=K, E r_L=1, E[r_L^s 1_{r_L>K}]<=1+g and lambda1,lambda2->1. Thus the exact universal budget separating dimension-uniform positivity from possible asymptotic collapse is 1+g, with collapse attainable at the endpoint. This refers to a family of finite matrices, not finite-dimensional eigenvalue degeneracy.
+The main new assertion needing audit is the universal necessity and quantitative bound, not a new construction. All parameters rho,K,tau stay fixed as L varies. The event is strictly r>K. No claim here covers K<=k_s, K>=1, varyingrho, local interaction constraints, a heat-bath generator, continuum or a physical mass gap.
+
+2. Classical inputs with exact exponents
+For q=1+rho, forward Boolean hypercontractivity gives
+ <F,PF>=||P_sqrt(rho)F||_2^2 <= ||F||_q^2.                 (1)
+This is Theorem3.1 of Mossel,O'Donnell,Regev,Steif,Sudakov, Non-interactive correlation distillation, inhomogeneous Markov chains, and the reverse Bonami-Beckner inequality, Israel Journal of Mathematics154(2006),299-336; author PDF https://www.cs.cmu.edu/~odonnell/papers/nicd.pdf, printedp5. Substitute input exponent1+rho, output2 and noiseparameter sqrt(rho). The tool and constants are classical, not our result.
+For p=1-rho in(0,1), the two-function reverse inequality is
+ <F,PG> >= ||F||_p ||G||_p  for nonnegative F,G.             (2)
+It is exactly Corollary3.3 of the same primary paper, printedp5, with both exponents1-rho: rho=sqrt((1-p)(1-p)). That corollary permits zeros. Alternatively positive regularization and finite-sum continuity gives the same extension. SectionA proves its two-function form. The quantities ||.||_p are only quasi-norms; we use no triangle inequality for them.
+For any z and h with ||h||_2<=1 and nonnegative z, Holder at exponents 2/q and 2/(2-q) gives
+ ||sqrt(z)h||_q^2 <= (E z^s)^(1/s),                         (3)
+because q/(2-q)=s. With general h the right side is multiplied by ||h||_2^2. Hence ||T||<= (E r^s)^(1/s). The Rayleigh quotient of sqrt(r), whose squared norm is1, is E[rPr]>= (Er)^2=1 by the nonnegative Walsh spectrum. Thus
+ 1<=lambda1<=B^(1/s),   B=tau+K^s,                         (4)
+where E r^s<=tau+K^s. In the nonempty regime B>=1 follows also from Jensen.
+
+3. Normalized sign compression: avoid a small-sign loophole
+The active set {r>0} is nonempty. The restriction of T to it has strictly positive matrix entries since 0<rho<1. Its Perron eigenvalue is simple and its Perron vector strictly positive on the active set. Outside it T is zero. If lambda2=0 then gamma=1 and the conclusion is immediate. Otherwise a real normalized second eigenvector v vanishes outside the active set and is orthogonal to its positive Perron vector. It has both signs. Write v=f_+-f_- with nonnegative disjoint parts, a=||f_+||_2>0, b=||f_-||_2>0 and a^2+b^2=1. Put c=<f_+,Tf_->>0.
+The eigenvector equation gives
+ <f_+,Tf_+>=lambda2 a^2+c,
+ <f_-,Tf_->=lambda2 b^2+c.
+In the orthonormal pair u=f_+/a,w=f_-/b, the compression of T is
+ lambda2 I + c [[1/a^2,1/(ab)],[1/(ab),1/b^2]].
+The second matrix is rankone positive with nonzero eigenvalue1/(a^2 b^2). Its largest eigenvalue is bounded by lambda1 by Rayleigh maximization. Therefore
+ c/(a^2 b^2)<=lambda1-lambda2,
+ d:=<u,Tw>=c/(ab)<= (lambda1-lambda2)ab <=(lambda1-lambda2)/2. (5)
+Both <u,Tu> and <w,Tw> are >=lambda2. This argument remains valid however small a or b is; replacing d by the unnormalized c would not suffice below.
+Apply(2) to F=sqrt(r)u and G=sqrt(r)w. Their p-quasi-norm product is at mostd. Choose the one with smaller p-quasi-norm and call its corresponding normalized nonnegative sign vector h. Then
+ ||sqrt(r)h||_p <=sqrt(d)<=sqrt(B^(1/s) gamma/2),
+ <sqrt(r)h,P sqrt(r)h>=<h,Th>>=lambda2>=1-gamma.            (6)
+The last inequality uses lambda2=lambda1(1-gamma) andlambda1>=1. This choice of sign may depend onr; all bounds below are uniform.
+
+4. The escaping critical-moment inequality
+Fix any M>K, independent of dimension. Split F=sqrt(r)h into F0=F1_{r<=M} and F1=F1_{r>M}. Write H_M=E[r^s1_{r>M}]. Set theta=1/s^2. Direct substitution gives
+ 1/q=theta/p+(1-theta)/2.
+For any nonnegative Z, ordinary Holder applied to Z^q=(Z^p)^(theta q/p)(Z^2)^((1-theta)q/2) yields
+ ||Z||_q<=||Z||_p^theta ||Z||_2^(1-theta).                 (7)
+The two powers theta q/p and (1-theta)q/2 are in(0,1) and sumto1, so this is ordinary Holder with exponents >1 even thoughp<1. No quasi-norm triangle is used.
+Monotonicity of finite positive moments gives ||F0||p<=||F||p, and ||F0||2<=sqrt(M)||h||2=sqrt(M). By(1),(6),(7),
+ E0:=<F0,PF0> <=M^(1-theta)(B^(1/s)gamma/2)^theta.          (8)
+By(1),(3) applied to r1_{r>M},
+ E1:=<F1,PF1> <=H_M^(1/s).                                (9)
+P is positive semidefinite with square root P_sqrt(rho). The ordinary Hilbert triangle after applying this square root gives
+ sqrt(<F,PF>)<=sqrt(E0)+sqrt(E1).
+Together with(6)-(9) this proves the quantitative inequality
+ H_M >= [sqrt(1-gamma)
+          -M^((1-theta)/2)(B^(1/s)gamma/2)^(theta/2)]_+^(2s). (10)
+For a collapsing family with the same fixed finiteB and gamma->0, (10) implies liminf H_M>=1 for each fixedM. The uniformity in dimension was proved, not assumed. In particular an escaped unit of critical moment is now justified by the actual eigenvalue ratio and reverse hypercontractivity, rather than appended to a scalar bound without a bridge.
+
+5. The residual background cost without a floor
+For every z>=0,
+ z^s1_{z>K}>=A(z-K).                                      (11)
+For z<=K the right side is nonpositive. For z>K, differentiation of z^s/(z-K) gives a derivative with sign(s-1)z-sK; its global minimum is at sK/(s-1), equalA. This proves(11), including z=K where both sides arezero. Taking expectations forz=r proves tau>=g, so tau<g is empty.
+Apply(11) instead to z=r1_{r<=M}, defined on the full original probability space, not to a conditional law. Since r<=r^s/M^(s-1) onr>M,
+ E z=1-E[r1_{r>M}]>=1-B/M^(s-1).
+The event z>K is exactly K<r<=M. Thus
+ E[r^s1_{K<r<=M}]>=g-AB/M^(s-1).
+Adding the disjoint high-tail part gives
+ tau>=H_M+g-AB/M^(s-1).                                  (12)
+Suppose gamma_j->0 under a fixedtau cap. For every fixedM>K, (10),(12) imply tau>=1+g-AB/M^(s-1). Sending M toinfinity then yields tau>=1+g. The order of limits is fixedM first and M afterwards. This proves the asserted positive dimension-uniform infimum by contradiction. No compactness of densities, pointwise floor or interchange of s-moments and probability limits was used.
+
+6. An explicit dimension-free lower bound
+For g<=tau<1+g set epsilon=1+g-tau in(0,1], B=tau+K^s and
+ M=max(K+1,(4AB/epsilon)^(1/(s-1))),
+ D=1-(1-3epsilon/4)^(1/(2s)), theta=1/s^2,
+ gamma0=min(D/4, 2 B^(-1/s) (D/4)^(2/theta) M^(-(1-theta)/theta)). (13)
+All quantities are finite and strictly positive and gamma0<1. If gamma<=gamma0 then the core square-root term in(10) is <=D/4. Also sqrt(1-gamma)>=1-gamma>=1-D/4. Consequently
+ H_M>=(1-D/2)^(2s)>(1-D)^(2s)=1-3epsilon/4.
+But (12) and AB/M^(s-1)<=epsilon/4 imply H_M<=tau-g+epsilon/4=1-3epsilon/4, a contradiction. Therefore gamma>gamma0. The case lambda2=0 already hasgamma1>gamma0. The formula works at tau=g whenever the finite Boolean feasible class is nonempty; if it is empty the assertion is vacuous. It is not presented as the optimal numerical lower bound on gamma, only an explicit valid one.
+
+7. Matching the attained construction and the earlier scalar result
+The source313 theorem at a4d0736b57eb27ce7ae7de479d62df2bc2edb6b0, research/cutoff-floor313/cutoff-floor313A.txt (see frozen source supplied with this audit), and its integration as Theorem21 in manuscript314A atb72cfbcb74275ff7f80b6c262cb003c5cc6ea8eb, have exactly the same normalized Boolean P_rho, criticals, range k_s<K<1 and strictKevent. They construct positive mean-one r_L>=K with cap1+g for everyL and lambda1,lambda2->1. The mechanism is a balanced critical product tilt plus a parity-coded dyadic background, clipping at a vanishing level, high-sector mean correction and shrinking amplitude. Source313sections3-5 explicitly control finite cap and operator-norm errors. This matching is an invoked already proved construction; it is not deduced from scalar optimality. It establishes failure of a uniform positive gap at tau=1+g and everylargertau. At everyfiniteL the Perron eigenvalue remains simple.
+For s=2 one hasrho=1/3, C_s=4. AtK=3/4, g=4(1/4)(3/4)=3/4, so the exact collapse threshold is7/4. Source315's25/17 was an improved sufficient budget from a sharp scalar total-moment envelope. It did not assert spectral optimality; no contradiction arises. The source315 law and bound remain correct. The present argument closes its remaining universal interval by proving necessary escaping moment through(10), without converting scalar extremizers into assumed eigenvalue witnesses.
+
+8. Primary-source comparison, originality and review limitations
+Primary sources consulted2026-11-13:
+[MORSS] Mossel,O'Donnell,Regev,Steif,Sudakov,2006, author PDF above. Read Theorem3.1,Theorem3.2,Corollary3.3 and the identified two-function proof in AppendixA. These supply precisely(1),(2); none is claimed new.
+[MOS] Mossel,Oleszkiewicz,Sen, On reverse hypercontractivity, arXiv1108.1210v5 (2012), https://arxiv.org/pdf/1108.1210. Targeted reading introduction equations1.1-1.3,Corollary1.11 and the section6 two-function discussion. Its general-space constants differ; using its general tensor bound as if it were the sharp unbiased-cube constant would be unjustified. Our proof uses the exact unbiased-cube MORSS corollary.
+[Cattiaux] Hypercontractivity for perturbed diffusion semigroups, Ann.Fac.Sci.Toulouse14(4)(2005),609-628, https://www.numdam.org/item/AFST_2005_6_14_4_609_0.pdf. Read abstract/framework and bounded-perturbation discussion; related transmission of log-Sobolev/spectral-gap estimates for perturbed diffusion measures is established literature. Those statements concern a different generator/measure setup; no claim that our sharp critical strict-tail threshold is absent from all that literature follows from this targeted reading.
+Searches included reverse hypercontractivity spectral gap density; Feynman-Kac hypercontractivity spectral gap; weighted noise spectral gap Boolean. Such bounded retrieval does not certify originality. The primary dependence is classical forward/reverse HC plus sign compression and truncation. The specific sharp strict-tail synthesis is a programme result if the proof survives audit, but external priority remains unestablished. No unseen full-text source is described as reviewed, and third-party full PDFs are not redistributed in this source artifact.
+This proof has not been checked by Lean or by a numerical oracle. A separate source audit of this exactcommit and fixedPRbody is required, with actual context/model uncertainty disclosed. Same provider/filesystem and prior involvement do not establish independence. v6's4.00/Strong exact-PDF assessment belongs only to its unchangedPDF and cannot be inherited by this candidate or a futurePDF. No newpublication or editorialacceptance is asserted here. Failed309A and all prior reports remain retained.

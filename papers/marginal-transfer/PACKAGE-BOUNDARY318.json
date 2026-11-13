@@ -12,5 +12,7 @@
   "privacy": "No credentials, private intake payloads, or new third-party fulltexts.",
   "inherited_boundary": "PACKAGE-BOUNDARY314.json and predecessors remain exact. Existing omissions are unchanged.",
   "representation": "Raw copied bytes; no normalization",
-  "whitespace_preservation": "Original raw audit packets keep CRLF. Two git-metadata captures keep original four-space blank commit-message lines; exact-file whitespace attributes describe these archived byte representations. New source and mathematical text are not exempted. Initial formatting failures remain on D."
+  "whitespace_preservation": "Original raw audit packets keep CRLF. Two git-metadata captures keep original four-space blank commit-message lines; exact-file whitespace attributes describe these archived byte representations. New source and mathematical text are not exempted. Initial formatting failures remain on D.",
+  "candidate318B": "Complete failed document318A audit and parent objection retained unchanged; only heading and prospective PDF wording corrected. Original numerical reviews remain tied to original PDFs.",
+  "candidate318B_archival_whitespace": "Three exact historical diff/diagnostic text paths have blank-at-eol disabled to preserve literal diagnostic trailing spaces, not mathematical source. Original failed diff check retained on D. No archived bytes changed."
 }

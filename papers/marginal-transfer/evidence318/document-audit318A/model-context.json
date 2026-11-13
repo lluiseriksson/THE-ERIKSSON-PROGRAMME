@@ -1,0 +1,40 @@
+{
+  "task": "document-source audit318A; no numerical assessment",
+  "subject_commit": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff",
+  "agent_context": "/root/exact314_pdf_first_assessment",
+  "prior_context": "Same reviewing context that performed complete exact314/v6 PDF first assessment; historical reading, score and objections retained. Current assignment is new source-document audit, not a fresh context. Prior source315 and317 full reports/context read in this task.",
+  "separate_from_document_fabricator": true,
+  "blind": false,
+  "human_review": false,
+  "provider_independence": false,
+  "technical_isolation": "not verified; shared provider and filesystem",
+  "independence": "unknown; no independent-review claim",
+  "model_configuration": {
+    "historical_requested_model": "gpt-6-astra",
+    "historical_requested_reasoning_effort": "high",
+    "served_backend": "not independently attested",
+    "served_reasoning_effort": "not independently attested",
+    "current_configuration_change": "none claimed"
+  },
+  "parent_messages_during_review": 0,
+  "other_agents_or_chats_consulted": false,
+  "subagents_spawned": false,
+  "source318_pdf_read_or_created": false,
+  "visual_claim": false,
+  "score_assigned": false,
+  "prior_score_inherited": false,
+  "execution": "Only administrative Git/read/hash/text comparison/capture and report writing. No mathematical execution, tests, builds, Lean, Colab or service mutation.",
+  "review_method": "Analytical review of full two new proofs and matching endpoint dependency; exact preservation checks on all prior statements/proofs; bounded primary literature check; complete1006 raw bindings;55 retained archival files against D originals. Prior v6 full reading retained. Hashing historical inputs not represented as rereading all their prose in this turn.",
+  "untracked_files_preserved": [
+    "prepare311.py",
+    "prepare314.py"
+  ],
+  "limitations": [
+    "No exact318PDF production or layout verification",
+    "No formal proof certificate",
+    "No exhaustive priority or originality search",
+    "Pending CI/dependency/publication gates remain separate"
+  ],
+  "terminal_verdict": "CHANGES_REQUIRED for obsolete heading O1; no mathematical invalidation found",
+  "report": "full-report.txt"
+}
