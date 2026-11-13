@@ -1,0 +1,21 @@
+{
+  "initial_head": "10a3f69f97152a871f1769ebf23806efd2f2b03a",
+  "final_head": "10a3f69f97152a871f1769ebf23806efd2f2b03a",
+  "subjects": {
+    "sectional-residual291A.txt": {
+      "bytes": 12372,
+      "sha256": "c3634a25f05eebc2f1c7cbcd6c447eb44c0f00acacd2aa0b1f36f68413b0384c"
+    },
+    "judges291.txt": {
+      "bytes": 1769,
+      "sha256": "a0a670c4d4cf87090fedc18c221a31c1f6e38ae542de6b302b25635a77c2765f"
+    },
+    "candidate-original.txt": {
+      "bytes": 4702,
+      "sha256": "b694dbd51ca96f8448ad74a6b164ba21f90a963708b7f7f8621c441f0bb1dd6b"
+    }
+  },
+  "unchanged": true,
+  "analytical_gates_reviewed": 9,
+  "acceptance_basis": "Analytical reasoning, not executable mathematics"
+}
