@@ -1,0 +1,34 @@
+297 preregistered continuation of the finite-moment question, 2026-11-13.
+Recorded after the author developed the candidate on paper, before its source
+proof is committed or evaluated; not a claim of blind pre-discovery registration.
+
+Question: for each fixed 0<rho<1, 1<s<(1+rho)/(1-rho), and B>1,
+can strictly positive mean-one densities r_L with ||r_L||_s<=B have
+an exponentially vanishing normalized gap of sqrt(r_L) P_rho sqrt(r_L)?
+Mechanism: two antipodal product tilts plus a positive uniform component;
+move the spectrum to P_sqrt(rho) r_L P_sqrt(rho), then compare a two-block
+Gram matrix with two identical leading eigenvalues and exponentially small
+off-diagonal norm. All norms use uniform probability on the Boolean cube.
+
+G1: construction strictly positive, exactly normalized, and Ls bound uniform
+in L for every fixed B>1, with no hidden lower bound or L-dependent s/rho.
+G2: exact one-coordinate Walsh matrix and tensor factorization.
+G3: small-tilt leading eigenvalue >1 precisely on the strict subcritical side;
+give a legitimate derivative argument, no numerical evidence in its place.
+G4: cross square-root norm strictly less than the leading eigenvalue, with
+equality cases checked; no assumed orthogonality of the two product states.
+G5: AB/BA spectral equivalence, multiplicities and dimension-two case checked.
+G6: first and second eigenvalue estimates plus the positive base term produce
+an explicit exponential gap upper bound with constants independent of L.
+G7: exactly the original transfer operator, not heat-bath or another generator.
+G8: compare to296 sufficient bound; endpoint stays open, no marginal or
+finite-range/physical claims and no unestablished original-priority claim.
+
+Falsifiers: any failed normalization/norm bound; cross norm equality; a
+nonpositive second Gram eigenvalue; an invalid AB/BA multiplicity argument;
+or a sign error in the small-tilt threshold. Abandon this construction if
+one is found and cannot be repaired without changing the target. Retain
+negative result; do not tune an already failed gate. One separate full-source
+audit, frozen SHA, no inbound messages. No local mathematical computation.
+Scope cap: this is the last mathematical extension before freezing the grouped
+manuscript for production and exact-PDF review; no new minor standalone paper.
