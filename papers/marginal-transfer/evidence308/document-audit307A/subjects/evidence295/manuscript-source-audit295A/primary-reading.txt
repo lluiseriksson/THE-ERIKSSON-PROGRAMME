@@ -1,0 +1,5 @@
+Targeted source readings2026-11-13, no exhaustive literature claim.
+MOS exactv5 PDF copied from accepted295 sourceaudit; classical norm/time inputs as reported there. https://arxiv.org/pdf/1108.1210v5
+Grossv2 HTML https://arxiv.org/html/2412.20282v2 retained; introduction paragraphs around1.1-1.2 and Notation2.1 checked for Riemannian/perturbation scope. No fullproof equivalence to discrete congruence claimed. This expands beyond the earlier abstract-only read and does not rewrite that earlier report.
+Gluckv6 primary PDF https://arxiv.org/pdf/1802.09422v6 retained; title/date, abstract, Theorems1.1/5.1 and essential-radius definition inspected. No inference of external priority or exhaustive theorem nonimplication. Finite-dimensional compactness observation is independent elementary reasoning; a stronger literature route might still imply295.
+All downloaded rawfile SHA256s and lengths are in packetmanifest. Parent followup notes copied unchanged and are attributed to parent, not substituted for this direct targeted reading.

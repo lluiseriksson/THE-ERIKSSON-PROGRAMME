@@ -1,0 +1,179 @@
+diff --git "a/C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\papers\\marginal-transfer\\manuscript305A.tex" "b/C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\papers\\marginal-transfer\\manuscript307A.tex"
+index 76e2e75df..0c5e5e779 100644
+--- "a/C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\papers\\marginal-transfer\\manuscript305A.tex"
++++ "b/C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\papers\\marginal-transfer\\manuscript307A.tex"
+@@ -1,4 +1,4 @@
+-% DOCUMENT305: grouped sources300-303; exact-PDF assessment pending.
++% DOCUMENT307: grouped sources300-303 and306; exact-PDF assessment pending.
+ \documentclass[11pt]{article}
+ \usepackage[margin=1in]{geometry}
+ \usepackage[T1]{fontenc}
+@@ -44,9 +44,10 @@ below one. We also identify the sharp worst-case boundary for the
+ asymptotic escaped critical moment
+ $\Theta=\lim_{K\to\infty}\sup_L\mathbb E[r_L^s\mathbf1_{r_L>K}]$.
+ The condition $\Theta<1$ gives an explicit uniform gap, while a collapsing
+-family has $\Theta=1$. More strongly, at every fixed cutoff $K>1$
+-collapse is possible with tail moment at most one and total moment at most
+-two in every dimension. Nevertheless stable one-vertex spikes realize every
++family has $\Theta=1$. More strongly, a single collapsing family has tail moment above one
++at most one and total moment at most two in every dimension; it meets
++the same tail cap simultaneously at every larger cutoff. For fixed
++$0\le K<1$, this tail cap instead guarantees a positive gap. Nevertheless stable one-vertex spikes realize every
+ finite $\Theta>0$, so critical-power uniform integrability is sufficient
+ but not necessary. These conclusions use classical hypercontractivity,
+ sign compression, balanced product tilts and rank-one perturbations.
+@@ -1313,17 +1314,18 @@ replacement remain part of the construction.
+ \end{proof}
+ 
+ \begin{theorem}[The fixed-cutoff endpoint]\label{thm:finite-tail-endpoint}
+-For every fixed $K>1$ and $0<b<1$, there are densities $r_L$ with
++For every $0<b<1$, there is a single family of densities $r_L$ with
+ \[
+  \mathbb E r_L=1,\qquad r_L\ge b,\qquad \mathbb E r_L^s\le2,
+- \qquad \mathbb E[r_L^s\mathbf1_{r_L>K}]\le1
++ \qquad \mathbb E[r_L^s\mathbf1_{r_L>1}]\le1
+ \]
+ for every $L\ge1$, but $\lambda_1(T_{r_L}),\lambda_2(T_{r_L})\to1$.
+ Moreover $r_L\to1$ in probability, $\mathbb E r_L^s\to2$, and
+ $\Theta=1$. Thus the finite-cutoff guarantee in
+-Theorem~\ref{thm:critical-tail} cannot include $\tau=1$ for $K>1$,
++Theorem~\ref{thm:critical-tail} cannot include $\tau=1$ for $K\ge1$,
+ even under the exact total moment cap and a prescribed positive floor.
+-The family may depend on $K$ and $b$; the case $K=1$ is not settled.
++The same family satisfies the tail cap at every $K\ge1$ simultaneously;
++it depends on $\rho$ and $b$, but not on $K$.
+ \end{theorem}
+ \begin{proof}
+ Use the undiluted product tilt $R_L$ from the proof of
+@@ -1337,17 +1339,35 @@ $\beta_L\to1$ such that $w_L=(1+\beta_LR_L)/Z_L$, with
+ $Z_L=1+\beta_Lm_L\to1$, has both leading eigenvalues tending to one.
+ Here $\beta_L$ denotes the balancing coefficient previously called
+ $a_L$; the new coefficient below is different.
+-Define
++The product definition gives additional information at its own mean.
++For $\delta_L=dL^{-1/3}$ and the single-site normalizer $n(\delta_L)$,
++$m_L=n(\delta_L)^{-L}>0$, so exactly
+ \[
+- p_L=\mathbb P(R_L>K-1)^{1/s},\quad a_L=1-p_L,\quad
++ \frac{R_L}{m_L}=\prod_{i=1}^L(1+\delta_L x_i),\qquad
++ \mathbb E(R_L/m_L)^t=
++ \left(\frac{(1+\delta_L)^t+(1-\delta_L)^t}{2}\right)^L.
++\]
++Fix $0<t<1$. The logarithm of the bracket is an even smooth function
++on any fixed compact interval $|\delta|\le d<1$. Taylor's theorem,
++with bounded fourth derivative there, yields
++\[
++ \log\frac{(1+\delta)^t+(1-\delta)^t}{2}
++ =\frac{t(t-1)}2\delta^2+O_{t,d}(\delta^4).
++\]
++After multiplication by $L$, the leading term tends to minus infinity
++as $L^{1/3}$ and the remainder tends to zero. Markov's inequality gives
++$\mathbb P(R_L>m_L)\le\mathbb E(R_L/m_L)^t\to0$.
++This relative-mean estimate does not follow from $R_L\to0$ alone.
++Set
++\[
++ p_L=\mathbb P(R_L>m_L)^{1/s},\quad a_L=1-p_L,\quad
+  A_L=1-a_Lm_L,\quad q_L=A_L+a_LR_L.
+ \]
+-All three coefficients $p_L,a_L,A_L$ belong to $[0,1]$, and
+-$\mathbb E q_L=1$. Markov's inequality at any fixed $0<t<s$ gives
+-$p_L\to0$, because $K-1>0$. Hence $a_L,A_L\to1$ and
+-$q_L\to1$ in probability. On $E_L=\{q_L>K\}$, one has
+-$a_LR_L>K-A_L\ge K-1$, so $E_L\subset\{R_L>K-1\}$.
+-Minkowski, with $s>1$, now gives the all-dimension estimate
++All three coefficients belong to $[0,1]$, $\mathbb E q_L=1$, and
++$a_L,A_L\to1$, whence $q_L\to1$ in probability. The identity
++$q_L-1=a_L(R_L-m_L)$ shows that $E_L=\{q_L>1\}$ equals
++$\{R_L>m_L\}$ when $a_L>0$ and is empty when $a_L=0$.
++In both cases the event inclusion holds. Minkowski gives
+ \[
+  \|q_L\mathbf1_{E_L}\|_s
+  \le A_L\mathbb P(E_L)^{1/s}+a_L\|R_L\mathbf1_{E_L}\|_s
+@@ -1374,7 +1394,7 @@ $q_L^s\mathbf1_{R_L\le T}$ converges in probability to one and is
+ bounded by $(1+T)^s$, so its expectation tends to one. On $R_L>T$,
+ $q_L^s\le(1+1/T)^sR_L^s$. Consequently
+ $\limsup_L M_L\le1+(1+1/T)^s$. Letting $T\to\infty$ proves the
+-claim. This auxiliary truncation does not change the prescribed $K$.
++claim. This auxiliary truncation is used only for the moment limit.
+ 
+ Set $\varepsilon_L=0$ when $M_L\le2$, and otherwise set
+ $\varepsilon_L=(M_L-2)/(M_L-1)$. Then $0\le\varepsilon_L<1$ and
+@@ -1383,9 +1403,10 @@ $v_L=(1-\varepsilon_L)q_L+\varepsilon_L$ satisfies, by convexity,
+ \[
+  \mathbb E v_L^s\le(1-\varepsilon_L)M_L+\varepsilon_L\le2.
+ \]
+-If $v_L>K>1$, then $q_L\ge v_L>K$, so pointwise
+-$v_L^s\mathbf1_{v_L>K}\le q_L^s\mathbf1_{q_L>K}$. The original
+-tail cap is preserved. Also
++Since $\varepsilon_L<1$, the events $v_L>1$ and $q_L>1$ coincide.
++On this event $v_L\le q_L$, so pointwise
++$v_L^s\mathbf1_{v_L>1}\le q_L^s\mathbf1_{q_L>1}$. The strict
++tail cap at one is preserved. Also
+ $S(v_L)-S(q_L)=\varepsilon_L(P_\rho-S(q_L))\to0$ in operator norm,
+ since $\|S(q_L)\|\to1$. Both eigenvalue limits persist, as does
+ convergence in probability to one. The two-sign estimate
+@@ -1395,20 +1416,39 @@ critical moment tends to two.
+ 
+ Since $v_L\ge A_L\to1$, replace a finite initial segment by $r_L=1$
+ and use $r_L=v_L$ thereafter to impose $r_L\ge b$ in every dimension.
+-The prefix has empty tail above $K$, and all limits are unchanged.
++The prefix has empty strict tail above one, and all limits are unchanged.
++For every $K\ge1$, the tail integrand is pointwise at most the one
++at cutoff one. Thus this same family works simultaneously for all such $K$.
+ For each fixed $J>1$, the bounded truncation
+ $r_L^s\mathbf1_{r_L\le J}$ has expectation tending to one. Thus the
+-$J$-tail tends to one, giving $H(J)\ge1$. For $J\ge K$, the
+-all-dimension $K$-tail bound also gives $H(J)\le1$. Therefore
+-$H(J)=1$ for every $J\ge K$ and $\Theta=1$.
++$J$-tail tends to one, giving $H(J)\ge1$. The
++all-dimension tail bound at one also gives $H(J)\le1$ for every $J>1$.
++Therefore $H(J)=1$ for every $J>1$ and $\Theta=1$.
+ \end{proof}
+ 
+ Each finite matrix in this construction has a positive Perron gap;
+ the gaps tend to zero with dimension. The two moment caps are
+ inequalities in each dimension, with total moment equality asserted
+-only in the limit. At $K=1$ the displayed probability coefficient is
+-identically one, so this construction does not resolve that case.
++only in the limit. The mean-relative probability coefficient resolves
++the cutoff-one case without a dimension-dependent cutoff.
++
+ 
++\begin{corollary}[Cutoffs below one]\label{cor:cutoff-below-one}
++For $0\le K<1$, a nonnegative mean-one density satisfying
++$\mathbb E[r^s\mathbf1_{r>K}]\le1$ has
++\[
++ \gap(T_r)\ge1-\left(\frac{1+K^{s-1}}2\right)^{1/s}>0.
++\]
++\end{corollary}
++\begin{proof}
++Pointwise $r^s\mathbf1_{r\le K}\le K^{s-1}r$, including $K=0$.
++Thus $\mathbb E r^s\le1+K^{s-1}<2$. The two-sign bound and
++$\lambda_1\ge1$ give
++$\lambda_2/\lambda_1\le\lambda_2\le(\mathbb E r^s/2)^{1/s}$.
++\end{proof}
++No optimality is claimed for this lower constant or for a general
++tail-budget threshold below cutoff one. The displayed bound is uniform
++in dimension for fixed $K<1$, not uniform as $K$ approaches one.
+ 
+ These are worst-case statements about a specialized fixed Boolean
+ congruence. Scalar tails under the base measure are not the operator-tail
+@@ -1503,7 +1543,7 @@ its complete source audit are retained in \texttt{evidence298}.
+ The exact-budget proof, registered checks and full analytical source
+ audit are retained in \texttt{evidence299}. The full analytical reports,
+ contexts, assignments and source bindings for the grouped tail results are
+-in \texttt{evidence305}. Its public-subset manifest explicitly identifies
++in \texttt{evidence305} and \texttt{evidence307}. Their public-subset manifests explicitly identify
+ private reference PDFs and an unrelated local directory index omitted from
+ the original audit manifests; no redistribution of these files is implied.
+ The exact v4 PDF assessment is preserved there solely as historical evidence,
+@@ -1523,6 +1563,9 @@ model version or provider independence is asserted. Analytical source
+ review is not human peer review and supplies no inherited PDF rating.
+ The tail audits300--303 used one distinct auditor context with its earlier
+ readings retained, not four blind or provider-independent reviews. The
++cutoff-one source306 received a separate fresh-assignment AI audit;
++shared provider and filesystem do not establish technical isolation or
++independence. The
+ historical v4 PDF review records a requested configuration separately from
+ what was actually exposed; its rating applies only to its original PDF.
+ Any assessment attached to this manuscript must identify the exact final

@@ -1,0 +1,10 @@
+{
+  "305_to_307_build307.py": true,
+  "299_to_307_build307.py": true,
+  "305_to_307_capture_cli_atomic.ps1": true,
+  "299_to_307_capture_cli_atomic.ps1": true,
+  "305_to_307_readback_after_stop.ps1": true,
+  "299_to_307_readback_after_stop.ps1": true,
+  "305_to_307_run_owned_after_gate.ps1": true,
+  "299_to_307_run_owned_after_gate.ps1": true
+}

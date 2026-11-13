@@ -1,0 +1,10 @@
+{
+  "recorded_at": "2026-11-13T14:31:54.623948+00:00",
+  "source_sha": "3edb8d656e511d3f81c147f54451fb57a84e5c38",
+  "verdict": "ACCEPT conditional as complete report; no runtime or PDF acceptance",
+  "full_report_read": true,
+  "full_context_read": true,
+  "report_sha256": "03efd495ceb8b0bfe50ff98ebb7b7ce456c0675a72acfbc36a9d59241a139e3d",
+  "manifest_sha256": "de93cede82b459594d12a626368cd7744db7c65034fb127c38a67593a0546971",
+  "raw_files_verified": 76
+}

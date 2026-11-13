@@ -1,0 +1,12 @@
+{
+  "CLAUDE.md": {
+    "raw_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+    "equals_previously_read305_subject": false,
+    "equals_prior_after_CRLF_to_LF_only": true
+  },
+  "docs/OPERATIONAL-GOVERNANCE-CHARTER.md": {
+    "raw_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+    "equals_previously_read305_subject": false,
+    "equals_prior_after_CRLF_to_LF_only": true
+  }
+}

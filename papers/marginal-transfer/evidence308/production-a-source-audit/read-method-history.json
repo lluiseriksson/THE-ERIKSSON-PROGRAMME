@@ -1,0 +1,5 @@
+{
+  "archive_attempt": "Read-only git archive of whole paper subtree stalled and its own two git processes were stopped; no completed archive or raw source snapshot was claimed.",
+  "recursive_tree_attempt": "Read-only recursive ls-tree exceeded 30s; its remaining own git child was stopped after timeout; no other agent process was stopped.",
+  "completed_method": "Narrow nonrecursive frozen tree read succeeded; exact manifest/TeX/boundary OIDs independently verified and every one of 588 declared raw input files rehashed."
+}

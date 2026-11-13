@@ -1,0 +1,58 @@
+{
+  "schema": "native-rubric-addendum-manifest-v1",
+  "recorded_at": "2026-11-13T03:20:00+00:00",
+  "canonical_pdf_sha256_raw": "a8b265c715f8c7748b60767555b2e8343402626d623e30fe9729a74f9e01474d",
+  "original_generic_score_unchanged": 7.4,
+  "first_native_calibration_score": 4.0,
+  "native_overall_stars": 4,
+  "review_count": 1,
+  "new_scientific_review_performed": false,
+  "version_id": "PENDING_PARENT_ALLOCATED_VERSION_ID",
+  "hashes": "SHA-256 of raw on-disk bytes; no normalization",
+  "output_text_representation": "UTF-8 without BOM; LF",
+  "original_files_preserved": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-295\\assessment295-first-round\\outputs\\scientific-report.md",
+      "sha256_raw": "6271d895f492efc70c00294db77aa9d2aefce4b7d0533896fa3f4118fa38e1ed",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-295\\assessment295-first-round\\outputs\\assessment.json",
+      "sha256_raw": "d80eb7a3a0b75904fa98f29dd75c841a09767f02f59705e23f445510483b0610",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-295\\assessment295-first-round\\outputs\\assignment-context.txt",
+      "sha256_raw": "e01ba64fef47c000f8cad0befec9378aaef5090ca67f3ad95319683620267aec",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-295\\assessment295-first-round\\outputs\\manifest.json",
+      "sha256_raw": "073421412f01386edd713829fafd285cd7314667974d6f84b44638762b1a6f3d",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-295\\assessment295-first-round\\outputs\\manifest.sha256",
+      "sha256_raw": "3d60af03e1e6b78c76fd03ac08e6568c6d9124a55ba65de16e301649682ad692",
+      "unchanged": true
+    }
+  ],
+  "addendum_outputs": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-295\\assessment295-first-round\\outputs\\native-format-addendum\\native-rubric-addendum.md",
+      "bytes": 9606,
+      "sha256_raw": "5d51b58a3c93f3beb69c2e646dbd3164336236d4415a1067248658826b67ef4f"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-295\\assessment295-first-round\\outputs\\native-format-addendum\\corrective-request-context.txt",
+      "bytes": 4514,
+      "sha256_raw": "3d3e5a0f471411312bfb5a93ac8d2679c1a1e73a6cbbab4c3ad59f1b98da42f1"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-295\\assessment295-first-round\\outputs\\native-format-addendum\\native-assessment-response.json",
+      "bytes": 7170,
+      "sha256_raw": "23120c8da07a00e3a67caa321b23b473e925d1814161f29c80d1201cd0bd750e"
+    }
+  ],
+  "self_hash": "manifest.sha256 records this manifest raw-byte SHA-256"
+}

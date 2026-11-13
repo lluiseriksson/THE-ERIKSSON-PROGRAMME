@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-11-13T14:39:39.480903+00:00",
+  "canonical_sha256": "a4f73a3cd260051f602390500ca8edcf58766faeb30d9141b7b11fe316062ef7",
+  "PDF_bytes": 478529,
+  "pages": 22,
+  "all22_pages_inspected": true,
+  "finding": "Page16 weighted-moment inline assumption protrudes into right margin; both final passes report13.91057pt overfull hbox. All other pages inspected without observed clipping/overlap/missing glyphs.",
+  "disposition": "Preserved; not sent for numerical assessment or deposited.308 displays the same assumption; theorem14 title clarified editorially.",
+  "assessment307_started": false,
+  "prepared_packet307_unused": true,
+  "lifecycle_actual_exits": {
+    "allocation": 0,
+    "execution": 0,
+    "download": 0,
+    "release": 0
+  },
+  "backend_actual_readback": "No active sessions found on server.",
+  "document_reproduction_not_math_verification": true
+}

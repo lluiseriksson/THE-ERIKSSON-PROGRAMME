@@ -1,0 +1,19 @@
+UNIT296 PREREGISTERED BOUNDED QUESTION AND JUDGES
+Question: Can a fixed finite L^s density bound replace the pointwise cap in the Boolean transfer gap theorem, and in what explicit low-integrability regime does this fail?
+Inputs: fixed0<rho<1, normalized nonnegative density r on each finite Boolean cube, ||r||_s<=B independently of dimension, s>1. No lower density bound; allow zeros in the sufficient theorem and demand strict positivity in counterexamples.
+Mechanism: ordinary hypercontractivity at exponent1+rho, Holder multiplication by r, reverse hypercontractivity at1-rho and sign-part compression; test two antipodal rare spikes against the product background.
+Candidate sufficient regime: s>(1+rho)/(1-rho). Candidate obstruction regime:1<s<log(2)/log(2/(1+rho)). No exact threshold or sharpness claimed.
+Falsifiers: a fixedrho,s,B sequence violating the claimed uniform bound; any failed Holder/time/exponent normalization; spike examples lacking normalized strict positivity, bounded L^s norm, or actual second eigenvalue collapse.
+Judges before proof artifact:
+G1 normalization/eigenvalue ratios and positive-support/zero-eigenvalue boundary.
+G2 dimension-free Perron lower/upper bounds with L^s only, no hidden L-infinity.
+G3 explicit Holder exponents q>1+rho precisely in sufficient regime.
+G4 justified reverse inequality/interpolation and sign-part compression without dividing by r.
+G5 explicit positive uniform gap, including the small second-eigenvalue case.
+G6 spike normalization and L^s bound for EVERYL>=1 and everyB>1.
+G7 actual positive transfer matrix second eigenvalue bound, including cross-block and remainder norm.
+G8 strictly decaying explicit exponential rates in the asserted obstruction range.
+G9 regimes do not overlap; leave intermediate/endpoint region unresolved.
+G10 sources/novelty/physical limits: classical inputs; no priority, local Gibbs, heatbath, physical massgap or continuum claim.
+Abandonment: reject failed gate; preserve negative outcomes. After three units without substantive progress change route or state concrete blocker. No standalone tiny-corollary paper; group accepted result with294/295.
+Status at registration: analytical mechanism and candidate regimes identified; no finalized proof artifact, computation, independent review or formal verification yet.

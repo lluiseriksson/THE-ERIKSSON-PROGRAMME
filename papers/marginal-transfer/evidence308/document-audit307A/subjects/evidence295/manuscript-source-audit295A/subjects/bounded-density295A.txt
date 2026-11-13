@@ -1,0 +1,44 @@
+295A: An upper density bound alone forces a dimension-free transfer gap
+Analytical candidate; not formally verified; external priority unestablished.
+Prerequisite judges295 committed at 658c2d6e5b1f21d4dd10c6ef198905125ec1a8dd.
+
+THEOREM. Fix beta>0, rho=tanh(beta), B>=1 and an integer L>=1. On the Boolean cube with uniform probability u, let r>=0, E_u r=1 and r<=B. Let P=P_rho be the Boolean noise operator (each Walsh character of degree j has eigenvalue rho^j). Define A=D_sqrt(r) P D_sqrt(r), with eigenvalues lambda1>=lambda2>=...>=0 on the full 2^L-dimensional space. Set
+ e=(1+rho^2)/(1-rho)^2,  c(B,rho)=B^(-1)(2B)^(-2e).
+Then 1-lambda2/lambda1 >= c(B,rho)>0, independently of L. No lower bound on r is required; r may vanish. If support has one point, lambda2=0.
+
+CONVENTION LINK. The matrix of P in point coordinates is M_beta/(1+exp(-2beta))^L where M_beta(x,y)=exp(-2beta d(x,y)). For mu(x)=2^(-L)r(x), A_mu=D_sqrt(mu) M_beta D_sqrt(mu)=2^(-L)(1+exp(-2beta))^L A. Thus all eigenvalue ratios agree with the family in294. On support, A has strictly positive entries. Its unique positive Perron vector yields a Doob chain with the same normalized eigenvalues. The Perron stationary law is not assumed to equal mu. We use the full eigenvalue list, including zeros off support.
+
+PROOF, G1. P is a self-adjoint positive semidefinite contraction, fixes constants, and has strictly positive matrix entries. Hence A is positive semidefinite and ||A||<=B. The unit vector sqrt(r) has Rayleigh quotient <r,P r> >= (E r)^2=1 by Walsh expansion. Therefore 1<=lambda1<=B. Perron simplicity and positivity hold on nonempty support.
+
+CLASSICAL INPUTS, G2. All Lp quantities below use the probability u. Put q=1+rho^(-2)>2 and p=1-rho in(0,1). Ordinary Boolean hypercontractivity gives ||P f||_q<=||f||_2. Reverse Boolean hypercontractivity and reverse Holder give, for nonnegative f,g,
+ <f,P g> >= ||f||_p ||g||_p.                                      (1)
+Here is the precise exponent check. Set p'=p/(p-1)=-(1-rho)/rho. In the time convention P=T_t, t=-log rho, the reverse inequality ||T_t g||_(p')>=||g||_p requires t>= (1/2)log((1-p')/(1-p)); the right side equals -log rho. Reverse Holder then yields (1) for positive f,g. Adding epsilon to both and passing to zero proves (1) for nonnegative functions on this finite space. No negative norm is evaluated at zero in this limiting argument.
+Sources: Mossel, Oleszkiewicz and Sen, On Reverse Hypercontractivity, arXiv:1108.1210v5, equations(1.1),(1.2), their tensorization discussion, and Lemma5.2. These are classical inputs, not new claims. The sharp uniform Boolean factor1/2 is used; the weaker general finite-space factor must not be substituted silently.
+
+SIGN PARTS, G3. If lambda2<lambda1/2, the required gap follows below. Otherwise lambda2>=lambda1/2>=1/2. Choose a real unit second eigenvector w orthogonal to the positive Perron vector on support. A positive-eigenvalue eigenvector vanishes off support. Both sign parts of w are nonzero. Write s=||w+||_2, t=||w-||_2, h+=w+/s and h-=w-/t. Then s,t>0, s^2+t^2=1, h+,h- are nonnegative orthonormal functions and w=s h+-t h-.
+Positivity of A and the eigenrelation imply pointwise lambda2 h+<=A h+ and lambda2 h-<=A h-. At a point where a sign part vanishes, this is simply positivity. Define f+=sqrt(r)h+, f-=sqrt(r)h-. Multiplying the preceding inequalities by sqrt(r) gives lambda2 f+<=r P f+ and likewise for minus. Thus
+ ||f+||_q <= (B/lambda2)||P f+||_q <= (B/lambda2)||f+||_2,
+and the same bound holds for f-. Taking the scalar product of the subeigen inequality with h+ also gives
+ lambda2 <= <h+,A h+>=<f+,P f+> <= ||f+||_2^2,
+and similarly for f-. None of these steps divides by r.
+
+INTERPOLATION, G4. Let theta=p(q-2)/(2(q-p)), so 0<theta<1 and 1/2=theta/p+(1-theta)/q. Holder applied to f^2=(f^p)^(2theta/p)(f^q)^(2(1-theta)/q) yields ||f||_2<=||f||_p^theta ||f||_q^(1-theta). This use of Holder has conjugate exponents greater than1; it does not assume an Lp normed space for p<1. For either sign part, the G3 bound and division by its positive L2 quantity give
+ ||f||_p >= ||f||_2 (B/lambda2)^(-e),
+ e=(1-theta)/theta=q(2-p)/(p(q-2))=(1+rho^2)/(1-rho)^2.
+Consequently (1) bounds the cross entry
+ c=<h+,A h->=<f+,P f-> >= lambda2 (B/lambda2)^(-2e).             (2)
+
+COMPRESSION, G5. In the orthonormal basis(h+,h-), the compression of A is [[a,c],[c,b]]. The full eigenrelation implies a-lambda2=c t/s and b-lambda2=c s/t. Therefore one compressed eigenvalue is lambda2 and the other is lambda2+c(t/s+s/t)=lambda2+c/(st). The maximum Rayleigh quotient on this two-dimensional subspace does not exceed lambda1. Since st<=1/2,
+ lambda1-lambda2 >= c/(st) >= 2c.                             (3)
+There is no loss from a small sign-part norm: it strengthens this bound.
+
+CONSTANTS, G6. Combining (2),(3) with lambda1<=B, lambda2>=1/2 and B/lambda2<=2B gives
+ 1-lambda2/lambda1 >= (2lambda2/lambda1)(B/lambda2)^(-2e)
+                  >= B^(-1)(2B)^(-2e)=c(B,rho).
+In the omitted case the gap exceeds1/2, while e>=1 and B>=1 give c(B,rho)<=1/4. Rank-one support belongs to that omitted case. This proves the theorem for every allowed density, including zeros.
+
+DENSITY CONSEQUENCE, G7. For a sequence with fixed beta and gap_L<=K exp(-gamma L), K,gamma>0, let B_L=max r_L. The theorem gives 2^(-2e)B_L^(-(2e+1))<=gap_L and hence
+ B_L >= (2^(-2e)/K)^(1/(2e+1)) exp(gamma L/(2e+1)).
+Thus exponential gap collapse in this congruence family forces exponential growth of the maximum density relative to uniform product. For294 take K=7 and its positive gamma. Its code mixture has B_L=2^L(1-eta)/|C|+eta, consistent with this necessary condition. Tiny minimum density alone is insufficient to cause collapse when the maximum density stays uniformly bounded. This is a transfer-spectrum statement; it does not concern the single-site heat-bath gap.
+
+SCOPE AND NOVELTY, G8. This is a complementary analytical result for the same294 family, to be grouped with that work after full audit, not marketed as a separate small paper. Classical hypercontractivity, reverse Holder, Perron theory and compression are credited. Bounded-potential and positivity-improving operator literature may contain a more general result. Gross, Invariance of intrinsic hypercontractivity under perturbation of Schroedinger operators, arXiv:2412.20282v2 (2025), is relevant prior work; only its abstract was checked at drafting, not a proof of equivalence to this discrete congruence. External priority is UNESTABLISHED. The present derivation removes any positive lower density hypothesis from this explicit sufficient-condition theorem, not a physical hypothesis of Yang-Mills. No local Gibbs, continuum, sharpness or optimal-exponent assertion is made. No mathematical software or Lean verification has been run for295.
