@@ -1,0 +1,22 @@
+{
+  "verdict": "ACCEPT G1-G6",
+  "source_sha": "9bc257640fc98ea9dd88317238fbdf0cbec79c95",
+  "judges_sha": "add50ba426e1fc8746d14c232d387cd5f0e5ae84",
+  "full_report_read": true,
+  "context_read": true,
+  "raw_files_verified": 14,
+  "manifest_sha256": "e4033825e73163b972109a127bacfb402d83c59facd35fbbddcfbbe11eb4d25d",
+  "report_sha256": "497afc56428f0b04c2e4608ba7fbb991f75f1c6f6925dd48d392990b4bc83200",
+  "formal_verification": false,
+  "new_PDF_score": null,
+  "external_priority_established": false,
+  "scope": [
+    "Each fixed K>1, fixedrho, prescribedfloorb<1",
+    "All-L total moment<=2 and sameK-tail<=1, both actual eigenvalues->1,Theta1",
+    "Separate family perK; K1 unresolved",
+    "Retained involved auditor300-302 context; no provider/human independence"
+  ],
+  "public_exclusions": [
+    "PRIVATE-MOS-1108.1210v5.pdf"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "date_utc": "2026-11-13T13:40:59.1379213Z",
+  "repository": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113",
+  "head": "a41f341608012146dc5c4e5dc10bb02a90a3dd11",
+  "branch": "codex/tep-sharp-tail302-20261113",
+  "head_parent": "868d80c81da95387198db3e3e860a769a42f2332",
+  "status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "pr_head": "a41f341608012146dc5c4e5dc10bb02a90a3dd11",
+  "pr_body_bytes": 911,
+  "pr_body_sha256": "1d37b92eff2c584ad4b0db89fac647e41bc9e5156b3893a5d63c236c3459a883",
+  "judges_diff": null,
+  "prior_sources_and_rules_diff": null,
+  "source299_blob": "650f87caf3fc972eb55350d6ef43b2fa12f1f094",
+  "source300_blob": "4e658f504a58757195b266c3deff3266c614e50d",
+  "source301_blob": "87fa4a42e545e1b88fe81cf025280cef8cf70b98",
+  "integration_order": "PR248 unchanged source must integrate before PR249; required checks not executed or certified by this audit"
+}

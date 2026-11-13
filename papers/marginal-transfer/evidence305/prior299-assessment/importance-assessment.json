@@ -1,0 +1,24 @@
+{
+  "paper_id": "ARR-2026-7KV9Y9ASX48H7A7N",
+  "version_id": "arr:version:64d43ea4-df87-4a7e-b973-e1c25d68d38c",
+  "pdf_sha256": "51d6ceeca54f3d782ed552074c0a320e715cd345502f25ce5387c2b380f732eb",
+  "purpose": "Qualitative elaboration of the native significance criterion; not a sixth criterion or a second numerical assessment.",
+  "native_criterion": "significance",
+  "additional_numeric_score": null,
+  "importance_judgment": "Strong specialist mathematical contribution with uncertain external priority and unestablished broader impact.",
+  "strongest_result": "The exact critical Ls budget boundary, including equality and any fixed density floor below one, for fixed-coupling weighted Boolean-noise transfer operators.",
+  "why_it_matters": [
+    "Separates local marginal information from global transfer relaxation even for the Perron stationary law.",
+    "Distinguishes a spectral gap problem from a top-operator-norm threshold by controlling two leading channels.",
+    "Identifies a precise endpoint admissibility boundary rather than leaving an open interval of critical budgets."
+  ],
+  "limits": [
+    "Arbitrary global many-body weights are allowed; fixed-range Gibbs relevance is not established.",
+    "The Doob chain updates whole configurations and does not supply a local-dynamics theorem.",
+    "No continuum, physical mass-gap, Yang–Mills or Millennium Problem conclusion is asserted or supported.",
+    "The hypercontractive scale, sign-domain method, coding inputs, and analogous norm-budget thresholds are classical.",
+    "No external adoption, new application or exhaustive priority study was verified."
+  ],
+  "potential_future_value": "The estimates and constructions may be reusable in weighted-kernel spectral analysis and in studying information sufficient for uniform relaxation. This is an inference about possible utility, not a demonstrated application or impact claim.",
+  "relationship_to_overall_score": "The Millennium score in native-response.json is the sole overall numerical judgment for this exact artifact; it is not recalculated here."
+}

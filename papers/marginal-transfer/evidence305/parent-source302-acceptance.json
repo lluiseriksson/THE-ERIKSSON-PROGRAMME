@@ -1,0 +1,24 @@
+{
+  "recorded_at": "2026-11-13T13:48:25.416332+00:00",
+  "verdict": "ACCEPT G1-G6",
+  "source_sha": "a41f341608012146dc5c4e5dc10bb02a90a3dd11",
+  "judges_sha": "868d80c81da95387198db3e3e860a769a42f2332",
+  "full_report_read": true,
+  "context_read": true,
+  "raw_files_verified": 17,
+  "report_sha256": "61548f0c8bbb963ad628b328f56547f7599704f8b0514f2c7b6cf0722c22bd7b",
+  "manifest_sha256": "d57723ee3d4fd76ea752494c327e0ffc20653cc1284594418c7d428f00ec0722",
+  "external_priority_established": false,
+  "formal_verification": false,
+  "new_PDF_score": null,
+  "scope": [
+    "Sharp asymptotic Theta threshold only; finite cutoff tau1 not settled by302",
+    "No optimal positive constant; no varyingrho bound",
+    "Same-context separate analytical auditor; no independent-provider claim"
+  ],
+  "public_exclusions": [
+    "PRIVATE-Wang-1305.4460v6.pdf",
+    "PRIVATE-MOS-1108.1210v5.pdf",
+    "PRIVATE-Miclo-hyperboundedness.pdf"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "paper_id": "ARR-2026-7KV9Y9ASX48H7A7N",
+  "version": "v4",
+  "version_id": "arr:version:64d43ea4-df87-4a7e-b973-e1c25d68d38c",
+  "canonical_sha256": "51d6ceeca54f3d782ed552074c0a320e715cd345502f25ce5387c2b380f732eb",
+  "provider": "OpenAI/Codex",
+  "model_id": "unknown",
+  "assessed_at": "2026-11-13T12:40:36.7499554+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "unknown",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.20,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {"stars": 4, "basis": "All 17 pages were read and visually inspected through the supplied renders. The code, sign-part, Gram-matrix, and exact-budget dilution arguments survived analytical review; no material mathematical error was identified. Single-model review only, with no human or formal verification."},
+    "rigor": {"stars": 4, "basis": "Theorems 1 and 7–13 explicitly handle normalization, zero densities, active support, multiplicities, rectangular Gram zeros, and all-dimension endpoint admissibility. Small-tilt constants and onset dimensions are existential, consistently with the stated claims."},
+    "novelty": {"stars": 3, "basis": "The joint marginal/stationary/many-mode conclusion and exact fixed-cube density-budget classification are plausible novelty candidates relative to the checked sources. Coding, hypercontractivity and sign-region machinery are classical; Miclo Section 6 already contains a related norm-budget transition at 2. External priority remains unestablished. Aida Theorem 10 was not checked because later retrievals timed out."},
+    "significance": {"stars": 3, "basis": "A useful specialist distinction between marginal information and transfer relaxation, with a sharp moment-budget classification for this congruence family. No fixed-range Gibbs, local-dynamics, continuum or physical mass-gap consequence is established; broad influence is not demonstrated."},
+    "reproducibility": {"stars": 4, "basis": "Main proofs are inspectable in the exact PDF, supported by exact TeX, text and 17 page images. All 28 manifest lengths and hashes matched. Build reproduction, runtime mathematics, Lean, public source-tree verification and human review were not performed; supplied build provenance is not proof verification."}
+  },
+  "summary": "First and only assessment of manuscript299A.pdf, SHA256 51d6ceeca54f3d782ed552074c0a320e715cd345502f25ce5387c2b380f732eb. The manuscript provides convincing finite-dimensional proofs of a code-based marginal obstruction and strict/critical density-moment classifications for weighted Boolean-noise transfer operators. The exact critical-budget result, including equality and any fixed density floor below one, is the strongest contribution. No unresolved mathematical objection invalidating a main theorem was identified. Minor revision is recommended for literature positioning and presentation; originality and broader significance remain uncertain. The 4.20 Millennium score is not a criterion average, correctness probability, editorial acceptance or inherited grade. Requested model/effort was gpt-6-astra/high; actual served configuration and technical independence were not verified.",
+  "strengths": [
+    "Theorem 1 matches labelled product marginals for both the weighting law and the Perron stationary law while controlling exponentially many nonleading modes at fixed coupling.",
+    "Proposition 5 computes the actual parity transfer spectrum, preventing an invalid inference from slow single-site heat-bath dynamics.",
+    "Theorems 7 and 9 use sign-part compression and forward/reverse hypercontractivity without requiring a positive density floor; zero densities are treated explicitly.",
+    "Theorem 10 uses two antipodal product channels and a Gram comparison to control two leading eigenvalues, rather than inferring gap collapse from top-norm growth alone.",
+    "Theorem 13 proves the restricted moment/sign-region inequality and then attains the exact critical budget by vanishing dilution with an endpoint multiplier perturbation bound.",
+    "The manuscript explicitly limits its scope, credits classical ingredients, identifies the exact source, and discloses model involvement and author ownership of AIRR."
+  ],
+  "weaknesses": [
+    "O1 — Minor literature revision: pp.15–16 should explicitly compare the critical density-budget transition with the L2-to-L4 norm-budget threshold below/at 2 discussed in Miclo Section 6 and Proposition 11. These are different operator/budget classes; no direct duplication or implication has been demonstrated.",
+    "O2 — External priority remains unresolved. Targeted primary-source checks and narrow searches cannot establish originality of either joint conclusion; the assessment must not be presented as novelty clearance.",
+    "O3 — The unrestricted global weights and full-configuration Doob dynamics limit significance. No natural fixed-range model application, local-relaxation theorem, continuum result or physical mass-gap advance follows.",
+    "O4 — Small-tilt choices, remainder constants, and endpoint floor cutoffs are existential. A parameter-selection recipe would improve reuse. Optimal gap bounds, endpoint convergence rates and optimal code tradeoffs are not established and are not claimed.",
+    "O5 — The marginal-matching code construction and the moment-budget tilt constructions are separate. Their properties must not be combined into a nonexistent single-family theorem; a compact result map would help.",
+    "O6 — A clearer introductory roadmap should foreground the endpoint classification. The historical source-access sentence on p.16 is procedural history and can be removed from the scientific exposition while retaining archived records.",
+    "O7 — Assurance limits: same-provider single-model assessment, shared filesystem, unknown technical independence and served configuration, no human/formal verification or build replay. Aida Theorem 10 was not retrieved sufficiently to check it. A search incidentally exposed an ungraded v2 abstract snippet, which was not opened or used; no old assessment or score was consulted."
+  ],
+  "potential_errors": [],
+  "strong_novelty_candidates": [
+    "Theorem 1's simultaneous exact linear-order labelled marginals for mu and pi with exponentially many near-Perron transfer modes at a fixed positive coupling; candidate only, external priority unestablished.",
+    "Theorem 13's exact dimension-free density-moment budget boundary B*=2^(1/s) for the fixed-rho multiplicative Boolean-cube family, including the equality case and any fixed floor below one; candidate only, closely related mechanisms and norm-budget precedents are classical.",
+    "Theorem 10's two-channel product-tilt realization of exponential gap collapse across the entire strict subcritical moment regime with a fixed positive floor; candidate only, no exhaustive literature clearance."
+  ],
+  "unresolved_material_objections": []
+}

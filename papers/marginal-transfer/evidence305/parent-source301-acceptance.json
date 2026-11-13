@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-11-13T13:36:19.078810+00:00",
+  "verdict": "ACCEPT G1-G6",
+  "source_sha": "6bc50cc52599b0df915895458002a3245e78e343",
+  "judges_sha": "758e1c5d8d40f3ce4717fc4885c29a5f9dec3559",
+  "full_report_read": true,
+  "context_read": true,
+  "raw_files_verified": 15,
+  "report_sha256": "2c58b8bbaeeb0e5a1497f223033b8393cec6faf53dad24eb16f739d0501a1f23",
+  "manifest_sha256": "a5b999ca1bdd404e3110651265f7a4c50ef39cb510b3b9e55171d762b648fada",
+  "external_priority_established": false,
+  "formal_verification": false,
+  "new_PDF_score": null,
+  "scope": [
+    "fixedrho",
+    "strictB>M^(1/s)",
+    "finite-prefix replacement",
+    "same-context separate analytical auditor; no independent-provider claim"
+  ],
+  "public_exclusions": [
+    "PRIVATE-Wang-1305.4460v6.pdf"
+  ]
+}

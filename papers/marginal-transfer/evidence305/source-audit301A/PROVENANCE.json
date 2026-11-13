@@ -1,0 +1,19 @@
+{
+  "date_utc": "2026-11-13T13:25:53.5093546Z",
+  "repository": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113",
+  "head": "6bc50cc52599b0df915895458002a3245e78e343",
+  "branch": "codex/tep-ui-nonnecessity301-20261113",
+  "head_parent": "758e1c5d8d40f3ce4717fc4885c29a5f9dec3559",
+  "status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "pr_head": "6bc50cc52599b0df915895458002a3245e78e343",
+  "pr_body_bytes": 874,
+  "pr_body_sha256": "6640eb52c35caf10786c51ec49c146ee8f131288fc5011be56d6c2439749a090",
+  "judges_diff": null,
+  "operational_rule_diff": null,
+  "source296_blob": "d5f0aba8f2f5150730187bfb3ae5ac0f9c95533d",
+  "source299_blob": "650f87caf3fc972eb55350d6ef43b2fa12f1f094",
+  "source300_blob": "4e658f504a58757195b266c3deff3266c614e50d"
+}

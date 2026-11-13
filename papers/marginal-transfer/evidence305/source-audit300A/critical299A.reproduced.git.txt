@@ -1,0 +1,115 @@
+EXACT CRITICAL MOMENT-BUDGET THRESHOLD — CANDIDATE299A
+Judges registered at bed6289e75510ac633ca3255bd5c4708343ce784.
+Analytical candidate, not yet accepted by separate audit. No new PDF assessment or inherited score. Raw preparatory reasoning is retained separately.
+
+1. Setting and precise claim
+
+Fix 0<rho<1 and s=(1+rho)/(1-rho)>1. On {-1,1}^L, L>=1, all expectations and Lp norms use the uniform probability measure. P_rho is the Boolean noise operator; its Walsh eigenvalues are rho^|S|. Write Q=P_sqrt(rho), so Q^2=P_rho. For r>=0 with E r=1, set T_r=M_sqrt(r) P_rho M_sqrt(r), and order its 2^L real eigenvalues lambda1>=lambda2>=...>=0 with multiplicity. Define gap(r)=1-lambda2/lambda1. No local-dynamics interpretation is imposed.
+
+Let B*=2^(1/s). The proposed result is:
+(i) 2 lambda2(T_r)^s <= E r^s. Consequently, if ||r||s<=B<B*, then gap(r)>=1-B/B*>0, uniformly in L. This numerical lower bound is not claimed to be the optimal positive gap value.
+(ii) For every fixed b in(0,1), there is a sequence r_L>0, E r_L=1, ||r_L||s<=B*, r_L>=b for every L>=1, with gap(r_L)->0.
+Thus for every B>=1, the infimum gap under ||r||s<=B is positive exactly when B<B*, both in the nonnegative-density class and in any subclass with a prescribed floor b in(0,1). At and above B* the infimum is0, not a claimed attained finite-dimensional zero gap. The floor restriction b<1 is essential: b=1 forces r=1. No rate at B* and no optimal positive-gap formula are claimed.
+
+The classical input is Boolean hypercontractivity, in either equivalent endpoint form
+||Q g||2 <= ||g||p, p=1+rho=2s/(s+1),
+||Q f||q <= ||f||2, q=2s/(s-1), q-1=1/rho.
+Both apply at equality of the noise parameter. These classical inequalities, Holder, positivity, the finite-dimensional min-max principle and Weyl's eigenvalue perturbation bound are not claimed as original.
+
+2. Two disjoint sign budgets
+
+The operator T_r is positive semidefinite. Its active support A={r>0} is nonempty and its kernel restricted to A is strictly entrywise positive, since every entry of P_rho is positive. Its top eigenvalue is positive and simple with a strictly positive eigenvector on A. Coordinates outside A form a zero block. If lambda2=0, (i) is immediate. Otherwise an associated real eigenvector f vanishes off A, is orthogonal to the positive Perron vector on A, and therefore has nonzero positive and negative parts f_+,f_-. This also covers multiplicity of lambda2; no base-measure mean-zero assumption is used. If A has one point, lambda2=0 already covered.
+
+For a real h supported on a set C, hypercontractivity and Holder give
+<h,T_r h> = ||Q(sqrt(r)h)||2^2
+ <= ||sqrt(r)h||p^2
+ <= (E[r^s 1_C])^(1/s) ||h||2^2.                         (1)
+For clarity, before raising to2/p, Holder uses exponents2/(2-p) and2/p:
+E[r^(p/2)|h|^p] <= (E[r^(p/(2-p))1_C])^((2-p)/2) (E|h|^2)^(p/2).
+Here p/(2-p)=s. There is no missing counting-measure factor.
+
+Since f=f_+-f_-, the eigenvalue equation yields
+lambda2||f_+||2^2=<f_+,T_r f_+>-<f_+,T_r f_-> <= <f_+,T_r f_+>.
+The cross term is nonnegative by kernel positivity. Applying(1) with C_+={f>0} and dividing by the nonzero norm shows lambda2^s<=E[r^s1_C+]. Pairing the eigenvalue equation with f_- gives the same bound on C_-={f<0}. These sets are disjoint. Adding proves2lambda2^s<=E r^s, including unassigned mass on {f=0}.
+
+The unit vector sqrt(r) has Rayleigh quotient
+<sqrt(r),T_r sqrt(r)>=<r,P_rho r> >= (E r)^2=1,
+where the final inequality follows from nonnegative Walsh eigenvalues and the constant Walsh coefficient. Hence lambda1>=1 and lambda2/lambda1<=lambda2<=B/B*. The advertised gap bound follows. If B=1, Jensen's strict convexity forces r=1, and the actual gap is1-rho. Our weaker positive lower bound at B=1 is consistent with that value.
+
+3. Balanced critical family and its actual spectrum
+
+We give the needed construction and limits explicitly; it is the balanced critical family of unit298 (immutable manuscript/source45d91a667750b295ce096fd495863583ba56eced, Theorem12), now with its exact limiting moment evaluated. Fix d>0 sufficiently small, and put delta_L=d L^(-1/3), with d<1. For a single uniform sign x, define
+n(delta)=[((1+delta)^s+(1-delta)^s)/2]^(1/s),
+w_delta(x)=(1+delta x)/n(delta), m(delta)=1/n(delta).
+Then w>0, E w=m and E w^s=1. In the orthonormal Walsh basis(1,x), put D=diag(1,rho), Q_1=diag(1,sqrt(rho)), and
+H=Q_1 M_w Q_1 = n^-1 [[1,delta sqrt(rho)],[delta sqrt(rho),rho]].
+Its top eigenvalue is
+kappa(delta)=[1+rho+sqrt((1-rho)^2+4rho delta^2)]/(2n(delta)).
+Set a_L=kappa(delta_L)^(-L)>0, R_L(x)=product_i w_delta_L(x_i),
+Z_L=1+a_L m(delta_L)^L, r_L=(1+a_L R_L)/Z_L.              (2)
+These are strictly positive normalized densities, and r_L>=1/Z_L.
+
+The following Taylor statements are ordinary expansions of real analytic even functions near delta=0, with constants depending on fixed rho,s and uniform on a sufficiently small closed interval:
+log n(delta)=(s-1)delta^2/2+O(delta^4),
+log kappa(delta)=[rho/(1-rho)-(s-1)/2]delta^2+O(delta^4)=O(delta^4).
+The cancellation uses s-1=2rho/(1-rho). Thus L log kappa(delta_L)=O(L^(-1/3)), a_L->1; also m(delta_L)^L->0 since Ldelta_L^2=d^2 L^(1/3)->infinity. In particular Z_L->1.
+
+For completeness, the Gram overlap needed for the top two eigenvalues is governed by
+tau(delta)^2=[1+rho^2+sqrt((1-rho^2)^2+4rho^2 delta^2)]/(2n(delta)).
+Expansion gives
+log tau(delta)=-rho/[2(1-rho^2)] delta^2+O(delta^4).       (3)
+Indeed its quadratic coefficient is one half of rho^2/(1-rho^2)-(s-1)/2=-rho/(1-rho^2).
+Hence eta_L=sqrt(a_L)tau(delta_L)^L->0.
+
+The transformed operator is
+Q M_rL Q = S_L/Z_L, S_L=P_rho+a_L H^tensor L.
+Both summands of S_L have top eigenvalue1: P_rho by Markov normalization, and a_L H^tensor L by the definition of a_L. Factor S_L=AA*+BB*, with A=Q and B=sqrt(a_L)(H^(1/2))^tensor L. The nonzero spectra of S_L and the block Gram matrix [[A*A,A*B],[B*A,B*B]] agree, with multiplicity. Its diagonal blocks have norm1 and each has a top eigenvalue1. The off-diagonal block has norm eta_L, because
+||Q_1 H^(1/2)||^2=||Q_1 H Q_1||=tau(delta)^2.
+The equality of the two norms follows from equality of spectra of X*X and XX*; the last matrix is n^-1[[1,rho delta],[rho delta,rho^2]].
+The block off-diagonal perturbation has norm eta_L. Therefore min-max/Weyl gives
+lambda1(S_L)<=1+eta_L, lambda2(S_L)>=1-eta_L,
+and positivity gives lambda1(S_L)>=1. For all sufficiently large L, 1-eta_L>0, so the second Gram eigenvalue is a genuine nonzero eigenvalue of S_L rather than an added zero. Consequently both top eigenvalues of Q M_rL Q tend to1 after division by Z_L->1.
+The spectra of Q M_r Q and actual T_r agree: take X=M_sqrt(r)Q, so X*X=Q M_r Q and XX*=T_r, square matrices of the same size. This remains true even when zeros occur. Thus lambda1(T_rL),lambda2(T_rL)->1 and gap(r_L)->0.
+
+4. Exact limiting critical moment
+
+For each fixed t in(0,s), a direct single-site expansion gives
+log E w_delta^t = [t(t-1)/2-t(s-1)/2]delta^2+O(delta^4)
+ = t(t-s)delta^2/2+O(delta^4).
+Product structure and delta_L yield E R_L^t->0. On the other hand E R_L^s=1 exactly for every L. The remainder constants may depend on t; no uniformity as t approaches0 or s is required.
+
+Put theta=min(1,s/2), so 0<theta<s and0<s-theta<s. There is a fixed C_s with, for all y>=0,
+0 <= (1+y)^s-1-y^s <= C_s(y^theta+y^(s-theta)).          (4)
+The lower inequality follows from s>1. For0<=y<=1, the mean-value theorem bounds the left side above by s2^(s-1)y<=s2^(s-1)y^theta. For y>=1, factor y^s and use the preceding mean-value bound at1/y to obtain s2^(s-1)y^(s-1)<=s2^(s-1)y^(s-theta), since theta<=1. Thus C_s=s2^(s-1) suffices in(4).
+Substitute y=a_L R_L, take expectations and use a_L->1 and the two strict-interior moment limits:
+0 <= E(1+a_L R_L)^s-1-a_L^s
+ <= C_s[a_L^theta E R_L^theta+a_L^(s-theta)E R_L^(s-theta)] ->0.
+Dividing by Z_L^s->1 gives E r_L^s->2, so B_L:=||r_L||s->B*.
+This is an asymptotic moment identity for the balanced family, not a triangle-bound assertion. No moment equality between distinct finite dimensions is claimed.
+
+5. Enforcing the exact boundary, not only B>B*
+
+Each r_L in(2) is nonconstant because d>0, a_L>0 and R_L is nonconstant. Thus B_L>1 by strict Jensen. Define
+epsilon_L=0 if B_L<=B*, and epsilon_L=(B_L-B*)/(B_L-1) if B_L>B*.
+There is no zero denominator in the second case. We have0<=epsilon_L<1 and epsilon_L->0, since B_L->B*>1. Set
+tilde r_L=(1-epsilon_L)r_L+epsilon_L.
+Then E tilde r_L=1, tilde r_L>0, and Minkowski/convexity gives
+||tilde r_L||s <= (1-epsilon_L)B_L+epsilon_L <= B* exactly.
+Also tilde r_L>=1/Z_L, because Z_L>1 and both r_L and1 have this lower bound.
+
+For any real h and unit vectors f,g, Holder with exponents(s,q,q), 1/s+2/q=1, and endpoint hypercontractivity imply
+|<f,Q M_h Qg>| <= ||h||s ||Qf||q||Qg||q <= ||h||s.
+Therefore
+||Q M_(tilde rL-rL) Q|| <= epsilon_L||1-r_L||s
+ <= epsilon_L(1+B_L) ->0.                               (5)
+This bounds the transformed operator difference without assuming a pointwise cap or estimating square-root differences. Weyl's finite-dimensional inequality and the exact X*X/XX* spectral identity now show lambda1(T_tilde rL),lambda2(T_tilde rL)->1. Hence gap(tilde r_L)->0.
+
+Fix any b in(0,1). Since Z_L->1, there is a finite L0 with1/Z_L>=b for all L>=L0. Retain tilde r_L for L>=L0 and set the density identically1 for1<=L<L0. This finite-prefix completion satisfies positivity, normalization, ||r||s<=B*, and r>=b for every L. Its gap still tends to0. Strict positivity of each finite transfer matrix gives a simple Perron eigenvalue, hence a strictly positive finite-dimensional gap; the result is failure of a uniform lower bound. The same sequence is admissible for every B>=B*. Together with Section2 this proves the exact threshold classification in Section1, subject to the separate audit.
+
+6. Scope, provenance and falsification record
+
+This candidate replaces the previously unresolved critical budget interval by an exact threshold if accepted. It does not upgrade unit298's assessed PDF, its4.00/10 score, its importance3.50/10 or its partial statement. No quantitative rate is extracted from dilution at equality. No conclusion is asserted for prescribed b=1, rho endpoints, simultaneous varying rho/s, local Gibbs interactions, marginal-matching of the tilt family, heat-bath dynamics, physical mass gaps or the continuum. PR29 remains20/41 andTermSource=0.
+
+The sign-splitting/min-max mechanism and endpoint hypercontractivity are classical. Exact external priority of this threshold formulation and the constructed boundary family has not been established. The unit298 primary comparisons, and the newly accessible Aida2001 author preprint identified in that exact-PDF review, remain relevant; the additive Dirichlet-form setting is not automatically the present multiplicative transfer operator. A targeted additional primary-source comparison is required before any novelty claim. Absence of a search hit is not evidence of priority.
+
+No computation, Lean verification, formal certificate, independent human/provider review or new model score is claimed. All mathematical acceptance depends on a separate analytic review against G1-G7. Any invalid sign-support step, incorrect critical exponent, failed moment limit or nonvanishing dilution blocks the corresponding conclusion and must be preserved.
