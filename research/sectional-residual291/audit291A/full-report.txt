@@ -1,0 +1,43 @@
+291A COMPLETE ADVERSARIAL ANALYTICAL SOURCE AUDIT
+VERDICT: BOUNDED_ANALYTICAL_ACCEPTANCE. Nine of nine preregistered analytical gates reviewed; explicit nonzero count9. No material failure or requiredminor correction identified. The SECTION/ESCAPE/COST inequalities and the N-1 dimensional residual-escape claim follow on the stated actualmodel. This is not independentpeerreview, a numerical/formal certificate, originality certification, publication or globalQ251resolution.
+
+REFERENT AND FULL READ
+FrozenHEAD10a3f69f97152a871f1769ebf23806efd2f2b03a, baseefb0e1188792c810b130584f3792e2424676a6c6. Raw291A SHA256c3634a25f05eebc2f1c7cbcd6c447eb44c0f00acacd2aa0b1f36f68413b0384c matches exactGit. Fullnewsource, alljudges andoriginalcandidate read; eachretainedrawsubject/Gitcopy isbound separately. Exact289B,286A,290A modelinputs arecaptured with inspectedhashes. Priorprogramme/source involvement disclosed, actualCodex/OpenAI identity only, exactservedbackend unexposed. Parentfabricatedproof, no independentdiscoveryattribution. No mathematicalexecution wasused.
+
+COMPLETE GATE FINDINGS
+1. Model and real low-sector dimension
+Paid actual spectrum gives L inside diagonal coexact fields, with scalar low branch tensored with V. Fixing the real unitv=(0,1,-1)/sqrt2 leaves one complex low line per unordered diagonal pairt=1..N-1. Conjugation pairs representatives t andN-t. Since dyadicn>=8,N iseven; all nonfixed pairs give totalreal dimensionN-2 and fixedt=N/2 has an antilinear involution on its one complex low line, hence realdimension1. TotalN-1 is correct. Zero/N exceptional pair contributes no low mode. Profiles have componentwisezero mean.
+
+2. Actual reducing polarization and block conjugations
+At k=(t,0,0), g has lasttwo entries0; at kprime=(t+N,N,N), the lasttwo entries areboth-2. v is Hermitian-orthogonal to both normals. Complements tov in each actualplane have innerproduct0 withv from theotherplane, so the scalar ambientcrosscoupling does reduce to this actual common-polarization2block. g* gprime=2i sin(theta), giving the printedHermitian entries and firstinversecomponent e p_t-epsilon B0 gamma p_partner. No fullambient invariance is assumed.
+
+3. Sample normalization and phase
+T*alpha has physicalweightn^-3/2 at eachsample; unitary3Dtransform addsn^-3/2, so coefficientn^-3sum. The1Dunitary p hasfactor n^-1/2, giving eta=n^-5/2. Atpartner thephase is exp[-2pi i(t+N)i/n] times(-1)^tau; quadratic tau iseven, so no extra sign survives. The actualcoexact projection preservesv coefficients and noL projection appears atthese non-diagonal modes.
+
+4. Exceptional modes and weighted partial shift
+For everyt!=0 both frequencies are non-diagonal actualhigh; at t=N, kprime=(0,N,N) is nonzero andnon-diagonal, gamma=0, so p0 doesnot enter. t0 is deliberatelyunused, since k0 actualcoexact isabsent. Dprime>=8 gives e>=8A0-c>=6B0 becauseH+7a-c>0; thus |lambda|<=1/3. Schurpositivity gives0<Delta/e<=d<=4A0. The indexshift byN is injective on surviving indices, with the tNoutputzero; it is a weightedpartialpermutation, norm<=1/3, not an incorrectly linked samepair system.
+
+5. Inverse estimate constant and sectional Fourier factor
+BLOCK inEuclideannorm and ||p-LambdaShift p||>=(2/3)||p|| gives factor(3/2)*4A0=6A0. Unitary transforms of G_i=sum_jk f_i jk give Ghat(t)=n fhat(t,0,0), since summing two coordinates contributesn² against n^-3/2 and the final1Dnormalization. Thus the sum of squaredv coefficients is<=||Gf||²/n². Combining yields6A0 n^3/2, exactly INVERSE, with only centeredalpha_v controlled and no unavailablezero-mode equation.
+
+6. Paid range, singleton isometry and SECTION
+Dyadic collisionfactor proves permutation, giving actualy=T_Ll norm²=n^-5||l||² and meanzero alongunitv. Fullrange feasibility impliesy inrangeM, Malpha=y. NormT=n^-3/2 andB>=13c/3 implyM<=3/(13cn³); spectralinversion onlyonrangeM yields E>=13c||l||²/(3n²). Pairingwith centeredalpha_v andINVERSE givesE<=(6A0/n)||Gf||||l||. For nonzerol division yields13c/(18A0 n); l0 is immediate. Gl=0 fromprofilemean, so Gw_T=-Gf. This is an actualresidual estimate, not a response-rank inference.
+
+7. All original rows, annihilation of S and D norm
+Originalcells partition eachslice andcomponent, with exactlyone volume1 singleton removed inP. Multiplying each remaining normalizedrow bysqrt(n³|cell|) reconstructs sectionalG wheneverTu=0. Rowcoefficient squaredsum is n³(n²-1), and differentoutputsslice/components have disjoint supports, so ||D||<=n^5/2. The four290 physicalcell sums a,-a,-a,a cancel, allotherentrieszero, givingDS=0. Emptycells/othervolume1cells are correctlyaccounted for.
+
+8. Distance, injectivity and actual conditional COST
+For every s inS, D(r-s)=Gw_T, hence distance>=SECTION/n^5/2, givingexponent7/2. Positivity provesinjectivity of r moduloS onL_v, dimensionN-1. P ambientrows have disjointsupport andsquarednormn^-3; restrictioncannot increase it. With0<=R_T<=B^-1, K_P<=3/(13cn³). Paid r inrangeK_P permitsinverse lower13cn³/3. Since||r||>=dist(r,S), multiplication gives (13cn³/3)*(169c²/(324A0²n^7))=2197c³/(972A0²n^4), asprinted. No inversebound follows merelyfrom290 rank; here actualr isbounded.
+
+9. Scope, provenance and retained failures
+Allhypotheses retained: actualmodel, dyadicn>=8, quadraticeven/permutationcut and fixedv. COST scalesc/n^8 becauseA0 isordercn², and givesnoorderc margin, recovery orfullkernelcounterexample. Thezero-sectional290 image cannotcancelthese lowresiduals; thisspecificmechanism isrefuted, notbestcanonicalQ251. Originalcandidateis retainedunreviewed, currentquantitativeproof assessedseparately. Classical projection/inverse algebraandabstract-onlycontext establishnopriority. No grade/formal/independentreview/physicalgap/publicationclaim.
+
+ADDITIONAL ATTACKS AND LIMITATIONS
+The equations at t andt+N arise fromdifferent checkerboardpairs, notfromduplicatingone2block. Nevertheless their sampledatums involve thesameshifted1Dsequence; the weightedpartialpermutation argument correctlyuses allnonzeroindices without assuming itisonepair. That distinction doesnot undermine the normbound. At tN no p0equation isneededbecause itscoefficient isexactlyzero. At the selfconjugate lowrepresentative N/2, v isreal andbothspatialplanes remainactualcoexact; the realfixedline count iscorrect despite imaginaryoffdiagonal coupling.
+
+The targetcost bound deliberately usesonly the veryweak uniformnorm estimates forT andP; itdoesnotassert conditioningonS or an inversecompression principle. Allnorms are the original counting/ordinaryrow norms. In particular theD norm usesactualcellvolumes, not merelynumberofrows, and includes allremainingcells regardless ofwhether they havevolume1. No fullrank premise or favorableGram estimate isintroduced. The fulloriginalrange theorem suppliesfeasibility beforeany pseudoinverseisinverted. The case l0 iscovered separately; nonzerol givesnonzerosingletondata bythe exactframe, justifying everydivision.
+
+No concrete mathematicalfailure or requiredminor correction found. The older unreviewedcandidate isnotretrospectively relabelledaccepted or rewritten; the new proofaddsquantitativeestimates ratherthaninheritingsuchestimates fromthe draft. The conclusion rulesout usingonlyzero-sectionalimage lifts tocancel anynonzerol inthisentirefixedpolarizationlowsector. Itdoesnotshowthat otherliftsfail, improveCOST toorderc, decidequadratictarget-c recovery, producebelow-c fullkernelwitnesses, orproveanyphysical/continuumgap. Externalmodel-specificpriority remainsunestablished; no freshbibliography/networkverification bythisauditor.
+
+OPERATIONS, EXPLICIT COUNTS AND RETENTION
+Analyticalgates reviewed9, nozero/vacuousgatecount. Inspectedrawinputmanifest andoutputrawmanifest retainfullsubjects, originaldraft, exactassignment/context/gates andstability. Onlysource/Git/hash/copy/JSONmetadata operations wereexecuted, with explicitif/raise checksandnoPythonassert. No compiler/Lean/tests/runtime/network/newagent/modelscore, source/state/Gitmutation, incomingmessage ortoolfailure. Governance hashesareunchanged fromtheearlierfull-readrules. HEAD, newsource, judges andoriginaldraft checkedagainatsealing; no clonecreated orcleanupdebt. No publicationverification orclaim.

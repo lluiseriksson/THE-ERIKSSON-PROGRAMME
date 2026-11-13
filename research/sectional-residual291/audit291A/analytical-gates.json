@@ -1,0 +1,60 @@
+{
+  "nonzero_analytical_gate_count": 9,
+  "method": "Analytical source review, no executable mathematical certification",
+  "gates": [
+    {
+      "gate": 1,
+      "name": "Model and real low-sector dimension",
+      "verdict": "PASS",
+      "reason": "Paid actual spectrum gives L inside diagonal coexact fields, with scalar low branch tensored with V. Fixing the real unitv=(0,1,-1)/sqrt2 leaves one complex low line per unordered diagonal pairt=1..N-1. Conjugation pairs representatives t andN-t. Since dyadicn>=8,N iseven; all nonfixed pairs give totalreal dimensionN-2 and fixedt=N/2 has an antilinear involution on its one complex low line, hence realdimension1. TotalN-1 is correct. Zero/N exceptional pair contributes no low mode. Profiles have componentwisezero mean."
+    },
+    {
+      "gate": 2,
+      "name": "Actual reducing polarization and block conjugations",
+      "verdict": "PASS",
+      "reason": "At k=(t,0,0), g has lasttwo entries0; at kprime=(t+N,N,N), the lasttwo entries areboth-2. v is Hermitian-orthogonal to both normals. Complements tov in each actualplane have innerproduct0 withv from theotherplane, so the scalar ambientcrosscoupling does reduce to this actual common-polarization2block. g* gprime=2i sin(theta), giving the printedHermitian entries and firstinversecomponent e p_t-epsilon B0 gamma p_partner. No fullambient invariance is assumed."
+    },
+    {
+      "gate": 3,
+      "name": "Sample normalization and phase",
+      "verdict": "PASS",
+      "reason": "T*alpha has physicalweightn^-3/2 at eachsample; unitary3Dtransform addsn^-3/2, so coefficientn^-3sum. The1Dunitary p hasfactor n^-1/2, giving eta=n^-5/2. Atpartner thephase is exp[-2pi i(t+N)i/n] times(-1)^tau; quadratic tau iseven, so no extra sign survives. The actualcoexact projection preservesv coefficients and noL projection appears atthese non-diagonal modes."
+    },
+    {
+      "gate": 4,
+      "name": "Exceptional modes and weighted partial shift",
+      "verdict": "PASS",
+      "reason": "For everyt!=0 both frequencies are non-diagonal actualhigh; at t=N, kprime=(0,N,N) is nonzero andnon-diagonal, gamma=0, so p0 doesnot enter. t0 is deliberatelyunused, since k0 actualcoexact isabsent. Dprime>=8 gives e>=8A0-c>=6B0 becauseH+7a-c>0; thus |lambda|<=1/3. Schurpositivity gives0<Delta/e<=d<=4A0. The indexshift byN is injective on surviving indices, with the tNoutputzero; it is a weightedpartialpermutation, norm<=1/3, not an incorrectly linked samepair system."
+    },
+    {
+      "gate": 5,
+      "name": "Inverse estimate constant and sectional Fourier factor",
+      "verdict": "PASS",
+      "reason": "BLOCK inEuclideannorm and ||p-LambdaShift p||>=(2/3)||p|| gives factor(3/2)*4A0=6A0. Unitary transforms of G_i=sum_jk f_i jk give Ghat(t)=n fhat(t,0,0), since summing two coordinates contributesn\u00b2 against n^-3/2 and the final1Dnormalization. Thus the sum of squaredv coefficients is<=||Gf||\u00b2/n\u00b2. Combining yields6A0 n^3/2, exactly INVERSE, with only centeredalpha_v controlled and no unavailablezero-mode equation."
+    },
+    {
+      "gate": 6,
+      "name": "Paid range, singleton isometry and SECTION",
+      "verdict": "PASS",
+      "reason": "Dyadic collisionfactor proves permutation, giving actualy=T_Ll norm\u00b2=n^-5||l||\u00b2 and meanzero alongunitv. Fullrange feasibility impliesy inrangeM, Malpha=y. NormT=n^-3/2 andB>=13c/3 implyM<=3/(13cn\u00b3); spectralinversion onlyonrangeM yields E>=13c||l||\u00b2/(3n\u00b2). Pairingwith centeredalpha_v andINVERSE givesE<=(6A0/n)||Gf||||l||. For nonzerol division yields13c/(18A0 n); l0 is immediate. Gl=0 fromprofilemean, so Gw_T=-Gf. This is an actualresidual estimate, not a response-rank inference."
+    },
+    {
+      "gate": 7,
+      "name": "All original rows, annihilation of S and D norm",
+      "verdict": "PASS",
+      "reason": "Originalcells partition eachslice andcomponent, with exactlyone volume1 singleton removed inP. Multiplying each remaining normalizedrow bysqrt(n\u00b3|cell|) reconstructs sectionalG wheneverTu=0. Rowcoefficient squaredsum is n\u00b3(n\u00b2-1), and differentoutputsslice/components have disjoint supports, so ||D||<=n^5/2. The four290 physicalcell sums a,-a,-a,a cancel, allotherentrieszero, givingDS=0. Emptycells/othervolume1cells are correctlyaccounted for."
+    },
+    {
+      "gate": 8,
+      "name": "Distance, injectivity and actual conditional COST",
+      "verdict": "PASS",
+      "reason": "For every s inS, D(r-s)=Gw_T, hence distance>=SECTION/n^5/2, givingexponent7/2. Positivity provesinjectivity of r moduloS onL_v, dimensionN-1. P ambientrows have disjointsupport andsquarednormn^-3; restrictioncannot increase it. With0<=R_T<=B^-1, K_P<=3/(13cn\u00b3). Paid r inrangeK_P permitsinverse lower13cn\u00b3/3. Since||r||>=dist(r,S), multiplication gives (13cn\u00b3/3)*(169c\u00b2/(324A0\u00b2n^7))=2197c\u00b3/(972A0\u00b2n^4), asprinted. No inversebound follows merelyfrom290 rank; here actualr isbounded."
+    },
+    {
+      "gate": 9,
+      "name": "Scope, provenance and retained failures",
+      "verdict": "PASS",
+      "reason": "Allhypotheses retained: actualmodel, dyadicn>=8, quadraticeven/permutationcut and fixedv. COST scalesc/n^8 becauseA0 isordercn\u00b2, and givesnoorderc margin, recovery orfullkernelcounterexample. Thezero-sectional290 image cannotcancelthese lowresiduals; thisspecificmechanism isrefuted, notbestcanonicalQ251. Originalcandidateis retainedunreviewed, currentquantitativeproof assessedseparately. Classical projection/inverse algebraandabstract-onlycontext establishnopriority. No grade/formal/independentreview/physicalgap/publicationclaim."
+    }
+  ]
+}

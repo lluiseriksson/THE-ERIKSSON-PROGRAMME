@@ -1,0 +1,29 @@
+BOUNDED ANALYTICAL ACCEPTANCE -- 13November2026
+Frozen source10a3f69f97152a871f1769ebf23806efd2f2b03a.
+Raw sourcec3634a25f05eebc2f1c7cbcd6c447eb44c0f00acacd2aa0b1f36f68413b0384c.
+The distinct audit session reviewed all nine gates, without a material
+objection or required correction. Its complete context, assignment, input
+copies and full report are retained under audit291A; all17 manifest members
+were separately checked for exact raw byte count and SHA256.
+Full report647f83c83b801b39adf35ae09dad41d342989edb935359a8591ebef3e2353291.
+Raw manifest47affa22d0e74d67479102a4aa92fa02d1b892ec828c61a1914649518a6d4a60.
+
+Acceptance covers SECTION, ESCAPE and COST for the stated model and the
+N-1 dimensional fixed-polarization low sector. The candidate-status line
+in frozen291A remains a record of fabrication chronology, not a rewritten
+history. The original preliminary draft is retained unchanged.
+
+This is involved Codex/OpenAI source review in a different session, exact
+backend unexposed, not independent human peer review, numerical or formal
+verification, originality certification, a PDF assessment or a publication.
+No score transfers. The cost coefficient decays as c/n^8 and does not
+settle the target-c comparison. Q251 remains OPEN; all hypotheses retained.
+
+Continuation must also respect the already closed287 result: adding only
+complete line means cannot repair the target. Do not repeat that route.
+Any further conditional elimination of sectional sums must retain ALL
+original prefix rows and account for the full remaining residual cost.
+An Xi-constrained singleton minimizer changes the residual; the present
+obstruction concerns the actual unconstrained paid minimizer of286, not
+every possible choice of baseline. Group291 with290 and later energy work;
+no standalone small paper is authorized by this mathematical disposition.

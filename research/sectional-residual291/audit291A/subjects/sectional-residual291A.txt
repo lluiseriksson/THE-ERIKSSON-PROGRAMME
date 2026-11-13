@@ -1,0 +1,225 @@
+Q251 /291A: ACTUAL LOW RESIDUALS ESCAPE THE PREFIX LIFT
+13 November2026 UTC. Fabricated at base
+efb0e1188792c810b130584f3792e2424676a6c6; candidate pending separate audit.
+
+1. REFERENTS, ORIGINAL MODEL AND CLAIM
+
+Keep the original one-channel model of290A, either epsilon=+1 or-1:
+X=(Z/n)^3, counting norm, c>0, H=cn^2, a=c/48,
+A0=(H+a)/2, B0=(H-a)/2, b(x)=A0+epsilon B0(-1)^(x1+x2+x3).
+The source form is Q(u)=sum_(x,j,r)b(x)|Delta_j u_r(x)|^2,
+Delta_j u(x)=u(x+e_j)-u(x), and U is the ACTUAL image of d1*.
+Its restricted operator is A. Let L be the full low spectral space,
+F=U orthogonal-minus L, B=A_F-cI, and N=n/2. Assume dyadic n>=8.
+The cut is tau_i=2i^2 mod n, using least residues. All tau_i are even.
+The original cells are {i} times I times J, with I=[0,tau_i-1],{tau_i},
+or[tau_i+1,n-1], J={0} or[1,n-1], empty cells omitted. Each component
+row is sum_cell u_r/sqrt(n^3 |cell|). T contains the singletons at
+(i,tau_i,0); P contains ALL remaining original rows. C=(T,P).
+
+Paid inputs, not new assumptions: B>=13c/3; L has dimension n-2 and
+lies in the diagonal Fourier coexact space N_d; O=U orthogonal-minus N_d
+is contained in F. Original full-row range equality gives feasibility
+of every low cancellation. These are proved in manuscript289B.tex,
+source446124a566483e6f1a8d499d801ce60e0abbb9d8,
+rawSHA256579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668.
+The exact text is also preserved on this branch in
+research/quadratic-prefix290/audit290A/subjects/manuscript289B.tex.
+
+Let M=T_F B^-1 T_F*, alpha(l)=Mdagger T_L l,
+f(l)=B^-1 T_F*alpha(l), w_T(l)=l-f(l), r(l)=P w_T(l).
+The paid range proves M alpha(l)=T_L l, hence T w_T(l)=0.
+With R_T=B^-1-B^-1 T_F* Mdagger T_F B^-1 and K_P=P_F R_T P_F*,
+the exact further cost is <r(l),K_Pdagger r(l)>; r(l) is in range K_P.
+These statements include all row correlations and singular pseudoinverses.
+They are proved in286A and289B, not assumed positive definite on all rows.
+
+Let S=JZ be the explicit290A original P-row image, dimension3n/2-3,
+attained by its period-four fields. Referent: source20569d59f89b55efce508107cf4659f51c4109de,
+rawSHA2563dc7e8c67753e0116ab759bde39cf10ccf7b3c688080586722e1296ff84092ac,
+research/quadratic-prefix290/quadratic-prefix290A.txt.
+The only property of S needed below is that its four original cell sums
+on an odd slice are a,-a,-a,a, with all other entries zero. Thus their
+full sectional sum is zero. No invariance of S under K_P is claimed.
+
+Fix v=(0,1,-1)/sqrt(2). Let L_v be the real low spectral subspace with
+fields l(x)=phi(x1+x2+x3)v. Then dim_R L_v=N-1; proof below.
+Define G(u)_i=sum_(j,k)u(i,j,k), an unnormalized vector sectional sum.
+
+Theorem. For every l in L_v,
+ ||G(w_T(l))|| >= [13c/(18A0 n)] ||l||,                    (SECTION)
+ dist(r(l),S) >= [13c/(18A0 n^(7/2))] ||l||,              (ESCAPE)
+ <r(l),K_Pdagger r(l)> >=
+               [2197 c^3/(972 A0^2 n^4)] ||l||^2.         (COST)
+In particular r modulo S is injective on L_v and has rank at least N-1.
+No nonzero field in this entire low sector has residual in S. COST is a
+deliberately weak lower bound, whose coefficient scales as c/n^8. It does
+NOT supply the order-c comparison needed for target-c recovery. No upper
+cost estimate or original full-kernel below-c witness is supplied.
+
+2. THE LOW SECTOR, REAL COUNT AND SINGLETON ISOMETRY
+
+At diagonal frequency k=(t,t,t), t nonzero, the actual Fourier fiber is
+g(k) perpendicular, g_j(k)=exp(2pi i k_j/n)-1. The vector v belongs to
+it. Scalar source weights couple only k and k+(N,N,N), preserving this
+common polarization. For t=1,...,N-1, the lower scalar eigenvalue is
+ 3(H+a)-3sqrt((H+a)^2-4Ha sin^2(2pi t/n)),
+with one complex line on v for each unordered pair {t,t+N}.
+It is at most c/8. The exceptional pair{0,N} has no low direction:
+the constant coexact coefficient is absent and the other eigenvalue is
+6(H+a). These N-1 lower lines define the complexification of L_v.
+Conjugation sends representative t to N-t. Distinct representatives pair
+into real dimension2; the sole fixed representative t=N/2 contributes
+real dimension1. For that line the real operator's conjugation is an
+antilinear involution; its fixed real dimension is1, not2. Thus the real
+dimension is (N-2)+1=N-1. Every resulting profile phi has zero mean.
+
+The quadratic map i->i+tau_i is a permutation: a collision gives
+(i-j)(1+2(i+j))=0 mod n, and the second factor is odd, hence invertible
+for dyadic n. Counting the n^2 occurrences of each diagonal sum gives
+ ||l||^2=n^2 sum_s |phi(s)|^2,
+ ||T_L l||^2=n^-3 sum_i |phi(i+tau_i)|^2=n^-5||l||^2.    (ISO)
+Also sum_i phi(i+tau_i)=0. These are actual original singleton values.
+
+3. AN INVERSE ESTIMATE FROM SECTIONAL MODES
+
+We first allow any real singleton coefficient vector alpha and put
+f=B^-1 T_F*alpha. All Fourier transforms in this section are unitary.
+Write p_t for the one-dimensional coefficient of alpha_v(i)=<v,alpha_i>.
+For t nonzero consider k_t=(t,0,0) and k'_t=(t+N,N,N).
+Neither is diagonal; both are in O subset F. At each fiber v is coexact:
+g(k_t) has its last two entries zero, while g(k'_t) has them both -2.
+The orthogonal complement of v in each fiber is orthogonal to v in the
+other fiber as well. Hence the two v coefficients reduce the ACTUAL
+restricted operator; this is not an ambient-invariance assumption.
+
+Put theta_t=2pi t/n, D_t=4sin^2(theta_t/2), D'_t=12-D_t,
+d_t=A0 D_t-c, e_t=A0 D'_t-c, gamma_t=2i sin(theta_t).
+The B block in this shared polarization is
+     [d_t, epsilon B0 gamma_t;
+      epsilon B0 conjugate(gamma_t), e_t].
+Indeed sum_j conjugate(g_j(k_t))g_j(k'_t)=2i sin(theta_t).
+Let Delta_t=d_t e_t-B0^2|gamma_t|^2>0. Positivity is inherited from B.
+
+The ambient singleton adjoint equals n^-3/2 alpha_i at (i,tau_i,0).
+Unitary three-dimensional transform gives n^-3 sum_i alpha_i times
+the sample phase. Since p_t uses n^-1/2 sum_i, the common coefficient
+factor is eta=n^-5/2. At k_t the input v coefficient is eta p_t.
+At k'_t it is eta p_(t+N), since tau_i even makes (-1)^tau_i=1.
+Projection to U preserves these v coefficients and projection away from
+L is zero on these O modes. The first inverse-block coefficient is
+  <v,hat f(k_t)>=eta(e_t p_t-epsilon B0 gamma_t p_(t+N))/Delta_t.
+Therefore, for every t nonzero,
+ p_t-lambda_t p_(t+N)=(Delta_t/e_t)eta^-1 <v,hat f(k_t)>,
+ lambda_t=epsilon B0 gamma_t/e_t.                        (BLOCK)
+
+Here D'_t>=8 and
+ e_t>=8A0-c>=6B0,
+because 8A0-c-6B0=H+7a-c>0 for n>=8. Thus |lambda_t|<=1/3.
+Also 0<Delta_t/e_t<=d_t<=4A0. At t=N, gamma_t=0, lambda_t=0;
+the potential p_0 term is exactly absent. At t=0 no equation is used:
+constant actual coexact fields do not exist.
+Consequently the map p_nonzero -> (lambda_t p_(t+N))_(t nonzero),
+with the t=N output zero, has norm at most1/3. It is a weighted partial
+permutation of the nonzero indices. Taking Euclidean norms in BLOCK and
+using the reverse triangle inequality proves
+ ||p_nonzero|| <=6A0 n^(5/2)
+                   (sum_(t nonzero)|<v,hat f(t,0,0)>|^2)^(1/2).
+Unitary Fourier normalization gives hat G(f)(t)=n hat f(t,0,0).
+Parseval and projection onto unit v therefore yield
+ ||alpha_v-mean(alpha_v)|| <=6A0 n^(3/2)||G(f)||.          (INVERSE)
+This proves in particular that G(f)=0 forces alpha_v constant, without
+requiring the full vector alpha to be constant.
+
+4. APPLYING THE ESTIMATE TO THE PAID LOW RESIDUAL
+
+Set alpha=alpha(l). The singleton map has ambient norm n^-3/2, because
+its spatial samples are distinct. Restriction to F cannot increase it.
+Since B>=13c/3,
+            0<=M<=3/(13c n^3) I.
+The paid range identity M alpha=T_L l and its spectral pseudoinverse
+give the attained singleton cost
+ E=<alpha,T_L l>=<f,Bf>>= (13c n^3/3)||T_L l||^2
+                         =13c/(3n^2)||l||^2,            (LOWCOST)
+where the inequality is on range M, not on its kernel. It also holds at
+l=0; for l nonzero ISO makes E strictly positive.
+
+Because T_L l is everywhere parallel to v and has zero mean,
+ E=<alpha_v-mean(alpha_v), (T_L l)_v>
+ <=6A0 n^(3/2)||G(f)|| n^-5/2||l||
+ = (6A0/n)||G(f)|| ||l||.
+Combining with LOWCOST yields ||G(f)||>=13c/(18A0 n)||l||.
+Every l in L_v has G(l)=0 by mean zero of phi, so G(w_T(l))=-G(f).
+This proves SECTION, including the zero vector case separately.
+
+5. ORIGINAL ROW RECONSTRUCTION AND CONDITIONAL COST
+
+Define D on the P-row space by multiplying each component cell row by
+sqrt(n^3 |cell|) and summing the remaining cells in each slice. For any
+u with T u=0, those omitted singleton cell sums vanish, hence G(u)=D Pu.
+For each slice and component the squared coefficient sum of D is
+n^3(n^2-1)<=n^5: cells partition a slice of volume n^2, and exactly
+one singleton is omitted. Different slice/component outputs have
+disjoint row supports. Thus ||D||<=n^(5/2).
+The four original cell sums defining S cancel on each odd slice and all
+others vanish, so D S=0. Empty cells contribute no row and no volume.
+For each s in S, since T w_T=0,
+ ||G(w_T)||=||D(r(l)-s)||<=n^(5/2)||r(l)-s||.
+Taking the infimum over S and applying SECTION proves ESCAPE. Its
+positive coefficient proves injectivity of r modulo S on L_v.
+
+The original P rows have disjoint cell/component supports and each
+ambient squared row norm is n^-3. Hence P P*<=n^-3 I after restriction
+to F. Since 0<=R_T<=B^-1, the actual conditional response obeys
+        0<=K_P<=3/(13c n^3) I.
+The paid feasibility r(l) in range K_P permits spectral inversion there:
+ <r(l),K_Pdagger r(l)> >=(13c n^3/3)||r(l)||^2
+ >=(13c n^3/3)dist(r(l),S)^2
+ >=[2197c^3/(972A0^2 n^4)]||l||^2.
+This proves COST. It is an estimate of the ACTUAL residual and its paid
+conditional cost, not an inference from rank K_P alone.
+
+6. DISPOSITION, REVIEW CONTEXT AND NEXT QUESTION
+
+The290 lift alone cannot cancel the residual of any nonzero l in L_v;
+at least N-1 independent residual directions survive modulo its image.
+More generally any proposed lift image contained in ker D has the same
+obstruction, since SECTION does not depend on the special definition of S.
+Adding only lifts with zero full sectional sums cannot repair that defect.
+This refutes this particular cancellation mechanism, not quadratic-cut
+target-c recovery and not the optimal-partition question Q251.
+
+COST is positive but decays as c/n^8. The target comparison has a low
+margin of order c||l||^2, so no recovery conclusion follows. There is no
+uniform observability estimate, no matching asymptotic, and no below-c
+full original-kernel witness. All model hypotheses are retained; none is
+counted eliminated. PR29 remains20/41, TermSource0, with no continuum or
+physical Yang--Mills spectral conclusion. Group this with290 and future
+energy results; do not publish this as a separate small paper.
+
+Model assessments and review context: fabrication by the current involved
+Codex/OpenAI session, exact backend unexposed. A different-session full
+analytic audit is required before accepting this source. No numerical
+execution, formal Lean verification, independent/human peer review, PDF
+assessment, inherited score, acceptance or publication is asserted.
+The original unreviewed candidate is retained without changing its bytes.
+
+Primary comparison, abstract refreshed13November2026:
+Corach, Maestripieri and Stojanoff, Oblique projections and Schur complements,
+https://arxiv.org/abs/math/0006120. Their abstract relates weighted
+projections and shorted operators; that general algebra is classical.
+The inverse-norm argument is elementary finite linear algebra, not a new
+general theorem. The model-specific phase/block/sectional estimate is
+derived above, but external originality remains UNESTABLISHED. No absence
+of search results or abstract reading is treated as a priority proof.
+
+Next sole question within Q251: retain full sectional constraints explicitly
+in the conditional elimination and derive a bound at the actual low energy
+scale, or a useful counterexample. Do not try to cancel r(L_v) using only
+the zero-sectional290 image again. Test whether conditioning on sectional
+sums removes a quantitatively important part of the residual, with the
+cost charged exactly once and all other original rows retained.
+Falsifier: a derived low field with total cost below its paid deficit,
+or a lower bound for every low field that blocks that witness route.
+After three units without a useful new estimate/obstruction, retain the
+failures and change mechanism or identify the precise missing inequality.

@@ -1,0 +1,82 @@
+UNREVIEWED WORKING DERIVATION FOR THE NEXT UNIT -- NOT AN ACCEPTED RESULT
+12 November2026 UTC. Prepared while PR235 integration checks run.
+Depends on accepted290A source20569d59f89b55efce508107cf4659f51c4109de
+and the actual spectral blocks in289B source446124a566483e6f1a8d499d801ce60e0abbb9d8.
+No execution, separate audit, formal verification, score or publication.
+
+Question: can the actual low residual lie in the lift image S=JZ of290?
+Candidate stronger answer: for the quadratic dyadic cut and the fixed
+polarization v=(0,1,-1)/sqrt(2), no nonzero l in the low sector L_v has
+r(l) in S. Consequently the residual modulo S is injective on L_v.
+The tentative real dimension of L_v is n/2-1 (must check complex-to-real
+count explicitly against the paid spectrum). This would rule out using
+the290 lift alone to cancel even this whole low polarization sector.
+It does NOT estimate residual energy or refute the quadratic recovery cut.
+
+Let G(u)_i=sum_(j,l)u(i,j,l) be full coordinate1-sectional sums.
+For a field with T=0 and P-value in S, G(u)=0: sum the actual cell sums
+recovered by multiplying each original row by sqrt(n^3 |cell|). The four
+entries of J give plane a,-a and long-third -a,a, other entries zero.
+Every diagonal low field also has G(l)=0 because its scalar profile has
+zero mean. Thus r(l) in S forces G(f_T(l))=0.
+
+Write alpha=M_Tdagger T_L l, f=B^-1 T_F* alpha, so f_T=-f.
+Paid range gives M_T alpha=T_L l. If T_L l is nonzero, then
+ <alpha,T_L l>=||B^-1/2 T_F*alpha||^2>0.
+For l in L_v, T_L l=n^-3/2 phi(i+tau_i) v, where phi is mean-zero.
+For the dyadic quadratic cut f(i)=i+tau_i is a permutation, so
+sum_i phi(i+tau_i)=0 and T_L l is nonzero for nonzero l.
+
+Candidate key lemma: G(B^-1 T_F* alpha)=0 forces the scalar sequence
+alpha_v(i)=<v,alpha_i> to be constant, when all tau_i are even.
+It suffices to inspect frequency pairs (t,0,0) and (t+N,N,N), N=n/2.
+For t nonzero, both are off diagonal and are entirely in O subset F.
+The vector v is orthogonal to g at both frequencies, so this common
+polarization reduces the actual restricted two-by-two Hermitian block.
+Let theta=2pi t/n, D_t=4sin^2(theta/2), D'_t=12-D_t,
+d_t=A0 D_t-c, e_t=A0 D'_t-c, gamma_t=2i sin(theta).
+The B block on v is
+       [ d_t, epsilon B0 gamma_t ;
+         epsilon B0 conjugate(gamma_t), e_t ].
+Here A0=(H+a)/2, B0=(H-a)/2 as in290. Positivity follows from O subsetF.
+
+Let p_t be the unitary one-dimensional Fourier coefficient of alpha_v.
+The T* input to these two modes is a common positive normalization
+n^-5/2 times (p_t,p_(t+N)): tau_i even removes the factor(-1)^tau_i
+in the partner sample phase. Projection to U does not change the v
+component, because v belongs to both actual Fourier coexact fibers.
+No low projection contributes because both frequencies are in O.
+The first inverse-block component is proportional to
+        e_t p_t - epsilon B0 gamma_t p_(t+N).
+G(f)=0 makes this zero for each nonzero t.
+
+If t and t+N are both nonzero, apply the same equation to t+N:
+ e_t p_t = epsilon B0 gamma_t p_(t+N),
+ e_(t+N) p_(t+N) = -epsilon B0 gamma_t p_t.
+Because D'_t>=8, e_t>=8A0-c>2B0>=|B0 gamma_t| for n>=8,c>0,
+the two strict contraction inequalities force both coefficients to zero.
+The t=N exception is separate: gamma_N=0 and e_N>0, so p_N=0.
+No t=0 equation is needed (constant coexact fields are absent).
+Thus p_t=0 for every nonzero t and alpha_v is constant.
+
+If r(l) belongs to S for nonzero l in L_v, the key lemma applies to f_T
+and gives constant alpha_v. Then the permutation mean-zero identity gives
+ <alpha,T_L l>=n^-3/2 sum_i alpha_v(i)phi(i+tau_i)=0,
+contradicting the strictly positive paid cancellation cost. Hence the
+candidate conclusion follows. By linearity, the kernel of r modulo S on
+L_v is zero. This still says nothing about how much the complementary
+residual costs in the K_Pdagger metric.
+
+Required adversarial checks before any acceptance:
+1. All block conventions, especially gamma_t conjugation and source parity.
+2. Exact sample Fourier normalization and even-tau partner phase.
+3. v reducing the actual coexact restricted block, not just the ambient form.
+4. Both exceptional indices0,N, and no accidental diagonal/low frequency.
+5. Definition and real dimension of L_v from actual lower branches.
+6. Derivation of G=0 from original row values, including all empty cells.
+7. Paid range, positivity, nonzero T_L l and dyadic permutation hypotheses.
+8. No implication from complementary rank to a residual-energy comparison.
+
+If correct, this is the next structural obstruction, to be grouped with290
+and future actual energy estimates. It should replace an unsuccessful
+attempt to assume r(L) subset S, not be advertised as a solution or paper.

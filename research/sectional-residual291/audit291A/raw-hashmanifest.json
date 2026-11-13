@@ -1,0 +1,91 @@
+{
+  "files": [
+    {
+      "path": "analytical-gates.json",
+      "bytes": 5697,
+      "sha256": "60573bed9723dbe996b463fc7940698ab04212c37d3f4a35debf9cc1d52eebb0"
+    },
+    {
+      "path": "assignment.txt",
+      "bytes": 1584,
+      "sha256": "40d5486a09859876f1d96db262cfbae18731343dae22f797dfd973e2b499be96"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 1095,
+      "sha256": "a1e3c709e17ed7afd1e2dcec6536b401c8324b26f5622c3c60a8d0828a8270a1"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 8242,
+      "sha256": "647f83c83b801b39adf35ae09dad41d342989edb935359a8591ebef3e2353291"
+    },
+    {
+      "path": "inspected-input-hashmanifest.json",
+      "bytes": 4838,
+      "sha256": "d4ffb83cff0421bb958d1ce83774c5d684fa18afa07d9cfde9e791de10235d88"
+    },
+    {
+      "path": "stability.json",
+      "bytes": 718,
+      "sha256": "fe7bc41069e63be5e55b7287eadf3de8a8e55eaeb43d8d63c50100e2d7b9da9e"
+    },
+    {
+      "path": "subjects/candidate-original.txt",
+      "bytes": 4702,
+      "sha256": "b694dbd51ca96f8448ad74a6b164ba21f90a963708b7f7f8621c441f0bb1dd6b"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/git-candidate-original.txt",
+      "bytes": 4702,
+      "sha256": "b694dbd51ca96f8448ad74a6b164ba21f90a963708b7f7f8621c441f0bb1dd6b"
+    },
+    {
+      "path": "subjects/git-judges291.txt",
+      "bytes": 1769,
+      "sha256": "a0a670c4d4cf87090fedc18c221a31c1f6e38ae542de6b302b25635a77c2765f"
+    },
+    {
+      "path": "subjects/git-sectional-residual291A.txt",
+      "bytes": 12372,
+      "sha256": "c3634a25f05eebc2f1c7cbcd6c447eb44c0f00acacd2aa0b1f36f68413b0384c"
+    },
+    {
+      "path": "subjects/judges291.txt",
+      "bytes": 1769,
+      "sha256": "a0a670c4d4cf87090fedc18c221a31c1f6e38ae542de6b302b25635a77c2765f"
+    },
+    {
+      "path": "subjects/manuscript289B.tex",
+      "bytes": 54939,
+      "sha256": "579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "subjects/prefix-residual286A.txt",
+      "bytes": 10303,
+      "sha256": "dbfc64f90d55e96c86795090a92765b13edef735eb5048713d435cc30ee27055"
+    },
+    {
+      "path": "subjects/quadratic-prefix290A.txt",
+      "bytes": 13464,
+      "sha256": "3dc7e8c67753e0116ab759bde39cf10ccf7b3c688080586722e1296ff84092ac"
+    },
+    {
+      "path": "subjects/sectional-residual291A.txt",
+      "bytes": 12372,
+      "sha256": "c3634a25f05eebc2f1c7cbcd6c447eb44c0f00acacd2aa0b1f36f68413b0384c"
+    }
+  ],
+  "nonzero_retained_artifact_count": 17,
+  "regime": "Exact raw bytes; manifest excludes itself"
+}
