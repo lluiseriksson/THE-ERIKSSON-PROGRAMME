@@ -1,0 +1,10 @@
+CATALOGUE304 — VERIFIED PUBLIC PREDECESSOR v3 -> v4
+Single record ARR-2026-7KV9Y9ASX48H7A7N, Lluis Eriksson. The last verified host predecessor is v3 after the catalogue299 operation; execution will require that exact entry again. Public v4 release299 was independently downloaded and checked byte-for-byte, and the official intake mark-published command was followed by a separate authenticated GET showing published=true. This helper reconciles only the predecessor catalogue for later authorized linked revisions; it creates no grant, receipt, scope or publication.
+
+Public v4: https://airr.science/papers/ARR-2026-7KV9Y9ASX48H7A7N/versions/v4/
+Release: https://github.com/arr-research/arr-research.github.io/releases/tag/ARR-2026-7KV9Y9ASX48H7A7N-v4
+Published 2026-11-13T13:05:36Z. Native SUB-0AB8776BAC693EBB, separate GET2026-11-13T13:12:49.530614+00:00. PDF422279bytes, SHA25651d6ceeca54f3d782ed552074c0a320e715cd345502f25ce5387c2b380f732eb.
+
+Compared with reconcile_catalogue299.py, only frozen PREVIOUS/ENTRY, public version/PDF length, and unique tep304 preservation paths change. All host/root/configuration/path gates, exact public hash, service quiescence/restart, live-unused-grant stop, DB transaction, durable backup, unrelated-entry preservation, atomic catalogue replacement, owner/mode verification and explicit recovery boundary are retained. Do not bypass a new blocker or run twice over existing attempt files. No automatic JSON rollback, no direct SQL changes to permission/receipt/publication.
+
+No live execution yet. The new exact script and PR body require separate audit and successful repository checks before deployment. Existing active service and author scope are unchanged. This is not a request for broader delegation or a new credential. The user already authorized this programme and reuse of the actual original instruction; no human response is fabricated.
