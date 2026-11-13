@@ -1,0 +1,35 @@
+{
+  "manifest_bytes": 605,
+  "manifest_sha256": "f80c81668f5b795bd4b9b3b102c11f0817e6d6be14b255a793ed86587bf52926",
+  "manifest_mirror_equal": true,
+  "files": [
+    {
+      "path": "build307.py",
+      "bytes": 10737,
+      "sha256": "3e7fffe0e8e2690bfdec03a2146343e060d77c18dcfaa30d29837113f2d21f79",
+      "manifest_match": true,
+      "mirror_equal": true
+    },
+    {
+      "path": "capture_cli_atomic.ps1",
+      "bytes": 2607,
+      "sha256": "4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b",
+      "manifest_match": true,
+      "mirror_equal": true
+    },
+    {
+      "path": "readback_after_stop.ps1",
+      "bytes": 934,
+      "sha256": "278b45215974c6d13e41aa8557a1938066e8d9d09c602f22ec019b79e8ed286a",
+      "manifest_match": true,
+      "mirror_equal": true
+    },
+    {
+      "path": "run_owned_after_gate.ps1",
+      "bytes": 4206,
+      "sha256": "fd03dae8e506a01c864f2685cb2336c37cab9ef3a2428ea2d68a4a0bf855da50",
+      "manifest_match": true,
+      "mirror_equal": true
+    }
+  ]
+}

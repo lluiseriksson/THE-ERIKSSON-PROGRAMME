@@ -1,0 +1,14 @@
+{
+  "observed_at": "2026-11-13T14:28:01.670965+00:00",
+  "manifest_sha256": "f80c81668f5b795bd4b9b3b102c11f0817e6d6be14b255a793ed86587bf52926",
+  "manifest_mirror_identical": true,
+  "runner_files_unchanged": true,
+  "source_HEAD": "3edb8d656e511d3f81c147f54451fb57a84e5c38",
+  "branch": "codex/tep-complete-tail307-20261113",
+  "C_authority_relay": false,
+  "D_authority_relay": false,
+  "attempt307_present": false,
+  "attempt305_present": false,
+  "runtime_queries_or_allocations": 0,
+  "helper_executions": 0
+}

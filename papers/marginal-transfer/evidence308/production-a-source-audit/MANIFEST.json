@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "algorithm": "sha256",
+  "byte_regime": "Raw bytes of each retained file; source/runner bytes unnormalized; governance CRLF comparison separately labelled; MANIFEST.json excludes itself",
+  "created_at": "2026-11-13T14:29:46.245863+00:00",
+  "files": [
+    {
+      "path": "ASSIGNMENT.txt",
+      "bytes": 1296,
+      "sha256": "f27c9cb53a67d4313e3e1fedaf8ad43fedf7d3bf0e508a58e2cb84313e241d9d"
+    },
+    {
+      "path": "CONTEXT.md",
+      "bytes": 2940,
+      "sha256": "1e69e4caec2926a37839d6016a309ae44f09a9c47f7e0222e5662349f167aeeb"
+    },
+    {
+      "path": "exact-delta-accounting.json",
+      "bytes": 357,
+      "sha256": "81a9445724a3bd3211a92b7e65236b63f193fe19c124ba9926ceca2836f817e3"
+    },
+    {
+      "path": "final-state.json",
+      "bytes": 529,
+      "sha256": "f0a53997a52409ef77185cb34e683610e590a2667f999cf7ee495601759a57c2"
+    },
+    {
+      "path": "governance-bindings.json",
+      "bytes": 450,
+      "sha256": "a9f2a734925823fcba2815d98b2d6660ea2619c2f08d851cef9f9ced4784e982"
+    },
+    {
+      "path": "prior-production299-report.txt",
+      "bytes": 14931,
+      "sha256": "f598b4f5c8f19f57a374d416e6291962b3fe978c463a97feb9fa3a08c1ee546b"
+    },
+    {
+      "path": "prior-production305-report.txt",
+      "bytes": 12416,
+      "sha256": "fed1474ab7977fbf5575e6d76cb2edf22700d23071ab10b84024fdb298fdcb86"
+    },
+    {
+      "path": "read-method-history.json",
+      "bytes": 535,
+      "sha256": "5a844629134f82bcf3379a97266b7192c93b84125326d2dbaca9524224e4bbe5"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 11016,
+      "sha256": "c404e1a81226a229ae02c1b0ace57af5603b8e885fa8271a3ba74b5d3baa3311"
+    },
+    {
+      "path": "runner-bindings.json",
+      "bytes": 1054,
+      "sha256": "270f1ece7566ac69022cc80ff0f343215a2896431937cd323462aaefe6d6a818"
+    },
+    {
+      "path": "runner-delta-from299.diff",
+      "bytes": 12149,
+      "sha256": "ab23c58b6c0efe4a9d58bd583b83c71458f5987247ce6aa7018dd22505e5288c"
+    },
+    {
+      "path": "runner-delta-from305.diff",
+      "bytes": 11750,
+      "sha256": "3032b204bdb96cd96378119b83468ec573562a43429649d27a28c4909760d045"
+    },
+    {
+      "path": "source-checks.json",
+      "bytes": 1826,
+      "sha256": "a36282f1b506c0ffbdd4bf8f2e3e89c75fc84792aaa9dced7603d3a0429843f4"
+    },
+    {
+      "path": "source-input-bindings.json",
+      "bytes": 230996,
+      "sha256": "06f06417986272c49d748409adc5828618eff2308bb2b5309798103b82348ddd"
+    },
+    {
+      "path": "subjects/build307.py",
+      "bytes": 10737,
+      "sha256": "3e7fffe0e8e2690bfdec03a2146343e060d77c18dcfaa30d29837113f2d21f79"
+    },
+    {
+      "path": "subjects/capture_cli_atomic.ps1",
+      "bytes": 2607,
+      "sha256": "4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/manuscript307A.tex",
+      "bytes": 73378,
+      "sha256": "527fb31fa134923db32e90d666c6cedd5824fc1d4b2bd143169ab4411f3bd9ae"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "subjects/PACKAGE-BOUNDARY307.txt",
+      "bytes": 1246,
+      "sha256": "a8deabd33bfb510fd79aee969675ed10b1d1f073412feeaa5a4bdbaf6cfb9994"
+    },
+    {
+      "path": "subjects/prior299-build299.py",
+      "bytes": 10671,
+      "sha256": "b2456a36399003991dd13dfa24e9e550b473ec92a6d0cca7f08944910165ca1f"
+    },
+    {
+      "path": "subjects/prior299-capture_cli_atomic.ps1",
+      "bytes": 2607,
+      "sha256": "4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b"
+    },
+    {
+      "path": "subjects/prior299-readback_after_stop.ps1",
+      "bytes": 934,
+      "sha256": "1fe1e6a65d47e5b384d862e1b56d68009dd6c4408259849ba6a6f54de7b132e1"
+    },
+    {
+      "path": "subjects/prior299-run_owned_after_gate.ps1",
+      "bytes": 4206,
+      "sha256": "73e69443bcf02566596a952b6dff8a96ebd882b7c20d2eedfd1f3fce9e75d88f"
+    },
+    {
+      "path": "subjects/prior305-build305.py",
+      "bytes": 10739,
+      "sha256": "96cd2756a13aafa2bd348392e4c106ee69b49adda1dde12d69cc877ac5db98bf"
+    },
+    {
+      "path": "subjects/prior305-capture_cli_atomic.ps1",
+      "bytes": 2607,
+      "sha256": "4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b"
+    },
+    {
+      "path": "subjects/prior305-readback_after_stop.ps1",
+      "bytes": 934,
+      "sha256": "8769ee89d11db70dbd8de21c3f35dd2edbb7145ec7290966293a86c96b6f739b"
+    },
+    {
+      "path": "subjects/prior305-run_owned_after_gate.ps1",
+      "bytes": 4206,
+      "sha256": "92396d92827dba600ab92c811f7ac844bc278eb1cfd0325a499c255330c4e8a9"
+    },
+    {
+      "path": "subjects/readback_after_stop.ps1",
+      "bytes": 934,
+      "sha256": "278b45215974c6d13e41aa8557a1938066e8d9d09c602f22ec019b79e8ed286a"
+    },
+    {
+      "path": "subjects/run_owned_after_gate.ps1",
+      "bytes": 4206,
+      "sha256": "fd03dae8e506a01c864f2685cb2336c37cab9ef3a2428ea2d68a4a0bf855da50"
+    },
+    {
+      "path": "subjects/RUNNER-HASHES.json",
+      "bytes": 605,
+      "sha256": "f80c81668f5b795bd4b9b3b102c11f0817e6d6be14b255a793ed86587bf52926"
+    },
+    {
+      "path": "subjects/SOURCE-INPUTS307.json",
+      "bytes": 126054,
+      "sha256": "8676f51f2ee40b0402b677d4036f6bfeeb91ff29a4f6309fa67f64b493c088b6"
+    }
+  ]
+}

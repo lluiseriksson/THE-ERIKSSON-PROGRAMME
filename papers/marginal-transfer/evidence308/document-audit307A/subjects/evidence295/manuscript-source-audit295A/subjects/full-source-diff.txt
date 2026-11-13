@@ -1,0 +1,217 @@
+diff --git a/papers/marginal-transfer/manuscript294A.tex b/papers/marginal-transfer/manuscript295A.tex
+index 0e4e6af0..25c8af28 100644
+--- a/papers/marginal-transfer/manuscript294A.tex
++++ b/papers/marginal-transfer/manuscript295A.tex
+@@ -18,7 +18,7 @@
+ \newcommand{\wt}{\operatorname{wt}}
+ \newcommand{\Unif}{\operatorname{Unif}}
+ \providecommand{\SourceCommit}{SOURCE-NOT-BUILT}
+-\title{Product Marginals and Exponentially Slow Spectra\\of Positive Ising Transfer Kernels}
++\title{Product Marginals, Density Bounds and Slow Spectra\\of Ising Transfer Kernels}
+ \author{Lluis Eriksson\\\small Independent researcher}
+ \date{13 November 2026}
+ \begin{document}
+@@ -37,7 +37,12 @@ We prove the coding input by a direct entropy union bound and give explicit
+ finite spectral constants. As a negative control, we calculate the full
+ transfer spectrum of a single positive parity tilt: unlike its single-site
+ heat-bath gap, its transfer gap stays uniformly positive at fixed coupling.
+-The ingredients are classical; the contribution considered here is their
++Conversely, a uniform upper bound on density relative to product gives an
++explicit dimension-independent transfer gap, with no positive lower-density
++assumption and even with zero weights. This complementary bound uses
++ordinary and reverse Boolean hypercontractivity and sign-part compression;
++it forces exponential maximum-density growth whenever the gap collapses
++exponentially. The ingredients are classical; the contribution considered here is their
+ joint transfer and stationary-marginal conclusion, whose external priority
+ is not established. The weights allow global many-body dependence and
+ exponentially small probabilities. No fixed-range Gibbs or local-dynamics
+@@ -308,8 +313,8 @@ The positive parity family
+  \qquad \chi_S(x)=(-1)^{\sum_{i\in S}x_i},
+ \end{equation}
+ has all proper marginals equal to product marginals. Its single-site
+-heat-bath gap tends to zero as $|t|\to1$ at fixed size and positive site
+-rates~\cite{ErikssonParity}. Nevertheless, its transfer ratio at fixed
++heat-bath gap tends to zero as $|t|\to1$ at fixed size $L\ge2$ and fixed
++finite positive site rates~\cite{ErikssonParity}. Nevertheless, its transfer ratio at fixed
+ $\beta$ is bounded uniformly away from one, as follows.
+ 
+ \begin{proposition}\label{prop:parity}
+@@ -403,6 +408,141 @@ a physical mass gap, entropy tensorization, or a specified spatial mixing
+ rate. The many-mode conclusion is spectral; no separate theorem about
+ metastable sets is implicit.
+ 
++\section{Upper density control without a lower bound}\label{sec:density}
++The obstruction above allows the maximum density relative to product to
++increase with dimension. A uniform upper bound changes the conclusion;
++a positive lower bound is not required. Write $\rho=\tanh\beta$ and let
++$P_\rho$ be the Boolean noise operator in $L^2(u_L)$, whose Walsh
++multipliers are $\rho^{|S|}$. For a nonnegative density $r$ with
++$\mathbb E_{u_L}r=1$, put
++\[
++ T_r=\diag(\sqrt r)P_\rho\diag(\sqrt r).
++\]
++Since $P_\rho=M_\beta/(1+e^{-2\beta})^L$, for $\mu=2^{-L}r$ we have
++$A_\mu=2^{-L}(1+e^{-2\beta})^L T_r$. Thus the eigenvalue ratios agree.
++Here zeros of $r$ are allowed; we keep the zero eigenvalues outside its
++support in the full $2^L$-dimensional list.
++
++\begin{theorem}\label{thm:density}
++Let $L\ge1$, $0<\rho<1$, $B\ge1$, and $0\le r\le B$ with
++$\mathbb E_{u_L}r=1$. Set
++\[
++ e_\rho=\frac{1+\rho^2}{(1-\rho)^2},\qquad
++ c(B,\rho)=B^{-1}(2B)^{-2e_\rho}.
++\]
++The two largest eigenvalues of $T_r$ satisfy
++$1-\lambda_2/\lambda_1\ge c(B,\rho)>0$, independently of $L$.
++In particular, no positive lower bound on $r$ is needed.
++\end{theorem}
++\begin{proof}
++All norms and scalar products use $u_L$. The noise operator is positive
++semidefinite, fixes constants and is a contraction. Hence
++$\lambda_1\le B$. The unit vector $\sqrt r$ has Rayleigh quotient
++$\langle r,P_\rho r\rangle\ge(\mathbb E r)^2=1$, by Walsh expansion,
++so $1\le\lambda_1\le B$. On $S=\{r>0\}$ the matrix is strictly positive;
++its Perron vector is positive on $S$ and its leading eigenvalue is simple.
++
++We use two classical Boolean hypercontractive inequalities. Put
++$q_*=1+\rho^{-2}$ and $p_*=1-\rho$. Then
++\begin{equation}\label{eq:hyperinputs}
++ \|P_\rho f\|_{q_*}\le\|f\|_2,\qquad
++ \langle f,P_\rho g\rangle\ge\|f\|_{p_*}\|g\|_{p_*}\quad(f,g\ge0).
++\end{equation}
++For clarity about conventions, equations (1.1)--(1.2) and tensorization
++in~\cite{MOS} use time $t=-\log\rho$ for the uniform Boolean semigroup.
++For the second inequality set $p_*'=p_*/(p_*-1)=-(1-\rho)/\rho$.
++Then
++$\tfrac12\log((1-p_*')/(1-p_*))=-\log\rho$.
++The reverse inequality gives $\|P_\rho g\|_{p_*'}\ge\|g\|_{p_*}$;
++reverse H\"older gives the displayed bilinear bound. This is first applied
++to positive functions, then to $f+\varepsilon,g+\varepsilon$ and the limit
++$\varepsilon\downarrow0$. Finite sums and $p_*>0$ justify that limit;
++we do not take a negative moment of a function with zeros.
++
++If $\lambda_2<\lambda_1/2$, the gap exceeds $1/2$. Otherwise
++$\lambda_2\ge1/2$. Choose a real unit second eigenvector $w$ orthogonal
++to the Perron vector. It vanishes off $S$ and has both signs. Write
++$w=s h_+-t h_-$, where $s,t>0$, $s^2+t^2=1$, and $h_+,h_-$ are
++nonnegative orthonormal functions with disjoint supports. Positivity
++and the eigenrelation give pointwise
++$\lambda_2h_\pm\le T_rh_\pm$. For $f_\pm=\sqrt r\,h_\pm$ this yields
++\[
++ \lambda_2f_\pm\le rP_\rho f_\pm,\qquad
++ \|f_\pm\|_{q_*}\le\frac B{\lambda_2}\|f_\pm\|_2,\qquad
++ \|f_\pm\|_2^2\ge\langle f_\pm,P_\rho f_\pm\rangle\ge\lambda_2.
++\]
++The middle inequality uses the first part of~\eqref{eq:hyperinputs}.
++No division by $r$ occurs.
++
++Let $\theta=p_*(q_*-2)/(2(q_*-p_*))$. Ordinary H\"older applied to
++powers of $f$ gives
++$\|f\|_2\le\|f\|_{p_*}^{\theta}\|f\|_{q_*}^{1-\theta}$,
++since $1/2=\theta/p_*+(1-\theta)/q_*$. This does not require a normed
++space at exponent $p_*<1$: the H\"older weights
++$2\theta/p_*$ and $2(1-\theta)/q_*$ are positive and sum to one.
++Thus each sign part satisfies
++\[
++ \|f_\pm\|_{p_*}\ge\sqrt{\lambda_2}
++       (B/\lambda_2)^{-e_\rho},\qquad
++ \frac{1-\theta}{\theta}
++ =\frac{q_*(2-p_*)}{p_*(q_*-2)}=e_\rho.
++\]
++By the second part of~\eqref{eq:hyperinputs}, the cross entry obeys
++\[
++ d=\langle h_+,T_rh_-\rangle
++   =\langle f_+,P_\rho f_-\rangle
++   \ge\lambda_2(B/\lambda_2)^{-2e_\rho}.
++\]
++The compression of $T_r$ to the basis $(h_+,h_-)$ is
++$\left(\begin{smallmatrix}a&d\\d&b\end{smallmatrix}\right)$.
++Its eigenvector $(s,-t)$ has eigenvalue $\lambda_2$, giving
++$a-\lambda_2=dt/s$ and $b-\lambda_2=ds/t$.
++Its other eigenvalue is $\lambda_2+d/(st)$, because $s^2+t^2=1$.
++The variational principle and $st\le1/2$ now imply
++$\lambda_1-\lambda_2\ge d/(st)\ge2d$. Consequently
++\[
++ 1-\frac{\lambda_2}{\lambda_1}
++ \ge\frac{2\lambda_2}{\lambda_1}(B/\lambda_2)^{-2e_\rho}
++ \ge B^{-1}(2B)^{-2e_\rho}.
++\]
++This does not deteriorate when one sign part has small norm. In the
++previously omitted case, $c(B,\rho)\le1/4<1/2$, since $e_\rho\ge1$.
++If the support has one point, $\lambda_2=0$ and the gap is one, so that
++case is included as well.
++\end{proof}
++
++\begin{corollary}\label{cor:densitygrowth}
++At fixed $\rho$, suppose a sequence has
++$\gap(T_{r_L})\le K e^{-\gamma L}$, with $K,\gamma>0$. Then
++\[
++ \max r_L\ge
++ \left(\frac{2^{-2e_\rho}}K\right)^{1/(2e_\rho+1)}
++       e^{\gamma L/(2e_\rho+1)}.
++\]
++\end{corollary}
++\begin{proof}
++Apply Theorem~\ref{thm:density} with $B=\max r_L\ge1$ and rearrange.
++\end{proof}
++For Theorem~\ref{thm:main}, take $K=7$ and its positive $\gamma$.
++The code mixture has maximum density $2^L(1-\eta)/|C|+\eta$, consistent
++with this necessary growth. Upper density growth alone is not asserted
++to be sufficient for collapse. Tiny minimum density alone cannot cause
++collapse under a uniform maximum-density bound. These are statements
++about this transfer family, not single-site heat-bath dynamics.
++The constants are not claimed optimal.
++
++The density bound uses classical hypercontractivity rather than a new
++perturbation principle. Gross~\cite{Gross} proves stability of intrinsic
++hypercontractivity for suitable Schr\"odinger potential perturbations on
++Riemannian manifolds. Gl\"uck~\cite{Gluck} gives hyperboundedness criteria
++and uniform estimates for the essential spectral radius. The latter is
++not itself a uniform second-eigenvalue estimate for finite matrices,
++whose essential spectral radius is zero. These are relevant broader
++contexts; no equivalence, improvement or priority over them is claimed.
++Our comparison is limited to their stated results, not an exhaustive
++literature review. The present explicit bound concerns the discrete
++congruence above, allows zero density, and is proved here in full.
++
+ \section{Relation to predecessors and reproducibility}
+ The congruence analysis in~\cite{ErikssonCongruence} permits positive
+ weights concentrating on an antipodal pair, with a transfer ratio tending
+@@ -416,7 +556,7 @@ many slow transfer modes.
+ 
+ The code ingredients and the matrix methods are classical. In particular,
+ Lemma~\ref{lem:code} is an elementary existence argument, not a new code
+-construction and not an efficient encoding claim. Work on simultaneously
++construction and not an efficient encoding claim. The citation to~\cite{AGM} supplies general limited-independence background, not a direct historical attribution for the dual-distance projection equivalence proved here. Work on simultaneously
+ good primal and dual codes, including~\cite{BrehmResch}, is stronger in
+ algorithmic aspects. Our targeted primary-source check did not identify
+ the exact joint conclusion above; this is not proof of historical priority.
+@@ -446,7 +586,7 @@ editorial acceptance or evidence of human peer review.
+ Reproducible source commit:\par\noindent
+ {\small\ttfamily\SourceCommit}
+ 
+-\begin{thebibliography}{9}
++\begin{thebibliography}{99}
+ \bibitem{AGM}
+ N. Alon, O. Goldreich and Y. Mansour,
+ Almost $k$-wise independence versus $k$-wise independence,
+@@ -470,5 +610,17 @@ Strictly Positive Parity Laws and the Limits of Marginal Certificates:
+ Exact Heat-Bath Spectrum and Optimal Variance Tensorization,
+ AIRR, ARR-2026-5HRC3PS9HZ9WDAA5, version 2 (2026).
+ \href{https://airr.science/papers/ARR-2026-5HRC3PS9HZ9WDAA5/versions/v2/}{Public working paper}.
++\bibitem{MOS}
++E. Mossel, K. Oleszkiewicz and A. Sen,
++On Reverse Hypercontractivity, arXiv:1108.1210v5 (2012).
++\href{https://arxiv.org/abs/1108.1210}{Primary manuscript}.
++\bibitem{Gross}
++L. Gross, Invariance of intrinsic hypercontractivity under perturbation of
++Schr\"odinger operators, arXiv:2412.20282v2 (2025).
++\href{https://arxiv.org/abs/2412.20282}{Primary manuscript}.
++\bibitem{Gluck}
++J. Gl\"uck, Spectral gaps for hyperbounded operators,
++arXiv:1802.09422v6 (2019).
++\href{https://arxiv.org/abs/1802.09422}{Primary manuscript}.
+ \end{thebibliography}
+ \end{document}
+\ No newline at end of file

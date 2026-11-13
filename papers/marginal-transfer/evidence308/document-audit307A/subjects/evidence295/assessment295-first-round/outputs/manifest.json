@@ -1,0 +1,88 @@
+{
+  "schema": "exact-pdf-assessment-manifest-v1",
+  "date": "2026-11-13",
+  "algorithm": "SHA-256",
+  "normalization": "none; raw on-disk bytes",
+  "output_text_representation": "UTF-8 without BOM; LF line endings",
+  "reviewer": "OpenAI/Codex; exact served model/version and reasoning setting not exposed",
+  "inputs": [
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-13_density-complement295\\manuscript295A.pdf",
+      "bytes": 314890,
+      "sha256_raw": "a8b265c715f8c7748b60767555b2e8343402626d623e30fe9729a74f9e01474d"
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-13_density-complement295\\manuscript295A.txt",
+      "bytes": 30043,
+      "sha256_raw": "6e10554d0b461d311c191a09f32212862db6496ff0cfe055c4e3b1d0a5cb667f"
+    },
+    {
+      "path": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\papers\\marginal-transfer\\manuscript295A.tex",
+      "bytes": 28590,
+      "sha256_raw": "a86fca564e522020f69edb9f0b569e8683df6cb1effd7cc5bda44bbd6218c277"
+    },
+    {
+      "path": "D:\\Capturas\\the-eriksson-programme\\2026-11-13_density-complement295\\page-1.png",
+      "bytes": 230900,
+      "sha256_raw": "3fb5fa32ae575784f93923d706fcd54f671a2aad48676f19ef422097f56d4ab4"
+    },
+    {
+      "path": "D:\\Capturas\\the-eriksson-programme\\2026-11-13_density-complement295\\page-2.png",
+      "bytes": 185465,
+      "sha256_raw": "40456b15306ff453ca0124158fe070f113912c3fa68b69f6f9f1995d51177e39"
+    },
+    {
+      "path": "D:\\Capturas\\the-eriksson-programme\\2026-11-13_density-complement295\\page-3.png",
+      "bytes": 210919,
+      "sha256_raw": "e993a06d2cf23c6ac0736fc19565d1d089a7616ddae46aae858488c633398dba"
+    },
+    {
+      "path": "D:\\Capturas\\the-eriksson-programme\\2026-11-13_density-complement295\\page-4.png",
+      "bytes": 188547,
+      "sha256_raw": "07586d48e77faaef51ddde84cb6170b5f4d1e9746b6f5246c0bd42438a7aa1b3"
+    },
+    {
+      "path": "D:\\Capturas\\the-eriksson-programme\\2026-11-13_density-complement295\\page-5.png",
+      "bytes": 233743,
+      "sha256_raw": "67ba50ddeede86c1af4f0d3058aa7a1f7186b27d7282b0348f72bd4448c23849"
+    },
+    {
+      "path": "D:\\Capturas\\the-eriksson-programme\\2026-11-13_density-complement295\\page-6.png",
+      "bytes": 250460,
+      "sha256_raw": "a33852b426d494115d763a63f615146c535482bade481248bad385e7fef7067a"
+    },
+    {
+      "path": "D:\\Capturas\\the-eriksson-programme\\2026-11-13_density-complement295\\page-7.png",
+      "bytes": 245923,
+      "sha256_raw": "815ec196a51058f01e103f0f8119d4372bbc48233e20ef94598f5f064b0b4250"
+    },
+    {
+      "path": "D:\\Capturas\\the-eriksson-programme\\2026-11-13_density-complement295\\page-8.png",
+      "bytes": 298727,
+      "sha256_raw": "4c727af5a560ccdd6e2479d5a0c4f68c3ac78400a15019ebdba04a41a983186a"
+    },
+    {
+      "path": "D:\\Capturas\\the-eriksson-programme\\2026-11-13_density-complement295\\page-9.png",
+      "bytes": 203517,
+      "sha256_raw": "19d45b5ee19b25a8d6dc6aae914f5d8b3b6290e5782b79f32bc09554844e6000"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-295\\assessment295-first-round\\outputs\\scientific-report.md",
+      "bytes": 19808,
+      "sha256_raw": "6271d895f492efc70c00294db77aa9d2aefce4b7d0533896fa3f4118fa38e1ed"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-295\\assessment295-first-round\\outputs\\assignment-context.txt",
+      "bytes": 5302,
+      "sha256_raw": "e01ba64fef47c000f8cad0befec9378aaef5090ca67f3ad95319683620267aec"
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-295\\assessment295-first-round\\outputs\\assessment.json",
+      "bytes": 5861,
+      "sha256_raw": "d80eb7a3a0b75904fa98f29dd75c841a09767f02f59705e23f445510483b0610"
+    }
+  ],
+  "exclusions": "This manifest excludes its own hash; manifest.sha256 records its raw-byte digest. Supplied renders visually inspected, not regenerated."
+}

@@ -1,0 +1,53 @@
+{
+  "source": "3edb8d656e511d3f81c147f54451fb57a84e5c38",
+  "binding_method": "Frozen nonrecursive git ls-tree source-paper blob IDs; independent Git blob SHA1 on exact manifest/TeX/boundary. All input raw checkout bytes independently checked against that committed manifest; full recursive tree/archive was not used after read-only operations stalled. Remote runner independently enforces every row in exact clones.",
+  "frozen_blob_ids": {
+    "SOURCE-INPUTS307.json": "bbc5651a52aaa0235b41eb944cbb99edf27132fe",
+    "manuscript307A.tex": "0c5e5e7796b1d0d50a75901fe30348f6248ee697",
+    "PACKAGE-BOUNDARY307.txt": "e0a66a4e21bfe81074cc58d3aa284172a88ee3db"
+  },
+  "tex_bytes": 73378,
+  "tex_sha256": "527fb31fa134923db32e90d666c6cedd5824fc1d4b2bd143169ab4411f3bd9ae",
+  "inputs": 588,
+  "unique_paths": 588,
+  "mismatches": [],
+  "tokens": [
+    {
+      "text": "Model assessments and review context",
+      "present_in_TeX": true
+    },
+    {
+      "text": "Codes with two distance conditions",
+      "present_in_TeX": true
+    },
+    {
+      "text": "A finite positive concentration estimate",
+      "present_in_TeX": true
+    },
+    {
+      "text": "Stationary marginals survive the Perron transform",
+      "present_in_TeX": true
+    },
+    {
+      "text": "An exact parity control with different dynamics",
+      "present_in_TeX": true
+    },
+    {
+      "text": "Auxiliary critical estimates and an explicit rate",
+      "present_in_TeX": true
+    },
+    {
+      "text": "The exact critical moment budget",
+      "present_in_TeX": true
+    },
+    {
+      "text": "The escaped critical-moment boundary",
+      "present_in_TeX": true
+    },
+    {
+      "text": "The fixed-cutoff endpoint",
+      "present_in_TeX": true
+    }
+  ],
+  "tokens_unchanged_from305": true
+}

@@ -1,0 +1,133 @@
+{
+  "algorithm": "sha256",
+  "byte_representation": "actual raw retained bytes, no normalization",
+  "member_count": 25,
+  "members": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1163,
+      "raw_sha256": "3072cb0e302cf8af320042e8ae24faa7d0d6eb9347f2ca2e7c7a7dc60f2934ef"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 834,
+      "raw_sha256": "5eea31f3ab05301a868ea08f03660565d2ce1057a08e6f7fabf00e1d0ebbe327"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 12637,
+      "raw_sha256": "98d18f626bd14d56e7876a970508679f34744bcd444307e7420131ca3b3a29a8"
+    },
+    {
+      "path": "primary-reading.txt",
+      "bytes": 1040,
+      "raw_sha256": "a460622efa9eb724597dbc9ec1c55d747fef66b9278ee45b0672e9f9b60260ac"
+    },
+    {
+      "path": "primary/gluck-1802.09422v6.pdf",
+      "bytes": 311246,
+      "raw_sha256": "af19e745eb135d60e2389a8dbb5b5edd683aea5fccadc6b0604ff3a754b8750f"
+    },
+    {
+      "path": "primary/gross-2412.20282v2.html",
+      "bytes": 2666337,
+      "raw_sha256": "901972014b78d4cd8fe7b580220ee8428dec2805bbf189bddb084bdc159c68c8"
+    },
+    {
+      "path": "primary/mos-1108.1210v5.pdf",
+      "bytes": 515516,
+      "raw_sha256": "49da0d2da85f9090348ff33f1c6e7bd7d3ac9f43c7cedb26a072323d997c2179"
+    },
+    {
+      "path": "primary/parent-followup-notes.txt",
+      "bytes": 1429,
+      "raw_sha256": "0393f61175b08af203519470b7454b65fdd7df462289d8340c15f89b716edbbb"
+    },
+    {
+      "path": "prior-reports/manuscript294-full-report.txt",
+      "bytes": 8489,
+      "raw_sha256": "072b201e7cc30f3185dbb114e1ef221a961137d4992c603d30cd39e83eb56049"
+    },
+    {
+      "path": "prior-reports/source294-final-report.txt",
+      "bytes": 15221,
+      "raw_sha256": "cb535c1ba256bdc4e294dabeb841699e926f61eaa8bb54d6ef172a478faa7ddd"
+    },
+    {
+      "path": "prior-reports/source295-context.txt",
+      "bytes": 940,
+      "raw_sha256": "112e7f5ab2d7b65d3c5735b8aff0dae16930211807cc70949fd41ac38da71e37"
+    },
+    {
+      "path": "prior-reports/source295-full-report.txt",
+      "bytes": 11993,
+      "raw_sha256": "84646f20ccda0dbbf858054ff6985b94f91638b562b0cb414c41189559db1328"
+    },
+    {
+      "path": "prior-reports/source295-raw-manifest.json",
+      "bytes": 2517,
+      "raw_sha256": "672002f1dfc8eba3d9d60527c5a32e170b7dc2d2861f7194770abcacf6d4bbf7"
+    },
+    {
+      "path": "stability.json",
+      "bytes": 531,
+      "raw_sha256": "0936dfeab2a2044cbc19dfed557e4932ea275dd25e38af8098bd06df415807fe"
+    },
+    {
+      "path": "subjects/bounded-density295A.txt",
+      "bytes": 6807,
+      "raw_sha256": "5fbd9247e933f6f4d00110e2e6d37923a2292588601a8322df26a5ec80c38e53"
+    },
+    {
+      "path": "subjects/full-source-diff.txt",
+      "bytes": 11198,
+      "raw_sha256": "67eddcd01af0e45933e034fb7013273181228ba80cb6b6e1412407b7f84d00df"
+    },
+    {
+      "path": "subjects/judges295.txt",
+      "bytes": 2579,
+      "raw_sha256": "4773f9ddb9a21b71c6551ad9634fff89da5b417ba1b9a28b88dbfbd5a12842fc"
+    },
+    {
+      "path": "subjects/manuscript294A.tex",
+      "bytes": 21349,
+      "raw_sha256": "440e5c1f4e99d8f188923c2a467e76f008c3a7a1fbfd7670610ae7ea2a1b9486"
+    },
+    {
+      "path": "subjects/manuscript295A.tex",
+      "bytes": 28590,
+      "raw_sha256": "a86fca564e522020f69edb9f0b569e8683df6cb1effd7cc5bda44bbd6218c277"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "raw_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "subjects/paper-inputs/judges294.txt",
+      "bytes": 1491,
+      "raw_sha256": "6ec0d1e2571a2a3cb20b2bad5637f6c619d4decf2ee24baba1f42d58d8e385a3"
+    },
+    {
+      "path": "subjects/paper-inputs/prior-congruence.tex",
+      "bytes": 67392,
+      "raw_sha256": "f9c4431d07e9c59742d5392f81f80d54be5241de999cb20ff52c0daba0b234e4"
+    },
+    {
+      "path": "subjects/paper-inputs/prior-parity215.tex",
+      "bytes": 14830,
+      "raw_sha256": "5b534c9fb52d736b9d04c334c40cdc96708568d022c2b28f42db1f096df382f8"
+    },
+    {
+      "path": "subjects/paper-inputs/source294A.txt",
+      "bytes": 13406,
+      "raw_sha256": "a87623f95ffe9580ade6995f21155e0e524fedba0af367105c4562467935fe50"
+    },
+    {
+      "path": "subjects/SOURCE-INPUTS.json",
+      "bytes": 1130,
+      "raw_sha256": "821a769d5b06bc104cb0de75ebdec6e45bd6dd78a41eb10c3a41947756d74758"
+    }
+  ],
+  "excluded_only": "raw-hashmanifest.json"
+}

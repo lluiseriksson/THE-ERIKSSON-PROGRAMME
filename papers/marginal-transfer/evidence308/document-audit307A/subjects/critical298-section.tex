@@ -1,0 +1,161 @@
+\section{The critical exponent: small and large moment budgets}
+At $s=s_c=(1+\rho)/(1-\rho)$ the size of the moment budget matters.
+We give a sufficient stability condition near $B=1$ and a counterexample
+for every $B>2$. These leave intermediate budgets unresolved; no optimal
+critical budget is asserted. All norms in this section use the uniform
+probability measure $u_L$.
+
+\begin{theorem}[Small critical budgets]\label{thm:critical-small}
+Fix $0<\rho<1$ and $s=s_c$. For any $L\ge1$ and any density $r\ge0$
+with $\mathbb E r=1$ and $\|r\|_s\le B$, $B\ge1$,
+\[
+ \gap(T_r)\ge\max\{0,1-\rho-d_s(B)\},\qquad
+ d_s(B)=\begin{cases}
+ (B^s-1)^{1/s},&s\ge2,\\
+ \sqrt{\dfrac{2(B^s-1)}{s(s-1)}}(B+1)^{(2-s)/2},&1<s<2.
+ \end{cases}
+\]
+In particular, each fixed $\rho$ admits a nontrivial interval of budgets
+$B>1$ with a positive dimension-independent gap. No pointwise density
+bounds are required.
+\end{theorem}
+\begin{proof}
+Put $Q=P_{\sqrt\rho}$ and $S_r=QM_rQ$, which has the spectrum of $T_r$.
+Ordinary Boolean hypercontractivity, recalled in~\cite[Eq.~(1.1)]{MOS},
+gives $\|Qf\|_q\le\|f\|_2$ for $q=2s/(s-1)$, since
+$\rho=(s-1)/(s+1)=1/(q-1)$. H\"older's inequality with exponents
+$s,q,q$ yields
+\[
+ |\langle f,Q M_{r-1}Qg\rangle|
+ \le\|r-1\|_s\|Qf\|_q\|Qg\|_q
+ \le\|r-1\|_s\|f\|_2\|g\|_2.
+\]
+Thus $\|S_r-P_\rho\|\le\|r-1\|_s$ and
+$\lambda_2(S_r)\le\rho+\|r-1\|_s$. Also
+$\lambda_1(S_r)\ge\langle1,S_r1\rangle=1$.
+It remains to show $\|r-1\|_s\le d_s(B)$.
+
+Define $\phi_s(t)=t^s-1-s(t-1)$ for $t\ge0$, so that
+$\mathbb E\phi_s(r)\le B^s-1$. For $s\ge2$ and $u\ge0$,
+\[
+ \phi_s(1+u)=s\int_0^u((1+v)^{s-1}-1)\,dv\ge u^s,
+\]
+using $(1+v)^{s-1}\ge1+v^{s-1}$. For $0\le u\le1$,
+the derivative of $\phi_s(1-u)-u^s$ is
+$s[1-(1-u)^{s-1}-u^{s-1}]\ge0$ and its value at zero is zero.
+Hence $\phi_s(t)\ge|t-1|^s$, proving the first estimate by integration.
+For $1<s<2$, the integral Taylor remainder gives
+\begin{align*}
+ \phi_s(t)&=s(s-1)(t-1)^2
+  \int_0^1(1-v)[1+v(t-1)]^{s-2}\,dv\\
+ &\ge\frac{s(s-1)}2\frac{(t-1)^2}{(t+1)^{2-s}}.
+\end{align*}
+At $t=0$ the identity follows by continuity; the integral is finite for
+$s>1$. For $W=(r-1)^2/(r+1)^{2-s}$, H\"older gives
+\[
+ \mathbb E|r-1|^s
+ \le(\mathbb EW)^{s/2}
+       (\mathbb E(r+1)^s)^{(2-s)/2}.
+\]
+Use $\mathbb EW\le2(B^s-1)/(s(s-1))$ and $\|r+1\|_s\le B+1$.
+Both formulas for $d_s(B)$ tend to zero as $B\downarrow1$.
+Positive semidefiniteness supplies the trivial zero lower bound.
+\end{proof}
+
+\begin{theorem}[Balanced critical tilt]\label{thm:critical-large}
+Fix $0<\rho<1$, $s=s_c$, and $B>2$. There are constants $c,d>0$,
+independent of $L$, and strictly positive densities $r_L$, for every $L\ge1$,
+such that
+\[
+ \mathbb E r_L=1,\quad\|r_L\|_s\le B,\quad r_L\ge1/B,
+ \qquad
+ 0<\gap(T_{r_L})\le2\sqrt{B-1}\,e^{-cd^2L^{1/3}}.
+\]
+\end{theorem}
+\begin{proof}
+For $|\delta|<1$ define
+\[
+ n(\delta)=\left(\frac{(1+\delta)^s+(1-\delta)^s}{2}\right)^{1/s},
+ \quad w_\delta(x)=\frac{1+\delta x}{n(\delta)},\quad
+ m(\delta)=n(\delta)^{-1}.
+\]
+The one-site matrix is
+\[
+ H(\delta)=\frac1{n(\delta)}
+ \begin{pmatrix}1&\delta\sqrt\rho\\\delta\sqrt\rho&\rho\end{pmatrix},
+ \qquad D=\diag(1,\rho).
+\]
+It is positive definite with top eigenvalue
+\[
+ \kappa(\delta)=
+ \frac{1+\rho+\sqrt{(1-\rho)^2+4\rho\delta^2}}{2n(\delta)}.
+\]
+For $\tau(\delta)=\|D^{1/2}H(\delta)^{1/2}\|$, the square is the
+top eigenvalue of $D^{1/2}H(\delta)D^{1/2}$, so
+\[
+ \tau(\delta)^2=
+ \frac{1+\rho^2+\sqrt{(1-\rho^2)^2+4\rho^2\delta^2}}{2n(\delta)}.
+\]
+These positive functions have even analytic logarithms near zero.
+Taylor expansion with bounded fourth derivative gives, at $s=s_c$,
+\begin{align*}
+ \log n(\delta)&=\frac{\rho}{1-\rho}\delta^2+O(\delta^4),\\
+ \log\kappa(\delta)&=O(\delta^4),\\
+ \log\tau(\delta)&=-\frac{\rho}{2(1-\rho^2)}\delta^2+O(\delta^4).
+\end{align*}
+Indeed, the respective square-root numerators divided by two are
+$1+\rho\delta^2/(1-\rho)+O(\delta^4)$ and
+$1+\rho^2\delta^2/(1-\rho^2)+O(\delta^4)$.
+Consequently there are $0<\delta_*<1$, $C\ge1$ and $c>0$ such that,
+for $|\delta|\le\delta_*$,
+\[
+ |\log\kappa(\delta)|\le C\delta^4,
+ \qquad\log\tau(\delta)\le-c\delta^2.
+\]
+For example, $c=\rho/[4(1-\rho^2)]$ works after reducing $\delta_*$.
+Choose a fixed $0<d\le\delta_*$ with $Cd^4\le\log(B-1)$, possible
+because $B>2$. Put
+\[
+ \delta_L=dL^{-1/3},\quad a_L=\kappa(\delta_L)^{-L},\quad
+ R_L=\prod_{i=1}^Lw_{\delta_L}(x_i),\quad
+ Z_L=1+a_Lm(\delta_L)^L,\quad r_L=\frac{1+a_LR_L}{Z_L}.
+\]
+The coefficient balances the two top block eigenvalues exactly.
+Since $|\log a_L|\le Cd^4L^{-1/3}\le\log(B-1)$,
+we have $a_L\le B-1$ and $a_L\to1$.
+Product measure gives $\|R_L\|_s=1$ and
+$\mathbb ER_L=m(\delta_L)^L$, with $0<m(\delta_L)<1$.
+Therefore $\mathbb Er_L=1$, $\|r_L\|_s\le(1+a_L)/Z_L\le B$,
+and $r_L\ge1/Z_L\ge1/B$ for every $L\ge1$.
+
+Let $X_L=H(\delta_L)^{\otimes L}$. Spectral equivalence gives
+$F_L=Z_LS_{r_L}=P_\rho+a_LX_L$. Both summands have top eigenvalue one.
+For the $N$ by $2N$ matrix
+$\mathcal C_L=[P_\rho^{1/2},\sqrt{a_L}X_L^{1/2}]$, $N=2^L$,
+the Gram matrix $\mathcal C_L^*\mathcal C_L$ has those summands on
+its diagonal and off-diagonal block of norm
+\[
+ \eta_L=\sqrt{a_L}\,\tau(\delta_L)^L
+ \le\sqrt{B-1}\,e^{-cd^2L^{1/3}}.
+\]
+Its block diagonal has two leading eigenvalues exactly one. The
+off-diagonal self-adjoint perturbation has norm $\eta_L$, whence
+$\lambda_1\le1+\eta_L$ and $\lambda_2\ge1-\eta_L$.
+The $N$ positive eigenvalues of $\mathcal C_L\mathcal C_L^*=F_L$
+are precisely the positive eigenvalues of $\mathcal C_L^*\mathcal C_L$;
+the latter has $N$ additional zeros. Thus the bounds apply to the first
+two eigenvalues of $F_L$, including at $L=1$. Since $F_L\ge P_\rho$,
+$\lambda_1(F_L)\ge1$ and $\gap(F_L)\le2\eta_L$.
+Scalar normalization and $AA^*/A^*A$ preserve the ratio. Strict entrywise
+positivity of $T_{r_L}$ gives its strictly positive finite-dimensional gap.
+\end{proof}
+
+The uniform component is a spectral channel here, rather than an additive
+error to discard. At the critical exponent the tilted top eigenvalue has
+zero quadratic variation, while its cross norm with the uniform channel
+has negative quadratic variation. The dimension-dependent tilt separates
+these orders, and balancing removes the residual diagonal mismatch.
+The small-budget estimate uses classical hypercontractivity and elementary
+perturbation theory; the large-budget family asserts neither matching
+marginals nor fixed-range interactions. No optimality of the sufficient
+budget $B>2$ is claimed.

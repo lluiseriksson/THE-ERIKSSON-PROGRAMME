@@ -1,0 +1,16 @@
+{
+  "source": "3edb8d656e511d3f81c147f54451fb57a84e5c38",
+  "PDF_sha256": "a4f73a3cd260051f602390500ca8edcf58766faeb30d9141b7b11fe316062ef7",
+  "PDF_bytes": 478529,
+  "pages": 22,
+  "archive_sha256": "b078c2952867a56091a8ad452d788004348d4686d0e516a731cc8fbde11b2171",
+  "raw_members_verified": 729,
+  "actual_native_commands": 27,
+  "all_native_exit_zero": true,
+  "two_matching_fresh_clones": true,
+  "clones_removed": true,
+  "visual_review_complete": false,
+  "exact_PDF_assessment": null,
+  "backend_inactivity_readback": "pending separate query",
+  "billing_units": null
+}

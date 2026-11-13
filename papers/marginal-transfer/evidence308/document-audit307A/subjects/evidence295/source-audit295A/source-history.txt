@@ -1,0 +1,15 @@
+commit f9e8a97646d8773e71463029a04e1f39591f10a5
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 03:49:40 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 03:49:40 2026 +0100
+
+    295 prereg658c2d6: derive upper-density-only transfer gap
+
+commit 658c2d6e5b1f21d4dd10c6ef198905125ec1a8dd
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 03:44:15 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 03:44:15 2026 +0100
+
+    295 0904c17b: preregister upper-density transfer gap question

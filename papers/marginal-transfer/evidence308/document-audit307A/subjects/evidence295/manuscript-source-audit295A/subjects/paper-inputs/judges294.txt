@@ -1,0 +1,10 @@
+294 preregistered source-audit gates. New synthesis question authorized by owner13November2026: cross existing papers rather than continue one narrow auxiliary route.
+1. Binary code random-generator existence with simultaneous primal distance >=delta L and all <=alpha L coordinate projections surjective; floor/ceil/rank and entropy bounds paid.
+2. Strictly positive mixture has EXACT labelled product marginals; no hard support masquerades as positive.
+3. Fixed beta Ising tensor kernel is positive definite; ratio and scaling conventions explicit; product ratio tanh(beta).
+4. Weighted code principal block, perturbation norm and many-eigenvalue interlacing establish claimed finite constants without spectral-continuity assumptions.
+5. Exponentially many slow modes and exponential gap at fixed beta with alpha>0 linear-order matching derived, not guessed from numerical samples.
+6. Perron Doob stationary law is itself code-translation invariant and has exact same marginal tuple; distinguish it from the weighting law.
+7. Non-certification consequence states literal input and allowed domain; no locality, heat-bath or physical mass-gap conclusion.
+8. Cross-paper novelty boundary, primary-source predecessor check and negative controls retained; no score, PDF or independence claim at source stage.
+Abandon at first material false claim; retain failure. No local mathematical execution, Lean or runtime. Separate session audits frozen source/hash and complete inputs. No target grade.

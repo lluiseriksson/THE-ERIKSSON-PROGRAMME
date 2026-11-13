@@ -1,0 +1,79 @@
+# Production305 static engineering audit
+
+**Verdict: ACCEPT the frozen runner for the bounded, parent-monitored production route, conditional on the separate integrated-document audit being accepted and both full reports actually read and correctly relayed before allocation.** No blocking regression was found. The absent parent-authority relay is the correct disconnected state, not a failure to be bypassed. This report does not authorize allocation now, certify a produced PDF or closed runtime, supply a numerical score, or replace required repository checks.
+
+## Exact referents
+
+Manuscript/source commit: `375047fac74dee4e464031f7e5b4d2368d5276fa`.
+Manuscript Git-blob raw UTF8/LF SHA256: `6a0606e994cedcf0107dc700edf2c9b9b762fa8ef4d31da8a958cf3501c0fa65` (71339 bytes).
+Prepared RUNNER-HASHES.json raw SHA256: `6cf7a9edf6689f07d0cc2b20c743f59dfb3923fca6ecdd53b7a94e2c41142d45` (605 bytes).
+
+Four prepared files, all matching their declared lengths/hashes and D mirrors byte-for-byte:
+
+| File | Bytes | Raw SHA256 |
+| --- | ---: | --- |
+| build305.py | 10739 | 96cd2756a13aafa2bd348392e4c106ee69b49adda1dde12d69cc877ac5db98bf |
+| capture_cli_atomic.ps1 | 2607 | 4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b |
+| readback_after_stop.ps1 | 934 | 8769ee89d11db70dbd8de21c3f35dd2edbb7145ec7290966293a86c96b6f739b |
+| run_owned_after_gate.ps1 | 4206 | 92396d92827dba600ab92c811f7ac844bc278eb1cfd0325a499c255330c4e8a9 |
+
+C preparation and D mirror locations are those in ASSIGNMENT.txt. Initial/final raw identities agree. HEAD and branch are the frozen source and codex/tep-tail-manuscript305-20261113. Tracked paper files have no delta from that source. Existing untracked _drafts/_tmp are untouched.
+
+Supplementary PR252 observation: `gh pr view 252 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid,baseRefOid,statusCheckRollup`, normalize CRLF/CR→LF, strip final LF and append one LF, UTF8 without BOM: 1157 bytes, SHA256 `211e1681aa56a5a7461d6f4a5d73ee2b887cb8e5edb94f54041d0db7a09f1dfd`, exact source head. This was observed during the runner audit, not a predeclared PR-body gate or a new mathematical audit. Its stated future production/visual/assessment sequence is consistent with the runner boundary.
+
+## Source inputs and exact adaptation
+
+All **271 unique SOURCE-INPUTS305.json entries** were checked against actual files in the frozen Git tree: every length and raw hash matches, zero missing/mismatched bindings. The checkout manuscript equals its Git blob. The complete checked inventory is retained. These are identity checks, not renewed scientific validation of the contents. The separate document audit remains the scientific-source gate.
+
+Exact substitution accounting against the previously audited production299 files succeeds. The capture helper is unchanged. Build changes are only source SHA, branch, TeX hash/name, SOURCE-INPUTS305 name, new 305 attempt/output paths and the declared expected-text list. The old critical-heading token is replaced by its actual new heading; the escaped-critical and fixed-cutoff endpoint tokens are added. They occur in the source's section/theorem labels. Readback changes only 299→305 paths/config; outer wrapper changes only source/TeX pins and unique 305 names. No lifecycle, command-exit, retention, cleanup, authority or failure-control code is changed.
+
+The TeX preamble suppresses date/trailer variability and has the expected SourceCommit fallback. The runner supplies the real commit and rejects its fallback in extracted output. The inspected build-facing source uses the stated LaTeX packages; no external input/graphics or explicit shell-write command was found in the targeted command scan. This is not semantic proof or a TeX execution result.
+
+## Two fresh clones and artifact checks
+
+The build rejects non-posix/non-/content execution and pre-existing own ROOT/archive. It makes two distinct fresh sparse clones under /content/tep305-build-a, sequentially in one owned runtime. Each cloned branch HEAD must equal the frozen source before detached checkout; branch drift fails closed. Each clone rechecks the exact manuscript and every frozen input length/hash with a resolved-path containment guard. It asserts a nonempty inventory, not literal 271; the exact commit pins the actual 271-entry manifest. The first clone captures actual Git-tracked paper input files before compilation.
+
+Both builds use the source commit epoch, UTC, C.UTF-8, SOURCE_DATE_EPOCH and FORCE_SOURCE_DATE, with two pdflatex passes each. Tracked paper changes must remain absent. PDF lengths and SHA256 must match between the two clones. This is same-runtime duplicate artifact production, not two independent environments or scientific independence. The intended successful path contains 27 actual native command invocations, derived statically, not observed.
+
+PDF magic, actual pdfinfo page count, extracted text/source marker, placeholder absence, minimum extraction length and all-page PNG count are checked. Page count must be 1..60. Expected phrases establish textual presence only. Contact sheets supplement the individual PNGs. Success status explicitly leaves **all-page visual review and first exact-PDF assessment pending**. Neither matching hashes nor this audit can substitute for actually inspecting every page.
+
+## Real exits, closed sentinels and failed-output retention
+
+Inner native processes write fresh stdout/stderr, wait for the real child, and record the real return code. Timeouts kill/wait that child and remain failures even if its exit were zero. Logs are flushed/fsynced; exit temporary is written, flushed/fsynced, closed, validated as a nonempty exact decimal line, atomically renamed and reread. Records precede nonzero/timeout rejection. Acceptance uses explicit require/raise, not Python assert; no normal/optimized runtime test was performed or claimed.
+
+Every TeX attempt has a finally retention block before another pass or clone removal. It copies actual available manuscript/PDF/log/auxiliary files and records before/after hashes plus the command record, or null if a launch/result was never captured. It explicitly distinguishes pre-existing artifacts from freshly produced successful output. A retained PDF alone never supplies a successful-exit witness. Failed outputs are not regenerated to replace evidence.
+
+The unchanged Windows capture helper starts only an operational WSL CLI process, with structured arguments, hidden window and separate raw streams. It waits for the actual exit, drains/flushed streams, closes handles, and writes a validated atomic non-overwriting decimal sentinel. Exceptions cannot manufacture a zero exit. Logs/sentinels have exclusive names and refuse reuse. The outer report labels the result transport capture, requiring inner exits/logs/hashes and later reviews. No local TeX or mathematics is run by this route.
+
+## Ownership, allocation gates and shutdown
+
+Before allocation the wrapper must receive the exact approved manifest digest, rehash all four files, and read parent-authority-relay.json. That relay must bind the exact source, TeX and manifest; both accepted document/engineering decisions; both actual full-report-read flags; and both original full report paths/hashes. The files are rehashed. Attestation booleans do not prove actual reading: the parent must genuinely read complete reports and preserve them. This audit cannot fabricate the other acceptance. At final inspection neither relay nor attempt-a exists.
+
+Only afterward may the wrapper create a new local attempt directory and request session tep305-build-a-own-cpu with --high-mem through its unique tep305-build-a-sessions.json configuration. Existing ADC authorization is referenced by filename; the scripts do not read/print credential contents, purchase capacity, select another account, issue a grant, deposit or publication. CPU is the requested default, not a fact established by the string 'cpu'; actual allocation response/type/ownership must be read. No other runtime/configuration is targeted.
+
+Allocation, remote execution, salvage download and release each have real captured CLI exits. A returned nonzero execution exit still permits an attempt to download preserved failure evidence; this is salvage, not a retry. Once allocation has been attempted, stop is attempted in finally, including failed allocation. All four zero exits and no caught exception are required for the outer lifecycle to avoid failure. No same-attempt rerun is permitted.
+
+The separate readback script uses the same own configuration only after release.exit exists. Its actual backend-query output must be read; zero query exit and a sentinel's presence are not proof of closure. The parent must validate stop exit/logs and actual backend session state, recover a surviving own runtime if necessary, and retain readback evidence. 'Always stop' here is implemented as an ordinary finally attempt, not a guarantee against process destruction or I/O failure.
+
+## Cleanup, archive and inherited limits
+
+Clone cleanup is confined to literal clone-a/clone-b immediately under the own Linux ROOT, preserving evidence outside them. There is no Windows delete or shared-cache operation. Failed cleanup forces FAILED_PRESERVED and emits/stores CLEANUP-PENDING with the exact clone path. Report and raw manifest precede exclusive ZIP creation. Failures remain failures after preservation and must not be blindly retried.
+
+The full previous production299 audit is retained. Its limitations remain explicit rather than being silently fixed or upgraded:
+
+- TeX/package versions are not completely locked across future runtimes; Pillow is a runtime dependency. Missing dependencies fail the attempt rather than license assumed success.
+- Inner timeout kills the direct child, not an explicitly managed descendant process group. Own-runtime stop/readback is the final resource boundary.
+- Catastrophic process/runtime loss, disk failure, copying errors or ZIP-write errors can leave partial evidence. Complete return/hash/log validation is mandatory; a complete archive is not guaranteed for every failure.
+- If outer stop/capture itself throws, finally may not finish timestamps/report. If capture raises before a return, download can be skipped. Preserve available evidence, recover/stop the own runtime and inspect backend state; do not infer closure from an attempted request.
+- Capture functions are dot-sourced before manifest verification. These exact reviewed bytes only define functions/settings and allocate nothing. This is not permission to load an untrusted replacement.
+- No hostile/concurrent same-user filesystem mutation is assumed. Prepared paths and hash gates detect ordinary drift; they do not constitute hardened runtime isolation. Generated clone cleanup is bounded for the trusted own-runtime route.
+- Requested runtime defaults, recorded lifecycle interval, billed units and actual backend hardware are distinct. Only actual responses support hardware/ownership/closure; billed units remain unknown unless supplied by the provider.
+- Matching PDF bytes and expected text do not establish mathematical correctness, novelty, visual quality or review independence.
+
+These inherited limits are nonblocking for the bounded monitored route because successful acceptance requires actual complete evidence and the parent's separate checks, not optimistic inference. They prohibit an unattended or automatically successful interpretation.
+
+## Disposition
+
+Engineering source accepted for the exact source/runner-manifest referents above. No runner repair requested. **Do not allocate until the separate document305 report is accepted and fully read, this complete engineering report is read, and an accurate hash-bound double-gate relay exists.** Required source CI and predecessor integration remain separate obligations; observed honesty SUCCESS and lake/oracle IN_PROGRESS are not an all-checks-pass claim.
+
+The parent must inspect actual returned source/input manifest, all native exits/logs, paired PDF hashes, complete page images, owned-runtime stop/readback and cleanup outcomes before accepting production. No production, first exact-PDF assessment, permission or publication happened in this audit. Actual context/limits are in CONTEXT.md; MANIFEST.json binds all retained raw audit artifacts.

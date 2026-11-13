@@ -1,0 +1,91 @@
+{
+  "candidate": "3edb8d656e511d3f81c147f54451fb57a84e5c38",
+  "body_bytes": 1209,
+  "body_sha256": "4061d306c67f4272ca0390db1d80c78f39525f328cccb2d764e3ea699df07f21",
+  "judges307_unchanged": true,
+  "source306_unchanged": true,
+  "labels": 41,
+  "refs": 49,
+  "duplicate_labels": [],
+  "missing_refs": [],
+  "citations": 17,
+  "bibitems": 11,
+  "missing_cites": [],
+  "old_proofs": 18,
+  "new_proofs": 19,
+  "old_proof_preservation": [
+    {
+      "old_proof_index": 1,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 2,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 3,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 4,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 5,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 6,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 7,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 8,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 9,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 10,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 11,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 12,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 13,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 14,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 15,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 16,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 17,
+      "line_ending_normalized_text_preserved": true
+    },
+    {
+      "old_proof_index": 18,
+      "line_ending_normalized_text_preserved": false
+    }
+  ],
+  "source_commit_placeholder": true
+}
