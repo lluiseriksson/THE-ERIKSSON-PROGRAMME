@@ -1,0 +1,32 @@
+[
+  {
+    "author": "Miclo",
+    "url": "https://perso.math.univ-toulouse.fr/miclo/files/2012/04/hyperboundedness.pdf",
+    "read_scope": "Introduction/Theorem1; Section6 Proposition11/proof/Theorem14 statement",
+    "full_text_read": false
+  },
+  {
+    "author": "Wang",
+    "url": "https://arxiv.org/pdf/1305.4460v6",
+    "read_scope": "Introduction/Theorem1.1/Remark1.1/Corollary1.2",
+    "full_text_read": false
+  },
+  {
+    "author": "Aida",
+    "url": "https://www.ms.u-tokyo.ac.jp/~aida/paper/preprint/handai3.pdf",
+    "read_scope": "initial pages1-3 setup(A1)-(A3)/Lemma5; main gap theorem NOT READ, subsequenttimeouts",
+    "full_text_read": false
+  },
+  {
+    "author": "Aida publisher",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0022123601937747",
+    "read_scope": "403; searchmetadata only",
+    "full_text_read": false
+  },
+  {
+    "author": "Gross",
+    "url": "https://arxiv.org/html/2412.20282v2",
+    "read_scope": "2.1/Theorem2.2;7intro/7.1;7.2 Theorem7.5/cutoffargument; not entirepaper",
+    "full_text_read": false
+  }
+]

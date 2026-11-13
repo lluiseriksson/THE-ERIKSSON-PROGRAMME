@@ -1,0 +1,166 @@
+\section{Finite density moments: a sufficient regime and an obstruction}
+\label{sec:finite-moment}
+A pointwise density cap is stronger than necessary. We next replace it
+by a dimension-independent finite moment. A second construction shows why
+one cannot simply assume that any finite moment suffices. All norms in
+this section use the uniform probability law $u_L$; the operator is the
+same $T_r$ as in Section~\ref{sec:density}.
+
+\begin{theorem}\label{thm:moment}
+Fix $0<\rho<1$, $s>(1+\rho)/(1-\rho)$ and $B\ge1$. For every $L\ge1$
+and density $r\ge0$ with $\mathbb E r=1$ and $\|r\|_s\le B$,
+\[
+ \gap(T_r)\ge\min\{1/2,(2B)^{-2e}\}>0,
+ \qquad e=\frac{2\rho s}{(1-\rho)(s(1-\rho)-1-\rho)}.
+\]
+Neither a pointwise upper bound nor a positive lower bound is assumed.
+\end{theorem}
+\begin{proof}
+Set $A=1+\rho$, $p=1-\rho$, $t=1+1/\rho$ and
+\[
+ Q=\frac{st}{s+t}=\frac{s(1+\rho)}{s\rho+1+\rho}.
+\]
+The condition on $s$ is exactly $Q>A$, so $Q>A>1>p>0$.
+Ordinary Boolean hypercontractivity gives
+\[
+ \|P_{\sqrt\rho}f\|_2\le\|f\|_A,
+ \qquad \|P_\rho f\|_t\le\|f\|_A.
+\]
+Indeed the noise thresholds are respectively
+$\sqrt{(A-1)/(2-1)}=\sqrt\rho$ and
+$\sqrt{(A-1)/(t-1)}=\rho$. The reverse bilinear inequality in
+\eqref{eq:hyperinputs} applies at exponent $p$.
+
+As before, testing the unit vector $\sqrt r$ gives $\lambda_1\ge1$.
+For any real unit vector $h$, put $f=\sqrt r\,h$ and
+$A_0=2s/(s+1)>A$. H\"older and probability-space monotonicity give
+\[
+ \langle h,T_rh\rangle=\|P_{\sqrt\rho}f\|_2^2
+ \le\|f\|_A^2\le\|f\|_{A_0}^2
+ \le\|\sqrt r\|_{2s}^2\|h\|_2^2\le B,
+\]
+where $1/A_0=1/(2s)+1/2$. Thus $1\le\lambda_1\le B$ without
+using a maximum-density estimate.
+
+If $\lambda_2<\lambda_1/2$, the gap is greater than $1/2$.
+Otherwise $\lambda_2\ge1/2$. On the nonempty support of $r$ the matrix
+has strictly positive entries. A real unit second eigenvector vanishes
+off this support and has both signs, by orthogonality to the positive
+Perron vector. Write it as $w=c h_+-d h_-$ with $c,d>0$,
+$c^2+d^2=1$ and nonnegative orthonormal disjoint sign parts.
+Positivity and the eigenrelation imply
+$\lambda_2h_\pm\le T_rh_\pm$ pointwise, including their zero sets.
+For either $f=\sqrt r\,h_\pm$, multiplication by $\sqrt r$ gives
+$\lambda_2f\le rP_\rho f$. H\"older with $1/Q=1/s+1/t$ yields
+\[
+ \|f\|_Q\le (B/\lambda_2)\|f\|_A.
+\]
+Integration against the unit sign part also gives
+$\lambda_2\le\langle f,P_\rho f\rangle\le\|f\|_A^2$.
+Let $0<\theta<1$ solve $1/A=\theta/p+(1-\theta)/Q$.
+H\"older applied to powers, with positive weights
+$A\theta/p$ and $A(1-\theta)/Q$ summing to one, gives
+$\|f\|_A\le\|f\|_p^\theta\|f\|_Q^{1-\theta}$.
+No triangle inequality at exponent $p<1$ is used. Combining these bounds,
+\[
+ \|f\|_p\ge\sqrt{\lambda_2}(B/\lambda_2)^{-e},\qquad
+ e=\frac{1-\theta}{\theta}
+   =\frac{Q(A-p)}{p(Q-A)}
+   =\frac{2\rho s}{(1-\rho)(s(1-\rho)-1-\rho)}.
+\]
+Reverse hypercontractivity now bounds the cross entry by
+$D=\langle h_+,T_rh_-\rangle\ge\lambda_2(B/\lambda_2)^{-2e}$.
+The two-dimensional compression, exactly as in the proof of
+Theorem~\ref{thm:density}, has eigenvalues $\lambda_2$ and
+$\lambda_2+D/(cd)$. Since $cd\le1/2$, the variational principle gives
+\[
+ \gap(T_r)\ge\frac{2D}{\lambda_1}
+ \ge\frac{2\lambda_2}{\lambda_1}(B/\lambda_2)^{-2e}
+ \ge(2B)^{-2e}.
+\]
+Here $2\lambda_2/\lambda_1\ge1$ and $\lambda_2\ge1/2$.
+Combining the two cases proves the claim. One-point support has
+$\lambda_2=0$ and is already covered. No step divides by $r$.
+\end{proof}
+
+\begin{theorem}\label{thm:spikes}
+Fix $0<\rho<1$, $B>1$ and
+\[
+ 1<s<s_{\rm point}:=\frac{\log2}{\log(2/(1+\rho))}.
+\]
+There are strictly positive normalized densities $r_L$ for every $L\ge1$
+with $\|r_L\|_s\le B$ whose actual transfer gaps tend to zero
+exponentially. Explicitly put $\varepsilon=(B-1)/2^{1/s}$ and
+\[
+ z_L=\varepsilon2^{L/s},\qquad
+ r_L(x)=\frac{1+z_L(\mathbf1_{\{0^L\}}(x)+\mathbf1_{\{1^L\}}(x))}{Z_L},
+ \qquad Z_L=1+2\varepsilon2^{-L(1-1/s)}.
+\]
+Write $a=(1+\rho)/2$, $b=(1-\rho)/2$, $v=(1+\rho^2)/2$ and
+\[
+ \kappa=2^{1/s}a,\qquad
+ \eta=2^{-1/(2s)}\frac{\sqrt v}{a},\qquad \zeta=b/a.
+\]
+Then $\kappa>1$, $0<\eta,\zeta<1$, and
+\begin{equation}\label{eq:spikegap}
+ \gap(T_{r_L})\le2\zeta^L+rac{1+2\varepsilon}{\varepsilon}\kappa^{-L}
+                      +\sqrt{2/\varepsilon}\,\eta^L.
+\end{equation}
+\end{theorem}
+\begin{proof}
+The antipodes are distinct for every $L\ge1$. The formula for $Z_L$
+is their exact normalization, so $\mathbb E r_L=1$ and $r_L>0$.
+The $L^s$ triangle inequality gives
+\[
+ \|1+z_L(\mathbf1_{\{0^L\}}+\mathbf1_{\{1^L\}})\|_s
+ \le1+z_L(2/2^L)^{1/s}=B.
+\]
+Division by $Z_L\ge1$ proves the moment bound for all $L$.
+
+Use the Euclidean matrix of $T_{r_L}$; the common normalization of the
+$L^2(u_L)$ coordinate basis leaves this matrix unchanged. Split the two
+antipodes $C$ from their complement. The $C$ principal block is
+\[
+ D_L\begin{pmatrix}1&\zeta^L\\\zeta^L&1\end{pmatrix},
+ \qquad D_L=(1+z_L)a^L/Z_L.
+\]
+Principal interlacing gives $\lambda_2\ge D_L(1-\zeta^L)$, and a
+coordinate Rayleigh vector gives $\lambda_1\ge D_L$. The complementary
+block is $Z_L^{-1}$ times a principal submatrix of the positive
+contraction $P_\rho$, so its norm is at most one. For the rectangular
+cross block $K$, each full squared row sum of $P_\rho$ is
+$(a^2+b^2)^L=v^L$. Therefore
+\[
+ \|K\|^2\le\|K\|_{\rm F}^2\le2(1+z_L)v^L/Z_L^2.
+\]
+The symmetric off-diagonal block has norm $\|K\|$. Consequently
+$\lambda_1\le D_L(1+\zeta^L)+1+\|K\|$, which implies
+\[
+ \gap(T_{r_L})\le2\zeta^L+D_L^{-1}+\|K\|/D_L.
+\]
+Since $Z_L\le1+2\varepsilon$ and $1+z_L\ge\varepsilon2^{L/s}$,
+\[
+ D_L^{-1}\le\frac{1+2\varepsilon}{\varepsilon}\kappa^{-L},
+ \qquad \frac{\|K\|}{D_L}\le\sqrt{2/\varepsilon}\,\eta^L.
+\]
+This proves~\eqref{eq:spikegap}. The strict condition on $s$ says
+$\kappa>1$. Also $\eta^2=v/(a\kappa)<v/a<1$, since $\rho^2<\rho$.
+Thus all three terms decay exponentially. At $L=1$ the complementary
+block is empty; the same bounds remain valid. The estimate need not be
+informative at small $L$.
+\end{proof}
+
+These regimes leave a genuine interval open. With
+$t_0=(1-\rho)/(1+\rho)\in(0,1)$, strict concavity gives
+$\log(1+t_0)>t_0\log2$, hence
+\[
+ 1<s_{\rm point}<s_c:=\frac{1+\rho}{1-\rho}.
+\]
+Neither the intermediate interval nor either endpoint is settled here;
+no sharp threshold is claimed. At $B=1$, Jensen forces $r=1$ and the
+actual gap is $1-\rho$, displaying the weakness of the sufficient bound.
+The spike family does not claim product marginals for its weighting or
+stationary law. It isolates a finite-moment obstruction for the same
+transfer operator, whereas Theorem~\ref{thm:main} isolates the distinct
+marginal-information obstruction. Both are compatible with
+Theorems~\ref{thm:density} and~\ref{thm:moment}.

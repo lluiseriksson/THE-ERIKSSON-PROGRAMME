@@ -1,0 +1,99 @@
+{
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1503,
+      "sha256": "2b4923c75f0f3f1107096a5c3eaf38ce3b0673f1af2f96b7ffaf315f1c36a7b9"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 1048,
+      "sha256": "26610021dc1815e2a9d7fcd6c711f9a3a65128697c4e8027bc13a7aa76ba7571"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 8381,
+      "sha256": "beb80440fc22ef1c586886bf47f02e3a08486991b73644ea778b2c4944638a69"
+    },
+    {
+      "path": "gate-count.json",
+      "bytes": 191,
+      "sha256": "b5312385fc3baecdabc38f5258489438bc3eff12f6ffb1ea54908b0d566b1251"
+    },
+    {
+      "path": "input-bindings.json",
+      "bytes": 1960,
+      "sha256": "f834ed6405d1f855dd364e3b063f324d46001019a59bca02a37e156d8929fd50"
+    },
+    {
+      "path": "metadata-helper.txt",
+      "bytes": 15202,
+      "sha256": "9c295e0323f39ed5aaa1163d55d3c6b2581e950fb64cbc8f03af170c164ead46"
+    },
+    {
+      "path": "preregistration.txt",
+      "bytes": 308,
+      "sha256": "6d74e4c18fbfe4ffdca1a1135d50c2da3fb98fb80dfcddd4b29f76f37659f25c"
+    },
+    {
+      "path": "primary-reading.txt",
+      "bytes": 953,
+      "sha256": "618148da858c804aa539bd79f30321cd6ff4b5430c1a27e63ab3ba559df56736"
+    },
+    {
+      "path": "stability.json",
+      "bytes": 232,
+      "sha256": "8535aaac05f8fd142eee5aa1cfd01100be0d0a68989c2f97caf21cec25ee08e8"
+    },
+    {
+      "path": "subjects/checkout/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/checkout/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "subjects/checkout/research/bounded-density295/bounded-density295A.txt",
+      "bytes": 6807,
+      "sha256": "5fbd9247e933f6f4d00110e2e6d37923a2292588601a8322df26a5ec80c38e53"
+    },
+    {
+      "path": "subjects/checkout/research/finite-moment296/finite-moment296A.txt",
+      "bytes": 8414,
+      "sha256": "c952d3eea07c82156cc368d36f7ed6aed818be5afa16c39e52f899f64788aa28"
+    },
+    {
+      "path": "subjects/checkout/research/finite-moment296/judges296.txt",
+      "bytes": 2318,
+      "sha256": "2f2ce70574ec8f12bde54f81d9a08eaf65e211a0f7385f0748ef1fd0a0f71a22"
+    },
+    {
+      "path": "subjects/git/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "subjects/git/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "subjects/git/research/bounded-density295/bounded-density295A.txt",
+      "bytes": 6807,
+      "sha256": "5fbd9247e933f6f4d00110e2e6d37923a2292588601a8322df26a5ec80c38e53"
+    },
+    {
+      "path": "subjects/git/research/finite-moment296/finite-moment296A.txt",
+      "bytes": 8414,
+      "sha256": "c952d3eea07c82156cc368d36f7ed6aed818be5afa16c39e52f899f64788aa28"
+    },
+    {
+      "path": "subjects/git/research/finite-moment296/judges296.txt",
+      "bytes": 2318,
+      "sha256": "2f2ce70574ec8f12bde54f81d9a08eaf65e211a0f7385f0748ef1fd0a0f71a22"
+    }
+  ]
+}
