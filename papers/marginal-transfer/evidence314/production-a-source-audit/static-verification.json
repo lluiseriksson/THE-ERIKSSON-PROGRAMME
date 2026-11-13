@@ -1,0 +1,111 @@
+{
+  "source": "8a961dceb8e21687f3ed3325051a618a425279c5",
+  "runner_manifest_bytes": 605,
+  "runner_manifest_sha256": "2823684ef51d17b17ee0a54c782ff2f2f47e396cd1ac24fac7b30cc09c10e5c1",
+  "runner_files": [
+    {
+      "path": "build311.py",
+      "bytes": 10827,
+      "sha256": "86d6f5ee350fd6713be90ba2cb159049322516f094048b834710da9de6e9d09c",
+      "manifest_matches": true,
+      "C_D_equal": true
+    },
+    {
+      "path": "capture_cli_atomic.ps1",
+      "bytes": 2607,
+      "sha256": "4fe3fc65796ee55dc5db5bc52c924b5401b72699f56eac8dc73ceb2c53da2b7b",
+      "manifest_matches": true,
+      "C_D_equal": true
+    },
+    {
+      "path": "readback_after_stop.ps1",
+      "bytes": 934,
+      "sha256": "468cd9f1d4c59de070e90fce453b1ad22ec1d7c5efdc2cf57792de0f52df75ad",
+      "manifest_matches": true,
+      "C_D_equal": true
+    },
+    {
+      "path": "run_owned_after_gate.ps1",
+      "bytes": 4206,
+      "sha256": "e5edbbd6c0e4d5967c2d0676e6c3499539659636d7af0b66ead08f91d92236c7",
+      "manifest_matches": true,
+      "C_D_equal": true
+    }
+  ],
+  "tex_bytes": 86374,
+  "tex_sha256": "422892d2cde2e5df2f06959fb76b7dc514981bf822be6cc359e422c93ac36cc3",
+  "input_count": 846,
+  "unique_input_paths": 846,
+  "input_mismatches": [],
+  "nonregular_inputs": [],
+  "delta_accounting": [
+    {
+      "path": "build311.py",
+      "only_declared_substitutions": true
+    },
+    {
+      "path": "capture_cli_atomic.ps1",
+      "only_declared_substitutions": true
+    },
+    {
+      "path": "readback_after_stop.ps1",
+      "only_declared_substitutions": true
+    },
+    {
+      "path": "run_owned_after_gate.ps1",
+      "only_declared_substitutions": true
+    }
+  ],
+  "expected_text_tokens": [
+    {
+      "token": "Model assessments and review context",
+      "present_in_tex": true
+    },
+    {
+      "token": "Codes with two distance conditions",
+      "present_in_tex": true
+    },
+    {
+      "token": "A finite positive concentration estimate",
+      "present_in_tex": true
+    },
+    {
+      "token": "Stationary marginals survive the Perron transform",
+      "present_in_tex": true
+    },
+    {
+      "token": "An exact parity control with different dynamics",
+      "present_in_tex": true
+    },
+    {
+      "token": "Auxiliary critical estimates and an explicit rate",
+      "present_in_tex": true
+    },
+    {
+      "token": "The exact critical moment budget",
+      "present_in_tex": true
+    },
+    {
+      "token": "The escaped critical-moment boundary",
+      "present_in_tex": true
+    },
+    {
+      "token": "The fixed-cutoff endpoint",
+      "present_in_tex": true
+    },
+    {
+      "token": "Optimized finite backgrounds below cutoff one",
+      "present_in_tex": true
+    },
+    {
+      "token": "Scalar background tail optimum",
+      "present_in_tex": true
+    }
+  ],
+  "relay_exists_C": false,
+  "relay_exists_D": false,
+  "attempt_exists_D": false,
+  "current_checkout_branch": "codex/tep-catalogue312-20261113",
+  "current_checkout_head": "e56239e4595af469ffd3a38d71d8b2d609a58a32",
+  "audit_subject_is_exact_commit_not_current_checkout": true
+}

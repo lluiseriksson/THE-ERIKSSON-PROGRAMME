@@ -1,0 +1,9 @@
+{
+  "checked_utc": "2026-11-13T16:09:31.7409334Z",
+  "report_read_in_full": true,
+  "context_read_in_full": true,
+  "manifest_files_verified": 25,
+  "raw_manifest_sha256": "2873db53460ccd3b5dbd7f5c40c39a9da43c8875bf49a295decbcafb213970a5",
+  "raw_report_sha256": "f72891bbb79b1953870dd8505dbaf23c5b7dc13d07c30ac70040bde0cd901be3",
+  "scope": "Accept exact frozen audit only; CI, merge, execution and publication remain separate. All qualifications and prior involvement retained."
+}

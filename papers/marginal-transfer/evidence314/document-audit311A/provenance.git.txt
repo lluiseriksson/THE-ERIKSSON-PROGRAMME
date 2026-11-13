@@ -1,0 +1,26 @@
+commit 8a961dceb8e21687f3ed3325051a618a425279c5
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:55:06 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 16:55:06 2026 +0100
+
+    b7d1fc09: integrate optimized critical-tail backgrounds with full audit context
+
+commit b7d1fc093e5aef060cae757e99fe4792e96fcfac
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:51:34 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 16:51:34 2026 +0100
+
+    ff4068b4: register grouped background311 integration judges
+
+commit ff4068b4ebfab156fddf635a12ae1d5637470afd
+Merge: 5b01ed0ed cc97b0588
+Author:     Lluis Eriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:49:53 2026 +0100
+Commit:     GitHub <noreply@github.com>
+CommitDate: Fri Nov 13 16:49:53 2026 +0100
+
+    Merge pull request #257 from lluiseriksson/codex/tep-background310-20261113
+    
+    Optimize finite parity backgrounds for strict critical-tail counterexamples

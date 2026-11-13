@@ -1,0 +1,25 @@
+{
+  "scope": "New grouped311 manuscript source, not compiled or assessed. All19 prior308 proof environments unchanged; two added proof environments. Exact historical308 review and six reservations do not transfer. Full309 A/B and310 analytical reports/context/assignments preserved.",
+  "excluded310_primary_sources": [
+    {
+      "path": "primary-bertsimas-popescu.pdf",
+      "bytes": 254804,
+      "raw_sha256": "1eceb8733ef9d56e45cda38b55afcb0d624a6eff9d1949e6801d402065d3063a",
+      "reason": "Third-party complete primary-source capture; private, not redistributed"
+    },
+    {
+      "path": "primary-gluck-v6.html",
+      "bytes": 508616,
+      "raw_sha256": "6a4a886182430e316d9b8fbf2c0b1e3f6dca56a0588750fd2252f7b2d22003ac",
+      "reason": "Third-party complete primary-source capture; private, not redistributed"
+    },
+    {
+      "path": "primary-mos-v5.html",
+      "bytes": 1070285,
+      "raw_sha256": "2656883dc19880003631ad84488310ea2092f1aeae998024e04196727b31df34",
+      "reason": "Third-party complete primary-source capture; private, not redistributed"
+    }
+  ],
+  "historical308_packet": "Original input-manifest preserved. Complete report/context/assignment and exact old PDF copied; remaining original review inputs remain in the immutable public v5 release and local evidencia308. No claim that this historical subset is the whole review input packet.",
+  "inherited_evidence": "Existing evidence295--308 and their original declared public subsets remain in the same repository tree. No credentials, private submission jobs or new complete third-party texts included."
+}

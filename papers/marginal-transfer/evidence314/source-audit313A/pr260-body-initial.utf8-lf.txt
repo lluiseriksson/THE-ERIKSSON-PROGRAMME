@@ -1,0 +1,5 @@
+Refine the same K<1 question: clip the balanced critical tilt, compensate its vanishing mean only on high background atoms, and use growing dyadic parity laws plus an explicit amplitude reserve. The candidate derives r>=K, exact mean one and strictK-tail cost at most1+C_s(1-K)K^(s-1), with both actual leading transfer eigenvalues tending to one for(s-1)/s<K<1.
+
+This removes the prior construction's strict floor and budget slack by explicit estimates. Bound the growing Walsh sum, moving clipping event, noninteger mixed powers, all norm perturbations and every-dimension prefix. The attained constructive budget is not asserted to be the universal spectral threshold; locality and physical conclusions remain absent. Prior309 failure,310 and frozen311 remain unchanged.
+
+Judges313 precede detailed source after disclosed analytical design. Require separate frozen source audit, required checks and unchanged normal merge. Group only after acceptance; no new PDF, numerical score, external novelty or formal/numerical verification claimed.

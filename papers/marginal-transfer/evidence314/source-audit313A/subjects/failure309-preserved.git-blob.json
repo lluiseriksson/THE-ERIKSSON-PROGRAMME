@@ -1,0 +1,11 @@
+{
+  "source": "6d316907aa8804d156d965af940ba8d7ae553f41",
+  "full_report_read": true,
+  "full_context_read": true,
+  "raw_files_verified": 18,
+  "verdict": "FAIL/REVISE; J1-J4 main construction accepted, J5 scope extension fails at b=1 and infeasible b>1",
+  "counterexample": "r>=1 and Er=1 forces r=1; fixed gap1-rho.",
+  "report_sha256": "9e3cf288978aca5f1dc1355ef93c166d59bace158f22f8a39ecc5f885cd2f993",
+  "manifest_sha256": "5e595c0f10158880b5c6cd1fcec957d3d22bb553f4e200a57d9f9c06a6420a85",
+  "judges_amended": false
+}

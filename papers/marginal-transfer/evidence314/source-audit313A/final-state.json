@@ -1,0 +1,21 @@
+{
+  "observed_utc": "2026-11-13T16:09:36.8918245Z",
+  "initial_head": "a4d0736b57eb27ce7ae7de479d62df2bc2edb6b0",
+  "final_head": "a4d0736b57eb27ce7ae7de479d62df2bc2edb6b0",
+  "initial_worktree_status": "clean",
+  "final_worktree_status": [],
+  "final_pr_head": "a4d0736b57eb27ce7ae7de479d62df2bc2edb6b0",
+  "body_capture_command": "gh pr view 260 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid",
+  "body_regime": "JSON-decode; CRLF and CR to LF; trim all final LF; append exactly one LF; UTF8 without BOM",
+  "initial_body_sha256": "7b6a6639594900754fc1795af46d299d7a5b59c32f9fe2cc38027680824e55fb",
+  "final_body_sha256": "7b6a6639594900754fc1795af46d299d7a5b59c32f9fe2cc38027680824e55fb",
+  "final_body_bytes": 1043,
+  "candidate_checkout_initial_sha256": "a3082541a6aead361e74b8a77eb2256eeca408097bae60cd4e932dc9d0d39d22",
+  "candidate_checkout_final_sha256": "a3082541a6aead361e74b8a77eb2256eeca408097bae60cd4e932dc9d0d39d22",
+  "judges_checkout_initial_sha256": "97015003d363f545b9a2970996c29786c1f9a01316aeea8fbb0b809fbf4e30a0",
+  "judges_checkout_final_sha256": "97015003d363f545b9a2970996c29786c1f9a01316aeea8fbb0b809fbf4e30a0",
+  "judges_prereg_candidate_raw_equal": true,
+  "stable": true,
+  "no_disposable_clone": true,
+  "cleanup_pending": false
+}

@@ -1,0 +1,9 @@
+{
+  "prior308_inputs": 727,
+  "new311_inputs": 846,
+  "prior_input_changes_or_missing": [],
+  "judges_first_commit": "b7d1fc093e5aef060cae757e99fe4792e96fcfac",
+  "judges_commit_is_ancestor": true,
+  "judges_present_same_blob": true,
+  "excluded_thirdparty_names_present": []
+}

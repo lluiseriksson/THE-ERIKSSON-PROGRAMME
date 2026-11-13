@@ -1,0 +1,118 @@
+FINITE PARITY BACKGROUNDS AND CRITICAL-TAIL OPTIMIZATION -- SOURCE310A
+Judges310:5161f9f9ce51ff53a08261e5537ab4ca5d1c56c1; parent e362aeb3f16ed863cf363fef7f246ff4a9735fd9. Analytical candidate, not yet separately accepted. No numerical or formal verification; external priority is not established. Exact308 PDF and its assessment are unchanged. This source refines the same active K<1 question and is intended for a later grouped manuscript.
+
+1. Setting and bounded claims
+On the uniform Boolean cube Omega_L={-1,1}^L let P_L have Walsh eigenvalues rho^|S|, with fixed0<rho<1. Set Q_L=P_{sqrt(rho),L}, s=(1+rho)/(1-rho)>1, k_s=(s-1)/s, and C_s=s^s/(s-1)^(s-1). For r>0 with E r=1 write
+ T_r=M_sqrt(r) P_L M_sqrt(r), S_r=Q_L M_r Q_L,
+ gap(r)=1-lambda2(T_r)/lambda1(T_r).
+Eigenvalues are ordered decreasingly with multiplicity. AA*/A*A, with A=M_sqrt(r)Q_L, proves that S_r and T_r have exactly the same full spectrum. All expectations use uniform probability, not counting measure.
+
+Theorem A (strict sub-two construction). Fix k_s<K<1, 0<b<K and
+ 1+C_s(1-K)K^(s-1)<tau<2.
+There exist positive r_L, for every integer L>=1, such that
+ E r_L=1, r_L>=b, E[r_L^s 1_{r_L>K}]<=tau,
+ lambda1(T_r_L)->1, lambda2(T_r_L)->1, gap(r_L)->0.
+This does not identify the minimum tail budget among all collapsing families. It does not assert equality-budget attainability, prescribe local interactions, give a continuum or physical spectral statement, or prove external originality.
+
+Theorem B (scalar background problem, a classical moment optimization).
+For s>1 and 0<K<1, among all nonnegative random variables A with E A=1,
+ inf E[A^s 1_{A>K}]=m_s(K),
+ m_s(K)=1 if K<=k_s,
+ m_s(K)=C_s(1-K)K^(s-1) if k_s<K<1.
+The first value is attained by A=1. In the second case it is attained by a two-point law supported on K and v*=sK/(s-1), with probability p*=(s-1)(1-K)/K at v*. This is an elementary sharp scalar inequality, not an optimal transfer-gap theorem or a novelty claim. The strict cutoff is essential to this attaining law: the atom at K contributes zero.
+
+2. Proof of the scalar problem and the admissible non-dyadic approximation
+If 0<K<=k_s, convexity gives y^s>=1+s(y-1) for all y>=0. For y>K use this bound; for 0<=y<=K, 1+s(y-1)<=1+s(K-1)<=0. Thus pointwise
+ y^s 1_{y>K}>=1+s(y-1).
+Integrating at E A=1 proves the lower bound1, attained by A=1 since K<1. It includes K=k_s. If the left expectation is infinite the same lower bound remains true, since the affine right side is integrable.
+
+If k_s<K<1, put c=C_s K^(s-1). For y>K the function y^s/(y-K) has logarithmic derivative s/y-1/(y-K), whose sign is the sign of (s-1)y-sK. It tends to infinity as y decreases to K and as y tends to infinity, so its unique minimum is at v*=sK/(s-1), with value c. For y<=K, c(y-K)<=0. Hence on all y>=0,
+ y^s 1_{y>K}>=c(y-K).
+Integration gives E[A^s 1_{A>K}]>=c(1-K). For the stated two-point law, v*>1, 0<p*<1, and K+p*(v*-K)=1. Equality holds at both support points. At the join K=k_s the formula c(1-K) equals1 and the two-point law degenerates to A=1. This proves Theorem B without invoking a general strong-duality theorem.
+
+For Theorem A set g(u)=C_s(1-u)u^(s-1), k_s<u<1. Its derivative is
+ g'(u)=C_s u^(s-2)((s-1)-su)<0.
+Its continuous values at k_s and1 are1 and0, respectively. By the strict budget slack, choose one fixed u with max(b,k_s)<u<K and 1+g(u)<tau. For this u the optimal high value is v_u=su/(s-1)>1 and optimal probability p_u=(s-1)(1-u)/u in(0,1).
+For p in(0,1), put v(p)=u+(1-u)/p. Then (1-p)u+p v(p)=1, v(p)>1>K and p v(p)^s is continuous in p. At p=p_u its value is g(u). Therefore some open interval of p values around p_u has 1+p v(p)^s<tau. Choose a dyadic rational p=j/2^k in this interval, with integer k>=1 and1<=j<2^k. Fix this p,k and v=v(p) once and for all before dimension grows. In particular the strict budget and floor do not rely on approximating a discontinuity at the cutoff; u<K<v have fixed positive separations.
+
+3. Realizing the finite law with long parities
+Choose any subset H of {-1,1}^k of cardinality j. Define F(z)=v on H and F(z)=u otherwise. Under uniform probability its high probability is exactly p, its mean is1, and its minimum is u. Its Walsh expansion is
+ F(z)=1+sum_{empty!=I subset[k]} fhat(I) chi_I(z),
+where the finitely many real coefficients are fixed and D_F=sum_{I!=empty}|fhat(I)|<infinity.
+
+For M>=1 partition kM background bits into k disjoint blocks of exactly M bits. Let z_i be the product of the bits of block i, and define a_M(x)=F(z_1,...,z_k). The parities are independent unbiased signs: each block has equally many positive and negative products and product measure tensorizes. Thus a_M takes u,v with exactly the prescribed probabilities, E a_M=1 and a_M>=u. The Walsh character chi_I(z) becomes the character on the union U_I of its |I| blocks, of degree M|I|.
+
+For any nonempty coordinate set U and arbitrary Walsh character chi_S on d bits,
+ Q_d M_chi_U Q_d chi_S
+ =rho^((|S|+|S symmetric_difference U|)/2) chi_{S symmetric_difference U}
+ =rho^(|U|/2+|S outside U|) chi_{S symmetric_difference U}.
+This is a permutation of the Walsh basis with positive weights, whose largest weight is rho^(|U|/2), attained for S subset U. Therefore its exact operator norm is rho^(|U|/2). It follows by the triangle inequality that
+ ||Q_{kM}M_{a_M}Q_{kM}-P_{kM}||
+ <=sum_{I!=empty}|fhat(I)|rho^(M|I|/2)
+ <=D_F rho^(M/2)->0.
+No smallness of the fixed amplitudes u,v or of D_F is assumed. This vanishing is derived from increasing character degree; it is not imported as a spectral hypothesis.
+
+4. Inherited balanced critical tilt, with exact dependencies
+Use Theorems12-13 of papers/marginal-transfer/manuscript308A.tex at8ac81a6f3f70aa552cc957d45abaf3f0fab90e65, preserved in parent e362aeb3. The underlying analytical source is critical299 at49705281f05ab18b71bd9ebc2da1985a0433340c. It gives, on n independent bits,
+ delta_n=d n^(-1/3),
+ N(delta)=(((1+delta)^s+(1-delta)^s)/2)^(1/s),
+ R_n(y)=product_{i=1}^n [(1+delta_n y_i)/N(delta_n)],
+ m_n=E R_n=N(delta_n)^(-n),
+ kappa(delta)=(1+rho+sqrt((1-rho)^2+4rho delta^2))/(2N(delta)),
+ beta_n=kappa(delta_n)^(-n), Z_n=1+beta_n m_n,
+ w_n=(1+beta_n R_n)/Z_n,
+with d>0 sufficiently small and fixed, R_n>0,
+ E R_n^s=1, E R_n^t->0 for every0<t<s,
+ m_n->0, beta_n->1, Z_n->1,
+ lambda1(S_w_n)->1 and lambda2(S_w_n)->1.
+These last two are actual eigenvalue limits from the proved balanced Gram comparison, not a conclusion from two trial vectors alone. This source uses that exact established family, not the later cutoff-one dilution or source309's additional-case comparison. No new numerical check is asserted here.
+
+5. The combined transfer and actual spectral limits
+For L sufficiently large set M=floor(L/(2k)) and n=L-kM. Both M,n tend to infinity and are positive. On the independent background kM bits and tilt n bits define
+ q_L(x,y)=a_M(x)+beta_n R_n(y), r_L=q_L/Z_n.
+Then E r_L=1 exactly and r_L>=u/Z_n, eventually greater than b.
+Linearity and the product decomposition of Q yield
+ S_r_L=[(Q_{kM}M_a Q_{kM}) tensor P_n + beta_n P_{kM} tensor(Q_n M_R_n Q_n)]/Z_n.
+For B_L=P_{kM} tensor S_w_n it follows that
+ ||S_r_L-B_L||<=D_F rho^(M/2)/Z_n ->0,
+using ||P_n||=1. All eigenvalues of P_{kM} lie in(0,1], with top eigenvalue1. Those of S_w_n are positive. Hence lambda1(B_L)=lambda1(S_w_n), while
+ lambda2(S_w_n)<=lambda2(B_L)<=lambda1(B_L).
+The lower inequality uses the two eigenvectors having constant background factor and the first two tilt eigenvectors, or equivalently the two corresponding product eigenvalues. It proves that both actual leading eigenvalues of B_L tend to1. The self-adjoint eigenvalue perturbation bound then transfers both limits to S_r_L and to T_r_L. Their normalized gap tends to zero. For every finite L the strictly positive transfer matrix has a simple Perron eigenvalue and a positive gap, so no finite-dimensional exact degeneracy is claimed.
+
+6. Scalar moments after normalization and strict moving cutoffs
+For all s>1 put theta=min(1,s/2), so0<theta<s. For c>0,z>=0,
+ 0<=(c+z)^s-c^s-z^s
+ <=s2^(s-1)(c^(s-theta)z^theta+c^theta z^(s-theta)). (M)
+Indeed after division by c^s let y=z/c. For y<=1 the mean value theorem bounds (1+y)^s-1 by s2^(s-1)y, at most s2^(s-1)y^theta; subtraction of y^s only lowers the difference. For y>=1 exchange c and z. Nonnegativity follows by integrating s[(1+y)^(s-1)-y^(s-1)]>=0 from zero. This proves(M) also for noninteger s.
+Take z=beta_n R_n and fixed c=u or v. Both mixed expectations tend to zero because their R powers are strictly between0 ands and beta_n is bounded. E z^s=beta_n^s->1. Consequently
+ E(c+beta_n R_n)^s->c^s+1.
+The full moment therefore tends to
+ E r_L^s -> 1+(1-p)u^s+p v^s>2,
+the strict inequality being Jensen's strict inequality for the nonconstant background with mean1. Thus Theorem A does not impose a total moment cap2.
+
+In the high sector, v/Z_n>K eventually, so every point is in the strict event and its conditional tail moment tends to v^s+1. In the low sector the event is exactly R_n>c_n=(KZ_n-u)/beta_n. The thresholds tend to K-u>0 and eventually lie in some fixed interval[c_-,c_+] with0<c_-<c_+<infinity. For any fixed0<t<s,
+ P(R_n>c_n)<=c_-^(-t)E R_n^t->0,
+ E[R_n^s 1_{R_n<=c_n}]<=c_+^(s-t)E R_n^t->0.
+Thus E[R_n^s 1_{R_n>c_n}]->1. On the event, use(M): its constant contribution tends to zero by the probability bound, and the mixed terms are bounded by the unrestricted ones tending to zero. This yields the conditional low-sector tail limit1 after division by Z_n^s. Averaging the exactly fixed independent probabilities gives
+ E[r_L^s 1_{r_L>K}] -> (1-p)*1+p(v^s+1)=1+p v^s<tau.
+This is an explicit strict-event calculation, not an inference of moments from convergence in probability. The scalar optimizer's atom exactly at K is deliberately not used in this transfer argument.
+
+Choose L0 so that for every L>=L0 the tail moment is <=tau, r_L>=b and both blocks are positive. For1<=L<L0 define r_L=1. Its mean is1, floor holds since b<K<1, and its K-tail moment is1<=tau. Finite-prefix replacement preserves all the limits. There is no effective or optimal claim for L0. This proves Theorem A for every dimension with strict budget slack. The same family satisfies the upper bound for every larger cutoff J>=K by event inclusion; the displayed exact limit is only for the stated K between u and v.
+
+7. Improvement, remaining uncertainty and relation to the scalar optimum
+The equal-probability construction309 gives upper collapse budget1+(2-K)^s/2 on2-2^(1/s)<K<1. Its limiting background law has values K and2-K with probabilities1/2, so by Theorem B its scalar cost is at least m_s(K) wherever this old region exists. Equality in the strict minimization y^s/(y-K) requires2-K=sK/(s-1), namely K=2(s-1)/(2s-1). At that isolated feasible value, no strict cost improvement over the binary half-probability optimizer is claimed. Otherwise the optimized scalar upper budget is strictly smaller in the overlapping region. The construction's u<K and dyadic approximation approach the infimum with slack; they do not attain its exact equality budget.
+
+The new nonempty sub-two range k_s<K<1 contains the old one. To check the endpoint ordering, 2^(1/s)<1+1/s for s>1: set t=1/s in(0,1) and apply strict convexity of2^t below the chord joining t=0 and t=1. Thus2-2^(1/s)>1-1/s=k_s.
+
+For an arbitrary mean-one nonnegative density with K-tail budget<=tau, the already used elementary bound E r^s<=K^(s-1)+tau and the exact308 total-moment estimate imply
+ gap(r)>=1-((K^(s-1)+tau)/2)^(1/s)>0
+whenever tau<2-K^(s-1). This sufficient region remains valid. Theorem A supplies a different upper region of collapse and does not assert that the intervening interval is filled, nor that either boundary is optimal. Theorem B is sharp only for scalar mean-one background laws; spectral collapse has additional escaped mass, so no universal lower collapse budget follows just by adding1 to that scalar inequality. Even optimality across all possible background-plus-tilt mechanisms is not claimed beyond the fixed separated-atom construction explicitly analyzed here.
+
+The fixed floor range here is0<b<K. For K<b<1, all densities lie entirely above the cutoff and the condition becomes a total moment cap; the earlier exact threshold2 concerns that feasible floor range. For b=1, mean1 forces r=1 and gap=1-rho; for b>1 the class is empty. The equality floor b=K and equality budget tau=1+m_s(K) are not classified here. Source309A's omitted b<1 condition in its extra comparison remains an actual recorded failure; this text does not retroactively amend that gate.
+
+8. Primary-source comparison, relevance and review context
+The scalar lower bound is a direct affine minorant argument in a classical moment problem. Bertsimas and Popescu, Optimal Inequalities in Probability Theory: A Convex Optimization Approach, SIAM Journal on Optimization15(3),780-804(2005), DOI10.1137/S1052623401399903, is primary context for optimization over moment-constrained laws and the pointwise dual method. Parent consulted the author-hosted PDF's introduction, section2 formulation and Theorem2.1 weak-duality proof at https://web.mit.edu/~dbertsim/www/papers/ioana/Optimal-inequalities-in-probability-theory-A-convex-optimization-approach-SIAM15.pdf. Their general results are not being recast as a new scalar inequality method or used to certify priority for this special formula. The elementary proof above avoids extra duality hypotheses.
+
+Mossel, Oleszkiewicz and Sen, On reverse hypercontractivity, https://arxiv.org/abs/1108.1210 (v5,2012), is classical finite-product semigroup context, already discussed in exact308. Gluck, Spectral gaps for hyperbounded operators, https://arxiv.org/abs/1802.09422 (v6,2019), addresses hyperbounded-operator spectral theory; a result for one operator does not automatically assert the uniform ratio bound in this dimension-varying construction. The current parent verified these abstract/version pages; it did not claim a fresh full-text comparison of both articles. Further external originality work is still required.
+
+Within this programme the substantive synthesis is to realize scalar background optimization by finite functions of long parities, make their smoothed multiplication vanish in operator norm, and combine them with an already proved critical escape mechanism. Scalar cost and transfer spectrum are explicitly separated rather than treating a density moment as a physical spectral gap. The inherited critical family is a stated theorem dependency, not a hidden new assumption. No PDF is assessed here, no prior model rating transfers, and a different auditor must inspect the frozen candidate under judges310 before acceptance. No human review or model-provider independence is claimed.

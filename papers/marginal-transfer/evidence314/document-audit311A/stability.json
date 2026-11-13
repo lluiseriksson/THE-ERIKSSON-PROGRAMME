@@ -1,0 +1,22 @@
+{
+  "checked_utc": "2026-11-13T16:04:12.8442253Z",
+  "initial_and_final_stable": true,
+  "local_head_final": "8a961dceb8e21687f3ed3325051a618a425279c5",
+  "pr_head_final": "8a961dceb8e21687f3ed3325051a618a425279c5",
+  "body_capture": "gh pr view 258 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid",
+  "body_representation": "JSON decoded; CRLF then CR to LF; terminal LF trimmed; exactly one LF appended; UTF-8 without BOM",
+  "body_bytes": 1055,
+  "body_sha256": "8a623bcd29aa5d96c8733401b256845f5f5779667e1aedb356b514716774f55a",
+  "source_raw_sha256": "422892d2cde2e5df2f06959fb76b7dc514981bf822be6cc359e422c93ac36cc3",
+  "source_git_blob": "2faf56804a00069508c804a292a8ec352247980a",
+  "source_checkout_blob": "2faf56804a00069508c804a292a8ec352247980a",
+  "tracked_final_diff_bytes": 0,
+  "status_initial": "?? prepare311.py\n",
+  "status_final": "?? prepare311.py\n",
+  "untracked_file_not_opened_or_executed": "prepare311.py",
+  "manifest_entries": 846,
+  "manifest_mismatches": 0,
+  "continuous_surveillance": false,
+  "ci_assessed": false,
+  "merge_performed": false
+}

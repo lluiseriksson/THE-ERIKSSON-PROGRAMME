@@ -1,0 +1,160 @@
+{
+  "directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-311\\document-audit311A",
+  "created_utc": "2026-11-13T16:04:41.2830356Z",
+  "self_exclusions": [
+    "byte-hash-manifest.json",
+    "manifest.sha256.txt"
+  ],
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1540,
+      "raw_sha256": "18340f7db0df94e8020fd66ff81c3d29b727a8db5d2e7663c751480012a9c44b",
+      "representation": "UTF-8 evidence text/JSON as written, no subsequent newline normalization"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 3118,
+      "raw_sha256": "6d23e2255a04e21626a0582f03583319407f9fa8f0c0fde73b56215365a23e91",
+      "representation": "UTF-8 evidence text/JSON as written, no subsequent newline normalization"
+    },
+    {
+      "path": "drive-instructions.raw.md",
+      "bytes": 16801,
+      "raw_sha256": "3502d37a3f765ea2e867f1379917b25b7d458c03500b682b2b3403210181b1b8",
+      "representation": "Raw local file copy; no normalization"
+    },
+    {
+      "path": "frozen311.raw-git.zip",
+      "bytes": 19976377,
+      "raw_sha256": "208b98f3782da6632430b1d27db688e97b112d3dd0d4ea0f710a2d0588f301f1",
+      "representation": "Raw git archive --format=zip stdout captured through BaseStream; no byte transformation"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 23227,
+      "raw_sha256": "f72891bbb79b1953870dd8505dbaf23c5b7dc13d07c30ac70040bde0cd901be3",
+      "representation": "UTF-8 evidence text/JSON as written, no subsequent newline normalization"
+    },
+    {
+      "path": "head.final.txt",
+      "bytes": 41,
+      "raw_sha256": "dee39e7b2fe1d426fbd17bb9a28b7820fb05155655a91ac9f1b709201272d343",
+      "representation": "Raw git stdout bytes; no normalization"
+    },
+    {
+      "path": "head.initial.txt",
+      "bytes": 41,
+      "raw_sha256": "dee39e7b2fe1d426fbd17bb9a28b7820fb05155655a91ac9f1b709201272d343",
+      "representation": "Raw git stdout bytes; no normalization"
+    },
+    {
+      "path": "input-bindings311.json",
+      "bytes": 319298,
+      "raw_sha256": "ec57b46f81502af7898cf8c68f535623e9618e6232451e23374c5665818d466c",
+      "representation": "UTF-8 evidence text/JSON as written, no subsequent newline normalization"
+    },
+    {
+      "path": "judges311.registered.git.txt",
+      "bytes": 2723,
+      "raw_sha256": "76899f90c08eb786a09f621b4e5f8ee6c0e1d6c2636e5c46ddf9078b55392474",
+      "representation": "Raw git stdout bytes; no normalization"
+    },
+    {
+      "path": "key-bindings.json",
+      "bytes": 1538,
+      "raw_sha256": "afcd7da8c7e29bce94e48cb41a42d8ce29a8a8ad1402210231997a4e00005711",
+      "representation": "UTF-8 evidence text/JSON as written, no subsequent newline normalization"
+    },
+    {
+      "path": "pr258.body.final.normalized.txt",
+      "bytes": 1055,
+      "raw_sha256": "8a623bcd29aa5d96c8733401b256845f5f5779667e1aedb356b514716774f55a",
+      "representation": "JSON-decoded body; CRLF/CR to LF; trim terminal LF then append exactly one LF; UTF-8 without BOM"
+    },
+    {
+      "path": "pr258.body.initial.normalized.txt",
+      "bytes": 1055,
+      "raw_sha256": "8a623bcd29aa5d96c8733401b256845f5f5779667e1aedb356b514716774f55a",
+      "representation": "JSON-decoded body; CRLF/CR to LF; trim terminal LF then append exactly one LF; UTF-8 without BOM"
+    },
+    {
+      "path": "pr258.final.raw.json",
+      "bytes": 1126,
+      "raw_sha256": "21ddb862c9b283099d2e86d20401906b9b6bdee9631763dba052ab6ffcfd8a95",
+      "representation": "Raw gh stdout bytes; no normalization"
+    },
+    {
+      "path": "pr258.initial.raw.json",
+      "bytes": 1126,
+      "raw_sha256": "21ddb862c9b283099d2e86d20401906b9b6bdee9631763dba052ab6ffcfd8a95",
+      "representation": "Raw gh stdout bytes; no normalization"
+    },
+    {
+      "path": "prior308-preservation.diff",
+      "bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "representation": "Raw git stdout bytes; no normalization"
+    },
+    {
+      "path": "proof-statement-preservation.json",
+      "bytes": 10075,
+      "raw_sha256": "bb6770f2ec69062ac41a2a97f0e4d6f243ffb5f2f6f37cc69a8655ac219fd619",
+      "representation": "UTF-8 evidence text/JSON as written, no subsequent newline normalization"
+    },
+    {
+      "path": "provenance.git.txt",
+      "bytes": 1048,
+      "raw_sha256": "136827480eb34d1fa4e5b3331aed4923f21bda395d23776cbf9406a04eec1fca",
+      "representation": "Raw git stdout bytes; no normalization"
+    },
+    {
+      "path": "public-subset-unlisted.json",
+      "bytes": 23,
+      "raw_sha256": "5a3436dcdf9cce984b613491444c9ef25dcaa345cc8dca0b32cac23b0383d8bd",
+      "representation": "UTF-8 evidence text/JSON as written, no subsequent newline normalization"
+    },
+    {
+      "path": "raw-git-archive-entries.json",
+      "bytes": 206819,
+      "raw_sha256": "13b6540e4d06c001945de518ead6c2bf539e10ac5af7cda6b1e4c00221bd52d5",
+      "representation": "UTF-8 evidence text/JSON as written, no subsequent newline normalization"
+    },
+    {
+      "path": "raw-retention-comparison.json",
+      "bytes": 37842,
+      "raw_sha256": "bf2127c152bf9e8ec546323e1f98008277d75c3129ffdbdac08545d5c3f03fba",
+      "representation": "UTF-8 evidence text/JSON as written, no subsequent newline normalization"
+    },
+    {
+      "path": "stability.json",
+      "bytes": 1117,
+      "raw_sha256": "78bfee54069fb2d8a9c62d22c1817dd4c5543d461e430530c80dfbb4231eaa81",
+      "representation": "UTF-8 evidence text/JSON as written, no subsequent newline normalization"
+    },
+    {
+      "path": "status.final.txt",
+      "bytes": 17,
+      "raw_sha256": "cf5fe4e59fec8a32f0aa0626c5a7faf4c5b32588193b670ca1e5fe6e6b726c95",
+      "representation": "Raw git stdout bytes; no normalization"
+    },
+    {
+      "path": "status.initial.txt",
+      "bytes": 17,
+      "raw_sha256": "cf5fe4e59fec8a32f0aa0626c5a7faf4c5b32588193b670ca1e5fe6e6b726c95",
+      "representation": "Raw git stdout bytes; no normalization"
+    },
+    {
+      "path": "tracked-final.diff",
+      "bytes": 0,
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "representation": "Raw git stdout bytes; no normalization"
+    },
+    {
+      "path": "verdict.json",
+      "bytes": 2250,
+      "raw_sha256": "7a34caa4ec51c7313aa421cf0242e95c6587035866c6833389f50331c1603906",
+      "representation": "UTF-8 evidence text/JSON as written, no subsequent newline normalization"
+    }
+  ]
+}

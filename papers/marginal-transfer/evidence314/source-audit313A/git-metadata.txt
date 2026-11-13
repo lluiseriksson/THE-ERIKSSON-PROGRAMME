@@ -1,0 +1,29 @@
+commit a4d0736b57eb27ce7ae7de479d62df2bc2edb6b0
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 17:04:06 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 17:04:06 2026 +0100
+
+    1c00922a: derive exact cutoff floor and attained constructive tail budget
+
+commit 1c00922a3884004d31bc05ecad586c702ddd9f38
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 17:01:39 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 17:01:39 2026 +0100
+
+    ff4068b4: register exact cutoff-floor313 and upper-budget construction gates
+
+commit ff4068b4ebfab156fddf635a12ae1d5637470afd
+Merge: 5b01ed0ed cc97b0588
+Author:     Lluis Eriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:49:53 2026 +0100
+Commit:     GitHub <noreply@github.com>
+CommitDate: Fri Nov 13 16:49:53 2026 +0100
+
+    Merge pull request #257 from lluiseriksson/codex/tep-background310-20261113
+    
+    Optimize finite parity backgrounds for strict critical-tail counterexamples
+BASE-TO-CANDIDATE PATH DIFF
+A	papers/marginal-transfer/judges313.txt
+A	research/cutoff-floor313/cutoff-floor313A.txt
