@@ -1,0 +1,96 @@
+{
+  "kind": "Raw byte evidence manifest for exact-source330A analytical audit",
+  "representation": "All entries hash exact retained bytes without normalization. git-subjects are direct binary Git blobs; originals are unchanged raw copies; body-normalized files use JSON-decoded CRLF-to-LF, TrimEnd, exactly one final LF and UTF8 without BOM. CLI JSON is retained text, not raw HTTP. This manifest excludes itself; its raw SHA256 is delivered separately.",
+  "files": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1485,
+      "sha256": "1d09bea9416e9601b3d2c04643446e76eafb56b9a6d919bd3a5f5e6aea5eead7"
+    },
+    {
+      "path": "body-final.normalized.txt",
+      "bytes": 978,
+      "sha256": "9f2145f2875ce671e4e2298745d7d68ca0fb27bf2b00beb04c7f3d7e48d6bfcc"
+    },
+    {
+      "path": "body-initial.normalized.txt",
+      "bytes": 978,
+      "sha256": "9f2145f2875ce671e4e2298745d7d68ca0fb27bf2b00beb04c7f3d7e48d6bfcc"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 4193,
+      "sha256": "d52403c420515edc882eb6c56fdc3e99f984108e7bfa843f7e0c3358efc6efc5"
+    },
+    {
+      "path": "final-state.json",
+      "bytes": 3186,
+      "sha256": "162062fe2a24034365e90c44c12b0a9eefbb1d7977c93a9b99afb24266b5309a"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 20472,
+      "sha256": "9477ecb4297fb03ddae27b2d75baf1139de153fe8eea06e26098f89ef2b7af8c"
+    },
+    {
+      "path": "git-subjects/CLAUDE.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad"
+    },
+    {
+      "path": "git-subjects/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "git-subjects/research/one-sided330/source330A.txt",
+      "bytes": 10458,
+      "sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59"
+    },
+    {
+      "path": "initial-state.json",
+      "bytes": 3925,
+      "sha256": "e557276887145d674e73c0f047581a4cd12e3fc3a2495d6ded55245b8ad1d545"
+    },
+    {
+      "path": "originals/01-source330A.txt",
+      "bytes": 10458,
+      "sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59"
+    },
+    {
+      "path": "originals/02-source329A.txt",
+      "bytes": 10450,
+      "sha256": "3d09bd792ac1e38566312171d44329fcc8130056967c73fb9ad26bf20f026be1"
+    },
+    {
+      "path": "originals/03-full-analytical-report.txt",
+      "bytes": 17512,
+      "sha256": "eb634aad42de52697eaf3e8780d355a5edfdc13a05afe3368f2563ed3329d81b"
+    },
+    {
+      "path": "originals/04-model-context.json",
+      "bytes": 5541,
+      "sha256": "fa091b46d44ddbf8d914f9022ee1ccf5f5239678e226fb44a4cd1f52642ec3b6"
+    },
+    {
+      "path": "originals/05-MANIFEST.json",
+      "bytes": 1872,
+      "sha256": "d23b1b402f4d76bd253fdb989a7140d88d4a32d62b1092a6949adb2e1c782df8"
+    },
+    {
+      "path": "originals/06-manuscript327A.tex",
+      "bytes": 142910,
+      "sha256": "46aeeb87a840446cd115829d31f8e91095646a7a964f62604294c01579b2255f"
+    },
+    {
+      "path": "pr276-final.json",
+      "bytes": 1215,
+      "sha256": "2d1807a81237ace9f2088c8d45d4e3fde2ff4d0a72ee61744bb2debf4102a704"
+    },
+    {
+      "path": "pr276-initial.json",
+      "bytes": 1215,
+      "sha256": "2d1807a81237ace9f2088c8d45d4e3fde2ff4d0a72ee61744bb2debf4102a704"
+    }
+  ]
+}

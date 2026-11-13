@@ -1,0 +1,84 @@
+{
+  "task": "SOURCE331A terminal analytical audit; distinct new assignment",
+  "verdict": "PASS_STATED_ACHIEVABLE_FINITE_C_PROFILE",
+  "checks": {
+    "C1": "PASS; full reasoning in full-analytical-report.txt",
+    "C2": "PASS; full reasoning in full-analytical-report.txt",
+    "C3": "PASS; full reasoning in full-analytical-report.txt",
+    "C4": "PASS; full reasoning in full-analytical-report.txt",
+    "C5": "PASS; full reasoning in full-analytical-report.txt",
+    "C6": "PASS; full reasoning in full-analytical-report.txt",
+    "C7": "PASS; full reasoning in full-analytical-report.txt",
+    "C8": "PASS; full reasoning in full-analytical-report.txt",
+    "C9": "PASS; full reasoning in full-analytical-report.txt",
+    "C10": "PASS; full reasoning in full-analytical-report.txt",
+    "C11": "PASS; full reasoning in full-analytical-report.txt",
+    "C12": "PASS; full reasoning in full-analytical-report.txt"
+  },
+  "identity": {
+    "actor": "AI assistant subagent /root/exact322_pdf_first_assessment",
+    "original_requested_model": "gpt-6-astra",
+    "original_requested_effort": "high",
+    "current_assignment_model_override": "none specified",
+    "served_backend_model": "unknown; not attested",
+    "actual_version": "unknown; not attested",
+    "actual_reasoning_effort": "unknown; not attested",
+    "independence": "unknown; no independence claim",
+    "technical_isolation": "Shared provider/filesystem; not attested",
+    "prior_context": "Same agent previously performed exact322B, catalogue326 and source329A assignments; prior terminal outputs retained unchanged."
+  },
+  "read_coverage": [
+    "Complete source331A working-tree text and numbered exact Git blob, 94 lines",
+    "Complete retained source330A, 10458 raw bytes; reproduced in bundle for derivation comparison",
+    "Directory inventory of available terminal source-audit330A only; no reading of its verdict/report/context",
+    "Applicable CLAUDE.md and operational charter retained from previous full reads; unchanged Git diff since source329A verified; execution and audit boundary sections reread",
+    "Relevant ancestor/research/finite-scale331 AGENTS paths checked; none present",
+    "Initial/final local HEAD, branch, committed diff scope; initial/final live GitHub PR277 metadata/body",
+    "Classical scalar hypercontractivity statement and Fourier definitions, printed page1 of author-hosted Ben-Aroya/Regev/de Wolf research paper"
+  ],
+  "tools": [
+    "functions.exec orchestration",
+    "exec_command PowerShell for source/governance reads, read-only git, raw SHA-256 and requested evidence filesystem operations",
+    "GitHub get_pr_info read-only connector",
+    "web open for primary research paper",
+    "apply_patch for exclusive staged evidence files"
+  ],
+  "not_performed": [
+    "No candidate or mathematical code execution",
+    "No mathematical scripts, tests, builds, symbolic algebra, numerical experiments, formal verification or runtime allocation",
+    "No source/branch/PR body mutation, PR comments, publication or merge",
+    "No agent spawning, inbound audit messages or contact with running audits",
+    "No score, novelty clearance, independent-derivation or physical claim"
+  ],
+  "objections": [
+    {
+      "id": "O1",
+      "severity": "LOW_NONBLOCKING",
+      "source_lines": "22",
+      "summary": "Prefer attained limiting gap / upper bound on the infimum wording; current phrase 'upper bound on what can be achieved' is mildly ambiguous in isolation, with scope clear in context."
+    }
+  ],
+  "limitations": [
+    "AI reasoning can miss errors; no formal or numerical verification.",
+    "Earlier same-agent source329A context was present; no independent derivation claim follows.",
+    "Terminal330 evidence was available but its verdict was not used as authority.",
+    "Background324/325, PR29 and TermSource statements were not reaudited and are not premises.",
+    "Fixed rho and fixed positive finite C; no uniform endpoint/double-limit assertion or optimality.",
+    "Construction upper profile leaves the universal finite-C positive-gap question open."
+  ],
+  "failed_or_limited_observations": [
+    "No current-assignment tool failure or failed mathematical test observed; no mathematical tests were run.",
+    "First mixed-object directory/free-space display poorly aligned; free space reread explicitly as 211731701760 bytes.",
+    "Source330A's pre-audit status wording retained as raw input; no historical-status inference drawn from it."
+  ],
+  "primary_source": {
+    "url": "https://homepages.cwi.nl/~rdewolf/publ/qc/matrixbeckner.pdf",
+    "coverage": "Scalar hypercontractivity equation(1) and Fourier/operator convention, printed page1; not full paper or quantum results"
+  },
+  "evidence": {
+    "stage": "C:/Trabajo/the-eriksson-programme/_tmp/source-audit331a",
+    "retained": "D:/Datos/the-eriksson-programme/autonomia/evidencia-331/source-audit331A",
+    "cleanup": "Exact stage files removed after raw-byte retained-copy verification; cleanup outcome recorded separately.",
+    "manifest": "Raw SHA-256 for all retained files except manifest itself; source/body representations labeled."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "pdf_sha256": "a9bffe073c06aecab11e7d9941999a023f7417d5c5325e4d293f7c450fe771e2",
+  "pdf_bytes": 610651,
+  "pages": 42,
+  "raw_return": "231payloads validated on owned Colab328B and copied-hash verified",
+  "visual": "Parent inspected contact sheets01-11 covering all42pages and full page40. No missing pages/black squares observed. Page40 historical hash overruns text margin; not publication-ready. Source332 fixes line wrapping and integrates330/331 before first exact-PDF rating.",
+  "rating": "None requested or produced for327 PDF",
+  "runtime": "Production and actual-return runtimes separately stopped, actual backend readbacks noactive; all CLI exits0",
+  "formal": "No new formal verification",
+  "remaining": "No full-pixel proof claim from contact sheets; eventual332 PDF requires complete visual review and its own first assessment"
+}
