@@ -1,0 +1,76 @@
+from pathlib import Path
+import subprocess,hashlib,json
+W=Path(r'C:\Trabajo\the-eriksson-programme\prefix-rank290-20261113');E=Path(r'D:\Datos\the-eriksson-programme\autonomia\evidencia-293\source-audit293A')
+SHA='cfdf142cb881a7de3a45bf4f9787bd71c0457539';BASE='research/plane-lift293/';HASH='390887b41b1f8ea073a2cd190145f234878488190cecef1631c3ed682cc44b15'
+def git(*a):return subprocess.check_output(['git','-C',str(W),*a])
+def h(b):return hashlib.sha256(b).hexdigest()
+first=git('rev-parse','HEAD').decode().strip();originals={name:(W/BASE/name).read_bytes() for name in ['plane-lift293A.txt','judges293.txt']}
+if first!=SHA or h(originals['plane-lift293A.txt'])!=HASH:raise RuntimeError('Frozen source mismatch')
+for name,b in originals.items():
+    if git('show',SHA+':'+BASE+name)!=b:raise RuntimeError('Git subject mismatch')
+if E.exists():raise RuntimeError('Exclusive packet exists')
+E.mkdir(parents=True);(E/'subjects').mkdir();bindings=[]
+def cap(path,name,scope):
+    b=Path(path).read_bytes();(E/'subjects'/name).write_bytes(b);bindings.append({'original':str(path),'path':'subjects/'+name,'bytes':len(b),'sha256':h(b),'read_scope':scope})
+for name,b in originals.items():
+    cap(W/BASE/name,name,'Entire new text read; all eight gates analytically attacked')
+    (E/'subjects'/('git-'+name)).write_bytes(b);bindings.append({'original':SHA+':'+BASE+name,'path':'subjects/git-'+name,'bytes':len(b),'sha256':h(b),'read_scope':'Exact frozen Git identity equals checkout'})
+deps=[('research/quadratic-prefix290/audit290A/subjects/manuscript289B.tex','manuscript289B.tex','579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668'),('research/sectional-rebase292/sectional-rebase292A.txt','sectional-rebase292A.txt','7ca695a7773241d5d140bcb1acd1175c0931e1049860fda203c827b78cbbb467'),('research/quadratic-prefix290/audit290A/subjects/line-average-removal287A.txt','line-average-removal287A.txt','55473f9e3683b9b53578b26d54b37eac5a1f2e92aa4de7780d09b1997444c1be')]
+for rel,name,expected in deps:
+    b=(W/rel).read_bytes()
+    if h(b)!=expected or git('show',SHA+':'+rel)!=b:raise RuntimeError('Bound dependency mismatch '+name)
+    cap(W/rel,name,'Exact input previously whole-source read/audited; relevant actual Fourier/low/range/minimization context retained,289/292 passages reread in293, no fresh full historical re-audit claimed')
+for rel,expected in [('CLAUDE.md','618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe'),('docs/OPERATIONAL-GOVERNANCE-CHARTER.md','fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f')]:
+    if h((W/rel).read_bytes())!=expected:raise RuntimeError('Governance changed')
+    cap(W/rel,Path(rel).name,'Raw same as earlier full-read governance; split-role/no-inbound/explicit-check/byte/environment rules applied')
+prior=Path(r'D:\Datos\the-eriksson-programme\autonomia\evidencia-292\source-audit292A\full-report.txt')
+if h(prior.read_bytes())!='6c434cc5ab64b6e41b5a094de35806b41ff8891aa466e423e2368f79b1e67850':raise RuntimeError('Prior caution report changed')
+cap(prior,'prior292-full-report.txt','Original full source audit/caution retained unchanged; current proof checked as its proposed discharge')
+assignment='''source=cfdf142cb881a7de3a45bf4f9787bd71c0457539 base=05584799e2218d7d9de9f35af0fc8336e56ea94e. NEW full analytic audit under CLAUDE rule4: research\\plane-lift293\\plane-lift293A.txt at existing C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113 (branchcodex/tep-sectional-rebase292-20261113), rawSHA256390887b41b1f8ea073a2cd190145f234878488190cecef1631c3ed682cc44b15; judges293 eightgates. This addresses YOUR292 caution: explicit actual Xi O extension of every plane trace missing k2=0,N modes. Two opposite k3frequencies selectedwithspecialpairs at(q,q),(-q,-q); S=P1+P2 floor2/(9n²), lift Fourier sqrt(n)P S^-1, norm²<=9n³/2. Claims actual full original cell range C(XiO)=C(XiU)=C(XiF), for8|n and arbitrarycuts; lowlift cost<=54cn4; actual residual range onXiF nowpaid. Attackconjugatepair exceptionsn8, actualcurladjointW, complexGramdet, normfactor, alloriginalnormalizedcells andlowtracecount, andfullconditionalfeasibility. Do not assume theorem correct fromparent. Sources289B/292 atpathsinthetext. Noexecution,code/tests/Lean/runtime/network/grade, no source/state/gitmutation. Retain fullreport, assignment/context actualinvolvedCodex/OpenAI backendunexposed, inputhashes, nonzerogatecount, finalrawmanifest under D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-293\\source-audit293A. No independence orpriorpublicationclaim. Preserve allobjections. No furtherinbound whileyouaudit.'''
+(E/'assignment.txt').write_text(assignment,encoding='utf-8')
+context='''Involved Codex/OpenAI child /root/grouped260_manuscript_source_audit, separate from parent fabrication. Exact served backend/model/version/effort unexposed. Shared previous programme/source-audit context, including author of292's caution; not independent/blind/human peer review or independent discovery. Whole new293 source and alljudges read; exact289/292/287 inputs captured, previously read whole and audited, relevant289/292 passages reread here. Current extension proof independently attacked analytically rather than assuming parent conclusions; prior292 report/caution immutable and bound. No fresh full historical/PDF/bibliographic reread claimed. No incomingmessage, newagent/runtime/math execution/compiler/Lean/tests/network/modelservice/score or source/state/Gitmutation. OnlyPowerShell text/Git/hash and metadata-onlyPython copy/hash/JSON with explicitif/raise, no Pythonassert. No toolfailure, disposableclone orcleanupdebt. No PR/body supplied/captured. No publicationverification orprioritycertification.
+'''
+(E/'context.txt').write_text(context,encoding='utf-8')
+gates=[
+('Frequency selection and real pairing','Default{q,-q} is antipodal, separatedbyN. Onlyplanediagonalp=(q,q),(-q,-q) couldmakeonechoice aphysicaldiagonal; theirspecialpairs{u,u+N} and{-u,-u-N} avoidthecorrespondingq or-q. Everychosenr isoutside0,N. At n8 theseare{2,6},special{1,5}/{7,3}, withno collision/zero/diagonal. J_-p=-J_p holds, whileallowedp2 excludesallselfconjugateplaneindices. Otherp1=p2 valuescannotcoincidewithdefaultthirdchoices.'),
+('Actual coexact fibers and skew potential','EachP_r=I-g_rg_r*/|g_r|² is theHermitianactualg-perp projection. p2!=0 guaranteesnonzero g. CoefficientsP_r S^-1h areactualcoexact, and W_jl=(g_j uhat_l-g_l uhat_j)/|g|² gives sumconjg_j W_jl=uhat_l sinceg*uhat=0. Skewsigns matchforwardcurladjoint. Zero/nonselectedcoefficients arezero, so noharmonicterm. Conjugationg(-k)=conjg(k) andJ_-p=-J_p carriesP,S^-1,E andW into theirconjugates, givingrealphysicalfields and real-linearE.'),
+('Complex Gram determinant and floor','ForA=||a||², determinant=(A+|b|²)(A+|bprime|²)-|A+conjb*bprime|²=A|b-bprime|²=4A, validcomplex. Normsquared product<=144 gives1-rho²>=A/36. Nonparallelnormals yieldS eigenvalues1-rho,1+rho,2. Hence min>=A/72. Sincep2!=0, |g2|>=2sin(pi/n)>=4/n, givingA>=16/n² andfloor2/(9n²). No assumedGram or complextranspose substitution.'),
+('Trace normalization and extension bound','Unitary2Dtrace of3Dfield satisfies hhat=n^-1/2 sum_r what(p,r). The construction sqrt(n)P_r S^-1hhat thereforetracesexactlytohhat. Parseval withP_r²=P_r andHermitianS^-1 givesfrequencyenergy n<hhat,S^-1hhat>, boundedby(9/2)n³|hhat|². Differentp do notduplicate3Dfrequencies. Everyoccupiedk2,k3 avoidsbands andeveryfrequency isoffdiagonal, so E mapsintoXiO withtheprintednormconstant, notjustambientspace.'),
+('All normalized original cells and actual range','Forw inXiU, Trw hasallowedp2support andbothw andETrw havefullthirdcoordinate sumzero pointwise. Equalplanevalues implyequal sumsoverthirdlonginterval, thenequalcell sumsforeachoriginalI andcomponent. Comparingthesamerowoneachfield keepsnormalizationsexact, includingendpoint/empty/volume-onecells. Thus C(ETrw)=Cw explicitly. XiO subsetXiU givesreverseinclusion, so range equalityholds forarbitrarycuts, notmerelysingletons orrowdimension.'),
+('Low trace count and54cn4 energy','ActualL liesondiagonalnonexceptionalpairs, withcoordinatesoutside0,N. Xi fixesL and preservesU/F/O bywholecheckerboardpair support. ConsequentlyXiO subsetXiF subsetXiU extendsrangeequality. Forl=phi(i+j+k), everyresidueoccursn²timesinvolumeandntimesonplane, giving||Trl||²=||l||²/n. f=-ETrl isactualXiO high, hasCf=-Cl, norm²<=(9/2)n²||l||². B>=0onF andQ<=12H||f||² yield0<=<f,Bf><=54cn^4||l||². No samplepermutation orframe isused.'),
+('Smaller-domain conditional feasibility now paid','CommutationofXi withB onF makesRprime theactualB-inverse onXiF. The explicitfullcancellingf firstputsT_Ll inrangeMprime, so singletonpseudoinverse/minimizer islegitimate. Differencef-fprime_T lies inXiF capkerT withP-value-rprime. Whitenedconditionalresponse thenhasexactlytheattainableP range, so rprime is inrangeKprime_P beforeinversion. B-squarecompletion gives theattainedadditivecost insideXiF, boundedbytheexplicit54cn4competitor. Thisgenuinelydischarges292'scaution, notbyassumingfullXi-prefixrangeinnotation.'),
+('Scope, route preservation and next quantitative task','Maintrace/range theoremneeds8|n>=8 andarbitrarycuts; source-modelenergypartusespaidcheckerboardspectrum. n8needsno287floor. Oldparkedroutesarenotrestarted; newmechanismpaysapreviouslymissingexplicitrange. cn4ceiling isnotc-scale, targetrecovery orbelow-cfullkernelwitness. 287badsubspacecomparisonapplieswhereitsn>=16/conservativeconditionshold; actualXi-singletonminimizer isthenewbaseline, notoldr/q. Noexternalpriority, independence, PDFscore/Lean/runtime/publication/physicalgapclaim.')]
+if len(gates)!=8 or len({x[0] for x in gates})!=8:raise RuntimeError('Eight analytical gate count failed')
+(E/'analytical-gates.json').write_text(json.dumps({'nonzero_analytical_gate_count':8,'method':'Analytical source review, not executable mathematics','gates':[{'gate':i+1,'name':name,'verdict':'PASS','reason':reason} for i,(name,reason) in enumerate(gates)]},indent=2),encoding='utf-8')
+report='''293A COMPLETE ADVERSARIAL ANALYTICAL SOURCE AUDIT
+VERDICT: BOUNDED_ANALYTICAL_ACCEPTANCE. Eight of eight preregistered analytical gates reviewed; explicit nonzero count8. No material failure or mandatoryminor correction identified. The explicit actualXiO extension proves thefulloriginalcell range insideXiF and discharges the precise292forward-feasibility caution. This isnot a numerical/formal/PDF grade, independentpeerreview, globalQ251solution, publication ororiginalitycertification.
+
+REFERENT AND FULL READ
+FrozenHEADcfdf142cb881a7de3a45bf4f9787bd71c0457539, base05584799e2218d7d9de9f35af0fc8336e56ea94e. Exact293A rawSHA256390887b41b1f8ea073a2cd190145f234878488190cecef1631c3ed682cc44b15 matchesGit. Whole newsource andalljudges read. Bound289/292/287 exactinputs andprior292fullreport/caution captured withrawhashes. Actualreadscope retainspriorwhole-source involvementwithoutclaiming a freshwholehistorical/PDF reread. InvolvedCodex/OpenAI separateaudit, parentfabricatedproof, exactservedbackendunexposed; noindependence orblind/humanreview attribution.
+
+COMPLETE EIGHT-GATE FINDINGS
+'''
+report+='\n\n'.join(str(i+1)+'. '+name+'\n'+reason for i,(name,reason) in enumerate(gates))
+report+='''
+
+ADDITIONAL ATTACKS AND OBJECTIONS
+The specialthird-frequency pairs areantipodal inphase, notnecessarily {r,-r} asindexsets. Theirnegative plane partnersuse thenegativeset, which isexactlywhatisrequiredforreality. Thefloorusesonlyp2nonzero; exclusionofp2=N additionallyimplementsXi butcreatesnodegeneracy. Selectingboththirdfrequencies isessential: theirsharedfirsttwonormalcoordinates are nonzero, theirlastcomponents differby2, andtheircoexactplanes spanallthreevectortracevalues. A singleplaneprojectionwouldnot suffice forarbitrarytrace, buttheprovedS inverse does. No after-the-fact projection changes theprescribedtrace.
+
+Theoriginalcell rangeequality isstrongerthanpointmatching alonebecausebothfields alsohavezeroentirethirdlines. Itrequiresnoassumptionaboutthecuts, theirmotion, evenness orpermutation. Itkeepsallsamerownormalizations andevenremainingvolume-onecells. The lowenergyextensionh uses theactualplaneprofilecount, notthe singleton-frame n^-5identity, soitsconstant54cn4doesnotinherit anunneededpermutationhypothesis. The conditionalfeasibility argumentrestrictswhitening toXiF, whereB ispositiveandinvertible; itdoesnotborrowthelargerF rangewithoutproof. The newresidualrprime iskeptdistinctfromold290/291r and292q. Fullcostminimizationisattained andbounded, butthebound isfarabovetheavailablec-scaledeficit.
+
+No materialorminorrequiredcorrection found. Specificpriorobjectionstatus:292'scaution wasnot a defectin292's currentnestedidentities; itwasa futureproofobligation.293 nowprovides anexplicitrealoffdiagonalcoexactextensionofeveryallowedtrace, provesalloriginalrowequalityandtherange, thenusesitbeforeinvertingtheconditionalprefixresponse. Thecaution istherefore dischargedonthisstated8|n/domain, withoutoverwritingitsoriginalreport. Thisdoesnot establishanenergyboundsharp enoughfortarget-c, thequadraticbestcanonicalresult, externalpriority, physicalYang-Millsgap orcontinuumlimit. Theclaimednewmechanism isproperlyseparatefromtheparkedzero-sectional-liftroute; publicationcannotresetitsownfuturethree-unitrule.
+
+RETENTION AND OPERATIONS
+Eightanalyticalgates andnonzeroinput/outputcounts retained. Onlytext/Git/hash/copy/JSONmetadata operationswith explicitif/raise, noPythonassert. No mathematicalexecution, tests/compiler/Lean/runtime/network/grade/newagent/modelspend, source/state/Gitmutation orinboundmessage. No toolfailure, no disposablecloneorcleanupdebt. Source/judges/HEAD checkedagainatsealing. Exacttask/context/inputs/priorcaution/gates/stability andfinalrawmanifest inthisexclusivepacket. No priorpublicationverification orclaim.
+'''
+(E/'full-report.txt').write_text(report,encoding='utf-8')
+(E/'inspected-input-hashmanifest.json').write_text(json.dumps({'inputs':bindings,'nonzero_inspected_input_count':len(bindings),'byte_regime':'Exact raw bytes, no normalization'},indent=2),encoding='utf-8')
+last=git('rev-parse','HEAD').decode().strip()
+if last!=SHA:raise RuntimeError('HEAD changed')
+for name,b in originals.items():
+    if (W/BASE/name).read_bytes()!=b:raise RuntimeError('Frozen subject changed')
+(E/'stability.json').write_text(json.dumps({'initial_head':first,'final_head':last,'subjects':{name:{'bytes':len(b),'sha256':h(b)} for name,b in originals.items()},'unchanged':True,'analytical_gates_reviewed':8},indent=2),encoding='utf-8')
+entries=[{'path':p.relative_to(E).as_posix(),'bytes':p.stat().st_size,'sha256':h(p.read_bytes())} for p in sorted(E.rglob('*')) if p.is_file()]
+if len(entries)==0:raise RuntimeError('Empty packet')
+mf=E/'raw-hashmanifest.json';mf.write_text(json.dumps({'files':entries,'nonzero_retained_artifact_count':len(entries),'regime':'Exact raw bytes; manifest excludes itself'},indent=2),encoding='utf-8')
+print(json.dumps({'verdict':'BOUNDED_ANALYTICAL_ACCEPTANCE','gates_reviewed':8,'report':str(E/'full-report.txt'),'report_sha256':h((E/'full-report.txt').read_bytes()),'manifest':str(mf),'manifest_sha256':h(mf.read_bytes()),'members':len(entries)}))

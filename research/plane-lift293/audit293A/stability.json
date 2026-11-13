@@ -1,0 +1,16 @@
+{
+  "initial_head": "cfdf142cb881a7de3a45bf4f9787bd71c0457539",
+  "final_head": "cfdf142cb881a7de3a45bf4f9787bd71c0457539",
+  "subjects": {
+    "plane-lift293A.txt": {
+      "bytes": 11697,
+      "sha256": "390887b41b1f8ea073a2cd190145f234878488190cecef1631c3ed682cc44b15"
+    },
+    "judges293.txt": {
+      "bytes": 1409,
+      "sha256": "dec6e459b7d17d98baeb4caf448bef16fa060c9990f0cf500f26053edcbc4ceb"
+    }
+  },
+  "unchanged": true,
+  "analytical_gates_reviewed": 8
+}

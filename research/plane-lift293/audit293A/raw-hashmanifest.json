@@ -1,0 +1,96 @@
+{
+  "files": [
+    {
+      "path": "analytical-gates.json",
+      "bytes": 4787,
+      "sha256": "e0937d7444e6477786a2a1e564c08e23184f9198a38a6fa1c201630eb0dd625c"
+    },
+    {
+      "path": "assignment.txt",
+      "bytes": 1405,
+      "sha256": "e3ec64b11a1e1d75586eb35680544a484c3ccc0e2fd08bc77e438f61c3d2b0ab"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 1241,
+      "sha256": "25159a7b81ae33ee5eca5194109249315b264592e8f05ac73da12608b9d68f92"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 7786,
+      "sha256": "8989f56f16756d7b801e8c8991ac246b8166556371670362895b5a55dbc6a502"
+    },
+    {
+      "path": "inspected-input-hashmanifest.json",
+      "bytes": 5312,
+      "sha256": "fa8ec635d8e6b713856d0ce971f2f17f9596f1e31b3fbefe23fa1e5c51a03526"
+    },
+    {
+      "path": "stability.json",
+      "bytes": 488,
+      "sha256": "74accb73f51c949867adc83f0e03734cfed5013cd65132d9b35e3c45755648bd"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/git-judges293.txt",
+      "bytes": 1409,
+      "sha256": "dec6e459b7d17d98baeb4caf448bef16fa060c9990f0cf500f26053edcbc4ceb"
+    },
+    {
+      "path": "subjects/git-plane-lift293A.txt",
+      "bytes": 11697,
+      "sha256": "390887b41b1f8ea073a2cd190145f234878488190cecef1631c3ed682cc44b15"
+    },
+    {
+      "path": "subjects/judges293.txt",
+      "bytes": 1409,
+      "sha256": "dec6e459b7d17d98baeb4caf448bef16fa060c9990f0cf500f26053edcbc4ceb"
+    },
+    {
+      "path": "subjects/line-average-removal287A.txt",
+      "bytes": 11041,
+      "sha256": "55473f9e3683b9b53578b26d54b37eac5a1f2e92aa4de7780d09b1997444c1be"
+    },
+    {
+      "path": "subjects/manuscript289B.tex",
+      "bytes": 54939,
+      "sha256": "579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "subjects/plane-lift293A.txt",
+      "bytes": 11697,
+      "sha256": "390887b41b1f8ea073a2cd190145f234878488190cecef1631c3ed682cc44b15"
+    },
+    {
+      "path": "subjects/prior292-full-report.txt",
+      "bytes": 7818,
+      "sha256": "6c434cc5ab64b6e41b5a094de35806b41ff8891aa466e423e2368f79b1e67850"
+    },
+    {
+      "path": "subjects/retention-helper293-first-failed.txt",
+      "bytes": 15176,
+      "sha256": "5f23404b275a0ff9ae6217eba494663c9a565b1386908f4b7b75f5a8472be2bd"
+    },
+    {
+      "path": "subjects/retention-helper293-first-failure.txt",
+      "bytes": 635,
+      "sha256": "9239d7004251214217f0aca8bcba639278c2f3d6b8a4945dc82991c10712242b"
+    },
+    {
+      "path": "subjects/sectional-rebase292A.txt",
+      "bytes": 11863,
+      "sha256": "7ca695a7773241d5d140bcb1acd1175c0931e1049860fda203c827b78cbbb467"
+    }
+  ],
+  "nonzero_retained_artifact_count": 18,
+  "regime": "Exact raw bytes; manifest excludes itself"
+}

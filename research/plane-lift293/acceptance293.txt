@@ -1,0 +1,20 @@
+BOUNDED ANALYTICAL ACCEPTANCE of source cfdf142cb881a7de3a45bf4f9787bd71c0457539.
+Raw source SHA256 390887b41b1f8ea073a2cd190145f234878488190cecef1631c3ed682cc44b15.
+All eight preregistered gates accepted with no required mathematical correction.
+All 18 manifest members verified against actual byte lengths and SHA256.
+Full report SHA256 8989f56f16756d7b801e8c8991ac246b8166556371670362895b5a55dbc6a502.
+Manifest SHA256 3f8e180a3b9af9496579a67c72b901a8869268238474e1556eedda60015aed1d.
+
+The distinct audit session is involved Codex/OpenAI; exact served backend
+unexposed. This is not independent or human peer review, formal/numerical
+verification, an exact-PDF assessment or a publication. All objections and
+the corrected metadata-helper quoting failure are retained verbatim.
+
+The explicit real extension proves full original-cell range equality on
+Xi O, Xi F and Xi U, discharging the specific smaller-domain feasibility
+obligation identified by audit292. No source-model hypothesis is removed.
+The 54 c n^4 cost ceiling is not a useful target-c estimate. Q251 is open.
+The old zero-sectional route stays parked after three units. This is unit
+one of the new Xi full-prefix mechanism; publication cannot reset counters.
+External originality is unestablished. Group with substantive energy work;
+do not turn this auxiliary result into a small standalone AIRR paper.

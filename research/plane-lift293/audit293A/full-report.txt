@@ -1,0 +1,40 @@
+293A COMPLETE ADVERSARIAL ANALYTICAL SOURCE AUDIT
+VERDICT: BOUNDED_ANALYTICAL_ACCEPTANCE. Eight of eight preregistered analytical gates reviewed; explicit nonzero count8. No material failure or mandatoryminor correction identified. The explicit actualXiO extension proves thefulloriginalcell range insideXiF and discharges the precise292forward-feasibility caution. This isnot a numerical/formal/PDF grade, independentpeerreview, globalQ251solution, publication ororiginalitycertification.
+
+REFERENT AND FULL READ
+FrozenHEADcfdf142cb881a7de3a45bf4f9787bd71c0457539, base05584799e2218d7d9de9f35af0fc8336e56ea94e. Exact293A rawSHA256390887b41b1f8ea073a2cd190145f234878488190cecef1631c3ed682cc44b15 matchesGit. Whole newsource andalljudges read. Bound289/292/287 exactinputs andprior292fullreport/caution captured withrawhashes. Actualreadscope retainspriorwhole-source involvementwithoutclaiming a freshwholehistorical/PDF reread. InvolvedCodex/OpenAI separateaudit, parentfabricatedproof, exactservedbackendunexposed; noindependence orblind/humanreview attribution.
+
+COMPLETE EIGHT-GATE FINDINGS
+1. Frequency selection and real pairing
+Default{q,-q} is antipodal, separatedbyN. Onlyplanediagonalp=(q,q),(-q,-q) couldmakeonechoice aphysicaldiagonal; theirspecialpairs{u,u+N} and{-u,-u-N} avoidthecorrespondingq or-q. Everychosenr isoutside0,N. At n8 theseare{2,6},special{1,5}/{7,3}, withno collision/zero/diagonal. J_-p=-J_p holds, whileallowedp2 excludesallselfconjugateplaneindices. Otherp1=p2 valuescannotcoincidewithdefaultthirdchoices.
+
+2. Actual coexact fibers and skew potential
+EachP_r=I-g_rg_r*/|g_r|² is theHermitianactualg-perp projection. p2!=0 guaranteesnonzero g. CoefficientsP_r S^-1h areactualcoexact, and W_jl=(g_j uhat_l-g_l uhat_j)/|g|² gives sumconjg_j W_jl=uhat_l sinceg*uhat=0. Skewsigns matchforwardcurladjoint. Zero/nonselectedcoefficients arezero, so noharmonicterm. Conjugationg(-k)=conjg(k) andJ_-p=-J_p carriesP,S^-1,E andW into theirconjugates, givingrealphysicalfields and real-linearE.
+
+3. Complex Gram determinant and floor
+ForA=||a||², determinant=(A+|b|²)(A+|bprime|²)-|A+conjb*bprime|²=A|b-bprime|²=4A, validcomplex. Normsquared product<=144 gives1-rho²>=A/36. Nonparallelnormals yieldS eigenvalues1-rho,1+rho,2. Hence min>=A/72. Sincep2!=0, |g2|>=2sin(pi/n)>=4/n, givingA>=16/n² andfloor2/(9n²). No assumedGram or complextranspose substitution.
+
+4. Trace normalization and extension bound
+Unitary2Dtrace of3Dfield satisfies hhat=n^-1/2 sum_r what(p,r). The construction sqrt(n)P_r S^-1hhat thereforetracesexactlytohhat. Parseval withP_r²=P_r andHermitianS^-1 givesfrequencyenergy n<hhat,S^-1hhat>, boundedby(9/2)n³|hhat|². Differentp do notduplicate3Dfrequencies. Everyoccupiedk2,k3 avoidsbands andeveryfrequency isoffdiagonal, so E mapsintoXiO withtheprintednormconstant, notjustambientspace.
+
+5. All normalized original cells and actual range
+Forw inXiU, Trw hasallowedp2support andbothw andETrw havefullthirdcoordinate sumzero pointwise. Equalplanevalues implyequal sumsoverthirdlonginterval, thenequalcell sumsforeachoriginalI andcomponent. Comparingthesamerowoneachfield keepsnormalizationsexact, includingendpoint/empty/volume-onecells. Thus C(ETrw)=Cw explicitly. XiO subsetXiU givesreverseinclusion, so range equalityholds forarbitrarycuts, notmerelysingletons orrowdimension.
+
+6. Low trace count and54cn4 energy
+ActualL liesondiagonalnonexceptionalpairs, withcoordinatesoutside0,N. Xi fixesL and preservesU/F/O bywholecheckerboardpair support. ConsequentlyXiO subsetXiF subsetXiU extendsrangeequality. Forl=phi(i+j+k), everyresidueoccursn²timesinvolumeandntimesonplane, giving||Trl||²=||l||²/n. f=-ETrl isactualXiO high, hasCf=-Cl, norm²<=(9/2)n²||l||². B>=0onF andQ<=12H||f||² yield0<=<f,Bf><=54cn^4||l||². No samplepermutation orframe isused.
+
+7. Smaller-domain conditional feasibility now paid
+CommutationofXi withB onF makesRprime theactualB-inverse onXiF. The explicitfullcancellingf firstputsT_Ll inrangeMprime, so singletonpseudoinverse/minimizer islegitimate. Differencef-fprime_T lies inXiF capkerT withP-value-rprime. Whitenedconditionalresponse thenhasexactlytheattainableP range, so rprime is inrangeKprime_P beforeinversion. B-squarecompletion gives theattainedadditivecost insideXiF, boundedbytheexplicit54cn4competitor. This genuinely discharges the292 caution, notbyassumingfullXi-prefixrangeinnotation.
+
+8. Scope, route preservation and next quantitative task
+Maintrace/range theoremneeds8|n>=8 andarbitrarycuts; source-modelenergypartusespaidcheckerboardspectrum. n8needsno287floor. Oldparkedroutesarenotrestarted; newmechanismpaysapreviouslymissingexplicitrange. cn4ceiling isnotc-scale, targetrecovery orbelow-cfullkernelwitness. 287badsubspacecomparisonapplieswhereitsn>=16/conservativeconditionshold; actualXi-singletonminimizer isthenewbaseline, notoldr/q. Noexternalpriority, independence, PDFscore/Lean/runtime/publication/physicalgapclaim.
+
+ADDITIONAL ATTACKS AND OBJECTIONS
+The specialthird-frequency pairs areantipodal inphase, notnecessarily {r,-r} asindexsets. Theirnegative plane partnersuse thenegativeset, which isexactlywhatisrequiredforreality. Thefloorusesonlyp2nonzero; exclusionofp2=N additionallyimplementsXi butcreatesnodegeneracy. Selectingboththirdfrequencies isessential: theirsharedfirsttwonormalcoordinates are nonzero, theirlastcomponents differby2, andtheircoexactplanes spanallthreevectortracevalues. A singleplaneprojectionwouldnot suffice forarbitrarytrace, buttheprovedS inverse does. No after-the-fact projection changes theprescribedtrace.
+
+Theoriginalcell rangeequality isstrongerthanpointmatching alonebecausebothfields alsohavezeroentirethirdlines. Itrequiresnoassumptionaboutthecuts, theirmotion, evenness orpermutation. Itkeepsallsamerownormalizations andevenremainingvolume-onecells. The lowenergyextensionh uses theactualplaneprofilecount, notthe singleton-frame n^-5identity, soitsconstant54cn4doesnotinherit anunneededpermutationhypothesis. The conditionalfeasibility argumentrestrictswhitening toXiF, whereB ispositiveandinvertible; itdoesnotborrowthelargerF rangewithoutproof. The newresidualrprime iskeptdistinctfromold290/291r and292q. Fullcostminimizationisattained andbounded, butthebound isfarabovetheavailablec-scaledeficit.
+
+No materialorminorrequiredcorrection found. Specificpriorobjectionstatus:292'scaution wasnot a defectin292's currentnestedidentities; itwasa futureproofobligation.293 nowprovides anexplicitrealoffdiagonalcoexactextensionofeveryallowedtrace, provesalloriginalrowequalityandtherange, thenusesitbeforeinvertingtheconditionalprefixresponse. Thecaution istherefore dischargedonthisstated8|n/domain, withoutoverwritingitsoriginalreport. Thisdoesnot establishanenergyboundsharp enoughfortarget-c, thequadraticbestcanonicalresult, externalpriority, physicalYang-Millsgap orcontinuumlimit. Theclaimednewmechanism isproperlyseparatefromtheparkedzero-sectional-liftroute; publicationcannotresetitsownfuturethree-unitrule.
+
+RETENTION AND OPERATIONS
+Eightanalyticalgates andnonzeroinput/outputcounts retained. Onlytext/Git/hash/copy/JSONmetadata operationswith explicitif/raise, noPythonassert. No mathematicalexecution, tests/compiler/Lean/runtime/network/grade/newagent/modelspend, source/state/Gitmutation orinboundmessage. One metadata-helper parsing failure occurred before execution: unescaped apostrophe in prose, exit1. Complete first helper and failure account retained. Only retention prose quoting corrected; no failed-attempt packet/PASS or scientific-source mutation. No disposable clone or cleanup debt. Source/judges/HEAD checkedagainatsealing. Exacttask/context/inputs/priorcaution/gates/stability andfinalrawmanifest inthisexclusivepacket. No priorpublicationverification orclaim.
