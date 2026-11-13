@@ -1,0 +1,19 @@
+{
+  "date_utc": "2026-11-13T12:57:52.0491859Z",
+  "repository": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113",
+  "head": "14f6c1afda58d925cdf1481ecb7791d0ade9395b",
+  "candidate": "14f6c1afda58d925cdf1481ecb7791d0ade9395b",
+  "judges": "493d0aa62345fe537b7414f7cbc8d2a01d16b636",
+  "head_parent": "493d0aa62345fe537b7414f7cbc8d2a01d16b636",
+  "status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "pr_head": "14f6c1afda58d925cdf1481ecb7791d0ade9395b",
+  "pr_body_bytes": 992,
+  "pr_body_sha256": "4e239b272a60914efaddca88198edf4ac59864eb78a0c268a08455951179adb9",
+  "original299_blob": "650f87caf3fc972eb55350d6ef43b2fa12f1f094",
+  "reproduced299_blob": "650f87caf3fc972eb55350d6ef43b2fa12f1f094",
+  "candidate299_blob": "650f87caf3fc972eb55350d6ef43b2fa12f1f094",
+  "judges_diff": null
+}

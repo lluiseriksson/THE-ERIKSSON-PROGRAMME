@@ -1,0 +1,60 @@
+CRITICAL MOMENT TAILS NEED NOT CONTROL THE ACTUAL GAP — CANDIDATE301A
+Judges: judges301.txt, registration758e1c5d8. Analytical candidate, not formally checked or assigned a PDF score. Intended as a grouped explanatory complement to300, not a standalone paper. Classical ingredients; external priority is not established.
+
+1. Statement
+Fix0<rho<1 and s=(1+rho)/(1-rho)>1. For any M>1, B>M^(1/s), and0<b<1, there exists a sequence of strictly positive densities r_L on uniform Boolean L-cubes, L>=1, such that
+ Er_L=1, r_L>=b, ||r_L||s<=B,
+ Er_L^s->M,
+ E[r_L^s 1_{r_L>K}]->M-1 for every fixed K>1,
+ gap(T_{r_L})->1-rho, and gap(T_{r_L})>=(1-rho)/2 for every L>=1. (1)
+Here T_r=M_sqrt(r) P_rho M_sqrt(r), eigenvalues are ordered with multiplicities, and gap(T)=1-lambda2(T)/lambda1(T). The spaces and matrices are finite but their dimensions vary. Thus uniform integrability of the critical powers is not necessary for a dimension-uniform normalized transfer gap, even at arbitrarily large finite limiting critical moments and under any prescribed floor below one. The strict slack in B is intentional; no exact budget B=M^(1/s) assertion is made.
+
+2. Density and escaped moment
+Write N=2^L, choose one vertex z_L, and set
+ c=(M-1)^(1/s)>0, Z_L=1+c N^(1/s-1),
+ q_L=(1+c N^(1/s)1_{z_L})/Z_L. (2)
+Initially use q_L for every L. Clearly Eq_L=1 and q_L>=1/Z_L>0. Since s>1, Z_L->1. Away from z_L the density equals1/Z_L, and the exceptional vertex has probability1/N. It follows directly that q_L->1 in probability under the respective uniform measures.
+The exact moment is
+ E q_L^s = [1-1/N+(1/N)(1+cN^(1/s))^s]/Z_L^s ->1+c^s=M. (3)
+Indeed (1/N)(1+cN^(1/s))^s=(N^(-1/s)+c)^s->c^s. For each fixed K>1, the nonspike value1/Z_L is less than K, whereas the spike value tends to infinity. Therefore, for all sufficiently large L,
+ E[q_L^s1_{q_L>K}]=(N^(-1/s)+c)^s/Z_L^s ->c^s=M-1. (4)
+In particular, for every K>1 the supremum over L of this tail moment is at least M-1. Sending K to infinity cannot make those suprema vanish. This is the failure of uniform integrability of q_L^s; thresholds q_L>K are equivalent to thresholds q_L^s>K^s.
+
+3. Spectral equivalence and the exact rank-one norm
+All Hilbert spaces below use the uniform probability measure on their cube. Let Q=P_sqrt(rho), so Q is self-adjoint, Q^2=P_rho and Q1=1. Define A=M_sqrt(q_L) Q. Then AA*=T_{q_L} and A*A=S_L:=Q M_{q_L} Q. A square matrix's AA* and A*A have the same eigenvalues with multiplicities (its squared singular values), including zeros. Hence T_{q_L} and S_L have exactly the same spectrum. This does not assert equality of their Perron vectors or stationary measures.
+The probability-normalized vector e_z=sqrt(N)1_{z_L} has norm one. Its orthogonal projection |e_z><e_z| sends f to f(z_L)1_{z_L}; thus it is exactly M_{1_{z_L}}, with no factor N left over. Consequently
+ S_L=[P_rho+c N^(1/s)Q|e_z><e_z|Q]/Z_L. (5)
+The positive rank-one operator Q|e_z><e_z|Q has norm ||Qe_z||2^2=<e_z,P_rho e_z>. The Boolean noise transition diagonal is ((1+rho)/2)^L, which equals this inner product: the factors sqrt(N) cancel against probability1/N. Thus
+ ||Q|e_z><e_z|Q||=((1+rho)/2)^L. (6)
+Since ||P_rho||=1, the triangle inequality in (5) gives
+ ||S_L-P_rho|| <= delta_L,
+ delta_L := [c d_rho^L+c a_rho^L]/Z_L,
+ d_rho=2^(-(1-1/s)),
+ a_rho=2^(1/s)*(1+rho)/2=(1+rho)/2^(2rho/(1+rho)). (7)
+Here0<d_rho<1. To show a_rho<1, use strict convexity of t log t on[1,2]. At t=1+rho with0<rho<1,
+ (1+rho)log(1+rho)<2rho log2,
+ so log(1+rho)<[2rho/(1+rho)]log2, exactly the required inequality. Hence delta_L->0, and also delta_L<=c(d_rho^L+a_rho^L). No numerical limiting calculation or asymptotic equality of operators on different spaces is being used: the norm comparison is within each finite cube.
+
+4. Actual eigenvalues and a uniform bound
+P_rho has eigenvalues rho^|S| indexed by subsets S of the L coordinates. For every L>=1, its largest eigenvalue is1 and its second largest is rho, possibly repeated. The min-max principle gives
+ |lambda1(S_L)-1|<=delta_L, |lambda2(S_L)-rho|<=delta_L. (8)
+For completeness, a self-adjoint perturbation E of norm at most delta changes every Rayleigh quotient on every subspace by at most delta; applying the variational characterization in both directions proves (8) including repeated eigenvalues. Isospectrality transfers these estimates to the actual T_{q_L}.
+Moreover <1,S_L1>=Eq_L=1, so lambda1(S_L)>=1. Therefore
+ |lambda2(S_L)/lambda1(S_L)-rho|
+ <= [|lambda2(S_L)-rho|+rho|lambda1(S_L)-1|]/lambda1(S_L)
+ <=(1+rho)delta_L. (9)
+This proves gap(T_{q_L})->1-rho. Choose an integer L0 sufficiently large that, for every L>=L0,
+ 1/Z_L>=b, E q_L^s<=B^s,
+ c(d_rho^L+a_rho^L)<=(1-rho)/[2(1+rho)]. (10)
+Such an L0 exists by Z_L->1, (3), strict B^s>M, and the two strict exponential contractions. Define r_L=1 for1<=L<L0 and r_L=q_L for L>=L0. The prefix has mean1, floor1>=b, norm1<B and gap1-rho. On the tail all constraints in (1) hold by (9)-(10). A finite prefix change preserves both limits (3)-(4). This establishes (1) with the displayed common lower bound rather than an unspecified positive minimum. Strict positivity guarantees a simple Perron root; no concern about null support is needed for this family.
+
+5. Relation to the programme and established theory
+Unit296's negative construction uses TWO antipodal spikes at powers1<s<s_point, where s_point=log2/log(2/(1+rho)). Its diagonal spike scale is 2^(L/s)((1+rho)/2)^L. At the critical exponent of the present note that same geometric scale is a_rho^L, which decays, whereas in296's low-exponent regime it grows. The distinction is quantitative, not a contradiction. The current proof uses one spike and the Gram operator; it makes no statement about the preserved labelled marginals of the code construction.
+The critical theorem299 is a worst-case norm-budget statement: below B*=2^(1/s) every density has a gap lower bound; at B* and above some families have collapsing gaps. For M<2 the existence of stable examples with sufficiently small norm budget is therefore unsurprising. Here M may be arbitrarily larger than2: stable families with escaped critical moment exist also beyond that threshold. This does not refute the existential collapsing examples of299 or claim stability for every density at the same budget.
+Unit300 proves that uniform integrability of critical powers is sufficient for a uniform gap. Equations (1) and (4) rule out upgrading that sufficient condition to necessity. No hypothesis is removed from unit300's theorem and no assertion is made that arbitrary bounded critical moments suffice. The useful distinction is that scalar density tails can be spectrally suppressed by the fixed smoothing operator Q.
+Wang, Criteria of Spectral Gap for Markov Operators, arXiv:1305.4460v6, treats an invariant ergodic Markov operator and an operator-tail criterion for its symmetrization; its abstract and Theorem1.1 use a supremum over unit L2 inputs. That criterion is not the uniform integrability of base-measure density powers in this note. The changing Perron measure and Markov normalization must not be silently equated with the base uniform measure. Primary record inspected https://arxiv.org/abs/1305.4460v6 and the primary PDF https://arxiv.org/pdf/1305.4460v6 (preserved in the earlier300 comparison). No claim to disprove or extend Wang's equivalence is made.
+Rank-one spikes, Gram isospectrality, the min-max perturbation bound and elementary moment limits are classical. No broad novelty search or external priority determination has been completed for this exact combined example. It should be retained as a grouped boundary clarification, not marketed as an independent frontier discovery or as another small paper.
+
+6. Boundaries and provenance
+The source dependencies are finite-moment296A.txt (copied in papers/marginal-transfer/evidence296), critical299A source at49705281f05ab18b71bd9ebc2da1985a0433340c, and critical-tail300A.txt at14f6c1afda58d925cdf1481ecb7791d0ade9395b. This proof is self-contained apart from the elementary Boolean noise spectrum and finite-dimensional linear algebra; prior theorem299 is used only for comparison.
+No numerical computations, Lean checking, Colab runtime, fresh PDF or inherited numerical model grade are invoked. This candidate awaits the separate analytical audit against judges301. No local Gibbs, fixed-range interaction, heat-bath, physical spectral gap or continuum Yang-Mills conclusion follows. PR29 remains20/41 and TermSource=0.
