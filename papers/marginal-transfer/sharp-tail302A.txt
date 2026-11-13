@@ -1,0 +1,82 @@
+THE SHARP ESCAPED CRITICAL-MOMENT BOUNDARY — CANDIDATE302A
+Preregistered in judges302.txt at868d80c81. Analytical candidate awaiting separate audit. Group with300/301 in the existing transfer manuscript; no standalone paper, PDF assessment, formal verification or originality claim.
+
+1. Definitions and claims
+Fix0<rho<1 and s=(1+rho)/(1-rho)>1. Each density r_L>=0 has mean one on the uniform Boolean L-cube, L>=1. Let T_r=M_sqrt(r) P_rho M_sqrt(r), whose ordered eigenvalues include multiplicities and zeros; gap(T)=1-lambda2/lambda1. Define
+ H(K)=sup_{L>=1} E[r_L^s 1_{r_L>K}],
+ Theta=lim_{K->infinity} H(K)=inf_{K>=1}H(K) in[0,infinity]. (1)
+H is nonnegative and nonincreasing, so this extended-real limit always exists. Theta=0 is uniform integrability of the critical powers. No common coupling of the probability spaces is needed.
+
+Theorem A (finite cutoff). Suppose K>=1 and0<=tau<1 satisfy E[r^s 1_{r>K}]<=tau. Set
+ t=tau^(1/(2s)), m=(1+t)/2, d=(1-t)/2,
+ B_K=(K^(s-1)+tau)^(1/s).
+Then
+ gap(T_r)>=min{1-m^2, 2 d^(2s^2) K^(1-s^2)/B_K}>0. (2)
+Constants need not be optimal. They depend on rho,K,tau, not dimension or r.
+
+Theorem B (sharp worst-case tail boundary). Theta<1 implies inf_L gap(T_{r_L})>0. The value1 cannot be included in this universal guarantee: the exact299 family has Theta=1 and gap tending to zero, with any prescribed fixed positive floor below one. On the other hand, for every finite Theta0>0 there are stable families with Theta=Theta0, gap tending to1-rho and a common lower gap (1-rho)/2. Thus Theta>=1 is necessary for a collapsing family, but is not sufficient for collapse.
+
+Comparison consequence. If sup_L ||r_L||s<=B<infinity, then
+ Theta<=B^s-1. (3)
+For B<2^(1/s), Theorem B recovers a positive gap from this estimate. The direct theorem299 already gives the better explicit bound1-B/2^(1/s); (3) is a comparison, not an independent priority claim.
+
+2. Proof of the finite-cutoff theorem
+Put Q=P_sqrt(rho), p=1+rho, a=1-rho, theta=1/s^2. The standard forward/reverse Boolean inequalities in the normalization above are
+ ||Qf||2<=||f||p,
+ <f,P_rho g> >=||f||a ||g||a for f,g>=0. (4)
+As in the audited source300, the reverse inequality for functions with zeros follows by adding positive constants and taking a limit on the finite cube. The power-Holder interpolation formula is
+ ||g||p<=||g||a^theta ||g||2^(1-theta),
+ 1/p=theta/a+(1-theta)/2. (5)
+Its proof applies ordinary Holder to powers; it does not use a false quasi-norm triangle inequality.
+For w>=0 and ||h||2=1, Holder with s=p/(2-p) and (4) imply
+ ||Q sqrt(w)h||2^2<=||w||s. (6)
+Hence lambda1(T_r)<=||r||s<=B_K, because
+ E r^s<=K^(s-1) E[r1_{r<=K}]+tau<=K^(s-1)+tau.
+Also lambda1>=1: sqrt(r) is a unit vector and <r,P_rho r>>=(Er)^2=1 by the nonnegative Walsh spectrum. All eigenvalues of T_r are nonnegative.
+
+The active support {r>0} has a strictly positive kernel and a simple positive Perron eigenvector. If it has rank-one support, lambda2=0 and gap=1. More generally if lambda2<m^2, then lambda1>=1 gives gap>1-m^2. Otherwise lambda2>=m^2>0; choose a real second eigenvector orthogonal to the Perron vector, and write
+ h=u h_+-v h_-, u,v>0, u^2+v^2=1,
+where h_+,h_- are disjointly supported nonnegative unit vectors on the active support. No balance under the uniform measure is assumed. Set D=<h_+,T_r h_->>0 and A_+/-=<h_+/-,T_r h_+/->. The eigenvector equations give
+ A_+=lambda2+(v/u)D, A_-=lambda2+(u/v)D. (7)
+For either sign let f=sqrt(r)h_sign and split it into f_low at r<=K and f_high at r>K. Equations (6)-(7) imply
+ ||Qf||2>=sqrt(lambda2)>=m,
+ ||Qf_high||2<=||r1_{r>K}||s^(1/2)<=tau^(1/(2s))=t.
+The ordinary L2 triangle inequality gives ||Qf_low||2>=m-t=d>0. By (4), ||f_low||p>=d, while ||f_low||2<=sqrt(K). Applying (5) and dividing by positive quantities yields, for each sign,
+ ||f_low||a>=d^(1/theta) K^(-(1-theta)/(2theta)). (8)
+Positivity and the reverse inequality in (4) therefore give
+ D>=<f_{+,low},P_rho f_{-,low}>
+   >=d^(2/theta)K^(-(1-theta)/theta)
+    =d^(2s^2)K^(1-s^2). (9)
+The compression of T_r to span(h_+,h_-) has one eigenvalue lambda2 by (7); its other eigenvalue is lambda2+D/(uv). The largest Rayleigh quotient in that subspace is at most lambda1, so lambda1-lambda2>=D/(uv)>=2D. Divide by lambda1<=B_K. Combined with the earlier alternative, this proves (2). Repeated second eigenvalues are harmless. At tau=0, t=0, m=d=1/2, so there is no singular endpoint in the definitions. At tau=1, d=0 and the argument deliberately ceases to give a positive bound.
+
+3. From finite cutoff to Theta<1
+If Theta<1, choose a number tau with Theta<tau<1. By the definition as an infimum in (1), some finite K>=1 satisfies H(K)<=tau. Theorem A then applies to every L with exactly the same constants. This also supplies a finite uniform total critical-moment bound B_K; a separate total-moment assumption is not needed. The selected K cannot depend on L. The contrapositive says inf_L gap=0 implies Theta>=1. It does not assert that every family with Theta>=1 collapses.
+
+4. Escaped-moment identity and sharpness
+Here is the limit/supremum fact needed to use the audited examples. Suppose, on finite cubes, r_L->1 in probability and E r_L^s->M<infinity. For each fixed K>1, F_K(x)=x^s1_{x<=K} is bounded and continuous at1. Thus E F_K(r_L)->1. This can be seen directly by splitting a neighborhood of1 from its probability-small complement, so no common probability-space coupling or unproved dominated-convergence premise is required. It follows that
+ E[r_L^s1_{r_L>K}]->M-1. (10)
+Hence H(K)>=M-1 for every K>1, and Theta>=M-1.
+For the opposite inequality fix epsilon>0 and a finite K0>1. Choose L0 such that for every L>=L0,
+ E r_L^s<=M+epsilon,
+ E F_{K0}(r_L)>=1-epsilon.
+For every K>=K0 the corresponding tail moment is therefore at most M-1+2epsilon for L>=L0. The finite prefix L<L0 consists of finitely many finite functions, so choosing K above all of their pointwise maxima makes its tail moments zero. It follows that Theta<=M-1+2epsilon. Letting epsilon down to zero proves
+ Theta=M-1. (11)
+This explicitly handles the supremum before the cutoff limit; the fixed-K limit alone would not establish equality.
+
+The exact-budget family at source49705281f05ab18b71bd9ebc2da1985a0433340c, analysed in the audited300 source14f6c1afda58d925cdf1481ecb7791d0ade9395b, has r_L->1 in probability, E r_L^s->2, and gap tending to zero. Its finite-prefix adjustment and arbitrary prescribed floor below one are part of that actual construction. Equation (11) gives Theta=1 exactly. This establishes the sharpness boundary in Theorem B using the same source-bound family, not a newly assumed counterexample.
+For any Theta0>0, source301 at6bc50cc52599b0df915895458002a3245e78e343 supplies the stable one-spike family with M=1+Theta0, any chosen strict norm slack B>M^(1/s), and any fixed floor0<b<1. It has r_L->1 in probability, E r_L^s->M, and the stated positive limiting and uniform gaps. Applying (11) gives Theta=Theta0. These stable examples refute sufficiency of Theta>=1 for collapse and also show that Theta<1 genuinely allows failure of UI when0<Theta0<1. No exact total-budget equality is imported from301.
+
+5. Comparison with a total moment budget
+Suppose E r_L^s<=B^s for all L; necessarily B>=1 by Jensen. For K>=1,
+ E[r_L1_{r_L>K}]<=K^(1-s) E[r_L^s1_{r_L>K}]<=B^s K^(1-s).
+Write X_L=r_L1_{r_L<=K}. Then
+ E X_L>=(1-B^s K^(1-s))_+,
+ E X_L^s>=(E X_L)^s>=(1-B^s K^(1-s))_+^s
+by Jensen on the full probability space, including the zero values. Subtracting from E r_L^s gives the uniform estimate
+ H(K)<=B^s-(1-B^s K^(1-s))_+^s.
+Taking K to infinity proves (3). This derivation does not equate base-density tails with Perron stationary tails or assume the density converges in probability.
+
+6. Scope, novelty and operational boundary
+This is a quantitative refinement of the audited sign-truncation argument300: its numerical cutoff8^(-s) is relaxed to every tau<1, and the largest universal asymptotic threshold is identified by the already audited299 example. Uniform integrability remains sufficient but is not required; source301 already supplied a direct nonnecessity example. A tail hypothesis below one remains essential to this particular universal guarantee. No unproved integrability fact is packaged into a structure or asserted for Yang-Mills.
+Forward/reverse hypercontractivity, positive-kernel sign compression, Jensen and the escaped-moment identity are classical. Mossel--Oleszkiewicz--Sen (arXiv:1108.1210v5) supplies the inequality conventions. Wang (arXiv:1305.4460v6, abstract and Theorem1.1) concerns an invariant Markov operator and an operator-tail functional optimized over unit L2 inputs; this note's Theta instead concerns base-density powers across a family. No unproved change-of-measure equivalence, novelty from different notation, or contradiction of Wang's criterion is claimed. Miclo's Section6/Proposition11 norm-budget threshold2 is for the fourth power of an L2-to-L4 norm, not a raw density norm. External priority of this specialized sharp tail boundary is unresolved.
+The positive gap bound is not optimized. rho is fixed, not allowed to approach0 or1 uniformly. The total-budget small-gap bound in299 is not improved. No joint marginal-matching construction, local/fixed-range Gibbs dynamics, physical spectral gap or continuum conclusion follows. PR29 remains20/41, TermSource=0. This source is intended to replace the weaker presentation when300/301 are consolidated, not to generate another small paper. No mathematical computation, new PDF, new score or formal verification has been performed.
