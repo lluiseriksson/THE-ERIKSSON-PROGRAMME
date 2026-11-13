@@ -1,0 +1,6 @@
+
+[colab] A new version of Colab CLI is available: 0.8.0 (current: 0.7.5)
+[colab] Run 'colab update' to update.
+[colab] To silence this check, set "enable_update_check": false in ~/.config/colab-cli/settings.json
+
+{"status": "TWO_FRESH_MATCHING_PDFS_RENDERED_PENDING_ALL_PAGE_VISUAL_AND_FIRST_EXACT_PDF_ASSESSMENT", "archive": "/content/tep307-build-a-results.zip", "archive_bytes": 12567559, "archive_sha256": "b078c2952867a56091a8ad452d788004348d4686d0e516a731cc8fbde11b2171"}
