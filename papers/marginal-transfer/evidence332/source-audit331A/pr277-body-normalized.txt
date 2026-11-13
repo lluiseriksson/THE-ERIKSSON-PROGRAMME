@@ -1,0 +1,5 @@
+Derive an explicit achievable top-two spectral profile for k/sqrt(L) tending to any fixed positive C, using odd Fourier erasure at a fixed sufficiently large tilt-to-degree ratio. The complete proof retains the quartic transfer loss, proves the correction and positivity margins, and restores the exact critical norm cap with a prescribed floor.
+
+The achieved normalized gap tends to min(1-rho,1-exp(-gamma K^2 C^2)); this is a construction and upper profile, not a universal lower bound or optimality claim. The universal finite-C question remains open. This belongs in the existing grouped marginal-transfer work; no standalone corollary paper or changes to frozen327/329/330.
+
+Validation: full analytical argument and twelve fixed adverse checks. Terminal exact-source audit pending; no executable mathematics, local compilation, formal verification, historical novelty clearance, independent derivation or PDF rating is claimed.
