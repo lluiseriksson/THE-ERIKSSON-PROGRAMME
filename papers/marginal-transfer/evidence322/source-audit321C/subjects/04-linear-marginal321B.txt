@@ -1,0 +1,59 @@
+SOURCE321B -- all positive linear marginal fractions force critical-budget rigidity
+Author: Lluis Eriksson with disclosed OpenAI/Codex assistance.
+Status: new analytical candidate, not audited, compiled or published. Supersedes the strength of the provisional sufficient threshold321A, whose bytes are preserved unchanged. This is part of the joint marginal/moment work319, not a separate small-corollary paper. No historical priority or independent assessment is claimed.
+
+QUESTION
+Does every fixed positive linear fraction of exactly uniform weighting-law marginals force spectral rigidity under a dimension-independent critical moment budget? The following argument answers yes, conditional on the correctly applied published Kirshner--Samorodnitsky moment bound. It leaves the sublinear transition unresolved.
+
+DEFINITIONS
+Let u_L be uniform probability on {-1,1}^L, with Walsh characters chi_A. Let0<rho<1, s=(1+rho)/(1-rho)>1, p=2s/(s-1)=1+1/rho>2, Q=P_sqrt(rho). The noise operator obeys P_t chi_A=t^|A| chi_A. Let r_L>=0, E r_L=1. Set S_L=Q M_rL Q and T_L=M_sqrt(rL) P_rho M_sqrt(rL). They have identical eigenvalues including zeros by the square AA*/A*A identity. Define gap(T_L)=1-lambda2/lambda1, with a second eigenvalue including zero multiplicity. Mean one gives lambda1>=1. All norms use u_L.
+
+PUBLISHED INPUT AND ATTRIBUTION
+Naomi Kirshner and Alex Samorodnitsky, A moment ratio bound for polynomials and some extremal properties of Krawchouk polynomials and Hamming spheres, arXiv1909.11929v1, Theorem1.3 and Proposition2.7.
+https://arxiv.org/html/1909.11929v1
+https://arxiv.org/pdf/1909.11929
+For fixed p>2, their continuous function psi(p,x), x in[0,1/2], bounds every homogeneous Walsh-degree j polynomial f, j<=L/2, by
+ ||f||_p <=2^(L psi(p,j/L)/p)||f||_2.
+Its value at0 is0, its right derivative there is(p/2)log2(p-1), and it is strictly concave. Consequently
+ Delta_p(x)=x log(p-1)/2 -(log2/p)psi(p,x)>0 for0<x<=1/2,
+with Delta_p(0)=0. Here bare log is natural logarithm, while log2 in the derivative means logarithm base2; in (log2/p), log2 means log(2), the constant. To avoid this typographic ambiguity below write ell=ln(2): Delta_p(x)=x ln(p-1)/2-ell psi(p,x)/p.
+This moment inequality and its strict improvement over ordinary hypercontractivity are prior results, not new claims of this note. Parent has read the exact theorem/proposition statements and nearby definitions; not the entire69-page proof. They are used as an explicit external theorem.
+
+THEOREM
+Suppose ||r_L||_s<=B for a fixed finite B, and every marginal of mu_L=r_L u_L on at most k_L coordinates is exactly uniform. If liminf_L k_L/L>0, then ||S_L-P_rho|| tends to zero exponentially up to a square-root prefactor. In particular lambda1(T_L)->1,lambda2(T_L)->rho and gap(T_L)->1-rho.
+This applies at the sharp critical norm budget B=2^(1/s). No uniform integrability, positive floor, uniform L-infinity bound or supercritical moment assumption is required. It concerns weighting-law marginals, not Perron stationary marginals or local dynamics.
+
+PROOF
+1. Endpoint decay on a high-degree tail.
+For0<=x<=1 let y=min(x,1-x) and
+ a_p(x)=x ln(p-1)/2-ell psi(p,y)/p
+       =Delta_p(y)+(x-y)ln(p-1)/2.
+This is continuous on[0,1]. It is strictly positive for every x>0: when0<x<=1/2 use Delta_p(x)>0; when1/2<x<1 use Delta_p(1-x)>0 and the nonnegative remaining term; at x=1 the value is ln(p-1)/2>0. Hence for every fixed gamma>0 with gamma<=1,
+ a_gamma=min_{gamma<=x<=1} a_p(x)>0.
+Only compactness and strict positivity are used; no uniform quadratic deficit near x=0 is assumed.
+Decompose an arbitrary h into orthogonal homogeneous Walsh levels h_j. For j<=L/2, the published bound and rho=1/(p-1) give
+ ||Q h_j||_p<=exp[-L a_p(j/L)]||h_j||_2.
+For j>L/2, multiplication by chi_[L] maps h_j to a homogeneous polynomial of degree L-j and preserves every Lp norm. Applying the same published inequality at L-j and multiplying by rho^(j/2) proves exactly the same displayed estimate. This is a norm identity; Q is not asserted to commute with multiplication by parity.
+Let H_gamma be the projection onto degrees j>=gamma L. By the triangle inequality and Cauchy--Schwarz on the at most L+1 orthogonal levels,
+ ||Q H_gamma h||_p <=sqrt(L+1) exp(-L a_gamma)||h||_2.
+Thus ||Q H_gamma||_(2->p)<=sqrt(L+1)exp(-L a_gamma). Ordinary endpoint hypercontractivity also gives ||Q||_(2->p)<=1.
+
+2. Exact marginals erase the low-low block.
+Write h=r_L-1 and B_L=Q M_h Q=S_L-P_rho. Exact marginal matching means hhat(A)=0 for all|A|<=k_L, including the constant coefficient by normalization. Choose m=floor(k_L/2) and let Pi project onto degrees<=m. The(A,C) entry of Pi B_L Pi is rho^((|A|+|C|)/2)hhat(A symmetric_difference C), which is zero since |A symmetric_difference C|<=2m<=k_L. Therefore Pi B_L Pi=0.
+Choose fixed c with0<c<liminf k_L/L; for all sufficiently large L, k_L>=cL. Set gamma=c/2. The complementary projection H=I-Pi has degrees j>=m+1>=k_L/2>=gamma L, so ||QH||_(2->p)<=sqrt(L+1)exp(-L a_gamma).
+
+3. Bilinear Holder estimate and actual spectra.
+The exact algebraic identity B_L=H B_L+Pi B_L H follows from Pi B_L Pi=0. For unit u,v, Holder with1/s+2/p=1 bounds
+ |<u,H B_L v>|=|E[h(QHu)(Qv)]|
+ <=||h||_s ||QHu||_p ||Qv||_p
+ <=(B+1)sqrt(L+1)exp(-L a_gamma).
+Likewise |<u,Pi B_L H v>| uses QPi u and QHv; ||QPi||_(2->p)<=1 because Pi is an L2 contraction followed by Q. Consequently
+ ||S_L-P_rho||<=2(B+1)sqrt(L+1)exp(-L a_gamma).
+For each finite L the comparison is between self-adjoint operators in the same finite dimension. P_rho has its two leading eigenvalues1,rho. The norm perturbation bound therefore yields the two actual eigenvalue limits, not merely trial Rayleigh quotients. The identical T_L spectrum and lambda1>=1 give the normalized gap limit.
+
+SCOPE AND UNRESOLVED REGIME
+Together with audited source319, this separates collapse under every fixed power L^alpha,alpha<1/2, from rigidity under every fixed positive linear marginal fraction, at the same critical moment budget. It does not locate the intervening sublinear threshold or prove a square-root threshold. The phrase strongly concave in the cited paper is not silently promoted to a uniform quadratic modulus at zero. No necessary condition, many-mode claim, Perron-marginal assertion, physical mass gap, continuum result or formal verification follows.
+The elementary321A interpolation proof remains valid as a narrower sufficient result; its fractional lower bound is no longer needed for this stronger argument. Consolidate the useful theorem and counterexample in one manuscript, with clear attribution of the external moment bound.
+
+FIXED ADVERSE CHECKS FOR AUDIT
+C1 uniform-probability normalization and p=1+1/rho; C2 exact published theorem scope for realp>2/homogeneous degrees; C3 continuity/strict deficit includingx=1/2; C4 parity reduction of degrees>L/2 andendpointx=1; C5 compact minimum positive only forfixedgamma; C6 level-sum sqrt(L+1) factor andL2 orthogonality; C7 exact marginals/constant cancellation/low-lowblock; C8 m+1 degree cutoff andfixedc; C9 signed Holder crossblock bound andprojection norms; C10 actualtop-two perturbation/support; C11 novelty/weightinglaw/physical limits; C12 no inferredsublinearquadratic rate. Falsify by a failed check or counterexample. Abandon stronger sublinear extrapolation if unsupported; preserve actual negative results.

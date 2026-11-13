@@ -1,0 +1,172 @@
+SOURCE319A: growing exact marginals at the critical moment budget
+Author: Lluis Eriksson, with disclosed OpenAI/Codex assistance.
+Status: analytical candidate for audit, not a published paper or formal proof.
+Frozen predecessor: d7e35107e2826d7a9342bdce30b50a3a725ec3dc,
+papers/marginal-transfer/manuscript318A.tex, Theorems13 and23. Exact318PDF
+ad708fafb3de9fc83cd2dc05443f34b2792da94a20d0bf1b1cd7b8ca41b9340c
+is a separate artifact; its assessment does not assess this note.
+
+QUESTION AND SCOPE
+Can an increasing number of exactly uniform labelled marginals, together with
+the sharp critical moment cap, prevent transfer-gap collapse? We connect the
+previously separate marginal and moment constructions. The answer below is
+negative even for every power L^alpha with alpha<1/2. A positive result under
+critical-power uniform integrability explains precisely which extra condition
+this counterexample violates. The remaining linear-order regime is not settled.
+All operators are finite Boolean transfer operators, not a local heat-bath
+chain, a fixed-range Gibbs model, a physical mass gap or a continuum limit.
+No statement about the Perron stationary marginals is made for this family.
+
+DEFINITIONS
+Use uniform probability u_L on {-1,1}^L and Walsh characters chi_S. Let
+0<rho<1, s=(1+rho)/(1-rho)>1, B*=2^(1/s), and Q=P_sqrt(rho), where
+P_t chi_S=t^|S| chi_S. For r>=0, E r=1, set
+T_r=M_sqrt(r) P_rho M_sqrt(r), S_r=Q M_r Q.
+They have identical spectra, including zeros, by the square AA*/A*A identity.
+gap(T_r)=1-lambda2(T_r)/lambda1(T_r). On the active support r>0 the
+kernel is strictly positive, so its Perron root is simple. If support is one
+point lambda2=0; otherwise the usual second eigenvalue is used.
+The probability law mu_L=r_L u_L has exactly uniform marginals on every set
+of at most k coordinates iff E[r_L chi_S]=0 for 1<=|S|<=k. This Fourier
+criterion and erasing low coefficients are classical, not claimed as new.
+
+THEOREM A (critical cap survives growing exact marginal matching)
+Fix 0<alpha<1/2 and 0<b<1. For every L>=1 there is a strictly positive
+mean-one density r_L with
+  r_L>=b, ||r_L||_s<=B*,
+  E[r_L chi_S]=0 for 1<=|S|<=floor(L^alpha),
+while lambda1(T_rL),lambda2(T_rL)->1 and gap(T_rL)->0.
+Thus the exact worst-case critical norm boundary B* is unchanged even under
+these growing-order marginal constraints and any prescribed floor b<1.
+The uniform gap below B* follows from the predecessor's sign bound
+2 lambda2^s<=E r^s and lambda1>=1; it does not need the marginal constraints.
+We do not assert linear-order matching, an optimal growth order, many slow
+modes, or Perron-stationary marginal matching for this construction.
+
+PROOF
+1. Balanced critical tilt, with its actual leading eigenvalues.
+Choose a=3/8-alpha/4, so 1/4<a<(1-alpha)/2, and fixed sufficiently small
+d>0. Set delta_L=d L^(-a), n(delta)=(((1+delta)^s+(1-delta)^s)/2)^(1/s),
+R_L(x)=product_i [(1+delta_L x_i)/n(delta_L)], and m_L=E R_L=n(delta_L)^(-L).
+Use d<1, so all factors are positive. The one-site matrix for Q M_R Q is
+H(delta)=n(delta)^(-1) [[1,delta sqrt(rho)],[delta sqrt(rho),rho]].
+Its top eigenvalue is
+kappa(delta)=[1+rho+sqrt((1-rho)^2+4rho delta^2)]/[2n(delta)].
+Let D=diag(1,rho) and tau(delta)=||D^(1/2)H(delta)^(1/2)||. Direct 2x2
+eigenvalue calculation gives
+tau(delta)^2=[1+rho^2+sqrt((1-rho^2)^2+4rho^2 delta^2)]/[2n(delta)].
+Taylor expansion at zero, for fixed rho, gives
+ log n(delta)=(s-1)delta^2/2+O(delta^4),
+ log kappa(delta)=O(delta^4),
+ log tau(delta)=-rho delta^2/[2(1-rho^2)]+O(delta^4).
+These are the same explicit quantities as predecessor Theorems12-13; no
+numerical experiment is used. Here L delta_L^4=d^4 L^(alpha-1/2)->0 and
+L delta_L^2=d^2 L^(1/4+alpha/2)->infinity. Hence
+c_L=kappa(delta_L)^(-L)->1, m_L->0, Z_L=1+c_L m_L->1.
+Let v_L=(1+c_L R_L)/Z_L, a positive mean-one density.
+The unnormalized S operator is F_L=P_rho+c_L H(delta_L)^(tensor L).
+Both summands have top eigenvalue one. The Gram operator formed by their
+positive square roots has diagonal blocks those two summands and cross-block
+norm eta_L=sqrt(c_L) tau(delta_L)^L->0. Its block-diagonal counterpart has
+its two leading eigenvalues exactly one. The variational eigenvalue bound
+therefore places its first two eigenvalues in [1-eta_L,1+eta_L]. The nonzero
+Gram eigenvalues equal those of F_L. For large L these top two eigenvalues
+are positive and are actual eigenvalues of F_L, not extra Gram zeros.
+Consequently lambda1(S_vL),lambda2(S_vL)->1 after division by Z_L.
+
+2. Critical norm of the tilt.
+E R_L^s=1 exactly. For each fixed 0<t<s,
+ log E R_L^t= -t(s-t)L delta_L^2/2+O(L delta_L^4)->-infinity.
+Set theta=min(1,s/2). The elementary mixed-power bound, for y>=0,
+ 0<=(1+y)^s-1-y^s<=s 2^(s-1)(y^theta+y^(s-theta))
+follows from the mean-value theorem on y<=1 and the reciprocal substitution
+on y>=1. Both theta and s-theta lie strictly between zero and s. Apply it
+to y=c_L R_L. Since c_L->1, it gives E(1+c_L R_L)^s->2, hence
+||v_L||_s->B*. This is a moment calculation, not convergence-in-probability
+substituted for moment convergence.
+
+3. Erase the low-degree coefficients with an L-infinity-small correction.
+The exact Fourier expansion is R_L=m_L sum_S delta_L^|S| chi_S. Put
+k_L=floor(L^alpha) and
+ p_L=m_L sum_{1<=|S|<=k_L} delta_L^|S| chi_S.
+Then E p_L=0 and
+ ||p_L||_infinity <=m_L sum_{j=1}^{k_L} binom(L,j) delta_L^j
+                 <=m_L k_L L^k_L ->0.
+Indeed log m_L=-(s-1)d^2 L^(1/4+alpha/2)/2+O(L delta_L^4), whereas
+log k_L+k_L log L=o(L^(1/4+alpha/2)); alpha<1/2 is essential to this
+comparison. The estimate is deliberately crude and does not establish an
+optimal marginal order. Define
+ w_L=[1+c_L(R_L-p_L)]/Z_L.
+It has mean one and all its nonconstant Fourier coefficients through degree
+k_L vanish exactly. For sufficiently large L,
+ w_L >=[1-c_L||p_L||_infinity]/Z_L ->1 from a possibly smaller side.
+Thus it is strictly positive and eventually at least any prescribed b<1.
+The perturbation satisfies
+ ||w_L-v_L||_infinity <=c_L||p_L||_infinity/Z_L ->0,
+so ||w_L||_s->B*. Linearity gives
+ ||S_wL-S_vL|| <=||w_L-v_L||_infinity ->0,
+because ||Q||=1. Therefore the two leading eigenvalues of S_wL tend to one.
+Unlike a generic Fourier erasure, here positivity is paid for by the existing
+uniform baseline and the explicitly vanishing sup-norm correction.
+
+4. Enforce the exact critical cap without destroying the marginals.
+Write B_L=||w_L||_s, which tends to B*>1. For the positive large-L part set
+ eps_L=0 if B_L<=B*, and eps_L=(B_L-B*)/(B_L-1) otherwise.
+The latter denominator is positive, 0<eps_L<1, and eps_L->0. Define
+ r_L=(1-eps_L)w_L+eps_L.
+Mean one, positivity, the eventually prescribed floor and the exact Fourier
+zeros persist. Minkowski gives ||r_L||_s<=(1-eps_L)B_L+eps_L<=B*.
+Endpoint Boolean hypercontractivity and Holder yield, for signed f,
+ ||Q M_f Q||<=||f||_s,
+since ||Q h||_(2s/(s-1))<=||h||_2. Hence
+ ||S_rL-S_wL||<=eps_L||w_L-1||_s<=eps_L(B_L+1)->0.
+Both actual leading eigenvalues still tend to one. Choose one finite L0 beyond
+all the stated positivity and floor conditions and replace every earlier
+r_L by the constant one. This satisfies all constraints in every dimension
+and preserves the limits. Strict positivity gives a positive individual gap
+at every finite L, while its limit is zero. This completes the construction.
+
+THEOREM B (spectral rigidity with critical-power uniform integrability)
+Suppose k_L->infinity, r_L>=0, E r_L=1, and all nonconstant Fourier
+coefficients through k_L vanish. If
+ lim_{M->infinity} sup_L E[r_L^s 1_(r_L>M)]=0,
+then ||S_rL-P_rho||->0 and gap(T_rL)->1-rho.
+More quantitatively, choose any rho<sigma<1, put t=sqrt(rho/sigma)<1,
+m_L=floor(k_L/2), and eta_M=sup_L||r_L 1_(r_L>M)||_s. Then
+ ||S_rL-P_rho||<=2(M+1)t^(m_L+1)+2 eta_M.
+This is a sufficient condition, not a necessary characterization.
+
+PROOF
+Let Pi be the orthogonal projection onto Walsh degrees at most m_L. For
+h=r_L-1 the matrix entries of Q M_h Q are
+rho^((|A|+|B|)/2) hhat(A symmetric_difference B). Thus Pi(Q M_h Q)Pi=0.
+Decompose h=h_b+h_t, where h_b=r_L 1_(r_L<=M)-1 and h_t=r_L 1_(r_L>M).
+Set Qsigma=P_sqrt(sigma), D=P_t. The bounded part is
+B_b=Q M_hb Q=D A_b D, A_b=Qsigma M_hb Qsigma, ||A_b||<=M+1.
+D commutes with Pi and ||D(1-Pi)||<=t^(m_L+1). The identity
+ B_b-Pi B_b Pi=(1-Pi)B_b+Pi B_b(1-Pi)
+gives norm at most 2(M+1)t^(m_L+1). For B_t=Q M_ht Q, the endpoint
+Holder/hypercontractive bound above gives ||B_t||<=eta_M and hence
+||B_t-Pi B_t Pi||<=2 eta_M. Since Pi(B_b+B_t)Pi=0, summing proves the
+bound. First take L->infinity at fixed M, then M->infinity. Ordinary
+self-adjoint perturbation gives lambda1(S_rL)->1 and lambda2(S_rL)->rho,
+so the gap limit follows. No interchange of the two limits is needed.
+Theorem A disproves replacing this UI hypothesis by the mere critical cap2.
+
+RELATED STRICT-EXPONENT ESTIMATE
+If q>s, ||r_L||_q<=B and k_L->infinity, choose
+rho<sigma<=(q-1)/(q+1), t=sqrt(rho/sigma), m_L=floor(k_L/2).
+Then ||S_rL-P_rho||<=2(B+1)t^(m_L+1). Indeed A=Qsigma M_(r_L-1)
+Qsigma has norm at most ||r_L-1||_q<=B+1 by Holder/hypercontractivity,
+its Pi block vanishes by Fourier support, and the same D decomposition
+proves the estimate. This auxiliary statement is grouped with TheoremsA-B,
+not proposed as a separate paper. The letter q here is a moment exponent,
+not the hypercontractive q=1+rho used in the predecessor.
+
+MODEL AND VERIFICATION CONTEXT
+This is a parent-authored analytical candidate using previous explicit
+constructions plus classical Fourier erasure. Its separate exact-source
+review is still pending. No Lean, numerical oracle or executable mathematics
+has been run; no exact-PDF score, independent reviewer or historical priority
+is claimed. No change to PR29 20/41 or TermSource=0 follows. The intended
+publication unit is a grouped extension after audit, not three small papers.

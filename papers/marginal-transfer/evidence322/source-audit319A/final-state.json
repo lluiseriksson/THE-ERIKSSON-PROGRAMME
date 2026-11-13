@@ -1,0 +1,69 @@
+{
+  "utc": "2026-11-13T19:07:54.1180460Z",
+  "head": "88c8ba46455b53cffe951270c8760bf94c806ad3",
+  "parent": "1e6b0d1f46efad64aae166c3a0f2a36481e6efa5",
+  "status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "pr_head": "88c8ba46455b53cffe951270c8760bf94c806ad3",
+  "body_bytes": 1314,
+  "body_sha256": "5647b6a9efa60cbba9ca5cdba3c58f629fd19d9d7ef311115168473f10544ed3",
+  "head_and_body_unchanged": true,
+  "subjects": [
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\marginal-moment319\\source319A.txt",
+      "bytes": 9806,
+      "sha256": "a26ed41f43e038238636fb026fc71bc2302b41a08c08a97ffa6f06ac3d3cc936",
+      "unchanged": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\marginal-moment319\\checks319.txt",
+      "bytes": 1237,
+      "sha256": "55dfbe337867b304d16d9e77b1bb647059dd4373770494b2417677f5a396d934",
+      "unchanged": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\marginal-moment319\\literature319.md",
+      "bytes": 1928,
+      "sha256": "e3fbfe570aa118e71a3c58b2bb43ec87a40e52302dec1cc76ad88aef113f2c74",
+      "unchanged": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "unchanged": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\LEEME.md",
+      "bytes": 17126,
+      "sha256": "5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-319\\pr266-initial.json",
+      "bytes": 1547,
+      "sha256": "6d465224df5ed0294457d252958667a37f293cb38ab48a19577cd8bcd529a68a",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-319\\pr266-normalized-body.txt",
+      "bytes": 1314,
+      "sha256": "5647b6a9efa60cbba9ca5cdba3c58f629fd19d9d7ef311115168473f10544ed3",
+      "unchanged": true
+    }
+  ],
+  "all_8_filesystem_subjects_unchanged": true,
+  "mathematical_execution": false,
+  "formal_verification": false,
+  "PDF_assessment": false,
+  "historical_priority_established": false,
+  "verdict": "PASS exact-source analytical checks1-12; bounded primary-literature comparison only"
+}

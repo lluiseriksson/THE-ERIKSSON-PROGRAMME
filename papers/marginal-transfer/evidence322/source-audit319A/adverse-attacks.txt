@@ -1,0 +1,24 @@
+Analytical attacks attempted; none were executed as numerical or symbolic code.
+1. Probability versus counting normalization:checked orthonormal Walsh basis and mean-one density; no missing2^L factor.
+2. Zero-support and Gram zeros:checked square spectral equivalence and positive top-two Gram bounds before identification; no fake second eigenvalue.
+3. Wrong tau cross factor:derived D^(1/2)H D^(1/2) with off-diagonal rho delta and diagonal rho^2; coefficient and sign correct.
+4. Critical cancellation error:derived the two quadratic coefficients and cancellation of log kappa; negative log tau remains.
+5. alpha near1/2:verified e-alpha>0 but tends to0; constants may require huge L, which is allowed. The endpoint itself is not proved or claimed.
+6. Fractional real-s moments:used fixed interior exponents and the reciprocal mixed-power estimate, not integer binomial expansion at large y.
+7. Negative density after erasure:uniform baseline minus sup-small p gives eventual positivity; early negative candidates are never used as final densities.
+8. Loss of normalization/zeros during erasure or dilution:constant coefficient unchanged, convex mixing with1 preserves all nonconstant zeros exactly.
+9. Cap only asymptotic:overshoot dilution enforces <=B* at each large L; finite prefix1 enforces it at every earlier L.
+10. b arbitrarily near1:scalar lower bound tends to1; one L0 works for each fixed b<1. b=1 would force uniformity and is excluded.
+11. Huge sup peaks invalidating perturbation:erasure uses sup norm only on its small correction; dilution uses the signed Ls sandwich bound, not sup norm of w.
+12. Changed dimension invalidating eigenvalue comparison:each comparison is within the same finite dimension L, and Weyl bounds have no dimension constant.
+13. Truncation losing low-degree zeros in B:individual truncated pieces need not have zero blocks; subtract both Pi blocks and use cancellation only for their sum.
+14. Missing factor in projection identity:expanded(1-Pi)B+Pi B(1-Pi)=B-Pi B Pi exactly; two norm terms justify coefficient2.
+15. Noise-factor order and degree off-by-one:Q=P_t Q_sigma, both commute with Pi, and the first excluded degree is m+1.
+16. UI limit exchange:fixed M first, L second, then M->infinity; no choice of a dimension-dependent cutoff without control.
+17. Critical cap falsely implying UI:A has s-moment limit2 and convergence in probability to1, so UI fails; no contradiction with B.
+18. Strict-exponent interval empty:q>s makes(q-1)/(q+1)>rho; endpoint sigma is allowed by ordinary hypercontractivity.
+19. Perron marginals substituted for weighting marginals:source explicitly makes only the latter claim.
+20. Classical method misrepresented as new:directly read primary Fourier correction passages; credit is accurate. No inspected same-joint theorem found, but absence is not priority clearance.
+21. Generalized unsupported conclusions:no linear-order endpoint, many-mode, local-dynamics, continuum, formal or exact-PDF claim accepted.
+22. Minor wording issues retained:positive cutoff M implicit in B; 'cap2' is moment rather than norm; m_L reused by local section. These are nonblocking within the proof's stated/intended scope.
+No failed candidate/result was erased or revised. A mathematical PASS here leaves previous operational FAIL verdicts intact.

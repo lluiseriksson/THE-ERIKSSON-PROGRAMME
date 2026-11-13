@@ -1,0 +1,15 @@
+{
+  "utc": "2026-11-13T20:07:14.1188627Z",
+  "head": "c4377edace1f883a2061fe9b2c0ebfe40ce02f9d",
+  "pr_head": "c4377edace1f883a2061fe9b2c0ebfe40ce02f9d",
+  "base": "e75c4d9a8beb2e0cdb28bebc5229a3c8b7bb513f",
+  "body_bytes": 980,
+  "body_sha256": "2626f1e497bc032f68f14e315a945eb742fb9b85a00da8b8855a713892e3cb54",
+  "status": [
+    "?? prepare311.py",
+    "?? prepare314.py"
+  ],
+  "changed_files": [
+    "research/quadratic-deficit323/source323A.txt"
+  ]
+}

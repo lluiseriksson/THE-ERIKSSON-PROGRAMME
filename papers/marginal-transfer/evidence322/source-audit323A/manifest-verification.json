@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-13T20:14:08.8534172Z",
+  "all_match": true,
+  "entries": 17,
+  "manifest_raw_sha256": "ece1e7aed941af18a10ba2b52333b70fae81f9ea834cf46767fd16609232ba5c",
+  "exclusions": [
+    "MANIFEST.json",
+    "manifest-verification.json"
+  ]
+}

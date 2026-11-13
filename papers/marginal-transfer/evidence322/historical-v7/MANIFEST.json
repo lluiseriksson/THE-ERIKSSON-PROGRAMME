@@ -1,0 +1,37 @@
+{
+  "manifest_version": "1",
+  "assessment": "single first exact-PDF numerical assessment",
+  "input_manifest_raw_sha256": "457c2534cd1c848255a951e2dc640cb36e7c7b29a344730df1d5c0c046cbb092",
+  "canonical_pdf_raw_sha256": "ad708fafb3de9fc83cd2dc05443f34b2792da94a20d0bf1b1cd7b8ca41b9340c",
+  "files": [
+    {
+      "path": "full-scientific-report.txt",
+      "bytes": 30897,
+      "raw_sha256": "3f91b2baf0e26002e40820273508cc06d564020288a73926fa076d5af0a08921"
+    },
+    {
+      "path": "native-response.json",
+      "bytes": 5994,
+      "raw_sha256": "98474a9949b0493b2b3ea49b465f01ba49b5293036eaea884debf032b2251e3d"
+    },
+    {
+      "path": "model-context.json",
+      "bytes": 6669,
+      "raw_sha256": "564acc34ea00e08e7995fad3dd0e94673f2eaf03974cc6d328169c45f1eb6547"
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 2212,
+      "raw_sha256": "ac012c055be6e880be078642f470fbc260257d848dee3271c7b75d6111812c34"
+    }
+  ],
+  "validation": {
+    "native_all_template_fields_present": true,
+    "native_identifier_and_pdf_binding_match": true,
+    "json_files_parse": true,
+    "page_coverage_count": 33,
+    "formal_schema_available": false,
+    "independence_enum_acceptance": "The supplied response-schema.json is an example object, not a JSON Schema with enums. unknown is used truthfully; external intake enum acceptance was not tested."
+  },
+  "self_hash": "Excluded to avoid self-reference; final handoff records the MANIFEST.json raw hash."
+}

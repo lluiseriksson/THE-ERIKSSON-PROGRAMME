@@ -1,0 +1,6 @@
+Primary URL https://arxiv.org/html/1909.11929v1
+Raw HTTP HTML downloaded to subjects/kirshner-samorodnitsky-1909.11929v1.html using Invoke-WebRequest. No subject code execution. File raw hash/bytes in MANIFEST.json.
+Read through web tool: probability/Fourier definitions and ordinary hypercontractivity; Theorem1.3 upper moment statement; definitions2.1.3/2.1.4 and Lemma2.5; Propositions2.6/2.7; proof2.6 (including Lemma5.1 and final entropy cancellation); proof2.7 including p=2, third assertion, Lemma5.3; Theorem1.3 upper-bound tensorization reduction using Theorem4.1/Lemma4.2. Full external theorem auxiliary-proof recertification is not claimed.
+Web-rendered reference locations: 197-222,389-441,903-923,1474-1606. Stable identifiers and mathematical section names, rather than rendered line numbers alone, identify cited facts.
+Nonblocking observed typo: raw HTML math id S5.Ex227.m1 changes the minus to a plus before the same limiting logarithm. The subsequent S5.Ex228.m1 has the correct positive derivative. Candidate coefficient/derivative independently rederived analytically.
+A combined capture/download shell request was rejected before launch: blocked by policy. No further reason was provided. Simple native Git redirects and a separate HTTP download then succeeded. No math/test/runtime executed. Original failure not treated as mathematical failure.

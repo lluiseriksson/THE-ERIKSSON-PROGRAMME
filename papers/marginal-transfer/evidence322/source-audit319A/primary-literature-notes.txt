@@ -1,0 +1,20 @@
+Targeted primary-source reading,2026-11-13; no complete third-party text retained. These are auditor paraphrases and reading-scope observations, not original-paper hash captures.
+
+Alon, Andoni, Kaufman, Matulef, Rubinfeld and Xie, Testing k-wise and Almost k-wise Independence.
+https://www.mit.edu/~andoni/papers/kwise.pdf
+Read title/abstract, Fact2.3, Section3.1 theorem statement and proof outline, and coefficient-erasure/positivity-repair passages on PDF pages4-5. Fact2.3 identifies exact k-wise uniformity through vanishing biases. Their proof explicitly deletes low Fourier coefficients, acknowledges possible negative values, and repairs positivity by mixing with k-wise independent laws. Thus erasure and positivity repair are prior methods; density versus probability-mass normalization must be converted correctly. These directly read passages do not state319's joint transfer-spectrum/critical-norm/fixed-floor assertion. This limited comparison is not an exhaustive implication or priority search.
+
+Rubinfeld and Xie, Testing Non-uniform k-wise Independent Distributions over Product Spaces.
+https://people.csail.mit.edu/ningxie/papers/RX09.pdf
+Read abstract/introduction and AppendixA.2, including CorollaryA.2 and the correction description on PDF pages30-31. The appendix sets low generalized Fourier coefficients to zero and mixes with uniform measure to repair negativity while preserving the zeros. Its main advertised setting extends testing/characterization to product spaces and nonuniform marginals. These read results support the candidate's classical-method attribution; no same joint critical transfer threshold was found in the inspected statements. No claim to have checked every theorem or consequence.
+
+Wang and Gohari, Ribbons from Independence Structure: Hypercontractivity, Phi-Mutual Information, and Matrix Phi-Entropy, arXiv2601.18516v1.
+https://arxiv.org/html/2601.18516v1
+https://arxiv.org/abs/2601.18516
+Read abstract/introduction, Section3.1 Theorem1 and its displayed proof/counterexample, Theorem2, Section3.2 Theorem3, and statements of matrix results12-13. Their k-wise-independence ribbon region has coordinate sum at most k; their sharpness example uses polynomial evaluations over a prime field. These are joint-distribution ribbon statements. I found no statement in these inspected portions fixing the multiplicative Boolean transfer operator, the mean-one critical s-norm cap, a floor b<1 and its first two eigenvalues tending to1. This is a targeted distinction, not proof of non-implication or historical novelty. Simple text-search absence for spectral/eigen was not used as a novelty certificate.
+
+Mossel, Oleszkiewicz and Sen, On Reverse Hypercontractivity, arXiv1108.1210v5.
+https://arxiv.org/pdf/1108.1210
+Read version metadata, opening equation(1.1), and its tensorization statement on PDF page1. This recalls ordinary Boolean hypercontractivity for all real functions with the usual p/q noise relation. It supports the endpoint and strict-exponent operator estimates in319;319 claims no new hypercontractive inequality. The new note does not require the paper's reverse inequalities for TheoremsA-B.
+
+External priority remains unestablished. None of these bounded readings supplies a numerical novelty score, an exhaustive bibliography or a claim that the joint theorem cannot already exist elsewhere.

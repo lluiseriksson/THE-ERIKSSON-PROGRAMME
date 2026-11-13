@@ -1,0 +1,61 @@
+{
+  "paper_id": "ARR-2026-7KV9Y9ASX48H7A7N",
+  "version": "v7",
+  "version_id": "arr:version:a96788cf-8f70-4ddf-b94c-175b0b843f8f",
+  "canonical_sha256": "ad708fafb3de9fc83cd2dc05443f34b2792da94a20d0bf1b1cd7b8ca41b9340c",
+  "provider": "OpenAI",
+  "model_id": "Codex; served backend identifier unavailable; requested gpt-6-astra",
+  "assessed_at": "2026-11-13T18:58:37+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "unknown",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.60,
+  "overall_stars": 5,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "All 33 PDF pages and every numbered claim/proof were read. Code/interlacing, actual Gram spectra, exact critical-budget dilution, attained strict-tail reserve and normalized-sign necessity survived analytic checking. No invalidating mathematical objection identified; a single AI review remains fallible."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Theorems 13, 17, 21 and 23 explicitly handle zeros, unbalanced sign norms, noninteger moments, dyadic probabilities, exact mean/floor constraints and finite prefixes. Theorem 20 has a nonfatal wrong equation reference; repeated intermediate regimes obscure the final hierarchy."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Primary checks confirm classical forward/reverse hypercontractivity, sign-region splitting, good primal/dual codes and related Markov/Schrodinger gap results. The exact multiplicative Boolean-cube classifications are plausible novelty candidates. External priority and exhaustive non-implication were not established."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "Sharp specialized boundaries and a useful arbitrary-density escape argument; the joint stationary/marginal obstruction is informative. No application to a natural fixed-range Gibbs family, local dynamics, continuum model or recognized major open problem is demonstrated."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Complete proofs, exact TeX, PDF extraction and all 33 page renders were supplied; all 44 input hashes/sizes and PDF hash were verified. Independent regeneration of PDF derivatives, mathematical computation, formal verification and human review were not performed."
+    }
+  },
+  "summary": "The exact v7 PDF gives a convincing finite-dimensional synthesis for positive Ising transfer congruences: code-based marginal indistinguishability with many slow modes, strict density-moment regimes, the critical norm boundary 2^(1/s), and a matching attained strict-tail threshold 1+s^s(1-K)K^(s-1)/(s-1)^(s-1) for (s-1)/s<K<1. Theorem 23 supplies an arbitrary-density necessity argument rather than inferring universality from its examples. No main theorem was invalidated in this analytical reading. Minor revision is warranted for the incorrect p.22 equation reference and presentation. External priority and broad relevance remain unresolved. Score 4.60/10 on the supplied Millennium scale, rounded to five stars; this is one AI assessment, not human peer review or independent validation.",
+  "strengths": [
+    "Theorem 1 controls both weighting-law and Perron-stationary labelled marginals while producing exponentially many near-leading transfer eigenvalues.",
+    "Proposition 5 explicitly separates parity heat-bath slowdown from the bounded parity transfer ratio.",
+    "Theorem 13 proves and attains the exact critical total-moment boundary with any fixed density floor below one.",
+    "Theorems 17 and 21 enforce exact finite-dimension strict-tail caps; clipping, compensation and amplitude reserve address the endpoint without hiding finite errors.",
+    "Theorem 23 combines normalized sign compression, reverse hypercontractivity and truncation to force a unit of escaped moment for arbitrary collapsing families, matching Theorem 21.",
+    "Classical ingredients, separate constructions, global-interaction scope and AI-review limitations are candidly disclosed."
+  ],
+  "weaknesses": [
+    "O1 (minor): p.22, Theorem 20 proof, exact TeX line 1679 cites equation (32) where the required mixed-power bound is equation (21).",
+    "O2 (moderate positioning reservation): exact external priority is not established by the targeted source search, and an exhaustive comparison to related quantitative spectral-perturbation theory was not performed.",
+    "O3 (moderate significance limitation): the adversarial weights are global; no natural local Gibbs, local-dynamics or physical application is supplied, and different families carry different properties.",
+    "O4 (minor presentation): the final sharp classification arrives after lengthy auxiliary results; local historical disclaimers and the audit narrative make the theorem hierarchy harder to follow.",
+    "O5 (moderate confidence limitation, not a theorem defect): served model backend/effort and technical isolation are unverified; no human or formal verification or independent PDF regeneration was performed."
+  ],
+  "potential_errors": [
+    "Definite nonfatal cross-reference error: PDF p.22, proof of Theorem 20, 'In (32) restricted to this event' should refer to equation (21), the mixed-power bound on the same page; exact TeX line 1679. Current equation (32), on p.28, is the later escape inequality and cannot be the intended source."
+  ],
+  "strong_novelty_candidates": [
+    "Exact joint linear-order marginal matching for the weight and Perron stationary law together with exponentially many exponentially slow transfer modes, subject to a fuller priority check.",
+    "The exact multiplicative Boolean-cube critical norm threshold, including equality with any fixed floor below one, subject to literature comparison.",
+    "The strict-tail endpoint construction paired with an arbitrary-density necessity theorem, yielding the exact threshold 1+g_s(K) in (s-1)/s<K<1; strongest candidate synthesis, not an established priority claim."
+  ],
+  "unresolved_material_objections": []
+}

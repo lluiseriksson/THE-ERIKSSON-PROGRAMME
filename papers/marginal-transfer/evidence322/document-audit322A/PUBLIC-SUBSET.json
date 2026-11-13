@@ -1,0 +1,525 @@
+{
+  "original_retained": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-322\\document-audit322A",
+  "representation": "Raw full report/context/assignment and original manifest, not the complete original packet",
+  "omitted": [
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "318-to-322-text-diff.txt",
+      "raw_sha256": "eb5f770c2af42c77368d91c7a1ef8e95ad028f6b84172edd707f1dcdfd7c46d1",
+      "bytes": 19024
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "auxiliary-to-embedded-diff.txt",
+      "raw_sha256": "ca820a2ac80a9e0e669c8808287aaa28a5098d746016f3ccc13bb191a617b43b",
+      "bytes": 1121
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "embedded-322-section.txt",
+      "raw_sha256": "6f22cc8ce53e3526ebdbf9ac013ff66421650ccffaeff38de8d80905e223c167",
+      "bytes": 12729
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "final-state.json",
+      "raw_sha256": "882ad94de0c6df72155ab654ebced7ed79ae94f635c0166eb5997ee589757c02",
+      "bytes": 32547
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "historical-input-retention.json",
+      "raw_sha256": "373dbcc0bda2061b851e951472b7c918e29be3b0ea6cab83fa3b1f5dee34051f",
+      "bytes": 7320
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "initial-state.json",
+      "raw_sha256": "07acb415957795b5bf0a81a51da0ceb3cc7208e91e4765b6185d35d883c01321",
+      "bytes": 37111
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "manuscript322A-final.tex",
+      "raw_sha256": "7b399d8650e593fcdf097371997ee6bf22d1138fd79e21688ec071c51f4759f3",
+      "bytes": 125535
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "pr269-auditor-final-body.txt",
+      "raw_sha256": "5e9fe596895aefb68edf5a2f2abc8999997fa54f1a7885d3eebb068d7f90af9e",
+      "bytes": 1131
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "pr269-auditor-final.json",
+      "raw_sha256": "eb308fb3e1642ed2a32827b184cabe1c1dba9f99399983e3f92c30eeadc4aa63",
+      "bytes": 1202
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "pr269-auditor-initial-body.txt",
+      "raw_sha256": "5e9fe596895aefb68edf5a2f2abc8999997fa54f1a7885d3eebb068d7f90af9e",
+      "bytes": 1131
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "pr269-auditor-initial.json",
+      "raw_sha256": "eb308fb3e1642ed2a32827b184cabe1c1dba9f99399983e3f92c30eeadc4aa63",
+      "bytes": 1202
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "primary-reading.txt",
+      "raw_sha256": "95f271d8533b40c649aff2a03f89f15ac17dbafd613e004d706a239fc38cfe30",
+      "bytes": 2034
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "retention-byte-verification.json",
+      "raw_sha256": "619bd012982aa42e83bb2045b717e9b3f56fd6961c724bf0a877749e87aa836c",
+      "bytes": 27889
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "text-inventory-observations.json",
+      "raw_sha256": "4af851aae9ee26f97930afd28560b6d30a201e09948660542bbc38063ba68697",
+      "bytes": 245
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/CLAUDE.md",
+      "raw_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "bytes": 24408
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "raw_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "bytes": 13831
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/manuscript318A.tex",
+      "raw_sha256": "1ea3598636d490e6d3d542557301c61dbd6219b2927ed98357de7b248f30d2fd",
+      "bytes": 110231
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/manuscript322A.tex",
+      "raw_sha256": "7b399d8650e593fcdf097371997ee6bf22d1138fd79e21688ec071c51f4759f3",
+      "bytes": 125535
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/marginal-moment322-section.tex",
+      "raw_sha256": "fef77a71c38077888d6ac7bbf3e73d81e514cafb36ea85a580a3e05266e46381",
+      "bytes": 12629
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/public-subset.json",
+      "raw_sha256": "5774f174c36e050d7c7b7d2735c9c15e0b072b8e9a183453873e453f831848c7",
+      "bytes": 9767
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/historical-v7/author-response.md",
+      "raw_sha256": "4e3c6f5faceb8e9127ebc7898797d3dc2ca41c904b975919fbfae40b7e37509a",
+      "bytes": 3029
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/historical-v7/full-scientific-report.txt",
+      "raw_sha256": "3f91b2baf0e26002e40820273508cc06d564020288a73926fa076d5af0a08921",
+      "bytes": 30897
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/historical-v7/MANIFEST.json",
+      "raw_sha256": "c645508d53e351fb8dc7e1590fc65f258feec648e14079f3b17afd1e14583cd6",
+      "bytes": 1513
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/historical-v7/manuscript318.pdf",
+      "raw_sha256": "ad708fafb3de9fc83cd2dc05443f34b2792da94a20d0bf1b1cd7b8ca41b9340c",
+      "bytes": 547362
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/historical-v7/model-context.json",
+      "raw_sha256": "564acc34ea00e08e7995fad3dd0e94673f2eaf03974cc6d328169c45f1eb6547",
+      "bytes": 6669
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/historical-v7/native-response.json",
+      "raw_sha256": "98474a9949b0493b2b3ea49b465f01ba49b5293036eaea884debf032b2251e3d",
+      "bytes": 5994
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/historical-v7/original-input-manifest.json",
+      "raw_sha256": "457c2534cd1c848255a951e2dc640cb36e7c7b29a344730df1d5c0c046cbb092",
+      "bytes": 6307
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/historical-v7/received-assignment.txt",
+      "raw_sha256": "ac012c055be6e880be078642f470fbc260257d848dee3271c7b75d6111812c34",
+      "bytes": 2212
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/historical-v7/SCOPE.txt",
+      "raw_sha256": "9406714f769399c2f0e83f4c19b089db797d2ce5d8de9603ab3cac36062744cf",
+      "bytes": 692
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/adverse-attacks.txt",
+      "raw_sha256": "2397db832663d43f52b3b6eeb418d91b49623d91f0a68bcbf59d2bf9ff8ac982",
+      "bytes": 3311
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/assignment-received.txt",
+      "raw_sha256": "272bb2549c83633afd6272c1b10a4b15ffb8b2fdd5cbf6f4280f11fde7c946f2",
+      "bytes": 1851
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/context-and-scope.txt",
+      "raw_sha256": "a47b7a52bbbc2ac06784e61df4959f9527f1745a0c5a406bb32caccee567fcee",
+      "bytes": 3793
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/final-state.json",
+      "raw_sha256": "cc0b1e303fa8bffdab8fa9323d137b0762e213f874cf334ea9c81aa6b3d917ac",
+      "bytes": 2762
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/full-report.txt",
+      "raw_sha256": "dbbeb43dc840d0fe6de4c0f73a8ae49edf3ab6ba9aafb021fadd196a76ea5a0c",
+      "bytes": 17096
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/initial-state.json",
+      "raw_sha256": "5686581104b9a574129c031b0a3f6afd9eedf1f55a6de2864850bd749310b984",
+      "bytes": 3131
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/pr266-auditor-final-body.txt",
+      "raw_sha256": "5647b6a9efa60cbba9ca5cdba3c58f629fd19d9d7ef311115168473f10544ed3",
+      "bytes": 1314
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/pr266-auditor-final.json",
+      "raw_sha256": "67bce55ea7a0ad50854666ef9e638f445dcddbaff25f555c1ba9d2d9df8f8d42",
+      "bytes": 1389
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/pr266-auditor-initial-body.txt",
+      "raw_sha256": "5647b6a9efa60cbba9ca5cdba3c58f629fd19d9d7ef311115168473f10544ed3",
+      "bytes": 1314
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/pr266-auditor-initial.json",
+      "raw_sha256": "67bce55ea7a0ad50854666ef9e638f445dcddbaff25f555c1ba9d2d9df8f8d42",
+      "bytes": 1389
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/primary-literature-notes.txt",
+      "raw_sha256": "550a8a383fedc9a7f53d81697bed07eb9c9d18132a955b6dced42930aa7e4f8e",
+      "bytes": 3361
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/raw-hashmanifest.json",
+      "raw_sha256": "54ecb3c2a21811713c06e59f65ea3d3b7e8758fc876290dbef1255a1cd5334ec",
+      "bytes": 6321
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/raw-hashmanifest.sha256",
+      "raw_sha256": "6e8f511d49047e3512468ec88b0957176a4f57a8b17e9a558da8eff371682215",
+      "bytes": 88
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/subjects/01-source319A.txt",
+      "raw_sha256": "a26ed41f43e038238636fb026fc71bc2302b41a08c08a97ffa6f06ac3d3cc936",
+      "bytes": 9806
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/subjects/02-checks319.txt",
+      "raw_sha256": "55dfbe337867b304d16d9e77b1bb647059dd4373770494b2417677f5a396d934",
+      "bytes": 1237
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/subjects/03-literature319.md",
+      "raw_sha256": "e3fbfe570aa118e71a3c58b2bb43ec87a40e52302dec1cc76ad88aef113f2c74",
+      "bytes": 1928
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/subjects/04-CLAUDE.md",
+      "raw_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "bytes": 24408
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/subjects/05-OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "raw_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "bytes": 13831
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/subjects/07-pr266-initial.json",
+      "raw_sha256": "6d465224df5ed0294457d252958667a37f293cb38ab48a19577cd8bcd529a68a",
+      "bytes": 1547
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/subjects/08-pr266-normalized-body.txt",
+      "raw_sha256": "5647b6a9efa60cbba9ca5cdba3c58f629fd19d9d7ef311115168473f10544ed3",
+      "bytes": 1314
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/subjects/checks319.git.txt",
+      "raw_sha256": "6b768177f797cb57678afc059ee27fb887804e6942aeed4b41cc4a2ce14ff5bc",
+      "bytes": 1236
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/subjects/literature319.git.md",
+      "raw_sha256": "ad2065d43a8de3ca8f1d80b47ca79824358bfe39546fa7915d61778ae87099f6",
+      "bytes": 1927
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/subjects/predecessor318.git.tex",
+      "raw_sha256": "1ea3598636d490e6d3d542557301c61dbd6219b2927ed98357de7b248f30d2fd",
+      "bytes": 110231
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit319A/subjects/source319A.git.txt",
+      "raw_sha256": "5b527cd6c8fbad390258a9c439534222c0094139cac7a5813edb6415b20e39a3",
+      "bytes": 9805
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/assignment.txt",
+      "raw_sha256": "e920fe49b280d60e3c72a4f9fcfaef49568b81e29befab1d7d0765ba0449cfd9",
+      "bytes": 1778
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/context.txt",
+      "raw_sha256": "1f144e7cbe2b6e433ffe4015f1ee9e04cff27788ca213f34f59be6b9485affc0",
+      "bytes": 3442
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/final-state.json",
+      "raw_sha256": "fa8892bc0762343ab62d4d31379ae84432269493c20e1822f3c5395ecca5dd94",
+      "bytes": 3387
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/full-report.txt",
+      "raw_sha256": "904655f89d7f55d7421e3e0bd9197a6de7e3ebb30bc09547f60c62a61e1230fb",
+      "bytes": 13442
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/initial-state.json",
+      "raw_sha256": "23dcd63ec136597033a7e33189a6d69999124b0c8a1a78cfbfea38902314e12b",
+      "bytes": 4138
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/manifest.json",
+      "raw_sha256": "9c5c66e6948da3824557066378f23f3503ea0a610d8c5ea07a0617043fc31f37",
+      "bytes": 4173
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/manifest.sha256",
+      "raw_sha256": "825a6b9d66a1bd9e4e8f69e3db39cea41964366a9ea32e7a0d9b39fbe7cf4b49",
+      "bytes": 80
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/pr268-auditor-final-body.txt",
+      "raw_sha256": "35e394b1b279a34e35f60e705a9149050230f2bf167e1d2a471a5a6b49c7cc02",
+      "bytes": 998
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/pr268-auditor-final.json",
+      "raw_sha256": "373a74e5e85d8d458326f6a04e5485d227d96cd7464a6710a3edb663f9ce457e",
+      "bytes": 1069
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/pr268-auditor-initial-body.txt",
+      "raw_sha256": "35e394b1b279a34e35f60e705a9149050230f2bf167e1d2a471a5a6b49c7cc02",
+      "bytes": 998
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/pr268-auditor-initial.json",
+      "raw_sha256": "373a74e5e85d8d458326f6a04e5485d227d96cd7464a6710a3edb663f9ce457e",
+      "bytes": 1069
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/primary-reading.txt",
+      "raw_sha256": "ac52f21bf67b25b13693774611ecb3ccda69fd43bce5d1da98b7d8e6d80479cc",
+      "bytes": 1313
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/source321C-final.txt",
+      "raw_sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e",
+      "bytes": 7219
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/01-source321C.txt",
+      "raw_sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e",
+      "bytes": 7219
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/02-source321C.txt",
+      "raw_sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e",
+      "bytes": 7219
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/03-linear-marginal321.txt",
+      "raw_sha256": "2e24a83d6ed92997aaee72c2a42069f95217b6e35dde7fb85c8b7052c67ab109",
+      "bytes": 2847
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/04-linear-marginal321B.txt",
+      "raw_sha256": "ce8e318d5704a1913ef3b7d12a9996ba170d8e9794fff9883322e183400581bd",
+      "bytes": 7351
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/05-source319A.txt",
+      "raw_sha256": "a26ed41f43e038238636fb026fc71bc2302b41a08c08a97ffa6f06ac3d3cc936",
+      "bytes": 9806
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/06-full-report.txt",
+      "raw_sha256": "dbbeb43dc840d0fe6de4c0f73a8ae49edf3ab6ba9aafb021fadd196a76ea5a0c",
+      "bytes": 17096
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/07-CLAUDE.md",
+      "raw_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "bytes": 24408
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/08-OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "raw_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "bytes": 13831
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/10-pr268-initial.json",
+      "raw_sha256": "821ce0cc30c50a704126cd29a0315037f47cd144af6df8d9d4485f3759a49413",
+      "bytes": 1196
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/11-pr268-normalized-body.txt",
+      "raw_sha256": "35e394b1b279a34e35f60e705a9149050230f2bf167e1d2a471a5a6b49c7cc02",
+      "bytes": 998
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/source319A.git.txt",
+      "raw_sha256": "5b527cd6c8fbad390258a9c439534222c0094139cac7a5813edb6415b20e39a3",
+      "bytes": 9805
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/papers/marginal-transfer/evidence322/source-audit321C/subjects/source321C.git.txt",
+      "raw_sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e",
+      "bytes": 7219
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/research/linear-marginal321/source321C.txt",
+      "raw_sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e",
+      "bytes": 7219
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/research/marginal-moment319/checks319.txt",
+      "raw_sha256": "55dfbe337867b304d16d9e77b1bb647059dd4373770494b2417677f5a396d934",
+      "bytes": 1237
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/research/marginal-moment319/literature319.md",
+      "raw_sha256": "e3fbfe570aa118e71a3c58b2bb43ec87a40e52302dec1cc76ad88aef113f2c74",
+      "bytes": 1928
+    },
+    {
+      "reason": "Historical capture retained in complete D packet; avoid recursively duplicating manuscript and source packet",
+      "path": "frozen-raw/research/marginal-moment319/source319A.txt",
+      "raw_sha256": "a26ed41f43e038238636fb026fc71bc2302b41a08c08a97ffa6f06ac3d3cc936",
+      "bytes": 9806
+    }
+  ],
+  "selected": [
+    {
+      "path": "assignment.txt",
+      "raw_sha256": "92accc33969ee14a22286b84cef52fa9c0d160745ea31be27b63309ecae0ab72",
+      "bytes": 1461
+    },
+    {
+      "path": "context.txt",
+      "raw_sha256": "b31d7256fe235ae0622d3c09731d8cd4cacfe29f4434b05436f12ec57599f09d",
+      "bytes": 4099
+    },
+    {
+      "path": "full-report.txt",
+      "raw_sha256": "3478b642a4c3ab59859ebf5866887f637ec6f4ab778177f951d8969fe690e9db",
+      "bytes": 19278
+    },
+    {
+      "path": "manifest.json",
+      "raw_sha256": "4d5084e38583e44453e778cc9eee579025b125bf38da5baad5895b491ed14604",
+      "bytes": 18220
+    },
+    {
+      "path": "manifest.sha256",
+      "raw_sha256": "bd48e491f50ae73747c51a679840bebae85ba032c096bed82c16360c96a3a7c1",
+      "bytes": 80
+    }
+  ]
+}

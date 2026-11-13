@@ -1,0 +1,15 @@
+# Author response and erratum for exact v7
+
+Exact PDF SHA256 ad708fafb3de9fc83cd2dc05443f34b2792da94a20d0bf1b1cd7b8ca41b9340c. This response accompanies the unchanged assessed PDF. The first and only numerical assessment is4.60/10 on AIRR's Millennium scale, rounded to5 overall stars, criteria4/4/3/3/4, recommendation minor_revision. The complete original report and actual context remain unchanged.
+
+1. Definite cross-reference error, accepted. On PDF page22, proof of Theorem20, the phrase “In (32) restricted to this event” must be read as “In (21) restricted to this event.” Equation(21) is the mixed-power inequality displayed on that same page; equation(32) is a later, unrelated escape bound. The proof uses the former displayed inequality. This is a public erratum, not a claim that the PDF has been corrected. The source cross-reference will be repaired in a future grouped revision; its assessment will not inherit this score. The current Working-paper package preserves exactly the reviewed bytes.
+
+2. Originality reservation, retained. Classical hypercontractivity, sign splitting, moment optimization and coding theory are credited. The targeted primary-source comparison does not establish external priority or exclude all implications of earlier spectral-perturbation results. The score is not evidence of historical novelty. No stronger novelty claim is added.
+
+3. Significance and scope limitation, retained. The results concern finite Boolean transfer congruences with arbitrary global weights. No bridge to natural fixed-range Gibbs models, local dynamics, physical mass gaps or continuum Yang–Mills is proved. The code, moment and spike constructions have distinct properties; this version does not assert that one family has them jointly.
+
+4. Presentation reservation, accepted. The auxiliary bounds and historical descriptions remain in this assessed artifact. The abstract supplies navigation to the exact scalar and universal-tail classifications; further reorganization is deferred to a future substantive grouped revision. No adverse report is removed and no score is transferred to edited bytes.
+
+5. Verification limits, retained. This is one AI assessment, not human peer review or an independent-provider assessment. Requested configuration was gpt-6-astra/high; served backend/version/effort and workspace/memory isolation were not attested. Full context records the incidental older abstract seen in a search, without a numerical score. Paired document builds and parent visual inspection are separate from mathematical proof checking. No Lean/formal proof or numerical mathematical experiment is claimed.
+
+Publication disposition: the report found no material mathematical objection invalidating a main theorem. The author-authorized Working-paper route may therefore retain the exact assessed manuscript with this explicit erratum and all reservations. This is not accepted-collection admission, human signoff, or a statement that the minor_revision recommendation has been changed.

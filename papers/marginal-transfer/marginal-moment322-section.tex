@@ -1,0 +1,285 @@
+% Consolidation322 draft. Sources319A and321C; not an assessed PDF.
+\section{Growing marginal order at the critical moment budget}
+\label{sec:growing-marginals}
+
+The preceding marginal and moment constructions need not describe the same
+weights. We now impose both requirements on one weighting law. Throughout
+this section, $u_L$ is uniform probability on $\{-1,1\}^L$,
+$0<\rho<1$ is fixed, and
+\[
+ s=\frac{1+\rho}{1-\rho},\qquad B_*=2^{1/s},\qquad
+ Q=P_{\sqrt\rho},\qquad
+ S_r=QM_rQ,\quad T_r=M_{\sqrt r}P_\rho M_{\sqrt r}.
+\]
+Here $P_t\chi_A=t^{|A|}\chi_A$. For $r\geq0$ with $\mathbb E r=1$,
+$S_r$ and $T_r$ have the same eigenvalues, including zero multiplicities:
+they are $AA^*$ and $A^*A$ for the square matrix $A=QM_{\sqrt r}$.
+Also $\langle1,S_r1\rangle=1$, so $\lambda_1(T_r)\geq1$.
+Exact uniform marginals of the weighting law $r u_L$ through order $k$
+mean $\mathbb E[r\chi_A]=0$ for $1\leq|A|\leq k$.
+This classical Fourier characterization concerns the weighting law;
+no Perron stationary marginal assertion is made in this section.
+
+Two different regimes result. At every fixed power $L^\alpha$ with
+$\alpha<1/2$, exact matching is compatible with collapse at $B_*$.
+At every fixed positive linear fraction of $L$, a bounded critical moment
+instead forces convergence to the unweighted noise spectrum. The proof of
+the latter statement uses the homogeneous moment inequality of
+Kirshner and Samorodnitsky~\cite{kirshner-samorodnitsky}, not a new
+hypercontractive inequality. The intervening sublinear regime is open here.
+
+\begin{theorem}[Collapse with growing exact marginals]
+\label{thm:growing-collapse}
+Fix $0<\alpha<1/2$ and $0<b<1$. There are mean-one densities $r_L$,
+for every integer $L\geq1$, such that
+\[
+ r_L\geq b,\qquad \|r_L\|_s\leq B_*,\qquad
+ \mathbb E[r_L\chi_A]=0\quad(1\leq |A|\leq\lfloor L^\alpha\rfloor),
+\]
+while $\lambda_1(T_{r_L})\to1$, $\lambda_2(T_{r_L})\to1$ and
+$\gap(T_{r_L})\to0$. Thus growing matching of these orders does not
+raise the worst-case critical norm boundary $B_*$.
+\end{theorem}
+
+\begin{proof}
+Choose $a=3/8-\alpha/4$, so $1/4<a<(1-\alpha)/2$, and fix a
+sufficiently small $d\in(0,1)$. Set $\delta=dL^{-a}$ and
+\[
+ n(\delta)=\left(\frac{(1+\delta)^s+(1-\delta)^s}{2}\right)^{1/s},
+ \quad R_L(x)=\prod_{i=1}^L\frac{1+\delta x_i}{n(\delta)},
+ \quad m_L=\mathbb E R_L=n(\delta)^{-L}.
+\]
+The one-coordinate matrix and its largest eigenvalue are
+\[
+ H(\delta)=\frac1{n(\delta)}
+ \begin{pmatrix}1&\delta\sqrt\rho\\\delta\sqrt\rho&\rho\end{pmatrix},
+ \qquad
+ \kappa(\delta)=\frac{1+\rho+
+ \sqrt{(1-\rho)^2+4\rho\delta^2}}{2n(\delta)}.
+\]
+Writing $D=\diag(1,\rho)$ and
+$\tau(\delta)=\|D^{1/2}H(\delta)^{1/2}\|$, direct diagonalization gives
+\[
+ \tau(\delta)^2=\frac{1+\rho^2+
+ \sqrt{(1-\rho^2)^2+4\rho^2\delta^2}}{2n(\delta)}.
+\]
+At the fixed critical exponent the Taylor expansions are
+\[
+ \log n(\delta)=\frac{s-1}{2}\delta^2+O(\delta^4),\quad
+ \log\kappa(\delta)=O(\delta^4),\quad
+ \log\tau(\delta)=-\frac{\rho\delta^2}{2(1-\rho^2)}+O(\delta^4).
+\]
+Here $L\delta^4=d^4L^{\alpha-1/2}\to0$, whereas
+$L\delta^2=d^2L^{1/4+\alpha/2}\to\infty$.
+Consequently $c_L=\kappa(\delta)^{-L}\to1$, $m_L\to0$, and
+$Z_L=1+c_Lm_L\to1$.
+
+For $v_L=(1+c_LR_L)/Z_L$, the unnormalized operator is
+$F_L=P_\rho+c_LH(\delta)^{\otimes L}$. Both summands have top
+eigenvalue one. Form the Gram matrix of their positive square roots.
+Its diagonal blocks are these two summands and its cross-block norm is
+$\eta_L=\sqrt{c_L}\tau(\delta)^L\to0$. The block diagonal matrix has
+its first two eigenvalues exactly one. Operator-norm perturbation puts
+the first two Gram eigenvalues in $[1-\eta_L,1+\eta_L]$.
+For large $L$ these are positive; the nonzero Gram spectrum is the spectrum
+of $F_L$. Division by $Z_L$ therefore proves that the actual first two
+eigenvalues of $S_{v_L}$ tend to one.
+
+We also have $\mathbb E R_L^s=1$. For each fixed $0<t<s$,
+\[
+ \log\mathbb E R_L^t=-\frac{t(s-t)}2L\delta^2+O(L\delta^4)
+ \longrightarrow-\infty.
+\]
+With $\theta=\min(1,s/2)$, the mean-value theorem for $y\leq1$ and
+reciprocal substitution for $y\geq1$ give
+\[
+ 0\leq(1+y)^s-1-y^s\leq
+ s2^{s-1}(y^\theta+y^{s-\theta})\quad(y\geq0).
+\]
+Both exponents lie strictly between zero and $s$. Applying this inequality
+to $c_LR_L$ yields $\mathbb E(1+c_LR_L)^s\to2$, hence
+$\|v_L\|_s\to B_*$.
+
+Put $k_L=\lfloor L^\alpha\rfloor$ and erase the nonconstant low levels:
+\[
+ p_L=m_L\sum_{1\leq|A|\leq k_L}\delta^{|A|}\chi_A,\qquad
+ w_L=\frac{1+c_L(R_L-p_L)}{Z_L}.
+\]
+The exact expansion $R_L=m_L\sum_A\delta^{|A|}\chi_A$ proves that
+$w_L$ has mean one and the required zero coefficients. Moreover
+\[
+ \|p_L\|_\infty\leq m_L\sum_{j=1}^{k_L}\binom Lj\delta^j
+ \leq m_L k_LL^{k_L}\longrightarrow0.
+\]
+Indeed $\log m_L=-(s-1)d^2L^{1/4+\alpha/2}/2+O(L\delta^4)$,
+and $\log k_L+k_L\log L=o(L^{1/4+\alpha/2})$.
+It follows that $w_L\geq(1-c_L\|p_L\|_\infty)/Z_L\to1$ in this
+lower-bound sense, so eventually $w_L\geq b$. Also
+$\|w_L-v_L\|_\infty\to0$, $\|w_L\|_s\to B_*$, and
+$\|S_{w_L}-S_{v_L}\|\leq\|w_L-v_L\|_\infty\to0$.
+The uniform baseline, together with this sup-norm bound, supplies the
+positivity that an unrestricted Fourier erasure would not preserve.
+
+Finally let $B_L=\|w_L\|_s$, and set $\varepsilon_L=0$ when
+$B_L\leq B_*$, otherwise
+$\varepsilon_L=(B_L-B_*)/(B_L-1)$. On the latter event the denominator
+is positive, $0<\varepsilon_L<1$, and $\varepsilon_L\to0$.
+Then $r_L=(1-\varepsilon_L)w_L+\varepsilon_L$ retains the exact
+marginals, mean, and eventual floor. Minkowski gives $\|r_L\|_s\leq B_*$.
+Endpoint hypercontractivity and H\"older, with
+$p=2s/(s-1)=1+1/\rho$, imply for every real signed $f$ that
+\begin{equation}\label{eq:critical-signed-322}
+ \|QM_fQ\|\leq\|f\|_s,
+ \qquad \|Q\|_{2\to p}\leq1.
+\end{equation}
+Thus $\|S_{r_L}-S_{w_L}\|\leq\varepsilon_L(B_L+1)\to0$.
+The actual leading eigenvalues still tend to one. Replace the finitely
+many densities before all positivity and floor conditions hold by $r_L=1$.
+Every stated constraint then holds in every dimension. The positive kernel
+has a simple Perron root in each dimension, while its normalized gap tends
+to zero. Below $B_*$ the earlier sign-compression bound
+$2\lambda_2^s\leq\mathbb E r^s$ already supplies a uniform gap.
+\end{proof}
+
+\begin{theorem}[Rigidity from critical-power uniform integrability]
+\label{thm:marginal-ui}
+Suppose $k_L\to\infty$, $r_L\geq0$, $\mathbb E r_L=1$, and the
+weighting laws have uniform marginals through order $k_L$. If
+\[
+ \lim_{M\to\infty}\sup_L
+ \mathbb E[r_L^s\mathbf1_{r_L>M}]=0,
+\]
+then $\|S_{r_L}-P_\rho\|\to0$ and $\gap(T_{r_L})\to1-\rho$.
+For $\rho<\sigma<1$, put $t=\sqrt{\rho/\sigma}$,
+$m_L=\lfloor k_L/2\rfloor$, and
+$\eta_M=\sup_L\|r_L\mathbf1_{r_L>M}\|_s$. More precisely,
+\[
+ \|S_{r_L}-P_\rho\|
+ \leq2(M+1)t^{m_L+1}+2\eta_M.
+\]
+\end{theorem}
+\begin{proof}
+Let $\Pi$ project onto Walsh degrees at most $m_L$. With $h=r_L-1$,
+the $(A,C)$ entry of $QM_hQ$ is
+$\rho^{(|A|+|C|)/2}\widehat h(A\mathbin\triangle C)$.
+Since $|A\mathbin\triangle C|\leq2m_L\leq k_L$ on this block,
+including the zero constant coefficient, $\Pi QM_hQ\Pi=0$.
+
+Split $h=h_b+h_t$, with $h_b=r_L\mathbf1_{r_L\leq M}-1$ and
+$h_t=r_L\mathbf1_{r_L>M}$. Write $Q_\sigma=P_{\sqrt\sigma}$ and
+$D_t=P_t$. For $B_b=QM_{h_b}Q$ we have
+$B_b=D_t A_bD_t$, $A_b=Q_\sigma M_{h_b}Q_\sigma$,
+$\|A_b\|\leq M+1$, and $\|D_t(I-\Pi)\|\leq t^{m_L+1}$.
+The identity
+$B_b-\Pi B_b\Pi=(I-\Pi)B_b+\Pi B_b(I-\Pi)$ bounds its norm by
+$2(M+1)t^{m_L+1}$. For $B_t=QM_{h_t}Q$,
+\eqref{eq:critical-signed-322} gives $\|B_t-\Pi B_t\Pi\|\leq2\eta_M$.
+Since $\Pi(B_b+B_t)\Pi=0$, addition proves the estimate.
+First send $L\to\infty$ at fixed $M$, then $M\to\infty$.
+Self-adjoint perturbation and the actual spectrum $1,\rho,\ldots$ of
+$P_\rho$ give the first two eigenvalue limits $1,\rho$ and the gap limit.
+\end{proof}
+
+For comparison, a strictly higher moment gives an explicit rate without
+truncation. If $q>s$, $\|r_L\|_q\leq B$, and
+$\rho<\sigma\leq(q-1)/(q+1)$, the same factorization gives
+\[
+ \|S_{r_L}-P_\rho\|\leq2(B+1)
+ (\rho/\sigma)^{(\lfloor k_L/2\rfloor+1)/2}.
+\]
+Here $Q_\sigma M_{r_L-1}Q_\sigma$ has norm at most $B+1$ by
+H\"older and hypercontractivity. The corresponding low block vanishes
+exactly. This estimate and the preceding theorem are sufficient conditions,
+not characterizations of all stable families.
+
+\begin{theorem}[Rigidity for every positive linear marginal fraction]
+\label{thm:linear-marginal-rigidity}
+Suppose $r_L\geq0$, $\mathbb E r_L=1$, $\|r_L\|_s\leq B<\infty$,
+and every marginal through order $k_L\leq L$ is uniform. If
+$\liminf_L k_L/L>0$, then $\|S_{r_L}-P_\rho\|\to0$.
+In particular the two leading eigenvalues of $T_{r_L}$ tend to $1,\rho$,
+and $\gap(T_{r_L})\to1-\rho$. No density floor, uniform integrability,
+or supercritical moment assumption is required.
+\end{theorem}
+
+\begin{proof}
+Set $p=2s/(s-1)=1+1/\rho>2$. We use Theorem~1.3 and
+Proposition~2.7 of the version-pinned primary source
+\cite{kirshner-samorodnitsky}. In uniform probability normalization, its
+continuous function $\psi(p,x)$ on $[0,1/2]$ bounds every real homogeneous
+degree-$j$ Walsh polynomial, $j\leq L/2$, by
+\[
+ \|f_j\|_p\leq2^{L\psi(p,j/L)/p}\|f_j\|_2.
+\]
+For fixed $p$, $\psi(p,0)=0$, the right derivative at zero is
+$(p/2)\log_2(p-1)$, and the function is strictly concave.
+These are attributed external mathematical inputs. Strict concavity gives
+\[
+ \Delta_p(x)=\frac{x\log(p-1)}2-
+ \frac{\log2}{p}\psi(p,x)>0\quad(0<x\leq1/2).
+\]
+For completeness, if $f(0)=0$ is strictly concave with right derivative
+$d$, then $f(x)/x<f(x/2)/(x/2)\leq d$; this also handles the upper
+endpoint. Natural logarithms are used except for the displayed $\log_2$.
+
+For $x\in[0,1]$ let $y=\min(x,1-x)$ and
+\[
+ a_p(x)=\frac{x\log(p-1)}2-\frac{\log2}{p}\psi(p,y)
+ =\Delta_p(y)+\frac{(x-y)\log(p-1)}2.
+\]
+This is continuous and strictly positive for every $x>0$, including
+$a_p(1)=\log(p-1)/2$. For each fixed $0<\gamma\leq1$, compactness gives
+$a_\gamma=\min_{x\in[\gamma,1]}a_p(x)>0$.
+For $j\leq L/2$ the published inequality and $\rho=1/(p-1)$ imply
+\[
+ \|Qf_j\|_p\leq e^{-La_p(j/L)}\|f_j\|_2.
+\]
+For $j>L/2$, multiplication by the full parity character maps the entire
+degree-$j$ level to degree $L-j$ while preserving all $L^q$ norms.
+Applying the preceding homogeneous inequality there and retaining the
+original factor $\rho^{j/2}$ gives the same bound. This does not assert
+that parity multiplication commutes with $Q$.
+
+Let $H_\gamma$ project onto degrees $j\geq\gamma L$. Triangle inequality,
+then Cauchy--Schwarz over at most $L+1$ orthogonal levels, give
+\begin{equation}\label{eq:high-level-endpoint-322}
+ \|QH_\gamma\|_{2\to p}\leq\sqrt{L+1}\,e^{-La_\gamma}.
+\end{equation}
+Take fixed $0<c<\liminf k_L/L$ and put $\gamma=c/2$. For all sufficiently
+large $L$, the complement $H=I-\Pi$ of degrees at most
+$m_L=\lfloor k_L/2\rfloor$ has degrees
+$j\geq m_L+1\geq k_L/2\geq\gamma L$.
+For $\mathcal B=QM_{r_L-1}Q$, exact marginals give $\Pi\mathcal B\Pi=0$,
+hence $\mathcal B=H\mathcal B+\Pi\mathcal BH$.
+For real unit vectors $u,v$, H\"older with $1/s+2/p=1$ yields
+\[
+ |\langle u,H\mathcal Bv\rangle|
+ \leq\|r_L-1\|_s\|QHu\|_p\|Qv\|_p
+ \leq(B+1)\sqrt{L+1}\,e^{-La_\gamma}.
+\]
+The other term uses $Q\Pi u$ and $QHv$. Since $\Pi$ is an $L^2$
+contraction, $\|Q\Pi\|_{2\to p}\leq1$; no $L^p$ contraction property
+of $\Pi$ is needed. Thus
+\[
+ \|S_{r_L}-P_\rho\|\leq2(B+1)\sqrt{L+1}\,e^{-La_\gamma}.
+\]
+This tends to zero. The ordered-eigenvalue perturbation bound applies in
+the same finite dimensional space for each $L$. It gives the actual
+top-two limits, including when $r_L$ has zeros, and the common spectrum
+of $S_{r_L},T_{r_L}$ supplies the asserted gap limit.
+\end{proof}
+
+\paragraph{Scope of the separation.}
+Theorems~\ref{thm:growing-collapse} and~\ref{thm:linear-marginal-rigidity}
+operate at the same critical cap $B_*$. Their conclusions do not locate a
+sharp growth threshold between sub-square-root powers and linear order.
+In particular qualitative strict concavity does not provide a uniform
+quadratic deficit near zero, and the constant $a_\gamma$ above is fixed
+only for fixed $\gamma>0$. No shrinking-cutoff rate is inferred.
+Theorem~\ref{thm:marginal-ui} supplies a separate sufficient condition at
+arbitrary diverging marginal order. All statements concern finite Boolean
+transfer operators with global weights. They imply no fixed-range Gibbs,
+local-dynamics, physical-gap, continuum, or Yang--Mills result.
+The classical marginal/Fourier criterion and coefficient erasure are prior
+methods; the homogeneous moment improvement is explicitly attributed.
+Historical priority for their joint spectral application remains unestablished.
