@@ -1,0 +1,23 @@
+{
+  "utc": "2026-11-13T20:13:43.0756328Z",
+  "head": "c4377edace1f883a2061fe9b2c0ebfe40ce02f9d",
+  "pr_head": "c4377edace1f883a2061fe9b2c0ebfe40ce02f9d",
+  "base": "e75c4d9a8beb2e0cdb28bebc5229a3c8b7bb513f",
+  "body_bytes": 980,
+  "body_sha256": "2626f1e497bc032f68f14e315a945eb742fb9b85a00da8b8855a713892e3cb54",
+  "source_raw_git_sha256": "2de9fb0027e02ade7e3920352a5a3593154778c8cd478d5bb7fecd066bac0bfc",
+  "checks": {
+    "head_matches": true,
+    "base_matches": true,
+    "body_matches": true,
+    "source_matches": true,
+    "status_equal": true
+  },
+  "status": [
+    "?? prepare311.py",
+    "?? prepare314.py"
+  ],
+  "changed_files": [
+    "research/quadratic-deficit323/source323A.txt"
+  ]
+}

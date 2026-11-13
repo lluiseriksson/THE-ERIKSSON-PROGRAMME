@@ -1,0 +1,104 @@
+{
+  "original_retained": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-323\\source-audit323A",
+  "representation": "Raw original bytes; original manifest unchanged; explicitly partial public subset",
+  "omitted": [
+    {
+      "reason": "Third-party full paper HTML retained privately; cite primary URL rather than republish full text",
+      "path": "subjects/kirshner-samorodnitsky-1909.11929v1.html",
+      "raw_sha256": "03592cfbaeb4d0e2ad684c3de6ce2a96889092e32f8fbfc948707da6e995566c",
+      "bytes": 1933713
+    }
+  ],
+  "selected": [
+    {
+      "path": "ASSIGNMENT.txt",
+      "raw_sha256": "5a2251a01f5841735ce5e1b35075213b8e82a7db89af07fe1fff7002ae4285b2",
+      "bytes": 2273
+    },
+    {
+      "path": "body-final.normalized.txt",
+      "raw_sha256": "2626f1e497bc032f68f14e315a945eb742fb9b85a00da8b8855a713892e3cb54",
+      "bytes": 980
+    },
+    {
+      "path": "body-initial.normalized.txt",
+      "raw_sha256": "2626f1e497bc032f68f14e315a945eb742fb9b85a00da8b8855a713892e3cb54",
+      "bytes": 980
+    },
+    {
+      "path": "CONTEXT.md",
+      "raw_sha256": "83e9361ec2ba62c7784283cffd1b0ead1465b1942a919faa47244dcd9009ae28",
+      "bytes": 3832
+    },
+    {
+      "path": "final-state.json",
+      "raw_sha256": "67136766b395b704572479f13adf127623fcda5751cbfaf1f10564a2705828b2",
+      "bytes": 725
+    },
+    {
+      "path": "initial-state.json",
+      "raw_sha256": "7a45f5fbb9a02fd7651ad52d9a47ecd96318afb89cc0a0400a30b918bc2552cd",
+      "bytes": 472
+    },
+    {
+      "path": "manifest-verification.json",
+      "raw_sha256": "f743c6e8ccb498c2afc5501d193c3c7b687b28d1fee226c0bf3dae45cd849df0",
+      "bytes": 261
+    },
+    {
+      "path": "MANIFEST.json",
+      "raw_sha256": "ece1e7aed941af18a10ba2b52333b70fae81f9ea834cf46767fd16609232ba5c",
+      "bytes": 3072
+    },
+    {
+      "path": "pr270-final.json",
+      "raw_sha256": "06ad1c5d6648cd1a480ad36c4931dda97a9536ec677e93e51f3b7d45d8bbd2d9",
+      "bytes": 1107
+    },
+    {
+      "path": "pr270-initial.json",
+      "raw_sha256": "06ad1c5d6648cd1a480ad36c4931dda97a9536ec677e93e51f3b7d45d8bbd2d9",
+      "bytes": 1107
+    },
+    {
+      "path": "PRIMARY-SOURCE-READ-SCOPE.txt",
+      "raw_sha256": "1518c0395a50792f70fe93b0b09503c05d726866fea0b35dfb3cbe482b7b200d",
+      "bytes": 1370
+    },
+    {
+      "path": "REPORT.md",
+      "raw_sha256": "94e5165fd5b23612a1ddca2c0d8fb61f1a4dc424affde4546eb32febd92da15b",
+      "bytes": 17111
+    },
+    {
+      "path": "subjects/CLAUDE.git.md",
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "bytes": 23996
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.git.md",
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "bytes": 13573
+    },
+    {
+      "path": "subjects/source319A.git.txt",
+      "raw_sha256": "5b527cd6c8fbad390258a9c439534222c0094139cac7a5813edb6415b20e39a3",
+      "bytes": 9805
+    },
+    {
+      "path": "subjects/source321C.git.txt",
+      "raw_sha256": "023672871f5da5ce03958f21a34b7f835e3beaa7b18a8c984e6e7d3dd416735e",
+      "bytes": 7219
+    },
+    {
+      "path": "subjects/source323A.final.git.txt",
+      "raw_sha256": "2de9fb0027e02ade7e3920352a5a3593154778c8cd478d5bb7fecd066bac0bfc",
+      "bytes": 8749
+    },
+    {
+      "path": "subjects/source323A.git.txt",
+      "raw_sha256": "2de9fb0027e02ade7e3920352a5a3593154778c8cd478d5bb7fecd066bac0bfc",
+      "bytes": 8749
+    }
+  ]
+}
