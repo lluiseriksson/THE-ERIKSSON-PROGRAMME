@@ -1,0 +1,217 @@
+Q251 /292A: PAYING SECTIONAL CONSTRAINTS CHANGES THE RESIDUAL
+13November2026. Base7c2111835599eefe983b7771a550b6bbd6556030.
+Candidate analytical route-exit report; separate audit required.
+No new paper, exact-PDF assessment, formal or numerical execution.
+
+1. PURPOSE, PAID INPUTS AND ORIGINAL MODEL
+
+The290 lift image S has zero full sectional sums. Unit291 proved that the
+ACTUAL unconstrained singleton minimizer leaves a sectional residual on
+an entire low sector, and that corrections with image in S cannot cancel
+it. This report checks whether that obstruction persists after those
+sectional constraints are actually imposed. It does not merely rename the
+unconstrained residual or silently give the sectional correction for free.
+
+Use the same original real counting-norm model on (Z/n)^3, c>0,
+H=cn^2,a=c/48,b_epsilon=(H+a)/2+epsilon(H-a)(-1)^(x1+x2+x3)/2,
+Q(u)=sum b_epsilon|Delta_j u_r|^2, U=im d1*, either epsilon.
+Here n>=16 is dyadic and tau_i=2i^2 mod n uses least residues. The map
+i->i+tau_i is a permutation by the odd-factor proof in291. A is restricted
+to actual U, L is its full low space, F=U orthogonal-minus L,
+B=A_F-cI>=13c/3, and A_L<=c/8. The low space is diagonal and mean-zero.
+Every original component/cell row is sum_cell u_r/sqrt(n^3 |cell|), with
+cell {i} times I times J, I=[0,tau_i-1],{tau_i},[tau_i+1,n-1],
+J={0},[1,n-1], empty cells omitted. C=(T,P), with T the singletons
+(i,tau_i,0), P ALL remaining rows. Nothing is added to the observation
+budget: sectional sums below are linear combinations of these same rows.
+
+Let G(u)_i=sum_(j,k)u(i,j,k). On ker T one has G=D P, where D multiplies
+each remaining cell row by sqrt(n^3 |cell|) and sums within its slice and
+component. This includes all other volume-one cells. For l in L, G(l)=0.
+
+Sources, all retained in this repository:
+286A: research/quadratic-prefix290/audit290A/subjects/prefix-residual286A.txt,
+rawSHA256 dbfc64f90d55e96c86795090a92765b13edef735eb5048713d435cc30ee27055.
+287A: same subjects/line-average-removal287A.txt,
+rawSHA256 55473f9e3683b9b53578b26d54b37eac5a1f2e92aa4de7780d09b1997444c1be.
+289B: same subjects/manuscript289B.tex, source446124a566483e6f1a8d499d801ce60e0abbb9d8,
+rawSHA256 579369eeb2940850a22265680e996ba97403d4523b95201f65bc69d79b605668.
+291A: research/sectional-residual291/sectional-residual291A.txt,
+source10a3f69f97152a871f1769ebf23806efd2f2b03a,
+rawSHA256 c3634a25f05eebc2f1c7cbcd6c447eb44c0f00acacd2aa0b1f36f68413b0384c.
+
+2. FIRST PAY THE ORIGINAL SINGLETONS
+
+All inverse operators in this section act on actual F. Write
+ M_T=T_F B^-1 T_F*,
+ f_T(l)=-B^-1 T_F* M_Tdagger T_L l,
+ R_T=B^-1-B^-1 T_F* M_Tdagger T_F B^-1,
+ E_T(l)=<T_L l,M_Tdagger T_L l>.
+Paid full-row range equality from280/289B gives an f_full in F with
+C_F f_full=-C_L l. In particular T_L l is in range M_T. Thus f_T
+is an attained singleton minimizer, T(l+f_T)=0 and <f_T,Bf_T>=E_T.
+For any z in F cap ker T, <f_T,Bz>=0. No full-row-rank premise is used.
+Also R_T is positive semidefinite, R_T B R_T=R_T and T_F R_T=0.
+
+3. PAY THE SECTIONAL CONSTRAINTS WITHOUT DOUBLING THEIR COST
+
+Put
+ g_T(l)=G_L l+G_F f_T(l)=G_F f_T(l),
+ M_G=G_F R_T G_F*,
+ z_G(l)=-R_T G_F* M_Gdagger g_T(l),
+ f_TG(l)=f_T(l)+z_G(l),
+ E_G(l)=<g_T(l),M_Gdagger g_T(l)>.
+These quantities use the actual normalized singleton map and unnormalized
+sectional sums consistently. Rescaling G would leave the attained cost
+unchanged, but no such rescaling is used in these formulas.
+
+Feasibility is paid as follows. The full feasible f_full from section2
+has G(l+f_full)=0, since all original cell sums vanish. Then
+h=f_full-f_T satisfies T h=0 and G h=-g_T. Whiten by B^1/2:
+if X=T_F B^-1/2 and Pi_T is the orthogonal projector onto ker X, then
+R_T=B^-1/2 Pi_T B^-1/2. The attainable G-values on ker T have range
+range(G_F B^-1/2 Pi_T)=range(G_F R_T G_F*)=range M_G.
+Thus g_T is in range M_G even when M_G is singular.
+
+It follows directly that T z_G=0, G z_G=-g_T,
+<z_G,Bz_G>=E_G, and T(l+f_TG)=G(l+f_TG)=0. Its B inner product
+with any homogeneous h in ker T cap ker G vanishes. The first cross
+term <f_T,Bz_G> also vanishes. Hence the attained joint minimum is
+ min_(f in F:T(l+f)=G(l+f)=0)<f,Bf>=E_T(l)+E_G(l).       (TG-COST)
+This is a real correction cost, not a free projection or a new hypothesis.
+
+Define
+ R_TG=R_T-R_T G_F* M_Gdagger G_F R_T.
+With Y=G_F B^-1/2, its whitened middle factor is
+ Pi_T-Pi_T Y*(Y Pi_T Y*)dagger Y Pi_T.
+This is the orthogonal projector onto ker X cap ker Y: the subtracted
+operator projects within range Pi_T onto the range of Pi_T Y*. Therefore
+R_TG>=0, R_TG B R_TG=R_TG, and both T_F R_TG and G_F R_TG vanish.
+No assertion that the two original constraint projections commute is used.
+
+4. ALL REMAINING ORIGINAL PREFIX ROWS STILL HAVE TO BE PAID
+
+Set q(l)=P_L l+P_F f_TG(l), K_P|TG=P_F R_TG P_F*.
+The notation K_P|TG denotes a single conditional-response operator,
+not a restriction to the old290 subspace S. The original feasible
+f_full-f_TG is in ker T cap ker G and has P-value -q(l). The same
+finite-range argument proves q(l) in range K_P|TG. Consequently
+ min_(f in F:C_F f=-C_L l)<f,Bf>
+   =E_T(l)+E_G(l)+<q(l),(K_P|TG)dagger q(l)>.            (FULL-COST)
+The extra correction is -R_TG P_F* (K_P|TG)dagger q(l).
+Its B cross term with f_TG vanishes by the minimizing property above.
+Thus every term is attained and nonnegative except the separate low
+spectral deficit; no penalty weight or original row has been discarded.
+
+Let r(l)=P_L l+P_F f_T(l), K_P=P_F R_T P_F*. Comparing with the paid286
+single-stage minimum gives the exact identity
+ <r(l),K_Pdagger r(l)>
+    =E_G(l)+<q(l),(K_P|TG)dagger q(l)>.                 (REBASE)
+The old cost is not carried over as an additional term after E_G; doing
+that would count E_G twice. Moreover D q(l)=G(l+f_TG(l))=0 identically.
+The original q(l) still need not belong to S: ker D is much larger than S.
+
+For any nonzero l in the fixed sector L_v of291, that result gives
+||G(l+f_T(l))||>=13c||l||/(18A0 n)>0. But the newly paid field has
+G(l+f_TG(l))=0. Therefore transferring291 SECTION to this new residual
+is FALSE in the actual model, not merely unsupported. The first field and
+the second field are different and their cost difference is exactly E_G.
+This does not contradict291, which explicitly treated f_T, not f_TG.
+
+5. A PAID UNIFORM CEILING AND A LARGE DEFICIENT SUBSPACE
+
+We now use287 rather than reopening its already closed line-mean route.
+Let Xi remove coordinate2/3 Fourier bands k_j in{0,N}. It fixes L,
+preserves F, and commutes with B. Let R0' be the selected common-polarization
+strong inverse after this removal, as explicitly constructed in287.
+Its paid properties for n>=16 are
+ 0<=R0'<=Xi B^-1 Xi<=B^-1,
+ M0=T_F R0' T_F* has range W=(1,1,1)-perp at every singleton,
+                M0|W >= I_W/(32 c n^5).
+The last floor is the exact normalized version of287 FLOOR; M0 is zero
+on W-perp. Every y=T_L l belongs to W and ||y||^2=n^-5||l||^2.
+No assertion that the full M_T preserves W is made or needed.
+
+The explicit competitor h=-R0' T_F* M0dagger y has T h=-y and lies
+in Xi F. Hence G(h)=0 and G(l+h)=0. Its energy is bounded, not equated,
+using R0' B R0'<=R0'. To see this inequality, conjugate R0'<=B^-1 by
+B^1/2; the resulting positive contraction Z obeys Z^2<=Z. Thus
+ <h,Bh><=<y,M0dagger y><=32 c n^5||y||^2=32c||l||^2.
+Testing h in TG-COST proves, for every l in L,
+           0<=E_T(l)+E_G(l)<=32c||l||^2.                (CEILING)
+This is a corollary of the287 floor, not an independent discovery or a
+bound for FULL-COST. The missing last prefix term can be large.
+
+More sharply,287 already supplies a real subspace L_bad' in L and a
+linear Xi-constrained singleton cancellation f_Xi(l) with
+ <f_Xi(l),Bf_Xi(l)><=c||l||^2/2 for all l in L_bad'.
+For completeness its proved dimension lower bound is k'_n, where
+ d=n-2,N=n/2,h_N=sum_(j=1)^N1/j,
+ K_n=(48/13)h_N+1/(6n^2-1), delta_n=128K_n^2/(48n^2-1),
+ t_n=N{h_N/(8pi^2)-1-128pi^2}-4K_n-d delta_n,
+ t'_n=t_n-8192K_n^3,
+ k'_n=max(0,ceil((t'_n-2d)/(K_n-2))).
+The lower bound can be zero at practical finite sizes; it is not a
+small-size witness. The paid asymptotic statement is
+ liminf dim(L_bad')/n>=13/(768pi^2).
+Testing this actual competitor in TG-COST yields simultaneously on L_bad'
+ E_T+E_G<=c||l||^2/2 and E_G<=c||l||^2/2-E_T.           (BAD-CEILING)
+This is again a direct corollary of287 and says nothing about whether
+L_bad' intersects the particular291 polarization sector L_v.
+
+For the original full kernel to obey Q>=c||u||^2, FULL-COST must dominate
+<l,(cI-A_L)l> for every low l. Since A_L<=c/8, BAD-CEILING leaves the
+necessary condition
+ <q(l),(K_P|TG)dagger q(l)> >=3c||l||^2/8
+                       for every l in L_bad'.           (MISSING)
+A strict reverse inequality for any nonzero such l would give an actual
+full-kernel below-target witness by the attained construction. Conversely
+MISSING alone on this subspace would not suffice for all low fields.
+No estimate in290--292 proves or disproves MISSING. In particular the291
+c/n^8 lower bound concerns r and cannot be substituted for this q-cost.
+
+6. NEGATIVE RESULT AND ROUTE DISPOSITION
+
+The attempted extrapolation is now disposed of precisely: the actual
+sectional obstruction291 does not survive a paid sectional cancellation.
+The original r changes to q, which has zero sectional reconstruction;
+all unaccounted difficulty is the conditional prefix term in MISSING.
+The algebra is classical nested minimization and its uniform ceilings
+are consequences of287. This report does NOT claim a new frontier theorem,
+a new physical result, an eliminated model hypothesis, or a new AIRR paper.
+
+Three units290,291,292 produced a high-space lift/rank result, an actual
+low-residual escape estimate, and this exact paid change-of-minimizer
+diagnosis. None produced a target-scale estimate for the remaining full
+prefix cost. The zero-sectional-lift/extrapolation route is PARKED now.
+Do not reset its counter by publishing a note, changing variable names,
+or proving another vanishing lower bound. Preserve all original candidates,
+audits and failed implications. The earlier stopped projection/direct-stream
+and complete-line-only routes remain stopped. Q251 itself remains OPEN.
+
+One next mechanism inside Q251: analyze the FULL planar-prefix response
+on the already paid Xi-constrained singleton baseline, using its actual
+finite Fourier cell sums and the quadratic sample phases. The distinguishing
+task is a quantitative cross-correlation estimate for these original prefix
+rows, not a sectional rank count. Use287 feasibility and cost as paid inputs,
+without repeating the complete-line nonrepair theorem. A successful result
+must compare the remaining attained cost to the available c-scale deficit,
+or furnish an actual counterexample/precise obstruction. If three units on
+that mechanism produce neither, retain the failure and switch or stop that
+mechanism at a named missing estimate; never claim a solved mass gap.
+
+7. MODEL ASSESSMENTS AND PRIMARY CONTEXT
+
+Current fabrication is involved Codex/OpenAI, exact served backend unexposed.
+Separate source audit is required under CLAUDE rule4; complete context and
+report must be retained. No numerical execution, Lean verification, human
+or independent peer review, PDF review, score, acceptance or publication.
+PR29 remains20/41 and TermSource0. No runtime was opened for this analysis.
+
+The nested projection/shorted-operator mechanism is classical. Primary
+context: Corach, Maestripieri and Stojanoff, Oblique projections and Schur
+complements, https://arxiv.org/abs/math/0006120. Only the abstract was
+consulted for that general context, not as a proof of this finite model.
+Every minimization identity used here is derived above. The model-specific
+ceilings are attributed to287, not relabelled original. External priority
+is unestablished and no new originality claim follows from this report.
