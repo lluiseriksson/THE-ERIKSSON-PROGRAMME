@@ -1,0 +1,94 @@
+SOURCE309A ANALYTICAL AUDIT — FAIL/REVISE (ONE NARROW SCOPE DEFECT)
+
+Frozen referent
+Candidate6d316907aa8804d156d965af940ba8d7ae553f41, research/parity-tail309/parity-tail309A.txt.
+Preregistered judges9b330688f3fc7defd0213470d02e8875eff4adee, papers/marginal-transfer/judges309.txt.
+Dependency manuscript308A.tex at8ac81a6f3f70aa552cc957d45abaf3f0fab90e65 and source299 at49705281f05ab18b71bd9ebc2da1985a0433340c.
+PR256 capture command: gh pr view 256 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid.
+Body normalization: JSON decode; CRLF/CR -> LF; remove all terminal LF; append one LF; encode UTF-8 without BOM.
+Normalized body888bytes, SHA-2569e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319.
+
+Decision and exact objection
+The principal theorem in Sections1-6 is analytically sound under its stated strict hypotheses. The Walsh identity, tensor spectral comparison and strict moving-cutoff calculation all survive attack. However, exact source line87 additionally says, without an upper restriction on b: 'When b>K, every density is entirely above the cutoff, so the condition is a total moment cap; the old exact total-budget threshold2 applies.' The reduction to a total cap is correct; the unqualified threshold application is false at b=1, which satisfies b>K for every K<1.
+
+Concrete counterexample to that extension: fix any admitted rho and any K in(2-2^(1/s),1), and prescribe b=1. A nonnegative mean-one density r>=1 is identically1 on every finite cube. Therefore E[r^s 1_{r>K}]=1 and gap(T_r)=1-rho in every dimension. Even if the allowed tail/total budget equals2 or exceeds2, the infimum gap in this fixed-floor class remains1-rho>0; the threshold2 collapse classification does not apply. For b>1 the mean-one class is empty. The invoked exact308 theorem explicitly restricts fixed floors to0<b<1 and its proof explicitly excludes b=1. The missing restriction is consequently mathematically material to this comparison, though it does not damage the main309 construction with b<K.
+
+Required revision is limited to the scope of that sentence: the fixed-floor exact-threshold application is valid for K<b<1. b=1 must be excluded or treated as uniform, and b>1 as infeasible if discussed. The audit has not edited that sentence, the PR, the judges, or any dependency. This is not a new judge and does not invalidate the preregistration. J5 already requires a correct comparison of regions and explicit retained limits. I do not silently import b<1 into a paragraph that expressly changes the earlier b<K regime and only explicitly excludes b=K. An unqualified ACCEPT for the exact frozen source would cover the false extension; hence the overall verdict is FAIL/REVISE. The PR body itself does not repeat this extension and its stated principal construction is supported.
+
+Gate table
+J1 ACCEPT for the defined construction and its dimensions/normalization/floors.
+J2 ACCEPT for the exact Walsh identity and actual spectral limits.
+J3 ACCEPT for the mixed-power estimate, total moment and strict moving event.
+J4 ACCEPT for parameter existence, all-L completion and strict-slack limitations.
+J5 REVISE solely for the unqualified b>K threshold application at source line87. The principal sufficient/collapse regions and originality boundary pass, as detailed below.
+J6 ACCEPT as an audit-procedure finding, with disclosure of retained306 context; CI and unchanged normal integration after PR255 remain separate and do not override this source objection.
+
+Actual audit context
+This is the same auditor context that previously completed source306, not an independent fresh model. I retain the previous assignment, primary reading, source299/303 exposure, my full306 reasoning/report and its ACCEPT verdict. Same provider and shared filesystem as the parent; actual served model and effort unknown; no technical isolation, human review or independent-provider/statistical independence claimed. The complete context disclosure is in context-and-scope.txt. The ongoing exact308 assessment agent/report was neither accessed nor contacted; only the expressly authorized exact manuscript308A.tex dependency was read. No PDF was assessed or edited. No inbound message arrived during this audit. No mathematical code, numerical test, Lean/TeX, build, Colab, repository/PR/service mutation or publication was performed. Byte/hash work and evidence writes are operational evidence handling, not mathematical computation. No disposable clone, no cleanup pending. Unrelated untracked _drafts/ and _tmp/ were left uninspected and unchanged.
+
+J1 and J4: quantified construction and nonempty strict region
+Fix rho in(0,1), then s=(1+rho)/(1-rho)>1. Put alpha=2-2^(1/s). Because1<2^(1/s)<2, alpha belongs to(0,1). Choose alpha<K<1, 0<b<K and F(K)<tau<2, where F(x)=1+(2-x)^s/2. F is continuous and strictly decreasing on the relevant interval. As max(b,alpha)<K and F(K)<tau, a sufficiently small fixed positive h gives u=K-h>max(b,alpha) and F(u)<tau. Thus the u described in the source exists for every advertised tuple; it is chosen once before L and is not a moving threshold parameter. Let v=2-u. Then0<u<K<1<v, and v<2^(1/s) is equivalent to u>alpha. Consequently F(u)<2 and the advertised sub-two range is nonempty.
+
+On a uniform m-cube with m>=1, the full parity character has exactly half +1 and half -1 values. a_m=1+(u-1)chi_m consequently takes exactly u and v with probabilities1/2, has mean1 and minimumu>0. For the large-L construction set m=floor(L/2), n=L-m. Both are positive for L>=2 and both tend to infinity. On the independent product blocks, q=a_m+beta_n R_n has expectation1+beta_n m_n=Z_n. Therefore r=q/Z_n is strictly positive, mean-one, and r>=u/Z_n. Since Z_n->1 and u>b, the prescribed floor holds eventually, with positive slack. No claim of a uniform L0 across rho,K,b,tau is made.
+
+After the tail limit is established below, its strict inequality F(u)<tau provides one finite L0 such that the tail constraint, floor and positive block dimensions all hold for every L>=L0. Enlarge L0 if necessary and set r_L=1 for all1<=L<L0. Because K<1, these prefix terms have strict tail moment1, not zero. The source correctly states1<=tau; indeed tau>F(K)>1. They also have mean1, floor1>=b and positive gap. Thus every dimension, including L=1, is covered without undefined zero-bit tilt formulas. All asymptotic statements survive finite replacement.
+
+Equality tau=F(K) is not obtained by this argument: every fixed u<K has F(u)>F(K). Setting u=K would destroy the positive limiting low-sector cutoff K-u used below, and u_L varying with L would require new control. The source expressly disclaims both steps. No optimal L0, optimal curve, equality attainment, all-marginal matching or rho-endpoint uniformity is proved.
+
+Inherited balanced family checked from the actual source
+The load-bearing source299 proof was read in the preceding306 audit and its relevant mathematics was reread here, together with the Balanced critical tilt and Exact critical budget statements/proofs in exact308. This is an analytical verification, not reliance on their review status.
+
+For a single uniform sign and fixed small d>0, N(delta)^s=E(1+delta x)^s. The weight w_delta=(1+delta x)/N is positive for|delta|<1, has E w_delta^s=1 and E w_delta=N^-1. Products give exactly E R_n^s=1 and m_n=N(delta_n)^(-n), with delta_n=d n^(-1/3). At fixed t in(0,s), bounded-fourth-derivative Taylor expansion of the even logarithms near0 gives
+ log N(delta)=(s-1)delta^2/2+O(delta^4),
+ log E w_delta^t=t(t-s)delta^2/2+O(delta^4).
+With n delta_n^2=d^2 n^(1/3)->infinity and n delta_n^4=d^4 n^(-1/3)->0, m_n->0 and E R_n^t->0. All parameters t,rho,s,d are fixed before n tends to infinity; uniform endpoint remainders are unnecessary.
+
+In the one-bit Walsh basis, H=N^-1[[1,sqrt(rho)delta],[sqrt(rho)delta,rho]]. Its top eigenvalue is exactly the displayed kappa. The quadratic coefficient of log kappa is rho/(1-rho)-(s-1)/2=0, so log kappa=O(delta^4), beta_n=kappa^(-n)->1 and Z_n=1+beta_n m_n->1. The overlap norm gamma(delta)=||Q_1 H^(1/2)|| has square equal to the top eigenvalue of N^-1[[1,rho delta],[rho delta,rho^2]], and
+ log gamma(delta)=-rho delta^2/[2(1-rho^2)]+O(delta^4).
+Thus eta_n=sqrt(beta_n)gamma(delta_n)^n->0. Factoring U_n=P_n+beta_n H^{tensor n} as CC* with two matrix blocks yields a block Gram matrix whose two diagonal blocks have top eigenvalue1 and whose off-diagonal perturbation has norm eta_n. Its first two eigenvalues lie between1-eta_n and1+eta_n by min-max. For large n these are positive, hence belong to the nonzero spectrum of U_n rather than the extra Gram zeros. Division by Z_n yields lambda1,lambda2 of S_w_n tending to1. Square AA*/A*A equivalence identifies these as the actual transfer eigenvalues. No test-vector compression has been substituted for the second full eigenvalue.
+
+J2: exact parity multiplier and full tensor spectrum
+For any S subset[m], Q_m chi_S=rho^(|S|/2)chi_S and chi_m chi_S=chi_{[m] symmetric_difference S}=chi_{[m]\S}. Hence
+ Q_m M_chi_m Q_m chi_S=rho^((|S|+m-|S|)/2)chi_{[m]\S}=rho^(m/2)chi_{[m]\S}.
+The complement operation is an involution permuting the normalized orthonormal Walsh basis; it is unitary. The exact operator norm is rho^(m/2), not merely an upper estimate. Therefore Q_m M_a_m Q_m-P_m=(u-1)Q_m M_chi_m Q_m has norm(1-u)rho^(m/2), because u<1.
+
+On the full product space, Q_L=Q_m tensor Q_n and multiplication by a_m+beta R_n equals M_a_m tensor I+beta I tensor M_R_n. Multiplying on both sides gives exactly the source's two summands. If B_L=P_m tensor S_w_n, their difference is
+ S_r-B_L=Z_n^-1 (Q_m M_a_m Q_m-P_m) tensor P_n.
+Since||P_n||=1, the norm is in fact exactly(1-u)rho^(m/2)/Z_n and tends to0.
+
+Both factors of B_L are positive definite. Their orthonormal eigenbases tensor to an orthonormal eigenbasis, with eigenvalues the positive products. P_m has maximum eigenvalue1 on constants and all eigenvalues in(0,1]. Therefore lambda1(B_L)=lambda1(S_w_n). The tensor subspace of constants in the m-block with the first two n-block eigenvectors supplies two actual orthogonal eigenvectors of B_L with eigenvalues lambda1(S_w_n) and lambda2(S_w_n). They imply lambda2(B_L)>=lambda2(S_w_n), regardless of crossings with rho lambda1(S_w_n). The trivial upper bound lambda2(B_L)<=lambda1(B_L) completes the squeeze to1. The proof does not incorrectly assert which product is second in every finite dimension.
+
+The self-adjoint perturbation bound follows by bounding every Rayleigh quotient difference by||S_r-B_L|| inside min-max. Hence both actual leading eigenvalues of S_r tend to1. For A=M_sqrt(r)Q_L, AA*=T_r and A*A=S_r are square matrices of equal dimension and have identical eigenvalues with all multiplicities. This transfers the limits without a support restriction. The normalized gap tends to0 because lambda1->1>0. Strict positivity of P_L entries and r gives a simple positive Perron root in each finite dimension, so there is no attained finite zero gap.
+
+J3: mixed powers and strict moving cutoff
+Let theta=min(1,s/2). Then theta and s-theta are both strictly between0 and s, including for noninteger1<s<2. For y>=0 the excess D(y)=(1+y)^s-1-y^s is nonnegative: its derivative is s[(1+y)^(s-1)-y^(s-1)]>0 and D(0)=0. For0<=y<=1, the mean value theorem gives D(y)<=s2^(s-1)y<=s2^(s-1)y^theta. For y>=1, D(y)=y^s D(1/y)<=s2^(s-1)y^(s-theta). These bounds imply D(y)<=s2^(s-1)(y^theta+y^(s-theta)). Scaling y=z/c proves exactly(M) for every fixed c>0 and z>=0. No polynomial/binomial expansion for an integer s is being assumed.
+
+Use z=beta_n R_n. The coefficients beta_n are positive and bounded for large n, and both strict-interior moments vanish. The expectation of the nonnegative excess in(M) tends to0, while E z^s=beta_n^s->1. Thus E(c+z)^s->c^s+1 for c=u and c=v. Since parity sectors have equal probability and independence from the n-block, division by Z_n^s->1 gives
+ E r_L^s ->1+(u^s+v^s)/2.
+Strict convexity of x^s and u!=v with(u+v)/2=1 imply(u^s+v^s)/2>1. Therefore the total moment limit is strictly above2; no earlier exact total-cap2 constraint is met or claimed.
+
+In the high sector v>K, v/Z_n>K eventually, so the strict event includes that entire sector. Its conditional tail moment tends to v^s+1.
+
+In the low sector the strict event is exactly R_n>c_n=(KZ_n-u)/beta_n. Its limiting cutoff is K-u>0. Choose fixed positive c_- and finite c_+ bracketing c_n for all sufficiently large n. For any fixed t in(0,s),
+ P(R_n>c_n)<=c_-^(-t)E R_n^t->0,
+ E[R_n^s 1_{R_n<=c_n}]<=c_+^(s-t)E R_n^t->0.
+Since the whole s-moment is exactly1, the complementary strict-event s-moment tends to1, with atoms at c_n correctly assigned to the weak complement. Restrict(M) to that strict event: the constant contribution is u^s times a vanishing probability, the z^s contribution tends to1, and the mixed excess is bounded by the already vanishing unrestricted mixed terms. Therefore the conditional low-sector tail moment, after division by Z_n^s, tends to1. Averaging gives the advertised strict-tail limit1+v^s/2. This proof explicitly handles the moving cutoff; convergence in probability alone would not suffice.
+
+For every J>=K, the event{r>J} is contained in{r>K}, so the same family has the same all-L upper bound tau at all such cutoffs. The fixed-K limiting formula is not asserted at arbitrary J, where a different sector boundary could matter.
+
+J5: sufficient region, unresolved interval, and the scope defect
+For any nonnegative mean-one r, r^s1_{r<=K}<=K^(s-1)r. Thus E r^s<=K^(s-1)+tau. The inherited two-sign bound is valid without a positive floor: if lambda2>0, its real eigenvector lives on{r>0}, is orthogonal to the positive Perron vector there and has two nonzero sign parts. Endpoint forward hypercontractivity with p=1+rho and Holder gives the Rayleigh estimate on each support C, <h,T_r h><=(E r^s1_C)^(1/s)||h||_2^2. The eigenvector equation and nonnegative kernel cross term bound lambda2^s by each of two disjoint sign budgets. Summing gives2lambda2^s<=E r^s; lambda2=0 is immediate. Testing sqrt(r) gives lambda1>=<r,P_L r>>=1. Therefore the displayed lower bound is positive when tau<2-K^(s-1). This part of Section7 is correct.
+
+The new sufficient collapse range tau>1+(2-K)^s/2, restricted to K>alpha and b<K, does not overlap that guarantee. Indeed the difference of boundary expressions is K^(s-1)+(2-K)^s/2-1. Since0<K<1, K^(s-1)>K^s/2; strict convexity gives[K^s+(2-K)^s]/2>1. Hence the difference is strictly positive. An interval remains unresolved; equality on either boundary is not resolved by this argument. The source does not falsely claim the optimal curve.
+
+The only failed comparison is the additional b>K clause at line87. For K<b<1, it is valid: all mass is aboveK, so the tail cap is the total cap, and the inherited fixed-floor total-budget theorem applies. It is false to extend that threshold classification to b=1, and infeasible for b>1, as demonstrated above. The exact source's explicit exclusion of b=K does not exclude b=1. This is a limited quantifier correction, not a failure of the parity construction or a demand for a stronger theorem.
+
+Primary-source and novelty boundary
+MOS, On Reverse Hypercontractivity, arXiv:1108.1210v5, Eq.(1.1) and its tensorization paragraph supply the classical forward Boolean inequality with the correct noise/time convention. Read scope and URL are in primary-reading.txt. The new Walsh identity is proved directly. Gluck, Spectral gaps for hyperbounded operators, arXiv:1802.09422v6, Theorems1.1/4.1/5.1 and Section5 introduction distinguish essential spectral-radius estimates from magnitudes of isolated eigenvalues above that radius. This comparison does not directly transfer a uniform finite second-eigenvalue bound here. It also does not rule out a stronger known implication or establish originality. The audit does not perform or claim a comprehensive priority search. Classical Fourier/tensor/min-max mechanisms, inherited critical tilt and the newly assembled fixed parameter family are kept distinct.
+
+The candidate is a counterexample to a proposed broad inference that every tail cap below2 at a cutoff below1 enforces uniform gap, not a refutation of a cited literature theorem. Pure parity has norm-small difference from P_m and a stable leading spectral gap; the undiluted balanced family alone has floor tending to1, so at fixed K<1 its tail moment tends to its full moment2. The combination changes the scalar tail limit while retaining the spectral double channel. This supports the stated internal relevance without importing physical, local-interaction, continuum or historical-priority significance.
+
+J6 and operational conclusion
+Preregistration9b330688f is the candidate's immediate parent; its parent is the named exact308 source8ac81a6f. Candidate/preregistered judges have identical Git blob IDbe6783ff11418c7993d3622f6ebcb72788623e78. Candidate adds only the research source after preregistration. Initial and final PR captures and raw subject byte/hash bindings accompany this report. No judge or source was amended by the auditor. The verdict remains attached to the frozen candidate/body above.
+
+FAIL/REVISE means this exact source is not accepted for integration until the narrow line87 scope defect is corrected and the changed frozen source receives the applicable review. J1-J4 and the principal theorem survive; do not discard or weaken them. No mathematical recomputation or modified judges are required to understand the objection. Any later accepted source still requires separate CI and unchanged normal merge after PR255. It belongs in the existing grouped revision, with the exact308 PDF and its ongoing assessment untouched. No score, PDF assessment, publication, human-independence claim or source308 verdict is produced.

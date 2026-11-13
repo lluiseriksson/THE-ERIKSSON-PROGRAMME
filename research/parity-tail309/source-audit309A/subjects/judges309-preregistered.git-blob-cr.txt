@@ -1,0 +1,16 @@
+JUDGES309 — parity background / critical tilt synthesis
+Registered before acceptance of source309. Source parent8ac81a6f3f70aa552cc957d45abaf3f0fab90e65; exact308 PDF is frozen elsewhere and must not be changed or rescored by this route.
+
+Single active mathematical question: for fixed0<rho<1, s=(1+rho)/(1-rho) and a fixed cutoff0<K<1, how large a strict K-tail moment budget is compatible with normalized transfer-gap collapse? The exact optimal curve is not presumed known.
+
+Bounded candidate: mix a bounded mean-one parity background on one block with the critical balanced product tilt on a disjoint growing block. Seek collapse with a strict K-tail budget below2 for some K<1, even with a prescribed floor b<K. Do not claim sharpness, exact equality-budget attainability, simultaneous matching of all labelled marginals, physical/local/continuum implications or historical priority.
+
+J1: Define all measures, normalized noise operators, dimensions, scalar normalization, floors and strict events. Treat finite prefixes and every dimension explicitly.
+J2: Prove the operator identity and norm bound for the parity multiplier in the Walsh basis. Derive actual top-two eigenvalue limits from the previously proved balanced critical tilt, not just test-vector Rayleigh quotients. Tensor products and AA*/A*A multiplicities must be justified.
+J3: Prove strict-tail convergence separately in the two parity sectors. Noninteger s>1 and the moving cutoff after normalization must be covered. Mere convergence in probability does not justify moment limits. State and prove the required mixed-power bound or give its exact proved source.
+J4: Turn asymptotic strict slack into all-dimension inequalities by a legitimate finite-prefix replacement. Quantifiers on rho,s,K,b,u,tau and every parameter are explicit. No equality or optimal-curve claim follows from a strict-slack argument.
+J5: Compare the resulting parameter region with the existing sufficient bound from the total moment and distinguish a counterexample to an overbroad proposed inference from a literature refutation. Preserve negative results/remaining interval. Primary-source comparison must distinguish classical mechanisms, correctness, unestablished originality and relevance.
+J6: Distinct auditor, exact frozen SHA and normalized PR-body bytes/hash, no inbound. No mathematical computations/builds on Windows; no numerical or formal verification claim. Required checks and unchanged normal merge after source308 remain mandatory. This is research source for later grouped integration, not a separate small paper or a change to the ongoing exact308 assessment.
+
+Falsifier: a failure of the parity norm estimate, the spectral tensor comparison, the strict-event moment limit, or the claimed nonempty tau<2 interval invalidates the proposed construction. Preserve all adverse findings.
+Abandonment: after three substantive units without a new verified bound/counterexample, retain results and switch route or identify the precise blocking inequality. Do not claim the full optimal cutoff-budget curve from this first construction.

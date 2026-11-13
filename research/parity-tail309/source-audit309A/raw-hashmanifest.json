@@ -1,0 +1,113 @@
+{
+  "scope": "Every file except this manifest and its separate checksum; hashes identify raw file bytes, with per-file representation stated",
+  "files": [
+    {
+      "path": "assignment-received.txt",
+      "bytes": 1867,
+      "sha256": "6253f4d7e4238b1cf8de309742ff19db517ee2f55bf52bf9a1ff305b984e4007",
+      "representation": "UTF-8 no BOM; LF"
+    },
+    {
+      "path": "context-and-scope.txt",
+      "bytes": 4260,
+      "sha256": "1010f11e319a8a8fbbde038c2fe952599b26cda44b1a1d6290e2b6b46d8aa393",
+      "representation": "UTF-8 no BOM; LF"
+    },
+    {
+      "path": "final-state.json",
+      "bytes": 1422,
+      "sha256": "ffe01dbfe0fb098439af6f39a9e88dc51e4f892088a7da10ff543b7c1484cedd",
+      "representation": "UTF-8 no BOM; PowerShell ConvertTo-Json serialization; no line normalization"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 17793,
+      "sha256": "9e3cf288978aca5f1dc1355ef93c166d59bace158f22f8a39ecc5f885cd2f993",
+      "representation": "UTF-8 no BOM; LF"
+    },
+    {
+      "path": "git-metadata.txt",
+      "bytes": 1052,
+      "sha256": "50a588f3cac79762b5d8914c9ef3be76a762ab9218a123562f3a8f0d0b5ef9c9",
+      "representation": "UTF-8 no BOM; LF"
+    },
+    {
+      "path": "pr256-final-body.normalized.txt",
+      "bytes": 888,
+      "sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+      "representation": "JSON-decoded body; CRLF/CR->LF; trim terminal LF+one LF; UTF-8 no BOM"
+    },
+    {
+      "path": "pr256-final-capture.json",
+      "bytes": 959,
+      "sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+      "representation": "gh stdout JSON text saved UTF-8 no BOM plus terminal LF; not raw HTTP"
+    },
+    {
+      "path": "pr256-initial-body.normalized.txt",
+      "bytes": 888,
+      "sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+      "representation": "JSON-decoded body; CRLF/CR->LF; trim terminal LF+one LF; UTF-8 no BOM"
+    },
+    {
+      "path": "pr256-initial-capture.json",
+      "bytes": 959,
+      "sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+      "representation": "gh stdout JSON text saved UTF-8 no BOM plus terminal LF; not raw HTTP"
+    },
+    {
+      "path": "primary-reading.txt",
+      "bytes": 2155,
+      "sha256": "413d15a769d2a75530f7e1ee7918cc57077a1450654d51051921f7da4e087b24",
+      "representation": "UTF-8 no BOM; LF"
+    },
+    {
+      "path": "source-bindings.json",
+      "bytes": 3275,
+      "sha256": "f1feae6725360b7fc1a284348248bff1b779984cb2cca5086f5a513efb72a623",
+      "representation": "UTF-8 no BOM; PowerShell ConvertTo-Json serialization; no line normalization"
+    },
+    {
+      "path": "subjects/CLAUDE.git-lf.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "representation": "Exact Git blob bytes with LF line endings; no normalization"
+    },
+    {
+      "path": "subjects/critical299A.git-lf.txt",
+      "bytes": 11309,
+      "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+      "representation": "Exact Git blob bytes with LF line endings; no normalization"
+    },
+    {
+      "path": "subjects/judges309-candidate.git-blob-cr.txt",
+      "bytes": 3098,
+      "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+      "representation": "Exact Git blob bytes with CR present; no normalization"
+    },
+    {
+      "path": "subjects/judges309-preregistered.git-blob-cr.txt",
+      "bytes": 3098,
+      "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+      "representation": "Exact Git blob bytes with CR present; no normalization"
+    },
+    {
+      "path": "subjects/manuscript308A.git-lf.tex",
+      "bytes": 73400,
+      "sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+      "representation": "Exact Git blob bytes with LF line endings; no normalization"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.git-lf.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "representation": "Exact Git blob bytes with LF line endings; no normalization"
+    },
+    {
+      "path": "subjects/parity-tail309A.git-lf.txt",
+      "bytes": 9834,
+      "sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+      "representation": "Exact Git blob bytes with LF line endings; no normalization"
+    }
+  ]
+}

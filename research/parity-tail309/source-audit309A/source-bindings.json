@@ -1,0 +1,72 @@
+[
+  {
+    "object_spec": "6d316907aa8804d156d965af940ba8d7ae553f41:research/parity-tail309/parity-tail309A.txt",
+    "file": "subjects\\parity-tail309A.git-lf.txt",
+    "git_blob": "401ce5856aa94c42408a27fdd9498f51929c78f9",
+    "bytes": 9834,
+    "sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+    "raw_blob_verified": true,
+    "contains_cr": false,
+    "representation": "Exact Git blob with LF line endings; no normalization"
+  },
+  {
+    "object_spec": "6d316907aa8804d156d965af940ba8d7ae553f41:papers/marginal-transfer/judges309.txt",
+    "file": "subjects\\judges309-candidate.git-blob-cr.txt",
+    "git_blob": "be6783ff11418c7993d3622f6ebcb72788623e78",
+    "bytes": 3098,
+    "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "raw_blob_verified": true,
+    "contains_cr": true,
+    "representation": "Exact Git blob; contains CR; no normalization"
+  },
+  {
+    "object_spec": "9b330688f3fc7defd0213470d02e8875eff4adee:papers/marginal-transfer/judges309.txt",
+    "file": "subjects\\judges309-preregistered.git-blob-cr.txt",
+    "git_blob": "be6783ff11418c7993d3622f6ebcb72788623e78",
+    "bytes": 3098,
+    "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "raw_blob_verified": true,
+    "contains_cr": true,
+    "representation": "Exact Git blob; contains CR; no normalization"
+  },
+  {
+    "object_spec": "49705281f05ab18b71bd9ebc2da1985a0433340c:research/critical299/critical299A.txt",
+    "file": "subjects\\critical299A.git-lf.txt",
+    "git_blob": "650f87caf3fc972eb55350d6ef43b2fa12f1f094",
+    "bytes": 11309,
+    "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "raw_blob_verified": true,
+    "contains_cr": false,
+    "representation": "Exact Git blob with LF line endings; no normalization"
+  },
+  {
+    "object_spec": "8ac81a6f3f70aa552cc957d45abaf3f0fab90e65:papers/marginal-transfer/manuscript308A.tex",
+    "file": "subjects\\manuscript308A.git-lf.tex",
+    "git_blob": "2885c197125d8fcd820fc7868d5bd2cf5be74e7a",
+    "bytes": 73400,
+    "sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+    "raw_blob_verified": true,
+    "contains_cr": false,
+    "representation": "Exact Git blob with LF line endings; no normalization"
+  },
+  {
+    "object_spec": "6d316907aa8804d156d965af940ba8d7ae553f41:CLAUDE.md",
+    "file": "subjects\\CLAUDE.git-lf.md",
+    "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+    "bytes": 23996,
+    "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "raw_blob_verified": true,
+    "contains_cr": false,
+    "representation": "Exact Git blob with LF line endings; no normalization"
+  },
+  {
+    "object_spec": "6d316907aa8804d156d965af940ba8d7ae553f41:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "file": "subjects\\OPERATIONAL-GOVERNANCE-CHARTER.git-lf.md",
+    "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+    "bytes": 13573,
+    "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "raw_blob_verified": true,
+    "contains_cr": false,
+    "representation": "Exact Git blob with LF line endings; no normalization"
+  }
+]
