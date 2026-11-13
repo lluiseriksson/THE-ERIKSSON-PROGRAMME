@@ -1,0 +1,27 @@
+commit 6d316907aa8804d156d965af940ba8d7ae553f41
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:02:16 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 16:02:16 2026 +0100
+
+    source309 judges9b330688f: synthesize parity backgrounds and critical tails
+
+commit 9b330688f3fc7defd0213470d02e8875eff4adee
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:00:00 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 16:00:00 2026 +0100
+
+    judges309 parent8ac81a6: preregister parity-background tail synthesis
+
+commit 8ac81a6f3f70aa552cc957d45abaf3f0fab90e65
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 15:40:04 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 15:40:04 2026 +0100
+
+    base f79da4fca764: include preserved307 transport logs named by inventory
+
+Working tree initial status (untracked entries are unrelated and uninspected):
+?? _drafts/
+?? _tmp/

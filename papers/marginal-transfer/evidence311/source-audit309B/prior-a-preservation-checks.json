@@ -1,0 +1,128 @@
+[
+  {
+    "path": "assignment-received.txt",
+    "bytes": 1867,
+    "sha256": "6253f4d7e4238b1cf8de309742ff19db517ee2f55bf52bf9a1ff305b984e4007",
+    "git_blob": "4406e84a623699f4c1e23dd22a214128c0fb9ea8",
+    "matches_original_a": true
+  },
+  {
+    "path": "context-and-scope.txt",
+    "bytes": 4260,
+    "sha256": "1010f11e319a8a8fbbde038c2fe952599b26cda44b1a1d6290e2b6b46d8aa393",
+    "git_blob": "ede304b0a33d7d97d90ae723e5526d1f9548fdc7",
+    "matches_original_a": true
+  },
+  {
+    "path": "final-state.json",
+    "bytes": 1422,
+    "sha256": "ffe01dbfe0fb098439af6f39a9e88dc51e4f892088a7da10ff543b7c1484cedd",
+    "git_blob": "a7638666356e9d733bbf70830c969dfea32909cb",
+    "matches_original_a": true
+  },
+  {
+    "path": "full-report.txt",
+    "bytes": 17793,
+    "sha256": "9e3cf288978aca5f1dc1355ef93c166d59bace158f22f8a39ecc5f885cd2f993",
+    "git_blob": "6f1a1ff9bac677418321d348800da2827ef7f5cd",
+    "matches_original_a": true
+  },
+  {
+    "path": "git-metadata.txt",
+    "bytes": 1052,
+    "sha256": "50a588f3cac79762b5d8914c9ef3be76a762ab9218a123562f3a8f0d0b5ef9c9",
+    "git_blob": "e5f9b6634b29150e7e53b65df4f736ad7d379ff9",
+    "matches_original_a": true
+  },
+  {
+    "path": "pr256-final-body.normalized.txt",
+    "bytes": 888,
+    "sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+    "git_blob": "a7bb3b80df077a2ddafadb5a5eb270273b5725fa",
+    "matches_original_a": true
+  },
+  {
+    "path": "pr256-final-capture.json",
+    "bytes": 959,
+    "sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+    "git_blob": "e3e72d773a72a1d1847876512e4a31319fa4e190",
+    "matches_original_a": true
+  },
+  {
+    "path": "pr256-initial-body.normalized.txt",
+    "bytes": 888,
+    "sha256": "9e4004c9c1900b6100092ca7de389a166867b2a4dbf63bfdc05ee3b785c33319",
+    "git_blob": "a7bb3b80df077a2ddafadb5a5eb270273b5725fa",
+    "matches_original_a": true
+  },
+  {
+    "path": "pr256-initial-capture.json",
+    "bytes": 959,
+    "sha256": "d0d7980fdc70408b527554e90980de6a3b0540dc632942f5e7d258e4ca389ea5",
+    "git_blob": "e3e72d773a72a1d1847876512e4a31319fa4e190",
+    "matches_original_a": true
+  },
+  {
+    "path": "primary-reading.txt",
+    "bytes": 2155,
+    "sha256": "413d15a769d2a75530f7e1ee7918cc57077a1450654d51051921f7da4e087b24",
+    "git_blob": "89aaec9e10aa7df432d26b4b56d303645089238e",
+    "matches_original_a": true
+  },
+  {
+    "path": "source-bindings.json",
+    "bytes": 3275,
+    "sha256": "f1feae6725360b7fc1a284348248bff1b779984cb2cca5086f5a513efb72a623",
+    "git_blob": "c0098707f80887dbec015877338b01479d0257c5",
+    "matches_original_a": true
+  },
+  {
+    "path": "subjects/CLAUDE.git-lf.md",
+    "bytes": 23996,
+    "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+    "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+    "matches_original_a": true
+  },
+  {
+    "path": "subjects/critical299A.git-lf.txt",
+    "bytes": 11309,
+    "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+    "git_blob": "650f87caf3fc972eb55350d6ef43b2fa12f1f094",
+    "matches_original_a": true
+  },
+  {
+    "path": "subjects/judges309-candidate.git-blob-cr.txt",
+    "bytes": 3098,
+    "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "git_blob": "be6783ff11418c7993d3622f6ebcb72788623e78",
+    "matches_original_a": true
+  },
+  {
+    "path": "subjects/judges309-preregistered.git-blob-cr.txt",
+    "bytes": 3098,
+    "sha256": "812d1c35f5537dd3b7e4c01bc5cc8fbee52699d8984517c8f48b4bc1740c22ca",
+    "git_blob": "be6783ff11418c7993d3622f6ebcb72788623e78",
+    "matches_original_a": true
+  },
+  {
+    "path": "subjects/manuscript308A.git-lf.tex",
+    "bytes": 73400,
+    "sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+    "git_blob": "2885c197125d8fcd820fc7868d5bd2cf5be74e7a",
+    "matches_original_a": true
+  },
+  {
+    "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.git-lf.md",
+    "bytes": 13573,
+    "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+    "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+    "matches_original_a": true
+  },
+  {
+    "path": "subjects/parity-tail309A.git-lf.txt",
+    "bytes": 9834,
+    "sha256": "29fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575",
+    "git_blob": "401ce5856aa94c42408a27fdd9498f51929c78f9",
+    "matches_original_a": true
+  }
+]

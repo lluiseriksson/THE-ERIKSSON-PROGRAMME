@@ -1,0 +1,31 @@
+commit 4e0a30274f0e5479788990d24eda043f8b057933
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:11:20 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 16:11:20 2026 +0100
+
+    source309B preserve original audit raw bytes without newline conversion
+
+commit 7449e48dcd42e9c7e9ff37c7bfce420eda7c8a0b
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:10:59 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 16:10:59 2026 +0100
+
+    source309B after auditFAIL6d316907: restrict comparison floor and preserve adverse report
+
+commit 6d316907aa8804d156d965af940ba8d7ae553f41
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:02:16 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 16:02:16 2026 +0100
+
+    source309 judges9b330688f: synthesize parity backgrounds and critical tails
+
+commit 9b330688f3fc7defd0213470d02e8875eff4adee
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:00:00 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 16:00:00 2026 +0100
+
+    judges309 parent8ac81a6: preregister parity-background tail synthesis

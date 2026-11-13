@@ -1,0 +1,4 @@
+* -text
+**/* -text
+* whitespace=cr-at-eol
+**/* whitespace=cr-at-eol

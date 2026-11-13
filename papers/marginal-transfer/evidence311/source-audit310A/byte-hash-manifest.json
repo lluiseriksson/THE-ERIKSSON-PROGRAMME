@@ -1,0 +1,178 @@
+{
+  "created_utc": "2026-11-13T15:30:59.2263919Z",
+  "directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-310\\source-audit310A",
+  "exclusions": [
+    "byte-hash-manifest.json (self)",
+    "manifest.sha256.txt (manifest digest sidecar)"
+  ],
+  "entries": [
+    {
+      "name": "assignment.txt",
+      "bytes": 1890,
+      "sha256": "0089556c4128979673ac6f2cfcfe622b8a13916b573e9ad96c2e78a6ebb9f7cb",
+      "representation": "Evidence text written UTF-8 without BOM; stored line endings retained; no post-write normalization"
+    },
+    {
+      "name": "candidate-diff.git.txt",
+      "bytes": 44,
+      "sha256": "065bc6bf29f6573160a0c0b55c7f2fb301f45127b825160d565ab45295f223fe",
+      "representation": "Exact Git stdout bytes captured from BaseStream; for source/judges/manuscript this is the unmodified Git blob; no newline or encoding conversion"
+    },
+    {
+      "name": "charter.checkout.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "representation": "Unmodified Windows checkout/local file bytes copied by Copy-Item; no normalization"
+    },
+    {
+      "name": "CLAUDE.checkout.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "representation": "Unmodified Windows checkout/local file bytes copied by Copy-Item; no normalization"
+    },
+    {
+      "name": "context.txt",
+      "bytes": 999,
+      "sha256": "9634ca5b6cbb36644ecb764816b3cf00d44e574ac17cf86e35056b1c5f1ddc66",
+      "representation": "Evidence text written UTF-8 without BOM; stored line endings retained; no post-write normalization"
+    },
+    {
+      "name": "critical299.frozen.git.txt",
+      "bytes": 11309,
+      "sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+      "representation": "Exact Git stdout bytes captured from BaseStream; for source/judges/manuscript this is the unmodified Git blob; no newline or encoding conversion"
+    },
+    {
+      "name": "drive-instructions.checkout.md",
+      "bytes": 16801,
+      "sha256": "3502d37a3f765ea2e867f1379917b25b7d458c03500b682b2b3403210181b1b8",
+      "representation": "Unmodified Windows checkout/local file bytes copied by Copy-Item; no normalization"
+    },
+    {
+      "name": "full-report.txt",
+      "bytes": 24005,
+      "sha256": "28a3d0e297440002d9d0366097072669802ad15294cc85246bfd393b7c260f88",
+      "representation": "Evidence text written UTF-8 without BOM; stored line endings retained; no post-write normalization"
+    },
+    {
+      "name": "head.final.txt",
+      "bytes": 41,
+      "sha256": "a6f15bac7c4b5cc83189a5543abc8a592f3ec901b2516443976655a9f81a210e",
+      "representation": "Exact git stdout bytes; no normalization"
+    },
+    {
+      "name": "head.initial.txt",
+      "bytes": 41,
+      "sha256": "a6f15bac7c4b5cc83189a5543abc8a592f3ec901b2516443976655a9f81a210e",
+      "representation": "Exact git stdout bytes; no normalization"
+    },
+    {
+      "name": "judges310.candidate.git.txt",
+      "bytes": 3609,
+      "sha256": "f4404073a0d7df56529d01ecc27b8b4c3d88a148f5f25b7d6bc4df59ce27eb42",
+      "representation": "Exact Git stdout bytes captured from BaseStream; for source/judges/manuscript this is the unmodified Git blob; no newline or encoding conversion"
+    },
+    {
+      "name": "judges310.registered.git.txt",
+      "bytes": 3609,
+      "sha256": "f4404073a0d7df56529d01ecc27b8b4c3d88a148f5f25b7d6bc4df59ce27eb42",
+      "representation": "Exact Git stdout bytes captured from BaseStream; for source/judges/manuscript this is the unmodified Git blob; no newline or encoding conversion"
+    },
+    {
+      "name": "manuscript308.frozen.git.tex",
+      "bytes": 73400,
+      "sha256": "a58b4d312a5e8af6bd238d340b646332d4a62cf9ff423e6f09a9db67c4a5d5bb",
+      "representation": "Exact Git stdout bytes captured from BaseStream; for source/judges/manuscript this is the unmodified Git blob; no newline or encoding conversion"
+    },
+    {
+      "name": "parent-pr257-body.txt",
+      "bytes": 1045,
+      "sha256": "fb847e53333685eb1d4059626632a75d6307d9519517b5294d88f5ee74b97706",
+      "representation": "Unmodified copy of named parent evidence file; no normalization during this audit"
+    },
+    {
+      "name": "parent-pr257-initial.json",
+      "bytes": 1904,
+      "sha256": "d687b357f033cecde8ca55a86c61a3ecf2635200aed13eb47eaaa3738ec2bab4",
+      "representation": "Unmodified copy of named parent evidence file; no normalization during this audit"
+    },
+    {
+      "name": "pr257.body.final.normalized.txt",
+      "bytes": 1045,
+      "sha256": "fb847e53333685eb1d4059626632a75d6307d9519517b5294d88f5ee74b97706",
+      "representation": "JSON-decoded PR body; CRLF/CR to LF; all terminal LF removed then exactly one LF appended; UTF-8 without BOM"
+    },
+    {
+      "name": "pr257.body.normalized.txt",
+      "bytes": 1045,
+      "sha256": "fb847e53333685eb1d4059626632a75d6307d9519517b5294d88f5ee74b97706",
+      "representation": "JSON-decoded PR body; CRLF/CR to LF; all terminal LF removed then exactly one LF appended; UTF-8 without BOM"
+    },
+    {
+      "name": "pr257.final.raw.json",
+      "bytes": 1116,
+      "sha256": "97415320eaf01cc850f78b7872ba0a6483184e07ff8c951d9702ae7466c5fe36",
+      "representation": "Raw gh stdout bytes from --json body,headRefOid; no normalization"
+    },
+    {
+      "name": "pr257.initial.raw.json",
+      "bytes": 1116,
+      "sha256": "97415320eaf01cc850f78b7872ba0a6483184e07ff8c951d9702ae7466c5fe36",
+      "representation": "Raw gh stdout bytes from --json body,headRefOid; no normalization"
+    },
+    {
+      "name": "primary-bertsimas-popescu.pdf",
+      "bytes": 254804,
+      "sha256": "1eceb8733ef9d56e45cda38b55afcb0d624a6eff9d1949e6801d402065d3063a",
+      "representation": "Raw downloaded primary-source HTTP response body, no normalization"
+    },
+    {
+      "name": "primary-gluck-v6.html",
+      "bytes": 508616,
+      "sha256": "6a4a886182430e316d9b8fbf2c0b1e3f6dca56a0588750fd2252f7b2d22003ac",
+      "representation": "Raw downloaded primary-source HTTP response body, no normalization"
+    },
+    {
+      "name": "primary-mos-v5.html",
+      "bytes": 1070285,
+      "sha256": "2656883dc19880003631ad84488310ea2092f1aeae998024e04196727b31df34",
+      "representation": "Raw downloaded primary-source HTTP response body, no normalization"
+    },
+    {
+      "name": "provenance.git.txt",
+      "bytes": 1070,
+      "sha256": "30707bf2c3bc2a8ab91b8668ef8d90ad28773c0f9189a00f6d49240b6ade7c6d",
+      "representation": "Exact Git stdout bytes captured from BaseStream; for source/judges/manuscript this is the unmodified Git blob; no newline or encoding conversion"
+    },
+    {
+      "name": "source310.git.txt",
+      "bytes": 14735,
+      "sha256": "b68d5439a6eafad23023251795a9ac8d8bea40620670ad51b03c3c2d7a6314bc",
+      "representation": "Exact Git stdout bytes captured from BaseStream; for source/judges/manuscript this is the unmodified Git blob; no newline or encoding conversion"
+    },
+    {
+      "name": "stability.json",
+      "bytes": 887,
+      "sha256": "c666ca5a1a832a20cdfb29062ce32afff3e1afa5fcd085e29d77914b775bc1c1",
+      "representation": "Evidence text written UTF-8 without BOM; stored line endings retained; no post-write normalization"
+    },
+    {
+      "name": "status.final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "representation": "Exact git stdout bytes; no normalization"
+    },
+    {
+      "name": "status.initial.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "representation": "Exact git stdout bytes; no normalization"
+    },
+    {
+      "name": "verdict.json",
+      "bytes": 1447,
+      "sha256": "249fa882a6ca80000cc777a28bb2e452b461dceac7e8acf43974cd0088207afa",
+      "representation": "Evidence text written UTF-8 without BOM; stored line endings retained; no post-write normalization"
+    }
+  ]
+}

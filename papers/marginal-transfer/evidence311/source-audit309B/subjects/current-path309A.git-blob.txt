@@ -1,0 +1,91 @@
+PARITY BACKGROUNDS AND A SUB-TWO TAIL BUDGET BELOW CUTOFF ONE — SOURCE309A
+Judges309 registered9b330688f; parent source8ac81a6f3f70aa552cc957d45abaf3f0fab90e65. Analytical candidate for a later grouped revision. The frozen308 PDF/review is unaffected. No numerical/formal verification or independent historical-priority claim.
+
+1. Conventions and bounded statement
+On the uniform Boolean cube Omega_L={-1,1}^L, let P_L have Walsh multipliers rho^|S|, with fixed0<rho<1, and Q_L=P_{sqrt(rho),L}. For a positive mean-one density r define T_r=M_sqrt(r) P_L M_sqrt(r) and gap=1-lambda2(T_r)/lambda1(T_r). Eigenvalues are in decreasing order with multiplicity. Put s=(1+rho)/(1-rho)>1.
+
+Theorem candidate. Fix
+ 2-2^(1/s)<K<1, 0<b<K,
+ and any tau with 1+(2-K)^s/2<tau<2.
+There is a family of strictly positive densities r_L for every integerL>=1 with
+ E r_L=1, r_L>=b, E[r_L^s 1_{r_L>K}]<=tau,
+ lambda1(T_r_L)->1, lambda2(T_r_L)->1, gap(T_r_L)->0.
+In particular a K-tail budget strictly below2, at a cutoff strictly below1, need not guarantee a dimension-independent gap. This is a counterexample to that proposed inference, not a refutation of a cited theorem. It does not identify the optimal cutoff-budget curve or attain its proposed upper bound at equality.
+
+Stronger parameter description. Choose u with max(b,2-2^(1/s))<u<K and 1+(2-u)^s/2<tau. Such u exists by continuity and strict slack. Put v=2-u. The construction has the exact limits
+ E[r_L^s 1_{r_L>K}]->1+v^s/2,
+ E r_L^s->1+(u^s+v^s)/2.
+The latter exceeds2 since u!=v and their mean is1. Thus this statement does NOT impose the exact total moment cap2 of the earlier critical construction. The same family obeys the stated upper tail budget for every J>=K by pointwise event inclusion, but the displayed tail limit is for this fixedK with u<K<v.
+
+2. The exact inherited critical family
+Use the balanced critical product tilt proved in Theorems12-13 of papers/marginal-transfer/manuscript308A.tex at8ac81a6f3f70aa552cc957d45abaf3f0fab90e65. Its source proof is critical299 at49705281f05ab18b71bd9ebc2da1985a0433340c. On n bits choose sufficiently small fixedd>0, delta_n=d n^(-1/3),
+ N(delta)=(((1+delta)^s+(1-delta)^s)/2)^(1/s),
+ R_n(y)=product_i(1+delta_n y_i)/N(delta_n),
+ m_n=E R_n=N(delta_n)^(-n),
+ kappa(delta)=(1+rho+sqrt((1-rho)^2+4rho delta^2))/(2N(delta)),
+ beta_n=kappa(delta_n)^(-n), Z_n=1+beta_n m_n,
+ w_n=(1+beta_n R_n)/Z_n.
+The proved properties actually used are
+ R_n>0, E R_n^s=1, E R_n^t->0 for each0<t<s,
+ m_n->0, beta_n->1, Z_n->1,
+ lambda1(T_w_n)->1 and lambda2(T_w_n)->1.
+The final two are actual eigenvalue limits from the balanced Gram comparison. They are not inferred solely from two trial vectors. All constants and limits fixrho ands first. In particular R_n->0 in probability by Markov at any0<t<s. We do not use the later cutoff-one dilution coefficients of source306.
+
+3. A bounded parity background invisible in operator norm
+For m>=1 define chi_m(x)=product_{i=1}^m x_i and
+ a_m(x)=1+(u-1)chi_m(x).
+Exactly half the cube has a_m=u and half has a_m=v=2-u. Hence E a_m=1 and a_m>=u>0.
+For any Walsh character chi_S,
+ Q_m M_chi_m Q_m chi_S
+ =rho^(|S|/2) rho^((m-|S|)/2) chi_{[m] symmetric_difference S}
+ =rho^(m/2) chi_{[m] symmetric_difference S}.
+The character-complement map permutes an orthonormal basis and is unitary. Consequently
+ ||Q_m M_chi_m Q_m||=rho^(m/2),
+ ||Q_m M_a_m Q_m-P_m||=(1-u)rho^(m/2).
+This is an exact finite identity, not a limiting spectral assumption or a new hypercontractive theorem.
+
+4. Independent blocks and the actual top-two eigenvalues
+For largeL put m=floor(L/2),n=L-m, so both tend to infinity and are positive. On the independent m and n blocks define
+ q_L(x,y)=a_m(x)+beta_n R_n(y), r_L=q_L/Z_n.
+Mean one is exact. Also r_L>=u/Z_n, so eventually r_L>=b.
+For any density f, S_f=Q_L M_f Q_L has the same full spectrum as T_f: take A=M_sqrt(f) Q_L, so T_f=AA* and S_f=A*A are square of equal size and have identical eigenvalues including multiplicities. All functions here are positive.
+Tensorization and linearity give exactly
+ S_r_L=[(Q_m M_a_m Q_m) tensor P_n + beta_n P_m tensor (Q_n M_R_n Q_n)]/Z_n.
+Let B_L=P_m tensor S_w_n. Then
+ ||S_r_L-B_L|| <=(1-u)rho^(m/2)/Z_n ->0,
+because ||P_n||=1.
+Every eigenvalue of B_L is a product of one eigenvalue of P_m (all in(0,1], the top equal1) and one of S_w_n (positive). Therefore lambda1(B_L)=lambda1(S_w_n), while lambda2(B_L)>=lambda2(S_w_n) by the two eigenvectors using the constant m-bit factor, and lambda2(B_L)<=lambda1(B_L). Both leading eigenvalues of B_L tend to1. The self-adjoint min-max perturbation inequality transfers both limits to S_r_L, hence to the actual T_r_L. Since lambda1->1>0, its normalized gap tends to zero. For each finiteL, T_r_L is strictly entrywise positive, so its Perron gap is nevertheless positive.
+
+5. Moment limits, including the strict moving-cutoff event
+We use a mixed-power estimate valid for every real s>1. Put theta=min(1,s/2), so0<theta<s. For all c>0,z>=0,
+ 0<=(c+z)^s-c^s-z^s<=s2^(s-1)(c^(s-theta)z^theta+c^theta z^(s-theta)). (M)
+To check it, scale by c^s and write y=z/c. For0<=y<=1, the mean value theorem gives (1+y)^s-1<=s2^(s-1)y<=s2^(s-1)y^theta; subtracting y^s only lowers this. For y>=1 exchange c and z, or divide by y^s and apply the first case to1/y. Nonnegativity follows from convexity/integration, since (1+y)^s>=1+y^s. This proves(M) for noninteger exponents too.
+
+Apply(M) with z=beta_n R_n, where beta_n is bounded and tends to1, and c fixed at u orv. The two mixed-moment expectations tend to zero, whereas E z^s=beta_n^s->1. Thus
+ E(c+beta_n R_n)^s -> c^s+1. (A)
+The full critical moment limit follows by averaging u andv sectors and dividing by Z_n^s->1.
+
+In the high sector c=v>K, v/Z_n>K eventually. The strict event r_L>K therefore contains the entire high sector, whose conditional tail moment tends to v^s+1 by(A).
+
+In the low sector c=u<K, the exact strict event is
+ R_n>c_n:=(K Z_n-u)/beta_n.
+Since beta_n->1 and Z_n->1, c_n->K-u>0; eventually it lies in[c_-,c_+] for fixed0<c_-<c_+<infinity. Markov and any0<t<s give P(R_n>c_n)<=c_-^(-t)E R_n^t->0. Also
+ E[R_n^s 1_{R_n<=c_n}]<=c_+^(s-t)E R_n^t->0,
+so E[R_n^s 1_{R_n>c_n}]->1. Restrict(M) to this event. Its mixed terms have expectation bounded by the unrestricted ones already tending to zero; the constant term u^s times the event probability tends to zero. It follows that
+ E[(u+beta_n R_n)^s 1_{R_n>c_n}]->1.
+After division by Z_n^s, the conditional low-sector tail limit is1. The two parity sectors each have probability1/2 and are independent of R_n. Hence the full strict-tail limit is
+ (v^s+1)/2+1/2=1+v^s/2,
+as claimed. This argument explicitly pays for the varying strict cutoff and does not infer moment convergence from convergence in probability.
+
+6. All dimensions, floors, budget and nonempty sub-two region
+By the choice ofu, the limiting tail moment is strictly less thantau<2. Choose L0 so that for every L>=L0 the tail moment is at mosttau, u/Z_n>=b, and m,n>=1. For1<=L<L0 define r_L=1. Then its mean and floor hold, and becauseK<1 its strict-tail moment is1<=tau. Finite-prefix replacement preserves all asymptotic eigenvalue/moment conclusions. There is no claimed effective optimal L0.
+The interval foru exists because 2-2^(1/s)<K and b<K. Its inequalityu>2-2^(1/s) is equivalent to v^s/2<1, so the required tau<2 interval is nonempty. By takingu sufficiently close toK from below, every tau>1+(2-K)^s/2 is admitted. Equality is not proved; neither u=K nor a movingu_L may be inserted into the strict-event proof without additional work.
+
+7. Remaining gap in the classification and cross-paper significance
+For an arbitrary mean-one nonnegative density with fixed0<K<1 and K-tail moment<=tau, the elementary inequality r^s1_{r<=K}<=K^(s-1)r implies E r^s<=K^(s-1)+tau. Theorem13 of the exact308 source then guarantees
+ gap(T_r)>=1-((K^(s-1)+tau)/2)^(1/s)>0
+when tau<2-K^(s-1). This sufficient region remains intact. Our upper construction establishes collapse above1+(2-K)^s/2 for K>2-2^(1/s), b<K. No equality or optimal boundary between these regions is claimed. When b>K, every density is entirely above the cutoff, so the condition is a total moment cap; the old exact total-budget threshold2 applies. This observation is not asserted for the strict equality floorb=K.
+
+The synthesis is substantive in the active route: it joins the bounded parity multiplier (whose own transfer gap is stable) to a rare balanced critical tilt on disjoint coordinates. The parity component can redistribute the scalar K-tail moment while its smoothed multiplication perturbation vanishes. Neither component alone gives this sub-two K<1 tail conclusion in the stated form. No external-priority claim follows; the Fourier, tensor-product, min-max and product-tilt mechanisms are classical or explicitly inherited. This source belongs with the existing marginal/moment paper, not a separate short corollary paper.
+
+Primary context, limited scope. Mossel–Oleszkiewicz–Sen, On reverse hypercontractivity, https://arxiv.org/html/1108.1210v5 supplies the classical Boolean semigroup background used by the earlier proofs. Gluck, Spectral gaps for hyperbounded operators, https://arxiv.org/abs/1802.09422v6 (2019), concerns hyperbounded operators and essential spectral radii. The current parent's new lookup read the abstract/index and Mossel introduction; it is not a new full-text novelty clearance or proof that no known theorem implies this result. Earlier detailed comparisons remain in exact308 source. An initially mistyped lookup1802.09426 led to an unrelated summarization article; it is not a mathematical source and the correct identifier above was subsequently verified. No third-party fulltext is bundled. A distinct source audit must check correctness and the unresolved originality boundary before acceptance.

@@ -1,0 +1,250 @@
+\section{Optimized finite backgrounds below cutoff one}\label{sec:background}
+Fix $0<\rho<1$ and, throughout this section, set
+\[
+ s=\frac{1+\rho}{1-\rho},\qquad k_s=\frac{s-1}{s},\qquad
+ C_s=\frac{s^s}{(s-1)^{s-1}}.
+\]
+The cutoff-one result does not classify a fixed cutoff $K<1$ with
+a tail budget greater than one. We now combine long parities with the
+balanced critical tilt to give a sub-two collapse region. The sharp
+optimization below concerns a scalar background law, not the optimal
+spectral boundary among all densities.
+
+\begin{proposition}[Scalar background tail optimum]\label{prop:background-optimum}
+For $s>1$ and $0<K<1$, among nonnegative random variables $A$ with
+$\mathbb E A=1$,
+\[
+ \inf\mathbb E[A^s\mathbf1_{A>K}]=m_s(K),\qquad
+ m_s(K)=\begin{cases}
+ 1,&0<K\le k_s,\\
+ C_s(1-K)K^{s-1},&k_s<K<1.
+ \end{cases}
+\]
+For $K\le k_s$ the constant law $A=1$ attains the infimum. For $K>k_s$
+an attaining law has values $K$ and $v_*=sK/(s-1)$, with high probability
+$p_*=(s-1)(1-K)/K$. Replacing the strict event by $A\ge K$ leaves
+the infimum unchanged, but that infimum is not attained when $K>k_s$.
+\end{proposition}
+\begin{proof}
+For $K\le k_s$, convexity gives $y^s\ge1+s(y-1)$. If $y\le K$, the
+right side is nonpositive. Hence $y^s\mathbf1_{y>K}\ge1+s(y-1)$
+everywhere. Taking expectations gives the lower bound one, attained
+by $A=1$. The affine minorant is integrable even if the left side has
+infinite expectation.
+
+For $K>k_s$, the derivative of $y^s/(y-K)$ on $y>K$ has the sign
+of $(s-1)y-sK$. Its unique minimum is at $v_*$ and its value is
+$c=C_sK^{s-1}$. Thus
+\[
+ y^s\mathbf1_{y>K}\ge c(y-K)\qquad(y\ge0).
+\]
+Integration gives $c(1-K)$. The stated probabilities lie in $(0,1)$,
+have mean $K+p_*(v_*-K)=1$, and put mass only at the two equality
+points of the minorant. At $K=k_s$ this law degenerates to $A=1$.
+
+For the non-strict event the same lower bound holds. When $K>k_s$,
+choose $u<K$ tending to $K$ with $u>k_s$, high value $su/(s-1)$,
+and high probability $(s-1)(1-u)/u$. The high value exceeds $K$
+eventually, and the cost tends to $C_s(1-K)K^{s-1}$. Thus the
+infimum is unchanged. Equality in the affine minorant for the
+non-strict integrand is possible only at $v_*$: below $K$ its
+right side is strictly negative, and at $K$ its left side is $K^s>0$.
+Concentration at $v_*>1$ cannot have mean one, proving nonattainment.
+For $K\le k_s$, $A=1$ still attains one.
+\end{proof}
+
+This is an elementary instance of classical moment optimization by
+pointwise affine bounds; see Bertsimas and Popescu~\cite{BertsimasPopescu}
+for the general moment-duality setting. Neither that method nor the
+formula's external priority is claimed as new here.
+
+\begin{theorem}[Sub-two tail budgets with finite parity backgrounds]
+\label{thm:background-collapse}
+Fix $k_s<K<1$, $0<b<K$, and
+\[
+ 1+C_s(1-K)K^{s-1}<\tau<2.
+\]
+There are strictly positive densities $r_L$ on every Boolean cube
+of integer dimension $L\ge1$ satisfying
+\[
+ \mathbb E r_L=1,\qquad r_L\ge b,\qquad
+ \mathbb E[r_L^s\mathbf1_{r_L>K}]\le\tau,
+\]
+such that both leading eigenvalues of $T_{r_L}$ tend to one and
+$\gap(r_L)\to0$. The densities use global interactions. No marginal
+matching, locality, equality-budget attainability or optimal universal
+spectral threshold is asserted.
+\end{theorem}
+\begin{proof}
+\emph{A fixed dyadic background.}
+Write $g(u)=C_s(1-u)u^{s-1}$. On $(k_s,1)$,
+\[
+ g'(u)=C_su^{s-2}((s-1)-su)<0,
+\]
+and its endpoint values are one and zero. Strict budget slack permits
+a fixed $\max(b,k_s)<u<K$ with $1+g(u)<\tau$. The optimal high
+probability at lower value $u$ is $p_u=(s-1)(1-u)/u$.
+For $p\in(0,1)$ define $v(p)=u+(1-u)/p$. The mean
+$(1-p)u+pv(p)$ is exactly one and $pv(p)^s$ is continuous in $p$.
+Choose a fixed dyadic $p=j/2^k$ sufficiently close to $p_u$ that
+\[
+ 1+pv^s<\tau,\qquad v=v(p)>1>K,
+ \qquad k\ge1,\quad 1\le j<2^k.
+\]
+On $k$ unbiased signs choose a function $F$ equal to $v$ at $j$
+patterns and equal to $u$ elsewhere. Then $\mathbb EF=1$.
+Replace each sign by the parity of a disjoint block of $M$ unbiased
+bits, obtaining $a_M$ on $kM$ bits. Those parities are independent
+unbiased signs, so $a_M$ has exactly the same two-point law.
+All $u,v,p,k$ are fixed before the dimension grows.
+
+\emph{An operator-norm estimate for every character.}
+Let $Q_d=P_{\sqrt\rho,d}$ and let $\chi_U$ be a Walsh character.
+For any Walsh basis vector $\chi_S$,
+\[
+ Q_dM_{\chi_U}Q_d\chi_S
+ =\rho^{(|S|+|S\mathbin\triangle U|)/2}\chi_{S\mathbin\triangle U}
+ =\rho^{|U|/2+|S\setminus U|}\chi_{S\mathbin\triangle U}.
+\]
+This is a weighted permutation of an orthonormal basis. Its norm is
+exactly $\rho^{|U|/2}$, attained for $S\subset U$.
+Writing the finite Walsh expansion
+$F=1+\sum_{I\ne\varnothing}\widehat F(I)\chi_I$ and putting
+$D_F=\sum_{I\ne\varnothing}|\widehat F(I)|$, block substitution gives
+\[
+ \|Q_{kM}M_{a_M}Q_{kM}-P_{\rho,kM}\|
+ \le \sum_{I\ne\varnothing}|\widehat F(I)|\rho^{M|I|/2}
+ \le D_F\rho^{M/2}\longrightarrow0.                 \tag{31}
+\]
+Large fixed amplitudes or coefficients do not obstruct this limit.
+
+\emph{The inherited critical family and actual eigenvalues.}
+Use the balanced critical family in Theorem~\ref{thm:critical-exact}:
+with fixed small $d>0$, $\delta_n=dn^{-1/3}$ and
+\[
+ N(\delta)=\left(\frac{(1+\delta)^s+(1-\delta)^s}{2}\right)^{1/s},
+ \qquad R_n(y)=\prod_{i=1}^n\frac{1+\delta_n y_i}{N(\delta_n)},
+\]
+put
+\[
+ \kappa(\delta)=\frac{1+\rho+
+ \sqrt{(1-\rho)^2+4\rho\delta^2}}{2N(\delta)},\quad
+ \beta_n=\kappa(\delta_n)^{-n},\quad
+ Z_n=1+\beta_n\mathbb ER_n,\quad
+ w_n=\frac{1+\beta_nR_n}{Z_n}.
+\]
+The established balanced Gram estimates give the actual limits
+$\lambda_1(T_{w_n}),\lambda_2(T_{w_n})\to1$, not merely two
+trial-vector bounds. Also $\beta_n,Z_n\to1$, $\mathbb ER_n^s=1$,
+and $\mathbb ER_n^t\to0$ for every fixed $0<t<s$.
+The latter follows from the one-site expansion
+\[
+ \log\mathbb E\left[\frac{1+\delta Y}{N(\delta)}\right]^t
+ =\frac{t(t-s)}2\delta^2+O(\delta^4),
+\]
+since $n\delta_n^2\to\infty$ and $n\delta_n^4\to0$.
+
+For sufficiently large $L$ take $M=\lfloor L/(2k)\rfloor$ and
+$n=L-kM$. Both tend to infinity. On the two independent blocks set
+\[
+ r_L(x,y)=\frac{a_M(x)+\beta_nR_n(y)}{Z_n}.
+\]
+Its mean is one and its minimum is at least $u/Z_n$, eventually
+greater than $b$. The matrices $S_r=Q_LM_rQ_L$ and $T_r$ have the
+same full spectrum by the $AA^*$ and $A^*A$ identity with
+$A=M_{\sqrt r}Q_L$. Linearity and tensorization show
+\[
+ \left\|S_{r_L}-P_{\rho,kM}\otimes S_{w_n}\right\|
+ \le D_F\rho^{M/2}/Z_n\longrightarrow0.
+\]
+The tensor comparison has largest eigenvalue $\lambda_1(S_{w_n})$
+and second eigenvalue between $\lambda_2(S_{w_n})$ and
+$\lambda_1(S_{w_n})$: use the constant background eigenvector
+and the first two tilt eigenvectors for the lower bound. Positivity
+and the fact that the top background eigenvalue is one give the
+upper bound. Both leading eigenvalues therefore tend to one.
+The self-adjoint eigenvalue perturbation inequality transfers both
+limits to $S_{r_L}$ and hence $T_{r_L}$. Each finite matrix remains
+strictly positive, with a simple Perron root.
+
+\emph{Noninteger moments and the moving strict cutoff.}
+Let $\theta=\min(1,s/2)$. For $c>0,z\ge0$,
+\[
+ 0\le(c+z)^s-c^s-z^s
+ \le s2^{s-1}\big(c^{s-\theta}z^\theta+
+                   c^\theta z^{s-\theta}\big).       \tag{32}
+\]
+To prove this, divide by $c^s$ and put $y=z/c$. For $y\le1$,
+the mean value theorem bounds $(1+y)^s-1-y^s$ by
+$s2^{s-1}y\le s2^{s-1}y^\theta$. For $y\ge1$ interchange
+$c$ and $z$. Nonnegativity follows from convexity. Both powers
+$\theta,s-\theta$ lie strictly between zero and $s$.
+For $z=\beta_nR_n$, the mixed expectations vanish and
+$\mathbb Ez^s\to1$. Thus $\mathbb E(c+\beta_nR_n)^s\to c^s+1$.
+
+In the high sector, $v/Z_n>K$ eventually, so the entire sector
+contributes and its conditional tail moment tends to $v^s+1$.
+In the low sector the event is exactly $R_n>c_n$, where
+$c_n=(KZ_n-u)/\beta_n\to K-u>0$. Fix positive finite
+$c_-,c_+$ containing these thresholds eventually. For $0<t<s$,
+\[
+ \mathbb P(R_n>c_n)\le c_-^{-t}\mathbb ER_n^t\to0,
+ \qquad
+ \mathbb E[R_n^s\mathbf1_{R_n\le c_n}]
+ \le c_+^{s-t}\mathbb ER_n^t\to0.
+\]
+Consequently the strict event retains asymptotic $s$-moment one.
+In (32) restricted to this event, the constant term vanishes with
+its probability, and the mixed terms are bounded by their vanishing
+unrestricted expectations. After normalization, the low-sector
+tail moment tends to one. Averaging the fixed sector probabilities,
+\[
+ \mathbb E[r_L^s\mathbf1_{r_L>K}]
+ \longrightarrow (1-p)+p(v^s+1)=1+pv^s<\tau.
+\]
+This calculation does not infer moment convergence from convergence
+in probability. Indeed the full moment tends to
+$1+(1-p)u^s+pv^s>2$, by strict Jensen for the nonconstant background.
+
+Choose a common $L_0$ beyond which both blocks are positive, the
+floor holds and the tail cost is at most $\tau$. For $1\le L<L_0$
+set $r_L=1$. Its tail cost is one and its floor is valid since
+$b<K<1$. This finite replacement preserves all limits and proves
+the assertion in every dimension. No effective value of $L_0$ is claimed.
+\end{proof}
+
+\subsection*{Comparison and the unresolved spectral interval}
+The half-parity background with low value approaching $K$ and high
+value approaching $2-K$ has limiting scalar cost $(2-K)^s/2$.
+It gives collapse whenever
+\[
+ 2-2^{1/s}<K<1,\qquad 0<b<K,\qquad
+ 1+(2-K)^s/2<\tau<2.
+\]
+This is a specialization of the same proof with $p=1/2$ and
+$u<K$ chosen with strict slack. Proposition~\ref{prop:background-optimum}
+shows that the optimized cost is no larger. Equality occurs only
+when $2-K=sK/(s-1)$, that is $K=2(s-1)/(2s-1)$; outside this
+isolated value the cost improvement is strict. Strict convexity
+of $2^t$ below its chord on $0<t<1$ gives
+$2^{1/s}<1+1/s$. Hence the new interval $k_s<K<1$ strictly
+extends the half-parity sub-two interval.
+
+On the other hand, any mean-one density with tail budget at most
+$\tau$ obeys $\mathbb Er^s\le K^{s-1}+\tau$, since
+$r^s\mathbf1_{r\le K}\le K^{s-1}r\mathbf1_{r\le K}$.
+The established total-moment estimate therefore gives
+\[
+ \gap(r)\ge1-\left(\frac{K^{s-1}+\tau}{2}\right)^{1/s}>0
+ \quad\hbox{if }\tau<2-K^{s-1}.
+\]
+Neither this sufficient boundary nor $1+m_s(K)$ is proved to be
+the universal spectral threshold. In particular, adding an escaped
+unit to the scalar optimum is justified for the construction above;
+it is not a lower bound for every possible collapsing family.
+The equality budget, the intervening interval and the floor $b=K$
+remain unclassified here. For $K<b<1$ the event contains every point
+and reduces to the total-moment condition. At $b=1$ mean one forces
+$r=1$ and gap $1-\rho$; at $b>1$ the class is empty. The earlier
+source309A omitted $b<1$ in its additional comparison; its failed
+gate and the corrected309B report remain preserved, not relabelled.

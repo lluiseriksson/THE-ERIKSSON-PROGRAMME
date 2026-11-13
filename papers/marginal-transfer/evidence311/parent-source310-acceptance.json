@@ -1,0 +1,21 @@
+{
+  "raw_files_verified": 28,
+  "source_sha": "cc97b0588e69f4af3edf721a591d18b17417228d",
+  "verdict": "Analytical PASS; CI/unchanged normal merge separate",
+  "exclusion_reason": "Third-party complete source captures retained privately; do not bundle or publish without license clearance.",
+  "full_report_read": true,
+  "report_sha256": "28a3d0e297440002d9d0366097072669802ad15294cc85246bfd393b7c260f88",
+  "full_context_read": true,
+  "manifest_sha256": "cfd22378211609843b01614c0a8b7e6a28d78535f19bedf98b08208501abea80",
+  "recorded_at": "2026-11-13T15:31:59.1008614Z",
+  "private_reference_exclusions": [
+    "primary-bertsimas-popescu.pdf",
+    "primary-gluck-v6.html",
+    "primary-mos-v5.html"
+  ],
+  "qualifications": [
+    "Strict versus non-strict scalar infimum/attainment clarification supplied by auditor; include in future integration.",
+    "Explicitly mention Gluck uniform essential-spectral-radius theorem in future discussion.",
+    "External originality unestablished; no universal transfer-boundary sharpness."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "checked_utc": "2026-11-13T15:30:23.1039375Z",
+  "candidate_sha": "cc97b0588e69f4af3edf721a591d18b17417228d",
+  "local_head_final": "cc97b0588e69f4af3edf721a591d18b17417228d",
+  "pr_head_final": "cc97b0588e69f4af3edf721a591d18b17417228d",
+  "normalized_body_bytes": 1045,
+  "normalized_body_sha256": "fb847e53333685eb1d4059626632a75d6307d9519517b5294d88f5ee74b97706",
+  "normalization": "JSON-decode; CRLF then CR to LF; trim terminal LF; append exactly one LF; UTF-8 without BOM",
+  "candidate_git_blob": "15d1b493423240cd05ffc4be802413bc3a7f7906",
+  "captured_git_blob": "15d1b493423240cd05ffc4be802413bc3a7f7906",
+  "checkout_git_blob": "15d1b493423240cd05ffc4be802413bc3a7f7906",
+  "judges_unchanged": true,
+  "worktree_status_bytes": 0,
+  "initial_and_final_stable": true,
+  "continuous_surveillance": false,
+  "ci_assessed": false,
+  "merge_performed": false
+}

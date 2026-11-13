@@ -1,0 +1,59 @@
+{
+  "paper_id": "ARR-2026-7KV9Y9ASX48H7A7N",
+  "version": "v5",
+  "version_id": "arr:version:2bb4beea-94ee-4a72-bc87-fbffcc4ecffd",
+  "canonical_sha256": "450b6afa4e49a34f5fa36958b36b302ad1e266832aa271f857522aecfd3c6444",
+  "provider": "OpenAI",
+  "model_id": "unknown",
+  "assessed_at": "2026-11-13T15:03:15+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "unknown",
+  "recommendation": "minor_revision",
+  "millennium_score": 4,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "The code/Perron-marginal construction, sign-region estimates, balanced critical tilts, dilution, and cutoff-one endpoint withstand this analytical reading. No concrete counterexample or invalidating proof gap was identified. One AI review is not formal or human verification; served backend identity is unverified."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The proofs explicitly cover zero densities, active support, eigenvalue multiplicities, Gram-matrix zeros, ratio normalization, finite prefixes, and strict endpoint tail events. Constants and critical prefix choices remain implicit, and no optimal positive gap constant is claimed."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The exact multiplicative-cube budget and simultaneous cutoff-one endpoint, and the joint weight/Perron marginal result, remain plausible novelty candidates relative to the targeted primary sources inspected. Hypercontractive exponents, coding inputs, sign splitting, and norm-budget precedents are classical. External priority is unestablished; Aida's preprint could not be read after access failures."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "If correct and original, the results give useful sharp worst-case classifications and information obstructions for weighted Boolean noise/transfer operators. No demonstrated consequence for fixed-range Gibbs models, local dynamics, physical mass gaps, or a broader recognized open problem supports a higher impact rating."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "All 33 packet files match byte counts and hashes; all 22 supplied page images were inspected, with text/TeX support. The finite-dimensional analytical proofs are inspectable. Code selection and critical size thresholds are existential. Mathematical tests, formal checks, independent rebuild/rerender, public source availability, and historical audit claims were not independently verified."
+    }
+  },
+  "summary": "First and only numerical assessment of the exact 22-page manuscript308A.pdf, raw SHA-256 450b6afa4e49a34f5fa36958b36b302ad1e266832aa271f857522aecfd3c6444. It provides a technically serious synthesis of exact high-order marginal matching with many slow transfer modes, strict density-moment regimes, and exact critical norm/tail boundaries. The strongest endpoint proofs withstand this manual analytical review. Millennium 4.00 (Strong) is a contribution judgment, not a criterion average or correctness probability. Scientific minor_revision addresses positioning and navigation; this is a Working-paper assessment, not editorial acceptance. Draft-linked native identifiers are not a submission receipt. Requested gpt-6-astra/high is unverified; model_id and independence remain unknown.",
+  "strengths": [
+    "Explicit finite positive-weight construction preserving labelled product marginals for both the input and Perron stationary laws, with exponentially many slow modes.",
+    "Exact parity transfer spectrum prevents conflating transfer relaxation with the predecessor's heat-bath relaxation.",
+    "Strict moment regimes are established for the same operator, and the critical boundary includes equality with any fixed density floor below one.",
+    "The cutoff-one family satisfies the total moment and strict-tail caps in every dimension and all larger cutoffs simultaneously; stable spikes disprove necessity of uniform integrability.",
+    "Careful support, multiplicity, normalization, finite-prefix, and scope bookkeeping; no unsupported physical or local-dynamics conclusion."
+  ],
+  "weaknesses": [
+    "O1: Priority and external originality remain unresolved. Inspected primary sources already contain major mechanisms and related budget transitions; a precise theorem-level comparison would strengthen contribution positioning.",
+    "O2: Demonstrated significance is restricted to globally weighted Boolean transfer kernels. Marginal and moment conclusions use different families, with no fixed-range, local-dynamics, or physical-gap application.",
+    "O3: Exact endpoints are qualitative worst-case boundaries. No optimal positive constant, endpoint rate, or practical critical size threshold under a prescribed floor is supplied; code selection and critical prefix choices are existential.",
+    "O4: The long abstract and successive auxiliary critical estimates make the final classification expensive to navigate. A concise conclusion/dependency guide and streamlined auxiliary presentation would help.",
+    "O5: Aida's primary preprint was inaccessible; other source reads were targeted, not exhaustive. External novelty clearance is not established. The Miclo bibliography entry would benefit from normal date/version/publication metadata.",
+    "O6: This assessment verifies packet integrity and readability but does not replay builds, formal mathematics, or public evidence availability. Shared provider/filesystem and unverified backend/effort limit independence claims."
+  ],
+  "potential_errors": [],
+  "strong_novelty_candidates": [
+    "The combined linear-order exact marginal agreement for both weighting and Perron stationary laws together with exponentially many slow normalized transfer modes; candidate synthesis, not a new coding mechanism.",
+    "The exact critical raw-density norm budget 2^(1/s), including asymptotic collapse at equality with any prescribed floor b<1, for the fixed Boolean congruence; historical priority unestablished.",
+    "The single collapsing family satisfying E[r^s]<=2 and E[r^s 1_(r>1)]<=1 in every dimension, hence the same cap for every larger cutoff simultaneously; a refinement of the balanced-tilt/sign-truncation method."
+  ],
+  "unresolved_material_objections": []
+}

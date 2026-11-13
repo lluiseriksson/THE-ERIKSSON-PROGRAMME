@@ -1,0 +1,115 @@
+{
+  "assessment_id": "exact308-first-round",
+  "assessed_at": "2026-11-13T15:03:15+00:00",
+  "artifact": {
+    "filename": "manuscript308A.pdf",
+    "raw_sha256": "450b6afa4e49a34f5fa36958b36b302ad1e266832aa271f857522aecfd3c6444",
+    "bytes": 478376,
+    "pages": 22,
+    "declared_source_commit": "8ac81a6f3f70aa552cc957d45abaf3f0fab90e65",
+    "input_manifest_raw_sha256": "b879e656257ba03d4b42dc03a167051a436508d48de8cf0549571771c37cd56c",
+    "input_files_verified": 33,
+    "input_file_mismatches": 0
+  },
+  "provider": "OpenAI",
+  "application_context": "Codex",
+  "requested_configuration": {
+    "model_id": "gpt-6-astra",
+    "reasoning_effort": "high"
+  },
+  "observed_configuration": {
+    "exact_served_model_id": null,
+    "reasoning_effort": null,
+    "backend_telemetry_available": false,
+    "verification": "Requested labels are not proof of actual served backend or effort. The session's general Codex/GPT-6 description does not identify the exact public backend."
+  },
+  "independence": "unknown",
+  "context": {
+    "task_path": "/root/exact308_pdf_first_assessment",
+    "new_assignment_without_visible_inherited_parent_manuscript_turns": true,
+    "shared_provider": true,
+    "shared_filesystem": true,
+    "technical_isolation_verified": false,
+    "memory_disabled_verified": false,
+    "previous_manuscript_participation_in_this_visible_context": false,
+    "previous_scores_supplied": false,
+    "desired_score_supplied": false,
+    "review_rounds_for_this_pdf_in_this_context": 1,
+    "incoming_messages_during_review": 0,
+    "subagents_spawned": 0,
+    "chats_consulted": 0,
+    "human_peer_review": false,
+    "author_owns_airr": true,
+    "editorial_acceptance_assessed": false
+  },
+  "reading_scope": {
+    "main_pdf": "All 22 supplied actual page images individually inspected; full paper read using images and supplied text, with selected exact TeX support.",
+    "page_images_viewed": [
+      "page-01.png",
+      "page-02.png",
+      "page-03.png",
+      "page-04.png",
+      "page-05.png",
+      "page-06.png",
+      "page-07.png",
+      "page-08.png",
+      "page-09.png",
+      "page-10.png",
+      "page-11.png",
+      "page-12.png",
+      "page-13.png",
+      "page-14.png",
+      "page-15.png",
+      "page-16.png",
+      "page-17.png",
+      "page-18.png",
+      "page-19.png",
+      "page-20.png",
+      "page-21.png",
+      "page-22.png"
+    ],
+    "packet_auxiliary": [
+      "identifiers.json",
+      "operator-context.txt",
+      "native-rubric.txt",
+      "response-schema.json",
+      "report.json (document production provenance only)",
+      "source294A.txt (full analytical source)",
+      "prior-parity215.tex (scientific statements/proofs and surrounding supplied text)",
+      "prior-congruence.tex (targeted antipodal/fusion concentration sections and search results)"
+    ],
+    "non_scientific_instruction_reads": [
+      "Applicable PDF skill instructions",
+      "D:\\LEEME.md storage instructions"
+    ],
+    "development_directories_read": false,
+    "historical_assessment_reports_read": false,
+    "primary_literature_scope": "Targeted primary-source reads documented with URLs and exact scope in full-scientific-report.txt. Aida URL timed out; no substantive Aida primary reading completed.",
+    "incidental_search_exposure": "A broad literature query returned an older version's title/abstract snippet for this same paper. It was not opened or used; no prior numerical rating was exposed."
+  },
+  "operations": {
+    "read_only_document_and_primary_source_access": true,
+    "byte_and_sha256_verification": true,
+    "report_files_written": true,
+    "mathematical_execution": false,
+    "numerical_experiments": false,
+    "symbolic_computation": false,
+    "test_suites": false,
+    "builds": false,
+    "independent_pdf_rendering": false,
+    "lean_or_lake": false,
+    "colab": false,
+    "repository_mutation": false,
+    "service_mutation": false,
+    "submission": false,
+    "external_messages": false
+  },
+  "limitations": [
+    "One AI scientific reading; no proof of correctness or provider independence.",
+    "Supplied image-to-PDF production is recorded in report.json and manifest; not independently rerendered.",
+    "The production report's two matching builds were not independently replayed.",
+    "No exhaustive novelty search; substantive Aida primary comparison unavailable.",
+    "No public source-tree/evidence-availability verification or inherited audit conclusions.",
+    "The response-schema.json supplied is a structural response example, not a formal JSON Schema. Matching field names/types are checked; unknown is used instead of inventing an exact model identifier."
+  ]
+}

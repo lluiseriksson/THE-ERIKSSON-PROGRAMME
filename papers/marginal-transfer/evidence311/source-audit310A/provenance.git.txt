@@ -1,0 +1,26 @@
+commit cc97b0588e69f4af3edf721a591d18b17417228d
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:22:47 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 16:22:47 2026 +0100
+
+    judges 5161f9f9: derive finite parity backgrounds and strict critical-tail budgets
+
+commit 5161f9f9ce51ff53a08261e5537ab4ca5d1c56c1
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:19:59 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 16:19:59 2026 +0100
+
+    parent e362aeb3: preregister bounded-background tail optimization judges310
+
+commit e362aeb3f16ed863cf363fef7f246ff4a9735fd9
+Merge: 6064c9b44 8ac81a6f3
+Author:     Lluis Eriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 16:04:22 2026 +0100
+Commit:     GitHub <noreply@github.com>
+CommitDate: Fri Nov 13 16:04:22 2026 +0100
+
+    Merge pull request #255 from lluiseriksson/codex/tep-layout308-20261113
+    
+    Display the critical-tail moment assumption and preserve first PDF layout evidence

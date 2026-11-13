@@ -1,0 +1,47 @@
+{
+  "verdict": "ACCEPT",
+  "candidate": "4e0a30274f0e5479788990d24eda043f8b057933",
+  "judges_preregistered": "9b330688f3fc7defd0213470d02e8875eff4adee",
+  "judges_blob": "be6783ff11418c7993d3622f6ebcb72788623e78",
+  "judges_unchanged": true,
+  "body_bytes": 1001,
+  "body_sha256": "5f4132bcc371e0efe99d3ba78093d55c225309032b48d5d3d2b07f9398e8517b",
+  "initial_final_binding_equal": true,
+  "gates": [
+    "J1 ACCEPT",
+    "J2 ACCEPT",
+    "J3 ACCEPT",
+    "J4 ACCEPT",
+    "J5 ACCEPT",
+    "J6 ACCEPT"
+  ],
+  "prior_a_verdict": "FAIL/REVISE retained unchanged",
+  "prior_a_manifested_files_verified": 18,
+  "prior_a_manifest_and_checksum_verified": true,
+  "visible_a_path_byte_identical": false,
+  "visible_a_path_difference": "one CR before final LF; exact original retained in raw subject and original commit",
+  "blocking_objections": [],
+  "nonblocking_observations": [
+    "Visible A path terminal-CR representation drift; not raw historical evidence drift"
+  ],
+  "ci": "separate; not executed or certified",
+  "integration": "unchanged normal merge after PR255 only; not performed",
+  "same_auditor_as306_and309A": true,
+  "prior_context_retained": true,
+  "same_provider": true,
+  "shared_filesystem": true,
+  "actual_served_model": "unknown",
+  "actual_effort": "unknown",
+  "human_review": false,
+  "technical_isolation": false,
+  "inbound_messages_received_during_b": 0,
+  "source_or_judges_or_pr_mutated": false,
+  "exact308_assessment_accessed": false,
+  "pdf308_accessed_or_changed": false,
+  "cleanup_pending": false,
+  "git_status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "utc_final_capture": "2026-11-13T15:22:05.1677543Z"
+}

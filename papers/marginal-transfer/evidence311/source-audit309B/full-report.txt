@@ -1,0 +1,100 @@
+SOURCE309B ANALYTICAL AUDIT — ACCEPT, SUBJECT TO SEPARATE CI/INTEGRATION
+
+Exact referent and verdict
+Candidate4e0a30274f0e5479788990d24eda043f8b057933, research/parity-tail309/parity-tail309B.txt.
+Original preregistered judges9b330688f3fc7defd0213470d02e8875eff4adee, papers/marginal-transfer/judges309.txt. Both registered and B-candidate copies have Git blobbe6783ff11418c7993d3622f6ebcb72788623e78.
+PR256 captured directly using: gh pr view 256 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid.
+Normalized body regime: JSON decode; CRLF/CR -> LF; remove terminal LF; append exactly one LF; UTF-8 without BOM.
+Body1001bytes, SHA-2565f4132bcc371e0efe99d3ba78093d55c225309032b48d5d3d2b07f9398e8517b.
+
+ACCEPT for J1-J6 for this B candidate/body. The line87 correction resolves the precise scope objection against A: the fixed-floor total-budget classification is now limited to K<b<1; b=1 is correctly uniform, and b>1 is infeasible. The principal construction remains valid. No blocking mathematical objection remains. Required CI has not been run or certified here; unchanged normal merge after PR255 remains a separate condition. This is a source audit, not a merge, PDF assessment, numerical/formal verification or publication.
+
+Prior adverse finding and reviewer involvement
+The previous FAIL/REVISE against A remains unchanged. It concerned source6d316907aa8804d156d965af940ba8d7ae553f41 and its old888-byte PR body, not this B. I am the same continuing auditor that accepted306 and then found the A defect. I retain both prior contexts, exact dependencies, primary readings and my reports; I authored the objection now being checked. This is therefore a disclosed re-audit, not fresh independent corroboration. Same provider/shared filesystem; actual served model and effort unknown; no independent-provider, human, technical-isolation or statistical-independence claim. There were no inbound messages during this B audit. No other chats/agents/runtimes or ongoing exact308 assessment were consulted; no PDF308 was opened or changed. Complete context and the literal B assignment are preserved alongside this report.
+
+The original A report's18 manifested evidence files were independently checked against their B-commit Git blobs: all match the original raw byte counts, SHA-256 values and Git blob identities. Its manifest and checksum match too. In particular the exact failed A source remains in the archived raw subject and original commit. A nonblocking representation observation must be stated precisely: the visible path research/parity-tail309/parity-tail309A.txt at B adds one CR before its last LF. Its original Git blob401ce5856aa94c42408a27fdd9498f51929c78f9 is9834bytes with SHA-25629fe542e59146be678cb09ad57d4fd6e49d5a662a781d966b89095059bd98575; the current visible-path blob0275d686dac9882c7d5899b3702f75295279ed56 is9835bytes with SHA-256aaa5b9abc04c567d1378f6e1708964a122db3262d0f7b5d53d6888b6e7deae92. Thus I do not certify that visible path as byte-identical. This does not erase/change the failed mathematics or exact preserved evidence and is not a mathematical blocker for B. The observation is retained in its own JSON file. No source or judge was edited by the auditor.
+
+Diff scope
+Comparing original frozen A directly to B changes the title/identity-history note and the line87 floor comparison. The main construction and proof are unchanged. Judges are unchanged, not weakened after a failed gate. The dependency proof texts are the exact source299 at49705281f05ab18b71bd9ebc2da1985a0433340c and manuscript308A at8ac81a6f3f70aa552cc957d45abaf3f0fab90e65. Their actual proofs, not a score or a prior ACCEPT label, support the derivations below. This complete report evaluates every original judge rather than merely endorsing the text diff.
+
+J1 — ACCEPT: definitions, normalization, positive floors and dimensions
+Fix rho in(0,1), s=(1+rho)/(1-rho)>1, alpha=2-2^(1/s), alpha<K<1, 0<b<K, and F(K)<tau<2, where F(x)=1+(2-x)^s/2. As1<2^(1/s)<2, alpha lies in(0,1). F is continuous and strictly decreasing nearK. Since max(b,alpha)<K and F(K)<tau, there is a fixed u strictly between max(b,alpha) andK with F(u)<tau. Put v=2-u. Then0<u<K<1<v and v^s/2<1. Parameters u,v,d,rho,s,K,b,tau are fixed before dimensions grow; no u_L or K_L is hidden in the construction.
+
+Uniform probability, rather than counting measure, makes Walsh characters orthonormal. The noise operators have multipliers rho^|S| and are positive definite with operator norm1. On each m-cube with m>=1, the full parity chi_m has equal plus/minus sectors. Thus a_m=1+(u-1)chi_m takes u andv with probabilities1/2, has mean1 and minimumu. On disjoint independent blocks m=floor(L/2), n=L-m, the large-L density is
+ r_L=(a_m+beta_n R_n)/Z_n, Z_n=1+beta_n E R_n.
+Its mean is exactly1; it is strictly positive and is bounded below by u/Z_n. For all sufficiently large L, both blocks are nonempty. Since Z_n->1 and u>b, the floor r_L>=b eventually holds. The final finite-prefix definition discussed under J4 supplies every missing L, including L=1. All matrices are finite, with eigenvalues ordered by multiplicity; gap is the normalized ratio1-lambda2/lambda1.
+
+Exact inherited tilt and actual spectral input
+The source299 product uses single-site weight (1+delta x)/N(delta), with N(delta)^s=E(1+delta x)^s and fixed delta_n=d n^(-1/3), 0<d<1 sufficiently small. Hence by product probability R_n>0, E R_n^s=1 exactly and m_n=N(delta_n)^(-n). Even analytic logarithms on a sufficiently small compact delta interval have bounded fourth derivatives. Taylor gives
+ log N=(s-1)delta^2/2+O(delta^4),
+ log E[(1+delta x)/N]^t=t(t-s)delta^2/2+O(delta^4)
+for each fixed0<t<s. Since n delta_n^2=d^2 n^(1/3)->infinity and n delta_n^4=d^4 n^(-1/3)->0, m_n->0 and E R_n^t->0. This controls the probability and the strict interior moments used later; it makes no endpoint-uniform remainder claim.
+
+In the one-bit Walsh basis H=N^-1[[1,sqrt(rho)delta],[sqrt(rho)delta,rho]], positive definite for|delta|<1. Its maximum eigenvalue is exactly the candidate's kappa. The quadratic term of log kappa is rho/(1-rho)-(s-1)/2=0, so beta_n=kappa(delta_n)^(-n)->1. Then Z_n->1. The overlap gamma(delta)=||Q_1 H^(1/2)|| has square equal to the top eigenvalue of N^-1[[1,rho delta],[rho delta,rho^2]], whence
+ log gamma=-rho delta^2/[2(1-rho^2)]+O(delta^4).
+Thus eta_n=sqrt(beta_n)gamma(delta_n)^n->0.
+
+The unnormalized transformed balanced density is U_n=P_n+beta_n H^{tensor n}. Factoring U_n=CC* with the two blocks Q_n and sqrt(beta_n)(H^(1/2))^{tensor n} produces a block Gram matrix with two diagonal top eigenvalues exactly1 and off-diagonal self-adjoint perturbation norm eta_n. Min-max places its first two eigenvalues between1-eta_n and1+eta_n. For large n the lower bound is positive, so the second eigenvalue belongs to the nonzero spectrum of U_n rather than extra Gram zeros. After division by Z_n, both leading eigenvalues of S_w_n tend to1. Square AA*/A*A identifies them with the actual transfer eigenvalues. This rederives the inherited full spectral input; two Rayleigh test vectors alone would not suffice.
+
+J2 — ACCEPT: exact Walsh norm, tensor spectrum and transfer equivalence
+For any S subset[m], multiplication by chi_m changes chi_S to chi_{[m]\S}. Applying Q_m on either side gives the factor rho^(|S|/2)rho^((m-|S|)/2)=rho^(m/2), independent ofS. Complementation is a unitary permutation of the full Walsh basis. Therefore
+ ||Q_m M_chi_m Q_m||=rho^(m/2),
+ ||Q_m M_a_m Q_m-P_m||=(1-u)rho^(m/2)
+exactly. This is a finite operator identity, not a heuristic cancellation or an unproved norm estimate.
+
+Tensorization gives Q_L=Q_m tensor Q_n; multiplication by a_m+beta_n R_n decomposes into M_a_m tensor I+beta_n I tensor M_R_n. Hence S_r has exactly the two summands in the candidate. With B_L=P_m tensor S_w_n,
+ S_r-B_L=Z_n^-1(Q_m M_a_m Q_m-P_m) tensor P_n.
+Its norm is at most, in fact equal to,(1-u)rho^(m/2)/Z_n and tends to0 because||P_n||=1 and both blocks grow.
+
+An orthonormal tensor eigenbasis gives every eigenvalue of B_L as a product of a positive P_m eigenvalue (at most1) and an S_w_n eigenvalue. Its maximum is lambda1(S_w_n). Tensoring the first two n-block eigenvectors with the constant m-block vector produces two actual orthogonal eigenvectors of B_L. Therefore lambda2(S_w_n)<=lambda2(B_L)<=lambda1(B_L)=lambda1(S_w_n), so both leading B eigenvalues tend to1. This argument correctly allows finite-dimensional crossings with rho lambda1(S_w_n); it does not incorrectly identify one fixed product as second for all L.
+
+The self-adjoint min-max perturbation bound transfers both limits to S_r. For A=M_sqrt(r)Q_L, T_r=AA* and S_r=A*A are square equal-size matrices, so their complete spectra, including zeros and multiplicities, agree. Thus the actual lambda1(T_r),lambda2(T_r) tend to1 and the normalized gap tends to0. Every finite T_r has strictly positive entries and a simple Perron root, so its individual gap is positive. The failure is only of a dimension-independent positive bound.
+
+J3 — ACCEPT: noninteger powers and the strict moving event
+Let theta=min(1,s/2); both theta and s-theta are strictly between0 ands. For y>=0, D(y)=(1+y)^s-1-y^s is nonnegative, as follows by differentiating or integrating the increasing power. For0<=y<=1, the mean value bound gives D(y)<=s2^(s-1)y<=s2^(s-1)y^theta. For y>=1, D(y)=y^s D(1/y)<=s2^(s-1)y^(s-theta). Scaling by c^s proves
+ 0<=(c+z)^s-c^s-z^s
+ <=s2^(s-1)[c^(s-theta)z^theta+c^theta z^(s-theta)]
+for all c>0,z>=0. This proof holds for every real s>1 without a finite binomial expansion.
+
+For z=beta_n R_n, both mixed-moment expectations vanish and E z^s=beta_n^s->1. Thus E(c+z)^s->c^s+1 at fixed c=u orv. Averaging independent parity sectors and dividing by Z_n^s->1 gives
+ E r_L^s->1+(u^s+v^s)/2>2,
+where strict convexity and u!=v with mean1 prove the final inequality. There is intentionally no total cap2 in this construction.
+
+In the high sector v>K and v/Z_n>K eventually, so the entire sector lies in the strict event r_L>K. Its conditional tail moment tends to v^s+1. In the low sector the exact event is R_n>c_n=(KZ_n-u)/beta_n. As c_n->K-u>0, fixed0<c_-<c_+ bracket it eventually. For any fixed0<t<s,
+ P(R_n>c_n)<=c_-^(-t)E R_n^t->0,
+ E[R_n^s1_{R_n<=c_n}]<=c_+^(s-t)E R_n^t->0.
+The full s-moment equals1, so its strict-event complement has s-moment tending to1. Atoms at the moving threshold are included in the weak complement and cause no omission. Restrict the mixed-power inequality to the strict event: the constant term is a vanishing probability, the mixed terms are bounded by their vanishing unrestricted expectations, and the pure z^s term tends to1. After scalar normalization, the low-sector conditional tail moment tends to1. Therefore the full strict K-tail tends to (v^s+1)/2+1/2=1+v^s/2. Convergence in probability alone was not used to justify this critical-moment limit.
+
+J4 — ACCEPT: strict slack, all dimensions and fixed family
+By construction1+v^s/2=F(u)<tau<2. The proven tail convergence and the floor convergence give one finite L0 such that every L>=L0 meets the tail cap, floor and positive block-size requirements. Set r_L=1 belowL0. Since K<1, those prefix densities have strict K-tail moment1, which is belowtau (tau>F(K)>1); their tail is not claimed empty. Their mean and floor are valid, and finite replacement preserves all limits. For every J>=K, pointwise event inclusion gives the same upper tail bound for the same sequence. Only the fixed-K tail limit is asserted.
+
+The existence of u depends on strict slack, so this proof does not attain tau=F(K), replace u byK, or allow u_L->K without a new moving-cutoff analysis. Nor does it claim the optimal cutoff-budget curve or an effective optimal L0. It permits every advertised fixed b<K, however close b is toK, by choosing u close enough toK before selecting L0. Rho remains fixed and no common constants as rho approaches0 or1 are claimed.
+
+J5 — ACCEPT: lower region, corrected floor cases and unresolved interval
+For any mean-one nonnegative density and fixed0<K<1,
+ E r^s <= K^(s-1)+E[r^s1_{r>K}] <= K^(s-1)+tau.
+The inherited two-sign estimate2lambda2(T_r)^s<=E r^s is justified as follows. If lambda2>0, a real second eigenvector is supported on{r>0}, orthogonal to its positive Perron vector, and has nonzero positive and negative parts. Endpoint Boolean hypercontractivity L^{1+rho}->L^2 and Holder yield <h,T_r h><=(E r^s1_C)^(1/s)||h||_2^2 for a vector supported onC. The eigenvalue equation and nonnegative cross terms give lambda2^s bounded by the moment on each of the two disjoint sign supports. Adding proves the bound, while lambda2=0 is immediate. Testing the unit vector sqrt(r) gives lambda1>=<r,P_L r>>=1 from the Walsh expansion. Thus
+ gap(T_r)>=1-[(K^(s-1)+tau)/2]^(1/s)>0
+when tau<2-K^(s-1), precisely the source's sufficient region.
+
+This region does not overlap the new collapse range. The difference of boundary values is K^(s-1)+(2-K)^s/2-1. Since K^(s-1)>K^s/2 and strict convexity gives[K^s+(2-K)^s]/2>1 for0<K<1, the difference is positive. There is an unresolved interval and no equality or optimal-boundary conclusion.
+
+The B correction is now exact:
+- If K<b<1 and r>=b, every point satisfies r>K, so the tail condition is exactly a total s-moment cap. The old fixed-floor threshold2 theorem applies, because it explicitly assumes0<b<1. Its upper construction supplies collapse at/above2 and its universal lower estimate applies below2.
+- If b=1, mean-one and r>=1 force r=1 on the finite probability space. Then T_r=P_L has lambda1=1 and lambda2=rho for every L>=1, so gap=1-rho, irrespective of a permitted larger budget. No collapse is asserted there.
+- If b>1, E r>=b>1 contradicts mean-one, so the class is empty.
+- The case b=K is explicitly left unclassified here. Because the tail event is strict, points at r=K need not be counted, so the strict-b>K reduction is not silently extended.
+The exact former counterexample to A is therefore explicitly handled and no longer falsifies B. Original J5 has been met without amending it.
+
+The main theorem refutes a proposed overbroad inference, not a cited literature theorem. Its total moment limit exceeds2, so it does not contradict the earlier exact-total-budget result. The pure parity component has an operator-norm-small difference from P_m and retains stable leading gap. The balanced tilt alone eventually lies above any fixed K<1 and has full critical moment tending to2. Their combination yields the stated sub-two scalar tail limit while preserving two near-unit spectral channels. This is a mathematically meaningful synthesis within this route, not a basis for an external originality/importance score.
+
+Primary-source boundary
+Retained primary reading supports the mechanisms at their correct scope. Mossel-Oleszkiewicz-Sen, arXiv:1108.1210v5, Eq.(1.1) and tensorization paragraph supply the classical forward Boolean endpoint with time-log(sqrt(rho)). Gluck, arXiv:1802.09422v6, Theorems1.1/4.1/5.1 and Section5 introduction give essential spectral-radius results and explicitly distinguish larger isolated eigenvalues. They do not by that statement alone supply the present uniform finite second-eigenvalue bound. The earlier primary Biskup-Koenig sign-region comparison concerns an additive lattice operator and credits a mechanism rather than an established reduction. Exact URLs/read scope are in primary-reading.txt. No new full-text priority clearance, absence-of-results novelty inference, human review or external-originality conclusion is claimed. No third-party full text is bundled. The source correctly retains that boundary.
+
+J6 — ACCEPT: exact audit boundary and evidence
+The preregistration blob is unchanged across original registration, A and B. A's adverse report/context/raw source are preserved; my own raw checks confirm all18 manifested files and the prior manifest/checksum, independently of the parent's statement. The visible-path terminal-CR drift is expressly disclosed above, with exact blobs/hashes, rather than concealed. B's source and normalized PR claims match its corrected mathematical scope. This report has not altered source, judges, PR or repository. No local mathematical test/build, CI, Lean/TeX or runtime execution occurred; hash and Git evidence handling only. Initial/final direct PR captures bind the verdict to the same head/body. Source bindings and a per-file raw byte/SHA-256 manifest include every new report/context/evidence file.
+
+All objections and final disposition
+The A line87 scope defect is resolved by B and remains preserved as a historical FAIL. No other mathematical objection is found under J1-J6. The one remaining observation is representational: visible original-A path has a terminal CR added; exact original-A evidence is nevertheless preserved. This observation is not a request to alter the frozen B during the audit and does not block its mathematical acceptance. Do not report the visible A path as byte-identical when relaying preservation checks.
+
+ACCEPT is bound only to candidate4e0a30274f0e5479788990d24eda043f8b057933 and the1001-byte normalized PR256 body SHA-2565f4132bcc371e0efe99d3ba78093d55c225309032b48d5d3d2b07f9398e8517b under the exact capture/normalization above. Required CI and unchanged normal merge after PR255 remain separate conditions. Use in a later grouped revision only; exact308 PDF/assessment remain untouched. No separate small-paper publication, numerical rating, physical/local/continuum consequence, formal verification or independent-review claim follows.
