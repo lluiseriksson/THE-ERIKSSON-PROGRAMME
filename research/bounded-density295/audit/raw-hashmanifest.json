@@ -1,0 +1,78 @@
+{
+  "algorithm": "sha256",
+  "byte_representation": "raw actual retained bytes, no normalization",
+  "member_count": 14,
+  "members": [
+    {
+      "path": "assignment.txt",
+      "bytes": 1223,
+      "raw_sha256": "d409c6d202a22ce4a7547ec6f1478d7482647ee25d8c345075378d7a398661bd"
+    },
+    {
+      "path": "context.txt",
+      "bytes": 940,
+      "raw_sha256": "112e7f5ab2d7b65d3c5735b8aff0dae16930211807cc70949fd41ac38da71e37"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 11993,
+      "raw_sha256": "84646f20ccda0dbbf858054ff6985b94f91638b562b0cb414c41189559db1328"
+    },
+    {
+      "path": "git-tree.txt",
+      "bytes": 82,
+      "raw_sha256": "5da8f1399a83cd857f091190ac358216ef680778852612f62fcca1f5cd74cc91"
+    },
+    {
+      "path": "input-hashes.json",
+      "bytes": 689,
+      "raw_sha256": "0bd731a00d26f81d7a4fc5520e589d6184a4325cfeac9c685b0f16aedfe9baf6"
+    },
+    {
+      "path": "primary-reading.txt",
+      "bytes": 1127,
+      "raw_sha256": "0a833bd8602bb54b6d042fd67bdf3075d0c621faa6368d8d472203edf200b292"
+    },
+    {
+      "path": "primary/gross-2412.20282v2-abstract.html",
+      "bytes": 39291,
+      "raw_sha256": "081ae75886006ec5dac65e8e48acc736e350aee121ebb28119c6e6d6445a3be8"
+    },
+    {
+      "path": "primary/mos-1108.1210v5.pdf",
+      "bytes": 515516,
+      "raw_sha256": "49da0d2da85f9090348ff33f1c6e7bd7d3ac9f43c7cedb26a072323d997c2179"
+    },
+    {
+      "path": "source-history.txt",
+      "bytes": 622,
+      "raw_sha256": "1ed6a684a8523590114a32c2e5afd7d67393c229dce5cbd45a1ea400bc84bda6"
+    },
+    {
+      "path": "subjects/.gitattributes",
+      "bytes": 8,
+      "raw_sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": "subjects/bounded-density295A.txt",
+      "bytes": 6807,
+      "raw_sha256": "5fbd9247e933f6f4d00110e2e6d37923a2292588601a8322df26a5ec80c38e53"
+    },
+    {
+      "path": "subjects/CLAUDE.md",
+      "bytes": 24408,
+      "raw_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "subjects/judges295.txt",
+      "bytes": 2579,
+      "raw_sha256": "4773f9ddb9a21b71c6551ad9634fff89da5b417ba1b9a28b88dbfbd5a12842fc"
+    },
+    {
+      "path": "subjects/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "raw_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    }
+  ],
+  "excluded_only": "raw-hashmanifest.json"
+}
