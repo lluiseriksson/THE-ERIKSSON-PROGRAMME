@@ -1,0 +1,57 @@
+{
+  "paper_id": "ARR-2026-7KV9Y9ASX48H7A7N",
+  "version": "v3",
+  "version_id": "arr:version:a113841d-483b-4e87-b6f7-c3a85e583af4",
+  "canonical_sha256": "55d07066bd947482fa2e41f312ca6da614f4ec142f8ee9348b85f5f9d2de31d1",
+  "provider": "OpenAI/Codex",
+  "model_id": "gpt-6-astra",
+  "assessed_at": "2026-11-13T05:17:35+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "unknown",
+  "recommendation": "minor_revision",
+  "millennium_score": 4,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "Analytical checking found no material error in Theorems 1 and 7-12, the parity spectrum, normalizations, support-zero cases, or Gram-matrix multiplicities. This is one model assessment, not formal or human verification."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The finite-dimensional arguments are self-contained apart from correctly normalized classical hypercontractivity. All-L bounds in Theorems 10 and 12 and the sufficiently-large-L code quantifier are justified. Critical constants are existential and the optimal budget is deliberately unresolved."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The joint marginal/many-mode result and normalized-gap threshold constructions are plausible original specializations relative to primary sources checked. Codes, the hypercontractive exponent, and matrix methods are classical. Historical priority and a complete comparison with perturbation theory remain unestablished."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "A useful, technically serious contribution to weighted Boolean-noise transfer operators: it separates information from spectral control and gives both sides of the strict moment threshold plus critical-budget examples. No local Gibbs, physical mass-gap, or Millennium-problem advance is established."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "The full exact TeX, extraction and all 15 supplied page renders were inspected; all 26 packet files match the frozen hash manifest. Analytical proofs are independently inspectable. Document builds and mathematical computations were not rerun; supplied build provenance is not proof validation."
+    }
+  },
+  "summary": "For exact PDF SHA-256 55d07066bd947482fa2e41f312ca6da614f4ec142f8ee9348b85f5f9d2de31d1 (380892 bytes, 15 pages), the principal mathematical claims withstand this analytical review. The paper gives a coherent finite-dimensional synthesis, with the strongest contribution in its sharp strict-regime moment threshold for normalized spectral gaps and its balanced critical construction. I recommend minor revision for source comparison and presentation, with no identified objection invalidating a main theorem. Overall 4.00/10 means Strong on the native Millennium scale, not a school grade. gpt-6-astra/high was requested/configured according to the assignment; the served backend and isolation were not independently attested. This is not independent human or provider review and does not confer editorial acceptance.",
+  "strengths": [
+    "Theorem 1 combines exact linear-order labelled marginals for both the input density and actual Perron stationary law with exponentially many near-Perron eigenvalues.",
+    "Proposition 5 computes the actual parity transfer spectrum and prevents an invalid transfer of the predecessor's heat-bath conclusion.",
+    "Theorem 9 gives an explicit dimension-independent gap using only a supercritical density moment and permits zero weights.",
+    "Theorem 10 supplies genuine second-eigenvalue degeneration throughout the full strict subcritical regime, with bounded moment and a fixed positive density floor.",
+    "Theorems 11 and 12 distinguish small and large critical budgets; exact spectral balancing is carried through the actual transfer congruence."
+  ],
+  "weaknesses": [
+    "External priority and the extent to which the conclusions specialize broader perturbation theory remain unresolved; the literature check is targeted, not exhaustive.",
+    "The critical budget remains open between the sufficient small-budget range and B>2, and the displayed critical decay rate is not optimal even within the proof's estimates.",
+    "The broadest significance is limited by arbitrary global many-body weights and the lack of an application to a fixed-range model.",
+    "Page 14 has a minor long-path overfull line; the Aida access statement can now be updated with an accessible author-hosted preprint and an explicit bibliographic entry."
+  ],
+  "potential_errors": [],
+  "strong_novelty_candidates": [
+    "The exact conjunction in Theorem 1: linearly many-coordinate product marginal agreement for both weighting and Perron stationary laws, together with exponentially many slow transfer modes.",
+    "Theorem 9 paired with Theorem 10: the classical hypercontractive exponent becomes the threshold for uniform normalized spectral-gap control under bounded density moments, with lower-density-bounded counterexamples.",
+    "Theorem 12: balancing a critical product tilt against the uniform spectral channel while retaining all-L moment and lower-density bounds. Originality of this application has not been established."
+  ],
+  "unresolved_material_objections": []
+}

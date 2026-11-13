@@ -1,0 +1,28 @@
+{
+  "utc": "2026-11-13T12:00:57.2858933Z",
+  "head": "49705281f05ab18b71bd9ebc2da1985a0433340c",
+  "branch": "codex/tep-critical-budget299-20261113",
+  "status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "candidate_raw_sha256": "00a0c712f9b929e3fb669356585c30f08bfd7a5218ea9d4a24121e5b26e00b03",
+  "gate_raw_sha256": "d27ac6e5dc2b813643104b6d38f1de44b8ac5b47de784a1b264dfc8bb54e13c1",
+  "gate_blobs": [
+    "5569c515b2aa8261da1a3225235b83c2b9b9d603",
+    "5569c515b2aa8261da1a3225235b83c2b9b9d603"
+  ],
+  "capture_method": "gh pr view 244 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid,url,title,files; raw stdout saved; full body JSON-decoded",
+  "normalization": "UTF-8 without BOM; CRLF and lone CR converted to LF; trailing LF removed then one LF appended",
+  "pr_head": "49705281f05ab18b71bd9ebc2da1985a0433340c",
+  "pr_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/244",
+  "pr_files": [
+    "research/critical299/critical299A.txt",
+    "research/critical299/judges299.txt"
+  ],
+  "body_bytes": 827,
+  "body_sha256": "f37b8bedb5470dac5e7c4cfe7ba4d56b321e7d285c276c3570d1f13609c63e61",
+  "old_evidence_entries": 27,
+  "old_evidence_mismatches": 0,
+  "old_manifest_sha256": "7873e7891c52d77995909bb3f42e37559f4fb32dba092dec7cfd077af1aeff39"
+}

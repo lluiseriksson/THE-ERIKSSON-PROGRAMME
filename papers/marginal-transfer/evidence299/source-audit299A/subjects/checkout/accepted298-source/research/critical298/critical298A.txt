@@ -1,0 +1,155 @@
+CRITICAL DENSITY MOMENTS: SMALL-BUDGET STABILITY AND BALANCED-TILT COLLAPSE
+Author-side analytical source, 2026-11-13. No formal or numerical verification.
+Gates fixed in judges298.txt at c4f88b14. No claim of external originality.
+
+SETUP. Fix 0<rho<1 and s=(1+rho)/(1-rho)>1. On {-1,1}^L with uniform
+probability mu_L, P_rho is the product noise operator: its one-bit Walsh matrix
+is D=diag(1,rho). For r>=0, E r=1, define
+  T_r=M_sqrt(r) P_rho M_sqrt(r),  gap(T_r)=1-lambda_2(T_r)/lambda_1(T_r),
+where eigenvalues are in decreasing order, with multiplicities. L>=1, so the
+dimension is at least2. Put Q=P_sqrt(rho). The square matrices A=M_sqrt(r)Q
+give T_r=AA* and S_r=A*A=Q M_r Q with identical eigenvalues, including zeros.
+Both are positive semidefinite; lambda_1(S_r)>=<1,S_r1>=E r=1.
+
+THEOREM A (small critical budget). If ||r||_s<=B, B>=1, then
+  gap(T_r) >= max(0,1-rho-d_s(B)),
+where
+ d_s(B)=(B^s-1)^(1/s)                                    for s>=2,
+ d_s(B)=[2(B^s-1)/(s(s-1))]^(1/2) (B+1)^((2-s)/2)       for 1<s<2.
+In particular, for each fixed rho there is B_0>1 such that 1<=B<B_0
+forces a strictly positive dimension-free gap. No pointwise upper/lower
+density bound is required. This is a sufficient, not optimal, budget criterion.
+
+Proof. The classical Boolean hypercontractive inequality gives
+ ||Qf||_q<=||f||_2, q=2s/(s-1), because rho=(s-1)/(s+1)=1/(q-1).
+This is the endpoint of that classical inequality, not a new inequality.
+For f,g, Holder with exponents s,q,q (1/s+2/q=1) gives
+ |<f,Q M_(r-1) Qg>| <= ||r-1||_s ||Qf||_q ||Qg||_q
+                    <= ||r-1||_s ||f||_2 ||g||_2.
+Thus ||S_r-P_rho||op<=||r-1||_s. Since lambda_2(P_rho)=rho,
+the variational eigenvalue bound gives lambda_2(S_r)<=rho+||r-1||_s.
+Use lambda_1(S_r)>=1 and positive semidefiniteness to obtain the asserted
+gap once ||r-1||_s<=d_s(B) is proved. If the displayed lower bound is
+negative, the trivial nonnegative gap gives the stated maximum.
+
+Here is a direct scalar proof of that norm estimate. Let
+ phi_s(t)=t^s-1-s(t-1), t>=0. E phi_s(r)=E r^s-1<=B^s-1.
+For s>=2 and t=1+u>=1,
+ phi_s(1+u)=s integral_0^u [(1+v)^(s-1)-1]dv >=u^s,
+since (1+v)^a>=1+v^a for a=s-1>=1. This last inequality follows by
+differentiating in v, starting at v=0. For t=1-u in[0,1], differentiate
+ phi_s(1-u)-u^s: its derivative is
+ s[1-(1-u)^(s-1)-u^(s-1)]>=0 because x^(s-1)<=x on[0,1].
+The difference vanishes at u=0, so phi_s(t)>=|t-1|^s on the whole half-line.
+Integration proves the s>=2 formula, including s=2.
+For 1<s<2, Taylor's formula with integral remainder gives
+ phi_s(t)=s(s-1)(t-1)^2 integral_0^1 (1-v)[1+v(t-1)]^(s-2)dv
+          >=[s(s-1)/2] (t-1)^2/(t+1)^(2-s).
+The formula extends to t=0 by continuity/integrability since s>1; the
+inequality uses 1+v(t-1)<=1+t and s-2<0.
+Set W=(r-1)^2/(r+1)^(2-s). Then E W<=2(B^s-1)/(s(s-1)). Holder with
+conjugate exponents 2/s and 2/(2-s) yields
+ E|r-1|^s <=(E W)^(s/2) [E(r+1)^s]^((2-s)/2).
+Take the s-th root and use ||r+1||_s<=B+1. This is the second formula.
+Both formulas tend to0 as B decreases to1, proving the last assertion. QED.
+
+THEOREM B (large critical budget). For each fixed rho and every fixed B>2,
+there exist strictly positive mean-one densities r_L, for all integers L>=1,
+such that ||r_L||_s<=B, r_L>=1/B and
+  0<gap(T_rL)<=2 sqrt(B-1) exp(-c d^2 L^(1/3)).
+Here d,c>0 are fixed constants depending on rho,B, not L. The assertion
+does not cover every B>1 and does not identify the optimal critical budget.
+
+Proof. For a real tilt |delta|<1, define
+ n(delta)=[((1+delta)^s+(1-delta)^s)/2]^(1/s),
+ w_delta(x)=(1+delta*x)/n(delta), x in{-1,1}, m(delta)=1/n(delta),
+ H(delta)=n(delta)^(-1) [[1,delta sqrt(rho)],[delta sqrt(rho),rho]].
+All these matrices are positive definite. The top eigenvalue of H is
+ kappa(delta)=[1+rho+sqrt((1-rho)^2+4rho delta^2)]/[2n(delta)].
+Define also tau(delta)=||D^(1/2) H(delta)^(1/2)||op. Its square is the largest
+eigenvalue of D^(1/2) H(delta) D^(1/2), since AB and BA have the same
+nonzero eigenvalues. Consequently
+ tau(delta)^2=
+ [1+rho^2+sqrt((1-rho^2)^2+4rho^2 delta^2)]/[2n(delta)].
+The two strictly positive radicands at zero, and positivity of the powers,
+make log n, log kappa and log tau even real analytic near zero.
+
+The following expansions are analytic Taylor formulas, with a bounded fourth
+derivative remainder on a sufficiently small closed interval, not numerical
+fits or symbolic-oracle output:
+ log n(delta)=(s-1)delta^2/2+O(delta^4)
+             =rho delta^2/(1-rho)+O(delta^4),
+ log kappa(delta)=[rho/(1-rho)-(s-1)/2]delta^2+O(delta^4)=O(delta^4),
+ log tau(delta)=1/2 [rho^2/(1-rho^2)-(s-1)/2]delta^2+O(delta^4)
+               =-rho delta^2/[2(1-rho^2)]+O(delta^4).
+For clarity, the numerator divided by2 in kappa is
+ 1+rho delta^2/(1-rho)+O(delta^4), and that in tau^2 is
+ 1+rho^2 delta^2/(1-rho^2)+O(delta^4), which verifies the coefficients.
+It follows that there are delta_* in(0,1), C>=1 and c>0 (for instance
+c=rho/[4(1-rho^2)] after reducing delta_*) such that for |delta|<=delta_*:
+ |log kappa(delta)|<=C delta^4,   log tau(delta)<=-c delta^2.
+Existence of C follows from continuity of the fourth derivative and vanishing
+constant, linear, quadratic and cubic terms of log kappa. The strict negative
+quadratic coefficient gives the second estimate. No sign assumption on the
+quartic term of log kappa is needed.
+
+Choose once and for all 0<d<=delta_* with C d^4<=log(B-1), possible since B>2.
+Set delta_L=d L^(-1/3), kappa_L=kappa(delta_L), m_L=m(delta_L), and
+ a_L=kappa_L^(-L), R_L(x)=product_(i=1)^L w_deltaL(x_i),
+ Z_L=1+a_L m_L^L, r_L=(1+a_L R_L)/Z_L.
+The density is strictly positive and E r_L=1. Product measure gives
+||R_L||_s=1, E R_L=m_L^L, and strict convexity gives 0<m_L<1.
+The Taylor bound gives
+ |log a_L|<=C d^4 L^(-1/3)<=log(B-1),
+so a_L<=B-1 and a_L tends to1. Thus
+ ||r_L||_s <=(1+a_L)/Z_L<=B,  Z_L<=1+a_L<=B,  r_L>=1/B.
+This establishes all constraints for every L>=1 with one fixed moment budget.
+
+The transfer spectrum equals that of S_rL as above, and tensorization gives
+ F_L=Z_L S_rL=P_rho+a_L X_L,  X_L=H(delta_L)^(tensor L).
+The two blocks P_rho and a_L X_L each have top eigenvalue exactly1, the
+second by definition of a_L. Form the N-by-2N matrix
+ C_L=[P_rho^(1/2), sqrt(a_L) X_L^(1/2)], N=2^L.
+Then C_L C_L*=F_L and C_L* C_L is the block matrix with those two diagonal
+blocks and cross block sqrt(a_L) P_rho^(1/2)X_L^(1/2). Its norm is
+ eta_L=sqrt(a_L) tau(delta_L)^L
+      <=sqrt(B-1) exp(-c d^2 L^(1/3)).
+The block diagonal has its two largest eigenvalues exactly1; none exceed1.
+The off-diagonal selfadjoint perturbation has norm eta_L, by squaring that
+block matrix. Hence lambda_1(C_L*C_L)<=1+eta_L and
+lambda_2(C_L*C_L)>=1-eta_L. The N positive eigenvalues of C_L C_L* equal
+the N positive eigenvalues of C_L*C_L with multiplicity, and the latter has
+N additional zero eigenvalues. Since F_L is positive definite and N>=2,
+the first two eigenvalues have the same labels in both matrices, even when
+the lower estimate 1-eta_L is negative. Also F_L>=P_rho gives lambda_1(F_L)>=1.
+It follows that gap(F_L)<=2eta_L. Scalar normalization and AA*/A*A preserve
+the eigenvalue ratio. T_rL is strictly entrywise positive in the configuration
+basis, since 0<rho<1 and r_L>0, so Perron simplicity gives gap(T_rL)>0. QED.
+
+INTERPRETATION AND BOUNDARIES.
+Published297 v2 proves the supercritical uniform gap for every finite moment
+budget and subcritical collapse for every B>1. Theorem A and B here distinguish
+small and large budgets at the previously unresolved critical exponent.
+They do NOT determine the intermediate critical budgets, the optimal boundary,
+or the boundary value itself. Neither theorem imposes or concludes matching
+low-order marginals. Density is measured against the uniform cube reference,
+not the Perron stationary law. Logarithmic weights may be nonlocal. The
+normalized transfer gap is not a heat-bath gap or a physical Yang-Mills gap.
+The exponent s_c and the ordinary hypercontractivity used in A are classical.
+The transfer congruence/product Gram machinery comes from the cited programme
+sources. Priority for the balanced finite-dimensional construction is not
+established. This is an analytical candidate requiring separate audit before
+manuscript integration or publication; there is no new PDF assessment here.
+
+PRE-AUDIT DEVELOPMENT HISTORY (not independent failed audit gates).
+The first endpoint idea retained both antipodal tilts and epsilon>1, and used
+a three-block Gram matrix including the uniform channel; it would suffice
+for B>3. The direct published297 estimate with a fixed uniform additive error
+does NOT prove endpoint collapse because kappa(delta_L)^L tends to1. The
+present argument removes that nonvanishing error by including the uniform
+channel in the Gram comparison and balancing one tilted channel against it.
+An unbalanced single tilt with a_L=1 would only yield a polynomial remainder
+from 1-kappa(delta_L)^L; choosing a_L=kappa_L^(-L) avoids it. These preliminary
+routes were not submitted to an auditor or represented as certified results.
+No computation was run. Possible improvements to the B>2 threshold are left
+outside the registered target; they are not claims or additional active tasks.

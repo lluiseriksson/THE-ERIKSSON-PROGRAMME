@@ -1,0 +1,67 @@
+SCHEMA-ONLY ADDENDUM TO THE EXISTING EXACT-PDF ASSESSMENT
+
+Target PDF raw SHA-256:
+55d07066bd947482fa2e41f312ca6da614f4ec142f8ee9348b85f5f9d2de31d1
+
+This addendum repairs the machine-readable schema of the same completed assessment. It is not a second assessment, second vote, scientific reconsideration, score resampling or improvement attempt.
+
+The correction assignment states that the accepted independence enum is:
+not_involved_in_manuscript | involved_in_manuscript | unknown.
+
+Old field:
+"independence": "not_independent_same_provider_fresh_context_shared_filesystem_isolation_unverified"
+
+New field:
+"independence": "unknown"
+
+Reason for selecting unknown:
+The original factual context reports a fresh assessment context, no manuscript authorship within that audit context, the same provider/model family as preparation, a shared filesystem, and unverified technical isolation, disabled memory, served backend and reasoning effort. The conservative enum unknown does not assert independently established noninvolvement or independent review. The original explanatory context and all independence caveats remain unchanged and retained.
+
+Original immutable artifacts:
+1. D:\Datos\the-eriksson-programme\autonomia\evidencia-298\assessment298-first-round\outputs\native-response.json
+Raw SHA-256: 7f373402792f6b34b2dce8e337c8bfb167b3e32515eaa6064e38e19f4cbda2cc
+
+2. D:\Datos\the-eriksson-programme\autonomia\evidencia-298\assessment298-first-round\outputs\full-scientific-report.txt
+Raw SHA-256: ae72e1313d60ebb585d6150b9369eb7a897173cd206a8b492279146242432955
+
+3. D:\Datos\the-eriksson-programme\autonomia\evidencia-298\assessment298-first-round\outputs\model-context.json
+Raw SHA-256: 932046c04e9ef1a3fa71b661677c735214f6584a243d9419df18da5b69f9e930
+
+4. D:\Datos\the-eriksson-programme\autonomia\evidencia-298\assessment298-first-round\outputs\importance-assessment.json
+Raw SHA-256: f08927768089fdaa3eb6aa1b96f863105708d4e80a2e2680ad5f0168d41d23fc
+
+5. D:\Datos\the-eriksson-programme\autonomia\evidencia-298\assessment298-first-round\outputs\output-manifest.json
+Raw SHA-256: 513166986762b694db9a75577ee3b5e120a0b083a2f12fa616b1d927b76e3de7
+
+Corrected response:
+D:\Datos\the-eriksson-programme\autonomia\evidencia-298\assessment298-first-round\outputs\schema-correction\schema-corrected-response.json
+Raw SHA-256: da15318308be7ae0a32590e44800a011eef28323d00dc9460a6247b04090f86e
+
+Unchanged assessment:
+- Native Millennium score: 4.00/10.
+- Public overall stars: 4, Strong.
+- Separate importance score: 3.50/10.
+- Criteria: correctness 4/5, rigor 4/5, novelty 3/5, significance 3/5, inspectability 4/5.
+- Recommendation: minor_revision.
+- No unresolved material mathematical objection was identified in the original assessment.
+- Every original strength, weakness, potential-error entry, novelty candidate, summary, identifier, timestamp, provider/model field, criterion basis and objection list is unchanged.
+
+Retained original limitations and minor objections:
+O1. External originality and comparative significance remain unresolved.
+O2. The Aida comparison can be updated with the accessible author-hosted preprint and an explicit bibliographic entry.
+O3. Critical budgets are only partially characterized, and the displayed critical rate is sufficient rather than optimal.
+O4. Global arbitrary weights and whole-configuration dynamics limit broader physical/local-model relevance.
+O5. Page 14's long path causes a minor overfull line, and page 13 has a singular/plural copy edit.
+O6. Supplied build provenance and source-audit mentions are not independent scientific verification; the original report's verification limits remain.
+These are the existing findings, reproduced without reconsideration. Their full wording and reasoning remain in the original report.
+
+Verification:
+The original response text was read and the single exact independence field was replaced. Both JSON documents were parsed; after removing only independence from each, their complete serialized JSON objects were exactly equal. Reversing that one field replacement also restored the original text exactly, including its existing whitespace and line endings. Thus there is no change to any other JSON field or text outside the replaced value.
+All seven original primary outputs were verified against the original output manifest. The original manifest's own raw hash was also checked. All nine original top-level output files, including the manifest and its detached digest, were hashed before and after correction; they remained unchanged.
+The enum was checked against the accepted values supplied in the correction assignment. No unavailable complete native schema validator was claimed to have run.
+The correction-verification.json and correction-output-manifest.json record the file evidence. The latter excludes itself and its detached digest to avoid circular hashing.
+
+Scope:
+No new scientific or literature review occurred. No other development folders, agents, chats or source/PR actions were used. No inbound message arrived during this correction. Only new files in outputs/schema-correction were created. All original outputs and their manifest are preserved.
+All hashes refer to exact stored bytes, without normalization. New text outputs are UTF-8 without BOM; the corrected response preserves the original text's byte representation apart from the required field-value substitution.
+

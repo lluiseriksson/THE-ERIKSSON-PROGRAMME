@@ -1,0 +1,59 @@
+{
+  "operation": "Schema-only repair of the same assessment, not a second vote",
+  "old_independence": "not_independent_same_provider_fresh_context_shared_filesystem_isolation_unverified",
+  "new_independence": "unknown",
+  "json_equal_after_excluding_independence": true,
+  "exact_text_equal_after_reversing_field_replacement": true,
+  "originals_verified_against_existing_manifest": true,
+  "original_files": [
+    {
+      "path": "full-scientific-report.txt",
+      "bytes": 26683,
+      "raw_sha256": "ae72e1313d60ebb585d6150b9369eb7a897173cd206a8b492279146242432955"
+    },
+    {
+      "path": "importance-assessment.json",
+      "bytes": 1318,
+      "raw_sha256": "f08927768089fdaa3eb6aa1b96f863105708d4e80a2e2680ad5f0168d41d23fc"
+    },
+    {
+      "path": "instruction-source-manifest.json",
+      "bytes": 1319,
+      "raw_sha256": "df9b1488ab18b777b603837e9d196de6669428c7bef882a6c9d8d1d1d1789fec"
+    },
+    {
+      "path": "model-context.json",
+      "bytes": 3093,
+      "raw_sha256": "932046c04e9ef1a3fa71b661677c735214f6584a243d9419df18da5b69f9e930"
+    },
+    {
+      "path": "native-response.json",
+      "bytes": 5352,
+      "raw_sha256": "7f373402792f6b34b2dce8e337c8bfb167b3e32515eaa6064e38e19f4cbda2cc"
+    },
+    {
+      "path": "output-manifest.json",
+      "bytes": 1662,
+      "raw_sha256": "513166986762b694db9a75577ee3b5e120a0b083a2f12fa616b1d927b76e3de7"
+    },
+    {
+      "path": "output-manifest.sha256",
+      "bytes": 88,
+      "raw_sha256": "3d1dbe9df40d214275a5638006dc5ce0fb93254ba6ef098deba490b1da8a8b25"
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 2562,
+      "raw_sha256": "ee06de735e92a83ac632da48fe7f986cc30d708699654692486770dfde78af4f"
+    },
+    {
+      "path": "verified-input-manifest.json",
+      "bytes": 4440,
+      "raw_sha256": "2003a5dcc07da3a12c1c0ae32dc726f8ea3f154fb10eacc9d05a7c1e22dd8194"
+    }
+  ],
+  "corrected_response_raw_sha256": "da15318308be7ae0a32590e44800a011eef28323d00dc9460a6247b04090f86e",
+  "hash_representation": "Exact stored bytes, no normalization",
+  "limitation": "Only the specified enum and preservation of all other JSON fields were checked; no claim of executing an unavailable complete native schema validator",
+  "originals_unchanged_after_correction": true
+}
