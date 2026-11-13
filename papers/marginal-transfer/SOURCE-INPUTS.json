@@ -1,0 +1,30 @@
+{
+  "source_proof_commit": "8c0afedcbfcdb658f11f55cd5256277f6ab9e321",
+  "review": "Source audit pending; build must await actual parent acceptance",
+  "files": [
+    {
+      "path": "inputs/judges294.txt",
+      "raw_sha256": "6ec0d1e2571a2a3cb20b2bad5637f6c619d4decf2ee24baba1f42d58d8e385a3",
+      "bytes": 1491,
+      "original_path": "research/marginal-transfer294/judges294.txt"
+    },
+    {
+      "path": "inputs/prior-congruence.tex",
+      "raw_sha256": "f9c4431d07e9c59742d5392f81f80d54be5241de999cb20ff52c0daba0b234e4",
+      "bytes": 67392,
+      "original_path": "papers/congruence-spectrum/congruence_spectrum.tex"
+    },
+    {
+      "path": "inputs/source294A.txt",
+      "raw_sha256": "a87623f95ffe9580ade6995f21155e0e524fedba0af367105c4562467935fe50",
+      "bytes": 13406,
+      "original_path": "research/marginal-transfer294/marginal-transfer294A.txt"
+    },
+    {
+      "path": "inputs/prior-parity215.tex",
+      "raw_sha256": "5b534c9fb52d736b9d04c334c40cdc96708568d022c2b28f42db1f096df382f8",
+      "bytes": 14830,
+      "original_path": "papers/parity-barriers/revision215/parity_positive.tex"
+    }
+  ]
+}

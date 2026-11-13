@@ -1,0 +1,41 @@
+{
+  "source": "f4d66763d3fe3eccfc9e5eafba37d17dbe519f6b",
+  "proof_source": "8c0afedcbfcdb658f11f55cd5256277f6ab9e321",
+  "PDF_sha256": "f6de607cb81d5f402735a21391b13e346bc85b12da44e07da0487edc7debf3df",
+  "PDF_bytes": 296958,
+  "pages": 7,
+  "source_review": "Involved Codex/OpenAI separate sessions; exact backend unexposed",
+  "formal_verification": false,
+  "external_priority": "unestablished",
+  "historical_failures": [
+    "Parent advanced HEAD during first source audit; governing report refused manuscript approval. Separate7b19 whole-manuscript delta audit accepted, preserving original freeze failure.",
+    "A preproduction withheld because deterministic PDF metadata controls omitted; f4d667 adds exactly3 lines, separate B delta accepted. No actual failed PDF compile/mismatch.",
+    "Parent metadata-manifest validator initially assumed uniform schema; zero-count rejection occurred before mutation. Actual23,42,19 raw members separately verified.",
+    "Mixed-newline initial three-line edit failed diffcheck; normalized newTeX to original LF beforecommit; finaldiff exactly3addedlines.",
+    "Parent post-readback wrapper incorrectly tested ambient LASTEXITCODE; actual Process.ExitCode sentinel0 and literal no active sessions separately read. No repeated readback."
+  ],
+  "complete_raw_packets": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-294; accompanying public reproduction package to retain all raw contexts/subjects/manifests",
+  "production": "Two fresh Colab clones same SHA: identical PDFs,27 actual inner exits0,128 raw members verified; all7pages inspected. Own runtime stopped, backend reported no active sessions; no math executable run.",
+  "reports": [
+    {
+      "path": "production-b-report.txt",
+      "sha256": "561f0973976aad879ca3dc5ba8b321015373cbe20f0feb7135aa14fa0f964aab"
+    },
+    {
+      "path": "source-governing-report.txt",
+      "sha256": "cb535c1ba256bdc4e294dabeb841699e926f61eaa8bb54d6ef172a478faa7ddd"
+    },
+    {
+      "path": "production-a-report.txt",
+      "sha256": "59377b1719be45370073837ccf5453d27cf4c3bdd77e470fb311f547b68dfd9d"
+    },
+    {
+      "path": "source-original-report.txt",
+      "sha256": "f1a5a58edd0c79e4554fdcac349117721c113a2c54825333c1354ccefa828fd0"
+    },
+    {
+      "path": "manuscript-delta-report.txt",
+      "sha256": "072b201e7cc30f3185dbb114e1ef221a961137d4992c603d30cd39e83eb56049"
+    }
+  ]
+}
