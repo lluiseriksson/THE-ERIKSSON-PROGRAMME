@@ -1,0 +1,61 @@
+{
+  "paper_id": "ARR-2026-7KV9Y9ASX48H7A7N",
+  "version": "v6",
+  "version_id": "arr:version:e1e99a04-4431-4bab-ab97-3c2509731714",
+  "canonical_sha256": "66b244f169e771bf5c401d82053281f2e54ec051e74ce3364b6080a98ab467b9",
+  "provider": "OpenAI / Codex",
+  "model_id": "unverified (requested: gpt-6-astra)",
+  "assessed_at": "2026-11-13T16:54:57+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "unknown",
+  "recommendation": "minor_revision",
+  "millennium_score": 4,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "All 29 exact-PDF page renders and the complete text were read. The code, hypercontractive, balanced-tilt and attained-cutoff proofs withstand the stated analytical challenges; no invalidating error was found. This is one AI reading, with no formal or executable checks and no verified independence."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The proofs explicitly control zero supports, sign regions, noninteger moments, finite prefixes, dyadic rounding, strict cutoff events and both leading eigenvalues. Optimal constants/rates and the universal sub-one cutoff spectral interval remain outside the proved claims."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Joint code/Perron marginal matching and critical endpoint realizations are plausible original specializations relative to targeted readings of Mossel-Oleszkiewicz-Sen, Miclo, Wang, Biskup-Koenig, Gross, Glueck, Aida and coding sources. The methods and hypercontractive scale are classical; external priority and exhaustive literature coverage were not established."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "Sharp distinctions between marginal information, critical density moments and transfer relaxation have specialist mathematical value. The endpoint construction is precise, but no broad application, locality result or recognized Millennium-problem consequence is supplied."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "All 40 supplied input byte lengths and hashes matched; the exact PDF, 29 readable renders, TeX and text support analytical inspection. Production report read as provenance only. Build reproduction, mathematical execution, formal verification and full external-archive verification were not performed."
+    }
+  },
+  "summary": "The exact v6 PDF gives a technically serious and largely self-contained classification and counterexample programme for a fixed multiplicative Boolean noise family. No invalidating main-proof defect was located, including in Theorem 21's endpoint construction. Technical minor revision is recommended for presentation/navigation, while originality, importance, asymptotic effectiveness and independent verification reservations remain. Millennium 4.00 is the Strong research anchor, not an average of criterion stars or a probability. This is the first and only score in this round, not editorial acceptance. Requested model/effort were gpt-6-astra/high; actual backend/effort are unverified.",
+  "strengths": [
+    "Theorem 1 jointly preserves labelled linear-order product marginals of the weighting and Perron stationary laws while producing exponentially many slow transfer modes; Proposition 5 correctly distinguishes heat-bath and transfer spectra.",
+    "Theorems 9-13 match the strict exponent regimes and attain the exact critical total-norm boundary with prescribed floors below one.",
+    "Theorems 14-18 distinguish escaped moment from universal integrability and attain the strict cutoff-one tail cap in one family for all larger cutoffs.",
+    "Theorem 21 controls growing dyadic parity backgrounds, clipping, exact mean compensation, the floor K, finite tail errors and both actual leading eigenvalues at the constructive budget."
+  ],
+  "weaknesses": [
+    "R1: External priority remains unestablished. The exact joint conclusions were not found in the targeted sources, but classical methods and close budget/gap precedents prevent a broad originality claim.",
+    "R2: Significance is specialized to unrestricted Boolean transfer congruences. No fixed-range Gibbs, local-dynamics, algorithmic, continuum or Millennium-problem consequence is demonstrated.",
+    "R3: The universal spectral threshold for fixed cutoffs below one remains unclassified between the sufficient and constructive regions. Theorem 21 does not resolve that interval.",
+    "R4: Exact endpoint families have no effective dimension threshold or optimal rates; Lemma 2 is an existence argument, not an efficient construction. These limitations are disclosed.",
+    "R5: The build, formal verification, numerical experiments and external audit archive were not independently reproduced in this round. Shared-provider/shared-filesystem review does not establish independence.",
+    "R6: The long abstract, preliminary critical-budget results and extensive review history obscure the result hierarchy. A compact family/property table would improve inspectability.",
+    "D1: Confirmed minor navigation defect: equations (31)-(32) on pages 21-22 precede equations (20)-(26) on pages 24-25 because of explicit TeX tags."
+  ],
+  "potential_errors": [
+    "D1: Equations (31)-(32) on pages 21-22 precede (20)-(26) on pages 24-25. This confirmed numbering/navigation defect is not a mathematical counterexample."
+  ],
+  "strong_novelty_candidates": [
+    "The joint linear-order marginal and many-slow-mode transfer statement, including Perron stationary marginals, is a plausible novel synthesis; historical priority not established.",
+    "The exact critical raw-density budget B*=2^(1/s), including attainable collapsing families with prescribed floors below one, is a plausible novel classification for this specific operator family.",
+    "The cutoff-one exact tail cap and Theorem 21's attained constructive cutoff budget with floor equal to K are plausible novel endpoint realizations, not a new general method or universal sub-one spectral threshold."
+  ],
+  "unresolved_material_objections": []
+}

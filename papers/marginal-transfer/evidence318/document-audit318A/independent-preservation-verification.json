@@ -1,0 +1,145 @@
+{
+  "old_statement_count": 21,
+  "new_statement_count": 23,
+  "old_statements_identical_after_CRLF_to_LF_only": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "old_proof_count": 22,
+  "new_proof_count": 24,
+  "proof_rows": [
+    {
+      "proof_index": 1,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 2,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 3,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 4,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 5,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 6,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 7,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 8,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 9,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 10,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 11,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 12,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 13,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 14,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 15,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 16,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 17,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 18,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 19,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 20,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 21,
+      "permitted_display_reversals": [
+        "eq:318-background-decay",
+        "eq:318-mixed-powers"
+      ],
+      "equal_after_only_these_and_whitespace": true
+    },
+    {
+      "proof_index": 22,
+      "permitted_display_reversals": [],
+      "equal_after_only_these_and_whitespace": true
+    }
+  ],
+  "whitelist": "Only two exact equation labels in old proof21 reversed to original tag31/tag32 displays; all other nonwhitespace bytes compared."
+}

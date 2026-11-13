@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-13T18:04:29.006109+00:00",
+  "head": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff",
+  "branch": "codex/tep-sharp-tail318-20261113",
+  "status": "?? prepare311.py\n?? prepare314.py\n",
+  "subjects": {
+    "manuscript318A.git-blob.tex": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff:papers/marginal-transfer/manuscript318A.tex",
+    "manuscript314A.original.git-blob.tex": "b72cfbcb74275ff7f80b6c262cb003c5cc6ea8eb:papers/marginal-transfer/manuscript314A.tex",
+    "source315A.original.git-blob.txt": "4629c93c51e8ab3acfb849a823208e62a5e6e191:research/tail-envelope315/source315A.txt",
+    "source317A.original.git-blob.txt": "4d7a94d4a649a997a1f01a8f8f477e3be20fec66:research/reverse-tail317/source317A.txt",
+    "charter.git-blob.md": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff:docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "judges318.candidate.git-blob.txt": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff:papers/marginal-transfer/judges318.txt",
+    "judges318.preregistered.git-blob.txt": "24a7de5311d5901c19a15343e6952fa89aff8103:papers/marginal-transfer/judges318.txt",
+    "SOURCE-INPUTS318.git-blob.json": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff:papers/marginal-transfer/SOURCE-INPUTS318.json",
+    "PACKAGE-BOUNDARY318.git-blob.json": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff:papers/marginal-transfer/PACKAGE-BOUNDARY318.json",
+    "evidence318.gitattributes.git-blob.txt": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff:papers/marginal-transfer/evidence318/.gitattributes"
+  }
+}

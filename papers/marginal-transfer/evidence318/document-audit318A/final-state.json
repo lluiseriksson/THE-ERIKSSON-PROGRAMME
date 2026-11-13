@@ -1,0 +1,65 @@
+{
+  "utc": "2026-11-13T18:10:33.524224+00:00",
+  "head": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff",
+  "branch": "codex/tep-sharp-tail318-20261113",
+  "status_short": "?? prepare311.py\n?? prepare314.py",
+  "remote265": {
+    "headRefName": "codex/tep-sharp-tail318-20261113",
+    "headRefOid": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff",
+    "state": "OPEN",
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/43478208898/job/132067568543",
+        "name": "lake build YangMillsCore + oracle",
+        "startedAt": "2026-11-13T17:59:40Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "Lean – YangMillsCore build + axiom oracle"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-13T17:59:51Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/43478208855/job/132067567798",
+        "name": "honesty",
+        "startedAt": "2026-11-13T17:59:39Z",
+        "status": "COMPLETED",
+        "workflowName": "CI – Epistemic Honesty Enforcement"
+      }
+    ]
+  },
+  "remote264": {
+    "headRefName": "codex/tep-reverse-tail317-20261113",
+    "headRefOid": "4d7a94d4a649a997a1f01a8f8f477e3be20fec66",
+    "state": "MERGED",
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-13T17:48:05Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/43476333515/job/132061000612",
+        "name": "honesty",
+        "startedAt": "2026-11-13T17:47:53Z",
+        "status": "COMPLETED",
+        "workflowName": "CI – Epistemic Honesty Enforcement"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-11-13T18:08:26Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/43476333527/job/132061008632",
+        "name": "lake build YangMillsCore + oracle",
+        "startedAt": "2026-11-13T17:47:54Z",
+        "status": "COMPLETED",
+        "workflowName": "Lean – YangMillsCore build + axiom oracle"
+      }
+    ]
+  },
+  "normalized_body_bytes": 1379,
+  "normalized_body_sha256": "f546ca3014e1b8d9b857e4e4fb2afa4959612c6d9e5cd52cffd64ecaa2809b64",
+  "body_unchanged": true,
+  "manuscript_sha256": "39393a00a57f4e01a32522b7597fd84491fafe223bc916e580cc8061d0c3879e",
+  "source318_pdf_paths": ""
+}

@@ -1,0 +1,73 @@
+[
+  {
+    "arguments": [
+      "show",
+      "-s",
+      "--format=fuller",
+      "e374e78a9d3ecb6a8ab929f32357d5203a8221ff"
+    ],
+    "exit_code": 0,
+    "stdout": "commit e374e78a9d3ecb6a8ab929f32357d5203a8221ff\nAuthor:     lluiseriksson <lluiseriksson@gmail.com>\nAuthorDate: Fri Nov 13 18:59:06 2026 +0100\nCommit:     lluiseriksson <lluiseriksson@gmail.com>\nCommitDate: Fri Nov 13 18:59:06 2026 +0100\n\n    Document318A [sources315+317]: close universal strict-tail interval\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "show",
+      "-s",
+      "--format=fuller",
+      "24a7de5311d5901c19a15343e6952fa89aff8103"
+    ],
+    "exit_code": 0,
+    "stdout": "commit 24a7de5311d5901c19a15343e6952fa89aff8103\nAuthor:     lluiseriksson <lluiseriksson@gmail.com>\nAuthorDate: Fri Nov 13 18:49:42 2026 +0100\nCommit:     lluiseriksson <lluiseriksson@gmail.com>\nCommitDate: Fri Nov 13 18:49:42 2026 +0100\n\n    Judges318 [base8362769]: group scalar and sharp strict-tail results\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "merge-base",
+      "--is-ancestor",
+      "24a7de5311d5901c19a15343e6952fa89aff8103",
+      "e374e78a9d3ecb6a8ab929f32357d5203a8221ff"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "ls-tree",
+      "--name-only",
+      "24a7de5311d5901c19a15343e6952fa89aff8103",
+      "--",
+      "papers/marginal-transfer/manuscript318A.tex"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "diff",
+      "--name-status",
+      "24a7de5311d5901c19a15343e6952fa89aff8103",
+      "e374e78a9d3ecb6a8ab929f32357d5203a8221ff"
+    ],
+    "exit_code": 0,
+    "stdout": "A\tpapers/marginal-transfer/PACKAGE-BOUNDARY318.json\nA\tpapers/marginal-transfer/SOURCE-INPUTS318.json\nA\tpapers/marginal-transfer/evidence318/.gitattributes\nA\tpapers/marginal-transfer/evidence318/authoring-attempt-a-failure.txt\nA\tpapers/marginal-transfer/evidence318/historical-v6-assessment/manuscript314A.pdf\nA\tpapers/marginal-transfer/evidence318/historical-v6-assessment/original-input-manifest.json\nA\tpapers/marginal-transfer/evidence318/historical-v6-assessment/outputs/full-scientific-report.txt\nA\tpapers/marginal-transfer/evidence318/historical-v6-assessment/outputs/importance-assessment.json\nA\tpapers/marginal-transfer/evidence318/historical-v6-assessment/outputs/model-context.json\nA\tpapers/marginal-transfer/evidence318/historical-v6-assessment/outputs/native-response.json\nA\tpapers/marginal-transfer/evidence318/historical-v6-assessment/outputs/output-manifest.json\nA\tpapers/marginal-transfer/evidence318/historical-v6-assessment/outputs/received-assignment.txt\nA\tpapers/marginal-transfer/evidence318/parent-preservation318.json\nA\tpapers/marginal-transfer/evidence318/parent-source315-acceptance.json\nA\tpapers/marginal-transfer/evidence318/parent-source317-acceptance.json\nA\tpapers/marginal-transfer/evidence318/source-audit315A/assignment-received.txt\nA\tpapers/marginal-transfer/evidence318/source-audit315A/context-and-scope.txt\nA\tpapers/marginal-transfer/evidence318/source-audit315A/final-state.json\nA\tpapers/marginal-transfer/evidence318/source-audit315A/full-report.txt\nA\tpapers/marginal-transfer/evidence318/source-audit315A/git-metadata.txt\nA\tpapers/marginal-transfer/evidence318/source-audit315A/initial-state.json\nA\tpapers/marginal-transfer/evidence318/source-audit315A/manifest-binding.txt\nA\tpapers/marginal-transfer/evidence318/source-audit315A/pr262-body-final.utf8-lf.txt\nA\tpapers/marginal-transfer/evidence318/source-audit315A/pr262-body-initial.utf8-lf.txt\nA\tpapers/marginal-transfer/evidence318/source-audit315A/pr262-final.json\nA\tpapers/marginal-transfer/evidence318/source-audit315A/pr262-initial.json\nA\tpapers/marginal-transfer/evidence318/source-audit315A/raw-hashmanifest.json\nA\tpapers/marginal-transfer/evidence318/source-audit315A/raw-hashmanifest.sha256\nA\tpapers/marginal-transfer/evidence318/source-audit315A/subjects/CLAUDE.git-blob.md\nA\tpapers/marginal-transfer/evidence318/source-audit315A/subjects/charter.git-blob.md\nA\tpapers/marginal-transfer/evidence318/source-audit315A/subjects/judges315-candidate.git-blob.txt\nA\tpapers/marginal-transfer/evidence318/source-audit315A/subjects/judges315-preregistered.git-blob.txt\nA\tpapers/marginal-transfer/evidence318/source-audit315A/subjects/judges315.checkout.txt\nA\tpapers/marginal-transfer/evidence318/source-audit315A/subjects/manuscript314-cited.git-blob.tex\nA\tpapers/marginal-transfer/evidence318/source-audit315A/subjects/source315A.checkout.txt\nA\tpapers/marginal-transfer/evidence318/source-audit315A/subjects/source315A.git-blob.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/assignment-received.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/context-and-scope.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/final-state.json\nA\tpapers/marginal-transfer/evidence318/source-audit317A/full-report.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/git-metadata.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/initial-state.json\nA\tpapers/marginal-transfer/evidence318/source-audit317A/manifest-binding.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/pr264-body-final.utf8-lf.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/pr264-body-initial.utf8-lf.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/pr264-final.json\nA\tpapers/marginal-transfer/evidence318/source-audit317A/pr264-initial.json\nA\tpapers/marginal-transfer/evidence318/source-audit317A/primary-reading.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/raw-hashmanifest.json\nA\tpapers/marginal-transfer/evidence318/source-audit317A/raw-hashmanifest.sha256\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/CLAUDE.git-blob.md\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/charter.git-blob.md\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/judges317-candidate.git-blob.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/judges317-preregistered.git-blob.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/judges317.checkout.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/manuscript314-cited.git-blob.tex\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/parent-pr264-body.raw.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/parent-pr264-initial.raw.json\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/source313-cited.git-blob.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/source315-cited.git-blob.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/source317A.checkout.txt\nA\tpapers/marginal-transfer/evidence318/source-audit317A/subjects/source317A.git-blob.txt\nA\tpapers/marginal-transfer/manuscript318A.tex\nA\tpapers/marginal-transfer/sharp318-section.tex\nA\tresearch/reverse-tail317/judges317.txt\nA\tresearch/reverse-tail317/source317A.txt\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "check-attr",
+      "text",
+      "whitespace",
+      "--",
+      "papers/marginal-transfer/evidence318/source-audit315A/git-metadata.txt",
+      "papers/marginal-transfer/evidence318/source-audit317A/git-metadata.txt",
+      "papers/marginal-transfer/evidence318/source-audit317A/full-report.txt",
+      "papers/marginal-transfer/manuscript318A.tex"
+    ],
+    "exit_code": 0,
+    "stdout": "papers/marginal-transfer/evidence318/source-audit315A/git-metadata.txt: text: unset\npapers/marginal-transfer/evidence318/source-audit315A/git-metadata.txt: whitespace: cr-at-eol,-blank-at-eol\npapers/marginal-transfer/evidence318/source-audit317A/git-metadata.txt: text: unset\npapers/marginal-transfer/evidence318/source-audit317A/git-metadata.txt: whitespace: cr-at-eol,-blank-at-eol\npapers/marginal-transfer/evidence318/source-audit317A/full-report.txt: text: unset\npapers/marginal-transfer/evidence318/source-audit317A/full-report.txt: whitespace: cr-at-eol\npapers/marginal-transfer/manuscript318A.tex: text: unset\npapers/marginal-transfer/manuscript318A.tex: whitespace: unspecified\n",
+    "stderr": ""
+  }
+]

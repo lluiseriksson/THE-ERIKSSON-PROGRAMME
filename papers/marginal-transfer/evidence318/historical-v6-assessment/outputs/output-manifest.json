@@ -1,0 +1,33 @@
+{
+  "assessment": "exact314-first-and-only-numerical-round",
+  "canonical_sha256": "66b244f169e771bf5c401d82053281f2e54ec051e74ce3364b6080a98ab467b9",
+  "input_manifest_raw_sha256": "30d88eb3eea0d10a288c45d38a8fbe40533f095c3532c3e4745b725bf334da40",
+  "files": [
+    {
+      "path": "full-scientific-report.txt",
+      "bytes": 28726,
+      "raw_sha256": "f444f2f0cb0436c76330f930bcbc595d019762c9fda986cde402bb9b30c8397c"
+    },
+    {
+      "path": "native-response.json",
+      "bytes": 6056,
+      "raw_sha256": "56413a4e806042aece3b0d932237b5e740177e80b87ebfb9d70dffd77540ba74"
+    },
+    {
+      "path": "importance-assessment.json",
+      "bytes": 2208,
+      "raw_sha256": "83d268c85b3ef56d07168cf34b0bdf4bd79a5793a3ec65ee886e667d8025481f"
+    },
+    {
+      "path": "model-context.json",
+      "bytes": 3960,
+      "raw_sha256": "1a777aba16f7228f117d2b1727f586d5d93c3117ca47b9ade9bea34479820ec3"
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 2304,
+      "raw_sha256": "6e46d6e7d78e20411dbca8aab6b78d517a013e664689c5aa7e2576ff5ef9d31a"
+    }
+  ],
+  "self_hash_policy": "This manifest excludes itself to avoid a recursive hash; its raw SHA256 is returned in the final delivery."
+}

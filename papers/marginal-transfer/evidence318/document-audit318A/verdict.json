@@ -1,0 +1,30 @@
+{
+  "kind": "document_source_audit",
+  "verdict": "CHANGES_REQUIRED",
+  "document_gate_accepted": false,
+  "subject_commit": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff",
+  "manuscript_raw_sha256": "39393a00a57f4e01a32522b7597fd84491fafe223bc916e580cc8061d0c3879e",
+  "pr265_body_representation": "decoded; CRLF->LF; TrimEnd; appendLF; UTF8noBOM",
+  "pr265_body_bytes": 1379,
+  "pr265_body_sha256": "f546ca3014e1b8d9b857e4e4fb2afa4959612c6d9e5cd52cffd64ecaa2809b64",
+  "blocking_objections": [
+    {
+      "id": "O1",
+      "kind": "documentary",
+      "path": "papers/marginal-transfer/manuscript318A.tex",
+      "line": 1698,
+      "text": "Comparison and the unresolved spectral interval",
+      "reason": "Surviving obsolete current open-interval claim conflicts with new universal theorem and fixed J2/J3",
+      "required_future_disposition": "Remove or explicitly historicize this heading in a separately bound later candidate; do not alter frozen candidate under this verdict."
+    }
+  ],
+  "nonblocking_observations": [
+    "O2 prospective expanded PDF wording",
+    "O3 conservative/asymptotic, priority and validation limitations",
+    "O4 separate pending external gates"
+  ],
+  "mathematical_invalidating_defect_found": false,
+  "scores": null,
+  "pdf_assessment": false,
+  "full_report": "full-report.txt"
+}

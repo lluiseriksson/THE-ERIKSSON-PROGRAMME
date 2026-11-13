@@ -1,0 +1,29 @@
+commit 4d7a94d4a649a997a1f01a8f8f477e3be20fec66
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 18:47:22 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 18:47:22 2026 +0100
+
+    Source317A [judges0f03eb338]: prove universal critical strict-tail threshold
+
+commit 0f03eb338c2273f9257b4710b092902aacec165b
+Author:     lluiseriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 18:45:22 2026 +0100
+Commit:     lluiseriksson <lluiseriksson@gmail.com>
+CommitDate: Fri Nov 13 18:45:22 2026 +0100
+
+    Judges317 [base8362769]: fix universal strict-tail necessity criteria
+
+commit 8362769e88d86fda1618df62fb396195f1b4a9f2
+Merge: 644c4fc20 24ca87edc
+Author:     Lluis Eriksson <lluiseriksson@gmail.com>
+AuthorDate: Fri Nov 13 18:30:11 2026 +0100
+Commit:     GitHub <noreply@github.com>
+CommitDate: Fri Nov 13 18:30:11 2026 +0100
+
+    Merge pull request #263 from lluiseriksson/codex/tep-catalogue316-20261113
+    
+    Prepare guarded v6 catalogue reconciliation after verified publication
+BASE-TO-CANDIDATE PATH DIFF
+A	research/reverse-tail317/judges317.txt
+A	research/reverse-tail317/source317A.txt

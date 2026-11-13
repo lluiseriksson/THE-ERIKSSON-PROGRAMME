@@ -1,0 +1,4 @@
+Exact on-disk file bytes; no normalization for these SHA256 digests.
+3b6aed75113f58f6ce27bd7f77afc88f44b2fe890340f1a398d6bb0884631be3  raw-hashmanifest.json
+f2c6f786e228bf55416d312420b0da9166959d7e49c1c545103ed6180465ed53  raw-hashmanifest.sha256
+5241836d74a70825934efa1858c9f6bb724b90935b5b66fd84206ca1d1e3deb1  full-report.txt

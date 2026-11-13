@@ -1,0 +1,35 @@
+{
+  "observed_utc": "2026-11-13T17:54:20.3258442Z",
+  "initial_head": "4d7a94d4a649a997a1f01a8f8f477e3be20fec66",
+  "final_head": "4d7a94d4a649a997a1f01a8f8f477e3be20fec66",
+  "branch": "codex/tep-reverse-tail317-20261113",
+  "initial_pr_head": "4d7a94d4a649a997a1f01a8f8f477e3be20fec66",
+  "final_pr_head": "4d7a94d4a649a997a1f01a8f8f477e3be20fec66",
+  "initial_worktree_status": [],
+  "final_worktree_status": [],
+  "body_capture": "gh pr view 264 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid",
+  "body_regime": "JSON-decode; CRLF/CR to LF; trim terminal LF; append exactly one LF; UTF8 no BOM",
+  "initial_body_sha256": "ffa4d359a507210f3d77940f0e6194162c89f43293b3383c18a121403550034c",
+  "final_body_sha256": "ffa4d359a507210f3d77940f0e6194162c89f43293b3383c18a121403550034c",
+  "parent_raw_body_sha256": "ffa4d359a507210f3d77940f0e6194162c89f43293b3383c18a121403550034c",
+  "final_body_bytes": 1070,
+  "checkout_comparisons": [
+    {
+      "source": "research/reverse-tail317/source317A.txt",
+      "initial_sha256": "7de72f28f51db5d45c1a7bee4295c26c1b86afc4aa7f399980ad2490bd4bdc3d",
+      "final_sha256": "7de72f28f51db5d45c1a7bee4295c26c1b86afc4aa7f399980ad2490bd4bdc3d",
+      "equal": true
+    },
+    {
+      "source": "research/reverse-tail317/judges317.txt",
+      "initial_sha256": "b77bee087822276b13f270528233a4fe71765cef0e602b3693b40f89e2bc04d3",
+      "final_sha256": "b77bee087822276b13f270528233a4fe71765cef0e602b3693b40f89e2bc04d3",
+      "equal": true
+    }
+  ],
+  "registered_judges_identical": true,
+  "stable": true,
+  "math_execution": false,
+  "ci_executed": false,
+  "cleanup_pending": false
+}

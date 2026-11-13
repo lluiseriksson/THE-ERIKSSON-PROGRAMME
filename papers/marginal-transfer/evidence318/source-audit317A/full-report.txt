@@ -1,0 +1,96 @@
+4d7a94d4a649a997a1f01a8f8f477e3be20fec66 | SOURCE317A ADVERSE ANALYTICAL AUDIT | PASS
+Date2026-11-13. Same involved313/315/316 auditor context. No independent/blind-review claim.
+
+1. Verdict and exact referents
+PASS against registered J1-J7. I found no blocking mathematical defect or counterexample after attacking the stated steps. The proof establishes the claimed universal necessity and quantitative bound; combined with the precisely matching retained313 construction, it yields the sharp threshold in the stated range. This is an analytical assessment, not a formal certificate, numerical verification, priority/importance rating, CI result or PDF grade.
+
+Candidate:4d7a94d4a649a997a1f01a8f8f477e3be20fec66
+Judges registration:0f03eb338c2273f9257b4710b092902aacec165b
+Base:8362769e88d86fda1618df62fb396195f1b4a9f2
+Worktree:C:\Trabajo\the-eriksson-programme\cutoff-floor313-20261113
+Branch:codex/tep-reverse-tail317-20261113
+Files:research/reverse-tail317/source317A.txt and judges317.txt
+PR:https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/264
+Capture:gh pr view 264 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid
+Body representation:JSON-decode body; CRLF to LF; remaining CR to LF; remove terminal LF characters; append exactly one LF; UTF8 without BOM.
+Frozen body:1070bytes, SHA256 ffa4d359a507210f3d77940f0e6194162c89f43293b3383c18a121403550034c.
+Parent's retained normalized body has the same raw hash as my fresh body. Initial/final metadata and subject hashes are recorded separately. Judges remain identical to registration; base-to-candidate adds only source/judges317. Governance and cited313/314 files are unchanged.
+
+Selected SHA256, exact raw Git blob bytes with no normalization:
+source317A:7de72f28f51db5d45c1a7bee4295c26c1b86afc4aa7f399980ad2490bd4bdc3d
+judges317:b77bee087822276b13f270528233a4fe71765cef0e602b3693b40f89e2bc04d3
+source313 at a4d0736b57eb27ce7ae7de479d62df2bc2edb6b0:a3082541a6aead361e74b8a77eb2256eeca408097bae60cd4e932dc9d0d39d22
+manuscript314 at b72cfbcb74275ff7f80b6c262cb003c5cc6ea8eb:403e9a503aaf8ebffbdd97f8aa6267f6eec9e9e567c8eb625891ca9e13a310dc
+source315 at4629c93c51e8ab3acfb849a823208e62a5e6e191:ea45127ad40d62ee3931cc80d20645417f3ab15ca7180c677282c0e33fab1e4e
+Raw Git payloads were captured through stdout's byte stream; checkout copies are separately labelled. The full manifest records each stored representation and digest.
+
+2. J1: conventions, finiteness, feasibility and no floor -- PASS
+Fix0<rho<1, s=(1+rho)/(1-rho)>1, k_s<K<1. All inner products and moments use the same uniform probability measure. P has eigenvalues rho^|S|, hence is positive definite and a contraction. T=M_sqrt(r) P M_sqrt(r) is positive semidefinite even if r vanishes. Mean one makes its active support nonempty and its top eigenvalue positive.
+The strict cap controls the total moment by E r^s<=tau+K^s=:B, because r^s<=K^s on{r<=K}. This is deliberately a crude bound, but valid and dimension-free. For feasible r, Jensen gives B>=E r^s>=1. Thus no unbounded multiplier norm is hidden later. Nonempty regimes have finite fixed tau, and the cube is finite in every case.
+The scalar tangent inequality of section5, verified below, makes tau<g empty. For tau>=g the theorem is about every feasible cube law; it does not assert existence in every dimension. At tau=g,315's equality characterization means a finite cube is feasible exactly when its event probability p_*=(s-1)(1-K)/K is representable as j/2^L. If p_* is not dyadic, every finite cube class at g is empty. For tau>g, the earlier two-point dyadic approximants are feasible in all sufficiently large dimensions. These qualifications are consistent with317's explicit warning about possible emptiness at g.
+There is no floor assumption in the necessity proof. Zeros are allowed. The floor K belongs only to the sharpness construction. The parameters rho,K,tau remain fixed as L varies; nothing is uniform as rho approaches an endpoint or K leaves its stipulated range.
+
+3. J2: primary forward/reverse input and normalized sign compression -- PASS
+Primary verification: MORSS author PDF printed p5 defines its noise by coordinate correlation rho, matching P. Theorem3.1 at input exponent1+rho, output2 and noise sqrt(rho) yields <F,PF><=||F||_(1+rho)^2. Corollary3.3 allows nonnegative functions, including zeros, and correlation at most sqrt((1-p)(1-q)); setting both exponents1-rho makes equality at the required rho. I also read its AppendixA two-function proof. No general-space MOS constant was substituted.
+
+Write q=1+rho. Ordinary Holder for |sqrt(z)h|^q with conjugate exponents2/(2-q),2/q gives ||sqrt(z)h||_q^2 <= (E z^(q/(2-q)))^((2-q)/q)||h||_2^2. Here q/(2-q)=s, proving(3). Taking a supremum over unit h after the forward quadratic-form inequality gives lambda1<=B^(1/s). The unit vector sqrt(r) has Rayleigh quotient <r,Pr>>=(E r)^2=1 because the constant Walsh coefficient contributes one and all other multipliers are nonnegative. Thus1<=lambda1<=B^(1/s).
+
+On the active support, T is strictly entrywise positive. Its Perron eigenvector is positive and its leading eigenvalue simple. Outside that support it has a zero block. If lambda2=0, gamma=1 and the proposed small positive bound is immediate. If lambda2>0, its real eigenvector vanishes outside the active support and is orthogonal to the Perron vector, so both sign parts are nonzero. This covers multiplicity of lambda2; no uniform-measure mean-zero assertion is needed.
+
+Normalize the second eigenvector to norm one and set a=||f_+||2, b=||f_-||2. Disjoint supports give a^2+b^2=1. The positive cross term c=<f_+,Tf_-> is nonzero, without needing a dimension-independent lower bound for individual kernel entries. Pairing Tv=lambda2v with f_+ and f_- gives both stated diagonal identities with +c.
+In the orthonormal pair u=f_+/a,w=f_-/b, the compression is lambda2 I plus c times the outer product(1/a,1/b)(1/a,1/b)^T. Its nonzero extra eigenvalue is c(1/a^2+1/b^2)=c/(a^2b^2). Rayleigh maximization puts the largest compression eigenvalue below lambda1. Consequently d=c/(ab)<=lambda1 gamma ab<=lambda1 gamma/2. This derivation remains valid when a or b tends to zero: no uniform lower bound on a,b is assumed, and the normalized d, rather than just c, is controlled.
+
+Reverse hypercontractivity applied to sqrt(r)u,sqrt(r)w gives the product of their p-quasi-norms at most d, p=1-rho. Their smaller quasi-norm is therefore at most sqrt(d). Choosing that normalized sign vector h gives ||sqrt(r)h||p<=(B^(1/s)gamma/2)^(1/2), while its energy is at least lambda2=lambda1(1-gamma)>=1-gamma. This selection can depend on r; all constants remain uniform. No assertion that both signs have small p-quasi-norm is made or needed.
+
+4. J3: interpolation below one and escaping high moment -- PASS
+The suspected dangerous interpolation is valid. Since p=1-rho and q=1+rho, q/p=s and p+q=2. Solving1/q=theta/p+(1-theta)/2 gives theta=(p/q)^2=1/s^2, strictly between zero and one.
+More explicitly alpha=theta q/p=1/s is in(0,1), and beta=(1-theta)q/2=1-alpha is also in(0,1). Apply ordinary Holder with exponents1/alpha and1/beta to(Z^p)^alpha(Z^2)^beta=Z^q. After taking the1/q power this yields ||Z||q<=||Z||p^theta||Z||2^(1-theta), including zeros. The exponents used in Holder exceed one; no Holder theorem with conjugate exponents below one and no quasi-norm triangle are invoked.
+
+For fixed M>K, F0=sqrt(r)h 1_{r<=M} has ||F0||p<=||sqrt(r)h||p by pointwise monotonicity at the same positive p. Also ||F0||2^2=E[r h^2 1_{r<=M}]<=M E h^2=M. Forward hypercontractivity followed by interpolation yields E0<=M^(1-theta)(B^(1/s)gamma/2)^theta. The source's wording about monotonicity of moments here is correctly interpreted as pointwise domination, not an invalid comparison between different p spaces.
+For F1=sqrt(r)h 1_{r>M}, the same forward/Holder estimate with z=r 1_{r>M} gives E1<=H_M^(1/s). No missing h factor occurs because ||h||2=1. The two cut pieces need not be orthogonal after smoothing, so simply adding their energies would be invalid. Instead the proof uses the genuine Hilbert norm after Q=P_sqrt(rho): ||Q(F0+F1)||2<=||QF0||2+||QF1||2. This pays for all cross terms.
+Combining with total energy>=1-gamma gives H_M^(1/(2s)) >= [sqrt(1-gamma)-M^((1-theta)/2)(B^(1/s)gamma/2)^(theta/2)]_+. Raising to2s preserves order. This is exactly(10), with every exponent checked. It is valid also if the bracket is negative or if H_M=0.
+For gamma_j->0 at the same fixed finite B and fixed M, the right side tends to1. Thus liminf H_M>=1. The result is a consequence of spectral collapse and reverse hypercontractivity, not a scalar assumption about an escaped unit.
+
+5. J4: residual background, cutoff order, and quantitative constant -- PASS
+For z>K, differentiating z^s/(z-K) gives sign((s-1)z-sK); the function diverges at both endpoints of(K,infinity), so its unique minimum is at sK/(s-1), with value A=C_s K^(s-1). For0<=z<=K, A(z-K)<=0. Thus z^s1_{z>K}>=A(z-K) on the entire nonnegative half-line, with both sides zero at z=K. Applied to r of mean one, it gives the feasibility boundg=A(1-K).
+
+The crucial truncation applies this same inequality to z=r1_{r<=M} on the ORIGINAL full probability space. It does not normalize or condition the remaining density. On{r>M}, r<=r^s/M^(s-1), so E z>=1-B/M^(s-1). Since M>K>0, {z>K} equals{K<r<=M}; the reset tail values z=0 do not enter. Therefore the intermediate strict-tail moment is at least g-AB/M^(s-1). Adding H_M, which uses{r>M}, is an exactly disjoint partition of{r>K}. At r=M the intermediate part contains equality; at r=K neither part contributes. This proves(12) with no density floor and no double counting.
+Given any hypothetical gamma_j->0 under a fixed cap, take liminf with M fixed to get tau>=1+g-AB/M^(s-1), then send M to infinity. Reversing these limits would not be justified and is not done. A zero uniform infimum would supply such a sequence of finite cubes/laws, regardless of whether dimensions increase monotonically. No compactness argument is needed.
+
+I checked the explicit constant independently of that limiting contradiction. Let epsilon=1+g-tau in(0,1], B=tau+K^s>0 and M=max(K+1,(4AB/epsilon)^(1/(s-1))). Then M>K and AB/M^(s-1)<=epsilon/4. The base1-3epsilon/4 lies in[1/4,1), hence D=1-(1-3epsilon/4)^(1/(2s)) lies strictly between zero and one. Both terms defining gamma0 are positive and finite; gamma0<=D/4<1.
+If gamma<=the second term in(13), substitution shows exactly that M^((1-theta)/2)(B^(1/s)gamma/2)^(theta/2)<=D/4. If gamma<=D/4, sqrt(1-gamma)>=1-gamma>=1-D/4. Thus(10) implies H_M>=(1-D/2)^(2s)>(1-D)^(2s)=1-3epsilon/4. The strict middle inequality uses D>0 and positive bases. But(12) implies H_M<=tau-g+epsilon/4=1-3epsilon/4. Contradiction. Therefore gamma>gamma0, including equality in the hypothesized bound. For lambda2=0, gamma=1>gamma0 separately.
+At tau=g, epsilon=1 causes no singularity. The argument applies to every feasible law and is vacuous when the finite-cube class is empty. gamma0 is an explicit valid dimension-free bound, not an optimal lower constant. Its smallness or poor behavior as parameters vary is not a correctness defect; the parameters are fixed.
+
+6. J5: matching exact313/314, not a newly presumed extremizer -- PASS
+I reread the complete original source313 at its specified commit and confirmed unchanged bytes in the317 worktree. It uses the identical normalized uniform cube, P_rho, s=(1+rho)/(1-rho), range k_s<K<1, and strict event r>K. Its density satisfies r>=K, E r=1 and finite-dimensional cap1+g for every integer L, with both actual leading eigenvalues tending to1. Manuscript314 Theorem21 at the exact cited commit states the same result and is unchanged.
+This dependency had already been adversarially audited by this SAME context in313, including the299/308 balanced-family facts. It is not an independent second witness. On rereading, the pertinent matching details remain: growing dyadic parity law with coefficient-sum bound; clipping with vanishing norm error; high-sector-only mean correction preserving K; nonnegative amplitude reserve paying the dyadic and mixed-power errors; four-term operator-norm comparison controlling actual top two eigenvalues; and finite prefix r=1. These give the exact cap, not just an asymptotic cap with unspent slack. The old plain-text normalized-product bracketing observation remains an editorial caution, resolved by its exact moment formula and cited factor definition.
+Thus the existence family fits the larger no-floor admissible class of317, and defeats a uniform positive gap at tau=1+g and every larger cap. Below1+g, sections3-5 now prove the previously missing universal necessity. This combination, rather than scalar optimizer equality, establishes the sharp threshold. Every finite matrix still has a simple Perron eigenvalue and positive finite gap.
+For s=2, solving s=(1+rho)/(1-rho) gives rho=1/3. At K=3/4, C_s=4 and g=3/4, so1+g=7/4 exactly. Source315's25/17 was derived from an exact scalar total-moment envelope plus a sufficient spectral estimate. It explicitly did not prove spectral optimality.317 strengthens the spectral conclusion without invalidating315's scalar theorem or old sufficient region.
+
+7. J6: classical attribution and actual comparison limits -- PASS
+MORSS Theorem3.1/Corollary3.3 and AppendixA were read directly, not merely cited from317. The exact noise/exponent specialization and zero allowance match. Classical forward/reverse hypercontractivity are not new results of this programme.
+MOS v5 introduction, Corollary1.11 and section6/Corollary6.4 were read for context. Their general simple-space estimates and two-function discussion do not license silently replacing the sharper unbiased-cube constants.317 correctly relies on MORSS for the required endpoint.
+Cattiaux's abstract/framework, bounded-perturbation Proposition2.2 and adjacent spectral/perturbed-measure discussion concern diffusion generators, logarithmic Sobolev inequalities and perturbed measures. This is relevant primary precedent, but no identification of that setup with this fixed multiplicative Boolean congruence has been established here. The OCR leaves some formulas absent; I do not claim to have inspected them or the complete paper.
+Actual links and reading loci are in primary-reading.txt. No exhaustive literature clearance or absence claim was performed. I did not independently reproduce the parent's search queries; those are its disclosed search record, not my work. External originality, priority and physical relevance remain unestablished, independently of the positive correctness verdict. No Lean, numerical oracle, local interaction, heat-bath, continuum or physical mass-gap conclusion is supplied. No previous PDF rating transfers.
+
+8. Adversarial objections considered and outcome
+A1 Wrong reverse parameter: rejected as a defect; two equal exponents1-rho make the MORSS threshold exactly rho, not rho^2 or sqrt(rho).
+A2 Zeros invalidate reverse input/Perron: rejected; the corollary accepts nonnegative functions and Perron is used only on the active support, with lambda2=0 separated.
+A3 One sign norm can vanish with dimension: true as a possibility, but not a defect. Normalization and the exact2x2 compression control d uniformly without assuming a,b bounded below.
+A4 Missing lambda1 normalization: rejected; d<=lambda1 gamma/2, lambda1<=B^(1/s), and lambda2>=1-gamma are all explicitly paid for.
+A5 Invalid p<1 interpolation: rejected; Holder is applied to powers with exponents1/alpha,1/beta>1. No quasi-norm triangle occurs.
+A6 Cross terms between truncated pieces omitted: rejected; Hilbert triangle after Q includes them.
+A7 Escaped moment asserted from convergence in probability: rejected;(10) derives it from spectral ratio and fixed-B estimates.
+A8 Residual density normalized after truncation or hidden floor: rejected; z is on the original space, with its exact missing first-moment cost bounded.
+A9 Double counting cutoff atoms: rejected by the disjoint strict pieces K<r<=M and r>M. AtomK is excluded.
+A10 Limit exchange: rejected; M is fixed through gamma->0, then M tends to infinity.
+A11 Incorrect gamma0 powers/weak contradiction: rejected by direct substitution and strict D/2 versus D inequality, including epsilon1.
+A12 Endpoint construction only asymptotic in budget: rejected;313 has the exact all-dimension cap and finite prefix, not merely a limit.
+A13 Spectral sharpness inferred from scalar equality alone: rejected; the independently stated but same-context-reviewed313 actual-spectrum construction is explicitly invoked.
+A14 Empty minimum-budget cube class overlooked: no false existence assertion is made; the g case is expressly conditional on feasibility.315 gives the dyadic qualification described above.
+No blocking mathematical objection survives these attacks. This does not imply a universal guarantee that no error exists, human peer acceptance or external priority. No failed gate was rewritten during review.
+
+9. J7: freeze, prior involvement and remaining operational gates -- PASS within source-audit scope
+The literal assignment, actual identity limitations and shared-context history are retained. No parent/agent/user coordination message arrived during317 reading. After the mathematical review and report were written, automatic developer notices removed and then restored the unrelated deferred tool namespace mcp__openaiDeveloperDocs. They supplied no mathematical or parent information; the notices are disclosed in context-and-scope.txt rather than asserting total platform silence. No source/branch/body/judge, previous report or publication state was changed. No scientific execution, test, build or PDF assessment was performed. Parent pre-registration exploration is disclosed, not relabelled blind discovery.
+Initial/final local HEAD and PR head match the candidate; body normalization/hash is stable; registered and candidate judges match; tracked subject hashes are stable; worktree remains clean. Final-state.json records the actual comparisons. No disposable clone or temporary C: output exists; no cleanup is pending.
+Actual required CI, parent reading of the full report/manifest verification and unchanged normal integration remain unwaived. No squash/rebase or changed-SHA endorsement follows. A future grouped manuscript/PDF needs its own exact-byte review and carries no inherited317 score. This work creates no new publication or standalone-paper approval.

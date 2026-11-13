@@ -1,0 +1,12 @@
+{
+  "old_proofs": 22,
+  "representation": "InputUTF8,CRLFtoLF; statements exact; proofs remove whitespace and only forcedtag31/32 versus new automatic equation labels/wrappers",
+  "new_proofs": 24,
+  "time": "2026-11-13T17:54:10.3763536Z",
+  "new_statements": 23,
+  "tex_raw_sha256": "39393a00a57f4e01a32522b7597fd84491fafe223bc916e580cc8061d0c3879e",
+  "earlier_statements_exact": true,
+  "validation": "Textual preservation only, no mathematical or TeX verification",
+  "earlier_proofs_normalized_math_unchanged": true,
+  "old_statements": 21
+}

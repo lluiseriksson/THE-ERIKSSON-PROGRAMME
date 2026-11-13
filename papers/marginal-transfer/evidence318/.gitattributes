@@ -1,0 +1,6 @@
+* -text whitespace=cr-at-eol
+source-audit315A/git-metadata.txt whitespace=cr-at-eol,-blank-at-eol
+source-audit317A/git-metadata.txt whitespace=cr-at-eol,-blank-at-eol
+document-audit318A/manuscript314-to318.diff.txt whitespace=cr-at-eol,-blank-at-eol
+document-audit318A/subjects/staged-raw-crlf-check-failure.txt whitespace=cr-at-eol,-blank-at-eol
+document-audit318A/subjects/staged-representation-aware-check.txt whitespace=cr-at-eol,-blank-at-eol

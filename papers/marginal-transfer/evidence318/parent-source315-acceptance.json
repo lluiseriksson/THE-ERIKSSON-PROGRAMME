@@ -1,0 +1,12 @@
+{
+  "checked_utc": "2026-11-13T16:59:24.3961255Z",
+  "source": "4629c93c51e8ab3acfb849a823208e62a5e6e191",
+  "full_report_read": true,
+  "context_read": true,
+  "raw_manifest_members_verified": 18,
+  "report_sha256": "5241836d74a70825934efa1858c9f6bb724b90935b5b66fd84206ca1d1e3deb1",
+  "manifest_sha256": "3b6aed75113f58f6ce27bd7f77afc88f44b2fe890340f1a398d6bb0884631be3",
+  "verdict": "Analytical J1-J6 accepted within source scope; requiredCI/normalmerge pending",
+  "independence": "Same involved313 auditor, sharedprovider/filesystem, no independent or blind claim",
+  "limits": "Scalar envelope exact; spectral bound sufficient, universal threshold and external priority unestablished. No separate paper or PDF rating."
+}

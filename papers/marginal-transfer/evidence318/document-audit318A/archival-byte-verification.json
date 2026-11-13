@@ -1,0 +1,446 @@
+{
+  "method": "Raw byte comparison against retained original D packets; no normalization",
+  "rows": [
+    {
+      "packet": "315",
+      "path": "assignment-received.txt",
+      "bytes": 1498,
+      "raw_sha256": "c3e8d4086102bc27b2d9d11b11246c13f9872b2975240124a9995337df79cdcc",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "context-and-scope.txt",
+      "bytes": 2997,
+      "raw_sha256": "2cd8845e9a2e9d1df71f2cf8c44b2424187436e8b2a86932647787ddb452500f",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "final-state.json",
+      "bytes": 1356,
+      "raw_sha256": "494945c57b70d56bcecc3fd607aecb9829e7059564d47032667bb205772e9824",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "full-report.txt",
+      "bytes": 16072,
+      "raw_sha256": "5241836d74a70825934efa1858c9f6bb724b90935b5b66fd84206ca1d1e3deb1",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "git-metadata.txt",
+      "bytes": 1184,
+      "raw_sha256": "c9e00e7cc224bee541b97a8c9b4504ee228dfb2a6113f275b2196d9cacbbf998",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "initial-state.json",
+      "bytes": 302,
+      "raw_sha256": "13cde466cb026902ebaec654554a0564253b7991a8f2bfe8c7a6573a512c280a",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "manifest-binding.txt",
+      "bytes": 329,
+      "raw_sha256": "7fc57709b00de227275629951cf55f6ba42e8ed51a3e905831ed18eec6da93ec",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "pr262-body-final.utf8-lf.txt",
+      "bytes": 986,
+      "raw_sha256": "dc769c537b54c18630ab60fcffd6d10a4df118bd577e759f6764c6e34e8a0773",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "pr262-body-initial.utf8-lf.txt",
+      "bytes": 986,
+      "raw_sha256": "dc769c537b54c18630ab60fcffd6d10a4df118bd577e759f6764c6e34e8a0773",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "pr262-final.json",
+      "bytes": 1057,
+      "raw_sha256": "8536c3c35ff40b2e12876fbbde7519ab90194ca3f758c121f95a2d25cd849540",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "pr262-initial.json",
+      "bytes": 1057,
+      "raw_sha256": "8536c3c35ff40b2e12876fbbde7519ab90194ca3f758c121f95a2d25cd849540",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "raw-hashmanifest.json",
+      "bytes": 6749,
+      "raw_sha256": "3b6aed75113f58f6ce27bd7f77afc88f44b2fe890340f1a398d6bb0884631be3",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "raw-hashmanifest.sha256",
+      "bytes": 1684,
+      "raw_sha256": "f2c6f786e228bf55416d312420b0da9166959d7e49c1c545103ed6180465ed53",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "subjects/charter.git-blob.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "subjects/CLAUDE.git-blob.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "subjects/judges315-candidate.git-blob.txt",
+      "bytes": 2513,
+      "raw_sha256": "bbb092af1889b8b78a09df701600fad4b93f8b656a47bb6fcd92b654f5c28dde",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "subjects/judges315-preregistered.git-blob.txt",
+      "bytes": 2513,
+      "raw_sha256": "bbb092af1889b8b78a09df701600fad4b93f8b656a47bb6fcd92b654f5c28dde",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "subjects/judges315.checkout.txt",
+      "bytes": 2513,
+      "raw_sha256": "bbb092af1889b8b78a09df701600fad4b93f8b656a47bb6fcd92b654f5c28dde",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "subjects/manuscript314-cited.git-blob.tex",
+      "bytes": 97173,
+      "raw_sha256": "403e9a503aaf8ebffbdd97f8aa6267f6eec9e9e567c8eb625891ca9e13a310dc",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "subjects/source315A.checkout.txt",
+      "bytes": 8589,
+      "raw_sha256": "ea45127ad40d62ee3931cc80d20645417f3ab15ca7180c677282c0e33fab1e4e",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "315",
+      "path": "subjects/source315A.git-blob.txt",
+      "bytes": 8589,
+      "raw_sha256": "ea45127ad40d62ee3931cc80d20645417f3ab15ca7180c677282c0e33fab1e4e",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "assignment-received.txt",
+      "bytes": 1897,
+      "raw_sha256": "6cd5b9bd309c7ba0e680dd429bb49e8ffe4d0a8d798063abe94326a1ec569880",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "context-and-scope.txt",
+      "bytes": 3635,
+      "raw_sha256": "951c0e70fef752e5f1e9f6ec556d2e0f8992097ecaf9d47d61174eac7a54c29d",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "final-state.json",
+      "bytes": 1678,
+      "raw_sha256": "67377db3fc210a54d1dad8d6162913648f927972b3cf4584e37ae9b95ff1bd6a",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "full-report.txt",
+      "bytes": 18461,
+      "raw_sha256": "fc324b7d9eb72a58bcdbaaa18cbd973de5f8785c9a4a3a2385f63a462dd22c63",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "git-metadata.txt",
+      "bytes": 1160,
+      "raw_sha256": "307646b8115c59af5059a8ccd711eb2310ed7ec568f5a03faa0e293e4ffaa101",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "initial-state.json",
+      "bytes": 303,
+      "raw_sha256": "3aa5382c7d47c96e8c80adfda123b042840fad15545061dbfe2884be0e133bbf",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "manifest-binding.txt",
+      "bytes": 329,
+      "raw_sha256": "4f5c4806ec7e809cee1030f1f4c130eec0b05625c206d35754583a627c19f2f3",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "pr264-body-final.utf8-lf.txt",
+      "bytes": 1070,
+      "raw_sha256": "ffa4d359a507210f3d77940f0e6194162c89f43293b3383c18a121403550034c",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "pr264-body-initial.utf8-lf.txt",
+      "bytes": 1070,
+      "raw_sha256": "ffa4d359a507210f3d77940f0e6194162c89f43293b3383c18a121403550034c",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "pr264-final.json",
+      "bytes": 1141,
+      "raw_sha256": "05c16ce851437619169199318e23b8ca364702cb8f27a435941175c006d51aa4",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "pr264-initial.json",
+      "bytes": 1141,
+      "raw_sha256": "05c16ce851437619169199318e23b8ca364702cb8f27a435941175c006d51aa4",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "primary-reading.txt",
+      "bytes": 1386,
+      "raw_sha256": "0a83d7a612ab204331509cc0f7c31372f0dfe37b81cbb15c33c5aea00d93663a",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "raw-hashmanifest.json",
+      "bytes": 8498,
+      "raw_sha256": "d9d2e9f98bd01dfdc15079c0037e7732ce6f42d81fda00e512899d933a02e7c6",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "raw-hashmanifest.sha256",
+      "bytes": 2184,
+      "raw_sha256": "c8180a1471f25337491d470ad1a3748125ff66f294958af70e728f7a6a5090d8",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/charter.git-blob.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/CLAUDE.git-blob.md",
+      "bytes": 23996,
+      "raw_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/judges317-candidate.git-blob.txt",
+      "bytes": 2900,
+      "raw_sha256": "b77bee087822276b13f270528233a4fe71765cef0e602b3693b40f89e2bc04d3",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/judges317-preregistered.git-blob.txt",
+      "bytes": 2900,
+      "raw_sha256": "b77bee087822276b13f270528233a4fe71765cef0e602b3693b40f89e2bc04d3",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/judges317.checkout.txt",
+      "bytes": 2900,
+      "raw_sha256": "b77bee087822276b13f270528233a4fe71765cef0e602b3693b40f89e2bc04d3",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/manuscript314-cited.git-blob.tex",
+      "bytes": 97173,
+      "raw_sha256": "403e9a503aaf8ebffbdd97f8aa6267f6eec9e9e567c8eb625891ca9e13a310dc",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/parent-pr264-body.raw.txt",
+      "bytes": 1070,
+      "raw_sha256": "ffa4d359a507210f3d77940f0e6194162c89f43293b3383c18a121403550034c",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/parent-pr264-initial.raw.json",
+      "bytes": 2012,
+      "raw_sha256": "33415c50c6324d5d7fec4607ff58d4c0d9ced23c496abab6c2a1209ba4c07cc2",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/source313-cited.git-blob.txt",
+      "bytes": 13113,
+      "raw_sha256": "a3082541a6aead361e74b8a77eb2256eeca408097bae60cd4e932dc9d0d39d22",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/source315-cited.git-blob.txt",
+      "bytes": 8589,
+      "raw_sha256": "ea45127ad40d62ee3931cc80d20645417f3ab15ca7180c677282c0e33fab1e4e",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/source317A.checkout.txt",
+      "bytes": 12299,
+      "raw_sha256": "7de72f28f51db5d45c1a7bee4295c26c1b86afc4aa7f399980ad2490bd4bdc3d",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "317",
+      "path": "subjects/source317A.git-blob.txt",
+      "bytes": 12299,
+      "raw_sha256": "7de72f28f51db5d45c1a7bee4295c26c1b86afc4aa7f399980ad2490bd4bdc3d",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "historical314",
+      "path": "manuscript314A.pdf",
+      "bytes": 524678,
+      "raw_sha256": "66b244f169e771bf5c401d82053281f2e54ec051e74ce3364b6080a98ab467b9",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "historical314",
+      "path": "original-input-manifest.json",
+      "bytes": 5739,
+      "raw_sha256": "30d88eb3eea0d10a288c45d38a8fbe40533f095c3532c3e4745b725bf334da40",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "historical314",
+      "path": "outputs/full-scientific-report.txt",
+      "bytes": 28726,
+      "raw_sha256": "f444f2f0cb0436c76330f930bcbc595d019762c9fda986cde402bb9b30c8397c",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "historical314",
+      "path": "outputs/importance-assessment.json",
+      "bytes": 2208,
+      "raw_sha256": "83d268c85b3ef56d07168cf34b0bdf4bd79a5793a3ec65ee886e667d8025481f",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "historical314",
+      "path": "outputs/model-context.json",
+      "bytes": 3960,
+      "raw_sha256": "1a777aba16f7228f117d2b1727f586d5d93c3117ca47b9ade9bea34479820ec3",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "historical314",
+      "path": "outputs/native-response.json",
+      "bytes": 6056,
+      "raw_sha256": "56413a4e806042aece3b0d932237b5e740177e80b87ebfb9d70dffd77540ba74",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "historical314",
+      "path": "outputs/output-manifest.json",
+      "bytes": 1242,
+      "raw_sha256": "fb4b058d153782825f6ddfbc7b2c6bcb8e21ef0862f5c464e6aab9745f04a0cc",
+      "original_exists": true,
+      "equal_original": true
+    },
+    {
+      "packet": "historical314",
+      "path": "outputs/received-assignment.txt",
+      "bytes": 2304,
+      "raw_sha256": "6e46d6e7d78e20411dbca8aab6b78d517a013e664689c5aa7e2576ff5ef9d31a",
+      "original_exists": true,
+      "equal_original": true
+    }
+  ],
+  "all_equal": true
+}

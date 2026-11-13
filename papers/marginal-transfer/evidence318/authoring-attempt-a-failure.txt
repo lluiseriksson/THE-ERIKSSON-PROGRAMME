@@ -1,0 +1,1 @@
+2026-11-13. First PowerShell editing attempt used function R, which collided with built-in alias r=Invoke-History. Every replacement failed with positional-parameter errors; resulting draft was unchanged314 (22proofs,97173bytes). Not accepted, built, reviewed or published. Corrected authoring uses uniquely named function and terminating errors.

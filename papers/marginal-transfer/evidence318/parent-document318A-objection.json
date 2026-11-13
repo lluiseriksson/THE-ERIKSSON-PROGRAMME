@@ -1,0 +1,12 @@
+{
+  "time": "2026-11-13T18:12:27.2880210Z",
+  "source": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff",
+  "full_report_and_context_read": true,
+  "files_verified": 35,
+  "verdict": "CHANGES_REQUIRED",
+  "accepted": false,
+  "blocking": "O1 obsolete unresolved spectral interval heading",
+  "nonblocking": "O2 present expanded PDF -> present revision",
+  "mathematical_invalidation_found": false,
+  "report_sha256": "736bd8eeb09fe4aa7000bd2c0dcc65a39811302d5a26e78f911c3a1d4ff1cbbf"
+}

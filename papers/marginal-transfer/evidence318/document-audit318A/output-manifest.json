@@ -1,0 +1,182 @@
+{
+  "scope": "Every retained audit318A artifact except this manifest and its separate digest; exact raw stored bytes, no normalization",
+  "subject_commit": "e374e78a9d3ecb6a8ab929f32357d5203a8221ff",
+  "verdict": "CHANGES_REQUIRED",
+  "files": [
+    {
+      "path": "archival-byte-verification.json",
+      "bytes": 13958,
+      "raw_sha256": "211f0b479a15d5f960af9694f146d098570767a0d0c3eaf1b46d5c03a0dfa3c3"
+    },
+    {
+      "path": "binding-verification.json",
+      "bytes": 412582,
+      "raw_sha256": "bf6ea91f64e06a6b24b3d40a441a3e506b1eb0d306bc18b8d0ee1a2c764f6589"
+    },
+    {
+      "path": "final-state.json",
+      "bytes": 2610,
+      "raw_sha256": "86f3d9af16454c61ff4925b61c22b84aa8fce14ded2559070204309beb64647c"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 25612,
+      "raw_sha256": "736bd8eeb09fe4aa7000bd2c0dcc65a39811302d5a26e78f911c3a1d4ff1cbbf"
+    },
+    {
+      "path": "git-registration-and-scope.json",
+      "bytes": 8354,
+      "raw_sha256": "d060f642623dc83b14ab1b5e8da6785b7ea4e8323467dd4b71c760f3641eecdc"
+    },
+    {
+      "path": "independent-preservation-verification.json",
+      "bytes": 3493,
+      "raw_sha256": "43f137fc5acb27edfa602f0fa48e6699cb5f1f45baef749bfe825bd9eebd1237"
+    },
+    {
+      "path": "initial-state.json",
+      "bytes": 1492,
+      "raw_sha256": "376b74db2165474d45190939a46721b25de8deffa9adce6a7a2afcb4c4fe1426"
+    },
+    {
+      "path": "manuscript314-to318.diff.txt",
+      "bytes": 19514,
+      "raw_sha256": "cf66b6b5554a65143e7e227bd79ed147d66c19f1bfa094c5ce380802e82b7e4d"
+    },
+    {
+      "path": "model-context.json",
+      "bytes": 2259,
+      "raw_sha256": "40e506d30c23846fc2a835bcc6cd54e23f410f112809c9fd781526eb87ad8e79"
+    },
+    {
+      "path": "original-source-correspondence.json",
+      "bytes": 406,
+      "raw_sha256": "0ff08f4441ad47a738e68ac4748418ce3ac03b0ba6ed7478f3dd21310d16f1f6"
+    },
+    {
+      "path": "pr264-final-metadata.json",
+      "bytes": 833,
+      "raw_sha256": "3a4c3f22b99afa5a2549230ed66a1932a94f9af3a96720e4ef8be3d8ba4b4772"
+    },
+    {
+      "path": "pr265-body-final.utf8-lf.txt",
+      "bytes": 1379,
+      "raw_sha256": "f546ca3014e1b8d9b857e4e4fb2afa4959612c6d9e5cd52cffd64ecaa2809b64"
+    },
+    {
+      "path": "pr265-body-initial.utf8-lf.txt",
+      "bytes": 1379,
+      "raw_sha256": "f546ca3014e1b8d9b857e4e4fb2afa4959612c6d9e5cd52cffd64ecaa2809b64"
+    },
+    {
+      "path": "pr265-final-metadata.json",
+      "bytes": 824,
+      "raw_sha256": "d6c880caf6f50116931336ec01239c3341c3f0113843e1427df1e11d65a3378b"
+    },
+    {
+      "path": "pr265-final.raw.json",
+      "bytes": 1394,
+      "raw_sha256": "5b6f54438cad5d9767fbe6785bea221c965dd824d38d85ae23612af52ea58041"
+    },
+    {
+      "path": "pr265-initial-metadata.json",
+      "bytes": 824,
+      "raw_sha256": "d6c880caf6f50116931336ec01239c3341c3f0113843e1427df1e11d65a3378b"
+    },
+    {
+      "path": "pr265-initial.raw.json",
+      "bytes": 1394,
+      "raw_sha256": "5b6f54438cad5d9767fbe6785bea221c965dd824d38d85ae23612af52ea58041"
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 2357,
+      "raw_sha256": "b6e14a6e7f25269d3ddc69897c51d04cb99588ea79fb5ea54a5b84c3d5740dfc"
+    },
+    {
+      "path": "subjects/authoring-attempt-a-failure.txt",
+      "bytes": 346,
+      "raw_sha256": "7b64d9e5fa1ee1b65b47a3da8ef49f73d005b81486e447bad30e40843e20da46"
+    },
+    {
+      "path": "subjects/charter.git-blob.md",
+      "bytes": 13573,
+      "raw_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4"
+    },
+    {
+      "path": "subjects/evidence318.gitattributes.git-blob.txt",
+      "bytes": 167,
+      "raw_sha256": "943b5452f4afe9205edcb7fa81f0b2fe1b01d4d4d74f5f4d4089e94a0d40fd2c"
+    },
+    {
+      "path": "subjects/judges318.candidate.git-blob.txt",
+      "bytes": 2456,
+      "raw_sha256": "5f19e61975788d85edf8f9aa290bbd7e7f56a3fc5692d1216e6d017ba2ae3960"
+    },
+    {
+      "path": "subjects/judges318.preregistered.git-blob.txt",
+      "bytes": 2456,
+      "raw_sha256": "5f19e61975788d85edf8f9aa290bbd7e7f56a3fc5692d1216e6d017ba2ae3960"
+    },
+    {
+      "path": "subjects/manuscript314A.original.git-blob.tex",
+      "bytes": 97173,
+      "raw_sha256": "403e9a503aaf8ebffbdd97f8aa6267f6eec9e9e567c8eb625891ca9e13a310dc"
+    },
+    {
+      "path": "subjects/manuscript318A.git-blob.tex",
+      "bytes": 110228,
+      "raw_sha256": "39393a00a57f4e01a32522b7597fd84491fafe223bc916e580cc8061d0c3879e"
+    },
+    {
+      "path": "subjects/PACKAGE-BOUNDARY318.git-blob.json",
+      "bytes": 1355,
+      "raw_sha256": "590b3411e9134ddb5c0719e280f1d5f32ce8193bbcb2be1ddc26a5c17e2bf714"
+    },
+    {
+      "path": "subjects/SOURCE-INPUTS318.git-blob.json",
+      "bytes": 206429,
+      "raw_sha256": "9d745285bf4c7a007b08c37fb046255d122a7408076053d9d78b22410b6deaa3"
+    },
+    {
+      "path": "subjects/source315A.original.git-blob.txt",
+      "bytes": 8589,
+      "raw_sha256": "ea45127ad40d62ee3931cc80d20645417f3ab15ca7180c677282c0e33fab1e4e"
+    },
+    {
+      "path": "subjects/source317A.original.git-blob.txt",
+      "bytes": 12299,
+      "raw_sha256": "7de72f28f51db5d45c1a7bee4295c26c1b86afc4aa7f399980ad2490bd4bdc3d"
+    },
+    {
+      "path": "subjects/staged-archival-whitespace-final-check.exit",
+      "bytes": 2,
+      "raw_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "subjects/staged-archival-whitespace-final-check.txt",
+      "bytes": 1,
+      "raw_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "subjects/staged-raw-crlf-check-failure.exit",
+      "bytes": 2,
+      "raw_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3"
+    },
+    {
+      "path": "subjects/staged-raw-crlf-check-failure.txt",
+      "bytes": 663373,
+      "raw_sha256": "fb054aee7199c4fc9d3f8ba85dc2b31a9fe63e00a83633ddb63a1c10f52ffd25"
+    },
+    {
+      "path": "subjects/staged-representation-aware-check.txt",
+      "bytes": 204,
+      "raw_sha256": "2815c4ed544dd79e1c25547d7fe6f4ce195f7f241669052465fb1ac51a608d4e"
+    },
+    {
+      "path": "verdict.json",
+      "bytes": 1320,
+      "raw_sha256": "711848bc9cd4b252d8c1834097579a810733473598eb201557b43892a6f9cdd8"
+    }
+  ]
+}

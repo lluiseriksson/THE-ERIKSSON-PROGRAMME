@@ -1,0 +1,21 @@
+{
+  "paper_id": "ARR-2026-7KV9Y9ASX48H7A7N",
+  "version": "v6",
+  "version_id": "arr:version:e1e99a04-4431-4bab-ab97-3c2509731714",
+  "canonical_sha256": "66b244f169e771bf5c401d82053281f2e54ec051e74ce3364b6080a98ab467b9",
+  "assessment_type": "qualitative elaboration of native significance criterion; not a sixth scored criterion",
+  "native_significance_stars": 3,
+  "scope": "Specialist finite-dimensional probability, Boolean analysis and positive-operator spectral theory.",
+  "strongest_consequence": "A sharp worst-case critical total-moment classification together with explicit endpoint collapse families, and a separate exact-marginal obstruction for exponentially many modes.",
+  "potential_use": "Stress-testing certificates based only on local marginals or raw density moments for this fixed transfer family.",
+  "limitations": [
+    "R1: External priority remains unestablished. The exact joint conclusions were not found in the targeted sources, but classical methods and close budget/gap precedents prevent a broad originality claim.",
+    "R2: Significance is specialized to unrestricted Boolean transfer congruences. No fixed-range Gibbs, local-dynamics, algorithmic, continuum or Millennium-problem consequence is demonstrated.",
+    "R3: The universal spectral threshold for fixed cutoffs below one remains unclassified between the sufficient and constructive regions. Theorem 21 does not resolve that interval.",
+    "R4: Exact endpoint families have no effective dimension threshold or optimal rates; Lemma 2 is an existence argument, not an efficient construction. These limitations are disclosed.",
+    "R5: The build, formal verification, numerical experiments and external audit archive were not independently reproduced in this round. Shared-provider/shared-filesystem review does not establish independence."
+  ],
+  "millennium_relevance": "No recognized Millennium Prize Problem is solved or materially reduced in the supplied theorem statements. No field-shaping or historic impact is established.",
+  "external_priority": "unestablished",
+  "broad_impact_evidence": "No demonstrated application beyond the studied operator family was supplied or established in this review."
+}
