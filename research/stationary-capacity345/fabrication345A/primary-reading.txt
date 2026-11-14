@@ -1,0 +1,21 @@
+345A TARGETED PRIMARY READING,2026-11-14
+This is a limited input/context check, not exhaustive novelty clearance. Mathematical correctness of the new source awaits separate audit.
+
+Load-bearing ordinary scalar hypercontractivity:
+Ben-Aroya, Regev, de Wolf, A Hypercontractive Inequality for Matrix-Valued Functions with Applications to Quantum Computing.
+https://homepages.cwi.nl/~rdewolf/publ/qc/matrixbeckner.pdf
+Read introductory equation(1), noise definition and normalized counting/Walsh conventions. The scalar condition is t^2<=(p-1)/(q-1). Applying input p=2, output q=2s'=1+1/rho and t=sqrt(rho) is exactly at equality. No matrix-valued theorem or quantum application is used. Tool text capture retained separately; it is not the original PDF bytes.
+
+Classical conductance context:
+Lawler and Sokal, Bounds on the L2 spectrum for Markov chains and Markov processes: a generalization of Cheeger's inequality, Transactions AMS309(1988), DOI10.1090/S0002-9947-1988-0930082-9.
+https://www.ams.org/journals/tran/1988-309-02/S0002-9947-1988-0930082-9/S0002-9947-1988-0930082-9.pdf
+Search located the primary citation. Opening the PDF returned403 Forbidden. An attempted Project Euclid link was not accessible. No primary theorem text was read or claimed verified. Source345A includes the complete elementary finite coarea/Cauchy argument proving the exact conductance direction used, so correctness does not rest on an inaccessible formula.
+
+Related ground-state perturbation context:
+Leonard Gross, Invariance of intrinsic hypercontractivity under perturbation of Schrodinger operators.
+https://arxiv.org/abs/2412.20282
+Read abstract and metadata only. It concerns intrinsic hypercontractivity under suitable potential perturbations and reports dimension-independent bounds. No detailed potential assumption, spectral estimate or theorem is imported to this finite stationary marginal problem. The analogy suggested the ground-state form viewpoint but does not establish345's claim or novelty.
+
+Programme input334 includes an attributed dependency on324 and the Kirshner--Samorodnitsky refined hypercontractive bound.345 uses the accepted334 statement and proof consequences, with exact source/audit artifacts captured. It does not claim to newly reprove or audit the entire KS result.341 is likewise an accepted bounded input, with its precise energy estimate retained.344 supplies a previously accepted warning against uniform potential convergence, not a replacement for a critical-moment proof.
+
+Searches included: hypercontractivity ground state transform spectral gap Lp stationary density perturbation Doob transform; hypercontractivity inequality f T f Lp norm mean nonlinear product positive functions; Schrodinger bridge spectral gap bounded marginals dimension independent Gaussian noise; Lawler Sokal1988 bounds L2 spectrum Markov chains Cheeger inequality PDF. Secondary search hits were not used as mathematical premises. The search did not establish that the capacity comparison is absent from prior literature.

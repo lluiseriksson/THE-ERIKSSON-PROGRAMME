@@ -1,0 +1,13 @@
+{
+  "utc": "2026-11-14T00:26:41.0311252Z",
+  "head": "873826b004e9e4751ce7dc55ade08c329b384302",
+  "source_sha256": "3b08bccdd79a3fa400a853aaa730733570cbe902c49dee7d022d50b1d5f006c0",
+  "full_report_read": true,
+  "full_context_read": true,
+  "payloads_verified": 54,
+  "full_report_sha256": "96f10cde6ee295a54dc83e293e8cf36cc6ab08fc12b6e9f52fc90155085b8efa",
+  "verdict": "ACCEPT bounded admissible counterexample to uniform Ph convergence; all original stationary constraints proved",
+  "refutation": "Uniform denominator convergence route is false even for bounded pi; ancillary uniform r/pi convergence false using341",
+  "limitations": "No collapsing-gap example, criticalr-moment divergence or refutation of fixed nonvanishing comparison; originalgap OPEN",
+  "next": "Unchanged merge only after requiredCI; tolerate rare excursions in345 directcapacity/nearresonance route"
+}

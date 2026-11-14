@@ -1,0 +1,13 @@
+{
+  "status": "FABRICATION_COMPLETE_SEPARATE_AUDIT_REQUIRED",
+  "utc": "2026-11-14T00:36:53.4055655Z",
+  "input_head": "873826b004e9e4751ce7dc55ade08c329b384302",
+  "source": "source345A.txt",
+  "source_sha256": "43744293f5351fd3607aeb7c865977407d68091ebd2b4edabb12f7f690ad6c58",
+  "result": "Actual stationary cut coercivity above an exponential mass threshold; any collapsing gap requires a smaller bottleneck",
+  "open": "Original uniform gap; relative error/coupling within exponentially small sets; no admissible collapsing family",
+  "next": "Parent freezes exact source and commissions separate audit; no full operator or original-gap upgrade",
+  "math_execution": "none",
+  "colab_runtime_opened": false,
+  "publication": false
+}
