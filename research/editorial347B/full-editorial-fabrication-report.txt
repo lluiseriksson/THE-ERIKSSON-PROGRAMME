@@ -1,0 +1,41 @@
+SOURCE347B layout/context-only candidate, 2026-11-14
+Base manuscript is exact source347A at Git4a44431e8648018908ddc2760840977db9928aac.
+The parent reported actual production348B succeeded with two matching10-page
+PDFs, SHA25669adcccf59eb7297feca03bdaab851bac047600c21856d1ce439356290d74f8c.
+The child independently hashed the retained PDF and viewed its existing page9
+render. The paragraph containing Sources341,344,345,346 visibly extends past
+the normal right text boundary. The existing LaTeX log reports an overfull
+hbox49.38486pt at lines318--319, naming that source list.
+
+Exactly two literal changes in manuscript347.tex and its plain-source mirror:
+1. Sources341,344,345,346 -> Sources341, 344, 345, 346
+2. Only the next review-context paragraph is rewritten to state its original
+   source-preparation timing, subsequent source347A analytical audit and
+   programme acceptance, and pending assessment of the exact new PDF.
+No numerical grade or prior-PDF assessment is transferred. All mathematical
+text is untouched. support346-section.tex is byte-identical.
+change-record.json retains the exact old/new strings and raw byte hashes.
+Reversing precisely those replacements restores each original source text.
+
+The parent-acceptance347 receipt was read and copied. It identifies report
+b799fa050eb884443ba0e3646764860ade7dee1b2036643d53c6a52a5eb9eb57 and accepts
+the bounded grouped source, not a PDF grade, formal proof or global-gap result.
+This editorial candidate has NOT received separate editorial review or been
+rendered. Removing the sole unbreakable list is an intended layout fix,
+not a claim of a newly checked PDF. Paragraph reflow/pagination must be checked
+after sanctioned production; existing ten-page length is not assumed stable.
+
+The PDF/document instructions were read. This assignment edits TeX/plain
+sources only, not a PDF/DOCX artifact. No document builder or marker was run;
+local build/runtime prohibitions remain respected. A future production unit
+must render and inspect the exact new PDF, including all pages and the
+review-context paragraph. Do not reuse the old PDF hash as the new artifact.
+
+The packet contains the three active source files and their exact originals,
+base fabrication manifest and actual parent source-acceptance receipt.
+The complete unchanged historical source/dependency/audit packet remains at
+D:/Datos/the-eriksson-programme/autonomia/evidencia-347/fabrication347A and
+source-audit347A, identified by the copied base manifest and receipt. This
+small overlay does not replace or silently rewrite their historical records.
+No349/350 research result has been added.
+No git, PR, state, runtime, old source or old production artifact was changed.

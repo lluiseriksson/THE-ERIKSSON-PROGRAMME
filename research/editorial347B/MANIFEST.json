@@ -1,0 +1,67 @@
+{
+  "subject": "layout347B candidate",
+  "base_source_commit": "4a44431e8648018908ddc2760840977db9928aac",
+  "representation": "Raw bytes, no normalization for hashes",
+  "entries": [
+    {
+      "path": "change-record.json",
+      "bytes": 2728,
+      "sha256_raw_bytes": "b88e599b5072f76de3f7b2e6cdeb3baa5831a94a6537ab8da1e3e18338d11acf"
+    },
+    {
+      "path": "full-editorial-fabrication-report.txt",
+      "bytes": 2708,
+      "sha256_raw_bytes": "52c02da5a845e68140968e59bde4a5e294a885bfbeeabc7933b139e29582450c"
+    },
+    {
+      "path": "manuscript347.tex",
+      "bytes": 24826,
+      "sha256_raw_bytes": "0a851ffb2e6b6a7c4a491266f6fdd2e22dcd4efc3c234cc5a57b86719f63319d"
+    },
+    {
+      "path": "manuscript347.txt",
+      "bytes": 28083,
+      "sha256_raw_bytes": "b80bc433a3ff7ba66225e19a36ef4fbcfa8d12ea4f6fdb57633ba1cffdecd4a4"
+    },
+    {
+      "path": "model-context.txt",
+      "bytes": 809,
+      "sha256_raw_bytes": "0350ae30bffdcff1c6b8d0683218edb58566b335a98f0c3293bffc869b8397fd"
+    },
+    {
+      "path": "originals/fabrication347A-MANIFEST.json",
+      "bytes": 6837,
+      "sha256_raw_bytes": "2ac1635ee48abe1984d8aaa48a5c4f17088aa9d0d00a9b8e662966a1337924f8"
+    },
+    {
+      "path": "originals/manuscript347.tex",
+      "bytes": 24723,
+      "sha256_raw_bytes": "8c2a571a03b4838e23efc8f1511605943f6b21ed011ae55dc527ebe957f2da6d"
+    },
+    {
+      "path": "originals/manuscript347.txt",
+      "bytes": 27980,
+      "sha256_raw_bytes": "847a0410d08fac5f7bd56125760edad8862004f6e0a7a74a3826045dff901cc2"
+    },
+    {
+      "path": "originals/parent-acceptance347.json",
+      "bytes": 1634,
+      "sha256_raw_bytes": "ab7ab2f2731dee2eebd03608e1de57969f4143f840b69dcc37543ec79f9317ad"
+    },
+    {
+      "path": "originals/support346-section.tex",
+      "bytes": 3877,
+      "sha256_raw_bytes": "c273a2ada5308dacddcf6b28d615aa2e9721fa89f0e0c8fd6f48ac97738b127b"
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 738,
+      "sha256_raw_bytes": "8b87a9102e5f42c525f24e6868e4dde99e8a0abb5a207eec4b9fd3bf8bcab420"
+    },
+    {
+      "path": "support346-section.tex",
+      "bytes": 3877,
+      "sha256_raw_bytes": "c273a2ada5308dacddcf6b28d615aa2e9721fa89f0e0c8fd6f48ac97738b127b"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema": "raw-payload-manifest-v1",
-  "unit": "fabrication347A",
+  "unit": "editorial347B-over-fabrication347A",
   "excluded": [
     "MANIFEST.json",
     "retention.json"
@@ -154,13 +154,13 @@
     },
     {
       "path": "manuscript347.tex",
-      "bytes": 24723,
-      "sha256": "8c2a571a03b4838e23efc8f1511605943f6b21ed011ae55dc527ebe957f2da6d"
+      "bytes": 24826,
+      "sha256": "0a851ffb2e6b6a7c4a491266f6fdd2e22dcd4efc3c234cc5a57b86719f63319d"
     },
     {
       "path": "manuscript347.txt",
-      "bytes": 27980,
-      "sha256": "847a0410d08fac5f7bd56125760edad8862004f6e0a7a74a3826045dff901cc2"
+      "bytes": 28083,
+      "sha256": "b80bc433a3ff7ba66225e19a36ef4fbcfa8d12ea4f6fdb57633ba1cffdecd4a4"
     },
     {
       "path": "model-context.txt",
@@ -212,5 +212,7 @@
       "bytes": 1848,
       "sha256": "b3b753771c177418ed791917f2ff52e1d99e0e653692a49de2adfc3a504395fa"
     }
-  ]
+  ],
+  "historical_manifest": "research/editorial347B/originals/fabrication347A-MANIFEST.json; exact original remains in git4a44431e8648018908ddc2760840977db9928aac",
+  "change_record": "research/editorial347B/change-record.json"
 }
