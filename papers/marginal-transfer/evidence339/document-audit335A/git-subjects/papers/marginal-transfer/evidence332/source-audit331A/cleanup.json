@@ -1,0 +1,9 @@
+{
+  "stage": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit331a",
+  "retained": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-331\\source-audit331A",
+  "status": "REMOVED",
+  "error": null,
+  "method": "Resolved exact non-reparse stage; each file rehashed against retained bytes before individual removal; empty directory removed without recursion",
+  "retention_observation": "Copy/verification command yielded an active session and later completed with exit 0; no operation failure",
+  "observed_utc": "2026-11-13T22:22:40.4926859Z"
+}

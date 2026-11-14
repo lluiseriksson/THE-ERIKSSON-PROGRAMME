@@ -1,0 +1,2641 @@
+{
+  "utc": "2026-11-13T23:20:26.2078256Z",
+  "head": "17c9661524abd72ac84aad02f124e70062cbd6d4",
+  "parent": "2617476eca7f0b0e106d6551c3c2f7d97e7fe9c1",
+  "branch": "codex/tep-manuscript335-20261114",
+  "pr_head": "17c9661524abd72ac84aad02f124e70062cbd6d4",
+  "pr_base": "2617476eca7f0b0e106d6551c3c2f7d97e7fe9c1",
+  "body_bytes": 1475,
+  "body_sha256": "018ea2323a7baa7776132fe3f7e82ed4389709ef1cf1e91b1bcebef7884b7f3e",
+  "status": [
+    "?? _drafts/",
+    "?? prepare311.py",
+    "?? prepare314.py",
+    "?? prepare_manuscript327.ps1"
+  ],
+  "subjects": [
+    {
+      "path": "papers/marginal-transfer/evidence327/primary-tailspace-comparison.txt",
+      "git_blob": "0aab647eed9c4318c3764c64230ac2f52d150b66",
+      "git_stable": true,
+      "working_sha256": "50763c4e6f123789f25ec6ff927ea129cd6f8a198cef68c45f13693af05c8ee0",
+      "working_stable": true,
+      "capture_sha256": "50763c4e6f123789f25ec6ff927ea129cd6f8a198cef68c45f13693af05c8ee0",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/assignment.txt",
+      "git_blob": "8b5076acbaca350d3b87fee54481ac3de797cf4b",
+      "git_stable": true,
+      "working_sha256": "a6ae75cb0c001137871cf7aca9fda233aea9bcb7495b924459a32fb287b6068c",
+      "working_stable": true,
+      "capture_sha256": "a6ae75cb0c001137871cf7aca9fda233aea9bcb7495b924459a32fb287b6068c",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/body-final.normalized.txt",
+      "git_blob": "564c9ca0b679d171bcc03bcd3e3334403cd6a20b",
+      "git_stable": true,
+      "working_sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3",
+      "working_stable": true,
+      "capture_sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/body-initial.normalized.txt",
+      "git_blob": "564c9ca0b679d171bcc03bcd3e3334403cd6a20b",
+      "git_stable": true,
+      "working_sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3",
+      "working_stable": true,
+      "capture_sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/context.txt",
+      "git_blob": "23ebd9fb0889e7e7ff2858a8ddd05714ddfaed2e",
+      "git_stable": true,
+      "working_sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e",
+      "working_stable": true,
+      "capture_sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/final-state.json",
+      "git_blob": "f8494b8b28eb04dcec9fac58e0402804d0dd2971",
+      "git_stable": true,
+      "working_sha256": "ca39d4c687f0f27432430cf33861fdaeb8957b9abafdea17503aecc3a981952c",
+      "working_stable": true,
+      "capture_sha256": "ca39d4c687f0f27432430cf33861fdaeb8957b9abafdea17503aecc3a981952c",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/full-report.txt",
+      "git_blob": "54f02b21e407513e5b6c60d7e28ca41d7a71cae4",
+      "git_stable": true,
+      "working_sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770",
+      "working_stable": true,
+      "capture_sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/git-blobs/CLAUDE.md",
+      "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "git_stable": true,
+      "working_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "working_stable": true,
+      "capture_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/git-blobs/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "git_stable": true,
+      "working_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "working_stable": true,
+      "capture_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/git-blobs/research/marginal-moment319/source319A.txt",
+      "git_blob": "3a2431d30af2b335d831a5d8ff16d9933a6e10f8",
+      "git_stable": true,
+      "working_sha256": "5b527cd6c8fbad390258a9c439534222c0094139cac7a5813edb6415b20e39a3",
+      "working_stable": true,
+      "capture_sha256": "5b527cd6c8fbad390258a9c439534222c0094139cac7a5813edb6415b20e39a3",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/git-blobs/research/quadratic-deficit323/source323A.txt",
+      "git_blob": "b7f3d59539dee9a0589c48b078fd8d378b1bcde4",
+      "git_stable": true,
+      "working_sha256": "2de9fb0027e02ade7e3920352a5a3593154778c8cd478d5bb7fecd066bac0bfc",
+      "working_stable": true,
+      "capture_sha256": "2de9fb0027e02ade7e3920352a5a3593154778c8cd478d5bb7fecd066bac0bfc",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/git-blobs/research/truncation324/source324A.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/git-raw/CLAUDE.md",
+      "git_blob": "3f92d869d7f624e76381559aab5e6f2efec0f8a7",
+      "git_stable": true,
+      "working_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "working_stable": true,
+      "capture_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/git-raw/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "git_blob": "b7df3ea3706a9c5f0ce7b55795362051a7c0094d",
+      "git_stable": true,
+      "working_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "working_stable": true,
+      "capture_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/git-raw/research/marginal-moment319/source319A.txt",
+      "git_blob": "3dc3402446bc0aca4be05fa4a7aa114cb4fc63f1",
+      "git_stable": true,
+      "working_sha256": "ef37729f5605cddb865cabbbd7c5aa9d00ced3068a76f8cbe7af44ea6112b29e",
+      "working_stable": true,
+      "capture_sha256": "ef37729f5605cddb865cabbbd7c5aa9d00ced3068a76f8cbe7af44ea6112b29e",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/git-raw/research/quadratic-deficit323/source323A.txt",
+      "git_blob": "575a931cc343b7de59427d5775d1bc45e16e3fd7",
+      "git_stable": true,
+      "working_sha256": "403ff8ae112dda41aeab377e53e27be7c23db117cc03ec00b8f762a1b27d9403",
+      "working_stable": true,
+      "capture_sha256": "403ff8ae112dda41aeab377e53e27be7c23db117cc03ec00b8f762a1b27d9403",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/git-raw/research/truncation324/source324A.txt",
+      "git_blob": "28ed661015c97831e8950e2603418a938746c66b",
+      "git_stable": true,
+      "working_sha256": "08393e1ac10c588124735ba6786575c80e1d19761740b01cf705220fb1fe3722",
+      "working_stable": true,
+      "capture_sha256": "08393e1ac10c588124735ba6786575c80e1d19761740b01cf705220fb1fe3722",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/git-subjects.zip",
+      "git_blob": "e7c2ce125b5256ed6574f0faa567e29d18e1a8c6",
+      "git_stable": true,
+      "working_sha256": "8b6b016c9e40c84ff3773e998475952dfd24b5680b795d5930251ed33b7c25b6",
+      "working_stable": true,
+      "capture_sha256": "8b6b016c9e40c84ff3773e998475952dfd24b5680b795d5930251ed33b7c25b6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/initial-state.json",
+      "git_blob": "811a65db8c599236c2e83a41d7a0486d0da74a52",
+      "git_stable": true,
+      "working_sha256": "c88ad4b24687f0474f6bdba7b0d589697bed598f34da3798dcd79050ca553a9f",
+      "working_stable": true,
+      "capture_sha256": "c88ad4b24687f0474f6bdba7b0d589697bed598f34da3798dcd79050ca553a9f",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/manifest.json",
+      "git_blob": "66bdcb9d2e11a2e9765ccef18a5a6fc9aa9a2d79",
+      "git_stable": true,
+      "working_sha256": "052fd4e153b27ca2867f50a9a04d972f167a2ae0ebdfa87c549a41543a8bd8a9",
+      "working_stable": true,
+      "capture_sha256": "052fd4e153b27ca2867f50a9a04d972f167a2ae0ebdfa87c549a41543a8bd8a9",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/manifest.sha256",
+      "git_blob": "34b8f7a6f6daf305bd963e94d7fdac0693ce0951",
+      "git_stable": true,
+      "working_sha256": "a28a683616d2ecba29caa9ed890aa5d29d8aef3e0d861fa160ad4cf75b822a47",
+      "working_stable": true,
+      "capture_sha256": "a28a683616d2ecba29caa9ed890aa5d29d8aef3e0d861fa160ad4cf75b822a47",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/pr271-final.json",
+      "git_blob": "fadc179d1a10a9c2911323f49e1a4a0c0f59327d",
+      "git_stable": true,
+      "working_sha256": "788bfedab1fb19e6b8eef1b67019be5d1751339beb3c50f717361be6e32524b0",
+      "working_stable": true,
+      "capture_sha256": "788bfedab1fb19e6b8eef1b67019be5d1751339beb3c50f717361be6e32524b0",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/pr271-initial.json",
+      "git_blob": "fadc179d1a10a9c2911323f49e1a4a0c0f59327d",
+      "git_stable": true,
+      "working_sha256": "788bfedab1fb19e6b8eef1b67019be5d1751339beb3c50f717361be6e32524b0",
+      "working_stable": true,
+      "capture_sha256": "788bfedab1fb19e6b8eef1b67019be5d1751339beb3c50f717361be6e32524b0",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/primary-reading.txt",
+      "git_blob": "c97742e03c6399ad2d716797a6ddeb0239de90f4",
+      "git_stable": true,
+      "working_sha256": "f1f7e300890e83330d8e2cfbf0543b41ef2021ecc7b29acb00a79b0908451083",
+      "working_stable": true,
+      "capture_sha256": "f1f7e300890e83330d8e2cfbf0543b41ef2021ecc7b29acb00a79b0908451083",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/raw-blob-capture-correction.json",
+      "git_blob": "b24a80fc9a65939ceca793049b77fb2de4c0b2fd",
+      "git_stable": true,
+      "working_sha256": "1deff57677dfac5a0e9012731236a0c8f9a3478fbf6449bc20a43b267ee3a7cb",
+      "working_stable": true,
+      "capture_sha256": "1deff57677dfac5a0e9012731236a0c8f9a3478fbf6449bc20a43b267ee3a7cb",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/representation-and-notes.json",
+      "git_blob": "af71bf8168d56bafbec253509e2a0207b1e829c9",
+      "git_stable": true,
+      "working_sha256": "ec8ad7b1f00e3d0e49b1ab2c469bb1dca6d745e7448a2518fdc6d8e90a1350d4",
+      "working_stable": true,
+      "capture_sha256": "ec8ad7b1f00e3d0e49b1ab2c469bb1dca6d745e7448a2518fdc6d8e90a1350d4",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/source324A-final.git.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/subjects/01-source324A.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/subjects/02-prepare311.py",
+      "git_blob": "f1a88bd273aa348c456e29d627a03a0910f95cfa",
+      "git_stable": true,
+      "working_sha256": "b82abb0b2d779f7172376a5970b00fbfefe334781d09221f53c8d6c2a3edeab9",
+      "working_stable": true,
+      "capture_sha256": "b82abb0b2d779f7172376a5970b00fbfefe334781d09221f53c8d6c2a3edeab9",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/subjects/03-prepare314.py",
+      "git_blob": "eb7ca6d7e3b211db69141a061f0f9c3b3568a2c2",
+      "git_stable": true,
+      "working_sha256": "f77617fb961971c2829911c8d94e504d2afaff4f795fbd568304af093a74b015",
+      "working_stable": true,
+      "capture_sha256": "f77617fb961971c2829911c8d94e504d2afaff4f795fbd568304af093a74b015",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/subjects/04-source324A.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/subjects/05-question324-truncation.txt",
+      "git_blob": "1f9886ffe65c104c3a0a7e058cecbfee5cf3112a",
+      "git_stable": true,
+      "working_sha256": "12042f2e13c2027732bbba23f66b037e2e25af069829449cfc834b5a096926e3",
+      "working_stable": true,
+      "capture_sha256": "12042f2e13c2027732bbba23f66b037e2e25af069829449cfc834b5a096926e3",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/subjects/06-question324-rate-identity.txt",
+      "git_blob": "ad5105042e8f8e1cb479927c0146461bbce35f67",
+      "git_stable": true,
+      "working_sha256": "0f69145819e29e2f9aa629038729df2a8710f950bb5b6f19590d2968bfdcb01d",
+      "working_stable": true,
+      "capture_sha256": "0f69145819e29e2f9aa629038729df2a8710f950bb5b6f19590d2968bfdcb01d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/subjects/07-pr-body324.txt",
+      "git_blob": "564c9ca0b679d171bcc03bcd3e3334403cd6a20b",
+      "git_stable": true,
+      "working_sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3",
+      "working_stable": true,
+      "capture_sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit324A/subjects/08-manuscript322B.tex",
+      "git_blob": "59f5a34a541e3ed6f5543345f2d32115816c6ac2",
+      "git_stable": true,
+      "working_sha256": "73073a786fdc65206b716f0cd44c47b31043258fc68477c41917763c6518b545",
+      "working_stable": true,
+      "capture_sha256": "73073a786fdc65206b716f0cd44c47b31043258fc68477c41917763c6518b545",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/assignment.txt",
+      "git_blob": "cfe01acef2fa2055e7841ee98828f9ff94fd239b",
+      "git_stable": true,
+      "working_sha256": "15ef3120fc2c966ed532444e66d8e824576bdc7702f3b52a344ea86c3474b81e",
+      "working_stable": true,
+      "capture_sha256": "15ef3120fc2c966ed532444e66d8e824576bdc7702f3b52a344ea86c3474b81e",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/body-final.normalized.txt",
+      "git_blob": "9777f931fb8c16be23c2cd034c4f3a066d25afb7",
+      "git_stable": true,
+      "working_sha256": "0fbb14134dcdf5ffcd2b277d92f2e5b1b80b15e9fc15bf4a64c678496566e0b0",
+      "working_stable": true,
+      "capture_sha256": "0fbb14134dcdf5ffcd2b277d92f2e5b1b80b15e9fc15bf4a64c678496566e0b0",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/body-initial.normalized.txt",
+      "git_blob": "9777f931fb8c16be23c2cd034c4f3a066d25afb7",
+      "git_stable": true,
+      "working_sha256": "0fbb14134dcdf5ffcd2b277d92f2e5b1b80b15e9fc15bf4a64c678496566e0b0",
+      "working_stable": true,
+      "capture_sha256": "0fbb14134dcdf5ffcd2b277d92f2e5b1b80b15e9fc15bf4a64c678496566e0b0",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/commit-delta.txt",
+      "git_blob": "a02f28ae7dde2fad39e6ec2a49a158ad5d5e6cec",
+      "git_stable": true,
+      "working_sha256": "77a9812e338226868ef7f22a66ad6b4cabf53ff71470a9cd562d1a5089002312",
+      "working_stable": true,
+      "capture_sha256": "77a9812e338226868ef7f22a66ad6b4cabf53ff71470a9cd562d1a5089002312",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/context.txt",
+      "git_blob": "59ec8d1e9b674c50833c76ceefd4ba769422d955",
+      "git_stable": true,
+      "working_sha256": "41d6e63c0f962fea137461aabedcee0f9d2a0bb8b0aea2d62f4d57940f272eff",
+      "working_stable": true,
+      "capture_sha256": "41d6e63c0f962fea137461aabedcee0f9d2a0bb8b0aea2d62f4d57940f272eff",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/final-state.json",
+      "git_blob": "9a9689392925c15ee04ed362f5343a29f4c912b9",
+      "git_stable": true,
+      "working_sha256": "0880ab1b4042c016505ea633e2a5c6cacfc98c0f1fbddadee22fc403c14eb1f6",
+      "working_stable": true,
+      "capture_sha256": "0880ab1b4042c016505ea633e2a5c6cacfc98c0f1fbddadee22fc403c14eb1f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/full-report.txt",
+      "git_blob": "8883fa9b383075d301c3f84deb2f449b552f3536",
+      "git_stable": true,
+      "working_sha256": "a168a94083059660dba491cad39be2a46995e30cd0d0462f3b45f1ed0595dc39",
+      "working_stable": true,
+      "capture_sha256": "a168a94083059660dba491cad39be2a46995e30cd0d0462f3b45f1ed0595dc39",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/initial-state.json",
+      "git_blob": "6a7846393ec9ef278a626e7191031fc96ad1d9de",
+      "git_stable": true,
+      "working_sha256": "286543fac456d4b2a169b1c4823a29efbd524d1bafa164bf7710fe29511537ab",
+      "working_stable": true,
+      "capture_sha256": "286543fac456d4b2a169b1c4823a29efbd524d1bafa164bf7710fe29511537ab",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/manifest.json",
+      "git_blob": "016f2be0ea84883398fad79b32c192e2635bf8bd",
+      "git_stable": true,
+      "working_sha256": "50fd4cf72f7dcc63fadf7df6117fc1fee7f956c288430598e23e13ea2a119425",
+      "working_stable": true,
+      "capture_sha256": "50fd4cf72f7dcc63fadf7df6117fc1fee7f956c288430598e23e13ea2a119425",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/pr272-final.json",
+      "git_blob": "57d003e6cc77e83538c7d7160c0e815f4b0c16f5",
+      "git_stable": true,
+      "working_sha256": "7e6b150319d27cba1ad38c267f8d7cab7eadc94840704c57723aaabfe75e688e",
+      "working_stable": true,
+      "capture_sha256": "7e6b150319d27cba1ad38c267f8d7cab7eadc94840704c57723aaabfe75e688e",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/pr272-initial.json",
+      "git_blob": "03938ad31c88467875c393a16936c005ddd1af05",
+      "git_stable": true,
+      "working_sha256": "64cff2702be0f991a18fdaf0f83155abae7d9e401b2a0109ce97b68a70f3fc7c",
+      "working_stable": true,
+      "capture_sha256": "64cff2702be0f991a18fdaf0f83155abae7d9e401b2a0109ce97b68a70f3fc7c",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/pr272-scope-readback.json",
+      "git_blob": "57d003e6cc77e83538c7d7160c0e815f4b0c16f5",
+      "git_stable": true,
+      "working_sha256": "7e6b150319d27cba1ad38c267f8d7cab7eadc94840704c57723aaabfe75e688e",
+      "working_stable": true,
+      "capture_sha256": "7e6b150319d27cba1ad38c267f8d7cab7eadc94840704c57723aaabfe75e688e",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/scope-correction.json",
+      "git_blob": "d6387d39493c6325ca37d4a422cd22c57f590a7b",
+      "git_stable": true,
+      "working_sha256": "1f5c6d9045ad3dfae3991670d02986efe6ddd048f6cd0744db0f19e2b2d7b5f5",
+      "working_stable": true,
+      "capture_sha256": "1f5c6d9045ad3dfae3991670d02986efe6ddd048f6cd0744db0f19e2b2d7b5f5",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/01-source325A.txt",
+      "git_blob": "de1f26fdc4fa5d5ffe3a56da73dd39e5dedf0c9c",
+      "git_stable": true,
+      "working_sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100",
+      "working_stable": true,
+      "capture_sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/02-prepare311.py",
+      "git_blob": "f1a88bd273aa348c456e29d627a03a0910f95cfa",
+      "git_stable": true,
+      "working_sha256": "b82abb0b2d779f7172376a5970b00fbfefe334781d09221f53c8d6c2a3edeab9",
+      "working_stable": true,
+      "capture_sha256": "b82abb0b2d779f7172376a5970b00fbfefe334781d09221f53c8d6c2a3edeab9",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/03-prepare314.py",
+      "git_blob": "eb7ca6d7e3b211db69141a061f0f9c3b3568a2c2",
+      "git_stable": true,
+      "working_sha256": "f77617fb961971c2829911c8d94e504d2afaff4f795fbd568304af093a74b015",
+      "working_stable": true,
+      "capture_sha256": "f77617fb961971c2829911c8d94e504d2afaff4f795fbd568304af093a74b015",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/04-source325A.txt",
+      "git_blob": "de1f26fdc4fa5d5ffe3a56da73dd39e5dedf0c9c",
+      "git_stable": true,
+      "working_sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100",
+      "working_stable": true,
+      "capture_sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/05-pr272-pinned.json",
+      "git_blob": "a92238f4623c5309a0dc2844aec8ec40cf22d86a",
+      "git_stable": true,
+      "working_sha256": "7cfd7d2cf4975dea7794366601c19d48dae0fb3b9dc91a036afb13afb4c15d8d",
+      "working_stable": true,
+      "capture_sha256": "7cfd7d2cf4975dea7794366601c19d48dae0fb3b9dc91a036afb13afb4c15d8d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/06-pr272-body-normalized.md",
+      "git_blob": "9777f931fb8c16be23c2cd034c4f3a066d25afb7",
+      "git_stable": true,
+      "working_sha256": "0fbb14134dcdf5ffcd2b277d92f2e5b1b80b15e9fc15bf4a64c678496566e0b0",
+      "working_stable": true,
+      "capture_sha256": "0fbb14134dcdf5ffcd2b277d92f2e5b1b80b15e9fc15bf4a64c678496566e0b0",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/07-manuscript322B.tex",
+      "git_blob": "59f5a34a541e3ed6f5543345f2d32115816c6ac2",
+      "git_stable": true,
+      "working_sha256": "73073a786fdc65206b716f0cd44c47b31043258fc68477c41917763c6518b545",
+      "working_stable": true,
+      "capture_sha256": "73073a786fdc65206b716f0cd44c47b31043258fc68477c41917763c6518b545",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/08-full-report.txt",
+      "git_blob": "54f02b21e407513e5b6c60d7e28ca41d7a71cae4",
+      "git_stable": true,
+      "working_sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770",
+      "working_stable": true,
+      "capture_sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/09-context.txt",
+      "git_blob": "23ebd9fb0889e7e7ff2858a8ddd05714ddfaed2e",
+      "git_stable": true,
+      "working_sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e",
+      "working_stable": true,
+      "capture_sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/charter.git.md",
+      "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "git_stable": true,
+      "working_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "working_stable": true,
+      "capture_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/CLAUDE.git.md",
+      "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "git_stable": true,
+      "working_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "working_stable": true,
+      "capture_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/source324A.git.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source-audit325A/subjects/source325A.git.txt",
+      "git_blob": "de1f26fdc4fa5d5ffe3a56da73dd39e5dedf0c9c",
+      "git_stable": true,
+      "working_sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100",
+      "working_stable": true,
+      "capture_sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source324A.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence327/source325A.txt",
+      "git_blob": "de1f26fdc4fa5d5ffe3a56da73dd39e5dedf0c9c",
+      "git_stable": true,
+      "working_sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100",
+      "working_stable": true,
+      "capture_sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/primary-comparison330.txt",
+      "git_blob": "d4674e0bbe74ed8baae57d636aa26ee53e86bc13",
+      "git_stable": true,
+      "working_sha256": "e3c492e7de4eb5ddb0b6bb2519f108adeb785ce442d0289926e45796bc4b7dd4",
+      "working_stable": true,
+      "capture_sha256": "e3c492e7de4eb5ddb0b6bb2519f108adeb785ce442d0289926e45796bc4b7dd4",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/production328-parent-observation.json",
+      "git_blob": "8f2f99612a4fb70e8a0d108c0ee81e80ecab4b62",
+      "git_stable": true,
+      "working_sha256": "a2bcbf0df02fc1466a2036f85b9f7b8c020b8d680c90600705d594d6c4d707f8",
+      "working_stable": true,
+      "capture_sha256": "a2bcbf0df02fc1466a2036f85b9f7b8c020b8d680c90600705d594d6c4d707f8",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/assignment.txt",
+      "git_blob": "efe0706a73a3cfc45aec65395edddea56c16081e",
+      "git_stable": true,
+      "working_sha256": "1d09bea9416e9601b3d2c04643446e76eafb56b9a6d919bd3a5f5e6aea5eead7",
+      "working_stable": true,
+      "capture_sha256": "1d09bea9416e9601b3d2c04643446e76eafb56b9a6d919bd3a5f5e6aea5eead7",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/body-final.normalized.txt",
+      "git_blob": "8098102bf6d4483df386c2d454617a1d0158d540",
+      "git_stable": true,
+      "working_sha256": "9f2145f2875ce671e4e2298745d7d68ca0fb27bf2b00beb04c7f3d7e48d6bfcc",
+      "working_stable": true,
+      "capture_sha256": "9f2145f2875ce671e4e2298745d7d68ca0fb27bf2b00beb04c7f3d7e48d6bfcc",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/body-initial.normalized.txt",
+      "git_blob": "8098102bf6d4483df386c2d454617a1d0158d540",
+      "git_stable": true,
+      "working_sha256": "9f2145f2875ce671e4e2298745d7d68ca0fb27bf2b00beb04c7f3d7e48d6bfcc",
+      "working_stable": true,
+      "capture_sha256": "9f2145f2875ce671e4e2298745d7d68ca0fb27bf2b00beb04c7f3d7e48d6bfcc",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/context.txt",
+      "git_blob": "5d19285e5ffe672df17e6dac3375a1d1a6f84049",
+      "git_stable": true,
+      "working_sha256": "d52403c420515edc882eb6c56fdc3e99f984108e7bfa843f7e0c3358efc6efc5",
+      "working_stable": true,
+      "capture_sha256": "d52403c420515edc882eb6c56fdc3e99f984108e7bfa843f7e0c3358efc6efc5",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/final-state.json",
+      "git_blob": "f474dd1ec27b9339a214e15d7bf11241c3c6d26a",
+      "git_stable": true,
+      "working_sha256": "162062fe2a24034365e90c44c12b0a9eefbb1d7977c93a9b99afb24266b5309a",
+      "working_stable": true,
+      "capture_sha256": "162062fe2a24034365e90c44c12b0a9eefbb1d7977c93a9b99afb24266b5309a",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/full-report.txt",
+      "git_blob": "800525f24b55aa06d1d6732f5489eafd1ef8d4d6",
+      "git_stable": true,
+      "working_sha256": "9477ecb4297fb03ddae27b2d75baf1139de153fe8eea06e26098f89ef2b7af8c",
+      "working_stable": true,
+      "capture_sha256": "9477ecb4297fb03ddae27b2d75baf1139de153fe8eea06e26098f89ef2b7af8c",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/git-subjects/CLAUDE.md",
+      "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "git_stable": true,
+      "working_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "working_stable": true,
+      "capture_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/git-subjects/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "git_stable": true,
+      "working_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "working_stable": true,
+      "capture_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/git-subjects/research/one-sided330/source330A.txt",
+      "git_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "git_stable": true,
+      "working_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "working_stable": true,
+      "capture_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/initial-state.json",
+      "git_blob": "f51b17a567ad614cb3996959bf1b1fdcc14d018c",
+      "git_stable": true,
+      "working_sha256": "e557276887145d674e73c0f047581a4cd12e3fc3a2495d6ded55245b8ad1d545",
+      "working_stable": true,
+      "capture_sha256": "e557276887145d674e73c0f047581a4cd12e3fc3a2495d6ded55245b8ad1d545",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/manifest.json",
+      "git_blob": "deed29fdbd550e458824872d272777adb8ed7d22",
+      "git_stable": true,
+      "working_sha256": "e7f351ebfbe76220087512ac5acbaee0e9e2dd1dde279efd4b9790ce21c7fad9",
+      "working_stable": true,
+      "capture_sha256": "e7f351ebfbe76220087512ac5acbaee0e9e2dd1dde279efd4b9790ce21c7fad9",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/originals/01-source330A.txt",
+      "git_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "git_stable": true,
+      "working_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "working_stable": true,
+      "capture_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/originals/02-source329A.txt",
+      "git_blob": "2410aa617201837857f4b0b427dd25f731ec956a",
+      "git_stable": true,
+      "working_sha256": "3d09bd792ac1e38566312171d44329fcc8130056967c73fb9ad26bf20f026be1",
+      "working_stable": true,
+      "capture_sha256": "3d09bd792ac1e38566312171d44329fcc8130056967c73fb9ad26bf20f026be1",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/originals/03-full-analytical-report.txt",
+      "git_blob": "93d5453e3063af445d985105a44c04adb9141225",
+      "git_stable": true,
+      "working_sha256": "eb634aad42de52697eaf3e8780d355a5edfdc13a05afe3368f2563ed3329d81b",
+      "working_stable": true,
+      "capture_sha256": "eb634aad42de52697eaf3e8780d355a5edfdc13a05afe3368f2563ed3329d81b",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/originals/04-model-context.json",
+      "git_blob": "af2b2c0d024ee3617d6cc3e23530f1821406ba29",
+      "git_stable": true,
+      "working_sha256": "fa091b46d44ddbf8d914f9022ee1ccf5f5239678e226fb44a4cd1f52642ec3b6",
+      "working_stable": true,
+      "capture_sha256": "fa091b46d44ddbf8d914f9022ee1ccf5f5239678e226fb44a4cd1f52642ec3b6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/originals/05-MANIFEST.json",
+      "git_blob": "13450641d3bb9ff69e66f3f14f39bd87f761a8fb",
+      "git_stable": true,
+      "working_sha256": "d23b1b402f4d76bd253fdb989a7140d88d4a32d62b1092a6949adb2e1c782df8",
+      "working_stable": true,
+      "capture_sha256": "d23b1b402f4d76bd253fdb989a7140d88d4a32d62b1092a6949adb2e1c782df8",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/originals/06-manuscript327A.tex",
+      "git_blob": "a1416ba80ed37d51f5f5218a84eee2b486f57e96",
+      "git_stable": true,
+      "working_sha256": "46aeeb87a840446cd115829d31f8e91095646a7a964f62604294c01579b2255f",
+      "working_stable": true,
+      "capture_sha256": "46aeeb87a840446cd115829d31f8e91095646a7a964f62604294c01579b2255f",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/pr276-final.json",
+      "git_blob": "7cd890e59a1ebb2c050f76806cb02fa371ea8543",
+      "git_stable": true,
+      "working_sha256": "2d1807a81237ace9f2088c8d45d4e3fde2ff4d0a72ee61744bb2debf4102a704",
+      "working_stable": true,
+      "capture_sha256": "2d1807a81237ace9f2088c8d45d4e3fde2ff4d0a72ee61744bb2debf4102a704",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit330A/pr276-initial.json",
+      "git_blob": "7cd890e59a1ebb2c050f76806cb02fa371ea8543",
+      "git_stable": true,
+      "working_sha256": "2d1807a81237ace9f2088c8d45d4e3fde2ff4d0a72ee61744bb2debf4102a704",
+      "working_stable": true,
+      "capture_sha256": "2d1807a81237ace9f2088c8d45d4e3fde2ff4d0a72ee61744bb2debf4102a704",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit331A/cleanup.json",
+      "git_blob": "c1bec624635694af041a1b2199852050f5228ef6",
+      "git_stable": true,
+      "working_sha256": "5a286d7b736a941a59d58ab502e3fcaaed5d0538b38a31e667bde69991dda328",
+      "working_stable": true,
+      "capture_sha256": "5a286d7b736a941a59d58ab502e3fcaaed5d0538b38a31e667bde69991dda328",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit331A/final-pins.json",
+      "git_blob": "a1b4a7c3480e36709221274b76632102f9af7af1",
+      "git_stable": true,
+      "working_sha256": "cdeafd9af60c24c2f4e0b6579be89747d9a9c4b08177217677196275c80ef3ef",
+      "working_stable": true,
+      "capture_sha256": "cdeafd9af60c24c2f4e0b6579be89747d9a9c4b08177217677196275c80ef3ef",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit331A/full-analytical-report.txt",
+      "git_blob": "bd65df222e1b25dafa91dc7c65a6c57d13397647",
+      "git_stable": true,
+      "working_sha256": "478c669cbe0cdb42eb31229fafd6bbdd8eb444277e9a754ede324bdafe6578e2",
+      "working_stable": true,
+      "capture_sha256": "478c669cbe0cdb42eb31229fafd6bbdd8eb444277e9a754ede324bdafe6578e2",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit331A/MANIFEST.json",
+      "git_blob": "9a8a2c0317977b5204cec8bf88079f7e720ae71e",
+      "git_stable": true,
+      "working_sha256": "ff7d251decf9e968b2b0fd53bc8fa7c52e5dfd8ac0815c579b4132b3564253c7",
+      "working_stable": true,
+      "capture_sha256": "ff7d251decf9e968b2b0fd53bc8fa7c52e5dfd8ac0815c579b4132b3564253c7",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit331A/model-context.json",
+      "git_blob": "3ee140986ffab2e741908327fb92239f7dbea9bb",
+      "git_stable": true,
+      "working_sha256": "27df5b2c89515523b345c8f06215b386682b1657ad797dd0d9be220df596f558",
+      "working_stable": true,
+      "capture_sha256": "27df5b2c89515523b345c8f06215b386682b1657ad797dd0d9be220df596f558",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit331A/pr277-body-normalized.txt",
+      "git_blob": "14088ca3c35ed8434f8ec6ad72fcd02d8b189f9f",
+      "git_stable": true,
+      "working_sha256": "627c4ef50d3120eae536f44b3790372c8522effe01951683079d4f367df2ab66",
+      "working_stable": true,
+      "capture_sha256": "627c4ef50d3120eae536f44b3790372c8522effe01951683079d4f367df2ab66",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit331A/pr277-final.json",
+      "git_blob": "5317a038c3c45bdf498df69cdc9d81f807fe7091",
+      "git_stable": true,
+      "working_sha256": "0329d7f2fa3fa9d7b2d7e81464f748124556006d133ffbdae9a3a8527227a424",
+      "working_stable": true,
+      "capture_sha256": "0329d7f2fa3fa9d7b2d7e81464f748124556006d133ffbdae9a3a8527227a424",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit331A/pr277-initial.json",
+      "git_blob": "5317a038c3c45bdf498df69cdc9d81f807fe7091",
+      "git_stable": true,
+      "working_sha256": "0329d7f2fa3fa9d7b2d7e81464f748124556006d133ffbdae9a3a8527227a424",
+      "working_stable": true,
+      "capture_sha256": "0329d7f2fa3fa9d7b2d7e81464f748124556006d133ffbdae9a3a8527227a424",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit331A/received-assignment.txt",
+      "git_blob": "809e5550cf5690678807beb15feab1f24077edf6",
+      "git_stable": true,
+      "working_sha256": "7d359b7da3ec60f0624586fe2432130930eac0e613571c03a5c893e407195a9b",
+      "working_stable": true,
+      "capture_sha256": "7d359b7da3ec60f0624586fe2432130930eac0e613571c03a5c893e407195a9b",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit331A/source330A-retained.txt",
+      "git_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "git_stable": true,
+      "working_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "working_stable": true,
+      "capture_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source-audit331A/source331A-git-lf.txt",
+      "git_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+      "git_stable": true,
+      "working_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "working_stable": true,
+      "capture_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source330A.txt",
+      "git_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "git_stable": true,
+      "working_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "working_stable": true,
+      "capture_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence332/source331A.txt",
+      "git_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+      "git_stable": true,
+      "working_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "working_stable": true,
+      "capture_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/manuscript327A.tex",
+      "git_blob": "a1416ba80ed37d51f5f5218a84eee2b486f57e96",
+      "git_stable": true,
+      "working_sha256": "46aeeb87a840446cd115829d31f8e91095646a7a964f62604294c01579b2255f",
+      "working_stable": true,
+      "capture_sha256": "46aeeb87a840446cd115829d31f8e91095646a7a964f62604294c01579b2255f",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/manuscript332A.tex",
+      "git_blob": "1b56b93c1e67b2e0a85621c814d8587cef9aa80e",
+      "git_stable": true,
+      "working_sha256": "aac7e90edf54f3a41a5cc90f475670bba77f411e98b886db06b8debe71f93d6b",
+      "working_stable": true,
+      "capture_sha256": "aac7e90edf54f3a41a5cc90f475670bba77f411e98b886db06b8debe71f93d6b",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/SOURCE-INPUTS327.json",
+      "git_blob": "9040a16129c1a345c80364c1abe8cf79336ec6ee",
+      "git_stable": true,
+      "working_sha256": "5fbc947fc677bddcbce65f5e5547510660a7ea0190618cb06851eb17d6126d38",
+      "working_stable": true,
+      "capture_sha256": "5fbc947fc677bddcbce65f5e5547510660a7ea0190618cb06851eb17d6126d38",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/square-root327-section.tex",
+      "git_blob": "2854bc2ea2b210103951cfb610d40b5a4e118c02",
+      "git_stable": true,
+      "working_sha256": "570f1ec494f58176bfb595fb3123a2c5235c2883b1418cee292e6538772030e0",
+      "working_stable": true,
+      "capture_sha256": "570f1ec494f58176bfb595fb3123a2c5235c2883b1418cee292e6538772030e0",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/SOURCE-INPUTS332.json",
+      "git_blob": "073494c621d573d436bdaac532fa4eeda243a975",
+      "git_stable": true,
+      "working_sha256": "cc438134dc64787c08e59916084698130f6287c2a2c9d73dd0cda5f88601da9f",
+      "working_stable": true,
+      "capture_sha256": "cc438134dc64787c08e59916084698130f6287c2a2c9d73dd0cda5f88601da9f",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/manuscript335A.tex",
+      "git_blob": "347d56ec47ec88ec075308b4a7ba85bae907cb7e",
+      "git_stable": true,
+      "working_sha256": "addb9ecf25577e3c368d3e0475d0728817168740c398d55dc8aa57d173e1aa8e",
+      "working_stable": true,
+      "capture_sha256": "addb9ecf25577e3c368d3e0475d0728817168740c398d55dc8aa57d173e1aa8e",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/finite-ratio335-section.tex",
+      "git_blob": "5d6d8fffddf196d81bada9fbf16118c698ac3617",
+      "git_stable": true,
+      "working_sha256": "4063ad6f525512feffeb81d60cb7f10ab9a47d02423f03ab9df06c4e034c4e27",
+      "working_stable": true,
+      "capture_sha256": "4063ad6f525512feffeb81d60cb7f10ab9a47d02423f03ab9df06c4e034c4e27",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/cleanup.json",
+      "git_blob": "b21295cfc5674261cd43fbd289d1cfe01ed0755f",
+      "git_stable": true,
+      "working_sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "working_stable": true,
+      "capture_sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/final-workspace-state.json",
+      "git_blob": "a6a14f3f1c77452082dccb8f5fc523c823a0c294",
+      "git_stable": true,
+      "working_sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "working_stable": true,
+      "capture_sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/full-fabrication-report.txt",
+      "git_blob": "1e25015a91f77edbb589e26c344e7c3f470e20c1",
+      "git_stable": true,
+      "working_sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "working_stable": true,
+      "capture_sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/inbound-parent-context.txt",
+      "git_blob": "28ed5e5c13d38730baa0cd6a63e3cb748d5cd969",
+      "git_stable": true,
+      "working_sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "working_stable": true,
+      "capture_sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/input-manifest.json",
+      "git_blob": "b0a5516ab8269439923e4e4f955ca25217b50f63",
+      "git_stable": true,
+      "working_sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "working_stable": true,
+      "capture_sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/input-source324A.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/input-source330A.txt",
+      "git_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "git_stable": true,
+      "working_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "working_stable": true,
+      "capture_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/input-source331A-git-lf.txt",
+      "git_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+      "git_stable": true,
+      "working_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "working_stable": true,
+      "capture_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/MANIFEST.json",
+      "git_blob": "ef38ccf7d9b0f3a89bfc84980d679690f9cea6ce",
+      "git_stable": true,
+      "working_sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "working_stable": true,
+      "capture_sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/model-context.json",
+      "git_blob": "c5bc9e7e5e45fff2bbeca28178e1d9eed22ffffa",
+      "git_stable": true,
+      "working_sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "working_stable": true,
+      "capture_sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/received-assignment.txt",
+      "git_blob": "dfa2d65a93ddd3df94dba0f11afa7de81fe8ba1f",
+      "git_stable": true,
+      "working_sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "working_stable": true,
+      "capture_sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication334A/source334A.txt",
+      "git_blob": "7034fcc897f3b3ccee401a9477b65c100547bd19",
+      "git_stable": true,
+      "working_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "working_stable": true,
+      "capture_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/assignment.txt",
+      "git_blob": "24adbbe3c47e95ec9239b624852a77be4c2aef90",
+      "git_stable": true,
+      "working_sha256": "2b070c9acf40b70225bd37c6f197a4c77c33ad4d2e852d8133396aa9aed7cadc",
+      "working_stable": true,
+      "capture_sha256": "2b070c9acf40b70225bd37c6f197a4c77c33ad4d2e852d8133396aa9aed7cadc",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/body-final.normalized.txt",
+      "git_blob": "de00a1b8f64c7fbd97967f310c7826abd4139e02",
+      "git_stable": true,
+      "working_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "working_stable": true,
+      "capture_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/body-initial.normalized.txt",
+      "git_blob": "de00a1b8f64c7fbd97967f310c7826abd4139e02",
+      "git_stable": true,
+      "working_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "working_stable": true,
+      "capture_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/cleanup.json",
+      "git_blob": "58e7e4559e65a08bffefbc624ab6bd43fc33f7c5",
+      "git_stable": true,
+      "working_sha256": "50285a42b7be01f2fceb4cb59f1fd92cce644ac07934170db9abeaaec0d02e2d",
+      "working_stable": true,
+      "capture_sha256": "50285a42b7be01f2fceb4cb59f1fd92cce644ac07934170db9abeaaec0d02e2d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/context.txt",
+      "git_blob": "ef9a94dc0b006ca516054041678cf775b52adc11",
+      "git_stable": true,
+      "working_sha256": "99280c79ad50db86de5f7a480096113668a0cca340d512458e42af24c1834518",
+      "working_stable": true,
+      "capture_sha256": "99280c79ad50db86de5f7a480096113668a0cca340d512458e42af24c1834518",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/cleanup.json",
+      "git_blob": "b21295cfc5674261cd43fbd289d1cfe01ed0755f",
+      "git_stable": true,
+      "working_sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "working_stable": true,
+      "capture_sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/final-workspace-state.json",
+      "git_blob": "a6a14f3f1c77452082dccb8f5fc523c823a0c294",
+      "git_stable": true,
+      "working_sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "working_stable": true,
+      "capture_sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/full-fabrication-report.txt",
+      "git_blob": "1e25015a91f77edbb589e26c344e7c3f470e20c1",
+      "git_stable": true,
+      "working_sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "working_stable": true,
+      "capture_sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/inbound-parent-context.txt",
+      "git_blob": "28ed5e5c13d38730baa0cd6a63e3cb748d5cd969",
+      "git_stable": true,
+      "working_sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "working_stable": true,
+      "capture_sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/input-manifest.json",
+      "git_blob": "b0a5516ab8269439923e4e4f955ca25217b50f63",
+      "git_stable": true,
+      "working_sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "working_stable": true,
+      "capture_sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/input-source324A.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/input-source330A.txt",
+      "git_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "git_stable": true,
+      "working_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "working_stable": true,
+      "capture_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/input-source331A-git-lf.txt",
+      "git_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+      "git_stable": true,
+      "working_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "working_stable": true,
+      "capture_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/MANIFEST.json",
+      "git_blob": "ef38ccf7d9b0f3a89bfc84980d679690f9cea6ce",
+      "git_stable": true,
+      "working_sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "working_stable": true,
+      "capture_sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/model-context.json",
+      "git_blob": "c5bc9e7e5e45fff2bbeca28178e1d9eed22ffffa",
+      "git_stable": true,
+      "working_sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "working_stable": true,
+      "capture_sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/received-assignment.txt",
+      "git_blob": "dfa2d65a93ddd3df94dba0f11afa7de81fe8ba1f",
+      "git_stable": true,
+      "working_sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "working_stable": true,
+      "capture_sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/fabrication334A/source334A.txt",
+      "git_blob": "7034fcc897f3b3ccee401a9477b65c100547bd19",
+      "git_stable": true,
+      "working_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "working_stable": true,
+      "capture_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/final-state.json",
+      "git_blob": "cc0b8484235c8cef8fbbe894fe5635da2ba5c4c0",
+      "git_stable": true,
+      "working_sha256": "5c64a73cd51172bc3f2244d4d0b60e7b07ff59f2afb17972a32662ed3819ac93",
+      "working_stable": true,
+      "capture_sha256": "5c64a73cd51172bc3f2244d4d0b60e7b07ff59f2afb17972a32662ed3819ac93",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/full-report.txt",
+      "git_blob": "8136b178058fd964bcd698c1a9a24ecc142a9fe3",
+      "git_stable": true,
+      "working_sha256": "09a8530c4b8ee0687af3bef4923b8657ea2108ee105ffdbf0b207290083763df",
+      "working_stable": true,
+      "capture_sha256": "09a8530c4b8ee0687af3bef4923b8657ea2108ee105ffdbf0b207290083763df",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/git-subjects/CLAUDE.md",
+      "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "git_stable": true,
+      "working_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "working_stable": true,
+      "capture_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/git-subjects/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "git_stable": true,
+      "working_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "working_stable": true,
+      "capture_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/git-subjects/research/finite-scale331/source331A.txt",
+      "git_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+      "git_stable": true,
+      "working_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "working_stable": true,
+      "capture_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/git-subjects/research/one-sided330/source330A.txt",
+      "git_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "git_stable": true,
+      "working_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "working_stable": true,
+      "capture_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/git-subjects/research/truncation324/source324A.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/git-subjects/research/uniform-gap334/source334A.txt",
+      "git_blob": "7034fcc897f3b3ccee401a9477b65c100547bd19",
+      "git_stable": true,
+      "working_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "working_stable": true,
+      "capture_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/inherited-source-identities.json",
+      "git_blob": "f41e372e95f5af9df5ad81fcb42ed285f4d85989",
+      "git_stable": true,
+      "working_sha256": "5879a1351f4f2cffa9b8e8aec09ed61774a22304766a63435c2f38e63e9473de",
+      "working_stable": true,
+      "capture_sha256": "5879a1351f4f2cffa9b8e8aec09ed61774a22304766a63435c2f38e63e9473de",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/initial-state.json",
+      "git_blob": "bf4a0803ada786b56ae43361d29bb727146fcb99",
+      "git_stable": true,
+      "working_sha256": "fe97309375eba35c8beedfdf145e418bc5ba6b566bb7bc8cda84ced39fcc6e98",
+      "working_stable": true,
+      "capture_sha256": "fe97309375eba35c8beedfdf145e418bc5ba6b566bb7bc8cda84ced39fcc6e98",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/manifest.json",
+      "git_blob": "39b38242573f0e1fcf6b4f1d0cf95d12903dfc8f",
+      "git_stable": true,
+      "working_sha256": "1b1fe3a86f229fb3877b10f0f7bb4f02a70253d5f94bd7167ace573e64c59031",
+      "working_stable": true,
+      "capture_sha256": "1b1fe3a86f229fb3877b10f0f7bb4f02a70253d5f94bd7167ace573e64c59031",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/original-identities.json",
+      "git_blob": "756bddbca0bab5844d10985ddd53fc43500710cb",
+      "git_stable": true,
+      "working_sha256": "46221a134215340e8dd9dfb4dd0ef67a7aba69d1425e17566a2efbb63ea2613a",
+      "working_stable": true,
+      "capture_sha256": "46221a134215340e8dd9dfb4dd0ef67a7aba69d1425e17566a2efbb63ea2613a",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/originals/01-pr-pinned.json",
+      "git_blob": "8bb3a91c638d798298306903eea28e9f5bafc76c",
+      "git_stable": true,
+      "working_sha256": "495c60a5f4e6a729a3524e8198419d76df2cde70f220395503559f0c4225e9d3",
+      "working_stable": true,
+      "capture_sha256": "495c60a5f4e6a729a3524e8198419d76df2cde70f220395503559f0c4225e9d3",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/originals/02-pr-body-normalized.txt",
+      "git_blob": "de00a1b8f64c7fbd97967f310c7826abd4139e02",
+      "git_stable": true,
+      "working_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "working_stable": true,
+      "capture_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/originals/03-full-report.txt",
+      "git_blob": "54f02b21e407513e5b6c60d7e28ca41d7a71cae4",
+      "git_stable": true,
+      "working_sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770",
+      "working_stable": true,
+      "capture_sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/originals/04-context.txt",
+      "git_blob": "23ebd9fb0889e7e7ff2858a8ddd05714ddfaed2e",
+      "git_stable": true,
+      "working_sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e",
+      "working_stable": true,
+      "capture_sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/originals/05-context.txt",
+      "git_blob": "a1566a1d66d1a4869033a0b4c4eddd3c2ffb25e1",
+      "git_stable": true,
+      "working_sha256": "fc3b91bdbae51ce001d8dfa6f30ef3b388f63d9aafb76d0cdb7731f59f48e97d",
+      "working_stable": true,
+      "capture_sha256": "fc3b91bdbae51ce001d8dfa6f30ef3b388f63d9aafb76d0cdb7731f59f48e97d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/pr279-final.json",
+      "git_blob": "7fa3513bc7351ab77b2b7f1f7d997580f7e087cb",
+      "git_stable": true,
+      "working_sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "working_stable": true,
+      "capture_sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/pr279-initial.json",
+      "git_blob": "7fa3513bc7351ab77b2b7f1f7d997580f7e087cb",
+      "git_stable": true,
+      "working_sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "working_stable": true,
+      "capture_sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/primary-reading.txt",
+      "git_blob": "90023f1a4be0c277bfa0260de370c929395b8a2e",
+      "git_stable": true,
+      "working_sha256": "d39c546358bb151d20f98a13274314e407902f04e6590c596b53ba7c4a0fba63",
+      "working_stable": true,
+      "capture_sha256": "d39c546358bb151d20f98a13274314e407902f04e6590c596b53ba7c4a0fba63",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/source-audit334A/retention.json",
+      "git_blob": "1a76c2e00880b9550bbd7d1830a166ea2d589b74",
+      "git_stable": true,
+      "working_sha256": "c55d23bec401ce5699cd2aedcbf6ccc3b37efd5b4d37191e8e3ae7da304d2941",
+      "working_stable": true,
+      "capture_sha256": "c55d23bec401ce5699cd2aedcbf6ccc3b37efd5b4d37191e8e3ae7da304d2941",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/cleanup.json",
+      "git_blob": "b103a374b52c467c4556e7db479666804dc7952e",
+      "git_stable": true,
+      "working_sha256": "e89d7438b9bc36490a1026bc48cb3ae60baa5de7a3c74ac90f8379cbac9054cd",
+      "working_stable": true,
+      "capture_sha256": "e89d7438b9bc36490a1026bc48cb3ae60baa5de7a3c74ac90f8379cbac9054cd",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/final-workspace-state.json",
+      "git_blob": "847d2f80f63d721b2fd6cf255cefa8937418e4b3",
+      "git_stable": true,
+      "working_sha256": "3b8548b8789309a7be1e14664f3667963a6b6760095de4ceb8675c0472d2c543",
+      "working_stable": true,
+      "capture_sha256": "3b8548b8789309a7be1e14664f3667963a6b6760095de4ceb8675c0472d2c543",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/full-fabrication-report.txt",
+      "git_blob": "3edcfbdf0040e482f76b08f8d6226584f453e365",
+      "git_stable": true,
+      "working_sha256": "95f9ef1069ee1b83f6e1380a4657b1ea198077007c765110916edf72094aad95",
+      "working_stable": true,
+      "capture_sha256": "95f9ef1069ee1b83f6e1380a4657b1ea198077007c765110916edf72094aad95",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/inbound-parent-context.txt",
+      "git_blob": "2ce76176ca3cbf8539d528ccf2aafa500509d739",
+      "git_stable": true,
+      "working_sha256": "a9622c09cc8e51c72aecfc13f62823cc48f02ad1a7b501aa061419173eae434d",
+      "working_stable": true,
+      "capture_sha256": "a9622c09cc8e51c72aecfc13f62823cc48f02ad1a7b501aa061419173eae434d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/MANIFEST.json",
+      "git_blob": "97f9c9136f9dc4b34c21c98d3189c2f8a38f832e",
+      "git_stable": true,
+      "working_sha256": "8fb9ef16e27530150f0bfe1f29870f57a9a4350cf99d41b45090afa15dcb4b0a",
+      "working_stable": true,
+      "capture_sha256": "8fb9ef16e27530150f0bfe1f29870f57a9a4350cf99d41b45090afa15dcb4b0a",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/manuscript332-to-335.diff",
+      "git_blob": "e343f5a17a8fd565024fbb242acdb368d730e719",
+      "git_stable": true,
+      "working_sha256": "ab4867ea161f67abeee5fb79677a9a7bcfa7282d3ef5657610be08b5146fde9b",
+      "working_stable": true,
+      "capture_sha256": "ab4867ea161f67abeee5fb79677a9a7bcfa7282d3ef5657610be08b5146fde9b",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/manuscript332A-input.tex",
+      "git_blob": "1b56b93c1e67b2e0a85621c814d8587cef9aa80e",
+      "git_stable": true,
+      "working_sha256": "aac7e90edf54f3a41a5cc90f475670bba77f411e98b886db06b8debe71f93d6b",
+      "working_stable": true,
+      "capture_sha256": "aac7e90edf54f3a41a5cc90f475670bba77f411e98b886db06b8debe71f93d6b",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/manuscript335A.tex",
+      "git_blob": "0cb4550b2de10c2be4266563202a1ead69106d28",
+      "git_stable": true,
+      "working_sha256": "1dcdcd85b606b9bc04365b3aadaf183e4282d5c964ef062df7d2c0362a3e1808",
+      "working_stable": true,
+      "capture_sha256": "1dcdcd85b606b9bc04365b3aadaf183e4282d5c964ef062df7d2c0362a3e1808",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/model-context.json",
+      "git_blob": "5a4127dfacf04c5c95525f67c51f8adfa29aa1d1",
+      "git_stable": true,
+      "working_sha256": "48686804111e660bd8c5d32663259d737d5c2db200aec098b202f2b7d2ffde6a",
+      "working_stable": true,
+      "capture_sha256": "48686804111e660bd8c5d32663259d737d5c2db200aec098b202f2b7d2ffde6a",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/received-assignment.txt",
+      "git_blob": "576fdb829bba231520f6cbb480c32af84d48da51",
+      "git_stable": true,
+      "working_sha256": "bef280eab810239e62b3340469d2ca570601cfbb17203550af3be67f778e347d",
+      "working_stable": true,
+      "capture_sha256": "bef280eab810239e62b3340469d2ca570601cfbb17203550af3be67f778e347d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/retention.json",
+      "git_blob": "173b799da6e78309bbafba8caf62c09d335d7a92",
+      "git_stable": true,
+      "working_sha256": "452ead461b2de9816fa369c40dc75ff6eb50c00c4b34a716e1384b84ae53d34f",
+      "working_stable": true,
+      "capture_sha256": "452ead461b2de9816fa369c40dc75ff6eb50c00c4b34a716e1384b84ae53d34f",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/section335.tex",
+      "git_blob": "5d6d8fffddf196d81bada9fbf16118c698ac3617",
+      "git_stable": true,
+      "working_sha256": "4063ad6f525512feffeb81d60cb7f10ab9a47d02423f03ab9df06c4e034c4e27",
+      "working_stable": true,
+      "capture_sha256": "4063ad6f525512feffeb81d60cb7f10ab9a47d02423f03ab9df06c4e034c4e27",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/SOURCE-INPUTS332-input.json",
+      "git_blob": "073494c621d573d436bdaac532fa4eeda243a975",
+      "git_stable": true,
+      "working_sha256": "cc438134dc64787c08e59916084698130f6287c2a2c9d73dd0cda5f88601da9f",
+      "working_stable": true,
+      "capture_sha256": "cc438134dc64787c08e59916084698130f6287c2a2c9d73dd0cda5f88601da9f",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/SOURCE-INPUTS335.json",
+      "git_blob": "4b80265ce7ffeff5aa9a00ffc094dfc0072c08b3",
+      "git_stable": true,
+      "working_sha256": "9631944475b1717b167ff5bd748e2771cb37f746278e7a9e16ffab1636561429",
+      "working_stable": true,
+      "capture_sha256": "9631944475b1717b167ff5bd748e2771cb37f746278e7a9e16ffab1636561429",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/cleanup.json",
+      "git_blob": "b21295cfc5674261cd43fbd289d1cfe01ed0755f",
+      "git_stable": true,
+      "working_sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "working_stable": true,
+      "capture_sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/final-workspace-state.json",
+      "git_blob": "a6a14f3f1c77452082dccb8f5fc523c823a0c294",
+      "git_stable": true,
+      "working_sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "working_stable": true,
+      "capture_sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/full-fabrication-report.txt",
+      "git_blob": "1e25015a91f77edbb589e26c344e7c3f470e20c1",
+      "git_stable": true,
+      "working_sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "working_stable": true,
+      "capture_sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/inbound-parent-context.txt",
+      "git_blob": "28ed5e5c13d38730baa0cd6a63e3cb748d5cd969",
+      "git_stable": true,
+      "working_sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "working_stable": true,
+      "capture_sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/input-manifest.json",
+      "git_blob": "b0a5516ab8269439923e4e4f955ca25217b50f63",
+      "git_stable": true,
+      "working_sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "working_stable": true,
+      "capture_sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/input-source324A.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/input-source330A.txt",
+      "git_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "git_stable": true,
+      "working_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "working_stable": true,
+      "capture_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/input-source331A-git-lf.txt",
+      "git_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+      "git_stable": true,
+      "working_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "working_stable": true,
+      "capture_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/MANIFEST.json",
+      "git_blob": "ef38ccf7d9b0f3a89bfc84980d679690f9cea6ce",
+      "git_stable": true,
+      "working_sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "working_stable": true,
+      "capture_sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/model-context.json",
+      "git_blob": "c5bc9e7e5e45fff2bbeca28178e1d9eed22ffffa",
+      "git_stable": true,
+      "working_sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "working_stable": true,
+      "capture_sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/received-assignment.txt",
+      "git_blob": "dfa2d65a93ddd3df94dba0f11afa7de81fe8ba1f",
+      "git_stable": true,
+      "working_sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "working_stable": true,
+      "capture_sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/fabrication334A/source334A.txt",
+      "git_blob": "7034fcc897f3b3ccee401a9477b65c100547bd19",
+      "git_stable": true,
+      "working_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "working_stable": true,
+      "capture_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/assignment.txt",
+      "git_blob": "24adbbe3c47e95ec9239b624852a77be4c2aef90",
+      "git_stable": true,
+      "working_sha256": "2b070c9acf40b70225bd37c6f197a4c77c33ad4d2e852d8133396aa9aed7cadc",
+      "working_stable": true,
+      "capture_sha256": "2b070c9acf40b70225bd37c6f197a4c77c33ad4d2e852d8133396aa9aed7cadc",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/body-final.normalized.txt",
+      "git_blob": "de00a1b8f64c7fbd97967f310c7826abd4139e02",
+      "git_stable": true,
+      "working_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "working_stable": true,
+      "capture_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/body-initial.normalized.txt",
+      "git_blob": "de00a1b8f64c7fbd97967f310c7826abd4139e02",
+      "git_stable": true,
+      "working_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "working_stable": true,
+      "capture_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/cleanup.json",
+      "git_blob": "58e7e4559e65a08bffefbc624ab6bd43fc33f7c5",
+      "git_stable": true,
+      "working_sha256": "50285a42b7be01f2fceb4cb59f1fd92cce644ac07934170db9abeaaec0d02e2d",
+      "working_stable": true,
+      "capture_sha256": "50285a42b7be01f2fceb4cb59f1fd92cce644ac07934170db9abeaaec0d02e2d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/context.txt",
+      "git_blob": "ef9a94dc0b006ca516054041678cf775b52adc11",
+      "git_stable": true,
+      "working_sha256": "99280c79ad50db86de5f7a480096113668a0cca340d512458e42af24c1834518",
+      "working_stable": true,
+      "capture_sha256": "99280c79ad50db86de5f7a480096113668a0cca340d512458e42af24c1834518",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/final-state.json",
+      "git_blob": "cc0b8484235c8cef8fbbe894fe5635da2ba5c4c0",
+      "git_stable": true,
+      "working_sha256": "5c64a73cd51172bc3f2244d4d0b60e7b07ff59f2afb17972a32662ed3819ac93",
+      "working_stable": true,
+      "capture_sha256": "5c64a73cd51172bc3f2244d4d0b60e7b07ff59f2afb17972a32662ed3819ac93",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/full-report.txt",
+      "git_blob": "8136b178058fd964bcd698c1a9a24ecc142a9fe3",
+      "git_stable": true,
+      "working_sha256": "09a8530c4b8ee0687af3bef4923b8657ea2108ee105ffdbf0b207290083763df",
+      "working_stable": true,
+      "capture_sha256": "09a8530c4b8ee0687af3bef4923b8657ea2108ee105ffdbf0b207290083763df",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/inherited-source-identities.json",
+      "git_blob": "f41e372e95f5af9df5ad81fcb42ed285f4d85989",
+      "git_stable": true,
+      "working_sha256": "5879a1351f4f2cffa9b8e8aec09ed61774a22304766a63435c2f38e63e9473de",
+      "working_stable": true,
+      "capture_sha256": "5879a1351f4f2cffa9b8e8aec09ed61774a22304766a63435c2f38e63e9473de",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/initial-state.json",
+      "git_blob": "bf4a0803ada786b56ae43361d29bb727146fcb99",
+      "git_stable": true,
+      "working_sha256": "fe97309375eba35c8beedfdf145e418bc5ba6b566bb7bc8cda84ced39fcc6e98",
+      "working_stable": true,
+      "capture_sha256": "fe97309375eba35c8beedfdf145e418bc5ba6b566bb7bc8cda84ced39fcc6e98",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/manifest.json",
+      "git_blob": "39b38242573f0e1fcf6b4f1d0cf95d12903dfc8f",
+      "git_stable": true,
+      "working_sha256": "1b1fe3a86f229fb3877b10f0f7bb4f02a70253d5f94bd7167ace573e64c59031",
+      "working_stable": true,
+      "capture_sha256": "1b1fe3a86f229fb3877b10f0f7bb4f02a70253d5f94bd7167ace573e64c59031",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/original-identities.json",
+      "git_blob": "756bddbca0bab5844d10985ddd53fc43500710cb",
+      "git_stable": true,
+      "working_sha256": "46221a134215340e8dd9dfb4dd0ef67a7aba69d1425e17566a2efbb63ea2613a",
+      "working_stable": true,
+      "capture_sha256": "46221a134215340e8dd9dfb4dd0ef67a7aba69d1425e17566a2efbb63ea2613a",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/pr279-final.json",
+      "git_blob": "7fa3513bc7351ab77b2b7f1f7d997580f7e087cb",
+      "git_stable": true,
+      "working_sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "working_stable": true,
+      "capture_sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/pr279-initial.json",
+      "git_blob": "7fa3513bc7351ab77b2b7f1f7d997580f7e087cb",
+      "git_stable": true,
+      "working_sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "working_stable": true,
+      "capture_sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/primary-reading.txt",
+      "git_blob": "90023f1a4be0c277bfa0260de370c929395b8a2e",
+      "git_stable": true,
+      "working_sha256": "d39c546358bb151d20f98a13274314e407902f04e6590c596b53ba7c4a0fba63",
+      "working_stable": true,
+      "capture_sha256": "d39c546358bb151d20f98a13274314e407902f04e6590c596b53ba7c4a0fba63",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/retention.json",
+      "git_blob": "1a76c2e00880b9550bbd7d1830a166ea2d589b74",
+      "git_stable": true,
+      "working_sha256": "c55d23bec401ce5699cd2aedcbf6ccc3b37efd5b4d37191e8e3ae7da304d2941",
+      "working_stable": true,
+      "capture_sha256": "c55d23bec401ce5699cd2aedcbf6ccc3b37efd5b4d37191e8e3ae7da304d2941",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/cleanup.json",
+      "git_blob": "b21295cfc5674261cd43fbd289d1cfe01ed0755f",
+      "git_stable": true,
+      "working_sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "working_stable": true,
+      "capture_sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/final-workspace-state.json",
+      "git_blob": "a6a14f3f1c77452082dccb8f5fc523c823a0c294",
+      "git_stable": true,
+      "working_sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "working_stable": true,
+      "capture_sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/full-fabrication-report.txt",
+      "git_blob": "1e25015a91f77edbb589e26c344e7c3f470e20c1",
+      "git_stable": true,
+      "working_sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "working_stable": true,
+      "capture_sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/inbound-parent-context.txt",
+      "git_blob": "28ed5e5c13d38730baa0cd6a63e3cb748d5cd969",
+      "git_stable": true,
+      "working_sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "working_stable": true,
+      "capture_sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/input-manifest.json",
+      "git_blob": "b0a5516ab8269439923e4e4f955ca25217b50f63",
+      "git_stable": true,
+      "working_sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "working_stable": true,
+      "capture_sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/input-source324A.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/input-source330A.txt",
+      "git_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "git_stable": true,
+      "working_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "working_stable": true,
+      "capture_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/input-source331A-git-lf.txt",
+      "git_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+      "git_stable": true,
+      "working_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "working_stable": true,
+      "capture_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/MANIFEST.json",
+      "git_blob": "ef38ccf7d9b0f3a89bfc84980d679690f9cea6ce",
+      "git_stable": true,
+      "working_sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "working_stable": true,
+      "capture_sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/model-context.json",
+      "git_blob": "c5bc9e7e5e45fff2bbeca28178e1d9eed22ffffa",
+      "git_stable": true,
+      "working_sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "working_stable": true,
+      "capture_sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/received-assignment.txt",
+      "git_blob": "dfa2d65a93ddd3df94dba0f11afa7de81fe8ba1f",
+      "git_stable": true,
+      "working_sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "working_stable": true,
+      "capture_sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/fabrication334A/source334A.txt",
+      "git_blob": "7034fcc897f3b3ccee401a9477b65c100547bd19",
+      "git_stable": true,
+      "working_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "working_stable": true,
+      "capture_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/git-subjects/CLAUDE.md",
+      "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "git_stable": true,
+      "working_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "working_stable": true,
+      "capture_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/git-subjects/docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "git_stable": true,
+      "working_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "working_stable": true,
+      "capture_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/git-subjects/research/finite-scale331/source331A.txt",
+      "git_blob": "2eb325da074afa7e562097de385218aae3a92b7c",
+      "git_stable": true,
+      "working_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "working_stable": true,
+      "capture_sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/git-subjects/research/one-sided330/source330A.txt",
+      "git_blob": "e2f3bc7dde975b06a20d9a4526753a13d30efc0e",
+      "git_stable": true,
+      "working_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "working_stable": true,
+      "capture_sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/git-subjects/research/truncation324/source324A.txt",
+      "git_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "git_stable": true,
+      "working_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "working_stable": true,
+      "capture_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/git-subjects/research/uniform-gap334/source334A.txt",
+      "git_blob": "7034fcc897f3b3ccee401a9477b65c100547bd19",
+      "git_stable": true,
+      "working_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "working_stable": true,
+      "capture_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/originals/01-pr-pinned.json",
+      "git_blob": "8bb3a91c638d798298306903eea28e9f5bafc76c",
+      "git_stable": true,
+      "working_sha256": "495c60a5f4e6a729a3524e8198419d76df2cde70f220395503559f0c4225e9d3",
+      "working_stable": true,
+      "capture_sha256": "495c60a5f4e6a729a3524e8198419d76df2cde70f220395503559f0c4225e9d3",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/originals/02-pr-body-normalized.txt",
+      "git_blob": "de00a1b8f64c7fbd97967f310c7826abd4139e02",
+      "git_stable": true,
+      "working_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "working_stable": true,
+      "capture_sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/originals/03-full-report.txt",
+      "git_blob": "54f02b21e407513e5b6c60d7e28ca41d7a71cae4",
+      "git_stable": true,
+      "working_sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770",
+      "working_stable": true,
+      "capture_sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/originals/04-context.txt",
+      "git_blob": "23ebd9fb0889e7e7ff2858a8ddd05714ddfaed2e",
+      "git_stable": true,
+      "working_sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e",
+      "working_stable": true,
+      "capture_sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/fabrication335A/evidence335/source-audit334A/originals/05-context.txt",
+      "git_blob": "a1566a1d66d1a4869033a0b4c4eddd3c2ffb25e1",
+      "git_stable": true,
+      "working_sha256": "fc3b91bdbae51ce001d8dfa6f30ef3b388f63d9aafb76d0cdb7731f59f48e97d",
+      "working_stable": true,
+      "capture_sha256": "fc3b91bdbae51ce001d8dfa6f30ef3b388f63d9aafb76d0cdb7731f59f48e97d",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/parent-preaudit-finalization.txt",
+      "git_blob": "4a28937c524712a7068bdbf0d53f538df11f68aa",
+      "git_stable": true,
+      "working_sha256": "04f8a65ae2b5813d707ffe982b772abcb0606d133cb2f561dc1f1145004af6b5",
+      "working_stable": true,
+      "capture_sha256": "04f8a65ae2b5813d707ffe982b772abcb0606d133cb2f561dc1f1145004af6b5",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/evidence335/primary-literature-parent334.txt",
+      "git_blob": "ed3c64b59f06c0c6c6a9048e09de29968983cc53",
+      "git_stable": true,
+      "working_sha256": "3acc7f039a447e466fd4b81e6d4816439efce1196cc418f0603733da5aecfe9a",
+      "working_stable": true,
+      "capture_sha256": "3acc7f039a447e466fd4b81e6d4816439efce1196cc418f0603733da5aecfe9a",
+      "capture_stable": true
+    },
+    {
+      "path": "papers/marginal-transfer/SOURCE-INPUTS335.json",
+      "git_blob": "d8b8f6a49eca249edea3238cf718d556ce875f20",
+      "git_stable": true,
+      "working_sha256": "e54b6b829b4b6509c01005a2352f3cb76c5baf66de42ede2f2395a6896a8882e",
+      "working_stable": true,
+      "capture_sha256": "e54b6b829b4b6509c01005a2352f3cb76c5baf66de42ede2f2395a6896a8882e",
+      "capture_stable": true
+    },
+    {
+      "path": "CLAUDE.md",
+      "git_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "git_stable": true,
+      "working_sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "working_stable": true,
+      "capture_sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "capture_stable": true
+    },
+    {
+      "path": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "git_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "git_stable": true,
+      "working_sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "working_stable": true,
+      "capture_sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "capture_stable": true
+    }
+  ],
+  "originals": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\cleanup.json",
+      "sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\final-workspace-state.json",
+      "sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\full-fabrication-report.txt",
+      "sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\inbound-parent-context.txt",
+      "sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\input-manifest.json",
+      "sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\input-source324A.txt",
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\input-source330A.txt",
+      "sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\input-source331A-git-lf.txt",
+      "sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\MANIFEST.json",
+      "sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\model-context.json",
+      "sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\received-assignment.txt",
+      "sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\fabrication334A\\source334A.txt",
+      "sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\assignment.txt",
+      "sha256": "2b070c9acf40b70225bd37c6f197a4c77c33ad4d2e852d8133396aa9aed7cadc",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\body-final.normalized.txt",
+      "sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\body-initial.normalized.txt",
+      "sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\cleanup.json",
+      "sha256": "50285a42b7be01f2fceb4cb59f1fd92cce644ac07934170db9abeaaec0d02e2d",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\context.txt",
+      "sha256": "99280c79ad50db86de5f7a480096113668a0cca340d512458e42af24c1834518",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\final-state.json",
+      "sha256": "5c64a73cd51172bc3f2244d4d0b60e7b07ff59f2afb17972a32662ed3819ac93",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\full-report.txt",
+      "sha256": "09a8530c4b8ee0687af3bef4923b8657ea2108ee105ffdbf0b207290083763df",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\inherited-source-identities.json",
+      "sha256": "5879a1351f4f2cffa9b8e8aec09ed61774a22304766a63435c2f38e63e9473de",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\initial-state.json",
+      "sha256": "fe97309375eba35c8beedfdf145e418bc5ba6b566bb7bc8cda84ced39fcc6e98",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\manifest.json",
+      "sha256": "1b1fe3a86f229fb3877b10f0f7bb4f02a70253d5f94bd7167ace573e64c59031",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\original-identities.json",
+      "sha256": "46221a134215340e8dd9dfb4dd0ef67a7aba69d1425e17566a2efbb63ea2613a",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\pr279-final.json",
+      "sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\pr279-initial.json",
+      "sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\primary-reading.txt",
+      "sha256": "d39c546358bb151d20f98a13274314e407902f04e6590c596b53ba7c4a0fba63",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\retention.json",
+      "sha256": "c55d23bec401ce5699cd2aedcbf6ccc3b37efd5b4d37191e8e3ae7da304d2941",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\cleanup.json",
+      "sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\final-workspace-state.json",
+      "sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\full-fabrication-report.txt",
+      "sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\inbound-parent-context.txt",
+      "sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\input-manifest.json",
+      "sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\input-source324A.txt",
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\input-source330A.txt",
+      "sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\input-source331A-git-lf.txt",
+      "sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\MANIFEST.json",
+      "sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\model-context.json",
+      "sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\received-assignment.txt",
+      "sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\fabrication334A\\source334A.txt",
+      "sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\git-subjects\\CLAUDE.md",
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\git-subjects\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\git-subjects\\research\\finite-scale331\\source331A.txt",
+      "sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\git-subjects\\research\\one-sided330\\source330A.txt",
+      "sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\git-subjects\\research\\truncation324\\source324A.txt",
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\git-subjects\\research\\uniform-gap334\\source334A.txt",
+      "sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\originals\\01-pr-pinned.json",
+      "sha256": "495c60a5f4e6a729a3524e8198419d76df2cde70f220395503559f0c4225e9d3",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\originals\\02-pr-body-normalized.txt",
+      "sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\originals\\03-full-report.txt",
+      "sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\originals\\04-context.txt",
+      "sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\source-audit334A\\originals\\05-context.txt",
+      "sha256": "fc3b91bdbae51ce001d8dfa6f30ef3b388f63d9aafb76d0cdb7731f59f48e97d",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\cleanup.json",
+      "sha256": "e89d7438b9bc36490a1026bc48cb3ae60baa5de7a3c74ac90f8379cbac9054cd",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\final-workspace-state.json",
+      "sha256": "3b8548b8789309a7be1e14664f3667963a6b6760095de4ceb8675c0472d2c543",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\full-fabrication-report.txt",
+      "sha256": "95f9ef1069ee1b83f6e1380a4657b1ea198077007c765110916edf72094aad95",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\inbound-parent-context.txt",
+      "sha256": "a9622c09cc8e51c72aecfc13f62823cc48f02ad1a7b501aa061419173eae434d",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\MANIFEST.json",
+      "sha256": "8fb9ef16e27530150f0bfe1f29870f57a9a4350cf99d41b45090afa15dcb4b0a",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\manuscript332-to-335.diff",
+      "sha256": "ab4867ea161f67abeee5fb79677a9a7bcfa7282d3ef5657610be08b5146fde9b",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\manuscript332A-input.tex",
+      "sha256": "aac7e90edf54f3a41a5cc90f475670bba77f411e98b886db06b8debe71f93d6b",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\manuscript335A.tex",
+      "sha256": "1dcdcd85b606b9bc04365b3aadaf183e4282d5c964ef062df7d2c0362a3e1808",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\model-context.json",
+      "sha256": "48686804111e660bd8c5d32663259d737d5c2db200aec098b202f2b7d2ffde6a",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\received-assignment.txt",
+      "sha256": "bef280eab810239e62b3340469d2ca570601cfbb17203550af3be67f778e347d",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\retention.json",
+      "sha256": "452ead461b2de9816fa369c40dc75ff6eb50c00c4b34a716e1384b84ae53d34f",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\section335.tex",
+      "sha256": "4063ad6f525512feffeb81d60cb7f10ab9a47d02423f03ab9df06c4e034c4e27",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\SOURCE-INPUTS332-input.json",
+      "sha256": "cc438134dc64787c08e59916084698130f6287c2a2c9d73dd0cda5f88601da9f",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\SOURCE-INPUTS335.json",
+      "sha256": "9631944475b1717b167ff5bd748e2771cb37f746278e7a9e16ffab1636561429",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\cleanup.json",
+      "sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\final-workspace-state.json",
+      "sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\full-fabrication-report.txt",
+      "sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\inbound-parent-context.txt",
+      "sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\input-manifest.json",
+      "sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\input-source324A.txt",
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\input-source330A.txt",
+      "sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\input-source331A-git-lf.txt",
+      "sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\MANIFEST.json",
+      "sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\model-context.json",
+      "sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\received-assignment.txt",
+      "sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\fabrication334A\\source334A.txt",
+      "sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\assignment.txt",
+      "sha256": "2b070c9acf40b70225bd37c6f197a4c77c33ad4d2e852d8133396aa9aed7cadc",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\body-final.normalized.txt",
+      "sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\body-initial.normalized.txt",
+      "sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\cleanup.json",
+      "sha256": "50285a42b7be01f2fceb4cb59f1fd92cce644ac07934170db9abeaaec0d02e2d",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\context.txt",
+      "sha256": "99280c79ad50db86de5f7a480096113668a0cca340d512458e42af24c1834518",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\final-state.json",
+      "sha256": "5c64a73cd51172bc3f2244d4d0b60e7b07ff59f2afb17972a32662ed3819ac93",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\full-report.txt",
+      "sha256": "09a8530c4b8ee0687af3bef4923b8657ea2108ee105ffdbf0b207290083763df",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\inherited-source-identities.json",
+      "sha256": "5879a1351f4f2cffa9b8e8aec09ed61774a22304766a63435c2f38e63e9473de",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\initial-state.json",
+      "sha256": "fe97309375eba35c8beedfdf145e418bc5ba6b566bb7bc8cda84ced39fcc6e98",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\manifest.json",
+      "sha256": "1b1fe3a86f229fb3877b10f0f7bb4f02a70253d5f94bd7167ace573e64c59031",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\original-identities.json",
+      "sha256": "46221a134215340e8dd9dfb4dd0ef67a7aba69d1425e17566a2efbb63ea2613a",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\pr279-final.json",
+      "sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\pr279-initial.json",
+      "sha256": "05c555ffc8cede29ebae17ec1561e9147a29b7e9e483df17be5f23ad4580cc89",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\primary-reading.txt",
+      "sha256": "d39c546358bb151d20f98a13274314e407902f04e6590c596b53ba7c4a0fba63",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\retention.json",
+      "sha256": "c55d23bec401ce5699cd2aedcbf6ccc3b37efd5b4d37191e8e3ae7da304d2941",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\cleanup.json",
+      "sha256": "dbe48d62afee08633a00ba891ab2dec3f057693e09fdab3f8f6a0dcc25314236",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\final-workspace-state.json",
+      "sha256": "5670279824543f6ceb85d11e1f27f81c1629415e7930a267d842f76ccb929091",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\full-fabrication-report.txt",
+      "sha256": "40f7749aa568947e5a33afb13072ea9cde55ca4bd64cf0faeb2d93670501c4ac",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\inbound-parent-context.txt",
+      "sha256": "a50641dd318955b650f81126a06f63b08ad9596500f788bfde82de95ec12f7fe",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\input-manifest.json",
+      "sha256": "aca8ec59df85459f5b02228a8fda7b09075e21f88ddd503cfd84e749b2f860ec",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\input-source324A.txt",
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\input-source330A.txt",
+      "sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\input-source331A-git-lf.txt",
+      "sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\MANIFEST.json",
+      "sha256": "931b4d3b78ad86cdf292370d873a4eaa7fae937c33f5009ef8a48d3c2ef0aa10",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\model-context.json",
+      "sha256": "bbeda61c03cb92e5642e6b831d24f55124a1862e2129949c02aa8fca1f69350d",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\received-assignment.txt",
+      "sha256": "6eadfdae1b6c223c4f6cbc589b737b88083dd39c1dc4d59cb25fd8fd4e91f4ab",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\fabrication334A\\source334A.txt",
+      "sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\git-subjects\\CLAUDE.md",
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\git-subjects\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\git-subjects\\research\\finite-scale331\\source331A.txt",
+      "sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\git-subjects\\research\\one-sided330\\source330A.txt",
+      "sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\git-subjects\\research\\truncation324\\source324A.txt",
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\git-subjects\\research\\uniform-gap334\\source334A.txt",
+      "sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\originals\\01-pr-pinned.json",
+      "sha256": "495c60a5f4e6a729a3524e8198419d76df2cde70f220395503559f0c4225e9d3",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\originals\\02-pr-body-normalized.txt",
+      "sha256": "141222b76e6c784b024c749d0f820c7e9252cb5c475c5a29959e909e1ed5e1c9",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\originals\\03-full-report.txt",
+      "sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\originals\\04-context.txt",
+      "sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\fabrication335A\\evidence335\\source-audit334A\\originals\\05-context.txt",
+      "sha256": "fc3b91bdbae51ce001d8dfa6f30ef3b388f63d9aafb76d0cdb7731f59f48e97d",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\pr-pinned.json",
+      "sha256": "bbdbdb77982fbdeb7747a86b3f9d095b06767fddd3ee2649650158619dbb1453",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\pr-body-normalized.txt",
+      "sha256": "018ea2323a7baa7776132fe3f7e82ed4389709ef1cf1e91b1bcebef7884b7f3e",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\manuscript335A.tex",
+      "sha256": "addb9ecf25577e3c368d3e0475d0728817168740c398d55dc8aa57d173e1aa8e",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\SOURCE-INPUTS335.json",
+      "sha256": "e54b6b829b4b6509c01005a2352f3cb76c5baf66de42ede2f2395a6896a8882e",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-335\\parent-preaudit-finalization.txt",
+      "sha256": "04f8a65ae2b5813d707ffe982b772abcb0606d133cb2f561dc1f1145004af6b5",
+      "stable": true
+    },
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-334\\primary-literature-parent334.txt",
+      "sha256": "3acc7f039a447e466fd4b81e6d4816439efce1196cc418f0603733da5aecfe9a",
+      "stable": true
+    }
+  ],
+  "protected_preparation_files": [
+    {
+      "path": "prepare311.py",
+      "stable": true
+    },
+    {
+      "path": "prepare314.py",
+      "stable": true
+    },
+    {
+      "path": "prepare_manuscript327.ps1",
+      "stable": true
+    }
+  ]
+}

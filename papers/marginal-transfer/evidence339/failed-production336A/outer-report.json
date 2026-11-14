@@ -1,0 +1,12 @@
+{
+  "actual_cli_exits": {
+    "allocation": 0,
+    "execution": 0,
+    "download": 0,
+    "release": 0
+  },
+  "failure": null,
+  "status": "Actual transport capture only; require returned inner logs/hash gate, stop readback and all-page review",
+  "source": "17c9661524abd72ac84aad02f124e70062cbd6d4",
+  "native_submit": false
+}

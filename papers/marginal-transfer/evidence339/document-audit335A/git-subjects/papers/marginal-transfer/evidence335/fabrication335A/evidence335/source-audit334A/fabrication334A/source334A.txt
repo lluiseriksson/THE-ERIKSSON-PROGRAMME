@@ -1,0 +1,127 @@
+SOURCE334A -- A candidate uniform positive gap at every fixed positive square-root matching scale
+Analytical fabrication for question334, using disclosed same-provider OpenAI/Codex assistance. NOT source-audited, formally verified, numerically executed, independently derived or cleared for historical priority. Group with the existing marginal-transfer work. No manuscript, branch, publication gate or score is changed by this draft.
+
+QUESTION, HYPOTHESES, MECHANISM AND STOP RULE
+Fix rho in (0,1), s=(1+rho)/(1-rho), and a prescribed b>0. On the uniform probability L-cube let r>=b, E r=1, E r^s<=2, and E[r chi_A]=0 for 1<=|A|<=k. Does k/sqrt L->C>0 force a positive normalized actual transfer gap uniformly over these densities? The substantive case is 0<b<1. If b=1, mean one forces r=1 and the gap is exactly 1-rho; if b>1, no admissible density exists. These cases are included in the conclusions below.
+Mechanism: reserve at least one unit of the critical moment for the mean-one bounded part; apply source324's strict high-degree endpoint contraction only to the remaining tail; prove that the low/high operator cross block vanishes using a third, fixed low-degree cutoff and positivity. Choose that cutoff first, the amplitude truncation second, and dimension last.
+Falsifiers: incorrect tail budget, failure of a dimension-free fixed-degree bound, failure of positivity's block Cauchy-Schwarz inequality, a cross-block estimate with an unpayable cutoff dependence, or an unjustified eigenvalue/normalization step. Abandon this mechanism after three substantive units without a proof or precise obstruction. Discovery notes below retain the failed direct estimate and failed one-cut shortcut; the third unit produces the candidate proof. This is a fabrication record, not a retrospective claim of a separate preregistered audit.
+
+CONVENTIONS AND ATTRIBUTED INPUT
+Write P_t chi_A=t^|A|chi_A, Q=P_sqrt(rho), S_r=Q M_r Q, T_r=M_sqrt(r)P_rho M_sqrt(r). Eigenvalues decrease with multiplicity, and gap(T_r)=1-lambda2(T_r)/lambda1(T_r). Set B=2^(1/s) and p=2s/(s-1)=1+1/rho. All function norms use uniform probability; unlabelled operator norms are L2->L2.
+Let H_m be the orthogonal projection onto Walsh degrees at least m. The accepted source324 endpoint high-degree estimate is the nontrivial input:
+ ||Q H_m||_(2->p) <= F_L(m)
+ :=rho^(m/4)+exp(-c_rho m)+exp(-alpha_rho m^2/L), 1<=m<=L,       (I)
+where c_rho>0 and alpha_rho>0 depend only on rho. In source324 notation, q0=1+rho, a_rho=(-log rho)/[4(1-q0/2)], c_rho=a_rho(q0-1)/2, and alpha_rho=C_rho c_rho^2 with C_rho>0 its global entropy-deficit modulus. We use that modulus, not its local Taylor coefficient. H_m=0 for m>L. Source324 derives (I) from the attributed Kirshner--Samorodnitsky refined hypercontractive inequality plus its entropy calculation. This draft does not claim a new endpoint hypercontractive inequality or silently replace that input by an unproved contraction.
+Ordinary endpoint hypercontractivity also gives ||Q||_(2->p)<=1. Consequently, for any signed f,
+ ||Q M_f Q|| <= ||f||_s.                                      (II)
+Indeed |<g,Q M_f Q h>|<=||f||_s ||Qg||_p ||Qh||_p by Holder and 1/s+2/p=1.
+
+CANDIDATE THEOREM
+Under the hypotheses above, for every sequence k_L/sqrt L->C in (0,infinity), uniformly over the choice of admissible densities r_L,
+ lambda1(T_rL)->1,
+ rho <= liminf lambda2(T_rL) <= limsup lambda2(T_rL)
+      <= max{rho, exp(-alpha_rho C^2/2)},                        (T1)
+and hence
+ liminf gap(T_rL) >= G_rho(C)
+ :=min{1-rho, 1-exp(-alpha_rho C^2/2)} >0.                      (T2)
+Uniformity means the estimates and eventual cutoffs depend on rho and the matching-order sequence, not on the densities. More concretely: for every C0>0 there is L0(rho,C0) such that every L>=L0 and every integer k with C0 sqrt L<=k<=L, and every admissible density, satisfy
+ gap(T_r)>=G_rho(C0)/2.                                       (T3)
+The proof below retains the prescribed floor hypothesis. It uses its nonnegativity in the estimates and strict positivity for the usual finite Perron interpretation; it does not exploit the numerical value of b. No optimality or equality for the lower profile is claimed.
+
+LEMMA1 -- THE CRITICAL TAIL HAS AT MOST ONE ASYMPTOTIC MOMENT UNIT
+For M>0 set r_b=r 1_{r<=M}, r_t=r 1_{r>M}, and
+ B_M=[2-(1-2M^(1-s))_+^s]^(1/s), where x_+=max(x,0).
+Then, uniformly in dimension and admissible r,
+ ||r_t||_s<=B_M, B_M->1 as M->infinity.                        (1)
+Proof: E r_t<=M^(1-s)E r_t^s<=2M^(1-s), so E r_b>=1-2M^(1-s). Since r_b>=0, Jensen on the entire probability space gives E r_b^s>=(E r_b)^s>=(1-2M^(1-s))_+^s. The two pieces have disjoint support, hence E r_t^s=E r^s-E r_b^s<=2-(1-2M^(1-s))_+^s. This proves (1). It does not assert that the high-amplitude moment tends to zero.
+For any fixed v in (1,s), also
+ ||r_t||_v <= 2^(1/v) M^(1-s/v).                              (2)
+This follows from r^v<=M^(v-s)r^s on {r>M}. The exponent 1-s/v is strictly negative. We will use (2) only with a fixed low-degree cutoff.
+
+LEMMA2 -- EXACT COMPRESSION AND A POSITIVE BLOCK INEQUALITY
+Set d=floor(k/2), m=d+1, Pi=projection onto degrees<=d, H=I-Pi=H_m. Exact matching and mean one give
+ Pi S_r Pi=Pi P_rho Pi.                                      (3)
+Indeed the Walsh matrix element of S_r-P_rho at A,D is rho^((|A|+|D|)/2) (r-1)hat(A symmetric_difference D). For |A|,|D|<=d, that symmetric difference has degree at most 2d<=k, and its coefficient vanishes, including degree zero.
+For any positive semidefinite operator U and orthogonal projections E,F,
+ ||E U F|| <= sqrt(||E U E|| ||F U F||).                       (4)
+Factor E U F=(E U^(1/2))(U^(1/2)F) and use the squared norms of the two factors. Orthogonality between E and F is not needed. Since S_r is positive and (II) gives ||S_r||<=B, this inequality is available with a dimension-free constant.
+
+LEMMA3 -- THE ENTIRE LOW/HIGH CROSS BLOCK VANISHES
+For all sequences k->infinity under the same moment and matching assumptions,
+ ||Pi S_r H||->0 uniformly over admissible r.                  (5)
+Here Pi,H depend on k as in Lemma2. This is the step not supplied by merely knowing ||H S_r H||<1.
+Fix an integer n>=0 and take d>=n. Let E_n project onto degrees<=n and J=Pi-E_n. By (3),
+ J S_r J=J P_rho J, so ||J S_r J||<=rho^(n+1).
+If J=0 the bound remains valid. Equation(4) therefore gives
+ ||J S_r H||<=sqrt(B rho^(n+1)).                              (6)
+For the remaining E_n S_r H, split S_r=S_b+S_t with S_b=Q M_rb Q and S_t=Q M_rt Q. The bounded piece satisfies
+ ||E_n S_b H||<=M ||E_n Q|| ||QH||<=M rho^(m/2).                (7)
+This is an L2 spectral multiplier estimate, not a high-degree Lp projection assertion.
+Choose once and for all v=(1+s)/2 in (1,s), and put z=2v/(v-1)>2. The usual degree-n hypercontractive bound gives, for every L2 vector h,
+ ||Q E_n h||_z <= (z-1)^(n/2)||h||_2.
+For clarity, this degree bound follows by applying noise 1/sqrt(z-1) to a polynomial whose coefficients at degree j<=n have been multiplied by (z-1)^(j/2); its L2 norm is at most (z-1)^(n/2) times the original norm. Q commutes with E_n and contracts L2, so the displayed inequality follows. Its constant depends on n,v but not dimension.
+Using Holder with 1/v+2/z=1 and (2),
+ ||E_n S_t E_n||
+ <=||r_t||_v (z-1)^n
+ <=D_n(M):=2^(1/v)M^(1-s/v)(z-1)^n.                           (8)
+Also ||S_t||<=||r_t||_s<=B by (II). Positivity and (4) imply
+ ||E_n S_t H||<=sqrt(B D_n(M)).                               (9)
+Combining (6)-(9),
+ ||Pi S_r H|| <= e_{n,M}(m)
+ :=sqrt(B rho^(n+1))+sqrt(B D_n(M))+M rho^(m/2).               (10)
+To prove (5), given any tolerance choose n large enough for the first term to be small, then M large enough for the second term at that fixed n, then m large enough for the third term at those fixed n,M. These choices are uniform in r and L. This order is essential: the factor (z-1)^n is not uniform as n->infinity, and no simultaneous unsupported cutoff choice has been used. Since k->infinity implies m->infinity, (5) follows.
+
+LEMMA4 -- STRICT HIGH-BLOCK CONTRACTION AT FIXED POSITIVE C
+The same amplitude splitting and (I) give
+ ||H S_r H|| <= M rho^m+B_M F_L(m)^2.                         (11)
+For the bounded part use ||H Q M_rb Q H||<=M||QH||_(2->2)^2=M rho^m. For the tail, Holder gives quadratic-form bound ||r_t||_s||QH||_(2->p)^2, and Lemma1 gives (11).
+If k/sqrt L->C>0, then m/sqrt L->C/2. At each fixed M,
+ limsup ||H S_r H|| <=B_M exp(-alpha_rho C^2/2).
+The first two terms of F_L(m) vanish; its last term tends to exp(-alpha_rho C^2/4), and the square is necessary in (11). Letting M->infinity after the L-limit yields
+ limsup ||H S_r H|| <=beta_rho(C):=exp(-alpha_rho C^2/2)<1.     (12)
+These estimates are uniform over r. The M in Lemma3 need not be a dimension-dependent threshold: for any prescribed error one may choose n first and then one M large enough to meet both Lemma3's fixed-n requirement and Lemma1's tail-budget requirement. Taking L last pays the bounded-part terms in both estimates. Thus (5) and (12) are compatible statements, not conclusions obtained from incompatible scales.
+
+PROOF OF THE CANDIDATE THEOREM -- ACTUAL SPECTRA AND NORMALIZATION
+On Ran(Pi) direct-sum Ran(H), let
+ A_L=Pi P_rho Pi direct-sum H S_r H.
+By (3), S_r-A_L has only the two adjoint off-diagonal blocks Pi S_r H and H S_r Pi. Its operator norm is exactly ||Pi S_r H||, not a dimension-dependent quantity, and tends to zero by Lemma3.
+For sufficiently large L, d>=1 and ||H S_r H||<1 by (12). The low block has top eigenvalues 1 and rho. Therefore lambda1(A_L)=1 and lambda2(A_L)=max(rho,lambda1(H S_r H)). All blocks are positive. Min-max gives
+ lambda1(S_r)->1, limsup lambda2(S_r)<=max(rho,beta_rho(C)).
+The low-block variational principle also gives lambda2(S_r)>=rho once d>=1. Alternatively, restrict the min-max problem to the constant and any singleton Walsh character. Moreover lambda1(S_r)>=<1,S_r1>=E r=1 exactly.
+With U=Q M_sqrt(r), UU*=S_r and U*U=T_r. They are square finite products with identical full spectra, including zeros; here r>=b and rho>0 make them positive definite. Thus (T1) holds for the actual T_r. Since lambda1->1, the normalized gap has liminf at least 1-max(rho,beta_rho(C)), giving (T2). One may also use lambda1>=1 directly: gap>=1-lambda2, with no risk of a vanishing denominator. Strict positivity of the kernel gives the usual simple Perron root in each finite dimension; the lower bound is uniform asymptotically, not merely finite-dimensional simplicity.
+
+FINITE UNIFORM FORM AND (T3)
+The following explicit estimates expose the quantifier order. For d>=max(n,1) define
+ h_{M,L,k}=M rho^m+B_M F_L(m)^2,
+ e_{n,M}(m)=sqrt(B rho^(n+1))+sqrt(B D_n(M))+M rho^(m/2).
+Whenever h_{M,L,k}<1, min-max gives
+ lambda2(T_r)<=max(rho,h_{M,L,k})+e_{n,M}(m),
+ gap(T_r)>=1-max(rho,h_{M,L,k})-e_{n,M}(m).                    (13)
+The right side contains no r. For k>=C0 sqrt L, m>k/2>=C0 sqrt L/2. Hence the decaying terms in (10)-(11) tend to zero uniformly in such k, and F_L(m) has uniform limsup at most exp(-alpha_rho C0^2/4). Let g=G_rho(C0)>0. First choose n, then M large enough that the limiting cross bound is less than g/8 and the excess from B_M over one is less than g/8 in (11). Finally choose L large enough that h<=beta_rho(C0)+g/4 and e<=g/4 uniformly for k>=C0 sqrt L. Then h<1 and (13) is at least g/2. This proves (T3). There is no assertion of a common dimension cutoff for all rho or for C0 approaching zero.
+
+FAILED ROUTES AND WHY THE REPAIR IS NECESSARY
+Unit1: the direct source324 comparison yields ||S_r-P_rho||<=2(B+1)F_L(m). At finite small C its limiting bound can exceed 1-rho; it proves a positive gap only for sufficiently large C. This is retained as a failed route to the full question, not repackaged as a new result.
+Unit2: the moment-budget lemma and strict high-block contraction alone do not control the cross block. An abstract positive matrix with low block diag(1,1/2), high block (3/4), and cross column (0,1/(2sqrt2)) has eigenvalues 1,1,1/4. Thus both the nonconstant low eigenvalue and the high-block norm can lie strictly below one while the full gap vanishes. This is an exact finite block counterexample to the proposed shortcut, NOT an admissible Boolean density counterexample. Simply discarding cross blocks would be invalid. Applying the fixed-degree tail estimate with n=d growing like sqrt L would also leave its exponential (z-1)^n factor unpaid if M were held fixed.
+Unit3: split the low block into fixed degrees<=n and intermediate degrees n+1..d. The exact compression makes the intermediate block exponentially small in n, and positivity controls its coupling. Fixed-degree hypercontractivity controls the remaining tail coupling after M is chosen. This yields (10), whose sequential limits resolve the obstruction and combine with (11). No competing mathematical question or executable experiment was opened.
+
+ATTRIBUTION, COMPARISON AND BOUNDARY
+Input (I) is source324, with its Kirshner--Samorodnitsky dependency. Source330 supplies sub-square-root collapse and source331 supplies finite-C achievable upper profiles; neither proves this lower bound. The present candidate uses a tail-moment budget and a three-block decoupling estimate to obtain a lower bound for every fixed C>0. It is consistent with source330 because G_rho(C)->0 as C->0, and consistent in scale with source331's quadratic upper profile for small fixed C. No equality of the two constants, sharp profile, optimality or historical novelty is asserted. This is part of the same evolving programme, not a proposed standalone small paper.
+Classical scalar hypercontractivity, Holder, Jensen, min-max and the positive-block factorization are inputs. No Perron stationary marginal, fixed-range locality, continuum or physical Yang-Mills inference is made. PR29 and TermSource are not changed. The proof is an unreviewed analytical candidate requiring a separate exact-source audit before any acceptance or manuscript change.
+
+PRIMARY INPUT CHECKS
+Kirshner--Samorodnitsky, A moment ratio bound for polynomials and some extremal properties of Krawchouk polynomials and Hamming spheres, arXiv1909.11929v1, Theorem1.8 and Lemma2.14: https://arxiv.org/html/1909.11929v1 . These are source324's attributed refined-hypercontractivity inputs; the new proof uses source324's stated consequence (I), not a newly rederived entropy theorem.
+The usual Boolean scalar Lp-to-Lq condition and Walsh multiplier convention were checked in the introductory equation(1) of Ben-Aroya, Regev and de Wolf, A Hypercontractive Inequality for Matrix-Valued Functions with Applications to Quantum Computing: https://homepages.cwi.nl/~rdewolf/publ/qc/matrixbeckner.pdf . No quantum claim is used. This targeted input check is not a literature-wide novelty search.
+
+FIXED ADVERSARIAL CHECKS FOR A FUTURE AUDITOR
+C1 every quantifier, prescribed floor, uniformity over densities, fixed rho and C0 versus dimension cutoff.
+C2 exact tail mass/Jensen budget, E r^s<=2, disjoint supports, no false uniform integrability.
+C3 lower-exponent tail bound and dimension-free degree-n constant; n must be fixed before M.
+C4 exact low compression at d=floor(k/2), including diagonal mean coefficient.
+C5 positive block inequality for full S and tail S_t; no signed misuse.
+C6 all three terms of (10), cutoff order n then M then L, and compatibility with (11).
+C7 high block uses the square of the endpoint tail norm; exact factor alpha C^2/2.
+C8 source324 global positive modulus, not local coefficient or a dimension-dependent constant.
+C9 full operator off-diagonal norm and actual top-two min-max ordering; high block eventually below one.
+C10 lambda1>=1 and lambda1->1; square-product spectrum and normalized gap.
+C11 finite uniform form (13) and (T3), not only a pointwise density-sequence statement.
+C12 upper/lower-profile distinction, source330/331 consistency, no originality, formal or independence upgrade.

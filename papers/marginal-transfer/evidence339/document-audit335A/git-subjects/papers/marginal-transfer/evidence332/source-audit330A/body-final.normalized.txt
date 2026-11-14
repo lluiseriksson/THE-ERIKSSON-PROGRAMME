@@ -1,0 +1,5 @@
+Construct exact critical-cap densities with a prescribed positive floor and collapsing true top-two transfer gap for every k=o(sqrt(L)). Odd-degree Fourier erasure is controlled in L^s; a three-region derivative-recurrence argument controls its dangerous one-sided remainder pointwise.
+
+The proof reproduces the full spectral, marginal, floor and exact-cap steps. It bypasses the vanishing-sup-norm criterion whose specific boundary was proved in329, without contradicting that result. Combined with324 it closes the sub-square-root construction range; positive finite-C square-root orders remain open. No universal necessity, historical originality, independent derivation, physical or formal claim is made. Group in the existing manuscript; frozen327/329 are untouched.
+
+Validation: complete analytical proof and twelve fixed adverse checks; terminal exact-source audit pending. No executable mathematics, local build, numerical experiment, new PDF score or inherited rating.

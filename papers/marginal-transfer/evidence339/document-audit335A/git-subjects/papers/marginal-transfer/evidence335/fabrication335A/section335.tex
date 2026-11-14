@@ -1,0 +1,280 @@
+\section{A positive gap at every fixed positive square-root ratio}
+\label{sec:finite-c-positive}
+The attained profile in Theorem~\ref{thm:332-finite-c} is an upper
+bound on an infimum. We now obtain a lower bound for every admissible
+density at the same critical cap. The new step is to decouple the entire
+low/high cross block, using a third, fixed degree cutoff. A strict bound
+on the high block alone would not justify a gap for the full operator.
+
+Keep $0<\rho<1$, $s=(1+\rho)/(1-\rho)$, $B_*=2^{1/s}$ and
+$p_0=1+1/\rho$. With the constants of
+Theorem~\ref{thm:square-root-tail}, set $\alpha_\rho=C_\rho c^2>0$ and
+\begin{equation}\label{eq:335-F}
+ F_L(m)=\rho^{m/4}+e^{-cm}+e^{-\alpha_\rho m^2/L},
+ \qquad \|QH_m\|_{2\to p_0}\le F_L(m).
+\end{equation}
+The constant $C_\rho$ is the global positive modulus in
+Lemma~\ref{lem:327-modulus}, not its local Taylor coefficient.
+This is an application of the endpoint estimate already proved above
+with its attributed Kirshner--Samorodnitsky input.
+
+\begin{theorem}[Uniform positivity at finite square-root ratio]
+\label{thm:335-positive}
+Fix $b>0$. Suppose $r_L\ge b$, $\mathbb E r_L=1$,
+$\mathbb E r_L^s\le2$, and the weighting law has exactly uniform
+marginals through integer order $0\le k_L\le L$. If
+$k_L/\sqrt L\to C\in(0,\infty)$, then
+\begin{align}
+ \lambda_1(T_{r_L})&\longrightarrow1,\label{eq:335-first}\\
+ \rho\le\liminf_L\lambda_2(T_{r_L})
+ &\le\limsup_L\lambda_2(T_{r_L})
+ \le\max\{\rho,e^{-\alpha_\rho C^2/2}\}.\label{eq:335-second}
+\end{align}
+Consequently
+\begin{equation}\label{eq:335-lower-profile}
+ \liminf_L\gap(T_{r_L})\ge G_\rho(C)
+ :=\min\{1-\rho,1-e^{-\alpha_\rho C^2/2}\}>0.
+\end{equation}
+The estimates are uniform over the admissible densities. More concretely,
+for every $C_0>0$ there is $L_0(\rho,C_0)$ such that, whenever
+$L\ge L_0$ and $C_0\sqrt L\le k\le L$, every density with the stated
+mean, moment cap, floor and exact matching satisfies
+\begin{equation}\label{eq:335-finite-uniform}
+ \gap(T_r)\ge\tfrac12G_\rho(C_0).
+\end{equation}
+The dimension cutoff need not be uniform as $\rho$ approaches an endpoint
+or as $C_0\downarrow0$. No optimality of $G_\rho$ is claimed.
+\end{theorem}
+
+The substantive floor range is $0<b<1$: for $b=1$ the mean forces
+$r=1$, while for $b>1$ there is no admissible density. The proof uses
+nonnegativity in the estimates and strict positivity for the finite Perron
+interpretation; its constants do not depend on the numerical value of $b$.
+
+\begin{lemma}[One remaining unit of tail moment]
+\label{lem:335-budget}
+For any $r\ge0$ with $\mathbb E r=1$ and $\mathbb E r^s\le2$, set
+$r_b=r\mathbf1_{r\le M}$, $r_t=r\mathbf1_{r>M}$, where $M>0$, and
+\[
+ B_M=\left[2-(1-2M^{1-s})_+^s\right]^{1/s},\qquad
+ x_+=\max\{x,0\}.
+\]
+Then $\|r_t\|_s\le B_M$ and $B_M\to1$ as $M\to\infty$.
+For each fixed $1<v<s$, also
+\begin{equation}\label{eq:335-tail-v}
+ \|r_t\|_v\le2^{1/v}M^{1-s/v}.
+\end{equation}
+All these estimates are uniform in dimension and density.
+\end{lemma}
+\begin{proof}
+On the tail, $r\le M^{1-s}r^s$, so
+$\mathbb E r_t\le2M^{1-s}$ and
+$\mathbb E r_b\ge(1-2M^{1-s})_+$. Jensen on the entire probability
+space gives $\mathbb E r_b^s\ge(1-2M^{1-s})_+^s$.
+The two pieces have disjoint support. Thus
+\[
+ \mathbb E r_t^s=\mathbb E r^s-\mathbb E r_b^s
+ \le2-(1-2M^{1-s})_+^s.
+\]
+For the second assertion, $r^v\le M^{v-s}r^s$ on $\{r>M\}$;
+integrating and taking the $v$th root proves~\eqref{eq:335-tail-v}.
+This does not assert that the tail's critical moment tends to zero.
+\end{proof}
+
+\begin{lemma}[Three-block decoupling]
+\label{lem:335-cross}
+For mean-one nonnegative densities with $\|r\|_s\le B_*$ and exact
+matching through order $k$, let $d=\lfloor k/2\rfloor$, $m=d+1$,
+$\Pi$ be the projection onto degrees at most $d$, and $H=I-\Pi=H_m$.
+Then
+\begin{equation}\label{eq:335-compression}
+ \Pi S_r\Pi=\Pi P_\rho\Pi.
+\end{equation}
+Moreover, whenever $k\to\infty$,
+$\|\Pi S_rH\|\to0$, uniformly over these densities. Specifically,
+fix $v=(1+s)/2$, $z=2v/(v-1)>2$, and an integer $n\ge0$. For $d\ge n$,
+\begin{align}
+ D_n(M)&=2^{1/v}M^{1-s/v}(z-1)^n,\label{eq:335-D}\\
+ \|\Pi S_rH\|&\le e_{n,M}(m)
+ :=\sqrt{B_*\rho^{n+1}}+\sqrt{B_*D_n(M)}+M\rho^{m/2}.
+ \label{eq:335-cross-bound}
+\end{align}
+\end{lemma}
+\begin{proof}
+The Walsh matrix entry of $S_r-P_\rho$ at $A,D$ is
+$\rho^{(|A|+|D|)/2}\widehat{(r-1)}(A\mathbin\triangle D)$.
+For $|A|,|D|\le d$ its coefficient vanishes since
+$|A\mathbin\triangle D|\le2d\le k$, including the degree-zero
+coefficient by the mean condition. This proves~\eqref{eq:335-compression}.
+
+For any positive semidefinite operator $U$ and orthogonal projections
+$E,F$, factor $EUF=(EU^{1/2})(U^{1/2}F)$ to obtain
+\begin{equation}\label{eq:335-positive-block}
+ \|EUF\|\le\sqrt{\|EUE\|\,\|FUF\|}.
+\end{equation}
+Here ``orthogonal'' means self-adjoint projections; their ranges need
+not be mutually orthogonal. Also
+$\|S_r\|\le\|r\|_s\le B_*$ by
+\eqref{eq:332-signed-sandwich}.
+
+Let $E_n$ project onto degrees at most $n$ and put $J=\Pi-E_n$.
+By exact compression,
+$JS_rJ=JP_\rho J$ and $\|JS_rJ\|\le\rho^{n+1}$, including $J=0$.
+Thus~\eqref{eq:335-positive-block} gives
+\[
+ \|JS_rH\|\le\sqrt{B_*\rho^{n+1}}.
+\]
+To control $E_nS_rH$, split $S_r=S_b+S_t$ with
+$S_b=QM_{r_b}Q$, $S_t=QM_{r_t}Q$. Since $0\le r_b\le M$,
+\[
+ \|E_nS_bH\|\le M\|E_nQ\|\|QH\|_{2\to2}
+ \le M\rho^{m/2}.
+\]
+This uses only the $L^2$ spectral multiplier bound.
+
+For the tail, the degree-$n$ hypercontractive bound is
+\[
+ \|QE_nh\|_z\le(z-1)^{n/2}\|h\|_2.
+\]
+To see its dimension independence, for a polynomial of degree at most
+$n$ multiply each degree-$j$ coefficient by $(z-1)^{j/2}$, and then
+apply noise $1/\sqrt{z-1}$. Ordinary hypercontractivity bounds the
+resulting $L^z$ norm by the new $L^2$ norm, which is at most
+$(z-1)^{n/2}$ times the original $L^2$ norm. Apply this to $QE_nh$;
+$Q$ and $E_n$ commute and contract $L^2$.
+Holder with $1/v+2/z=1$, followed by~\eqref{eq:335-tail-v}, gives
+\[
+ \|E_nS_tE_n\|\le\|r_t\|_v(z-1)^n\le D_n(M).
+\]
+Since $S_t\ge0$ and $\|S_t\|\le\|r_t\|_s\le B_*$,
+\eqref{eq:335-positive-block} yields
+$\|E_nS_tH\|\le\sqrt{B_*D_n(M)}$.
+Addition proves~\eqref{eq:335-cross-bound}.
+
+Given a tolerance, choose $n$ first to reduce the first term, then $M$
+to reduce the second term at that fixed $n$, then $m$ to reduce the
+third term at those fixed $n,M$. The exponent $1-s/v$ is negative.
+These choices are uniform in $r,L$ and prove convergence when $k\to\infty$.
+The factor $(z-1)^n$ is not uniform in $n$: replacing $n$ by the growing
+$d$ while keeping $M$ fixed would not prove the assertion.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:335-positive}]
+Use $d,m,\Pi,H$ as in Lemma~\ref{lem:335-cross}. The same amplitude
+split, Lemma~\ref{lem:335-budget}, and Holder give
+\begin{equation}\label{eq:335-high}
+ \|HS_rH\|\le h_{M,L,k}:=M\rho^m+B_MF_L(m)^2.
+\end{equation}
+Indeed the bounded term is at most $M\|QH\|_{2\to2}^2=M\rho^m$.
+The tail quadratic form is at most
+$\|r_t\|_s\|QH\|_{2\to p_0}^2$; the square of the endpoint norm
+is essential. If $k_L/\sqrt L\to C>0$, then $m/\sqrt L\to C/2$.
+At each fixed $M$, the first two terms of $F_L(m)$ vanish and its last
+term tends to $e^{-\alpha_\rho C^2/4}$. Therefore
+\[
+ \limsup_L\|HS_{r_L}H\|\le B_Me^{-\alpha_\rho C^2/2}.
+\]
+Letting $M\to\infty$ after this limit proves
+\begin{equation}\label{eq:335-beta}
+ \limsup_L\|HS_{r_L}H\|\le\beta_\rho(C)
+ :=e^{-\alpha_\rho C^2/2}<1.
+\end{equation}
+This and the cross-block convergence are compatible: for any error choose
+$n$ first and then one $M$ large enough for both its fixed-$n$ tail
+coupling and $B_M-1$ to be small; taking $L$ last pays both bounded-part
+terms. No incompatible dimension-dependent truncations have been used.
+
+On $\operatorname{Ran}\Pi\oplus\operatorname{Ran}H$, set
+\[
+ A_L=(\Pi P_\rho\Pi)|_{\operatorname{Ran}\Pi}
+       \oplus(HS_{r_L}H)|_{\operatorname{Ran}H}.
+\]
+Exact compression makes $S_{r_L}-A_L$ the off-diagonal operator with
+blocks $\Pi S_{r_L}H$ and its adjoint. Its norm is exactly
+$\|\Pi S_{r_L}H\|\to0$. Eventually $d\ge1$ and the high-block
+norm is less than one. The low block starts with $1,\rho$, so
+\[
+ \lambda_1(A_L)=1,\qquad
+ \lambda_2(A_L)=\max\{\rho,\|HS_{r_L}H\|\}.
+\]
+Both blocks are positive semidefinite. Min-max perturbation gives
+$\lambda_1(S_{r_L})\to1$ and the upper bound in~\eqref{eq:335-second}.
+Restricting the two-dimensional variational problem to the constant and
+one singleton Walsh character gives $\lambda_2(S_{r_L})\ge\rho$.
+Also $\lambda_1(S_{r_L})\ge\langle1,S_{r_L}1\rangle=1$ exactly.
+For $U=QM_{\sqrt{r_L}}$, $UU^*=S_{r_L}$ and $U^*U=T_{r_L}$ have
+identical full finite spectra, including zeros. This proves the assertions
+for the actual transfer eigenvalues. The limit of the first eigenvalue
+gives~\eqref{eq:335-lower-profile}; equivalently, positivity and
+$\lambda_1\ge1$ give $\gap(T_r)\ge1-\lambda_2(T_r)$ directly.
+
+For the finite uniform form, take $d\ge\max\{n,1\}$. Whenever
+$h_{M,L,k}<1$, the same block comparison gives
+\begin{equation}\label{eq:335-finite-bound}
+ \gap(T_r)\ge1-\max\{\rho,h_{M,L,k}\}-e_{n,M}(m).
+\end{equation}
+This bound contains no density-dependent term. For $k\ge C_0\sqrt L$,
+$m>k/2\ge C_0\sqrt L/2$, so the decaying terms in
+\eqref{eq:335-cross-bound} and~\eqref{eq:335-high} vanish uniformly
+in these $k$, and
+$\limsup_L\sup_{k\ge C_0\sqrt L}F_L(m)\le e^{-\alpha_\rho C_0^2/4}$.
+Let $g=G_\rho(C_0)>0$ and $\beta=\beta_\rho(C_0)$.
+Choose $n$ first, then $M$, so that the sum of the first two terms
+in~\eqref{eq:335-cross-bound} is less than $g/8$ and
+$(B_M-1)\beta<g/8$. Choose $L$ last, large enough that, uniformly
+for $C_0\sqrt L\le k\le L$, $d\ge\max\{n,1\}$,
+$h_{M,L,k}\le\beta+g/4$ and $e_{n,M}(m)\le g/4$.
+Since $g\le1-\beta$, we have $h_{M,L,k}<1$. Also
+$\max\{\rho,\beta+g/4\}\le\max\{\rho,\beta\}+g/4=1-3g/4$.
+Equation~\eqref{eq:335-finite-bound} is therefore at least $g/2$,
+proving~\eqref{eq:335-finite-uniform}.
+\end{proof}
+
+\begin{remark}[Why high-block contraction is insufficient]
+The direct comparison $\|S_r-P_\rho\|\le2(B_*+1)F_L(m)$ gives no
+positive gap for all small positive $C$. Nor may one discard the cross
+block after proving~\eqref{eq:335-beta}. For example, a positive matrix
+with low block $\diag(1,1/2)$, high block $(3/4)$, and cross column
+$(0,1/(2\sqrt2))^{\mathsf T}$ has eigenvalues $1,1,1/4$.
+Its high-block norm and nonconstant low eigenvalue are both less than
+one, yet its full gap is zero. This is a block-matrix obstruction to
+that shortcut, not a Boolean density counterexample.
+Lemma~\ref{lem:335-cross} supplies the missing coupling control.
+\end{remark}
+
+\begin{corollary}[Quadratic order of the small-ratio infimum]
+\label{cor:335-quadratic}
+Fix $0<\rho<1$ and $0<b<1$. For $C>0$ let $\Gamma_{\rho,b}(C)$
+be the infimum of $\liminf_{L\to\infty}\gap(T_{r_L})$ over all
+sequences of mean-one densities $r_L\ge b$ with $\mathbb E r_L^s\le2$
+and exactly uniform weighting marginals through some integer orders
+$k_L$ satisfying $k_L/\sqrt L\to C$. Then, for any one fixed $K$
+satisfying~\eqref{eq:332-margins},
+\begin{equation}\label{eq:335-profile-comparison}
+ \min\{1-\rho,1-e^{-\alpha_\rho C^2/2}\}
+ \le\Gamma_{\rho,b}(C)
+ \le\min\{1-\rho,1-e^{-\gamma_\rho K^2C^2}\}.
+\end{equation}
+In particular, for all sufficiently small positive $C$,
+\[
+ \frac{\alpha_\rho}{4}C^2
+ \le\Gamma_{\rho,b}(C)\le\gamma_\rho K^2C^2.
+\]
+This is quadratic order, not an optimal coefficient or an exact profile.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:335-positive} bounds every sequence in the infimum.
+Theorem~\ref{thm:332-finite-c} supplies an admissible sequence attaining
+the right side, with the same fixed $K$ independent of $C,b,L$.
+Thus the class is nonempty and~\eqref{eq:335-profile-comparison} follows.
+For the explicit lower estimate choose $C$ small enough that
+$x=\alpha_\rho C^2/2\le\min\{1,1-\rho\}$. Then
+$1-e^{-x}\le x\le1-\rho$ and
+$1-e^{-x}=\int_0^x e^{-t}\,dt\ge x-x^2/2\ge x/2$.
+The upper estimate follows from $1-e^{-y}\le y$ at
+$y=\gamma_\rho K^2C^2$. In the definition of $\Gamma$ the dimension
+limit inferior is taken for each fixed positive $C$ before the infimum
+and the subsequent small-$C$ comparison. No joint $L,C$ limit or
+exchange of the infimum and dimension limit is asserted.
+\end{proof}
+

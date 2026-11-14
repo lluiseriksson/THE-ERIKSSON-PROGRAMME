@@ -1,0 +1,33 @@
+QUESTION334 -- TERMINAL FABRICATION REPORT, NOT AN AUDIT VERDICT
+
+Outcome: complete analytical candidate proof obtained for the requested universal fixed-positive-C gap. Status UNREVIEWED_CANDIDATE_PROOF. No acceptance, independence, priority, formal-verification or PDF-rating claim is made. The complete argument is source334A.txt, which must receive a separate exact-source audit before integration or manuscript use.
+
+For fixed rho in (0,1), s=(1+rho)/(1-rho), r>=b>0, E r=1, E r^s<=2 and exact weight marginals through k with k/sqrt L->C>0, the candidate proves
+ lambda1(T_r)->1,
+ limsup lambda2(T_r)<=max(rho,exp(-alpha_rho C^2/2)),
+ liminf gap(T_r)>=min(1-rho,1-exp(-alpha_rho C^2/2))>0.
+Here alpha_rho=C_rho c_rho^2 is the positive global constant in source324's high-degree endpoint estimate; it is not replaced by the local entropy coefficient. A finite uniform form is included: for every C0>0, all sufficiently large L and all k>=C0 sqrt L, the gap is at least half of this lower profile at C0, uniformly over admissible densities. No optimal constant or equality with source331's achievable upper profile is asserted.
+
+The proof has three indispensable parts.
+1. The critical moment budget is split using the mean. If r_t=r1_{r>M}, then E r_t<=2M^(1-s). Jensen applied to r_b=r1_{r<=M} yields E r_t^s<=2-(1-2M^(1-s))_+^s. Thus the tail norm has uniform limiting upper bound one, rather than B=2^(1/s). This is not uniform integrability: the tail's critical moment need not vanish.
+2. Exact marginals give Pi_d S_r Pi_d=Pi_d P_rho Pi_d at d=floor(k/2). The off-diagonal block does not vanish merely because the high block is strictly contractive. Split Pi_d into degrees<=n and n+1..d. Positivity bounds the latter's coupling by sqrt(B rho^(n+1)). Split r into bounded/tail parts for the fixed-degree block. Its bounded part contributes at most M rho^((d+1)/2); its tail contributes at most sqrt(B 2^(1/v) M^(1-s/v)(z-1)^n), where v=(1+s)/2 and z=2v/(v-1). Choose n, then M, then L. This proves the complete low/high cross norm tends to zero uniformly for k->infinity.
+3. On the high block, the bounded part costs M rho^(d+1), and the tail costs B_M times the square of source324's endpoint tail norm. For k/sqrt L->C, this gives limsup high-block norm<=exp(-alpha_rho C^2/2)<1. Min-max, the exact low block, and the AA*/A*A identity give the actual transfer eigenvalue limits/bounds and normalized-gap conclusion.
+
+Preserved unsuccessful reasoning:
+- The direct source324 perturbation bound only pays a gap for sufficiently large C; it is insufficient for the requested small-C regime and was not treated as a completed answer.
+- Discarding the cross block is false. An explicit positive 3-by-3 block example in the source has low block diag(1,1/2), high block 3/4 and full eigenvalues 1,1,1/4. This refutes the shortcut, not the Boolean-density theorem. No numerical program was used to verify that elementary example.
+- Setting the fixed-degree cutoff equal to d~sqrt L would leave the hypercontractive factor (z-1)^d uncontrolled at fixed M. The third-block argument avoids that unsupported simultaneous limit.
+
+Adversarial self-checks performed analytically:
+The tail budget uses disjoint supports and Jensen on a probability space. The lower-exponent tail bound has a strictly negative amplitude power. Exact compression includes the constant coefficient. The block square-root inequality is applied only to positive S_r or S_t, never to the signed perturbation S_r-P_rho. Both cross-bound and high-bound amplitude choices can be met by the same sufficiently large M after n is fixed. The high-degree contraction is squared, yielding alpha C^2/2. The high block is eventually strictly below one, making its comparison with rho valid for the second eigenvalue. The transfer denominator is protected by lambda1>=1, and full S/T spectra agree. These are fabrication self-checks, not a second-role audit.
+
+Inputs read in full from retained D: source324A, source330A and source331A. Their raw copied bytes and hashes are retained in this bundle. Their source-audited status was supplied by the assignment; no review verdict was used as proof in place of a stated input. Source324's precise endpoint estimate is explicitly invoked. Source330/331 are comparison context. Primary-source checks were limited to Kirshner--Samorodnitsky Theorem1.8/Lemma2.14 and the ordinary Boolean hypercontractive formulation in the author-hosted Ben-Aroya/Regev/de Wolf paper. No literature-wide priority search was performed.
+
+Operational observations and failures:
+The assignment described _drafts/question334 as existing, but the exact directory was absent. The read-only Get-Item observation returned exit1 with 'Cannot find path ... because it does not exist.' The parent _drafts directory existed as an ordinary directory. The explicitly assigned question334 subdirectory was created there for this task; no existing draft was overwritten. This is a filesystem observation, not a mathematical failure. No mathematical scripts, build, runtime, test, symbolic algebra or numerical experiment were executed. The only local operations were reading, evidence editing/copying, hashes and read-only git metadata. No running audit was contacted. No state.json, frozen332/PR278, tracked source, branch or PR body was changed.
+
+Hypotheses, mechanism, falsifiers, abandonment rule, the complete proof, three discovery units and twelve explicit future-audit checks are in source334A.txt. The cutoff argument is the new candidate step requiring particular audit attention. The assigned question has a proposed proof rather than an impossibility result; it is not marked accepted by its fabricator. Keep all earlier terminal reports and scores unchanged.
+
+Inbound fabrication context retained: after source334A.txt had been fully written and hashed as 3ca25f1c583fbe1cf3e12974fac4d88988df0a9b212c868c1771a06b5b080d2f, the parent supplied a possible route from the critical-budget sign-region inequality 2 lambda2^s<=E r^s<=2 and lambda1>=1. The literal message is in inbound-parent-context.txt. It was not needed or used in the candidate proof, which establishes lambda1->1 by the explicit block argument. The cited frozen332 lines were not opened or modified. Inbound communication is disclosed because this is fabrication, not an isolated audit.
+
+Final scope self-check added the trivial b=1 case (r=1) and the empty b>1 case explicitly to the source, so the stated b>0 assignment is completely covered. This changes the final source hash from the pre-inbound version recorded above; the final raw hash is in model-context.json, final-workspace-state.json and MANIFEST.json. The block proof itself is unchanged.

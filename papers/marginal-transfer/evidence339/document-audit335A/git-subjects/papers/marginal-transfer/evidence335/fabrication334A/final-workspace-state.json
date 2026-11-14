@@ -1,0 +1,15 @@
+{
+  "observed_utc": "2026-11-13T22:49:21.1630555Z",
+  "head": "8980d71cca205fcc164803f51ac4c7038536413b",
+  "branch": "codex/tep-finite-scale331-20261113",
+  "status": [
+    "?? _drafts/",
+    "?? _tmp/"
+  ],
+  "tracked_diff": [],
+  "staged_diff": [],
+  "source_bytes": 15935,
+  "source_raw_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+  "source_has_utf8_bom": false,
+  "source_contains_cr": false
+}

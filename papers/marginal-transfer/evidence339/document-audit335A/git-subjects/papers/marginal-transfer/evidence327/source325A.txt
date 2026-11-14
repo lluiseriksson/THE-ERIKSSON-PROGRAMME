@@ -1,0 +1,66 @@
+SOURCE325A -- Sharp square-root cutoff for endpoint Boolean noise tails
+Lluis Eriksson; analytical derivation with disclosed OpenAI/Codex assistance.
+Unreviewed research candidate. No formal proof, numerical test, novelty or separate-paper claim. Frozen322B remains unchanged.
+
+QUESTION AND SCOPE
+Fix 0<rho<1, p=1+1/rho, Q=P_sqrt(rho) on the uniform probability cube {-1,1}^L. Let H_m be the orthogonal Walsh projection onto degrees at least m, for an integer m>=1 (zero if m>L). Is ||Q H_m||_(2->p)->0 equivalent to m/sqrt(L)->infinity as L->infinity? Source324 supplies the sufficiency. Here we construct a matching lower obstruction. The mechanism is a near-constant positive product extremizer with binomial Fourier energy, followed by exact high-degree projection. A falsifier is an incorrect fourth-order coefficient, endpoint parameter, or leakage estimate. After three substantive unsuccessful units, abandon and retain failures. This is the sole new mathematical question after324's terminal source acceptance.
+
+PROPOSED THEOREM
+Let N_L(m)=||Q H_m||_(2->p). Then 0<=N_L(m)<=1, and for any integer sequence m_L>=1,
+ N_L(m_L)->0 if and only if m_L/sqrt(L)->infinity.
+Moreover, if m_L/sqrt(L)->C with 0<=C<infinity, then
+ liminf N_L(m_L) >= exp[-d_rho C^2],  d_rho=(1-rho^2)/(12rho)>0.
+In particular m_L=o(sqrt(L)) implies N_L(m_L)->1. No exact transition profile for positive C is asserted: the lower bound is not an equality claim.
+
+EXPLICIT PRODUCT WITNESS AND EXACT FOURIER MASS
+For 0<t<1 set f_(L,t)(x)=product_(i=1)^L(1+t x_i)/(1+t^2)^(L/2). Its L2 norm is exactly1, and its Walsh coefficient at A is t^|A|/(1+t^2)^(L/2). Therefore
+ ||(I-H_m)f_(L,t)||2^2 = P[Bin(L,theta)<m], theta=t^2/(1+t^2).
+This is an identity obtained by summing binomial coefficients, not an approximation or a claim that f is already high degree. Since ordinary endpoint hypercontractivity gives ||Q||_(2->p)<=1,
+ ||Q H_m f||p >= ||Qf||p - ||Q(I-H_m)f||p
+ >= ||Qf||p - sqrt(P[Bin(L,theta)<m]).
+The left side is at most N_L(m), because ||f||2=1. Equivalently H_m f/||H_m f||2 is an actual admissible high-degree witness when its norm is nonzero; normalizing can only increase this lower bound because ||H_m f||2<=1. H_m f need not be positive; positivity is not a hypothesis of this operator-norm problem.
+
+EXACT PRODUCT NORM AND CONTROLLED EXPANSION
+Q acts independently on coordinates, so Qf=product(1+sqrt(rho)t x_i)/(1+t^2)^(L/2). Hence
+ ln ||Qf||p = L F_rho(t),
+ F_rho(t)=(1/p)ln[((1+sqrt(rho)t)^p+(1-sqrt(rho)t)^p)/2] -(1/2)ln(1+t^2).
+For fixed rho and sufficiently small |t| this is an even real analytic function, including noninteger p, because both bases stay positive. There is an O_rho(t^6) remainder on a fixed neighborhood of0. To compute its coefficient, write x=sqrt(rho)t and
+ E(1+x X)^p=1+A x^2+B x^4+O_p(x^6),
+ A=p(p-1)/2, B=p(p-1)(p-2)(p-3)/24.
+Then (1/p)ln E(1+xX)^p=(p-1)x^2/2 -(p-1)(p^2+p-3)x^4/12+O_p(x^6).
+Since (p-1)rho=1, the quadratic terms cancel against (1/2)ln(1+t^2). The fourth-order coefficient is
+ 1/4-rho(p^2+p-3)/12=(rho-rho^(-1))/12=-d_rho.
+Thus F_rho(t)=-d_rho t^4+O_rho(t^6). The constant is not uniform near rho=0 or1, and those endpoints are excluded.
+
+FINITE-C LOWER BOUND
+Suppose m_L/sqrt(L)->C<infinity. Fix any A>C and put t_L^2=A/sqrt(L); this is in(0,1) for large L. Then
+ L t_L^4=A^2, L t_L^6=A^3/sqrt(L)->0,
+ so ||Q f_(L,t_L)||p -> exp(-d_rho A^2).
+The binomial mean is mu_L=L theta_L=A sqrt(L)/(1+A/sqrt(L)), so mu_L/sqrt(L)->A. Its variance is at most mu_L=O(sqrt(L)). For large L, mu_L-m_L >=(A-C)sqrt(L)/2. Chebyshev therefore gives
+ P[Bin(L,theta_L)<m_L] <= mu_L/(mu_L-m_L)^2 = O_(A,C)(L^(-1/2))->0.
+Combining with the exact witness bound yields liminf N_L(m_L)>=exp(-d_rho A^2). This holds for every fixed A>C; taking the supremum over A>C gives exp(-d_rho C^2). No uniformity in A or limit interchange is needed. At C=0 the lower bound1 and the hypercontractive upper bound1 prove convergence to1. A fixed m or a slowly growing m is covered.
+
+IFF AND OSCILLATORY SEQUENCES
+If m_L/sqrt(L) fails to tend toinfinity, there is an infinite subsequence on which it is bounded by some finite M. Extract a further subsequence converging to C in[0,M]. The finite-C bound gives a positive liminf on that subsequence, so N_L(m_L) cannot converge tozero. Conversely, source324 proves for some fixed positive c,C_rho and all1<=m<=L,
+ N_L(m)<=rho^(m/4)+exp(-cm)+exp(-C_rho c^2 m^2/L).
+If m/sqrt(L)->infinity, every term tends tozero whenever m<=L. For indices m>L the operator is exactlyzero. Combining the two types of indices proves sufficiency for the full sequence. Thus the equivalence uses324 for one direction and the explicit elementary product argument for the other.
+
+WHAT THIS DOES NOT PROVE
+This settles the square-root threshold for the endpoint high-degree noise norm. It does NOT construct a nonnegative mean-one weighting density with exact marginals through k~sqrt(L) and collapsing normalized transfer gap. The high-degree witness is signed and is not a density. Failure of the sufficient operator-norm method cannot be promoted to necessity for the original marginal-rigidity problem. No claim is made that all moment/marginal hypotheses have been eliminated. No physical, local-dynamics, fixed-range Gibbs or continuum consequence follows. No new result is inserted into the already frozen exact322B PDF, and no standalone small-corollary paper is proposed.
+
+ATTRIBUTION AND NOVELTY BOUNDARY
+Ordinary Boolean endpoint hypercontractivity, tensor-product norm factorization, binomial energy and Chebyshev are standard inputs; they are not original theorems here. Source324's upper estimate uses the attributed Kirshner--Samorodnitsky distribution-sensitive theorem, https://arxiv.org/html/1909.11929v1, Theorem1.8 and Lemma2.14. The product lower argument is explicitly proved above. A targeted search on13Nov2026 for high-degree noise operator endpoint hypercontractivity returned general cube-tail and refined-hypercontractivity literature; no comprehensive priority determination was completed. External originality remains unestablished. A positive audit certifies only the scoped written reasoning, not historical priority or independent peer review.
+
+FIXED ADVERSE CHECKS
+C1 probability normalization and endpoint p,Q parameters.
+C2 exact normalized product Walsh coefficients and binomial low-tail identity.
+C3 QH lower bound via ordinary HC; no Lp contraction of H asserted.
+C4 exact product norm formula, positivity of bases for real p.
+C5 fourth-order expansion and coefficient d_rho, controlled O(t^6).
+C6 t^2=A/sqrtL scaling and L t^6->0.
+C7 mean/variance and Chebyshev gap, including integer cutoff and C=0.
+C8 A down toC inference without illicit uniform limit.
+C9 oscillatory-sequence converse and m>L cases.
+C10 upper estimate correctly inherited as an attributed proved324 source input, not a fresh formal verification.
+C11 signed witness not promoted to nonnegative density or transfer-gap counterexample.
+C12 no exact profile/novelty/independence/physical claims; grouping and frozen322B preserved.

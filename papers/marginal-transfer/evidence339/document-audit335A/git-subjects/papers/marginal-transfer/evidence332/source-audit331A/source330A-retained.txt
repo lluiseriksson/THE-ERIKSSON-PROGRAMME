@@ -1,0 +1,97 @@
+SOURCE330A -- One-sided odd Fourier erasure closes the sub-square-root density-collapse range
+Lluis Eriksson, with disclosed OpenAI/Codex analytical assistance.
+Analytical candidate, not yet audited; no formal, numerical, PDF-rating, originality or independence claim. Group with the existing marginal-transfer programme. Frozen327A and329A remain unchanged.
+
+SOLE QUESTION AFTER329
+Can exact critical-cap gap collapse with a prescribed positive floor be constructed for every k_L=o(sqrt(L)), rather than only k_L log L=o(sqrt(L))? Hypotheses: fixed0<rho<1, s=(1+rho)/(1-rho), integer1<=k_L<=L, uniform probability cube. Mechanism: erase through an odd degree m>=k, control the correction in L^s and control only its dangerous one-sided remainder pointwise. Falsifier: any failure of the derivative recurrence/sign region, central coefficient bound, L^s estimate, floor/cap or true top-two spectrum. Abandon after three substantive units without proof or useful counterexample. The comparable-square-root density regime is not settled here.
+
+CONVENTIONS AND THEOREM
+On {+1,-1}^L with uniform probability, chi_A(x)=product_(i in A)x_i and P_t chi_A=t^|A| chi_A. Let Q=P_sqrt(rho), S_r=Q M_r Q, T_r=M_sqrt(r) P_rho M_sqrt(r). Eigenvalues are in decreasing order with multiplicity; gap(T)=1-lambda2(T)/lambda1(T).
+For every integer sequence k_L=o(sqrt(L)) and every fixed0<b<1 there are mean-one densities r_L>=b with ||r_L||_s<=2^(1/s), E[r_L chi_A]=0 for1<=|A|<=k_L, and lambda1(T_r),lambda2(T_r)->1. In particular the normalized gap tends tozero. All requirements hold in every dimension, after a finite initial replacement. These are weight marginals, not marginals of a Perron stationary law.
+
+SCALE AND EXACT COEFFICIENTS
+For sufficiently large L let m_L be the smallest odd integer at least k_L, so k<=m<=k+1 and m=o(sqrt(L)); eventually m+1<=L. Set
+ u=sqrt(m sqrt(L)), delta=sqrt(u/L), a_s=(s-1)/2>0.
+Then u/m->infinity, u/sqrt(L)->0, u->infinity and L delta^4=u^2/L=m/sqrt(L)->0. Also delta->0 and eventually0<delta<1. Define
+ n(delta)=(((1+delta)^s+(1-delta)^s)/2)^(1/s),
+ R(x)=product_i(1+delta x_i)/n(delta), mu=E R=n(delta)^(-L).
+For a point with z=sum_i x_i, put a=(L+z)/2,b0=(L-z)/2 and
+ g_z(t)=(1+t)^a(1-t)^b0=sum_(j=0)^L K_j(z)t^j.
+Here K_j(z)=sum_(|A|=j)chi_A(x), so R=mu g_z(delta). Let
+ q_m(z)=sum_(j=0)^m K_j(z)delta^j, p(x)=mu(q_m(z)-1).
+The correction p has meanzero and exactly the coefficients of R in degrees1 throughm. For fixed s Taylor expansion gives
+ log mu=-a_s u+O_s(u^2/L).                                      (1)
+We will prove both ||p||_s->0 and inf_x(R(x)-p(x))>=-eta_L with eta_L->0. Unlike a two-sided sup norm estimate on p, these two conclusions suffice.
+
+LEMMA1 -- L^s ERASURE
+Put C_s=max(1,s-1). Orthogonality gives ||K_j||_2=sqrt(binom(L,j)). For1<s<=2 the probability-space norm comparison yields ||K_j||_s<=||K_j||_2. For s>2, ordinary Boolean hypercontractivity on the homogeneous degree-j polynomial gives ||K_j||_s<=(s-1)^(j/2)||K_j||_2. Thus in all cases
+ ||p||_s<=mu sum_(j=1)^m (C_s u)^(j/2)/sqrt(j!).
+For large L the summands increase throughm because C_s u/m->infinity. Using m!>=(m/e)^m, the logarithm of this upper bound is at most
+ log mu+log m+(m/2)log(e C_s u/m)=-a_s u+o(u)->-infinity.         (2)
+Indeed m/u->0 and log(u/m)/(u/m)->0. This proves the lemma without requiring any L^s contraction of a sharp Fourier projection.
+
+LEMMA2 -- UNIFORM ONE-SIDED REMAINDER
+Partition possible z into three regions. All estimates below hold once u>=4m and delta<1, which follows from the scale choice.
+
+(i) Central region |z|<=2Ldelta. Choose r=m/(Ldelta)>0, eventually r<1. On the complex circle |t|=r, direct logarithms and log(1+y)<=y give
+ log|g_z(r exp(i theta))|
+ =a/2 log(1+2r cos theta+r^2)+b0/2 log(1-2r cos theta+r^2)
+ <=z r cos theta+Lr^2/2<=|z|r+Lr^2/2.
+The logarithms are legitimate since r<1. Cauchy's coefficient estimate implies |K_j(z)|<=r^(-j) exp(|z|r+Lr^2/2). Since delta/r=u/m>=1,
+ |p(x)|<=mu m exp(2m+m^2/(2u))(u/m)^m=:eta_L.
+Equation(1) shows log eta_L=-a_s u+o(u)->-infinity. R is nonnegative, so R-p>=-eta_L in this region.
+
+(ii) Negative region z<=-2Ldelta. Write w=|z|. In the derivative recurrences below, g_z^j denotes the j-th derivative, never a power. At t=0 the polynomial differential equation
+ (1-t^2)g_z'(t)=(z-Lt)g_z(t)
+ and its derivatives give
+ g_z^(j+1)(0)=z g_z^j(0)-j(L-j+1)g_z^(j-1)(0).                (3)
+Set A_j=(-1)^j g_z^j(0). Then A_0=1,A_1=w and
+ A_(j+1)=w A_j-j(L-j+1)A_(j-1).
+Since w^2>=4Lu>=4mL, induction gives A_j>0 and A_j/A_(j-1)>=w/2 for1<=j<=m: if the bound holds atj, the next ratio is at least w-2jL/w>=w/2. Consequently the terms B_j=delta^j A_j/j! satisfy
+ B_j/B_(j-1)>=delta w/(2j)>=u/m>=1, 1<=j<=m.
+Because m is odd, q_m=B_0-B_1+B_2-B_3+...+B_(m-1)-B_m<=0 by pairing consecutive terms. Hence p<=-mu and R-p>=0. The parity choice is essential to this pairing; no even-degree assertion is silently substituted.
+
+(iii) Positive region z>=2Ldelta. We show g_z^(m+1)(t)>0 for every0<=t<=delta. The original differential equation differentiatedj times gives the exact identity
+ (1-t^2)g_z^(j+1)(t)=[z-(L-2j)t]g_z^j(t)
+                         -j(L-j+1)g_z^(j-1)(t).              (4)
+Let d=1-t^2>0. Since t>=0 and z>=2Ldelta, z-(L-2j)t>=z-Ldelta>=z/2. Also z^2>=4Lu>=16mL. The function g_z(t)>0 and its first logarithmic derivative is (z-Lt)/d>=z/(2d). Inductively assume g_z^j/g_z^(j-1)>=z/(4d)>0. Equation(4) implies
+ g_z^(j+1)/g_z^j >= [z/2-4jL d/z]/d>=z/(4d),
+for1<=j<=m, using z^2>=16jL d. Thus every derivative needed for the Taylor remainder is positive throughout the interval. Taylor's theorem (or its integral remainder) yields g_z(delta)-q_m(z)>=0. Therefore R-p=mu(g_z(delta)-q_m(z)+1)>=mu>0.
+
+The three regions cover all points, including boundaries (either adjacent estimate applies). Lemma2 follows with the same eta_L from(i). No information about roots of Krawtchouk or Jacobi polynomials is assumed: the sign bounds were derived from the exact differential recurrence.
+
+TRANSFER SPECTRUM AND EXACT CAP
+For completeness, reproduce the previously established balanced critical-product mechanism at this new scale. In the one-site Walsh basis set D=diag(1,rho) and
+ H=n(delta)^(-1)[[1,delta sqrt(rho)],[delta sqrt(rho),rho]].
+Its largest eigenvalue kappa and tau=||D^(1/2)H^(1/2)|| have exact formulas
+ kappa=[1+rho+sqrt((1-rho)^2+4rho delta^2)]/[2n(delta)],
+ tau^2=[1+rho^2+sqrt((1-rho^2)^2+4rho^2 delta^2)]/[2n(delta)].
+Expansion at fixedrho gives log kappa=O_rho(delta^4) and log tau=-rho delta^2/[2(1-rho^2)]+O_rho(delta^4). Set c=kappa^(-L)->1 and Z=1+c mu->1. The two summands of F=P_rho+c H^(tensor L) are positive with largest eigenvalue exactlyone. For V=[P_rho^(1/2),sqrt(c)(H^(1/2))^(tensor L)], the Gram operator V*V differs from the block diagonal of these summands by an off-diagonal operator of norm sqrt(c)tau^L->0. The block diagonal has top two eigenvalues1,1. Min-max bounds the top two Gram eigenvalues within that norm of1. They are positive eventually and hence are the true top two eigenvalues of VV*=F, not extra zero eigenvalues. Thus v=(1+cR)/Z satisfies lambda1(S_v),lambda2(S_v)->1.
+
+Exactly E R^s=1. For fixed0<t<s, the scalar product expansion gives log E R^t=-t(s-t)u/2+O_s,t(u^2/L)->-infinity. Let theta=min(1,s/2). The elementary mean-value bound for0<=y<=1 and reciprocal substitution fory>=1 yield
+ 0<=(1+y)^s-1-y^s<=s 2^(s-1)(y^theta+y^(s-theta)).
+Both powers are strictly between0 ands. Applying this to cR proves E(1+cR)^s->2, so ||v||_s->B*=2^(1/s).
+
+Now define w=(1+c(R-p))/Z. Meanone and the required Fourier zeros are exact. Lemma2 gives w>=(1-c eta_L)/Z->1 uniformly, so w>=b eventually. Lemma1 implies ||w-v||_s=c||p||_s/Z->0, and hence ||w||_s->B*. For any signed f, Holder and endpoint Boolean hypercontractivity give
+ ||Q M_f Q||_(2->2)<=||f||_s, since1/s+2/(1+1/rho)=1.
+Therefore ||S_w-S_v||->0 and the actual two eigenvalue limits survive this correction, even if ||p||_infinity fails to vanish.
+
+If B_L=||w||_s<=B*, take eps=0; otherwise take eps=(B_L-B*)/(B_L-1). It lies in(0,1) and tends tozero. Put r=(1-eps)w+eps. Minkowski gives ||r||_s<=B* exactly. The mean, Fourier zeros and floor persist. Also ||S_r-S_w||<=eps(B_L+1)->0. Finally S_r and T_r are the square products AA* and A*A of A=Q M_sqrt(r), so their full finite spectra, including zeros, agree. This proves the theorem. For the finitely many excluded initial dimensions take r=1; any unused delta may be set to1/2.
+
+SCOPE, ATTRIBUTION AND REMAINING QUESTION
+The fixed-power critical product/Gram/moment/cap construction is prior programme source319A. The arbitrary scale and small-sup-norm method boundary are source329A. This proof bypasses that method's necessity by establishing small L^s erasure plus a one-sided remainder bound; it does not refute329A. Classical inputs include Boolean hypercontractivity, Walsh coefficients, Cauchy coefficient estimates, Taylor's theorem and min-max. Historical originality of their combination is not established by this note or by an AI audit.
+Together with the accepted sufficient rigidity result324, collapse is now constructed for every k/sqrtL->0, while rigidity is proved for k/sqrtL->infinity. The regime k/sqrtL->C in(0,infinity) remains open for positive densities; the signed operator bound325 does not settle it. No sharp finite-C profile, universal necessary threshold, Perron-law marginal claim, local interaction, continuum or physical Yang-Mills gap follows. PR29 remains20/41 andTermSource=0.
+
+FIXED ADVERSE CHECKS
+C1 odd m, every-index replacement and oscillating admissible k.
+C2 u/m,u/sqrtL,delta and all remainders, fixedrho endpoints.
+C3 exact coefficient identity, zero mean, matching throughm>=k.
+C4 homogeneous hypercontractivity for s>2 and norm comparison for1<s<=2; no projection contraction.
+C5 central complex logarithm/Cauchy bound, r<1 and eta->0.
+C6 negative-region recurrence, induction constants, alternating pairs and necessity of oddm.
+C7 differentiated positive-region recurrence including j(L-j+1), all t and signs.
+C8 positive Taylor remainder, overlapping regions and uniform floor.
+C9 true top-two Gram spectrum, no artificial zeros or missing lower-mode hypothesis.
+C10 mixed moments and exact cap interpolation; signed perturbation in L^s.
+C11 full S/T spectrum and actual normalized gap; no norm-identification error.
+C12 consistency with329 method-boundary and324 sufficient regime; finite-C, originality and physical scope remain open.

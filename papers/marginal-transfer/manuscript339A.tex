@@ -1,0 +1,3843 @@
+% DOCUMENT335A: grouped square-root transition; exact manuscript/PDF assessments retained separately.
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\ifdefined\pdfsuppressptexinfo\pdfsuppressptexinfo=15\fi
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\F}{\mathbb F}
+\newcommand{\R}{\mathbb R}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\gap}{\operatorname{gap}}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\Unif}{\operatorname{Unif}}
+\providecommand{\SourceCommit}{SOURCE-NOT-BUILT}
+\title{Product Marginals and Density-Moment Thresholds\\for Ising Transfer Kernels}
+\author{Lluis Eriksson\\\small Independent researcher}
+\date{14 November 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We compare exact marginal agreement and density-moment control for finite
+Boolean Ising transfer operators. Positive code-based weights can preserve
+uniform labelled marginals on a fixed positive fraction of coordinates while
+exponentially many normalized transfer eigenvalues approach one; their Perron
+stationary law has the same marginals. An exact parity spectrum distinguishes
+this transfer behavior from single-site heat-bath relaxation.
+
+For noise parameter $0<\rho<1$, the critical density exponent is
+$s=(1+\rho)/(1-\rho)$. Supercritical moment bounds force a uniform
+normalized gap, while subcritical bounds allow collapse at every norm budget
+above one. At the critical exponent the exact worst-case norm boundary is
+$2^{1/s}$, and the escaped critical-moment boundary is one. We also determine
+the universal strict-tail threshold for $(s-1)/s<K<1$ using reverse
+hypercontractivity, sign compression and a sharp scalar moment envelope.
+The critical-norm endpoint construction can retain any prescribed density floor below one.
+
+Our joint marginal--moment result gives positive densities at the exact
+critical norm cap with uniform weighting-law marginals through every
+order $k_L=o(\sqrt L)$, whose first
+two transfer eigenvalues tend to one. Conversely, bounded critical norm
+and exact matching through order $k_L$ with $k_L/\sqrt L\to\infty$
+force $S_{r_L}=P_{\sqrt\rho}M_{r_L}P_{\sqrt\rho}$ to converge in
+operator norm to $P_\rho$ and the normalized transfer gap to $1-\rho$.
+This norm statement does not hold in general for the isospectral operator
+$T_{r_L}=M_{\sqrt{r_L}}P_\rho M_{\sqrt{r_L}}$. An entropy-deficit
+calculation and truncation argument remove the previous logarithmic loss.
+For the endpoint high-degree noise norm itself we prove that convergence
+to zero is equivalent to $m_L/\sqrt L\to\infty$; at $m_L=o(\sqrt L)$
+the norm tends to one. Its signed witnesses do not establish sharpness
+for nonnegative densities. Critical-power uniform integrability gives
+rigidity at any diverging matching order. At the exact critical cap,
+$k_L/\sqrt L\to C\in(0,\infty)$ forces a uniformly positive
+asymptotic normalized gap. The proof reserves one unit of critical moment
+for the mean-one bounded part and controls all low/high couplings through
+a three-block decomposition. Together with an explicit attained profile
+from odd Fourier erasure and a one-sided positivity estimate, this gives
+quadratic order for the infimum of asymptotic gaps as $C\downarrow0$,
+with the dimension limit taken first. The optimal constants and exact
+finite-$C$ infimum remain open. External priority is unestablished.
+Global weights are allowed;
+no fixed-range Gibbs, local-dynamics or physical-gap conclusion follows.
+\end{abstract}
+
+
+Section~\ref{sec:growing-marginals} joins marginal matching and moment control. Section~\ref{sec:square-root-tail} contains the strengthened sufficient condition and the exact endpoint operator threshold, with complete proofs and a distinction between operator sharpness and density necessity. Section~\ref{sec:one-sided-erasure} supplies the complementary sub-square-root density construction and an attained finite-ratio profile. Section~\ref{sec:finite-c-positive} proves the universal positive finite-ratio lower bound at the critical cap; comparison with the attained profile gives the secondary small-ratio quadratic-order conclusion.
+
+The constructions serve different conclusions. The code family in
+Theorem~\ref{thm:main} preserves labelled marginals and produces many slow
+transfer modes. The product tilts in Theorems~\ref{thm:tilts}
+and~\ref{thm:critical-exact} establish the moment-budget boundary, without
+the code family's marginal matching. The critical-tail section gives a sufficient
+tail condition, stable counterexamples to its necessity, and collapse at
+the finite-cutoff endpoint in Theorem~\ref{thm:finite-tail-endpoint}.
+Section~\ref{sec:background} then optimizes finite parity backgrounds
+to extend the sub-two tail-budget collapse region below cutoff one.
+Section~\ref{sec:attained-cutoff} attains the constructive budget
+and allows the floor to equal the cutoff. Theorem~\ref{thm:scalar-envelope}
+gives the exact scalar total-moment envelope. Theorem~\ref{thm:universal-tail}
+then proves necessity of the constructed tail budget for every collapsing
+family. Readers interested in this sharp tail classification can start at
+Sections~\ref{sec:scalar-envelope}--\ref{sec:universal-tail}, using
+Theorem~\ref{thm:attained-cutoff} for the matching endpoint.
+These are separate families; their properties are not asserted jointly.
+
+\section{The question and the transfer convention}
+Local marginal agreement and rapid relaxation are different kinds of
+information. The distinction is familiar in limited independence and
+Markov-chain theory, but a comparison must specify the dynamics: a slow
+single-site heat-bath chain does not automatically give a slow transfer
+operator. We make this distinction within a single fixed-coupling transfer
+family and require exact, rather than approximate, agreement of marginal
+input.
+
+Let $\Omega_L=\F_2^L$, with Hamming distance $d(x,y)$. Fix $\beta>0$ and put
+$q=e^{-2\beta}$. Our unweighted kernel is
+\begin{equation}\label{eq:kernel}
+ M_\beta(x,y)=q^{d(x,y)}
+ =e^{-\beta L}\exp\!\left(\beta\sum_{i=1}^L(-1)^{x_i+y_i}\right).
+\end{equation}
+For a strictly positive probability law $\mu$ on $\Omega_L$, define
+\begin{equation}\label{eq:weighted}
+ A_\mu=\diag(\sqrt\mu)M_\beta\diag(\sqrt\mu).
+\end{equation}
+The kernel $M_\beta$ is a tensor power of
+$\left(\begin{smallmatrix}1&q\\q&1\end{smallmatrix}\right)$ and is positive
+definite. The same is true of $A_\mu$, which also has strictly positive
+entries. Write its eigenvalues in decreasing order as
+$\lambda_1>\lambda_2\ge\cdots>0$, counting multiplicities, and set
+\[
+ \gap(A_\mu)=1-\lambda_2/\lambda_1.
+\]
+Perron--Frobenius strictness gives a positive gap at each finite $L$; a
+bound uniform in $L$ is a separate matter. Multiplying either kernel by
+a positive scalar does not change any eigenvalue ratio.
+
+Let $u_L=\Unif(\Omega_L)$. Tensorization gives
+\begin{equation}\label{eq:product}
+ \lambda_2(A_{u_L})/\lambda_1(A_{u_L})
+       =\frac{1-q}{1+q}=\tanh\beta.
+\end{equation}
+For a law $\nu$, the literal marginal input of order $r$ is
+\begin{equation}\label{eq:input}
+ \mathcal M_r(\nu)=(\nu_S:S\subseteq[L],\ |S|\le r),
+\end{equation}
+where coordinate labels are retained. Full conditional distributions,
+entrywise weight bounds, and the transfer matrix itself are not included
+in this tuple.
+
+\begin{theorem}\label{thm:main}
+For each fixed $\beta>0$ there are constants $\alpha,R,\gamma>0$ such
+that, for all sufficiently large integers $L$, a strictly positive law
+$\mu_L$ on $\Omega_L$ has the following properties. Put
+$r_L=\lfloor\alpha L\rfloor$ and $m_L=2^{\lceil RL\rceil}$.
+\begin{enumerate}
+\item $\mathcal M_{r_L}(\mu_L)=\mathcal M_{r_L}(u_L)$.
+\item For every $2\le j\le m_L$,
+\begin{equation}\label{eq:slow}
+ 0<1-\lambda_j(A_{\mu_L})/\lambda_1(A_{\mu_L})
+                 \le 7e^{-\gamma L}.
+\end{equation}
+\item Let $v>0$ be the unit Euclidean Perron vector of $A_{\mu_L}$.
+The reversible Perron Doob chain
+\begin{equation}\label{eq:doob}
+ P_L(x,y)=\frac{A_{\mu_L}(x,y)v_y}{\lambda_1 v_x},
+ \qquad \pi_L(x)=v_x^2,
+\end{equation}
+has $\mathcal M_{r_L}(\pi_L)=\mathcal M_{r_L}(u_L)$ and the same
+normalized spectrum as $A_{\mu_L}$.
+\end{enumerate}
+One admissible choice is
+\begin{equation}\label{eq:parameters}
+ R=\min\left\{\frac{1-h(1/4)}2,\frac{\beta}{4\log 2}\right\},
+ \quad h(\alpha)<R/2,\quad
+ \gamma=\beta/2-R\log 2\ge\beta/4,
+\end{equation}
+with $0<\alpha<1/2$ and binary entropy
+$h(p)=-p\log_2p-(1-p)\log_2(1-p)$.
+\end{theorem}
+
+There are at least $m_L-1$ slow nonleading modes in this statement.
+We do not assert that their eigenvalues coincide. The positivity and
+strict gap at each finite size are compatible with their exponentially
+small separation from the Perron root. The theorem does not impose a
+uniform lower bound on the weights or a bounded interaction range.
+
+\section{Codes with two distance conditions}
+We include the coding argument to make all hypotheses of the spectral
+construction explicit. Simultaneously good primal and dual codes are
+classical; stronger algorithmic constructions are available
+\cite{BrehmResch}. The relation between code projections and limited
+independence is standard background for the marginal comparison
+\cite{AGM}.
+
+\begin{lemma}\label{lem:code}
+Suppose $0<\alpha,\delta<1/2$ and
+$h(\alpha)<R<1-h(\delta)$. Put $k=\lceil RL\rceil$.
+If $k<L$ and
+\begin{equation}\label{eq:codegate}
+ 2^{k-L(1-h(\delta))}+2^{-k+Lh(\alpha)}<1,
+\end{equation}
+there is a binary linear code $C\subseteq\F_2^L$ of dimension $k$
+such that every nonzero codeword has weight at least $\delta L$ and
+$C^\perp$ has no nonzero word of weight at most $\lfloor\alpha L\rfloor$.
+Every coordinate projection of $C$ onto at most $\lfloor\alpha L\rfloor$
+coordinates is surjective. The displayed conditions hold for all
+sufficiently large $L$.
+\end{lemma}
+\begin{proof}
+Choose a uniformly random binary $k\times L$ matrix $G$. For each fixed
+nonzero row vector $z\in\F_2^k$, the word $zG$ is uniform in $\F_2^L$.
+The probability that some such $zG$ has weight less than $\delta L$ is
+at most
+\[
+ 2^k2^{-L}\sum_{j\le\delta L}\binom Lj
+       \le 2^{k-L(1-h(\delta))}.
+\]
+Failure of full row rank is included in this event, since it produces
+a zero word from a nonzero message. For a fixed nonzero column vector
+$w\in\F_2^L$, the vector $Gw$ is uniform in $\F_2^k$. Thus the probability
+of a nonzero dual word with weight at most $\lfloor\alpha L\rfloor$ is
+at most
+\[
+ 2^{-k}\sum_{1\le j\le\alpha L}\binom Lj
+       \le 2^{-k+Lh(\alpha)}.
+\]
+Their sum is less than one, so both failures can be avoided simultaneously.
+
+For the entropy estimate, if $0<p<1/2$, set $z=p/(1-p)<1$. Since
+$z^j\ge z^{pL}$ for $j\le pL$, the binomial theorem gives
+\[
+ \sum_{j\le pL}\binom Lj\le z^{-pL}(1+z)^L=2^{Lh(p)}.
+\]
+This bound applies to the inclusive sums and hence to the strict-weight
+failure event as well. No integrality assumption on $\delta L$ is needed.
+
+If the columns indexed by $S$ were dependent, their relation would give
+a nonzero word of $C^\perp$ supported in $S$. Consequently $G_S$ has
+rank $|S|$ whenever $|S|\le\lfloor\alpha L\rfloor$. Uniform messages
+therefore give uniform projections onto $\F_2^S$. Finally, the exponents
+in~\eqref{eq:codegate} tend to minus infinity, since $k=RL+O(1)$ and
+both entropy inequalities are strict.
+\end{proof}
+
+\section{A finite positive concentration estimate}
+The spectral step needs only the size and minimum distance of the code.
+The dual distance will enter through the marginal statement.
+
+\begin{proposition}\label{prop:finite}
+Let $C\subseteq\F_2^L$ be a binary linear code with size $m\ge2$ and
+minimum nonzero weight $d_C$. Suppose its coordinate projections onto
+sets of size at most $r$ are surjective. For $0<\eta\le1/2$, let
+\begin{equation}\label{eq:mixture}
+ \mu=(1-\eta)\Unif(C)+\eta u_L,
+ \qquad s=(m-1)e^{-2\beta d_C}.
+\end{equation}
+Then $\mu$ is strictly positive, $\mathcal M_r(\mu)=\mathcal M_r(u_L)$,
+and every $2\le j\le m$ satisfies
+\begin{equation}\label{eq:finite}
+ 0<1-\lambda_j(A_\mu)/\lambda_1(A_\mu)
+       \le 2s+2m(\sqrt\eta+\eta).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Uniform codewords have uniform projections by surjectivity, and a mixture
+of two laws with the same marginals has those same marginals. The positive
+product part gives strict positivity at every configuration.
+
+Every codeword has probability
+\[
+ a=(1-\eta)/m+\eta/2^L\ge1/(2m).
+\]
+The principal block of $A_\mu$ indexed by $C$ is $aM_{CC}$. Its diagonal
+is $a$, and the off-diagonal row sums of $M_{CC}$ are at most $s$:
+distinct codewords differ by a nonzero codeword of weight at least $d_C$.
+Thus all eigenvalues of $M_{CC}$ lie in $[1-s,1+s]$. For example, the
+norm of its symmetric off-diagonal part is bounded by the maximum
+absolute row sum. Principal interlacing gives
+\begin{equation}\label{eq:interlace}
+ \lambda_j(A_\mu)\ge\lambda_m(A_\mu)\ge a(1-s)
+       \quad(1\le j\le m).
+\end{equation}
+Independently, a coordinate Rayleigh vector gives $\lambda_1(A_\mu)\ge a$.
+
+Write $A_\mu$ in $C,C^c$ blocks. The outside principal block is positive
+semidefinite, and its trace is
+$\sum_{C^c}\mu=\eta(1-m/2^L)\le\eta$, so its norm is at most $\eta$.
+For the rectangular cross block $B$, all entries of $M_\beta$ are at most
+one, and therefore
+\[
+ \|B\|^2\le\|B\|_{\rm F}^2
+ \le\left(\sum_C\mu\right)\left(\sum_{C^c}\mu\right)\le\eta.
+\]
+The symmetric block matrix with off-diagonal blocks $B,B^*$ and zero
+diagonal has norm $\|B\|$. Consequently
+\[
+ \bigl\|A_\mu-\diag(aM_{CC},0)\bigr\|\le\sqrt\eta+\eta,
+ \qquad
+ \lambda_1(A_\mu)\le a(1+s)+\sqrt\eta+\eta.
+\]
+Subtract~\eqref{eq:interlace}, divide by $\lambda_1\ge a$, and use
+$a\ge1/(2m)$ to obtain~\eqref{eq:finite}. Perron strictness proves the
+strict lower inequality. The upper bound is valid even when it is
+larger than one; no small-size success is claimed.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}, parts one and two]
+Use~\eqref{eq:parameters} and Lemma~\ref{lem:code} with $\delta=1/4$.
+The choice of $R$ satisfies $0<R<1-h(1/4)$ and $R\log2\le\beta/4$.
+Choose codes for sufficiently large $L$, and put
+\[
+ m=2^{\lceil RL\rceil},\qquad \eta=e^{-2\beta L}/m^2.
+\]
+This number lies in $(0,1/4]$. Since $d_C\ge L/4$ and
+$m\le2e^{R(\log2)L}$,
+\[
+ 2(m-1)e^{-2\beta d_C}\le4e^{-(\beta/2-R\log2)L}
+          =4e^{-\gamma L}.
+\]
+Also, using $m\ge2$ and $\gamma\le\beta$,
+\[
+ 2m(\sqrt\eta+\eta)
+   =2e^{-\beta L}+2e^{-2\beta L}/m
+   \le3e^{-\beta L}\le3e^{-\gamma L}.
+\]
+Proposition~\ref{prop:finite} now proves both claims. The condition $k<L$
+ensures $m<2^L$, so every asserted eigenvalue index exists.
+\end{proof}
+
+\section{Stationary marginals survive the Perron transform}
+The weighting law in a transfer congruence need not equal the stationary
+law of its associated Markov chain. Matching the former alone would leave
+a significant interpretive gap. Code symmetry pays the latter exactly.
+
+\begin{lemma}\label{lem:symmetry}
+For the mixture~\eqref{eq:mixture}, the Perron stationary law
+$\pi(x)=v_x^2$ satisfies $\mathcal M_r(\pi)=\mathcal M_r(u_L)$.
+\end{lemma}
+\begin{proof}
+For every $c\in C$, translation $x\mapsto x+c$ preserves $\mu$, Hamming
+distance, and hence $A_\mu$. The corresponding permutation commutes with
+$A_\mu$ and takes a positive unit Perron vector to another such vector.
+Uniqueness forces $v_{x+c}=v_x$, so $\pi$ is invariant under translations
+by $C$. If $|S|\le r$, every translation on $\F_2^S$ lifts to some
+$c\in C$ by the assumed surjectivity. The $S$-marginal of $\pi$ is
+therefore invariant under all translations and must be uniform.
+\end{proof}
+
+\begin{proof}[Completion of Theorem~\ref{thm:main}]
+The Perron eigenvector equation gives row sums one for~\eqref{eq:doob}.
+Symmetry gives detailed balance:
+\[
+ \pi(x)P_L(x,y)=v_xA_\mu(x,y)v_y/\lambda_1
+              =\pi(y)P_L(y,x).
+\]
+Conjugation by $\diag(v)$ shows that $P_L$ is similar to $A_\mu/\lambda_1$.
+It has strictly positive entries and the claimed spectrum. Apply
+Lemma~\ref{lem:symmetry} to obtain its stationary marginal assertion.
+For the uniform weight, the Perron vector and stationary law are uniform,
+and~\eqref{eq:product} supplies the comparison chain.
+\end{proof}
+
+\section{An exact parity control with different dynamics}
+The positive parity family
+\begin{equation}\label{eq:parity}
+ \mu_t(x)=2^{-L}(1+t\chi_{[L]}(x)),\qquad |t|<1,
+ \qquad \chi_S(x)=(-1)^{\sum_{i\in S}x_i},
+\end{equation}
+has all proper marginals equal to product marginals. Its single-site
+heat-bath gap tends to zero as $|t|\to1$ at fixed size $L\ge2$ and fixed
+finite positive site rates~\cite{ErikssonParity}. Nevertheless, its transfer ratio at fixed
+$\beta$ is bounded uniformly away from one, as follows.
+
+\begin{proposition}\label{prop:parity}
+Let $L\ge2$, $\rho=\tanh\beta$, and $|t|<1$. Up to a common positive
+scalar, the spectrum of $A_{\mu_t}$ is the union over unordered complement
+pairs $\{S,S^c\}$ of the two roots
+\begin{equation}\label{eq:parityroots}
+ \frac{z_s\pm\sqrt{z_s^2-4\Delta}}2,
+ \quad z_s=\rho^s+\rho^{L-s},\quad s=|S|,
+ \quad \Delta=(1-t^2)\rho^L.
+\end{equation}
+The Perron root is the upper root at $s=0$, and the second eigenvalue is
+the upper root at $s=1$. In particular,
+\begin{equation}\label{eq:paritybound}
+ \frac{\lambda_2(A_{\mu_t})}{\lambda_1(A_{\mu_t})}
+ \le\frac{\rho+\rho^{L-1}}{1+\rho^L}
+ \le\tanh(2\beta)<1.
+\end{equation}
+The last bound is sharp as a supremum over $L\ge2$ and $|t|<1$.
+\end{proposition}
+\begin{proof}
+The row-normalized product transfer $P_\beta=M_\beta/(1+q)^L$ acts on
+$\chi_S$ by $\rho^{|S|}$. Write $D_t=\diag\sqrt{1+t\chi_{[L]}}$.
+The weighted congruence, apart from a common scalar, is $D_tP_\beta D_t$,
+which is similar to $P_\beta D_t^2$ since $D_t$ is invertible.
+Multiplication by $\chi_{[L]}$ exchanges $\chi_S$ and $\chi_{S^c}$.
+The coefficient block on that ordered pair is
+\[
+ \begin{pmatrix}
+ \rho^s&t\rho^s\\ t\rho^{L-s}&\rho^{L-s}
+ \end{pmatrix}.
+\]
+Its trace is $z_s$ and its determinant is $\Delta$, yielding
+\eqref{eq:parityroots}. The $2^{L-1}$ complement pairs exhaust the
+character basis, with repetitions counted as usual.
+
+The largest $z_s$ is $z_0=1+\rho^L$, and the largest among proper pairs
+is $z_1=\rho+\rho^{L-1}$. The upper root increases with $z_s$.
+The lower root in the empty/full pair is at most $\rho^L$, whereas
+the upper root for $s=1$ is at least $\rho$. Every other lower root
+is no larger than its own upper root. This identifies the two largest
+eigenvalues.
+
+For fixed $\Delta>0$, the upper root divided by $z$ is
+\[
+ \frac{1+\sqrt{1-4\Delta/z^2}}2,
+\]
+which increases with $z\ge2\sqrt\Delta$. Comparing $z_1\le z_0$ proves
+the first inequality in~\eqref{eq:paritybound}. For the second, write
+$b=\rho^{L-2}\le1$; the ratio is $\rho(1+b)/(1+\rho^2b)$, increasing
+in $b$. Its maximum is $2\rho/(1+\rho^2)=\tanh(2\beta)$.
+For $L=2$ and $t\to1$, $\Delta\to0$, so equality is approached.
+\end{proof}
+
+This control rules out a tempting shortcut: the known parity heat-bath
+obstruction cannot be transferred by changing the name of the operator.
+The code construction uses a different geometric ingredient, a set of
+exponentially many mutually separated configurations while retaining
+surjective coordinate projections.
+
+\section{What marginal certificates cannot establish}
+\begin{corollary}\label{cor:certificate}
+Fix the constants of Theorem~\ref{thm:main}. Suppose $F$ is a valid lower
+bound on the transfer gap for every strictly positive weight, and factors
+through the tuple
+\[
+ (L,\beta,\mathcal M_{r_L}(\mu),\mathcal M_{r_L}(\pi)).
+\]
+At the product input and for all sufficiently large $L$, its value is at
+most $7e^{-\gamma L}$. The same conclusion holds if only one of the two
+marginal tuples is supplied.
+\end{corollary}
+\begin{proof}
+At the same $L$ and $\beta$, the constructed weight and its stationary
+law supply exactly the same input as the uniform weight and uniform
+stationary law. A function of that input takes the same value on both.
+Validity on the constructed example and~\eqref{eq:slow} for $j=2$
+force the asserted bound.
+\end{proof}
+
+The corollary does not assert that every such functional is zero or that
+the product chain is slow. Its actual gap is $1-\tanh\beta$. Nor does
+it concern a certificate using full conditionals, uniform density bounds,
+the operator entries, or code membership: those are additional information.
+In particular, the weights here can have exponentially small probabilities
+and global many-body interactions. The theorem says nothing against a
+result restricted to uniformly controlled, fixed-range Gibbs weights.
+The Perron Doob chain updates a full configuration and is not a local
+single-site dynamics. We make no claim about continuum Yang--Mills,
+a physical mass gap, entropy tensorization, or a specified spatial mixing
+rate. The many-mode conclusion is spectral; no separate theorem about
+metastable sets is implicit.
+
+\section{Upper density control without a lower bound}\label{sec:density}
+The obstruction above allows the maximum density relative to product to
+increase with dimension. A uniform upper bound changes the conclusion;
+a positive lower bound is not required. Write $\rho=\tanh\beta$ and let
+$P_\rho$ be the Boolean noise operator in $L^2(u_L)$, whose Walsh
+multipliers are $\rho^{|S|}$. For a nonnegative density $r$ with
+$\mathbb E_{u_L}r=1$, put
+\[
+ T_r=\diag(\sqrt r)P_\rho\diag(\sqrt r).
+\]
+Since $P_\rho=M_\beta/(1+e^{-2\beta})^L$, for $\mu=2^{-L}r$ we have
+$A_\mu=2^{-L}(1+e^{-2\beta})^L T_r$. Thus the eigenvalue ratios agree.
+Here zeros of $r$ are allowed; we keep the zero eigenvalues outside its
+support in the full $2^L$-dimensional list.
+
+\begin{theorem}\label{thm:density}
+Let $L\ge1$, $0<\rho<1$, $B\ge1$, and $0\le r\le B$ with
+$\mathbb E_{u_L}r=1$. Set
+\[
+ e_\rho=\frac{1+\rho^2}{(1-\rho)^2},\qquad
+ c(B,\rho)=B^{-1}(2B)^{-2e_\rho}.
+\]
+The two largest eigenvalues of $T_r$ satisfy
+$1-\lambda_2/\lambda_1\ge c(B,\rho)>0$, independently of $L$.
+In particular, no positive lower bound on $r$ is needed.
+\end{theorem}
+\begin{proof}
+All norms and scalar products use $u_L$. The noise operator is positive
+semidefinite, fixes constants and is a contraction. Hence
+$\lambda_1\le B$. The unit vector $\sqrt r$ has Rayleigh quotient
+$\langle r,P_\rho r\rangle\ge(\mathbb E r)^2=1$, by Walsh expansion,
+so $1\le\lambda_1\le B$. On $S=\{r>0\}$ the matrix is strictly positive;
+its Perron vector is positive on $S$ and its leading eigenvalue is simple.
+
+We use two classical Boolean hypercontractive inequalities. Put
+$q_*=1+\rho^{-2}$ and $p_*=1-\rho$. Then
+\begin{equation}\label{eq:hyperinputs}
+ \|P_\rho f\|_{q_*}\le\|f\|_2,\qquad
+ \langle f,P_\rho g\rangle\ge\|f\|_{p_*}\|g\|_{p_*}\quad(f,g\ge0).
+\end{equation}
+For clarity about conventions, equations (1.1)--(1.2) and tensorization
+in~\cite{MOS} use time $t=-\log\rho$ for the uniform Boolean semigroup.
+For the second inequality set $p_*'=p_*/(p_*-1)=-(1-\rho)/\rho$.
+Then
+$\tfrac12\log((1-p_*')/(1-p_*))=-\log\rho$.
+The reverse inequality gives $\|P_\rho g\|_{p_*'}\ge\|g\|_{p_*}$;
+reverse H\"older gives the displayed bilinear bound. This is first applied
+to positive functions, then to $f+\varepsilon,g+\varepsilon$ and the limit
+$\varepsilon\downarrow0$. Finite sums and $p_*>0$ justify that limit;
+we do not take a negative moment of a function with zeros.
+
+If $\lambda_2<\lambda_1/2$, the gap exceeds $1/2$. Otherwise
+$\lambda_2\ge1/2$. Choose a real unit second eigenvector $w$ orthogonal
+to the Perron vector. It vanishes off $S$ and has both signs. Write
+$w=s h_+-t h_-$, where $s,t>0$, $s^2+t^2=1$, and $h_+,h_-$ are
+nonnegative orthonormal functions with disjoint supports. Positivity
+and the eigenrelation give pointwise
+$\lambda_2h_\pm\le T_rh_\pm$: on the corresponding sign support this
+follows from the eigenrelation, and elsewhere from positivity.
+Integration against the unit $h_\pm$ gives
+$\lambda_2\le\langle\sqrt r h_\pm,P_\rho\sqrt r h_\pm\rangle$.
+For $f_\pm=\sqrt r\,h_\pm$ this yields
+\[
+ \lambda_2f_\pm\le rP_\rho f_\pm,\qquad
+ \|f_\pm\|_{q_*}\le\frac B{\lambda_2}\|f_\pm\|_2,\qquad
+ \|f_\pm\|_2^2\ge\langle f_\pm,P_\rho f_\pm\rangle\ge\lambda_2.
+\]
+The middle inequality uses the first part of~\eqref{eq:hyperinputs}.
+No division by $r$ occurs.
+
+Let $\theta=p_*(q_*-2)/(2(q_*-p_*))$. Ordinary H\"older applied to
+powers of $f$ gives
+$\|f\|_2\le\|f\|_{p_*}^{\theta}\|f\|_{q_*}^{1-\theta}$,
+since $1/2=\theta/p_*+(1-\theta)/q_*$. This does not require a normed
+space at exponent $p_*<1$: the H\"older weights
+$2\theta/p_*$ and $2(1-\theta)/q_*$ are positive and sum to one.
+Thus each sign part satisfies
+\[
+ \|f_\pm\|_{p_*}\ge\sqrt{\lambda_2}
+       (B/\lambda_2)^{-e_\rho},\qquad
+ \frac{1-\theta}{\theta}
+ =\frac{q_*(2-p_*)}{p_*(q_*-2)}=e_\rho.
+\]
+By the second part of~\eqref{eq:hyperinputs}, the cross entry obeys
+\[
+ d=\langle h_+,T_rh_-\rangle
+   =\langle f_+,P_\rho f_-\rangle
+   \ge\lambda_2(B/\lambda_2)^{-2e_\rho}.
+\]
+The compression of $T_r$ to the basis $(h_+,h_-)$ is
+$\left(\begin{smallmatrix}a&d\\d&b\end{smallmatrix}\right)$.
+Its eigenvector $(s,-t)$ has eigenvalue $\lambda_2$, giving
+$a-\lambda_2=dt/s$ and $b-\lambda_2=ds/t$.
+Its other eigenvalue is $\lambda_2+d/(st)$, because $s^2+t^2=1$.
+The variational principle and $st\le1/2$ now imply
+$\lambda_1-\lambda_2\ge d/(st)\ge2d$. Consequently
+\[
+ 1-\frac{\lambda_2}{\lambda_1}
+ \ge\frac{2\lambda_2}{\lambda_1}(B/\lambda_2)^{-2e_\rho}
+ \ge B^{-1}(2B)^{-2e_\rho}.
+\]
+This does not deteriorate when one sign part has small norm. In the
+previously omitted case, $c(B,\rho)\le1/4<1/2$, since $e_\rho\ge1$.
+If the support has one point, $\lambda_2=0$ and the gap is one, so that
+case is included as well.
+\end{proof}
+
+\begin{corollary}\label{cor:densitygrowth}
+At fixed $\rho$, suppose a sequence has
+$\gap(T_{r_L})\le K e^{-\gamma L}$, with $K,\gamma>0$. Then
+\[
+ \max r_L\ge
+ \left(\frac{2^{-2e_\rho}}K\right)^{1/(2e_\rho+1)}
+       e^{\gamma L/(2e_\rho+1)}.
+\]
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:density} with $B=\max r_L\ge1$ and rearrange.
+\end{proof}
+For Theorem~\ref{thm:main}, take $K=7$ and its positive $\gamma$.
+The code mixture has maximum density $2^L(1-\eta)/|C|+\eta$, consistent
+with this necessary growth. Upper density growth alone is not asserted
+to be sufficient for collapse. Tiny minimum density alone cannot cause
+collapse under a uniform maximum-density bound. These are statements
+about this transfer family, not single-site heat-bath dynamics.
+The constants are not claimed optimal.
+
+The moment analysis separates universal guarantees from adverse examples.
+The two strict exponent regimes are followed by auxiliary critical estimates
+and an explicit rate, then the exact critical-budget theorem. The final
+critical-tail section gives the sharp escaped-moment and fixed-cutoff
+boundaries, and a stable
+counterexample to necessity of uniform integrability. Earlier partial
+estimates are retained for their explicit rate and proof dependencies;
+they are not additional independent discoveries.
+
+\section{Density-moment threshold: the two strict regimes}
+\label{sec:finite-moment}
+A pointwise density cap is stronger than necessary. We next replace it
+by a dimension-independent finite moment. A second construction shows why
+one cannot simply assume that any finite moment suffices. All norms in
+this section use the uniform probability law $u_L$; the operator is the
+same $T_r$ as in Section~\ref{sec:density}.
+
+\begin{theorem}\label{thm:moment}
+Fix $0<\rho<1$, $s>(1+\rho)/(1-\rho)$ and $B\ge1$. For every $L\ge1$
+and density $r\ge0$ with $\mathbb E r=1$ and $\|r\|_s\le B$,
+\[
+ \gap(T_r)\ge\min\{1/2,(2B)^{-2e}\}>0,
+ \qquad e=\frac{2\rho s}{(1-\rho)(s(1-\rho)-1-\rho)}.
+\]
+Neither a pointwise upper bound nor a positive lower bound is assumed.
+\end{theorem}
+\begin{proof}
+Set $A=1+\rho$, $p=1-\rho$, $t=1+1/\rho$ and
+\[
+ Q=\frac{st}{s+t}=\frac{s(1+\rho)}{s\rho+1+\rho}.
+\]
+The condition on $s$ is exactly $Q>A$, so $Q>A>1>p>0$.
+Ordinary Boolean hypercontractivity gives
+\[
+ \|P_{\sqrt\rho}f\|_2\le\|f\|_A,
+ \qquad \|P_\rho f\|_t\le\|f\|_A.
+\]
+Indeed the noise thresholds are respectively
+$\sqrt{(A-1)/(2-1)}=\sqrt\rho$ and
+$\sqrt{(A-1)/(t-1)}=\rho$. The reverse bilinear inequality in
+\eqref{eq:hyperinputs} applies at exponent $p$.
+
+As before, testing the unit vector $\sqrt r$ gives $\lambda_1\ge1$.
+For any real unit vector $h$, put $f=\sqrt r\,h$ and
+$A_0=2s/(s+1)>A$. H\"older and probability-space monotonicity give
+\[
+ \langle h,T_rh\rangle=\|P_{\sqrt\rho}f\|_2^2
+ \le\|f\|_A^2\le\|f\|_{A_0}^2
+ \le\|\sqrt r\|_{2s}^2\|h\|_2^2\le B,
+\]
+where $1/A_0=1/(2s)+1/2$. Thus $1\le\lambda_1\le B$ without
+using a maximum-density estimate.
+
+If $\lambda_2<\lambda_1/2$, the gap is greater than $1/2$.
+Otherwise $\lambda_2\ge1/2$. On the nonempty support of $r$ the matrix
+has strictly positive entries. A real unit second eigenvector vanishes
+off this support and has both signs, by orthogonality to the positive
+Perron vector. Write it as $w=c h_+-d h_-$ with $c,d>0$,
+$c^2+d^2=1$ and nonnegative orthonormal disjoint sign parts.
+Positivity and the eigenrelation imply
+$\lambda_2h_\pm\le T_rh_\pm$ pointwise, including their zero sets.
+For either $f=\sqrt r\,h_\pm$, multiplication by $\sqrt r$ gives
+$\lambda_2f\le rP_\rho f$. H\"older with $1/Q=1/s+1/t$ yields
+\[
+ \|f\|_Q\le (B/\lambda_2)\|f\|_A.
+\]
+Integration against the unit sign part also gives
+$\lambda_2\le\langle f,P_\rho f\rangle\le\|f\|_A^2$.
+Let $0<\theta<1$ solve $1/A=\theta/p+(1-\theta)/Q$.
+H\"older applied to powers, with positive weights
+$A\theta/p$ and $A(1-\theta)/Q$ summing to one, gives
+$\|f\|_A\le\|f\|_p^\theta\|f\|_Q^{1-\theta}$.
+No triangle inequality at exponent $p<1$ is used. Combining these bounds,
+\[
+ \|f\|_p\ge\sqrt{\lambda_2}(B/\lambda_2)^{-e},\qquad
+ e=\frac{1-\theta}{\theta}
+   =\frac{Q(A-p)}{p(Q-A)}
+   =\frac{2\rho s}{(1-\rho)(s(1-\rho)-1-\rho)}.
+\]
+Reverse hypercontractivity now bounds the cross entry by
+$D=\langle h_+,T_rh_-\rangle\ge\lambda_2(B/\lambda_2)^{-2e}$.
+The two-dimensional compression, exactly as in the proof of
+Theorem~\ref{thm:density}, has eigenvalues $\lambda_2$ and
+$\lambda_2+D/(cd)$. Since $cd\le1/2$, the variational principle gives
+\[
+ \gap(T_r)\ge\frac{2D}{\lambda_1}
+ \ge\frac{2\lambda_2}{\lambda_1}(B/\lambda_2)^{-2e}
+ \ge(2B)^{-2e}.
+\]
+Here $2\lambda_2/\lambda_1\ge1$ and $\lambda_2\ge1/2$.
+Combining the two cases proves the claim. One-point support has
+$\lambda_2=0$ and is already covered. No step divides by $r$.
+\end{proof}
+
+\begin{theorem}\label{thm:tilts}
+Fix $0<\rho<1$, $1<s<s_c:=(1+\rho)/(1-\rho)$ and $B>1$.
+There are strictly positive mean-one densities $r_L$, for every $L\ge1$,
+with $\|r_L\|_s\le B$ and $r_L\ge1/B$, and constants
+$\kappa>1$ and $0<\omega<\kappa$, independent of $L$, such that
+\[
+ 0<\gap(T_{r_L})\le
+ 2(\omega/\kappa)^L+\varepsilon^{-1}\kappa^{-L},
+ \qquad \varepsilon=(B-1)/2.
+\]
+Thus a uniform positive lower density does not prevent exponential gap
+collapse throughout the strict subcritical moment regime.
+\end{theorem}
+\begin{proof}
+Relabel the cube as $\{-1,1\}^L$. For a fixed tilt $0<\delta<1$, put
+\[
+ n=\left(\frac{(1+\delta)^s+(1-\delta)^s}{2}\right)^{1/s},
+ \qquad w_\pm(x)=\frac{1\pm\delta x}{n},\qquad m=n^{-1}.
+\]
+Strict convexity gives $n>1$, while $\|w_\pm\|_s=1$ and
+$\mathbb E w_\pm=m$. Define $R_{\pm,L}(x)=\prod_i w_\pm(x_i)$ and
+\[
+ Z_L=1+2\varepsilon m^L,\qquad
+ r_L=\frac{1+\varepsilon(R_{+,L}+R_{-,L})}{Z_L}.
+\]
+Product integration gives $\|R_{\pm,L}\|_s=1$ and
+$\mathbb E R_{\pm,L}=m^L$. Hence $r_L>0$, $\mathbb E r_L=1$,
+$\|r_L\|_s\le(1+2\varepsilon)/Z_L\le B$, and
+$r_L\ge1/Z_L\ge1/B$.
+
+Write $Q=P_{\sqrt\rho}$. Since $Q^2=P_\rho$, the matrices
+$T_{r_L}=AA^*$ and $S_L=A^*A$, with $A=M_{\sqrt{r_L}}Q$,
+have identical spectra, including multiplicities. Here $M_f$ denotes
+multiplication by $f$. Direct expansion gives
+\[
+ Z_L S_L=P_\rho+\varepsilon(X_L+Y_L),\qquad
+ X_L=H_+^{\otimes L},\quad Y_L=H_-^{\otimes L},
+\]
+where the one-site matrices, in the orthonormal Walsh basis $(1,x)$, are
+\[
+ H_\pm=\frac1n
+ \begin{pmatrix}1&\pm\delta\sqrt\rho\\
+                 \pm\delta\sqrt\rho&\rho\end{pmatrix}.
+\]
+They are positive definite and conjugate by $\diag(1,-1)$. Their common
+simple top eigenvalue is
+\[
+ \kappa(\delta)=
+ \frac{1+\rho+\sqrt{(1-\rho)^2+4\rho\delta^2}}{2n(\delta)}.
+\]
+At zero, $\kappa(0)=1$, $(\log\kappa)'(0)=0$, and differentiation yields
+\[
+ (\log\kappa)''(0)=\frac{2\rho}{1-\rho}-(s-1)>0.
+\]
+All functions are smooth near zero. Taylor's theorem therefore gives
+$\kappa>1$ for every sufficiently small positive $\delta$. Fix one such
+$\delta<1$. This choice depends on $\rho,s$ and is independent of $L$;
+no uniform exponential rate as $s\uparrow s_c$ is asserted.
+
+Set $\omega=\|H_+^{1/2}H_-^{1/2}\|$. Positive definiteness and
+submultiplicativity give $0<\omega\le\kappa$. If equality held, norm
+attainment at a unit vector $v$ would force equality in both steps of
+\[
+ \|H_+^{1/2}H_-^{1/2}v\|
+ \le\sqrt\kappa\,\|H_-^{1/2}v\|\le\kappa.
+\]
+The second equality makes $v$ a top eigenvector of $H_-$; the first
+then makes it a top eigenvector of $H_+$. But $H_+-H_-$ has zero
+diagonal and nonzero equal off-diagonal entries, so is invertible.
+It cannot annihilate their common top eigenvector. Thus $\omega<\kappa$.
+
+For $N=2^L\ge2$, use the $N$-by-$2N$ matrix
+$C=[\sqrt{X_L},\sqrt{Y_L}]$. Its two Gram matrices satisfy
+\[
+ CC^*=X_L+Y_L,\qquad
+ C^*C=\begin{pmatrix}
+ X_L&\sqrt{X_L}\sqrt{Y_L}\\
+ \sqrt{Y_L}\sqrt{X_L}&Y_L
+ \end{pmatrix}.
+\]
+The block diagonal part has its two largest eigenvalues equal to
+$\kappa^L$. Tensorization of positive square roots and of operator
+norms gives $\|\sqrt{X_L}\sqrt{Y_L}\|=\omega^L$, which is also the
+norm of the self-adjoint off-diagonal perturbation. The variational
+eigenvalue bound consequently gives
+\[
+ \lambda_1(X_L+Y_L)\le\kappa^L+\omega^L,\qquad
+ \lambda_2(X_L+Y_L)\ge\kappa^L-\omega^L>0.
+\]
+Indeed $C^*C$ and $CC^*$ have the same $N$ positive eigenvalues,
+with $N$ additional zeros only in $C^*C$, so both leading bounds
+transfer even when $L=1$. Also $X_L+Y_L\ge X_L$ gives
+$\lambda_1(X_L+Y_L)\ge\kappa^L$.
+
+Finally $P_\rho$ is positive semidefinite of norm one. For
+$F_L=Z_L S_L$, the variational principle and norm bound imply
+\[
+ \lambda_1(F_L)\le\varepsilon(\kappa^L+\omega^L)+1,
+ \qquad \lambda_2(F_L)\ge\varepsilon(\kappa^L-\omega^L),
+ \qquad \lambda_1(F_L)\ge\varepsilon\kappa^L.
+\]
+Subtracting and dividing gives the claimed upper bound. The scalar
+$Z_L$ cancels from the ratio, and $S_L$ and the actual $T_{r_L}$
+have the same spectrum. Its entrywise positivity gives strict Perron
+separation at every finite $L$. Both terms in the upper bound decay
+exponentially, although the bound can exceed one at small $L$.
+\end{proof}
+
+Theorems~\ref{thm:moment} and~\ref{thm:tilts} separate the two strict
+regimes at the same value $s_c$. The next two sections treat the critical exponent $s=s_c$:
+first quantitative bounds in two budget ranges, then the exact budget
+boundary including equality. At $B=1$, Jensen forces $r=1$ and the actual gap is $1-\rho$;
+the sufficient lower bound is not claimed optimal. The tilted family
+does not claim product marginals for its weighting or stationary law.
+It isolates the moment obstruction for the same transfer operator,
+whereas Theorem~\ref{thm:main} isolates the marginal-information
+obstruction. The earlier two-point-spike construction in the retained
+analytical sources covers the narrower interval
+$1<s<\log2/\log(2/(1+\rho))$; it remains valid but is superseded here
+by the product-tilt construction.
+
+
+\section{Auxiliary critical estimates and an explicit rate}
+At $s=s_c=(1+\rho)/(1-\rho)$ the size of the moment budget matters.
+We give a sufficient stability condition near $B=1$ and a counterexample
+for every $B>2$. These preliminary bounds are retained for their quantitative content.
+Section~\ref{sec:critical-exact} then resolves the intervening budget
+range and the exact boundary. All norms in this section use the uniform
+probability measure $u_L$.
+
+\begin{theorem}[Small critical budgets]\label{thm:critical-small}
+Fix $0<\rho<1$ and $s=s_c$. For any $L\ge1$ and any density $r\ge0$
+with $\mathbb E r=1$ and $\|r\|_s\le B$, $B\ge1$,
+\[
+ \gap(T_r)\ge\max\{0,1-\rho-d_s(B)\},\qquad
+ d_s(B)=\begin{cases}
+ (B^s-1)^{1/s},&s\ge2,\\
+ \sqrt{\dfrac{2(B^s-1)}{s(s-1)}}(B+1)^{(2-s)/2},&1<s<2.
+ \end{cases}
+\]
+In particular, each fixed $\rho$ admits a nontrivial interval of budgets
+$B>1$ with a positive dimension-independent gap. No pointwise density
+bounds are required.
+\end{theorem}
+\begin{proof}
+Put $Q=P_{\sqrt\rho}$ and $S_r=QM_rQ$, which has the spectrum of $T_r$.
+Ordinary Boolean hypercontractivity, recalled in~\cite[Eq.~(1.1)]{MOS},
+gives $\|Qf\|_q\le\|f\|_2$ for $q=2s/(s-1)$, since
+$\rho=(s-1)/(s+1)=1/(q-1)$. H\"older's inequality with exponents
+$s,q,q$ yields
+\[
+ |\langle f,Q M_{r-1}Qg\rangle|
+ \le\|r-1\|_s\|Qf\|_q\|Qg\|_q
+ \le\|r-1\|_s\|f\|_2\|g\|_2.
+\]
+Thus $\|S_r-P_\rho\|\le\|r-1\|_s$ and
+$\lambda_2(S_r)\le\rho+\|r-1\|_s$. Also
+$\lambda_1(S_r)\ge\langle1,S_r1\rangle=1$.
+It remains to show $\|r-1\|_s\le d_s(B)$.
+
+Define $\phi_s(t)=t^s-1-s(t-1)$ for $t\ge0$, so that
+$\mathbb E\phi_s(r)\le B^s-1$. For $s\ge2$ and $u\ge0$,
+\[
+ \phi_s(1+u)=s\int_0^u((1+v)^{s-1}-1)\,dv\ge u^s,
+\]
+using $(1+v)^{s-1}\ge1+v^{s-1}$. For $0\le u\le1$,
+the derivative of $\phi_s(1-u)-u^s$ is
+$s[1-(1-u)^{s-1}-u^{s-1}]\ge0$ and its value at zero is zero.
+Hence $\phi_s(t)\ge|t-1|^s$, proving the first estimate by integration.
+For $1<s<2$, the integral Taylor remainder gives
+\begin{align*}
+ \phi_s(t)&=s(s-1)(t-1)^2
+  \int_0^1(1-v)[1+v(t-1)]^{s-2}\,dv\\
+ &\ge\frac{s(s-1)}2\frac{(t-1)^2}{(t+1)^{2-s}}.
+\end{align*}
+At $t=0$ the identity follows by continuity; the integral is finite for
+$s>1$. For $W=(r-1)^2/(r+1)^{2-s}$, H\"older gives
+\[
+ \mathbb E|r-1|^s
+ \le(\mathbb EW)^{s/2}
+       (\mathbb E(r+1)^s)^{(2-s)/2}.
+\]
+Use $\mathbb EW\le2(B^s-1)/(s(s-1))$ and $\|r+1\|_s\le B+1$.
+Both formulas for $d_s(B)$ tend to zero as $B\downarrow1$.
+Positive semidefiniteness supplies the trivial zero lower bound.
+\end{proof}
+
+\begin{theorem}[Balanced critical tilt]\label{thm:critical-large}
+Fix $0<\rho<1$, $s=s_c$, and $B>2$. There are constants $c,d>0$,
+independent of $L$, and strictly positive densities $r_L$, for every $L\ge1$,
+such that
+\[
+ \mathbb E r_L=1,\quad\|r_L\|_s\le B,\quad r_L\ge1/B,
+ \qquad
+ 0<\gap(T_{r_L})\le2\sqrt{B-1}\,e^{-cd^2L^{1/3}}.
+\]
+\end{theorem}
+\begin{proof}
+For a uniform sign $x\in\{-1,1\}$ and $|\delta|<1$ define
+\[
+ n(\delta)=\left(\frac{(1+\delta)^s+(1-\delta)^s}{2}\right)^{1/s},
+ \quad w_\delta(x)=\frac{1+\delta x}{n(\delta)},\quad
+ m(\delta)=n(\delta)^{-1}.
+\]
+The one-site matrix is
+\[
+ H(\delta)=\frac1{n(\delta)}
+ \begin{pmatrix}1&\delta\sqrt\rho\\\delta\sqrt\rho&\rho\end{pmatrix},
+ \qquad D=\diag(1,\rho).
+\]
+It is positive definite with top eigenvalue
+\[
+ \kappa(\delta)=
+ \frac{1+\rho+\sqrt{(1-\rho)^2+4\rho\delta^2}}{2n(\delta)}.
+\]
+For $\tau(\delta)=\|D^{1/2}H(\delta)^{1/2}\|$, the square is the
+top eigenvalue of $D^{1/2}H(\delta)D^{1/2}$, so
+\[
+ \tau(\delta)^2=
+ \frac{1+\rho^2+\sqrt{(1-\rho^2)^2+4\rho^2\delta^2}}{2n(\delta)}.
+\]
+These positive functions have even analytic logarithms near zero.
+Taylor expansion with bounded fourth derivative gives, at $s=s_c$,
+\begin{align*}
+ \log n(\delta)&=\frac{\rho}{1-\rho}\delta^2+O(\delta^4),\\
+ \log\kappa(\delta)&=O(\delta^4),\\
+ \log\tau(\delta)&=-\frac{\rho}{2(1-\rho^2)}\delta^2+O(\delta^4).
+\end{align*}
+Indeed, the respective square-root numerators divided by two are
+$1+\rho\delta^2/(1-\rho)+O(\delta^4)$ and
+$1+\rho^2\delta^2/(1-\rho^2)+O(\delta^4)$.
+Consequently there are $0<\delta_*<1$, $C\ge1$ and $c>0$ such that,
+for $|\delta|\le\delta_*$,
+\[
+ |\log\kappa(\delta)|\le C\delta^4,
+ \qquad\log\tau(\delta)\le-c\delta^2.
+\]
+For example, $c=\rho/[4(1-\rho^2)]$ works after reducing $\delta_*$.
+Choose a fixed $0<d\le\delta_*$ with $Cd^4\le\log(B-1)$, possible
+because $B>2$. Put
+\[
+ \delta_L=dL^{-1/3},\quad a_L=\kappa(\delta_L)^{-L},\quad
+ R_L=\prod_{i=1}^Lw_{\delta_L}(x_i),\quad
+ Z_L=1+a_Lm(\delta_L)^L,\quad r_L=\frac{1+a_LR_L}{Z_L}.
+\]
+The coefficient balances the two top block eigenvalues exactly.
+Since $|\log a_L|\le Cd^4L^{-1/3}\le\log(B-1)$,
+we have $a_L\le B-1$ and $a_L\to1$.
+Product measure gives $\|R_L\|_s=1$ and
+$\mathbb ER_L=m(\delta_L)^L$, with $0<m(\delta_L)<1$.
+Therefore $\mathbb Er_L=1$, $\|r_L\|_s\le(1+a_L)/Z_L\le B$,
+and $r_L\ge1/Z_L\ge1/B$ for every $L\ge1$.
+
+Let $X_L=H(\delta_L)^{\otimes L}$. Spectral equivalence gives
+$F_L=Z_LS_{r_L}=P_\rho+a_LX_L$. Both summands have top eigenvalue one.
+For the $N$ by $2N$ matrix
+$\mathcal C_L=[P_\rho^{1/2},\sqrt{a_L}X_L^{1/2}]$, $N=2^L$,
+the Gram matrix $\mathcal C_L^*\mathcal C_L$ has those summands on
+its diagonal and off-diagonal block of norm
+\[
+ \eta_L=\sqrt{a_L}\,\tau(\delta_L)^L
+ \le\sqrt{B-1}\,e^{-cd^2L^{1/3}}.
+\]
+Its block diagonal has two leading eigenvalues exactly one. The
+off-diagonal self-adjoint perturbation has norm $\eta_L$, whence
+$\lambda_1\le1+\eta_L$ and $\lambda_2\ge1-\eta_L$.
+The $N$ positive eigenvalues of $\mathcal C_L\mathcal C_L^*=F_L$
+are precisely the positive eigenvalues of $\mathcal C_L^*\mathcal C_L$;
+the latter has $N$ additional zeros. Thus the bounds apply to the first
+two eigenvalues of $F_L$, including at $L=1$. Since $F_L\ge P_\rho$,
+$\lambda_1(F_L)\ge1$ and $\gap(F_L)\le2\eta_L$.
+Scalar normalization and $AA^*/A^*A$ preserve the ratio. Strict entrywise
+positivity of $T_{r_L}$ gives its strictly positive finite-dimensional gap.
+\end{proof}
+
+The uniform component is a spectral channel here, rather than an additive
+error to discard. At the critical exponent the tilted top eigenvalue has
+zero quadratic variation, while its cross norm with the uniform channel
+has negative quadratic variation. The dimension-dependent tilt separates
+these orders, and balancing removes the residual diagonal mismatch.
+The small-budget estimate uses classical hypercontractivity and elementary
+perturbation theory; the large-budget family asserts neither matching
+marginals nor fixed-range interactions. The sufficient
+budget $B>2$ is not optimal; the next section identifies the exact
+threshold without claiming a rate there.
+
+\section{The exact critical moment budget}\label{sec:critical-exact}
+The preceding balanced construction has a sharper limiting moment than
+the triangle inequality used to obtain its all-dimension rate bound.
+Combining that limit with a sign decomposition of a second eigenvector
+identifies the entire critical budget boundary. Throughout this section,
+all norms and expectations use uniform probability on $\{-1,1\}^L$.
+
+\begin{theorem}[Exact critical budget]\label{thm:critical-exact}
+Fix $0<\rho<1$, $s=(1+\rho)/(1-\rho)$, and $B_*=2^{1/s}$.
+For every $L\ge1$ and $r\ge0$ with $\mathbb Er=1$,
+\begin{equation}\label{eq:two-sign-budget}
+ 2\lambda_2(T_r)^s\le\mathbb Er^s.
+\end{equation}
+Consequently $\|r\|_s\le B<B_*$ implies
+\[
+ \gap(T_r)\ge 1-B/B_*>0.
+\]
+For each fixed $b\in(0,1)$ there are strictly positive densities
+$\widetilde r_L$, for every $L\ge1$, such that
+\[
+ \mathbb E\widetilde r_L=1,\qquad
+ \|\widetilde r_L\|_s\le B_*,\qquad
+ \widetilde r_L\ge b,\qquad
+ \gap(T_{\widetilde r_L})\longrightarrow0.
+\]
+Thus the infimum of the gap over all dimensions and densities with
+$\|r\|_s\le B$ is positive exactly for $1\le B<B_*$.
+The same classification holds with any prescribed fixed floor
+$r\ge b$, $0<b<1$. The positive lower bound displayed above is not
+asserted optimal; no convergence rate at $B=B_*$ is asserted.
+\end{theorem}
+
+\begin{proof}
+\emph{Two sign regions.}
+Put $Q=P_{\sqrt\rho}$ and $p=1+\rho=2s/(s+1)$.
+Endpoint Boolean hypercontractivity gives $\|Qg\|_2\le\|g\|_p$.
+For $h$ supported on $C$, H\"older's inequality gives
+\begin{align}
+ \langle h,T_rh\rangle
+ &=\|Q(\sqrt r\,h)\|_2^2\nonumber\\
+ &\le\|\sqrt r\,h\|_p^2
+ \le\bigl(\mathbb E[r^s\mathbf1_C]\bigr)^{1/s}\|h\|_2^2.
+ \label{eq:restricted-moment}
+\end{align}
+Indeed, before raising to $2/p$, the conjugate exponents are
+$2/(2-p)$ and $2/p$, and $p/(2-p)=s$.
+
+On its nonempty active support $A=\{r>0\}$, the matrix $T_r$
+is strictly entrywise positive. It has a simple positive Perron root
+and a Perron vector strictly positive on $A$. Its other coordinates
+form a zero block. If $\lambda_2=0$,~\eqref{eq:two-sign-budget}
+is immediate. Otherwise a real second eigenvector $f$ vanishes off
+$A$ and is orthogonal to the Perron vector. Both its positive and
+negative parts $f_+,f_-$ are therefore nonzero, including when
+$\lambda_2$ has multiplicity greater than one.
+Entrywise positivity gives
+\[
+ \lambda_2\|f_+\|_2^2
+ =\langle f_+,T_rf_+\rangle-\langle f_+,T_rf_-\rangle
+ \le\langle f_+,T_rf_+\rangle.
+\]
+Applying~\eqref{eq:restricted-moment} on $\{f>0\}$ yields
+$\lambda_2^s\le\mathbb E[r^s\mathbf1_{\{f>0\}}]$.
+The negative part gives the analogous bound on $\{f<0\}$.
+Adding over these disjoint regions proves~\eqref{eq:two-sign-budget}.
+No mean-zero condition under uniform measure is imposed on $f$.
+Finally $\sqrt r$ is a unit vector and
+\[
+ \lambda_1(T_r)\ge\langle r,P_\rho r\rangle
+ \ge(\mathbb Er)^2=1
+\]
+by the nonnegative Walsh eigenvalues. This proves the positive gap
+bound below $B_*$. At $B=1$, strict Jensen forces $r=1$ and the
+actual gap is $1-\rho$.
+
+\emph{The balanced family's exact moment.}
+Use the single-site quantities $n,w,m,H,\kappa,\tau$ from
+Theorem~\ref{thm:critical-large}, with any sufficiently small fixed
+$d>0$ and $\delta_L=dL^{-1/3}$. This step does not impose the
+earlier condition involving $B>2$. Define
+\[
+ a_L=\kappa(\delta_L)^{-L},\quad
+ R_L=\prod_{i=1}^Lw_{\delta_L}(x_i),\quad
+ Z_L=1+a_Lm(\delta_L)^L,\quad
+ r_L=(1+a_LR_L)/Z_L.
+\]
+The critical expansions already proved give $a_L\to1$ and
+$m(\delta_L)^L\to0$, hence $Z_L\to1$. For the latter limit,
+$\log m(\delta)=-(s-1)\delta^2/2+O(\delta^4)$ and
+$L\delta_L^2\to\infty$, whereas $L\delta_L^4\to0$.
+The overlap $\eta_L=\sqrt{a_L}\tau(\delta_L)^L$ tends to zero.
+More explicitly, the quadratic coefficient of $\log\tau$ is
+\[
+ \frac12\left[\frac{\rho^2}{1-\rho^2}-\frac{s-1}{2}\right]
+ =-\frac{\rho}{2(1-\rho^2)}.
+\]
+The same Gram comparison, now without a prescribed all-$L$ budget,
+gives $1\le\lambda_1(S_L)\le1+\eta_L$ and
+$\lambda_2(S_L)\ge1-\eta_L$ for
+$S_L=P_\rho+a_LH(\delta_L)^{\otimes L}$.
+For large $L$, the second bound is positive, so it corresponds to
+a nonzero eigenvalue rather than an added Gram zero.
+Since $QM_{r_L}Q=S_L/Z_L$, both of its top eigenvalues tend to one.
+They are the actual eigenvalues of $T_{r_L}$: for
+$X=M_{\sqrt{r_L}}Q$, the square matrices $X^*X$ and $XX^*$
+have identical spectra, including zeros and multiplicities.
+
+For each fixed $0<t<s$, direct single-site expansion yields
+\[
+ \log\mathbb Ew_\delta^t
+ =\frac{t(t-s)}2\delta^2+O(\delta^4).
+\]
+Thus $\mathbb ER_L^t\to0$, while $\mathbb ER_L^s=1$ exactly.
+The remainders may depend on fixed $t$; no uniformity near the
+endpoints is needed. Set $\theta=\min\{1,s/2\}$.
+Both $\theta$ and $s-\theta$ belong to $(0,s)$, and
+\begin{equation}\label{eq:moment-cross}
+ 0\le(1+y)^s-1-y^s
+ \le s2^{s-1}\bigl(y^\theta+y^{s-\theta}\bigr),\qquad y\ge0.
+\end{equation}
+For $0\le y\le1$, the mean-value theorem bounds the left side by
+$s2^{s-1}y\le s2^{s-1}y^\theta$. For $y\ge1$, apply that
+bound to $1/y$ and multiply by $y^s$, obtaining
+$s2^{s-1}y^{s-1}\le s2^{s-1}y^{s-\theta}$.
+The lower bound follows from $s>1$.
+Substitute $y=a_LR_L$ in~\eqref{eq:moment-cross} and take expectations.
+The two interior moments vanish and $a_L\to1$, so
+\[
+ \mathbb E(1+a_LR_L)^s=1+a_L^s+o(1)\longrightarrow2.
+\]
+Dividing by $Z_L^s\to1$ proves
+$B_L:=\|r_L\|_s\to2^{1/s}=B_*$.
+
+\emph{The exact boundary and a prescribed floor.}
+Each $r_L$ is nonconstant, so $B_L>1$. Put
+\[
+ \varepsilon_L=\begin{cases}
+ 0,&B_L\le B_*,\\
+ (B_L-B_*)/(B_L-1),&B_L>B_*,
+ \end{cases}
+ \qquad \widetilde r_L=(1-\varepsilon_L)r_L+\varepsilon_L.
+\]
+The only denominator used is positive. Since $B_L\to B_*>1$,
+we have $0\le\varepsilon_L<1$ and $\varepsilon_L\to0$.
+Normalization and positivity persist, and Minkowski gives
+\[
+ \|\widetilde r_L\|_s
+ \le(1-\varepsilon_L)B_L+\varepsilon_L\le B_*.
+\]
+Because $Z_L>1$, both $r_L$ and $1$ are at least $1/Z_L$,
+so the mixture has that same floor.
+
+For signed $h$, the dual endpoint estimate
+$\|Qf\|_q\le\|f\|_2$, $q=2s/(s-1)$, and H\"older with
+$1/s+2/q=1$ give $\|QM_hQ\|\le\|h\|_s$. Hence
+\[
+ \|QM_{\widetilde r_L-r_L}Q\|
+ \le\varepsilon_L\|1-r_L\|_s
+ \le\varepsilon_L(1+B_L)\longrightarrow0.
+\]
+Weyl's bound and the exact $X^*X/XX^*$ spectral identity imply
+that both top eigenvalues of $T_{\widetilde r_L}$ still tend to one.
+Its normalized gap therefore tends to zero. This argument requires
+neither pointwise upper control nor a square-root multiplier estimate.
+
+Given fixed $0<b<1$, eventually $1/Z_L\ge b$. Replace the finite
+initial segment by the constant density $1$. Every stated constraint
+then holds for every $L\ge1$, with the same limiting gap. The same
+sequence is admissible for all $B\ge B_*$. Each finite transfer
+matrix remains strictly positive, so its individual gap is positive;
+only the dimension-free infimum vanishes. A floor $b=1$ would force
+the uniform density and is explicitly excluded.
+\end{proof}
+
+The sign-region argument is classical. In the additive lattice setting,
+Biskup and K\"onig~\cite[Lemma~4.5 and Eq.~(4.29)]{BiskupKoenig}
+bound the second eigenvalue using the two sign regions and split a
+potential budget between them. Here endpoint hypercontractivity gives
+the restricted $s$-moment estimate, while the balanced construction
+and vanishing dilution attain the boundary asymptotically. This
+comparison credits the mechanism; it does not establish historical
+priority of the exact multiplicative-cube classification. The new
+family makes no matching-marginal or fixed-range interaction claim.
+
+
+% UNCOMPILED DRAFT for a grouped revision; requires source302 audit and document review.
+\section{The escaped critical-moment boundary}
+\label{sec:critical-tails}
+Fix $0<\rho<1$ and $s=(1+\rho)/(1-\rho)$ throughout this section.
+Expectations and norms refer to the uniform Boolean measure. Write
+$Q=P_{\sqrt\rho}$ and $T_r=M_{\sqrt r}P_\rho M_{\sqrt r}$.
+We also use $\gap(r):=\gap(T_r)$ when the density shorthand is convenient.
+Here
+$r\ge0$ and $\mathbb E r=1$. For a family indexed by $L\ge1$, define
+\[
+ H(K)=\sup_L\mathbb E[r_L^s\mathbf1_{r_L>K}],\qquad
+ \Theta=\lim_{K\to\infty}H(K)=\inf_{K\ge1}H(K).
+\]
+The nonnegative monotone limit is allowed to be infinite. Uniform
+integrability of the critical powers is the special case $\Theta=0$.
+
+\begin{theorem}[Finite cutoff with tail budget below one]\label{thm:critical-tail}
+Suppose $K\ge1$, $0\le\tau<1$, and
+$\mathbb E[r^s\mathbf1_{r>K}]\le\tau$. Put
+\[
+ t=\tau^{1/(2s)},\quad m=\frac{1+t}{2},\quad d=\frac{1-t}{2},\quad
+ B_K=(K^{s-1}+\tau)^{1/s}.
+\]
+Then
+\[
+ \gap(T_r)\ge
+ \min\left\{1-m^2,\frac{2d^{2s^2}K^{1-s^2}}{B_K}\right\}>0.
+\]
+In particular, $\Theta<1$ implies a dimension-independent positive gap.
+No optimality is claimed for the displayed positive constant.
+\end{theorem}
+\begin{proof}
+For $w\ge0$ and $\|h\|_2=1$, H\"older and forward hypercontractivity,
+with $p=1+\rho$ and $p/(2-p)=s$, give
+\[
+ \|Q\sqrt w h\|_2^2\le\|\sqrt w h\|_p^2\le\|w\|_s.
+\]
+Since $r^s\mathbf1_{r\le K}\le K^{s-1}r$, the total moment is at most
+$K^{s-1}+\tau$. Thus $\lambda_1(T_r)\le B_K$. The unit vector
+$\sqrt r$ also gives $\lambda_1\ge\langle r,P_\rho r\rangle\ge1$
+by the nonnegative Walsh spectrum.
+If the active support has one point, $\lambda_2=0$ and the gap is one.
+If $\lambda_2<m^2$, the gap is greater than $1-m^2$.
+
+Otherwise choose a real second eigenvector, orthogonal to the positive
+active Perron vector. Write it as $u h_+-v h_-$, with $u,v>0$,
+$u^2+v^2=1$, and disjointly supported nonnegative unit vectors
+$h_+,h_-$. Their uniform means need not be equal. Set
+$D=\langle h_+,T_rh_-\rangle>0$. The eigenvector equations give
+\[
+ A_+=\lambda_2+(v/u)D,\qquad A_-=\lambda_2+(u/v)D,
+ \quad A_\pm=\langle h_\pm,T_rh_\pm\rangle.
+\]
+For each sign split $f=\sqrt r h_\pm$ at $r=K$. Then
+$\|Qf\|_2\ge m$ and $\|Qf_{\rm high}\|_2\le t$, so
+\[
+ \|Qf_{\rm low}\|_2\ge d,\qquad
+ \|f_{\rm low}\|_p\ge d,\qquad
+ \|f_{\rm low}\|_2\le\sqrt K.
+\]
+For $a=1-\rho$ and $\theta=s^{-2}$ the identity
+$1/p=\theta/a+(1-\theta)/2$ and power-H\"older give
+$\|g\|_p\le\|g\|_a^\theta\|g\|_2^{1-\theta}$.
+This applies ordinary H\"older to powers and requires no quasi-norm
+triangle inequality. The positive lower $p$-norm permits division;
+hence $\|f_{\rm low}\|_a\ge d^{1/\theta}K^{-(1-\theta)/(2\theta)}$.
+Positivity and reverse hypercontractivity yield
+\[
+ D\ge\langle f_{+,\rm low},P_\rho f_{-,\rm low}\rangle
+ \ge d^{2s^2}K^{1-s^2}.
+\]
+The sign compression has eigenvalues $\lambda_2$ and
+$\lambda_2+D/(uv)$. Its largest eigenvalue is at most $\lambda_1$,
+so $\lambda_1-\lambda_2\ge2D$. Dividing by $\lambda_1\le B_K$
+proves the bound, including repeated second eigenvalues.
+Finally, if $\Theta<1$, choose $\Theta<\tau<1$ and a single finite
+$K$ with $H(K)\le\tau$. The same constants then apply to every $L$.
+\end{proof}
+
+Uniform integrability is sufficient but stronger than needed. For example,
+a bound
+\[
+ \sup_L\mathbb E[r_L^s\psi(r_L)]\le C<\infty
+\]
+with a
+nonnegative nondecreasing function $\psi$ diverging at infinity implies
+$H(K)\le C/\psi(K)$ when $\psi(K)>0$. This is a weighted-moment
+condition; an arbitrary such $\psi$ need not be a Young function or
+define a Luxemburg norm. A fixed $s+\varepsilon$ moment bound also
+implies $H(K)\le K^{-\varepsilon}\sup_L\mathbb E r_L^{s+\varepsilon}$.
+Neither condition follows from a mere critical-moment bound.
+
+A total bound $\sup_L\|r_L\|_s\le B$ does imply
+\begin{equation}\label{eq:tail-total-budget}
+ \Theta\le B^s-1.
+\end{equation}
+Indeed $\mathbb E[r_L\mathbf1_{r_L>K}]\le B^sK^{1-s}$, while Jensen
+for $X_L=r_L\mathbf1_{r_L\le K}$ gives
+$\mathbb E X_L^s\ge(1-B^sK^{1-s})_+^s$. Subtraction and the limit
+$K\to\infty$ prove~\eqref{eq:tail-total-budget}. For $B<2^{1/s}$ this
+recovers a positive gap. The direct exact-budget theorem already gives
+the stronger explicit lower bound $1-B/2^{1/s}$.
+
+
+\begin{proposition}[Escaped moment with a stable gap]\label{prop:stable-spike}
+For any $M>1$, $B>M^{1/s}$, and $0<b<1$, there are densities $r_L$
+with $\mathbb E r_L=1$, $r_L\ge b$, $\|r_L\|_s\le B$, and
+\[
+ \mathbb E r_L^s\to M,\qquad
+ \mathbb E[r_L^s\mathbf1_{r_L>K}]\to M-1\quad(K>1\text{ fixed}),
+\]
+while $\gap(T_{r_L})\to1-\rho$ and
+$\gap(T_{r_L})\ge(1-\rho)/2$ for every $L\ge1$.
+\end{proposition}
+\begin{proof}
+Set $N=2^L$, $c=(M-1)^{1/s}$, choose a vertex $z_L$, and first put
+\[
+ q_L=\frac{1+cN^{1/s}\mathbf1_{z_L}}{Z_L},\qquad
+ Z_L=1+cN^{1/s-1}.
+\]
+These densities have mean one, lower bound $1/Z_L\to1$, and moments
+\[
+ \mathbb E q_L^s=
+ \frac{1-N^{-1}+(N^{-1/s}+c)^s}{Z_L^s}\longrightarrow1+c^s=M.
+\]
+For each fixed $K>1$ only the exceptional vertex eventually exceeds
+$K$, and its contribution tends to $c^s=M-1$.
+
+The operators $T_{q_L}$ and $S_L=QM_{q_L}Q$ are isospectral, including
+multiplicities, since they are $AA^*$ and $A^*A$ for
+$A=M_{\sqrt{q_L}}Q$. In probability-normalized $L^2$, the vector
+$e_z=\sqrt N\mathbf1_{z_L}$ is a unit vector and
+$M_{\mathbf1_{z_L}}=|e_z\rangle\langle e_z|$. Therefore
+\[
+ S_L=\frac{P_\rho+cN^{1/s}Q|e_z\rangle\langle e_z|Q}{Z_L},
+ \qquad
+ \|Q|e_z\rangle\langle e_z|Q\|
+ =\langle e_z,P_\rho e_z\rangle
+ =\left(\frac{1+\rho}{2}\right)^L.
+\]
+It follows that $\|S_L-P_\rho\|\le\delta_L$, where
+\[
+ \delta_L=\frac{c d_\rho^L+c a_\rho^L}{Z_L},\quad
+ d_\rho=2^{-(1-1/s)},\quad
+ a_\rho=\frac{1+\rho}{2^{2\rho/(1+\rho)}}.
+\]
+Both bases lie strictly between zero and one. For $a_\rho$, strict
+convexity of $t\log t$ on $[1,2]$ gives
+$(1+\rho)\log(1+\rho)<2\rho\log2$.
+
+The largest two eigenvalues of $P_\rho$ are $1$ and $\rho$, counting
+multiplicity. The min-max principle bounds the changes in both by
+$\delta_L$. Also $\langle1,S_L1\rangle=1$, so $\lambda_1(S_L)\ge1$.
+Consequently
+\[
+ \left|\frac{\lambda_2(S_L)}{\lambda_1(S_L)}-\rho\right|
+ \le(1+\rho)\delta_L.
+\]
+Choose $L_0$ so that for every $L\ge L_0$ the floor and norm bounds
+hold and $c(d_\rho^L+a_\rho^L)\le(1-\rho)/(2(1+\rho))$. Existence
+uses $B^s>M$ and the strict exponential contractions. Finally set
+$r_L=1$ for $L<L_0$ and $r_L=q_L$ otherwise. The prefix has gap
+$1-\rho$; the tail has the asserted common bound. All limits persist.
+\end{proof}
+
+\begin{proposition}[Sharpness and nonnecessity of the tail criterion]
+\label{prop:sharp-tail}
+The universal guarantee $\Theta<1$ cannot be extended to $\Theta\le1$:
+the exact-budget family of Theorem~\ref{thm:critical-exact} has
+$\Theta=1$ and gaps tending to zero. For every finite $\Theta_0>0$,
+there are nevertheless families with $\Theta=\Theta_0$ and a uniform
+positive gap, even with an arbitrarily prescribed density floor below
+one. Thus $\Theta\ge1$ is necessary for collapse, but not sufficient.
+\end{proposition}
+\begin{proof}
+First suppose $r_L\to1$ in probability and $\mathbb E r_L^s\to M<\infty$.
+For each fixed $K>1$, the function $F_K(x)=x^s\mathbf1_{x\le K}$ is
+bounded and continuous at one, so $\mathbb E F_K(r_L)\to1$.
+This follows by splitting a neighborhood of one from its probability-small
+complement and works on the varying cubes. Therefore the tail moments
+tend to $M-1$ for every such $K$, giving $\Theta\ge M-1$.
+For the upper bound fix $\varepsilon>0$ and $K_0>1$. For all sufficiently
+large $L$, the total moment is at most $M+\varepsilon$ and
+$\mathbb E F_{K_0}(r_L)\ge1-\varepsilon$. For every $K\ge K_0$ their
+tail moments are then at most $M-1+2\varepsilon$. A larger cutoff kills
+the tails of the finitely many remaining finite functions. Taking the
+supremum over all $L$, then $K\to\infty$ and $\varepsilon\downarrow0$,
+proves $\Theta=M-1$. This finite-prefix step is required; the fixed-$K$
+limit alone would not justify exchanging the supremum and cutoff limit.
+
+The diluted balanced family of Theorem~\ref{thm:critical-exact} satisfies
+$r_L\to1$ in probability: its tilt has every smaller positive moment
+tending to zero, while the balancing and dilution parameters tend to one
+and zero, respectively. Also $\lambda_2(T_{r_L})\to1$ and
+$2\lambda_2^s\le\mathbb E r_L^s\le2$, so the critical moment tends to
+two. Hence $\Theta=1$, while that family's gap tends to zero.
+Finally apply Proposition~\ref{prop:stable-spike} with
+$M=1+\Theta_0$. Its densities converge to one in probability, have
+critical moment tending to $M$, and keep the positive gap there proved.
+Thus $\Theta=\Theta_0$. Its strict total-budget slack and finite-prefix
+replacement remain part of the construction.
+\end{proof}
+
+\begin{theorem}[The fixed-cutoff endpoint]\label{thm:finite-tail-endpoint}
+For every $0<b<1$, there is a single family of densities $r_L$ with
+\[
+ \mathbb E r_L=1,\qquad r_L\ge b,\qquad \mathbb E r_L^s\le2,
+ \qquad \mathbb E[r_L^s\mathbf1_{r_L>1}]\le1
+\]
+for every $L\ge1$, but $\lambda_1(T_{r_L}),\lambda_2(T_{r_L})\to1$.
+Moreover $r_L\to1$ in probability, $\mathbb E r_L^s\to2$, and
+$\Theta=1$. Thus the finite-cutoff guarantee in
+Theorem~\ref{thm:critical-tail} cannot include $\tau=1$ for $K\ge1$,
+even under the exact total moment cap and a prescribed positive floor.
+The same family satisfies the tail cap at every $K\ge1$ simultaneously;
+it depends on $\rho$ and $b$, but not on $K$.
+\end{theorem}
+\begin{proof}
+Use the undiluted product tilt $R_L$ from the proof of
+Theorem~\ref{thm:critical-exact}. It satisfies
+\[
+ R_L>0,\qquad \mathbb E R_L^s=1,\qquad
+ \mathbb E R_L^t\longrightarrow0\quad(0<t<s).
+\]
+Write $m_L=\mathbb E R_L\le1$. The same proof supplies coefficients
+$\beta_L\to1$ such that $w_L=(1+\beta_LR_L)/Z_L$, with
+$Z_L=1+\beta_Lm_L\to1$, has both leading eigenvalues tending to one.
+Here $\beta_L$ denotes the balancing coefficient previously called
+$a_L$; the new coefficient below is different.
+The product definition gives additional information at its own mean.
+For $\delta_L=dL^{-1/3}$ and the single-site normalizer $n(\delta_L)$,
+$m_L=n(\delta_L)^{-L}>0$, so exactly
+\[
+ \frac{R_L}{m_L}=\prod_{i=1}^L(1+\delta_L x_i),\qquad
+ \mathbb E(R_L/m_L)^t=
+ \left(\frac{(1+\delta_L)^t+(1-\delta_L)^t}{2}\right)^L.
+\]
+Fix $0<t<1$. The logarithm of the bracket is an even smooth function
+on any fixed compact interval $|\delta|\le d<1$. Taylor's theorem,
+with bounded fourth derivative there, yields
+\[
+ \log\frac{(1+\delta)^t+(1-\delta)^t}{2}
+ =\frac{t(t-1)}2\delta^2+O_{t,d}(\delta^4).
+\]
+After multiplication by $L$, the leading term tends to minus infinity
+as $L^{1/3}$ and the remainder tends to zero. Markov's inequality gives
+$\mathbb P(R_L>m_L)\le\mathbb E(R_L/m_L)^t\to0$.
+This relative-mean estimate does not follow from $R_L\to0$ alone.
+Set
+\[
+ p_L=\mathbb P(R_L>m_L)^{1/s},\quad a_L=1-p_L,\quad
+ A_L=1-a_Lm_L,\quad q_L=A_L+a_LR_L.
+\]
+All three coefficients belong to $[0,1]$, $\mathbb E q_L=1$, and
+$a_L,A_L\to1$, whence $q_L\to1$ in probability. The identity
+$q_L-1=a_L(R_L-m_L)$ shows that $E_L=\{q_L>1\}$ equals
+$\{R_L>m_L\}$ when $a_L>0$ and is empty when $a_L=0$.
+In both cases the event inclusion holds. Minkowski gives
+\[
+ \|q_L\mathbf1_{E_L}\|_s
+ \le A_L\mathbb P(E_L)^{1/s}+a_L\|R_L\mathbf1_{E_L}\|_s
+ \le p_L+a_L=1.
+\]
+No division by $a_L$ occurs; its zero endpoint gives $q_L=1$.
+
+Put $S(v)=QM_vQ$. Endpoint forward hypercontractivity maps $L^2$
+to $L^{2s/(s-1)}$ with norm at most one. H\"older therefore gives
+$\|QM_hQ\|\le\|h\|_s$ for every real $h$. In particular,
+$\|QM_{R_L}Q\|\le1$, and
+\[
+ \|S(q_L)-S(w_L)\|
+ \le |A_L-Z_L^{-1}|+|a_L-\beta_L/Z_L|\longrightarrow0.
+\]
+The square matrices $S(v)$ and $T_v$ are $X^*X$ and $XX^*$ for
+$X=M_{\sqrt v}Q$, so are isospectral with multiplicities. The
+min-max perturbation bound thus transfers both actual leading
+eigenvalue limits to $T_{q_L}$.
+
+We next prove $M_L:=\mathbb E q_L^s\to2$. The lower bound is
+$M_L\ge A_L^s+a_L^s\mathbb E R_L^s\to2$. For a fixed $T>0$,
+$q_L^s\mathbf1_{R_L\le T}$ converges in probability to one and is
+bounded by $(1+T)^s$, so its expectation tends to one. On $R_L>T$,
+$q_L^s\le(1+1/T)^sR_L^s$. Consequently
+$\limsup_L M_L\le1+(1+1/T)^s$. Letting $T\to\infty$ proves the
+claim. This auxiliary truncation is used only for the moment limit.
+
+Set $\varepsilon_L=0$ when $M_L\le2$, and otherwise set
+$\varepsilon_L=(M_L-2)/(M_L-1)$. Then $0\le\varepsilon_L<1$ and
+$\varepsilon_L\to0$. The mean-one density
+$v_L=(1-\varepsilon_L)q_L+\varepsilon_L$ satisfies, by convexity,
+\[
+ \mathbb E v_L^s\le(1-\varepsilon_L)M_L+\varepsilon_L\le2.
+\]
+Since $\varepsilon_L<1$, the events $v_L>1$ and $q_L>1$ coincide.
+On this event $v_L\le q_L$, so pointwise
+$v_L^s\mathbf1_{v_L>1}\le q_L^s\mathbf1_{q_L>1}$. The strict
+tail cap at one is preserved. Also
+$S(v_L)-S(q_L)=\varepsilon_L(P_\rho-S(q_L))\to0$ in operator norm,
+since $\|S(q_L)\|\to1$. Both eigenvalue limits persist, as does
+convergence in probability to one. The two-sign estimate
+\eqref{eq:two-sign-budget} gives
+$2\lambda_2(T_{v_L})^s\le\mathbb E v_L^s\le2$, and hence the
+critical moment tends to two.
+
+Since $v_L\ge A_L\to1$, replace a finite initial segment by $r_L=1$
+and use $r_L=v_L$ thereafter to impose $r_L\ge b$ in every dimension.
+The prefix has empty strict tail above one, and all limits are unchanged.
+For every $K\ge1$, the tail integrand is pointwise at most the one
+at cutoff one. Thus this same family works simultaneously for all such $K$.
+For each fixed $J>1$, the bounded truncation
+$r_L^s\mathbf1_{r_L\le J}$ has expectation tending to one. Thus the
+$J$-tail tends to one, giving $H(J)\ge1$. The
+all-dimension tail bound at one also gives $H(J)\le1$ for every $J>1$.
+Therefore $H(J)=1$ for every $J>1$ and $\Theta=1$.
+\end{proof}
+
+Each finite matrix in this construction has a positive Perron gap;
+the gaps tend to zero with dimension. The two moment caps are
+inequalities in each dimension, with total moment equality asserted
+only in the limit. The mean-relative probability coefficient resolves
+the cutoff-one case without a dimension-dependent cutoff.
+
+
+\begin{corollary}[Cutoffs below one]\label{cor:cutoff-below-one}
+For $0\le K<1$, a nonnegative mean-one density satisfying
+$\mathbb E[r^s\mathbf1_{r>K}]\le1$ has
+\[
+ \gap(T_r)\ge1-\left(\frac{1+K^{s-1}}2\right)^{1/s}>0.
+\]
+\end{corollary}
+\begin{proof}
+Pointwise $r^s\mathbf1_{r\le K}\le K^{s-1}r$, including $K=0$.
+Thus $\mathbb E r^s\le1+K^{s-1}<2$. The two-sign bound and
+$\lambda_1\ge1$ give
+$\lambda_2/\lambda_1\le\lambda_2\le(\mathbb E r^s/2)^{1/s}$.
+\end{proof}
+No optimality is claimed for this lower constant or for a general
+tail-budget threshold below cutoff one. The displayed bound is uniform
+in dimension for fixed $K<1$, not uniform as $K$ approaches one.
+
+These are worst-case statements about a specialized fixed Boolean
+congruence. Scalar tails under the base measure are not the operator-tail
+functionals under a Perron invariant measure in~\cite{Wang}. The cutoff
+bound refines the same sign-truncation proof; it is not an independent
+method or a claim of historical priority. The qualitative boundary is
+sharp, while the positive constant is not optimized.
+
+\section{Optimized finite backgrounds below cutoff one}\label{sec:background}
+Fix $0<\rho<1$ and, throughout this section, set
+\[
+ s=\frac{1+\rho}{1-\rho},\qquad k_s=\frac{s-1}{s},\qquad
+ C_s=\frac{s^s}{(s-1)^{s-1}}.
+\]
+The cutoff-one result does not classify a fixed cutoff $K<1$ with
+a tail budget greater than one. We now combine long parities with the
+balanced critical tilt to give a sub-two collapse region. The sharp
+optimization below concerns a scalar background law, not the optimal
+spectral boundary among all densities.
+
+\begin{proposition}[Scalar background tail optimum]\label{prop:background-optimum}
+For $s>1$ and $0<K<1$, among nonnegative random variables $A$ with
+$\mathbb E A=1$,
+\[
+ \inf\mathbb E[A^s\mathbf1_{A>K}]=m_s(K),\qquad
+ m_s(K)=\begin{cases}
+ 1,&0<K\le k_s,\\
+ C_s(1-K)K^{s-1},&k_s<K<1.
+ \end{cases}
+\]
+For $K\le k_s$ the constant law $A=1$ attains the infimum. For $K>k_s$
+an attaining law has values $K$ and $v_*=sK/(s-1)$, with high probability
+$p_*=(s-1)(1-K)/K$. Replacing the strict event by $A\ge K$ leaves
+the infimum unchanged, but that infimum is not attained when $K>k_s$.
+\end{proposition}
+\begin{proof}
+For $K\le k_s$, convexity gives $y^s\ge1+s(y-1)$. If $y\le K$, the
+right side is nonpositive. Hence $y^s\mathbf1_{y>K}\ge1+s(y-1)$
+everywhere. Taking expectations gives the lower bound one, attained
+by $A=1$. The affine minorant is integrable even if the left side has
+infinite expectation.
+
+For $K>k_s$, the derivative of $y^s/(y-K)$ on $y>K$ has the sign
+of $(s-1)y-sK$. Its unique minimum is at $v_*$ and its value is
+$c=C_sK^{s-1}$. Thus
+\[
+ y^s\mathbf1_{y>K}\ge c(y-K)\qquad(y\ge0).
+\]
+Integration gives $c(1-K)$. The stated probabilities lie in $(0,1)$,
+have mean $K+p_*(v_*-K)=1$, and put mass only at the two equality
+points of the minorant. At $K=k_s$ this law degenerates to $A=1$.
+
+For the non-strict event the same lower bound holds. When $K>k_s$,
+choose $u<K$ tending to $K$ with $u>k_s$, high value $su/(s-1)$,
+and high probability $(s-1)(1-u)/u$. The high value exceeds $K$
+eventually, and the cost tends to $C_s(1-K)K^{s-1}$. Thus the
+infimum is unchanged. Equality in the affine minorant for the
+non-strict integrand is possible only at $v_*$: below $K$ its
+right side is strictly negative, and at $K$ its left side is $K^s>0$.
+Concentration at $v_*>1$ cannot have mean one, proving nonattainment.
+For $K\le k_s$, $A=1$ still attains one.
+\end{proof}
+
+This is an elementary instance of classical moment optimization by
+pointwise affine bounds; see Bertsimas and Popescu~\cite{BertsimasPopescu}
+for the general moment-duality setting. Neither that method nor the
+formula's external priority is claimed as new here.
+
+\begin{theorem}[Sub-two tail budgets with finite parity backgrounds]
+\label{thm:background-collapse}
+Fix $k_s<K<1$, $0<b<K$, and
+\[
+ 1+C_s(1-K)K^{s-1}<\tau<2.
+\]
+There are strictly positive densities $r_L$ on every Boolean cube
+of integer dimension $L\ge1$ satisfying
+\[
+ \mathbb E r_L=1,\qquad r_L\ge b,\qquad
+ \mathbb E[r_L^s\mathbf1_{r_L>K}]\le\tau,
+\]
+such that both leading eigenvalues of $T_{r_L}$ tend to one and
+$\gap(r_L)\to0$. The densities use global interactions. No marginal
+matching, locality, equality-budget attainability or optimal universal
+spectral threshold is asserted.
+\end{theorem}
+\begin{proof}
+\emph{A fixed dyadic background.}
+Write $g(u)=C_s(1-u)u^{s-1}$. On $(k_s,1)$,
+\[
+ g'(u)=C_su^{s-2}((s-1)-su)<0,
+\]
+and its endpoint values are one and zero. Strict budget slack permits
+a fixed $\max(b,k_s)<u<K$ with $1+g(u)<\tau$. The optimal high
+probability at lower value $u$ is $p_u=(s-1)(1-u)/u$.
+For $p\in(0,1)$ define $v(p)=u+(1-u)/p$. The mean
+$(1-p)u+pv(p)$ is exactly one and $pv(p)^s$ is continuous in $p$.
+Choose a fixed dyadic $p=j/2^k$ sufficiently close to $p_u$ that
+\[
+ 1+pv^s<\tau,\qquad v=v(p)>1>K,
+ \qquad k\ge1,\quad 1\le j<2^k.
+\]
+On $k$ unbiased signs choose a function $F$ equal to $v$ at $j$
+patterns and equal to $u$ elsewhere. Then $\mathbb EF=1$.
+Replace each sign by the parity of a disjoint block of $M$ unbiased
+bits, obtaining $a_M$ on $kM$ bits. Those parities are independent
+unbiased signs, so $a_M$ has exactly the same two-point law.
+All $u,v,p,k$ are fixed before the dimension grows.
+
+\emph{An operator-norm estimate for every character.}
+Let $Q_d=P_{\sqrt\rho,d}$ and let $\chi_U$ be a Walsh character.
+For any Walsh basis vector $\chi_S$,
+\[
+ Q_dM_{\chi_U}Q_d\chi_S
+ =\rho^{(|S|+|S\mathbin\triangle U|)/2}\chi_{S\mathbin\triangle U}
+ =\rho^{|U|/2+|S\setminus U|}\chi_{S\mathbin\triangle U}.
+\]
+This is a weighted permutation of an orthonormal basis. Its norm is
+exactly $\rho^{|U|/2}$, attained for $S\subset U$.
+Writing the finite Walsh expansion
+$F=1+\sum_{I\ne\varnothing}\widehat F(I)\chi_I$ and putting
+$D_F=\sum_{I\ne\varnothing}|\widehat F(I)|$, block substitution gives
+\begin{equation}\label{eq:318-background-decay}
+ \|Q_{kM}M_{a_M}Q_{kM}-P_{\rho,kM}\|
+ \le \sum_{I\ne\varnothing}|\widehat F(I)|\rho^{M|I|/2}
+ \le D_F\rho^{M/2}\longrightarrow0.
+\end{equation}
+Large fixed amplitudes or coefficients do not obstruct this limit.
+
+\emph{The inherited critical family and actual eigenvalues.}
+Use the balanced critical family in Theorem~\ref{thm:critical-exact}:
+with fixed small $d>0$, $\delta_n=dn^{-1/3}$ and
+\[
+ N(\delta)=\left(\frac{(1+\delta)^s+(1-\delta)^s}{2}\right)^{1/s},
+ \qquad R_n(y)=\prod_{i=1}^n\frac{1+\delta_n y_i}{N(\delta_n)},
+\]
+put
+\[
+ \kappa(\delta)=\frac{1+\rho+
+ \sqrt{(1-\rho)^2+4\rho\delta^2}}{2N(\delta)},\quad
+ \beta_n=\kappa(\delta_n)^{-n},\quad
+ Z_n=1+\beta_n\mathbb ER_n,\quad
+ w_n=\frac{1+\beta_nR_n}{Z_n}.
+\]
+The established balanced Gram estimates give the actual limits
+$\lambda_1(T_{w_n}),\lambda_2(T_{w_n})\to1$, not merely two
+trial-vector bounds. Also $\beta_n,Z_n\to1$, $\mathbb ER_n^s=1$,
+and $\mathbb ER_n^t\to0$ for every fixed $0<t<s$.
+The latter follows from the one-site expansion
+\[
+ \log\mathbb E\left[\frac{1+\delta Y}{N(\delta)}\right]^t
+ =\frac{t(t-s)}2\delta^2+O(\delta^4),
+\]
+since $n\delta_n^2\to\infty$ and $n\delta_n^4\to0$.
+
+For sufficiently large $L$ take $M=\lfloor L/(2k)\rfloor$ and
+$n=L-kM$. Both tend to infinity. On the two independent blocks set
+\[
+ r_L(x,y)=\frac{a_M(x)+\beta_nR_n(y)}{Z_n}.
+\]
+Its mean is one and its minimum is at least $u/Z_n$, eventually
+greater than $b$. The matrices $S_r=Q_LM_rQ_L$ and $T_r$ have the
+same full spectrum by the $AA^*$ and $A^*A$ identity with
+$A=M_{\sqrt r}Q_L$. Linearity and tensorization show
+\[
+ \left\|S_{r_L}-P_{\rho,kM}\otimes S_{w_n}\right\|
+ \le D_F\rho^{M/2}/Z_n\longrightarrow0.
+\]
+The tensor comparison has largest eigenvalue $\lambda_1(S_{w_n})$
+and second eigenvalue between $\lambda_2(S_{w_n})$ and
+$\lambda_1(S_{w_n})$: use the constant background eigenvector
+and the first two tilt eigenvectors for the lower bound. Positivity
+and the fact that the top background eigenvalue is one give the
+upper bound. Both leading eigenvalues therefore tend to one.
+The self-adjoint eigenvalue perturbation inequality transfers both
+limits to $S_{r_L}$ and hence $T_{r_L}$. Each finite matrix remains
+strictly positive, with a simple Perron root.
+
+\emph{Noninteger moments and the moving strict cutoff.}
+Let $\theta=\min(1,s/2)$. For $c>0,z\ge0$,
+\begin{equation}\label{eq:318-mixed-powers}
+ 0\le(c+z)^s-c^s-z^s
+ \le s2^{s-1}\big(c^{s-\theta}z^\theta+
+                   c^\theta z^{s-\theta}\big).
+\end{equation}
+To prove this, divide by $c^s$ and put $y=z/c$. For $y\le1$,
+the mean value theorem bounds $(1+y)^s-1-y^s$ by
+$s2^{s-1}y\le s2^{s-1}y^\theta$. For $y\ge1$ interchange
+$c$ and $z$. Nonnegativity follows from convexity. Both powers
+$\theta,s-\theta$ lie strictly between zero and $s$.
+For $z=\beta_nR_n$, the mixed expectations vanish and
+$\mathbb Ez^s\to1$. Thus $\mathbb E(c+\beta_nR_n)^s\to c^s+1$.
+
+In the high sector, $v/Z_n>K$ eventually, so the entire sector
+contributes and its conditional tail moment tends to $v^s+1$.
+In the low sector the event is exactly $R_n>c_n$, where
+$c_n=(KZ_n-u)/\beta_n\to K-u>0$. Fix positive finite
+$c_-,c_+$ containing these thresholds eventually. For $0<t<s$,
+\[
+ \mathbb P(R_n>c_n)\le c_-^{-t}\mathbb ER_n^t\to0,
+ \qquad
+ \mathbb E[R_n^s\mathbf1_{R_n\le c_n}]
+ \le c_+^{s-t}\mathbb ER_n^t\to0.
+\]
+Consequently the strict event retains asymptotic $s$-moment one.
+In \eqref{eq:318-mixed-powers} restricted to this event, the constant term vanishes with
+its probability, and the mixed terms are bounded by their vanishing
+unrestricted expectations. After normalization, the low-sector
+tail moment tends to one. Averaging the fixed sector probabilities,
+\[
+ \mathbb E[r_L^s\mathbf1_{r_L>K}]
+ \longrightarrow (1-p)+p(v^s+1)=1+pv^s<\tau.
+\]
+This calculation does not infer moment convergence from convergence
+in probability. Indeed the full moment tends to
+$1+(1-p)u^s+pv^s>2$, by strict Jensen for the nonconstant background.
+
+Choose a common $L_0$ beyond which both blocks are positive, the
+floor holds and the tail cost is at most $\tau$. For $1\le L<L_0$
+set $r_L=1$. Its tail cost is one and its floor is valid since
+$b<K<1$. This finite replacement preserves all limits and proves
+the assertion in every dimension. No effective value of $L_0$ is claimed.
+\end{proof}
+
+\subsection*{Comparison of sufficient and exact spectral thresholds}
+The half-parity background with low value approaching $K$ and high
+value approaching $2-K$ has limiting scalar cost $(2-K)^s/2$.
+It gives collapse whenever
+\[
+ 2-2^{1/s}<K<1,\qquad 0<b<K,\qquad
+ 1+(2-K)^s/2<\tau<2.
+\]
+This is a specialization of the same proof with $p=1/2$ and
+$u<K$ chosen with strict slack. Proposition~\ref{prop:background-optimum}
+shows that the optimized cost is no larger. Equality occurs only
+when $2-K=sK/(s-1)$, that is $K=2(s-1)/(2s-1)$; outside this
+isolated value the cost improvement is strict. Strict convexity
+of $2^t$ below its chord on $0<t<1$ gives
+$2^{1/s}<1+1/s$. Hence the new interval $k_s<K<1$ strictly
+extends the half-parity sub-two interval.
+
+On the other hand, any mean-one density with tail budget at most
+$\tau$ obeys $\mathbb Er^s\le K^{s-1}+\tau$, since
+$r^s\mathbf1_{r\le K}\le K^{s-1}r\mathbf1_{r\le K}$.
+The established total-moment estimate therefore gives
+\[
+ \gap(r)\ge1-\left(\frac{K^{s-1}+\tau}{2}\right)^{1/s}>0
+ \quad\hbox{if }\tau<2-K^{s-1}.
+\]
+This sufficient estimate alone does not identify the universal spectral
+threshold. The construction justifies adding an escaped unit to the scalar
+optimum only for that particular family. Theorem~\ref{thm:attained-cutoff}
+attains this budget with floor $b=K$, while the separate necessary estimate
+in Theorem~\ref{thm:universal-tail} proves its universal optimality.
+For $K<b<1$ the event contains every point
+and reduces to the total-moment condition. At $b=1$ mean one forces
+$r=1$ and gap $1-\rho$; at $b>1$ the class is empty. The earlier
+source309A omitted $b<1$ in its additional comparison; its failed
+gate and the corrected309B report remain preserved, not relabelled.
+
+
+\section{Attaining the constructive cutoff budget}\label{sec:attained-cutoff}
+The preceding fixed-background argument uses strict slack in both the
+floor and the tail budget. We now remove both restrictions. The cutoff
+event remains strictly $r>K$; mass exactly at $K$ is essential.
+
+\begin{theorem}\label{thm:attained-cutoff}
+Fix $0<\rho<1$, $s=(1+\rho)/(1-\rho)$, and
+\[
+ k_s=\frac{s-1}{s}<K<1,\qquad
+ g(K)=\frac{s^s}{(s-1)^{s-1}}(1-K)K^{s-1}.
+\]
+For every integer $L\ge1$ there is a strictly positive density $r_L$
+on the uniform Boolean cube such that
+\[
+ \mathbb Er_L=1,\qquad r_L\ge K,\qquad
+ \mathbb E[r_L^s\mathbf1_{r_L>K}]\le1+g(K),
+\]
+and $\lambda_1(T_{r_L})\to1$, $\lambda_2(T_{r_L})\to1$.
+Consequently $\gap(T_{r_L})\to0$. The same family meets every
+prescribed floor $0<b\le K$ and every budget $\tau\ge1+g(K)$.
+This is an attained constructive upper budget, not a claim that
+$1+g(K)$ is the optimal threshold over all collapsing families.
+\end{theorem}
+
+\begin{proof}
+All expectations below use normalized uniform probability. Write
+$Q_d=P_{\sqrt\rho,d}$. For positive $r$, the full spectra of
+$T_r=M_{\sqrt r}P_{\rho,d}M_{\sqrt r}$ and $S_r=Q_dM_rQ_d$
+agree, by the $AA^*/A^*A$ identity with $A=M_{\sqrt r}Q_d$.
+
+\emph{The inherited balanced tilt.}
+Use the explicit family in the proof of
+Theorem~\ref{thm:critical-exact}. Fix a sufficiently small $d>0$ and set
+\[
+ \delta_n=dn^{-1/3},\qquad
+ N(\delta)=\left(\frac{(1+\delta)^s+(1-\delta)^s}{2}\right)^{1/s},
+ \qquad
+ R_n(y)=\prod_{i=1}^n\left(\frac{1+\delta_n y_i}{N(\delta_n)}\right).
+\]
+In particular, the normalization is applied to every product factor.
+Define
+\[
+ H_n=Q_nM_{R_n}Q_n,\qquad
+ \kappa(\delta)=\frac{1+\rho+
+ \sqrt{(1-\rho)^2+4\rho\delta^2}}{2N(\delta)},\qquad
+ b_n=\kappa(\delta_n)^{-n},\qquad
+ F_n=P_{\rho,n}+b_nH_n.
+\]
+The earlier proof gives
+\begin{equation}\label{eq:attained-inherited}
+ b_n\to1,\quad \|H_n\|=\kappa(\delta_n)^n\to1,\quad
+ \lambda_1(F_n)\to1,\quad\lambda_2(F_n)\to1,
+ \quad\mathbb ER_n^s=1.
+\end{equation}
+These are conclusions for that explicit family, not additional hypotheses.
+For completeness, its interior moments have the exact expression
+\[
+ a_n(t):=\mathbb ER_n^t
+ =\left(\frac{(1+\delta_n)^t+(1-\delta_n)^t}
+ {2N(\delta_n)^t}\right)^n\longrightarrow0\qquad(0<t<s).
+\]
+Indeed their logarithm is
+$n[t(t-s)\delta_n^2/2+O(\delta_n^4)]$.
+At the critical exponent, $\log\kappa(\delta)=O(\delta^4)$.
+The block Gram comparison proved earlier has two diagonal top
+eigenvalues one and an off-diagonal norm tending to zero; it controls
+the actual two leading eigenvalues of $F_n$. Its second lower bound
+is eventually positive, so it is not an added zero of the Gram matrix.
+
+\emph{Growing finite background laws.}
+The scalar optimizer from Proposition~\ref{prop:background-optimum} has
+\[
+ v_*=\frac{sK}{s-1}>1,\qquad
+ p_*=\frac{(s-1)(1-K)}K\in(0,1),\qquad p_*v_*^s=g(K).
+\]
+For sufficiently large $L$ choose
+\[
+ k=\lfloor L^{1/3}\rfloor,\quad
+ M=\left\lfloor\frac{L}{2k}\right\rfloor,\quad n=L-kM,
+ \qquad p=p_L=\frac{\lfloor2^kp_*\rfloor}{2^k},
+ \qquad v=v_L=K+\frac{1-K}{p}.
+\]
+Then $p\in[p_*/2,p_*]$, $p\to p_*$, $v\to v_*$ and
+$v\le V:=2v_*$. Also $k,M,n\to\infty$, $n\ge L/2$ and
+$M/k\to\infty$. Choose exactly $2^kp$ patterns in $\{-1,1\}^k$,
+and let $f_L$ take value $v$ there and $K$ elsewhere.
+Replace its $k$ signs by the parities of $k$ disjoint blocks of $M$
+bits. Call the resulting background $A_L$, with high-sector indicator
+$I_L$. Independent unbiased parities give
+\[
+ \mathbb EI_L=p,\qquad A_L=K+(v-K)I_L,\qquad\mathbb EA_L=1.
+\]
+For a nonempty Walsh support $U$,
+\[
+ Q_dM_{\chi_U}Q_d\chi_S
+ =\rho^{|U|/2+|S\setminus U|}\chi_{S\mathbin\triangle U}.
+\]
+Thus this weighted permutation has norm exactly $\rho^{|U|/2}$.
+Each Walsh coefficient of $f_L$ has absolute value at most
+$\mathbb E f_L=1$, and there are at most $2^k-1$ nonconstant ones.
+Every substituted support has size at least $M$, so
+\begin{equation}\label{eq:attained-parity}
+ \|Q_{kM}M_{A_L}Q_{kM}-P_{\rho,kM}\|
+ \le(2^k-1)\rho^{M/2}\longrightarrow0.
+\end{equation}
+The limit follows from $k\log2+(M/2)\log\rho\to-\infty$.
+In particular, the growing number of coefficients is explicitly
+controlled. The scalar affine minorant gives
+\begin{equation}\label{eq:attained-dyadic-excess}
+ d_L:=p_Lv_L^s-g(K)\ge0,\qquad d_L\to0.
+\end{equation}
+No uniform finite cube is assumed to realize a non-dyadic $p_*$ exactly.
+
+\emph{Clipping, exact mean, and the amplitude reserve.}
+Put $\theta=\min(1,s/2)$, so both $\theta$ and $s-\theta$ lie in $(0,s)$.
+For $n=n_L$ define
+\[
+ c_n=a_n(\theta)^{1/(2\theta)},\qquad
+ U_n=(R_n-c_n)_+,\qquad m'_n=\mathbb EU_n.
+\]
+Then $c_n\to0$, $m'_n\le a_n(1)\to0$, and
+\begin{equation}\label{eq:attained-clipping}
+ \mathbb P(U_n>0)\le\sqrt{a_n(\theta)},\qquad
+ \|Q_nM_{U_n-R_n}Q_n\|\le c_n.
+\end{equation}
+The first inequality is Markov's inequality at $c_n$; the second uses
+$0\le R_n-U_n\le c_n$ and $\|Q_n\|=1$.
+Equality $R_n=c_n$ is in the complement of the strict event.
+
+For real $s>1$, $c>0$ and $z\ge0$, the mixed-power bound is
+\begin{equation}\label{eq:attained-mixed}
+ 0\le(c+z)^s-c^s-z^s
+ \le B_s\bigl(c^{s-\theta}z^\theta+c^\theta z^{s-\theta}\bigr),
+ \qquad B_s=s2^{s-1}.
+\end{equation}
+To see the upper bound, divide by $c^s$. For $z/c\le1$ the
+mean value theorem bounds the difference by $B_s(z/c)$, which is
+at most $B_s(z/c)^\theta$. For $z/c\ge1$ exchange $c,z$.
+The lower bound follows by integrating a positive derivative.
+Thus this estimate does not require an integer exponent.
+Set
+\begin{align*}
+ E_L={}&K^s\sqrt{a_n(\theta)}\\
+ &+B_s\bigl[(K^{s-\theta}+V^{s-\theta})a_n(\theta)
+ +(K^\theta+V^\theta)a_n(s-\theta)\bigr],\\
+ e_L={}&d_L+E_L.
+\end{align*}
+Both are nonnegative and tend to zero. Eventually $e_L<1/2$ and
+$m'_n<1-K$. On that range let
+\begin{equation}\label{eq:attained-density}
+ \beta_L=(1-e_L)^{1/s},\qquad
+ \gamma_L=\frac{\beta_Lm'_n}{p_L},\qquad
+ r_L(x,y)=A_L(x)-\gamma_L I_L(x)+\beta_LU_n(y).
+\end{equation}
+Here $0<\beta_L\le1$, $\beta_L\to1$ and $\gamma_L\to0$.
+The mean is exactly $1-p_L\gamma_L+\beta_Lm'_n=1$.
+The low sector has density $K+\beta_LU_n\ge K$; on the high sector,
+\[
+ v_L-\gamma_L=K+\frac{1-K-\beta_Lm'_n}{p_L}>K.
+\]
+Thus mean compensation has not lowered the floor. It acts only
+on the high sector, and no global normalization is applied.
+
+On the low sector the strict event is precisely $U_n>0$. Apply
+\eqref{eq:attained-mixed} with $c=K$ and $z=\beta_LU_n$, restricted
+to that event. Its constant contribution is at most
+$K^s\mathbb P(U_n>0)$. The high sector is entirely above $K$;
+discarding the nonnegative subtraction $\gamma_L$ gives an upper
+bound from \eqref{eq:attained-mixed} with $c=v_L$.
+Averaging these bounds with probabilities $1-p_L,p_L$, the
+coefficient of $\beta_L^s\mathbb EU_n^s$ is exactly one.
+Use $U_n\le R_n$, $v_L\le V$, $\beta_L\le1$,
+$\mathbb ER_n^s=1$, and \eqref{eq:attained-clipping}. The two mixed
+terms are bounded by those defining $E_L$. Hence
+\begin{equation}\label{eq:attained-exact-budget}
+ \mathbb E[r_L^s\mathbf1_{r_L>K}]
+ \le p_Lv_L^s+\beta_L^s+E_L
+ =g(K)+d_L+1-e_L+E_L=1+g(K).
+\end{equation}
+The reserve pays for the dyadic excess and every retained tail error.
+No convergence of $s$-moments was inferred from convergence in probability.
+
+\emph{The actual leading eigenvalues.}
+Write $P_b=P_{\rho,kM}$, $P_t=P_{\rho,n}$ and similarly $Q_b,Q_t$.
+By linearity and tensorization,
+\[
+ S_{r_L}=(Q_bM_{A_L}Q_b-\gamma_LQ_bM_{I_L}Q_b)\otimes P_t
+ +\beta_LP_b\otimes(Q_tM_{U_n}Q_t).
+\]
+Compare with $B_L=P_b\otimes F_n$. Since $0\le I_L\le1$,
+\eqref{eq:attained-parity} and \eqref{eq:attained-clipping} imply
+\begin{align*}
+ \|S_{r_L}-B_L\|
+ &\le(2^k-1)\rho^{M/2}+\gamma_L
+       +\beta_Lc_n+|\beta_L-b_n|\|H_n\|\longrightarrow0.
+\end{align*}
+All four errors vanish by the established limits.
+Both tensor factors of $B_L$ are positive definite and
+$\lambda_1(P_b)=1$. Therefore
+\[
+ \lambda_1(B_L)=\lambda_1(F_n),\qquad
+ \lambda_2(F_n)\le\lambda_2(B_L)\le\lambda_1(F_n).
+\]
+The lower bound uses two actual product eigenvectors with constant
+background factor. In view of \eqref{eq:attained-inherited}, both
+leading eigenvalues of $B_L$ tend to one. Weyl's self-adjoint
+perturbation bound transfers both limits to $S_{r_L}$, and the
+full-spectrum identity transfers them to $T_{r_L}$. This controls
+the top eigenvalue as well as the second; two trial vectors alone
+would not suffice.
+
+Choose one $L_0$ so that every eventual condition above holds for
+all $L\ge L_0$. For $1\le L<L_0$ set $r_L=1$. Its floor is at
+least $K$, its mean is one, and its strict $K$-tail cost is
+$1\le1+g(K)$. This supplies every dimension without changing the
+limits. No effective estimate of $L_0$ is asserted.
+\end{proof}
+
+For the non-strict event $r_L\ge K$, every point contributes and the
+tail becomes the total moment. The theorem therefore cannot be
+relabeled with a non-strict event. The scalar optimization, clipping
+and perturbation tools are classical; this construction and its
+source audit do not establish external priority. The next two sections
+improve the sufficient estimate and prove that the constructed upper
+budget is the exact universal strict-tail threshold.
+No marginal matching, locality, heat-bath gap or physical conclusion
+is added to the separate families proved earlier.
+
+
+\section{The exact scalar envelope at a strict cutoff}\label{sec:scalar-envelope}
+This section sharpens the elementary sufficient estimate above. It is
+useful for explicit bounds, but scalar optimality alone does not settle
+the spectral question. Section~\ref{sec:universal-tail} supplies that step.
+Throughout these two sections fix $0<\rho<1$, $s=(1+\rho)/(1-\rho)$,
+$k_s=(s-1)/s<K<1$, and put
+\[
+ a=1-K,\quad p_*=(s-1)a/K,\quad C_s=\frac{s^s}{(s-1)^{s-1}},
+ \quad g=C_saK^{s-1},\quad h(p)=\frac{(a+Kp)^s}{p^{s-1}}.
+\]
+Then $0<p_*<1$ and $0<g<1$. For $\tau\ge g$ let $p_\tau$ be the
+unique solution of $h(p_\tau)=\tau$ in $(0,p_*]$, and set
+$U(\tau)=\tau+K^s(1-p_\tau)$.
+
+\begin{theorem}\label{thm:scalar-envelope}
+Among nonnegative random variables on arbitrary probability spaces with
+$\mathbb Er=1$ and $\mathbb E[r^s\mathbf1_{r>K}]\le\tau$, the class is
+empty for $\tau<g$. For $\tau\ge g$ the maximum of $\mathbb Er^s$ is
+$U(\tau)$, attained by the law with value $K$ of probability $1-p_\tau$
+and value $K+a/p_\tau$ of probability $p_\tau$.
+At $\tau=g$ this is the unique admissible law; a uniform $L$-cube realizes
+it precisely when $2^Lp_*$ is integral. For $\tau>g$, the supremum over
+all finite uniform Boolean cubes is $U(\tau)$, approached by positive
+mean-one densities with floor $K$ and strict tail at most $\tau$.
+\end{theorem}
+\begin{proof}
+Logarithmic differentiation gives
+\[
+ \frac{h'(p)}{h(p)}=\frac{Kp-(s-1)a}{p(a+Kp)}.
+\]
+Thus $h$ decreases from infinity to $h(p_*)=g$ on $(0,p_*]$, then
+increases to $h(1)=1$. For an admissible $r$, write
+$p=\mathbb P(r>K)>0$ and $m=\mathbb E[r\mathbf1_{r>K}]$.
+The complementary mean is at most $K(1-p)$, so $m\ge a+Kp$.
+Conditional Jensen yields
+\[
+ \tau\ge\mathbb E[r^s\mathbf1_{r>K}]
+ \ge m^s/p^{s-1}\ge h(p)\ge g.
+\]
+It also forces $p\ge p_\tau$. Consequently
+\[
+ \mathbb Er^s\le\tau+K^s(1-p)\le U(\tau).
+\]
+The stated two-point law has mean one, strict tail $h(p_\tau)=\tau$
+and total moment $U(\tau)$, proving attainment. If $\tau=g$, every
+inequality above is equality: $p=p_*$, the lower value is almost surely
+$K$, and strict convexity forces a constant upper value. This proves
+uniqueness and the finite-cube integrality condition.
+For $\tau>g$, choose
+$p_L=(\lfloor2^Lp_\tau\rfloor+1)/2^L$. Eventually
+$p_\tau<p_L<p_*$ and $p_L\to p_\tau$. Assign value $K+a/p_L$ to
+exactly $2^Lp_L$ vertices and $K$ to the others. Its mean is one and its
+strict tail $h(p_L)<\tau$, whereas its total moment tends to $U(\tau)$.
+Exact attainment on a specified cube requires the high probability
+$p_\tau$ to be realizable there; no irrational probability is assigned
+to a finite uniform event.
+\end{proof}
+
+The earlier sign compression, $2\lambda_2^s\le\mathbb Er^s$ and
+$\lambda_1\ge1$, now gives
+\[
+ \gap(T_r)\ge1-[U(\tau)/2]^{1/s}>0\qquad(U(\tau)<2).
+\]
+There is a unique $q_0\in(0,p_*)$ with
+$h(q_0)+K^s(1-q_0)=2$, since this expression decreases strictly from
+infinity to a value below two. Its tail budget
+$\tau_c=2-K^s(1-q_0)$ satisfies
+$2-K^{s-1}<2-K^s<\tau_c<2$; $U(\tau)<2$ exactly when
+$g\le\tau<\tau_c$. For $s=2$ direct expansion gives
+\[
+ q_0=\frac{(1-K)^2}{2-2K+K^2},\qquad
+ \tau_c=2-\frac{K^2}{2-2K+K^2}.
+\]
+In particular $K=3/4$ gives $\tau_c=25/17$, improving the elementary
+$5/4$. This is only a sufficient spectral bound: a scalar extremizer
+with total moment two need not saturate the two eigenvalue inequalities.
+The moment optimization is an application of classical conditional
+Jensen and extremal-law reasoning; see~\cite{BertsimasPopescu} for the
+general method, without an assertion of priority for this formula.
+
+\section{The universal strict-tail threshold}\label{sec:universal-tail}
+The missing link is a necessary escaping-moment estimate for an arbitrary
+collapsing family. Reverse hypercontractivity forces one normalized sign
+part of a second eigenvector to have a small low quasi-norm. Truncation
+then forces its energy into the high-density region. This proves the
+additional unit of tail cost, without assuming the constructed density
+floor or an a priori decomposition into background and tilt.
+
+\begin{theorem}\label{thm:universal-tail}
+Fix the parameters above. For every $g\le\tau<1+g$ there is an explicit
+constant $\gamma_0>0$, depending only on $\rho,K,\tau$, such that every
+nonnegative mean-one density on every finite uniform Boolean cube with
+$\mathbb E[r^s\mathbf1_{r>K}]\le\tau$ satisfies
+$\gap(T_r)>\gamma_0$. No positive lower bound on $r$ is required.
+For $\tau<g$ the class is empty. At $\tau=1+g$, and hence at every larger
+budget, Theorem~\ref{thm:attained-cutoff} gives a positive family with
+floor $K$ and gap tending to zero. Thus $1+g$ is the exact universal
+strict-tail collapse threshold for $k_s<K<1$.
+\end{theorem}
+\begin{proof}
+Write $B=\tau+K^s$, $p=1-\rho$, $q=1+\rho$ and
+$\theta=1/s^2$. Classical forward and reverse Boolean
+hypercontractivity~\cite[Theorem~3.1 and Corollary~3.3]{MORSS} give
+\begin{align}
+ \langle F,P_\rho F\rangle
+   &=\|P_{\sqrt\rho}F\|_2^2\le\|F\|_q^2,\label{eq:317-forward}\\
+ \langle F,P_\rho G\rangle&\ge\|F\|_p\|G\|_p
+                 \quad(F,G\ge0).\label{eq:317-reverse}
+\end{align}
+The reverse inequality has parameter condition
+$\rho\le\sqrt{(1-p)(1-p)}$, with equality here, and permits zeros.
+The quantities at exponent $p<1$ are quasi-norms; no triangle inequality
+for them will be used. H\"older with $q/(2-q)=s$ gives
+\[
+ \|\sqrt z\,h\|_q^2\le(\mathbb Ez^s)^{1/s}\|h\|_2^2
+ \quad(z\ge0).
+\]
+Since $\mathbb Er^s\le B$, this implies $\lambda_1\le B^{1/s}$.
+The unit vector $\sqrt r$ has Rayleigh quotient
+$\langle r,P_\rho r\rangle\ge(\mathbb Er)^2=1$, so
+$\lambda_1\ge1$.
+
+Put $\gamma=1-\lambda_2/\lambda_1$. If $\lambda_2=0$, the gap is one
+and the assertion is immediate. Otherwise work on the active set
+$\{r>0\}$. The restricted matrix has strictly positive entries and a
+strictly positive Perron vector. A normalized real second eigenvector
+vanishes off this set, is orthogonal to the Perron vector, and therefore
+has both signs. Write it as $v=f_+-f_-$, with disjoint nonnegative parts,
+$a=\|f_+\|_2>0$, $b=\|f_-\|_2>0$, $a^2+b^2=1$, and
+$c=\langle f_+,T_rf_-\rangle>0$. The eigenvector equation implies
+\[
+ \langle f_+,T_rf_+\rangle=\lambda_2a^2+c,\qquad
+ \langle f_-,T_rf_-\rangle=\lambda_2b^2+c.
+\]
+The compression to the orthonormal pair $u=f_+/a,w=f_-/b$ is
+\[
+ \lambda_2I+c\begin{pmatrix}a^{-2}&(ab)^{-1}\\(ab)^{-1}&b^{-2}\end{pmatrix}.
+\]
+Its upper eigenvalue is $\lambda_2+c/(a^2b^2)\le\lambda_1$.
+Thus the \emph{normalized} cross term obeys
+\[
+ d=\langle u,T_rw\rangle=c/(ab)
+       \le(\lambda_1-\lambda_2)ab\le B^{1/s}\gamma/2.
+\]
+Both sign Rayleigh quotients are at least $\lambda_2$.
+Apply~\eqref{eq:317-reverse} to $\sqrt r\,u$ and $\sqrt r\,w$.
+Choose the sign vector $h$ with the smaller $p$ quasi-norm after
+multiplication by $\sqrt r$. For $F=\sqrt r\,h$ we obtain
+\begin{equation}\label{eq:317-sign}
+ \|F\|_p\le(B^{1/s}\gamma/2)^{1/2},\qquad
+ \langle F,P_\rho F\rangle\ge\lambda_2\ge1-\gamma.
+\end{equation}
+The argument tolerates arbitrarily unbalanced sign norms $a,b$.
+
+Fix $M>K$, let $F_0=F\mathbf1_{r\le M}$,
+$F_1=F\mathbf1_{r>M}$, and $H_M=\mathbb E[r^s\mathbf1_{r>M}]$.
+One checks $1/q=\theta/p+(1-\theta)/2$. Ordinary H\"older applied to
+$Z^q=(Z^p)^{\theta q/p}(Z^2)^{(1-\theta)q/2}$ proves
+\[
+ \|Z\|_q\le\|Z\|_p^\theta\|Z\|_2^{1-\theta}.
+\]
+The two powers are positive and sum to one, so this use of H\"older has
+exponents greater than one even though $p<1$.
+Since $\|F_0\|_2\le\sqrt M$ and $\|F_0\|_p\le\|F\|_p$,
+\eqref{eq:317-forward} and~\eqref{eq:317-sign} yield
+\[
+ E_0:=\langle F_0,P_\rho F_0\rangle
+       \le M^{1-\theta}(B^{1/s}\gamma/2)^\theta.
+\]
+The same forward estimate and H\"older yield
+$E_1:=\langle F_1,P_\rho F_1\rangle\le H_M^{1/s}$.
+The Hilbert-space triangle after applying $P_{\sqrt\rho}$ gives
+$\sqrt{\langle F,P_\rho F\rangle}\le\sqrt{E_0}+\sqrt{E_1}$.
+Consequently
+\begin{equation}\label{eq:317-escape}
+ H_M\ge\left[\sqrt{1-\gamma}
+ -M^{(1-\theta)/2}(B^{1/s}\gamma/2)^{\theta/2}\right]_+^{2s}.
+\end{equation}
+For a collapsing family with fixed $B$, this implies
+$\liminf H_M\ge1$ for each fixed $M$.
+
+Put $A=C_sK^{s-1}$, so $g=A(1-K)$. The pointwise scalar inequality
+\[
+ z^s\mathbf1_{z>K}\ge A(z-K)\qquad(z\ge0)
+\]
+holds because its right side is nonpositive below $K$, whereas
+$z^s/(z-K)$ has its global minimum $A$ at $z=sK/(s-1)$ above $K$.
+Apply it to $z=r\mathbf1_{r\le M}$ on the original probability space.
+Since $\mathbb E[r\mathbf1_{r>M}]\le B/M^{s-1}$, the middle strict
+tail costs at least $g-AB/M^{s-1}$. It is disjoint from the high tail,
+so
+\begin{equation}\label{eq:317-budget}
+ \tau\ge H_M+g-AB/M^{s-1}.
+\end{equation}
+For any collapsing family, first fix $M$, use~\eqref{eq:317-escape},
+and then send $M\to\infty$ in~\eqref{eq:317-budget}. This gives
+$\tau\ge1+g$. No density floor or exchange of moment limits is involved.
+
+For an explicit positive bound, let $\varepsilon=1+g-\tau\in(0,1]$ and
+\begin{align*}
+ M&=\max\{K+1,(4AB/\varepsilon)^{1/(s-1)}\},\\
+ D&=1-(1-3\varepsilon/4)^{1/(2s)},\\
+ \gamma_0&=\min\{D/4,\,
+ 2B^{-1/s}(D/4)^{2/\theta}M^{-(1-\theta)/\theta}\}.
+\end{align*}
+These constants are finite and positive, with $\gamma_0<1$.
+If $\gamma\le\gamma_0$, the subtracted core term in
+\eqref{eq:317-escape} is at most $D/4$ and
+$\sqrt{1-\gamma}\ge1-\gamma\ge1-D/4$. Hence
+\[
+ H_M\ge(1-D/2)^{2s}>(1-D)^{2s}=1-3\varepsilon/4.
+\]
+But~\eqref{eq:317-budget} gives
+$H_M\le\tau-g+\varepsilon/4=1-3\varepsilon/4$, a contradiction.
+Thus $\gamma>\gamma_0$. The empty regime $\tau<g$ was proved in
+Theorem~\ref{thm:scalar-envelope}; equality $\tau=g$ is included whenever
+the finite-cube class exists. Finally Theorem~\ref{thm:attained-cutoff}
+uses exactly this $\rho,s,K$ and strict event, and supplies collapse at
+$1+g$ with floor $K$. This completes the sharpness assertion.
+\end{proof}
+
+For $s=2$, $\rho=1/3$ and $K=3/4$, the exact threshold is
+$1+4(1/4)(3/4)=7/4$. The intermediate scalar bound $25/17$ remains
+valid and can be numerically much simpler than the conservative explicit
+constant above. Neither scalar optimality nor the construction alone
+proved the universal threshold: the necessary escape
+estimate~\eqref{eq:317-escape} closes that gap. External priority of this
+specific synthesis is unestablished. Its inputs are classical; related
+transmission of log-Sobolev and spectral-gap inequalities for perturbed
+diffusion measures is studied, for example, in~\cite{Cattiaux}.
+Those generator/measure results are not silently identified with the
+finite transfer-matrix statement here. This theorem does not add marginal
+matching, finite-range interactions or a physical interpretation.
+
+\section{Comparison with hyperbounded and perturbation results}
+The value $s_c$ is the classical Boolean hypercontractive boundary,
+not a new integrability scale. Indeed, for $a_s=2s/(s+1)$, the
+norm-one estimate $\|P_{\sqrt\rho}f\|_2\le\|f\|_{a_s}$ holds
+when $s\ge s_c$ by the standard inequality recalled in~\cite{MOS}.
+Its local sharpness is seen from $f=1+ux$ on one bit:
+$\|P_{\sqrt\rho}f\|_2^2=1+\rho u^2$, whereas
+$\|f\|_{a_s}^2=1+(a_s-1)u^2+o(u^2)$.
+Tensorization amplifies a violated one-bit norm bound. Such top-norm
+growth alone does not imply a closing normalized spectral gap;
+Theorem~\ref{thm:tilts} adds two antipodal channels and their Gram
+comparison to obtain a near-degenerate second eigenvalue.
+
+The inequalities and matrix arguments used above are classical. Related
+literature already supplies both qualitative gap criteria and, under
+different hypotheses, dimension-independent quantitative perturbation
+bounds. Miclo's Theorem~1 in~\cite{Miclo} gives a gap for ergodic
+self-adjoint hyperbounded Markov operators. Section~6 and
+Proposition~11 also discuss a norm-budget transition at two for the
+fourth power of an $L^2$-to-$L^4$ Markov norm; this is an important
+precedent for budget thresholds, not the raw density norm used here.
+Hyperboundedness alone does not give a general quantitative gap. Wang's Theorem~1.1 in~\cite{Wang} gives a tail-norm criterion
+for the gap of an invariant Markov operator's symmetrization.
+These fixed-space conclusions must not be confused with a bound uniform
+over a family of increasing dimensions.
+
+Here $T_r$ is generally not Markov in $u_L$. Its Perron Doob transform
+is Markov in its own stationary law, which generally differs from $r u_L$.
+The ground-state multiplication is an $L^2$ isometry between these spaces,
+but does not automatically identify their higher norms uniformly in $L$.
+Thus an implication from a qualitative hyperboundedness theorem would
+still need a quantitative change-of-measure argument.
+
+Gross's Theorem~2.2 in~\cite{Gross} does give dimension-independent gaps
+for additive Schr\"odinger perturbations on Riemannian probability
+manifolds with a base logarithmic Sobolev inequality and suitable moments
+of both $e^V$ and $e^{-V}$. We have not identified that additive operator
+with the logarithm of this discrete transfer congruence. Our moment
+hypothesis in Theorem~\ref{thm:moment} supplies no inverse-density moment
+and permits zeros. In contrast, the counterexamples in
+Theorems~\ref{thm:tilts} and~\ref{thm:critical-large} have $r\ge1/B$ and therefore bounded inverse
+moments. For these families, missing inverse control is not a distinction
+from Gross; the operator/form and exponent correspondences are the
+unestablished steps.
+Gl\"uck~\cite{Gluck}, especially Theorem~5.1, gives hyperboundedness criteria and uniform essential
+spectral-radius estimates; those estimates alone do not control the
+second eigenvalue of a finite matrix. These differences do not prove
+originality or exclude a stronger implication. Aida's directly accessible author preprint~\cite{Aida}
+uses an additive Schr\"odinger form with a derivation and chain-rule
+hypotheses, together with ground-state and weak-Poincar\'e inputs.
+Its setup and Theorem~10 were read in a targeted comparison; no
+identification of those hypotheses with this multiplicative Boolean
+transfer congruence has been established. No external priority, improvement over this literature, or exhaustive
+novelty clearance is asserted.
+
+\section{Relation to predecessors and reproducibility}
+The congruence analysis in~\cite{ErikssonCongruence} permits positive
+weights concentrating on an antipodal pair, with a transfer ratio tending
+to one as volume grows. Such a pair fails to preserve pair marginals.
+The parity analysis in~\cite{ErikssonParity} preserves every proper
+marginal but concerns a heat-bath generator; Proposition~\ref{prop:parity}
+shows precisely why it does not supply the transfer conclusion.
+The present synthesis obtains linear-order marginal matching for both
+the weight and the Perron stationary law, together with exponentially
+many slow transfer modes.
+
+The code ingredients and the matrix methods are classical. In particular,
+Lemma~\ref{lem:code} is an elementary existence argument, not a new code
+construction and not an efficient encoding claim. The citation to~\cite{AGM} supplies general limited-independence background, not a direct historical attribution for the dual-distance projection equivalence proved here. Work on simultaneously
+good primal and dual codes, including~\cite{BrehmResch}, is stronger in
+algorithmic aspects. Our targeted primary-source check did not identify
+the exact joint conclusion above; this is not proof of historical priority.
+External originality and the importance of this specialization remain
+unestablished.
+
+All proofs are finite-dimensional and analytical. No numerical experiment
+or formal verification is needed or claimed. A source package retains the
+preregistered proof checks, complete analytical audit, source hashes and
+this manuscript. The permanent source tree is
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/\SourceCommit/papers/marginal-transfer}{\texttt{papers/marginal-transfer} at the source commit below}.
+The earlier spike proof is retained there in
+\path{evidence296/finite-moment296A.txt}; the balanced critical proof and
+its complete source audit are retained in \texttt{evidence298}.
+The exact-budget proof, registered checks and full analytical source
+audit are retained in \texttt{evidence299}. The full analytical reports,
+contexts, assignments and source bindings for the grouped tail results are
+in \texttt{evidence305} and \texttt{evidence307}. Their public-subset manifests explicitly identify
+private reference PDFs and an unrelated local directory index omitted from
+the original audit manifests; no redistribution of these files is implied.
+The exact v4 PDF assessment is preserved there solely as historical evidence,
+with all seven objections and a separate author response. Historical partial results
+and exact-PDF reviews keep their original artifact identities; this
+revision neither changes those reports nor inherits their grades.
+The new background construction is grouped with these results because it
+uses the same transfer operator, critical exponent and balanced tilt.
+The complete source309A failure, corrected309B audit and source310 audit
+are retained in \texttt{evidence311}, with their original contexts and
+manifests. Three full third-party source captures from audit310 remain
+private and are explicitly excluded from the public subset; their
+original hashes are retained without implying redistribution rights.
+The original v5 PDF and its complete first exact-PDF assessment, including
+all six reservations, are historical evidence only. The expanded scalar
+attainment discussion follows the recorded source310 audit clarification.
+No v5 score is transferred to this manuscript.
+The attained-cutoff construction is retained as source313, with its
+complete analytical report, assignment, context and byte manifests in
+\texttt{evidence314}. It removes two restrictions of the preceding
+construction by clipping the tilt, compensating its mean only on the
+high sector, and reserving amplitude for finite tail errors.
+The source311 document and production-runner audits are also retained;
+that intermediate manuscript was not compiled or given a PDF score.
+A redundant complete frozen311 source archive remains private on D;
+the public subset declares its exact hash and original Git source, while
+retaining the full reports and original manifest. No report is shortened.
+The sharp scalar envelope (source315) and reverse-hypercontractive necessity
+argument (source317) are grouped here with the attained construction.
+Their complete source reports, contexts and fixed judges are retained in
+\texttt{evidence318}. The earlier exact v6 PDF, its full first-round
+assessment and all six reservations are historical evidence, not a rating
+of this revision. Its two explicitly forced equation numbers are replaced
+by ordinary sequential numbering; the corresponding mathematical displays
+are unchanged. The previous claim that the universal strict-tail interval
+was unresolved is superseded by Theorem~\ref{thm:universal-tail}.
+Document reproduction is a separate check of exact bytes
+and layout, not an independent proof of the theorems.
+
+% Consolidation322 draft. Sources319A and321C; not an assessed PDF.
+\section{Growing marginal order at the critical moment budget}
+\label{sec:growing-marginals}
+
+The preceding marginal and moment constructions need not describe the same
+weights. We now impose both requirements on one weighting law. Throughout
+this section, $u_L$ is uniform probability on $\{-1,1\}^L$,
+$0<\rho<1$ is fixed, and
+\[
+ s=\frac{1+\rho}{1-\rho},\qquad B_*=2^{1/s},\qquad
+ Q=P_{\sqrt\rho},\qquad
+ S_r=QM_rQ,\quad T_r=M_{\sqrt r}P_\rho M_{\sqrt r}.
+\]
+Here $P_t\chi_A=t^{|A|}\chi_A$. For $r\geq0$ with $\mathbb E r=1$,
+$S_r$ and $T_r$ have the same eigenvalues, including zero multiplicities:
+they are $AA^*$ and $A^*A$ for the square matrix $A=QM_{\sqrt r}$.
+Also $\langle1,S_r1\rangle=1$, so $\lambda_1(T_r)\geq1$.
+Exact uniform marginals of the weighting law $r u_L$ through order $k$
+mean $\mathbb E[r\chi_A]=0$ for $1\leq|A|\leq k$.
+This classical Fourier characterization and low-coefficient correction are prior methods\cite{alon-kwise,rubinfeld-xie}. The statement here concerns the weighting law;
+no Perron stationary marginal assertion is made in this section.
+
+Two different regimes result. At every fixed power $L^\alpha$ with
+$\alpha<1/2$, exact matching is compatible with collapse at $B_*$.
+At every fixed positive linear fraction of $L$, a bounded critical moment
+instead forces convergence to the unweighted noise spectrum. The proof of
+the latter statement uses the homogeneous moment inequality of
+Kirshner and Samorodnitsky~\cite{kirshner-samorodnitsky}, not a new
+hypercontractive inequality. The quantitative theorem below settles part of the sublinear regime; Section~\ref{sec:square-root-tail} strengthens it to $k_L/\sqrt L\to\infty$. Section~\ref{sec:one-sided-erasure} constructs collapse throughout the sub-square-root regime; Section~\ref{sec:finite-c-positive} proves a universal positive asymptotic gap at every fixed positive finite ratio, at the exact critical cap.
+
+\begin{theorem}[Collapse with growing exact marginals]
+\label{thm:growing-collapse}
+Fix $0<\alpha<1/2$ and $0<b<1$. There are mean-one densities $r_L$,
+for every integer $L\geq1$, such that
+\[
+ r_L\geq b,\qquad \|r_L\|_s\leq B_*,\qquad
+ \mathbb E[r_L\chi_A]=0\quad(1\leq |A|\leq\lfloor L^\alpha\rfloor),
+\]
+while $\lambda_1(T_{r_L})\to1$, $\lambda_2(T_{r_L})\to1$ and
+$\gap(T_{r_L})\to0$. Thus growing matching of these orders does not
+raise the worst-case critical norm boundary $B_*$.
+\end{theorem}
+
+\begin{proof}
+Choose $a=3/8-\alpha/4$, so $1/4<a<(1-\alpha)/2$, and fix a
+sufficiently small $d\in(0,1)$. Set $\delta=dL^{-a}$ and
+\[
+ n(\delta)=\left(\frac{(1+\delta)^s+(1-\delta)^s}{2}\right)^{1/s},
+ \quad R_L(x)=\prod_{i=1}^L\frac{1+\delta x_i}{n(\delta)},
+ \quad m_L=\mathbb E R_L=n(\delta)^{-L}.
+\]
+The one-coordinate matrix and its largest eigenvalue are
+\[
+ H(\delta)=\frac1{n(\delta)}
+ \begin{pmatrix}1&\delta\sqrt\rho\\\delta\sqrt\rho&\rho\end{pmatrix},
+ \qquad
+ \kappa(\delta)=\frac{1+\rho+
+ \sqrt{(1-\rho)^2+4\rho\delta^2}}{2n(\delta)}.
+\]
+Writing $D=\diag(1,\rho)$ and
+$\tau(\delta)=\|D^{1/2}H(\delta)^{1/2}\|$, direct diagonalization gives
+\[
+ \tau(\delta)^2=\frac{1+\rho^2+
+ \sqrt{(1-\rho^2)^2+4\rho^2\delta^2}}{2n(\delta)}.
+\]
+At the fixed critical exponent the Taylor expansions are
+\[
+ \log n(\delta)=\frac{s-1}{2}\delta^2+O(\delta^4),\quad
+ \log\kappa(\delta)=O(\delta^4),\quad
+ \log\tau(\delta)=-\frac{\rho\delta^2}{2(1-\rho^2)}+O(\delta^4).
+\]
+Here $L\delta^4=d^4L^{\alpha-1/2}\to0$, whereas
+$L\delta^2=d^2L^{1/4+\alpha/2}\to\infty$.
+Consequently $c_L=\kappa(\delta)^{-L}\to1$, $m_L\to0$, and
+$Z_L=1+c_Lm_L\to1$.
+
+For $v_L=(1+c_LR_L)/Z_L$, the unnormalized operator is
+$F_L=P_\rho+c_LH(\delta)^{\otimes L}$. Both summands have top
+eigenvalue one. Form the Gram matrix of their positive square roots.
+Its diagonal blocks are these two summands and its cross-block norm is
+$\eta_L=\sqrt{c_L}\tau(\delta)^L\to0$. The block diagonal matrix has
+its first two eigenvalues exactly one. Operator-norm perturbation puts
+the first two Gram eigenvalues in $[1-\eta_L,1+\eta_L]$.
+For large $L$ these are positive; the nonzero Gram spectrum is the spectrum
+of $F_L$. Division by $Z_L$ therefore proves that the actual first two
+eigenvalues of $S_{v_L}$ tend to one.
+
+We also have $\mathbb E R_L^s=1$. For each fixed $0<t<s$,
+\[
+ \log\mathbb E R_L^t=-\frac{t(s-t)}2L\delta^2+O(L\delta^4)
+ \longrightarrow-\infty.
+\]
+With $\theta=\min(1,s/2)$, the mean-value theorem for $y\leq1$ and
+reciprocal substitution for $y\geq1$ give
+\[
+ 0\leq(1+y)^s-1-y^s\leq
+ s2^{s-1}(y^\theta+y^{s-\theta})\quad(y\geq0).
+\]
+Both exponents lie strictly between zero and $s$. Applying this inequality
+to $c_LR_L$ yields $\mathbb E(1+c_LR_L)^s\to2$, hence
+$\|v_L\|_s\to B_*$.
+
+Put $k_L=\lfloor L^\alpha\rfloor$ and erase the nonconstant low levels:
+\[
+ p_L=m_L\sum_{1\leq|A|\leq k_L}\delta^{|A|}\chi_A,\qquad
+ w_L=\frac{1+c_L(R_L-p_L)}{Z_L}.
+\]
+The exact expansion $R_L=m_L\sum_A\delta^{|A|}\chi_A$ proves that
+$w_L$ has mean one and the required zero coefficients. Moreover
+\[
+ \|p_L\|_\infty\leq m_L\sum_{j=1}^{k_L}\binom Lj\delta^j
+ \leq m_L k_LL^{k_L}\longrightarrow0.
+\]
+Indeed $\log m_L=-(s-1)d^2L^{1/4+\alpha/2}/2+O(L\delta^4)$,
+and $\log k_L+k_L\log L=o(L^{1/4+\alpha/2})$.
+It follows that $w_L\geq(1-c_L\|p_L\|_\infty)/Z_L\to1$ in this
+lower-bound sense, so eventually $w_L\geq b$. Also
+$\|w_L-v_L\|_\infty\to0$, $\|w_L\|_s\to B_*$, and
+$\|S_{w_L}-S_{v_L}\|\leq\|w_L-v_L\|_\infty\to0$.
+The uniform baseline, together with this sup-norm bound, supplies the
+positivity that an unrestricted Fourier erasure would not preserve.
+
+Finally let $B_L=\|w_L\|_s$, and set $\varepsilon_L=0$ when
+$B_L\leq B_*$, otherwise
+$\varepsilon_L=(B_L-B_*)/(B_L-1)$. On the latter event the denominator
+is positive, $0<\varepsilon_L<1$, and $\varepsilon_L\to0$.
+Then $r_L=(1-\varepsilon_L)w_L+\varepsilon_L$ retains the exact
+marginals, mean, and eventual floor. Minkowski gives $\|r_L\|_s\leq B_*$.
+Endpoint hypercontractivity and H\"older, with
+$p=2s/(s-1)=1+1/\rho$, imply for every real signed $f$ that
+\begin{equation}\label{eq:critical-signed-322}
+ \|QM_fQ\|\leq\|f\|_s,
+ \qquad \|Q\|_{2\to p}\leq1.
+\end{equation}
+Thus $\|S_{r_L}-S_{w_L}\|\leq\varepsilon_L(B_L+1)\to0$.
+The actual leading eigenvalues still tend to one. Replace the finitely
+many densities before all positivity and floor conditions hold by $r_L=1$.
+Every stated constraint then holds in every dimension. The positive kernel
+has a simple Perron root in each dimension, while its normalized gap tends
+to zero. Below $B_*$ the earlier sign-compression bound
+$2\lambda_2^s\leq\mathbb E r^s$ already supplies a uniform gap.
+\end{proof}
+
+\begin{theorem}[Rigidity from critical-power uniform integrability]
+\label{thm:marginal-ui}
+Suppose $k_L\to\infty$, $r_L\geq0$, $\mathbb E r_L=1$, and the
+weighting laws have uniform marginals through order $k_L$. If
+\[
+ \lim_{M\to\infty}\sup_L
+ \mathbb E[r_L^s\mathbf1_{r_L>M}]=0,
+\]
+then $\|S_{r_L}-P_\rho\|\to0$ and $\gap(T_{r_L})\to1-\rho$.
+For $\rho<\sigma<1$, put $t=\sqrt{\rho/\sigma}$,
+$m_L=\lfloor k_L/2\rfloor$, and
+$\eta_M=\sup_L\|r_L\mathbf1_{r_L>M}\|_s$. More precisely,
+\[
+ \|S_{r_L}-P_\rho\|
+ \leq2(M+1)t^{m_L+1}+2\eta_M.
+\]
+\end{theorem}
+\begin{proof}
+Let $\Pi$ project onto Walsh degrees at most $m_L$. With $h=r_L-1$,
+the $(A,C)$ entry of $QM_hQ$ is
+$\rho^{(|A|+|C|)/2}\widehat h(A\mathbin\triangle C)$.
+Since $|A\mathbin\triangle C|\leq2m_L\leq k_L$ on this block,
+including the zero constant coefficient, $\Pi QM_hQ\Pi=0$.
+
+Split $h=h_b+h_t$, with $h_b=r_L\mathbf1_{r_L\leq M}-1$ and
+$h_t=r_L\mathbf1_{r_L>M}$. Write $Q_\sigma=P_{\sqrt\sigma}$ and
+$D_t=P_t$. For $B_b=QM_{h_b}Q$ we have
+$B_b=D_t A_bD_t$, $A_b=Q_\sigma M_{h_b}Q_\sigma$,
+$\|A_b\|\leq M+1$, and $\|D_t(I-\Pi)\|\leq t^{m_L+1}$.
+The identity
+$B_b-\Pi B_b\Pi=(I-\Pi)B_b+\Pi B_b(I-\Pi)$ bounds its norm by
+$2(M+1)t^{m_L+1}$. For $B_t=QM_{h_t}Q$,
+\eqref{eq:critical-signed-322} gives $\|B_t-\Pi B_t\Pi\|\leq2\eta_M$.
+Since $\Pi(B_b+B_t)\Pi=0$, addition proves the estimate.
+First send $L\to\infty$ at fixed $M$, then $M\to\infty$.
+Self-adjoint perturbation and the actual spectrum $1,\rho,\ldots$ of
+$P_\rho$ give the first two eigenvalue limits $1,\rho$ and the gap limit.
+\end{proof}
+
+For comparison, a strictly higher moment gives an explicit rate without
+truncation. If $q>s$, $\|r_L\|_q\leq B$, and
+$\rho<\sigma\leq(q-1)/(q+1)$, the same factorization gives
+\[
+ \|S_{r_L}-P_\rho\|\leq2(B+1)
+ (\rho/\sigma)^{(\lfloor k_L/2\rfloor+1)/2}.
+\]
+Here $Q_\sigma M_{r_L-1}Q_\sigma$ has norm at most $B+1$ by
+H\"older and hypercontractivity. The corresponding low block vanishes
+exactly. This estimate and the preceding theorem are sufficient conditions,
+not characterizations of all stable families.
+
+\begin{theorem}[Rigidity for every positive linear marginal fraction]
+\label{thm:linear-marginal-rigidity}
+Suppose $r_L\geq0$, $\mathbb E r_L=1$, $\|r_L\|_s\leq B<\infty$,
+and every marginal through order $k_L\leq L$ is uniform. If
+$\liminf_L k_L/L>0$, then $\|S_{r_L}-P_\rho\|\to0$.
+In particular the two leading eigenvalues of $T_{r_L}$ tend to $1,\rho$,
+and $\gap(T_{r_L})\to1-\rho$. No density floor, uniform integrability,
+or supercritical moment assumption is required.
+\end{theorem}
+
+\begin{proof}
+Set $p=2s/(s-1)=1+1/\rho>2$. We use Theorem~1.3 and
+Proposition~2.7 of the version-pinned primary source
+\cite{kirshner-samorodnitsky}. In uniform probability normalization, its
+continuous function $\psi(p,x)$ on $[0,1/2]$ bounds every real homogeneous
+degree-$j$ Walsh polynomial, $j\leq L/2$, by
+\[
+ \|f_j\|_p\leq2^{L\psi(p,j/L)/p}\|f_j\|_2.
+\]
+For fixed $p$, $\psi(p,0)=0$, the right derivative at zero is
+$(p/2)\log_2(p-1)$, and the function is strictly concave.
+These are attributed external mathematical inputs. Strict concavity gives
+\[
+ \Delta_p(x)=\frac{x\log(p-1)}2-
+ \frac{\log2}{p}\psi(p,x)>0\quad(0<x\leq1/2).
+\]
+For completeness, if $f(0)=0$ is strictly concave with right derivative $d$, then
+\[
+ f(x)/x<f(x/2)/(x/2)\leq d.
+\]
+This also handles the upper endpoint. Natural logarithms are used except for
+the displayed $\log_2$.
+
+For $x\in[0,1]$ let $y=\min(x,1-x)$ and
+\[
+ a_p(x)=\frac{x\log(p-1)}2-\frac{\log2}{p}\psi(p,y)
+ =\Delta_p(y)+\frac{(x-y)\log(p-1)}2.
+\]
+This is continuous and strictly positive for every $x>0$, including
+$a_p(1)=\log(p-1)/2$. For each fixed $0<\gamma\leq1$, compactness gives
+$a_\gamma=\min_{x\in[\gamma,1]}a_p(x)>0$.
+For $j\leq L/2$ the published inequality and $\rho=1/(p-1)$ imply
+\[
+ \|Qf_j\|_p\leq e^{-La_p(j/L)}\|f_j\|_2.
+\]
+For $j>L/2$, multiplication by the full parity character maps the entire
+degree-$j$ level to degree $L-j$ while preserving all $L^q$ norms.
+Applying the preceding homogeneous inequality there and retaining the
+original factor $\rho^{j/2}$ gives the same bound. This does not assert
+that parity multiplication commutes with $Q$.
+
+Let $H_\gamma$ project onto degrees $j\geq\gamma L$. Triangle inequality,
+then Cauchy--Schwarz over at most $L+1$ orthogonal levels, give
+\begin{equation}\label{eq:high-level-endpoint-322}
+ \|QH_\gamma\|_{2\to p}\leq\sqrt{L+1}\,e^{-La_\gamma}.
+\end{equation}
+Take fixed $0<c<\liminf k_L/L$ and put $\gamma=c/2$. For all sufficiently
+large $L$, the complement $H=I-\Pi$ of degrees at most
+$m_L=\lfloor k_L/2\rfloor$ has degrees
+$j\geq m_L+1\geq k_L/2\geq\gamma L$.
+For $\mathcal B=QM_{r_L-1}Q$, exact marginals give $\Pi\mathcal B\Pi=0$,
+hence $\mathcal B=H\mathcal B+\Pi\mathcal BH$.
+For real unit vectors $u,v$, H\"older with $1/s+2/p=1$ yields
+\[
+ |\langle u,H\mathcal Bv\rangle|
+ \leq\|r_L-1\|_s\|QHu\|_p\|Qv\|_p
+ \leq(B+1)\sqrt{L+1}\,e^{-La_\gamma}.
+\]
+The other term uses $Q\Pi u$ and $QHv$. Since $\Pi$ is an $L^2$
+contraction, $\|Q\Pi\|_{2\to p}\leq1$; no $L^p$ contraction property
+of $\Pi$ is needed. Thus
+\[
+ \|S_{r_L}-P_\rho\|\leq2(B+1)\sqrt{L+1}\,e^{-La_\gamma}.
+\]
+This tends to zero. The ordered-eigenvalue perturbation bound applies in
+the same finite dimensional space for each $L$. It gives the actual
+top-two limits, including when $r_L$ has zeros, and the common spectrum
+of $S_{r_L},T_{r_L}$ supplies the asserted gap limit.
+\end{proof}
+
+\begin{theorem}[Quantitative rigidity at a sublinear marginal order]
+\label{thm:quadratic-marginal-rigidity}
+Keep $\rho,s,p,Q$ fixed as above. There exists $c_p>0$ such that, if
+$r_L\geq0$, $\mathbb E r_L=1$, $\|r_L\|_s\leq B$, and the weighting
+law has exactly uniform marginals through integer order $0\leq k_L\leq L$,
+then
+\begin{equation}\label{eq:quadratic-marginal-rate}
+ \|S_{r_L}-P_\rho\|
+ \leq 2(B+1)\sqrt{L+1}\exp\!\left(-\frac{c_p k_L^2}{4L}\right).
+\end{equation}
+Consequently, if $k_L^2/(L\log(L+1))\to\infty$, the two leading
+eigenvalues of $T_{r_L}$ tend to $1,\rho$ and its normalized gap tends
+to $1-\rho$. The constant depends on the fixed noise parameter; no
+uniformity as $\rho$ approaches an endpoint is asserted.
+\end{theorem}
+
+\begin{proof}
+We derive a quantitative modulus from Proposition~2.6 of
+\cite{kirshner-samorodnitsky}, rather than infer one from strict concavity.
+Its parameterization, with binary entropy $H_2$, is
+\begin{align*}
+ \psi(p,x)&=(p-1)+\log_2((1-\delta)^p+\delta^p)
+       -\tfrac p2 H_2(x)-px\log_2(1-2\delta),\\
+ x&=(\tfrac12-\delta)
+ \frac{(1-\delta)^{p-1}-\delta^{p-1}}{(1-\delta)^p+\delta^p}.
+\end{align*}
+Put $z=1-2\delta$, $A(z)=((1+z)^p+(1-z)^p)/2$ and
+$h(x)=-x\log x-(1-x)\log(1-x)$. The constants cancel exactly, giving
+\begin{equation}\label{eq:323-parameterization}
+ (\log2)\psi(p,x)=\log A(z)-\tfrac p2h(x)-px\log z,
+ \qquad x=\frac{zA'(z)}{pA(z)}.
+\end{equation}
+For every fixed real $p>2$, $A$ is positive and even analytic near zero.
+The binomial expansion followed by the logarithm gives
+\[
+ \log A(z)=\frac{p(p-1)}2z^2+b_4z^4+O(z^6),\qquad
+ b_4=-\frac{p(p-1)(p^2+p-3)}{12}.
+\]
+Indeed the fourth coefficient before simplification is
+$p(p-1)(p-2)(p-3)/24-p^2(p-1)^2/8$.
+Write $v=z^2$, $a=p-1$ and $b=4b_4/p$. Then
+$x=av+bv^2+O(v^3)$. Since $a>0$, the analytic inverse theorem yields
+\begin{align*}
+ v&=x/a-bx^2/a^3+O(x^3),\\
+ \log v&=\log x-\log a-bx/a^2+O(x^2),\\
+ \log A&=(p/2)x-b_4x^2/a^2+O(x^3).
+\end{align*}
+Using $h(x)=-x\log x+x-x^2/2+O(x^3)$ in
+\eqref{eq:323-parameterization} cancels the $x\log x$ terms. Thus
+\begin{align*}
+ (\log2)\psi(p,x)
+ &=\tfrac p2\log(p-1)x+
+       \left(\tfrac p4+\frac{b_4}{(p-1)^2}\right)x^2+O(x^3)\\
+ &=\tfrac p2\log(p-1)x-
+       \frac{p^2(p-2)}{12(p-1)}x^2+O(x^3),
+\end{align*}
+and hence
+\begin{equation}\label{eq:323-quadratic-deficit}
+ \Delta_p(x)=\frac{p(p-2)}{12(p-1)}x^2+O(x^3).
+\end{equation}
+All remainders are for fixed $p$ as $x\downarrow0$. In particular their
+positive leading coefficient is not uniform at $p=2$, which is excluded.
+This expansion is an elementary consequence of the cited formula; no
+originality of the moment bound or of its parameterization is claimed.
+
+The function $a_p$ in the preceding proof is positive on $(0,1]$.
+Equation~\eqref{eq:323-quadratic-deficit} shows that $a_p(x)/x^2$ extends
+to a continuous positive function on $[0,1]$, with value
+$p(p-2)/(12(p-1))$ at zero. Let $c_p>0$ be its minimum. This is an
+existence constant; its global value is not asserted to equal the value
+at zero. The homogeneous estimate, including the parity reduction for
+$j>L/2$, now gives
+\[
+ \|Qf_j\|_p\leq \exp(-c_p j^2/L)\|f_j\|_2.
+\]
+For $m=\lfloor k_L/2\rfloor$, $\Pi$ the projection onto degrees at most
+$m$, and $H=I-\Pi$, summing the orthogonal levels gives
+\[
+ \|QH\|_{2\to p}\leq
+ \sqrt{L+1}\exp(-c_p(m+1)^2/L).
+\]
+The exact identity $\Pi QM_{r_L-1}Q\Pi=0$ still holds. The two
+H\"older block estimates in the preceding proof therefore yield
+\[
+ \|S_{r_L}-P_\rho\|\leq
+ 2(B+1)\sqrt{L+1}\exp(-c_p(m+1)^2/L)
+ \quad(k_L<L).
+\]
+If $k_L=L$, all nonconstant Walsh coefficients of $r_L$ vanish, so
+$r_L=1$ and the norm difference is zero. Otherwise $m+1\geq k_L/2$
+gives~\eqref{eq:quadratic-marginal-rate}. Its logarithm is at most
+$\log(2(B+1))+\frac12\log(L+1)-c_pk_L^2/(4L)$, which tends to
+minus infinity under the stated condition. The same self-adjoint
+perturbation and square-product spectral identity give the actual
+ordered eigenvalue and normalized gap limits, including zero densities.
+\end{proof}
+
+\paragraph{Scope of the separation.}
+Theorems~\ref{thm:growing-collapse} and~\ref{thm:quadratic-marginal-rigidity}
+operate at the same critical cap $B_*$. Theorem~\ref{thm:332-subroot} below strengthens the fixed-power
+construction to every $k_L=o(\sqrt L)$. The quantitative bound above is valid but is
+strengthened in Corollary~\ref{cor:327-marginals}, which removes its
+logarithmic loss. Those two results alone do not decide the density gap at
+$k_L$ comparable to $\sqrt L$; Theorem~\ref{thm:335-positive} below proves
+positivity there at the critical cap, without asserting convergence to
+the unweighted gap. The endpoint operator threshold of
+Theorem~\ref{thm:square-root-tail} is sharp in its own signed-function
+class. Qualitative concavity alone supplies no shrinking-cutoff rate;
+the explicit expansion \eqref{eq:323-quadratic-deficit} proves the
+earlier bound, and the next section proves the stronger estimate.
+Theorem~\ref{thm:marginal-ui} supplies a separate sufficient condition at
+arbitrary diverging marginal order. All statements concern finite Boolean
+transfer operators with global weights. They imply no fixed-range Gibbs,
+local-dynamics, physical-gap, continuum, or Yang--Mills result.
+The classical marginal/Fourier criterion and coefficient erasure are prior
+methods; the homogeneous moment improvement is explicitly attributed.
+Historical priority for their joint spectral application remains unestablished.
+
+\section{Endpoint noise tails and the square-root scale}
+\label{sec:square-root-tail}
+This section removes the logarithmic loss in the preceding sufficient
+condition and determines the exact vanishing scale of the operator norm
+used in its proof. The two conclusions have different scopes: sharpness
+for an operator norm is not necessity for nonnegative weighting densities.
+All norms below use uniform probability measure on the Boolean cube.
+Fix $0<\rho<1$, put $q_0=1+\rho$, $p_0=q_0/(q_0-1)=1+1/\rho$,
+and write $Q=P_{\sqrt\rho}$. Let $H_m$ be the orthogonal Walsh projection
+onto degrees at least $m$, with $H_m=0$ if $m>L$.
+
+\begin{theorem}[Endpoint tail bound and exact vanishing scale]
+\label{thm:square-root-tail}
+There is $C_\rho>0$, depending only on the fixed parameter $\rho$, such that,
+for $1\leq m\leq L$,
+\begin{equation}\label{eq:327-tail-upper}
+ N_L(m):=\|QH_m\|_{2\to p_0}
+ \leq \rho^{m/4}+e^{-cm}+\exp(-C_\rho c^2m^2/L),
+ \qquad c=\frac{(-\log\rho)(q_0-1)}{8(1-q_0/2)}.
+\end{equation}
+For every sequence of positive integers $m_L$,
+\[
+ N_L(m_L)\longrightarrow0
+ \quad\Longleftrightarrow\quad m_L/\sqrt L\longrightarrow\infty.
+\]
+More precisely, if $m_L/\sqrt L\to C\in[0,\infty)$, then
+\begin{equation}\label{eq:327-tail-lower}
+ \liminf_{L\to\infty}N_L(m_L)
+ \geq \exp\!\left(-\frac{1-\rho^2}{12\rho}C^2\right).
+\end{equation}
+In particular $N_L(m_L)\to1$ when $m_L=o(\sqrt L)$.
+No equality for the positive-$C$ transition profile is asserted.
+\end{theorem}
+
+We first establish the quantitative modulus needed for the upper bound.
+Our external input is the distribution-sensitive hypercontractive theorem
+of Kirshner and Samorodnitsky, Theorem~1.8 and Lemma~2.14 in
+\url{https://arxiv.org/html/1909.11929v1}. With
+$\epsilon=(1-\sqrt\rho)/2$ and
+$x=L^{-1}\log_2(\|f\|_{q_0}/\|f\|_1)$, their theorem gives
+\begin{equation}\label{eq:327-KS}
+ \|Qf\|_2\leq 2^{L\eta(x,\epsilon)}\|f\|_{q_0}.
+\end{equation}
+Its argument belongs to $[0,(q_0-1)/q_0]$. Their function is continuous
+there and strictly negative for positive argument. We use this attributed
+inequality; we do not claim a new proof of that theorem.
+
+\begin{lemma}[Quadratic modulus of the concentration deficit]
+\label{lem:327-modulus}
+For the fixed parameters above there is $C_\rho>0$ such that
+\[
+ -\log(2)\eta(x,\epsilon)\geq C_\rho(\log(2)x)^2
+ \qquad (0\leq x\leq(q_0-1)/q_0).
+\]
+The continuous quotient at zero has value
+$(2-q_0)/(3q_0(q_0-1))>0$. The global constant is not claimed to equal
+this local value, or to be uniform as $\rho$ approaches either endpoint.
+\end{lemma}
+\begin{proof}
+Write $d=(1-\rho)/2=2\epsilon(1-\epsilon)$ and consider signs $(X,Y)$
+with probabilities $q_0/4$ on each equal pair and $(2-q_0)/4$ on each
+unequal pair. All four probabilities are positive. For
+$\sigma=(1-t)/2$, any joint table with both negative-sign marginals
+equal to $\sigma$ has entries
+\[
+ \nu(--)=\sigma-z,\quad \nu(-+)=\nu(+-)=z,\quad
+ \nu(++)=1-\sigma-z,\qquad 0\leq z\leq\sigma.
+\]
+For $t\geq0$, its base-two entropy is
+$H_2(\sigma)+\sigma H_2(z/\sigma)+(1-\sigma)H_2(z/(1-\sigma))$,
+with boundary values understood by continuity. Thus
+\begin{align*}
+ -D_2(\nu\Vert P)={}&H_2(\sigma)-1
+   +\sigma H_2(z/\sigma)+(1-\sigma)H_2(z/(1-\sigma))\\
+ &+(1-2z)\log_2(1-d)+2z\log_2d.
+\end{align*}
+Maximizing this expression over $z$ is exactly the definition of
+$\phi(\sigma,d)$ in Section~2.1.6 of the cited source. Consequently
+$\phi(\sigma,d)=-I(t,t)/\log2$, where $I(t,t)$ is the minimum natural
+relative entropy subject to the two mean constraints. This is an identity
+between finite probability tables, requiring no asymptotic identification
+of a large-deviation rate.
+
+Near zero, the covariance matrix
+$\left(\begin{smallmatrix}1&\rho\\\rho&1\end{smallmatrix}\right)$
+is positive definite. The analytic inverse function theorem applied to
+the gradient of the joint log moment-generating function produces a unique
+small tilt realizing means $(t,t)$. If $P_\lambda$ denotes that tilt,
+the identity
+\[
+ D(\nu\Vert P)=D(\nu\Vert P_\lambda)
+  +\lambda_1t+\lambda_2t-\log\mathbb E_Pe^{\lambda_1X+\lambda_2Y}
+\]
+proves that it minimizes entropy. Swap symmetry and local uniqueness
+give $\lambda_1=\lambda_2=\lambda$. Therefore, with natural logarithms,
+\[
+ K(\lambda)=\log\left(\frac{q_0}{2}\cosh(2\lambda)
+                          +\frac{2-q_0}{2}\right),\qquad
+ I(t,t)=2t\lambda-K(\lambda),\quad K'(\lambda)=2t.
+\]
+Writing $b=q_0/3-q_0^2/2$, analytic expansion and inversion give
+\begin{align*}
+ K(\lambda)&=q_0\lambda^2+b\lambda^4+O(\lambda^6),\\
+ \lambda&=t/q_0-2bt^3/q_0^4+O(t^5),\\
+ I(t,t)&=t^2/q_0+(q_0/2-1/3)t^4/q_0^3+O(t^6).
+\end{align*}
+Also $I_1(t)=\log2[1-H_2((1-t)/2)]=t^2/2+t^4/12+O(t^6)$.
+The definition of $\eta$ in Section~2.1.7 of the cited source has
+$1-H_2(\sigma)=q_0x/(q_0-1)$. Hence, setting $u=(\log2)x$,
+\[
+ u=\frac{q_0-1}{q_0}I_1(t),\qquad
+ -\log2\,\eta(x,\epsilon)=\tfrac12 I(t,t)-I_1(t)/q_0.
+\]
+The first relation has an analytic inverse in $t^2$ near zero. Substitution
+in the second gives
+\[
+ -\log2\,\eta(x,\epsilon)
+ =\frac{(q_0-1)(2-q_0)}{12q_0^3}t^4+O(t^6)
+ =\frac{2-q_0}{3q_0(q_0-1)}u^2+O(u^3).
+\]
+Continuity and strict negativity of $\eta$ away from zero, supplied by
+the cited definition and lemma, now make the quotient a positive
+continuous function on a compact interval. Its positive minimum proves
+the assertion.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:square-root-tail}]
+Self-adjointness, commutation and finite-dimensional duality give
+$N_L(m)=\|H_mQ\|_{q_0\to2}$. Normalize $\|f\|_{q_0}=1$ and put
+$a=(-\log\rho)/[4(1-q_0/2)]$, $M=e^{am}$, so $c=a(q_0-1)/2$.
+Decompose $f=b+t$ according to $|f|\leq M$ and $|f|>M$.
+The bounded part satisfies $\|b\|_2\leq M^{1-q_0/2}$, whence
+\[
+ \|H_mQb\|_2\leq\rho^{m/2}M^{1-q_0/2}=\rho^{m/4}.
+\]
+Here the projection is used only in $L^2$, with its spectral multiplier;
+no $L^{p_0}$ contraction of a Fourier cutoff is assumed.
+
+For the tail, $\|t\|_1\leq e^{-a(q_0-1)m}$ and $\|t\|_{q_0}\leq1$.
+If $\|t\|_{q_0}\leq e^{-cm}$, ordinary endpoint hypercontractivity
+bounds $\|H_mQt\|_2$ by $e^{-cm}$. Otherwise
+$\log(\|t\|_{q_0}/\|t\|_1)\geq cm$, and
+\eqref{eq:327-KS} with Lemma~\ref{lem:327-modulus} bounds it by
+$\exp(-C_\rho c^2m^2/L)$.
+For signed functions, the positive kernel gives
+$|Qt|\leq Q|t|$, so the same refined estimate applies. A zero tail is
+harmless; a case forcing a concentration argument above its admissible
+interval is empty. Adding the two possible tail bounds yields
+\eqref{eq:327-tail-upper}. If $m_L/\sqrt L\to\infty$, each displayed
+term vanishes on indices $m_L\leq L$, while the other indices give
+the zero operator.
+
+For the converse, for $0<t<1$ define the unit $L^2$ product
+\[
+ f_{L,t}(x)=\prod_{i=1}^L\frac{1+tx_i}{\sqrt{1+t^2}}.
+\]
+Its Walsh coefficient at $A$ is $t^{|A|}/(1+t^2)^{L/2}$, so exactly
+\[
+ \|(I-H_m)f_{L,t}\|_2^2
+ =\Pr\{\operatorname{Bin}(L,t^2/(1+t^2))<m\}.
+\]
+Ordinary endpoint hypercontractivity and the triangle inequality imply
+\begin{equation}\label{eq:327-witness}
+ N_L(m)\geq\|Qf_{L,t}\|_{p_0}
+ -\sqrt{\Pr\{\operatorname{Bin}(L,t^2/(1+t^2))<m\}}.
+\end{equation}
+In particular the projection, not the original positive product, is the
+high-degree witness. It may be signed.
+
+Product factorization gives $\log\|Qf_{L,t}\|_{p_0}=LF_\rho(t)$, where
+\[
+ F_\rho(t)=\frac1{p_0}\log\frac{(1+\sqrt\rho\,t)^{p_0}
+                                  +(1-\sqrt\rho\,t)^{p_0}}2
+                  -\frac12\log(1+t^2).
+\]
+Both bases are positive near zero, so this is even analytic also for
+noninteger $p_0$. Expanding
+$\mathbb E(1+zX)^{p_0}=1+A z^2+Bz^4+O(z^6)$ with
+$A=p_0(p_0-1)/2$ and $B=p_0(p_0-1)(p_0-2)(p_0-3)/24$ gives
+\[
+ \frac1{p_0}\log\mathbb E(1+zX)^{p_0}
+ =\frac{p_0-1}{2}z^2
+ -\frac{(p_0-1)(p_0^2+p_0-3)}{12}z^4+O(z^6).
+\]
+The quadratic terms cancel since $(p_0-1)\rho=1$, and thus
+$F_\rho(t)=-d_\rho t^4+O_\rho(t^6)$, where
+$d_\rho=(1-\rho^2)/(12\rho)>0$.
+
+Suppose $m_L/\sqrt L\to C<\infty$. Fix $A>C$ and set
+$t_L^2=A/\sqrt L$. Then $Lt_L^4=A^2$ and $Lt_L^6\to0$, so the
+first term in \eqref{eq:327-witness} tends to $e^{-d_\rho A^2}$.
+The binomial mean is $\mu_L=A\sqrt L/(1+A/\sqrt L)$ and its
+variance is at most $\mu_L$. For large $L$,
+$\mu_L-m_L\geq(A-C)\sqrt L/2$; Chebyshev's inequality bounds
+the low-tail probability by $\mu_L/(\mu_L-m_L)^2=O_{A,C}(L^{-1/2})$.
+Taking the lower limit in \eqref{eq:327-witness}, then the supremum over
+fixed $A>C$, proves \eqref{eq:327-tail-lower}. There is no interchange
+of nonuniform limits. At $C=0$, the endpoint upper bound $N_L(m)\leq1$
+proves convergence to one.
+Finally, if $m_L/\sqrt L$ fails to tend to infinity, it has a bounded
+subsequence and then a subsequence converging to a finite $C$.
+The positive lower bound on that subsequence precludes $N_L(m_L)\to0$.
+\end{proof}
+
+\begin{corollary}[Marginal rigidity without the logarithmic loss]
+\label{cor:327-marginals}
+Let $r_L\geq0$, $\mathbb E r_L=1$, and
+$\|r_L\|_s\leq B$ for $s=(1+\rho)/(1-\rho)$ and fixed finite $B$.
+Assume all weighting-law marginals on at most $k_L$ coordinates are
+uniform. If $k_L/\sqrt L\to\infty$, then
+\[
+ \|S_{r_L}-P_\rho\|_{2\to2}\to0,\qquad
+ \lambda_1(T_{r_L})\to1,\quad\lambda_2(T_{r_L})\to\rho,
+ \qquad \gap(T_{r_L})\to1-\rho.
+\]
+The norm conclusion concerns $S_{r_L}=QM_{r_L}Q$; it does not assert
+$\|T_{r_L}-P_\rho\|\to0$ for $T_{r_L}=M_{\sqrt{r_L}}P_\rho M_{\sqrt{r_L}}$.
+\end{corollary}
+\begin{proof}
+Put $d=\lfloor k_L/2\rfloor$, let $\Pi$ project onto degrees at most
+$d$, and let $H=I-\Pi=H_{d+1}$. With $h=r_L-1$ and $D=QM_hQ$,
+exact matching gives $\Pi D\Pi=0$: the Walsh entry uses
+$\widehat h(A\mathbin\triangle C)$ with $|A\mathbin\triangle C|\leq2d\leq k_L$.
+Consequently $D=HD+\Pi DH$. Since $1/s+2/p_0=1$,
+H\"older's inequality and endpoint hypercontractivity bound each block
+by $(B+1)N_L(d+1)$; for the projected low factor use
+$\|Q\Pi f\|_{p_0}\leq\|\Pi f\|_2\leq\|f\|_2$.
+Thus $\|D\|\leq2(B+1)N_L(d+1)\to0$. If $k_L=L$, exact matching
+already forces $r_L=1$. Self-adjoint eigenvalue perturbation yields the
+top two limits for $S_{r_L}$. With $A=QM_{\sqrt{r_L}}$ we have
+$S_{r_L}=AA^*$ and $T_{r_L}=A^*A$; their full finite spectra agree,
+including zeros. This proves the asserted eigenvalue and normalized-gap
+limits even when the densities vanish.
+\end{proof}
+
+\paragraph{Scope and relation to earlier results.}
+The new sufficient condition supersedes the logarithmic scale of
+Theorem~\ref{thm:quadratic-marginal-rigidity}; that earlier bound remains
+valid. Section~\ref{sec:one-sided-erasure}
+closes the entire sub-square-root collapse regime and gives an attained
+finite-$C$ profile. Section~\ref{sec:finite-c-positive} supplies the
+universal positive finite-$C$ lower bound at the critical cap, while the
+exact density infimum remains open. The signed witness
+in \eqref{eq:327-witness} does not supply a nonnegative mean-one density
+with exact marginals and a collapsing transfer gap. Nor does equality
+of spectra of $S_r,T_r$ give equality of their distances to $P_\rho$.
+For example, $r=1+t\chi_{[L]}$, $0<t<1$, has uniform proper marginals
+and bounded critical norm. Writing $\sqrt r=a+b\chi_{[L]}$ gives
+$2ab=t$, so the $\{1,\chi_{[L]}\}$ off-diagonal entry of
+$T_r-P_\rho$ is $t(1+\rho^L)/2\geq t/2$, whereas
+$\|S_r-P_\rho\|=t\rho^{L/2}\to0$.
+These distinctions correct the ambiguous norm wording of the previous
+version without changing its formally stated $S_r$ theorem.
+
+Endpoint hypercontractivity, Fourier projections, entropy tilting and
+product norm factorization are classical inputs. The refined inequality
+is attributed explicitly above. Existing tail-space literature also
+contains square-root phenomena; this fact alone neither identifies nor
+excludes an antecedent of this precise endpoint operator theorem.
+Historical originality remains unestablished. These are finite-cube
+results with global weights, not fixed-range Gibbs, local-dynamics,
+physical-gap or continuum results.
+
+\section{One-sided erasure and the density transition}
+\label{sec:one-sided-erasure}
+We retain the probability-cube conventions of
+Section~\ref{sec:growing-marginals}. Fix $0<\rho<1$, put
+$s=(1+\rho)/(1-\rho)$ and $B_*=2^{1/s}$, and write
+$Q=P_{\sqrt\rho}$, $S_r=QM_rQ$ and
+$T_r=M_{\sqrt r}P_\rho M_{\sqrt r}$. All marginal assertions below
+refer to the weighting density $r$, not a Perron stationary law.
+
+The obstacle in a direct coefficient erasure is positivity: a small
+$L^s$ correction can be large at individual points. A global absolute
+bound is stronger than needed. We prove a one-sided bound on the remainder
+of an odd Taylor truncation, and combine it with an $L^s$ bound on the
+correction. Both estimates are derived explicitly.
+
+\begin{lemma}[Odd erasure with two different controls]
+\label{lem:332-erasure}
+Let $m$ be a positive odd integer, $m+1\le L$, $u=L\delta^2\ge4m$ and $0<\delta<1$.
+Define
+\[
+ n=\left(\frac{(1+\delta)^s+(1-\delta)^s}{2}\right)^{1/s},
+ \qquad R(x)=\prod_{i=1}^L\left[\frac{1+\delta x_i}{n}\right],
+ \qquad \mu=n^{-L}.
+\]
+For $z=\sum_i x_i$, write
+\[
+ g_z(t)=(1+t)^{(L+z)/2}(1-t)^{(L-z)/2}
+       =\sum_{j=0}^L K_j(z)t^j,\quad
+ q_m(z)=\sum_{j=0}^m K_j(z)\delta^j,\quad p=\mu(q_m-1).
+\]
+Then $p$ has mean zero and exactly the nonconstant Fourier coefficients
+of $R$ through degree $m$. With $C_s=\max\{1,s-1\}$,
+\begin{align}
+ \|p\|_s&\le\mu m\left(\frac{eC_su}{m}\right)^{m/2},
+       \label{eq:332-ls}\\
+ R(x)-p(x)&\ge-\eta,
+ \qquad \eta=\mu m\exp\left(2m+\frac{m^2}{2u}\right)
+                     \left(\frac{u}{m}\right)^m.
+       \label{eq:332-one-sided}
+\end{align}
+The second bound does not assert that $\|p\|_\infty$ is small.
+\end{lemma}
+\begin{proof}
+The coefficient identity is
+$K_j(z)=\sum_{|A|=j}\chi_A(x)$, so $R=\mu g_z(\delta)$ and the
+mean and matching assertions follow. Orthogonality gives
+$\|K_j\|_2=\binom Lj^{1/2}$. If $1<s\le2$, norm comparison on a
+probability space bounds its $L^s$ norm by its $L^2$ norm. If $s>2$,
+Boolean hypercontractivity applied to the homogeneous degree-$j$
+polynomial gives $\|K_j\|_s\le(s-1)^{j/2}\|K_j\|_2$.
+Consequently
+\[
+ \|p\|_s\le\mu\sum_{j=1}^m\frac{(C_su)^{j/2}}{\sqrt{j!}}.
+\]
+The terms increase through $m$, since their successive ratios are
+$\sqrt{C_su/j}\ge2$. Bound the sum by $m$ times its last term and use
+$m!\ge(m/e)^m$ to obtain~\eqref{eq:332-ls}. No contractivity of a
+sharp Fourier projection on $L^s$ is used.
+
+For~\eqref{eq:332-one-sided}, first suppose $|z|\le2L\delta$ and set
+$r_0=m/(L\delta)=\delta m/u<1$. On the complex circle $|t|=r_0$,
+applying $\log(1+y)\le y$ to the positive squared moduli of $1+t$ and
+$1-t$ yields
+\[
+ \log|g_z(t)|\le z\operatorname{Re}t+\frac{Lr_0^2}{2}
+ \le |z|r_0+\frac{Lr_0^2}{2}.
+\]
+Cauchy's coefficient bound and $\delta/r_0=u/m\ge1$ give
+\[
+ |p(x)|\le\mu m\exp\left(2m+\frac{m^2}{2u}\right)
+                         (u/m)^m=\eta.
+\]
+As $R\ge0$, the required lower bound follows in this central region.
+
+For $z=-w\le-2L\delta$, the identity
+$(1-t^2)g_z'=(z-Lt)g_z$ gives, with
+$A_j=(-1)^jg_z^{(j)}(0)$,
+\[
+ A_0=1,\quad A_1=w,\quad
+ A_{j+1}=wA_j-j(L-j+1)A_{j-1}.
+\]
+Here superscripts in parentheses denote derivatives. Since
+$w^2\ge4Lu\ge4mL$, induction gives
+$A_j/A_{j-1}\ge w/2>0$ through $j=m$: the next ratio is at least
+$w-2jL/w\ge w/2$. Therefore the terms
+$B_j=\delta^jA_j/j!$ increase, as
+$B_j/B_{j-1}\ge\delta w/(2j)\ge u/m\ge1$.
+The odd parity of $m$ allows the pairing
+\[
+ q_m=(B_0-B_1)+(B_2-B_3)+\cdots+(B_{m-1}-B_m)\le0.
+\]
+It follows that $R-p=R-\mu q_m+\mu\ge0$ in this region.
+
+For $z\ge2L\delta$, fix any $t\in[0,\delta]$ and put $d=1-t^2>0$.
+Differentiating the same identity $j$ times gives exactly
+\begin{equation}\label{eq:332-derivative}
+ d g_z^{(j+1)}=[z-(L-2j)t]g_z^{(j)}
+                    -j(L-j+1)g_z^{(j-1)}.
+\end{equation}
+We have $g_z(t)>0$, $g_z'/g_z=(z-Lt)/d\ge z/(2d)$,
+$z-(L-2j)t\ge z/2$, and $z^2\ge4Lu\ge16mL$.
+If $g_z^{(j)}/g_z^{(j-1)}\ge z/(4d)>0$, then
+\eqref{eq:332-derivative} implies
+\[
+ \frac{g_z^{(j+1)}}{g_z^{(j)}}
+ \ge\frac{z/2-4jLd/z}{d}\ge\frac{z}{4d}>0
+ \qquad(1\le j\le m).
+\]
+Thus $g_z^{(m+1)}$ is positive throughout $[0,\delta]$.
+Taylor's integral remainder gives $g_z(\delta)-q_m\ge0$, and hence
+$R-p\ge\mu>0$. The three regions cover the cube, including their
+boundaries. No root-location theorem for the coefficient polynomials
+has been assumed.
+\end{proof}
+
+\begin{theorem}[Collapse throughout the sub-square-root regime]
+\leavevmode\par
+\label{thm:332-subroot}
+For every integer sequence $1\le k_L\le L$ with $k_L=o(\sqrt L)$,
+and every fixed $0<b<1$, there are densities satisfying, in every dimension,
+\[
+ r_L\ge b,\qquad \mathbb E r_L=1,\qquad \|r_L\|_s\le B_* ,
+ \qquad \mathbb E[r_L\chi_A]=0\quad(1\le|A|\le k_L),
+\]
+such that $\lambda_1(T_{r_L})\to1$ and $\lambda_2(T_{r_L})\to1$.
+In particular $\gap(T_{r_L})\to0$.
+\end{theorem}
+\begin{proof}
+For large $L$, let $m$ be the smallest odd integer at least $k_L$ and set
+\[
+ u=\sqrt{m\sqrt L},\qquad \delta=\sqrt{u/L},\qquad a_s=(s-1)/2.
+\]
+Then $m=o(\sqrt L)$, $u/m\to\infty$, $u\to\infty$,
+$u/\sqrt L\to0$, and $L\delta^4=u^2/L\to0$.
+All conditions of Lemma~\ref{lem:332-erasure} hold eventually.
+The scalar expansion gives $\log\mu=-a_su+O_s(u^2/L)$.
+The logarithms of the bounds in~\eqref{eq:332-ls} and
+\eqref{eq:332-one-sided} are respectively at most
+\[
+ -a_su+\log m+\frac m2\log(eC_su/m)+o(1),
+\]
+\[
+ -a_su+\log m+2m+\frac{m^2}{2u}+m\log(u/m)+o(1).
+\]
+Both tend to minus infinity, since $m/u\to0$ and
+$\log(u/m)/(u/m)\to0$. Thus $\|p\|_s\to0$ and $\eta\to0$.
+
+For completeness, carry the spectral and norm closures through this
+new scale. In the one-site Walsh basis, put
+\[
+ D=\diag(1,\rho),\qquad
+ H=\frac1n\begin{pmatrix}1&\delta\sqrt\rho\\
+                         \delta\sqrt\rho&\rho\end{pmatrix}.
+\]
+The largest eigenvalue $\kappa$ of $H$, and
+$\tau=\|D^{1/2}H^{1/2}\|$, satisfy
+\begin{align}
+ \kappa&=\frac{1+\rho+\sqrt{(1-\rho)^2+4\rho\delta^2}}{2n},
+       \label{eq:332-kappa}\\
+ \tau^2&=\frac{1+\rho^2+\sqrt{(1-\rho^2)^2+4\rho^2\delta^2}}{2n}.
+       \label{eq:332-tau}
+\end{align}
+Expansion at fixed $\rho$ yields
+$\log\kappa=O_\rho(\delta^4)$ and
+$\log\tau=-\rho\delta^2/[2(1-\rho^2)]+O_\rho(\delta^4)$.
+Take $c=\kappa^{-L}\to1$ and $Z=1+c\mu\to1$.
+The two positive summands of $F=P_\rho+cH^{\otimes L}$ each have
+largest eigenvalue exactly one. For
+$V=[P_\rho^{1/2},\sqrt c\,(H^{1/2})^{\otimes L}]$, the Gram operator
+$V^*V$ differs from their block diagonal by an off-diagonal operator
+of norm $\sqrt c\,\tau^L\to0$. The block diagonal's first two
+eigenvalues are $1,1$. Min-max gives the same limits for $V^*V$;
+these two eigenvalues are eventually positive, so the nonzero
+square-product identity identifies them as the actual first two
+of $VV^*=F$, rather than extra Gram zeros. Hence
+$v=(1+cR)/Z$ has $\lambda_1(S_v),\lambda_2(S_v)\to1$.
+
+Exactly $\mathbb E R^s=1$, whereas for every fixed $0<t<s$,
+\[
+ \log\mathbb E R^t=-\frac{t(s-t)}2u+O_{s,t}(u^2/L)\longrightarrow-\infty.
+\]
+For $\theta=\min\{1,s/2\}$, the elementary mixed-power inequality
+\[
+ 0\le(1+y)^s-1-y^s
+ \le s2^{s-1}(y^\theta+y^{s-\theta})\qquad(y\ge0)
+\]
+follows by the mean-value bound on $[0,1]$ and reciprocal substitution
+above one. Both powers are strictly between zero and $s$.
+Applied to $cR$, it proves $\mathbb E(1+cR)^s\to2$ and
+$\|v\|_s\to B_*$.
+
+Set $w=(1+c(R-p))/Z$. It has mean one and the exact required Fourier
+zeros. Its lower bound $(1-c\eta)/Z\to1$ ensures $w\ge b$ eventually,
+while $\|w-v\|_s=c\|p\|_s/Z\to0$. In particular $B_L=\|w\|_s\to B_*$.
+For any signed function $f$, Holder's inequality and endpoint
+hypercontractivity give
+\begin{equation}\label{eq:332-signed-sandwich}
+ \|QM_fQ\|_{2\to2}\le\|f\|_s,
+ \qquad \frac1s+\frac{2}{1+1/\rho}=1.
+\end{equation}
+Indeed apply Holder to $\mathbb E[f(Qg)(Qh)]$ and use
+$\|Qg\|_{1+1/\rho}\le\|g\|_2$. Thus the erasure preserves both
+ordered eigenvalue limits.
+
+If $B_L\le B_*$, put $\varepsilon=0$; otherwise put
+$\varepsilon=(B_L-B_*)/(B_L-1)\in(0,1)$.
+Then $\varepsilon\to0$, and $r=(1-\varepsilon)w+\varepsilon$
+has the exact finite cap by Minkowski. Mean, floor and Fourier zeros
+persist, while~\eqref{eq:332-signed-sandwich} bounds the final perturbation
+by $\varepsilon(B_L+1)\to0$. Finally $S_r=AA^*$ and $T_r=A^*A$ for
+$A=QM_{\sqrt r}$, so their full finite spectra agree, including zeros.
+For the finitely many excluded initial dimensions take $r=1$.
+This also covers bounded or oscillating admissible $k_L$.
+\end{proof}
+
+\begin{theorem}[An attained profile at finite square-root order]
+\label{thm:332-finite-c}
+Write $a_s=(s-1)/2$, $C_s=\max\{1,s-1\}$ and
+\[
+ \gamma_\rho=\frac{s(s^2-1)}{24}
+            =\frac{\rho(1+\rho)}{6(1-\rho)^3}>0.
+\]
+Choose one finite $K\ge4$ such that
+\begin{equation}\label{eq:332-margins}
+ a_sK>2+\frac1{2K}+\log K,
+ \qquad a_sK>\tfrac12\log(eC_sK).
+\end{equation}
+Such a $K$ depends only on $\rho$. For every integer sequence $1\le k_L\le L$ with
+$k_L/\sqrt L\to C\in(0,\infty)$ and every $0<b<1$, there are mean-one
+densities $r_L\ge b$ with $\|r_L\|_s\le B_*$ and all nonconstant
+Fourier coefficients through $k_L$ zero, such that
+\[
+ \lambda_1(T_{r_L})\to1,\qquad
+ \lambda_2(T_{r_L})\to\max\{\rho,e^{-\gamma_\rho K^2C^2}\}.
+\]
+The attained gap limit is therefore
+\begin{equation}\label{eq:332-profile}
+ \min\{1-\rho,1-e^{-\gamma_\rho K^2C^2}\}
+ \le\min\{1-\rho,\gamma_\rho K^2C^2\}.
+\end{equation}
+This gives an upper bound on the infimum of achievable limiting gaps,
+not a lower bound for every admissible density.
+\end{theorem}
+\begin{proof}
+The left sides in~\eqref{eq:332-margins} grow linearly in $K$ and the
+right sides logarithmically, so both strict inequalities can hold with
+one fixed $K$, independent of $C,L,b$.
+Let $m$ be the smallest odd integer at least $k_L$, put $u=Km$ and
+$\delta^2=u/L$, and use the products and correction in
+Lemma~\ref{lem:332-erasure}. Now
+\[
+ m/\sqrt L\to C,\quad L\delta^4\to K^2C^2,
+ \quad L\delta^6\to0,\quad
+ \log\mu=-a_sKm+O(1).
+\]
+In particular the quartic total does not vanish. Equations
+\eqref{eq:332-ls} and~\eqref{eq:332-one-sided} give bounds whose
+logarithms are at most, respectively,
+\[
+ m[-a_sK+\tfrac12\log(eC_sK)]+\log m+O(1)
+\]
+and
+\[
+ m[-a_sK+2+1/(2K)+\log K]+\log m+O(1).
+\]
+Both tend to minus infinity by the fixed strict margins. Thus
+$\|p\|_s\to0$ and $\eta\to0$ also when $u/m=K$ stays finite.
+The lemma's sign estimates require only $u\ge4m$, not a diverging ratio.
+
+Retain the quartic term in~\eqref{eq:332-kappa}. Its numerator before
+division by $n$ is
+\[
+ \ell=1+\frac{\rho}{1-\rho}\delta^2
+        -\frac{\rho^2}{(1-\rho)^3}\delta^4+O_\rho(\delta^6).
+\]
+Using $\rho=(s-1)/(s+1)$ and expanding the logarithms gives
+\begin{align*}
+ \log\ell&=\frac{s-1}{2}\delta^2
+       -\frac{(s-1)^2(s+2)}8\delta^4+O_s(\delta^6),\\
+ \log n&=\frac{s-1}{2}\delta^2
+       -\frac{(s-1)(s^2+s-3)}{12}\delta^4+O_s(\delta^6).
+\end{align*}
+For the latter, expand the binomial average to fourth order and apply
+$\log(1+x)=x-x^2/2+O(x^3)$ before dividing by $s$.
+Subtracting yields
+$\log\kappa=-s(s^2-1)\delta^4/24+O_s(\delta^6)$, so
+$\kappa^L\to t_C=e^{-\gamma_\rho K^2C^2}\in(0,1)$.
+Equation~\eqref{eq:332-tau} still gives
+\[
+ L\log\tau=-\frac{\rho Km}{2(1-\rho^2)}+O(1)\longrightarrow-\infty.
+\]
+This cross-block estimate needs only a bounded quartic remainder;
+the precise $\kappa^L$ limit needed the vanishing sixth-order remainder.
+
+Use no balancing coefficient $c$ in this construction. Put $Z=1+\mu$
+and $v=(1+R)/Z$, so $S_v=(P_\rho+H^{\otimes L})/Z$.
+The associated Gram operator is within $\tau^L$ of
+$\diag(P_\rho,H^{\otimes L})$. The first block starts with
+$1,\rho$; the second has largest eigenvalue $\kappa^L\to t_C<1$.
+Eventually its norm is less than one. Thus the block diagonal's true
+first two eigenvalues are exactly $1$ and $\max\{\rho,\kappa^L\}$.
+Min-max and the nonzero square-product spectrum give the same limits
+for $P_\rho+H^{\otimes L}$. Both limits are positive, so extra Gram
+zeros do not enter. This includes $t_C=\rho$ without a simplicity
+assumption. Division by $Z\to1$ preserves the limits.
+
+Exactly $\mathbb E R^s=1$, while for $0<t<s$,
+$\log\mathbb E R^t=-t(s-t)Km/2+O(1)\to-\infty$.
+The mixed-power inequality in the preceding proof gives
+$\|v\|_s\to B_*$. For $w=(1+R-p)/Z$, mean and Fourier zeros are exact,
+$w\ge(1-\eta)/Z\to1$ as a uniform lower bound, and
+$\|w-v\|_s\to0$. Therefore $w\ge b$ eventually and
+$B_L=\|w\|_s\to B_*$. Equation~\eqref{eq:332-signed-sandwich}
+preserves the two spectral limits. Use precisely the preceding
+$\varepsilon$ interpolation to impose the exact cap; it preserves
+mean, floor and Fourier zeros and changes the sandwich by at most
+$\varepsilon(B_L+1)\to0$. The full square-product identity transfers
+the conclusion to $T_r$. Set $r=1$ in any excluded initial dimensions.
+The gap formula follows, and $1-e^{-x}\le x$ gives its displayed bound.
+\end{proof}
+
+\section{A positive gap at every fixed positive square-root ratio}
+\label{sec:finite-c-positive}
+The attained profile in Theorem~\ref{thm:332-finite-c} is an upper
+bound on an infimum. We now obtain a lower bound for every admissible
+density at the same critical cap. The new step is to decouple the entire
+low/high cross block, using a third, fixed degree cutoff. A strict bound
+on the high block alone would not justify a gap for the full operator.
+
+Keep $0<\rho<1$, $s=(1+\rho)/(1-\rho)$, $B_*=2^{1/s}$ and
+$p_0=1+1/\rho$. With the constants of
+Theorem~\ref{thm:square-root-tail}, set $\alpha_\rho=C_\rho c^2>0$ and
+\begin{equation}\label{eq:335-F}
+ F_L(m)=\rho^{m/4}+e^{-cm}+e^{-\alpha_\rho m^2/L},
+ \qquad \|QH_m\|_{2\to p_0}\le F_L(m).
+\end{equation}
+The constant $C_\rho$ is the global positive modulus in
+Lemma~\ref{lem:327-modulus}, not its local Taylor coefficient.
+This is an application of the endpoint estimate already proved above
+with its attributed Kirshner--Samorodnitsky input.
+
+\begin{theorem}[Uniform positivity at finite square-root ratio]
+\label{thm:335-positive}
+Fix $b>0$. Suppose $r_L\ge b$, $\mathbb E r_L=1$,
+$\mathbb E r_L^s\le2$, and the weighting law has exactly uniform
+marginals through integer order $0\le k_L\le L$. If
+$k_L/\sqrt L\to C\in(0,\infty)$, then
+\begin{align}
+ \lambda_1(T_{r_L})&\longrightarrow1,\label{eq:335-first}\\
+ \rho\le\liminf_L\lambda_2(T_{r_L})
+ &\le\limsup_L\lambda_2(T_{r_L})
+ \le\max\{\rho,e^{-\alpha_\rho C^2/2}\}.\label{eq:335-second}
+\end{align}
+Consequently
+\begin{equation}\label{eq:335-lower-profile}
+ \liminf_L\gap(T_{r_L})\ge G_\rho(C)
+ :=\min\{1-\rho,1-e^{-\alpha_\rho C^2/2}\}>0.
+\end{equation}
+The estimates are uniform over the admissible densities. More concretely,
+for every $C_0>0$ there is $L_0(\rho,C_0)$ such that, whenever
+$L\ge L_0$ and $C_0\sqrt L\le k\le L$, every density with the stated
+mean, moment cap, floor and exact matching satisfies
+\begin{equation}\label{eq:335-finite-uniform}
+ \gap(T_r)\ge\tfrac12G_\rho(C_0).
+\end{equation}
+The dimension cutoff need not be uniform as $\rho$ approaches an endpoint
+or as $C_0\downarrow0$. No optimality of $G_\rho$ is claimed.
+\end{theorem}
+
+The substantive floor range is $0<b<1$: for $b=1$ the mean forces
+$r=1$, while for $b>1$ there is no admissible density. The proof uses
+nonnegativity in the estimates and strict positivity for the finite Perron
+interpretation; its constants do not depend on the numerical value of $b$.
+
+\begin{lemma}[One remaining unit of tail moment]
+\label{lem:335-budget}
+For any $r\ge0$ with $\mathbb E r=1$ and $\mathbb E r^s\le2$, set
+$r_b=r\mathbf1_{r\le M}$, $r_t=r\mathbf1_{r>M}$, where $M>0$, and
+\[
+ B_M=\left[2-(1-2M^{1-s})_+^s\right]^{1/s},\qquad
+ x_+=\max\{x,0\}.
+\]
+Then $\|r_t\|_s\le B_M$ and $B_M\to1$ as $M\to\infty$.
+For each fixed $1<v<s$, also
+\begin{equation}\label{eq:335-tail-v}
+ \|r_t\|_v\le2^{1/v}M^{1-s/v}.
+\end{equation}
+All these estimates are uniform in dimension and density.
+\end{lemma}
+\begin{proof}
+On the tail, $r\le M^{1-s}r^s$, so
+$\mathbb E r_t\le2M^{1-s}$ and
+$\mathbb E r_b\ge(1-2M^{1-s})_+$. Jensen on the entire probability
+space gives $\mathbb E r_b^s\ge(1-2M^{1-s})_+^s$.
+The two pieces have disjoint support. Thus
+\[
+ \mathbb E r_t^s=\mathbb E r^s-\mathbb E r_b^s
+ \le2-(1-2M^{1-s})_+^s.
+\]
+For the second assertion, $r^v\le M^{v-s}r^s$ on $\{r>M\}$;
+integrating and taking the $v$th root proves~\eqref{eq:335-tail-v}.
+This does not assert that the tail's critical moment tends to zero.
+\end{proof}
+
+\begin{lemma}[Three-block decoupling]
+\label{lem:335-cross}
+For mean-one nonnegative densities with $\|r\|_s\le B_*$ and exact
+matching through order $k$, let $d=\lfloor k/2\rfloor$, $m=d+1$,
+$\Pi$ be the projection onto degrees at most $d$, and $H=I-\Pi=H_m$.
+Then
+\begin{equation}\label{eq:335-compression}
+ \Pi S_r\Pi=\Pi P_\rho\Pi.
+\end{equation}
+Moreover, whenever $k\to\infty$,
+$\|\Pi S_rH\|\to0$, uniformly over these densities. Specifically,
+fix $v=(1+s)/2$, $z=2v/(v-1)>2$, and an integer $n\ge0$. For $d\ge n$,
+\begin{align}
+ D_n(M)&=2^{1/v}M^{1-s/v}(z-1)^n,\label{eq:335-D}\\
+ \|\Pi S_rH\|&\le e_{n,M}(m)
+ :=\sqrt{B_*\rho^{n+1}}+\sqrt{B_*D_n(M)}+M\rho^{m/2}.
+ \label{eq:335-cross-bound}
+\end{align}
+\end{lemma}
+\begin{proof}
+The Walsh matrix entry of $S_r-P_\rho$ at $A,D$ is
+$\rho^{(|A|+|D|)/2}\widehat{(r-1)}(A\mathbin\triangle D)$.
+For $|A|,|D|\le d$ its coefficient vanishes since
+$|A\mathbin\triangle D|\le2d\le k$, including the degree-zero
+coefficient by the mean condition. This proves~\eqref{eq:335-compression}.
+
+For any positive semidefinite operator $U$ and orthogonal projections
+$E,F$, factor $EUF=(EU^{1/2})(U^{1/2}F)$ to obtain
+\begin{equation}\label{eq:335-positive-block}
+ \|EUF\|\le\sqrt{\|EUE\|\,\|FUF\|}.
+\end{equation}
+Here ``orthogonal'' means self-adjoint projections; their ranges need
+not be mutually orthogonal. Also
+$\|S_r\|\le\|r\|_s\le B_*$ by
+\eqref{eq:332-signed-sandwich}.
+
+Let $E_n$ project onto degrees at most $n$ and put $J=\Pi-E_n$.
+By exact compression,
+$JS_rJ=JP_\rho J$ and $\|JS_rJ\|\le\rho^{n+1}$, including $J=0$.
+Thus~\eqref{eq:335-positive-block} gives
+\[
+ \|JS_rH\|\le\sqrt{B_*\rho^{n+1}}.
+\]
+To control $E_nS_rH$, split $S_r=S_b+S_t$ with
+$S_b=QM_{r_b}Q$, $S_t=QM_{r_t}Q$. Since $0\le r_b\le M$,
+\[
+ \|E_nS_bH\|\le M\|E_nQ\|\|QH\|_{2\to2}
+ \le M\rho^{m/2}.
+\]
+This uses only the $L^2$ spectral multiplier bound.
+
+For the tail, the degree-$n$ hypercontractive bound is
+\[
+ \|QE_nh\|_z\le(z-1)^{n/2}\|h\|_2.
+\]
+To see its dimension independence, for a polynomial of degree at most
+$n$ multiply each degree-$j$ coefficient by $(z-1)^{j/2}$, and then
+apply noise $1/\sqrt{z-1}$. Ordinary hypercontractivity bounds the
+resulting $L^z$ norm by the new $L^2$ norm, which is at most
+$(z-1)^{n/2}$ times the original $L^2$ norm. Apply this to $QE_nh$;
+$Q$ and $E_n$ commute and contract $L^2$.
+Holder with $1/v+2/z=1$, followed by~\eqref{eq:335-tail-v}, gives
+\[
+ \|E_nS_tE_n\|\le\|r_t\|_v(z-1)^n\le D_n(M).
+\]
+Since $S_t\ge0$ and $\|S_t\|\le\|r_t\|_s\le B_*$,
+\eqref{eq:335-positive-block} yields
+$\|E_nS_tH\|\le\sqrt{B_*D_n(M)}$.
+Addition proves~\eqref{eq:335-cross-bound}.
+
+Given a tolerance, choose $n$ first to reduce the first term, then $M$
+to reduce the second term at that fixed $n$, then $m$ to reduce the
+third term at those fixed $n,M$. The exponent $1-s/v$ is negative.
+These choices are uniform in $r,L$ and prove convergence when $k\to\infty$.
+The factor $(z-1)^n$ is not uniform in $n$: replacing $n$ by the growing
+$d$ while keeping $M$ fixed would not prove the assertion.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:335-positive}]
+Use $d,m,\Pi,H$ as in Lemma~\ref{lem:335-cross}. The same amplitude
+split, Lemma~\ref{lem:335-budget}, and Holder give
+\begin{equation}\label{eq:335-high}
+ \|HS_rH\|\le h_{M,L,k}:=M\rho^m+B_MF_L(m)^2.
+\end{equation}
+Indeed the bounded term is at most $M\|QH\|_{2\to2}^2=M\rho^m$.
+The tail quadratic form is at most
+$\|r_t\|_s\|QH\|_{2\to p_0}^2$; the square of the endpoint norm
+is essential. If $k_L/\sqrt L\to C>0$, then $m/\sqrt L\to C/2$.
+At each fixed $M$, the first two terms of $F_L(m)$ vanish and its last
+term tends to $e^{-\alpha_\rho C^2/4}$. Therefore
+\[
+ \limsup_L\|HS_{r_L}H\|\le B_Me^{-\alpha_\rho C^2/2}.
+\]
+Letting $M\to\infty$ after this limit proves
+\begin{equation}\label{eq:335-beta}
+ \limsup_L\|HS_{r_L}H\|\le\beta_\rho(C)
+ :=e^{-\alpha_\rho C^2/2}<1.
+\end{equation}
+This and the cross-block convergence are compatible: for any error choose
+$n$ first and then one $M$ large enough for both its fixed-$n$ tail
+coupling and $B_M-1$ to be small; taking $L$ last pays both bounded-part
+terms. No incompatible dimension-dependent truncations have been used.
+
+On $\operatorname{Ran}\Pi\oplus\operatorname{Ran}H$, set
+\[
+ A_L=(\Pi P_\rho\Pi)|_{\operatorname{Ran}\Pi}
+       \oplus(HS_{r_L}H)|_{\operatorname{Ran}H}.
+\]
+Exact compression makes $S_{r_L}-A_L$ the off-diagonal operator with
+blocks $\Pi S_{r_L}H$ and its adjoint. Its norm is exactly
+$\|\Pi S_{r_L}H\|\to0$. Eventually $d\ge1$ and the high-block
+norm is less than one. The low block starts with $1,\rho$, so
+\[
+ \lambda_1(A_L)=1,\qquad
+ \lambda_2(A_L)=\max\{\rho,\|HS_{r_L}H\|\}.
+\]
+Both blocks are positive semidefinite. Min-max perturbation gives
+$\lambda_1(S_{r_L})\to1$ and the upper bound in~\eqref{eq:335-second}.
+Restricting the two-dimensional variational problem to the constant and
+one singleton Walsh character gives $\lambda_2(S_{r_L})\ge\rho$.
+Also $\lambda_1(S_{r_L})\ge\langle1,S_{r_L}1\rangle=1$ exactly.
+For $U=QM_{\sqrt{r_L}}$, $UU^*=S_{r_L}$ and $U^*U=T_{r_L}$ have
+identical full finite spectra, including zeros. This proves the assertions
+for the actual transfer eigenvalues. The limit of the first eigenvalue
+gives~\eqref{eq:335-lower-profile}; equivalently, positivity and
+$\lambda_1\ge1$ give $\gap(T_r)\ge1-\lambda_2(T_r)$ directly.
+
+For the finite uniform form, take $d\ge\max\{n,1\}$. Whenever
+$h_{M,L,k}<1$, the same block comparison gives
+\begin{equation}\label{eq:335-finite-bound}
+ \gap(T_r)\ge1-\max\{\rho,h_{M,L,k}\}-e_{n,M}(m).
+\end{equation}
+This bound contains no density-dependent term. For $k\ge C_0\sqrt L$,
+$m>k/2\ge C_0\sqrt L/2$, so the decaying terms in
+\eqref{eq:335-cross-bound} and~\eqref{eq:335-high} vanish uniformly
+in these $k$, and
+$\limsup_L\sup_{k\ge C_0\sqrt L}F_L(m)\le e^{-\alpha_\rho C_0^2/4}$.
+Let $g=G_\rho(C_0)>0$ and $\beta=\beta_\rho(C_0)$.
+Choose $n$ first, then $M$, so that the sum of the first two terms
+in~\eqref{eq:335-cross-bound} is less than $g/8$ and
+$(B_M-1)\beta<g/8$. Choose $L$ last, large enough that, uniformly
+for $C_0\sqrt L\le k\le L$, $d\ge\max\{n,1\}$,
+$h_{M,L,k}\le\beta+g/4$ and $e_{n,M}(m)\le g/4$.
+Since $g\le1-\beta$, we have $h_{M,L,k}<1$. Also
+$\max\{\rho,\beta+g/4\}\le\max\{\rho,\beta\}+g/4=1-3g/4$.
+Equation~\eqref{eq:335-finite-bound} is therefore at least $g/2$,
+proving~\eqref{eq:335-finite-uniform}.
+\end{proof}
+
+\begin{remark}[Why high-block contraction is insufficient]
+The direct comparison $\|S_r-P_\rho\|\le2(B_*+1)F_L(m)$ gives no
+positive gap for all small positive $C$. Nor may one discard the cross
+block after proving~\eqref{eq:335-beta}. For example, a positive matrix
+with low block $\diag(1,1/2)$, high block $(3/4)$, and cross column
+$(0,1/(2\sqrt2))^{\mathsf T}$ has eigenvalues $1,1,1/4$.
+Its high-block norm and nonconstant low eigenvalue are both less than
+one, yet its full gap is zero. This is a block-matrix obstruction to
+that shortcut, not a Boolean density counterexample.
+Lemma~\ref{lem:335-cross} supplies the missing coupling control.
+\end{remark}
+
+\begin{corollary}[Quadratic order of the small-ratio infimum]
+\label{cor:335-quadratic}
+Fix $0<\rho<1$ and $0<b<1$. For $C>0$ let $\Gamma_{\rho,b}(C)$
+be the infimum of $\liminf_{L\to\infty}\gap(T_{r_L})$ over all
+sequences of mean-one densities $r_L\ge b$ with $\mathbb E r_L^s\le2$
+and exactly uniform weighting marginals through some integer orders
+$k_L$ satisfying $k_L/\sqrt L\to C$. Then, for any one fixed $K$
+satisfying~\eqref{eq:332-margins},
+\begin{equation}\label{eq:335-profile-comparison}
+ \min\{1-\rho,1-e^{-\alpha_\rho C^2/2}\}
+ \le\Gamma_{\rho,b}(C)
+ \le\min\{1-\rho,1-e^{-\gamma_\rho K^2C^2}\}.
+\end{equation}
+In particular, for all sufficiently small positive $C$,
+\[
+ \frac{\alpha_\rho}{4}C^2
+ \le\Gamma_{\rho,b}(C)\le\gamma_\rho K^2C^2.
+\]
+This is quadratic order, not an optimal coefficient or an exact profile.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:335-positive} bounds every sequence in the infimum.
+Theorem~\ref{thm:332-finite-c} supplies an admissible sequence attaining
+the right side, with the same fixed $K$ independent of $C,b,L$.
+Thus the class is nonempty and~\eqref{eq:335-profile-comparison} follows.
+For the explicit lower estimate choose $C$ small enough that
+$x=\alpha_\rho C^2/2\le\min\{1,1-\rho\}$. Then
+$1-e^{-x}\le x\le1-\rho$ and
+$1-e^{-x}=\int_0^x e^{-t}\,dt\ge x-x^2/2\ge x/2$.
+The upper estimate follows from $1-e^{-y}\le y$ at
+$y=\gamma_\rho K^2C^2$. In the definition of $\Gamma$ the dimension
+limit inferior is taken for each fixed positive $C$ before the infimum
+and the subsequent small-$C$ comparison. No joint $L,C$ limit or
+exchange of the infimum and dimension limit is asserted.
+\end{proof}
+
+
+\paragraph{What is settled and what remains open.}
+Theorem~\ref{thm:332-subroot} removes the restriction to fixed powers
+$L^\alpha$, $\alpha<1/2$, in Theorem~\ref{thm:growing-collapse}.
+Together with Corollary~\ref{cor:327-marginals}, it constructs collapse
+for every $k_L/\sqrt L\to0$ and proves rigidity for
+$k_L/\sqrt L\to\infty$, at the same critical norm cap.
+Theorem~\ref{thm:335-positive} adds a universal positive lower limit for
+the normalized gap at every fixed positive finite $C$, and a uniform
+finite-dimensional lower bound for $k\ge C_0\sqrt L$ once $L$ is large
+enough. It does not assert that every such family's gap has a limit or
+equals the unweighted gap. Theorem~\ref{thm:332-finite-c} gives a
+particular attained profile; Corollary~\ref{cor:335-quadratic} compares
+the two bounds to determine quadratic order of the infimum as
+$C\downarrow0$, after taking the dimension limit inferior at each fixed
+$C$. The exact finite-$C$ infimum, its optimal small-$C$ coefficient,
+and optimization of $K$ remain open. No interchange of limits is asserted.
+
+Coefficient erasure and positivity repair are classical: Alon et al.,
+Fact~2.3 and Theorem~3.1~\cite{alon-kwise}, correct Fourier coefficients
+and repair positivity to control statistical distance from $k$-wise
+independence. Here the specialized odd product truncation supplies a
+one-sided bound together with critical $L^s$ control, followed by a
+transfer-spectrum calculation. This describes the different proved
+conclusions; it does not establish historical priority or a separation
+from all prior methods. Hypercontractivity, Cauchy's coefficient bound,
+Taylor's theorem and min-max are credited classical inputs. These remain
+finite-cube results with global weights, not a fixed-range Gibbs,
+local-dynamics, continuum or physical Yang--Mills gap theorem.
+
+
+\section*{Model assessments and review context}
+The finite-ratio lower bound in Section~\ref{sec:finite-c-positive}
+is translated here from the complete source334 fabrication record,
+including its failed direct estimate and cross-block shortcut. Its separate
+analytical audit subsequently returned PASS on all twelve fixed checks,
+bound to the exact source and frozen commit. The coordinator read the
+terminal report and accepted that analytical input; this fabricator then
+read the full report and actual audit context. The complete audit payload,
+including all five residual limitations, is retained with the fabrication
+record. The positive global constant is existential, no numerical dimension
+cutoff is supplied, and the proof depends on exact matching and the critical
+budget. The audit establishes neither historical priority nor formal
+verification. The auditor had substantial prior related source and document
+involvement. Source acceptance alone does not establish manuscript or PDF acceptance;
+their exact-artifact assessments are recorded separately.
+The same involved Codex/OpenAI context fabricated source334 and this
+translation and had earlier performed the v8 exact-PDF and source331
+assessments, among other recorded source assignments. Shared provider,
+filesystem and prior context do not establish independence, blindness or
+technical isolation. Exact served backend version and reasoning effort
+are not attested. The complete fabrication record, source identities,
+failures and context are retained. No later assessment outcome or hash
+is presumed in this preparation. This text supplies no numerical
+rating, formal proof, priority finding or human peer review.
+
+The one-sided erasure and finite-ratio profile received exact-source
+analytical audits at their respective frozen commits, with twelve fixed
+adverse checks each. The source330 reader had earlier source/document
+involvement; the source331 reader had performed the v8 exact-PDF and
+source329 assessments. These are distinct assignments with shared provider,
+filesystem and prior context, not independent or blind reviews. The actual
+served backend and reasoning effort were not attested. Complete reports,
+context and source identities are retained. Their nonblocking requests to
+bracket normalized product factors and to state the finite-ratio result as
+an attained gap and an upper bound on an infimum are incorporated here.
+Neither source audit supplies a PDF score or clears historical novelty.
+An intermediate manuscript327 PDF was produced twice with identical bytes
+before these two results were integrated. Its layout inspection found an
+overlong historical hash line; it was not submitted for a numerical PDF
+assessment or published. That output and its build evidence are preserved;
+the present version fixes the line break and requires its own exact-PDF
+assessment. No score is inherited or resampled.
+
+The endpoint theorem combines the complete analytical sources324 and325,
+each read against its own frozen source and pull-request body by a distinct
+involved Codex/OpenAI audit context. Their terminal reports, prior context,
+fixed adverse checks and limitations are retained. Repository checks passed;
+these facts do not constitute a Lean proof of the new analysis, historical
+priority, human peer review or independently established reviewer isolation.
+The manuscript translation and this revision's eventual exact PDF require
+their own assessment; no numerical grade is inherited.
+
+The previous v8 PDF, with SHA-256
+\begin{quote}\small\ttfamily
+a4d0449b973b657a741ab4d48693d9c27032\\
+0c5e8b9750ef6ad437e987927359
+\end{quote}
+received one involved AI assessment of 5.25/10, with recommendation
+\emph{minor revision}. Its full report and all five objections are retained.
+Its O1 ambiguity concerning $T_r$ versus $S_r$ is corrected explicitly in
+the abstract and in Corollary~\ref{cor:327-marginals}, with the parity
+counterexample written out. Its O2 stale sublinear-regime statement is
+corrected. Its originality, length/navigation and scope reservations remain
+disclosed rather than represented as new approval. The exact served backend
+and reviewer independence were not established. That historical score applies
+only to the unchanged v8 PDF; it is not a rating of this revision.
+
+The quantitative sublinear theorem received an exact-source analytical
+AI audit in a different involved Codex session whose prior role was
+engineering review. The complete report, prior involvement and fixed checks
+are retained. The audit checked the real-exponent expansion and the full
+operator estimate, but did not establish historical priority, a sharp
+threshold, formal verification or reviewer independence. A typographic sign
+inconsistency in an intermediate derivative display of the primary v1 HTML
+is recorded in that report; the final derivative and the explicit expansion
+used here have the correct sign. The earlier322A document audit is also
+retained as a source-translation assessment, not as a rating of this PDF.
+
+OpenAI/Codex assisted the mathematical synthesis and manuscript preparation.
+The fabrication session is involved in the work. A distinct involved
+Codex/OpenAI session audits the frozen mathematical source; exact served
+backend versions and reasoning settings are not exposed for these source
+audits, so no particular
+model version or provider independence is asserted. Analytical source
+review is not human peer review and supplies no inherited PDF rating.
+The tail audits300--303 used one distinct auditor context with its earlier
+readings retained, not four blind or provider-independent reviews. The
+cutoff-one source306 received a separate fresh-assignment AI audit;
+shared provider and filesystem do not establish technical isolation or
+independence. The
+historical v4 PDF review records a requested configuration separately from
+what was actually exposed; its rating applies only to its original PDF.
+Source309's first audit found a missing upper restriction on a floor
+parameter in an additional comparison; that failed version remains
+unchanged. Its corrected version was reread in the same involved auditor
+context. Source310 received a separate fresh-assignment source audit;
+shared provider and filesystem again preclude an independence claim.
+The v5 exact-PDF review requested gpt-6-astra with high reasoning effort,
+but the served backend and effort were not independently attested.
+Its full report and six reservations remain bound to its original PDF,
+not this revision. No numerical assessment of the present revision
+has yet been incorporated or inherited.
+Source313 received a separate fresh-assignment analytical audit. Its
+reader checked the inherited explicit balanced family rather than relying
+on previous acceptance labels. The shared provider and filesystem again
+do not establish independence. Its minor request to bracket each
+normalized product factor is incorporated here. The prior311 document
+audit's notation and navigation observations are also addressed, with all
+twenty-one prior proofs and twenty prior statement environments preserved.
+None of these source checks is an exact-PDF assessment or human review.
+The scalar-envelope and universal-tail source checks use a distinct
+involved auditor context with prior source313 readings retained. They are
+not blind or provider-independent reviews. The historical v6 PDF review
+requested gpt-6-astra with high reasoning effort, with served backend and
+effort not independently attested. Its full report remains bound to its
+original PDF. The new mathematical claims require assessment on this
+revision's exact final PDF and do not inherit its numerical rating.
+The grouped growing-marginal construction and linear-fraction rigidity
+argument received separate exact-source analytical audits in an involved
+Codex/OpenAI context, with prior readings and a shared filesystem. The
+Kirshner--Samorodnitsky inequality is a credited external input, not reproved
+here. Full reports, fixed checks and source identities are retained with this
+revision. The v7 exact-PDF assessment and all five reservations remain
+historical evidence bound to PDF SHA-256
+\texttt{ad708fafb3de9fc83cd2dc05443f34b2}\allowbreak\texttt{792da94a20d0bf1b1cd7b8ca41b9340c}.
+Its page-22 reference to an unrelated equation is repaired here by a symbolic
+reference to the mixed-power inequality. Neither the old numerical grade nor
+an independent-review claim is transferred to this revised manuscript.
+Any assessment attached to this manuscript must identify the exact final
+PDF hash, its actual review context, complete report, scores and objections.
+The manuscript does not incorporate a grade from another version or paper.
+The author owns and administers AIRR. A working-paper deposit is not an
+editorial acceptance or evidence of human peer review.
+
+\smallskip\noindent
+Reproducible source commit:\par\noindent
+{\small\ttfamily\SourceCommit}
+
+\begin{thebibliography}{99}
+\bibitem{BertsimasPopescu}
+D. Bertsimas and I. Popescu,
+Optimal Inequalities in Probability Theory: A Convex Optimization Approach,
+\emph{SIAM Journal on Optimization} \textbf{15}(3) (2005), 780--804.
+\href{https://doi.org/10.1137/S1052623401399903}{Publisher version}.
+\bibitem{Aida}
+S. Aida, An estimate of the gap of spectrum of Schr\"odinger operators
+which generate hyperbounded semigroup, author preprint, 9 February 2001.
+\href{https://www.ms.u-tokyo.ac.jp/~aida/paper/preprint/handai3.pdf}{Author preprint}.
+\bibitem{BiskupKoenig}
+M. Biskup and W. K\"onig, Eigenvalue order statistics for random
+Schr\"odinger operators with doubly-exponential tails,
+author manuscript, 21 April 2015, Lemma~4.5 and Eq.~(4.29).
+\href{https://www.wias-berlin.de/people/koenig/www/PPP4PAM-CMP-final.pdf}{Author manuscript}.
+\bibitem{AGM}
+N. Alon, O. Goldreich and Y. Mansour,
+Almost $k$-wise independence versus $k$-wise independence,
+\emph{Information Processing Letters} \textbf{88} (2003), 107--110.
+\href{https://www.wisdom.weizmann.ac.il/~oded/PSX/agm.pdf}{Author manuscript}.
+\bibitem{BrehmResch}
+M. Brehm and N. Resch,
+Linear Time Encodable Binary Code Achieving GV Bound with Linear Time
+Encodable Dual Achieving GV Bound,
+\emph{ITCS 2026}, LIPIcs \textbf{362}, article 28.
+\href{https://doi.org/10.4230/LIPIcs.ITCS.2026.28}{Publisher version}.
+\bibitem{ErikssonCongruence}
+L. Eriksson,
+Congruence Rigidity and the Fusion Bound: What a Positive Weight Can and
+Cannot do to the Spectrum of a Transfer Kernel,
+AIRR, ARR-2026-7S1XA3PZEB9QM8FQ, version 1.
+\href{https://airr.science/papers/ARR-2026-7S1XA3PZEB9QM8FQ/versions/v1/}{Public record}.
+\bibitem{ErikssonParity}
+L. Eriksson,
+Strictly Positive Parity Laws and the Limits of Marginal Certificates:
+Exact Heat-Bath Spectrum and Optimal Variance Tensorization,
+AIRR, ARR-2026-5HRC3PS9HZ9WDAA5, version 2 (2026).
+\href{https://airr.science/papers/ARR-2026-5HRC3PS9HZ9WDAA5/versions/v2/}{Public working paper}.
+\bibitem{MORSS}
+E. Mossel, R. O'Donnell, O. Regev, J. E. Steif and B. Sudakov,
+Non-interactive correlation distillation, inhomogeneous Markov chains,
+and the reverse Bonami-Beckner inequality,
+\emph{Israel Journal of Mathematics} \textbf{154} (2006), 299--336.
+\href{https://www.cs.cmu.edu/~odonnell/papers/nicd.pdf}{Author manuscript}.
+\bibitem{Cattiaux}
+P. Cattiaux, Hypercontractivity for perturbed diffusion semigroups,
+\emph{Annales de la Facult\'e des Sciences de Toulouse}
+\textbf{14}(4) (2005), 609--628.
+\href{https://www.numdam.org/item/AFST_2005_6_14_4_609_0/}{Publisher archive}.
+\bibitem{MOS}
+E. Mossel, K. Oleszkiewicz and A. Sen,
+On Reverse Hypercontractivity, arXiv:1108.1210v5 (2012).
+\href{https://arxiv.org/abs/1108.1210}{Primary manuscript}.
+\bibitem{Gross}
+L. Gross, Invariance of intrinsic hypercontractivity under perturbation of
+Schr\"odinger operators, arXiv:2412.20282v2 (2025).
+\href{https://arxiv.org/abs/2412.20282}{Primary manuscript}.
+\bibitem{Gluck}
+J. Gl\"uck, Spectral gaps for hyperbounded operators,
+arXiv:1802.09422v6 (2019).
+\href{https://arxiv.org/abs/1802.09422}{Primary manuscript}.
+\bibitem{Miclo}
+L. Miclo, On hyperboundedness and spectrum of Markov operators.
+\href{https://perso.math.univ-toulouse.fr/miclo/files/2012/04/hyperboundedness.pdf}{Author manuscript}.
+\bibitem{Wang}
+F.-Y. Wang, Criteria of Spectral Gap for Markov Operators,
+arXiv:1305.4460v6 (2013).
+\href{https://arxiv.org/abs/1305.4460v6}{Primary manuscript}.
+\bibitem{kirshner-samorodnitsky}
+N. Kirshner and A. Samorodnitsky,
+A moment ratio bound for polynomials and some extremal properties of
+Krawchouk polynomials and Hamming spheres,
+arXiv:1909.11929v1 (2019), Theorem~1.3 and Proposition~2.7.
+\href{https://arxiv.org/abs/1909.11929v1}{Version-pinned primary source}.
+\bibitem{alon-kwise}
+N. Alon, A. Andoni, T. Kaufman, K. Matulef, R. Rubinfeld and N. Xie,
+Testing k-wise and Almost k-wise Independence,
+\emph{Proceedings of STOC} (2007).
+\href{https://www.mit.edu/~andoni/papers/kwise.pdf}{Author manuscript},
+Fact~2.3 and Section~3.
+\bibitem{rubinfeld-xie}
+R. Rubinfeld and N. Xie,
+Testing Non-uniform k-wise Independent Distributions over Product Spaces,
+author manuscript, Appendix~A.2.
+\href{https://people.csail.mit.edu/ningxie/papers/RX09.pdf}{Primary source}.
+\end{thebibliography}
+\end{document}

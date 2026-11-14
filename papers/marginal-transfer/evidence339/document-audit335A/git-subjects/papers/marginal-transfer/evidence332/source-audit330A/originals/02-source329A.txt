@@ -1,0 +1,95 @@
+SOURCE329A -- Exact feasibility window for small Fourier erasure of a balanced critical product tilt
+Lluis Eriksson, with disclosed OpenAI/Codex analytical assistance.
+Unreviewed analytical candidate. No mathematical program, formal verification, PDF assessment, priority or independence claim. Do not alter frozen document327A. Group with the marginal-moment programme; not a standalone small-corollary paper.
+
+SOLE QUESTION
+Can source319A's critical-cap collapse be extended from every fixed power k=floor(L^alpha), alpha<1/2, to arbitrary k=o(sqrt(L)/log L)? Within its balanced positive-product tilt plus exact low-Fourier erasure, is this the exact window in which the erasure is small in L-infinity?
+Hypotheses: fixed0<rho<1, s=(1+rho)/(1-rho)>1, integer1<=k_L<=L, uniform probability cube. The method-boundary part assumes positive delta_L with u_L=L delta_L^2->infinity and u_L^2/L=L delta_L^4->0.
+Mechanism: select the tilt energy between k log L and sqrt L; use the exact all-plus value of the positive-coefficient low polynomial for the adverse direction.
+Falsifier: failed scalar scale choice, binomial lower bound, asymptotic case split, critical cap, positivity or actual spectral perturbation. Abandon after three substantive units without a proof or useful scoped falsifier. This is one question after325 was closed;327 and328 are consolidation/production, not competing mathematical questions.
+
+DEFINITIONS
+For delta in(0,1), let n(delta)=(((1+delta)^s+(1-delta)^s)/2)^(1/s), R_L(x)=product_i[(1+delta_L x_i)/n(delta_L)], and mu_L=E R_L=n(delta_L)^(-L). Define
+ p_L=mu_L sum_(1<=|A|<=k_L) delta_L^|A| chi_A.
+This polynomial has zero mean and exactly the low nonconstant Fourier coefficients of R_L. Because all coefficients are positive, the triangle inequality is an equality at x=(1,...,1):
+ ||p_L||_infinity=mu_L sum_(j=1)^k_L binom(L,j) delta_L^j.                 (1)
+The source319 mechanism uses a uniform baseline, erases p_L, and controls the perturbation in L-infinity. The question concerns that sufficient perturbation mechanism; it does not assume the desired positivity or gap.
+
+THEOREM1 -- CONSTRUCTIVE EXTENSION AT THE EXACT CRITICAL CAP
+If k_L log(eL)/sqrt(L)->0, then for every fixed0<b<1 there are strictly positive mean-one densities r_L in every dimension, with
+ r_L>=b, ||r_L||_s<=2^(1/s), E[r_L chi_A]=0 for1<=|A|<=k_L,
+such that the actual first two eigenvalues of T_r=M_sqrt(r) P_rho M_sqrt(r) tend to1 and its normalized gap tends tozero. No Perron stationary-law marginal assertion is included.
+
+PROOF
+Put a_L=k_L log(eL) and u_L=sqrt(a_L sqrt(L)). Then a_L/u_L=sqrt(a_L/sqrt(L))->0, u_L/sqrt(L)->0, and u_L->infinity. For sufficiently large L set delta_L=sqrt(u_L/L), which lies in(0,1). We have L delta_L^2=u_L and L delta_L^4=u_L^2/L=a_L/sqrt(L)->0. Small dimensions will be replaced by r_L=1 at the end.
+For fixed s, the ordinary Taylor expansion gives
+ log mu_L=-(s-1)u_L/2+O_s(u_L^2/L).
+Since delta_L<1, (1) yields
+ log ||p_L||_infinity <= log mu_L+log k_L+k_L log L
+ <=-(s-1)u_L/2+o(u_L)->-infinity.                                    (2)
+Here log k_L+k_L log L<=2a_L and a_L=o(u_L). Thus the actual erasure tends tozero in sup norm, not merely coefficientwise.
+
+For completeness the transfer and cap steps are recorded explicitly. Write Q=P_sqrt(rho) and D=diag(1,rho). The one-site matrix for Q M_R Q is
+ H(delta)=n(delta)^(-1)[[1,delta sqrt(rho)],[delta sqrt(rho),rho]].
+Its top eigenvalue kappa and the norm tau=||D^(1/2) H(delta)^(1/2)|| satisfy
+ kappa=[1+rho+sqrt((1-rho)^2+4rho delta^2)]/[2n(delta)],
+ tau^2=[1+rho^2+sqrt((1-rho^2)^2+4rho^2 delta^2)]/[2n(delta)].
+Direct Taylor expansion at fixed rho gives log kappa=O_rho(delta^4) and
+ log tau=-rho delta^2/[2(1-rho^2)]+O_rho(delta^4).
+These are the explicit source319A expressions, not new independent eigenvalue identities. Set c_L=kappa(delta_L)^(-L)->1, Z_L=1+c_L mu_L->1 and v_L=(1+c_L R_L)/Z_L. The two positive summands in
+ F_L=P_rho+c_L H(delta_L)^(tensor L)
+have top eigenvalue1. The Gram operator of their square roots has these summands as its two diagonal blocks, and cross-block norm sqrt(c_L) tau(delta_L)^L->0, since u_L->infinity and L delta_L^4->0. The two largest eigenvalues of the block diagonal operator are1,1. The variational perturbation inequality puts those of the Gram operator within this cross-block norm of1. They are positive for large L, hence actual eigenvalues of F_L by the square-product identity, not extra Gram zeros. After division by Z_L the first two eigenvalues of S_v=Q M_v Q tend to1.
+
+We have E R_L^s=1 exactly, and for fixed0<t<s,
+ log E R_L^t=-t(s-t)u_L/2+O_s,t(u_L^2/L)->-infinity.
+The elementary bound, with theta=min(1,s/2),
+ 0<=(1+y)^s-1-y^s<=s 2^(s-1)(y^theta+y^(s-theta)), y>=0,
+follows by the mean-value bound for y<=1 and reciprocal substitution for y>=1. Both exponents lie strictly between0 ands. Apply it to c_L R_L to obtain E(1+c_L R_L)^s->2. Therefore ||v_L||_s->B*=2^(1/s).
+
+Let w_L=[1+c_L(R_L-p_L)]/Z_L. It has meanone and all required Fourier coefficients vanish exactly. Its lower bound [1-c_L||p_L||_infinity]/Z_L tends to1, so it is eventually positive and at least the prescribed b<1. Also ||w_L-v_L||_infinity->0, hence ||w_L||_s->B* and ||S_w-S_v||<=||w_L-v_L||_infinity->0. Thus the two actual eigenvalues still tend to1.
+
+Finally put B_L=||w_L||_s and eps_L=0 if B_L<=B*, otherwise eps_L=(B_L-B*)/(B_L-1). In the latter case B_L>B*>1; eps_L lies in(0,1) and tends tozero. Set r_L=(1-eps_L)w_L+eps_L. Minkowski's inequality gives ||r_L||_s<=(1-eps_L)B_L+eps_L<=B*, while the mean, Fourier zeros and floor persist. Endpoint hypercontractivity and Holder give ||Q M_f Q||<=||f||_s for signed f, because 2s/(s-1)=1+1/rho. Thus ||S_r-S_w||<=eps_L(B_L+1)->0. The full finite spectra of S_r and T_r agree as AA*/A*A, including zeros, proving the two eigenvalue limits and gap->0. Replace the finitely many earlier dimensions by r_L=1. This preserves every hypothesis for every L and all limits.
+
+THEOREM2 -- EXACT WINDOW FOR THIS SUP-NORM ERASURE CRITERION
+For an integer sequence1<=k_L<=L, there exists a sequence delta_L in(0,1) with
+ L delta_L^2->infinity, L delta_L^4->0 and ||p_L||_infinity->0
+if and only if k_L log(eL)/sqrt(L)->0.
+In fact, if this last ratio does not tend tozero, then for EVERY such balanced sequence delta_L there is an infinite subsequence along which ||p_L||_infinity->infinity.
+
+PROOF
+The forward construction for the stated small ratio was given in (2). For necessity take any balanced sequence and write u_L=L delta_L^2, so u_L->infinity and u_L=o(sqrt(L)). A failed ratio limit supplies an infinite subsequence and a fixed epsilon>0 with
+ k_L>=epsilon sqrt(L)/log L
+for all sufficiently large indices of that subsequence. The harmless replacement log(eL) by log L is valid since their ratio tends to1. Put j_L=floor(epsilon sqrt(L)/log L), so eventually1<=j_L<=k_L and j_L>=epsilon sqrt(L)/(2log L).
+
+The elementary product identity for the binomial coefficient yields
+ binom(L,j)=product_(i=0)^(j-1)(L-i)/(j-i)>=(L/j)^j,
+because L>=j implies (L-i)/(j-i)>=L/j. Formula(1) and log mu_L>=-C_s u_L for some fixed C_s>0, valid eventually by Taylor expansion, give
+ log ||p_L||_infinity >=-C_s u_L+j_L log(L delta_L/j_L)
+ >=-C_s u_L+j_L[log(log L/epsilon)+(1/2)log u_L].                       (3)
+The second line uses L delta_L=sqrt(L u_L) and j_L<=epsilon sqrt(L)/log L.
+
+Partition the subsequence into two cases. If u_L>=L^(1/4), then the bracket in(3) is at least(1/8)log L for large L. Hence
+ log ||p_L||_infinity >=-C_s u_L+(epsilon/16)sqrt(L)->infinity,
+because u_L=o(sqrt L). If u_L<L^(1/4), use u_L>=1 eventually to obtain
+ log ||p_L||_infinity >=-C_s L^(1/4)
+   +[epsilon sqrt(L)/(2log L)] log(log L/epsilon)->infinity.
+The positive term divided by L^(1/4) tends toinfinity. Both lower bounds diverge, so the entire selected subsequence diverges even if the two cases alternate. This disproves sup-norm-small erasure along the full sequence and completes the equivalence.
+
+WHAT IS AND IS NOT SHARP
+Theorem1 removes the fixed-power restriction from source319A: arbitrary sequences k=o(sqrt(L)/log L), including irregular ones, are now covered at the same exact norm cap and prescribed positive floor. Theorem2 proves that this is exactly the feasibility window of the BALANCED POSITIVE PRODUCT plus VANISHING L-INFINITY FOURIER ERASURE criterion. It does not prove nonexistence of another positive correction, nonvanishing of ||Q M_p Q||, failure of positivity of the particular w_L, a density threshold at sqrt(L)/log L, or necessity of the sufficient k/sqrt L rigidity condition in source324. Large sup norm is only a falsifier of the chosen perturbation certificate, not of every spectral or positive-density construction.
+The remaining mathematical gap is between this density-collapse window and the sufficient rigidity window k/sqrt L->infinity. Source325's signed operator witness does not close it. No new claim about Perron stationary marginals, fixed-range locality, physical gaps or the continuum is made. PR29 20/41 and TermSource=0 are unchanged.
+
+ATTRIBUTION, CONTEXT AND FIXED ADVERSE CHECKS
+Source319A's balanced critical product, exact 2x2 eigenvalues, Gram comparison, moment limit and norm-cap interpolation are prior programme inputs, reproduced here to check the new variable scale. Endpoint hypercontractivity, min-max, Walsh characterization and binomial bounds are classical. The additional result is the explicit arbitrary-sequence scale choice and the exact limitation of the sup-norm-erasure method. External originality remains unestablished; no independent derivation claim follows from a separate audit.
+C1 quantifier order and arbitrary oscillating k, all dimensions.
+C2 a,u,delta scaling and strict positivity; actual log mu remainder.
+C3 exact sup norm identity at all-plus, not just upper bound.
+C4 crude upper sum sufficient for all k log L=o(sqrt L).
+C5 actual 2x2 expressions/expansions and Gram top-two argument.
+C6 mixed-power moment limit and exact cap interpolation/floor.
+C7 full spectra S/T including zeros and signed Holder perturbation.
+C8 bad-subsequence and j integer choices, log(eL)/log L conversion.
+C9 binomial product lower bound and (3).
+C10 both u cases and alternating-case divergence, no hidden rate on u.
+C11 method-specific necessity not density/spectral/positivity impossibility.
+C12 no novelty/formal/independence/physical/PDF-score claims; frozen327A untouched and results grouped.

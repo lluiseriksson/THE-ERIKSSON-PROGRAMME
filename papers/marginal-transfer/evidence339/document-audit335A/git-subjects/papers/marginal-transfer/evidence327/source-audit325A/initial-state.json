@@ -1,0 +1,116 @@
+{
+  "utc": "2026-11-13T21:01:43.8732853Z",
+  "head": "0d4532e95f836070e8490cb1f78be57acd54200c",
+  "branch": "codex/tep-sharp-tail325-20261113",
+  "pr_head": "0d4532e95f836070e8490cb1f78be57acd54200c",
+  "pr_base": "b1ddd830d54de7ad7cecdaaf48c99ad66083912b",
+  "body_bytes": 1142,
+  "body_sha256": "0fbb14134dcdf5ffcd2b277d92f2e5b1b80b15e9fc15bf4a64c678496566e0b0",
+  "status": [
+    "?? _drafts/",
+    "?? prepare311.py",
+    "?? prepare314.py"
+  ],
+  "delta": [
+    "A\tresearch/sharp-tail325/source325A.txt",
+    "D\tresearch/truncation324/source324A.txt"
+  ],
+  "blobs": [
+    {
+      "commit": "0d4532e95f836070e8490cb1f78be57acd54200c",
+      "path": "research/sharp-tail325/source325A.txt",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\source325A.git.txt",
+      "bytes": 7064,
+      "sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100",
+      "blob": "de1f26fdc4fa5d5ffe3a56da73dd39e5dedf0c9c",
+      "capture_blob": "de1f26fdc4fa5d5ffe3a56da73dd39e5dedf0c9c",
+      "matches": true
+    },
+    {
+      "commit": "7da3f567d2329a8225d03052c08c554387020fcb",
+      "path": "research/truncation324/source324A.txt",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\source324A.git.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "capture_blob": "c9e70b6fc4a88d9c9965f176db28780210da772b",
+      "matches": true
+    },
+    {
+      "commit": "0d4532e95f836070e8490cb1f78be57acd54200c",
+      "path": "CLAUDE.md",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\CLAUDE.git.md",
+      "bytes": 23996,
+      "sha256": "443459690fceb9a52b47bf414eb404b7200c2f6806d1347336fd279303224fad",
+      "blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "capture_blob": "75a9b214eece2e8fcbf84adbdd08f6e5fe8b3342",
+      "matches": true
+    },
+    {
+      "commit": "0d4532e95f836070e8490cb1f78be57acd54200c",
+      "path": "docs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\charter.git.md",
+      "bytes": 13573,
+      "sha256": "19e90b6aa2e70acb750a63e9a75383ee995a3c3b8e8e351e5e6091a69ffe2fc4",
+      "blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "capture_blob": "0345d06ed54807723ccdf851bb7d5e68be93e853",
+      "matches": true
+    }
+  ],
+  "originals": [
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\research\\sharp-tail325\\source325A.txt",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\01-source325A.txt",
+      "bytes": 7064,
+      "sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\prepare311.py",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\02-prepare311.py",
+      "bytes": 8193,
+      "sha256": "b82abb0b2d779f7172376a5970b00fbfefe334781d09221f53c8d6c2a3edeab9"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\prepare314.py",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\03-prepare314.py",
+      "bytes": 7238,
+      "sha256": "f77617fb961971c2829911c8d94e504d2afaff4f795fbd568304af093a74b015"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-325\\source325A.txt",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\04-source325A.txt",
+      "bytes": 7064,
+      "sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-325\\pr272-pinned.json",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\05-pr272-pinned.json",
+      "bytes": 1347,
+      "sha256": "7cfd7d2cf4975dea7794366601c19d48dae0fb3b9dc91a036afb13afb4c15d8d"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-325\\pr272-body-normalized.md",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\06-pr272-body-normalized.md",
+      "bytes": 1142,
+      "sha256": "0fbb14134dcdf5ffcd2b277d92f2e5b1b80b15e9fc15bf4a64c678496566e0b0"
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\papers\\marginal-transfer\\manuscript322B.tex",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\07-manuscript322B.tex",
+      "bytes": 129075,
+      "sha256": "73073a786fdc65206b716f0cd44c47b31043258fc68477c41917763c6518b545"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\source-audit324A\\full-report.txt",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\08-full-report.txt",
+      "bytes": 17231,
+      "sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770"
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\source-audit324A\\context.txt",
+      "capture": "C:\\Trabajo\\the-eriksson-programme\\_tmp\\source-audit325A\\subjects\\09-context.txt",
+      "bytes": 4150,
+      "sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e"
+    }
+  ]
+}

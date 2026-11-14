@@ -1,0 +1,71 @@
+{
+  "utc": "2026-11-13T20:43:57.3518348Z",
+  "head": "7da3f567d2329a8225d03052c08c554387020fcb",
+  "pr_head": "7da3f567d2329a8225d03052c08c554387020fcb",
+  "pr_base": "e501846f787b6a83130c5aa1ddea402079b7e754",
+  "branch": "codex/tep-truncation324-20261113",
+  "status": [
+    "?? prepare311.py",
+    "?? prepare314.py"
+  ],
+  "body_bytes": 1029,
+  "body_sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3",
+  "source_raw_bytes": 13546,
+  "source_raw_sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+  "subjects": [
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\research\\truncation324\\source324A.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "unchanged": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\prepare311.py",
+      "bytes": 8193,
+      "sha256": "b82abb0b2d779f7172376a5970b00fbfefe334781d09221f53c8d6c2a3edeab9",
+      "unchanged": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\prepare314.py",
+      "bytes": 7238,
+      "sha256": "f77617fb961971c2829911c8d94e504d2afaff4f795fbd568304af093a74b015",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\source324A.txt",
+      "bytes": 13546,
+      "sha256": "440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\question324-truncation.txt",
+      "bytes": 5322,
+      "sha256": "12042f2e13c2027732bbba23f66b037e2e25af069829449cfc834b5a096926e3",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\question324-rate-identity.txt",
+      "bytes": 4213,
+      "sha256": "0f69145819e29e2f9aa629038729df2a8710f950bb5b6f19590d2968bfdcb01d",
+      "unchanged": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\pr-body324.txt",
+      "bytes": 1029,
+      "sha256": "5eef2a4004d0eda23b5be1e0f3b7a39de09aef8b1604bbc3abd3de3168e74fb3",
+      "unchanged": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\papers\\marginal-transfer\\manuscript322B.tex",
+      "bytes": 129075,
+      "sha256": "73073a786fdc65206b716f0cd44c47b31043258fc68477c41917763c6518b545",
+      "unchanged": true
+    }
+  ],
+  "head_stable": true,
+  "base_stable": true,
+  "source_matches_assignment": true,
+  "originals_stable": true,
+  "verdict": "PASS all12 fixed analytical checks with explicit KS external theorem; no mathematical execution, score, independence or CI waiver",
+  "body_stable": true
+}

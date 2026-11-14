@@ -1,0 +1,84 @@
+{
+  "utc": "2026-11-13T21:07:19.5214744Z",
+  "head": "0d4532e95f836070e8490cb1f78be57acd54200c",
+  "branch": "codex/tep-sharp-tail325-20261113",
+  "pr_head": "0d4532e95f836070e8490cb1f78be57acd54200c",
+  "pr_base": "b1ddd830d54de7ad7cecdaaf48c99ad66083912b",
+  "body_bytes": 1142,
+  "body_sha256": "0fbb14134dcdf5ffcd2b277d92f2e5b1b80b15e9fc15bf4a64c678496566e0b0",
+  "source_blob": "de1f26fdc4fa5d5ffe3a56da73dd39e5dedf0c9c",
+  "status": [
+    "?? _drafts/",
+    "?? prepare311.py",
+    "?? prepare314.py"
+  ],
+  "pr_files": [
+    {
+      "path": "research/sharp-tail325/source325A.txt",
+      "additions": 66,
+      "deletions": 0,
+      "changeType": "ADDED"
+    }
+  ],
+  "originals": [
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\research\\sharp-tail325\\source325A.txt",
+      "bytes": 7064,
+      "sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100",
+      "matches_initial": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\prepare311.py",
+      "bytes": 8193,
+      "sha256": "b82abb0b2d779f7172376a5970b00fbfefe334781d09221f53c8d6c2a3edeab9",
+      "matches_initial": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\cutoff306-20261113\\prepare314.py",
+      "bytes": 7238,
+      "sha256": "f77617fb961971c2829911c8d94e504d2afaff4f795fbd568304af093a74b015",
+      "matches_initial": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-325\\source325A.txt",
+      "bytes": 7064,
+      "sha256": "dbf8b66c64f72ebcc6905b943a7357321abddb80220138bfdff0d241de9b3100",
+      "matches_initial": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-325\\pr272-pinned.json",
+      "bytes": 1347,
+      "sha256": "7cfd7d2cf4975dea7794366601c19d48dae0fb3b9dc91a036afb13afb4c15d8d",
+      "matches_initial": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-325\\pr272-body-normalized.md",
+      "bytes": 1142,
+      "sha256": "0fbb14134dcdf5ffcd2b277d92f2e5b1b80b15e9fc15bf4a64c678496566e0b0",
+      "matches_initial": true
+    },
+    {
+      "original": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\papers\\marginal-transfer\\manuscript322B.tex",
+      "bytes": 129075,
+      "sha256": "73073a786fdc65206b716f0cd44c47b31043258fc68477c41917763c6518b545",
+      "matches_initial": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\source-audit324A\\full-report.txt",
+      "bytes": 17231,
+      "sha256": "1ffa998e3862334b25859cdf255a7a6a35e452e573ea95075fbba205caadb770",
+      "matches_initial": true
+    },
+    {
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-324\\source-audit324A\\context.txt",
+      "bytes": 4150,
+      "sha256": "ea332afc81f812e857d728fefa9d165363c71d94e0b677a98c9d7b62f765258e",
+      "matches_initial": true
+    }
+  ],
+  "head_match": true,
+  "base_match": true,
+  "body_match": true,
+  "status_match": true,
+  "all_originals_match": true
+}

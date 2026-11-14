@@ -1,0 +1,84 @@
+{
+  "task": "question334 analytical FABRICATION, not source audit or PDF rerating",
+  "status": "UNREVIEWED_CANDIDATE_PROOF",
+  "result": "Uniform positive normalized transfer gap proposed for every fixed positive square-root matching scale, dependent on source324 endpoint high-degree estimate",
+  "source_raw_sha256": "16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022",
+  "source_representation": "Raw on-disk source334A.txt bytes; UTF-8 without BOM, LF created by file-editing tool; manifest hashes raw bytes without normalization",
+  "identity": {
+    "actor": "AI assistant /root/exact322_pdf_first_assessment",
+    "role": "Fabricator; cannot supply separate-role acceptance of this proof",
+    "original_model_request": "gpt-6-astra/high in initial historical assignment",
+    "current_model_override": "none newly specified",
+    "actual_served_model_version": "unknown; not attested",
+    "actual_reasoning_effort": "unknown; not attested",
+    "independence": "not claimed; same-provider involved research",
+    "isolation": "Shared filesystem/provider, prior same-agent context and disclosed parent fabrication context"
+  },
+  "read_coverage": [
+    "Entire current retained source324A, source330A and source331A from D paths in input-manifest.json",
+    "Applicable previously read governance and user storage rules; no current source branches or frozen332 manuscript used as work products",
+    "Primary Kirshner--Samorodnitsky Theorem1.8 and Lemma2.14 displayed statements, and usual scalar hypercontractivity introductory formula in Ben-Aroya/Regev/de Wolf; no comprehensive priority search"
+  ],
+  "methods": [
+    "Analytical reasoning and complete paper proof",
+    "Read-only git metadata/status and raw SHA-256 for provenance",
+    "PowerShell reads, evidence copying and retention; apply_patch for own assigned draft files",
+    "Web open/find for primary mathematical inputs"
+  ],
+  "not_performed": [
+    "No mathematical script, test, numerical calculation program, CAS, Lean, build or runtime",
+    "No source branch, PR body, frozen manuscript332/PR278, state.json, score or prior terminal evidence mutation",
+    "No subagent spawn or messages to running audits",
+    "No formal verification, novelty clearance or independent audit"
+  ],
+  "discovery_units": [
+    {
+      "unit": 1,
+      "outcome": "Direct324 large-C comparison insufficient; tail budget proved using mean and Jensen."
+    },
+    {
+      "unit": 2,
+      "outcome": "One-cut block shortcut fails; exact abstract PSD 3x3 example retained; cannot use growing low cutoff at fixed amplitude."
+    },
+    {
+      "unit": 3,
+      "outcome": "Three-block sequential-cutoff estimate closes cross terms; combined with tail budget and strict endpoint contraction gives candidate theorem."
+    }
+  ],
+  "adverse_observations": [
+    {
+      "type": "filesystem",
+      "detail": "Assigned question334 directory absent; read-only Get-Item exited1. Existing parent _drafts was an ordinary directory; assigned subdirectory created without overwriting an existing draft."
+    },
+    {
+      "type": "mathematics",
+      "detail": "Naive direct perturbation and cross-block deletion failures retained in source/report; neither treated as proof."
+    }
+  ],
+  "inbound_context": {
+    "received": true,
+    "sender": "parent /root",
+    "role_context": "fabrication; no audit no-inbound claim",
+    "literal_file": "inbound-parent-context.txt",
+    "timing": "Received after complete source334A was written and raw-hashed",
+    "used_in_proof": false,
+    "summary": "Suggested critical-budget sign-region equality route; not required by the block proof. Frozen332 cited lines not read."
+  },
+  "limitations": [
+    "Candidate depends on source324's global positive modulus as stated; no new independent reproof of that inherited theorem.",
+    "No optimal constant or exact lower profile claimed; source331 only supplies a comparison upper profile.",
+    "Uniformity is over densities at fixed rho/C0, with explicit sequential choices n then M then dimension.",
+    "Same actor previously audited some related sources; present fabrication is not self-certified by those audits."
+  ],
+  "workspace": {
+    "draft": "C:/Trabajo/the-eriksson-programme/prefix-rank290-20261113/_drafts/question334",
+    "retention": "D:/Datos/the-eriksson-programme/autonomia/evidencia-334/fabrication334A",
+    "initial_repository_head": "8980d71cca205fcc164803f51ac4c7038536413b",
+    "initial_status": [
+      "?? _drafts/",
+      "?? _tmp/"
+    ],
+    "final_state": "Recorded in final-workspace-state.json",
+    "cleanup": "Only own newly created draft files/directory removed after retained-copy hash verification; recorded separately"
+  }
+}

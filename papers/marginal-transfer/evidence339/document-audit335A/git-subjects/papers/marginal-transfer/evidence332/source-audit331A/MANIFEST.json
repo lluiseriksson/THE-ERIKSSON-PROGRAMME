@@ -1,0 +1,57 @@
+{
+  "schema": "raw-byte-manifest-v1",
+  "scope": "SOURCE331A exclusive terminal audit evidence; manifest excludes itself",
+  "representation": "Raw on-disk SHA-256 without implicit normalization; exact Git/LF source and normalized PR body explicitly labeled",
+  "files": [
+    {
+      "path": "cleanup.json",
+      "bytes": 566,
+      "sha256": "5a286d7b736a941a59d58ab502e3fcaaed5d0538b38a31e667bde69991dda328"
+    },
+    {
+      "path": "final-pins.json",
+      "bytes": 1466,
+      "sha256": "cdeafd9af60c24c2f4e0b6579be89747d9a9c4b08177217677196275c80ef3ef"
+    },
+    {
+      "path": "full-analytical-report.txt",
+      "bytes": 19064,
+      "sha256": "478c669cbe0cdb42eb31229fafd6bbdd8eb444277e9a754ede324bdafe6578e2"
+    },
+    {
+      "path": "model-context.json",
+      "bytes": 5154,
+      "sha256": "27df5b2c89515523b345c8f06215b386682b1657ad797dd0d9be220df596f558"
+    },
+    {
+      "path": "pr277-body-normalized.txt",
+      "bytes": 933,
+      "sha256": "627c4ef50d3120eae536f44b3790372c8522effe01951683079d4f367df2ab66"
+    },
+    {
+      "path": "pr277-final.json",
+      "bytes": 2184,
+      "sha256": "0329d7f2fa3fa9d7b2d7e81464f748124556006d133ffbdae9a3a8527227a424"
+    },
+    {
+      "path": "pr277-initial.json",
+      "bytes": 2184,
+      "sha256": "0329d7f2fa3fa9d7b2d7e81464f748124556006d133ffbdae9a3a8527227a424"
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 1302,
+      "sha256": "7d359b7da3ec60f0624586fe2432130930eac0e613571c03a5c893e407195a9b"
+    },
+    {
+      "path": "source330A-retained.txt",
+      "bytes": 10458,
+      "sha256": "fea741f0d1c7c5a4f8aad3524ba140ef51f3f61e5b393fd251eb7a94a1fd0e59"
+    },
+    {
+      "path": "source331A-git-lf.txt",
+      "bytes": 9162,
+      "sha256": "fe861be7b4abdc926015dcf4e3933af5c8959622613326b063cc452d4042d535"
+    }
+  ]
+}

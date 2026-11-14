@@ -1,0 +1,6 @@
+
+[colab] A new version of Colab CLI is available: 0.8.0 (current: 0.7.5)
+[colab] Run 'colab update' to update.
+[colab] To silence this check, set "enable_update_check": false in ~/.config/colab-cli/settings.json
+
+{"status": "FAILED_PRESERVED", "archive": "/content/tep336-build-a-results.zip", "archive_bytes": 6223521, "archive_sha256": "b5f80aa0a79b489e5cc2911b43d180880432002f4c1c53f713352fc4d133a1d6"}

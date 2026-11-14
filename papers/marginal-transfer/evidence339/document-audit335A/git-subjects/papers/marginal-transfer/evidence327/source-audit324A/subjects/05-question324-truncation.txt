@@ -1,0 +1,50 @@
+QUESTION324 / exploratory note A -- remove the level-sum logarithmic loss
+Status: unreviewed derivation, NOT a theorem accepted for the frozen322B manuscript. Do not move the current publication gate or inherit any source323 assessment. One new mathematical question after323's accepted sufficient-scale proof.
+
+Question: for fixed0<rho<1, Q=P_sqrt(rho), p=1+1/rho, and H_m the projection onto Walsh degrees at least m, does ||Q H_m||_(2->p) tend to zero whenever m/sqrt(L) tends to infinity? This would strengthen the323 sufficient k>>sqrt(L ln L) scale to k>>sqrt(L) at bounded critical density norm. No sharpness claim or counterexample for k~sqrtL is yet supplied.
+Hypotheses: uniform probability cube, fixedrho, arbitrary real functions. Later density consequence uses only meanone, nonnegative density, bounded critical Ls norm and exact weighting marginals.
+Mechanism: duality + truncation + distribution-sensitive hypercontractivity, rather than summing homogeneous levels. Falsifier: incorrect rate identity/curvature, failed signed-function use, or a high-tail counterexample. Abandon after3substantive units without a quantitative estimate; retain failures. This note is the first analytical attempt, no executable computation.
+
+PRIMARY INPUT TO CHECK
+Kirshner--Samorodnitsky arXiv1909.11929v1, Theorem1.8, Section2.1.7 eta, Lemma2.14. https://arxiv.org/html/1909.11929v1 . For q=1+rho, epsilon=(1-sqrt(rho))/2, and r_q(f)=L^-1 log2(||f||q/||f||1), the stated inequality is
+ ||Q f||2 <=2^{L eta(r_q(f),epsilon)} ||f||q.
+Eta is negative for positive admissible arguments, continuous, decreasing/concave, and its derivative at zero is zero. Qualitative negativity alone does not prove the needed quadratic modulus. The intended new ingredient is an actual expansion, analogous in spirit but not identical to323. Theorem1.8 is credited external input; no original hypercontractive theorem is claimed.
+
+CONDITIONAL TRUNCATION ARGUMENT (assuming a verified eta modulus)
+Write q=1+rho in(1,2), dual to p. Suppose for this fixedrho and every admissible x,
+ -ln(2) eta(x,epsilon) >= C [ln(2) x]^2
+for some C>0. This is still to be established carefully below.
+By duality and commuting self-adjoint Q,H_m,
+ ||Q H_m||_(2->p)=||H_m Q||_(q->2).
+For ||f||q=1 and M=exp(a m), decompose f=b+t with b=f1_{|f|<=M}, t=f1_{|f|>M}. The bounded piece has ||b||2<=M^{1-q/2}, since E|b|²<=M^{2-q}E|f|q. Thus
+ ||H_m Qb||2<=rho^(m/2) M^{1-q/2}
+ =exp[-(-lnrho/2-a(1-q/2))m].
+Choose fixed a=(-lnrho)/[4(1-q/2)]>0, so this is exp[(lnrho)m/4]. No Lp contraction of H_m is used: H_m Q is estimated in L2 by its spectral multiplier.
+For t, ||t||1<=M^{1-q} E|t|q<=exp[-a(q-1)m]. Let c=a(q-1)/2>0.
+If ||t||q<=exp(-c m), ordinary endpoint hypercontractivity bounds ||H_m Qt||2<=exp(-c m).
+Otherwise ln(||t||q/||t||1)>=c m. The assumed refined bound gives
+ ||H_m Qt||2<=||Qt||2<=exp[-C c² m²/L]||t||q<=exp[-C c² m²/L].
+The zero-tail case is harmless. Combining the two alternatives gives a valid common upper bound
+ ||Q H_m||_(2->p)<=exp[(lnrho)m/4]+exp(-c m)+exp[-C c²m²/L].
+Hence m/sqrtL->infinity implies the tail norm tends tozero without a dimension prefactor. The old exact low-low-block proof would give ||S-P_rho||<=2(B+1)||QH_(floor(k/2)+1)||_(2->p). This is a conditional inference, not yet a published conclusion.
+
+PROPOSED ETA CURVATURE CALCULATION -- REQUIRES AUDIT OF IDENTITY
+Set d=(1-rho)/2=2epsilon(1-epsilon), sigma=(1-t)/2. The function phi(sigma,d) in Section2.1.6 appears to be minus the joint large-deviation cost, in base2, of correlated signs X,Y with EX=EY=0 and E(XY)=rho, constrained to both means t. Its defining joint-type entropy maximization should prove this identity exactly; this correspondence must be written out, not assumed from analogy.
+Let I1(t)=[(1+t)ln(1+t)+(1-t)ln(1-t)]/2 =t²/2+t⁴/12+O(t⁶).
+For diagonal tilt lambda the joint log-MGF is
+ K(lambda)=ln[(1+rho)cosh(2lambda)/2+(1-rho)/2]
+ =q lambda²+(q/3-q²/2)lambda⁴+O(lambda⁶).
+By symmetry and strict convexity of the joint log-MGF near0, the maximizing pair of tilt parameters for the equal-mean constraint should be equal. Write b=q/3-q²/2. From2t=K'(lambda),
+ lambda=t/q-2b t³/q⁴+O(t⁵),
+ Ijoint(t,t)=sup_lambda[2t lambda-K(lambda)]
+ =t²/q-bt⁴/q⁴+O(t⁶)
+ =t²/q+(q/2-1/3)t⁴/q³+O(t⁶).
+Then
+ (1/2)Ijoint-I1/q=(q-1)(2-q)t⁴/(12q³)+O(t⁶)>0 to leading order.
+The eta definition has 1-H2(sigma)=[q/(q-1)]x, hence natural r=ln2*x=(q-1)I1/q. Its natural deficit is expected to be
+ -ln2 eta(x,epsilon)=(1/2)Ijoint-I1/q
+ =[(2-q)/(3q(q-1))]r²+O(r³).
+The coefficient is positive for fixed1<q<2. The compact quotient argument could extend it globally if continuity and strict negativity hold on the full admissible x interval[0,(q-1)/q]. Need verify endpoint definitions and exact phi-to-rate identity; do not take this as proved merely because the coefficient is plausible.
+
+SCOPE
+A correct proof would remove the logarithmic sufficient-condition loss in323; it would still not prove necessity or resolve k comparable tosqrtL. Do not publish an isolated small corollary. Keep this research separate from the frozen322B production gates and preserve the exact accepted323 result regardless of this attempt's outcome. No Lean, numerical or symbolic computation executed, no score, no novelty or reviewer-independence claim.
