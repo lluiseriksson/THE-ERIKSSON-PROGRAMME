@@ -1,0 +1,68 @@
+{
+  "unit": 349,
+  "role": "analytical-fabrication",
+  "status": "CANDIDATE_PENDING_SEPARATE_AUDIT",
+  "created_at": "2026-11-14T01:54:04.1978113Z",
+  "payloads": [
+    {
+      "path": "failed-routes-and-abandonment.txt",
+      "bytes": 3029,
+      "sha256": "38cb865e74050bd3cfb4680c182a9a9d915a1abd77b1a134bf50171a646f06db"
+    },
+    {
+      "path": "full-fabrication-report.txt",
+      "bytes": 4054,
+      "sha256": "c45e1130773a6a4ca2104ddbbf41d691e8edb79c98169a63debf803056a3fbbb"
+    },
+    {
+      "path": "inputs/source341A.txt",
+      "bytes": 12276,
+      "sha256": "07872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f"
+    },
+    {
+      "path": "inputs/source344A.txt",
+      "bytes": 13082,
+      "sha256": "3b08bccdd79a3fa400a853aaa730733570cbe902c49dee7d022d50b1d5f006c0"
+    },
+    {
+      "path": "inputs/source345A.txt",
+      "bytes": 16352,
+      "sha256": "43744293f5351fd3607aeb7c865977407d68091ebd2b4edabb12f7f690ad6c58"
+    },
+    {
+      "path": "inputs/source346A.txt",
+      "bytes": 14394,
+      "sha256": "d11b3f691d7d20c8d22143b06a787cebbf8327e3201e80c64889d7be0a7c0cbd"
+    },
+    {
+      "path": "inputs/supplement-negative-routes347.txt",
+      "bytes": 5989,
+      "sha256": "4a6b1f69e7d5406c59b6ac5b9fcd8c435a4f491b15be701ed44bae62ab5f65ca"
+    },
+    {
+      "path": "model-context.txt",
+      "bytes": 1800,
+      "sha256": "29b6430d4042cd008deb1927b3c9dcc6b9b1686cbb2f020cae0995b73addfc18"
+    },
+    {
+      "path": "primary-gross-abstract-raw.json",
+      "bytes": 6968,
+      "sha256": "86a98abff7d22cc4b6b7d2f37dcdbd2336e50ba273961217630bb3c4067e3323"
+    },
+    {
+      "path": "RAW-INPUT-MANIFEST.json",
+      "bytes": 1572,
+      "sha256": "ab20cf95d97df0d1b5e92c81b9b5bd0bfb24308ceb9369a2a3f9aca4db9d72fc"
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 1310,
+      "sha256": "09d5c731726837b722e7257be6ee9c6aea27d9de82c50dbdaba5f35ab1bde29b"
+    },
+    {
+      "path": "source349A.txt",
+      "bytes": 18346,
+      "sha256": "718f6215f3acceceb52f6748fd6ee9555315a0c3b3a4b516408d9a77a14feb9c"
+    }
+  ]
+}

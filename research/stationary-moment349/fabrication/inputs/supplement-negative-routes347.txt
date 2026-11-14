@@ -1,0 +1,36 @@
+SUPPLEMENT347 -- Preserved negative routes and the remaining single question
+This is a synthesis of the full retained discovery/source records, not a new theorem or a new active route. Exact originals341/344/345/346 are included as raw inputs. No failed attempt is recast as a counterexample without satisfying the actual hPh constraints.
+
+1. Exact versus approximate transfer
+Source338 proves failure of exact stationary-pi to weighting-r matching through an actual positive-gap witness. Source341 proves exponentially small Hellinger/TV mismatch under a stationary moment cap. These are compatible: nonzero coefficients can be exponentially small. Neither source asserts exact r matching in the present class. The low-degree compression estimate controls fixed compressions only, not a high block, a cross block, every eigenvector, or the full operator.
+
+2. TV convergence does not supply the critical tail
+For a purely diagnostic density v_alpha=1-delta+delta 1_A/alpha on a probability space with mu(A)=alpha, one has ||v_alpha-1||_1<=2delta and E v_alpha^s>=delta^s alpha^(1-s). Choosing delta=alpha^c, 0<c<(s-1)/s, gives TV convergence with divergent s-moment. This is NOT an hPh-realized family and is NOT a counterexample to the original problem. It identifies the missing logical implication in an attempted proof. Any valid critical-r moment theorem would need additional information from hPh.
+
+3. Direct inverse-potential floor attempt
+The actual floor gives h>=b/g, hence g=Ph>=bP(1/g)>=b/(Pg), so g Pg>=b and u=pi/g^2<=pi(Pg)^2/b^2. Those identities are valid. A direct product-Holder argument uses 2s'=1+1/rho, exactly Q's L2 endpoint, and leaves no spare exponent for the extra nonconstant factor Pg. This particular argument is incomplete. No impossibility theorem for other arguments has been proved. Source341 removed the floor from its finite-exponent/normalization conclusions by a different Cauchy/PSD proof.
+
+4. Uniform potential convergence is an actual refuted bridge
+Source344 constructs pi=1+t times a product of odd-block majorities, then proves the existence of its unique positive h solving hPh=pi. Its exact stationary marginals, common floor, critical cap, and all-dimension convention are proved. It gives a fixed positive liminf of ||Ph-1||infinity. This specifically refutes uniform denominator convergence under the original conditions. The ancillary uniform r/pi convergence also fails using N->1. No divergent r moment, collapsing gap, or failure of all fixed comparison constants follows. Abandon this proposed uniform-convergence bridge rather than repeating it with changed notation.
+
+5. Rare-well and nonlinear-moment attempts
+Source345 preserves a tentative localized second mode supported on a rare well with a bulk Perron state. No fully admissible almost-resonant family or requisite coupling estimate was constructed. The proposed inequality E(fPf)<=E(f)||fPf||_s^(1/2) remained unproved and unused. No analytic counterexample to that inequality was established in these units. Do not cite it as either true or refuted.
+
+6. Failed full-operator replacement and successful bounded-test repair
+The ground-state identity gives ||Q((h-pi)F)||_2^2<=Epi(g-1)^2 F^2. Small Epi(g-1)^2 alone does not bound this by o(1) Epi F^2 for every unbounded test. Source345 instead proves ||Q((h-pi)F)||_2<=sqrt(B)epsilon||F||infinity. On indicators this supplies an absolute error. After squaring, the relative capacity error is of order epsilon/sqrt(q)+epsilon^2/q. It is useful above q of order epsilon^2 and not below. Treating it as a full operator perturbation would invalidate the proof.
+
+7. Elementary actual relation that did not solve rare cuts
+With u=h/Ph and p0=2s/(s+1)=1+rho, h^2=pi u and Holder give
+ ||h1_A||_(p0)^2 <= (E pi^s 1_A)^(1/s) E[u1_A].
+The valid PSD estimate Eu<=1 gives no demonstrated relative bound E[u1_A]/nu(A) on arbitrarily rare sets. This elementary inequality was not counted as a standalone advance and is not a solution to the weighting-tail problem.
+
+8. Why the diagonal heuristic needed an outside denominator
+Source346 uses pi(y)>=P(y,y)h(y)^2 to control internal transition numerators. By itself that numerator estimate cannot exclude resonance: Ph(x) may also be small. The accepted bounded theorem therefore compares the internal contribution to a proved outside contribution, using the actual floor, reciprocal Cauchy and P^2h=P_(rho^(3/2))Qh. Its asymptotic range is restricted by kappa<1; rho=1/2 already makes that particular criterion uninformative. That limitation does not refute the actual spectral gap.
+
+9. Alternative reverse-Holder estimate not promoted to a result
+An exploratory denominator estimate takes r0=1+1/rho, t0=r0/(r0+1), k_x(y)=P(x,y)/mu(y), and ||g||_(r0)<=1. It yields
+ E[k_x1_Ac/g] >= (E[k_x^t0 1_Ac])^(1/t0).
+For a removed singleton the bracket is c_t^L-(((1+rho)^t0)/2)^L, where c_t=((1+rho)^t0+(1-rho)^t0)/2. No all-rho comparison sufficient for the original question was proved. No numerical optimization was performed. This is retained exploratory algebra, not a premise in manuscript347 or the provisional346 section.
+
+10. Exact remaining obstruction and abandonment boundary
+The original single question is unchanged: fixed rho,b,C, critical stationary cap and exact k~C sqrt L stationary marginals; uniform positive normalized actual Doob gap or a fully admissible collapsing family. Sources341/344/345 exclude coarse normalization/mismatch, uniform-convergence and above-threshold-cut routes. Accepted346 excludes certain small-cardinality supports; it does not identify all exponentially small stationary-mass sets with those supports. The missing relative rare-set capacity control, or an actual collapsing construction satisfying hPh, remains. No new assumption is introduced to rename this absence as a theorem. Further repetitions of these same estimates should not be packaged as new papers. The present unit consolidates the results and does not launch a new research route.
