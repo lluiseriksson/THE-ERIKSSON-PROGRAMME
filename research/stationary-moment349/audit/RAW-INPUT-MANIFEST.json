@@ -1,0 +1,146 @@
+{
+  "audit": "source-audit349A",
+  "source_original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-349\\fabrication349A\\source349A.txt",
+  "candidate_package_original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-349\\fabrication349A",
+  "candidate_commit_sha": null,
+  "candidate_pr_body_capture_method": null,
+  "candidate_pr_normalized_body_bytes": null,
+  "candidate_pr_body_sha256": null,
+  "candidate_identity_note": "No candidate commit or PR in assignment; frozen source-byte identity only",
+  "source_sha256": "718f6215f3acceceb52f6748fd6ee9555315a0c3b3a4b516408d9a77a14feb9c",
+  "candidate_manifest_sha256": "952443739101dbe0cb8c8aa772d9f859aea437633b1669b7d2fc578f6127870e",
+  "inputs": [
+    {
+      "path": "inputs/fabrication349A/failed-routes-and-abandonment.txt",
+      "bytes": 3029,
+      "sha256": "38cb865e74050bd3cfb4680c182a9a9d915a1abd77b1a134bf50171a646f06db",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/full-fabrication-report.txt",
+      "bytes": 4054,
+      "sha256": "c45e1130773a6a4ca2104ddbbf41d691e8edb79c98169a63debf803056a3fbbb",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/inputs/source341A.txt",
+      "bytes": 12276,
+      "sha256": "07872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/inputs/source344A.txt",
+      "bytes": 13082,
+      "sha256": "3b08bccdd79a3fa400a853aaa730733570cbe902c49dee7d022d50b1d5f006c0",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/inputs/source345A.txt",
+      "bytes": 16352,
+      "sha256": "43744293f5351fd3607aeb7c865977407d68091ebd2b4edabb12f7f690ad6c58",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/inputs/source346A.txt",
+      "bytes": 14394,
+      "sha256": "d11b3f691d7d20c8d22143b06a787cebbf8327e3201e80c64889d7be0a7c0cbd",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/inputs/supplement-negative-routes347.txt",
+      "bytes": 5989,
+      "sha256": "4a6b1f69e7d5406c59b6ac5b9fcd8c435a4f491b15be701ed44bae62ab5f65ca",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/MANIFEST.json",
+      "bytes": 2154,
+      "sha256": "952443739101dbe0cb8c8aa772d9f859aea437633b1669b7d2fc578f6127870e",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/model-context.txt",
+      "bytes": 1800,
+      "sha256": "29b6430d4042cd008deb1927b3c9dcc6b9b1686cbb2f020cae0995b73addfc18",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/primary-gross-abstract-raw.json",
+      "bytes": 6968,
+      "sha256": "86a98abff7d22cc4b6b7d2f37dcdbd2336e50ba273961217630bb3c4067e3323",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/RAW-INPUT-MANIFEST.json",
+      "bytes": 1572,
+      "sha256": "ab20cf95d97df0d1b5e92c81b9b5bd0bfb24308ceb9369a2a3f9aca4db9d72fc",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/received-assignment.txt",
+      "bytes": 1310,
+      "sha256": "09d5c731726837b722e7257be6ee9c6aea27d9de82c50dbdaba5f35ab1bde29b",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/retention.json",
+      "bytes": 740,
+      "sha256": "3d2d65eb7fc7b6e5bbb9500232367251daaa9f911bee40f841b22a141e347dde",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/fabrication349A/source349A.txt",
+      "bytes": 18346,
+      "sha256": "718f6215f3acceceb52f6748fd6ee9555315a0c3b3a4b516408d9a77a14feb9c",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/governance/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/governance/D-LEEME.md",
+      "bytes": 17126,
+      "sha256": "5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/governance/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Full file read"
+    },
+    {
+      "path": "inputs/governance/SURFACE-CLOSURE-NOTES.md",
+      "bytes": 252719,
+      "sha256": "a0038d29adcacd5a56ab1fa1dfa5a6257145fd4807ec0d4af829db159d7c7461",
+      "representation": "Raw on-disk file bytes; no normalization",
+      "read_scope": "Partial only: audit/hash search output was truncated; final 182 lines explicitly read. Not a full read."
+    }
+  ],
+  "mathematical_execution": false,
+  "runtime_started": false,
+  "originality_search": false,
+  "numerical_grade": null,
+  "original_gap": "OPEN",
+  "larger_uniform_critical_moment_bound": "OPEN"
+}

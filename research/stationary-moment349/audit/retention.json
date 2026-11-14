@@ -1,0 +1,16 @@
+{
+  "retained_at": "2026-11-14T02:00:43.2254251Z",
+  "destination": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-349\\source-audit349A",
+  "preparation": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\_drafts\\source-audit349A",
+  "copy_hashes_matched": true,
+  "files_retained_before_this_receipt": 24,
+  "report_sha256": "4f57351040e7153f14a6328d00cc60f1c01ff6fc0d15a41c15847c4ccc8a5877",
+  "manifest_sha256": "cb9baad8a0ba4d17e4d28e1b0a18a222b555d55ec3742089b5f22abee9a96498",
+  "byte_regime": "Raw on-disk bytes; no normalization",
+  "candidate_unchanged": true,
+  "disposable_clone_created": false,
+  "other_staging_cleaned": false,
+  "mathematical_execution": false,
+  "runtime_started": false,
+  "git_mutation": false
+}

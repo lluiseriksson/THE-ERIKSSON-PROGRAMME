@@ -1,0 +1,145 @@
+SOURCE346A -- The stationary floor excludes localized resonances on small-cardinality supports in an explicit noise region
+Analytical fabrication candidate requiring separate exact-source audit. Same original stationary-gap question. This is a bounded no-go theorem for a class of localized obstructions, not a full uniform-gap theorem or an admissible collapsing family. No standalone paper, grade, historical novelty or formal-verification claim.
+
+1. ACTUAL MODEL AND PRECISE CLAIM
+Let mu be uniform probability on {-1,1}^L, L>=1, and let P=P_rho with fixed0<rho<1. Thus each bit is retained with probability a=(1+rho)/2, and the Walsh multiplier is rho^|S|. Let Q=P_sqrt(rho), so Q^2=P. Take h>0, normalized by E hPh=1, and write
+ g=Ph, pi=hg, s=(1+rho)/(1-rho), B=2^(1/s).
+Assume only
+ pi>=b>0, E pi^s<=2.                                        (1.1)
+In particular E pi=1. Define the actual Doob kernel and its stationary probability
+ K(x,y)=P(x,y)h(y)/g(x), nu(x)=mu(x)pi(x).
+K is stochastic and reversible because nu(x)K(x,y)=mu(x)P(x,y)h(x)h(y) is symmetric. Exact stationary marginal matching is NOT needed for this theorem; therefore every family in the original k~C sqrt(L) question satisfying (1.1) is included. There is no hypothesis about the weighting density r=(h/g)/E(h/g).
+
+Put
+ d=a^L=P(x,x), alpha=2^(-L),
+ theta=1-1/(2s),
+ kappa=2^(1/s) a (1+rho^3).                                  (1.2)
+The letter alpha here is the mass of one cube atom and is unrelated to source334's endpoint constant. The quantities d and alpha are independent of x.
+
+Theorem (candidate). For any nonempty subset A of cardinality m with m d<1, define
+ R_L(m)=(sqrt(B)/b) m^theta kappa^(L/2)/(1-m d)^2.             (1.3)
+Then, uniformly over every h satisfying (1.1) and every x in the cube,
+ K(x,A)<=R_L(m)/(1+R_L(m)).                                  (1.4)
+Consequently, if K_A is the kernel killed upon leaving A, its spectral radius is at most the right side of (1.4). Moreover its actual one-sided cut flux satisfies
+ J(A)/nu(A)>=1/(1+R_L(m)),
+ J(A)=sum_(x in A,y notin A)nu(x)K(x,y).                     (1.5)
+The formula applies even if nu(A)>1/2; in the usual conductance definition one uses sets of stationary mass at most1/2, or their complements.
+
+For every fixed rho with kappa<1, and every fixed
+ 0<tau<min{-log(a), -log(kappa)/(2 theta)},                    (1.6)
+all sets m<=exp(tau L) have R_L(m)->0 uniformly as L->infinity. Thus no almost-unit killed eigenvalue can be supported on those geometrically arbitrary sets, and their escape probability tends to1. Logs here and below are natural.
+
+A completely explicit subrange is
+ 0<rho<=1/4,   m<=exp(rho L/1920).
+There, for all L>=1 and all such integer m,
+ R_L(m)<=(9 sqrt(B)/b)exp(-rho L/640).                        (1.7)
+In particular the killed spectral radii tend to0, not merely remain bounded below1. The exponent and constants are deliberately nonoptimal.
+
+At kappa=1, (1.3) still gives a dimension-independent positive escape bound for singletons. For kappa>1 the displayed estimate need not give any nontrivial asymptotic exclusion even for singletons; specifically kappa>1 at rho=1/2. No result for all0<rho<1, or for larger support sizes, is asserted. The original full stationary-gap question remains open.
+
+2. DIAGONAL CAP ON h AND THE INTERNAL TRANSITION CONTRIBUTION
+Positivity of P gives, for every y,
+ pi(y)=h(y)(Ph)(y)>=P(y,y)h(y)^2=d h(y)^2.
+Therefore h(y)<=sqrt(pi(y)/d). The maximum matrix entry of P is d, because on each coordinate a>(1-rho)/2. It follows that for every x and A,
+ I_x(A):=sum_(y in A)P(x,y)h(y)
+ <=sqrt(d)sum_(y in A)sqrt(pi(y)).                           (2.1)
+The critical cap and uniform atom mass give sum_y pi(y)^s<=2/alpha. Ordinary finite-sum Holder with exponents2s and2s/(2s-1) yields
+ sum_(y in A)sqrt(pi(y))
+ <=m^(1-1/(2s)) [sum_(y in A)pi(y)^s]^(1/(2s))
+ <=sqrt(B) m^theta alpha^(-1/(2s)).                         (2.2)
+Thus
+ I_x(A)<=sqrt(B d) m^theta alpha^(-1/(2s)).                  (2.3)
+For a singleton this is the exact elementary diagonal-cap bound I_x({x})<=sqrt(d pi(x)), followed by pi(x)<=B alpha^(-1/s). A small upper bound on this internal contribution alone does NOT control K(x,A), since its denominator g(x) might also be small. The next section proves a lower bound for the outside contribution instead of assuming a denominator floor.
+
+3. STATIONARY FLOOR, RECIPROCAL CAUCHY AND A SECOND-POTENTIAL BOUND
+Write
+ O_x(A)=sum_(y notin A)P(x,y)h(y),  p_x=P(x,A^c).
+Since pi(y)=h(y)g(y)>=b, we have h(y)>=b/g(y). Weighted Cauchy--Schwarz gives
+ p_x^2
+ <=[sum_(y notin A)P(x,y)/g(y)]
+   [sum_(y notin A)P(x,y)g(y)].
+All terms are positive, and p_x>=1-m d>0 under the theorem's size condition. Also the second bracket is at most (Pg)(x). Therefore
+ O_x(A)>=b p_x^2/(Pg)(x)
+         >=b(1-m d)^2/(P^2h)(x).                            (3.1)
+The direction of this denominator replacement is important: enlarging the positive denominator weakens a lower bound and is legitimate here.
+
+We next bound P^2h pointwise using the energy normalization, without a pointwise claim about Ph. Since
+ P^2h=P_(rho^(3/2))(Qh),   ||Qh||_2^2=E hPh=1,
+point evaluation and Cauchy in L2(mu) imply
+ (P^2h)(x)<= [sum_y P_(rho^(3/2))(x,y)^2/mu(y)]^(1/2).
+For the uniform cube, symmetry and the semigroup identity show the quantity under this square root is
+ P_(rho^3)(x,x)/alpha
+ =[((1+rho^3)/2)^L]/2^(-L)=(1+rho^3)^L.
+Equivalently, its Walsh kernel coefficients have squared sum sum_S rho^(3|S|)=(1+rho^3)^L. Thus, for every x,
+ (P^2h)(x)<=(1+rho^3)^(L/2),
+ O_x(A)>=b(1-m d)^2(1+rho^3)^(-L/2).                       (3.2)
+This bound is allowed to be exponentially small in dimension. It is an actual consequence of the floor and hPh relation, not an assumed lower bound for h, g or the weighting density. No exact marginal information or source345 estimate is used.
+
+4. COMBINING THE CONTRIBUTIONS, CAPACITY AND KILLED MODES
+Divide (2.3) by the strictly positive lower bound (3.2). Since alpha^(-1/s)=2^(L/s) and d=a^L,
+ I_x(A)/O_x(A)
+ <=(sqrt(B)/b) m^theta [2^(1/s)a(1+rho^3)]^(L/2)/(1-m d)^2
+ =R_L(m).                                                   (4.1)
+The actual transition probability is I_x(A)/(I_x(A)+O_x(A)). The scalar function t/(1+t) is increasing for t>=0, so (4.1) proves (1.4). No normalization of an auxiliary operator is substituted.
+
+The restriction K_A has nonnegative entries and every row sum at most r_A:=R_L(m)/(1+R_L(m)). Hence its operator norm on finite coordinate supremum norm is at most r_A, and every eigenvalue has modulus at most r_A. This proves the killed spectral-radius assertion without an assumption of invariant support. Because K is reversible under nu, K_A is also self-adjoint in L2(nu|_A); in fact its eigenvalues are nonnegative by similarity to the corresponding principal submatrix of M_sqrt(h/g) P M_sqrt(h/g), which is positive semidefinite. Thus every real f supported on A satisfies
+ <f,Kf>_nu<=r_A ||f||_(L2(nu))^2.                            (4.2)
+This is a genuine exclusion of a near-unit localized Rayleigh quotient on that support. It does not assert that a general second eigenfunction must have such support.
+
+For x in A, (1.4) also gives K(x,A^c)>=1-r_A. Integrating against nu over A proves J(A)>=(1-r_A)nu(A), namely (1.5). No factor1/2 is missing because J is the one-sided flux. For a singleton, the statement is exactly an upper bound on K(x,x) and a lower bound on its escape probability.
+
+5. PARAMETER REGION AND EXPLICIT EXPONENTIAL-CARDINALITY RANGE
+Suppose kappa<1 and tau satisfies (1.6). If m<=exp(tau L), then
+ m d<=exp[(tau+log a)L]->0,
+ m^theta kappa^(L/2)<=exp[(theta tau+(1/2)log kappa)L]->0.
+Both exponents are strictly negative. Inserting these into (1.3) gives uniform convergence to0 over all h,A,x in the stated class. The constants may depend on fixed rho,b,tau; no uniformity as rho approaches an excluded endpoint is claimed.
+
+For the explicit range0<rho<=1/4, compute
+ log kappa=-(2rho/(1+rho))log2+log(1+rho)+log(1+rho^3)
+ <=rho[1+rho^2-2log2/(1+rho)]
+ <=rho[17/16-(8/5)log2]
+ <-rho/240.                                                 (5.1)
+Here log(1+x)<=x, rho^2<=1/16 and (1+rho)^(-1)>=4/5 were used. To verify the last strict numerical comparison without a decimal approximation, log2>2/3: for example log2=2 integral_0^(1/3)(1-t^2)^(-1)dt>2/3. Hence (8/5)log2>16/15, and16/15-17/16=1/240.
+
+If m<=exp(rho L/1920), then theta<1 and (5.1) imply
+ m^theta kappa^(L/2)
+ <=exp(rho L/1920-rho L/480)=exp(-rho L/640).                (5.2)
+Also a<=5/8 and rho/1920<=1/7680. The inequality
+ log(16/15)>=1/16>1/7680
+follows from log(1+x)>=x/(1+x) at x=1/15. Therefore
+ m d<= [(5/8) exp(1/7680)]^L<=(2/3)^L.
+In particular m d<1 and (1-m d)^(-2)<=9 for every L>=1. Equations(1.3) and(5.2) prove (1.7). The possible nonintegrality of the cardinality bound means simply m is an integer at most its displayed real upper bound; singleton sets always qualify.
+
+At kappa=1 and m=1, d=a^L<=a<1 yields
+ R_L(1)<=sqrt(B)/[b(1-a)^2],
+so singleton escape is uniformly at least
+ 1/[1+sqrt(B)/(b(1-a)^2)]>0.                                (5.3)
+This same bound holds when kappa<1, though the sharper asymptotic escape then tends to1.
+
+The region restriction is real. At rho=1/2, s=3 and
+ kappa=2^(1/3)(3/4)(9/8)=27*2^(1/3)/32>1,
+because cubing the two positive sides gives39366>32768. Thus the sufficient condition does not cover rho=1/2. This calculation is only a falsifier of extending the displayed sufficient criterion to every rho; it is NOT an actual counterexample or proof that point resonance occurs there. No numerical root or sharp boundary of kappa=1 is claimed.
+
+6. RELATION TO THE ORIGINAL QUESTION AND REMAINING OBSTRUCTION
+The original question fixes rho,b,C and s, requires pi>=b, Epi^s<=2 and exact stationary marginals through k~C sqrt(L), and asks for a uniform normalized gap or an admissible collapsing family.346 excludes a specific proposed obstruction: for the stated noise region, no positive near-unit mode can be supported on an arbitrary set of up to exp(rho L/1920) vertices, even before matching is imposed. This covers singletons, every fixed number of vertices, and every subexponential-cardinality sequence in that region. A set with exp(tau L) vertices still has exponentially small base mass, but the result is a support-cardinality theorem, not the assertion that all sets of small stationary mass have this cardinality.
+
+The cap also gives nu(A)<=B(mu(A))^(1-1/s), but its direction must not be reversed to infer small support cardinality from small stationary mass. The floor gives mu(A)<=nu(A)/b, which still permits exponentially many vertices when nu(A) decays only as exp(-constant*sqrt(L)). Thus neither this theorem nor the candidate345 capacity scale closes the original question.345 remains a pending candidate in this assignment and is not used as an input anywhere in the proof.
+
+For rho with kappa>1, and for support sizes beyond(1.6) even where kappa<1, the present estimate may be asymptotically vacuous. General rare localized resonances or collective multi-site wells in those ranges remain unresolved. The theorem supplies no actual collapsing family, no critical moment bound on r, no uniform pointwise Ph convergence, and no full second-eigenvalue estimate. Accepted344's pointwise obstruction is untouched.
+
+The elementary parent-supplied identity h^2=pi u with u=h/g and E u<=1 was examined but is not promoted to an advance. For p=2s/(s+1)=1+rho, Holder gives
+ ||h1_A||_p^2 <=(E pi^s1_A)^(1/s) E u1_A.
+Hypercontractivity then bounds the internal energy by this expression. It lacks the needed comparison of E u1_A with nu(A) on tiny sets and does not by itself exclude resonance. That failed broader route and the unproved proposed nonlinear energy-moment inequality are retained in failed-routes-and-limits.txt, not inserted as premises.
+
+Next action after a separate audit: use the explicit support/noise exclusion to narrow the same original question. A stronger result would need either an improved outside-potential bound covering the remaining rho/support range, a genuinely relative capacity estimate, or a valid collective localized construction satisfying every stationary constraint. Do not repeat the disproved uniform-g-convergence step or promote the present partial region to a full gap conclusion. This bounded unit has a substantive no-go result, not three unproductive units; it opens no second research question and proposes no paper.
+
+7. PRIMARY CONTEXT AND ASSESSMENT LIMITS
+The proof in sections2-5 is elementary finite-dimensional reasoning: positivity, Holder, reciprocal Cauchy, the Boolean semigroup kernel and energy normalization. It imports no result from pending345 or a matrix-scaling iteration. The accepted341 reciprocal normalization is used only to explain the unsuccessful elementary route in section6, not in the no-go theorem.
+
+Targeted primary-source context checks:
+ Kun He, Global Sinkhorn Convergence and Spectral Stability of Matrix Scaling, https://arxiv.org/abs/2611.08963 (abstract/metadata only: spectral conditions and scaling distortion; no theorem imported).
+ Tom Lollier and Eyal Neuman, Quantum-Enhanced Sampling of Schrodinger Bridges, https://arxiv.org/abs/2609.27103 (abstract/metadata only: conditional-bridge Gibbs sampling under positive transitions; not a gap theorem for the present K).
+ Tryphon T. Georgiou and Michele Pavon, Positive contraction mappings for classical and quantum Schrodinger systems, https://arxiv.org/abs/1405.6650 (abstract/metadata: multiplicative Markov-chain marginal scaling; no new existence or iteration claim).
+These readings do not establish historical originality or a comprehensive comparison. In particular a dimension-independent positivity hypothesis in another setting must not be inferred from the cube's merely entrywise positive kernel, whose smallest entries decay with L.
+
+This is analytical fabrication by the same involved OpenAI/Codex child as341,344 and345, with inherited context and shared filesystem/provider. Exact served backend and independence are not attested. No score, human peer review, formal verification, mathematical execution or local/Colab runtime occurred. The source/report/context/negative work and raw input hashes are retained for a separate audit. No physical Yang-Mills or continuum conclusion; PR29 20/41 and TermSource=0 remain untouched.

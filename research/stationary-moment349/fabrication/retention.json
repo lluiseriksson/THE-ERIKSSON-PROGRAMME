@@ -1,0 +1,15 @@
+{
+  "retained_at": "2026-11-14T01:54:17.5071955Z",
+  "source_stage": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\_drafts\\moment349",
+  "destination": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-349\\fabrication349A",
+  "files_copied_and_hash_verified": 13,
+  "source_sha256": "718f6215f3acceceb52f6748fd6ee9555315a0c3b3a4b516408d9a77a14feb9c",
+  "manifest_sha256": "952443739101dbe0cb8c8aa772d9f859aea437633b1669b7d2fc578f6127870e",
+  "status": "FROZEN_CANDIDATE_PENDING_SEPARATE_AUDIT",
+  "runtime_started": false,
+  "mathematical_execution": false,
+  "git_mutation": false,
+  "source347_or_preparation348_modified": false,
+  "original_gap": "OPEN",
+  "larger_uniform_moment_bound": "OPEN"
+}

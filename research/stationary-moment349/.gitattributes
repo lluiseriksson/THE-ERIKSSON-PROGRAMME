@@ -1,0 +1,3 @@
+# Preserve frozen source and evidence bytes within this packet only.
+* -text
+** -text

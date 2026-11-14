@@ -1,0 +1,42 @@
+{
+  "context_head": "4a44431e8648018908ddc2760840977db9928aac",
+  "programme_root": "C:/Trabajo/the-eriksson-programme/prefix-rank290-20261113/papers/stationary-doob347",
+  "context_inputs": [
+    {
+      "path": "inputs/source341A.txt",
+      "bytes": 12276,
+      "sha256": "07872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f"
+    },
+    {
+      "path": "inputs/source344A.txt",
+      "bytes": 13082,
+      "sha256": "3b08bccdd79a3fa400a853aaa730733570cbe902c49dee7d022d50b1d5f006c0"
+    },
+    {
+      "path": "inputs/source345A.txt",
+      "bytes": 16352,
+      "sha256": "43744293f5351fd3607aeb7c865977407d68091ebd2b4edabb12f7f690ad6c58"
+    },
+    {
+      "path": "inputs/source346A.txt",
+      "bytes": 14394,
+      "sha256": "d11b3f691d7d20c8d22143b06a787cebbf8327e3201e80c64889d7be0a7c0cbd"
+    },
+    {
+      "path": "inputs/supplement-negative-routes347.txt",
+      "bytes": 5989,
+      "sha256": "4a6b1f69e7d5406c59b6ac5b9fcd8c435a4f491b15be701ed44bae62ab5f65ca"
+    }
+  ],
+  "primary_reading": {
+    "url": "https://arxiv.org/abs/2412.20282",
+    "scope": "Abstract and metadata only; no theorem imported",
+    "raw": "primary-gross-abstract-raw.json",
+    "sha256": "86a98abff7d22cc4b6b7d2f37dcdbd2336e50ba273961217630bb3c4067e3323"
+  },
+  "mathematical_computation_executed": false,
+  "model_grade": null,
+  "original_gap": "OPEN",
+  "larger_uniform_critical_moment_bound": "OPEN",
+  "candidate_result": "Admissible exact cap2 transfer counterexample and two-level exclusion; pending separate audit"
+}

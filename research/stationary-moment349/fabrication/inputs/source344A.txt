@@ -1,0 +1,112 @@
+SOURCE344A -- Exact stationary matching does not force uniform smoothed-potential rigidity
+Analytical fabrication candidate. Separate audit required. This is a bounded counterexample to a proposed comparison mechanism within the original stationary-gap question, NOT a counterexample to the spectral-gap conjecture. No paper, priority claim, numerical grade or formal verification is asserted.
+
+1. SETTING AND RESULT
+Let mu_L be uniform probability on {-1,1}^L. For fixed 0<rho<1 let P=P_rho be the Boolean noise Markov operator: conditional on x, the coordinates of Y are independent, with P(Y_i=x_i)=(1+rho)/2. Its Walsh multiplier on chi_S is rho^|S|. Set s=(1+rho)/(1-rho). Fix C>0 and 0<b<1. Let integers 0<=k_L<=L satisfy k_L/sqrt(L)->C. All expectations and unqualified norms below use mu_L.
+
+There exist positive h_L with exact energy normalization E[h_L P h_L]=1 and stationary densities pi_L=h_L P h_L satisfying, for every L,
+ E pi_L=1, pi_L>=b, E pi_L^s<=2,
+ E[pi_L chi_S]=0 whenever 1<=|S|<=k_L.
+They can moreover be chosen with a fixed upper bound pi_L<=1+t and lower bound pi_L>=1-t, where
+ t=min{(1-b)/2, (2^(1/s)-1)/2, 1/4}>0.                         (1.1)
+Nevertheless,
+ liminf_(L->infinity) ||P h_L-1||_infinity >= t/[2(3+2t)]>0.    (1.2)
+The prescribed density pi_L is explicit. The positive potential h_L is defined uniquely by a finite-dimensional strictly convex minimization, whose existence and uniqueness are proved below. No numerical scaling algorithm is assumed to converge or executed.
+
+The boundary cases of the original floor parameter are different: b>1 is incompatible with E pi=1; b=1 forces pi=1 and, by the uniqueness lemma below, the energy-normalized h=1. The counterexample concerns precisely the nontrivial range 0<b<1.
+
+2. INTEGER BLOCKS AND EXACT MARGINAL MATCHING
+For every L with k_L+1<=L put m=k_L+1 and let n be the largest positive odd integer at most L/m. Then
+ L/m-2<n<=L/m,  mn<=L.
+For all sufficiently large L these definitions apply, and
+ m/sqrt(L)->C,  n/sqrt(L)->1/C.
+Partition the first mn coordinates into m disjoint blocks B_1,...,B_m of size n, ignoring the remaining coordinates. Define
+ phi_i(x)=sign(sum_(j in B_i) x_j),   F_L(x)=product_(i=1)^m phi_i(x).
+Odd n eliminates ties. Each phi_i has mean zero by the sign-reversal symmetry of the uniform block measure, and takes values in {-1,1}. Its Walsh expansion therefore has no constant term. In the product expansion of F_L, disjointness of the blocks means every resulting character uses a nonempty coordinate subset from each block. Consequently F_L has no Fourier coefficient of degree below m=k_L+1. In particular E F_L=0, F_L^2=1, and F_L takes each sign with probability 1/2. This reasoning does not require any claim about the signs of majority Fourier coefficients.
+
+Set pi_L=1+t F_L. Then E pi_L=1 and pi_L lies in [1-t,1+t]. Since t<1-b and t<2^(1/s)-1, we have pi_L>=b and
+ E pi_L^s=((1+t)^s+(1-t)^s)/2 <=(1+t)^s<2.                 (2.1)
+The strict inequalities follow directly from the halves in (1.1), with all entries of the minimum positive. For 1<=|S|<=k_L, E pi_L chi_S=0. This is exact matching of the actual stationary density, not an assumption about the weighting density r.
+
+Equivalently, every labelled marginal on at most k_L coordinates is uniform: the probability of a prescribed sign pattern on J is the expectation of 2^(-|J|) product_(j in J)(1+a_j x_j); all its nonconstant characters have zero pi_L-expectation.
+
+For the finitely many L for which k_L+1>L, set pi_L=1. Thus the construction is defined for every positive integer L; finite exceptional dimensions do not affect (1.2).
+
+3. NOISE AT THE ALL-PLUS POINT
+Let x_+=(1,...,1). In one block, the noised bits Y_j are independent signs with E Y_j=rho. Write S_n=sum_(j=1)^n Y_j and q_n=P(S_n<0). For tau=atanh(rho)>0, Markov's inequality gives
+ q_n<=P(S_n<=0)<=E exp(-tau S_n)
+     =(cosh(tau)-rho sinh(tau))^n=(sqrt(1-rho^2))^n
+     <=exp(-rho^2 n/2).                                      (3.1)
+The last inequality is log(1-z)<=-z for z=rho^2. Since n is odd, S_n is never zero and E sign(S_n)=1-2q_n. Independence of noised blocks yields the exact identity
+ (P F_L)(x_+)=(1-2q_n)^m.                                   (3.2)
+As m is of order sqrt(L) while n is of order sqrt(L), m exp(-rho^2 n/2)->0. For all sufficiently large L, 0<=2q_n<=1, and Bernoulli's inequality gives
+ 1>= (1-2q_n)^m >=1-2m q_n ->1.
+It follows that
+ (P pi_L)(x_+)-1=t(P F_L)(x_+)->t.                           (3.3)
+In particular this expression is at least t/2 for every sufficiently large L. This is compatible with the high Fourier support: noise suppresses high-degree coefficients in L^2 but need not suppress the value at one exceptionally biased input uniformly in dimension.
+
+4. POSITIVE SYMMETRIC SCALING: COMPLETE EXISTENCE AND UNIQUENESS
+Lemma. On any finite set with a strictly positive probability mu, let P be a reversible Markov transition matrix with nonnegative entries and P(x,x)>0 for each x. For every strictly positive density pi with E_mu pi=1, there exists a unique positive vector h satisfying h(x)(Ph)(x)=pi(x) for every x.
+
+Proof. Write R_xy=mu(x)P(x,y)=R_yx and w_x=mu(x)pi(x)>0, so sum_x w_x=1. For real z indexed by the finite set, define
+ J(z)=(1/2)sum_(x,y) R_xy exp(z_x+z_y)-sum_x w_x z_x.         (4.1)
+Writing h_x=exp(z_x), direct differentiation, using symmetry, gives
+ partial_x J=mu(x)[h_x(Ph)(x)-pi(x)].                        (4.2)
+For any real direction v its Hessian quadratic form is
+ v^T Hess(J) v=(1/2)sum_(x,y) R_xy exp(z_x+z_y)(v_x+v_y)^2.   (4.3)
+If v is nonzero, the term x=y at any nonzero coordinate is strictly positive because R_xx>0. Hence J is strictly convex on the full real vector space; there is no additive-constant degeneracy.
+
+For completeness, its sublevel sets are bounded, with dimension-dependent constants permitted. Let M=max_x z_x, m0=min_x z_x, c=(1/2)min_x R_xx>0, and w_*=min_x w_x>0. A diagonal term at a maximizing coordinate, together with sum w=1, gives
+ J(z)>=c exp(2M)-M.                                         (4.4)
+Also, if j is a minimizing coordinate,
+ sum_x w_x z_x<=w_j m0+(1-w_j)M,
+ so J(z)>=w_j(M-m0)-M>=w_*(M-m0)-M.                         (4.5)
+Fix a real sublevel height A. If J(z)<=A, (4.4) implies M>=-A (since c exp(2M)>=0) and M<=M_A, where a finite M_A>=max{0,-A} can be chosen so that c exp(2M)-M>A for every M>M_A. Such a choice exists because this expression tends to infinity as M->infinity. Equation (4.5) now implies
+ m0>=M-(A+M)/w_* >=-A-(A+M_A)/w_*.                          (4.6)
+Thus every nonempty sublevel set is bounded. It is also closed by continuity. A minimizing sequence can be restricted to the nonempty sublevel J<=J(0), a compact set; consequently J attains a minimum. Strict convexity makes the minimum unique. Its gradient vanishes, so (4.2) produces the desired positive h. Conversely every positive solution corresponds to a critical point of J and is this unique minimizer. Finally E hPh=E pi=1. This proves the lemma. No bound uniform in dimension on c, w_* or the minimizer is asserted.
+
+The Boolean P_rho has strictly positive entries and a positive diagonal for 0<rho<1, and is reversible for uniform mu. Apply the lemma to each pi_L from section2. For exceptional dimensions with pi_L=1 the solution is h_L=1. Define g_L=P h_L. The associated actual Doob chain is
+ K_L(x,y)=P(x,y)h_L(y)/g_L(x).
+Its rows sum to 1, and
+ mu(x)pi_L(x)K_L(x,y)=mu(x)P(x,y)h_L(x)h_L(y)
+ is symmetric in x,y. Thus pi_L is indeed its normalized stationary density. The family satisfies the original hPh relation and is not merely a pair of abstract nearby probability densities.
+
+5. QUANTITATIVE FAILURE OF UNIFORM POTENTIAL RIGIDITY
+Fix a sufficiently large L for which (3.3) is at least t/2, and put delta_L=||g_L-1||_infinity. If delta_L<1/2, then g_L>=1-delta_L and h_L=pi_L/g_L gives
+ ||h_L-pi_L||_infinity
+ <=(1+t)delta_L/(1-delta_L)<=2(1+t)delta_L.                  (5.1)
+Every Markov operator is a contraction in the supremum norm: |Pf(x)|<=P|f|(x)<=||f||_infinity. Consequently
+ ||g_L-P pi_L||_infinity<=2(1+t)delta_L.                     (5.2)
+At x_+, the triangle inequality and (3.3) now give
+ t/2<=P pi_L(x_+)-1
+     <=||P pi_L-g_L||_infinity+||g_L-1||_infinity
+     <=(3+2t)delta_L.
+Therefore delta_L>=t/[2(3+2t)]. If delta_L>=1/2, the same lower bound holds because t/[2(3+2t)]<1/2 for t>0. This proves (1.2) for the entire sequence, not just a subsequence. No spectral eigenvalue estimate has been used.
+
+6. COMPATIBILITY WITH ACCEPTED341 AND PRECISE COMPARISON OBSTRUCTION
+The accepted source341A proves the following consequences for the actual normalized hPh setup under the present stationary hypotheses. Put
+ Q=P_sqrt(rho), u=h_L/g_L, N_L=E u, r_L=u/N_L, s'=s/(s-1),
+ eta^2=max{rho,(1-rho)/2}<1, epsilon_L=2^(1/s)eta^(k_L+1).
+Then ||Qh_L-1||_2<=epsilon_L, ||g_L-1||_(s')<=epsilon_L,
+ (1+epsilon_L^2)^(-1)<=N_L<=1,
+ ||sqrt(r_L)-sqrt(pi_L)||_2<=epsilon_L,
+ TV(r_L mu,pi_L mu)=(1/2)E|r_L-pi_L|<=epsilon_L.             (6.1)
+The actual Perron eigenvalue of M_sqrt(r_L) P M_sqrt(r_L) is 1/N_L. The inequalities and direction in (6.1) are imported exactly from the accepted bounded theorem, not strengthened here. Its source hash and audit/parent-acceptance receipts are retained with this candidate. Since k_L->infinity, epsilon_L->0 and N_L->1.
+
+The pointwise identity
+ r_L/pi_L=1/(N_L g_L^2)                                     (6.2)
+shows why a uniform relative-density upgrade would fail. If ||r_L/pi_L-1||_infinity->0, then N_L->1 and positivity in (6.2) imply g_L=(N_L r_L/pi_L)^(-1/2)->1 uniformly, contradicting (1.2). Thus the accepted Hellinger/TV convergence cannot be upgraded in general to uniform relative convergence r_L/pi_L->1. This implication uses341; the main counterexample (1.2) and its admissibility were proved without341.
+
+The example does not refute341's finite-exponent potential convergence or finite-dimensional compression theorem. It does not assert exact matching for r_L, a divergent critical r_L moment, a near-unit second eigenvalue, or a collapsing normalized Doob gap. It does not prove that a dimension-independent but nonvanishing comparison constant is impossible. Only uniform convergence to the identity is refuted. In particular the example by itself neither proves nor disproves uniform positive gap for the original class.
+
+7. ONE QUESTION, FAILED MECHANISMS, AND STOP CONDITION
+The sole active question remains: fixed rho,b,C, s=(1+rho)/(1-rho), h>0, pi=hPh/EhPh>=b, Epi^s<=2, exact stationary marginals through k~C sqrt(L): is the normalized Doob gap bounded below uniformly, or is there an admissible collapsing family?
+
+Three bounded approaches in this unit were examined. Their complete mathematical content and failures are retained separately in failed-routes-and-limits.txt. First,341's small TV/Hellinger discrepancy alone does not control a critical weighted tail or an operator norm. Second, the pointwise floor yields g Pg>=b and u<=pi(Pg)^2/b^2, but direct Holder at the critical hypercontractive endpoint leaves no exponent room for that extra multiplier; no closure is claimed. Third, the proposed uniform g->1 bridge is rigorously falsified by sections2-5. Stop the uniform pointwise-convergence route. A future advance must tolerate rare pointwise excursions, prove a genuinely quantitative weighted-tail/cross-block or capacity estimate using hPh, or establish an actual collapsing-gap family. It must not promote (1.2) to such a gap counterexample.
+
+8. PRIMARY LITERATURE AND ASSESSMENT CONTEXT
+Positive matrix scaling and finite Schrodinger scaling are established topics. The finite existence/uniqueness proof above is supplied in full; it is not claimed as new. Relevant primary literature inspected for context:
+ H. Balakrishnan, I. Hwang, C. J. Tomlin, Polynomial Approximation Algorithms for Belief Matrix Maintenance in Identity Management, https://www.mit.edu/~hamsa/pubs/cdc04_BHT.pdf (abstract/introduction: prescribed marginal scaling and convex optimization).
+ M. B. Nathanson, Alternate Minimization and Doubly Stochastic Matrices, INTEGERS 20A (2020), https://math.colgate.edu/~integers/uproc10/uproc10.pdf (pages3-4: positive symmetric scaling uniqueness and Sinkhorn existence context).
+ I. Benjamini, O. Gurel-Gurevich, R. Peled, On K-wise Independent Distributions and Boolean Functions, https://arxiv.org/abs/1201.3261 (abstract only: bounded independence and Boolean functions, including majority).
+These searches are limited context checks, not an exhaustive originality search or proof that this combination is absent from prior literature. Block parity of balanced functions and the exponential-moment bound are elementary established mechanisms; both are proved directly here. No theorem from the last abstract is imported. Correctness of this candidate awaits separate audit. Relevance is the elimination of a proposed pointwise comparison step inside the same stationary-gap problem. No novel paper, physical mass gap, continuum result, peer-review acceptance, model grade or independence is asserted.

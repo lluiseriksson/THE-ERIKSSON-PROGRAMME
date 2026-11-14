@@ -1,0 +1,22 @@
+{
+  "utc": "2026-11-14T02:02:18.4398576Z",
+  "source_sha256": "718f6215f3acceceb52f6748fd6ee9555315a0c3b3a4b516408d9a77a14feb9c",
+  "report_sha256": "4f57351040e7153f14a6328d00cc60f1c01ff6fc0d15a41c15847c4ccc8a5877",
+  "context_sha256": "0fa77b454c476b93ad384eea80cd319256b65137a23b313e43ef2ea8e3767273",
+  "full_source_report_context_objections_read": true,
+  "verified": [
+    {
+      "packet": "fabrication349A",
+      "payloads": 12,
+      "manifest": "952443739101dbe0cb8c8aa772d9f859aea437633b1669b7d2fc578f6127870e"
+    },
+    {
+      "packet": "source-audit349A",
+      "payloads": 23,
+      "manifest": "cb9baad8a0ba4d17e4d28e1b0a18a222b555d55ec3742089b5f22abee9a96498"
+    }
+  ],
+  "accepted_scope": "Exact-cap2 stationary-to-weighting transfer refuted by actual matching parity-lift family at fixed rho* and floor1/16. Every two-level potential has a bounded critical weighting moment under floor/cap. Grouped research record, not a new paper.",
+  "limits": "Both sharpened moments tend2. No divergence, gap collapse, larger uniform moment bound resolution, novelty clearance or formal proof. Audit binds source bytes only; no commit/PR existed.",
+  "next": "Preserve exact source in small branch/PR with raw-byte verification, scope-bound body and actual CI. Publication347 remains unchanged."
+}

@@ -1,0 +1,76 @@
+SOURCE349A SHA256(raw on-disk bytes, no normalization)=718f6215f3acceceb52f6748fd6ee9555315a0c3b3a4b516408d9a77a14feb9c
+SOURCE AUDIT349A -- completed analytical source reading, 2026-11-14
+
+VERDICT: ACCEPTABLE WITHIN ITS EXPLICIT BOUNDED ANALYTICAL SCOPE.
+No mathematical defect was found in the displayed new propositions after the adversarial checks below. This is a source-level verdict on the exact frozen byte artifact, not a terminal commit/PR audit, numerical certificate, proof-assistant verification, publication assessment or solution of the larger question. No candidate commit or PR exists in the assignment; commit SHA, PR body capture method, normalized PR body bytes and PR body hash are NOT APPLICABLE, not inferred from a branch or a context HEAD. The source package MANIFEST.json raw-byte SHA256 is 952443739101dbe0cb8c8aa772d9f859aea437633b1669b7d2fc578f6127870e. Both supplied identifiers were checked with native filesystem hashing and match.
+
+1. What this verdict accepts
+
+The two-level exclusion, the one-coordinate/product comparison, the actual four-point failure of constant-one transfer, its exact stationary-matching parity lift, and the sharpened failure of exact cap2 transfer are supported by the given proofs. The sharpened construction fixes one rho* in (1/3,1/2), permits every fixed C>0, has floor 1/16 (and hence every smaller positive floor), and satisfies every original constraint at every dimension after filling finitely many initial dimensions with h=1. Its strict moment inequality is eventual. It does not establish or refute a possibly larger dimension-uniform bound on E r^s; it does not make that moment diverge or show a vanishing Doob gap. Both sharpened moments converge to 2. This is one grouped research record, not a newly justified standalone paper.
+
+2. Read set and evidence boundary
+
+Read fully: source349A.txt sections 1-8; full-fabrication-report.txt; model-context.txt; failed-routes-and-abandonment.txt; received-assignment.txt; MANIFEST.json; RAW-INPUT-MANIFEST.json; retention.json; inputs/source341A.txt, source344A.txt, source345A.txt, source346A.txt and supplement-negative-routes347.txt; primary-gross-abstract-raw.json. The latter contains the previously captured abstract/metadata response, not the Gross paper's proofs. No new literature query or theorem import was needed. The retained inputs were read for mathematical dependencies, prior failure mechanisms and scope; this report does not freshly certify the entirety of 341/344/345/346 or their earlier acceptance/merge receipts.
+
+Governance: D:\LEEME.md, repository CLAUDE.md, and docs/OPERATIONAL-GOVERNANCE-CHARTER.md were read. A truncated combined display of CLAUDE.md was followed by a separate read and its final 100 lines, completing the file. Source349A was reread in a separate untruncated output. SURFACE-CLOSURE-NOTES.md was searched for relevant audit/hash rules; the search output was truncated, and only its final 182 lines were explicitly read. No full-read claim is made for that historical acta. No old Surface numerical conclusion is used here.
+
+All 12 payload hashes listed by the candidate MANIFEST were independently obtained with Get-FileHash and matched the listed values. The manifest and separate retention.json were also hashed. These are native raw-file bytes without newline conversion, Unicode normalization or Git-blob substitution. The raw-input manifest in this audit records exact source paths and representations. Files were read without modifying the candidate or any source/context input. The inherited manifest's context_head is a context identifier only and is not represented as a commit containing source349A.
+
+3. General normalization and two-level adversaries
+
+The constant Walsh term gives a^2 <= E hPh = 1. Since g=Ph>0 and Eg=Eh=a, the floor gives a=Eh >= b E(1/g) >= b/a by Jensen; hence a^2>=b. Under the probability measure pi dmu, E_pi(1/g)=Eh=a and E_pi(1/g^2)=E(h/g)=N, so Cauchy gives a^2<=N. The direction is correct, and N>=b follows. The optional upper bound N<=1 is accurately attributed to 341 and is not needed for the new estimate. The identity r=pi/(Ng^2) is exact.
+
+For A={h=m}, q=mu(A), integration of mg>=b on A gives m E[g 1_A]>=bq. Since E[g 1_A]<=a<=1, m>=bq. This is valid also for a rare low hole; the inequality is not obtained by substituting an unjustified conditional mean. Markov positivity gives g>=m. On the other level, M(1-q)<=a<=1, giving M<=1/(1-q). The global floor and h<=M give g>=b/M>=b(1-q). Both complementary masses are essential, and combining them yields g>=b max(q,1-q)>=b/2 for every q in (0,1). Thus r<=4pi/b^3 and the displayed moment bound follows. If h has one value, normalization makes it 1. A sequence with contrast or masses depending on L cannot escape this estimate; an unrestricted multilevel potential is outside this proof.
+
+4. One-coordinate and product audit
+
+For H=1+t x, rationalization gives H/(PH)=[1-rho t^2+(1-rho)t x]/(1-rho^2 t^2). Its mean is exactly the claimed N and division by it gives B=(1-rho)t/(1-rho t^2). Direct multiplication and energy division give A=(1+rho)t/(1+rho t^2). All denominators are positive for |t|<1 and 0<rho<1, and the resulting density amplitudes lie in (-1,1). The cross-multiplied difference is 2rho(1-t^2)>0; t=0 yields equality of the amplitudes at zero. Since M_p is even and M'_p(c)=p[(1+c)^(p-1)-(1-c)^(p-1)]/2>=0 for c>=0 and p>1, comparison follows, with equality for p=1. Independence of the coordinates factors P, energy, N and both moments, so the product conclusion is valid. Disjoint parity factors obey the same argument with their separate effective noise parameters. No step extends product factorization to arbitrary h.
+
+5. Four-point model, normalization and variable-exponent sign
+
+With c=1/32 and d=13/16, 1+c x-c y+dxy has entries 29/16, 1/4, 1/8, 29/16 in the specified order. Their mean is 1. Orthogonality yields Z=1+rho(2c^2)+rho^2 d^2 with v=1/512 and w=169/256. The scaled h is strictly positive and has energy 1; pi and r have mean 1 by their actual definitions. No arbitrary density has been substituted for an hPh realization.
+
+At rho=0, PH=1, Z=1, u=H and N=1. Differentiation yields pi'=H(q-v), u'=-Hq and N'=-EHq=-v. Therefore r'=u'-HN'=H(v-q). Omitting the derivative of N would change this conclusion; it is correctly included. For independent t, differentiation of powers gives F_rho(0,t)=2t C_t with C_t=EH^t q-vEH^t. At t=1, C_1=EHq-vEH=0, so the t derivative is exactly 2D, with no extra surviving C_1 term.
+
+Only the two unequal small entries contribute to EH log(H)q. Writing ell=log 2, the bracket is (1/4)(-2ell)-(1/8)(-3ell)=-ell/8; multiplication by 1/64 gives -ell/512. J=EH log H>0 by strict Jensen. Thus D=-(ell+J)/512<0. Smooth positivity in a neighborhood of rho=0 and t=1 permits finite differentiation and the exact double-integral identity; F(rho,1)=F(0,t)=0 are identities, not asymptotic guesses. As (s_rho-1)/rho tends to 2, the integral divided by rho^2 tends to (2D)*2=4D=-(ell+J)/128. Therefore the variable-critical-exponent strict sign is established for sufficiently small positive rho. The simultaneous floor and cap follow from strict limiting room, min H=1/8 and EH=1.
+
+The base stationary singleton coefficient also checks: the x terms in H PH sum to c+rho c-rho cd-rho^2 cd=c(1+rho)(1-rho d), divided by Z; it is strictly positive for 0<rho<1. Thus the base alone is not admissible under stationary singleton matching. The source acknowledges this defect and does not claim idle-coordinate tensoring fixes it.
+
+6. Fixed-exponent sign and the parity quotient
+
+For fixed t>1, EH^t q=[(1/4)^t-(1/8)^t]/64. Subtracting vEH^t yields exactly [31(1/4)^t-33(1/8)^t-2(29/16)^t]/2048. Let f(t)=31*4^(-t)-33*8^(-t). Its derivative is log(2)*8^(-t)(99-62*2^t), negative for t>=1 because 62*2^t>=124>99. The competing term 2(29/16)^t increases strictly. At t=1 both are 29/8; hence C_t<0 for every t>1. This proof establishes the needed fixed-original-exponent sign, not merely the earlier varying-exponent statement.
+
+For m=floor(L/2)>=1, the two disjoint nonempty parity blocks have independent uniform signs. Pullback identifies the four-dimensional function algebra on these signs with the span of 1, chi_B1, chi_B2, chi_(B1 union B2). Noise multiplies these by 1, rho^m, rho^m and rho^(2m), respectively. Consequently P_rho on this entire algebra is exactly P_theta for theta=rho^m. Pullback preserves products, quotients of positive functions and uniform expectation. Thus the stated h_L gives exactly the same energy, pi, u, N and r as the four-point definitions at theta. It is not enough to check linear noise alone; these further algebra/measure identities justify the nonlinear realization as well.
+
+Stationary pi_L has no nonempty Fourier support smaller than m. For any labelled set J with |J|<=k_L<m, expand its pattern indicator as 2^(-|J|) product_(j in J)(1+a_j x_j); every nonconstant term has degree at most k_L and zero pi_L expectation. Every pattern therefore has probability 2^(-|J|). This verifies exact labelled marginals, not just permutation-averaged ones. If L is odd, the unused coordinate adds no Fourier support and remains uniform. Because m grows linearly while min(L,floor(C sqrt L)) is eventually floor(C sqrt L), m>k_L eventually for every fixed C>0. Small L, including m=0, is handled by h_L=1; no parity quotient is asserted for empty blocks in those dimensions.
+
+The exponent in all lifted moments is s=(1+rho)/(1-rho), fixed before L varies. Theta tends to 0 and its own critical exponent is never substituted. For 0<rho<=1/3, 1<s<=2, and probability-norm monotonicity yields EH^s <=(EH^2)^(s/2)<2. Uniform continuity on the four values gives the eventual stationary cap and floor together with the strict sign. All initial exceptions can be included in one finite L_0; their constant fillings meet every constraint, though not the eventual strict inequality. No claim of an explicit numerical L_0 is required or supplied.
+
+7. Exact rational checks and threshold cap2 construction
+
+The following arithmetic was reconstructed in reasoning, without a calculator, executable certifier or runtime:
+
+EH^2=[2*(29/16)^2+(1/4)^2+(1/8)^2]/4
+     =[1682/256+16/256+4/256]/4
+     =1702/1024=851/512<1024/512=2.
+
+29^3=24389, and
+EH^3=[2*24389/4096+1/64+1/512]/4
+     =[48778+64+8]/16384
+     =48850/16384=24425/8192>16384/8192=2.
+
+M'(1)=J>0 and M''(t)=EH^t(log H)^2>0 imply M'(t)>0 for every t>=1. The intermediate value theorem and strict increase therefore give a unique root t* in (2,3) of M(t)=2 (and uniqueness among t>=1). No assertion about all real exponents is needed. The increasing map (t-1)/(t+1) sends (2,3) to (1/3,1/2); algebra gives (1+rho*)/(1-rho*)=t*. Thus rho* is fixed independently of dimension and of C.
+
+The two separate derivatives are essential. At fixed s=t*, d/dtheta Epi_theta^s=s C_s<0 and d/dtheta Er_theta^s=-s C_s>0; at theta=0 each moment is exactly 2. Differentiability then gives Epi_theta^s<2<Er_theta^s for every sufficiently small theta>0, not just a positive difference between two moments that might both exceed 2. Applying the same quotient at theta=(rho*)^m, with a sufficiently large common L_0 and constant initial fillings, proves the all-dimension constraints and eventual strict threshold violation. Positivity and the limiting minimum 1/8 give the stationary floor 1/16. Both moments tend to 2 and their difference has first-order size -2s C_s theta, so it vanishes. This defeats exact cap2 transfer but provides no divergence or failure of every larger constant.
+
+8. Remaining estimates and contextual claims
+
+The sufficient denominator estimate follows directly from r=pi/(Ng^2) and N>=b. In the displayed Holder attempt, exponents s/t and s/(s-t) give inverse power q=2ts/(s-t), so the formula is correct for 0<t<s. At t=s this argument would need an essential-supremum bound on 1/g; finite inverse moments by themselves do not supply its endpoint conclusion. No such moments are assumed as proved. The statements about 341's TV/Hellinger control, 344's failure of uniform g convergence, and the unproved nonlinear inequality agree with the retained sources and negative-route record. In particular failure of convergence g->1 does not prove failure of all positive lower bounds on g.
+
+The H family has three distinct levels, not two. Its four entries cannot factor as a positive coordinate product because H(++)H(--)=841/256 whereas H(+-)H(-+)=1/32=8/256. It therefore does not contradict either special exclusion. The parity lift permits exponentially small density discrepancies, compatible with 341, while making the threshold inequality strict. Neither source language nor report promotes that sign to a nonvanishing gap or moment-divergence claim.
+
+9. Terminal scope and disposition
+
+No blocking mathematical correction is requested for the frozen source. The separate objections file records attempted falsifiers and their dispositions. Do not restate this verdict as terminal certification of a future commit, PR body, rendered PDF or live publication: those artifacts were not assigned or inspected. Preserve the exact source bytes and scope if later integrated, and associate any later commit/PR audit with its actual identifiers. No numeric grade, novelty finding, formal proof, independent-provider or human-review claim is supplied. The original stationary Doob gap and the larger uniform critical-moment bound remain OPEN.
+
+The audit used only file reading/search, metadata, editing of its own report artifacts, copies and native hashes on Windows. No Python, Lean, build, mathematical program, Colab runtime or numerical root search was run. No candidate/source edit, git mutation, commit, PR, other-chat read, delegation or contact with the fabricator occurred. No post-assignment inbound message was received during this audit. No disposable clone was created. The report/evidence is retained in D; its C preparation directory is a duplicate, not the sole copy. No other staging area was cleaned.
