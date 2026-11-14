@@ -1,0 +1,64 @@
+{
+  "scope": "Three literal replacements only; no mathematical execution or new scientific review",
+  "corrections_sha256": "f619f595817b650e96b4048cb1ab7a0420382b551b6e449d4671ae428ea34205",
+  "versions": [
+    {
+      "representation": "tex",
+      "original_bytes": 41262,
+      "candidate_bytes": 41461,
+      "original_sha256": "cd925ba351e84b9c6c461b08d0237cef6c0e8b93639f4026ee1f0b37642220c4",
+      "candidate_sha256": "bf574fcf266e54bc4de6c2bc661c9a79835c21247c132528171aefadc49f0647",
+      "reconstructed_sha256": "bf574fcf266e54bc4de6c2bc661c9a79835c21247c132528171aefadc49f0647",
+      "full_raw_byte_equal": true,
+      "steps": [
+        {
+          "id": "R1",
+          "old": "It is false for every potential in the code algebra, since constants also belong to disjoint-block algebras.",
+          "new": "It does not hold for every potential in the code algebra, since constants also belong to disjoint-block algebras.",
+          "old_occurrences_before": 1
+        },
+        {
+          "id": "R2a",
+          "old": "The three-level choice of $H$ matters. Two useful exclusions show why simpler tests do not establish the same obstruction.",
+          "new": "The following estimates distinguish two simpler classes: two-level potentials cannot produce divergent critical weighting moments under a fixed stationary floor and cap, while product potentials obey the stronger constant-one moment comparison.",
+          "old_occurrences_before": 1
+        },
+        {
+          "id": "R2b",
+          "old": "Two-level and product tests are excluded by Proposition \\ref{simplefamilies}.",
+          "new": "Proposition \\ref{simplefamilies} excludes divergent critical weighting moments for two-level potentials and exact-cap failure for product potentials.",
+          "old_occurrences_before": 1
+        }
+      ]
+    },
+    {
+      "representation": "txt",
+      "original_bytes": 40310,
+      "candidate_bytes": 40509,
+      "original_sha256": "4db61dcd5e54be7e6af9e8dc79bac1d5150da8ea547cad9a4e355b4dea5346f7",
+      "candidate_sha256": "daf3c030d0aec970b9084c5fb4fe304d44586b8fbe5bd87730030ed731000559",
+      "reconstructed_sha256": "daf3c030d0aec970b9084c5fb4fe304d44586b8fbe5bd87730030ed731000559",
+      "full_raw_byte_equal": true,
+      "steps": [
+        {
+          "id": "R1",
+          "old": "It is false for every potential in the code algebra, since constants also belong to disjoint-block algebras.",
+          "new": "It does not hold for every potential in the code algebra, since constants also belong to disjoint-block algebras.",
+          "old_occurrences_before": 1
+        },
+        {
+          "id": "R2a",
+          "old": "The three-level choice of $H$ matters. Two useful exclusions show why simpler tests do not establish the same obstruction.",
+          "new": "The following estimates distinguish two simpler classes: two-level potentials cannot produce divergent critical weighting moments under a fixed stationary floor and cap, while product potentials obey the stronger constant-one moment comparison.",
+          "old_occurrences_before": 1
+        },
+        {
+          "id": "R2b",
+          "old": "Two-level and product tests are excluded by Proposition \\ref{simplefamilies}.",
+          "new": "Proposition \\ref{simplefamilies} excludes divergent critical weighting moments for two-level potentials and exact-cap failure for product potentials.",
+          "old_occurrences_before": 1
+        }
+      ]
+    }
+  ]
+}

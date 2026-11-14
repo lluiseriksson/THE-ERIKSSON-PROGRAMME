@@ -1,0 +1,100 @@
+SOURCE353A -- SEPARATE-ROLE ANALYTICAL AUDIT, 2026-11-14
+VERDICT: CORE ESTIMATES ACCEPTABLE; SECTION7 CLASS-SEPARATION WORDING REQUIRES QUALIFICATION.
+No mathematical defect was found in inequalities(1),(2), exact matching of both densities, or the fixed-rho eta->0 limit. The displayed overlapping example has no disjoint-support basis INSIDE its two-dimensional code, but every potential in that example is already covered by351 using three disjoint q-blocks. Thus it cannot certify a potential class outside351. No unconditional acceptance of that stronger reading of section7 is supplied. This is a scope correction, not a counterexample to the main code theorem.
+
+1. Exact subject and reading scope
+
+Frozen source D:/Datos/the-eriksson-programme/autonomia/evidencia-353/fabrication353A/source353A.txt:9692 raw bytes, SHA256151eb18c69fec64fbbf7d9fe30f4f0225c113033e8be3cd20b04797311127803. Assigned source identity matches. The adjacent MANIFEST.json has388 raw bytes and observed SHA256a26574e474e24347e2fe9940fb6bded5265c31dcc6b39384cafb404acb2244f8; the assignment named the adjacent manifest but did not supply its digest. Its single payload entry matches source size/hash. All these are raw file-byte hashes without normalization.
+
+The actual packet contains exactly two files: source353A.txt and MANIFEST.json. Both were read fully. There is no separate fabrication-report, role-context file or raw literature-search response in this packet. Source section8 and manifest author/status fields provide the embedded author context and literature-scope assertions; no missing document is claimed as read. This audit creates its own full report/context/objections and retains both original files intact.
+
+Source351A, whose full proof was previously read and audited by this same role, was revisited at its exact statement and scope to test the claimed extension. Its original raw hash251e94234b2a28b9b9340a4a4b680b22024c1ea719d594e9f81bfae3e9d81833 is retained with the current evidence. Its arbitrary positive macro-function hypothesis is important to objectionS1 below. No earlier verdict substitutes for the new353 proof check.
+
+Read-only git identity confirmed current contextHEADa27c28cbfd506b7ad06aeebb8b141df89d6a0cba. This is not a commit containing353; no candidate commit, PR, body capture or canonical body was assigned. Those fields are not applicable. Governing D:/LEEME.md, repository CLAUDE.md and operational charter were fully read earlier in this continuing role, and current raw hashes remain5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f,618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe,fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f. Global user instructions remain governing.
+
+2. Domain and algebra
+
+C is nonzero, so n>=1,M>=2. Minimum distanceD>=2 impliesL>=2 and excludes every coordinate vector e_i from C. All finite H values are strictly positive; no uniform lower bound or amplitude restriction is assumed. The denominators g,Z,N are finite and positive. Scaling h by a positive constant preserves K,pi,N and r_h after Z is scaled quadratically. The proof never needs energy-one normalization.
+
+A basis of C has rankn as binary linear forms. Its parity map is surjective and every fiber has size2^(L-n). Consequently functions with Walsh support in C are exactly functions of its n macro bits, and macro uniform expectation matches full uniform expectation. This algebra is closed under products and, for strictly positive functions, reciprocals. Positivity of H follows at every macro point from surjectivity.
+
+The nontrivial codewords all have degree at leastD. Once pi and r_h are shown to be normalized members of the algebra, every nonempty Walsh coefficient of degree<D is zero. Fourier inversion then gives every labelled joint marginal throughD-1 exactly uniform. This is full marginal matching, not only balancing single coordinates. The code may contain unused coordinates or be larger than the actual Fourier support of h; both cause no exception.
+
+3. Quotient kernel and its contraction
+
+For macro character chi_I, its pullback is chi_c(I), and P multiplies it by rho^|c(I)|. The macro convolution series b0 therefore has the displayed coefficients. The factor2^-n belongs to macro averaging; its absence inside b0 is correct. Since this restriction is the actual action of P on parity fibers, it is stochastic and nonnegative. More explicitly, for x in a fixed fiber the probability of each output fiber depends only on z(x), because product noise translates on the binary cube and the quotient map is linear. The constant coefficient gives each row uniform integral1. The explicit series also gives |b0-1|<=delta. Thus delta<1 supplies strict positivity and the two-sided bound without any product formula or disjoint-generator assumption.
+
+Let a=E H. Positivity of H gives a(1-delta)<=G<=a(1+delta). This remains valid for arbitrarily varying amplitudes. Pi=HG/Z is normalized and its pullback equals pi. K0(z,w)=2^-n b0(z,w)H(w)/G(z) is stochastic. With nu(w)=2^-n H(w)/a, the lower bound is alpha nu(w), wherealpha=(1-delta)/(1+delta). Since C is nonzero andrho>0, delta>0, so0<alpha<1. Subtracting this common row leaves a stochastic remainder after division by1-alpha.
+
+The rank-one common-row term contributes a constant to K0F. Hence oscillation contracts by1-alpha. For each real nonconstant eigenfunction, osc(lambda F)=|lambda|osc(F)>0 unless lambda=0, which already satisfies the bound. This gives modulus<=1-alpha without requiring nu to be stationary or a nu-mean-zero condition. Reversibility provides a real eigenbasis; strict positivity leaves only constants at eigenvalue1.
+
+4. Full stationary-orthogonal sector decomposition
+
+There are2^(L-n) cosets of C, each withM Walsh labels; their dimensions sum to2^L. V_t=chi_t F(z) has exactly supportt+C, so these sectors exhaust the full space. Cross-sector orthogonality is valid under pi, not just under uniform measure: Pi(z)F(z)J(z) remains in the C algebra, while t+v outside C shifts its support away from the zero label. Its uniform expectation is zero. Within a sector chi_t^2=1, so the stationary norm is exactly macro L2(Pi).
+
+Multiplication by h and1/g preserves each sector because both are macro functions. P is diagonal on full Walsh labels. Therefore K=M_(1/g)PM_h leaves every V_t invariant. For F=chi_I the full label is t+c(I), giving precisely the coefficientrho^|t+c(I)|. Expanding the convolution kernel in(3) proves the displayed K_t formula on a full basis, with the correct macro probability factor in E_w.
+
+The kernel b_t can have signed entries and is not treated as stochastic. Its symmetry also gives direct restricted detailed balance: Pi(z)K_t(z,w) is proportional to H(z)H(w)b_t(z,w), symmetric in z,w. Changing a representative by a codeword merely multiplies the macro coordinate expression by a character, preserving the same invariant space. No within-fiber, unused-coordinate or nonquotient eigenvector is dropped.
+
+5. Minimum-distance estimate for each coset
+
+Choose t with minimal weightd in a nonzero coset;d>=1. For every other v in the same coset, v+t is a nonzero codeword, so D<=|v+t|<=|v|+d. Ifd<=D/2 this gives|v|>=D-d>=D/2. There areM-1 such other words. Asrho^x decreases forrealx,
+ sum_(v in t+C) rho^|v| <=rho^d+(M-1)rho^(D/2)<=rho+eta.
+This treats possible ties atd=D/2 correctly; no uniqueness of a minimum-weight representative is assumed. For oddD, the real half-distance bound is merely coarse and remains valid.
+
+Ifd>D/2, minimality bounds every coset word's weight below byd, giving sum<=M rho^(D/2)=eta. Thusrho+eta is valid for every nontrivial coset, independent of its leader weight. Triangle inequality in the signed Walsh series yields|b_t|<=rho+eta. Sinceb0>=1-delta, this implies|b_t|<=B b0, B=(rho+eta)/(1-delta). The direction of the denominator bound is correct.
+
+Positive H/G now gives|K_tF|<=B K0|F|, and the stochastic K0 gives ||K_t||infinity<=B. Hence each eigenvalue in such a sector has modulus<=B. No factor depending on maxH/minH or the number of cosets is introduced: a direct-sum spectral maximum is taken, not a sum of sector norms. This domination works even ifB>=1; it does not use the invalid product-of-beta simplification that required a separate branch in351.
+
+6. Global spectral positivity and the upper bound
+
+The actual conductance is mu(x)h(x)P(x,y)h(y)/Z, symmetric under uniform mu. Thus K is self-adjoint on stationary L2. With D_h=M_sqrt(hg), direct conjugation gives D_h K D_h^-1=M_sqrt(h/g) P M_sqrt(h/g). Product Boolean noise has strictly positive eigenvaluesrho^|S| for0<rho<1, so this symmetric congruence is positive definite. All finite eigenvalues are positive. Markov stochasticity and strict positivity give simple top eigenvalue1 and all eigenvalues at most1.
+
+The quotient's only constant eigenvector is the full constant eigenvector. Every nontrivial sector is stationary-orthogonal to it. Combining the complete decomposition with the quotient and nontrivial bounds gives exactly lambda2<=min(1,max(1-alpha,B)). WhenB>=1 this may be trivial, but it does not assert zero actual gap. No separate floor, cap, irreducibility assumption or auxiliary weighting theorem has entered.
+
+7. Lower Rayleigh estimate and rho factors
+
+For any coordinatei, e_i outside C ensures f=chi_e(i) has stationary mean0. It has stationary norm1 because f^2=1. Wheni is absent from a codewordc, |e_i+c|=|c|+1, and the difference between its sector coefficient andrho times the quotient coefficient iszero. Wheni is present, |e_i+c|=|c|-1, and the difference is(1-rho^2)rho^(|c|-1). The zerocodeword is in the first case. Summing absolute values gives at most(1-rho^2)delta/rho; the division byrho is essential and is present.
+
+Usingb0>=1-delta gives the stated epsilon b0 bound. Applying the kernel difference to H/G yields|K_e(i)1-rho|<=epsilon becauseK01=1. Returning to the full function, Kf=chi_e(i)K_e(i)1, so its actual stationary Rayleigh quotient isE_Pi K_e(i)1>=rho-epsilon. The variational maximum over constants-perpendicular islambda2. Together with spectral positivity this provesmax(0,rho-epsilon)<=lambda2.
+
+No approximate pointwise identity is promoted to an exact eigenvector assertion. An unused coordinate would make the difference exactlyzero and supply an exactrho mode, but no unused coordinate is needed. Fixedrho>0 is required in the limiting use ofepsilon; no uniform assertion asrho approacheszero orone is proved.
+
+8. Density comparison and moment hypotheses
+
+The reciprocal algebra closure showsr_h as well aspi has support in C, and both have mean1. Under macro stationary measure, E_Pi G^-2=E(H/G)/Z=N/Z, with Z retained. The bounds onG give
+ 1/[a^2(1+delta)^2] <= N/Z <=1/[a^2(1-delta)^2].
+Multiplying these scalar inequalities by the pointwise bounds onG^2 gives alpha^2<=(N/Z)G^2<=alpha^-2. Its reciprocal r_h/pi obeys the same pair of bounds since those endpoints are reciprocal. There is no assumed independence in this interval multiplication and no energy normalization error.
+
+Raising to any fixeds>0 preserves positive order and integrating gives the two-sided moment comparison, including0<s<1 without Jensen. It bounds a ratio of moments, not their absolute sizes. The explicitly added stationary cap is needed for E r_h^s<=2alpha^-2s. The latter does not imply exact cap2 in finite dimensions. Arbitrary uncappedH may yield large moments in both densities; that possibility does not contradict the stated theorem. Exact matching is supplied by the code algebra, not by moment closeness.
+
+9. Uniform asymptotics and nonvacuity
+
+Since every nonzero codeword has weight>=D, delta<=(M-1)rho^D<=eta rho^(D/2)<=eta. Thuseta->0 forcesdelta->0 and eventuallydelta<1,alpha->1,B->rho,epsilon->0 for fixedrho. The two spectral bounds squeeze the FULL lambda2 torho, uniformly overH, since none of their errors depends onH. The fixed-s moment factor tends1. The logarithmic sufficient condition is precisely the exponent ineta=exp(n log2-(D/2)|logrho|) tending to minus infinity. It is a condition on actual code parameters, not an assumed spectral gap or an invoked code-existence result.
+
+The elementary n=1 repetition code already makes the hypothesis nonempty. The displayed three-block example also satisfies its numerical parameter formulas analytically: the three nonzero words areA+B,B+C,A+C, each of weight2q; dimension2 givesM=4,D=2q,delta=3rho^(2q),eta=4rho^q. For fixedrho andq->infinity,eta->0 anddelta<1 eventually. Matching through2q-1 grows linearly inL=3q and exceeds every fixed multiple ofsqrtL eventually. No finite-q promise ofdelta<1 is made for allrho.
+
+10. Scope objection S1: no disjoint basis is not separation from351
+
+The statement that this two-dimensional code has no basis of disjoint nonzero supports is TRUE. Each pair of its three nonzero words intersects on exactly one q-block. This verifies the assigned non-disjoint-basis check.
+
+However, the further sentence that this supplies a class 'not reducible to the disjoint-block span used in351' must be qualified. Let a=chi_A,b=chi_B,c=chi_C. Then for EVERY positiveH in the proposed example,
+ h(x)=H(chi_(A+B)(x),chi_(B+C)(x))=H(ab,bc)=H_tilde(a,b,c),
+ where H_tilde(a,b,c)=H(ab,bc)>0.
+The three q-blocksA,B,C are disjoint and equal-sized. Forq>=2 this is exactly351 with n_351=3,m_351=q and no residual coordinates; moreover3rho^q->0. Thus351 already covers every potential and its gap/moment-limit conclusion in this example. Coupling or arbitrary amplitudes ofH do not escape351 because that theorem permits arbitrary positive macro functions, including ones that ignore some independent information.
+
+Equivalently, the two-dimensional code is not itself a disjoint-generator code, but it is contained in span{A,B,C}, a three-dimensional disjoint-generator code. Equality with such a span and containment in one are different properties. Absence of a disjoint basis INSIDE C does not prove absence of an allowed larger disjoint representation ofh.
+
+This does not refute inequalities(1),(2), exact matching, the general-code proof or nonvacuity. It also does not prove that all eligible general codes reduce to351. The example genuinely illustrates an overlapping code algebra, with minimum-distance matching and potentially different constants, but it is NOT a witness of a potential family outside351's applicability. If the quoted sentence intended only nonexistence of a disjoint basis for C itself, its nearby explanation is correct; it must state that narrower meaning and acknowledge the larger disjoint representation to avoid the stronger false inference. Full acceptance of a claimed strict new potential class based on this witness is withheld. No source edit or replacement witness was fabricated during the freeze.
+
+11. Bounded primary comparison and remaining scope
+
+Freshly opened the cited author-hosted metadata page https://web.stanford.edu/~boyd/papers/symmetry.html and relevant orbit/projection passages of https://stanford.edu/~boyd/papers/pdf/symmetry.pdf. The metadata confirms Boyd--Diaconis--Parrilo--Xiao, Internet Mathematics2(1):31-71(2005). The observed Proposition3.1, projection warning after Proposition3.2 and Theorem3.1 distinguish quotient eigenvectors from recovery of the full spectrum. This supports the source's contextual attribution of symmetry methods; it is not a theorem proving the present distance constants. No full-paper reading, priority search or novelty clearance is claimed. The full returned excerpt response is retained as tool text, not original PDF bytes. Source353's claimed earlier bounded search is author-reported; its raw response is absent from the two-file packet.
+
+General exact marginal matching does not force Walsh support in a fixed code witheta->0. The theorem does not cover every code or every rate, nor block-majority potentials without a separate code representation satisfying the hypotheses. It proves no general stationary-gap closure, formal certificate, physical/continuum consequence or historical originality. Its distance estimate may be much coarser than351's product estimate; neither full parameter-range containment was proved here.
+
+12. Terminal disposition and operations
+
+Analytical finding: core finite inequalities, both-density matching and the stated asymptotic/capped-moment conclusions are sound under their explicit assumptions. Scope finding: S1 must accompany any acceptance; the displayed overlapping example cannot be advertised as outside351. Qualify the section7 sentence before treating the whole source as establishing that stronger separation. The frozen source remains unchanged and this report does not certify an unseen revision.
+
+All mathematical checks were analytical reasoning. Local tools performed reading/search, context Git identity, native hashes/copies and own evidence authoring. No mathematics executable, Python/CAS, numerical test, Lean/Lake, runtime, compiler, PDF renderer, Git/source/PR/state mutation or merge ran. No other chat, fabricator or subagent was contacted and no post-assignment inbound message was received. No disposable clone/worktree was created and no cleanup attempted. The complete report, real context, assignment, objections, original two-file packet,351 context source, governance copies, raw primary response and hash manifests are retained under evidencia-353/source-audit353A, with C preparation only a duplicate after verified retention.

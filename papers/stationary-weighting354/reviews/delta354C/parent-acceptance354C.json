@@ -1,0 +1,17 @@
+{
+  "tex_sha256": "bf574fcf266e54bc4de6c2bc661c9a79835c21247c132528171aefadc49f0647",
+  "next": "Date-only production edition and exact source commit, then reproducible PDF and first exact review",
+  "C_audit_manifest_payloads_checked": 41,
+  "source_integration_accepted": true,
+  "subject": "354C corrected manuscript source",
+  "PDF_assessment": false,
+  "observed_utc": "2026-11-14T04:06:26.6929905Z",
+  "full_B_report_read": true,
+  "formal_verification": false,
+  "plain_sha256": "daf3c030d0aec970b9084c5fb4fe304d44586b8fbe5bd87730030ed731000559",
+  "critical_weighting_moment": "OPEN",
+  "full_C_context_read": true,
+  "general_gap": "OPEN",
+  "corrected_scope": "Two-level excludes divergence, products exclude exact-cap failure; simplex qualification denies universality only",
+  "full_C_delta_report_read": true
+}

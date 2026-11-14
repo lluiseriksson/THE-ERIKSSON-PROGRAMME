@@ -1,0 +1,30 @@
+SOURCE355A — adverse checks and dispositions
+O1. Empty rate domain: both upper bounds on R are positive at fixed permitted rho,d; a positive R exists. Resolved.
+O2. Claimed positive rate defeated by floor: floor(RL)/L tends to R>0, n>=1 eventually. Resolved.
+O3. Images for different a are correlated: union bound does not need their independence; coordinate independence for each fixed a is valid. Resolved.
+O4. Entropy factor inequality reversed: d/(1-d)<1 makes the binomial point mass decrease in its index; the stated lower bound before summation is correct. Resolved.
+O5. Nonintegral dL or integer boundary loses one: bad weight<dL gives good weight>=ceil(dL), for either case. Resolved.
+O6. Rank not guaranteed: every nonzero kernel vector has weight0<dL, already forbidden. Resolved.
+O7. Repeated or zero columns require separate compatible code: summing both event bounds establishes a single matrix satisfying all requirements. Resolved.
+O8. Column collision exponent defeated by dimension floor: 2^-floor(RL)<=2*2^-RL; polynomial factor still tends to zero. Resolved.
+O9. Only subsequence existence: the total bad probability tends to zero over all integer L, so every sufficiently large L works. No efficient construction/nested family is claimed.
+O10. Eta exponent or logarithm base wrong: n<=RL and D>=dL give a_*=(d/2)ln(1/rho)-R ln2. Resolved.
+O11. Delta<1 and D>=2 omitted from application: both hold eventually; n>=1 also holds. Resolved.
+O12. Quotient branch dominates near rho: E<=rho/2 gives 1-alpha<=rho. Resolved.
+O13. Gap-error constant loses rho or a sign: exact two one-sided eigenvalue errors give max(1+rho,(1-rho^2)/rho)E/(1-E). Resolved.
+O14. Amplitude-dependent hidden factor: source353B bounds are uniform for all finite positive macro values; specialization introduces no amplitude restriction. Resolved.
+O15. Full chain replaced by quotient: complete353B sector result is explicitly imported and applies. Resolved.
+O16. Matching only singleton or unnormalized: pi and r are normalized C-algebra densities; Fourier inversion proves every labelled marginal through D-1. Resolved.
+O17. Witness has smaller Fourier support: constant coefficient1 and every nonzero-code coefficient tau/(M-1)>0 ensure exactC support. Resolved.
+O18. Larger disjoint algebra escapes separation: any representation forces C subsetB; distinct columns separate every coordinate pair, so no block of size>=2 is possible. Resolved.
+O19. Residual coordinates or relabelling rescue representation: nonzero columns give activity everywhere; both activity/separation persist under permutations. Singleton blocks are outside351 domain. Resolved.
+O20. Separation wrongly asserted for every H: source chooses the full-support witness explicitly; constantH would not separate. Resolved.
+O21. Fixed b,s cannot be met uniformly across L: q=min(1/b,2^(1/s))>1 and a small positive tau independent of L suffices. Endpoints excluded as stated. Resolved.
+O22. Normalizing h breaks support or K: positive scalar normalization preserves both and gives exact energy1. Resolved.
+O23. Pointwise pi floor obtained only before normalization: product and Z are separately bounded, yielding 1/A<=pi<=A after normalization. Resolved.
+O24. Moment cap2 is mistakenly transferred to arbitrary r: no such claim is made. The chosen normalized stationary pi has the cap; general question remains open.
+O25. Classical GV ingredient presented as new: source explicitly attributes it; official primary comparison confirms scope. No novelty clearance.
+O26. Supplied primary return claimed to be the whole PDF: its retained bytes end at line262, before Theorem8 proof. Fresh opening supplied the relevant remaining proof. Nonblocking provenance qualification, recorded in full report.
+O27. Earlier353A failure silently erased: full353B packet with nested original adverse history retained unchanged. Resolved.
+O28. Uniformity as rho tends to an endpoint, all finite lengths, efficient construction, unconditional stationary theorem or manuscript/PDF acceptance: none is claimed by the source or this audit.
+No blocking objection remains to the frozen source355A within its explicit analytical scope. This ledger contains all objections pursued; there was no source repair or author coordination.

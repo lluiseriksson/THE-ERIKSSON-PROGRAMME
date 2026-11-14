@@ -1,0 +1,8 @@
+Primary source reading, 2026-11-14 local; serialized tool outputs retained separately.
+1. https://homepages.cwi.nl/~rdewolf/publ/qc/matrixbeckner.pdf : Ben-Aroya, Regev, de Wolf. Eq(1) at parsed page1 lines24-49 states normalized scalar Boolean HC, noise parameter t <= sqrt((u-1)/(v-1)), 1<=u<=v. Walsh multipliers t^|S| and normalized Fourier/Parseval conventions checked at lines52-88. This directly supports the L2->L(p') substitutions in341. No matrix-valued strengthening is used. The cited authors themselves attribute classical HC historically; original historical papers were not separately reread.
+2. https://arxiv.org/abs/1405.6650 : Georgiou/Pavon abstract confirms multiplicative transformations and contraction interpretation. No theorem imported; all finite identities in341 audited directly.
+3. https://cs.uwaterloo.ca/~lapchi/papers/spectral-scaling.pdf : 2021 Kwok/Lau/Ramachandran abstract and opening introduction. Spectral assumptions, matrix/operator scaling and algorithmic convergence are its stated scope. No full theorem comparison.
+4. https://proceedings.mlr.press/v337/belomestny26a.html : 2026 Belomestny et al. abstract. Fixed-point residual estimation and local spectral stability. No result imported.
+5. https://arxiv.org/abs/2611.08963 : Kun He, submitted6Nov2026, abstract. Global Sinkhorn convergence with endpoint gap and distortion; input spectral certificates. No result imported.
+These supplementary reads support the modest contextual descriptions in section7 only. They neither prove nor disprove originality of341. No priority claim accepted, no publication recommendation. All actual proof steps other than classical HC were rederived from finite sums and matrix identities. No numerical evidence.
+

@@ -1,0 +1,50 @@
+Prospective reproducible PDF production354 — instructions only, NOT EXECUTED
+
+This specification follows the actual348D two-fresh-clone production pattern. Its historical builder/gates/report are retained outside the proposed paper tree in engineering-reference348D/ with exact raw hashes. They remain references, not runnable354 scripts. Their source, validator, 44-input universe, 27-command count, test outcomes, page count and PDF identities must not be inherited.
+
+0. Actual prerequisites before adapting or running
+- Obtain the completed C delta-audit and parent disposition, identifying both corrected raw manuscript hashes.
+- Obtain separate review of the exact D date-only change and the complete compact source integration package.
+- Create the eventual small source PR through the separately authorized workflow; pin the real full source commit SHA, branch, complete file inventory, raw Git-blob comparisons and required check results. None exists in this preparation.
+- Prepare a354-specific builder/validator/owned-runtime wrapper with the new source universe, active TeX hash, bibliography and heading markers, and receive its own engineering audit. Do not run old348 validators or tests against these different files. A new normal and optimized(-O) validation suite needs its own genuine results; old5/58 counts are not354 evidence.
+- Bind actual source/engineering/CI/transport records in the new gate packet. Preserve the earlier348 failures as historical context without marking them accepted or substituting an old accepted receipt for354.
+- No Run all through unresolved gates. No fabricated receipt, model assessment, native exit, upload or download success.
+
+1. Owned Linux environment and source capture
+After actual gates, allocate a new owned Colab CPU/high-RAM session, record its observed identity/type/opening, and ensure no other chat uses it. Use isolated fresh roots, for example /content/tep354-build-a and /content/tep354-validation-a, with exclusive creation and no overwrite of earlier attempts. Do not allocate or compile on Windows.
+Record actual versions of Python, Node, git, pdflatex, Poppler and Pillow. The348 pattern installs texlive-latex-base, texlive-latex-recommended, lmodern, poppler-utils and python3-pil after recording real apt command outputs/exits; a354 engineering review must confirm this exact manuscript's package availability before launch.
+Materialize the reviewed runner bytes and real gate packet by bounded explicit byte transport if needed. Verify length and SHA256 before exclusive write, fsync and readback. A rendered base64 return is byte transport, not evidence of a browser download event. No protected credential is copied into the packet.
+
+2. Reproducible native compilation contract
+Create two independent fresh sparse clones of lluiseriksson/THE-ERIKSSON-PROGRAMME at the same actual frozen full SOURCE_SHA and branch. The sparse path is papers/stationary-weighting354. Require each observed HEAD to equal SOURCE_SHA and detach at that commit; a changed branch must fail rather than choose a fallback commit. Capture every selected raw file and compare it with both the frozen package manifest and its exact Git blob. Inventory equality must include the complete new paper tree; do not hardcode348's file count.
+
+Read the commit epoch using the real output of:
+  git show -s --format=%ct SOURCE_SHA
+Set SOURCE_DATE_EPOCH to that integer and FORCE_SOURCE_DATE=1, TZ=UTC, LC_ALL=C.UTF-8. Capture actual tool versions. Both clones must use the same source and environment.
+
+Use the current official PDF artifact-start marker exactly once immediately before the354 builder after successful gates. Future invocation form:
+  node OFFICIAL_REVIEWED_MARKER --operation-kind create --expected-output-count 1 --output-format pdf
+This records the single canonical PDF deliverable reproduced in two clones. The marker's actual reviewed path/hash and zero exit must be captured. No marker has been run or copied into this package. A validation-only stage authors no PDF and needs no authoring marker.
+
+Within EACH clone, run two native pdflatex passes with real logs, outputs and exits. The deterministic TeX argument follows348D, changing only the active input and job name:
+  pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error -file-line-error -jobname=production354 '\pdfinfoomitdate=1\pdftrailerid{}\ifdefined\pdfsuppressptexinfo\pdfsuppressptexinfo=15\fi\input{manuscript354.tex}'
+
+The prospective wrapper must record every exact argv, cwd, environment controls, start/end time, timeout/interruption state, stdout, stderr and native integer exit. Closed exit files require exclusive temporary write, flush, atomic replacement and readback; no synthetic success codes. On each TeX attempt, retain the original source and every native output present before/after the attempt. A preexisting PDF is not evidence that a failed pass succeeded. Preserve errors and stop; do not silently edit source or retry over evidence.
+
+After both passes, require no unresolved final references/citations and retain all overfull-box messages for actual visual review. Confirm source files remain byte-identical to the pinned commit. The two fresh-clone PDF byte lengths and SHA256 hashes must match exactly. Preserve both PDFs even on mismatch; mismatch is a production failure, not a choice of the better output.
+
+3. Extraction, all-page rendering and source binding
+Copy the matching canonical production354.pdf to manuscript354.pdf in the evidence output. Record the actual PDF hash, length, producing source SHA, active TeX raw hash, full input inventory, reproducibility controls and native command records.
+Run pdfinfo and record its real page count. Run pdftotext -layout for the exact PDF. Require the title, all section headings and Model assessments and review context text to be present and unresolved-reference markers absent. Any extraction threshold must be designed and reviewed for354, not inherited from348's text length.
+Render the actual PDF with pdftoppm -r110 -png. Require exactly pages1..N with no missing/extra indices, where N comes from this PDF's pdfinfo output. Create labelled contact sheets of those actual pages; keep every full-resolution page PNG. Do not assume ten pages or reuse348 images. Parent must visually examine every page of the exact new PDF; source-text checks cannot certify layout.
+
+4. Safe return and independent runtime validation
+Return complete evidence, including on failure where possible, with a raw manifest binding all source captures, logs, exits, native TeX output, both PDFs, canonical PDF, text and renders. Reject absolute/traversal/duplicate ZIP members, symlinks and inconsistent counts/hashes. Preserve the original raw transport and archive; verify declared length/hash before exclusive local materialization and readback.
+Close only this owned production session and record the actual action and Manage sessions absence before starting the separate owned validation runtime. Do not fabricate allocation or release CLI statuses. Record observed consumption if available, otherwise unknown.
+In the separate validation session, run the354-specific reviewed validator normally and with -O, including its own actual guard preflight and the actual returned production archive. Compare both real outcomes and source/PDF/member bindings. Retain failures, exact commands and native exits. Close the owned validation session with separate evidence. Prior348 validation cannot substitute.
+
+5. First exact-PDF review and release boundary
+After verified return and all-page visual review, freeze the exact new PDF and first model-assessment inputs with genuine identity/context, complete objections and the current rubric. The source audits and any348 grades are not exact354 PDF assessments. No assessment is repeated merely to improve a score. This production prepares a working paper, not an acceptance or human peer-review decision.
+Actual publication records, artifact grants, licence permission, receipts, public-byte checks and any mark-published action belong to the existing authorized native workflow, after reconciliation of the real case. They are not prepared as successful outputs here.
+
+All commands above are documentary future instructions. No clone, install, marker, compiler, validator, test, runtime or publication action was executed for354D.

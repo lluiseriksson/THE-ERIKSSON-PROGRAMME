@@ -1,0 +1,24 @@
+NEGATIVE WORK350 -- preserve without a favorable-verdict requirement
+1. Separate moments cannot directly bound E pi^s g^(-2s) from Epi^s and finite
+   inverse moments. The target Holder inverse exponent is 2ts/(s-t), tending
+   to infinity at s. This is a limitation of that proof, not an admissible
+   density counterexample.
+2. gPg>=b is derived and useful; it does not itself assert a constant lower
+   bound on g. Do not confuse the failure of uniform g->1 in344 with a
+   disproof of every possible fixed lower bound.
+3. Reverse hypercontractivity provides an actual negative-moment estimate,
+   but its first finite exponent D still yields t0<s.
+4. Parent's F(q) iteration is strictly improving from D; it converges to
+   finite q_plus, while the supplied norm constants grow geometrically.
+   Neither infinite iteration nor taking an unlicensed endpoint limit proves
+   inverse L-infinity or the critical weighting bound.
+5. No new spike/parity construction was executed numerically. Earlier349
+   already excludes the naive cap2 transfer and proves two-level bounds.
+   Repeating its family would not settle divergence or a larger finite K.
+6. Old failed convex-order/nonlinear moment guesses and prior rare-cut routes
+   remain in the retained349 source and347 negative supplement. They are
+   not silently upgraded or erased.
+Abandon this separate-moment bootstrap as a proof of the critical endpoint
+after the three bounded approaches documented in SOURCE350A. Continue the
+single original question only through new joint critical-tail control or
+an actual admissible construction. No such future outcome is asserted.

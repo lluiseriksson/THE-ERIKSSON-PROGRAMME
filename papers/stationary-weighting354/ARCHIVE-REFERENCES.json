@@ -1,0 +1,154 @@
+[
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\fabrication341A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\fabrication341A\\MANIFEST.json",
+    "manifest_bytes": 2503,
+    "manifest_sha256": "2f8e28d4bcd5bd897ebd23aa222ead797eb7c16e262488b0627955da1e446959",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\source-audit341A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\source-audit341A\\MANIFEST.json",
+    "manifest_bytes": 7938,
+    "manifest_sha256": "a06a4546356fcce6f83a54223f7539ee2d8990b95b1c23a44b72597760779739",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-349\\fabrication349A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-349\\fabrication349A\\MANIFEST.json",
+    "manifest_bytes": 2154,
+    "manifest_sha256": "952443739101dbe0cb8c8aa772d9f859aea437633b1669b7d2fc578f6127870e",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-349\\source-audit349A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-349\\source-audit349A\\MANIFEST.json",
+    "manifest_bytes": 4644,
+    "manifest_sha256": "cb9baad8a0ba4d17e4d28e1b0a18a222b555d55ec3742089b5f22abee9a96498",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-350\\fabrication350A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-350\\fabrication350A\\MANIFEST.json",
+    "manifest_bytes": 3314,
+    "manifest_sha256": "8500e94185dfec667de39cff4aaeffbc879022325af845da484739031abd5396",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-350\\source-audit350A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-350\\source-audit350A\\MANIFEST.json",
+    "manifest_bytes": 5940,
+    "manifest_sha256": "7521e0f05a501bcd90874d8f01f10fbb88542805fda338323d97d28d549f2d4c",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-351\\fabrication351A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-351\\fabrication351A\\MANIFEST.json",
+    "manifest_bytes": 989,
+    "manifest_sha256": "563a5317aa0f7b5c471d4213e8cc0e28d5f40be5035d17052aa324f5bcd9efc1",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-351\\source-audit351A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-351\\source-audit351A\\MANIFEST.json",
+    "manifest_bytes": 4399,
+    "manifest_sha256": "992d5bb239d00cec59db22d733291a2788fbd65b25c8ed445d7780fd3a8fc83e",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-353\\fabrication353A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-353\\fabrication353A\\MANIFEST.json",
+    "manifest_bytes": 388,
+    "manifest_sha256": "a26574e474e24347e2fe9940fb6bded5265c31dcc6b39384cafb404acb2244f8",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-353\\source-audit353A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-353\\source-audit353A\\MANIFEST.json",
+    "manifest_bytes": 3053,
+    "manifest_sha256": "4d5ca6fe825126d46100cdca1e7c65273a1b9586a2be384cfc2f7b6a3502e8c4",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-353\\fabrication353B",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-353\\fabrication353B\\MANIFEST.json",
+    "manifest_bytes": 278,
+    "manifest_sha256": "69ee55f3ead55c60cbb5163186fbda6e5ee93385f3896ab6fc2be61f92978a93",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-353\\source-audit353B",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-353\\source-audit353B\\MANIFEST.json",
+    "manifest_bytes": 7317,
+    "manifest_sha256": "0f71571b8ef1c99d4eebfbabbbd8f0106fbde44d675714cf6ab16bc04e7a3b89",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-355\\fabrication355A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-355\\fabrication355A\\MANIFEST.json",
+    "manifest_bytes": 431,
+    "manifest_sha256": "6d3ac0ae4b283566e1ce46ca8f2df9163ff9e24fd2599c5d06af23fa79247a2c",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-355\\source-audit355A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-355\\source-audit355A\\MANIFEST.json",
+    "manifest_bytes": 11896,
+    "manifest_sha256": "4924993a310aa191225f96389e2eed7fbd236143c290d6250eca1ebd052150cb",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\fabrication354A",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\fabrication354A\\MANIFEST.json",
+    "manifest_bytes": 56984,
+    "manifest_sha256": "9a3b1ff1b5b9ed65d34eaf66fce8a146cbfcc62af0c54d3cb925b38e0fbed399",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\fabrication354B",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\fabrication354B\\MANIFEST.json",
+    "manifest_bytes": 76384,
+    "manifest_sha256": "76cbec5509158e34a0449ec9c236fbaff350ae083f502eb2641f82f9544214e0",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\fabrication354C",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\fabrication354C\\MANIFEST.json",
+    "manifest_bytes": 177640,
+    "manifest_sha256": "61c156743a0d8a9b63c60df0d3fceb95115b7f3f256909537ee9b6c0f42b490a",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\manuscript-audit354B",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\manuscript-audit354B\\MANIFEST.json",
+    "manifest_bytes": 92548,
+    "manifest_sha256": "f1afb17acc0a24bc56d72b9a1a289e370cf8113385f3cbb165cec1e80c46ab50",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  },
+  {
+    "archive_directory": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-348\\ui-preparation348D",
+    "manifest_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-348\\ui-preparation348D\\MANIFEST.json",
+    "manifest_bytes": 25211,
+    "manifest_sha256": "f56149c7e5e9f1ea030c8e706210a13ca16fb5de514ce15d4bc04772eb97dc2d",
+    "retention": "Full original archive remains in D; selected complete files only are local",
+    "immutability": "Content-addressed reference, not a claim that NTFS enforces immutability"
+  }
+]

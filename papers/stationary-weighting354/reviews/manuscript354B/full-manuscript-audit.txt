@@ -1,0 +1,118 @@
+MANUSCRIPT354B raw TeX SHA256 cd925ba351e84b9c6c461b08d0237cef6c0e8b93639f4026ee1f0b37642220c4
+Complete separate-role analytical manuscript audit, 2026-11-14
+
+VERDICT: NARROW SCOPE-WORDING CORRECTIONS REQUIRED BEFORE SOURCE INTEGRATION.
+The mathematical theorem statements and their complete proofs survive this review. Two narrative formulations need correction: the simplex paragraph misplaces a universal quantifier, and the prose around the simple-family proposition does not distinguish exclusion of divergent moments from exclusion of the exact cap2 counterexample. These are manuscript-level findings; earlier source acceptances do not clear them. This is not a finding that the displayed theorems are false. No candidate edit was made. A new identified revision should implement the small textual corrections described in section2; this frozen354B is not given unqualified source-integration clearance.
+
+1. Frozen identity, reading and document consistency
+
+Packet: D:/Datos/the-eriksson-programme/autonomia/evidencia-354/fabrication354B.
+MANIFEST.json raw SHA256 76cbec5509158e34a0449ec9c236fbaff350ae083f502eb2641f82f9544214e0.
+TeX: manuscript354B.tex, 41262 raw bytes, SHA256 cd925ba351e84b9c6c461b08d0237cef6c0e8b93639f4026ee1f0b37642220c4.
+Plain companion: manuscript354B.txt, 40310 raw bytes, SHA256 4db61dcd5e54be7e6af9e8dc79bac1d5150da8ea547cad9a4e355b4dea5346f7.
+These are raw filesystem byte hashes without normalization. No candidate commit, PR/body or PDF is assigned or inferred. No Git operation was performed.
+
+Read every line of both current manuscript versions, including abstract, all definitions, theorem/proposition/lemma statements, complete proofs, limits, author/model context and bibliography. Read all current top-level report/context/proof-map/checklist/rights/assignment/source-map documents; read relevant354A fabrication/context/change-map/checklist/primary-scope/rights history; freshly read entire sources349A,350A,341A and full349/350/351 audit reports and their contexts/objections. Sources351A,353B,355A and the353B/355 reports/context/objections had been fully read in this continuing role immediately before this assignment; their exact retained copies are hash-checked here, and every corresponding integrated proof was freshly re-evaluated. Earlier353A source and adverse report had also been fully read in this role; current complete raw history is retained unchanged. These prior reads are disclosed instead of being falsely described as every nested file newly read. No one must infer that all371 files, including duplicate raw returns and manifests, were semantically reread. The full371-file packet was copied and its bytes checked.
+
+All369 payload sizes/hashes in the frozen manifest match, and all371 copied packet files match their originals. All six explicit source/report pairs in SOURCE-MAP354B match. The additional341 source identity is retained as07872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f. The twelve literal replacements recorded by fabrication reconstruct the complete current TeX with exactly its raw hash. The retained Sections2-5 text is an exact current slice. These checks establish documentary identity, not mathematical acceptance by a string guard.
+
+A separate body comparison strips only document headings/environment markers, proof captions, named labels and whitespace, without evaluating or altering expressions. The resulting TeX and plain bodies are identical, both SHA25607b3b1384c82d3da60a32bfa1a9201707b99ffac8fb2d79e28d7bc2775c01aa7 in that expressly normalized representation. The actual TeX and plain raw identities remain distinct. Their abstract and references were also read and agree in content. The two findings below occur in both representations.
+
+Governing LEEME, CLAUDE and Operational Governance Charter were fully read in the preceding audit in this same role; fresh current hashes match the retained copies. The first broad inventory/manifest display was truncated and is not claimed as a full read; the manifest was subsequently parsed and every payload verified. A combined prior-report display truncated350, which was then reread separately in full. No mathematical execution or candidate PDF assessment occurred.
+
+2. Required corrections, exact locations and severity
+
+R1 — misplaced quantifier after the simplex proof.
+TeX line344; plain line383 contains:
+"It is false for every potential in the code algebra, since constants also belong to disjoint-block algebras."
+The preceding proposition proves existence of separating full-support potentials. Taken literally, the quoted sentence says separation is false for each potential, contradicting those witnesses. The constants observation supports NOT FOR EVERY potential, not FOR EVERY potential NOT. The intended scope is recoverable from the preceding sentence and from Section6, so this is a narrow editorial error rather than a flaw in the separation proof. It should nevertheless be corrected before integration, not left as contradictory mathematical prose.
+Concrete correction: "It does not hold for every potential in the code algebra, since constants also belong to disjoint-block algebras."
+Apply consistently in TeX and plain companion. No theorem or proof change is requested.
+
+R2 — different exclusions blurred near Proposition2.2.
+TeX line101; plain line99 says:
+"The three-level choice of H matters. Two useful exclusions show why simpler tests do not establish the same obstruction."
+This immediately follows the exact cap2 counterexample. Proposition2.2's two-level conclusion is E r^p <= (4/b^3)^p E pi^p. For fixed b and stationary cap this rules out divergence, but it does not imply E r^s<=2. Only the product conclusion proves constant-one moment comparison and thus excludes exact cap2 failure. The displayed two-level bound does not establish the stronger inference suggested by "the same obstruction" or prove that three levels are necessary for exact cap2 failure. No counterexample to a two-level cap theorem is asserted here; the issue is precisely that no such theorem was proved.
+Concrete replacement: "The following estimates distinguish two simpler classes: two-level potentials cannot produce divergent critical weighting moments under a fixed stationary floor and cap, while product potentials obey the stronger constant-one moment comparison."
+TeX line434 / plain line483 also says "Two-level and product tests are excluded by Proposition..." without specifying what is excluded. Replace that sentence with: "Proposition [simplefamilies] excludes divergent critical weighting moments for two-level potentials and exact-cap failure for product potentials."
+These changes preserve every valid source349 conclusion and remove an unsupported consolidation inference.
+
+Both corrections are source wording and scope, not a demand for new computation, experiments, a different theorem, or a general-gap proof. The current verdict requests those corrections in a new byte-identified revision. No score or predetermined approval threshold is involved.
+
+3. Common model and normalization
+
+On the probability cube, P_rho has positive entries, is symmetric, and has strictly positive Walsh eigenvalues rho^|S|. The definitions g=Ph, Z=E hg, pi=hg/Z, N=E(h/g), r=(h/g)/N give positive unit-mean densities. Scaling h changes neither density nor K. Row sums of K are one and conductance is symmetric. Multiplication by sqrt(pi) gives the stated similarity to M_sqrt(h/g) P M_sqrt(h/g); the scalar sqrt(Z) cancels. Congruence with positive definite P yields positive spectrum, and Perron positivity gives simple eigenvalue1. All full-chain gap assertions concern this actual stationary Markov kernel, not P weighted by an unrelated pi or r.
+
+Section3 explicitly imposes energy1, allowing pi=hg and r=pi/(Ng^2). Other sections retain scale-free Z. Marginal matching in the original class belongs to pi. Exact matching for r is asserted only inside the proved code algebras. The original b>0 class is empty if b>1; Section3 correctly records b<=1, and the existence statements either use b=1/16 or require b<1. No nonempty claim for an impossible floor is made. Matching k_L is capped by L, handling small dimensions.
+
+4. Section2: fixed critical cap counterexample
+
+The Walsh expression with c=1/32,d=13/16 gives exactly the listed four positive entries and mean1. Orthogonality gives Z_theta=1+theta/512+169theta^2/256. Differentiating normalized pi and normalized r, including N'_0=-1/512, gives opposite derivatives H(q-v) and -H(q-v). The coefficient
+ C_t=[31(1/4)^t-33(1/8)^t-2(29/16)^t]/2048
+is correct. The derivative of the first two terms is log2*8^-t(99-62*2^t)<0 for t>=1; the remaining positive term increases. They agree at t=1, so C_t<0 for every fixed t>1.
+
+The rational checks were done analytically: the square sum is (1682+16+4)/256, divided by4, giving851/512; the cube sum is (48778+64+8)/4096, divided by4, giving24425/8192. They lie on opposite sides of2. Strict Jensen gives M'(1)>0 and M''>0, so the unique root in(2,3) exists. The resulting rho_* is fixed in(1/3,1/2), with critical exponent exactly t_*. Separate moment derivatives give the strict inequalities on the two sides of2; mere continuity at a limiting moment2 would not suffice, but the proof does not make that shortcut.
+
+The parity pullback preserves the entire quotient algebra, inverses of positive functions and expectation. Its effective noise is theta=rho_*^m, while the moment exponent remains the fixed original critical exponent. The two equal blocks cover even dimensions and leave one unused coordinate at odd dimensions. All nonconstant codewords have weight at least m, proving labelled marginal matching through m-1. Since m=floor(L/2)>k_L eventually, a common finite threshold handles matching, positivity of the fixed floor and both moment signs. Constant h=1 fills every smaller L. Thus all dimensions are admissible, while the strict counterexample is only eventual. Both moments tend to2; no divergence is obtained. The later direct block theorem applies with n=2 and proves the noncollapsing gap claim.
+
+For the two-level proposition, a=Eh<=1 and the floor imply a^2>=b; Cauchy under pi gives N>=a^2. For the lower level on mass q, m E(g1_A)>=bq and E(g1_A)<=1 imply m>=bq. At the upper level M(1-q)<=1 gives g>=b/M>=b(1-q). Together g>=b/2 and r<=4pi/b^3. Degenerate constant potentials are harmless. This is exactly a larger uniform moment bound, with the narrower implication explained in R2.
+
+The one-bit density amplitudes have the correct denominators 1+rho t^2 and1-rho t^2. Their comparison reduces to2rho(1-t^2)>0. Convex even power means increase with absolute amplitude, including equality at p=1. Independence factors noise, energy, N and moments for the stated coordinate products and disjoint parity products. No general product assumption is introduced.
+
+5. Section3: inverse estimates, finite bootstrap and full341 argument
+
+The floor produces h>=b/g, then g>=bP(1/g)>=b/(Pg) by rowwise Jensen. Thus gPg>=b and 1/g<=Pg/b are derived for the actual fields. They do not assert a positive uniform infimum of g. Ordinary hypercontractivity uses squared noise rho^3 for Pg=P_(rho^(3/2))Qh and output D0=1+rho^-3. Squared noise rho for g=P_sqrt(rho)Qh gives R=1+rho^-1. The floor gives ||h^-1||_R<=b^-1, equivalently ||h||_-R>=b. Boolean reverse hypercontractivity at noise rho and beta=-D_*,alpha=-R gives the stronger inverse exponent D_*=(1+R)/rho^2-1. All exponents are strictly negative in this use, and reciprocal directions are correct. The source350 optional zero-mean convention ambiguity has been removed in the manuscript.
+
+For q>s/(s-1), p=sq/(s+q)>1. Holder applied to pi/g followed by noise rho^2 produces F(q)=1+(p-1)/rho^4 and multiplier B/b in the inverse bound. The displayed numerator of F(q)-q follows by multiplying by rho^4(s+q). Its discriminant simplifies to4rho^2s(1-rho^4), and the displayed q_- and q_+ are its roots. Both D_*-root differences have the stated positive lower bounds using sqrt(1+rho^2)>=1. Hence the initial exponent is strictly inside the two roots for every0<rho<1. Increasing F preserves this interval and raises q_n monotonically to the finite upper fixed point. Since D_*>R=2s/(s-1), every Holder step has a valid input exponent and every t_n exceeds1.
+
+The constants are A_n=b^-1(B/b)^n and K_n=b^-1 B A_n^2, exactly as stated. The latter is a norm bound, not an unpowered moment assertion. The identity1/t_n=1/s+2/q_n supplies the correct Holder exponents. The upper t_+ is finite and strictly below s. Growing A_n cannot be passed to an endpoint estimate, and the manuscript expressly avoids that inference.
+
+Lemma3.2 reproduces the complete load-bearing341 proof. For p'<=2 the high-degree Q multiplier followed by probability-norm monotonicity gives the tail estimate; for p'>2, factoring Q=P_t P_beta puts the Walsh projection inside an L2 input before hypercontractivity. No unsupported L^(p') projection contraction is assumed. Exact pi matching identifies E(pi g_low)=a. Cauchy in the measure h dmu gives E(pi g)>=1/a, yielding1-a^2<=a^2e^2 and a^2>=1/(1+e^2). This also implies2(1-a)<=e^2.
+
+The matrix A=M_sqrt(u) P M_sqrt(u) has positive eigenvector sqrt(hg) at eigenvalue1 and is positive definite. Passing from XX* to X*X with X=M_sqrt(u)Q and testing at1 gives N<=1, with the correct upper-bound direction. Cauchy under pi gives a^2<=N. The overlap E sqrt(r pi)=a/sqrt(N)>=a yields the Hellinger bound and L1 distance<=2e; total variation is half that L1 distance. This proof needs no floor. At p=s, eta_p^2=max(rho,(1-rho)/2). Interpolation with the fixed t_n norm gives the stated alpha=(t_n-t)/(t(t_n-1)); one finite n is chosen before L tends to infinity. Thus strong convergence holds throughout1<t<t_+, without exact general r matching or critical transfer.
+
+6. Sections4-5: actual full-chain spectral and ratio proofs
+
+A basis of C gives an equal-fiber quotient and all C-supported functions. Its actual noise kernel b0 lies in[1-delta,1+delta], so G lies in a times that interval. The common-row minorization uses the probability H/a and needs no claim that it is stationary. Oscillation bounds quotient non-Perron eigenvalues by1-alpha.
+
+Every Walsh coset is retained. Cross-coset stationary inner products vanish because pi times quotient products remains C-supported. Their dimensions sum to2^L, and multiplication by h and1/g as well as diagonal noise preserves each sector. The signed twisted kernel has exactly the exponent |t+c(I)|. It is not treated as stochastic.
+
+For a minimum-weight nonzero coset leader, either d<=D/2 and all other weights are at least D-d, or d>D/2 and all weights exceed D/2. Both cases yield the stated rho+eta bound. Comparison to b0 and stochastic K0 bounds the infinity norm of every sector by B_C, independently of H. The global Markov bound handles even B_C>=1. Together these genuinely bound the full second eigenvalue.
+
+The singleton is outside C because D>=2, has stationary mean0 and norm1, and its coefficient difference from rho b0 is (1-rho^2)rho^(|c|-1) precisely for codewords containing that coordinate. This gives the stated epsilon_gap and an actual stationary Rayleigh lower bound. It does not declare an approximate mode an exact eigenfunction.
+
+Both densities belong to the positive-inverse-closed C algebra, proving exact labelled marginals through D-1. The normalization E_Pi G^-2=N/Z yields r/pi=G^-2/E_Pi G^-2; both alpha powers are correct. The absolute moment conclusion explicitly needs the stationary cap. eta->0 forces delta->0, and both eigenvalue sides converge uniformly in H to rho.
+
+For disjoint blocks the factorized sector kernel, including residual rho^e, is correct. Removing whole blocks leaves j_i in0,...,m-1. Interior factors are bounded by beta_b using convex endpoint maxima. Product domination uses beta_b<1; beta_b>=1 instead invokes the global Markov bound. The singleton argument and log((1+theta)/(1-theta))<=4theta give the direct sharper regime m->infinity and n rho^m->0. The manuscript correctly retains this regime and explicitly states that coarse2^n rho^(m/2)->0 does not subsume it. The algebra closure also proves exact r matching in this particular family, even though351 originally refrained from asserting it.
+
+The simplex dimension follows from unit-vector coordinates, and nonzero codewords have half the full binary-space weight; omitting zero changes no ones. Thus D=2^(j-1), eta=2^j rho^(2^(j-2))->0, with linear matching on the stated length subsequence. The witness has all C Fourier coefficients nonzero and is positive by its amplitude bound. Any larger disjoint-block representation forces C subsetB; pair separation and coordinate activity contradict every block of size>=2 and every ignored coordinate. Permutations do not avoid this. The separation proof is sound; R1 concerns only the subsequent prose quantifier.
+
+7. Section6 and the scope of admissible positive-rate witnesses
+
+The allowed rate interval is nonempty at each fixed permitted rho,d. A random n-by-L binary generator, n=floor(R_code L), gives fair independent coordinates for each fixed nonzero message. The union bound over messages needs no independence across messages. For integer i<dL, d^i(1-d)^(L-i)>=2^-LH2(d); summation against binomial coefficients yields the entropy bound with no rounding error. The complement excludes zero images and hence rank loss, and forces distance>=ceil(dL).
+
+The column union bound is L+L(L-1)/2 times2^-n. The floor changes this by at most a factor2 against2^-R_code L. Combining both probabilities, rather than separately selecting two matrices, gives all properties simultaneously for every sufficiently large integer L. This is an existence proof, not an algorithm or executed search.
+
+The log bases and a_* are correct, eta<=E_L and delta<=eta follow in the correct direction because rho<1. Eventually D>=2,delta<1; E_L<=min(1/2,rho/2) bounds the quotient term by rho. The two errors for lambda2 give exactly C_rho E_L/(1-E_L). Clipping by0 and1 can only improve it. No amplitude constant or endpoint-uniform noise claim appears.
+
+Distinct nonzero columns give pair separation and activity for the same codes. The h0 witness has exact full support and values in[1-tau,1+tau]. A single sufficiently small tau exists for any fixed b in(0,1) and finite s>1. Markov averaging bounds Ph0 by the same interval; bounds on the product and its mean Z give A_tau^-1<=pi<=A_tau after normalization. Thus the same positive h has energy1, floor, cap, matching, structural separation and the spectral estimate. The imposed tau restriction is only for admissibility; spectral uniformity remains unrestricted within the code algebra. The statement is eventual for all integer lengths, not a hidden simplex subsequence, and it does not classify all admissible stationary densities.
+
+8. Classical sources, provenance and remaining questions
+
+A fresh primary opening of Mossel--Oleszkiewicz--Sen returned the relevant introduction and definitions. Equation(1.2) explicitly allows negative exponents and tensorization for the uniform two-point space, with the half-log time constant. The conversion theta=exp(-time) gives precisely the parameter used here. The weaker general-space constant elsewhere in the abstract is not substituted. The served version is arXiv1108.1210v5,4December2012, matching the bibliography. Only relevant returned passages were read, not the entire35-page paper.
+
+A fresh Boyd PDF request timed out; the failure is retained. The author-hosted article page succeeded and supports the classical symmetry/decomposition context and journal metadata. Earlier retained primary returns provide the manuscript-version context; no fresh complete-paper or successful-PDF read is invented. Wootters's official exercise2.4 again identifies the simplex construction; the parameters remain proved directly in the manuscript. Guruswami's official Lemma5/Theorem8 were read in the immediately preceding355 review and retained fresh in the current packet; no new code theorem or original efficient construction is attributed. No comprehensive novelty search was conducted and none of these checks clears priority of the Doob application.
+
+The prior353A false larger-class claim is explained correctly and retained with its adverse report. The three-block overlapping algebra can live inside a larger disjoint algebra; the simplex and positive-rate full-support witnesses address that actual loophole. Shared provider/history and the parent's350 bootstrap/351/353/355 authorship are disclosed. This same auditor reviewed prior inputs and is not an independent replication. Exact model/backend identity is not independently attested.
+
+The single general stationary gap question and the critical joint moment E(pi^s g^-2s) remain open. The small-g portion is not controlled by the proved separate finite moments. No moment-to-general-spectral deduction, numerical grade, novelty certificate, independent-review claim, formal proof, PDF acceptance or physical/continuum consequence is supplied.
+
+9. Operations, evidence and terminal disposition
+
+All mathematical checking was analytical. Native tools performed reads, searches, copies, hashes, source-text comparisons/reconstruction and own report writes. No mathematical program, random sample, CAS/Python, Lean/Lake, build, test, compilation, runtime, renderer, Git command, frozen source/manuscript/state/PR/PDF edit or merge occurred. No inbound message arrived after assignment, and no other chat, subagent or fabricator was contacted. Progress commentary did not coordinate repairs. No disposable clone/worktree or cleanup was undertaken.
+
+Own preparation: C:/Trabajo/the-eriksson-programme/prefix-rank290-20261113/_drafts/manuscript-audit354B.
+Retention: D:/Datos/the-eriksson-programme/autonomia/evidencia-354/manuscript-audit354B.
+The packet preserves the complete frozen fabrication packet, all prior raw reports and failures nested therein, governing copies, current source returns including the failed fetch, exact assignment, this full reasoning, factual context, all objections and native byte-verification records.
+
+The theorem/proof assessment is favorable within the stated hypotheses. Integration readiness is withheld only for R1/R2, the precisely located manuscript scope wording. Correcting those phrases does not erase this report or retroactively give the frozenB a different identity. Any subsequent acceptance must identify the revised bytes. This audit does not recommend a standalone corollary paper or assess a future rendered document.
