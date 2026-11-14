@@ -1,0 +1,18 @@
+344A PRIMARY READING RECORD
+Access during fabrication344 on2026-11-14. These are targeted context/novelty checks, not exhaustive novelty clearance. New mathematical claims in sections2-5 are proved in full without an imported matrix-scaling theorem.
+
+1. Hamsa Balakrishnan, Inseok Hwang, Claire J. Tomlin, Polynomial Approximation Algorithms for Belief Matrix Maintenance in Identity Management.
+URL https://www.mit.edu/~hamsa/pubs/cdc04_BHT.pdf
+Read returned abstract and introduction, PDFpage1 into page2. Primary paper discusses prescribed row/column scaling and a convex optimization formulation. This confirms established scaling context, not a new claim that344's convex existence lemma is original. No later theorem is used or claimed fully read.
+
+2. Melvyn B. Nathanson, Alternate Minimization and Doubly Stochastic Matrices, INTEGERS20A(2020), A10.
+URL https://math.colgate.edu/~integers/uproc10/uproc10.pdf
+Read returned pages1-4, including Theorem1 and its symmetric positive diagonal uniqueness statement and Theorem2 scaling existence/convergence context. The candidate proves its own prescribed nonuniform marginal symmetric scaling lemma. This paper is not cited as if its displayed doubly-stochastic statement directly were the exact lemma required here.
+
+3. Itai Benjamini, Ori Gurel-Gurevich, Ron Peled, On K-wise Independent Distributions and Boolean Functions.
+URL https://arxiv.org/abs/1201.3261
+Read abstract and metadata only. Bounded independence and Boolean functions including majority are established subjects. No theorem on344's block-majority scaling family is inferred from the abstract. No absence-of-prior-art or novelty claim.
+
+Searches: symmetric matrix scaling prescribed marginals positive matrix convex minimization Sinkhorn theorem primary; Boolean function product majorities noise sensitivity k wise independence majority blocks. Search results outside primary papers were not used to support a theorem. The abstract of the bounded-independence paper does not settle whether344's particular combination is known.
+
+Accepted341 supplies the finite-exponent and N convergence comparison only. Its primary hypercontractivity source/context is in the retained341 package; the main344 uniform-convergence counterexample is independent of that imported theorem. No primary PDF byte hashes, screenshots, full reads or external independent review are claimed.
