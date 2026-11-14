@@ -1,0 +1,63 @@
+{
+  "status": "FROZEN FABRICATION347A FOR SEPARATE MANUSCRIPT AUDIT",
+  "utc": "2026-11-14T01:15:06.2697407Z",
+  "context_head": "d2fac76661cb9383e868d78483514880debff8af",
+  "accepted_source_units": [
+    341,
+    344,
+    345,
+    346
+  ],
+  "active_tex": [
+    "manuscript347.tex",
+    "support346-section.tex"
+  ],
+  "original_gap": "OPEN",
+  "pdf": "Not built, visually reviewed or assessed",
+  "formal_verification": "Not performed",
+  "mathematical_execution": "None",
+  "new_claim": "None: grouped source consolidation",
+  "stage_retained_for_parent": true,
+  "outputs": [
+    {
+      "file": "manuscript347.tex",
+      "bytes": 24723,
+      "sha256": "8c2a571a03b4838e23efc8f1511605943f6b21ed011ae55dc527ebe957f2da6d"
+    },
+    {
+      "file": "support346-section.tex",
+      "bytes": 3877,
+      "sha256": "c273a2ada5308dacddcf6b28d615aa2e9721fa89f0e0c8fd6f48ac97738b127b"
+    },
+    {
+      "file": "manuscript347.txt",
+      "bytes": 27980,
+      "sha256": "847a0410d08fac5f7bd56125760edad8862004f6e0a7a74a3826045dff901cc2"
+    },
+    {
+      "file": "full-fabrication-report.txt",
+      "bytes": 6893,
+      "sha256": "74ca11ef22add25eebff7369bc553040319db452d3318ac85ea6627db00298fb"
+    },
+    {
+      "file": "model-context.txt",
+      "bytes": 4375,
+      "sha256": "d8c52388c2f9c5fafe3c67ed9a8b24038980192c54fe7fbcab353923d59bd08e"
+    },
+    {
+      "file": "dependency-and-source-map.txt",
+      "bytes": 6284,
+      "sha256": "45eb4fcc65ac1b95df0b9d41eb32e9ace3c60d16407817e7899ac3325deb264d"
+    },
+    {
+      "file": "supplement-negative-routes.txt",
+      "bytes": 5989,
+      "sha256": "4a6b1f69e7d5406c59b6ac5b9fcd8c435a4f491b15be701ed44bae62ab5f65ca"
+    },
+    {
+      "file": "adverse-checks347.txt",
+      "bytes": 4205,
+      "sha256": "9d3cdda5d475acd425a609425688b595f6772f29df97d38404085a73c52816a3"
+    }
+  ]
+}

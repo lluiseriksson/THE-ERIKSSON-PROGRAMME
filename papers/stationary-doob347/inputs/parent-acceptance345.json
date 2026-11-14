@@ -1,0 +1,14 @@
+{
+  "full_context_read": true,
+  "direct_parent": "478cb9c870908faf0f5e479414cca50c5e53d904",
+  "head": "14c02a775117131f5156ce811fee9bad7c9b297c",
+  "verdict": "ACCEPT bounded actual cut-capacity reduction and exponentially small bottleneck necessity; all ten adverse checks passed",
+  "report_sha256": "a6dd860a6392529f4f524fd52c13c342c1c052b682815acc5a9d0de51b3c1d8e",
+  "limitations": "Original uniform stationary gap OPEN. No every-eigenvector localization, critical r moment, formal proof, priority or physical consequence.",
+  "full_report_read": true,
+  "preceding_accepted_research_head": "873826b004e9e4751ce7dc55ade08c329b384302",
+  "utc": "2026-11-14T00:50:47.0611660Z",
+  "source_sha256": "43744293f5351fd3607aeb7c865977407d68091ebd2b4edabb12f7f690ad6c58",
+  "next": "Unchanged protected integration after required CI; pursue rare-set capacity346 in original question",
+  "payloads_verified": 62
+}

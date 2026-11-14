@@ -1,0 +1,12 @@
+347 SOURCE-ONLY PRODUCTION HANDOFF
+Main entry: manuscript347.tex, with support346-section.tex in the same directory. Both are active mathematical sources. manuscript347.txt is the complete plain review companion with that include expanded, not a PDF extraction. preliminary-history/provisional346-section.tex is historical and MUST NOT be included a second time.
+
+No TeX command was run in this unit. No PDF or rendered page exists in this package. No local build, mathematical execution, Lean/Lake, CAS or runtime was used. The source has been authored and read; typesetting remains unverified. Use the parent's already authorized document-production route and environment, not an inferred permission for a local Windows build. Reference the PDF/document skill workflow at actual production time and perform its required operation marker then, not retrospectively.
+
+Before production, the separate manuscript audit must bind to both active TeX hashes and the exact334/324 imports. Any mathematical change creates a new source referent and must not inherit the old verdict automatically. Keep complete original reports/context/objections with the reproduction package.
+
+At production, resolve all citations/references and inspect every rendered page at readable scale, with special attention to the aligned rigidity bounds, theorem346 long parameter inequalities, the actual-capacity proof, footnote-free bibliography URLs and the final review-context section. A successful compiler exit or extracted text is not visual verification. Record the exact PDF hash and full context of any model assessments; no previous PDF's score applies. No rating is supplied here.
+
+Author/title/date are already stated. Do not silently add peer-review, collection-acceptance, frontier-priority, independence, formal-proof or physical-gap language. The finite theorem constants alpha_rho and L0 are inherited/existential; do not replace them by numerical values. Publication status is for the parent to verify after an actual receipt and public artifact check.
+
+The retained D package contains all active source inputs and mathematical dependencies. Existing C files are kept solely for the parent's integration. Cleanup of this own stage may occur only after the parent no longer needs it and verified D/git preservation; no shared worktree or foreign folder is authorized for deletion by this handoff.
