@@ -1,0 +1,50 @@
+MANUSCRIPT347 DEPENDENCY AND SOURCE MAP
+Frozen fabrication347A source-preparation edition, 2026-11-14. No PDF built. Source346 was initially isolated and then integrated after the actual report/context and parent acceptance arrived and were fully read. A source's historical FABRICATION label is preserved in its raw bytes; acceptance is established separately by the recorded report/parent receipt, not by rewriting that source.
+
+Main text mapping
+- Theorem rigidity, its proof and fixed-degree compression: source341A sections1-6, unchanged mathematical scope. Primary scalar Boolean hypercontractivity is the external analytical premise.
+- Classical finite symmetric scaling lemma and admissible supremum counterexample: source344A sections1-6. The existence proof is written out, not replaced by an audit label. Source341 is used only for the ancillary failure of uniform r/pi convergence.
+- Imported weighting theorem: exact source334A T1/T2 and its finite estimates(10)-(13), with the uniform eigenvalue consequences explicitly inspected in source345 and its audit C4. Complete source334 proof is retained. The uniform positive gap is for a density d satisfying weighting hypotheses; in manuscript347 d=pi, not actual r.
+- Source324 endpoint input(I): full retained source324 raw Git bytes. Constants are its global C_rho,c_rho,alpha_rho; not numerical values or local Taylor coefficients. Source324 attributes its refined inequality to Kirshner-Samorodnitsky1909.11929v1. Source334's proof is imported, not silently reproved in this manuscript.
+- Actual flux/capacity theorem, projector comparison and finite conductance argument: source345A sections1-6. Full load-bearing proof is included. The stronger critical endpoint ||g-1||_(2s') is derived, not falsely cited as341's printed Lp' estimate.
+- support346-section.tex: complete bounded accepted source346A, included by the main TeX. Its main theorem is mathematically independent of341/344/345 and requires no stationary marginal matching. The initial provisional section is preserved in preliminary-history and is not an active TeX input.
+
+Exact source referents (raw SHA256, no normalization)
+341: frozen c3da0ec541ee17ae3432cec32dcdad079ff3cd2c
+ path research/stationary-rigidity341/source341A.txt
+ 12276 bytes; 07872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f
+ PR284; merged51345a11a8199e670eb9a1e358cffc16e3b3d4aa.
+ audit046105aa61957a67f66005af4516e4c43492fe465534e8b2875e92ddff10fa8e.
+344: frozen873826b004e9e4751ce7dc55ade08c329b384302
+ path research/stationary-obstruction344/source344A.txt
+ 13082 bytes; 3b08bccdd79a3fa400a853aaa730733570cbe902c49dee7d022d50b1d5f006c0
+ PR285; mergedcd02dc67664d405a7289a09d266543996dc08afb.
+ audit96f10cde6ee295a54dc83e293e8cf36cc6ab08fc12b6e9f52fc90155085b8efa.
+345: frozen14c02a775117131f5156ce811fee9bad7c9b297c
+ path research/stationary-capacity345/source345A.txt
+ 16352 bytes; 43744293f5351fd3607aeb7c865977407d68091ebd2b4edabb12f7f690ad6c58
+ PR286; source PASS and parent acceptance, CI still pending at received assignment.
+ audit a6dd860a6392529f4f524fd52c13c342c1c052b682815acc5a9d0de51b3c1d8e.
+ Actual immediate parent478cb9c870908faf0f5e479414cca50c5e53d904; preceding accepted research head873826b0 is not its direct Git parent.
+346: frozen/assignmentHEAD d2fac76661cb9383e868d78483514880debff8af, PR287
+ source346A 14394 bytes; d11b3f691d7d20c8d22143b06a787cebbf8327e3201e80c64889d7be0a7c0cbd.
+ path research/stationary-support346/source346A.txt.
+ Actual source audit PASS received before final freeze; report86636c0a5f4f228ca9716564294c921fbf5bd11633795c0b1b41f6236a83b071, parent-acceptance346.json records2026-11-14T01:09:47.9188061Z. No CI/merge/publication claim is derived from this analytical acceptance.
+334: frozen159fb24d89ad3b6bf37cd0c0a867edb41fc0ff7b
+ path research/uniform-gap334/source334A.txt
+ 15935 bytes; 16e8188dc12270b05fd6f36cdf1c47ce802f04034098eedf488aee044d44a022
+ PR279; merged42c71ba92b3b5387ce8abb35ffccbc14523494f1.
+ Imported accepted source; full source and full report/context retained.
+324: frozen7da3f567d2329a8225d03052c08c554387020fcb
+ path research/truncation324/source324A.txt
+ raw Git SHA256440e73e56daede5628c07b57d77710068ce2415a2285e99f39baf433675c16f6
+ Git blob c9e70b6fc4a88d9c9965f176db28780210da772b.
+ A raw git-show stdout-byte capture was freshly retained as inputs/source324A-git.txt and matched that hash. A separate historical CRLF checkout is preserved as inputs/source324A-checkout.txt, SHA08393e1ac10c588124735ba6786575c80e1d19761740b01cf705220fb1fe3722; these are deliberately not called byte-identical.
+
+Reading and attribution boundary
+Complete original341/344/345/346 proofs were authored/read in this continuing fabrication context. Full341 report/context and full334 source/report/context were previously read; full345,344,346 reports and contexts were read in this consolidation.324's full raw proof is retained, but only the endpoint statement/constants were freshly read in this fabrication role; the separate345 audit reports complete324 reading. This is an imported dependency, not a new independent recertification of KS or324.
+Fresh primary tool reads: Georgiou-Pavon1405.6650v2 III.4 Theorem3/Lemma1 proof passages; Duan-Lyu-Powell2604.23461v1 Theorems2.1-2.5/discussion; KS1909.11929v1 bibliographic metadata/abstract. Scalar hypercontractivity Eq1 was checked in earlier341/345 work; no new version of that theorem is asserted.
+Raw web artifacts are serialized tool-returned text, NOT original publisher PDF bytes. The manuscript cites only the bounded verified statements. Parent conditioning calculations and the separate Sinkhorn-flow caution are retained in primary-positioning.txt for context, but are not promoted into new mathematical claims or used as a premise here. No historical-firstness claim.
+
+Reproduction boundary
+The proof is analytical. TeX and a plain-text transcription preserve the same main wording and mathematical expressions; the plain file keeps TeX equation notation and citation/label keys for exact referential comparison. No compiler, runtime, mathematical program, experiment or formal prover was invoked. Typesetting, complete page inspection and an exact-hash PDF review are future distinct gates. Do not inherit scores from any earlier source/PDF.

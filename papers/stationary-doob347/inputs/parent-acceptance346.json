@@ -1,0 +1,13 @@
+{
+  "full_context_read": true,
+  "report_sha256": "86636c0a5f4f228ca9716564294c921fbf5bd11633795c0b1b41f6236a83b071",
+  "limitations": "Global gap OPEN; no all-rho extension, arbitrary-small-stationary-mass coverage, sharpconstants, independence/formal/priority/physicalclaim",
+  "source_sha256": "d11b3f691d7d20c8d22143b06a787cebbf8327e3201e80c64889d7be0a7c0cbd",
+  "utc": "2026-11-14T01:09:47.9188061Z",
+  "hypothesis_eliminated": "Exact stationary marginal matching is unnecessary for this bounded small-support result, proved from floor, critical moment and actual hPh relation",
+  "payloads_verified": 57,
+  "verdict": "ACCEPT finite actual transition/killed-spectrum bound and explicit exponential-cardinality exclusion for0<rho<=1/4",
+  "head": "d2fac76661cb9383e868d78483514880debff8af",
+  "next": "Unchanged protected integration afterCI; consolidate with341/344/345 in347, preserving346 specific scope",
+  "full_report_read": true
+}

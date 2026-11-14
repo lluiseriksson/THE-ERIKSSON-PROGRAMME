@@ -1,0 +1,29 @@
+# Bounded primary-source positioning for the existing stationary-gap question
+
+Recorded 2026-11-14. Parent analytical notes, not a new active question, source audit, numerical result or priority clearance. These notes do not modify frozen345 or346 fabrication. Provider OpenAI/Codex; exact backend unverified. No mathematical code was executed.
+
+## Classical finite scaling is a predecessor
+
+Georgiou and Pavon, Positive contraction mappings for classical and quantum Schrodinger systems, arXiv:1405.6650v2 (2014), Theorem 3 and Lemma 1 in III.4, give positive finite one-step scaling and Hilbert-metric contraction. The read proof uses a cross-ratio projective diameter and Birkhoff contraction. Therefore existence/uniqueness of the symmetric finite scaling must be positioned as a standard mechanism, even where344 supplies a self-contained convex proof.
+
+Primary: https://arxiv.org/html/1405.6650v2 , sections III.4 and II, especially lines267–328 of the tool's text representation. Read coverage is these statements/proof passages and abstract, not the quantum sections.
+
+Our explicit specialization, not a quoted theorem: for Boolean P_rho with N=2^L, a=(1+rho)/2 and c=(1-rho)/2, each entry is a^(L-d)c^d. Every one-coordinate cross ratio is at most(a/c)^2; diagonal versus antipodal choices attain that value in every coordinate. Consequently Delta(P_rho)=2L log(a/c), and tanh(Delta/4) tends to1 for fixed rho>0. This general contraction coefficient alone supplies no dimension-uniform contraction bound. This does not rule out a sharper method using our moment/matching assumptions.
+
+## A recent potential-stability theorem has an explicit conditioning parameter
+
+Duan, Lyu and Powell, Scaling limit of Sinkhorn-rescaled Random Matrices via Stability of Static Schrodinger Bridges, arXiv:2604.23461v1 (2026), Theorem2.5 assumes entrywise relative closeness of current and target margins. Its tolerance is 1/(50 C_A^2); C_A depends on a minimum row-overlap parameter. Theorems2.1–2.3 give Hellinger stability with explicit cost dependence. None of those statements directly turns vanishing low-degree Fourier coefficients into pointwise closeness of the scaling potentials.
+
+Primary: https://arxiv.org/html/2604.23461v1 , Theorems2.1–2.5 and their discussion, tool text lines154–197. The later random-matrix proofs were not audited.
+
+Our exact conditioning calculation: take A=P_rho, m=n=N and target margins r_i=c_j=1. Symmetry and semigroup composition give sum_j A_ij A_kj=P_(rho^2)(i,k). Its minimum is ((1-rho^2)/2)^L. Hence rho_A=N^(-1)min sum_j A_ij A_kj=((1-rho^2)/4)^L, rho_A mn=(1-rho^2)^L, and C_A=1+9/(1-rho^2)^L. Thus the displayed theorem's conditioning constant grows exponentially here. This is a calculation for the uniform-margin specialization, not an assertion that all more refined Sinkhorn estimates must deteriorate. For our nonuniform pi, the required entrywise margin error is itself not established by exact low-order marginals;344 shows why a uniform-potential conclusion cannot simply be assumed.
+
+## Sinkhorn-flow gap is a different operator and quantifier
+
+Srinivasan and Slotine, Contraction and entropy production in continuous-time Sinkhorn dynamics, arXiv:2510.12639v1 (2025), Lemma1 and Corollary1, study conditional-expectation composition along a continuous Sinkhorn flow. Their displayed constant C(pi) depends on the coupling. A pointwise-in-coupling positive gap, even when established, is not a dimension-uniform lower bound for our discrete actual K. Section2.5 assumes positive Lebesgue densities; adapting it to finite cubes is an additional step.
+
+Primary: https://arxiv.org/html/2510.12639v1 , sections2.5 and3, especially equations65–73, tool text lines148–150 and299–346. Not a complete audit of the paper. A proof-level caution is retained: the Corollary1 proof passes from supremum C(pi)=1 to existence of an attaining mean-zero f*. That attainment needs justification in infinite dimension. No counterexample or refutation of their complete claim is asserted here; the present programme does not use this argument as a premise.
+
+## Consequence for the programme
+
+341's quantitative marginal-to-potential control,344's admissible failure of supremum convergence, and345's actual cut-capacity localization should be presented together against this classical scaling background. Accepted345 excludes low-conductance cuts above a dimension-dependent exponentially small stationary mass. It does not establish a full gap.346 remains a separate bounded continuation within this same question, not yet audited when this note was written. No literature search establishes historical firstness.

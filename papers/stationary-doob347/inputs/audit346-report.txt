@@ -1,0 +1,83 @@
+HEAD d2fac76661cb9383e868d78483514880debff8af / SOURCE346A TERMINAL ANALYTICAL AUDIT
+VERDICT: PASS for the bounded support-cardinality/noise-region exclusion. All ten fixed adverse checks pass. ORIGINAL STATIONARY UNIFORM-GAP QUESTION REMAINS OPEN.
+
+1. EXACT BINDING, CAPTURE AND SCOPE
+PR287 https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/287; frozen HEAD d2fac76661cb9383e868d78483514880debff8af; branch codex/tep-stationary-support346-20261114. Direct parent14c02a775117131f5156ce811fee9bad7c9b297c. Assigned/initial basecd02dc67664d405a7289a09d266543996dc08afb. The direct-parent delta has22 added paths solely under research/stationary-support346: source, scoped raw-byte attributes, nineteen fabrication payloads plus their manifest. The initial PR includes unchanged345 ancestry while its integration is pending; this does not broaden the346 source verdict.
+Source research/stationary-support346/source346A.txt:14394 raw UTF8/noBOM LF bytes, SHA256 d11b3f691d7d20c8d22143b06a787cebbf8327e3201e80c64889d7be0a7c0cbd. Frozen Git blob, checkout, original fabrication and retained audit copy agree. All22 final checkout paths match exact Git blobs with no hash normalization. Original manifest SHA2560b8406d92c09d251e3e36a71574aed9d0f6fd8eedea358bf4147af564d3e1e48 verifies all19 listed raw payload lengths/hashes.
+Body capture command: gh pr view287 --repo lluiseriksson/THE-ERIKSSON-PROGRAMME --json body,headRefOid,baseRefOid. JSON decode body, CRLF->LF, TrimEnd(), exactly one final LF, UTF8 without BOM. Canonical body1441 bytes, SHA2568355020733c0c0ba5092a2c7ba0f8af31ce754865937a883dde7e6485a4a0ec2. Connected GitHub get_pr_info and parent pins supply matching additional capture. Initial/final checks are endpoints, not continuous freeze surveillance.
+No invalidating mathematical defect was found. This PASS excludes localized killed modes on the precise support/noise class. It does not prove a global second-eigenvalue gap, extend the criterion to all rho, turn small stationary mass into small cardinality, construct a collapsing family, establish a critical weighting moment, claim optimal constants/phase boundary or historical novelty, provide formal/numerical verification, assess a PDF, authorize publication or waive CI.
+
+C1. ACTUAL hPh MODEL, NORMALIZATION AND DEPENDENCIES: PASS
+L>=1 and0<rho<1 are fixed as stated; a=(1+rho)/2 in(1/2,1), alpha=2^-L and d=a^L. P is a stochastic symmetric Boolean noise kernel with Walsh eigenvalues rho^|S|. Q=P_sqrt(rho) is its positive square root, so ||Qh||2^2=E hPh=1.
+h>0 gives g=Ph>0, pi=hg>0 with Epi=1. Thus nu=mu pi is a probability. The actual K_xy=P_xy h_y/g_x sums to1 in y, and nu_x K_xy=mu_x P_xy h_xh_y is symmetric. The proof is about these actual transitions and stationary fluxes.
+The assumptions pi>=b>0,Epi^s<=2 are exactly retained. No exact matching, r moment, weighting marginals or341/345 estimate enters the main theorem. If b>1 there is no admissible density; for0<b<=1 the class is nonempty via h=1. The universal conditional claim is coherent in both cases.
+The theorem is uniform over h,A,x for fixed rho,b. The general limit also fixes tau; the explicit limit fixes positive rho<=1/4. It does not assert convergence uniform when rho tends to zero with L or when b vanishes with L. The author package's pending345 wording records its freeze-time context. Parent acceptance of345 does not become a missing theorem premise.
+
+C2. DIAGONAL CAP, COUNTING NORMALIZATION AND HOLDER: PASS
+For Hamming distance j, P_xy=a^(L-j)((1-rho)/2)^j<=a^L=d, with equality on the diagonal. Positivity therefore gives pi(y)=h_y sum_z P_yz h_z>=d h_y^2 and h_y<=sqrt(pi_y/d).
+For any x,A, I_x=sum_{y in A}P_xy h_y<=sqrt(d)sum_{y in A}sqrt(pi_y). This is an ordinary finite sum, not a probability expectation.
+Since every atom has mu(y)=alpha, Epi^s<=2 means sum_y pi_y^s<=2/alpha. Holder with conjugate exponents2s and2s/(2s-1) gives sum_A sqrt(pi)<=m^(1-1/(2s))(sum_A pi^s)^(1/(2s))<=m^theta(2/alpha)^(1/(2s)).
+Because sqrt(B)=2^(1/(2s)), this is exactly sqrt(B)m^theta alpha^(-1/(2s)), giving I_x<=sqrt(Bd)m^theta alpha^(-1/(2s)). No factor alpha or2^L has been lost or inserted twice. The singleton point cap pi(x)<=B alpha^(-1/s) is the corresponding probability-to-counting bound.
+This upper bound controls a numerator only. The proof correctly does not infer small K(x,A) until an outside denominator estimate is available.
+
+C3. FLOOR AND RECIPROCAL CAUCHY OUTSIDE A: PASS
+The pointwise floor gives h_y>=b/g_y. Let p_x=sum_{y notin A}P_xy. Since each P_xy<=d, P(x,A)<=md and p_x>=1-md. The hypothesis md<1 makes p_x strictly positive and forces A to be proper.
+Apply Cauchy to sqrt(P_xy/g_y) and sqrt(P_xy g_y) over the complement. It yields p_x^2<=S_1 S_2, where S_1=sum_{outside}P_xy/g_y and S_2=sum_{outside}P_xy g_y>0. Therefore O_x=sum_{outside}P_xyh_y>=b S_1>=b p_x^2/S_2.
+S_2<=Pg(x)=P^2h(x). Replacing this denominator by a larger positive quantity decreases the lower bound, so O_x>=b p_x^2/P^2h(x)>=b(1-md)^2/P^2h(x). The direction in(3.1) is correct. No pointwise lower bound on g or h is assumed. All divisions are justified by positivity.
+
+C4. SECOND-POTENTIAL EVALUATION AND THE rho^3 FACTOR: PASS
+Semigroup composition gives P^2=P_(rho^2)=P_(rho^(3/2))P_sqrt(rho). Hence P^2h=P_t(Qh) with t=rho^(3/2), and ||Qh||2=1.
+For fixed x, P_t F(x)=sum_y mu(y)[P_t(x,y)/mu(y)]F(y). Its L2(mu) evaluation norm squared is sum_y P_t(x,y)^2/mu(y), rather than sum_y P_t(x,y)^2. Cauchy gives P^2h(x)<=that norm because the value is positive.
+Uniform mu and symmetric P_t imply sum_y P_t(x,y)^2=P_t^2(x,x)=P_(t^2)(x,x)=((1+rho^3)/2)^L. Dividing by alpha=2^-L leaves(1+rho^3)^L; the norm is(1+rho^3)^(L/2).
+Equivalently, its Walsh density kernel has coefficients t^|S| chi_S(x), whose squared sum is(1+t^2)^L. Both derivations give rho^3, not rho^2/rho^4, and the same normalization.
+Thus O_x>=b(1-md)^2(1+rho^3)^(-L/2). This dimension-dependent positive lower bound is all that is used; no hidden dimension-uniform positivity is inferred.
+
+C5. RATIO, EXPONENTS AND ACTUAL TRANSITION: PASS
+Dividing the proven numerator upper bound by the proven positive outside lower bound yields
+I_x/O_x<=(sqrt(B)/b)m^theta d^(1/2)alpha^(-1/(2s))(1+rho^3)^(L/2)/(1-md)^2.
+Since d=a^L and alpha^(-1/s)=2^(L/s), the exponential factor is[2^(1/s)a(1+rho^3)]^(L/2)=kappa^(L/2). Thus every constant/exponent in R_L(m) is correct.
+Actual g(x)=I_x+O_x. Hence K(x,A)=I_x/(I_x+O_x)=t/(1+t) for t=I_x/O_x>=0. This scalar map is increasing, giving K(x,A)<=R/(1+R). It is not permissible to substitute I_x alone for the ratio; the supplied proof does not do so. The upper bound is finite and strictly below1 whenever md<1, though it may approach1 in an uncovered asymptotic regime.
+
+C6. KILLED OPERATOR, PSD/RAYLEIGH AND ONE-SIDED FLUX: PASS
+K_A is the principal restriction to rows/columns in A, with killing when a transition leaves A. Every row sum is at most r_A=R/(1+R). Nonnegative entries therefore give supremum-coordinate norm at most r_A and spectral radius at most r_A. No invariance of support under full K is assumed.
+Restriction preserves detailed balance with the positive measure nu|_A, so K_A is self-adjoint in that weighted L2 space, whether or not the restricted measure is renormalized. Let u=h/g and psi=sqrt(pi). Direct diagonal similarity by psi takes M_sqrt(u) P M_sqrt(u) to K, and restriction gives the corresponding similarity on A. P is PSD and positive diagonal congruence preserves PSD; every principal submatrix is PSD. Consequently all killed eigenvalues are nonnegative.
+For a real f supported on A, <f,Kf>nu equals the killed quadratic form. Self-adjoint spectral ordering gives it<=r_A||f||nu^2. This proves the claimed exclusion of near-unit supported Rayleigh quotients, for signed as well as nonnegative tests. It does not assert that a general global second eigenfunction has such support.
+For x in A, K(x,A^c)=1-K(x,A)>=1-r_A. Sum against nu_x to get J(A)>=nu(A)(1-r_A). This is the one-sided flux definition and contains no missing half. It is valid even for nu(A)>1/2; standard conductance then uses the smaller stationary side. For a singleton this reduces to an upper bound on K(x,x) and its escape complement.
+
+C7. GENERAL EXPONENTIAL-CARDINALITY REGION: PASS
+s>1 gives theta=1-1/(2s) in(1/2,1). If kappa<1, both -log a and -log kappa/(2theta) are positive, so the permitted tau interval is nonempty.
+For integer m<=exp(tau L), md<=exp((tau+log a)L)<1 for every L>=1, and tends to0. The numerator m^theta kappa^(L/2)<=exp((theta tau+one-half log kappa)L) tends to0 because the second exponent is strictly negative. The denominator(1-md)^2 tends to1 uniformly in the same sets. Thus R->0 uniformly in h,A,x for fixed rho,b,tau, proving both radius->0 and escape->1.
+No statement at equality of either tau boundary is inferred. Arbitrary geometry is harmless because all previous estimates use cardinality only. Since tau<-log a<log2, these bounds do not accidentally require sets larger than the cube. Every fixed or subexponential-cardinality sequence eventually fits a fixed permitted positive tau.
+
+C8. EXPLICIT0<rho<=1/4 CONSTANTS AND ALL L: PASS
+First expand log kappa exactly as
+-(2rho/(1+rho))log2+log(1+rho)+log(1+rho^3).
+Using log(1+x)<=x gives the upper bound rho[1+rho^2-2log2/(1+rho)]. For rho<=1/4, rho^2<=1/16 and1/(1+rho)>=4/5, so this is at most rho[17/16-(8/5)log2].
+The identity log2=2 integral_0^(1/3)(1-t^2)^(-1)dt gives strict log2>2/3. Thus(8/5)log2>16/15 and16/15-17/16=(256-255)/240=1/240. Hence log kappa<-rho/240, with no decimal approximation or numerical search.
+For m<=exp(rho L/1920), theta<1 gives m^theta<=exp(rho L/1920), while kappa^(L/2)<=exp(-rho L/480). Their product is at most exp(-rho L/640), because1/1920-1/480=-1/640.
+Also md<=((5/8)exp(1/7680))^L. The elementary inequality log(1+x)>=x/(1+x) at x=1/15 gives log(16/15)>=1/16>1/7680. Therefore exp(1/7680)<16/15 and md<(2/3)^L. In particular md<1 and1-md>=1/3 for all L>=1, so(1-md)^(-2)<=9.
+Combining these yields R_L(m)<=(9sqrt(B)/b)exp(-rho L/640), exactly(1.7). It is an all-L bound for every positive integer m at most the real upper limit. Singletons qualify for every L; no floor/ceiling convention changes the inequality. The endpoint rho=1/4 is included, rho=0 excluded. The bound can exceed1 at small L, but R/(1+R) remains a valid probability bound; no false small-L convergence claim is made.
+
+C9. kappa=1 AND rho=1/2 LIMITS: PASS
+At kappa=1,m=1, d=a^L<=a<1. Thus R_L(1)<=sqrt(B)/(b(1-a)^2), and escape>=1/[1+sqrt(B)/(b(1-a)^2)]>0 uniformly in L. The same estimate applies when kappa<1 because kappa^(L/2)<=1. No assertion is made for large m at this boundary.
+At rho=1/2, s=3,a=3/4,1+rho^3=9/8, so kappa=27*2^(1/3)/32. Cubing positive sides gives numerator27^3*2=39366 and denominator32^3=32768, hence kappa>1. This invalidates extension of THIS sufficient criterion to all rho; it is not evidence of an actual resonance, an admissible counterexample, a sharp phase transition, or failure of some stronger proof.
+When kappa>1 even singleton R grows exponentially while its denominator tends to1, so the supplied bound need not give a uniform positive escape lower bound. The source correctly leaves that regime open.
+
+C10. SMALL MASS VERSUS CARDINALITY, NEGATIVE ROUTES AND CLAIM BOUNDARY: PASS
+Holder gives nu(A)=Epi1_A<=B mu(A)^(1-1/s). This is an upper bound on nu for a supplied base mass; it cannot be reversed to force small mu from small nu. The floor gives mu(A)<=nu(A)/b, hence |A|<=2^L nu(A)/b. At nu(A) of order exp(-c sqrt L), this still permits exp(L log2-c sqrt L) vertices, vastly more than exp(rho L/1920). Therefore the346 support theorem does not cover every small-mass cut left by345.
+No345 theorem is used in the main proof. The frozen source's pending345 wording is historical fabrication context and is not a current audit-status conclusion. Accepted344's obstruction to uniform Ph convergence remains compatible: no such uniform convergence is assumed here.
+The unsuccessful parent-supplied Holder identity is valid: with p=2s/(s+1)=1+rho and h^2=pi u, Holder with exponents2s/p and2/p gives||h1_A||p^2<=(Epi^s1_A)^(1/s)Eu1_A.341's Eu<=1 only controls its global last factor; it does not compare Eu1_A to nu(A). The proposed nonlinear energy-moment inequality stays explicitly unproved and unused.
+The retained reverse-Holder alternative also has the stated formal direction: for exponent r=1+1/rho and t=r/(r+1), ||g||r<=1 follows from energy plus classical HC. Holder applied to(k_x1_{y!=x}/g)^t g^t gives E[k_x1_{y!=x}/g]>=(E[k_x^t1_{y!=x}])^(1/t). Its bracket is c_t^L-((1+rho)^t/2)^L by the product kernel and removal of the single x atom. No all-rho comparison follows in the packet, and it is not a premise of the final theorem.
+The numerator-only point argument, denominator gap, unproved inequality and restricted criterion failure are preserved. They are not upgraded to accepted broader lemmas. No global second eigenvalue/gap, critical r-moment, general localized family, optimal parameter boundary or physical/continuum claim follows. The original question remains OPEN.
+
+2. PRIMARY CONTEXT, PROVENANCE AND INDEPENDENCE LIMITS
+Main346 requires no non-elementary external theorem beyond the elementary finite identities supplied. Primary abstract/metadata checks confirm only the modest contextual descriptions of scaling and bridge work. No theorem from He, Lollier-Neuman or Georgiou-Pavon is imported. In particular uniform positivity of another chain is not inferred from the cube kernel's entrywise positivity; its smallest entries decay with L.
+The exact raw original payloads, source341/344 contextual inputs and previous reports retain their historical labels. Same auditor previously reviewed341,344,345; I did not fabricate346. This is separate role with substantial shared-provider/session/filesystem exposure, not blind, human, formal or statistical independence. No exact backend attestation or novelty clearance.
+There was no inbound coordination after launch, no subagent, source/PR/state mutation, merge, mathematical execution, runtime/build, score or PDF assessment. Required CI and unchanged-source integration remain outside this verdict. The E345 parent primary-followup note was not read or used.
+
+3. OBJECTIONS AND TERMINAL RETENTION
+No unresolved mathematical objection invalidates the bounded result. Tested attacks included probability/counting normalization; numerator-to-ratio substitution; reciprocal denominator direction; forgetting p_x^2; using rho^2 instead of rho^3 in the evaluation norm; missing the square root; row-sum versus weighted-L2 spectral bounds; fake invariant support; log constants; small-L/cardinality endpoints; and reversing a stationary-mass bound. All are resolved as above.
+Residuals are material and intentional: only kappa<1/exact explicit region gives asymptotic exclusion; constants are nonoptimal; large supports and other rho remain open; fixed-rho/fixed-b limits do not imply endpoint uniformity; no admissible collapsing construction or global gap result.
+Full report, factual context, received assignment, all19 raw fabrication payloads/manifest, primary tool responses, exact Git source/tree/diffs/stat, gh and connector body captures, byte checks and retention/cleanup receipts are retained under D:\Datos\the-eriksson-programme\autonomia\evidencia-346\source-audit346A. Raw manifest excludes itself. Own isolated C stage is removed only after byte-identical D retention and path/reparse checks; no foreign files/shared worktree are removed.
+PASS binds exactly HEAD d2fac76661cb9383e868d78483514880debff8af and the specified source/body. No later rewrite, squash/rebase, broader theorem or publication claim is covered.
+

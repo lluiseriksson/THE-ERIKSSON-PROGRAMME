@@ -1,0 +1,112 @@
+SOURCE324A -- Endpoint high-degree hypercontractivity without a level-count prefactor
+Lluis Eriksson; analytical derivation with disclosed OpenAI/Codex assistance.
+Candidate for terminal exact-source audit. No formal proof, numerical execution, novelty or publication claim. This is a research source, not a separate paper. Frozen322B is unchanged.
+
+FINAL PROPOSED STATEMENT (notes below retain discovery order)
+For fixed0<rho<1, q=1+rho, p=q/(q-1), Q=P_sqrt(rho) on the uniform probability L-cube, let H_m project onto Walsh degrees>=m,1<=m<=L. There is C_rho>0 depending only onrho such that, with a=(-lnrho)/[4(1-q/2)], c=a(q-1)/2,
+ ||Q H_m||_(2->p)<=rho^(m/4)+exp(-cm)+exp(-C_rho c^2 m^2/L).
+For m>L the projection is zero. No bound uniform at rho=0 or1 is claimed. The previously conditional rate modulus in noteA is proved by noteB's exact finite entropy identity and analytic expansion, using the attributed Kirshner--Samorodnitsky Theorem1.8 and Lemma2.14. This packet retains both notes without silently upgrading their historical status.
+
+DENSITY CONSEQUENCE, WITH FULL BLOCK ARGUMENT
+Let s=(1+rho)/(1-rho), r>=0, E r=1, ||r||_s<=B uniformly inL, and all weighting-law marginals on at mostk coordinates be exactly uniform. Define S=Q M_r Q, T=M_sqrt(r) P_rho M_sqrt(r), h=r-1. Put d=floor(k/2), Pi=projection onto degrees<=d, H=I-Pi=H_(d+1), D=S-P_rho=Q M_h Q. Walsh matrix entries of Pi D Pi vanish because hhat(A symmetric_difference C)=0 whenever|A|,|C|<=d, since2d<=k. Thus D=H D+Pi D H. With 1/s+2/p=1 and ||h||_s<=B+1, Holder and ordinary endpoint hypercontractivity give each block norm <=(B+1)||QH||_(2->p). For the second block use ||QPi||_(2->p)<=1; for the first ||Q||_(2->p)<=1. Hence
+ ||S-P_rho||<=2(B+1)[rho^((d+1)/4)+exp(-c(d+1))+exp(-C_rho c^2(d+1)^2/L)].
+If k=L then exact all-coordinate marginals force r=1 and the norm difference is zero, independently of this upper bound. If k/sqrtL->infinity, all three displayed terms tend tozero, so the actual top two eigenvalues ofS converge to1,rho. These agree, including zero eigenvalues, withT: writing A=Q M_sqrt(r), S=AA*,T=A*A proves equality of full finite spectra. Thus lambda1(T)->1,lambda2(T)->rho and1-lambda2/lambda1->1-rho even whenrhaszeros. No Perron stationary-law marginal assumption or conclusion is substituted for weighting-law marginals.
+
+This pays removal of the logarithmic sufficient-scale loss of323 if the terminal audit accepts it. It neither proves necessity nor treats k comparable tosqrtL, nor a uniform endpoint-inrho limit. It uses no density floor, UI, supercritical moment or locality. No physical/continuum conclusion. Existing319 collapse for eachfixedpowerbelow1/2 and accepted323 remain unchanged. External priority of this consequence is unestablished.
+
+FIXED ADVERSE CHECKS
+C1 uniform probability normalization, dualp/q and exact Q parameter.
+C2 attributed KS Theorem1.8 concentration argument and full admissible interval.
+C3 exact entropy-table identity forphi, including logbase and factoronehalf.
+C4 local exponential-tilt minimizer via positive covariance and KL identity, no assumed large-deviation equivalence.
+C5 diagonal log-MGF and inverse expansion throughfourthorder with controlledremainders.
+C6 eta's exact natural-logconversion and positive coefficient(2-q)/(3q(q-1)).
+C7 continuous positive compactquotient, no false globalexplicitconstant.
+C8 truncated L2 estimate and signedtail positivekernelhandling.
+C9 alltailcases/domain/zero tail, noLpcontraction claimedforH.
+C10 operatornormduality and commutation; nohiddenlevelsumdimensionprefactor.
+C11 exactlowblockcancellation and fullspectrumincludingzeros.
+C12 k/sqrtL sufficientversusnecessity, attribution, noformal/independence/physicalclaims, groupedpublicationpolicy.
+Falsifier: failure of any identity or an exact counterexample. Abandon afterthree substantive units without a valid quantitative estimate; preserve negative evidence. This is one active mathematical question, not another competing route.
+
+RETAINED DERIVATIONS
+
+QUESTION324 / exploratory note A -- remove the level-sum logarithmic loss
+Status: unreviewed derivation, NOT a theorem accepted for the frozen322B manuscript. Do not move the current publication gate or inherit any source323 assessment. One new mathematical question after323's accepted sufficient-scale proof.
+
+Question: for fixed0<rho<1, Q=P_sqrt(rho), p=1+1/rho, and H_m the projection onto Walsh degrees at least m, does ||Q H_m||_(2->p) tend to zero whenever m/sqrt(L) tends to infinity? This would strengthen the323 sufficient k>>sqrt(L ln L) scale to k>>sqrt(L) at bounded critical density norm. No sharpness claim or counterexample for k~sqrtL is yet supplied.
+Hypotheses: uniform probability cube, fixedrho, arbitrary real functions. Later density consequence uses only meanone, nonnegative density, bounded critical Ls norm and exact weighting marginals.
+Mechanism: duality + truncation + distribution-sensitive hypercontractivity, rather than summing homogeneous levels. Falsifier: incorrect rate identity/curvature, failed signed-function use, or a high-tail counterexample. Abandon after3substantive units without a quantitative estimate; retain failures. This note is the first analytical attempt, no executable computation.
+
+PRIMARY INPUT TO CHECK
+Kirshner--Samorodnitsky arXiv1909.11929v1, Theorem1.8, Section2.1.7 eta, Lemma2.14. https://arxiv.org/html/1909.11929v1 . For q=1+rho, epsilon=(1-sqrt(rho))/2, and r_q(f)=L^-1 log2(||f||q/||f||1), the stated inequality is
+ ||Q f||2 <=2^{L eta(r_q(f),epsilon)} ||f||q.
+Eta is negative for positive admissible arguments, continuous, decreasing/concave, and its derivative at zero is zero. Qualitative negativity alone does not prove the needed quadratic modulus. The intended new ingredient is an actual expansion, analogous in spirit but not identical to323. Theorem1.8 is credited external input; no original hypercontractive theorem is claimed.
+
+CONDITIONAL TRUNCATION ARGUMENT (assuming a verified eta modulus)
+Write q=1+rho in(1,2), dual to p. Suppose for this fixedrho and every admissible x,
+ -ln(2) eta(x,epsilon) >= C [ln(2) x]^2
+for some C>0. This is still to be established carefully below.
+By duality and commuting self-adjoint Q,H_m,
+ ||Q H_m||_(2->p)=||H_m Q||_(q->2).
+For ||f||q=1 and M=exp(a m), decompose f=b+t with b=f1_{|f|<=M}, t=f1_{|f|>M}. The bounded piece has ||b||2<=M^{1-q/2}, since E|b|²<=M^{2-q}E|f|q. Thus
+ ||H_m Qb||2<=rho^(m/2) M^{1-q/2}
+ =exp[-(-lnrho/2-a(1-q/2))m].
+Choose fixed a=(-lnrho)/[4(1-q/2)]>0, so this is exp[(lnrho)m/4]. No Lp contraction of H_m is used: H_m Q is estimated in L2 by its spectral multiplier.
+For t, ||t||1<=M^{1-q} E|t|q<=exp[-a(q-1)m]. Let c=a(q-1)/2>0.
+If ||t||q<=exp(-c m), ordinary endpoint hypercontractivity bounds ||H_m Qt||2<=exp(-c m).
+Otherwise ln(||t||q/||t||1)>=c m. The assumed refined bound gives
+ ||H_m Qt||2<=||Qt||2<=exp[-C c² m²/L]||t||q<=exp[-C c² m²/L].
+The zero-tail case is harmless. Combining the two alternatives gives a valid common upper bound
+ ||Q H_m||_(2->p)<=exp[(lnrho)m/4]+exp(-c m)+exp[-C c²m²/L].
+Hence m/sqrtL->infinity implies the tail norm tends tozero without a dimension prefactor. The old exact low-low-block proof would give ||S-P_rho||<=2(B+1)||QH_(floor(k/2)+1)||_(2->p). This is a conditional inference, not yet a published conclusion.
+
+PROPOSED ETA CURVATURE CALCULATION -- REQUIRES AUDIT OF IDENTITY
+Set d=(1-rho)/2=2epsilon(1-epsilon), sigma=(1-t)/2. The function phi(sigma,d) in Section2.1.6 appears to be minus the joint large-deviation cost, in base2, of correlated signs X,Y with EX=EY=0 and E(XY)=rho, constrained to both means t. Its defining joint-type entropy maximization should prove this identity exactly; this correspondence must be written out, not assumed from analogy.
+Let I1(t)=[(1+t)ln(1+t)+(1-t)ln(1-t)]/2 =t²/2+t⁴/12+O(t⁶).
+For diagonal tilt lambda the joint log-MGF is
+ K(lambda)=ln[(1+rho)cosh(2lambda)/2+(1-rho)/2]
+ =q lambda²+(q/3-q²/2)lambda⁴+O(lambda⁶).
+By symmetry and strict convexity of the joint log-MGF near0, the maximizing pair of tilt parameters for the equal-mean constraint should be equal. Write b=q/3-q²/2. From2t=K'(lambda),
+ lambda=t/q-2b t³/q⁴+O(t⁵),
+ Ijoint(t,t)=sup_lambda[2t lambda-K(lambda)]
+ =t²/q-bt⁴/q⁴+O(t⁶)
+ =t²/q+(q/2-1/3)t⁴/q³+O(t⁶).
+Then
+ (1/2)Ijoint-I1/q=(q-1)(2-q)t⁴/(12q³)+O(t⁶)>0 to leading order.
+The eta definition has 1-H2(sigma)=[q/(q-1)]x, hence natural r=ln2*x=(q-1)I1/q. Its natural deficit is expected to be
+ -ln2 eta(x,epsilon)=(1/2)Ijoint-I1/q
+ =[(2-q)/(3q(q-1))]r²+O(r³).
+The coefficient is positive for fixed1<q<2. The compact quotient argument could extend it globally if continuity and strict negativity hold on the full admissible x interval[0,(q-1)/q]. Need verify endpoint definitions and exact phi-to-rate identity; do not take this as proved merely because the coefficient is plausible.
+
+SCOPE
+A correct proof would remove the logarithmic sufficient-condition loss in323; it would still not prove necessity or resolve k comparable tosqrtL. Do not publish an isolated small corollary. Keep this research separate from the frozen322B production gates and preserve the exact accepted323 result regardless of this attempt's outcome. No Lean, numerical or symbolic computation executed, no score, no novelty or reviewer-independence claim.
+
+QUESTION324 supplementary derivation B -- pay the missing rate-function identity
+Exploratory analytical continuation of question324-truncation.txt, not audited, not incorporated into frozen322B. No mathematical program executed.
+
+Let rho in(0,1), q=1+rho, d=(1-rho)/2, epsilon=(1-sqrt(rho))/2, so d=2epsilon(1-epsilon). Under the correlated sign law P, P(++ )=P(-- )=(1-d)/2=q/4, and P(+-)=P(-+)=d/2=(2-q)/4. This law has full support. Constrain both empirical negative-sign proportions to sigma=(1-t)/2, for small t>=0. Every joint probability table with those marginals is
+ nu(--)=sigma-x, nu(-+)=nu(+-)=x, nu(++)=1-sigma-x,
+with0<=x<=sigma. Its entropy in base2 is
+ H2(nu)=H2(sigma)+sigma H2(x/sigma)+(1-sigma)H2(x/(1-sigma)).
+Therefore
+ -D2(nu||P)=H2(sigma)-1+sigma H2(x/sigma)+(1-sigma)H2(x/(1-sigma))
+ +(1-2x)log2(1-d)+2x log2(d).
+Maximizing overx is EXACTLY phi(sigma,d) as defined in Kirshner--Samorodnitsky Section2.1.6. Thus phi(sigma,d)= -Ijoint(t,t)/ln2, where Ijoint is the minimum natural relative entropy under the two mean constraints. No asymptotic counting or unproved large-deviation equivalence is needed for this finite probability variational identity.
+
+For t sufficiently small, the strictly positive reference law has covariance matrix [[1,rho],[rho,1]], positive definite. The analytic inverse theorem applied to the gradient of its log-MGF provides a unique small pair of tilts realizing the constrained means. The entropy minimizer is that exponential tilt: writing its density proportional to exp(lambda1 X+lambda2 Y) gives the KL identity D(nu||P)=D(nu||P_lambda)+lambda1 t+lambda2 t-log E_P exp(lambda1 X+lambda2 Y). Nonnegativity of the first term proves minimization, with equality forP_lambda. Symmetry under swappingX,Y and local uniqueness imply lambda1=lambda2=lambda. Consequently the diagonal log-MGF K(lambda)=log E_P exp(lambda(X+Y)) yields exactly
+ Ijoint(t,t)=2t lambda-K(lambda), K'(lambda)=2t.
+Its expansion and inversion are those written in noteA, and hold analytically in t nearzero.
+
+The entropy deficit I1(t)=ln2[1-H2((1-t)/2)] is even analytic with leading t²/2. The eta definition has1-H2(sigma)=q x/(q-1). Hence the natural concentration argument r=(ln2)x=(q-1)I1(t)/q, an analytic function ofv=t² with positive linear coefficient(q-1)/(2q); it has a local analytic inverse inr. Combining the expansions gives
+ -ln2 eta(x,epsilon)=(1/2)Ijoint(t,t)-I1(t)/q
+ =[(q-1)(2-q)/(12q³)]t⁴+O(t⁶)
+ =[(2-q)/(3q(q-1))]r²+O(r³), r=(ln2)x.
+All constants are for fixedrho, not uniform asrho approaches0 or1.
+The explicit Section2.1.7 eta definition is continuous on its full compact admissible interval[0,(q-1)/q]. Lemma2.14 supplies strict negativity forx>0 at fixed0<epsilon<1/2. Therefore the quotient[-ln2 eta(x,epsilon)]/[(ln2)x]² extends continuously and positively tozero; its compact minimum C_rho>0 pays exactly the global modulus assumed in noteA. Its minimum is not asserted equal to its local coefficient.
+
+Thus the truncation argument of noteA has a proposed unconditional analytical completion, contingent only on the explicitly cited Theorem1.8 and Lemma2.14. Its signed-tail use is legitimate: Q has a positive kernel and ||Qf||2<=||Q|f|||2, so the attributed bound also controls signed functions; H_m is used only as an L2 contraction after applyingQ to the tail. No Fourier property of |f| is required. The bound remains valid if an assumed large-tail case would force the concentration argument above the admissible interval: that case is then empty, not a use of eta outside its domain.
+
+Candidate conclusion: with a=(-lnrho)/[4(1-q/2)], c=a(q-1)/2 and m>=1,
+ ||QH_m||_(2->p)<=rho^(m/4)+exp(-cm)+exp(-C_rho c²m²/L), p=q/(q-1).
+Consequently exact weighting-law marginals through k with k/sqrtL->infinity and bounded criticalLs imply ||S-P_rho||->0 and actualgap->1-rho. This removes the logarithmic sufficient-condition loss in323 if terminal audit confirms every identity. It does not settle k~sqrtL or necessity. No novelty, independent-review or formal-verification claim. Keep this candidate out of the already frozen322B production; decide grouping only after its own terminal source audit. The current323 bound remains accepted and intact.
