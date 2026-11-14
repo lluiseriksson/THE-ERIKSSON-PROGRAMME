@@ -1,0 +1,10 @@
+Parent requested a layout-only source347B candidate after actual production348B:
+two identical10-page PDFs SHA69adcccf59eb7297feca03bdaab851bac047600c21856d1ce439356290d74f8c,
+source347 at4a44431e8648018908ddc2760840977db9928aac.
+Correct the sole49.38486pt page9 overflow by adding spaces after commas in
+Sources341,344,345,346. Rewrite only the stale source-preparation paragraph
+with explicit original temporal status, subsequent source347A accepted
+analytical audit and pending exact new-PDF assessment. No inherited grade.
+Preserve every mathematical byte and support section. No349/350 results.
+OwnC _drafts/stationary347b, retainedD evidencia-348/layout347B.
+No git/runtime/state. Separate editorial audit follows on frozen packet.

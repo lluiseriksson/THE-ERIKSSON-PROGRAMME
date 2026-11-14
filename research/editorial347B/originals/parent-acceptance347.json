@@ -1,0 +1,24 @@
+{
+  "utc": "2026-11-14T01:38:03.1681908Z",
+  "source": "4a44431e8648018908ddc2760840977db9928aac",
+  "report_sha256": "b799fa050eb884443ba0e3646764860ade7dee1b2036643d53c6a52a5eb9eb57",
+  "context_sha256": "725da66cd3d6aa69f387bb55cbadf5a1ea05642f3044d42073a665fb8c288bb1",
+  "manifest_sha256": "87b841bd3accd452bee7182e338e198330cc4fd29a6901fbd171ceaab4860976",
+  "payloads_verified": 188,
+  "parent_read_full_report": true,
+  "parent_read_full_context": true,
+  "scope": "Accepted the bounded grouped four-theorem source result at the frozen subject. All twelve adverse checks read. This is not a PDF grade, formal proof, novelty clearance, publication, global gap or critical-r-moment proof.",
+  "minor_objections": [
+    "Integer k convention should be explicit in a future editorial edition; current bound understood for integer degree order",
+    "All-L block construction wording can be clearer; exact fallback and original source preserve admissibility",
+    "Historical conditional accepted-version sentence retained, not a missing mathematical assumption"
+  ],
+  "independence": "Continuing involved auditor; shared provider, filesystem, prior source reports. No independence claimed.",
+  "failed_read_operations": [
+    "Initial combined tool output truncated in report A10-A12; full missing section reread separately",
+    "Guessed348 baseline relay path absent; actual343 root relays located and read"
+  ],
+  "head_and_body_unchanged": true,
+  "body_sha256": "439d8e1180d1a6cdd9d5eaa992426c85c2da73c066cf7bd2369fa568b15cb715",
+  "ci_at_acceptance": "honesty SUCCESS; core pending. No merge yet."
+}

@@ -1,0 +1,378 @@
+Stationary marginals and bottleneck restrictions for Boolean Doob kernels
+Lluis Eriksson
+14 November 2026
+
+Plain-text inspection companion to the exact TeX manuscript. Mathematical TeX notation, citation keys and cross-reference keys are retained deliberately; no mathematical expressions are rewritten. Macros: \E means expectation, \norm{x} means norm of x, \ip{x}{y} means inner product, \one means indicator/constant one. The accepted346 section is expanded at its exact include location.
+
+
+ABSTRACT
+We study positive multiplicative transforms of the Boolean noise kernel whose actual stationary density has exact low-order marginals. A finite-exponent moment bound gives quantitative convergence of the smoothed potential, the Perron normalization, and the weighting density in Hellinger distance. This conclusion cannot be strengthened to uniform convergence of the potential: a product of block majorities yields an admissible counterexample even with a bounded stationary density. At the critical moment exponent and square-root matching scale, a comparison of cut energies shows that every sufficiently low-conductance cut has exponentially small stationary mass. The comparison uses a previously proved weighting-density theorem only on an auxiliary operator; it does not identify that operator with the actual Doob kernel. A separate bound excludes almost-unit killed modes on exponentially small-cardinality supports in an explicit noise range, without requiring marginal matching. The dimension-uniform stationary spectral-gap question remains open. We give full proofs of these linked results and state the external and programme dependencies explicitly.
+
+
+The model and the theorem map
+Let $\mu$ be uniform probability on $\Omega_L=\{-1,1\}^L$, $L\geq1$. The noise operator $P_t$ has Walsh multipliers $t^{|S|}$. Fix $0<\rho<1$, and write $P=P_\rho$, $Q=P_{\sqrt\rho}$, so $Q^2=P$. All unqualified norms and expectations use $\mu$. Given $h>0$, rescale it so that
+\[
+ \E hPh=\norm{Qh}_2^2=1.
+\]
+Define
+\[
+ g=Ph,\quad \pi=hg,\quad a=\E h,\quad
+ u=h/g,\quad N=\E u,\quad r=u/N.
+\]
+Both $\pi$ and $r$ have mean one. The actual Markov kernel, stationary probability, and symmetric edge weights are
+\[
+ K(x,y)=P(x,y)\frac{h(y)}{g(x)},\qquad
+ \nu(x)=\mu(x)\pi(x),\qquad
+ W(x,y)=\mu(x)P(x,y)h(x)h(y).
+\]
+The rows of $K$ sum to one and $\nu(x)K(x,y)=W(x,y)=W(y,x)$. For $T_d=M_{\sqrt d}PM_{\sqrt d}$, the matrix $A_u=M_{\sqrt u}PM_{\sqrt u}$ has positive eigenvector $\sqrt\pi$ with eigenvalue one. It is similar to $K$ through multiplication by $\sqrt\pi$. Positivity and positive semidefiniteness imply that this is its simple Perron eigenvalue and that its spectrum is nonnegative. Thus
+\[
+ T_r=A_u/N,\qquad
+ \gamma=1-\lambda_2(K)=1-\frac{\lambda_2(T_r)}{\lambda_1(T_r)}.
+\]
+The density $\pi$ is stationary; $r$ is the weighting density of the symmetric transfer operator. They are not interchangeable.
+
+Exact degree-$k$ matching means
+\begin{equation} [label: matching] 
+ \E[\pi\chi_S]=0\quad(1\leq |S|\leq k),\qquad 0\leq k\leq L.
+\end{equation}
+Equivalently, every labelled marginal on at most $k$ coordinates is uniform. The remaining question fixes $\rho,b,C>0$ and asks whether
+\begin{equation} [label: critical] 
+ s=\frac{1+\rho}{1-\rho},\quad \pi\geq b,\quad \E\pi^s\leq2,
+ \quad k_L/\sqrt L\longrightarrow C
+\end{equation}
+together with \eqref{matching} forces a uniformly positive $\gamma$, or permits an admissible family with $\gamma\to0$. The nontrivial floor range is $0<b<1$: $b>1$ is infeasible and $b=1$ forces $\pi=h=1$, by the scaling lemma below. No limit uniform in $\rho\to0,1$, $b\to0$, or $C\to0$ is asserted.
+
+The results address four different parts of this question.
+
+- Theorem~\ref{rigidity} controls finite-exponent potentials, normalization, Hellinger distance and fixed-degree compressions, without a stationary floor. It does not give exact matching or a critical moment bound for $r$.
+- Theorem~\ref{supfailure} satisfies every condition in \eqref{critical} and refutes uniform convergence $Ph\to1$. It does not produce a collapsing spectral gap.
+- Theorem~\ref{capacity} applies to the actual cut flux and excludes low-conductance cuts above an explicit exponentially small stationary-mass threshold. It does not control all smaller cuts.
+- Theorem~\ref{support346} bounds actual transition probabilities and killed spectra on small-cardinality supports without matching, with an explicit asymptotic range $0<\rho\leq1/4$. Small stationary mass does not imply that cardinality restriction.
+
+These results consolidate programme sources341,344,345,346. They are analytical statements about finite Boolean kernels, with no claimed physical or continuum spectral-gap consequence.
+
+Quantitative rigidity of the smoothed potential
+theorem  [label: rigidity] 
+Suppose \eqref{matching} holds and $\norm\pi_p\leq B$ for a finite $p>1+\rho$ and $B\geq1$. Put
+\[
+ p'=\frac p{p-1},\qquad
+ \eta=\sqrt{\rho\max\{1,(p-1)^{-1}\}}<1,\qquad
+ \varepsilon=B\eta^{k+1}.
+\]
+Then
+\begin{align}
+ a^2&\geq(1+\varepsilon^2)^{-1},&
+ \norm{Qh-a}_2^2&\leq\frac{\varepsilon^2}{1+\varepsilon^2}, [label: rig1] \\
+ \norm{Qh-1}_2&\leq\varepsilon,& \norm{g-1}_{p'}&\leq\varepsilon, [label: rig2] \\
+ 1&\leq\lambda_1(T_r)\leq1+\varepsilon^2,&
+ \norm{\sqrt r-\sqrt\pi}_2&\leq\varepsilon, [label: rig3] \\
+ \norm{r-\pi}_1&\leq2\varepsilon,&
+ \norm{h/a-\pi}_1&\leq\varepsilon. [label: rig4] 
+\end{align}
+In particular every marginal of $r$ on at most $k$ coordinates is within total variation $\varepsilon$ of uniform, where total variation is half the $L^1$ distance. At the critical exponent in \eqref{critical}, one may take
+\begin{equation} [label: criticalconstants] 
+ B=2^{1/s},\qquad \eta^2=\max\{\rho,(1-\rho)/2\}<1.
+\end{equation}
+
+Proof.
+Write $v=1-a^2=\norm{Qh-a}_2^2$. Let $\Pi_{>k}$ project onto Walsh degrees greater than $k$. We first show
+\begin{equation} [label: tail] 
+ \norm{\Pi_{>k}g}_{p'}\leq\eta^{k+1}\sqrt v.
+\end{equation}
+For $p'\leq2$, this follows from monotonicity of probability norms and the high-degree $Q$ multiplier $\rho^{(k+1)/2}$. For $p'>2$, factor $Q=P_tP_\beta$ with $t=(p'-1)^{-1/2}$ and $\beta=\sqrt\rho/t=\eta<1$. Boolean hypercontractivity gives $\norm{P_tf}_{p'}\leq\norm f_2$; applying it to $P_\beta\Pi_{>k}Qh$ proves \eqref{tail}. Projections commute with noise operators. No $L^{p'}$ norm bound for the projection itself is used. The scalar hypercontractive inequality used here is $\norm{P_tf}_v\leq\norm f_w$ when $1<w\leq v$ and $t^2\leq(w-1)/(v-1)$; see \cite{hyper}.
+
+Matching gives $\E\pi\Pi_{\leq k}g=a$. Consequently H\"older and \eqref{tail} imply $\E\pi g\leq a+\varepsilon\sqrt v$. Cauchy--Schwarz under the finite measure $h\,d\mu$ gives
+\[
+ 1=(\E hg)^2\leq(\E h)(\E hg^2)=a\E\pi g.
+\]
+Hence $v/a\leq\varepsilon\sqrt v$. If $v>0$, division yields $\sqrt v\leq a\varepsilon$, proving \eqref{rig1}; if $v=0$ the same conclusions are immediate. Also
+\[
+ \norm{Qh-1}_2^2=2(1-a)
+ \leq 2\bigl[1-(1+\varepsilon^2)^{-1/2}\bigr]\leq\varepsilon^2.
+\]
+The last elementary inequality follows by differentiation. Since $Q:L^2\to L^{p'}$ is contractive under the same parameters (or by norm monotonicity if $p'\leq2$), $g-1=Q(Qh-1)$ proves \eqref{rig2}. If $k=L$, the actual tail is zero, so $v=0$ and invertibility of $Q$ gives $h=1$.
+
+For completeness, the normalization estimate uses positivity in an essential direction. Set $X=M_{\sqrt u}Q$. Then $XX^*=A_u$ has Perron root one and is positive semidefinite. The positive operator $X^*X=QM_uQ$ has the same spectrum, so its Rayleigh quotient at the unit vector $1$ gives
+\begin{equation} [label: reciprocal] 
+ N=\E[h/(Ph)]\leq1.
+\end{equation}
+With $z=1/g$, $\E_\pi z=a$ and $\E_\pi z^2=N$. Thus $a^2\leq N\leq1$, and $\lambda_1(T_r)=1/N$ proves the first part of \eqref{rig3}. Because $r=\pi z^2/N$,
+\[
+ \E\sqrt{r\pi}=a/\sqrt N\geq a,
+ \qquad \norm{\sqrt r-\sqrt\pi}_2^2
+ =2(1-a/\sqrt N)\leq2(1-a)\leq\varepsilon^2.
+\]
+Factor $r-\pi=(\sqrt r-\sqrt\pi)(\sqrt r+\sqrt\pi)$ and use Cauchy--Schwarz to obtain the first bound in \eqref{rig4}. Finally
+\[
+ \norm{h/a-\pi}_1=\E_\pi|z/a-1|
+ \leq\frac{\sqrt{N-a^2}}a\leq\frac{\sqrt{1-a^2}}a\leq\varepsilon.
+\]
+Marginalization contracts total variation. Substitution of $p=s$ gives \eqref{criticalconstants}; indeed $s>1+\rho$.
+End of proof.
+
+For $V_m$ the degree-at-most-$m$ Walsh space, put $D_{L,m}=\sum_{j=0}^m\binom Lj$. If $2m\leq k$, then
+\begin{equation} [label: compression] 
+ \norm{\Pi_{\leq m}(M_r-I)\Pi_{\leq m}}
+ \leq2\varepsilon D_{L,m},\qquad
+ \norm{\Pi_{\leq m}(QM_rQ-P)\Pi_{\leq m}}
+ \leq2\varepsilon D_{L,m}.
+\end{equation}
+Indeed $\norm f_\infty\leq\sqrt{D_{L,m}}\norm f_2$ on $V_m$, and matching gives $\E\pi f_1f_2=\E f_1f_2$. Thus $|\E(r-1)f_1f_2|\leq2\varepsilon D_{L,m}\norm{f_1}_2\norm{f_2}_2$. The second bound follows by inserting the contraction $Q$, which preserves $V_m$. For fixed $m$ and $k\asymp\sqrt L$ both bounds vanish. This controls a compression, not the full operator or its cross blocks. Exact nonzero weighting marginals, such as those in source338, are compatible with this estimate.
+
+An admissible failure of uniform convergence
+We first record a classical finite scaling fact, with a proof to make the construction explicit. Existence and uniqueness of finite positive Schr\"odinger scaling are classical; \cite[Theorem3 and Lemma1]{gp} give a Hilbert-metric treatment. The lemma is not a novelty claim.
+lemma  [label: scaling] 
+Let $P$ be a reversible finite Markov matrix with positive stationary probabilities $\mu_x$ and positive diagonal entries. For every strictly positive density $\pi$ with $\E_\mu\pi=1$, there exists a unique positive $h$ satisfying $hPh=\pi$.
+
+Proof.
+Set $R_{xy}=\mu_xP_{xy}=R_{yx}$, $w_x=\mu_x\pi_x>0$, and
+\[
+ J(z)=\tfrac12\sum_{x,y}R_{xy}e^{z_x+z_y}-\sum_xw_xz_x.
+\]
+Its gradient has entries $\mu_x(e^{z_x}(Pe^z)_x-\pi_x)$, and its Hessian quadratic form is
+\[
+ \tfrac12\sum_{x,y}R_{xy}e^{z_x+z_y}(v_x+v_y)^2>0\quad(v\ne0),
+\]
+by the diagonal terms. To verify existence rather than merely strict convexity, write $M=\max z_x$, $m=\min z_x$, $c_0=\tfrac12\min R_{xx}>0$, $w_* =\min w_x>0$. Since $\sum w_x=1$,
+\[
+ J(z)\geq c_0e^{2M}-M,\qquad J(z)\geq w_*(M-m)-M.
+\]
+On a sublevel $J\leq A$, the first bound gives $M\geq-A$ and an upper bound $M\leq M_A$, since $c_0e^{2M}-M\to\infty$ as $M\to\infty$. The second then gives $m\geq-A-(A+M_A)/w_*$. Sublevels are compact, so a unique minimizer exists. Its zero gradient gives $h=e^z$ and $hPh=\pi$, which also yields energy one. The bounds here need not be uniform in dimension.
+End of proof.
+
+theorem  [label: supfailure] 
+Fix $0<\rho<1$, $0<b<1$, $C>0$, and any integer sequence $0\leq k_L\leq L$ with $k_L/\sqrt L\to C$. There exist $h_L>0$ with energy one such that their actual stationary densities satisfy \eqref{matching} and \eqref{critical}, and
+\[
+ \liminf_{L\to\infty}\norm{P_\rho h_L-1}_\infty
+ \geq\frac{t}{2(3+2t)}>0,
+\quad
+ t=\min\left\{\frac{1-b}{2},\frac{2^{1/s}-1}{2},\frac14\right\}.
+\]
+The densities may be chosen to obey $1-t\leq\pi_L\leq1+t$ pointwise.
+
+Proof.
+For sufficiently large $L$, let $m=k_L+1\leq L$ and choose the largest odd integer $n\leq L/m$. Thus $L/m-2<n\leq L/m$, $m\sim C\sqrt L$, and $n\sim\sqrt L/C$. Choose $m$ disjoint blocks of $n$ coordinates. On block $i$, let $\phi_i$ be the sign of the coordinate sum, and put $F=\prod_{i=1}^m\phi_i$. Odd block size makes each $\phi_i$ balanced and $\{-1,1\}$-valued. Each nonzero Fourier term of $F$ uses a nonempty subset of every block, hence has degree at least $m$. Therefore
+\[
+ \pi=1+tF
+\]
+has mean one and exact matching through degree $k_L$. The chosen $t$ gives $\pi\geq1-t\geq b$ and $\pi^s\leq(1+t)^s<2$. Lemma~\ref{scaling} supplies its unique $h>0$ with $hPh=\pi$. For any finite exceptional dimensions with $m>L$, use $\pi=h=1$ instead.
+
+At the all-plus point, the noised bits in a block have mean $\rho$. If $S_n$ is their sum, Chernoff's bound with parameter $\operatorname{arctanh}\rho$ gives
+\[
+ q_n=\Pr(S_n<0)\leq\E e^{-(\operatorname{arctanh}\rho)S_n}
+ =(\sqrt{1-\rho^2})^n\leq e^{-\rho^2n/2}.
+\]
+Independence of blocks implies $PF(+)=(1-2q_n)^m\to1$, since $mq_n\to0$. Hence eventually $P\pi(+)-1\geq t/2$.
+
+Put $\delta=\norm{g-1}_\infty$. If $\delta<1/2$, then $h=\pi/g$ gives $\norm{h-\pi}_\infty\leq2(1+t)\delta$. The Markov $L^\infty$ contraction yields $\norm{g-P\pi}_\infty\leq2(1+t)\delta$, and consequently
+\[
+ t/2\leq P\pi(+)-1\leq(3+2t)\delta.
+\]
+If $\delta\geq1/2$, the same stated lower bound is automatic. This proves the liminf claim.
+End of proof.
+Theorem~\ref{rigidity} still gives $N\to1$ on this family. Since $r/\pi=1/(Ng^2)$, uniform convergence $r/\pi\to1$ would imply $g\to1$ uniformly and is also ruled out. Neither critical-moment divergence for $r$ nor spectral-gap collapse has been proved by this construction.
+
+The imported weighting theorem and its exact role
+The next result is a programme dependency, not a theorem proved anew here. Its source, constants and raw identity are included in the accompanying dependency manifest.
+imported [Source334, using source324] [label: weighting] 
+Fix $\rho\in(0,1)$ and $b>0$. Let $d\geq b$, $\E d=1$, $\E d^s\leq2$, and $\E d\chi_S=0$ for $1\leq|S|\leq k$. There is $\alpha_\rho>0$ such that, whenever $k_L/\sqrt L\to C>0$,
+\[
+ \lambda_1(T_d)\to1,\qquad
+ \rho\leq\liminf\lambda_2(T_d)\leq\limsup\lambda_2(T_d)
+ \leq\max\{\rho,e^{-\alpha_\rho C^2/2}\}.
+\]
+More precisely, its finite estimates give, uniformly over all admissible $d$ and all $C_0\sqrt L\leq k\leq L$,
+\[
+ \lambda_1(T_d)=1+o(1),\qquad
+ \lambda_2(T_d)\leq1-G+o(1),\qquad
+ G=\min\{1-\rho,1-e^{-\alpha_\rho C_0^2/2}\}>0.
+\]
+The eventual bounds depend only on $\rho,C_0$ and the requested error tolerance, not on $d$ or the numerical floor $b$.
+
+For an exact specification of the attributed endpoint input, if $H_m$ projects onto degrees at least $m$, source324 supplies
+\begin{equation} [label: endpoint] 
+ \norm{QH_m}_{2\to 1+1/\rho}
+ \leq\rho^{m/4}+e^{-c_\rho m}+e^{-\alpha_\rho m^2/L},
+ \qquad1\leq m\leq L.
+\end{equation}
+Here $q_0=1+\rho$, $a_\rho=(-\log\rho)/[4(1-q_0/2)]$, $c_\rho=a_\rho(q_0-1)/2$, and $\alpha_\rho=C_\rho c_\rho^2$, where $C_\rho>0$ is source324's global entropy-deficit modulus derived using the refined inequality of Kirshner--Samorodnitsky \cite{ks}. It is not a local Taylor coefficient or an evaluated number. $H_m=0$ if $m>L$.
+
+Source334 reserves moment for the mean: for $d_t=d\one_{d>M}$,
+\[
+ \norm{d_t}_s\leq B_M=
+ [2-(1-2M^{1-s})_+^s]^{1/s}\longrightarrow1.
+\]
+Indeed $\E d_t\leq2M^{1-s}$, while Jensen forces the bounded part to carry at least $(1-2M^{1-s})_+^s$ of the moment. Its proof then chooses a fixed low-degree cutoff, next an amplitude cutoff, and only then dimension. Exact compression below $\lfloor k/2\rfloor$, a vanishing cross block, and \eqref{endpoint} yield Theorem~\ref{weighting}. This description is not a replacement proof of that imported theorem. Its complete source proof, including uniform finite estimates, is an explicit dependency. In what follows it is applied to $d=\pi$, whose weighting hypotheses hold. It is never applied to the actual $r$ without proof of those hypotheses.
+
+Actual cut capacities above the rare-mass threshold
+For $A\subset\Omega_L$, let
+\[
+ q=\nu(A),\qquad
+ J(A)=\sum_{x\in A,y\notin A}W(x,y).
+\]
+This is one-sided flux; the Dirichlet form uses half the full directed sum.
+theorem  [label: capacity] 
+Fix $0<\rho<1$, $C_0>0$, and a stationary floor $b>0$. Suppose \eqref{matching}, $\pi\geq b$ and $\E\pi^s\leq2$ hold, with $s=(1+\rho)/(1-\rho)$. For every sufficiently large $L$ and every $C_0\sqrt L\leq k\leq L$, uniformly in $h$ and $A$ with $0<q\leq1/2$,
+\begin{equation} [label: flux] 
+ J(A)\geq c q-2\sqrt{Bq}\,\varepsilon-B\varepsilon^2,
+ \qquad c=G/4,
+\end{equation}
+where $G$ is from Theorem~\ref{weighting}, and $B,\eta,\varepsilon=B\eta^{k+1}$ are as in \eqref{criticalconstants}. In particular, for $M_0=1024B/G^2$,
+\[
+ q\geq M_0\varepsilon^2\ \Longrightarrow\ J(A)/q\geq G/8.
+\]
+If $\gamma<G^2/128$, there exists a cut with
+\[
+ 0<q\leq1/2,\quad J(A)/q<G/8,\quad
+ q<\frac{1024B^3}{G^2}\eta^{2(k+1)},\quad
+ \mu(A)<\frac{1024B^3}{bG^2}\eta^{2(k+1)}.
+\]
+
+Proof.
+For every real $f$, symmetry and the row sums of $W$ give the exact identity
+\begin{equation} [label: groundstate] 
+ \norm{Q(hf)}_2^2
+ =\E\pi f^2-\tfrac12\sum_{x,y}W(x,y)(f(x)-f(y))^2
+ \leq\E\pi f^2.
+\end{equation}
+At the critical exponent, $2s'=1+1/\rho$ and endpoint hypercontractivity gives $Q:L^2\to L^{2s'}$ contractively. Theorem~\ref{rigidity} thus implies
+\[
+ \norm{g-1}_{2s'}\leq\varepsilon,\qquad
+ \E\pi(g-1)^2\leq B\varepsilon^2.
+\]
+Since $h-\pi=h(1-g)$, applying \eqref{groundstate} with $f=(1-g)\one_A$ yields
+\begin{equation} [label: indicatorerror] 
+ \norm{Q((h-\pi)\one_A)}_2\leq\sqrt B\,\varepsilon.
+\end{equation}
+This is an absolute indicator-energy error, not a relative estimate at arbitrary small $q$.
+
+Consider the auxiliary $T_\pi$. Write its top two eigenvalues as $\lambda_1,\lambda_2$, $D=\lambda_1-\lambda_2>0$, and $d_1=\lambda_1-1$. Let $w$ be its positive unit Perron vector, and $\psi=\sqrt\pi$. Since $\norm\psi_2=1$ and
+\[
+ \ip\psi{T_\pi\psi}=\ip\pi{P\pi}\geq1,
+\]
+we have $\lambda_1\geq1$. The common nonzero spectrum of $T_\pi$ and $QM_\pi Q$, together with endpoint hypercontractivity, gives $\lambda_1\leq B$. Put $z=\ip w\psi>0$. Spectral decomposition gives
+\[
+ 1\leq\lambda_1z^2+\lambda_2(1-z^2),\qquad
+ 1-z^2\leq d_1/D.
+\]
+The difference of the rank-one projectors $ww^*$ and $\psi\psi^*$ has norm $\sqrt{1-z^2}$: on their two-dimensional span its trace is zero and determinant is $-(1-z^2)$; if $z=1$ it is zero. Therefore
+\[
+ T_\pi\leq\lambda_2I+D\psi\psi^*+\sqrt{Dd_1}\,I.
+\]
+Testing on $\sqrt\pi\one_A$ gives
+\[
+ I_\pi(A):=\norm{Q(\pi\one_A)}_2^2
+ \leq\lambda_1q^2+\lambda_2q(1-q)+\sqrt{Dd_1}\,q.
+\]
+The uniform estimates in Theorem~\ref{weighting} permit a common $L_0$ such that
+\[
+ \lambda_2\leq1-3G/4,\qquad d_1+\sqrt{Bd_1}\leq G/8.
+\]
+As $D\leq B$ and $q\leq1/2$, it follows that $I_\pi(A)\leq(1-G/4)q=(1-c)q$. In particular we have not assumed that $\sqrt\pi$ itself is the auxiliary Perron vector.
+
+Now $I_h(A):=\norm{Q(h\one_A)}_2^2$ and $J(A)=q-I_h(A)$. By \eqref{indicatorerror},
+\[
+ I_h(A)\leq\bigl(\sqrt{I_\pi(A)}+\sqrt B\,\varepsilon\bigr)^2
+ \leq(1-c)q+2\sqrt{Bq}\,\varepsilon+B\varepsilon^2,
+\]
+which proves \eqref{flux}. If $q\geq64B\varepsilon^2/c^2$, the two relative errors are at most $c/4$ and $c^2/64$. Thus $J/q\geq47c/64\geq c/2=G/8$. Since $64B/c^2=1024B/G^2$, the asserted threshold follows.
+
+We include the finite conductance step. Let $\Phi=\min_{0<\nu(A)\leq1/2}J(A)/\nu(A)$, and take a real second eigenfunction $f$ of $K$. Choose its sign so that $v=f_+$ has support of stationary mass at most one half. For the Dirichlet bilinear form $\mathcal E$, disjoint nonnegative parts satisfy $\mathcal E(f_+,f_-)\leq0$. Hence
+\[
+ \mathcal E(v,v)\leq\mathcal E(v,f)=\gamma\norm v_{L^2(\nu)}^2.
+\]
+For $A_t=\{v^2>t\}$, finite layer cake and Cauchy--Schwarz give
+\begin{align*}
+ \int_0^\infty\nu(A_t)\,dt&=\norm v_{L^2(\nu)}^2,\\
+ \int_0^\infty J(A_t)\,dt
+ &=\tfrac12\sum_{x,y}W(x,y)|v(x)^2-v(y)^2|\\
+ &\leq\sqrt{2\mathcal E(v,v)\norm v_{L^2(\nu)}^2}.
+\end{align*}
+The last factor uses $(v(x)+v(y))^2\leq2v(x)^2+2v(y)^2$. The definition of $\Phi$ implies $\Phi\leq\sqrt{2\gamma}$. If $\gamma<G^2/128$, a minimizing cut has $J/q<G/8$, and the contrapositive of the threshold bound gives $q<M_0\varepsilon^2$. Finally $q\geq b\mu(A)$ proves the base-mass bound.
+End of proof.
+
+The threshold is exponentially small in $k$. At $k\asymp\sqrt L$ it does not reach the atom scale $b2^{-L}$. The absolute comparison error in \eqref{indicatorerror} can dominate $q$ below the threshold. No claim is made that every second eigenfunction is supported on such a cut, or that the existence of such a cut suffices for gap collapse.
+
+Small supports without a marginal matching assumption
+The next estimate uses the actual $hPh$ relation, stationary floor and critical cap. It requires no marginal matching, and its proof is independent of the preceding rigidity and capacity results. The asymptotic exclusion is restricted to the displayed noise and cardinality ranges.
+
+theorem  [label: support346] 
+Let $0<\rho<1$, $h>0$, $\E hPh=1$, $\pi=hPh\geq b>0$ and $\E\pi^s\leq2$, where $s=(1+\rho)/(1-\rho)$. Write
+\[
+ B=2^{1/s},\quad a_0=(1+\rho)/2,\quad d=a_0^L,\quad
+ \theta=1-1/(2s),\quad \kappa=2^{1/s}a_0(1+\rho^3).
+\]
+For every nonempty $A$ of cardinality $m$ with $md<1$, put
+\[
+ R_L(m)=\frac{\sqrt B}{b}\,
+ \frac{m^\theta\kappa^{L/2}}{(1-md)^2}.
+\]
+Then for every $x$, $K(x,A)\leq R_L(m)/(1+R_L(m))$. The killed kernel $K_A$ has spectral radius at most this bound, and
+\[
+ \frac{J(A)}{\nu(A)}\geq\frac1{1+R_L(m)}.
+\]
+If $\kappa<1$ and $0<\tau<\min\{-\log a_0,-\log\kappa/(2\theta)\}$, these estimates give uniformly $R_L(m)\to0$ for $m\leq e^{\tau L}$. In the explicit range $0<\rho\leq1/4$ and $m\leq e^{\rho L/1920}$,
+\[
+ R_L(m)\leq\frac{9\sqrt B}{b}\,e^{-\rho L/640}.
+\]
+
+Proof.
+The maximal entry and every diagonal entry of $P$ equal $d$. Thus $\pi(y)\geq d h(y)^2$, and, with $\alpha_0=2^{-L}$,
+\begin{align*}
+ I_x(A)&:=\sum_{y\in A}P(x,y)h(y)
+ \leq\sqrt d\sum_{y\in A}\sqrt{\pi(y)}\\
+ &\leq\sqrt{Bd}\,m^{1-1/(2s)}\alpha_0^{-1/(2s)}.
+\end{align*}
+The last inequality is finite-sum H\"older and $\sum_y\pi(y)^s\leq2/\alpha_0$. This upper bound alone cannot control the normalized transition, since its denominator may also be small.
+
+For the outside contribution $O_x(A)=\sum_{y\notin A}P(x,y)h(y)$, use $h\geq b/g$. Since $P(x,A)\leq md$, Cauchy--Schwarz with weights $P(x,y)$ on $A^c$ gives
+\[
+ (1-md)^2\leq
+ \left(\sum_{y\notin A}\frac{P(x,y)}{g(y)}\right)
+ \left(\sum_{y\notin A}P(x,y)g(y)\right)
+ \leq\left(\sum_{y\notin A}\frac{P(x,y)}{g(y)}\right)(P^2h)(x).
+\]
+Therefore $O_x(A)\geq b(1-md)^2/(P^2h)(x)$. The semigroup gives $P^2h=P_{\rho^{3/2}}Qh$. Point evaluation of $P_{\rho^{3/2}}$ on uniform $L^2$ has squared norm
+\[
+ \frac{P_{\rho^3}(x,x)}{\alpha_0}=(1+\rho^3)^L.
+\]
+Because $\norm{Qh}_2=1$, we obtain $(P^2h)(x)\leq(1+\rho^3)^{L/2}$. Dividing the upper bound on $I_x$ by the lower bound on $O_x$ yields $I_x/O_x\leq R_L(m)$, exactly with the stated $\kappa$. Now $K(x,A)=I_x/(I_x+O_x)$, proving the pointwise bound.
+
+Every row sum of $K_A$ is at most $R/(1+R)$, so its spectral radius is at most that number. Summing $K(x,A^c)\geq1/(1+R)$ over $x\in A$ against $\nu$ proves the flux bound. Equivalently, reversibility gives the same upper Rayleigh bound for functions supported on $A$ in $L^2(\nu)$.
+
+If $m\leq e^{\tau L}$ in the specified range, then $md\to0$ and $m^\theta\kappa^{L/2}\to0$, uniformly. For the explicit subrange,
+\begin{align*}
+ \log\kappa
+ &=-\frac{2\rho}{1+\rho}\log2+\log(1+\rho)+\log(1+\rho^3)\\
+ &\leq\rho\left(\frac{17}{16}-\frac85\log2\right)
+ <-\rho/240,
+\end{align*}
+using $\log2>2/3$. As $\theta<1$, $m^\theta\kappa^{L/2}\leq e^{-\rho L/640}$. Moreover
+\[
+ md\leq[(5/8)e^{1/7680}]^L\leq(2/3)^L,
+\]
+because $\log(16/15)\geq1/16>1/7680$. Thus $(1-md)^{-2}\leq9$, completing the estimate.
+End of proof.
+
+At $\kappa=1$, the formula still gives a positive uniform escape bound for singletons, at least $[1+\sqrt B/(b(1-a_0)^2)]^{-1}$. For $\kappa>1$ the criterion can become asymptotically uninformative even for singletons: at $\rho=1/2$, $\kappa=27\,2^{1/3}/32>1$ because $39366>32768$. This is a limitation of the estimate, not an admissible collapsing example. Small stationary mass need not imply small cardinality, so even an accepted version of this section would not close the original gap question or transfer a critical moment bound to $r$.
+
+
+Classical scaling and the unresolved comparison
+The relation $hPh=\pi$ is a symmetric finite Schr\"odinger scaling. General finite scaling existence is classical, and Lemma~\ref{scaling} supplies an elementary specialization rather than a new existence principle. Georgiou--Pavon \cite{gp} obtain a finite-dimensional contraction through a projective diameter. Duan--Lyu--Powell \cite[Theorems2.1--2.5]{dlp} distinguish coupling stability from potential stability; their discrete supremum estimate requires entrywise relative margin closeness and a conditioning parameter. Our hypothesis is exact low-order matching, not entrywise closeness of the full margin. These results are contextual comparisons, not premises for a dimension-uniform conclusion here. The cited passages were checked; no complete priority survey is claimed.
+
+Theorem~\ref{rigidity} narrows the obstruction to the original gap question: Perron normalization and a persistent total-variation mismatch are controlled. Theorem~\ref{supfailure} prevents resolving the remaining problem by assuming uniform potential convergence. Theorem~\ref{capacity} gives direct actual-kernel control above a shrinking mass scale; Theorem~\ref{support346} excludes certain small supports directly. These restrictions do not exhaust the remaining sets: from the floor, $|A|\leq2^L\nu(A)/b$, which at $\nu(A)$ of order $e^{-c\sqrt L}$ still permits cardinality far above $e^{\rho L/1920}$. What remains is relative energy control for the uncovered stationary sets, or a fully admissible collapsing family. In particular, no bound on $\E r^s$, no exact matching for $r$, and no full operator perturbation estimate has been derived. The supplement records the failed routes so that these gaps are not hidden inside new hypotheses.
+
+Model assessments and review context
+This is a grouped working-paper manuscript prepared with OpenAI/Codex assistance. Sources341, 344, 345, 346 received separate-role analytical AI audits and were accepted within their stated programme scope; the same involved auditor reviewed those sources. The fabrication and audit roles shared a provider, session lineage, and filesystem. Exact serving model variants and backend identities were not independently attested. No human peer review, cross-provider or statistical independence, formal verification, or historical-priority certification is claimed.
+
+At original source preparation, this manuscript had not yet undergone a separate manuscript audit, PDF build or visual review. Source347A subsequently received a separate-role analytical AI audit and programme acceptance. Assessment of the exact PDF produced from this editorial revision remains pending; earlier source verdicts and assessments of other PDFs do not transfer to it. Full reports, objections, context, raw source hashes and the imported334/324 dependency map are retained in the accompanying evidence package. Source346 was initially prepared as an isolated provisional section and was included only after its actual separate report and parent acceptance were received and read. Publication, deposit, acceptance, collection screening, and peer review remain distinct statuses.
+
+REFERENCES
+[hyper] A. Ben-Aroya, O. Regev and R. de Wolf, \emph{A Hypercontractive Inequality for Matrix-Valued Functions with Applications to Quantum Computing}. Classical scalar inequality, introduction Eq.(1). \url{https://homepages.cwi.nl/~rdewolf/publ/qc/matrixbeckner.pdf}.
+[ks] N. Kirshner and A. Samorodnitsky, \emph{A moment ratio bound for polynomials and some extremal properties of Krawchouk polynomials and Hamming spheres}, arXiv:1909.11929v1. Attributed refined endpoint input through source324. \url{https://arxiv.org/abs/1909.11929v1}.
+[gp] T. T. Georgiou and M. Pavon, \emph{Positive contraction mappings for classical and quantum Schr\"odinger systems}, arXiv:1405.6650v2 (2014), SectionIII.4, Theorem3 and Lemma1. \url{https://arxiv.org/abs/1405.6650v2}.
+[dlp] D. Duan, H. Lyu and W. Powell, \emph{Scaling limit of Sinkhorn-rescaled Random Matrices via Stability of Static Schr\"odinger Bridges}, arXiv:2604.23461v1 (2026), Theorems2.1--2.5. \url{https://arxiv.org/abs/2604.23461v1}.
+[programme] L. Eriksson, \emph{The Eriksson Programme}, exact sources324,334,341,344,345,346. The accompanying dependency manifest identifies the immutable source commits, paths, SHA256 values, and proof scope. Repository: \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.
+
+

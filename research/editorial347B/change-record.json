@@ -1,0 +1,25 @@
+{
+  "base_source_commit": "4a44431e8648018908ddc2760840977db9928aac",
+  "previous_pdf_sha256": "69adcccf59eb7297feca03bdaab851bac047600c21856d1ce439356290d74f8c",
+  "old_list": "Sources341,344,345,346",
+  "new_list": "Sources341, 344, 345, 346",
+  "old_paragraph": "This manuscript version has not yet received a separate manuscript audit or an exact-PDF assessment. No PDF has been built or visually reviewed in this source-preparation unit. Earlier source verdicts and any assessments of other PDFs do not constitute assessments of this version. Full reports, objections, context, raw source hashes and the imported334/324 dependency map are retained in the accompanying evidence package. Source346 was initially prepared as an isolated provisional section and was included only after its actual separate report and parent acceptance were received and read. Publication, deposit, acceptance, collection screening, and peer review remain distinct statuses.",
+  "new_paragraph": "At original source preparation, this manuscript had not yet undergone a separate manuscript audit, PDF build or visual review. Source347A subsequently received a separate-role analytical AI audit and programme acceptance. Assessment of the exact PDF produced from this editorial revision remains pending; earlier source verdicts and assessments of other PDFs do not transfer to it. Full reports, objections, context, raw source hashes and the imported334/324 dependency map are retained in the accompanying evidence package. Source346 was initially prepared as an isolated provisional section and was included only after its actual separate report and parent acceptance were received and read. Publication, deposit, acceptance, collection screening, and peer review remain distinct statuses.",
+  "source_changes": [
+    {
+      "file": "manuscript347.tex",
+      "old_sha256": "8c2a571a03b4838e23efc8f1511605943f6b21ed011ae55dc527ebe957f2da6d",
+      "new_sha256": "0a851ffb2e6b6a7c4a491266f6fdd2e22dcd4efc3c234cc5a57b86719f63319d",
+      "exact_reverse_replacement_equal": true
+    },
+    {
+      "file": "manuscript347.txt",
+      "old_sha256": "847a0410d08fac5f7bd56125760edad8862004f6e0a7a74a3826045dff901cc2",
+      "new_sha256": "b80bc433a3ff7ba66225e19a36ef4fbcfa8d12ea4f6fdb57633ba1cffdecd4a4",
+      "exact_reverse_replacement_equal": true
+    }
+  ],
+  "support346_sha256": "c273a2ada5308dacddcf6b28d615aa2e9721fa89f0e0c8fd6f48ac97738b127b",
+  "representation": "SHA-256 raw bytes; new files UTF8 noBOM preserving original newline characters; only two exact replacements per manuscript representation",
+  "unresolved": "Candidate not built or independently editorially audited; exact new PDF assessment pending"
+}
