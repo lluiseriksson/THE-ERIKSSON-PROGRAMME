@@ -1,0 +1,14 @@
+{
+  "status": "FABRICATION_COMPLETE_SEPARATE_AUDIT_REQUIRED",
+  "utc": "2026-11-14T00:55:41.9135308Z",
+  "input_head": "14c02a775117131f5156ce811fee9bad7c9b297c",
+  "source": "source346A.txt",
+  "source_sha256": "d11b3f691d7d20c8d22143b06a787cebbf8327e3201e80c64889d7be0a7c0cbd",
+  "result": "Explicit stationary floor/cap bound excludes localized near-unit killed modes on exponential-cardinality supports in a stated noise region",
+  "explicit_region": "0<rho<=1/4; |A|<=exp(rho L/1920); killed radius at most R/(1+R), R<=9sqrt(B)/b exp(-rho L/640)",
+  "open": "Original full gap; remaining noise/support region; no admissible collapsing family",
+  "next": "Parent freeze and separate exact-source audit; retain restricted scope",
+  "math_execution": "none",
+  "colab_runtime_opened": false,
+  "publication": false
+}

@@ -1,0 +1,27 @@
+346A -- Failed broader routes, restricted success and remaining obstruction
+One original stationary-gap question; analytical reasoning only. No345 conclusion is used while that source is under separate audit. No new active question or paper.
+
+1. Parent-supplied critical Holder identity: valid but insufficient.
+For u=h/(Ph), h^2=pi u and p=2s/(s+1)=1+rho,
+ E h^p1_A=E pi^(p/2)u^(p/2)1_A
+ <=(E pi^s1_A)^(p/(2s))(E u1_A)^(p/2),
+so ||h1_A||_p^2<=(E pi^s1_A)^(1/s) E u1_A. Accepted341 supplies E u<=1. Hypercontractivity controls the internal energy by the same expression. This is elementary and was not counted as an advance. The missing step is a relative comparison between E u1_A and q=E pi1_A on exponentially small sets. Global normalization and small total Hellinger discrepancy do not supply it. No critical r-moment hypothesis is introduced to bridge the gap.
+
+The previously proposed nonlinear inequality
+ E(fPf)<=E(f) ||fPf||_s^(1/2)
+remains unproved and is not a premise or result here. No valid general proof or counterexample was obtained. It was preserved, not silently accepted, rebranded or rerun as an established route.
+
+2. Small diagonal contribution alone: insufficient.
+For a point x, positivity and the critical cap give
+ P(x,x)h(x)<=sqrt(B)[2^(1/s)(1+rho)/2]^(L/2).
+Even if this quantity is small, K(x,x) divides it by g(x), which may also be small. Assuming g(x)>=sqrt(b), or a uniform g->1 upgrade, would be unjustified; the latter was already refuted by accepted344. The point calculation alone is therefore not a resonance exclusion. The successful proof supplies a lower bound for the outside contribution using the actual stationary floor, rather than making such a denominator assumption.
+
+An additional endpoint reverse-Holder comparison was considered. With r=1+1/rho, t=r/(r+1) and k_x(y)=P(x,y)/mu(y), ||g||_r<=1 follows from Q:L2->Lr and ||Qh||2=1. Holder implies E[k_x1_{y!=x}/g]>=(E[k_x^t1_{y!=x}])^(1/t), where the bracket is exactly c_t^L-((1+rho)^t/2)^L and c_t=((1+rho)^t+(1-rho)^t)/2. This supplies another finite lower bound on the outside contribution after multiplication by b. A uniform comparison covering every rho was not obtained from it. It is not used in source346A, is not a claimed full-gap repair, and no numerical optimization of its exponents occurred.
+
+3. Stationary floor plus second-potential energy: successful restricted theorem.
+Weighted reciprocal Cauchy outside an arbitrary set A gives O_x(A)>=b P(x,A^c)^2/(P^2h)(x). The exact cube kernel and energy normalization give P^2h(x)<=(1+rho^3)^(L/2). The critical cap controls the sum of sqrt(pi) over A, yielding the finite ratio R_L(m) in source346A. This excludes killed near-unit modes on small-cardinality supports when kappa=2^(1/s)((1+rho)/2)(1+rho^3)<1.
+The proof pays every parameter explicitly for0<rho<=1/4 and m<=exp(rho L/1920). It does not simply specialize an abstract two-block matrix; the inequality holds for every actual admissible hPh family. It does not require stationary matching and therefore applies to all matching families in that noise region.
+
+Boundary falsifier and scope.
+At rho=1/2, kappa=27*2^(1/3)/32>1 by the exact integer cube comparison39366>32768. Thus the present sufficient criterion does not extend uniformly to all rho. This is a failure of that attempted extension, not an admissible counterexample, proof of a resonant family, or evidence of a sharp phase boundary. Large supports remain uncontrolled even where kappa<1. A small stationary mass need not mean small cardinality: q>=b |A|2^(-L) permits exponentially many vertices at q of order exp(-constant*sqrt(L)).
+The original question therefore remains open.346 narrows which localized mechanisms are possible in a stated region; it does not claim an original-gap solution. The next substantive task must improve outside control in the remaining parameter/support regime or construct a valid collective well with all stationary conditions. Repeating the same one-point cap calculation without a denominator bound is abandoned. This successful bounded theorem does not constitute three unsuccessful units, but no further paper-sized claims should be manufactured from its elementary consequences.

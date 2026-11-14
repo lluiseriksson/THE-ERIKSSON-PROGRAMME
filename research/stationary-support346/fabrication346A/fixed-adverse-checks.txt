@@ -1,0 +1,11 @@
+346A FIXED QUESTIONS FOR SEPARATE AUDIT -- not a self-issued verdict
+C1 Actual hPh normalization, pi mean/floor/cap, K stationarity and reversibility. No assumed r moment or matching substitution. Verify that no pending345 result is used.
+C2 P diagonal/maximum d=a^L, pi(y)>=d h(y)^2, finite Holder exponents and the alpha=2^(-L) factors in the internal contribution. Distinguish probability averages from ordinary sums.
+C3 Reciprocal Cauchy outside A: h>=b/g, denominator replacement by Pg in the correct direction, and strict positivity from m d<1.
+C4 Exact factorization P^2h=P_(rho^(3/2))(Qh), ||Qh||2=1 and the evaluation norm (1+rho^3)^(L/2), including the atom normalization and square.
+C5 Combine internal/outside bounds to obtain R_L(m), its sqrt(B), m^theta and kappa exponents. K is the ratio I/(I+O); verify monotonicity and no auxiliary normalization.
+C6 Killed operator row-sum/spectral-radius bound, reversibility/PSD Rayleigh interpretation, actual one-sided cut flux and no false inference to the global second eigenvalue.
+C7 General exponential support condition tau and the limits with fixed rho,b. Denominator must tend to1 and remain positive.
+C8 Exactrho<=1/4 constants: log2>2/3, difference1/240, cardinal exponent1/1920, combined rate1/640, log(16/15)>=1/16 and denominator factor9. Check all L>=1 and integer cardinality handling.
+C9 Boundary kappa=1 singleton bound; exactrho=1/2 falsifier39366>32768. No claimed sharp phase threshold or actual counterexample in the uncovered region.
+C10 Scope: stationary small mass versus support cardinality, no full-gap theorem, no nonlinear inequality promotion, no newpaper/score/novelty/independence/formal/physical upgrade. Check factual context and raw hashes.

@@ -1,0 +1,65 @@
+[
+  {
+    "source": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\fabrication341A\\source341A.txt",
+    "retained": "inputs/source341A.txt",
+    "bytes": 12276,
+    "sha256": "07872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f",
+    "representation": "raw bytes without normalization"
+  },
+  {
+    "source": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\source-audit341A\\full-audit-report.txt",
+    "retained": "inputs/full-audit341A.txt",
+    "bytes": 13259,
+    "sha256": "046105aa61957a67f66005af4516e4c43492fe465534e8b2875e92ddff10fa8e",
+    "representation": "raw bytes without normalization"
+  },
+  {
+    "source": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\source-audit341A\\model-context.txt",
+    "retained": "inputs/audit341-context.txt",
+    "bytes": 3341,
+    "sha256": "a44380f1e77017c4dca8495cac2a327dddc0c0ca17e88cffc7f46ba7b9ef0e39",
+    "representation": "raw bytes without normalization"
+  },
+  {
+    "source": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\parent-acceptance341.json",
+    "retained": "inputs/parent-acceptance341.json",
+    "bytes": 734,
+    "sha256": "6f7757c2b6847b44f8a031f2d8da9ee6877fc449c6dc1e358f75a4fc37fab256",
+    "representation": "raw bytes without normalization"
+  },
+  {
+    "source": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-344\\fabrication344A\\source344A.txt",
+    "retained": "inputs/source344A.txt",
+    "bytes": 13082,
+    "sha256": "3b08bccdd79a3fa400a853aaa730733570cbe902c49dee7d022d50b1d5f006c0",
+    "representation": "raw bytes without normalization"
+  },
+  {
+    "source": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-344\\parent-acceptance344.json",
+    "retained": "inputs/parent-acceptance344.json",
+    "bytes": 896,
+    "sha256": "f990bed9d2ec2311d50f6e109319c16adf988a6862379176f8441edd5b5b9cca",
+    "representation": "raw bytes without normalization"
+  },
+  {
+    "source": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\CLAUDE.md",
+    "retained": "inputs/CLAUDE.md",
+    "bytes": 24408,
+    "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+    "representation": "raw bytes without normalization"
+  },
+  {
+    "source": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "retained": "inputs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13831,
+    "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+    "representation": "raw bytes without normalization"
+  },
+  {
+    "source": "D:\\LEEME.md",
+    "retained": null,
+    "bytes": 17126,
+    "sha256": "5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f",
+    "representation": "raw bytes; private storage index hashed only"
+  }
+]

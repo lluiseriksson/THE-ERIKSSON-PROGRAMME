@@ -1,0 +1,16 @@
+346A PRIMARY CONTEXT RECORD,2026-11-14
+These targeted readings check related context and prevent assumption transfer. They do not establish historical novelty. The main346 proof uses elementary finite inequalities and the exact noise kernel, not a theorem from these abstracts.
+
+Kun He, Global Sinkhorn Convergence and Spectral Stability of Matrix Scaling.
+https://arxiv.org/abs/2611.08963
+Read abstract and metadata. It states SK convergence bounds involving an endpoint gap and scaling distortion, and input spectral conditions for scalability/distortion. No detailed theorem was read or imported. Its column-imbalance parameter must not be identified without proof with the present stationary cap or floor.
+
+Tom Lollier, Eyal Neuman, Quantum-Enhanced Sampling of Schrodinger Bridges.
+https://arxiv.org/abs/2609.27103
+Read abstract and metadata. Its spectral-gap statement concerns a Gibbs sampler on conditional bridge path space under uniformly positive transition probabilities. It is not treated as a gap theorem for our one-step Doob kernel or as dimension-uniform positivity of the Boolean noise kernel. No quantum algorithm or computation was used.
+
+Tryphon T. Georgiou, Michele Pavon, Positive contraction mappings for classical and quantum Schrodinger systems.
+https://arxiv.org/abs/1405.6650
+Read abstract and metadata, including the distinction between established classical/particular quantum cases and the unproved general quantum convergence statement. Context is multiplicative Markov marginal scaling and Hilbert-metric methods. No existence/iteration result is needed or claimed new in346.
+
+Queries: symmetric matrix scaling diagonal entries prescribed marginals bounds spectral gap Sinkhorn; Schrodinger bridge diagonal mass marginal density lower bound self transition Markov chain spectral gap. Nonprimary search hits were not used as proof premises. No source supplies a claimed novelty clearance for the present restricted support bound. Raw web-tool capture is retained separately, not represented as original PDF bytes or a full-text read.
