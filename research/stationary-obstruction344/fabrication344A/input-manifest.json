@@ -1,0 +1,58 @@
+[
+  {
+    "source": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\fabrication341A\\source341A.txt",
+    "retained": "inputs/source341A.txt",
+    "bytes": 12276,
+    "sha256": "07872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f",
+    "representation": "raw bytes; no normalization"
+  },
+  {
+    "source": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\source-audit341A\\full-audit-report.txt",
+    "retained": "inputs/full-audit341A.txt",
+    "bytes": 13259,
+    "sha256": "046105aa61957a67f66005af4516e4c43492fe465534e8b2875e92ddff10fa8e",
+    "representation": "raw bytes; no normalization"
+  },
+  {
+    "source": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\source-audit341A\\model-context.txt",
+    "retained": "inputs/audit341-model-context.txt",
+    "bytes": 3341,
+    "sha256": "a44380f1e77017c4dca8495cac2a327dddc0c0ca17e88cffc7f46ba7b9ef0e39",
+    "representation": "raw bytes; no normalization"
+  },
+  {
+    "source": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\parent-acceptance341.json",
+    "retained": "inputs/parent-acceptance341.json",
+    "bytes": 734,
+    "sha256": "6f7757c2b6847b44f8a031f2d8da9ee6877fc449c6dc1e358f75a4fc37fab256",
+    "representation": "raw bytes; no normalization"
+  },
+  {
+    "source": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\research\\stationary-obstruction338\\source338A.txt",
+    "retained": "inputs/source338A.txt",
+    "bytes": 17991,
+    "sha256": "4730774d3e550531c1854cdb476f929dcfbf145364c64cb81752b1fb8dff246f",
+    "representation": "raw bytes; no normalization"
+  },
+  {
+    "source": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\CLAUDE.md",
+    "retained": "inputs/CLAUDE.md",
+    "bytes": 24408,
+    "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+    "representation": "raw bytes; no normalization"
+  },
+  {
+    "source": "C:\\Trabajo\\the-eriksson-programme\\prefix-rank290-20261113\\docs\\OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "retained": "inputs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+    "bytes": 13831,
+    "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+    "representation": "raw bytes; no normalization"
+  },
+  {
+    "source": "D:\\LEEME.md",
+    "retained": "inputs/storage-rules.md",
+    "bytes": 17126,
+    "sha256": "5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f",
+    "representation": "raw bytes; no normalization"
+  }
+]

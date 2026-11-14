@@ -1,0 +1,18 @@
+344A FAILED ROUTES AND LIMITS -- preserved fabrication record
+The one question is the original stationary critical-moment uniform-gap question. These are three bounded analytical attempts within that question, not three separate papers or three audits. No mathematical program, CAS, numerical experiment or runtime was used.
+
+A. Critical tail transfer from341.
+Accepted341 yields TV(r,pi)->0 and Hellinger convergence, N->1, and small finite-degree compression. It does not supply uniform integrability of r^s. Splitting into g>=1-delta and g<1-delta only gives r<=pi/[N(1-delta)^2] on the good region. The bad region may have small stationary mass without its weighted operator contribution being small. For Q=P_sqrt(rho), u=h/g, the genuine PSD/Perron inequality Q M_u Q<=I supplies a norm bound of 1, but not a strict contraction of the bad contribution or a bound on cross blocks. No whole-operator spectral estimate follows from the estimates obtained in this attempt. Generic abstract density pairs would not settle the question because they need not arise from hPh; no such pair is presented here as an admissible counterexample.
+
+B. Floor-assisted negative denominator control.
+The actual floor pi=hg>=b gives h>=b/g. Positivity of P and Jensen's inequality for x->1/x imply
+ g=Ph>=b P(1/g)>=b/(Pg), so g Pg>=b and 1/g<=Pg/b.
+Therefore u=pi/g^2<=pi(Pg)^2/b^2. A possible quadratic-form bound would start from
+ E u(Qf)^2<=b^(-2) E pi(Pg)^2(Qf)^2.
+Holder with pi in L^s leaves ||(Pg)Qf||_(2s')^2, where s'=s/(s-1) and 2s'=(1+rho)/rho=1+1/rho. This is precisely the endpoint exponent of Q:L^2->L^(1+1/rho). The direct product Holder step has no spare exponent for a nonconstant Pg factor. Extra finite moments of Pg or small finite-exponent deviations do not alone justify a supremum multiplier bound. No inequality closing this step was proved. This is a failure of this particular direct endpoint argument, not a theorem that every weighted proof is impossible.
+
+C. Uniform denominator convergence.
+Proposed bridge: exact stationary matching plus the floor and critical cap might improve341's finite-exponent Ph convergence to ||Ph-1||_infinity->0. If true, the exact identity r/pi=1/[N(Ph)^2] would make uniform relative transfer immediate. Sections2-5 of source344A rigorously falsify this proposed implication by a family satisfying the original hPh relation and all stationary constraints, even with pi bounded above and below independently of dimension. The explicit stationary density is a small perturbation by a product of block majorities. A positive potential realizing it is provided by a fully proved strictly convex finite scaling problem. It is not a formal density gadget.
+
+Abandonment and remaining obstruction.
+After these three bounded mechanisms, stop attempting uniform convergence of Ph to 1: it is false. The precise remaining obstruction is weighted control of rare denominator excursions/cross blocks or an admissible test function producing actual gap collapse.344A does not compute or bound the second eigenvalue of its family. It does not refute a fixed nonvanishing comparison constant, prove divergence of E r^s, prove failure of a general tail theorem, or refute the uniform-gap conjecture. A future unit should make a new quantitative use of hPh rather than repeat the failed implication. No new question has been opened.

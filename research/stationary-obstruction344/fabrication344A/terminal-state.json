@@ -1,0 +1,13 @@
+{
+  "status": "FABRICATION_COMPLETE_SEPARATE_AUDIT_REQUIRED",
+  "utc": "2026-11-14T00:19:03.6071765Z",
+  "input_head": "c3da0ec541ee17ae3432cec32dcdad079ff3cd2c",
+  "source": "source344A.txt",
+  "source_sha256": "3b08bccdd79a3fa400a853aaa730733570cbe902c49dee7d022d50b1d5f006c0",
+  "result": "Admissible exact stationary family disproves uniform Ph convergence to1; does not settle normalized gap",
+  "open": "Original stationary uniform gap, critical r tail, second eigenvalue",
+  "next": "Parent freezes and commissions separate analytical audit; abandon uniform pointwise convergence route",
+  "math_execution": "none",
+  "colab_runtime_opened": false,
+  "publication": false
+}
