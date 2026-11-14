@@ -1,0 +1,77 @@
+{
+  "schema": "fabrication341A-raw-v1",
+  "root": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-341\\fabrication341A",
+  "representation": "Raw bytes, no hash normalization; manifest excludes itself",
+  "files": [
+    {
+      "path": "failed-routes-and-limits.txt",
+      "bytes": 2488,
+      "sha256": "13a1002630b0f84188d7e3f203b6dca96544058124da7be6c205e3f7a7abe541"
+    },
+    {
+      "path": "full-report.txt",
+      "bytes": 3756,
+      "sha256": "e455d617a0779463f29c02f674a3e6609da91faa3e153a09ecee864e7c125adf"
+    },
+    {
+      "path": "input-manifest.json",
+      "bytes": 1856,
+      "sha256": "858612825428e0da3e5988f8b6d2b7c742c169ae8607f44a5d2a7fe735841bff"
+    },
+    {
+      "path": "inputs/audit338-context.txt",
+      "bytes": 2669,
+      "sha256": "85e5418e2595e4b71638b4616b8c30fb72ddcd2900b63f1e889b59e3397646d4"
+    },
+    {
+      "path": "inputs/audit338-full-report.txt",
+      "bytes": 17275,
+      "sha256": "a6a3b4ddb4da048d15e781f414afdb971003d4b2c2a0089f428d8b0476b0535c"
+    },
+    {
+      "path": "inputs/CLAUDE.md",
+      "bytes": 24408,
+      "sha256": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe"
+    },
+    {
+      "path": "inputs/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f"
+    },
+    {
+      "path": "inputs/source338A.txt",
+      "bytes": 17991,
+      "sha256": "4730774d3e550531c1854cdb476f929dcfbf145364c64cb81752b1fb8dff246f"
+    },
+    {
+      "path": "model-context.txt",
+      "bytes": 3018,
+      "sha256": "5e2d65e66b2afa2f1fb11dc55830939b8eb1f5a2ad0cdca1019a0dc34f45b3ec"
+    },
+    {
+      "path": "primary-reading.txt",
+      "bytes": 2350,
+      "sha256": "f583e7aa1ba71ae8ad9d8b46ba266e438b00c265b8b0bde0b759bb065dd1b8eb"
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 2961,
+      "sha256": "d3fd05ba8dcc450decab65b8223dd70b30270c7ecaaf4f3c2fbc4c9ece07db1b"
+    },
+    {
+      "path": "retention.json",
+      "bytes": 479,
+      "sha256": "a2ed088d034ad6b7c45c579cdc17f28b734b9828345b0a25210320c15eda8465"
+    },
+    {
+      "path": "source341A.txt",
+      "bytes": 12276,
+      "sha256": "07872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f"
+    },
+    {
+      "path": "terminal-state.json",
+      "bytes": 503,
+      "sha256": "70adbff42b0513dfb34654074751e5d260976115923309d6bd167ac57074c5f6"
+    }
+  ]
+}
