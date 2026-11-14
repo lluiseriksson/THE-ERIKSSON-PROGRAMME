@@ -1,0 +1,11 @@
+345A FIXED ADVERSE CHECKS FOR SEPARATE AUDIT -- questions, not self-issued verdicts
+C1 Verify all actual definitions: normalization E hPh=1, pi=hPh, nu, K, symmetric edge W, actual T_r scalar/similarity and gamma. No stationary assumption may be silently substituted onto r.
+C2 Verify endpoint 2s'=1+1/rho and Q:L2->L^(2s'), so the strengthened finite-exponent potential estimate follows from341 exactly.
+C3 Re-derive the ground-state quadratic-form identity for signed f and the uniform indicator estimate ||Q((h-pi)1_A)||2<=sqrt(B)epsilon. Reject any unsupported full L2-operator upgrade.
+C4 Verify the auxiliary application of334 to the function pi meets every hypothesis. T_pi is not the actual chain. Check complete334 uniform eigenvalue conclusions, including k varying above C0 sqrt(L).
+C5 Verify psi=sqrt(pi) unit norm, Rayleigh quotient>=1, actual lambda1<=B, Perron root simplicity and the projection bound sqrt((lambda1-1)/(lambda1-lambda2)). Handle z=1 without inventing an orthogonal basis vector.
+C6 Verify the operator inequality and auxiliary cut coercivity, including q^2 terms, lambda2>=0, D<=B, uniform choice of L0 and the constants3G/4,G/8,G/4.
+C7 Verify actual cut flux J=q-I_h, triangle-square energy error, and threshold M0=64B/c^2=1024B/G^2. Check inequality direction when taking the contrapositive and the q<=1/2 convention.
+C8 Re-derive the finite Cheeger sweep: signed second eigenfunction, a nonzero part of support mass<=1/2, cross-Dirichlet sign, coarea factor1/2, plus-square constant2, Phi<=sqrt(2 gamma) and gamma<G^2/128 threshold.
+C9 Verify the claim is only an upper bound on bottleneck mass under small conductance/gap, not existence under arbitrary hypotheses, localization of every eigenfunction or a uniform gap. Check the residual exponentially small range and compatibility with344.
+C10 Check input source/audit hashes and raw byte regimes, factual model/context and primary read limits. No numerical execution, formal proof, novelty clearance, manuscript/PDF assessment or independence claim is supplied by the fabricator.
