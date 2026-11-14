@@ -1,0 +1,29 @@
+FABRICATION346A FULL REPORT -- separate exact-source audit required
+Frozen input context:345 HEAD14c02a775117131f5156ce811fee9bad7c9b297c, PR286 under separate audit. No345 content, branch, PR body or auditor was touched. The candidate is authored only in the assigned346 staging folder and retained in D.
+
+Substantive bounded result.
+For fixed rho,b and critical s=(1+rho)/(1-rho), every positive h with E hPh=1, pi=hPh>=b and Epi^s<=2 satisfies an explicit upper bound on transition into any set A of m vertices with m a^L<1. With a=(1+rho)/2, B=2^(1/s), theta=1-1/(2s), kappa=2^(1/s)a(1+rho^3),
+ sup_x K(x,A)<=R/(1+R),
+ R=(sqrt(B)/b)m^theta kappa^(L/2)/(1-m a^L)^2.
+Thus the killed operator on A has spectral radius at most R/(1+R), and the actual escape/cut conductance is at least1/(1+R). Exact stationary matching is not needed; this includes all original matching families rather than transferring marginal hypotheses to r.
+
+Explicit useful region.
+For every0<rho<=1/4 and m<=exp(rho L/1920), R<=(9sqrt(B)/b)exp(-rho L/640). The proof covers arbitrary geometry and exponentially many vertices, including every fixed or subexponential support sequence. A near-unit localized killed mode on those supports is excluded. More generally any fixed rho with kappa<1 permits exponential support size with exponent tau below min{-log(a),-log(kappa)/(2theta)}. No numerical root or sharp threshold is supplied.
+
+Proof mechanism.
+The pointwise diagonal term of hPh bounds h(y)<=sqrt(pi(y)/a^L). The critical cap then bounds the sum over A by finite Holder. This controls the internal contribution, but alone would not control a transition ratio. The actual stationary floor gives h>=b/g; reciprocal Cauchy outside A gives O_x>=b P(x,A^c)^2/(P^2h)(x). Energy normalization and the exact semigroup evaluation norm give P^2h(x)<=(1+rho^3)^(L/2). Dividing the two proved bounds produces the ratio theorem. Row sums give the killed spectral bound; reversibility/PSD confirms its Rayleigh interpretation. No Perron-vector identification or missing r moment is assumed.
+
+Own analytical checks, not an audit verdict.
+The finite-state probability normalization, diagonal maximum, pointwise critical cap, finite Holder exponents, weighted reciprocal Cauchy direction, P_(rho^(3/2))Q factorization, rho^3 kernel norm, denominator positivity and monotonicity of t/(1+t) are written in full. The exponential-support condition is checked before dividing by1-m a^L. The explicitrho<=1/4 proof uses exact logarithmic inequalities rather than decimal optimization: log2>2/3 gives log kappa<-rho/240, and log(16/15)>=1/16 gives m a^L<=(2/3)^L. This pays the stated1/640 rate and factor9. The cut uses one-sided flux. Fixed adverse checks are retained for the separate auditor.
+
+Honest limits.
+At rho=1/2, kappa>1 by an exact integer comparison, so the sufficient criterion leaves that regime open even for a singleton. Larger supports remain open even in the proven noise region. A very small stationary mass does not force the support cardinality required here. There is no uniform original-gap theorem, admissible collapsing family, full second-eigenvalue estimate, critical r moment, or full operator perturbation. The result is a bounded no-go theorem for a localized mechanism, not a standalone paper or a claimed sharp boundary. No historical originality, human peer review, formal verification, model score, physical mass gap or continuum claim. PR29 and TermSource unchanged.
+
+Negative work preserved.
+The parent-supplied Holder identity is valid but does not supply relative control of E u1_A versus E pi1_A. The earlier proposed nonlinear energy-moment inequality remains unproved and unused. A small point diagonal numerator does not exclude resonance without denominator control. An endpoint reverse-Holder alternative did not close the all-rho comparison and is not used. The successful outside-potential argument is explicitly restricted; all these failures and the boundary falsifier are in failed-routes-and-limits.txt.
+
+Primary context and model limitations.
+Targeted primary abstracts concerning scaling and Schrodinger bridges were read to assess overlap and assumptions; no theorem from them is imported. This is not an exhaustive literature search or priority clearance. The main proof is elementary; accepted341 is used only in the retained unsuccessful Holder discussion, and accepted344 supplies context for abandoning uniform potential convergence. Pending345 is not a mathematical input. The same involved fabricator and shared context/provider are disclosed; no independence claim.
+
+Operations and retention.
+Only analytical hand work, primary browsing, text edits, reads/copies and hashes. No mathematical script, Python/CAS, Lean/Lake, tests/builds, numerical simulation, Colab or other runtime. No shared runtime, payment, contract or quota change. No branch, PR, parent state, publication, other chat or automation mutation. Full source/report/context/assignment/negative work/primary scope and raw input hashes are retained with verified C/D bytes. Private D index is hashed only, not copied. C staging remains for parent integration, fully retained in D; no disposable clone or deletion is claimed.
