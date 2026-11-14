@@ -1,0 +1,21 @@
+{
+  "binding_file": "binding.json",
+  "idempotency_key": "eriksson-historical-1047e4db-2050-4f7f-9f41-9c526bdbe570",
+  "grant_file": null,
+  "state": "PREPARED_NOT_SUBMITTED",
+  "publication_stage": "linked historical revision; working-paper diffusion may precede admission; never label accepted from one model report",
+  "intended_route": "/api/v1/revisions",
+  "manuscript_file": "paper.pdf",
+  "metadata": {
+    "abstract": "On a finite periodic lattice with unit spacing, a flat Hodge form cannot have a positive coercivity constant uniform under refinement if it is supplemented only by linear observations in a fixed finite-dimensional real space and linear fine-space repairs of uniformly bounded rank. The linear observations may vary with refinement, and their scalar penalty need only vanish at zero. We prove a separate obstruction on kernels of bounded-rank linear constraints using a constructed real Fourier band, derive a necessary dimension budget and explain why it is not sufficient through a classical singular-Schur criterion and a cross-coupling example. Formal evidence is separately pinned; analytic statements and source specializations are identified. No interacting, continuum or Yang-Mills mass-gap claim is made.",
+    "ai_disclosure": "Prepared with Codex in the ongoing programme. Exact PDF assessed by one subagent configured gpt-6-astra; actual backend identity and reasoning setting not exposed. Same chat/account/provider, not blind or organizationally independent. Full reports and original objections preserved; O1-O5 resolved in corrected artifact, O6 (no independent full Lean rebuild/dependency audit) retained. No numerical score, human peer review, admission or editorial acceptance claimed.",
+    "primary_subject": "eu-2ba1c7ad-2532-4cd7-8c5c-60f090a8700a",
+    "specific_topic": "Finite periodic lattice Hodge forms, Fourier bands and coarse-information obstructions",
+    "title": "Coarse information and finite rank obstructions for flat lattice Hodge forms",
+    "rights_confirmed": true,
+    "operator_conflict": true,
+    "secondary_subjects": [],
+    "sha256": "b37f2fe86b7a8a526ad02f8b28491c300a9ff72d5653536bc5532e8c9468ed8f",
+    "authors": "Lluis Eriksson"
+  }
+}
