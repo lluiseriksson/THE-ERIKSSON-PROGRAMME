@@ -1,0 +1,16 @@
+{
+  "status": "FAILED_PRESERVED",
+  "source": "39a41634cd77814b9ccf1fb108cbcf7f97cad499",
+  "archive_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-340\\production-a\\attempt-a\\tep340-build-a-results.zip",
+  "archive_bytes": 13786209,
+  "archive_sha256": "86ab5a202186b5f34d188ff6c746b62d6e4ac5feb7611211fd471a3d4a8fcd44",
+  "pdf_bytes": 681139,
+  "pdf_sha256": "84abf389d56587c7800f99276cfc5a2e7cc9b8ad02d2d32990bb9ece43755e04",
+  "pages": 51,
+  "actual_native_zero_exits": 26,
+  "render_reached": false,
+  "overfull_lines": [],
+  "failure": "Same immutable heading presence check: root glyph from firstbodyline interleaves before regime in extracted heading",
+  "backend": "Actual separate readback No active sessions found on server",
+  "artifact_retention": "Complete original raw archive and outer logs on D, not redundantly copied into this source. No scientific numerical assessment exists."
+}
