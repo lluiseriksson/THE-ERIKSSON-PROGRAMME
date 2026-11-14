@@ -1,0 +1,53 @@
+354C narrow delta audit — TeX raw SHA256 bf574fcf266e54bc4de6c2bc661c9a79835c21247c132528171aefadc49f0647
+VERDICT: ACCEPTABLE FOR SOURCE INTEGRATION within the scope of the completed354B analytical review and this exact correction check.
+R1 and R2 are resolved in both representations. No additional source change was found. This is a separate delta/readiness verdict on354C, not a new full scientific review, numerical grade, novelty clearance, commit/PR certification, PDF assessment or publication action. The adverse354B verdict remains unchanged.
+
+1. Exact identities
+
+Frozen C packet: D:/Datos/the-eriksson-programme/autonomia/evidencia-354/fabrication354C.
+TeX41461 raw bytes: bf574fcf266e54bc4de6c2bc661c9a79835c21247c132528171aefadc49f0647.
+Plain40509 raw bytes: daf3c030d0aec970b9084c5fb4fe304d44586b8fbe5bd87730030ed731000559.
+Candidate MANIFEST.json: 61c156743a0d8a9b63c60df0d3fceb95115b7f3f256909537ee9b6c0f42b490a.
+All identities are raw filesystem bytes without newline, encoding or Unicode normalization.
+
+The old frozen B originals remain TeX41262 bytes at cd925ba351e84b9c6c461b08d0237cef6c0e8b93639f4026ee1f0b37642220c4 and plain40310 bytes at4db61dcd5e54be7e6af9e8dc79bac1d5150da8ea547cad9a4e355b4dea5346f7. Their packet manifest remains76cbec5509158e34a0449ec9c236fbaff350ae083f502eb2641f82f9544214e0.
+The original full B audit remainsd1e23e44efe839886be49efff5730b056678cab5220834bf98b787508829ce1f; its manifest remainsf1afb17acc0a24bc56d72b9a1a289e370cf8113385f3cbb165cec1e80c46ab50 and context remains3227b8ca846367de2038cf13b018c439921c148eaa3f1a00ee974541535edc9b.
+The authoritative three-change JSON remainsf619f595817b650e96b4048cb1ab7a0420382b551b6e449d4671ae428ea34205.
+
+2. Read and comparison scope
+
+Read the complete current fabrication report, factual context, README, assignment, proposed delta checks and exact reconstruction record. Read the authoritative R1/R2a/R2b correction objects directly from this role's original B audit, and the corrected passages with surrounding text. The complete B report/context/objections were authored and fully read in the immediately preceding review; that history is the basis for this deliberately narrow follow-up. No new full theorem review was performed or requested.
+
+For each old representation independently, loaded its exact original text and applied only the three literal strings from the original audit JSON in order R1,R2a,R2b. Each old string occurred exactly once before replacement. No regeneration of the plain companion, header substitution, theorem editing, citation change or normalization was included.
+
+The reconstructed complete text equals the corresponding C text. The reconstructions were then written only to this auditor's own C stage as UTF8 without BOM; their complete raw byte arrays were compared with the actual candidate byte arrays. Both comparisons are equal, and native SHA256 values equal the supplied candidate hashes. This rules out hidden changes in line endings, unchanged regions, formulas, labels, bibliography, model narrative or headers. Each final new string occurs once and each old string is absent in each candidate. Both files increase by199 bytes, consistent with the recorded three phrase replacements. No mathematical expression was evaluated.
+
+The earlier main TeX/plain body consistency remains undisturbed because the same exact corrections are applied to each independently verified B representation. Internal draft354B labels and historical preparation narrative intentionally remain, as explicitly authorized in the assignment. C's external filename, packet and raw hashes identify the corrected version. No additional relabelling is silently included or requested.
+
+3. Disposition of the two findings
+
+R1: the simplex qualification now reads "It does not hold for every potential in the code algebra, since constants also belong to disjoint-block algebras." This denies universality while preserving the proved existential witnesses. It no longer asserts that separation is false for each individual potential. The corrected sentence is exactly the one requested, in both files.
+
+R2a: the introductory sentence now explicitly distinguishes two-level potentials, which cannot produce divergent critical weighting moments under the fixed floor/cap, from product potentials, which satisfy the stronger constant-one comparison.
+R2b: the later summary explicitly assigns divergence exclusion to the two-level class and exact-cap failure exclusion to products.
+These sentences do not claim a two-level constant-one theorem, necessity of three levels, or a larger result than the displayed proposition. They implement exactly the requested scope correction. No proof or theorem statement was amended.
+
+These were the only integration-blocking findings of the completed B audit. Their exact resolution, with all other bytes preserved, supports source-integration readiness of C. It does not retroactively relabel B as accepted or produce a fresh scientific score.
+
+4. Historical preservation and evidence boundaries
+
+Parsed the complete candidate manifest and verified all771 payload lengths and raw hashes. Separately compared all371 original frozen B packet files with C's inputs/354B copies and all391 original B audit files with C's inputs/audit354B copies: all762 original-to-retained comparisons match. Thus the entire prior adverse report, actual context,44-item objections, proposed corrections, failed historical records and nested earlier353A history are preserved, not merely selected favorable excerpts.
+
+This audit's own retained input subset contains all current C top-level files, all original B-audit top-level files including its complete report/context/objections/manifests and correction JSON, plus the exact B TeX/plain/manifest originals. It does not duplicate every nested historical file again. The complete historical packets remain in the unchanged C fabrication evidence and are bound by the full comparison records. RAW-INPUT-MANIFEST identifies the exact copies retained here, with their original paths. No claim is made to have freshly read every historical duplicate.
+
+The first broad manifest display was truncated, so no full-reading assertion relies on it. Verification used the parsed full manifest. A console-only Select-Object projection of ordered dictionaries printed null properties; the saved JSON was read back directly and showed the complete actual identities, both true byte-equality results and all six replacement occurrences. No null identity was accepted as evidence. These documentary display events did not alter a candidate or a mathematical predicate.
+
+5. Actual role and operational scope
+
+This is the same involved auditor that identified R1/R2, within the same provider/history/filesystem, not a new independent reviewer. The parent reported reading the full B report and accepted the correction need before assigning C. The fabricator implemented the revision without contact during this audit. No inbound message arrived after assignment, no other chat or subagent was contacted, and no coordination with the fabricator occurred.
+
+Only native reads, literal text reconstruction in own staging, copies, byte comparisons and hashes were used. No mathematical program, numerical experiment, formal prover, Python/CAS, Lean/Lake, build, test, runtime, compiler, renderer, Git command or candidate/source/state/PR/PDF mutation occurred. No web search or new scientific/novelty review was needed. No disposable clone/worktree or cleanup was undertaken.
+
+Own C preparation: C:/Trabajo/the-eriksson-programme/prefix-rank290-20261113/_drafts/delta-audit354C.
+D retention: D:/Datos/the-eriksson-programme/autonomia/evidencia-354/delta-audit354C.
+The full report/context/assignment/objection dispositions, exact inputs, reconstruction files,771-payload validation and762-history comparisons are retained. No commit, PR, rendered PDF, live publication, grade or general-gap conclusion is certified by this delta verdict.

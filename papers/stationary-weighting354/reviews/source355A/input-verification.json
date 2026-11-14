@@ -1,0 +1,221 @@
+{
+  "representation": "raw file bytes, no normalization",
+  "assigned_current_identities_match": true,
+  "dependency_source_report_manifest_match": true,
+  "historical_entries_verified": 35,
+  "historical_entries": [
+    {
+      "path": "core353A-sections1-6.txt",
+      "bytes": 6867,
+      "sha256_raw_bytes": "dc1ba681175e72506fc8f275d9b1f6293b81f4949c8a2ee74f9efeab41386996",
+      "matches": true
+    },
+    {
+      "path": "core353B-sections1-6.txt",
+      "bytes": 6867,
+      "sha256_raw_bytes": "dc1ba681175e72506fc8f275d9b1f6293b81f4949c8a2ee74f9efeab41386996",
+      "matches": true
+    },
+    {
+      "path": "delta-verification.json",
+      "bytes": 739,
+      "sha256_raw_bytes": "95ce3ddee35010743ec895a92d88c5d8c6781c4dc1c91914165ff3c9a7b9d9c1",
+      "matches": true
+    },
+    {
+      "path": "exact-change-record.json",
+      "bytes": 4560,
+      "sha256_raw_bytes": "5d4c3bd7b785a1c485f067aa68c301b4e68107963804a89dba1953cd5040245a",
+      "matches": true
+    },
+    {
+      "path": "final-observation.json",
+      "bytes": 593,
+      "sha256_raw_bytes": "fec582cc272229070d0f43c46a895a924e72ed78e3597782bc634b34b208b3d4",
+      "matches": true
+    },
+    {
+      "path": "full-source-audit.txt",
+      "bytes": 15205,
+      "sha256_raw_bytes": "4c9b7ce7aedc47f0deb9d270257500c284b8d4bfd483cc802dc16b2dbdfe42de",
+      "matches": true
+    },
+    {
+      "path": "historical-audit-verification.json",
+      "bytes": 3113,
+      "sha256_raw_bytes": "4a4429797736a4622310af59876085df62bf54e49edfdeaea5238106c960cdc4",
+      "matches": true
+    },
+    {
+      "path": "inputs/fabrication353A/MANIFEST.json",
+      "bytes": 388,
+      "sha256_raw_bytes": "a26574e474e24347e2fe9940fb6bded5265c31dcc6b39384cafb404acb2244f8",
+      "matches": true
+    },
+    {
+      "path": "inputs/fabrication353A/source353A.txt",
+      "bytes": 9692,
+      "sha256_raw_bytes": "151eb18c69fec64fbbf7d9fe30f4f0225c113033e8be3cd20b04797311127803",
+      "matches": true
+    },
+    {
+      "path": "inputs/fabrication353B/MANIFEST.json",
+      "bytes": 278,
+      "sha256_raw_bytes": "69ee55f3ead55c60cbb5163186fbda6e5ee93385f3896ab6fc2be61f92978a93",
+      "matches": true
+    },
+    {
+      "path": "inputs/fabrication353B/source353B.txt",
+      "bytes": 13346,
+      "sha256_raw_bytes": "aa4cef8834d70d6d591b51e75635c4fa358e4f081925ccbf1267297646a409ec",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/byte-verification.json",
+      "bytes": 592,
+      "sha256_raw_bytes": "f33f79f05af274bda53dd06398a0d573ade27486f386f5c57cdd45cb8f59dbdd",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/final-observation.json",
+      "bytes": 464,
+      "sha256_raw_bytes": "3caae1a844a7f12a5128647eff152c9bc76eff8fbf18c68f8122680e67e2fd91",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/full-source-audit.txt",
+      "bytes": 17450,
+      "sha256_raw_bytes": "35fd448dfac3f1c12eeab05afad86fc03671d1289fdaba66f14402b444ef97d3",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/inputs/context/source351A.txt",
+      "bytes": 12373,
+      "sha256_raw_bytes": "251e94234b2a28b9b9340a4a4b680b22024c1ea719d594e9f81bfae3e9d81833",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/inputs/fabrication353A/MANIFEST.json",
+      "bytes": 388,
+      "sha256_raw_bytes": "a26574e474e24347e2fe9940fb6bded5265c31dcc6b39384cafb404acb2244f8",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/inputs/fabrication353A/source353A.txt",
+      "bytes": 9692,
+      "sha256_raw_bytes": "151eb18c69fec64fbbf7d9fe30f4f0225c113033e8be3cd20b04797311127803",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/inputs/governance/CLAUDE.md",
+      "bytes": 24408,
+      "sha256_raw_bytes": "618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/inputs/governance/LEEME.md",
+      "bytes": 17126,
+      "sha256_raw_bytes": "5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/inputs/governance/OPERATIONAL-GOVERNANCE-CHARTER.md",
+      "bytes": 13831,
+      "sha256_raw_bytes": "fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/MANIFEST.json",
+      "bytes": 3053,
+      "sha256_raw_bytes": "4d5ca6fe825126d46100cdca1e7c65273a1b9586a2be384cfc2f7b6a3502e8c4",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/model-context.txt",
+      "bytes": 2910,
+      "sha256_raw_bytes": "1dc22725ca9a09761923c55f5ccea775add9b1a486eec1abb5a291d1b64c1251",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/objections-and-dispositions.txt",
+      "bytes": 3899,
+      "sha256_raw_bytes": "aa231e256a14f1f5467c6ba767f6af43a6b3d5cb31f0f029516d81468a613f6b",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/primary-comparison.json",
+      "bytes": 21808,
+      "sha256_raw_bytes": "d8821e8a2e024c3513a7fb9782df62f04e8ba0e8bd3e40694d33e6fe3073f8aa",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/RAW-INPUT-MANIFEST.json",
+      "bytes": 2604,
+      "sha256_raw_bytes": "a9a1b6d69301856b8a67bb39cd2524bb4322154554b02ae27a1d09d2881528a3",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/received-assignment.txt",
+      "bytes": 1131,
+      "sha256_raw_bytes": "cf62fe39b9f32546317b7ed991f8a876c559871519732e15f4552e58ad415e8c",
+      "matches": true
+    },
+    {
+      "path": "inputs/historical-source-audit353A/retention-receipt.json",
+      "bytes": 807,
+      "sha256_raw_bytes": "42c3df343a38182e000145fac4a573d9ba42eab1db8961f81a69eb39d3c4221d",
+      "matches": true
+    },
+    {
+      "path": "model-context.txt",
+      "bytes": 2798,
+      "sha256_raw_bytes": "107eac1eb61bf2fd6686529e4ec28264e324e19416d20985cd71dd2422fefae6",
+      "matches": true
+    },
+    {
+      "path": "objections-and-dispositions.txt",
+      "bytes": 3825,
+      "sha256_raw_bytes": "09a0214886d5556e50fa63af30e07590c73c01e4d0ef3a44af67bf6f929ca81b",
+      "matches": true
+    },
+    {
+      "path": "primary-simplex-reference.json",
+      "bytes": 23019,
+      "sha256_raw_bytes": "ff798467311ecd9a6d8246f49e0bce06b60c9143a63246ef86df531646ac2c9f",
+      "matches": true
+    },
+    {
+      "path": "primary-simplex-search.json",
+      "bytes": 28216,
+      "sha256_raw_bytes": "e9ae0aebd42492093c2da647c465cb421f72b2559972bf3d1292bb2e56b4bb09",
+      "matches": true
+    },
+    {
+      "path": "RAW-INPUT-MANIFEST.json",
+      "bytes": 8958,
+      "sha256_raw_bytes": "e3cef0f5da74ebccc7fcc71867aa176967b05101b408aa8c71aeec891ae85277",
+      "matches": true
+    },
+    {
+      "path": "received-assignment.txt",
+      "bytes": 951,
+      "sha256_raw_bytes": "9adda6575391386df9639bf4a3f0dd5d3c3585e6ffe86fa4f272f2c88c49615d",
+      "matches": true
+    },
+    {
+      "path": "reconstructed353B.txt",
+      "bytes": 13346,
+      "sha256_raw_bytes": "aa4cef8834d70d6d591b51e75635c4fa358e4f081925ccbf1267297646a409ec",
+      "matches": true
+    },
+    {
+      "path": "source353A-to353B.diff",
+      "bytes": 5878,
+      "sha256_raw_bytes": "4f3823245c4a5eff23536f331fd9703242618433029f49be0570d0b4de2a5713",
+      "matches": true
+    }
+  ],
+  "mathematical_execution": false,
+  "git_commands": false,
+  "prior_incomplete_bookkeeping_retained": "input-verification-incomplete-original.json"
+}

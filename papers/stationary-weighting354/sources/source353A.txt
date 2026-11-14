@@ -1,0 +1,180 @@
+SOURCE353A -- candidate extension to overlapping binary codes, 2026-11-14
+Parent-authored; analytical candidate awaiting separate audit. No computation,
+formal certificate, exact-PDF assessment, publication or priority claim.
+
+1. Statement and scope
+Fix 0<rho<1. Let C be a nonzero binary linear subspace of F_2^L with
+dimension n and minimum nonzero Hamming weight D>=2. Put M=2^n and
+delta=sum_{c in C, c!=0} rho^|c|. Assume delta<1. Take any strictly
+positive real function h whose Walsh support lies in C. Equivalently h
+is an arbitrary positive function H of n independent parity coordinates;
+their generating supports may overlap. No uniform amplitude or floor
+bound is imposed. All values are finite at every finite dimension.
+
+For uniform probability mu on the cube and Boolean noise P=P_rho, set
+g=Ph, Z=E h g, K(x,y)=P(x,y)h(y)/g(x), pi=hg/Z,
+N=E h/g, r_h=(h/g)/N. pi and r_h are densities relative to mu.
+Let lambda2 be the second largest eigenvalue of the actual FULL chain K.
+Define eta=M rho^(D/2), alpha=(1-delta)/(1+delta),
+B=(rho+eta)/(1-delta), and epsilon=(1-rho^2)delta/[rho(1-delta)].
+Then the candidate conclusions are
+
+ max(0,rho-epsilon) <= lambda2 <= min(1,max(1-alpha,B));       (1)
+ alpha^2 <= r_h/pi <= alpha^-2 pointwise.                     (2)
+
+Both densities have exact uniform labelled marginals through degree D-1.
+For every fixed s>0 their s-moments consequently satisfy the two-sided
+comparison alpha^(2s) E pi^s <= E r_h^s <= alpha^(-2s) E pi^s.
+
+For any sequence of such codes at fixed rho with eta->0, delta->0 and
+the full-chain gap 1-lambda2 tends to 1-rho, uniformly over all positive
+H. No stationary cap is needed for this spectral assertion. An absolute
+critical moment bound additionally requires the stated cap E pi^s<=2;
+under that cap E r_h^s<=2 alpha^(-2s), not necessarily <=2 exactly.
+
+This extends the algebra beyond disjoint blocks, at the cost of an
+explicit rate/distance condition. It does not cover arbitrary exact
+marginal matching, all codes, all noise regimes, or block-majority
+potentials. It is not an unconditional general stationary-gap theorem.
+The disjoint-block estimate351 can be much sharper than this coarse
+distance estimate; neither should be represented as containing the
+other's full parameter range.
+
+2. Macro algebra and its genuine kernel
+Choose a basis c_1,...,c_n of C. Let z_i(x)=chi_{c_i}(x). The map to
+z in {-1,1}^n is surjective with equal-size fibers. For I subset[n],
+write c(I)=sum_{i in I} c_i and chi_I(z)=product_{i in I}z_i.
+The functions in the algebra have expansions in these M characters.
+The noise restricted to it has kernel, relative to macro uniform law,
+
+ b0(z,w)=sum_I rho^|c(I)| chi_I(z)chi_I(w).
+
+This is a stochastic nonnegative kernel because it is the actual
+conditional action of P on the quotient. Independently its explicit
+series gives 1-delta<=b0<=1+delta. If a=E H>0, then
+a(1-delta)<=G(z)=(b0 H)(z)<=a(1+delta).
+Hence Pi(z)=H(z)G(z)/Z is the macro stationary density, and pi is its
+pullback. The quotient transition matrix is K0(z,w)=2^-n b0(z,w)H(w)/G(z).
+It minorizes alpha nu(w), nu(w)=2^-n H(w)/a. Subtracting that common
+row leaves (1-alpha) times a stochastic matrix. For a nonconstant real
+eigenfunction F, oscillation therefore gives |lambda|<=1-alpha.
+nu need not equal Pi, and no incorrect nu-mean-zero condition is used.
+
+3. All sectors, including the modes missed by the quotient
+For each coset t+C in F_2^L/C, let V_t consist of chi_t(x)F(z(x)).
+The cosets partition the Walsh basis. Each space has dimension M,
+and there are 2^(L-n) spaces, so their direct sum is the full space.
+They are mutually orthogonal for the stationary inner product too:
+Pi F J remains in the C algebra, whereas chi_(t+v) belongs to a
+different coset when t+C!=v+C, making its uniform integral zero.
+Multiplication by h and 1/g preserves each sector, as does diagonal
+Walsh noise. Thus K leaves every V_t invariant. Its action there is
+
+ K_t F(z)= E_w b_t(z,w) H(w)F(w)/G(z),
+ b_t(z,w)=sum_I rho^|t+c(I)| chi_I(z)chi_I(w).                 (3)
+
+This follows by checking F=chi_I: the full Walsh label is t+c(I),
+whose multiplier under P is precisely rho^|t+c(I)|. The signed
+kernel b_t is not assumed stochastic. Formula(3) describes every
+within-fiber mode and all remaining coordinates, with no dropped
+eigenvectors. Changing the representative only changes the macro
+coordinate expression, not the invariant space.
+
+4. Distance bounds for every nontrivial coset
+Choose t of minimum weight d in a nontrivial coset. Then d>=1.
+Distinct words of the coset differ by a nonzero codeword, so their
+Hamming distance is at least D. If d<=D/2, every other word v in
+t+C has |v|>=D-d>=D/2, by the triangle inequality. Consequently
+
+ sum_{v in t+C}rho^|v| <= rho^d+(M-1)rho^(D/2) <= rho+eta.
+
+If d>D/2, every word has weight at least d, so the same sum is at
+most M rho^(D/2)=eta<=rho+eta. Equality d=D/2 causes no problem.
+Fractional D/2 is harmless since rho^x decreases for real x.
+By triangle inequality in(3), |b_t|<=rho+eta<=B b0.
+Thus |K_tF|<=B K0|F|, and ||K_t||infinity<=B. Every sector
+eigenvalue has modulus at most B, irrespective of H's amplitudes.
+
+K is reversible under pi because its conductance is proportional
+to h(x)P(x,y)h(y), symmetric for uniform mu. Moreover conjugation
+by multiplication with sqrt(hg) gives
+M_sqrt(h/g) P M_sqrt(h/g), a positive definite symmetric matrix.
+All eigenvalues are therefore positive. Strict positivity of P
+and h gives a simple top eigenvalue1 and all eigenvalues <=1.
+The quotient and nontrivial-sector bounds combine, using the full
+decomposition, to give the upper inequality in(1), even if B>=1.
+
+5. Lower spectral bound: actual stationary Rayleigh quotient
+Fix any coordinate i. Since D>=2, e_i is outside C. f=chi_{e_i}
+has stationary mean0 and norm1. Using t=e_i in(3), subtract rho b0.
+For a codeword not containing i the coefficient difference is zero;
+for one containing i it is (1-rho^2)rho^(|c|-1). Thus
+
+ |b_(e_i)-rho b0| <= (1-rho^2)delta/rho <= epsilon b0.
+
+Averaging H/G gives |K_(e_i)1-rho|<=epsilon since K01=1.
+Hence <f,Kf>_pi=E_Pi K_(e_i)1>=rho-epsilon. Variational
+characterization on constants-perpendicular gives lambda2 at
+least that value, and positivity gives the max with0 in(1).
+No claim that f is itself an exact eigenvector is required.
+
+6. Densities, moments and exact matching
+The finite-dimensional C algebra is all functions of z, hence is
+closed under products and inverses of positive functions. Both
+pi and r_h therefore belong to it and have uniform mean1. Their
+nonconstant Walsh support has degree at least D; Fourier inversion
+gives each labelled joint marginal through degree D-1 exactly
+uniform, not merely singleton balancing.
+
+Under Pi, E_Pi G^-2=N/Z. Since a(1-delta)<=G<=a(1+delta),
+the product (N/Z)G^2 lies between alpha^2 and alpha^-2.
+Its reciprocal is r_h/pi and has the same pair of bounds. Raising
+positive pointwise quantities to s>0 and integrating proves(2)
+and the moment comparison, without an energy-one normalization.
+Only the additional stationary cap gives an absolute moment bound.
+
+7. Uniform limit, nonempty example and limitations
+delta<=(M-1)rho^D<=eta rho^(D/2)<=eta. If eta->0 then
+alpha->1, B->rho, epsilon->0. The squeeze in(1) proves the
+uniform gap limit. A useful sufficient condition is
+n log2 -(D/2)|logrho| -> -infinity. No existence theorem for
+arbitrary code rates is assumed by stating this implication.
+
+A concrete genuinely overlapping example uses L=3q, q>=1,
+and the two generators which are indicators of blocks A union B
+and B union C, where A,B,C are disjoint q-sets. The three
+nonzero codewords all have weight2q, so n=2,D=2q,
+delta=3rho^(2q) and eta=4rho^q. For large q all hypotheses
+hold. H may be any positive coupled function of these two
+overlapping parity observables, with amplitudes varying arbitrarily.
+Their span has no basis consisting of disjoint nonzero supports:
+every two distinct nonzero words overlap on exactly q coordinates.
+This supplies a nonempty class not reducible to the disjoint-block
+span used in351, while satisfying stronger matching than sqrtL.
+No statement of arbitrary-code or general stationary matching
+closure follows. The condition eta->0 is derived from concrete
+code size and distance, not a renamed spectral hypothesis.
+
+8. Positioning and actual context
+Classical Fourier analysis, minimum-distance packing, symmetry
+decomposition and a Doeblin minorization are the ingredients. The
+author-hosted Boyd--Diaconis--Parrilo--Xiao paper, Symmetry Analysis
+of Reversible Markov Chains, Internet Mathematics2(1):31-71(2005),
+https://web.stanford.edu/~boyd/papers/symmetry.html and its PDF,
+provides primary context for full-chain versus quotient spectra.
+A bounded web search returned this source and other unrelated or
+broad results; it does not establish priority of these constants
+or this arbitrary-amplitude code theorem. No new cited theorem is
+an unproved mathematical premise here: all necessary estimates
+and the full decomposition have been proved above.
+
+This candidate was written by the parent/root after authoring351
+and reading its separate audit. It is deliberately not inserted
+into frozen347B or inherited from an exact-PDF review. Shared
+provider/history and author involvement preclude an independence
+claim. All work is analytical reasoning; no mathematical executable,
+CAS, Lean, numerical test or compiler was run. A separate adversarial
+audit must examine every line before acceptance. Even if accepted,
+group it with the surrounding results rather than publish a small
+standalone corollary paper. The one active question remains the
+original general stationary Boolean Doob spectral-gap problem.

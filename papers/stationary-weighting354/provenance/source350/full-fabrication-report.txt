@@ -1,0 +1,30 @@
+FABRICATION350A -- bounded analytical result; original critical bridge OPEN
+Context HEAD595a3840773b5d4629b5937990a33c1c5a8ac28a; source349 integration frozen.
+No branch, tracked source, PR, body, state or runtime mutation.
+
+The candidate derives actual dimension-free inverse-potential moments and a
+weighting exponent strictly above1 from the actual hPh floor and stationary
+cap. It uses classical scalar reverse hypercontractivity with negative
+exponents, whose precise parameters were read in primary research sources.
+The parent's optional bootstrap is fully derived, with explicit constants
+and an exact finite upper fixed point. Combined with accepted341 this
+upgrades actual r-pi convergence to a nonempty interval of exponents above1.
+
+The requested uniform critical E r^s bound is NOT proved or refuted.
+No admissible divergent-moment or collapsing-gap family has been constructed.
+The full source contains all load-bearing derivations and the precise imported
+SOURCE341A theorem, with its complete source included. No audit label replaces
+that proof. Ordinary/reverse hypercontractivity are explicitly external
+classical theorems. No originality claim is made for these applications.
+
+Three bounded approaches have a documented endpoint obstruction. The method
+is closed for this unit after its finite-ceiling analysis, instead of being
+iterated indefinitely or converted into small standalone papers. The next
+real obstruction is mixed critical control E pi^s g^(-2s), not another exact
+marginal transfer. That next step remains research, not a promised theorem.
+
+Validation performed: analytical derivation and source reading; artifact
+hashing/copy verification only. NOT performed: numerical examples, local math
+execution, Lean, builds, tests, runtimes, PDF generation, independent review.
+All original frozen source349/347/348 and foreign untracked work preserved.
+A separate auditor must decide correctness of this frozen candidate.

@@ -1,0 +1,113 @@
+SOURCE351A — Uniform spectral rigidity of disjoint-parity Doob transforms
+Analytical candidate, parent /root fabrication, 2026-11-14.
+No formal/numerical verification, separate audit, priority or publication claim.
+
+1. SETTING AND EXACT CLAIM
+Fix 0<rho<1, n>=1, m>=2, and r>=0 integers. Partition L=nm+r Boolean coordinates into n disjoint blocks of size m and r residual coordinates. Let z_i(x) be the product of the spins in block i. Let H:{-1,1}^n -> (0,infinity) be completely arbitrary, possibly depending on L with no amplitude bound. Set h(x)=H(z(x)); multiplying h by a positive scalar changes none of the Markov conclusions. Write P=P_rho for ordinary product Boolean noise with Walsh multiplier rho^|S|, g=Ph, Z=E hPh, and
+ K(x,y)=P(x,y) h(y)/g(x), pi(x)=h(x)g(x)/Z.
+All expectations use uniform probability. pi is a density and is stationary for K. Put N=E(h/g), r_h=(h/g)/N. (Residual-coordinate count r and weighting density r_h are distinct.)
+
+Let theta=rho^m, ell=(1-theta)^n, u=(1+theta)^n,
+ alpha=ell/u,
+ beta=(rho+rho^(m-1))/(1-theta),
+ epsilon=(1-rho^2)rho^(m-1)/(1-theta).
+Let lambda_2(K) be the largest eigenvalue on the orthogonal complement of constants in L2(pi dmu), and gamma=1-lambda_2(K). L>=2, so this space is nonzero.
+
+THEOREM351 (candidate).
+(A) pi has every labelled marginal of degree at most m-1 exactly uniform. This follows from its algebraic symmetry, without any moment/floor assumption.
+(B) Every eigenvalue of K is real and nonnegative; its simple top eigenvalue is1. Uniformly over all positive H,
+ max(0,rho-epsilon) <= lambda_2(K) <= min(1,max(1-alpha,beta)),
+ hence max(0,1-max(1-alpha,beta)) <= gamma <= 1-rho+epsilon.
+The lower gap bound may be trivial for small m; the asymptotic statement below does not use such a bound as positive.
+(C) Pointwise alpha^2 <= r_h/pi <= alpha^(-2). Thus for every fixed s>0,
+ alpha^(2s) E pi^s <= E r_h^s <= alpha^(-2s) E pi^s.
+(D) Along ANY sequence m->infinity and n rho^m->0, with arbitrary residual r and arbitrary positive H at each dimension, gamma -> 1-rho uniformly over H. Also alpha->1, so the moment comparison factor tends to1 for each fixed s. In particular the critical stationary cap E pi^s<=2 implies the actual uniform weighting bound E r_h^s<=2 alpha^(-2s), eventually bounded, in this entire family. It does NOT transfer the exact numerical cap2.
+
+There is no stationary floor or moment hypothesis in(A),(B) or the pointwise comparison(C). This is an exclusion of an explicitly defined construction class, NOT a solution of the gap question for all exact-marginal densities. It includes the disjoint-parity macro construction used in349, and allows arbitrary H on arbitrarily many macro bits under the stated scaling. It does not include every code, every low-degree-matching density, or the block-majority construction of344.
+
+2. QUOTIENT NOISE AND STATIONARITY
+For a uniformly distributed x, its parity vector z is uniform on the macro cube. Conditional on x, Boolean noise multiplies each spin by independent signs of mean rho, so the parity multiplier on each size-m block has mean theta. The block multipliers are independent; residual coordinates do not affect z. Therefore
+ (PF(z))(x)=(B_theta F)(z(x)),
+where B_theta is ordinary n-bit noise. In particular g(x)=G(z(x)), G=B_theta H.
+Relative to macro uniform probability, its kernel is
+ b_0(z,w)=product_i(1+theta z_i w_i),
+so ell<=b_0<=u. Let a=E_macro H>0. Then
+ a ell <= G(z) <= a u.                                      (2.1)
+The induced macro Doob kernel is
+ K_0(z,w)=2^(-n)b_0(z,w) H(w)/G(z),
+which is stochastic. Its stationary density is Pi(z)=H(z)G(z)/Z and the full pi is Pi(z(x)); conditional on z all original x are uniform. Reversibility follows directly:
+ pi(x)P(x,y)h(y)/g(x)=h(x)P(x,y)h(y)/Z,
+symmetric in x,y under uniform probability. Strict positivity of P and h makes K strictly positive and irreducible.
+
+The usual similarity to a positive semidefinite matrix can be checked directly. Let a_x=h(x)/g(x)>0 and S=M_sqrt(a) P M_sqrt(a). Conjugation of K by M_sqrt(hg) gives S. Product noise P has eigenvalues rho^|S|>0 and hence is positive definite; S is positive definite. Thus K has real positive eigenvalues, with simple Perron eigenvalue1. The weak nonnegativity formulations in the theorem remain valid. No limiting singular h is allowed at any finite dimension.
+
+3. EXACT MARGINALS
+Let c_i be the full coordinate set of block i, and C be their binary span under symmetric difference. A function of the parity vector has a Walsh expansion supported on C, because every macro character product_{i in I} z_i is the original character chi_(union_{i in I} c_i). Every nonempty such union has degree at least m. Products and P preserve this subalgebra, so pi=hPh/Z also has support in C. Its mean is1; therefore E pi chi_S=0 whenever1<=|S|<=m-1. Fourier inversion on any coordinate subset of at most m-1 coordinates gives exactly its uniform marginal. This applies to arbitrary H, not only product or bounded-height H.
+
+4. DECOMPOSITION OF THE FULL CHAIN, NOT ONLY THE QUOTIENT
+The Fourier characters partition into cosets of C in the binary subset group. For a representative t, define
+ V_t={chi_t(x) F(z(x)): F arbitrary on the macro cube}.
+These spaces span all functions, because their Walsh supports are the disjoint sets t+C. They are also mutually orthogonal in L2(pi dmu): pi is C-supported, so for t+v outside C the uniform expectation of chi_(t+v) times any C-supported function iszero. On each V_t, multiplication by h,g and their inverses preserves the space, as does P. Thus K is block diagonal across these spaces, with each block self-adjoint in the restricted stationary inner product. Within a fixed sector the norm of chi_t F is exactly the macro L2(Pi) norm of F, since chi_t^2=1 and Pi depends only on z.
+
+For each block let j_i be the number of coordinates of t in block i, and let d be the number of residual coordinates in t. On a macro Walsh character indexed by I,
+ P[chi_t chi_(union_(i in I)c_i)]
+ =rho^(d+sum_(i notin I)j_i+sum_(i in I)(m-j_i))
+   chi_t chi_(union_(i in I)c_i).
+Consequently P on V_t is chi_t times a real signed macro convolution B_t whose kernel relative to macro uniform probability is
+ b_t(z,w)=rho^d product_i(rho^j_i+rho^(m-j_i) z_i w_i).       (4.1)
+The induced K block is
+ (K_t F)(z)=E_w[b_t(z,w)H(w)F(w)]/G(z).                     (4.2)
+For t=empty this is exactly K_0.
+
+Representatives may be chosen with j_i=0 whenever the original j_i is m, by adding c_i; this only replaces F by a macro character and leaves the sector unchanged. Thus a nontrivial sector either has d>=1 or has some1<=j_i<=m-1. Other j_i are0. This observation is essential: bounding only K_0 would not bound the full chain.
+
+5. NONTRIVIAL SECTORS
+For0<rho<1, the function x -> rho^x+rho^(m-x) is convex on[1,m-1], so its maximum on that interval is rho+rho^(m-1). For a nontrivial block1<=j<=m-1,
+ |rho^j+rho^(m-j) z_i w_i|/(1+theta z_i w_i)
+ <=(rho+rho^(m-1))/(1-theta)=beta.                         (5.1)
+A block with j=0 has ratio exactly1. Residual coordinates contribute rho^d.
+
+If beta<1, a nontrivial sector therefore satisfies |b_t|<=beta b_0: if it has any nontrivial blocks, the product of their factors is at most beta; if it has none but d>=1, rho^d<=rho<beta. Equation(4.2) gives pointwise
+ |K_t F|<=beta K_0|F|,
+and since K_0 is stochastic, the induced supremum norm of K_t is at most beta. Every eigenvalue in a nontrivial sector is therefore at most beta in absolute value. This argument uses no H bounds.
+
+If beta>=1, no claim that a product of many beta factors is <=beta is made. Instead the already proved global Markov/Perron bound lambda<=1 gives lambda<=min(1,max(1-alpha,beta))=1 directly. This separate case avoids an invalid product bound for small blocks. Thus for the nontrivial sectors the advertised combined upper bound is valid in both cases.
+
+6. QUOTIENT CONTRACTION
+Let nu(w)=2^(-n)H(w)/a. This is a probability measure. From b_0>=ell and G<=a u,
+ K_0(z,w)>=alpha nu(w).
+Since0<alpha<1, write K_0=alpha 1 nu^T+(1-alpha)R with R stochastic. For a real nonconstant eigenfunction F of K_0 with eigenvalue lambda!=1, its oscillation osc(F)=maxF-minF ispositive. Markov averaging cannot increase oscillation, so
+ |lambda| osc(F)=osc(K_0 F)<=(1-alpha)osc(F).
+Thus every nonconstant eigenvalue in the quotient sector is at most1-alpha in absolute value. Constants are its only eigenvectors at1 by strict positivity. Combining this with section5 proves the upper bound for lambda_2 of the FULL K, not merely a lumped chain.
+
+7. A NEAR-RHO MODE AND THE TWO-SIDED GAP LIMIT
+Choose t to consist of a single coordinate in block1 and no others. Since m>=2, t is not in C, so V_t is orthogonal to constants under pi. Formula(4.1) gives
+ b_t-rho b_0
+ =(rho^(m-1)-rho^(m+1)) z_1 w_1 product_(i>=2)(1+theta z_i w_i).
+Hence |b_t-rho b_0|<=epsilon b_0 pointwise. Applying(4.2) to F=1 gives
+ |K_t1-rho|<=epsilon K_0 1=epsilon.
+The original test function f=chi_t has stationary norm1 and stationary mean0. Its Rayleigh quotient is
+ <f,Kf>_(pi)=E_Pi[K_t1]>=rho-epsilon.
+The variational characterization for the self-adjoint K therefore gives lambda_2>=rho-epsilon. Positive semidefiniteness adds lambda_2>=0. This proves the lower eigenvalue bound; it does not infer an eigenfunction from an approximate pointwise value without a variational argument.
+
+If m->infinity, theta->0, beta->rho and epsilon->0. If also n theta->0, then
+ -log alpha=n log[(1+theta)/(1-theta)]->0.
+For example, for theta<=1/2 the logarithm is at most4theta, proving the limit directly. Thus alpha->1 and max(1-alpha,beta)->rho<1. Both bounds squeeze lambda_2 to rho, equivalently gamma to1-rho. Every estimate is uniform over H and the number of residual coordinates. No amplitude, stationary cap, floor or normalization constant enters these bounds.
+
+8. ACTUAL WEIGHTING COMPARISON
+Under the macro stationary measure, E_Pi(G^(-2))=N/Z. By(2.1),
+ 1/(a^2 u^2) <= N/Z <= 1/(a^2 ell^2).
+The identity r_h/pi=Z/(N G^2) therefore yields
+ (ell/u)^2 <= r_h/pi <= (u/ell)^2,
+which is exactly(C). Raising positive quantities to any fixed s>0 and integrating proves the moment inequalities. No Jensen step at s<1 is needed. In particular for s=(1+rho)/(1-rho), Epi^s<=2 gives Er_h^s<=2alpha^(-2s). When n rho^m->0 this tends to2 as an upper bound, but finite-dimensional values above2 remain permitted and agree with349. Neither(C) nor(D) asserts exact r_h matching.
+
+9. RELEVANCE, NEGATIVES AND LIMITS
+For example m can grow on the order of sqrt(L), n=floor(L/m), and r=L-nm; then n rho^m->0 for every fixedrho. Automatic exact matching reaches degree m-1. Choosing m>=floor(C sqrt(L))+1 makes this a legitimate construction class for the programme's matching condition, whenever the partition exists (for fixedC it does for all sufficiently largeL). All positive macro H are covered, including many-level families and arbitrarily high amplitudes. Imposing the programme's additional floor and cap only restricts this class; it cannot invalidate the bounds. Therefore this class cannot furnish a collapsing-gap or divergent-critical-moment counterexample. The two-block parity construction of349 is a special case, with unused coordinates treated as residual.
+
+The obstruction beyond this class is concrete. General exact marginal matching of pi only removes low-degree Walsh coefficients; it does not force Fourier support in the span of disjoint full-block parities. General linear codes likewise need not have the product kernel(4.1). Theorems351(A)-(D) do not extend to those classes without another argument. No statement about the original gap problem, Yang--Mills, the continuum, formal verification or historical originality follows.
+
+Two tempting incorrect shortcuts were explicitly avoided:
+- Quotient minorization by itself misses all nontrivial Fourier sectors of the full chain.
+- Multiplying beta bounds and then replacing beta^q by beta is valid only when beta<1; the small-m case uses the trivial global spectral bound instead.
+
+This is a full analytical candidate intended for grouped consolidation with349/350 after separate audit. The proof uses elementary finite Fourier expansion, Markov contraction and self-adjoint variational principles, all supplied explicitly above. Its originality relative to literature is not cleared. No new small standalone paper is requested.

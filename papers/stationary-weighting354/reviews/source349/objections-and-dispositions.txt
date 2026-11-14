@@ -1,0 +1,24 @@
+SOURCE349A raw-byte SHA256 718f6215f3acceceb52f6748fd6ee9555315a0c3b3a4b516408d9a77a14feb9c
+ADVERSARIAL OBJECTIONS349A -- no blocking defect found in bounded claims
+
+O1. Reverse the normalization direction or confuse uniform with counting mean. Discharged: a^2<=N under the probability pi dmu and a^2>=b; every mean uses uniform probability.
+O2. Make the high spike or low hole arbitrarily rare. Discharged: the two complementary estimates bq and b(1-q) force g>=b/2 independently of q, geometry and contrast. Degenerate one-level h is 1.
+O3. Lose N when comparing one-bit densities. Discharged: rationalization gives N=(1-rho t^2)/(1-rho^2 t^2), and B has denominator 1-rho t^2. Product factorization is justified only on the stated special family.
+O4. Misorder the four H entries or Walsh signs. Discharged: entries, EH=1, c=1/32, d=13/16, v=1/512 and w=169/256 all reconstruct exactly.
+O5. Treat normalized r as unnormalized u. Discharged: N'_0=-v supplies the missing +Hv term; r'_0=-pi'_0.
+O6. Ignore the changing critical exponent in section5. Discharged: both axis vanishings and the exact double-integral formula give 4D as the rho^2 coefficient; the log term is -log(2)/512 and J>0.
+O7. Claim the raw two-bit example already matches singletons. Not made: its nonzero coefficient c(1+rho)(1-rho d)/Z is explicitly acknowledged. Idle-coordinate tensoring would fail.
+O8. Use the variable-exponent sign to justify the fixed-exponent lift. Discharged: the separate proof C_t<0 holds for each fixed t>1, with denominator 2048 and f'(t)<0 for t>=1.
+O9. Apply a linear quotient identity to nonlinear normalizations without justification. Discharged: the parity pullback is an algebra and expectation-preserving map; all positive quotients and normalizing means remain in the four-point algebra.
+O10. Use s_theta instead of the original critical exponent. Discharged: s_rho is fixed; only effective noise theta=rho^m tends to zero.
+O11. Match only averaged marginals or overlook the unused odd coordinate. Discharged: Fourier support excludes every character of degree 1 through k_L; the full labelled pattern expansion gives uniform marginals, including sets meeting the unused coordinate.
+O12. Leave small dimensions undefined or let k_L=m. Discharged: one finite L_0 enforces the strict inequality m>k_L and all continuity/sign conditions; h=1 fills every smaller dimension. All-dimension constraints do not assert all-dimension strict moment failure.
+O13. Use limiting cap2 equality to infer an eventual cap. Would be invalid by continuity alone. Discharged in this source: at s=t*, the stationary derivative is strictly negative and the weighting derivative strictly positive. Both separate signs were checked.
+O14. Tune rho with dimension or assume an unverified numerical root. Discharged: strict monotonicity of M on [1,infinity) and exact rational M(2), M(3) fix a unique t* in (2,3); rho* is its fixed algebraic transform. No root computation is invoked.
+O15. Mistake the rational moments. Discharged manually: squares sum to 1702/256 before the factor 1/4, cubes to 48850/4096 before that factor, yielding 851/512 and 24425/8192.
+O16. Infer divergence, a nonvanishing excess or a vanishing spectral gap. Rejected as an extension: both sharpened moments tend to 2, and the positive excess vanishes at order theta. The source explicitly forbids those conclusions.
+O17. Infer uniform lower-bound impossibility from 344 or endpoint control from finite inverse moments. Rejected as extensions: neither follows, and neither is claimed. Holder only gives the written subcritical estimate.
+O18. Regard the proposed uniform critical-moment bridge as solved. Rejected: only constants 1 and 2 in the stated transfer shortcuts are defeated; a larger uniform bound remains OPEN, as does the original gap.
+O19. Treat prior accepted inputs, Gross's abstract, or a candidate hash as a new formal/novelty/commit-publication certificate. Rejected: those are distinct scopes. The source proofs are finite and self-contained for the new claims; this review is on frozen raw source bytes only.
+
+No source correction is proposed. These dispositions rely on the full derivations in full-source-audit.txt, not a phrase whitelist or executable green status. This record is not a numerical score.

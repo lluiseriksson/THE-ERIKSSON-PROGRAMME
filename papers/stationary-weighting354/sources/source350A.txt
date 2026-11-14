@@ -1,0 +1,295 @@
+SOURCE350A -- Actual inverse-potential moments and a finite bootstrap ceiling
+Candidate analytical source, 2026-11-14. Fabrication only; separate audit required.
+Repository context: 595a3840773b5d4629b5937990a33c1c5a8ac28a.
+This is a bounded continuation of the SAME stationary Doob-gap question.
+The existence of a dimension-uniform bound for E r^s remains UNRESOLVED.
+No new paper, priority, formal-verification, numerical-grade or gap claim.
+
+1. DEFINITIONS AND THE QUESTION
+
+Let mu be uniform probability on {-1,1}^L, L>=1. Let 0<rho<1 and let P=P_rho
+be Boolean product noise: P chi_S=rho^|S| chi_S. In particular, P has positive
+entries, preserves mu and constants, is self-adjoint, and is positive semidefinite.
+Write Q=P_sqrt(rho), so Q^2=P. All unqualified norms and expectations use mu.
+Take h>0 with E hPh=||Qh||_2^2=1. Set
+
+ g=Ph,  pi=hg,  u=h/g,  N=Eu,  r=u/N.
+ s=(1+rho)/(1-rho),  B=2^(1/s).
+
+Assume pi>=b>0 and E pi^s<=2. Necessarily 0<b<=1 because E pi=1.
+Both pi and r are probability densities. The original question also assumes
+E pi chi_S=0 for 1<=|S|<=k, k=floor(C sqrt L), fixed C>0 (in the meaningful
+range k<=L; for asymptotic statements this holds eventually). Exact matching
+always refers to pi, NEVER to r.
+
+Accepted SOURCE349A refutes transfer of the numerical cap2 at exponent s for
+one fixed admissible rho and floor, but does NOT refute a larger uniform bound.
+This unit asks whether a finite K(rho,b,C) bounds E r^s. It does not settle that
+question. It derives actual dimension-free inverse-potential moments, hence
+strictly subcritical weighting moments, and proves the finite ceiling of a
+specific proposed bootstrap. No abstract density gadget is an admissible
+counterexample here.
+
+2. THE BOUNDED RESULT
+
+Define
+
+ R=1+rho^(-1),
+ D0=1+rho^(-3),
+ D=(1+R)/rho^2-1=2rho^(-2)+rho^(-3)-1,
+ F(q)=1+[s q/(s+q)-1]/rho^4,
+
+ q_minus=(1+rho)/rho^3 [(1+rho^2)-sqrt(1+rho^2)],
+ q_plus =(1+rho)/rho^3 [(1+rho^2)+sqrt(1+rho^2)].
+
+Let q_0=D, q_(n+1)=F(q_n), n>=0. Put
+
+ A_n=b^(-1)(B/b)^n,
+ t_n=s q_n/(q_n+2s),
+ t_plus=s q_plus/(q_plus+2s),
+ K_n=B b^(-3)(B/b)^(2n).
+
+Theorem350 (candidate).
+(a) N>=b, g Pg>=b, ||g^(-1)||_D0<=b^(-1), and
+    ||g^(-1)||_D<=b^(-1).
+    These bounds require the floor and energy normalization, not the cap or matching.
+(b) D>R, q_minus<D<q_plus, and q_n strictly increases to finite q_plus.
+    For every n, ||g^(-1)||_(q_n)<=A_n and ||r||_(t_n)<=K_n.
+    Each constant is independent of L and no matching is needed.
+    Moreover 1<t_0<t_n<t_plus<s for n>0.
+(c) Under the additional exact stationary matching, let
+    eta=sqrt(max{rho,(1-rho)/2})<1, epsilon=B eta^(k+1).
+    For any n and any 1<t<t_n,
+
+    ||r-pi||_t <= (2epsilon)^alpha (K_n+B)^(1-alpha),
+    alpha=(t_n-t)/(t(t_n-1)) in (0,1).
+
+    Thus for every fixed 1<t<t_plus the difference tends to zero when
+    k=floor(C sqrt L), L->infinity. This is a convergence statement for
+    the actual weighting density r, without assigning it exact marginals.
+(d) The exponent map F has finite attracting upper fixed point q_plus
+    for the initial exponent D. This map does not produce arbitrarily high
+    inverse moments. Consequently this scheme, followed by its stated
+    Holder step, cannot reach exponent s. This is a limitation of this
+    scheme, NOT a nonexistence theorem for other proofs or for E r^s.
+
+Proofs follow. The external analytical inputs are stated exactly in section3;
+the L1 estimate in (c) is the accepted explicit theorem SOURCE341A, whose full
+proof is retained as an input. All other displayed conclusions are proved here.
+
+3. EXTERNAL HYPERCONTRACTIVE INPUTS AND CONVENTIONS
+
+For f on the uniform Boolean cube and 1<p<=q<infinity, ordinary scalar Boolean
+hypercontractivity says
+ ||P_theta f||_q<=||f||_p when theta^2<=(p-1)/(q-1).
+
+For strictly positive f and finite beta<=alpha<1, reverse scalar Boolean
+hypercontractivity says
+ ||P_theta f||_beta>=||f||_alpha
+ when theta^2<=(1-alpha)/(1-beta).
+
+For a negative exponent a, ||f||_a means (E f^a)^(1/a), a positive generalized
+mean, NOT a norm. In particular ||f||_(-a)=1/||f^(-1)||_a for a>0.
+Every h and g here is strictly positive on a finite cube, so negative means
+are defined before any dimension-independent estimate is asserted.
+
+The reverse theorem is Borell's classical Boolean inequality, as explicitly
+stated in Mossel--Oleszkiewicz--Sen, On reverse hypercontractivity,
+arXiv:1108.1210v5, equation(1.2), and in Cubitt--Kastoryano--Montanaro--Temme,
+Quantum reverse hypercontractivity, scalar Theorem3. Their Theorem1 also states
+ordinary scalar hypercontractivity in exactly the noise convention above.
+No quantum inequality is used. No general-product weaker time constant is
+substituted. With theta=exp(-time), the displayed reverse parameter condition
+is time >= (1/2) log[(1-beta)/(1-alpha)].
+The raw returned primary-source excerpts and a precise reading-scope record
+are retained. The entire original Borell paper was NOT read in this unit.
+
+4. NORMALIZATION AND A NONLINEAR FLOOR IDENTITY
+
+Let a=Eh=Eg. The constant Fourier component of Qh and ||Qh||_2=1 imply a<=1.
+From hg>=b we get h>=b/g. Jensen under mu gives
+
+ a>=b E(1/g)>=b/a, hence a^2>=b.
+
+Under pi dmu, E_pi(1/g)=Eh=a and E_pi(1/g^2)=E(h/g)=N. Cauchy--Schwarz
+therefore gives N>=a^2>=b. This is a lower bound; it does not reverse the
+separate accepted PSD inequality N<=1. The latter is not needed below.
+
+Apply the positivity-preserving operator P to h>=b/g:
+
+ g>=b P(1/g).
+
+Pointwise Jensen for each probability transition row of P gives
+P(1/g)>=1/(Pg). Hence
+
+ g Pg>=b, equivalently g^(-1)<=b^(-1) Pg.                  (4.1)
+
+This is a derived consequence of the actual hPh floor. It is not an assumption
+on an unrelated pair of functions and does not say g>=a fixed constant.
+
+5. DIMENSION-FREE INVERSE MOMENTS
+
+First, Pg=P_(rho^2)h=P_(rho^(3/2))(Qh). Ordinary hypercontractivity from L2
+to L^(D0), with (rho^(3/2))^2=1/(D0-1), gives ||Pg||_D0<=1.
+Equation(4.1) yields ||g^(-1)||_D0<=b^(-1).
+
+For the stronger starting exponent, g=P_sqrt(rho)(Qh), and
+rho=1/(R-1). Ordinary hypercontractivity gives ||g||_R<=1.
+The floor gives h^(-1)<=g/b, hence
+
+ ||h^(-1)||_R<=b^(-1), or ||h||_(-R)>=b.                 (5.1)
+
+Use reverse hypercontractivity with alpha=-R, beta=-D and theta=rho.
+Since D=(1+R)/rho^2-1, the noise condition is an equality,
+rho^2=(1+R)/(1+D). Also D>R because rho<1. Thus beta<alpha<0, all hypotheses
+hold, and
+
+ ||g||_(-D)=||Ph||_(-D)>=||h||_(-R)>=b.
+
+Taking reciprocals, ||g^(-1)||_D<=b^(-1), with the inequality in the required
+direction. Note D-D0=2(rho^(-2)-1)>0. This is a genuine improvement over the
+direct Jensen bound. No cap E pi^s or stationary matching has entered.
+
+6. THE BOOTSTRAP, ITS CONSTANTS AND ITS FIXED POINT
+
+The following particular iteration was suggested by the parent during this
+unit and is shared intellectual input, not an independent discovery here.
+The fabrication agent supplies the derivation and the ceiling analysis.
+
+Suppose q>s/(s-1) and ||g^(-1)||_q<=A. Set p=sq/(s+q)>1.
+Since h=pi/g, ordinary Holder gives
+
+ ||h||_p <= ||pi||_s ||g^(-1)||_q <= B A.
+
+Now Pg=P_(rho^2)h. Ordinary hypercontractivity from p to F(q) applies:
+rho^4=(p-1)/(F(q)-1), and F(q)>p because rho<1 and p>1.
+Using (4.1) once more gives
+
+ ||g^(-1)||_(F(q)) <= b^(-1)||Pg||_(F(q))
+                   <= (B/b) A.                         (6.1)
+
+Thus iteration is valid whenever the current q is in that range.
+
+Here is a complete analysis showing that range persists and identifying the
+ceiling. For q>0, direct algebra gives
+
+ F(q)-q =
+ [-rho^4 q^2+(s-1)(1-rho^4)q-s(1-rho^4)]/[rho^4(s+q)].
+
+The discriminant of the numerator as a quadratic is
+(s-1)^2(1-rho^4)^2-4rho^4 s(1-rho^4)
+=4rho^2 s(1-rho^4).
+Since s(1-rho^4)=(1+rho)^2(1+rho^2), its roots are exactly q_minus and q_plus
+in section2. Both roots are positive and distinct. Therefore F(q)>q
+strictly between the roots. Further,
+F'(q)=s^2/[rho^4(s+q)^2]>0, so F is increasing.
+
+The starting D=(1+2rho-rho^3)/rho^3 is strictly between the roots. To check
+without numerical evaluation, multiply differences by rho^3>0:
+
+ rho^3(D-q_minus)
+ =rho-rho^2-2rho^3+(1+rho)sqrt(1+rho^2)
+ >=(1+2rho)(1-rho^2)>0;
+
+ rho^3(q_plus-D)
+ =-rho+rho^2+2rho^3+(1+rho)sqrt(1+rho^2)
+ >=1+rho^2+2rho^3>0.
+
+Also D>R=2s/(s-1)>s/(s-1), as already observed. Inductively q_n is strictly
+increasing and q_n<q_plus: monotonicity of F implies F(q_n)<F(q_plus)=q_plus.
+Thus each use of (6.1) has p>1. Its increasing bounded limit is a fixed point
+of continuous F and is greater than q_minus, hence equals q_plus.
+Starting from A_0=b^(-1), (6.1) proves
+||g^(-1)||_(q_n)<=A_n=b^(-1)(B/b)^n.
+
+For every fixed q<q_plus, some iterate has q_n>=q (or q<=D already), so norm
+monotonicity supplies a dimension-free bound. There is NO claim that the
+displayed constants stay bounded as n->infinity: B/b>1, so A_n diverges.
+Even a hypothetical finite bound at q_plus would not make q_plus infinite.
+This is a precise finite-exponent obstruction to this particular route.
+
+7. ACTUAL WEIGHTING MOMENTS AND STRONG CONVERGENCE
+
+The exact identity r=pi/(N g^2), together with N>=b, gives by Holder
+
+ ||r||_(t_n) <= b^(-1)||pi||_s ||g^(-2)||_(q_n/2)
+             <= b^(-1) B A_n^2=K_n,
+
+because 1/t_n=1/s+2/q_n. No weighting moment or marginal assumption was used
+to prove the bound. In moment form E r^(t_n)<=K_n^(t_n).
+For n=0 this reads
+ E r^(t_0) <= 2^(t_0/s) b^(-3t_0).
+The strict inequality t_0>1 is equivalent to D>2s/(s-1)=R.
+Because q_n strictly increases to finite q_plus, t_n strictly increases to
+t_plus<s. These inequalities hold for every fixed 0<rho<1, with no
+noise-range exception and no uniformity in rho approaching an endpoint.
+
+Now impose exact stationary matching. SOURCE341A, section1 equations(1.5)-(1.6),
+with p=s and ||pi||_s<=B, proves
+||r-pi||_1<=2epsilon, epsilon=B eta^(k+1),
+eta^2=max{rho,(1-rho)/2}<1. Its full proof is retained in inputs/source341A.txt.
+That theorem uses the actual normalization N, proves N<=1 separately by PSD,
+and does not substitute exact r matching. The floor was not needed there.
+
+Since t_n<s, ||pi||_(t_n)<=B and the triangle inequality gives
+||r-pi||_(t_n)<=K_n+B. Ordinary norm interpolation between1 and t_n, with
+1/t=alpha+(1-alpha)/t_n, proves section2(c). For fixed 1<t<t_plus choose a
+finite n with t<t_n, independent of L. Then alpha>0 and epsilon decays as
+eta^(floor(C sqrt L)+1), giving the claimed convergence. Total variation uses
+half the L1 distance; no factor-of-two conversion has been silently changed.
+
+8. EXACT REMAINING BLOCKAGE AND ABANDONMENT
+
+The requested critical bound would require control of the mixed moment
+N^(-s) E[pi^s g^(-2s)]. The proved pi control is exactly L^s. Separate Holder
+at a smaller target exponent t needs inverse exponent 2ts/(s-t); at t=s that
+expression is infinite. Sections5-6 give finite inverse exponents with
+explicit constants. They do not control this mixed critical moment.
+The finite ceiling q_plus makes this failure explicit for the proposed map F.
+
+This does NOT prove that a dimension-uniform critical K is impossible. It
+does NOT produce a divergent-moment family or a collapsing Doob spectral gap.
+It does NOT prove a uniform positive pointwise g floor; SOURCE344A's failure
+of uniform convergence g->1 is compatible with what is proved here.
+SOURCE349A's exact-cap2 counterexample is also compatible: strong convergence
+strictly below s does not force either cap2 or a uniform bound at s.
+
+Bounded attempts in this unit:
+1. Direct floor identity plus ordinary hypercontractivity: successful inverse
+   exponent D0, but endpoint Holder requires infinitely more.
+2. Negative-exponent reverse hypercontractivity: successful larger D and an
+   actual r exponent t0>1; still t0<s.
+3. Parent's nonlinear Holder/ordinary-noise bootstrap: successful improvement
+   through every finite iterate, but rigorously finite fixed point q_plus and
+   growing constants. This route is abandoned as an endpoint proof at this
+   point. No endless exponent optimization is proposed.
+
+The remaining single question is unchanged. A next substantive step would
+need joint control of pi^s on the small-g region (rather than separate
+moments), or an actual admissible h-family concentrating that joint quantity.
+Such a control has NOT been established, and should not be named a removed
+hypothesis. This unit is suitable for grouped future consolidation only after
+separate source audit; it is not itself a manuscript or publication proposal.
+
+9. SCOPE, FALSIFIERS AND PROVENANCE
+
+Decisive adverse checks for a separate auditor:
+- Check both reciprocal inequality directions in sections4-5 and strict
+  positivity in the negative-exponent theorem.
+- Check the noise conventions rho, sqrt(rho), rho^(3/2), rho^2 and the
+  resulting powers rho^2, rho^3, rho^4 in the four uses of hypercontractivity.
+- Check fixed-point algebra, the starting interval and the nonuniform
+  constants as n increases.
+- Check the Holder relation 1/t_n=1/s+2/q_n and the normalization N>=b.
+- Check that only stationary matching feeds the imported341 estimate, that
+  t remains strictly below t_plus, and that t_plus<s for every fixed rho.
+- Any wrong exponent, unsupported theorem extension to negative means, or
+  hidden critical-moment assumption invalidates the corresponding conclusion.
+
+All reasoning was analytical. No local computation, oracle, Lean, runtime,
+test, benchmark or numerical fitting was run. The fabricator has not
+independently reviewed its own result. No grade or priority claim is assigned.
+Full source dependencies, raw primary responses, negative routes and role
+context accompany this file. Hashes identify raw file bytes, not a fabricated
+Git certification. The source and parent suggestion both arose within the
+same OpenAI/Codex collaboration; provider independence is not asserted.

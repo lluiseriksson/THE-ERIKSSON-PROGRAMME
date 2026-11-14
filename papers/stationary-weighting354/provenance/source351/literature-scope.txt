@@ -1,0 +1,4 @@
+Literature scope351A
+Queries: "Doob" "Boolean" "parity" spectral gap; "noise operator" "parity" "spectral gap" hypercube.
+The full returned search response is retained. Results were weak/unrelated or secondary; none is invoked as a mathematical premise or evidence of originality. The search is not a comprehensive novelty audit. No fetched full primary paper was read for this candidate. The theorem is supplied as an elementary complete derivation and must receive separate correctness and literature assessment before any publication claim.
+Standard ingredients (finite Walsh expansion, positivity/reversibility similarity, stochastic oscillation contraction and Rayleigh variational principle) are not claimed as new. The possible contribution is the specific uniform statement across arbitrary H and full Fourier sectors under the explicit disjoint-parity geometry; its historical originality is unestablished.
