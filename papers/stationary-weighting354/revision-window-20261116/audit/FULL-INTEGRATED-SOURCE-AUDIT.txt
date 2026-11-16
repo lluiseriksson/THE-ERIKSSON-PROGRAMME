@@ -1,0 +1,84 @@
+FULL INTEGRATED SOURCE AUDIT — GROUPED WINDOW REVISION
+Date: 2026-11-16
+
+VERDICT: CORRECTION REQUIRED BEFORE SOURCE ACCEPTANCE / PDF PRODUCTION.
+
+The added operator proof and spectral reduction correctly integrate the accepted A/B/D estimates. The new localization section, however, drops the essential eigenvalue hypothesis lambda>=rho+zeta with fixed zeta>0 when it restates its hypotheses for the actual eigenfunction. Its displayed concentration conclusion is false for the enlarged class as written. The abstract and final positioning sentence also need to specify a fixed positive distance above the noise edge rather than an unqualified above-edge condition. These are integration/scope defects, not changes to the previously accepted A/B/C/D reports. No scientific score, PDF assessment or publication authorization is issued. The frozen source remains unchanged.
+
+1. Exact referents and actual audit context
+
+Candidate file:
+D:\Datos\the-eriksson-programme\autonomia\2026-11-16_grouped-window-revision\manuscript-window-v2-candidate.tex
+SHA256: 6ffc9ea0d351a9f9c1306caf3a1da7afe5b4a9dceed10e48d5e0020a0f2ebf6b
+
+Full predecessor:
+C:\Trabajo\the-eriksson-programme\public354-20261116\papers\2026\11\4T\ARR-2026-4T35VQ6MZB8F99F4\paper.tex
+SHA256: b8cbd2a1b1d817a6889f2219134213b0a9bdeaf20e77d006cebfedcbb59e9233
+
+Both hashes matched. The whole candidate was read in portions, including the unchanged code, block and positive-rate sections. The complete source diff against the predecessor was inspected. The new analytic material was compared with the accepted A/B/C/D source/audit record at the stated evidence history ending in 28dbc89fa152a1188a0c172f21e78cf69965058f. This is an audit of the new integrated source, not a regrade of the old paper or its component reports. It does not certify an eventual rendered artifact.
+
+Reviewer: OpenAI Codex assistant in the separate bootstrap_note_audit role. Exact serving backend/version and effective reasoning effort are not independently attested. The role has inherited context, prior exposure to A/B/C/D, shared filesystem and the same provider/workflow as the fabricator. No blind, human, provider-independent or organizationally independent review is claimed. No inbound discussion or other-agent contact occurred. No Lean, tests, mathematical programs, numerical/symbolic search, PDF compilation/rendering/review, UI control, Colab or new runtime was used. Operations were reading, source diff/search, hashes, a limited public-reference lookup, analytic reasoning and report preservation.
+
+2. Delta and preservation of the predecessor's mathematical scope
+
+The diff changes the title/date, adds a spectral-window/localization summary to the abstract and theorem map, appends two substantial mathematical sections, updates the remaining-question paragraph, replaces obsolete consolidation-stage assessment context and adds four bibliography items. The predecessor's Sections2--6 mathematical statements and proofs are textually unchanged. They continue to distinguish exact cap failure from divergence, the finite subcritical bootstrap from an endpoint estimate, and the code-restricted full-chain theorem from the general stationary question.
+
+The complete reading of the retained material found no new integration dependency that replaces its hypotheses. The new section explicitly returns to energy normalization and fixes rho,b; it does not silently apply the unrestricted code theorem to arbitrary stationary densities. The old total-variation/rigidity argument remains available to justify N<=1, 1-N<=e^2 and ||1-Qh||_2<=e. The old code examples remain noncollapsing structured families. Earlier source353A's erroneous separation claim is still disclosed and the corrected simplex/full-support argument remains in place. This audit does not claim a new full historical-source or external-literature proof verification of those unchanged components.
+
+3. Finite exponent crossing and discrepancy — mathematically correct
+
+The imported q_n and t_n are linked to the existing Theorem subcritical, so the finite crossing is not asserted without its iteration. The inequality t_n>1+rho is equivalent to q_n>2(1+rho)/rho because s-(1+rho)=rho s. The displayed positive value of F(q_c)-q_c is the accepted factorization. Since the denominator of F(q)-q is positive for q>0 and the numerator is a downward quadratic with roots q_-<q_+, positivity at q_c places it strictly between the roots. Monotone convergence q_n to q_+ supplies a finite crossing independent of dimension.
+
+There is a nonblocking notation slip at lines450--451: 'some finite n exceeds q_c' should say 'for some finite n, q_n exceeds q_c'. The surrounding argument makes the intended sequence statement evident, but it is worth correcting in this revision.
+
+With p0=1+rho<t=t_n<s, p=(p0+t)/2 and alpha=(1/p-1/t)/(1-1/t), alpha lies in (0,1). The discrepancy formula uses u=N r, N<=1, ||pi||_p<=B and 1-N<=e^2. Substitution e=B eta0^(k+1) gives the stated C_p=(2B)^alpha(K_t+B)^(1-alpha)+B^3, with no missing factor. Constants and the index are fixed before matching/dimension limits, as required.
+
+4. Full operator estimate and linear window — correct integration
+
+The polynomial bound retains the Q multiplier: P_(1/sqrt(r-1)) followed by multiplication of degree j by [sqrt(rho(r-1))]^j composes to Q. Hypercontractivity of the genuine noise factor and Parseval give max{1,sqrt(rho(r-1))}^d, without a dimension factor. Calling the multiplier algebraic for parameter above one correctly avoids treating it as a Markov operator.
+
+The choices of r1,r2,z,beta retain all needed slack. Specifically 1/p0=1/p+1/r1 and 1/z=1/s+1/r2; p<s implies r1>1+1/rho, and z>p0 implies r2>1+1/rho. Since p0<z<min{s,2}, both smoothing parameters are in (0,1), A1,A2>1 and beta<1. Although the manuscript abbreviates these range verifications, they follow directly from its displayed definitions and the established strict exponent crossing.
+
+For every low-degree input F at once, the first product is controlled by ||u-pi||_p ||QF||_r1. The Fourier support of (pi-1)QF is in degrees at least k+1-d by the symmetric-difference product rule. Factoring Q=P_beta P_sqrt(z-1), applying the Lz-to-L2 contraction and then its high-degree damping proves the second contribution, using ||pi-1||_s<=B+1. Taking the supremum over the whole input subspace yields the claimed operator norm; no column-count factor is needed. The row estimate is its adjoint. There is no unproved Lp bound for a sharp Fourier projection.
+
+The c interval is nonempty and positive. Rewriting the second term as (B+1)beta^(k+1)(A2/beta)^d shows why flooring d only decreases it. Both gamma constants are positive under the strict c choice, and the two displayed exponential terms are correct. Hence k tending to infinity alone suffices. These arguments are faithful to accepted D and do not assume a stronger critical norm.
+
+5. Spectral representation, escape and high-block comparison — correct
+
+The source keeps T=Q M_u Q, with u=h/g, rather than the normalized r representation. Its X*X versus XX* identification with the conjugated actual K is correct. w=Qh has unit norm and is Perron. The low-mode escape is explicitly restricted in Section7 to a unit non-Perron eigenvector with lambda>=rho+zeta, fixed zeta>0. Inverting lambda-P on the nonconstant low subspace costs at most 1/zeta; the constant component is bounded through ||1-w||_2. This yields the displayed squared estimate.
+
+For 1<=d<=min{k,L-1}, the block diagonal comparator has second eigenvalue max{rho,||H_d||}: the low block has eigenvalues1 and rho at its top, and the high compression is positive with norm<=1. The discarded low and off-diagonal blocks have norms at most epsilon each, so their combined operator norm is at most2epsilon. The min-max perturbation inequality then gives the correct factor2 and actual eigenvalue normalization. The paragraph explicitly denies a bound on H_d itself. The abbreviated proof does not introduce a new gap conclusion.
+
+6. BLOCKING integration defect: Section8 drops the eigenvalue separation
+
+At lines546--548, the new section starts afresh with an actual real eigenfunction Kf=lambda f and only the normalizations E pi f=0, E pi f^2=1. It does not impose lambda>=rho+zeta with fixed zeta>0. It then invokes delta_k=e^2+(epsilon/zeta)^2 and the low-mode estimate to conclude concentration. The pointwise identity remains true for all such eigenfunctions, but the needed low-mode escape does not follow from stationary mean zero alone. The previous section's restricted assertion cannot be applied to the larger newly stated class without restoring its hypothesis.
+
+A decisive consistency witness is h=1 on each cube. Then g=pi=u=1, K=P_rho, and every stationary matching order is available. The real f=chi_{1} has stationary mean zero, unit squared norm, and eigenvalue lambda=rho>0. Thus it satisfies the hypotheses explicitly written at the start of Section8. Select any of the allowed fixed parameters from Section7 and let k tend to infinity with d=floor(c k). For M=1, U(M)={u>1} is empty, so the left side of the displayed localization inequality is1. Its claimed right side is [delta_k+rho^(d+1)]/rho, which tends to0. This contradicts the displayed bound under the written hypotheses. No numerical calculation or admissible collapsing-gap construction is involved in this witness.
+
+Required correction: at the start of Section8 retain the previous setting explicitly, including d=floor(c k), fixed zeta>0, and lambda>=rho+zeta, in addition to E pi f=0 and E pi f^2=1. State the asymptotic conclusions along k tending to infinity with these parameters fixed. For instance, begin by retaining Section7's setting and choice of c,d and then introduce an actual real eigenfunction with the displayed lower bound on lambda. The source should not rely on the reader silently adding that condition. This restores exactly C/D's accepted scope; no new hypothesis is being invented by the auditor.
+
+After that correction the rest of the localization proof checks: psi=Q(hf)/sqrt(lambda) is normalized and orthogonal to Qh; Qpsi=sqrt(lambda)g f; u|Qpsi|^2=lambda pi f^2; the multiplier sum is at most delta_k+rho^(d+1). Markov and Holder give the stationary-probability bound with the stated power of K_t. gamma0 bounds delta_k by a fixed multiple of exp(-2gamma0 k). The two strict theta restrictions separately control exp(theta d)delta_k and exp(theta d)rho^(d+1). Both are correctly transcribed.
+
+Associated required scope clarification: the abstract (line20) and remaining-question paragraph (line603) say simply that non-Perron modes above the noise edge concentrate. The proved asymptotic conclusion is for modes separated from rho by a fixed positive amount. If lambda-rho shrinks with k, the factor epsilon/(lambda-rho) need not tend to0. Replace these summaries with 'a fixed positive distance above the noise edge', or equivalent precise wording. This clarifies the same missing uniformity boundary; no theorem for arbitrary shrinking margins has been established here.
+
+7. Tail-space argument and additional presentation points
+
+The tensor formula matches C: its first m parity coordinates force minimum degree m, the remaining positive factors give unit L2 normalization, and Q acts coordinatewise. The norm product rho^(m/2)kappa^ell and its quadratic logarithmic expansion are correct. For fixed finite q above the threshold one small fixed epsilon gives kappa>1. For m=o(L), its logarithmic norm divided by L tends to log kappa>0. The same-exponent tail-smoothing distinction and the denial of an admissible Doob counterexample remain explicit. The comparison q=2t'>2s'=1+1/rho is correctly retained.
+
+Minor precision to restore from C: say 'nonnegative integer cutoffs d_L=o(L)' rather than simply 'any d_L=o(L)' at line569. Otherwise m=d_L+1 and the products are undefined for an arbitrary real sequence, and negative cutoffs are not the intended theorem. Also keep q finite and choose epsilon in (0,1); the current 'sufficiently small fixed epsilon>0' implies the latter, but explicit wording would remove any ambiguity. These are presentation/domain specifications, not a new mathematical obstruction to the intended construction.
+
+C/D's higher stationary Lp lower bound is not stated in the integrated manuscript. Its absence does not make any included theorem false and the abstract does not promise it. If 'complete consolidation' is intended to include that corollary, add its exact fixed-p>2 statement after the corrected localization result, or record that this consequence remains only in the evidence notes. No new standalone paper is warranted by this omission or consequence.
+
+8. References, source context and basic LaTeX inspection
+
+The new bibliography items for O'Donnell, HMO and Volberg correspond to the bounded primary reading scopes retained in the component audits. They are used only for the classical polynomial inequality and the same-exponent distinction, not as a novelty certificate. All eight visible citation keys have bibliography entries. Reading the label/ref/eqref occurrences found no unresolved or duplicate label: the new finitecrossing, spectralwindows, fullwindow, fullwindowbound and localization labels are distinct from the retained ones. Existing literal Sections2--6 references still identify the same sections because the new sections were appended after Section6. The bibliography width argument9 is compatible with eight entries. The theorem/proof and other visible environments are paired on inspection. This is not a parser or compiler result and cannot certify rendering, page layout or absence of LaTeX-engine warnings.
+
+The new Model assessments and review context section appropriately replaces the obsolete statement that no PDF had been produced from consolidation354B. It now identifies the predecessor separately, declines to inherit its score/verdict/review status, distinguishes source audits from integrated-source and exact-PDF review, discloses same-provider inherited context and unattested backend, and preserves adverse records. It does not claim the current revision has already been published or accepted.
+
+I attempted the exact public predecessor version URL listed in the bibliography. The web tool returned an accessibility/internal error, so I do not claim a fresh successful public-page verification in this audit. That lookup failure does not establish expiry, withdrawal or an invalid publication record. The supplied local predecessor hash was verified; actual public status and exact rendered predecessor receipts remain the parent's existing evidence responsibility. No new permission or publication receipt is inferred from this source review.
+
+9. Disposition
+
+Do not mark the exact candidate hash accepted for document production until the Section8 eigenvalue condition and the fixed-margin summary wording are corrected in a new frozen source. Preserve this adverse integrated-source report and the original candidate. The finite-crossing index typo and explicit integer-cutoff domain should be fixed in the same source correction. Then inspect the corrected exact source and its limited delta; no repeated scientific scoring or regrading of A/B/C/D is called for.
+
+The source's central new operator proof, constants, matching window and high-block reduction are sound as transcribed. The obstruction is a real loss of an essential hypothesis while assembling the localization section. The original C/D notes remain correct and unchanged. No general critical-moment or gap result, global novelty certificate, PDF assessment, publication authorization or physical/continuum conclusion follows from this audit. This is the complete report including the counterexample to the overbroad integrated statement, not merely a favorable component summary.

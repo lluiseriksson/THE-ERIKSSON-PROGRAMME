@@ -1,0 +1,31 @@
+{
+  "status": "Accepted analytic source; PDF not produced; prospective build unexecuted",
+  "predecessor": {
+    "pdf_sha256": "fbd2b9784d11740cef74c85f870dff27e4b97158210388cf3ae355eb4ffcbcf3",
+    "version": "v1",
+    "tex_sha256": "b8cbd2a1b1d817a6889f2219134213b0a9bdeaf20e77d006cebfedcbb59e9233",
+    "public_url": "https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/",
+    "public_id": "ARR-2026-4T35VQ6MZB8F99F4"
+  },
+  "current_source_sha256": "186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3",
+  "accepted_source_report_sha256": "29ca3abd83e2096eebded6543e582feca1b4946ab1d59348e895a5f22072563a",
+  "rejected_source_sha256": "6ffc9ea0d351a9f9c1306caf3a1da7afe5b4a9dceed10e48d5e0020a0f2ebf6b",
+  "rejected_report_sha256": "28218f9adf6f9c003b0d818d16b0f44b60eb17f43ea648ba784efba63bf84e16",
+  "component_commit": "28dbc89fa152a1188a0c172f21e78cf69965058f",
+  "workflow_installed": false,
+  "execution_authorized": false,
+  "prior_exception": "validation354 only; not reused",
+  "proposed_execution": "one manual standard-Ubuntu PDF-only job, two fresh checkouts of identical dispatch SHA, at most20 minutes, no Lean/math/desktop/release",
+  "storage": "At most50MiB retained1day; verify existing applicable capacity before activating. No increased quota or billing change.",
+  "public_repository_verified": true,
+  "billing_primary_scope": "https://docs.github.com/en/billing/concepts/product-billing/github-actions confirms standard public runners free; artifact storage is separate, not assumed free/unlimited",
+  "pinned_actions": {
+    "source": "GitHub git-ref API read of tags/v4, 16 November2026",
+    "checkout": "11d5960a326750d5838078e36cf38b85af677262",
+    "upload_artifact": "ea165f8d65b6e75b540449e92b4886f43607fa02"
+  },
+  "score_inherited": false,
+  "new_score": null,
+  "new_publication": false,
+  "representation": "Raw UTF-8 LF candidate and payload; old rejected source and full reports preserved byte-for-byte"
+}

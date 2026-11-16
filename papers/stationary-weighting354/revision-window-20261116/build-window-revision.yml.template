@@ -1,0 +1,82 @@
+# PROSPECTIVE TEMPLATE ONLY. Activation requires the new owner exception.
+name: Build grouped window revision PDF only
+on:
+  push:
+    branches: [codex/low-full-evidence-20261116]
+    paths: [.github/workflows/build-window-revision.yml]
+  workflow_dispatch:
+    inputs:
+      owner_exception_reference:
+        description: Actual new owner reply authorizing this PDF-only Linux exception
+        required: true
+        type: string
+      existing_quota_verified:
+        description: Applicable artifact capacity verified without paid expansion
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: grouped-window-pdf-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  document:
+    if: github.event_name == 'workflow_dispatch' && inputs.owner_exception_reference != '' && inputs.existing_quota_verified
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Fresh clone A at exact dispatch SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          path: clone-a
+          persist-credentials: false
+      - name: Fresh clone B at the same exact SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          path: clone-b
+          persist-credentials: false
+      - name: Install document tools only
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils
+      - name: Preserve authorization reference and build twice
+        env:
+          OWNER_REPLY_REF: ${{ inputs.owner_exception_reference }}
+          EXACT_COMMIT: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/window-evidence"
+          printf '%s\n' "$OWNER_REPLY_REF" > "$RUNNER_TEMP/window-evidence/owner-reference.txt"
+          date -u +%FT%TZ > "$RUNNER_TEMP/window-evidence/start.txt"
+          cd "$GITHUB_WORKSPACE/clone-a"
+          bash papers/stationary-weighting354/revision-window-20261116/build-one.sh "$EXACT_COMMIT" "$RUNNER_TEMP/window-evidence/a"
+          cd "$GITHUB_WORKSPACE/clone-b"
+          bash papers/stationary-weighting354/revision-window-20261116/build-one.sh "$EXACT_COMMIT" "$RUNNER_TEMP/window-evidence/b"
+          cmp "$RUNNER_TEMP/window-evidence/a/driver.pdf" "$RUNNER_TEMP/window-evidence/b/driver.pdf"
+          printf '%s\n' 'Two fresh-clone PDF byte sequences match. This is not mathematical verification or visual review.' > "$RUNNER_TEMP/window-evidence/reproducibility.txt"
+          mkdir -p "$RUNNER_TEMP/window-evidence/pages"
+          pdftoppm -r 120 -png "$RUNNER_TEMP/window-evidence/a/driver.pdf" "$RUNNER_TEMP/window-evidence/pages/page"
+      - name: Record completion time and bound the retained size
+        id: finish
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/window-evidence"
+          date -u +%FT%TZ > "$RUNNER_TEMP/window-evidence/end.txt"
+          bytes=$(du -sb "$RUNNER_TEMP/window-evidence" | cut -f1)
+          if (( bytes > 52428800 )); then
+            echo "Evidence exceeds the pre-authorized 50 MiB storage ceiling" >&2
+            echo "upload_ok=false" >> "$GITHUB_OUTPUT"
+            exit 64
+          fi
+          echo "upload_ok=true" >> "$GITHUB_OUTPUT"
+      - name: Retain complete document evidence for one day
+        if: always() && steps.finish.outputs.upload_ok == 'true'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: grouped-window-pdf-${{ github.sha }}
+          path: ${{ runner.temp }}/window-evidence/
+          if-no-files-found: error
+          retention-days: 1

@@ -1,0 +1,51 @@
+{
+  "base_commit": "28dbc89fa152a1188a0c172f21e78cf69965058f",
+  "representation": "Raw file bytes; no transformation during preservation",
+  "files": [
+    {
+      "path": "audit/CORRECTED-INTEGRATED-SOURCE-AUDIT.txt",
+      "bytes": 8759,
+      "sha256": "29ca3abd83e2096eebded6543e582feca1b4946ab1d59348e895a5f22072563a"
+    },
+    {
+      "path": "audit/FULL-INTEGRATED-SOURCE-AUDIT.txt",
+      "bytes": 15838,
+      "sha256": "28218f9adf6f9c003b0d818d16b0f44b60eb17f43ea648ba784efba63bf84e16"
+    },
+    {
+      "path": "BUILD-BINDING.json",
+      "bytes": 1961,
+      "sha256": "0bbcd1551d8048cc4c1705e1f1d01c3e17ea3e70d7d5f6401cbfe91e1fa7d4e1"
+    },
+    {
+      "path": "build-one.sh",
+      "bytes": 2123,
+      "sha256": "7b9473801961a8396c1de5a4cf235091d5e0b1d59c196750f132edc85242b423"
+    },
+    {
+      "path": "BUILD-RECIPE.txt",
+      "bytes": 3303,
+      "sha256": "40cc600d8d54209f32e0d962de6143132201934413b9578b4e15c1da6e9cd8c0"
+    },
+    {
+      "path": "build-window-revision.yml.template",
+      "bytes": 3813,
+      "sha256": "ac68c65315cd61d6be4c8cc9d60c2ac1969829bfbb0b0613a16748513d8b1894"
+    },
+    {
+      "path": "history/manuscript-window-v2-candidate-rejected.tex",
+      "bytes": 51160,
+      "sha256": "6ffc9ea0d351a9f9c1306caf3a1da7afe5b4a9dceed10e48d5e0020a0f2ebf6b"
+    },
+    {
+      "path": "manuscript-window-v2-candidate.tex",
+      "bytes": 52044,
+      "sha256": "186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2987,
+      "sha256": "0c4abf7c1fc094901fa76cdbc88c8505ec0a4c97715c07350f7e74b69bb27d2e"
+    }
+  ]
+}

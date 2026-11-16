@@ -1,0 +1,74 @@
+CORRECTED INTEGRATED SOURCE AUDIT — GROUPED WINDOW REVISION
+Date: 2026-11-16
+
+VERDICT: ACCEPTED AT THE ANALYTIC SOURCE LEVEL for the exact corrected source identified below. All blocking integration objections in the previous source report are closed. The added higher-stationary-moment consequence is transcribed correctly from C/D. This is a source-correctness finding, not a numerical grade, exact-PDF assessment, rendering check, novelty certification, peer-review status, publication authorization or permission to execute document tools. A/B/C/D and their prior reports are not regraded.
+
+1. Exact referents and scope
+
+Corrected frozen source:
+D:\Datos\the-eriksson-programme\autonomia\2026-11-16_grouped-window-revision\manuscript-window-v2-candidate.tex
+SHA256: 186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3
+
+Its C: counterpart in low-full-evidence-20261116\papers\stationary-weighting354\revision-window-20261116 has the same hash.
+
+Rejected source preserved as manuscript-window-v2-candidate-rejected.tex:
+SHA256: 6ffc9ea0d351a9f9c1306caf3a1da7afe5b4a9dceed10e48d5e0020a0f2ebf6b
+
+Original adverse report preserved at audit\FULL-INTEGRATED-SOURCE-AUDIT.txt:
+SHA256: 28218f9adf6f9c003b0d818d16b0f44b60eb17f43ea648ba784efba63bf84e16
+
+All four checks matched. The full rejected-to-corrected source diff was read, and the complete corrected localization/moment/tail section was reread in context. The earlier complete integrated-source inspection remains the basis for unchanged text. No unrelated scientific, reference or assessment-context changes appear in this correction. The old adverse verdict remains an accurate record for its old exact hash; it is not overwritten or retroactively changed into a pass.
+
+2. Reviewer identity and boundaries
+
+Reviewer: OpenAI Codex assistant, separate bootstrap_note_audit role, with inherited context and prior exposure to the component and integrated-source audits. Same provider/workflow and shared filesystem as the author. The precise serving backend/version and effective reasoning effort are not independently attested. No blind, human, provider-independent or organizationally independent review is claimed. No inbound discussion or contact with other agents occurred during this check.
+
+No mathematical program, numerical/symbolic search, Lean, tests, PDF compilation/rendering, UI, Colab or new runtime was executed. Reading, Git source comparison, hashes and report preservation were the only tool operations. This is defect-closure verification of a new exact source, including its one added corollary, not review repetition to obtain a different score. No score is assigned.
+
+3. Closure of the essential hypothesis defect
+
+The corrected start of Section8 explicitly retains the Section7 setting, d=floor(c k), fixed zeta>0 and the other fixed parameters. It now imposes lambda>=rho+zeta before defining the actual eigenfunction's energy representation. Stationary mean zero and unit stationary squared norm remain present. The asymptotic sentence now expressly takes k to infinity.
+
+These additions restore exactly the hypotheses under which Section7 controls the low-degree projection. In particular the previously supplied h=1, f=chi_1 witness has lambda=rho, and no longer satisfies the corrected eigenvalue condition. The missing separation cannot now be mistaken for a consequence of stationary mean zero. Applying the low-mode estimate to psi=Q(hf)/sqrt(lambda) is justified: the norm/orthogonality calculations and pointwise identity have not changed, and lambda is uniformly bounded below by rho+zeta.
+
+Both theta restrictions remain intact. delta_k decays as O(exp(-2gamma0 k)); multiplying it by exp(theta floor(c k)) still tends to zero because theta c<2gamma0. The remaining multiplier term tends to zero because theta<log(1/rho). Dividing by lambda preserves convergence because of its fixed positive lower bound. Thus the precise stationary squared-mass and exceptional-probability conclusions follow in the corrected setting.
+
+The abstract and final remaining-question paragraph now restrict modes to a fixed positive distance above the noise edge. This closes the associated uniformity overclaim. They no longer suggest that the proof automatically applies when lambda-rho shrinks arbitrarily with k. The high block and the general gap remain explicitly open.
+
+4. Added higher stationary moments
+
+The new paragraph fixes a finite exponent ell>2, defines a_k=M(delta_k+rho^(d+1))/lambda tending to zero, and sets C_t=B K_t^(t/s'). For all sufficiently large k, 1-a_k>0. The established complement bound therefore gives stationary squared mass at least 1-a_k on U(M). Holder gives
+
+1-a_k <= ||f||_(L^ell(pi))^2 pi(U(M))^(1-2/ell).
+
+In particular pi(U(M))>0, so division is legitimate. With beta_ell=1/2-1/ell>0,
+
+||f||_(L^ell(pi)) >= sqrt(1-a_k) pi(U(M))^(-beta_ell).
+
+The known probability upper bound is C_t exp(-theta t d/s'). Its negative power produces the lower bound
+
+sqrt(1-a_k) C_t^(-beta_ell) exp(theta t d beta_ell/s'),
+
+which is exactly the new displayed formula. Its direction, factor of two, power of C_t and fixed-exponent range are correct. Since d tends to infinity, the lower bound diverges along eligible eigenfunction families. The source correctly says that this is not a contradiction, because no uniform upper bound on those eigenfunction norms is established. This is the C/D consequence integrated into the manuscript, not a new independently assumed regularity hypothesis.
+
+The subsequent tail paragraph explicitly reassigns ell=L-m as an integer coordinate count. This local reuse of a symbol after the fixed-norm-exponent paragraph is readable and does not alter either formula. It is not a blocking ambiguity because the reassignment is explicit.
+
+5. Remaining requested precision corrections
+
+The finite-crossing sentence now says 'for some finite n, q_n>q_c', repairing the previous index-versus-sequence-value typo. The mathematical proof is otherwise unchanged.
+
+The tail construction now specifies nonnegative integer cutoffs d_L=o(L), a finite q satisfying 1+1/rho<q<infinity, and sufficiently small fixed epsilon in (0,1). Consequently m=d_L+1 is an integer, ell=L-m is nonnegative for sufficiently large L, the product and parity notation have the intended domain, and all bases in the noninteger-q norm expression are positive. This closes the earlier domain-presentation points without changing the accepted obstruction.
+
+The source still distinguishes low-degree-input polynomial control from a false unrestricted high-degree L2-to-Lq repair. It still denies an admissible collapsing Doob counterexample and distinguishes same-exponent tail smoothing. The original dimension-free constants, full-row/column proof, d=floor(c k) rate and min-max comparison remain unchanged from the analytically sound portion of the prior integrated audit.
+
+6. Reference, LaTeX and assessment-context scope
+
+The correction adds no bibliography key, theorem label or external claim. Its new Section spectralwindows reference already exists. The added display uses existing notation and packages; basic delimiter/display inspection found no new source-level reference or environment defect. This is not a compiler or visual-layout result, and it does not certify the rendered PDF.
+
+The revised Model assessments and review context section remains unchanged from the prior integrated check: predecessor status is distinguished from the current revision, no old PDF score is inherited, source reports do not claim to certify an eventual PDF, and actual model/context limitations remain disclosed. The prior unsuccessful public-version lookup remains only an access limitation of that check, not evidence of withdrawal or expired permission; no new public-page or publication receipt is claimed here.
+
+7. Final disposition
+
+The exact source 186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3 passes the corrected integrated analytic-source audit. No blocking objection remains within this scope. Preserve this full report together with the rejected source and adverse report, component notes/reports and source hashes. Any later alteration is a different source artifact; any produced PDF will require its own exact hash, rendering verification and appropriate review context.
+
+This acceptance closes an assembly error and verifies the added fixed-exponent Holder consequence. It does not resolve the actual high block, critical weighting moment, general stationary gap or physical/continuum problem, and does not certify global originality or publication relevance. No publication, formal certificate, scientific score or human peer-review conclusion is supplied. Candidate files and earlier reports were not changed by the auditor.

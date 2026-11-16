@@ -1,0 +1,19 @@
+PROSPECTIVE DOCUMENT BUILD — NOT EXECUTED
+
+Exact candidate source: manuscript-window-v2-candidate.tex. The accepted source hash will be fixed in BUILD-BINDING.json after the source audit closes. The current source is an unpublished linked-revision candidate for ARR-2026-4T35VQ6MZB8F99F4 v1, not a second deposit or new public version.
+
+Sanctioned default: own Colab Pro+ Linux runtime, prepared while disconnected. Two fresh clones of the same frozen source commit; no shared runtime with another chat. CPU only. Record start/end, package versions, command exits, complete logs, PDF hashes, and runtime consumption. Disconnect at the end. No runtime has been opened.
+
+Proposed narrow alternative, requiring a NEW explicit owner exception: GitHub Actions standard Ubuntu runner in this existing public research repository, for document production of this exact grouped revision only, at most two fresh-clone builds of one frozen SHA. No Lean/Lake, oracle, mathematical experiment, desktop control, main merge or AIRR release. The earlier exception for validation354 does not authorize this build. No paid/larger runners, purchases, billing changes or increased quotas. Verify existing applicable storage capacity before uploading; an unavailable quota lookup is not permission to incur charges. If that cannot be established, preserve source work and do not activate this route.
+
+Build payload to prepare after the source gate closes:
+- Pin/check exact source SHA256 and Git SHA in each fresh clone.
+- Install the Linux TeX/Poppler packages using the existing publication-toolchain convention: latexmk, texlive-latex-extra, texlive-fonts-recommended, lmodern, poppler-utils.
+- Disable shell escape and document-supplied latexmk configuration. Run latexmk -norc -pdf -no-shell-escape -interaction=nonstopmode -halt-on-error on the frozen source; retain full log and actual exit code, including failures.
+- Use fixed SOURCE_DATE_EPOCH from the frozen commit and FORCE_SOURCE_DATE=1. A deterministic driver may suppress PDF timestamp/trailer identifiers; its exact bytes must be included in the audited payload before any build. Never alter bytes after observing a failed reproducibility check to claim the original passed.
+- Require two independently checked-out copies at the same SHA and byte-identical PDFs. Different hashes are a failure requiring diagnosis, not a scientific disproof or a reason to discard logs.
+- Extract text and PDF metadata, render every page to PNG, inspect every page visually in Codex and preserve evidence in D:\Capturas\the-eriksson-programme. Layout defects must be corrected with a new frozen source/hash before publication.
+- Obtain the declared first numerical model assessment of the exact final PDF and retain its complete report, objections, actual identity/context and score. Existing354's grade must not be inherited or resampled.
+- Only then request the native machine child grant for the exact linked revision through the continuous author route. Reconcile the existing public predecessor and native receipt; do not create a duplicate new paper or administrative permit.
+
+This file is an unexecuted production specification, not an executable validated workflow, runtime result, numerical assessment, publication authorization exception or publication receipt.
