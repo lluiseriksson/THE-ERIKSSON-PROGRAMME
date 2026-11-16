@@ -1,6 +1,8 @@
-# PROPOSAL ONLY. No push/PR/schedule trigger. No Colab claim or new spend authorized.
+# Authorized file-validation354. Branch push registers this workflow; its job is dispatch-only.
 name: Proposed file validation 354 on GitHub Linux
 on:
+  push:
+    branches: ['codex/validation354-github-20261116']
   workflow_dispatch:
     inputs:
       exception_authorized:
@@ -27,7 +29,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   validate:
-    if: ${{ inputs.exception_authorized == true }}
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.exception_authorized == true }}
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     env:

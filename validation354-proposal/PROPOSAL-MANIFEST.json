@@ -1,7 +1,7 @@
 {
   "schema": "github-validation354-proposal-v1",
   "source": "8e452190b8f7d3f7382ba2e6c05d0f14fa9c3dc5",
-  "status": "UNAUTHORIZED_UNEXECUTED_PROPOSAL_PENDING_SEPARATE_AUDIT_AND_OWNER_EXCEPTION",
+  "status": "OWNER_AUTHORIZED_REGISTRATION_AMENDMENT_UNEXECUTED",
   "payload_count": 9,
   "payloads": [
     {
@@ -46,8 +46,8 @@
     },
     {
       "path": "validation354-proposal.yml",
-      "bytes": 4218,
-      "sha256": "28462d3e18806f7d6980630167f945f0f24d4b2a06ae049922a1500d868d8b5b"
+      "bytes": 4334,
+      "sha256": "88c46cacbf37ddbead558a132a9477e9322321858b5cb7d0f2bfeec5f75f6ed1"
     }
   ]
 }
