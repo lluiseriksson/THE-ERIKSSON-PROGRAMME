@@ -2,7 +2,7 @@
 
 This grouped research extension of paper354 and the accepted A/B packet removes the binomial column-count loss. Under the same fixed positive stationary floor, critical stationary moment cap, and exact degree-k stationary matching, the full low-to-all operator error decays exponentially in k on degrees up to floor(c k), for an explicit positive constant c depending on the fixed parameters. At k asymptotic to C sqrt(L), the controlled window grows from order sqrt(L)/log(L) to order sqrt(L). Only k tending to infinity is needed for the dimension-free asymptotic statement.
 
-The exact actual Doob eigenfunction identity then forces every normalized mode above rho+zeta to concentrate its stationary squared mass on an actual high-h/Ph set of stationary probability exp(-constant k). This is a necessary condition for a collapsing gap, not an exclusion of such modes. The positive stationary floor and all original hypotheses remain.
+The exact actual Doob eigenfunction identity then forces every stationary-mean-zero normalized mode above rho+zeta to concentrate its stationary squared mass on an actual high-h/Ph set of stationary probability exp(-constant k). This is a necessary condition for a collapsing gap, not an exclusion of such modes. The positive stationary floor and all original hypotheses remain.
 
 Candidate C also supplies a tensor-product counterexample to a proposed generic repair: restricting Q to all degrees above any sublinear cutoff does not give a dimension-uniform L2-to-Lq bound beyond the ordinary hypercontractive range. Its test vector is not an admissible collapsing Doob family. This classical sharpness mechanism does not contradict same-exponent tail-space smoothing results.
 
