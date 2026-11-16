@@ -1,12 +1,12 @@
 PROSPECTIVE DOCUMENT BUILD — NOT EXECUTED
 
-Exact candidate source: manuscript-window-v2-candidate.tex. The accepted source hash will be fixed in BUILD-BINDING.json after the source audit closes. The current source is an unpublished linked-revision candidate for ARR-2026-4T35VQ6MZB8F99F4 v1, not a second deposit or new public version.
+Exact candidate source: manuscript-window-v2-candidate.tex. The accepted source hash is fixed in BUILD-BINDING.json as 186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3. The current source is an unpublished linked-revision candidate for ARR-2026-4T35VQ6MZB8F99F4 v1, not a second deposit or new public version.
 
 Sanctioned default: own Colab Pro+ Linux runtime, prepared while disconnected. Two fresh clones of the same frozen source commit; no shared runtime with another chat. CPU only. Record start/end, package versions, command exits, complete logs, PDF hashes, and runtime consumption. Disconnect at the end. No runtime has been opened.
 
 Proposed narrow alternative, requiring a NEW explicit owner exception: GitHub Actions standard Ubuntu runner in this existing public research repository, for document production of this exact grouped revision only, at most two fresh-clone builds of one frozen SHA. No Lean/Lake, oracle, mathematical experiment, desktop control, main merge or AIRR release. The earlier exception for validation354 does not authorize this build. No paid/larger runners, purchases, billing changes or increased quotas. Verify existing applicable storage capacity before uploading; an unavailable quota lookup is not permission to incur charges. If that cannot be established, preserve source work and do not activate this route.
 
-Build payload to prepare after the source gate closes:
+Prepared inactive payload (static audit required; not executed):
 - Pin/check exact source SHA256 and Git SHA in each fresh clone.
 - Install the Linux TeX/Poppler packages using the existing publication-toolchain convention: latexmk, texlive-latex-extra, texlive-fonts-recommended, lmodern, poppler-utils.
 - Disable shell escape and document-supplied latexmk configuration. Run latexmk -norc -pdf -no-shell-escape -interaction=nonstopmode -halt-on-error on the frozen source; retain full log and actual exit code, including failures.
@@ -17,3 +17,8 @@ Build payload to prepare after the source gate closes:
 - Only then request the native machine child grant for the exact linked revision through the continuous author route. Reconcile the existing public predecessor and native receipt; do not create a duplicate new paper or administrative permit.
 
 This file is an unexecuted production specification, not an executable validated workflow, runtime result, numerical assessment, publication authorization exception or publication receipt.
+
+Retention correction after the first preparation audit:
+Full text diagnostics are separated from PDF/PNG. Oversized graphics produce a failed/incomplete evidence outcome while retaining the complete diagnostic artifact within the same ceiling. If diagnostics themselves exceed capacity, no artifact is uploaded; full text is emitted to the Actions console, whose completeness must be checked. A truncated/lost console is an explicit preservation limitation requiring authorized recovery, never a claim of complete logs. The original adverse preparation report and commit remain retained.
+
+build-pipeline.sh records actual build-script, comparison, rendering and page-count exits and timings. Each build records latexmk's exit and installed package/TeX/Poppler versions. Missing phase records mean not reached. The first-step/pre-upload interval excludes queueing, upload and runner teardown; the service receipt is required for total consumption. Same-runner byte equality is not independent-platform reproduction. No script or template has been executed.

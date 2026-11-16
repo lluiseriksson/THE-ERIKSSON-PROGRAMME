@@ -1,4 +1,4 @@
-# PROSPECTIVE TEMPLATE ONLY. Activation requires the new owner exception.
+# INACTIVE TEMPLATE. New owner exception and verified capacity required.
 name: Build grouped window revision PDF only
 on:
   push:
@@ -26,6 +26,13 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
+      - name: Record first job step and actual authorization reference
+        env:
+          OWNER_REPLY_REF: ${{ inputs.owner_exception_reference }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/window-evidence"
+          date -u +%FT%TZ > "$RUNNER_TEMP/window-evidence/first-step-start.txt"
+          printf '%s\n' "$OWNER_REPLY_REF" > "$RUNNER_TEMP/window-evidence/owner-reference.txt"
       - name: Fresh clone A at exact dispatch SHA
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -38,45 +45,75 @@ jobs:
           ref: ${{ github.sha }}
           path: clone-b
           persist-credentials: false
-      - name: Install document tools only
+      - name: Install document tools only and retain setup exits
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils
-      - name: Preserve authorization reference and build twice
+          root="$RUNNER_TEMP/window-evidence"
+          date -u +%FT%TZ > "$root/setup-start.txt"
+          rc=0
+          sudo apt-get update > "$root/apt-update-full.log" 2>&1 || rc=$?
+          printf '%s\n' "$rc" > "$root/apt-update-exit.txt"
+          if (( rc != 0 )); then exit "$rc"; fi
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils > "$root/apt-install-full.log" 2>&1 || rc=$?
+          printf '%s\n' "$rc" > "$root/apt-install-exit.txt"
+          date -u +%FT%TZ > "$root/setup-end.txt"
+          exit "$rc"
+      - name: Build twice, compare bytes, render and reconcile page count
         env:
-          OWNER_REPLY_REF: ${{ inputs.owner_exception_reference }}
           EXACT_COMMIT: ${{ github.sha }}
         run: |
-          set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/window-evidence"
-          printf '%s\n' "$OWNER_REPLY_REF" > "$RUNNER_TEMP/window-evidence/owner-reference.txt"
-          date -u +%FT%TZ > "$RUNNER_TEMP/window-evidence/start.txt"
-          cd "$GITHUB_WORKSPACE/clone-a"
-          bash papers/stationary-weighting354/revision-window-20261116/build-one.sh "$EXACT_COMMIT" "$RUNNER_TEMP/window-evidence/a"
-          cd "$GITHUB_WORKSPACE/clone-b"
-          bash papers/stationary-weighting354/revision-window-20261116/build-one.sh "$EXACT_COMMIT" "$RUNNER_TEMP/window-evidence/b"
-          cmp "$RUNNER_TEMP/window-evidence/a/driver.pdf" "$RUNNER_TEMP/window-evidence/b/driver.pdf"
-          printf '%s\n' 'Two fresh-clone PDF byte sequences match. This is not mathematical verification or visual review.' > "$RUNNER_TEMP/window-evidence/reproducibility.txt"
-          mkdir -p "$RUNNER_TEMP/window-evidence/pages"
-          pdftoppm -r 120 -png "$RUNNER_TEMP/window-evidence/a/driver.pdf" "$RUNNER_TEMP/window-evidence/pages/page"
-      - name: Record completion time and bound the retained size
+          bash "$GITHUB_WORKSPACE/clone-a/papers/stationary-weighting354/revision-window-20261116/build-pipeline.sh" "$RUNNER_TEMP/window-evidence" "$EXACT_COMMIT"
+      - name: Preserve diagnostics even if graphics exceed ceiling
         id: finish
         if: always()
         run: |
-          mkdir -p "$RUNNER_TEMP/window-evidence"
-          date -u +%FT%TZ > "$RUNNER_TEMP/window-evidence/end.txt"
-          bytes=$(du -sb "$RUNNER_TEMP/window-evidence" | cut -f1)
-          if (( bytes > 52428800 )); then
-            echo "Evidence exceeds the pre-authorized 50 MiB storage ceiling" >&2
+          set -euo pipefail
+          root="$RUNNER_TEMP/window-evidence"
+          bundle="$RUNNER_TEMP/window-upload"
+          mkdir -p "$root" "$bundle/diagnostics"
+          date -u +%FT%TZ > "$root/pre-upload-end.txt"
+          printf '%s\n' 'Timings cover first step through pre-upload; checkout/upload/service totals require run receipt. Missing phases mean not reached, not success.' > "$root/timing-scope.txt"
+          cd "$root"
+          find . -type f ! -name '*.png' ! -name '*.pdf' -exec cp --parents -- '{}' "$bundle/diagnostics/" \;
+          diag=$(du -sb "$bundle" | cut -f1)
+          # Reserve 1 MiB for final records and directory overhead.
+          cap=51380224
+          if (( diag > cap )); then
+            printf '%s\n' 'DIAGNOSTICS TOO LARGE: no upload; full text follows. Console retention/truncation must be checked before claiming preservation.' >&2
+            while IFS= read -r -d '' file; do
+              printf '\nFILE: %s\n' "$file"
+              cat -- "$file"
+            done < <(find "$bundle/diagnostics" -type f -print0)
             echo "upload_ok=false" >> "$GITHUB_OUTPUT"
-            exit 64
+            exit 66
+          fi
+          graphics=$(find . -type f \( -name '*.png' -o -name '*.pdf' \) -printf '%s\n' | awk '{s+=$1} END {printf "%.0f",s+0}')
+          rc=0
+          if (( diag + graphics <= cap )); then
+            mkdir -p "$bundle/document"
+            find . -type f \( -name '*.png' -o -name '*.pdf' \) -exec cp --parents -- '{}' "$bundle/document/" \;
+            printf '%s\n' 'Document included; inspect pipeline exits separately.' > "$bundle/retention-status.txt"
+          else
+            printf '%s\n' 'SIZE FAILURE: full text diagnostics retained, PDF/PNG omitted. Rendering evidence incomplete. Recovery requires an authorized route within capacity.' > "$bundle/retention-status.txt"
+            rc=64
+          fi
+          bytes=$(du -sb "$bundle" | cut -f1)
+          printf 'Payload bytes before this record: %s\nHard ceiling: 52428800\n' "$bytes" > "$bundle/size.txt"
+          if (( bytes > 52400000 )); then
+            printf '%s\n' 'Unexpected overhead: no upload; full diagnostics follow. Verify console completeness before claiming preservation.' >&2
+            while IFS= read -r -d '' file; do
+              printf '\nFILE: %s\n' "$file"
+              cat -- "$file"
+            done < <(find "$bundle/diagnostics" -type f -print0)
+            echo "upload_ok=false" >> "$GITHUB_OUTPUT"
+            exit 66
           fi
           echo "upload_ok=true" >> "$GITHUB_OUTPUT"
-      - name: Retain complete document evidence for one day
+          exit "$rc"
+      - name: Retain bounded evidence including failed-run diagnostics
         if: always() && steps.finish.outputs.upload_ok == 'true'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: grouped-window-pdf-${{ github.sha }}
-          path: ${{ runner.temp }}/window-evidence/
+          path: ${{ runner.temp }}/window-upload/
           if-no-files-found: error
           retention-days: 1

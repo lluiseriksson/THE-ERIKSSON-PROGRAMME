@@ -1,0 +1,155 @@
+TERMINAL COMMIT AND PROSPECTIVE BUILD PREPARATION AUDIT
+Date: 2026-11-16
+
+VERDICTS
+
+1. Exact inactive evidence preservation: PASS for the proposed branch-only push of 79f15a2209cf00bc6b0a5d9a3dec811588f4ace1. This verdict covers the ten additions, their raw bytes, documentation status and ordinary existing workflow triggers. It is not a claim that a push has occurred or its remote receipt has been checked.
+
+2. Prospective execution preparation: CORRECTION REQUIRED before requesting the new narrowly scoped execution exception. The oversized-evidence path deliberately suppresses the entire artifact upload, including the only copies of redirected full build logs. This loses failure evidence precisely on the size-limit failure. The storage cap must remain; failure evidence needs a separate preservation path within the same authorized cap. Additional provenance improvements are set out below.
+
+3. No authorization to activate, dispatch, build, create a PR, merge, publish or change quotas is conveyed by this audit. The current template is inactive. The new owner exception has not been granted. The previous validation354 exception is not reused.
+
+IDENTITY, CONTEXT AND METHOD
+
+I am the separate OpenAI Codex audit role /root/bootstrap_note_audit. My exact underlying model build and configured reasoning effort are not independently attested in this execution context; I do not assert a particular model marketing name. This role has inherited parent context and previous audit findings and uses the same provider/workflow. This is neither blind review nor human, institutional or provider-independent peer review. No score, grade or reassessment of the prior scientific verdicts is supplied.
+
+This report addresses frozen commit preservation and static document-build preparation only. I read text, inspected Git metadata/diffs/workflow triggers, compared raw byte hashes and lengths, and consulted primary tool documentation/source. I did not execute the supplied shell script, activate the workflow, run a shell syntax test, compile TeX, invoke Lean/Lake, perform mathematical computation, open a runtime, use browser UI or alter the candidates or earlier reports. No new worktree or clone was created. The source scientific audit is retained, not silently repeated or upgraded.
+
+FROZEN SUBJECT AND SCOPE
+
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116
+Audited HEAD: 79f15a2209cf00bc6b0a5d9a3dec811588f4ace1
+Single parent: 28dbc89fa152a1188a0c172f21e78cf69965058f
+Proposed branch: codex/low-full-evidence-20261116
+Only added directory: papers/stationary-weighting354/revision-window-20261116
+
+The index and worktree were clean. The parent-to-HEAD tree diff contains exactly ten additions and no modifications or deletions. All ten are under the stated directory. The existing .github/workflows tree is unchanged. Git whitespace checking of the committed delta passed. The nine entries in MANIFEST.json account for every added payload file other than the manifest itself. The manifest need not recursively hash itself: the frozen commit binds its own bytes.
+
+RAW-BYTE MANIFEST VERIFICATION
+
+The following are SHA256 of committed blob bytes, not hashes of shell-decoded/re-encoded output. Each listed length/hash matches the manifest and the corresponding retained D: artifact. The retained rejected source is mapped to history/ in Git; its bytes remain unchanged.
+
+audit/CORRECTED-INTEGRATED-SOURCE-AUDIT.txt
+8759 bytes
+29ca3abd83e2096eebded6543e582feca1b4946ab1d59348e895a5f22072563a
+
+audit/FULL-INTEGRATED-SOURCE-AUDIT.txt
+15838 bytes
+28218f9adf6f9c003b0d818d16b0f44b60eb17f43ea648ba784efba63bf84e16
+
+BUILD-BINDING.json
+1961 bytes
+0bbcd1551d8048cc4c1705e1f1d01c3e17ea3e70d7d5f6401cbfe91e1fa7d4e1
+
+build-one.sh
+2123 bytes
+7b9473801961a8396c1de5a4cf235091d5e0b1d59c196750f132edc85242b423
+
+BUILD-RECIPE.txt
+3303 bytes
+40cc600d8d54209f32e0d962de6143132201934413b9578b4e15c1da6e9cd8c0
+
+build-window-revision.yml.template
+3813 bytes
+ac68c65315cd61d6be4c8cc9d60c2ac1969829bfbb0b0613a16748513d8b1894
+
+history/manuscript-window-v2-candidate-rejected.tex
+51160 bytes
+6ffc9ea0d351a9f9c1306caf3a1da7afe5b4a9dceed10e48d5e0020a0f2ebf6b
+
+manuscript-window-v2-candidate.tex
+52044 bytes
+186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3
+
+README.md
+2987 bytes
+0c4abf7c1fc094901fa76cdbc88c8505ec0a4c97715c07350f7e74b69bb27d2e
+
+Thus the accepted source, rejected source, original adverse report and separate corrected-source report retain their exact recorded bytes. No original adverse verdict was overwritten. The scientific component commit remains 28dbc89fa152a1188a0c172f21e78cf69965058f.
+
+STATUS REPRESENTATION
+
+README and BUILD-BINDING correctly separate an accepted analytic source from an unproduced PDF, an unperformed exact-PDF assessment and an unpublished linked revision. The predecessor is identified as ARR-2026-4T35VQ6MZB8F99F4 v1; this package does not manufacture a new identifier or receipt. The predecessor source/PDF hashes are recorded as antecedent bindings, not substituted for the new source. The new numerical score is null and score inheritance is explicitly false. The prior failed integrated draft and correction are disclosed. Review context explicitly denies blind/human/provider independence and acknowledges unknown exact backend identity.
+
+BUILD-BINDING states workflow_installed=false and execution_authorized=false, consistently with the tree inspected. The owner-reference field is a proposed reference to a real future reply, not a grant created by this package. Current README assertions describe intended prospective behavior; they must not later be cited as execution evidence. Its phrase about checking actual exits is directionally correct but is narrower in implementation than a complete structured exit ledger, as explained below.
+
+The recipe's opening future tense, saying the accepted source hash will be fixed after audit closes, is stale: it is already fixed to 186921a5... in the binding and script. This is a minor presentation issue, not a source integrity failure. The repository visibility/billing-source statements in the binding are recorded claims; I have not thereby established current remaining artifact capacity. A boolean input is not a quota receipt.
+
+STATIC SCRIPT REVIEW
+
+The script enforces Linux and exact HEAD equality to its argument, then checks the manuscript SHA256 before copying it into an output directory. The fixed expected source hash matches the audited manuscript. The driver file must not preexist. In the proposed job, distinct new runner-temp output directories and separate checkout paths provide isolation for the two builds. The script does not itself establish a pristine Git tree, but the pinned checkout action's default cleaning and two fresh checkout destinations supply that premise in this template.
+
+The copied manuscript and generated driver's input hashes are recorded. The driver suppresses PDF date/trailer/PTEX metadata, and SOURCE_DATE_EPOCH is derived from the checked commit timestamp, with FORCE_SOURCE_DATE and UTC. These are sensible deterministic inputs. Static inspection does not prove that the installed TeX packages will produce identical bytes. The explicit cmp is the actual proposed reproducibility gate; success is not asserted before it passes. This is same-runner/same-toolchain reproducibility, not independent-platform reproduction. Apt package versions are not frozen by this template.
+
+latexmk is invoked with -norc and a pdflatex command containing -no-shell-escape, with halt-on-error and nonstopmode. The manuscript is the fixed audited input. This disables document/tool configuration discovery through latexmk rc files and shell escape through this invocation; no claim of a general untrusted-TeX sandbox is needed for this frozen source. There are no Lean, oracle, mathematical-test or deployment commands in the payload.
+
+The shell temporarily disables errexit solely to capture latexmk's actual exit status, saves that status, and propagates failure. It does not replace a nonzero compile with success. On successful compilation it demands a nonempty PDF and TeX log, checks common unresolved-reference/citation/duplicate-label warnings, hashes the PDF and extracts metadata/text. The warning pattern is a useful ordinary postcheck, not a proof that all possible LaTeX warnings or layout defects were detected. Visual review remains expressly required.
+
+The file build-exit-code.txt records latexmk's exit, not the full script's later outcome. Later failed postchecks, pdfinfo, pdftotext, cmp and rendering are governed by shell/Actions failure propagation, but do not each have a persisted explicit code in the current artifact. A zero compile code therefore cannot be interpreted as successful postprocessing. The proposed success marker is correctly after cmp, although it is before page rendering; it claims byte equality, not rendering success.
+
+The primary maintained latexmk source recognizes a leading double hyphen by normalizing it to a single hyphen and accepts the version option. Therefore latexmk --version is not identified as a static command-line defect. This source inspection is not a test of the exact future Ubuntu package.
+
+STATIC WORKFLOW REVIEW
+
+The two pinned checkout steps select the identical github.sha, write clone-a and clone-b, and disable persisted credentials. The build script independently checks each HEAD. The immutable dispatch commit must be the final authorized payload commit; it cannot be confused with today's inactive source commit if later activation or corrections create a new SHA. The exact manuscript hash remains independently bound.
+
+The proposed job is a standard ubuntu-24.04 job with contents:read permission and timeout-minutes:20. No larger runner, write-token permission, paid expansion, merge or publication operation appears. The setup invokes apt update/install for document tooling. Installation/build success or duration is not known from reading it.
+
+The job guard requires workflow_dispatch, a nonempty owner-reference input and existing_quota_verified=true; the quota input defaults false. The owner reference is passed as an environment variable and printed with a fixed printf format, not interpolated as executable shell text. This preserves an actual reference if correctly supplied but cannot authenticate the truth of that reference. The parent must obtain the genuine new exception and verify applicable capacity before activation/dispatch. The recorded validation354 exception is explicitly insufficient.
+
+The workflow's proposed push trigger is narrowly limited to its installed workflow path on the evidence branch; the document job is guarded against push execution. This would allow registration without document execution, subject to actual GitHub behavior being verified. GitHub workflow_dispatch discoverability/registration is a service-level condition, not established by an inactive template. Do not infer a need to merge this workflow to main or silently broaden permissions from this audit.
+
+After both builds, cmp requires byte equality and pdftoppm without first/last-page restriction requests PNGs for every page at 120dpi. This prepares page images; it does not perform human or model visual inspection. It also does not prove completeness until the actual page count and produced images are reconciled after execution.
+
+The finish step runs under always(), measures retained directory bytes and permits upload only at or below 52428800 bytes. The uploader has retention-days:1 and if-no-files-found:error. Pinned upload metadata supports those inputs. The cap is a useful upload-content bound and the job timeout a useful execution limit. Neither establishes available quota, free artifact capacity, exact billed storage, or immunity to service interruption. Hard cancellation/timeouts can also prevent finalization; no uninterrupted execution guarantee is claimed.
+
+MATERIAL PREPARATION DEFECT: FAILURE EVIDENCE LOST ON SIZE REJECTION
+
+If all-page PNGs make window-evidence exceed 50 MiB, finish writes upload_ok=false and exits 64. The only upload step then cannot run. build-full.log was redirected into runner-temp, so the full compile logs, exact exit files, input hashes, comparison record and other diagnostic artifacts disappear when that runner is disposed. The Actions console merely reports the size error; it is not a copy of those redirected logs. The same outcome can occur on a failed run that leaves an oversized directory.
+
+This does correctly prevent over-cap uploading; it does not fake success. However it violates the stated preservation of full logs and failures, and makes a foreseeable rendering/size failure unnecessarily unauditable. This is why the execution-preparation verdict is correction required even though the inactive commit is safe to preserve.
+
+Suggested correction, before requesting the exception: keep a compact, explicitly bounded diagnostic bundle separate from page/PDF payloads; preserve full build and postprocessing logs, actual phase exits, source/tool hashes and the size-failure explanation even if page images cannot be retained. Reserve its capacity within the same total ceiling. A permitted console fallback for complete diagnostics can be explicit where artifact capacity is unavailable; do not truncate a log while calling it complete. Oversized page payloads must remain a failed/incomplete rendering-evidence outcome, not silently disappear behind a success label. If even the diagnostic data exceed the ceiling, fail with a truthful preservation limitation and a defined permitted recovery route. No cap increase, paid upload or quota bypass is recommended.
+
+ADDITIONAL PROVENANCE IMPROVEMENTS
+
+A. start.txt is written only after both checkouts and package installation, so it records the build-phase start rather than total runner/job consumption. end.txt precedes artifact upload. Label these scopes explicitly or record job/setup start and phase timings. Do not later present their difference as total runtime usage. Actual billed/service runtime remains obtainable from the eventual run receipt.
+
+B. toolchain.txt includes pdflatex and latexmk versions but omits Poppler's versions and installed package versions. Since apt inputs are unpinned and Poppler performs rendering/extraction, capture the actual installed package/tool versions to meet the recipe's provenance statement and diagnose future differences.
+
+C. Preserve explicit stage exit codes for each script invocation, comparison and rendering, alongside latexmk's own code, so a zero compilation exit cannot be mistaken for full-pipeline success. Existing errexit failure propagation is not incorrect, but a complete evidence ledger would make the recipe's command-exit claim precise.
+
+D. Retain the byte-equality marker's exact meaning and reconcile page count versus rendered files before declaring visual-review readiness. No inspection has yet occurred.
+
+These corrections change the prospective payload and therefore require new hashes/manifest/commit and an audit of the changed preparation. They do not require altering the accepted manuscript, rejected draft, original adverse report or corrected-source report. Do not amend away the current evidence or rewrite this report.
+
+EXISTING WORKFLOW TRIGGERS FOR THE CURRENT BRANCH-ONLY PUSH
+
+I inspected the existing workflow configuration, not merely the new template. ci.yml, control-plane.yml and lean-build.yml restrict push builds to main. lean-build.yml also covers PRs targeting main, which is why no PR is included in this proposal. orchestrator.yml has schedule/dispatch triggers, not a matching branch push trigger. validate-dashboard.yml has push path filters for docs/dashboard/**, scripts/validate_dashboard.py and its own workflow file; none of these ten added paths match. Existing workflows are unchanged by this commit.
+
+The new .yml.template is under papers/, not .github/workflows, so it is not an active GitHub Actions workflow. The resolved pre-push hook was absent, and there was no configured core.hooksPath override observed. The proposed push uses the existing evidence branch. No local build hook or matching ordinary repository workflow trigger was found for this delta.
+
+At inspection, the remote evidence branch was still 28dbc89fa152a1188a0c172f21e78cf69965058f and remote main was a0ee5c3a8734fdce200f353795f13f81ffa6a19a. Thus a subsequent remote branch SHA check is still necessary. A branch push must not be reported as a PR, main integration, PDF execution or AIRR update.
+
+Static trigger inspection is not a universal guarantee about GitHub internal failures, externally configured integrations or unrelated scheduled activity. GitHub documents exceptional diff-evaluation behavior that can bypass ordinary path filtering. If an unexpected workflow is observed after preservation, report the real event and handle it under the existing authorization rather than claiming the static review proved it impossible. The normal configured triggers for this exact small delta do not request computation.
+
+PRIMARY REFERENCES CONSULTED
+
+GitHub workflow events and dispatch behavior:
+https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
+
+GitHub workflow path-diff behavior:
+https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#git-diff-comparisons
+
+Pinned checkout action metadata:
+https://raw.githubusercontent.com/actions/checkout/11d5960a326750d5838078e36cf38b85af677262/action.yml
+
+Pinned upload action metadata:
+https://raw.githubusercontent.com/actions/upload-artifact/ea165f8d65b6e75b540449e92b4886f43607fa02/action.yml
+
+Maintained latexmk primary program source, read only for option parsing:
+https://raw.githubusercontent.com/debian-tex/latexmk/master/latexmk.pl
+
+FINAL DISPOSITION
+
+The frozen source/audit preservation package has exact matching bytes and honest unpublished/unexecuted status. Branch-only preservation is acceptable under the stated boundaries. The prospective build is not ready to present as fully prepared: repair the size-failure evidence-retention path, and address the listed provenance gaps, before the new execution exception is requested. No scientific assessment, numerical score, PDF verification or publication outcome is created by this terminal audit.

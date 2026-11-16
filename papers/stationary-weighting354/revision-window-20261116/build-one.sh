@@ -27,6 +27,10 @@ cd "$out"
 sha256sum manuscript-window-v2-candidate.tex driver.tex > input-sha256.txt
 pdflatex --version > toolchain.txt
 latexmk --version >> toolchain.txt
+pdfinfo -v >> toolchain.txt 2>&1
+pdftotext -v >> toolchain.txt 2>&1
+pdftoppm -v >> toolchain.txt 2>&1
+dpkg-query -W > installed-packages.txt
 set +e
 latexmk -norc -pdf -pdflatex='pdflatex -no-shell-escape %O %S' -interaction=nonstopmode -halt-on-error driver.tex > build-full.log 2>&1
 child_rc=$?

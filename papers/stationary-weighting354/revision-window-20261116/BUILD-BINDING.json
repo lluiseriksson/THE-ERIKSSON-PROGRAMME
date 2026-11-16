@@ -27,5 +27,6 @@
   "score_inherited": false,
   "new_score": null,
   "new_publication": false,
-  "representation": "Raw UTF-8 LF candidate and payload; old rejected source and full reports preserved byte-for-byte"
+  "representation": "Raw UTF-8 LF candidate and payload; old rejected source and full reports preserved byte-for-byte",
+  "preparation_correction": "Separate diagnostics from graphics; size rejection remains failure; console fallback conditional on verified completeness. Full initial terminal audit retained. No execution."
 }
