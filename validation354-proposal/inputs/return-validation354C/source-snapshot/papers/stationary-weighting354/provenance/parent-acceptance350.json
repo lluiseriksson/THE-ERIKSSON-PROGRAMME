@@ -1,0 +1,24 @@
+{
+  "utc": "2026-11-14T02:34:58.0708733Z",
+  "status": "ACCEPTED_BOUNDED_ANALYTICAL_SOURCE",
+  "source_sha256": "0f956d2bccaf04b48a8866a147c8248a5d275895cf450f0d3ba41b204866bc9a",
+  "source_full_read": true,
+  "report_full_read": true,
+  "context_full_read": true,
+  "objections_full_read": true,
+  "verified": [
+    {
+      "packet": "fabrication350A",
+      "entries": 17
+    },
+    {
+      "packet": "source-audit350A",
+      "entries": 29
+    }
+  ],
+  "result": "Actual inverse-potential moments and subcritical higher integrability/strong convergence proved within declared scope",
+  "hypotheses_removed": "No extra inverse-potential/weighting subcritical moment premise required; derived from energy and stationary floor/cap",
+  "remaining": "Uniform critical Er^s bound and original stationary Doob gap OPEN",
+  "publication": "Grouped research source only; no paper or PDF assessment",
+  "optional_objection": "Zero generalized-mean convention absent in broad theorem restatement; no applied exponent is zero"
+}

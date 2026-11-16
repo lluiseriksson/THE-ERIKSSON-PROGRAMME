@@ -1,0 +1,18 @@
+{
+  "time_utc": "2026-11-14T02:55:08.1695241Z",
+  "source_sha256": "251e94234b2a28b9b9340a4a4b680b22024c1ea719d594e9f81bfae3e9d81833",
+  "audit_sha256": "705f26376f4e3f595d9cd42dbbf421d156e1cfa955d063c9d0d5314fe65a9ff2",
+  "audit_manifest_sha256": "992d5bb239d00cec59db22d733291a2788fbd65b25c8ed445d7780fd3a8fc83e",
+  "verified_audit_payloads": 21,
+  "parent_full_report_context_objections_read": true,
+  "accepted_scope": "Fixed rho, disjoint equal-size parity blocks, positive arbitrary H, m tends infinity and n*rho^m tends0: actual full-chain gap tends1-rho uniformly in H. No amplitude floor/cap needed for spectral result. Critical absolute moment comparison needs declared stationary cap.",
+  "not_claimed": [
+    "general stationary gap",
+    "novelty clearance",
+    "formal verification",
+    "independent review",
+    "exactPDFgrade",
+    "publication"
+  ],
+  "next": "Group349/350/351; preserve remaining general question"
+}

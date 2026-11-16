@@ -1,0 +1,24 @@
+SOURCE351A adverse analytical checks
+O1. Hidden energy normalization: K/pi/r_h scaling checked with Z retained. No energy-one premise needed. Resolved.
+O2. Missing macro probability factor: b0 and bt are relative kernels; E_w supplies2^-n. Conditional parity fibers are uniform. Resolved.
+O3. Stationarity/PSD confusion: detailed balance and D K D^-1=M_sqrt(h/g) P M_sqrt(h/g) verified. Strict positive finite H and rho>0 ensure positive definiteness. Resolved.
+O4. Singleton-only matching mistaken for full marginals: all Walsh labels of degree<m vanish; inversion gives every labelled marginal. Resolved.
+O5. Quotient-only proof: every Fourier coset is present; dimensions sum to2^L. Residual modes included. Resolved.
+O6. Uniform versus stationary orthogonality: Pi times macro products is C-supported, so cross-coset weighted inner products vanish. Within-sector norm is L2(Pi). Resolved.
+O7. Inverse multiplier could leave a sector:1/G is itself a macro function, so its multiplication preserves each V_t. Resolved.
+O8. Wrong twisted kernel factors: toggled block counts j_i versus m-j_i reproduce all original Walsh eigenvalues, with residual factorrho^d. Resolved.
+O9. Full-block representatives incorrectly counted as nontrivial: adding c_i removes j_i=m; nontriviality then requires an interior block or residual coordinate. Resolved.
+O10. Product beta^q invalid for beta>=1: explicitly separated; safe global Markov bound used in that branch, including equality. For beta<1, all products and residual-only case satisfy the claimed bound. Resolved.
+O11. Signed K_t incorrectly treated as stochastic: only K0 is used for averaging; absolute domination gives an induced infinity-norm bound. Resolved.
+O12. Minorizing law not stationary: oscillation kills the rank-one common row; no stationary-mean condition for nu needed. Resolved.
+O13. Approximate pointwise mode incorrectly declared eigenvector: f=single coordinate has stationary mean0,norm1; actual Rayleigh quotient proves lowerlambda2. Resolved.
+O14. Gap inequalities reversed or small-m failure: lambda bounds imply stated gap bounds; weak uppergap can exceed1 harmlessly; zero lowergap is intentionally trivial. Resolved.
+O15. Nonuniform H hidden in limit: both bounds depend onlyrho,m,n; beta eventually<1 andalpha->1 undern rho^m->0. Fixedrho and this scaling remain essential. Resolved.
+O16. Dropped Z/N or reciprocal direction in moment comparison: E_PiG^-2=N/Z; positive bounds givealpha^2<=r_h/pi<=alpha^-2. Resolved, including0<s<1.
+O17. No-cap absolute critical moment claim: comparison alone does not bound either moment. The candidate explicitly invokes stationary cap for its absolute critical bound; admissible-class divergence exclusion uses it. Retain this qualification in later summaries.
+O18. Exact cap2 or critical divergence contradiction with349: factor exceeds1 at finite dimensions and tends1; finite moments above2 remain possible. Resolved.
+O19. General codes/block-majority/general matching extrapolation: not covered by product-sector proof; source explicitly leaves them outside scope. General gap remains open.
+O20. Classical symmetry ingredient called novel: bounded primary comparison identifies classical symmetry/orbit methods; no priority clearance. No novelty conclusion accepted.
+O21. Exact-r matching: macro algebra actually also supports such matching within this family; candidate merely refrains from asserting it. No hidden dependence or false nonmatching claim.
+O22. ContextHEAD mistaken for candidate commit: source351 is uncommitted raw packet in this assignment; no PR/body verdict. Resolved.
+No blocking mathematical defect found. No computation, grade, formal or PDF certification accompanies these dispositions.

@@ -1,0 +1,25 @@
+Return-validation354A — complete objection ledger
+
+B1 BLOCKING: ZIP original-name sanitization gap. validate354A.py65–71 checks ZipInfo.filename, which official CPython truncates at NUL, and never checks orig_filename/equality. Equal raw central/local names containing an expected prefix plus NUL can pass at either ZIP layer while payload/manifests remain internally consistent. Static witness only; no attack executed. Require a separate immutable repair and raw-header regression cases for both layers, with outer rebinding and normal/-O execution after review.
+
+O2 Manifest identity unclear: resolved. Assigned hash belongs to actual root MANIFEST354A.json; root PREPARATION-MANIFEST.json does not exist.111 exact payloads and112 copies verified. Initial missing-path failure disclosed.
+O3 Wrong354 source or producer: resolved statically. Six producer originals match;85 source fixtures match pinned records and prior exact Git blobs; current epoch/path/source/TeX identifiers agree.
+O4 Extra/missing members or stale manifest: exact logical universes and both manifest payload hashes are enforced, subject to B1's original-name gap.
+O5 Unsafe path, duplicate, case alias, symlink or encrypted member: guard logic rejects these when exposed in normalized names; raw NUL case is B1 and is not covered by ordinary path tests.
+O6 Assert disappears under optimization: no assert acceptance. Explicit exception predicates remain; meaningful completed-label count and mandatory scenarios required before actual validation.
+O7 Historical tex-version false failure repeats: resolved. Exact version argv separated from four compile names, whole27-command sequence checked, with positive and adverse field regressions.
+O8 Native false zero or missing exit accepted: resolved statically. Strict int exits, timeoutFalse, exact0-LF sentinels, real wait/kill-wait recording and reader checks.
+O9 Stale native outputs called successful current passes: before/after lineage, child retention, exact saved inventory and final PDF/log identity are checked. Presence alone is not enough.
+O10 Direct partial final sentinel/race overwrite: current helper uses closed temporary, fsync, readback, Linux RENAME_NOREPLACE and final readback; missing/nonzero/malformed remain failures. Actual syscall tests still pending.
+O11 Transport materialized before verification: per-part and total identity precede atomic publication/readback; no fixed inherited chunk/PDF count or download-event claim.
+O12 Synthetic fixture presented as real PDF: explicitly disclaimed. It is intentionally non-decodable. Signature/membership checks do not authenticate rendering; actual native/operator/visual evidence remains essential.
+O13 Temporal consistency overclaimed: individual command intervals and selected launch order checked; full cross-record temporal nesting/wall-time reconciliation is outside these predicates. No execution attestation.
+O14 Gates accept invented favorability: hashes/statuses bind receipts but cannot decide semantic truth. Documentation requires parent to read complete actual source/engineering/CI receipts. Exact three named receipts plus authorization are required.
+O15 Current source/test success borrowed from348: rejected. Historical records retain old source/44-file/PDF identities; current plan uses354 fixtures/scripts and both modes. No354 result exists.
+O16 Regression predicates only check stale hashes: many field mutations rebind inner/outer manifests and announcement. Direct stale-hash tests are separate. B1 supplies a new missing external attack class.
+O17 Success despite child failure or prior-output overwrite: status begins FAILED_PRESERVED, fresh output paths and explicit exits are required; finally packages available evidence but cannot survive all startup/host failures. Limits documented.
+O18 Runtime closure/billing/assessment inferred: not claimed. Actual closure receipt and own-host observation prerequisite; validation runtime closure remains pending separately, billed units unknown.
+O19 Full tests executed locally or producer re-audited scientifically: none. All observations are static/native-byte comparisons; no score/PDF/theorem review.
+O20 Original adverse history lost: full historical reports/context and whole candidate retained unchanged. B1 is a new current finding; old verdicts not rewritten.
+
+Terminal: HOLD_FOR_REPAIR on B1. No other blocking source-code defect identified within this static scope. Dynamic normal/-O preflight and actual-return validation remain entirely unexecuted.

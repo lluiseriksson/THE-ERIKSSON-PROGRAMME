@@ -1,0 +1,3 @@
+MODEL ASSESSMENTS AND REVIEW CONTEXT — 354C ENGINEERING FABRICATION
+Actor: Codex /root/validator354c_repair. Actual backend/effort not independently attested. Inherited parent task context supplied. This is fabrication, not separate audit, scientific assessment or new numerical grade.
+No candidate execution and no runtime; no claim of a passing normal/-O run. Current source/PDF/first scientific assessment are unaffected. Failed B retains its exact identity and native nonzero receipts. Parent will independently audit C and own any later Colab session. User authorization for repairs/publication does not make an unexecuted candidate verified.

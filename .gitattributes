@@ -63,3 +63,7 @@ papers/flat-coarse-rank/research-consolidation/golden-window260/** -text
 papers/flat-coarse-rank/research-consolidation/helical-fourier262/** -text
 papers/flat-coarse-rank/research-consolidation/even-helical263/** -text
 papers/flat-coarse-rank/research-consolidation/canonical-helical264/** -text
+
+# Preserve exact reviewed file-validation354 bytes.
+validation354-proposal/** -text whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof
+.github/workflows/validation354-proposal.yml -text

@@ -1,0 +1,19 @@
+354B complete proof map and preserved failures
+
+Section1: common definitions and original admissible stationary question. Adds fourth scope: all-large-length positive-rate realizations. No strengthening of the general stationary claim.
+Sections2–5: exactly the mathematical body of354A, hash23c55918c6dae974e288924ebfbb498fcf2d6c48f6910f705d3c2511e4190e5d. Complete349 cap counterexample/simple-family exclusions,350 inverse bootstrap and strong subcritical transfer with reproduced341 proof,353B full code-sector theorem,351 sharper block theorem and353B simplex separation. Their complete source map is retained in inputs/354A/.
+Section6 Theorem6.1: source355 sections1–5, full proof incorporated. Rate R is renamed R_code to avoid collision with inverse exponent R. Binary entropy definition; simultaneous random-generator bad events; rounding/full-rank argument; exponential specialization of Theorem4.1; full-support witness; same-potential normalized stationary floor and cap. Old353B dependency is now proved within this manuscript rather than merely imported as an audited label.
+Section7: classical GV attribution added; original negative routes and353A false claim preserved. Scope remains code-restricted. The single original gap question and critical joint small-g tail remain open.
+Section8: actual context updated for355 author/audit and the unreviewed superseded354A stage. No inherited manuscript or PDF verdict.
+
+Preserved mathematical failures/limits:
+- Exact critical cap transfer is false by349, but larger uniform critical moment bounds remain undecided.
+- Two-level and product routes have explicit exclusions, not general counterexamples.
+-350's fixed point is finite and its constants grow; endpoint closure is not obtained.
+-353A's three-block strict-scope claim was false because a larger disjoint algebra contains it. Both original source and adverse report survive in raw historical packets.
+-353B's simplex witness is genuinely outside the specified block class but initially only on a length subsequence;355 supplies a new accepted all-large-length realization rather than pretending the old proof already did so.
+-355 column separation does not imply every positive H lies outside the block class. The full-support witness is essential.
+-Fixed floor/cap witnesses use 0<b<1 and finite s; no b=1 or uniform-noise-endpoint assertion is imported.
+-Positive rate, linear distance and exponential gap are conditional on the explicit fixed rate/noise inequalities. No general matching density is shown to have the required code support.
+
+Historical operational failures are also retained:355 audit's initial overlong command failed before process creation; a bookkeeping typo produced an incomplete zero-entry record that remains alongside its corrected verified record. This preparation does not rewrite those events or claim them as successful checks.

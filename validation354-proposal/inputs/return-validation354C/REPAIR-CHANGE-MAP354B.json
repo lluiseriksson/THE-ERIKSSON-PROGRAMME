@@ -1,0 +1,54 @@
+[
+  {
+    "path": "validate354A.py",
+    "old_sha256": "fde9e657d3c3a4b4ac1cc12cadf18ffca7c86644092e2b195ad0a77336a8aa82",
+    "new_sha256": "7e578e74476028603846e6d4ceb9123229ea6fae32fc040cc0bb5bb70f1fd9c3",
+    "new_bytes": 19209,
+    "changes": [
+      {
+        "old": "        infos=z.infolist(); names=[i.filename for i in infos];safe_names(names)\n",
+        "new": "        infos=z.infolist()\n        # Check raw decoded header names before ZipInfo.filename sanitization.\n        original_names=[i.orig_filename for i in infos]\n        safe_names(original_names)\n        need(all(i.orig_filename==i.filename for i in infos),'ZIP original/sanitized name mismatch')\n        names=original_names\n",
+        "purpose": "Validate original names before sanitized names; preserve every later check"
+      }
+    ],
+    "full_raw_reconstruction": true
+  },
+  {
+    "path": "preflight354A.py",
+    "old_sha256": "10fa95d11d4a82ba869b95fa36ac6d9ffe15f184fa9486fb8c046ad05e5dea27",
+    "new_sha256": "f6b1fe8c91fcc3e06d908853ab268dd11b477c9ad403c345040501dfd8f515e3",
+    "new_bytes": 21517,
+    "changes": [
+      {
+        "old": "if __name__=='__main__':",
+        "new": "def raw_header_nul_zip(data,member):\n    \"\"\"Write a safe longer alias, then patch ONLY its local/central name byte.\n    Equal-length byte substitution preserves offsets, CRCs and every payload.\n    A ZIP writer is never asked to write a NUL (which it might sanitize).\n    \"\"\"\n    import struct\n    alias=member+'XRAW_NUL';alias_raw=alias.encode('utf-8');prefix=member.encode('utf-8')\n    v.need(member in data and alias not in data,'Unique raw-header target')\n    ordinary=zip_bytes({alias if n==member else n:b for n,b in data.items()})\n    with zipfile.ZipFile(io.BytesIO(ordinary)) as z:\n        local=z.getinfo(alias).header_offset\n    v.need(ordinary[local:local+4]==b'PK\\x03\\x04','Actual local header')\n    local_len=struct.unpack_from('<H',ordinary,local+26)[0]\n    local_start=local+30\n    v.need(local_len==len(alias_raw) and ordinary[local_start:local_start+local_len]==alias_raw,'Actual raw local name')\n    end=ordinary.rfind(b'PK\\x05\\x06')\n    v.need(end>=0 and end+22==len(ordinary),'Fixture ordinary EOCD without comment')\n    count=struct.unpack_from('<H',ordinary,end+10)[0]\n    offset=struct.unpack_from('<I',ordinary,end+16)[0]\n    central_start=None\n    for unused in range(count):\n        v.need(ordinary[offset:offset+4]==b'PK\\x01\\x02','Actual central header')\n        namelen,extralen,commentlen=struct.unpack_from('<HHH',ordinary,offset+28)\n        start=offset+46\n        if ordinary[start:start+namelen]==alias_raw:\n            v.need(central_start is None,'Unique central target');central_start=start\n        offset=start+namelen+extralen+commentlen\n    v.need(central_start is not None and offset==end,'Complete central walk')\n    local_byte=local_start+len(prefix);central_byte=central_start+len(prefix)\n    v.need(ordinary[local_byte]==ordinary[central_byte]==ord('X'),'Placeholder byte in BOTH headers')\n    raw=bytearray(ordinary);raw[local_byte]=0;raw[central_byte]=0;raw=bytes(raw)\n    expected=prefix+b'\\0RAW_NUL'\n    v.need(raw[local_start:local_start+len(expected)]==expected\n           and raw[central_start:central_start+len(expected)]==expected,'BOTH actual raw names contain NUL')\n    v.need([i for i,(a,b) in enumerate(zip(ordinary,raw)) if a!=b]==[local_byte,central_byte],\n           'Exactly two name bytes changed; no CRC/payload/offset edits')\n    return raw,dict(member=member,local_name_offset=local_start,central_name_offset=central_start,\n                    raw_name_hex=expected.hex(),bytes=len(raw),sha256=v.digest(raw),\n                    changed_offsets=[local_byte,central_byte])\n\ndef raw_header_nul_scenarios(good):\n    labels=[];witnesses=[]\n    # Outer logical manifest stays for the safe prefix, exactly matching the\n    # unchanged payload. The actual transport hash is freshly supplied below.\n    outer=v.unpack(good)\n    bad,witness=raw_header_nul_zip(outer,'builder354D.stderr')\n    cases=[('raw-NUL-outer-local-and-central',bad,dict(layer='outer',**witness))]\n    # Inner raw-name attack: retain logical inner manifest/payloads, then rebind\n    # actual inner ZIP length/hash announcement AND the full outer raw manifest.\n    outer=v.unpack(good);inner=v.unpack(outer['tep354D-build-01-results.zip'])\n    bad_inner,witness=raw_header_nul_zip(inner,'evidence/report.json')\n    outer['tep354D-build-01-results.zip']=bad_inner\n    outer['builder354D.stdout']=dump(dict(status=v.STATUS,archive=v.ROOT+'-results.zip',\n                                         archive_bytes=len(bad_inner),archive_sha256=v.digest(bad_inner)))\n    stamp_manifest(outer,'RETURN-MANIFEST.json')\n    # Prove the enclosing records are not stale before delivering the attack.\n    v.manifest(outer,'RETURN-MANIFEST.json')\n    ann=v.js(outer['builder354D.stdout'])\n    v.need(ann['archive_bytes']==len(bad_inner) and ann['archive_sha256']==v.digest(bad_inner),'Rebound actual inner announcement')\n    bad=zip_bytes(outer)\n    cases.append(('raw-NUL-inner-local-and-central-rebound',bad,dict(layer='inner',**witness)))\n    with tempfile.TemporaryDirectory(prefix='raw-header354B-') as directory:\n        for label,bundle,details in cases:\n            path=Path(directory)/(label+'.zip');path.write_bytes(bundle)\n            # Matching external length/hash rules out a stale transport binding.\n            try:v.validate_file(path,len(bundle),v.digest(bundle))\n            except ValueError as exc:\n                v.need(str(exc)=='Unsafe path','NUL case rejected at wrong predicate: '+str(exc))\n            else:raise RuntimeError('Raw local/central NUL name accepted: '+label)\n            labels.append(label);witnesses.append(dict(scenario=label,transport_bytes=len(bundle),\n                transport_sha256=v.digest(bundle),rejection='Unsafe path',**details))\n    return labels,witnesses\n\nif __name__=='__main__':",
+        "purpose": "Raw local/central header fixtures and rebinding helpers"
+      },
+      {
+        "old": "    results,good=preflight();results+=atomic_preflight()",
+        "new": "    results,good=preflight();results+=atomic_preflight()\n    nul_labels,nul_witnesses=raw_header_nul_scenarios(good);results+=nul_labels",
+        "purpose": "Exercise both new raw-field cases"
+      },
+      {
+        "old": "                         optimized=not __debug__,count=len(results),scenarios=results),sort_keys=True))",
+        "new": "                         optimized=not __debug__,count=len(results),scenarios=results,\n                         raw_header_nul_witnesses=nul_witnesses),sort_keys=True))",
+        "purpose": "Emit actual future raw field witnesses"
+      }
+    ],
+    "full_raw_reconstruction": true
+  },
+  {
+    "path": "run_validation354A.py",
+    "old_sha256": "3a872671634c4ef0a650af956f3e962d117ff037b7f472bd6a85bf3b1c1d09a7",
+    "new_sha256": "42f5cb548d8beb03a7e0fbecc6c263c8cd9c4b0c12bf4bc7ea114089460727df",
+    "new_bytes": 7281,
+    "changes": [
+      {
+        "old": "          'outer-raw-manifest-hash','duplicate-ZIP-members','symlink-ZIP-member'}",
+        "new": "          'outer-raw-manifest-hash','duplicate-ZIP-members','symlink-ZIP-member',\n          'raw-NUL-outer-local-and-central','raw-NUL-inner-local-and-central-rebound'}",
+        "purpose": "Require both new actual scenario labels in each execution mode"
+      }
+    ],
+    "full_raw_reconstruction": true
+  }
+]

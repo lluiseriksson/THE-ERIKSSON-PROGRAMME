@@ -1,0 +1,28 @@
+SOURCE353A adverse checks and dispositions
+S1 -- SCOPE QUALIFICATION REQUIRED. The three-block example's code has no disjoint-support basis, but every potentialH(chi_(A+B),chi_(B+C)) equalsH_tilde(chi_A,chi_B,chi_C), withH_tilde(a,b,c)=H(ab,bc). Forq>=2 andq->infinity,351 applies with three disjoint q-blocks and3rho^q->0. Thus this example cannot demonstrate a potential class outside351. Distinguish nonexistence of a disjoint basis withinC from containment in a larger disjoint algebra. This limits acceptance of section7's stronger wording, not correctness of(1),(2).
+
+O2. Missing equal fibers or basis independence: binary rankn proves surjectivity and2^(L-n) equal-size fibers. Resolved.
+O3. Wrong macro measure: kernel is relative to uniform macro probability;2^-n appears inK0 andE_w supplies it inK_t. Resolved.
+O4. b0 positivity inferred from an arbitrary Fourier polynomial: here it is an actual quotient noise kernel, anddelta<1 also directly bounds it below. Resolved.
+O5. Amplitude restriction hidden inG estimate: positivity alone yieldsa(1-delta)<=G<=a(1+delta). No max/minH factor. Resolved.
+O6. Quotient contraction uses wrong stationary law: oscillation eliminates the common row;nu need not bePi. Resolved.
+O7. Quotient mistaken for full chain: all2^(L-n) sectors ofdimensionM are present. Resolved.
+O8. Uniform orthogonality substituted for stationary orthogonality:PiFJ isC-supported, so cross-coset weighted expectations vanish. Resolved.
+O9. Reciprocal multiplication could mix sectors:1/G is a macro function in the same finite algebra. Resolved.
+O10. Twisted kernel exponent error: full labelt+c(I) has eigenmultiplierrho^|t+c(I)|; formula checked on every macro character. Resolved.
+O11. Coset distance bound misses multiple minimal words: each other word has weight>=D-d; equalityd=D/2 and oddD handled by monotonicity. Resolved.
+O12. Missing number-of-cosets factor: eigenvalues of a finite orthogonal invariant direct sum are a union, not a sum of operator bounds. No such factor is needed. Resolved.
+O13. Signed K_t treated as stochastic: onlyK0 averages; absolute domination gives induced infinity norm<=B. Resolved evenB>=1.
+O14. Full spectral positivity assumed from reversibility alone: explicit conjugation to positive-definite congruence ofP supplies it. Resolved.
+O15. Lostrho factor in lower estimate: containing-i codewords contribute(1-rho^2)rho^(|c|-1);delta/rho is present. Resolved.
+O16. Rayleigh test not meanzero: D>=2 excludes everye_i fromC, giving stationary mean0 and norm1. Resolved.
+O17. MissingZ in moment normalization: E_PiG^-2=N/Z andr_h/pi=Z/(NG^2), with reciprocal endpoints checked. Resolved.
+O18. Matching onlypi: reciprocal algebra closure also putsr_h inC. Fourier inversion gives all labelled joint marginals of both. Resolved.
+O19. eta small insufficient fordelta: delta<=(M-1)rho^D<=eta rho^(D/2)<=eta. Fixedrho controls epsilon. Resolved.
+O20. No-cap absolute moment claim: source explicitly adds stationary cap for the absolute bound. Comparison alone does not bound uncapped moments. Preserve that condition.
+O21. Exact cap2 inherited: not claimed; factoralpha^-2s may exceed1 at finite size. Resolved.
+O22. Example's D/delta/eta wrong: three nonzero words each have weight2q; M=4,delta=3rho^(2q),eta=4rho^q. Correct. Its nonempty/asymptotic and non-disjoint-basis claims surviveS1.
+O23. General code/matching/global gap or priority closure: not supplied by this theorem or bounded primary comparison. Remain outside scope.
+O24. Missing separate fabrication report/context/search: the packet has only source and manifest. Embedded section8 context was read; absent files are not invented or claimed read.
+
+Terminal: main estimates and consequences analytically acceptable. Full acceptance of the section7 strict-class-separation interpretation is withheld untilS1 is explicitly qualified. No source correction made during freeze.

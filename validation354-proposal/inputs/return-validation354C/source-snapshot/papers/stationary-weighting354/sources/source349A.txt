@@ -1,0 +1,162 @@
+SOURCE349A — Bounded tests of the critical stationary-to-weighting moment bridge
+Analytical candidate for separate audit. This is a research record, not a new paper. The original stationary Doob gap and the proposed dimension-uniform critical moment bound remain OPEN.
+
+1. THE SINGLE QUESTION AND EXACT SCOPE
+
+On the uniform cube {-1,1}^L let P=P_rho, 0<rho<1, h>0 and E hPh=1. Put g=Ph, pi=hg, u=h/g, N=Eu, r=u/N, s=(1+rho)/(1-rho). The original class has pi>=b>0, E pi^s<=2 and exact labelled stationary marginals through k approximately C sqrt(L). The candidate bridge asks for a dimension-uniform bound on E r^s. No bound on r is assumed. No stationary marginal is replaced by a weighting marginal.
+
+This bounded unit proves:
+(A) Every two-level potential h, including arbitrarily rare spikes or holes, has a dimension-uniform critical r moment under the floor/cap. Thus this entire explicit mechanism cannot refute the bridge.
+(B) Every coordinate-product potential has E r^p<=E pi^p for every p>=1; this special fact does not extend to general h.
+(C) A positive actual two-coordinate potential supplies a disjoint-parity-block lift satisfying ALL original stationary constraints. It first refutes convex-order/constant-one moment transfer for each fixed 0<rho<=1/3, b=1/16 and arbitrary fixed C>0. More sharply, an explicit uniquely defined fixed rho* in (1/3,1/2) gives E pi_L^s<2<E r_L^s for every sufficiently large L, with exact stationary matching through k_L. Thus the exact cap2 transfer itself is false in the admissible class. Both moments remain bounded and tend to2 in the sharper family. This does not refute a larger dimension-uniform bound or imply a collapsing gap.
+
+All proofs are finite algebra, finite differentiation, Jensen and Cauchy. No program, formal prover, runtime or numerical search was used. These are bounded mechanism tests; they are not a solution of the original question.
+
+2. GENERAL NORMALIZATION FACTS WITH A FLOOR
+
+Let a=Eh=Eg. The Boolean spectral expansion gives E hPh>=a^2, hence 0<a<=1. From hg>=b, h>=b/g, so
+ a>=b E(1/g)>=b/a,
+and therefore a^2>=b. Since Epi=1, Cauchy under pi gives
+ a^2=(E_pi[1/g])^2<=E_pi[1/g^2]=N.
+Consequently N>=b. The accepted341 PSD argument additionally gives N<=1, but that upper bound is not needed in the two-level exclusion below. The identity r=pi/(N g^2) is exact. All these normalizations are in uniform probability measure, not counting measure.
+
+3. TWO-LEVEL POTENTIALS CANNOT PRODUCE DIVERGENT CRITICAL MOMENTS
+
+Proposition. Suppose h takes just two positive values m<M. Under E hPh=1 and pi>=b, one has
+             min_x g(x)>=b/2.
+Hence, for any p>=1,
+             E r^p <= (4/b^3)^p E pi^p.                    (3.1)
+In particular the critical cap implies E r^s<=2(4/b^3)^s, uniformly in dimension and in the masses/contrast of the two levels. No marginal matching is required.
+
+Proof. Let A={h=m} and q=mu(A), with 0<q<1. On A, m g>=b. Integrating just there and using Eg=a<=1 gives
+             m >= b q.
+Because P is Markov and h>=m, g>=m>=bq everywhere. On the other hand,
+             M(1-q)<=Eh=a<=1,
+so M<=1/(1-q). Since h<=M and hg>=b, we also have
+             g>=b/M>=b(1-q)
+everywhere. Thus g>=b max(q,1-q)>=b/2. Section2 supplies N>=b, so r=pi/(Ng^2)<=4pi/b^3 pointwise. Raising to p and integrating proves (3.1). A one-level normalized potential is h=1 and r=pi=1, so the degenerate boundary cases present no exception.
+
+This proof explicitly addresses both a rare high spike and a rare low hole, with arbitrary set geometry. It does not say that h itself has two values in the general stationary problem. The step g>=m relies on there being no still lower level, and the step h<=M uses the actual upper level. No analogous dimension-free bound for general multi-level potentials has been proved here. The constant is deliberately unoptimized. This exclusion is retained as part of the same bridge investigation, not as a separate small-corollary paper.
+
+4. ONE-COORDINATE AND PRODUCT TESTS
+
+For one coordinate write the unnormalized positive potential H=1+t x, |t|<1. Multiplicative rescaling to energy1 does not change u or r. Direct multiplication gives
+ pi=1+A x,  A=(1+rho)t/(1+rho t^2),
+ r =1+B x,  B=(1-rho)t/(1-rho t^2).
+Indeed P H=1+rho t x, E HPH=1+rho t^2 and
+ E[H/(PH)]=(1-rho t^2)/(1-rho^2 t^2).
+The sign of A and B is the sign of t, and |B|<=|A| because
+ (1+rho)(1-rho t^2)-(1-rho)(1+rho t^2)=2rho(1-t^2)>0.
+For p>1, M_p(c)=((1+c)^p+(1-c)^p)/2 is even and nondecreasing on 0<=c<1, as follows by differentiating. Thus E r^p<=E pi^p; p=1 is equality.
+
+For H(x)=product_i(1+t_i x_i), noise, energy normalization and the mean N factor by coordinate. Both pi and r are products of the corresponding one-coordinate densities, so their p moments factor and the same inequality follows. A disjoint-block parity product replaces rho in each factor by rho raised to that block size and obeys exactly the same calculation. When all block sizes exceed k, this parity product can have exact stationary matching through k, but it still cannot yield the desired moment-divergence refuter. This is a check of that special family, not an assumption that arbitrary h factorizes.
+
+5. AN ACTUAL TWO-COORDINATE FAILURE OF CONSTANT-ONE TRANSFER
+
+Set, on the four points (++,+-,-+,--),
+             H=(29/16, 1/4, 1/8, 29/16).
+All entries are positive and EH=1. In Walsh notation,
+ H=1+c x-c y+d xy,   c=1/32, d=13/16.
+Let Z_rho=E[H P_rho H]=1+rho v+rho^2 w, where
+             v=2c^2=1/512,  w=d^2=169/256.
+Define the actual normalized h_rho=H/sqrt(Z_rho),
+ pi_rho=H(P_rho H)/Z_rho,
+ u_rho=H/(P_rho H), N_rho=E u_rho, r_rho=u_rho/N_rho.
+Then E h_rho P_rho h_rho=1 and E pi_rho=E r_rho=1 exactly. Put q=c(x-y); thus P_rho H=1+rho q+rho^2 d xy and E Hq=v.
+
+Proposition. There is eta>0 such that for every fixed rho in (0,eta), with s_rho=(1+rho)/(1-rho),
+ pi_rho>=1/16, E pi_rho^(s_rho)<=2,
+             E r_rho^(s_rho)>E pi_rho^(s_rho).              (5.1)
+No numerical value of eta is claimed or needed for this existence statement.
+
+Proof. All entries are smooth and strictly positive near rho=0. At rho=0, both densities equal H. Differentiation of their exact definitions gives
+ pi'_0=H(q-v),  N'_0=-v,  r'_0=-H(q-v).
+For an independent real exponent t near1 define
+ F(rho,t)=E pi_rho^t-E r_rho^t.
+This is smooth near (0,1). The exact density normalizations and the rho=0 identities imply F(rho,1)=0 and F(0,t)=0. Its first rho derivative at0 is
+ F_rho(0,t)=2t[E H^t q-v E H^t].
+Consequently
+ F_{rho,t}(0,1)=2D,
+ D=E[H log(H) q]-v E[H log(H)].
+
+Only the +- and -+ points contribute to the first term because q vanishes at ++ and --. Their q values are respectively1/16 and -1/16. Therefore
+ E[H log(H)q]
+ = (1/64)[(1/4)log(1/4)-(1/8)log(1/8)]
+ = -log(2)/512.
+Let J=E H log H. Strict convexity of z log z, EH=1 and nonconstant H give J>0. Since v=1/512,
+             D=-(log(2)+J)/512<0.
+
+For completeness, the vanishing of F on both axes around (0,1) gives the exact integral identity
+ F(rho,t)=integral_0^rho integral_1^t F_{rho,t}(a,z) dz da.
+Since (s_rho-1)/rho=2/(1-rho)->2, continuity of the mixed derivative yields
+ lim_(rho down to0) F(rho,s_rho)/rho^2
+ =4D=-(log(2)+J)/128<0.                                    (5.2)
+Hence the strict moment inequality in (5.1) holds for all sufficiently small positive rho. Separately min pi_rho->1/8 and E pi_rho^(s_rho)->EH=1. Continuity therefore ensures min pi_rho>=1/16 and the stated cap<=2 after decreasing eta if necessary. All constraints claimed in (5.1) hold simultaneously for every such fixed rho.
+
+The failure of marginal matching in this two-coordinate base is explicit, not omitted. The x coefficient of pi_rho is
+       c(1+rho)(1-rho d)/Z_rho>0 for 0<rho<1,
+and the y coefficient is its negative. Thus this base family does not have even exact singleton stationary marginals. Tensoring with unused coordinates preserves this defect. Section6 instead uses a proved high-degree parity lift, not unused-coordinate tensoring.
+
+Conclusion of this proposition alone: the unconditional assertion that r is smaller than pi in convex order is false under floor/cap, because z->z^(s_rho) is convex and its expectations have the opposite strict inequality. No claim is made that E r^s>2, that it diverges with dimension, or that an unspecified larger constant fails. This is an actual hPh example, unlike a freely chosen TV-density gadget. Exact matching is addressed next by an explicit construction.
+
+6. FULLY STATIONARY-MATCHING LIFT OF THE CONSTANT-ONE COUNTEREXAMPLE
+
+Theorem. Fix 0<rho<=1/3, C>0, b=1/16 and s=(1+rho)/(1-rho). There is a sequence of positive energy-normalized h_L on the L-cube with pi_L>=b, E pi_L^s<=2 and exact labelled stationary marginals through k_L=min(L,floor(C sqrt(L))) such that
+                  E r_L^s > E pi_L^s
+for every sufficiently large L. All means/normalizations are the actual h_L P_rho h_L ones. The two moments converge to the same finite number EH^s<2, so this is explicitly NOT a divergent critical-moment or collapsing-gap construction. It falsifies the constant-one/convex-order bridge inside the original class.
+
+Proof of the fixed-exponent sign. Keep the four-point H and F(theta,t) from section5, but now t>1 is fixed and theta is a separate effective noise parameter. The same exact derivative formula gives
+ F_theta(0,t)=2t C_t,
+ C_t=E H^t q-v EH^t
+    =[31(1/4)^t-33(1/8)^t-2(29/16)^t]/2048.
+This number is strictly negative for every t>1. Indeed f(t)=31*4^(-t)-33*8^(-t) satisfies
+ f'(t)=log(2)*8^(-t)(99-62*2^t)<0 for t>=1,
+whereas 2(29/16)^t is strictly increasing. At t=1 both equal29/8. Thus their difference is negative for t>1. Since F(0,t)=0, differentiability implies F(theta,t)<0 for all sufficiently small theta>0 at this fixed t. This fixed-t calculation is essential: one must not substitute s_theta for the original critical s_rho in the lift.
+
+Construction. For large L put m=floor(L/2) and take two disjoint coordinate blocks B_1,B_2, each of size m, leaving the single unused coordinate when L is odd. Write z_i=chi_(B_i)(x), theta=rho^m. The pair (z_1,z_2) is uniform on the four-point cube. On functions of this pair, P_rho acts exactly as the two-coordinate P_theta: each z_i has noise multiplier rho^m=theta, and z_1 z_2 has multiplier rho^(2m)=theta^2. Hence
+ h_L(x)=H(z_1,z_2)/sqrt(Z_theta)
+has energy1 and yields exactly the pullbacks of pi_theta, u_theta, N_theta and r_theta in section5. This proves the nonlinear hPh realization and both density normalizations without appealing to a separate scaling algorithm.
+
+The Fourier support of pi_L lies in {empty set, B_1, B_2, B_1 union B_2}; thus every nonempty coefficient of degree strictly smaller than m is zero. For each fixed C, m>k_L eventually, since m grows linearly and k_L grows as sqrt(L). These vanishing Fourier coefficients imply all labelled coordinate marginals through k_L are exactly uniform. The nonzero base singleton coefficient is now at degree m, where matching imposes no requirement. No assumption on r matching is needed or substituted.
+
+For fixed rho, theta=rho^m tends to0. The strict sign above with t=s implies E r_L^s>E pi_L^s eventually. The pointwise base limit pi_theta->H gives the floor pi_L>=1/16 eventually. The cap also follows with strict room uniformly over the four base values: since 1<s<=2,
+ E H^s <= (EH^2)^(s/2),
+ EH^2=1+v+w=851/512<2,
+and therefore EH^s<2. Continuity gives E pi_theta^s<=2 for all sufficiently small theta. The moments of both pi_theta and r_theta tend to EH^s, proving the stated finite common limit. Choose a finite L_0 large enough for all these conditions and for m>k_L. For every L<L_0 set h_L=1, so the floor, cap, normalization and all requested marginals hold at those exceptional dimensions as well. This completes a full-sequence construction for the stated fixed parameters. Any smaller fixed b>0 also works; no claim is made for all larger floors or all rho>1/3.
+
+Compatibility. Accepted341 predicts an exponentially small discrepancy at growing matching order. Here the moment excess tends to zero, of order theta for fixed s by the derivative calculation, and the densities differ by quantities tending to zero. No critical tail divergence or failure of a larger bound is inferred. Accepted344's different supremum obstruction is untouched. The lift is multi-level, so it does not contradict section3; H has three distinct positive values. Nor is H a product of one-coordinate factors, so section4 does not apply.
+
+Sharper threshold statement: an admissible failure of the exact cap2 transfer.
+
+Let M(t)=EH^t for the SAME fixed four values H. There is a unique t* in (2,3) satisfying M(t*)=2. Indeed
+ M(2)=851/512<2,  M(3)=24425/8192>2.
+The derivative M'(1)=J>0 was proved in section5, while M''(t)=E H^t (log H)^2>0. Hence M is strictly increasing on [1,infinity), so existence and uniqueness follow from continuity and strict monotonicity. Define the fixed constant
+              rho*=(t*-1)/(t*+1) in (1/3,1/2).
+Its critical exponent is exactly s=t*, not a parameter depending on L. No numerical root approximation is used.
+
+Differentiating the two moments SEPARATELY at theta=0 gives
+ (d/dtheta) E pi_theta^s |_(theta=0)=s C_s<0,
+ (d/dtheta) E r_theta^s |_(theta=0)=-s C_s>0.
+They both equal M(s)=2 at theta=0. Therefore, for all sufficiently small theta>0,
+              E pi_theta^s<2<E r_theta^s.                 (6.1)
+Apply exactly the parity construction above with this fixed rho*, m=floor(L/2), theta=(rho*)^m, any fixed C>0 and k_L=min(L,floor(C sqrt(L))). The quotient identity, energy normalization, floor eventually>=1/16 and exact matching are unchanged. The cap is now established by the STRICT negative derivative in (6.1), rather than by a limiting margin below2. Choose L_0 large enough for these conclusions and set h_L=1 at every smaller dimension. This supplies a full admissible sequence with (6.1) at all L>=L_0. The two moments converge to2, from opposite sides, so their difference and cap violation vanish; neither a divergent-moment construction nor a failure of every larger uniform constant follows.
+
+This exact cap2 counterexample is a concrete obstruction to transplanting the available stationary moment hypothesis to the actual weighting density, even when stationary matching holds exactly. It does not require a presumed convex order, a fabricated scaling solution or a generic TV gadget. All fields come from the displayed positive h_L and the actual Boolean noise operator. The fixed floor can be any b in (0,1/16]; no assertion for arbitrary larger b is made.
+
+7. WHAT REMAINS AFTER THESE TESTS
+
+The conditional stationary moment-transfer route is not solved. A sufficient genuine lower bound on g would give E r^s<=b^(-s)(inf g)^(-2s) E pi^s, but neither a dimension-free inf g bound for general h nor a suitable weighted substitute is established. Accepted344 refuted uniform convergence g->1; it did not refute every possible positive lower bound, and it must not be cited as doing so.
+
+For comparison, if an independently proved bound on E g^(-q) at some finite q were available, plain Holder would yield, for 0<t<s and q=2ts/(s-t),
+ E r^t <= b^(-t) (E pi^s)^(t/s) (E g^(-q))^((s-t)/s).
+At t=s that argument requires q=infinity and has no endpoint conclusion. This is an explicit logical limitation of the attempted Holder route, not a proof that other methods fail. No reverse-hypercontractive bound is imported or asserted in this unit. The earlier unproved nonlinear energy-moment inequality remains unproved and unused.
+
+Three bounded approaches have now been disposed of in this unit: unrestricted two-level rare spikes/holes are excluded under the floor; coordinate-product majorization was proved only in that special class and its general convex-order and exact cap2 extrapolations were falsified even after exact stationary matching was built in; separate-moment Holder cannot reach the critical exponent without additional weighted information. Do not continue the identical constant-one/cap2 or two-level mechanism. The specific remaining obstruction is a larger uniform joint control of pi^s and g^(-2s) for genuinely multi-level h under exact stationary matching. The admissible family in section6 does not provide unbounded moments and cannot be advertised as doing so. No new hypothesis can be introduced merely to rename this missing estimate.
+
+8. SOURCES, FALSIFIERS AND REVIEW LIMITS
+
+Complete source341A and sources344A–346A plus supplement-negative-routes347 are retained as context inputs. Their existing conclusions are used only for scope; section2's lower normalization and all new displayed propositions above are proved directly. No external theorem is needed in sections2–5.
+
+A limited primary-literature check opened Leonard Gross, Invariance of intrinsic hypercontractivity under perturbation of Schrodinger operators, arXiv:2412.20282v2, https://arxiv.org/abs/2412.20282. Only its abstract/metadata was read: it concerns ground-state transforms and perturbations preserving intrinsic hypercontractivity through logarithmic Sobolev methods. No theorem from that124-page paper was read or imported, and it does not provide a verified bridge for this discrete stationary class here. This is context, not a priority search or novelty claim. The raw tool response is retained.
+
+Adverse checks: verify every normalization and the direction a^2<=N; both complementary masses in section3; the one-bit N formula; all four positive H entries and Walsh coefficients; the rho derivative of normalized r including N'; the mixed derivative and exact integral remainder when s varies with rho; the sign and factor512 in D; the explicit nonzero base singleton coefficient; the separate fixed-t sign C_t and denominator2048; the exact parity quotient P_rho=P_(rho^m) on this subspace; odd dimensions and all finite exceptions; m>k_L; critical s_rho rather than s_theta; the exact851/512 and24425/8192 moments; the unique fixed t* and rho*; the separate derivative signs yielding a strict stationary cap despite limiting moment2; the finite common limit rather than divergence. A defect in any of these invalidates the corresponding candidate. A separate source audit is required before acceptance. No numerical grade, PDF, publication, independent-provider claim, formal verification, physical gap or continuum conclusion is made.

@@ -1,0 +1,95 @@
+RETURN-VALIDATION354A — separate static engineering audit
+VERDICT: HOLD_FOR_REPAIR. One blocking archive-boundary finding B1 prevents acceptance of this frozen validator as execution-ready.
+No Python code was imported, parsed by a Python interpreter, syntax-checked, tested or executed. No Colab/runtime/build/PDF operation occurred. This is not a scientific review, PDF assessment, score or PR audit.
+
+1. Exact subject and actual byte verification
+
+Frozen packet: D:/Datos/the-eriksson-programme/autonomia/evidencia-354/return-validation354A.
+Actual manifest filename is MANIFEST354A.json, not PREPARATION-MANIFEST.json at this directory's root. Its raw SHA256 is650c86874888e9ed5e2438e92e1e4d68fa188a286134c11477147f35cae5e9e9, exactly the assigned preparation-manifest identity. The initial read of the guessed root PREPARATION-MANIFEST.json failed; the correct file was then identified by actual inventory and hash. This is a naming discrepancy, not missing candidate evidence.
+validate354A.py:18962 bytes, raw SHA256fde9e657d3c3a4b4ac1cc12cadf18ffca7c86644092e2b195ad0a77336a8aa82.
+preflight354A.py:16644 bytes, raw SHA25610fa95d11d4a82ba869b95fa36ac6d9ffe15f184fa9486fb8c046ad05e5dea27.
+All111 manifest payload lengths/hashes match; the exact file universe is those111 plus the manifest. All112 original files were copied byte-identically into this auditor's own evidence.
+
+All6 frozen producer files match the actual production-preparation354D originals and their stated raw hashes. The85 source fixtures match both SOURCE-INPUTS354D's byte/SHA256 records and the previously audited exact Git blobs retained in source-integration-audit354D. The old348F reference ZIP matches its original raw SHA25652ab735daced82ba5e0a354798a014efb307ceb7797a5acd3ee44cbb2f90cbc8. These are static document/file observations, not candidate execution.
+
+SourceHEAD8e452190b8f7d3f7382ba2e6c05d0f14fa9c3dc5 is an input binding only. No current PR/body/CI state is audited here. The separate accepted static producer reference is not evidence of an actual354 execution. No actual354 PDF/return ZIP/page count is available or invented.
+
+2. B1 — validate raw ZIP names before ZipInfo sanitization can conceal NUL
+
+Blocking location: validate354A.py lines65–71, especially the list of i.filename values on line67 and the dictionary keyed by i.filename on line71. Both the outer and inner ZIP pass through this same function. safe_names itself rejects control characters, but it receives an already normalized name.
+
+Primary implementation comparison: the official CPython3.12 zipfile source stores the original member name separately, truncates the normalized filename at its first NUL, and checks a local header name against the original name when reading. Thus equal raw central/local names containing NUL can survive reading while the validator sees only their safe prefix. Relevant returned source spans are _sanitize_filename/ZipInfo around lines329–378 and ZipFile.open around1553–1561:
+https://raw.githubusercontent.com/python/cpython/3.12/Lib/zipfile/__init__.py
+The bounded primary response is retained. This is static analysis of a supported implementation, not an observation of the future Colab interpreter or an executed attack.
+
+Concrete outer-layer witness: start from otherwise consistent accepted fixture data, with the payload and manifest entry for builder354D.stderr unchanged. In both the ZIP central directory and corresponding local header, encode the raw member name as builder354D.stderr followed by NUL and an arbitrary suffix. The original name in the two headers agrees; the member payload and CRC are unchanged. ZipInfo.filename becomes exactly builder354D.stderr. The current safe-name and exact outer-universe checks therefore see their expected name, and the manifest still describes those unchanged payload bytes. The validator does not inspect orig_filename or require it to equal filename. Rebinding the top-level transport length/hash does not repair this semantic hole.
+
+Concrete inner-layer witness: the same construction on evidence/report.json inside the production ZIP leaves the decoded data dictionary and inner manifest membership unchanged. Recompute the enclosing inner-ZIP announcement and outer manifest to account for changed container bytes. Every existing substantive record can remain intact; the unsafe original member name is lost before the guard. These are logically traced constructions, not generated or tested ZIPs.
+
+This is not a claim of filesystem traversal or code execution: the validator extracts nothing. It is a concrete violation of its stated rejection of unsafe/aliased names and of raw member-boundary exactness. It matters even though the honest frozen producer is not expected to generate such names; a validator's advertised boundary predicate must reject adversarial transport records.
+
+Required distinct repair: validate original ZIP member names, reject any discrepancy caused by normalization, and preserve the existing safe-name/duplicate/file-directory/regular-file/encryption/membership checks. The new preflight must exercise raw-header NUL cases at BOTH ZIP layers, not merely call safe_names on an unsanitized string. Construct the test transport without letting the ZIP writer silently remove NUL before the test is delivered; rebind enclosing manifests/announcements so a rejection cannot be attributed only to stale hashes. Retain positive ordinary-name fixtures. Run those regressions in both normal and explicit-O modes only on the sanctioned Linux plane after a separately reviewed immutable revision.
+The present frozen candidate was not edited. No interim repair was coordinated.
+
+3. Otherwise sound archive and current354 binding structure
+
+For names actually presented to it, safe_names rejects absolute/backslash/traversal/empty/dot components, control characters, trailing dot/space aliases, reserved Windows device names, case-fold aliases, duplicate names and file/directory collisions. unpack also rejects directories, nonregular modes, symlinks and encryption, limits member count and declared uncompressed size, and reads through zipfile's CRC/header checks. There is no extraction. The bounds are archive-input bounds, not a promise of512MiB process RSS; multiple in-memory copies may coexist in a future high-RAM run.
+
+The outer universe is exactly10 named members, including its manifest. Both raw manifests must list every member except themselves exactly once, with strict integer byte counts and complete SHA256 equality. JSON object-pair parsing rejects duplicate keys in the main raw validator. The sole builder announcement binds inner ZIP identity/length/hash/status. Outer launcher and inner retained launch receipts/logs are compared byte-for-byte. Inner membership is assembled explicitly and rejects failure/debt/extra artifacts. All these checks remain valuable but operate after the B1 name normalization gap.
+
+The pinned source, paper path, branch, epoch1794629658, active TeX hash and85-source inventory match the producer. The actual source capture is checked against raw length, SHA256 and Git blob SHA1, with exact source membership. Source/PDF binding uses the complete inventory rather than only a favorable subset. The validator also checks recorded head/epoch outputs and empty tracked-diff outputs.
+
+The frozen builder, launcher, marker, source inventory and preparation-manifest hashes are explicit; retained preparation bytes must equal the local frozen references. The producer's six preserved files are a reference set, not an assertion that every file in the complete producer preparation is copied into a successful return. The gate universe is explicitly restricted to authorization.json plus three distinct named receipts; extra files are rejected. The README permits a complete multipayload review as one bound ZIP receipt. This restriction is narrower than the producer's unrestricted gates-directory copy, but it is stated before execution and compatible with preparing exactly the named receipts. Status strings/hashes do not replace reading actual review/CI evidence, as the documentation acknowledges.
+
+4. Native commands, retained passes and output scope
+
+The27-command sequence derives correctly from354D:5 environment/setup commands; clone/head/sparse/checkout/epoch/two native TeX passes/diff for each clone; the first clone's source-file inventory; and pdfinfo/extract/render. The exact tex-version argv is checked separately from the four compile names. No startswith('tex-') classifier remains. Exact compilation argv requires no-shell-escape and the correct deterministic metadata/TeX argument; expected cwd and four controlled environment fields agree with the frozen builder.
+
+Native records require a true integer zero exit rather than bool, timed_out is False, timezone-aware start/end with nonnegative order within each command, and exact0-LF raw sentinel bytes. Every command's stdout and stderr must be present and manifest-bound. Launcher marker/builder native exit records and corresponding outer sentinels must also be zero, with the stated marker/builder order. These checks validate the recorded data; they do not authenticate that the commands actually ran.
+
+Four native-pass retention records are matched to the corresponding command. Each retained file universe is the active TeX plus production354.pdf/.log/.aux/.out. Saved bytes/hashes are checked. First-pass prior state must contain only the frozen TeX; second-pass prior state must equal the preceding retained output map. The final native PDF must equal the canonical PDF; final native logs must equal clone logs, retain overfull-warning lines and contain no known unresolved-reference/citation marker. Both clone PDF bytes must equal canonical bytes, with matching report hashes/lengths.
+
+PDFinfo/page count, every page index, contact-sheet membership, extracted headings, source/PDF map and image signatures are checked. The code does not decode PDF/PNG/JPEG content independently. Its synthetic accepted fixture is explicitly non-decodable and cannot be mistaken for proof of rendering or visual quality. The README and result scope say this clearly. A mutually fabricated but consistent history remains indistinguishable by these hashes alone; actual operator observations and complete native/visual review are indispensable.
+
+The interval predicate checks individual intervals, not a complete cross-record temporal nesting proof, and the reported wall-seconds field is not reconciled to timestamps. This is a limitation of record consistency, not a new execution attestation. No result here enlarges the manuscript's scientific claims or its prior review.
+
+5. Atomic sentinels and transport
+
+The current atomic354A helper addresses the historical direct-final-write failure. It requires actual int exits, not booleans; builds the decimal/newline bytes; checks raw length/hash; exclusively writes a temporary; flushes/fsyncs and closes it; compares closed bytes; uses Linux renameat2 with RENAME_NOREPLACE; then verifies final readback and absent temporary and fsyncs the containing directory. A concurrent existing final is not overwritten. An unavailable syscall or I/O failure stops rather than falling back to a weaker publication.
+
+The reader distinguishes absent/unsafe paths from empty/malformed bytes, parses an integer and requires exact0-LF for success. Negative/nonzero exits remain non-success. There is no default zero for missing data. Before-publication interruption leaves an unpublished temporary, not a final success sentinel. The hook exists for testing; normal wrapper calls supply no hook. This review is static and does not certify syscall behavior on an unobserved future host.
+
+The wrapper obtains actual exits only after wait or timeout kill-and-wait. It flushes captured streams, publishes the real exit with this helper and retains the observation including timeout/error. It subsequently requires the successful sentinel, zero native result, no timeout and no captured error before parsing result JSON. Failure starts/stays FAILED_PRESERVED; available evidence is packaged in finally, with the documented limit that host termination/startup failure can leave only partial evidence. No unconditional return-ZIP or automatic runtime closure is promised.
+
+The materializer checks a new actual plan, sequential chunk indices, safe/contained regular paths, strict base64, per-chunk length/hash and aggregate bound/hash before using the same atomic no-clobber publisher and readback. Count/hash/size are not inherited from348. It makes no browser-download-success claim. It does not authenticate operator truthfulness or replace external transfer observations.
+
+6. Field mutations and normal/-O prospective plan
+
+All six active scripts were read completely. No acceptance predicate uses assert; need/require raise explicitly. No candidate module or interpreter was invoked. The normal/-O plan is executable code still awaiting actual execution, not observed success.
+
+The synthetic fixture uses actual85 source bytes and frozen354D producer code, while clearly labeling placeholder runtime and non-decodable PDF/images. A positive complete fixture check precedes mutations. The case helper recomputes both container manifests and the builder announcement; semantic attacks therefore reach current record predicates rather than relying only on stale checksums. Real fields mutated include command version/compile classification, shell escape, exit type/value, timeout, cwd/environment, sequence, source/head/counts, source capture, PDF differences, page/contact membership, binding, cleanup, native child/lineage/bytes, producer script, gates after digest rebinding, scope claims, and timezone.
+
+Additional direct cases cover raw manifest corruption, transport hash/length, unsafe/case-alias paths, duplicate members and symlink ZIP metadata. Atomic cases include actual future native zero/nonzero child processes, preserved duplicate final, interruption, raced final, bool rejection, absent/malformed readers and transport rejection before publication. These derive from retained external field incidents as well as current source predicates; they are not just phrase-presence tests. B1's raw-name normalization class is absent and must be added rather than counted as already covered by the simple path cases.
+
+The wrapper verifies frozen payload hashes, requires a new attempt directory and real input/runtime/production-closure observations, then launches current preflight in normal and explicit-O subprocesses. It requires the synthetic flag, count equal to distinct labels, at least60 scenarios, a mandatory named set, correct optimization-mode output and equal scenario lists. Only then does it run actual return validation in both modes and compare full returned results. No expected count/result file is pre-populated as an observed receipt. Actual test completion counts must come from the future runs; this audit does not invent them.
+
+The ordinary-mode preflight would reject an inherited optimization environment that made its reported optimized flag true. The plan does not execute an old348 checker or builder. The old results remain historical, with old source/count/PDF identities. The actual CLI's short docstring should be interpreted within the explicit README limitation: supplied hash consistency cannot prove a record was genuinely produced, and this audit does not endorse that stronger reading.
+
+7. Prior failures and actual reference reading
+
+Read full current README, engineering report, factual assignment/context and input provenance; all active scripts/templates; full frozen builder/launcher/marker and producer README; full old348F validator and atomic-wrapper references; full348E classification-failure report, adverse engineering report/context/objections and348F repair explanation. Truncated combined displays were completed by bounded subsequent reads. The85 manuscript/source/history payloads are preserved and hash-compared as engineering inputs, not freshly scientifically reviewed.
+
+The old348F ZIP's complete member inventory and five selected native exit entries were read, as were full actual-normal and actual-optimized result JSON. Those selected records were retained raw. They concern the old sourcea27c28...,44 inputs and old PDF; they provide no354 execution evidence. No old PDF was opened, decoded or assessed. The complete old reference ZIP is retained unchanged. This task does not recertify the old validator against the newly found B1 class or rewrite its past verdict.
+
+The current D LEEME, CLAUDE and operational charter copies are retained; their rules had been fully read in this continuing role, including the explicit sentinel and no-assert requirements. This task's narrow use is static text/native byte handling only. The one external implementation comparison is bounded official CPython source reading; it is not a broad library audit.
+
+8. Role, evidence and terminal disposition
+
+Auditor /root/moment349_source_audit, separate from fabricator /root/rare341_fabrication. This role previously performed354 scientific/source integration reviews but did not author this validator. Same provider/history/filesystem and prior exposure are disclosed; no statistical/technical independence, human review, backend attestation or numerical grade is claimed.
+No incoming messages after assignment, no contact with fabricator/parent/other chats and no subagent. No interim repair proposals or source edits. Only native filesystem/JSON/ZIP-byte reads, hashes, copies, report writes and read-only primary source retrieval. No Python parsing/import/test, local computation campaign, Colab allocation, Git/PR mutation, compiler, renderer or PDF work. There is no PR referent to certify in this task.
+
+Own C stage: C:/Trabajo/the-eriksson-programme/prefix-rank290-20261113/_drafts/return-validation-audit354A.
+Final D evidence: D:/Datos/the-eriksson-programme/autonomia/evidencia-354/return-validation-audit354A.
+Complete frozen112-file packet, original-byte checks, selected historical receipts, primary response, exact assignment, full report/context and all objections are retained. No cleanup or disposable clone/worktree was attempted; no foreign staging changed. C remains only a verified duplicate after D retention.
+
+Terminal: HOLD_FOR_REPAIR on the exact assigned validator/manifest. Only B1 is an identified execution-readiness blocker in this static audit. Repair must be a new immutable candidate with actual raw-header regression coverage and a separate check, followed by real normal/-O Linux preflight and actual-return validation. Neither a future static acceptance nor the previous producer review is proof of execution, PDF layout, mathematics, novelty, publication permission or runtime closure.

@@ -1,0 +1,14 @@
+SOURCE353A actual auditor context,2026-11-14.
+Actor /root/moment349_source_audit; parent /root authored353 after351 and its audit. This role previously audited349/350/351 and editorial347B. It did not author353 or supply its coset-distance proof before this audit. Prior351 exposure is material to the scope objection: arbitrary positive macroH in351 already covers the proposed three-block example through a larger disjoint algebra.
+
+Separate analytical role does not mean independent provider, blind/statistical independence or human peer review. Shared OpenAI/Codex provider, parent lineage, filesystem and research context are disclosed. Exact serving model/backend identity is not independently attested. No verdict was predefined. No inbound message arrived after assignment before terminal; no fabricator/other chat contacted, no subagent spawned. Status-only commentary occurred.
+
+Read the entire source353A and its entire manifest, which are the only two files in the frozen packet. Source section8 contains embedded author context/literature scope; no separate fabrication report, context file or raw earlier search exists in this packet. Source351 was already fully read in this role and its exact hypothesis and scope were reread for the comparison. Earlier fully read governance hashes remain unchanged. CurrentHEADa27c28cbfd506b7ad06aeebb8b141df89d6a0cba is context only, not a353 commit. No PR/body assigned.
+
+Fresh bounded primary check opened the cited author metadata page and relevant orbit/lifting/projection excerpts from Boyd--Diaconis--Parrilo--Xiao. Those passages were read, not the entire paper. No novelty survey or new theorem imported; all needed353 estimates were checked directly. Raw returned tool text retained, not original PDF bytes or an exact-PDF visual assessment.
+
+The core proof passed analytical challenges, but section7's apparent class-separation claim needs qualification. The report gives the explicit existing351 representationH_tilde(a,b,c)=H(ab,bc); it does not refute the code's lack of a disjoint basis. No replacement example or source revision was fabricated. Only the original frozen candidate is this audit's subject.
+
+Tools performed reading/search, read-only context Git identity, native hashes/copies and own evidence writing. No mathematical executable, Python/CAS, numerical tests, Lean/Lake, runtime, compilation, rendering, frozen-source/Git/PR/state/PDF mutation or merge occurred. No clone/worktree created and no cleanup attempted.
+
+Own C preparation: C:/Trabajo/the-eriksson-programme/prefix-rank290-20261113/_drafts/source-audit353A. Final retention: D:/Datos/the-eriksson-programme/autonomia/evidencia-353/source-audit353A. C is a duplicate after D raw-hash verification. Full report/context/objections and original input identities are preserved. No numeric grade, formal certification, independence, historical novelty or general-gap claim.

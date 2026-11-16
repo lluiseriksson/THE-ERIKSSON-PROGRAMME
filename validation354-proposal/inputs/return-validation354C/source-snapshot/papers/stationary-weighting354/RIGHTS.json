@@ -1,0 +1,790 @@
+{
+  "schema": "per-artifact-rights354D-v1",
+  "scope": "Provenance/rights inventory only, not a licence grant or legal adjudication",
+  "owner_author_line": "Lluis Eriksson",
+  "repository_license_reference": "provenance/repository-LICENSE.txt",
+  "repository_license_application": "Not inferred for each independent scholarly artifact solely from filename",
+  "native_grant_status": "Not queried; no expiration/revocation or availability inference",
+  "records": [
+    {
+      "path": ".gitattributes",
+      "provenance_category": "New programme source/preparation metadata under owner instruction",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "ARCHIVE-REFERENCES.json",
+      "provenance_category": "New programme source/preparation metadata under owner instruction",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "DATE-ONLY-CHANGE354D.json",
+      "provenance_category": "New programme source/preparation metadata under owner instruction",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "history/354B/full-fabrication-report354B.txt",
+      "provenance_category": "complete historical fabrication/context",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "history/354B/manuscript354B.tex",
+      "provenance_category": "exact historical manuscript source",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "history/354B/manuscript354B.txt",
+      "provenance_category": "exact historical manuscript source",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "history/354B/model-context354B.txt",
+      "provenance_category": "complete historical fabrication/context",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "history/354C/exact-byte-reconstruction354B-to354C.json",
+      "provenance_category": "exact correction provenance",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "history/354C/full-fabrication-report354C.txt",
+      "provenance_category": "complete historical fabrication/context",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "history/354C/manuscript354C.tex",
+      "provenance_category": "exact historical manuscript source",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "history/354C/manuscript354C.txt",
+      "provenance_category": "exact historical manuscript source",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "history/354C/model-context354C.txt",
+      "provenance_category": "complete historical fabrication/context",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "MANIFEST.json",
+      "provenance_category": "New programme source/preparation metadata under owner instruction",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "manuscript354.tex",
+      "provenance_category": "New programme source/preparation metadata under owner instruction",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "manuscript354.txt",
+      "provenance_category": "New programme source/preparation metadata under owner instruction",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "production/BUILD-INSTRUCTIONS354D.txt",
+      "provenance_category": "New programme source/preparation metadata under owner instruction",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "production/PROSPECTIVE-BINDINGS.json",
+      "provenance_category": "New programme source/preparation metadata under owner instruction",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/operational-note354B.txt",
+      "provenance_category": "complete grouped proof map/context or failure record",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/parent-acceptance341.json",
+      "provenance_category": "actual historical parent acceptance",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/parent-acceptance349.json",
+      "provenance_category": "actual historical parent acceptance",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/parent-acceptance350.json",
+      "provenance_category": "actual historical parent acceptance",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/parent-acceptance351.json",
+      "provenance_category": "actual historical parent acceptance",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/parent-acceptance355.json",
+      "provenance_category": "actual historical parent acceptance",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/primary-scope-and-rights354B.txt",
+      "provenance_category": "complete grouped proof map/context or failure record",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/proof-map-and-failures354B.txt",
+      "provenance_category": "complete grouped proof map/context or failure record",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/repository-LICENSE.txt",
+      "provenance_category": "Existing repository licence text; unchanged copy",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source341/failed-routes-and-limits.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source341/full-report.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source341/model-context.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source341/primary-reading.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source349/failed-routes-and-abandonment.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source349/full-fabrication-report.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source349/model-context.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source350/full-fabrication-report.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source350/model-context.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source350/negative-attempts.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source350/primary-source-scope.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source351/full-fabrication-report.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source351/literature-scope.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "provenance/source351/model-context.txt",
+      "provenance_category": "complete programme fabrication or limitation report",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "README.txt",
+      "provenance_category": "New programme source/preparation metadata under owner instruction",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/manuscript354B/full-manuscript-audit.txt",
+      "provenance_category": "complete adverse manuscript report/context/corrections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/manuscript354B/model-context.txt",
+      "provenance_category": "complete adverse manuscript report/context/corrections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/manuscript354B/objections-and-dispositions.txt",
+      "provenance_category": "complete adverse manuscript report/context/corrections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/manuscript354B/proposed-scope-corrections.json",
+      "provenance_category": "complete adverse manuscript report/context/corrections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source341/full-audit-report.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source341/model-context.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source341/primary-reading-and-limitations.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source349/full-source-audit.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source349/model-context.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source349/objections-and-dispositions.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source350/full-source-audit.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source350/model-context.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source350/objections-and-dispositions.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source351/full-source-audit.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source351/model-context.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source351/objections-and-dispositions.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source353A/full-source-audit.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source353A/model-context.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source353A/objections-and-dispositions.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source353B/full-source-audit.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source353B/model-context.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source353B/objections-and-dispositions.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source355A/full-source-audit.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source355A/input-verification-incomplete-original.json",
+      "provenance_category": "preserved audit bookkeeping failure and corrected record",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source355A/input-verification.json",
+      "provenance_category": "preserved audit bookkeeping failure and corrected record",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source355A/model-context.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source355A/objections-and-dispositions.txt",
+      "provenance_category": "complete historical source audit/context/objections",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "reviews/source355A/operational-note.txt",
+      "provenance_category": "preserved audit bookkeeping failure and corrected record",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "RIGHTS.json",
+      "provenance_category": "New programme source/preparation metadata under owner instruction",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "SOURCE-MAP.json",
+      "provenance_category": "New programme source/preparation metadata under owner instruction",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "sources/source341A.txt",
+      "provenance_category": "programme analytical proof",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "sources/source349A.txt",
+      "provenance_category": "programme analytical proof",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "sources/source350A.txt",
+      "provenance_category": "programme analytical proof",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "sources/source351A.txt",
+      "provenance_category": "programme analytical proof",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "sources/source353A.txt",
+      "provenance_category": "programme analytical proof; embedded author context",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "sources/source353B.txt",
+      "provenance_category": "programme analytical proof; embedded author context",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    },
+    {
+      "path": "sources/source355A.txt",
+      "provenance_category": "programme analytical proof; embedded author context",
+      "preparation_authorization": "Current owner programme/task instruction",
+      "new_license_assigned": false,
+      "preserve_existing_notices": true,
+      "artifact_publication_grant": null,
+      "external_third_party_figure_or_pdf": false,
+      "release_basis": "Use existing authorized programme route and real artifact-specific records; no new human assent fabricated"
+    }
+  ]
+}

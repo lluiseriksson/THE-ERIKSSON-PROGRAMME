@@ -1,0 +1,100 @@
+# PROPOSAL ONLY. No push/PR/schedule trigger. No Colab claim or new spend authorized.
+name: Proposed file validation 354 on GitHub Linux
+on:
+  workflow_dispatch:
+    inputs:
+      exception_authorized:
+        description: Explicit owner exception and existing quota verified for this exact commit
+        required: true
+        type: boolean
+        default: false
+      authorization_json_b64:
+        description: Actual approved authorization JSON bytes in base64
+        required: true
+        type: string
+      owner_instruction_b64:
+        description: Real owner exception instruction bytes in base64
+        required: true
+        type: string
+      separate_review_b64:
+        description: Complete separate exact proposal review bytes in base64
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: file-validation354-github
+  cancel-in-progress: false
+jobs:
+  validate:
+    if: ${{ inputs.exception_authorized == true }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      PROPOSAL: validation354-proposal
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Stage real authorization evidence without shell interpolation
+        env:
+          AUTH_JSON: ${{ inputs.authorization_json_b64 }}
+          OWNER_RAW: ${{ inputs.owner_instruction_b64 }}
+          REVIEW_RAW: ${{ inputs.separate_review_b64 }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir "$PROPOSAL/authorization"
+          printf '%s' "$AUTH_JSON" | base64 --decode > "$PROPOSAL/authorization/AUTHORIZATION.approved.json"
+          printf '%s' "$OWNER_RAW" | base64 --decode > "$PROPOSAL/authorization/owner-instruction.raw"
+          printf '%s' "$REVIEW_RAW" | base64 --decode > "$PROPOSAL/authorization/independent-review.raw"
+      - name: Verify exact owner exception before compatibility setup
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir "$PROPOSAL/invocation"
+          set +e
+          python3 "$PROPOSAL/github_validate354.py" --authorize-only > "$PROPOSAL/invocation/authorization.stdout" 2> "$PROPOSAL/invocation/authorization.stderr"
+          code=$?
+          set -e
+          printf '%s\n' "$code" > "$PROPOSAL/invocation/authorization.exit.tmp"
+          test -s "$PROPOSAL/invocation/authorization.exit.tmp"
+          test "$(cat "$PROPOSAL/invocation/authorization.exit.tmp")" = "$code"
+          sync -f "$PROPOSAL/invocation/authorization.exit.tmp"
+          mv -n "$PROPOSAL/invocation/authorization.exit.tmp" "$PROPOSAL/invocation/authorization.exit"
+          sync -f "$PROPOSAL/invocation"
+          exit "$code"
+      - name: Prepare explicitly approved Linux compatibility directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e /content
+          test ! -L /content
+          sudo install -d -o "$(id -u)" -g "$(id -g)" /content
+      - name: Run unchanged C children under GitHub provenance adapter
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          python3 "$PROPOSAL/github_validate354.py" > "$PROPOSAL/invocation/adapter.stdout" 2> "$PROPOSAL/invocation/adapter.stderr"
+          code=$?
+          set -e
+          printf '%s\n' "$code" > "$PROPOSAL/invocation/adapter.exit.tmp"
+          test -s "$PROPOSAL/invocation/adapter.exit.tmp"
+          test "$(cat "$PROPOSAL/invocation/adapter.exit.tmp")" = "$code"
+          sync -f "$PROPOSAL/invocation/adapter.exit.tmp"
+          mv -n "$PROPOSAL/invocation/adapter.exit.tmp" "$PROPOSAL/invocation/adapter.exit"
+          sync -f "$PROPOSAL/invocation"
+          exit "$code"
+      - name: Preserve actual success or failure evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation354-github-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            validation354-proposal/invocation/
+            validation354-proposal/authorization/
+            validation354-proposal/receipts354-github/
+            validation354-proposal/validation354-github-receipts.zip
+          if-no-files-found: error
+          retention-days: 7

@@ -1,0 +1,23 @@
+{
+  "status": "PROSPECTIVE_NOT_RUN",
+  "source": "8e452190b8f7d3f7382ba2e6c05d0f14fa9c3dc5",
+  "case_names": [
+    "raw-NUL-outer-local-and-central",
+    "raw-NUL-inner-local-and-central-rebound"
+  ],
+  "raw_targets": [
+    "builder354D.stderr",
+    "evidence/report.json"
+  ],
+  "construction": "Safe longer alias written first; exactly one byte patched to NUL in each actual local and central filename field; equal lengths leave offsets/CRCs/payloads unchanged",
+  "inner_rebinding": "Recompute actual inner archive announcement and complete outer manifest; verify enclosing records before invocation",
+  "external_rebinding": "Each actual attack bundle is passed with its newly measured exact length/SHA",
+  "required_rejection": "ValueError Unsafe path from original-name safe_names; any unrelated exception stops",
+  "required_modes": [
+    "normal",
+    "explicit -O"
+  ],
+  "observed_results": null,
+  "positive_control": "Existing complete ordinary fixture remains checked first",
+  "unchanged_contract": "three complete named gate receipts plus authorization.json"
+}

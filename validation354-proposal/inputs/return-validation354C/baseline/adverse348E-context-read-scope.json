@@ -1,0 +1,79 @@
+{
+  "audit": "validation348E-static-engineering",
+  "timestamp": "2026-11-14T03:33:23Z",
+  "provider": "OpenAI",
+  "visible_identity": "Codex assistant",
+  "served_model": null,
+  "served_effort_attested": false,
+  "role": "Engineering auditor; separate from348E fabricator",
+  "prior_involvement": "Same evaluator completed prior scientific review348D. This new assignment did not reopen or amend that review or its grade.",
+  "shared_workspace": true,
+  "shared_provider": true,
+  "technical_isolation_attested": false,
+  "statistical_independence_claim": false,
+  "inbound_during_audit": false,
+  "read_scope": {
+    "full_text": [
+      "ASSIGNMENT.txt",
+      "CONTEXT.txt",
+      "FULL-FABRICATION-REPORT.txt",
+      "provenance/validation348D-failure-ui.txt",
+      "provenance/validation348D-environment-ui.txt",
+      "STATIC-BYTE-VERIFICATION.json",
+      "runtime/validate_return348E.py",
+      "runtime/test_validate_return348E.py",
+      "runtime/run_preflight348E.py",
+      "runtime/validate348E_actual_colab.py",
+      "runtime/historical348D/run_preflight348D.py",
+      "01-materialize.py (code outside encoded payload; embedded payload decoded and compared as bytes)",
+      "02-environment.py",
+      "03-preflight.py",
+      "04-chunk-input.py",
+      "05-assemble-input.py",
+      "06-actual-validation.py",
+      "07-export-receipts.py"
+    ],
+    "diff": [
+      "Original348D to348E validator",
+      "Original348D to348E regression tests"
+    ],
+    "data_only": [
+      "MANIFEST.json",
+      "runtime/RUNNER-HASHES348E.json",
+      "runtime/historical348D/RUNNER-HASHES348D.json",
+      "runtime/INPUT-CHUNKS348E.json",
+      "validation348E-unexecuted.ipynb",
+      "All manifest payloads hashed",
+      "All17 embedded payloads decoded and compared",
+      "All28 input chunks decoded and reassembled in memory",
+      "Original actual-production348D/ui-return348D.zip raw hash",
+      "Original outer archive member names",
+      "Nested evidence/report.json identity/fixture comparison",
+      "Nested evidence/manuscript347.pdf raw hash/length only"
+    ],
+    "not_done": [
+      "No complete independent dynamic test",
+      "No current validator execution",
+      "No new science or mathematical review",
+      "No prior score or scientific report rereading",
+      "No content of historical scientific review report members inspected"
+    ],
+    "governance": "Previously read D:/LEEME.md, repository CLAUDE.md and docs/OPERATIONAL-GOVERNANCE-CHARTER.md remain applicable; in particular explicit atomic sentinel protocol."
+  },
+  "execution": {
+    "windows_candidate_import": false,
+    "windows_candidate_execution": false,
+    "syntax_checks": false,
+    "tests": false,
+    "builds": false,
+    "math": false,
+    "pdf_generation": false,
+    "remote_runtime": false,
+    "git_mutation": false,
+    "publication": false,
+    "input_mutation": false
+  },
+  "tools_scope": "PowerShell/.NET filesystem/hash/JSON/base64/ZIP-byte inspection, git diff --no-index read-only, apply_patch for audit outputs. No embedded Python evaluated.",
+  "retention": "Own C staging, then D:/Datos/the-eriksson-programme/autonomia/evidencia-348/validation348E-audit; raw hash-bound output manifest. Hash binding is not an authenticated digital signature."
+}
+

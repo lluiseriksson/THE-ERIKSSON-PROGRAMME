@@ -1,0 +1,119 @@
+SOURCE341A -- Quantitative potential rigidity from exact stationary marginals
+FABRICATION ONLY; separate analytical audit required. The original uniform normalized-gap question remains UNRESOLVED. This unit proves a quantitative reduction for that same question; it is not a new paper, numerical assessment, formal proof or priority claim.
+
+1. QUESTION AND PRECISE RESULT
+Let mu be uniform probability on {-1,1}^L, 0<rho<1, P=P_rho and Q=P_sqrt(rho). Thus Q^2=P, Q1=1, and the Walsh multiplier of P on degree j is rho^j. Let h>0. Scaling h does not change its associated stationary density or weighting density, so normalize
+ <h,Ph>=||Qh||_2^2=1.
+Write
+ g=Ph, pi=h g, a=E h, u=h/g, N=E u,
+ r=u/N, lambda=1/N, T_r=M_sqrt(r) P M_sqrt(r).
+All expectations and norms not explicitly qualified use mu. Both pi and r are probability densities. Suppose, for a finite exponent p>1+rho and B>=1,
+ ||pi||_p<=B,
+ E[pi chi_S]=0 for 1<=|S|<=k, 0<=k<=L.                       (1.1)
+No pointwise floor on pi or h is assumed in the theorem.
+Put p'=p/(p-1),
+ eta=sqrt(rho max{1,1/(p-1)})<1,
+ epsilon=B eta^(k+1).                                        (1.2)
+
+Theorem. Under these hypotheses,
+ a^2>=1/(1+epsilon^2),
+ ||Qh-a||_2^2=1-a^2<=epsilon^2/(1+epsilon^2),
+ ||Qh-1||_2<=epsilon,   ||Ph-1||_(p')<=epsilon.                (1.3)
+The actual Perron eigenvalue of T_r satisfies
+ 1<=lambda<=1+epsilon^2.                                     (1.4)
+The weighting and stationary densities obey
+ ||sqrt(r)-sqrt(pi)||_2<=epsilon,
+ ||r-pi||_1<=2epsilon,
+ ||h/a-pi||_1<=epsilon.                                      (1.5)
+In particular every labelled marginal of r on at most k coordinates is within total variation epsilon of the uniform marginal. Exact marginal equality for r is not asserted and is in general false, as SOURCE338A demonstrates.
+
+At the question's critical exponent s=(1+rho)/(1-rho), with E pi^s<=2, take p=s and B=2^(1/s). Then
+ eta^2=max{rho,(1-rho)/2}<1.                                  (1.6)
+Thus the reduction holds exponentially in k for every k->infinity, not only k/sqrt L->C>0. The stationary floor pi>=b is unnecessary for these conclusions. This removes possible nontrivial Perron normalization and non-small total-variation mismatch as obstructions in the original question. It does not establish the required critical L^s moment bound on r, or a bound on its second eigenvalue.
+
+2. THE HYPERCONTRACTIVE TAIL USED HERE
+Let Pi_>k be orthogonal projection onto Walsh degrees greater than k, and set v=1-a^2. Since ||Qh||_2=1 and E Qh=a, v>=0. We claim
+ ||Pi_>k Ph||_(p')<=eta^(k+1) sqrt(v).                        (2.1)
+If p'<=2, L^(p') norm is bounded by L^2 norm. Since Ph=Q(Qh), the high-degree Q multiplier gives
+ ||Pi_>k Ph||_2<=rho^((k+1)/2)||Pi_>k Qh||_2
+ <=rho^((k+1)/2)sqrt(v).
+Here eta=sqrt(rho), proving the claim.
+If p'>2, put t=1/sqrt(p'-1) and beta=sqrt(rho)/t. The assumption p>1+rho is exactly rho/(p-1)<1, so 0<beta<1 and beta=eta. Factor Q=P_t P_beta. Ordinary Boolean hypercontractivity gives ||P_t f||_(p')<=||f||_2. Consequently
+ ||Pi_>k Ph||_(p')
+ =||P_t P_beta Pi_>k Qh||_(p')
+ <=||P_beta Pi_>k Qh||_2
+ <=beta^(k+1)||Pi_>k Qh||_2
+ <=eta^(k+1)sqrt(v).
+Projections and noise operators commute because both are diagonal in the Walsh basis. No L^(p') boundedness of the projection by itself is assumed. The primary scalar hypercontractive inequality is the only non-elementary external input in this proof; its precise parameters are recorded in section7.
+
+3. TESTING THE STATIONARY MATCHING AGAINST ITS OWN SMOOTHED POTENTIAL
+Let g_<=k=Pi_<=k g. It is a polynomial of degree at most k, so exact stationary matching, including E pi=1, gives
+ E[pi g_<=k]=E g_<=k=E g=E h=a.                              (3.1)
+Thus Holder and (2.1) imply
+ E[pi g] <=a+B eta^(k+1)sqrt(v)=a+epsilon sqrt(v).             (3.2)
+The opposite useful inequality is not a new assumption. Cauchy--Schwarz for the finite measure h dmu gives
+ (E h g)^2 <=(E h)(E h g^2).
+Since E h g=1 and E h g^2=E pi g, this yields
+ E pi g>=1/a.                                               (3.3)
+Here a>0. Moreover a<=1 by the constant Fourier component in ||Qh||_2=1. Combining (3.2)-(3.3),
+ v/a=1/a-a<=epsilon sqrt(v).                                (3.4)
+If v=0 the desired estimates hold directly. Otherwise division by sqrt(v) gives sqrt(v)<=a epsilon. Therefore
+ 1-a^2<=a^2 epsilon^2,
+ a^2>=1/(1+epsilon^2),
+ v<=epsilon^2/(1+epsilon^2).
+Also ||Qh-1||_2^2=2(1-a). The elementary inequality
+ 2[1-(1+x)^(-1/2)]<=x for x>=0
+follows by differentiation from equality at zero. Taking x=epsilon^2 and using the lower bound on a proves ||Qh-1||_2<=epsilon.
+Finally Q is a contraction from L^2 to L^(p'): for p'<=2 this follows from L^2 contraction and monotonicity of norms; for p'>2 the required noise condition is rho<1/(p'-1)=p-1, already assumed. Since Ph-1=Q(Qh-1), the last inequality of (1.3) follows.
+For k=L the actual tail in (2.1) is zero. Then (3.4) forces v=0 and h=1, since Q is invertible. The displayed epsilon bounds remain valid but are not sharp in that case.
+
+4. A POSITIVE-SEMIDEFINITE NORMALIZATION LEMMA
+For every positive h, independently of (1.1),
+ E[h/(Ph)]<=1.                                              (4.1)
+Here is a finite-matrix proof, so the direction of this inequality is not inferred heuristically. Let u=h/(Ph) and A=M_sqrt(u) P M_sqrt(u). For psi=sqrt(h Ph)>0,
+ M_sqrt(u) psi=h,
+ A psi=M_sqrt(u) Ph=psi.
+All entries of A are strictly positive. Perron--Frobenius therefore identifies its largest eigenvalue as1. A is also positive semidefinite because P is. Set X=M_sqrt(u)Q. Then XX*=A and X*X=Q M_u Q have the same eigenvalues; X is invertible on the finite cube. Hence the self-adjoint positive operator Q M_u Q has norm1. Its Rayleigh quotient at the unit vector1 is
+ <1,Q M_u Q1>=E u<=1,
+proving (4.1). This is an upper bound, not a lower bound.
+
+In our energy normalization, put z=1/g. Then
+ E_pi z=E h=a,   E_pi z^2=E(h/g)=N.
+Cauchy--Schwarz under pi and (4.1) give
+ a^2<=N<=1.                                                 (4.2)
+Since T_r=A/N, its Perron eigenvalue is lambda=1/N. Equations(4.2) and (1.3) prove (1.4). This is the Perron root of the actual weighting-normalized T_r; no auxiliary operator's eigenvalue is substituted.
+
+5. QUANTITATIVE APPROXIMATE TRANSFER, NOT EXACT TRANSFER
+Because r=pi z^2/N,
+ E sqrt(r pi)=E_pi z/sqrt(N)=a/sqrt(N)>=a.
+Both r and pi have mean1, so
+ ||sqrt(r)-sqrt(pi)||_2^2=2(1-a/sqrt(N))<=2(1-a)<=epsilon^2.
+Cauchy--Schwarz applied to (sqrt(r)-sqrt(pi))(sqrt(r)+sqrt(pi)), whose second factor has L^2 norm at most2, proves ||r-pi||_1<=2epsilon. Total variation between probability densities is half their L^1 distance. Passing to a coordinate marginal cannot increase total variation, so (1.1) gives the claimed epsilon bound for each marginal of r on at most k coordinates.
+Similarly h/a=pi z/a. Thus
+ ||h/a-pi||_1=E_pi |z/a-1|
+ <=sqrt(E_pi(z-a)^2)/a
+ =sqrt(N-a^2)/a
+ <=sqrt(1-a^2)/a<=epsilon.
+No lower bound for g, negative-moment assumption, or inverse-potential integrability estimate was used. This avoids the extra floor that an initial inverse-moment attempt appeared to require.
+
+6. CONSEQUENCE FOR FIXED LOW-DEGREE COMPRESSIONS AND PRECISE REMAINING GAP
+Let V_m be the Walsh polynomials of degree at most m, with dimension
+ D_(L,m)=sum_{j=0}^m binomial(L,j).
+For f in V_m, pointwise Cauchy--Schwarz in the Walsh expansion gives ||f||_infinity<=sqrt(D_(L,m))||f||_2. If 2m<=k, then for f,g in V_m exact stationary matching gives E pi f g=E f g. By (1.5),
+ |E(r-1)fg|=|E(r-pi)fg|
+ <=2epsilon D_(L,m)||f||_2||g||_2.
+Consequently
+ ||Pi_<=m(M_r-I)Pi_<=m||_(2->2)<=2epsilon D_(L,m),
+ ||Pi_<=m(Q M_r Q-P)Pi_<=m||_(2->2)<=2epsilon D_(L,m).         (6.1)
+For fixed m and k/sqrt L->C>0, this tends to zero because D_(L,m) grows polynomially in L whereas epsilon decays exponentially in k. More generally k/log L->infinity suffices for every fixed m. These are actual operator-compression bounds, not a phrase-level statement that marginal constraints were transferred unchanged.
+This is compatible with SOURCE338A's exactly nonzero weighting singleton: that example's leading coefficient is proportional to rho^(k+1) at fixed sufficiently small t, while here eta>=sqrt(rho)>rho. A nonzero exponentially small coefficient is allowed by the present estimate. Neither theorem cancels or revises the other, and the present proof never sets a nonconstant coefficient of r exactly to zero.
+
+The first eigenvalue converges to1 and the fixed low-degree compressions approach those of P. However, these facts do not control the whole operator or its second eigenvalue. Large or near-unit eigenvalues may live in components not governed by the stated compression bounds; neither cross blocks nor the high-degree block have been bounded by (6.1). No conclusion about escape of an eigenvector's every fixed-degree component is claimed.
+In particular the exact stationary critical cap E pi^s<=2 has NOT been shown to imply E r^s<=2, a uniform bound on that moment, or an appropriate tail budget. Total-variation/Hellinger convergence alone cannot supply that implication. As a purely logical diagnostic, on a probability space with mu(A)=alpha->0, the density v_alpha=1-delta+delta 1_A/alpha has ||v_alpha-1||_1<=2delta, while E v_alpha^s>=delta^s alpha^(1-s). Choosing delta=alpha^c with 0<c<(s-1)/s makes the L^1 distance vanish and the s-moment diverge. This diagnostic is NOT a pair generated by the assigned h/Ph relation, NOT an admissible counterexample to the original question, and NOT a disproof of a possible additional moment-transfer theorem.
+Thus source338's exact-transfer obstruction is narrowed: under the stationary moment condition, the discrepancy is now proved exponentially small in Hellinger/total variation and the Perron normalization is proved asymptotically trivial. The remaining obstruction is critical weighting-tail/cross-block control (or a direct stationary rare-cut bound that avoids those quantities). The original uniform positive normalized-gap question and the possible collapsing-family alternative remain open in this unit. No hypothesis is silently moved into a definition or new structure.
+
+7. INPUTS, PRIMARY CHECK AND ORIGINALITY BOUNDARY
+The scalar Boolean hypercontractive theorem and noise/Walsh conventions were checked in Ben-Aroya, Regev and de Wolf, A Hypercontractive Inequality for Matrix-Valued Functions with Applications to Quantum Computing, introduction equation(1), https://homepages.cwi.nl/~rdewolf/publ/qc/matrixbeckner.pdf. Only its classical scalar input is invoked: P_t maps L^u to L^v contractively when 1<u<=v and t^2<=(u-1)/(v-1). The proof above spells out all uses, including the separate case p'<=2.
+The classical multiplicative transition interpretation is related to Georgiou and Pavon, Positive contraction mappings for classical and quantum Schrodinger systems, https://arxiv.org/abs/1405.6650. No general scaling-existence, convergence or dimension-uniform spectral theorem is imported; h is supplied and every matrix identity used here is derived.
+Targeted search also located Kwok--Lau--Ramachandran's Spectral Analysis of Matrix Scaling and Operator Scaling (2021), https://cs.uwaterloo.ca/~lapchi/papers/spectral-scaling.pdf; Belomestny et al.'s Approximation Rates for Schrodinger Bridge Potentials via Fixed-Point ERM (2026), https://proceedings.mlr.press/v337/belomestny26a.html; and Kun He's Global Sinkhorn Convergence and Spectral Stability of Matrix Scaling (2026), https://arxiv.org/abs/2611.08963. Their abstracts/introduction concern scaling algorithms, residual stability or spectral assumptions. Those limited readings do not settle whether the particular stationary-moment/marginal rigidity estimate above is already known. No result from those papers is used as a premise. A full priority search remains necessary before any novelty claim.
+This is same-provider involved analytical fabrication. No numerical experiment, Python/CAS/Lean execution, Colab session, formal verification, peer review, score, independent-model claim or physical/continuum consequence is supplied. The manuscript publication339/340 is a separate frozen task and is not modified here. All claims in this source require a different audit role before acceptance.

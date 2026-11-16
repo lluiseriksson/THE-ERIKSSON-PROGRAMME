@@ -1,0 +1,53 @@
+{
+  "schema": "github-validation354-proposal-v1",
+  "source": "8e452190b8f7d3f7382ba2e6c05d0f14fa9c3dc5",
+  "status": "UNAUTHORIZED_UNEXECUTED_PROPOSAL_PENDING_SEPARATE_AUDIT_AND_OWNER_EXCEPTION",
+  "payload_count": 9,
+  "payloads": [
+    {
+      "path": "AUTHORIZATION.pending.json",
+      "bytes": 445,
+      "sha256": "5d0d75e43d3154b5c0b384a3da4a821209ee08282781ffa693833f1866b6b492"
+    },
+    {
+      "path": "EXACT-C-DECISION-BLOCK.txt",
+      "bytes": 2145,
+      "sha256": "ff04edb9bcf7d7ae3b831173ffaccaeb85d44a88f3464c19ab244c0703fe9a61"
+    },
+    {
+      "path": "EXACT-C-HELPERS.txt",
+      "bytes": 2339,
+      "sha256": "756c4997860cf334c2b4e5835342d4e029ce676d05a28d6439813543f96c3621"
+    },
+    {
+      "path": "FULL-EQUIVALENCE-REPORT.txt",
+      "bytes": 8763,
+      "sha256": "2184d41e02c24b0b36e04c4c45f37b5b1fd020ddbfbdab953e899f2758ba25eb"
+    },
+    {
+      "path": "github_validate354.py",
+      "bytes": 11506,
+      "sha256": "eb1776c077bde4de14b05726f86c233d4661199ee90c092f7a4a4b86226207b1"
+    },
+    {
+      "path": "INPUTS.json",
+      "bytes": 58851,
+      "sha256": "d5c49c03c0234ab15dd4d70b3c3c1aeae5000839615be66e0b99499838dd17f6"
+    },
+    {
+      "path": "README.txt",
+      "bytes": 2436,
+      "sha256": "f324d14f327c85377635d749c0c4b9bdea56bb02eddd340d32899ea42555207b"
+    },
+    {
+      "path": "STATIC-BINDINGS.json",
+      "bytes": 877,
+      "sha256": "83e5f5dcfab63c8a29d4c1db9290841afa4f7381ac2facb8220d6afdaaf1b86a"
+    },
+    {
+      "path": "validation354-proposal.yml",
+      "bytes": 4218,
+      "sha256": "28462d3e18806f7d6980630167f945f0f24d4b2a06ae049922a1500d868d8b5b"
+    }
+  ]
+}

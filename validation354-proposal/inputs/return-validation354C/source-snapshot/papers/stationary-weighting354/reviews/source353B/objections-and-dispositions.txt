@@ -1,0 +1,22 @@
+SOURCE353B adverse checks and revision dispositions
+S1 (historical353A finding): preserved unchanged. B section7 explicitly acknowledges the larger351 representation H(ab,bc). New section9 is separately checked below; A's original claim is not retroactively approved.
+O2. Hidden core alteration: the exact6867-byte sections1-6 slice matches. The completeB raw hash was reconstructed from only the header/scope replacement and appended section9/revision tail. Resolved.
+O3. Diff could mask newline conversion: raw hashes and direct UTF8 reconstruction establish byte identity. The no-index Git warnings and expected exit1 are retained. No conversion was performed.
+O4. Simplex map not injective: all unit-vector coordinates are present; evaluation recovers every component ofa. Dimensionj confirmed.
+O5. Omitted zero vector changes distance: for nonzeroa, exactly half of F2^j has dot product1; the omitted zero has dot product0. Weight is exactly2^(j-1). Resolved.
+O6. Eta exponent off by two: D/2=2^(j-2), M=2^j. Both delta and eta formulas checked. Resolved.
+O7. Limit fails with growing dimension: j log2-2^(j-2)|log rho| tends to minus infinity for fixedrho. Bounds contain no H amplitude. Resolved.
+O8. Matching scale overstated: D-1=(L-1)/2, so every fixed square-root order is eventually included. Only lengths L=2^j-1 are claimed for this family. Resolved.
+O9. Positive witness or Fourier support might fail: h>=1-epsilon_amp(M-1)>0; distinct nonzero codeword characters have coefficient epsilon_amp!=0, and the constant coefficient is1. Support is exactlyC. Resolved.
+O10. Smaller actual support could fit a larger algebra: full support blocks this escape; any representation forces C subset B, not just inclusion of one chosen basis. Resolved.
+O11. Larger disjoint macro dimension could repair separation: every B word is constant on each block regardless of dimension; simplexC separates every coordinate pair. No block size>=2 is possible. Resolved.
+O12. Residual coordinates could absorb problematic positions: each nonzero columnv is active in some c_a, whereas B vanishes on residual positions. None is permitted. Resolved.
+O13. Relabelling or basis change could evade the argument: pair separation and nonzero activity are invariant under permutations and C-basis changes. General binary changes of original coordinates do not preserve ordinary P_rho and are outside351. Resolved.
+O14. Singleton blocks trivialize representation: the source explicitly excludes this escape using351's m>=2 domain and long-block regime. Resolved.
+O15. Every positiveH claimed outside351: not claimed. A specific full-support witness is chosen; constantH would not separate. Resolved.
+O16. Extra stationary cap assumed for the witness: no universal cap/floor is claimed for arbitrary amplitude choices. Absolute critical-moment bounds still require the declared stationary cap. Preserve this qualification.
+O17. Epsilon notation: section9 reuses epsilon for a chosen amplitude, whereas section1 uses it for a spectral error. Nonblocking local notation; distinguish epsilon_amp and epsilon_gap in later consolidation.
+O18. Core coset distance, weighted orthogonality, Rayleigh argument and normalization: reread and checked; no change or new contradiction. The prior full analytical report is retained; current report summarizes the reasoning.
+O19. Classical code called new: the official course source names the construction; no historical novelty is claimed or cleared. The Doob statement is proved directly, not imported from that exercise.
+O20. Original failure erased: exact old source/report/manifest/objections are retained and hashed. This new verdict applies only toB. Resolved.
+No blocking objection remains againstB's stated result. No PDF, numerical grade, formal, independence or general-gap certificate is supplied.

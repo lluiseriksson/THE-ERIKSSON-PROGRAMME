@@ -1,0 +1,107 @@
+SOURCE350A SHA256(raw filesystem bytes; no normalization)=0f956d2bccaf04b48a8866a147c8248a5d275895cf450f0d3ba41b204866bc9a
+SOURCE AUDIT350A -- bounded analytical audit, 2026-11-14
+
+VERDICT: ACCEPTABLE WITHIN THE EXPLICIT BOUNDED ANALYTICAL SCOPE.
+No blocking mathematical defect was found in Theorem350(a)-(d), its stated domain, constants, finite-exponent ceiling or source341 dependency. The claimed inverse-potential bounds and actual weighting integrability/convergence hold on the strictly subcritical ranges stated. The critical E r^s bound and the original stationary Doob-gap question remain OPEN. This is an analytical source review, not a numerical certificate, formal proof, originality finding, PDF assessment, independent-reviewer claim or new paper.
+
+1. Exact subject, provenance and what was read
+
+Frozen candidate: D:\Datos\the-eriksson-programme\autonomia\evidencia-350\fabrication350A\source350A.txt, 13787 bytes, raw SHA2560f956d2bccaf04b48a8866a147c8248a5d275895cf450f0d3ba41b204866bc9a. Candidate MANIFEST.json raw SHA2568500e94185dfec667de39cff4aaeffbc879022325af845da484739031abd5396. Both supplied identities were checked with native filesystem hashing, and all17 manifest entries matched their lengths/hashes. All six original source paths in input-manifest.json matched the retained copies' declared hashes. No newline, encoding or Unicode normalization was applied in those checks.
+
+Repository context HEAD595a3840773b5d4629b5937990a33c1c5a8ac28a was read directly with git rev-parse and matched. This is a CONTEXT commit, not a commit containing source350A. No source350 PR or body was assigned. Candidate commit SHA, body-capture method, normalized PR-body bytes and PR-body hash are therefore not applicable to this source verdict; no substitute identifier is invented.
+
+Read the full source350A, full fabrication report, context, negative attempts, primary-source-scope record, received assignment, input manifest, candidate manifest and retention receipt. Read all retained raw context sources341A,344A,345A,346A,349A and supplement-negative-routes347, plus all four primary-raw JSON response files (350search,350papers,350reference,350theorems). These source341-349 bytes were also read fully in earlier assignments within this same audit role; this task uses their frozen copies and hashes. The broad current output combining fresh web text with344/345 was truncated;344 was subsequently reread alone, while345's complete source appeared in the output and was already known from the earlier full read. No truncated listing is used as a substitute for a full mathematical source read.
+
+Current repository CLAUDE.md and OPERATIONAL-GOVERNANCE-CHARTER.md were read in full. D:\LEEME.md was previously read in this same audit role and its current raw hash5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f was confirmed unchanged. CLAUDE and charter likewise match previously read raw hashes618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe andfff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f. No repository-root AGENTS.md was present at the inspected path; the supplied global user instructions remain governing. The unrelated long Surface acta was not newly read in full; its earlier partial reading is not promoted to a full-read claim.
+
+This role also made a fresh primary-source check of the two relevant research PDFs: Mossel--Oleszkiewicz--Sen, https://arxiv.org/pdf/1108.1210, introduction equation(1.2), its tensorization/negative-exponent discussion and neighboring definitions; and Cubitt--Kastoryano--Montanaro--Temme, https://research-information.bris.ac.uk/ws/files/50006508/reverse_arxiv_resubmit.pdf, scalar noise convention and Theorems1 and3. Only returned text excerpts were read, not either entire PDF or Borell's original paper. The complete fresh tool response is retained. This is mathematical-source verification, not grading the candidate as a PDF. Incidental search results in the fabricator's raw archive are not imported as premises.
+
+2. Domain, normalization and non-vacuity
+
+Fix L>=1, 0<rho<1, 0<b<=1 and positive h with E hPh=1. Positive Boolean noise ensures g=Ph>0, all finite-dimensional reciprocal moments exist before any uniform bound is asserted, and pi=hg has mean1. The definitions of u,N,r give E r=1. The unqualified measure is uniform probability, not counting measure; pi dmu is a probability measure. The class is nonempty: h=1 obeys the normalization, floor for every such b, cap and every allowed exact marginal constraint.
+
+Writing a=Eh=Eg, the constant Walsh mode gives a^2<=||Qh||_2^2=1. The floor gives h>=b/g, so a>=b E(1/g)>=b/a and a^2>=b. Cauchy under pi dmu gives (E_pi(1/g))^2=a^2<=E_pi(1/g^2)=N. Consequently N>=b in the correct direction. No reversal of source341's distinct N<=1 is used in the new inverse-moment or weighting bounds. The endpoint b=1 causes no exception: a=1 and ||Qh||_2=1 force all nonconstant Walsh modes to vanish, so h=g=pi=r=1. The reported bounds may be coarse there but remain valid.
+
+Applying P to h>=b/g preserves order. Jensen for each Markov row gives P(1/g)>=1/(Pg), hence g>=b/(Pg), g Pg>=b and 1/g<=Pg/b. This derives a relation between the actual hPh quantities; it neither assumes nor proves a dimension-uniform positive infimum of g by itself. Every denominator is positive.
+
+3. Primary theorem and all noise parameters
+
+The fresh primary excerpts explicitly support the scalar Boolean reverse estimate at finite negative exponents. With beta<=alpha<1 and positive f, the parameter condition is theta^2<=(1-alpha)/(1-beta), and the generalized mean inequality has direction ||P_theta f||_beta>=||f||_alpha. The theorem includes beta<alpha<0; it is not restricted to positive exponents below1. The exact Boolean time factor is one half in the logarithmic condition. The weaker general-product time factor appearing elsewhere in the Mossel paper is not substituted. The noise convention in the Cubitt paper flips a bit with probability(1-theta)/2, agreeing with Walsh multiplier theta. Nothing quantum is used.
+
+For a>0, ||f||_(-a)=(E f^(-a))^(-1/a)=1/||f^(-1)||_a. It is a positive generalized mean, not a Banach norm. Taking reciprocals reverses inequality direction. None of the applied negative exponents is zero. A small nonblocking editorial point is that the broad statement in source350 section3 includes alpha or beta=0 without separately defining the geometric-mean convention; the references define ||f||_0=exp(E log f), and the actual proof only uses strictly negative exponents. There is no load-bearing undefined zero-exponent operation.
+
+The four parameter checks are:
+(i) Pg=P_(rho^2)h=P_(rho^(3/2))(Qh). Input exponent2 and squared noise rho^3 yield outputD0=1+rho^(-3).
+(ii) g=P_sqrt(rho)(Qh). Squared noise rho yields outputR=1+rho^(-1) from input2.
+(iii) Reverse smoothing h->g uses noise rho, so squared noise rho^2; alpha=-R, beta=-D, with1+D=(1+R)/rho^2.
+(iv) Bootstrap h->Pg uses noise rho^2, so squared noise rho^4; outputF(q)=1+(p-1)/rho^4.
+All noise parameters belong to(0,1), all ordinary input exponents used in the proof exceed1, and all indicated hypercontractive thresholds are attained as equalities, which the theorems permit. There is no factor-two semigroup-time error.
+
+4. Starting inverse moments and reciprocal directions
+
+From(i) and ||Qh||_2=1, ||Pg||_D0<=1. Combining with1/g<=Pg/b gives ||g^(-1)||_D0<=b^(-1). This uses floor and energy only.
+
+From(ii), ||g||_R<=1. The floor also gives1/h<=g/b; thus ||h^(-1)||_R<=b^(-1) and ||h||_(-R)>=b. Now D=(1+R)/rho^2-1 satisfies D-R=(1+R)(rho^(-2)-1)>0. Therefore beta=-D<alpha=-R<0, and the reverse parameter ratio is(1+R)/(1+D)=rho^2. Reverse hypercontractivity gives ||g||_(-D)>=||h||_(-R)>=b. Reciprocation yields precisely ||g^(-1)||_D<=b^(-1). It is not an upper bound on the negative mean, and no application to a signed function occurs. Also D-D0=2(rho^(-2)-1)>0. Part(a) is supported without cap or matching.
+
+5. Bootstrap domain and constants
+
+Assume q>s/(s-1) and ||g^(-1)||_q<=A. Since1/p=1/s+1/q, p=sq/(s+q)>1. Ordinary Holder applies to h=pi/g and yields ||h||_p<=B A. With noise rho^2, ordinary hypercontractivity gives ||Pg||_F(q)<=B A. Since0<rho^4<1 and p>1, F(q)>p>1. Combining with the pointwise reciprocal relation gives ||g^(-1)||_F(q)<=(B/b)A. The cap enters here through B; matching does not.
+
+The initial exponentD exceedsR=2s/(s-1)>s/(s-1). The iteration is shown below to increase, so every subsequent exponent stays within that strict validity domain. StartingA0=b^(-1), repeated multiplication byB/b gives exactly A_n=b^(-1)(B/b)^n. Constants depend on fixedrho,b,n but notL. SinceB=2^(1/s)>1 andb<=1, B/b>1: the displayed A_n grow withn. No uniform bound asn increases is justified or needed for a fixed finite iteration.
+
+6. Fixed points, initialization and the ceiling
+
+The fixed-point algebra was checked analytically without symbolic or numeric execution. Put z=rho^4. Multiplying F(q)-q by the positive denominator z(s+q) gives
+ z(s+q)(1-q)+sq-(s+q)
+ =-z q^2+(s-1)(1-z)q-s(1-z).
+The discriminant equals(s-1)^2(1-z)^2-4zs(1-z). Its bracket simplifies because
+ (s-1)^2(1-rho^4)-4rho^4s=4rho^2s,
+using s=(1+rho)/(1-rho). Hence the discriminant is4rho^2s(1-rho^4). Further s(1-rho^4)=(1+rho)^2(1+rho^2). The two roots therefore are exactly the displayed
+ q_minus, q_plus=(1+rho)rho^(-3)[(1+rho^2) minus/plus sqrt(1+rho^2)].
+Both are finite, positive and distinct for each fixed0<rho<1, since1+rho^2>sqrt(1+rho^2)>0.
+
+The two initialization differences also check. With rho^3D=1+2rho-rho^3,
+ rho^3(D-q_minus)=rho-rho^2-2rho^3+(1+rho)sqrt(1+rho^2)
+ >=1+2rho-rho^2-2rho^3=(1+2rho)(1-rho^2)>0;
+ rho^3(q_plus-D)=-rho+rho^2+2rho^3+(1+rho)sqrt(1+rho^2)
+ >=1+rho^2+2rho^3>0.
+The use of sqrt(1+rho^2)>=1 is in the correct direction in both expressions. Thus q_minus<D<q_plus without a noise-range restriction.
+
+F'(q)=s^2/[rho^4(s+q)^2]>0. Between the roots the quadratic numerator ofF(q)-q is positive. Starting atD, induction gives q_n<q_(n+1)<q_plus. The bounded increasing limit is fixed by continuity; it cannot equalq_minus because it is at leastD>q_minus, so it equalsq_plus. This proves the claimed orbit and preserves every bootstrap domain condition. The word attracting is justified: factoring gives F(q)-q=-(q-q_minus)(q-q_plus)/(s+q), whence F'(q_plus)=1-(q_plus-q_minus)/(s+q_plus), strictly between0 and1. This analytical check is not a numerical stability experiment.
+
+Each positive fixedq<q_plus is covered by some finite iterate or by monotonicity fromD. The limiting q_plus is not reached by the orbit, and the geometric constants provide no limiting bound atq_plus. The claims are about this specified map and its initial value; they do not exclude other bootstraps, stronger joint estimates or arbitrarily high moments proved by other means.
+
+7. Actual weighting moments and the nonempty interval
+
+The identity r=pi/(Ng^2) andN>=b yield
+ ||r||_(t_n)<=b^(-1)||pi||_s ||g^(-2)||_(q_n/2)
+ <=b^(-1)B A_n^2=B b^(-3)(B/b)^(2n)=K_n,
+because1/t_n=1/s+2/q_n. Holder's conjugate factors here are s/t_n andq_n/(2t_n), both greater1. Indeedq_n>=D>R>2, t_n<s and the reciprocal identity is positive. There is no unproved weighting-moment premise hidden in this step.
+
+t0>1 is equivalent toD(s-1)>2s, exactlyD>R. Thus the interval above1 is nonempty for EVERY fixedrho in(0,1), not merely a selected noise range. The functionq -> sq/(q+2s) has positive derivative2s^2/(q+2s)^2, so t_n rises strictly fromt0 towardt_plus. Finiteq_plus ands>1 imply t_plus<s. The theorem correctly restricts the stronger strict t0<t_n statement ton>0. Raising the n=0 norm bound to t0 gives E r^t0<=B^t0 b^(-3t0)=2^(t0/s)b^(-3t0), with no norm/moment mismatch.
+
+There is no claim uniform inrho approaching0 or1, nor inb approaching0. All constants and exponents are fixed beforeL varies. Atb=1 the actual densities are constant; the nonsharp general constants remain harmless.
+
+8. Source341 dependency and interpolation
+
+Source341A is retained at rawSHA25607872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f and was read in full. Its use is legitimate because its conditionp>1+rho holds atp=s: s-(1+rho)=rho(1+rho)/(1-rho)>0. The current stationary cap gives ||pi||_s<=B. The supplied matching is exact forpi, and k is an integer in[0,L] when the finite-dimensional statement is invoked. Withk=floor(C sqrtL), that range holds eventually for every fixedC>0; the source explicitly makes this asymptotic restriction instead of asserting k<=L at every small dimension.
+
+The load-bearing source341 chain was checked, rather than accepted solely from its title: a high Walsh tail ofg has L^(p') norm at mosteta^(k+1)sqrt(1-a^2); exactpi matching identifies E(pi g_<=k)=a; Cauchy underh dmu yields E(pi g)>=1/a. Hence1-a^2<=a^2epsilon^2, so a^2>=1/(1+epsilon^2). In the PSD normalization lemma, A=M_sqrt(u) P M_sqrt(u) has positive eigenvector sqrt(pi) at eigenvalue1, so its Perron root is1. Passing to Q M_u Q and evaluating its Rayleigh quotient at1 gives N<=1. Then E sqrt(rpi)=a/sqrt(N)>=a; the Hellinger-to-L1 Cauchy bound gives ||r-pi||_1<=2epsilon. The separate lower boundN>=b is not substituted into that upper-bound argument. The high-tail casesp'<=2 andp'>2 use the correct ordinary hypercontractive conditions. No extra weighting matching or density floor is required in that imported theorem.
+
+Atp=s, eta^2=rho max(1,1/(s-1))=max(rho,(1-rho)/2)<1. Since t_n<s on a probability space, ||pi||_(t_n)<=B. Triangle inequality gives ||r-pi||_(t_n)<=K_n+B. Solving1/t=alpha+(1-alpha)/t_n gives alpha=(t_n-t)/(t(t_n-1)); for1<t<t_n, bothalpha>0 and1-alpha>0. Ordinary interpolation therefore yields exactly
+ ||r-pi||_t<=(2epsilon)^alpha(K_n+B)^(1-alpha).
+For fixed1<t<t_plus, choose a finite n witht<t_n before varyingL. ThenK_n,alpha are fixed, and eta^(floor(C sqrtL)+1) tends to0. This proves the stated strong convergence. The proof does not need n=n(L), does not take a limit through growing constants, and does not claim convergence at t_plus ors. Total variation remains half theL1 distance, as in341.
+
+9. Endpoint and scope attacks
+
+The critical identity is E r^s=N^(-s)E[pi^s g^(-2s)]. The finite inverse-moment bounds derived here do not supply a bound on that joint expectation from the stationaryL^s cap alone. In the stated separate Holder estimate, a targett<s needs inverse exponent2ts/(s-t); at t=s its denominator iszero and anL-infinity bound would be required by that particular route. The actual iteration stops at finiteq_plus, and even a hypothetical finite norm atq_plus would produce t_plus<s, nots. These are limitations of the specified deductions, not nonexistence theorems for a larger critical constant.
+
+The source does not infer pointwiseg convergence, a uniform positiveg floor, exactr marginals, divergent critical moments, a vanishing second-eigenvalue gap, or physical/continuum consequences. The statements about344's failure of supremum convergence and349's exact-cap2 counterexample are compatible with subcritical strong convergence. Context345/346 and the consolidated negative routes are not silently used as stronger moment or gap theorems. The negative-attempt record accurately stops the finite separate-moment scheme as an endpoint proof while leaving the original joint critical-tail question open.
+
+The parent'sgPg andF(q) leads are disclosed in the fabrication assignment, model context and section6. This is shared intellectual input within one collaboration. Neither the source nor this verdict makes an independence or novelty claim. Parts(a)-(c) establish bounded analytical progress within the grouped investigation; part(d) characterizes this route's ceiling. No standalone publication recommendation follows.
+
+10. Disposition and operational record
+
+No blocking source correction is requested. The optional zero-generalized-mean convention noted above is editorial and does not affect any applied exponent. Preserve the exact source and limits if subsequently integrated. Any future commit/PR or rendered artifact requires its own actual identity and review; this raw-source verdict does not certify the contextHEAD as containing350.
+
+All mathematical verification here was written analytical reasoning. Windows tools performed file reads/search, read-only Git identity, file metadata/copies and native hashes, plus preparation of this role's own report. Fresh web retrieval checked literature theorem statements. No mathematical executable, Python/CAS/Lean, build, test, numerical fit/root search, runtime, Colab allocation, candidate/source edit, Git/state/PDF mutation, subagent, other-chat access or contact with the fabricator occurred. No post-assignment inbound message was received. No disposable clone or worktree was created and no other staging area was cleaned. The full report, role context, assignment, objections, exact packet, governance copies, fresh primary response and hash manifests are retained under evidence-350/source-audit350A. The C preparation is not the sole copy.

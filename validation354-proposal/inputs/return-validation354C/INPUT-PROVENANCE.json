@@ -1,0 +1,55 @@
+{
+  "source": "8e452190b8f7d3f7382ba2e6c05d0f14fa9c3dc5",
+  "frozen_producer_files": [
+    {
+      "path": "frozen-producer/build354D.py",
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\production-preparation354D\\build354D.py",
+      "bytes": 15976,
+      "sha256": "b3323cb6ba8b6cccba95e7cb7a87a1e4cfecae0ea0fc854980e4c38e5e3d90e7"
+    },
+    {
+      "path": "frozen-producer/launch354D.py",
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\production-preparation354D\\launch354D.py",
+      "bytes": 5758,
+      "sha256": "0891ccf573894f3f94463af89b40b9456b402ac2f1c721bea1267db996fe9845"
+    },
+    {
+      "path": "frozen-producer/mark_artifact_operation_started.mjs",
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\production-preparation354D\\mark_artifact_operation_started.mjs",
+      "bytes": 735,
+      "sha256": "968d66a7b491c7728f2ab009dcb54ac0025d6f474de6f3734f66b8809f6c18a8"
+    },
+    {
+      "path": "frozen-producer/PREPARATION-MANIFEST.json",
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\production-preparation354D\\PREPARATION-MANIFEST.json",
+      "bytes": 21672,
+      "sha256": "a00396adb63fce545d8ab675c13865efdb5f192ac7088f859ba23f612149d459"
+    },
+    {
+      "path": "frozen-producer/README.txt",
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\production-preparation354D\\README.txt",
+      "bytes": 7529,
+      "sha256": "9bfe3d85f5cf7ec662a4dfce8f9606b7bac663316169d9ee3be065fffbc888eb"
+    },
+    {
+      "path": "frozen-producer/SOURCE-INPUTS354D.json",
+      "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-354\\production-preparation354D\\SOURCE-INPUTS354D.json",
+      "bytes": 21137,
+      "sha256": "cf80a4263ff21f87508ba33a2ebe17b8a4dcad3ca1018651e9ec057dc1970370"
+    }
+  ],
+  "source_fixtures_verified": 85,
+  "source_inventory_sha256": "cf80a4263ff21f87508ba33a2ebe17b8a4dcad3ca1018651e9ec057dc1970370",
+  "actual_prior_receipt_reference": {
+    "path": "baseline/actual348F-receipts-reference.zip",
+    "original": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-348\\actual-validation348F\\validation348E-receipts.zip",
+    "sha256": "52ab735daced82ba5e0a354798a014efb307ceb7797a5acd3ee44cbb2f90cbc8",
+    "read_scope": "Archive member inventory; five native exit entries and full actual-normal/optimized result JSON. Not a new354 execution."
+  },
+  "prior_failures": [
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-348\\validation348F-preparation\\provenance\\validation348D-failure-ui.txt",
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-348\\validation348E-audit",
+    "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-348\\validation348F-preparation\\REPAIR348F.txt"
+  ],
+  "execution": "No Python, syntax check, test or runtime; raw bytes and text only"
+}

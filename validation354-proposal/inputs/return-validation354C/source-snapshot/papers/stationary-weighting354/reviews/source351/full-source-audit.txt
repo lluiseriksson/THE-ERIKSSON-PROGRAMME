@@ -1,0 +1,102 @@
+SOURCE351A -- SEPARATE-ROLE ANALYTICAL AUDIT, 2026-11-14
+VERDICT: ACCEPTABLE within the stated disjoint-parity class and fixed-noise asymptotic regime.
+No blocking mathematical defect found in351(A)-(D). The argument controls the full chain, not merely its quotient. The source establishes a class exclusion, not the general stationary-gap theorem. No numerical grade, PDF assessment, formal proof, novelty clearance, publication recommendation or independence claim is supplied.
+
+1. Exact referent, provenance and reading
+
+Frozen source: D:/Datos/the-eriksson-programme/autonomia/evidencia-351/fabrication351A/source351A.txt;12373 raw bytes; SHA256251e94234b2a28b9b9340a4a4b680b22024c1ea719d594e9f81bfae3e9d81833.
+Candidate manifest raw SHA256563a5317aa0f7b5c471d4213e8cc0e28d5f40be5035d17052aa324f5bcd9efc1. Both assigned identities and all five manifest payload sizes/hashes were verified without normalization. The full six-file packet, including its manifest, is retained.
+
+Read all nine source sections, full fabrication report, actual model context, literature-scope note, manifest and complete retained bounded-search response. The proof is self-contained and does not import349/350 as premises. Their motivating parity construction and finite-ceiling context were checked against the original source files already fully read in earlier assignments in this role, with relevant passages retrieved again. A broad349 search/excerpt display truncated; no new full349 reading is inferred from that display. Its complete previously read source is retained as context.
+
+Current repository HEADa27c28cbfd506b7ad06aeebb8b141df89d6a0cba was read directly and is context only. Source351A has no assigned commit, PR or PR body; those fields and body normalization are not applicable. No context commit is falsely presented as containing351. Governing D:/LEEME.md, CLAUDE.md and operational charter were fully read earlier in this continuing role; current hashes remain5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f,618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe,fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f. The global user instructions apply.
+
+The parent /root fabricated351. This role audited it after completing347B and did not provide a proof or repair to the fabricator during this audit. Shared provider, prior programme exposure, lineage and filesystem remain disclosed. No message was received after assignment before terminal; no fabricator/other chat/subagent was contacted.
+
+2. Domain, scaling and the actual chain
+
+Fix0<rho<1 and integers n>=1,m>=2,r>=0. L=nm+r>=2 ensures a nonconstant subspace. Every value of H is finite and strictly positive at each finite dimension, even if amplitudes grow or the minimum tends to zero along a sequence. Thus G, Z and N are positive and finite. Nothing in the proof assumes a uniform positive lower bound on H.
+
+The noise convention is probability P(x,y), with Walsh multiplier rho^|S| and macro kernels expressed relative to uniform probability. Multiplying h by c>0 sends g to cg and Z to c^2 Z, preserving K,pi,h/g,N and r_h. Energy normalization is unnecessary. The residual count r and weighting density r_h are distinct.
+
+Rows of K sum to one. The symmetric conductance is mu(x)h(x)P(x,y)h(y)/Z, so pi dmu is stationary and K is self-adjoint in its L2 space. With D=M_sqrt(hg), direct entrywise multiplication gives D K D^-1=M_sqrt(h/g) P M_sqrt(h/g). This congruence is positive definite because all Walsh eigenvalues of P are positive and the multiplier is invertible. Hence eigenvalues are strictly positive at finite dimension; the theorem's nonnegative wording is valid. Strictly positive entries of K give the simple Perron eigenvalue1. It is not necessary to assume a separate spectral gap theorem to obtain the global bound lambda<=1.
+
+3. Macro noise, kernel factors and stationarity
+
+Each block parity multiplier is the product of m independent noise signs and has mean theta=rho^m. Independence across disjoint blocks produces ordinary n-bit noise. Every macro parity fiber has the same size, and the residual coordinates do not affect h. Therefore g=G(z), G=B_theta H, with kernel b0(z,w)=product_i(1+theta z_i w_i) relative to macro uniform probability. No missing factor2^-n occurs: K0 has that factor explicitly, while the sector formula uses E_w.
+
+Since every factor lies in[1-theta,1+theta], ell<=b0<=u. With a=E H>0 this gives a ell<=G<=a u. The bound is multiplicative in a and independent of maxH/minH. Pi=HG/Z has macro mean1, and pi is its exact pullback. Conditional on z the full stationary law is uniform on its fiber, including residual coordinates. K0 is its actual lumped stochastic kernel; no auxiliary T_pi is substituted.
+
+4. Exact marginals
+
+The full-block sets c_i are disjoint and linearly independent over binary symmetric difference. Their span C has2^n elements. Macro functions have Walsh support in C; products and P preserve this finite algebra. Thus pi has support in C and mean1. Any nonempty member of C has size at leastm. For each labelled subset S with1<=|S|<=m-1, E pi chi_S=0. Fourier inversion on each coordinate subset proves exact joint uniform marginals, not merely separate singleton balance. Residual coordinates introduce no exception.
+
+The same algebra also applies to h/g and r_h, but the candidate does not need or claim an exact-r matching theorem. Its statement that(C)/(D) do not assert such matching is conservative, not a false assertion of its failure. No general matching transfer outside this class is justified.
+
+5. Full weighted orthogonal decomposition
+
+Cosets t+C partition all2^L Walsh labels. Each V_t=chi_t F(z) has dimension2^n; choosing one representative per coset gives2^(L-n) spaces and total dimension2^L. This is a complete algebraic direct sum, so no omitted within-fiber or residual mode can hide outside the blocks.
+
+Ordinary Walsh orthogonality alone would not suffice for the stationary variational claim. Here it is strengthened correctly: for different cosets t+C,v+C, the product Pi(z)F(z)J(z) remains C-supported, while t+v is outside C. Its product with chi_(t+v) has zero uniform mean. Thus these spaces are mutually orthogonal under pi dmu as asserted. Within one sector, chi_t^2=1 makes its norm exactly the macro L2(Pi) norm. Multiplication by h or1/g preserves the sector; P is diagonal in the original Walsh basis. Therefore K=M_(1/g) P M_h preserves every sector. Its restrictions are self-adjoint in the correct stationary inner product.
+
+6. Sector convolution formula and representatives
+
+For a macro Walsh label I, toggling c_i changes the number of original coordinates from j_i to m-j_i in that block. The residual d is unchanged. The eigenmultiplier is exactly rho^(d+sum_(i notin I)j_i+sum_(i in I)(m-j_i)). Expanding product_i(rho^j_i+rho^(m-j_i)z_iw_i) under macro uniform probability reproduces precisely these multipliers, including the residual factor rho^d. Thus(4.1) and(4.2) hold on a full basis.
+
+This signed convolution is not presumed stochastic. Its kernel is symmetric; after the H/G weighting, Pi(z)K_t(z,w) is proportional to H(z)H(w)b_t(z,w), also symmetric. This is a direct cross-check of the restricted self-adjointness.
+
+Adding a full block to the representative toggles that j_i between0 andm and just changes F by multiplication with z_i. One may therefore remove every j_i=m. For any nonzero coset, either a residual coordinate remains or at least one block has1<=j_i<=m-1. A sector with all j_i=d=0 is exactly the quotient sector and contains the constants. This exhausts all cases.
+
+7. Nontrivial sectors, beta threshold and amplitude cancellation
+
+On[1,m-1], the sum rho^x+rho^(m-x) is convex: its second derivative is(log rho)^2 times that positive sum. For m=2 the interval is a single point and the same endpoint bound holds. Thus its maximum is rho+rho^(m-1). Taking absolute numerator and the denominator lower bound1-theta yields the advertised beta ratio for any interior j. For j=0 the numerator and denominator are the same positive factor, so its ratio is exactly1, not another beta.
+
+When beta<1, q>=1 interior blocks contribute at most beta^q<=beta. Multiplying by rho^d cannot enlarge this. If no interior block exists, nontriviality forces d>=1 and rho^d<=rho<beta. Thus |b_t|<=beta b0 for every nontrivial sector, regardless of the number of blocks. Positivity of H/G gives |K_tF|<=beta K0|F|. Since K0 is stochastic, ||K_tF||infinity<=beta||F||infinity. The finite-dimensional spectral radius is at most this induced norm, so every sector eigenvalue has absolute value<=beta. No bound on H was introduced; it cancels through the comparison with the actual stochastic K0.
+
+When beta>=1 the product replacement beta^q<=beta is generally false and is not used. The already established full Markov bound gives lambda<=1. Since max(1-alpha,beta)>=1, this is exactly the advertised min(1,max(...)) upper bound. The equality beta=1 belongs to this safe branch. A lower gap bound ofzero in this case is intentionally uninformative, not a claim of zero actual gap. The finite positive chain still has simple top eigenvalue1.
+
+8. Quotient oscillation contraction
+
+The measure nu(w)=2^-n H(w)/a is a probability, generally different from stationary Pi. The bound K0(z,w)>=alpha nu(w) follows from ell and a u in the correct numerator/denominator directions. Here0<alpha<1 because0<theta<1 and n>=1. Subtracting this common row and dividing by1-alpha leaves a nonnegative stochastic R.
+
+For any real F, the rank-one term is constant in z, hence osc(K0F)=(1-alpha)osc(RF)<=(1-alpha)osc(F). A real nonconstant eigenfunction has positive oscillation, and osc(lambda F)=|lambda|osc(F), including negative lambda. Therefore every quotient eigenvalue other than1 is bounded in modulus by1-alpha. This does not require nu to be stationary or F to have nu-mean zero. Self-adjointness supplies a real eigenbasis, and strict positivity leaves no extra eigenvector at1.
+
+Combining this bound with the complete stationary-orthogonal sector decomposition proves the claimed FULL-chain lambda2 upper bound. It is not an extrapolation from quotient mixing alone.
+
+9. Near-rho Rayleigh witness and both inequality directions
+
+Take t to be one coordinate in block1, possible since n>=1. Since m>=2, t is outside C. The test f=chi_t has stationary mean0 and norm1. Subtracting rho b0 from its sector kernel cancels the constant part in block1 and leaves exactly(1-rho^2)rho^(m-1)z1w1 times the other positive block factors. Dividing by b0 leaves denominator1+theta z1w1>=1-theta, giving epsilon as stated.
+
+The resulting |K_t1-rho|<=epsilon holds pointwise because K01=1. Returning to full functions, Kf=chi_t K_t1, so <f,Kf>_pi=E_Pi K_t1>=rho-epsilon. The Rayleigh supremum on constants-perpendicular is lambda2; hence lambda2>=rho-epsilon, and positive definiteness permits the additional lower bound0. The argument does not identify f as an exact eigenfunction or use an unweighted Rayleigh quotient.
+
+Taking gamma=1-lambda2 gives the stated lower gap bound max(0,1-max(1-alpha,beta)). The stated upper bound1-rho+epsilon can exceed1 for some small m; it remains a valid weak upper bound, not a contradiction. If residual coordinates exist, they in fact furnish an exactrho mode, but the given witness works even with no residual coordinates and does not rely on that optional simplification.
+
+10. Uniform asymptotics and permitted sequences
+
+For fixedrho, m->infinity gives theta->0, beta->rho and epsilon->0. For theta<=1/2, log((1+theta)/(1-theta))<=4theta follows by integrating2/(1-t^2) from0 to theta. Consequently ntheta->0 implies -logalpha->0 andalpha->1. The lambda2 upper bound tends torho and the lower bound tends torho. Hence gamma->1-rho uniformly over H and residual count, since neither side contains either of them. Eventually beta<1 automatically; the proof does not assume it at every finite dimension.
+
+The limit is for fixedrho, not uniformly asrho approaches0 or1, and it requires both the long-block condition and n rho^m->0. If n is too large that latter condition need not hold; no conclusion for such sequences follows. The source does not replace it by merely m->infinity. Positive H may vary without an amplitude restriction at each dimension, but a singular finite H with zero values is outside the definition.
+
+For m on the scale ofsqrtL and n=floor(L/m), geometric decay inrho^m dominates n. Choosing m>=floor(CsqrtL)+1 yields matching through the programme degree for all sufficiently largeL with that partition. This is an asymptotic class illustration, not an asserted partition for impossible smallL. The two-block349 construction fits eventually with n=2, m=floor(L/2) and at most one residual coordinate; finite small-dimension fallback values do not affect the new asymptotic conclusion.
+
+11. Actual weighting normalization and moments
+
+No energy-one assumption may be silently inserted here. Under Pi, E G^-2=E[HG/G^2]/Z=N/Z. From a ell<=G<=a u, this expectation lies between1/(a^2u^2) and1/(a^2ell^2). Meanwhile r_h/pi=Z/(NG^2), exactly including Z. Multiplying the positive bounds on N/Z and G^2, then reciprocating, gives alpha^2<=r_h/pi<=alpha^-2 with both directions correct.
+
+All densities are positive and integrate to one. Raising the pointwise comparison to any s>0 preserves order, and integration yields(C), including0<s<1 without a Jensen or norm argument. For fixeds, alpha->1 implies that the multiplicative moment comparison tends to1. It does not assert that the individual moments have a common finite limit without additional hypotheses.
+
+The critical-r moment bound specifically uses the declared stationary cap. Without that cap, arbitrary H can have large stationary and weighting moments; no absolute bound follows from their ratio. With E pi^s<=2, the actual conclusion is E r_h^s<=2 alpha^-2s, eventually bounded and with limiting upper bound2. It does not force exact cap2 at each finite dimension. This is compatible with349's moments approaching2 from opposite sides. The source's exclusion of divergent critical-moment counterexamples is read within the stated capped, admissible programme class and scaling regime; its no-cap assertion applies to spectral bounds and the pointwise comparison, not to a universal absolute moment bound.
+
+12. Scope attacks and primary comparison
+
+Exact low-degree matching alone does not force Fourier support inside C. Overlapping-code supports lose the product formula(4.1), and arbitrary H of block majorities is outside this parity algebra. Thus the proof does not establish the general gap conjecture, cover every code, overturn344's supremum obstruction or remove350's ceiling for general h. No future larger class is silently included. This is bounded progress on the same question, suitable for grouped investigation if accepted.
+
+A bounded primary comparison located Boyd--Diaconis--Parrilo--Xiao, Symmetry Analysis of Reversible Markov Chains (author-hosted revised2004 manuscript; journal2005), https://stanford.edu/~boyd/papers/pdf/symmetry.pdf. Read the relevant sections1/2.1 and3.2 passages, including Proposition3.2's projection warning and Theorem3.1. They treat reversible spectral decompositions under symmetry and show why a quotient can miss eigenvectors. The present proof supplies its specific disjoint-parity sectors and constants directly; the retrieved passages do not settle originality of that particular uniform statement. No full-paper reading or complete priority search is claimed. This comparison supports careful positioning of classical ingredients, not a new mathematical premise or novelty clearance.
+
+The source's own archived search contains weak and unrelated hits and is correctly not used as evidence of novelty. The initial new find queries guessed theorem labels from another version and returned approximate matches; relevant exact passages were subsequently opened by line. Only the observed labels Proposition3.2/Theorem3.1 are attributed here. Raw responses are retained as tool-return text, not original PDF bytes. No research-PDF grading occurred.
+
+13. Disposition and operational record
+
+No blocking correction requested. Preserve the fixedrho, strict finite positivity, disjoint equal-size blocks, n rho^m->0 condition, and stationary cap when claiming bounded critical moments. No independent review/provider/model-version assertion is justified. No numerical grade, exact-PDF judgment, formal verification or general stationary-gap closure follows.
+
+All proof checking was analytical reasoning. Windows operations were file reads/searches, read-only context Git identity, native hashes/copies and own evidence authoring; web tools retrieved literature. No mathematics executable, CAS/Python, Lean/Lake, runtime, compiler, renderer, numerical experiment, test, source/Git/PR/state edit or merge was used. No disposable clone/worktree was created and no cleanup attempted. Full report/context/assignment/objections, six-file frozen packet, provenance hashes, contextual sources, governance copies and primary responses are retained under evidencia-351/source-audit351A after verified copying from the own C stage.

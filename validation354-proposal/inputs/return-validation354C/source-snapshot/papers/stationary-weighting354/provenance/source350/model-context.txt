@@ -1,0 +1,21 @@
+ROLE AND CONTEXT -- fabrication350A, 2026-11-14
+Fabricator: OpenAI Codex child /root/rare341_fabrication within parent /root.
+Same continuing agent authored earlier sources341,344,345,346,347,349 and
+engineering preparation348; source349 was accepted separately before350.
+The agent is an involved fabricator, NOT an independent reviewer.
+Actual backend/deployment model name and reasoning setting were not exposed
+by a verified model-identity tool in this unit. Do not infer them from user
+requests to switch a model or from an alias in inherited conversation.
+Parent supplied the research objective, gPg identity lead and later F(q)
+bootstrap lead. The latter is explicitly attributed as shared input.
+Parent did not request a desired review verdict or score. No auditor was
+contacted and no separate review was performed in this unit.
+The prospective result is analytical, not formal or computational verification.
+
+Environment: existing Windows C worktree; editing/read-only git/hash/copy only.
+No runtime started or shared. No computational units or elapsed runtime are
+claimed. No local mathematical program, tests, imports, Lean/Lake or build.
+The original question, all constraints and failed earlier routes were visible
+through parent assignments and retained source inputs. Several source PDFs
+were read through returned text excerpts, not entirely; scope is recorded.
+Repository context595a3840773b5d4629b5937990a33c1c5a8ac28a; no new commit.

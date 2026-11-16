@@ -1,0 +1,18 @@
+{
+  "schema": "github-validation354-native-static-binding-v1",
+  "checked_at_utc": "2026-11-16T16:24:19.1272582Z",
+  "python_executed": false,
+  "workflow_executed": false,
+  "independent_audit": false,
+  "authorized": false,
+  "input_files_hash_verified": 142,
+  "source_runner_sha256": "db864effbfeb951ba07fc8c3afc678e1c49f35532ee4e0802d5dfb8673656b9a",
+  "helpers_exact_source_substring": true,
+  "decision_block_exact_source_substring": true,
+  "adapter_contains_exact_helpers": true,
+  "adapter_contains_exact_decision_block": true,
+  "helpers_sha256": "756c4997860cf334c2b4e5835342d4e029ce676d05a28d6439813543f96c3621",
+  "decision_block_sha256": "ff04edb9bcf7d7ae3b831173ffaccaeb85d44a88f3464c19ab244c0703fe9a61",
+  "byte_representation": "Original raw files; LF source blocks; no normalization in substring comparison",
+  "pending_flags_false": true
+}

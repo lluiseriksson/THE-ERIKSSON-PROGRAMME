@@ -1,0 +1,12 @@
+{
+  "observed_at": "2026-11-14T05:29:48.666Z",
+  "disconnect_confirmed_at": "2026-11-14T05:29:22.024Z",
+  "host": "66dadd5e8c70",
+  "notebook": "12lsFM8Ay8pD5UQtQGBEtiSovuFigono3",
+  "runtime": "CPU/high-RAM50.99GB",
+  "closed": true,
+  "no_active_sessions": "Browser tab: 14, Title: \"TEP354B-owned-validation-20261114.ipynb - Colab\", URL: \"https://colab.research.google.com/drive/12lsFM8Ay8pD5UQtQGBEtiSovuFigono3#scrollTo=FnusPeitgkKh\".\n0 AXWebArea TEP354B-owned-validation-20261114.ipynb - Colab, URL: colab.research.google.com/drive/12lsFM8Ay8pD5UQtQGBEtiSovuFigono3#scrollTo=FnusPeitgkKh\n\t1 container Aktiva sessioner\n\t\t2 container\n\t\t\t3 heading Aktiva sessioner, Value: 2, ID: title\n\t\t\t\t4 text Aktiva sessioner\n\t\t\t5 text Inga aktiva sessioner\n\t\t\t6 container actions\n\t\t\t\t7 container\n\t\t\t\t\t8 button (disabled) Avsluta andra sessioner, ID: button\n\t\t\t\t9 container\n\t\t\t\t\t10 button Stäng, ID: button\n\nThe focused UI element is 0 AXWebArea TEP354B-owned-validation-20261114.ipynb - Colab, URL: colab.research.google.com/drive/12lsFM8Ay8pD5UQtQGBEtiSovuFigono3#scrollTo=FnusPeitgkKh",
+  "consumption_units": null,
+  "connection_start": "Exact allocation time not retained after UI tool timeout/reset; first actual materialization time retained in UI archive",
+  "outcome": "Native validator nonzero; all actual returned receipts preserved; not PASS"
+}

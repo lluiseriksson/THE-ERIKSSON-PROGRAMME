@@ -1,0 +1,20 @@
+RETURN VALIDATION354B — NARROW B1 REPAIR, UNEXECUTED
+
+This NEW packet targets unchanged production354D/source8e452190b8f7d3f7382ba2e6c05d0f14fa9c3dc5. Original return-validation354A and its HOLD audit remain intact. Internal executable filenames retain354A deliberately; they are NEW B bytes where documented. The active manifest is still named MANIFEST354A.json but has NEW B schema/status/hashes. Do not confuse its new identity with original A manifest650c8687... retained at history354A/MANIFEST354A.json.
+
+Only runtime changes:
+1. validate354A.py checks every ZipInfo.orig_filename with the existing safe_names BEFORE using sanitized names, then requires orig_filename==filename. Existing regular/encryption/size/count/manifest/source/native/PDF/gate checks remain unchanged.
+2. preflight354A.py adds real raw-local-and-central-header NUL attacks at both ZIP layers. It first creates an ordinary longer ASCII alias through the ZIP writer, locates actual local/central filename fields and replaces ONLY one byte in each with NUL. Equal-length changes preserve all offsets/payloads/CRCs. Assertions are explicit need predicates. Inner attack rebuilds the real inner-length/hash announcement and outer manifest; both attacks provide their actual new transport length/hash. Rejection must specifically occur at Unsafe path. Ordinary full fixture remains a positive control. Actual raw-field offsets/hashes/rejection observations will be emitted only if future tests run.
+3. run_validation354A.py adds BOTH raw-NUL scenario names to its mandatory normal/-O preflight set. All original cases and safeguards are retained.
+
+The gate contract remains EXACTLY three named complete receipts plus authorization.json. This packet does not accept extra unbound gate files or change source/producer bindings. Parent has separately assigned wrapper354E to package three complete evidence bundles; that new wrapper is outside this fabrication and is neither inspected nor approved here.
+
+Active future command, only AFTER a different delta audit and genuine own Colab CPU/runtime/input observations:
+  python3 /content/return-validation354B/run_validation354A.py
+For chunk materialization, also in this NEW B directory:
+  python3 /content/return-validation354B/materialize354A.py
+The scripts use their actual directory as BASE. Configuration filenames remain ACTUAL-INPUT.json and ACTUAL-CHUNKS.json; only pending null/empty templates are included. Use fresh actual-receipts354A under this B directory. No old output is reused. Full prior run/transport/lifecycle instructions remain at history354A/README.txt; its old /content/return-validation354A paths are historical and must be replaced by the B directory above. No producer namespace/path changes are introduced.
+
+No local Python parser/import/test, runtime, compilation, ZIP attack execution or PDF operation has occurred in this repair. Source-file edits and native byte-reconstruction/hash comparisons only. B still requires separate delta audit, then real normal and explicit-O preflight and actual return validation. No A success was copied or invented; original A was held. Historical348/351 references remain history, not evidence of B success. Same prior limits apply: raw record consistency does not independently authenticate executions or decode/render PDFs; parent must inspect actual native/visual evidence and close the owned runtime with observed receipts.
+
+Proof of narrow scope: REPAIR-CHANGE-MAP354B.json gives complete literal transformations and full byte reconstruction for the three code files; PRESERVED-A-MAP354B.json maps ALL112 original A files to exact retained bytes (unchanged current files or history354A copies). Complete adverse A report/context/objections are retained under adverse-audit354A, with original audit manifest and primary-scope note. Original full audit archives remain at their D locations. New report/context preserve the received instruction and limits. No separate reviewer verdict or actual result is supplied here.

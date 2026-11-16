@@ -1,0 +1,27 @@
+PRIMARY READING350 -- exact bounded scope
+1. Mossel, Oleszkiewicz, Sen, On reverse hypercontractivity,
+   arXiv:1108.1210v5 (4 Dec2012), https://arxiv.org/pdf/1108.1210 .
+   Returned PDF text read: introduction and equation(1.2) on pages0-1;
+   Theorem1.10/general-product comparison on pages3-4; returned excerpts
+   concerning negative exponent duality/tensorization and Proposition6.1,
+   Corollary6.3 on pages12-14; bibliography identification of Borell1982.
+   The full35page paper was not read. Its Boolean sharp parameter is used,
+   not its weaker general-product time bound.
+2. Cubitt, Kastoryano, Montanaro, Temme, Quantum reverse hypercontractivity,
+   Journal of Mathematical Physics56,102204(2015), DOI10.1063/1.4933219,
+   https://research-information.bris.ac.uk/ws/files/50006508/reverse_arxiv_resubmit.pdf .
+   Returned PDF text read: scalar ordinary Theorem1 and Boolean reverse
+   Theorem3, pages1-2 of PDF after cover conventions. The negative exponent
+   parameter and normalized Boolean noise convention were checked.
+   The quantum generalization is not used. Full15page PDF not read.
+3. Borell, Positivity improving operators and hypercontractivity,
+   Math. Z.180(1982),225-234, identified through the above papers' references.
+   Original fulltext NOT opened/read; no claim of full original-proof audit.
+
+These are primary research papers, but the scalar theorem in the second is
+a restatement attributed to Borell, not an originality claim for that paper.
+No source says this application resolves the present critical stationary
+moment question. Raw tool returns (including incidental search results)
+are retained verbatim as JSON; incidental results are not invoked.
+Mathematical developments in SOURCE350A are candidate deductions, not
+statements attributed to these papers. Novelty has not been cleared.

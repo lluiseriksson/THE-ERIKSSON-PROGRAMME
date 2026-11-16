@@ -1,0 +1,84 @@
+SOURCE353B -- SEPARATE-ROLE ANALYTICAL REVISION AUDIT,2026-11-14
+VERDICT: ACCEPTABLE within its explicitly stated analytical scope.
+The unchanged code theorem remains sound. Section7 now acknowledges the actual353A limitation, and the new simplex construction in section9 proves the claimed existence of potentials outside351 even after enlarging the disjoint macro algebra. No blocking defect found. This verdict applies to353B only; it does not rewrite353A's adverse scope finding, certify historical novelty, assign a numerical grade, assess a PDF or close the general stationary-gap question.
+
+1. Frozen identities and exact change
+
+Source: D:/Datos/the-eriksson-programme/autonomia/evidencia-353/fabrication353B/source353B.txt,13346 raw bytes, SHA256aa4cef8834d70d6d591b51e75635c4fa358e4f081925ccbf1267297646a409ec. Assigned size/hash match. Its adjacent278-byte MANIFEST.json has observed raw SHA25669ee55f3ead55c60cbb5163186fbda6e5ee93385f3896ab6fc2be61f92978a93 and its single source entry matches. No normalization is applied to these hashes.
+
+Original353A source remains9692 bytes at SHA256151eb18c69fec64fbbf7d9fe30f4f0225c113033e8be3cd20b04797311127803; original fabrication manifest remainsa26574e474e24347e2fe9940fb6bded5265c31dcc6b39384cafb404acb2244f8. The prior353A full report remains35fd448dfac3f1c12eeab05afad86fc03671d1289fdaba66f14402b444ef97d3 and its evidence manifest remains4d5ca6fe825126d46100cdca1e7c65273a1b9586a2be384cfc2f7b6a3502e8c4. Prior report, context, objections, inputs and checks are preserved with this audit; the adverse conclusion is not overwritten.
+
+Read the entire new source and its manifest. The full change was inspected and mechanically isolated as text/file handling, not mathematical execution. Sections1 through6 are exactly identical, including their newline characters: the6867-byte UTF8 slice between headings1 and7 has SHA256dc1ba681175e72506fc8f275d9b1f6293b81f4949c8a2ee74f9efeab41386996 in both. Section8 content is unchanged; that separate check explicitly ignored only terminal whitespace. More decisively, replacing the exact header and section7 paragraph inA, trimming its final whitespace, then appending two LF characters and the exact new section9/revision-context tail reconstructs the complete rawB hash. Thus no hidden equation or other change is masked by the diff display.
+
+The retained no-index Git diff exits1 because differences exist; its LF/CRLF warnings did not mutate either source. Raw hashes and exact reconstruction, rather than a potentially newline-normalized diff, establish byte identity. B has no final newline, which is recorded without silently repairing it.
+
+CurrentHEADa27c28cbfd506b7ad06aeebb8b141df89d6a0cba is context only. No353B candidate commit, PR, body or body-normalization regime was assigned. This source audit does not certify the context commit as containingB.
+
+2. Read coverage and retained context
+
+The frozenB packet has only source and manifest. The source contains the embedded author/revision context; no separate fabrication report or raw earlier literature search is claimed as read. FullA source, its report and governing instructions had been read in this continuing role; its actual context/objection files were reread and historical hashes verified. Source351's arbitrary-positive-function statement was previously read in full and is the precise comparison target. No prior label substitutes for the new section9 proof.
+
+Governing D:/LEEME.md, CLAUDE.md and OPERATIONAL-GOVERNANCE-CHARTER.md were fully read earlier; current raw hashes remain5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f,618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe,fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f. Global user C-work/D-retention rules apply.
+
+This is the same involved analytical role that identified353A's S1, not a newly independent evaluator. Parent/root authored the revision after receiving that report. Shared provider, lineage and filesystem and prior proof exposure are disclosed. No exact backend/model identity is independently attested. No inbound coordination occurred during this audit, and no other chat/fabricator/subagent was contacted.
+
+3. Unchanged theorem, freshly checked for compatibility
+
+The domain remains fixed0<rho<1, nonzero binary codeC with dimensionn and minimum distanceD>=2, delta=sum_(c!=0)rho^|c|<1, and strictly positive finiteH. Basis rank gives equal fibers; the quotient Walsh kernel b0 has row mean1 and lies between1-delta and1+delta. ThereforeG is betweena(1-delta) anda(1+delta), independently ofH amplitude. Minorization byalpha times the probability proportional toH gives quotient oscillation contraction1-alpha without requiring that minorizing law to be stationary.
+
+All Walsh cosets are present. The sector dimensions sum to2^L; multiplying byPi in cross-sector inner products still leaves aC-supported factor, so orthogonality is valid for the stationary measure. Multiplication byh and1/g and the diagonal noise preserve sectors. The signed sector kernel has exactly multiplierrho^|t+c|, with uniform macro averaging supplying2^-n. No stochastic assumption is made for that signed kernel.
+
+For a minimum-weight coset leaderd>=1, ifd<=D/2 the otherM-1 words have weight>=D-d>=D/2. Ifd>D/2 every word has weight>D/2. The resulting sum boundrho+M rho^(D/2) controls every nontrivial sector byB=(rho+eta)/(1-delta), using stochasticK0 for absolute domination. The full positive-definite conjugation ofK supplies real positive spectrum and the separate global upper bound1. ThusB>=1 is harmless and no product-bound exception is hidden.
+
+For any coordinatei,D>=2 putschi_i perpendicular to constants underpi. Subtraction ofrho b0 leaves coefficient(1-rho^2)rho^(|c|-1) only for codewords containingi. The sum is bounded by(1-rho^2)delta/rho; division by1-delta produces the statedepsilon. The actual stationary Rayleigh quotient, not an exact-eigenvector assertion, giveslambda2>=rho-epsilon. These checks validate both inequalities in(1).
+
+The identities E_PiG^-2=N/Z andr_h/pi=Z/(NG^2) retain the normalizationZ. Reciprocal interval bounds givealpha^2<=r_h/pi<=alpha^-2. Positive reciprocal closure puts both densities in theC algebra, proving every labelled joint marginal throughD-1. Moment comparison holds for any fixeds>0 by pointwise powers; an absolute moment bound still requires the explicit stationary cap. delta<=eta forcesalpha->1,B->rho,epsilon->0 undereta->0 at fixedrho. The theorem remains a uniform-inH full-chain statement, not a quotient-only conclusion or a general matching theorem.
+
+4. Correction of the original three-block inference
+
+The revised section7 explicitly writesH(ab,bc) as a positive function of the three disjoint q-block paritiesa,b,c. It retains the true claim that the two-dimensional code has no disjoint basis internally, while acknowledging that the potentials are covered by351 using the larger algebra. It attributes this distinction to the actual353A audit and retains that old source/report. This is precisely the distinction requested by S1.
+
+The old example remains useful as an overlapping algebra and nonempty instance withn=2,D=2q,delta=3rho^(2q),eta=4rho^q. It is no longer used to certify strict potential-class separation. The new separation proof is reviewed below on its own merits. The change does not retrospectively makeA's overstatement correct.
+
+5. Simplex construction: dimension, distance and limit
+
+For integerj>=2 there areL=2^j-1 distinct nonzero vectorsv inF_2^j, one per original coordinate. The map a->c_a=(a dot v) is linear. Ifc_a=0, testing the coordinatesv=e_i givesa_i=0 for everyi, so the map is injective and the code dimension isj. HenceM=2^j; no codeword duplicates inflate the Fourier sum.
+
+For nonzeroa, the linear functionv->a dot v is nonzero. Chooseu witha dot u=1. The pairingv withv+u partitionsF_2^j into pairs with opposite output, so exactly2^(j-1) vectors have output1. The omittedv=0 has output0, so removing it does not alter that count. Every nonzero word therefore has weightD=2^(j-1), which is also the minimum distance by linearity. Atj=2,D=2 andL=3, so the theorem'sD>=2 requirement is already met;delta<1 is only promised eventually for eachfixedrho.
+
+Summing theM-1 equal-weight terms givesdelta=(2^j-1)rho^(2^(j-1)). SubstitutingD/2=2^(j-2) giveseta=2^j rho^(2^(j-2)), with no missing factor2 in the exponent. The logarithm ofeta isj log2-2^(j-2)|logrho|, which tends to minus infinity because exponential growth dominatesj. Thuseta->0 anddelta->0, so all finite theorem hypotheses hold for every sufficiently largej. Constants/error bounds remain independent of the arbitrary positive macroH.
+
+HereD-1=(L-1)/2, which is of linear order inL; dividing bysqrtL tends to infinity. Consequently matching reaches every fixed square-root order eventually. This is a sequence at lengths2^j-1, not a claim that the same construction supplies every integerL or a bound uniform asrho approaches its endpoints. The source makes no such stronger claim.
+
+6. Positive witness and its exact Fourier support
+
+To avoid notation collision, write epsilon_amp for the positive coefficient called epsilon in section9; it is distinct in role from the spectral error epsilon in section1. Choose0<epsilon_amp<1/(M-1). Every Walsh character has magnitude1, so
+ h>=1-epsilon_amp(M-1)>0,
+ and h<=1+epsilon_amp(M-1)<2.
+All finite values are positive and finite. This proves existence without an execution or an unproved scaling procedure.
+
+Distinct codewords index distinct orthogonal Walsh characters. The constant coefficient is exactly1, every nonzero c inC has coefficientepsilon_amp!=0, and all other coefficients vanish. Thus the Fourier support is exactlyC, not merely a subset whose smaller algebra could admit another representation. A positive scalar energy normalization, if later wanted, would preserve this support. The witness is a function of the code parity quotient, so it falls under the theorem for sufficiently largej.
+
+The scalar notation reuse is a nonblocking clarity observation: a later consolidation should distinguish epsilon_amp from epsilon_gap. No estimate in the proof depends on confusing them, and the theorem is uniform over all positiveH. The choice is not asserted to satisfy every additional prescribed stationary floor/cap; absolute critical-moment conclusions retain their explicit cap hypothesis. Section9 establishes a strictly positive potential-class witness, which is exactly what it claims.
+
+7. Excluding EVERY permitted larger disjoint representation
+
+Suppose the witness is any function of parities of pairwise disjoint coordinate blocks of common sizem>=2, with residual coordinates ignored, as permitted in351. Expanding that arbitrary function in its macro Walsh basis shows that its full Fourier support is contained inB, the binary span of full block indicators. Since the witness's actual support is allC, necessarilyC subset B. This argument does not assume a minimal macro dimension, injectivity of that function or equalityC=B. It therefore addresses the precise larger-algebra loophole in353A.
+
+Every word inB is constant on the coordinates of each block: it includes either the whole block or none. For any two distinct original coordinates indexed byv,w, their binary sumv+w is nonzero. Selecting a unit vectora at a nonzero component ofv+w givesa dot(v+w)=1. Hencec_a(v)!=c_a(w). ThusC separates every pair of coordinate positions, which is incompatible withC subset B if any block contains two coordinates. No choice or permutation of the partition evades this pairwise condition.
+
+Also every coordinate is active inC: for nonzerov, choosea=e_i withv_i=1, obtainingc_a(v)=1. All words ofB vanish at ignored residual coordinates, soC subset B permits no residual coordinate. These two properties rule out all nonempty blocks ofsizem>=2 and all leftovers. SinceL>0, a representation of the required kind is impossible. This remains true after enlarging the number of macro blocks; adding disjoint blocks cannot remove the constancy or zero-coordinate constraints.
+
+Relabelling coordinates preserves both intrinsic properties. Changing the basis insideC does not change its set of words. An arbitrary invertible binary transformation of the ORIGINAL coordinates is not a reduction to351: it generally changes Walsh weights and the ordinary product-noise operator. The claim concerns the same cube coordinates andP_rho, allowing their harmless relabelling, as stipulated. Singleton blocks would evade pairwise constancy but violate351'sm>=2 domain and long-block regime, exactly as the source acknowledges.
+
+This proves an existential strict separation: these particular full-support positive potentials are covered by353B but not by any allowed351 representation. It does not assert that every positiveH on a simplex quotient is outside351 (constantH is an immediate counterexample to that stronger statement). The source correctly chooses the special full-support witness before asserting separation.
+
+8. Primary comparison, remaining limits and disposition
+
+A bounded fresh check located M. Wootters's official Stanford CS250/EE387 Winter2025 Problem Set1, section2.4, https://web.stanford.edu/class/archive/cs/cs250/cs250.1254/Homework/HW1/hw1.pdf. It explicitly names the generator construction using every nonzero binary vector as the simplex code. This confirms the modest classical-construction attribution; the sheet poses distance/dimension as an exercise, so it is not used instead of the direct proof above. No decoding algorithm, software result, full literature survey or novelty clearance is imported. Only relevant returned text was used; raw search/open results are retained. The unchanged symmetry comparison in section8 was already checked in353A; its original response is preserved with that history.
+
+S1 is resolved forB by explicit correction plus a separately verified new witness. It remains valid as the historical finding aboutA. No blocking objection remains toB's theorem or section9 within the stated hypotheses. The optional epsilon notation clarification does not supply a missing premise.
+
+The conclusion remains a code-restricted full-chain gap limit and conditional critical-moment bound. No arbitrary stationary-matching closure, universal code-rate existence, exact finite cap2, physical/continuum consequence, numerical grade, PDF assessment, formal verification or historical priority claim follows. This audit supplies no new standalone-paper recommendation.
+
+All mathematics was checked analytically. Native tools handled file reads, hashes/copies, read-only context Git identity and text diff/reconstruction; web tools supplied bounded source context. No mathematical executable, Python/CAS, numerical experiment, Lean/Lake, runtime, compilation, tests, PDF renderer, candidate/source/Git/PR/state mutation or merge occurred. No disposable clone/worktree was created and no cleanup attempted. Full report/context/assignment/objections, exactA/B packets, priorA audit history, delta checks, primary returns and raw manifests are retained under evidencia-353/source-audit353B. The own C stage is a duplicate after verifiedD retention.

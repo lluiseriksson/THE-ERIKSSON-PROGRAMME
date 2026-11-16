@@ -1,0 +1,14 @@
+354C bounded delta objections and dispositions
+D1. Wrong base version: both original B hashes match the exact subjects of the full adverse review. Resolved.
+D2. Different repair text from the auditor's request: all three strings are taken directly from original proposed-scope-corrections.json, hashf619f595817b650e96b4048cb1ab7a0420382b551b6e449d4671ae428ea34205. Resolved.
+D3. Multiple occurrences or partial replacement: each old phrase occurs once before its step; each new phrase once in the final file; old phrases absent. Both files checked. Resolved.
+D4. Hidden edits, newline conversion or plain regeneration: applying only the three literal replacements reconstructs both complete raw byte sequences and exact assigned hashes. Resolved.
+D5. One representation left stale: TeX and plain separately match all three corrections. Resolved.
+D6. R1 still misstates the quantifier: corrected text says separation does not hold for every potential, preserving existential witnesses. Resolved.
+D7. R2 still infers a two-level exact-cap theorem: corrected text assigns only divergence exclusion to two levels and constant-one/exact-cap exclusion to products. Resolved.
+D8. Header remains B: explicitly intentional and authorized to restrict the delta to three phrases. External C files, manifest and hashes identify the revision. Not a defect within this assignment.
+D9. B adverse record erased or revised: all371 B files and391 B audit files match their originals in the C packet; full adverse report/context/objections retained locally as well. Resolved.
+D10. Candidate manifest omits or misidentifies payloads: all771 listed payload lengths/hashes match. Full773-file candidate consists of those payloads plus manifest and separate receipt. Resolved.
+D11. Null console projection mistaken for verification: saved JSON was read back directly with populated exact hashes and complete true byte matches. No null used. Resolved.
+D12. Delta approval inflated into fresh scientific/PDF/grade/novelty approval: explicitly excluded. Verdict only resolves R1/R2 and C source-integration readiness relative to the full B review.
+No outstanding correction within this narrow delta scope.

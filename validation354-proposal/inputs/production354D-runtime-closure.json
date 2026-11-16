@@ -1,0 +1,27 @@
+{
+  "observed_at": "2026-11-14T05:15:46.913Z",
+  "source": "8e452190b8f7d3f7382ba2e6c05d0f14fa9c3dc5",
+  "runtime": "CPU/high-RAM",
+  "hostname": "ae7b768c6d05",
+  "notebook": "1Z1YnS8a_pbgI4BmFAMdS1eW_k9nnSk9J",
+  "first_execution_observed_at": "2026-11-14T05:07:07.564904+00:00",
+  "disconnect_confirmed_at": "2026-11-14T05:14:35.563Z",
+  "session_absence_state": "Browser tab: 13, Title: \"TEP354E-owned-production-20261114.ipynb - Colab\", URL: \"https://colab.research.google.com/drive/1Z1YnS8a_pbgI4BmFAMdS1eW_k9nnSk9J#scrollTo=8vmQKzIbaeWu\".\n0 AXWebArea TEP354E-owned-production-20261114.ipynb - Colab, URL: colab.research.google.com/drive/1Z1YnS8a_pbgI4BmFAMdS1eW_k9nnSk9J#scrollTo=8vmQKzIbaeWu\n\t1 container Aktiva sessioner\n\t\t2 container\n\t\t\t3 heading Aktiva sessioner, Value: 2, ID: title\n\t\t\t\t4 text Aktiva sessioner\n\t\t\t5 text Inga aktiva sessioner\n\t\t\t6 container actions\n\t\t\t\t7 container\n\t\t\t\t\t8 button (disabled) Avsluta andra sessioner, ID: button\n\t\t\t\t9 container\n\t\t\t\t\t10 button Stäng, ID: button\n\nThe focused UI element is 0 AXWebArea TEP354E-owned-production-20261114.ipynb - Colab, URL: colab.research.google.com/drive/1Z1YnS8a_pbgI4BmFAMdS1eW_k9nnSk9J#scrollTo=8vmQKzIbaeWu",
+  "production_runtime_closed": true,
+  "bytes_retained": [
+    {
+      "name": "tep354D-return.zip",
+      "bytes": 7002490,
+      "sha256": "d079cfee6714aee9c239a2d41546e0beea832dab2421627f2f759d06e0d2049e"
+    },
+    {
+      "name": "notebook-receipts354E.zip",
+      "bytes": 56206,
+      "sha256": "a4730d4d18291bad4cdd7ea4c02657579ffab0dcf5942dabf2af7cfb7105ec3f"
+    }
+  ],
+  "consumption_units": null,
+  "connected_time_measurement": "Lower bound from first materialization timestamp to disconnect; allocation began before first execution; exact connection start lost with UI tool reset, not invented",
+  "known_transport_issue": "Full-string DOM transfer truncated at200k; repaired read-only 95checked slices of unchanged output",
+  "autosave_notice": "Colab reported autosave conflict after run; no remote overwrite forced; actual returned bytes and local scripts preserved"
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "prospective-production354-v1",
+  "status": "INSTRUCTIONS_ONLY_NOT_RUN",
+  "repo": "lluiseriksson/THE-ERIKSSON-PROGRAMME",
+  "paper_path": "papers/stationary-weighting354",
+  "source_sha": null,
+  "branch": null,
+  "source_ci_receipt": null,
+  "source_audit_receipt": null,
+  "edition_audit_receipt": null,
+  "engineering_receipt": null,
+  "owned_runtime": null,
+  "official_marker_path": null,
+  "official_marker_sha256": null,
+  "actual_pdf_sha256": null,
+  "actual_pdf_bytes": null,
+  "actual_page_count": null,
+  "first_exact_pdf_assessment": null,
+  "tex_raw_sha256": "b8cbd2a1b1d817a6889f2219134213b0a9bdeaf20e77d006cebfedcbb59e9233",
+  "plain_raw_sha256": "38e5ac3d61e4891be96b54c5a38c9ea0aca9915aa7cab1382688747719bf6758",
+  "source_inventory": "MANIFEST.json",
+  "active_tex_inputs": [
+    "manuscript354.tex"
+  ],
+  "reproduction": "Two fresh clones at one real frozen SHA, two native passes each, equal actual PDF bytes",
+  "execution": "No marker/compiler/test/runtime/Git command run"
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "production-edition-date-only354D-v1",
+  "requested_visible_date": "14 November 2026. Working paper",
+  "math_edits": false,
+  "plain_note": "Existing representation note is moved to its own line; wording unchanged",
+  "first_pdf_assessment": "not performed",
+  "changes": [
+    {
+      "original": "history/354C/manuscript354C.tex",
+      "candidate": "manuscript354.tex",
+      "old": "\\date{Source draft 354B; no PDF assessment or publication implied}",
+      "new": "\\date{14 November 2026. Working paper}",
+      "occurrences": 1,
+      "before_sha256": "bf574fcf266e54bc4de6c2bc661c9a79835c21247c132528171aefadc49f0647",
+      "after_sha256": "b8cbd2a1b1d817a6889f2219134213b0a9bdeaf20e77d006cebfedcbb59e9233",
+      "byte_reconstruction_equal": true
+    },
+    {
+      "original": "history/354C/manuscript354C.txt",
+      "candidate": "manuscript354.txt",
+      "old": "Source draft354B. Plain text; mathematical expressions retain TeX notation.",
+      "new": "14 November 2026. Working paper\nPlain text; mathematical expressions retain TeX notation.",
+      "occurrences": 1,
+      "before_sha256": "daf3c030d0aec970b9084c5fb4fe304d44586b8fbe5bd87730030ed731000559",
+      "after_sha256": "38e5ac3d61e4891be96b54c5a38c9ea0aca9915aa7cab1382688747719bf6758",
+      "byte_reconstruction_equal": true
+    }
+  ]
+}

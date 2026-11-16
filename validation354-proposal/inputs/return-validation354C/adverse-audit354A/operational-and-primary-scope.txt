@@ -1,0 +1,7 @@
+Operational read events and primary scope
+The first native read attempted D:/Datos/the-eriksson-programme/autonomia/evidencia-354/return-validation354A/PREPARATION-MANIFEST.json and returned: Cannot find path ... because it does not exist. The actual root manifest is MANIFEST354A.json and its raw hash equals the assignment. No candidate file was created to disguise the mismatch.
+Long combined source/baseline displays were truncated. Missing primary initialization/local-header logic and old-validator/report sections were read in bounded follow-up outputs; no truncated portion is counted as read without recovery.
+
+Official implementation reference: https://raw.githubusercontent.com/python/cpython/3.12/Lib/zipfile/__init__.py
+Read relevant returned _sanitize_filename/ZipInfo and ZipFile.open spans only, plus surrounding context. This source keeps the original member name separately, normalizes filename by terminating at NUL, and checks the local-header name against the original member name. The candidate checks only the normalized filename. This supports the static B1 inference at both archive layers.
+The retained JSON is serialized web-tool output, not a downloaded original Python file or executed module. No full standard-library audit, future Colab version observation or runtime reproduction is claimed. The constructed B1 witness was not materialized. Retrieval is a primary-source implementation check, not a mathematical literature or novelty search.

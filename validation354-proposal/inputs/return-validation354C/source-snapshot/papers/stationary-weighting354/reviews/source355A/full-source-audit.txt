@@ -1,0 +1,95 @@
+SOURCE355A SHA256 505f85a57158b89186856a49c30c17e04d69b1997eef080b7e2a86c3f25245f6 — analytical source audit, 2026-11-14
+VERDICT: ACCEPTABLE within its stated scope. No blocking mathematical defect found.
+This is a new audit of the complete 355A note, not an inherited acceptance label. It establishes the validity of the claimed consequence of 353B under the explicit code/rate/noise hypotheses. It does not certify integration into manuscript 354, a commit or PR, formal verification, novelty, a numerical grade, a PDF, independence, or closure of the general stationary-gap question.
+
+1. Exact subject, provenance and scope of reading
+
+Frozen subject: D:/Datos/the-eriksson-programme/autonomia/evidencia-355/fabrication355A/source355A.txt, 7917 raw bytes, SHA256 505f85a57158b89186856a49c30c17e04d69b1997eef080b7e2a86c3f25245f6.
+Adjacent 431-byte MANIFEST.json: raw SHA256 6d3ac0ae4b283566e1ce46ca8f2df9163ff9e24fd2599c5d06af23fa79247a2c.
+The packet has three files, not a separately supplied fabrication report: source, manifest and primary-gv-return.json. The latter has 10011 raw bytes and SHA256 9b0c5d3703275197a10084e3fe91d21ff1d1ca12b560231cd159a355bf393c68. Both entries in the fabrication manifest match their raw sizes and hashes. No newline or other normalization is applied to any identity reported here.
+
+Read the complete source, its complete embedded author/context/limit statements, the entire supplied primary-return file and the manifest. Reread the complete mathematical dependency SOURCE353B (13346 bytes, aa4cef8834d70d6d591b51e75635c4fa358e4f081925ccbf1267297646a409ec), its full separate report (4c9b7ce7aedc47f0deb9d270257500c284b8d4bfd483cc802dc16b2dbdfe42de), model context and objections. Reread SOURCE351A in full for the exact comparison class. The entire prior 353B evidence packet is retained, including the earlier 353A adverse report, context, objections and source. Historical S1 is not erased by this verdict.
+
+The original stationary-floor convention was also checked by a targeted repository text search: the earlier stationary reports and source341A explicitly use pi >= b and the cap E pi^s <= 2. No theorem of 341 is needed for 355A's proof. No current manuscript354, current PR, PDF or Git state was assessed or changed. The prior context HEAD is not being presented as a 355A candidate identity.
+
+D:/LEEME.md, repository CLAUDE.md and Operational Governance Charter were reread; the initially truncated combined CLAUDE output was read again separately in full. Their fresh raw hashes remain respectively 5bff01d6d150645188c60c51e3bf16bf230f2fca8de8353c21c0040bd5835f4f, 618e5b2d6ee2ec6d88050870d27679fb64f76951d51323ea6b994b22d99cbcfe, fff6958f6457ec330e2b30a076c46105ba407da898f5a674576b8ba29948248f. No repository AGENTS.md was returned by the filename search. User-supplied global instructions remain controlling.
+
+2. Quantifiers and nonempty parameter domain
+
+Fix rho strictly between 0 and 1 and d strictly between 0 and 1/2. Binary entropy satisfies H_2(d)<1, and log_2(1/rho)>0. Thus both upper bounds for R are strictly positive; some fixed R>0 satisfies the displayed strict inequalities. The theorem is not vacuous. Parameters rho, d, R are fixed before L tends to infinity. The claimed eventual threshold may depend on those parameters, and the proof makes no uniform endpoint assertion as rho approaches 0 or 1 or d approaches 1/2.
+
+n=floor(RL) satisfies n/L -> R and is eventually at least 1. Since R<1-H_2(d)<1, n<=L. The theorem concerns every sufficiently large integer L, with a code selected for each such L. It does not claim a nested sequence of codes, an efficient algorithm, a sampled experiment, or the same finite threshold for all admissible parameters. These distinctions match the text.
+
+3. Direct existence proof and entropy rounding
+
+For a fixed nonzero row a in F_2^n, a dot v is a fair bit when v is a uniform column. Distinct columns of the initially sampled G are independent. Therefore the L bits of aG are independent and fair, even though vectors aG for different a need not be independent. The union bound over a requires no such latter independence.
+
+For every integer i with 0<=i<dL, the function d^i(1-d)^(L-i) decreases as the real index i increases, because its multiplicative ratio is d/(1-d)<1. It is therefore at least d^(dL)(1-d)^((1-d)L)=2^(-L H_2(d)). Multiplying each binomial coefficient by this bound, summing only the selected indices and bounding the resulting binomial probability sum by 1 gives
+ sum_(0<=i<dL) binom(L,i) <= 2^(L H_2(d)).
+The argument also holds with i<=dL and does not assume dL is integral. The bad event uses the strict inequality weight<dL, so its complement gives integer weights at least ceil(dL), including the case dL is itself an integer. There is no lost unit in the stated distance or matching order.
+
+The resulting union probability is at most (2^n-1)2^(-L) times this volume, hence at most 2^(n-L(1-H_2(d))) <= 2^(-L(1-H_2(d)-R)). Its exponent has a strictly positive decay coefficient by hypothesis. A nonzero vector a in the kernel of G would have zero image weight, and 0<dL, so the same good event implies full row rank. No separate rank assumption or unaccounted rank-loss probability remains. Its image C consequently has exactly dimension n and M=2^n distinct codewords; its nonzero minimum distance is at least ceil(dL).
+
+Each individual column is zero with probability 2^(-n); each fixed pair is equal with the same probability by independence of those two columns. Summing over L columns and L(L-1)/2 pairs gives exactly the displayed upper bound. Correlations among the bad events cause no problem. Since floor(RL)>RL-1, this bound is at most 2[L+L(L-1)/2]2^(-RL), which tends to zero for every fixed R>0. Its sum with the first error probability tends to zero and is therefore less than 1 for every sufficiently large integer L. Simultaneous avoidance of both classes of events is proved, rather than separately asserting two properties possibly attained by different matrices.
+
+Nonzero, distinct columns are compatible with L<=2^n-1 eventually because n grows linearly; in fact the simultaneous positive-probability argument already forces this feasibility for its eventual regime. No finite small-L case is silently asserted. Choosing a successful matrix for each large L gives the claimed all-large-length family. This proof is self-contained and uses no executed random search.
+
+4. Quantitative use of the actual full-chain dependency
+
+SOURCE353B applies to strictly positive finite h with Walsh support in a nonzero binary code, minimum distance D>=2, and delta<1. All of these are eventually met here: n>=1, D>=ceil(dL)>=2, and the exponentially small bound below gives delta<1. An arbitrary C-supported positive function is exactly a function on the full-rank parity quotient, so no extra potential representation hypothesis is missing.
+
+Because ln(rho)<0, D>=dL gives rho^(D/2)<=rho^(dL/2). Together with n<=RL this yields
+ eta=2^n rho^(D/2) <= exp((R ln 2-(d/2)ln(1/rho))L)=E_L.
+The constant a_* is strictly positive by the second rate constraint. Also
+ delta<= (M-1)rho^D <= M rho^D <= M rho^(D/2)=eta<=E_L.
+The use of M rather than M-1 only enlarges the upper bound. All exponent directions and the factor 1/2 are correct.
+
+For E_L<=min(1/2,rho/2), one has delta<=E_L<1,
+ 1-alpha=2delta/(1+delta)<=2E_L<=rho,
+ B=(rho+eta)/(1-delta)<=(rho+E_L)/(1-E_L)
+   =rho+(1+rho)E_L/(1-E_L),
+ epsilon_gap<=((1-rho^2)/rho)E_L/(1-E_L).
+The quotient term in max(1-alpha,B) therefore cannot spoil the asserted upper bound near rho. From 353B,
+ lambda_2-rho <= (1+rho)E_L/(1-E_L),
+ rho-lambda_2 <= ((1-rho^2)/rho)E_L/(1-E_L).
+The min with 1 and max with 0 in that theorem only improve these inequalities, even when one bound is trivial. Since gap=1-lambda_2, taking the larger constant proves exactly the claimed absolute gap estimate. No division by a potential-dependent quantity or hidden amplitude constant enters it.
+
+The supplied 353B theorem concerns the full chain, not just the quotient. Its entire Fourier-coset decomposition, signed-kernel bounds, weighted orthogonality, positive symmetric conjugation and stationary Rayleigh lower bound were reread. The 355A specialization does not discard any sector or change the stationary measure. It properly cites the dependency rather than pretending to re-prove or formally certify it. This application is uniform over all finite positive h at every fixed admissible code, including h with arbitrarily small minima or large finite amplitudes varying with L.
+
+5. Exact marginals and structural separation
+
+The C algebra is closed under products and reciprocals of positive functions, and P_rho preserves it. Thus both normalized densities pi=hPh/E(hPh) and r=(h/Ph)/E(h/Ph) belong to that algebra. They have uniform mean 1. All nonconstant supported characters have degree at least D, so every labelled joint marginal on at most D-1 original coordinates is uniform. Fourier inversion, not merely singleton balancing, gives this conclusion. Since D>=ceil(dL), matching degree at least ceil(dL)-1 is valid and eventually exceeds any prescribed constant times sqrt(L).
+
+For each nonzero column v, a linear functional a detects it; hence its coordinate is active in some codeword aG. For two distinct columns v,w, a functional detecting v+w separates the two coordinates in aG. This uses the same full code constructed above and is unchanged by changing its generator basis.
+
+For n>=1, M-1>0. With 0<tau<1, the coefficients of the specified h0 are exactly 1 on the constant character and tau/(M-1)>0 on every nonzero c in C, and zero elsewhere. Distinct codewords give distinct Walsh characters. Triangle inequality gives 1-tau<=h0<=1+tau, so h0 is strictly positive and its Fourier support is exactly C, not merely contained in C.
+
+Any function of disjoint full-block parities has Fourier support inside the span B of those whole-block indicator words, regardless of its macro dimension or whether its chosen representation is minimal. Thus a representation of this h0 would force C subset B. Every word of B is constant within each block, contradicting the proven separation of any two coordinate positions if a block has size at least 2. Every word of B is zero on residual coordinates, contradicting activity if any coordinate is residual. These facts rule out every allowed representation in 351, including larger macro algebras, coordinate permutations and changes of the C basis. Singleton blocks are outside 351's m>=2 domain; arbitrary invertible binary changes of original cube coordinates do not in general preserve the original product-noise operator and are not a 351 representation.
+
+The conclusion is existential for the chosen full-support potentials. It does not assert that every positive h on C lies outside 351; a constant h would refute that stronger assertion, which the note explicitly avoids. No recurrence of 353A's larger-algebra loophole remains.
+
+6. Actual normalization, floor and cap witnesses
+
+The amplitude tau in section 5 can be chosen once for fixed b in (0,1) and finite s>1, independently of L. Let q=min(1/b,2^(1/s)); then q>1. Since A(tau)=((1+tau)/(1-tau))^2 tends to 1 as tau decreases to zero, there exists 0<tau<1 with A<=q. An explicit admissible choice may be obtained by taking tau no larger than (sqrt(q)-1)/(sqrt(q)+1), with a strict decrease if desired. This is an analytical existence check, not a numerical calculation. The excluded endpoints b=1 and unbounded s would require separate care; the source excludes them. The critical s=(1+rho)/(1-rho) is finite and greater than 1 for each fixed permitted rho.
+
+P_rho is a positive Markov averaging operator, so the pointwise interval for h0 also bounds P_rho h0. Both are positive, and their product lies in [(1-tau)^2,(1+tau)^2]. Averaging gives the same bounds for Z=E(h0 P_rho h0), in particular Z>0. Setting h=h0/sqrt(Z) gives exactly E(h P_rho h)=1 and
+ pi=h P_rho h=(h0 P_rho h0)/Z.
+Dividing the extreme product bounds yields 1/A<=pi<=A. Since A<=1/b and b>0, pi>=b. Since uniform mu is a probability measure, E pi^s<=A^s<=2. These are the actual normalized stationary density, energy and moment, not an unnormalized surrogate. Multiplying by the positive scalar 1/sqrt(Z) preserves exact Fourier support, strict positivity and K_h, so strict separation, labelled matching and the spectral estimate hold for the same witnesses.
+
+This establishes nonemptiness of an admissible subfamily for all sufficiently large L, with the requested fixed floor and critical cap. It does not convert the cap into a hypothesis needed for the spectral theorem, nor claim the exact cap E r^s<=2 for arbitrary positive h. The source correctly makes no such general transfer. The general stationary-gap question remains open; these witnesses have gaps tending to 1-rho>0 and therefore cannot supply gap collapse.
+
+7. Primary attribution and evidence limits
+
+The supplied primary-return file was read in full, but its content ends at the statement of Theorem 8 (line 262 of the displayed source), before that theorem's proof. It is a complete retained TOOL RETURN, not the complete five-page PDF. A fresh bounded opening of the same official source returned all 350 lines; the relevant Lemma 5 and Theorem 8 statement/proof were read. This distinction is retained rather than claiming the supplied file contains material it does not.
+
+Venkatesan Guruswami, CMU Introduction to Coding Theory, Notes 2: Gilbert-Varshamov bound, January 2010, https://www.cs.cmu.edu/~venkatg/teaching/codingtheory/notes/notes2.pdf, supplies the entropy-volume bound and random-linear-code argument. Its generator orientation differs from 355A, with no mathematical effect. The note's direct proof handles its own strict threshold and floor convention. The extra nonzero/distinct-column condition is proved directly by its union bound; it is not falsely attributed as a verbatim extra clause of Theorem 8. Coding existence is presented as classical. This bounded comparison is not a priority survey or historical novelty clearance for the Doob application.
+
+All mathematical arguments in this report were analytical. Native filesystem operations only read, copied, hashed and wrote audit evidence; the web tool supplied source text. No mathematical executable, random experiment, CAS, Python, Lean/Lake, runtime, compilation, test or PDF rendering was performed. No Git operation or frozen source/manuscript/PR/state/PDF mutation was performed. No disposable clone or worktree was created, no cleanup attempted and no other chat, subagent or fabricator contacted during the audit. The parent authored this candidate after the 353B terminal; this role did not fabricate it. Prior review exposure, common lineage/provider/filesystem and the earlier S1 finding are disclosed, so no independence claim is made.
+
+8. Disposition
+
+No blocking correction is required for the frozen 355A result. It may be treated as an analytically accepted, code-restricted consequence for later grouped consolidation, with its precise parameter domain, nonconstructive existence, dependency and scope qualifications intact. The explicit existence and admissibility proof adds a legitimate specialization beyond the simplex subsequence; it does not enlarge the hypothesis of 353B to all matching densities. It supplies no standalone-paper recommendation or publication authorization.
+
+Full report, actual context, assignment, objections, raw input manifest, exact current packet, fresh primary response and full prior 353B evidence (including the adverse 353A history) are retained with raw hashes. Preparation occurred in C:/Trabajo/the-eriksson-programme/prefix-rank290-20261113/_drafts/source-audit355A and completed evidence is retained in D:/Datos/the-eriksson-programme/autonomia/evidencia-355/source-audit355A.
+
+Operational retention note: an overlong combined text-write command failed before process creation (Windows error206); separate file writes succeeded. A later native manifest-recording typo produced an incomplete zero-entry record, retained unchanged as input-verification-incomplete-original.json. Its corrected recording pass used terminating errors and explicitly verified all35 historical payloads. Details are preserved in operational-note.txt. Neither event executed mathematics, altered a candidate or changed a mathematical acceptance criterion.

@@ -1,0 +1,61 @@
+{
+  "audit": "validation348E-static-engineering",
+  "assessed_at": "2026-11-14T03:33:23Z",
+  "verdict": "HOLD_FOR_REPAIR",
+  "execution_ready": false,
+  "subject_manifest_sha256": "bac4f1ccef8f7461637fa79fdd3217b811eef7b556fe64f2cacf96ecd1489159",
+  "blocking_findings": [
+    {
+      "id": "B1",
+      "priority": 2,
+      "path": "03-preflight.py",
+      "start_line": 28,
+      "end_line": 29,
+      "title": "Publish observed exit sentinels atomically",
+      "finding": "observed_child writes directly to the final .exit path. This bypasses the charter's required temporary write, close, integer readback validation and atomic publication. A write interruption can expose an empty/incomplete public sentinel. No observed false PASS is claimed.",
+      "required_fix": "Use a fresh temporary exit file, flush/fsync, close, explicitly validate exact decimal exit/newline and equality to observed returncode, publish atomically without overwriting a preexisting destination, and verify published bytes before receipt binding. Update standalone cell/notebook/hashes as a distinct immutable repair and add targeted Linux failure/interruption/duplicate-path checks.",
+      "scope": "Outer notebook wrapper for preflight and both actual calls; inner run_preflight348E.py already uses an atomic exit pattern."
+    }
+  ],
+  "other_findings": [
+    {
+      "id": "L1",
+      "type": "pending_execution",
+      "detail": "Expected6 accepted/62 rejected and68 distinct cases are statically supported, but no348E normal/-O run or actual-return success is observed."
+    },
+    {
+      "id": "L2",
+      "type": "evidence_limit",
+      "detail": "Retained348D failure and environment files are UI captures. Complete original native failure recovery is parent-owned."
+    },
+    {
+      "id": "L3",
+      "type": "coverage_limit",
+      "detail": "Field regression checks exact command classifier; does not exhaust all full-archive branches."
+    },
+    {
+      "id": "L4",
+      "type": "external_observation",
+      "detail": "Runtime CPU/high-RAM/ownership/start/closure requires actual UI evidence; software does not attest it."
+    }
+  ],
+  "positive_findings": [
+    "Minimal native TeX classifier delta correctly distinguishes exact tex-version from four exact compilation names, retaining exact27-command ordering.",
+    "Old historical preflight5/58 and current preflight6/62 are checked separately against their respective pinned code and receipts.",
+    "Caller binds its own reviewed bytes through materializer-pinned runner manifest and explicit validator/preflight/source pins.",
+    "Frozen original production archive, native report and PDF byte identities match; no production rebuild path is invoked.",
+    "All59 frozen manifest entries,16 current runtime entries,8 historical entries,17 embedded files,7 notebook code cells and28 transport chunks matched in independent static inspection.",
+    "No acceptance based on Python assert found in inspected current logic; success requires actual child outcomes and structural identity checks."
+  ],
+  "scope_exclusions": [
+    "Scientific or PDF assessment",
+    "Rating or grade",
+    "Candidate Python import/execution/syntax-check",
+    "Actual regression tests",
+    "Runtime or build",
+    "Production mutation",
+    "Prior PDF review modification",
+    "Publication or intake acceptance"
+  ]
+}
+

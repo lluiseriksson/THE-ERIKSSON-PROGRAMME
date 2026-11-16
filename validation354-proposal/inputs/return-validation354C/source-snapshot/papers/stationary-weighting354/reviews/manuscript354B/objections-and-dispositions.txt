@@ -1,0 +1,46 @@
+MANUSCRIPT354B — complete objection ledger
+R1 REQUIRED SCOPE EDIT. TeX344/plain383: "It is false for every potential..." places negation on each potential, contradicting the established existential witnesses. Use "It does not hold for every potential..." The proof is correct; the intended not-universal qualification must be unambiguous.
+R2 REQUIRED SCOPE EDIT. TeX101/plain99 and TeX434/plain483 blur two-level and product exclusions in the exact-cap context. The two-level factor(4/b^3)^p excludes divergence under a fixed cap, not exact cap2 failure; the product result excludes exact-cap failure. State those separately. No two-level counterexample or impossibility theorem is claimed by this objection.
+O3. Scale-free definitions versus energy1: Z retained in general sections, explicitly set1 in Section3; actual pi and r each have mean1. Resolved.
+O4. K confused with T_pi or unrelated weighting operator: detailed balance and stated similarity verified for actualK. All eigenvalues positive and top1 simple. Resolved.
+O5. Impossible floors or missing dimensions: b<=1 follows when class exists; witnesses use b<1; L>=1 and k_L=min(L,floor(CsqrtL)) handle small sizes. Resolved.
+O6. H entries and Walsh coefficients: all four values reconstruct with c=1/32,d=13/16; energy coefficients correct. Resolved.
+O7. Missing derivative of N in r: N'_0=-v included; opposite density derivatives correct. Resolved.
+O8. Fixed t versus varying effective critical exponent: C_t<0 for every fixed t>1; original s_* fixed beforeL. Resolved.
+O9. Rational threshold or uniqueness wrong: manually verified851/512 and24425/8192; strict monotonicity fromM'(1)>0,M''>0 gives unique t_* in(2,3). Resolved.
+O10. Continuity at limiting cap2 used incorrectly: separate nonzero derivative signs prove eventual strict stationary/weighting inequalities. Resolved.
+O11. Nonlinear parity realization or odd dimensions omitted: quotient algebra/expectation/inversion identities and unused coordinate checked; all finite exceptions filled withh=1. Resolved.
+O12. Exact-cap example advertised as divergence or collapsing gap: moments tend2 and the direct n=2 block theorem gives unweighted limiting gap. Resolved.
+O13. Two-level proof fails for rare hole/spike: complementary mass estimates bq andb(1-q) cover both; constant case valid. Its exact scope is R2.
+O14. Product normalizations fail: one-bit amplitudes andN factorization checked; power-mean comparison valid for p>=1. Resolved.
+O15. Floor Jensen reversed: h>=b/g implies g>=bP(1/g)>=b/(Pg). Correct relation, not an assumed uniforminf g. Resolved.
+O16. Wrong noise powers: squared parametersrho^3,rho,rho^2,rho^4 matchD0,R,D_*,F respectively. Resolved.
+O17. Reverse inequality outside domain: freshMOS confirms strictly negative finite beta<alpha and tensorized Boolean half-time constant. All functions positive. Resolved.
+O18. Ordinary Holder/hypercontractivity atp<=1: D_*>R=2s/(s-1) and increasingq_n preservep>1. Resolved.
+O19. Fixed-point roots or starting interval wrong: quadratic, discriminant, both positive D_* root differences and increasingF checked manually. Resolved.
+O20. Growth of constants hidden: A_n grows; no endpoint bound atq_+,t_+ or criticals claimed. Resolved.
+O21. r norm mistaken for moment orN dropped: K_n=b^-1BA_n^2 and1/t_n=1/s+2/q_n correct. Resolved.
+O22. Source341 merely cited by label: full needed tail/self-potential/PSD/Hellinger argument reproduced and checked. Resolved.
+O23. Walsh projection wrongly assumed Lp contractive: projected input handled inL2 before hypercontractivity. Bothp' cases valid. Resolved.
+O24. PSD normalization wrong direction: A Perron1, X*X tested at1 givesN<=1; Cauchy givesa^2<=N. Resolved.
+O25. TV factor or interpolation wrong: L1<=2e, TV halfL1;alpha solves reciprocal identity; finite n fixed beforeL. Resolved.
+O26. Generic exact weighting marginals smuggled in: absent; exactr matching only proved within code algebras. Resolved.
+O27. Quotient bound substituted for the full chain: all cosets span the original space, are orthogonal under the stationary measure and are invariant under K. Resolved.
+O28. Signed kernel treated as stochastic: only K0 is stochastic; absolute domination supplies the sector infinity-norm bound. Resolved.
+O29. Coset-distance split or rho factor wrong: both minimum-leader cases yield rho+eta, including odd D. Resolved.
+O30. Approximate singleton mode declared an eigenfunction: the proof instead uses its actual stationary Rayleigh quotient; the coefficient (1-rho^2)rho^(|c|-1) is correct. Resolved.
+O31. Missing Z/N in the ratio: E_Pi G^-2=N/Z yields both alpha powers. The absolute moment bound requires the stationary cap. Resolved.
+O32. Invalid beta power comparison: the direct block proof separates beta<1 from beta>=1 and handles residual-only sectors. Resolved.
+O33. Coarse code criterion falsely subsumes all351 regimes: the manuscript explicitly distinguishes the exponential-cardinality criterion from n rho^m->0. Resolved.
+O34. Simplex dimension, distance, eta or length claim wrong: injectivity, half-space count, exponent and length subsequence were checked. Resolved.
+O35. Larger disjoint algebra escapes separation: exact full support forces C subset B; pair separation and activity exclude all allowed blocks and residuals. The proof is sound; R1 concerns the subsequent wording.
+O36. Positive-rate rounding, rank and columns incompatible: the strict bad-weight event and combined union bound produce one full-rank matrix for every sufficiently large integer L. Resolved.
+O37. Exponential gap constant wrong: eta,delta<=E; the quotient term is at most rho when E<=rho/2; both sides give C_rho E/(1-E). Resolved.
+O38. Different witnesses satisfy different constraints: one small tau independent of L and positive scalar energy normalization give support, kernel, actual stationary floor and cap for the same h. Resolved.
+O39. Classical tools presented as new or priority cleared: the manuscript attributes them explicitly; the primary check is bounded and gives no novelty clearance. The Boyd PDF timeout is retained.
+O40. Original353A failure or operational errors erased: the whole371-file packet is retained, including the nested adverse353A history and incomplete355 bookkeeping record. Resolved.
+O41. TeX/plain mismatch or hidden354A delta: both versions were read fully; normalized-body identity and twelve literal replacements confirm documentary consistency. They do not certify mathematics.
+O42. Source verdict inherited as manuscript/PDF approval: not done. R1/R2 are new manuscript findings. No PDF was produced or graded, and no Git/PR identity was invented.
+O43. General question closed by these results: the critical joint moment and the general stationary full-chain gap remain open. No physical or continuum consequence is asserted.
+O44. Effective noise domain: the calculations are used only at sufficiently small positive theta=rho_*^m; no result for noise above1 is needed. Optional exposition could write 0<=theta<1 explicitly.
+All objections pursued are recorded. Only R1 andR2 require correction for source-integration readiness; no theorem/proof failure, numericalgrade ornoveltyverdict is assigned.

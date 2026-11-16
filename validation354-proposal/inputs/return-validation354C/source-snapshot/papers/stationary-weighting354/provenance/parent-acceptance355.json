@@ -1,0 +1,10 @@
+{
+  "verdict": "Analytical acceptance within positive-rate code family scope; no general stationary gap closure, formal verification, numerical assessment or novelty certification",
+  "audit_sha256": "69d7d8f217ab44ae153d7acf97ac0548d41bb721595542a02ab6c69fa605654d",
+  "manifest_sha256": "4924993a310aa191225f96389e2eed7fbd236143c290d6250eca1ebd052150cb",
+  "observed_at": "2026-11-14T03:32:05.9383693Z",
+  "result": "All sufficiently large lengths admit positive-rate codes with distinct nonzero columns and linear distance; uniform full-chain gap convergence to1-rho for every positive code potential; explicit witnesses satisfy fixed stationary floor/cap and lie outside any351 disjoint-block parity algebra",
+  "source_sha256": "505f85a57158b89186856a49c30c17e04d69b1997eef080b7e2a86c3f25245f6",
+  "manifest_payloads_verified": 56,
+  "full_report_context_and_28_objections_read": true
+}

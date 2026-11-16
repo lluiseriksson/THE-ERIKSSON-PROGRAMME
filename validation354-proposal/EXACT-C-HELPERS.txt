@@ -1,0 +1,37 @@
+def put(path,value):
+    with path.open('xb') as f:f.write((json.dumps(value,indent=2)+'\n').encode())
+def now():return datetime.now(timezone.utc).isoformat()
+def verify_payloads():
+    rows=json.loads((BASE/'MANIFEST354A.json').read_bytes())['payloads'];v.safe_names([x['path'] for x in rows])
+    for row in rows:
+        path=BASE/row['path'];v.need(path.is_file() and not path.is_symlink() and path.resolve().is_relative_to(BASE),'Frozen validation payload')
+        raw=path.read_bytes();v.need(len(raw)==row['bytes'] and v.digest(raw)==row['sha256'],'Frozen validation hash')
+def observed(name,argv,timeout):
+    prefix=OUT/name;obs=dict(argv=argv,hostname=platform.node(),started_at=now(),actual_exit=None,timed_out=False,error=None)
+    child=None;start=time.monotonic()
+    try:
+        with prefix.with_suffix('.stdout').open('xb') as out,prefix.with_suffix('.stderr').open('xb') as err:
+            child=subprocess.Popen(argv,cwd=BASE,stdout=out,stderr=err,start_new_session=True)
+            try:obs['actual_exit']=child.wait(timeout=timeout)
+            except subprocess.TimeoutExpired:
+                obs['timed_out']=True
+                try:os.killpg(child.pid,signal.SIGKILL)
+                except ProcessLookupError:pass
+                obs['actual_exit']=child.wait()
+            out.flush();os.fsync(out.fileno());err.flush();os.fsync(err.fileno())
+    except BaseException:
+        obs['error']=traceback.format_exc()
+        if child is not None and child.poll() is None:
+            try:os.killpg(child.pid,signal.SIGKILL)
+            except ProcessLookupError:pass
+            obs['actual_exit']=child.wait()
+        raise
+    finally:
+        obs.update(finished_at=now(),wall_seconds=time.monotonic()-start)
+        if obs['actual_exit'] is not None:a.publish_exit(prefix,obs['actual_exit'])
+        obs['files']={ext:dict(bytes=prefix.with_suffix(ext).stat().st_size,sha256=v.digest(prefix.with_suffix(ext).read_bytes()))
+                      for ext in ('.stdout','.stderr','.exit') if prefix.with_suffix(ext).is_file()}
+        put(prefix.with_suffix('.observation.json'),obs)
+    a.read_exit(prefix.with_suffix('.exit'),True)
+    v.need(obs['actual_exit']==0 and not obs['timed_out'] and obs['error'] is None,'Actual native child failed')
+    return json.loads(prefix.with_suffix('.stdout').read_bytes())

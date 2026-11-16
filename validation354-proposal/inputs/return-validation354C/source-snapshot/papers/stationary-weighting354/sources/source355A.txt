@@ -1,0 +1,66 @@
+SOURCE355A — POSITIVE-RATE CODE FAMILIES FOR ACTUAL BOOLEAN DOOB GAPS
+Draft analytical consequence for grouped consolidation, not a standalone paper.
+Authoring role: parent OpenAI/Codex /root, 2026-11-14. No mathematical execution, formal verification, separate audit, PDF review or historical novelty certification has occurred for this note.
+
+1. Statement and dependency
+Fix 0<rho<1. For every d in (0,1/2) and every
+ 0<R<min{1-H_2(d), (d/2) log_2(1/rho)},
+there are, for every sufficiently large integer L, binary linear codes C_L in F_2^L with dimension n_L=floor(R L), minimum distance D_L>=dL, and generator matrices whose L columns are nonzero and pairwise distinct. Write M_L=2^{n_L} and
+ delta_L=sum_{0!=c in C_L} rho^{|c|}, eta_L=M_L rho^{D_L/2}.
+For every strictly positive function h_L whose Walsh support is contained in C_L, the ACTUAL full Boolean Doob kernel
+ K_h(x,y)=P_rho(x,y) h(y)/(P_rho h)(x)
+has spectral gap tending to 1-rho, uniformly over the choice of this positive function. There are no amplitude, floor, moment or normalization assumptions for this spectral conclusion. Both its normalized stationary density pi=h P_rho h/E[h P_rho h] and its normalized weighting density r=(h/P_rho h)/E[h/P_rho h] have all labelled marginals through D_L-1 exactly uniform.
+
+The load-bearing spectral statement is SOURCE353B, raw SHA256 aa4cef8834d70d6d591b51e75635c4fa358e4f081925ccbf1267297646a409ec, separately analytically audited in source-audit353B/full-source-audit.txt (4c9b7ce7aedc47f0deb9d270257500c284b8d4bfd483cc802dc16b2dbdfe42de). This note does not re-prove or formally certify that dependency. It proves the new existence/parameter linkage below and derives a quantitative specialization of those already explicit bounds.
+
+2. Direct existence proof, including rounding
+Take an n by L binary matrix G with mutually independent fair entries, where n=floor(R L). Its columns are independent uniform vectors in F_2^n. For each fixed nonzero a in F_2^n, the coordinates of aG are independent fair bits. Therefore
+ Pr[exists nonzero a: |aG|<dL]
+ <= (2^n-1) 2^{-L} sum_{0<=i<dL} binom(L,i)
+ <= 2^{n-L(1-H_2(d))}.
+Here H_2(d)=-d log_2 d-(1-d)log_2(1-d). For completeness, if i<=dL and d<1/2, then
+ d^i(1-d)^{L-i} >= d^{dL}(1-d)^{(1-d)L}=2^{-LH_2(d)}.
+Multiply each binomial coefficient by this lower bound and compare with the full binomial probability sum1. This proves the displayed entropy bound without an integrality assumption on dL. The event uses strict |aG|<dL; its complement gives every nonzero image weight at least dL (thus at least ceil(dL)).
+If any nonzero a were in the kernel, its image weight0 would violate this complement. Hence rankG=n and the image code has the claimed dimension and distance.
+
+A union bound on columns gives
+ Pr[any zero column or repeated pair] <= [L+L(L-1)/2] 2^{-n}.
+The sum of the two bad-event bounds tends to0: the first is <=2^{-L(1-H_2(d)-R)}, the second is polynomial times 2^{-floor(RL)}. For every sufficiently large L this sum is strictly less than1. Some matrix avoids both bad events; choose one for each such L. This is a probabilistic existence proof, not an efficient construction or a measured random experiment. The all-length conclusion is stronger than the special simplex subsequence, but the coding ingredient is classical.
+
+3. Quantitative spectral specialization
+Set a_*=(d/2) ln(1/rho)-R ln2>0 and E_L=exp(-a_* L). Since n<=RL and D>=dL,
+ eta_L<=E_L and delta_L<=M_L rho^{D_L}<=eta_L<=E_L.
+For all sufficiently large L, D>=2 and E_L<1, so SOURCE353B applies. Let
+ alpha=(1-delta)/(1+delta), B=(rho+eta)/(1-delta),
+ epsilon_gap=(1-rho^2)delta/[rho(1-delta)].
+That theorem states
+ max(0,rho-epsilon_gap)<=lambda_2(K_h)<=min(1,max(1-alpha,B)).
+Choose L large enough that E_L<=min(1/2,rho/2). Then
+ 1-alpha=2delta/(1+delta)<=2E_L<=rho,
+ B<=rho+(1+rho)E_L/(1-E_L),
+ epsilon_gap<=[(1-rho^2)/rho] E_L/(1-E_L).
+Consequently
+ |gap(K_h)-(1-rho)|
+ <= max{1+rho,(1-rho^2)/rho} E_L/(1-E_L).
+This estimate is uniform in all strictly positive finite macro potentials for the chosen codes. No statement uniform as rho tends to0 or1 is made. The laws have matching degree at least ceil(dL)-1, hence eventually every fixed square-root matching order. Uniformity in h does NOT remove the explicit code-algebra hypothesis.
+
+4. Full-support witnesses outside every permitted disjoint-block algebra
+The nonzero, distinct columns imply (i) every original coordinate is active in some codeword, and (ii) every pair of coordinates is separated by some codeword. Indeed for distinct columns v,w, v+w!=0 and some linear functional a separates them; nonzero v is similarly detected.
+
+For any 0<tau<1 choose
+ h0=1+[tau/(M_L-1)] sum_{0!=c in C_L} chi_c.
+Its Walsh support is EXACTLY C_L, and 1-tau<=h0<=1+tau, with strictly positive lower bound. Suppose h0 were a function of parities on pairwise disjoint coordinate blocks each of common size m>=2, ignoring residual coordinates, with any number of blocks. The Walsh support of that representation is contained in the span B of the whole-block indicators. Exact full support forces C_L subset B. Every B word is constant on each block, contradicting pair separation; it vanishes on residual coordinates, contradicting activity. Thus no such representation exists. This is the same structural criterion used in353B's simplex witness, now available at positive asymptotic rate for every sufficiently large length. It is not a claim that every H on C_L is outside that class.
+
+5. Nonempty admissible subfamilies with the original floor and moment cap
+Fix any 0<b<1 and any finite s>1, including s=(1+rho)/(1-rho). Choose tau>0 so small that
+ A=((1+tau)/(1-tau))^2 <= min{1/b,2^{1/s}}.
+Such tau exists because the right side is strictly greater than1. With h0 as above, let Z=E[h0 P_rho h0] and h=h0/sqrtZ. Positivity and the Markov property give
+ (1-tau)^2 <= h0 P_rho h0 <= (1+tau)^2,
+ (1-tau)^2 <= Z <= (1+tau)^2.
+Thus pi=hP_rho h=(h0P_rho h0)/Z obeys 1/A<=pi<=A pointwise, so pi>=b and E pi^s<=A^s<=2. Energy equals1. Scalar normalization preserves exact code support and the kernel. The code-algebra argument gives exact labelled marginal matching; the spectral estimate above still holds. This supplies witnesses in the original admissible class, with much stronger matching, and excludes them as gap-collapse candidates. It does not prove that all admissible stationary kernels belong to this code class.
+
+6. Positioning, falsifier and limits
+Classical ingredient: random linear code existence and entropy-volume estimates are standard Gilbert–Varshamov theory, not a new coding result. Primary instructional source read: V. Guruswami, CMU Introduction to Coding Theory, Notes2 (January2010), Lemma5 and Theorem8, https://www.cs.cmu.edu/~venkatg/teaching/codingtheory/notes/notes2.pdf. The code proof here is direct; its novelty is not claimed. A bounded source check does not clear historical novelty of the Doob application.
+
+The contribution proposed for consolidation is a positive-rate, all-large-length realization of the already proved full-chain spectral rigidity mechanism, including strict class separation and explicit admissible witnesses. It removes the low-rank/simplex-subsequence restriction from those examples, not the code hypothesis or the general stationary-gap obstruction. No critical-moment transfer cap2 theorem for arbitrary h, physical Yang–Mills result, continuum limit, efficient code search or formal computation is claimed. The original general question remains the sole active question.
+Falsifier: a wrong entropy/rounding/rank/column argument, or a code/potential satisfying the hypotheses that violates the cited full-sector bounds. This note awaits a different role's complete analytical audit before integration; do not treat authoring as acceptance. Preserve failed353A example history alongside353B. Group with349/350/351/353; no separate small-corollary paper.

@@ -1,0 +1,13 @@
+{
+  "authorized": false,
+  "scope": "github-linux-file-validation354-only",
+  "compatibility_content_directory_authorized": false,
+  "existing_quota_confirmed": false,
+  "additional_spend_authorized": false,
+  "approved_workflow_commit": null,
+  "owner_instruction_reference": null,
+  "owner_instruction_sha256": null,
+  "independent_review_accepted": false,
+  "independent_review_sha256": null,
+  "proposal_manifest_sha256": null
+}

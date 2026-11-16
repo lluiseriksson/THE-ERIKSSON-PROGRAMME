@@ -1,0 +1,7 @@
+Documentary preparation events,354B
+
+An initial attempt to record the twelve text replacements did not reconstruct the manuscript and stopped before writing the replacement record or plain companion. The cause was PowerShell array/concatenation grouping in the record for the inserted section and bibliography: their compound replacement values were not parenthesized as single array entries. This affected the attempted provenance record, not the already authored TeX source or any mathematical predicate. No failed reconstruction was accepted as evidence.
+
+The recording pass was corrected to explicit two-element pairs with parenthesized compound values, required each old fragment to occur exactly once, and compared the complete resulting text with the actual354B TeX. It matched. The complete JSON contains all twelve replacements and exact old/new hashes. A subsequent console-only Select-Object projection on the ordered dictionary printed null fields; the saved JSON was read back directly as an object and its actual values were reported. No null identity was accepted or substituted in the source map.
+
+These are native text-handling operations, not mathematical execution, a software test suite, source audit or PDF build. The full actual source and historical inputs remained unchanged by these recording failures.

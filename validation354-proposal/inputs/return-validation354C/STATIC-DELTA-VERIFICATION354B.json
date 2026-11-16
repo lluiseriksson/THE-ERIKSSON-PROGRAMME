@@ -1,0 +1,19 @@
+{
+  "original_A_manifest_sha256": "650c86874888e9ed5e2438e92e1e4d68fa188a286134c11477147f35cae5e9e9",
+  "original_A_payloads_unchanged": 111,
+  "original_A_files_preserved_by_map": 112,
+  "unchanged_executable_files": [
+    "actual354A.py",
+    "atomic354A.py",
+    "materialize354A.py"
+  ],
+  "changed_executables": [
+    "validate354A.py",
+    "preflight354A.py",
+    "run_validation354A.py"
+  ],
+  "complete_literal_reconstruction": true,
+  "gate_contract_bytes_unchanged": true,
+  "python_execution": false,
+  "raw_attack_execution": false
+}

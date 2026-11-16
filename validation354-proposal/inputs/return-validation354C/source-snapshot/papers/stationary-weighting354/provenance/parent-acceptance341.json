@@ -1,0 +1,12 @@
+{
+  "utc": "2026-11-14T00:08:37.9732264Z",
+  "head": "c3da0ec541ee17ae3432cec32dcdad079ff3cd2c",
+  "source_sha256": "07872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f",
+  "full_report_read": true,
+  "full_context_read": true,
+  "payloads_verified": 46,
+  "full_report_sha256": "046105aa61957a67f66005af4516e4c43492fe465534e8b2875e92ddff10fa8e",
+  "verdict": "ACCEPT bounded analytical potential rigidity/Perron normalization/Hellinger TV/compression reduction",
+  "limitations": "Original uniformgap open; no criticalr-moment/tail/fullsecond-eigenvalue bound; no formal verification or novelty clearance",
+  "next": "Required CI then unchanged merge; grouped consolidation aftermissinggaproute clarified"
+}

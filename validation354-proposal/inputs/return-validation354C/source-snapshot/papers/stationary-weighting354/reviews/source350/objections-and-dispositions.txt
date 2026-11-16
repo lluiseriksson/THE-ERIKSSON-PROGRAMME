@@ -1,0 +1,25 @@
+SOURCE350A rawSHA2560f956d2bccaf04b48a8866a147c8248a5d275895cf450f0d3ba41b204866bc9a
+ADVERSE CHECKS350A -- no blocking mathematical defect found
+
+O1. Hidden infeasible domain or normalization reversal. Discharged: h=1 witnesses nonemptiness; Epi=Er=1, 0<b<=1, a^2>=b and N>=a^2 have the correct probability-measure derivations. b=1 is harmless and forces the constant case.
+O2. Assume inverse moments before proving them. Discharged: finite-cube strict positivity defines all finite moments, then explicit dimension-independent bounds are derived; no uniform estimate is assumed circularly.
+O3. Reverse Jensen or the reciprocal floor identity. Discharged: g>=bP(1/g)>=b/(Pg), so1/g<=Pg/b, with all quantities positive.
+O4. Confuse rho with its square or semigroup time. Discharged: squared noises are rho^3 forD0, rho forR, rho^2 for the reverseD step, andrho^4 forF(q). Boolean time convention has the one-half logarithmic factor.
+O5. Invoke reverse hypercontractivity outside its negative-exponent domain. Discharged by fresh primary-source check: beta=-D<alpha=-R<0 is permitted for positiveh. The inequality is a lower bound on a negative generalized mean, becoming an upper bound on the inverse positive norm after reciprocation.
+O6. Hide the stationary cap or matching in part(a). Discharged: only floor and energy enterD0,D. The cap enters the bootstrap; matching enters only the341-based convergence estimate.
+O7. Apply ordinary hypercontractivity atp<=1. Discharged: D>R=2s/(s-1), everyq_n increases, andp=sq/(s+q)>1 persists. F(q)>p.
+O8. Miscompute bootstrap coefficients or root discriminant. Discharged by full manual expansion: F(q)-q has the displayed quadratic numerator and discriminant4rho^2s(1-rho^4); both roots match the formulas.
+O9. Start below the lower fixed point, overshoot the upper root or lose a parameter subrange. Discharged: bothD-root differences have explicit positive lower bounds for every0<rho<1; monotonicF keepsq_n betweenD andq_plus and increasing.
+O10. Claim attraction without justification. Discharged: the orbit proof suffices for the stated startingD; additionally F'(q_plus)=1-(q_plus-q_minus)/(s+q_plus) lies in(0,1).
+O11. Take an invalid endpoint limit through growing constants. Rejected as an extension: A_n=b^(-1)(B/b)^n diverges asn grows; only fixed finite iterations andq<q_plus are bounded by this argument. No norm bound atq_plus is claimed.
+O12. ForgetN or confuse a norm with its moment. Discharged: r=pi/(Ng^2), N>=b, K_n=Bb^(-3)(B/b)^(2n); the moment bound isK_n^t_n. The n=0 display has the correct power of2 andb.
+O13. Make the improvedr exponent at most1 or reachs. Discharged: t0>1 iffD>R, while finiteq_plus gives t_plus<s. The improving interval is nonempty for every fixedrho, without endpoint-uniformity claims.
+O14. Import341 for the wrong critical domain or transfer exact marginals tor. Discharged: s>1+rho, stationarypi matching feeds the341 proof, eta^2=max(rho,(1-rho)/2), and no exactr matching is asserted. ItsPSD upperN bound and Hellinger/L1 chain were checked directly.
+O15. Get the interpolation exponent or order of limits wrong. Discharged: alpha=(t_n-t)/(t(t_n-1)) solves the exact reciprocal relation and is in(0,1). A finite n is fixed beforeL, so growing iteration constants do not enter the convergence limit.
+O16. Zero exponent in the broad external theorem display. Nonblocking editorial note: source3 does not spell out||f||0=exp(Elogf), although the cited references do. All applications have strict negativealpha,beta, and the theorem350 proof never uses0. Optional clarification only.
+O17. Turn this finite-map ceiling into an impossibility theorem for every critical bound or other iteration. Rejected as an extension: the source confines its limitation to this scheme and the displayed separate Holder step; the critical bound remainsOPEN.
+O18. Conflict with344/349 or repeat an invalid density gadget. Discharged: subcritical convergence is compatible with failure of supremum convergence and exactcap2 transfer. No new divergent/gap-collapse family is claimed or assumed.
+O19. Conceal the parent's bootstrap contribution or claim independence/novelty. Discharged: the assignment/context/source explicitly attribute the leads; this same-provider collaboration and review are not independent-provider or originality certifications.
+O20. Certify a contextHEAD as the candidate350 commit. Rejected: HEAD595a3840773b5d4629b5937990a33c1c5a8ac28a is context only. The actual verdict binds rawsource350 and its manifest; no candidatePR body exists in this assignment.
+
+Full derivations, literature scope and operational limits are in full-source-audit.txt. This is not a numerical grade, formal proof, PDF or publication assessment.

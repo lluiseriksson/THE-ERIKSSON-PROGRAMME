@@ -1,0 +1,21 @@
+{
+  "operational_changes": [
+    {
+      "after_sha256": "c5b3384482b1ab375dec046ba367289317388bc22196fd23ae61e5dcf5fe387c",
+      "before_sha256": "f6b1fe8c91fcc3e06d908853ab268dd11b477c9ad403c345040501dfd8f515e3",
+      "before_copy": "history354B/preflight354A.py",
+      "after_bytes": 23545,
+      "path": "preflight354A.py"
+    },
+    {
+      "after_sha256": "db864effbfeb951ba07fc8c3afc678e1c49f35532ee4e0802d5dfb8673656b9a",
+      "before_sha256": "42f5cb548d8beb03a7e0fbecc6c263c8cd9c4b0c12bf4bc7ea114089460727df",
+      "before_copy": "history354B/run_validation354A.py",
+      "after_bytes": 7488,
+      "path": "run_validation354A.py"
+    }
+  ],
+  "unchanged_validator_sha256": "7e578e74476028603846e6d4ceb9123229ea6fae32fc040cc0bb5bb70f1fd9c3",
+  "executed": false,
+  "representation": "Raw UTF-8 bytes preserving original CRLF in edited operational files"
+}

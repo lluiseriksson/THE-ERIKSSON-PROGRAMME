@@ -1,0 +1,90 @@
+{
+  "schema": "exact-scope-revision354C-v1",
+  "corrections_path": "inputs/audit354B/proposed-scope-corrections.json",
+  "corrections_sha256": "f619f595817b650e96b4048cb1ab7a0420382b551b6e449d4671ae428ea34205",
+  "full_adverse_audit_sha256": "d1e23e44efe839886be49efff5730b056678cab5220834bf98b787508829ce1f",
+  "permitted_changes": [
+    "R1",
+    "R2a",
+    "R2b"
+  ],
+  "internal_draft_B_labels": "intentionally unchanged to preserve exact three-substitution delta",
+  "versions": [
+    {
+      "original_path": "inputs/354B/manuscript354B.tex",
+      "candidate_path": "manuscript354C.tex",
+      "before_sha256": "cd925ba351e84b9c6c461b08d0237cef6c0e8b93639f4026ee1f0b37642220c4",
+      "after_sha256": "bf574fcf266e54bc4de6c2bc661c9a79835c21247c132528171aefadc49f0647",
+      "before_bytes": 41262,
+      "after_bytes": 41461,
+      "steps": [
+        {
+          "id": "R1",
+          "old": "It is false for every potential in the code algebra, since constants also belong to disjoint-block algebras.",
+          "new": "It does not hold for every potential in the code algebra, since constants also belong to disjoint-block algebras.",
+          "occurrences": 1,
+          "byte_offset_before_step": 27001,
+          "old_utf8_bytes": 108,
+          "new_utf8_bytes": 113
+        },
+        {
+          "id": "R2a",
+          "old": "The three-level choice of $H$ matters. Two useful exclusions show why simpler tests do not establish the same obstruction.",
+          "new": "The following estimates distinguish two simpler classes: two-level potentials cannot produce divergent critical weighting moments under a fixed stationary floor and cap, while product potentials obey the stronger constant-one moment comparison.",
+          "occurrences": 1,
+          "byte_offset_before_step": 8017,
+          "old_utf8_bytes": 122,
+          "new_utf8_bytes": 244
+        },
+        {
+          "id": "R2b",
+          "old": "Two-level and product tests are excluded by Proposition \\ref{simplefamilies}.",
+          "new": "Proposition \\ref{simplefamilies} excludes divergent critical weighting moments for two-level potentials and exact-cap failure for product potentials.",
+          "occurrences": 1,
+          "byte_offset_before_step": 36508,
+          "old_utf8_bytes": 77,
+          "new_utf8_bytes": 149
+        }
+      ],
+      "byte_reconstruction_equal": true
+    },
+    {
+      "original_path": "inputs/354B/manuscript354B.txt",
+      "candidate_path": "manuscript354C.txt",
+      "before_sha256": "4db61dcd5e54be7e6af9e8dc79bac1d5150da8ea547cad9a4e355b4dea5346f7",
+      "after_sha256": "daf3c030d0aec970b9084c5fb4fe304d44586b8fbe5bd87730030ed731000559",
+      "before_bytes": 40310,
+      "after_bytes": 40509,
+      "steps": [
+        {
+          "id": "R1",
+          "old": "It is false for every potential in the code algebra, since constants also belong to disjoint-block algebras.",
+          "new": "It does not hold for every potential in the code algebra, since constants also belong to disjoint-block algebras.",
+          "occurrences": 1,
+          "byte_offset_before_step": 26182,
+          "old_utf8_bytes": 108,
+          "new_utf8_bytes": 113
+        },
+        {
+          "id": "R2a",
+          "old": "The three-level choice of $H$ matters. Two useful exclusions show why simpler tests do not establish the same obstruction.",
+          "new": "The following estimates distinguish two simpler classes: two-level potentials cannot produce divergent critical weighting moments under a fixed stationary floor and cap, while product potentials obey the stronger constant-one moment comparison.",
+          "occurrences": 1,
+          "byte_offset_before_step": 7500,
+          "old_utf8_bytes": 122,
+          "new_utf8_bytes": 244
+        },
+        {
+          "id": "R2b",
+          "old": "Two-level and product tests are excluded by Proposition \\ref{simplefamilies}.",
+          "new": "Proposition \\ref{simplefamilies} excludes divergent critical weighting moments for two-level potentials and exact-cap failure for product potentials.",
+          "occurrences": 1,
+          "byte_offset_before_step": 35644,
+          "old_utf8_bytes": 77,
+          "new_utf8_bytes": 149
+        }
+      ],
+      "byte_reconstruction_equal": true
+    }
+  ]
+}

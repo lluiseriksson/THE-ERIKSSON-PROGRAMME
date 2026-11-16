@@ -1,0 +1,24 @@
+try:
+    for name,args in (('normal',[]),('optimized',['-O'])):
+        result=observed('preflight-'+name,[sys.executable,*args,str(BASE/'preflight354A.py')],300)
+        v.need(result['status']=='SYNTHETIC_GUARDS_PASSED' and result['fixture_not_actual_pdf'] is True
+               and result['count']==len(result['scenarios']) and len(set(result['scenarios']))==result['count'],'Real guard result')
+        mandatory={'positive-full-synthetic-record-including-tex-version-and-four-compiles',
+          'tex-version-is-not-compile','compile-is-not-version','compile-shell-escape',
+          'native-sentinel-nonzero','native-sentinel-empty','native-sentinel-malformed','native-sentinel-absent',
+          'native-bool-field','native-timeout','source-raw-mutation','native-prior-lineage',
+          'producer-script','gate-pending-after-rebinding','atomic-native-zero','atomic-native-nonzero',
+          'reader-rejects-unpublished-exit','atomic-noreplace-race','transport-hash-before-write',
+          'outer-raw-manifest-hash','duplicate-ZIP-members','symlink-ZIP-member',
+          'raw-NUL-outer-local-and-central','raw-NUL-inner-local-and-central-rebound',
+          'announcement-compact-producer-protocol-positive',
+          'announcement-original-B-pretty-JSONDecodeError-preserved',
+          'announcement-duplicate-rejected','announcement-absent-rejected'}
+        v.need(result['count']>=60 and mandatory.issubset(set(result['scenarios'])),'Meaningful current guards missing')
+        v.need(result['optimized']==bool(args),'Actual normal/-O mode')
+        summaries['preflight-'+name]=result
+    v.need(summaries['preflight-normal']['scenarios']==summaries['preflight-optimized']['scenarios'],'Normal/-O guard scenarios differ')
+    for name,args in (('normal',[]),('optimized',['-O'])):
+        summaries['actual-'+name]=observed('actual-'+name,[sys.executable,*args,str(BASE/'actual354A.py'),str(source_path),str(config['bytes']),config['sha256']],600)
+    v.need(summaries['actual-normal']==summaries['actual-optimized'],'Normal/-O actual results differ')
+    status='RAW_RETURN_VALIDATED_PENDING_VISUAL_AND_EXACT_PDF_ASSESSMENT'

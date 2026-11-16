@@ -1,0 +1,9 @@
+Primary scope and rights354B
+
+New fresh official source: V. Guruswami, CMU Introduction to Coding Theory, Notes2: Gilbert–Varshamov bound, January2010. URL https://www.cs.cmu.edu/~venkatg/teaching/codingtheory/notes/notes2.pdf . The returned350-line text includes Lemma5 and Theorem8 with proofs; those relevant passages were read. This is a bounded primary comparison, not a comprehensive historical survey. The entropy-volume/random-linear-code ingredient is classical. The additional nonzero/distinct-column condition is proved directly, not attributed as a verbatim clause in the reference. The code proof in355/354B is explicit, with its own strict threshold and rounding.
+
+Earlier bounded primary reads and raw responses for hypercontractivity, Markov symmetry and simplex construction are preserved in inputs/354A/. Their limitations still apply. No failed or sparse search is evidence of originality. No novelty clearance is claimed for the Doob application or the integrated manuscript.
+
+Author line remains Lluis Eriksson. The actual source and role provenance is disclosed; no third-party consent, licence grant, model identity, PDF assessment, acceptance receipt or public identifier is invented. Programme sources and internal reports are retained as supplied. No external PDF or figure is bundled for republication; scholarly materials are cited by URL and bounded reading location. Raw tool returns are research evidence, not a blanket redistribution licence.
+
+No publication transaction occurred. No grade, permission or licence record from348 or another paper is inherited. Existing authorized preparation continues without asking for routine confirmation. Any later release must use the applicable real artefact workflow, and must distinguish AI assessment, human peer review, deposit, acceptance and publication.
