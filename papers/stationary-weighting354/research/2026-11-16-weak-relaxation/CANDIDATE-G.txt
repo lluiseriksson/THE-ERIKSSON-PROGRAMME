@@ -1,0 +1,41 @@
+CANDIDATE G — UNIFORM INITIALIZATION WITHOUT A NEW ASSUMPTION
+2026-11-16. New frozen extension of accepted F; pending its first analytic audit.
+This is part of the same grouped E/F supplement, not another paper.
+
+Assume exactly F's finite Boolean Doob hypotheses: rho=1/2, h>0,
+E_mu hPh=1, pi=hPh>=b>0, E_mu pi^3<=2, nu=pi mu,
+K(x,y)=P(x,y)h(y)/(Ph)(x).
+Let c_*=b^4 2^(-61/24), C_F=3+32/c_*.
+F establishes the following stationary statement, which is reused unchanged:
+E_nu[(N^(-1) sum_{i=0}^{N-1} f(X_i)-nu(f))^2] <= C_F osc(f)^2/N.
+Here expectation on the left is over the path started in nu; stationarity makes the estimator unbiased, so F's variance bound equals this mean-square error.
+
+Claim G:
+If the same chain starts instead in the UNIFORM reference law mu, then for all real f and integers N>=1,
+ E_mu-start[(N^(-1) sum_{i=0}^{N-1} f(X_i)-nu(f))^2]
+ <= C_F osc(f)^2/(b N).
+This is a mean-square error bound including any initialization bias. It is not a claim that the uniform-start estimator is unbiased or that its path is stationary.
+The coefficient depends on fixed b, not on L. Exact marginal matching is not needed.
+
+Proof.
+Let P_eta^(N) be the law of (X_0,...,X_{N-1}) with initial distribution eta and transitions K.
+Because nu has full support, for any eta the exact finite-path density is
+ dP_eta^(N)/dP_nu^(N)(x_0,...,x_{N-1})=eta(x_0)/nu(x_0).
+The transitions cancel; every transition is positive in this model, so the identity applies on every path.
+Consequently, if eta<=M nu pointwise as probability masses, then for every nonnegative path functional Z,
+ E_eta Z<=M E_nu Z.
+Take eta=mu. The ORIGINAL stationary floor gives
+ mu(x)/nu(x)=1/pi(x)<=1/b.
+Thus M=1/b is a proved consequence, not a newly assumed warm-start constant.
+Apply the path comparison to
+ Z=(N^(-1) sum f(X_i)-nu(f))^2>=0
+and use the accepted stationary estimate F. This proves G.
+For constant f, the error is zero. For N=1, the same path identity and bound apply.
+
+More generally the displayed M comparison proves an M*C_F osc(f)^2/N bound for starts eta<=M nu. That general comparison introduces a domination premise, whereas the stated uniform-start theorem derives its required M from the original floor. No assertion for a fixed deterministic starting vertex with a dimension-free M is made: its likelihood ratio can grow with dimension.
+
+Interpretation and limits.
+G extends the usable estimation bound from stationarity to an explicit initialization available on the Boolean reference cube. It does not prove burn-in convergence in total variation, a uniform full-spectrum gap, a concentration inequality, optimal rates, or a guarantee for all initial states. It does not eliminate the original matching hypothesis from the stronger spectral-gap question.
+The initial-density comparison is elementary established change of measure, not a claim to invent warm starts. The contribution assessed here is its application to the derived F bound under the actual original floor; no global priority claim.
+E and F candidates and reports, the earlier full manuscript, its PDF-production source hash and the existing pending execution question are unchanged.
+Authoring context: current OpenAI Codex, exact backend/effort unattested. No new numerical score, formal verification, PDF review or publication.

@@ -14,6 +14,11 @@
       "sha256": "13cfa7b0faf2874e97a54aa3136cb8d885aaa529b53d35762b55599f4e949adf"
     },
     {
+      "path": "CANDIDATE-G.txt",
+      "bytes": 3298,
+      "sha256": "630099ca09b64ecfaf49105d6fd67a3fed5165be93739527ef2ae9213fd338b4"
+    },
+    {
       "path": "FULL-ANALYTIC-AUDIT-E.txt",
       "bytes": 15327,
       "sha256": "459b9b2cce46aac7004ab1df1a33fe98b3fed235d426e19bbc2514a633d6d35a"
@@ -30,13 +35,19 @@
     },
     {
       "path": "README.md",
-      "bytes": 3569,
-      "sha256": "d84ded2692a4b94923bff039ed689cc37e50a3de0681688f35993c5fb00d55b8"
+      "bytes": 4304,
+      "sha256": "cdf2fbfba69f5bc3dce2619c7c94c90e1a3307969c9ffcf34bbdb56bf758921d"
     },
     {
       "path": "TERMINAL-COMMIT-AUDIT-E.txt",
       "bytes": 8034,
       "sha256": "1b205105afea79071a94bf84932f6caee5c70adc6f1dcd4b121d9003e55f35ba"
+    },
+    {
+      "path": "TERMINAL-COMMIT-AUDIT-EF.txt",
+      "bytes": 8233,
+      "sha256": "af4b2338b179da13c760452dda221a4ba40419a92c33d99c1b7f7bea9cdd2e5f"
     }
-  ]
+  ],
+  "accepted_EF_commit": "c182b892261fa83a9af780d7bc157aadebbaac2e"
 }

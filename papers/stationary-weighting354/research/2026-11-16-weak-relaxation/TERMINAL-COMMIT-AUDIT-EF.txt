@@ -1,0 +1,89 @@
+TERMINAL PRESERVATION AUDIT — GROUPED E/F SUPPLEMENT
+Date: 2026-11-16
+
+VERDICT
+
+PASS for exact evidence preservation of c182b892261fa83a9af780d7bc157aadebbaac2e on the existing evidence branch, with no PR, main integration, workflow activation or dispatch. All seven manifested payloads match their raw committed blobs and working files. Both frozen candidates, both full analytic reports and the original E terminal report retain their recorded bytes. The README's new F summary states the actual stationary sample-mean variance scope accurately.
+
+This is a preservation and presentation audit only. It does not regrade E or F, create a numerical score, establish global originality, certify an executed build or PDF, supply an execution exception, or record a publication. No blocking discrepancy was found.
+
+IDENTITY AND METHOD
+
+Auditor: OpenAI Codex role /root/bootstrap_note_audit. Exact backend model build and reasoning effort are not independently attested. This audit has inherited context and the same provider/workflow as the earlier audits; it is not blind, human or provider-independent peer review. No score is assigned or transferred.
+
+I read the committed delta, manifest and README; checked Git HEAD, parent, status, path scope and whitespace; compared raw Git blob SHA256/lengths with manifest, working files and available D: originals; and checked that the active workflows and frozen PDF payload are untouched. No mathematical code, test, build, syntax check, Lean/Lake, UI, runtime, PR, push or dispatch was executed. This report is the sole new file written by the auditor.
+
+FROZEN COMMIT AND PATH SCOPE
+
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116
+Branch: codex/low-full-evidence-20261116
+HEAD: c182b892261fa83a9af780d7bc157aadebbaac2e
+Single immediate parent: df15fa7df970ecb4b9b740495008a2c69b413a28
+Grouped supplement base: 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+Directory: papers/stationary-weighting354/research/2026-11-16-weak-relaxation
+
+HEAD exactly matches the requested commit and the index/worktree are clean. The immediate delta has precisely five paths: added CANDIDATE-F.txt, FULL-ANALYTIC-AUDIT-F.txt and TERMINAL-COMMIT-AUDIT-E.txt; updated README.md and MANIFEST.json. E and its original full analytic report are untouched. No file is deleted.
+
+The cumulative delta from 8efcb73b contains exactly eight additions, all within the supplement directory: seven payloads and MANIFEST.json. The manifest correctly retains that grouped base and separately records df15fa7d as the accepted E commit. The manifest itself is anchored by the exact commit rather than recursively self-hashed. Git whitespace checking passed.
+
+The grouped production directory papers/stationary-weighting354/revision-window-20261116 is unchanged, including source186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3 and the inactive build template. The .github/workflows tree is unchanged. Nothing in this commit supplies an answer to the pending execution/capacity request.
+
+RAW-BYTE CHECKS
+
+Git blob bytes were read via binary stdout and hashed without decoding/re-encoding. All seven SHA256 and length checks match MANIFEST.json. All seven raw working files also match. Recorded values:
+
+CANDIDATE-E.txt
+7344 bytes
+0d11186fee2f9daff0c3fe33cee3092510ba5ace75abea9f6c76cebed184fafe
+
+CANDIDATE-F.txt
+5078 bytes
+13cfa7b0faf2874e97a54aa3136cb8d885aaa529b53d35762b55599f4e949adf
+
+FULL-ANALYTIC-AUDIT-E.txt
+15327 bytes
+459b9b2cce46aac7004ab1df1a33fe98b3fed235d426e19bbc2514a633d6d35a
+
+FULL-ANALYTIC-AUDIT-F.txt
+13272 bytes
+3c9efd83a78cde7c109b52b177483043a3183510615751e78055c7d52e5f09c5
+
+PRIMARY-SOURCE-POSITIONING.txt
+1994 bytes
+fde1b154f54aa86cc6deda2bb6ab28dfca7fc1655df047cc054129c546f2cc54
+
+README.md
+3569 bytes
+d84ded2692a4b94923bff039ed689cc37e50a3de0681688f35993c5fb00d55b8
+
+TERMINAL-COMMIT-AUDIT-E.txt
+8034 bytes
+1b205105afea79071a94bf84932f6caee5c70adc6f1dcd4b121d9003e55f35ba
+
+All six files other than README also match their retained D: counterparts in the weak-relaxation directory. README is absent from that D: root at inspection; it is preserved in the exact local Git commit and matching worktree. This is not a manifest mismatch, but this report does not claim a complete current D: mirror or a remote push. The parent must verify the eventual remote SHA receipt before claiming remote preservation.
+
+PRESENTATION AND SCOPE CHECK
+
+The original E presentation remains limited to variance relaxation normalized by oscillation, with fixed rho,b and dimension-independent constants. It does not claim a uniform full L2 gap or original general WPI machinery. Its historical freeze status is explained without changing the candidate bytes.
+
+The appended F section names the exact frozen F hash and its separate full audit. It correctly restricts the strengthened result to rho=1/2 under the original normalized actual Doob setup, stationary floor pi>=b and cubic cap E_mu pi^3<=2. Its displayed decay exponent is 8/7, with bracket coefficient (7/8)c_* and c_*=b^4 2^(-61/24), matching the accepted frozen note.
+
+The sample-mean statement explicitly requires the chain to start in its own stationary distribution nu and gives the same bound (3+32/c_*)osc(f)^2/N. Thus it does not silently substitute the uniform reference measure mu or drop stationarity. N-term sample mean is interpreted for positive integer N, as explicitly stated in the frozen theorem. The prefactor remains oscillation-controlled, not variance-normalized across arbitrary localized eigenfunctions.
+
+The README accurately calls the inverse L6 moment derived rather than assumed, and says matching is not required for these weaker consequences. It expressly excludes burn-in, arbitrary starts, concentration, CLT, full-L2 gap and optimality claims. It describes crossing the summability threshold without asserting a new general method or a global priority certificate. This is faithful summarization of F, not a stronger theorem introduced by the README.
+
+Model-context disclosure remains accurate: same provider/workflow, inherited context, unattested exact backend/effort, no claim of blind/human/provider-independent peer review. The supplement remains grouped, with no new PDF, numerical assessment or AIRR publication. No predecessor assessment is inherited.
+
+The primary-source positioning file is unchanged from the E terminal audit. Its comparison with the same-invariant-measure theorem and its limitation on novelty remain intact. No bibliographic regrading or renewed search is required to establish exact preservation of that already inspected text.
+
+BRANCH-ONLY PRESERVATION BOUNDARY
+
+Active workflow bytes are unchanged from the preceding terminal check. ci.yml, control-plane.yml and lean-build.yml restrict push computation to main. validate-dashboard.yml matches only its dashboard/script/workflow paths, none of which is in this five-path or cumulative eight-path supplement delta. orchestrator.yml remains schedule/dispatch based. No active workflow is added here. The prospective document workflow remains outside .github/workflows.
+
+The branch is the existing codex/low-full-evidence-20261116. No core.hooksPath override was observed; the resolved pre-push hook file is absent. The nonzero exit of the final config lookup signifies the unset optional key, not a failed blob comparison or discovered hook. No ordinary inspected push trigger requests computation for this evidence-only delta.
+
+This scope excludes PR creation because main-target PR triggers have different behavior, including Lean. It also excludes main merges, manual dispatch and template installation. No static audit guarantees absence of unrelated scheduled activity, external integrations or exceptional service behavior. Actual remote preservation and any unexpected run must be checked from real receipts after an authorized push; this audit did not perform that push.
+
+FINAL DISPOSITION
+
+The E/F supplement is preserved exactly, its stationary bounded-observable scope is represented honestly, and earlier reports remain unmodified. The exact commit is suitable for the proposed branch-only preservation. There is no scientific regrade, new permission, build, score or publication in this terminal result.

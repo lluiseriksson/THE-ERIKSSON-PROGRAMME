@@ -31,3 +31,9 @@ For a chain STARTED IN ITS STATIONARY DISTRIBUTION nu, the variance of its N-ter
 No matching is required for these conclusions. The stronger inverse L6 potential moment is derived using the original stationary floor and cap; it is not assumed.
 
 This crosses the summability threshold for bounded-observable relaxation and controls stationary sample-mean variance with dimension-free constants. It is not a burn-in, arbitrary-start, concentration, CLT, full-L2-gap or optimality theorem. General methods remain classical; explicit specialization is not a global priority certificate. These E/F notes remain one grouped research supplement, with no new PDF, score or AIRR publication.
+
+## Uniform initialization: frozen extension G
+
+CANDIDATE-G.txt gives the path-measure comparison needed to apply F from the uniform Boolean initial law mu. The original floor implies dmu/dnu=1/pi<=1/b, so F's stationary mean-square bound transfers to
+E_mu-start[(sample mean - nu(f))^2] <= (3+32/c_*) osc(f)^2/(b N).
+This includes initialization bias; it does not assert unbiasedness or stationarity from mu. No new warm-start premise is imposed for this specified uniform start. Arbitrary initial states, uniform L2 gaps, concentration and optimality remain outside the claim. G is newly frozen for its first analytic audit; no predecessor score or audit is transferred to it. Its proof and later report must be retained separately.
