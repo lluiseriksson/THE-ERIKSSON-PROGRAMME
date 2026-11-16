@@ -70,10 +70,21 @@ jobs:
           root="$RUNNER_TEMP/window-evidence"
           bundle="$RUNNER_TEMP/window-upload"
           mkdir -p "$root" "$bundle/diagnostics"
+          copy_failure() {
+            printf 'Packaging failed with exit %s; no artifact uploaded. Full available original diagnostics follow; completeness requires checking.\n' "$1" > "$root/packaging-failure.txt"
+            while IFS= read -r -d '' file; do
+              printf '\nORIGINAL FILE: %s\n' "$file"
+              cat -- "$file" || printf 'UNREADABLE ORIGINAL: %s\n' "$file" >&2
+            done < <(find "$root" -type f ! -name '*.png' ! -name '*.pdf' -print0)
+            echo "upload_ok=false" >> "$GITHUB_OUTPUT"
+            exit 67
+          }
           date -u +%FT%TZ > "$root/pre-upload-end.txt"
           printf '%s\n' 'Timings cover first step through pre-upload; checkout/upload/service totals require run receipt. Missing phases mean not reached, not success.' > "$root/timing-scope.txt"
           cd "$root"
-          find . -type f ! -name '*.png' ! -name '*.pdf' -exec cp --parents -- '{}' "$bundle/diagnostics/" \;
+          copy_rc=0
+          find . -type f ! -name '*.png' ! -name '*.pdf' -exec cp --parents -t "$bundle/diagnostics/" -- {} + || copy_rc=$?
+          if (( copy_rc != 0 )); then copy_failure "$copy_rc"; fi
           diag=$(du -sb "$bundle" | cut -f1)
           # Reserve 1 MiB for final records and directory overhead.
           cap=51380224
@@ -82,7 +93,7 @@ jobs:
             while IFS= read -r -d '' file; do
               printf '\nFILE: %s\n' "$file"
               cat -- "$file"
-            done < <(find "$bundle/diagnostics" -type f -print0)
+            done < <(find "$root" -type f ! -name '*.png' ! -name '*.pdf' -print0)
             echo "upload_ok=false" >> "$GITHUB_OUTPUT"
             exit 66
           fi
@@ -90,7 +101,9 @@ jobs:
           rc=0
           if (( diag + graphics <= cap )); then
             mkdir -p "$bundle/document"
-            find . -type f \( -name '*.png' -o -name '*.pdf' \) -exec cp --parents -- '{}' "$bundle/document/" \;
+            copy_rc=0
+            find . -type f \( -name '*.png' -o -name '*.pdf' \) -exec cp --parents -t "$bundle/document/" -- {} + || copy_rc=$?
+            if (( copy_rc != 0 )); then copy_failure "$copy_rc"; fi
             printf '%s\n' 'Document included; inspect pipeline exits separately.' > "$bundle/retention-status.txt"
           else
             printf '%s\n' 'SIZE FAILURE: full text diagnostics retained, PDF/PNG omitted. Rendering evidence incomplete. Recovery requires an authorized route within capacity.' > "$bundle/retention-status.txt"
@@ -103,7 +116,7 @@ jobs:
             while IFS= read -r -d '' file; do
               printf '\nFILE: %s\n' "$file"
               cat -- "$file"
-            done < <(find "$bundle/diagnostics" -type f -print0)
+            done < <(find "$root" -type f ! -name '*.png' ! -name '*.pdf' -print0)
             echo "upload_ok=false" >> "$GITHUB_OUTPUT"
             exit 66
           fi

@@ -8,6 +8,11 @@
       "path": "audit/COMMIT-AND-BUILD-PREPARATION-AUDIT.txt"
     },
     {
+      "sha256": "052c40e571533e83187e21ab585b6dcba5203c60ed7fa5b329eb679238b8ffcd",
+      "bytes": 14166,
+      "path": "audit/CORRECTED-COMMIT-BUILD-PREPARATION-AUDIT.txt"
+    },
+    {
       "sha256": "29ca3abd83e2096eebded6543e582feca1b4946ab1d59348e895a5f22072563a",
       "bytes": 8759,
       "path": "audit/CORRECTED-INTEGRATED-SOURCE-AUDIT.txt"
@@ -38,8 +43,8 @@
       "path": "BUILD-RECIPE.txt"
     },
     {
-      "sha256": "7acdb1942126b9ff9fd65edede1b72726b56abb1f71b3e80a975030b8c9a706e",
-      "bytes": 5861,
+      "sha256": "d418ea734db3b8084f19ecd4e1db28a87e9a6d816288b7cc026ab9502c23c951",
+      "bytes": 6665,
       "path": "build-window-revision.yml.template"
     },
     {

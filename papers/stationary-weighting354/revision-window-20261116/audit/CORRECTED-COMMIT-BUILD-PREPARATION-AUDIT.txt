@@ -1,0 +1,132 @@
+CORRECTED COMMIT AND BUILD PREPARATION AUDIT
+Date: 2026-11-16
+
+EXACT SUBJECT
+
+HEAD: 027a083afef2b5afa63771d48ed8a31950dd8a02
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116
+Packet: papers/stationary-weighting354/revision-window-20261116
+Immediate parent: 9838d634459d76da457c5e897039516adb9eff8e
+That parent's parent: 79f15a2209cf00bc6b0a5d9a3dec811588f4ace1
+Original component/evidence base: 28dbc89fa152a1188a0c172f21e78cf69965058f
+
+VERDICT
+
+Exact committed preservation and inactive scope: PASS. The original commit remains in ancestry, its adverse preparation report is preserved byte-for-byte, all eleven manifest payload entries match raw committed blobs and raw working files, and no manuscript or scientific report has been changed.
+
+Prospective execution preparation: ONE REMAINING CORRECTION REQUIRED. The new separation of diagnostics from graphics addresses the original oversized-graphics defect, but both packaging copies use find -exec cp ... \;. A failed cp is a false find predicate, not necessarily a failed find process. Consequently set -e does not reliably stop packaging on copy failure. The workflow can label a partial diagnostic or document bundle as complete and upload it. This is a concrete error-propagation defect in the newly added preservation path, not a request for additional mathematical assessment.
+
+No script, build, syntax check, workflow, PR, push, runtime or publication was executed by this auditor. No new owner execution exception has been supplied by this report. A future exception and capacity verification remain external prerequisites even after this implementation defect is corrected.
+
+IDENTITY AND REVIEW CONTEXT
+
+Auditor role: OpenAI Codex /root/bootstrap_note_audit. Exact underlying model build and reasoning effort are not independently attested in this context. This is the same audit role and provider/workflow as the initial terminal audit, with inherited context. It is not blind review, human peer review or provider-independent validation. No score or grade is supplied. I reviewed the successor's preparation delta; I did not reopen or regrade the analytic source or A/B/C/D scientific findings.
+
+Allowed work performed: file reads, Git metadata/diff/ancestry/whitespace inspection, raw SHA256 and byte-length comparisons, static reasoning, and primary documentation consultation. The new report is the only file written by this audit. The previously rejected report remains unchanged.
+
+SCOPE AND ANCESTRY
+
+HEAD is exactly the supplied 027a083a... and the worktree/index were clean. The correction is two commits after 79f15a2, not an amend/rebase: 9838d634... adds the retention/provenance changes and 027a083a... normalizes preparation metadata line endings. The latter changes only BUILD-BINDING.json and MANIFEST.json. The original 79f15a2 commit is an ancestor.
+
+The aggregate correction changes six existing files and adds build-pipeline.sh and the original terminal report, all inside the same packet. The cumulative packet relative to 28dbc89f contains twelve additions: eleven payload files and MANIFEST.json. No .github/workflows file changes occur. Git diff whitespace checking passed. No source or earlier scientific-report modification is present.
+
+RAW MANIFEST RESULTS
+
+For every entry below I read the Git blob through the process's binary stdout stream, computed SHA256 on those bytes, checked its length, and compared with MANIFEST.json. I separately checked raw working-copy file hashes/lengths. All eleven passed both comparisons.
+
+audit/COMMIT-AND-BUILD-PREPARATION-AUDIT.txt
+18325 bytes
+5dc52f251348cc9e028e4a3a66f3e55d79c2ed26091ef823d92b61d7b7129d0c
+
+audit/CORRECTED-INTEGRATED-SOURCE-AUDIT.txt
+8759 bytes
+29ca3abd83e2096eebded6543e582feca1b4946ab1d59348e895a5f22072563a
+
+audit/FULL-INTEGRATED-SOURCE-AUDIT.txt
+15838 bytes
+28218f9adf6f9c003b0d818d16b0f44b60eb17f43ea648ba784efba63bf84e16
+
+BUILD-BINDING.json
+2167 bytes
+937f5445491037ef75eebb5be621f07a6fc4e05ad00b9a7c6f68babd40e0d726
+
+build-one.sh
+2264 bytes
+13cdc5ab0c01c1e73e49373b0ee8e6241e623624703ad02184fb44c35bedb4ea
+
+build-pipeline.sh
+1715 bytes
+0a0f8f6555e84b2dd754782454114c551068d452a6c2288e11672eae89e99541
+
+BUILD-RECIPE.txt
+4403 bytes
+e1946aa394b325635458dafe135c0b0485158721c066cdbd3f4d49dc65517695
+
+build-window-revision.yml.template
+5861 bytes
+7acdb1942126b9ff9fd65edede1b72726b56abb1f71b3e80a975030b8c9a706e
+
+history/manuscript-window-v2-candidate-rejected.tex
+51160 bytes
+6ffc9ea0d351a9f9c1306caf3a1da7afe5b4a9dceed10e48d5e0020a0f2ebf6b
+
+manuscript-window-v2-candidate.tex
+52044 bytes
+186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3
+
+README.md
+4044 bytes
+d13974d6e60b69fad8395ec0610562ac98958b368442dd8f38106b8617323af2
+
+MANIFEST.json uses the unchanged base 28dbc89f and represents raw file bytes. Its own bytes are bound by the exact commit rather than recursively self-hashed.
+
+The D: original scientific sources, both integrated-source reports and the original terminal report also match the corresponding committed bytes. Important storage distinction: the D: packet root still has older preparation files; it is not an exact copy of this successor payload, and build-pipeline.sh is absent there. The successor preparation is retained in the supplied local Git commit and C: worktree. This is not a committed-manifest mismatch, because the audit target is the exact commit, but I do not certify the D: packet root as a complete current mirror. Preserve or push the successor via the authorized route before closing the unit; do not overwrite old evidence merely to make the root appear current.
+
+CLOSURE OF PREVIOUS FINDINGS
+
+1. Oversized graphics: the template now assembles diagnostics separately. If diagnostics fit but PDF/PNG would exceed the reserved limit, retention-status records a size failure, rc becomes 64, upload_ok is still true, and the always-conditioned upload can retain the diagnostic-only bundle. The step/job remains failed. This correctly avoids the prior intentional all-or-nothing deletion of useful evidence. Its correctness is subject to fixing the copy-status defect below.
+
+2. Oversized diagnostics: the template declines artifact upload, emits the copied diagnostic files to the console and exits 66. The documentation explicitly says console truncation/retention must be checked and that incomplete console evidence is a limitation requiring authorized recovery. It does not falsely promise guaranteed full preservation when capacity itself is insufficient. Such an execution must remain failed, not be relabeled successful merely because console output exists.
+
+3. Versions: build-one.sh now records pdfinfo, pdftotext and pdftoppm version outputs and dpkg-query's installed package inventory, alongside TeX/latexmk. These commands are read-only metadata queries in the prospective Linux job. They were not executed here. Apt packages remain unpinned, and the documentation correctly limits byte reproducibility to two copies under one runner/toolchain.
+
+4. Timing: the first workflow step now timestamps the beginning before checkouts and installation. Setup and build phases receive additional timestamps. The record explicitly excludes queueing, upload and teardown from the first-step/pre-upload interval, and requires the service receipt for total consumption. This resolves the earlier misleading scope risk. An early apt-update failure has its command exit record but exits before setup-end; the missing phase/end evidence must be interpreted with the recorded failure rather than as a completed setup.
+
+5. Exit records: phase() captures actual external build-script, cmp and pdftoppm exits and timestamps, returning the actual code. The overall EXIT trap records the pipeline's status and end time. Each build retains latexmk's own status independently. Failed commands remain failures. The child build scripts are fresh bash processes with their own strict settings; the wrapper's guarded invocation does not by itself turn their internal errors into success. Missing later phases mean they were not reached. The page-count check gets an explicit 0 or 65 status.
+
+6. Render completeness: after pdftoppm returns, the pipeline compares the PDF's declared page count with the generated page-N.png count, requires a positive integer count, and records a separate readiness statement. That statement explicitly still requires every page's visual review. This is a useful static improvement, not evidence that any page was actually rendered or inspected.
+
+7. Stale recipe wording: the accepted source hash is now explicitly fixed rather than promised in the future. The original terminal report and rejected commit are retained and acknowledged. No predecessor score or publication status is inherited.
+
+REMAINING BLOCKER B1: COPY ERRORS DO NOT RELIABLY FAIL THE PACKAGING STEP
+
+The diagnostic packaging command is structurally:
+find . -type f ! -name '*.png' ! -name '*.pdf' -exec cp --parents -- '{}' "$bundle/diagnostics/" \;
+
+The document packaging command has the same -exec ... \; form for PDF/PNG.
+
+In GNU find, this form uses the invoked command's result as the truth value of the predicate. A nonzero cp exit does not by itself force find to return nonzero. A false predicate is a normal evaluation outcome. Thus the shell's set -e can see a successful find process even when some file copies failed.
+
+Concrete failure path: a source log is unreadable, disappears between selection and copying, or cannot be fully copied into the bundle; cp returns nonzero, while find finishes its traversal normally. The script then measures the incomplete bundle, may emit 'full text diagnostics retained' or 'Document included', sets upload_ok=true and uploads the partial result. The failure is not represented as packaging failure. A partial PDF/PNG bundle can likewise be labeled included after the pipeline's page-count check passed on the original directory. The pipeline check therefore does not catch a later packaging omission.
+
+This is not an assertion that such an error has occurred or will occur. It is a precise unchecked-exit defect in the preparation, directly relevant to the guarantee being added. It also affects the large-diagnostics console fallback: that fallback reads the copied bundle, so files omitted during copying cannot be recovered there.
+
+Minimal correction direction: use a copying form whose process failure propagates, for example GNU find -exec cp --parents -t TARGET -- {} +, which documents a nonzero find status when any invoked command fails. Capture that failure explicitly, retain a packaging-failure record, and do not claim a complete bundle. If fallback is used after an incomplete copy, it must read the original available diagnostic files, not assume the partial copy is complete. Keep the same capacity limit and truthful incompleteness status. A source-to-bundle file/hash inventory is an additional clear way to establish exact copied payload completeness; this report does not require new scientific tests or a runtime just to prepare the correction.
+
+Primary reference: GNU find manual as shipped by Debian, ACTIONS section:
+https://manpages.debian.org/bookworm/findutils/find.1.en.html
+It distinguishes the single-command predicate's truth value from the '+' form's propagation of command errors into find's process status. The proposed correction relies on that documented distinction. This was checked by reading documentation, not by executing a reproduction.
+
+UNCHANGED STATIC SAFEGUARDS
+
+The template remains outside .github/workflows, with .template suffix. It has not become executable automation merely by being committed. The two pinned checkout steps still select the same github.sha and disable persisted credentials. build-one.sh still verifies exact HEAD and the fixed 186921a5... source hash, uses latexmk -norc and pdflatex -no-shell-escape, and saves the deterministic driver's bytes/hash. The PDF comparison still precedes its equality-success marker. These are unchanged, unexecuted mechanisms, not proof of future successful compilation or byte equality.
+
+The job remains standard ubuntu-24.04, contents:read, twenty-minute timeout, one-day artifact retention. It requires manual dispatch, a nonempty owner-reference and a quota-verification boolean that defaults false. Neither input authenticates itself: the parent must possess an actual new owner exception and verified capacity before dispatch. The prior validation354 exception remains expressly unusable for this build.
+
+The retention calculation reserves 1 MiB beneath the 50 MiB ceiling before graphics inclusion and performs a final near-ceiling size check with slack for size.txt. This is a reasonable static payload-size bound once copy failures are handled. It is not evidence of actual account quota, artifact billing size, service upload success or future runtime availability. Console fallback and hard timeouts still have disclosed preservation limits.
+
+Existing active workflows were rechecked by path/trigger inspection and are unchanged. ci, control-plane and lean-build push triggers remain limited to main; the dashboard workflow's changed-path filters do not match this packet; orchestrator remains schedule/dispatch based. No PR is proposed because main-target PR triggers can execute Lean. The inactive template's own prospective push trigger cannot act until a separately authorized installation, and its job guard excludes push document execution. No matching ordinary branch-push computation was introduced by this successor. Static inspection still does not certify absence of unrelated scheduled jobs, external integrations or exceptional server behavior.
+
+FINAL DISPOSITION
+
+The scientific material and audit history are preserved exactly; the corrected provenance/retention design substantially closes the first report's concerns. One local error-propagation correction in the two new packaging copies remains before treating the prospective build as ready for the new exception request. It can be fixed without changing the manuscript, running the build, expanding quota or regrading anything. This report leaves both earlier source audits and the original terminal verdict intact.
