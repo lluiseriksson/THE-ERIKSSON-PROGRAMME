@@ -1,0 +1,38 @@
+{
+  "schema": "stationary-low-full-block-evidence-v1",
+  "base_sha": "a0ee5c3a8734fdce200f353795f13f81ffa6a19a",
+  "published_dependency_source_sha": "8e452190b8f7d3f7382ba2e6c05d0f14fa9c3dc5",
+  "status": "Separate analytic audits accepted A and additive B; no formal verification, score or new paper",
+  "files": [
+    {
+      "path": "audit/ADDENDUM-B-AUDIT.txt",
+      "bytes": 10313,
+      "sha256": "a35d676e64d4117c0f87e0d14873154df35161950e30e00a3a716408ad6d7bf4"
+    },
+    {
+      "path": "audit/FULL-ANALYTIC-AUDIT.txt",
+      "bytes": 14707,
+      "sha256": "b6b150f2a9bcef6d1ba8be2abc6902172a1a3f9d56bc6c5227e335bf9930624c"
+    },
+    {
+      "path": "CLARIFICATIONS.txt",
+      "bytes": 1091,
+      "sha256": "03bcfd892b1552fbf9ffd4d51d8b58d25fe45aa0c5ba5f8e17c85a7d07565039"
+    },
+    {
+      "path": "HIGH-BLOCK-ADDENDUM-B.txt",
+      "bytes": 3618,
+      "sha256": "71f384c862cdf3448db5c0ad34c7d189417cdeec2f239affc896c65c8fadca44"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2512,
+      "sha256": "a7442863b77b82ca4fd3836807babb059170e3750213b1cd301741b876630717"
+    },
+    {
+      "path": "RESEARCH-NOTE-A.txt",
+      "bytes": 10585,
+      "sha256": "556a2d23e5264f3e1f421928f456a28ab1434e6056d13170d0845089ffd19c56"
+    }
+  ]
+}

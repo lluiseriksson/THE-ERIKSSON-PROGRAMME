@@ -1,0 +1,92 @@
+LOW-TO-FULL OPERATOR CONTROL FROM STATIONARY MATCHING
+Frozen analytic candidate A, 16 November 2026. Internal grouped research; not a new paper or publication.
+
+Context and scope
+The single active question is stationary-doob-gap. This note combines the already published stationary-to-weighting subcritical transfer with an ordinary Boolean hypercontractive map into L2. Unlike the compression-only estimate in source341 section6, it bounds the entire image of a low-degree subspace, including its cross block. It proves quantitative escape of non-Perron eigenvectors above the Boolean noise edge in a precisely stated energy representation. It does NOT prove a uniform actual gap or the critical weighting moment. No new hypothesis is assumed to obtain the block bound. Global originality is not established. This candidate is authored by the involved parent Codex role; backend/version/effort are not independently attested. No numerical, symbolic, Lean or oracle execution was used.
+
+1. Setting and previously proved inputs
+Uniform probability mu on {-1,1}^L. Fix 0<rho<1 and 0<b<=1, P=P_rho, Q=P_sqrt(rho). Let h>0, g=Ph, E hPh=1, pi=hg>=b, s=(1+rho)/(1-rho), and E pi^s<=2. Assume pi has exact uniform labelled marginals through integer degree k. Write a=E h, v=1-a^2, u=h/g, N=E u, r=u/N, B=2^(1/s), and
+ eta=[rho max{1,1/(s-1)}]^(1/2)<1, e=B eta^(k+1).
+Walsh characters are chi_S, with P chi_S=rho^|S| chi_S. Every norm/projection below is in L2(mu) unless otherwise specified.
+
+The published paper354 (Stationary-to-weighting moment transfer and spectral rigidity for Boolean Doob kernels, AIRR ARR-2026-4T35VQ6MZB8F99F4 v1, source8e452190b8f7d3f7382ba2e6c05d0f14fa9c3dc5, PDF SHA256 fbd2b9784d11740cef74c85f870dff27e4b97158210388cf3ae355eb4ffcbcf3) proves:
+ a^2 >=1/(1+e^2), a^2<=N<=1, ||r-pi||_1<=2e,
+ and, for the finite iteration below, ||r||_{t_n}<=K_n.
+Specifically q_0=2rho^-2+rho^-3-1,
+ F(q)=1+(s q/(s+q)-1)/rho^4, q_(n+1)=F(q_n),
+ q_n increases to q_+=(1+rho)rho^-3[1+rho^2+sqrt(1+rho^2)],
+ t_n=s q_n/(q_n+2s), K_n=B b^-3 (B/b)^(2n).
+For 1<p<t_n, interpolation yields
+ ||r-pi||_p <=(2e)^alpha (K_n+B)^(1-alpha),
+ alpha=(1/p-1/t_n)/(1-1/t_n) in(0,1).
+Here t_n<s. The candidate relies on these proved inputs, not on the later stronger G-iteration. The stationary floor remains a genuine assumption.
+
+2. A finite iteration crosses the exponent needed for a full column
+Put p=1+rho. Then s-p=rho s>0 and
+ t_n>p iff q_n>q_c:=2(1+rho)/rho.
+Direct substitution gives
+ F(q_c)-q_c=(1-rho^2)(3-rho^2)/[rho^3(2-rho)]>0.
+The numerator of F(q)-q is a concave quadratic with its two real roots q_-<q_+. Thus q_c lies strictly between these roots, in particular q_c<q_+. Since q_n increases to q_+, there is a finite n depending only on rho with t_n>1+rho. Fix such n ONCE, before L tends to infinity, and use its alpha and K_n throughout.
+Define
+ D_L=(2e)^alpha (K_n+B)^(1-alpha)+B e^2.
+Then ||u-pi||_(1+rho)<=D_L.
+Proof: u-pi=N(r-pi)+(N-1)pi, N<=1, 1-N<=v<=e^2, and ||pi||_(1+rho)<=B. In particular D_L decays exponentially in k, with constants depending only on rho,b and the chosen finite n.
+
+3. The operator representing the actual Doob spectrum
+Let T=Q M_u Q. It is positive semidefinite and self-adjoint, has norm1, and its unit Perron vector is w=Qh: T w=Q[u Ph]=Qh and ||w||_2^2=E hPh=1.
+To verify that its spectrum is the ACTUAL Doob spectrum, define
+ Kf=P(hf)/g on L2(pi dmu),
+ A=M_sqrt(u) P M_sqrt(u), X=M_sqrt(u) Q.
+Conjugating K by f -> sqrt(pi)f gives A. Also A=XX* and T=X*X, so their eigenvalues coincide, with multiplicities (all operators are finite square matrices). Positivity of K gives a simple Perron eigenvalue1. No replacement weighting kernel is being substituted for K.
+
+4. Entire column estimate, not only compression
+For 0<=|S|<=d<=k,
+ ||(T-P)chi_S||_2 <=rho^(|S|/2) [D_L+(B+1)eta^(k+1-|S|)].       (4.1)
+Proof: exactly
+ (T-P)chi_S=rho^(|S|/2) Q[(u-pi)chi_S+(pi-1)chi_S].
+Ordinary hypercontractivity gives Q:L^(1+rho)->L2 contractively; multiplying by a character does not change this norm. This bounds the first term by D_L.
+For the second, f_S=(pi-1)chi_S has Walsh support strictly above degree k-|S|: multiplication by chi_S sends an index R to R symmetric-difference S, and |R|>k implies |R triangle S|>=k+1-|S|. Put z=min{s,2}>1+rho. Factor Q=P_eta P_t with t=sqrt(z-1), eta=sqrt(rho/(z-1)); this equals the eta in section1. P_t:L^z->L2 is a contraction (identity when z=2). Its image still has the same high-degree support. The P_eta multiplier on that support is at most eta^(k+1-|S|). Finally ||f_S||_z=||pi-1||_z<=B+1. This proves (4.1) without assuming boundedness of a Walsh projection on L^z.
+
+Let V_d^0 be the span of all nonempty characters of degree<=d, and let J_d be its orthogonal projection. For 1<=d<=k put
+ M_d=sum_{j=1}^d binomial(L,j),
+ E_Ld=sqrt(M_d)[D_L+(B+1)eta^(k+1-d)].
+Then
+ ||(T-P)J_d||_(2->2)<=E_Ld,                                    (4.2)
+ ||J_d(T-P)||_(2->2)<=E_Ld.                                    (4.3)
+Indeed sum the column estimates with Cauchy--Schwarz and use rho^(|S|/2)<=1; (4.3) is the adjoint identity. These are full column/row operator bounds. No 2d<=k condition is required. In particular the low-to-high block is bounded by E_Ld, a conclusion absent from source341's compression-only argument.
+
+5. Growing degree window and spectral escape
+Assume k=k_L and k_L/sqrt(L)->C>0. Fix any constant
+ 0<c<2 alpha log(1/eta), d_L=floor(c k_L/log(L+1)).
+For sufficiently large L, 1<=d_L<=k_L, and E_(L,d_L)->0 exponentially in k_L. For detail,
+ log M_d <=log d+d log L<=c k_L+o(k_L), d_L=o(k_L),
+ D_L=O(eta^(alpha(k_L+1)))
+ with constants fixed independently of L. The two contributions to E_Ld are respectively
+ O(exp[(c/2-alpha log(1/eta))k_L+o(k_L)]) and
+ O(exp[(c/2-log(1/eta))k_L+o(k_L)]),
+ both tending0 because alpha<1.
+
+Fix zeta>0. If T psi=lambda psi, ||psi||_2=1, psi orthogonal to w, and lambda>=rho+zeta, then
+ ||J_d psi||_2<=E_Ld/zeta,
+ ||Pi_<=d psi||_2^2<= e^2+(E_Ld/zeta)^2.                       (5.1)
+For the nonconstant part, commute P with J_d and write
+ (lambda I-P)J_d psi=J_d(T-P)psi.
+All eigenvalues of P on V_d^0 are at most rho, so inversion has norm at most1/zeta. For the constant part, <psi,w>=0 implies
+ |<psi,1>|<=||1-w||_2=sqrt(2(1-a))<=e,
+ using a>=1/sqrt(1+e^2) and 2(1-1/sqrt(1+x))<=x for x>=0.
+This proves (5.1), including for the growing d_L above. Thus any non-Perron modes bounded a fixed distance above rho escape that entire growing low-degree window in this representation. If the actual gap collapses, its second eigenvalue tends1, and one can take zeta=(1-rho)/2 eventually.
+
+Representation warning: for an actual normalized mean-zero K-eigenfunction f of eigenvalue lambda>0, the corresponding normalized T-eigenvector is
+ psi=Q(hf)/sqrt(lambda).
+Indeed ||Q(hf)||_2^2=E hf P(hf)=lambda E pi f^2=lambda, and TQ(hf)=lambda Q(hf); its inner product with Qh vanishes because E pi f=0. The theorem concerns Walsh degrees of this energy-represented psi, NOT automatically those of the raw function f.
+
+6. What is resolved and what remains
+The specific missing low-to-full block control left open by source341 is now derived from the original hypotheses via a finite published bootstrap. It is not inserted as an extra assumption, and no new critical-moment bound is claimed. The previous statement that source341 alone did not justify eigenvector escape remains correct; the additional L^(1+rho) bridge supplies what was missing.
+The uncontrolled block is J_>d T J_>d. Its norm may in principle approach1. Vanishing cross blocks and escape of modes into that block do not bound its top non-Perron eigenvalue. Consequently the general stationary dimension-uniform gap and the critical weighting moment remain open. There is no claim about Yang--Mills or a continuum physical gap; PR29 stays20/41 and TermSource0.
+The initial compression-only derivation explored in this unit was discarded as insufficient and overlapping source341. It is NOT counted as another new theorem. This note is to be grouped with the existing stationary transfer/spectral-rigidity research rather than issued as a standalone corollary paper. It does not alter the frozen paper354 PDF or inherit its assessment.
+Next bounded mechanism within the SAME question: use (4.2) to isolate the high-degree block and examine whether the actual nonlinear identity u=h/Ph and the stationary floor control its norm or admit a realizable high-degree trapping family. A falsifier of this candidate is a violation of (4.1), the finite exponent crossing, the exact spectral representation, or (5.1) under the stated assumptions. If three subsequent units yield no substantial reduction, preserve negative evidence and change the high-block mechanism or state its concrete obstruction.
+
+7. Sources, novelty and review context
+The primary classical input is ordinary scalar Boolean hypercontractivity, checked directly in Mossel, Oleszkiewicz and Sen, On reverse hypercontractivity, arXiv:1108.1210v5, pp1-2, equation(1.1) and tensorization discussion: https://arxiv.org/pdf/1108.1210 . Walsh conventions and scalar noise diagonalization are standard; Ryan O'Donnell, Analysis of Boolean Functions, arXiv:2105.10386, author's corrected 2021 edition of the 2014 textbook, https://arxiv.org/abs/2105.10386 . No priority is claimed for these tools or for elementary finite-dimensional adjoint/spectral arguments.
+The programme's previously checked internal source341A section6 and the published paper354 source listed in section1 were read for overlap. Source341 states specifically that cross blocks/eigenvector escape were not controlled by its compression estimate. This note provides that missing implication using the later subcritical moment estimates, rather than presenting compression convergence again. A targeted web search for Boolean noise, Doob transforms, low-degree compression and stationary marginal matching did not establish global novelty; this limited search is not a priority certificate. More complete novelty/relevance review is required before manuscript integration or publication.
+Model assessments and review context: this is an involved analytic candidate, not yet accepted on creation. A different audit role must inspect this exact frozen file and all stated input ranges. Preserve its full report, objections and actual available identity. Do not assign a score, claim human peer review, or claim provider/organizational independence. No assessment of paper354 carries over to this note. No Colab runtime was opened; consumed runtime0. No executable validation or formal proof is claimed.

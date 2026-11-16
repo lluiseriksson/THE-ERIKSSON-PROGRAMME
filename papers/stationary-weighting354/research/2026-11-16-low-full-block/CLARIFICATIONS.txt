@@ -1,0 +1,6 @@
+PRESENTATION CLARIFICATIONS TO FROZEN CANDIDATE A
+These address the three non-blocking points in FULL-ANALYTIC-AUDIT.txt (SHA256 b6b150f2a9bcef6d1ba8be2abc6902172a1a3f9d56bc6c5227e335bf9930624c) without altering A or the audit.
+1. In A section6, J_>d means Pi_>d=I-Pi_<=d, including removal of the constant mode. The addendum calls this projection Z_d explicitly.
+2. All displayed eigenfunction identities involving f^2 in A use real functions. Since the operators have real symmetric representations, a real eigenbasis is available. Over complex scalars replace f^2 by |f|^2 and use the conjugate-linear-first inner product; the results are unchanged.
+3. No new hypothesis means no extra hypothesis relative to the ACTIVE stationary-doob-gap setting in A section1, which includes pi>=b>0. Source341's floor-free matching theorem is not being upgraded to a floor-free cross-block theorem. The published354 bootstrap genuinely uses the stationary floor.
+No score, new review round for grading, formal verification, new publication or alteration to paper354 is created by these clarifications.

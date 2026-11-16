@@ -1,0 +1,124 @@
+LOW-TO-FULL OPERATOR CONTROL — SEPARATE ANALYTIC AUDIT
+16 November 2026
+
+VERDICT: ACCEPTABLE AS A PROVED ANALYTIC BLOCK REDUCTION UNDER THE STATED HYPOTHESES.
+
+No invalidating mathematical error was found in candidate A. The finite crossing of p=1+rho is correct, the entire-column estimate controls the cross block, and the growing-degree eigenvector-escape conclusion holds in the specified energy representation. This is a genuine implication beyond source341's compression estimate, obtained from the later subcritical transfer theorem and the original stationary-floor setting. It does not close the general gap, establish a critical weighting moment, remove the stationary floor, establish novelty, or warrant an independent small-corollary paper or numerical score.
+
+Non-blocking presentation clarifications: define J_>d explicitly as Pi_>d; specify real eigenfunctions in the displayed f^2 calculations (or use complex conjugates and |f|^2); and qualify 'no new hypothesis' as relative to the active stationary-doob-gap setting, not to the floor-free theorem of source341. All three intended meanings are clear from the candidate's setting and argument. No candidate edit was made by this audit.
+
+1. Exact referent, input identity and audit boundary
+
+Candidate read in full:
+D:\Datos\the-eriksson-programme\autonomia\2026-11-16_low-full-block\RESEARCH-NOTE-A.txt
+Raw SHA256: 556a2d23e5264f3e1f421928f456a28ab1434e6056d13170d0845089ffd19c56.
+
+The exact source354 paper.tex read for the premises has raw SHA256 b8cbd2a1b1d817a6889f2219134213b0a9bdeaf20e77d006cebfedcbb59e9233. It is the supplied paper source under C:\Trabajo\the-eriksson-programme\public354-20261116\papers\2026\11\4T\ARR-2026-4T35VQ6MZB8F99F4. Source341A was read in full, especially section6, from screening/curated-input-record/source/dependencies/source341A.txt; its raw SHA256 is 07872e15df4ccc556c5ef1287cb9821796c67020a9d07fd803cab92e2d9d923f.
+
+Source354's source-commit anchor is 8e452190b8f7d3f7382ba2e6c05d0f14fa9c3dc5 and the candidate identifies its exact PDF hash fbd2b9784d11740cef74c85f870dff27e4b97158210388cf3ae355eb4ffcbcf3. This analytic audit checks the cited theorem's content and the new argument. It does not independently verify the current AIRR publication state or issue a release decision.
+
+Role and context: OpenAI Codex assistant acting in a separate audit role. Exact serving model/backend version and effective reasoning effort are not independently attested. Parent history and involved programme context were inherited, including the preceding forward/reverse note audit; this is not a blind, human-independent or provider-independent replication. The present candidate does not use that later G-iteration, and I did not substitute it for the stated F-premise. No grade or scientific-review score is created. No inbound message arrived during the audit and no other agent was contacted or spawned.
+
+Only file reads, hashes, primary-source web reading and mathematical reasoning were used. No numerical, symbolic, Lean/Lake, oracle, candidate validator, Colab runtime or browser/desktop UI execution occurred. No candidate, tracked source, paper354 PDF, PR, state, checkpoint, other chat or automation was modified. The report was composed in the designated existing C working directory and retained in D. No disposable clone/worktree was created.
+
+2. Sections1-2: premise ranges and the finite exponent crossing
+
+The source354 theorem gives exactly the stated normalized-density bounds and the finite F-iteration. The interpolation exponent is equivalent to the source's formula:
+  (1/p-1/t_n)/(1-1/t_n)=(t_n-p)/(p(t_n-1)).
+For 1<p<t_n it lies strictly between zero and one. The cited matching lemma requires its stationary moment exponent to exceed 1+rho; the candidate uses s=(1+rho)/(1-rho)>1+rho, so that requirement is satisfied. Its eta is strictly below one.
+
+Independently checking the crossing, put p=1+rho. Then s-p=rho s and
+  sq_n/(q_n+2s)>p iff q_n>2sp/(s-p)=2(1+rho)/rho=q_c.
+At q_c,
+  s q_c/(s+q_c)=2(1+rho)/(2-rho),
+so its difference from one is 3rho/(2-rho). Consequently
+  F(q_c)-q_c
+  =1+3/[rho^3(2-rho)]-2(1+rho)/rho
+  =[rho^4-4rho^2+3]/[rho^3(2-rho)]
+  =(1-rho^2)(3-rho^2)/[rho^3(2-rho)]>0.
+The denominator is positive throughout 0<rho<1. The known concave quadratic numerator for F(q)-q therefore places q_c strictly between its two roots. Since q_n increases to the upper root, some finite n has q_n>q_c. The choice depends only on rho, not on dimension or h, and is fixed before any asymptotic limit. This is stronger than merely selecting a dimension-dependent n with growing norm constants.
+
+For the u-to-pi estimate, u=Nr gives
+  u-pi=N(r-pi)+(N-1)pi.
+The source inequalities imply 0<=1-N<=1-a^2<=e^2. Probability-space norm monotonicity gives ||pi||_{1+rho}<=||pi||_s<=B. Triangle inequality and N<=1 yield exactly
+  ||u-pi||_{1+rho}<=(2e)^alpha(K_n+B)^{1-alpha}+B e^2=D_L.
+The constants depend only on rho,b and the fixed n. Since alpha<1, the e^2 contribution decays faster in k than the leading e^alpha term. No pointwise bound on u or g is assumed here.
+
+The stationary floor is genuinely used through source354's finite moment bound K_n. This is allowed by the candidate's original setting. Source341's floor-free theorem alone would not justify this step.
+
+3. Section3: actual Doob spectrum and normalization
+
+K is a stochastic kernel because P(h)/g=1. Reversibility for pi dmu follows from symmetry of P and pi(x)K(x,y)=h(x)P(x,y)h(y), with the uniform reference weights understood. The map f -> sqrt(pi) f is unitary from L2(pi dmu) to L2(mu). Direct cancellation gives its conjugated kernel
+  sqrt(h(x)/g(x)) P(x,y) sqrt(h(y)/g(y)),
+which is A=M_sqrt(u) P M_sqrt(u), exactly as claimed.
+
+With X=M_sqrt(u)Q, A=XX* and T=X*X. They are finite square matrices with the same eigenvalues and multiplicities. In fact all are nonsingular because h,g are positive and every Walsh eigenvalue of Q is positive. Thus no nonzero-eigenvalue-only qualification is silently used. A and T are positive definite, hence positive semidefinite as stated. K's strictly positive entries give a simple Perron eigenvalue one; stochasticity bounds its spectral radius by one. Therefore the self-adjoint positive T has norm one.
+
+The proposed Perron vector satisfies
+  Tw=Q M_u Q(Qh)=Q(u Ph)=Qh=w,
+  ||w||_2^2=E hPh=1.
+It is positive and thus is the normalized Perron vector. No extraneous factor N is present. The candidate uses T=Q M_u Q for the actual K spectrum, whereas source341's weighting-normalized Q M_r Q differs by 1/N. This distinction is handled correctly.
+
+4. Section4: the full image and cross block
+
+For a Walsh character of degree j=|S|,
+  (T-P)chi_S=rho^{j/2} Q[(u-1)chi_S].
+The split into u-pi and pi-1 is exact. Ordinary Boolean hypercontractivity maps Q=P_sqrt(rho) from L^{1+rho} to L2 with norm at most one, since its noise parameter squared equals rho=(1+rho-1)/(2-1). Multiplication by chi_S preserves every Lp norm because |chi_S|=1. The first term is therefore bounded by D_L.
+
+Exact matching through k, including the constant normalization E pi=1, means pi-1 has Walsh coefficients only at indices R with |R|>=k+1. The product rule chi_R chi_S=chi_(R triangle S) implies
+  |R triangle S|>=|R|-|S|>=k+1-j.
+Thus f_S=(pi-1)chi_S really has the required high-degree support. This is a support assertion, not an assumed Lp bound for a projection.
+
+Set z=min(s,2). For all fixed 0<rho<1, z>1+rho. Taking t=sqrt(z-1) and eta=sqrt(rho/(z-1)) gives 0<t<=1, 0<eta<1 and eta t=sqrt(rho). The definition agrees with the earlier eta in both regimes: s>=2 gives eta=sqrt(rho), while s<2 gives eta=sqrt(rho/(s-1)). P_t maps L^z contractively to L2 by hypercontractivity; at z=2 it is simply the identity. As a Walsh multiplier it preserves high-degree support. P_eta on that support has L2 norm at most eta^{k+1-j}. Also ||f_S||_z=||pi-1||_z<=B+1. These facts establish (4.1) for every j<=d<=k, including j=0, without a 2d<=k condition.
+
+For f in V_d^0, expand f=sum c_S chi_S. Orthonormality gives sum|c_S|^2=||f||_2^2. Triangle inequality followed by Cauchy--Schwarz in the finite coefficient sum gives
+  ||(T-P)f||_2 <= ||f||_2 [sum_{1<=|S|<=d}||(T-P)chi_S||_2^2]^(1/2).
+Each column is bounded by D_L+(B+1)eta^{k+1-d}, after dropping rho^{j/2}<=1. This proves (4.2) with the stated sqrt(M_d), not M_d. Self-adjointness gives ((T-P)J_d)*=J_d(T-P), proving (4.3).
+
+These are full-image operator estimates. In particular Pi_>d T J_d=Pi_>d(T-P)J_d, since P preserves degree, so the low-to-high block obeys the same bound. The constant column is separately controlled by (4.1) at S empty. Combining it with (4.2) also controls the full domain Pi_<=d if desired. This is not merely another compression estimate.
+
+5. Section5: growing window and escape
+
+Under k_L/sqrt(L)->C>0, k_L->infinity and log L=o(k_L). For fixed allowed c>0, d_L=floor(c k_L/log(L+1)) eventually satisfies 1<=d_L<=k_L and d_L=o(k_L). The elementary count
+  M_d<=d L^d
+implies log M_d<=log d+d log L<=c k_L+o(k_L). This bound is adequate; sharper binomial entropy estimates are unnecessary.
+
+D_L=O(eta^{alpha(k_L+1)}) with fixed constants. Multiplying by sqrt(M_d), the logarithmic exponents for the two terms of E_Ld are precisely
+  [c/2-alpha log(1/eta)]k_L+o(k_L)
+and
+  [c/2-log(1/eta)]k_L+o(k_L).
+The first coefficient is negative by the imposed strict c bound, and the second is negative because alpha<1. Thus E_(L,d_L) tends to zero exponentially in k_L. The condition is nonempty because alpha>0 and eta<1. No endpoint c equality or uniformity as rho approaches zero/one is claimed.
+
+For a normalized T-eigenvector psi with eigenvalue lambda>=rho+zeta, commuting J_d and P gives
+  (lambda I-P)J_d psi=J_d(T-P)psi.
+The Walsh eigenvalues of P on the nonconstant V_d^0 are at most rho. Therefore the inverse on that subspace has norm at most 1/zeta, and (4.3) gives ||J_d psi||_2<=E_Ld/zeta. This is exactly where a compression-only estimate would have been insufficient: the right side takes the FULL psi as input.
+
+For the constant component, psi perpendicular to w gives
+  |<psi,1>|=|<psi,1-w>|<=||1-w||_2.
+Since E w=a and both 1 and w have unit norm, the latter squared is 2(1-a). The bound a>=1/sqrt(1+e^2) and the elementary scalar inequality 2(1-(1+x)^(-1/2))<=x yield |<psi,1>|<=e. Constants are orthogonal to V_d^0, so adding squared norms gives (5.1) with no missing cross term or factor two. When zeta>1-rho the eigenvalue condition is empty, which is harmless. For a collapsing actual gap, lambda_2 tends to one and zeta=(1-rho)/2 applies eventually.
+
+The representation warning is essential and correct. For a real normalized mean-zero K-eigenfunction f, P(hf)=lambda gf. Thus
+  ||Q(hf)||_2^2=E hf P(hf)=lambda E pi f^2=lambda,
+  T Q(hf)=Q u P(hf)=lambda Q(hf),
+  <Q(hf),Qh>=E hf Ph=E pi f=0.
+Dividing by sqrt(lambda)>0 gives the normalized non-Perron T eigenvector. For complex eigenfunctions the same proof uses conjugate inner products and |f|^2. The theorem constrains Walsh degrees of Q(hf)/sqrt(lambda), not of f; no unsupported raw-function escape conclusion is made.
+
+6. Section6: actual reduction and remaining obstruction
+
+I compared source341 section6 directly. Its estimate acts on both sides of Q M_r Q-P with Pi_<=m, requires 2m<=k and explicitly states that cross blocks and eigenvector escape are not controlled. The new note supplies an additional L^{1+rho} estimate derived from the later subcritical theorem and uses an output-smoothing factorization to control entire columns. Thus the low-to-full reduction is proved rather than inserted into a newly named hypothesis. It is a real strengthening for the active setting containing the stationary floor.
+
+However it is not a floor-free strengthening of every source341 hypothesis: the floor-free rigidity input survives, but the new moment bridge uses b>0. The note already says that the floor remains genuine. It should keep this distinction explicit when summarizing 'no new hypothesis'.
+
+The block Pi_>d T Pi_>d remains uncontrolled. Its norm can in principle remain near one without contradicting these low-degree and cross-block estimates. Escape of prospective non-Perron modes into that block localizes the unresolved issue; it does not upper-bound those eigenvalues. No general dimension-uniform gap or critical-s weighting moment follows. The operator reduction does not eliminate the original stationary floor/cap assumptions, and no Yang--Mills, continuum or physical gap statement is warranted.
+
+The discarded compression-only route is correctly identified as overlapping earlier work, not counted as a second theorem. Grouping this result with the ongoing stationary-transfer/spectral work is appropriate. This audit does not recommend a separate short paper merely to increase publication count, and it does not alter any frozen paper354 assessment.
+
+7. Sources, novelty and limitations of verification
+
+I directly checked the applicable ordinary Boolean hypercontractivity statement and tensorization in Mossel--Oleszkiewicz--Sen, On reverse hypercontractivity, arXiv:1108.1210v5, pp.1-2, equation(1.1), https://arxiv.org/pdf/1108.1210 . The rho-squared input/output relation used above matches its half-log time convention. I also checked the bibliographic identity and corrected-edition description for O'Donnell's Analysis of Boolean Functions at https://arxiv.org/abs/2105.10386 ; I did not read the entire textbook or treat that bibliographic check as an originality search. The Walsh multiplication and matrix identities used in this audit were verified directly in the argument.
+
+No global priority claim is certified. The new result is analytically justified relative to the supplied source354 premises and directly exceeds the specific source341 compression conclusion. That programme-internal distinction is not proof of global originality or frontier relevance. The full theorem ranges, finite-n choice, true stationary floor, normalization, growing-degree condition and energy representation must remain attached to any future manuscript use.
+
+No numerical experiment, executable test, formal verification or independent-model replication was performed. The mathematical verdict is an analytic audit of the exact frozen candidate, not a release audit, receipt, public publication, model score or proof-assistant certificate. The three presentation clarifications identified at the outset are non-blocking and should not be misreported as failed mathematics.
+
+Candidate hash was checked again after report composition. The full report is retained without abridgment; no original candidate, prior audit, state or publication artifact was overwritten. No clone/runtime cleanup debt was created.

@@ -1,0 +1,86 @@
+HIGH-DEGREE REDUCTION ADDENDUM B — SEPARATE ANALYTIC AUDIT
+16 November 2026
+
+VERDICT: ACCEPTABLE AS AN ADDITIVE ANALYTIC REDUCTION, WITH ITS STATED ASYMPTOTIC AND REPRESENTATION LIMITS.
+
+The whole-operator bound with constant2, the ordered second-eigenvalue comparison, the equivalence for an eventual uniform positive gap, and the strict failure of the specified scalar Holder/hypercontractive admissibility condition are correct. The three presentation clarifications correctly address the non-blocking observations in the A report. No new error requiring a candidate change was found. This does not prove the remaining high-block estimate, close the general gap, establish global novelty, or create a score or release authorization.
+
+1. Exact frozen inputs and audit context
+
+Addendum B:
+D:\Datos\the-eriksson-programme\autonomia\2026-11-16_low-full-block\HIGH-BLOCK-ADDENDUM-B.txt
+Raw SHA256: 71f384c862cdf3448db5c0ad34c7d189417cdeec2f239affc896c65c8fadca44.
+
+Clarifications:
+D:\Datos\the-eriksson-programme\autonomia\2026-11-16_low-full-block\CLARIFICATIONS.txt
+Raw SHA256: 03bcfd892b1552fbf9ffd4d51d8b58d25fe45aa0c5ba5f8e17c85a7d07565039.
+
+Both documents were read in full. Candidate A remains at raw SHA256 556a2d23e5264f3e1f421928f456a28ab1434e6056d13170d0845089ffd19c56. Its original full audit remains at raw SHA256 b6b150f2a9bcef6d1ba8be2abc6902172a1a3f9d56bc6c5227e335bf9930624c. These two prior artifacts were hashed and left unchanged. This report addresses only the previously unaudited additive statements and the clarification response; it is not another score or reassessment of A or paper354.
+
+Role: the same OpenAI Codex assistant separate audit role that inspected A, now receiving a new frozen assignment after the A audit ended. The preceding audit, involved parent context and supplied premises were available. Exact serving backend/model version and effective reasoning effort are not independently attested. There is no claimed blind, human, organizational or provider independence. No inbound message arrived during this audit; no other agent was contacted or spawned.
+
+Only analytic reasoning, file reading/writing and hashes were used. No numerical or symbolic code, Lean/Lake, oracle, executable validation, Colab runtime or computer/browser UI was used. No target candidate, original audit, paper354, PR, state, other chat or automation was modified. No disposable clone or new runtime was created. The report was composed in the designated C working directory and copied to D with a hash check.
+
+2. Complete low-degree column bound
+
+Let R=Pi_<=d and Z=I-R. Under 1<=d<=min{k,L-1}, R includes the constant and all degree-one characters; Z has positive dimension. In particular L>=2. The A column estimate at the empty character is valid, as was checked in the A audit, and all columns with |S|<=d are bounded by
+  D_L+(B+1)eta^(k+1-d)
+after dropping rho^(|S|/2)<=1. There are exactly 1+M_d such orthonormal columns. Cauchy--Schwarz in their coefficient expansion therefore gives
+  ||(T-P)R||<=sqrt(1+M_d)[D_L+(B+1)eta^(k+1-d)]=eps_d.
+Because T-P is self-adjoint, the adjoint row bound ||R(T-P)||<=eps_d follows. No unproved estimate on the high-to-high block is used in this argument.
+
+3. Bound (B.1), including the off-diagonal norm
+
+Since P commutes with R and Z, the difference between T and RPR+ZTZ has block matrix
+  [ R(T-P)R   RTZ ]
+  [ ZTR         0 ].
+The upper-left block has norm at most eps_d by restriction of the full column bound. RTZ=R(T-P)Z has norm at most eps_d by restriction of the adjoint row bound. Write this block as B. The self-adjoint off-diagonal matrix [0 B; B* 0] has square diag(BB*,B*B), hence its norm is ||B||. Therefore the triangle inequality gives
+  ||T-(RPR+ZTZ)|| <= ||R(T-P)R||+||B|| <=2eps_d.
+The factor2 is a valid upper bound; no optimality is claimed or required. In particular this step does not estimate ZTZ itself by eps_d.
+
+4. Ordered eigenvalues and (B.2)
+
+The actual spectral identity K ~ A=XX*, T=X*X was established in A and checked in the original audit. Consequently the ordered eigenvalues of K are the same as those of the self-adjoint positive T, with multiplicity. Also 0<=T<=I. Compression to the nonzero high-degree space gives 0<=H_d<=I there; its norm is its largest eigenvalue and is at most one.
+
+The low block RPR has a simple largest eigenvalue1 from the constant character and second eigenvalue rho from the degree-one characters, because d>=1. The full block diagonal spectrum is the multiset union of that low spectrum and the high-block spectrum. Its largest eigenvalue is one, and its second is exactly max{rho,||H_d||}. If a high eigenvalue were one, it would contribute the second copy of one and the same formula would still hold. The allowed actual potentials may exclude exact equality at finite dimension by Perron simplicity, but this only strengthens the ordering and is not needed for the proof.
+
+For any self-adjoint finite matrices S,T, ||S-T||<=delta implies that all unit-vector Rayleigh quotients differ by at most delta. Applying the min-max characterization on each subspace gives lambda_j(S)<=lambda_j(T)+delta; interchanging S,T supplies the reverse bound. Thus the ordered-eigenvalue perturbation inequality used in B does not require simplicity, a gap between adjacent eigenvalues, or matching eigenvectors. Applied with j=2 and delta=2eps_d, it proves
+  |lambda_2(K)-max{rho,||H_d||}|<=2eps_d.
+All matrices here act on the same finite full-cube space. The compression H_d is viewed on ZL2, exactly as the addendum specifies, so no artificial zero eigenvalues enter the identification of its top eigenvalue.
+
+5. Growing window and precise equivalence
+
+For the growing d_L of A, M_d>=1 eventually and
+  sqrt(1+M_d)<=sqrt(2)sqrt(M_d).
+Hence eps_d<=sqrt(2)E_Ld and tends to zero with the exponential bound already proved in A. The range d_L<=L-1 holds for all sufficiently large L because d_L=O(sqrt(L)/log L); finite initial dimensions are not the asymptotic assertion.
+
+The equivalence can be written without ambiguity as
+  liminf_L gap(K_L)
+   =1-max{rho,limsup_L ||H_(d_L)||},
+where rho is fixed in (0,1) and gap(K_L)=1-lambda_2(K_L). Indeed (B.2) has a vanishing error; for a bounded scalar sequence x_L, limsup max{rho,x_L}=max{rho,limsup x_L}. Therefore an eventual dimension-uniform positive gap, meaning liminf_L gap(K_L)>0, holds if and only if limsup_L ||H_(d_L)||<1. No convergence of the high-block norms is assumed for this equivalence.
+
+If the actual gaps collapse along the entire sequence, lambda_2(K_L)->1. Then (B.2) yields max{rho,||H_(d_L)||}->1. Since rho<1 is fixed, this forces ||H_(d_L)||->1. Oscillatory near-collapse along a subsequence is separately captured by the limsup formulation and is not incorrectly described as convergence of every high-block norm. The converse full-sequence implication also follows from (B.2), although B only needs the displayed necessary direction.
+
+This is a quantitative equivalent remaining problem, not a proof that its high-block condition holds. No high-block condition has been added to the hypotheses of the already proved comparison. Constants and the choice of window depend on the fixed rho,b and finite bootstrap step as in A; this is not a simultaneous uniform limit as rho varies to one.
+
+6. Failed Holder/hypercontractive step
+
+For a high-degree unit vector f and any finite t>1, u>=0 gives the valid Holder estimate
+  <f,Tf>=E[u|Qf|^2]<=||u||_t ||Qf||_(2t')^2.
+For real functions this is the displayed square form in B. The available finite exponents are t_n<s. Conjugation t -> t/(t-1) is strictly decreasing, so t'>s'. Since
+  s'=(1+rho)/(2rho),  2s'=1+1/rho,
+one obtains 2t'>1+1/rho. Ordinary scalar Boolean hypercontractivity for Q=P_sqrt(rho), from L2 into L^(2t'), requires
+  rho <= 1/(2t'-1).
+But the preceding strict inequality gives 1/(2t'-1)<rho. The proposed use of that particular unrestricted scalar norm map is therefore inadmissible. At t=s it would be at the admissible equality, but that critical moment is not supplied by the finite subcritical bootstrap.
+
+The high-degree support of f is not, by itself, a license to invoke the failed unrestricted hypercontractive inequality. A separately proved restricted-tail estimate or a different exploitation of u=h/Ph could be relevant; B correctly leaves those possibilities open. This audit accepts the stated failed admissibility check, not a universal impossibility theorem for all methods using Holder, hypercontractivity, matching or high-degree information. No actual counterexample to a critical bound or the target gap is furnished.
+
+7. Presentation clarifications and disposition
+
+The clarification of J_>d as Pi_>d=I-Pi_<=d is correct and explicitly removes the constant as well as the other low-degree modes. B's notation Z_d makes this unambiguous. The real-eigenfunction convention is legitimate because the kernels have real symmetric representations and admit real eigenbases; the complex variant uses |f|^2 and conjugate inner products. The phrase 'no new hypothesis' is correctly restricted to the active setting containing pi>=b>0, and does not claim a floor-free upgrade of source341.
+
+The additive spectral comparison and these clarifications can be retained with A as one grouped analytic unit. They do not require or justify a new score, inherited paper354 assessment, review repetition to improve a rating, standalone corollary paper or claimed peer review. The matrix tools and admissibility check are classical; I did not undertake a new global novelty search and certify no priority claim. The meaningful programme-internal content is the explicit reduction to the single high-degree block after the previously missing full-column estimate has been proved.
+
+The original gap and critical-moment problem remain open. Neither physical/continuum conclusions nor changes to PR29=20/41 and TermSource=0 are supported. Paper354 publication/execution authorization is outside this audit and receives no new permission or validation result from it.
+
+The exact B and clarification hashes were rechecked at the end. The original A and its report remain unchanged. This full separate report records the final analytic verdict on the supplied frozen addendum, with no outstanding invalidating objection and no runtime or clone cleanup debt.

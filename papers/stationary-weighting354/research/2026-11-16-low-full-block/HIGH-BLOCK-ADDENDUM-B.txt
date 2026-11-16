@@ -1,0 +1,25 @@
+HIGH-DEGREE REDUCTION ADDENDUM B
+Analytic addition to frozen candidate A (SHA256 556a2d23e5264f3e1f421928f456a28ab1434e6056d13170d0845089ffd19c56). Does not modify A. Pending separate audit on creation; no score or formal verification.
+
+Use all definitions and hypotheses of A and 1<=d<=min{k,L-1}. Let R_d=Pi_<=d include the constant, Z_d=I-R_d, H_d=Z_d T Z_d restricted to Z_d L2(mu), and
+ eps_d=sqrt(1+M_d)[D_L+(B+1)eta^(k+1-d)].
+Section4's column bound also holds for the empty character. Thus ||(T-P)R_d||<=eps_d and its adjoint obeys the same bound. Define the block diagonal operator
+ T_d^diag=R_d P R_d + Z_d T Z_d.
+Then
+ ||T-T_d^diag||<=2eps_d,                                      (B.1)
+ |lambda_2(K)-max{rho,||H_d||}|<=2eps_d.                       (B.2)
+All eigenvalues are ordered with multiplicity; K and T have the same eigenvalues. The norm of H_d is its top eigenvalue because H_d is positive semidefinite.
+
+Proof of (B.1): in the R_d/Z_d decomposition, T-T_d^diag has blocks [A B; B* 0]. A=R_d(T-P)R_d and B=R_d T Z_d=R_d(T-P)Z_d have norms at most eps_d. The off-diagonal matrix [0 B; B* 0] has norm ||B||. The triangle inequality therefore gives2eps_d. No norm of the uncontrolled high block is estimated by this step.
+Proof of (B.2): ||T||=1, so H_d<=I. The low block R_d P R_d has largest eigenvalue1 and second eigenvalue rho (since d>=1 and L>=2). Hence the second eigenvalue of T_d^diag is exactly max{rho,||H_d||}, including if ||H_d||=1. For finite self-adjoint matrices the ordered-eigenvalue perturbation bound |lambda_j(A)-lambda_j(B)|<=||A-B|| follows immediately from the min-max variational principle; apply it with j=2 and use the exact spectral identity from A section3.
+
+For the growing window d_L in A section5, eps_d tends0. Therefore a dimension-uniform asymptotic positive actual gap is equivalent to limsup_L ||H_(d_L)||<1. This is an explicitly equivalent remaining problem, NOT a removed hypothesis and NOT a proof of either side. It quantitatively identifies the single block that must be controlled. In particular an actual collapsing gap forces ||H_(d_L)||->1.
+
+A concrete limitation of the currently available estimates
+For a high-degree unit vector f, the usual Holder step is
+ <f,Tf>=E u (Qf)^2 <=||u||_t ||Qf||_(2t')^2.
+Every finite bootstrap exponent available in A obeys t=t_n<s. Thus 2t'>2s'=1+1/rho. Ordinary hypercontractivity for Q=P_sqrt(rho) from L2 into L^(2t') would require rho<=1/(2t'-1), which fails strictly. Consequently the direct Holder/hypercontractive route cannot turn this proved subcritical bound into a uniform high-block estimate. This identifies a failed admissibility condition for that route, not a counterexample to a different method or to the target theorem.
+The high-block reduction and escape theorem are one grouped unit. Next step must use the actual identity u=h/Ph and stationary constraints to control H_d or produce an admissible trapping family. Repeating the same invalid endpoint norm estimate is excluded. No assumption on H_d is added to the accepted original hypotheses.
+
+Review context and novelty
+The min-max perturbation bound, block decomposition and Holder admissibility check are elementary classical tools; no originality is claimed for them. This addendum's role is to state precisely what candidate A reduces and what it does not solve. It is not a separate paper, does not change published354, and has no inherited assessment. Involved parent Codex authoring; serving backend/effort unattested. Analytic derivation only, no computation or formal check. PR29 stays20/41, TermSource0; no physical or continuum claim.
