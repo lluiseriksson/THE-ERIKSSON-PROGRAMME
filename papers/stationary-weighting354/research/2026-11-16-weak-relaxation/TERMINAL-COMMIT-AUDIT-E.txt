@@ -1,0 +1,77 @@
+TERMINAL PRESERVATION AUDIT — CANDIDATE E
+Date: 2026-11-16
+
+VERDICT
+
+PASS for the exact branch-only evidence-preservation commit df15fa7df970ecb4b9b740495008a2c69b413a28, under the stated no-PR/no-activation/no-dispatch scope. Four payload blobs match the manifest and working-copy raw bytes. The frozen candidate and full analytic report are unchanged. The README accurately limits the mathematical conclusion, and the bibliographic addendum is consistent with the inspected primary source. No blocking defect was found.
+
+This is not a new scientific review or grade, proof of global originality, executed build, PDF assessment, publication receipt or authorization to run computation. I have not pushed the branch or verified a remote receipt for this commit.
+
+IDENTITY AND CONTEXT
+
+Auditor: OpenAI Codex role /root/bootstrap_note_audit. Exact underlying model build and reasoning effort are not independently attested. This is the same provider/workflow and inherited context as the earlier analytic audit, not blind, human or provider-independent peer review. This terminal pass checks preservation and presentation; it does not resample or raise the prior assessment. No numerical score is assigned.
+
+Only file/Git reads, raw hashes, primary-source reading and this report's creation were performed. No mathematical code, tests, shell syntax check, build, Lean/Lake, runtime, UI, PR, workflow activation or dispatch occurred. No candidate or previous report was edited.
+
+FROZEN COMMIT AND SCOPE
+
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116
+Branch: codex/low-full-evidence-20261116
+HEAD: df15fa7df970ecb4b9b740495008a2c69b413a28
+Single parent: 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+Only changed directory: papers/stationary-weighting354/research/2026-11-16-weak-relaxation
+
+The tree/index are clean. The parent-to-HEAD delta contains exactly five additions: CANDIDATE-E.txt, FULL-ANALYTIC-AUDIT-E.txt, PRIMARY-SOURCE-POSITIONING.txt, README.md and MANIFEST.json. No existing file was modified or deleted. In particular the accepted grouped manuscript and inactive PDF-production payload remain unchanged. Git diff whitespace checking passed. The manifest base equals the actual parent; its four entries account for every payload other than the manifest itself, whose bytes are anchored by the commit.
+
+RAW-BYTE CHECKS
+
+I read each committed blob through binary process stdout, computed its SHA256 and length without text normalization, and compared it to the manifest and raw working file. All four checks passed:
+
+CANDIDATE-E.txt
+7344 bytes
+0d11186fee2f9daff0c3fe33cee3092510ba5ace75abea9f6c76cebed184fafe
+
+FULL-ANALYTIC-AUDIT-E.txt
+15327 bytes
+459b9b2cce46aac7004ab1df1a33fe98b3fed235d426e19bbc2514a633d6d35a
+
+PRIMARY-SOURCE-POSITIONING.txt
+1994 bytes
+fde1b154f54aa86cc6deda2bb6ab28dfca7fc1655df047cc054129c546f2cc54
+
+README.md
+2461 bytes
+cb4292c603ee52673fb9ff19ecec2ea5b8fbd2f3cf36380fdd702703b205316e
+
+The first three also match the corresponding retained files in D:\Datos\the-eriksson-programme\autonomia\2026-11-16_weak-relaxation. README.md was absent from that D: root during this inspection. It is nevertheless present in the exact local Git commit and matches the manifest; this report does not falsely certify a complete D: root mirror. The authorized branch preservation still needs its actual remote SHA receipt before it is described as pushed.
+
+The candidate hash is exactly the one previously audited, and the full analytic-report hash is exactly the report previously returned. Its full reasoning, caveats and identity context have not been normalized, shortened or replaced.
+
+README SCOPE
+
+The displayed polynomial variance estimate and constants agree with the accepted frozen note. Fixed rho and b are stated, and the uniformity is explicitly across cube dimension for families with bounded oscillation. The text expressly denies a uniform L2 spectral-gap estimate, optimal-exponent proof, global originality, admissible collapsing-gap example and killed-operator control. The absence of matching is described as a weaker independent consequence, not elimination of an original hypothesis while preserving the full gap conclusion.
+
+The inverse edge moment is described as derived from the actual normalized potential's pointwise stationary floor. No new assumed inverse moment is substituted. Here hPh>=b uses h times Ph, as in the frozen definitions, rather than the scalar energy normalization.
+
+The README correctly explains the immutable candidate's historical 'not yet audited' wording and points to the later dated audit instead of rewriting the frozen input. It calls the result an accepted analytic research supplement and explicitly disclaims formal verification, experiment, PDF review, numerical score and publication. The reviewer context acknowledges the same provider and inherited context. It commits to grouping with related work, not a standalone minor paper. It leaves the pending execution/capacity request and the frozen production manuscript untouched.
+
+BIBLIOGRAPHIC ADDENDUM CHECK
+
+I inspected the author-hosted published PDF of Andrieu, Lee, Power and Wang, Annals of Statistics 50(6), 3592–3618 (2022), DOI 10.1214/22-AOS2241, including the abstract and the stated Proposition 35, Theorem 36/proof and Remark 37.
+https://awllee.github.io/papers/AOS2241.pdf
+
+Theorem 36 assumes two kernels invariant for the same measure and an off-diagonal comparison. It derives a weak form comparison through tails of the comparison weight; oscillation is an allowed functional. The addendum's account is accurate. Candidate E instead compares edge forms under Boolean and Doob stationary measures and separately transfers variance using the density cap. This distinction does not establish novelty or rule out a reformulation under broader comparison theory. The addendum explicitly acknowledges that limitation.
+
+The addendum's statement about negative search results is recorded as weak search evidence, not certified completeness. I did not repeat that entire search or inspect the whole 2022 paper. Its historical wording requiring an exact-source audit reflects creation during the earlier audit; the unchanged full report and README establish that subsequent local analytic verdict. No priority claim or publication claim is inferred from the timing. The stated 2001 full-text access limitation remains disclosed.
+
+WORKFLOW AND BRANCH-PRESERVATION BOUNDARY
+
+The .github/workflows tree is unchanged by this commit. The active trigger configuration remains: ci.yml, control-plane.yml and lean-build.yml restrict push computation to main; validate-dashboard.yml filters for docs/dashboard/**, scripts/validate_dashboard.py and its own workflow path; orchestrator.yml is schedule/dispatch based. None of the five added paths matches those dashboard filters. No workflow is introduced in this supplement. The previously reviewed .yml.template stays outside .github/workflows and remains inactive.
+
+A main-target PR would have a different trigger analysis, including Lean, and is expressly outside this proposal. There is no core.hooksPath override observed and the resolved pre-push hook file is absent. Thus the proposed ordinary branch-only preservation does not request computation through the inspected active workflow or hook configuration.
+
+This is static configuration evidence, not a promise about unrelated scheduled tasks, external integrations or exceptional GitHub service behavior. The parent must check the actual remote branch SHA after any authorized push and report unexpected events if observed. No main integration, build or AIRR publication may be inferred from that preservation action.
+
+FINAL DISPOSITION
+
+The exact frozen candidate, its unchanged analytic audit and the appropriately limited positioning record are ready for branch-only preservation. This terminal pass adds no scientific grade or originality certificate. The pending PDF exception/capacity gate is unchanged, and no computation or publication has occurred in this audit.

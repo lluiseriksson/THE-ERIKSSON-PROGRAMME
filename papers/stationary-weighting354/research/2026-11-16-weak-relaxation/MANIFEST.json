@@ -1,6 +1,7 @@
 {
   "base_commit": "8efcb73bdc4a6458f81fee6b3d9256f1e1524495",
-  "representation": "Raw bytes; candidate and audit unchanged; no normalization of retained reports",
+  "accepted_E_commit": "df15fa7df970ecb4b9b740495008a2c69b413a28",
+  "representation": "Raw bytes; candidates and reports unchanged; no normalization of retained reports",
   "files": [
     {
       "path": "CANDIDATE-E.txt",
@@ -8,9 +9,19 @@
       "sha256": "0d11186fee2f9daff0c3fe33cee3092510ba5ace75abea9f6c76cebed184fafe"
     },
     {
+      "path": "CANDIDATE-F.txt",
+      "bytes": 5078,
+      "sha256": "13cfa7b0faf2874e97a54aa3136cb8d885aaa529b53d35762b55599f4e949adf"
+    },
+    {
       "path": "FULL-ANALYTIC-AUDIT-E.txt",
       "bytes": 15327,
       "sha256": "459b9b2cce46aac7004ab1df1a33fe98b3fed235d426e19bbc2514a633d6d35a"
+    },
+    {
+      "path": "FULL-ANALYTIC-AUDIT-F.txt",
+      "bytes": 13272,
+      "sha256": "3c9efd83a78cde7c109b52b177483043a3183510615751e78055c7d52e5f09c5"
     },
     {
       "path": "PRIMARY-SOURCE-POSITIONING.txt",
@@ -19,8 +30,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 2461,
-      "sha256": "cb4292c603ee52673fb9ff19ecec2ea5b8fbd2f3cf36380fdd702703b205316e"
+      "bytes": 3569,
+      "sha256": "d84ded2692a4b94923bff039ed689cc37e50a3de0681688f35993c5fb00d55b8"
+    },
+    {
+      "path": "TERMINAL-COMMIT-AUDIT-E.txt",
+      "bytes": 8034,
+      "sha256": "1b205105afea79071a94bf84932f6caee5c70adc6f1dcd4b121d9003e55f35ba"
     }
   ]
 }

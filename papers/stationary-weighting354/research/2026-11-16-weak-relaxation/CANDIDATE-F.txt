@@ -1,0 +1,99 @@
+CANDIDATE F — SUMMABLE RELAXATION AND STATIONARY SAMPLE-MEAN ERROR AT rho=1/2
+2026-11-16. New analytic candidate; not yet audited. Group with E, not a separate paper.
+E remains byte-for-byte frozen. No computation or PDF production.
+
+1. Exact assumptions and conclusion
+Use E's actual Boolean Doob setup, but fix rho=1/2. Thus s=3, B=2^(1/3).
+Assume only h>0, E hP h=1, pi=hPh>=b>0 and E pi^3<=2. No matching.
+Let nu=pi mu, K=P(h dot)/(Ph), and O=osc(f) for real f.
+Set c_*=b^4 2^(-61/24), A=(7/8)c_*.
+Claim F1:
+ Var_nu(K^n f) <= O^2 [1+A n]^(-8/7), all n>=0.
+Claim F2:
+ For a stationary K-chain X_0,X_1,... and any integer N>=1,
+ Var[(1/N) sum_{i=0}^{N-1} f(X_i)]
+ <= (3+32/c_*) O^2/N.
+Neither claim is a dimension-uniform L2 spectral gap or an arbitrary-start bound.
+The prefactors depend on fixed b, not on L, h, N, or f beyond O.
+For O=0 all claims are immediate.
+
+2. A stronger inverse potential moment, derived rather than assumed
+Write g=Ph, Q=P_sqrt(rho), so ||Qh||_2=1.
+From h>=b/g, applying P gives g>=b P(1/g).
+Rowwise Cauchy-Schwarz/Jensen gives P(1/g)>=1/(Pg).
+Therefore g Pg>=b, and 1/g<=Pg/b.
+Since Pg=P_(rho^(3/2)) Qh, ordinary hypercontractivity at rho=1/2 gives
+ ||Pg||_9<=1:
+rho^3=1/8=(2-1)/(9-1).
+Consequently ||1/g||_9<=b^(-1).
+
+Using h=pi/g and Holder with 1/(9/4)=1/3+1/9 gives
+ ||h||_(9/4)<=B/b.
+Ordinary hypercontractivity P_(1/2):L^(9/4)->L^6 is admissible because
+(1/2)^2=((9/4)-1)/(6-1)=1/4.
+It follows that ||g||_6<=B/b.
+The ORIGINAL floor also gives 1/h<=g/b, hence
+ ||1/h||_6<=H:=B/b^2.
+All these are uniform bounds derived from the original floor, cap and normalization. No new inverse-moment assumption is inserted.
+
+3. Inverse edge moment and energy-variance inequality
+Under the base probability m(x,y)=mu(x)P(x,y), let w=h(x)h(y).
+For v=h^(-4),
+ E_m w^(-4)=||Qv||_2^2<=||v||_(3/2)^2=||1/h||_6^8<=H^8.
+The Q:L^(3/2)->L2 hypercontractive condition holds at equality.
+
+Repeat E's edge Holder comparison, now with alpha=4/5:
+ D_P(f)<=2^(alpha-1) H^(2alpha) D_K(f)^alpha O^(2(1-alpha))
+ <=H^(2alpha) D_K(f)^alpha O^(2(1-alpha)).
+The noise gap equals1/2 and s'=3/2. The same variance transfer gives
+ Var_nu(f)<=C_* D_K(f)^(8/15) O^(14/15),
+ C_*=B 2^(2/3) H^(16/15).
+Let a_*=8/15 and p_*=(1-a_*)/a_*=7/8.
+Then
+ C_*^(-1/a_*)=C_*^(-15/8)
+ =B^(-15/8) 2^(-5/4) H^(-2)
+ =b^4 B^(-31/8) 2^(-5/4)
+ =b^4 2^(-31/24-30/24)
+ =c_*.
+The discarded factor2^(alpha-1)<=1 again deliberately weakens constants.
+
+4. Discrete relaxation
+E proves the actual K is self-adjoint, PSD and Markov, so for F=K^n f
+ Var_nu(F)-Var_nu(KF)>=D_K(F)
+and osc(K^n f)<=O.
+The energy-variance inequality yields y_(n+1)<=y_n-c_* y_n^(1+p_*)
+for y_n=Var_nu(K^n f)/O^2.
+The same negative-power convexity proof as E gives
+ y_n<=[1+p_* c_* n]^(-1/p_*),
+which is F1. Zero variance is handled without negative powers by permanence of constants.
+No numerical computation or analogy with continuous time is used.
+
+5. Stationary covariances and finite-N sample-mean bound
+Center f by its nu mean and let gamma_j=Cov(f(X_0),f(X_j)).
+Stationarity and reversibility give gamma_j=<f,K^j f>_nu.
+PSD implies gamma_j>=0. For j=2m, gamma_j=Var_nu(K^m f).
+For j=2m+1, PSD contraction gives
+ gamma_j=<K^m f,K K^m f>_nu<=Var_nu(K^m f).
+Therefore
+ sum_{j>=1} gamma_j <= Var_nu(f)+2 sum_{m>=1} Var_nu(K^m f).
+The decreasing bound in F1 satisfies
+ sum_{m>=1}(1+A m)^(-8/7)<=int_0^infinity(1+A x)^(-8/7)dx
+ =7/A=8/c_*.
+Using Var_nu(f)<=O^2 yields
+ sum_{j>=1} gamma_j <= O^2(1+16/c_*).
+All terms are nonnegative and the series is finite, so no conditional rearrangement is involved.
+
+For finite N, the exact stationary covariance identity is
+ Var[(1/N)sum_{i=0}^{N-1}f(X_i)]
+ =(1/N^2)[N gamma_0+2 sum_{j=1}^{N-1}(N-j)gamma_j]
+ <=(1/N)[gamma_0+2 sum_{j>=1}gamma_j]
+ <=(3+32/c_*)O^2/N.
+This proves F2. It is a uniform stationary variance/error bound; it does not include burn-in, initialization bias, nonstationary warm starts or a dimension-uniform full-spectrum gap.
+
+6. Scope and originality
+This is a strengthened specialization of E, using the already established nonlinear floor identity and one ordinary positive-moment smoothing step. rho=1/2 is a concrete fixed permitted parameter, not a claim about all rho.
+It produces summable bounded-observable variance decay, with a uniform stationary sample-mean variance coefficient, under the original stationary floor and cap alone.
+General weak-Poincare comparison, polynomial decay and covariance summation are established tools; no invention of those tools, rate optimality or global priority is claimed. The explicit exponent8/7 and c_* come from the displayed specialized calculation and require analytic audit.
+References: E and PRIMARY-SOURCE-POSITIONING.txt; ordinary hypercontractivity as stated in O'Donnell Lecture16 Theorem1.1; standard WPI background Andrieu-Lee-Power-Wang2022/2023.
+The earlier full manuscript and pending PDF execution request remain unchanged. No standalone publication or inherited numerical assessment.
+Authoring role: current OpenAI Codex, actual backend/effort unattested. No separate review yet for this frozen candidate.

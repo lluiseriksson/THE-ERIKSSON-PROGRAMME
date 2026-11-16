@@ -1,0 +1,165 @@
+FULL ANALYTIC AUDIT OF FROZEN CANDIDATE F
+Date: 2026-11-16
+
+EXACT INPUT AND VERDICT
+
+Input: D:\Datos\the-eriksson-programme\autonomia\2026-11-16_weak-relaxation\CANDIDATE-F.txt
+SHA256: 13cfa7b0faf2874e97a54aa3136cb8d885aaa529b53d35762b55599f4e949adf
+The raw C: copy under papers/stationary-weighting354/research/2026-11-16-weak-relaxation matches this hash.
+
+VERDICT: ANALYTICALLY SOUND under the exact assumptions stated. The derived inverse-potential L6 bound, the energy-variance inequality, the exponent 8/7, the constant c_*=b^4 2^(-61/24), and the stationary finite-N sample-mean variance bound are correct. I find no blocking mathematical error. The improvement past the summability threshold is real for the specified oscillation-controlled norm, and the covariance argument correctly uses the actual reversible PSD kernel.
+
+This result does not establish a dimension-uniform full L2 spectral gap, an arbitrary-start error bound, a central limit theorem, optimal constants/exponent or global originality. It is appropriately grouped with E and the related programme rather than emitted as a separate small paper. This report is not a numerical score, formal proof certificate, PDF assessment, acceptance or publication.
+
+IDENTITY AND AUDIT CONTEXT
+
+Auditor: OpenAI Codex role /root/bootstrap_note_audit. The exact backend model build and reasoning effort are not independently attested. This is a separate role from authoring, with inherited context and the same provider/workflow. It is not blind, human or provider-independent peer review. Candidate E and its full accepted report remain unchanged; their hashes were checked, not regraded:
+E: 0d11186fee2f9daff0c3fe33cee3092510ba5ace75abea9f6c76cebed184fafe
+E audit: 459b9b2cce46aac7004ab1df1a33fe98b3fed235d426e19bbc2514a633d6d35a.
+
+I read the whole frozen F note, checked the relevant original model and already retained floor identity, and verified the derivation by analytic reasoning. No numerical/symbolic calculation program, experiment, test, syntax/build execution, Lean/Lake, UI, runtime or PDF production was performed. No candidate, manuscript or prior report was edited. This report is the only file written. No answer to the pending execution exception is inferred or supplied.
+
+1. ACTUAL MODEL AND ASSUMPTIONS
+
+The setting is the same finite Boolean cube with uniform probability mu, strictly positive h and actual noise Doob kernel as E, now at the fixed noise parameter rho=1/2. Thus P=P_(1/2), Q=P_sqrt(1/2), g=Ph, and E_mu[hPh]=1. The pointwise expression pi=hPh means h(x)(Ph)(x), not the scalar expectation. The assumptions are pi>=b>0 and E_mu pi^3<=2. Since E_mu pi=1, necessarily b<=1.
+
+The invariant probability is nu=pi mu. The kernel K(x,y)=P(x,y)h(y)/g(x) is Markov and reversible under nu, because nu(x)K(x,y)=mu(x)P(x,y)h(x)h(y). Its conjugate on L2(mu) is M_sqrt(h/g) P M_sqrt(h/g), which is PSD. Markov contraction bounds its eigenvalues above by one. All subsequent spectral and covariance statements concern this actual K and its actual stationary nu, not a surrogate weighting distribution.
+
+The cap gives B=||pi||_3 bounded above by the chosen constant 2^(1/3); the note uses B=2^(1/3) as a uniform bound, not an assertion of equality for every potential. The normalization and floor are preserved throughout. No matching, additional inverse-moment assumption, killed-norm estimate or pointwise upper bound on h is inserted.
+
+All constants are dimension-free only with fixed b and rho=1/2. There is no assertion for arbitrary rho, b tending to zero, or a changing time-dependent kernel. The result is for finite cubes; no infinite-dimensional limiting process is constructed.
+
+2. STRONGER INVERSE POTENTIAL MOMENT
+
+Since Q^2=P and Q is self-adjoint,
+||Qh||_2^2=<h,Ph>_mu=1.
+
+The floor hg>=b implies h>=b/g pointwise. Positivity of P gives
+g=Ph>=b P(1/g).
+For each probability row P(x,.), convexity of reciprocal (or Cauchy-Schwarz) gives P(1/g)>=1/(Pg). Every denominator is positive. Therefore g(Pg)>=b and
+1/g<=Pg/b.
+The direction of this inverse inequality is correct.
+
+Noise composition gives Pg=P_rho^2 h=P_(rho^(3/2))Qh. At rho=1/2 the squared noise parameter rho^3 is 1/8. The ordinary Boolean hypercontractivity condition from L2 to L9 is exactly noise-parameter-squared <=(2-1)/(9-1)=1/8. Hence
+||Pg||_9<=||Qh||_2=1,
+and ||1/g||_9<=b^(-1).
+
+This floor identity and smoothing bound were already present in the grouped manuscript as D_0=1+rho^(-3). F accurately reuses and specializes them rather than claiming a new hypercontractivity theorem.
+
+Now h=pi/g. Holder's reciprocal exponents satisfy
+1/(9/4)=4/9=1/3+1/9.
+All are ordinary finite norm exponents, so
+||h||_(9/4)<=||pi||_3 ||1/g||_9<=B/b.
+
+For P_(1/2):L^(9/4)->L6, the hypercontractive threshold is
+(1/2)^2=((9/4)-1)/(6-1)=(5/4)/5=1/4.
+It is admissible at equality. Thus ||g||_6<=B/b. Finally the original floor gives h^(-1)<=g/b, so
+||h^(-1)||_6<=B/b^2=:H.
+
+Every step is dimension-uniform. The conclusion is genuinely proved from the original floor, cap and energy normalization, not placed in a new structure as an assumption. The cap is used in the h=pi/g Holder step.
+
+3. EDGE MOMENT, VARIANCE TRANSFER AND CONSTANTS
+
+Let m(x,y)=mu(x)P(x,y), a probability measure, and w(x,y)=h(x)h(y). With v=h^(-4),
+E_m w^(-4)=<v,Pv>_mu=||Qv||_2^2.
+The Q:L^(3/2)->L2 condition is sqrt(rho)<=sqrt(((3/2)-1)/(2-1)), again equality. Therefore
+E_m w^(-4)<=||v||_(3/2)^2=||h^(-1)||_6^8<=H^8.
+The power eight is correct: squaring the L^(3/2) norm of h^(-4) equals the eighth power of the L6 norm of h^(-1). Independence of edge endpoints is not assumed.
+
+For O=osc(f)>0 set z=(f(x)-f(y))^2/O^2, so 0<=z<=1. With alpha=4/5 and 4(1-alpha)=alpha, Holder gives
+E_m z <=(E_m wz)^alpha(E_m w^(-4)z)^(1-alpha)
+       <=(2D_K(f)/O^2)^alpha H^(8/5).
+As D_P(f)=(O^2/2)E_m z, this yields
+D_P(f)<=2^(alpha-1)H^(2alpha)D_K(f)^alpha O^[2(1-alpha)].
+The 2^(alpha-1)=2^(-1/5) factor is below one; dropping it weakens the bound in the valid direction.
+
+The unweighted noise gap is 1-rho=1/2, and the conjugate of the stationary moment exponent s=3 is s'=3/2. The same centered variance transfer as E gives
+Var_nu(f)<=B O^(2/3) Var_mu(f)^(2/3)
+          <=B 2^(2/3) H^(16/15) D_K(f)^(8/15) O^(14/15).
+Here the energy exponent is (4/5)(2/3)=8/15, and the oscillation exponent is 2/3+(2/5)(2/3)=14/15. They satisfy the required quadratic homogeneity: 2(8/15)+14/15=2.
+
+Thus a_*=8/15, p_*=(1-a_*)/a_*=7/8, and
+C_*=B 2^(2/3)H^(16/15).
+Raising to -1/a_*=-15/8 gives
+C_*^(-15/8)=B^(-15/8)2^(-5/4)H^(-2)
+           =b^4 B^(-31/8)2^(-5/4)
+           =b^4 2^(-31/24-30/24)
+           =b^4 2^(-61/24)=c_*.
+Every displayed exponent and constant in the candidate matches this calculation. c_*>0 for fixed b>0. The deliberate factor loss means the constant is conservative, not optimal.
+
+4. DISCRETE VARIANCE DECAY
+
+For any F, reversibility, invariance and PSD contraction yield
+Var_nu(F)-Var_nu(KF)=<F,(I-K^2)F>_nu>=D_K(F),
+since 1-lambda^2>=1-lambda for lambda in [0,1]. Also Markov averaging preserves the range of the initial f, so osc(K^n f)<=O.
+
+Apply the energy-variance inequality to F=K^n f and use this fixed initial oscillation as the denominator. For y_n=Var_nu(K^n f)/O^2 one obtains
+y_(n+1)<=y_n-c_* y_n^(1+p_*).
+The replacement of current oscillation by O weakens the lower bound on energy in the correct direction.
+
+For p_*=7/8>0, t->t^(-p_*) is convex on positive t. Its tangent inequality at y_n shows
+y_(n+1)^(-p_*)-y_n^(-p_*)>=p_*c_*
+whenever consecutive values are positive. If a variance is zero, all later variances vanish; no inverse power is applied to zero. Telescoping and y_0<=1 give
+y_n<=[1+p_*c_*n]^(-1/p_*)
+    =[1+(7/8)c_*n]^(-8/7),
+which is F1. At n=0 the relaxed right side is O^2 and dominates the initial variance. A sharper initial-value factor is available as in E, but not necessary for F1.
+
+This argument requires p_*>0, not p_*>=1. Therefore crossing from E's previous p>1 to the present p_*=7/8 causes no defect in the discrete recursion. It is exactly why the resulting rate exponent 8/7 is above one. No continuous-time comparison or numerical computation is used.
+
+5. STATIONARY COVARIANCES AND SUMMABILITY
+
+Assume X_0 has distribution nu and (X_i) evolves under this same K. Center f by its nu mean; oscillation and the sample-mean variance are unchanged. Then
+gamma_j=Cov(f(X_0),f(X_j))=<f,K^j f>_nu.
+PSD gives gamma_j>=0. By self-adjointness,
+gamma_(2m)=||K^m f||_nu^2=Var_nu(K^m f).
+For odd indices,
+gamma_(2m+1)=<K^m f,K K^m f>_nu<=||K^m f||_nu^2.
+The upper bound uses contraction and the lower nonnegativity uses PSD.
+
+This even/odd argument is important. A generic Cauchy-Schwarz bound against ||K^j f|| alone would lose half the decay exponent and would not establish summability here. The candidate avoids that loss correctly through reversibility and the exact covariance identity.
+
+The odd term at j=1 is at most Var_nu(f). Pairing all remaining even/odd terms gives
+sum_(j>=1)gamma_j<=Var_nu(f)+2 sum_(m>=1)Var_nu(K^m f).
+For A=(7/8)c_*>0 the function (1+Ax)^(-8/7) is positive and decreasing. The usual sum-integral comparison in the stated direction gives
+sum_(m>=1)(1+Am)^(-8/7)
+ <=integral_0^infinity(1+Ax)^(-8/7)dx
+ =7/A=8/c_*.
+The integral is finite specifically because 8/7>1. Thus
+sum_(j>=1)gamma_j<=O^2(1+16/c_*).
+All summands are nonnegative and the bound proves convergence, so no conditionally convergent rearrangement is made.
+
+6. FINITE-N SAMPLE-MEAN BOUND
+
+For integer N>=1, stationarity gives exactly
+Var[(1/N)sum_(i=0)^(N-1)f(X_i)]
+ =[N gamma_0+2 sum_(j=1)^(N-1)(N-j)gamma_j]/N^2.
+Since 0<=N-j<=N and gamma_j>=0, this is at most
+[gamma_0+2 sum_(j>=1)gamma_j]/N.
+Using gamma_0<=O^2 and the preceding sum estimate yields
+Var[(1/N)sum f(X_i)]<=(3+32/c_*)O^2/N,
+as stated in F2. For N=1 this remains a valid loose bound. The unused stronger variance bound O^2/4 would improve constants but is not required.
+
+Under stationarity the empirical average is unbiased for nu(f), so its mean-square estimation error about nu(f) equals the bounded variance. This does not extend to arbitrary initialization, where bias and changed covariance structure would require additional analysis. Stationarity must mean nu, not the uniform Boolean reference measure mu. The note explicitly imposes stationarity and disclaims arbitrary starts.
+
+7. INTERPRETATION AND LIMITS
+
+F obtains a dimension-uniform integrated covariance/variance coefficient for real observable families with controlled oscillation. On each finite cube all functions are bounded, but oscillations of variance-normalized localized eigenfunctions can grow with dimension. Hence an O^2/N bound does not imply a uniform full-spectrum gap. Neither F nor this audit constructs an admissible gap-collapse example.
+
+The fixed rho=1/2 specialization is essential to the particular exponents and constants proved. The derivation does not state a parameter interval or optimize over available inverse moments. No optimality or frontier-priority conclusion follows from the explicit 8/7 rate. A finite chain can have faster eventual exponential decay with dimension-dependent constants, consistently with this uniform polynomial envelope.
+
+Summable stationary covariances justify the displayed variance estimate and an integrated-covariance bound. A central limit theorem, concentration inequality, burn-in bound or nonstationary mean-square error statement would require its own stated theorem; none is asserted or certified here. The proof does not require matching, but it does not remove matching from the original full-gap problem while preserving that stronger conclusion.
+
+8. SOURCES AND ORIGINALITY CONTEXT
+
+The ordinary Boolean hypercontractivity theorem and its parameter range were inspected in the preceding E audit from Ryan O'Donnell's author-hosted CMU Lecture 16, Theorem 1.1:
+https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf
+The three applications in F satisfy its ordinary finite-exponent range, at equality. No new reverse or endpoint theorem is invoked.
+
+The nonlinear g(Pg)>=b identity and its D_0 inverse bound are explicitly present in the frozen grouped manuscript's Section 3; I read those lines. F appropriately describes their reuse. WPI comparison/relaxation is established context in the previously inspected Andrieu-Lee-Power-Wang sources:
+https://awllee.github.io/papers/AOS2241.pdf
+https://arxiv.org/pdf/2312.11689v1
+The covariance summation is an elementary consequence of the actual reversible PSD model, derived fully above. These references are context, not a certificate that the specialized explicit theorem has priority. No broad literature exclusion was performed in this audit.
+
+FINAL DISPOSITION
+
+F1 and F2 pass exact-source analytic inspection with their stated constants and scope. This extension is meaningful because it moves the bounded-observable decay exponent beyond one and yields an explicit stationary sample-mean variance coefficient. Consolidate it with E and the related programme after appropriate priority positioning; do not present it as resolution of the gap question or as a separately assessed PDF. The frozen production manuscript, prior reports and pending execution request remain unchanged. No blocking mathematical correction is required to the frozen candidate.
