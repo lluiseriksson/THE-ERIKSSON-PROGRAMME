@@ -3,59 +3,59 @@
   "representation": "Raw file bytes; no transformation during preservation",
   "files": [
     {
-      "path": "audit/COMMIT-AND-BUILD-PREPARATION-AUDIT.txt",
       "sha256": "5dc52f251348cc9e028e4a3a66f3e55d79c2ed26091ef823d92b61d7b7129d0c",
-      "bytes": 18325
+      "bytes": 18325,
+      "path": "audit/COMMIT-AND-BUILD-PREPARATION-AUDIT.txt"
     },
     {
-      "path": "audit/CORRECTED-INTEGRATED-SOURCE-AUDIT.txt",
       "sha256": "29ca3abd83e2096eebded6543e582feca1b4946ab1d59348e895a5f22072563a",
-      "bytes": 8759
+      "bytes": 8759,
+      "path": "audit/CORRECTED-INTEGRATED-SOURCE-AUDIT.txt"
     },
     {
-      "path": "audit/FULL-INTEGRATED-SOURCE-AUDIT.txt",
       "sha256": "28218f9adf6f9c003b0d818d16b0f44b60eb17f43ea648ba784efba63bf84e16",
-      "bytes": 15838
+      "bytes": 15838,
+      "path": "audit/FULL-INTEGRATED-SOURCE-AUDIT.txt"
     },
     {
-      "path": "BUILD-BINDING.json",
-      "sha256": "9e11100f0f30a8c4893ca0867ed3a46749ee448e50ae5ae80c7e34f49d4b1cb1",
-      "bytes": 2198
+      "sha256": "937f5445491037ef75eebb5be621f07a6fc4e05ad00b9a7c6f68babd40e0d726",
+      "bytes": 2167,
+      "path": "BUILD-BINDING.json"
     },
     {
-      "path": "build-one.sh",
       "sha256": "13cdc5ab0c01c1e73e49373b0ee8e6241e623624703ad02184fb44c35bedb4ea",
-      "bytes": 2264
+      "bytes": 2264,
+      "path": "build-one.sh"
     },
     {
-      "path": "build-pipeline.sh",
       "sha256": "0a0f8f6555e84b2dd754782454114c551068d452a6c2288e11672eae89e99541",
-      "bytes": 1715
+      "bytes": 1715,
+      "path": "build-pipeline.sh"
     },
     {
-      "path": "BUILD-RECIPE.txt",
       "sha256": "e1946aa394b325635458dafe135c0b0485158721c066cdbd3f4d49dc65517695",
-      "bytes": 4403
+      "bytes": 4403,
+      "path": "BUILD-RECIPE.txt"
     },
     {
-      "path": "build-window-revision.yml.template",
       "sha256": "7acdb1942126b9ff9fd65edede1b72726b56abb1f71b3e80a975030b8c9a706e",
-      "bytes": 5861
+      "bytes": 5861,
+      "path": "build-window-revision.yml.template"
     },
     {
-      "path": "history/manuscript-window-v2-candidate-rejected.tex",
       "sha256": "6ffc9ea0d351a9f9c1306caf3a1da7afe5b4a9dceed10e48d5e0020a0f2ebf6b",
-      "bytes": 51160
+      "bytes": 51160,
+      "path": "history/manuscript-window-v2-candidate-rejected.tex"
     },
     {
-      "path": "manuscript-window-v2-candidate.tex",
       "sha256": "186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3",
-      "bytes": 52044
+      "bytes": 52044,
+      "path": "manuscript-window-v2-candidate.tex"
     },
     {
-      "path": "README.md",
       "sha256": "d13974d6e60b69fad8395ec0610562ac98958b368442dd8f38106b8617323af2",
-      "bytes": 4044
+      "bytes": 4044,
+      "path": "README.md"
     }
   ]
 }
