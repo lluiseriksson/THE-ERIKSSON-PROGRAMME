@@ -1,0 +1,27 @@
+{
+  "base_commit": "bae138a94f403b4814e45061974874f22fcc0006",
+  "representation": "Raw bytes without normalization; new text UTF8 noBOM LF, copied report original bytes",
+  "files": [
+    {
+      "path": "CANDIDATE-H.txt",
+      "bytes": 10041,
+      "sha256": "00d72ea4229d7ab90f84f0c9085020920b3790b0226572d336fb49b2b0cfddf5"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2196,
+      "sha256": "052d2d4bbed5a94720c191a0a8875b505d8d0336480b3dce207bb0896a221f24"
+    },
+    {
+      "path": "FULL-ANALYTIC-AUDIT-H.txt",
+      "bytes": 15990,
+      "sha256": "71a31185ffc267c5d544e98d7827ba51e0f35d6b7d4227370ca843dc2c49ebb6"
+    }
+  ],
+  "scope": "Counterexample to specified abstract gap upgrade, proved outside actual Boolean Doob class",
+  "formal_verification": false,
+  "standalone_paper": false,
+  "PDF": false,
+  "score": null,
+  "terminal_report": "To be external to exact frozen commit, retained in D and hash-bound"
+}

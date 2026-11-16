@@ -1,0 +1,147 @@
+FULL FIRST ANALYTIC AUDIT H — SLOW-VERTEX ABSTRACT-ROUTE OBSTRUCTION
+Audit date: 2026-11-17, Europe/Stockholm calendar date.
+
+1. EXACT REFERENT, CONTEXT, AND VERDICT
+
+Audited candidate:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\research\2026-11-17-surrogate-gap-obstruction\CANDIDATE-H.txt
+Raw file SHA256:
+00d72ea4229d7ab90f84f0c9085020920b3790b0226572d336fb49b2b0cfddf5
+File length: 10041 bytes. The supplied representation is UTF-8/LF; the hash above is of the actual raw file, without normalization.
+Research base and inspected worktree HEAD:
+bae138a94f403b4814e45061974874f22fcc0006.
+This is a first analytic review of H, not a terminal audit of a new commit, regrading of E/F/G, review of a PDF, or authorization to publish.
+
+VERDICT: PASS, scoped to the displayed finite-dimensional analytic construction and its stated negative-route conclusion. I found no blocking mathematical error in Sections 1–8. All advertised constant comparisons, positivity, small-gap bound, low-to-all bound, and exclusion from the actual Doob class are justified. The construction is useful grouped evidence that the listed abstract consequences, even together and with their precise bounded-observable constants, cannot imply a dimension-uniform full spectral gap. It is NOT an admissible counterexample to the original Boolean Doob question and does not eliminate any hypothesis of that question. No global novelty or standalone-paper recommendation is certified.
+
+Auditor identity and limits: separate OpenAI Codex assistant role /root/bootstrap_note_audit, in the same provider and programme workflow as the authoring role. Exact serving backend, model revision, and reasoning-effort setting are not independently attested. I inherit prior task context and have seen the candidate proof and earlier reports; this is not blind, human, organizationally independent, or provider-independent review. No numerical grade, formal verification, or PDF assessment is supplied. No messages were received from the parent during this audit.
+
+I read the repository Operational Governance Charter and the relevant storage instructions. Tools were restricted to reading files/Git, hashing, reading a primary source, and writing this report. I did not execute mathematical code, a numerical search, symbolic algebra, Lean, TeX, tests, a runtime, or UI operations. The candidate and prior reports were not edited; no push, PR, dispatch, workflow activation, or network write was performed. No disposable clone was created.
+
+2. MODEL, STOCHASTICITY, AND POSITIVE SPECTRUM
+
+Fix an integer L>=4. Put delta=2^(-L), tau=delta^(7/8), and P=P_(1/2). The Boolean noise kernel has entries
+P(x,y)=(3/4)^(L-dist(x,y))(1/4)^dist(x,y),
+so all are strictly positive; it is symmetric and stochastic. Its Walsh eigenvalues are (1/2)^j, j=0,...,L, all positive.
+
+For x in B, the new diagonal adds exactly (1-tau)P(x,a), compensating the reduction of that row's a-entry. The a-row has off-diagonal sum tau(1-P(a,a)) and the stated complementary diagonal. Hence every row sums to one. All entries remain strictly positive because 0<tau<1. Symmetry remains exact. Uniform mu is stationary and reversible, and strict positivity implies irreducibility and simplicity of the stationary eigenvalue.
+
+Set S=sum_(y in B)P(a,y)(e_a-e_y)(e_a-e_y)^T in Euclidean coordinates. Its entries agree exactly with (J-P)/(1-tau). Therefore S is positive semidefinite, and J=P+(1-tau)S is strictly positive definite. There is no conflict between this positive addition and stochasticity: the positive diagonal addition compensates negative off-diagonal changes, and S annihilates constants. Symmetric stochasticity bounds the operator spectrum by [-1,1], while strict positive definiteness removes the nonpositive part. Thus spectrum(J) is in (0,1], with simple 1. This establishes the positivity needed later for the variance-drop and covariance arguments; mere reversibility alone would not have sufficed.
+
+The stationary density relative to mu is exactly pi=1, not an independently assigned density inconsistent with J. At b=rho=1/2, pi>=b and E pi^3=1<=2. Every nonconstant Walsh coefficient of pi is zero, so the matching assertion holds for all nonempty coordinate subsets. This is stronger than any fixed-C square-root-degree matching demand, but does not assert the nonlinear potential identity of an actual Doob kernel.
+
+3. SMALL GAP AND FIXED SPECTRAL MARGIN
+
+For the indicator of a, the Dirichlet energy is the stationary outflow
+D_J(1_a)=delta*tau*(1-P(a,a)).
+Its variance is delta(1-delta). Centering changes neither energy nor variance. The variational definition of gap(J)=1-lambda_2(J) therefore gives
+gap(J)<=tau(1-P(a,a))/(1-delta)<=16*tau/15,
+because delta<=1/16. This is an upper bound tending to zero, not a claim that the indicator is an exact eigenvector. Positivity and irreducibility ensure each finite-dimensional gap is strictly positive.
+
+The looser factor 4/3 is legitimate since 16/15<=4/3. As 0<delta<=1/16 and 7/8>=1/2, tau=delta^(7/8)<=delta^(1/2)<=1/4. The direction of the exponent inequality is correct for delta<1. Consequently gap<=1/3 and lambda_2>=2/3>5/8=rho+1/8. Thus a nonconstant eigenvalue stays above a fixed positive margin from the noise edge even while the gap to 1 collapses. All these assertions hold for every L>=4, not just asymptotically.
+
+4. BULK/STAR ENERGY ESTIMATE AND c_0
+
+Translate a real f by its B-average. Then E_B f=0 and f(a)=t. Translation preserves variance, oscillation, and energy. The global mean is delta*t, so direct expansion gives
+Var_mu(f)=delta(1-delta)t^2+delta sum_B f(x)^2=u+v.
+The B-average lies between the original minimum and maximum, giving |t|<=O=osc(f). Hence u/O^2<=delta when O>0.
+
+For L>=4, P(a,a)=(3/4)^L<=1/2. Among y!=a the largest transition probability is attained at Hamming distance one, so
+r_max=(1/3)(3/4)^L<=1/8.
+For example the endpoint comparison follows exactly from 27/256<=1/8, with monotonicity in L thereafter; no numerical experiment is required.
+
+The extension f_0(a)=0, f_0|B=f|B has mu-mean zero and squared norm v. P's spectral gap is 1/2, whence D_P(f_0)>=v/2. In the conventional Dirichlet form with the factor 1/2 on ordered pairs, the two orientations of each star edge sum to
+delta sum_B P(a,y)f(y)^2<=r_max*v.
+Thus D_BB>=3v/8; no extra factor of two or 2^L is missing.
+
+The exact modified energy is
+D_J(f)=D_BB+tau*delta sum_B P(a,y)(t-f(y))^2.
+The scalar inequality (t-z)^2>=t^2/2-z^2 follows because its difference is (t-2z)^2/2. Consequently
+D_J(f)>=(3/8-tau/8)v+tau*delta*(1-P(a,a))*t^2/2
+        >=v/4+tau*u/4.
+Here tau<=1, 1-P(a,a)>=1/2, and delta*t^2>=u. All uses are lower bounds in the correct direction.
+
+With U=u/O^2, V=v/O^2, y=U+V, one has U<=delta and 0<=y<=1/4. If U>=y/2, monotonicity of positive powers gives delta^(7/8)U>=U^(15/8)>=(y/2)^(15/8). If V>=y/2, the energy is at least y/8, which dominates 2^(-31/8)y^(15/8) for y<=1. The common smaller constant is
+(1/4)*2^(-15/8)=2^(-31/8)=c_0.
+Thus H1 holds, including y=0 by nonnegative energy and O=0 by direct treatment of constants.
+
+The epsilon inequality is valid for every epsilon>0: when y>epsilon, H1 implies c_0^(-1)epsilon^(-7/8)D_J/O^2>=y; otherwise the additive epsilon term suffices. This is an oscillation weak Poincare inequality, not a uniform strong Poincare inequality.
+
+5. EXACT E/F/G CONSTANTS AND DISCRETE RELAXATION
+
+I compared H with the retained raw E/F/G notes. At b=rho=1/2, F has p_*=7/8 and
+c_*=b^4*2^(-61/24)=2^(-157/24).
+Since c_0=2^(-93/24)>c_*, H1 implies F's exact energy lower bound. Equivalently it implies the corresponding energy-variance inequality with exponent 8/15 and constant c_*^(-8/15). It is not necessary to produce actual potential inverse moments for J; this comparison concerns the resulting inequality, not the original proof of F or the original model assumptions.
+
+E has p_E=5/4, energy exponent 1+p_E=9/4, and
+c_E=b^2(1-rho)^(1+rho)*2^(-(1-rho^2)/(2rho))
+   =b^2*2^(-9/4)=2^(-17/4)=2^(-102/24).
+Thus c_0>c_E, and y^(15/8)>=y^(9/4) for 0<=y<=1. H1 implies the exact E energy bound, equivalently E1 with a=4/9, its weak Poincare form, and its discrete decay. Both the powers and the constant comparisons have the required directions.
+
+For F_n=J^n f, spectral positivity yields
+Var(F_n)-Var(JF_n)=<F_n,(I-J^2)F_n>_mu>=D_J(F_n),
+because 1-lambda^2>=1-lambda for lambda in [0,1]. Oscillation is nonincreasing under Markov averaging. Applying H1 with osc(F_n), and then using osc(F_n)<=O, gives
+D_J(F_n)/O^2>=c_*[Var(F_n)/O^2]^(15/8).
+This last passage is valid because the energy lower bound divides by oscillation to a positive power; replacing it by the larger original O weakens that lower bound. If F_n is constant, later variances vanish.
+
+For positive consecutive y_n=Var(F_n)/O^2, convexity of t^(-p_*) gives
+y_(n+1)^(-p_*)-y_n^(-p_*)>=p_*c_*.
+With y_0<=1, summation gives exactly
+Var(J^n f)<=O^2[1+(7/8)c_*n]^(-8/7).
+No continuous-time substitution or unjustified exponential conclusion is involved. The analogous argument with c_E,p_E gives E's precise estimate.
+
+6. COVARIANCE AND SAMPLE-MEAN BOUNDS
+
+For a stationary chain and mu-centered f, reversibility gives gamma_2m=||J^m f||_2^2. A PSD contraction gives 0<=gamma_(2m+1)<=gamma_2m. Therefore the entire sum over j>=1 is bounded by gamma_0+2 sum_(m>=1)Var(J^m f); the gamma_1 term is included in gamma_0 and is not omitted.
+
+For A=(7/8)c_*, the decreasing positive function (1+Ax)^(-8/7) has integral over [0,infinity) equal to 7/A=8/c_*. Hence the stated sum-integral comparison and
+sum_(j>=1)gamma_j<=O^2(1+16/c_*)
+are valid. The finite-N stationary covariance identity then gives
+Var((1/N)sum_(i=0)^(N-1)f(X_i))<=(3+32/c_*)O^2/N
+for every integer N>=1. All relevant sums have nonnegative terms and are absolutely bounded, so rearrangement creates no problem.
+
+For this family, uniform initialization is exactly stationarity. MSE about mu(f) therefore equals the same variance, and is bounded also by the weaker G coefficient divided by b. This proves the precise G numerical inequality in this family; it does not assert a nonstationary improvement, arbitrary deterministic-start bound, or bias-free uniform initialization for all actual Doob kernels. H's language correctly makes this distinction.
+
+7. LOW-TO-ALL NORM ESTIMATE
+
+Use the Euclidean coordinates specified in H. Multiplication of all coordinates by sqrt(delta) identifies their norm with L2(mu), so matrix operator norms agree. The Euclidean normalized Walsh vectors have entries sqrt(delta)chi_S(x). Thus
+||R_d e_a||^2=delta sum_(j=0)^d binomial(L,j)=delta D_d.
+There is no unaccounted dimension-dependent normalization.
+
+The displayed S expansion has the right entries. For q(a)=0 and q(y)=P(y,a),
+||q||_2^2<=sum_y P(y,a)^2=((3/4)^2+(1/4)^2)^L=(5/8)^L.
+The diagonal operator norm is r_max. The four terms of S R_d are bounded respectively by
+sqrt(delta D_d), ||q||_2, ||q||_2 sqrt(delta D_d), r_max.
+In the second term, ||q^T R_d||<=||q||_2 is sufficient; no low-degree assumption on q is silently inserted. Since delta D_d<=1, these bounds imply H2 after dropping the factor 1-tau<=1. Taking adjoints proves the equal left-sided norm bound.
+
+For integer 0<=d<=L, D_d<=(d+1)L^d holds termwise. If d<=C sqrt(L) with fixed finite C, log D_d<=log(d+1)+d log L=o(L). The first H2 term is exp[-(L log 2-log D_d)/2]; the other terms already have fixed positive exponential rates. Thus the advertised exponential smallness is correct for each fixed C and all sufficiently large L. This does not assert uniformity over a C growing arbitrarily with L. The d=0 case is harmless: the true discrepancy on constants is zero, while H2 is a loose positive upper bound.
+
+This is genuinely a low-to-all estimate, not merely a low-to-low compression estimate. It still need not control an eigenfunction concentrated in the complementary high-degree region. J itself is the abstract comparison operator; H does not illegitimately identify it with Q M_(h/Ph) Q. The simultaneous fixed spectral margin from Section 3 and vanishing low-to-all discrepancy are therefore consistent.
+
+8. EXCLUSION FROM THE ACTUAL DOOB CLASS
+
+For positive h and symmetric P, the actual Doob kernel has stationary mass proportional to mu(x)h(x)Ph(x), by direct detailed balance. If it equaled J, uniqueness of J's stationary distribution forces hPh to be a positive constant. Rescale h by the reciprocal square root of that constant, preserving the kernel, to obtain hPh=1 pointwise.
+
+If h were nonconstant, put m=min h>0 and M=max h. All P entries are positive, so at a minimum site Ph<M and at a maximum site Ph>m, with strict inequalities even if the extrema occur at several sites. The normalization gives simultaneously 1<mM and 1>mM, a contradiction. Thus h is constant, in which case its Doob kernel is exactly P. But J(a,y)=tau P(a,y)!=P(a,y) for every y!=a. This proves nonexistence of positive h representing J. The reuse of the letter M locally for max h is a harmless local notation shadow of the earlier cube cardinality, not a mathematical identification.
+
+This proof is essential: the candidate only refutes the explicitly weaker implication after removal of the nonlinear kernel-potential identity. It cannot refute the original stationary-Doob gap conjecture. Nor does it show that every actual-model bridge other than the two examples in H is impossible.
+
+9. POSITIONING, OBJECTIONS, AND DISPOSITION
+
+Primary source inspected in this audit: Andrieu, Lee, Power, Wang, Weak Poincare Inequalities for Markov chains: theory and applications, arXiv:2312.11689v1, https://arxiv.org/html/2312.11689v1. Bounded reading covered the introduction and Section 2.1 through the sieve/oscillation example and weak Poincare definition. These passages support the general distinction between strong geometric L2 control and weak inequalities with oscillation, rather than the priority of H's particular construction. The proof of H is self-contained. This audit did not exhaust rare-trap literature or establish a global originality claim; the existing modest positioning is appropriate.
+
+Blocking objections: none found.
+Scope cautions that must remain attached to any reuse:
+* All constants are dimension-free at the fixed parameter choice rho=b=1/2. No extension of H to arbitrary rho is proved here.
+* Each finite J has a positive gap; it is the family that lacks a positive dimension-uniform lower bound.
+* E/F/G are reproduced as quantitative conclusions, not as satisfaction of their actual-Doob hypotheses or potential identities.
+* The uniform-start claim is stationary for this particular example; arbitrary starts are not covered.
+* The low-degree estimate has fixed-C asymptotic scope. No full-operator convergence is asserted.
+* H refutes exactly the listed abstract conjunction. It does not refute strengthened routes retaining actual nonlinear factorization or other unlisted restrictions.
+* No independent originality certificate, physical spectral-gap result, formal verification, or publication status follows.
+
+Usefulness assessment: this is a proved and quantitatively explicit route counterexample. It is stronger evidence than the generic observation that polynomial convergence need not imply a gap, because it simultaneously keeps strict matrix positivity, strict spectral positivity, exact all-order stationary matching, the accepted E/F/G constants, and a square-root-degree low-to-all approximation. It justifies closing that precise abstract shortcut and retaining actual-model identities in subsequent work. It should remain grouped negative-route evidence within the existing programme, not be promoted by this audit alone into a standalone frontier paper.
+
+The original stationary-Doob question remains open. No hypothesis has been eliminated from that question. The existing manuscript/PDF production route, pending execution authorization, public paper, states, and previous audit verdicts were not altered.
+
+END OF FULL FIRST ANALYTIC AUDIT H

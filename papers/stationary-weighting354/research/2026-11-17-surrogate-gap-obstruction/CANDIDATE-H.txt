@@ -1,0 +1,155 @@
+CANDIDATE H — A SLOW-VERTEX OBSTRUCTION TO AN ABSTRACT GAP UPGRADE
+2026-11-17 local date. First analytic candidate; no audit yet.
+Base commit bae138a94f403b4814e45061974874f22fcc0006.
+Grouped negative-route evidence, not a standalone paper or new AIRR version.
+
+1. Precise implication being tested
+
+The original active question concerns ACTUAL Boolean Doob kernels:
+K_h(x,y)=P_rho(x,y)h(y)/(P_rho h)(x), pi=hP_rho h/E hP_rho h.
+It remains open. Here we test the STRICTLY WEAKER, ABSTRACT proof route that discards this nonlinear kernel-potential identity after deriving:
+(a) uniform stationary floor/cap and exact coordinate matching;
+(b) reversibility, strictly positive spectrum and strictly positive entries;
+(c) the E/F/G weak energy, summable relaxation and sample-mean bounds;
+(d) low-to-all operator closeness to Boolean noise on degrees O(sqrt L).
+
+Claim: those properties together do NOT force a dimension-uniform full spectral gap. An explicit modified-noise family satisfies them with pi identically1 and gap tending0. It is proved NOT to be an actual Boolean Doob kernel. Therefore it refutes only the abstract upgrade route, never the original stationary-Doob conjecture. It cannot be entered as an admissible counterexample to that conjecture.
+
+2. Explicit finite matrices, without computation
+
+For every integer L>=4, let mu be uniform on {-1,1}^L, M=2^L, delta=1/M.
+Fix a vertex a, write B=cube\{a}, P=P_(1/2), p=7/8, tau=delta^p.
+Define the modified kernel J by:
+J(a,y)=tau P(a,y), J(y,a)=tau P(y,a) for y in B;
+J(x,y)=P(x,y) for distinct x,y in B;
+J(x,x)=P(x,x)+(1-tau)P(x,a), x in B;
+J(a,a)=1-tau(1-P(a,a)).
+
+All entries are strictly positive and row sums equal1. The matrix is symmetric, hence stationary and reversible for mu; its stationary density pi relative to mu is1.
+Fix b=1/2, rho=1/2, s=3. Then pi>=b and E pi^3=1<=2.
+Every nonempty labelled-coordinate Fourier coefficient of pi vanishes, so matching holds through every order, in particular min(L,floor(C sqrt L)) for any fixed C>0.
+
+J-P=(1-tau) times the weighted star Laplacian with edges {a,y} of weight P(a,y). Thus for every vector z,
+z^T(J-P)z=(1-tau) sum_(y in B) P(a,y)(z(a)-z(y))^2>=0.
+P is strictly positive definite, so J is also strictly positive definite. It is an irreducible self-adjoint Markov contraction, with spectrum in (0,1] and simple eigenvalue1.
+
+For the indicator of {a}, the Rayleigh quotient gives
+gap(J) <= [delta*tau*(1-P(a,a))]/[delta*(1-delta)]
+        <= (16/15) tau, since L>=4.
+In particular gap(J)->0. The looser bound (4/3)tau will also be used below.
+Since tau=delta^(7/8)<=delta^(1/2)<=1/4, lambda_2(J)>=2/3>rho+1/8.
+The fixed positive spectral margin is explicit; this is not only a mode approaching the noise edge.
+
+3. Dimension-free weak energy estimate despite gap collapse
+
+All following Dirichlet forms and variances use mu. Let O=osc(f); constant functions are immediate. Subtract the average of f over B, write f(a)=t and average_B f=0.
+Set
+u=delta(1-delta)t^2, v=delta sum_(x in B) f(x)^2.
+Then Var_mu(f)=u+v, |t|<=O, and u/O^2<=delta.
+For noise rho=1/2,
+P(a,a)=(3/4)^L<=1/2,
+r_max=max_(y in B)P(a,y)=(1/3)(3/4)^L<=1/8
+for L>=4.
+
+Let D_BB be the P Dirichlet energy from pairs entirely in B, and let f_0 equal f on B and0 at a. Its uniform mean is0, so
+D_P(f_0)>= (1/2) v.
+The omitted star energy is delta sum_(y in B)P(a,y)f(y)^2<=r_max*v.
+Hence D_BB>= (1/2-r_max)v>=3v/8.
+
+The actual star contribution to D_J(f) is
+tau*delta sum_(y in B)P(a,y)(t-f(y))^2.
+Using (t-z)^2 >= t^2/2-z^2,
+D_J(f) >= D_BB + tau[delta(1-P(a,a))t^2/2-r_max*v]
+        >= (3/8-tau/8)v + tau*u/4
+        >= (v+tau*u)/4.
+The u/4 bound uses delta*t^2>=u and 1-P(a,a)>=1/2.
+
+Normalize y=Var_mu(f)/O^2, U=u/O^2, V=v/O^2. Then y=U+V<=1/4 and U<=delta.
+If U>=y/2, delta>=U>=y/2 and
+D_J(f)/O^2 >= delta^p U/4 >= (1/4)(y/2)^(1+p).
+If V>=y/2, D_J(f)/O^2 >= y/8, which is at least the same last expression because y<=1 and p>0.
+Thus, with
+c_0=2^(-31/8), p=7/8,
+D_J(f)/O^2 >= c_0 [Var_mu(f)/O^2]^(15/8).       (H1)
+
+This is uniform in L. It implies exactly the weak-Poincare form
+Var_mu(f) <= c_0^(-1) epsilon^(-7/8) D_J(f) + epsilon O^2
+for all epsilon>0, by the two-case argument y<=epsilon or y>epsilon.
+
+4. Comparison with the exact constants of E/F/G
+
+At rho=1/2 and b=1/2, the accepted F/G constant is
+c_*=b^4*2^(-61/24)=2^(-157/24).
+Since c_0=2^(-93/24)>c_*, (H1) implies the exact F energy inequality, and positivity plus oscillation contraction give
+Var_mu(J^n f) <= O^2 [1+(7/8)c_* n]^(-8/7).
+For clarity: (H1) yields y_(n+1)<=y_n-c_* y_n^(15/8), because
+Var(F)-Var(JF)>=D_J(F) by the spectrum in [0,1]; applying convexity of t^(-7/8) and y_0<=1 gives the displayed bound, including zero-variance cases.
+
+The E constant at rho=1/2,b=1/2 is c_E=b^2*2^(-9/4)=2^(-17/4).
+Since c_0>c_E and y<=1, (H1) also implies
+D_J(f)/O^2 >= c_E y^(9/4).
+Consequently E's energy bound with a=4/9, its epsilon form with p_E=5/4 and its decay estimate also hold with the exact E constants.
+
+For a stationary J-chain, center f and write gamma_j=<f,J^j f>_mu.
+PSD gives 0<=gamma_(2m+1)<=gamma_(2m)=Var_mu(J^m f).
+The sum-integral bound is
+sum_(m>=1)[1+(7/8)c_*m]^(-8/7)<=8/c_*.
+Thus sum_(j>=1)gamma_j<=O^2(1+16/c_*), and
+Var[N^(-1)sum_(i=0)^(N-1)f(X_i)] <=(3+32/c_*) O^2/N.
+The uniform initialization is the stationary law here, so its mean-square error about mu(f) equals this variance. In particular G's weaker coefficient (3+32/c_*)/b also holds. This proves that the quantitative E/F/G conclusions, not merely the phrase 'polynomial mixing', coexist with gap collapse.
+
+5. Low-to-all noise agreement survives
+
+Let R_d be the orthogonal projection onto Walsh characters of degree<=d,
+D_d=sum_(j=0)^d binomial(L,j), 0<=d<=L.
+Matrix operator norms below are the L2(mu) norms; they equal Euclidean operator norms under the constant scaling isometry.
+
+Write e_a for the Euclidean coordinate unit vector, q for the vector
+q(y)=P(y,a) when y in B, q(a)=0, and D=diag(q).
+Then the star Laplacian is
+S=(1-P(a,a))e_a e_a^T-e_a q^T-q e_a^T+D.
+The Walsh basis gives ||R_d e_a||_2=sqrt(delta D_d).
+Also ||q||_2<=(5/8)^(L/2) and ||D||=r_max=(1/3)(3/4)^L.
+The triangle inequality therefore gives
+||(J-P)R_d||
+ <= sqrt(delta D_d)+2(5/8)^(L/2)+(1/3)(3/4)^L.   (H2)
+Indeed the four terms are bounded respectively by sqrt(delta D_d),
+||q||_2, ||q||_2 sqrt(delta D_d), and r_max; sqrt(delta D_d)<=1.
+Self-adjointness gives the same bound for ||R_d(J-P)||.
+
+For d=O(sqrt L), D_d<= (d+1)L^d and log D_d=o(L).
+Every term in (H2) consequently decays exponentially in L (with fixed positive exponent for all sufficiently large L). Hence the full low-to-all discrepancy tends to0 even on degrees proportional to the original matching scale sqrt L, while lambda_2(J)>=rho+1/8 and gap(J)->0.
+
+This statement concerns J directly as an abstract self-adjoint comparison operator. It does not assert the existence of the actual Doob factorization Q M_(h/Ph) Q or import the nonlinear high-weight localization identity from that factorization.
+
+6. Why this is provably outside the actual Doob class
+
+Suppose a strictly positive h gave the same J as an actual P_(1/2)-Doob kernel. Its unique stationary density is proportional to hPh. Since J's unique stationary law is mu, normalize h so that hPh=1 pointwise.
+If h were nonconstant, let m=min h and M=max h. Strict positivity of all P entries implies
+Ph(x_min)<M and Ph(x_max)>m.
+The pointwise identity at these two sites gives
+1=m Ph(x_min)<mM and 1=M Ph(x_max)>mM,
+a contradiction. Therefore h is constant and the actual Doob kernel is P itself.
+But J is different from P, for instance its off-diagonal a-to-B entries are multiplied by tau<1.
+Thus there is NO such positive h. The original nonlinear kernel condition is the exact missing hypothesis. No hypothesis of the original question has been eliminated and no admissible counterexample has been found.
+
+7. Consequence for the one active route
+
+Close only the attempted abstract implication:
+stationary floor/cap + all matching + positive reversible spectrum + E/F/G estimates + low-to-all noise agreement => uniform gap.
+It is false, by (H1)-(H2) and the Rayleigh upper bound.
+The next useful bridge must retain a genuinely actual-model identity, such as
+u|Q psi|^2=lambda*pi*f^2 with u=h/Ph, or a directly proved restriction on actual killed kernels. Neither a generic upgrade from summable oscillation decay nor matching plus low-window agreement can finish the proof.
+
+Falsifier for this note: any error in stochasticity/PSD, the bulk/star energy comparison, the exact constant comparisons, the low-window norm estimate or non-Doob proof. Analytic audit required. No numerical search, local computation, formal verification, PDF production, new score or publication was performed.
+
+8. Primary positioning and identity
+
+This is a tailored elementary rare-trap construction used to falsify a proposed logical shortcut. Rare traps and the distinction between weak Poincare convergence and L2 geometric convergence are classical, not a new research field or globally original theorem claimed here.
+Primary source inspected in this unit:
+Andrieu, Lee, Power, Wang, Weak Poincare Inequalities for Markov chains: theory and applications, arXiv:2312.11689v1 (2023),
+https://arxiv.org/html/2312.11689v1
+Bounded reading: introduction on strong versus weak inequalities, Section2.1 definitions and oscillation example. Prior unit inspected the related2022 comparison theorem. This does not establish priority of the explicit finite construction or exhaust related literature. The displayed proof is self-contained and does not quote an unread theorem.
+The construction is evidence about a failed programme route, not a new standalone manuscript and not a result about a physical Yang-Mills gap.
+
+Authoring role: current OpenAI Codex workflow; exact serving backend/version/effort unattested. First frozen candidate has no separate audit yet. Subsequent full reports must name the exact bytes and disclose inherited context/same provider; no numerical grade or independent peer-review claim.
