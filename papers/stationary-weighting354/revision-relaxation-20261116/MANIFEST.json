@@ -1,0 +1,44 @@
+{
+  "base_commit": "8ef6466b58674f1bce6d4faeec2aa3ceb62866ae",
+  "representation": "Raw file bytes, no normalization at hash time; generated source/README/JSON UTF8 no BOM LF; copied reports preserve original bytes",
+  "files": [
+    {
+      "path": "manuscript-relaxation-candidate.tex",
+      "bytes": 63506,
+      "sha256": "fa5f74af2ebd3241e032db3e049e757fec7c8afd8fc8f07ccd84ae5b0bd7b13b"
+    },
+    {
+      "path": "history/manuscript-before-editorial-clarifications.tex",
+      "bytes": 63218,
+      "sha256": "585e7eaee4f3aa45475799625fbb8315dbf024d8a42fb51b5d36a89f9b98b5c6"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4442,
+      "sha256": "1a0a4c41bd013a70a6f5f338f413f2c32e72916654e63a6526e851abeae8c9e5"
+    },
+    {
+      "path": "audit/FULL-INTEGRATED-SOURCE-AUDIT.txt",
+      "bytes": 17043,
+      "sha256": "c9e0e18855314aedf92f93561e3738743c6f920463000ba0c39acd8f3ba590ea"
+    },
+    {
+      "path": "audit/FULL-G-AND-TERMINAL-AUDIT.txt",
+      "bytes": 12962,
+      "sha256": "5accafb063b984122fd83ac492d0028666c096062b30247441ac98b7f13a7ae5"
+    }
+  ],
+  "predecessor_source": {
+    "path": "../revision-window-20261116/manuscript-window-v2-candidate.tex",
+    "sha256": "186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3"
+  },
+  "component_evidence_commit": "8ef6466b58674f1bce6d4faeec2aa3ceb62866ae",
+  "component_evidence_path": "../research/2026-11-16-weak-relaxation",
+  "source_audit_scope": "First integrated source585e7eae accepted; currentfa5f74af contains only three adopted editorial clarifications and requires its exact terminal successor check",
+  "final_terminal_report": "External to this frozen commit; retain in D and bind by commitSHA and raw reportSHA256",
+  "compilation": false,
+  "PDF_assessment": false,
+  "numerical_score": null,
+  "publication": false,
+  "pending_execution_question_retargeted": false
+}

@@ -1,0 +1,137 @@
+FULL ANALYTIC G AND TERMINAL PRESERVATION AUDIT
+Date: 2026-11-16
+
+EXACT SUBJECTS AND VERDICTS
+
+Candidate G: D:\Datos\the-eriksson-programme\autonomia\2026-11-16_weak-relaxation\CANDIDATE-G.txt
+Raw SHA256: 630099ca09b64ecfaf49105d6fd67a3fed5165be93739527ef2ae9213fd338b4
+Commit: 8ef6466b58674f1bce6d4faeec2aa3ceb62866ae
+Parent: c182b892261fa83a9af780d7bc157aadebbaac2e
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116
+Branch: codex/low-full-evidence-20261116
+Packet: papers/stationary-weighting354/research/2026-11-16-weak-relaxation
+
+ANALYTIC VERDICT: PASS. G correctly transfers F's stationary mean-square error estimate to the uniform Boolean initial law through the original stationary floor. The coefficient is exactly C_F/b with C_F=3+32/c_* and c_*=b^4 2^(-61/24). The bound includes any initialization bias, without claiming that the new initial law is stationary or unbiased. No additional warm-start premise is needed for this specific uniform start. No blocking mathematical error was found.
+
+PRESERVATION VERDICT: PASS for the exact proposed branch-only evidence commit. The nine manifested payloads match raw Git blobs and working files; frozen candidates and earlier reports remain unchanged. The README honestly records G's first-audit-pending status at commit freezing. This new report supplies the subsequent analytic verdict externally without pretending it preceded the frozen snapshot.
+
+These verdicts are not a new score for E/F, global priority certificate, formal verification, PDF assessment, execution permission or publication. No push, PR, activation, dispatch, build or computation was performed.
+
+IDENTITY AND CONTEXT
+
+Auditor: OpenAI Codex role /root/bootstrap_note_audit. Exact backend model build and reasoning effort are not independently attested. This role is separate from authoring but shares inherited context and the same provider/workflow. It is not blind, human, institutional or provider-independent peer review. This is the first analytic inspection of frozen G, combined with exact-commit preservation inspection. E and F are reused as previously accepted premises and are not regraded or given transferred numerical assessments.
+
+Method: full candidate/README/manifest reading, direct finite-path algebra, raw byte hashes and lengths, Git metadata/diff/status checks, and inspection of unchanged workflow scope. No mathematical program, experiment, symbolic computation, test, shell syntax check, Lean/Lake, UI or runtime was used. Only this full report was written. No source or prior report was modified, and no answer to the pending execution exception is inferred.
+
+1. EXACT MODEL AND REUSED PREMISE
+
+The setup is exactly F's finite Boolean model at rho=1/2: uniform probability mu, h>0, E_mu[hPh]=1, stationary density pi=hPh>=b>0, cubic cap E_mu pi^3<=2, nu=pi mu, and actual kernel K(x,y)=P(x,y)h(y)/(Ph)(x). As before hPh pointwise means h times Ph. E_mu pi=1 entails b<=1.
+
+F's accepted result is a variance bound for the sample mean of a chain started in nu. Since nu is invariant, every f(X_i) has mean nu(f) in that stationary chain. Therefore the stationary sample mean is unbiased for nu(f), and its variance equals its mean-square error about that target. This justifies G's reused premise
+E_nu-start[(N^(-1) sum f(X_i)-nu(f))^2] <= C_F osc(f)^2/N.
+
+No stationary estimate about a different target or different invariant density is substituted. F's constants are reused unchanged. G's new conclusion will be about the same target nu(f), even when the initial law is mu.
+
+2. FINITE-PATH DENSITY: EXACT CANCELLATION
+
+For a fixed positive integer N and a path (x_0,...,x_(N-1)), the probability under initial law eta is
+P_eta^(N)(x_0,...,x_(N-1)) = eta(x_0) product_(i=0)^(N-2) K(x_i,x_(i+1)).
+For the same transitions and initial law nu it is the same product multiplied by nu(x_0).
+
+All states have positive nu mass because mu is positive on every cube vertex and pi>0. Moreover Boolean noise at rho=1/2 has positive transition probability between every pair of vertices, and positive h preserves this in K. Thus every path has positive reference probability. Taking the ratio gives exactly
+dP_eta^(N)/dP_nu^(N) = eta(X_0)/nu(X_0).
+
+The ratio is evaluated only at the initial point. There is no product of N initial-density factors, no factor b^(-N), and no change in the transition kernel. For N=1 the transition product is empty and the same identity holds. Eta may have zero masses, in which case the density is zero on the corresponding paths. There is no lost absolute-continuity case.
+
+If eta(x)<=M nu(x) for all x, then for every nonnegative path functional Z,
+E_eta-start Z = E_nu-start[(eta(X_0)/nu(X_0)) Z] <= M E_nu-start Z.
+This follows by summing the nonnegative terms of the finite path space. No independence, reversibility, stationarity of eta or moment cancellation is needed for this comparison itself. Reversibility/PSD were needed upstream for F, not newly assumed for G's density argument.
+
+3. THE REQUIRED DOMINATION IS DERIVED FOR UNIFORM START
+
+With eta=mu, using probability masses rather than conflating mu with the density pi,
+eta(x)/nu(x)=mu(x)/(mu(x)pi(x))=1/pi(x)<=1/b.
+The inequality direction is correct because pi>=b>0. Hence M=1/b follows from an original hypothesis of the programme. There is no new warm-start assumption for the explicitly selected initial distribution mu.
+
+Take Z=(N^(-1) sum_(i=0)^(N-1) f(X_i)-nu(f))^2. It is nonnegative and finite on the finite state/path space for real f. Applying the path bound and then F yields
+E_mu-start Z <= b^(-1) E_nu-start Z
+              <= (3+32/c_*) osc(f)^2/(bN).
+This is exactly the displayed G conclusion. Constants depend on the fixed b but not on dimension or N. Since c_* already contains b^4, the final expression has the stated additional factor 1/b; it must not be described as independent of b. No extra factor of two is required by this change of measure.
+
+For constant f, the sample mean and target coincide on every path, so Z=0. For N=1, the preceding direct path identity remains valid. There is no large-N limiting step or asymptotic qualification missing from G.
+
+4. BIAS AND INITIALIZATION SCOPE
+
+Under mu start the sample mean need not be unbiased for nu(f). G compares its squared error about the fixed stationary target directly, so the resulting mean-square bound includes both variance and squared initialization bias. It does not incorrectly replace this nonstationary mean-square error by the nonstationary variance alone.
+
+The generalized eta<=M nu consequence stated in G is valid by the same calculation. For a general initial distribution, M is an additional domination premise; for the theorem's chosen mu it is proved from pi>=b. This distinction is stated correctly. A deterministic start delta_x can require M>=1/nu(x), and the original floor gives at most a dimension-dependent generic bound of order 2^L/b on that ratio. G does not assert a uniform constant for all deterministic starting states.
+
+The result provides an explicit nonstationary initialization guarantee for empirical averages, not total-variation burn-in control, a full-L2 spectral gap, concentration, a CLT, optimality or a theorem for every initial state. It uses the already proved summable bounded-observable estimate at rho=1/2 and adds no conclusion about other rho. It also does not eliminate matching from the original stronger spectral-gap question. Uniform sampling on the reference cube is an explicit initial-law choice; this note makes no claim about the computational complexity of implementing arbitrary h-dependent transition probabilities.
+
+The density argument is elementary change of measure and should remain presented as such. Its programme-level role is to make the derived F estimate usable from a specified nonstationary initial law. It is not a separate methodological discovery or a reason for another standalone paper. No new priority search or originality certificate is supplied by this audit.
+
+5. COMMIT SCOPE AND RAW-BYTE PRESERVATION
+
+HEAD exactly matches 8ef6466b... with the supplied single parent c182b892..., and the worktree/index are clean. The immediate delta contains exactly four paths: added CANDIDATE-G.txt and the unchanged TERMINAL-COMMIT-AUDIT-EF.txt; updated README.md and MANIFEST.json. All are under the stated research packet. E/F candidates, their analytic reports, the bibliographic positioning and the original E terminal report are untouched.
+
+Relative to the grouped base 8efcb73bdc4a6458f81fee6b3d9256f1e1524495, the packet consists of ten added files: nine payloads and MANIFEST.json. The manifest records the grouped base, accepted E commit df15fa7d... and accepted EF commit c182b892... consistently. The manifest itself is bound by the exact commit. Git whitespace checking passed.
+
+I read raw committed blobs through a binary stdout stream, then compared SHA256 and length against MANIFEST.json and raw working copies. All nine match:
+
+CANDIDATE-E.txt
+7344 bytes
+0d11186fee2f9daff0c3fe33cee3092510ba5ace75abea9f6c76cebed184fafe
+
+CANDIDATE-F.txt
+5078 bytes
+13cfa7b0faf2874e97a54aa3136cb8d885aaa529b53d35762b55599f4e949adf
+
+CANDIDATE-G.txt
+3298 bytes
+630099ca09b64ecfaf49105d6fd67a3fed5165be93739527ef2ae9213fd338b4
+
+FULL-ANALYTIC-AUDIT-E.txt
+15327 bytes
+459b9b2cce46aac7004ab1df1a33fe98b3fed235d426e19bbc2514a633d6d35a
+
+FULL-ANALYTIC-AUDIT-F.txt
+13272 bytes
+3c9efd83a78cde7c109b52b177483043a3183510615751e78055c7d52e5f09c5
+
+PRIMARY-SOURCE-POSITIONING.txt
+1994 bytes
+fde1b154f54aa86cc6deda2bb6ab28dfca7fc1655df047cc054129c546f2cc54
+
+README.md
+4304 bytes
+cdf2fbfba69f5bc3dce2619c7c94c90e1a3307969c9ffcf34bbdb56bf758921d
+
+TERMINAL-COMMIT-AUDIT-E.txt
+8034 bytes
+1b205105afea79071a94bf84932f6caee5c70adc6f1dcd4b121d9003e55f35ba
+
+TERMINAL-COMMIT-AUDIT-EF.txt
+8233 bytes
+af4b2338b179da13c760452dda221a4ba40419a92c33d99c1b7f7bea9cdd2e5f
+
+All payloads except README also match their retained D: files. README is absent from that D: root at inspection but retained exactly in local Git and the working tree. This report does not certify a complete D: root mirror or a completed remote push. Earlier D: candidates and reports have not been normalized or replaced.
+
+6. README TIMING AND PRESENTATION
+
+The new README section states the correct uniform-start mean-square bound, explicitly includes initialization bias, and denies stationarity/unbiasedness from mu. It says no new warm-start premise is imposed for this particular start and retains the exclusion of arbitrary states, full-L2 gaps, concentration and optimality. Its displayed coefficient agrees with G.
+
+The README records G as pending its first audit at freezing. That is honest historical status for the commit inspected; it does not pretend the E/F audits assessed G. This combined report is generated after that freeze and is an external subsequent evidence artifact. Its later acceptance must be attributed to this report and exact candidate hash, not retroactively to the prior reports. The snapshot need not be rewritten merely to erase the historical pending status.
+
+The earlier sections still distinguish analytic acceptance from PDF review/publication and disclose same-provider inherited context with no human/blind independence. Grouping is explicit. No numerical score, formal verification, new paper identifier or AIRR receipt is invented.
+
+7. WORKFLOW AND EXECUTION BOUNDARY
+
+The .github/workflows tree and the entire revision-window-20261116 production directory are unchanged from the parent. The accepted source186921a5... and inactive document workflow template are untouched. No answer to the existing execution/capacity question is encoded by this commit.
+
+Under the previously inspected active configuration, ci, control-plane and lean-build push triggers remain main-only; dashboard push paths do not match any supplement path; orchestrator is schedule/dispatch based. No active workflow is added here. The resolved pre-push hook remains absent. The intended existing-branch preservation does not request computation through those ordinary configured triggers.
+
+This approval is limited to branch-only evidence preservation. It does not cover PR creation, main merge, dispatch or installation of the inactive template. Static configuration analysis cannot certify absence of unrelated scheduled activity, external integrations or exceptional service behavior. Verify the actual remote branch SHA after any authorized push; this audit did not perform a push or inspect a resulting remote receipt.
+
+FINAL DISPOSITION
+
+G is a correct new analytic consequence of the accepted F estimate and the original floor, with a precise uniform-initialization mean-square guarantee. The frozen commit preserves its input and prior evidence exactly and is suitable for the proposed branch-only preservation. No blocking correction is required. E/F are not regraded, and no build, runtime, numerical assessment, publication or execution permission is created by this report.

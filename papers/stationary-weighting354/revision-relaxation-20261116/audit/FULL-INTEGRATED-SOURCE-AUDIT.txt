@@ -1,0 +1,133 @@
+FULL EXACT INTEGRATED-SOURCE AUDIT — RELAXATION SUCCESSOR
+Date: 2026-11-16
+
+SUBJECT AND VERDICT
+
+Exact source:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\revision-relaxation-20261116\manuscript-relaxation-candidate.tex
+Raw UTF-8/LF SHA256: 585e7eaee4f3aa45475799625fbb8315dbf024d8a42fb51b5d36a89f9b98b5c6
+Length: 63218 bytes. No carriage-return bytes were present. No normalization was applied for hashing.
+Repository HEAD at inspection: 8ef6466b58674f1bce6d4faeec2aa3ceb62866ae.
+The new source directory was untracked; this is an exact-source audit, not a terminal certification of a new commit.
+
+Accepted preceding source:
+papers/stationary-weighting354/revision-window-20261116/manuscript-window-v2-candidate.tex
+Raw SHA256: 186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3.
+
+VERDICT: PASS as a first exact integrated analytic-source review, with the nonblocking presentation clarifications recorded below. The complete new Section 9 faithfully consolidates accepted E/F/G into the actual Boolean Doob setting, preserves the correct constants, and distinguishes stationary variance from uniform-start mean-square error. No blocking mathematical transcription error, missing substantive hypothesis or new gap/novelty overclaim was found. Sections 2 through 8 are preserved exactly from the accepted predecessor.
+
+This verdict is not a PDF assessment, visual-layout approval, numerical score, formal verification, terminal build result, publication acceptance or execution permission. The integrated source has its own hash and report; component reports and predecessor grades are not substituted for this inspection. No computation or document production has been authorized by the audit.
+
+IDENTITY, GOVERNANCE AND METHOD
+
+Auditor: OpenAI Codex role /root/bootstrap_note_audit. Exact backend build/version and effective reasoning effort are not independently attested. This role shares the provider/workflow, inherited context and filesystem with the authoring workflow. It is not blind, human, provider-independent or organizationally independent peer review. No numerical grade is assigned. Earlier source verdicts are preserved, not resampled for a better outcome.
+
+I read docs/OPERATIONAL-GOVERNANCE-CHARTER.md, including its exact-artifact, immutable-failure, no-inbound-channel, representation-specific hashing and execution rules. No new clone was created, so there is no disposable-clone cleanup obligation. No incoming coordination was used to alter the frozen target while this review ran.
+
+Inspection consisted of the full source delta, the entire new Section 9 and its framing, the retained component derivations, exact comparison of the unchanged scientific section span, static TeX/reference reading, and file/Git/hash operations. No TeX compilation, build, syntax-test execution, numerical/symbolic mathematical code, Lean/Lake, UI, runtime, network write, PR/main/workflow action or source edit was performed. Only this report was created in the designated D: audit directory.
+
+1. PRESERVATION AND INTEGRATION MAP
+
+The predecessor and candidate raw hashes match the supplied values. An ordinal exact-text comparison from the start of Section 2 ('Failure of exact critical-cap transfer') to the end of Section 8, immediately before the new Section 9, returned equality. The LF source representation and unchanged corresponding span support exact preservation rather than a merely semantic similarity claim. The surrounding source diff independently shows no changes within that scientific block.
+
+The actual changes are: title; appended abstract scope; Section 1 roadmap and A--G provenance description; a new Section 9 containing two theorems and one corollary with proofs; a bounded WPI literature-positioning paragraph; updated exact-artifact review context; and three bibliography entries, with bibliography label width increased to two digits. The production source in revision-window-20261116 and its inactive build recipe were not edited.
+
+The retained Section 8 continues to impose d=floor(ck), a fixed positive zeta, eigenvalue lambda>=rho+zeta, and stationary-mean-zero normalized actual eigenfunctions. The earlier corrected fixed-positive-margin localization scope has not been dropped from the abstract, theorem or remaining-question discussion. The low-to-all window, finite crossing, code restrictions and tail-space counterexample boundaries remain as in the accepted source.
+
+Component source hashes used for comparison are:
+E: 0d11186fee2f9daff0c3fe33cee3092510ba5ace75abea9f6c76cebed184fafe
+F: 13cfa7b0faf2874e97a54aa3136cb8d885aaa529b53d35762b55599f4e949adf
+G: 630099ca09b64ecfaf49105d6fd67a3fed5165be93739527ef2ae9213fd338b4.
+Their previous reports are context; the integration below was inspected in its own exact source.
+
+2. GLOBAL SETTING AND SECTION 9 HYPOTHESES
+
+Section 1 fixes the finite cube L>=1, uniform probability mu and 0<rho<1. It defines P, g, normalized stationary density pi, the actual K and its reversible positive spectrum. Section 9 explicitly normalizes E hPh=1, so pi=hg there, and uses nu=pi mu. This specialization is consistent with the prior normalized density hg/Z and does not change K under scaling h.
+
+The Section 9 Dirichlet form is the actual stationary K form:
+D_K(f)=1/2 E_m[h(x)h(y)(f(x)-f(y))^2], m(x,y)=mu(x)P(x,y).
+Since m is a probability on edges and nu K has precisely this symmetric multiplier, no surrogate density or unrelated model is introduced. D_P removes that multiplier, as required.
+
+Theorem 9.1 retains h>0, normalized energy, pi>=b>0 and E pi^s<=2, with the original critical s=(1+rho)/(1-rho). The global parameter range makes s,s' valid finite conjugate exponents. Exact matching is expressly not required in this section. The strengthened theorem fixes rho=1/2 and the cubic cap, and the corollary invokes that theorem's assumptions. Every assertion is for real observables and the relevant integer time/sample ranges. Constant functions are dealt with without dividing by zero.
+
+3. THEOREM 9.1: EDGE MOMENT AND WEAK POINCARE ESTIMATES
+
+The proof retains the two distinct ordinary hypercontractive uses. Q=P_sqrt(rho) satisfies ||Qh||_2=1. The map Q:L2->L^(1+1/rho) is admissible at equality, giving ||g||_R<=1. The original floor yields h^(-1)<=g/b, so ||h^(-1)||_R<=b^(-1).
+
+With r_0=1/rho and v=h^(-r_0), the actual base edge expectation is
+E_m w^(-r_0)=<v,Pv>=||Qv||_2^2.
+The second hypercontractive use Q:L^(1+rho)->L2 gives its bound b^(-2r_0), since r_0(1+rho)=R. Endpoint correlation is handled through P, not replaced by independence. The new notation r_0 avoids confusing this exponent with the earlier normalized weighting density r.
+
+For z=(f(x)-f(y))^2/O^2 and alpha=r_0/(1+r_0), the product (wz)^alpha(w^(-r_0)z)^(1-alpha) equals z because r_0(1-alpha)=alpha. Holder therefore gives the printed estimate. Multiplying by O^2/2 produces exactly 2^(alpha-1)b^(-2alpha)D_K^alpha O^[2(1-alpha)]. Discarding 2^(alpha-1)<=1 weakens the bound in the correct direction.
+
+The uniform noise gap contributes (1-rho)^(-1). Centering by the uniform mean and Holder under pi gives
+Var_nu(f)<=B O^(2/s)Var_mu(f)^(1/s').
+After combination, the energy exponent is a=alpha/s'=2rho/(1+rho)^2, and the oscillation exponent is 2(1-a). This reproduces C=B(1-rho)^(-1/s')b^(-2a). Its inverse power is
+c=C^(-1/a)=b^2(1-rho)^(1+rho)2^[-(1-rho^2)/(2rho)].
+The printed p=(1-a)/a=(1+rho^2)/(2rho) is correct. There is no dimensional factor or missing norm conversion.
+
+For normalized y=Var/O^2 and e=D_K/O^2, the inequality e>=c y^(1+p) implies the stated epsilon form by the two cases y<=epsilon and y>epsilon. This proof does not need an additional Young constant. The printed c^(-1)epsilon^(-p) coefficient is valid for every epsilon>0.
+
+The discrete proof uses the actual self-adjoint PSD Markov operator, so 1-lambda^2>=1-lambda on its spectrum. Oscillation contracts, and the recurrence y_(n+1)<=y_n-cy_n^(1+p) follows with the initial O. Convexity of t^(-p) gives the printed inverse-power increment >=pc. Summing with y_0<=1 yields the declared rate, while zero-variance and O=0 cases are explicitly covered. All negative-power directions are correct and no continuous-time argument has been silently substituted.
+
+4. THEOREM 9.2: SUMMABLE SPECIALIZATION AND STATIONARY VARIANCE
+
+The stronger inverse moment is derived anew in the integrated proof. From hg>=b, applying P and rowwise Jensen yields g>=bP(1/g)>=b/(Pg), hence g^(-1)<=Pg/b. Since Pg=P_(rho^(3/2))Qh, at rho=1/2 the L2->L9 condition is exact: rho^3=1/8. Thus ||1/g||_9<=b^(-1).
+
+Holder with 1/(9/4)=1/3+1/9 gives ||h||_(9/4)<=B/b. The L^(9/4)->L6 noise threshold equals 1/4, so P_(1/2) gives ||g||_6<=B/b; the original floor then gives ||1/h||_6<=H=B/b^2. Nothing has become a new inverse-moment hypothesis during transcription.
+
+The edge moment is E_m w^(-4)<=||h^(-1)||_6^8<=H^8. Alpha=4/5 in the edge comparison gives H^(8/5)D_K^(4/5)O^(2/5). Combining the gap 1/2 and s'=3/2 gives
+Var_nu(f)<=C_*D_K^(8/15)O^(14/15), C_*=B2^(2/3)H^(16/15).
+Raising to -15/8 gives B^(-15/8)2^(-5/4)H^(-2)=b^4 2^(-61/24)=c_*. Thus p_*=7/8, the bracket coefficient (7/8)c_* and the decay power 8/7 are preserved exactly. The recurrence argument only requires p_*>0, so p_*<1 causes no problem.
+
+The sample-mean theorem explicitly says stationary chain with transition K. With the actual unique invariant nu this means nu initialization. After centering, reversibility gives gamma_(2m)=Var_nu(K^m f) and PSD contraction gives 0<=gamma_(2m+1)<=gamma_(2m). This retains the crucial even/odd argument rather than a Cauchy-Schwarz estimate that would halve the exponent.
+
+The sum-integral comparison has the correct direction and value:
+sum_(m>=1)(1+Am)^(-8/7)<=integral_0^infinity(1+Ax)^(-8/7)dx=7/A=8/c_*.
+Consequently sum_(j>=1)gamma_j<=O^2(1+16/c_*), and the exact finite-N covariance identity yields (3+32/c_*)O^2/N. Nonnegative covariances justify the extension to the infinite sum. This is the stationary variance assertion of F, not yet an arbitrary-start variance claim.
+
+5. COROLLARY 9.3: UNIFORM-START MEAN-SQUARE ERROR
+
+The corollary selects the uniform reference law mu explicitly and retains rho=1/2 and all assumptions through Theorem 9.2. It measures squared error about nu(f), not variance about the estimator's own possibly biased mean.
+
+For a finite path under the same transition K, initial laws eta and nu differ by exactly eta(x_0)/nu(x_0): all transition factors cancel. Full support is inherited from the positive finite Boolean model. Therefore eta<=Mnu implies E_eta Z<=M E_nu Z for nonnegative path functionals.
+
+For eta=mu, the original floor gives dmu/dnu=1/pi<=1/b. Applying this to the squared error and using stationarity only on the reference side proves C_F O^2/(bN), with C_F=3+32/c_*. There is no factor b^(-N), no new warm-start premise for mu, and no claim that mu-start paths are stationary. The adjoining text correctly states that bias may be present and excludes a dimension-free conclusion for a fixed vertex. N=1 and constant observables are covered by the same direct identity.
+
+6. LIMITS, ABSTRACT, TITLE AND ROADMAP
+
+The title's quantitative-relaxation emphasis describes the integrated addition without promising a full spectral-gap solution. The abstract retains the fixed-positive-distance qualification on localization and the unresolved high block. Its added paragraph distinguishes general bounded-observable polynomial relaxation from the rho=1/2 summable rate and uniform-start O(N^(-1)) mean-square estimate. It expressly says these are not full-L2 gap results and keeps both original open questions open. The fixed-b constants and oscillation prefactor are explicit in the section's theorem statements; the abstract is a summary rather than a claim of an observable-independent prefactor.
+
+The roadmap correctly assigns the new results to Section 9 and does not erase the different hypotheses of preceding results. A--G provenance is justified by the retained exact-note audits, including the separate G report; the source review-context section correctly warns that those reports do not certify the integrated source or an eventual PDF.
+
+The nonconstant eigenfunction consequence of the weak energy bound is stated with the necessary nonconstant qualification. The ratio Var_nu(f)/osc(f)^2 may indeed become small without proving gap collapse. For example, in the admissible h=1 model, f=sum_i x_i is an eigenfunction with variance L and oscillation 2L, so that ratio is 1/(4L) even though its eigenvalue remains rho. This on-paper example supports the limitation statement; it is not a newly claimed collapsing family or computation.
+
+The remaining-question paragraph still refers to the full admissible matching problem, the uncontrolled critical weighting moment and high block. No killed-return estimate, physical Yang-Mills gap, continuum limit or global originality is inferred from weak relaxation.
+
+7. POSITIONING AND ASSESSMENT CONTEXT
+
+The new WPI paragraph accurately describes the previously inspected Andrieu-Lee-Power-Wang 2022 comparison framework as same-invariant-measure comparison, while identifying the integrated proof's separate variance-density transfer. It does not use that difference as proof of novelty. The cited reading scopes are bounded and agree with the prior primary-source inspections:
+https://awllee.github.io/papers/AOS2241.pdf
+https://arxiv.org/pdf/2312.11689v1
+https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf
+No new full-literature priority audit is implied. The proof is written out rather than resting on uninspected general theorem details.
+
+The assessment section distinguishes the public predecessor PDF from this source and any future PDF. It explicitly forbids inherited scores, distinguishes working-paper deposit/model assessment/human review/editorial acceptance, and acknowledges same-provider inherited context and unattested exact model/effort. No numerical result or false execution statement appears in the integration. The prior failed 353A claim and adverse follow-up README record are retained rather than erased.
+
+8. STATIC TEX REVIEW AND NONBLOCKING CLARIFICATIONS
+
+The new theorem/proof, corollary/proof, display and align environments are structurally consistent on reading. Required commands are provided by the existing amsmath/amssymb/amsthm/hyperref packages and existing macros. New labels weakrelaxation, weakpoincare, weakenergy, weakform, weakdecay, summablerelaxation and uniformstart are unique in the inspected source. Their references resolve to present labels; the new bibliography keys odonnelllecture, alpw2022 and alpw2023 are defined, and prior references remain present. The change to thebibliography{99} accommodates the expanded list. I found no fatal static TeX transcription issue.
+
+This is not compilation or rendering evidence. Overfull boxes, pagination, font availability, actual reference resolution in a TeX run and visual readability remain unverified until an authorized production step and inspection of the exact PDF.
+
+Nonblocking clarification A: at the first generic hypercontractivity formula, explicitly writing the ordinary range 1<u<=v<infinity (sufficient for every application here) would make that displayed shorthand self-contained. The applications already lie in this range and the cited theorem provides it; no step uses an inadmissible exponent.
+
+Nonblocking clarification B: Section 9 reuses N for sample length, while Section 1 and the later endpoint discussion use N=E(h/g); it also locally reuses C and c for weak-Poincare constants after earlier matching/window constants. The theorem-local quantifiers and section references disambiguate the present mathematics, so this is not a false theorem. An explicit local notation sentence or a different sample-length symbol would reduce reader effort, particularly before returning to N^(-s)E[pi^s g^(-2s)] in Section 10.
+
+Nonblocking clarification C: the opening provenance sentence calls A--G 'low-to-full and dimension-free follow-ups', while E--G also concern relaxation and estimation. Adding those descriptive words would be more precise, but the roadmap and detailed section make their actual scope clear. This is not a priority or scope overclaim.
+
+No correction is required to rescue the mathematical conclusions. If any of these editorial suggestions is adopted, the resulting bytes require a new hash and a properly scoped successor check; this report remains tied to the frozen source named above.
+
+FINAL DISPOSITION
+
+The new source consolidates E/F/G correctly into Section 9 while preserving Sections 2--8 and their substantive hypotheses. The complete exact integrated source passes analytic inspection with the stated limitations and nonblocking presentation notes. It remains a source candidate with no rendered-PDF judgment or numerical assessment. Prior production files and the pending execution/capacity question are untouched; this report grants no exception and performs no publication action.
