@@ -1,0 +1,173 @@
+FULL ANALYTIC AUDIT OF FROZEN CANDIDATE E
+Date: 2026-11-16
+
+SUBJECT AND VERDICT
+
+Candidate: D:\Datos\the-eriksson-programme\autonomia\2026-11-16_weak-relaxation\CANDIDATE-E.txt
+Exact SHA256: 0d11186fee2f9daff0c3fe33cee3092510ba5ace75abea9f6c76cebed184fafe
+The C: copy under papers/stationary-weighting354/research/2026-11-16-weak-relaxation has the same SHA256.
+Declared research base: 8efcb73bdc4a6458f81fee6b3d9256f1e1524495.
+
+VERDICT: ANALYTICALLY SOUND under the exact finite-cube hypotheses stated. E1, E2 and E3, including their displayed constants and the sharper initial-value version, follow from the supplied argument. I find no blocking mathematical error. The inverse edge moment is derived from the actual positive potential and stationary floor; it is not an additional assumed weighting hypothesis. Matching is unnecessary for this weaker, oscillation-controlled conclusion.
+
+The result is a substantive bounded-observable relaxation consequence for the actual Doob chain. It is not a dimension-uniform L2 spectral-gap theorem, a collapsing-gap counterexample, a killed-operator norm bound, an optimal-rate result or a novelty certificate. It belongs with the grouped programme and does not by this audit justify a separate small paper. Further specific literature comparison is needed before any priority claim.
+
+IDENTITY AND CONTEXT
+
+Auditor role: OpenAI Codex /root/bootstrap_note_audit. Exact underlying backend model build and reasoning effort are not independently attested in this context. This is a separate role from the candidate's authoring role, with inherited parent context and the same provider/workflow. It is not blind, human, institutional or provider-independent peer review. No numerical score or grade is assigned. Previous A/B/C/D and manuscript assessments are not regraded or transferred to this candidate.
+
+I read the complete frozen note, checked its raw hash and the matching C: copy, compared the original stationary assumptions with the frozen integrated manuscript, inspected primary hypercontractivity and WPI references, and worked through the algebra and inequalities on paper. No numerical or symbolic computation, simulation, oracle, mathematical code, Lean/Lake, syntax/build test, PDF generation, UI operation or runtime was used. The candidate and existing manuscripts/reports were not changed. The pending PDF execution exception remains unanswered and is irrelevant to this analytic audit.
+
+1. HYPOTHESES, NORMALIZATION AND THE ACTUAL KERNEL
+
+The argument is for finite L, uniform probability mu on {-1,1}^L, fixed 0<rho<1, and a strictly positive real potential h. All inverse moments exist for each finite model because h has a positive minimum; their dimension-uniform bounds still require proof and are supplied below. The normalization is E_mu[h P_rho h]=1. Rescaling a positive h to this normalization does not change its Doob kernel or normalized stationary density.
+
+Set g=Ph and pi=hg. Then E_mu pi=1, so nu=pi mu is a probability measure. The pointwise floor pi>=b>0 implies b<=1. The moment cap E_mu pi^s<=2, s=(1+rho)/(1-rho)>1, gives ||pi||_s<=B=2^(1/s). The conjugate exponent is s'=(1+rho)/(2rho)>1. No endpoint rho=0 or rho=1 is included.
+
+The actual row sum is
+sum_y K(x,y)=sum_y P(x,y)h(y)/g(x)=1.
+Because uniform Boolean noise is reversible,
+nu(x)K(x,y)=mu(x)h(x)P(x,y)h(y)
+is symmetric in x,y. Hence nu is invariant and K is self-adjoint on L2(nu). Its Dirichlet form is precisely the displayed half-sum with edge multiplier h(x)h(y). This verifies the relevant nonlinear model rather than merely matching a convenient density pair.
+
+The original integrated manuscript's admissibility assumptions are the same stationary floor and critical cap plus exact low-degree stationary matching. Candidate E deliberately uses only the first two after normalization. There is no change from stationary density pi to normalized weighting density r or u hidden in the proof.
+
+2. FIRST HYPERCONTRACTIVE STEP: INVERSE POTENTIAL MOMENT
+
+Let Q=P_sqrt(rho). It is self-adjoint and Q^2=P. Thus
+||Qh||_2^2=<h,Ph>_mu=1.
+
+Write R=1+1/rho. The Boolean hypercontractive condition for Q from L2 to L^R is
+sqrt(rho)<=sqrt((2-1)/(R-1)).
+Since R-1=1/rho, this is equality. Both exponents lie in the ordinary norm range, with finite R>2. Therefore
+||g||_R=||Q(Qh)||_R<=||Qh||_2=1.
+
+From h(x)g(x)>=b, with h,g positive, one obtains
+1/h(x)<=g(x)/b.
+The direction is correct: multiplying by h(x)b>0 gives the original floor. Taking the R norm yields ||h^(-1)||_R<=b^(-1). This inverse moment is a proved consequence of the floor and energy normalization alone. The stationary cap is not used in this step.
+
+3. SECOND HYPERCONTRACTIVE STEP: INVERSE EDGE MOMENT
+
+The base edge measure m(x,y)=mu(x)P(x,y) is a probability measure, including its diagonal mass. Put w(x,y)=h(x)h(y), r=1/rho and v=h^(-r). Then exactly
+E_m w^(-r)=<v,Pv>_mu=||Qv||_2^2.
+
+For Q:L^(1+rho)->L2, the admissibility condition is
+sqrt(rho)<=sqrt(((1+rho)-1)/(2-1)),
+again equality. All exponents are greater than one. Consequently
+E_m w^(-r)<=||v||_(1+rho)^2
+=||h^(-1)||_[r(1+rho)]^(2r)
+<=b^(-2r),
+because r(1+rho)=R.
+
+This is not an assertion that h(x) and h(y) are independent under m; they are generally correlated. The <v,Pv> identity and Q factorization handle that dependence exactly. It is also not an inverse moment under nu tensor nu. Using the correct base edge law is essential and the note does so.
+
+4. EDGE HOLDER COMPARISON AND FACTORS OF TWO
+
+For nonconstant real f let O=max f-min f>0 and z=(f(x)-f(y))^2/O^2. Then 0<=z<=1. Define alpha=r/(r+1)=1/(1+rho), so 0<alpha<1 and r(1-alpha)=alpha. Pointwise,
+(wz)^alpha (w^(-r)z)^(1-alpha)=z,
+including z=0 since both powers are positive.
+
+Holder with conjugate powers 1/alpha and 1/(1-alpha) gives
+E_m z <= (E_m wz)^alpha (E_m w^(-r)z)^(1-alpha)
+<= (2 D_K(f)/O^2)^alpha b^[-2r(1-alpha)]
+= (2 D_K(f)/O^2)^alpha b^(-2alpha).
+
+The last inequality uses z<=1 and the inverse edge moment; it does not reverse a negative-exponent inequality. As D_P=(O^2/2)E_m z,
+D_P(f)<=2^(alpha-1)b^(-2alpha)D_K(f)^alpha O^[2(1-alpha)].
+
+The omitted factor 2^(alpha-1) is at most one. Replacing it by one makes the upper bound larger and is valid. This deliberate loss only weakens the final constant; it does not alter the power. The Dirichlet half-factor is accounted for correctly.
+
+5. TRANSFER OF VARIANCE AND CONSTANT AUDIT
+
+On nonconstant Walsh characters, the eigenvalues of P are rho^|S|<=rho, hence
+Var_mu(f)<=D_P(f)/(1-rho).
+
+Let m_f=E_mu f. Since nu is a probability,
+Var_nu(f)=inf_t E_mu[pi(f-t)^2]<=E_mu[pi(f-m_f)^2].
+Holder with s,s' then gives
+Var_nu(f)<=B (E_mu|f-m_f|^(2s'))^(1/s').
+The uniform mean m_f lies in the range of f, so |f-m_f|<=O. Therefore
+E_mu|f-m_f|^(2s')<=O^(2s'-2)Var_mu(f),
+and
+Var_nu(f)<=B O^(2/s) Var_mu(f)^(1/s').
+
+Combining with the edge comparison and the noise gap gives
+Var_nu(f)<=B(1-rho)^(-1/s')b^[-2alpha/s']
+             D_K(f)^(alpha/s') O^[2/s+2(1-alpha)/s'].
+Since 1/s+1/s'=1, the O exponent is 2(1-alpha/s'). Thus E1 holds with
+a=alpha/s'=2rho/(1+rho)^2,
+C=B(1-rho)^(-1/s')b^(-2a).
+
+For 0<rho<1, actually 0<a<1/2, a stronger range than the note's sufficient 0<a<1. Thus
+p=(1-a)/a=(1+rho^2)/(2rho)>1,
+1/p=2rho/(1+rho^2) in (0,1).
+
+Inverting the positive constant,
+C^(-1/a)=b^2(1-rho)^[1/(s'a)]2^[-1/(sa)].
+Here 1/(s'a)=1/alpha=1+rho and 1/(sa)=(1-rho^2)/(2rho), proving the stated
+c=b^2(1-rho)^(1+rho)2^[-(1-rho^2)/(2rho)].
+All factors are strictly positive and finite for the stated fixed parameters. No L or hidden number of states enters them. The estimates are not uniform at rho approaching either excluded endpoint or at b approaching zero. Such endpoint uniformity is not claimed.
+
+If O=0, f is constant on the finite cube, both variances and Dirichlet forms vanish, and E1/E2/E3 hold directly without divisions. If D_K=0, strict positivity of the actual kernel also forces f constant. No singular nonconstant zero-energy case is overlooked.
+
+6. WEAK POINCARE CONVERSION E2
+
+For O>0 put y=Var_nu(f)/O^2 and e=D_K(f)/O^2. E1 yields y<=C e^a, equivalently e>=c y^(1/a). Since 1/a=1+p, this is e>=c y^(1+p).
+
+For any epsilon>0, either y<=epsilon, in which case y<=c^(-1)epsilon^(-p)e+epsilon, or y>epsilon. In the latter case y^p>epsilon^p and
+e>=c y y^p>=c y epsilon^p,
+so y<=c^(-1)epsilon^(-p)e. Adding epsilon only weakens this inequality. Multiplying by O^2 proves E2 with precisely the coefficient stated. No optimization or missing Young-inequality factor is needed for this two-case proof. Arbitrarily large epsilon are permitted; the bound then becomes trivially valid rather than inconsistent.
+
+7. ACTUAL PSD KERNEL AND DISCRETE DECAY E3
+
+The unitary identification U:f->sqrt(pi)f from L2(nu) to L2(mu) satisfies
+UKU^(-1)=M_sqrt(h/g) P M_sqrt(h/g).
+Indeed the coefficient sqrt(h(x)g(x))h(y)/(g(x)sqrt(h(y)g(y))) equals sqrt(h(x)/g(x))sqrt(h(y)/g(y)). The right-hand operator is positive semidefinite since P is. K is also a stationary Markov contraction by Jensen and invariance, so its spectrum lies in [0,1]. In fact it is positive definite for a finite cube and 0<rho<1, but that stronger fact is unnecessary.
+
+For F=K^n f, invariance gives E_nu KF=E_nu F. Self-adjointness therefore yields
+Var_nu(F)-Var_nu(KF)=<F,(I-K^2)F>_nu.
+For every spectral value lambda in [0,1], 1-lambda^2>=(1-lambda), so the right side is at least D_K(F). This would require care for a generic reversible kernel with negative spectrum; the candidate proves the needed PSD property for its actual K.
+
+Markov averaging keeps every K^n f in the original range of f, so osc(K^n f)<=O. Applying E1 to F, using the larger denominator O in the oscillation factor, gives
+D_K(F)>=c Var_nu(F)^(1+p)/O^(2p).
+Thus y_n=Var_nu(K^n f)/O^2 obeys
+y_(n+1)<=y_n-c y_n^(1+p).
+The use of O rather than the possibly smaller current oscillation is a weakening in the correct direction.
+
+If y_n=0, the observable is nu-almost surely constant and all subsequent variances vanish. If consecutive values are positive, convexity of t^(-p) gives its tangent bound at y_n:
+y_(n+1)^(-p)-y_n^(-p)
+ >=p(y_n-y_(n+1))y_n^(-p-1)
+ >=pc.
+Summing until any possible first zero, and treating subsequent zeros directly, proves
+Var_nu(K^n f)<=O^2[y_0^(-p)+pcn]^(-1/p)
+when y_0>0. This has equality in its initial-value normalization at n=0. Since y_0<=1, replacing y_0^(-p) by 1 enlarges the bound and gives E3. The standard stronger y_0<=1/4 is correct but not needed. There is no continuous-time substitution, missing factor of two in n, or reversed negative power in this argument.
+
+8. INTERPRETATION, LIMITS AND POTENTIAL OVERCLAIMS
+
+The variance bound is uniform in L and in all positive h satisfying the fixed floor/cap, after scaling by the initial oscillation squared. On a finite cube every function is bounded; the substantive uniform assertion concerns families whose oscillation is controlled as dimension varies. It does not compare decay with initial variance alone by a uniform constant.
+
+For a nonconstant eigenfunction with eigenvalue lambda, D_K(f)=(1-lambda)Var_nu(f). E1 consequently yields
+1-lambda>=c[Var_nu(f)/osc(f)^2]^p.
+The ratio can be small for localized normalized eigenfunctions; no dimension-uniform lower bound for it has been established here. The constant Perron eigenfunction must be excluded from dividing by its zero variance/oscillation. The note's eigenfunction discussion is correctly understood for nonconstant modes. It should be made explicit if converted into a standalone theorem statement.
+
+Saying that these estimates permit a vanishing dimension-dependent gap is a limitation of these estimates, not a construction of an admissible collapsing-gap family. The original stationary-gap question remains open. Likewise E1-E3 do not imply a critical weighting moment or control a killed operator in full L2 norm. Exact matching is absent because this is a weaker conclusion; the gap problem's matching requirement has not been eliminated by proving its own intended conclusion without matching.
+
+The fixed-rate exponent is derived correctly, but no optimality argument is provided. The deliberately discarded factor and the choice of exponents leave room for stronger constants or rates. A quantitative polynomial upper bound need not be the actual asymptotic rate of each finite chain: each such irreducible finite chain also has some exponential relaxation with model-dependent constants. There is no contradiction.
+
+9. PRIMARY SOURCES AND ORIGINALITY
+
+Ryan O'Donnell's CMU Lecture 16, Theorem 1.1, states the ordinary Boolean hypercontractive range used here. I inspected that theorem and its parameter condition. Both applications above sit exactly on its admissible boundary. No reverse hypercontractivity or unverified endpoint extension is needed.
+https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf
+
+I read the abstract/introduction and the relevant definitions in Andrieu, Lee, Power and Wang, arXiv:2312.11689v1. Its oscillation functional and weak-Poincare formulations confirm that E2 and the type of relaxation conclusion are established framework, not newly invented concepts. Its bibliography identifies their 2022 Annals of Statistics comparison paper. The attempted HTML fetch failed, but the primary arXiv PDF was accessible. I did not inspect all 74 pages or the complete 2022 comparison paper.
+https://arxiv.org/pdf/2312.11689v1
+
+The note's 2001 Roeckner-Wang citation is historical context; this audit does not claim to have inspected that full article. Correctness here rests on the written derivation and the checked Boolean theorem, not on an unread general comparison theorem.
+
+The potential programme-specific contribution is the actual-Doob inverse-edge moment derived from the nonlinear stationary floor, followed by explicit dimension-free constants under its critical stationary cap. Holder-based form comparison and WPI-to-decay arguments are standard mechanisms. This audit establishes the specialized calculation's correctness, not priority or global originality. The note honestly discloses that its broader programme search was incomplete. Before public novelty language is added, compare the inverse-density/form-transfer step directly with the 2022 comparison results and relevant perturbation literature. A local absence of a matching phrase in one manuscript cannot establish priority.
+
+10. DISPOSITION AND RECOMMENDED USE
+
+No blocking correction is required to E1-E3 as frozen. For later presentation, keep the quantifiers 'fixed rho and b', 'finite Boolean cube', 'actual Doob kernel', 'oscillation-controlled bounded observables' and 'nonconstant eigenfunction' explicit. Preserve the distinction between variance decay and a full L2 spectral gap. These are scope clarifications, not missing hypotheses needed to rescue the proof.
+
+This is an additional proved analytic consequence with real relevance to the active programme: it obtains uniform bounded-observable relaxation without matching. It should be consolidated with the existing related manuscript after targeted novelty comparison, rather than emitted as a small standalone paper. It neither resolves the active gap question nor changes the frozen PDF-production source or pending execution request. There has been no formal verification, exact-PDF assessment, numerical grade, acceptance or publication in this audit.

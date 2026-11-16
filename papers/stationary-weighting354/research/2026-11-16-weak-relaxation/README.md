@@ -1,0 +1,21 @@
+# Actual Doob weak relaxation — accepted analytic research supplement
+
+The frozen CANDIDATE-E.txt (SHA256 0d11186fee2f9daff0c3fe33cee3092510ba5ace75abea9f6c76cebed184fafe) has passed the separate exact-source analytic audit retained here. Its opening unaudited status records the state at freezing; this README and the dated report record the later verdict without editing the candidate.
+
+For fixed 0<rho<1 and b>0, under the original stationary floor and critical moment cap, the ACTUAL Boolean Doob chain satisfies
+Var_nu(K^n f) <= osc(f)^2 (1+p c n)^(-1/p),
+p=(1+rho^2)/(2rho),
+c=b^2(1-rho)^(1+rho)2^(-(1-rho^2)/(2rho)).
+The constants do not depend on cube dimension. This controls bounded-observable families with bounded oscillation; it is not a uniform L2 spectral-gap estimate. No stationary matching is needed for this weaker independent consequence.
+
+The inverse edge moment is derived from hPh>=b and normalized energy, using two classical Boolean hypercontractive inequalities. It is not an inserted hypothesis. The note gives all constants, the weak-Poincare form and a discrete-time proof using the positivity of the actual kernel.
+
+The general weak-Poincare and comparison machinery is established literature. PRIMARY-SOURCE-POSITIONING.txt records a specific comparison with the author-hosted 2022 Annals paper. Neither local searches nor analytic validity certify originality or an optimal exponent. No original hypothesis of the full gap problem has been eliminated, no admissible collapsing-gap example is produced, and the actual killed return operator remains uncontrolled.
+
+## Model assessments and review context
+
+The complete report is by a separate OpenAI Codex audit role with inherited context and the same provider/workflow. Exact backend model/effort are unattested. No blind, human, institutional or provider-independent peer review is claimed. No score, formal verification, numerical experiment, PDF review or publication was performed.
+
+This supplement is for grouping with the existing stationary-weighting programme, not a standalone paper. The accepted full manuscript source186921a5... and its inactive PDF-production recipe at8efcb73b remain unchanged. The earlier single execution-exception/capacity question remains pending; no repeat request or activation is made here.
+
+SHA256 manifests refer to exact raw bytes; original report newline representation is preserved. Basecommit8efcb73bdc4a6458f81fee6b3d9256f1e1524495.

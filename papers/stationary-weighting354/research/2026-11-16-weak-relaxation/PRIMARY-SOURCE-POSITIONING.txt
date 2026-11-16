@@ -1,0 +1,14 @@
+PRIMARY-SOURCE POSITIONING ADDENDUM — CANDIDATE E
+2026-11-16. Created after E was frozen; does not alter E or its ongoing audit.
+
+Fresh primary source inspected: Andrieu, Lee, Power and Wang, Comparison of Markov chains via weak Poincare inequalities with application to pseudo-marginal MCMC, Annals of Statistics50(6),3592-3618 (2022), DOI10.1214/22-AOS2241.
+Author-hosted published PDF:
+https://awllee.github.io/papers/AOS2241.pdf
+Text inspected: Proposition35, Theorem36 and its proof, Remark37 (journal pages3604-3605), plus abstract. Not a full-paper review.
+
+Their comparison theorem uses two kernels sharing one invariant measure and a pointwise off-diagonal kernel comparison. It converts tails of the comparison weight into a weak Dirichlet-form inequality. Oscillation is explicitly one admissible functional. This confirms that weighted Dirichlet comparison and weak-Poincare relaxation are established machinery, not a new method of this programme.
+E compares the actual Doob edge measure with the Boolean reference edge measure and separately changes stationary variance via the cap. Its specialized calculation uses the floor to prove the inverse-edge moment. Direct applicability of every hypothesis of their same-invariant-measure theorem is not asserted. No priority claim follows from this difference; further comparison may subsume the specialization.
+
+Searches for Doob/Boolean/weak-Poincare combinations did not identify an exact match in returned primary results. This is weak negative search evidence, not proof of novelty. The 2023 follow-up arXiv2312.11689v1 also confirms that the WPI-to-polynomial-convergence framework is established. The original2001 publisher full text was unavailable; do not claim to have read it.
+
+Publication decision: keep E within the existing grouped programme. No standalone paper, numerical grade, acceptance or publication. Need exact-source analytic audit first and broader priority positioning before any frontier/originality claim.

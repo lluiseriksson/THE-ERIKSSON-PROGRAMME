@@ -1,0 +1,26 @@
+{
+  "base_commit": "8efcb73bdc4a6458f81fee6b3d9256f1e1524495",
+  "representation": "Raw bytes; candidate and audit unchanged; no normalization of retained reports",
+  "files": [
+    {
+      "path": "CANDIDATE-E.txt",
+      "bytes": 7344,
+      "sha256": "0d11186fee2f9daff0c3fe33cee3092510ba5ace75abea9f6c76cebed184fafe"
+    },
+    {
+      "path": "FULL-ANALYTIC-AUDIT-E.txt",
+      "bytes": 15327,
+      "sha256": "459b9b2cce46aac7004ab1df1a33fe98b3fed235d426e19bbc2514a633d6d35a"
+    },
+    {
+      "path": "PRIMARY-SOURCE-POSITIONING.txt",
+      "bytes": 1994,
+      "sha256": "fde1b154f54aa86cc6deda2bb6ab28dfca7fc1655df047cc054129c546f2cc54"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2461,
+      "sha256": "cb4292c603ee52673fb9ff19ecec2ea5b8fbd2f3cf36380fdd702703b205316e"
+    }
+  ]
+}

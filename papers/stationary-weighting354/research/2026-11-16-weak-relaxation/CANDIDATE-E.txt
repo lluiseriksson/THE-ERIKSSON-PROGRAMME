@@ -1,0 +1,130 @@
+CANDIDATE E — DIMENSION-FREE POLYNOMIAL RELAXATION FOR BOUNDED OBSERVABLES
+2026-11-16. Analytic candidate, not yet audited; no execution or PDF assessment.
+Research base: 8efcb73bdc4a6458f81fee6b3d9256f1e1524495.
+This is a grouped research supplement, not a separate paper or alteration of the frozen PDF-production candidate.
+
+1. Question and scope
+The active question remains the stationary Boolean Doob gap. Here we test a different implication of its original floor and critical cap: a dimension-uniform weak Poincare inequality and polynomial variance decay for bounded observables. Exact marginal matching is NOT assumed or needed for this consequence. No uniform spectral gap, actual killed-norm upper bound, endpoint weighting moment, optimal exponent or global originality is claimed.
+
+2. Definitions
+Let mu be uniform on {-1,1}^L, 0<rho<1, P=P_rho, Q=P_sqrt(rho).
+Let h>0, g=Ph, normalize E_mu hPh=1, set pi=hg.
+Thus pi is a density relative to mu. Assume pi>=b>0 and E_mu pi^s<=2,
+where s=(1+rho)/(1-rho), s'=s/(s-1)=(1+rho)/(2rho), B=2^(1/s).
+Necessarily b<=1. Write nu(x)=mu(x)pi(x).
+The ACTUAL kernel K(x,y)=P(x,y)h(y)/g(x) is Markov and reversible for nu.
+Define D_K(f)=<f,(I-K)f>_nu
+ = (1/2) sum_{x,y} mu(x)P(x,y)h(x)h(y)(f(x)-f(y))^2.
+Define D_P analogously with h(x)h(y) omitted. Let O=osc(f)=max f-min f for real f.
+
+Constants:
+alpha=1/(1+rho),
+a=alpha/s'=2rho/(1+rho)^2 in (0,1),
+p=(1-a)/a=(1+rho^2)/(2rho),
+C=B (1-rho)^(-1/s') b^(-2a),
+c=C^(-1/a)=b^2(1-rho)^(1+rho) 2^(-(1-rho^2)/(2rho)).
+
+3. Claimed inequalities, uniform in L and h under the stated assumptions
+(E1) Var_nu(f) <= C D_K(f)^a O^(2(1-a)).
+For O=0 both sides are zero.
+(E2) For every epsilon>0:
+ Var_nu(f) <= c^(-1) epsilon^(-p) D_K(f) + epsilon O^2.
+(E3) For all integers n>=0:
+ Var_nu(K^n f) <= O^2 [1+p c n]^(-1/p).
+The decay exponent is 1/p=2rho/(1+rho^2). The sharper initial-value version,
+when Var_nu(f)>0 and O>0, replaces 1 in the brackets by
+(Var_nu(f)/O^2)^(-p).
+
+4. Derivation of E1 from the actual nonlinear floor
+Because ||Qh||_2^2=E hPh=1 and g=Q(Qh), ordinary Boolean hypercontractivity gives
+ ||g||_R<=1, R=1+1/rho.
+The pointwise floor hg>=b gives 1/h<=g/b, hence ||1/h||_R<=b^(-1).
+This inverse moment is PROVED here from the original floor and normalization.
+
+Use the probability measure m(x,y)=mu(x)P(x,y) and weight w=h(x)h(y).
+For r=1/rho, put v=h^(-r). Then
+ E_m w^(-r)=<v,Pv>_mu=||Qv||_2^2
+ <=||v||_(1+rho)^2=||1/h||_(r(1+rho))^(2r)<=b^(-2r),
+because r(1+rho)=R. This second hypercontractive use is
+Q:L^(1+rho)(mu)->L^2(mu).
+
+For O>0 put z(x,y)=(f(x)-f(y))^2/O^2, so 0<=z<=1.
+Holder, with alpha=r/(r+1)=1/(1+rho), gives
+ E_m z
+ =E_m[(wz)^alpha (w^(-r)z)^(1-alpha)]
+ <=(E_m wz)^alpha (E_m w^(-r)z)^(1-alpha)
+ <=(2D_K(f)/O^2)^alpha b^(-2alpha).
+Consequently
+ D_P(f) <=2^(alpha-1) b^(-2alpha) D_K(f)^alpha O^(2(1-alpha))
+ <=b^(-2alpha) D_K(f)^alpha O^(2(1-alpha)).
+The dropped factor is <=1; constants are intentionally not optimized.
+
+P's nonconstant Walsh eigenvalues are <=rho, so
+ Var_mu(f)<=D_P(f)/(1-rho).
+Let m_f=E_mu f. Since |f-m_f|<=O,
+ Var_nu(f)<=E_mu pi(f-m_f)^2
+ <=B [E_mu |f-m_f|^(2s')]^(1/s')
+ <=B O^(2/s) Var_mu(f)^(1/s').
+Combining gives E1 exactly, with a=alpha/s' and the stated C.
+No matching, critical u=h/g moment, off-model density or killed estimate was inserted.
+
+5. Weak Poincare conversion
+Normalize y=Var_nu(f)/O^2 and e=D_K(f)/O^2. E1 is y<=C e^a,
+equivalently e>=c y^(1/a).
+If y<=epsilon, E2 is immediate. Otherwise
+ y<=c^(-1) epsilon^(-p) e since y^(1/a)=y*y^p>=y*epsilon^p.
+Multiplication by O^2 proves E2.
+
+6. Discrete-time decay, including positivity justification
+Under the isometry f -> sqrt(pi) f from L^2(nu) to L^2(mu),
+K is similar to S=M_sqrt(h/g) P M_sqrt(h/g).
+P is positive semidefinite, hence K has spectrum in [0,1].
+For F=K^n f,
+ Var_nu(F)-Var_nu(KF)=<F,(I-K^2)F>_nu>=D_K(F).
+Markov averaging gives osc(K^n f)<=O.
+Thus y_n=Var_nu(K^n f)/O^2 satisfies
+ y_{n+1}<=y_n-c y_n^(1+p).
+If y_n=0, all subsequent terms vanish. For positive consecutive terms,
+the convexity inequality for t -> t^(-p) gives
+ y_{n+1}^(-p)-y_n^(-p)>=p(y_n-y_{n+1})y_n^(-p-1)>=p c.
+Summing proves the initial-value version. Since y_0<=1 (indeed <=1/4),
+it implies E3. No continuous-time/discrete-time substitution is used.
+
+7. Limits, falsifier and compatibility with the open gap
+These estimates permit a dimension-dependent spectral gap tending to zero:
+the factor osc(f)^2 is not controlled by its L^2(nu) norm uniformly for rare localized eigenfunctions.
+Applying E1 to a normalized eigenfunction gives only
+1-lambda >= c [Var_nu(f)/osc(f)^2]^p.
+Thus E1-E3 do not remove the original hypotheses of the spectral-gap question.
+They provide a dimension-free polynomial rate for a DIFFERENT, explicitly bounded-observable norm.
+A falsifier is any finite-dimensional positive h satisfying the exact original normalization, floor and cap for which E1 fails with the specified C, or an error in the inverse-edge moment or discrete-time argument.
+No computation has been run; analytic checking is required.
+
+8. Relation to earlier routes
+The generic critical-u killed-form bound remains unclosed. The present argument instead controls the inverse edge density h(x)h(y), a quantity tied to the actual Doob joint law.
+The previous full low-to-all window and eigenfunction-localization manuscript is untouched, as is its exact source hash and pending PDF-only execution request.
+This result, if accepted and worth including after novelty review, belongs with that grouped programme; do not produce a small standalone paper.
+
+9. Primary-source and originality context
+Ordinary scalar Boolean hypercontractivity is classical, not new here:
+Ryan O'Donnell, Lecture16, Theorem1.1,
+https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf
+Read theorem statement and parameter range from the author's university PDF.
+
+Weak Poincare inequalities and their relation to subgeometric convergence are established literature:
+Michael Roeckner and Feng-Yu Wang, JFA185(2),564-603 (2001),
+doi:10.1006/jfan.2001.3776.
+Publisher page access returned403 in this unit; metadata/abstract only were available, not full-text inspection.
+
+Christophe Andrieu, Anthony Lee, Sam Power, Andi Q. Wang,
+Weak Poincare Inequalities for Markov chains: theory and applications,
+arXiv:2312.11689v1 (2023),
+https://arxiv.org/html/2312.11689v1
+Read abstract, introduction and comparison/context passages; general WPI-to-decay machinery is not claimed as original. The discrete derivation above is included in full so correctness does not depend on unread portions.
+Further specific comparison literature: their Annals of Statistics50(6),3592-3618 (2022), cited by the 2023 paper. Full comparison paper not yet examined.
+The explicit actual-Boolean-Doob specialization and constants are the present derivation; priority has not been established, exponent optimality not asserted.
+A local targeted search of the frozen integrated manuscript found no weak-Poincare/polynomial-relaxation theorem. A broader D: search was interrupted and is NOT a complete programme-wide novelty check.
+
+10. Assessment context
+Authoring role: current OpenAI Codex assistant, exact backend build/effort not independently attested.
+No separate audit has yet occurred for this frozen note. No score, peer-review status, PDF review, formal verification or publication is assigned.
