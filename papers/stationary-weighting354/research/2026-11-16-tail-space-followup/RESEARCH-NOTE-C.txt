@@ -1,0 +1,95 @@
+ACTUAL EIGENFUNCTION LOCALIZATION AND A TAIL-SPACE NORM OBSTRUCTION
+Frozen analytic candidate C, 16 November 2026. Grouped follow-up; not a new paper or publication.
+
+Question and context
+The single active question remains stationary-doob-gap. The preceding accepted low-to-full reduction identifies an uncontrolled high-degree block. This unit asks whether its high-degree restriction repairs the missing scalar hypercontractive bound, and what that reduction forces for ACTUAL Doob eigenfunctions rather than only their transformed vectors. It derives a necessary rare-set localization statement and refutes a specific unrestricted tail-space norm shortcut. Neither conclusion supplies a general gap bound, a critical weighting-moment estimate or an admissible collapsing family. The stationary floor is retained. No mathematical program, formal proof, oracle, numerical experiment, new runtime or UI control is used. Involved parent Codex author; exact backend/effort unattested. A separate frozen analytic audit is required. No prior paper score is inherited.
+
+1. Setting, exact dependency and normalization
+Use uniform probability mu on {-1,1}^L, fixed0<rho<1, P=P_rho and Q=P_sqrt(rho). Let h>0, g=Ph, E hPh=1, pi=hg>=b>0, s=(1+rho)/(1-rho), E pi^s<=2, and exact uniform labelled stationary marginals through k_L, where k_L/sqrt(L)->C>0. Put u=h/g, N=E u, r=u/N, B=2^(1/s). The actual reversible Markov kernel is Kf=P(hf)/g. Real functions suffice.
+The dependency is the accepted research packet at Git commit9852442a945ddb43b728c2968f5f2220750a9052 in lluiseriksson/THE-ERIKSSON-PROGRAMME, path papers/stationary-weighting354/research/2026-11-16-low-full-block. Its original A hash is556a2d23e5264f3e1f421928f456a28ab1434e6056d13170d0845089ffd19c56; full audit b6b150f2a9bcef6d1ba8be2abc6902172a1a3f9d56bc6c5227e335bf9930624c. Its B addendum/audit remain unchanged. The published subcritical bounds used by that packet are in AIRR ARR-2026-4T35VQ6MZB8F99F4 v1.
+Fix the finite bootstrap index n from that packet with t=t_n>1+rho, t<s and ||u||_t<=K_n=:K_t, since N<=1. Fix its interpolation alpha and eta<1. Write e_L=B eta^(k_L+1), choose0<c<2alpha log(1/eta), and
+ d_L=floor(c k_L/log(L+1)).
+Let E_L=E_(L,d_L) be its full-column/row error, which tends0 exponentially in k_L. The dependency proves that if T=Q M_u Q has a unit non-Perron eigenvector psi with eigenvalue lambda>=rho+zeta, fixed zeta>0, then
+ ||Pi_<=d_L psi||_2^2 <= e_L^2+(E_L/zeta)^2=:delta_L.          (1.1)
+All constants and the index n are fixed before the dimension limit. No rate uniform as rho approaches an endpoint is claimed.
+
+2. Localization theorem for the actual eigenfunction
+Let f be a real K eigenfunction with Kf=lambda f, E pi f=0, E pi f^2=1 and lambda>=rho+zeta. Define
+ J_L=delta_L+rho^(d_L+1).
+For any M>0 put U_L(M)={x:u(x)>M}. Then
+ E[pi f^2 1_(U_L(M)^c)] <= M J_L/lambda,                    (2.1)
+ mu(U_L(M)) <= K_t^t M^-t,                                 (2.2)
+ Pr_pi(U_L(M)) <= B K_t^(t/s') M^(-t/s'), s'=s/(s-1).       (2.3)
+The first assertion concerns the L2(pi) mass of the actual f, not merely a test vector or a proposed cut. The last two concern respectively uniform and stationary probabilities.
+
+Proof. The exact spectral representation from the dependency is
+ psi=Q(hf)/sqrt(lambda), ||psi||_2=1, psi perpendicular to Qh,
+ T psi=lambda psi.
+For completeness, P(hf)=lambda g f gives
+ ||Q(hf)||_2^2=E hf P(hf)=lambda E pi f^2=lambda,
+ TQ(hf)=Q u P(hf)=lambda Q(hf),
+ <Q(hf),Qh>=E pi f=0.
+Also Qpsi=P(hf)/sqrt(lambda)=sqrt(lambda)g f. Therefore the following is a POINTWISE identity:
+ u |Qpsi|^2=lambda pi f^2.                                  (2.4)
+By the Walsh multiplier formula and (1.1),
+ ||Qpsi||_2^2=sum_S rho^|S| |psi_hat(S)|^2
+ <=delta_L+rho^(d_L+1)=J_L.
+On U_L(M)^c, u<=M. Integrate (2.4) over this complement and use the last bound to obtain (2.1). Markov's inequality and ||u||_t<=K_t give (2.2). Holder applied to pi 1_U with ||pi||_s<=B gives Pr_pi(U)<=B mu(U)^(1/s'), proving (2.3). No bound on an unproved critical norm of u is used.
+
+3. Exponential thresholds and eigenfunction intermittency
+Fix0<theta<log(1/rho) and M_L=exp(theta d_L). Then
+ M_L J_L ->0,
+ because delta_L decays exponentially in k_L while d_L=o(k_L), and
+ M_L rho^(d_L+1)=rho exp[-(log(1/rho)-theta)d_L]->0.
+Consequently (2.1) says that asymptotically all the actual normalized L2(pi) mass of f lies on U_L(M_L), although
+ Pr_pi(U_L(M_L)) <= C_t exp[-theta t d_L/s'] ->0,
+ C_t=B K_t^(t/s').
+The exceptional sets are defined by the actual u=h/Ph, not chosen freely to suit f. If the actual gaps collapse, their second eigenvalues eventually satisfy the above condition with zeta=(1-rho)/2, so every choice of normalized real second eigenfunction obeys the conclusion.
+
+More quantitatively, for every fixed finite p>2, writing
+ eta_L=M_L J_L/lambda and assuming eta_L<1, Holder on the stationary probability space gives
+ ||f||_(L^p(pi))
+ >=sqrt(1-eta_L) [Pr_pi(U_L(M_L))]^(-(1/2-1/p))
+ >=sqrt(1-eta_L) C_t^(-(1/2-1/p))
+   exp[theta t d_L(1/2-1/p)/s'].                            (3.1)
+The first inequality follows from ||f1_U||_2<=Pr_pi(U)^(1/2-1/p)||f||_p and (2.1). The lower bound on its L2 mass also ensures Pr_pi(U)>0, so there is no division by an empty set. This is a necessary divergence of higher stationary moments of such eigenfunctions, not an assumed eigenfunction bound or a proved absence of these modes.
+
+Scope relative to source345: the earlier programme result bounds the stationary mass of low-conductance cuts, with a different quantitative scale. Here no cut is constructed and no replacement conductance estimate is asserted: the conclusion is actual eigenfunction L2 localization on the specific high-u set and its higher-moment consequence. It does not dominate the older rare-cut theorem or eliminate the unresolved high block. It must remain grouped with those restrictions.
+
+4. High-degree support alone does not repair the missing norm bound
+Fix rho and any finite q>1+1/rho. For any sequence of integer cutoffs d_L>=0 with d_L=o(L), there are explicit real functions F_L with ||F_L||_2=1 and all Walsh coefficients through degree d_L zero, but
+ ||Q F_L||_q grows exponentially in L.                      (4.1)
+This refutes a dimension-uniform L2->Lq bound on that entire tail space. It is a classical tensor-product sharpness construction, not a new general hypercontractivity theorem or an admissible Doob counterexample.
+
+Proof. Choose fixed small0<epsilon<1, to be specified, let m=d_L+1 and ell=L-m (nonnegative for all sufficiently large L), and set
+ F_L(x)= [product_(i=1)^m x_i]
+          [product_(i=m+1)^L (1+epsilon x_i)]/(1+epsilon^2)^(ell/2).
+Independence gives ||F_L||_2=1. Every Walsh monomial in its expansion contains all of the first m coordinates, so every degree is at least m>d_L. Put
+ kappa(epsilon)=
+ {[(1+sqrt(rho)epsilon)^q+(1-sqrt(rho)epsilon)^q]/2}^(1/q)
+ /(1+epsilon^2)^(1/2).
+Noise acts independently on coordinates, and all displayed bases are positive. Thus exactly
+ ||Q F_L||_q=rho^(m/2) kappa(epsilon)^ell.                   (4.2)
+The even analytic expansion at epsilon0 is
+ log kappa(epsilon)=[rho(q-1)-1]epsilon^2/2+O(epsilon^4).
+Its quadratic coefficient is positive by the fixed q hypothesis. Hence some fixed epsilon in(0,1) has kappa>1. Now
+ log ||QF_L||_q
+ = L log kappa - m[log kappa+(1/2)log(1/rho)].
+Since m/L->0, the ratio of this logarithm to L tends to log kappa>0, proving exponential divergence. This direct proof also shows why the parity factor's damping cannot pay for the product amplification when the removed degree is sublinear.
+
+Apply this with q=2t' for any of the available finite t=t_n<s. Since2s'=1+1/rho, q exceeds the required threshold. The actual proved window d_L=O(sqrt(L)/log L) is sublinear, so passing to that high-degree space does NOT restore the dimension-uniform scalar map needed by the naive Holder step.
+This says nothing against a more specific estimate using u=h/Ph, the stationary floor/matching, positivity, or the eigenfunction equation. F_L is not claimed to be an actual eigenvector, and no h,pi satisfying all the target hypotheses is generated by the construction. In particular (4.1) cannot be reported as collapse of an actual Doob gap.
+
+5. Literature comparison and relevance
+Primary sources inspected during this unit:
+- Heilman, Mossel and Oleszkiewicz, Strong Contraction and Influences in Tail Spaces, arXiv:1406.7855; author-hosted PDF https://www.stevenheilman.org/~heilman/papers/hmo.pdf, introduction and its heat-smoothing formulation. Its displayed tail-smoothing question compares Lp to the SAME Lp. Our rejected bound is L2 to a larger Lq outside the hypercontractive range. These statements must not be conflated, and this note does not purport to refute their conjecture/results.
+- Volberg, Tail spaces estimates on Hamming cube and Bernstein--Markov inequality, arXiv:2208.00472v4, https://arxiv.org/pdf/2208.00472, introduction/section2. The inspected smoothing discussion is also same-exponent Lp(X) and involves its own constants/assumptions. No theorem from that paper is imported here.
+- The standard Boolean multiplier and hypercontractivity conventions are as in Mossel--Oleszkiewicz--Sen, arXiv:1108.1210v5 eq1.1, used in the published354 dependency. Section4 here is proved directly with tensor products and a two-point Taylor expansion.
+A current search also located arXiv:2611.08289 on Fourier level inequalities; only its abstract/bibliographic page was inspected, and no theorem or novelty exclusion is inferred from that limited check.
+
+The sharpness mechanism is classical and is not a frontier-discovery claim. The programme-level value is a concrete counterexample to the proposed generic tail-space repair and a quantitative localization identity for actual eigenfunctions under the previously proved reduction. Full originality/relevance clearance remains absent. Neither this note nor its components warrants a standalone small-corollary paper. No score, acceptance, human peer review, formal verification or physical/continuum gap claim is made. PR29 remains20/41 and TermSource0.
+
+6. Disposition and next bounded mechanism
+Preserve both the proved implications and negative method result. The active question is unchanged. We may now rule out the specific step 'high-degree support plus current subcritical moment bound makes the missing unrestricted scalar HC estimate dimension-uniform'. We have not ruled out actual high-degree modes, nor removed any original hypothesis.
+Next investigate the actual high-u sets in (2.1): use the nonlinear identity g=P h and u=h/g to bound their return behavior or to construct a fully admissible multilevel trapping family. Any proposed counterexample must satisfy the fixed floor, critical stationary cap and exact labelled marginals together; a free density or generic tail vector is insufficient. Do not repeat the refuted tail-space repair. After three units without further substantial mathematical progress on the remaining high-block route, preserve findings and change mechanism or name the concrete obstruction.
+Model assessments and review context: involved parent author, same-provider separate audit to follow on these exact bytes; exact serving model/backend and effort not independently attested. No old assessment is inherited. No computation or runtime consumption; all proofs are analytic, and this candidate is pending audit when written.

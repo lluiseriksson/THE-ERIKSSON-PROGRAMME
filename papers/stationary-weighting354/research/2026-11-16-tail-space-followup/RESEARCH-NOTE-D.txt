@@ -1,0 +1,102 @@
+DIMENSION-FREE LOW-TO-FULL CONTROL AND A LINEAR MATCHING WINDOW
+Frozen analytic candidate D, 16 November 2026. Additive strengthening; A, B and C remain unchanged.
+
+Scope and provenance
+This note addresses the same stationary-doob-gap question. It replaces the dimension-dependent column-count factor in accepted A by a classical low-degree polynomial norm bound. It derives full operator control through a fixed positive fraction of the matching degree k, requiring only k->infinity for asymptotic conclusions. In the active k~C sqrt(L) setting it enlarges the previously proved sqrt(L)/log(L) window to order sqrt(L). The actual high block still remains uncontrolled. Original stationary floor and moment assumptions are retained. No original hypothesis is claimed eliminated. This note must be separately audited before acceptance; no score, formal verification, PDF review or new publication is asserted.
+
+1. Fixed parameters and established input
+Uniform mu on {-1,1}^L; fixed0<rho<1, P=P_rho, Q=P_sqrt(rho). Let h>0, g=Ph, E hPh=1, pi=hg>=b>0, s=(1+rho)/(1-rho), E pi^s<=2 and exact stationary matching through integer0<=k<=L. Set u=h/g, N=E u, r=u/N, T=QM_uQ, B=2^(1/s), a=E h. Put
+ p0=1+rho, eta0=sqrt(max{rho,(1-rho)/2})<1, e=B eta0^(k+1).
+The published354 subcritical theorem and accepted packet A at commit9852442a945ddb43b728c2968f5f2220750a9052 give a fixed finite bootstrap index n, depending only on rho, with
+ p0<t=t_n<s, ||r||_t<=K_t, N<=1, 1-N<=e^2,
+ ||r-pi||_p <=(2e)^alpha (K_t+B)^(1-alpha),
+ alpha=(1/p-1/t)/(1-1/t), whenever1<p<t.
+The exact finite crossing p0<t was proved in A by substituting q_c=2(1+rho)/rho into F(q)-q. No stronger G-cycle or unproved endpoint estimate is required.
+Fix p=(p0+t)/2 in(p0,t) and its alpha in(0,1). Then
+ ||u-pi||_p <=Delta_k:=(2e)^alpha(K_t+B)^(1-alpha)+B e^2
+ <=C_p eta0^(alpha(k+1)),
+ C_p=(2B)^alpha(K_t+B)^(1-alpha)+B^3.                        (1.1)
+Indeed u-pi=N(r-pi)+(N-1)pi, ||pi||_p<=B, and eta0^(2(k+1))<=eta0^(alpha(k+1)).
+
+2. Classical polynomial norm bound with the Q multiplier included
+For r0>=2, a real Walsh polynomial f of degree<=d satisfies
+ ||Qf||_(r0) <= max{1,sqrt(rho(r0-1))}^d ||f||_2.            (2.1)
+Proof: define R_A on Walsh polynomials by multiplication of degree-j coefficients by A^j, where A=sqrt(rho(r0-1)). This finite linear map is defined algebraically even if A>1 and is NOT asserted to be a Markov/noise kernel in that case. Exactly
+ Qf=P_(1/sqrt(r0-1)) R_A f.
+The actual noise operator on the right maps L2 to L^(r0) contractively. Parseval gives ||R_A f||_2<=max{1,A}^d||f||_2. This proves (2.1).
+This is the standard low-degree consequence of Boolean hypercontractivity, with the known Q factor retained. Its classical proof is the same finite multiplier argument as O'Donnell, Analysis of Boolean Functions, arXiv:2105.10386v1, Theorem9.21, printedp262/PDFindex261. No originality is claimed for (2.1).
+
+3. Dimension-free operator estimate
+Let R_d=Pi_<=d, including the constant, with0<=d<=k. Define the fixed exponents and constants
+ r1=p p0/(p-p0), A1=sqrt(rho(r1-1)),
+ z=(p0+min{s,2})/2,
+ r2=s z/(s-z), A2=sqrt(rho(r2-1)), beta=sqrt(rho/(z-1)).
+Their ranges are
+ p0<p<t<s, p0<z<min{s,2},
+ r1>1+1/rho>2, r2>1+1/rho>2, A1>1, A2>1, 0<beta<1.
+For r1, p->pp0/(p-p0) decreases and its value at p=s is p0/rho=1+1/rho. For r2, z->sz/(s-z) increases and its value at z=p0 is the same. Thus the inequalities are strict.
+Then the following full column and row estimates hold for every dimension L:
+ ||(T-P)R_d||_(2->2)=||R_d(T-P)||_(2->2)
+ <= eps_(k,d):=Delta_k A1^d+(B+1)beta^(k+1-d) A2^d.         (3.1)
+There is no binomial dimension factor and no condition2d<=k.
+
+Proof. Take f of degree<=d. The identity
+ (T-P)f=Q[(u-pi)Qf]+Q[(pi-1)Qf]
+is exact, since P=Q^2. The first term is bounded by
+ ||(u-pi)Qf||_(p0) <= ||u-pi||_p ||Qf||_(r1)
+ <=Delta_k A1^d||f||_2,
+using Q:L^(p0)->L2, Holder with1/p0=1/p+1/r1, and (2.1).
+For the second term, v=(pi-1)Qf has no Walsh coefficient of degree below k+1-d: every character of pi-1 has degree>=k+1 and every one of Qf has degree<=d. The symmetric-difference product rule proves the support claim, without any Lp projection bound. Factor
+ Q=P_beta P_sqrt(z-1).
+The latter noise maps L^z to L2 contractively and preserves the high-degree support. P_beta on that support has L2 norm at most beta^(k+1-d). Hence
+ ||Qv||_2<=beta^(k+1-d)||v||_z
+ <=beta^(k+1-d)||pi-1||_s||Qf||_(r2)
+ <=(B+1)beta^(k+1-d) A2^d||f||_2,
+using1/z=1/s+1/r2 and (2.1). Add the estimates. Since T-P is self-adjoint, its full column restriction and adjoint row have equal norms. This proves (3.1). The proof does not sum individual columns.
+
+4. A fixed positive fraction of k
+Choose any fixed
+ 0<c<min{1, alpha log(1/eta0)/log A1,
+             log(1/beta)/log(A2/beta)}.                    (4.1)
+The interval is nonempty because all numerators/denominators are strictly positive. Define
+ gamma1=alpha log(1/eta0)-c log A1>0,
+ gamma2=log(1/beta)-c log(A2/beta)>0.
+For d=floor(c k), (1.1) and (3.1) give the explicit bound
+ eps_(k,d) <= C_p eta0^alpha exp(-gamma1 k)
+             +(B+1)beta exp(-gamma2 k).                    (4.2)
+Floor rounding only reduces the positive amplification factors. No ambient dimension occurs in this bound. If k->infinity, then d->infinity and the error tends0 exponentially in k. Since c<1 and k<=L, d<=L-1 whenever d>=1.
+This strengthens the former growing window, which paid sqrt(sum binomial(L,j)) and needed d=O(k/log L). In particular fixed-degree operator convergence now needs only k->infinity, without a separate k/log L growth assumption. This changes a proved rate/window limitation, not the original floor/cap assumptions or the unresolved high block.
+
+5. Spectral consequences in the actual representation
+As proved in A, T has the exact actual Doob spectrum, norm1 and unit Perron vector w=Qh. For a unit non-Perron eigenvector psi with eigenvalue lambda>=rho+zeta, fixed zeta>0,
+ ||Pi_<=d psi||_2^2<=e^2+(eps_(k,d)/zeta)^2.                (5.1)
+Indeed on nonconstant low degrees, (lambda I-P)J_d psi=J_d(T-P)psi and the inverse norm is at most1/zeta. The constant coefficient is bounded by ||1-w||_2<=e. This proves (5.1) directly with (3.1).
+For1<=d<=min{k,L-1}, set Z_d=I-R_d and H_d=Z_d T Z_d on Z_dL2. Then
+ |lambda_2(K)-max{rho,||H_d||}|<=2eps_(k,d).                (5.2)
+The proof is the same block argument as accepted B: the difference T-(R_d P R_d+Z_d T Z_d) has low and off-diagonal blocks each bounded by eps; its norm is at most2eps. The block diagonal second eigenvalue is max{rho,||H_d||}, and the min-max perturbation inequality applies. Thus the equivalent remaining high-block criterion now uses d=floor(c k), with error (4.2). It does not assert that this criterion holds.
+
+6. Actual eigenfunction localization on stationary exponentially small sets
+The localization argument of candidate C can be repeated directly with the new error; its previous theta range must NOT be copied without modification because d is now linear in k. The following proof supplies the correct range independently.
+For an actual normalized real eigenfunction Kf=lambda f with E pi f=0, E pi f^2=1, lambda>=rho+zeta, put psi=Q(hf)/sqrt(lambda). Then
+ Qpsi=sqrt(lambda)g f, u|Qpsi|^2=lambda pi f^2.
+Write delta_k=e^2+(eps_(k,d)/zeta)^2. The multiplier formula and (5.1) give
+ ||Qpsi||_2^2<=delta_k+rho^(d+1).
+Consequently for U(M)={u>M},
+ E[pi f^2 1_(U(M)^c)]<= M[delta_k+rho^(d+1)]/lambda,        (6.1)
+ Pr_pi(U(M))<=B K_t^(t/s') M^(-t/s'), s'=s/(s-1).          (6.2)
+The second bound follows from ||u||_t<=K_t, Markov, and Holder for pi.
+Let gamma0=min{log(1/eta0),gamma1,gamma2}>0. Then delta_k=O(exp(-2gamma0 k)), with zeta and all other parameters fixed. With d=floor(c k), choose
+ 0<theta<min{log(1/rho),2gamma0/c}, M=exp(theta d).
+Now M delta_k=O(exp[-(2gamma0-theta c)k])->0, while
+ M rho^(d+1)=rho exp[-(log(1/rho)-theta)d]->0.
+Thus asymptotically all L2(pi) mass of f lies on the actual high-u set U, whose stationary mass is at most
+ B K_t^(t/s') exp[-theta t floor(c k)/s'].
+For k~C sqrt(L) this is exp[-constant sqrt(L)] up to a fixed prefactor. Any fixed higher stationary Lp norm of these normalized eigenfunctions diverges at least at the corresponding exponential rate by Holder, as in C section3. This is a necessary concentration statement, not proof that these sets or modes cannot occur. In a collapsing-gap family take zeta=(1-rho)/2 eventually.
+
+7. Consistency with the tail-space obstruction and remaining problem
+The elementary product construction in C rules out a dimension-uniform unrestricted Q:L2->Lq map on all degrees>d_L whenever q>1+1/rho and d_L=o(L). The present argument uses (2.1) on LOW-degree INPUT polynomials and a finite exponential-in-d cost; it does not assert the refuted unrestricted high-degree inequality. At k~sqrt(L), the new d=floor(c k) is still o(L), so that obstruction remains relevant. Its counterexample is not an actual Doob eigenfunction or admissible collapsing h.
+The still-missing step is to control H_d, or the return behavior of the actual high-u sets just identified, using the nonlinear equation g=P h together with the stationary conditions. No new bound is assumed to solve that step. No critical weighting moment or general gap is proved. PR29 remains20/41 and TermSource0, with no physical/continuum interpretation.
+
+8. Novelty, verification and grouping
+Classical input (2.1) was checked against the author textbook O'Donnell, Analysis of Boolean Functions, https://arxiv.org/pdf/2105.10386, Theorem9.21 and its multiplier proof, printedp262/PDFindex261. The noise parameter is sqrt(rho) here. The new programme implication is the use of an exponent p strictly above1+rho, available from the published finite bootstrap, to apply this polynomial estimate before summing columns, eliminating the binomial loss. The second product term uses stationary matching and a separate smoothing slack z>1+rho. No originality is claimed for Holder, scalar hypercontractivity, polynomial norm bounds or the block/min-max argument. A global priority search has not established novelty of this application.
+This note is an additive candidate beyond A and C, not a request to regrade their reports. Preserve all earlier raw files, reports and rate statements. Integrate only after a separate audit of these exact bytes, as one grouped substantive revision rather than a standalone corollary paper. The manuscript/PDF354 and its first assessment are unchanged. Analytic reasoning only; no execution, formal certificate, numerical score, peer review or new publication. Exact serving model/effort unattested; parent author involved, same-provider inherited-context separate audit to follow. Falsifier: an invalid Holder/exponent range, support claim, polynomial estimate, missing dimension factor, spectral normalization, or theta choice in sections3-6. The active question remains stationary-doob-gap.

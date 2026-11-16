@@ -1,0 +1,36 @@
+{
+  "representation": "Raw file bytes preserved by scoped -text attribute; no normalization of audited candidates/reports",
+  "base_commit": "9852442a945ddb43b728c2968f5f2220750a9052",
+  "files": [
+    {
+      "path": "audit/FULL-ANALYTIC-AUDIT-C.txt",
+      "bytes": 16632,
+      "sha256": "b8adfb8ae5cd7952a135caedb9e9094da467aaf411dc8f96220c8902c2881952"
+    },
+    {
+      "path": "audit/FULL-ANALYTIC-AUDIT-D.txt",
+      "bytes": 15744,
+      "sha256": "da1de41a501010c71ecdc43f753a6df6027b4a549bd71978b499164e634054a5"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3592,
+      "sha256": "710450da58c9a19c4169e514a7831d9cf42e16257c3f624030c7dcba7f7b1748"
+    },
+    {
+      "path": "RESEARCH-NOTE-C.txt",
+      "bytes": 11438,
+      "sha256": "a919444eb7e8625fdf2d0b15c698603975938f1c5e646b00920a34261ba5a81d"
+    },
+    {
+      "path": "RESEARCH-NOTE-D.txt",
+      "bytes": 10895,
+      "sha256": "fa6b1b1287bed71b2ad225fae62f262d89598685dec866ca0fb91f5e2c15d263"
+    },
+    {
+      "path": "SOURCE-CHECK.json",
+      "bytes": 2757,
+      "sha256": "b02b73224c07db7fe792c2e94dfd1d387b735fd0583b8504806253b60a61ffa6"
+    }
+  ]
+}

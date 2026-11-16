@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-16",
+  "scope": "Targeted primary-source and local overlap check; global novelty not established",
+  "sources": [
+    {
+      "use": "Classical low-degree polynomial norm bound; Q-retained variant derived in D, no originality claimed",
+      "url": "https://arxiv.org/pdf/2105.10386",
+      "author": "Ryan O'Donnell",
+      "checked": "Theorem9.21 and finite Walsh multiplier proof, printed262/PDFindex261",
+      "title": "Analysis of Boolean Functions"
+    },
+    {
+      "checked": "Introduction and same-Lp heat-smoothing formulation",
+      "use": "Distinguish same-exponent estimates from C L2-to-larger-q obstruction",
+      "alternate_doi": "https://doi.org/10.1090/tran/6916",
+      "url": "https://www.stevenheilman.org/~heilman/papers/hmo.pdf",
+      "doi_result": "403; alternate author PDF read, no inference of permission expiry",
+      "title": "Strong Contraction and Influences in Tail Spaces"
+    },
+    {
+      "use": "Same-exponent Lp(X) smoothing distinction only; no theorem imported",
+      "url": "https://arxiv.org/pdf/2208.00472",
+      "checked": "v4 introduction and section2",
+      "title": "Tail spaces estimates on Hamming cube and Bernstein-Markov inequality"
+    },
+    {
+      "use": "The displayed correlation/level results require increasing functions (and boundedness/antipodality for specified results), absent in the current Doob question. No direct substitution or novelty clearance inferred.",
+      "url": "https://arxiv.org/abs/2611.08289",
+      "checked": "Abstract plus full-text HTML introduction, Theorems1.3/1.4/1.5 and scope; not full proof audit",
+      "title": "Fourier level inequalities on the discrete cube via complex hypercontractivity and Riesz transforms",
+      "full_text_url": "https://arxiv.org/html/2611.08289v1"
+    }
+  ],
+  "local_comparison": {
+    "source345_sha256": "43744293f5351fd3607aeb7c865977407d68091ebd2b4edabb12f7f690ad6c58",
+    "finding": "Prior rare-cut theorem concerns conductance and not stationary L2 mass of every eligible eigenfunction. C/D do not claim to dominate it."
+  },
+  "execution": "Analytic reasoning and source reading only; no math code, Lean, oracle or PDF compilation",
+  "original_hypotheses_eliminated": [],
+  "active_question": "stationary-doob-gap",
+  "targeted_search": {
+    "queries": [
+      "\"Doob\" \"Boolean\" \"marginals\" spectral gap",
+      "\"noise operator\" \"low-degree\" \"stationary\" hypercube h transform"
+    ],
+    "direct_programme_result": "https://airr.science/papers/ARR-2026-1AS15VP0199VZ847/",
+    "interpretation": "Search returned the existing programme bottleneck paper; lack of another matching hit is not evidence of originality. Unrelated secondary hits not used as technical authority."
+  }
+}

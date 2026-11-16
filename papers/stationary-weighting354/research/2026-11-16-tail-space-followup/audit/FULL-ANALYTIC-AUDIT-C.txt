@@ -1,0 +1,129 @@
+FULL SEPARATE ANALYTIC AUDIT — CANDIDATE C
+Actual eigenfunction localization and a tail-space norm obstruction
+Date: 2026-11-16
+
+VERDICT
+
+Accept the analytic implications and the specified negative method result under the exact stated hypotheses and asymptotic conventions. No invalidating mathematical error was found. The pointwise transfer identity, uniform and stationary rare-set bounds, higher stationary Lp lower bound, growing-threshold limit, and parity-times-product obstruction are correct. This is a useful grouped extension of the accepted A/B reduction: it translates energy-vector escape into localization of the actual eigenfunction and rules out a particular unrestricted tail-space norm repair. It does not bound the actual high block, close the original gap problem, eliminate an original stationary hypothesis, construct an admissible collapsing Doob family, contradict same-exponent tail smoothing, or establish global originality. No score or standalone-paper recommendation is given; retain it with the existing programme rather than split it into a small-corollary paper.
+
+1. Frozen referent, inputs and review context
+
+Audited frozen file:
+D:\Datos\the-eriksson-programme\autonomia\2026-11-16_tail-space-followup\RESEARCH-NOTE-C.txt
+Raw SHA256: a919444eb7e8625fdf2d0b15c698603975938f1c5e646b00920a34261ba5a81d
+
+The entire candidate was read, including its source-comparison and disposition sections. The stated hash matched the file. Its load-bearing analytic dependency is the A/B research packet at Git commit 9852442a945ddb43b728c2968f5f2220750a9052, papers/stationary-weighting354/research/2026-11-16-low-full-block. I reread the committed A note and used the previously retained A/B analytic audits without regrading or altering them. Candidate C's cited A and audit hashes agree with those established in the preceding audits. This is a conditional analytic extension of those accepted bounds, not a fresh formal verification of paper354 or its publication.
+
+The entire comparison source was read at:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-doob347\inputs\source345A.txt
+Raw SHA256: 43744293f5351fd3607aeb7c865977407d68091ebd2b4edabb12f7f690ad6c58
+That reading checks what source345 claims and the comparison made by C. It is not a new independent audit of every dependency used by source345.
+
+Auditor identity: OpenAI Codex assistant, separate bootstrap_note_audit role. The available environment does not independently attest the precise serving backend/version or effective reasoning effort. This role retains the parent-provided candidate, prior audit context and shared filesystem, and operates in the same provider/workflow. It is not blind review, human peer review, or provider/organizational independence. No inbound discussion or other-agent contact occurred during this audit. All mathematical checking was analytic reasoning; no numerical, symbolic, Lean, oracle or test execution, Colab runtime, desktop/browser UI, or new runtime was used. Only file/Git reading, hashes, primary-source web reading and report preservation were performed.
+
+2. Exact assumptions and dependency use
+
+The relevant limit keeps rho in (0,1), the positive stationary floor b, the finite bootstrap index n, all constants derived from them, c, zeta and theta fixed independently of L. The candidate explicitly fixes all constants before taking dimension limits; b must be read within that convention. A dimension-dependent floor tending to zero would not justify the same exponential rates or constants. With k_L/sqrt(L) tending to C>0 and c>0 fixed, d_L=floor(c k_L/log(L+1)) tends to infinity, d_L=o(k_L), and eventually 1<=d_L<=k_L<L. These are asymptotic assertions; small dimensions need not satisfy the growing-window conditions.
+
+The finite index provided by A has 1+rho<t=t_n<s. Hence t>1 and its conjugate is well defined. Since u=N r, 0<N<=1, and ||r||_t<=K_n, the input ||u||_t<=K_n is justified with no critical endpoint estimate. B=2^(1/s) bounds ||pi||_s because E pi^s<=2. E pi=E hPh=1 makes pi dmu a probability measure. No assumption about stationary marginals of r has been inserted.
+
+A's error E_(L,d_L) has two exponential upper bounds with exponents c/2-alpha log(1/eta) and c/2-log(1/eta), multiplied by subexponential factors in k_L. The strict condition c<2alpha log(1/eta), with 0<alpha<1, makes both exponents strictly negative. For sufficiently large L, each can be bounded by exp(-a k_L) times a fixed constant for some a>0. Thus delta_L=e_L^2+(E_L/zeta)^2 also decays exponentially in k_L. It is important that the index and zeta do not vary with L. The cited eigenvector escape bound includes the constant mode as well as nonempty low degrees, which is exactly what the subsequent estimate needs.
+
+3. Exact representation and pointwise mass identity
+
+Let f be an actual real K eigenfunction with E pi f=0, E pi f^2=1 and eigenvalue lambda>=rho+zeta>0. The eigen-equation is P(hf)=lambda g f. Set psi=Q(hf)/sqrt(lambda). Self-adjointness and Q^2=P imply
+
+||Q(hf)||_2^2=<hf,P(hf)>=lambda E h g f^2=lambda.
+
+Moreover,
+T Q(hf)=Q M_u P(hf)=lambda Q(u g f)=lambda Q(hf),
+because u g=h. Orthogonality is
+<Q(hf),Qh>=<hf,Ph>=E pi f=0.
+
+These establish the unit normalization and non-Perron condition needed to apply A. Applying Q once more gives Qpsi=P(hf)/sqrt(lambda)=sqrt(lambda)g f at every cube point. Multiplication by u=h/g gives the exact pointwise relation
+
+u |Qpsi|^2=lambda h g f^2=lambda pi f^2.
+
+There is no missing factor N, stationary density normalization, square root, or spectral-conjugacy factor. The identity is about the actual eigenfunction f, not an arbitrary high-degree test vector. For real functions f^2 is correct; a complex formulation would use |f|^2 and conjugate inner products, but real eigenbases suffice here.
+
+4. Localization and probability estimates
+
+Parseval in the uniform Walsh basis gives ||Qpsi||_2^2=sum_S rho^|S| |psi_hat(S)|^2. On the degrees at most d_L the multipliers are at most 1; above d_L they are at most rho^(d_L+1). Since ||psi||_2=1 and its low projection has squared norm at most delta_L,
+
+||Qpsi||_2^2 <= delta_L+rho^(d_L+1)(1-||Pi_<=d_L psi||_2^2)
+             <= delta_L+rho^(d_L+1)=J_L.
+
+The simpler upper bound used in C is valid even if delta_L is not small in a particular finite dimension. For M>0 and U={u>M}, its complement has u<=M, including the threshold equality. Integrating the exact identity over that complement yields
+
+E[pi f^2 1_(U^c)] <= (M/lambda)||Qpsi||_2^2 <= M J_L/lambda.
+
+Thus (2.1) is an upper bound on the actual f's stationary squared mass. It does not assert literal support or pointwise vanishing outside U. The other two estimates concern probabilities, which must not be confused with this squared mass:
+
+mu(U) <= M^-t E u^t <= K_t^t M^-t;
+Pr_pi(U)=E pi 1_U <= ||pi||_s mu(U)^(1/s')
+         <= B K_t^(t/s') M^(-t/s').
+
+Both Holder exponents and the power of K_t are correct. They are valid when the displayed probability upper bound exceeds 1 as well, although then it is weaker than the trivial bound. The positive floor is part of the inherited moment estimate, not an additional factor needed in these two probability inequalities.
+
+5. Growing thresholds and higher stationary moments
+
+Take theta fixed in (0,log(1/rho)) and M_L=exp(theta d_L). Because d_L=o(k_L), multiplying an exponentially decaying delta_L by exp(theta d_L) still gives a quantity tending to zero. The remaining term is exactly
+
+M_L rho^(d_L+1)=rho exp(-(log(1/rho)-theta)d_L),
+
+which tends to zero since d_L tends to infinity and the coefficient in parentheses is positive. Therefore M_L J_L tends to zero. The eigenvalue is bounded below by the fixed rho+zeta, so eta_L=M_L J_L/lambda tends to zero uniformly over the eligible normalized eigenfunctions. The stationary probability bound has fixed constant C_t=B K_t^(t/s') and tends to zero at the stated exp(-theta t d_L/s') rate. All the actual stationary L2 mass tends into this particular high-u set in the precise sense that its complement has mass at most eta_L. The set depends on h and L, but not on a separate choice made to fit the eigenfunction.
+
+For a collapsing actual gap, lambda_2 tends to 1. With fixed rho, eventually lambda_2>=(1+rho)/2=rho+(1-rho)/2. Any real normalized second eigenfunction is stationary-mean-zero because it is orthogonal to the simple Perron eigenfunction in the reversible stationary space. Eigenvalue multiplicity does not matter: the estimates hold for every such normalized vector. The conclusion is conditional on collapse; no collapsing sequence is manufactured.
+
+For fixed finite p>2, write a_p=1/2-1/p>0. Holder on the probability space pi dmu gives
+
+E_pi[|f|^2 1_U] <= (E_pi |f|^p)^(2/p) Pr_pi(U)^(1-2/p).
+
+If eta_L<1, (2.1) makes the left side at least 1-eta_L>0, which also proves Pr_pi(U)>0. Taking square roots and dividing gives
+
+||f||_(Lp(pi)) >= sqrt(1-eta_L) Pr_pi(U)^(-a_p).
+
+The exponent -a_p is negative; substituting an UPPER bound on Pr_pi(U) therefore gives a LOWER bound, as required. Inserting C_t exp(-theta t d_L/s') reproduces (3.1) with the correct sign, constant and growth rate. It is a necessary divergence of these eigenfunctions' higher stationary norms, not a contradiction: no uniform upper bound for those norms has been proved. Finite-dimensional norms exist for each L even though the sequence diverges. No p=infinity assertion is necessary for the stated finite-p theorem.
+
+6. Tail-space obstruction: construction and sharp range
+
+Fix finite q>1+1/rho and integer d_L>=0 with d_L=o(L). All construction claims are for sufficiently large L; this is essential if an arbitrary early cutoff exceeds the dimension. Put m=d_L+1 and ell=L-m>=0. Write F as the product of the first m coordinates times the normalized positive-coordinate product over the remaining ell coordinates. Independence gives E F^2=1, because each remaining factor has second moment 1+epsilon^2, exactly canceled by the squared normalization. Every Walsh term includes the first m coordinates, so the minimum possible degree is m, with no cancellation creating lower degrees. F has no Walsh coefficient through degree d_L.
+
+Under Q=P_sqrt(rho), each parity coordinate contributes sqrt(rho), while each factor 1+epsilon x becomes 1+sqrt(rho)epsilon x. On taking absolute values the parity has modulus 1. Independence of the remaining coordinates therefore yields exactly
+
+||QF||_q=rho^(m/2) kappa(epsilon)^ell,
+kappa(epsilon)=(((1+sqrt(rho)epsilon)^q+(1-sqrt(rho)epsilon)^q)/2)^(1/q)
+               /(1+epsilon^2)^(1/2).
+
+For 0<epsilon<1 and 0<rho<1 both bases are positive, so this expression and its Taylor expansion are well defined also for noninteger q. To verify the coefficient without symbolic computation, the even binomial expansion gives the averaged numerator before the 1/q power as 1+q(q-1)rho epsilon^2/2+O(epsilon^4). Its logarithm divided by q is (q-1)rho epsilon^2/2+O(epsilon^4). Subtracting (1/2)log(1+epsilon^2)=epsilon^2/2+O(epsilon^4) leaves
+
+log kappa=[rho(q-1)-1]epsilon^2/2+O(epsilon^4).
+
+The fixed strict range makes this coefficient positive, so one sufficiently small fixed epsilon>0 gives log kappa>0. This epsilon may depend on rho and q but not on L. Then
+
+(1/L)log||QF||_q = log kappa-(m/L)(log kappa+(1/2)log(1/rho))
+                 -> log kappa>0.
+
+Thus the entire tail space has an exponentially diverging L2-to-Lq operator norm along these sublinear cutoffs. The damping factor from parity consumes only o(L) in the exponent; it cannot cancel the positive linear product contribution. The argument makes no assertion at the equality threshold or for arbitrary linearly growing cutoffs. At the scalar endpoint q=1+1/rho ordinary hypercontractivity instead contracts L2 to Lq, so the strict inequality is indispensable.
+
+For an available finite exponent t=t_n>1 with t<s, conjugate exponents reverse order: t'>s'. Consequently q=2t'>2s'=1+1/rho, and the construction applies. The actual window d_L=O(sqrt(L)/log L) is sublinear. Therefore restricting the input only to that whole high-degree space cannot restore the missing dimension-uniform scalar map in the naive Holder bound. This refutes that method step even allowing a fixed constant larger than 1; it is stronger than merely failure of contractivity.
+
+The vector F is generally sign-changing and is not specified as an eigenvector of T. No corresponding h, g, u or stationary law satisfying the nonlinear relation and all original constraints is constructed. A restricted estimate for actual eigenvectors, or one using the coupling u=h/Ph, remains logically possible. The counterexample to a generic operator estimate must not be promoted to a counterexample to the original Doob-gap conjecture.
+
+7. Source345 overlap and literature boundaries
+
+Source345 sections1 and5 exclude low-conductance cuts above a constant times eta^(2k); section6 derives the existence of a small cut from a small gap by a finite Cheeger sweep. Its scope section explicitly does not claim stationary L2 localization of every low-gap eigenfunction. C instead proves localization of actual eigenfunctions on the defined high-u set, at a probability scale exp(-constant*d_L), and a consequence for their higher moments. This is a different observable and a weaker decay scale than exp(-constant*k_L). C correctly denies domination of the old cut theorem, construction of a cut, or resolution of the high block. It is an additional implication of A, not a duplicate rare-cut statement and not an independently established uniform-gap theorem.
+
+I directly inspected the primary Heilman--Mossel--Oleszkiewicz PDF introduction and heat-smoothing statements, https://www.stevenheilman.org/~heilman/papers/hmo.pdf . The displayed estimates compare the output and input in the same Lp space. This agrees with C's distinction; an input normalized only in L2 can have a growing Lq norm, so C's construction does not contradict those same-exponent statements. No claim about the entire paper or historical priority follows from this targeted reading.
+
+I directly inspected Volberg's arXiv:2208.00472v4 introduction and section2, https://arxiv.org/pdf/2208.00472 . Its displayed smoothing estimates likewise compare Lp(X) to Lp(X), with their specified Banach-space hypotheses and constants. C imports no theorem from it and correctly distinguishes the different map being refuted. No contradiction with that work is established or suggested.
+
+The abstract/bibliographic page https://arxiv.org/abs/2611.08289 was also read. It is indeed a paper on Fourier level inequalities using complex hypercontractivity and Riesz transforms. Only that page was checked, not the full paper, and no novelty exclusion is inferred. The ordinary scalar convention was already inspected in MOS arXiv:1108.1210 during the accepted A audit; this audit's tensor calculation is self-contained. None of these targeted checks constitutes an exhaustive novelty search or an originality certificate. The product sharpness mechanism is classical; the note's own conservative attribution is appropriate.
+
+8. Objections, interpretation limits and disposition
+
+No blocking correction is required under the following already-intended readings: the stationary floor and constants stay fixed in the L limit; growing-window conclusions and the arbitrary-sublinear-cutoff construction apply for sufficiently large L; 'all mass' is asymptotic L2(pi) concentration, not exact finite support; the negative result concerns the unrestricted tail-space scalar map, not actual constrained eigenfunctions. These are interpretation boundaries already supported by the text and proof, not new hypotheses or a request to change the frozen file.
+
+The next proposed direction concerning the actual high-u set remains a research plan, with no theorem about its return probabilities established here. The negative method result may be retained to avoid repeating the specific refuted repair. Neither original hypothesis elimination nor a proved general gap has occurred. The candidate makes a meaningful bounded advance within the active question, but does not justify a new standalone small-corollary paper, inherited scientific score, acceptance, human peer-review claim, or formal-validation claim. PR29=20/41, TermSource=0 and the continuum problem remain untouched.
+
+This is the complete report on the exact frozen C referent. The final preservation step rechecks its raw SHA256 and preserves this report on D:. No candidate or earlier report is edited. Report identity/context and all substantive qualifications are retained here rather than replaced by a summary verdict.

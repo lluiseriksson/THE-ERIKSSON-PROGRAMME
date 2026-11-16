@@ -1,0 +1,131 @@
+FULL SEPARATE ANALYTIC AUDIT — ADDITIVE CANDIDATE D
+Dimension-free low-to-full control and a linear matching window
+Date: 2026-11-16
+
+VERDICT
+
+ACCEPT the additive analytic strengthening under its stated stationary hypotheses and fixed-parameter limit. I found no invalidating mathematical defect. The full operator estimate has no hidden dimension factor, the positive fraction d=floor(c k) is admissible with the stated constants, the spectral comparison is correctly normalized, and the additional theta restriction is necessary and sufficient for the stated localization argument. The improvement from k/log(L) to a fixed positive fraction of k is a substantive improvement of the proved window. It does not bound the remaining high block, prove a general Doob gap, establish a critical weighting moment, remove the stationary floor, or certify originality. Retain it as a grouped extension; no separate small-corollary paper, numerical grade, formal certificate or publication assessment is supplied.
+
+1. Exact referent and actual review context
+
+Frozen candidate:
+D:\Datos\the-eriksson-programme\autonomia\2026-11-16_tail-space-followup\RESEARCH-NOTE-D.txt
+Raw SHA256: fa6b1b1287bed71b2ad225fae62f262d89598685dec866ca0fb91f5e2c15d263
+
+I read all eight sections and checked the input hash. The accepted A/B packet at commit 9852442a945ddb43b728c2968f5f2220750a9052 and the separately audited C are retained dependencies. This audit checks D's new application and resulting estimates; it does not overwrite, regrade or withdraw the earlier reports. Paper354's subcritical bounds are accepted inputs here, not newly formally verified. No score from paper354 or another candidate is inherited.
+
+The reviewer is the OpenAI Codex assistant in the separate bootstrap_note_audit role, operating with inherited context and the same provider/workflow as the author. Exact serving backend/version and effective reasoning effort are not independently attested in this environment. This is not blind review, human peer review or provider/organizational independence. No inbound discussion or contact with another agent occurred during this audit. Reasoning was analytic. No numerical/symbolic mathematics program, Lean, tests, oracle, PDF production/review, UI control, Colab or new runtime was executed. File operations and hash checks only support preservation; the primary textbook was read through its web text extraction.
+
+2. Parameters and the interpolated discrepancy
+
+Keep rho in (0,1), b>0, the finite bootstrap index, and the constants selected below fixed as dimension and matching degree vary. Feasibility already forces b<=1 because E pi=1. A floor depending on dimension and tending to zero would not inherit the same fixed constants; D makes no such extension. The endpoint rho=0 or rho=1 is excluded, and no rate uniform near either endpoint follows.
+
+The input p0=1+rho<t<s is exactly the finite crossing established in A, not an endpoint moment assertion. With p=(p0+t)/2, one has 1<p0<p<t<s. Therefore alpha=(1/p-1/t)/(1-1/t) is strictly between 0 and 1, and ||pi||_p<=||pi||_s<=B by monotonicity of norms on the uniform probability space. Since u=N r,
+
+u-pi=N(r-pi)+(N-1)pi,
+||u-pi||_p <= ||r-pi||_p+(1-N)B
+            <= (2e)^alpha(K_t+B)^(1-alpha)+B e^2.
+
+Substituting e=B eta0^(k+1), the first term is (2B)^alpha(K_t+B)^(1-alpha) eta0^(alpha(k+1)) and the second is B^3 eta0^(2(k+1)). Because 0<eta0<1 and 2>alpha, the latter is at most B^3 eta0^(alpha(k+1)) for every k>=0. Thus both Delta_k and C_p in (1.1) are correct, including the B^3 coefficient. The formula eta0^2=max{rho,(1-rho)/2} agrees with A's rho max{1,1/(s-1)} because s-1=2rho/(1-rho).
+
+3. Polynomial estimate with its multiplier
+
+For finite real r0>=2, put A=sqrt(rho(r0-1)). If f has degree at most d, the algebraic Walsh multiplier R_A is defined on that finite polynomial even when A>1. On each degree j,
+
+(1/sqrt(r0-1))^j A^j = rho^(j/2),
+
+so Qf=P_(1/sqrt(r0-1)) R_A f exactly. The genuine noise parameter on the right lies in (0,1], and ordinary hypercontractivity contracts L2 to L^(r0) there. Parseval gives
+
+||R_A f||_2^2=sum_(|S|<=d) A^(2|S|)|f_hat(S)|^2
+             <=max{1,A}^{2d}||f||_2^2.
+
+This proves (2.1) without a count of coefficients. If A<1, keeping the constant coefficient necessitates the max with 1; D retains it. At r0=2, the genuine noise is the identity and R_A=Q, which is consistent. Only finite r1,r2 are used below, so no interpretation at r0=infinity is needed.
+
+I inspected O'Donnell's May 2021 arXiv edition directly at https://arxiv.org/pdf/2105.10386, Theorem 9.21 and its proof on printed page 262, PDF index 261. The cited theorem and algebraic extension of the degree multiplier beyond a Markov parameter are indeed present. D's proof correctly retains Q's extra factor sqrt(rho); it does not assert that R_A is a probabilistic kernel for A>1. The underlying inequality and proof mechanism are classical. This source check does not establish novelty of D's application.
+
+4. Exponent and factorization ranges
+
+Both candidate Holder identities can be verified directly:
+
+1/r1=(p-p0)/(p p0)=1/p0-1/p,
+1/r2=(s-z)/(s z)=1/z-1/s.
+
+Their denominators are strictly positive. Since s-p0=rho s, the function x -> x p0/(x-p0) at x=s has value p0/rho=1+1/rho. Its derivative is -p0^2/(x-p0)^2<0. With p<s this proves r1>1+1/rho. The function z -> s z/(s-z) has derivative s^2/(s-z)^2>0; at z=p0 it has the same endpoint value. Thus z>p0 proves r2>1+1/rho. Both are finite and strictly above 2, since rho<1. Consequently A1=sqrt(rho(r1-1)) and A2=sqrt(rho(r2-1)) are strictly above 1.
+
+The chosen z is the midpoint of p0 and min{s,2}. Both s and 2 are strictly greater than p0, so p0<z<min{s,2}. Hence rho<z-1<1, beta=sqrt(rho/(z-1)) lies strictly between 0 and 1, and sqrt(z-1) also lies in (0,1). Their product is sqrt(rho), giving Q=P_beta P_sqrt(z-1) exactly. The latter factor contracts L^z to L2 at the ordinary Boolean hypercontractive endpoint. No reverse, vector-valued or unproved endpoint statement is substituted.
+
+5. Entire operator estimate and support argument
+
+For arbitrary f in the whole low-degree subspace, not merely one character,
+
+(T-P)f=Q[(u-pi)Qf]+Q[(pi-1)Qf].
+
+For the first term Q contracts L^(p0) to L2 because its squared parameter is rho=p0-1. Holder with p,r1 and then the polynomial estimate yield
+
+||Q[(u-pi)Qf]||_2
+ <=||u-pi||_p ||Qf||_(r1)
+ <=Delta_k A1^d ||f||_2.
+
+No subspace projection in Lp is used. The exponent p strictly above p0 is precisely what makes finite r1 possible; p=p0 would not support this argument with the same finite cost.
+
+Since E pi=1 and all nonempty coefficients through degree k vanish, pi-1 has Fourier support in degrees at least k+1. Qf keeps f's support in degrees at most d. In the product, any resulting index is R symmetric-difference S with |R|>=k+1 and |S|<=d. It has size at least |R|-|S|>=k+1-d. Summation or cancellation may remove such coefficients, but cannot introduce lower degrees. If k=L, pi-1 is identically zero and the assertion remains valid. For k=d=0 it asserts mean-zero support, also valid.
+
+Applying P_sqrt(z-1) preserves support, and applying P_beta afterwards has L2 norm at most beta^(k+1-d) on that support. Therefore
+
+||Q[(pi-1)Qf]||_2
+ <=beta^(k+1-d)||(pi-1)Qf||_z
+ <=beta^(k+1-d)||pi-1||_s ||Qf||_(r2)
+ <=(B+1) beta^(k+1-d) A2^d ||f||_2.
+
+The triangle bound ||pi-1||_s<=B+1 is valid because s>1 and the base measure is a probability. These two estimates apply uniformly to every unit vector in the low-degree subspace. Taking the supremum gives (3.1) directly, without a Hilbert--Schmidt or column-count conversion. A hidden factor sqrt(sum binomial(L,j)) is neither used nor needed. Self-adjointness yields ((T-P)R_d)*=R_d(T-P), hence equality of their operator norms. The proof includes the constant and cross block and requires only d<=k, not 2d<=k.
+
+6. Linear degree window, constants and asymptotics
+
+All denominators in (4.1) are positive: log A1>0 and log(A2/beta)>0. The numerators alpha log(1/eta0) and log(1/beta) are positive. Their minimum with 1 is a positive constant. Thus one may choose c>0 independently of L with the stated strict upper bounds, ensuring gamma1>0 and gamma2>0.
+
+For d=floor(c k), A1^d<=A1^(c k) because A1>1. The first term is bounded by
+C_p eta0^alpha exp[-(alpha log(1/eta0)-c log A1)k].
+For the second, rewrite it as
+(B+1) beta^(k+1)(A2/beta)^d.
+The factor A2/beta is greater than 1, so rounding d down only decreases this expression. It is at most
+(B+1) beta exp[-(log(1/beta)-c log(A2/beta))k].
+This is exactly (4.2), including its prefactors.
+
+As k tends to infinity, d tends to infinity and both terms decay exponentially in k without any ambient dimension. Since d<=c k<k<=L, for integer d one has d<=L-1 whenever k>=1; once d>=1, the nontrivial low and high blocks both exist. The finite estimate itself is still valid for d=0, while the second-eigenvalue statement explicitly requires d>=1.
+
+The weaker fixed-degree corollary also follows directly from (3.1): for any fixed d, eventually d<=k, and both terms tend to zero whenever k tends to infinity, with no restriction on log L/k. In the active k asymptotic to C sqrt(L) regime, the growing window is now asymptotic to c C sqrt(L). This removes a genuine dimension-dependent limitation of the previous proved bound. It does not assert that the previous bound was false or change its frozen audit.
+
+7. Eigenvector and eigenvalue consequences
+
+For nonconstant low-degree projection J_d and any unit T-eigenvector with lambda>=rho+zeta,
+(lambda I-P)J_d psi=J_d(T-P)psi.
+The spectrum of P on this subspace is bounded above by rho, so its inverse has norm at most 1/zeta. The row bound for J_d follows by composing the row bound for R_d with an orthogonal projection of norm 1. Thus ||J_d psi||_2<=eps_(k,d)/zeta. Orthogonality to w and the inherited ||1-w||_2<=e give |<psi,1>|<=e. The orthogonal decomposition into the constant and nonconstant low modes proves (5.1), with no doubling of the squared bound.
+
+For the block diagonal comparison, P commutes with R_d. In the decomposition into R_d and Z_d spaces the difference has matrix [A B; B* 0], with ||A||<=eps and ||B||<=eps by the row/column estimates. The pure off-diagonal matrix has norm ||B||, as follows by squaring it, so the full difference has norm at most 2eps. T is positive semidefinite with norm 1, hence H_d is positive semidefinite and has norm at most 1. R_d P R_d on the low subspace has top eigenvalue 1 and second eigenvalue rho when d>=1. The high block is nonempty by d<=L-1. The second eigenvalue of the combined diagonal operator is therefore max{rho,||H_d||}, even if the high block has eigenvalue 1. Min-max perturbation bounds the difference of the corresponding ordered eigenvalues by the operator norm, giving (5.2). The exact actual K spectrum is the established spectrum of T; no normalized-r factor N appears.
+
+As eps tends to zero, the same eventual positive-gap versus high-block-norm-away-from-1 equivalence as B holds. The criterion is a reduction, not an assertion that the high block satisfies it. Eigenvalue multiplicities and an oscillating sequence of high-block norms do not invalidate the finite estimate; one should use limsup for an eventual uniform gap instead of assuming a limit exists.
+
+8. Actual localization and the new theta condition
+
+The representation psi=Q(hf)/sqrt(lambda) gives Qpsi=sqrt(lambda)g f and hence the exact identity u|Qpsi|^2=lambda pi f^2. The low-mass bound and the multiplier rho^|S| imply ||Qpsi||_2^2<=delta_k+rho^(d+1). On {u<=M}, integration proves (6.1). Independently, ||u||_t=N||r||_t<=K_t gives mu{u>M}<=K_t^t M^-t, and Holder with pi in L^s gives (6.2). The probability bound does not control the eigenfunction mass by itself; the pointwise identity supplies that essential connection.
+
+Write a0=log(1/eta0)>0. The first component of delta_k is B^2 eta0^2 exp(-2a0 k). From (4.2), the square of eps is at most twice the sum of the squares of its two displayed terms. With fixed zeta>0, all components of delta_k are therefore bounded by a fixed multiple of exp(-2gamma0 k), where gamma0=min{a0,gamma1,gamma2}>0. The choice of minimum and factor 2 in the exponent are correct.
+
+For M=exp(theta d) and d<=c k, M delta_k is bounded by a constant times exp[-(2gamma0-theta c)k]. This tends to zero only under the additional strict condition theta<2gamma0/c (or another separately justified stronger rate). Meanwhile M rho^(d+1)=rho exp[-(log(1/rho)-theta)d] tends to zero for theta<log(1/rho). Both conditions have positive upper endpoints and are explicitly enforced in D. Copying C's former theta range without this second restriction would have been unjustified because d is no longer o(k); D correctly avoids that error.
+
+Since lambda>=rho+zeta>0, the complement's stationary L2 mass tends to zero. The high-u set has stationary probability at most C_t exp(-theta t floor(c k)/s'), where C_t=B K_t^(t/s'). Rounding changes an exp(-theta t c k/s') bound by at most the fixed factor exp(theta t/s'). For k asymptotic to C sqrt(L), this yields the stated exp(-constant sqrt(L)) scale with fixed prefactors, not a claim of exact finite support.
+
+For clarity, the higher-moment statement follows for each fixed finite ell>2 from
+||f||_(L^ell(pi)) >= sqrt(1-a_k) C_t^(-(1/2-1/ell))
+                         exp[theta t d(1/2-1/ell)/s'],
+where a_k=M[delta_k+rho^(d+1)]/lambda tends to zero and is eventually below 1. The positive lower L2 mass ensures the set's stationary probability is nonzero before dividing. This is a necessary divergence, not a contradiction with a proved upper eigenfunction bound. For a collapsing actual gap, lambda_2 tends to 1 and zeta=(1-rho)/2 is valid eventually.
+
+9. Objections, remaining limits and disposition
+
+No blocking objection was found. The claims must retain their explicit ranges: fixed positive floor and parameters, finite Holder exponents, d<=k, d>=1 and d<=L-1 for the second-eigenvalue comparison, sufficiently large k for nontrivial growing-window consequences, and both strict restrictions on theta. These are already in the candidate or its fixed-parameter setting; they are not extra assumptions added by this audit.
+
+There is no conflict with C's generic tail-space obstruction. D applies an exponentially costly bound to low-degree inputs; C excludes a dimension-uniform high-degree L2-to-Lq map beyond the hypercontractive range. At k of order sqrt(L), d remains sublinear in L, so C's obstruction still applies to the proposed unrestricted tail-space repair. Neither result creates an actual admissible collapsing h or rules out constrained high-degree modes.
+
+The new implication uses the available exponent strictly above 1+rho to avoid summing low-degree columns, and uses separate smoothing slack for the matching term. Its programme-level gain is the dimension-free operator control and the resulting larger window/localization scale. The classical ingredients and spectral block argument are not new, and this audit's targeted textbook check is not global priority clearance. The stationary floor, stationary cap and exact matching remain genuine assumptions. The high-block norm and actual return behavior remain the open step. No critical moment, physical gap or continuum result follows, and PR29=20/41 with TermSource=0 is unchanged.
+
+Retain the exact D source and this full report as an additive grouped strengthening, preserving A/B/C and their reports unchanged. This report accepts analytic correctness within the specified scope only; it does not issue a scientific grade, PDF assessment, formal-validation receipt, peer-review status or publication authorization. Candidate hash and identical C:/D: report copies are checked at preservation.
