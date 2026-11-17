@@ -1,0 +1,141 @@
+\section{Regularization and exact stationary matching}\label{regularization}
+The noise formula of Definition~2.46 and Proposition~2.47
+in~\cite{odonnell} makes smoothing a natural candidate operation.
+Smoothing the potential, however, does not commute with its nonlinear
+stationary-density construction. The following statements separate a
+preserved inequality from a failed exact equality.
+
+\begin{proposition}\label{smoothingfloor}
+Let $h>0$ satisfy $\E hPh=1$ and $hPh\geq b>0$. For $0\leq\tau\leq1$ put
+\[
+ H_\tau=P_\tau h,\qquad Z_\tau=\E H_\tau P H_\tau,\qquad
+ h_\tau=H_\tau/\sqrt{Z_\tau},\qquad \pi_\tau=h_\tau P h_\tau.
+\]
+Then $\pi_\tau\geq b$ for every $\tau$. No marginal-matching or moment
+assumption is needed for this assertion.
+\end{proposition}
+\begin{proof}
+The noise kernels commute. Cauchy--Schwarz in each probability row of
+$P_\tau$ therefore gives
+\[
+ H_\tau P H_\tau=(P_\tau h)P_\tau(Ph)
+ \geq\bigl(P_\tau\sqrt{hPh}\bigr)^2\geq b.
+\]
+By Walsh Parseval,
+\[
+ 0<Z_\tau=\sum_S\rho^{|S|}\tau^{2|S|}\widehat h(S)^2
+ \leq\sum_S\rho^{|S|}\widehat h(S)^2=1.
+\]
+The constant-character multiplier is one, including at $\tau=0$.
+Dividing the pointwise inequality by $Z_\tau$ proves the result.
+\end{proof}
+
+\begin{theorem}\label{smoothingmatchingfailure}
+Fix $0<\rho<1$, $0<b<1$, $L\geq3$ and $1\leq k\leq L-2$, and put
+$s=(1+\rho)/(1-\rho)$. There is a positive potential $h$ with
+$\E hPh=1$ such that its stationary density has exact uniform labelled
+marginals through order $k$, while
+\[
+ \pi_\tau\geq b,\qquad \E\pi_\tau^s\leq\sqrt2<2
+       \quad(0\leq\tau\leq1).
+\]
+For one specified coordinate $j$, the same potential satisfies
+$\E\pi_\tau\chi_{\{j\}}\ne0$ for every $0<\tau<1$.
+Thus every nontrivial smoothing loses even a first marginal while the
+stationary floor and critical cap survive for this constructed family.
+\end{theorem}
+\begin{proof}
+Choose $A\subseteq[L]$ with $m=|A|=k+1$ and $j\notin A$, and put
+$B=A\cup\{j\}$, $\alpha=\rho^m$ and $\beta=\rho^{m+1}$.
+Fix the dimension-independent number
+\[
+ \epsilon=\min\left\{\frac18,\frac{1-b}{4},
+                         \frac{\log2}{64s}\right\}>0
+\]
+and define $w=1+\epsilon(\chi_A+\chi_B)$.
+This density has mean one and
+$w\geq1-2\epsilon\geq\max\{3/4,(1+b)/2\}>b$.
+Its only nonconstant Walsh coefficients are at $A$ and $B$, whose
+degrees exceed $k$, so it has the required labelled marginals.
+We next realize it as the stationary density of an actual positive
+potential rather than treating the density and potential as independent.
+
+Under uniform input, $y=\chi_A$ and $z=x_j$ are independent uniform
+signs. Since their coordinate sets are disjoint, Boolean $\rho$-noise
+induces on $(y,z)$ the exact product kernel
+$Q=P_\alpha\otimes P_\rho$. In particular
+\[
+ P[f(\chi_A,x_j)]=(Qf)(\chi_A,x_j)
+\]
+for every function $f$ on these four points. The eigenvalues of $Q$ are
+$1,\alpha,\rho,\beta$; all entries are strictly positive.
+Apply Lemma~\ref{inversestationary} on this four-point space to the path
+$w_t=1+t\epsilon(y+yz)$, $0\leq t\leq1$. It is bounded below by $1/2$.
+The unique positive solutions $g_tQg_t=w_t$ start from $g_0=1$ and obey
+\[
+ \|\log g_1\|_\infty
+ \leq\frac{\lceil\tfrac12\log_2(4/(1/2))\rceil+2}{2(1/2)}
+                  \|\epsilon(y+yz)\|_\infty
+ =8\epsilon=:\eta\leq\frac{\log2}{8s}.
+\]
+The inverse estimate uses four points, not $2^L$, and is uniform as
+$\alpha$ becomes small. The lift $h=g_1(\chi_A,x_j)$ consequently
+satisfies $hPh=w$, $\E hPh=1$, and $e^{-\eta}\leq h\leq e^\eta$.
+
+Every $H_\tau=P_\tau h$ and $PH_\tau$ lies in the same interval, so
+$e^{-2\eta}\leq Z_\tau\leq e^{2\eta}$ and
+$\pi_\tau\leq e^{4\eta}$. Thus
+$\E\pi_\tau^s\leq e^{4s\eta}\leq\sqrt2$ for all $\tau$.
+Proposition~\ref{smoothingfloor} supplies the floor for all $\tau$.
+At $\tau=1$ these are the original stationary density and its cap.
+
+Write the unique four-character expansion
+\[
+ h=c+d\chi_{\{j\}}+e\chi_A+f\chi_B,\qquad c=\E h>0.
+\]
+Equating the three indicated coefficients in $hPh=w$ gives
+\begin{align}
+ (1+\rho)cd+(\alpha+\beta)ef&=0,\label{smoothingcancel}\\
+ (1+\alpha)ce+(\rho+\beta)df&=\epsilon,\label{smoothingcoefA}\\
+ (1+\beta)cf+(\rho+\alpha)de&=\epsilon.\label{smoothingcoefB}
+\end{align}
+If $e=0$, equation~\eqref{smoothingcancel} forces $d=0$, contradicting
+\eqref{smoothingcoefA}. If $f=0$, the same equation again forces $d=0$,
+contradicting \eqref{smoothingcoefB}. Hence $ef\ne0$.
+Now
+\[
+ H_\tau=c+\tau d\chi_{\{j\}}+\tau^m e\chi_A
+                         +\tau^{m+1}f\chi_B.
+\]
+Using \eqref{smoothingcancel} in the $\chi_{\{j\}}$ coefficient of
+$H_\tau PH_\tau$ proves the exact identity
+\begin{equation}\label{smoothingdefect}
+ \E\pi_\tau\chi_{\{j\}}
+   =\frac{(\alpha+\beta)ef}{Z_\tau}
+                         (\tau^{2m+1}-\tau).
+\end{equation}
+For $0<\tau<1$ this is nonzero, since $m\geq2$, $ef\ne0$ and
+$\alpha+\beta,Z_\tau>0$. No perturbative remainder or numerical
+nonzero test is used. At $\tau=0$ the normalized density is uniform,
+and at $\tau=1$ it is the original exactly matched density.
+\end{proof}
+
+For fixed $C>0$, the required $k_L=\min\{L,\lfloor C\sqrt L\rfloor\}$
+eventually belongs to $[1,L-2]$. Apply the theorem in those dimensions
+and use $h=1$ in the finitely many remaining dimensions. This gives the
+claimed obstruction within the original growing matching regime.
+No uniform lower bound on the magnitude of \eqref{smoothingdefect} is
+asserted: $\alpha$ tends to zero as $k_L$ grows. Exact matching is the
+equality that fails. The constructed potentials have a fixed positive
+minimum, so they are not a collapsing-gap family.
+
+The distinction between potential and density regularization is essential.
+For $w_\tau=P_\tau\pi$, stochasticity preserves mean one and the floor,
+Jensen's inequality and invariance of $\mu$ give
+$\E w_\tau^s\leq\E\pi^s$, and the Walsh formula preserves every zero
+low-degree coefficient. Lemma~\ref{inversestationary} then supplies the
+unique actual positive potential $u_\tau$ with $u_\tau Pu_\tau=w_\tau$.
+These elementary invariances do not compare the gaps of $K_h$ and
+$K_{u_\tau}$. A dimension-uniform spectral comparison under the original
+hypotheses remains unproved; it cannot be replaced by assuming a positive
+minimum for the reconstructed potential or a lower bound on $Ph$.
