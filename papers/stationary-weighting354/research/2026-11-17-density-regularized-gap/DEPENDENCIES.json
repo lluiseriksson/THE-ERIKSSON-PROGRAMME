@@ -1,0 +1,47 @@
+[
+  {
+    "repository_path": "papers/stationary-weighting354/revision-regularization-20261117/manuscript-regularization-candidate.tex",
+    "bytes": 99397,
+    "sha256_raw": "a94dbf1aca3738564894cacceaeba81abdeee35d3fde4f0dec281a09adf3508d"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/revision-regularization-20261117/FIRST-INTEGRATION-AUDIT.txt",
+    "bytes": 15934,
+    "sha256_raw": "8e006db9cfd67fcb6040b3b662bcdff505b468113433714e4cb91028b1056499"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-L.txt",
+    "bytes": 10586,
+    "sha256_raw": "cbe65eef9bff034561564bed05f2b777a181d73b9a24491324408b26b78a49cc"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/FULL-FIRST-ANALYTIC-AUDIT-L.txt",
+    "bytes": 19261,
+    "sha256_raw": "0a855ef11d3115bed54a10a3c644bb62a34ae4743330cd7f9d876ec1d8c892d6"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-M.txt",
+    "bytes": 8206,
+    "sha256_raw": "566ce2691477e814a2ef3878236238ea0ed4091f8b63d4bbd054ae4fc8e42b32"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/FULL-FIRST-ANALYTIC-AUDIT-M.txt",
+    "bytes": 16561,
+    "sha256_raw": "708f504bf1340ce231948aec10b301828b52cf20220dbab1b25fbf054c047d40"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/AUDIT-RESPONSE-M.txt",
+    "bytes": 959,
+    "sha256_raw": "134db454d351972e4c19ec3fb4cb28c16931f385aa6d1c1b0e5a412a2d82d9fc"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-smoothing-matching/CANDIDATE-N.txt",
+    "bytes": 10633,
+    "sha256_raw": "a3f1573a13304f5cbf8c2eec988d9fa3ab052bada9e4966eea83b5de0dc948e9"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-smoothing-matching/FULL-FIRST-ANALYTIC-AUDIT.txt",
+    "bytes": 18882,
+    "sha256_raw": "3c6a5f7a97d44e2a96263d643e883cd164e056f46350bede5520dd2144057e8b"
+  }
+]

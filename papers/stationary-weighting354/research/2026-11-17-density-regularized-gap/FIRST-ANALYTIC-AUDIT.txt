@@ -1,0 +1,125 @@
+FIRST ANALYTIC SOURCE AUDIT — CANDIDATE O
+Date: 2026-11-17
+Verdict: PASS for the exact analytic source identified below.
+
+1. Exact subject, scope and disposition
+
+Frozen repository commit: 4086adaf9f5c7ca84eb6017a79614fd277af1565.
+Parent: c3f47059629baac164495cf28a3f6c96400f77f6.
+Repository: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116.
+Subject: papers/stationary-weighting354/research/2026-11-17-density-regularized-gap/CANDIDATE-O.txt.
+Raw SHA256: 0eef71ebd956d1c92bbecbe342607b48cf0c0aa6709a6defc924203642d300e5.
+Raw length: 13183 bytes. UTF-8 without BOM; no CR bytes.
+Raw, unfiltered Git blob and HEAD blob both: 0fd19443d40dd5d4fa4427e9502e5b0237b96386.
+
+Theorem O and its parity obstruction O14 pass this first analytic audit. No blocking or nonblocking correction request was found. In particular, the stronger stationary moment is derived by regularization, the new exponent iteration crosses its prescribed finite target, and the critical norm estimate controls the full reconstructed chain. There is no claimed estimate comparing that reconstructed chain back to the original chain. The original stationary-gap problem remains open.
+
+This is a source proof audit, not formal-machine verification, a numerical certificate, a manuscript integration audit, a PDF assessment, a novelty certificate, an editorial acceptance or permission to publish. No numerical score is assigned or inherited.
+
+2. Auditor identity, context and operational boundary
+
+The auditor is the separate Codex child-agent role /root/public354_commit_audit in the same provider environment as the fabricating parent. The actual interface identifies a Codex assistant role. It does not provide independently attested serving-model identity, backend revision or reasoning-effort telemetry; none is invented here. Inherited conversation and prior task context include this programme and earlier source/integration audits. This is not independent human peer review, an independent provider replication or a blinded assessment. Role separation and the no-inbound-message boundary do not imply those stronger forms of independence.
+
+The assignment froze the branch at the SHA above and stated that no PR/body exists. A PR body capture is therefore inapplicable. No inbound follow-up was received during the substantive audit. I read the applicable repository instructions, the operational charter including section 4, the candidate, and the required existing proof interfaces. Operations were restricted to reading, git identity/status inspection, hashes, and writing/retaining this report and evidence outside the repository. No mathematical code, numerical evaluation, Lean, TeX, build, runtime, browser, external-model request or desktop operation was used. No disposable clone was created. No repository source, branch, state or old report was modified.
+
+The primary inequalities are expressly supplied in the preserved manuscript and used in their stated domains. I did not newly browse the linked books/paper or reproduce the author's targeted searches. The candidate's claim that the author re-read those sources is not converted into a claim that this auditor did so.
+
+3. Dependency and preservation identities
+
+Dependency read: papers/stationary-weighting354/revision-regularization-20261117/manuscript-regularization-candidate.tex.
+Raw SHA256: a94dbf1aca3738564894cacceaeba81abdeee35d3fde4f0dec281a09adf3508d.
+Raw length: 99397 bytes. UTF-8 without BOM; no CR bytes.
+Raw and committed Git blob: f212459206f66ed095000d99bb58bd5c449ec278.
+
+I inspected its ordinary and negative-exponent reverse hypercontractivity statement, inverse-moment derivation, lemma rigidity and proof, lemma inversestationary and proof, and lemma criticalsandwich and proof. The subject commit adds only CANDIDATE-O.txt. The preserved grouped manuscript and older sources/PDF/reviews are unchanged by this commit. The read-only identity record is retained as OBSERVATIONS.json alongside this audit's evidence. Source preservation alone is not a mathematical correctness test; the following sections record the actual analytic checks.
+
+4. Quantifiers, constants and reconstruction
+
+For each fixed rho,b in (0,1), s=(1+rho)/(1-rho)>1 and B=2^(1/s)>1 are finite. The theorem permits all L>=1 and 0<=k<=L and all positive mean-one densities satisfying the floor, critical cap and matching conditions. No special Fourier code or chosen family is inserted into the universal theorem. It is legitimate to formulate the result directly for densities: every such density has the required actual positive inverse.
+
+The kernel P_rho has strictly positive entries, is symmetric and stochastic for the specified open rho interval, and its Walsh eigenvalues rho^|S| are positive. Thus inversestationary applies. Its existence/uniqueness proof uses the strictly convex functional in log u with positive diagonal exponential terms; bounded sublevels follow from the maximum-coordinate exponential bound and the positive linear weights at coordinates tending to minus infinity. A unique minimizer supplies uPu=w. This step is not a stipulated extra structure and does not use its dimension-dependent stability estimate. Mean one of w gives E uPu=1 exactly.
+
+For 0<=tau<=tau0, Boolean noise preserves positivity, the stationary floor and mean, contracts the s moment by Jensen and invariance, and multiplies every Walsh coefficient by tau^|S|. Consequently the reconstructed chain has precisely the same floor, critical cap and matching constraints in its stationary density w. Its stationarity is actual: w(x)P(x,y)u(y)/(Pu)(x)=u(x)P(x,y)u(y), symmetric in x,y. There is no arbitrary stationary-density surrogate in the spectral argument.
+
+q0=2rho^(-2)+rho^(-3)-1>2, because it is strictly greater than its value 2 at rho=1. Qstar=8s>8. sigma is finite and at least 4s>4, hence exceeds s, 2 and 1+rho. Both theta factors are positive and at most one. Their product is positive, so tau0>0, and tau0<=1/2. This theorem therefore does not include unsmoothed tau=1. Its constants can deteriorate when rho or b approaches a boundary; it claims uniformity in L, input and permitted tau for fixed rho,b, which is correct.
+
+Hypercontractivity with input s and output sigma is applicable since sigma>s and tau^2<=(s-1)/(sigma-1). It gives ||w||_sigma<=B. The proof does not replace this by the generally false moment bound E w^sigma<=2. That distinction is maintained throughout the subsequent Holder estimates.
+
+5. Initial inverse moment, including negative exponents
+
+Let g=Pu and Q=P_sqrt(rho). Symmetry and Q^2=P give ||Qu||_2^2=E uPu=1. The ordinary inequality Q:L^2->L^R at R=1+rho^(-1)>2 is at equality in its noise condition: rho=1/(R-1). Hence ||g||_R<=1.
+
+The floor ug>=b implies u^(-1)<=g/b, so ||u^(-1)||_R<=b^(-1), equivalently the negative generalized mean ||u||_(-R)>=b. Negative exponents are used as generalized means, not Banach norms. For the reverse inequality, q0=(1+R)/rho^2-1>R and rho^2=(1+R)/(1+q0). Thus output exponent -q0 is strictly below input exponent -R, both finite and negative, and the stated reverse hypercontractive condition holds exactly. It gives ||Pu||_(-q0)>=||u||_(-R)>=b, which is exactly ||g^(-1)||_(q0)<=b^(-1). Taking the inverse does reverse the inequality; the source does so correctly. Positivity on each finite cube makes every negative power finite. There is no zero-exponent limiting convention or endpoint rho=0 or rho=1 here.
+
+This initial estimate is uniform in dimension and needs no lower bound on u or g separately. It remains valid in the regime q0>=Qstar, where no bootstrap step is necessary.
+
+6. New bootstrap and finite target crossing
+
+From u>=b/g, applying P and using convexity of z->1/z row by row gives g>=bP(1/g)>=b/(Pg). Hence 1/g<=Pg/b. This is a proved nonlinear consequence of the stationary floor, not a presumed lower bound on g.
+
+Given ||g^(-1)||_q<=A_q with q>sigma/(sigma-1), set p=sigma*q/(sigma+q). Then 1/p=1/sigma+1/q and p>1. Holder applied to u=w/g gives ||u||_p<=B A_q. The map P_(rho^2) has squared noise parameter rho^4. Its output exponent F_sigma(q)=1+(p-1)/rho^4 is greater than p, and the ordinary inequality applies at equality. Combining it with 1/g<=Pg/b proves the recursion in O7 with factor B/b. The source correctly changes the moment exponent from the old critical s to sigma rather than reusing the old critical fixed point.
+
+For a pre-crossing q in [q0,Qstar), expand p=q-q^2/(sigma+q). The exact increment is
+  F_sigma(q)-q=[(1-rho^4)(q-1)-q^2/(sigma+q)]/rho^4.
+The subtracted term is at most Qstar^2/sigma, which by the chosen sigma is at most (1-rho^4)(q0-1)/2. The positive term is at least (1-rho^4)(q0-1). Their difference gives exactly d=(1-rho^4)(q0-1)/(2rho^4)>0. No monotonicity of an unproved nonlinear fixed-point iteration is required.
+
+Every input to an actual step is q>=q0>2, while sigma/(sigma-1)<4/3. Thus every invoked Holder step has p>1, including the last step that crosses the target. If crossing had not occurred after n steps, q_n>=q0+n d, which contradicts q_n<Qstar once n reaches ceil((Qstar-q0)/d). Equality at the threshold counts as crossing. This proves finiteness and the stated upper bound when q0<Qstar. When q0>=Qstar, n_*=0, A=b^(-1), and the same conclusion follows directly. Each exponent remains finite, since sigma and its inputs are finite and sigma+q>0. There is no need to continue the iteration after its first crossing.
+
+Iteration therefore gives ||g^(-1)||_(q_n*)<=b^(-1)(B/b)^(n_*)=A and q_n*>=8s. n_* and all resulting constants depend on rho only apart from the displayed b and B factors; they are fixed before the input, dimension, matching degree and tau. This is a genuine finite supercritical gain, not an asymptotic limit exponent treated as attained.
+
+7. Ratio moment and actual normalization
+
+Set U=u/g=w/g^2, N=E U and r=U/N. Since sigma>=4s and q_n*>=8s, norm monotonicity and Holder with reciprocal exponents 1/(4s)+2/(8s)=1/(2s) yield ||U||_(2s)<=B A^2. Below, N>=b is established independently of this estimate; thus ||r||_(2s)<=b^(-1)B A^2=K. Also ||w||_(2s)<=B because sigma>=4s. Neither bound requires K to be small.
+
+For completeness, N>=b does not circularly use the ratio interpolation or eventual spectral closeness. Write a=E u=E g. The energy normalization and the constant component of Qu imply 0<a<=1. From the floor, a>=b E(1/g)>=b/a, hence a^2>=b. Cauchy--Schwarz under the probability density w gives N=E_w(1/g^2)>=(E_w(1/g))^2=a^2. These facts establish the lower normalization bound using only the actual equations and floor.
+
+The independent upper bound N<=1 also precedes the perturbation argument. The actual reversible conjugate S=M_sqrt(U) P M_sqrt(U) is positive semidefinite and has a positive Perron eigenvector sqrt(w) of eigenvalue one. It is conjugate to a positive Markov kernel, so its spectral norm is one. For X=M_sqrt(U)Q, S=XX* and T=X*X=Q M_U Q. Both factors of X are invertible on each finite cube. Thus T is similar to S, has norm one, and its quadratic form on the unit constant is E U=N<=1. No condition-number bound on X is invoked. This bound is not an inference from the theorem being proved.
+
+8. Matching rigidity and norm interpolation
+
+The preserved rigidity lemma applies with stationary density w, moment p=sigma>1+rho and B_p=B. Since sigma>2, its decay parameter is exactly sqrt(rho), yielding e_k=B rho^((k+1)/2). The candidate also reproduces its proof correctly, so this interface does not hide an extra hypothesis.
+
+Put v=1-a^2=||Qu-a||_2^2. The high-degree projection of g=Q(Qu) has L^2 norm at most rho^((k+1)/2)sqrt(v); since sigma'=sigma/(sigma-1)<2, its L^(sigma') norm is no larger. This uses an L^2 Fourier projection and norm monotonicity, not a presumed L^p contraction of a sharp Fourier projection. Matching implies E w Pi_(<=k)g=a, including k=0, so E wg<=a+e_k sqrt(v). Cauchy--Schwarz under u dmu gives 1<=a E wg, hence v<=a e_k sqrt(v). If v>0 it gives v<=a^2 e_k^2; if v=0 the same bound is immediate. Therefore a^2>=1/(1+e_k^2).
+
+The actual identity E sqrt(rw)=a/sqrt(N), together with a^2<=N<=1, gives
+  ||sqrt(r)-sqrt(w)||_2^2=2(1-a/sqrt(N))<=2(1-a)<=e_k^2.
+The final scalar inequality follows from a>=1/sqrt(1+e_k^2); it is valid even when e_k is not small. Multiplying the square-root difference by the sum and applying Cauchy--Schwarz, whose second factor is at most two for two probability densities, gives ||r-w||_1<=2e_k. There is no lost total-variation factor or unnormalized mass.
+
+The interpolation exponent gamma=1/(2s-1) solves 1/s=gamma+(1-gamma)/(2s). It lies strictly between zero and one for every s>1. Since ||r-w||_(2s)<=K+B, O11 follows with precisely (2e_k)^gamma(K+B)^(1-gamma). This interpolation crosses no unattained endpoint: the 2s bound has already been established by a finite bootstrap.
+
+9. Density closeness after noise and endpoint cases
+
+For 1<s<2, theta_in=sqrt(s-1) and theta_out=1: the first map sends L^s to L^2 at the hypercontractive boundary; the last identity map contracts L^2 to L^s on a probability space. For s>2, theta_in=1 and theta_out=1/sqrt(s-1): the first identity contracts L^s to L^2 and the last map sends L^2 to L^s at its hypercontractive boundary. At s=2 both theta factors are one. These cover all allowed rho and do not require s>=2 throughout.
+
+Let beta=tau/(theta_in theta_out). The definition of tau0 ensures 0<=beta<=1/2 and P_tau=P_theta_out P_beta P_theta_in. Since pi-1 has no Walsh coefficients of degree <=k, the intermediate function keeps this support and its L^2 norm is contracted by at most beta^(k+1). The input norm is at most ||pi-1||_s<=B+1. The endpoint contraction therefore proves ||w-1||_s<=(B+1)2^(-(k+1)). At tau=0, the entire mean-zero function is annihilated; k+1>=1, so no 0^0 occurs. At k=L the high-degree space is zero, and the bound remains valid, albeit not sharp. At L=1 the entire argument still applies and the second eigenvalue exists.
+
+Finally U-1=N(r-w)+N(w-1)+(N-1). Since N<=1 and N>=a^2>=1/(1+e_k^2), one has 1-N<=e_k^2/(1+e_k^2)<=e_k^2. The triangle inequality proves O13 with exactly the three terms E_k stated in O2. No missing normalization or extra factor of B occurs in this particular decomposition. The constants are uniform across the entire permitted tau interval, even if tau varies with L or with the input.
+
+10. Full actual spectrum and decay rate
+
+s'=s/(s-1) satisfies 2s'=1+rho^(-1). Therefore Q:L^2->L^(2s') has norm at most one by ordinary hypercontractivity. For any real v and unit L^2 functions f,l, Holder with reciprocal exponents 1/s+1/(2s')+1/(2s')=1 gives |E v(Qf)(Ql)|<=||v||_s. This establishes the full operator norm bound ||Q M_v Q||<=||v||_s. The test functions are arbitrary, not restricted to a low-degree sector.
+
+Taking v=U-1 yields ||T-P||<=E_k, because Q^2=P. The finite-dimensional similarity already proved identifies the full spectrum of T with the actual kernel. Min--max applies to the self-adjoint pair T,P in the same L^2(mu) space and bounds each consistently ordered eigenvalue by E_k, including multiplicities. This does not use a stability theorem for a nonnormal matrix or a uniformly bounded similarity condition number. The second eigenvalue of P is rho for every L>=1. Both kernels have Perron eigenvalue one, so the gap estimate follows. PSD also rules out an ambiguity involving negative eigenvalues and absolute gaps in this setting.
+
+For fixed rho,b, n_*, A and K are finite constants independent of k. The first error term decays as a fixed constant times rho^(gamma(k+1)/2), the second as 2^(-(k+1)), and the third as B^2 rho^(k+1). All exponents are strictly positive in the allowed parameter domain. Thus E_k decays exponentially in k. For fixed C>0, k_L=min(L,floor(C sqrt(L))) equals the latter expression eventually; its floor and finitely many small dimensions are absorbed into the multiplicative constant for an exponential bound in sqrt(L). There is no asserted uniform rate as rho approaches one or C approaches zero.
+
+11. O14 obstruction and the limit of the result
+
+The chosen epsilon is strictly positive and is at most (1-b)/2 and (B-1)/2. Thus pi_L=1+epsilon chi_[L] is positive with minimum at least (1+b)/2>b and maximum at most (1+B)/2<B. It has mean one and E pi_L^s< B^s=2. Its only nonconstant Walsh coefficient is at degree L, so it matches through every k_L<L, which holds in all sufficiently large dimensions for the specified C. The inverse-stationary lemma gives a positive actual energy-normalized potential realizing each such density. Filling the finitely many remaining dimensions with the constant one preserves all admissibility requirements.
+
+Noise multiplies that parity coefficient by tau^L. Since |chi_[L]|=1 pointwise, the L^s norm of the difference is exactly epsilon(1-tau^L), tending to epsilon>0 for every fixed 0<=tau<1. In particular tau=0 is covered. tau=1 is intentionally excluded; its difference is zero. The exact norm computation is algebraic, not an executed numerical test.
+
+This supplies an actual admissible counterexample to a universally vanishing L^s perturbation premise for fixed density smoothing and growing matching. It does not furnish a spectral-gap counterexample. The source correctly notes that the parity family belongs to an already controlled code class. The universal theorem concerns the reconstructed regularized chains; it proves no comparison with the original chains, no original full-gap theorem, and no physical Yang--Mills or continuum result. It does not claim to eliminate the stationary floor or the moment cap. It derives the additional moments needed on the regularized side instead of assuming them there.
+
+12. Objections, originality and final assessment
+
+Blocking objections: none found.
+Nonblocking correction requests: none found.
+
+The load-bearing boundary checks are satisfied: s below, equal to or above two; q0 already at/above target; finite first crossing with no later iteration assumption; strict positivity needed for negative means and scaling; k=0 and k=L; L=1; tau=0 and tau=tau0; fixed-parameter exponential limits; and actual full-spectrum similarity. The proof has no circular reliance on the desired gap bound. The norm factors b^(-1), B, A^2, K+B and 2e_k are consistent with their respective estimates.
+
+The bounded searches documented by the author do not prove global novelty, and this audit has not added such a search. The ordinary/reverse hypercontractive inequalities, positive scaling existence mechanism and min--max perturbation principle are classical inputs. This PASS means the stated new programme theorem follows analytically from those specified inputs and the verified interfaces. Priority, broader originality and eventual publication relevance require their own assessment. No prior PDF score, prior source verdict or numerical evidence is transferred to this artifact.
+
+The next mathematical boundary is explicit: establish or refute a precise spectral comparison between original and density-regularized actual chains. The candidate neither silently supplies that comparison nor deduces it from the false small-L^s premise. Its grouping with N and the existing manuscript is appropriate to the stated scope, but integration and exact-PDF assessment have not been performed by this audit.
+
+Final accepted source: commit 4086adaf9f5c7ca84eb6017a79614fd277af1565; raw candidate SHA256 0eef71ebd956d1c92bbecbe342607b48cf0c0aa6709a6defc924203642d300e5. This complete first report and raw identity evidence are retained under D:\Datos\the-eriksson-programme\autonomia\2026-11-17_density-regularized-gap. Repository state and source remain untouched.
