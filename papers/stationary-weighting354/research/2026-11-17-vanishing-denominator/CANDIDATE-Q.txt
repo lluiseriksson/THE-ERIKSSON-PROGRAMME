@@ -1,0 +1,127 @@
+CANDIDATE Q: Vanishing actual noise denominators with exact stationary matching and full spectral convergence
+Status at freezing: analytic candidate, first separate-role audit pending.
+Parent preservation commit: b58683362916d08c2e9861f344b6e131cf647139.
+Raw representation: UTF-8 without BOM, LF. No execution or PDF assessment.
+
+1. Bounded question, result and nonclaims
+Can the original stationary floor, critical moment cap and exact labelled matching force a dimension-uniform positive lower bound on g=P_rho h? The preceding K/L family only refuted a positive minimum for h: its g was bounded below near1. Here this different denominator premise is refuted by an actual admissible family, with its entire spectrum also classified.
+
+Fix 0<rho,b<1, C>0, s=(1+rho)/(1-rho), and k_L=min(L,floor(C sqrt(L))). There exist positive potentials htilde_L, normalized by E htilde_L P_rho htilde_L=1, with actual stationary densities pitilde_L satisfying
+  pitilde_L>=b, E pitilde_L^s<=2,
+  E pitilde_L chi_S=0 for every 1<=|S|<=k_L,
+in every dimension L>=1. At the all-plus point x0,
+  (P_rho htilde_L)(x0)->0, htilde_L(x0)->infinity,
+  pitilde_L(x0)->1, [htilde_L/(P_rho htilde_L)](x0)->infinity.
+Nevertheless, with U_tilde=htilde_L/(P_rho htilde_L),
+  ||pitilde_L-1||_s ->0, ||U_tilde-1||_s ->0,
+and every ordered eigenvalue of the actual K_htilde_L approaches the corresponding eigenvalue of P_rho, uniformly in the index with exponentially small error in L. In particular gap(K_htilde_L)->1-rho. The same exponential claim applies to the two norm errors; the pointwise rates are made explicit below.
+
+This refutes a derived uniform Ph floor and shows that a small-denominator/high-ratio point is not sufficient for collapse. It does not disprove a localized cut-flow or killed-operator estimate, a direct Rayleigh comparison or the original gap conjecture. No original hypothesis is eliminated. Group with K/L/M and N/O/P, not a separate small paper.
+
+2. Elementary concentration used in the construction
+If X_1,...,X_L are independent Bernoulli variables with arbitrary parameters and S=sum X_i, then for a>0
+  Pr(S-E S>=aL)<=exp(-2a^2 L),
+  Pr(S-E S<=-aL)<=exp(-2a^2 L).                    (Q1)
+For completeness, for one Bernoulli variable let F(lambda)=log E exp(lambda(X-E X)). Then F(0)=F'(0)=0 and F''(lambda) is the variance of a tilted Bernoulli law, at most1/4. Integrating twice gives F(lambda)<=lambda^2/8 for every real lambda. Independence and exponential Markov with lambda=4a (or -4a) give(Q1). No equal-parameter assumption is used. This is the classical Hoeffding bound, proved here rather than claimed new.
+
+3. Two separated noise shells and a rare return region
+Write p=(1-rho)/2, q=p+rho p=(1-rho^2)/2, and a0=(1+b)/2.
+Choose
+  delta=min{rho p/16,rho^2/16}>0, r0=2delta/rho.
+Thus r0<=p/8, q-p=rho p>=16delta and 1/2-q=rho^2/2>=8delta.
+Let d(x) be Hamming distance from x0. Define
+  B_L={x: |d(x)/L-p|<=delta},
+  A_L={x: |d(x)/L-q|<=2delta},
+  D_L={x: (P_rho 1_B_L)(x)>1-a0}.
+Here D_L is a set, not the inverse-stability constant of source L. A_L and B_L are disjoint since q-2delta>p+delta. For a noise step from x, d(Y) is a sum of independent Bernoulli variables, with mean
+  E_x d(Y)=pL+rho d(x).                            (Q2)
+On B_L this mean divided by L lies in [q-rho delta,q+rho delta]. Therefore(Q1) gives, uniformly over x in B_L,
+  P_rho(x,A_L)>=1-2exp(-2delta^2 L).               (Q3)
+Also P_rho(x0,B_L)>=1-2exp(-2delta^2 L).
+If d(x)/L>=r0, the mean in(Q2) is at least p+2delta, whereas B_L lies below p+delta. Thus
+  P_rho(x,B_L)<=exp(-2delta^2 L).
+For all sufficiently large L this is <=1-a0; hence
+  x0 in D_L subset {x:d(x)/L<r0}.                  (Q4)
+The inclusion x0 in D_L follows from the preceding lower bound at x0, eventually with strict >1-a0. Because r0<p-delta and r0<q-2delta, D_L is disjoint from A_L and B_L. All later statements concern sufficiently large L; early dimensions are filled at the end.
+
+Put
+ c=min{2delta^2, 2(p-r0)^2, 2(q-2delta-p)^2,
+       2(1/2-q-2delta)^2, 2(1/2-p-delta)^2,
+       2(1/2-r0)^2}>0.
+Under uniform measure mu, d(x) is Binomial(L,1/2). Under P_rho(x0,.), it is Binomial(L,p). The inclusions above and(Q1) give the following common exponential bounds:
+  mu(A_L)<=exp(-cL), mu(B_L)<=exp(-cL), mu(D_L)<=exp(-cL),
+  P_rho(x0,A_L)<=exp(-cL), P_rho(x0,D_L)<=exp(-cL),
+  P_rho(x0,B_L^c)<=2exp(-cL),
+  inf_{x in B_L} P_rho(x,A_L)>=1-2exp(-cL).        (Q5)
+All constants are fixed before L; no concentration theorem for dependent coordinates is invoked. The set D_L is defined deterministically by the exact kernel, not by a numerical estimate.
+
+4. Actual three-level potential and a pointwise stationary floor
+Set epsilon=c/(16s), M_L=exp(epsilon L), E_L=A_L union D_L, and define
+  H_L=M_L on E_L, H_L=M_L^{-1} on B_L, H_L=1 elsewhere.
+These are disjoint cases. Put G_L=P_rho H_L, R_L=H_L G_L, Z_L=E R_L and h_L=H_L/sqrt(Z_L). Always M_L^{-1}<=H_L,G_L<=M_L.
+For x in E_L, R_L(x)>=M_L M_L^{-1}=1.
+For x in B_L, (Q5) gives G_L(x)>=M_L P_rho(x,A_L), so R_L(x)>=1-2exp(-cL)>=a0 eventually.
+For x outside E_L union B_L, x is not in D_L, hence P_rho(x,B_L)<=1-a0. Since H_L>=1 off B_L,
+  G_L(x)>=1-P_rho(x,B_L)>=a0,
+and H_L(x)=1. Therefore R_L>=a0 at EVERY point.    (Q6)
+This is an actual stationary floor computation. In particular no arbitrary density/kernel pair or missing shell boundary is used.
+
+5. Small denominator and critical moment control
+At x0 in D_L, H_L(x0)=M_L. Splitting the noise expectation over B_L,E_L and their complement yields
+  G_L(x0)=M_L^{-1} P_rho(x0,B_L)+P_rho(x0,(B_L union E_L)^c)
+              +M_L P_rho(x0,E_L).
+Consequently by(Q5),
+  P_rho(x0,B_L)<=M_L G_L(x0)
+       <=1+2M_L exp(-cL)+2M_L^2 exp(-cL)->1.       (Q7)
+The two tail terms vanish because 2epsilon<c. Thus G_L(x0)~M_L^{-1}, R_L(x0)->1, and H_L/G_L(x0)~M_L^2. Normalization is handled below.
+
+For every finite r>=1, disjoint supports and(Q5) give
+  d_{r,L}:=||H_L-1||_r
+       <=M_L(2exp(-cL))^{1/r}+exp(-cL/r).          (Q8)
+Noise is an L^r contraction by Jensen/invariance, so ||G_L-1||_r<=d_{r,L}. Holder and HG-1=(H-1)G+(G-1) imply
+  ||R_L-1||_s<=d_{2s,L}(1+d_{2s,L})+d_{2s,L}
+              =2d_{2s,L}+d_{2s,L}^2.             (Q9)
+Since epsilon<c/(2s), d_{2s,L} and this bound decay exponentially. Hence Z_L->1 exponentially, pi_L=R_L/Z_L has ||pi_L-1||_s exponentially small, and E pi_L^s->1. From(Q6), pi_L>=a0/Z_L. With b1=(a0+b)/2>b, we have pi_L>=b1 eventually. This is strict slack for the exact correction, and the cap2 holds eventually.
+At x0 normalization gives h_L(x0)~M_L and (P_rho h_L)(x0)~M_L^{-1}, pi_L(x0)->1. These are energy-normalized actual quantities.
+
+6. Full spectral convergence despite a vanishing denominator
+The scale-invariant ratio is U_L=H_L/G_L=h_L/(P_rho h_L). Although G_L has no fixed positive floor, its proved bound G_L>=M_L^{-1} and(Q8) give
+  ||U_L-1||_s <=M_L ||H_L-G_L||_s
+              <=2M_L d_{s,L}
+              <=2*2^{1/s} exp(-(c/s-2epsilon)L)
+                   +2 exp(-(c/s-epsilon)L).       (Q10)
+Both exponents are positive. This tradeoff uses the rarity of both nonconstant regions and the deliberately slow growth of M_L. It does not assume the pointwise denominator bound that the example refutes.
+For clarity the standard actual-chain connection is repeated. Put Q=P_sqrt(rho). The reversible conjugate of K_h is S=M_sqrt(U) P_rho M_sqrt(U). Taking X=M_sqrt(U) Q gives S=XX* and T=X*X=Q M_U Q, similar because X is invertible. Thus K_h and T have identical full spectra. Boolean hypercontractivity gives ||Qf||_{2s'}<=||f||_2, since 2s'=1+rho^{-1}. Holder therefore yields
+  ||Q M_v Q||_{2->2}<=||v||_s,
+and hence ||T-P_rho||<=||U_L-1||_s. Min--max controls every ordered eigenvalue with multiplicity. In particular gap(K_h)->1-rho exponentially. This is the same classical sandwich as M, with a DIFFERENT denominator argument(Q10); M's near-one pointwise denominator bound does not hold here.
+
+7. Exact labelled correction and actual positive reconstruction
+Use the proved inverse-stationary and multiplicative-stability lemma of L (CANDIDATE-L.txt, Sections2--4). It states that a positive density w on the cube has a unique positive h with hP_rho h=w. For a path w_tau=w+tau e with E e=0 and w_tau>=b,
+  ||log(h_1/h_0)||_infinity<=D_L^{scale}(b)||e||_infinity/b,
+  D_L^{scale}(b)=[ceil((L+log2(1/b))/2)+2]/2=O(L).
+The lemma follows from strict convexity and the L-infinity resolvent bound for (I+K)^{-1}, using nonnegative spectrum, not a gap premise. We use its full-space statement, not a code-algebra restriction.
+
+By(Q9) and normalization ||pi_L-1||_1<=||pi_L-1||_s decays exponentially. Define EXACTLY
+  e_L=-sum_{1<=|S|<=k_L}(E pi_L chi_S) chi_S,
+  pitilde_L=pi_L+e_L.
+For large L, N_L=sum_{j=1}^{k_L} binomial(L,j)<=k_L L^{k_L}, with log N_L=o(L). Therefore
+  xi_L:=||e_L||_infinity<=N_L||pi_L-1||_1
+decays exponentially after reducing the exponent. Orthogonality gives E pitilde_L=1 and all specified Fourier coefficients exactly zero. Because pi_L>=b1>b and xi_L->0, the entire path pi_L+tau e_L has floor b. Also ||pitilde_L-1||_s->0 exponentially, giving E pitilde_L^s<=2 eventually.
+Let htilde_L be its unique positive reconstruction. The initial inverse is h_L by uniqueness, and
+  eta_L:=||log(htilde_L/h_L)||_infinity
+         <=D_L^{scale}(b)xi_L/b
+decays exponentially. Thus exp(-eta_L)h_L<=htilde_L<=exp(eta_L)h_L and, by positivity, the same multiplicative comparison holds for P_rho htilde_L versus P_rho h_L. This preserves every pointwise limit and asymptotic in(Q7):
+  htilde_L(x0)~exp(epsilon L),
+  (P_rho htilde_L)(x0)~exp(-epsilon L),
+  pitilde_L(x0)->1, U_tilde(x0)~exp(2epsilon L).
+Moreover exp(-2eta_L)U_L<=U_tilde<=exp(2eta_L)U_L, whence
+  ||U_tilde-1||_s
+    <=exp(2eta_L)||U_L-1||_s+exp(2eta_L)-1.         (Q11)
+This still decays exponentially. The full-spectrum sandwich of Section6 applies to the actual corrected chain without any further assumption. Fill all finitely many earlier dimensions with htilde_L=1. Then all original constraints hold for every L and every asserted limit/rate holds eventually.
+
+8. Scope, novelty checks and review context
+Q is a concrete new obstruction within this programme to deriving a uniform positive Ph minimum. It also refutes a uniform pointwise bound on h/Ph. These conclusions are compatible with critical-L^s closeness of that ratio, and even full-spectrum convergence. A single dangerous point is not a killed-operator or cut-flow obstruction. The general stationary gap and critical weighting-moment questions remain open. Keep PR29=20/41 and TermSource=0.
+The next bounded mechanism must control aggregate return/energy on small-Ph, high-h/Ph sets, rather than prohibit those points. A falsifier must be an actual family satisfying the original constraints; an abstract reversible matrix does not suffice. Do not promote this new family to gap collapse. Preserve the three-unproductive-unit rule; if this proof is accepted, the denominator-bridge refutation is substantial progress, not merely a new plan.
+
+Classical concentration and the sandwich are not claimed original. Bounded primary-source lookup on17November2026 identified Hoeffding's original JASA1963 article, DOI10.1080/01621459.1963.10500830, and its RPI-hosted19-page scan at https://www.cs.rpi.edu/academics/courses/spring06/random/hoefding.pdf . The bibliographic record was read; the scan returned no extractable text and screenshot output was not visually available in this tool path, so no original theorem-page reading is claimed. The NC State report endpoint returned a bot-detection denial. Section2 therefore supplies the entire Bernoulli proof required here. The earlier M note identifies the primary O'Donnell hypercontractivity source; the exact exponents and sandwich are restated in Section6. New Boolean/Doob/denominator and Hamming/Doob/spectral-gap searches returned no directly pertinent primary result and do NOT establish novelty or priority. The local source search distinguished Q from K/L/M's opposite pointwise defect; it is not an exhaustive literature search.
+This is an analytic candidate authored by Codex root, with exact serving backend/version/effort unattested. Its first separate-role audit is pending at freezing. Shared context/provider are not independence or peer review. No Lean, numerical experiment, runtime, local build, rendered PDF, grade, acceptance or new publication is claimed. First reports and any objections must be preserved in full. The older d617 PDF and grouped75fa source do not already contain Q and inherit none of its future verdicts.
