@@ -1,0 +1,166 @@
+\section{Failure of separate variance and form comparison}\label{separatecomparison}
+The regularized spectrum does not supply a uniform comparison of the
+stationary variances. The obstruction below concerns actual chains,
+including their nonlinear reconstructed potentials. For an energy-normalized
+positive potential $v$, write
+\[
+ \mathcal E_v(f)=\frac12\E_{x\sim\mu}\sum_y
+ P(x,y)v(x)v(y)(f(x)-f(y))^2.
+\]
+This is the Dirichlet form of $K_v$ in stationary measure $vPv\,d\mu$.
+
+\begin{theorem}[Separate-comparison obstruction]\label{separatecomparisonfailure}
+Fix $0<\rho,b<1$, $C>0$, and $0\leq\tau<1$. There are positive
+energy-normalized potentials $h_L,u_L$, with
+\[
+ \pi_L=h_LPh_L,\qquad w_L=u_LPu_L=P_\tau\pi_L,
+\]
+both satisfying \eqref{admissible}, and events $A_L$, such that, for
+$f_L=1_{A_L}$,
+\[
+ \frac{\operatorname{Var}_{\pi_L}(f_L)}{\operatorname{Var}_{w_L}(f_L)}
+ \longrightarrow\infty,\qquad
+ \frac{\mathcal E_{h_L}(f_L)}{\mathcal E_{u_L}(f_L)}
+ \longrightarrow\infty.
+\]
+Nevertheless both indicator Rayleigh quotients tend to one, and both
+full-chain gaps tend to $1-\rho$. The family can be chosen with
+$\norm{\pi_L-w_L}_s\to c>0$ and with $\pi_L^s$ not uniformly
+integrable, despite $\E\pi_L^s<2$.
+\end{theorem}
+\begin{proof}
+Put $B=2^{1/s}$ and $c=\min\{(1-b)/2,(B-1)/4\}>0$.
+For all sufficiently large $L$, set
+\[
+ d=k_L+1,\qquad n=\lfloor L/d\rfloor,\qquad p=2^{-n},
+ \qquad t=cp^{-1/s}.
+\]
+Take $n$ disjoint blocks of size $d$, let $z_i$ be their parities,
+and set $A=\{z_1=\cdots=z_n=1\}$. Remaining coordinates are unused.
+Thus $\mu(A)=p$, $d\sim C\sqrt L$, and $n\sim\sqrt L/C$.
+Define
+\[
+ \pi=1+t(1_A-p).
+\]
+It has mean one and $\pi\geq1-c>b$. Moreover
+\[
+ \norm\pi_s\leq1+t(p^{1/s}+p)
+       =1+c(1+p^{1-1/s})\leq1+2c<B.
+\]
+The expansion $1_A=p\prod_{i=1}^n(1+z_i)$ has nonconstant Fourier
+support only on unions of complete blocks, whose weights are at least
+$d>k_L$. This proves every labelled matching condition. The density
+$w=P_\tau\pi$ has the same mean, stationary floor, cap and matching,
+by positivity, $L^s$ contraction and the diagonal Fourier action.
+Lemma~\ref{inversestationary} gives the unique positive solutions
+$hPh=\pi$ and $uPu=w$, automatically of energy one. In the finitely
+many excluded dimensions take $h=u=1$ and any nontrivial event.
+
+The exact smoothed density is
+\[
+ w(z)=1+tp\left[\prod_{i=1}^n(1+\tau^d z_i)-1\right].
+\]
+For $0\leq\epsilon<1$ the maximum absolute deviation of this product
+from one is $(1+\epsilon)^n-1$: its two extremes are
+$(1\pm\epsilon)^n$, whose sum is at least two. Hence
+\[
+ \norm{w-1}_\infty
+ \leq tp\big[(1+\tau^d)^n-1\big]
+ \leq cp^{1-1/s}\big[\exp(n\tau^d)-1\big]\longrightarrow0.
+\]
+Here $n\tau^d\to0$ for each fixed $\tau<1$, including $\tau=0$.
+No assertion uniform in $\tau$ approaching one is required.
+
+Both reconstructed potentials belong to the same block-parity algebra.
+Indeed translations having parity one on each block, and arbitrary
+translations on unused coordinates, leave $\pi$ and $w$ invariant and
+commute with $P$. Translating a positive reconstructed potential therefore
+gives another solution of the same equation. Uniqueness in
+Lemma~\ref{inversestationary} proves invariance. The translation orbits
+are exactly the parity fibers, so $h=H(z)$ and $u=J(z)$.
+
+We record actual return probabilities for either reconstructed potential.
+Write $H$ for any positive block-parity potential of energy one and
+$G=PH$. Put
+\[
+ \theta=\rho^d,\quad \ell=(1-\theta)^n,\quad v=(1+\theta)^n,
+ \quad a=\E H.
+\]
+The quotient noise transition from $z$ to $z'$ is
+$p\prod_i(1+\theta z_i z'_i)$. Its density relative to uniform
+quotient measure lies between $\ell$ and $v$. Consequently
+\[
+ a\ell\leq G\leq av,\qquad
+ v^{-1}\leq a^2\leq\ell^{-1},\qquad
+ \frac{\ell^2}{v}\leq G^2\leq\frac{v^2}{\ell}.
+\]
+The middle bounds use $1=\E HG$. If $q$ is the stationary mass of
+$A$, then $q=pH(+)G(+)$. The return probability from any point of
+$A$ to the \emph{whole fiber} $A$ is
+\[
+ r_A=K_H(x,A)=\frac{pvH(+)}{G(+)}
+              =\frac{vq}{G(+)^2}\leq\frac{v^2}{\ell^2}q.
+\]
+This is not a single-vertex holding probability. Since $n\rho^d\to0$,
+both $\ell$ and $v$ tend to one. For the two chains the stationary
+event masses are
+\[
+ q_\pi=p[1+t(1-p)]\sim tp\longrightarrow0,\qquad
+ q_w=p\left[1+tp\big((1+\tau^d)^n-1\big)\right]\sim p.
+\]
+Thus $q_\pi/q_w\sim t\to\infty$ and both actual return
+probabilities $r_\pi,r_w$ tend to zero. Reversibility gives exactly
+\[
+ \operatorname{Var}_{\pi}(1_A)=q_\pi(1-q_\pi),\quad
+ \mathcal E_h(1_A)=q_\pi(1-r_\pi),
+\]
+and the analogous identities with $w,u$. Both displayed ratios in the
+theorem are therefore asymptotic to $t=c2^{n/s}$, whereas each
+Rayleigh quotient tends to one.
+
+To control the \emph{full} gaps, apply Proposition~\ref{blocktheorem},
+which includes all nonconstant ambient sectors and unused coordinates,
+to $H$ and $J$. In its notation the lower and upper bounds are
+\[
+ \max\{0,\rho-\varepsilon_d\}\leq\lambda_2
+ \leq\min\{1,\max\{1-\alpha,\beta\}\},
+\]
+where, eventually $d\geq2$,
+\[
+ \alpha=\left(\frac{1-\rho^d}{1+\rho^d}\right)^n,\quad
+ \beta=\frac{\rho+\rho^{d-1}}{1-\rho^d},\quad
+ \varepsilon_d=\frac{(1-\rho^2)\rho^{d-1}}{1-\rho^d}.
+\]
+These tend to $1,\rho,0$, respectively. No upper bound on the
+heights of $H$ or $J$ enters this proposition. Hence both full gaps
+tend to $1-\rho$. This conclusion for this particular family and
+every fixed $\tau<1$ does not enlarge the universal smoothing
+interval in Theorem~\ref{densityspectrumtheorem}.
+
+Finally, $\norm{t1_A}_s=c$ and
+\[
+ \norm{tP_\tau1_A}_s\leq tp(1+\tau^d)^n\longrightarrow0,
+\]
+so the reverse triangle inequality gives $\norm{\pi-w}_s\to c$.
+Directly,
+\[
+ \E\pi^s=(1-p)(1-tp)^s+p[1+t(1-p)]^s\longrightarrow1+c^s.
+\]
+For every fixed threshold $R$, the value of $\pi^s$ on $A$ eventually
+exceeds $R$, while its contribution to this expectation tends to $c^s$.
+Thus $\pi_L^s$ is not uniformly integrable (interpreting the random
+variables through their laws on the varying cubes).
+\end{proof}
+
+For clarity, a usual separate-comparison route to a gap transfer would
+require both $\operatorname{Var}_\pi(f)\leq V\operatorname{Var}_w(f)$
+and $\mathcal E_u(f)\leq D\mathcal E_h(f)$ uniformly.
+Theorem~\ref{separatecomparisonfailure} disproves its variance premise.
+It also disproves an upper bound $\mathcal E_h\leq D'\mathcal E_u$,
+and hence two-sided form equivalence. It does \emph{not} disprove
+$\mathcal E_u\leq D\mathcal E_h$, a direct Rayleigh-quotient
+comparison, or the original gap conjecture. In particular it is not
+a counterexample to comparison results whose hypotheses include a common
+invariant measure, such as the setting described in \cite{alpw2022}.
+The useful remaining route must retain the joint energy and variance
+information, rather than impose the disproved separate variance bound.
