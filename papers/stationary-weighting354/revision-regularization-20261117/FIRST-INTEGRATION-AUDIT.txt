@@ -1,0 +1,99 @@
+FIRST SOURCE-INTEGRATION AUDIT — GROUPED REGULARIZATION SUCCESSOR
+Date: 2026-11-17
+
+1. Frozen subject and verdict
+
+Accepted exact commit: 49b2ae363d147c1c17f1c6dc3cfa28efff866b18.
+Parent: 5b279ec245b949126954b5f5ec29923da683e4ef.
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116.
+Full source: papers/stationary-weighting354/revision-regularization-20261117/manuscript-regularization-candidate.tex.
+Raw SHA256: a94dbf1aca3738564894cacceaeba81abdeee35d3fde4f0dec281a09adf3508d; 99397 bytes, UTF-8 without BOM, LF, with no normalization before hashing.
+Compared preserved predecessor: revision-gapclassification-20261117/manuscript-gapclassification-candidate.tex, raw SHA256 6b565f512d0bb10ecf74ad6874096c954f2fbe88e7a42991a0bcb448c4f0d1de, 91615 bytes.
+
+VERDICT: PASS for the first integration of N into this exact grouped source. No blocking analytic, scope, reference or preservation defect was found. The shortened proof correctly invokes the existing inverse-stationary lemma on four points, retains the constant 8 epsilon and all exact coefficient/nonvanishing arguments, and preserves the distinction between potential smoothing and density smoothing. The scope and model-assessment updates agree with the integrated result. No required correction or new mathematical objection is raised.
+
+This is a source-integration verdict, not a regrade of N, a fresh review of every unchanged theorem, a PDF review, compilation result, novelty certificate, publication decision or execution authorization. No PR/body exists in the assignment, so body capture is inapplicable. The general stationary-gap and critical weighting questions remain open.
+
+2. Role, prior involvement and boundaries
+
+Auditor: OpenAI Codex role /root/public354_commit_audit. I previously authored N's first analytic audit and reviewed M and the grouped gap-classification integration. I therefore have substantial inherited context and prior involvement. The role is separate from the source fabricator but shares provider and filesystem; this is not blind, human, provider-independent or organizationally independent peer review. Exact serving backend/model revision and effective reasoning effort are unattested. No numerical score is assigned or reused.
+
+The actual charter's no-inbound/exact-subject provisions were read. No inbound parent message arrived during this audit. I read the complete first N report, the full inserted section, complete old/new manuscript delta and relevant existing inverse proof. The unchanged manuscript is not re-audited wholesale. Methods were read-only git/file inspection, raw hashes, text/JSON comparisons and analytic examination of the integration. No mathematical/numerical/symbolic code, Lean, TeX, compiler, runtime, browser, external model, desktop control, branch mutation, new PDF or publication was used. Only these audit artifacts were written outside the repository and retained in D:.
+
+3. Manifest and preservation observations
+
+The exact commit adds four files in revision-regularization-20261117 and changes no earlier source, report, PDF, assessment, native case or workflow. HEAD was observed at the assigned commit with a clean worktree. Its actual parent equals the manifest parent. The preserved predecessor's hash was independently checked.
+
+The three listed payloads and all twenty dependencies match both their recorded raw SHA256 and recorded byte lengths, for 23 listed payload/dependency comparisons. The four new files also match their HEAD blobs when hashed with git filters disabled; each has zero CR bytes and no UTF-8 BOM. Thus the raw text representation certified here agrees with the committed content, not merely with a differently normalized checkout.
+
+New file identities:
+- integration-N.tex: 6257 bytes; ebdc611d4471f1b8e6fe5a895efa7d4f54a5a8ae8db828bdf3642b70fb90184e.
+- manuscript-regularization-candidate.tex: 99397 bytes; a94dbf1aca3738564894cacceaeba81abdeee35d3fde4f0dec281a09adf3508d.
+- README.txt: 3304 bytes; 423980a7043a57b90772a0853ba25848e66d2205ff12b877d98f5b8f443438e0.
+- MANIFEST.json: 5794 bytes; 40968ad3261165b27b4f23d2933edbb3301a3937660bf1dd8d9cce7c384d7bb7.
+
+The dependency set explicitly retains N's frozen source a3f1573a13304f5cbf8c2eec988d9fa3ab052bada9e4966eea83b5de0dc948e9 and its full first report 3c6a5f7a97d44e2a96263d643e883cd164e056f46350bede5520dd2144057e8b, as well as the earlier J/K/L/M sources, reports and integration manifests. N's original candidate's pending-audit header is historical; the later report and new context identify its actual first verdict without altering the candidate. M's original N1 objection and adjacent response remain retained. This integration does not rewrite a prior verdict or transfer it to a PDF.
+
+The complete insertion fragment occurs as an exact contiguous sequence within the full manuscript. A bounded static scan found no duplicate labels, unresolved ref/eqref labels or unresolved bibliography keys in the full source. The parent-to-head whitespace check produced no finding. These checks establish source consistency only, not successful TeX compilation, rendered reference numbering or visible layout.
+
+4. Changed text and global conventions
+
+The manuscript delta consists of the new regularization section and changes in the abstract, theorem map, source-list sentence, failed-route discussion, Model assessments and review context, and the O'Donnell bibliography entry. The preceding mathematical proofs, including the inverse-stationary lemma, are unchanged. The prior standalone manuscript also remains unchanged as a separate file.
+
+Global conventions still define uniform probability on the Boolean cube, fixed 0<rho<1, P=P_rho, positive actual potentials, energy normalization where imposed, the actual reversible Doob kernel, and gap=1-lambda_2. The admissibility equation still requires stationary floor, stationary critical moment and exact labelled low-degree matching. The added notation pi_tau is explicitly defined by energy-normalized potential smoothing in the first proposition and used consistently in the following theorem.
+
+The universal statement is only floor preservation. Moment-cap survival and failure of matching are asserted for the constructed family, with one potential working for every tau. No global moment-cap invariance of potential smoothing is introduced. The construction's four-point quotient is used for exact existence and stability; the result concerns the lifted actual full-cube stationary density, not an unrelated four-state surrogate.
+
+5. Floor-preservation proposition
+
+The integrated smoothingfloor proposition retains h>0, E hPh=1, hPh>=b>0 and tau in [0,1]. Commutation of Boolean noise gives PH_tau=P_tau(Ph). Rowwise Cauchy--Schwarz therefore yields
+H_tau PH_tau >= (P_tau sqrt(hPh))^2 >= b.
+Walsh Parseval and the nonnegative multipliers give 0<Z_tau<=1, including the explicitly defined constant multiplier at tau=0. Division by Z_tau proves pi_tau>=b. The inequality directions, normalization and endpoint convention agree with N. No matching or moment assumption has been inserted or silently required.
+
+6. Four-point inverse-lemma interface and the constant 8 epsilon
+
+The integrated theorem keeps 0<rho<1, 0<b<1, L>=3 and 1<=k<=L-2. Then m=k+1>=2 and j outside A exists. The fixed positive epsilon remains min(1/8,(1-b)/4,log(2)/(64s)), independent of L,k. The density w has mean one, floor at least max(3/4,(1+b)/2)>b and only A/B nonconstant coefficients above degree k.
+
+Disjointness of A and {j} makes y=chi_A and z=x_j independent uniform signs and induces Q=P_alpha tensor P_rho exactly, with alpha=rho^m and beta=rho^(m+1). The product kernel is symmetric stochastic, strictly positive and positive definite with the displayed four eigenvalues. These facts meet every hypothesis of inversestationary. The intertwining P[f(chi_A,x_j)]=(Qf)(chi_A,x_j) ensures that lifting a solution gives the actual full-cube equation hPh=w.
+
+The important integration change is replacing N's repeated scaling/resolvent derivation with a reference to that already-present lemma. I read the lemma and proof in the new full source. They retain positive symmetric scaling existence and uniqueness via the coercive strictly convex functional, smooth dependence along the positive density path, and the inverse bound
+||log h_1-log h_0||_infinity <= [ceil((1/2)log_2(n/b0))+2]/(2b0) ||e||_infinity.
+Its resolvent argument uses the actual kernel's nonnegative spectrum and an infinity-norm absolute-row bound, not a gap at eigenvalue one. It thus remains applicable uniformly as alpha becomes small.
+
+For the integrated path, n=4, b0=1/2, e=epsilon(y+yz), mean e=0, and w_t>=3/4>=1/2. Uniqueness gives g_0=1. Algebraically, log_2(4/(1/2))=3, ceil(3/2)=2, and the prefactor is (2+2)/1=4. On the four-point space ||epsilon(y+yz)||_infinity=2epsilon exactly. Hence the lemma gives 4 times 2epsilon=8epsilon, as printed. There is no omitted factor, erroneous atom-density identification or hidden 2^L in this step. Using the full-cube dimension instead would lose the stated uniformity, but the actual text expressly uses four points.
+
+The lift therefore has energy one and exp(-eta)<=h<=exp(eta) with eta=8epsilon<=log(2)/(8s). The integrated cap proof correctly places H_tau and PH_tau in the same interval for every tau, obtains pi_tau<=exp(4eta), and concludes E pi_tau^s<=sqrt(2). The original density's cap is included at tau=1; the floor follows from the preceding proposition. All initial admissibility constraints are realized by the actual potential, not left as a scaling hypothesis.
+
+7. Exact coefficients, endpoints and growing matching order
+
+The three integrated coefficient identities are identical in content to N1–N3: (1+rho)cd+(alpha+beta)ef=0; (1+alpha)ce+(rho+beta)df=epsilon; and (1+beta)cf+(rho+alpha)de=epsilon. Character multiplication uses A triangle B={j}, and each coefficient includes the two ordered cross terms once. The argument excluding e=0 or f=0 is preserved, using c>0 and epsilon>0.
+
+Potential smoothing weights the four coefficients by 1,tau,tau^m,tau^(m+1). Substitution of the cancellation identity yields exactly
+E pi_tau chi_{j} = (alpha+beta)ef(tau^(2m+1)-tau)/Z_tau.
+For 0<tau<1, the last factor is strictly negative, the denominator is positive and all other multiplicative factors are nonzero. Thus the same potential loses that first marginal for every interior tau, with no quantitative lower bound or perturbative remainder assumed. At tau=0 the normalized density is uniform; at tau=1 it is the original matched density. Both exceptions remain explicit.
+
+For fixed C>0, k_L=min(L,floor(C sqrt(L))) eventually lies in [1,L-2]; finite constant filling supplies a family in the original growing-order regime. The new text disclaims a uniform lower bound for the nonzero defect as alpha tends to zero. Its potential minimum is uniformly positive, and the existing positive-background theorem plus the cap excludes collapse for this family. No gap-collapse conclusion or extension to k near L outside the stated range is introduced.
+
+8. Density smoothing, spectral boundary and manuscript positioning
+
+The final paragraph distinguishes w_tau=P_tau pi from smoothing h. Boolean noise preserves the mean under its invariant uniform measure and preserves the floor by its stochastic positivity. Jensen followed by invariance gives E w_tau^s<=E pi^s; Walsh diagonalization preserves zero low-degree coefficients. All these properties are stated in the context of the specified Boolean operator; no assertion for a non-invariant arbitrary stochastic matrix is needed. The positive symmetric inverse lemma then produces the unique actual potential u_tau with u_tau Pu_tau=w_tau, automatically with energy one.
+
+This proves admissibility preservation for that different operation, but supplies no comparison between gap(K_h) and gap(K_u_tau). The manuscript expressly leaves the dimension-uniform spectral comparison unresolved and rejects assuming a potential/Ph floor as a substitute for proving it. These sentences are the elementary invariances already discussed in N, not an additional claimed gap theorem.
+
+The abstract and roadmap match these quantifiers: smoothing potentials preserves the floor but can destroy exact matching even while the cap survives; smoothing stationary densities preserves constraints, with spectral transfer still open. The failed-route paragraph excludes only uncorrected potential smoothing as an invariance argument. It continues to distinguish the particular L/M family classification, unrestricted high-block control, the critical weighting endpoint and the main gap question. No original hypothesis, physical Yang–Mills claim, continuum conclusion or new programme-progress increment is added.
+
+The source and README keep the results grouped in one manuscript. They do not create a separate small paper, advertise a frontier discovery or infer novelty from unsuccessful searches. The bibliography now adds Definition 2.46 and Proposition 2.47 to the existing O'Donnell entry while retaining its prior hypercontractive references. Those are classical noise-formula inputs. As explicitly instructed, I did not browse or independently re-retrieve the page in this audit; the README's later primary-source reading is the author's documented reading, not mine. The formula needed by the integration is established by the displayed Fourier/product definitions, so no unverified new theorem is smuggled in through that citation.
+
+9. Assessment context and preservation limits
+
+The Model assessments section now names N's exact first source PASS and full report, but explicitly says inclusion does not assess this integrated manuscript. It identifies earlier reports by their own hashes, discloses shared provider/context and unattested backend, and distinguishes source audits, future exact PDF review, Working-paper deposit, human peer review and editorial acceptance. M's original nonblocking upper-bound correction remains present. The older 8efcb73b/d617dc40 artifact is correctly excluded from coverage of notes E–N and no old score is transferred.
+
+The existing old PDF, assessment and native job files are outside the four-file delta and remain untouched. No fresh compilation or PDF exists for the new source in this audit. The README's older native-case prerequisite is retained as operational context; I did not retry, look up, expire, alter or fabricate a grant or receipt. The historical source-review headers remain historical records rather than being rewritten after this verdict.
+
+10. Objections, checks and final disposition
+
+No blocking or nonblocking correction request arose in this integration audit. The load-bearing compression of N into a reference to inversestationary is valid, and its constants, assumptions and exact reconstruction are preserved. All checked references and manifest entries agree. Existing source-level limitations remain: no compiled rendering, no PDF layout review, no formal-machine proof, no comprehensive literature/priority assessment and no numerical grade. Static source checks do not substitute for those different tasks.
+
+This verdict certifies the named exact source integration and its preservation only. It does not authorize a build, workflow dispatch, PR, merge, native submission or publication. No workflow-trigger analysis is claimed for this task. No branch or source was changed by the auditor, and no clone/runtime cleanup debt was created.
+
+Final accepted subject: 49b2ae363d147c1c17f1c6dc3cfa28efff866b18, manuscript SHA256 a94dbf1aca3738564894cacceaeba81abdeee35d3fde4f0dec281a09adf3508d. Full report, raw identity/dependency observations and complete old/new source delta are retained under D:\Datos\the-eriksson-programme\autonomia\2026-11-17_grouped-regularization\. The result remains a rigorously scoped obstruction to one proposed regularization route within the open stationary-gap programme.

@@ -2,12 +2,17 @@
   "schema": "grouped-regularization-source-v1",
   "parent_commit": "5b279ec245b949126954b5f5ec29923da683e4ef",
   "raw_hash_regime": "UTF-8 without BOM, LF, raw bytes without normalization",
-  "source_audit": "First integration audit pending at freeze; first N audit applies only to its preserved exact source",
+  "source_audit": "First integration PASS at49b2ae363d147c1c17f1c6dc3cfa28efff866b18; full report retained. No PDF assessment.",
   "pdf_created": false,
   "new_lean_verification": false,
   "new_original_hypotheses_eliminated": [],
   "general_question": "OPEN stationary-doob-gap; only potential-smoothing invariance route refuted",
   "files": [
+    {
+      "file": "FIRST-INTEGRATION-AUDIT.txt",
+      "bytes": 15934,
+      "sha256": "8e006db9cfd67fcb6040b3b662bcdff505b468113433714e4cb91028b1056499"
+    },
     {
       "file": "integration-N.tex",
       "bytes": 6257,
@@ -20,8 +25,8 @@
     },
     {
       "file": "README.txt",
-      "bytes": 3304,
-      "sha256": "423980a7043a57b90772a0853ba25848e66d2205ff12b877d98f5b8f443438e0"
+      "bytes": 3798,
+      "sha256": "c5379f1798d80d13c2c7b0b900d20b2aa1ed185e139f248044ff1b9923ef4888"
     }
   ],
   "dependencies": [

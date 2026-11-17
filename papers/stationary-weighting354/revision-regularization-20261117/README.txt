@@ -51,3 +51,10 @@ pins the standalone insertion fragment for review against the full source.
 Byte regime: raw UTF-8 without BOM, LF; no normalization before hashing.
 The no-index text comparison returns exit1 because the sources differ;
 that expected diff status is not a failed compiler or mathematical check.
+First integration audit completed: PASS at exact commit
+49b2ae363d147c1c17f1c6dc3cfa28efff866b18 for source raw hash
+a94dbf1aca3738564894cacceaeba81abdeee35d3fde4f0dec281a09adf3508d,
+with no correction requested. Its complete report is retained alongside the
+source (raw SHA2568e006db9cfd67fcb6040b3b662bcdff505b468113433714e4cb91028b1056499).
+This metadata update records that source verdict without changing manuscript
+or fragment bytes. It does not confer a PDF score or publication status.
