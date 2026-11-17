@@ -1,0 +1,180 @@
+Candidate N: smoothing an actual Doob potential need not preserve exact matching
+Date: 2026-11-17. Status at creation: analytic candidate, awaiting first audit.
+Byte convention: UTF-8 without BOM, LF. No numerical, Lean or PDF verification.
+
+BOUNDED QUESTION AND SCOPE
+The single active research question remains the stationary-doob-gap question.
+This unit tests one possible regularization step within that question: does
+h -> P_tau h, followed by energy normalization, preserve exact stationary
+matching under the original stationary floor and critical moment cap?
+We prove that it does not. The stationary floor is always preserved; in the
+counterexample the moment cap also survives, but even a first marginal fails.
+This is an actual Doob construction, not an unrelated abstract density.
+It does not exhibit a collapsing gap, remove any original hypothesis, or
+settle the general gap question. It belongs with the grouped L/M results,
+not in a separate paper containing a small corollary.
+
+Conventions: uniform probability mu on {-1,1}^L; E denotes its expectation.
+chi_S(x)=product_{i in S} x_i. P=P_rho is the Boolean noise kernel,
+P chi_S=rho^{|S|} chi_S, with fixed 0<rho<1. For positive h normalized by
+E hPh=1, the actual kernel is K_h(x,y)=P(x,y)h(y)/(Ph)(x), with stationary
+density pi=hPh. The original assumptions used here are pi>=b, E pi^s<=2,
+s=(1+rho)/(1-rho), 0<b<1, and E pi chi_S=0 for 1<=|S|<=k.
+All inequalities between functions are pointwise unless a norm is specified.
+
+PROPOSITION N.1 (floor preservation, without a matching assumption)
+Let R=P_tau, 0<=tau<=1, H=Rh, Z=E HPH, and h_tau=H/sqrt(Z).
+Then pi_tau=h_tau P h_tau >= b whenever pi>=b.
+Proof. Noise kernels commute, so HPH=(Rh)R(Ph). Cauchy--Schwarz in
+each probability row of R gives (Rh)R(Ph)>=(R sqrt(hPh))^2>=b.
+Walsh Parseval gives Z=sum_S rho^{|S|} tau^{2|S|} hhat(S)^2 <=
+sum_S rho^{|S|} hhat(S)^2=1. Here the constant term has multiplier 1,
+including tau=0. Z>0. Thus pi_tau>=b/Z>=b. This proves the assertion.
+No general preservation of the moment cap is asserted by this proposition.
+
+THEOREM N.2 (exact matching fails after every nontrivial smoothing)
+Fix rho,b as above, L>=3 and 1<=k<=L-2. There exists a positive,
+energy-normalized actual potential h such that:
+  (a) pi=hPh has every labelled marginal of order <=k equal to uniform;
+  (b) pi>=b and E pi^s<=2;
+  (c) for every 0<=tau<=1, pi_tau>=b and E pi_tau^s<=sqrt(2)<2;
+  (d) for every 0<tau<1, E pi_tau chi_{j} is nonzero for a specified j.
+In particular the regularization fails to preserve the original admissible
+class even though the floor and cap hold before and after regularization.
+
+PROOF, INCLUDING EXISTENCE OF THE ACTUAL POTENTIAL
+Choose A of size m=k+1 and j outside A; set B=A union {j}.
+Set alpha=rho^m and beta=rho^{m+1}=alpha*rho, and fix the positive number
+  epsilon=min{1/8, (1-b)/4, (log 2)/(64s)}.
+This choice is independent of L and k. Define
+  w(x)=1+epsilon(chi_A(x)+chi_B(x)).
+It has mean 1, w>=1-2epsilon>=max{3/4,(1+b)/2}>b, and its only nonzero
+nonconstant Walsh coefficients are at A and B, both of degree >k.
+Thus all the stated low-degree coefficients vanish. Fourier expansion of
+each coordinate-marginal indicator shows this is equivalent to the stated
+labelled marginal equality.
+
+We construct h on a four-point quotient, thereby avoiding a dimension
+dependent inverse bound. Put y=chi_A(x) and z=x_j. Under uniform mu these
+are independent uniform signs. Boolean rho-noise induces on (y,z) the
+product kernel Q=P_alpha on y tensor P_rho on z. Indeed the independent
+sign flips on the disjoint sets A and {j} have means alpha and rho. Hence
+P[f(chi_A,x_j)]=(Qf)(chi_A,x_j) for every function f on these four points.
+Q is strictly positive, symmetric, stochastic and positive semidefinite,
+with eigenvalues 1, alpha, rho and beta.
+
+For completeness the required inverse result is proved here, specializing
+the already audited lemma inversestationary in the grouped source.
+For any strictly positive mean-one four-point w, define on R^4
+  F(v)=1/2 sum_{a,d} mu_4(a) Q(a,d) exp(v_a+v_d)
+       -sum_a mu_4(a) w(a) v_a.
+Its Hessian is positive definite: all exponential terms are convex and
+the positive diagonal terms are strictly convex in every coordinate.
+Writing M=max v_a and d0=1/2 min_a mu_4(a)Q(a,a)>0 gives
+F(v)>=d0 exp(2M)-M. Thus a sublevel set has M bounded above. If some
+coordinate tends to minus infinity with all coordinates bounded above,
+the strictly positive linear weights force F to infinity. Sublevel sets
+are therefore bounded. The unique minimizer solves exp(v)Qexp(v)=w.
+It defines the unique positive solution g, and the implicit function
+theorem gives smooth dependence along a positive path w_t.
+
+Apply this construction to w_t=1+t epsilon(y+yz), 0<=t<=1. This path
+is at least 1/2. Let g_t Q g_t=w_t, g_0=1. The actual reversible kernel
+J_t(a,d)=Q(a,d)g_t(d)/(Qg_t)(a) has stationary probability nu_t=w_t mu_4
+and spectrum in [0,1]. Positivity of the spectrum follows from its
+self-adjoint conjugate M_sqrt(g_t/Qg_t) Q M_sqrt(g_t/Qg_t); the upper
+bound follows from its being a Markov kernel. Since nu_t>=1/8, set
+T_t=(I-J_t)/2. Its absolute row sum is 1-J_t(a,a)<=1, and its L2(nu_t)
+norm is at most 1/2. Consequently
+  ||T_t^r||_{infinity->infinity} <= min{1,sqrt(8)*2^{-r}}.
+The first bound uses the row norm. The second uses ||f||_2<=||f||_infty
+and |f(a)|<=||f||_2/sqrt(min nu_t). The Neumann series yields
+  ||(I+J_t)^(-1)||_infinity
+  <=1/2 [2+sum_{r>=2} sqrt(8)*2^{-r}] <=2.
+Differentiating log(g_t Qg_t)=log w_t gives
+  (I+J_t) d(log g_t)/dt = epsilon(y+yz)/w_t.
+The right hand side has infinity norm <=4epsilon. Integrating gives
+  ||log g_1||_infty <=8epsilon=:eta <=(log 2)/(8s).
+Lift h(x)=g_1(chi_A(x),x_j). Then hPh=w exactly, E hPh=1, and
+  exp(-eta)<=h<=exp(eta).
+Existence, exact matching, and normalization have therefore been proved,
+not introduced as extra assumptions on a purported potential.
+
+For every tau in [0,1], H=P_tau h and PH lie in the same interval.
+Thus exp(-2eta)<=Z<=exp(2eta), and pi_tau=HPH/Z<=exp(4eta).
+It follows that E pi_tau^s<=exp(4s eta)<=sqrt(2). Proposition N.1
+proves pi_tau>=b. This includes tau=1, which is the original h.
+
+Every function on the four-point quotient has the unique expansion
+  h=c+d chi_j+e chi_A+f chi_B, with c=E h>0.
+Multiplying this expansion by its P-image gives the following exact
+coefficients, using chi_A chi_B=chi_j:
+  (1+rho)c d+(alpha+beta)e f=0,                         (N1)
+  (1+alpha)c e+(rho+beta)d f=epsilon,                   (N2)
+  (1+beta)c f+(rho+alpha)d e=epsilon.                   (N3)
+If e=0, (N1) implies d=0, contradicting (N2). If f=0, (N1) again
+implies d=0, contradicting (N3). Hence e f is nonzero.
+The smoothed potential is exactly
+  H=c+tau d chi_j+tau^m e chi_A+tau^{m+1} f chi_B.
+Its product HPH has chi_j coefficient
+  (1+rho)c tau d+(alpha+beta)tau^{2m+1}e f.
+Using (N1) and dividing by Z proves the explicit identity
+  E pi_tau chi_j = (alpha+beta)e f (tau^{2m+1}-tau)/Z.  (N4)
+All factors other than the final difference are nonzero, and for
+0<tau<1 with m>=2 the difference is strictly negative. This proves (d)
+without a perturbative remainder or a numerical nonzero test.
+At tau=0 the density is uniform; at tau=1 it is the original matched
+density. Neither endpoint is claimed to break matching. QED.
+
+GROWING MATCHING REGIME AND LIMITATIONS
+For any fixed C>0, k_L=min{L,floor(C sqrt(L))} satisfies 1<=k_L<=L-2
+for all sufficiently large L. Apply N.2 in those dimensions and take h=1
+in the finitely many remaining dimensions. This supplies a family obeying
+the original growing matching regime but failing first-marginal matching
+after every fixed nontrivial smoothing in all sufficiently large dimensions.
+No dimension-uniform lower bound on the size of the nonzero defect is
+claimed; alpha tends to zero as k grows. Exact equality, not approximate
+agreement, is the hypothesis refuted by smoothing. The family has a fixed
+positive minimum potential and is not a collapsing-gap construction.
+
+MECHANISM, FALSIFIER AND ABANDONMENT
+Mechanism: the two high-degree characters have a low-degree symmetric
+difference. Their contribution to the stationary product cancels a low
+potential coefficient before smoothing. Noise weights these two terms by
+different powers, so the nonlinear cancellation is destroyed.
+Falsifier of this proof: failure of quotient existence/stability, a wrong
+coefficient in N1--N4, or a nontrivial tau with N4 zero despite e f nonzero.
+The proposed exact-admissibility-preserving potential-smoothing route is
+abandoned if the counterexample passes first analytic audit. No further
+search on that unconditional invariance assertion is needed.
+Next bounded test within the SAME active gap question: smoothing the
+stationary density itself and reconstructing its unique potential preserves
+matching and the floor/cap, but a quantitative actual spectral comparison
+must be proved rather than assumed. Alternatively work directly on small
+Ph regions. No extra hypothesis on Ph may be disguised as elimination.
+
+SOURCES AND NOVELTY BOUNDARY
+Primary source: Ryan O'Donnell, Analysis of Boolean Functions, author's
+May 2021 arXiv edition, https://arxiv.org/pdf/2105.10386, Definition 2.46
+and Proposition 2.47 (PDF page 55). Noise diagonalization, the semigroup
+law and multiplication of Walsh characters are classical background.
+Programme dependency: grouped source at commit
+5d2fbe898c379ec8125d393a51f4098ea3328370, lemma inversestationary;
+papers/stationary-weighting354/revision-gapclassification-20261117/
+manuscript-gapclassification-candidate.tex, raw UTF-8/LF SHA256
+6b565f512d0bb10ecf74ad6874096c954f2fbe88e7a42991a0bcb448c4f0d1de.
+The specialized four-point proof is reproduced above for auditability.
+Queries '"Doob" "noise operator" "marginals"' and
+'"symmetric matrix scaling" "Fourier" "noise"' on 2026-11-17 returned
+no primary result that we verified as this exact claim. Search noise and
+absence of a verified hit do not establish novelty. The claim is a newly
+derived obstruction in this programme; global originality is unestablished.
+Relevance is limited to regularization of the actual stationary problem.
+
+MODEL ASSESSMENTS AND REVIEW CONTEXT
+This candidate is prepared by the current Codex assistant using analytic
+reasoning and text editing. It has no first separate-role audit yet, no
+numerical score, no exact PDF, no peer review and no editorial acceptance.
+An audit report must name the exact commit/hash and its real available
+model identity/context; do not infer independent providers or transfer the
+score of the previously reviewed PDF d617dc40 to this text.
