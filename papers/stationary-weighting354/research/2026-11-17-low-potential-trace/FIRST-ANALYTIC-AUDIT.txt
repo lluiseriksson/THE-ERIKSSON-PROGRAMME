@@ -1,0 +1,314 @@
+FIRST EXACT-SOURCE ANALYTIC AUDIT — RESEARCH NOTE R
+Date: 17 November 2026
+Scope: low-potential trace reduction; first analytic source assessment.
+
+VERDICT: PASS WITH ONE NONBLOCKING NOTATION CORRECTION (N1).
+
+The stated killed-operator bound, mass estimates, averaged entrance estimate,
+trace construction, harmonic extension bounds, two-sided gap comparison,
+effective-kernel identity and conditional density estimates are valid. There
+is a local eigenvalue/eigengap notation error at source line 108. The claimed
+upper gap comparison has the supplied elementary proof after replacing
+"t-eigenfunction phi of K^C" by "(1-t)-eigenfunction phi of K^C" (or by
+"t-eigenfunction phi of I-K^C"). This correction is required before reuse
+or manuscript integration. It does not change the theorem, hypotheses,
+constants, or subsequent argument. The exact frozen source is not described
+as literally error-free, and this report does not silently amend its bytes.
+
+No further mathematical objection was found. This is an analytic assessment,
+not a formal proof certificate, PDF review, numerical grade, publication
+approval, novelty certificate, or proof of the unresolved stationary-gap
+conjecture. The result remains a classical trace reduction with a proved
+application to low h. It is not counted here as removing an original premise
+or establishing a substantial resolution of the high-ratio route.
+
+1. EXACT ARTIFACT AND AUDIT BOUNDARY
+
+Worktree:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116
+Frozen HEAD:
+f6329c851b9e9fa15558c725a0081f3882a86164
+Parent:
+2e0b3effe13ed093aafe09fa07c2e4af2e61dcf0
+Candidate:
+papers/stationary-weighting354/research/2026-11-17-low-potential-trace/CANDIDATE-R.txt
+Raw checkout representation: UTF-8 without BOM, LF; no normalization applied
+before hashing; 10520 bytes.
+Raw SHA256:
+eef112c23a2ba9784a2dc03bf0bb87787eb21d435f012500c90880882e92799c
+Git blob:
+869478e0de718d80891fcc8f9d2ebc77e82d2dad
+The raw file's git hash-object --no-filters identity equals the HEAD blob.
+Thus the raw source read is the exact committed source, rather than a
+line-ending-normalized approximation. The commit adds only this candidate.
+Initial git status was empty.
+
+Base source read for the J interface and surrounding scope:
+papers/stationary-weighting354/revision-vanishing-denominator-20261117/manuscript-vanishing-denominator-candidate.tex
+Raw SHA256:
+e88be81044604c485097d12da94b40c9687ca795bb98a3d6a9b1b22e5174b444
+Representation: UTF-8 without BOM, LF, 128420 bytes.
+Git blob: 810b2532c116228da4635c4030db14e78029d3c9.
+Raw no-filter blob identity also agrees with HEAD.
+Its cited source commit is a39783b310c915f6eed0c6e4ddcc9bbadad19673.
+
+The entire candidate was read. The positive-background theorem and its
+load-bearing noise/constant-background arguments in the grouped manuscript
+were inspected. Q and P statements were reread for the limited cross-reference
+claims; their earlier full analytic proofs and reports are inherited context.
+No prior PASS is used in place of checking any of R's load-bearing inequalities:
+R's theorem is proved without Q or P. Their appearances in section 6 are
+consistency/application remarks, not prerequisites of the trace reduction.
+
+The applicable operational charter was read, including its no-inbound audit
+boundary and requirement that text hashes identify exact representations.
+The existing worktree was inspected without editing it. There is no PR or PR
+body for this task; body capture and body hash are inapplicable. No source,
+state, earlier report, branch, workflow or publication record was changed.
+The only new files are this audit and its retention evidence outside the
+worktree. No disposable clone or new worktree was created.
+
+2. IDENTITY, CONTEXT, AND METHOD LIMITS
+
+Assessor: the Codex assistant operating in the separate child role
+/root/public354_commit_audit, assigned this first exact-source assessment by
+the parent task. The exact serving backend/model revision and reasoning-effort
+configuration are not independently attested by the available evidence. No
+claim that a particular marketed model or external service performed this
+audit is made. This role shares provider and inherited conversation context
+with the authoring task and has prior audit context from this programme.
+It is not blind review, independent human peer review, or evidence of an
+independent scientific replication. The role boundary is operational, not a
+claim of statistical or institutional independence.
+
+Method: direct analytic reading and symbolic reasoning, plus ordinary
+read-only git, file/encoding inspection and cryptographic hashes. No
+mathematical program, numerical evaluation, solver, Lean/Lake, TeX build,
+rendering, Colab/runtime, GitHub Actions, desktop control, native application
+request, browser request or publication operation was performed for this
+audit. No external model was queried. No interim messages were sent to the
+parent or other agents. No inbound follow-up was received during the audit.
+The earlier primary-source lookup and its timeout are the candidate author's
+reported provenance; this auditor did not independently fetch that source.
+The trace formulas needed for the verdict are derived below and in R itself.
+
+3. ORIGINAL OPERATOR, LOW-REGION MASS, AND KILLING
+
+The assumptions are L>=1, 0<rho<1, h>0, g=P_rho h,
+E_mu(hg)=1, pi=hg>=b with 0<b<1, and uniform cube measure mu. The
+Doob kernel K=M_(1/g) P M_h is Markov. Its reversible probability is
+nu=pi mu, and conjugacy by sqrt(pi) gives S=M_sqrt(h/g) P M_sqrt(h/g).
+Noise P is self-adjoint positive definite and contractive; the Markov
+conjugacy establishes that S is a positive semidefinite contraction.
+In particular S^2<=S is legitimate. The Perron vector is sqrt(pi).
+
+The constant Walsh component gives (E h)^2<=E hPh=1, and stochasticity
+gives E g=E h<=1. For B={h<a}, 0<a<=b/4, one therefore has
+nu(B)=E 1_B hg<=a E g<=a. Since pi>=b, mu(B)<=nu(B)/b<=a/b<=1/4.
+These bounds do not require the critical cap or matching. They are not
+interchangeable with an unproved assertion that rare sets have small killed
+norm. C=B^c has at least three quarters of the cube states; for L=1 the
+integer count forces both states into C. Thus the trace always has at least
+two states and its nonconstant spectral gap is well defined.
+
+On B, U=h/g=h^2/pi<=a^2/b=theta. The inequality theta<=b/16<1/16
+is correct. Extending a B-supported vector by zero and using ||P||<=1
+proves 0<=A=S_BB<=theta I. This is a bound on the actual killed
+operator, derived from the stationary floor. It says nothing analogous
+about {g small}, where h/g can be large. Conjugacy carries the bound to
+K_BB on L2(nu restricted to B); this measure is not renormalized in the
+block calculations.
+
+When B is nonempty and the initial law is nu conditioned on B, the survival
+probability for entrance time T_C is
+<1_B,K_BB^n 1_B>_nu/nu(B). The operator bound gives at most theta^n.
+At n=0 both sides equal one, consistent with the chain starting inside B.
+Summing tails for a positive integer entrance time gives E T_C<=1/(1-theta).
+This is a conditioned-stationary average, not a uniform starting-state
+bound. The explicit restriction B nonempty avoids division by zero.
+
+4. TRACE MARKOV CHAIN AND BLOCK INEQUALITIES
+
+The Neumann series for (I-K_BB)^-1 converges, because its spectral radius
+is at most theta<1. Expanding K_CB K_BB^n K_BC enumerates excursions
+which spend n+1 visits in B between visits to C. The additional K_CC
+term includes a direct next visit. This is the trace chain, not reflection
+or killing. The equation (I-K_BB)1_B=K_BC1_C, followed by the C row-sum
+equation, proves K^C1_C=1_C. Reversibility follows from the original
+reversible block operators. Its invariant probability is nu(.|C).
+
+On the corresponding uniform C coordinate space, scalar normalizations
+cancel and its self-adjoint conjugate is
+T=S_CC+D*(I-A)^-1 D, D=S_BC. Each summand is positive semidefinite.
+P(x,y)>0 for all x,y when 0<rho<1 and h>0, so K_CC is strictly positive
+entrywise. Hence the trace is irreducible and has a simple Perron eigenvalue
+one; other eigenvalues lie in [0,1). No negative-eigenvalue or absolute-gap
+ambiguity arises. Both t=gap(K^C) and gamma=gap(K) lie in (0,1].
+
+Taking the B diagonal block of S^2<=S gives A^2+DD*<=A. Congruence by
+(I-A)^-1 gives HH*<=A(I-A)^-1 for H=(I-A)^-1D. Because A commutes
+with its functions, spectral calculus gives ||H||^2<=theta/(1-theta).
+Similarly R=(I-A)^-1/2D has RR*<=A<=theta I. Equality of the nonzero
+singular values, or the definition of operator norm, then gives
+R*R<=theta I on C. Thus 0<=T-S_CC=R*R<=theta I has the correct
+operator domain and orientation. There is no unjustified commutation of D
+with A. Empty B produces zero correction and K^C=K throughout.
+
+5. HARMONIC EXTENSION AND TWO-SIDED GAP TRANSFER
+
+All norms in this argument use the restricted unnormalized measures unless
+the explicitly normalized conditional expectation is written. The isometry
+given by sqrt(pi) transfers the bound on H to
+H_K=(I-K_BB)^-1 K_BC. For e(phi)=(H_K phi,phi), the B component of
+(I-K)e(phi) vanishes. Expanding the quadratic form of e(phi)+w, with w
+supported on B, cancels its two cross terms and leaves precisely
+<phi,(I-K^C)phi>_(nu|C)+<w,(I-K_BB)w>_(nu|B).
+This is the exact Schur complement identity R2.
+
+For arbitrary f, take c=E_(nu_C) f_C and phi=f_C-c. Then phi is centered
+in the correct C measure, f-c=e(phi)+w, and
+E(f)>=t||phi||_C^2+(1-theta)||w||_B^2.
+The bound on H_K gives ||e(phi)||^2<=||phi||_C^2/(1-theta).
+Variance is the minimum over constants, so using this particular c and
+then the triangle inequality gives
+Var_nu(f)<=(||phi||_C/sqrt(1-theta)+||w||_B)^2.
+Weighted scalar Cauchy--Schwarz against the preceding two energy terms
+has factor 1/((1-theta)t)+1/(1-theta). Its reciprocal is exactly
+(1-theta)t/(1+t). This proves the lower bound of R1. The argument covers
+phi=0 and w=0, and does not require e(phi) to have zero global mean.
+
+N1 — LOCAL NOTATION CORRECTION, SOURCE LINE 108:
+"For the upper bound choose a nonconstant t-eigenfunction phi of K^C"
+is not literally correct with t defined as gap(K^C). It must read
+"a nonconstant (1-t)-eigenfunction phi of K^C", equivalently
+"a t-eigenfunction phi of I-K^C". In general K^C need not have t as
+an eigenvalue. For example, even with B empty and h=1 on a one-dimensional
+cube, its nonconstant eigenvalue is rho whereas its gap is 1-rho. This
+analytic example uses no numerical computation or executed test.
+
+With the stated correction, finite-dimensional self-adjoint spectral theory
+provides a nonzero centered phi and its harmonic extension has energy
+t||phi||_C^2. For every scalar c, the full squared norm is at least the
+C squared norm ||phi-c||_C^2, which is at least ||phi||_C^2 by C centering.
+Minimizing in c proves Var_nu(e(phi))>=||phi||_C^2. Its Rayleigh quotient
+is at most t, proving gamma<=t. This recovers exactly the claimed result
+without any missing factor nu(C). The theorem and energy display are
+correct; only the operator named in the eigenfunction sentence is wrong.
+
+Finally theta<1/16 and t<=1 imply
+(1-theta)/(1+t)>=15/32, so the advertised weaker uniform comparison
+is valid. It is deliberately conservative, including for empty B, where
+the exact gaps agree. Equivalence of uniform gaps in a family follows,
+but supplies neither one until one side has actually been bounded.
+
+6. EFFECTIVE BASE KERNEL, SUB-MARKOV PROPERTY, AND CONDITIONAL DENSITY
+
+For nonempty B, V=diag(1/U_B)-P_BB is symmetric positive definite:
+diag(1/U_B)>=theta^-1 I and P_BB<=I. The stated factorization of its
+inverse has the correct order,
+V^-1=M_U (I-P_BB M_U)^-1.
+The product P_BB M_U has norm at most theta in the uniform coordinate
+space, so its nonnegative Neumann series converges and V^-1 is entrywise
+nonnegative. No inference from positive definiteness alone to inverse
+entrywise positivity is made. The diagonal of the inverse is positive.
+
+Since g_B=(1/U_B)h_B=P_BB h_B+P_BC h_C, one gets
+Vh_B=P_BC h_C and hence P_eff h_C=g_C. An explicit Doob calculation is
+I-K_BB=M_(1/g_B) V M_(h_B), so
+(I-K_BB)^-1=M_(1/h_B) V^-1 M_(g_B).
+Insertion into the trace formula cancels the B multipliers and gives
+K^C=M_(1/g_C)[P_CC+P_CB V^-1 P_BC]M_(h_C).
+Thus R3--R4 concern the actual trace, not a chosen replacement chain.
+Symmetry and positive semidefiniteness of P_eff follow from the compression
+and the positive congruence. Its entries are strictly positive because the
+P_CC entries are strictly positive.
+
+Let v=V^-1 P_BC1_C. Since V1_B-P_BC1_C=1/U_B-1_B>=0 and V^-1>=0
+entrywise, 0<=v<=1_B. Therefore P_eff1_C=P_CC1_C+P_CBv<=1_C.
+For nonempty B, U_B<=theta<1 makes the right-hand difference strictly
+positive componentwise. The positive inverse diagonal ensures v<1_B;
+P_CB is entrywise strictly positive, giving P_eff1_C<1_C pointwise.
+The strict sub-Markov conclusion is valid and is appropriately restricted
+to nonempty B. It is compatible with K^C being stochastic, because its
+Doob denominator is g_C=P_eff h_C, rather than an assumed constant row sum.
+
+The stationary probability of the trace is nu_C. Relative to normalized
+uniform measure mu_C its density is pi_C=pi|C mu(C)/nu(C). Since
+mu(C)>=3/4 and nu(C)<=1, pi_C>=3b/4. If the original cap is imposed,
+E_muC pi_C^s=mu(C)^(s-1)nu(C)^(-s) E_mu[1_C pi^s]
+<=2/(1-a)^s, using s>1 and nu(C)>=1-a. The normalization factors and
+exponents are correct. The floor in fact holds without the cap; the
+candidate presents both estimates together under a conditional sentence,
+which does not make a false implication. The early statement that the cap
+is unnecessary for sections 2--5 is read as referring to the trace/gap
+results: the final cap inheritance is expressly conditional.
+
+7. J INTERFACE, Q/P CONTROLS, AND REMAINING SCOPE
+
+The base manuscript's theorem backgroundfullgap assumes the original Boolean
+noise operator, energy normalization, a positive potential minimum and its
+critical cap. Its proof uses P1=1, the decomposition g=c+Pz, Boolean
+hypercontractivity, the unweighted noise gap, and cube-uniform measure.
+Even though h_C>=a, the derived P_eff is generally substochastic and the
+conditioned space C need not be a cube. The same critical cap constant and
+normalization are not retained verbatim. Applying J directly is therefore
+not licensed by its hypotheses. R correctly preserves this failed shortcut.
+It does not establish that every adapted theorem on P_eff is impossible;
+it says the needed estimates have not been proved, which is the appropriate
+scope. The effective-kernel reduction leaves a concrete core estimate open.
+
+The reread Q statement has h(x0) tending to infinity, Ph(x0) tending to
+zero, and a full gap tending to 1-rho. For any fixed allowed a that point
+is eventually in C, so this reduction does not dispose of that ratio
+mechanism by removing it. P likewise asserts positive limiting full gaps
+for its original and regularized chains. Conditional on these already
+established family results, gamma<=t implies positive trace gaps; R does
+not claim a trace-gap limit from that one-sided inequality alone. The
+remarks about K/L distinguish low h from rare mass correctly. None of the
+Q/P/K/L cross-references is necessary to prove R1--R4.
+
+The trace reduction is explicitly called classical. Its self-contained
+argument makes a broad priority claim unnecessary. The source's limited
+Aldous--Fill citation is not a demonstrated novelty search for R1 or the
+Schur-complement application. This audit supplies neither a new literature
+search nor a first-discovery assertion. Correctness, originality and research
+relevance remain separate. R has useful diagnostic content but does not
+prove the unresolved high-ratio core estimate; it does not earn a general-gap
+or removed-hypothesis label merely by identifying an equivalent trace family.
+The retained nonadvancement accounting and route-switch criterion are
+conservative programme records, not a new mathematical claim verified here.
+
+8. COMPLETE OBJECTION REGISTER AND DISPOSITION
+
+N1: source line 108 confuses a t-eigenfunction of K^C with a t-eigenfunction
+of I-K^C. Nonblocking for theorem correctness, mandatory local wording repair
+before integration. Exact replacement specified in section 5 above. All
+following upper-bound steps are valid with that replacement. The original
+candidate and this first report must remain preserved; a later correction
+must not overwrite this objection or be represented as part of these bytes.
+
+No other objection was found in this bounded analytic review. In particular:
+no missing conditional-measure factor was found; no worst-start estimate is
+claimed; no small-g killing bound is substituted for the proved small-h bound;
+no sub-Markov kernel is relabeled stochastic; no inherited matching or noise
+inequality is assumed on C; no original stationary-gap proof is claimed.
+
+The accepted mathematical content is confined to the hypotheses and bounds
+specified in R and reviewed above, with N1 expressly retained. This is not
+an unconditional clean-text verdict on line 108. No numerical score is given,
+and no grade from any earlier source or PDF is transferred. No human peer
+review, collection acceptance, formal Lean verification, physical spectral
+gap, Yang--Mills continuum result, or publication has occurred in this audit.
+
+9. RETENTION AND FREEZE VERIFICATION
+
+The source identities, clean-worktree observation, and final HEAD/hash checks
+are recorded separately in OBSERVATIONS.json in the accompanying evidence
+directory. They are documentary/static checks, not mathematical executions.
+The report was drafted under C:\Trabajo\the-eriksson-programme\_tmp and
+copied without text conversion to the requested D: evidence location.
+SHA256 of the retained report is returned separately and recorded in its
+retention manifest; no self-referential report digest is fabricated here.
+No disposable clone exists and no clone cleanup is pending.
+
+END OF COMPLETE FIRST ANALYTIC REPORT.

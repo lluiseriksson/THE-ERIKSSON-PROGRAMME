@@ -1,0 +1,24 @@
+MANDATORY NOTATION CORRECTION N1 — 2026-11-17
+
+Frozen original source: f6329c851b9e9fa15558c725a0081f3882a86164,
+CANDIDATE-R.txt, raw SHA256
+eef112c23a2ba9784a2dc03bf0bb87787eb21d435f012500c90880882e92799c.
+First report: FIRST-ANALYTIC-AUDIT.txt, raw SHA256
+d42d55393f9b4f71bff8f90e35844432200c4fe7cc3ee127a4c2610beb50c2f5.
+
+The first report returns PASS WITH ONE NONBLOCKING NOTATION CORRECTION.
+Its objection is retained in full. The original source remains immutable.
+
+In Section 4, original line 108, the phrase
+  "a nonconstant t-eigenfunction phi of K^C"
+must be read and reused as
+  "a nonconstant (1-t)-eigenfunction phi of K^C".
+Equivalently it is a t-eigenfunction of I-K^C, since t denotes the gap.
+This gives (I-K^C)phi=t phi and hence the stated energy t||phi||^2.
+No hypothesis, constant, theorem, energy identity or following step changes.
+
+The effective research artifact is the original source WITH THIS correction.
+Any manuscript integration must use the corrected phrase. The unchanged
+original is not described as error-free, and this addendum is not a second
+assessment or an improvement of a score. No numerical score was requested
+or given. The correction responds exactly to N1 and does not suppress it.

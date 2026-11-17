@@ -1,0 +1,79 @@
+{
+  "schema": "low-potential-trace-v1",
+  "source_commit": "f6329c851b9e9fa15558c725a0081f3882a86164",
+  "raw_hash_regime": "Raw filesystem bytes without normalization; original source UTF8noBOM/LF; full report copied byte-for-byte",
+  "files": [
+    {
+      "file": "CANDIDATE-R.txt",
+      "sha256_raw": "eef112c23a2ba9784a2dc03bf0bb87787eb21d435f012500c90880882e92799c",
+      "bytes": 10520
+    },
+    {
+      "file": "CORRECTION-N1.txt",
+      "sha256_raw": "a33204c06539bed967b41684acb304d2713a95256bb101d699ec227d922d74ae",
+      "bytes": 1230
+    },
+    {
+      "file": "FIRST-ANALYTIC-AUDIT.txt",
+      "sha256_raw": "d42d55393f9b4f71bff8f90e35844432200c4fe7cc3ee127a4c2610beb50c2f5",
+      "bytes": 17945
+    },
+    {
+      "file": "NEXT-ACTUAL-GAP-STEP.json",
+      "sha256_raw": "eed5c2814de503ebb5d341831b1269a242adef9c1b60a4f0d0deedd0de254456",
+      "bytes": 3703
+    },
+    {
+      "file": "PRIMARY-SOURCE-POSITIONING.txt",
+      "sha256_raw": "072bef9c7911274750412624e26b2ab43c843379bfb792dd27f71faa962b9273",
+      "bytes": 1052
+    },
+    {
+      "file": "README.txt",
+      "sha256_raw": "7ce7d53b068c60673f18b4f9168c25b7bbaa7219ea31c0e652cf1c7eba98e89f",
+      "bytes": 3155
+    }
+  ],
+  "dependencies": [
+    {
+      "repository_path": "papers/stationary-weighting354/revision-vanishing-denominator-20261117/manuscript-vanishing-denominator-candidate.tex",
+      "sha256_raw": "e88be81044604c485097d12da94b40c9687ca795bb98a3d6a9b1b22e5174b444",
+      "bytes": 128420
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-positive-background-gap/CANDIDATE-J.txt",
+      "sha256_raw": "3c3e719331b81c9f412374be8ea49d9e02f3cf860472979b7f7d127843a2986d",
+      "bytes": 9820
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-positive-background-gap/FULL-FIRST-ANALYTIC-AUDIT-J.txt",
+      "sha256_raw": "56b71e33b175e31c669453a4ca1dbb48bd6bd972a7c152ea2158b108d877b3ea",
+      "bytes": 16354
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-form-comparison-obstruction/CANDIDATE-P.txt",
+      "sha256_raw": "0a253b00f018e7aebc61b31d519207fbbd90c35ba2d402b4f20efad27487b6d8",
+      "bytes": 13163
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-form-comparison-obstruction/FIRST-ANALYTIC-AUDIT.txt",
+      "sha256_raw": "d902320604af47f2013a48cd7986968cfc006268431ea985436e039172140c78",
+      "bytes": 19140
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-denominator/CANDIDATE-Q.txt",
+      "sha256_raw": "63cbfada07296f3764ab4953b8ed47f2f4e6923105741ef45a9b4c2e11851dac",
+      "bytes": 12563
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-denominator/FIRST-ANALYTIC-AUDIT.txt",
+      "sha256_raw": "0774ae9276609d9527aca42a3ad0053533738439b359c0ac9fb3668d7dd1a969",
+      "bytes": 18828
+    }
+  ],
+  "assessment": "First analytical report PASS WITH NONBLOCKING N1; original source must be read with mandatory CORRECTION-N1. No second math grade, PDF review, formal proof, independence or publication claim.",
+  "new_substantial_mathematical_advance": false,
+  "original_hypotheses_eliminated": [],
+  "source_correction_required": true,
+  "source_correction_file": "CORRECTION-N1.txt"
+}

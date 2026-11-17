@@ -1,0 +1,6 @@
+POST-FREEZE PRIMARY-SOURCE POSITIONING — 2026-11-17
+This lookup occurred after freezing R at f6329c851b9e9fa15558c725a0081f3882a86164. It is not an alteration of that source or an assertion that its auditor performed this lookup.
+Aldous--Fill, Section 2.7, author's Berkeley HTML:
+https://www.stat.berkeley.edu/~aldous/RWG/Book_Ralph/Ch2.S7.html
+The full page was retrieved. Section 2.7.1 defines the successive-visit chain and states its invariant law is the original stationary distribution conditioned on the retained set (2.27). Section 2.7 distinguishes this construction from restriction and collapsing. Thus R's trace-chain framework is explicitly classical. No priority assertion is made for its constants or the particular Boolean-floor application. The earlier PDF page-range timeout is retained in the source; this successful HTML retrieval resolves access to the section, without retroactively changing the recorded chronology.
+No score, external assessment, PDF production or execution authorization follows from this literature lookup.

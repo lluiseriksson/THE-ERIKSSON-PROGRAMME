@@ -1,0 +1,38 @@
+{
+  "question_id": "stationary-doob-gap",
+  "statement": "Does exact degree-k stationary marginal matching at k/sqrtL tending to fixedC>0, a fixed positive stationary floor and critical moment cap force a dimension-uniform gap for the actual Boolean Doob kernel?",
+  "hypotheses": "Fixed0<rho<1,0<b<1,C>0,s=(1+rho)/(1-rho),h>0,E hP_rho h=1,pi=hP_rho h>=b,E pi^s<=2,all labelled marginals throughk uniform",
+  "research_source_commit": "f6329c851b9e9fa15558c725a0081f3882a86164",
+  "research_source_sha256_raw": "eef112c23a2ba9784a2dc03bf0bb87787eb21d435f012500c90880882e92799c",
+  "result": "For B={h<a}, a<=b/4, the original floor proves killed norm<=a^2/b and an exact trace reduction with (1-theta)t/(1+t)<=gap(K)<=t. The trace effective kernel is sub-Markov and is not Boolean noise.",
+  "mechanism": "Keep actual weighted noise action on the high-h/small-Ph core. Small-h excursions are controlled; establish the missing joint conductance or energy/variance estimate for the explicitly derived effective kernel, without assuming its trace gap or transferring Boolean hypercontractivity to it.",
+  "falsifier": "A fully admissible family with actualgap tending0, or a counterexample to any claimed bridge under exact hypotheses",
+  "next_bounded_test": "Use P_eff=P_CC+P_CB(diag(Ph/h)|B-P_BB)^(-1)P_BC and original full-cube identities. Test whether a small-set conductance bound follows with the critical stationary cap and matching. A trace-gap premise is only a reformulation. Q and P remain mandatory actual-family controls.",
+  "failed_shortcut": "h_C>=a does not make theorem J applicable: P_eff1<1 for nonempty B and no inherited Boolean noise/hypercontractivity structure is proved.",
+  "units_without_substantial_mathematical_progress": 2,
+  "counter_reason": "R supplies an explicit classical trace reduction and exact obstruction, but conservatively is not counted as substantial resolution of the high-ratio gap route. One preceding consolidation unit after Q.",
+  "abandonment": "After the next unit without substantial progress, change mechanism or name the concrete obstruction; preserve all failures.",
+  "manuscript": {
+    "path": "papers/stationary-weighting354/revision-vanishing-denominator-20261117/manuscript-vanishing-denominator-candidate.tex",
+    "sha256": "e88be81044604c485097d12da94b40c9687ca795bb98a3d6a9b1b22e5174b444",
+    "commit": "a39783b310c915f6eed0c6e4ddcc9bbadad19673",
+    "preservation_commit": "2e0b3effe13ed093aafe09fa07c2e4af2e61dcf0",
+    "previous_source_sha256": "75fa1c567739909e61e4d32f38a3702d72ce27a0db739b5197327203d8f09a7e",
+    "source_audit": "3e9a40039a0dc896264d8f9a87db99fabdd9a2160054ff8a48a40ac389a54422",
+    "assessment_scope": "First exact source-integration report only; no PDF grade",
+    "PDF_created": false,
+    "PDF_reviewed": false,
+    "published": false
+  },
+  "publication_queue": [
+    "Current production source is e88be81044604c485097d12da94b40c9687ca795bb98a3d6a9b1b22e5174b444 at a39783b310c915f6eed0c6e4ddcc9bbadad19673. Use applicable authorized production and exact-PDF review; no old scores or8ef exception transfer.",
+    "Older exact d617 native PDF job resumes only after genuine operator catalogue/sole-author reconciliation; no duplicate rejected grants, administrative bypass or simulated assent."
+  ],
+  "new_active_question_count": 0,
+  "new_original_hypotheses_eliminated": [],
+  "new_pdf": false,
+  "new_publication": false,
+  "PR29": "20/41",
+  "TermSource": 0,
+  "mandatory_source_correction": "Read frozen CANDIDATE-R.txt with CORRECTION-N1.txt: in Section4 line108 use (1-t)-eigenfunction of K^C, not t-eigenfunction. First report retains the nonblocking objection; theorem and constants unchanged."
+}
