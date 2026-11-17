@@ -1,0 +1,98 @@
+FIRST SOURCE-INTEGRATION AND EXACT-COMMIT PRESERVATION AUDIT
+Grouped gap classification, 17 November 2026
+
+1. Exact referents and verdict
+
+ACCEPTED HEAD: 5d2fbe898c379ec8125d393a51f4098ea3328370.
+Parent: 9793ef10dc87498beef1eda125b3fe21ef819508.
+Repository: lluiseriksson/THE-ERIKSSON-PROGRAMME.
+Branch/worktree: codex/low-full-evidence-20261116 at C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116.
+New source directory: papers/stationary-weighting354/revision-gapclassification-20261117.
+Full manuscript: manuscript-gapclassification-candidate.tex, 91615 bytes, raw SHA256 6b565f512d0bb10ecf74ad6874096c954f2fbe88e7a42991a0bcb448c4f0d1de.
+Compared predecessor: revision-exactminimum-20261117/manuscript-exactminimum-candidate.tex, 85595 bytes, raw SHA256 9a17337ad7eaa14703f4af3feb8a8b0ddd3345a3c648b902b55910927a3af7af.
+Every new file has raw UTF-8/LF bytes without BOM; no normalization was applied for SHA256 checks. Their raw unfiltered git object identities equal the committed HEAD blobs.
+
+VERDICT: PASS for this first source integration and exact-commit preservation audit. The integrated critical-sandwich lemma and vanishing-minimum gap theorem faithfully carry the already audited M argument into the K/L construction, with its N1 upper-bound correction. No blocking analytic or source-integration defect was found. The original admissibility problem remains open, and no PDF score or mathematical hypothesis elimination is manufactured.
+
+The narrow ordinary branch push of this unchanged commit is also acceptable from the inspected workflow-trigger perspective: the observed remote branch is exactly its parent, the complete pending delta is these four source-only files, no open PR uses this head branch, and none of the six current workflow definitions triggers a build from that branch/path-only push. This is not approval to open a PR, merge to main, dispatch a workflow, build a new PDF, submit to AIRR, or transfer the old execution exception.
+
+2. Role, context and methods
+
+Auditor: OpenAI Codex role /root/public354_commit_audit, separate from the fabricating root role. I previously performed M's first analytic audit and publication-integration audits of earlier artifacts. I have inherited context and a shared filesystem and provider. Exact serving backend/model revision and effective effort are unattested. This is not blind, human, provider-independent or organizationally independent review. It is an integration audit, not a second attempt to obtain a better mathematical or PDF score.
+
+No inbound parent message was received during this audit. I read CLAUDE.md's operative rules and used the previously read repository governance charter's exact-commit, preservation and no-inbound boundaries. Root AGENTS.md is absent, as the preparation record states. I inspected the full manuscript delta, the complete inserted fragment, changed context and bibliography, the global mathematical definitions and the necessary I/J/K/L interfaces and reconstruction proof. I did not repeat a full mathematical review of every unchanged predecessor theorem. The earlier complete source reports remain dependencies, not new grades for this artifact.
+
+Methods were git/file reads, raw hashes, JSON/text comparisons, bounded reference/label inspection and read-only remote branch/open-PR queries. No mathematical, numerical or symbolic code was executed; no compiler, TeX, Lean, oracle, runtime, rendering, desktop control or external model was used. No candidate, workflow, repository state, PDF, PR, publication or native service was mutated. Only this separate audit artifact/evidence was written and retained. No disposable clone was created.
+
+3. Commit scope, manifests and historical preservation
+
+The parent-to-head delta consists of precisely four added files: MANIFEST.json, README.txt, integration-M.tex and manuscript-gapclassification-candidate.tex. The working tree was clean when inspected. No old source, old audit, PDF, scientific assessment, workflow or native-case record is edited by the commit.
+
+Verified raw new-file identities:
+- integration-M.tex: 4733 bytes; SHA256 7a7e697c321ede34f713a87fa10fe7a8a09abb5c8c335be75bd48c8bfc75e93d.
+- manuscript-gapclassification-candidate.tex: 91615 bytes; SHA256 6b565f512d0bb10ecf74ad6874096c954f2fbe88e7a42991a0bcb448c4f0d1de.
+- README.txt: 2696 bytes; SHA256 ae5d155dfef912b8b0088d856d83a1c3d3caff9791ce236f0242c844fe399afd.
+- MANIFEST.json: 1702 bytes; SHA256 6c5185b86b24decf5649db6069677864230d4a25e71f0c64d1d8dd1183a78f00.
+
+The manifest lists three payloads and four direct dependencies, all verified. I additionally verified the eight predecessor-manifest dependencies covering K/L, their complete reports, J, its report and the preserved background integration. These are 15 raw payload/dependency hash checks in total. The accompanying OBSERVATIONS.json retains the actual paths, hashes and raw/git object identities. The manifest itself is bound by the exact commit and this report, not by a circular self-hash.
+
+M's unchanged frozen source hash is 566ce2691477e814a2ef3878236238ea0ed4091f8b63d4bbd054ae4fc8e42b32. Its complete first report remains 708f504bf1340ce231948aec10b301828b52cf20220dbab1b25fbf054c047d40. The adjacent retained response is 134db454d351972e4c19ec3fb4cb28c16931f385aa6d1c1b0e5a412a2d82d9fc. The integration does not replace or silently repair the historical source or its report.
+
+The older produced PDF remains d617dc40ae813e50894dede5ea8f73c113f20e7d52b218c74ee9cc3656bae014. Its assessment JSON is c7047e5aba71440863bb699a732b3663f2d72fd7e46ea064fdc059bee1eca071, its full report is 2f2906228ea44fcd9f59d2dbfd15e8af6c55b5a2d5cd2bf66fe0101076288119, and its existing score is 4.00. These values are preservation observations, not an assessment of the new source. The four-file-only delta also preserves the older native job/status and execution-authority records. I did not issue a new grant, retry or upload.
+
+4. Global definitions and dependency interfaces
+
+The manuscript globally fixes L>=1 and 0<rho<1, uses uniform probability mu for unqualified norms and expectations, defines the actual Doob kernel K(x,y)=P(x,y)h(y)/(Ph)(x), and defines gap=1-lambda_2. The reversible conjugate and positive spectrum are established there. Thus the added lemma's abbreviated assumptions inherit a fixed finite critical exponent and a valid second eigenvalue. Its use of L2(mu), positivity and the actual stationary measure is consistent with the existing definitions.
+
+The admissibility equation continues to require stationary floor, stationary critical cap and exact labelled Walsh matching through min(L,floor(C sqrt(L))). It does not assign those marginals to the weighting density. The positive-background J theorem still assumes a fixed lower bound on the energy-normalized potential; the two-level consequence still derives its own b/2 minimum from its floor. K/L still refute a universal derivation of that minimum from the original assumptions. None is silently broadened.
+
+The integrated K construction retains its exact three levels and balance equation, energy normalization, rare annulus and binomial estimates. Its eventual assertions and finite constant filling are unchanged. The exact L construction still first raises the floor to b1=(1+b)/2, removes the low Walsh coefficients exactly and reconstructs the unique positive solution of hPh=w along a positive path. The inverse-map lemma retains strict convexity/coercivity, actual differentiation through I+K, the signed-row resolvent estimate and the O(L) sup-norm factor. No approximate marginal equality is promoted to exactness without reconstruction.
+
+The new proof's 'precursor H' is read as the precursor used in that exact construction, hence with the b1 slack just specified in its preceding proof. It does not select an unrelated K family with insufficient correction slack. The general ratio estimates themselves do not depend on the numerical choice of beta. The preceding L proof expressly constructs tilde h before renaming it h in its proposition; the new theorem's tilde notation identifies that same constructed sequence. These are coherent interfaces, not new hypotheses.
+
+5. Fidelity and analytic correctness of the inserted M material
+
+integration-M.tex occurs as an exact contiguous fragment in the full manuscript. Its three new labels are unique, and every reference appearing in the fragment resolves to an existing label. No duplicate labels were found in the full source. This is a static textual check, not evidence that TeX has compiled or that rendered references/pages are correct.
+
+The criticalsandwich lemma preserves the two distinct operations from M. First, s'=(1+rho)/(2rho), 2s'=1+1/rho and the exact 2-to-2s' hypercontractive endpoint for Q=P_sqrt(rho) yield ||Q M_v Q||<=||v||_s by Holder. Second, the actual reversible conjugate S=M_sqrt(U) P M_sqrt(U), U=H/(PH), factors as XX* with X=M_sqrt(U)Q. Both factors are invertible, so X^(-1)SX=X*X=Q M_U Q. This gives full ordered spectral equality before the operator-norm/min-max comparison to P. No stationary mean-zero spaces are incorrectly identified and no condition-number estimate is required. Multiplicity of rho is harmless. The added bibliography reference is exactly the classical Chapter 10.1 endpoint checked in M's first audit; no new hypercontractivity result is claimed.
+
+The vanishingminimumgap theorem is stated for the particular exactly matched family from exactvanishingminimum, not for every admissible potential or every vanishing-minimum family. It fixes rho,b,C and permits constants depending on fixed construction choices. The proof keeps the direct all-vertex bound H>=1-1_{x0}, P(y,x0)<=u and therefore PH>=1-u, including x0. It does not replace the exceptional low level or assume a uniform H minimum.
+
+The critical norm algebra is unchanged: ||H-1||_s<=alpha^(3/(4s))+delta^(1/s), ||H-PH||_s<=2d_L and ||U-1||_s<=2d_L/(1-u)=Delta_L. Energy normalization cancels from U. The L inverse stability estimate gives eta_L bounded by the stated O(L) factor times epsilon_L. Positivity transfers the potential comparison to its denominator, so the exact corrected ratio lies between exp(-2eta_L)U and exp(2eta_L)U. The estimate
+||Utilde-1||_s<=exp(2eta_L)Delta_L+exp(2eta_L)-1
+is therefore valid for the actual corrected chain, with no surrogate-density substitution.
+
+The exponential conclusion uses alpha<=a^L, u and delta exponentially small, log(k_L L^k_L)=o(L) and the linear inverse factor. For sufficiently large L, k_L>=1, so the displayed logarithm is well-defined; the theorem only asserts the exponential estimate eventually. Shrinking the fixed rate absorbs the subexponential and linear factors. Finite constant filling preserves every original constraint and the limit. The proof is complete at source level and remains faithful to the first M audit.
+
+6. N1 and changed claims/context
+
+M's retained first objection N1 is correctly implemented as epsilon_L<=exp(-cL+o(L)), followed by an explicit statement that no lower bound is asserted or needed. The actual earlier bound epsilon_L<=k_L L^k_L A1 exp(-cL) is still displayed. This is the required inequality correction, not an omitted error, rewritten verdict or numerical reassessment.
+
+The abstract replaces the old 'no collapse assertion' boundary with the now-proved result for this same exact family and immediately retains both general questions as open. The theorem map adds the particular-family classification and keeps the scopes of earlier results. The remaining-question paragraph explicitly distinguishes the new operator-norm classification from control of the unrestricted high block and the critical weighting endpoint. K's new forward reference points to the later proof, which also derives its precursor estimate; it does not grant exact matching to K itself. The L statement similarly identifies the later result without adding a three-level assertion.
+
+The model-assessment context correctly describes M as an additional source result, preserves full reports and objections, distinguishes source audits from this integration and from a future PDF, and explicitly excludes the already produced 8efcb73b/d617dc40 artifact. I located the actual frozen predecessor manuscript-window-v2-candidate.tex at 8efcb73b and confirmed the newer weak-relaxation/background/vanishing-minimum section identifiers are absent. The existing 4.00 assessment belongs to that earlier artifact alone.
+
+Correctness, originality and relevance remain separate. The manuscript calls the sandwich estimate classical and limits the programme contribution to the quantified application to its constructed family. No global priority, new physical gap, continuum limit or frontier-discovery claim is added. PR29=20/41 and TermSource=0 are not changed by the commit. The existing prior-source optional editorial observations, including the explicit density-premise repetition and forward-reference suggestion and the inherited Wang comparison qualification, remain preserved in their complete reports; they are not newly converted into blockers or grades here.
+
+7. Ordinary branch-push scope and workflow inspection
+
+Read-only remote lookup showed origin/codex/low-full-evidence-20261116 at 9793ef10dc87498beef1eda125b3fe21ef819508, exactly the parent of the accepted commit. Thus the intended pending push consists of the four new source files, not an uninspected chain of workflow changes. A live query found no open PR for that head branch, so the push is not presently a pull_request synchronize event for an existing main-targeted PR.
+
+All six tracked workflow definitions were inspected for triggers and are unchanged:
+- ci.yml and lean-build.yml trigger push only on main, and pull_request targeting main; ordinary push of the named non-main branch does not match. Lean also has a distinct manual dispatch, which is outside scope.
+- control-plane.yml restricts push to main with its own path filters; the proposed source push does not match.
+- validate-dashboard.yml has dashboard/script/workflow path filters; none of the four paths matches.
+- orchestrator.yml is scheduled/manual, not push-triggered. This audit does not promise that an unrelated pre-existing scheduled run cannot occur.
+- build-window-revision.yml has the named branch but a push path filter solely for its own workflow file. That file is unchanged; moreover its document job requires an actual authorized manual dispatch and remains pinned to 8efcb73b. No fresh workflow or retargeting is needed or allowed by this verdict.
+
+Accordingly the narrow ordinary push, under the observed ref/PR state and unchanged settings, does not trigger a build through these repository workflows. This is a static trigger analysis, not a claim that a push has occurred or a guarantee about undisclosed external hooks/service configuration. If another PR or workflow change is introduced before pushing, reassess that changed situation. Opening a main-targeted PR or pushing to main would have materially different triggers and is not covered. The exact audited SHA must be preserved; no squash/rebase or post-audit source edit inherits this verdict.
+
+8. Operational findings, limits and retention
+
+The staged/commit whitespace delta check completed without findings. Earlier preparation and fragment-EOF failures are documented by the author and remain separate historical evidence; I did not rerun them or convert them to mathematical test results. Git emitted an autocrlf warning during an initial no-index comparison; actual raw-file-to-HEAD blob checks confirm the current accepted representation nevertheless matches UTF-8/LF exactly. A future checkout may have a different text representation under local settings, so use the named raw/hash regime rather than assuming every checkout has identical bytes.
+
+Two initial read attempts used absent paths: root AGENTS.md and an incorrectly guessed predecessor filename. The actual CLAUDE.md and correct frozen predecessor filename were then read. Neither attempt modified the subject. No source-integrity failure resulted, and no hidden build was run.
+
+The manuscript has not been compiled or rendered. This report makes no claims about pagination, overflow, typography, visible PDF links, a fresh PDF hash, or exact rendered bibliography. No novelty search was repeated; the bounded primary-source basis is the previously retained M audit. No native publication prerequisites were changed, expired, or fabricated. Future document production and publication remain separate artifact-bound work.
+
+Complete report and supporting observations are retained under D:\Datos\the-eriksson-programme\autonomia\2026-11-17_grouped-gap-classification\. The frozen manuscript and all earlier reports remain unchanged. Final disposition is PASS for HEAD 5d2fbe898c379ec8125d393a51f4098ea3328370, source integration and preservation only, including the narrowly specified ordinary branch-push trigger assessment. No new blocking objection or required source repair was found.
