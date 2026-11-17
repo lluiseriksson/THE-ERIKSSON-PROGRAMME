@@ -1,0 +1,123 @@
+FIRST SOURCE-INTEGRATION AUDIT — GROUPED VANISHING-DENOMINATOR SUCCESSOR
+Date: 2026-11-17
+Verdict: PASS for the exact integration identified below.
+
+1. Exact subject and scope
+
+Frozen commit: a39783b310c915f6eed0c6e4ddcc9bbadad19673.
+Parent: 155ed59630867aba76628503c93ca1236c61d183.
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116.
+New manuscript: papers/stationary-weighting354/revision-vanishing-denominator-20261117/manuscript-vanishing-denominator-candidate.tex.
+Raw SHA256: e88be81044604c485097d12da94b40c9687ca795bb98a3d6a9b1b22e5174b444.
+Length: 128420 bytes; UTF-8 without BOM, LF, zero CR bytes.
+Raw unfiltered and committed Git blob: 810b2532c116228da4635c4030db14e78029d3c9.
+
+Fragment: papers/stationary-weighting354/revision-vanishing-denominator-20261117/VANISHING-DENOMINATOR-SECTION.tex.
+Raw SHA256: 9c0cf5622bf731bc6e1ea274ec83eb3268e3e23dbf5bcdd264cf8dddd69a6c8b.
+Length: 7575 bytes; UTF-8 without BOM, LF, zero CR bytes.
+Raw unfiltered and committed Git blob: 13529d8079cfc1f5dbf786ac1c62d653011c24b4.
+The complete fragment is an exact contiguous substring of the new manuscript.
+
+No blocking or nonblocking correction request was found. This is the first audit of Q's integration into this grouped source. It is not repeated scoring of Q, an audit of a rendered PDF, formal-machine verification, a global novelty certificate, acceptance or publication approval. Unchanged parts of the manuscript are not newly regraded.
+
+2. Role, prior context and boundary
+
+Auditor: separate Codex child-agent role /root/public354_commit_audit, in the same provider workflow as the parent fabricator. The interface identifies a Codex assistant role; exact serving model, backend revision and effective reasoning effort are not independently attested. No model alias is promoted to backend evidence. I have inherited programme context and earlier audit context, including the first analytic Q report and the preceding manuscript's integration. This is not blind review, human peer review, provider-independent verification or organizationally independent assessment.
+
+The repository charter's no-inbound audit boundary applies. The source was frozen at the named commit and no inbound follow-up arrived during this review. There is no PR or body for this task; a PR body capture/hash is inapplicable. Operations were limited to reading, git identity/status/diff inspection, raw hashes and lightweight textual checks, plus report/evidence retention outside the repository. No mathematical code, numerical evaluation, Lean, TeX, build, rendering, runtime, browser, UI or network action was used. No repository source, branch, state or old report was modified, and no disposable clone was created.
+
+The original Q proof and complete first report were already present in prior audit context; current exact bytes were checked and its scope/terminal findings inspected again. This review compares the new integrated proof and context against that frozen referent. It does not infer correctness solely from an earlier PASS label. External literature retrievals and searches are not repeated or claimed as this auditor's work.
+
+3. Predecessor and Q preservation
+
+Predecessor manuscript:
+  papers/stationary-weighting354/revision-form-comparison-20261117/manuscript-form-comparison-candidate.tex
+  SHA256 75fa1c567739909e61e4d32f38a3702d72ce27a0db739b5197327203d8f09a7e
+  119199 bytes; raw/committed blob 43a05fa9c506be522afec171e0f258f158a624c3.
+
+Frozen Q source from c2efb6bc669be6ed9dc43cb23b276fb26eafd05d:
+  papers/stationary-weighting354/research/2026-11-17-vanishing-denominator/CANDIDATE-Q.txt
+  SHA256 63cbfada07296f3764ab4953b8ed47f2f4e6923105741ef45a9b4c2e11851dac
+  12563 bytes; raw/committed blob fd5689b649137e0c6105006cbf7bf015d2e114e5.
+
+Complete first analytic report:
+  papers/stationary-weighting354/research/2026-11-17-vanishing-denominator/FIRST-ANALYTIC-AUDIT.txt
+  SHA256 0774ae9276609d9527aca42a3ad0053533738439b359c0ac9fb3668d7dd1a969
+  18828 bytes; raw/committed blob 723b1e17fc6b2ddcd46084f7abe631f3626f159b.
+
+All five checked files have no BOM, zero CR bytes and unfiltered raw Git hashes equal to their HEAD blobs. The subject commit adds exactly the new manuscript and fragment. It does not modify the prior manuscript, Q, its first report, older mathematical sources or old PDFs/reviews. The existing Q research manifest names the same candidate and report digests and records separate dependency/positioning artifacts. Those existing records are the referent for the assessment context's digest statement; this new two-file source directory is not yet a final publication packet.
+
+4. Complete delta and theorem interface
+
+The full old/new delta was inspected and retained as FULL-MANUSCRIPT-DELTA.diff. It adds the new vanishing-denominator section after the K/L/M family classification and before N's regularization section. It updates the abstract, theorem map, grouped-source list, remaining-question paragraph and Model assessments and review context. Existing K/L/M, N/O/P mathematical statements/proofs remain unchanged; the bibliography remains unchanged as well.
+
+The new theorem retains every fixed rho,b in (0,1), C>0, energy normalization and the original admissible density constraints. It states the explicit pointwise equivalents htilde(x0)~exp(epsilon L), Phtilde(x0)~exp(-epsilon L), pitilde(x0)->1 and Utilde(x0)~exp(2epsilon L). It bounds the sum of the stationary-density and actual-ratio L^s errors, and the maximum error over all ordered eigenvalues, by A exp(-aL) for some fixed finite A and positive a. Combining finitely many exponential estimates under one such A,a is legitimate; no numerical value or unchanged precursor rate is claimed. Constants and the threshold may depend on the fixed parameters.
+
+The introduction correctly distinguishes the preceding K/L/M family, with its uniformly positive denominator, from Q's opposite denominator defect. The precursor three-level construction is used only before correction; the theorem does not claim that exact reconstruction preserves three levels. It states the normalized pointwise phenomenon, so the refutation does not rest on a trivial change of overall potential scale.
+
+5. Concentration and geometric compression
+
+The full Bernoulli concentration argument remains in the integrated proof. It includes unequal parameters, gives the centered log-MGF's second derivative as a tilted Bernoulli variance at most 1/4, integrates for every real lambda, and uses exponential Markov at plus/minus 4t. Thus the quoted tails apply to the noise step from arbitrary x, where the output-coordinate negative indicators are independent but need not have identical parameters.
+
+The definitions p=(1-rho)/2, q=p+rho p, a0=(1+b)/2, delta=min(rho p/16,rho^2/16) and r0=2delta/rho agree with Q. The shell widths, centers and the strict threshold defining D are unchanged. r0<=p/8, q-p>=16delta and 1/2-q>=8delta imply disjoint shells below the uniform mean; r0<p-delta and q-2delta>p+delta imply the small ball is disjoint from both. The statement that the ball misses both shells therefore uses the already stated shell ordering, not just an unstated relation to A.
+
+The conditional mean pL+rho d(x), the B-to-A lower probability and the x0-to-B lower probability are retained. For d(x)/L>=r0, the lower-tail estimate excludes that point from D eventually. Together with the x0 bound it proves x0 in D contained in the open small ball. The strict threshold and its complement correctly handle equality cases. All these assertions are eventual, as required when 1-a0 is small but fixed.
+
+The displayed c is exactly Q's minimum of the six positive concentration exponents. Each margin is strictly positive under the chosen delta/r0. The uniform-measure shell/ball tails, x0 tails to A/D, complement-B tail and B-to-A lower bound are all retained with their proper factors one or two. The deterministic D region is not defined by a numerical classifier. Shell boundaries and the diagonal return to x0 remain covered by these exact bounds.
+
+6. All-region stationary floor and normalization
+
+The integrated potential is M on E=A union D, M^(-1) on B and one elsewhere, with epsilon=c/(16s), M=exp(epsilon L). These regions are disjoint. G=PH lies between M^(-1) and M, giving R=HG>=1 on E. On B, the transition into A gives R>=1-2exp(-cL)>=a0 eventually. On the complement, H=1 and x is not in D, so P(x,B)<=1-a0 and G>=1-P(x,B)>=a0. Thus the source still proves the floor everywhere, not only at typical points or on one shell.
+
+At x0 the full three-region split is retained, with
+  P(x0,B)<=MG(x0)<=1+2M exp(-cL)+2M^2 exp(-cL).
+The small total mass of E includes return to x0 itself. Since 2epsilon<c, MG(x0)->1. This preserves G(x0)~M^(-1), R(x0)->1 and H/G(x0)~M^2 before normalization. No M-weighted tail was dropped in the compression.
+
+The d_(r,L) bound retains the factor two for E=A union D and the separate low-shell term. Noise contraction gives the same bound for G-1. Holder at 2s yields d_(2s)(1+d_(2s))+d_(2s). Because c/(2s)-epsilon>0, the R error and then |Z-1| decay exponentially. Dividing R by Z gives exponential stationary L^s closeness and moment convergence to one. Since R>=a0 and Z->1, pi>=b1=(a0+b)/2>b eventually. This is the explicit slack for the exact correction. Dividing H and G by sqrt(Z) preserves the pointwise equivalents.
+
+The proof has not used the stationary moment bound as a substitute for a potential bound or silently assumed Z=1 before normalization. Energy normalization is defined explicitly by h=H/sqrt(Z).
+
+7. Small-denominator ratio control and the full-spectrum lemma
+
+The new proof emphasizes the valid bound G>=M^(-1) and expressly excludes a fixed denominator floor. It then derives
+  ||U-1||_s<=2M d_s
+    <=2*2^(1/s)exp(-(c/s-2epsilon)L)
+       +2exp(-(c/s-epsilon)L).
+The factors and powers of M match Q. With epsilon=c/(16s), both rates are positive. The rare support compensates for the small denominator; the preceding M family's near-one bound is not imported.
+
+The retained criticalsandwich lemma applies to any positive potential H and its actual U=H/PH. Its conclusion controls every ordered eigenvalue by ||U-1||_s, with the proof using S=M_sqrt(U)PM_sqrt(U), X=M_sqrt(U)P_sqrt(rho), and T=X*X similar to S. Its Holder/hypercontractive estimate acts on the entire L^2 space. Those statement/proof bytes are unchanged from the predecessor. Replacing Q's repeated derivation by this internal reference is faithful and introduces no low-sector, fixed condition-number or common-stationary-measure assumption.
+
+Consequently the precursor spectrum is controlled for the actual chain, and the same lemma can be used after reconstruction once the actual corrected ratio error is proved. The integration does not infer a spectral claim from stationary-density closeness alone.
+
+8. Exact correction and nonlinear inverse stability
+
+The finite correction e_L subtracts the actual nonconstant Walsh coefficients through k_L. Its coefficient bound is ||pi-1||_1, and the count k_L L^(k_L)=exp(o(L)) for all sufficiently large L. Thus xi_L is exponentially small after reducing the fixed rate. Orthogonality gives exact mean one and zero labelled coefficients, rather than approximate matching. The floor along the segment pi+tau e_L remains b because pi>=b1>b and xi_L tends to zero; the inverse lemma's path parameter has its usual segment range 0<=tau<=1. The terminal density's L^s closeness supplies the cap eventually.
+
+The unchanged inversestationary lemma provides existence and uniqueness of the actual positive inverse and its multiplicative estimate. On a 2^L-point cube, its constant becomes exactly
+  [ceil((L+log2(1/b))/2)+2]/(2b)
+times xi_L, as displayed. This agrees with Q and source L, including both half factors and 1/b. The initial inverse is the normalized precursor by uniqueness. The lemma's resolvent proof uses nonnegative spectrum rather than a gap premise, so this application is not circular.
+
+The integrated proof preserves the essential multiplicative transfer through P: relative exp(plus/minus eta_L) bounds on htilde/h imply the same bounds on Phtilde/Ph. A small absolute correction would not suffice for an exponentially small denominator, but it is not what is used here. eta_L is exponentially small after absorbing its polynomial factor and the subexponential Walsh count. Therefore all pointwise equivalents in the theorem follow.
+
+The ratio comparison exp(-2eta_L)U<=Utilde<=exp(2eta_L)U and the ensuing inequality
+  ||Utilde-1||_s<=exp(2eta_L)||U-1||_s+exp(2eta_L)-1
+retain the exact factors from Q. These prove the corrected ratio bound. Combining it with criticalsandwich yields the uniform-in-index full-spectrum bound. The proof explicitly allows a smaller positive final exponential rate. Its final constant-potential filling handles every early dimension, including those where k_L=L, without changing limits. No extra original hypothesis is introduced or removed.
+
+9. Surrounding claims, citations and assessment provenance
+
+The abstract and theorem map add the new small-denominator family, its unbounded pointwise ratio and its good full spectrum. They distinguish it from the older low-potential family. The remaining-question paragraph explains that a single small-denominator point is not an aggregate killed-return or cut-flow obstruction. It leaves the unrestricted stationary gap and critical weighting moment questions open. N's exact-matching smoothing obstruction, O's restricted universal smoothing interval and P's correctly directed comparison failures remain unchanged; Q is not used to strengthen them silently.
+
+The new section supplies its complete concentration proof and calls it classical. Its sandwich and inverse inputs are existing internal lemmas with their original citations. The bibliography remains unchanged, and no new global priority or physical Yang--Mills claim is inserted. Q's separate primary-source positioning record and its retrieval limitations remain in the research packet; the current assessment text refers to preservation of that record, not to a fresh theorem-page reading by this auditor. This audit does not certify literature completeness or novelty.
+
+Model assessments and review context correctly names the frozen Q source commit c2efb6bc and the original no-objection source verdict. It describes the checked scope and explicitly says that the source verdict does not assess this integration or a PDF. The source/report digests in the existing Q manifest agree with current bytes. The old separately assessed 8efcb73b PDF is now correctly excluded from coverage of E--Q. No previous numerical grade is transferred. Shared provider, inherited context and unattested backend limitations remain explicit. Historical adverse results and M's earlier notation correction remain preserved.
+
+10. Static checks, objections and final disposition
+
+OBSERVATIONS.json records five raw identities, their matching committed blobs, exact fragment containment and the full-source textual checks. The label/ref/cite scan found no duplicate labels, missing ref/eqref target or missing citation key. git diff --check for the exact commit reported no whitespace defect. These checks certify their stated textual predicates only; no compilation, rendering or re-audit of unchanged mathematics is claimed.
+
+The full delta and raw observations are retained with this report. The current revision directory contains the manuscript and fragment; no complete reviewed publication package, exact new PDF, workflow run, native submission, receipt or public release was part of this task. This verdict does not authorize a build, push, PR, merge, submission or publication.
+
+Blocking objections: none found.
+Nonblocking correction requests: none found.
+
+Accepted exact integration: a39783b310c915f6eed0c6e4ddcc9bbadad19673, manuscript raw SHA256 e88be81044604c485097d12da94b40c9687ca795bb98a3d6a9b1b22e5174b444. The new proof faithfully integrates Q's geometry, floor, ratio control, exact correction, inverse stability and full-spectrum scope. Complete first report and evidence are retained under D:\Datos\the-eriksson-programme\autonomia\2026-11-17_grouped-vanishing-denominator. The auditor leaves repository source, state and all earlier reports unchanged.

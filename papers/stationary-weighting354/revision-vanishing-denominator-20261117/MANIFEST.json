@@ -1,0 +1,221 @@
+{
+  "schema": "grouped-vanishing-denominator-v1",
+  "source_commit": "a39783b310c915f6eed0c6e4ddcc9bbadad19673",
+  "raw_hash_regime": "raw bytes without normalization; new source UTF8noBOM/LF",
+  "files": [
+    {
+      "file": "VANISHING-DENOMINATOR-SECTION.tex",
+      "bytes": 7575,
+      "sha256": "9c0cf5622bf731bc6e1ea274ec83eb3268e3e23dbf5bcdd264cf8dddd69a6c8b"
+    },
+    {
+      "file": "FIRST-INTEGRATION-AUDIT.txt",
+      "bytes": 16295,
+      "sha256": "3e9a40039a0dc896264d8f9a87db99fabdd9a2160054ff8a48a40ac389a54422"
+    },
+    {
+      "file": "manuscript-vanishing-denominator-candidate.tex",
+      "bytes": 128420,
+      "sha256": "e88be81044604c485097d12da94b40c9687ca795bb98a3d6a9b1b22e5174b444"
+    },
+    {
+      "file": "NEXT-ACTUAL-GAP-STEP.json",
+      "bytes": 4320,
+      "sha256": "2144d205905653618649fc42c53d6ba5b2647b5111c62ea991a94cae5a48336c"
+    },
+    {
+      "file": "README.txt",
+      "bytes": 3584,
+      "sha256": "6fc7aac6469b91d181199df373d7f508237897625d426e9d27427191daeee902"
+    }
+  ],
+  "dependencies": [
+    {
+      "sha256": "3c3e719331b81c9f412374be8ea49d9e02f3cf860472979b7f7d127843a2986d",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-positive-background-gap/CANDIDATE-J.txt",
+      "bytes": 9820
+    },
+    {
+      "sha256": "56b71e33b175e31c669453a4ca1dbb48bd6bd972a7c152ea2158b108d877b3ea",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-positive-background-gap/FULL-FIRST-ANALYTIC-AUDIT-J.txt",
+      "bytes": 16354
+    },
+    {
+      "sha256": "134db454d351972e4c19ec3fb4cb28c16931f385aa6d1c1b0e5a412a2d82d9fc",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/AUDIT-RESPONSE-M.txt",
+      "bytes": 959
+    },
+    {
+      "sha256": "57e5b9491cc2593c28852d06445b64673e258007cc84b196450c164150eb92e0",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-K.txt",
+      "bytes": 7868
+    },
+    {
+      "sha256": "cbe65eef9bff034561564bed05f2b777a181d73b9a24491324408b26b78a49cc",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-L.txt",
+      "bytes": 10586
+    },
+    {
+      "sha256": "566ce2691477e814a2ef3878236238ea0ed4091f8b63d4bbd054ae4fc8e42b32",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-M.txt",
+      "bytes": 8206
+    },
+    {
+      "sha256": "f6d74ff79c3c03723dc64b273ac71656224b1a10d1fc1447174e9e2570de661f",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/FULL-FIRST-ANALYTIC-AUDIT-K.txt",
+      "bytes": 15530
+    },
+    {
+      "sha256": "0a855ef11d3115bed54a10a3c644bb62a34ae4743330cd7f9d876ec1d8c892d6",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/FULL-FIRST-ANALYTIC-AUDIT-L.txt",
+      "bytes": 19261
+    },
+    {
+      "sha256": "708f504bf1340ce231948aec10b301828b52cf20220dbab1b25fbf054c047d40",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/FULL-FIRST-ANALYTIC-AUDIT-M.txt",
+      "bytes": 16561
+    },
+    {
+      "sha256": "4a83f1b8457fff865c10163ebb9fcd18d87f17b9c15fe142a6d4dec0d9e0ed75",
+      "repository_path": "papers/stationary-weighting354/revision-background-20261117/FULL-FIRST-SOURCE-AUDIT.txt",
+      "bytes": 17067
+    },
+    {
+      "sha256": "be768390e9607a2cedc29315ff204aded526ce3364970a2f4f1650953db1cbfe",
+      "repository_path": "papers/stationary-weighting354/revision-background-20261117/manuscript-background-candidate.tex",
+      "bytes": 74604
+    },
+    {
+      "sha256": "697007f3c57fd9f7e7df7940ab49cc3af63d32cec0cd5ffc79a47ee58f8a7d01",
+      "repository_path": "papers/stationary-weighting354/revision-exactminimum-20261117/FULL-FIRST-SOURCE-AUDIT.txt",
+      "bytes": 19380
+    },
+    {
+      "sha256": "746115b44fffa291f37e0c0e9be8b78bcb0bc339074f845cabd16ad9fb494960",
+      "repository_path": "papers/stationary-weighting354/revision-exactminimum-20261117/MANIFEST.json",
+      "bytes": 3213
+    },
+    {
+      "sha256": "9a17337ad7eaa14703f4af3feb8a8b0ddd3345a3c648b902b55910927a3af7af",
+      "repository_path": "papers/stationary-weighting354/revision-exactminimum-20261117/manuscript-exactminimum-candidate.tex",
+      "bytes": 85595
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/revision-gapclassification-20261117/manuscript-gapclassification-candidate.tex",
+      "bytes": 91615,
+      "sha256": "6b565f512d0bb10ecf74ad6874096c954f2fbe88e7a42991a0bcb448c4f0d1de"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/revision-gapclassification-20261117/FIRST-INTEGRATION-AUDIT.txt",
+      "bytes": 17013,
+      "sha256": "033eda0ec313ec90684c6ba1f2a1d74d0adabd17999be9d0cca02ea8cb8062cf"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/revision-gapclassification-20261117/MANIFEST.json",
+      "bytes": 4629,
+      "sha256": "c203479d09811f60a8ae925054c0118386bd7241d71951bbf2b04dfe30a8225d"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-smoothing-matching/CANDIDATE-N.txt",
+      "bytes": 10633,
+      "sha256": "a3f1573a13304f5cbf8c2eec988d9fa3ab052bada9e4966eea83b5de0dc948e9"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-smoothing-matching/FULL-FIRST-ANALYTIC-AUDIT.txt",
+      "bytes": 18882,
+      "sha256": "3c6a5f7a97d44e2a96263d643e883cd164e056f46350bede5520dd2144057e8b"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-smoothing-matching/MANIFEST.json",
+      "bytes": 1526,
+      "sha256": "1d2ef262790cebd360c49748454660986aced64dfd750a8d184a4918ba361182"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/revision-regularization-20261117/manuscript-regularization-candidate.tex",
+      "bytes": 99397,
+      "sha256": "a94dbf1aca3738564894cacceaeba81abdeee35d3fde4f0dec281a09adf3508d"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/revision-regularization-20261117/FIRST-INTEGRATION-AUDIT.txt",
+      "bytes": 15934,
+      "sha256": "8e006db9cfd67fcb6040b3b662bcdff505b468113433714e4cb91028b1056499"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/revision-regularization-20261117/MANIFEST.json",
+      "bytes": 5965,
+      "sha256": "0a39a98fd690451d3423c329401f86f7736b77fbf2d42a6f084b083a5bd2c714"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-density-regularized-gap/CANDIDATE-O.txt",
+      "bytes": 13183,
+      "sha256": "0eef71ebd956d1c92bbecbe342607b48cf0c0aa6709a6defc924203642d300e5"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-density-regularized-gap/FIRST-ANALYTIC-AUDIT.txt",
+      "bytes": 19613,
+      "sha256": "554752e9a0c1654ee1922181bf8b6c390b4fefcfaab25835958032cf336a292c"
+    },
+    {
+      "sha256": "eb5d3d179a13880a914ea719348ceacdae3bd2075d470c2e544a00056df73dda",
+      "bytes": 111001,
+      "repository_path": "papers/stationary-weighting354/revision-density-spectrum-20261117/manuscript-density-spectrum-candidate.tex"
+    },
+    {
+      "sha256": "222f93dedc024547e4a06c4553fe59586ef5ef2022c743a6c3d98bd14c11ea54",
+      "bytes": 16741,
+      "repository_path": "papers/stationary-weighting354/revision-density-spectrum-20261117/FIRST-INTEGRATION-AUDIT.txt"
+    },
+    {
+      "sha256": "f8d19d04e964f32c5708c7fded0e531cb270d03f3028326d3eb9cc82674f29a5",
+      "bytes": 7157,
+      "repository_path": "papers/stationary-weighting354/revision-density-spectrum-20261117/MANIFEST.json"
+    },
+    {
+      "sha256": "0a253b00f018e7aebc61b31d519207fbbd90c35ba2d402b4f20efad27487b6d8",
+      "bytes": 13163,
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-form-comparison-obstruction/CANDIDATE-P.txt"
+    },
+    {
+      "sha256": "d902320604af47f2013a48cd7986968cfc006268431ea985436e039172140c78",
+      "bytes": 19140,
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-form-comparison-obstruction/FIRST-ANALYTIC-AUDIT.txt"
+    },
+    {
+      "sha256": "75fa1c567739909e61e4d32f38a3702d72ce27a0db739b5197327203d8f09a7e",
+      "repository_path": "papers/stationary-weighting354/revision-form-comparison-20261117/manuscript-form-comparison-candidate.tex",
+      "bytes": 119199
+    },
+    {
+      "sha256": "0639a1fe8d280e81c367683715bef2f551a29686265b928eb184e9763c023224",
+      "repository_path": "papers/stationary-weighting354/revision-form-comparison-20261117/FIRST-INTEGRATION-AUDIT.txt",
+      "bytes": 15960
+    },
+    {
+      "sha256": "4e424813073aa0999e0ea0ce604c626550a7375df429a556280515148925bff5",
+      "repository_path": "papers/stationary-weighting354/revision-form-comparison-20261117/MANIFEST.json",
+      "bytes": 8368
+    },
+    {
+      "sha256": "63cbfada07296f3764ab4953b8ed47f2f4e6923105741ef45a9b4c2e11851dac",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-denominator/CANDIDATE-Q.txt",
+      "bytes": 12563
+    },
+    {
+      "sha256": "0774ae9276609d9527aca42a3ad0053533738439b359c0ac9fb3668d7dd1a969",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-denominator/FIRST-ANALYTIC-AUDIT.txt",
+      "bytes": 18828
+    },
+    {
+      "sha256": "b565aa6062ef18f444dbc2c5079f912e1d250e5a8af2ed9f217817d951efb918",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-denominator/PRIMARY-SOURCE-POSITIONING.txt",
+      "bytes": 1921
+    },
+    {
+      "sha256": "6c37f9480ad895b8d70c505d66ccb90af7d71f7a7bfe91baa51e0b582d58ecf5",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-denominator/MANIFEST.json",
+      "bytes": 3019
+    }
+  ],
+  "assessment": "First exact source integration PASS; no new PDF, score, peer review or publication",
+  "new_mathematical_advance": false
+}
