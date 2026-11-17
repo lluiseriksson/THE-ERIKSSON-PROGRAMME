@@ -1,0 +1,197 @@
+LOW-POTENTIAL EXCISION WITH QUANTIFIED GAP TRANSFER
+Research note R, 2026-11-17. One continuing question: stationary-doob-gap.
+Base manuscript: a39783b310c915f6eed0c6e4ddcc9bbadad19673, raw SHA256
+e88be81044604c485097d12da94b40c9687ca795bb98a3d6a9b1b22e5174b444.
+
+1. Scope and outcome
+
+This note derives a uniformly transient low-potential region from the original
+stationary floor, and eliminates it by the classical trace-chain construction.
+It gives an exact effective kernel and two-sided quantitative gap transfer.
+It does not prove the remaining core gap, derive a positive minimum of h on
+the whole cube, or solve the stationary-gap conjecture. The classical trace
+construction is not claimed as novel. This is a bounded analytic reduction,
+not a separate paper, PDF assessment, formal verification or publication.
+No original hypothesis has been removed. In particular, moving the unresolved
+gap to a trace chain is not counted as proving that gap or removing a premise.
+
+2. Original model and the region that can actually be controlled
+
+Let L>=1, 0<rho<1, and let mu be uniform probability on {-1,1}^L.
+Write P=P_rho, h>0, g=Ph, E_mu(hg)=1, pi=hg>=b, 0<b<1,
+nu=pi mu, U=h/g. The actual reversible kernel is
+  K(x,y)=P(x,y)h(y)/g(x).
+Its self-adjoint conjugate on L2(mu) is S=M_sqrt(U) P M_sqrt(U).
+It is a positive semidefinite contraction, with Perron vector sqrt(pi).
+Indeed conjugacy gives the Markov contraction, and P has Walsh eigenvalues
+rho^|A|>0. The stationary density cap E pi^s<=2 and exact labelled matching,
+s=(1+rho)/(1-rho), may be imposed but are not needed for Sections 2--5.
+
+Fix 0<a<=b/4, put B={h<a}, C=B^c and theta=a^2/b<=b/16<1/16.
+The constant Walsh coefficient in E hPh gives (E h)^2<=1, so E g=E h<=1.
+Consequently
+  nu(B)=E[1_B h g]<=a E g<=a,
+  mu(B)<=nu(B)/b<=a/b<=1/4.
+Thus C is nonempty and has at least two states, including when L=1.
+On B the original floor gives
+  U=h^2/pi<=a^2/b=theta.
+For A=S_BB acting on the B coordinate space this implies
+  0<=A<=theta I.
+Proof: <f,Af>=<sqrt(U)f,P sqrt(U)f><=||sqrt(U)f||^2<=theta||f||^2.
+This is an actual killed-operator bound derived from the floor, not inferred
+from rare mass. It is for small h, not small g. Confusing these two regions
+would incorrectly extend this result to the unresolved high-ratio set.
+In the unnormalized L2(nu|B) space the same bound holds for K_BB by conjugacy.
+For a chain started from nu conditioned on B, if B is nonempty, it follows
+that P(T_C>n)<=theta^n and E T_C<=1/(1-theta), n>=0, where T_C is the first
+entrance time in C. This averaged assertion is not a worst-start bound.
+Indeed P(T_C>n)=<1_B,K_BB^n 1_B>_nu/nu(B).
+
+3. The trace chain, not the reflected or killed chain
+
+If B is nonempty define
+  K^C=K_CC+K_CB(I-K_BB)^(-1)K_BC.
+The inverse is its convergent nonnegative Neumann series. This is the chain
+observed at successive visits to C, allowing immediate C-to-C steps. Its
+rows sum to one: (I-K_BB)1_B=K_BC 1_C, and the original row-sum identity on C
+then applies. It is reversible for nu_C=nu(.|C). Conjugating by sqrt(pi) on C
+(the constant normalization of nu_C cancels) gives
+  T=S_CC+D^*(I-A)^(-1)D,   D=S_BC.
+The operator is positive semidefinite, since S_CC>=0 and the added term is
+positive. The chain is irreducible because P and h are strictly positive.
+Its simple eigenvalue 1 has eigenvector sqrt(pi)|C, and all other eigenvalues
+lie in [0,1). Put t=gap(K^C) and gamma=gap(K). Both lie in (0,1].
+When B is empty all formulas have their empty-block interpretation and K^C=K.
+
+There are useful uniform operator bounds beyond invertibility. From S^2<=S,
+the B diagonal block gives
+  D D^*<=A-A^2=A(I-A).
+Set H=(I-A)^(-1)D and R=(I-A)^(-1/2)D. Congruence therefore yields
+  H H^*<=A(I-A)^(-1)<=theta/(1-theta) I,
+  R R^*<=A<=theta I.
+In particular
+  ||H||^2<=theta/(1-theta),
+  0<=T-S_CC=R^*R<=theta I.
+These are statements about the exact original S and its actual trace. No
+operator-norm claim is made for a surrogate selected independently of h.
+
+4. Gap comparison with all variance normalizations retained
+
+The quantitative conclusion is
+  (1-theta)t/(1+t) <= gamma <= t.                         (R1)
+In particular (15/32)t <= gamma <= t. Thus uniform full gaps in this original
+family and in its derived trace family are equivalent, with fixed constants.
+This equivalence alone does not prove either one.
+
+Here is a self-contained variational proof. Work with functions in L2(nu)
+and its B,C orthogonal decomposition, with restricted but UNNORMALIZED
+measures nu|B and nu|C. Let L0=I-K. For a function phi on C its harmonic
+extension is e(phi)=(H_K phi,phi), where H_K=(I-K_BB)^(-1)K_BC.
+The operator norm bounds for H carry to these spaces by conjugacy.
+Completing the square in the quadratic form gives, for w supported on B,
+  <e(phi)+w,L0(e(phi)+w)>_nu
+    =<phi,(I-K^C)phi>_(nu|C)+<w,(I-K_BB)w>_(nu|B).       (R2)
+This follows by expanding: the B harmonic equation cancels both cross terms,
+and the remaining C block is the Schur complement. Hence no additive
+error, uncontrolled excursion term or changed stationary variance is dropped.
+
+For any f subtract the constant c=E_(nu_C) f|C. Write f-c=e(phi)+w with
+phi=f|C-c centered for nu_C. Let E=<f,(I-K)f>_nu. By (R2),
+  E>=t||phi||_(nu|C)^2+(1-theta)||w||_(nu|B)^2.
+Also ||e(phi)||_nu^2<=||phi||^2/(1-theta). Thus
+  Var_nu(f)<=||f-c||_nu^2
+     <= (||phi||/sqrt(1-theta)+||w||)^2
+     <= [1/((1-theta)t)+1/(1-theta)] E,
+where the last step is scalar weighted Cauchy--Schwarz. This proves the
+lower bound in (R1), including phi=0 or w=0.
+
+For the upper bound choose a nonconstant t-eigenfunction phi of K^C,
+centered for nu_C. Set f=e(phi). Its energy equals t||phi||_(nu|C)^2.
+For every constant c,
+  ||f-c||_nu^2>=||phi-c||_(nu|C)^2>=||phi||_(nu|C)^2.
+Minimizing in c proves Var_nu(f)>=||phi||_(nu|C)^2. The full-chain Rayleigh
+quotient is therefore at most t. This proves gamma<=t without an assumption
+that the harmonic extension has global mean zero.
+
+5. Exact effective base kernel and the obstruction to importing J
+
+For B nonempty let
+  V=diag(1/U|B)-P_BB,
+  P_eff=P_CC+P_CB V^(-1)P_BC.                            (R3)
+V is positive definite. In fact diag(1/U)>=theta^(-1)I and ||P_BB||<=1;
+its inverse is nonnegative, as can also be seen from
+  V^(-1)=M_U (I-P_BB M_U)^(-1)
+on B, with the nonnegative series converging since ||P_BB M_U||<=theta.
+The block identity g_B=P_BC h_C+P_BB h_B gives V h_B=P_BC h_C.
+Consequently
+  P_eff h_C=g_C,
+  K^C=M_(1/g_C) P_eff M_(h_C).                         (R4)
+Formula (R3) follows as well by inserting the Doob factors in the trace
+series. P_eff is symmetric and positive semidefinite: P_CC is positive
+semidefinite and the other summand is a positive congruence. It is strictly
+positive entrywise because P_CC is.
+
+P_eff is generally SUB-Markov, not the Boolean noise kernel on a smaller
+cube. To check the asserted direction, write v=V^(-1)P_BC 1_C. Since
+  V1_B-P_BC1_C=(1/U|B)-1_B>=0
+and V^(-1) is nonnegative, 0<=v<=1_B. Therefore
+  P_eff1_C=P_CC1_C+P_CB v<=P_CC1_C+P_CB1_B=1_C.
+If B is nonempty, U<1 on B, strict positivity implies v<1_B and hence
+P_eff1_C<1_C pointwise. Thus one must not use P_eff1=1, its uniform
+stationarity, Boolean hypercontractivity or the Walsh matching identities
+of P as if they survived unchanged on C. Although h_C>=a is now true,
+the positive-background theorem J is NOT directly applicable to (R4).
+
+With mu_C=mu(.|C), the trace stationary density is
+  pi_C=pi|C * mu(C)/nu(C).
+If the original critical cap holds then
+  pi_C>=b mu(C)/nu(C)>=3b/4,
+  E_(mu_C) pi_C^s
+     =mu(C)^(s-1) nu(C)^(-s) E_mu[1_C pi^s]
+     <=2/(1-a)^s.
+These inherited estimates do not restore exact labelled matching on the
+conditioned state space, which need not even be a cube. They do not close
+the gap proof. No extra moment, background-kernel inequality or trace gap
+is being reclassified as an original hypothesis already established.
+
+6. Controls, failures, and the next bounded step
+
+Q's special point has h(x0)->infinity and g(x0)->0, so it lies in C for
+large L; this proof does not delete the unresolved high-ratio mechanism.
+The already established good full gaps for Q and P imply good trace gaps
+by gamma<=t, not by new numerics or an invented pointwise denominator floor.
+K/L have low h at rare sites, but this note uses the floor to prove their
+low-h killed control; it does not deduce the full gap from rare mass alone.
+
+The tempting attempted shortcut was: remove B, use h_C>=a, apply J. It fails
+because P_eff1<1 when B is nonempty; its required background and noise
+inequalities have not been established. This failed inference is retained.
+The exact open task is a conductance or energy/variance estimate for (R3)--(R4)
+derived from the original full-cube floor/cap/matching identities. Replacing
+it with the premise gap(K^C)>=c would merely rename the original problem.
+R is useful for disposing of low-h excursions and locating the remaining
+obstruction, but is conservatively not counted as a substantial resolution
+of the high-ratio route. The nonadvancing-route counter becomes 2, following
+the Q integration unit. After one more nonadvancing unit change mechanism
+or identify the concrete mathematical obstruction. Only one question remains.
+
+7. Primary-source positioning and assessment context
+
+Classical source consulted: D. Aldous and J. A. Fill, Reversible Markov Chains
+and Random Walks on Graphs, unfinished monograph (2002; recompiled 2014),
+Section 2.7.1, printed page 47, chain watched only on a subset:
+https://www.stat.berkeley.edu/users/aldous/RWG/book.pdf
+The retrieved text identifies successive return times and the induced
+transition law; Section 2.7 distinguishes watched, restricted and collapsed
+chains. A follow-up page-range fetch timed out; that failure is not evidence
+against the source. The formulas and inequalities above are proved here.
+This limited positioning check does not certify priority for (R1), the
+Schur complement or this application. No new general trace theorem is claimed.
+
+Authoring environment: Codex in this chat, analytical derivation and local
+text/git/hash operations only. No mathematical code, Lean, numerical solver,
+TeX, PDF rendering, Colab runtime or GitHub Actions execution was used.
+First exact-source assessment, if obtained, is a distinct retained report;
+there is no numerical score or inherited PDF verdict. Shared context and
+provider do not establish independent peer review. No physical Yang--Mills
+or continuum conclusion is made; PR29 remains20/41 and TermSource0.
