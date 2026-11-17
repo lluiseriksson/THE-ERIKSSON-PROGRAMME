@@ -1,0 +1,147 @@
+\subsection{Exact matching does not restore the potential minimum}
+The approximate matching in Proposition~\ref{vanishingminimum} can be
+corrected exactly while preserving its exceptional small potential value.
+We first establish the needed finite-dimensional stability estimate.
+Positive matrix scaling is classical; see the setup in Lee's
+lecture~\cite{lee2016}. The arguments needed here are included in full.
+
+\begin{lemma}\label{inversestationary}
+Let $P$ be a strictly positive symmetric stochastic matrix on $n$ points
+with uniform probability $\mu$. Every strictly positive mean-one density
+$w$ has a unique positive solution of $hPh=w$. If $P$ is also positive
+semidefinite, and $w_\tau=w_0+\tau e\geq b_0>0$ for $0\leq\tau\leq1$
+with $\E e=0$, the corresponding solutions satisfy
+\[
+ \|\log h_1-\log h_0\|_\infty
+ \leq\frac{\lceil\tfrac12\log_2(n/b_0)\rceil+2}{2b_0}
+       \|e\|_\infty.
+\]
+\end{lemma}
+\begin{proof}
+For $v\in\mathbb R^n$, consider
+\[
+ F_w(v)=\frac12\sum_{x,y}\mu(x)P(x,y)e^{v_x+v_y}
+              -\sum_x\mu(x)w(x)v_x.
+\]
+The diagonal exponential terms make the Hessian positive definite;
+all other exponential terms are convex. Thus $F_w$ is strictly convex.
+Writing $m=\max_x v_x$ and
+$d=\tfrac12\min_x\mu(x)P(x,x)>0$, we have
+$F_w(v)\geq de^{2m}-m$, because $\sum\mu w=1$.
+Every sublevel set therefore has its maximum coordinate bounded above.
+If any coordinate tends to $-\infty$ while all coordinates are bounded
+above, its strictly positive linear weight forces $F_w\to\infty$.
+Thus sublevel sets are bounded, and a unique minimizer exists. Its
+stationary equation is $e^{v_x}(Pe^v)(x)=w(x)$, proving existence and
+uniqueness with $h=e^v$. The positive definite Hessian and the implicit
+function theorem give smooth dependence along the path $w_\tau$;
+existence at every parameter and uniqueness join the local solutions.
+
+For the actual kernel $K(x,y)=P(x,y)h(y)/(Ph)(x)$ with stationary
+$\nu=w\mu$, positive semidefiniteness of $P$ implies that the spectrum
+of $K$ lies in $[0,1]$. Let $\nu_* =\min_x\nu(x)$, $A=\nu_*^{-1/2}$,
+$m=\lceil\log_2 A\rceil$ and $T=(I-K)/2$.
+The absolute row sum of $T$ is $1-K(x,x)\leq1$, whereas its
+$L^2(\nu)$ operator norm is at most $1/2$. Hence
+\[
+ \|T^j\|_{\infty\to\infty}\leq\min\{1,A2^{-j}\}.
+\]
+Here the second estimate follows from
+$|f(x)|\leq\|f\|_{L^2(\nu)}/\sqrt{\nu_*}$.
+The convergent series and its norm bound give
+\[
+ (I+K)^{-1}=\frac12\sum_{j\geq0}T^j,\qquad
+ \|(I+K)^{-1}\|_{\infty\to\infty}
+ \leq\frac12\left(m+\sum_{j=m}^{\infty}A2^{-j}\right)
+ \leq\frac{m+2}{2}.
+\]
+No Markov property of $T$ or gap bound at the top of the spectrum is
+assumed. Differentiating the defining pointwise equation gives
+\[
+ \frac{d}{d\tau}\log w_\tau
+       =(I+K_\tau)\frac{d}{d\tau}\log h_\tau.
+\]
+Along the path $\nu_*\geq b_0/n$ and
+$\|d\log w_\tau/d\tau\|_\infty\leq\|e\|_\infty/b_0$.
+Integrating proves the displayed estimate.
+\end{proof}
+
+\begin{proposition}\label{exactvanishingminimum}
+For every fixed $0<\rho<1$, $0<b<1$ and $C>0$, there is a sequence
+satisfying all of \eqref{admissible}, with energy normalization
+$\E h_LP_\rho h_L=1$, such that, for $s=(1+\rho)/(1-\rho)$,
+\[
+ \|\pi_L-1\|_s\to0,\qquad \|h_L-1\|_{2s}\to0,\qquad
+ h_L(x_0)\to0,\qquad (P_\rho h_L)(x_0)\to\infty.
+\]
+In particular $\min h_L\to0$. No assertion about gap collapse or
+preservation of three potential values is made.
+\end{proposition}
+\begin{proof}
+Apply Proposition~\ref{vanishingminimum} with the larger stationary
+floor $b_1=(1+b)/2$, using its notation $\pi,h,R,Z,\alpha,M,u,\delta$
+and $\beta=(1+b_1)/2$.
+Its rare-set probability is exponentially small. Indeed, exponential
+Markov applied to $D\sim\operatorname{Bin}(L,1/2)$ yields
+\[
+ \alpha\leq\Pr(D\leq qL)
+ \leq\left[e^{\lambda q}\frac{1+e^{-\lambda}}2\right]^L.
+\]
+The bracket is one at $\lambda=0$ and its logarithmic derivative there
+is $q-1/2<0$; choose a fixed small $\lambda>0$ making it $a\in(0,1)$.
+The preceding proof also gives
+\[
+ \|R-1\|_1\leq2M\alpha+M^2\alpha+u+(1-\beta)\delta
+ =2\alpha^{1-1/(4s)}+\alpha^{1-1/(2s)}+u+(1-\beta)\delta.
+\]
+Every term decays exponentially. Since $|Z-1|\leq\|R-1\|_1$ and
+$Z\to1$, there are fixed $A_1,c>0$ with
+$\|\pi-1\|_1\leq A_1e^{-cL}$ for all sufficiently large $L$.
+
+Put $k=k_L$ as in \eqref{admissible}, and subtract the nonconstant
+low-degree Fourier projection:
+\[
+ e_L=-\sum_{1\leq|S|\leq k}(\E\pi\chi_S)\chi_S,\qquad
+ w_L=\pi+e_L.
+\]
+Each coefficient has magnitude at most $\|\pi-1\|_1$. The number of
+terms is at most $kL^k$ eventually, whose logarithm is
+$O(\sqrt L\log L)=o(L)$. Consequently
+\[
+ \epsilon_L:=\|e_L\|_\infty\leq kL^k A_1e^{-cL},\qquad
+ L\epsilon_L\to0.
+\]
+Orthogonality gives $\E w_L=1$ and $\E w_L\chi_S=0$ for every
+$1\leq|S|\leq k$ exactly. Along $\pi+\tau e_L$, the floor is at
+least $b_1-\epsilon_L\geq b$ eventually. Also
+$\|w_L-1\|_s\leq\|\pi-1\|_s+\epsilon_L\to0$, so its moment
+is eventually at most two.
+
+The noise matrix is strictly positive and positive definite, with
+Walsh eigenvalues $\rho^{|S|}>0$. Lemma~\ref{inversestationary}
+provides a positive $\widetilde h_L$ satisfying
+$\widetilde h_L P_\rho\widetilde h_L=w_L$, with
+\[
+ \eta_L:=\|\log(\widetilde h_L/h_L)\|_\infty
+ \leq\frac{\lceil (L+\log_2(1/b))/2\rceil+2}{2b}\epsilon_L\to0.
+\]
+Thus $e^{-\eta_L}h_L\leq\widetilde h_L\leq e^{\eta_L}h_L$.
+The vanishing value at $x_0$ and the divergent value of $P_\rho h_L$
+there persist. Moreover
+\[
+ \|\widetilde h_L-h_L\|_{2s}
+ \leq(e^{\eta_L}-1)\|h_L\|_{2s}\to0,
+\]
+so the potential norm convergence persists as well. Its energy is
+$\E w_L=1$, and its actual stationary density is exactly $w_L$.
+Use $\widetilde h_L=1$ in the finitely many earlier dimensions and
+rename the resulting sequence $h_L$.
+\end{proof}
+This refutes the proposed implication from the full original stationary
+hypotheses to a uniform normalized potential minimum. It does not
+refute the spectral-gap question: the necessary condition for collapse
+from Theorem~\ref{backgroundfullgap} has been attained, not shown
+sufficient. Further full-gap arguments must control the actual chain
+without deducing such a minimum. The finite reconstruction is an
+analytic existence proof, not an executed matrix-scaling certificate;
+no claim of global priority for its stability specialization is made.

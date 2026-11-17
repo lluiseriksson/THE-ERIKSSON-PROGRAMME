@@ -1,0 +1,159 @@
+FULL FIRST ANALYTIC AUDIT — CANDIDATE L
+Date: 2026-11-17
+
+1. EXACT REFERENTS, VERDICT, AND CONTEXT
+
+Frozen input:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\research\2026-11-17-vanishing-minimum\CANDIDATE-L.txt
+Raw SHA256 cbe65eef9bff034561564bed05f2b777a181d73b9a24491324408b26b78a49cc.
+Length 10586 bytes. Representation supplied: UTF-8 without BOM, LF; the hash is of raw bytes with no normalization.
+Dependency K, same directory: raw SHA256 57e5b9491cc2593c28852d06445b64673e258007cc84b196450c164150eb92e0.
+Parent context: 238c12fa06c95f55780c7791f1d3961148cfb07c.
+
+VERDICT: PASS for the exact source-level theorem and proof. No blocking objection was found. L genuinely adds exact stationary Walsh matching to K while preserving a vanishing normalized potential value and divergent noise average at the designated vertex. Its inverse-map argument is a finite-dimensional existence and quantitative stability proof for actual potentials. It is not an appeal to approximate matching, nor a substitution of an unrelated reversible chain.
+
+The result refutes the bridge from the original stationary floor, critical cap, and matching through floor(C sqrt(L)) to a dimension-uniform positive minimum of the normalized potential. It does not refute a uniform full-gap conjecture. Neither gap collapse nor an endpoint weighting-moment statement is proved. No mathematical hypothesis from the original admissibility conditions is eliminated; an attempted route through J's additional minimum hypothesis is ruled out.
+
+Auditor: separate OpenAI Codex role /root/bootstrap_note_audit, same provider/workflow with inherited programme context and shared filesystem. I previously inspected K and J and have their conclusions available. Exact serving backend/model revision and reasoning effort are unattested. This is not blind, human, provider-independent, or organizationally independent peer review. L received its own complete first analytic inspection, not a transferred K verdict or a repeat numerical grading. No inbound parent message arrived during the audit.
+
+Methods: exact-file reading, raw hashing, comparison with the original admissibility definition in the integrated manuscript, mathematical reasoning, and bounded primary-source reading. No candidate modification, mathematical/numerical/symbolic computation, Lean/Lake/TeX, test, runtime, UI, PDF assessment, workflow action, push, or network write occurred. This report is retained separately under the operative governance charter.
+
+2. ORIGINAL HYPOTHESES AND QUANTIFIERS
+
+I compared L with the motivating definition in the preserved revision-background manuscript: rho is fixed in (0,1), s=(1+rho)/(1-rho), k_L=min{L,floor(C sqrt(L))}, and the stationary hypotheses are pi>=b, E pi^s<=2, and E pi chi_S=0 for all 1<=|S|<=k_L on the original labelled coordinates. These are precisely the constraints L addresses. Walsh vanishing through a degree is equivalent to uniform joint coordinate marginals through that degree; no relabelling or invertible coordinate substitution is involved.
+
+L fixes rho, b in (0,1), and C>0 before dimension varies. The critical s is then fixed and finite. It asserts a family for every dimension by using the construction in all sufficiently large dimensions and htilde=1 in the finite remainder. Constants and the threshold may depend on rho, b, and C. It does not make an assertion uniform as these parameters vary with L. It deliberately makes no three-level claim after reconstruction.
+
+3. FINITE SYMMETRIC SCALING: EXISTENCE, COERCIVITY, UNIQUENESS
+
+For a strictly positive symmetric stochastic P on n points and uniform mu, write a_i=mu(i)w_i>0; sum_i a_i=1. The functional is
+F_w(v)=1/2 sum_ij mu(i)P_ij exp(v_i+v_j)-sum_i a_i v_i.
+
+Each exponential of a linear functional is convex. In particular the diagonal terms have coefficients mu(i)P_ii/2>0 and exponent 2v_i. Their Hessian is diagonal with entries 2 mu(i)P_ii exp(2v_i)>0. The remaining terms have positive semidefinite Hessians. Therefore the total Hessian is positive definite at every finite v, and F_w is strictly convex. This argument does not incorrectly assume positive semidefiniteness of the matrix P; entry positivity, including its diagonal, suffices in this section.
+
+For m=max_i v_i and d=min_i mu(i)P_ii/2>0, the diagonal term at a maximizing index gives at least d exp(2m). Since sum a_i=1 and v_i<=m, the linear part is at least -m. Thus F_w(v)>=d exp(2m)-m. The right side tends to infinity for m tending either to plus infinity or to minus infinity, so a fixed sublevel set bounds m from above and below.
+
+To control coordinates tending to minus infinity while another coordinate stays bounded above, use that all v_j<=M on a sublevel. For any i,
+ -sum_j a_j v_j >= -a_i v_i-(1-a_i)M.
+The exponential portion is nonnegative. Because a_i>0, a fixed sublevel then supplies a lower bound for each v_i. There are finitely many coordinates, so the sublevel is bounded. It is closed by continuity. A nonempty compact sublevel, for example the one through v=0, yields a minimizer. Strict convexity gives uniqueness.
+
+Symmetry and uniform mu make the two differentiated positions in the quadratic exponential sum equal. Including the diagonal contribution, the derivative is exactly
+ partial_i F_w=mu(i)[exp(v_i)(P exp(v))_i-w_i].
+Hence the minimizer gives h=exp(v)>0 satisfying hPh=w pointwise. Conversely a solution is a critical point, and strict convexity makes it the unique minimizer and unique positive solution. Integrating gives E hPh=E w=1. There is no unresolved scalar-normalization freedom.
+
+For a smooth positive density path w_tau, existence holds separately at every tau. The Jacobian in v of the gradient equation is the positive definite Hessian. The implicit function theorem supplies a smooth local solution near each tau, and uniqueness identifies these local solutions wherever they overlap. Covering the compact parameter interval gives the required smooth path; there is no assumption that one arbitrarily chosen numerical continuation avoids blowup. Endpoint neighborhoods are possible because strict positivity persists locally, or the endpoint conclusions can be read one-sided. No uniform-in-n Hessian lower bound is needed for existence.
+
+4. THE RESOLVENT ESTIMATE
+
+This is a new quantitative step, and I checked the operator identity and both norm estimates explicitly. If P is additionally positive semidefinite, the actual stochastic kernel K(x,y)=P(x,y)h(y)/(Ph)(x) is reversible under nu=w mu. Its conjugate on L2(mu) is
+S=M_sqrt(h/Ph) P M_sqrt(h/Ph),
+which is positive semidefinite. Stochasticity and reversibility bound its spectrum above by 1; therefore the spectrum of K in L2(nu) lies in [0,1]. No positive spectral gap at 1 is required.
+
+For T=(I-K)/2, diagonal entries are (1-K_xx)/2>=0 and off-diagonal entries are -K_xy/2. Consequently the absolute row sum is
+ (1-K_xx)/2 + sum_(y!=x) K_xy/2 =1-K_xx<=1.
+Thus T is an infinity-norm contraction even though it is not a positive or Markov operator. This signed-row calculation is essential and is supplied in the candidate.
+
+The L2(nu) spectrum of T lies in [0,1/2], so ||T^j||_2<=2^(-j). For ||f||_infinity<=1, probability normalization gives ||f||_2<=1. Evaluation obeys |g(x)|<=||g||_2/sqrt(nu(x)), giving
+ ||T^j f||_infinity<=nu_*^(-1/2)2^(-j)=A2^(-j).
+The separate infinity contraction gives the bound 1. Both are valid for every j>=0, so their minimum may be used.
+
+The geometric identity has the correct factor: I-T=(I+K)/2, hence
+(I+K)^(-1)=1/2 (I-T)^(-1)=1/2 sum_(j>=0) T^j.
+The series converges in L2 operator norm and, in this finite-dimensional setting, defines the same inverse in infinity norm. Bounding the infinity norms termwise gives an absolutely summable estimate.
+
+Since nu_*<=1, A>=1 and m=ceil(log_2 A)>=0. The first m terms j=0,...,m-1 contribute at most m. The remaining tail is
+sum_(j=m)^infinity A2^(-j)=2A2^(-m)<=2.
+This proves (L1), including its endpoint indexing and prefactor 1/2. The estimate is valid even when m=0. It is logarithmic in the inverse minimum stationary atom; it is not a dimension-free infinity resolvent bound.
+
+5. NONLINEAR INVERSE STABILITY
+
+Let v_tau=log h_tau and g_tau=P h_tau. Differentiation gives
+ d log(h_tau g_tau)/dtau
+ =v'_tau + P(h_tau v'_tau)/g_tau
+ =(I+K_tau)v'_tau.
+Thus (L2) is exact for the actual kernel at each point on the nonlinear path. A frozen endpoint kernel is not improperly used for all tau.
+
+On a cube, if w_tau>=b_0, then nu_*=min_x w_tau(x)2^(-L)>=b_0 2^(-L). Therefore
+log_2 A<= [L+log_2(1/b_0)]/2,
+and monotonicity of the ceiling supplies precisely
+D_L(b_0)=[ceil((L+log_2(1/b_0))/2)+2]/2.
+Because w_tau is a probability density, a nonvacuous fixed floor has b_0<=1; the expression is in the intended nonnegative range. For fixed b_0 it grows only linearly with L.
+
+For the affine normalized path w_tau=w+tau e, E e=0 and w_tau>=b_0, the forcing derivative is e/w_tau. Its infinity norm is at most ||e||_infinity/b_0. Apply (L1) at each tau and integrate the resulting bound on v'_tau over the unit interval. This yields (L3). Smoothness from the scaling lemma justifies differentiation and integration. The bound does not assume a spectral gap or a dimension-free condition number for the Hessian.
+
+6. EXPONENTIAL ERROR AVAILABLE FROM K
+
+K is reused with floor parameter b_1=(1+b)/2, which is strictly between b and 1. Its balancing parameter is consequently beta=(1+b_1)/2. This two-stage slack is correct; it is not the original K beta with an unchanged lower floor. The family retains K's normalized h, pi, and the established limits.
+
+For D distributed as Binomial(L,1/2), exponential Markov with lambda>0 gives
+Pr(D<=qL)<=exp(lambda qL) E exp(-lambda D)
+ = [exp(lambda q)(1+exp(-lambda))/2]^L.
+The log derivative of the bracket at zero is q-1/2<0. Continuity gives a sufficiently small fixed positive lambda with a bracket a strictly between 0 and 1. Excluding D=0 to form K's annulus only decreases its uniform mass, so alpha<=a^L. This is an explicit elementary exponential bound, not an unjustified upgrade of Chebyshev.
+
+Integrating K's positive-part bound gives 2Malpha+M^2alpha, since E P1_A=alpha and E 1_A P1_A<=alpha. Its negative part contributes at most u+(1-beta)delta. Substituting M=alpha^(-1/(4s)) gives the two positive exponents 1-1/(4s) and 1-1/(2s). Thus both terms decay exponentially using alpha<=a^L. The separate terms u=(1-p)^L and delta=2^(-L) are also exponential. Taking the smallest of these finitely many fixed positive rates and increasing a finite constant gives ||R-1||_1<=A_0 exp(-cL).
+
+Because Z=E R, |Z-1|<=||R-1||_1. For sufficiently large L, Z is bounded away from zero, for example Z>=1/2. It follows directly that ||pi-1||_1 is bounded by a constant times the same exp(-cL). This proves L4 with a dimension-independent A_1 for the fixed parameters. No exponential bound on r approaching one or on t is needed for this step.
+
+7. EXACT FOURIER CORRECTION
+
+For every nonempty labelled subset S,
+|E pi chi_S|=|E (pi-1)chi_S|<=||pi-1||_1,
+because E chi_S=0 and |chi_S|=1. The proposed e removes exactly those coefficients, without touching the constant coefficient. For fixed C, eventually 1<=k_L<L and
+N_L=sum_(j=1)^k binomial(L,j)<=k L^k.
+Indeed each binomial(L,j)<=L^j<=L^k. With k<=C sqrt(L), log N_L<=log k+k log L=O(sqrt(L) log L)=o(L).
+
+Therefore epsilon_L=||e_L||_infinity<=N_L A_1 exp(-cL). For instance, eventually log N_L<=cL/2, yielding epsilon_L<=A_1 exp(-cL/2). In particular L epsilon_L->0. The multiplicity of all low-degree coefficients has been included; the proof does not confuse a bound on one coefficient with a bound on the whole Fourier correction.
+
+Orthogonality of the Walsh characters on uniform labelled coordinates gives E e=0 and E e chi_S=-E pi chi_S for every required S. Thus w=pi+e has mean one and every stated low-degree coefficient vanishes exactly, in finite dimension. This is not a limit assertion.
+
+K with the higher floor supplies pi>=b_1 eventually. Since |tau e|<=epsilon_L for tau in [0,1], the entire affine path has floor b once epsilon_L<=b_1-b. This is a fixed positive allowance, so it eventually holds. The moment bound need only hold at the terminal point, not at every intermediate tau. At that point ||w-1||_s<=||pi-1||_s+epsilon_L->0, and consequently E w^s->1 and E w^s<=2 eventually. No exact low-degree constraint is lost by a subsequent density renormalization: none is needed because E w=1 already.
+
+8. RECONSTRUCTION AND RETENTION OF THE EXCEPTIONAL POINT
+
+For fixed rho in (0,1), P_rho has strictly positive entries, is symmetric stochastic, and is positive definite with Walsh eigenvalues rho^|S|. Both the scaling lemma and the resolvent lemma therefore apply to the entire positive path. At tau=0, K's normalized h solves hPh=pi; uniqueness ensures it is the initial solution of the path, so the inverse stability estimate compares the intended potentials.
+
+With b fixed, D_L(b)=O(L). Thus
+eta_L=||log(htilde_L/h_L)||_infinity<=D_L(b)epsilon_L/b ->0.
+The resulting pointwise multiplicative inequalities exp(-eta_L)h_L<=htilde_L<=exp(eta_L)h_L are uniform over the whole cube. This control is stronger than an additive norm estimate at an exceptional vertex and is exactly what is needed here.
+
+At x_0, K gives h_L(x_0)->0, so the upper bound implies htilde_L(x_0)->0. Since htilde is positive everywhere, 0<=min htilde<=htilde(x_0) proves min htilde->0; the minimum need not remain attained at x_0. Positivity of P preserves the lower multiplicative inequality, yielding (P htilde)(x_0)>=exp(-eta_L)(P h)(x_0)->infinity.
+
+For norm convergence, pointwise |htilde-h|<=(exp(eta_L)-1)h, since 1-exp(-eta_L)<=exp(eta_L)-1. Hence
+||htilde-h||_(2s)<=(exp(eta_L)-1)||h||_(2s)->0,
+using K's ||h-1||_(2s)->0 and therefore boundedness of ||h||_(2s). The triangle inequality supplies ||htilde-1||_(2s)->0.
+
+The reconstructed density is exactly htilde P htilde=w, so energy normalization, pointwise floor, cap, and exact matching are all properties of the actual Doob stationary law. The reconstructed potential is not required to keep K's three levels. Selecting one finite threshold beyond all eventual properties and setting htilde=1 below it yields the claimed every-dimension family. Uniform htilde=1 satisfies normalization, all Walsh conditions through any k_L<=L, floor b<1, and moment 1. It does not affect any limit.
+
+9. FAILURE MODES CHALLENGED
+
+I checked the following nontrivial potential failures separately:
+- Arbitrary positive target densities might fail symmetric scaling: the explicit coercive strictly convex variational problem resolves this here because P has positive diagonal and is symmetric under uniform mu.
+- Strict convexity alone might not prove existence: the sublevel argument bounds both maximum and individual minimum coordinates and supplies compactness.
+- The inverse path could compare a different initial solution: uniqueness identifies K's h exactly.
+- A false sup-norm Markov contraction might be used for signed T: T is not called Markov, and the absolute-row calculation proves the required contraction.
+- The resolvent could have the wrong prefactor or depend on a gap near eigenvalue 1: the factor 1/2 is correct, and the contraction is about I+K, with spectrum separated from zero by positivity of K.
+- L2-to-infinity conversion could cost an exponential factor without repair: it initially does, but summing min(1,A2^-j) reduces this to log A=O(L).
+- There could be too many low-degree Fourier terms: their full number is subexponential, so the exponential L1 error dominates it and the extra stability factor L.
+- Correcting a density could break positivity or stationarity: the higher floor ensures positivity along the path, and actual reconstruction proves stationarity.
+- Small L errors might violate the every-dimension theorem: constant filling meets all original constraints there.
+- Norm convergence might incorrectly imply preservation at a rare vertex: the proof instead obtains uniform multiplicative comparison, which genuinely preserves the vanishing value and divergent denominator.
+
+No blocking defect was found. No source correction is required for the claimed theorem. The same proof does not automatically extend to matching k_L proportional to L: the term count may then overwhelm the chosen exponential rate. It also does not assert bounds uniform in varying rho or b, or existence of a computationally cheap reconstruction. These are scope limits, not omissions from the stated result.
+
+10. PRIOR ART, ORIGINALITY, AND REMAINING QUESTION
+
+I inspected the cited primary-author lecture:
+https://homes.cs.washington.edu/~jrl/teaching/cse599swi16/notes/lecture1.pdf
+It is James R. Lee's Lecture 1, Entropy, convexity, and matrix scaling, dated January 24, 2016. Section 2 formulates positive row/column scaling to prescribed marginal sums and states a Sinkhorn scaling theorem. This supports identifying matrix scaling as classical background. I did not read the entire lecture proof in this task and do not treat that general theorem as a substitute for L's specific symmetric scaling or logarithmic stability proofs.
+
+The candidate's publisher-excerpt/403 history concerning DOI 10.1080/03081080600872327 is an author provenance statement, not independently reproduced here. No conclusion of novelty or non-overlap is drawn from it. I did not conduct an exhaustive priority search. The elementary inverse bound and the particular exact-matching specialization require separate literature positioning before any global originality or frontier claim.
+
+The substantive programme advance relative to K is real: exact matching is now imposed algebraically on the density and carried back through a controlled actual inverse map. K's previous approximate-only boundary remains historically correct for K and need not be rewritten. L proves the stronger route counterexample on its own additional argument.
+
+The positive-background theorem J remains a sufficient full-gap result under a fixed normalized potential minimum. L shows that the original exact stationary hypotheses cannot universally supply that extra minimum. This closes that attempted bridge, not the original gap problem. Since J only makes vanishing minima necessary for a collapsing-gap family, exhibiting vanishing minima does not prove their sufficiency. The actual cut flow and high-block problem remain unresolved for this family. Nothing here changes physical Yang-Mills claims, PR29 accounting, or TermSource status.
+
+11. FINAL DISPOSITION
+
+PASS for raw input SHA256 cbe65eef9bff034561564bed05f2b777a181d73b9a24491324408b26b78a49cc, dependent on the exact preserved K input 57e5b9491cc2593c28852d06445b64673e258007cc84b196450c164150eb92e0. Every stated mathematical assertion was inspected, including the new inverse-map stability and exact matching steps. No grade, formal verification, PDF review, priority certificate, or publication status is assigned.
+
+Integrating this negative-route result with J and K is appropriate to the grouped manuscript. Any integrated source and produced PDF remain distinct artifacts requiring their own exact-bound review. This report does not authorize execution or inherit assessments from earlier artifacts.

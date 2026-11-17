@@ -1,0 +1,34 @@
+{
+  "mathematical_execution": false,
+  "pdf": false,
+  "payloads": [
+    {
+      "sha256": "57e5b9491cc2593c28852d06445b64673e258007cc84b196450c164150eb92e0",
+      "path": "CANDIDATE-K.txt",
+      "bytes": 7868
+    },
+    {
+      "sha256": "cbe65eef9bff034561564bed05f2b777a181d73b9a24491324408b26b78a49cc",
+      "path": "CANDIDATE-L.txt",
+      "bytes": 10586
+    },
+    {
+      "sha256": "f6d74ff79c3c03723dc64b273ac71656224b1a10d1fc1447174e9e2570de661f",
+      "path": "FULL-FIRST-ANALYTIC-AUDIT-K.txt",
+      "bytes": 15530
+    },
+    {
+      "sha256": "0a855ef11d3115bed54a10a3c644bb62a34ae4743330cd7f9d876ec1d8c892d6",
+      "path": "FULL-FIRST-ANALYTIC-AUDIT-L.txt",
+      "bytes": 19261
+    },
+    {
+      "sha256": "da810d86433def84f9c1c9ed4f91dd5ce802cec307e4f42f86a088a0755e2b88",
+      "path": "README.md",
+      "bytes": 3503
+    }
+  ],
+  "published": false,
+  "parent": "238c12fa06c95f55780c7791f1d3961148cfb07c",
+  "representation": "Raw bytes, no normalization. Candidates/readme UTF8 LF; full reports preserve original bytes."
+}

@@ -1,0 +1,174 @@
+FULL FIRST ANALYTIC AUDIT — CANDIDATE K
+Date: 2026-11-17
+
+1. EXACT INPUT, VERDICT, AND AUDIT BOUNDARY
+
+Input:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\research\2026-11-17-vanishing-minimum\CANDIDATE-K.txt
+Raw SHA256: 57e5b9491cc2593c28852d06445b64673e258007cc84b196450c164150eb92e0.
+Length: 7868 bytes. Byte inspection confirms no UTF-8 BOM and no CR bytes; the frozen representation is UTF-8/LF, with no normalization used for the hash.
+Inspected Git HEAD / parent context: 238c12fa06c95f55780c7791f1d3961148cfb07c.
+
+VERDICT: PASS as a source-level analytic construction under the exact stated quantifiers. No blocking mathematical error or missing premise was found. The construction proves that the stationary floor and a fixed finite stationary moment cap alone do not force a uniform positive minimum of the energy-normalized potential. It simultaneously proves the stated strong norm convergence and high-denominator behavior for actual noise Doob kernels.
+
+This is not a counterexample to the original exact-matching spectral-gap question. No collapsing gap is proved. No exact marginal constraints are established. Theorem J remains valid and is not contradicted. This is a useful boundary result to group with J, not by itself a justification for a separate paper, a global novelty claim, a numerical grade, a PDF assessment, or a publication decision.
+
+Auditor identity/context: separate OpenAI Codex role /root/bootstrap_note_audit; same provider/workflow and inherited programme context, shared filesystem, previous knowledge of the accepted J theorem. Exact serving model/backend revision and effective reasoning effort are unattested. This is not blind or human/provider/organizationally independent peer review. The source author's proof was visible and every argument below was inspected analytically. No inbound parent message arrived during the audit.
+
+The operative Operational Governance Charter was available and read in this audit sequence. I used file/Git reads, raw hashes, primary-source web reading, and this report write. I did not modify the candidate, execute a mathematical/numerical/symbolic program, run Lean/Lake/TeX, use a runtime or UI, compile/review any PDF, change a workflow, push, or perform network writes. No previous scientific grade was resampled or transferred.
+
+2. QUANTIFIERS AND NONDEGENERACY
+
+The statement fixes rho in (0,1), b in (0,1), and one finite s>1 before L varies. The constructed family may depend on all three parameters. The estimates are eventual in L with thresholds depending on those fixed parameters. They do not give a uniform statement as rho, b, or s vary with L.
+
+With p=(1-rho)/2, p lies strictly between 0 and 1/2. The chosen q=(p+1/2)/2 satisfies p<q<1/2, with both gaps strictly positive. For sufficiently large L, floor(qL)>=1, so A_L contains points at distance 1. Since q<1/2, there are also points at distance greater than qL, different from x_0. Thus all three regions used for H are nonempty. A_L excludes x_0 by definition. Its uniform mass alpha lies strictly between zero and one.
+
+M=alpha^(-1/(4s)) is strictly larger than 1. The constructed t lies strictly between 0 and 1. Multiplication by the common positive normalization factor preserves the three distinct values. Consequently 'three-valued' is literal for all sufficiently large L, not merely at most three values. Filling the finitely many earlier dimensions with h=1 preserves all eventual assertions, the floor, normalization, and the eventual cap; it intentionally need not preserve three distinct values there.
+
+The open restrictions are substantive: rho=0 would destroy the separation between typical distances seen from x_0 and uniform distances; rho=1 loses the strictly positive noise kernel; b=1 would remove the fixed slack beta>b used below. The candidate does not claim any of those endpoints.
+
+3. RARE SET AND TRANSITION PROBABILITY
+
+Under uniform measure, D has mean L/2 and variance L/4. The event 1<=D<=qL is contained in |D-L/2|>=(1/2-q)L. Chebyshev therefore gives
+alpha <= (L/4)/[(1/2-q)^2 L^2]
+      = 1/[4L(1/2-q)^2] -> 0.
+Discarding D=0 only makes alpha smaller. Strict/non-strict threshold choices do not invalidate this upper bound.
+
+Under the row P(x_0,.), D is Binomial(L,p). The complement of A is the disjoint union of D=0 and D>qL. Its first probability is u=(1-p)^L. On the second event D-Lp>(q-p)L, so Chebyshev gives
+1-r <= u + p(1-p)/[L(q-p)^2] -> 0.
+Thus r->1 and u->0. No exponential estimate for alpha is required by the proof: alpha->0 suffices for every chosen power. Also u+r<=1 exactly since the two row events are disjoint.
+
+For a point y at distance d from x_0,
+P(y,x_0)=p^d(1-p)^(L-d)
+        =(1-p)^L [p/(1-p)]^d <= u.
+The inequality direction is correct because p/(1-p)<1 and d>=0. This uniform bound, not merely a bound at typical y, is what later protects the stationary floor outside the defect point.
+
+4. ROOT AND EXACT POINTWISE BALANCE
+
+Let beta=(1+b)/2, so b<beta<1. The equation is
+F(t)=u t^2 + (Mr+1-u-r)t = beta.
+The coefficient 1-u-r is nonnegative, Mr is positive for large L, and u>0. Hence F is strictly increasing on t>=0; equivalently F'(t)=2ut+Mr+1-u-r>0. F(0)=0 and
+F(1)=u+Mr+1-u-r=1+(M-1)r>1>beta.
+There is exactly one t in (0,1).
+
+Since all terms in F(t) are nonnegative, beta=F(t)>=tMr, giving 0<t<=beta/(Mr). As alpha->0, M->infinity; since r->1, Mr->infinity and t->0. There is no reversed inequality caused by the negative exponent defining M.
+
+For H=t at x_0, M on A, and 1 on the remaining region, the row at x_0 is precisely
+(PH)(x_0)=ut+Mr+1-u-r.
+Thus H(x_0)(PH)(x_0)=beta exactly. In particular the compensation is pointwise, not an average or asymptotic approximation. The construction does not secretly use a nonactual stationary law.
+
+5. NORMALIZATION
+
+Pointwise, 0<=1-1_{x_0}<=H<=1+M1_A. A nonnegative transition kernel makes the quadratic form monotone on nonnegative functions: if 0<=f<=g, then f(x)f(y)<=g(x)g(y) termwise in the double sum defining <f,Pf>. This argument is sufficient and does not require an unjustified general Loewner monotonicity claim.
+
+For the lower comparison function,
+<1-1_{x_0},P(1-1_{x_0})>
+ =1-2delta+<1_{x_0},P1_{x_0}>
+ =1-2delta+delta u,
+using invariance of uniform measure. The upper comparison gives
+<1+M1_A,P(1+M1_A)>
+ =1+2Malpha+M^2<1_A,P1_A>
+ <=1+2Malpha+M^2alpha,
+because 0<=P1_A<=1.
+
+Malpha=alpha^(1-1/(4s)) and M^2alpha=alpha^(1-1/(2s)); both exponents are positive for the allowed s>1. The lower and upper bounds tend to 1, proving Z=<H,PH>->1. Since H is strictly positive and P is stochastic, Z>0 for each constructed dimension. Defining h=H/sqrt(Z) gives <h,Ph>=1 exactly and pi=HPH/Z. There is no remaining arbitrary scaling of h that could trivialize the minimum assertion.
+
+6. POINTWISE STATIONARY FLOOR
+
+Outside x_0, H>=1. Also H>=1-1_{x_0} and positivity imply
+PH(y)>=1-P(y,x_0)>=1-u.
+Thus R(y)=H(y)PH(y)>=1-u outside x_0, while R(x_0)=beta exactly. Therefore
+pi(y)>=min(beta,1-u)/Z
+for every point, including the large H region and the exceptional point.
+
+Since 1-u->1>beta, the minimum on the right is eventually beta. Since Z->1 and beta>b, beta/Z>=b eventually. It would be incorrect to assume Z<=1; the supplied proof does not do so. The strict fixed slack beta-b absorbs normalization from either side. This confirms the claimed pointwise floor in every sufficiently large dimension.
+
+7. STATIONARY Ls CONVERGENCE AND MOMENT CAP
+
+The nonnegative upper comparison yields
+R <= (1+M1_A)(1+MP1_A)
+  =1+M1_A+MP1_A+M^2 1_A P1_A.
+For s>=1, Jensen pointwise and invariance give ||Pf||_s<=||f||_s. Hence
+||1_A||_s=alpha^(1/s),
+||P1_A||_s<=alpha^(1/s),
+||1_A P1_A||_s<=alpha^(1/s).
+The last bound is deliberately crude, and follows directly from P1_A<=1; it needs no independence or noise-stability estimate.
+
+Taking the positive part and the triangle inequality gives exactly
+||(R-1)_+||_s <= 2Malpha^(1/s)+M^2alpha^(1/s)
+ =2alpha^(3/(4s))+alpha^(1/(2s)) ->0.
+All powers are positive. Multiplication has not been passed through an Ls contraction improperly.
+
+For the negative part, the earlier lower estimate yields pointwise
+(1-R)_+ <= u 1_{x_0^c} + (1-beta)1_{x_0}.
+Its Ls norm is at most u+(1-beta)delta^(1/s), tending to zero. The triangle inequality then controls ||R-1||_s by the sum of the two parts. This also makes explicit why the fixed defect R(x_0)=beta does not obstruct convergence: its uniform mass is delta.
+
+Finally
+pi-1=(R-1)/Z+(1/Z-1),
+so ||pi-1||_s<=Z^(-1)||R-1||_s+|Z^(-1)-1|->0.
+The reverse triangle inequality implies | ||pi||_s-1 |<=||pi-1||_s. Because pi>=0 and s is fixed finite, E pi^s=||pi||_s^s->1, hence E pi^s<=2 eventually. In fact any fixed cap 1+epsilon with epsilon>0 holds eventually; no exact cap 1 or exact equality pi=1 is claimed.
+
+For the programme's critical exponent, substitute the fixed finite s=(1+rho)/(1-rho)>1. The proof is valid there without hypercontractivity. The statement does not assert convergence for all s simultaneously for a single family chosen without reference to s, nor L-infinity convergence.
+
+8. POTENTIAL NORM, MINIMUM, AND DENOMINATOR
+
+The disjoint definition of H gives
+||H-1||_(2s)^(2s)=alpha(M-1)^(2s)+delta(1-t)^(2s).
+Since M>1 and 0<t<1, this is at most alpha M^(2s)+delta. The exponent calculation is alpha M^(2s)=alpha^(1/2), so the bound tends to zero.
+
+The normalized difference can be written
+h-1=(H-1)/sqrt(Z)+(1/sqrt(Z)-1).
+Therefore its L^(2s) norm tends to zero, despite the exceptional small value and rare large values. This convergence on changing probability spaces has its usual sequence-of-norms meaning; it is not a pointwise or uniform claim across all vertices and dimensions.
+
+Because t<1<M, min h=t/sqrt(Z)->0. By exact balance,
+(Ph)(x_0)=(PH)(x_0)/sqrt(Z)=beta/[t sqrt(Z)]->infinity.
+Their product remains beta/Z->beta>b. Thus the simultaneous high denominator, vanishing normalized potential minimum, stationary floor, and strong finite-norm convergence are mutually consistent. No uniform bound on the row functional f -> Pf(x_0), independent of dimension in the relevant finite norms, was assumed. In particular finite L^(2s) convergence does not forbid this divergent evaluation.
+
+9. ACTUAL KERNEL AND MATCHING BOUNDARY
+
+All entries of P and all values of h are positive. g=Ph is therefore positive. Summing K(x,y)=P(x,y)h(y)/g(x) over y gives 1 exactly. With nu(x)=mu(x)h(x)g(x), normalization gives total mass one, and
+nu(x)K(x,y)=mu(x)P(x,y)h(x)h(y).
+Uniform reversibility of P makes this symmetric in x,y. Hence nu is genuinely the stationary probability of the actual Doob kernel, not an independently selected density or an abstract surrogate chain.
+
+For any test function of the current dimension with |f|<=1,
+|E_nu f-E_mu f|=|E_mu[(pi-1)f]|
+ <=||pi-1||_1<=||pi-1||_s.
+The upper bound is independent of f, including dimension-dependent choices and marginal-event indicators. Thus approximate matching is uniform even over all events. In the usual total-variation convention the distance is half of ||pi-1||_1; the displayed inequality remains correct without using the factor 1/2.
+
+Uniformly small errors are not exact zeros. The construction proves neither satisfaction nor impossibility of any specified exact labelled matching constraints. It is correctly limited to refuting the inference from floor plus cap alone. It cannot be presented as a counterexample under a stronger exact-matching premise that was never checked.
+
+The logical use of J is correct: J shows that gap collapse under the fixed normalized cap requires vanishing minima. Producing a family with vanishing minima does not supply the converse. Candidate K makes no gap estimate, and this audit makes none. The result identifies an actual admissible mechanism outside J's fixed-minimum sufficient class, not a failure of the desired original full-gap conclusion.
+
+10. ATTEMPTED FALSIFICATION AND REMAINING LIMITS
+
+I specifically checked the following possible failure points:
+- The annulus must exclude x_0 for the quadratic root and exact balance; it does.
+- The missing distance-zero probability in r must be retained; u is present in the complement bound and root equation.
+- Rounding qL must not introduce a shifted threshold; the proof uses the real inequality D>qL directly, so Chebyshev applies as written.
+- All three levels must occur; large L supplies each nonempty region and t<1<M.
+- Normalization might destroy the floor; the fixed beta>b slack repairs this with Z->1.
+- Rare spikes could destroy the critical moment; M's exponent leaves both stationary positive-part powers strictly positive.
+- A fixed deficit at x_0 might obstruct norm convergence; its mass is delta, and the calculation includes it.
+- Strong finite-norm convergence might be confused with a pointwise bound; the divergent row evaluation is expressly allowed and proved.
+- Actual stationarity might have been imposed independently; detailed balance verifies the true hPh density.
+- Approximate matching or vanishing minima might be misreported as exact matching or gap collapse; the candidate explicitly rejects both implications.
+
+No blocking issue survived these checks. No correction to the frozen source is required for the stated result. The finite fixed-s and fixed-parameter scope, exact-matching boundary, and absence of spectral information must remain explicit in any integration or abstract.
+
+11. PRIMARY SOURCES AND NOVELTY BOUNDARY
+
+I opened Ryan O'Donnell's original Lecture 16 PDF at
+https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf
+and checked its title/date and first-page Boolean-noise context. It is the 8 March 2007 lecture on hypercontractivity. K uses only the elementary product kernel and elementary inequalities, not the lecture's hypercontractive theorem. No proof in K depends on an unverified parameter choice from that theorem.
+
+I also inspected the public record's abstract and status at
+https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/
+It identifies the existing v1 as a working paper, not accepted peer-reviewed work, and explicitly leaves the general stationary-gap question open. Candidate K's description of that boundary is consistent with the record. I did not review or evaluate its PDF in this task, and did not transfer any public assessment to K.
+
+The candidate's historical search statements are author provenance, not independent priority evidence. I did not reproduce those searches or undertake an exhaustive literature survey. An elementary rare-set construction can be useful in this programme while still being known elsewhere. Correctness, global originality, and broader significance are separate questions; this report establishes only the scoped analytic correctness by the displayed proof review.
+
+12. DISPOSITION
+
+PASS for exact candidate SHA256 57e5b9491cc2593c28852d06445b64673e258007cc84b196450c164150eb92e0. The bridge from stationary floor and critical cap alone to a dimension-uniform normalized potential floor is refuted by a fully specified actual three-valued family. Its stationary moment tends to one and its potential and stationary density have the stated finite-norm limits.
+
+The construction belongs with J as an explanation of why J's extra pointwise minimum is not obtained from those two premises alone. It does not settle whether exact matching excludes the construction or another vanishing-minimum mechanism. No unrestricted full-gap closure, formal verification, PDF review, grade, novelty certificate, or publication status follows from this audit.

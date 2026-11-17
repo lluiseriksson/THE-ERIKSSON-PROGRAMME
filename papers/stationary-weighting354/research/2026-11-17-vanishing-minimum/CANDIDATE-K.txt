@@ -1,0 +1,100 @@
+CANDIDATE K: Stationary floor and near-uniform moments do not bound the normalized potential minimum
+Status at freezing: proposed analytic result, first audit pending.
+Parent context: 238c12fa06c95f55780c7791f1d3961148cfb07c.
+Byte convention: raw UTF-8 without BOM, LF, no subsequent normalization.
+
+1. Statement and exact scope
+Fix rho in (0,1), b in (0,1), and any finite s>1. For each sufficiently large integer L there is a strictly positive three-valued function h_L on {-1,1}^L such that, with uniform probability mu, Boolean noise P=P_rho, and pi_L=h_L P h_L,
+  E_mu h_L P h_L=1,
+  pi_L >= b pointwise,
+  ||pi_L-1||_{L^s(mu)} -> 0,
+  E_mu pi_L^s -> 1,
+  ||h_L-1||_{L^{2s}(mu)} -> 0,
+  min h_L -> 0, and (P h_L)(x_0) -> infinity.
+Here x_0=(1,...,1). In particular E pi_L^s <= 2 eventually, including at the critical s=(1+rho)/(1-rho). Any finitely many missing dimensions can be filled with h_L=1; the three-valued assertion is only for sufficiently large L.
+These are actual positive-potential noise Doob kernels
+  K_L(x,y)=P(x,y) h_L(y)/(P h_L)(x),
+with stationary probability nu_L=pi_L mu. There is NO assertion of exact stationary marginal matching or of a collapsing spectral gap.
+
+Consequently the original stationary floor and critical cap ALONE do not imply a dimension-uniform positive minimum of the energy-normalized potential. This refutes precisely the bridge omitting exact matching. It does not refute a bridge using exact matching, the original full-gap conjecture, or theorem J's sufficient condition.
+
+2. A rare set seen with high probability from one point
+Let p=(1-rho)/2 and q=(p+1/2)/2. Then 0<p<q<1/2.
+Let D(x_0,y) be Hamming distance and define
+  A_L={y:1 <= D(x_0,y) <= q L},
+  alpha_L=mu(A_L), delta_L=2^{-L},
+  r_L=P(x_0,A_L), u_L=P(x_0,x_0)=(1-p)^L.
+For large L, A_L is nonempty and its complement has points other than x_0, so 0<alpha_L<1.
+Under uniform mu, D has Binomial(L,1/2) distribution. Its variance L/4 and Chebyshev's inequality give
+  alpha_L <= 1/[4L(1/2-q)^2] -> 0.
+Under P(x_0,.), D has Binomial(L,p) distribution. Thus
+  1-r_L <= u_L + p(1-p)/[L(q-p)^2] -> 0.
+Integer rounding causes no issue: A_L uses the real threshold qL, and its complement consists of D=0 or D>qL. Finally, for every y,
+  P(y,x_0)=p^{D(y,x_0)}(1-p)^{L-D(y,x_0)} <= u_L,
+since p<1/2. No concentration theorem stronger than Chebyshev is needed.
+
+3. Three levels and exact pointwise balance
+Suppress L in the following formulas. Put
+  M=alpha^{-1/(4s)} > 1, beta=(1+b)/2.
+Define t as the unique root in (0,1) of
+  t [u t + M r + 1-u-r] = beta.                 (K1)
+The expression on the left is continuous and strictly increasing for t>=0: its linear coefficient M r+1-u-r is positive for large L, and all its summands are nonnegative. Its value at 0 is 0 and at 1 is 1+(M-1)r>1>beta. Hence the claimed unique t exists. Also
+  0<t <= beta/(M r) -> 0.
+Let H=t at x_0, H=M on A_L, and H=1 elsewhere. Then
+  H(x_0)(PH)(x_0)=beta                         (K2)
+exactly. Set Z=E H PH and h=H/sqrt(Z). Thus E hPh=1 and pi=HPH/Z exactly.
+
+4. Normalization tends to one
+The pointwise bounds 1-1_{x_0} <= H <= 1+M 1_A and positivity of P imply
+  1-2 delta+delta u <= Z
+    <= 1+2M alpha+M^2 <1_A,P1_A>
+    <= 1+2M alpha+M^2 alpha.
+The last inequality uses 0<=P1_A<=1. Since s>1,
+  M alpha=alpha^{1-1/(4s)} -> 0,
+  M^2 alpha=alpha^{1-1/(2s)} -> 0.
+Therefore Z -> 1, with Z>0 always.
+
+5. Uniform stationary floor
+For every y != x_0, H(y)>=1 and
+  (PH)(y) >= P(1-1_{x_0})(y)
+           =1-P(y,x_0) >=1-u.
+It follows that H(y)(PH)(y)>=1-u outside x_0, whereas (K2) holds at x_0. Hence
+  pi >= min(beta,1-u)/Z.
+As beta>b and Z->1, u->0, this is at least b in all sufficiently large dimensions.
+
+6. Strong near-uniformity of the stationary density
+Let R=HPH. From H<=1+M1_A and positivity of P,
+  R <= 1+M1_A+M P1_A+M^2 1_A P1_A.
+Markov contraction on L^s(mu) follows from Jensen and invariance of mu, giving ||P1_A||_s<=alpha^{1/s}. Also ||1_A P1_A||_s<=alpha^{1/s}. Therefore
+  ||(R-1)_+||_s <= 2M alpha^{1/s}+M^2 alpha^{1/s}
+     =2 alpha^{3/(4s)}+alpha^{1/(2s)} -> 0.     (K3)
+The lower bound in Section 5 gives, outside x_0, R>=1-u; at x_0, R=beta. Consequently
+  ||(1-R)_+||_s <= u+(1-beta) delta^{1/s} -> 0. (K4)
+By (K3)-(K4), ||R-1||_s ->0. Since Z->1,
+  ||pi-1||_s <= Z^{-1}||R-1||_s+|Z^{-1}-1| ->0.
+It follows that ||pi||_s->1, and E pi^s=||pi||_s^s->1. This proves a cap strictly stronger asymptotically than the fixed bound 2, without any claim of exact equality of marginal probabilities.
+
+7. Potential closeness, vanishing minimum and high denominator
+Because H differs from 1 only on A and at x_0,
+  ||H-1||_{2s}^{2s}
+    =alpha(M-1)^{2s}+delta(1-t)^{2s}
+    <=alpha M^{2s}+delta
+    =alpha^{1/2}+delta ->0.
+Normalization Z->1 yields ||h-1||_{2s}->0 by the triangle inequality. Nevertheless, min h=t/sqrt(Z)->0, whereas from (K1)
+  (Ph)(x_0)=beta/[t sqrt(Z)] -> infinity.
+In particular h(x_0)(Ph)(x_0)=beta/Z->beta, fully consistent with the stationary floor. Small L can be filled with h=1 without changing any limit or eventual three-level property.
+
+8. Actual reversibility and the exact matching boundary
+P has strictly positive entries and P1=1, so K is strictly positive and stochastic. Directly,
+  nu(x)K(x,y)=mu(x)P(x,y)h(x)h(y)
+            =nu(y)K(y,x),
+using reversibility of P with respect to uniform mu. Thus no abstract surrogate chain is being substituted.
+For any bounded test f with |f|<=1,
+  |E_nu f-E_mu f| <= ||pi-1||_1 <= ||pi-1||_s ->0.
+This bound is uniform over such f, hence also over all marginal events. It proves APPROXIMATE matching, not the exact labelled matching required by the original question. No argument here upgrades an asymptotic error to zero. No spectral-gap estimate is inferred from min h->0: theorem J supplies necessity of vanishing minima for gap collapse, not its sufficiency.
+
+9. Sources, novelty, verification and review context
+The Boolean noise operator and its classical analysis are documented in Ryan O'Donnell, Lecture 16, Analysis of Boolean Functions, 8 March 2007, https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf . The present proof only uses the elementary product transition kernel, Chebyshev, positivity, Jensen and normalization; it does not claim any of these ingredients as original and does not invoke hypercontractivity.
+Bounded web searches on 17 November 2026 for 'Doob Boolean stationary potential lower bound' and 'ground state stationary density lower bound hypercontractivity' did not establish global priority or an exact prior equivalent. Only primary mathematical material is relied on; search-result absence is not a novelty certificate. The existing programme working paper https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/ states the general stationary-gap problem remains open; this construction does not change that status.
+Contribution within this programme: the formerly unverified annulus sketch becomes a fully specified three-level actual-Doob obstruction to deriving a pointwise potential floor from stationary floor/cap alone. Strengthening the sketch, the moment tends to 1 and both densities converge in the stated norms. This is a boundary result for integration with theorem J in the existing grouped paper, not a proposed separate small paper. Relevance to the original exact-matching question is limited and explicit.
+This is a source-level analytic proof. No mathematical code, Lean/Lake, oracle, Colab or local numerical test has run for K; no formal-machine verification is claimed. No PDF exists for K and no existing assessment score may transfer to it. Author: Codex root, exact underlying model/version and effort unattested in this record. A separate first analytic audit is to retain its full report, actual observable role/context and limitations; shared provider and inherited context do not establish independent peer review.

@@ -1,0 +1,135 @@
+FULL FIRST INTEGRATED-SOURCE AUDIT — EXACT-MATCHING VANISHING MINIMA
+Date: 2026-11-17
+
+1. EXACT ARTIFACT AND VERDICT
+
+Frozen input:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\revision-exactminimum-20261117\manuscript-exactminimum-candidate.tex
+Raw SHA256: 9a17337ad7eaa14703f4af3feb8a8b0ddd3345a3c648b902b55910927a3af7af.
+Length: 85595 bytes. Raw inspection confirms no BOM and no CR bytes; representation UTF-8/LF, no normalization applied.
+
+Preserved predecessor:
+papers/stationary-weighting354/revision-background-20261117/manuscript-background-candidate.tex
+Raw SHA256: be768390e9607a2cedc29315ff204aded526ce3364970a2f4f1650953db1cbfe.
+Git parent/HEAD context: 238c12fa06c95f55780c7791f1d3961148cfb07c.
+
+VERDICT: PASS for this first exact integrated-source audit. The added K proposition, inverse-stationary-map lemma, and exact-matching L proposition faithfully preserve the independently inspected analytic arguments and their necessary assumptions. Pre-existing substantive Sections 2 through the original end of Section 10 are unchanged. No blocking transcription, mathematical scope, reference, or static source defect was found.
+
+The manuscript now correctly rules out deriving a fixed positive normalized potential minimum from the original stationary floor, critical cap, and exact labelled matching. It does not claim gap collapse, does not preserve three potential values for the corrected family, and does not close the original full-gap question. This source verdict is not a grade, PDF assessment, formal verification, originality certificate, terminal commit audit, execution authorization, or publication status.
+
+2. IDENTITY, CONTEXT, AND METHOD
+
+Auditor: separate OpenAI Codex role /root/bootstrap_note_audit, same provider/workflow and inherited programme context, with shared filesystem. The author proofs and previous reports were available. I produced the separate K and L source audits; their verdicts are not automatically transferred to this integration. Exact serving model/backend revision and effective reasoning effort are unattested. No blind, human, provider-independent, or organizationally independent peer review is claimed. No inbound parent message arrived during this audit.
+
+I inspected the full predecessor-to-successor diff, the complete newly added proof block, current preamble/setting/abstract, roadmap, conclusions, positioning and assessment context, bibliography, and both current packet READMEs. The preserved substantive body was checked against its already inspected predecessor by exact text comparison, rather than silently assuming preservation. Static label/reference/citation/environment inspection used text extraction only. This is not a TeX compile or mathematical test.
+
+No source edit, mathematical/numerical/symbolic program, Lean/Lake/TeX execution, runtime, UI, PDF rendering or review, workflow action, push, PR, dispatch, or network write occurred. Primary-source reading was limited as described below. This report is the only newly written artifact of this audit.
+
+3. SOURCE DEPENDENCIES AND PRESERVATION
+
+The following exact source and complete-report hashes were rechecked in the research packet:
+- K: 57e5b9491cc2593c28852d06445b64673e258007cc84b196450c164150eb92e0.
+- Full first K report: f6d74ff79c3c03723dc64b273ac71656224b1a10d1fc1447174e9e2570de661f.
+- L: cbe65eef9bff034561564bed05f2b777a181d73b9a24491324408b26b78a49cc.
+- Full first L report: 0a855ef11d3115bed54a10a3c644bb62a34ae4743330cd7f9d876ec1d8c892d6.
+
+All hashes refer to raw bytes with no normalization. Their full reports retain the narrower K and stronger L scopes separately. K's absence of an exact-matching construction is a historically correct statement about K, not a finding to be overwritten after L.
+
+The complete scientific body from the beginning of Section 2 ('Failure of exact critical-cap transfer') to the former end of Section 10 is exactly the same text as in the accepted positive-background predecessor. The new subsections are appended after J's minimum-vanishing consequence. Therefore the earlier moment, code, low-to-all, localization, tail-space, weak-relaxation, estimation, positive-background, and two-level proofs and their constants have not been changed by this integration.
+
+The full diff consists of the added K/L proof block, updates to abstract/roadmap/provenance/conclusion/review context, and the Lee bibliography entry. Preamble definitions and the motivating admissibility equation are unchanged. No former mathematical theorem was silently strengthened or replaced.
+
+4. K INTEGRATION
+
+Proposition vanishingminimum fixes rho in (0,1), b in (0,1), and a finite s>1. Its quantifiers retain eventual three-valuedness and finite-dimensional filling by h=1. It explicitly makes no exact-matching or collapsing-gap assertion.
+
+The proof retains the nonzero-distance annulus 1<=D<=qL, p=(1-rho)/2, q=(p+1/2)/2, alpha, delta, row mass r, and u=(1-p)^L. The uniform and noise-binomial Chebyshev bounds have the correct denominators. The exclusion of x_0 is necessary and retained; u+r<=1 follows from the disjoint events. Large L supplies all three nonempty regions, and P(y,x_0)<=u holds uniformly because p<1/2.
+
+The choices M=alpha^(-1/(4s)), beta=(1+b)/2, and root t(ut+Mr+1-u-r)=beta are correct. Monotonicity, the value at t=1, and t<=beta/(Mr)->0 establish the required t in (0,1). The exact identity H(x_0)PH(x_0)=beta remains present before normalization.
+
+The normalization bounds 1-2delta+delta u<=Z<=1+2Malpha+M^2alpha imply Z->1. Their use of positivity is legitimate because the compared functions are nonnegative; it is not a claim of general quadratic-form monotonicity under arbitrary signs. The outside-point bound R>=1-u and defect value R(x_0)=beta yield the floor after normalization using beta>b. No assumption that Z<=1 was introduced.
+
+For the upper deviation, the four-term product expansion and Markov Ls contraction yield 2alpha^(3/(4s))+alpha^(1/(2s)); the lower deviation is bounded by u+(1-beta)delta^(1/s). Both tend to zero. The source correctly concludes stationary Ls convergence, moment convergence to one, and eventual cap two. The potential norm exponent remains alpha M^(2s)=alpha^(1/2). The proof also explicitly retains min h=t/sqrt(Z) and Ph(x_0)=beta/(t sqrt(Z)), so it establishes the designated small value subsequently used by L, even though K's displayed proposition emphasizes the minimum.
+
+The final detailed-balance identity verifies actual stationarity, not an abstract surrogate. The subsequent paragraph distinguishes uniformly approximate test-function matching from exact zero Walsh coefficients and explains the necessary-versus-sufficient gap boundary. It faithfully condenses K without dropping a required step.
+
+5. INVERSE STATIONARY LEMMA
+
+The new lemma states strictly positive symmetric stochastic P and a positive mean-one density target; the quantitative clause additionally requires P positive semidefinite and a positive affine density path with E e=0. Read in context, w_0 is one of those mean-one densities, so the path remains normalized. The proof consistently uses that normalization in both its functional and stationary law. The constant is correctly generalized from the cube's n=2^L to arbitrary n:
+ [ceil((1/2)log_2(n/b_0))+2]/(2b_0).
+
+The diagonal exponential terms supply a positive definite Hessian; other exponential terms are convex. For m=max v and d=min mu(x)P(x,x)/2, the functional lower bound de^(2m)-m is correct. It bounds the maximum on each sublevel. If another coordinate tends to minus infinity while the maximum is bounded above, its positive linear weight forces the functional to infinity, proving bounded sublevels. Continuity gives attainment, strict convexity uniqueness, and the stated derivative produces hPh=w. No dependence on a numerical scaling algorithm appears.
+
+The positive Hessian and uniqueness justify smoothly patching the implicit-function solutions along the positive path. This is a complete finite-dimensional existence argument; no unproved global continuation assumption replaces coercivity.
+
+For the actual reversible K, congruence with P supplies nonnegative spectrum, and stochasticity gives spectrum in [0,1]. Thus T=(I-K)/2 has L2(nu) norm at most 1/2. Its signed absolute row sum is exactly 1-K(x,x)<=1, proving its separate infinity contraction. T is explicitly not assumed Markov. With nu_*=min nu and A=nu_*^(-1/2), evaluation plus probability normalization yields ||T^j||_(infinity->infinity)<=min(1,A2^-j).
+
+The geometric identity and prefactor are retained correctly:
+(I+K)^(-1)=1/2 sum_(j>=0)T^j.
+For m=ceil(log_2 A), splitting before j=m gives at most m+2 for the norm sum, hence (m+2)/2. This depends logarithmically on inverse stationary atom size, not on a gap at eigenvalue 1. On the affine path nu_*>=b_0/n, and d log w/dtau=e/w. The exact differentiation identity d log w=(I+K_tau)d log h and integration supply the stated constant. No noncommuting factor or endpoint-only kernel was substituted along the path.
+
+Optional precision, not a blocker: the quantitative sentence of the lemma could explicitly repeat 'w_0 is a positive mean-one density' rather than relying on the immediately preceding target-density sentence. That premise is clear from context and is satisfied in every application. The accepted proof and bound do not need mathematical correction.
+
+6. EXACT-MATCHING L INTEGRATION
+
+Proposition exactvanishingminimum references the unchanged admissibility equation, including its original labelled Walsh subsets and k_L=min{L,floor(C sqrt(L))}. It fixes rho, b, C before taking L to infinity. It states no preservation of three values and no gap collapse.
+
+The proof uses K with the strictly higher floor b_1=(1+b)/2 and beta=(1+b_1)/2, preserving the necessary slack. The exponential Markov estimate for alpha has the correct sign: the bracket e^(lambda q)(1+e^-lambda)/2 has log derivative q-1/2<0 at zero. A fixed small positive lambda makes it less than one. Integrating K's upper and lower errors gives positive alpha exponents 1-1/(4s), 1-1/(2s), together with the exponential u and delta terms. The source correctly obtains ||pi-1||_1<=A_1e^-cL after normalization.
+
+Each nonconstant Walsh coefficient is at most that L1 error, and the exact subtraction e_L retains all terms with 1<=|S|<=k. The total term bound kL^k has logarithm O(sqrt(L)log L)=o(L); no omitted combinatorial factor is present. It follows that epsilon_L is exponentially small up to a subexponential factor and L epsilon_L->0.
+
+Orthogonality makes mean one and the desired Walsh zeros exact. The complete affine path remains above b because the original pi floor is b_1 and epsilon tends to zero. The terminal density has Ls convergence to one and eventual cap two. No extra renormalization is performed that could spoil the exact corrected coefficients.
+
+Positive definite Boolean noise has Walsh eigenvalues rho^|S|>0, supplying every inverse-lemma assumption. With n=2^L, the bound in the integrated proof is exactly
+ eta_L <= [ceil((L+log_2(1/b))/2)+2]epsilon_L/(2b) ->0.
+The initial solution is K's normalized h by uniqueness of the inverse map. The exponential multiplicative comparison then preserves h(x_0)->0 and, by positivity of P, Ph(x_0)->infinity. It also gives ||htilde-h||_(2s)<=(e^eta-1)||h||_(2s)->0. The terminal energy is E w=1 and its true stationary density is exactly w. The finitely many early dimensions are filled with htilde=1 and the terminal sequence is explicitly renamed h_L, so the proposition's notation agrees with its proof.
+
+No assumption from L was lost when converting the note into this shorter manuscript proof. All substantive new steps—scaling existence, inverse stability, exponential error, Fourier correction, and preservation of the exceptional point—remain supplied, not replaced by an unsupported reference to the earlier audit.
+
+7. ABSTRACT, POSITIONING, AND LOGICAL SCOPE
+
+The abstract adds the rare-set/Fourier/scaling mechanism and immediately states that it is not a collapsing-gap construction. In context its 'positive normalized minimum' means the fixed dimension-uniform lower bound used by J; finite positivity is retained everywhere. The roadmap distinguishes K's no-exact-matching result from L's full-hypothesis result. The provenance sentence adds K and L while preserving the preceding source list.
+
+The updated remaining-question paragraph correctly says that all original hypotheses can coexist with vanishing minima, without proving collapse. It leaves the actual high-block and critical weighting endpoint problems open. J remains a sufficient theorem under its additional fixed minimum, and the two-level derivation remains unchanged. The manuscript does not turn the necessary condition from J into a sufficient condition or promote strong finite-norm convergence into a general gap estimate.
+
+The original sentence immediately before the new subsections says that stationary floor and matching have not been shown to exclude vanishing minima. It is logically consistent but now weaker than the new demonstrated non-exclusion. The later theorem and conclusion resolve any ambiguity. A forward reference to exactvanishingminimum would improve local navigation but is not a mathematical blocker and is not required to accept this source.
+
+The material remains grouped within Section 10 of the existing manuscript. K alone is not presented as a separate paper. No original admissibility hypothesis is claimed eliminated, no physical Yang-Mills conclusion is drawn, and no global novelty, optimality, or frontier classification is asserted.
+
+8. REVIEW CONTEXT AND PACKET READMES
+
+The Model assessments and review context section correctly distinguishes public predecessor working-paper status from this unproduced revision. It does not inherit predecessor scores or verdicts. It identifies K/L reports as source-specific, requires separate exact-artifact reports for the integration and any eventual PDF, and discloses shared provider, inherited context, shared files, and unattested backend/effort. Prior failed claims and adverse reports remain part of the described evidence history.
+
+The research README accurately distinguishes historical pending-audit candidate headers from subsequent complete reports. It states the stronger exact-matching conclusion, retains the no-gap-collapse/no-endpoint boundary, and expressly says L does not retain three-valued potentials. It separates later reading from the earlier frozen source's narrower reading scope. It does not claim a grade or rendered-PDF review.
+
+The integration README describes an unchanged predecessor plus K/L, identifies the adjacent exact candidates/reports, and treats the section-only file as editorial evidence rather than a compiled input. It states that the older production request has not been retargeted and that this source is not an AIRR publication. Its description of an earlier K-only draft as unreviewed does not mislabel that draft as a reviewed predecessor.
+
+This audit checks those statements as current source/packet context. It does not yet certify the future Git manifest or commit. The terminal packet should bind this exact source, this full report, K/L exact inputs and their full reports, and the preserved predecessor. No production permission is inferred from a PASS source verdict.
+
+9. STATIC TEX AND REFERENCE INSPECTION
+
+The preamble still defines theorem, lemma, proposition, and corollary environments and the macros used in the added proofs. No package or executable input was introduced. New labels vanishingminimum, inversestationary, and exactvanishingminimum have corresponding uses and are unique. The new lee2016 citation has a bibliography item. Static extraction found no missing ref/eqref labels, duplicate labels, missing citation keys, or begin/end environment count discrepancies in the entire source. Manual reading found the added proof/display structure coherent.
+
+Those checks are limited: matching environment counts and resolvable labels are not a TeX build, page-layout inspection, or proof certificate. The future PDF still requires an authorized compile and visual inspection of all pages, especially the long convex functional, inverse bound, and exact-matching proof displays. The already lengthy abstract may need editorial attention after rendering, but no layout claim is made here and there is no source-blocking issue established without rendering.
+
+The local symbols r, u, M, and m in the new proofs are explicitly introduced and used within their proof scopes. They reuse symbols from earlier sections, but no cross-section formula silently substitutes one meaning for another. The general inverse lemma uses n, then the cube application substitutes n=2^L consistently.
+
+10. PRIMARY READING AND ORIGINALITY LIMITS
+
+Lee's lecture is correctly cited as classical matrix-scaling context with its Section 2 setup, while the manuscript proves its own needed symmetric existence and stability statements. The source does not attribute the new displayed logarithmic bound to Lee. The lecture title/date and relevant setup were inspected in the preceding first L audit:
+https://homes.cs.washington.edu/~jrl/teaching/cse599swi16/notes/lecture1.pdf
+The research README records later author reading of further statements/proofs separately; this does not retroactively alter L's frozen reading claim.
+
+For the new research README reference, I inspected only the primary arXiv abstract and metadata of Kun He, Global Sinkhorn Convergence and Spectral Stability of Matrix Scaling, arXiv:2611.08963v1:
+https://arxiv.org/abs/2611.08963
+Its stated focus on Sinkhorn iteration bounds and spectral certificates for doubly stochastic scaling is consistent with the README's bounded description. I did not read its full proof or determine equivalence/non-equivalence with the inverse bound here. The README properly treats it as related work to examine, not as a novelty certificate or as irrelevant by fiat. No additional mathematical conclusion is imported from it into the manuscript.
+
+The earlier optional Wang precision about additive symmetrization in the general nonsymmetric setting remains inherited from the positive-background report. The present model is reversible, and no theorem from Wang is being used in the new proof. That nonblocking qualification is not erased or converted into a fresh grade.
+
+11. FINAL DISPOSITION
+
+PASS for exact integrated source 9a17337ad7eaa14703f4af3feb8a8b0ddd3345a3c648b902b55910927a3af7af, 85595 raw UTF-8/LF bytes. No blocking objection. The preservation check confirms unchanged prior substantive proofs; the new arguments are complete and correctly scoped.
+
+The two optional editorial clarifications above concern an explicit repetition of the density premise and a forward reference before the new subsections. They are not mathematical repair requests and do not require changing the frozen accepted source. Any later edit nevertheless creates a different artifact hash.
+
+No PDF, grade, originality certificate, formal verification, terminal commit approval, execution authorization, or publication status follows from this source audit. The full-gap question remains open while the uniform-minimum route under the original stationary hypotheses is now rigorously excluded by the integrated construction.
