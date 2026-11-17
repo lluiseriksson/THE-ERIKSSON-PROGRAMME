@@ -1,0 +1,212 @@
+\section{Full spectrum after stationary-density regularization}\label{densityspectrum}
+We now control the reconstructed chain on the regularized side of the
+comparison left open in Section~\ref{regularization}. The result is uniform
+over every admissible input density; no code algebra or lower bound for its
+potential is imposed. It does not compare the reconstructed chain back to
+the original chain.
+
+Fix $0<\rho,b<1$, and put $s=(1+\rho)/(1-\rho)$ and $B=2^{1/s}$.
+The constants in this section are fixed before the dimension, density,
+matching order and smoothing parameter. Define
+\begin{align*}
+ q_0&=2\rho^{-2}+\rho^{-3}-1,& Q_*&=8s,\\
+ \sigma&=\max\left\{4s,\frac{2Q_*^2}{(1-\rho^4)(q_0-1)}\right\},&
+ F_\sigma(q)&=1+\frac{\sigma q/(\sigma+q)-1}{\rho^4}.
+\end{align*}
+Starting at $q_0$, set $q_{n+1}=F_\sigma(q_n)$ only until its first
+crossing $q_{n_*}\geq Q_*$. Take $n_*=0$ if $q_0\geq Q_*$.
+The proof below establishes that this crossing is finite. Set
+\begin{align*}
+ A_*&=b^{-1}(B/b)^{n_*},& C_*&=b^{-1}BA_*^2,\\
+ \theta_{\rm in}&=\min\{1,\sqrt{s-1}\},&
+ \theta_{\rm out}&=\min\{1,(s-1)^{-1/2}\},\\
+ \tau_*&=\tfrac12\min\left\{\theta_{\rm in}\theta_{\rm out},
+                    \sqrt{\frac{s-1}{\sigma-1}}\right\},&
+ \gamma&=\frac1{2s-1}.
+\end{align*}
+In particular, $\tau_*>0$ and $\tau_*\leq1/2$. For an integer $k\geq0$,
+write
+\begin{equation}\label{densityspectrumerror}
+ e_k=B\rho^{(k+1)/2},\qquad
+ \mathcal E_k=(2e_k)^\gamma(C_*+B)^{1-\gamma}
+                 +(B+1)2^{-(k+1)}+e_k^2.
+\end{equation}
+
+\begin{theorem}[Uniform full spectrum on the regularized side]\label{densityspectrumtheorem}
+Let $L\geq1$, $0\leq k\leq L$, and let $\pi$ be a positive mean-one
+density on the cube with
+\[
+ \pi\geq b,\qquad \E\pi^s\leq2,\qquad
+ \E\pi\chi_S=0\quad(1\leq |S|\leq k).
+\]
+For every $0\leq\tau\leq\tau_*$, put $w=P_\tau\pi$.
+There is a unique positive $u$ with $uPu=w$. The actual Doob kernel
+$K_u(x,y)=P(x,y)u(y)/(Pu)(x)$ has stationary density $w$, which satisfies
+the same floor, critical cap and exact matching conditions. Its eigenvalues,
+ordered decreasingly with multiplicities, satisfy
+\[
+ |\lambda_j(K_u)-\lambda_j(P)|\leq\mathcal E_k
+       \quad(1\leq j\leq2^L),\qquad
+ |\operatorname{gap}(K_u)-(1-\rho)|\leq\mathcal E_k.
+\]
+The error decays exponentially in $k$, uniformly in $L,\pi,\tau$ for
+fixed $\rho,b$. At $k=k_L$ in \eqref{admissible} it decays exponentially
+in $\sqrt L$ for each fixed $C>0$.
+\end{theorem}
+
+\begin{proof}
+\emph{Reconstruction and a derived stronger moment.}
+Stochasticity, Jensen's inequality and the Walsh multipliers give
+$\E w=1$, $w\geq b$, $\E w^s\leq2$ and the same zero coefficients
+through degree $k$. Lemma~\ref{inversestationary} supplies the unique
+positive solution of $uPu=w$, with $\E uPu=1$. Its dimension-dependent
+stability estimate is not used here. Ordinary hypercontractivity
+\cite{mos,odonnell} and $\tau^2\leq(s-1)/(\sigma-1)$ give
+\begin{equation}\label{densityhighermoment}
+ \norm w_\sigma\leq\norm\pi_s\leq B.
+\end{equation}
+This stronger norm bound is derived, not an additional premise. It does
+not assert $\E w^\sigma\leq2$.
+
+\emph{A finite inverse-moment crossing.}
+Put $g=Pu$ and $Q=P_{\sqrt\rho}$. Then $\norm{Qu}_2=1$ and
+$\norm g_R\leq1$ for $R=1+\rho^{-1}$, by ordinary
+hypercontractivity applied to $g=Q(Qu)$. The floor $ug\geq b$ gives
+$u^{-1}\leq g/b$, or $\norm u_{-R}\geq b$ in generalized-mean
+notation. Reverse hypercontractivity, including its negative-exponent
+range~\cite{mos}, applies since
+$\rho^2=(1+R)/(1+q_0)$. Thus
+$\norm{g^{-1}}_{q_0}\leq b^{-1}$.
+All functions are strictly positive on a finite space.
+The floor and rowwise Jensen also give
+\[
+ g\geq bP(1/g)\geq b/(Pg),\qquad g^{-1}\leq Pg/b.
+\]
+If $\norm{g^{-1}}_q\leq A_q$ and $q>\sigma/(\sigma-1)$,
+H\"older with $p=\sigma q/(\sigma+q)>1$ gives
+$\norm u_p=\norm{w/g}_p\leq BA_q$.
+Since $Pg=P_{\rho^2}u$, ordinary hypercontractivity then yields
+\begin{equation}\label{densitybootstrap}
+ \norm{g^{-1}}_{F_\sigma(q)}\leq(B/b)A_q.
+\end{equation}
+This iteration uses the newly derived exponent $\sigma$, not the original
+critical exponent's fixed-point formula.
+
+For $q_0\leq q<Q_*$, direct algebra and the choice of $\sigma$ give
+\begin{align*}
+ F_\sigma(q)-q
+ &=\frac{(1-\rho^4)(q-1)-q^2/(\sigma+q)}{\rho^4}\\
+ &\geq\frac{(1-\rho^4)(q_0-1)}{2\rho^4}=:d>0.
+\end{align*}
+Here $q_0>2$, while $\sigma\geq4s>4$, so every input before the
+first crossing satisfies $q>\sigma/(\sigma-1)$. If $q_0<Q_*$, absence
+of a crossing would give $q_n\geq q_0+nd$ for all $n$, a contradiction.
+In fact $n_*\leq\lceil(Q_*-q_0)/d\rceil$. If $q_0\geq Q_*$ no
+step is needed. At the first crossing the last valid step has already
+proved
+\[
+ \norm{g^{-1}}_{q_{n_*}}\leq A_*,\qquad q_{n_*}\geq8s.
+\]
+No assertion about further iterates is required.
+For $U=u/g=w/g^2$, $N=\E U$ and $r=U/N$, H\"older gives
+\begin{equation}\label{densityratiomoment}
+ \norm U_{2s}\leq\norm w_{4s}\norm{g^{-1}}_{8s}^2
+       \leq BA_*^2,\qquad \norm r_{2s}\leq C_*,
+       \qquad \norm w_{2s}\leq B,
+\end{equation}
+where $N\geq b$ is justified independently in the next paragraph.
+
+\emph{Actual normalization and matching rigidity.}
+Let $a=\E u=\E g$ and $v=1-a^2=\norm{Qu-a}_2^2$.
+The floor gives $a\geq b\E(1/g)\geq b/a$, so $a^2\geq b$.
+Cauchy--Schwarz under $w\,d\mu$ gives
+$N=\E_w(g^{-2})\geq(\E_w(g^{-1}))^2=a^2$.
+For the other bound, the reversible conjugate
+$S=M_{\sqrt U}PM_{\sqrt U}$ has Perron eigenvalue one and positive
+spectrum. With $X=M_{\sqrt U}Q$, the matrices $S=XX^*$ and
+$T=X^*X=QM_UQ$ are similar because $X$ is invertible. Thus
+$\norm T_{2\to2}=1$ and testing at the unit constant gives $N\leq1$.
+This proves $b\leq a^2\leq N\leq1$ without any perturbation estimate.
+
+For completeness, the matching argument of Lemma~\ref{rigidity} can
+be used directly with exponent $\sigma$. Since $\sigma'<2$, the
+degree-$>k$ part of $g=Q(Qu)$ has $L^{\sigma'}$ norm at most
+$\rho^{(k+1)/2}\sqrt v$. Exact matching gives
+$\E w\Pi_{\leq k}g=a$, hence
+$\E wg\leq a+e_k\sqrt v$.
+Cauchy--Schwarz under $u\,d\mu$ gives
+$1=(\E ug)^2\leq a\E ug^2=a\E wg$.
+Consequently $v\leq ae_k\sqrt v$, including $v=0$, and
+$a^2\geq(1+e_k^2)^{-1}$.
+The actual identity $\E\sqrt{rw}=a/\sqrt N\geq a$ yields
+\[
+ \norm{\sqrt r-\sqrt w}_2^2
+       \leq2(1-a)\leq e_k^2,\qquad \norm{r-w}_1\leq2e_k.
+\]
+Interpolation with \eqref{densityratiomoment} gives
+\begin{equation}\label{densitycriticalcloseness}
+ \norm{r-w}_s\leq(2e_k)^\gamma(C_*+B)^{1-\gamma},
+ \qquad \gamma=\frac1{2s-1}.
+\end{equation}
+
+\emph{Closeness to the constant and the full spectrum.}
+Factor $P_\tau=P_{\theta_{\rm out}}P_\beta P_{\theta_{\rm in}}$,
+where $\beta=\tau/(\theta_{\rm in}\theta_{\rm out})\leq1/2$.
+The input map contracts $L^s$ to $L^2$: use hypercontractivity if
+$s<2$, and the identity with norm monotonicity if $s\geq2$.
+The output contracts $L^2$ to $L^s$: use hypercontractivity if $s>2$,
+and the identity with norm monotonicity if $s\leq2$.
+The Fourier support of $\pi-1$ lies above degree $k$, so the middle
+map contracts its $L^2$ norm by $\beta^{k+1}$. Therefore
+\[
+ \norm{w-1}_s\leq(B+1)2^{-(k+1)}.
+\]
+This also holds at $\tau=0$, where the mean-zero part vanishes.
+Using $U-1=N(r-w)+N(w-1)+(N-1)$, $N\leq1$ and
+$1-N\leq e_k^2/(1+e_k^2)\leq e_k^2$ gives
+$\norm{U-1}_s\leq\mathcal E_k$.
+The critical sandwich estimate of Lemma~\ref{criticalsandwich} gives
+\[
+ \norm{T-P}_{2\to2}=\norm{QM_{U-1}Q}_{2\to2}
+              \leq\norm{U-1}_s\leq\mathcal E_k.
+\]
+Indeed, $2s'=1+\rho^{-1}$ and $Q:L^2\to L^{2s'}$ is a contraction,
+so H\"older bounds $|\E(U-1)(Qf)(Q\ell)|$ by $\norm{U-1}_s$ for
+arbitrary unit $L^2$ functions. This controls the full operator.
+The self-adjoint min--max principle compares every ordered eigenvalue
+of $T$ and $P$; the exact similarity above identifies the spectrum of
+$T$ with that of $K_u$. No uniform condition number for $X$ is used.
+Since $\lambda_2(P)=\rho$ for $L\geq1$, the gap bound follows.
+All three terms of \eqref{densityspectrumerror} decay exponentially in
+$k$ for fixed $\rho,b$. At $k=L$ the high-degree space is zero; at
+$k=0$ the same argument uses mean one. These endpoints do not require
+a separate assumption.
+\end{proof}
+
+\begin{proposition}[Fixed smoothing need not be a small density perturbation]\label{densityperturbationfailure}
+Fix $C>0$ and $0\leq\tau<1$. There are energy-normalized positive
+potentials $h_L$ satisfying all of \eqref{admissible} such that
+\[
+ \norm{\pi_L-P_\tau\pi_L}_s\longrightarrow\varepsilon>0.
+\]
+\end{proposition}
+\begin{proof}
+Take $\varepsilon=\min\{(1-b)/2,(B-1)/2\}>0$. For all sufficiently
+large $L$, one has $k_L<L$. Set $\pi_L=1+\varepsilon\chi_{[L]}$ in
+those dimensions. It has mean one, minimum at least $(1+b)/2>b$,
+maximum at most $(1+B)/2<B$, and no nonconstant Fourier coefficients
+below degree $L$. In particular $\E\pi_L^s<2$ and the required matching
+holds. Lemma~\ref{inversestationary} realizes it as $h_LPh_L$ for a
+positive energy-normalized potential. Use $h_L=1$ in the remaining
+finitely many dimensions. Since $|\chi_{[L]}|=1$,
+\[
+ \norm{\pi_L-P_\tau\pi_L}_s
+       =\varepsilon(1-\tau^L)\longrightarrow\varepsilon.
+\]
+\end{proof}
+This refutes only the uniformly vanishing $L^s$ premise for a transfer
+argument. It does not refute a spectral comparison: the parity family
+itself belongs to an already controlled code class. Theorem~\ref{densityspectrumtheorem}
+establishes the regularized spectrum on its specified interval, which
+excludes $\tau=1$. Neither a comparison with the original spectrum nor
+an extension to every $\tau<1$ is inferred.
