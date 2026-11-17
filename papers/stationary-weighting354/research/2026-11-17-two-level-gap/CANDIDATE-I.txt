@@ -1,0 +1,190 @@
+CANDIDATE I — UNIFORM FULL GAP FOR ACTUAL TWO-LEVEL BOOLEAN DOOB POTENTIALS
+2026-11-17. First frozen analytic candidate, pending audit.
+Research base 65661354d8a8c6ad8c60b26de5c98fdade7cfd35.
+Grouped extension of the existing manuscript's simple-family discussion, not a standalone paper.
+
+1. Statement and exact scope
+
+Let mu be uniform on {-1,1}^L, L>=1; fix 0<rho<1 and 0<b<1.
+Let P=P_rho and let h>0 take at most two values. Normalize E_mu hPh=1, put g=Ph, pi=hg, nu=pi mu, and define the ACTUAL kernel
+K(x,y)=P(x,y)h(y)/g(x).
+Assume pi>=b and E_mu pi^s<=2, where
+s=(1+rho)/(1-rho), s'=s/(s-1), B=2^(1/s).
+No exact marginal matching is assumed.
+
+Claim I: there is an explicit G(rho,b)>0, independent of L, the two values of h, and the geometry or mass of their level sets, such that gap(K)>=G(rho,b).
+
+One deliberately conservative constant is as follows:
+kappa=4B/b^2;
+eta=(1-2^(-1/s))/(1+kappa);
+t0=min{2^(-s), [eta^2/(4kappa)]^s};
+epsilon0=b*t0;
+gamma_bal=[b^2(1-rho)/(4*2^(s')*B^(2s'))]*epsilon0^(s'-1);
+Phi0=min{eta/2,gamma_bal};
+G(rho,b)=min{b^2(1-rho)/16, Phi0^2/4}.
+
+All are strictly positive for fixed rho,b. Since s>1, kappa>4 and 2^(-1/s)>1/2, we have 0<eta<1/2 and 0<epsilon0<1/2. No optimality is claimed.
+
+This is a full finite-chain spectral-gap theorem for the RESTRICTED two-level class, not merely quotient, bounded-observable, or killed-set control. The arbitrary-positive-potential question remains open. Two-level structure is an explicit restriction, not a proved replacement for general h. No hypothesis is eliminated from the unrestricted question. The theorem needs no matching within its stated restricted class.
+
+2. A derived lower bound on the potential
+
+The constant potential normalizes to h=1 and gives K=P, with gap1-rho, so assume two distinct values m<M.
+Let A={h=M}, alpha=mu(A) in(0,1), and let its complement be denoted Bset.
+Write a=E h=E g. Boolean positivity gives
+1=<h,Ph>=||P_sqrt(rho)h||_2^2 >=(E h)^2,
+so a<=1.
+
+Integrate the floor on Bset, where h=m:
+m E(g 1_Bset)>=b(1-alpha).
+Since E(g 1_Bset)<=E g=a<=1, this gives m>=b(1-alpha).
+Also g<=M everywhere and the floor at any point of Bset gives mM>=b.
+Since M alpha<=E h<=1, 1/M>=alpha, hence m>=b/M>=b alpha.
+Therefore
+m>=b max(alpha,1-alpha)>=b/2.                    (I1)
+
+This is stronger than the previously recorded g>=b/2 observation for this class, and is derived from normalization, floor and two-level structure alone.
+Because g>=m, on A one has pi=M g>=Mm. The cap yields
+(Mm)^s alpha<=E pi^s<=2,
+hence
+(M/m)*alpha^(1/s)<=B/m^2<=4B/b^2=kappa.          (I2)
+No bound on M/m itself is assumed; alpha may tend to zero.
+
+3. Hypercontractive restriction bounds
+
+All operators in this section act on L2(mu). For Q=P_sqrt(rho), ordinary Boolean hypercontractivity gives
+||Qf||_2<=||f||_(1+rho).
+For f supported on U,
+||f||_(1+rho)<=mu(U)^(1/(1+rho)-1/2)||f||_2
+                 =mu(U)^(1/(2s))||f||_2.
+Consequently, for any U,V and f,g supported there,
+|<f,Pg>|=|<Qf,Qg>|
+ <=[mu(U)mu(V)]^(1/(2s))||f||_2||g||_2.
+In particular
+||1_U P1_V||_(2->2)<=[mu(U)mu(V)]^(1/(2s)),
+and ||1_U P1_U||<=mu(U)^(1/s).                 (I3)
+
+4. Actual killed operator on the high level
+
+Set u=h/g and S=M_sqrt(u) P M_sqrt(u).
+The isometry f->sqrt(pi)f from L2(nu) to L2(mu) conjugates K to S.
+It commutes with restriction to coordinate sets, so killed compressions of K and S have identical spectra and norms. P and S are positive definite, and K is reversible and Markov.
+
+Write P_A=1_A P1_A restricted to A and R=diag(P1_A)|A.
+Put r=m/M in(0,1), q=alpha^(1/s).
+The internal Dirichlet form gives P_A<=R in Loewner order:
+<f,(R-P_A)f>=(1/2) sum_(x,y in A)mu(x)P(x,y)(f(x)-f(y))^2>=0.
+By (I3), P_A<=q I.
+The actual two-level relation is
+g/M = r+(1-r)P1_A on A.
+Thus S_AA=D^(-1/2)P_A D^(-1/2), D=rI+(1-r)R.
+
+Convexly combine P_A<=q I and P_A<=R.
+With lambda=q/[r+(1-r)q] and theta=r/[r+(1-r)q],
+theta*q=lambda*r and 1-theta=lambda*(1-r).
+Therefore P_A<=theta*q I+(1-theta)R=lambda D.
+It follows that
+||S_AA||<= q/[r+(1-r)q],
+1-||S_AA|| >= (1-q)/[1+(M/m-1)q].             (I4)
+
+If alpha<=1/2, (I2) and q<=2^(-1/s) give
+||S_AA||<=1-eta.                              (I5)
+Every compression S_UU with U subset A satisfies the same bound.
+This estimate uses the actual denominator Ph. It was not available for the surrogate slow-vertex kernel H, which has no Doob potential.
+
+5. Small stationary cuts, including cuts meeting BOTH levels
+
+Continue in the case alpha<=1/2. For any cut C with 0<nu(C)<=epsilon0, write U=C cap A and V=C cap Bset.
+The floor gives mu(V)<=nu(C)/b<=t0.
+On Bset, u=m/g<=1; everywhere on A, u=M/g<=M/m.
+
+Using (I3), the low-block compression satisfies
+||S_VV||<=mu(V)^(1/s)<=t0^(1/s)<=1/2.
+For completeness, entrywise positivity and u<=1 imply
+<f,S_VV f><=<|f|,P_VV|f|><=mu(V)^(1/s)||f||_2^2;
+S_VV is PSD, so this bounds its operator norm.
+
+The cross block obeys
+||S_UV||<=sqrt(M/m)[mu(U)mu(V)]^(1/(2s))
+         <=sqrt(kappa)*mu(V)^(1/(2s))
+         <=eta/2,                            (I6)
+where (I2) and the definition of t0 are used.
+Its transpose has the same norm. An off-diagonal self-adjoint block matrix with entries T,T* has norm||T||. Combining (I5)-(I6), the diagonal-block maximum is at most1-eta (because eta<1/2), hence
+||S_CC||<=1-eta/2.                            (I7)
+Empty U or V causes no difficulty: the corresponding block is zero.
+
+For a stationary cut flow
+F_h(C)=sum_(x in C,y outside C)mu(x)P(x,y)h(x)h(y),
+the actual Dirichlet form gives
+F_h(C)=<1_C,(I-K)1_C>_nu.
+Restriction and the conjugacy above imply
+F_h(C)>= (eta/2)nu(C) for 0<nu(C)<=epsilon0.   (I8)
+
+6. Remaining cuts from the floor and moment cap
+
+For all real f, h>=m and positive edge weights give
+D_K(f)>=m^2 D_P(f).
+For indicators, P's gap yields
+F_h(C)>=m^2(1-rho)mu(C)mu(C^c).
+
+The stationary cap and Holder give nu(E)<=B mu(E)^(1/s') for every E.
+If epsilon0<=nu(C)<=1/2, then
+mu(C)>=(nu(C)/B)^(s'),
+mu(C^c)>=(1/(2B))^(s').
+Using (I1) and dividing the cut-flow bound by nu(C),
+F_h(C)/nu(C)
+ >=[b^2(1-rho)/(4*2^(s')*B^(2s'))]*nu(C)^(s'-1)
+ >=gamma_bal.                               (I9)
+
+Equations (I8)-(I9) prove the UNIFORM conductance estimate
+Phi(K):=inf_(0<nu(C)<=1/2) F_h(C)/nu(C) >=Phi0.
+Thus ALL cuts are covered, not merely the high-level set or cuts contained in it.
+
+Apply the classical lazy-chain Cheeger inequality to Kbar=(I+K)/2.
+This chain is lazy and reversible, Phi(Kbar)=Phi(K)/2 and gap(Kbar)=gap(K)/2.
+The bound gap(Kbar)>=Phi(Kbar)^2/2 yields
+gap(K)>=Phi(K)^2/4>=Phi0^2/4.                 (I10)
+Using lazification here intentionally sacrifices a factor to match exactly the cited lazy theorem's assumptions. No unproved nonlazy extension is required.
+
+7. The other level-set size case
+
+If alpha>1/2, M alpha<=1 implies M<2, whereas m>=b/2.
+Here pi=hg<=M^2. For every f, centering by E_mu f gives
+Var_nu(f)<=M^2 Var_mu(f),
+while D_K(f)>=m^2(1-rho)Var_mu(f).
+Therefore
+gap(K)>=(m/M)^2(1-rho)>=b^2(1-rho)/16.
+Together with (I10), this proves the stated G in every case and every L.
+For constant h, gap1-rho also dominates G.
+
+8. Interpretation, falsifier and relation to H
+
+The original arbitrary-potential stationary-gap problem is not solved.
+The potential is restricted to at most two values, while their ratio and the geometry of their level sets are unrestricted and may vary with dimension.
+The cap proves (M/m)alpha^(1/s)<=kappa; it does not prove a uniform pointwise ratio.
+The high-level killed bound, the small mixed-cut argument and the remaining-cut comparison collectively prove a full gap for this class.
+This excludes all collapsing-gap mechanisms based on a single constant-height plateau above a constant background, subject to the original floor/cap, without matching.
+
+H had proved that abstract E/F/G bounds and low-window noise agreement alone cannot close a full gap. The present proof instead retains g=m+(M-m)P1_A pointwise and the actual edge h(x)h(y), which H cannot satisfy.
+Neither old abstract convergence nor an assumed killed estimate is substituted for those identities.
+The general case with multiple or continuously varying positive levels remains open.
+
+A falsifier is a finite two-level positive h meeting the exact normalized floor/cap for which the displayed G bound fails, or a gap in the Loewner interpolation, mixed-cut estimate, normalization or Cheeger application.
+No numeric experiment, local mathematical execution, Lean proof, PDF compilation, grade or publication has occurred for this frozen candidate. Audit is required.
+
+9. Primary-source positioning and review context
+
+Ordinary Boolean hypercontractivity is classical:
+Ryan O'Donnell, CMU Lecture16, Theorem1.1,
+https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf
+The theorem statement and its parameter range were read in this unit. (I3) is a direct restriction/Holder consequence, not a new hypercontractive theorem.
+
+Cheeger conductance comparison is classical:
+Yuval Peres, Aspects of Markov chains, Theorem3.5, PDF pages6-7,
+https://sites.math.duke.edu/~rtd/CPSS2009/peres6.pdf
+Read the lazy reversible statement, conductance context and lower-bound proof. (I10) applies it only after explicit lazification. The author-hosted Levin-book PDF lookup timed out; no full-book reading is claimed.
+
+A bounded targeted search for two-level Boolean Doob spectral-gap results did not establish an exact prior match. Absence from returned results is not novelty evidence sufficient for a first-discovery claim. The earlier integrated manuscript contains the two-level critical-moment comparison, but not this full-gap argument; this is a targeted local comparison, not an exhaustive programme inventory.
+The explicit combination, constants and two-level specialization require mathematical audit and further priority assessment before any novelty or frontier classification. Do not split the killed lemma, conductance bound and full gap into separate small papers; keep them with the grouped programme.
+
+Authoring: OpenAI Codex role, exact serving backend/version and effort unattested. First source candidate pending separate analytic audit; no numerical assessment, exact-PDF review, independent peer-review or publication status. Subsequent reports must preserve the exact source hash and all objections and disclose same-provider inherited context.

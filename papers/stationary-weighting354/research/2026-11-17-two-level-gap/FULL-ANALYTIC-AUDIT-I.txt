@@ -1,0 +1,180 @@
+FULL FIRST ANALYTIC AUDIT I — ACTUAL TWO-LEVEL BOOLEAN DOOB FULL GAP
+Audit date: 2026-11-17.
+
+1. EXACT INPUT, VERDICT, AND CONTEXT
+
+Frozen input:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\research\2026-11-17-two-level-gap\CANDIDATE-I.txt
+Raw SHA256, no normalization:
+d2077d48c5a202aca95a1ef0bd53c7dcda407b391f0f7b13a2b126f1e2b8ba01
+Length: 10278 bytes. Supplied text representation: UTF-8/LF.
+Research base and worktree HEAD verified:
+65661354d8a8c6ad8c60b26de5c98fdade7cfd35.
+
+VERDICT: PASS as an analytic theorem with exactly the stated restricted hypotheses. The proof gives a positive dimension-independent lower bound on the full spectral gap of every normalized actual Boolean Doob kernel whose positive potential takes at most two values and whose stationary density satisfies the stated floor and critical cap. The displayed constant G(rho,b) is valid. No blocking error was found in the lower-potential estimate, restricted hypercontractivity, Loewner interpolation, mixed-cut control, remaining-cut argument, or lazy Cheeger conversion.
+
+This is a substantive restricted-class full-gap result, rather than merely a quotient statement, an assumed killed bound, or bounded-observable decay. Its originality and research significance relative to the full literature have not been certified. It does not solve the arbitrary-positive-potential problem and does not turn the two-level restriction into a theorem about arbitrary h. No numerical grade, exact-PDF assessment, formal proof, publication status, or independent-peer-review claim is assigned.
+
+Auditor identity: separate OpenAI Codex role /root/bootstrap_note_audit. Actual serving model/backend revision and reasoning-effort setting are unattested. Author and auditor share a provider/workflow and inherited programme context; this is not blind, human, organizationally independent, or provider-independent review. I read the entire candidate, relevant prior manuscript passages, and primary theorem statements. No inbound parent messages arrived during this audit.
+
+Operational scope: the repository Operational Governance Charter was read in this audit sequence, with its execution restrictions reread for this task. Only file/Git reads, hashes, primary-source reading, analytic reasoning, and this report write were used. No numerical or symbolic program, mathematical test, Lean, TeX, Colab/runtime, UI, source modification, push, PR, dispatch, or network write was performed. No disposable clone was created. Existing production files, pending execution requests, states, and previous audit reports were untouched.
+
+2. DEFINITIONS AND CONSTANTS
+
+For 0<rho<1, Boolean noise P=P_rho is symmetric, strictly entrywise positive, and has Walsh eigenvalues rho^j for j=0,...,L. It preserves uniform mu and has gap 1-rho. With positive h and g=Ph, the actual K(x,y)=P(x,y)h(y)/g(x) is stochastic and strictly positive. Normalization E hPh=1 makes nu(x)=mu(x)h(x)g(x) a probability distribution. Detailed balance gives
+nu(x)K(x,y)=mu(x)P(x,y)h(x)h(y),
+which is the edge law used throughout the proof.
+
+Set s=(1+rho)/(1-rho)>1, s'=s/(s-1)>1 and B=2^(1/s)>1. For fixed 0<b<1 all displayed constants are finite and positive:
+kappa=4B/b^2,
+eta=(1-2^(-1/s))/(1+kappa),
+t0=min(2^(-s),(eta^2/(4kappa))^s), epsilon0=b*t0,
+gamma_bal=b^2(1-rho)*epsilon0^(s'-1)/(4*2^(s')*B^(2s')),
+Phi0=min(eta/2,gamma_bal),
+G=min(b^2(1-rho)/16,Phi0^2/4).
+
+Since kappa>4 and 2^(-1/s)>1/2, the numerator of eta is in (0,1/2), and 0<eta<1/2. Also t0<=2^(-s)<1/2 and 0<b<1 imply 0<epsilon0<1/2. No dependence on L, level ratio, or shape of the level set is hidden in these constants. They may deteriorate when rho approaches an excluded endpoint or b approaches zero; no parameter-uniform lower bound across those limits is claimed.
+
+For a constant positive h, normalization forces h=1 and K=P. Its gap 1-rho dominates G. Thus the subsequent proof may assume two distinct attained values, with both level sets nonempty. The finite-dimensional meaning of gap is 1 minus the largest nonconstant eigenvalue. K is also spectrally positive, as verified below, so no separate negative-eigenvalue obstruction is left unresolved.
+
+3. DERIVED LOWER POTENTIAL AND LEVEL-RATIO/MASS CONTROL
+
+Let h=M on A of mass alpha in (0,1), and h=m on its nonempty complement, with 0<m<M. Put a=E h. Since Q=P_sqrt(rho) preserves constants,
+1=||Qh||_2^2>=(E Qh)^2=a^2,
+and hence a<=1. No false claim that ||h||_2<=1 is used.
+
+On Bset the floor reads m*g>=b. Integrating only on this set gives
+m E(g1_Bset)>=b(1-alpha).
+As E(g1_Bset)<=E g=a<=1, it follows that m>=b(1-alpha). Independently, g<=M everywhere, so the floor at any Bset point implies mM>=b. Since alpha*M<=E h<=1, 1/M>=alpha. Therefore
+m>=b/M>=b*alpha.
+Together these yield m>=b max(alpha,1-alpha)>=b/2. All divisions are by positive numbers and both inequality directions are correct. The use of a single constant low value on the entire complement is explicit and essential; this is not a lower bound proved here for arbitrary multilevel potentials.
+
+Because g>=m, the high-level stationary density satisfies pi=Mg>=Mm on A. Its cap gives (Mm)^s alpha<=2, or Mm*alpha^(1/s)<=B. Dividing by m^2 and using the derived m>=b/2 yields
+(M/m)*alpha^(1/s)<=B/m^2<=4B/b^2=kappa.
+Thus the high-level ratio is allowed to diverge only with compensating small mass. The proof does not assume a uniform bound on M/m or infer one when alpha tends to zero.
+
+4. RESTRICTION BOUNDS FROM ORDINARY HYPERCONTRACTIVITY
+
+The hypercontractive use is Q=P_sqrt(rho): L^(1+rho)(mu) -> L^2(mu), exactly at the ordinary Boolean admissibility boundary. For a function supported on U, Holder gives
+||f||_(1+rho)<=mu(U)^[1/(1+rho)-1/2]||f||_2
+              =mu(U)^(1/(2s))||f||_2.
+This direction is appropriate because 1+rho<2. For f and g supported on U and V,
+|<f,Pg>|=|<Qf,Qg>|
+ <=[mu(U)mu(V)]^(1/(2s))||f||_2||g||_2.
+Taking the bilinear supremum establishes the operator norm bound in I3. For U=V it is mu(U)^(1/s). Empty sets correspond to zero operators; no division by their masses is required.
+
+The square-root factorization P=Q^2 and support estimate concern the unweighted reference measure mu. They are not asserted directly for the weighted K. The later multiplier bounds correctly transfer them to its conjugated blocks.
+
+5. CONJUGACY AND THE ACTUAL HIGH-LEVEL KILLED OPERATOR
+
+The map T:f -> sqrt(pi)f is an isometry from L2(nu) to L2(mu). A direct entry calculation gives
+T K T^(-1)=M_sqrt(h/g) P M_sqrt(h/g)=S.
+Indeed the coefficient equals sqrt(h(x)/g(x))*P(x,y)*sqrt(h(y)/g(y)). Both T and T^(-1) are positive diagonal maps and commute with restriction to any subset. Thus the killed restrictions are unitarily conjugate in the appropriate restricted Hilbert spaces, not merely related by an uncontrolled similarity. P is positive definite and the multipliers are invertible, so S is positive definite; K is therefore positive definite in L2(nu), self-adjoint, and a Markov contraction.
+
+On A put r=m/M and R=diag(P1_A)|A. The exact two-level identity is
+g/M=r+(1-r)P1_A.
+Consequently D=rI+(1-r)R is strictly positive and S_AA=D^(-1/2)P_A D^(-1/2).
+
+For the restricted reference operator P_A, symmetry gives
+<f,(R-P_A)f>=(1/2)sum_(x,y in A)mu(x)P(x,y)(f(x)-f(y))^2>=0.
+There is no omitted boundary term because R is the internal row sum. Diagonal terms contribute zero. Hence P_A<=R. The independent I3 bound and positivity give P_A<=qI, q=alpha^(1/s) in (0,1).
+
+Let Hden=r+(1-r)q. The proposed interpolation coefficient theta=r/Hden is in (0,1), since Hden>r and Hden>0. With lambda=q/Hden,
+theta*q=lambda*r,
+1-theta=lambda*(1-r).
+A convex combination of the two valid Loewner inequalities therefore yields
+P_A<=theta*qI+(1-theta)R=lambda D.
+No commutativity between P_A and R is required for this convex combination or its congruence by D^(-1/2). Thus 0<=S_AA<=lambda I and ||S_AA||<=lambda<1. Algebra then gives
+1-lambda=r(1-q)/(r+(1-r)q)
+        =(1-q)/(1+(M/m-1)q).
+This verifies I4 without a free or dimension-dependent potential parameter being dropped incorrectly.
+
+If alpha<=1/2, then 1-q>=1-2^(-1/s), while
+1+(M/m-1)q<=1+(M/m)q<=1+kappa.
+Both numerator and denominator are positive. Their ratio is therefore at least eta. Every compression to U subset A remains PSD with norm at most 1-eta by the Rayleigh variational bound. This supplies an actual proved killed estimate, rather than inserting it as a premise. Crucially, it retains g=Ph in D; the surrogate H has no such representation.
+
+6. SMALL CUTS MEETING EITHER OR BOTH LEVELS
+
+Assume alpha<=1/2 and let 0<nu(C)<=epsilon0, with U=C intersect A and V=C intersect Bset. The floor implies mu(V)<=nu(C)/b<=t0. On Bset, g>=m implies u=m/g<=1; on A, u=M/g<=M/m.
+
+The low block is M_sqrt(u) P_VV M_sqrt(u), with multiplier norm at most one. Therefore its norm is at most ||P_VV||<=mu(V)^(1/s)<=t0^(1/s)<=1/2. The entrywise-positive quadratic-form explanation in the candidate is also valid, including for signed f after replacing it by |f|. Positivity of the block ensures its operator norm is controlled by this upper quadratic bound.
+
+For the cross block, direct multiplication and I3 give
+||S_UV||<=sqrt(M/m)[mu(U)mu(V)]^(1/(2s))
+ <=sqrt((M/m)alpha^(1/s))*mu(V)^(1/(2s))
+ <=sqrt(kappa)*t0^(1/(2s))<=eta/2.
+The last step uses t0<=(eta^2/(4kappa))^s, not merely its other bound. This is where the cap compensates for arbitrarily large M/m. No smallness assumption on mu(U) beyond U subset A is needed.
+
+In the orthogonal decomposition into U and V, the block-diagonal part has norm at most max(1-eta,1/2)=1-eta. For any operator T, the self-adjoint off-diagonal block with T and T* has norm ||T||, since its square has diagonal blocks TT* and T*T. Hence the cross contribution is eta/2, not an unaccounted eta or dimension factor. The triangle inequality proves ||S_CC||<=1-eta/2. The same argument applies if one block is empty.
+
+For the vector v_C=sqrt(pi)1_C, ||v_C||_mu^2=nu(C). Conjugacy and restriction imply
+<1_C,K1_C>_nu=<v_C,S_CC v_C>_mu<=(1-eta/2)nu(C).
+Using the exact stationary edge law gives
+F_h(C)=<1_C,(I-K)1_C>_nu>=eta*nu(C)/2.
+The definition of F_h(C) uses only the outward orientation; the two orientations in the Dirichlet form with its factor 1/2 yield exactly that flow. There is no factor-of-two error in I8.
+
+7. REMAINING CUTS AND COMPLETE CONDUCTANCE COVERAGE
+
+The pointwise lower bound h>=m implies h(x)h(y)>=m^2 on every reference edge. Therefore D_K(f)>=m^2 D_P(f) for all real f, using the actual normalized edge law. For an indicator, the unweighted P gap gives
+F_h(C)>=m^2(1-rho)mu(C)mu(C^c).
+
+The cap gives ||pi||_s<=B and hence nu(E)<=B mu(E)^(1/s') for every E. This direction of Holder supplies lower, not upper, bounds on reference masses when stationary masses are known. If epsilon0<=nu(C)<=1/2, then
+mu(C)>=(nu(C)/B)^(s'),
+mu(C^c)>=((1-nu(C))/B)^(s')>=(1/(2B))^(s').
+Combining with m^2>=b^2/4 and dividing by positive nu(C) gives
+F_h(C)/nu(C)>=b^2(1-rho)*nu(C)^(s'-1)/(4*2^(s')*B^(2s'))
+ >=gamma_bal,
+because s'-1>0 and nu(C)>=epsilon0. The exponent, denominator, and inequality directions match I9 exactly.
+
+The two ranges (0,epsilon0] and [epsilon0,1/2] cover every cut relevant to conductance, with harmless overlap at the threshold. This includes arbitrary cuts straddling the two levels, not only A, its complement, or sets contained within a single level. Thus Phi(K)>=min(eta/2,gamma_bal)=Phi0 for alpha<=1/2. It is this all-cut statement that makes the result a full-gap theorem.
+
+8. LAZY CHEEGER CONSTANT AND THE LARGE-HIGH-SET CASE
+
+The classical lazy reversible Cheeger theorem cited in the candidate states that the gap is at least conductance squared divided by two. For Kbar=(I+K)/2, reversibility and stationarity persist, all holding probabilities are at least 1/2, every off-diagonal flow is halved, and the nontrivial eigenvalues are (1+lambda_i(K))/2. Therefore
+Phi(Kbar)=Phi(K)/2, gap(Kbar)=gap(K)/2.
+Applying the cited theorem gives
+gap(K)/2>=Phi(K)^2/8,
+or gap(K)>=Phi(K)^2/4>=Phi0^2/4.
+The factor 1/4 is conservative but correct. No unproved nonlazy version is needed. Spectral positivity already established for K means this controls the full nonconstant spectrum as well as the usual Poincare gap.
+
+If alpha>1/2, the separate comparison is valid: M alpha<=1 implies M<2, and m>=b/2. As g<=M and h<=M, pi<=M^2. For any f, choosing its mu-mean as a test centering value in the weighted variance gives
+Var_nu(f)<=E_nu[(f-E_mu f)^2]<=M^2 Var_mu(f).
+The edge comparison gives D_K(f)>=m^2(1-rho)Var_mu(f). Combining yields the Rayleigh lower bound
+gap(K)>=(m/M)^2(1-rho)>=b^2(1-rho)/16.
+This argument controls every nonconstant f, not just indicators. Alpha=1/2 belongs to the preceding branch. Constant potentials were handled separately. These cases exhaust all admissible h and every L>=1, proving the displayed minimum G.
+
+9. LOCAL COMPARISON AND PRIMARY-SOURCE CHECK
+
+The retained integrated manuscript's simplefamilies proposition states a lower bound on g and critical-weighting moment comparison for two-level potentials. Its proof and the surrounding discussion were read. It does not contain the present arbitrary-geometry two-level full-gap proof. The candidate is therefore a substantive extension relative to those inspected local passages: it proves a lower bound on h, combines high-level killed control with mixed-cut estimates, and covers all stationary cuts. This is a local comparison, not an exhaustive inventory of every programme artifact or a literature priority result.
+
+Primary sources inspected:
+
+Ryan O'Donnell, Lecture 16: The Hypercontractivity Theorem, Theorem 1.1, first PDF page:
+https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf
+The statement permits noise parameter at most sqrt((p-1)/(q-1)); p=1+rho, q=2, and noise sqrt(rho) meet it exactly. This verifies the invoked classical input and its parameter range, not originality of I3.
+
+Yuval Peres, Aspects of Markov chains, Theorem 3.5, PDF pages 6–7:
+https://sites.math.duke.edu/~rtd/CPSS2009/peres6.pdf
+I inspected the lazy/reversible statement and the adjacent lower-bound argument. Its normalization gives Phi^2/2<=gap. The explicit lazification in I therefore uses the stated theorem legitimately. I do not claim to have read a complete book or all material in these lecture notes.
+
+The candidate's reported bounded search does not certify priority, and this audit does not promote it to such a certificate. No exact global novelty conclusion or frontier classification follows from the absence of a search match. The mathematical argument and constants above were assessed on their own, using these classical inputs.
+
+10. OBJECTIONS, LIMITATIONS, AND DISPOSITION
+
+Blocking objections: none found.
+
+The following scope limits are material and must accompany any later integration:
+* The theorem requires the actual Boolean Doob relation, normalization, stationary floor, stated cap, fixed rho and b, and at most two positive potential values. It is not a theorem for arbitrary reversible kernels sharing some consequences.
+* There is no assumed bound on the level ratio or level-set geometry; those aspects are genuinely unrestricted within the two-level class. The moment-weighted ratio bound is derived.
+* Exact coordinate matching is not used. Removing matching within this explicitly restricted class does not remove or settle its role for arbitrary potentials.
+* The two-level restriction is not a disguised proof of a general structural reduction. No reduction of arbitrary h to two levels is established.
+* The full-gap conclusion is stronger than the earlier bounded-observable estimates, but only for this class. It neither contradicts H nor closes the unrestricted problem.
+* The constants are deliberately weak and no optimality, matching asymptotics, formal verification, human peer review, PDF assessment, or publication status is certified.
+
+Presentation observations are nonblocking: the letter lambda in the Loewner interpolation is a temporary scalar bound, not a new eigenvalue being identified; the text makes its definition explicit. Gap may be defined explicitly as 1-lambda_2 on future integration, with positivity explaining its full-spectrum meaning. The present proof already supplies the necessary facts. Neither observation requires altering the frozen input for the current analytic verdict.
+
+Usefulness assessment: this is a meaningful class theorem because the potential ratio may grow with dimension and the high-level set is arbitrary, while the conclusion controls every nonconstant mode with a derived positive constant. The killed estimate, mixed-cut estimate, and Cheeger conclusion belong to one proof and should be integrated together into the existing manuscript's simple-family discussion rather than split into small papers. A separate originality assessment and exact-artifact editorial/PDF checks remain necessary before claiming a new publication contribution.
+
+The original arbitrary-positive-potential stationary-gap question remains open. No claim concerning a physical Yang-Mills gap is supported. This report concerns only the exact frozen source identified above and does not certify a later edited manuscript or terminal commit.
+
+END OF FULL FIRST ANALYTIC AUDIT I

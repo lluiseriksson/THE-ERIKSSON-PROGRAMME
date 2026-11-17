@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "research_base": "65661354d8a8c6ad8c60b26de5c98fdade7cfd35",
+  "scope": "Analytically audited restricted actual two-level full-gap theorem; unrestricted question open",
+  "files": [
+    {
+      "path": "CANDIDATE-I.txt",
+      "sha256": "d2077d48c5a202aca95a1ef0bd53c7dcda407b391f0f7b13a2b126f1e2b8ba01",
+      "bytes": 10278,
+      "representation": "Raw file bytes; no normalization; Git staging preserves these bytes"
+    },
+    {
+      "path": "FULL-ANALYTIC-AUDIT-I.txt",
+      "sha256": "f36ca529338fa1150f21e402da1cfbe650c9b22d7cc6d17e026cdc9e3a6ca57a",
+      "bytes": 17250,
+      "representation": "Raw file bytes; no normalization; Git staging preserves these bytes"
+    },
+    {
+      "path": "README.md",
+      "sha256": "8a795b8dea9091477f2ee3f414d3060f78eafcb59d781dcccfdf624c75f213bc",
+      "bytes": 2315,
+      "representation": "Raw file bytes; no normalization; Git staging preserves these bytes"
+    }
+  ],
+  "formal_verification": false,
+  "PDF_assessment": false,
+  "publication": false
+}
