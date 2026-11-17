@@ -1,0 +1,27 @@
+{
+  "base_commit": "70a402276a9e9e4de86e3c284d20fbf9228663c7",
+  "files": [
+    {
+      "path": "CANDIDATE-J.txt",
+      "bytes": 9820,
+      "sha256": "3c3e719331b81c9f412374be8ea49d9e02f3cf860472979b7f7d127843a2986d",
+      "representation": "Raw bytes; no normalization"
+    },
+    {
+      "path": "FULL-FIRST-ANALYTIC-AUDIT-J.txt",
+      "bytes": 16354,
+      "sha256": "56b71e33b175e31c669453a4ca1dbb48bd6bd972a7c152ea2158b108d877b3ea",
+      "representation": "Raw bytes; no normalization"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2930,
+      "sha256": "8c02167a771f28bb8e7e3a23d90aa4c51b7d76bc65988de9bb42e89f0ac69948",
+      "representation": "Raw bytes; no normalization"
+    }
+  ],
+  "unrestricted_question_resolved": false,
+  "publication": false,
+  "PDF_review": false,
+  "formal_verification": false
+}

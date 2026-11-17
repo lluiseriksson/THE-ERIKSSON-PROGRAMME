@@ -1,0 +1,106 @@
+CANDIDATE J — FULL GAP WITH A POSITIVE POTENTIAL BACKGROUND
+2026-11-17. First frozen analytic candidate; audit pending.
+Base commit 70a402276a9e9e4de86e3c284d20fbf9228663c7.
+Grouped extension, not a standalone paper or a claim of unrestricted closure.
+
+1. Exact statement and distinction of assumptions
+
+Let mu be uniform on {-1,1}^L, L>=1, fix 0<rho<1 and 0<a<=1. Write P=P_rho, s=(1+rho)/(1-rho), s'=s/(s-1), B=2^(1/s). Let h be any positive potential with E hPh=1. Put g=Ph, pi=hg, nu=pi mu and use the actual kernel K(x,y)=P(x,y)h(y)/g(x).
+Assume h>=a pointwise and E pi^s<=2. Then gap(K)>=G_J(rho,a)>0 independently of L and of the number, size, ratio, or geometry of the potential values. No marginal matching or upper bound on h is assumed.
+
+A conservative explicit choice is:
+c=a/2;
+M=B/a;
+eta=c/(c+M);
+t=min{2^(-s), [eta^2*c/(4*M)]^s};
+epsilon=c^2*t;
+gamma=[c^2(1-rho)/(2^(s')*B^(2s'))]*epsilon^(s'-1);
+Phi=min{eta/2,gamma};
+G_J=Phi^2/4.
+
+All constants are strictly positive and dimension-independent. Because c<=1/2 and M>=B>1, 0<eta<1/2; also 0<epsilon<1/2.
+
+The lower bound h>=a is an explicit additional sufficient condition, NOT proved here from the original stationary floor. It implies pi>=a^2, but the converse is not asserted. This is a theorem for arbitrary-valued potentials with a fixed positive background, not a solution of the unrestricted stationary-gap question. The old two-level class is included because its original floor b proves h>=b/2 by I1. This genuine extension removes the two-level restriction in favor of a precisely stated sufficient condition; it does not claim an original unrestricted hypothesis has been eliminated or merely package an unproved bridge as a conclusion.
+
+2. The critical multiplication estimate
+
+As g>=a, the cap gives E h^s<=2/a^s, hence ||h||_s<=M. Set z=h-c>=c>0, so ||z||_s<=M and g=c+Pz.
+Let Q=P_sqrt(rho). Ordinary hypercontractivity yields ||Q f||_2<=||f||_(1+rho). Since 1/(1+rho)=1/2+1/(2s), Holder implies
+||Q M_sqrt(z) f||_2<=||sqrt(z)f||_(1+rho)<=||z||_s^(1/2)||f||_2.
+Thus ||Q M_sqrt(z)||<=sqrt(M). For a set C, the support estimate also gives ||Q 1_C||<=mu(C)^(1/(2s)). All these norms use L2(mu).
+
+3. An actual denominator bound for the excess potential
+
+Define A=M_sqrt(z) P M_sqrt(z), and R=M_(Pz). Then 0<=A<=M I by the preceding estimate and P=Q^2. The exact ground-state Dirichlet identity gives A<=R: for every real v,
+<v,(R-A)v> = (1/2) sum_(x,y) mu(x)P(x,y) z(x)z(y) [v(x)/sqrt(z(x))-v(y)/sqrt(z(y))]^2 >=0.
+The identity is valid because P is reversible for mu and z is strictly positive. We chose c=a/2 to avoid zero denominators, not to impose a new premise.
+
+Let theta=c/(c+M) and lambda=M/(c+M)=1-eta. Convex combination gives
+A <= theta M I +(1-theta)R = lambda(c I+R).
+Since g=c+Pz, congruence yields the actual bound
+T_11 := M_(1/sqrt(g)) A M_(1/sqrt(g)) <= (1-eta) I.     (J1)
+This is a derived inequality retaining the full nonconstant Ph denominator. It does not assume constant z or a bound on max z.
+
+4. Exact two-component representation of the actual operator
+
+Let S=M_sqrt(h/g) P M_sqrt(h/g), the isometric conjugate of K from L2(nu) to L2(mu). Define an isometry W:L2(mu)->L2(mu) direct-sum L2(mu) by
+W f = (sqrt(c/h) f, sqrt(z/h) f).
+Indeed W*W=M_(c/h)+M_(z/h)=I. Both W and W* commute with the same pointwise set restriction on each component. Direct multiplication shows that T=W S W* has block entries
+T_ij=M_sqrt(h_i/g) P M_sqrt(h_j/g), h_0=c, h_1=z.
+In particular its 11 block is exactly J1, and
+T_00=c M_(1/sqrt(g)) P M_(1/sqrt(g)),
+T_01=sqrt(c) M_(1/sqrt(g)) P M_sqrt(z/g).
+T is positive semidefinite; its extra nullspace does not matter. Also S=W* T W exactly. This is an identity constructed from the actual h, not a substitute reversible chain with unrelated edges.
+
+For any C let T_CC be its compression to the two components supported on C. The commutation and isometry identities give
+S_CC=W_C* T_CC W_C, so ||S_CC||<=||T_CC||.             (J2)
+Consequently a bound on the lifted compression really controls the original killed operator. No spectral conclusion is inferred from the auxiliary space without this identity.
+
+5. All small cuts
+
+Since g>=a>=c, sqrt(c/g)<=1. The support hypercontractive bound gives
+||T_00,CC||<=||1_C P1_C||<=mu(C)^(1/s).
+The whole 11 block is at most 1-eta by J1; every compression inherits this PSD bound.
+For the cross block factor P=Q^2. On its left, sqrt(c/g)<=1; on its right g^(-1/2)<=c^(-1/2). Therefore
+||T_01,CC||
+ <=c^(-1/2)||1_C Q|| ||Q M_sqrt(z)1_C||
+ <=sqrt(M/c) mu(C)^(1/(2s)).                         (J3)
+Here the first factor equals ||Q1_C|| by self-adjointness, and the second is at most sqrt(M); the diagonal right multiplier g^(-1/2) can be pulled to the far right because it commutes with sqrt(z) and 1_C. The left diagonal multiplier can likewise be bounded by one. No noncommuting factor is moved through Q.
+
+If 0<nu(C)<=epsilon, the lower bound pi=hg>=a^2>=c^2 gives mu(C)<=nu(C)/c^2<=t. Thus ||T_00,CC||<=1/2 and ||T_01,CC||<=eta/2. Since eta<1/2, the diagonal block part has norm at most 1-eta. The self-adjoint off-diagonal block has norm ||T_01,CC||. Hence ||T_CC||<=1-eta/2 and by J2 the same bound holds for ||S_CC||.
+
+Use v_C=sqrt(pi)1_C, whose squared mu norm is nu(C). Conjugacy of K and S gives the actual outward stationary flow
+F_h(C)=sum_(x in C,y outside C)mu(x)P(x,y)h(x)h(y)
+      =<1_C,(I-K)1_C>_nu
+      >=(eta/2)nu(C).                                (J4)
+This holds for every small cut C regardless of the values or geometry of h within it. Normalization E hPh=1 is what makes the displayed edge measure the actual normalized stationary flow.
+
+6. Remaining cuts and full gap
+
+For epsilon<=nu(C)<=1/2, h>=a>=c implies D_K>=c^2 D_P, where D_P is the reference Dirichlet form. Since gap(P)=1-rho,
+F_h(C)>=c^2(1-rho)mu(C)mu(C^c).
+Holder and the cap give nu(E)<=B mu(E)^(1/s') for every E, and therefore
+mu(C)>=(nu(C)/B)^(s'), mu(C^c)>=(1/(2B))^(s').
+Divide by nu(C)>0 to obtain
+F_h(C)/nu(C)>=c^2(1-rho)nu(C)^(s'-1)/(2^(s')B^(2s'))>=gamma.   (J5)
+Together J4 and J5 cover every conductance cut, so Phi(K)>=Phi. Apply the lazy reversible Cheeger inequality to Kbar=(I+K)/2. Its conductance is Phi(K)/2 and its gap is gap(K)/2, giving gap(K)>=Phi(K)^2/4>=G_J.
+K is reversible and strictly positive, and S is positive definite, so gap means 1-lambda_2 for the full actual chain with no negative-spectrum issue. The theorem also covers constant h and a=1 directly; the chosen c ensures z>0 in every case.
+
+7. Consequences and unresolved boundary
+
+The entire two-level theorem I follows as a class consequence, with possibly weaker constants: the original two-level stationary floor b yields the already proved h>=b/2, so use a=b/2. J also permits any number of distinct potential values and dimension-dependent upper heights above a fixed background.
+
+For any normalized family at fixed rho with E pi_L^s<=2, if gap(K_L)->0 then necessarily min_x h_L(x)->0. Otherwise a subsequence has min h_L>=a>0, and J gives a fixed positive gap on that subsequence, a contradiction. This is a useful necessary mechanism for an actual collapsing family. It is not an existence claim and does not show that original exact stationary matching prevents that mechanism.
+
+For the original fixed-floor/matching problem, a lower bound on pi alone is not replaced by h>=a. No proof here derives a dimension-independent minimum h for arbitrary admissible potentials. The active question therefore remains unchanged and open. A natural next step is to analyze the low-h region coupled to high Ph while retaining the exact stationary law, or to refute a proposed lower-potential bridge under its exact premises.
+
+8. Primary sources, novelty, and review context
+
+Classical input: Ryan O'Donnell, Lecture16, Theorem1.1 (first page), https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf . It gives exactly Q:L^(1+rho)->L2 and the support/multiplier consequences used here.
+Classical input: Yuval Peres, Aspects of Markov chains, Definition3.4 and Theorem3.5, lazy reversible lower-bound proof on PDF pages6-7, https://sites.math.duke.edu/~rtd/CPSS2009/peres6.pdf . The proof explicitly lazifies and uses the conservative factor1/4.
+
+Bounded related-literature check: Leonard Gross, Invariance of intrinsic hypercontractivity under perturbation of Schrodinger operators, arXiv:2412.20282v2, https://arxiv.org/abs/2412.20282v2 ; abstract read only in this unit. It concerns intrinsic hypercontractivity and suitable Schrodinger perturbations; its theorem assumptions have not been compared in full, so it is neither evidence of priority nor evidence of non-overlap.
+Feng-Yu Wang, Criteria of Spectral Gap for Markov Operators, arXiv:1305.4460v6, https://arxiv.org/abs/1305.4460v6 ; abstract read only. It gives tail-norm and defective-inequality criteria; no quantitative family-uniform implication for these exact hypotheses is imported from its abstract.
+Targeted searches and local comparison with I did not establish global priority. The elementary dilation, ground-state identity, hypercontractivity and Cheeger tools are not claimed as new. The result is a proved candidate specialization with explicit constants, subject to its first analytic audit; original significance requires broader comparison before any frontier claim.
+
+This is one grouped extension of the existing manuscript, not a paper of separate consequences. No formal verification, numerical experiment, PDF build, visual assessment, score, publication or human peer review is claimed. Separate Codex audit roles share provider/workflow and inherited context; the actual serving model/backend revision and reasoning effort are unattested. The original two-level and integrated sources and reports remain frozen. No pending execution question is answered or retargeted by this candidate.

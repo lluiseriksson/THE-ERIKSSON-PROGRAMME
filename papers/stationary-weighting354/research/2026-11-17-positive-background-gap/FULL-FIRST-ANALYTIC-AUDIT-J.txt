@@ -1,0 +1,157 @@
+FULL FIRST ANALYTIC AUDIT J — POSITIVE POTENTIAL BACKGROUND
+Date: 2026-11-17.
+
+1. EXACT INPUT AND VERDICT
+
+Frozen candidate:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\research\2026-11-17-positive-background-gap\CANDIDATE-J.txt
+Raw SHA256: 3c3e719331b81c9f412374be8ea49d9e02f3cf860472979b7f7d127843a2986d
+Length: 9820 bytes. Supplied representation: UTF-8/LF; hash computed on raw bytes without normalization.
+Research base and inspected worktree HEAD:
+70a402276a9e9e4de86e3c284d20fbf9228663c7.
+
+VERDICT: PASS as an analytic theorem under the exact additional assumption h>=a>0 after energy normalization. The explicit dimension-independent G_J is valid. I found no blocking error in the critical multiplier estimate, ground-state form inequality, actual-denominator interpolation, two-component isometry, compressed-operator control, all-cut coverage, or Cheeger conversion. The necessary condition min h_L -> 0 for a normalized collapsing-gap family follows with the stated fixed-rho/cap scope.
+
+This is a full actual-chain gap theorem for arbitrary-valued potentials with a fixed positive minimum. It is a substantive extension of the restricted two-level class argument, but the positive minimum is an additional sufficient premise in the general case. The proof does not derive it from the original stationary floor. It neither solves the unrestricted problem nor removes an original unrestricted hypothesis. Global novelty, priority, optimality, and frontier significance remain uncertified.
+
+Auditor identity: separate OpenAI Codex role /root/bootstrap_note_audit. Authoring and auditing share the provider/workflow, inherited programme context, and filesystem. Exact serving backend/model revision and reasoning effort are unattested. This is not blind, human, organizationally independent, or provider-independent peer review. No numerical grade, formal proof, exact-PDF assessment, or publication status is assigned. No inbound parent messages arrived while auditing.
+
+The applicable Operational Governance Charter's execution and no-inbound restrictions were respected. I read the entire frozen source, used ordinary analytic reasoning and attempts to falsify its operator steps, checked file identity and primary-source context, and wrote only this report. No mathematical program, numerical experiment, symbolic execution, Lean, TeX, test, UI, runtime, source edit, push, PR, dispatch, or network write occurred. No disposable clone was created.
+
+2. NORMALIZATION, MODEL, AND CONSTANTS
+
+For uniform mu and Boolean P_rho with 0<rho<1, P is symmetric, preserves constants, has strictly positive entries, and has positive Walsh eigenvalues rho^j. With g=Ph and E hPh=1, nu=hg mu is a probability law and the actual kernel K=P(x,y)h(y)/g(x) is stochastic. Detailed balance is exactly
+nu(x)K(x,y)=mu(x)P(x,y)h(x)h(y).
+Therefore the edge forms and cut flows later used need no missing normalizing factor. The isometric conjugate S=M_sqrt(h/g) P M_sqrt(h/g) is positive definite, and K is a reversible Markov contraction with positive spectrum and simple top eigenvalue. Its full gap is 1-lambda_2.
+
+The premise h>=a is explicitly imposed on the energy-normalized h. It is not a scale-free property of arbitrary representatives: rescaling h would leave K unchanged but would change its minimum, so fixing normalization is material. Since the constant Fourier component gives E h<=1, no feasible positive minimum exceeds one. The parameter range 0<a<=1 is consistent.
+
+With s=(1+rho)/(1-rho)>1, s'>1, B=2^(1/s)>1, c=a/2 and M=B/a, all displayed constants are positive and finite. M is a norm bound, not the maximum of h. The reuse of this letter from the previous two-level note does not impose an upper pointwise bound here. As c<=1/2 and M>1, eta=c/(c+M) is in (0,1/2). Since t<=2^(-s)<1/2 and c^2<=1/4, epsilon=c^2 t is positive and below 1/2. Thus the two conductance ranges are well-defined. Constants depend on fixed rho,a, and can deteriorate at their parameter boundaries; no uniformity in a approaching zero or rho approaching an endpoint is claimed.
+
+3. THE CRITICAL MULTIPLICATION ESTIMATE
+
+Markov positivity gives g=Ph>=a. Hence pi=hg>=a h, so
+a^s E h^s<=E pi^s<=2,
+and ||h||_s<=B/a=M. Set z=h-c. Since h>=a=2c, z>=c>0, and 0<z<=h gives ||z||_s<=M. Also g=c+Pz exactly. Subtracting c creates no zero-potential singularity.
+
+Let Q=P_sqrt(rho). Ordinary hypercontractivity at input exponent 1+rho and output 2 is admissible because sqrt(rho)=sqrt(((1+rho)-1)/(2-1)). The exponent identity
+1/(1+rho)=1/2+1/(2s)
+is exact. Thus Holder gives
+||sqrt(z)f||_(1+rho)<=||sqrt(z)||_(2s)||f||_2=||z||_s^(1/2)||f||_2,
+and ||Q M_sqrt(z)||<=sqrt(M). This is a legitimate endpoint multiplication estimate using an L^s norm of z; it is not an unproved high-degree L2-to-Lq estimate.
+
+For functions supported on C, the same hypercontractive input together with support Holder gives ||Q1_C||<=mu(C)^(1/(2s)), where 1_C denotes the multiplication/projection operator. This estimate is on L2(mu). Its adjoint form ||1_C Q|| is equal by self-adjointness of Q. No measure change is hidden at this stage.
+
+4. GROUND-STATE IDENTITY AND NONCONSTANT DENOMINATOR
+
+Writing A=M_sqrt(z) P M_sqrt(z), the factorization
+A=(Q M_sqrt(z))* (Q M_sqrt(z))
+proves 0<=A<=M I. Let R=M_(Pz). Expansion of the candidate's claimed form identity gives
+(1/2)sum_(x,y)mu(x)P(x,y)z(x)z(y)[v(x)/sqrt(z(x))-v(y)/sqrt(z(y))]^2
+=sum_x mu(x)v(x)^2(Pz)(x)
+ -sum_(x,y)mu(x)P(x,y)sqrt(z(x)z(y))v(x)v(y)
+=<v,(R-A)v>.
+Symmetry supplies equality of the two diagonal expansion terms. Positivity of z justifies the divisions. Thus A<=R is exact, not a row-sum analogy for the wrong operator. The same assertion for complex vectors follows with absolute squares, though real functions suffice here.
+
+Set theta=c/(c+M)=eta and lambda=M/(c+M)=1-eta. These lie in (0,1), and theta M=lambda c, 1-theta=lambda. Convex combination of A<=M I and A<=R yields
+A<=theta M I+(1-theta)R=lambda(cI+R).
+The diagonal multiplier cI+R is exactly M_g, because g=c+Pz. Congruence by M_(1/sqrt(g)) is valid and yields
+0<=T_11=M_(1/sqrt(g)) A M_(1/sqrt(g))<=(1-eta)I.
+No commutation of A with R or g is used or needed. No bound on max z or constancy of Pz is inserted. The actual denominator is retained throughout; removing it would break the argument.
+
+5. EXACT TWO-COMPONENT REPRESENTATION
+
+For Wf=(sqrt(c/h)f,sqrt(z/h)f), the identity c+z=h gives W*W=I. W is an isometric embedding into the direct sum, not a surjective unitary. This distinction is handled correctly: T=WSW* is positive semidefinite and may have an additional nullspace, but
+W*TW=(W*W)S(W*W)=S.
+The candidate does not apply Markov-chain Cheeger theory to T or pretend its auxiliary components define an independent stochastic chain.
+
+Direct block multiplication gives
+T_ij=M_sqrt(h_i/g) P M_sqrt(h_j/g), h_0=c, h_1=z.
+Indeed the sqrt(h_i/h) factor from W cancels the sqrt(h/g) factor in S on the same side. In particular T_11 is exactly the block bounded in J1, and T_00 and T_01 have the stated multipliers. I find no h-versus-g substitution or orientation error.
+
+Let E_C be restriction on the original space and Etilde_C=diag(E_C,E_C). Pointwise multiplication gives Etilde_C W=W E_C and W* Etilde_C=E_C W*. On the restricted original subspace W_C remains an isometry, and
+S_CC=W_C* T_CC W_C.
+Consequently ||S_CC||<=||T_CC||. This compressed identity is an essential valid step: the proof is not extrapolating a bound for an unrelated auxiliary operator to the actual killed chain.
+
+6. CROSS-BLOCK ORDER AND SMALL CUTS
+
+T_00,CC is the compression of M_sqrt(c/g) P M_sqrt(c/g). Its multiplier norm is at most one since g>=a>=c, and it commutes with E_C. Hence
+||T_00,CC||<=||E_C P E_C||<=mu(C)^(1/s).
+The whole T_11 is bounded by 1-eta; PSD compressions inherit that bound.
+
+The potentially delicate cross term can be factored without moving any multiplier through Q. With D0=M_sqrt(c/g) and Dg=M_(1/sqrt(g)),
+T_01,CC=E_C D0 Q Q M_sqrt(z) Dg E_C
+        =D0 (E_C Q)(Q M_sqrt(z) E_C) Dg,
+as an operator between the restricted components, with the natural restrictions on the outer diagonal factors. This equality only moves the pointwise multipliers through E_C or each other, not through Q. Now ||D0||<=1 and ||Dg||<=c^(-1/2). Therefore
+||T_01,CC||<=c^(-1/2)||E_C Q|| ||Q M_sqrt(z) E_C||
+            <=sqrt(M/c)mu(C)^(1/(2s)).
+The right factor is bounded globally by sqrt(M); its support is not incorrectly used to claim a stronger bound. This verifies J3 with its exact coefficient and order.
+
+For 0<nu(C)<=epsilon, pi=hg>=a^2>=c^2 implies mu(C)<=nu(C)/c^2<=t. The two parts of t's minimum supply separately
+mu(C)^(1/s)<=1/2,
+sqrt(M/c)mu(C)^(1/(2s))<=eta/2.
+The latter follows because t^(1/(2s))<=eta*sqrt(c/(4M)). Thus the diagonal-block maximum is 1-eta and the off-diagonal self-adjoint block has norm at most eta/2. Its norm is the norm of a single cross operator, not twice that norm. The triangle inequality proves ||T_CC||<=1-eta/2, and the exact compression identity transfers this to S_CC. Empty or very small cuts require no exceptional division.
+
+For v_C=sqrt(pi)1_C, ||v_C||_mu^2=nu(C). Conjugacy then gives
+<1_C,K1_C>_nu=<v_C,S_CC v_C>_mu<=(1-eta/2)nu(C).
+The actual Dirichlet form of 1_C equals the outward stationary flow, with the factor 1/2 on ordered edges canceled by the two orientations. Therefore J4 is exactly F_h(C)>=eta*nu(C)/2. This covers every small stationary cut regardless of how h varies on that cut.
+
+7. REMAINING CUTS AND ALL-CUT CHEEGER CONCLUSION
+
+Because h(x)h(y)>=c^2, the actual normalized edge measure gives D_K>=c^2 D_P. Applying the reference gap 1-rho to indicators yields
+F_h(C)>=c^2(1-rho)mu(C)mu(C^c).
+The stationary cap gives ||pi||_s<=B and therefore nu(E)<=B mu(E)^(1/s'). For epsilon<=nu(C)<=1/2 this implies
+mu(C)>=(nu(C)/B)^(s'), mu(C^c)>=(1/(2B))^(s').
+After division by positive nu(C), the coefficient and exponent are
+F_h(C)/nu(C)>=c^2(1-rho)nu(C)^(s'-1)/(2^(s')B^(2s'))>=gamma.
+The last direction uses s'-1>0. No unintended factor 4 from I remains here: the c^2 in J already is the conservative lower-edge coefficient.
+
+The intervals (0,epsilon] and [epsilon,1/2] exhaust all conductance cuts. Thus Phi(K)>=min(eta/2,gamma)=Phi. With Kbar=(I+K)/2, conductance and gap are both halved. The cited lazy reversible inequality gives gap(K)/2>=(Phi(K)/2)^2/2, hence gap(K)>=Phi(K)^2/4>=G_J. The proof applies Cheeger only to the actual chain's lazification. Positivity of S excludes a hidden negative-spectrum issue in the original full-chain assertion.
+
+For a constant normalized h the chain is P and the general proof still works, because z=h-c remains strictly positive. If a=1, normalization and h>=1 force h=1, but the proof does not need a separate limiting argument. The chosen c=a/2 avoids a zero denominator in both situations. All cases L>=1 and 0<a<=1 are covered.
+
+8. ATTEMPTS TO FALSIFY AND THE NECESSARY-MINIMUM COROLLARY
+
+I specifically checked the following plausible failure points: using stationary rather than reference norms in the multiplier estimate; reversing A<=R; dropping a nonconstant denominator; treating W as a unitary onto the larger space; commuting g^(-1/2) through Q; losing a cross-block factor of two; controlling only a selected high set rather than all cuts; dividing by an unnormalized stationary mass; and mis-scaling the lazy Cheeger constant. The explicit identities above resolve these attacks under the stated assumptions. No counterexample to a displayed step was found by analytic reasoning. No numerical experiment was used.
+
+For a normalized family at fixed rho and cap, suppose gap(K_L)->0 but min h_L does not tend to zero. Then some positive a occurs as a lower bound on an infinite subsequence. It may be chosen <=1, since min h_L<=E h_L<=1 under normalization. Applying J on that subsequence yields the fixed positive bound G_J(rho,a), contradicting gap convergence to zero. Thus min h_L->0 is necessary for such a collapsing family. This is a full-sequence conclusion because the gap itself was assumed to converge to zero; if only infimum gap were zero, the analogous assertion would be about an appropriate subsequence.
+
+The conclusion is normalization-dependent and is not an existence theorem for collapsing gaps. It does not show that exact stationary matching or the original stationary floor prohibits small normalized h. The candidate correctly leaves that bridge open.
+
+The earlier two-level class conclusion follows by applying J with a=b/2 from I1. This does not reproduce I's specific quantitative formula G(rho,b); it gives a possibly weaker explicit bound, as the candidate expressly notes. The phrase that the two-level theorem follows should retain that quantitative qualification in later integration. The accepted I source and its stronger or different constant need not be replaced or retrospectively rewritten.
+
+9. SOURCES, ORIGINALITY, AND SCOPE OF READING
+
+The ordinary hypercontractivity and lazy Cheeger inputs are the same primary statements inspected in the immediately preceding I and integrated-source audits:
+Ryan O'Donnell, Lecture 16, Theorem 1.1, first PDF page:
+https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf
+Yuval Peres, Aspects of Markov chains, Definition 3.4 and Theorem 3.5, PDF pages 6–7:
+https://sites.math.duke.edu/~rtd/CPSS2009/peres6.pdf
+Their parameter substitution and normalization were checked again algebraically above. No new hypercontractive or Cheeger theorem is claimed.
+
+I opened and read the abstracts at the two new exact-version primary references:
+https://arxiv.org/abs/2412.20282v2
+Leonard Gross discusses intrinsic hypercontractivity under suitable Schrodinger perturbations, using a ground-state transformation. The abstract also announces dimension-independent bounds. This is relevant background, but it does not by itself establish whether J is new or follows from the detailed theorem assumptions.
+
+https://arxiv.org/abs/1305.4460v6
+Feng-Yu Wang gives tail-norm and defective-inequality criteria for spectral gaps and related forms. The abstract does not supply a checked quantitative uniform-in-dimension theorem for J's exact assumptions. No such implication is imported here.
+
+The candidate accurately limits these readings to abstracts and does not infer non-overlap or priority from them. I did not audit the full Gross or Wang theorems or conduct an exhaustive novelty search. The ground-state identity, isometric embedding, and standard inequalities are established tools; this report certifies only the correctness of their displayed specialized combination, not first discovery or a frontier designation.
+
+10. OBJECTIONS AND DISPOSITION
+
+Blocking objections: none found.
+
+Material limitations for every later reuse:
+* h>=a is required after E hPh=1 normalization; the present proof does not derive it for arbitrary h from pi>=b.
+* The cap, actual P_rho denominator, and exact reversible edge law remain essential premises of this argument.
+* G_J is uniform in dimension and potential complexity for fixed rho,a, not in a vanishing minimum or varying endpoint noise parameter.
+* The two-component operator is an exact analytical embedding, not a new Markov chain to which stochastic conclusions are transferred without proof.
+* The minimum-vanishing corollary is necessary, not sufficient, for gap collapse.
+* The unrestricted original question, global originality, PDF verification, formal verification, and publication status remain open or unestablished as applicable.
+
+Usefulness assessment: J supplies a nontrivial sufficient full-gap condition for arbitrary-valued potentials and a precise necessary feature of any normalized collapsing-gap family. It removes the two-level restriction only by replacing it with an explicit positive-background premise, which the candidate does not disguise as a proved consequence of the original assumptions. It should be consolidated with the existing I and structured-potential results, not split into a new paper for each intermediate operator or corollary.
+
+No source correction is needed for the scoped analytic acceptance above. The original I sources, integrated manuscript, pending execution request, and all prior reports remain unchanged. This verdict applies only to the exact candidate bytes named in Section 1.
+
+END OF FULL FIRST ANALYTIC AUDIT J

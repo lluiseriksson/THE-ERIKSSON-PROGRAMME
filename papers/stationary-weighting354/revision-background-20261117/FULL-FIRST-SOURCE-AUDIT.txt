@@ -1,0 +1,125 @@
+FULL FIRST INTEGRATED-SOURCE AUDIT — POSITIVE-BACKGROUND SUCCESSOR
+Date: 2026-11-17.
+
+1. EXACT REFERENTS AND VERDICT
+
+Frozen successor:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\revision-background-20261117\manuscript-background-candidate.tex
+Raw SHA256: be768390e9607a2cedc29315ff204aded526ce3364970a2f4f1650953db1cbfe
+Length: 74604 bytes. Supplied representation: UTF-8/LF. Hashes in this report refer to actual raw bytes, with no normalization.
+
+Preserved predecessor:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\revision-twolevel-20261117\manuscript-twolevel-candidate.tex
+Raw SHA256: c0e97b0a3a27f9c74316469e7b6ae8afbbc30aef1931b49bd9b5e7033a41b20b.
+Inspected Git base: 70a402276a9e9e4de86e3c284d20fbf9228663c7.
+
+Accepted J input: 3c3e719331b81c9f412374be8ea49d9e02f3cf860472979b7f7d127843a2986d.
+Its full first analytic report: 56b71e33b175e31c669453a4ca1dbb48bd6bd972a7c152ea2158b108d877b3ea.
+Those earlier referents are not rebound to the new integrated source.
+
+VERDICT: PASS for the first exact integrated-source review. New Section 10 faithfully integrates J's hypotheses, constants, actual-operator proof, all-cut estimates, and minimum-vanishing consequence. Its two-level corollary correctly recovers the class conclusion with the explicitly acknowledged potentially weaker bound. The old direct I proof remains separately preserved. Earlier substantive Sections 2–9 are unchanged. No blocking mathematical transcription, lost assumption, static reference, or TeX-source issue was found.
+
+This verdict is for the new source hash only. It is not a numerical grade, compiled-document test, visual PDF review, priority certificate, terminal commit approval, or publication status. The original unrestricted problem remains open.
+
+Identity/context: separate OpenAI Codex assistant role /root/bootstrap_note_audit; same provider/workflow, shared filesystem and inherited programme context. Exact serving backend/model revision and reasoning effort are unattested. I previously audited the separate J candidate, so this is not blind or independent-provider peer review. No human or organizational independence is claimed. This task is the first review of the new integration, not a repeated numerical assessment. No inbound parent message arrived during the audit.
+
+Under the operative charter, I used only reads, Git/text comparison, hashing, primary-source reading, analytic/static inspection, and this report write. No source modification, mathematical program, numerical experiment, Lean, TeX, runtime, UI, workflow action, push, PR, dispatch, or network write occurred. No disposable clone was created.
+
+2. COMPLETE DELTA AND PRESERVED MATERIAL
+
+The raw predecessor and successor hashes match the assignment. I inspected the complete no-index diff; its exit code 1 means the expected source differences and is not a failed test or compilation result.
+
+The delta updates the abstract, theorem map and provenance; replaces the former direct two-level Section 10 with the positive-background theorem and its two-level corollary; adds the minimum-vanishing implication; revises positioning/open-question/context text accordingly; and adds Gross and Wang bibliography entries. The title and candidate date remain appropriate.
+
+The mathematical statements, proofs and equations in Sections 2–9 are unchanged. In particular the prior finite bootstrap, spectral-window and localization hypotheses, weak Poincare proof, summable relaxation constants, and uniform-start MSE argument are preserved. The existing Section 2 forward reference to twolevelgap continues to resolve because that label is retained as an alias on the new Section 10.
+
+This is deliberate replacement of an integrated proof by a stronger sufficient-condition theorem, not a silent claim that the previous direct I constant was reproduced. The new text explicitly retains the direct proof and its constants separately. Their previously accepted source remains at the old hash; no retrospective edit or verdict transfer is made. Preservation of the unchanged earlier sections is checked by the complete diff, rather than claimed as a fresh independent rederivation of all their mathematics.
+
+3. THE NEW THEOREM'S PREMISES AND CONSTANTS
+
+Theorem backgroundfullgap explicitly requires fixed 0<rho<1, fixed 0<a<=1, L>=1, h>=a after E hP_rho h=1 normalization, and E pi^s<=2 with pi=hP_rho h and s=(1+rho)/(1-rho). The actual K is defined in Section 1. The normalized minimum is not confused with the original stationary-density floor. Positivity follows from a>0, and no number-of-levels, matching, geometry, or upper-height condition is silently used.
+
+Every constant from J is retained exactly, apart from renaming its scalar Phi to Phi_*:
+c=a/2, M=B/a, B=2^(1/s), eta=c/(c+M),
+t=min(2^(-s),(eta^2*c/(4M))^s), epsilon=c^2*t,
+gamma=c^2(1-rho)epsilon^(s'-1)/(2^(s')B^(2s')),
+Phi_*=min(eta/2,gamma), G_J=Phi_*^2/4.
+
+The power s on the second threshold term, the c^2 in epsilon and gamma, and the final factor 1/4 are all correct. All constants are local, finite and positive for the stated fixed parameters. The later use eta<1/2 and epsilon<1/2 follows from c<=1/2, M>1, and t<=2^(-s)<1/2, so no extra omitted range premise is needed. M denotes an L^s norm bound, not max h.
+
+4. FULL INTEGRATED PROOF CHECK
+
+4.1 Critical norm and ground-state identity
+The source retains g>=a and pi>=a h, yielding ||h||_s<=B/a=M. With h=c+z, z>=c>0, ||z||_s<=M and g=c+Pz. It keeps the critical exponent identity 1/(1+rho)=1/2+1/(2s), so ordinary hypercontractivity followed by Holder proves ||QM_sqrt(z)||<=sqrt(M). Its support consequence ||Q1_C||<=mu(C)^(1/(2s)) is correct in L2(mu). The proof explicitly assigns the operator norms to the reference space or its orthogonal sum.
+
+For A=M_sqrt(z)PM_sqrt(z), P=Q^2 yields 0<=A<=MI. The fully displayed quadratic identity for R-A, R=M_(Pz), is transcribed correctly: expansion of the two diagonal terms gives <v,Rv>, symmetry combines them, and the cross term gives -<v,Av>. Thus A<=R uses the actual reversible reference edge and positive z. The source's theta=c/(c+M), lambda=M/(c+M) give theta*M=lambda*c and 1-theta=lambda. Convex combination and congruence by g^(-1/2) prove backgroundexcess with 1-eta. No multiplier is incorrectly commuted with A or P, and no constant-denominator approximation is introduced.
+
+4.2 Exact embedding and killed compression
+The source retains S=M_sqrt(h/g)PM_sqrt(h/g), conjugate to K under sqrt(pi), and Wf=(sqrt(c/h)f,sqrt(z/h)f). W*W=I follows from c+z=h. The stated blocks of T=WSW* have factors sqrt(h_i/g) on their respective sides, h_0=c,h_1=z, exactly as in J. In particular the excess block equals the operator already bounded in backgroundexcess.
+
+W is an isometric embedding, not an onto unitary; no incorrect onto claim is made. Set restrictions intertwine with its pointwise multipliers. Consequently S_CC=W_C* T_CC W_C and the norm inequality hold. Although S=W*TW is not displayed as a separate line in the integrated proof, it follows immediately from the displayed W*W=I and T=WSW*, so no step is lost. The original chain, not the larger auxiliary operator, remains the object of the eventual Cheeger argument. PSD of T follows from that of S already established in Section 1.
+
+4.3 Cross-block order and small cuts
+The low block bound ||T_00,CC||<=||1_C P1_C||<=mu(C)^(1/s) is valid because the two outer multipliers sqrt(c/g) are bounded by one. The excess compression has norm at most 1-eta. For the cross block, the source specifically keeps g^(-1/2) on the far right, using only its commutation with sqrt(z) and 1_C. It therefore obtains
+||T_01,CC||<=c^(-1/2)||1_CQ|| ||QM_sqrt(z)1_C||
+            <=sqrt(M/c)mu(C)^(1/(2s)).
+This preserves the sensitive operator order; nothing is moved through Q. The support estimate belongs on the left factor while the right multiplier estimate is global.
+
+For nu(C)<=epsilon, the derived pi>=a^2>=c^2 implies mu(C)<=t. The two defining thresholds give low-block norm <=1/2 and cross norm <=eta/2. The norm of the self-adjoint off-diagonal block is that of a single cross operator, not twice it. Thus ||T_CC||<=1-eta/2 transfers to S_CC. With v_C=sqrt(pi)1_C, its squared reference norm is nu(C), giving exactly backgroundsmallflow. The actual normalized outward edge is retained in F_h(C), so no factor Z or factor two is missing.
+
+4.4 Remaining cuts and full gap
+The remaining range epsilon<=nu(C)<=1/2 uses the actual lower edge h(x)h(y)>=c^2 and reference gap 1-rho. Holder under the stationary cap gives lower reference masses (nu(C)/B)^(s') and (1/(2B))^(s'). After division by nu(C), the displayed coefficient and exponent match gamma, with the last comparison relying correctly on s'-1>0. The ranges overlap at epsilon and cover all conductance cuts, with no geometric restriction.
+
+The lazy reversible theorem is applied to (I+K)/2, not T. The displayed gap(K)/2 >= (1/2)(Phi(K)/2)^2 gives gap(K)>=Phi_*^2/4 exactly. Constant potentials and a=1 remain admissible because z>=c>0 throughout. Thus the integration keeps the full J proof and its boundary cases, rather than only its conclusion.
+
+5. TWO-LEVEL RECOVERY AND NECESSARY MINIMUM CONDITION
+
+The new corollary twolevelfullgap has the original two-level stationary hypotheses and explicitly concludes G_J(rho,b/2), not the former direct formula G(rho,b). Its proof derives the needed minimum from scratch. In the nonconstant case, E h<=1 and the floor on the low set imply m_0>=b(1-alpha). The floor plus g<=M_0 gives m_0 M_0>=b, while M_0 alpha<=1 gives m_0>=b alpha. Thus min h>=b/2. The constant normalized case h=1 also meets this bound. The substitution a=b/2 is within J's permitted interval. No matching premise or upper-height condition is introduced.
+
+The subsequent paragraph correctly says the recovered constant may be weaker and the direct proof remains separately preserved. This is a class-level recovery, not an identity of the two bounds.
+
+The minimum-vanishing assertion retains fixed rho, energy normalization, and the cap. If a collapsing-gap sequence failed to have min h_L -> 0, a subsequence would have a fixed positive minimum. J then contradicts gap convergence to zero on that subsequence. The statement is necessary, not sufficient, and is explicitly not a construction of a collapsing family. The original stationary floor and matching are not claimed to prohibit that mechanism. All these qualifiers survive the integration.
+
+6. ABSTRACT, ROADMAP, OPEN QUESTION, AND REVIEW CONTEXT
+
+The abstract now identifies the fixed positive minimum AFTER normalization before claiming the full-gap bound. It does not confuse that minimum with the original stationary floor. The two-level recovery and necessary minimum-vanishing consequence are stated separately, and the unrestricted question remains open. Fixed rho is the global setting; the body repeats it in the sequence consequence.
+
+The theorem map and positioning identify an additional sufficient condition for arbitrary-valued potentials. The remaining-question paragraph explicitly says that condition is not derived from admissible in general. The general high-block and critical-moment difficulties are not declared solved. No implication from the earlier oscillation decay alone to a full gap is introduced.
+
+Model assessments and review context distinguishes accepted I/J note hashes from this first integrated source review, and distinguishes any future PDF. It records replacement of the integrated direct proof, separately preserved direct constants, unchanged earlier audits, same-provider inherited context, and unattested exact backend/effort. No old numerical score, human peer review, or publication acceptance is inherited. The historical failed claims remain preserved.
+
+The manuscript refers to an accompanying manifest for exact sources and reports. The later packet must bind this new source and this report as well as I/J dependencies; this source audit is not itself a terminal verification that all future package entries exist. This is an ordinary packaging requirement, not a reason to rewrite the accepted mathematical source.
+
+7. EXPANDED PRIMARY READING AND PROVENANCE
+
+I read the research J README's separately dated account of additional reading after the candidate and first report froze. It correctly preserves their abstract-only historical scope and records later statement-level inspection without editing those original records.
+
+I inspected the corresponding exact primary material for this integration:
+https://arxiv.org/html/2412.20282v2
+Gross, Notation 2.1 and Theorem 2.2, with adjacent remarks. The setup is a Riemannian Dirichlet generator, a reference logarithmic Sobolev inequality, and exponential moment conditions on an additive Schrodinger potential. The conclusions include a transformed logarithmic Sobolev inequality and quantitative spectral-gap control. The manuscript's restrained summary is accurate; it does not deny those quantitative bounds or claim a checked reduction of this discrete kernel to that theorem. No full-proof reading or non-overlap certificate is supplied here.
+
+https://arxiv.org/html/1305.4460v6
+Wang's introductory tail quantities and Theorem 1.1 were read. The theorem provides qualitative spectral-gap equivalences for an ergodic Markov operator, with additive symmetrization in the nonsymmetric case. For the reversible setting used here that distinction does not affect the statement. The manuscript does not import an unproved uniform family constant from the criterion, and does not infer novelty from using an explicit all-cut estimate instead. A wording refinement could mention additive symmetrization when discussing the general nonsymmetric theorem, but the current short background sentence is not a blocking mathematical claim in this reversible paper.
+
+Ordinary hypercontractivity and Peres' lazy Cheeger result retain their earlier inspected primary references and exact parameter/normalization usage. The new Gross and Wang bibliography entries identify the versions and bounded reading scope correctly. I did not read their entire proofs or exhaust related literature. This expanded comparison remains compatible with the frozen J report's earlier, narrower historical reading.
+
+8. STATIC TEX, LABELS, AND SYMBOLS
+
+The new theorem/proof, corollary/proof, gather*, equation, and display structures read as balanced. The existing amsmath/amssymb/amsthm/hyperref packages support the constructs used. No new undefined command or evident broken delimiter was found. This is static reading, not a TeX execution or syntax-test result.
+
+New labels backgroundgap, backgroundfullgap, backgroundexcess, backgroundcompression, and backgroundsmallflow are each defined once and their references resolve. The retained twolevelgap is a deliberate second label on the same section, not a duplicate definition; it preserves the earlier forward reference. The retained twolevelfullgap now identifies the corollary, with no remaining misleading 'Theorem' reference to it in the inspected source. Removed direct-proof equation labels have no dangling uses. Gross and Wang citation keys each have a matching bibliography item.
+
+All new constants are declared local. M is a norm bound in the general theorem, while the corollary deliberately uses M_0,m_0 for actual potential values. That avoids the most consequential potential collision. A now denotes an operator in the new proof rather than a level set, and C remains a set in the all-cut argument; local definitions make the distinctions clear. The prior global normalized density r and normalizer N are not reused as new ratio or sample-size symbols in this section.
+
+No visual layout or page fit is certified. The constants display and long ground-state identity need ordinary visual review when an authorized PDF is produced. No PDF exists by virtue of this source acceptance.
+
+9. OBJECTIONS AND DISPOSITION
+
+Blocking objections: none found.
+Nonblocking precision note: a future revision of the Wang background sentence may explicitly name additive symmetrization for nonsymmetric operators. No imported result or present proof depends on an incorrect nonsymmetric assertion.
+
+The theorem's additional normalized-minimum premise, fixed-parameter uniformity, all-cut coverage, and actual-model identities remain explicit. Its two-level consequence is recovered honestly with potentially weaker constants. The minimum-vanishing consequence is a necessary mechanism only. The unrestricted stationary-gap problem, global originality, formal verification, authorized production, exact-PDF assessment, and publication remain separate issues.
+
+Accept the exact be768390... integrated source on this analytical/static scope. Preserve the predecessor and complete original I/J reports unchanged. Any later edited source or rendered artifact requires its own exact referent; this report is not a portable score or publication receipt.
+
+END OF FULL FIRST INTEGRATED-SOURCE AUDIT — POSITIVE BACKGROUND

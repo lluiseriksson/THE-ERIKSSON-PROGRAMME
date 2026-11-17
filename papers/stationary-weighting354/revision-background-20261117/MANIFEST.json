@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "base_commit": "70a402276a9e9e4de86e3c284d20fbf9228663c7",
+  "files": [
+    {
+      "path": "manuscript-background-candidate.tex",
+      "bytes": 74604,
+      "sha256": "be768390e9607a2cedc29315ff204aded526ce3364970a2f4f1650953db1cbfe",
+      "representation": "Raw bytes; no normalization"
+    },
+    {
+      "path": "background-section.tex",
+      "bytes": 6982,
+      "sha256": "f20fce6614143151628247609149567f6eac5a4a9fb3e16e387d7d26c5043e5f",
+      "representation": "Raw bytes; no normalization"
+    },
+    {
+      "path": "FULL-FIRST-SOURCE-AUDIT.txt",
+      "bytes": 17067,
+      "sha256": "4a83f1b8457fff865c10163ebb9fcd18d87f17b9c15fe142a6d4dec0d9e0ed75",
+      "representation": "Raw bytes; no normalization"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2950,
+      "sha256": "fd2e3f800dc779f936ff9ab968825488bf7ec712f48308f7368fe4371ab0abe8",
+      "representation": "Raw bytes; no normalization"
+    }
+  ],
+  "dependencies": [
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-positive-background-gap/CANDIDATE-J.txt",
+      "commit_scope": "Same commit as this manifest",
+      "bytes": 9820,
+      "sha256": "3c3e719331b81c9f412374be8ea49d9e02f3cf860472979b7f7d127843a2986d",
+      "representation": "Raw bytes; no normalization"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-positive-background-gap/FULL-FIRST-ANALYTIC-AUDIT-J.txt",
+      "commit_scope": "Same commit as this manifest",
+      "bytes": 16354,
+      "sha256": "56b71e33b175e31c669453a4ca1dbb48bd6bd972a7c152ea2158b108d877b3ea",
+      "representation": "Raw bytes; no normalization"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-positive-background-gap/MANIFEST.json",
+      "commit_scope": "Same commit as this manifest",
+      "bytes": 829,
+      "sha256": "55e104e70bc3962e1338f6ca26ad0dc91d586bcea52588936858f41867f9d700",
+      "representation": "Raw bytes; no normalization"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-two-level-gap/CANDIDATE-I.txt",
+      "commit_scope": "70a402276a9e9e4de86e3c284d20fbf9228663c7",
+      "bytes": 10278,
+      "sha256": "d2077d48c5a202aca95a1ef0bd53c7dcda407b391f0f7b13a2b126f1e2b8ba01",
+      "representation": "Raw bytes; no normalization"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-two-level-gap/FULL-ANALYTIC-AUDIT-I.txt",
+      "commit_scope": "70a402276a9e9e4de86e3c284d20fbf9228663c7",
+      "bytes": 17250,
+      "sha256": "f36ca529338fa1150f21e402da1cfbe650c9b22d7cc6d17e026cdc9e3a6ca57a",
+      "representation": "Raw bytes; no normalization"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/revision-twolevel-20261117/manuscript-twolevel-candidate.tex",
+      "commit_scope": "70a402276a9e9e4de86e3c284d20fbf9228663c7",
+      "bytes": 72711,
+      "sha256": "c0e97b0a3a27f9c74316469e7b6ae8afbbc30aef1931b49bd9b5e7033a41b20b",
+      "representation": "Raw bytes; no normalization"
+    }
+  ],
+  "source_review": "First exact integrated-source review, full report retained",
+  "PDF_created": false,
+  "PDF_reviewed": false,
+  "published": false,
+  "numerical_grade": null,
+  "execution_permission_changed": false
+}

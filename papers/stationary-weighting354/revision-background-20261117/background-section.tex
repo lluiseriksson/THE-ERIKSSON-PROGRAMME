@@ -1,0 +1,175 @@
+\section{Full gaps from a positive potential background}\label{backgroundgap}\label{twolevelgap}
+A fixed lower bound on the normalized potential allows arbitrary upper
+heights and arbitrarily many values. We first prove this general sufficient
+condition and then recover the two-level class from its stationary floor.
+The lower potential bound is not derived here for arbitrary potentials
+satisfying the original stationary hypotheses.
+
+\begin{theorem}\label{backgroundfullgap}
+Fix $0<\rho<1$ and $0<a\leq1$. Let $h\geq a$ on $\{-1,1\}^L$, $L\geq1$,
+normalize $\E hP_\rho h=1$, and assume $\E\pi^s\leq2$, where
+$\pi=hP_\rho h$ and $s=(1+\rho)/(1-\rho)$. Then the actual Doob kernel has
+\[
+ \operatorname{gap}(K)\geq G_J(\rho,a)>0
+\]
+uniformly in $L$ and $h$. No matching or upper bound on $h$ is needed.
+The following explicit constants suffice; all symbols are local:
+\begin{gather*}
+ s'=s/(s-1),\qquad B=2^{1/s},\qquad c=a/2,\qquad M=B/a,
+ \qquad\eta=\frac{c}{c+M},\\
+ t=\min\left\{2^{-s},\left(\frac{\eta^2c}{4M}\right)^s\right\},
+ \qquad\epsilon=c^2t,\\
+ \gamma=\frac{c^2(1-\rho)\epsilon^{s'-1}}{2^{s'}B^{2s'}},
+ \qquad\Phi_* =\min\{\eta/2,\gamma\},
+ \qquad G_J(\rho,a)=\Phi_*^2/4.
+\end{gather*}
+The constants are positive and deliberately conservative.
+\end{theorem}
+\begin{proof}
+Put $P=P_\rho$, $Q=P_{\sqrt\rho}$, $g=Ph$, and $\nu=\pi\mu$.
+Since $g\geq a$, the cap gives $\|h\|_s\leq B/a=M$.
+Write $h=c+z$, so $z\geq c>0$, $\|z\|_s\leq M$, and $g=c+Pz$.
+
+\paragraph{Critical multiplication and the actual denominator.}
+Ordinary hypercontractivity~\cite{odonnelllecture} and
+$1/(1+\rho)=1/2+1/(2s)$ yield
+\[
+ \|QM_{\sqrt z}f\|_2\leq\|\sqrt z f\|_{1+\rho}
+ \leq\|z\|_s^{1/2}\|f\|_2\leq\sqrt M\|f\|_2.
+\]
+The same inequality for a function supported on $C$ gives
+$\|Q1_C\|_{2\to2}\leq\mu(C)^{1/(2s)}$.
+All operator norms in this proof, except those explicitly assigned to
+$L^2(\nu)$, use $L^2(\mu)$ or its orthogonal direct sum.
+Set $A=M_{\sqrt z}PM_{\sqrt z}$ and $R=M_{Pz}$. Then
+$0\preceq A\preceq MI$. Reversibility also gives the exact identity
+\[
+ \langle v,(R-A)v\rangle_\mu
+ =\frac12\sum_{x,y}\mu(x)P(x,y)z(x)z(y)
+ \left(\frac{v(x)}{\sqrt{z(x)}}-
+             \frac{v(y)}{\sqrt{z(y)}}\right)^2\geq0.
+\]
+Thus $A\preceq R$. With $\theta=c/(c+M)=\eta$ and
+$\lambda=M/(c+M)$, convex combination gives
+\[
+ A\preceq\theta MI+(1-\theta)R=\lambda(cI+R).
+\]
+Congruence and $g=c+Pz$ prove
+\begin{equation}\label{backgroundexcess}
+ M_{1/\sqrt g} A M_{1/\sqrt g}\preceq(1-\eta)I.
+\end{equation}
+This uses the nonconstant denominator exactly and assumes no upper bound
+on $z$.
+
+\paragraph{An exact two-component representation.}
+Let $S=M_{\sqrt{h/g}}PM_{\sqrt{h/g}}$, the conjugate of $K$ by the
+isometry $f\mapsto\sqrt\pi f$ from $L^2(\nu)$ to $L^2(\mu)$.
+Define
+\[
+ Wf=\left(\sqrt{c/h}\,f,\sqrt{z/h}\,f\right),\qquad W^*W=I.
+\]
+For $T=WSW^*$, direct multiplication gives
+\[
+ T_{ij}=M_{\sqrt{h_i/g}}PM_{\sqrt{h_j/g}},
+ \qquad h_0=c,\quad h_1=z.
+\]
+In particular $T_{11}$ is the operator in \eqref{backgroundexcess}.
+Both $W$ and $W^*$ commute with the same set restriction on each
+component. Hence the compressions satisfy
+\begin{equation}\label{backgroundcompression}
+ S_{CC}=W_C^*T_{CC}W_C,\qquad\|S_{CC}\|\leq\|T_{CC}\|.
+\end{equation}
+The larger space supplies an exact identity for the original operator,
+not a new assumption or a substitute chain.
+
+\paragraph{Small cuts.}
+The multiplier $\sqrt{c/g}$ is at most one. Therefore
+\[
+ \|T_{00,CC}\|\leq\|1_CP1_C\|\leq\mu(C)^{1/s},
+ \qquad\|T_{11,CC}\|\leq1-\eta.
+\]
+For the cross block factor $P=Q^2$. Bound the left diagonal multiplier
+by one and the far-right $g^{-1/2}$ by $c^{-1/2}$. The latter commutes
+with $\sqrt z$ and $1_C$, without being moved through $Q$. Thus
+\[
+ \|T_{01,CC}\|
+ \leq c^{-1/2}\|1_CQ\|\,\|QM_{\sqrt z}1_C\|
+ \leq\sqrt{M/c}\,\mu(C)^{1/(2s)}.
+\]
+If $0<\nu(C)\leq\epsilon$, then $\pi=hg\geq a^2\geq c^2$ gives
+$\mu(C)\leq t$. The diagonal blocks are bounded by $1/2$ and
+$1-\eta$, respectively, while the cross block is bounded by $\eta/2$.
+Since $0<\eta<1/2$, the block-diagonal part has norm at most $1-\eta$.
+The self-adjoint off-diagonal part has norm $\|T_{01,CC}\|$, so
+$\|T_{CC}\|\leq1-\eta/2$.
+
+Define the actual outward stationary flow
+\[
+ F_h(C)=\sum_{x\in C,\,y\notin C}\mu(x)P(x,y)h(x)h(y)
+       =\mathcal D_K(1_C).
+\]
+The vector $\sqrt\pi\,1_C$ has squared norm $\nu(C)$.
+Using \eqref{backgroundcompression} and conjugacy yields
+\begin{equation}\label{backgroundsmallflow}
+ F_h(C)=\nu(C)-\langle1_C,K1_C\rangle_\nu
+       \geq(\eta/2)\nu(C).
+\end{equation}
+Every such cut is covered, regardless of the values of $h$ within it.
+
+\paragraph{Remaining cuts and the full gap.}
+For $\epsilon\leq\nu(C)\leq1/2$, the actual edge measure and $h\geq c$
+give
+\[
+ F_h(C)\geq c^2\mathcal D_P(1_C)
+       \geq c^2(1-\rho)\mu(C)\mu(C^c).
+\]
+The cap implies $\nu(E)\leq B\mu(E)^{1/s'}$ for every $E$. Hence
+\[
+ \mu(C)\geq(\nu(C)/B)^{s'},\qquad
+ \mu(C^c)\geq(1/(2B))^{s'},
+\]
+and consequently
+\[
+ \frac{F_h(C)}{\nu(C)}
+ \geq\frac{c^2(1-\rho)\nu(C)^{s'-1}}{2^{s'}B^{2s'}}\geq\gamma.
+\]
+Together with \eqref{backgroundsmallflow}, these bounds imply
+$\Phi(K)\geq\Phi_*$ for conductance
+$\Phi(K)=\min_{0<\nu(C)\leq1/2}F_h(C)/\nu(C)$.
+The lazy reversible Cheeger theorem~\cite{peres}, applied to
+$\overline K=(I+K)/2$, gives
+\[
+ \operatorname{gap}(K)/2\geq\tfrac12(\Phi(K)/2)^2,
+ \qquad\operatorname{gap}(K)\geq\Phi_*^2/4.
+\]
+All transformations are valid also for constant $h$ and $a=1$, because
+$z\geq c>0$. This proves the theorem.
+\end{proof}
+
+\begin{corollary}\label{twolevelfullgap}
+Fix $0<\rho<1$ and $0<b<1$. Every normalized positive potential taking
+at most two values and satisfying $\pi\geq b$ and $\E\pi^s\leq2$ obeys
+$\operatorname{gap}(K)\geq G_J(\rho,b/2)>0$, without matching or any
+additional restriction on the level ratio or geometry.
+\end{corollary}
+\begin{proof}
+For a constant potential normalization gives $h=1$.
+Otherwise let $h=M_0$ on a set of mass $\alpha\in(0,1)$ and $h=m_0<M_0$
+on its complement. The constant Fourier component gives $\E h\leq1$.
+Integrating the floor on the low set yields $m_0\geq b(1-\alpha)$.
+Since $g\leq M_0$, the floor there also gives $m_0M_0\geq b$, while
+$M_0\alpha\leq\E h\leq1$ implies $m_0\geq b\alpha$.
+Thus $h\geq m_0\geq b/2$. Apply Theorem~\ref{backgroundfullgap}.
+\end{proof}
+This recovers the two-level conclusion, with possibly weaker constants
+than the separately preserved direct proof. Its geometric restriction
+has been replaced in the broader theorem by the explicit sufficient
+condition $h\geq a$; that condition is derived here only for the
+stated two-level class.
+
+For any normalized family at fixed $\rho$ with $\E\pi_L^s\leq2$, a
+collapsing gap necessarily implies $\min_x h_L(x)\to0$.
+Otherwise a subsequence has a fixed positive minimum, contradicting
+Theorem~\ref{backgroundfullgap}. This is a necessary mechanism,
+not the construction of such a family. The original stationary floor
+and matching have not been shown to exclude it.
