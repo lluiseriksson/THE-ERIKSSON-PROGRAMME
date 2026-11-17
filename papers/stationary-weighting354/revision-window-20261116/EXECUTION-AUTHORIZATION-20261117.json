@@ -1,0 +1,17 @@
+{
+  "status": "AUTHORIZED by actual owner reply received in this chat",
+  "observed_at_utc": "2026-11-17T03:25:19.7026608Z",
+  "reply_reference": "request_user_input_async/call_13cd8f6ace9e4ce192db7c5cab7db49e/0",
+  "questionItemId": "[\"request_user_input_async\",\"call_13cd8f6ace9e4ce192db7c5cab7db49e\",0]",
+  "actual_answer": "Sí, autorizo y confirmo esa capacidad",
+  "question": "El manuscrito integrado y su preparación ya están auditados y guardados en GitHub (8efcb73b). ¿Autorizas generar y reproducir únicamente este PDF en GitHub Actions Linux —máximo 20 minutos y 50 MiB de archivos durante un día— y confirmas que hay esa capacidad disponible en la cuota existente, sin gasto adicional? Necesito esta excepción porque la regla vigente de CLAUDE.md reserva la compilación a Colab y tu permiso anterior cubría solo las pruebas del 354. La consulta automática de capacidad no está disponible.",
+  "authorized_source_commit": "8efcb73bdc4a6458f81fee6b3d9256f1e1524495",
+  "authorized_source_sha256": "186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3",
+  "max_minutes": 20,
+  "max_artifact_bytes": 52428800,
+  "retention_days": 1,
+  "existing_capacity_confirmed_by_owner": true,
+  "extra_spend_authorized": false,
+  "newer_source_9a17337a_covered": false,
+  "scope": "One manual standard Linux PDF-only production/reproduction with two fresh checkouts, render pages and retain bounded full diagnostics. No Lean/oracle/math campaign, desktop control or scope expansion."
+}

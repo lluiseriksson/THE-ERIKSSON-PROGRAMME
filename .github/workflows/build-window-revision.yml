@@ -1,0 +1,132 @@
+# Activated only for actual owner reply call_13cd8f6ace9e4ce192db7c5cab7db49e/0; fixed source8efcb73b.
+name: Build grouped window revision PDF only
+on:
+  push:
+    branches: [codex/low-full-evidence-20261116]
+    paths: [.github/workflows/build-window-revision.yml]
+  workflow_dispatch:
+    inputs:
+      owner_exception_reference:
+        description: Actual new owner reply authorizing this PDF-only Linux exception
+        required: true
+        type: string
+      existing_quota_verified:
+        description: Applicable artifact capacity verified without paid expansion
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: grouped-window-pdf-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  document:
+    if: github.event_name == 'workflow_dispatch' && inputs.owner_exception_reference == 'request_user_input_async/call_13cd8f6ace9e4ce192db7c5cab7db49e/0' && inputs.existing_quota_verified
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Record first job step and actual authorization reference
+        env:
+          OWNER_REPLY_REF: ${{ inputs.owner_exception_reference }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/window-evidence"
+          date -u +%FT%TZ > "$RUNNER_TEMP/window-evidence/first-step-start.txt"
+          printf '%s\n' "$OWNER_REPLY_REF" > "$RUNNER_TEMP/window-evidence/owner-reference.txt"
+      - name: Fresh clone A at exact authorized source SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+          path: clone-a
+          persist-credentials: false
+      - name: Fresh clone B at the same authorized source SHA
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+          path: clone-b
+          persist-credentials: false
+      - name: Install document tools only and retain setup exits
+        run: |
+          root="$RUNNER_TEMP/window-evidence"
+          date -u +%FT%TZ > "$root/setup-start.txt"
+          rc=0
+          sudo apt-get update > "$root/apt-update-full.log" 2>&1 || rc=$?
+          printf '%s\n' "$rc" > "$root/apt-update-exit.txt"
+          if (( rc != 0 )); then exit "$rc"; fi
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils > "$root/apt-install-full.log" 2>&1 || rc=$?
+          printf '%s\n' "$rc" > "$root/apt-install-exit.txt"
+          date -u +%FT%TZ > "$root/setup-end.txt"
+          exit "$rc"
+      - name: Build twice, compare bytes, render and reconcile page count
+        env:
+          EXACT_COMMIT: 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+        run: |
+          bash "$GITHUB_WORKSPACE/clone-a/papers/stationary-weighting354/revision-window-20261116/build-pipeline.sh" "$RUNNER_TEMP/window-evidence" "$EXACT_COMMIT"
+      - name: Preserve diagnostics even if graphics exceed ceiling
+        id: finish
+        if: always()
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/window-evidence"
+          bundle="$RUNNER_TEMP/window-upload"
+          mkdir -p "$root" "$bundle/diagnostics"
+          copy_failure() {
+            printf 'Packaging failed with exit %s; no artifact uploaded. Full available original diagnostics follow; completeness requires checking.\n' "$1" > "$root/packaging-failure.txt"
+            while IFS= read -r -d '' file; do
+              printf '\nORIGINAL FILE: %s\n' "$file"
+              cat -- "$file" || printf 'UNREADABLE ORIGINAL: %s\n' "$file" >&2
+            done < <(find "$root" -type f ! -name '*.png' ! -name '*.pdf' -print0)
+            echo "upload_ok=false" >> "$GITHUB_OUTPUT"
+            exit 67
+          }
+          date -u +%FT%TZ > "$root/pre-upload-end.txt"
+          printf '%s\n' 'Timings cover first step through pre-upload; checkout/upload/service totals require run receipt. Missing phases mean not reached, not success.' > "$root/timing-scope.txt"
+          cd "$root"
+          copy_rc=0
+          find . -type f ! -name '*.png' ! -name '*.pdf' -exec cp --parents -t "$bundle/diagnostics/" -- {} + || copy_rc=$?
+          if (( copy_rc != 0 )); then copy_failure "$copy_rc"; fi
+          diag=$(du -sb "$bundle" | cut -f1)
+          # Reserve 1 MiB for final records and directory overhead.
+          cap=51380224
+          if (( diag > cap )); then
+            printf '%s\n' 'DIAGNOSTICS TOO LARGE: no upload; full text follows. Console retention/truncation must be checked before claiming preservation.' >&2
+            while IFS= read -r -d '' file; do
+              printf '\nFILE: %s\n' "$file"
+              cat -- "$file"
+            done < <(find "$root" -type f ! -name '*.png' ! -name '*.pdf' -print0)
+            echo "upload_ok=false" >> "$GITHUB_OUTPUT"
+            exit 66
+          fi
+          graphics=$(find . -type f \( -name '*.png' -o -name '*.pdf' \) -printf '%s\n' | awk '{s+=$1} END {printf "%.0f",s+0}')
+          rc=0
+          if (( diag + graphics <= cap )); then
+            mkdir -p "$bundle/document"
+            copy_rc=0
+            find . -type f \( -name '*.png' -o -name '*.pdf' \) -exec cp --parents -t "$bundle/document/" -- {} + || copy_rc=$?
+            if (( copy_rc != 0 )); then copy_failure "$copy_rc"; fi
+            printf '%s\n' 'Document included; inspect pipeline exits separately.' > "$bundle/retention-status.txt"
+          else
+            printf '%s\n' 'SIZE FAILURE: full text diagnostics retained, PDF/PNG omitted. Rendering evidence incomplete. Recovery requires an authorized route within capacity.' > "$bundle/retention-status.txt"
+            rc=64
+          fi
+          bytes=$(du -sb "$bundle" | cut -f1)
+          printf 'Payload bytes before this record: %s\nHard ceiling: 52428800\n' "$bytes" > "$bundle/size.txt"
+          if (( bytes > 52400000 )); then
+            printf '%s\n' 'Unexpected overhead: no upload; full diagnostics follow. Verify console completeness before claiming preservation.' >&2
+            while IFS= read -r -d '' file; do
+              printf '\nFILE: %s\n' "$file"
+              cat -- "$file"
+            done < <(find "$root" -type f ! -name '*.png' ! -name '*.pdf' -print0)
+            echo "upload_ok=false" >> "$GITHUB_OUTPUT"
+            exit 66
+          fi
+          echo "upload_ok=true" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+      - name: Retain bounded evidence including failed-run diagnostics
+        if: always() && steps.finish.outputs.upload_ok == 'true'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: grouped-window-pdf-8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+          path: ${{ runner.temp }}/window-upload/
+          if-no-files-found: error
+          retention-days: 1
