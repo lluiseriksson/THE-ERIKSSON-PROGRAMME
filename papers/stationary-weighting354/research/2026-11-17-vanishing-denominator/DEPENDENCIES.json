@@ -1,0 +1,37 @@
+[
+  {
+    "sha256_raw": "cbe65eef9bff034561564bed05f2b777a181d73b9a24491324408b26b78a49cc",
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-L.txt",
+    "bytes": 10586
+  },
+  {
+    "sha256_raw": "0a855ef11d3115bed54a10a3c644bb62a34ae4743330cd7f9d876ec1d8c892d6",
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/FULL-FIRST-ANALYTIC-AUDIT-L.txt",
+    "bytes": 19261
+  },
+  {
+    "sha256_raw": "566ce2691477e814a2ef3878236238ea0ed4091f8b63d4bbd054ae4fc8e42b32",
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-M.txt",
+    "bytes": 8206
+  },
+  {
+    "sha256_raw": "708f504bf1340ce231948aec10b301828b52cf20220dbab1b25fbf054c047d40",
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/FULL-FIRST-ANALYTIC-AUDIT-M.txt",
+    "bytes": 16561
+  },
+  {
+    "sha256_raw": "134db454d351972e4c19ec3fb4cb28c16931f385aa6d1c1b0e5a412a2d82d9fc",
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/AUDIT-RESPONSE-M.txt",
+    "bytes": 959
+  },
+  {
+    "sha256_raw": "75fa1c567739909e61e4d32f38a3702d72ce27a0db739b5197327203d8f09a7e",
+    "repository_path": "papers/stationary-weighting354/revision-form-comparison-20261117/manuscript-form-comparison-candidate.tex",
+    "bytes": 119199
+  },
+  {
+    "sha256_raw": "4e424813073aa0999e0ea0ce604c626550a7375df429a556280515148925bff5",
+    "repository_path": "papers/stationary-weighting354/revision-form-comparison-20261117/MANIFEST.json",
+    "bytes": 8368
+  }
+]

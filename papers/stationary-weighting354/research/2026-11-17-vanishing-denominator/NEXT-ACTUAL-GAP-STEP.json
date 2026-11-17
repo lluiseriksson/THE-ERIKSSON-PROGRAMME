@@ -1,0 +1,27 @@
+{
+  "question_id": "stationary-doob-gap",
+  "statement": "Do the original stationary floor, critical moment cap and exact matching through k~C sqrt(L) force a dimension-uniform gap for the actual Boolean Doob kernel?",
+  "hypotheses": "Fixed 0<rho<1, 0<b<1, C>0, s=(1+rho)/(1-rho), h>0, E hP_rho h=1, pi=hP_rho h>=b, E pi^s<=2 and zero nonconstant Walsh coefficients through k=min(L,floor(C sqrt(L))).",
+  "mechanism": "Q closes the pointwise small-denominator exclusion route: small Ph and arbitrarily large h/Ph can coexist with a good full gap. Seek aggregate killed-return or joint energy/variance control on actual small-Ph/high-ratio sets, using their weighted noise action. Derive such control from original constraints; do not assume a Ph floor, h floor, ratio ceiling or the desired spectral estimate.",
+  "falsifier": "An actual original-admissible family defeating the proposed comparison, or an identified error in a claimed derivation. Unrelated surrogate chains are insufficient.",
+  "abandonment": "After three consecutive units without a substantial mathematical advance, preserve the failure and switch mechanism or identify the concrete obstruction. Do not assume a positive potential minimum, a Ph floor or the desired spectral bound.",
+  "units_without_substantial_mathematical_progress": 0,
+  "counter_reason": "Q is a proved actual counterexample to a uniform Ph floor and uniform h/Ph pointwise ceiling under all original stationary hypotheses, with full-spectrum convergence proved for the same family. First analytic audit PASS; general gap remains open.",
+  "closed_route": "Uncorrected potential smoothing does not preserve exact matching: N is proved and now integrated. Do not re-run this failed invariance claim. O14 also refutes universally vanishing L^s distance between the original and fixed-smoothed stationary densities. P refutes uniform Var_pi<=V Var_w and E_h<=D E_u under original hypotheses. It does not refute the reverse form inequality or a direct Rayleigh comparison. Q additionally refutes a dimension-uniform positive Ph minimum and dimension-uniform pointwise h/Ph upper bound. Its actual full spectrum still approaches noise; this does not refute a weighted killed-return criterion.",
+  "manuscript_source_sha256": "75fa1c567739909e61e4d32f38a3702d72ce27a0db739b5197327203d8f09a7e",
+  "manuscript_source_commit": "115bf0932cdf44a00c01a7868deb64325658076a",
+  "publication_queue": [
+    "Older exact d617dc40 PDF and its complete first assessment remain ready for the existing native route after real operator catalogue/sole-author reconciliation. No repeat grant attempt without changed evidence.",
+    "Current grouped 75fa1c567739909e61e4d32f38a3702d72ce27a0db739b5197327203d8f09a7e source at115bf0932cdf44a00c01a7868deb64325658076a contains P with N/O and supersedes eb5d3d17 for future production. It requires applicable authorized production and exact-PDF review; the old8ef exception and scores do not transfer.",
+    "Retain one grouped manuscript and full reports with objections and shared-context identity limits. No acceptance or publication claim."
+  ],
+  "new_active_question_count": 0,
+  "PR29": "20/41",
+  "TermSource": 0,
+  "research_source_commit": "c2efb6bc669be6ed9dc43cb23b276fb26eafd05d",
+  "research_source_sha256": "63cbfada07296f3764ab4953b8ed47f2f4e6923105741ef45a9b4c2e11851dac",
+  "integration_next": "Integrate Q with K/L/M and N/O/P in the existing grouped manuscript. Current75fa1c56 source does not yet contain Q. Preserve first reports and original negative results; do not create a separate small paper.",
+  "terminal_observation_N1": "Historical observation of the earlier eb5 integration: stale predecessor queue was corrected in its D record. This current queue names the actual new source and preserves the prior audited queue separately; no production has executed.",
+  "manuscript_path": "papers/stationary-weighting354/revision-form-comparison-20261117/manuscript-form-comparison-candidate.tex",
+  "next_bounded_test": "For actual bad sets A defined by small Ph/high h/Ph, investigate the killed operator M_1A M_sqrt(h/Ph) P_rho M_sqrt(h/Ph) M_1A, or its equivalent Q M_((h/Ph)1A) Q norm. A uniform subunit bound must be proved from the original assumptions, not inferred from rare stationary mass alone. Q and P are mandatory falsifier controls for any proposed sufficient premise."
+}

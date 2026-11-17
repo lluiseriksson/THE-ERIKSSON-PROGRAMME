@@ -1,0 +1,132 @@
+FIRST ANALYTIC SOURCE AUDIT — CANDIDATE Q
+Date: 2026-11-17
+Verdict: PASS for the exact frozen source identified below.
+
+1. Exact subject and assessment scope
+
+Frozen commit: c2efb6bc669be6ed9dc43cb23b276fb26eafd05d.
+Parent: b58683362916d08c2e9861f344b6e131cf647139.
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116.
+Candidate: papers/stationary-weighting354/research/2026-11-17-vanishing-denominator/CANDIDATE-Q.txt.
+Raw SHA256: 63cbfada07296f3764ab4953b8ed47f2f4e6923105741ef45a9b4c2e11851dac.
+Length: 12563 bytes; UTF-8 without BOM, LF, zero CR bytes.
+Unfiltered raw and committed Git blob: fd5689b649137e0c6105006cbf7bf015d2e114e5.
+
+No blocking or nonblocking correction request was found. The construction, exact stationary correction, actual inverse and full spectral conclusion pass this analytic reading. In particular, the small denominator is not inferred from an abstract density/kernel pair, the pointwise stationary floor is proved in all regions, and the spectral proof uses the deliberately slow M growth rather than importing M's inapplicable near-one denominator bound.
+
+This verdict is a first analytic source assessment, not a numerical grade, formal-machine proof, execution certificate, integrated-manuscript assessment, exact-PDF review, global novelty certificate, peer review, acceptance or publication approval. No old score transfers to Q.
+
+2. Role, inherited context and audit boundary
+
+Auditor: separate Codex child-agent role /root/public354_commit_audit, in the same provider workflow as the root fabricator. The interface identifies the Codex assistant role. Exact serving model, backend revision and effective reasoning effort are not independently attested, and no requested alias is used to invent that identity. Inherited context includes this programme and earlier analytic/integration audits. This is not a blind assessment, independent human peer review or provider-independent replication.
+
+The operational charter section 4 was read. The assignment froze the source and specified no inbound follow-ups; none arrived during the audit. No PR/body exists for this task, so PR body capture is inapplicable. I used file reading, git inspection, raw hashes and report/evidence retention only. No mathematical code, numerical evaluation, Lean, TeX, build, rendering, runtime, UI, browser, external-model call or network action was performed. No repository source, branch, state or previous report was altered. No disposable clone was created.
+
+The self-contained concentration proof and local proof dependencies were inspected directly. I did not newly retrieve the cited external sources or repeat the author's literature searches; their described reading and retrieval failures are not represented as mine. No prior PASS is used in place of a load-bearing proof check.
+
+3. Checked dependencies and preservation
+
+The full source L was read, particularly Sections 2--4, including strict convexity/coercivity, the resolvent series and differentiated inverse map:
+  papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-L.txt
+  SHA256 cbe65eef9bff034561564bed05f2b777a181d73b9a24491324408b26b78a49cc
+  10586 bytes; raw/committed blob d03e974a05b246e463bbc3b1fc2759d982becc64.
+
+The full source M was read, distinguishing the general sandwich and multiplicative transfer from its family-specific denominator estimate:
+  papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-M.txt
+  SHA256 566ce2691477e814a2ef3878236238ea0ed4091f8b63d4bbd054ae4fc8e42b32
+  8206 bytes; raw/committed blob a88fac7e6c581639edae2c2aa269e25a7d55c2f7.
+
+All three checked files have LF bytes, no BOM, and unfiltered raw Git identities equal to their HEAD objects. The new commit adds only Q; L, M, the grouped manuscript, historical assessments and old PDFs remain unchanged. OBSERVATIONS.json records these identities. This report does not re-score L or M or certify their unrelated statements; it checks the particular proof interfaces that Q uses.
+
+4. Concentration, including different Bernoulli parameters
+
+The proof of Q1 is valid for independent, not necessarily identically distributed Bernoulli variables. For each centered Bernoulli variable, the second derivative of its log moment-generating function is the variance under exponential tilting, at most 1/4 for every real lambda. With zero value and first derivative at zero, integrating twice gives F(lambda)<=lambda^2/8, also for negative lambda. Summing over independent variables gives the log-MGF bound L lambda^2/8. Exponential Markov at lambda=4a yields exp(-2a^2 L); using lambda=-4a gives the lower tail. No binomial equal-parameter hypothesis is hidden in the shell-transition application.
+
+For a rho-noise step from a fixed cube point x, coordinates remain independent. A coordinate positive at x is negative after the step with probability p=(1-rho)/2; one negative at x remains negative with probability 1-p. The expected number of negative coordinates is therefore p(L-d(x))+(1-p)d(x)=pL+rho d(x), precisely Q2. This validates use of Q1 from arbitrary x, where the Bernoulli parameters are generally different.
+
+5. Shell geometry and the deterministic rare-return set
+
+For every fixed rho in (0,1), p>0 and q=p+rho p=(1-rho^2)/2 satisfy p<q<1/2. delta=min(rho p/16,rho^2/16) is strictly positive. Its definitions give q-p>=16delta, 1/2-q>=8delta and r0=2delta/rho<=p/8. Moreover delta<p/16, so r0<p-delta. Also q-2delta>p+delta>r0. Hence the two closed shells A,B are disjoint and both lie below the uniform mean 1/2; the later small ball of radius r0 is disjoint from both. The positive margins remain valid for fixed rho arbitrarily close to either excluded endpoint, though constants and the eventual dimension threshold can become poor. No uniformity at rho=0 or rho=1 is claimed.
+
+For x in B, the next-step mean lies in [q-rho delta,q+rho delta]. The distance from this interval to either boundary of A is (2-rho)delta>=delta. Q1 and the union bound give P(x,A)>=1-2exp(-2delta^2 L). From x0 the mean is pL, so the same estimate gives P(x0,B)>=1-2exp(-2delta^2 L).
+
+For d(x)/L>=r0, the next-step mean is at least p+2delta, while B has upper endpoint p+delta. Thus P(x,B)<=exp(-2delta^2 L). Since 1-a0=(1-b)/2>0, this eventually excludes such points from D={P1_B>1-a0}. At the same time P(x0,B) tends to one, hence x0 lies in D eventually. The strict inequality defining D and the non-strict bound for its complement are consistent at the threshold. Consequently D is contained in the open radius-r0 ball and is disjoint from A and B. No boundary point is left unclassified.
+
+All components of the defined c are strictly positive. Specifically p-r0>0, q-2delta-p>0, 1/2-q-2delta>0, 1/2-p-delta>0 and 1/2-r0>0. The common bounds Q5 follow by Q1: uniform tails for A,B and the containing ball of D; a p-mean upper tail for A from x0; a p-mean lower tail for D from x0; and the previously proved B-complement and B-to-A estimates. Replacing the individual exponents by their minimum c only weakens the bounds. Integer shell boundaries do not obstruct these tail estimates; their positive widths grow linearly in L. The concentration bounds also imply the needed eventual nonemptiness of B and A.
+
+D is a deterministic set defined by the exact kernel. No numerical membership approximation or unproved dependent-coordinate concentration is invoked. The fact that x0 belongs to D but P(x0,D) is exponentially small is consistent: a noise step moves to the p-shell, far from the small-radius ball. In particular the diagonal return to x0 is already included in the D tail estimate.
+
+6. Every-region stationary floor
+
+With epsilon=c/(16s)>0, M=exp(epsilon L)>1 and E=A union D, the three values of H occupy disjoint regions: M on E, M^(-1) on B, and one elsewhere. Stochasticity gives M^(-1)<=G=PH<=M globally. For x in E this immediately gives HG>=1.
+
+For x in B, the transition to A yields G(x)>=M P(x,A), so H(x)G(x)>=1-2exp(-cL)>=a0 eventually. For x outside E union B, H(x)=1 and x is not in D. Thus P(x,B)<=1-a0. Since H>=1 off B, G(x)>=1-P(x,B)>=a0. This covers the complement, including all equality cases on the D threshold. Therefore R=HG>=a0 at every point for all sufficiently large L.
+
+The floor here is for the actual product HPH before normalization, not for an unrelated chosen density. The maximum height M and minimum M^(-1) are allowed to depend on L. There is no assumed fixed lower bound on H or G.
+
+7. The pointwise defect and moment/energy normalization
+
+At x0 in D, H(x0)=M. Splitting the actual noise expectation over B,E and their remaining complement gives the exact expression in Section 5. Multiplication by M gives a lower bound P(x0,B) and an upper bound
+  1+2M exp(-cL)+2M^2 exp(-cL).
+The complement probability is at most P(x0,B^c)<=2exp(-cL), and P(x0,E)<=2exp(-cL). Thus the two constants two and the power M^2 are correct. Since 2epsilon<c, the upper error tends to zero, while the lower bound tends to one. Therefore MG(x0)->1, G(x0)~M^(-1), R(x0)->1 and H(x0)/G(x0)~M^2. The potential's own diagonal contribution cannot invalidate this limit: it is part of the controlled D contribution and is bounded after multiplication by M by M^2 exp(-cL).
+
+For any fixed finite r>=1, the L^r norm bound d_r<=M(2exp(-cL))^(1/r)+exp(-cL/r) follows from the two high regions and the low region, using |M-1|<=M and |M^(-1)-1|<=1. Noise contracts L^r by positivity, Jensen and invariant uniform measure, so ||G-1||_r<=d_r. Holder at 2s gives
+  ||HG-1||_s<=d_(2s)(1+d_(2s))+d_(2s).
+The extra d_(2s) bounds ||G-1||_s by norm monotonicity. No pointwise replacement of G by one is used.
+
+The exponent c/(2s)-epsilon is 7c/(16s)>0, so d_(2s) and the R error decay exponentially. |Z-1|<=||R-1||_1<=||R-1||_s, where Z=E R. Hence Z tends to one exponentially and stays bounded away from zero. For pi=R/Z, the identity pi-1=(R-1)/Z+(1/Z-1) proves exponential L^s closeness. In particular ||pi||_s tends to one and E pi^s tends to one. This supplies the eventual critical cap two rather than presuming it from a pointwise floor.
+
+Since R>=a0 and b1=(a0+b)/2 satisfies b<b1<a0, the convergence Z->1 gives pi>=b1 eventually. This is the strict slack needed for the later correction. Dividing H and G by sqrt(Z) preserves the proved pointwise asymptotics: h(x0)~M, Ph(x0)~M^(-1), pi(x0)->1. These are energy-normalized quantities. Multiplicative normalization cancels exactly from U=H/G.
+
+8. Critical ratio control with the correct denominator estimate
+
+The only pointwise denominator bound used in Q10 is the proved, L-dependent G>=M^(-1). Therefore
+  ||U-1||_s<=M||H-G||_s<=2M d_s
+  <=2*2^(1/s)exp(-(c/s-2epsilon)L)
+       +2exp(-(c/s-epsilon)L).
+The first exponent is 7c/(8s)>0 and the second is 15c/(16s)>0. Both are positive for every fixed allowed rho. This is a valid tradeoff between rare support and slow height growth; it does not falsely assert a fixed denominator floor. In particular Q does not import M4 from the older K/L family, whose near-one lower bound is incompatible with the new pointwise behavior.
+
+The spectral transfer restates the actual identity. For U=h/Ph, the reversible conjugate is S=M_sqrt(U)P M_sqrt(U). With Q=P_sqrt(rho), X=M_sqrt(U)Q is invertible on the finite cube, S=XX* and T=X*X=QM_UQ, so S and T have identical full spectra. Boolean noise has strictly positive Walsh eigenvalues; no uniform condition number of X is needed. Hypercontractivity Q:L^2->L^(2s') holds because 2s'=1+rho^(-1). Holder with exponents s,2s',2s' bounds ||QM_vQ|| by ||v||_s. Thus ||T-P||<=||U-1||_s, and the self-adjoint min--max principle bounds every ordered eigenvalue, with multiplicity, by the same error. The second eigenvalue of P is rho for every L>=1, giving the full-gap conclusion. No low-sector estimate is being promoted to a full-space result.
+
+9. L's inverse and multiplicative stability checked directly
+
+For the finite positive symmetric kernel, source L minimizes the strictly convex log-potential functional. Positive diagonal exponential terms give a positive-definite Hessian. The maximum-coordinate estimate d exp(2m)-m bounds m on a sublevel; if any coordinate tends to minus infinity while maxima stay bounded above, its positive linear density weight forces the functional to infinity. This proves coercivity and a unique positive solution of hPh=w for every positive mean-one w. The positive Hessian and uniqueness give smooth inverses along the positive density path. This applies on the full 2^L state space; no code closure or special quotient is required.
+
+For its resolvent estimate, the actual K is reversible with spectrum in [0,1]. Set T0=(I-K)/2. Its absolute row norm is 1-K(x,x)<=1, while its L^2(stationary) norm is at most 1/2. Evaluation at the smallest stationary mass gives ||T0^j||_infinity<=min(1,A 2^(-j)), with A=nu_min^(-1/2). Summing (I+K)^(-1)=(1/2)sum_j T0^j gives (ceil(log2 A)+2)/2. This does not require a gap near the Perron eigenvalue and does not treat T0 as Markov.
+
+Along a mean-one path w_tau>=b on a cube, nu_min>=b2^(-L), giving exactly
+  D_L^scale(b)=[ceil((L+log2(1/b))/2)+2]/2.
+Differentiating log w=(I+K)d(log h) and integrating the bound ||d log w/dtau||_infinity<=||e||_infinity/b gives Q's quoted stability estimate. The factor 1/b and the half factors agree with L. The notation D_L^scale is explicitly distinguished from the new geometric set D_L. Thus the proof does not move a missing analytic hypothesis into an inverse-map assertion.
+
+10. Exact Fourier correction and preservation of the small denominator
+
+For sufficiently large L, k_L=floor(C sqrt(L))<L and the number of nonconstant Walsh terms through k_L obeys N_L<=k_L L^(k_L), with log N_L=o(L). Every such coefficient of pi has absolute value at most ||pi-1||_1. The exact finite Walsh subtraction therefore has sup norm xi_L<=N_L||pi-1||_1, exponentially small after reducing the fixed exponential rate. Its mean is zero and orthogonality cancels all specified coefficients exactly. No small approximate equality is called exact.
+
+The entire segment pi+tau e has floor b eventually because pi>=b1>b and xi_L->0. Its terminal density is positive, has mean one and has exponentially small L^s distance from one. The latter gives the cap two eventually. The positive inverse exists at both ends, and its initial endpoint is exactly the normalized precursor h by uniqueness.
+
+The stability factor D_L^scale(b)=O(L) multiplies an exponentially small xi_L, so eta_L=||log(htilde/h)||_infinity is still exponentially small. This conclusion absorbs both the subexponential Fourier count and the polynomial factor by decreasing the positive rate; the original precursor exponent is not asserted unchanged. For example, if a>0 is a fixed precursor decay rate, log N_L=o(L) and log L=o(L) together leave a strictly positive rate below a. This argument is valid for every fixed C, without requiring a uniform threshold in C.
+
+The bounds exp(-eta)h<=htilde<=exp(eta)h pass through P by positivity, giving the same relative bounds for Phtilde versus Ph. This is multiplicative control of the exponentially small denominator, not a merely small additive error. Hence htilde(x0)~exp(epsilon L), Phtilde(x0)~exp(-epsilon L), pitilde(x0)->1 and Utilde(x0)~exp(2epsilon L) all follow. The product and ratio asymptotics remain valid even though the individual potential and denominator diverge in opposite directions.
+
+Similarly exp(-2eta)U<=Utilde<=exp(2eta)U gives
+  ||Utilde-1||_s<=exp(2eta)||U-1||_s+exp(2eta)-1.
+One way to see the factors is |Utilde-U|<=(exp(2eta)-1)U and ||U||_s<=1+||U-1||_s. Thus Q11 is correct. Both its terms decay exponentially. The actual full-spectrum sandwich applies to the terminal potential, establishing exponential error uniformly over eigenvalue index and the stated full-gap limit. The stationary norm error after correction is exponential by the triangle inequality as well.
+
+All finitely many earlier dimensions may be filled with htilde=1. They satisfy mean/energy one, floor b<1, moment one<=2 and every requested marginal, even when k_L=L. This changes no asymptotic or eventual exponential assertion. No three-level property is asserted for the corrected inverse.
+
+11. Falsifier checks, limits and novelty boundary
+
+The following possible failures were explicitly checked: nonidentical Bernoulli transitions; small rho or rho near one while fixed; shell and threshold boundaries; D intersecting the low/high shells; loss of the floor on an unclassified region; diagonal return from x0 defeating its vanishing denominator; normalization consuming the floor slack; the growing M overwhelming the critical norm; subexponential Fourier counts exhausting the error rate; an additive correction overwhelming Ph(x0); and use of a quotient or nonnormal spectral perturbation estimate in place of the full actual chain. None produces an objection under the stated parameter domain and eventual construction.
+
+The counterexample is to a derived fixed positive Ph minimum and a derived fixed pointwise upper bound on h/Ph. It does not remove an original floor, cap or matching assumption. Its good full spectra show that one small-denominator/high-ratio point is not sufficient for collapse. This says nothing by itself against aggregate killed-return or cut-flow criteria. The original full-gap and critical weighting-moment questions remain open. The stated programme counts are not upgraded and no physical Yang--Mills or continuum conclusion is made.
+
+Concentration and the hypercontractive sandwich are classical ingredients. The claim of a new obstruction within this programme is consistent with the explicit opposite pointwise defect in K/L/M; it is not a proof of global priority. The candidate reports which primary retrievals were successful, empty or denied, supplies the entire needed Bernoulli argument, and explicitly refuses to infer novelty from bounded search failures. This audit has not repeated those external searches or certified bibliography completeness. Correctness of the stated construction, mathematical priority and publication significance remain distinct.
+
+12. Objections and terminal disposition
+
+Blocking objections: none found.
+Nonblocking correction requests: none found.
+
+The source proves its claimed actual family and spectral classification with all original constraints. The first report and raw identity evidence are retained in full under D:\Datos\the-eriksson-programme\autonomia\2026-11-17_vanishing-denominator. No PDF, executed mathematics, new score, source integration, release receipt or publication approval is claimed.
+
+Accepted exact subject: c2efb6bc669be6ed9dc43cb23b276fb26eafd05d; candidate raw SHA256 63cbfada07296f3764ab4953b8ed47f2f4e6923105741ef45a9b4c2e11851dac. Repository source/state and all earlier reports remain unchanged by the auditor.

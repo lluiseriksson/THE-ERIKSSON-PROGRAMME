@@ -1,0 +1,12 @@
+PRIMARY-SOURCE POSITIONING FOR Q — 17 November 2026
+This additional lookup occurred after Q was frozen. It does not edit its bytes or retroactively describe what was read before freezing. No inbound message was sent to the active auditor.
+
+O'Donnell, Analysis of Boolean Functions, May2021 arXiv edition, Chapter10.1, printedpage284, Hypercontractivity Theorem:
+https://arxiv.org/pdf/2105.10386
+The theorem and its exponent condition were read in the extracted primary text. It supplies the L2-to-L(1+1/rho) contraction at noise sqrt(rho) used in Q's sandwich. The neighboring small-set-expansion discussion concerns noise correlations of sets; it does not by itself certify Q's actual nonlinear reconstruction or novelty. No exhaustive reading is claimed.
+
+Gross, Invariance of intrinsic hypercontractivity under perturbation of Schrodinger operators, arXiv2412.20282v2, Notation2.1 and Theorem2.2:
+https://arxiv.org/html/2412.20282v2
+These statements were read. The setup is a Riemannian Dirichlet generator and an additive Schrodinger potential, with a reference logarithmic Sobolev inequality and exponential moment hypotheses on that potential. The conclusions include transformed coercivity and a spectral gap. No reduction of Q's discrete normalized kernel and stationary constraints to these hypotheses has been established. This is a scope comparison, not a non-overlap or priority certification. Its full proof was not read in this unit.
+
+Hoeffding1963 bibliographic discovery, unread scan and blocked repository endpoint remain documented in Q and PREPARATION-FAILURES.txt. Q supplies a complete Bernoulli concentration proof. Concentration, hypercontractivity, positive symmetric scaling and min-max are classical. The claimed programme contribution is the actual matched denominator counterexample with quantified full-spectrum classification; originality beyond the local programme remains unestablished.

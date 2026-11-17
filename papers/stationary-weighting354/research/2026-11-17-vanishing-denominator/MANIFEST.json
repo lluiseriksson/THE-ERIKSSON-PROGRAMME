@@ -1,0 +1,77 @@
+{
+  "schema": "vanishing-denominator-q-v1",
+  "source_commit": "c2efb6bc669be6ed9dc43cb23b276fb26eafd05d",
+  "raw_hash_regime": "raw bytes without normalization; new source UTF8noBOM/LF",
+  "files": [
+    {
+      "file": "CANDIDATE-Q.txt",
+      "sha256_raw": "63cbfada07296f3764ab4953b8ed47f2f4e6923105741ef45a9b4c2e11851dac",
+      "bytes": 12563
+    },
+    {
+      "file": "FIRST-ANALYTIC-AUDIT.txt",
+      "sha256_raw": "0774ae9276609d9527aca42a3ad0053533738439b359c0ac9fb3668d7dd1a969",
+      "bytes": 18828
+    },
+    {
+      "file": "PRIMARY-SOURCE-POSITIONING.txt",
+      "sha256_raw": "b565aa6062ef18f444dbc2c5079f912e1d250e5a8af2ed9f217817d951efb918",
+      "bytes": 1921
+    },
+    {
+      "file": "DEPENDENCIES.json",
+      "sha256_raw": "174f7d975b01c9417e8c8a07f7a97f8bc4c94150f66d47fb8b1eafbde2dff178",
+      "bytes": 1627
+    },
+    {
+      "file": "NEXT-ACTUAL-GAP-STEP.json",
+      "sha256_raw": "3f93a8d44745998c09b34fb68da8e770878628a080f7dbe96bd7ee68ab6fcd16",
+      "bytes": 4375
+    },
+    {
+      "file": "README.txt",
+      "sha256_raw": "d92caad257eb27a620d26601828824e27706ab568bd354d8ec8536cdeb1a3015",
+      "bytes": 3280
+    }
+  ],
+  "dependencies": [
+    {
+      "sha256_raw": "cbe65eef9bff034561564bed05f2b777a181d73b9a24491324408b26b78a49cc",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-L.txt",
+      "bytes": 10586
+    },
+    {
+      "sha256_raw": "0a855ef11d3115bed54a10a3c644bb62a34ae4743330cd7f9d876ec1d8c892d6",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/FULL-FIRST-ANALYTIC-AUDIT-L.txt",
+      "bytes": 19261
+    },
+    {
+      "sha256_raw": "566ce2691477e814a2ef3878236238ea0ed4091f8b63d4bbd054ae4fc8e42b32",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-M.txt",
+      "bytes": 8206
+    },
+    {
+      "sha256_raw": "708f504bf1340ce231948aec10b301828b52cf20220dbab1b25fbf054c047d40",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/FULL-FIRST-ANALYTIC-AUDIT-M.txt",
+      "bytes": 16561
+    },
+    {
+      "sha256_raw": "134db454d351972e4c19ec3fb4cb28c16931f385aa6d1c1b0e5a412a2d82d9fc",
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/AUDIT-RESPONSE-M.txt",
+      "bytes": 959
+    },
+    {
+      "sha256_raw": "75fa1c567739909e61e4d32f38a3702d72ce27a0db739b5197327203d8f09a7e",
+      "repository_path": "papers/stationary-weighting354/revision-form-comparison-20261117/manuscript-form-comparison-candidate.tex",
+      "bytes": 119199
+    },
+    {
+      "sha256_raw": "4e424813073aa0999e0ea0ce604c626550a7375df429a556280515148925bff5",
+      "repository_path": "papers/stationary-weighting354/revision-form-comparison-20261117/MANIFEST.json",
+      "bytes": 8368
+    }
+  ],
+  "assessment": "First analytic PASS, no PDF or peer review",
+  "new_mathematical_advance": true,
+  "original_hypotheses_eliminated": []
+}
