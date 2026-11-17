@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "source_parent_commit": "c635975e088f72ecf82f30b87ed3397de66e83fd",
+  "files": [
+    {
+      "path": "manuscript-twolevel-candidate.tex",
+      "bytes": 72711,
+      "sha256": "c0e97b0a3a27f9c74316469e7b6ae8afbbc30aef1931b49bd9b5e7033a41b20b",
+      "representation": "Raw bytes; no normalization; retained unchanged in Git"
+    },
+    {
+      "path": "twolevel-section.tex",
+      "bytes": 7275,
+      "sha256": "2926524f777d83d164c97e88dcd7706a4849f1b61e576f713bbd4a42d53ba58b",
+      "representation": "Raw bytes; no normalization; retained unchanged in Git"
+    },
+    {
+      "path": "FULL-FIRST-SOURCE-AUDIT.txt",
+      "bytes": 15050,
+      "sha256": "182ac759b8765af287e7654c9ab004a1ff5b4782f648998ecccda83b37a466b8",
+      "representation": "Raw bytes; no normalization; retained unchanged in Git"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3103,
+      "sha256": "36b944afa103d0604b7ba5255492ca5cf343f44e5be91b0d2f024906fde17125",
+      "representation": "Raw bytes; no normalization; retained unchanged in Git"
+    }
+  ],
+  "dependencies": [
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-two-level-gap/CANDIDATE-I.txt",
+      "commit": "c635975e088f72ecf82f30b87ed3397de66e83fd",
+      "bytes": 10278,
+      "sha256": "d2077d48c5a202aca95a1ef0bd53c7dcda407b391f0f7b13a2b126f1e2b8ba01",
+      "representation": "Raw bytes, no normalization"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-two-level-gap/FULL-ANALYTIC-AUDIT-I.txt",
+      "commit": "c635975e088f72ecf82f30b87ed3397de66e83fd",
+      "bytes": 17250,
+      "sha256": "f36ca529338fa1150f21e402da1cfbe650c9b22d7cc6d17e026cdc9e3a6ca57a",
+      "representation": "Raw bytes, no normalization"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-two-level-gap/MANIFEST.json",
+      "commit": "c635975e088f72ecf82f30b87ed3397de66e83fd",
+      "bytes": 1030,
+      "sha256": "08e952dc3b41146381ee6b0ffe17b9ba532fc25a16f44bc52f774088e730f8cc",
+      "representation": "Raw bytes, no normalization"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/revision-relaxation-20261116/manuscript-relaxation-candidate.tex",
+      "commit": "c635975e088f72ecf82f30b87ed3397de66e83fd",
+      "bytes": 63506,
+      "sha256": "fa5f74af2ebd3241e032db3e049e757fec7c8afd8fc8f07ccd84ae5b0bd7b13b",
+      "representation": "Raw bytes, no normalization"
+    }
+  ],
+  "source_audit": "First exact integrated-source audit passed, full report retained",
+  "PDF_created": false,
+  "PDF_reviewed": false,
+  "numerical_grade": null,
+  "publication": false,
+  "execution_permission_changed": false
+}

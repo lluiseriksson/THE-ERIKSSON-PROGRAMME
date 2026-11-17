@@ -1,0 +1,180 @@
+\section{A full gap for arbitrary two-level potentials}\label{twolevelgap}
+The stationary floor and critical cap yield a stronger conclusion when the
+potential has at most two values. No marginal matching is needed in this
+section. The level ratio and the shape or mass of the high-level set may
+vary with dimension. The restriction to two values is explicit; no reduction
+of general potentials to this class is asserted.
+
+\begin{theorem}\label{twolevelfullgap}
+Fix $0<\rho<1$ and $0<b<1$. Let $h>0$ take at most two values on
+$\{-1,1\}^L$, $L\geq1$, and normalize $\E hP_\rho h=1$. Suppose
+$\pi=hP_\rho h\geq b$ and $\E\pi^s\leq2$, where
+$s=(1+\rho)/(1-\rho)$. The actual Doob kernel $K$ has
+\[
+ \operatorname{gap}(K)\geq G(\rho,b)>0
+\]
+uniformly in $L$ and $h$. One admissible, deliberately conservative choice is
+\begin{align*}
+ s'&=s/(s-1), & B&=2^{1/s}, & \kappa&=4B/b^2,\\
+ \eta&=\frac{1-2^{-1/s}}{1+\kappa}, &
+ t_*&=\min\left\{2^{-s},\left(\frac{\eta^2}{4\kappa}\right)^s\right\}, &
+ \epsilon_*&=bt_*,\\
+ \gamma_*&=\frac{b^2(1-\rho)}{4\,2^{s'}B^{2s'}}
+                 \epsilon_*^{s'-1}, &
+ \Phi_*&=\min\{\eta/2,\gamma_*\}, &
+ G(\rho,b)&=\min\left\{\frac{b^2(1-\rho)}{16},\frac{\Phi_*^2}{4}\right\}.
+\end{align*}
+All symbols in these constants are local to this section. No optimality is
+claimed.
+\end{theorem}
+\begin{proof}
+A constant potential normalizes to $h=1$ and gives $K=P_\rho$, whose gap is
+$1-\rho$. Otherwise write $h=M$ on $A$ of mass $\alpha\in(0,1)$ and $h=m$
+on $A^c$, where $0<m<M$. Put $P=P_\rho$, $g=Ph$, and $\nu=\pi\mu$.
+
+\paragraph{A lower bound derived from the floor.}
+Set $a=\E h=\E g$. The constant Fourier component gives
+$1=\|P_{\sqrt\rho}h\|_2^2\geq a^2$, so $a\leq1$.
+Integrating $mg\geq b$ on $A^c$ gives
+$m\E(g1_{A^c})\geq b(1-\alpha)$, and hence $m\geq b(1-\alpha)$.
+Since $g\leq M$, the floor on $A^c$ also gives $mM\geq b$.
+The bound $M\alpha\leq a\leq1$ then yields $m\geq b/M\geq b\alpha$.
+Consequently
+\begin{equation}\label{twolevelminimum}
+ m\geq b\max\{\alpha,1-\alpha\}\geq b/2.
+\end{equation}
+In particular $g\geq m$, so on $A$ one has $\pi=Mg\geq Mm$.
+The critical cap implies $(Mm)^s\alpha\leq2$, or
+\begin{equation}\label{twolevelbalance}
+ \frac M m\alpha^{1/s}\leq\frac B{m^2}\leq\kappa.
+\end{equation}
+This controls a mass-weighted ratio; $M/m$ itself remains unrestricted.
+
+\paragraph{Reference restrictions and the high-level denominator.}
+For $Q=P_{\sqrt\rho}$, ordinary hypercontractivity gives
+$\|Qf\|_2\leq\|f\|_{1+\rho}$~\cite{odonnelllecture}.
+If $f$ is supported on $U$, H\"older's inequality gives
+$\|f\|_{1+\rho}\leq\mu(U)^{1/(2s)}\|f\|_2$.
+Using $P=Q^2$ in the bilinear form therefore proves, for all sets $U,V$,
+\begin{equation}\label{twolevelrestriction}
+ \|1_U P1_V\|_{2\to2}\leq[\mu(U)\mu(V)]^{1/(2s)}.
+\end{equation}
+The norms in this paragraph use $L^2(\mu)$.
+
+Let $u=h/g$ and $S=M_{\sqrt u}PM_{\sqrt u}$. Multiplication by $\sqrt\pi$
+is an isometry from $L^2(\nu)$ to $L^2(\mu)$ conjugating $K$ to $S$.
+It commutes with restrictions, and $S$ is positive definite.
+On $A$, define $P_A=1_A P1_A$, $R=\operatorname{diag}(P1_A)|_A$,
+$r_0=m/M$, and $q=\alpha^{1/s}$. The internal Dirichlet form gives
+$P_A\preceq R$, while \eqref{twolevelrestriction} gives $P_A\preceq qI$.
+The exact two-level identity
+\[
+ g/M=r_0+(1-r_0)P1_A
+\]
+implies
+\[
+ S_{AA}=D^{-1/2}P_A D^{-1/2},\qquad D=r_0I+(1-r_0)R.
+\]
+For $H_0=r_0+(1-r_0)q$, put $\theta=r_0/H_0$ and $\ell=q/H_0$.
+Then $0<\theta<1$, $\theta q=\ell r_0$, and
+$1-\theta=\ell(1-r_0)$. A convex combination of the two Loewner bounds gives
+\[
+ P_A\preceq\theta qI+(1-\theta)R=\ell D.
+\]
+No commutativity between $P_A$ and $R$ is required. Congruence by
+$D^{-1/2}$ proves
+\begin{equation}\label{twolevelkilled}
+ 1-\|S_{AA}\|\geq1-\ell
+ =\frac{1-q}{1+(M/m-1)q}.
+\end{equation}
+Assume first that $\alpha\leq1/2$. By \eqref{twolevelbalance}, the last
+expression is at least $\eta$. Every compression $S_{UU}$ with $U\subset A$
+then has norm at most $1-\eta$.
+
+\paragraph{Small cuts, including cuts meeting both levels.}
+For $0<\nu(C)\leq\epsilon_*$, put $U=C\cap A$ and $V=C\cap A^c$.
+The floor gives $\mu(V)\leq\nu(C)/b\leq t_*$.
+On $A^c$ the multiplier satisfies $u=m/g\leq1$; on $A$ it satisfies
+$u=M/g\leq M/m$. Thus \eqref{twolevelrestriction} gives
+\[
+ \|S_{VV}\|\leq\mu(V)^{1/s}\leq\frac12,
+\]
+and, using \eqref{twolevelbalance},
+\[
+ \|S_{UV}\|\leq\sqrt{M/m}\,[\mu(U)\mu(V)]^{1/(2s)}
+ \leq\sqrt\kappa\,\mu(V)^{1/(2s)}\leq\eta/2.
+\]
+Since $0<\eta<1/2$, the block-diagonal part on $U\oplus V$ has norm at
+most $1-\eta$. The self-adjoint off-diagonal block has norm
+$\|S_{UV}\|$. The triangle inequality gives
+$\|S_{CC}\|\leq1-\eta/2$, also when one part is empty.
+
+Define the actual stationary outward flow
+\[
+ F_h(C)=\sum_{x\in C,\,y\notin C}\mu(x)P(x,y)h(x)h(y)
+       =\mathcal D_K(1_C).
+\]
+The vector $\sqrt\pi\,1_C$ has squared $L^2(\mu)$ norm $\nu(C)$.
+Conjugacy and the bound on $S_{CC}$ yield
+\begin{equation}\label{twolevelsmallflow}
+ F_h(C)=\nu(C)-\langle1_C,K1_C\rangle_\nu
+       \geq(\eta/2)\nu(C).
+\end{equation}
+
+\paragraph{The remaining cuts and Cheeger's inequality.}
+Since $h\geq m$, the actual edge measure gives
+$\mathcal D_K\geq m^2\mathcal D_P$. Hence
+\[
+ F_h(C)\geq m^2(1-\rho)\mu(C)\mu(C^c).
+\]
+The cap supplies $\nu(E)\leq B\mu(E)^{1/s'}$ for every $E$.
+For $\epsilon_*\leq\nu(C)\leq1/2$, it follows that
+\[
+ \mu(C)\geq(\nu(C)/B)^{s'},\qquad
+ \mu(C^c)\geq(1/(2B))^{s'}.
+\]
+Combining these estimates with \eqref{twolevelminimum} gives
+\begin{equation}\label{twolevelbalancedflow}
+ \frac{F_h(C)}{\nu(C)}
+ \geq\frac{b^2(1-\rho)}{4\,2^{s'}B^{2s'}}\nu(C)^{s'-1}
+ \geq\gamma_*.
+\end{equation}
+Equations~\eqref{twolevelsmallflow} and \eqref{twolevelbalancedflow}
+cover every set relevant to the conductance
+\[
+ \Phi(K)=\min_{0<\nu(C)\leq1/2}\frac{F_h(C)}{\nu(C)},
+ \qquad \Phi(K)\geq\Phi_*.
+\]
+Use the lazy reversible Cheeger bound from~\cite{peres} on
+$\overline K=(I+K)/2$. Its conductance is $\Phi(K)/2$ and its gap is
+$\operatorname{gap}(K)/2$. Thus
+\[
+ \frac{\operatorname{gap}(K)}2
+ \geq\frac12\left(\frac{\Phi(K)}2\right)^2,
+ \qquad \operatorname{gap}(K)\geq\Phi_*^2/4.
+\]
+This is deliberately conservative and needs only the cited lazy version.
+
+\paragraph{A high-level set of mass above one half.}
+If instead $\alpha>1/2$, then $M\alpha\leq1$ gives $M<2$, whereas
+\eqref{twolevelminimum} gives $m\geq b/2$. Since $\pi=hg\leq M^2$,
+centering at $\E_\mu f$ shows
+$\operatorname{Var}_\nu(f)\leq M^2\operatorname{Var}_\mu(f)$.
+The edge comparison gives
+$\mathcal D_K(f)\geq m^2(1-\rho)\operatorname{Var}_\mu(f)$.
+Taking Rayleigh quotients proves
+\[
+ \operatorname{gap}(K)\geq(m/M)^2(1-\rho)
+                      \geq b^2(1-\rho)/16.
+\]
+Together with the constant case and the $\alpha\leq1/2$ case this proves
+the stated $G(\rho,b)$.
+\end{proof}
+
+Theorem~\ref{twolevelfullgap} controls the full chain, not just a quotient
+or a killed restriction. It excludes collapsing gaps from arbitrary
+constant-height plateaux above a constant positive background under the
+original stationary floor and cap. Matching is unnecessary within this
+class. The proof derives \eqref{twolevelminimum} from its two-level
+structure; it does not establish that bound for arbitrary positive
+potentials or replace the original open question by an extra assumption.

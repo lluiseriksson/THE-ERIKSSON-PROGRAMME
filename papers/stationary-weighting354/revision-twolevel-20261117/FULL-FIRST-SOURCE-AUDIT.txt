@@ -1,0 +1,125 @@
+FULL FIRST INTEGRATED-SOURCE AUDIT — TWO-LEVEL SUCCESSOR
+Date: 2026-11-17.
+
+1. EXACT REFERENTS AND VERDICT
+
+New frozen integrated source:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\revision-twolevel-20261117\manuscript-twolevel-candidate.tex
+Raw SHA256: c0e97b0a3a27f9c74316469e7b6ae8afbbc30aef1931b49bd9b5e7033a41b20b
+Raw length: 72711 bytes. Supplied representation: UTF-8/LF. Hashing performed without normalization.
+
+Preserved predecessor source:
+C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\revision-relaxation-20261116\manuscript-relaxation-candidate.tex
+Raw SHA256: fa5f74af2ebd3241e032db3e049e757fec7c8afd8fc8f07ccd84ae5b0bd7b13b.
+
+Accepted analytic input I:
+papers/stationary-weighting354/research/2026-11-17-two-level-gap/CANDIDATE-I.txt
+Raw SHA256: d2077d48c5a202aca95a1ef0bd53c7dcda407b391f0f7b13a2b126f1e2b8ba01.
+Its full first analytic report remains f36ca529338fa1150f21e402da1cfbe650c9b22d7cc6d17e026cdc9e3a6ca57a.
+Inspected worktree HEAD: c635975e088f72ecf82f30b87ed3397de66e83fd.
+
+VERDICT: PASS for this first exact integrated-source review. The new Section 10 faithfully integrates the accepted restricted two-level theorem, including its full proof, constants, actual-model hypotheses, all-cut argument, and conservative Cheeger factor. Earlier substantive proofs are preserved. Abstract, roadmap, open-problem discussion, and assessment context correctly distinguish this class theorem from unrestricted closure and from publication or PDF assessment. No blocking mathematical transcription, lost hypothesis, reference, symbol, or static TeX-source defect was found.
+
+This verdict belongs to the new source hash above. It is not inherited from I, is not a numerical grade, is not an exact-PDF review, and does not certify compilation, layout, priority, publication, or main integration.
+
+Auditor: separate OpenAI Codex assistant role /root/bootstrap_note_audit. Same provider/workflow, inherited context, and shared filesystem as the authoring workflow. Exact serving backend/model revision and reasoning effort are unattested. This is not blind, human, provider-independent, or organizationally independent peer review. I previously audited I and its preservation, and now inspect its first integration rather than issuing another grade. No inbound parent message arrived during this audit.
+
+The applicable charter's exact-artifact, execution, and no-inbound restrictions remain in force. Tools were limited to reads, Git/text comparison, raw hashes, primary-source reading, and writing this new report. No mathematical experiment, code-based proof test, Lean, TeX, runtime, UI, source modification, workflow dispatch, push, or network write occurred. No disposable clone was created.
+
+2. COMPLETE SOURCE DELTA AND EARLIER PRESERVATION
+
+I inspected the complete predecessor-to-successor textual diff. Its exit status of 1 denotes the expected differing files, not a failed mathematical or compilation check. The changes consist of:
+* Updated title and candidate date.
+* Abstract and theorem-map additions for the restricted two-level full gap, and a clarification that the uncontrolled high block concerns arbitrary potentials.
+* Provenance identifying the accepted note I.
+* One forward-reference sentence following the existing simple-family discussion.
+* The complete new Section 10, lines 846–1025 in the inspected source.
+* Positioning, remaining-question, and model-context changes to describe the new theorem without expanding it.
+* A new bibliography entry for Peres.
+
+There is no change to any earlier theorem statement, proof, equation, hypothesis, or constant in substantive Sections 2–9. The added sentence near simplefamilies is a forward reference, not a modification of its proof. In particular the finite bootstrap, fixed-positive-margin localization, full-window bounds, E/F/G energy/decay/sample-mean arguments, and their assumptions remain as in the identified predecessor. This audit confirms their preservation and coherent coexistence with the new section; it does not claim a fresh independent proof reconstruction of every unchanged earlier result.
+
+3. THEOREM STATEMENT AND CONSTANT MAPPING
+
+Theorem twolevelfullgap states every needed restriction explicitly: 0<rho<1, 0<b<1, L>=1, h positive with at most two attained values, E hP_rho h=1, stationary pi=hP_rho h>=b, and E pi^s<=2 for s=(1+rho)/(1-rho). K is the actual kernel already defined in Section 1. No matching is smuggled into the proof or omitted from a step that needs it.
+
+All constants agree with frozen I. The integration renames only t0 to t_*, epsilon0 to epsilon_*, gamma_bal to gamma_*, and Phi0 to Phi_*:
+s'=s/(s-1), B=2^(1/s), kappa=4B/b^2;
+eta=(1-2^(-1/s))/(1+kappa);
+t_*=min(2^(-s),(eta^2/(4kappa))^s), epsilon_*=bt_*;
+gamma_*=b^2(1-rho)epsilon_*^(s'-1)/(4*2^(s')*B^(2s'));
+Phi_*=min(eta/2,gamma_*);
+G=min(b^2(1-rho)/16,Phi_*^2/4).
+
+The formula retains positivity for fixed parameters, the critical moment exponent, the small-cut threshold, and both branches of the final minimum. In particular t_* has its required outer power s; the cross-block threshold is not accidentally weakened. The text explicitly makes these constants section-local. The proof later uses eta<1/2, which follows immediately from s>1 and kappa>4 as in I. No missing extra parameter assumption is needed.
+
+Section 1 defines gap(K)=1-lambda_2(K), establishes positive spectrum by the same actual conjugacy, and explains simplicity of the top eigenvalue. Thus the new statement has a defined full finite-chain meaning rather than an ambiguous quotient or absolute-value convention.
+
+4. PROOF INTEGRATION CHECK
+
+4.1 Lower potential and cap-weighted ratio
+The new source keeps the constant case, both attained level sets, and a=E h<=1 from the constant Fourier component. It retains the two independent inequalities m>=b(1-alpha) and m>=b alpha. Their combination proves m>=b/2 without a hidden ratio hypothesis. The cap on A yields (Mm)^s alpha<=2 and therefore (M/m)alpha^(1/s)<=B/m^2<=kappa. This is a derived mass-weighted ratio estimate; the text explicitly avoids bounding M/m alone.
+
+4.2 Reference restriction and high-level interpolation
+The hypercontractive step is still Q=P_sqrt(rho):L^(1+rho)->L^2. The support exponent 1/(2s) is correct, and the bilinear factorization P=Q^2 yields the stated two-set norm bound. Norms are assigned to L2(mu), so no stationary/reference measure confusion is introduced.
+
+The source writes the actual conjugacy S=M_sqrt(u)PM_sqrt(u), u=h/g, with restriction-compatible isometry sqrt(pi). On A it uses the renamed ratio r_0=m/M, avoiding confusion with the manuscript's normalized weighting density r. The denominator remains D=r_0 I+(1-r_0)R, where R=diag(P1_A)|A. The two inequalities P_A<=R and P_A<=qI, q=alpha^(1/s), are retained. The internal Dirichlet-form justification for the former is compressed into a sentence but is sufficient: symmetry makes R-P_A the internal weighted Laplacian.
+
+With H_0=r_0+(1-r_0)q, theta=r_0/H_0 and ell=q/H_0, the coefficient identities in the source are exact. Convex combination gives P_A<=ell D without requiring commutativity. Congruence produces the same killed bound
+1-||S_AA|| >= (1-q)/(1+(M/m-1)q).
+For alpha<=1/2, numerator and denominator comparisons give eta exactly. The compression conclusion for U subset A follows from PSD and the Rayleigh bound. The integration does not replace the proved actual denominator by a generic operator assumption.
+
+4.3 Small mixed cuts
+The proof keeps both parts U=C intersect A and V=C intersect A^c for every cut of stationary mass at most epsilon_*. The floor gives mu(V)<=t_*. It retains u<=1 on the low level, u<=M/m on the high level, the low-block bound 1/2, and cross-block bound
+sqrt(M/m)[mu(U)mu(V)]^(1/(2s))<=sqrt(kappa)mu(V)^(1/(2s))<=eta/2.
+The last implication uses the second term in the minimum defining t_*. The norm of the self-adjoint off-diagonal block is correctly ||S_UV||, not twice that norm. Thus the full killed block on C is bounded by 1-eta/2, including empty U or V.
+
+The inserted flow definition uses the actual edge mu(x)P(x,y)h(x)h(y), and the vector sqrt(pi)1_C has squared norm nu(C). Conjugacy therefore yields F_h(C)>=eta*nu(C)/2. The indicator Dirichlet form equals the one-direction outward flow with no extra factor of two. This passage remains complete enough to cover cuts meeting both potential levels.
+
+4.4 Remaining cuts and full conductance
+The lower edge comparison D_K>=m^2 D_P is retained. Holder converts the stationary cap into nu(E)<=B mu(E)^(1/s'). For epsilon_*<=nu(C)<=1/2, the source obtains the correct two reference-mass lower bounds and then the flow coefficient
+b^2(1-rho)nu(C)^(s'-1)/(4*2^(s')*B^(2s')).
+Its final comparison to gamma_* has the correct direction because s'-1>0. These cuts and the small-cut range exhaust every set in conductance. The use of minimum rather than infimum is legitimate on the finite cube.
+
+4.5 Cheeger and the other level-mass branch
+The source applies the cited lazy theorem to (I+K)/2, explicitly halves both conductance and gap, and obtains gap(K)>=Phi_*^2/4. Both factors of two are correct. The separate alpha>1/2 branch retains M<2, m>=b/2, pi<=M^2, weighted variance comparison by centering at E_mu f, and the edge comparison. Its final b^2(1-rho)/16 is unchanged. The constant case, alpha<=1/2 case, and alpha>1/2 case cover the full theorem. No range or boundary case was lost in transcription.
+
+5. ABSTRACT, ROADMAP, OPEN PROBLEM, AND CONTEXT
+
+The title 'Moment transfer and spectral bounds for Boolean Doob kernels' fits the assembled content without claiming complete general gap closure. The abstract states the two-level condition and original floor/cap before its no-matching/no-ratio/no-geometry qualifiers. Those qualifiers mean no additional restriction besides the stated assumptions, not arbitrary potentials unconstrained by floor/cap. The final sentence leaves the general gap and critical-moment questions open.
+
+The theorem map accurately distinguishes the roles of the earlier sections and new Section 10. The simplefamilies forward reference connects moment bounds to the new full-gap class theorem without pretending the old argument already proved it. The remaining-question discussion has been appropriately narrowed: absence of a general killed bound and uncontrolled arbitrary-potential high block do not contradict the new two-level killed estimate. It expressly says the code theorem and the two-level theorem exclude only their respective structured mechanisms.
+
+The model-assessment section records I's accepted frozen source status while explicitly denying automatic transfer to this integrated text or any PDF. The public predecessor remains described as a working paper; model assessment, human peer review, editorial acceptance, and deposit are distinguished. No score is copied forward. Same-provider inherited context and unattested exact backend/effort are preserved. Historical rejected claims and adverse reports are not silently removed.
+
+The text does not imply that negative-route note H was incorporated as a new theorem in this source. Its provenance correctly names the integrated A–G sources plus I. The general question is still one open question, not silently replaced by a solved two-level variant.
+
+6. PRIMARY CITATION AND STATIC TEX INSPECTION
+
+The new bibliography entry peres is present once, and the two new citations resolve to it. Its Definition 3.4 and Theorem 3.5 references were checked against the primary lecture PDF:
+https://sites.math.duke.edu/~rtd/CPSS2009/peres6.pdf
+Definition 3.4 gives the cut-flow/stationary-mass conductance convention. Theorem 3.5 states the lazy reversible lower gap bound Phi^2/2. The relevant material and lower-bound proof occur on PDF pages 6–7. The stated bounded reading and explicit lazification match the source. This check supplies citation accuracy, not a new Cheeger theorem or novelty certificate.
+
+Ordinary hypercontractivity retains the existing odonnelllecture citation and correct parameter substitution, checked in I's first audit. Its use here is unchanged. No new external theorem is introduced without a citation.
+
+Static source findings:
+* New section label twolevelgap and theorem label twolevelfullgap each occur once.
+* New equation labels twolevelminimum, twolevelbalance, twolevelrestriction, twolevelkilled, twolevelsmallflow, and twolevelbalancedflow are distinct and their new references resolve.
+* New theorem/proof, equation, align*, and display delimiters read as matched. No unclosed environment or obvious missing macro was found in the added material.
+* The preamble already loads amsmath, amssymb, amsthm, and hyperref, supporting the added constructs including preceq, operatorname, theorem/proof, and url.
+* Ratio r_0 avoids the globally used weighting density r. Constants are explicitly local. The previously used N sample-size/normalizer distinction is not disturbed.
+* P_A and R are understood on the restricted A-space, as the surrounding 'On A' and R|A notation specify; no full-space denominator is silently inverted on a zero block.
+
+No TeX engine or syntax-test program was run. These are reading-based findings only. No page layout, overfull equation, font, PDF metadata, or rendered cross-reference outcome is certified. In particular the multicolumn constant display should receive ordinary visual inspection when an authorized PDF is eventually built; its width cannot be certified from source reading alone.
+
+7. OBJECTIONS AND PACKAGING BOUNDARY
+
+Blocking objections: none found.
+
+Nonblocking packaging observation: the model-context paragraph refers to I's digest in an accompanying manifest. I's existing research packet contains that manifest, but the new revision-twolevel-20261117 directory inspected during this task contained the source and a section fragment, not a completed delivery manifest. When packaging this successor, preserve an explicit link to I's manifest/report and bind the new integrated hash and this report. This is a pending packaging operation, not a defect in the theorem or a claim that the new packet has already passed terminal preservation. Do not relabel I's analytic report as an assessment of the new integrated hash.
+
+No source correction is required for the scoped analytic acceptance given here. Originality, relevance, authorized document production, visual PDF review, exact-artifact assessments, publication processing, and terminal Git preservation remain distinct subsequent work. None is implied by this source verdict.
+
+This integration adds a meaningful restricted-class full-gap theorem with arbitrary level ratio and geometry under the stated normalized floor/cap. It does not settle the unrestricted stationary-Doob problem, prove a continuum theorem, or establish a physical Yang-Mills gap. Keep the killed, mixed-cut, and conductance parts together as one argument within the grouped manuscript.
+
+END OF FULL FIRST INTEGRATED-SOURCE AUDIT

@@ -1,0 +1,15 @@
+# Grouped two-level spectral successor
+
+This complete manuscript source adds the full two-level gap theorem to the preserved moment, code, spectral-window and weak-relaxation manuscript. It is a source candidate for a grouped revision of the existing paper, not a separate paper or a published version.
+
+The first exact source audit passed without blocking objections for manuscript-twolevel-candidate.tex (raw SHA256 c0e97b0a3a27f9c74316469e7b6ae8afbbc30aef1931b49bd9b5e7033a41b20b). FULL-FIRST-SOURCE-AUDIT.txt is retained completely. That report checks the new section, its constants and scope, preservation of earlier proofs, citations and source presentation. It is not a numerical assessment, formal proof, compilation or visual PDF review.
+
+The added result controls the full actual Boolean Doob chain under the original stationary floor and critical cap for all positive potentials taking at most two values. Their level ratio and geometry may vary. Matching is unnecessary within this class. Arbitrary positive potentials and the general stationary-gap question remain open; no physical Yang-Mills or continuum claim follows.
+
+The exact underlying candidate and its distinct analytic report are preserved in [the I research packet](../research/2026-11-17-two-level-gap/README.md), with [its manifest](../research/2026-11-17-two-level-gap/MANIFEST.json) and [full analytic audit](../research/2026-11-17-two-level-gap/FULL-ANALYTIC-AUDIT-I.txt). MANIFEST.json below binds their raw hashes as dependencies as well as the new source and its own report. I's verdict is not relabelled as an assessment of this integrated source.
+
+The preceding complete source is [the relaxation manuscript](../revision-relaxation-20261116/manuscript-relaxation-candidate.tex), raw SHA256 fa5f74af2ebd3241e032db3e049e757fec7c8afd8fc8f07ccd84ae5b0bd7b13b. Earlier substantive sections remain unchanged except an explanatory forward reference. The new Section 10 is also retained as twolevel-section.tex for traceable editorial assembly; the complete manuscript does not require this fragment at compilation.
+
+Model assessments and review context: source authoring and separate-role audits share the Codex provider workflow, inherited context and filesystem. Actual serving model/backend version and effort are unattested. Full reports preserve all limitations. No blind, human, provider-independent or organizationally independent peer review is claimed, and no earlier grade is inherited. Global novelty, optimality and frontier classification are not established by the bounded primary check.
+
+No PDF has been built from this source. Eventual production must use an authorized execution route, exact-source reproducibility and full visual review, including the width of the constants display. A rendered PDF requires its own hash-bound assessment before publication processing. The existing pending execution/capacity question remains bound to its original older artifact and is neither answered nor retargeted by this packet. No active workflow, dispatch, runtime, publication, or duplicate intake is created here.
