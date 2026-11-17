@@ -1,0 +1,228 @@
+Candidate P: obstruction to separate variance/form comparison under density smoothing
+17 November 2026. Frozen analytic candidate, first audit pending.
+Byte representation: UTF-8 without BOM, LF. No executed mathematics.
+
+1. BOUNDED QUESTION AND RESULT
+The active question is still stationary-doob-gap under the original fixed
+floor, critical moment cap and exact growing matching. O controls the chain
+obtained by smoothing the stationary density and positively reconstructing
+its potential. Can one transfer that bound by dimension-uniform comparison
+of the stationary variances and Dirichlet forms separately?
+
+This note gives a fully admissible actual family for which BOTH
+  Var_pi(f)/Var_w(f) and E_h(f,f)/E_u(f,f)
+diverge on the same indicator, where w=P_tau pi and uPu=w. Both actual
+full-chain gaps nevertheless tend to 1-rho, and both Rayleigh quotients
+on that indicator tend to 1. Thus common scale factors can cancel in a
+Rayleigh quotient even when separate upper comparisons fail. In particular
+the usual proposed bridge Var_pi <= V Var_w for all f cannot follow from
+the original hypotheses, even after restricting to chains with good gaps.
+This does not refute a direct Rayleigh-quotient or gap comparison.
+
+This is a useful negative result inside the same question. Group it with
+N/O and the existing manuscript; do not create a separate small paper.
+No original hypothesis is removed and no general gap counterexample is claimed.
+
+2. STATEMENT
+Fix 0<rho<1, 0<b<1, C>0, s=(1+rho)/(1-rho), B=2^(1/s), and
+any fixed 0<=tau<1. Put k_L=min{L,floor(C sqrt(L))}.
+There exist positive energy-normalized potentials h_L and u_L on the
+L-cube, with actual stationary densities pi_L=h_L P_rho h_L and
+w_L=u_L P_rho u_L=P_tau pi_L, both satisfying
+  density>=b, E density^s<=2,
+  E density chi_S=0 for 1<=|S|<=k_L.                         (P1)
+There are events A_L, with f_L=1_A_L, such that, as L tends to infinity,
+  Var_pi_L(f_L)/Var_w_L(f_L) ~ t_L -> infinity,
+  E_h_L(f_L,f_L)/E_u_L(f_L,f_L) ~ t_L -> infinity,           (P2)
+  E_h_L(f_L,f_L)/Var_pi_L(f_L) -> 1,
+  E_u_L(f_L,f_L)/Var_w_L(f_L) -> 1,                          (P3)
+  gap(K_h_L) -> 1-rho, gap(K_u_L) -> 1-rho.                 (P4)
+Here t_L=c 2^(n_L/s), n_L~sqrt(L)/C, for an explicit fixed c>0 below.
+All limits concern sufficiently large dimensions; constant potentials fill
+the finitely many earlier dimensions. No scalar comparison constant
+depending only on fixed rho,b,C,tau can upper-bound either ratio in(P2).
+In addition
+  ||w_L-1||_infinity ->0, ||pi_L-w_L||_s ->c>0,              (P5)
+  E pi_L^s ->1+c^s,
+and the family pi_L^s is not uniformly integrable.                  (P6)
+The last properties explain the critical-mass concentration, not gap collapse.
+
+The Dirichlet forms have their respective actual stationary measures:
+  E_h(f,f)=<f,(I-K_h)f>_(pi mu)
+          =(1/2) sum_(x,y) mu(x)P_rho(x,y)h(x)h(y)(f(x)-f(y))^2,
+where P_rho(x,y) is the transition probability and E hP_rho h=1.
+Variance is centered separately under each density. No common invariant
+measure is silently assigned to these different kernels.
+
+3. EXPLICIT STATIONARY DENSITIES AND MATCHING
+For large L put d_L=k_L+1 and n_L=floor(L/d_L). Use n_L disjoint blocks
+of d_L coordinates, with the remaining coordinates unused. Let z_i be the
+parity of block i and let A_L be the event z_1=...=z_n=1. Uniform measure
+of A_L is p_L=2^(-n_L). Choose
+  c=min{(1-b)/2,(B-1)/4}>0,
+  t_L=c p_L^(-1/s),
+  pi_L=1+t_L(1_A_L-p_L).                                  (P7)
+In this proof subscripts L may be omitted. Since d=C sqrt(L)+O(1),
+n=sqrt(L)/C+O(1), d,n tend to infinity. In particular d<=L eventually.
+Mean one is exact. Outside A the density is 1-tp, and
+  tp=c p^(1-1/s) <=c, so pi>=1-c>b.
+Minkowski gives
+  ||pi||_s <=1+t||1_A-p||_s
+          <=1+t(p^(1/s)+p)
+          =1+c(1+p^(1-1/s)) <=1+2c <B.                    (P8)
+Thus E pi^s<2, with strict slack independent of dimension.
+The Fourier expansion 1_A=2^(-n) product_i(1+z_i) contains only unions
+of whole blocks. Every nonconstant such index has weight at least d=k+1.
+Subtracting p removes the constant from the perturbation. This proves
+all the labelled matching conditions through k, not merely on the quotient.
+The inverse-stationary lemma supplies a unique positive h with hPh=pi;
+mean one supplies its exact energy normalization. This is a proved actual
+realization rather than independent arbitrary choices of density and kernel.
+
+4. NOISE SMOOTHING AND ACTUAL QUOTIENT POTENTIALS
+Product noise with parameter tau acts on each block parity by tau^d,
+independently across blocks. With epsilon_tau=tau^d,
+  P_tau 1_A(z)=p product_i(1+epsilon_tau z_i),
+  w(z)=1+tp[product_i(1+epsilon_tau z_i)-1].                 (P9)
+Put e_tau=(1+epsilon_tau)^n-1. For 0<=epsilon_tau<=1,
+the maximum absolute deviation of that product from1 is e_tau:
+(1+epsilon_tau)^n+(1-epsilon_tau)^n>=2 proves the lower endpoint
+deviation is no larger. Hence
+  ||w-1||_infinity<=tp e_tau
+      <=c p^(1-1/s)[exp(n tau^d)-1] ->0.                   (P10)
+Indeed n tau^d tends to zero for each fixed tau<1, including tau=0.
+No assertion uniform as tau tends to1 with L is made. By positivity,
+Jensen, mean preservation and Fourier multipliers, w also satisfies(P1).
+Apply the same inverse lemma to obtain a unique positive u with uPu=w.
+
+Both reconstructed potentials belong to the same disjoint-block Fourier
+algebra. Here is the needed justification. Translate the cube by any sign
+vector whose parity in every chosen block is1; residual coordinates may
+be translated arbitrarily. The densities pi and w are invariant under this
+subgroup, and P commutes with every such translation. Translating h or u
+therefore gives another positive solution to the same inverse equation.
+Uniqueness makes h and u invariant. The subgroup's orbits are precisely
+the fibers of (z_1,...,z_n); consequently h=H(z), u=J(z). No unproved
+Fourier-algebra preservation of nonlinear reconstruction is assumed.
+
+5. QUOTIENT BOUNDS AND RETURN PROBABILITIES
+Write theta=rho^d, ell=(1-theta)^n, v=(1+theta)^n.
+The quotient transition probability from z to z' is
+  p b_rho(z,z'), b_rho(z,z')=product_i(1+theta z_i z'_i).
+Thus ell<=b_rho<=v and ell,v tend to1 since n rho^d tends to0.
+For either energy-normalized quotient potential H, let G=P H and
+a=E H (quotient expectations are uniform). Positivity gives
+  a ell<=G(z)<=a v.
+Since E HG=1,
+  1/v<=a^2<=1/ell,
+  ell^2/v<=G(z)^2<=v^2/ell.                               (P11)
+These bounds are uniform in H, even though its maximum can diverge.
+Let q be its actual stationary mass of the quotient atom z_+=(1,...,1):
+q=p H(z_+)G(z_+). The probability of returning to the event A from any
+point of A is exactly the quotient self-transition
+  r_A=p v H(z_+)/G(z_+)=v q/G(z_+)^2
+      <=(v^2/ell^2)q.                                    (P12)
+It is an event return probability, not the single ambient-point holding
+probability. This distinction retains transitions inside the entire fiber.
+
+For h and u respectively, the event masses are explicitly
+  q_pi=p[1+t(1-p)],
+  q_w =p[1+tp((1+tau^d)^n-1)].                            (P13)
+Consequently q_pi~tp=c p^(1-1/s)->0, q_w~p->0, and
+  q_pi/q_w ~t ->infinity.                                (P14)
+By(P12), both return probabilities r_pi,r_w tend to0.
+For f=1_A, exact stationarity and reversibility yield
+  Var_pi(f)=q_pi(1-q_pi), E_h(f,f)=q_pi(1-r_pi),
+  Var_w(f)=q_w(1-q_w),   E_u(f,f)=q_w(1-r_w).              (P15)
+Combining(P14)--(P15) proves both divergence statements(P2) and both
+normalized limits(P3). This verifies the claimed failure using the actual
+forms; no pointwise edge-density failure is substituted for a form failure.
+
+6. THE FULL GAPS ARE NONCOLLAPSING
+The existing disjoint-block full-chain proposition blocktheorem applies
+to every positive quotient potential, with no height, floor or moment
+assumption needed for its spectral conclusion. Its explicit bounds are
+  max{0,rho-epsilon_gap}<=lambda_2(K)
+    <=min{1,max{1-alpha,beta}},
+  alpha=((1-rho^d)/(1+rho^d))^n,
+  beta=(rho+rho^(d-1))/(1-rho^d),
+  epsilon_gap=(1-rho^2)rho^(d-1)/(1-rho^d).                (P16)
+Here d>=2 eventually, d->infinity and n rho^d->0. Thus alpha->1,
+beta->rho and epsilon_gap->0, uniformly over positive quotient values.
+We proved that both actual potentials have exactly that quotient form,
+so(P16) proves(P4) for both original and reconstructed chains. The
+proposition controls every invariant coset of the full cube, including
+residual-coordinate sectors; a quotient gap alone would not suffice.
+Its proof and bounds are retained in the exact dependency manuscript.
+The constant fillings in finitely many small dimensions change no limit.
+
+7. CRITICAL-MASS CONCENTRATION AND PRECISE FAILED BRIDGE
+The L^s norm of t1_A is exactly c, whereas
+  ||t P_tau 1_A||_s <=tp(1+tau^d)^n ->0.
+The triangle and reverse triangle inequalities applied to
+pi-w=t(1_A-P_tau1_A) prove the second part of(P5). Also
+  E pi^s=(1-p)(1-tp)^s+p[1+t(1-p)]^s ->1+c^s,              (P17)
+since t->infinity, tp->0 and p t^s=c^s. For any fixed finite R,
+the value pi^s on A eventually exceeds R, and
+  E[pi^s 1_{pi^s>R}] >=p[1+t(1-p)]^s ->c^s.
+The tail expectations therefore cannot tend to0 uniformly as R->infinity;
+the critical powers are not uniformly integrable. This claim is formulated
+as a family of distributions, so no common underlying cube is required.
+
+A proposed sufficient transfer often seeks constants V,D independent of L:
+  Var_pi(f)<=V Var_w(f), E_u(f,f)<=D E_h(f,f) for all f.
+The first of these estimates is disproved by(P2), regardless of whether
+the second might hold. Two-sided norm/form equivalence also fails because
+the upper estimate E_h<=D' E_u fails. We do NOT claim to refute the lower
+form bound E_h>=d' E_u. Nor do we refute an estimate comparing the two
+Rayleigh quotients directly; on our chosen test the divergent factors
+cancel and both quotients tend to1. The family gives no gap collapse and
+does not settle the general original-chain gap question.
+
+8. SOURCES, ORIGINALITY, FALSIFIER AND CONTINUATION
+Exact programme dependency: grouped source at63ed552830af5695c735207ee881756cd4f905f3,
+papers/stationary-weighting354/revision-density-spectrum-20261117/
+manuscript-density-spectrum-candidate.tex, raw UTF8/LF SHA256
+eb5d3d179a13880a914ea719348ceacdae3bd2075d470c2e544a00056df73dda,
+especially inversestationary and the proved full-chain blocktheorem.
+The dependent first integration report is retained in full. O and O14
+remain unchanged; P strengthens the obstruction to the proposed separate
+variance/form transfer, rather than reclassifying O as an original-gap proof.
+
+The Boolean noise diagonalization and product formula are classical;
+O'Donnell's Analysis of Boolean Functions, arXiv2105.10386, Definition2.46
+and Proposition2.47, describe the noise operator. His CMU Lecture16,
+https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf,
+Theorem1.1, was reread as context for smoothing, not as a needed new bound
+in this elementary product calculation. The source-family full spectral
+estimate is the existing programme proposition, not a new claim here.
+Andrieu--Lee--Power--Wang, Annals of Statistics50(6),3592--3618(2022),
+https://awllee.github.io/papers/AOS2241.pdf, introduction and Section3
+context, studies comparison with a common invariant measure. Our pi and w
+are different; this note does not refute their comparison theorems.
+An attempted primary-book retrieval timed out; no content is inferred
+from it. Broad web searches returned mostly unrelated Dirichlet-distribution
+and other results; these are not evidence for novelty or citations here.
+No claim of priority, comprehensive literature exclusion or independent
+discovery is made. Correctness and relevance remain distinct from originality.
+
+Falsifiers: failure of exact marginals, positive actual inverse or quotient
+invariance; loss of the critical cap; either actual ratio in(P2) remaining
+bounded; invalid full-sector gap applicability. Check all fixed rho,b,C
+and tau=0 as well as 0<tau<1. There is no executed numerical evidence.
+After first audit preserve every objection and the complete exact report.
+The next bounded task remains inside stationary-doob-gap: derive or refute
+a direct comparison of Rayleigh quotients or a localized spectral bound
+that retains the cancellation between stationary variance and edge energy.
+Do not reintroduce separate bounded stationary variance as a hidden premise.
+After three units without substantial mathematical progress, preserve the
+failures and change mechanism or identify the concrete obstruction.
+PR29 stays20/41; TermSource stays0; no physical Yang--Mills/continuum claim.
+
+Model assessments and review context
+This is an analytic candidate from the current Codex assistant. No formal
+verification, numerical score, exact-PDF assessment, peer review, editorial
+acceptance, upload or new publication is claimed. First separate-role review
+must bind exact source bytes/commit and disclose shared provider and inherited
+context; serving backend is not independently attested. Earlier scores and
+reports do not transfer to this source or a future manuscript/PDF.
