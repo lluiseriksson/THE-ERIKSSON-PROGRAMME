@@ -1,0 +1,116 @@
+FIRST SOURCE-INTEGRATION AUDIT — GROUPED DENSITY-SPECTRUM SUCCESSOR
+Date: 2026-11-17
+Verdict: PASS for the exact integration identified below.
+
+1. Exact subject and scope
+
+Frozen commit: 63ed552830af5695c735207ee881756cd4f905f3.
+Parent commit: 6b6d79c6a11096aebfb5c472457d6eae372396d4.
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116.
+New source: papers/stationary-weighting354/revision-density-spectrum-20261117/manuscript-density-spectrum-candidate.tex.
+Raw SHA256: eb5d3d179a13880a914ea719348ceacdae3bd2075d470c2e544a00056df73dda.
+Length: 111001 bytes; UTF-8 without BOM, LF, zero CR bytes.
+Raw unfiltered and committed Git blob: 093f89a3026fdaf80737801c2bea8d8869751bf7.
+
+Fragment: papers/stationary-weighting354/revision-density-spectrum-20261117/DENSITY-SPECTRUM-SECTION.tex.
+Raw SHA256: c9925dce9febf30abccc11aac9a55baf2426e43001cae37f53cbd0f74b7eeaed.
+Length: 9535 bytes; UTF-8 without BOM, LF, zero CR bytes.
+Raw unfiltered and committed Git blob: f1e91d4c55fa7999957ea612c99d629927eea1ad.
+The complete fragment is an exact contiguous substring of the manuscript.
+
+This PASS concerns the first integration of the already audited candidate O into the grouped source. It is not a second scientific score for O, not a whole-manuscript re-audit of unchanged arguments, and not a PDF assessment, novelty certification, publication acceptance or release authorization. No blocking or nonblocking correction request was found.
+
+2. Role, inherited context and audit boundary
+
+Auditor: the separate Codex child-agent role /root/public354_commit_audit, within the same provider workflow as the parent fabricator. The available identity is the Codex assistant role; exact serving model, backend version and effective reasoning effort are not independently attested. I do not infer those identities from a requested model alias. I have inherited programme context and earlier audit context, including my first analytic audit of O. This is neither blinded review nor independent human, provider-independent or organizationally independent peer review. The separate-role review checks the new integration against the preserved source and report; it does not claim independence from that prior exposure.
+
+The applicable operational charter section 4 was read, and the branch remained frozen during the audit. No inbound follow-up arrived. No PR or PR body exists for this task, so a normalized body capture and body hash are inapplicable. I used read-only source inspection, git status/object/diff inspection, raw hashes and lightweight textual identity/reference checks. Report/evidence writing occurred outside the repository. No mathematical code, numeric evaluation, Lean, TeX, compilation, rendering, runtime, browser or UI was used. No source, state, branch or old report was changed. No disposable clone was created.
+
+3. Preserved evidence and delta
+
+Previous grouped source:
+  papers/stationary-weighting354/revision-regularization-20261117/manuscript-regularization-candidate.tex
+  SHA256 a94dbf1aca3738564894cacceaeba81abdeee35d3fde4f0dec281a09adf3508d
+  99397 bytes; raw and committed blob f212459206f66ed095000d99bb58bd5c449ec278.
+
+Frozen O source:
+  papers/stationary-weighting354/research/2026-11-17-density-regularized-gap/CANDIDATE-O.txt
+  SHA256 0eef71ebd956d1c92bbecbe342607b48cf0c0aa6709a6defc924203642d300e5
+  13183 bytes; raw and committed blob 0fd19443d40dd5d4fa4427e9502e5b0237b96386.
+
+Complete first O report, read for the integration boundary:
+  papers/stationary-weighting354/research/2026-11-17-density-regularized-gap/FIRST-ANALYTIC-AUDIT.txt
+  SHA256 554752e9a0c1654ee1922181bf8b6c390b4fefcfaab25835958032cf336a292c
+  19613 bytes; raw and committed blob bc033dc5a2eb6a1540bb75b3a139f97c2ac35e1c.
+
+All five checked files have zero CR bytes and no UTF-8 BOM; their unfiltered hash-object results equal the corresponding HEAD blobs. The source commit adds exactly the new manuscript and the new fragment. It does not modify the old grouped source, candidate O, its first report, earlier mathematical sources, old PDF or old reviews.
+
+I compared the complete old/new manuscript delta. The mathematical addition is the density-spectrum section. Other changes update the abstract, theorem map, source list, positioning, remaining-question paragraph and assessment context. The inverse-stationary, rigidity and critical-sandwich dependencies are retained unchanged. Their relevant interfaces were inspected in the prior analytic audit, and this delta introduces no changed dependency premise or proof.
+
+There is no README or manifest in the new two-file revision directory at this frozen SHA. That does not prevent this source integration review. O's existing research packet contains MANIFEST.json naming its exact candidate and full report digests, and DEPENDENCIES.json names the prior manuscript and prior reports. Thus the context's reference to accompanying digest evidence has an existing repository referent; it is not an absent or invented O report. A self-contained eventual publication packet has not been certified here. The new manuscript and fragment's exact identities are recorded explicitly in this report and OBSERVATIONS.json.
+
+4. Statement and notation transfer
+
+The new section fixes rho,b in (0,1), s=(1+rho)/(1-rho), B=2^(1/s) and its constants before dimension, density, matching degree and smoothing parameter. The error is introduced for an integer k>=0 immediately before the theorem; the theorem then restricts 0<=k<=L, L>=1. It quantifies over all positive mean-one input densities with the original floor, critical cap and exact labelled matching. No code-algebra restriction, potential floor or special input family is added.
+
+The definitions q0, Q_*=8s, sigma and F_sigma agree with candidate O. The first-crossing convention n_*=0 for q0>=Q_* is preserved. Renaming candidate A to A_*, candidate K to C_*, and candidate tau0 to tau_* is consistent throughout: C_*=b^(-1)B A_*^2 remains the bound on the normalized ratio's L^(2s) norm, while K_u denotes the actual kernel. There is no accidental replacement of a kernel by the scalar constant. The scalar constant C_* is distinguished from the original fixed matching coefficient C.
+
+The definitions of theta_in, theta_out and gamma retain their original values. The error is exactly
+  (2e_k)^gamma(C_*+B)^(1-gamma)+(B+1)2^(-(k+1))+e_k^2,
+  e_k=B rho^((k+1)/2), gamma=1/(2s-1).
+The permitted interval remains 0<=tau<=tau_*, with tau_*>0 and tau_*<=1/2. The theorem explicitly orders all eigenvalues decreasingly with multiplicities, preserves the gap error and gives uniformity only for fixed rho,b. The exponential sqrt(L) specialization remains for fixed C>0. It does not broaden the theorem to tau=1, all tau<1 or parameters tending to their boundary.
+
+5. Reconstruction and finite crossing as integrated
+
+The new proof first derives the stationary constraints for w=P_tau pi by noise invariance, positivity, Jensen and Fourier multipliers. It calls inversestationary for a unique positive actual u with uPu=w, yielding energy one; it expressly does not use that lemma's dimension-dependent stability estimate. Ordinary hypercontractivity derives ||w||_sigma<=B, and the paragraph explicitly disclaims the stronger and unjustified E w^sigma<=2. The distinction survives the integration.
+
+The initial inverse moment retains the actual equations g=Pu, ||Qu||_2=1, g=Q(Qu), ||g||_R<=1, R=1+rho^(-1), and the stationary-floor implication u^(-1)<=g/b. The source refers to the already specified negative generalized-mean convention and the reverse inequality, with rho^2=(1+R)/(1+q0). Since q0>R for rho in (0,1), its exponent ordering agrees with the unchanged reverse inequality. No unproved potential minimum is substituted.
+
+The derived floor identity g>=bP(1/g)>=b/(Pg) is retained. The Holder input p=sigma q/(sigma+q)>1 and the new sigma-dependent output map are correct; the text warns against borrowing the old critical fixed-point formula. The increment identity, choice of sigma and positive lower increment d match candidate O. The proof checks every pre-crossing input q>sigma/(sigma-1), establishes finiteness and its ceiling bound, handles q0>=Q_* without a step and uses only the last valid step to obtain q_n*>=8s. There is no extrapolation to an unattained limiting exponent or a post-crossing iteration.
+
+Holder then uses the available 4s stationary norm and 8s inverse norm to derive the 2s moment of U=w/g^2. Dividing by N>=b produces precisely C_*. Although the ratio moment is displayed before the N>=b derivation, it explicitly points to the independent next paragraph. That paragraph does not use any ratio-moment or perturbation estimate, so the exposition is not circular.
+
+6. Actual normalization, rigidity and full spectrum
+
+The integrated proof sets U=u/g, N=E U and r=U/N consistently. It proves a^2>=b from the floor and Jensen, N>=a^2 by Cauchy--Schwarz under w, and N<=1 by the actual reversible conjugate. In particular, S=M_sqrt(U) P M_sqrt(U) has positive spectrum and Perron eigenvalue one. With X=M_sqrt(U)Q, S=XX* and T=X*X=Q M_U Q are similar because U>0 and the noise multipliers of Q are positive. Testing T on the unit constant gives N<=1. These steps preserve the actual-chain identity; they do not merely construct an operator with a convenient density.
+
+The rigidity proof is reproduced with sigma'<2 and the degree->k L^2 multiplier bound followed by norm monotonicity. Exact matching supplies E w Pi_(<=k)g=a. The displayed Cauchy--Schwarz inequality under u dmu, v<=a e_k sqrt(v), a^2 lower bound, Hellinger identity and ||r-w||_1<=2e_k retain all factors from O. Interpolation with 2s yields exactly gamma and C_*+B. There is no unbounded L^p Fourier projection assumed or low-degree matching transferred to r.
+
+The input/output noise factorization still handles s<2, s=2 and s>2 with the appropriate identity or hypercontractive maps. The middle factor beta<=1/2 acts on the actual high-degree Fourier support of pi-1, giving ||w-1||_s<=(B+1)2^(-(k+1)). The identity U-1=N(r-w)+N(w-1)+(N-1), with 1-N<=e_k^2/(1+e_k^2), yields the displayed error without a lost B or normalization factor.
+
+The final application of criticalsandwich preserves the norm on the full L^2 space, not a Fourier window. The text repeats 2s'=1+rho^(-1), the Q:L^2->L^(2s') contraction, and Holder for arbitrary unit functions. Min--max compares self-adjoint T with P and the exact similarity transfers all eigenvalues to the actual K_u. No bound on the similarity condition number is needed or asserted. The second eigenvalue rho of P is available for every L>=1, so the gap assertion uses the original definition of gap. Positive spectrum makes its convention consistent with the manuscript setting.
+
+7. Endpoints, rates and the perturbation obstruction
+
+The integrated theorem retains tau=0 and explains annihilation of the mean-zero part. It handles k=0 by mean one and k=L by the zero high-degree space. The s=2 choice has both theta factors equal to one, and the adjacent cases are explicitly separated. q0>=Q_* is covered by n_*=0. All constants remain finite for fixed rho,b in the open parameter range. All three error terms decay exponentially in k; the original k_L definition yields the stated exponential sqrt(L) rate for fixed C. The theorem makes no quantitative uniformity claim as rho, b or C approach endpoints.
+
+The added proposition carries O14 faithfully. With epsilon=min((1-b)/2,(B-1)/2)>0, the parity density 1+epsilon chi_[L] has the strict floor and moment cap, exact matching for sufficiently large k_L<L, and an actual positive inverse from inversestationary. Constant potentials fill the finitely many remaining dimensions. The norm difference equals epsilon(1-tau^L) in the large-dimensional construction, tending to epsilon for each fixed 0<=tau<1. The fact that the equality is used after the finite filler convention does not affect the limit; its preceding construction makes its large-L domain explicit.
+
+The text explicitly says this is an obstruction to a uniformly vanishing L^s perturbation premise, not a spectral counterexample. It notes the controlled parity class, distinguishes the theorem's restricted tau interval from the proposition's 0<=tau<1 interval, and refuses to infer an original/regularized spectral comparison. Thus the two different smoothing quantifiers are not conflated.
+
+8. Abstract, remaining question, citations and assessment context
+
+The abstract and theorem map now assert whole-spectrum convergence only for the actual reconstructed chain after sufficiently strong fixed density smoothing. They also state that comparison with the original chain remains unresolved. The added positioning paragraph identifies the classical hypercontractive, positive reconstruction and finite-dimensional spectral inputs and makes no optimal-smoothing or novel-hypercontractivity claim. It does not convert a bounded failed search into proof of priority.
+
+The preceding regularization section's statement that a dimension-uniform spectral comparison remains unproved is consistent with the new section: it refers to original versus reconstructed chains, not the now-proved spectrum on the regularized side. The remaining-question paragraph updates this distinction, retains the uncontrolled original high-block/critical-moment issues and says the full-gap question remains open. No original hypothesis is claimed removed; the extra moment is derived only after changing the stationary density. There is no new physical Yang--Mills, continuum or programme-progress claim.
+
+The existing mos and odonnell bibliography entries already include the cited negative-exponent and ordinary hypercontractive statements. The bibliography itself is preserved; the new proof and positioning paragraph use those existing keys and their specified scope. This audit has not re-browsed the sources or repeated novelty searches. The author's reported bounded primary reading is not attributed to this auditor.
+
+Model assessments and review context names O's original source commit 4086adaf and preserves its complete first report and exact digests in the research packet. It explicitly denies transfer of a source verdict to this integrated artifact or to a rendered PDF. The list now includes O; the old separately assessed 8efcb73b PDF is correctly stated not to contain E--O. M's recorded nonblocking notation correction remains preserved. Shared-provider, inherited-context and unattested-backend limitations remain explicit. Working-paper deposit, model review, human peer review and editorial acceptance remain distinct. No earlier grade is reused, and no new score is assigned by this report.
+
+9. Static checks and limits
+
+The complete old/new delta is retained as FULL-MANUSCRIPT-DELTA.diff. OBSERVATIONS.json records the five raw identities, corresponding Git blobs and fragment containment. A lightweight textual scan of the full new source found no duplicate labels, unresolved ref/eqref targets or missing cite keys. git diff --check for the subject commit produced no whitespace error. These are source checks only; they do not establish successful TeX compilation, typography, layout or correctness of untouched mathematics.
+
+Git emitted its ordinary autocrlf warning when the first no-index diff was requested. Direct raw-byte and unfiltered-blob checks establish LF/no-BOM identity at this frozen commit; no checkout, normalization or source mutation was performed. The retained diff was obtained with the per-command autocrlf setting disabled, which does not change repository configuration.
+
+The new folder is a two-file source candidate, not a complete reviewed publication package. No document rendering, exact new PDF, formal proof, numerical result, native submission, receipt or release verification is claimed. No workflow-trigger or ordinary-push audit was requested or performed. No build or publication authorization is issued by this verdict.
+
+10. Objections and final disposition
+
+Blocking objections: none found.
+Nonblocking correction requests: none found.
+
+The compression and renaming preserve the first-audited O result, its finite constants, its universal input quantifiers, its actual reconstruction and its explicit limitations. The surrounding manuscript statements have been updated consistently without claiming that the original stationary-gap problem is solved.
+
+Accepted exact integration: 63ed552830af5695c735207ee881756cd4f905f3, manuscript raw SHA256 eb5d3d179a13880a914ea719348ceacdae3bd2075d470c2e544a00056df73dda. Full report and evidence are retained under D:\Datos\the-eriksson-programme\autonomia\2026-11-17_grouped-density-spectrum. The repository, old sources and old reports remain unchanged by the auditor.

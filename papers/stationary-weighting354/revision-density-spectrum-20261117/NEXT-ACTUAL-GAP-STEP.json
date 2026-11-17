@@ -1,0 +1,24 @@
+{
+  "question_id": "stationary-doob-gap",
+  "statement": "Do the original stationary floor, critical moment cap and exact matching through k~C sqrt(L) force a dimension-uniform gap for the actual Boolean Doob kernel?",
+  "hypotheses": "Fixed 0<rho<1, 0<b<1, C>0, s=(1+rho)/(1-rho), h>0, E hP_rho h=1, pi=hP_rho h>=b, E pi^s<=2 and zero nonconstant Walsh coefficients through k=min(L,floor(C sqrt(L))).",
+  "mechanism": "O proves uniform full-spectrum convergence for the density-regularized, positively reconstructed actual chain. Next derive or refute a comparison with the original actual chain using its Dirichlet form and stationary variance. Fixed smoothing is not uniformly small in L^s (O14); that premise cannot supply the comparison.",
+  "falsifier": "An actual original-admissible family defeating the proposed comparison, or an identified error in a claimed derivation. Unrelated surrogate chains are insufficient.",
+  "abandonment": "After three consecutive units without a substantial mathematical advance, preserve the failure and switch mechanism or identify the concrete obstruction. Do not assume a positive potential minimum, a Ph floor or the desired spectral bound.",
+  "units_without_substantial_mathematical_progress": 1,
+  "counter_reason": "This unit consolidates the already proved O result into the grouped manuscript; no new mathematical advance is claimed.",
+  "closed_route": "Uncorrected potential smoothing does not preserve exact matching: N is proved and now integrated. Do not re-run this failed invariance claim. O14 also refutes universally vanishing L^s distance between the original and fixed-smoothed stationary densities.",
+  "manuscript_source_sha256": "eb5d3d179a13880a914ea719348ceacdae3bd2075d470c2e544a00056df73dda",
+  "manuscript_source_commit": "63ed552830af5695c735207ee881756cd4f905f3",
+  "publication_queue": [
+    "The older exact d617dc40 PDF job and full first assessment remain ready for their existing native route after real operator catalogue/sole-author reconciliation.",
+    "The grouped a94dbf1a source needs its own applicable authorized production and exact-PDF review; no old numerical assessment or8ef execution exception transfers.",
+    "Retain one grouped manuscript and all full reports, including objections and shared-context identity limits."
+  ],
+  "new_active_question_count": 0,
+  "PR29": "20/41",
+  "TermSource": 0,
+  "research_source_commit": "4086adaf9f5c7ca84eb6017a79614fd277af1565",
+  "research_source_sha256": "0eef71ebd956d1c92bbecbe342607b48cf0c0aa6709a6defc924203642d300e5",
+  "integration_next": "O is integrated with N and L/M in the grouped source; preserve its first exact integration report. A new PDF requires applicable authorized production and exact review, without inherited grades."
+}
