@@ -1,0 +1,30 @@
+{
+  "artifact_sha256": "d617dc40ae813e50894dede5ea8f73c113f20e7d52b218c74ee9cc3656bae014",
+  "source_commit": "8efcb73bdc4a6458f81fee6b3d9256f1e1524495",
+  "method": "Root model visually inspected all 16 remote Poppler 120 dpi page PNGs with view_image; no local render.",
+  "pages_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "verdict": "PASS readability and layout",
+  "observations": [
+    "All 16 pages readable; no clipped text, overlapping equations, blank content pages, or missing glyphs observed.",
+    "Two overfull hbox log warnings, 9.01273pt and 3.34216pt, retained. Visual inspection found slight margin extensions without clipping or collision.",
+    "Final references page contains expected whitespace. Dense mathematical pages remain legible."
+  ],
+  "scope": "Visual production QA only; no scientific score, peer review, or publication acceptance."
+}

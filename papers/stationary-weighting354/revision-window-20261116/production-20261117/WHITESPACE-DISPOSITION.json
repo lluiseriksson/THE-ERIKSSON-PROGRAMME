@@ -1,0 +1,6 @@
+{
+  "full_raw_packet_whitespace_check_exit": 2,
+  "full_raw_packet_whitespace_verdict": "FAIL retained: provider-generated full job log contains trailing spaces on timestamped blank checkout output. Raw log preserved unchanged.",
+  "acceptance_boundary": "No claim of a full whitespace PASS. Raw-log integrity is checked by hash; authored narrative and manifest receive separate whitespace checking. This does not amend or erase the failed full-packet check.",
+  "raw_log_sha256": "a157e7d6e64b0f09d62656a11f889af8f8a6acf73beac8321ac12db69baf1d98"
+}

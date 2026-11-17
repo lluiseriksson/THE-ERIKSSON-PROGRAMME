@@ -1,0 +1,63 @@
+{
+  "assessment_id": "arr:assessment:ee3b84de-af80-4d7a-a6e1-33d071123f48",
+  "paper_id": "ARR-2026-4T35VQ6MZB8F99F4",
+  "version": "v2",
+  "version_id": "arr:version:9f4aa2da-49e0-4adb-b954-243336ed5415",
+  "canonical_sha256": "d617dc40ae813e50894dede5ea8f73c113f20e7d52b218c74ee9cc3656bae014",
+  "provider": "OpenAI",
+  "model_id": "OpenAI Codex assistant; exact serving backend/version and effort unattested",
+  "assessed_at": "2026-11-17T03:45:14Z",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "accept",
+  "millennium_score": 4.00,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "The exact PDF's central normalizations, negative-exponent transfer, full-coset spectrum, whole-operator window and actual-mode localization withstand analytic checks. No material flaw was identified. Confidence remains limited by an involved AI workflow and no formal proof verification."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Explicit hypotheses, fixed finite bootstrap indices, all-sector analysis and stationary-mean-zero normalization support the stated results. Dense notation and local symbol reuse reduce accessibility, but no invalid step was found."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Several exact model-specific statements are plausible novelty candidates. Primary checks confirm classical ingredients and appropriate attribution; bounded reading does not establish global priority."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "The paper controls broad code-supported families and confines possible anomalous modes to a high block and rare high-u sets. The unrestricted gap and critical endpoint remain open, and no physical Yang-Mills consequence is proved."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Exact source/PDF hashes, complete analytic proofs, full diagnostics and all page renders are retained. Two fresh checkouts produced identical PDFs on one runner/toolchain. This verifies document production, not independent formal or numerical checking of the mathematics."
+    }
+  },
+  "summary": "First assessment of the exact 16-page window-revision PDF: accept as a scoped mathematical working paper. The amplitude-uniform full-chain code theorem and dimension-free low-to-all spectral window are substantive; no material mathematical objection was identified. The actual high block, unrestricted stationary gap and critical moment remain uncontrolled. Importance 4.00 means strong on the AIRR comparison scale, not a probability or Yang-Mills progress fraction. All 16 rendered pages were inspected; production records and matching PDF hashes support the successful authorized run. This reviewer participated in prior source audits and inherited shared context; review is not blind, human, provider-independent or organizationally independent. Exact backend/version and effort are unattested. No previous PDF score is inherited and later E-L results are excluded. Metadata notice: v2 is author-proposed and version_id is LOCAL PROVISIONAL assessment packaging, not an AIRR-issued identifier or publication receipt; reconcile the actual revision record before external submission while retaining this original report and its findings.",
+  "strengths": [
+    "Actual Doob normalization and conjugate spectral representations are explicit; quotient-only control is not mistaken for full-chain control.",
+    "The code-supported theorem controls every coset uniformly over positive potential amplitudes and includes a valid strict representation-separation witness.",
+    "A fixed finite bootstrap crosses 1+rho and yields a whole-operator low-degree estimate without a dimension factor.",
+    "The high-block comparison and fixed-margin eigenfunction localization retain the correct Perron and stationary-mean-zero conditions.",
+    "Exact-cap failure, generic tail obstruction and unresolved endpoints are clearly separated from an admissible collapsing-gap counterexample.",
+    "All 16 pages are readable, and raw hashes confirm matching PDFs from two fresh checkouts and the delivered artifact."
+  ],
+  "weaknesses": [
+    "Priority of the specific model-dependent statements is not established by the bounded primary-literature check.",
+    "The manuscript is dense and reuses several symbols locally; a notation table would improve accessibility.",
+    "Constants are for fixed parameters and may deteriorate near rho endpoints; no uniform endpoint or practical finite-size conclusion follows.",
+    "The original full-class gap question and the critical weighting moment remain open; the high-block reduction does not bound the high block.",
+    "Assessment has shared context and prior reviewer involvement, and there is no human peer review or proof-assistant verification.",
+    "Document reproduction used the same runner/toolchain, and two harmless overfull-line warnings remain in the log."
+  ],
+  "potential_errors": [],
+  "strong_novelty_candidates": [
+    "The normalized exact numerical-cap counterexample for stationary-to-weighting moment transfer, subject to further priority checking.",
+    "The explicit floor-derived reciprocal bootstrap and finite crossing sufficient for a low-to-all spectral window, subject to further prior-art comparison.",
+    "Amplitude-uniform all-coset bounds for actual Boolean Doob potentials supported on code algebras, beyond quotient-only spectral control.",
+    "The combined whole-operator window, actual high-block reduction and fixed-margin stationary localization consequences under the original matching hypotheses."
+  ],
+  "unresolved_material_objections": [],
+  "source_response_sha256": "2f2906228ea44fcd9f59d2dbfd15e8af6c55b5a2d5cd2bf66fe0101076288119"
+}

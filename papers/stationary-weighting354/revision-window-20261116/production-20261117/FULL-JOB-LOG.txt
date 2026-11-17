@@ -1,0 +1,405 @@
+document	Set up job	﻿2026-11-17T03:29:58.8864953Z Current runner version: '2.338.2'
+document	Set up job	2026-11-17T03:29:58.8901435Z ##[group]Runner Image Provisioner
+document	Set up job	2026-11-17T03:29:58.8902908Z Hosted Compute Agent
+document	Set up job	2026-11-17T03:29:58.8903885Z Version: 20261103.629
+document	Set up job	2026-11-17T03:29:58.8904985Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+document	Set up job	2026-11-17T03:29:58.8906576Z Build Date: 2026-11-03T17:26:59Z
+document	Set up job	2026-11-17T03:29:58.8907735Z Worker ID: {eee309c8-99b2-458d-8b98-8ec02ef7daab}
+document	Set up job	2026-11-17T03:29:58.8909045Z Region: eastus
+document	Set up job	2026-11-17T03:29:58.8910032Z Cloud: Azure
+document	Set up job	2026-11-17T03:29:58.8911103Z ##[endgroup]
+document	Set up job	2026-11-17T03:29:58.8913369Z ##[group]Operating System
+document	Set up job	2026-11-17T03:29:58.8915077Z Ubuntu
+document	Set up job	2026-11-17T03:29:58.8916022Z 24.04.5
+document	Set up job	2026-11-17T03:29:58.8917139Z LTS
+document	Set up job	2026-11-17T03:29:58.8918157Z ##[endgroup]
+document	Set up job	2026-11-17T03:29:58.8919164Z ##[group]Runner Image
+document	Set up job	2026-11-17T03:29:58.8920110Z Image: ubuntu-24.04
+document	Set up job	2026-11-17T03:29:58.8921224Z Version: 20261111.370.1
+document	Set up job	2026-11-17T03:29:58.8923142Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+document	Set up job	2026-11-17T03:29:58.8926534Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+document	Set up job	2026-11-17T03:29:58.8928491Z ##[endgroup]
+document	Set up job	2026-11-17T03:29:58.8930407Z ##[group]GITHUB_TOKEN Permissions
+document	Set up job	2026-11-17T03:29:58.8933331Z Contents: read
+document	Set up job	2026-11-17T03:29:58.8934358Z Metadata: read
+document	Set up job	2026-11-17T03:29:58.8935428Z ##[endgroup]
+document	Set up job	2026-11-17T03:29:58.8938801Z Secret source: Actions
+document	Set up job	2026-11-17T03:29:58.8940352Z Cache mode: write
+document	Set up job	2026-11-17T03:29:58.8941886Z Prepare workflow directory
+document	Set up job	2026-11-17T03:29:58.9420121Z Prepare all required actions
+document	Set up job	2026-11-17T03:29:58.9490661Z Getting action download info
+document	Set up job	2026-11-17T03:29:59.1496774Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+document	Set up job	2026-11-17T03:29:59.3129777Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+document	Set up job	2026-11-17T03:29:59.5397174Z Complete job name: document
+document	Record first job step and actual authorization reference	﻿2026-11-17T03:29:59.6222091Z ##[group]Run mkdir -p "$RUNNER_TEMP/window-evidence"
+document	Record first job step and actual authorization reference	2026-11-17T03:29:59.6222949Z ^[[36;1mmkdir -p "$RUNNER_TEMP/window-evidence"^[[0m
+document	Record first job step and actual authorization reference	2026-11-17T03:29:59.6223775Z ^[[36;1mdate -u +%FT%TZ > "$RUNNER_TEMP/window-evidence/first-step-start.txt"^[[0m
+document	Record first job step and actual authorization reference	2026-11-17T03:29:59.6224785Z ^[[36;1mprintf '%s\n' "$OWNER_REPLY_REF" > "$RUNNER_TEMP/window-evidence/owner-reference.txt"^[[0m
+document	Record first job step and actual authorization reference	2026-11-17T03:29:59.6249044Z shell: /usr/bin/bash -e {0}
+document	Record first job step and actual authorization reference	2026-11-17T03:29:59.6249853Z env:
+document	Record first job step and actual authorization reference	2026-11-17T03:29:59.6250544Z   OWNER_REPLY_REF: request_user_input_async/call_13cd8f6ace9e4ce192db7c5cab7db49e/0
+document	Record first job step and actual authorization reference	2026-11-17T03:29:59.6251355Z ##[endgroup]
+document	Fresh clone A at exact authorized source SHA	﻿2026-11-17T03:29:59.6594679Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6595459Z with:
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6595936Z   ref: 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6596746Z   path: clone-a
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6597212Z   persist-credentials: false
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6597792Z   repository: lluiseriksson/THE-ERIKSSON-PROGRAMME
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6601843Z   token: ***
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6602287Z   ssh-strict: true
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6602772Z   ssh-user: git
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6603201Z   clean: true
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6603656Z   sparse-checkout-cone-mode: true
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6604176Z   fetch-depth: 1
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6604606Z   fetch-tags: false
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6605061Z   show-progress: true
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6605510Z   lfs: false
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6605926Z   submodules: false
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6606520Z   set-safe-directory: true
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6607037Z   allow-unsafe-pr-checkout: false
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.6607555Z ##[endgroup]
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9270234Z Syncing repository: lluiseriksson/THE-ERIKSSON-PROGRAMME
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9273245Z ##[group]Getting Git version info
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9274818Z Working directory is '/home/runner/work/THE-ERIKSSON-PROGRAMME/THE-ERIKSSON-PROGRAMME/clone-a'
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9277838Z [command]/usr/bin/git version
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9407947Z git version 2.56.1
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9440157Z ##[endgroup]
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9448449Z Temporarily overriding HOME='/home/runner/work/_temp/64dcd41e-0a60-4810-b23e-be14d7a78c9a' before making global git config changes
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9451232Z Adding repository directory to the temporary git global config as a safe directory
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9453953Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/THE-ERIKSSON-PROGRAMME/THE-ERIKSSON-PROGRAMME/clone-a
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9532241Z ##[group]Initializing the repository
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9538532Z [command]/usr/bin/git init /home/runner/work/THE-ERIKSSON-PROGRAMME/THE-ERIKSSON-PROGRAMME/clone-a
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9655788Z hint: Using 'master' as the name for the initial branch. This default branch name
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9658272Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9660283Z hint: to use in all of your new repositories, which will suppress this warning,
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9661864Z hint: call:
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9662728Z hint:
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9663724Z hint: 	git config --global init.defaultBranch <name>
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9665070Z hint:
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9666721Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9668704Z hint: 'development'. The just-created branch can be renamed via this command:
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9670108Z hint:
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9670945Z hint: 	git branch -m <name>
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9671950Z hint:
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9673338Z hint: Disable this message with "git config set advice.defaultBranchName false"
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9685072Z Initialized empty Git repository in /home/runner/work/THE-ERIKSSON-PROGRAMME/THE-ERIKSSON-PROGRAMME/clone-a/.git/
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9708269Z [command]/usr/bin/git remote add origin https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9771623Z ##[endgroup]
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9773194Z ##[group]Disabling automatic garbage collection
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9777471Z [command]/usr/bin/git config --local gc.auto 0
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9819071Z ##[endgroup]
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9820009Z ##[group]Setting up auth
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9830581Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:29:59.9879468Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:00.0327035Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:00.0372872Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:00.0623240Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:00.0676861Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:00.0923046Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:00.0974159Z ##[endgroup]
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:00.0975197Z ##[group]Fetching the repository
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:00.0992345Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:03.7871390Z From https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:03.7873129Z  * branch            8efcb73bdc4a6458f81fee6b3d9256f1e1524495 -> FETCH_HEAD
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:03.7876141Z ##[endgroup]
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:03.7877242Z ##[group]Determining the checkout info
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:03.7879379Z ##[endgroup]
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:03.7885596Z [command]/usr/bin/git sparse-checkout disable
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:03.7953047Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:03.8000381Z ##[group]Checking out the ref
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:03.8004090Z [command]/usr/bin/git checkout --progress --force 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:04.9698254Z Updating files:  84% (11077/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.1448477Z Updating files:  85% (11123/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.2068582Z Updating files:  86% (11254/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.2354002Z Updating files:  87% (11384/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.2577076Z Updating files:  88% (11515/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.2800827Z Updating files:  89% (11646/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.2922246Z Updating files:  90% (11777/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.3092628Z Updating files:  91% (11908/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.3319752Z Updating files:  92% (12039/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.3449534Z Updating files:  93% (12170/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.3662711Z Updating files:  94% (12300/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.3790895Z Updating files:  95% (12431/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.3846830Z Updating files:  96% (12562/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.3910674Z Updating files:  97% (12693/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.3976473Z Updating files:  98% (12824/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4029752Z Updating files:  99% (12955/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4030294Z Updating files: 100% (13085/13085)
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4030809Z Updating files: 100% (13085/13085), done.
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4163644Z Note: switching to '8efcb73bdc4a6458f81fee6b3d9256f1e1524495'.
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4164203Z 
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4164601Z You are in 'detached HEAD' state. You can look around, make experimental
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4165198Z changes and commit them, and you can discard any commits you make in this
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4166161Z state without impacting any branches by switching back to a branch.
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4166962Z 
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4167382Z If you want to create a new branch to retain commits you create, you may
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4168223Z do so (now or later) by using -c with the switch command. Example:
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4168759Z 
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4168960Z   git switch -c <new-branch-name>
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4169296Z 
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4169481Z Or undo this operation with:
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4169758Z 
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4169903Z   git switch -
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4170114Z 
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4170481Z Turn off this advice by setting config variable advice.detachedHead to false
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4171039Z 
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4171495Z HEAD is now at 8efcb73 Fail document packaging on copy errors and recover original diagnostics
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4254068Z ##[endgroup]
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4308694Z [command]/usr/bin/git log -1 --format=%H
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4342843Z 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4355479Z ##[group]Removing auth
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4357800Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4399004Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4674217Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4709428Z http.https://github.com/.extraheader
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4717666Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4760461Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.5017841Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.5058195Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.5313261Z ##[endgroup]
+document	Fresh clone B at the same authorized source SHA	﻿2026-11-17T03:30:05.5522234Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5522842Z with:
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5523094Z   ref: 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5523398Z   path: clone-b
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5523619Z   persist-credentials: false
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5523930Z   repository: lluiseriksson/THE-ERIKSSON-PROGRAMME
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5527246Z   token: ***
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5527490Z   ssh-strict: true
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5527702Z   ssh-user: git
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5527900Z   clean: true
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5528117Z   sparse-checkout-cone-mode: true
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5528377Z   fetch-depth: 1
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5528581Z   fetch-tags: false
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5528792Z   show-progress: true
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5529008Z   lfs: false
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5529206Z   submodules: false
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5529423Z   set-safe-directory: true
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5529676Z   allow-unsafe-pr-checkout: false
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.5529939Z ##[endgroup]
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6398924Z Syncing repository: lluiseriksson/THE-ERIKSSON-PROGRAMME
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6406376Z ##[group]Getting Git version info
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6413254Z Working directory is '/home/runner/work/THE-ERIKSSON-PROGRAMME/THE-ERIKSSON-PROGRAMME/clone-b'
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6446492Z [command]/usr/bin/git version
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6490850Z git version 2.56.1
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6512487Z ##[endgroup]
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6526408Z Temporarily overriding HOME='/home/runner/work/_temp/9f7a0847-542b-4747-ae8e-2393cf9b76e6' before making global git config changes
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6527867Z Adding repository directory to the temporary git global config as a safe directory
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6531386Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/THE-ERIKSSON-PROGRAMME/THE-ERIKSSON-PROGRAMME/clone-b
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6571958Z ##[group]Initializing the repository
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6573196Z [command]/usr/bin/git init /home/runner/work/THE-ERIKSSON-PROGRAMME/THE-ERIKSSON-PROGRAMME/clone-b
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6622680Z hint: Using 'master' as the name for the initial branch. This default branch name
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6624147Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6625562Z hint: to use in all of your new repositories, which will suppress this warning,
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6626904Z hint: call:
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6627506Z hint:
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6628302Z hint: 	git config --global init.defaultBranch <name>
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6629234Z hint:
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6630115Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6631373Z hint: 'development'. The just-created branch can be renamed via this command:
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6632396Z hint:
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6633055Z hint: 	git branch -m <name>
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6633712Z hint:
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6634676Z hint: Disable this message with "git config set advice.defaultBranchName false"
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6636505Z Initialized empty Git repository in /home/runner/work/THE-ERIKSSON-PROGRAMME/THE-ERIKSSON-PROGRAMME/clone-b/.git/
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6639628Z [command]/usr/bin/git remote add origin https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6677455Z ##[endgroup]
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6678179Z ##[group]Disabling automatic garbage collection
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6682707Z [command]/usr/bin/git config --local gc.auto 0
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6718872Z ##[endgroup]
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6719815Z ##[group]Setting up auth
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6728303Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.6767540Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.7058519Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.7102905Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.7374469Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.7420236Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.7676154Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.7733165Z ##[endgroup]
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.7733861Z ##[group]Fetching the repository
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:05.7747942Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:09.4007763Z From https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:09.4008326Z  * branch            8efcb73bdc4a6458f81fee6b3d9256f1e1524495 -> FETCH_HEAD
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:09.4013491Z ##[endgroup]
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:09.4013886Z ##[group]Determining the checkout info
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:09.4016776Z ##[endgroup]
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:09.4022684Z [command]/usr/bin/git sparse-checkout disable
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:09.4074912Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:09.4140539Z ##[group]Checking out the ref
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:09.4144434Z [command]/usr/bin/git checkout --progress --force 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.5904878Z Updating files:  84% (11075/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.7631783Z Updating files:  85% (11123/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.8248395Z Updating files:  86% (11254/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.8538473Z Updating files:  87% (11384/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.8761619Z Updating files:  88% (11515/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.8980873Z Updating files:  89% (11646/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.9101858Z Updating files:  90% (11777/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.9272641Z Updating files:  91% (11908/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.9499888Z Updating files:  92% (12039/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.9628147Z Updating files:  93% (12170/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.9839412Z Updating files:  94% (12300/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:10.9968104Z Updating files:  95% (12431/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0024659Z Updating files:  96% (12562/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0088128Z Updating files:  97% (12693/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0153940Z Updating files:  98% (12824/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0231766Z Updating files:  99% (12955/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0232296Z Updating files: 100% (13085/13085)
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0232777Z Updating files: 100% (13085/13085), done.
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0366035Z Note: switching to '8efcb73bdc4a6458f81fee6b3d9256f1e1524495'.
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0366800Z 
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0367168Z You are in 'detached HEAD' state. You can look around, make experimental
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0367989Z changes and commit them, and you can discard any commits you make in this
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0368862Z state without impacting any branches by switching back to a branch.
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0369367Z 
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0369712Z If you want to create a new branch to retain commits you create, you may
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0370495Z do so (now or later) by using -c with the switch command. Example:
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0370951Z 
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0371121Z   git switch -c <new-branch-name>
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0371422Z 
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0371593Z Or undo this operation with:
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0371866Z 
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0372011Z   git switch -
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0372213Z 
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0372584Z Turn off this advice by setting config variable advice.detachedHead to false
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0373134Z 
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0373608Z HEAD is now at 8efcb73 Fail document packaging on copy errors and recover original diagnostics
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0465558Z ##[endgroup]
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0518979Z [command]/usr/bin/git log -1 --format=%H
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0554082Z 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0564088Z ##[group]Removing auth
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0568055Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0610104Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0873070Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0906019Z http.https://github.com/.extraheader
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0913833Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0956710Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.1226418Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.1269442Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.1533892Z ##[endgroup]
+document	Install document tools only and retain setup exits	﻿2026-11-17T03:30:11.1664617Z ##[group]Run root="$RUNNER_TEMP/window-evidence"
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1665040Z ^[[36;1mroot="$RUNNER_TEMP/window-evidence"^[[0m
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1665394Z ^[[36;1mdate -u +%FT%TZ > "$root/setup-start.txt"^[[0m
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1665702Z ^[[36;1mrc=0^[[0m
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1666019Z ^[[36;1msudo apt-get update > "$root/apt-update-full.log" 2>&1 || rc=$?^[[0m
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1666915Z ^[[36;1mprintf '%s\n' "$rc" > "$root/apt-update-exit.txt"^[[0m
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1667312Z ^[[36;1mif (( rc != 0 )); then exit "$rc"; fi^[[0m
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1668096Z ^[[36;1msudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils > "$root/apt-install-full.log" 2>&1 || rc=$?^[[0m
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1668919Z ^[[36;1mprintf '%s\n' "$rc" > "$root/apt-install-exit.txt"^[[0m
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1669316Z ^[[36;1mdate -u +%FT%TZ > "$root/setup-end.txt"^[[0m
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1669607Z ^[[36;1mexit "$rc"^[[0m
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1690322Z shell: /usr/bin/bash -e {0}
+document	Install document tools only and retain setup exits	2026-11-17T03:30:11.1690623Z ##[endgroup]
+document	Build twice, compare bytes, render and reconcile page count	﻿2026-11-17T03:31:19.0756747Z ##[group]Run bash "$GITHUB_WORKSPACE/clone-a/papers/stationary-weighting354/revision-window-20261116/build-pipeline.sh" "$RUNNER_TEMP/window-evidence" "$EXACT_COMMIT"
+document	Build twice, compare bytes, render and reconcile page count	2026-11-17T03:31:19.0758065Z ^[[36;1mbash "$GITHUB_WORKSPACE/clone-a/papers/stationary-weighting354/revision-window-20261116/build-pipeline.sh" "$RUNNER_TEMP/window-evidence" "$EXACT_COMMIT"^[[0m
+document	Build twice, compare bytes, render and reconcile page count	2026-11-17T03:31:19.0779451Z shell: /usr/bin/bash -e {0}
+document	Build twice, compare bytes, render and reconcile page count	2026-11-17T03:31:19.0779697Z env:
+document	Build twice, compare bytes, render and reconcile page count	2026-11-17T03:31:19.0779950Z   EXACT_COMMIT: 8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+document	Build twice, compare bytes, render and reconcile page count	2026-11-17T03:31:19.0780268Z ##[endgroup]
+document	Preserve diagnostics even if graphics exceed ceiling	﻿2026-11-17T03:31:26.1395986Z ##[group]Run set -euo pipefail
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1396750Z ^[[36;1mset -euo pipefail^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1397038Z ^[[36;1mroot="$RUNNER_TEMP/window-evidence"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1397379Z ^[[36;1mbundle="$RUNNER_TEMP/window-upload"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1397697Z ^[[36;1mmkdir -p "$root" "$bundle/diagnostics"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1397994Z ^[[36;1mcopy_failure() {^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1398726Z ^[[36;1m  printf 'Packaging failed with exit %s; no artifact uploaded. Full available original diagnostics follow; completeness requires checking.\n' "$1" > "$root/packaging-failure.txt"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1399535Z ^[[36;1m  while IFS= read -r -d '' file; do^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1399851Z ^[[36;1m    printf '\nORIGINAL FILE: %s\n' "$file"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1400237Z ^[[36;1m    cat -- "$file" || printf 'UNREADABLE ORIGINAL: %s\n' "$file" >&2^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1400704Z ^[[36;1m  done < <(find "$root" -type f ! -name '*.png' ! -name '*.pdf' -print0)^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1401127Z ^[[36;1m  echo "upload_ok=false" >> "$GITHUB_OUTPUT"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1401455Z ^[[36;1m  exit 67^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1401656Z ^[[36;1m}^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1402092Z ^[[36;1mdate -u +%FT%TZ > "$root/pre-upload-end.txt"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1402907Z ^[[36;1mprintf '%s\n' 'Timings cover first step through pre-upload; checkout/upload/service totals require run receipt. Missing phases mean not reached, not success.' > "$root/timing-scope.txt"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1403672Z ^[[36;1mcd "$root"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1403882Z ^[[36;1mcopy_rc=0^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1404331Z ^[[36;1mfind . -type f ! -name '*.png' ! -name '*.pdf' -exec cp --parents -t "$bundle/diagnostics/" -- {} + || copy_rc=$?^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1404881Z ^[[36;1mif (( copy_rc != 0 )); then copy_failure "$copy_rc"; fi^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1405227Z ^[[36;1mdiag=$(du -sb "$bundle" | cut -f1)^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1405611Z ^[[36;1m# Reserve 1 MiB for final records and directory overhead.^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1405964Z ^[[36;1mcap=51380224^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1406420Z ^[[36;1mif (( diag > cap )); then^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1407221Z ^[[36;1m  printf '%s\n' 'DIAGNOSTICS TOO LARGE: no upload; full text follows. Console retention/truncation must be checked before claiming preservation.' >&2^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1407911Z ^[[36;1m  while IFS= read -r -d '' file; do^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1408204Z ^[[36;1m    printf '\nFILE: %s\n' "$file"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1408474Z ^[[36;1m    cat -- "$file"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1408814Z ^[[36;1m  done < <(find "$root" -type f ! -name '*.png' ! -name '*.pdf' -print0)^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1409227Z ^[[36;1m  echo "upload_ok=false" >> "$GITHUB_OUTPUT"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1409514Z ^[[36;1m  exit 66^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1409712Z ^[[36;1mfi^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1410133Z ^[[36;1mgraphics=$(find . -type f \( -name '*.png' -o -name '*.pdf' \) -printf '%s\n' | awk '{s+=$1} END {printf "%.0f",s+0}')^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1410627Z ^[[36;1mrc=0^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1410865Z ^[[36;1mif (( diag + graphics <= cap )); then^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1411175Z ^[[36;1m  mkdir -p "$bundle/document"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1411441Z ^[[36;1m  copy_rc=0^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1411895Z ^[[36;1m  find . -type f \( -name '*.png' -o -name '*.pdf' \) -exec cp --parents -t "$bundle/document/" -- {} + || copy_rc=$?^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1412449Z ^[[36;1m  if (( copy_rc != 0 )); then copy_failure "$copy_rc"; fi^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1413006Z ^[[36;1m  printf '%s\n' 'Document included; inspect pipeline exits separately.' > "$bundle/retention-status.txt"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1413494Z ^[[36;1melse^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1414242Z ^[[36;1m  printf '%s\n' 'SIZE FAILURE: full text diagnostics retained, PDF/PNG omitted. Rendering evidence incomplete. Recovery requires an authorized route within capacity.' > "$bundle/retention-status.txt"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1415050Z ^[[36;1m  rc=64^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1415242Z ^[[36;1mfi^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1415455Z ^[[36;1mbytes=$(du -sb "$bundle" | cut -f1)^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1415948Z ^[[36;1mprintf 'Payload bytes before this record: %s\nHard ceiling: 52428800\n' "$bytes" > "$bundle/size.txt"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1416873Z ^[[36;1mif (( bytes > 52400000 )); then^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1417485Z ^[[36;1m  printf '%s\n' 'Unexpected overhead: no upload; full diagnostics follow. Verify console completeness before claiming preservation.' >&2^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1418113Z ^[[36;1m  while IFS= read -r -d '' file; do^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1418402Z ^[[36;1m    printf '\nFILE: %s\n' "$file"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1418668Z ^[[36;1m    cat -- "$file"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1419003Z ^[[36;1m  done < <(find "$root" -type f ! -name '*.png' ! -name '*.pdf' -print0)^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1419412Z ^[[36;1m  echo "upload_ok=false" >> "$GITHUB_OUTPUT"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1419701Z ^[[36;1m  exit 66^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1419898Z ^[[36;1mfi^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1420122Z ^[[36;1mecho "upload_ok=true" >> "$GITHUB_OUTPUT"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1420409Z ^[[36;1mexit "$rc"^[[0m
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1440680Z shell: /usr/bin/bash -e {0}
+document	Preserve diagnostics even if graphics exceed ceiling	2026-11-17T03:31:26.1440947Z ##[endgroup]
+document	Retain bounded evidence including failed-run diagnostics	﻿2026-11-17T03:31:26.1845272Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.1845875Z with:
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.1846506Z   name: grouped-window-pdf-8efcb73bdc4a6458f81fee6b3d9256f1e1524495
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.1846943Z   path: /home/runner/work/_temp/window-upload/
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.1847248Z   if-no-files-found: error
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.1847498Z   retention-days: 1
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.1847737Z   compression-level: 6
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.1847989Z   overwrite: false
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.1848204Z   include-hidden-files: false
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.1848449Z ##[endgroup]
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.3581191Z (node:4346) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.3582961Z (Use `node --trace-deprecation ...` to show where the warning was created)
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.3798820Z With the provided path, there will be 88 files uploaded
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.3806465Z Artifact name is valid!
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.3807211Z Root directory input is valid!
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.6032624Z Beginning upload of artifact content to blob storage
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:26.8894739Z (node:4346) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:27.0296886Z Uploaded bytes 4924423
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:27.0482226Z Finished uploading artifact content to blob storage!
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:27.0483407Z SHA256 digest of uploaded artifact zip is 532e3b7e51fbcaceaad29c7690ff3849834cd3c8df25f9d31e73fe82803a581e
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:27.0486017Z Finalizing artifact upload
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:27.3752027Z Artifact grouped-window-pdf-8efcb73bdc4a6458f81fee6b3d9256f1e1524495.zip successfully finalized. Artifact ID 14295694134
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:27.3754184Z Artifact grouped-window-pdf-8efcb73bdc4a6458f81fee6b3d9256f1e1524495 has been successfully uploaded! Final size is 4924423 bytes. Artifact ID is 14295694134
+document	Retain bounded evidence including failed-run diagnostics	2026-11-17T03:31:27.3758873Z Artifact download URL: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/44010621092/artifacts/14295694134
+document	Post Fresh clone B at the same authorized source SHA	﻿2026-11-17T03:31:27.3990357Z Post job cleanup.
+document	Post Fresh clone B at the same authorized source SHA	2026-11-17T03:31:27.4872475Z [command]/usr/bin/git version
+document	Post Fresh clone B at the same authorized source SHA	2026-11-17T03:31:27.4920154Z git version 2.56.1
+document	Post Fresh clone B at the same authorized source SHA	2026-11-17T03:31:27.4959875Z Temporarily overriding HOME='/home/runner/work/_temp/3b25b1fc-3ecf-41e1-ae3f-554704002c8d' before making global git config changes
+document	Post Fresh clone B at the same authorized source SHA	2026-11-17T03:31:27.4961337Z Adding repository directory to the temporary git global config as a safe directory
+document	Post Fresh clone B at the same authorized source SHA	2026-11-17T03:31:27.4964898Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/THE-ERIKSSON-PROGRAMME/THE-ERIKSSON-PROGRAMME/clone-b
+document	Post Fresh clone B at the same authorized source SHA	2026-11-17T03:31:27.5008364Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+document	Post Fresh clone B at the same authorized source SHA	2026-11-17T03:31:27.5046983Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+document	Post Fresh clone B at the same authorized source SHA	2026-11-17T03:31:27.5354407Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+document	Post Fresh clone B at the same authorized source SHA	2026-11-17T03:31:27.5394563Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+document	Post Fresh clone B at the same authorized source SHA	2026-11-17T03:31:27.5692838Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+document	Post Fresh clone B at the same authorized source SHA	2026-11-17T03:31:27.5772152Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+document	Post Fresh clone A at exact authorized source SHA	﻿2026-11-17T03:31:27.6282896Z Post job cleanup.
+document	Post Fresh clone A at exact authorized source SHA	2026-11-17T03:31:27.7139184Z [command]/usr/bin/git version
+document	Post Fresh clone A at exact authorized source SHA	2026-11-17T03:31:27.7183540Z git version 2.56.1
+document	Post Fresh clone A at exact authorized source SHA	2026-11-17T03:31:27.7255938Z Temporarily overriding HOME='/home/runner/work/_temp/5c77df7f-5b52-4386-b9d8-e2cbf2211f32' before making global git config changes
+document	Post Fresh clone A at exact authorized source SHA	2026-11-17T03:31:27.7257565Z Adding repository directory to the temporary git global config as a safe directory
+document	Post Fresh clone A at exact authorized source SHA	2026-11-17T03:31:27.7261504Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/THE-ERIKSSON-PROGRAMME/THE-ERIKSSON-PROGRAMME/clone-a
+document	Post Fresh clone A at exact authorized source SHA	2026-11-17T03:31:27.7308921Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+document	Post Fresh clone A at exact authorized source SHA	2026-11-17T03:31:27.7361467Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+document	Post Fresh clone A at exact authorized source SHA	2026-11-17T03:31:27.7771618Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+document	Post Fresh clone A at exact authorized source SHA	2026-11-17T03:31:27.7838887Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+document	Post Fresh clone A at exact authorized source SHA	2026-11-17T03:31:27.8157931Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+document	Post Fresh clone A at exact authorized source SHA	2026-11-17T03:31:27.8205341Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+document	Complete job	﻿2026-11-17T03:31:27.8629719Z Cleaning up orphan processes
+document	Complete job	2026-11-17T03:31:27.9030931Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

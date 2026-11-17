@@ -1,0 +1,29 @@
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:130: trailing whitespace.
++document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4164203Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:134: trailing whitespace.
++document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4166962Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:137: trailing whitespace.
++document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4168759Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:139: trailing whitespace.
++document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4169296Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:141: trailing whitespace.
++document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4169758Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:143: trailing whitespace.
++document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4170114Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:145: trailing whitespace.
++document	Fresh clone A at exact authorized source SHA	2026-11-17T03:30:05.4171039Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:248: trailing whitespace.
++document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0366800Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:252: trailing whitespace.
++document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0369367Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:255: trailing whitespace.
++document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0370951Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:257: trailing whitespace.
++document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0371422Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:259: trailing whitespace.
++document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0371866Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:261: trailing whitespace.
++document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0372213Z 
+papers/stationary-weighting354/revision-window-20261116/production-20261117/FULL-JOB-LOG.txt:263: trailing whitespace.
++document	Fresh clone B at the same authorized source SHA	2026-11-17T03:30:11.0373134Z 
+exit=2

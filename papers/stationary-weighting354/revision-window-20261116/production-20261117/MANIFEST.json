@@ -1,0 +1,89 @@
+{
+  "schema": "exact-window-production-packet-v1",
+  "hash_regime": "raw retained bytes, no normalization; original JSON may be CRLF",
+  "source_commit": "8efcb73bdc4a6458f81fee6b3d9256f1e1524495",
+  "workflow_commit": "d623796af7db526b326f9e7d01878509a3c74723",
+  "pdf_sha256": "d617dc40ae813e50894dede5ea8f73c113f20e7d52b218c74ee9cc3656bae014",
+  "files": [
+    {
+      "file": "ARTIFACTS-FINAL.json",
+      "bytes": 820,
+      "sha256": "ff9b3a56ef16decf61ab653665a793f711519aced67915bc55a5ce858867806b"
+    },
+    {
+      "file": "assessment.json",
+      "bytes": 5815,
+      "sha256": "c7047e5aba71440863bb699a732b3663f2d72fd7e46ea064fdc059bee1eca071"
+    },
+    {
+      "file": "FULL-ACTIVATION-AUDIT.txt",
+      "bytes": 14310,
+      "sha256": "9aaa77d7fab37e70b0a11ebd6acd18dbad7267effb96d2447fba32defa0197d6"
+    },
+    {
+      "file": "FULL-EXACT-PDF-ASSESSMENT.txt",
+      "bytes": 36495,
+      "sha256": "2f2906228ea44fcd9f59d2dbfd15e8af6c55b5a2d5cd2bf66fe0101076288119"
+    },
+    {
+      "file": "FULL-JOB-LOG.txt",
+      "bytes": 56809,
+      "sha256": "a157e7d6e64b0f09d62656a11f889af8f8a6acf73beac8321ac12db69baf1d98"
+    },
+    {
+      "file": "FULL-WHITESPACE-CHECK.txt",
+      "bytes": 2884,
+      "sha256": "8a9b5fc387a1c7391d17b4d488d2ec2f538d5b912a83098f0dce6a2935846629"
+    },
+    {
+      "file": "github-artifact.zip",
+      "bytes": 4924423,
+      "sha256": "532e3b7e51fbcaceaad29c7690ff3849834cd3c8df25f9d31e73fe82803a581e"
+    },
+    {
+      "file": "JOBS-FINAL.json",
+      "bytes": 3074,
+      "sha256": "603a05c25d0ac66e2a9e27507cd770f1aa5c967abd742105311f9f2f41ac7e85"
+    },
+    {
+      "file": "NATIVE-REVISION-STATUS.json",
+      "bytes": 1910,
+      "sha256": "535a79223a70ae26f84ded05fd17905222a697d0943915127d880c64257966c2"
+    },
+    {
+      "file": "OWNER-EXECUTION-REPLY.json",
+      "bytes": 1514,
+      "sha256": "a1cac9f13eeb75578c05c553d0acf4406d2e6bd25d20ee83c2573c57a1da22d9"
+    },
+    {
+      "file": "PRODUCTION-VERIFICATION.json",
+      "bytes": 2570,
+      "sha256": "f422cbaf1891d96f127314d272b3940def78821c7c96c8d9aa5362a62b0809c2"
+    },
+    {
+      "file": "README.txt",
+      "bytes": 2139,
+      "sha256": "ae127e1a96d969ca8ba542024404b4548d926f0b2ff861c48d2c33bee2541f5a"
+    },
+    {
+      "file": "RUN-FINAL.json",
+      "bytes": 14106,
+      "sha256": "ce9732c99758bc89ca28f8647fb83c835c7c66cae5359e9f07090bd25eafcd83"
+    },
+    {
+      "file": "stationary-moment-spectral-windows.pdf",
+      "bytes": 398180,
+      "sha256": "d617dc40ae813e50894dede5ea8f73c113f20e7d52b218c74ee9cc3656bae014"
+    },
+    {
+      "file": "VISUAL-QA.json",
+      "bytes": 992,
+      "sha256": "9542014fdc4865d78f41571d918d735740f4486d4ef6b98ca7f840e4ce0dd512"
+    },
+    {
+      "file": "WHITESPACE-DISPOSITION.json",
+      "bytes": 550,
+      "sha256": "66b475aeb0deec5918051c6c5cda213aad04349f00a89e7040bac93488101c37"
+    }
+  ]
+}

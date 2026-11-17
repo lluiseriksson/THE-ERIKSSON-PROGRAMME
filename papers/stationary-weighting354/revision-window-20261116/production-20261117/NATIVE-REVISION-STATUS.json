@@ -1,0 +1,20 @@
+{
+  "observed_at": "2026-11-17T03:51:59.5698249Z",
+  "paper_id": "ARR-2026-4T35VQ6MZB8F99F4",
+  "proposed_version": "v2",
+  "pdf_sha256": "d617dc40ae813e50894dede5ea8f73c113f20e7d52b218c74ee9cc3656bae014",
+  "publication_status": "NOT SENT / NOT PUBLISHED",
+  "native_grant": "HTTP400 on exact linked-revision grant request; client exit2",
+  "diagnostic": "One identical retry retaining HTTP error body also returned400, with empty body; no concrete server rejection reason is available",
+  "source_contract_check": "Local complete binding fields, changelog categories and predecessor IDs match current published source contract; trusted installed catalogue and programme paper scope cannot be inferred from public metadata",
+  "not_inferred": [
+    "No expiry or revoked controller inferred from400",
+    "No native case, receipt, child grant, or publication permission invented",
+    "No administrator bypass or new-submission fallback"
+  ],
+  "job_preserved": "D:\\Datos\\the-eriksson-programme\\autonomia\\2026-11-17_authorized-window-pdf\\native-revision\\job-window-v2.json",
+  "next_action": "Use existing authenticated host route to inspect exact400 validation against installed latest-public catalogue and programme scope; reconcile real publicv1 and existing native354 publication flag if needed. Preserve original author instruction and same exact job/key. No repeated human PDF assent is required.",
+  "known_prior_operator_action": "flask --app services.intake.app mark-published SUB-670D054094713B92 https://github.com/arr-research/arr-research.github.io/releases/tag/ARR-2026-4T35VQ6MZB8F99F4-v1",
+  "host_access": "Prior deployment-key denial remains recorded; UI control is not authorized",
+  "assessment_identity": "Original report/JSON retain their local provisional version_id; no native issued identifier is claimed. Reconcile transport binding only after actual native route succeeds."
+}

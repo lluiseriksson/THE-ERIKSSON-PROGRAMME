@@ -1,0 +1,110 @@
+FULL EXACT ACTIVATION AUDIT — AUTHORIZED WINDOW PDF
+Date: 2026-11-17
+
+1. EXACT REFERENT AND SCOPED VERDICT
+
+Commit: d623796af7db526b326f9e7d01878509a3c74723.
+Sole parent: 9f75462ccb2982662607447ee1da1d7c9d13e1a0.
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116.
+Authorized preparation/source commit: 8efcb73bdc4a6458f81fee6b3d9256f1e1524495.
+Authorized manuscript raw SHA256: 186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3.
+
+PASS for exact source restriction, preservation of the reviewed build safeguards, and safety of the proposed registration-only branch push. The single document job is false on a push event, so that event must not be reported as a build.
+
+BLOCKED / NOT READY for the proposed manual-dispatch execution route as currently installed only on the non-default branch. GitHub's primary documentation states that workflow_dispatch receives events only when the workflow file is on the default branch. The repository default branch is main, and its live .github/workflows directory does not contain build-window-revision.yml. A branch push with a skipped job is not documented as satisfying that prerequisite. This is an execution-entrypoint issue, not missing owner permission or a mathematical defect. No owner confirmation should be requested again for the same already granted PDF scope merely because this technical prerequisite is unmet.
+
+The exact job payload remains within the supplied real grant if an eligible dispatch actually executes it. However this report cannot certify the present branch-only registration plan as sufficient to make that dispatch executable. Any changed entrypoint or default-branch installation must be prepared and checked within its applicable authorization and without triggering unrelated Lean builds, bypassing protections, or expanding source scope. I did not mutate or execute anything to resolve the issue.
+
+2. IDENTITY, AUTHORIZATION EVIDENCE, AND LIMITS
+
+Auditor: separate OpenAI Codex role /root/bootstrap_note_audit, same provider/workflow with inherited programme context and shared files. Exact serving backend/model revision and effective effort are unattested. This is not blind, human, provider-independent, or organizationally independent review. No numerical score or scientific regrading is supplied. No inbound parent message arrived while the audit ran.
+
+The assignment supplies the new actual owner response at request_user_input_async/call_13cd8f6ace9e4ce192db7c5cab7db49e/0: 'Sí, autorizo y confirmo esa capacidad'. The new JSON records the question, that exact answer/reference, the fixed preparation commit and manuscript hash, 20 minutes, 52428800 artifact bytes, one-day retention, existing capacity confirmed by the owner, no extra spend, and no coverage of the later 9a17337a source.
+
+The recorded question and scope are consistent with the supplied owner reply. I did not independently inspect the original UI/tool-response event outside the task context; the record is not a new human response or an administrative permission receipt fabricated by this audit. The reference equality gate records and restricts the authorized route; it does not cryptographically authenticate a human reply. Owner-confirmed capacity is distinguished from a live automatic quota lookup, which was unavailable in the recorded question.
+
+The real response resolves the previously outstanding owner-exception/capacity condition for this specific old-source PDF production, not later manuscripts. The continuing service-entrypoint issue described above does not revoke or make that authorization expire. This audit grants no permission beyond it.
+
+3. EXACT CHANGE AND RAW INTEGRITY
+
+HEAD and its parent match the assignment. Working-tree status is clean. There are exactly two additions:
+- .github/workflows/build-window-revision.yml
+- papers/stationary-weighting354/revision-window-20261116/EXECUTION-AUTHORIZATION-20261117.json
+
+Raw committed blob reads through binary git cat-file and checkout hashes agree:
+- Activated workflow: 6872 bytes, SHA256 a905ca108a956d225c1be5bec1dca8f9c81822be7dbcfb1f3c080f4794531237.
+- Authorization record: 1514 bytes, SHA256 a1cac9f13eeb75578c05c553d0acf4406d2e6bd25d20ee83c2573c57a1da22d9.
+
+The complete old source at the explicitly authorized 8efcb73b commit is 52044 raw bytes with SHA256 186921a56a23015ea43a857adc76631ebbf9f3c3c00e1e3d5566f3f0c31710b3. No normalization was applied to any hash.
+
+The default git diff --check from immediate parent to activation commit returned zero. Comparing the revision-window packet from 8efcb73b to the activation commit shows only the new authorization JSON; the scientific source, original audits, scripts, inactive template, recipe, and binding are unchanged. No newer scientific source is substituted.
+
+4. PRECISE DELTA FROM THE ACCEPTED INACTIVE TEMPLATE
+
+I compared the workflow with the raw template at
+8efcb73bdc4a6458f81fee6b3d9256f1e1524495:papers/stationary-weighting354/revision-window-20261116/build-window-revision.yml.template.
+
+Changes are limited to:
+- Comment records the actual reply and fixed authorized source.
+- Job condition now requires equality with the exact reply-reference string rather than merely nonempty text.
+- Both checkout refs are the literal full 8efcb73b commit instead of github.sha.
+- Checkout step names describe that fixed source.
+- EXACT_COMMIT is the same literal full 8efcb73b commit.
+- Artifact name uses that fixed source identifier rather than the activation/run SHA.
+
+The remaining build, logging, size, failure-handling, and artifact-retention behavior is unchanged from the accepted preparation. In particular, the two clones do not check out the newer activation tree and cannot silently compile the current exact-minimum manuscript. The eventual run receipt must distinguish workflow commit d623796a from build-source commit 8efcb73b; the artifact name deliberately identifies the latter.
+
+5. BUILD PAYLOAD AND REPRODUCTION SAFEGUARDS
+
+I reread both original scripts statically. Their unchanged raw hashes are:
+- build-one.sh: 13cdc5ab0c01c1e73e49373b0ee8e6241e623624703ad02184fb44c35bedb4ea.
+- build-pipeline.sh: 0a0f8f6555e84b2dd754782454114c551068d452a6c2288e11672eae89e99541.
+
+The workflow checks out two distinct directories, clone-a and clone-b, using the pinned checkout action SHA with persist-credentials=false. Each build verifies Linux, exact HEAD, and the fixed manuscript SHA256. The source path is the original revision-window manuscript only. No later relaxation, two-level, background, K, or L source is an input.
+
+The deterministic driver suppresses PDF timestamps/trailer identifier and pTeX info; SOURCE_DATE_EPOCH is tied to the fixed source commit with UTC and FORCE_SOURCE_DATE. latexmk is invoked without rc files, and pdflatex has shell escape disabled. The source hash and driver hash are retained. TeX, latexmk, Poppler and installed package versions are recorded. These are safeguards, not proof of actual deterministic success before execution.
+
+The build script records the actual latexmk exit before deciding success, rejects missing PDF/log outputs, and fails on unresolved references/citations or duplicate labels. The pipeline records phase starts, ends, full logs, real exits, and its final exit. It builds twice, compares PDF bytes, renders all pages with pdftoppm, and checks the rendered count against pdfinfo. Its messages correctly distinguish byte reproducibility/rendering from visual or scientific assessment. Both checkouts share a runner/toolchain; no independent-platform reproduction is claimed.
+
+The job installs document tooling only and has no Lean, oracle, numerical campaign, desktop-control action, or unrelated research computation. It uses one standard ubuntu-24.04 job, read-only contents permission, and timeout-minutes:20. The pinned actions are retained from the accepted preparation. The timeout limits job runtime, not queue delay or a promise that installation/build/upload finishes successfully. A timeout or infrastructure failure may prevent diagnostic finalization; the inherited report explicitly recognizes this.
+
+6. ARTIFACT LIMIT AND FAILED-DIAGNOSTIC HANDLING
+
+The accepted safeguards remain intact:
+- Separate diagnostic copying precedes graphics, reserving 1 MiB under the 50 MiB ceiling.
+- GNU find uses the '+' batched cp form with target option before sources, preserving relative paths. Nonzero find/cp status is explicitly captured in both diagnostic and graphic copies.
+- A copy failure writes a packaging-failure record, emits available original non-PDF/PNG diagnostics, identifies unreadable originals, sets upload_ok=false, and exits 67. A partial copied bundle cannot falsely take the successful path after that detected failure.
+- If diagnostics themselves exceed capacity, upload is suppressed and exit 66 records the size failure while attempting original-text console recovery.
+- If only graphics exceed the reserved capacity, text diagnostics remain eligible for upload while the step exits 64 and the record explicitly says PDF/PNG evidence is omitted.
+- The final payload check refuses unexpectedly oversized bundles; upload requires the finish output upload_ok=true, runs even after a previous failure, retains one bounded bundle for one day, and fails if files are absent.
+
+No oversized/incomplete condition is represented as a successful reproduction. The console fallbacks require actual completeness/truncation inspection before claiming full preservation. The 50 MiB control is a bounded artifact-payload mechanism and does not itself meter account storage or prove a billing receipt. Existing capacity is owner-confirmed for this run, with no paid expansion authorized. Actual service timing, artifact sizes, result, and retention receipt still have to be checked after an execution. The one-run authorization is an operational constraint; the reusable workflow does not itself consume a one-time permission token or authorize repeated dispatches.
+
+7. REGISTRATION PUSH SAFETY
+
+The new workflow's push predicate is confined to branch codex/low-full-evidence-20261116 and its own workflow path. Thus adding this file can create a registration event. Its only job has the conjunct github.event_name == 'workflow_dispatch'; on a push that conjunct is false, independently of inputs. The job must be skipped, with no checkout/install/build job execution. A skipped-success check is not evidence of a built PDF.
+
+The five pre-existing workflows are unchanged. Main-only push triggers do not match this branch, the dashboard paths do not match either addition, and orchestrator's schedule/dispatch is separate. There is no core.hooksPath override and the previously resolved default pre-push hook path is absent.
+
+A direct read-only GitHub REST pulls query for state=open and head lluiseriksson:codex/low-full-evidence-20261116 returned []. No open PR was observed, so no PR synchronize-triggered Lean build was identified. git ls-remote showed the remote branch at the immediate parent 9f75462ccb2982662607447ee1da1d7c9d13e1a0. The observed push range is therefore the two additions reviewed here. These observations were made around 2026-11-17T03:26Z and must not be extrapolated across an intervening remote state change. No push occurred during the audit.
+
+8. MANUAL-DISPATCH ENTRYPOINT BLOCKER
+
+The official GitHub workflow-syntax documentation, on.workflow_dispatch section, states that this trigger only receives events when the workflow file is on the default branch:
+https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onworkflow_dispatch
+
+The live repository metadata reports default_branch=main. A live listing of main's .github/workflows returned exactly ci.yml, control-plane.yml, lean-build.yml, orchestrator.yml, and validate-dashboard.yml. build-window-revision.yml is absent. A live actions/workflows listing filtered to that path also returned no entry before the proposed push.
+
+A push-triggered skipped registration event may expose a workflow record, but it is not documented as overriding the default-branch prerequisite. Accordingly I cannot certify the proposal 'push only this branch, then manually dispatch' as operationally ready merely because the YAML declares workflow_dispatch. This is a concrete service precondition, not a hypothetical safety warning. I did not send a dispatch to test it, as execution is outside this audit.
+
+The relevant official job-condition documentation confirms that a false jobs.<job_id>.if skips the job, and notes that skipped jobs can be reported as success:
+https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-jobs-with-conditions
+The official timeout syntax defines timeout-minutes as the job cancellation bound. These documentation checks support static interpretation only; they are not a run receipt.
+
+Resolve dispatch availability through a permitted eligible entrypoint, then retain and inspect the exact resulting receipt. Do not treat this finding as authority to merge to main, bypass protected branches, launch a PR build, or widen the owner's source/build scope. If an alternate execution-entrypoint implementation is chosen, freeze and review its precise changed predicate before execution. The existing owner grant remains usable for the same bounded source task; the issue is how the service accepts that task, not missing routine human confirmation.
+
+9. FINAL DISPOSITION
+
+Exact d623796af7db526b326f9e7d01878509a3c74723 passes static source-binding, preservation, real-grant alignment, job-limit, diagnostic-safeguard, and skipped-registration-push safety checks. No later scientific source is covered or compiled. The preparation scripts and all accepted source bytes remain unchanged.
+
+The manual-dispatch route is not certified executable because the documented default-branch prerequisite is unmet in the observed repository. This is the single newly identified operational blocker. The original scientific or preparation reports are not regraded, and this report does not claim a build, PDF, visual assessment, score, publication, or new authorization. Only after a permitted execution actually occurs can its logs, two PDF hashes, rendered pages, service runtime, and artifact receipt establish the granted production outcome.
