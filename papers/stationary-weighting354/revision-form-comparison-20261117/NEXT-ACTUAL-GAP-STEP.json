@@ -1,0 +1,26 @@
+{
+  "question_id": "stationary-doob-gap",
+  "statement": "Do the original stationary floor, critical moment cap and exact matching through k~C sqrt(L) force a dimension-uniform gap for the actual Boolean Doob kernel?",
+  "hypotheses": "Fixed 0<rho<1, 0<b<1, C>0, s=(1+rho)/(1-rho), h>0, E hP_rho h=1, pi=hP_rho h>=b, E pi^s<=2 and zero nonconstant Walsh coefficients through k=min(L,floor(C sqrt(L))).",
+  "mechanism": "P refutes separate uniform variance-upper and form-upper comparisons between original and density-smoothed actual chains, despite good gaps on both sides. Retain joint edge-energy/stationary-variance scaling. Investigate a normalized cut-flow estimate on the actual small-Ph/high-h/Ph region from the original identities; a direct Rayleigh comparison must be derived, not stipulated.",
+  "falsifier": "An actual original-admissible family defeating the proposed comparison, or an identified error in a claimed derivation. Unrelated surrogate chains are insufficient.",
+  "abandonment": "After three consecutive units without a substantial mathematical advance, preserve the failure and switch mechanism or identify the concrete obstruction. Do not assume a positive potential minimum, a Ph floor or the desired spectral bound.",
+  "units_without_substantial_mathematical_progress": 1,
+  "counter_reason": "One consolidation unit after P; no new mathematical advance is claimed. P remains the last mathematical result. Switch mechanism or identify concrete obstruction after three nonadvancing units.",
+  "closed_route": "Uncorrected potential smoothing does not preserve exact matching: N is proved and now integrated. Do not re-run this failed invariance claim. O14 also refutes universally vanishing L^s distance between the original and fixed-smoothed stationary densities. P refutes uniform Var_pi<=V Var_w and E_h<=D E_u under original hypotheses. It does not refute the reverse form inequality or a direct Rayleigh comparison.",
+  "manuscript_source_sha256": "75fa1c567739909e61e4d32f38a3702d72ce27a0db739b5197327203d8f09a7e",
+  "manuscript_source_commit": "115bf0932cdf44a00c01a7868deb64325658076a",
+  "publication_queue": [
+    "Older exact d617dc40 PDF and its complete first assessment remain ready for the existing native route after real operator catalogue/sole-author reconciliation. No repeat grant attempt without changed evidence.",
+    "Current grouped 75fa1c567739909e61e4d32f38a3702d72ce27a0db739b5197327203d8f09a7e source at115bf0932cdf44a00c01a7868deb64325658076a contains P with N/O and supersedes eb5d3d17 for future production. It requires applicable authorized production and exact-PDF review; the old8ef exception and scores do not transfer.",
+    "Retain one grouped manuscript and full reports with objections and shared-context identity limits. No acceptance or publication claim."
+  ],
+  "new_active_question_count": 0,
+  "PR29": "20/41",
+  "TermSource": 0,
+  "research_source_commit": "011130c65d96e07f431efce88ad038183970aad8",
+  "research_source_sha256": "0a253b00f018e7aebc61b31d519207fbbd90c35ba2d402b4f20efad27487b6d8",
+  "integration_next": "P is integrated with N/O in the current grouped source, with all earlier source/report bytes preserved. No separate paper. Exact first integration audit and preservation report govern status; no new PDF exists.",
+  "terminal_observation_N1": "Historical observation of the earlier eb5 integration: stale predecessor queue was corrected in its D record. This current queue names the actual new source and preserves the prior audited queue separately; no production has executed.",
+  "manuscript_path": "papers/stationary-weighting354/revision-form-comparison-20261117/manuscript-form-comparison-candidate.tex"
+}

@@ -1,0 +1,115 @@
+FIRST SOURCE-INTEGRATION AUDIT — GROUPED FORM-COMPARISON SUCCESSOR
+Date: 2026-11-17
+Verdict: PASS for the exact integration identified below.
+
+1. Subject, scope and verdict
+
+Frozen commit: 115bf0932cdf44a00c01a7868deb64325658076a.
+Parent: 553fed0989da82d1ff7faa145d397c44cc1d8b22.
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116.
+New manuscript: papers/stationary-weighting354/revision-form-comparison-20261117/manuscript-form-comparison-candidate.tex.
+Raw SHA256: 75fa1c567739909e61e4d32f38a3702d72ce27a0db739b5197327203d8f09a7e.
+Length: 119199 bytes; UTF-8 without BOM, LF, zero CR bytes.
+Raw unfiltered and committed Git blob: 43a05fa9c506be522afec171e0f258f158a624c3.
+
+Fragment: papers/stationary-weighting354/revision-form-comparison-20261117/FORM-COMPARISON-SECTION.tex.
+Raw SHA256: 14d18a5b7878268d0b3b7630581895a8ee282304ff57a4ca90e58f9e61124bd7.
+Length: 6818 bytes; UTF-8 without BOM, LF, zero CR bytes.
+Raw unfiltered and committed Git blob: 4a63320a15d990e4403c887f2d483a440dfa6c3d.
+The full fragment occurs as an exact contiguous substring of the manuscript.
+
+No blocking or nonblocking correction request was found. This is the first integration audit of P into the grouped manuscript, not a repeat analytic scoring of P or a fresh whole-manuscript re-audit of unchanged results. It checks the new statement/proof, dependency interfaces, surrounding claims and preservation. It does not supply a PDF grade, formal-machine certificate, novelty conclusion, editorial acceptance or publication approval.
+
+2. Auditor role and no-inbound boundary
+
+The auditor is the separate Codex child-agent role /root/public354_commit_audit within the same provider workflow as the parent fabricator. The interface establishes a Codex assistant role; exact serving model, backend revision and effective reasoning effort are not independently attested. No requested model alias is substituted for such evidence. Prior/inherited context includes the programme and my earlier analytic audit of P and integration audit of the preceding manuscript. This is not blind review or independent human, provider-independent or organizationally independent peer review.
+
+The repository charter's section 4 no-inbound rule remains the applicable audit boundary. The branch was frozen at the named commit; no follow-up arrived while this review ran. No PR or body exists for this task, so a PR body capture and body digest are inapplicable. I used file reading, git identity/diff/status inspection, raw hashes and lightweight textual checks only. Report and evidence were written outside the repository and retained in D:. No mathematical code, numerical computation, build, Lean, TeX, rendering, runtime, UI, browser or network action was used. No source, state, branch or old report was changed. No disposable clone was created.
+
+3. Exact predecessor, P and first-report preservation
+
+Prior manuscript:
+  papers/stationary-weighting354/revision-density-spectrum-20261117/manuscript-density-spectrum-candidate.tex
+  SHA256 eb5d3d179a13880a914ea719348ceacdae3bd2075d470c2e544a00056df73dda
+  111001 bytes; raw/committed blob 093f89a3026fdaf80737801c2bea8d8869751bf7.
+
+Frozen P source from commit 011130c65d96e07f431efce88ad038183970aad8:
+  papers/stationary-weighting354/research/2026-11-17-form-comparison-obstruction/CANDIDATE-P.txt
+  SHA256 0a253b00f018e7aebc61b31d519207fbbd90c35ba2d402b4f20efad27487b6d8
+  13163 bytes; raw/committed blob 52b97368ea28a509c2692740dfec9fda1c293169.
+
+Complete first P report, read in full for this integration's scope:
+  papers/stationary-weighting354/research/2026-11-17-form-comparison-obstruction/FIRST-ANALYTIC-AUDIT.txt
+  SHA256 d902320604af47f2013a48cd7986968cfc006268431ea985436e039172140c78
+  19140 bytes; raw/committed blob 1c5d93a090f374b47e8552ddf12fed7ae743fab6.
+
+All five checked files have zero CR bytes and no UTF-8 BOM. Their raw, unfiltered git hash-object results equal the corresponding HEAD blobs. This commit adds precisely the manuscript and fragment; it does not alter the predecessor, P, the full first P report, N/O or prior PDFs/reviews. P's research MANIFEST.json names its source and complete first-report digests, which agree with the actual checked bytes. The new two-file manuscript directory is a source candidate, not a complete publication packet; no claim to certify such a packet is made here.
+
+4. Full-delta review and unchanged interfaces
+
+The entire old/new source delta was inspected and retained as FULL-MANUSCRIPT-DELTA.diff. Its substantive addition is the section Failure of separate variance and form comparison, with one theorem and full proof. The other edits update the abstract, theorem map and grouped-source list, remaining-question paragraph and Model assessments and review context. The bibliography is unchanged. N's smoothing obstruction, O's universal regularized-spectrum theorem and its exact range, and the earlier mathematical statements/proofs are retained unchanged.
+
+The new proof invokes the retained inversestationary lemma for existence and uniqueness of positive solutions of hPh=density. It invokes blocktheorem for every positive disjoint-block quotient potential, including residual ambient coordinates. Both interfaces were checked against their actual local proofs during the first P audit; they remain unchanged in this integration. No new assumption is introduced by compression into these lemma references, and no conclusion is obtained by relying solely on the prior report's PASS label.
+
+5. The theorem and its actual Dirichlet form
+
+The section first defines the Dirichlet form for an energy-normalized positive potential v with the factor one half, uniform expectation over x and actual transition probabilities P(x,y). Its stationary measure is explicitly vPv dmu. Thus the h and u forms use pi dmu and w dmu respectively, and the separate variance notation refers to those respective probability densities. There is no silent common invariant measure or altered form normalization.
+
+The theorem fixes rho,b in (0,1), C>0 and a fixed tau in [0,1). It constructs positive energy-normalized h_L,u_L with actual densities pi_L=h_LPh_L and w_L=u_LPu_L=P_tau pi_L, both satisfying the original admissible conditions. It states the two divergent upper ratios, both indicator Rayleigh limits and both full-gap limits. It also retains nonvanishing critical-norm difference and non-uniform-integrability of pi_L^s under the strict moment cap. The asymptotic rate t=c2^(n/s), infinity convergence of w to one and the limiting moment 1+c^s appear in the proof. Moving these details from candidate P's headline statement into its proof does not strengthen or lose a load-bearing hypothesis.
+
+The constants B and c are the same as in P. Defining d=k_L+1, n=floor(L/d), p=2^(-n) and t=cp^(-1/s) preserves the all-sufficiently-large-L construction. The proof explicitly permits unused coordinates and fills the finitely many early dimensions with h=u=1 and a nontrivial event. Since d is asymptotic to C sqrt(L) and n to sqrt(L)/C, both eventually grow and d>=2. No divisibility subsequence or hidden restriction on fixed C is introduced.
+
+6. Admissibility, smoothing and quotient invariance
+
+The spike density pi=1+t(1_A-p) retains exact mean one. Since tp<=c and c<1-b, the stated floor pi>=1-c>b holds. The integrated norm chain gives ||pi||_s<=1+c(1+p^(1-1/s))<=1+2c<B; the chosen c<=(B-1)/4 supplies strict dimension-independent cap slack. The Fourier expansion of the event uses unions of complete blocks, so every nonconstant coefficient starts at degree d>k_L. Thus exact labelled marginals, rather than just quotient means, are retained.
+
+Noise positivity, L^s contraction and diagonal Fourier action give the same constraints for w. The inverse lemma supplies actual positive potentials and mean one gives exact energy normalization. There is no arbitrary independent choice of density and kernel.
+
+The exact product formula w(z)=1+tp[product_i(1+tau^d z_i)-1] is retained. The maximum deviation estimate follows from the two endpoint products and their sum being at least two. For every fixed tau<1, n tau^d tends to zero; the integrated proof expressly includes tau=0 and disclaims uniformity as tau approaches one with dimension. These statements are the same scope as P.
+
+Crucially, the proof retains the translation argument for nonlinear inverse invariance: sign translations of parity one on each block, with arbitrary residual translations, preserve the densities and commute with P. Uniqueness makes each positive inverse invariant under that subgroup. Its orbits are precisely the block-parity fibers, so h=H(z), u=J(z). Hence the exact quotient structure needed by the return calculation and the full-chain proposition is proved, not assumed as generic Fourier-algebra closure under inversion.
+
+7. Whole-fiber return probabilities and ratio cancellation
+
+For either actual quotient potential, the proof defines theta=rho^d, ell=(1-theta)^n, v=(1+theta)^n and a=E H. The quotient density bounds give a ell<=G<=a v, and energy normalization gives 1/v<=a^2<=1/ell. The displayed ell^2/v<=G^2<=v^2/ell is therefore correct and remains uniform over unbounded potential heights.
+
+For the whole fiber A over the all-plus quotient point, q=pH(+)G(+). The return probability from each ambient x in A is exactly K_H(x,A)=pvH(+)/G(+), hence vq/G(+)^2<=(v^2/ell^2)q. The integration explicitly distinguishes this from an ambient vertex's holding probability. It has not discarded transitions within the fiber or on unused coordinates. ell and v tend to one because n rho^d tends to zero.
+
+The actual event masses remain q_pi=p[1+t(1-p)] and q_w=p[1+tp((1+tau^d)^n-1)]. They satisfy q_pi~tp->0 and q_w~p->0, so q_pi/q_w~t->infinity. Applying the return bound to both actual potentials gives r_pi,r_w->0.
+
+The source retains the exact identities Var_pi(1_A)=q_pi(1-q_pi) and E_h(1_A)=q_pi(1-r_pi), with their w,u counterparts. These use the correct separate centering and actual forms. Thus the two divergent ratios are asymptotic to t, while each Rayleigh quotient tends to one. No factor of two or uniform-measure variance has replaced a stationary quantity. The calculation concerns the same indicator in both chains and gives a form-level counterexample, not just a mismatch of individual edge weights.
+
+8. Full gaps and the tau range
+
+The integration retains the explicit upper/lower eigenvalue bounds from blocktheorem and the three constants alpha, beta and epsilon_d. Its substitution of block size d and n blocks is correct; unused coordinates are explicitly included. d>=2 is stated as an eventual property, while finite small dimensions are already filled separately. alpha->1, beta->rho and epsilon_d->0 follow from d->infinity and n rho^d->0.
+
+The preserved block proposition controls all nonconstant ambient sectors and allows every positive quotient potential, regardless of its height. Since both H and J have that quotient form, its bounds give both actual full gaps tending to 1-rho. The proof does not infer a full gap from a quotient gap alone. It also does not mistake an indicator Rayleigh quotient tending to one for the minimizing Rayleigh quotient.
+
+The proof explicitly distinguishes this special-family result for every fixed tau<1 from O's universal result restricted to tau<=tau_*. It does not enlarge O's smoothing range, introduce a tau depending on L, or include tau=1. At tau=0, w=1 and the second inverse is the constant one, so the statements and the same estimates remain consistent.
+
+9. Critical mass and the directions of failure
+
+The retained calculation ||t1_A||_s=c together with ||tP_tau1_A||_s<=tp(1+tau^d)^n->0 gives ||pi-w||_s->c by the norm difference bound. The displayed moment identity tends to 1+c^s, and the contribution of the growing density value on A to every fixed-threshold tail tends to c^s. Thus pi_L^s is not uniformly integrable. The source expressly interprets the varying-cube random variables through their laws. These claims retain P's constants and do not confuse a uniform L^s bound with uniform integrability of the s-th powers.
+
+The explanatory paragraph preserves the logically essential directions. A sufficient transfer could seek Var_pi<=V Var_w together with E_u<=D E_h. The example disproves the variance premise. It also disproves the opposite form upper bound E_h<=D' E_u, hence two-sided form equivalence. It explicitly does not disprove E_u<=D E_h, direct Rayleigh comparison, or the original gap conjecture. The phrase about comparison with a common invariant measure is framed as a scope distinction, not a claim that the example contradicts those theorems.
+
+The remaining-question update agrees with this logic. Its joint-energy-and-variance route is research guidance rather than a new sufficient criterion asserted without proof. It retains the original high-block and critical-moment limitations, the full-gap question remains open, and no original floor/cap/matching hypothesis is claimed removed.
+
+10. Abstract, citations and assessment context
+
+The abstract adds the exactly matched block-spike obstruction and says both full gaps still tend to the noise gap. It distinguishes failed stationary-variance upper comparison/two-sided form equivalence from unresolved direct spectral comparison. The theorem map and source list identify the new section and P without changing the scope of N, O or earlier results.
+
+The new citation uses the existing alpw2022 bibliography key. The other mathematical dependencies are internal references to the unchanged inverse-stationary and full-block results. No new bibliographic priority claim is inserted. The bibliography is unchanged; the present audit has not re-browsed external sources or certified originality. Source correctness and relevance of a concrete failed bridge remain distinct from priority.
+
+Model assessments and review context correctly records P's first source audit at 011130c6, names its actual scope, retains the complete report and explicitly denies that it assesses this new integration or a PDF. The retained research manifest provides exact source and report digests. The context adds P to the retained-source list and updates the old 8efcb73b PDF exclusion from E--O to E--P. No numerical grade is transferred. Earlier failures and M's notation correction remain preserved. Shared-provider, inherited-context and unattested-backend qualifications remain unchanged, as do the distinctions between model assessment, working-paper deposit, human peer review and editorial acceptance.
+
+11. Checks, limitations and terminal disposition
+
+OBSERVATIONS.json records the five raw identities and matching Git blobs, exact fragment containment and static reference results. The full new manuscript has no duplicate label, missing ref/eqref target or missing cite key in the lightweight textual scan. git diff --check for the frozen commit produced no whitespace error. These observations certify the predicates just described, not compilation, visual quality or unchanged mathematics.
+
+There is no new PDF, rendering or executed mathematical result in this audit. The new revision directory currently contains the two source files; a final self-contained publication packet has not been reviewed here. No workflow trigger, ordinary push safety, PR, merge, native submission, receipt or public release was examined or approved by this verdict.
+
+Blocking objections: none found.
+Nonblocking correction requests: none found.
+
+Accepted exact integration: 115bf0932cdf44a00c01a7868deb64325658076a, manuscript raw SHA256 75fa1c567739909e61e4d32f38a3702d72ce27a0db739b5197327203d8f09a7e. The integration preserves P's actual-chain witness, all load-bearing constants and interfaces, and the precise nonclaims. Full report and evidence are retained under D:\Datos\the-eriksson-programme\autonomia\2026-11-17_grouped-form-comparison. Repository source, state and all earlier reports remain unchanged by the auditor.
