@@ -1,0 +1,27 @@
+[
+  {
+    "path": "CANDIDATE-P.txt",
+    "bytes": 13163,
+    "sha256_raw": "0a253b00f018e7aebc61b31d519207fbbd90c35ba2d402b4f20efad27487b6d8"
+  },
+  {
+    "path": "DEPENDENCIES.json",
+    "bytes": 1176,
+    "sha256_raw": "922e20e953dcf191ead5f26a33f91a7a006ef8bd302b4583fb7bef0fd15b5b38"
+  },
+  {
+    "path": "FIRST-ANALYTIC-AUDIT.txt",
+    "bytes": 19140,
+    "sha256_raw": "d902320604af47f2013a48cd7986968cfc006268431ea985436e039172140c78"
+  },
+  {
+    "path": "NEXT-ACTUAL-GAP-STEP.json",
+    "bytes": 3524,
+    "sha256_raw": "8df37e1539078e58cf957746fb5645eafee6313ae7d25c530e3bd091109daaa6"
+  },
+  {
+    "path": "README.txt",
+    "bytes": 2566,
+    "sha256_raw": "d3cb88026638f6c670fe777a8b99d5679a37e735f035fc5aa3ac1987b8418165"
+  }
+]

@@ -1,0 +1,135 @@
+FIRST ANALYTIC SOURCE AUDIT — CANDIDATE P
+Date: 2026-11-17
+Verdict: PASS for the exact source below, with no blocking or nonblocking correction request.
+
+1. Exact subject and verdict scope
+
+Frozen commit: 011130c65d96e07f431efce88ad038183970aad8.
+Parent commit: 7ddafbc353aa62cefa8c4c6c1ed455a65cd454b8.
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116.
+Candidate: papers/stationary-weighting354/research/2026-11-17-form-comparison-obstruction/CANDIDATE-P.txt.
+Raw SHA256: 0a253b00f018e7aebc61b31d519207fbbd90c35ba2d402b4f20efad27487b6d8.
+Length: 13163 bytes; UTF-8 without BOM, LF, zero CR bytes.
+Raw unfiltered Git blob and committed blob: 52b97368ea28a509c2692740dfec9fda1c293169.
+
+The candidate proves the claimed pair of divergent actual variance/form ratios, the two indicator Rayleigh limits, the noncollapsing full-chain gaps and the critical-mass assertions. It refutes the stated separate upper comparisons in precisely their stated directions. It does not refute the lower form comparison needed in one possible sufficient bridge, a direct Rayleigh comparison, or the original stationary-gap conjecture. No original hypothesis is removed.
+
+This is the first analytic source audit of P. It is not a PDF assessment, formal-machine proof, numerical certificate, novelty certification, editorial acceptance or publication approval. No score is assigned or inherited.
+
+2. Auditor context, identity and boundaries
+
+The auditor is the separate Codex child-agent role /root/public354_commit_audit. The available identity is the Codex assistant role in the shared provider workflow; exact serving model, backend revision and effective reasoning effort are not independently attested. A requested model alias is not used as evidence of backend identity. Inherited context includes the programme, earlier source audits and the immediately preceding integration audit of the dependency manuscript. This is neither a blind assessment nor independent human, provider-independent or organizationally independent peer review.
+
+The repository's operational charter section 4 governs this reading. The assignment froze the source and stated that no PR or body exists. A PR body capture is therefore inapplicable. No inbound follow-up arrived while this audit ran. I used source reading, git inspection, raw hashes and report/evidence file operations only. No mathematical code, numerical evaluation, Lean, TeX, compilation, rendering, runtime, browser, UI or external-model call was used. No other agent or chat was contacted. No source, state, branch, old report or publication record was modified. No disposable clone was created.
+
+External citations and author-described searches were not newly retrieved or reproduced here. The mathematical argument uses explicit elementary product computations and the actual local proof dependencies inspected below. The author's statement of a literature reading or a failed retrieval is not represented as a reading by this auditor.
+
+3. Dependencies and preservation
+
+Grouped source read:
+  papers/stationary-weighting354/revision-density-spectrum-20261117/manuscript-density-spectrum-candidate.tex
+  SHA256 eb5d3d179a13880a914ea719348ceacdae3bd2075d470c2e544a00056df73dda
+  111001 bytes; raw and committed blob 093f89a3026fdaf80737801c2bea8d8869751bf7.
+
+Its first integration report is retained at:
+  papers/stationary-weighting354/revision-density-spectrum-20261117/FIRST-INTEGRATION-AUDIT.txt
+  SHA256 222f93dedc024547e4a06c4553fe59586ef5ef2022c743a6c3d98bd14c11ea54
+  16741 bytes; raw and committed blob c19512952d04c251b45ae9269d97e8f61aca4da4.
+
+All three checked artifacts have no BOM and zero CR bytes; raw hash-object identities agree with HEAD objects. The new commit adds only CANDIDATE-P.txt. The dependency manuscript, its earlier report, O/O14 and older sources and PDFs are untouched by this commit.
+
+I read the inverse-stationary lemma's existence/uniqueness proof, the full blocktheorem statement and proof, and the code-sector/minorization/singleton argument that the block proof invokes. This audit does not merely rely on the name of a prior PASS. In particular, the block proposition is a full ambient-chain result with unused coordinates allowed, not just a quotient mixing statement.
+
+4. Dimensions, block construction and uniform cap slack
+
+All parameters rho,b in (0,1), C>0 and tau in [0,1) are fixed before L. Therefore s=(1+rho)/(1-rho)>1, B=2^(1/s)>1 and c=min((1-b)/2,(B-1)/4)>0. Eventually C sqrt(L)<L, so k_L=floor(C sqrt(L)), d_L=k_L+1=C sqrt(L)+O(1), and
+  n_L=floor(L/d_L)=sqrt(L)/C+O(1).
+Both block size and block count tend to infinity. In particular n>=1 and d>=2 for all sufficiently large L. The unused residue L-nd lies between zero and d-1, so the construction covers every sufficiently large integer dimension, not just a subsequence divisible by d. Constants implicit in these asymptotics may depend on fixed C; no claim uniform as C tends to zero is made.
+
+Independent uniform block parities give mu(A)=p=2^(-n). With t=c p^(-1/s), t tends to infinity and tp=c p^(1-1/s) tends to zero. The density pi=1+t(1_A-p) has exactly mean one. Its outside value is 1-tp>=1-c> b; its inside value is larger. This remains strictly positive before any inverse operation.
+
+Minkowski on the probability space and ||1_A||_s=p^(1/s), ||p||_s=p give
+  ||pi||_s<=1+t||1_A-p||_s<=1+c(1+p^(1-1/s))<=1+2c.
+Since 2c<=(B-1)/2, one has 1+2c< B. This is a strict slack depending only on the fixed parameters, not a limit that may fail at finite large L. Therefore E pi^s<2. No estimate treats the large density height as bounded independently of dimension.
+
+The expansion 1_A=2^(-n) product_i(1+z_i) contains only characters indexed by unions of entire disjoint blocks. Every nonconstant such union has at least d=k+1 coordinates. Subtracting p removes the constant perturbation. Thus all labelled-coordinate Fourier coefficients of orders one through k vanish, not only the quotient-coordinate means. Mean one plus positivity is enough for the inverse-stationary lemma, giving a unique positive h with hPh=pi. The mean one then supplies E hPh=1 exactly. Constant h=u=1 in the finitely many exceptional dimensions satisfies all original requirements and changes no asserted limit; events in those dimensions may be chosen arbitrarily nontrivial.
+
+5. Density smoothing, tau=0 and actual quotient invariance
+
+Product noise acts independently on the disjoint block parities, with effective parameter tau^d. Therefore
+  P_tau 1_A(z)=p product_i(1+tau^d z_i),
+  w=1+tp[product_i(1+tau^d z_i)-1].
+This is the actual ambient noise action, including unused coordinates. For epsilon=tau^d in [0,1], the product lies between (1-epsilon)^n and (1+epsilon)^n. The sum of these endpoint values is at least two by the nonnegative even terms in their binomial expansions. Thus its largest absolute deviation from one is the upper deviation e_tau=(1+epsilon)^n-1, attained at all-plus parities. The inequality (1+epsilon)^n<=exp(n epsilon) gives P10.
+
+For each fixed 0<tau<1, exponential decay in d~C sqrt(L) dominates n~sqrt(L)/C, so n tau^d tends to zero. At tau=0, epsilon and e_tau are identically zero for d>=1; w is exactly one. Hence ||w-1||_infinity tends to zero throughout the claimed fixed-tau range. Nothing here is uniform for a dimension-dependent tau tending to one. Positivity, invariant mean, Jensen and Walsh multipliers preserve the floor, cap and exact matching for w. The second inverse uPu=w is therefore an actual positive energy-normalized potential too.
+
+The proof that h and u belong to the block-parity algebra is essential and valid. Let the translation subgroup consist of sign vectors with parity one on each chosen block, with arbitrary residual signs. Its orbits are precisely the fibers of the vector of block parities. Both input densities are invariant under this subgroup, and Boolean noise commutes with every translation. Translating a positive solution of hPh=pi produces another positive solution of the same equation; uniqueness makes the solution invariant. The same reasoning applies to u. Consequently h=H(z), u=J(z) and both ignore residual coordinates. This establishes nonlinear reconstruction's algebra preservation in this case; it is not asserted without proof for arbitrary Fourier truncation.
+
+The inverse lemma applies because P_rho is strictly positive, symmetric and stochastic on the finite cube. Its strictly convex log-potential functional has positive diagonal exponential Hessian contributions. Its sublevel sets are bounded by exponential growth when the maximum coordinate grows and the positive linear density weights when any coordinate tends to minus infinity. Thus the uniqueness used in the symmetry argument is genuine, not an additional premise. The dimension-dependent stability part of that lemma is not used.
+
+6. Quotient normalization and the event-return probability
+
+For the rho kernel, theta=rho^d and the quotient transition from z to z' is p b_rho(z,z'), with b_rho=product_i(1+theta z_i z'_i). Writing ell=(1-theta)^n and v=(1+theta)^n gives ell<=b_rho<=v. Both tend to one because n rho^d tends to zero; ell>0 for each finite admissible dimension.
+
+For either quotient potential H, uniform quotient mean a=E H and G=P H satisfy a ell<=G<=a v. Energy normalization gives a^2 ell<=1<=a^2 v, equivalently 1/v<=a^2<=1/ell. Squaring the pointwise bounds then gives exactly ell^2/v<=G^2<=v^2/ell. This estimate is uniform over all positive H, so a diverging spike in H cannot invalidate it.
+
+The event A is a whole fiber over the quotient atom z_+, not an individual cube vertex. Summing actual transitions from any x in A over every y in A gives
+  K_H(x,A)=p v H(z_+)/G(z_+).
+The sum is independent of x within that fiber. Its actual stationary event mass is q=p H(z_+)G(z_+), so
+  r_A=v q/G(z_+)^2 <=(v^2/ell^2)q.
+The coefficient in the candidate is correct: the lower bound for G^2 is ell^2/v, producing the second power of v. This calculation includes all internal-fiber transitions and all residual-coordinate transitions. Replacing it by the ambient single-point holding probability would be wrong, but the source does not do that.
+
+Detailed balance of the actual h-kernel follows from pi(x)K_h(x,y)=h(x)P(x,y)h(y) in energy normalization. The displayed Dirichlet form has factor one half and the uniform mu weight in the correct places, with P denoting transition probabilities. It is exactly the form for the stationary measure pi mu; the u-kernel uses w mu. No common invariant measure is assumed.
+
+7. The two divergent ratios and cancellation
+
+At the all-plus quotient atom, the densities give exactly
+  q_pi=p[1+t(1-p)],
+  q_w=p[1+tp((1+tau^d)^n-1)].
+Since t tends to infinity, p tends to zero and tp tends to zero, q_pi/(tp)=1/t+1-p tends to one. The bracket in q_w tends to one by the smoothing bound, so q_w/p tends to one. Both masses tend to zero and q_pi/q_w divided by t tends to one. The event-return bound applies to each actual potential, with ell,v tending to one, hence both r_pi and r_w tend to zero.
+
+For an indicator, its separately centered variance is q(1-q). Its form is the stationary flow from A to its complement, q(1-r_A), because the return probability is constant over A. Equivalently this follows directly from the actual Dirichlet identity; there is no missing factor two. Thus
+  Var_pi(f)/Var_w(f)=(q_pi/q_w)(1-q_pi)/(1-q_w) ~ t,
+  E_h(f,f)/E_u(f,f)=(q_pi/q_w)(1-r_pi)/(1-r_w) ~ t.
+The separate Rayleigh quotients are (1-r_pi)/(1-q_pi) and (1-r_w)/(1-q_w), both tending to one. Positivity of the finite kernels and a nontrivial quotient event ensure the denominators are positive in every sufficiently large dimension. This is an actual form-level witness, not merely a pointwise mismatch of edge densities. The divergence rate t=c 2^(n/s) and n~sqrt(L)/C is exactly the one stated.
+
+An indicator Rayleigh quotient tending to one is consistent with a full gap tending to 1-rho, which is less than one: the indicator need not be a minimizing test. This distinction is preserved in the candidate.
+
+8. Full-chain block theorem, including residual sectors
+
+The exact dependency proposition uses L=n m+r with m>=2 and arbitrary residual count r>=0; substitute m=d and r=L-nd. Its parameter alpha_b=ell/v is ((1-rho^d)/(1+rho^d))^n, beta_b=(rho+rho^(d-1))/(1-rho^d), and epsilon_gap,b=(1-rho^2)rho^(d-1)/(1-rho^d). These are precisely P16. Its statement allows every positive quotient potential without a moment, floor, height or dimension-independent condition-number hypothesis.
+
+The dependency proof first minorizes the actual quotient kernel, controlling its non-Perron eigenvalues by 1-alpha_b. It then decomposes the full ambient space into invariant cosets of the block code. The spaces are mutually orthogonal under the actual stationary density because that density is in the block algebra, and they span all dimensions. In a nontrivial sector the signed kernel factorizes as rho^e product_i(rho^j_i+rho^(m-j_i)z_iw_i), including residual weight e. A partial-block factor has ratio at most beta_b to the positive quotient kernel. When beta_b<1, the product of one or more such factors remains at most beta_b; a residual-only sector has ratio rho^e<=rho<beta_b. When beta_b>=1, the proof instead uses the global Markov bound one. It does not make the false general inference beta_b^j<=beta_b for beta_b>1.
+
+The lower eigenvalue bound uses a singleton character in one nonempty block. Its stationary mean is zero because m>=2, its squared norm is one, and its signed kernel differs from rho times the quotient kernel by at most epsilon_gap,b times that kernel. The variational principle supplies lambda_2>=rho-epsilon_gap,b. Positive definiteness supplies the additional zero bound. This verifies that the proposition controls the full chain, including coordinates unused by the potential.
+
+Since d tends to infinity, beta_b tends to rho and epsilon_gap,b tends to zero. Also -log(alpha_b)<=4n rho^d eventually, so alpha_b tends to one. The upper and lower bounds force lambda_2 to rho uniformly in the positive quotient values. The symmetry/uniqueness argument already established that BOTH actual reconstructed potentials have the required quotient form. Consequently both full gaps tend to 1-rho. This conclusion is valid for each fixed tau<1, not only for the smaller regularization range in theorem O, because here it follows from the special block class. The source does not improperly extend O's universal tau range.
+
+9. Critical norm, moment limit and uniform integrability
+
+The equality ||t1_A||_s=t p^(1/s)=c is exact. Meanwhile the product formula gives ||tP_tau1_A||_s<=tp(1+tau^d)^n, which tends to zero. Applying both triangle inequalities to pi-w=t(1_A-P_tau1_A) proves ||pi-w||_s tends to c. The earlier infinity estimate proves ||w-1||_infinity tends to zero. This pair is possible because the original densities concentrate a nonzero critical mass on an event whose probability vanishes.
+
+The exact s-moment is (1-p)(1-tp)^s+p[1+t(1-p)]^s. Its first term tends to one. Its second is p t^s[1/t+1-p]^s=c^s[1/t+1-p]^s, tending to c^s. Thus E pi^s tends to 1+c^s. This is compatible with the uniform strict cap established earlier; no equality with the cap two is asserted.
+
+For every fixed finite threshold R, the density power on A eventually exceeds R since t tends to infinity. The tail expectation is then at least p[1+t(1-p)]^s, which tends to c^s>0. Therefore sup_L E[pi_L^s 1_(pi_L^s>R)] cannot tend to zero as R tends to infinity. This is the correct uniform-integrability test for a family of nonnegative distributions on varying finite probability spaces; no common underlying cube is required. The proof does not confuse bounded s moments of pi with uniform integrability of their s-th powers.
+
+10. Which comparison fails and which remains open
+
+The variance upper comparison Var_pi(f)<=V Var_w(f), with V depending only on fixed rho,b,C,tau, fails because the indicated admissible sequence makes the ratio diverge. The separate form upper comparison E_h(f,f)<=D' E_u(f,f) also fails on the same test. Hence two-sided equivalence of the forms cannot be deduced from the original assumptions.
+
+The candidate correctly distinguishes the form direction in a sufficient gap bridge. Combining Var_pi<=V Var_w with E_u<=D E_h and a regularized Poincare bound would give an original bound; P disproves the variance premise regardless of the status of the second premise. The exhibited diverging E_h/E_u ratio does not disprove E_u<=D E_h, equivalently a lower bound E_h>=d' E_u. Nor does it disprove direct Rayleigh-quotient comparison: the divergent scale factors cancel on this witness. The good full gaps explicitly rule out interpreting P as a collapsing-gap example.
+
+The result is thus a useful obstruction to a concrete transfer mechanism, with a precise remaining question. It does not assert removal of the original floor or cap, a general critical-moment theorem, physical Yang--Mills progress or a continuum gap. The recorded PR29 and TermSource counts are not upgraded.
+
+11. Literature, relevance, objections and final disposition
+
+The finite product/noise formulas and the scaling and spectral dependencies are explicitly identified. The note does not call the existing block theorem a new spectral result. It reports a failed primary retrieval without inferring its contents and refuses to use broad irrelevant searches as novelty evidence. It distinguishes the different invariant measures here from the scope it attributes to earlier comparison literature. This audit does not freshly verify that bibliographic characterization or claim a comprehensive literature search; no load-bearing theorem in P depends on it. Correctness of this construction does not certify priority or independent discovery.
+
+Blocking objections: none found.
+Nonblocking correction requests: none found.
+
+The checked edge cases include every fixed allowed rho,b,C, arbitrary unused coordinates, both eventual n,d growth, positive finite inverse and quotient invariance, strict moment slack, tau=0, any fixed 0<tau<1, exact fiber-return rather than point holding, separate centering and form measures, full ambient sectors, and the critical uniform-integrability limit. No circular inference from the desired spectral comparison is present.
+
+This PASS applies only to the named frozen source. No mathematical computation or formal verification was executed; no PDF was produced or graded; no older score is transferred. Grouping P with N/O is consistent with its role as a mechanistic obstruction, but a later integrated manuscript and exact PDF require their own appropriately scoped checks. No build, PR, merge, submission or publication is approved by this report.
+
+Final accepted subject: 011130c65d96e07f431efce88ad038183970aad8, candidate raw SHA256 0a253b00f018e7aebc61b31d519207fbbd90c35ba2d402b4f20efad27487b6d8. Full first report and raw identity observations are retained under D:\Datos\the-eriksson-programme\autonomia\2026-11-17_form-comparison-obstruction. The auditor leaves repository state, original sources and earlier reports unchanged.

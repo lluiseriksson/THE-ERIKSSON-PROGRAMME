@@ -1,0 +1,27 @@
+[
+  {
+    "repository_path": "papers/stationary-weighting354/revision-density-spectrum-20261117/manuscript-density-spectrum-candidate.tex",
+    "bytes": 111001,
+    "sha256_raw": "eb5d3d179a13880a914ea719348ceacdae3bd2075d470c2e544a00056df73dda"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/revision-density-spectrum-20261117/FIRST-INTEGRATION-AUDIT.txt",
+    "bytes": 16741,
+    "sha256_raw": "222f93dedc024547e4a06c4553fe59586ef5ef2022c743a6c3d98bd14c11ea54"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/revision-density-spectrum-20261117/MANIFEST.json",
+    "bytes": 7157,
+    "sha256_raw": "f8d19d04e964f32c5708c7fded0e531cb270d03f3028326d3eb9cc82674f29a5"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-density-regularized-gap/CANDIDATE-O.txt",
+    "bytes": 13183,
+    "sha256_raw": "0eef71ebd956d1c92bbecbe342607b48cf0c0aa6709a6defc924203642d300e5"
+  },
+  {
+    "repository_path": "papers/stationary-weighting354/research/2026-11-17-density-regularized-gap/FIRST-ANALYTIC-AUDIT.txt",
+    "bytes": 19613,
+    "sha256_raw": "554752e9a0c1654ee1922181bf8b6c390b4fefcfaab25835958032cf336a292c"
+  }
+]
