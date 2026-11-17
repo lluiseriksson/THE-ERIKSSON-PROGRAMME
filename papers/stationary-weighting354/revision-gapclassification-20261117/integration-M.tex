@@ -1,0 +1,114 @@
+\subsection{The vanishing-minimum family retains the noise gap}
+The exact-matching construction above can be classified spectrally.
+Its small potential value does not produce a collapsing gap. The proof
+uses an estimate for the actual ratio $h/(Ph)$, rather than transferring
+stationary moment convergence directly to the spectrum.
+
+\begin{lemma}\label{criticalsandwich}
+Put $s=(1+\rho)/(1-\rho)$ and $Q=P_{\sqrt\rho}$ on the Boolean cube.
+For every real function $v$ and every positive potential $H$, put
+$U=H/(PH)$. Then
+\[
+ \|QM_vQ\|_{2\to2}\leq\|v\|_s,
+ \qquad
+ |\operatorname{gap}(K_H)-(1-\rho)|\leq\|U-1\|_s.
+\]
+More generally, every ordered eigenvalue of $K_H$ differs from the
+corresponding ordered eigenvalue of $P$ by at most $\|U-1\|_s$.
+\end{lemma}
+\begin{proof}
+The conjugate exponent is $s'=(1+\rho)/(2\rho)$, so
+$2s'=1+1/\rho$. Classical Boolean hypercontractivity gives
+$\|Qf\|_{2s'}\leq\|f\|_2$: its noise condition is the equality
+$\sqrt\rho=\sqrt{(2-1)/(2s'-1)}$; see Chapter 10.1 of
+\cite{odonnell}. Holder's inequality with exponents $s,2s',2s'$
+therefore gives
+\[
+ |\langle f,QM_vQg\rangle|
+ \leq\|v\|_s\|Qf\|_{2s'}\|Qg\|_{2s'}
+ \leq\|v\|_s\|f\|_2\|g\|_2.
+\]
+For the spectral assertion, the actual reversible conjugate of $K_H$
+is $S=M_{\sqrt U}PM_{\sqrt U}$. Set $X=M_{\sqrt U}Q$.
+Then $S=XX^*$ and $T=X^*X=QM_UQ$. Both factors of $X$ are
+invertible: $U>0$ and the Walsh eigenvalues of $Q$ are positive.
+Thus $X^{-1}SX=T$ and $T$ has the full spectrum of the actual chain.
+The first estimate yields
+\[
+ \|T-P\|_{2\to2}=\|QM_{U-1}Q\|_{2\to2}\leq\|U-1\|_s.
+\]
+The min--max principle compares every ordered eigenvalue of the two
+self-adjoint matrices. For $L\geq1$, the second eigenvalue of $P$
+is $\rho$, proving the gap assertion, including its multiplicity.
+\end{proof}
+
+\begin{theorem}\label{vanishingminimumgap}
+Fix $0<\rho<1$, $0<b<1$ and $C>0$. The exactly matched family
+$\widetilde h_L$ constructed in the proof of
+Proposition~\ref{exactvanishingminimum} satisfies
+\[
+ |\operatorname{gap}(K_{\widetilde h_L})-(1-\rho)|
+ \leq C_1e^{-c_1L}
+\]
+for all sufficiently large $L$, with constants $C_1<\infty$ and
+$c_1>0$ depending only on the fixed parameters and construction choices.
+It satisfies all of \eqref{admissible}, although its normalized minimum
+tends to zero and $(P\widetilde h_L)(x_0)$ tends to infinity.
+\end{theorem}
+\begin{proof}
+Use the precursor $H$ from Proposition~\ref{vanishingminimum}, with
+$s=(1+\rho)/(1-\rho)$, and retain its $\alpha,\delta,u,M,t$.
+Since $H\geq1-1_{\{x_0\}}$ and $P(y,x_0)\leq u$ for every $y$,
+\[
+ G:=PH\geq1-u>0
+\]
+at every vertex, including $x_0$. No positive lower bound on $t$ is
+needed. The disjoint exceptional supports and $L^s$ contraction of $P$
+give, with $d_L=\alpha^{3/(4s)}+\delta^{1/s}$,
+\[
+ \|H-1\|_s\leq\alpha^{1/s}(M-1)+\delta^{1/s}(1-t)\leq d_L,
+ \qquad \|H-G\|_s\leq2d_L.
+\]
+Consequently the scale-invariant ratio satisfies
+\[
+ \|U-1\|_s=\|(H-G)/G\|_s
+ \leq\frac{2d_L}{1-u}=:\Delta_L.
+\]
+Energy normalization does not change $U$. For the exact correction,
+Proposition~\ref{exactvanishingminimum} proves
+\[
+ \eta_L=\|\log(\widetilde h_L/h_L)\|_\infty
+ \leq\frac{\lceil(L+\log_2(1/b))/2\rceil+2}{2b}\epsilon_L,
+ \qquad \epsilon_L\leq k_LL^{k_L}A_1e^{-cL}.
+\]
+Positivity of $P$ yields the corresponding multiplicative bounds for
+the denominators, hence
+\[
+ e^{-2\eta_L}U\leq\widetilde U
+ :=\frac{\widetilde h_L}{P\widetilde h_L}\leq e^{2\eta_L}U.
+\]
+Since $\|U\|_s\leq1+\Delta_L$, it follows that
+\begin{equation}\label{correctedratioerror}
+ \|\widetilde U-1\|_s
+ \leq\Delta_L+(e^{2\eta_L}-1)(1+\Delta_L)
+ =e^{2\eta_L}\Delta_L+e^{2\eta_L}-1.
+\end{equation}
+The preceding construction proves $\alpha\leq a^L$ for fixed $a<1$;
+also $u=((1+\rho)/2)^L$ and $\delta=2^{-L}$.
+Finally $\log(k_LL^{k_L})=o(L)$, so
+$\epsilon_L\leq\exp(-cL+o(L))$. This is an upper bound, with no
+lower bound on $\epsilon_L$ asserted or needed. The factor multiplying
+$\epsilon_L$ in the estimate for $\eta_L$ is $O(L)$.
+Thus the right side of \eqref{correctedratioerror} is bounded by
+$C_1e^{-c_1L}$ for a possibly smaller positive rate $c_1$.
+Lemma~\ref{criticalsandwich} now gives the asserted actual-gap estimate.
+The finitely many dimensions filled with $h=1$ do not affect the limit.
+\end{proof}
+
+The classical sandwich estimate supplies no general bound on
+$\|h/(Ph)-1\|_s$ from \eqref{admissible}. Here the all-vertex
+denominator estimate is proved directly for the particular precursor,
+and the nonlinear reconstruction has proved multiplicative stability.
+This closes the constructed vanishing-minimum family as a candidate
+collapse mechanism while preserving its counterexample to deriving a
+potential minimum. The unrestricted stationary-gap question remains open.

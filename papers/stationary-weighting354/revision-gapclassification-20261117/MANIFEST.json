@@ -1,0 +1,44 @@
+{
+  "new_original_hypotheses_eliminated": [],
+  "dependencies": [
+    {
+      "repository_path": "papers/stationary-weighting354/revision-exactminimum-20261117/manuscript-exactminimum-candidate.tex",
+      "sha256": "9a17337ad7eaa14703f4af3feb8a8b0ddd3345a3c648b902b55910927a3af7af"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/CANDIDATE-M.txt",
+      "sha256": "566ce2691477e814a2ef3878236238ea0ed4091f8b63d4bbd054ae4fc8e42b32"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/FULL-FIRST-ANALYTIC-AUDIT-M.txt",
+      "sha256": "708f504bf1340ce231948aec10b301828b52cf20220dbab1b25fbf054c047d40"
+    },
+    {
+      "repository_path": "papers/stationary-weighting354/research/2026-11-17-vanishing-minimum/AUDIT-RESPONSE-M.txt",
+      "sha256": "134db454d351972e4c19ec3fb4cb28c16931f385aa6d1c1b0e5a412a2d82d9fc"
+    }
+  ],
+  "new_lean_verification": false,
+  "general_question": "stationary-doob-gap OPEN",
+  "pdf_created": false,
+  "raw_hash_regime": "UTF8 without BOM LF",
+  "parent_commit": "9793ef10dc87498beef1eda125b3fe21ef819508",
+  "schema": "grouped-gap-classification-source-v1",
+  "files": [
+    {
+      "sha256": "7a7e697c321ede34f713a87fa10fe7a8a09abb5c8c335be75bd48c8bfc75e93d",
+      "file": "integration-M.tex",
+      "bytes": 4733
+    },
+    {
+      "sha256": "6b565f512d0bb10ecf74ad6874096c954f2fbe88e7a42991a0bcb448c4f0d1de",
+      "file": "manuscript-gapclassification-candidate.tex",
+      "bytes": 91615
+    },
+    {
+      "sha256": "ae5d155dfef912b8b0088d856d83a1c3d3caff9791ce236f0242c844fe399afd",
+      "file": "README.txt",
+      "bytes": 2696
+    }
+  ]
+}

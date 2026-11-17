@@ -1,0 +1,1457 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,geometry,hyperref}
+\geometry{margin=27mm}
+\hypersetup{hidelinks}
+\newcommand{\E}{\mathbb E}
+\newcommand{\F}{\mathbb F}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\title{Moment transfer and spectral bounds\newline for Boolean Doob kernels}
+\author{Lluis Eriksson}
+\date{17 November 2026. Revision candidate}
+\begin{document}
+\maketitle
+\begin{abstract}
+For positive potentials on a Boolean cube, the stationary density of the noise Doob kernel and its normalized weighting density are different nonlinear functions of the potential. We give an admissible family for which the stationary critical moment is below two while the weighting critical moment is above two, despite a fixed positive stationary floor and exact marginals through order proportional to the square root of the dimension. This refutes transfer of that numerical cap, not the existence of a larger uniform bound. A nonlinear consequence of the stationary floor, combined with classical ordinary and reverse hypercontractivity, gives explicit inverse-potential moments and weighting-moment bounds below a computable finite threshold. Exact stationary matching then gives strong convergence of the two densities throughout this subcritical range. The finite bootstrap crosses the exponent needed for a dimension-free low-to-all operator bound. We obtain exponentially small error on degrees up to a fixed positive fraction of the stationary matching order. Non-Perron modes a fixed positive distance above the noise edge must concentrate on actual high-weighting sets of exponentially small stationary probability. A tensor example rules out an unrestricted high-degree hypercontractive repair; the high block for arbitrary potentials remains uncontrolled. For potentials supported on a binary linear-code Fourier algebra, we control every invariant sector of the full Doob kernel. Under a distance--cardinality condition its gap tends uniformly to the unweighted gap, for every positive quotient potential. Direct disjoint-block estimates cover a sharper parameter regime. A standard simplex code supplies positive potentials outside the disjoint-block class. Classical random linear coding extends this mechanism to positive-rate families at every sufficiently large length, with an explicit exponential gap estimate and normalized witnesses meeting any fixed stationary floor below one and the moment cap. Without marginal matching, the same stationary floor and critical cap also imply a dimension-free weak Poincare inequality and polynomial variance decay for bounded observables of the actual chain. At noise one half, an additional smoothing step gives the summable decay exponent $8/7$ and a dimension-free $O(N^{-1})$ mean-square bound for sample averages, including uniform initialization. These bounded-observable results do not imply a full $L^2$ gap. For arbitrary-valued positive potentials with a fixed positive minimum after energy normalization, the critical cap yields an explicit dimension-uniform full-chain gap, without matching or an upper bound on the potential. The original stationary floor supplies the required minimum for every two-level potential, recovering a full-gap class theorem. Any normalized family with collapsing gaps and the fixed critical cap must have potential minima tending to zero. A rare-set construction followed by exact Fourier correction and stable symmetric scaling shows that even all original stationary hypotheses do not force a positive normalized minimum. A critical hypercontractive sandwich and the proved stability of the reconstruction show that this same family has actual gap converging exponentially to the unweighted gap. The general stationary-gap question and critical weighting-moment bound remain open.
+\end{abstract}
+
+\section{Setting and theorem map}
+Let $\mu$ be uniform probability on $\{-1,1\}^L$, $L\geq1$, and let $0<\rho<1$ be fixed. Boolean product noise is denoted by $P=P_\rho$, with $P_\rho\chi_S=\rho^{|S|}\chi_S$ for Walsh characters $\chi_S$. Unqualified expectations and norms use $\mu$. For $h>0$ set
+\[
+ g=Ph,\quad Z=\E hg,\quad \pi=hg/Z,\quad
+ N=\E(h/g),\quad r=(h/g)/N.
+\]
+Both $\pi$ and $r$ have mean one. The Markov kernel
+\[
+ K(x,y)=P(x,y)h(y)/g(x)
+\]
+is reversible for $\pi\,d\mu$. Its eigenvalues are positive: conjugation by multiplication by $\sqrt\pi$ identifies it with
+$M_{\sqrt{h/g}}P M_{\sqrt{h/g}}$, a positive definite matrix. Its top eigenvalue is one and is simple because all entries are positive. Write $\lambda_2(K)$ for its second eigenvalue and $\operatorname{gap}(K)=1-\lambda_2(K)$. These are finite Markov-chain quantities.
+
+The general question motivating this work fixes $b,C>0$, puts
+\[
+ s=\frac{1+\rho}{1-\rho},\qquad k_L=\min\{L,\lfloor C\sqrt L\rfloor\},
+\]
+and imposes
+\begin{equation}\label{admissible}
+ \pi\geq b,\qquad \E\pi^s\leq2,\qquad
+ \E\pi\chi_S=0\quad(1\leq |S|\leq k_L).
+\end{equation}
+The last condition concerns the actual stationary density, on the original labelled coordinates. It is equivalent to uniform coordinate marginals of these orders. It does not assign exact marginals to $r$.
+
+The results have distinct scopes. Section 2 gives one fixed $\rho$ and floor for which the numerical implication $\E\pi^s\leq2\Rightarrow\E r^s\leq2$ fails even under all of \eqref{admissible}. Section 3 treats every fixed $\rho$ and proves a dimension-free bound for $\norm r_t$ for $1\leq t<t_+(\rho)<s$; with matching it proves $r-\pi\to0$ in this range. Section 4 treats every positive potential on specified code algebras, without a moment cap or floor for its spectral result. It controls the full chain, not only its quotient. Section 5 relates the sharper disjoint-block bounds and the simplex example to these conclusions. Section 6 proves positive-rate, all-large-length code existence with simultaneous column separation, specializes the full-chain estimate exponentially, and gives actual normalized stationary floor/cap witnesses. Sections~\ref{spectralwindows}--\ref{localization} use the finite bootstrap to control the entire low-to-all operator through a fraction of the matching degree, localize actual non-Perron eigenfunctions, and exclude a generic tail-space repair. Section~\ref{weakrelaxation} derives weak relaxation without matching and proves a summable rate and uniform-start estimation bound at $\rho=1/2$. Section~\ref{backgroundgap} proves a full gap from a fixed positive potential minimum and the critical cap, without matching or upper height restrictions, and derives the two-level class as a consequence of its stationary floor. Propositions~\ref{vanishingminimum} and~\ref{exactvanishingminimum} show that neither floor and cap alone nor the full exact-matching hypotheses supply that additional minimum, even under strong near-uniformity. Theorem~\ref{vanishingminimumgap} then proves that the exactly matched family retains the noise gap asymptotically, with exponential error.
+
+The manuscript groups analytical sources 349, 350, 351, corrected 353B and 355 with the separately audited 16 November low-to-full and dimension-free follow-ups A--D and the weak-relaxation and estimation notes E--G, together with the 17 November two-level and positive-background full-gap notes I and J and the vanishing-minimum notes K and L and their full-chain classification M. The total-variation estimate from source 341 is proved again in Section 3. No spectral conclusion is inferred from moment convergence alone. No assertion about a physical Yang--Mills gap or a continuum limit is made.
+
+\section{Failure of exact critical-cap transfer}
+\begin{theorem}\label{capfailure}
+There are fixed $\rho_*\in(1/3,1/2)$ and $b_*=1/16$ such that, for every fixed $C>0$, a sequence of strictly positive potentials satisfies \eqref{admissible} for every $L$ and satisfies
+\[
+ \E\pi_L^{s_*}<2<\E r_L^{s_*}
+ \quad\hbox{for all sufficiently large }L,
+ \qquad s_*=(1+\rho_*)/(1-\rho_*).
+\]
+Both displayed moments tend to two. This is not a divergent-moment or collapsing-gap example.
+\end{theorem}
+\begin{proof}
+On a two-dimensional cube, in the order $(++,+-,-+,--)$, take
+\[
+ H=(29/16,\ 1/4,\ 1/8,\ 29/16)
+   =1+cx-cy+dxy,\qquad c=1/32,\quad d=13/16.
+\]
+Thus $\E H=1$. Put $q=c(x-y)$, $v=2c^2=1/512$, $w=d^2=169/256$. For an effective noise parameter $\theta\geq0$,
+\[
+ G_\theta=P_\theta H=1+\theta q+\theta^2dxy,
+ \quad Z_\theta=\E HG_\theta=1+\theta v+\theta^2w.
+\]
+Take $h_\theta=H/\sqrt{Z_\theta}$, $\pi_\theta=HG_\theta/Z_\theta$, and
+$r_\theta=(H/G_\theta)/\E(H/G_\theta)$. These are actual densities from the same potential. At $\theta=0$, both densities equal $H$, and differentiation gives
+\[
+ \pi'_0=H(q-v),\qquad r'_0=-H(q-v).
+\]
+Indeed $\E Hq=v$ and $(\E H/G_\theta)'_{\theta=0}=-v$. For each fixed $t>1$, let
+\[
+ C_t=\E H^tq-v\E H^t
+ =\frac{31(1/4)^t-33(1/8)^t-2(29/16)^t}{2048}.
+\]
+This is strictly negative. To see this, $f(t)=31\,4^{-t}-33\,8^{-t}$ has
+$f'(t)=\log2\,8^{-t}(99-62\,2^t)<0$ for $t\geq1$, whereas $2(29/16)^t$ is increasing; at $t=1$ both are $29/8$. Consequently
+\begin{equation}\label{oppositederivatives}
+ \left.\frac{d}{d\theta}\E\pi_\theta^t\right|_0=tC_t<0,
+ \qquad
+ \left.\frac{d}{d\theta}\E r_\theta^t\right|_0=-tC_t>0.
+\end{equation}
+
+Let $M(t)=\E H^t$. Direct rational identities give
+$M(2)=851/512<2$ and $M(3)=24425/8192>2$.
+Strict convexity of $x\log x$ gives $M'(1)=\E H\log H>0$, and
+$M''(t)=\E H^t(\log H)^2>0$. Thus there is a unique $t_*\in(2,3)$ with $M(t_*)=2$. Fix $\rho_*=(t_*-1)/(t_*+1)$, so its critical exponent is precisely $t_*$. Formula \eqref{oppositederivatives}, with this exponent fixed, gives strict opposite inequalities around two for all sufficiently small positive $\theta$. No varying exponent or numerical root is used.
+
+For large $L$, let $m=\lfloor L/2\rfloor$ and use two disjoint blocks $B_1,B_2$ of size $m$, with an unused coordinate when $L$ is odd. Set $z_i=\chi_{B_i}$ and $\theta=\rho_*^m$. The variables $z_1,z_2$ are uniform and independent; restricted to their algebra, $P_{\rho_*}$ is exactly the two-bit $P_\theta$. Use $h_L=H(z_1,z_2)/\sqrt{Z_\theta}$. Products, positive inverses and expectations on the quotient agree with those above, so these are the required actual $\pi_L,r_L$.
+
+Their Fourier support is contained in
+$\{\varnothing,B_1,B_2,B_1\cup B_2\}$. In particular $\pi_L$ has exact marginals through degree $m-1$. Eventually $m>k_L$, $\theta\to0$, and $\min\pi_L\to\min H=1/8$. Choose a finite $L_0$ after which the floor $1/16$, the matching degree and the two strict moment inequalities all hold. For the remaining finitely many $L$, put $h_L=1$. This defines a full admissible sequence. Continuity gives convergence of both moments to two. Section 5 shows that this two-block family in fact has gap tending to $1-\rho_*$.
+\end{proof}
+
+The following estimates distinguish two simpler classes: two-level potentials cannot produce divergent critical weighting moments under a fixed stationary floor and cap, while product potentials obey the stronger constant-one moment comparison. Section~\ref{twolevelgap} further proves a dimension-uniform full gap for the two-level class under the stationary floor and cap.
+\begin{proposition}\label{simplefamilies}
+Normalize $\E hPh=1$ and assume $\pi\geq b$. If $h$ takes at most two values, then $g\geq b/2$ and
+$\E r^p\leq(4/b^3)^p\E\pi^p$ for every $p\geq1$.
+If $h$ is a product of positive one-coordinate factors, then $\E r^p\leq\E\pi^p$ for every $p\geq1$, without a floor assumption. The latter also holds for products of factors on disjoint block parities, with their respective effective noise parameters.
+\end{proposition}
+\begin{proof}
+Write $a=\E h\leq1$, the inequality following from the constant Fourier component of $\norm{P_{\sqrt\rho}h}_2^2=1$. The floor implies $h\geq b/g$, so $a\geq b\E(1/g)\geq b/a$. Hence $a^2\geq b$. Under $\pi\,d\mu$,
+$\E_\pi(1/g)=a$ and $\E_\pi(1/g^2)=N$, giving $N\geq a^2\geq b$.
+For a nonconstant two-level $h$, let $h=m$ on a set of mass $q\in(0,1)$ and $h=M>m$ on its complement. Integrating the floor on the first set gives $m\E(g1_A)\geq bq$, whence $m\geq bq$. Also $M(1-q)\leq a\leq1$. Since $g\geq m$ and $hg\geq b$ with $h\leq M$, we get $g\geq\max\{bq,b(1-q)\}\geq b/2$. Thus $r=\pi/(Ng^2)\leq4\pi/b^3$. The constant case is immediate.
+
+For one bit, scaling removes an irrelevant constant, so take $H=1+tx$, $|t|<1$. The normalized densities are $\pi=1+Ax$ and $r=1+Bx$, where
+\[
+ A=\frac{(1+\rho)t}{1+\rho t^2},\qquad
+ B=\frac{(1-\rho)t}{1-\rho t^2}.
+\]
+Cross multiplication gives $|B|\leq|A|$, since the difference of the two relevant positive numerators is $2\rho(1-t^2)>0$. The function
+$[(1+c)^p+(1-c)^p]/2$ is even and nondecreasing for $c\in[0,1)$ and $p\geq1$. This proves the one-bit assertion. Tensorization of the noise, the energy, $N$ and the moments proves the product assertions.
+\end{proof}
+
+\section{Inverse moments and subcritical transfer}
+In this section scale $h$ so $Z=1$, put $Q=P_{\sqrt\rho}$ and set $B=2^{1/s}$. Assume $\pi=hg\geq b>0$ and $\E\pi^s\leq2$; necessarily $b\leq1$. Define
+\begin{align*}
+ R&=1+\rho^{-1},&D_0&=1+\rho^{-3},&D_*&=2\rho^{-2}+\rho^{-3}-1,\\
+ F(q)&=1+\frac{sq/(s+q)-1}{\rho^4},&&&
+ q_\pm&=\frac{1+\rho}{\rho^3}\bigl(1+\rho^2\pm\sqrt{1+\rho^2}\bigr).
+\end{align*}
+Let $q_0=D_*$, $q_{n+1}=F(q_n)$, and
+\[
+ A_n=b^{-1}(B/b)^n,\qquad
+ t_n=\frac{sq_n}{q_n+2s},\qquad t_+=\frac{sq_+}{q_++2s},\qquad
+ K_n=Bb^{-3}(B/b)^{2n}.
+\]
+\begin{theorem}\label{subcritical}
+For every $L$ and $n\geq0$,
+\[
+ N\geq b,\quad gPg\geq b,\quad
+ \norm{g^{-1}}_{D_0}\leq b^{-1},\quad
+ \norm{g^{-1}}_{q_n}\leq A_n,\quad \norm r_{t_n}\leq K_n.
+\]
+Here $q_-<D_*<q_+$, $q_n\uparrow q_+<\infty$, and
+$1<t_0<t_n<t_+<s$ for $n>0$. These conclusions need no matching.
+If additionally $\E\pi\chi_S=0$ for $1\leq|S|\leq k$, put
+\[
+ \eta_0=\sqrt{\max\{\rho,(1-\rho)/2\}}<1,
+ \qquad e_k=B\eta_0^{k+1}.
+\]
+For $1<t<t_n$,
+\begin{equation}\label{strongtransfer}
+ \norm{r-\pi}_t\leq (2e_k)^\alpha(K_n+B)^{1-\alpha},
+ \qquad \alpha=\frac{t_n-t}{t(t_n-1)}.
+\end{equation}
+Thus for every fixed $1<t<t_+$, $\norm{r-\pi}_t\to0$ whenever $k\to\infty$, in particular for $k=k_L$.
+\end{theorem}
+
+We use the classical scalar Boolean hypercontractive inequalities \cite{mos}: for $1<p\leq q<\infty$, $\norm{P_\theta f}_q\leq\norm f_p$ when $\theta^2\leq(p-1)/(q-1)$. For strictly positive $f$ and finite $\beta<\alpha<0$, reverse hypercontractivity gives
+$\norm{P_\theta f}_\beta\geq\norm f_\alpha$ when
+$\theta^2\leq(1-\alpha)/(1-\beta)$. Negative exponents denote generalized means $(\E f^a)^{1/a}$, not norms. In particular $\norm f_{-a}=1/\norm{f^{-1}}_a$ for $a>0$. No zero-exponent convention is needed in the uses below.
+
+\begin{proof}[Proof of the inverse-moment and bootstrap assertions]
+The preceding proof gives $a=\E h\in[\sqrt b,1]$ and $N\geq b$. Applying $P$ to $h\geq b/g$ and using Jensen in each transition row yields
+\begin{equation}\label{flooridentity}
+ g\geq bP(1/g)\geq b/(Pg),\qquad g^{-1}\leq(Pg)/b.
+\end{equation}
+This is a consequence of the actual stationary floor, not an assumed bound on $\inf g$.
+Since $\norm{Qh}_2=1$ and $Pg=P_{\rho^{3/2}}Qh$, ordinary hypercontractivity gives $\norm{Pg}_{D_0}\leq1$, proving the first inverse bound. Likewise $g=P_{\sqrt\rho}Qh$ gives $\norm g_R\leq1$. The floor yields $h^{-1}\leq g/b$, so $\norm h_{-R}\geq b$. Reverse hypercontractivity with $\alpha=-R$, $\beta=-D_*$ and $\theta=\rho$ applies because
+$D_*=(1+R)/\rho^2-1>R$. It gives $\norm g_{-D_*}\geq b$, or $\norm{g^{-1}}_{D_*}\leq b^{-1}$. Also $D_*-D_0=2(\rho^{-2}-1)>0$.
+
+If $q>s/(s-1)$ and $\norm{g^{-1}}_q\leq A$, put $p=sq/(s+q)>1$. Holder applied to $h=\pi/g$ gives $\norm h_p\leq BA$. As $Pg=P_{\rho^2}h$, hypercontractivity and \eqref{flooridentity} give
+\[
+ \norm{g^{-1}}_{F(q)}\leq b^{-1}\norm{Pg}_{F(q)}\leq (B/b)A.
+\]
+The map has
+\[
+ F(q)-q=\frac{-\rho^4q^2+(s-1)(1-\rho^4)q-s(1-\rho^4)}{\rho^4(s+q)},
+ \qquad F'(q)=\frac{s^2}{\rho^4(s+q)^2}>0.
+\]
+The numerator has roots $q_-,q_+$: its discriminant equals
+$4\rho^2s(1-\rho^4)$, and $s(1-\rho^4)=(1+\rho)^2(1+\rho^2)$. Direct bounds show
+\begin{align*}
+ \rho^3(D_*-q_-)&=\rho-\rho^2-2\rho^3+(1+\rho)\sqrt{1+\rho^2}
+ \geq(1+2\rho)(1-\rho^2)>0,\\
+ \rho^3(q_+-D_*)&=-\rho+\rho^2+2\rho^3+(1+\rho)\sqrt{1+\rho^2}
+ \geq1+\rho^2+2\rho^3>0.
+\end{align*}
+Since $D_*>R=2s/(s-1)$, every step is valid. Monotonicity of $F$ gives
+$q_n<q_{n+1}<q_+$, and continuity identifies the limit as $q_+$. Iteration gives $A_n$. Finally
+\[
+ r=\frac{\pi}{Ng^2},\qquad \frac1{t_n}=\frac1s+\frac2{q_n}
+\]
+and Holder give $\norm r_{t_n}\leq b^{-1}BA_n^2=K_n$. The inequalities between the $t_n$ follow from $D_*>2s/(s-1)$ and monotonicity of $q\mapsto sq/(q+2s)$.
+\end{proof}
+
+For completeness we supply the stationary matching argument underlying \eqref{strongtransfer}; it does not require a pointwise floor.
+\begin{lemma}\label{rigidity}
+Under energy normalization, if $\norm\pi_p\leq B_p$ for a finite $p>1+\rho$ and $\pi$ has exact marginals through degree $k$, set
+$\eta_p^2=\rho\max\{1,1/(p-1)\}<1$ and $e=B_p\eta_p^{k+1}$.
+Then $a^2\geq(1+e^2)^{-1}$, $a^2\leq N\leq1$, and $\norm{r-\pi}_1\leq2e$.
+\end{lemma}
+\begin{proof}
+Put $v=1-a^2=\norm{Qh-a}_2^2\geq0$, and let $\Pi_{>k}$ be Walsh projection above degree $k$. We have
+\[
+ \norm{\Pi_{>k}g}_{p'}\leq\eta_p^{k+1}\sqrt v,\qquad p'=p/(p-1).
+\]
+For $p'\leq2$ this is the high-degree multiplier bound for $Q$, followed by norm monotonicity. For $p'>2$, factor $Q=P_tP_\beta$, where $t=1/\sqrt{p'-1}$ and $\beta=\sqrt\rho/t=\eta_p<1$. Hypercontractivity sends $P_t:L^2\to L^{p'}$, and the high-degree multiplier of $P_\beta$ supplies the stated bound. The noise operators commute with Walsh projections; no norm bound for the projection on $L^{p'}$ is presumed.
+Matching gives $\E\pi\Pi_{\leq k}g=a$. Hence $\E\pi g\leq a+e\sqrt v$. Cauchy--Schwarz for the measure $h\,d\mu$ gives
+$1=(\E hg)^2\leq a\E hg^2=a\E\pi g$. Therefore $v/a\leq e\sqrt v$. If $v>0$, division yields $v\leq a^2e^2$; the $v=0$ case is immediate. Thus $a^2\geq(1+e^2)^{-1}$ and $2(1-a)\leq e^2$.
+
+For the upper bound on $N$, put $u=h/g$ and $A=M_{\sqrt u}PM_{\sqrt u}$. The positive vector $\sqrt{hg}$ has $A$-eigenvalue one. Perron--Frobenius and positive semidefiniteness therefore give $\norm A=1$. With $X=M_{\sqrt u}Q$, the matrices $XX^*=A$ and $X^*X=QM_uQ$ have the same eigenvalues. Testing the latter at the unit vector $1$ yields $N=\E u\leq1$. Cauchy--Schwarz under $\pi$ gives $a^2\leq N$ as above. Since $r=\pi/(Ng^2)$,
+\[
+ \E\sqrt{r\pi}=a/\sqrt N\geq a,\qquad
+ \norm{\sqrt r-\sqrt\pi}_2^2=2(1-a/\sqrt N)\leq e^2.
+\]
+Multiply the difference of the square roots by their sum and apply Cauchy--Schwarz; the latter sum has norm at most two. This gives $\norm{r-\pi}_1\leq2e$. Total variation is half this $L^1$ distance, not the entire distance.
+\end{proof}
+
+\begin{proof}[Completion of Theorem \ref{subcritical}]
+Apply Lemma \ref{rigidity} with $p=s>1+\rho$, $B_p=B$. Its parameter becomes $\eta_0$ in the theorem. Since $t_n<s$, $\norm{r-\pi}_{t_n}\leq K_n+B$. Interpolation between $1$ and $t_n$, with $1/t=\alpha+(1-\alpha)/t_n$, gives \eqref{strongtransfer}. For each fixed $t<t_+$ choose one finite $n$ with $t<t_n$ before taking $L\to\infty$.
+\end{proof}
+
+The ceiling is a limitation of this particular iteration. Its starting exponent lies strictly between the two fixed points and increases only to finite $q_+$. Moreover $A_n=b^{-1}(B/b)^n$ diverges as $n\to\infty$. We have neither a uniform estimate at $q_+$ nor one at $t_+$. Even a finite inverse bound at $q_+$ would leave $t_+<s$. None of these facts disproves a different method for the critical moment.
+
+\section{Full-chain estimates for code-supported potentials}
+Identify Walsh indices with vectors in $\F_2^L$, and let $\mathcal C$ be a nonzero binary linear code of dimension $n$ and minimum nonzero Hamming weight $D\geq2$. Set $M=2^n$ and
+\[
+ \delta=\sum_{c\in\mathcal C\setminus\{0\}}\rho^{|c|}<1,
+ \quad \eta=M\rho^{D/2},\quad \alpha=\frac{1-\delta}{1+\delta},
+ \quad B_{\mathcal C}=\frac{\rho+\eta}{1-\delta},\quad
+ \varepsilon_{\rm gap}=\frac{(1-\rho^2)\delta}{\rho(1-\delta)}.
+\]
+\begin{theorem}\label{codetheorem}
+For every strictly positive $h$ whose Fourier support is contained in $\mathcal C$, with no size restriction on its quotient values,
+\begin{equation}\label{codegap}
+ \max\{0,\rho-\varepsilon_{\rm gap}\}\leq\lambda_2(K)
+ \leq\min\{1,\max\{1-\alpha,B_{\mathcal C}\}\}.
+\end{equation}
+Both $\pi$ and $r$ have exact marginals through degree $D-1$, and
+\begin{equation}\label{codecompare}
+ \alpha^2\leq r/\pi\leq\alpha^{-2}.
+\end{equation}
+For any sequence of such codes with fixed $\rho$ and $\eta\to0$,
+$\operatorname{gap}(K)\to1-\rho$, uniformly over all strictly positive quotient potentials. If additionally $\E\pi^s\leq2$, then $\E r^s\leq2\alpha^{-2s}$. The cap is needed for this absolute moment bound, not for \eqref{codegap} or \eqref{codecompare}.
+\end{theorem}
+\begin{proof}
+Choose a basis $c_1,\ldots,c_n$ and put $z_i(x)=\chi_{c_i}(x)$. This quotient map is surjective with equal fibers, and $h(x)=H(z(x))$ for a positive function $H$. Writing $c(I)=\sum_{i\in I}c_i$, the quotient noise density relative to uniform $w$ is
+\[
+ b_0(z,w)=\sum_{I\subseteq[n]}\rho^{|c(I)|}\chi_I(z)\chi_I(w).
+\]
+This is the actual positive stochastic quotient of product noise. In particular
+$1-\delta\leq b_0\leq1+\delta$. With $a=\E H$ and $G=P H$ on the quotient,
+$a(1-\delta)\leq G\leq a(1+\delta)$. The quotient Doob kernel has density $b_0(z,w)H(w)/G(z)$ and minorizes $\alpha$ times the probability density $H(w)/a$. Thus its oscillation contraction is at most $1-\alpha$. Every nonconstant eigenfunction has nonzero oscillation, so all its non-Perron eigenvalues have modulus at most $1-\alpha$.
+
+It remains to control the other sectors, because the quotient spectrum alone is insufficient. For each coset $t+\mathcal C$, let
+$V_t=\chi_t\{F(z):F\hbox{ any quotient function}\}$. These spaces are mutually orthogonal under $\pi\,d\mu$: products of quotient functions with $\pi$ remain in the $\mathcal C$ algebra, and a Walsh character outside $\mathcal C$ has zero expectation against that algebra. They span all $2^L$ dimensions. Multiplication by $h$ and by $1/g$ preserves each sector, as does noise, so each is $K$-invariant.
+Under the identification $\chi_t F\leftrightarrow F$, its operator is
+\[
+ K_tF(z)=\E_w\, b_t(z,w)\frac{H(w)}{G(z)}F(w),\qquad
+ b_t(z,w)=\sum_I\rho^{|t+c(I)|}\chi_I(z)\chi_I(w).
+\]
+For $t\notin\mathcal C$ this is a signed kernel, not a Markov kernel. Choose a minimum-weight representative with $d=|t|\geq1$. If $d\leq D/2$, all other vectors in the coset have weight at least $D-d\geq D/2$, so
+\[
+ \sum_{v\in t+\mathcal C}\rho^{|v|}
+ \leq\rho^d+(M-1)\rho^{D/2}\leq\rho+\eta.
+\]
+If $d>D/2$, all weights exceed $D/2$ and the sum is at most $\eta$. Consequently
+$|b_t|\leq\rho+\eta\leq B_{\mathcal C}b_0$, whence
+$|K_tF|\leq B_{\mathcal C}K_0|F|$. Supremum norms bound every sector eigenvalue in modulus by $B_{\mathcal C}$. Together with the quotient bound and the global Markov bound one this proves the upper inequality in \eqref{codegap}.
+
+For the lower inequality, any singleton $e_i$ is outside $\mathcal C$ because $D\geq2$. In $b_{e_i}-\rho b_0$, a codeword not containing $i$ contributes zero; a codeword containing $i$ contributes coefficient
+$(1-\rho^2)\rho^{|c|-1}$. Hence
+\[
+ |b_{e_i}-\rho b_0|\leq(1-\rho^2)\delta/\rho
+ \leq\varepsilon_{\rm gap}b_0.
+\]
+It follows that $|K_{e_i}1-\rho|\leq\varepsilon_{\rm gap}$. The original character $\chi_{e_i}$ has mean zero under $\pi$ and norm one, since $\pi$ is in the $\mathcal C$ algebra. Its Rayleigh quotient is at least $\rho-\varepsilon_{\rm gap}$. The variational principle and positive definiteness yield the lower bound.
+
+The algebra of quotient functions is closed under multiplication and positive inversion. Thus $\pi$ and $r$ are both $\mathcal C$-supported; their unit means imply the stated exact marginals. Let $\Pi=HG/Z$ be the quotient stationary density. Then
+\[
+ \E_\Pi G^{-2}=N/Z,\qquad r/\pi=\frac{G^{-2}}{\E_\Pi G^{-2}}.
+\]
+The interval $a(1-\delta)\leq G\leq a(1+\delta)$ proves \eqref{codecompare}. Finally
+$\delta\leq(M-1)\rho^D\leq\eta\rho^{D/2}\leq\eta$. If $\eta\to0$, then $\delta\to0$, $\alpha\to1$, $B_{\mathcal C}\to\rho$ and $\varepsilon_{\rm gap}\to0$, uniformly in $H$. This proves the limiting and moment assertions.
+\end{proof}
+
+\section{Disjoint blocks and a strictly larger potential class}
+\subsection{The sharper direct block regime}
+Let $L=nm+d$ with $n\geq1$, $m\geq2$ and $d\geq0$, and let $h=H(z_1,\ldots,z_n)>0$, where $z_i$ is the parity of the $i$th disjoint block of size $m$. Residual coordinates are unused. This is a special code algebra, but direct factorization yields better bounds than the coarse distance--cardinality estimate.
+\begin{proposition}\label{blocktheorem}
+Put $\theta=\rho^m$, $\ell=(1-\theta)^n$, $u=(1+\theta)^n$, and
+\[
+ \alpha_b=\ell/u,\qquad
+ \beta_b=\frac{\rho+\rho^{m-1}}{1-\theta},\qquad
+ \varepsilon_{\rm gap,b}=\frac{(1-\rho^2)\rho^{m-1}}{1-\theta}.
+\]
+For every positive $H$,
+\[
+ \max\{0,\rho-\varepsilon_{\rm gap,b}\}\leq\lambda_2(K)
+ \leq\min\{1,\max\{1-\alpha_b,\beta_b\}\},\qquad
+ \alpha_b^2\leq r/\pi\leq\alpha_b^{-2}.
+\]
+Both densities have exact marginals through degree $m-1$. If $m\to\infty$ and $n\rho^m\to0$, the gap tends uniformly in $H>0$ to $1-\rho$.
+\end{proposition}
+\begin{proof}
+The quotient noise density is $b_0(z,w)=\prod_i(1+\theta z_iw_i)$, so $\ell\leq b_0\leq u$ and $a\ell\leq G\leq au$. The same minorization and moment arguments as in Theorem \ref{codetheorem} give the quotient and density bounds, now with $\alpha_b$.
+For a sector representative, remove complete blocks from its support. Let $j_i\in\{0,\ldots,m-1\}$ be its number of coordinates in block $i$, and $e$ its residual weight. Factoring the Fourier sum gives
+\[
+ b_t(z,w)=\rho^e\prod_i\bigl(\rho^{j_i}+\rho^{m-j_i}z_iw_i\bigr).
+\]
+For $j_i=0$ the factor is that of $b_0$. If $1\leq j_i\leq m-1$, its absolute ratio to $1+\theta z_iw_i$ is bounded by $\beta_b$: the numerator is at most $\rho^{j_i}+\rho^{m-j_i}\leq\rho+\rho^{m-1}$. This last inequality follows because the convex function $x\mapsto\rho^x+\rho^{m-x}$ attains its maximum on $[1,m-1]$ at an endpoint. If $\beta_b<1$, a nontrivial sector with at least one interior factor therefore has $|b_t|\leq\beta_b b_0$; if it has only residual support, its ratio is $\rho^e\leq\rho<\beta_b$. This bounds those eigenvalues. If $\beta_b\geq1$, the global Markov bound one already gives the stated upper bound; no invalid inequality $\beta_b^j\leq\beta_b$ is used.
+
+For a singleton in one block, its factor differs from $\rho(1+\theta z_iw_i)$ by $(1-\rho^2)\rho^{m-1}z_iw_i$. The other factors are unchanged, yielding
+$|b_t-\rho b_0|\leq\varepsilon_{\rm gap,b}b_0$. The singleton Rayleigh argument gives the lower bound. All nonzero vectors in the block code have weight at least $m$, giving matching. Finally
+$-\log\alpha_b=n\log[(1+\theta)/(1-\theta)]\leq4n\theta$ once $\theta\leq1/2$. Thus $\alpha_b\to1$, $\beta_b\to\rho$ and $\varepsilon_{\rm gap,b}\to0$ in the stated regime.
+\end{proof}
+
+Structural inclusion must not be confused with inclusion of the quantitative regimes. Theorem \ref{codetheorem} applied to this code asks for $2^n\rho^{m/2}\to0$, whereas Proposition \ref{blocktheorem} requires only $n\rho^m\to0$ with $m\to\infty$. We retain the direct bounds instead of claiming the coarser condition subsumes them. In particular Proposition \ref{blocktheorem} with $n=2$ applies to Theorem \ref{capfailure}.
+
+\subsection{Simplex potentials outside disjoint-block representations}
+\begin{proposition}\label{simplex}
+For each $j\geq2$ put $L_j=2^j-1$ and index coordinates by nonzero $v\in\F_2^j$. The binary simplex code
+\[
+ \mathcal C_j=\{c_a:a\in\F_2^j\},\qquad c_a(v)=a\cdot v,
+\]
+has dimension $j$ and every nonzero word has weight $D_j=2^{j-1}$. It satisfies the asymptotic condition in Theorem \ref{codetheorem} for every fixed $0<\rho<1$. On this length subsequence its matching degree eventually exceeds $\lfloor C\sqrt{L_j}\rfloor$ for every fixed $C>0$.
+There are strictly positive potentials supported on this code that cannot be represented as functions of disjoint equal-size block parities of size $m\geq2$, even after coordinate permutations or enlargement of the disjoint-block algebra.
+\end{proposition}
+\begin{proof}
+The map $a\mapsto c_a$ is injective by inspection at the unit-vector coordinates. A nonzero linear form takes the value one at exactly half the points of $\F_2^j$, and the excluded zero vector has value zero. Thus the dimension and weight assertions follow directly. Here
+\[
+ \delta_j=(2^j-1)\rho^{2^{j-1}},\qquad
+ \eta_j=2^j\rho^{2^{j-2}}\longrightarrow0.
+\]
+In particular $\delta_j<1$ eventually. Also $D_j-1=(L_j-1)/2$, proving the matching assertion on the stated subsequence.
+
+Choose
+\[
+ h_j=1+\varepsilon_{\rm amp}\sum_{c\in\mathcal C_j\setminus\{0\}}\chi_c,
+ \qquad 0<\varepsilon_{\rm amp}<1/(2^j-1).
+\]
+This is strictly positive, and its Fourier support is exactly $\mathcal C_j$. The amplitude $\varepsilon_{\rm amp}$ is not the spectral error $\varepsilon_{\rm gap}$.
+If $h_j$ were a function of disjoint block parities, uniqueness of the Walsh expansion would put $\mathcal C_j$ inside the linear span of those block indicators. Every word in that span is constant within each block and vanishes on unused coordinates. But $\mathcal C_j$ separates every pair of distinct coordinates $v,w$: choose $a$ with $a\cdot(v+w)=1$. Also every coordinate is nonzero in some codeword. Consequently no block can contain two coordinates and none can be unused. This contradicts $m\geq2$, and is unchanged by coordinate permutations or by allowing more disjoint blocks.
+\end{proof}
+
+The code construction is classical \cite{wootters}; its elementary parameter proof is included to avoid treating a coding reference as a new theorem. The strict separation is an existence statement for the full-support positive potentials just exhibited. It does not hold for every potential in the code algebra, since constants also belong to disjoint-block algebras. Nor does this argument assert a prescribed stationary floor or moment cap for the displayed amplitude family. Its use here is to establish that the full-chain code theorem covers positive potentials beyond the disjoint-block class. Arbitrary invertible changes of the original Boolean coordinates are not permitted replacements for permutations: they generally change Hamming weights and the noise operator.
+
+\section{Positive-rate families at every sufficiently large length}
+The simplex example gives a transparent strict-class witness on a length subsequence. Classical random linear coding also realizes the spectral mechanism at positive rate for every sufficiently large length. The additional column conditions used below ensure strict separation from disjoint-block representations for the same codes, rather than for separately chosen examples.
+
+Let $H_2(d)=-d\log_2d-(1-d)\log_2(1-d)$ denote binary entropy.
+\begin{theorem}\label{positiverate}
+Fix $0<\rho<1$, $0<d<1/2$ and
+\begin{equation}\label{ratecondition}
+ 0<R_{\rm code}<\min\left\{1-H_2(d),\ \frac d2\log_2(1/\rho)\right\}.
+\end{equation}
+For every sufficiently large integer $L$ there exists a binary linear code $\mathcal C_L\subset\F_2^L$ with dimension $n_L=\lfloor R_{\rm code}L\rfloor$, minimum distance $D_L\geq\lceil dL\rceil$, and a generator matrix with nonzero, pairwise distinct columns. Set
+\[
+ a_*=(d/2)\log(1/\rho)-R_{\rm code}\log2>0,\qquad
+ E_L=e^{-a_*L},\qquad
+ C_\rho=\max\{1+\rho,(1-\rho^2)/\rho\}.
+\]
+For every strictly positive potential $h$ supported on the Fourier algebra of this code, and all sufficiently large $L$,
+\begin{equation}\label{exponentialgap}
+ \left|\operatorname{gap}(K_h)-(1-\rho)\right|
+ \leq C_\rho\frac{E_L}{1-E_L}.
+\end{equation}
+The bound is uniform over all such positive $h$, with no amplitude, stationary floor or moment assumption. Both $\pi$ and $r$ have exactly uniform labelled marginals through degree $\lceil dL\rceil-1$.
+
+Moreover, for every fixed $0<b<1$ and finite $s>1$, there are potentials in these same algebras, at every sufficiently large length, with energy one, $\pi\geq b$ and $\E\pi^s\leq2$, whose Fourier support is the full code and which admit no disjoint equal-size block-parity representation with block size at least two. In particular these witnesses satisfy \eqref{admissible} for its critical exponent and every fixed $C>0$, eventually, and have the gap estimate \eqref{exponentialgap}.
+\end{theorem}
+\begin{proof}
+Both upper bounds in \eqref{ratecondition} are positive, so the allowed rate interval is nonempty. Put $n=\lfloor R_{\rm code}L\rfloor$, eventually at least one, and sample an $n$ by $L$ matrix $G$ with independent fair binary entries. This is a probabilistic existence argument, not an executed random search. For each fixed nonzero $a\in\F_2^n$, the entries of $aG$ are independent fair bits. The different vectors $aG$ need not be independent. A union bound gives
+\[
+ \Pr\{\exists a\ne0:\ |aG|<dL\}
+ \leq(2^n-1)2^{-L}\sum_{0\leq i<dL}\binom Li
+ \leq2^{n-L(1-H_2(d))}.
+\]
+For the last step, since $d<1/2$ and $i\leq dL$,
+\[
+ d^i(1-d)^{L-i}\geq d^{dL}(1-d)^{(1-d)L}=2^{-LH_2(d)}.
+\]
+Multiply this lower bound by $\binom Li$, sum over the stated integer indices, and bound the corresponding binomial probability sum by one. This proves the entropy bound without assuming $dL$ integral. The complement of the strict bad event gives weights at least $\lceil dL\rceil$. In particular a nonzero kernel vector is impossible, so $G$ has full row rank and its row-image code has dimension $n$.
+
+Each column is uniform in $\F_2^n$. A second union bound gives
+\[
+ \Pr\{\hbox{a zero column or an equal pair of columns}\}
+ \leq \left[L+\frac{L(L-1)}2\right]2^{-n}.
+\]
+The sum of these two error bounds tends to zero. Indeed the first is at most
+$2^{-L(1-H_2(d)-R_{\rm code})}$ and the second is at most
+$2[L+L(L-1)/2]2^{-R_{\rm code}L}$. For every sufficiently large integer $L$, their sum is less than one, so a single matrix has simultaneously the distance, rank and column properties. Select one for each such length. No efficient construction or nested family is asserted.
+
+For the resulting code, $M_L=2^{n_L}$ and $D_L\geq dL$ give
+\[
+ \eta_L=M_L\rho^{D_L/2}\leq E_L,
+ \qquad \delta_L\leq M_L\rho^{D_L}\leq\eta_L\leq E_L.
+\]
+Eventually $D_L\geq2$ and $\delta_L<1$, so Theorem \ref{codetheorem} applies to every positive code potential. For $E_L\leq\min\{1/2,\rho/2\}$,
+\begin{align*}
+ 1-\alpha&=\frac{2\delta_L}{1+\delta_L}\leq2E_L\leq\rho,\\
+ B_{\mathcal C_L}&=\frac{\rho+\eta_L}{1-\delta_L}
+ \leq\rho+(1+\rho)\frac{E_L}{1-E_L},\\
+ \varepsilon_{\rm gap}&\leq\frac{1-\rho^2}{\rho}\frac{E_L}{1-E_L}.
+\end{align*}
+The two sides of \eqref{codegap} therefore give \eqref{exponentialgap}; the clipping by zero and one only improves the estimates. The matching assertion follows from the same theorem and $D_L\geq\lceil dL\rceil$. In particular this matching degree eventually exceeds $\lfloor C\sqrt L\rfloor$ for every fixed $C>0$.
+
+It remains to construct the admissible strict-class witnesses. Nonzero columns ensure that every coordinate is active in some codeword; distinct columns ensure that every two coordinates are separated by some codeword. For the latter, if the two columns are $v\ne w$, choose a linear functional detecting $v+w\ne0$.
+For $0<\tau<1$, choose
+\[
+ h_0=1+\frac{\tau}{M_L-1}\sum_{c\in\mathcal C_L\setminus\{0\}}\chi_c.
+\]
+Then $1-\tau\leq h_0\leq1+\tau$, and its Fourier support is exactly $\mathcal C_L$. If $h_0$ were a function of any number of disjoint equal-size block parities, its full support would force $\mathcal C_L$ into the span of their whole-block indicators. Every word in that span is constant within a block and zero on unused coordinates. Pair separation excludes any block of size at least two, and activity excludes residual coordinates. This rules out every representation allowed in Proposition \ref{blocktheorem}, including larger quotient algebras and coordinate permutations.
+
+For prescribed $0<b<1$ and finite $s>1$, choose $\tau>0$ sufficiently small that
+\[
+ A_\tau=\left(\frac{1+\tau}{1-\tau}\right)^2
+ \leq\min\{1/b,2^{1/s}\}.
+\]
+The right side exceeds one, so such a single positive $\tau$, independent of $L$, exists. Positivity and the Markov property put both $h_0$ and $Ph_0$ in $[1-\tau,1+\tau]$. Hence their product and its mean $Z$ lie in $[(1-\tau)^2,(1+\tau)^2]$. Set $h=h_0/\sqrt Z$. This preserves its support and kernel, gives $\E hPh=1$, and yields
+\[
+ A_\tau^{-1}\leq \pi=\frac{h_0Ph_0}{Z}\leq A_\tau,
+ \qquad \pi\geq b,\qquad \E\pi^s\leq A_\tau^s\leq2.
+\]
+Thus all assertions concern the same normalized potential and its actual stationary density. The full-chain bound was already uniform in the potential and remains valid for these witnesses.
+\end{proof}
+
+The entropy-volume and random-linear-code ingredients are classical Gilbert--Varshamov arguments \cite{guruswami}; the proof is included with the precise rounding and simultaneous column requirements used here. The rate $R_{\rm code}$ is distinct from the inverse-moment exponent $R$ of Section 3. The theorem supplies all-large-length positive-rate realizations of the code-restricted mechanism. It does not remove the code-algebra hypothesis, establish a general critical weighting cap, or provide a collapsing example. The strict-class conclusion is existential for the specified full-support potentials, not universal for all positive functions on the code. The prescribed-floor witness assertion excludes $b=1$ and makes no uniform endpoint claim as $\rho$ approaches zero or one.
+
+
+\section{Dimension-free spectral windows}\label{spectralwindows}
+Throughout this section, the noise parameter $0<\rho<1$ and stationary
+floor $b>0$ are fixed. On the uniform Boolean cube, write
+$P=P_\rho$, $Q=P_{\sqrt\rho}$, $g=Ph$, $\pi=hg$, $u=h/g$,
+and $T=QM_uQ$. We retain $h>0$, $\mathbb E hPh=1$, $\pi\ge b$,
+$\mathbb E\pi^s\le2$, $s=(1+\rho)/(1-\rho)$, and exact stationary
+matching through degree $k$. These hypotheses are not removed below.
+
+\begin{lemma}\label{finitecrossing}
+For every fixed $0<\rho<1$, a finite index $n$, independent of $L$,
+satisfies $t_n>1+\rho$ in Theorem~\ref{subcritical}.
+\end{lemma}
+\begin{proof}
+The inequality $t_n>1+\rho$ is equivalent to
+$q_n>q_c:=2(1+\rho)/\rho$. Direct substitution in the already defined
+bootstrap map gives
+\[
+ F(q_c)-q_c=\frac{(1-\rho^2)(3-\rho^2)}{\rho^3(2-\rho)}>0.
+\]
+The numerator of $F(q)-q$ is a negative-leading quadratic with roots
+$q_-,q_+$. Thus $q_-<q_c<q_+$. Since $q_n$ increases to $q_+$,
+for some finite $n$, $q_n>q_c$. Fix such an index before taking dimension
+or matching-degree limits.
+\end{proof}
+Set $p_0=1+\rho$, $t=t_n$ and $K_t=K_n$ at this fixed index.
+Then $p_0<t<s$, and $\|u\|_t=N\|r\|_t\le K_t$ by
+Lemma~\ref{rigidity} and Theorem~\ref{subcritical}.
+With $B=2^{1/s}$,
+$\eta_0=\sqrt{\max\{\rho,(1-\rho)/2\}}$, $e=B\eta_0^{k+1}$,
+$p=(p_0+t)/2$, and
+$\alpha=(1/p-1/t)/(1-1/t)$, the discrepancy satisfies
+\[
+ \|u-\pi\|_p\le\Delta_k
+ :=(2e)^\alpha(K_t+B)^{1-\alpha}+Be^2
+ \le C_p\eta_0^{\alpha(k+1)},\qquad
+ C_p=(2B)^\alpha(K_t+B)^{1-\alpha}+B^3.
+\]
+This uses $u-\pi=N(r-\pi)+(N-1)\pi$, $1-N\le e^2$ from Lemma~\ref{rigidity}, and interpolation in Theorem~\ref{subcritical}. No endpoint estimate is used.
+
+For a polynomial $F$ of degree at most $d$ and finite $r\ge2$,
+classical Boolean hypercontractivity gives
+\[
+ \|QF\|_r\le\max\{1,\sqrt{\rho(r-1)}\}^{d}\|F\|_2.
+\]
+Indeed, multiply each degree-$j$ Fourier coefficient by
+$A^j$, $A=\sqrt{\rho(r-1)}$, and then apply
+$P_{1/\sqrt{r-1}}$. The composition is $Q$ and the first
+multiplier has $L^2$ norm at most $\max(1,A)^d$ on the polynomial
+subspace. The multiplier for $A>1$ is algebraic, not a Markov kernel.
+This standard argument is the one used in O'Donnell, Theorem~9.21~\cite{odonnell}.
+
+Let $R_d$ be the orthogonal projection onto degrees at most $d$, including
+constants. Set
+\[
+ r_1=\frac{pp_0}{p-p_0},\quad
+ z=\frac{p_0+\min(s,2)}2,\quad r_2=\frac{sz}{s-z},\quad
+ A_i=\sqrt{\rho(r_i-1)},\quad \beta=\sqrt{\frac\rho{z-1}}.
+\]
+Then $A_1,A_2>1$ and $0<\beta<1$. \begin{theorem}\label{fullwindow}
+For $0\le d\le k$,
+\begin{equation}\label{fullwindowbound}
+ \|(T-P)R_d\|_{2\to2}=\|R_d(T-P)\|_{2\to2}
+ \le\varepsilon_{k,d}
+ :=\Delta_k A_1^d+(B+1)\beta^{k+1-d}A_2^d.
+\end{equation}
+\end{theorem}
+\begin{proof}
+To prove this, write
+$(T-P)F=Q[(u-\pi)QF]+Q[(\pi-1)QF]$ for $F=R_dF$.
+The first term is bounded by $\|u-\pi\|_p\|QF\|_{r_1}$,
+using $Q:L^{p_0}\to L^2$ and H\"older's inequality.
+The second product has no Fourier coefficients below degree $k+1-d$.
+Factor $Q=P_\beta P_{\sqrt{z-1}}$: the second factor contracts
+$L^z$ to $L^2$, and the first damps that support by
+$\beta^{k+1-d}$. H\"older with $s,r_2$ and the polynomial bound
+complete the proof. The argument controls all low-degree inputs at once,
+without summing individual columns or introducing a binomial factor.
+Self-adjointness gives the row estimate.
+\end{proof}
+
+Choose
+\[
+ 0<c<\min\left\{1,
+ \frac{\alpha\log(1/\eta_0)}{\log A_1},
+ \frac{\log(1/\beta)}{\log(A_2/\beta)}\right\},\qquad d=\lfloor ck\rfloor.
+\]
+Then the right side of \eqref{fullwindowbound} is bounded by
+$C_p\eta_0^\alpha e^{-\gamma_1k}+(B+1)\beta e^{-\gamma_2k}$,
+where $\gamma_1=\alpha\log(1/\eta_0)-c\log A_1>0$ and
+$\gamma_2=\log(1/\beta)-c\log(A_2/\beta)>0$.
+This dimension-free estimate requires only $k\to\infty$.
+
+The actual spectral representation is important here. With
+$X=M_{\sqrt u}Q$, one has $XX^*=M_{\sqrt u}PM_{\sqrt u}$ and
+$X^*X=T$, so $T$ has the actual spectrum of $K$ and norm one.
+Its unit Perron vector is $w=Qh$, since $\|Qh\|_2^2=1$ and
+$TQh=QM_uPh=Qh$. Lemma~\ref{rigidity} gives
+$\|1-w\|_2^2=2(1-\E h)\le e^2$.
+For a unit non-Perron eigenvector $\psi$ of $T$ with
+$\lambda\ge\rho+\zeta$, fixed $\zeta>0$,
+\[
+ \|R_d\psi\|_2^2\le e^2+(\varepsilon_{k,d}/\zeta)^2.
+\]
+The nonconstant part follows by inverting $\lambda-P$ on the low
+subspace; the constant part follows from orthogonality to $Qh$ and
+$\|1-Qh\|_2\le e$. For $1\le d\le\min(k,L-1)$, let
+$H_d=(I-R_d)T(I-R_d)$ on the high subspace. The block comparison yields
+\[
+ \left|\lambda_2(K)-\max\{\rho,\|H_d\|\}\right|
+ \le2\varepsilon_{k,d}.
+\]
+Indeed, the low diagonal and off-diagonal errors each have norm at most
+$\varepsilon_{k,d}$; min-max applies to the resulting self-adjoint
+perturbation. This is a reduction to the actual high block, not a bound
+on its norm.
+
+\section{Necessary localization and a failed generic tail repair}\label{localization}
+Retain the setting of Section~\ref{spectralwindows}, with $d=\lfloor ck\rfloor$, fixed $\zeta>0$, and all other parameters fixed. Let $Kf=\lambda f$ be an actual real eigenfunction with $\lambda\ge\rho+\zeta$, normalized by
+$\mathbb E\pi f=0$ and $\mathbb E\pi f^2=1$, set
+$\psi=Q(hf)/\sqrt\lambda$. Then the exact pointwise identity is
+\[
+ u|Q\psi|^2=\lambda\pi f^2.
+\]
+Writing $\delta_k=e^2+(\varepsilon_{k,d}/\zeta)^2$ and
+$U(M)=\{u>M\}$, with $\pi(A):=\E[\pi\mathbf1_A]$ for sets $A$, gives
+\[
+ \mathbb E[\pi f^2\mathbf1_{U(M)^c}]
+ \le\frac{M(\delta_k+\rho^{d+1})}{\lambda},\qquad
+ \pi(U(M))\le B K_t^{t/s'}M^{-t/s'},\quad s'=\frac{s}{s-1}.
+\]
+Indeed $\|\psi\|_2=1$ and $\langle\psi,Qh\rangle=0$ follow from $P(hf)=\lambda gf$ and the stationary normalization. The multiplier formula gives $\|Q\psi\|_2^2\le\delta_k+\rho^{d+1}$; integrate the identity on $\{u\le M\}$. For the probability estimate, $\mu(U(M))\le K_t^t M^{-t}$ and H\"older with $\|\pi\|_s\le B$ complete the proof. With
+$\gamma_0=\min\{\log(1/\eta_0),\gamma_1,\gamma_2\}$, choose
+$0<\theta<\min\{\log(1/\rho),2\gamma_0/c\}$ and
+$M=e^{\theta d}$. As $k\to\infty$, the complement's stationary squared mass tends to zero,
+while the stationary probability $\pi(U(M))$ is at most a fixed constant times $e^{-\theta td/s'}$.
+Both strict restrictions on $\theta$ are needed for this argument.
+At $k\sim C\sqrt L$, this is an exponential-in-$\sqrt L$ probability
+scale. It neither supplies a cut nor rules out these modes.
+
+For completeness, this also forces divergence of each fixed higher
+stationary moment. For $2<\ell<\infty$, set
+$a_k=M(\delta_k+\rho^{d+1})/\lambda\to0$ and
+$C_t=BK_t^{t/s'}$. H\"older on the stationary probability space gives,
+for all sufficiently large $k$,
+\[
+ \|f\|_{L^\ell(\pi)}\ge
+ \sqrt{1-a_k}\,C_t^{-(1/2-1/\ell)}
+ \exp\!\left(\frac{\theta td}{s'}(1/2-1/\ell)\right).
+\]
+Indeed, the squared mass on $U(M)$ is at least $1-a_k>0$, and is at
+most $\|f\|_{L^\ell(\pi)}^2\pi(U(M))^{1-2/\ell}$.
+This necessary growth is not a contradiction: no uniform upper bound
+on these eigenfunction norms has been established.
+A generic tail-space H\"older repair is unavailable. For fixed
+$1+1/\rho<q<\infty$ and nonnegative integer cutoffs $d_L=o(L)$, set $m=d_L+1$, $\ell=L-m$, and
+\[
+ F_L(x)=\chi_{[m]}(x)\prod_{j=m+1}^{L}
+       \frac{1+\epsilon x_j}{\sqrt{1+\epsilon^2}}.
+\]
+For sufficiently large $L$, this has unit $L^2$ norm and no coefficients
+through degree $d_L$. Its smoothed norm is
+\[
+ \|QF_L\|_q=\rho^{m/2}\kappa^\ell,\quad
+ \kappa=\frac{\bigl(((1+\sqrt\rho\epsilon)^q+
+ (1-\sqrt\rho\epsilon)^q)/2\bigr)^{1/q}}{\sqrt{1+\epsilon^2}}.
+\]
+The expansion $\log\kappa=\tfrac12(\rho(q-1)-1)\epsilon^2+
+O(\epsilon^4)$ makes $\kappa>1$ for a sufficiently small fixed
+$\epsilon\in(0,1)$. Thus $L^{-1}\log\|QF_L\|_q\to\log\kappa>0$.
+This classical tensor sharpness mechanism refutes a dimension-uniform
+$L^2\to L^q$ estimate on the entire high-degree space. It is not an
+admissible Doob counterexample, and does not contradict same-exponent
+$L^p\to L^p$ tail smoothing~\cite{hmo,volberg}. For the available $t<s$, one has $2t'>2s'=1+1/\rho$, so this obstruction applies to the naive H\"older attempt to control the remaining high block using only $\|u\|_t$. It does not apply to the low-degree-input polynomial estimate used above.
+
+
+\section{Weak relaxation and estimation without matching}\label{weakrelaxation}
+This section uses only the stationary floor and critical moment cap.
+It does not require exact coordinate marginals. Normalize $\E hPh=1$,
+put $\nu=\pi\mu$ with $\pi=hg$, and retain the actual kernel $K$ from
+Section~1. For real $f$ set $O=\operatorname{osc}(f)=\max f-\min f$ and
+\[
+ \mathcal D_K(f)=\langle f,(I-K)f\rangle_\nu
+ =\frac12\E_{\mathfrak m}
+       h(x)h(y)(f(x)-f(y))^2,\qquad
+ \mathfrak m(x,y)=\mu(x)P(x,y).
+\]
+Here $\mathfrak m$ is a probability measure on pairs. Write $\mathcal D_P$
+for the same expression with the factor $h(x)h(y)$ removed. All constants
+below depend on the fixed noise and floor, and not on the dimension or
+the potential.
+Within this section, $N$ denotes the integer sample length, not the
+weighting normalizer $\E(h/g)$ of Section~1; $C$ and $c$ below denote
+the local weak-Poincare constants, not earlier matching or window constants.
+
+\subsection{An inverse edge moment and a weak Poincare inequality}
+\begin{theorem}\label{weakpoincare}
+Assume $h>0$, $\E hPh=1$, $\pi\geq b>0$, and $\E\pi^s\leq2$,
+where $s=(1+\rho)/(1-\rho)$. Define
+\[
+ s'=\frac{1+\rho}{2\rho},\quad B=2^{1/s},\quad
+ a=\frac{2\rho}{(1+\rho)^2},\quad
+ p=\frac{1-a}{a}=\frac{1+\rho^2}{2\rho},
+\]
+\[
+ C=B(1-\rho)^{-1/s'}b^{-2a},\qquad
+ c=C^{-1/a}
+   =b^2(1-\rho)^{1+\rho}2^{-(1-\rho^2)/(2\rho)}.
+\]
+Then every real $f$, every $\epsilon>0$, and every integer $n\geq0$
+satisfy
+\begin{align}
+ \operatorname{Var}_\nu(f)
+ &\leq C\mathcal D_K(f)^a O^{2(1-a)},\label{weakenergy}\\
+ \operatorname{Var}_\nu(f)
+ &\leq c^{-1}\epsilon^{-p}\mathcal D_K(f)+\epsilon O^2,
+       \label{weakform}\\
+ \operatorname{Var}_\nu(K^n f)
+ &\leq O^2(1+pcn)^{-1/p}.\label{weakdecay}
+\end{align}
+\end{theorem}
+\begin{proof}
+Let $Q=P_{\sqrt\rho}$. Energy normalization gives $\|Qh\|_2=1$.
+Ordinary Boolean hypercontractivity, in the form
+$P_\theta:L^u\to L^v$ for $1<u\leq v<\infty$ when $\theta^2\leq(u-1)/(v-1)$,
+gives $\|g\|_R\leq1$ for $R=1+1/\rho$, since $g=Q(Qh)$.
+The original floor gives $1/h\leq g/b$, hence
+$\|1/h\|_R\leq b^{-1}$. These inverse moments are derived, not assumed.
+
+Set $r_0=1/\rho$, $w(x,y)=h(x)h(y)$, and $v=h^{-r_0}$.
+A second use of hypercontractivity, $Q:L^{1+\rho}\to L^2$, yields
+\[
+ \E_{\mathfrak m}w^{-r_0}
+ =\langle v,Pv\rangle_\mu=\|Qv\|_2^2
+ \leq\|v\|_{1+\rho}^2
+ =\|1/h\|_{r_0(1+\rho)}^{2r_0}
+ \leq b^{-2r_0}.
+\]
+For $O>0$, let $z=(f(x)-f(y))^2/O^2\in[0,1]$ and
+$\alpha=r_0/(1+r_0)=1/(1+\rho)$. H\"older's inequality gives
+\[
+ \E_{\mathfrak m}z
+ \leq(\E_{\mathfrak m}wz)^\alpha
+       (\E_{\mathfrak m}w^{-r_0}z)^{1-\alpha}
+ \leq(2\mathcal D_K(f)/O^2)^\alpha b^{-2\alpha}.
+\]
+Consequently
+\[
+ \mathcal D_P(f)
+ \leq 2^{\alpha-1}b^{-2\alpha}
+         \mathcal D_K(f)^\alpha O^{2(1-\alpha)}
+ \leq b^{-2\alpha}\mathcal D_K(f)^\alpha O^{2(1-\alpha)}.
+\]
+We deliberately discard a factor at most one. The Walsh spectrum gives
+$\operatorname{Var}_\mu(f)\leq\mathcal D_P(f)/(1-\rho)$.
+For $m_f=\E_\mu f$, we have $|f-m_f|\leq O$ and
+\[
+ \operatorname{Var}_\nu(f)
+ \leq\E_\mu\pi(f-m_f)^2
+ \leq B\bigl(\E_\mu|f-m_f|^{2s'}\bigr)^{1/s'}
+ \leq B O^{2/s}\operatorname{Var}_\mu(f)^{1/s'}.
+\]
+Combining proves \eqref{weakenergy}, since $a=\alpha/s'$.
+For $y=\operatorname{Var}_\nu(f)/O^2$ and
+$e=\mathcal D_K(f)/O^2$, it says $e\geq c y^{1+p}$.
+If $y\leq\epsilon$, \eqref{weakform} is immediate; otherwise
+$y\leq c^{-1}\epsilon^{-p}e$, proving the same assertion.
+
+For completeness, the discrete-time decay is derived directly.
+The conjugate $M_{\sqrt{h/g}}P M_{\sqrt{h/g}}$ is positive semidefinite,
+so the self-adjoint Markov operator $K$ has spectrum in $[0,1]$.
+For $F=K^n f$ this implies
+\[
+ \operatorname{Var}_\nu(F)-\operatorname{Var}_\nu(KF)
+ =\langle F,(I-K^2)F\rangle_\nu\geq\mathcal D_K(F).
+\]
+Also $\operatorname{osc}(K^n f)\leq O$. Therefore
+$y_n=\operatorname{Var}_\nu(K^n f)/O^2$ obeys
+$y_{n+1}\leq y_n-cy_n^{1+p}$.
+For positive consecutive terms, convexity of $t\mapsto t^{-p}$ gives
+\[
+ y_{n+1}^{-p}-y_n^{-p}
+ \geq p(y_n-y_{n+1})y_n^{-p-1}\geq pc.
+\]
+Summing and using $y_0\leq1$ proves \eqref{weakdecay}.
+If a variance vanishes, all subsequent variances vanish; if $O=0$,
+all statements are immediate.
+\end{proof}
+
+\subsection{Summable relaxation at noise one half}
+The floor identity used in Section~3 supplies a stronger inverse
+moment at $\rho=1/2$. One additional positive-moment smoothing step
+then makes the bounded-observable decay summable.
+\begin{theorem}\label{summablerelaxation}
+Assume $\rho=1/2$, $h>0$, $\E hPh=1$, $\pi\geq b>0$ and
+$\E\pi^3\leq2$. Put
+\[
+ c_* = b^4 2^{-61/24},\qquad C_F=3+32/c_*.
+\]
+For all real $f$ and integers $n\geq0$,
+\[
+ \operatorname{Var}_\nu(K^n f)
+ \leq O^2\bigl(1+(7/8)c_*n\bigr)^{-8/7}.
+\]
+For the stationary chain $(X_i)$ with transition $K$ and all integers
+$N\geq1$,
+\[
+ \operatorname{Var}\left(\frac1N\sum_{i=0}^{N-1}f(X_i)\right)
+ \leq \frac{C_F O^2}{N}.
+\]
+\end{theorem}
+\begin{proof}
+The floor gives $h\geq b/g$, hence
+$g\geq bP(1/g)\geq b/(Pg)$ by rowwise Jensen. Thus $1/g\leq Pg/b$.
+Since $Pg=P_{\rho^{3/2}}Qh$ and $\|Qh\|_2=1$, hypercontractivity at
+$\rho=1/2$ gives $\|Pg\|_9\leq1$ and $\|1/g\|_9\leq b^{-1}$.
+With $B=2^{1/3}$, H\"older and $h=\pi/g$ yield
+$\|h\|_{9/4}\leq B/b$. Hypercontractivity
+$P_{1/2}:L^{9/4}\to L^6$ gives $\|g\|_6\leq B/b$.
+The original floor again implies
+\[
+ \|1/h\|_6\leq H:=B/b^2.
+\]
+In the notation of the preceding proof, now set $v=h^{-4}$. Then
+\[
+ \E_{\mathfrak m}w^{-4}
+ =\|Qv\|_2^2\leq\|v\|_{3/2}^2=\|1/h\|_6^8\leq H^8.
+\]
+Repeating the edge comparison with $\alpha=4/5$, and again discarding
+$2^{\alpha-1}\leq1$, gives
+\[
+ \mathcal D_P(f)\leq
+ H^{8/5}\mathcal D_K(f)^{4/5}O^{2/5}.
+\]
+Use the noise gap $1/2$ and the variance transfer with $s'=3/2$ to obtain
+\[
+ \operatorname{Var}_\nu(f)
+ \leq C_*\mathcal D_K(f)^{8/15}O^{14/15},\qquad
+ C_*=B\,2^{2/3}H^{16/15}.
+\]
+Here $C_*^{-15/8}=b^4 2^{-61/24}=c_*$.
+The discrete recursion in the preceding proof applies with
+$a_*=8/15$ and $p_*=(1-a_*)/a_*=7/8$, proving the claimed decay.
+
+Center $f$ by its $\nu$-mean and let
+$\gamma_j=\operatorname{Cov}(f(X_0),f(X_j))
+=\langle f,K^j f\rangle_\nu$. Positivity and self-adjointness give
+\[
+ 0\leq\gamma_{2m+1}\leq
+ \gamma_{2m}=\operatorname{Var}_\nu(K^m f).
+\]
+With $A=(7/8)c_*$, the decreasing bound satisfies
+\[
+ \sum_{m\geq1}(1+Am)^{-8/7}
+ \leq\int_0^\infty(1+Ax)^{-8/7}\,dx
+ =7/A=8/c_*.
+\]
+Consequently
+\[
+ \sum_{j\geq1}\gamma_j
+ \leq\operatorname{Var}_\nu(f)
+       +2\sum_{m\geq1}\operatorname{Var}_\nu(K^m f)
+ \leq O^2(1+16/c_*).
+\]
+The exact finite-$N$ covariance identity now gives
+\[
+ \operatorname{Var}\left(\frac1N\sum_{i=0}^{N-1}f(X_i)\right)
+ =\frac{N\gamma_0+2\sum_{j=1}^{N-1}(N-j)\gamma_j}{N^2}
+ \leq\frac{\gamma_0+2\sum_{j\geq1}\gamma_j}{N}
+ \leq\frac{(3+32/c_*)O^2}{N}.
+\]
+No conditional summation or continuous-time substitution is used.
+\end{proof}
+
+\subsection{Uniform initialization and mean-square error}
+\begin{corollary}\label{uniformstart}
+Under the assumptions of Theorem~\ref{summablerelaxation}, start the
+actual $K$-chain in the uniform reference law $\mu$. For every real $f$
+and integer $N\geq1$,
+\[
+ \mathbb E_{\mu\text{-start}}
+ \left[\left(\frac1N\sum_{i=0}^{N-1}f(X_i)-\nu(f)\right)^2\right]
+ \leq \frac{C_F O^2}{bN}.
+\]
+This is a mean-square error bound including any initialization bias.
+\end{corollary}
+\begin{proof}
+For an initial law $\eta$, the finite-path likelihood ratio relative
+to the stationary path is exactly
+\[
+ \frac{d\mathbb P_\eta^{(N)}}{d\mathbb P_\nu^{(N)}}
+ (x_0,\ldots,x_{N-1})=\frac{\eta(x_0)}{\nu(x_0)}.
+\]
+The transition factors cancel. Hence $\eta\leq M\nu$ implies
+$\mathbb E_\eta Z\leq M\mathbb E_\nu Z$ for every nonnegative path
+functional $Z$. For $\eta=\mu$, the original floor supplies
+$\mu(x)/\nu(x)=1/\pi(x)\leq1/b$. Apply this comparison to the squared
+error and use Theorem~\ref{summablerelaxation}; stationarity makes its
+variance equal to its mean-square error about $\nu(f)$.
+\end{proof}
+The required initial-density domination is proved from the floor for
+this specific initialization. No dimension-free domination is asserted
+for a fixed starting vertex. The uniform-start estimator need not be
+unbiased or stationary. No concentration inequality or optimality claim
+is made.
+
+These theorems concern oscillation-controlled observables. In particular,
+\eqref{weakenergy} applied to a nonconstant eigenfunction only gives
+\[
+ 1-\lambda\geq
+ c\left(\frac{\operatorname{Var}_\nu(f)}
+               {\operatorname{osc}(f)^2}\right)^p.
+\]
+The ratio may be arbitrarily small along a dimension-varying family.
+Thus these results do not establish a dimension-uniform $L^2(\nu)$ gap,
+do not bound the killed operator of Section~\ref{localization}, and do
+not remove matching from the stronger open spectral question.
+
+\section{Full gaps from a positive potential background}\label{backgroundgap}\label{twolevelgap}
+A fixed lower bound on the normalized potential allows arbitrary upper
+heights and arbitrarily many values. We first prove this general sufficient
+condition and then recover the two-level class from its stationary floor.
+The lower potential bound is not derived here for arbitrary potentials
+satisfying the original stationary hypotheses.
+
+\begin{theorem}\label{backgroundfullgap}
+Fix $0<\rho<1$ and $0<a\leq1$. Let $h\geq a$ on $\{-1,1\}^L$, $L\geq1$,
+normalize $\E hP_\rho h=1$, and assume $\E\pi^s\leq2$, where
+$\pi=hP_\rho h$ and $s=(1+\rho)/(1-\rho)$. Then the actual Doob kernel has
+\[
+ \operatorname{gap}(K)\geq G_J(\rho,a)>0
+\]
+uniformly in $L$ and $h$. No matching or upper bound on $h$ is needed.
+The following explicit constants suffice; all symbols are local:
+\begin{gather*}
+ s'=s/(s-1),\qquad B=2^{1/s},\qquad c=a/2,\qquad M=B/a,
+ \qquad\eta=\frac{c}{c+M},\\
+ t=\min\left\{2^{-s},\left(\frac{\eta^2c}{4M}\right)^s\right\},
+ \qquad\epsilon=c^2t,\\
+ \gamma=\frac{c^2(1-\rho)\epsilon^{s'-1}}{2^{s'}B^{2s'}},
+ \qquad\Phi_* =\min\{\eta/2,\gamma\},
+ \qquad G_J(\rho,a)=\Phi_*^2/4.
+\end{gather*}
+The constants are positive and deliberately conservative.
+\end{theorem}
+\begin{proof}
+Put $P=P_\rho$, $Q=P_{\sqrt\rho}$, $g=Ph$, and $\nu=\pi\mu$.
+Since $g\geq a$, the cap gives $\|h\|_s\leq B/a=M$.
+Write $h=c+z$, so $z\geq c>0$, $\|z\|_s\leq M$, and $g=c+Pz$.
+
+\paragraph{Critical multiplication and the actual denominator.}
+Ordinary hypercontractivity~\cite{odonnelllecture} and
+$1/(1+\rho)=1/2+1/(2s)$ yield
+\[
+ \|QM_{\sqrt z}f\|_2\leq\|\sqrt z f\|_{1+\rho}
+ \leq\|z\|_s^{1/2}\|f\|_2\leq\sqrt M\|f\|_2.
+\]
+The same inequality for a function supported on $C$ gives
+$\|Q1_C\|_{2\to2}\leq\mu(C)^{1/(2s)}$.
+All operator norms in this proof, except those explicitly assigned to
+$L^2(\nu)$, use $L^2(\mu)$ or its orthogonal direct sum.
+Set $A=M_{\sqrt z}PM_{\sqrt z}$ and $R=M_{Pz}$. Then
+$0\preceq A\preceq MI$. Reversibility also gives the exact identity
+\[
+ \langle v,(R-A)v\rangle_\mu
+ =\frac12\sum_{x,y}\mu(x)P(x,y)z(x)z(y)
+ \left(\frac{v(x)}{\sqrt{z(x)}}-
+             \frac{v(y)}{\sqrt{z(y)}}\right)^2\geq0.
+\]
+Thus $A\preceq R$. With $\theta=c/(c+M)=\eta$ and
+$\lambda=M/(c+M)$, convex combination gives
+\[
+ A\preceq\theta MI+(1-\theta)R=\lambda(cI+R).
+\]
+Congruence and $g=c+Pz$ prove
+\begin{equation}\label{backgroundexcess}
+ M_{1/\sqrt g} A M_{1/\sqrt g}\preceq(1-\eta)I.
+\end{equation}
+This uses the nonconstant denominator exactly and assumes no upper bound
+on $z$.
+
+\paragraph{An exact two-component representation.}
+Let $S=M_{\sqrt{h/g}}PM_{\sqrt{h/g}}$, the conjugate of $K$ by the
+isometry $f\mapsto\sqrt\pi f$ from $L^2(\nu)$ to $L^2(\mu)$.
+Define
+\[
+ Wf=\left(\sqrt{c/h}\,f,\sqrt{z/h}\,f\right),\qquad W^*W=I.
+\]
+For $T=WSW^*$, direct multiplication gives
+\[
+ T_{ij}=M_{\sqrt{h_i/g}}PM_{\sqrt{h_j/g}},
+ \qquad h_0=c,\quad h_1=z.
+\]
+In particular $T_{11}$ is the operator in \eqref{backgroundexcess}.
+Both $W$ and $W^*$ commute with the same set restriction on each
+component. Hence the compressions satisfy
+\begin{equation}\label{backgroundcompression}
+ S_{CC}=W_C^*T_{CC}W_C,\qquad\|S_{CC}\|\leq\|T_{CC}\|.
+\end{equation}
+The larger space supplies an exact identity for the original operator,
+not a new assumption or a substitute chain.
+
+\paragraph{Small cuts.}
+The multiplier $\sqrt{c/g}$ is at most one. Therefore
+\[
+ \|T_{00,CC}\|\leq\|1_CP1_C\|\leq\mu(C)^{1/s},
+ \qquad\|T_{11,CC}\|\leq1-\eta.
+\]
+For the cross block factor $P=Q^2$. Bound the left diagonal multiplier
+by one and the far-right $g^{-1/2}$ by $c^{-1/2}$. The latter commutes
+with $\sqrt z$ and $1_C$, without being moved through $Q$. Thus
+\[
+ \|T_{01,CC}\|
+ \leq c^{-1/2}\|1_CQ\|\,\|QM_{\sqrt z}1_C\|
+ \leq\sqrt{M/c}\,\mu(C)^{1/(2s)}.
+\]
+If $0<\nu(C)\leq\epsilon$, then $\pi=hg\geq a^2\geq c^2$ gives
+$\mu(C)\leq t$. The diagonal blocks are bounded by $1/2$ and
+$1-\eta$, respectively, while the cross block is bounded by $\eta/2$.
+Since $0<\eta<1/2$, the block-diagonal part has norm at most $1-\eta$.
+The self-adjoint off-diagonal part has norm $\|T_{01,CC}\|$, so
+$\|T_{CC}\|\leq1-\eta/2$.
+
+Define the actual outward stationary flow
+\[
+ F_h(C)=\sum_{x\in C,\,y\notin C}\mu(x)P(x,y)h(x)h(y)
+       =\mathcal D_K(1_C).
+\]
+The vector $\sqrt\pi\,1_C$ has squared norm $\nu(C)$.
+Using \eqref{backgroundcompression} and conjugacy yields
+\begin{equation}\label{backgroundsmallflow}
+ F_h(C)=\nu(C)-\langle1_C,K1_C\rangle_\nu
+       \geq(\eta/2)\nu(C).
+\end{equation}
+Every such cut is covered, regardless of the values of $h$ within it.
+
+\paragraph{Remaining cuts and the full gap.}
+For $\epsilon\leq\nu(C)\leq1/2$, the actual edge measure and $h\geq c$
+give
+\[
+ F_h(C)\geq c^2\mathcal D_P(1_C)
+       \geq c^2(1-\rho)\mu(C)\mu(C^c).
+\]
+The cap implies $\nu(E)\leq B\mu(E)^{1/s'}$ for every $E$. Hence
+\[
+ \mu(C)\geq(\nu(C)/B)^{s'},\qquad
+ \mu(C^c)\geq(1/(2B))^{s'},
+\]
+and consequently
+\[
+ \frac{F_h(C)}{\nu(C)}
+ \geq\frac{c^2(1-\rho)\nu(C)^{s'-1}}{2^{s'}B^{2s'}}\geq\gamma.
+\]
+Together with \eqref{backgroundsmallflow}, these bounds imply
+$\Phi(K)\geq\Phi_*$ for conductance
+$\Phi(K)=\min_{0<\nu(C)\leq1/2}F_h(C)/\nu(C)$.
+The lazy reversible Cheeger theorem~\cite{peres}, applied to
+$\overline K=(I+K)/2$, gives
+\[
+ \operatorname{gap}(K)/2\geq\tfrac12(\Phi(K)/2)^2,
+ \qquad\operatorname{gap}(K)\geq\Phi_*^2/4.
+\]
+All transformations are valid also for constant $h$ and $a=1$, because
+$z\geq c>0$. This proves the theorem.
+\end{proof}
+
+\begin{corollary}\label{twolevelfullgap}
+Fix $0<\rho<1$ and $0<b<1$. Every normalized positive potential taking
+at most two values and satisfying $\pi\geq b$ and $\E\pi^s\leq2$ obeys
+$\operatorname{gap}(K)\geq G_J(\rho,b/2)>0$, without matching or any
+additional restriction on the level ratio or geometry.
+\end{corollary}
+\begin{proof}
+For a constant potential normalization gives $h=1$.
+Otherwise let $h=M_0$ on a set of mass $\alpha\in(0,1)$ and $h=m_0<M_0$
+on its complement. The constant Fourier component gives $\E h\leq1$.
+Integrating the floor on the low set yields $m_0\geq b(1-\alpha)$.
+Since $g\leq M_0$, the floor there also gives $m_0M_0\geq b$, while
+$M_0\alpha\leq\E h\leq1$ implies $m_0\geq b\alpha$.
+Thus $h\geq m_0\geq b/2$. Apply Theorem~\ref{backgroundfullgap}.
+\end{proof}
+This recovers the two-level conclusion, with possibly weaker constants
+than the separately preserved direct proof. Its geometric restriction
+has been replaced in the broader theorem by the explicit sufficient
+condition $h\geq a$; that condition is derived here only for the
+stated two-level class.
+
+For any normalized family at fixed $\rho$ with $\E\pi_L^s\leq2$, a
+collapsing gap necessarily implies $\min_x h_L(x)\to0$.
+Otherwise a subsequence has a fixed positive minimum, contradicting
+Theorem~\ref{backgroundfullgap}. This is a necessary mechanism,
+not the construction of such a family. The original stationary floor
+and matching have not been shown to exclude it.
+
+\subsection{The stationary floor does not supply a potential minimum}
+The extra minimum in Theorem~\ref{backgroundfullgap} cannot be derived
+from the stationary floor and cap alone, even for three-level potentials.
+The following construction does not impose exact matching.
+\begin{proposition}\label{vanishingminimum}
+Fix $0<\rho<1$, $0<b<1$ and any finite $s>1$.
+There are energy-normalized positive potentials $h_L$ such that
+$\pi_L=h_LP_\rho h_L\geq b$ and
+\[
+ \|\pi_L-1\|_s\longrightarrow0,\qquad
+ \|h_L-1\|_{2s}\longrightarrow0,\qquad
+ \min h_L\longrightarrow0.
+\]
+For all sufficiently large $L$, the potential has exactly three values,
+$\E\pi_L^s\leq2$, and $(P_\rho h_L)(x_0)\to\infty$ at
+$x_0=(1,\ldots,1)$. These are actual Doob kernels. No exact stationary
+matching is imposed here; its critical-exponent spectral behavior is
+established below in Theorem~\ref{vanishingminimumgap}.
+\end{proposition}
+\begin{proof}
+Write $p=(1-\rho)/2$ and $q=(p+1/2)/2$, so $p<q<1/2$.
+For Hamming distance $D$, set
+\[
+ A=\{y:1\leq D(x_0,y)\leq qL\},\quad
+ \alpha=\mu(A),\quad\delta=2^{-L},\quad
+ r=P_\rho(x_0,A),\quad u=(1-p)^L.
+\]
+The binomial distributions of $D$ under $\mu$ and $P_\rho(x_0,\cdot)$,
+respectively, and Chebyshev's inequality give
+\[
+ \alpha\leq\frac1{4L(1/2-q)^2}\to0,\qquad
+ 1-r\leq u+\frac{p(1-p)}{L(q-p)^2}\to0.
+\]
+For large $L$, $A$ is nonempty and its complement contains points besides
+$x_0$. Also $P_\rho(y,x_0)\leq u$ for every $y$, since $p<1/2$.
+Put $M=\alpha^{-1/(4s)}>1$ and $\beta=(1+b)/2$.
+There is a unique $0<t<1$ satisfying
+\[
+ t(ut+Mr+1-u-r)=\beta:
+\]
+the left side is strictly increasing from zero, and at $t=1$ it equals
+$1+(M-1)r>1>\beta$. Moreover $t\leq\beta/(Mr)\to0$.
+Define $H=t$ at $x_0$, $H=M$ on $A$, and $H=1$ elsewhere.
+With $P=P_\rho$, $Z=\E HPH$ and $h=H/\sqrt Z$, we have
+$H(x_0)(PH)(x_0)=\beta$ and $\E hPh=1$ exactly.
+Positivity of $P$ and $1-1_{\{x_0\}}\leq H\leq1+M1_A$ imply
+\[
+ 1-2\delta+\delta u\leq Z
+ \leq1+2M\alpha+M^2\langle1_A,P1_A\rangle
+ \leq1+2M\alpha+M^2\alpha\longrightarrow1.
+\]
+Outside $x_0$, $H\geq1$ and $PH\geq1-P(\cdot,x_0)\geq1-u$.
+Hence $\pi=HPH/Z\geq\min\{\beta,1-u\}/Z\geq b$ eventually.
+
+For $R=HPH$, the same upper bound on $H$ gives
+\[
+ R\leq1+M1_A+MP1_A+M^2 1_A P1_A.
+\]
+Jensen's inequality and invariance of $\mu$ give
+$\|P1_A\|_s\leq\alpha^{1/s}$; also $P1_A\leq1$.
+Consequently
+\[
+ \|(R-1)_+\|_s\leq2M\alpha^{1/s}+M^2\alpha^{1/s}
+ =2\alpha^{3/(4s)}+\alpha^{1/(2s)}\to0.
+\]
+The lower bound outside $x_0$ and $R(x_0)=\beta$ give
+$\|(1-R)_+\|_s\leq u+(1-\beta)\delta^{1/s}\to0$.
+Thus $\|R-1\|_s\to0$, and normalization yields
+$\|\pi-1\|_s\to0$ and $\E\pi^s\to1$.
+Furthermore
+\[
+ \|H-1\|_{2s}^{2s}
+ =\alpha(M-1)^{2s}+\delta(1-t)^{2s}
+ \leq\alpha^{1/2}+\delta\to0.
+\]
+It follows that $\|h-1\|_{2s}\to0$ while
+$\min h=t/\sqrt Z\to0$ and
+$(Ph)(x_0)=\beta/(t\sqrt Z)\to\infty$.
+Fill any remaining small dimensions with $h=1$.
+The actual kernel $K(x,y)=P(x,y)h(y)/(Ph)(x)$ is stochastic, and
+$\mu(x)\pi(x)K(x,y)=\mu(x)P(x,y)h(x)h(y)$ proves reversibility.
+\end{proof}
+For $|f|\leq1$, the construction gives
+$|\E\pi_L f-\E f|\leq\|\pi_L-1\|_1\to0$, uniformly over such tests.
+This includes approximate marginal matching of every order, but no
+asymptotic error is set equal to zero. The original question requires
+exact labelled matching. Vanishing minima are a necessary condition for
+collapse supplied by Theorem~\ref{backgroundfullgap}, not a sufficient
+one; Proposition~\ref{vanishingminimum} supplies no gap-collapse example.
+The construction uses classical binomial estimates and elementary
+normalization. Its role here is to close this particular failed bridge;
+global priority and significance are not established.
+
+\subsection{Exact matching does not restore the potential minimum}
+The approximate matching in Proposition~\ref{vanishingminimum} can be
+corrected exactly while preserving its exceptional small potential value.
+We first establish the needed finite-dimensional stability estimate.
+Positive matrix scaling is classical; see the setup in Lee's
+lecture~\cite{lee2016}. The arguments needed here are included in full.
+
+\begin{lemma}\label{inversestationary}
+Let $P$ be a strictly positive symmetric stochastic matrix on $n$ points
+with uniform probability $\mu$. Every strictly positive mean-one density
+$w$ has a unique positive solution of $hPh=w$. If $P$ is also positive
+semidefinite, and $w_\tau=w_0+\tau e\geq b_0>0$ for $0\leq\tau\leq1$
+with $\E e=0$, the corresponding solutions satisfy
+\[
+ \|\log h_1-\log h_0\|_\infty
+ \leq\frac{\lceil\tfrac12\log_2(n/b_0)\rceil+2}{2b_0}
+       \|e\|_\infty.
+\]
+\end{lemma}
+\begin{proof}
+For $v\in\mathbb R^n$, consider
+\[
+ F_w(v)=\frac12\sum_{x,y}\mu(x)P(x,y)e^{v_x+v_y}
+              -\sum_x\mu(x)w(x)v_x.
+\]
+The diagonal exponential terms make the Hessian positive definite;
+all other exponential terms are convex. Thus $F_w$ is strictly convex.
+Writing $m=\max_x v_x$ and
+$d=\tfrac12\min_x\mu(x)P(x,x)>0$, we have
+$F_w(v)\geq de^{2m}-m$, because $\sum\mu w=1$.
+Every sublevel set therefore has its maximum coordinate bounded above.
+If any coordinate tends to $-\infty$ while all coordinates are bounded
+above, its strictly positive linear weight forces $F_w\to\infty$.
+Thus sublevel sets are bounded, and a unique minimizer exists. Its
+stationary equation is $e^{v_x}(Pe^v)(x)=w(x)$, proving existence and
+uniqueness with $h=e^v$. The positive definite Hessian and the implicit
+function theorem give smooth dependence along the path $w_\tau$;
+existence at every parameter and uniqueness join the local solutions.
+
+For the actual kernel $K(x,y)=P(x,y)h(y)/(Ph)(x)$ with stationary
+$\nu=w\mu$, positive semidefiniteness of $P$ implies that the spectrum
+of $K$ lies in $[0,1]$. Let $\nu_* =\min_x\nu(x)$, $A=\nu_*^{-1/2}$,
+$m=\lceil\log_2 A\rceil$ and $T=(I-K)/2$.
+The absolute row sum of $T$ is $1-K(x,x)\leq1$, whereas its
+$L^2(\nu)$ operator norm is at most $1/2$. Hence
+\[
+ \|T^j\|_{\infty\to\infty}\leq\min\{1,A2^{-j}\}.
+\]
+Here the second estimate follows from
+$|f(x)|\leq\|f\|_{L^2(\nu)}/\sqrt{\nu_*}$.
+The convergent series and its norm bound give
+\[
+ (I+K)^{-1}=\frac12\sum_{j\geq0}T^j,\qquad
+ \|(I+K)^{-1}\|_{\infty\to\infty}
+ \leq\frac12\left(m+\sum_{j=m}^{\infty}A2^{-j}\right)
+ \leq\frac{m+2}{2}.
+\]
+No Markov property of $T$ or gap bound at the top of the spectrum is
+assumed. Differentiating the defining pointwise equation gives
+\[
+ \frac{d}{d\tau}\log w_\tau
+       =(I+K_\tau)\frac{d}{d\tau}\log h_\tau.
+\]
+Along the path $\nu_*\geq b_0/n$ and
+$\|d\log w_\tau/d\tau\|_\infty\leq\|e\|_\infty/b_0$.
+Integrating proves the displayed estimate.
+\end{proof}
+
+\begin{proposition}\label{exactvanishingminimum}
+For every fixed $0<\rho<1$, $0<b<1$ and $C>0$, there is a sequence
+satisfying all of \eqref{admissible}, with energy normalization
+$\E h_LP_\rho h_L=1$, such that, for $s=(1+\rho)/(1-\rho)$,
+\[
+ \|\pi_L-1\|_s\to0,\qquad \|h_L-1\|_{2s}\to0,\qquad
+ h_L(x_0)\to0,\qquad (P_\rho h_L)(x_0)\to\infty.
+\]
+In particular $\min h_L\to0$. Theorem~\ref{vanishingminimumgap}
+classifies the actual gap of this family. Preservation of three potential
+values is not asserted.
+\end{proposition}
+\begin{proof}
+Apply Proposition~\ref{vanishingminimum} with the larger stationary
+floor $b_1=(1+b)/2$, using its notation $\pi,h,R,Z,\alpha,M,u,\delta$
+and $\beta=(1+b_1)/2$.
+Its rare-set probability is exponentially small. Indeed, exponential
+Markov applied to $D\sim\operatorname{Bin}(L,1/2)$ yields
+\[
+ \alpha\leq\Pr(D\leq qL)
+ \leq\left[e^{\lambda q}\frac{1+e^{-\lambda}}2\right]^L.
+\]
+The bracket is one at $\lambda=0$ and its logarithmic derivative there
+is $q-1/2<0$; choose a fixed small $\lambda>0$ making it $a\in(0,1)$.
+The preceding proof also gives
+\[
+ \|R-1\|_1\leq2M\alpha+M^2\alpha+u+(1-\beta)\delta
+ =2\alpha^{1-1/(4s)}+\alpha^{1-1/(2s)}+u+(1-\beta)\delta.
+\]
+Every term decays exponentially. Since $|Z-1|\leq\|R-1\|_1$ and
+$Z\to1$, there are fixed $A_1,c>0$ with
+$\|\pi-1\|_1\leq A_1e^{-cL}$ for all sufficiently large $L$.
+
+Put $k=k_L$ as in \eqref{admissible}, and subtract the nonconstant
+low-degree Fourier projection:
+\[
+ e_L=-\sum_{1\leq|S|\leq k}(\E\pi\chi_S)\chi_S,\qquad
+ w_L=\pi+e_L.
+\]
+Each coefficient has magnitude at most $\|\pi-1\|_1$. The number of
+terms is at most $kL^k$ eventually, whose logarithm is
+$O(\sqrt L\log L)=o(L)$. Consequently
+\[
+ \epsilon_L:=\|e_L\|_\infty\leq kL^k A_1e^{-cL},\qquad
+ L\epsilon_L\to0.
+\]
+Orthogonality gives $\E w_L=1$ and $\E w_L\chi_S=0$ for every
+$1\leq|S|\leq k$ exactly. Along $\pi+\tau e_L$, the floor is at
+least $b_1-\epsilon_L\geq b$ eventually. Also
+$\|w_L-1\|_s\leq\|\pi-1\|_s+\epsilon_L\to0$, so its moment
+is eventually at most two.
+
+The noise matrix is strictly positive and positive definite, with
+Walsh eigenvalues $\rho^{|S|}>0$. Lemma~\ref{inversestationary}
+provides a positive $\widetilde h_L$ satisfying
+$\widetilde h_L P_\rho\widetilde h_L=w_L$, with
+\[
+ \eta_L:=\|\log(\widetilde h_L/h_L)\|_\infty
+ \leq\frac{\lceil (L+\log_2(1/b))/2\rceil+2}{2b}\epsilon_L\to0.
+\]
+Thus $e^{-\eta_L}h_L\leq\widetilde h_L\leq e^{\eta_L}h_L$.
+The vanishing value at $x_0$ and the divergent value of $P_\rho h_L$
+there persist. Moreover
+\[
+ \|\widetilde h_L-h_L\|_{2s}
+ \leq(e^{\eta_L}-1)\|h_L\|_{2s}\to0,
+\]
+so the potential norm convergence persists as well. Its energy is
+$\E w_L=1$, and its actual stationary density is exactly $w_L$.
+Use $\widetilde h_L=1$ in the finitely many earlier dimensions and
+rename the resulting sequence $h_L$.
+\end{proof}
+This refutes the proposed implication from the full original stationary
+hypotheses to a uniform normalized potential minimum. It does not
+refute the spectral-gap question: the necessary condition for collapse
+from Theorem~\ref{backgroundfullgap} has been attained, not shown
+sufficient. Further full-gap arguments must control the actual chain
+without deducing such a minimum. The finite reconstruction is an
+analytic existence proof, not an executed matrix-scaling certificate;
+no claim of global priority for its stability specialization is made.
+
+\subsection{The vanishing-minimum family retains the noise gap}
+The exact-matching construction above can be classified spectrally.
+Its small potential value does not produce a collapsing gap. The proof
+uses an estimate for the actual ratio $h/(Ph)$, rather than transferring
+stationary moment convergence directly to the spectrum.
+
+\begin{lemma}\label{criticalsandwich}
+Put $s=(1+\rho)/(1-\rho)$ and $Q=P_{\sqrt\rho}$ on the Boolean cube.
+For every real function $v$ and every positive potential $H$, put
+$U=H/(PH)$. Then
+\[
+ \|QM_vQ\|_{2\to2}\leq\|v\|_s,
+ \qquad
+ |\operatorname{gap}(K_H)-(1-\rho)|\leq\|U-1\|_s.
+\]
+More generally, every ordered eigenvalue of $K_H$ differs from the
+corresponding ordered eigenvalue of $P$ by at most $\|U-1\|_s$.
+\end{lemma}
+\begin{proof}
+The conjugate exponent is $s'=(1+\rho)/(2\rho)$, so
+$2s'=1+1/\rho$. Classical Boolean hypercontractivity gives
+$\|Qf\|_{2s'}\leq\|f\|_2$: its noise condition is the equality
+$\sqrt\rho=\sqrt{(2-1)/(2s'-1)}$; see Chapter 10.1 of
+\cite{odonnell}. Holder's inequality with exponents $s,2s',2s'$
+therefore gives
+\[
+ |\langle f,QM_vQg\rangle|
+ \leq\|v\|_s\|Qf\|_{2s'}\|Qg\|_{2s'}
+ \leq\|v\|_s\|f\|_2\|g\|_2.
+\]
+For the spectral assertion, the actual reversible conjugate of $K_H$
+is $S=M_{\sqrt U}PM_{\sqrt U}$. Set $X=M_{\sqrt U}Q$.
+Then $S=XX^*$ and $T=X^*X=QM_UQ$. Both factors of $X$ are
+invertible: $U>0$ and the Walsh eigenvalues of $Q$ are positive.
+Thus $X^{-1}SX=T$ and $T$ has the full spectrum of the actual chain.
+The first estimate yields
+\[
+ \|T-P\|_{2\to2}=\|QM_{U-1}Q\|_{2\to2}\leq\|U-1\|_s.
+\]
+The min--max principle compares every ordered eigenvalue of the two
+self-adjoint matrices. For $L\geq1$, the second eigenvalue of $P$
+is $\rho$, proving the gap assertion, including its multiplicity.
+\end{proof}
+
+\begin{theorem}\label{vanishingminimumgap}
+Fix $0<\rho<1$, $0<b<1$ and $C>0$. The exactly matched family
+$\widetilde h_L$ constructed in the proof of
+Proposition~\ref{exactvanishingminimum} satisfies
+\[
+ |\operatorname{gap}(K_{\widetilde h_L})-(1-\rho)|
+ \leq C_1e^{-c_1L}
+\]
+for all sufficiently large $L$, with constants $C_1<\infty$ and
+$c_1>0$ depending only on the fixed parameters and construction choices.
+It satisfies all of \eqref{admissible}, although its normalized minimum
+tends to zero and $(P\widetilde h_L)(x_0)$ tends to infinity.
+\end{theorem}
+\begin{proof}
+Use the precursor $H$ from Proposition~\ref{vanishingminimum}, with
+$s=(1+\rho)/(1-\rho)$, and retain its $\alpha,\delta,u,M,t$.
+Since $H\geq1-1_{\{x_0\}}$ and $P(y,x_0)\leq u$ for every $y$,
+\[
+ G:=PH\geq1-u>0
+\]
+at every vertex, including $x_0$. No positive lower bound on $t$ is
+needed. The disjoint exceptional supports and $L^s$ contraction of $P$
+give, with $d_L=\alpha^{3/(4s)}+\delta^{1/s}$,
+\[
+ \|H-1\|_s\leq\alpha^{1/s}(M-1)+\delta^{1/s}(1-t)\leq d_L,
+ \qquad \|H-G\|_s\leq2d_L.
+\]
+Consequently the scale-invariant ratio satisfies
+\[
+ \|U-1\|_s=\|(H-G)/G\|_s
+ \leq\frac{2d_L}{1-u}=:\Delta_L.
+\]
+Energy normalization does not change $U$. For the exact correction,
+Proposition~\ref{exactvanishingminimum} proves
+\[
+ \eta_L=\|\log(\widetilde h_L/h_L)\|_\infty
+ \leq\frac{\lceil(L+\log_2(1/b))/2\rceil+2}{2b}\epsilon_L,
+ \qquad \epsilon_L\leq k_LL^{k_L}A_1e^{-cL}.
+\]
+Positivity of $P$ yields the corresponding multiplicative bounds for
+the denominators, hence
+\[
+ e^{-2\eta_L}U\leq\widetilde U
+ :=\frac{\widetilde h_L}{P\widetilde h_L}\leq e^{2\eta_L}U.
+\]
+Since $\|U\|_s\leq1+\Delta_L$, it follows that
+\begin{equation}\label{correctedratioerror}
+ \|\widetilde U-1\|_s
+ \leq\Delta_L+(e^{2\eta_L}-1)(1+\Delta_L)
+ =e^{2\eta_L}\Delta_L+e^{2\eta_L}-1.
+\end{equation}
+The preceding construction proves $\alpha\leq a^L$ for fixed $a<1$;
+also $u=((1+\rho)/2)^L$ and $\delta=2^{-L}$.
+Finally $\log(k_LL^{k_L})=o(L)$, so
+$\epsilon_L\leq\exp(-cL+o(L))$. This is an upper bound, with no
+lower bound on $\epsilon_L$ asserted or needed. The factor multiplying
+$\epsilon_L$ in the estimate for $\eta_L$ is $O(L)$.
+Thus the right side of \eqref{correctedratioerror} is bounded by
+$C_1e^{-c_1L}$ for a possibly smaller positive rate $c_1$.
+Lemma~\ref{criticalsandwich} now gives the asserted actual-gap estimate.
+The finitely many dimensions filled with $h=1$ do not affect the limit.
+\end{proof}
+
+The classical sandwich estimate supplies no general bound on
+$\|h/(Ph)-1\|_s$ from \eqref{admissible}. Here the all-vertex
+denominator estimate is proved directly for the particular precursor,
+and the nonlinear reconstruction has proved multiplicative stability.
+This closes the constructed vanishing-minimum family as a candidate
+collapse mechanism while preserving its counterexample to deriving a
+potential minimum. The unrestricted stationary-gap question remains open.
+
+
+\section{Positioning, failed routes and remaining question}
+Ordinary and reverse hypercontractivity are classical tools. Mossel, Oleszkiewicz and Sen explicitly state the Boolean reverse inequality, including negative exponents and tensorization, in equation (1.2) \cite{mos}. The use here is the floor-derived identity $gPg\geq b$ and its particular exponent iteration; we do not claim a new hypercontractive inequality. Representation-based decomposition of reversible chains is also classical; Boyd, Diaconis, Parrilo and Xiao discuss commuting symmetries and spectral reduction \cite{boyd}. Our sector estimates explicitly retain all cosets and compare their signed kernels to the quotient kernel. The binary simplex construction is not original. Entropy-volume estimates and random-linear-code existence are classical Gilbert--Varshamov tools; the simultaneous column condition used here is verified directly rather than attributed as an extra clause of the coding theorem \cite{guruswami}.
+
+Weak Poincare inequalities and subgeometric convergence are established tools.
+Andrieu, Lee, Power and Wang~\cite{alpw2022} compare kernels with a common
+invariant measure using tails of a pointwise comparison weight; their
+Theorem~36 permits oscillation as a controlling functional. Section~\ref{weakrelaxation}
+instead compares the actual and reference edge measures and then transfers
+variance using the stationary cap. The inverse edge moment is derived from
+the nonlinear floor. This specialization and its explicit constants do not
+constitute a claim to invent weak Poincare comparison or prove priority.
+The background framework and its breadth are also discussed in~\cite{alpw2023}.
+Our bounded reading of the former covers Proposition~35, Theorem~36 and its
+proof, Remark~37 and the abstract; for the latter it covers the abstract,
+introduction and comparison context. The proofs above include the discrete
+recursion and covariance summation explicitly. Ordinary hypercontractivity
+uses the parameter range stated in~\cite{odonnelllecture}.
+
+The positive-background proof in Section~\ref{backgroundgap} also uses classical hypercontractivity and Cheeger comparison. The cited lazy reversible inequality is Theorem~3.5 of Peres' notes~\cite{peres}; its statement and lower-bound proof on PDF pages 6--7 were inspected. We apply it to $(I+K)/2$ and record the resulting conservative constant explicitly. The model-specific steps retain the actual nonconstant denominator, use an exact two-component compression and control every small stationary cut. The lower potential is assumed in the general theorem and derived only for its two-level consequence. No new Cheeger inequality or global priority claim is made. The bounded primary check supporting this draft reads the relevant statements just cited, not the entire related literature. Targeted searches did not establish the priority of the specific moment counterexample, the quantitative iteration or the uniform code-potential estimates. Search results about ``Doob graphs'' concern a different object from the Doob transform used here and do not establish overlap or novelty. The results in this draft are proved as stated; mathematical correctness, originality and relevance remain separate questions. No claim of first discovery or frontier classification is made.
+
+The evidence supplement preserves unsuccessful routes rather than replacing their records. Proposition \ref{simplefamilies} excludes divergent critical weighting moments for two-level potentials and exact-cap failure for product potentials. The finite fixed point in Section 3 obstructs only the specified iteration. Theorem \ref{capfailure} refutes the exact numerical cap, while its own moments remain bounded and its gap remains asymptotically unweighted. A generic pair of densities close in total variation is not a counterexample unless both arise from the same $h$ and satisfy the stationary hypotheses.
+
+The historical source 353A had a false strict-class-separation claim based on three disjoint blocks $A,B,C$ and the code generated by $A\cup B$ and $B\cup C$. Its two quotient coordinates can indeed be written as products of the three disjoint block parities, so every such potential already belongs to the larger three-block algebra allowed in Proposition \ref{blocktheorem}. The corrected source 353B preserves that failed claim and its adverse audit, keeps the valid core code theorem, and substitutes the simplex witness of Proposition \ref{simplex}. Lack of a disjoint basis for one chosen code is not enough to prove absence of a larger disjoint-block representation.
+
+The single remaining research question is whether \eqref{admissible}, at fixed $\rho,b,C$, forces a uniformly positive full-chain gap or allows an admissible collapsing family. One unresolved bridge is a finite dimension-independent bound on $\E r^s$. Under energy normalization,
+\[
+ \E r^s=N^{-s}\E\bigl[\pi^s g^{-2s}\bigr],\qquad N\geq b.
+\]
+The portion with $g>1$ is controlled by the stationary cap. The joint small-$g$ contribution is not controlled at the critical exponent by the finite inverse moments above. Additional exact matching gives strong subcritical convergence and the low-to-all operator control of Section~\ref{spectralwindows}, but does not settle this endpoint. For arbitrary positive potentials, the actual high block beyond degree $\lfloor ck\rfloor$ remains uncontrolled. Section~\ref{localization} identifies actual high-$h/Ph$ sets carrying the squared mass of any non-Perron mode a fixed positive distance above the noise edge; no general bound on their killed return operator is assumed or proved. Section~\ref{backgroundgap} proves killed control and a full gap with an additional fixed positive minimum of the normalized potential, and derives that minimum for the two-level class. It does not derive the minimum from \eqref{admissible} in general. Even an endpoint moment bound would still require a justified spectral argument for the general question. The code theorem and Theorem~\ref{backgroundfullgap} exclude their stated classes of collapsing mechanisms, not all stationary densities satisfying \eqref{admissible}. Under the critical cap, collapse requires normalized potential minima tending to zero; Proposition~\ref{exactvanishingminimum} realizes that behavior under all original hypotheses. Theorem~\ref{vanishingminimumgap} rules out gap collapse for this particular family by a full operator-norm estimate. The full-gap question remains open.
+
+Related gap criteria do not by themselves certify the novelty of this
+specialization. Gross~\cite{gross2025}, in Notation~2.1 and Theorem~2.2,
+uses a Riemannian Dirichlet generator, a reference logarithmic Sobolev
+inequality and exponential moments of an additive Schrodinger potential
+to obtain transformed coercive inequalities. We have not established a
+reduction of the present discrete normalized kernel to that theorem.
+Wang~\cite{wang2013}, Theorem~1.1, characterizes spectral gaps of ergodic
+Markov operators using tail norms. That qualitative criterion does not
+replace the explicit uniform all-cut estimate proved here. Our comparison
+reads those statements and adjacent definitions, not either full proof or
+the entire related literature; no priority or non-overlap conclusion follows.
+\section{Model assessments and review context}
+The predecessor is the public Working paper ARR-2026-4T35VQ6MZB8F99F4, version~1~\cite{predecessor}. Its exact PDF and first model-assessment report remain preserved separately. This revision incorporates new proofs and does not inherit that PDF's score, verdict or review status. An assessment of this version, if issued, applies only to the exact artifact hash and context named in its complete accompanying report. Working-paper deposit, model assessment, human peer review and editorial acceptance are distinct.
+
+This successor preserves the integrated positive-background and vanishing-minimum arguments of notes I--L and adds the actual full-chain classification M. Its critical sandwich estimate is classical; its quantified application to the constructed family closes that particular collapse route. Its source and eventual PDF require new exact-artifact reports. The preceding integration in Section~\ref{backgroundgap} replaced the direct two-level proof with the broader theorem and its two-level consequence; the original direct proof and constants remain preserved separately. The earlier source and its complete audit reports remain preserved separately. This successor source and any eventual PDF require their own exact-artifact reports; earlier grades are not transferred.
+
+Earlier analytical sources 349, 350, 351, corrected 353B and 355 received separate-role source audits. The added A--G research notes and notes I and J were also audited at their frozen hashes; their full reports are retained in the evidence packet. Notes I and J received analytic passes with no blocking objections under their distinct stated hypotheses. The separate first analytic reports for K, L and M are retained with the current source packet; each verdict must be read at its own exact hash and is not a PDF assessment. Their exact sources and full reports are identified by SHA256 digests in the accompanying manifest; those verdicts are not assessments of this integrated text or a rendered PDF. These reports concern the named source bytes and do not by themselves certify the integrated manuscript or its eventual rendered PDF. The discarded 353A scope claim, the previous column-count bound, and the terminal rejection of an overbroad follow-up README sentence are preserved. That README was corrected to restrict localization to stationary-mean-zero modes; the underlying C/D statements already had that hypothesis.
+
+The first analytic audit of M recorded one nonblocking notation correction:
+its exponential error statement is an upper bound, not an equality.
+Theorem~\ref{vanishingminimumgap} incorporates that correction explicitly.
+The frozen note, original full report and adjacent correction are retained.
+The separately produced and assessed PDF from source commit \texttt{8efcb73b}
+does not contain notes E--M and does not assess this successor source.
+Its numerical assessment is not transferred to this manuscript. This source
+has not yet been compiled or visually reviewed as a new PDF.
+
+Preparation and source auditing use Codex roles in the same provider workflow, with inherited context and a shared filesystem. Exact serving backend/version and effective reasoning effort are not independently attested. No blind, human, provider-independent or organizationally independent review is claimed. The user-requested model alias is not evidence of the actual backend. Full reports retain objections and context rather than only a favorable verdict.
+
+The new results were derived analytically. No numerical experiment, executed mathematical search or Lean verification is claimed for them. Document production, when performed, establishes rendering and artifact provenance rather than mathematical correctness. Classical inputs are attributed with their bounded reading scope; originality and significance are not certified by source correctness. The general stationary-gap and critical-moment questions remain open.
+\begin{thebibliography}{99}
+\bibitem{lee2016} J. R. Lee, \emph{Entropy, convexity, and matrix scaling}, CSE 599S, Winter 2016, updated 24 January 2016, Section 2 setup. \url{https://homes.cs.washington.edu/~jrl/teaching/cse599swi16/notes/lecture1.pdf}.
+\bibitem{mos} E. Mossel, K. Oleszkiewicz and A. Sen, \emph{On reverse hypercontractivity}, arXiv:1108.1210v5 (2012), introduction, equations (1.1)--(1.2). \url{https://arxiv.org/pdf/1108.1210}.
+\bibitem{boyd} S. Boyd, P. Diaconis, P. Parrilo and L. Xiao, \emph{Symmetry Analysis of Reversible Markov Chains}, author-hosted manuscript revised 29 November 2004, introduction and symmetry setup. \url{https://web.stanford.edu/~boyd/papers/pdf/symmetry.pdf}.
+\bibitem{wootters} M. Wootters, \emph{CS250/EE387: Error Correcting Codes}, Problem Set 1, Winter 2025, Section 2.4 (simplex-code construction). \url{https://web.stanford.edu/class/archive/cs/cs250/cs250.1254/Homework/HW1/hw1.pdf}.
+\bibitem{guruswami} V. Guruswami, \emph{Introduction to Coding Theory, Notes 2: Gilbert--Varshamov bound}, CMU, January 2010, Lemma 5 and Theorem 8, including their proofs. \url{https://www.cs.cmu.edu/~venkatg/teaching/codingtheory/notes/notes2.pdf}.
+\bibitem{odonnell} R. O'Donnell, \emph{Analysis of Boolean Functions}, corrected May 2021 arXiv edition, Theorem 9.21 and its proof, printed p.~262; Chapter 10.1 Hypercontractivity Theorem, printed p.~284. \url{https://arxiv.org/pdf/2105.10386}.
+\bibitem{hmo} S. Heilman, E. Mossel and K. Oleszkiewicz, \emph{Strong Contraction and Influences in Tail Spaces}, introduction and same-exponent heat-smoothing statements. \url{https://www.stevenheilman.org/~heilman/papers/hmo.pdf}.
+\bibitem{volberg} A. Volberg, \emph{Tail spaces estimates on Hamming cube and Bernstein--Markov inequality}, arXiv:2208.00472v4, introduction and Section 2. \url{https://arxiv.org/pdf/2208.00472}.
+\bibitem{predecessor} L. Eriksson, \emph{Stationary-to-weighting moment transfer and spectral rigidity for Boolean Doob kernels}, AIRR Working paper ARR-2026-4T35VQ6MZB8F99F4, version 1 (2026). Not peer reviewed or editorially accepted by AIRR. \url{https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/versions/v1/}.
+\bibitem{odonnelllecture} R. O'Donnell, \emph{Analysis of Boolean Functions, Lecture 16: The Hypercontractivity Theorem}, CMU, Theorem 1.1. \url{https://www.cs.cmu.edu/~odonnell/boolean-analysis/lecture16.pdf}.
+\bibitem{alpw2022} C. Andrieu, A. Lee, S. Power and A. Q. Wang, \emph{Comparison of Markov chains via weak Poincare inequalities with application to pseudo-marginal MCMC}, Annals of Statistics 50(6), 3592--3618 (2022), Proposition 35, Theorem 36 and Remark 37. doi:10.1214/22-AOS2241. \url{https://awllee.github.io/papers/AOS2241.pdf}.
+\bibitem{alpw2023} C. Andrieu, A. Lee, S. Power and A. Q. Wang, \emph{Weak Poincare Inequalities for Markov chains: theory and applications}, arXiv:2312.11689v1 (2023), abstract and introductory context. \url{https://arxiv.org/abs/2312.11689v1}.
+\bibitem{peres} Y. Peres, \emph{Aspects of Markov chains}, Definition 3.4 and Theorem 3.5, including the lazy reversible lower-bound proof, PDF pages 6--7. \url{https://sites.math.duke.edu/~rtd/CPSS2009/peres6.pdf}.
+\bibitem{gross2025} L. Gross, \emph{Invariance of intrinsic hypercontractivity under perturbation of Schrodinger operators}, arXiv:2412.20282v2 (2025), Notation 2.1 and Theorem 2.2. \url{https://arxiv.org/html/2412.20282v2}.
+\bibitem{wang2013} F.-Y. Wang, \emph{Criteria of Spectral Gap for Markov Operators}, arXiv:1305.4460v6 (2013), introductory tail-norm definitions and Theorem 1.1. \url{https://arxiv.org/html/1305.4460v6}.
+\end{thebibliography}
+\end{document}
