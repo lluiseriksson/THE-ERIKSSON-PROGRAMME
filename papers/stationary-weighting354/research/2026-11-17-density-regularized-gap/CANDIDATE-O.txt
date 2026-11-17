@@ -1,0 +1,231 @@
+Candidate O: full spectral convergence after stationary-density regularization
+2026-11-17. Analytic candidate awaiting first separate-role audit.
+Raw representation: UTF-8 without BOM, LF. No executed mathematics or PDF.
+
+1. QUESTION, RESULT AND SCOPE
+The single active question remains the original stationary-doob-gap problem.
+N proved that smoothing the potential can lose exact stationary matching.
+Here we smooth the stationary density and reconstruct its actual potential.
+We establish the regularized side of the pending spectral comparison: a
+sufficiently strong fixed noise smoothing gives full actual spectral
+convergence to Boolean noise for EVERY input satisfying the original floor,
+critical cap and matching, with no code assumption or potential minimum.
+This does not compare the regularized gap back to the original gap. The
+regularization changes the chain, and the general original question stays
+open. A simple admissible parity family below also disproves the premise
+that fixed density smoothing is uniformly a small L^s perturbation.
+Group this result with N and the existing L/M manuscript, not a new paper.
+
+2. STATEMENT WITH EXPLICIT FINITE CONSTANTS
+Fix 0<rho<1 and 0<b<1. Write P=P_rho, s=(1+rho)/(1-rho), B=2^(1/s),
+and use uniform probability mu on {-1,1}^L. For L>=1 and integer 0<=k<=L,
+let pi be a positive mean-one density such that
+  pi>=b, E pi^s<=2, E pi chi_S=0 for 1<=|S|<=k.               (O1)
+In particular pi may be the actual density hPh of any energy-normalized
+positive potential from the original question. The conclusion does not
+depend on choosing a special input family.
+
+Define constants depending only on rho:
+  q0=2rho^(-2)+rho^(-3)-1 >2, Qstar=8s,
+  sigma=max{4s, 2Qstar^2/[(1-rho^4)(q0-1)]},
+  F_sigma(q)=1+[sigma*q/(sigma+q)-1]/rho^4.
+Starting at q0, iterate q_(n+1)=F_sigma(q_n) only until the first n=n_*
+with q_n>=Qstar, taking n_*=0 if q0>=Qstar. Section4 proves n_* finite;
+it is fixed before L,k,pi or the regularization parameter are chosen.
+Set
+  A=b^(-1)(B/b)^(n_*), K=b^(-1) B A^2,
+  theta_in=min{1,sqrt(s-1)}, theta_out=min{1,1/sqrt(s-1)},
+  tau0=(1/2)min{theta_in*theta_out,sqrt((s-1)/(sigma-1))}>0,
+  gamma=1/(2s-1), e_k=B rho^((k+1)/2),
+  E_k=(2e_k)^gamma (K+B)^(1-gamma)
+                   +(B+1)2^(-(k+1))+e_k^2.                (O2)
+
+THEOREM O. For every pi in(O1) and every 0<=tau<=tau0, put w=P_tau pi.
+There is a unique positive u with uPu=w, hence E uPu=1. The reconstructed
+chain K_u(x,y)=P(x,y)u(y)/(Pu)(x) retains every assumption(O1), with
+stationary density w. Its ordered eigenvalues satisfy
+  |lambda_j(K_u)-lambda_j(P)| <= E_k,  1<=j<=2^L.           (O3)
+In particular
+  |gap(K_u)-(1-rho)| <= E_k.                               (O4)
+E_k tends to zero exponentially in k, with constants depending only on
+rho,b, uniformly in L,pi and tau in the specified interval. For the original
+k_L=min{L,floor(C sqrt(L))}, C>0, this is exponential in sqrt(L).
+No normalized lower bound for u or Pu is assumed or needed.
+
+3. ACTUAL RECONSTRUCTION AND MOMENT GAIN
+Stochasticity and invariance give E w=1 and w>=b. Jensen gives E w^s<=2.
+The noise multiplier preserves every zero low-degree coefficient, so w
+has the same exact labelled marginals. The positive symmetric scaling
+lemma inversestationary in the preserved grouped source supplies a unique
+positive u with uPu=w. Its proof uses a strictly convex coercive functional
+in log u; thus reconstruction is a theorem, not an extra existence premise.
+Since the kernel is strictly positive and symmetric, that lemma applies
+in every finite dimension. We do not use its dimension-dependent inverse
+norm estimate in the proof of O.
+
+Ordinary Boolean hypercontractivity gives
+  ||w||_sigma=||P_tau pi||_sigma <=||pi||_s<=B,              (O5)
+because tau^2<=(s-1)/(sigma-1). The stronger stationary moment is DERIVED
+from the original s cap and the specified regularization, not assumed.
+Its bound is ||w||_sigma<=B, not the false claim E w^sigma<=2.
+
+4. FINITE INVERSE-MOMENT BOOTSTRAP ABOVE THE CRITICAL REQUIREMENT
+Write g=Pu and Q=P_sqrt(rho). Energy normalization gives ||Qu||_2=1.
+Ordinary hypercontractivity yields ||g||_R<=1, R=1+rho^(-1), since
+g=Q(Qu). From ug=w>=b, u^(-1)<=g/b. In negative-mean notation this says
+||u||_(-R)>=b. Reverse Boolean hypercontractivity with input exponent -R,
+output exponent -q0 and noise rho applies at
+  rho^2=(1+R)/(1+q0),
+and gives ||g^(-1)||_(q0)<=b^(-1). All negative powers are finite since
+u and g are strictly positive on the finite cube.
+
+The same stationary floor also gives, by positivity and rowwise Jensen,
+  g>=b P(1/g)>=b/(Pg), hence 1/g<=Pg/b.                    (O6)
+If ||g^(-1)||_q<=A_q and q>sigma/(sigma-1), Holder applied to u=w/g
+gives ||u||_p<=B A_q, where p=sigma*q/(sigma+q)>1. Since Pg=P_(rho^2)u,
+ordinary hypercontractivity gives
+  ||g^(-1)||_(F_sigma(q)) <=(B/b) A_q.                     (O7)
+This rederives the bootstrap for the new exponent sigma; it does not reuse
+the old fixed-point formula at the original critical exponent s.
+
+It remains to prove that the chosen finite iteration reaches Qstar.
+If q0>=Qstar there is nothing to prove. Otherwise, whenever q0<=q<Qstar,
+  F_sigma(q)-q
+    =[(1-rho^4)(q-1)-q^2/(sigma+q)]/rho^4
+    >=(1-rho^4)(q0-1)/(2rho^4)=:d>0,                     (O8)
+using sigma>=2Qstar^2/[(1-rho^4)(q0-1)]. All such q exceed2, whereas
+sigma>=4s>4 implies sigma/(sigma-1)<4/3. Thus every step before the
+first crossing meets the p>1 condition in(O7). If no crossing occurred,
+q_n>=q0+n d would eventually exceed Qstar, a contradiction. In fact
+n_*<=ceil((Qstar-q0)/d) when q0<Qstar. At the crossing the last valid
+step has already established the required inverse bound; no continuation
+or monotonicity assertion after crossing is needed. Therefore
+  ||g^(-1)||_(q_n*) <= A, q_n*>=8s.
+
+Let U=u/g=w/g^2 and N=E U, r=U/N. Since sigma>=4s and q_n*>=8s,
+Holder and norm monotonicity give
+  ||U||_(2s) <= ||w||_(4s) ||g^(-1)||_(8s)^2 <= B A^2.
+The actual-density identities give N>=b (recalled in Section5), hence
+  ||r||_(2s)<=K, while ||w||_(2s)<=B.                       (O9)
+The result is a bound above the critical sandwich exponent, obtained in
+finitely many steps uniformly in dimension. Constants need not be small.
+
+5. MATCHING RIGIDITY AND CONTROL OF THE ACTUAL RATIO
+The preserved source lemma rigidity, with p=sigma>1+rho and ||w||_sigma<=B,
+gives, for a=E u and the same N,r,
+  a^2>=(1+e_k^2)^(-1), a^2<=N<=1,
+  ||r-w||_1<=2e_k.                                       (O10)
+Here sigma>2 makes the lemma's matching-decay factor exactly sqrt(rho).
+For clarity, its essential argument is reproduced rather than replacing
+the hypotheses by an unproved closeness assertion.
+
+Put v=1-a^2=||Qu-a||_2^2. Since sigma'=sigma/(sigma-1)<2, the high-degree
+part of g=Q(Qu) has L^(sigma') norm at most rho^((k+1)/2)sqrt(v).
+Matching gives E w Pi_(<=k)g=a, so E wg<=a+e_k sqrt(v). Cauchy--Schwarz
+under u dmu gives 1=(E ug)^2<=a E ug^2=a E wg. Thus v<=a e_k sqrt(v),
+and v<=a^2 e_k^2, including the case v=0. This yields the a^2 bound.
+
+Also a<=1. The floor and Jensen imply
+a=E u>=b E(1/g)>=b/a, so a^2>=b. Cauchy--Schwarz under w dmu gives
+N=E_w(1/g^2)>=E_w(1/g)^2=a^2>=b. For the upper bound N<=1, the actual
+reversible conjugate S=M_sqrt(U) P M_sqrt(U) has Perron eigenvalue1
+and nonnegative spectrum. With X=M_sqrt(U) Q, S=XX* and T=X*X=Q M_U Q
+are similar, because X is invertible. Thus ||T||_(2->2)=1 and testing
+at the unit constant gives N<=1. Finally
+  E sqrt(rw)=a/sqrt(N)>=a,
+  ||sqrt(r)-sqrt(w)||_2^2=2(1-a/sqrt(N))<=2(1-a)<=e_k^2.
+Cauchy--Schwarz after multiplication by sqrt(r)+sqrt(w) gives the last
+bound in(O10). This is a statement about the actual u, not two arbitrary
+close densities.
+
+Interpolating(O10) and(O9), with gamma=1/(2s-1), yields
+  ||r-w||_s <= (2e_k)^gamma(K+B)^(1-gamma).                 (O11)
+We also need w close to1; matching alone without smoothing would not give
+that. Factor
+  P_tau=P_(theta_out) P_beta P_(theta_in),
+  beta=tau/(theta_in theta_out)<=1/2.
+The input map is a contraction from L^s to L^2: this is hypercontractivity
+if s<2, and norm monotonicity with the identity map if s>=2. The output
+map contracts L^2 to L^s by hypercontractivity if s>2 and by norm
+monotonicity with the identity map if s<=2. The Fourier support of pi-1
+is above degree k, and remains so under all three noise maps. The middle
+map therefore contracts its L^2 norm by beta^(k+1), giving
+  ||w-1||_s <=(B+1)2^(-(k+1)).                            (O12)
+At tau=0, the high-degree part is annihilated and the same bound holds.
+
+Since U=Nr, the identity U-1=N(r-w)+N(w-1)+(N-1), together with N<=1
+and 1-N<=e_k^2/(1+e_k^2)<=e_k^2, proves
+  ||U-1||_s<=E_k.                                        (O13)
+
+6. FULL ACTUAL SPECTRUM, NOT ONLY A LOW-DEGREE SECTOR
+Let s'=s/(s-1); then 2s'=1+rho^(-1). Hypercontractivity for Q maps
+L^2 to L^(2s') with norm at most1. Holder therefore gives, for every
+real v and f,l with L^2 norms1,
+  |E v (Qf)(Ql)|<=||v||_s.
+Consequently ||Q M_v Q||_(2->2)<=||v||_s, the classical critical
+sandwich bound already used in M. Apply it with v=U-1 to get
+  ||T-P||_(2->2)<=E_k.
+T and the actual reversible conjugate S have the same full spectrum,
+as shown above. Both T and P are self-adjoint on L^2(mu); the finite
+min--max principle compares each ordered eigenvalue by this operator norm.
+This proves(O3); lambda_2(P)=rho for L>=1 proves(O4).
+All constants in E_k depend only on fixed rho,b. Its three terms decay
+exponentially in k. No numerical oracle, eigenvalue computation or assumed
+uniform condition number of the similarity X is used.
+
+7. FIXED DENSITY SMOOTHING IS NOT UNIFORMLY A SMALL PERTURBATION
+Fix any 0<=tau<1 and let
+  epsilon=min{(1-b)/2,(2^(1/s)-1)/2}>0.
+For sufficiently large L with k_L<L, take pi_L=1+epsilon chi_[L].
+It has mean1, floor> b, moment E pi_L^s<2 and exact matching through k_L.
+The inverse-stationary lemma realizes it as h_L P h_L with positive h_L
+and energy1, so this is an actual input family. Use h=1 in remaining
+finitely many dimensions. Orthogonality and |chi_[L]|=1 give exactly
+  ||pi_L-P_tau pi_L||_s=epsilon(1-tau^L) -> epsilon>0.     (O14)
+Thus exact growing matching does not turn fixed smoothing into a uniformly
+small L^s perturbation of the original density. This refutes that simple
+transfer premise, not a possible actual spectral comparison: the parity
+family itself lies in an already controlled code class. O establishes the
+regularized spectrum, not the original spectrum via an invalid norm limit.
+
+8. FALSIFIER, NEXT STEP AND ABANDONMENT
+Falsifiers include an invalid negative-exponent use, failure of the finite
+crossing bound, an admissible reconstruction violating(O9)--(O13), or a
+counterexample to(O3) under the exact stated smoothing range. The estimates
+must be checked against all fixed rho in(0,1), including s<2 and s>2.
+After a first audit, retain any failure without changing its report.
+The remaining bounded task is to compare the original and reconstructed
+actual spectra at a permitted fixed tau, or to refute a precise proposed
+comparison. Do not infer closeness from(O14), assume a potential/Ph floor,
+or extend the proven tau range to all tau<1. If three units produce no
+substantial advance, preserve the obstruction and switch mechanism.
+No original stationary-gap theorem, physical Yang--Mills gap or continuum
+claim is made. PR29 remains20/41 and TermSource=0.
+
+9. SOURCES, ORIGINALITY AND ASSESSMENT CONTEXT
+Classical primary inputs re-read17November2026:
+- Mossel, Oleszkiewicz and Sen, On reverse hypercontractivity, arXiv1108.1210v5,
+  introduction equations(1.1)--(1.2), including negative exponents and
+  tensorization: https://arxiv.org/pdf/1108.1210 .
+- O'Donnell, Analysis of Boolean Functions, May2021 edition, Chapter10.1,
+  Hypercontractivity Theorem, printedpage284:
+  https://arxiv.org/pdf/2105.10386 . Noise diagonalization is classical.
+Programme interface: full grouped source at49b2ae363d147c1c17f1c6dc3cfa28efff866b18,
+raw SHA256a94dbf1aca3738564894cacceaeba81abdeee35d3fde4f0dec281a09adf3508d,
+papers/stationary-weighting354/revision-regularization-20261117/
+manuscript-regularization-candidate.tex, especially inversestationary,
+rigidity and criticalsandwich. The load-bearing moment, rigidity and
+sandwich arguments are explicitly restated above with the new exponent.
+Targeted primary-domain searches for '"Doob" "stationary density"
+"hypercontractivity" smoothing' and '"Boolean" "matrix scaling"
+"spectral gap" smoothing' returned no result. That bounded negative search
+does not establish global novelty. The new programme result is the uniform
+full-chain convergence theorem for all these density-regularized inputs;
+its tools and general spectral perturbation principle are not original.
+Correctness, priority and relevance remain separate assessments.
+
+This is a new analytic source candidate by the current Codex assistant.
+No executed mathematics, Lean proof, PDF, numerical score, peer review,
+acceptance, upload or publication is claimed. The first separate-role
+audit must identify exact bytes/commit and disclose inherited context and
+unattested backend identity. No prior report or d617dc40 PDF grade transfers.
