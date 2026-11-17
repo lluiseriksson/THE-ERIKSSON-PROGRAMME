@@ -1,0 +1,186 @@
+\section{Vanishing denominators without spectral collapse}\label{vanishingdenominator}
+The preceding family has small potential values but a uniformly positive
+noise denominator. We next rule out deriving a positive denominator floor
+from the original hypotheses. The same construction shows why excluding
+individual points with a large ratio is too strong a proposed remedy.
+
+\begin{theorem}\label{vanishingdenominatortheorem}
+Fix $0<\rho,b<1$ and $C>0$. There are energy-normalized positive
+potentials $\widetilde h_L$ satisfying all of \eqref{admissible} such that,
+at the all-plus vertex $x_0$, for a constant $\varepsilon>0$,
+\[
+ \widetilde h_L(x_0)\sim e^{\varepsilon L},\qquad
+ (P\widetilde h_L)(x_0)\sim e^{-\varepsilon L},\qquad
+ \widetilde\pi_L(x_0)\longrightarrow1.
+\]
+Thus $\widetilde U_L(x_0)\sim e^{2\varepsilon L}$, where
+$\widetilde U_L=\widetilde h_L/(P\widetilde h_L)$. Nevertheless there
+are constants $A<\infty$, $a>0$ such that, for all sufficiently large $L$,
+\[
+ \norm{\widetilde\pi_L-1}_s+\norm{\widetilde U_L-1}_s
+       \leq Ae^{-aL},\qquad
+ \max_{1\leq j\leq2^L}
+ |\lambda_j(K_{\widetilde h_L})-\lambda_j(P)|\leq Ae^{-aL}.
+\]
+Eigenvalues are ordered with multiplicities. In particular the full gap
+tends to $1-\rho$. Constants and the eventual threshold may depend on
+the fixed parameters; no uniformity as $\rho$ approaches its endpoints
+is claimed.
+\end{theorem}
+\begin{proof}
+We use the classical Bernoulli concentration bound, including unequal
+parameters: if $S$ sums $L$ independent Bernoulli variables, then
+\[
+ \Pr(S-\E S\geq tL),\ \Pr(S-\E S\leq-tL)
+       \leq e^{-2t^2L}\qquad(t>0).
+\]
+Here is the needed proof. The log moment-generating function of a
+centered Bernoulli variable has value and first derivative zero at zero;
+its second derivative is the variance of a tilted Bernoulli law, at most
+$1/4$. Integrating twice bounds it by $\lambda^2/8$ for every real
+$\lambda$. Independence and exponential Markov at $\lambda=\pm4t$
+give the two bounds. No equal-parameter assumption is used.
+
+Put
+\[
+ p=\frac{1-\rho}{2},\quad q=p+\rho p=\frac{1-\rho^2}{2},\quad
+ a_0=\frac{1+b}{2},\quad
+ \delta=\min\{\rho p/16,\rho^2/16\},\quad r_0=2\delta/\rho.
+\]
+Let $d(x)$ be the Hamming distance from $x_0$ and define
+\begin{align*}
+ B_L&=\{x:|d(x)/L-p|\leq\delta\},\\
+ A_L&=\{x:|d(x)/L-q|\leq2\delta\},\\
+ D_L&=\{x:(P1_{B_L})(x)>1-a_0\}.
+\end{align*}
+In this proof $D_L$ is a set. We have $r_0\leq p/8$,
+$q-p\geq16\delta$ and $1/2-q\geq8\delta$. Thus $A_L$ and $B_L$
+are disjoint. Conditional on $x$, the next noise step has independent
+coordinate flips and
+\[
+ \E_x d(Y)=pL+\rho d(x).
+\]
+For $x\in B_L$ this mean lies between $(q-\rho\delta)L$ and
+$(q+\rho\delta)L$, so
+\[
+ P(x,A_L)\geq1-2e^{-2\delta^2L},\qquad
+ P(x_0,B_L)\geq1-2e^{-2\delta^2L}.
+\]
+If $d(x)/L\geq r_0$, the mean is at least $(p+2\delta)L$ and the
+upper boundary of $B_L$ is $(p+\delta)L$. Therefore
+$P(x,B_L)\leq e^{-2\delta^2L}$. For all sufficiently large $L$,
+\[
+ x_0\in D_L\subset\{x:d(x)/L<r_0\}.
+\]
+The last ball is disjoint from both shells, since $r_0<p-\delta$.
+
+Choose the strictly positive constant
+\[
+ c=\min\left\{
+ \begin{gathered}
+ 2\delta^2,\ 2(p-r_0)^2,\ 2(q-2\delta-p)^2,\\
+ 2(1/2-q-2\delta)^2,\ 2(1/2-p-\delta)^2,\ 2(1/2-r_0)^2
+ \end{gathered}\right\}.
+\]
+Under uniform measure $d(x)$ is binomial with mean $L/2$, whereas
+under $P(x_0,\cdot)$ it is binomial with mean $pL$. The concentration
+bounds and the containment of $D_L$ consequently give
+\begin{align}
+ \mu(A_L),\mu(B_L),\mu(D_L)&\leq e^{-cL},\nonumber\\
+ P(x_0,A_L),P(x_0,D_L)&\leq e^{-cL},\nonumber\\
+ P(x_0,B_L^c)&\leq2e^{-cL},\qquad
+ \inf_{x\in B_L}P(x,A_L)\geq1-2e^{-cL}.
+ \label{denominatorshellbounds}
+\end{align}
+These estimates include shell boundaries and the return to $x_0$.
+
+Set $\varepsilon=c/(16s)$, $M=e^{\varepsilon L}$, and $E_L=A_L\cup D_L$.
+Define the actual potential and its product by
+\[
+ H=\begin{cases}M&\text{on }E_L,\\M^{-1}&\text{on }B_L,\\1&\text{elsewhere},\end{cases}
+ \qquad G=PH,\quad R=HG,\quad Z=\E R,\quad h=H/\sqrt Z.
+\]
+Always $M^{-1}\leq H,G\leq M$. On $E_L$, $R\geq1$. On $B_L$,
+$G\geq MP1_{A_L}$, hence $R\geq1-2e^{-cL}\geq a_0$ eventually.
+Outside $E_L\cup B_L$, one has $H=1$ and $x\notin D_L$, whence
+$G(x)\geq1-P(x,B_L)\geq a_0$. Thus $R\geq a_0$ at every vertex.
+
+At $x_0\in D_L$, splitting the noise expectation over the three
+regions gives
+\[
+ G(x_0)=M^{-1}P(x_0,B_L)+P(x_0,(B_L\cup E_L)^c)+MP(x_0,E_L).
+\]
+Consequently
+\[
+ P(x_0,B_L)\leq MG(x_0)
+       \leq1+2Me^{-cL}+2M^2e^{-cL}\longrightarrow1,
+\]
+because $2\varepsilon<c$. Hence $G(x_0)\sim M^{-1}$,
+$R(x_0)\to1$, and $H(x_0)/G(x_0)\sim M^2$.
+
+For finite $r\geq1$ write $d_{r,L}=\norm{H-1}_r$. The support
+bounds in \eqref{denominatorshellbounds} imply
+\[
+ d_{r,L}\leq M(2e^{-cL})^{1/r}+e^{-cL/r},\qquad
+ \norm{G-1}_r\leq d_{r,L}.
+\]
+The second inequality is noise contraction. H\"older therefore gives
+\[
+ \norm{R-1}_s\leq d_{2s,L}(1+d_{2s,L})+d_{2s,L}.
+\]
+Since $\varepsilon<c/(2s)$, this error decays exponentially, as does
+$|Z-1|$. Thus $\pi=R/Z$ has exponentially small $\norm{\pi-1}_s$,
+$\E\pi^s\to1$, and eventually $\pi\geq b_1:=(a_0+b)/2>b$.
+Normalization preserves $h(x_0)\sim M$, $(Ph)(x_0)\sim M^{-1}$
+and $\pi(x_0)\to1$.
+
+Crucially, for $U=H/G$, use the proved dimension-dependent bound
+$G\geq M^{-1}$, not a fixed denominator floor. It gives
+\begin{align}
+ \norm{U-1}_s&\leq M\norm{H-G}_s\leq2M d_{s,L}\nonumber\\
+ &\leq2\,2^{1/s}e^{-(c/s-2\varepsilon)L}
+          +2e^{-(c/s-\varepsilon)L}.\label{vanishingdenominatorratio}
+\end{align}
+Both rates are positive. Lemma~\ref{criticalsandwich} controls the
+entire actual spectrum by this ratio error.
+
+It remains to impose exact matching. Subtract the finite Walsh sum
+\[
+ e_L=-\sum_{1\leq|S|\leq k_L}(\E\pi\chi_S)\chi_S,
+ \qquad \widetilde\pi=\pi+e_L.
+\]
+Each coefficient is at most $\norm{\pi-1}_1$, and for all large $L$
+there are at most $k_LL^{k_L}=\exp(o(L))$ terms. Therefore
+$\xi_L=\norm{e_L}_\infty$ is exponentially small after decreasing
+the positive rate. Orthogonality gives exact mean one and all requested
+zero coefficients. The path $\pi+\tau e_L$ has floor $b$ eventually,
+and $\norm{\widetilde\pi-1}_s$ remains exponentially small, giving
+the eventual cap two.
+
+Lemma~\ref{inversestationary} reconstructs the unique positive
+$\widetilde h$ with $\widetilde hP\widetilde h=\widetilde\pi$ and gives
+\[
+ \eta_L:=\norm{\log(\widetilde h/h)}_\infty
+ \leq\frac{\lceil(L+\log_2(1/b))/2\rceil+2}{2b}\xi_L.
+\]
+This is exponentially small. Positivity of $P$ transfers the same
+multiplicative bounds to $P\widetilde h$ and $Ph$, preserving the
+pointwise asymptotics, including the exponentially small denominator.
+Also $e^{-2\eta_L}U\leq\widetilde U\leq e^{2\eta_L}U$, so
+\[
+ \norm{\widetilde U-1}_s
+ \leq e^{2\eta_L}\norm{U-1}_s+e^{2\eta_L}-1.
+\]
+Combining this with \eqref{vanishingdenominatorratio} and
+Lemma~\ref{criticalsandwich} proves the claimed norm and full-spectrum
+bounds. Polynomial factors and the subexponential Walsh count are absorbed
+by a smaller positive exponential rate. Fill all finitely many early
+dimensions with $\widetilde h=1$, preserving every original constraint.
+\end{proof}
+
+Theorem~\ref{vanishingdenominatortheorem} refutes a dimension-uniform
+positive $Ph$ floor and a uniform pointwise ceiling for $h/Ph$, even
+under exact matching. It does not refute an aggregate killed-return or
+cut-flow estimate. Small denominators and large ratios at individual
+vertices coexist here with a full spectrum approaching Boolean noise.
+The original gap question remains open; no original hypothesis was removed.
