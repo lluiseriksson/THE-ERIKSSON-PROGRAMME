@@ -1,0 +1,28 @@
+{
+  "schema": "actual-gap-classification-M-v1",
+  "hash_regime": "raw UTF8 without BOM, LF",
+  "scientific_parent": "9f75462ccb2982662607447ee1da1d7c9d13e1a0",
+  "verdict": "Analytic PASS with nonblocking upper-bound notation clarification retained",
+  "result": "Actual exact-matching K/L Doob gaps converge exponentially to1-rho despite vanishing normalized potential minima",
+  "original_hypotheses_eliminated": [],
+  "route_refuted": "K/L vanishing-minimum family as a gap-collapse mechanism",
+  "active_question": "stationary-doob-gap remains open",
+  "future_consolidation": "Group with J/K/L in the later manuscript; not part of authorized8efcb73b PDF",
+  "files": [
+    {
+      "file": "CANDIDATE-M.txt",
+      "sha256": "566ce2691477e814a2ef3878236238ea0ed4091f8b63d4bbd054ae4fc8e42b32",
+      "bytes": 8206
+    },
+    {
+      "file": "FULL-FIRST-ANALYTIC-AUDIT-M.txt",
+      "sha256": "708f504bf1340ce231948aec10b301828b52cf20220dbab1b25fbf054c047d40",
+      "bytes": 16561
+    },
+    {
+      "file": "AUDIT-RESPONSE-M.txt",
+      "sha256": "134db454d351972e4c19ec3fb4cb28c16931f385aa6d1c1b0e5a412a2d82d9fc",
+      "bytes": 959
+    }
+  ]
+}

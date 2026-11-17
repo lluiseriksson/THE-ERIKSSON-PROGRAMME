@@ -1,0 +1,9 @@
+CANDIDATE M — retained audit observation N1
+
+Frozen candidate raw UTF8/LF SHA256:566ce2691477e814a2ef3878236238ea0ed4091f8b63d4bbd054ae4fc8e42b32.
+Full first audit raw SHA256:708f504bf1340ce231948aec10b301828b52cf20220dbab1b25fbf054c047d40.
+Disposition: PASS with one nonblocking notation clarification.
+
+In Section5, the sentence beginning "Since epsilon_L=exp(-cL+o(L))" must be read with <= instead of =. L proves only the upper bound epsilon_L<=N_L A1 exp(-cL), log N_L=o(L). No lower bound or positive epsilon is needed. The following exponential spectral estimate uses only this upper bound. Preserve the frozen candidate and original report unchanged; use the corrected inequality in any future integrated manuscript.
+
+This is a mathematical notation correction, not a revised numerical assessment or a new PDF. The older8efcb73b source and d617dc40 PDF contain no M result. No grade transfers. The full original stationary-gap problem remains open.

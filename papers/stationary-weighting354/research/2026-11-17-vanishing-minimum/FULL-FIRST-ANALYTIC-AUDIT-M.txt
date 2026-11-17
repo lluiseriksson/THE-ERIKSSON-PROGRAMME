@@ -1,0 +1,135 @@
+FULL FIRST ANALYTIC SOURCE AUDIT — CANDIDATE M
+Date: 2026-11-17
+
+1. Frozen referents and verdict
+
+Audited input: D:\Datos\the-eriksson-programme\autonomia\2026-11-17_actual-gap-classification\CANDIDATE-M.txt.
+Raw SHA256: 566ce2691477e814a2ef3878236238ea0ed4091f8b63d4bbd054ae4fc8e42b32.
+Length: 8206 bytes. Raw-byte inspection found no UTF-8 BOM and no CR bytes, consistent with the declared UTF-8/LF representation. No normalization was applied before hashing.
+Declared scientific parent: 9f75462ccb2982662607447ee1da1d7c9d13e1a0.
+Dependencies read directly from C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116\papers\stationary-weighting354\research\2026-11-17-vanishing-minimum\:
+K: 57e5b9491cc2593c28852d06445b64673e258007cc84b196450c164150eb92e0, 7868 bytes.
+L: cbe65eef9bff034561564bed05f2b777a181d73b9a24491324408b26b78a49cc, 10586 bytes.
+Both actual raw dependency hashes agree with M's references. Their earlier first analytic reports were read for scope and dependency context; no prior verdict or score is substituted for this inspection of M.
+
+VERDICT: PASS for the stated source-level actual-gap theorem, including exponential convergence for the fixed-parameter exact-matching K/L family. No blocking mathematical objection was found. The proof compares the spectrum of the actual Doob chain, handles the low vertex directly and controls the exact nonlinear reconstruction from L. It rules out this family as a collapsing-gap mechanism. It does not prove the general stationary-gap conjecture, establish a critical weighting-moment theorem, or eliminate an original admissibility hypothesis.
+
+One nonblocking notation objection is recorded in section 10: M's phrase epsilon_L=exp(-cL+o(L)) should be expressed as an upper bound, which is all that L proves and all the convergence argument needs. This does not affect the theorem or require a changed mathematical assumption. No numerical grade, PDF assessment, publication decision or formal-machine certification is assigned.
+
+2. Observable identity and audit limits
+
+Auditor: separate OpenAI Codex role /root/public354_commit_audit. This role has inherited programme/publication context, uses the same provider workflow and shared filesystem, and has previously audited publication integration of paper 354. Exact serving backend/model revision and effective effort are unattested. This is not blind, human, provider-independent or organizationally independent peer review. The author-supplied proof is visible; the mathematical reasoning below is my direct inspection of it.
+
+No inbound parent message was received during this audit. Methods were exact-file reads/hashes, mathematical reasoning, prior-report scope reading and primary-source web retrieval. No numerical, symbolic or mathematical code was executed, no Lean/Lake/build/PDF compilation or review occurred, no runtime or UI was used, and no external model was consulted. Only this audit artifact was written and retained; candidates, repository sources, state records and historical reports were not changed. The governing charter's exact-referent/no-inbound boundaries apply. No grade from any existing PDF is transferred. M is not part of the authorized 8efcb73b PDF and cannot be retroactively attributed to it or the older d617dc40 PDF.
+
+3. Quantifiers, dimension and endpoints
+
+The claim fixes rho in (0,1), b in (0,1), and finite C>0 before L varies. The critical exponent s=(1+rho)/(1-rho) is consequently fixed, finite and strictly greater than 1. Constants, rates and dimension thresholds may depend on these parameters and the choices in K/L. No rate uniform as rho approaches either endpoint, b approaches 0 or 1, or C varies with L is established.
+
+The spectral-gap statement concerns dimensions L>=1, for which the cube has at least two states. K and L are constructed for all sufficiently large L; assigning the constant potential 1 in the finite remainder meets normalization, floor, cap and every required Walsh matching condition. In L the degree is min(L,floor(C sqrt(L))); M's verbal reference to matching through floor(C sqrt(L)) is equivalent, since there are no subsets larger than L. None of this changes the asymptotic conclusion.
+
+The restrictions are essential to the presented proof: rho>0 makes Q invertible and s finite with a nondegenerate conjugate exponent; rho<1 gives a positive transition kernel and exponentially small maximum transition atom. At rho=1 the strict positivity/noise and the finite critical exponent fail. These endpoints are excluded, so the argument does not silently divide by a vanishing denominator or invoke an infinite exponent. No assertion about L=0 and a second eigenvalue is needed.
+
+4. Critical hypercontractive sandwich, M1
+
+Work in L2(mu) for uniform probability on the cube, using its weighted inner product. P_rho and Q=P_sqrt(rho) are real self-adjoint, and their Walsh eigenvalues show Q^2=P_rho. With s as stated,
+s'=s/(s-1)=(1+rho)/(2rho),
+2s'=(1+rho)/rho=1+1/rho,
+2s'-1=1/rho.
+Thus the 2-to-2s' hypercontractive noise threshold is exactly sqrt((2-1)/(2s'-1))=sqrt(rho). Equality at the threshold is allowed. As 0<rho<1, the output exponent is finite and greater than 2.
+
+For arbitrary real f,g,v, self-adjointness gives
+<f,Q M_v Qg>=E_mu[v(Qf)(Qg)].
+The three Holder reciprocals add to one:
+1/s+1/(2s')+1/(2s')=1.
+Taking absolute values, applying Holder and the two hypercontractive bounds yields
+|<f,Q M_v Qg>|<=||v||_s ||Qf||_(2s') ||Qg||_(2s')
+                    <=||v||_s ||f||_2 ||g||_2.
+The bilinear supremum over unit f,g is the operator norm, so M1 follows. The sign of v is immaterial. There is no missing dimension factor: every norm uses the same probability measure.
+
+I retrieved the primary reference Ryan O'Donnell, Analysis of Boolean Functions, May 2021 arXiv edition, https://arxiv.org/pdf/2105.10386, section 10.1, printed page 284 (PDF page index 283). Its Hypercontractivity Theorem gives the stated exponent/noise condition, including equality. This source supports the classical input; the application to the present ratio is demonstrated above. This is not a new hypercontractivity theorem or an inference from stationary moments alone.
+
+5. Actual-chain spectral identity and eigenvalue perturbation, M2–M3
+
+Let H>0, G=PH>0, Z=E_mu HG>0 and U=H/G. The actual kernel K_H(x,y)=P(x,y)H(y)/G(x) is stochastic, strictly positive and reversible under density HG/Z with respect to mu. The unitary change from L2((HG/Z)mu) to L2(mu) is multiplication by sqrt(HG/Z). Its conjugated kernel is
+sqrt(H(x)/G(x)) P(x,y) sqrt(H(y)/G(y)),
+so its self-adjoint representative is exactly S=M_sqrt(U) P M_sqrt(U). The normalization factor Z cancels. This computation uses the actual stationary law, not a surrogate law.
+
+Set X=M_sqrt(U)Q. Its adjoint is Q M_sqrt(U), giving S=XX* and T=X*X=Q M_U Q. Multiplication by sqrt(U) is invertible since all entries are positive; Q is invertible since its finitely many Walsh eigenvalues rho^(|S|/2) are strictly positive. Therefore X is invertible and X^(-1)SX=X*X=T. The matrices share the full spectrum with multiplicity. No bound on the condition number of X is required: perturbation is applied to the self-adjoint T and P, not to an ill-conditioned similarity transform of a perturbation.
+
+T-P=Q M_(U-1) Q, and M1 proves ||T-P||<=||U-1||_s. The min-max characterization then gives the ordered-eigenvalue estimate for every index. In particular, order eigenvalues decreasingly. The actual stochastic irreducible chain has top eigenvalue 1, and positivity of S makes every eigenvalue positive. The noise chain has second eigenvalue rho for L>=1, even though its multiplicity is L. Consequently
+|[1-lambda_2(K_H)]-(1-rho)|<=||U-1||_s.
+This is the usual reversible Poincare gap; the absolute-spectrum gap coincides here because there are no negative eigenvalues. Multiplicity at rho does not defeat min-max, and changing stationary mean-zero subspaces never enters the comparison. M2 and M3 are correct.
+
+6. The all-point denominator estimate, M4
+
+K's H has value t in (0,1) at x0, value M>1 on its annulus A and value 1 elsewhere. Thus H>=1-1_{x0} pointwise, including at x0, where the comparison function is zero. Positivity of P and P1=1 imply
+G(y)=PH(y)>=1-P(y,x0).
+For the Boolean product transition, put p=(1-rho)/2 in (0,1/2). For d=D(y,x0),
+P(y,x0)=p^d(1-p)^(L-d)
+        =(1-p)^L[p/(1-p)]^d<=(1-p)^L=u.
+Hence G(y)>=1-u for every y, including the exceptional low vertex. Because u=((1+rho)/2)^L<1 for L>=1, division by 1-u is legitimate.
+
+K had applied this input outside x0 when proving the stationary floor; M correctly observes that the PH bound itself has no such exclusion. No repair t=1 is needed. The conclusion is a lower bound on PH for this particular family, not a lower bound on H and not a theorem for arbitrary stationary-admissible potentials. Its compatibility with H(x0)->0 and PH(x0)->infinity is exact.
+
+7. Critical ratio control and the precursor spectrum, M5
+
+The two exceptional supports A and {x0} are disjoint. By the triangle inequality (or their exact disjoint-support norm),
+||H-1||_s <= alpha^(1/s)(M-1)+delta^(1/s)(1-t)
+           <=alpha^(1/s)M+delta^(1/s)
+           =alpha^(3/(4s))+delta^(1/s)=d_L.
+The power is correct because M=alpha^(-1/(4s)); no large spike was estimated by its unweighted maximum alone.
+
+Jensen gives |Pf|^s<=P|f|^s, and invariance of mu gives ||Pf||_s<=||f||_s. Thus
+||H-PH||_s<=||H-1||_s+||P(H-1)||_s<=2d_L.
+Using the proved all-point denominator floor then yields
+||H/(PH)-1||_s<=2d_L/(1-u)=D_L.
+Energy normalization h=H/sqrt(Z) leaves H/(PH) unchanged, so the actual precursor kernel and its ratio have exactly this estimate. There is no unaccounted power of Z.
+
+L proves alpha<=a^L for a fixed a in (0,1), by exponential Markov applied to the binomial lower tail. The chosen annulus omits x0, which only decreases its mass. Both delta=2^(-L) and u=((1+rho)/2)^L decay exponentially. Consequently D_L decays exponentially. This proves the precursor gap claim by M3 without assuming any uniform positive minimum for H or h.
+
+8. Exact reconstruction dependency and multiplicative stability
+
+I checked the load-bearing L dependency rather than presuming that closeness of stationary densities automatically controls potentials. For a positive symmetric stochastic matrix, L's variational functional has strictly positive diagonal Hessian contributions and a coercive sublevel argument; its unique positive critical point solves hPh=w. Along a positive density path the implicit function theorem and uniqueness yield the actual smooth potential path.
+
+Differentiating log(h_tau P h_tau) gives (I+K_tau)(log h_tau)'. For the actual reversible PSD chain, T_tau=(I-K_tau)/2 has absolute row sum 1-K_tau(x,x)<=1 and L2 operator norm <=1/2. Summing min(1,nu_*^(-1/2)2^(-j)) with the correct factor 1/2 gives the stated resolvent bound. On a floor-b cube nu_*>=b2^(-L), leading to
+D_L^scale(b)=[ceil((L+log_2(1/b))/2)+2]/2=O(L).
+This estimate concerns I+K and does not assume the very spectral gap at 1 being investigated.
+
+L uses K with the higher floor b1=(1+b)/2, leaving fixed room for its Fourier correction e_L. The correction removes all nonconstant Walsh coefficients through k_L exactly, has mean zero and satisfies ||e_L||_infinity<=N_L A1 exp(-cL) with log N_L=o(L). Thus the whole affine density path retains floor b for sufficiently large L. The initial reconstructed potential equals K's normalized h by uniqueness. Integrating the actual inverse derivative gives
+eta_L=||log(htilde_L/h_L)||_infinity
+       <=D_L^scale(b) epsilon_L/b.
+This is genuine multiplicative control on every point of the full state space, not an additive density estimate substituted for it. Exact matching, energy one, floor and eventual critical cap are properties of the true terminal stationary density htilde P htilde. K's minimum and divergent denominator persist under that comparison. The two uses of D in M are explicitly distinguished and do not hide a circular estimate.
+
+9. Transfer to the actual corrected ratio, M6–M7
+
+From exp(-eta)h<=htilde<=exp(eta)h and positivity of P, the same inequalities hold for Ph and Phtilde. Dividing the appropriate upper and lower inequalities yields
+exp(-2eta)U<=Utilde<=exp(2eta)U.
+Since U>0 and 1-exp(-2eta)<=exp(2eta)-1,
+|Utilde-U|<=(exp(2eta)-1)U.
+Also ||U||_s<=||U-1||_s+||1||_s<=D_L+1. Hence
+||Utilde-1||_s<=D_L+(exp(2eta)-1)(1+D_L)
+               =exp(2eta)D_L+exp(2eta)-1=E_L.
+Every quantity is measured against uniform mu, as required for M1. Apply the already established actual-chain spectral identity directly with H=htilde to obtain
+|gap(K_htilde_L)-(1-rho)|<=E_L.
+No rowwise perturbation, change of stationary orthogonality, uniform minimum of htilde or surrogate chain is used. This proves M6 and M7 for the exact reconstructed family.
+
+10. Exponential rate and one nonblocking notation objection
+
+All necessary rates are upper bounds. For example set
+gamma=min{-(3/(4s))log a, (log 2)/s}>0.
+For sufficiently large L, 1-u>=1/2, so D_L<=8 exp(-gamma L). From epsilon_L<=N_L A1 exp(-cL), log N_L=o(L), and D_L^scale(b)=O(L), increasing the dimension threshold yields eta_L<=exp(-cL/2). In particular eta_L<=1 eventually. On eta in [0,1], convexity gives exp(2eta)-1<=(exp(2)-1)eta, and exp(2eta)<=exp(2). Therefore
+E_L<=8 exp(2) exp(-gamma L)+(exp(2)-1)exp(-cL/2).
+This is an explicit valid C1 exp(-c1 L) bound with c1=min(gamma,c/2)>0 and a finite fixed C1, after the stated threshold. This derivation absorbs the subexponential multiplicity and linear stability cost by reducing the rate, exactly as intended. It does not retain the original c without loss.
+
+Nonblocking notation objection N1: Section 5 of M writes 'Since epsilon_L=exp(-cL+o(L))'. L establishes epsilon_L<=N_L A1 exp(-cL), not an asymptotic equality or lower exponential rate. Epsilon could vanish or be substantially smaller. The integration text should say 'epsilon_L<=exp(-cL+o(L))' or simply retain the displayed N_L upper bound. The theorem and all subsequent inequalities require only that upper bound, so the frozen proof's mathematical conclusion is valid despite this imprecise equality notation. No rerun, new parameter choice or weaker theorem is needed.
+
+11. Failure modes challenged and scope disposition
+
+I checked specifically whether the Holder exponents miss the hypercontractive endpoint; whether the similarity acts on the real stationary Doob chain; whether multiplicity of rho or different stationary subspaces invalidates the eigenvalue bound; whether the low vertex is excluded from PH>=1-u; whether energy normalization changes the ratio; whether an exponentially small annulus can still create an unbounded ratio norm; whether exact density correction lacks controlled inverse reconstruction; and whether its subexponential coefficient count or O(L) inverse bound can defeat exponential decay. The explicit calculations above resolve each issue within the stated fixed-parameter scope.
+
+The substantive result is a classification, not a collapse counterexample: a family satisfying the original exact stationary constraints can have vanishing normalized minima and a diverging PH at x0 while its actual gap tends to the positive unweighted value 1-rho. This closes the K/L family as a proposed asymptotic collapse route. It does not negate L's counterexample to deriving a uniform potential minimum; it demonstrates why that counterexample alone cannot disprove the gap conjecture. J remains a sufficient minimum-based theorem with its additional hypothesis, not a necessary-and-sufficient classification.
+
+The abstract sandwich and finite-dimensional min-max arguments are classical. The programme-specific connection to the exact K/L nonlinear construction is the demonstrated advance. I did not perform an exhaustive originality search or establish global priority, frontier significance or publication readiness. Primary-source confirmation of the classical exponent does not supply those conclusions. No claim about physical Yang–Mills gaps, continuum limits, eliminated original hypotheses, PR29 progress or TermSource follows. Keep PR29=20/41 and TermSource=0.
+
+Final disposition: PASS for M at the exact frozen raw hash, with the nonblocking upper-bound notation clarification N1 retained. Consolidate this result with K/L/J in the grouped source. Any future integrated manuscript/PDF is a different artifact and needs its own exact-bound review; no existing PDF authorization or grade covers M automatically. The general stationary-gap and critical weighting questions remain open.

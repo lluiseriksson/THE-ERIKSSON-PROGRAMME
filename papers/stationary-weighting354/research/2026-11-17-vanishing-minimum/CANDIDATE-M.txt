@@ -1,0 +1,74 @@
+CANDIDATE M: The exact-matching vanishing-minimum family has asymptotically unweighted gap
+Status at freezing: analytic candidate; separate first audit pending.
+Parent scientific commit:9f75462ccb2982662607447ee1da1d7c9d13e1a0.
+Dependencies: K raw UTF8/LF SHA25657e5b9491cc2593c28852d06445b64673e258007cc84b196450c164150eb92e0; L raw UTF8/LF SHA256cbe65eef9bff034561564bed05f2b777a181d73b9a24491324408b26b78a49cc.
+Representation: raw UTF8 without BOM, LF.
+This note is NOT part of the authorized8efcb73b PDF and inherits no PDF grade.
+
+1. Claim and distinction
+Fix rho in (0,1), b in (0,1), C>0, s=(1+rho)/(1-rho). For the exact stationary-matching family htilde_L constructed in L, its ACTUAL Boolean Doob kernels satisfy
+  gap(K_htilde_L) -> 1-rho.
+Indeed the error is exponentially small in L, with constants depending on the fixed parameters and choices in K/L.
+Together with L, this is a fully admissible family with exact matching through floor(C sqrt(L)), stationary floor b, stationary critical moment at most2, min htilde_L ->0 and Ph tilde_L(x0)->infinity, yet its gap approaches the unweighted positive gap. Thus vanishing normalized potential minima, even with this high denominator and original hypotheses, are not sufficient for gap collapse. This is a classification of this specific family. The general stationary-gap and critical-moment questions remain OPEN. No original hypothesis is removed.
+
+2. A classical hypercontractive sandwich estimate
+All spaces here use uniform probability on {-1,1}^L. Put P=P_rho, Q=P_sqrt(rho), so Q^2=P. For any real multiplication function v,
+  ||Q M_v Q||_{2->2} <= ||v||_s.                    (M1)
+Proof. The Holder conjugate is s'=(1+rho)/(2rho), so 2s'=1+1/rho. Classical Boolean hypercontractivity, with input exponent2, output2s', and noise sqrt(rho), gives ||Qf||_{2s'}<=||f||_2: the noise bound is exactly sqrt((2-1)/(2s'-1))=sqrt(rho). Holder with exponents s,2s',2s' then gives
+  |<f,Q M_v Q g>| <= ||v||_s ||Qf||_{2s'} ||Qg||_{2s'}
+                   <= ||v||_s ||f||_2 ||g||_2.
+Taking the supremum proves(M1). This is a standard consequence, not a new hypercontractive theorem or a statement following merely from stationary moment convergence.
+
+3. Actual spectral comparison; no surrogate chain
+For any positive H, define G=PH and U=H/G, invariant under multiplying H by a positive constant. The actual Doob K_H(x,y)=P(x,y)H(y)/G(x) is reversible for stationary density HG/EHG. Multiplication by its square root conjugates K_H to S=M_sqrt(U) P M_sqrt(U). With X=M_sqrt(U)Q, S=XX* and T=X*X=Q M_U Q. Both factors are invertible because U>0 and Q has strictly positive Walsh eigenvalues. Thus T and S have the same full spectrum (in fact X^{-1} S X=T). Consequently the ordered eigenvalues of K_H equal those of the self-adjoint positive matrix T.
+By(M1),
+  ||T-P||_{2->2} <= ||U-1||_s.                      (M2)
+The min-max principle for self-adjoint matrices yields, at every ordered index j,
+  |lambda_j(K_H)-lambda_j(P)|<=||U-1||_s.
+For L>=1 the second eigenvalue of P is rho, so
+  |gap(K_H)-(1-rho)|<=||U-1||_s.                    (M3)
+Multiplicity of rho is harmless; no comparison of orthogonality under two different stationary measures is presumed.
+
+4. A directly proved denominator bound for K's three levels
+Use K's unnormalized H: t in(0,1) at x0, M=alpha^{-1/(4s)}>1 on A, and1 elsewhere. Let delta=2^{-L}, u=((1+rho)/2)^L. Since
+  H >= 1-1_{x0}
+and every transition probability P(y,x0)<=u, positivity gives
+  G(y)=PH(y)>=1-u>0 FOR EVERY y, including x0.       (M4)
+Thus there is no need to replace or repair the exceptional low vertex. K's argument had already proved the pointwise input needed for(M4); the full gap consequence was not claimed there.
+Set
+  d_L=alpha^{3/(4s)}+delta^{1/s}.
+Disjoint supports, M>1, and t in(0,1) imply
+  ||H-1||_s <= alpha^{1/s}(M-1)+delta^{1/s}(1-t)
+              <= d_L.
+Jensen and invariance show P is an L^s contraction. Hence
+  ||H-G||_s<=||H-1||_s+||P(H-1)||_s<=2d_L.
+From(M4),
+  ||U-1||_s=||(H-G)/G||_s<=2d_L/(1-u)=:D_L.        (M5)
+The positive energy normalization Z cancels from U exactly. Since alpha decays exponentially by L Section5, D_L decays exponentially. By(M3), K's precursor gap tends to1-rho with error at mostD_L. A uniform lower bound on H itself was neither assumed nor derived.
+
+5. Stability under L's exact marginal correction
+L proves for the energy-normalized precursor h=H/sqrt(Z) that
+  eta_L=||log(htilde_L/h)||_infinity
+        <= D_L^{scale}(b) epsilon_L/b ->0,
+where D_L^{scale}(b)=[ceil((L+log2(1/b))/2)+2]/2,
+epsilon_L<=N_L A1 exp(-cL), and log N_L=o(L).
+The symbol D_L^{scale} here denotes L's resolvent bound and is DIFFERENT from the spectral error D_L in(M5).
+Positivity of P gives exp(-eta)Ph<=P htilde<=exp(eta)Ph. Therefore the actual ratios obey
+  exp(-2eta)U <= Utilde=htilde/(P htilde) <= exp(2eta)U.
+Pointwise |Utilde-U|<=(exp(2eta)-1)U, and ||U||_s<=1+D_L. It follows that
+  ||Utilde-1||_s
+    <=D_L+(exp(2eta_L)-1)(1+D_L)
+    =exp(2eta_L)D_L+exp(2eta_L)-1=:E_L.             (M6)
+Combining(M3) and(M6) yields the explicit actual-gap bound
+  |gap(K_htilde_L)-(1-rho)|<=E_L ->0.              (M7)
+Since epsilon_L=exp(-cL+o(L)), D_L^{scale}(b)=O(L), alpha<=a^L with a<1 and u,delta decay exponentially, there exist constants c1>0,C1<infinity and L0 such that E_L<=C1 exp(-c1 L) for L>=L0. This assertion absorbs the subexponential term into a smaller positive exponential rate; it does not assert the original c remains unchanged. Filling finitely many small dimensions with htilde=1 preserves every original constraint and the limit.
+
+6. What this closes and does not close
+The pending next mechanism proposed repairing t to1 and comparing exceptional rows of symmetric conjugates. That is unnecessary: direct(M4) controls the actual denominator at every point, and critical-L^s control of the actual ratio gives a full operator-norm estimate. The estimate applies to the exact nonlinear reconstruction from L by its PROVED multiplicative stability, not to an abstract pair of nearby densities.
+This rules out the K/L vanishing-minimum family as a gap-collapse mechanism. It does not prove a dimension-uniform Ph floor for arbitrary stationary-admissible h, nor a global bound on critical weighting moments, nor the general conjecture. In particular L's refutation of a derived h minimum remains valid and J's minimum sufficient condition remains limited. No transfer from moment convergence alone to spectral convergence is claimed: the load-bearing denominator estimate(M4) and sandwich(M1) are explicit.
+No Yang--Mills physical gap, continuum limit, PR29 progress increment or TermSource increment follows. Keep PR29=20/41,TermSource=0. Group this result with K/L/J and the existing manuscript rather than create a small separate paper.
+
+7. Source and assessment context
+Primary input: Ryan O'Donnell, Analysis of Boolean Functions, May2021 arXiv edition, https://arxiv.org/pdf/2105.10386 , Chapter10.1, printed page284, the Hypercontractivity Theorem. The theorem statement and exponent condition were retrieved17November2026; no new inequality or exhaustive originality search is claimed. The min-max eigenvalue perturbation step is standard finite-dimensional linear algebra and is explicitly connected to the actual conjugate above. The potential-floor/ratio comparison is proved here for the previously frozen K/L construction.
+Originality: the abstract sandwich estimate is classical. The programme-specific output is the quantified full-chain classification of its exact-matching vanishing-minimum counterexample. No world-first or frontier claim is made. Relevance: closes a concrete candidate collapse route while preserving a useful counterexample to the minimum bridge.
+This is an analytic source proof; no Lean, oracle, numerical experiment, local compilation, Colab run, PDF production or machine proof has been performed for M. Root authored it in the same Codex workflow; exact serving backend/effort is not independently attested. A separate audit role must retain a complete first report and disclose shared provider/context, with no claim of blind or human peer review. The older d617dc40 PDF cannot inherit this result or audit.
