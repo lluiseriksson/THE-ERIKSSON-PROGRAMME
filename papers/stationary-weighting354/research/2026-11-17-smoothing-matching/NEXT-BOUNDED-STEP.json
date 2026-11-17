@@ -1,0 +1,11 @@
+{
+  "parent_question": "stationary-doob-gap",
+  "new_active_question_count": 0,
+  "statement": "Can regularization at the stationary-density level, followed by its unique positive inverse, transfer a useful actual spectral-gap bound back to the original potential?",
+  "hypotheses": "Only the original fixed rho,b,C, critical cap and exact matching assumptions. No positive potential minimum or Ph floor may be assumed.",
+  "mechanism": "First use w_tau=P_tau(pi), which preserves its mean, floor, moment cap by Jensen, and zero low Walsh coefficients. Reconstruct g_tau through g_tau P_rho g_tau=w_tau. The unresolved step is a dimension-uniform comparison of the actual Dirichlet form and stationary variance with those for h; preservation of marginals alone does not supply it.",
+  "falsifier": "An original-admissible family defeating the proposed spectral comparison, or an error in the reconstruction/control argument.",
+  "abandonment": "Do not assume a missing spectral comparison or recycle the refuted potential-smoothing invariance claim. After three units without a substantial proved advance, document the precise obstruction and switch mechanism.",
+  "scope": "Pending test within the existing question; no new theorem or proof of a uniform gap is claimed by this planning record.",
+  "publication_queue": "Group N with the existing L/M source if its audit succeeds; retain all old sources and reports. Production and exact-PDF assessment of later sources require an applicable authorized execution route. Resume the older native AIRR job only after actual catalogue reconciliation."
+}

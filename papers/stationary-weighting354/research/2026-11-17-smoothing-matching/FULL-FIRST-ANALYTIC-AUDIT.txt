@@ -1,0 +1,131 @@
+FULL FIRST ANALYTIC AUDIT — CANDIDATE N
+Date: 2026-11-17
+
+1. Exact subject and verdict
+
+Frozen commit: 9de0186a26f11e9db35426cba0eba68b1f3e13e7.
+Worktree: C:\Trabajo\the-eriksson-programme\low-full-evidence-20261116.
+Audited file: papers/stationary-weighting354/research/2026-11-17-smoothing-matching/CANDIDATE-N.txt.
+Raw SHA256: a3f1573a13304f5cbf8c2eec988d9fa3ab052bada9e4966eea83b5de0dc948e9.
+Length: 10633 bytes. The file has no UTF-8 BOM and no CR bytes; its stated raw UTF-8/LF representation was checked without normalization. Its raw unfiltered git object identity and HEAD blob identity both equal 608da227f9cd23a978ac3e73932b6249cea833b0. The actual worktree HEAD agrees with the frozen commit and was clean at initial inspection.
+
+Required dependency read: papers/stationary-weighting354/revision-gapclassification-20261117/manuscript-gapclassification-candidate.tex, actual raw SHA256 6b565f512d0bb10ecf74ad6874096c954f2fbe88e7a42991a0bcb448c4f0d1de, especially lemma inversestationary and its proof. N also reproduces the specialized four-point argument, which was checked directly below.
+
+VERDICT: PASS for Proposition N.1 and Theorem N.2 under their exact stated quantifiers. No blocking mathematical error, missing premise or required correction was found. Potential smoothing followed by energy normalization preserves the stationary floor for every input in the stated setting. The constructed actual positive potential satisfies exact stationary matching, floor and cap, yet loses its specified first marginal after every nontrivial smoothing parameter, while its floor and cap survive. The proof is exact, not perturbative or numerical.
+
+This verdict applies only to the named candidate and needed dependency interfaces, not to every file in the commit, a rendered PDF, novelty, publication readiness, or the general gap conjecture. No numerical score is assigned. PR/body capture is inapplicable: no PR or body is part of this assignment. The frozen source must remain unchanged; a future integration or PDF is a distinct artifact.
+
+2. Identity, context and method boundary
+
+Auditor: OpenAI Codex role /root/public354_commit_audit. Available identity is the Codex assistant/role in this OpenAI workflow; an exact serving backend revision, model alias and effective reasoning setting are not independently attested. I have inherited programme context, share the provider/filesystem, and previously inspected M and the grouped source integration. This is a separate source-audit role, not blind, human, provider-independent or organizationally independent peer review. Prior reports and the older PDF score are not inherited as a verdict on N.
+
+The actual Operational Governance Charter section 4 was read for this task, including the exact-subject and no-inbound boundary. No inbound parent message arrived during this audit. I used source/dependency reading, raw hashes, read-only git observations and analytic reasoning. No mathematical, numerical, symbolic or candidate code was executed; no Lean, TeX, runtime, browser, external communication or model, desktop control, branch operation or repository mutation was used. Only this full report was prepared outside the repository and retained in D:. No disposable clone or runtime was created.
+
+3. Quantifiers, original assumptions and nondegeneracy
+
+The setting fixes 0<rho<1 and 0<b<1, so s=(1+rho)/(1-rho) is finite and greater than one. In N.2, L>=3 and 1<=k<=L-2. Consequently m=k+1>=2, an A with |A|=m exists, and there is a coordinate j outside A; B=A union {j} has size m+1<=L. A and B both have degree strictly greater than k, while {j} has degree one and belongs to the constraints being tested. The construction supplies a single h for these parameters that works simultaneously for every tau; h is not reselected after observing tau.
+
+The chosen epsilon is a strictly positive minimum of three fixed positive numbers, independent of L and k. Its dependence on rho through s and on b is permitted. Neither endpoint rho=0 nor rho=1 is included. In particular alpha=rho^m and beta=rho^(m+1) are positive in every finite constructed dimension; their tending to zero along a growing sequence does not make the exact finite-dimensional coefficients vanish.
+
+The family is not claimed for the excluded k=L-1 or k=L regimes. Finite initial dimensions in the growing-order application can be filled with h=1; they are not required to exhibit a matching defect. The assertion is eventually in L there. No dimension-uniform lower bound on the size of the nonzero defect is stated or proved.
+
+4. Universal floor preservation, Proposition N.1
+
+Let R=P_tau, H=Rh and g=Ph, with E hPh=1. The Boolean noise operators commute: on every Walsh character both compositions have multiplier rho^|S| tau^|S|. Hence PH=R(Ph)=Rg and HPH=(Rh)(Rg).
+
+For each row x of the stochastic nonnegative R, Cauchy--Schwarz applied to the functions sqrt(h) and sqrt(g) gives
+(R sqrt(hg))(x)^2 <= (Rh)(x)(Rg)(x).
+The original stationary floor is hg=pi>=b, so sqrt(hg)>=sqrt(b); applying the probability row gives R sqrt(hg)>=sqrt(b). Therefore HPH>=b at every point. This remains valid for R at tau=0 or tau=1, although its rows may have special structure at the endpoints.
+
+The energy after smoothing is
+Z=E HPH=sum_S rho^|S| tau^(2|S|) hhat(S)^2.
+All rho powers are nonnegative and 0<=tau^(2|S|)<=1, with the constant character's multiplier explicitly one at tau=0. Thus Z<=sum_S rho^|S| hhat(S)^2=1. Strict positivity of H, PH and their average gives Z>0. Dividing the pointwise bound by Z proves pi_tau>=b/Z>=b. There is no reversal of normalization or unjustified comparison of two stationary measures.
+
+Integrating HPH>=b also implies Z>=b, so the stronger intermediate b/Z bound cannot contradict the density's mean one. This consistency check is implicit in the proof. The argument requires energy normalization as stated and positivity; it does not assume matching or a moment cap. It establishes no universal moment-cap preservation, and the candidate correctly avoids that claim.
+
+5. Target density and exact labelled matching
+
+For w=1+epsilon(chi_A+chi_B), both nonconstant characters have uniform mean zero, so E w=1. Since epsilon<=1/8 and epsilon<=(1-b)/4,
+w>=1-2epsilon>=3/4,
+w>=1-2epsilon>=(1+b)/2>b.
+The last strict inequality follows from b<1, not from a tacit strict inequality in the minimum defining epsilon.
+
+The Walsh support of w is exactly contained in the constant, A and B characters. Orthogonality gives E w chi_S=0 for every nonempty S of size at most k. The Fourier expansion of a coordinate-cylinder indicator on a set T uses only characters indexed by subsets of T. Therefore vanishing of these coefficients is precisely equality of all labelled coordinate marginals of order at most k to their uniform values. No relabelling or approximation is used.
+
+This is only a proposed stationary density until the next construction produces an actual positive potential. The proof supplies that construction rather than imposing w and h independently.
+
+6. Actual four-point quotient and positive symmetric scaling
+
+Write y=chi_A(x), z=x_j. A is nonempty and disjoint from {j}. Under uniform input the two signs are independent and uniform, so the quotient measure is uniform on four points. Under Boolean rho-noise, the independent flips on A have product mean rho^m=alpha and the flip at j has mean rho. The quotient transition is therefore Q=P_alpha tensor P_rho. Equivalently, the four basis functions 1,y,z,yz have eigenvalues 1,alpha,rho,beta, which coincide with the full-cube action on 1,chi_A,chi_j,chi_B. This proves the exact intertwining for every quotient function, including coordinates outside A union {j}, which the potential ignores.
+
+Since 0<alpha,rho<1, Q is strictly positive, symmetric and stochastic. Its four eigenvalues are positive, so it is positive definite (and hence positive semidefinite). The use of a four-point problem is exact and independent of the ambient dimension; it is not an approximation of the full stationary law.
+
+For a positive mean-one quotient density w, let a_i=mu_4(i)w(i)>0, with sum_i a_i=1. The stated functional has nonnegative exponential terms, and its positive diagonal terms have strictly positive diagonal second derivatives. The remaining exponential Hessians are positive semidefinite. Thus its Hessian is positive definite at every finite v, and the functional is strictly convex.
+
+With M=max_i v_i and d0=min_i mu_4(i)Q(i,i)/2>0, retaining a maximizing diagonal exponential and using sum a_i=1 gives F(v)>=d0 exp(2M)-M. This bounds M from above on a sublevel set. If v_i tends to minus infinity while all v_j<=M0, then
+-sum_j a_j v_j >= -a_i v_i-(1-a_i)M0 -> infinity.
+The exponential part is nonnegative, so every coordinate also has a lower bound on the sublevel. In finite dimension the continuous functional has compact nonempty sublevels and attains its minimum. Strict convexity gives uniqueness.
+
+Symmetry of mu_4(i)Q(i,j) shows that the gradient coordinate is exactly mu_4(i)[exp(v_i)(Q exp(v))_i-w_i]. The minimizer therefore gives the unique positive g satisfying gQg=w, and integrating proves E gQg=1. There is no unremoved scaling degree of freedom. The positive definite Hessian yields smooth local dependence along a positive density path; existence at each parameter and uniqueness join those local solutions into the path used in the proof. No uniform Hessian eigenvalue bound is presumed.
+
+7. Dimension-free inverse bound on this quotient
+
+For w_t=1+t epsilon(y+yz), t in [0,1], the lower bound is in fact at least 3/4, so the weaker 1/2 bound used in the proof is valid. Thus the actual stationary probability nu_t=w_t mu_4 has every atom at least 1/8. At t=0 the unique solution is g_0=1.
+
+The actual J_t is stochastic and reversible under nu_t. Its conjugate M_sqrt(g_t/Qg_t) Q M_sqrt(g_t/Qg_t) is positive semidefinite, so its spectrum is contained in [0,1]. With T_t=(I-J_t)/2, the diagonal is (1-J_t(i,i))/2>=0 and the off-diagonals are -J_t(i,j)/2. Their absolute row sum is exactly 1-J_t(i,i)<=1. Thus T_t is an infinity-norm contraction even though it is not a positive Markov kernel. Its L2(nu_t) operator norm is at most 1/2.
+
+For ||f||_infinity<=1, ||f||_L2(nu_t)<=1, and evaluation gives ||T_t^r f||_infinity<=sqrt(8)2^(-r). Combined with the row contraction, this proves the displayed minimum bound. Since I-T_t=(I+J_t)/2, the correct inverse is
+(I+J_t)^(-1)=(1/2)sum_(r>=0) T_t^r.
+The first two terms have norm at most one each. The remaining geometric tail is sqrt(8)sum_(r>=2)2^(-r)=sqrt(8)/2. Therefore its norm is at most 1+sqrt(8)/4<=2. The prefactor, tail starting index and bound are correct.
+
+This constant does not depend on alpha, m, k or L. In particular it stays valid as alpha becomes small: it depends on the four stationary atom bounds and the nonnegative spectrum, not a positive gap near eigenvalue one or a lower bound on the smallest eigenvalue of Q. This is the key reason no ambient-dimension inverse cost enters.
+
+Differentiating log(g_t Qg_t)=log w_t gives the exact actual-kernel identity
+(I+J_t)(log g_t)'=epsilon(y+yz)/w_t.
+The forcing has sup norm at most 4epsilon using w_t>=1/2 and |y+yz|<=2. Multiplication by the inverse bound and integration over t in [0,1] give ||log g_1||_infinity<=8epsilon=:eta. By the choice of epsilon, eta<=log(2)/(8s). This is an analytic finite-dimensional stability proof, not a numerical scaling algorithm or an assumed potential bound.
+
+8. Lifting, normalization and cap uniformity in smoothing
+
+Lifting h(x)=g_1(chi_A(x),x_j) gives Ph=(Qg_1)(chi_A(x),x_j) exactly, so hPh=w and E hPh=1 on the full cube. All the desired original stationary equalities now belong to an actual potential, and exp(-eta)<=h<=exp(eta) holds pointwise with a constant independent of dimension and k.
+
+For every tau in [0,1], positivity and stochasticity place H=P_tau h and PH in that same interval. Consequently exp(-2eta)<=Z<=exp(2eta), and
+pi_tau=HPH/Z<=exp(4eta).
+The expectation uses a probability measure, so E pi_tau^s<=exp(4s eta)<=exp(log(2)/2)=sqrt(2). This proof is uniform over all tau and includes tau=1, giving the original cap as well. It does not accidentally rely on preservation of the cap for arbitrary potentials; it uses this constructed potential's proved uniform bounds. Proposition N.1 supplies the same floor b after normalization for every tau.
+
+All requested constraints (a)–(c) therefore hold. The much stronger than two moment bound is obtained before any matching-defect argument and with one fixed positive epsilon; it is not tuned separately to dimension or tau.
+
+9. Exact coefficient audit and nonzero defect
+
+The quotient characters 1,z,y,yz are orthonormal, so the expansion h=c+d chi_j+e chi_A+f chi_B is unique and c=E h>0. Multiplication of the expansion by its P-image can be checked pair by pair:
+- At chi_j, the constant/chi_j pair gives (1+rho)cd, and the A/B pair gives (alpha+beta)ef. The target w has zero coefficient there, proving N1.
+- At chi_A, the constant/A pair gives (1+alpha)ce, and the j/B pair gives (rho+beta)df. The target coefficient is epsilon, proving N2.
+- At chi_B, the constant/B pair gives (1+beta)cf, and the j/A pair gives (rho+alpha)de. The target coefficient is epsilon, proving N3.
+There is no missing factor of two: each displayed sum already combines the two ordered cross terms. Character multiplication is by symmetric difference, so A triangle B={j}, {j} triangle B=A and {j} triangle A=B exactly.
+
+If e=0, N1 forces d=0 since (1+rho)c>0; N2 would then force epsilon=0, a contradiction. If f=0, N1 again forces d=0 and N3 contradicts epsilon>0. Hence ef is nonzero without a perturbative expansion or a quantitative lower bound. Its sign need not be established for the claimed nonvanishing result.
+
+P_tau weights the four potential coefficients by 1,tau,tau^m,tau^(m+1). Applying P_rho afterward preserves the respective rho eigenvalues, so the chi_j coefficient of HPH is
+(1+rho)c tau d+(alpha+beta)tau^(2m+1)ef.
+Using N1 to replace the first coefficient gives precisely
+E pi_tau chi_j=(alpha+beta)ef(tau^(2m+1)-tau)/Z.
+The normalization is by the constant energy Z>0, so division cannot restore a zero coefficient. For 0<tau<1 and m>=2, tau^(2m+1)=tau*tau^(2m)<tau. With alpha+beta>0 and ef nonzero, N4 is nonzero for every such tau. Therefore even this first labelled marginal is not uniform. No remainder estimate, limiting argument or numerical nonzero test is needed.
+
+At tau=1 the factor vanishes and H=h is the original exactly matched potential. At tau=0 H=c>0 is constant, its energy is c^2 and the resulting stationary density is identically one. Both endpoints are treated correctly; neither is claimed to break matching. The distinction between arbitrary small nonzero defects and exact equality is explicit.
+
+10. Growing k, remaining questions and overclaim checks
+
+For fixed C>0, k_L=min(L,floor(C sqrt(L))) eventually lies between 1 and L-2. The theorem applies separately in all those dimensions with the same epsilon depending only on rho,b. Filling the finitely many other dimensions with h=1 preserves normalization, floor, cap and every required low-degree marginal. The defect statement is only for sufficiently large dimensions and remains simultaneous for each nontrivial tau within each constructed dimension. It need not have a uniform positive magnitude as L grows; alpha=rho^(k_L+1) becomes small. The candidate expressly disclaims such a magnitude bound.
+
+The construction has a dimension-uniform positive potential minimum exp(-eta), so it is not a collapsing-gap example. The proof establishes failure of one unconditional regularization invariance claim, not failure of the original gap conjecture. It does not remove an original hypothesis, claim control of arbitrary small-Ph regions, or infer a physical/continuum Yang–Mills result. Its proposed abandonment is appropriately limited: uncorrected smoothing of an actual potential cannot be relied on to preserve exact stationary matching in the whole admissible class.
+
+The suggested next test concerns a different operation, smoothing the stationary density and reconstructing a potential. The elementary invariances stated for that operation are consistent: noise preserves mean and a pointwise density floor, contracts the s moment by Jensen/invariance, and multiplies zero Walsh coefficients by scalars. The positive symmetric scaling argument then supplies the actual potential. None of this proves a quantitative spectral comparison between the initial and reconstructed chains, and the candidate explicitly requires that further argument rather than treating it as established. This is a bounded continuation within the same active question, not a second claimed solution.
+
+11. Objections, sources and final disposition
+
+No blocking objection or source correction is required. I specifically tested: reversed Cauchy--Schwarz/normalization directions; loss of exact stationarity in passing to the quotient; absence of scaling existence despite uniqueness; dimension-dependent degeneration of the inverse bound as alpha tends to zero; a cap valid only at the endpoints; missing factors in the three coefficient identities; ef=0; cancellation at an interior tau; and an invalid extension to the growing matching regime. The analytic checks above resolve these issues for the exact stated parameters. They do not extend the theorem to excluded parameter endpoints or assert a uniform defect size.
+
+Noise diagonalization, semigroup composition and Walsh multiplication are classical inputs. No browser or literature search was performed in this audit, as explicitly instructed. The candidate's O'Donnell page/definition citation and its historical search statements are therefore author-provided source context, not newly verified retrievals by this auditor. The product-kernel/character identities needed for the proof were checked directly here. The inverse-stationary lemma's actual preserved source was read, and its specialization is independently spelled out in sections 6–7 of this report.
+
+No absence-of-search-results argument establishes novelty. The contribution is a proved obstruction within this programme; global originality, broader importance and publication readiness remain unestablished. No score from d617dc40 or any earlier source/PDF is transferred, and no human peer review or editorial acceptance is implied.
+
+Final disposition: PASS for exact candidate a3f1573a13304f5cbf8c2eec988d9fa3ab052bada9e4966eea83b5de0dc948e9 at commit 9de0186a26f11e9db35426cba0eba68b1f3e13e7. Retain the full report and consolidate this result with the grouped source if desired; a future integrated text and PDF require their own artifact-bound checks. This audit performs no publication, compilation, permission or branch action. The general stationary-gap and critical weighting questions remain open.

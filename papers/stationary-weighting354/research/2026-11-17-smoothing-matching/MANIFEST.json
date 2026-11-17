@@ -1,0 +1,36 @@
+{
+  "schema": "analytic-smoothing-obstruction-v1",
+  "candidate_commit": "9de0186a26f11e9db35426cba0eba68b1f3e13e7",
+  "representation": "Raw UTF-8 bytes without normalization; candidate UTF-8 without BOM and LF",
+  "first_audit": "PASS: exact analytic candidate only, shared-provider/context separate role",
+  "hypotheses_eliminated": [],
+  "refuted_claim": "Noise smoothing of the actual potential, followed by energy normalization, universally preserves exact stationary matching under original floor/cap assumptions",
+  "general_gap": "OPEN",
+  "PDF_created": false,
+  "published": false,
+  "new_runtime_seconds": 0,
+  "new_workflow_dispatches": 0,
+  "files": [
+    {
+      "path": "CANDIDATE-N.txt",
+      "bytes": 10633,
+      "sha256_raw": "a3f1573a13304f5cbf8c2eec988d9fa3ab052bada9e4966eea83b5de0dc948e9"
+    },
+    {
+      "path": "FULL-FIRST-ANALYTIC-AUDIT.txt",
+      "bytes": 18882,
+      "sha256_raw": "3c6a5f7a97d44e2a96263d643e883cd164e056f46350bede5520dd2144057e8b"
+    },
+    {
+      "path": "NEXT-BOUNDED-STEP.json",
+      "bytes": 1600,
+      "sha256_raw": "c7f77c0e531e62cce19b5c53849a05e7fd7a3c69fadbba2d5775236cf7e285ba"
+    }
+  ],
+  "dependency": {
+    "path": "papers/stationary-weighting354/revision-gapclassification-20261117/manuscript-gapclassification-candidate.tex",
+    "commit": "5d2fbe898c379ec8125d393a51f4098ea3328370",
+    "sha256_raw": "6b565f512d0bb10ecf74ad6874096c954f2fbe88e7a42991a0bcb448c4f0d1de",
+    "scope": "lemma inversestationary; four-point proof also reproduced in N"
+  }
+}
