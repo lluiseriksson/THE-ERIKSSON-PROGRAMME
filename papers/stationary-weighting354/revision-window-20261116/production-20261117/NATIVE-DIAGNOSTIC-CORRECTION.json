@@ -1,0 +1,15 @@
+{
+  "observed_at": "2026-11-17T03:54:46.4199383Z",
+  "http_status": 400,
+  "actual_server_message": "Catalogue must identify this as the configured operator sole-authored paper.",
+  "actual_response_file": "native-revision/grant-diagnostic2-http-error.txt",
+  "actual_response_sha256": "399cf960c84a3e68619a7dec8069f0a3d871a276f5d3b10e175e5342f332a048",
+  "same_job_and_binding": true,
+  "attempts": 3,
+  "pdf_uploads": 0,
+  "child_credential_exists": false,
+  "receipt_exists": false,
+  "diagnostic_failure": "The first diagnostic wrapper hooked urlopen, but the installed client uses a NoRedirect OpenerDirector. It did not capture an HTTP body. The earlier claim of an empty server body was unsupported and must be corrected; the report/source files remain unchanged until current exact-commit audit finishes.",
+  "correction": "A second diagnostic wrapper hooked the actual opener and captured the explicit catalogue/sole-author rejection. No redirect/proxy/authentication behavior changed; the exact same grant identity and job were retained.",
+  "next_action": "Reconcile the trusted host historical catalogue with independently verified publicv1 metadata and PDF; then check explicit programme paper scope and retry the same exact grant. Do not use new-submission fallback or fabricate receipts."
+}

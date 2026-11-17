@@ -1,0 +1,1 @@
+{"error": "Bad Request", "message": "Catalogue must identify this as the configured operator sole-authored paper."}
