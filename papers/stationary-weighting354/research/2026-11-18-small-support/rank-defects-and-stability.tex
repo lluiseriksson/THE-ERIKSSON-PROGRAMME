@@ -1,0 +1,176 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,microtype}
+\usepackage[margin=1.05in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\supp}{\operatorname{supp}}
+\title{Rank defects and spectral stability of Boolean Doob chains}
+\author{Lluis Eriksson}
+\date{Research manuscript, 18 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A reversible Doob transform of half-correlated Boolean noise can have a small spectral gap even when many stationary marginals are uniform. We bound its entire ordered spectrum using the rank of four disjoint coordinate families in the Walsh span of its stationary density. A stationary second-moment bound suffices, without a dimension-uniform positive floor. A fixed spectral discrepancy forces a subcode whose support is small relative to its dimension. Recovery persists under a fixed, pointwise multiplicative perturbation of a structured stationary law, even when the perturbed law has full Walsh span. The perturbation argument combines stability of symmetric scaling in stationary $L^p$ spaces with ambient tests of a quotient weight.
+\end{abstract}
+\section{Setting and prior results}
+Write $\mu$ for uniform probability on $\mathbb F_2^L$ and $E$ for its expectation. For $0<\lambda<1$, $P_\lambda$ flips each input bit independently with probability $(1-\lambda)/2$. It multiplies the Walsh character $\chi_S(x)=(-1)^{\sum_{i\in S}x_i}$ by $\lambda^{|S|}$. All function norms use $\mu$ unless a density is displayed. Matching through order $k$ means that every set of at most $k$ coordinates has uniform joint law.
+
+The \href{https://airr.science/papers/ARR-2026-2B2W1WQ7DF9N5VW7/versions/v1/}{metastable shell construction} shows that cubic-mean convergence and extensive matching can coexist with an exponentially small gap. Earlier \href{https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/versions/v3/}{moment-transfer bounds} relate the potential to the stationary law, and \href{https://airr.science/papers/ARR-2026-6E2HS34Q2Z8349BJ/versions/v1/}{local retention estimates} control the killed chain on small balls. Our question is which stationary structures guarantee recovery for all ambient modes. Sections below give an exact-code criterion and a perturbation theorem.
+
+\section{The rank defect bound}\label{sec:exact}
+On the uniform cube let \(P=P_{1/2}\), \(Q=P_{1/\sqrt2}\), \(h>0\), \(g=Ph\), \(\pi=hg\), \(E\pi=1\), \(U=h/g\), and \(K(x,y)=P(x,y)h(y)/g(x)\). Suppose \(\|\pi\|_2\le B\) and all its nonconstant Walsh coefficients through ambient degree \(k\ge1\) vanish. Use the binary code \(C\) spanned by the Walsh support of \(\pi\). Equivalently \(\pi(x)\) depends on \(Ax\), where the rows of \(A\) form a basis of \(C\). A larger representing row space also works. Write \(d=\dim C\).
+
+\subsection{Two conclusions of one estimate}
+
+Let \(r\) be the least nonnegative integer such that four disjoint sets of columns of \(A\) each have rank at least \(d-r\). Define \(\Delta\) as the maximum distance between corresponding ordered eigenvalues of \(K\) and \(P\), with ambient multiplicities. Then
+\[
+ \Delta\le \min\{1,C_B\,2^{33r-k/28}\}.
+\]
+In particular \(r=o(k)\) suffices for full spectral recovery as \(k\to\infty\). One can append \(s\) arbitrary parity measurements to a four-basis quotient and allow arbitrary dependence on their values. The original four sets still have rank at least \(d_{\rm old}\), so \(r\le s\) after eliminating linearly dependent output rows. Matching and the second-moment cap must still hold for the new stationary law. No lower bound on its minimum uniform in dimension, and no norm-smallness of its dependence on those parities, is required.
+
+Conversely, if \(\Delta\ge\eta>0\), the Walsh span contains a subcode \(V\) with
+\[
+ \dim V-\tfrac14|\mathrm{supp}\,V|
+ \ \ge\ k/924-O_{B,\eta}(1).
+\]
+Here the support of a subcode is the union of its words' supports. This is a restriction on where many independent parities must live. It does not assert that \(\pi\) itself has a low-degree coefficient. The numerical constants are sufficient and have not been optimized.
+
+\subsection{Forward and reverse estimates when the four spans differ}
+
+Take four disjoint independent column families spanning subspaces of codimension at most \(r\), trimming redundant columns. On functions of \(Ax\), each family acts on every one of its cosets as ordinary independent-bit noise, expressed in its own basis. The cosets are equiprobable. For ordinary forward exponents \(1<a\le b\), the normalized outer norms on at most \(2^r\) cosets cost at most \(2^{r(1/a-1/b)}\) in passing from \(a\) to \(b\). This follows by applying the contractive estimate on each coset, then the finite-space norm inequality. Consequently for four successive families,
+\[
+ \|P_\lambda f\|_b\le 2^{r(1/a-1/b)}\|f\|_a,
+ \qquad b-1\le(a-1)\lambda^{-8}.
+\]
+One may choose the four intermediate exponents by distributing the required gain equally on a logarithmic scale. All remaining column factors commute and are contractions.
+
+There is a corresponding estimate on the negative side. For positive \(v\), on each coset the reverse inequality bounds the \(L^{b}\) norm of the reciprocal \emph{output} by the \(L^{a}\) norm of the reciprocal \emph{input}, for \(0<a\le b\), \(1+b\le(1+a)\lambda^{-2}\) in one family. Passing to the global reciprocal norms costs the same finite-space factor as above. Four steps therefore give
+\[
+ \|(P_\lambda v)^{-1}\|_b\le
+ 2^{r(1/a-1/b)}\|v^{-1}\|_a,\qquad
+ 1+b\le(1+a)\lambda^{-8}.
+\]
+This argument permits different subspaces at each step. The factor telescopes because it bounds each step in the same global uniform measure. Extra averaging factors contract reciprocal norms by Jensen applied to \(u^{-b}\). These coset estimates are used only on one side of zero at a time. The mixed-sign step below is performed on the entire cube. The Boolean inputs are classical. \href{https://www.numdam.org/articles/10.5802/aif.357/}{Bonami}, \href{https://doi.org/10.1007/BF01318906}{Borell}, \href{https://arxiv.org/pdf/1108.1210}{Mossel, Oleszkiewicz and Sen, including Remark 1.13}.
+
+\subsection{Recovering an inverse moment on the actual chain}
+
+As in the \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/9b92c977ee4bf401548f28d7dc13ea7392ece8ea/papers/stationary-weighting354/research/2026-11-18-small-support/QUOTIENT-SPECTRAL-RECOVERY.md}{four-basis proof}, the uniqueness of positive \(h\) given \(hPh\) ensures that \(h,g,U\) are quotient functions. Indeed, for two positive solutions with the same density, the ratio of their noise averages is the reciprocal of the ratio of potentials. If the latter has distinct extrema \(m,M\), strict positivity of the kernel puts the former strictly between them everywhere. At the two extrema this would imply both \(mM<1\) and \(mM>1\). The constant ratio must be one. Applying this uniqueness to translations in \(\ker A\) gives the invariance. Put \(F=Qh,\ a_0=Eh\). Then \(\|F\|_2=1\), and matching gives \(1-a_0^2\le a_0^2 B^2 2^{-(k+1)}\) and \(\|g-1\|_2\le C_B2^{-k/2}\). To recall the key estimate, \(1=(Ehg)^2\le a_0 E\pi g\); the constant component contributes \(a_0^2\), and the part of \(g=QF\) above degree \(k\) has norm at most \(2^{-(k+1)/2}\sqrt{1-a_0^2}\). Thus \(a_0\) is bounded away from zero solely in terms of \(B\).
+
+Split \(Q=P_{\lambda_1}P_{\lambda_0}\) with \(\lambda_0^2=7/8,\ \lambda_1^2=4/7\). Interpolation gives \(\|F\|_{1/16}\ge a_0^{31}\). For \(v=P_{\lambda_0}F\), ordinary full-cube reverse hypercontractivity from order \(1/16\) to \(-1/16\) yields \(\|v^{-1}\|_{1/16}\le a_0^{-31}\) since \(7/8<15/17\). Now apply the negative coset estimate to \(g=P_{\lambda_1}v\) with reciprocal exponents \(1/16\) and \(7\). Its condition holds since \((17/16)(7/4)^4>8\). We obtain
+\[
+ \|g^{-1}\|_7\le C_B2^{16r},\qquad
+ \|U\|_{14/11}\le C_B2^{32r},
+\]
+the last by \(U=\pi/g^2\) and \(11/14=1/2+2/7\).
+
+\subsection{Returning to all ambient modes}
+
+For a nonzero nonnegative quotient weight \(W\), the strictly positive matrix \(P_\lambda M_W P_\lambda\) commutes with kernel translations of \(A\). Its unique positive unit top eigenvector is a quotient function. The forward estimate thus implies on the \emph{full} cube
+\[
+ \|P_\lambda M_W P_\lambda\|_{2\to2}\le
+ 2^{2r(1/2-1/b)}\|W\|_s,\qquad b=2s/(s-1)\le1+\lambda^{-8}.
+\]
+For zero weight the conclusion is immediate. With \(E_k=\{|g-1|>2^{-k/8}\}\), we have \(\mu(E_k)\le C_B2^{-3k/4}\). On its complement, \(|U-\pi|\le C2^{-k/8}\pi\) for large \(k\). On \(E_k\), Hölder at \(6/5<14/11\) gains \(\mu(E_k)^{1/21}\). Applying the full multiplier estimate at \(Q\), \(s=6/5,\ b=12\), costs \(2^{5r/6}\). Hence
+\[
+ \|QM_{U-\pi}Q\|\le C_B 2^{33r-k/28}.
+\]
+
+For the signed stationary term factor \(Q=R^2\), \(R=P_{2^{-1/4}}\). The full multiplier estimate for \(|\pi-1|\) at \(R\) uses \(s=2,\ b=4\le5\) and costs \(2^{r/2}\). Split the inner \(R\) at degree \(j=\lfloor k/2\rfloor\). The two low factors give zero against \(\pi-1\) by matching; every other term includes at least one factor with norm \(2^{-(j+1)/4}\) or smaller. Weighted Cauchy-Schwarz therefore gives \(\|QM_{\pi-1}Q\|\le 3(B+1)2^{r/2-(j+1)/4}\). Adding proves the same claimed bound (up to \(C_B\)) for \(\|QM_UQ-P\|\). The Gram products of \(M_{\sqrt U}Q\) and stationary conjugation identify the ordered eigenvalues as in the four-basis proof. Both kernels have spectrum in \([0,1]\). This also absorbs bounded \(k\).
+
+\subsection{Identifying the obstruction and checking both directions}
+
+In fact the rank deficit can be read without choosing four bases:
+\[
+ r=\left\lceil\max_{V\le C}\{\dim V-|\mathrm{supp}\,V|/4\}\right\rceil .
+\]
+Include \(V=0\). For a candidate integer deficit \(u\in[0,d]\), truncate the column matroid to rank \(d-u\). Four disjoint bases of the truncation exist exactly when every column subset \(T\) satisfies
+\[
+ L-|T|\ge4(d-u-\mathrm{rank}(A_T)).
+\]
+Negative right sides are vacuous. This is the matroid base-packing theorem applied to the truncated rank. The subcode of words vanishing on \(T\) has dimension \(d-\mathrm{rank}(A_T)\) and support contained in \(T^c\). Conversely, for any \(V\) take \(T\) to be the complement of its support: all of \(V\) vanishes on \(T\). These two comparisons give the displayed ceiling formula. If the spectral discrepancy is at least \(\eta\), taking logarithms in the upper bound and allowing one for the ceiling gives the claimed subcode. \href{https://nvlpubs.nist.gov/nistpubs/jres/69B/jresv69Bn3p147_A1b.pdf}{Edmonds and Fulkerson, Theorem 2}.
+
+For a concrete positive test, let \(z\) be the parity of \(m\ge4\) bits and let \(y_1,\dots,y_s\) be additional single bits, with \(s\ge1\). Put
+\[
+ \pi=1+(1-\epsilon)z(1+s^{-1}\textstyle\sum_i y_i)/2,\quad 0<\epsilon<1 .
+\]
+Its mean is one, its minimum is \(\epsilon\), its maximum is at most two and matching holds through \(m-1\). Its nonconstant characters \(z,zy_i\) generate the full span of \(z,y_1,\ldots,y_s\). Every \(y_i\) requires its own column, so four full bases are impossible. Each of the four column families can still contain one copy of the \(z\)-direction, giving \(r\le s\). The positive symmetric scaling for \(\pi\) exists on the finite cube by the positive scaling result in \href{https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/versions/v3/}{Moment transfer and spectral bounds, v3}. The intrinsic deficit is exactly \(\lceil3s/4\rceil\): the raw singletons span a subcode of dimension and support size \(s\), while assigning them as evenly as possible to four distinct copies of the \(z\)-column leaves maximum rank deficit \(s-\lfloor s/4\rfloor\). Taking \(\epsilon\downarrow0,\ s=o(m)\) tests both the missing uniform floor and a growing number of defects.
+
+For a negative test, the \href{https://airr.science/papers/ARR-2026-2B2W1WQ7DF9N5VW7/versions/v1/}{published shell, v1} has bounded stationary second moment, matching \(k\) proportional to dimension and \(\lambda_2(K)\to1\), whereas \(\lambda_2(P)=1/2\). Thus its Walsh span must have the displayed extensive subcode obstruction. This also excludes a universal stability criterion based solely on a small stationary \(L^2\) error from a structured law: that shell converges even in cubic mean to the uniform law. The necessary structural condition alone does not construct a trap.
+
+\section{Stability under perturbations of the stationary density}
+Continue with the same Boolean noise kernel. Suppose a positive reference probability density \(\pi_0\) has \(\|\pi_0\|_2\le B\) and depends on a binary quotient with four disjoint column families of rank deficit at most \(r\). For another positive probability density \(\pi\), assume exact ambient Walsh matching to order \(k\ge1\) and
+\[
+ \|\log(\pi/\pi_0)\|_\infty\le 1/4096 .
+\]
+There is no requirement of matching for \(\pi_0\), symmetry for \(\pi\), or a common positive floor. For the actual chain with stationary density \(\pi\),
+\[
+ \max_j |\lambda_j(K)-\lambda_j(P)|\le
+ \min\{1,C_B 2^{33r-3k/224}\}.
+\]
+In particular a fixed-width relative neighbourhood of a four-basis quotient law has exponential recovery along matched densities, even when their Walsh spans are the full ambient space. The width and exponents are sufficient values.
+
+\subsection{Stability of positive symmetric scaling}
+
+For \(f=\log(\pi/\pi_0)\), let \(\epsilon=\|f\|_\infty\) and \(\pi_t=\pi_0 e^{tf}\), without renormalizing along the path. Write \(h_t P h_t=\pi_t\) (pointwise product). Existence and smooth dependence in finite dimension follow by minimizing
+\[
+ \tfrac12\sum_{x,y}\mu(x)P(x,y)e^{u(x)+u(y)}
+ -\sum_x\mu(x)\pi_t(x)u(x).
+\]
+Positive diagonal terms already give a coercive lower bound and a positive definite Hessian. The minimizer has \(h_t=e^u\); the implicit function theorem applies. The associated \(K_t\) is Markov, reversible, and positive semidefinite in \(L^2(\pi_t\,d\mu)\) by stationary conjugation and positivity of the Boolean noise spectrum. Differentiating gives
+\[
+ (I+K_t)\,\partial_t\log h_t=f .
+\]
+The operator \(H_t=(I-K_t)/2\) has \(L^2\) norm at most \(1/2\) and \(L^\infty\) norm at most one. Interpolation and the geometric series for \((I+K_t)^{-1}=(I-H_t)^{-1}/2\) give \(L^p\) operator norm at most \(1/[2(1-2^{-2/p})]\le p\) for \(2\le p<\infty\). Comparing the path measures to \(\pi_0\) and integrating yields, for \(v=\log(h_1/h_0)\),
+\[
+ \|v\|_{L^p(\pi_0)}\le e^{2\epsilon/p}p\epsilon\le2p\epsilon .
+\]
+Here and below \(L^p(\pi_0)\) uses probability measure \(\pi_0d\mu\). Expanding the exponential, the terms of order \(j\ge2\) in \(E_{\pi_0}e^{168|v|}\) are bounded by \((336e\epsilon)^j\) using \(j!\ge(j/e)^j\); the first moment is bounded by the second. Thus \(e^{2v-f}\) has uniformly bounded \(L^{84}(\pi_0)\) norm. This estimate concerns stationary scaling, and uses a finite-\(p\) bound with constants independent of small atom masses. For related stability theory see \href{https://www.math.columbia.edu/~mnutz/docs/stabilityOfPotentials.pdf}{Nutz and Wiesel}.
+
+\subsection{A reserve of integrability for arbitrary ambient test vectors}
+
+Put \(g_0=Ph_0\), \(F_0=Qh_0\), \(a_0=Eh_0\). Normalization gives \(\|F_0\|_2=1\) and \(\|g_0\|_2\le1\). Cauchy-Schwarz in \(h_0d\mu\) yields \(1\le a_0 E\pi_0g_0\le a_0B\). The inverse-moment proof from the rank-defect estimate therefore gives
+\(\|g_0^{-1}\|_7\le C_B2^{16r}\) even without matching of the reference.
+
+For \(q=21/20\) and every ambient unit \(L^2\) vector \(x\), we claim
+\[
+ \|g_0^{-2}|Qx|^2\|_{L^q(\pi_0)}\le C_B 2^{33r}.
+\]
+In \(Q=P_\lambda P_\gamma\) take \(\gamma^2=10/11\), \(\lambda^2=11/20\). Ordinary ambient hypercontractivity gives \(\|P_\gamma x\|_{2q}\le1\). Jensen gives \(|Qx|^q\le P_\lambda |P_\gamma x|^q\), whose input has \(L^2\) norm at most one. The weight \(W=\pi_0g_0^{-2q}\) is a quotient function, with
+\[
+ \|W\|_{5/4}\le B\|g_0^{-1}\|_7^{2q},
+ \qquad 4/5=1/2+2q/7 .
+\]
+For this weight, the full-space multiplier bound at \(P_\lambda\) applies since \(10\le1+(20/11)^4\). It costs \(2^{4r/5}\). Taking the \(q\)th root gives the claim because \(32+4/(5q)<33\). The same proof with \(W=\pi_0\) bounds \(\||Qx|^2\|_{L^q(\pi_0)}\) by \(C_B2^{33r}\).
+
+\subsection{The perturbed chain}
+
+The identity \(U=\pi_0g_0^{-2}e^{2v-f}\) transports the preceding reserve to any set \(E\), including sets that cut every quotient fibre. Hölder with exponents \(84,21/20,28\) gives
+\[
+ E[\mathbf1_E U |Qx|^2]\le C_B 2^{33r}\pi_0(E)^{1/28}
+ \le C_B2^{33r}\mu(E)^{1/56}.
+\]
+The notation \(\pi_0(E)\) means \(\int_E\pi_0d\mu\). The same bound holds with \(\pi\) instead of \(U\), by \(\pi\le e^\epsilon\pi_0\). The three reciprocal exponents are \(1/84,80/84,3/84\).
+
+Apply the matching-energy estimate to the true \(\pi\), whose second moment norm is at most \(e^\epsilon B\). For \(E=\{|Ph_1-1|>2^{-k/8}\}\), it gives \(\mu(E)\le C_B 2^{-3k/4}\). On its complement \(|U-\pi|\le C 2^{-k/8}\pi\) for large \(k\). Combining the two estimates yields \(\|QM_{U-\pi}Q\|\le C_B 2^{33r-3k/224}\). For the signed term \(QM_{\pi-1}Q\), the two low factors vanish by true matching. The positive quotient envelope \(1+e^\epsilon\pi_0\) dominates \(|\pi-1|\), so the same split at ambient degree \(\lfloor k/2\rfloor\) as in the rank-defect note bounds the remainder by \(C_B2^{r/2-(\lfloor k/2\rfloor+1)/4}\). The Gram argument proves the asserted spectral bound for all ordered eigenvalues. Bounded \(k\) is absorbed into the constant.
+
+\subsection{A full-span check and the boundary of the conclusion}
+
+Let \(L=3m,\ m\ge4\), let \(S\) be the first \(m\) coordinates, and let \(w\) be the remaining \(2m\) coordinates. Take
+\[
+ \pi_0=1+(1-a_m)\chi_S,\qquad
+ H=(\chi_w+\textstyle\sum_{i=1}^L\chi_{w\triangle\{i\}})/(L+1),
+ \qquad \pi=\pi_0(1+H/16384),
+\]
+where \(0<a_m<1\) tends to zero. The reference has four disjoint column bases of rank one and norm at most two. Since \(|H|\le1\), the log ratio bound holds. Every new character and its product with \(\chi_S\) has degree at least \(2m-1\). Hence \(\pi\) is normalized and matches through \(m-1\). All displayed nonconstant coefficients are positive and the pairs \(w,w\triangle\{i\}\) generate every singleton in the Walsh span. Its intrinsic deficit is \(\lceil3L/4\rceil\), making the exact-code estimate uninformative here. Yet the new result bounds the full spectral error by \(C 2^{-3(m-1)/224}\), although \(\min\pi\le(1+1/16384)a_m\to0\).
+
+The \href{https://airr.science/papers/ARR-2026-2B2W1WQ7DF9N5VW7/versions/v1/}{metastable shell} is arbitrarily close to the uniform law in cubic mean and has a macroscopic discrepancy in its second eigenvalue. Thus small cubic-mean error cannot replace this pointwise log-ratio condition, even around the uniform law. What remains undecided is recovery for arbitrary matched laws at the programme's stationary moment endpoint, outside the neighbourhood controlled here.
+
+\section{Observable moments}
+
+The \href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/7ccc9e925847313a3b11132705b4805e3cf4ff8a/THEOREM_DRAFT.md}{finite-sample spectral certificate draft} uses affine localizers on measured moments. For a possible interface, let \(D=C_B2^{33r-k/28}\) and \(S=QM_UQ\) in the common uniform Hilbert space. For every integer \(\ell\ge1\), telescoping the powers of the two contractions gives \(\|S^\ell-P^\ell\|\le\ell D\). In a fixed isometric observation \(J\), each compressed moment block \(J^*S^\ell J\) is therefore within \(\ell D\) in operator norm of its comparator. For a scalar observation and an affine localizer with coefficient matrices \(H_\ell\), the deterministic margin is \(D\sum_\ell \ell\|H_\ell\|\). This applies to observations in the common Gram representation. Transfer of an observable fixed instead in the physical stationary coordinates would also require identifying its transport. No finite-sample data, coverage claim or numerical certificate is produced here.
+
+\href{https://arxiv.org/abs/1809.09696}{Samorodnitsky} and the \href{https://arxiv.org/abs/2508.06940}{subsequent noisy-function inequalities for codes} give primary precedents for studying Boolean noise through coordinate restrictions. The present comparison uses a deterministic packing of four deficient spanning families, an inverse stationary moment and an ambient operator estimate.
+
+\section*{Model assessments and review context}
+Codex assisted with the derivation, drafting and internal checks. The source notes and their revision history are recorded in \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/292}{the programme repository}. This source draft has no exact-PDF assessment or independent peer review. Scores attached to earlier AIRR records concern other documents.
+\end{document}
