@@ -205,6 +205,13 @@ even when the criterion for the full spectrum fails; the formula for
 $\lambda_2$ by itself only detects $s$ above $1/2$. The two-sided bound
 on $\Delta$ does not require knowing which noise eigenvalue is displaced.
 
+There is a more detailed reconstruction with multiplicities. Form a list
+from the ordinary cube eigenvalues (each $2^{-j}$ occurs $\binom Lj$ times)
+and all eigenvalues of the killed matrix $K_{AA}$ on $A$. Sort in decreasing
+order and keep the first $2^L$ entries. Each entry differs from the
+corresponding eigenvalue of $K$ by at most $Ce^{-ck}$. The additional
+matrix has order $|A|\le C_B2^{L-k}$, with an empty matrix allowed.
+
 \paragraph{Isolating the multiplier that survives matching.}
 The matching-energy proof above gives $\|g-1\|_2\le C_B2^{-k/2}$
 also for this $p$. The floor and Jensen give $1/g\le Pg/b$, and
@@ -260,6 +267,15 @@ For large $k$, the low block contains $1$ once and $1/2$ with its ordinary
 multiplicity. The high block is positive with top eigenvalue $s_H\le1$.
 This proves the second-eigenvalue estimate by min--max and Gram conjugation.
 The upper bound on $\Delta$ follows directly from (LR2).
+
+To verify the reconstruction, work on two copies of the cube space and
+compare $P\oplus S$ to $(\Pi P\Pi)\oplus((I-\Pi)S(I-\Pi))$.
+The norm error is exponentially small by the same two block estimates.
+After permuting subspaces the latter is the displayed block diagonal
+operator with $2^L$ extra zeros. Also $S$ has the nonzero eigenvalues of
+$K_{AA}$ with their multiplicities, by the Gram identity. Thus min--max
+on the doubled space identifies the first $2^L$ sorted entries with the
+claimed precision. The size bound follows from $\mu(A)\le C_B2^{-k}$.
 
 For the lower bound, if $s_H\le4\,2^{-m}$ it is absorbed by the error.
 Otherwise choose $j$ with $s_H/4<2^{-j}\le s_H/2$, so $1\le j\le m$.
