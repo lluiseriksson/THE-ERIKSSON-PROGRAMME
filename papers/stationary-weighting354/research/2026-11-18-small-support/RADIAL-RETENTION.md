@@ -33,7 +33,32 @@ The factors 1/2 come from the constant eigenfunction of I+P. These identities ho
 
 The denominator is unchanged for either ball under spherical reconstruction. In the numerator each edge factor equals 1 before reconstruction and is strictly smaller than 1 afterwards. All noise transition probabilities are strictly positive. This proves both strict inequalities without exchanging limits or comparing only quotient kernels.
 
-**Scope and remaining test.** The witness also applies in the original growing matching regime. The perturbation may depend on m and the strict difference can be very small. This refutes exact upper domination. It gives no slow-mixing cut, quantitative loss of uniform conductance, or obstruction to a multiplicative comparison with slack. The next bounded test is to estimate the ratio of the two flows for balls of radius proportional to L, using within-shell variation of the actual potential. The radius-one witness alone does not decide that question.
+**Balls of radius proportional to dimension.** The same failure occurs on balls containing exponentially many vertices. Put s=(1+ρ)/(1−ρ) and α=1/(1+32s). Let R_L be the largest odd integer at most αL. For each sufficiently large L=4m, the construction above gives strictly greater actual retention on S={|x|≤R_L} than for the radially reconstructed chain. The limit R_L/L=α is positive.
+
+To see this, let D=(I+P)^(-1)Rv² and let φ_j denote the average Walsh character of degree j. On shell i, φ_L=(-1)^i. For odd i, φ_(L/2)=0 because pairing a subset with its complement cancels its character. Thus
+
+    D_i = [1/2 − 2 φ_(L/2)(i)/(1+z) + (−1)^i/(1+z²)]/4.
+
+For all sufficiently large m, z²≤1/3. Then D_i≤−1/16 on odd shells and D_i≤7/8 on every even shell since |φ_j|≤1. Write q_i=P(x,S) on shell i and W_i=μ(shell i) q_i. For neighboring starts on shells i and i+1, every noise-transition likelihood ratio is at most s since only one input coordinate differs. Summing over S gives q_i≤s q_(i+1). For i<R_L,
+
+    W_i/W_(i+1) ≤ s (i+1)/(L−i) ≤ s R_L/(L−R_L+1) ≤ 1/32.
+
+Pair each even shell below the odd endpoint with the next odd shell. It follows that
+
+    <1_S D, P1_S> = Σ_(i≤R_L) W_i D_i
+                    ≤ (7/256−1/16) Σ_(i odd, i≤R_L) W_i < 0.
+
+Here brackets denote the uniform inner product. The actual internal edge mass before energy normalization is exactly
+
+    <1_S,P1_S> + t² <1_S v,P(1_S v)> ≥ <1_S,P1_S>.
+
+The term linear in t vanishes since P1_S is radial and Rv=0. The quadratic term is nonnegative by positive semidefiniteness. In contrast the radial internal edge mass is
+
+    <1_S,P1_S> + 2zt² <1_S D,P1_S> + O_m(t⁴).
+
+At each fixed sufficiently large m, taking t small makes this quantity strictly smaller. Stationary masses of S coincide, proving the assertion. Choosing t smaller if needed also gives 1/2≤π≤2. Since α<1/2, the stationary masses of these balls decay exponentially by the binomial lower-tail bound. Their cardinalities grow exponentially: the shell at R_L contains at least (L/R_L)^R_L points by the product formula for binomial coefficients.
+
+**Scope and remaining test.** The perturbation can depend on m, so the difference can be very small. This refutes exact upper domination on exponentially large, exponentially rare clustered cuts under the full growing matching regime. It establishes neither slow mixing nor the failure of a comparison with slack. The remaining quantitative question is whether the relative conductance loss can stay bounded away from zero for admissible non-radial potentials. The sign computation alone cannot establish this.
 
 The Walsh multipliers are classical. Boyd, Diaconis, Parrilo and Xiao study symmetry reduction for reversible chains. Replacing the stationary density of a non-invariant chain and reconstructing its potential is a different operation. The comparison with these sources identifies established ingredients and leaves global priority open. Verification here consists of exact algebra and finite-dimensional differentiation in the shared research context. No numerical or Lean check was run.
 
