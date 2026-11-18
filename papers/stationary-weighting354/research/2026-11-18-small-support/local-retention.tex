@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,geometry,hyperref}
+\geometry{margin=1in}
+\hypersetup{hidelinks,pdftitle={Local retention and spherical reconstruction for Boolean Doob chains},pdfauthor={Lluis Eriksson}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\E}{\mathbb E}
+\newcommand{\one}{\mathbf1}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\title{Local retention and spherical reconstruction\\for Boolean Doob chains}
+\author{Lluis Eriksson}
+\date{18 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We study transitions restricted to a Hamming ball for the noise Doob kernel of a positive potential. At noise correlation one half, a floor on the stationary density and a cap on its third moment force the killed operator norm on every ball of radius at most $L/96$ to decay exponentially in dimension $L$. The estimate is uniform in the potential and needs no stationary marginal matching. Its proof combines a bound on the reciprocal noise average using the entropy of a transition row with an exponentially weighted row estimate. Exact symmetrization of the stationary density can nevertheless strictly decrease the conditional retention of a ball: we construct examples with matching through order $C\sqrt L$, a fixed perturbation amplitude, and ball radius proportional to dimension. On the half-noise balls of the example the relative conductance difference is exponentially small. We also obtain control of projected stationary edge laws under low-degree matching. These results concern local escape and leave the unrestricted spectral gap open.
+\end{abstract}
+
+\section{Model and observables}
+Write $\mu$ for uniform probability on $\{-1,1\}^L$. The noise operator $P=P_\rho$ flips each coordinate independently with probability $(1-\rho)/2$, where $0<\rho<1$. Fix $h>0$ with $\E_\mu hPh=1$ and set
+\[
+ g=Ph,\quad \pi=hg,\quad \nu=\pi\mu,\qquad K(x,y)=P(x,y)h(y)/g(x).
+\]
+The stationary edge probability is $J(x,y)=\mu(x)P(x,y)h(x)h(y)$. It is symmetric, and both marginals are $\nu$. For a nonempty proper cut $A$, define the retention $r_h(A)=J(A,A)/\nu(A)$ and the conductance $\Phi_h(A)=1-r_h(A)$. The killed operator $K_{AA}$ discards trajectories on their first exit from $A$. Its norm on $L^2(\nu|_A)$ bounds $r_h(A)$ by the Rayleigh quotient of $\one_A$. A scalar rescaling of $h$ leaves $K$ unchanged. In constructions using an unnormalized potential we explicitly give its energy.
+
+The standing moment hypotheses for the first two theorems are $\pi\ge b$ and $\E_\mu\pi^s\le 2$, with $0<b<1$ and $s=(1+\rho)/(1-\rho)$. A separate matching assumption, when imposed, means $\E_\mu\pi\chi_T=0$ for every nonconstant Walsh character $\chi_T$ of degree at most $k$. Write $|x|$ for the number of minus signs. The operator $R$ averages a function over all coordinate permutations. Radial reconstruction replaces $\pi$ with $R\pi$ and solves $uPu=R\pi$. This preserves every shell mass. It need not preserve the conditional transition probability of a shell.
+
+\section{Exponential escape from a ball at half noise}
+\begin{theorem}\label{escape}
+For $\rho=1/2$ let $A$ be any nonempty subset of a ball of radius at most $L/96$ about any vertex. Under the standing moment hypotheses,
+\[
+ \norm{K_{AA}}\le \min\{1,C_b\gamma^L\},\qquad
+ \gamma=3^{6/5}2^{-29/15}(101/100)^{2/3}5^{1/144}<1.
+\]
+The estimate applies without any symmetry, matching, or assumed lower bound on $g$ or $h$.
+\end{theorem}
+
+\begin{proof}
+All norms of functions in this argument use $\mu$. Forward Boolean hypercontractivity gives $\norm{P_t f}_v\le\norm f_u$ for $1<u\le v$ and $t^2\le(u-1)/(v-1)$ \cite{bonami,od}. With $Q=P_{\sqrt{\rho}}$, energy normalization yields $\norm{Qh}_2=1$. The floor and Jensen give $g\ge bP(1/g)\ge b/(Pg)$. Now $Pg=P_{\rho^{3/2}}Qh$. At half noise this implies $\norm{g^{-1}}_9\le b^{-1}$. Since $h=\pi/g$, H\"older gives $\norm h_{9/4}\le2^{1/3}/b$. The identity $Pg=P_{1/4}h$ and another use of the floor give $\norm{g^{-1}}_{21}\le2^{1/3}/b^2$. Consequently
+\[
+ \norm h_{21/8}\le 2^{2/3}/b^2,\qquad
+ \norm g_{15/2}\le \norm h_{21/8}\le M_b:=2^{2/3}/b^2 .
+\]
+The last exponents satisfy $(21/8-1)/(15/2-1)=1/4$.
+
+We keep the logarithm before applying the floor estimate. For the row law $p_x=P(x,\cdot)$,
+\[
+ \log(1/g(x))\le -\log b + \E_{p_x}\log g .
+\]
+For $v=15/2$, Jensen applied under $p_x$ to $g^v/(dp_x/d\mu)$ gives
+\[
+ v\,\E_{p_x}\log g\le\log\E_\mu g^v+D(p_x\Vert\mu).
+\]
+The product row has entropy relative to $\mu$ equal to $LI$, where $I=(3/4)\log3-\log2$. Thus $g(x)^{-2}\le b^{-2}M_b^2\exp(4LI/15)$ at every vertex. This intermediate bound may grow exponentially with $L$.
+
+Set $U=h/g=\pi/g^2$. Conjugation by $\sqrt{\pi}$ identifies $K_{AA}$ with the compression of $S=M_{\sqrt U}P M_{\sqrt U}$ in the uniform inner product. This matrix is positive semidefinite because the Walsh eigenvalues of $P$ are $\rho^{|T|}$. Translate the center to the all-plus vertex, take $t=1/20$, and test the positive matrix on $A$ against $v_x=\sqrt{U(x)}t^{2|x|/3}$. Its largest eigenvalue is at most $\max_{x\in A}(S_{AA}v)_x/v_x$ by diagonal similarity and the row-sum bound. Factor out $(3/4)^L$ from the noise row. The remaining ratio is bounded by
+\[
+ b^{-2}M_b^2 e^{4LI/15}\,(2^{L+1})^{1/3}
+ \left[\sum_{y\in A}3^{-3d(x,y)/2}\,t^{|y|-|x|}\right]^{2/3}.
+\]
+Here H\"older uses $\sum_y\pi(y)^3\le 2^{L+1}$ in counting measure. With $\kappa=3^{-3/2}<1/5$, extending the nonnegative sum over the cube factors it into
+\[
+ (1+\kappa t)^{L-|x|}(1+\kappa/t)^{|x|}
+ \le (101/100)^L 5^{L/96}.
+\]
+Combining the factors gives the claimed constant with $C_b=2^{1/3}b^{-2}M_b^2$. For an explicit sign check, use $\log3<1.099$, $\log2>0.693$, $\log5<1.610$ and $\log(101/100)<0.01$. Substitution gives $\log\gamma<-0.003$. The first three rational bounds follow, for example, by truncating $2\sum_{j\ge0}z^{2j+1}/(2j+1)$ at $j=12$ with $z=(x-1)/(x+1)$ and bounding the tail by $2z^{27}/(27(1-z^2))$. Markov contraction gives the cutoff at one.
+\end{proof}
+
+The two features of the proof matter at this radius. For comparison, the unweighted row test and $\norm U_{27/11}\le H_b$ give
+\[
+ H_b\beta^L\max_{x\in A}\left(\sum_{y\in A}3^{-27d(x,y)/16}\right)^{16/27},
+ \qquad \beta=(3/4)2^{11/27}.
+\]
+Indeed the preceding estimates give $\norm{g^{-1}}_{27}\le 2^{2/3}/b^3$ from $Pg=P_{1/4}h$, then H\"older gives the stated $U$ moment. For the full ball of radius $\lfloor L/96\rfloor$ and $L$ divisible by 100, the center row includes the layer $L/100$. Since $\binom{L}{j}\ge(L/j)^j$, its sum is at least $(100/9)^{L/100}$. The resulting exponential base exceeds one: $\log\beta=\log3-(43/27)\log2>-0.008$ and $(16/2700)\log(100/9)>0.012$. Thus that estimate with its norm-one cutoff gives no decay for these balls.
+
+\begin{corollary}\label{comparison}
+For any ball as in Theorem~\ref{escape}, $\left|\Phi_h(A)/\Phi_u(A)-1\right|\le \epsilon_L/(1-\epsilon_L)$ whenever $\epsilon_L=C_b\gamma^L<1$, with $uPu=R\pi$ about its center.
+\end{corollary}
+\begin{proof}
+Averaging preserves mean one and the floor; Jensen preserves the cap. Positive reconstruction exists by Lemma~\ref{inverse} below. Both retentions lie in $[0,\epsilon_L]$. Subtracting their complementary conductances proves the bound.
+\end{proof}
+
+\section{Failure of exact radial domination}
+\begin{lemma}\label{inverse}
+For any positive $w$ there is a unique positive solution of $uPu=w$. If $w=1+af$, $\norm f_\infty\le1$, $B=(\lceil L/2\rceil+2)/2$ and $4B^2|a|<1$, then
+\[
+ u=1+a(I+P)^{-1}f+e,\qquad \norm e_\infty\le4B^3a^2 .
+\]
+\end{lemma}
+\begin{proof}
+Minimize $\frac12\sum_{x,y}\mu(x)P(x,y)\exp(v_x+v_y)-\sum_x\mu(x)w(x)v_x$. Positive diagonals give strict convexity. For $m=\max v_x$ a diagonal term gives a lower bound of the form $c e^{2m}-m\E w$. On a sublevel set $m$ is bounded above; positivity of all linear weights then also bounds each coordinate below. Stationarity gives $u=e^v$ as required.
+
+Write $T=(I-P)/2$. Its absolute row sums are at most one, and its $L^2$ norm is at most one half. Therefore $\norm{T^j}_{\infty\to\infty}\le\min(1,2^{L/2-j})$. Summation gives $\norm{(I+P)^{-1}}_{\infty\to\infty}\le B$. With $H=(I+P)^{-1}$, solve $z=H(af-zPz)$ on the sup ball of radius $2B|a|$. The displayed condition makes the map a contraction into that ball. Its fixed point satisfies $\norm{z-aHf}_\infty\le4B^3a^2$, and $1+z$ is positive. This proves the expansion.
+\end{proof}
+
+\begin{theorem}\label{counter}
+Fix $\rho,b\in(0,1)$ and $C>0$. Put $s=(1+\rho)/(1-\rho)$ and $\alpha=1/(1+32s)$. For all sufficiently large $L=4m$ there are potentials satisfying the standing hypotheses and exact matching through $\lfloor C\sqrt L\rfloor$ for which $r_h(A)>r_u(A)$. Here $A$ is the ball about all-plus whose radius is the largest odd integer at most $\alpha L$. The same family works with a fixed nonzero perturbation amplitude as $m$ varies. At half noise $\alpha=1/97$, so Corollary~\ref{comparison} simultaneously bounds the relative difference of conductances.
+\end{theorem}
+
+\begin{proof}
+Use four disjoint coordinate blocks $B_1,\ldots,B_4$ of size $m$ and write $\xi_j=\chi_{B_j}$. Set $v=(\xi_1-\xi_2)(\xi_3-\xi_4)/4$, $z=\rho^{2m}$ and $h_0=1+\delta v$. Then $Pv=zv$, $Rv=0$, and
+\[
+ v^2=(1-\xi_1\xi_2-\xi_3\xi_4+\xi_1\xi_2\xi_3\xi_4)/4,\qquad
+ w=h_0Ph_0=1+(1+z)\delta v+z\delta^2 v^2 .
+\]
+The common energy is $Z=1+z\delta^2/4$. No nonconstant Walsh term of $w$ has degree below $2m$. Choose $0<\delta<1$ with $(1-\delta)^2/(1+\delta^2/4)\ge b$ and $(1+\delta)^{2s}\le 2$. Then $h=h_0/\sqrt Z$ satisfies the claims about its density in all large dimensions. Reconstruct $u_0Pu_0=Rw$ and set $u=u_0/\sqrt Z$. Its stationary mass agrees with that of $h$ on every radial set.
+
+Let $a=z\delta^2$, $f=Rv^2$, $D=(I+P)^{-1}f$. If $\varphi_j$ is the average of Walsh characters of degree $j$, then on shell $i$
+\[
+ D_i=\tfrac14\left[\tfrac12-\frac{2\varphi_{L/2}(i)}{1+z}
+                            +\frac{(-1)^i}{1+z^2}\right].
+\]
+On odd shells complementary half-size subsets cancel, so $D_i\le-1/16$ when $z^2\le1/3$. On even shells $D_i\le7/8$. Write $q_i=P(x,A)$ on shell $i$ and $W_i=\mu(|x|=i)q_i$. Rows of noise from adjacent vertices have likelihood ratio bounded by $s$ pointwise. When $i$ is below the radius $r$,
+\[
+ W_i/W_{i+1}\le s(i+1)/(L-i)\le sr/(L-r+1)\le 1/32.
+\]
+Each even shell up to $r$ pairs with the following odd shell. It follows that
+\[
+ \ip{\one_A D}{P\one_A}\le -(9/264)\ip{\one_A}{P\one_A}.
+\]
+The unnormalized internal mass for $h_0$ is at least the reference $\ip{\one_A}{P\one_A}$: the linear perturbation vanishes by spherical averaging and the quadratic term $\delta^2\ip{\one_A v}{P(\one_A v)}$ is nonnegative. Lemma~\ref{inverse} gives uniformly
+$u_0(x)u_0(y)=1+a(D(x)+D(y))+O(B^3a^2)$.
+Summing on the same internal edges gives at most $1-(9/264)a$ times the reference for large $m$, since $B^3a\to0$. The conditional retentions have equal unnormalized stationary denominators. This proves the strict comparison. The guaranteed fractional reduction of the internal mass in this proof can decay exponentially.
+\end{proof}
+
+\section{Coordinate cuts and projected edges}
+Balls of positive radius fraction use all coordinates. A second regime consists of cuts identified after few coordinate queries. Here matching gives a direct comparison of edge probabilities, even for pairs of rare patterns.
+
+\begin{theorem}
+At any $0<\rho<1$, assume exact matching through $k$ and $\norm\pi_p\le B_0$ for $p>1+\rho$. No stationary floor is needed. Put $\eta^2=\rho\max(1,1/(p-1))$, $e=B_0\eta^{k+1}$, $u_m=(1+1/\rho)^{m/2}e$, and $\Delta_m=e^2+2u_m+u_m^2$. On any $m$ coordinates the projected actual and ordinary stationary pair probabilities satisfy
+\[
+ \left|J_I(i,j)/J_{0,I}(i,j)-1\right|\le\Delta_m
+\]
+for every pair of coordinate patterns. A cut $D$ decided after at most $d\le k$ coordinate queries, of mass $\tau>0$, consequently has
+$r_h(D)\le(1+\Delta_{\min(2d,L)})\tau^{(1-\rho)/(1+\rho)}$.
+\end{theorem}
+\begin{proof}
+Put $Q=P_{\sqrt\rho}$, $c=\E h$ and $v=1-c^2=\norm{Qh-c}_2^2$. Let $p'=p/(p-1)$. For $p'>2$, split $Q=P_{1/\sqrt{p'-1}}P_{\sqrt{\rho(p'-1)}}$. The first factor is contractive from $L^2$ to $L^{p'}$; on degrees $>k$ the second has $L^2$ norm at most $\eta^{k+1}$. For $p'\le2$ use monotonicity and the noise multipliers. Thus the part of $g=Q(Qh)$ above degree $k$ has $p'$ norm at most $\eta^{k+1}\sqrt v$. Matching gives $\E\pi g\le c+e\sqrt v$. By Cauchy--Schwarz, $1=(\E hg)^2\le c\,\E(hg^2)=c\,\E\pi g$, hence $\sqrt v\le ce$.
+
+Let $Q_{\rm out}$ apply $Q$ only to the coordinates outside $I$. By the product kernel formula, $J_I(i,j)/J_{0,I}(i,j)=\ip{F_i}{F_j}$ with $F_i=(Q_{\rm out}h)(i,\cdot)$ in the complementary uniform space. Expand $Qh-c$ in Walsh characters on $I$ with vector coefficients $b_T$. Their squared norms sum to $v$. Inverting $Q$ on $I$ multiplies the coefficients by $\rho^{-|T|/2}$; Cauchy--Schwarz now gives $\norm{F_i-c}_2\le (1+1/\rho)^{m/2}\sqrt v\le u_m$. Expanding the inner product and using $1-c^2=v\le e^2$ proves the estimate.
+
+A decision tree has disjoint accepting leaves and their one-time probabilities match the uniform probabilities. A pair of leaves restricts at most $2d$ distinct coordinates. Sum the joint atom inequalities on these coordinates, then over all accepting pairs. Finally $\ip{\one_D}{P\one_D}=\norm{Q\one_D}_2^2\le\mu(D)^{2/(1+\rho)}$ by forward hypercontractivity. Division by $\tau=\mu(D)$ finishes the proof.
+\end{proof}
+
+\section{Scope, antecedents and review context}
+Bonami's inequality and Boolean noise analysis provide the forward hypercontractive estimates \cite{bonami,od}. Polyanskiy and Samorodnitsky study improved hypercontractivity on small supports and concentration on the cube \cite{ps}. Their reference semigroup is the ordinary cube semigroup. Here the potential alters both stationary mass and transition probabilities; the row-entropy bound controls the extra reciprocal noise average. Boyd and collaborators analyze symmetry reduction for reversible chains with symmetries \cite{boyd}. Reconstructing a new chain from spherical averages of stationary masses changes the transition law. Earlier work in this programme develops moment transfer and full spectrum estimates for specific Boolean Doob families \cite{prev}. Our estimates address killed operators, projected edges and a comparison between two different chains. Global priority, optimal ball radius and the full gap for unrestricted potentials remain open.
+
+\subsection*{Model assessments and review context}
+The author used OpenAI Codex for analytic development and manuscript preparation. The mathematical checks represented here are same-context algebraic checks. No numerical oracle or proof-assistant verification is asserted. Any exact-PDF assessment, its score, model identification and involvement declaration belong to the version-specific publication record. No score from the earlier working paper has been carried over.
+\begin{thebibliography}{9}
+\bibitem{bonami} A. Bonami, \emph{Etude des coefficients de Fourier des fonctions de $L^p(G)$}, Ann. Inst. Fourier 20 (1970), 335--402. \url{https://doi.org/10.5802/aif.357}.
+\bibitem{od} R. O'Donnell, \emph{Analysis of Boolean Functions}, corrected edition. \url{https://arxiv.org/abs/2105.10386}.
+\bibitem{ps} Y. Polyanskiy and A. Samorodnitsky, \emph{Improved log-Sobolev inequalities, hypercontractivity and uncertainty principle on the hypercube}, J. Funct. Anal. 277 (2019). \url{https://arxiv.org/abs/1606.07491}.
+\bibitem{boyd} S. Boyd, P. Diaconis, P. Parrilo and L. Xiao, \emph{Symmetry Analysis of Reversible Markov Chains}, Internet Math. 2 (2005), 31--71. \url{https://web.stanford.edu/~boyd/papers/symmetry.html}.
+\bibitem{prev} L. Eriksson, \emph{Moment transfer and spectral bounds for Boolean Doob kernels}, AIRR Working paper, v3 (2026). \url{https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/versions/v3/}.
+\end{thebibliography}
+\end{document}
