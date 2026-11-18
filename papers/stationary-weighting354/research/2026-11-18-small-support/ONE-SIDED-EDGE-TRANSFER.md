@@ -130,3 +130,61 @@ One center's shell at the first attainable magnetization strictly above \(d^2\) 
 The example resolves the necessity question in the following sense: forward edge control, even convergence in every finite positive moment, cannot alone guarantee full spectral recovery. It does not determine the optimal reciprocal-moment exponent. It also makes the uniform floor in the earlier stationary-moment problem consequential: the example satisfies the stationary upper bound at the programme endpoint but violates that floor. The problem with the floor remains open. Fixed positive *linear* matching fraction and simultaneous convergence in all finite positive edge moments are outside this construction.
 
 The single-shell joint-type estimate extends the [published AIRR shell](https://airr.science/papers/ARR-2026-2B2W1WQ7DF9N5VW7/versions/v1/) and the [general-correlation calculation](ALL-CORRELATIONS-SHELL-TRAP.md). The group orbit enforces the exact marginals; shrinking magnetization separates the cost of the spike from the cost of returning and retains all finite forward moments. Classical bounded independence and Hamming-sphere noise have primary precedents in [Alon, Babai and Itai](https://web.math.princeton.edu/~nalon/PDFS/Publications2/A%20fast%20and%20simple%20randomized%20parallel%20algorithm%20for%20the%20maximal%20independent%20set%20problem.pdf) and [Polyanskiy](https://arxiv.org/abs/1309.3014). This is an analytic construction; no global priority or formal verification is asserted.
+
+## How much reciprocal growth can matching absorb?
+
+Let \(H_{18}=\|s^{-1}\|_{18,\pi_0}\), and hold the forward edge norm \(\|\xi\|_{18,J_0}\) and the reference bound \(B\) fixed. All logarithms below are natural. Write \(\Delta\) for the maximum ordered eigenvalue difference from ordinary half noise. When \(k\to\infty\), each of the following strict inequalities implies \(\Delta\to0\):
+\[
+\begin{array}{ll}
+\displaystyle\limsup k^{-1}\log H_{18}<\log(6/5)/288
+   &\text{for four reference families with }r=o(k),\\[2mm]
+\displaystyle\limsup k^{-1}\log H_{18}<11\log(2)/54
+   &\text{for the uniform reference.}
+\end{array}
+\]
+In particular bounded reciprocal norm can be replaced by subexponential growth in \(k\). These coefficients are sufficient. The order of growth is sharp in the sense proved below.
+
+**Proof.** In the killed-chain estimate (2), keeping the forward and reciprocal constants separate gives the factor \(\|\xi\|_{18,J_0}H_{18}\): the reciprocal norm first appears to the power \(\beta/2\) and the dual estimate is then raised to \(2/\beta\). All remaining terms in the proof of recovery use only forward moments. For four families take \(D=\{|g-1|>(5/6)^{\eta k}\}\), where \(0<\eta<1/2\). Matching and Chebyshev give \(\pi_0(D)\le C(5/6)^{(1/2-\eta)k}\). At \(\beta=18/17,\ q=8/7,\ d=18\), the spare Hölder exponent is \(1/272\), so \(2e/\beta=1/144\). The killed term is at most \(C2^{C'r}H_{18}(5/6)^{(1/2-\eta)k/144}\). The off-set error and the remaining signed and unsigned terms still vanish exponentially for fixed \(\eta\) and \(r=o(k)\). Strict slack in the claimed rate permits choosing \(\eta>0\) sufficiently small.
+
+For the uniform reference \(h_0=g_0=\pi_0=1\), the ordinary forward inequality gives \(\|Qx\|_3\le1\) for each unit vector. Thus for the killed term \(q=3/2\), \(e=11/102\), and \(2e/\beta=11/54\). Jensen gives \(\|\pi\|_2\le\|\xi\|_{18}\). In the matching estimate for \(V=1-(Eh)^2\), write \(a=Eh,\ F=Qh\). The inequality \(1\le a E\pi g\), matching, and \(\|F-a\|_2=\sqrt V\) give
+\[
+ V\le a\|\pi-1\|_2\,2^{-(k+1)/2}\sqrt V,
+ \qquad \|g-1\|_2\le C2^{-k/2}.
+\]
+Here \(Q\) acts on the degree tail of \(F\) and \(1-a\le V\). Now use \(D=\{|g-1|>2^{-\eta k}\}\). Its uniform probability is at most \(C2^{-(1-2\eta)k}\). The other multiplier bounds can keep the strictly smaller \(q=8/7\) and the earlier \(R\); the endpoint \(q=3/2\) is needed only for \(Q\) in (2). Letting the strict rate determine \(\eta\) proves the second claim.
+
+### A failure at exponential reciprocal cost and linear matching order
+
+Fix any finite \(p\ge18\). There are constants \(\delta,c,C>0\), depending on \(p\), and positive chains for every sufficiently large \(L\) such that, for \(k=\lfloor\delta L\rfloor\),
+\[
+ \widehat\pi(S)=0\ (1\le |S|\le k),\qquad
+ \|\xi-1\|_{p,J_0}+\|\pi-1\|_{p,\mu}\le Ce^{-cL},\qquad
+ 1-\lambda_2(K)\le Ce^{-cL},\qquad
+ \log\|\pi^{-1}\|_{18,\mu}=\Theta(k).
+\]
+The reference is uniform. The prescribed forward order is fixed before constructing the family.
+
+Choose \(\epsilon=1/(16p)\) and \(0<\alpha<\epsilon/16\). Choose a sufficiently small fixed \(u>0\), then an attainable \(u_L=u+O(1/L)\). Choose \(0<\gamma<\alpha^2u^2/8\) and \(0<\delta<1/2\) with binary entropy in nats strictly below \(\gamma/2\). The group construction above gives exact matching through \(k\) with \(|G|\le e^{\gamma L}\) for all large \(L\). With the previous notation take shells \(m_c=u_L\), mask \(E=\bigcup_c\{m_c>\alpha u_L\}\), and set the potential equal to \(M=e^{\epsilon L u_L^2}\) on their union \(T\), to \(e^{-Lu_L^2/4}\) on \(E\setminus T\), and to one elsewhere. Normalize as before.
+
+The union bounds now have exponents \(\gamma-\alpha^2u_L^2/2\) and \(\gamma-u_L^2/2\) per coordinate. Since \(2p\epsilon=1/8\), both \(\mu(E)\) and \(M^{2p}\mu(T)\) decay exponentially in \(L\). The product estimate in the preceding construction gives the asserted exponential likelihood bounds and \(Z=1+O(e^{-cL})\). Invariance gives exact matching.
+
+The individual return estimate remains \(q_{\rm ret}\ge\exp[-Lu_L^2/6-O(Lu_L^4+\log L)]\). The conditional Chernoff estimate with threshold \(\alpha u_L\) gives
+\[
+ P_x(E^c)\le\exp[-(2/3)(1/2-\alpha)^2 L u_L^2+O(Lu_L^3)]\quad(x\in T).
+\]
+The difference of the leading rate coefficients is \(2\alpha(1-\alpha)/3<\epsilon/8\). The Taylor bounds are uniform for \(u_L\) near zero and \(0<\alpha<1/16\). Choose \(u\) small enough that the combined remainder per \(Lu_L^2\) is below \(\epsilon/4\) for all large \(L\), including the logarithmic term. Both \(P_x(E^c)/(Mq_{\rm ret})\) and \(e^{-Lu_L^2/4}/(Mq_{\rm ret})\) are exponentially small. The centered-indicator test from the preceding section proves the gap bound.
+
+Finally \(H(x),PH(x)\ge e^{-Lu_L^2/4}\) for the unnormalized potential, so \(\|\pi^{-1}\|_\infty\le Ze^{Lu_L^2/2}\). This gives the \(O(k)\) upper bound for its log. For the lower bound, any subsequence with a limiting inferior rate strictly below \(11\log(2)/54\) would have a further subsequence satisfying the uniform recovery theorem, contradicting \(\lambda_2(K)\to1\). Thus \(\liminf k^{-1}\log\|\pi^{-1}\|_{18,\mu}\ge11\log(2)/54\). Determining the best coefficient between the sufficient and counterexample rates remains open.
+
+### Consequence for observing a spectral gap from a stationary trajectory
+
+Even a test that sees every coordinate at every observed time can miss this trap. Write \(\mathcal L_n,\mathcal L^0_n\) for the laws of \(n\) transitions started in each chain's own stationary law. Put \(v=\|J-J_0\|_{\rm TV}\). Marginalization gives \(\|\pi\,d\mu-\mu\|_{\rm TV}\le v\). Also
+\[
+ \int\|K(x,\cdot)-P(x,\cdot)\|_{\rm TV}\,\pi(x)d\mu(x)
+ \le v+\|\pi\,d\mu-\mu\|_{\rm TV}\le 2v.
+\]
+The first inequality inserts the joint law with initial density \(\pi\) and reference transition \(P\). Replace transitions from the last to the first, leaving a stationary \(K\) prefix at each replacement. Contraction by the common suffix and replacement of the initial law give \(\|\mathcal L_n-\mathcal L^0_n\|_{\rm TV}\le(2n+1)v\). Here \(v\le Ce^{-cL}\); for \(n\le e^{cL/2}\), every test has the sum of its two error probabilities at least \(1-o(1)\). Yet the reference gap is exactly \(1/2\) and the other gap is exponentially small. The witness concerns passive stationary observations; it makes no assertion about chosen initial states or direct access to the transition matrix.
+
+This connects the programme's [AIRR stationary-moment paper](https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/versions/v2/) to the observation question in [finite-sample spectral certificates](https://github.com/lluiseriksson/finite-sample-spectral-certificates/tree/7ccc9e925847313a3b11132705b4805e3cf4ff8a). That repository studies noisy block moments with a specified sampling model and witness-dependent power. The path bound above specifies a different observation experiment and does not transfer a sample bound across models. The [transfer-matrix dictionary](https://github.com/lluiseriksson/lean-transfer-matrix/tree/2b9ad0fdf5aa45e220c87a0f0e84106d6869a007) explicitly requires reconstruction assumptions for its converse from clustering. [Kirshner and Samorodnitsky](https://arxiv.org/abs/1909.11929) give near-extremal noise stability properties of Hamming spheres, and [Polyanskiy](https://arxiv.org/abs/1309.3014) studies norms of spherical averages. Those results concern the reference cube and supply context for the shell geometry. This comparison establishes neither global priority nor independent verification of the present analytic proof.
+
+Single-trajectory lower bounds for estimating the gap of a general reversible chain were established by [Hsu et al.](https://www.cs.columbia.edu/~djhsu/papers/mixingest-aap.pdf). The restriction in this construction is the common half-noise Doob model together with exact linear-order coordinate matching and exponentially close stationary edge laws. With a state space of size 2 to the power L, the displayed observation horizon is exponential in dimension and polynomial in the number of states.
