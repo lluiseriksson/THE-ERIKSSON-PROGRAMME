@@ -7,4 +7,6 @@ The source data are retrieved from the pinned Hugging Face revision in each scri
 - `groups.py` constructs the title-date graph, verifies an integer lower bound and recounts the witness under each grouping rule. Its archive contains the components, witnesses and integer multipliers.
 - `case-sensitive.py` reproduces the capitalization sensitivity and enumerates the two-host cases.
 
-Each run prints the SHA-256 of its returned archive. See `host-audit.json` and `group-results.json` for the verified outputs. The manuscript uses the two TeX files in this directory.
+Each run prints the SHA-256 of its returned archive. See `host-audit.json` and `group-results.json` for the verified outputs. The manuscript uses the TeX files in this directory.
+
+The extraction-agreement extension adds the same-URL pass comparison, its solver-free certificate check, the pair-retention control and the limited published alias example. Each Python program runs in a clean Colab environment. Results for these experiments are in follow-up/. The revised PDF also includes agreement.tex.

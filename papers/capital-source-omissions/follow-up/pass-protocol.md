@@ -1,0 +1,3 @@
+# Concordancia de las dos pasadas de extracción
+
+En la misma muestra de inversión se pregunta si el líder cambia al exigir que ambas pasadas registren la misma pareja dirigida en la misma URL literal tras recortar espacios. Se mantienen las condiciones científicas del análisis de dominios. Se compara el recuento de la unión, cada pasada aislada y la concordancia en URL. Falsador: empate o primer puesto distinto del de la unión. El número de pasada identifica una repetición del extractor; la concordancia no valida el vínculo frente a la fuente original ni establece independencia. Si falta el índice de pasada o aparecen valores inesperados se detiene la comparación y se conserva ese diagnóstico.

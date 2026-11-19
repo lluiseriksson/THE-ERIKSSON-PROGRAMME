@@ -1,0 +1,21 @@
+\section{Extraction agreement can strengthen the ranking}
+The published schema records a one-based extraction-pass index \cite{data}. We distinguish evidence present in either pass from agreement on the same document. A directed pair has concordant support at a URL if both passes produce an eligible row with the same normalized investor and investee at that exact URL after stripping external whitespace. Different URL strings can represent equivalent pages. Agreement is a property of these extraction records and supplies no ground-truth transaction label.
+
+The separate passes contain 5,541 and 5,508 directed pairs. Of the 6,417 pairs in their union, 4,596 have concordant support on at least one URL. A further 36 are present in each pass but never on the same URL. Nvidia leads in both passes separately, with 149 and 148 counterparties, and in the concordant graph with 139. Andreessen Horowitz has 60 counterparties in the concordant graph. For sensitivity to host omissions, however, both the challenger in the example and the cost can change.
+
+\begin{center}\small
+\begin{tabular}{lrrrl}
+\toprule
+Pairs and eligible supports & Pairs & Minimum & Tie & Challenger\\
+\midrule
+Union, all supports & 6,417 & 38 & 43 & Sequoia Capital\\
+Concordant pairs, all supports & 4,596 & 53 & 29 & Sequoia Capital\\
+Concordant pairs and supports & 4,596 & 49 & 30 & Microsoft\\
+\bottomrule
+\end{tabular}
+\end{center}
+The tie column gives each joint leader's surviving degree for the exhibited omission set. Other minimum sets could have different challengers. In the middle row we retain only pairs concordant somewhere, then restore \emph{every} original supporting hostname for those pairs. All baseline investor degrees consequently agree between the last two rows. A pair retained through concordance can still have a hostname that supports it in only one pass. Removing those nonconcordant supports produces the last row.
+
+The intermediate graph separates two effects along this specified path. Restricting pairs changes the threshold by $53-38=15$ domains. Subsequently restricting the supports changes it by $49-53=-4$. The net increase of eleven conceals the opposite signs. A replication that matches the entire list of pairs and every baseline degree can still deliver a different answer to the omission question. For each row an integer dual bound and a recounted witness agree. A second solver-free run also checked the 49-host case against 26 individual rivals and a common bound for the remaining 1,884, alongside the two headline-group cases. We do not attribute either change to the causal accuracy of the extractor.
+
+As a limited alias check, we followed the specific example in appendix B.2 of \cite{cen} and mapped the whole labels DeepMind, Alphabet, and Gemini to Google on both sides of each pair. This affects 31 directed pairs, introduces two discarded loops and leaves 6,401 pairs. Google's baseline degree increases from 56 to 65 while the host threshold remains 38. This check does not reconstruct the authors' full fuzzy and coarse crosswalks.

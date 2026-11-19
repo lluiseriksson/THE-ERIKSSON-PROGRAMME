@@ -1,0 +1,3 @@
+# Dependencia del umbral respecto de la concordancia
+
+Se mantiene una sola pregunta: ¿se conserva el umbral de 38 dominios si se exige coincidencia entre las dos pasadas de extracción en la misma URL? El grafo concordante ya produjo 4 596 pares y dejó a Nvidia primera, con 139 contrapartes frente a 60 para el segundo nombre. Usar el mismo transformador de soportes y la misma prueba entera que en el análisis anterior, corrigiendo el grado del líder a 139. Un intervalo que excluya 38 refuta la igualdad. Si la cota dual y el ejemplo no coinciden, conservar el intervalo. Estas pasadas son repeticiones del mismo sistema de extracción y su coincidencia no equivale a validación humana del documento.
