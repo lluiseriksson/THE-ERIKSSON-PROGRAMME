@@ -1,0 +1,14 @@
+We coupled omissions of hosts whose records list the same headline on the same date for the same directed pair. We applied Unicode normalization and case folding, extracted alphanumeric word tokens, and required at least eight words. Repetitions of the same title and date count once for each host pair. Hosts connected by qualifying pairs form a single omission unit, including transitive links. We tested two cutoffs fixed before calculation. The rule measures headline co-appearance and does not establish editorial ownership or identity of the full articles.
+
+\begin{center}\small
+\begin{tabular}{lrrrr}
+\toprule
+Matching rule & Units & Largest unit & Minimum omitted & Tie degrees\\
+\midrule
+Individual hosts & 707 & 1 & 38 & 43, 43\\
+At least two title--dates & 701 & 7 & 35 & 43, 43\\
+At least one title--date & 678 & 23 & 32 & 42, 42\\
+\bottomrule
+\end{tabular}
+\end{center}
+Six host pairs matched at least twice and 31 matched at least once. In each grouped graph the integer lower bound matched a recounted witness, with Nvidia and Sequoia Capital jointly first. The drop from 38 to 32 concerns the number of omission \emph{units}. A unit can contain several hostnames, and relaxing the matching rule can connect hosts that never shared a headline directly. This sensitivity result illustrates how the definition of a source changes the robustness claim.
