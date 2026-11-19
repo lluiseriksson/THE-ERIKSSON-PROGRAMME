@@ -1,0 +1,39 @@
+{
+  "cells": {
+    "common": {
+      "fail": 58,
+      "pass": 304,
+      "unknown": 838
+    },
+    "own": {
+      "fail": 369,
+      "pass": 364,
+      "unknown": 467
+    },
+    "whole": {
+      "fail": 818,
+      "pass": 382
+    }
+  },
+  "comparisons": {
+    "common": {
+      "cluster_fewer": 1,
+      "unresolved": 149
+    },
+    "own": {
+      "cluster_fewer": 16,
+      "unresolved": 134
+    },
+    "whole": {
+      "active_fewer": 21,
+      "active_only": 1,
+      "cluster_fewer": 68,
+      "neither": 60
+    }
+  },
+  "duplicate_lists": 105,
+  "nonnested": 900,
+  "pairs": 150,
+  "rows": 1200,
+  "source": "631296b91a0b2de790de4f4b5cb563f223e2f66b"
+}
