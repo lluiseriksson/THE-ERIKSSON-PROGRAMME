@@ -57,11 +57,13 @@ there is already a linear saving. Otherwise the second term is at
 least $a(L/(2p))^\gamma$. Thus for some $\eta>0$ and all large $L$,
 $y\le\exp(L/p-\eta L^\gamma)$, uniformly across the sequence.
 
-For a syndrome set $E$ of mass $m$, layer cake bounds the integral
-of $1_E\pi^s H^{-2s}$ by
-$\int_0^m(\pi^*(u))^s((H^{-1})^*(u))^{2s}\,du$:
-intersections of three upper level sets have mass bounded by the
-smallest of their three masses. Using $s/p+2s/15=1$, the last integral
+For a syndrome set $E$ of mass $m$, layer cake gives
+\[
+  \int_E \pi^s H^{-2s}\,d\mu
+  \le \int_0^m (\pi^*(u))^s ((H^{-1})^*(u))^{2s}\,du .
+\]
+Indeed the mass of an intersection of three upper level sets is at most
+the smallest of their masses. Using $s/p+2s/15=1$, the last integral
 for all small $m$ is bounded by
 \[
  \int_{\log(1/m)}^\infty
