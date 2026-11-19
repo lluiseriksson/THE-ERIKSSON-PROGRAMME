@@ -55,6 +55,60 @@ $s^2\mathbb E b^2/2+O(s^3)$ in either orientation here, by Taylor
 expansion. The ratio of edge to marginal entropy tends to
 $2/(1+\lambda)>2$, disproving the upper inequality.
 
+\paragraph{Optimal factor for a fixed kernel.}
+Assume at least two states and strict positivity as above. Define
+\[
+ \kappa(P)=\sup_{\substack{f,g\ge0,\ f,g\ne0\\ f g=0}}
+ \frac{\langle f,Pg\rangle_\mu}
+ {\sqrt{\langle f,Pf\rangle_\mu\langle g,Pg\rangle_\mu}} .
+\]
+Both denominators are positive by the diagonal. The least constant
+$C(P)$ in the normalized upper inequality of (EF1), with $2$ replaced
+by $C(P)$, is
+\[
+                   C(P)=\max\{2,1+\kappa(P)\}.               \tag{EF5}
+\]
+In particular a strictly positive definite kernel still has best
+global constant two. Highly uneven positive scalings are allowed.
+
+For a probability density $v$ with positive scaling $h_v$, set
+$G(v)=\frac12 H(J_{h_v}\mid\mu P)$, where $\mu P(x,y)=\mu(x)P(x,y)$.
+Since $G(v)=\langle v,\log h_v\rangle_\mu$, its derivative along
+the probability simplex is $\log h_v$: the remaining differential
+$\langle v,d\log h_v\rangle_\mu$ is half the variation of the unit
+edge mass. Thus the edge entropy from $v$ to $w$ is twice
+$G(v)-G(w)-\langle v-w,\log h_w\rangle_\mu$.
+The Hessian of $G$ on a tangent of score $b=dv/v$ is
+$\langle b,(I+K_v)^{-1}b\rangle_{v\mu}$, by logarithmic
+differentiation of $h_v Ph_v=v$. Existence and smoothness here use the
+positive diagonal and strict positivity of $P$; positive semidefiniteness
+is unnecessary. The entropy of the marginal has Hessian
+$\|b\|_{L^2(v\mu)}^2$. Integrating both Hessians with weight $1-z$
+along the line from $w$ to $v$, and taking arbitrarily short lines
+in the least-eigenvalue direction for the converse, gives
+$C(P)=2/(1+\inf_v\lambda_{\min}(K_v))$. The constant eigenfunction has
+eigenvalue one and all tangents have mean zero.
+
+To evaluate the infimum write $\xi=h f_0$ for a test function $f_0$
+in the Rayleigh quotient of $K_{hPh}$. Its numerator is
+$\langle\xi,P\xi\rangle_\mu$ and its denominator is
+$\sum_{x,y}\mu(x)P(x,y)\xi(x)^2 h(y)/h(x)$.
+The latter is at least $\langle|\xi|,P|\xi|\rangle_\mu$ by pairing
+the two orientations and applying arithmetic--geometric mean.
+Taking $h=|\xi|+\epsilon$ attains equality in the limit, up to the
+irrelevant scale of $h$. For a negative numerator this gives the
+most negative quotient. Write $\xi=f-g$ with nonnegative disjoint
+parts, and put $A=\langle f,Pf\rangle_\mu$, $B=\langle g,Pg\rangle_\mu$,
+$C=\langle f,Pg\rangle_\mu$. The ratio for the optimal denominator is
+$(A+B-2C)/(A+B+2C)$. Rescaling one part to make $A=B$ minimizes it
+for fixed shapes. Hence a negative infimum exists precisely when
+$\kappa(P)>1$, and then equals $(1-\kappa(P))/(1+\kappa(P))$.
+In the remaining case every numerator is nonnegative. Keeping $h$ fixed
+at one on a single state and tending to zero elsewhere makes all rows
+of $K_{hPh}$ tend to the point mass on that state. The nonconstant
+eigenvalues then tend to zero by continuity of the characteristic
+polynomial. This proves (EF5).
+
 \paragraph{A computable error bound for a prescribed return.}
 For Boolean noise, calculate $H_m=H(\nu\mid\nu_u)$ from the target and
 the ordinary kernel. For any nonempty $F$ the log-sum inequality on
@@ -140,7 +194,15 @@ Symmetric scaling algorithms such as those of
 \href{https://strathprints.strath.ac.uk/49349/1/main_revised3.pdf}{Knight, Ruiz and U\c{c}ar}
 and entropy estimates for entropic plans such as those of
 \href{https://www.math.columbia.edu/~mnutz/docs/Sinkhorn_rate.pdf}{Ghosal and Nutz}
-provide relevant comparisons. Here (EF2) concerns two symmetric diagonal
+provide relevant comparisons. A closer antecedent for the normalized
+upper inequality in (EF1) is the convexity of the Sinkhorn negentropy
+in href{https://proceedings.mlr.press/v89/feydy19a.html}{Feydy et al.,
+Propositions 3--4}. For the kernel density $P(x,y)/mu(y)$ and unit
+regularization, their self-transport functional with the negative
+one-half convention equals marginal entropy relative to $mu$ minus
+$G$, up to an affine term. Its convexity gives the normalized upper
+inequality directly under their positive-kernel assumptions. Formula
+(EF5) also treats kernels with a negative eigenvalue. Here (EF2) concerns two symmetric diagonal
 scalings of the same positive kernel and uses its quadratic form directly.
 The event estimate (EF4) weights the inverse scaling derivative by the
 two endpoint laws conditioned on an event.
