@@ -1,0 +1,28 @@
+{
+  "query": "https://data.cityofnewyork.us/resource/hgx4-8ukb.json?%24select=project_id%2Cproject_name%2Culurp_numbers%2Capp_filed_date%2Ccertified_referred%2Capproval_date%2Ccompleted_date%2Cactions&%24where=approval_date%20between%20%272024-01-01T00%3A00%3A00%27%20and%20%272024-12-31T00%3A00%3A00%27%20and%20ulurp_numbers%20like%20%27%25ZMK%25%27%20and%20app_filed_date%20is%20not%20null&%24order=project_id&%24limit=1",
+  "zap_rows": [
+    {
+      "project_id": "2019K0060",
+      "project_name": "1289 Atlantic Avenue Rezoning",
+      "ulurp_numbers": "200310ZMK; N200293ZRK",
+      "app_filed_date": "2020-04-24T00:00:00.000",
+      "certified_referred": "2023-10-30T00:00:00.000",
+      "approval_date": "2024-05-16T00:00:00.000",
+      "actions": "ZM; ZR"
+    }
+  ],
+  "amendments_query": "https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/ArcGIS/rest/services/nyzma/FeatureServer/0/query?f=json&where=ULURPNO%20LIKE%20%27%25200310%25%27&outFields=EFFECTIVE%2CSTATUS%2CULURPNO%2CLUCATS%2CPROJECT_NAME&returnGeometry=false",
+  "map_rows": [
+    {
+      "attributes": {
+        "EFFECTIVE": 1715817600000,
+        "STATUS": "Adopted",
+        "ULURPNO": "200310zmk",
+        "LUCATS": "200310",
+        "PROJECT_NAME": "1289 Atlantic Avenue"
+      }
+    }
+  ],
+  "utc_effective_date": "2024-05-16",
+  "purpose": "Reconcile the same project without parcel, applicant or voter data. This example was inspected before fixing the cohort."
+}

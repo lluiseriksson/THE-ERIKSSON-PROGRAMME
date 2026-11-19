@@ -1,0 +1,22 @@
+{
+  "n": 126,
+  "certification_approval_changed": 48,
+  "certification_approval_same": 78,
+  "filing_approval_changed": 66,
+  "filing_approval_known": 79,
+  "certification_approval_matrix": {
+    "2021/2021": 26,
+    "2021/2022": 19,
+    "2022/2022": 21,
+    "2022/2023": 13,
+    "2023/2023": 13,
+    "2023/2024": 16,
+    "2024/2024": 18
+  },
+  "manuscript": {
+    "sha256": "011a51be784756464718d2c93d69db7e52c540b9835b784f5f66de3435bcde81",
+    "pages": 82,
+    "wheel": "pypdf-5.9.0-py3-none-any.whl",
+    "wheel_sha256": "be10a4c54202f46d9daceaa8788be07aa8cd5ea8c25c529c50dd509206382c35"
+  }
+}

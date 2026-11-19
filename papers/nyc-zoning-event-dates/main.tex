@@ -1,0 +1,88 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs,array,microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lmodern}
+\title{When did a rezoning happen?\\[3pt]\large Coverage and event dates in two New York City administrative records}
+\author{Lluis Eriksson}
+\date{19 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+The date an application enters public review and the date a map amendment takes effect measure different events. Their recorded years can also define different samples. We compare municipal project records and adopted map-amendment identifiers in a nominal 2015--2024 New York City approval window. All 126 project records passing a dated-approval and map-action filter fall in 2021--2024. In the earlier six years the map layer supplies 163 adopted identifiers in the code family used in an exploratory sensitivity analysis; 160 link to projects with missing approval dates. Among the 118 later actions linked to projects by a documented identifier convention, all approval and effective years agree. Of those 118 actions, 71 were certified in citywide Council election years but only 48 took effect in such years. The findings constrain how these records can be used to build annual panels of public decisions.
+\end{abstract}
+\section{An event definition with two consequences}
+Approval counts can change for two reasons. A different event date can move a given action to another year. Requiring a date to be present can also exclude an action entirely. The second problem survives even when the dates agree for every action observed in both sources.
+
+Pietrzak's November 2026 working paper examines whether local elections influence zoning decisions. The New York analysis uses a parcel panel spanning 2002--2025. Appendix C1 explicitly uses the effective month and year in the map-amendment layer to locate an adopted rezoning [1]. We ask a narrower question relevant to attempts to extend or reconstruct an annual series from project records: does a project approval date identify the same actions and years as an adopted map date? We compare project and action records directly. Our analysis neither estimates the paper's parcel-level regression nor tests its account of political incentives.
+
+\section{Cohort, sources and keys}
+We froze the city's Zoning Application Portal (ZAP) project data and Zoning Map Amendments (NYZMA) layer on 19 November 2026 [2,3]. The city describes ZAP as covering noticed or filed applications, including migrated historical data. A project can carry several actions. The NYZMA metadata describes polygons for adopted and proposed changes and allows selected geographically bounded text amendments. We use only adopted entries and count identifiers after collapsing component polygons. An identifier is an administrative unit and can be one of several items considered at a legislative meeting.
+
+We started with a ZAP approval date in 2015--2024 and a separate \texttt{ZM} token in the semicolon-delimited actions field. A broader substring query returned 127 rows, one of which failed the exact-token rule. Each of the remaining 126 had a distinct project ID. The public status field marked all completed. The internal status field classified 119 as complete, four as active, two as on hold and one as withdrawn--other. We retain the date-defined cohort and report the discrepancy.
+
+The primary linkage compared the full ZAP action code with the full map code after removing whitespace and folding case. We checked all 1,442 map feature IDs against two complete inventories. Of these features, 1,416 were marked adopted. The strict join matched 62 projects to 62 distinct adopted identifiers. One identifier had two map features, with the same effective date. Sixty pairs agreed on the day and all 62 on the year.
+
+We then tested a separately documented identifier convention. The City Council identifies the 1289 Atlantic Avenue action as C 200310 ZMK [4]. ZAP lists 200310ZMK and NYZMA lists 200310zmk, effective on the approval date in the Council resolution. In the exploratory sensitivity analysis we remove an initial C only on a six-digit code with an optional A followed by ZM and a borough letter. We preserve the letter A and the borough. The reverse search is restricted to this code family. No two distinct map keys collapsed in this family. We used exact tokens in both joins; neither used project names or spatial proximity. A source-backed convention and the absence of collisions do not independently validate every match.
+
+\section{Date coverage before and after linkage}
+The documented convention adds 56 matched projects and loses none of the strict matches. Among 118 linked actions there is exactly one project per action and one action per project. Approval and map dates coincide to the day in 113 cases, and to the year in all 118. Eight of the 126 projects remain unmatched. On the matched support, changing from a project to an action as the counting unit leaves the annual totals exactly unchanged.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Approval year & ZAP projects & Linked projects & Linked map actions\\
+\midrule
+2021 & 26 & 23 & 23\\
+2022 & 40 & 38 & 38\\
+2023 & 26 & 25 & 25\\
+2024 & 34 & 32 & 32\\
+\midrule
+Total &126&118&118\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Looking in the other direction changes the assessment of coverage. The map layer contains 322 adopted keys in the sensitivity family with effective years in 2015--2024. All have a single effective year. Of those keys, 118 are in the project cohort, 186 match project records with no approval date, seven match projects outside another inclusion criterion, and eleven lack a matching project code in the reverse search. The reverse lookup searched 1,691 city records with a ZM substring in their ULURP-number field, including undated projects. The seven other exclusions are not all verified to have the same cause.
+
+For 2015--2020 specifically, 160 of 163 adopted map keys match a project with a missing approval date. The remaining three had no matching project code under this rule. A dated-approval extraction therefore returns zero projects in those six years despite affirmative map evidence of adoption. This is a statement about these frozen fields. It does not establish that historical project files lack approval documentation elsewhere, or that NYZMA covers every legislative decision.
+
+\section{Changing the milestone}
+Among the 126 projects, all have certification or referral dates. Moving from that date to approval changes the calendar year for 48 projects. Filing and approval differ in year for 66 of the 79 projects with known filing dates. Of the 47 projects without a filing date, 16 already show a year difference between the two known milestones. The number with at least two milestones in different years consequently lies between 82 and 113 without imputing a filing date.
+
+For the 118 linked actions, every certification and effective year falls in 2021--2024. We classified a year as a regular citywide Council election year if its November general-election results listed all 51 Council districts. We extracted district numbers from the Board of Elections' general-election contest tables: all 51 appear in 2021 and 2023, and none appear in the corresponding 2022 and 2024 tables [5]. This is a citywide calendar indicator; we do not infer district-specific exposure to special elections. An assertion that originally read only data cells failed on table headers in the 2021 results. Reading both cell types recovered the district lists.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+ & \multicolumn{2}{c}{Effective year} &\\
+Certification year & Other & Council election & Total\\
+\midrule
+Other &35&12&47\\
+Council election &35&36&71\\
+\midrule
+Total &70&48&118\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Changing the milestone changes election-year status for 47 actions: 35 leave and 12 enter the election-year group. The resulting count falls by 23. A majority of these actions were certified in election years (71 of 118); a minority became effective in election years (48 of 118). Because the cohort is conditioned on a recorded approval date and excludes unmatched actions, this paired reversal is specific to the selected records. More approved projects in a particular year would also change the marginal counts. Neither marginal is a causal estimate of strategic behavior.
+
+\section{Interpretation and reproducibility}
+An analyst constructing an approval-year series should count from an adopted-action frame, then report coverage of project covariates for that frame. If the research question concerns entry into review, certification supplies a different outcome. Comparing both on paired actions reveals timing differences without conflating them with sample selection. Parcel, project, legal action and map feature provide different denominators. The equality of two annual series here holds on the linked recent records only.
+
+The companion repository records the selection protocol, retrieval scripts, hashes, project--action ledger and yearly transitions. Two Colab Linux extractions of the initial project return produced the same SHA-256 digest. Map completeness was checked by object ID, independent of page length. The strict and sensitivity joins verified identical source-page digests. The first attempt to retrieve map batches by a long URL returned an HTTP 404; a range query subsequently recovered every enumerated ID. Municipal records can be revised. The archive and extraction hashes identify this snapshot.
+
+\section*{Model assessments and review context}
+OpenAI Codex assisted in the study design, analysis and drafting. The data checks were performed within that same workflow. Any assessment of this exact PDF is recorded separately with its digest and reviewer context. The authorship and technical checks do not constitute independent peer review.
+
+\section*{Primary sources}
+\begin{enumerate}
+\item A. Pietrzak, \emph{Zoning for Votes: How Local Politicians Use Land-Use Regulations for Political Gain}, v1, especially pp.\ 13 and 56. \href{https://doi.org/10.31235/osf.io/vpfgx_v1}{SocArXiv, DOI 10.31235/osf.io/vpfgx\_v1}.
+\item NYC Department of City Planning, \href{https://catalog.data.gov/dataset/zoning-application-portal-zap-project-data}{Zoning Application Portal project data}, dataset hgx4-8ukb.
+\item NYC Department of City Planning, \href{https://services5.arcgis.com/GfwWNkhOj9bNBqoJ/ArcGIS/rest/services/nyzma/FeatureServer/0}{NYZMA feature layer} and \href{https://www.nyc.gov/assets/planning/download/pdf/data-maps/open-data/nyzma_metdata.pdf}{metadata}.
+\item New York City Council, \href{https://legistar.council.nyc.gov/LegislationDetail.aspx?GUID=78F34ECD-DC13-43FB-8667-19DC1644BD2F&ID=6660828}{Resolution 0434-2024}, 16 May 2024.
+\item NYC Board of Elections, November general-election contest tables for \href{https://vote.nyc/page/election-results-summary-2021}{2021}, \href{https://vote.nyc/page/election-results-summary-2022}{2022}, \href{https://vote.nyc/page/election-results-summary-2023}{2023} and \href{https://vote.nyc/page/election-results-summary-2024}{2024}.
+\end{enumerate}
+\end{document}
