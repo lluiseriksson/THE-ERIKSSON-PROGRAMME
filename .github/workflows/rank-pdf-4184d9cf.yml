@@ -1,0 +1,73 @@
+name: Frozen rank manuscript PDF
+on:
+  push:
+    branches: [codex/rank-pdf-4184d9cf-once]
+    paths: [.github/workflows/rank-pdf-4184d9cf.yml]
+permissions:
+  contents: read
+jobs:
+  document:
+    if: github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PIN: 4184d9cf423f974101af1fa1059218c04025cc64
+      SRC: papers/stationary-weighting354/research/2026-11-18-small-support/rank-defects-and-stability.tex
+      INPUT_HASH: aec662773a7c8e53bdda3039785204ea9bc2e771ad66bf5c19aae686b975feb1
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 4184d9cf423f974101af1fa1059218c04025cc64
+          path: clone-a
+          sparse-checkout: papers/stationary-weighting354/research/2026-11-18-small-support
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 4184d9cf423f974101af1fa1059218c04025cc64
+          path: clone-b
+          sparse-checkout: papers/stationary-weighting354/research/2026-11-18-small-support
+          persist-credentials: false
+      - name: Install typesetting dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils
+      - name: Reproduce, compare and render the frozen manuscript
+        run: |
+          set -euo pipefail
+          export TZ=UTC LC_ALL=C FORCE_SOURCE_DATE=1
+          SOURCE_DATE_EPOCH=$(git -C clone-a show -s --format=%ct HEAD)
+          export SOURCE_DATE_EPOCH
+          mkdir -p evidence/pages
+          for clone in clone-a clone-b; do
+            test "$(git -C "$clone" rev-parse HEAD)" = "$PIN"
+            mkdir "$clone/build"
+            cp "$clone/$SRC" "$clone/build/manuscript.tex"
+            (
+              cd "$clone/build"
+              printf '%s  manuscript.tex\n' "$INPUT_HASH" | sha256sum -c -
+              printf '%s\n' '\pdfinfoomitdate=1\relax' '\pdftrailerid{}' '\pdfsuppressptexinfo=15\relax' '\input{manuscript.tex}' > driver.tex
+              for pass in 1 2 3; do
+                pdflatex -no-shell-escape -halt-on-error -interaction=nonstopmode driver.tex > "pass-$pass.log" || { tail -60 "pass-$pass.log"; exit 1; }
+              done
+              if grep -Ei 'undefined references|Citation .*undefined|Reference .*undefined|multiply defined|Rerun to get cross-references right' driver.log; then exit 1; fi
+              cp driver.log "../../evidence/$clone.log"
+              sha256sum driver.pdf > "../../evidence/$clone.sha256"
+            )
+          done
+          cmp clone-{a,b}/build/driver.pdf
+          cp clone-a/build/driver.pdf evidence/manuscript.pdf
+          cp "clone-a/$SRC" evidence/manuscript.tex
+          pdfinfo evidence/manuscript.pdf > evidence/pdfinfo.txt
+          pdftotext -layout evidence/manuscript.pdf evidence/text.txt
+          pdftoppm -scale-to 1500 -jpeg -jpegopt quality=88 evidence/manuscript.pdf evidence/pages/page
+          test "$(find evidence/pages -name '*.jpg' | wc -l)" -eq "$(awk '/^Pages:/ {print $2}' evidence/pdfinfo.txt)"
+          printf '%s\n' "$PIN" > evidence/source-commit.txt
+          pdflatex --version > evidence/toolchain.txt
+          (cd evidence && sha256sum manuscript.pdf manuscript.tex pages/*.jpg > SHA256SUMS)
+          test "$(du -sb evidence | cut -f1)" -lt 51380224
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rank-pdf-4184d9cf
+          path: evidence/
+          retention-days: 1
+          if-no-files-found: error
