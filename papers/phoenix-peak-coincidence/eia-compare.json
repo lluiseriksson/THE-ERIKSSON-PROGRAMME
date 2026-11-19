@@ -1,0 +1,81 @@
+{
+  "source": "https://www.eia.gov/electricity/gridmonitor/sixMonthFiles/EIA930_BALANCE_2025_Jan_Jun.csv",
+  "source_modified": "Thu, 19 Nov 2026 15:42:52 GMT",
+  "bytes": 47565054,
+  "sha256": "fac4bb991dfa1dab3b4b35300ccab54ac99be13a40ce91954db8ddafb2816242",
+  "trial_source": "https://raw.githubusercontent.com/ai-emerald/emerald-ai-demo-may-2025/34403aef78c2690a8e4f0ba8f7f62d302cdba967/data/SRP_0503.csv",
+  "trial_sha256": "8a4155b54876ac2f530907f03422fcc26004e5f6301b75a584f258e0805aa71a",
+  "days": {
+    "05/03/2025": {
+      "loads_mw": [
+        3357,
+        3139,
+        2994,
+        2892,
+        2846,
+        2832,
+        2801,
+        2899,
+        3026,
+        3235,
+        3531,
+        3848,
+        4097,
+        4397,
+        4616,
+        4745,
+        4963,
+        4941,
+        4801,
+        4664,
+        4471,
+        4279,
+        3988,
+        3648
+      ],
+      "max_mw": 4963,
+      "peak_hour_ending": [
+        17
+      ],
+      "hours_exact": 0,
+      "max_abs_error_mw": 145,
+      "mean_abs_error_mw": 48.291666666666664
+    },
+    "05/04/2025": {
+      "loads_mw": [
+        3426,
+        3251,
+        3106,
+        2997,
+        2881,
+        2895,
+        2840,
+        2899,
+        2961,
+        3177,
+        3304,
+        3438,
+        3569,
+        3686,
+        3853,
+        3888,
+        3726,
+        3797,
+        3859,
+        3694,
+        3657,
+        3533,
+        3350,
+        3146
+      ],
+      "max_mw": 3888,
+      "peak_hour_ending": [
+        16
+      ],
+      "hours_exact": 0,
+      "max_abs_error_mw": 1235,
+      "mean_abs_error_mw": 478.0833333333333
+    }
+  },
+  "comparison": "Reported SRP balancing-authority demand, original unsmoothed MW. Compare author figure GW to MW on exact local hour-ending; do not infer physical GPU calendar date from agreement of grid series."
+}
