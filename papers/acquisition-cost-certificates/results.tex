@@ -1,0 +1,15 @@
+\begin{center}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Scored population & Below target & Misses target & Undetermined\\
+\midrule
+Whole library & 382 & 818 & 0\\
+Remaining under the current arm & 364 & 369 & 467\\
+Fixed materials unused by both arms & 304 & 58 & 838\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+On the arm-specific remaining population, cluster selection has a certified lower first-crossing cost in 16 of 150 pairs. On the fixed common population this conclusion survives in one pair. The remaining 149 comparisons are unresolved by the certificates; loss of a certificate gives no evidence of a reversal. Across pairs, the common set retains between 73.0\% and 95.9\% of the library.
+
+The surviving case is QM9 target \texttt{r2}, seed 8. The common test set contains 122,398 of 133,885 molecules. Cluster selection meets the target at its first budget, with 100 distinct labels. Active acquisition misses at 100 and meets it at the next budget, whose 500-row training list brings its cumulative cost to 561 distinct labels. Thus the verified difference on this grid is 461 measurements on identical evaluation rows. It is a single benchmark case. All 150 pairs were evaluated and retained.
