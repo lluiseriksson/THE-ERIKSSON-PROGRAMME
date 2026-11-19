@@ -1,0 +1,45 @@
+{
+  "revision": "e737b94a38cf77b2ec3a29cb1c6bd756fb1329fb",
+  "sha256": "89752ca13ef5516cf22805616a5976b0fecc717c4fecb29e739bc7297385f56a",
+  "source_rows": 4446,
+  "literal": {
+    "leader": "Anthropic",
+    "pairs_examined": 146070,
+    "strict_loss": 2,
+    "tie": 0,
+    "min_margin": -12,
+    "extremizers": [
+      {
+        "hosts": [
+          "anthropic.com",
+          "venturebeat.com"
+        ],
+        "leader_count": 124,
+        "challengers": [
+          "OpenAI"
+        ],
+        "challenger_count": 136
+      }
+    ]
+  },
+  "normalized": {
+    "leader": "anthropic",
+    "pairs_examined": 146070,
+    "strict_loss": 2,
+    "tie": 0,
+    "min_margin": -11,
+    "extremizers": [
+      {
+        "hosts": [
+          "anthropic.com",
+          "venturebeat.com"
+        ],
+        "leader_count": 124,
+        "challengers": [
+          "openai"
+        ],
+        "challenger_count": 135
+      }
+    ]
+  }
+}

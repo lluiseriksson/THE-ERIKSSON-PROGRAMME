@@ -1,0 +1,22 @@
+{
+  "observed_aliases": [
+    "alphabet",
+    "deepmind",
+    "google",
+    "google cloud",
+    "google deepmind"
+  ],
+  "adverse_pairs": [
+    [
+      "anthropic.com",
+      "techcrunch.com",
+      -2
+    ],
+    [
+      "anthropic.com",
+      "venturebeat.com",
+      -11
+    ]
+  ],
+  "data_sha256": "89752ca13ef5516cf22805616a5976b0fecc717c4fecb29e739bc7297385f56a"
+}

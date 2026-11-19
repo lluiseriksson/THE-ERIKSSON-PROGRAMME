@@ -1,0 +1,60 @@
+\section{Does single-source resilience survive a change of corporate unit?}
+A model can reach an organization through a cloud platform as well as through its developer. This makes the number of distinct recipients sensitive to which units count as the same supplier. We apply the omission test to the provision layer of the same data release. Here the endpoint is the recorded recipient label. Neither payment nor the value, exclusivity or duration of a contract is required.
+
+We selected established, directed provision records tagged \texttt{MODELS}, with a usable source URL and actor names. We used the document date from 1 November 2022 through 31 October 2026. Among records satisfying the layer, type and status filters, 463 had no usable date. Of 4,566 rows in the period, 4,446 met the remaining requirements. We oriented each edge according to the direction label. Removing self-links and normalizing Unicode, whitespace and case gave 1,916 directed pairs supported by 541 hosts. A pair survived deletion if any supporting host remained. The unit is the hostname with a leading \texttt{www.} removed. A host deletion is a perturbation of coverage and has no implied probability.
+
+\paragraph{Separate actor labels.}
+Anthropic had 171 distinct recipients, OpenAI 151 and Google 110. Anthropic remained first after each of the 541 single-host deletions. The smallest margin was four after removal of \texttt{anthropic.com}. Of all 146,070 unordered host pairs, only two displaced Anthropic. Both contained \texttt{anthropic.com}. Removing it with \texttt{techcrunch.com} put Anthropic two recipients behind the leader. Removing it with \texttt{venturebeat.com} left Anthropic with 124 and OpenAI with 135. Keeping names case-sensitive also gave two losing combinations and a worst margin of twelve. These are properties of the observed network conditional on the filters.
+
+\paragraph{Grouping selected Alphabet units.}
+We next combined five actor labels appearing in the data: Alphabet, DeepMind, Google, Google Cloud and Google DeepMind. Cen et al. explicitly discuss separate versus consolidated labels for Google DeepMind and Google Cloud~\cite{cen}. We quantify how this choice changes the host-deletion threshold. The selection uses Alphabet's segment reporting and Google's announcement of the combination of the DeepMind and Google Brain research teams~\cite{alphabet,deepmind}. We applied this fixed retrospective grouping across the entire period. It is a sensitivity test with an explicitly limited scope. Other affiliated entities, subsidiaries, competing suppliers and name variants were not systematically consolidated. A ranking of ultimate corporate parents would require that broader exercise.
+
+Grouping both endpoints counts the union of recipients of the selected suppliers, deduplicates recipient units and removes internal links. Anthropic now has 169 recipients and the selected Alphabet family has 166. OpenAI remains at 151. With the same \texttt{anthropic.com} deletion that previously left a lead of four, the selected Alphabet family now leads Anthropic by thirteen (166 to 153). The identity of the largest supplier is therefore sensitive to the interaction of actor definition and documentary coverage. Three single-host deletions now reverse the leader: anthropic.com, techcrunch.com and venturebeat.com. Removing kai-waehner.de alone produces a tie. Aggregating only suppliers gives a baseline tie at 171; aggregating only recipients leaves Anthropic first at 169 against OpenAI at 151.
+
+\begin{center}\small
+\begin{tabular}{llrrrr}
+\toprule
+Group supplier & Group recipient & Initial gap & One-host losses & Pair losses & Pair ties\\
+\midrule
+No & No & 20 & 0 & 2 & 0 \\
+Yes & No & 0 & 34 & 16,880 & 112,649 \\
+No & Yes & 18 & 0 & 2 & 4 \\
+Yes & Yes & 3 & 3 & 1,650 & 577 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The gap is Anthropic's count minus the largest other count. Each cell uses the same 541 hosts and all 146,070 unordered pairs. Losses mean a strictly negative gap. Single-host ties are provided separately in the accompanying file. The two mixed policies are bookkeeping controls. They keep the raw normalized self-link exclusion, relabel one endpoint and count surviving directed pairs in that representation. Only the first and last rows give consistent units at both ends.
+
+\paragraph{Selected provider websites.}
+We removed the observed hosts under \texttt{anthropic.com}, \texttt{claude.com}, \texttt{claude.ai}, \texttt{openai.com}, \texttt{google.com}, \texttt{blog.google}, \texttt{deepmind.google} and \texttt{deepmind.com}. Domain matching was restricted to DNS label boundaries. In the selected rows this removes seven Google hosts, \texttt{anthropic.com} and zero OpenAI hosts. With separate labels Anthropic still leads OpenAI, 153 to 151. With the corporate grouping on both ends they tie at 151 and the selected Alphabet family falls to 127. This concerns the observed hosting surfaces. News syndication, parent ownership of newsrooms and authorship of externally hosted articles are not identified by the rule.
+
+\paragraph{Checking the enumeration.}
+For supplier $a$, let $n_a(T)$ count its distinct recipients whose complete support is the host set $T$. Deleting distinct $h,k$ removes exactly $n_a(\{h\})+n_a(\{k\})+n_a(\{h,k\})$ recipients. We enumerated all pairs using those three counts and compared each adverse case with deletion from the original sets of supports. Separately, we rebuilt the selected website deletions from raw rows. Reconciling the units makes eight hosts support exclusively internal or otherwise excluded edges in the fully grouped graph. Keeping these hosts in the denominator ensures identical deletion experiments across specifications.
+
+The investment and model-provision thresholds concern different layers, endpoints and filters. Their difference cannot, by itself, identify an economic difference in market concentration. What the examples jointly demonstrate is how to determine exactly which changes in documentary coverage and actor definition would reverse a reported ordering.
+
+\section{Can missing publication dates change the provider ranking?}
+The preceding host counts used dated records. Of the 463 rows lacking a usable date after the layer, status and relationship filters, 450 also have directed endpoints and a usable host. We assigned all undated rows sharing an exact URL the same inclusion decision. Looking for the same URLs across dated rows in the full file fixed none of the 450 rows. There were 198 optional documents with separate labels and 197 after consolidation and removal of internal links.
+
+\paragraph{Why the all-in and all-out cases can miss a reversal.}
+With separate labels and \texttt{anthropic.com} removed, excluding all optional documents leaves Anthropic four labels ahead of OpenAI. Including them all increases its lead to nine. Yet four documents suffice for a tie at 155 and five suffice for OpenAI to lead 156 to 155 when the remaining optional documents fall outside the window. We checked these minima by tracking the two sets of newly covered recipients after each document and retaining the smallest number of documents reaching each pair of sets. Documents incapable of adding a recipient to the challenger cannot lower the minimum. A separate signed-coverage enumeration attained margins of $-2$ and $+15$ at the two extremes. These assignments describe possibilities before dates are recovered.
+
+\paragraph{Recovering dates where they can affect the answer.}
+For the three policies still allowing a tie or reversal, we collected every undated URL capable of adding a previously uncovered recipient to either contender. Their union had 22 URLs. Eighteen had a publication date inside the window in the original article, bibliographic record or publisher's structured metadata. For social posts we matched the dated object's identifier to the post. The four remaining URLs comprised two unversioned encyclopedia articles, a documentation page and a redirect. We left their dates open. The source ledger gives the matched URL hashes and all eighteen dates.
+
+\begin{center}\small
+\begin{tabular}{lllr}
+\toprule
+Endpoint labels & Hosts & Leader over rival & Lead in labels\\
+\midrule
+Separate & All & Anthropic over OpenAI & 22--26\\
+Separate & Omit anthropic.com & Anthropic over OpenAI & 6--10\\
+Grouped & All & Anthropic over Alphabet group & 6--10\\
+Grouped & Omit anthropic.com & Alphabet group over Anthropic & 6--10\\
+\bottomrule
+\end{tabular}
+\end{center}
+After inserting the dated documents, three unresolved URLs could change either contender's degree in each policy. We evaluated their eight joint assignments in each row. Every integer between the displayed endpoints occurs. For every other provider, even its degree with all optional documents was below the degree already guaranteed to at least one contender. Thus recovered dates settle the identity of the leader separately for each of these four policies. Other host deletions require separate checks.
+
+\paragraph{What does a recipient label represent?}
+We checked the three academic studies in the five-document example against their extracted endpoints. Four directed OpenAI rows named three distinct recipients. Joynt et al.\ used DALL-E 2 to generate images, but the extracted recipient was \texttt{dall-e}, a model~\cite{joynt}. A craniofacial illustration study used DALL-E 3 and appeared twice with the same recipient label, \emph{the study authors}~\cite{cranio}. A plant-science paper yielded its three authors as a single named team~\cite{plants}. The first case is a counterexample to interpreting every distinct target as a customer. Excluding only the OpenAI-to-DALL-E pair removes one guaranteed label from OpenAI. With separate labels and \texttt{anthropic.com} omitted, Anthropic's lead then ranges from seven to eleven. These studies were selected for their ability to affect a ranking. They cannot estimate the prevalence of category errors elsewhere in the data.
