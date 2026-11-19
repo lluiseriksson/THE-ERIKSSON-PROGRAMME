@@ -1,0 +1,87 @@
+\section{Small-set returns beyond a fixed-power bound}
+\label{sec:tail-compression}
+Keep the two disjoint bases of Section 16, possibly in different coordinates,
+and write $p=15/7$, $s=5/3$. For either $H=Ph$ or $H=P\sqrt\pi$ let
+$W_H=\pi/H^2$ and $T_H=M_{\sqrt{W_H}}P M_{\sqrt{W_H}}$.
+$T_{Ph}$ is the exact symmetrized chain;
+$T_{P\sqrt\pi}$ gives the unnormalized trial form. All norms below act on
+counting probability space. The restriction to a set means killing outside it.
+
+\paragraph{A failed candidate for a nonvanishing return.}
+If $\|\pi\|_\infty\le B$, then for every syndrome set $E$,
+\[
+ \|1_E T_H1_E\|\le C_B\,\mu(E)^{2/5}.
+\]
+For any set of ambient words $F$, without requiring it to consist of
+whole fibers, the corresponding bound is $C_B\mu(F)^{2/15}$.
+Indeed Section 16 gives $\|H^{-1}\|_{10}\le C_B$ without matching,
+hence $\|W_H\|_5\le C_B$. On the syndrome cube the square root of $P$
+maps $L^2$ contractively into $L^5$ by the two basis steps, so the
+Gram-product identity and H\"older bound the compression by
+$\|1_E W_H\|_{5/3}$. Equivalently use (CR3) at its forward endpoint.
+For an arbitrary ambient set the square root of ordinary half noise
+maps $L^2$ into $L^3$, giving $\|1_F W_H\|_3$.
+These give the stated exponents. The trial normalization costs at most $B^2$
+as in Section 16. In particular the positive one-sided radial densities
+of Section 17 have vanishing exact norm on \emph{every} sequence of
+sets of vanishing uniform mass, although the trial inverse fifteenth
+moment diverges. This does not give spectral recovery in the absence
+of growing matching.
+
+\paragraph{A stationary tail condition at the critical power.}
+Suppose, for some fixed $a>0$ and $1/2<\gamma<1$, that
+\[
+ \sup_n \mathbb E_\mu \big[\pi^p
+   \exp\{a(\log(e+\pi))^\gamma\}\big]<\infty .                 \tag{TB1}
+\]
+Both compressions tend uniformly to zero on syndrome sets with uniform
+mass tending to zero, with no matching, rank bound, or permutation
+invariance. Under the growing matching assumptions of (FF1) full
+ordered spectral recovery follows at unrestricted rank.
+The statement concerns arbitrary two-base quotients. No geometric
+condition on their stationary level sets enters (TB1).
+
+For a positive function $f$, let $f^*(u)$ be its decreasing quantile
+under $\mu$, $0<u<1$, and put $L=\log(1/u)$. Section 16, using the
+\href{https://www.cs.cmu.edu/~odonnell/papers/nicd.pdf}{binary reverse
+hypercontractive inequality}, gives
+$\log\|H^{-1}\|_{15-\delta}\le C_B/\delta$ for $0<\delta\le\delta_0$,
+where $B$ bounds $\|\pi\|_p$. Markov's inequality with
+$\delta=L^{-1/2}$ gives, for all sufficiently large $L$,
+\[
+ (H^{-1})^*(u)\le \exp\{L/15+C_B'\sqrt L\}.
+\]
+Write $y=\pi^*(u)$. Since $\mu(\pi\ge y)\ge u$, (TB1) gives
+$p\log y+a(\log(e+y))^\gamma\le L+O(1)$. If $\log y\le L/(2p)$
+there is already a linear saving. Otherwise the second term is at
+least $a(L/(2p))^\gamma$. Thus for some $\eta>0$ and all large $L$,
+$y\le\exp(L/p-\eta L^\gamma)$, uniformly across the sequence.
+
+For a syndrome set $E$ of mass $m$, layer cake bounds the integral
+of $1_E\pi^s H^{-2s}$ by
+$\int_0^m(\pi^*(u))^s((H^{-1})^*(u))^{2s}\,du$:
+intersections of three upper level sets have mass bounded by the
+smallest of their three masses. Using $s/p+2s/15=1$, the last integral
+for all small $m$ is bounded by
+\[
+ \int_{\log(1/m)}^\infty
+     \exp\{-s\eta L^\gamma+2sC_B'\sqrt L\}\,dL .
+\]
+It tends to zero since $\gamma>1/2$. Consequently $\|1_E W_H\|_s$
+vanishes uniformly. The compression estimate above applies, including
+on the ambient space for a set made of whole fibers by the positive
+leading-vector reduction of (CR3). The exceptional multiplier set in
+(FF1) has vanishing uniform mass by the strictly positive moment of
+$W_{Ph}$ (alternatively by its uniform $L^s$ bound just proved).
+The spectral assertion follows from (FF1).
+
+\paragraph{Distinction from higher stationary powers.}
+For $m$ syndrome bits with two identical bases, let $u=2^{-m}$ and
+give one atom height $A_m=\exp(\log(1/u)/p-D(\log(1/u))^\gamma)$.
+Take $\pi=(1+A_m 1_{\{0\}})/(1+u A_m)$.
+It is normalized and strictly positive. For fixed $a,\gamma$ choose
+$D>a/p^{1+\gamma}$. The contribution of the atom in (TB1) then
+tends to zero, while $uA_m^{p+\epsilon}\to\infty$ for every
+$\epsilon>0$. This distinguishes the stationary moment assumptions.
+The example does not assert matching or establish sharpness of the
+logarithmic correction.

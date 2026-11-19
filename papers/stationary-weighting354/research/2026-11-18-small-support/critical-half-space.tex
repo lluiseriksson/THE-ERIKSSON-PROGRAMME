@@ -1,0 +1,79 @@
+\section{A geometric criterion for the two endpoint moments}
+Consider the repeated bases and fixed block-count bound of Section 17.
+Keep positivity, normalization and the uniform stationary $L^{15/7}$ bound.
+Centering is now optional. Along any subsequence, pass to a fixed number of
+blocks with each size either constant or tending to infinity. Let $J$ index
+the growing blocks. For each nonempty $J$ consider every weak limit $\lambda$
+of the stationary vector of standardized sums on $J$. Such vectors are tight
+by H\"older and the subgaussian uniform block laws.
+
+\paragraph{Criterion.} Each family $(Ph)^{-15}$ and $(P\sqrt\pi)^{-15}$
+is uniformly integrable if and only if every such $\lambda$ assigns
+positive mass to $\{w:u\cdot w>0\}$ for every unit $u$ on $J$.
+If one of the limits is supported in a closed half-space through zero,
+the expectations for both families diverge along a further subsequence.
+
+For sufficiency, a failure of uniform integrability yields a subsequence
+with tail thresholds tending to infinity and tail integrals bounded below.
+Extract block sizes and $\lambda$ as above. For each $u$ choose a bounded
+open subset of $u\cdot w>2\epsilon_u$ with positive $\lambda$-mass.
+Directions in a neighborhood of $u$ have projection above $\epsilon_u$ on
+that subset. A finite sphere cover and the open-set bound for weak convergence
+give fixed $\epsilon,c,M>0$ along the extracted sequence: every unit direction
+has stationary mass $\ge c$ in its positive slice of the radius-$M$ ball,
+with projection $\ge\epsilon$. Section 17 transfers this mass to both
+inputs $h,\sqrt\pi$. Apply (BX4) in growing blocks and the uniform positive
+row lower bound in bounded blocks. The shell sum after (BX5) contradicts the
+chosen tails. With $J$ empty use the entire space and the bounded-block
+lower bounds.
+
+For necessity suppose $\lambda(u\cdot w\le0)=1$. For $f=\sqrt\pi$ or
+$f=h$ and any set $A$,
+\[
+                 \left(\int_A f\,d\mu\right)^2\le\nu(A).
+\]
+For $h$ this follows from
+$\langle h1_A,Ph\rangle\ge\langle h1_A,P(h1_A)\rangle
+\ge(\int_A h\,d\mu)^2$, using entrywise positivity and the nonnegative
+spectrum with constant mode. For $\sqrt\pi$ use Cauchy--Schwarz.
+Thus the projected measures $f\,d\mu$ are tight subprobabilities.
+Extract weak limits $\eta_f$ simultaneously. Each is supported in the same
+half-space: exhaust its open complement by bounded open sets whose closures
+are inside it and apply the mass bound and weak convergence on the closures.
+
+Write $\rho=1/4$, $q=1-\rho^2$. In one growing block the row-to-uniform
+layer ratio for a compact input $z$ is bounded uniformly in the output $w$.
+Indeed reversibility expresses it as the reversed row probability at $z$
+divided by its uniform layer mass, at least $c_R/\sqrt n$ for $|z|\le R$.
+The reversed row is a convolution with a binomial of size $\ge n/2$ and
+fixed success probability $(1\pm\rho)/2$, so every atom is $O(n^{-1/2})$.
+On compact sets of both variables the ratio converges uniformly on the
+lattice to $q^{-1/2}\exp[-\rho^2(z^2+w^2)/(2q)+\rho zw/q]$.
+For details, in plus-count coordinates each Bernoulli characteristic factor
+has absolute square $1-q\sin^2(t/2)$. After centering, Fourier inversion at
+scale $1/\sqrt n$ has an integrable Gaussian majorant on its whole
+rescaled period. Its logarithm on bounded frequencies equals
+$-qt^2/8+O(|t|^3/\sqrt n)$ in the rescaled variable. The variance in
+plus counts is $nq/4$, and the mean in standardized sign units is $\rho z$.
+The same calculation for uniform counts has $q=1$ and zero sign mean.
+Dividing the local estimates yields the stated kernel.
+
+Multiply over $J$ and bound all fixed-block factors by their maximum.
+For bounded convergent inputs $z_n\to z$ in the growing blocks, truncating
+the output to a compact set, then using tightness and the global row bound
+for the remaining tail, gives
+\[
+ \limsup Pf(z_n)\le C\int q^{-|J|/2}
+ e^{-\rho^2(|z|^2+|w|^2)/(2q)+\rho z\cdot w/q}\,d\eta_f(w)
+\]
+uniformly in bounded-block inputs. Here $Pf(z_n)$ denotes the layer value
+with those additional inputs. If $z=tu+y$, $t\ge0$, $y\perp u$, $|y|\le1$,
+the cross term with $tu$ is nonpositive on the support. Completing the square
+in $w$ bounds the right side by $C'e^{-\rho^2|z|^2/(2q)}$, independently
+of the cylinder length. Couple the uniform growing block sums by independent
+quantiles to a standard Gaussian vector. On every bounded portion of this
+cylinder, Fatou's inequality bounds the liminf of the inverse moment below
+by a constant times its Euclidean volume: the Gaussian density cancels the
+quadratic exponent because $15\rho^2=q$. Letting the length increase proves
+divergence, also in dimension one. The positive transverse width is essential
+in higher dimensions.
