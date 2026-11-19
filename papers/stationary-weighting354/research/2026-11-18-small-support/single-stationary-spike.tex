@@ -136,6 +136,42 @@ $(1+t)/(2(1+t/4))<1$. As the ordinary second eigenvalue is $1/2$,
 \]
 The example obeys every fixed floor $b<1$ for sufficiently small $t$.
 
+
+\paragraph{Visibility in stationary moment measurements.}
+The same example shows a loss of one order when a spectral edge is read
+from a single coordinate. In the stationary inner product define
+$C_j(i,\ell)=\langle\chi_i,K^j\chi_\ell\rangle_\nu$, $i,\ell=1,2$.
+These are population lag moments. The coordinates are centered by symmetry.
+The functions $\chi_1\pm\chi_2$ are orthogonal (their supports are
+disjoint), with squared norms $2(1\pm\epsilon)$. Directly applying $K$
+on their supports gives eigenvalues
+$\lambda_\pm=(1\pm t)/(2(1\pm t/4))$. Consequently
+\[
+ C_j(1,1)=\tfrac12[(1+\epsilon)\lambda_+^j+
+                          (1-\epsilon)\lambda_-^j],\qquad
+ C_j(1,2)=\tfrac12[(1+\epsilon)\lambda_+^j-
+                          (1-\epsilon)\lambda_-^j].
+\]
+The diagonal differs from $2^{-j}$ by $O(t^2)$ uniformly over every
+integer $j\ge0$. Indeed the expression is even, and its second
+derivative is uniformly bounded on $|t|\le1/4$: each eigenvalue lies
+in a compact subinterval of $(0,1)$, and the polynomial factors in $j$
+from two differentiations are dominated by geometric decay. The order
+is attained at lag one, where expansion gives
+$C_1(1,1)=1/2+3t^2/8+O(t^4)$. In contrast the two-channel population
+pencil $(C_1,C_0)$ gives $\lambda_\pm$ exactly, since its two common
+directions have quotients $\lambda_\pm$. The ordinary second eigenvalue
+moves by at least a constant times $t$. Thus even the entire
+single-coordinate autocorrelation sequence in absolute sup norm
+cannot yield a locally Lipschitz estimate of the spectral edge on this
+family. A two-channel pencil resolves the splitting with bounded
+conditioning as $t\to0$ since $C_0$ has eigenvalues $1\pm\epsilon$.
+This compares population observables, with no sampling model assumed.
+It connects to the programme's
+\href{https://github.com/lluiseriksson/finite-sample-spectral-certificates/blob/7ccc9e925847313a3b11132705b4805e3cf4ff8a/SEPARATED_SIGN_TEST.md}{two-channel spectral moment certificates},
+which use a different covariance and sampling model.
+
+\paragraph{Matching above the cubic order.}
 For the exponential estimate let $D=\{|g-1|>2^{-k/8}\}$.
 The matching-energy argument gives $\mu(D)\le C_B2^{-3k/4}$.
 On $D^c$, $\|(U-\pi){\bf1}_{D^c}\|_3\le C_B2^{-k/8}$ for large $k$.
