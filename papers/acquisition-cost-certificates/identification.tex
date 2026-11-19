@@ -1,0 +1,22 @@
+\section{What exact global moments cannot identify}
+To ask whether an indeterminate cell just reflects a loose inequality, fix the same test rows and consider all residual vectors with the two archived moments. This is a partial-identification problem. Forest predictions also obey restrictions from the training algorithm, which are deliberately excluded from this question.
+
+Normalize the absolute residual vector to have Euclidean norm one and let $v$ be the fraction of its squared norm on the test set, of size $qN$ with $0<q<1$. Write $k$ for the full-library MAE divided by the full-library RMSE. For any specified $v\in[0,1]$ its attainable interval is exactly
+\[
+\left[\frac{\sqrt v+\sqrt{1-v}}{\sqrt N},\
+       \sqrt{qv}+\sqrt{(1-q)(1-v)}\right].
+\]
+Indeed, among nonnegative vectors of length $g$ and norm $L$, the sum ranges from $L$ to $\sqrt g\,L$. Both endpoints are attained. A continuous path in the nonnegative orthant of the sphere from a coordinate vector to the constant vector realizes the intermediate sums; when $g=1$ the interval is a singleton. Apply this to the specified rows and their complement with norms $\sqrt v$ and $\sqrt{1-v}$, respectively, then add the intervals and divide by $\sqrt N$.
+
+For a positive full-library relative RMSE $z$, the target changes decision at $v_0=q/(4z^2)$. If $0<v_0<1$ and $k$ is interior to the displayed interval at $v_0$, continuity gives residual vectors on the same rows with the same two exact global moments and opposite target decisions. This argument permits straightforward rounding checks. Take lower and upper bounds on $k=a/r$ using $a\pm h$ and $r\pm h$; all denominators used are positive. Bound $v_0$ using $z\pm h$. The lower endpoint above is at most $\sqrt{2/N}$. The upper endpoint is concave in $v$, so its minimum on the interval for $v_0$ occurs at an endpoint. Strict inequalities at both endpoints and the global lower bound establish ambiguity uniformly over the allowed rounding errors.
+
+Of the 838 indeterminate cells on the common population, 837 meet this stronger test. For these cells no more precise release of the same two moments alone could fix the classification. This count concerns individual cells. The residual vectors in separate cells need not arise jointly from retraining a forest.
+
+The remaining cell (QM9 gap, active, budget 500, seed 7) can be decided by recovering information from the other published models. All models for this property use the same full-library target standard deviation $\sigma$. Each pair of positive rounded RMSEs, raw $r_i$ and relative $z_i$, therefore confines $\sigma$ to $[(r_i-h)/(z_i+h),(r_i+h)/(z_i-h)]$ when both exceed $h$. Intersecting 3,920 such constraints gives $901/18961\leq\sigma\leq7127/149983$. For this forest $q=121897/133885$, $a=0.03118$, and $z=0.82319$. Put $L=(a-h)/(7127/149983)$. Direct rational comparison gives $L>q/2$ and
+\[
+ (L-q/2)^2>(1-q)\bigl((z+h)^2-q/4\bigr).
+\]
+Since $z-h>1/2$, the subset-error inequality excludes a common-set RMSE at or below the threshold. Thus the last case is a certified failure. The full table tightens the normalization enough to decide it, whereas the two error summaries for that cell in isolation left it open.
+
+\paragraph{Do all six published scores suffice in general?}
+Fix targets $(0,0,2,2)$ and designate rows one and three for testing. The predictions $(0,1,2,1)$ and $(1,0,1,2)$ differ by within-target permutations. Each has global MAE $1/2$, RMSE and relative RMSE $1/\sqrt{2}$, $R^2=1/2$, and Pearson and Spearman correlations $1/\sqrt{2}$ (using midranks). Their test RMSEs are zero and one. In general, permuting predictions inside each class of equal targets preserves all six global scores. If a class contains $j$ test rows, the sums of its $j$ smallest and largest squared residuals are the exact attainable extrema of its test error sum under these permutations. Classes can be permuted separately. The example establishes a limitation of the six summaries in general; it does not imply that all six are uninformative in each of the 837 empirical cells.
