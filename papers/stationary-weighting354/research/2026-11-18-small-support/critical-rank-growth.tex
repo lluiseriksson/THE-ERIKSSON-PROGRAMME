@@ -3,11 +3,11 @@
 Consider two disjoint column bases on a quotient of rank $r$. Throughout this section $\|\pi\|_{15/7}\le B$ and logarithms are natural. We give two sufficient conditions at the critical moment. One uses only the quotient rank and the matching order. The other works for larger ranks if the exceptional syndromes satisfy sufficiently many linear restrictions.
 
 \paragraph{Theorem.}
-Let $k\to\infty$ and impose the matching hypotheses of (F1). For arbitrary two-base quotients with $r=o(k^{3/2})$ the entire ordered spectrum recovers that of ordinary noise, including multiplicities. More precisely, if $A_t=\{U>e^t\}$ and $s_t$ is the norm of the chain killed outside $A_t$, then for all $t>0$
+Let $k\to\infty$ and impose the matching hypotheses of (FF1). For arbitrary two-base quotients with $r=o(k^{3/2})$ the entire ordered spectrum recovers that of ordinary noise, including multiplicities. More precisely, if $A_t=\{U>e^t\}$ and $s_t$ is the norm of the chain killed outside $A_t$, then for all $t>0$
 \[
  s_t\le \exp\{-c t^2/(r+t)+C_B(1+r/t)\}.                  \tag{G1}
 \]
-This bound for the killed chain requires no matching. For the second condition, suppose the exceptional syndromes in (F1) lie in the inverse image of at most $L$ values of a rank-$d$ linear map on the syndrome space. Put $\kappa=(2/5)\log 2-\log(5/4)>0$. Its killed norm satisfies
+This bound for the killed chain requires no matching. For the second condition, suppose the exceptional syndromes in (FF1) lie in the inverse image of at most $L$ values of a rank-$d$ linear map on the syndrome space. Put $\kappa=(2/5)\log 2-\log(5/4)>0$. Its killed norm satisfies
 \[
  s\le \exp\{-\kappa d+(2/5)\log L+
              C_B[1+(r-d)^{1/3}+\sqrt d]\}.                  \tag{G2}
@@ -46,7 +46,7 @@ Indeed $h\ge1/(8B)$ on measure at least $3/(16B^2)$, and reverse hypercontractiv
  \|U1_{A_t}\|_v\le e^{-(v_0/v-1)t}\|U\|_{v_0}^{v_0/v}
                \le \exp(-c_1\delta t+C_B/\delta).
 \]
-Here $v_0/v-1=\delta/a$, and $5\le m\le 5+C\delta$. Dropping the support restrictions in (G3) now gives a log norm bound of $-c_1\delta t+C_B/\delta+Cr\delta^2$. Set $\delta=\eta t/(r+t)$ with fixed sufficiently small $\eta>0$. This proves (G1). Put $t=\sigma k$ from (F1). The negative term dominates when $r=o(k^{3/2})$, and $t^2/(r+t)$ tends to infinity. The upper half of (F1) yields the assertion.
+Here $v_0/v-1=\delta/a$, and $5\le m\le 5+C\delta$. Dropping the support restrictions in (G3) now gives a log norm bound of $-c_1\delta t+C_B/\delta+Cr\delta^2$. Set $\delta=\eta t/(r+t)$ with fixed sufficiently small $\eta>0$. This proves (G1). Put $t=\sigma k$ from (FF1). The negative term dominates when $r=o(k^{3/2})$, and $t^2/(r+t)$ tends to infinity. The upper half of (FF1) yields the assertion.
 
 \paragraph{Affine lists, including diffuse syndromes.}
 In coordinates of either basis choose $d$ pivot coordinates for the given linear map. For each assignment of the remaining coordinates there are at most $L$ acceptable pivot strings. With $E$ the whole list, the product noise in the pivot coordinates maps $L^2$ to $L^\infty$ with norm $(5/4)^{d/2}$: the one-bit row density relative to uniform has squared norm $5/4$. In the other coordinates commute the noise past the pivot noise. Positivity and the triangle inequality bound the pivot $L^2$ norm after complementary noise by that noise applied to the input's pivot $L^2$ norm. Integrating on the allowed strings thus gives in either basis
