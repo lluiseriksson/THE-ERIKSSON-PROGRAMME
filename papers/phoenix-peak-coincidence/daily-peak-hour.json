@@ -1,0 +1,66 @@
+{
+  "inputs": {
+    "SRP_total_power.csv": "75f54ebb443898768e585fc970cd51739d1da0fa6cc80d849ff94b744e120fef",
+    "Fig2_data.xlsx": "9be3b6cd9074bac295e32a49ce1d7ff7f69957e0c0d5562233acecc461e99ec6",
+    "SRP_0503.csv": "8a4155b54876ac2f530907f03422fcc26004e5f6301b75a584f258e0805aa71a"
+  },
+  "eia_sha256": "fac4bb991dfa1dab3b4b35300ccab54ac99be13a40ce91954db8ddafb2816242",
+  "revision": "34403aef78c2690a8e4f0ba8f7f62d302cdba967",
+  "eia_peak": {
+    "2025-05-03": {
+      "day": "2025-05-03",
+      "hour_ending": 17,
+      "reference_mean": "94059.248868348465",
+      "means": {
+        "start": {
+          "n": 60,
+          "mean": "71326.80282416579166666666667",
+          "ratio_to_reference": "0.7583178016230970998734307492"
+        },
+        "end": {
+          "n": 60,
+          "mean": "70865.21432274218166666666667",
+          "ratio_to_reference": "0.7534103788339817015240241588"
+        }
+      }
+    },
+    "2025-05-04": {
+      "day": "2025-05-04",
+      "hour_ending": 16,
+      "reference_mean": "94059.248868348465",
+      "means": {
+        "start": {
+          "n": 60,
+          "mean": "93104.47388139467333333333333",
+          "ratio_to_reference": "0.9898492173981725308305561020"
+        },
+        "end": {
+          "n": 60,
+          "mean": "93086.78541462384",
+          "ratio_to_reference": "0.9896611607531998362334416959"
+        }
+      }
+    }
+  },
+  "reference_grid_peak": {
+    "day": "2025-05-03",
+    "hour_ending": 18,
+    "reference_mean": "94059.248868348465",
+    "means": {
+      "start": {
+        "n": 60,
+        "mean": "64659.31317050778166666666667",
+        "ratio_to_reference": "0.6874317406149949754154702979"
+      },
+      "end": {
+        "n": 60,
+        "mean": "64660.090735091115",
+        "ratio_to_reference": "0.6874400073680542270799509462"
+      }
+    }
+  },
+  "ratio_earlier_day_mean_to_later_day_mean": {
+    "start": "0.7660942578874206558630229748",
+    "end": "0.7612811421846492085260160481"
+  }
+}

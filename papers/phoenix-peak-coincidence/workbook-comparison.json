@@ -1,0 +1,115 @@
+{
+  "revision": "34403aef78c2690a8e4f0ba8f7f62d302cdba967",
+  "sha256": {
+    "SRP_0503.csv": "8a4155b54876ac2f530907f03422fcc26004e5f6301b75a584f258e0805aa71a",
+    "SRP_total_power.csv": "75f54ebb443898768e585fc970cd51739d1da0fa6cc80d849ff94b744e120fef",
+    "Fig2_data.xlsx": "9be3b6cd9074bac295e32a49ce1d7ff7f69957e0c0d5562233acecc461e99ec6"
+  },
+  "hourly_grid_dates": [
+    "2025-05-03"
+  ],
+  "grid_hours": 24,
+  "cluster_start": "2025-05-04T14:40:00-07:00",
+  "cluster_end": "2025-05-04T21:19:00-07:00",
+  "cluster_records_by_date": {
+    "2025-05-04": 400
+  },
+  "offsets_seconds": [
+    -25200
+  ],
+  "cluster_records_on_grid_dates": 0,
+  "workbook": {
+    "SRP_granular": {
+      "headers": [
+        [
+          "SRP EXPERIMENT DATA",
+          "None",
+          "None",
+          "SRP Load Data May 3rd",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None"
+        ],
+        [
+          "timestamp",
+          "total",
+          "None",
+          "date",
+          "hour",
+          "SRP Actual",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None"
+        ],
+        [
+          "2025-05-03 14:40:00-07:00",
+          "94172.9219351093",
+          "None",
+          "2025-05-03 00:00:00",
+          "1",
+          "3.316",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None",
+          "None"
+        ]
+      ],
+      "datetime_cell_dates": {
+        "2025-05-03": 24
+      }
+    },
+    "Performance Data": {
+      "headers": [
+        [
+          "Experiment Performance Data",
+          "None",
+          "None",
+          "None",
+          "None"
+        ],
+        [
+          "Model",
+          "Performance",
+          "Flex Bucket",
+          "Flexibility",
+          "Weight based on bucket"
+        ],
+        [
+          "ft_llama_8b_p3-c6rr6ijz ",
+          "0.939635",
+          "Flex 2",
+          "0.75",
+          "0.192307692"
+        ]
+      ],
+      "datetime_cell_dates": {}
+    }
+  },
+  "cluster_workbook_dates": {
+    "2025-05-03": 400
+  },
+  "cluster_clock_displacement_seconds": {
+    "86400": 400
+  },
+  "power_rows": 400,
+  "max_abs_power_delta_export_units": "0E-10",
+  "power_rows_matching_roundoff": 400,
+  "grid_rows_identical": 24,
+  "power_tolerance_export_units": "0.000001"
+}
