@@ -11,7 +11,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Counting the distinct companies in which an investor is reported to have invested puts Nvidia first in a recent public AI supply-chain dataset. We ask how many documentary sources must be omitted before that ranking can change. We retain direction, count a counterparty once, and retain a relationship as long as any supporting source survives. With case-normalized actor names, any 37 hostnames can be omitted without displacing Nvidia. There is a set of 38 whose omission leaves Nvidia and Sequoia Capital tied for first with 43 counterparties each. A second computation reconstructed the graph, verified integer certificates covering every rival, and recounted the witness. Preserving capitalization instead yields a threshold of three because two spellings of Nvidia compete. We also test the effect of treating hosts with matching dated headlines as a single omission. The estimand is the resilience of a ranking in a fixed documentary record. It does not measure amounts invested or the completeness of the record.
+Counting the distinct companies in which an investor is reported to have invested puts Nvidia first in a recent public AI supply-chain dataset. We ask how many documentary sources must be omitted before that ranking can change. We retain direction, count a counterparty once, and retain a relationship as long as any supporting source survives. With case-normalized actor names, any 37 hostnames can be omitted without displacing Nvidia. There is a set of 38 whose omission leaves Nvidia and Sequoia Capital tied for first with 43 counterparties each. A second computation reconstructed the graph, verified integer certificates covering every rival, and recounted the witness. Preserving capitalization instead yields a threshold of three because two spellings of Nvidia compete. Grouping hosts by dated headline matches gives thresholds of 35 or 32 groups. Requiring two extraction passes to agree on the same document instead raises the individual-host threshold to 49. Holding the concordant pair list fixed while restoring all its original sources raises it further to 53, despite identical baseline degrees. The estimand is the resilience of a ranking in a fixed documentary record. It does not measure amounts invested or the completeness of the record.
 \end{abstract}
 
 \section{The ranking and the evidence behind it}
@@ -61,6 +61,9 @@ If we instead preserve capitalization and trim only outer whitespace, three host
 \section{Co-appearing headlines and limits of inference}
 \input{groups.tex}
 
+\input{agreement.tex}
+
+\section{Scope and interpretation}
 Publication errors, undated disclosures, private investments, newly added documents, and incorrect investment direction can change the ranking in ways this omission model does not cover. The graph dates records by publication rather than by transaction close. Multiple domains may belong to one owner. Conversely, a single host can carry many separately reported stories. A documentary threshold should consequently travel with its sampling frame, actor definition, and unit of omission.
 
 Studies of centrality under missing data provide a related frame of comparison \cite{errors}. Our difference is the observation model in which an omission acts on documentary supports rather than directly on a single network edge. The integer certificate is an application of elementary linear programming duality. The contribution claimed here is the verified threshold and its sensitivity within this fixed dataset.
