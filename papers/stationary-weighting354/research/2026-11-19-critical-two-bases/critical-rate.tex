@@ -1,0 +1,37 @@
+\subsection*{Quantitative critical recovery}
+In fact Theorem~\ref{critical} gives an exponential bound $C_{m,B}e^{-c_{m,B}k}$ for all sufficiently large $k$ and minimum block size. The additional ingredient is a lower bound for the stationary mass of boxes displaced by a small multiple of $\sqrt{k}$. We supply the details because a qualitative moment limit by itself gives no such bound.
+
+Write $A=4\sqrt m$ and choose real parameters $u_i$ with $|\eta_i|=|u_i|/\sqrt{n_i}\le1/2$. Let $S_0=\sum_i u_i^2$. Under the uniform law, the product likelihood
+\[
+ f=\prod_i\prod_{\ell\in i}(1+\eta_i y_\ell)
+\]
+has expectation one, tilts the block means of $z_i$ to $u_i$, and leaves their variances at most one. Let $D=\lfloor k/2\rfloor-2$, and truncate the Walsh expansion of $f$ at quotient degree $D$ to obtain $f_D$. Ordinary forward hypercontractivity on the quotient cube, applied with noise $1/\sqrt3$ to the inverse-noise rescaling of the tail polynomial, gives
+\[
+ \|f-f_D\|_4^2\le\sum_{|S|>D}3^{|S|}\widehat f(S)^2
+ \le 2^{-D}\prod_i(1+6\eta_i^2)^{n_i}
+ \le 2^{-D}e^{6S_0}.
+\]
+For $V=1$ or $V=(z_i-u_i)^2$, matching gives $\E[(\pi-1)f_DV]=0$. The uniform $L^q$ norm of $V$ is $O_q(1+S_0)$ for $1/q=1-1/p-1/4>0$, by the subgaussian sign-sum bound. H\"older therefore implies
+\[
+ |\E[(\pi-1)f V]|\le C_B(1+S_0)2^{-D/2}e^{3S_0}.
+\]
+If $S_0\le\epsilon k$ with a sufficiently small absolute $\epsilon$, this is exponentially small. Chebyshev's inequality for the finite measure $f\pi\,d\mu$ puts mass at least $1/2$ in $\mathcal B=\{|z_i-u_i|\le A,\ i=1,\ldots,m\}$ for large $k$. On this box $f\le\exp(\sum_i u_i z_i)\le\exp(C_m(1+S_0))$. Thus $\nu(\mathcal B)\ge c_m e^{-C_m S_0}$. Using $\E g\le1$ and cutting off $g$ above $(2B/\nu(\mathcal B))^{p'}$ as before yields
+\[
+ \E[h\one_{\mathcal B}]\ge c_{m,B}\exp(-C_{m,B}S_0).
+\]
+
+The local lower bound \eqref{lowerrow} extends to $|s|\le\delta$ of the same sign as $d$ in the form
+\[
+ T(d,s)/\mu_s\ge c\exp[-nE(d)+\rho |z_d|\,|z_s|-C z_s^2],
+ \qquad z_d=\sqrt n\,d,\quad z_s=\sqrt n\,s .
+\]
+Here $\delta>0$ is a small numerical constant. In the proof with the zero-mean tilt the larger sign group now needs a count within $C\sqrt n+n|s|$ of its tilted mean. If $\delta$ is small this is still in a compact interior fraction of its size for large $n$. Stirling's lower bound and the quadratic upper bound on binary relative entropy in that compact interval give a mass at least $c n^{-1/2}\exp(-C z_s^2)$, uniformly over the specified smaller-group counts. The rest of the change of measure is identical.
+
+Take $R=\gamma\sqrt{k}$ with $\gamma$ small and fixed. If $\max_i|z_i|>R$, pick an index $j$ of maximum absolute value. In the signed box estimate choose $u_i$ of the row's sign with $|u_i|=2A$ for $i\ne j$, and $|u_j|=t=\alpha R$, where $\alpha>0$ is small. Zero coordinates may take either sign. Now $n_j>R^2$ and all the output layers in this box have $|s_i|\le\delta$ for large $k,\min n_i$, on choosing $\alpha<\delta/2$. Also $S_0\le\epsilon k$ for small $\gamma$. Integrating the product transition over the box, using $|z_{s_j}|\ge t/2$ and $|z_{s_i}|\ge A$ elsewhere, gives
+\[
+ g(d)\ge c\exp\!\left[-\sum_i n_i E(d_i)
+       +\tfrac{\rho}{2}t|z_j|+\rho A\sum_{i\ne j}|z_i|-C_{m,B}t^2\right].
+\]
+Choose $\alpha$ sufficiently small to absorb the last loss in $(\rho/4)t|z_j|$. For large $k$, $t|z_j|$ then supplies both a gain $c\alpha R^2$ and a fixed positive multiple of $|z_j|$. Thus, compared with the tail summation above, the row lower bound supplies an extra factor $\exp(c\alpha R^2)$ while keeping a summable exponential in every $|z_i|$. More explicitly, replace $\rho$ in each $A_n$ by a smaller positive constant. Its complete sum is uniformly bounded by \eqref{delta} and the two prefactor bounds, and the new H\"older estimate has the additional factor $\exp(-c\alpha R^2)$. Summing over at most $m$ choices of $j$ gives an exponentially small operator tail.
+
+On the central box $\max_i|z_i|\le R$, \eqref{gbox} yields $g^{-2}\le C\exp(C_m R^2)$, since $E(d)\le bI(d)\le C d^2$ on the whole closed interval. The exceptional set $|g-1|>2^{-k/8}$ has uniform mass at most $C_B2^{-3k/4}$ by the matching variance estimate. There $\pi$ has restricted $L^{5/3}$ norm at most $B$ times this mass to the strictly positive power $3/5-1/p$. Choose $\gamma$ small enough to absorb the central box factor. On the rest of that box $|U-\pi|\le C 2^{-k/8}\pi$. The uniform sign tail also bounds $\|\pi\one_{\max|z_i|>R}\|_{5/3}$ exponentially in $k$. The preceding operator comparisons now give the asserted rate. Constants may depend on $m,B$; in particular this argument does not pass to an unbounded number of symmetry blocks.
