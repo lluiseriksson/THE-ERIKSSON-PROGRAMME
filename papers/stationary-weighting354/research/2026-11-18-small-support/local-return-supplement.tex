@@ -1,0 +1,40 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,microtype}
+\usepackage[margin=1.05in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{Stationary concentration and local return in Boolean Doob chains}
+\author{Lluis Eriksson}
+\date{Supplement to \emph{Rank defects and spectral stability of Boolean Doob chains}}
+\begin{document}
+\maketitle
+\begin{abstract}
+For half-correlated Boolean noise, we study how a reversible change of
+transition probabilities affects the ordered spectrum when the stationary
+coordinate marginals are exactly uniform through increasing order.
+At the stationary moment endpoint we prove recovery under an exponential
+cutoff on the critical density tail. For every stationary moment order
+strictly above three and a fixed positive density floor, we identify a set
+of vertices on which local one-step return characterizes full spectral
+recovery. Its killed eigenvalue also determines the second eigenvalue up to
+exponential accuracy. Interpolating stationary densities in an existing
+shell construction gives chains with any prescribed finite number of correct
+leading noise bands and a persistent error lower in the spectrum.
+Without coordinate matching, the endpoint relaxation time is at most $\exp(C\sqrt{L\log(2L)})$ in dimension $L$. Above the endpoint the spectral gap has a dimension-independent positive lower bound.
+For a two-valued stationary density, a bounded cubic moment gives a dimension-independent gap. The entire ordered spectrum varies from ordinary noise by at most $C_b\|\pi-1\|_3$ without matching, and a two-coordinate example attains linear order. We extend both estimates to finitely many stationary levels whose uniform masses have comparable logarithms, with an explicit sufficient ratio bound. The gap also holds with variable heights under separate cubic envelopes on the exceptional sets.
+With unrestricted ratios, three exact stationary values suffice for exponential trapping even as the density tends to one in a fixed norm of order greater than three. Under linear-order marginal matching the trap persists at exponentially small distance from a three-valued law, whereas vanishing log-uniform distance from a two-valued law rules out an exponential trapping rate under the same floor and cubic cap.
+\end{abstract}
+
+\input{endpoint-concentration.tex}
+\input{gap-without-matching.tex}
+\input{single-stationary-spike.tex}
+\input{finite-stationary-levels.tex}
+\input{three-stationary-values.tex}
+
+\section*{Model assessments and review context}
+Codex assisted with the mathematical derivation, comparison with primary
+sources, and source checks in the programme's research chat. This supplement
+uses the previously constructed shell as an explicit input to the interpolation
+argument. Its typeset version awaits a first exact-PDF assessment. No numerical
+score or independent referee report has been obtained for this supplement.
+\end{document}

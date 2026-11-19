@@ -1,0 +1,229 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,geometry,hyperref}
+\geometry{margin=1in}
+\hypersetup{hidelinks,pdfauthor={Lluis Eriksson},pdftitle={A metastable Hamming shell with exactly matched stationary marginals}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\E}{\mathbb E}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\title{A metastable Hamming shell with exactly matched stationary marginals}
+\author{Lluis Eriksson}
+\date{18 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We construct finite reversible Doob chains for Boolean noise of correlation one half whose spectral gaps tend to zero exponentially. Their normalized stationary densities have any prescribed fixed floor below one, converge exponentially to one in cubic mean, and have exactly uniform marginals through a positive fraction of the coordinates. A single Hamming sphere of exponentially small stationary mass traps the chain for exponentially many steps. The construction adjusts the potential on the shells typically reached in one and two noise steps, then calibrates an additional spike using the ordinary return probability of the target sphere. A binary type estimate makes the spike affordable at the critical stationary moment. We give a localized norm inequality showing that the critical moment of the normalized weighting density diverges exponentially in the same family. We extend the trap to every fixed correlation \(0<\rho<1\) in all sufficiently large dimensions, even with a stationary moment slightly above \((1+\rho)/(1-\rho)\). Conversely, at half correlation a bounded stationary \(p\)-moment for \(p>(17+4\sqrt{13})/9\), a fixed positive floor, and exact marginals through order \(k\) recover every ordered eigenvalue of ordinary noise to accuracy \(O(e^{-ck})\).
+\end{abstract}
+
+\section{Setting and result}
+Let $\mu$ be uniform on $\{-1,1\}^L$, let $P=P_{1/2}$ keep each sign with probability $3/4$ independently, and let $h>0$ with $\E_\mu hPh=1$. Put
+\[
+ g=Ph,\quad \pi=hg,\quad \nu=\pi\mu,\quad U=h/g,\quad r=U/\E_\mu U,
+ \qquad K(x,y)=P(x,y)h(y)/g(x).
+\]
+Thus $\pi$ and $r$ are distinct probability densities. The stationary edge measure $\mu(x)P(x,y)h(x)h(y)$ is symmetric. $\operatorname{gap}(K)=1-\lambda_2(K)$ uses the second largest eigenvalue. Let $m(x)=L^{-1}\sum_i x_i$. A sphere $S=\{m=d\}$ is contained in the ball of radius $(1-d)L/2$ about the all-plus vertex. All function norms below use $\mu$ unless a different measure is indicated.
+
+\begin{theorem}\label{main}
+There exist fixed $d,\beta,c>0$ with $0<d<1$ and an infinite arithmetic progression of dimensions such that the following holds. For every fixed $b<1$, $b>0$, and every sufficiently large $L$ on the progression there is a positive radial potential satisfying
+\[
+ \pi\ge b,\qquad \norm{\pi-1}_3\le e^{-cL},\qquad
+ \E_\mu\pi\chi_T=0\quad (1\le |T|\le\lfloor\beta L\rfloor).
+\]
+Here $\chi_T(x)=\prod_{i\in T}x_i$. In particular $\E_\mu\pi^3\le2$ eventually. The sphere $S=\{m=d\}$ has $\nu(S)\le e^{-cL}$ and
+\[
+ \sup_{x\in S}K(x,S^c)\le e^{-cL},\qquad
+ \operatorname{gap}(K)\le e^{-cL},\qquad \norm{r}_3\ge e^{cL}.
+\]
+Exponents may be decreased to use one common $c$.
+\end{theorem}
+
+The marginal condition exceeds any fixed $C\sqrt L$ for large $L$. This refutes a dimension-uniform positive gap and a dimension-uniform critical weighting moment under the stationary assumptions of \cite{mom}. The sufficient escape estimate for radii up to $L/96$ at half noise in \cite{local} coexists with the trapping example at a larger fixed radius fraction. In particular that sufficient estimate cannot be extended to every fraction below $1/2$. We do not locate the optimal radius.
+
+\section{Cost of returning to the same sphere}
+For $|s|<1$ put
+\[
+ I(s)=\tfrac12[(1+s)\log(1+s)+(1-s)\log(1-s)],
+ \qquad J(d)=\tfrac34 I(4d/3)-I(d).
+\]
+Fix a small positive rational $d$. Take $L$ along common multiples of the denominators of $3/8\pm d/2$, $1/8$, and $(1+d)/2$. Write $q=P(x,S)$ for $x\in S$, which is constant by permutation symmetry.
+\begin{lemma}\label{type}
+$\mu(S)\le e^{-LI(d)}$ and, with constants depending on $d$,
+\[
+ e^{-LJ(d)-O(\log L)}\le q\le e^{-Ld^2/8}.
+\]
+Moreover $J(d)=d^2/6+O(d^4)$ and $I(d)=d^2/2+O(d^4)$ as $d\to0$.
+\end{lemma}
+\begin{proof}
+The first bound is the binomial Chernoff estimate, also obtained from $\binom{L}{j}\le e^{LH(j/L)}$ with binary entropy $H$. Under an ordinary stationary noise edge the sign pair probabilities, in order $++, +-, -+, --$, are $(3/8,1/8,1/8,3/8)$. Prescribe the joint empirical frequencies $(3/8+d/2,1/8,1/8,3/8-d/2)$. Both endpoints then lie in $S$. The multinomial formula and $\log n!=n\log n-n+O(\log(n+2))$ bound the probability of this joint type below by $\exp[-(3L/4)I(4d/3)-O(\log L)]$. The probability of all edges within $S$ is $\mu(S)q$, giving the lower bound. For independent signs, possibly of different means, the one-sided deviation probability of their average by $a$ is at most $e^{-La^2/2}$ \cite{hoeff}. Here the mean from the sphere is $d/2$. Finally $I(s)=s^2/2+O(s^4)$ by Taylor expansion at zero.
+\end{proof}
+
+\section{A depression, two compensation bands and a spike}
+Set $w=d/100$ and $k=d^3$. Choose and fix the rational $d$ sufficiently small that
+\[
+ 3k<w^2/8,\quad 2k<d^2/500,\quad d^2/8>2k,\quad
+ J(d)-I(d)/3<k/2,\quad J(d)+k<2I(d)/3 .
+\]
+All these conditions follow from Lemma \ref{type} by taking $d$ smaller. Small exponents in this construction are fixed before $L$ increases. Define disjoint sets
+\[
+ B=\{|m-d/2|\le w\},\quad C=\{|m-d/4|\le w\},
+ \quad D=\{|m-d|\le4w\}.
+\]
+The background potential $H_0$ equals $e^{-kL}$ on $B$, $e^{kL}$ on $C\cup D$ and one elsewhere. With $S\subset D$, define
+\[
+ M=e^{-kL/2}/q,\qquad H=H_0+M\one_S,\qquad W=H\,PH.
+\]
+By the upper bound on $q$, $M\ge e^{kL}$ eventually.
+
+\paragraph{Uniform floor.}
+The mean magnetization after ordinary noise from $x$ is $m(x)/2$. For $x\in B$, the mean lies within $w/2$ of $d/4$, so $P(x,C)\ge1-2e^{-Lw^2/8}$. The factor $e^{kL}$ on $C$ compensates $e^{-kL}$ on $B$. For $x\in D$, $H_0(x)\ge e^{kL}$ and $PH_0(x)\ge e^{-kL}$. Outside $B\cup D$ the mean is at distance greater than $2w$ from $d/2$, and $P(x,B)\le2e^{-Lw^2/2}$. There $H_0\ge1$ and $PH_0\ge1-P(x,B)$. Consequently $\inf W\ge1-O(e^{-Lw^2/8})$ by positivity. The two compensation bands ensure this bound also at vertices adjacent to the modified region.
+
+\paragraph{Retention.}
+For $x\in S$ the landing mean is exactly $d/2$, so
+$PH_0(x)\le e^{-kL}+2 e^{kL-Lw^2/2}\le2e^{-kL}$ eventually.
+The added spike contributes $Mq=e^{-kL/2}$ to $PH(x)$ entirely inside $S$. It follows row by row that
+\[
+ K_H(x,S^c)\le PH_0(x)/(Mq)\le2e^{-kL/2}\qquad(x\in S).
+\]
+
+\paragraph{Critical stationary cost.}
+Write $E=B\cup C\cup D$. Every member has $m(x)\ge d/8$, so $\mu(E)\le e^{-Ld^2/128}$. By contraction of $P$ on $L^3$ and $\|H_0\|_\infty\le e^{kL}$,
+\[
+ \|H_0PH_0-1\|_3\le (1+e^{kL})e^{kL}\mu(E)^{1/3}.
+\]
+This decays exponentially by the choice of $k$. Outside $S$, the additional term is exactly $H_0 M P\one_S$. Ordinary Boolean hypercontractivity at correlation $1/2$ gives $\|P\one_S\|_3\le\|\one_S\|_{3/2}=\mu(S)^{2/3}$ \cite{bonami}. Thus its norm is at most $\exp[L(k/2+J(d)-2I(d)/3)+O(\log L)]$. On $S$, $PH\le3e^{-kL/2}$ and $H\le 2M$ eventually. In particular
+\[
+ \|\one_S W\|_3\le6 e^{-kL}\mu(S)^{1/3}/q
+ \le 6\exp[L(J(d)-I(d)/3-k)+O(\log L)] .
+\]
+This too decays exponentially. Since $\|\one_S\|_3=\mu(S)^{1/3}$, the three bounds imply $\|W-1\|_3=O(e^{-c_0L})$ for some $c_0>0$. For $Z=\E W$ it follows that $Z=1+O(e^{-c_0L})$. Now $h_0=H/\sqrt Z$ gives $\pi_0=W/Z$ with the same convergence and $\inf\pi_0\ge1-o(1)$. Normalization does not change the transition law.
+
+\section{Exact matching and the spectral gap}\label{matching}
+For fixed $\beta\in(0,1/2)$ with binary entropy $H(\beta)<c_0/2$ in natural units, subtract the nonconstant Walsh projection from $\pi_0$:
+\[
+ v=\pi_0-\sum_{1\le|T|\le\beta L}(\E\pi_0\chi_T)\chi_T.
+\]
+There are at most $e^{LH(\beta)}$ summands by the binomial bound and each coefficient is at most $\|\pi_0-1\|_1$. Thus $\|v-\pi_0\|_\infty=O(e^{-c_0L/2})$. The density $v$ is radial with mean one; it satisfies the stated Fourier identities, floor and cubic convergence.
+
+We include the stability argument of \cite[Lemma 10.4]{mom} to check that exact matching preserves the trap even if the gap is small. For a positive target $u$, minimize
+\[
+ \tfrac12\sum_{x,y}\mu(x)P(x,y)e^{z_x+z_y}-\sum_x\mu(x)u(x)z_x .
+\]
+The Hessian is positive definite by the diagonal terms. If the maximum coordinate tends to infinity, its diagonal term dominates the linear part. When the maximum stays bounded above and a coordinate tends to minus infinity, its positive linear weight forces divergence. Thus there is a unique minimizer, solving $e^z P e^z=u$. Positive definiteness gives smooth dependence. Along $u_t=(1-t)\pi_0+t v$, write $h_t=e^{z_t}$ and $K_t$ for its Doob kernel. Logarithmic differentiation gives $(I+K_t)\dot z_t=(v-\pi_0)/u_t$. For large $L$, $u_t\ge b_*=(1+b)/2$. The stationary law has smallest atom at least $2^{-L} b_*$. The spectrum of $K_t$ is in $[0,1]$ by positive semidefiniteness of Boolean noise and reversible conjugation. For $T=(I-K_t)/2$ the absolute row sums are at most one and its stationary $L^2$ norm is at most $1/2$. Hence
+\[
+ \|T^j\|_{\infty\to\infty}\le\min(1,2^{(L/2)-j}/\sqrt{b_*}),
+ \qquad (I+K_t)^{-1}=\tfrac12\sum_{j\ge0}T^j .
+\]
+The inverse norm is $O_b(L+1)$ independent of the gap. Integration shows $\|\log(h_1/h_0)\|_\infty=O_b((L+1)e^{-c_0 L/2})$. Uniqueness gives radiality. Every transition changes by a factor between $e^{-2\eta}$ and $e^{2\eta}$ for this logarithmic error $\eta$. In particular the exit bound persists, and $h=h_1$ has stationary density $v$.
+
+Since $\nu(S)\le\|v\|_3\mu(S)^{2/3}$, its mass is exponentially small. The centered indicator of $S$ has Dirichlet energy at most $\nu(S)\sup_{S}K(x,S^c)$ and variance $\nu(S)(1-\nu(S))$. This proves the gap upper bound. Starting anywhere on $S$, survival for $n$ steps is at least $(1-\sup_S K(x,S^c))^n$. In particular the mean exit time grows exponentially.
+
+\section{The critical weighting moment}\label{tilt}
+We prove the localized estimate needed to distinguish a large ratio at one vertex from divergence of its critical moment. For each fixed $\alpha<1/2$, $\alpha\ge0$, there exists $a_\alpha>0$ such that on every subset $A$ of a ball of radius $\alpha L$,
+\[
+ \|K_{AA}\|_{L^2(\nu)\to L^2(\nu)}
+ \le e^{-a_\alpha L}\|\one_A U\|_3.                                      \tag{1}
+\]
+In one coordinate use norms of uniform probability, $p=3/2$, $p'=3$. Encode minus signs by $j=1$, plus by $j=0$. Define $D_t(j)=e^{t(1/2-j)}$ as a multiplication operator and $N(t)=\|D_t P D_t\|_{p\to p'}$. Positivity and Cauchy--Schwarz for its positive semidefinite quadratic form identify this with the maximal quadratic form over nonnegative unit $p$-vectors. At zero the unique nonnegative maximizer is one. Indeed, normalize the mean of a nonzero pair to one and write its entries as $1\pm x$, $0\le x\le1$. Its noise energy is $1+x^2/2$. The derivative of $[(1+x)^{3/2}+(1-x)^{3/2}]/2$ is at least $3x/4$ since $\sqrt{1+x}+\sqrt{1-x}\le2$. This exceeds the derivative of $(1+x^2/2)^{3/4}$ for $x>0$; at zero both functions are one.
+
+The derivative of $\ip{1}{D_t P D_t1}$ at zero vanishes by centering. Nonnegative maximizers for $t\downarrow0$ approach one by compactness and uniqueness. Taylor expansion in $t$ is uniform on the unit sphere, so comparison with the value at zero and testing on one yield $\log N(t)=o(t)$. The $p$-to-$p'$ tensor norm is at most $N(t)^L$, by successive coordinate estimates and Minkowski's mixed-norm inequality ($p\le p'$). On the centered ball the inverse product multiplier is at most $e^{-t(1/2-\alpha)L}$; another center follows by translation. Applying the product bound to both copies of a supported function gives
+\[
+ \ip{f}{P f}\le[N(t)e^{-2t(1/2-\alpha)}]^L\|f\|_{3/2}^2 .
+\]
+Choose small $t>0$ so the bracket is below one. Substitute $f=\sqrt U\,z$, use $\|f\|_{3/2}\le\|\one_A U\|_3^{1/2}\|z\|_2$ for supported $z$, and conjugate $K_{AA}$ by $\sqrt{\pi}$ to obtain (1).
+
+Apply (1) with $\alpha=(1-d)/2$ and $A=S$. The Rayleigh quotient of $\one_S$ is at least $1-\sup_S K(x,S^c)$, so $\|\one_S U\|_3$ grows exponentially. Normalizing $U$ by its mean preserves this conclusion. Indeed $\pi=hg\ge b$ gives $g\ge b P(1/g)\ge b/(Pg)$ by Jensen. With $Q=P_{\sqrt{1/2}}$ we have $\|Qh\|_2=1$ and $Pg=P_{(1/2)^{3/2}}Qh$. Hypercontractivity gives $\|1/g\|_9\le1/b$. Consequently $\E U=\E(\pi/g^2)\le\|\pi\|_3\|1/g\|_3^2\le 2^{1/3}/b^2$. This completes the proof of Theorem \ref{main}.
+
+
+\section{Metastability for all positive correlations}
+Now let \(P=P_\rho\) keep each sign with probability \((1+\rho)/2\). All definitions of the chain and its normalized densities carry over.
+\begin{theorem}\label{general}
+Fix \(0<\rho<1\) and \(s=(1+\rho)/(1-\rho)\). There exist \(\varepsilon,\beta,c,d>0\), depending on \(\rho\), and radial potentials for every sufficiently large dimension \(L\), with the following properties. For each prescribed \(0<b<1\) their stationary density eventually exceeds \(b\) everywhere, \(\|\pi-1\|_{s+\varepsilon}\le e^{-cL}\), and every nonconstant Walsh coefficient up to degree \(\lfloor\beta L\rfloor\) vanishes. The normalized weighting moment \(\|r\|_s\) grows at least as \(e^{cL}\), while the gap of the actual Doob chain is at most \(e^{-cL}\). A sphere whose magnetization tends to \(d\) has exponentially small stationary mass and exponentially small exit probability from each of its points. Constants are fixed before taking dimension to infinity; no endpoint uniformity is used.
+\end{theorem}
+
+\subsection{Return probability and parameter choices}
+Let \(I(z)=((1+z)\log(1+z)+(1-z)\log(1-z))/2\) and
+\[
+ J_\rho(d)=\tfrac{1+\rho}{2} I(2d/(1+\rho))-I(d).
+\]
+Take the number of plus signs nearest \(L(1+d)/2\), giving target magnetization \(d_L=d+O(1/L)\). Write \(S\) for that exact sphere and \(q\) for its one-row ordinary return probability. For a stationary product noise edge the two equal-sign probabilities are \(a=(1+\rho)/4\) each and the unequal-sign ones \(z=(1-\rho)/4\) each. For the joint type, put the same integer nearest \(zL\) in both off-diagonal cells, then choose the two diagonal counts to give the prescribed plus and minus margins. All counts are nonnegative for \(d\) small and \(L\) large. These frequencies differ by \(O(1/L)\) from \((a+d/2,z,z,a-d/2)\). Relative entropy is smooth in a neighborhood of this strictly interior vector for fixed \(\rho,d\). The joint empirical event costs \(\exp[-L(1+\rho)I(2d/(1+\rho))/2-O(\log L)]\). Division by \(\mu(S)\le e^{-LI(d)+O(1)}\) yields
+\[
+ e^{-LJ_\rho(d)-O(\log L)}\le q\le e^{-(1-\rho)^2d_L^2L/2}.
+\]
+The upper bound uses the landing mean \(\rho d_L\) and the sign-average Hoeffding inequality. Rounding both off-diagonals together works for irrational \(\rho\) and all large \(L\).
+
+Taylor expansion gives \(I(d)=d^2/2+O(d^4)\) and \(J_\rho(d)=I(d)/s+O_\rho(d^4)\). Let \(w=\rho^2(1-\rho)d/100,\ k=d^3\), and \(p_0=1+\rho^2(s-1)<s\). Since \(1/p_0-1/s>0\), fixing \(d>0\) sufficiently small ensures
+\[
+ J_\rho(d)-I(d)/s<k/2,\qquad J_\rho(d)+k<I(d)/p_0.
+\]
+In addition \(k/d^2\) can be made smaller than any prescribed positive constant depending only on \(\rho\), including all the concentration constants below. These choices use one common \(d\).
+
+\subsection{Uniform lower bound, moment and survival}
+
+Center three bands \(B,C,D\) respectively at \(\rho d_L,\rho^2d_L,d_L\) with half-widths \(w,2w,2w/\rho\). They are disjoint and lie in \(m\ge \rho^2 d/2\) for large \(L\) since successive separations are \(\rho(1-\rho)d_L\) and \((1-\rho)d_L\). Define \(H_0=e^{-kL}\) on \(B\), \(e^{kL}\) on \(C\cup D\), and one elsewhere. Set \(M=e^{-kL/2}/q\) and \(H=H_0+M\one_S\).
+
+From \(B\) the landing mean is within \(\rho w\) of the center of \(C\), leaving a margin of at least \(w\). Outside \(D\) the landing mean is farther than \(2w\) from the center of \(B\); its chance to land in \(B\) is exponentially small. For points in \(C\) the same outside-\(D\) bound applies. On \(D\) use \(H_0\ge e^{kL}\), \(PH_0\ge e^{-kL}\). Thus \(H PH\ge1-O(e^{-c_1L})\) everywhere. From \(S\), \(PH_0\le e^{-kL}+2e^{kL-w^2L/2}\), so each actual exit probability is \(O(e^{-kL/2})\). Take \(2k<w^2/2\). The upper bound on \(q\) ensures \(M\ge e^{kL}\) by decreasing \(d\) if necessary.
+
+Write \(E=B\cup C\cup D\). Using \(H_0 PH_0-1=(H_0-1)+H_0 P(H_0-1)\) and contraction on \(L^s\) bounds the background error. The union of bands has mass at most \(e^{-\rho^4 d^2L/8}\), so \(\|H_0PH_0-1\|_s\le(1+e^{kL})e^{kL}\mu(B\cup C\cup D)^{1/s}\) decays, choosing \(2k<\rho^4d^2/(8s)\). Off \(S\), the added stationary product has norm at most \(e^{kL}M\|P\one_S\|_s\le e^{kL}M\mu(S)^{1/p_0}\) by ordinary hypercontractivity. On \(S\), use \(\|\one_S HPH\|_s\le6e^{-kL}\mu(S)^{1/s}/q\). The two strict inequalities on \(J_\rho\) imply exponential decay in both estimates. Energy normalization therefore gives \(\|\pi_0-1\|_s\le O(e^{-c_2L})\) and \(\inf\pi_0\ge1-o(1)\).
+
+Subtract the low Walsh coefficients for a fixed \(\beta>0\) with binary entropy less than \(c_2/2\). The uniform correction has norm \(O(e^{-c_2 L/2})\). The positive scaling inverse in Section~\ref{matching} uses only positivity, positive diagonal, and the positive semidefinite product kernel at positive correlation. It therefore reconstructs a radial potential whose log differs from the normalized precursor by \(O_b((L+1)e^{-c_2L/2})\). This preserves the rowwise exit estimate and the centered-indicator gap bound. The resulting density has \(\|\pi-1\|_s\le O(e^{-c_3 L})\). On a cube with atoms \(2^{-L}\), for \(p>s\),
+\[
+ \|f\|_p\le 2^{L(1/s-1/p)}\|f\|_s .
+\]
+Choose \(p=s+\varepsilon\) so that \((1/s-1/p)\log2<c_3/2\). This gives the strictly supercritical stationary convergence asserted above. The argument does not establish convergence in every finite moment.
+
+\subsection{Divergence of the normalized critical weighting norm}
+
+In the tilted two-point argument now set \(p=1+\rho,\ q'=p/(p-1)\), and let \(T_t=D_t P_\rho D_t\), where \(D_t(j)=\exp(t(1/2-j))\) on \(j=0,1\). As in Section~\ref{tilt}, the \(p\)-to-\(q'\) norm is the supremum of the quadratic form over nonnegative unit \(p\)-vectors. At zero its unique maximizer is one: a mean-one pair \(1\pm x\) has energy \(1+\rho x^2\). For \(0<x<1\) the derivative of \(F=((1+x)^p+(1-x)^p)/2\) is at least \(p\rho x\), because convexity of \(y^{\rho-1}\) gives \(\int_{1-x}^{1+x}y^{\rho-1}dy\ge2x\). The derivative of \((1+\rho x^2)^{p/2}\) is strictly less. Continuity includes \(x=1\). The normalized constant has vanishing first tilt derivative, so the compactness argument of Section~\ref{tilt} gives \(\log\|T_t\|=o(t)\) at \(0^+\). Tensorization by the mixed-norm inequality and both inverse tilt factors yield
+\[
+ \langle f,P_\rho f\rangle\le e^{-a_{\alpha,\rho}L}\|f\|_{1+\rho}^2
+\]
+for \(f\) supported on a ball of radius at most fixed \(\alpha L,\ \alpha<1/2\). For the rounded spheres choose \(\alpha=(1-d/2)/2\), which contains all sufficiently large targets. Apply this estimate to \(f=\sqrt U\,v\). Hölder uses \(1/(1+\rho)=1/2+1/(2s)\), forcing \(\|\one_SU\|_s\ge e^{a_{\alpha,\rho}L}(1-o(1))\) from the retention Rayleigh quotient. Here \(v\) is a unit vector supported on \(S\) attaining the norm of the compressed symmetric kernel.
+
+Finally \(g^{-1}\le Pg/b,\ Pg=P_{\rho^{3/2}}P_{\sqrt\rho}h\), with \(\|P_{\sqrt\rho}h\|_2=1\). Thus \(\|g^{-1}\|_{1+\rho^{-3}}\le1/b\). Since \(2s/(s-1)=1+\rho^{-1}\le1+\rho^{-3}\), \(\E U\le\|\pi\|_s/b^2\) is bounded. This proves the divergence of the normalized weighting moment.
+
+\section{Spectral recovery at half correlation}
+Return to \(P=P_{1/2}\) and put \(Q=P_{\sqrt{1/2}}\). For a self-adjoint operator or a reversible chain, write \(\lambda_j\) for the eigenvalues in decreasing order, counted with multiplicity.
+\begin{theorem}\label{recovery}
+Let \(p>(17+4\sqrt{13})/9\), \(0<b<1\), \(B<\infty\). Suppose the density \(\pi=hPh\) has mean one, satisfies \(\pi\ge b\), \(\|\pi\|_p\le B\), and has vanishing nonconstant Walsh coefficients through order \(k\). Then there are \(C,c>0\), depending only on \(p,B,b\), such that
+\[
+ \max_{1\le j\le 2^L}|\lambda_j(K)-\lambda_j(P)|\le C e^{-ck}.
+\]
+In particular \(p=7/2\) suffices. Equality at the displayed threshold remains open.
+\end{theorem}
+\subsection{Bootstrapping inverse moments}
+Write \(Q=P_{\sqrt{1/2}}\). Since \(\|Qh\|_2=1\), the floor and Jensen give \(1/g\le Pg/b\) and \(\|1/g\|_9\le1/b\) by applying ordinary hypercontractivity to \(Pg=P_{(1/2)^{3/2}}Qh\). If \(\|1/g\|_q\) is uniformly bounded, \(h=\pi/g\) is bounded in \(L^u\), \(u=pq/(p+q)\). Ordinary hypercontractivity gives \(g\) bounded in \(L^v,\ v=1+4(u-1)\); hence \(1/h\le g/b\) is bounded in the same space. The reverse hypercontractive inequality on the uniform binary cube \cite[Eq.~(1.2)]{mos} gives
+\[
+ \|1/g\|_{F_p(q)}\le \|1/h\|_v,\qquad F_p(q)=4(1+v)-1=16pq/(p+q)-9 .
+\]
+Indeed in generalized-mean notation the exponents are \(-F_p(q)<-v<0\); the admissible noise condition is \(\rho^2=(1+v)/(1+F_p(q))\). This uses both forward and reverse inequalities on each iterate, gaining six inverse-moment orders over the Jensen-based update \(16u-15\). All iterates used below have \(u>1\).
+
+It suffices to take \(p\le7/2\) by norm monotonicity. To get \(\|U\|_t\) bounded for some \(t>3\) via \(U=\pi/g^2\), it suffices to cross \(q_c=6p/(p-3)\). At \(9\), \(F_p(9)>9\) in the asserted range. At \(q_c\) the sign of \(F_p(q_c)-q_c\) is the sign of \(9p^2-34p+9\) (the difference is \(9(9p^2-34p+9)/((p+3)(p-3))\)). Thus the difference is strictly positive at both ends of \([9,q_c]\). It is concave and continuous, so uniformly positive there. Iteration crosses the target strictly in finitely many steps, with bounds independent of \(k,L\). Choose \(t>3\) with \(1/t=1/p+2/q\) at the crossing. As a check at \(p=7/2\), the guaranteed inverse exponents can be decreased successively to \(31,41,85/2\) starting at 9; here \(q_c=42\).
+
+\subsection{Matching and the actual spectral sandwich}
+
+Put \(a=\E h\) and \(V=1-a^2=\|Qh-a\|_2^2\). Writing \(p'=p/(p-1)<2\), the part of \(g=Q(Qh)\) above degree \(k\) has \(p'\)-norm at most \(2^{-(k+1)/2}\sqrt V\). Matching gives \(E\pi g\le a+B\,2^{-(k+1)/2}\sqrt V\). Cauchy--Schwarz with measure \(h\,d\mu\) gives \(1=(Ehg)^2\le aE\pi g\). It follows that \(\sqrt V\le aB\,2^{-(k+1)/2}\), with \(V=0\) included, and \(\|g-1\|_2\le \sqrt V+1-a=O(2^{-k/2})\).
+
+On the good set \(|g-1|\le 2^{-k/8}\) one has \(|U-\pi|\le C2^{-k/8}\pi\) for large \(k\). The exceptional set has probability \(O(2^{-3k/4})\) by Chebyshev. Both \(U,\pi\) have bounded \(t\)-norm with \(t>3\). Hölder on the exceptional set implies \(\|U-\pi\|_3=O(e^{-ck})\). The finitely many small orders can be absorbed into the prefactor. In particular \(\|QM_{U-\pi}Q\|_{2\to2}\le\|U-\pi\|_3\), since \(\|Q\|_{2\to3}\le1\).
+
+For \(m=\lfloor k/2\rfloor\) split \(Q\) into its Walsh degrees up to \(m\) and above \(m\). Two low factors against the multiplier \(\pi-1\) have zero inner product since the product of the low factors has degree at most \(k\). With \(t'=t/(t-1)\), put \(\theta=\sqrt{(2t'-1)/2}<1\). Factor \(Q=P_{1/\sqrt{2t'-1}}P_\theta\); the first factor contracts \(L^2\) to \(L^{2t'}\). The low part of \(Q\) has \(2\)-to-\(2t'\) norm at most one, and the high part at most \(\theta^{m+1}\). Hölder in the remaining three terms gives \(\|QM_{\pi-1}Q\|\le3(B+1)\theta^{m+1}\).
+
+The actual kernel is reversibly similar to \(M_{\sqrt U}P M_{\sqrt U}\), which has the same ordered spectrum as \(QM_U Q\) by the equality of the spectra of the two Gram products of \(M_{\sqrt U}Q\). The preceding bounds control \(\|QM_U Q-P\|_{2\to2}\); the eigenvalue assertion follows from min--max. This argument does not assert \(\pi\to1\) in \(L^3\) from matching.
+
+\section{Relation to earlier results and review context}
+The forward hypercontractive inequality of Bonami supplies ordinary-cube norm estimates. Polyanskiy and Samorodnitsky developed improved hypercontractivity on small supports \cite{ps}. Here the stationary density and the transition row both change with the potential. The earlier construction in \cite[Section 11]{mom} has an exponentially small noise denominator at a vertex but preserves the ordinary spectrum asymptotically. The collective self-return of an entire sphere, calibrated by its conditional type probability, changes the conclusion. The shell widths and exponents here are sufficient rather than optimized. The general construction applies at each fixed positive correlation and all sufficiently large dimensions. The comparison theorem concerns the full spectrum of the same finite chain. Its sufficient exponent leaves an interval between the proved trapping and recovery regimes. An optimal transition and a continuum interpretation remain outside these results. The literature comparison does not establish global priority.
+
+\paragraph{Model assessments and review context.} OpenAI Codex assisted with the construction, proof and manuscript. The analytic audit shares the preparation context. No proof assistant or numerical oracle was used. The assessment of the first version concerns its half-correlation construction. The general-correlation and spectral recovery theorems first appear together in this revision. The full assessment, reviewer involvement, limitations and score for this PDF belong to its own version record.
+
+\begin{thebibliography}{9}
+\bibitem{hoeff} W. Hoeffding, Probability inequalities for sums of bounded random variables, J. Amer. Statist. Assoc. 58 (1963), 13--30. \url{https://doi.org/10.1080/01621459.1963.10500830}.
+\bibitem{bonami} A. Bonami, Etude des coefficients de Fourier des fonctions de $L^p(G)$, Ann. Inst. Fourier 20 (1970), 335--402. \url{https://doi.org/10.5802/aif.357}.
+\bibitem{mos} E. Mossel, K. Oleszkiewicz and A. Sen, On reverse hypercontractivity, Geom. Funct. Anal. 23 (2013), 1062--1097. \url{https://arxiv.org/abs/1108.1210}.
+\bibitem{ps} Y. Polyanskiy and A. Samorodnitsky, Improved log-Sobolev inequalities, hypercontractivity and uncertainty principle on the hypercube, J. Funct. Anal. 277 (2019). \url{https://arxiv.org/abs/1606.07491}.
+\bibitem{mom} L. Eriksson, Moment transfer and spectral bounds for Boolean Doob kernels, AIRR working paper, v3 (2026). \url{https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/versions/v3/}.
+\bibitem{local} L. Eriksson, Local retention and spherical reconstruction for Boolean Doob chains, AIRR working paper, v1 (2026). \url{https://airr.science/papers/ARR-2026-6E2HS34Q2Z8349BJ/versions/v1/}.
+\end{thebibliography}
+\end{document}

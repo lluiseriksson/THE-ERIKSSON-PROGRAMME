@@ -1,0 +1,361 @@
+% Appendix source for the grouped Boolean Doob manuscript. Uses amsmath and hyperref.
+\section{Concentration required for failure at the stationary endpoint}
+\label{sec:endpoint-concentration}
+
+Let $\mu$ be uniform on the binary $L$-cube. Write $P=P_{1/2}$,
+$Q=P_{1/\sqrt2}$, $g=Ph$, $\pi=hg$, and $U=h/g$, with $h>0$ and
+$E_\mu\pi=1$. Let $K(x,y)=P(x,y)h(y)/g(x)$ and let $\Delta$ denote the
+maximum absolute difference of the ordered eigenvalues of $K$ and $P$,
+including multiplicities. Assume $\pi\ge b>0$, $\|\pi\|_p\le B$, and exact
+uniformity of all stationary coordinate marginals through order $k\to\infty$.
+Throughout this section
+\[
+ p=(17+4\sqrt{13})/9,\qquad q=6p/(p-3),\qquad 1/3=1/p+2/q .
+\]
+All norms use $\mu$. All constants $b,B$ are uniform along the sequence.
+
+\paragraph{Endpoint concentration criterion.}
+Fix rates, independently of dimension, satisfying
+\[
+ 0<\tau<{6\log 2\over q-12},\qquad
+ 0<\sigma<{6\log 2+12\tau\over p}.
+\] Define
+\[
+ A_k=\{g<e^{-\tau k},\ \pi>e^{\sigma k}\},\qquad
+ d_*=\limsup_{k\to\infty}\|\pi{\bf1}_{A_k}\|_p .
+\]
+If $d_*<b$, then
+\[
+ \limsup_{k\to\infty}\Delta\ \le\ {B^2 d_*\over (b-d_*)^2}.
+ \tag{EC1}
+\]
+In particular, vanishing of the critical stationary moment on $A_k$
+suffices for full spectral recovery at any diverging matching order.
+A condition involving the stationary density alone is
+\[
+ E_\mu[\pi^p{\bf1}_{\{\pi>e^{\sigma k}\}}]\longrightarrow0 .
+ \tag{EC2}
+\]
+Uniform integrability of $\pi^p$ implies (EC2). The converse fails even
+among exactly matched chains with a fixed stationary floor.
+
+Since $\tau$ may approach its upper bound, (EC2) suffices for any fixed
+$\sigma<6\log 2/(6-p)$ with $\sigma>0$. Indeed
+$6q/[p(q-12)]=6/(6-p)$. In particular it is enough that
+$\limsup k^{-1}\log_2\|\pi\|_\infty<6/(6-p)$.
+For example, when $\pi$ is constant on cosets of a linear map of rank $s$,
+each atom of the quotient has probability $2^{-s}$ and
+$\|\pi\|_\infty\le B2^{s/p}$. Thus $\limsup s/k<6p/(6-p)$ suffices,
+regardless of ambient dimension or the ranks of disjoint column families.
+
+\paragraph{Critical exponents without iteration.}
+Put $1/u=1/p+1/q$ and $v=1+4(u-1)$. Substitution of
+$9p^2-34p+9=0$ gives $q=4(1+v)-1$.
+Forward hypercontractivity for $P$ sends $L^u$ to $L^v$ contractively.
+Reverse hypercontractivity with source exponent $-v$ and target exponent
+$-q$ gives $\|1/g\|_q\le\|1/h\|_v$: the ratio $(1+v)/(1+q)$ is $1/4$.
+The floor implies $1/h=g/\pi\le g/b$. Consequently,
+\[
+ H:=\|1/g\|_q\le b^{-1}\|g\|_v\le b^{-1}\|h\|_u .
+ \tag{EC3}
+\]
+These inequalities hold in each finite dimension. Simply replacing
+$\|h\|_u$ by $BH$ would give no uniform bound.
+
+\paragraph{What matching controls.}
+Let $a=E h$, $F=Qh$ and $V=\|F-a\|_2^2=1-a^2$. By Cauchy--Schwarz
+under $h\,d\mu$, $1\le a E\pi g$. The high-degree part of $g=QF$
+above order $k$ has norm at most $2^{-(k+1)/2}\sqrt V$ in $L^2$.
+Matching annihilates the lower nonconstant part against $\pi-1$.
+Since $p>2$, it follows that
+$V\le a(B+1)2^{-(k+1)/2}\sqrt V$. This includes $V=0$ and yields
+$\|g-1\|_2\le C_B2^{-k/2}$ using $1-a\le V$.
+In fact $\|g-1\|_3\le C_B2^{-k/2}$ because $g-a=Q(F-a)$ and $Q$
+is contractive from $L^2$ to $L^3$.
+
+\paragraph{A low denominator forces high denominators among its neighbors.}
+The floor gives $g=P(\pi/g)\ge bP(1/g)$. For $T\ge T_0=4/b$, put
+$S_T=\{g>bT/2\}$. If $g(x)^{-1}>T$, then
+\[
+ P_x(S_T^c)\le(bT/2)P(1/g)(x)<1/2 .
+\]
+The cubic estimate for $g-1$ gives
+$\mu(S_T)\le C_{B,b}2^{-3k/2}T^{-3}$. For any $1<r<4$, choose
+$m=3/(4-r)>1$ and $\ell=4m-3$. Forward hypercontractivity of $P$
+from $L^m$ to $L^\ell$ and Markov's inequality give
+\[
+ \mu\{g^{-1}>T\}\le 2^\ell\|P{\bf1}_{S_T}\|_\ell^\ell
+ \le 2^\ell\mu(S_T)^r
+ \le C_{B,b,r}\,2^{-3rk/2}T^{-3r}.                 \tag{EC4a}
+\]
+This additional use of the floor controls the geometry of the exceptional
+set before applying (EC3).
+
+Write $D=\{g<e^{-\tau k}\}$. Choose $r<4$ close enough to four that both
+$(q-3r)\tau<(3r/2)\log 2$ and
+$p\sigma<(3r/2)\log 2+3r\tau$. This is possible by the two strict rate
+conditions and $q>12$. Integrating (EC4a) up to $T=e^{\tau k}$ bounds
+the integral of $g^{-q}$ on $\{T_0<1/g\le e^{\tau k}\}$ by
+$C2^{-3rk/2}(1+e^{(q-3r)\tau k})=o(1)$.
+On $\{1/g\le T_0\}$ the reciprocal is bounded and converges to one in
+probability. Consequently
+\[
+ \|g^{-1}{\bf1}_{D^c}\|_q\to1,\qquad
+ \|(g^{-2}-1){\bf1}_{D^c}\|_{q/2}\to0 .           \tag{EC4}
+\]
+On $D\setminus A_k$, $\|\pi{\bf1}_{D\setminus A_k}\|_p
+ \le e^{\sigma k}\mu(D)^{1/p}=o(1)$ by (EC4a) at $T=e^{\tau k}$.
+Hence $d_*=\limsup\|\pi{\bf1}_D\|_p$.
+
+\paragraph{Absorption on the exceptional set.}
+Split $h=\pi/g$ over $D^c$ and $D$ in (EC3). H\"older gives
+\[
+ bH\le B\|g^{-1}{\bf1}_{D^c}\|_q+\|\pi{\bf1}_D\|_p H .
+\]
+If $d_*<b$, then $\limsup H\le B/(b-d_*)$ by (EC4). A second application
+of H\"older gives $\|U{\bf1}_D\|_3\le\|\pi{\bf1}_D\|_p H^2$.
+Also $\|\pi{\bf1}_D\|_3\le B\mu(D)^{1/3-1/p}\to0$ and, by (EC4),
+$\|(U-\pi){\bf1}_{D^c}\|_3\to0$. This proves the bound on the right of
+(EC1) for $\limsup\|U-\pi\|_3$.
+
+For completeness, $\|QM_{U-\pi}Q\|\le\|U-\pi\|_3$ by forward
+$2$-to-$3$ hypercontractivity. For $M_{\pi-1}$ split each factor of $Q$
+at Walsh degree $j=\lfloor k/2\rfloor$. Matching kills the low-low term.
+Writing $p'=p/(p-1)$, the remaining high factors have $2$-to-$2p'$ norm
+at most $\theta^{j+1}$ where $\theta=\sqrt{(2p'-1)/2}<1$: factor
+$Q=P_{1/\sqrt{2p'-1}}P_\theta$ and apply the Walsh tail bound to $P_\theta$.
+The same factorization bounds the low factors by one. The three terms
+therefore contribute at most $3(B+1)\theta^{j+1}$. Finally $QM_UQ$ and
+the symmetric conjugate of $K$ are the two Gram products of
+$M_{\sqrt U}Q$. Min--max gives (EC1).
+
+\paragraph{Necessary joint concentration.}
+If $\Delta\ge\eta>0$ along a subsequence, then for \emph{every} fixed
+admissible pair $\tau,\sigma$ along that subsequence,
+\[
+ \liminf\|\pi{\bf1}_{A_k}\|_p\ge t_\eta,\qquad
+ B^2t_\eta=\eta(b-t_\eta)^2,\quad 0<t_\eta<b .
+\]
+Indeed the right-hand side of (EC1) is strictly increasing from zero to
+infinity on $[0,b)$. A further subsequence below $t_\eta$ would contradict
+(EC1). This localizes both the large stationary density and the small
+denominator to the same vertices. The bound is on the integral of the
+$p$th power; their stationary probability can tend to zero.
+
+\paragraph{A separating example.}
+Take $n=\lfloor\sqrt{k}\rfloor$ disjoint blocks of $k+1$ bits. Let $S$
+be the event that every block parity is positive, $m=2^{-n}$, and prescribe
+\[
+ \pi=1+m^{-1/p}({\bf1}_S-m).
+\]
+This density has mean one and a fixed positive floor for all sufficiently
+large $k$. Its nonconstant Walsh terms have degree at least $k+1$ by the
+block-parity expansion. It is realizable as $hPh$ by positive symmetric
+diagonal scaling of the strictly positive matrix $P$ with row sums $\pi(x)$.
+Here $\log\|\pi\|_\infty=O(\sqrt{k})$, so (EC2) holds. Yet
+$E[\pi^p{\bf1}_S]\to1$ while $\mu(S)\to0$, and
+$E[\pi^{p+\epsilon}{\bf1}_S]\to\infty$ for every fixed $\epsilon>0$.
+The complement contributes a bounded critical moment. This example
+separates the hypotheses on stationary integrability; the theorem allows
+general stationary laws beyond this particular block geometry.
+
+\paragraph{Relation to earlier work and review context.}
+The forward and reverse inequalities are classical inputs
+(\href{https://doi.org/10.5802/aif.357}{Bonami};
+\href{https://arxiv.org/abs/1108.1210}{Mossel, Oleszkiewicz and Sen}).
+The realization in the example uses
+\href{https://www.cambridge.org/core/services/aop-cambridge-core/content/view/CDCA18916EAC355292A931C731AAC86C/S0008414X00040293a.pdf}{Sinkhorn's prescribed-row-sum theorem}.
+The programme's
+\href{https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/versions/v3/}{stationary-moment paper}
+and its subsequent matching-order estimate supply the setting and the
+matching-energy argument. The new step is absorption at the exact fixed
+exponent using the critical mass on the common exceptional set. It gives
+a conditional endpoint theorem. Whether the original floor, moment bound
+and matching alone force recovery is open. This source appendix has an
+author-side analytic check. Exact-PDF assessment, independent review and
+publication remain pending.
+
+
+\section{A local return test for the full ordered spectrum}
+\label{sec:local-return-test}
+
+Keep the half-noise model, the uniform matching through order $k$, the
+stationary floor $b$ and the moment bound $B$ of the preceding section.
+In this section any fixed finite $p>3$ is allowed. Put $q=6p/(p-3)$,
+choose $0<\sigma<\tau<(\log 2)/q$, and set
+\[
+ D=\{g<e^{-\tau k}\},\qquad A=D\cap\{\pi>e^{\sigma k}\}.
+\]
+Write $\nu=\pi\mu$, $s=\|{\bf1}_A K{\bf1}_A\|_{2\to2,\nu}$ and
+\[
+ R_A=\max_{\varnothing\ne E\subseteq A}
+       {\Pr}_{\nu}(X_1\in E\mid X_0\in E).
+\]
+Both quantities are zero for empty $A$. There exist $c,C>0$, depending
+only on the displayed fixed parameters, for which
+\[
+ s/4-Ce^{-ck}\le\Delta\le s+Ce^{-ck},\qquad
+ |\lambda_2(K)-\max(1/2,s)|\le Ce^{-ck},\qquad
+ R_A\le s\le\sqrt{2R_A-R_A^2}.                         \tag{LR1}
+\]
+In particular the full ordered spectrum converges precisely when every
+subset of this specified exceptional set has vanishing one-step return,
+uniformly over those subsets. The second eigenvalue can converge to $1/2$
+even when the criterion for the full spectrum fails; the formula for
+$\lambda_2$ by itself only detects $s$ above $1/2$. The two-sided bound
+on $\Delta$ does not require knowing which noise eigenvalue is displaced.
+
+There is a more detailed reconstruction with multiplicities. Form a list
+from the ordinary cube eigenvalues (each $2^{-j}$ occurs $\binom Lj$ times)
+and all eigenvalues of the killed matrix $K_{AA}$ on $A$. Sort in decreasing
+order and keep the first $2^L$ entries. Each entry differs from the
+corresponding eigenvalue of $K$ by at most $Ce^{-ck}$. The additional
+matrix has order $|A|\le C_B2^{L-k}$, with an empty matrix allowed.
+
+\paragraph{Isolating the multiplier that survives matching.}
+The matching-energy proof above gives $\|g-1\|_2\le C_B2^{-k/2}$
+also for this $p$. The floor and Jensen give $1/g\le Pg/b$, and
+$Pg=P_{(1/2)^{3/2}}Qh$ with $\|Qh\|_2=1$. Forward hypercontractivity
+therefore gives $\|1/g\|_9\le1/b$.
+On $D^c\cap\{g<1/2\}$, $\mu\{g<1/2\}\le C_B2^{-k}$ and
+$g^{-2}\le e^{2\tau k}$. Since $q\tau<\log 2$,
+the $L^{q/2}$ norm of $(g^{-2}-1)$ on that part decays exponentially.
+On $\{g\ge1/2\}$ the function $g^{-2}-1$ is bounded, and its absolute
+value is at most $16|g-1|$; interpolation with the $L^2$ estimate gives
+exponential decay in $L^{q/2}$ there too. Thus
+$\|(U-\pi){\bf1}_{D^c}\|_3\le Ce^{-ck}$ by $1/3=1/p+2/q$.
+
+On the remaining low-denominator vertices outside $A$, use the ninth
+inverse moment directly:
+\[
+ \|U{\bf1}_{D\setminus A}\|_3^3
+ \le e^{3\sigma k}\int_D g^{-6}\,d\mu
+ \le b^{-9}e^{-3(\tau-\sigma)k}.
+\]
+Also $\|\pi{\bf1}_D\|_3\le B\mu(D)^{1/3-1/p}\le Ce^{-ck}$.
+Together these bounds give $\|U{\bf1}_{A^c}-\pi\|_3\le Ce^{-ck}$.
+The signed low/high Walsh estimate for $\pi-1$ above uses only $p>3$.
+By $2$-to-$3$ hypercontractivity,
+\[
+ \|QM_UQ-(P+S)\|\le Ce^{-ck},\qquad S=QM_{U{\bf1}_A}Q .       \tag{LR2}
+\]
+The two Gram products of $M_{\sqrt U{\bf1}_A}Q$ identify $\|S\|=s$.
+In particular $S$ is positive semidefinite with $s\le1$.
+
+\paragraph{Separation from the ordinary low eigenmodes.}
+Let $\Pi$ project onto Walsh degrees at most $m=\lfloor\delta k\rfloor$,
+where $0<\delta<1$ is fixed with $\delta\log 7<(\log 2)/12$.
+The floor bound above gives $\|U\|_{3/2}\le B/b^2$ since
+$1/p+2/9<2/3$. For a unit vector $z$ in this low space,
+$\|Qz\|_8\le7^{m/2}$: apply the ordinary $2$-to-$8$ inequality
+to a polynomial with each degree $j$ multiplied by $7^{j/2}$.
+H\"older with reciprocal exponents $2/3,1/4,1/12$ gives
+\[
+ \langle z,Sz\rangle \le (B/b^2)\,7^m\,\mu(A)^{1/12}
+ \le Ce^{-ck}.
+\]
+Positivity bounds the norm of the off-diagonal block of $S$ by
+$\|\Pi S\Pi\|^{1/2}\|S\|^{1/2}$. On the complementary space $P$ has norm
+at most $2^{-(m+1)}$. Consequently $QM_UQ$ differs in operator norm by
+at most $Ce^{-ck}$ from the block diagonal operator
+\[
+ P|_{\operatorname{ran}\Pi}\ \oplus\
+ S_H,\qquad S_H=(I-\Pi)S(I-\Pi)|_{\operatorname{ran}(I-\Pi)} .
+\]
+Its high-block norm $s_H$ differs from $s$ by at most $Ce^{-ck}$ as well.
+For large $k$, the low block contains $1$ once and $1/2$ with its ordinary
+multiplicity. The high block is positive with top eigenvalue $s_H\le1$.
+This proves the second-eigenvalue estimate by min--max and Gram conjugation.
+The upper bound on $\Delta$ follows directly from (LR2).
+
+To verify the reconstruction, work on two copies of the cube space and
+compare $P\oplus S$ to $(\Pi P\Pi)\oplus((I-\Pi)S(I-\Pi))$.
+The norm error is exponentially small by the same two block estimates.
+After permuting subspaces the latter is the displayed block diagonal
+operator with $2^L$ extra zeros. Also $S$ has the nonzero eigenvalues of
+$K_{AA}$ with their multiplicities, by the Gram identity. Thus min--max
+on the doubled space identifies the first $2^L$ sorted entries with the
+claimed precision. The size bound follows from $\mu(A)\le C_B2^{-k}$.
+
+For the lower bound, if $s_H\le4\,2^{-m}$ it is absorbed by the error.
+Otherwise choose $j$ with $s_H/4<2^{-j}\le s_H/2$, so $1\le j\le m$.
+In the ordered noise spectrum, let $i$ be the first index at level $2^{-j}$.
+The low block already supplies the $i-1$ eigenvalues strictly above this
+level, all at least $2^{1-j}$. The high block supplies one more at least
+$2^{1-j}$. Its addition raises the $i$th eigenvalue by at least $2^{-j}$.
+This proves the first bound despite the growing noise multiplicities.
+Enlarging $C$ covers the finitely many smaller matching orders.
+
+\paragraph{A test phrased entirely in one-step probabilities.}
+Testing with an indicator gives $R_A\le s$. For the reverse bound take a
+nonnegative unit top vector $f$ for the killed chain, extended by zero
+outside $A$. Under its full stationary pair law $J$, integration over the
+level sets of $f^2$ gives
+\[
+ \tfrac12 E_J|f(X)^2-f(Y)^2|\ge(1-R_A)\|f\|_{2,\nu}^2.
+\]
+Indeed every nonempty positive level set lies in $A$, and its outward
+flow is at least $1-R_A$ times its stationary mass. Cauchy--Schwarz on
+$(f(X)-f(Y))(f(X)+f(Y))$ bounds the left side by $\sqrt{1-s^2}$
+using stationarity and reversibility. This proves the last part of (LR1).
+
+\paragraph{What nearly complete trapping requires in two ordinary noise steps.}
+For $x\in A$, the floor bound $P(1/g)(x)\le g(x)/b$ implies
+$P_x(A)\le e^{-2\tau k}/b$. Yet the stationary conditional return under
+$K$ may be much larger. For nonempty $E\subseteq A$, Cauchy--Schwarz
+under $P_x$ and the floor give
+\[
+ K_x(E^c)\ge {b\over g(x)}P_x({\bf1}_{E^c}/g)
+ \ge {b\,P_x(E^c)^2\over g(x)\,Pg(x)} .
+\]
+If $\lambda_2(K)\to1$, (LR1) supplies maximizing sets $E_k$ with
+conditional return tending to one. Averaging this last bound for $x\in E_k$
+gives $E_{\nu(\cdot\mid E_k)}[(g\,Pg)^{-1}]\to0$; hence $g\,Pg$ diverges
+in probability under those conditional laws. Conversely a uniform upper
+bound $g\,Pg\le M$ on $A$ gives $s\le1-b(1-o(1))/M$ by the maximum
+killed row sum, for nonempty $A$. This rules out convergence of the
+second eigenvalue to one in that regime.
+
+\paragraph{A family with a correct spectral gap and incorrect lower bands.}
+At half noise the
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/7ac6acd4fe2dcf992c6acc11eb406b8a8323d7c3/papers/stationary-weighting354/research/2026-11-18-small-support/ALL-CORRELATIONS-SHELL-TRAP.md}{programme's matched shell construction}
+provides some fixed $p_0>3$, a fixed floor, $k=\lfloor\beta L\rfloor$,
+$\|\pi_{\rm trap}-1\|_{p_0}\le e^{-c_0 L}$, and $\lambda_2\to1$.
+Fix any $0<a_0<1$. Interpolate the stationary densities by
+$\pi_t=1+t(\pi_{\rm trap}-1)$, $0\le t\le1$. They share all the matching,
+floor and moment estimates with uniform constants. At each fixed dimension
+positive symmetric diagonal scaling gives the unique $h_t>0$ satisfying
+$h_t P h_t=\pi_t$ (here $P h_t$ is evaluated first). This scaling is
+continuous in $t$: each $h_t(x)$ is bounded above by
+$\sqrt{\sup_t\pi_t(x)/P(x,x)}$, and the floor divided by the largest such
+upper bound bounds every coordinate below. Any subsequential limit solves
+the same scaling equations, so uniqueness gives continuity.
+
+Set $N(t)=\|QM_{h_t/(P h_t)}Q-P\|$. This continuous quantity is zero at
+$t=0$. By (LR2), $|N(t)-s(t)|\le Ce^{-ck}$ uniformly in $t$, even though
+the exceptional vertex set can change discontinuously. By (LR1),
+$s(1)\to1$. The intermediate value theorem gives $t_L$ with $N(t_L)=a_0$
+for every sufficiently large $L$. For these chains
+\[
+ |\lambda_2(K)-\max(1/2,a_0)|\le Ce^{-ck},\qquad
+ \Delta\ge a_0/4-Ce^{-ck}.
+\]
+Moreover for every fixed $j$ with $2^{-j}>a_0$, all the ordered eigenvalues
+in degrees $0$ through $j$, counted with the reference multiplicities,
+are within $Ce^{-ck}$ of their reference values. Indeed the low block
+contains all those eigenvalues exactly, and the entire high block is below
+$2^{-j}$ for large $L$. In particular any prescribed finite number of leading
+Walsh bands can be asymptotically correct while the full ordered spectrum
+has a fixed error. The available $p_0$ comes from the matched shell result
+below the stationary endpoint. This interpolation constructs no counterexample
+at the endpoint itself.
+
+\paragraph{Scope and provenance.}
+The coarea estimate is the Dirichlet form argument underlying
+\href{https://arxiv.org/abs/math/0505690}{Goel, Montenegro and Tetali's spectral profile}.
+The low-degree norm bound uses classical Boolean hypercontractivity.
+The contribution here is the exponential operator approximation on a
+specific joint tail and the eigenvalue count that converts a killed mode
+there into a defect of the full ordered spectrum. The unrestricted
+endpoint still requires controlling returns for all subsets of that tail.
+This is an analytic appendix with no exact-PDF assessment.

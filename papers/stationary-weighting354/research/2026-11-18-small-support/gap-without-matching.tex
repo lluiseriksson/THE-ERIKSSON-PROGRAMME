@@ -1,0 +1,165 @@
+% Part of local-return-supplement.tex.
+\section{Global gap bounds without coordinate matching}
+\label{sec:gap-without-matching}
+
+Retain $P=P_{1/2}$, $g=Ph$, $\pi=hg$, $E_\mu\pi=1$,
+$\pi\ge b>0$ and $\|\pi\|_p\le B$. In this section there is no
+assumption on any nonconstant Walsh coefficient. Write
+$p_*=(17+4\sqrt{13})/9$ and $\gamma=1-\lambda_2(K)$, for $L\ge1$.
+
+\paragraph{Theorem.}
+At $p=p_*$,
+\[
+ \gamma\ \ge\ \exp[-C_{b,B}\sqrt{L\log(2L)}].
+ \tag{G1}
+\]
+In particular a gap of order $\exp(-cL)$ for fixed $c>0$ is impossible
+at this exponent. For every fixed $p>p_*$ there is a dimension-independent
+lower bound $\gamma\ge c_{b,B,p}>0$. There are also $\epsilon_0,C>0$
+depending only on $b,B$ such that, uniformly for $p_*-\epsilon_0\le p\le p_*$,
+\[
+ \log(1/\gamma)\le C\big[(p_*-p)L+\sqrt{L\log(2L)}\big]. \tag{G2}
+\]
+The estimate controls cuts containing any number of distinct levels of
+$h$. At equality it leaves open both a dimension-independent gap and
+recovery of the ordered spectrum under arbitrarily slow matching.
+
+\paragraph{Macroscopic cuts.}
+Let $J$ be the stationary edge probability and $\nu=\pi\mu$.
+The two-function reverse hypercontractive inequality at correlation $1/2$
+with both input exponents $1/2$ gives
+\[
+ J(E,E^c)=\langle h{\bf1}_E,P(h{\bf1}_{E^c})\rangle_\mu
+ \ge \|h{\bf1}_E\|_{1/2}\|h{\bf1}_{E^c}\|_{1/2}.
+\]
+Here $\|f\|_{1/2}=(E_\mu\sqrt{|f|})^2$. For each nonempty set $F$,
+$h\ge b/g$ and conditional Jensen imply
+\[
+ \|h{\bf1}_F\|_{1/2}\ge
+ b\mu(F)^2(E_\mu[g^{-1/2}\mid F])^2
+ \ge b\mu(F)^2/E_\mu[g\mid F]\ge b\mu(F)^{7/3}.
+\]
+The last step uses $\|g\|_3=\|Q(Qh)\|_3\le\|Qh\|_2=1$.
+If $0<\nu(E)\le1/2$, then $\mu(E^c)\ge (2B)^{-p/(p-1)}$ by
+H\"older, and $\nu(E)\le B\mu(E)^{1-1/p}$. Consequently
+\[
+ \Phi(E):=J(E,E^c)/\nu(E)\ge c_{b,B,p}\,\mu(E)^{4/3+1/p}. \tag{G3}
+\]
+The constant stays positive uniformly on compact exponent intervals above one.
+If $\|K_{FF}\|\le1/2$ for all $\mu(F)\le e^{-s}$, all such small cuts
+have $\Phi(F)\ge1/2$ by the indicator test. The remaining cuts satisfy
+(G3). Cheeger's inequality $\gamma\ge \frac12\inf_{0<\nu(E)\le1/2}
+\Phi(E)^2$ now yields $\log(1/\gamma)\le C_{b,B,p}(1+s)$.
+This step tests actual stationary returns, without postulating where
+the returning vertices or their ordinary-noise neighbors lie.
+
+\paragraph{Moment budget for the small cuts.}
+Writing $U=h/g$, the floor and Jensen give $1/g\le Pg/b$ and
+$\|1/g\|_9\le1/b$. Given a bound $H_j$ on $\|1/g\|_{q_j}$,
+put $1/u_j=1/p+1/q_j$. H\"older bounds $\|h\|_{u_j}\le B H_j$.
+Forward hypercontractivity bounds $\|g\|_{4u_j-3}\le B H_j$;
+$1/h\le g/b$ and reverse hypercontractivity then give
+\[
+ q_0=9,\qquad q_{j+1}=F_p(q_j)=16p q_j/(p+q_j)-9,\qquad
+ H_{j+1}\le (B/b)H_j .
+\]
+All forward input exponents exceed one in a fixed neighborhood of $p_*$.
+The larger root $q_\infty(p)$ of $q^2+(9-15p)q+9p=0$ is the limit of
+this increasing iteration there: $F_p(9)>9$, $F_p$ is increasing,
+and $F_p(q)>q$ between its two fixed points.
+Let $1/t_\infty(p)=1/p+2/q_\infty(p)$. Substitution gives
+$t_\infty(p_*)=3$, and
+$F'_{p_*}(q_\infty(p_*))=16((p_*-3)/(p_*+3))^2<1$
+(the prime denotes derivative in $q$).
+After a fixed number of iterations the distances to the limiting root
+contract by a common factor less than one throughout a sufficiently small
+closed neighborhood of $p_*$. Indeed the root is smooth and the finite
+iterates are continuous; first choose a contracting neighborhood and an
+iterate entering its interior at $p_*$, then shrink the parameter interval.
+Thus $O(1+\log(1/\delta))$ iterations and
+$\|U\|_{(1/p+2/q_j)^{-1}}\le BH_j^2$ yield
+\[
+ \|U\|_{t_\infty(p)-\delta}\le C\delta^{-A}
+ \quad(0<\delta\le\delta_0).                            \tag{G4}
+\]
+All constants here are uniform on that interval. The simple attracting
+root has positive derivative in $p$ because $\partial_p F_p(q)>0$.
+It follows that $t_\infty$ is smooth and increasing, with
+$0\le3-t_\infty(p)\le C_0(p_*-p)$ below $p_*$.
+
+\paragraph{A cut of prescribed rarity.}
+We recall the sparse-input estimate derived from
+\href{https://arxiv.org/pdf/1606.07491}{Polyanskiy and Samorodnitsky,
+Theorem 7 and Remark 3}. For $1\le s\le L/32$, $m=s/L$,
+and $\mu(\operatorname{supp}f)\le e^{-s}$ it gives
+\[
+ \|Q f\|_2\le\|f\|_{a},\qquad a=3/2-\kappa m
+\]
+for an absolute $\kappa>0$. To see the uniform choice of exponents,
+use time $(\log2)/2$ and entropy parameter $\eta m$ for sufficiently
+small fixed $\eta>0$. The support bound gives
+$\log(\|f\|_a/\|f\|_1)\ge(1-1/a)s$. Their exponent ODE has rate
+at least $2+c\eta m$ since the increasing rate function has expansion
+$2+x/3+O(x^2)$ at zero. The output exponent is at least
+$1+2(a-1)\exp(c\eta m(\log2)/2)$, which reaches two when $\kappa$
+is sufficiently small. Absolute values cover signed inputs.
+
+Let $t=t_\infty(p)-d m$ and $1/a_t=1/2+1/(2t)$.
+There are absolute constants (or constants uniform on the chosen interval)
+$d,c_1,c_2>0$ such that if $p\le p_*$ and $p_*-p\le c_1 m$, then
+$1/a-1/a_t\ge c_2 m$. Indeed $1/a-2/3\ge(4\kappa/9)m$,
+whereas $1/a_t-2/3=(3-t)/(6t)\le(C_0(p_*-p)+dm)/(6t)$;
+shrink $d,c_1$ and keep $t>2$. Also take $dm\le\delta_0$.
+For $z$ of unit $L^2(\mu)$ norm and $\mu(F)\le e^{-s}$, two applications
+of H\"older now give
+\[
+ \|Q({\bf1}_F\sqrt U z)\|_2^2
+ \le \mu(F)^{2(1/a-1/a_t)}\|U\|_t
+ \le C m^{-A}\exp(-2c_2 s^2/L).
+\]
+Squaring and the Gram identity are accounted for in the displayed
+squared norm. Taking the supremum bounds the stationary killed norm
+$\|K_{FF}\|$.
+
+Choose $s=D[(p_*-p)L+\sqrt{L\log(2L)}]$ with $D$ large enough that
+$p_*-p\le c_1s/L$ and that the exponential dominates $C(L/s)^A$ with
+product at most $1/2$ for all sufficiently large $L$. Then choose
+$\epsilon_0$ small enough that $s\le L/32$ for all such large $L$,
+uniformly for $0\le p_*-p\le\epsilon_0$. Equation (G3) proves (G2)
+and its endpoint specialization (G1). For bounded dimensions (G3) and
+the single-atom lower bound $\mu(E)\ge2^{-L}$ cover the remaining cases.
+
+For fixed $p>p_*$ decrease $p$ if necessary to an exponent strictly
+between $p_*$ and the upper end of the same neighborhood. Then (G4)
+gives $\|U\|_t\le M$ for a fixed $t>3$. Ordinary hypercontractivity
+and the Gram identity give $\|K_{FF}\|\le\|U{\bf1}_F\|_3
+\le M\mu(F)^{1/3-1/t}$. A fixed value of $s$ thus suffices in (G3),
+proving the dimension-independent claim.
+
+The constants on the upper side can also be tracked. For
+$\varepsilon=p-p_*>0$ sufficiently small the smooth root has strictly
+positive derivative, so $t_\infty(p)\ge3+c_3\varepsilon$.
+Choose $t=3+c_3\varepsilon/2$ in (G4), which gives
+$\|U\|_t\le C\varepsilon^{-A}$. Since $1/3-1/t\ge c_4\varepsilon$,
+the preceding small-cut test holds at
+$s=D\varepsilon^{-1}\log(2/\varepsilon)$ for a fixed sufficiently large
+$D$. Independently, monotonicity of probability norms makes (G1)
+applicable at this same $p$. Hence
+\[
+ \log(1/\gamma)\le C\min\{\sqrt{L\log(2L)},
+                 \ \varepsilon^{-1}\log(2/\varepsilon)\}.
+\]
+
+\paragraph{Relation to the matched examples.}
+The
+\href{https://airr.science/papers/ARR-2026-2B2W1WQ7DF9N5VW7/versions/v1/}{published shell}
+and its supercubic source extension demonstrate exponential trapping at
+lower stationary exponents. Their existence does not identify $p_*$ as
+the sharp transition. The present bound controls \emph{all} cuts at $p_*$
+without exact matching. The small-cut estimate uses the programme's
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/fba5e8b72687d68a1698b9b6acabdfea9d0aeb05/papers/stationary-weighting354/research/2026-11-18-small-support/MATCHING-ORDER-ENDPOINT.md}{endpoint multiplier argument}.
+The large-cut estimate uses the classical
+\href{https://arxiv.org/abs/1108.1210}{reverse Boolean inequality}.
+Their combination yields a global relaxation bound rather than a
+comparison limited to exceptional sets selected by matching. This result
+has been checked analytically in the drafting context.

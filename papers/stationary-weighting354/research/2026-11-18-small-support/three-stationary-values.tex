@@ -1,0 +1,211 @@
+% Grouped supplement on Boolean Doob chains.
+\section{Three stationary values suffice for exponential trapping}
+\label{sec:three-values}
+The rarity comparison in (F1) cannot be discarded, even for exact
+levels. For every $\kappa>64/9$ and every fixed floor $0<b<1$ there
+are a fixed $p>3$, $\sigma>0$ and arbitrarily large dimensions with
+exactly three stationary density values such that
+\[
+ \pi\ge b,\qquad \|\pi-1\|_p\le e^{-\sigma L},\qquad
+ 1-\lambda_2(K)\le e^{-\sigma L}.
+ \tag{T1}
+\]
+All one-coordinate stationary marginals are uniform. The two exceptional
+levels have uniform masses $m_S<m_C$ with $m_S\ge m_C^\kappa$.
+Together with (S1), this identifies three as the smallest number of
+stationary values allowing loss of the uniform gap under a fixed floor
+and bounded cubic moment. The assertions about the number of levels
+do not impose higher-order marginal matching.
+
+\paragraph{Ordinary shell probabilities.}
+Write $z(x)=L^{-1}\sum x_i$ and $I(t)=((1+t)\log(1+t)
++(1-t)\log(1-t))/2$. For attainable $t>0$,
+$\mu\{|z|=t\}=\exp[-LI(t)+O(\log L)]$ and $I(t)=t^2/2+O(t^4)$.
+From $z(x)=s$, one half-noise step has magnetization mean $s/2$.
+For $|t|,|s|=O(d)$ write $w=t-s/2$. The probability of landing at
+the exact attainable $t$ is between
+\[
+ \exp[-L(2w^2/3+O(d^3))-O(\log L)]
+ \quad\text{and}\quad
+ \exp[-L(2w^2/3-O(d^3))].
+ \tag{T2}
+\]
+For the lower bound the two groups of input signs have output-plus
+probabilities $3/4$ and $1/4$. Raise each by $w/2$ (a negative shift
+is allowed). Round the first group's output count to an integer and
+choose the second to give exactly the prescribed total. Each group
+has size comparable to $L$. Stirling's bounds for both binomial terms
+give the two relative entropies with $O(\log L)$ error. Each divergence
+is $2w^2/3+O(d^3)$ by Taylor expansion. For the upper bound, the
+centered log moment generating function per output sign is
+$3v^2/8+O(|v|^3)$ for a tilt $v$ of either sign; use $v=4w/3$.
+The constants are uniform for the shell locations used below.
+
+\paragraph{Two prescribed exceptional densities.}
+Choose rational $u<3/8$ sufficiently close to $3/8$ that
+$u^{-2}<\kappa$. Choose $k_0$ strictly between
+\[
+ \tfrac23(u-1/4)^2
+ \quad\text{and}\quad
+ \min\{\tfrac23(1/2-u)^2,\ u^2/12,\ (u-1/8)^2/2\}.
+ \tag{T3}
+\]
+Such an interval exists: at $3/8$ the first two square-distance
+rates coincide, the other two upper bounds are strictly larger,
+and moving $u$ to the left separates the first two rates.
+Choose a fixed $\omega>0$ small enough that
+$\tfrac23(u-1/4+\omega/2)^2<k_0$ and $\omega<1/2-u$.
+Choose $e>0$ so small that each of the gaps in (T3), the new gap
+after adding $\omega/2$, the number $\omega^2/2$, and
+$(7/8)^2/2-1/6$ exceeds $10e$. Take $0<\gamma<\min(e,1/32)$.
+Finally take rational $d>0$ sufficiently small that all strict
+inequalities below survive the $O(d^3)$ errors in (T2). Take $L$
+along multiples making both positive shells attainable. Set
+\[
+ S=\{|z|=d\},\qquad C=\{|z|=ud\},\qquad
+ B=\{\,||z|-d/2|\le\omega d\,\}.
+\]
+For $x\in S$, $q=P_x(S)$ is independent of $x$. By (T2) and
+Hoeffding's bound,
+\[
+ e^{-(d^2/6+O(d^3))L-O(\log L)}\le q\le2e^{-d^2L/8}.
+\]
+Prescribe the density itself by
+\[
+ M_C=e^{k_0 d^2 L},\qquad M_S=e^{-\gamma d^2L}/q,\qquad
+ \pi=M_C{\bf1}_C+M_S{\bf1}_S+a{\bf1}_{(S\cup C)^c},
+ \quad a=\frac{1-m_C M_C-m_S M_S}{1-m_C-m_S}.
+\]
+Since $k_0<u^2/12$, $M_Cm_C^{1/3}$ decays exponentially. The
+corresponding exponent for $M_Sm_S^{1/3}$ is at most
+$-\gamma d^2+O(d^3)$, also strictly negative. Thus $a\to1$ and the
+cubic distance decays exponentially. The same strict inequalities
+hold with $1/p$ in place of $1/3$ for some fixed $p>3$ near three.
+The upper bound on $q$ ensures $M_S>M_C>1$ eventually. Sign reversal
+gives exact one-coordinate marginals. The limit of $\log m_S/\log m_C$
+is $I(d)/I(ud)$, which tends to $u^{-2}$ as $d\downarrow0$, so (after
+fixing sufficiently small $d$) $m_S\ge m_C^\kappa$ eventually.
+
+\paragraph{Recovering the potential from the prescribed law.}
+The unique positive solution $hPh=\pi$ follows by strict convexity
+and coercivity of the finite symmetric scaling functional in log
+coordinates (as in the published shell proof). Permutations and global
+sign reversal preserve this solution. In particular $h,g=Ph$ are
+constant on each of $S,C$, denoted by subscripts. Put
+$\delta_2=\|\pi-1\|_2$. The variance proof in the one-spike section
+uses only the stationary second norm of the perturbation and yields
+$\|g-1\|_3\le\delta_2+\delta_2^2$. Here
+$\delta_2=O(M_C\sqrt{m_C}+M_S\sqrt{m_S})$.
+After division by $m_C^{1/3}$ the two exponential rates are bounded
+above by $k_0d^2-I(ud)/6$ and
+$d^2/6+O(d^3)-I(d)/2+I(ud)/3$, both strictly negative for small $d$.
+Therefore $g_C=1+o(1)$ and $h_C=(1+o(1))M_C$.
+On $S$ positivity and $g_S\ge qh_S$ imply
+$h_S\le\sqrt{M_S/q}\le1/q$.
+
+For $y\in B$, the lower bound (T2) aimed at the appropriately signed
+component of $C$ gives
+$P_y(C)\ge\exp[-(\tfrac23(u-1/4+\omega/2)^2d^2+O(d^3))L-O(\log L)]$.
+Since $g(y)\ge h_C P_y(C)$ and $\pi(y)=a$, for large $L$,
+\[
+ \sup_B h\le e^{-4ed^2 L}.
+ \tag{T4}
+\]
+This depression in the potential is a consequence of the two
+prescribed high stationary values.
+
+\paragraph{Escape from the rarer level.}
+For $x\in S$ let $D=P_x(h{\bf1}_{S^c})$. The smallness of $h$ on
+$B$ alone would not control atypical transitions. To bound them set
+$T=P^2$, $Y=1/g$. The floor $a$ gives $Y\le Pg/a=T h/a$ by Jensen.
+Because $h=aY$ off the exceptional levels,
+\[
+ Y\le TY+a^{-1}(h_C T{\bf1}_C+h_S T{\bf1}_S).
+\]
+Iterate $n=1+\lceil\log_{16}(1+L)\rceil$ times. The ambient bound
+$\|Y\|_9\le1/a$ and hypercontractivity give
+$\|T^nY\|_\infty\le2^{L/(1+8\cdot16^n)}/a\le 2/a$.
+Bounding separately the landing regions $C$, $B$, and ordinary
+background outside $B$, and using positivity in the iterated terms,
+gives the explicit estimate
+\[
+ D\le h_C P_x(C)+\sup_B h+2P_x(B^c)
+       +\sum_{i=1}^n\big[h_C P_x^{2i+1}(C)+h_S P_x^{2i+1}(S)\big].
+ \tag{T5}
+\]
+The one-step term for $C$ decays with exponent at least
+$(\tfrac23(1/2-u)^2-k_0)d^2-O(d^3)$ by (T2), including the more
+distant opposite-sign component. The third term costs at most
+$4e^{-\omega^2d^2L/2}$. For every odd step $2i+1\ge3$ the signs are
+independent given $x$, with magnetization mean of magnitude at most
+$d/8$. Hoeffding bounds the two probabilities in the sum by
+$2e^{-(u-1/8)^2d^2L/2}$ and $2e^{-(7/8)^2d^2L/2}$ respectively.
+Multiplication by $h_C\sim M_C$ and $h_S\le1/q$ preserves strict
+exponential decay. With the chosen slack and $n=O(\log L)$, (T5)
+gives $D\le e^{-ed^2 L}$.
+
+Finally $g_S=qh_S+D$ and $g_Sh_S=M_S$ imply
+$g_S\ge\sqrt{qM_S}=e^{-\gamma d^2L/2}$. Hence
+$K_x(S^c)=D/g_S\le e^{-(e-\gamma/2)d^2L}$ on the whole shell.
+The centered shell indicator in the Rayleigh quotient gives
+$1-\lambda_2(K)\le K_x(S^c)/(1-M_Sm_S)$, proving (T1).
+
+\paragraph{Exact matching and the number of approximate levels.}
+There is a corresponding obstruction with exact matching through a
+positive fraction of the coordinates. Let $\pi_0$ be the three-valued
+law just constructed. For sufficiently small fixed $\beta>0$, subtract
+from $\pi_0$ its nonconstant Walsh coefficients of orders at most
+$\lfloor\beta L\rfloor$ to obtain $\pi_1$. Each coefficient is bounded
+by $\|\pi_0-1\|_1$, and their number is at most $e^{L H(\beta)}$,
+where $H$ is binary entropy in natural units. By (T1) we can choose
+$H(\beta)<\sigma/2$. Thus $\pi_1$ is exactly matched, normalized,
+and $\|\pi_1-\pi_0\|_\infty\le e^{-\sigma L/2}$. Its floor tends to
+one and its supercubic norm distance still tends exponentially to zero.
+
+For completeness, let two normalized densities $v_0,v_1$ have floor
+$b_0>0$ and logarithmic distance
+$\epsilon=\|\log(v_1/v_0)\|_\infty\le1$. Along their straight-line
+interpolation, $\|\dot v_t/v_t\|_\infty\le e^\epsilon-1\le2\epsilon$.
+Logarithmic differentiation of $h_tPh_t=v_t$ gives
+$(I+K_t)\,\partial_t\log h_t=\dot v_t/v_t$. The operator
+$A_t=(I-K_t)/2$ has absolute row sums at most one. Positivity of the
+noise quadratic form gives stationary $L^2$ norm at most $1/2$.
+Since the smallest stationary mass is at least $b_0 2^{-L}$,
+$\|A_t^j\|_{\infty\to\infty}\le\min(1,2^{L/2-j}/\sqrt{b_0})$.
+The inverse is $\tfrac12\sum_{j\ge0}A_t^j$, so
+$\|\log(h_1/h_0)\|_\infty\le C_{b_0}(L+1)\epsilon$.
+In particular every stationary edge weight changes by a factor
+between $e^{-2C_{b_0}(L+1)\epsilon}$ and $e^{2C_{b_0}(L+1)\epsilon}$, and every variance, written
+as an infimum over constant centerings, changes by a factor between
+$e^{-\epsilon}$ and $e^\epsilon$. Taking Dirichlet quotients gives
+\[
+ \left|\log\frac{\operatorname{gap}(K_1)}
+                         {\operatorname{gap}(K_0)}\right|
+ \le 2C_{b_0}(L+1)\epsilon+\epsilon. \tag{T6}
+\]
+Applied to the projected law this preserves the exponential gap
+upper bound. The three exact levels refer to the reference law;
+the matched law lies exponentially close to those levels.
+
+Conversely, suppose a density is within $o(1)$ in log sup norm of a
+normalized two-valued reference with uniform floor and bounded cubic
+norm. The one-spike theorem and (T6) imply
+$\log(1/\operatorname{gap}(K))=o(L)$; distance $O(1/L)$ gives a
+uniform positive gap. Thus an exponential trap with a fixed positive
+rate is impossible even at vanishing logarithmic distance from two
+such levels, whereas exponentially accurate three-level approximation
+already allows it under linear-order matching. The unrestricted
+sufficient stationary exponent is unchanged by this construction.
+
+\paragraph{Consequences and comparison.}
+For the two-exceptional-level cubic gap problem, (F1) proves
+sufficiency for $\kappa<21-8\sqrt5$. Equation (T1) excludes
+uniform sufficiency for every $\kappa>64/9$. Neither endpoint is
+decided. The \href{https://airr.science/papers/ARR-2026-2B2W1WQ7DF9N5VW7/versions/v1/}{earlier shell}
+started with several potential bands and then corrected the stationary
+marginals through linear order. Here the stationary law has precisely
+three values by construction; the reciprocal estimate (T5) controls
+its reconstructed transition rows. Ordinary Hamming sphere noise
+estimates are studied, for example, by
+\href{https://arxiv.org/abs/1909.11929}{Kirshner and Samorodnitsky}.
+The present argument does not decide the unrestricted matched endpoint.
