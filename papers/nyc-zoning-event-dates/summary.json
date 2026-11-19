@@ -1,0 +1,99 @@
+{
+  "as_of": "2026-11-19T22:05:17.738324+00:00",
+  "query": "https://data.cityofnewyork.us/resource/hgx4-8ukb.json?%24select=project_id%2Cactions%2Cproject_status%2Cpublic_status%2Capp_filed_date%2Ccertified_referred%2Capproval_date&%24where=approval_date+%3E%3D+%272015-01-01T00%3A00%3A00%27+and+approval_date+%3C+%272025-01-01T00%3A00%3A00%27+and+actions+like+%27%25ZM%25%27&%24order=project_id&%24limit=50000",
+  "source_sha256": "619a87ef785ce4352508e51fa62b5f3b2a049ca426fa03c986e6c07abfcd5e42",
+  "raw_n": 127,
+  "all": {
+    "n": 126,
+    "known_different": 82,
+    "all_known_same": 13,
+    "undecided": 31,
+    "different_range": [
+      82,
+      113
+    ]
+  },
+  "complete": {
+    "n": 79,
+    "known_different": 66,
+    "all_known_same": 13,
+    "undecided": 0,
+    "different_range": [
+      66,
+      66
+    ]
+  },
+  "ordered": {
+    "n": 79,
+    "known_different": 66,
+    "all_known_same": 13,
+    "undecided": 0,
+    "different_range": [
+      66,
+      66
+    ]
+  },
+  "missing": {
+    "app_filed_date": 47,
+    "certified_referred": 0,
+    "approval_date": 0
+  },
+  "status": {
+    "Complete": 119,
+    "Withdrawn-Other": 1,
+    "On-Hold": 2,
+    "Active": 4
+  },
+  "public_status": {
+    "Completed": 126
+  },
+  "out_of_order_ids": [],
+  "transitions": {
+    "app_filed_date__certified_referred": {
+      "2019/2022": 2,
+      "2020/2021": 17,
+      "2020/2022": 5,
+      "2020/2023": 1,
+      "2021/2021": 20,
+      "2021/2022": 8,
+      "2021/2023": 1,
+      "2021/2024": 2,
+      "2022/2022": 2,
+      "2022/2023": 3,
+      "2023/2023": 8,
+      "2023/2024": 8,
+      "2024/2024": 2
+    },
+    "app_filed_date__approval_date": {
+      "2019/2022": 1,
+      "2019/2023": 1,
+      "2020/2021": 11,
+      "2020/2022": 10,
+      "2020/2023": 1,
+      "2020/2024": 1,
+      "2021/2021": 10,
+      "2021/2022": 15,
+      "2021/2023": 4,
+      "2021/2024": 2,
+      "2022/2022": 1,
+      "2022/2023": 3,
+      "2022/2024": 1,
+      "2023/2024": 16,
+      "2024/2024": 2
+    },
+    "certified_referred__approval_date": {
+      "2021/2021": 21,
+      "2021/2022": 16,
+      "2022/2022": 11,
+      "2022/2023": 6,
+      "2023/2023": 3,
+      "2023/2024": 10,
+      "2024/2024": 12
+    }
+  },
+  "source_paper": {
+    "url": "https://osf.io/download/6aff233967755055611fc8fb/",
+    "expected_sha256": "011a51be784756464718d2c93d69db7e52c540b9835b784f5f66de3435bcde81",
+    "error": "No module named 'fitz'"
+  }
+}

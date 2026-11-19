@@ -1,0 +1,5624 @@
+{
+  "all_zap_rows": 1691,
+  "all_zap_sha": "06514fa480206fed7d9519a976a38b8dabed4a9725d7f35ccc16e27a6468eb6b",
+  "keys": [
+    {
+      "approvals": [
+        "2021-10-21"
+      ],
+      "key": "190260ZMQ",
+      "map_dates": [
+        "2021-10-21"
+      ],
+      "projects": [
+        "P2017Q0422"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-09-28"
+      ],
+      "key": "200101ZMK",
+      "map_dates": [
+        "2023-09-28"
+      ],
+      "projects": [
+        "P2017K0351"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-07-14"
+      ],
+      "key": "200228ZMX",
+      "map_dates": [
+        "2022-07-14"
+      ],
+      "projects": [
+        "2019X0252"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-04-27"
+      ],
+      "key": "200232ZMQ",
+      "map_dates": [
+        "2023-04-27"
+      ],
+      "projects": [
+        "2021Q0306"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-06-02"
+      ],
+      "key": "200246ZMQ",
+      "map_dates": [
+        "2022-06-02"
+      ],
+      "projects": [
+        "P2018Q0199"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-11-10"
+      ],
+      "key": "200296ZMK",
+      "map_dates": [
+        "2021-11-10"
+      ],
+      "projects": [
+        "2018K0415"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-12-09"
+      ],
+      "key": "200299ZMQ",
+      "map_dates": [
+        "2021-12-09"
+      ],
+      "projects": [
+        "2018Q0451"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-05-16"
+      ],
+      "key": "200310ZMK",
+      "map_dates": [
+        "2024-05-16"
+      ],
+      "projects": [
+        "2019K0060"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-07-14"
+      ],
+      "key": "200317ZMK",
+      "map_dates": [
+        "2022-07-14"
+      ],
+      "projects": [
+        "2019K0441"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-02-24"
+      ],
+      "key": "200329ZMK",
+      "map_dates": [
+        "2022-02-24"
+      ],
+      "projects": [
+        "P2018K0320"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-06-16"
+      ],
+      "key": "200335ZMK",
+      "map_dates": [
+        "2022-06-16"
+      ],
+      "projects": [
+        "2019K0333"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-05-19"
+      ],
+      "key": "200358ZMK",
+      "map_dates": [
+        "2022-05-19"
+      ],
+      "projects": [
+        "2019K0271"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-10-21"
+      ],
+      "key": "210025ZMQ",
+      "map_dates": [
+        "2021-10-21"
+      ],
+      "projects": [
+        "2019Q0239"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-05-03"
+      ],
+      "key": "210031ZMK",
+      "map_dates": [
+        "2022-04-28"
+      ],
+      "projects": [
+        "P2018K0275"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-04-28"
+      ],
+      "key": "210098ZMK",
+      "map_dates": [
+        "2022-04-28"
+      ],
+      "projects": [
+        "2019K0175"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-12-09"
+      ],
+      "key": "210119ZMK",
+      "map_dates": [
+        "2021-12-09"
+      ],
+      "projects": [
+        "2019K0158"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-07-14"
+      ],
+      "key": "210128ZMQ",
+      "map_dates": [
+        "2022-07-14"
+      ],
+      "projects": [
+        "2019Q0404"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-08-26"
+      ],
+      "key": "210148ZMQ",
+      "map_dates": [
+        "2021-08-26"
+      ],
+      "projects": [
+        "2020Q0156"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-11-10"
+      ],
+      "key": "210151ZMK",
+      "map_dates": [
+        "2021-11-10"
+      ],
+      "projects": [
+        "2019K0224"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-04-14"
+      ],
+      "key": "210161ZMQ",
+      "map_dates": [
+        "2022-04-14"
+      ],
+      "projects": [
+        "2019Q0065"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-12-15"
+      ],
+      "key": "210164ZMQ",
+      "map_dates": [
+        "2021-12-15"
+      ],
+      "projects": [
+        "2020Q0120"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-12-15"
+      ],
+      "key": "210166ZMK",
+      "map_dates": [
+        "2021-12-15"
+      ],
+      "projects": [
+        "2019K0442"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-10-13"
+      ],
+      "key": "210174ZMK",
+      "map_dates": [
+        "2022-10-12"
+      ],
+      "projects": [
+        "2020K0228"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-11-23"
+      ],
+      "key": "210177ZMK",
+      "map_dates": [
+        "2021-11-23"
+      ],
+      "projects": [
+        "2018K0382"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-02-24"
+      ],
+      "key": "210189ZMQ",
+      "map_dates": [
+        "2022-02-24"
+      ],
+      "projects": [
+        "2020Q0345"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-11-23"
+      ],
+      "key": "210192ZMQ",
+      "map_dates": [
+        "2021-11-23"
+      ],
+      "projects": [
+        "2019Q0174"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-12-09"
+      ],
+      "key": "210200ZMQ",
+      "map_dates": [
+        "2021-12-09"
+      ],
+      "projects": [
+        "2020Q0296"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-04-07"
+      ],
+      "key": "210213ZMQ",
+      "map_dates": [
+        "2022-04-07"
+      ],
+      "projects": [
+        "2020Q0378"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-07-14"
+      ],
+      "key": "210234ZMQ",
+      "map_dates": [
+        "2022-07-14"
+      ],
+      "projects": [
+        "2020Q0209"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-02-24"
+      ],
+      "key": "210239ZMK",
+      "map_dates": [
+        "2022-02-24"
+      ],
+      "projects": [
+        "2020K0270"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-09-23"
+      ],
+      "key": "210249ZMK",
+      "map_dates": [
+        "2021-09-23"
+      ],
+      "projects": [
+        "2018K0488"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-11-23"
+      ],
+      "key": "210253ZMK",
+      "map_dates": [
+        "2021-11-23"
+      ],
+      "projects": [
+        "2019K0208"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-11-23"
+      ],
+      "key": "210276ZMK",
+      "map_dates": [
+        "2021-11-23"
+      ],
+      "projects": [
+        "2019K0457"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-10-21"
+      ],
+      "key": "210278ZMK",
+      "map_dates": [
+        "2021-10-21"
+      ],
+      "projects": [
+        "2020K0153"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-05-25"
+      ],
+      "key": "210283ZMQ",
+      "map_dates": [
+        "2023-05-25"
+      ],
+      "projects": [
+        "2020Q0302"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-02-24"
+      ],
+      "key": "210285ZMK",
+      "map_dates": [
+        "2022-02-24"
+      ],
+      "projects": [
+        "2020K0425"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-11-10"
+      ],
+      "key": "210289ZMR",
+      "map_dates": [
+        "2021-11-10"
+      ],
+      "projects": [
+        "2019R0212"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-06-02"
+      ],
+      "key": "210299ZMK",
+      "map_dates": [
+        "2022-06-02"
+      ],
+      "projects": [
+        "2020K0259"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-06-02"
+      ],
+      "key": "210312ZMK",
+      "map_dates": [
+        "2022-06-02"
+      ],
+      "projects": [
+        "2019K0213"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-08-03"
+      ],
+      "key": "210314ZMK",
+      "map_dates": [
+        "2023-08-03"
+      ],
+      "projects": [
+        "2020K0289"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-05-11"
+      ],
+      "key": "210317ZMQ",
+      "map_dates": [
+        "2023-05-11"
+      ],
+      "projects": [
+        "2020Q0317"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-04-28"
+      ],
+      "key": "210321ZMX",
+      "map_dates": [
+        "2022-04-28"
+      ],
+      "projects": [
+        "P2017X0312"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-02-02"
+      ],
+      "key": "210332ZMK",
+      "map_dates": [
+        "2023-02-02"
+      ],
+      "projects": [
+        "2019K0406"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-04-28"
+      ],
+      "key": "210335ZMK",
+      "map_dates": [
+        "2022-04-28"
+      ],
+      "projects": [
+        "2020K0405"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-11-10"
+      ],
+      "key": "210339ZMX",
+      "map_dates": [
+        "2021-11-10"
+      ],
+      "projects": [
+        "2019X0470"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-11-23"
+      ],
+      "key": "210351ZMM",
+      "map_dates": [
+        "2021-11-23"
+      ],
+      "projects": [
+        "2019M0430"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-10-21"
+      ],
+      "key": "210361ZMR",
+      "map_dates": [
+        "2021-10-21"
+      ],
+      "projects": [
+        "P2018R0326"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-04-28"
+      ],
+      "key": "210386ZMK",
+      "map_dates": [
+        "2022-04-28"
+      ],
+      "projects": [
+        "2020K0384"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-06-02"
+      ],
+      "key": "210391ZMX",
+      "map_dates": [
+        "2022-06-02"
+      ],
+      "projects": [
+        "2020X0451"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-09-30"
+      ],
+      "key": "210394ZMQ",
+      "map_dates": [
+        "2022-09-29"
+      ],
+      "projects": [
+        "2020Q0274"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-12-15"
+      ],
+      "key": "210422ZMM",
+      "map_dates": [
+        "2021-12-15"
+      ],
+      "projects": [
+        "2018M0375"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-12-15"
+      ],
+      "key": "210462ZMK",
+      "map_dates": [
+        "2021-12-15"
+      ],
+      "projects": [
+        "2018K0463"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-10-12"
+      ],
+      "key": "220007ZMX",
+      "map_dates": [
+        "2022-10-12"
+      ],
+      "projects": [
+        "2019X0305"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-05-19"
+      ],
+      "key": "220050ZMQ",
+      "map_dates": [
+        "2022-05-19"
+      ],
+      "projects": [
+        "P2017Q0146"
+      ]
+    },
+    {
+      "approvals": [
+        "2021-12-15"
+      ],
+      "key": "220062ZMK",
+      "map_dates": [
+        "2021-12-15"
+      ],
+      "projects": [
+        "2021K0237"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-09-26"
+      ],
+      "key": "220080ZMK",
+      "map_dates": [
+        "2024-09-26"
+      ],
+      "projects": [
+        "P2017K0249"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-04-28"
+      ],
+      "key": "220111ZMK",
+      "map_dates": [
+        "2022-04-28"
+      ],
+      "projects": [
+        "2021K0173"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-10-12"
+      ],
+      "key": "220133ZMQ",
+      "map_dates": [
+        "2022-10-12"
+      ],
+      "projects": [
+        "2020Q0446"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-10-12"
+      ],
+      "key": "220169ZMQ",
+      "map_dates": [
+        "2022-10-12"
+      ],
+      "projects": [
+        "2020Q0105"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-09-14"
+      ],
+      "key": "220171ZMX",
+      "map_dates": [
+        "2022-09-14"
+      ],
+      "projects": [
+        "2020X0421"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-07-18"
+      ],
+      "key": "220185ZMQ",
+      "map_dates": [
+        "2024-07-18"
+      ],
+      "projects": [
+        "2020Q0460"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-12-07"
+      ],
+      "key": "220188ZMK",
+      "map_dates": [
+        "2022-12-07"
+      ],
+      "projects": [
+        "2019K0461"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-09-29"
+      ],
+      "key": "220196ZMQ",
+      "map_dates": [
+        "2022-09-29"
+      ],
+      "projects": [
+        "2018Q0491"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-08-11"
+      ],
+      "key": "220203ZMX",
+      "map_dates": [
+        "2022-08-11"
+      ],
+      "projects": [
+        "2019X0184"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-08-11"
+      ],
+      "key": "220220ZMM",
+      "map_dates": [
+        "2022-08-11"
+      ],
+      "projects": [
+        "2020M0112"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-07-14"
+      ],
+      "key": "220232ZMQ",
+      "map_dates": [
+        "2022-07-14"
+      ],
+      "projects": [
+        "2019Q0127"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-01-19"
+      ],
+      "key": "220250ZMQ",
+      "map_dates": [
+        "2023-01-19"
+      ],
+      "projects": [
+        "2021Q0137"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-05-25"
+      ],
+      "key": "220267ZMQ",
+      "map_dates": [
+        "2023-05-25"
+      ],
+      "projects": [
+        "2020Q0150"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-02-02"
+      ],
+      "key": "220274ZMQ",
+      "map_dates": [
+        "2023-02-02"
+      ],
+      "projects": [
+        "2020Q0278"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-05-11"
+      ],
+      "key": "220283ZMX",
+      "map_dates": [
+        "2023-05-11"
+      ],
+      "projects": [
+        "2019X0240"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-07-13"
+      ],
+      "key": "220285ZMK",
+      "map_dates": [
+        "2023-07-13"
+      ],
+      "projects": [
+        "2021K0246"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-03-16"
+      ],
+      "key": "220306ZMX",
+      "map_dates": [
+        "2023-03-16"
+      ],
+      "projects": [
+        "2020X0471"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-11-22"
+      ],
+      "key": "220312ZMK",
+      "map_dates": [
+        "2022-11-22"
+      ],
+      "projects": [
+        "2019K0038"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-09-12"
+      ],
+      "key": "220334ZMX",
+      "map_dates": [
+        "2023-09-14"
+      ],
+      "projects": [
+        "P2018X0270"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-11-22"
+      ],
+      "key": "220364ZMQ",
+      "map_dates": [
+        "2022-11-22"
+      ],
+      "projects": [
+        "2021Q0106"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-11-22"
+      ],
+      "key": "220414ZMQ",
+      "map_dates": [
+        "2022-11-22"
+      ],
+      "projects": [
+        "2020Q0201"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-12-22"
+      ],
+      "key": "220426ZMR",
+      "map_dates": [
+        "2023-12-20"
+      ],
+      "projects": [
+        "2020R0348"
+      ]
+    },
+    {
+      "approvals": [
+        "2022-12-07"
+      ],
+      "key": "220429ZMK",
+      "map_dates": [
+        "2022-12-07"
+      ],
+      "projects": [
+        "2021K0458"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-12-06"
+      ],
+      "key": "220438ZMK",
+      "map_dates": [
+        "2023-12-06"
+      ],
+      "projects": [
+        "2020K0390"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-11-02"
+      ],
+      "key": "220453ZMK",
+      "map_dates": [
+        "2023-11-02"
+      ],
+      "projects": [
+        "2020K0485"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-09-28"
+      ],
+      "key": "220456ZMR",
+      "map_dates": [
+        "2023-09-28"
+      ],
+      "projects": [
+        "2021R0186"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-05-25"
+      ],
+      "key": "220470ZMK",
+      "map_dates": [
+        "2023-05-25"
+      ],
+      "projects": [
+        "2020K0479"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-08-03"
+      ],
+      "key": "230001ZMK",
+      "map_dates": [
+        "2023-08-03"
+      ],
+      "projects": [
+        "2021K0383"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-04-27"
+      ],
+      "key": "230006ZMQ",
+      "map_dates": [
+        "2023-04-27"
+      ],
+      "projects": [
+        "2021Q0385"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-12-06"
+      ],
+      "key": "230010ZMK",
+      "map_dates": [
+        "2023-12-06"
+      ],
+      "projects": [
+        "2020K0491"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-10-05"
+      ],
+      "key": "230012ZMQ",
+      "map_dates": [
+        "2023-10-05"
+      ],
+      "projects": [
+        "2019Q0281"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-10-10"
+      ],
+      "key": "230022ZMQ",
+      "map_dates": [
+        "2024-10-10"
+      ],
+      "projects": [
+        "2021Q0290"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-08-03"
+      ],
+      "key": "230041ZMQ",
+      "map_dates": [
+        "2023-08-03"
+      ],
+      "projects": [
+        "2021Q0363"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-04-18"
+      ],
+      "key": "230051ZMK",
+      "map_dates": [
+        "2024-04-18"
+      ],
+      "projects": [
+        "2022K0246"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-05-25"
+      ],
+      "key": "230052ZMQ",
+      "map_dates": [
+        "2023-05-25"
+      ],
+      "projects": [
+        "2022Q0244"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-02-08"
+      ],
+      "key": "230091ZMQ",
+      "map_dates": [
+        "2024-02-08"
+      ],
+      "projects": [
+        "2021Q0365"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-04-11"
+      ],
+      "key": "230126ZMQ",
+      "map_dates": [
+        "2024-04-11"
+      ],
+      "projects": [
+        "2022Q0107"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-05-16"
+      ],
+      "key": "230146ZMK",
+      "map_dates": [
+        "2024-05-16"
+      ],
+      "projects": [
+        "2021K0145"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-10-23"
+      ],
+      "key": "230206ZMM",
+      "map_dates": [
+        "2024-10-23"
+      ],
+      "projects": [
+        "2022M0159"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-03-19"
+      ],
+      "key": "230241ZMM",
+      "map_dates": [
+        "2024-03-19"
+      ],
+      "projects": [
+        "2021M0354"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-09-26"
+      ],
+      "key": "230250ZMQ",
+      "map_dates": [
+        "2024-09-26"
+      ],
+      "projects": [
+        "2022Q0133"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-03-19"
+      ],
+      "key": "230255ZMK",
+      "map_dates": [
+        "2024-03-19"
+      ],
+      "projects": [
+        "2021K0449"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-08-15"
+      ],
+      "key": "230258ZMK",
+      "map_dates": [
+        "2024-08-15"
+      ],
+      "projects": [
+        "2022K0109"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-07-18"
+      ],
+      "key": "230276ZMQ",
+      "map_dates": [
+        "2024-07-18"
+      ],
+      "projects": [
+        "2022Q0287"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-03-07"
+      ],
+      "key": "230289ZMK",
+      "map_dates": [
+        "2024-03-07"
+      ],
+      "projects": [
+        "2022K0391"
+      ]
+    },
+    {
+      "approvals": [
+        "2023-09-28"
+      ],
+      "key": "230291ZMX",
+      "map_dates": [
+        "2023-09-28"
+      ],
+      "projects": [
+        "2021X0108"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-08-15"
+      ],
+      "key": "230293ZMK",
+      "map_dates": [
+        "2024-08-15"
+      ],
+      "projects": [
+        "2019K0330"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-03-19"
+      ],
+      "key": "230306ZMQ",
+      "map_dates": [
+        "2024-03-19"
+      ],
+      "projects": [
+        "2020Q0349"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-04-11"
+      ],
+      "key": "230307ZMQ",
+      "map_dates": [
+        "2024-04-11"
+      ],
+      "projects": [
+        "2022Q0265"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-05-16"
+      ],
+      "key": "230323ZMK",
+      "map_dates": [
+        "2024-05-16"
+      ],
+      "projects": [
+        "2022K0343"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-04-18"
+      ],
+      "key": "230337ZMK",
+      "map_dates": [
+        "2024-04-18"
+      ],
+      "projects": [
+        "2020K0477"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-02-08"
+      ],
+      "key": "230344ZMM",
+      "map_dates": [
+        "2024-02-08"
+      ],
+      "projects": [
+        "2021M0192"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-07-18"
+      ],
+      "key": "230351ZMK",
+      "map_dates": [
+        "2024-07-18"
+      ],
+      "projects": [
+        "2021K0194"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-10-10"
+      ],
+      "key": "230354ZMK",
+      "map_dates": [
+        "2024-10-10"
+      ],
+      "projects": [
+        "2022K0417"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-11-21"
+      ],
+      "key": "230356ZMK",
+      "map_dates": [
+        "2024-11-21"
+      ],
+      "projects": [
+        "2022K0423"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-04-11"
+      ],
+      "key": "230381ZMK",
+      "map_dates": [
+        "2024-04-11"
+      ],
+      "projects": [
+        "2023K0165"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-08-15"
+      ],
+      "key": "240015ZMX",
+      "map_dates": [
+        "2024-08-15"
+      ],
+      "projects": [
+        "2022X0431"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-03-19"
+      ],
+      "key": "240030ZMK",
+      "map_dates": [
+        "2024-03-19"
+      ],
+      "projects": [
+        "2021K0255"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-08-15"
+      ],
+      "key": "240072ZMK",
+      "map_dates": [
+        "2024-08-15"
+      ],
+      "projects": [
+        "2023K0176"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-04-18"
+      ],
+      "key": "240075ZMQ",
+      "map_dates": [
+        "2024-04-18"
+      ],
+      "projects": [
+        "2022Q0456"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-08-15"
+      ],
+      "key": "240131ZMK",
+      "map_dates": [
+        "2024-08-15"
+      ],
+      "projects": [
+        "2023K0172"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-09-26"
+      ],
+      "key": "240237ZMM",
+      "map_dates": [
+        "2024-09-26"
+      ],
+      "projects": [
+        "2022M0359"
+      ]
+    },
+    {
+      "approvals": [
+        "2024-10-10"
+      ],
+      "key": "240328ZMQ",
+      "map_dates": [
+        "2024-10-10"
+      ],
+      "projects": [
+        "2019Q0302"
+      ]
+    }
+  ],
+  "links": {
+    "2018K0382": [
+      "210177ZMK"
+    ],
+    "2018K0395": [],
+    "2018K0415": [
+      "200296ZMK"
+    ],
+    "2018K0463": [
+      "210462ZMK"
+    ],
+    "2018K0488": [
+      "210249ZMK"
+    ],
+    "2018M0375": [
+      "210422ZMM"
+    ],
+    "2018Q0451": [
+      "200299ZMQ"
+    ],
+    "2018Q0491": [
+      "220196ZMQ"
+    ],
+    "2019K0038": [
+      "220312ZMK"
+    ],
+    "2019K0060": [
+      "200310ZMK"
+    ],
+    "2019K0158": [
+      "210119ZMK"
+    ],
+    "2019K0175": [
+      "210098ZMK"
+    ],
+    "2019K0177": [],
+    "2019K0208": [
+      "210253ZMK"
+    ],
+    "2019K0213": [
+      "210312ZMK"
+    ],
+    "2019K0224": [
+      "210151ZMK"
+    ],
+    "2019K0271": [
+      "200358ZMK"
+    ],
+    "2019K0330": [
+      "230293ZMK"
+    ],
+    "2019K0333": [
+      "200335ZMK"
+    ],
+    "2019K0406": [
+      "210332ZMK"
+    ],
+    "2019K0441": [
+      "200317ZMK"
+    ],
+    "2019K0442": [
+      "210166ZMK"
+    ],
+    "2019K0457": [
+      "210276ZMK"
+    ],
+    "2019K0461": [
+      "220188ZMK"
+    ],
+    "2019M0430": [
+      "210351ZMM"
+    ],
+    "2019Q0065": [
+      "210161ZMQ"
+    ],
+    "2019Q0127": [
+      "220232ZMQ"
+    ],
+    "2019Q0174": [
+      "210192ZMQ"
+    ],
+    "2019Q0239": [
+      "210025ZMQ"
+    ],
+    "2019Q0280": [],
+    "2019Q0281": [
+      "230012ZMQ"
+    ],
+    "2019Q0302": [
+      "240328ZMQ"
+    ],
+    "2019Q0404": [
+      "210128ZMQ"
+    ],
+    "2019R0212": [
+      "210289ZMR"
+    ],
+    "2019X0184": [
+      "220203ZMX"
+    ],
+    "2019X0240": [
+      "220283ZMX"
+    ],
+    "2019X0252": [
+      "200228ZMX"
+    ],
+    "2019X0305": [
+      "220007ZMX"
+    ],
+    "2019X0470": [
+      "210339ZMX"
+    ],
+    "2020K0143": [],
+    "2020K0153": [
+      "210278ZMK"
+    ],
+    "2020K0228": [
+      "210174ZMK"
+    ],
+    "2020K0259": [
+      "210299ZMK"
+    ],
+    "2020K0270": [
+      "210239ZMK"
+    ],
+    "2020K0289": [
+      "210314ZMK"
+    ],
+    "2020K0358": [],
+    "2020K0384": [
+      "210386ZMK"
+    ],
+    "2020K0390": [
+      "220438ZMK"
+    ],
+    "2020K0405": [
+      "210335ZMK"
+    ],
+    "2020K0425": [
+      "210285ZMK"
+    ],
+    "2020K0477": [
+      "230337ZMK"
+    ],
+    "2020K0479": [
+      "220470ZMK"
+    ],
+    "2020K0485": [
+      "220453ZMK"
+    ],
+    "2020K0491": [
+      "230010ZMK"
+    ],
+    "2020M0112": [
+      "220220ZMM"
+    ],
+    "2020Q0105": [
+      "220169ZMQ"
+    ],
+    "2020Q0120": [
+      "210164ZMQ"
+    ],
+    "2020Q0150": [
+      "220267ZMQ"
+    ],
+    "2020Q0155": [],
+    "2020Q0156": [
+      "210148ZMQ"
+    ],
+    "2020Q0201": [
+      "220414ZMQ"
+    ],
+    "2020Q0209": [
+      "210234ZMQ"
+    ],
+    "2020Q0274": [
+      "210394ZMQ"
+    ],
+    "2020Q0278": [
+      "220274ZMQ"
+    ],
+    "2020Q0296": [
+      "210200ZMQ"
+    ],
+    "2020Q0302": [
+      "210283ZMQ"
+    ],
+    "2020Q0317": [
+      "210317ZMQ"
+    ],
+    "2020Q0345": [
+      "210189ZMQ"
+    ],
+    "2020Q0349": [
+      "230306ZMQ"
+    ],
+    "2020Q0378": [
+      "210213ZMQ"
+    ],
+    "2020Q0446": [
+      "220133ZMQ"
+    ],
+    "2020Q0460": [
+      "220185ZMQ"
+    ],
+    "2020R0348": [
+      "220426ZMR"
+    ],
+    "2020X0421": [
+      "220171ZMX"
+    ],
+    "2020X0451": [
+      "210391ZMX"
+    ],
+    "2020X0471": [
+      "220306ZMX"
+    ],
+    "2021K0145": [
+      "230146ZMK"
+    ],
+    "2021K0161": [],
+    "2021K0173": [
+      "220111ZMK"
+    ],
+    "2021K0194": [
+      "230351ZMK"
+    ],
+    "2021K0237": [
+      "220062ZMK"
+    ],
+    "2021K0246": [
+      "220285ZMK"
+    ],
+    "2021K0255": [
+      "240030ZMK"
+    ],
+    "2021K0383": [
+      "230001ZMK"
+    ],
+    "2021K0449": [
+      "230255ZMK"
+    ],
+    "2021K0458": [
+      "220429ZMK"
+    ],
+    "2021M0192": [
+      "230344ZMM"
+    ],
+    "2021M0354": [
+      "230241ZMM"
+    ],
+    "2021Q0106": [
+      "220364ZMQ"
+    ],
+    "2021Q0137": [
+      "220250ZMQ"
+    ],
+    "2021Q0290": [
+      "230022ZMQ"
+    ],
+    "2021Q0306": [
+      "200232ZMQ"
+    ],
+    "2021Q0363": [
+      "230041ZMQ"
+    ],
+    "2021Q0365": [
+      "230091ZMQ"
+    ],
+    "2021Q0385": [
+      "230006ZMQ"
+    ],
+    "2021R0186": [
+      "220456ZMR"
+    ],
+    "2021X0108": [
+      "230291ZMX"
+    ],
+    "2022K0109": [
+      "230258ZMK"
+    ],
+    "2022K0246": [
+      "230051ZMK"
+    ],
+    "2022K0343": [
+      "230323ZMK"
+    ],
+    "2022K0391": [
+      "230289ZMK"
+    ],
+    "2022K0417": [
+      "230354ZMK"
+    ],
+    "2022K0423": [
+      "230356ZMK"
+    ],
+    "2022M0159": [
+      "230206ZMM"
+    ],
+    "2022M0359": [
+      "240237ZMM"
+    ],
+    "2022Q0107": [
+      "230126ZMQ"
+    ],
+    "2022Q0133": [
+      "230250ZMQ"
+    ],
+    "2022Q0244": [
+      "230052ZMQ"
+    ],
+    "2022Q0265": [
+      "230307ZMQ"
+    ],
+    "2022Q0287": [
+      "230276ZMQ"
+    ],
+    "2022Q0456": [
+      "240075ZMQ"
+    ],
+    "2022X0431": [
+      "240015ZMX"
+    ],
+    "2023K0165": [
+      "230381ZMK"
+    ],
+    "2023K0172": [
+      "240131ZMK"
+    ],
+    "2023K0176": [
+      "240072ZMK"
+    ],
+    "P2017K0249": [
+      "220080ZMK"
+    ],
+    "P2017K0351": [
+      "200101ZMK"
+    ],
+    "P2017Q0146": [
+      "220050ZMQ"
+    ],
+    "P2017Q0422": [
+      "190260ZMQ"
+    ],
+    "P2017X0312": [
+      "210321ZMX"
+    ],
+    "P2018K0275": [
+      "210031ZMK"
+    ],
+    "P2018K0300": [],
+    "P2018K0320": [
+      "200329ZMK"
+    ],
+    "P2018Q0199": [
+      "200246ZMQ"
+    ],
+    "P2018R0326": [
+      "210361ZMR"
+    ],
+    "P2018X0270": [
+      "220334ZMX"
+    ]
+  },
+  "map_digests": {
+    "map-0.json": "585b1740a108e127bf1ef0e3ed19bce849d7bb6783d483533916f0a43cbf71fd",
+    "map-1200.json": "1173651ffca33cf36e5259c781da6c72ebba1dadabdef7dc18a0d78fe9833568",
+    "map-300.json": "8167ee7cce8b5824ac67256a7dc9af0dc1672039ac8898e7cd8a96dfc7a10e09",
+    "map-600.json": "cf7d5f0cc3708fbd154eaafd4eb26bc665579bb23be30ed084b49f053795f21d",
+    "map-900.json": "7bf2ca9c2912bbf06a44c176c4c5e9edb7bf3c447def13f067d67e62d5c23098",
+    "zap.json": "73d0dc5a51c9f3a88ade1933bb28b33aca01d6d705d75c9b179e5235358f847a"
+  },
+  "reverse": [
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "060432ZMQ",
+      "project_ids": [
+        "P2012Q0014"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "100421ZMQ",
+      "project_ids": [
+        "P2012Q0102"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "120403ZMQ",
+      "project_ids": [
+        "P2012Q0008"
+      ],
+      "years": [
+        "2015"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "140288ZMK",
+      "project_ids": [
+        "P2012K0243"
+      ],
+      "years": [
+        "2015"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "150076ZMK",
+      "project_ids": [
+        "P2014K0163"
+      ],
+      "years": [
+        "2015"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "150101ZMM",
+      "project_ids": [
+        "P2014M0069"
+      ],
+      "years": [
+        "2015"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "150125ZMQ",
+      "project_ids": [
+        "P2014Q0364"
+      ],
+      "years": [
+        "2015"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "150135ZMQ",
+      "project_ids": [
+        "P2014Q0200"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "150152ZMX",
+      "project_ids": [
+        "P2013X0423"
+      ],
+      "years": [
+        "2015"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "150211ZMM",
+      "project_ids": [
+        "P2012M0281"
+      ],
+      "years": [
+        "2015"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "150278ZMK",
+      "project_ids": [
+        "P2013K0309"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "150288ZMX",
+      "project_ids": [
+        "P2014X0051"
+      ],
+      "years": [
+        "2015"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "150312ZMX",
+      "project_ids": [
+        "P2013X0135"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "150402ZMR",
+      "project_ids": [
+        "P2012R0355"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "150422ZMR",
+      "project_ids": [
+        "P2013R0544"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160002ZMK",
+      "project_ids": [
+        "P2014K0454"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160030ZMK",
+      "project_ids": [
+        "P2014K0195"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160033ZMQ",
+      "project_ids": [
+        "P2014Q0506"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160035ZMK",
+      "project_ids": [
+        "P2015K0246"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160064ZMX",
+      "project_ids": [
+        "P2013X0323"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160065ZMX",
+      "project_ids": [
+        "P2015X0198"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160138ZMQ",
+      "project_ids": [
+        "P2016Q0024"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160175ZMK",
+      "project_ids": [
+        "P2013K0549"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160194ZMM",
+      "project_ids": [
+        "P2013M0467"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160219ZMQ",
+      "project_ids": [
+        "P2015Q0366"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160221ZMK",
+      "project_ids": [
+        "P2014K0469"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160251ZMX",
+      "project_ids": [
+        "P2015X0275"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160267ZMX",
+      "project_ids": [
+        "P2013X0354"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160285ZMX",
+      "project_ids": [
+        "P2013X0120"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160309ZMM",
+      "project_ids": [
+        "P2014M0257"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [],
+      "key": "160323ZMX",
+      "project_ids": [],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160332ZMX",
+      "project_ids": [
+        "P2015X0296"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160336ZMM",
+      "project_ids": [
+        "P2014M0548"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160351ZMQ",
+      "project_ids": [
+        "P2014Q0506"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160365ZMX",
+      "project_ids": [
+        "P2014X0534"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160378ZMR",
+      "project_ids": [
+        "P2012R0525"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "160401ZMR",
+      "project_ids": [
+        "P2013R0545"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170024ZMK",
+      "project_ids": [
+        "P2016K0119"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170025ZMK",
+      "project_ids": [
+        "P2015K0203"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170029ZMK",
+      "project_ids": [
+        "P2015K0118"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170031ZMQ",
+      "project_ids": [
+        "P2017Q0002"
+      ],
+      "years": [
+        "2016"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170047ZMK",
+      "project_ids": [
+        "P2016K0163"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170050ZMM",
+      "project_ids": [
+        "P2015M0236"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170070ZMK",
+      "project_ids": [
+        "P2015K0063"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170081ZMM",
+      "project_ids": [
+        "P2015M0428"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170087ZMX",
+      "project_ids": [
+        "P2016X0167"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170128ZMK",
+      "project_ids": [
+        "P2015K0157"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170140ZMX",
+      "project_ids": [
+        "P2016X0084"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170142ZMK",
+      "project_ids": [
+        "P2015K0353"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170150ZMX",
+      "project_ids": [
+        "P2015X0285"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170162ZMQ",
+      "project_ids": [
+        "P2016Q0173"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170164ZMK",
+      "project_ids": [
+        "P2013K0511"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170178ZMR",
+      "project_ids": [
+        "P2013R0448"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170180AZMQ",
+      "project_ids": [
+        "P2015Q0168"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170187ZMM",
+      "project_ids": [
+        "P2016M0316"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170189ZMK",
+      "project_ids": [
+        "P2015K0526"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170213ZMK",
+      "project_ids": [
+        "P2015K0450"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170226ZMM",
+      "project_ids": [
+        "P2016M0355"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170240ZMK",
+      "project_ids": [
+        "P2014K0042"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170243AZMQ",
+      "project_ids": [
+        "P2016Q0238"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170255ZMQ",
+      "project_ids": [
+        "P2017Q0054"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170256ZMQ",
+      "project_ids": [
+        "P2017Q0145"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170275ZMM",
+      "project_ids": [
+        "P2016M0429"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170299ZMQ",
+      "project_ids": [
+        "P2016Q0060"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170311ZMX",
+      "project_ids": [
+        "P2016X0409"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170336ZMQ",
+      "project_ids": [
+        "P2016Q0479"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170356ZMK",
+      "project_ids": [
+        "P2014K0056"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170358ZMM",
+      "project_ids": [
+        "P2017M0088"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170361ZMM",
+      "project_ids": [
+        "P2017M0259"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170373ZMR",
+      "project_ids": [
+        "P2017R0053"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170377ZMX",
+      "project_ids": [
+        "P2016X0085"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170380ZMM",
+      "project_ids": [
+        "P2016M0133"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170392ZMX",
+      "project_ids": [
+        "P2016X0337"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170400ZMK",
+      "project_ids": [
+        "P2016K0138"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170413ZMX",
+      "project_ids": [
+        "P2016X0056"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170416ZMK",
+      "project_ids": [
+        "P2016K0272"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170430ZMK",
+      "project_ids": [
+        "P2016K0159"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170438ZMX",
+      "project_ids": [
+        "P2012X0046"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170442ZMM",
+      "project_ids": [
+        "P2015M0359"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170445ZMX",
+      "project_ids": [
+        "P2014X0121"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170454ZMK",
+      "project_ids": [
+        "P2016K0082"
+      ],
+      "years": [
+        "2017"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "170492ZMQ",
+      "project_ids": [
+        "P2014Q0293"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180029ZMK",
+      "project_ids": [
+        "P2016K0351"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180031ZMX",
+      "project_ids": [
+        "P2016X0435"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [],
+      "key": "180036ZMQ",
+      "project_ids": [],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180042ZMK",
+      "project_ids": [
+        "P2015K0351"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180051AZMX",
+      "project_ids": [
+        "P2016X0350"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180083ZMX",
+      "project_ids": [
+        "P2015X0205"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180085ZMQ",
+      "project_ids": [
+        "P2016Q0278"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180088ZMX",
+      "project_ids": [
+        "P2014X0401"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180095ZMK",
+      "project_ids": [
+        "P2017K0168"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180096ZMK",
+      "project_ids": [
+        "P2016K0180"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180112ZMM",
+      "project_ids": [
+        "P2015M0488"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180127ZMM",
+      "project_ids": [
+        "P2016M0289"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180131ZMX",
+      "project_ids": [
+        "P2016X0408"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180138ZMQ",
+      "project_ids": [
+        "P2017Q0182"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180148ZMK",
+      "project_ids": [
+        "P2016K0433"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180150ZMM",
+      "project_ids": [
+        "P2017M0157"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [],
+      "key": "180154ZMM",
+      "project_ids": [],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180164ZMK",
+      "project_ids": [
+        "P2013K0364"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180170ZMM",
+      "project_ids": [
+        "P2017M0338"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180171ZMK",
+      "project_ids": [
+        "P2017K0165"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180174ZMQ",
+      "project_ids": [
+        "P2016Q0224"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180186ZMK",
+      "project_ids": [
+        "P2016K0080"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180201ZMM",
+      "project_ids": [
+        "P2017M0208"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180204AZMM",
+      "project_ids": [
+        "P2016M0065"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180209ZMQ",
+      "project_ids": [
+        "P2017Q0309"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180211ZMQ",
+      "project_ids": [
+        "P2015Q0578"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180216ZMK",
+      "project_ids": [
+        "P2016K0250"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180229ZMK",
+      "project_ids": [
+        "P2014K0259"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180261ZMX",
+      "project_ids": [
+        "P2015X0544"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180265ZMQ",
+      "project_ids": [
+        "P2016Q0413"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180282ZMQ",
+      "project_ids": [
+        "P2016Q0430"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180291ZMQ",
+      "project_ids": [
+        "P2017Q0027"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180292ZMK",
+      "project_ids": [
+        "P2016K0311"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180304ZMQ",
+      "project_ids": [
+        "P2018Q0002"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180315ZMQ",
+      "project_ids": [
+        "P2017Q0194"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180344ZMK",
+      "project_ids": [
+        "P2016K0063"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180347ZMK",
+      "project_ids": [
+        "2018K0356"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180393ZMK",
+      "project_ids": [
+        "P2015K0596"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "different action token or other exclusion"
+      ],
+      "key": "180395ZMQ",
+      "project_ids": [
+        "P2016Q0123"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180399ZMQ",
+      "project_ids": [
+        "P2017Q0335"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180447ZMQ",
+      "project_ids": [
+        "P2016Q0293"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180459ZMK",
+      "project_ids": [
+        "P2016K0093"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180481ZMM",
+      "project_ids": [
+        "P2017M0151"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180489ZMK",
+      "project_ids": [
+        "P2015K0393"
+      ],
+      "years": [
+        "2018"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180496ZMK",
+      "project_ids": [
+        "P2016K0236"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180524ZMK",
+      "project_ids": [
+        "P2015K0330"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "180530ZMQ",
+      "project_ids": [
+        "P2018Q0042"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190011ZMK",
+      "project_ids": [
+        "P2017K0383"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190029ZMQ",
+      "project_ids": [
+        "P2017Q0352"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190049ZMX",
+      "project_ids": [
+        "P2016X0079"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190053ZMK",
+      "project_ids": [
+        "P2016K0008"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190071ZMK",
+      "project_ids": [
+        "2018K0461"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190102ZMX",
+      "project_ids": [
+        "P2017X0345"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190113ZMR",
+      "project_ids": [
+        "P2016R0149"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "different action token or other exclusion"
+      ],
+      "key": "190118ZMX",
+      "project_ids": [
+        "2020X0361"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190124ZMQ",
+      "project_ids": [
+        "P2016Q0381"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190143ZMX",
+      "project_ids": [
+        "P2018X0138"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190158ZMM",
+      "project_ids": [
+        "P2018M0058"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190161ZMK",
+      "project_ids": [
+        "P2017K0429"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190172ZMK",
+      "project_ids": [
+        "P2018K0039"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190207ZMX",
+      "project_ids": [
+        "P2018X0210"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190222ZMK",
+      "project_ids": [
+        "P2016K0318"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190235ZMM",
+      "project_ids": [
+        "2018M0390"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190256ZMK",
+      "project_ids": [
+        "P2018K0143"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "190260ZMQ",
+      "project_ids": [
+        "P2017Q0422"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190267ZMQ",
+      "project_ids": [
+        "P2018Q0101"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190295ZMK",
+      "project_ids": [
+        "P2017K0276"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190299ZMQ",
+      "project_ids": [
+        "P2018Q0025"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190305ZMK",
+      "project_ids": [
+        "P2018K0218"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190325ZMQ",
+      "project_ids": [
+        "P2016Q0306"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190336ZMX",
+      "project_ids": [
+        "2019Y0061"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190377ZMK",
+      "project_ids": [
+        "2018K0479"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190410ZMK",
+      "project_ids": [
+        "P2018K0333"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190422ZMQ",
+      "project_ids": [
+        "2018Q0519"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190434ZMM",
+      "project_ids": [
+        "P2018M0335"
+      ],
+      "years": [
+        "2019"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190438ZMK",
+      "project_ids": [
+        "P2017K0431"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190447ZMK",
+      "project_ids": [
+        "2018K0500"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "190517ZMQ",
+      "project_ids": [
+        "P2018Q0324"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200029ZMK",
+      "project_ids": [
+        "P2018K0145"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200033ZMQ",
+      "project_ids": [
+        "P2017Q0052"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200056ZMK",
+      "project_ids": [
+        "P2017K0230"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200059ZMK",
+      "project_ids": [
+        "2019K0320"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200064ZMM",
+      "project_ids": [
+        "P2015M0228"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [],
+      "key": "200070ZMQ",
+      "project_ids": [],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200085ZMK",
+      "project_ids": [
+        "P2017K0284"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200086ZMK",
+      "project_ids": [
+        "P2016K0021"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200092ZMK",
+      "project_ids": [
+        "P2018K0303"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "200101ZMK",
+      "project_ids": [
+        "P2017K0351"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200103ZMQ",
+      "project_ids": [
+        "P2017Q0405"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200149ZMM",
+      "project_ids": [
+        "P2018M0285"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200158ZMK",
+      "project_ids": [
+        "2019K0211"
+      ],
+      "years": [
+        "2020"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200178ZMQ",
+      "project_ids": [
+        "2019Q0259"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200190ZMQ",
+      "project_ids": [
+        "2018Q0444"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [],
+      "key": "200203ZMM",
+      "project_ids": [],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "200228ZMX",
+      "project_ids": [
+        "2019X0252"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "different action token or other exclusion"
+      ],
+      "key": "200230ZMQ",
+      "project_ids": [
+        "P2017Q0212"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "200232ZMQ",
+      "project_ids": [
+        "2021Q0306"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200243ZMQ",
+      "project_ids": [
+        "P2017Q0346"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "200246ZMQ",
+      "project_ids": [
+        "P2018Q0199"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200252ZMQ",
+      "project_ids": [
+        "2018Q0447"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200272ZMQ",
+      "project_ids": [
+        "2019Q0451"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200274ZMX",
+      "project_ids": [
+        "P2018X0209"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200282ZMQ",
+      "project_ids": [
+        "2019Q0247"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200286ZMX",
+      "project_ids": [
+        "2018X0450"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "200296ZMK",
+      "project_ids": [
+        "2018K0415"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "200299ZMQ",
+      "project_ids": [
+        "2018Q0451"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "different action token or other exclusion"
+      ],
+      "key": "200306ZMK",
+      "project_ids": [
+        "P2015K0307"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "200310ZMK",
+      "project_ids": [
+        "2019K0060"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "different action token or other exclusion"
+      ],
+      "key": "200314ZMK",
+      "project_ids": [
+        "P2018K0031"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "200317ZMK",
+      "project_ids": [
+        "2019K0441"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "200329ZMK",
+      "project_ids": [
+        "P2018K0320"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "200335ZMK",
+      "project_ids": [
+        "2019K0333"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "200344ZMK",
+      "project_ids": [
+        "P2014K0541"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "200358ZMK",
+      "project_ids": [
+        "2019K0271"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210025ZMQ",
+      "project_ids": [
+        "2019Q0239"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210027ZMX",
+      "project_ids": [
+        "2019X0395"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210031ZMK",
+      "project_ids": [
+        "P2018K0275"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210033ZMK",
+      "project_ids": [
+        "2019K0437"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [],
+      "key": "210041ZMM",
+      "project_ids": [],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210043ZMK",
+      "project_ids": [
+        "P2018K0173"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210049ZMK",
+      "project_ids": [
+        "P2017K0093"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210063ZMX",
+      "project_ids": [
+        "P2017X0311"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210070ZMQ",
+      "project_ids": [
+        "2020Q0437"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210098ZMK",
+      "project_ids": [
+        "2019K0175"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210103ZMX",
+      "project_ids": [
+        "P2016X0366"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210119ZMK",
+      "project_ids": [
+        "2019K0158"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210127ZMM",
+      "project_ids": [
+        "P2018M0255"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210128ZMQ",
+      "project_ids": [
+        "2019Q0404"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210130ZMK",
+      "project_ids": [
+        "2018K0367"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210133ZMQ",
+      "project_ids": [
+        "2018Q0377"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210138ZMK",
+      "project_ids": [
+        "P2018K0297"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210148ZMQ",
+      "project_ids": [
+        "2020Q0156"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "approval date missing"
+      ],
+      "key": "210149ZMX",
+      "project_ids": [
+        "2019X0022"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210151ZMK",
+      "project_ids": [
+        "2019K0224"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210161ZMQ",
+      "project_ids": [
+        "2019Q0065"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210164ZMQ",
+      "project_ids": [
+        "2020Q0120"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210166ZMK",
+      "project_ids": [
+        "2019K0442"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210174ZMK",
+      "project_ids": [
+        "2020K0228"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210177ZMK",
+      "project_ids": [
+        "2018K0382"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210189ZMQ",
+      "project_ids": [
+        "2020Q0345"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210192ZMQ",
+      "project_ids": [
+        "2019Q0174"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210200ZMQ",
+      "project_ids": [
+        "2020Q0296"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210213ZMQ",
+      "project_ids": [
+        "2020Q0378"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210234ZMQ",
+      "project_ids": [
+        "2020Q0209"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210239ZMK",
+      "project_ids": [
+        "2020K0270"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210249ZMK",
+      "project_ids": [
+        "2018K0488"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210253ZMK",
+      "project_ids": [
+        "2019K0208"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210276ZMK",
+      "project_ids": [
+        "2019K0457"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210278ZMK",
+      "project_ids": [
+        "2020K0153"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210283ZMQ",
+      "project_ids": [
+        "2020Q0302"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210285ZMK",
+      "project_ids": [
+        "2020K0425"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210289ZMR",
+      "project_ids": [
+        "2019R0212"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210299ZMK",
+      "project_ids": [
+        "2020K0259"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210312ZMK",
+      "project_ids": [
+        "2019K0213"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210314ZMK",
+      "project_ids": [
+        "2020K0289"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210317ZMQ",
+      "project_ids": [
+        "2020Q0317"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210321ZMX",
+      "project_ids": [
+        "P2017X0312"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "different action token or other exclusion"
+      ],
+      "key": "210324ZMM",
+      "project_ids": [
+        "2021M0107"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210332ZMK",
+      "project_ids": [
+        "2019K0406"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210335ZMK",
+      "project_ids": [
+        "2020K0405"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210339ZMX",
+      "project_ids": [
+        "2019X0470"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [],
+      "key": "210340ZMQ",
+      "project_ids": [],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [],
+      "key": "210348ZMQ",
+      "project_ids": [],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210351ZMM",
+      "project_ids": [
+        "2019M0430"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210361ZMR",
+      "project_ids": [
+        "P2018R0326"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [],
+      "key": "210375ZMM",
+      "project_ids": [],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210386ZMK",
+      "project_ids": [
+        "2020K0384"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210391ZMX",
+      "project_ids": [
+        "2020X0451"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210394ZMQ",
+      "project_ids": [
+        "2020Q0274"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "different action token or other exclusion"
+      ],
+      "key": "210408ZMM",
+      "project_ids": [
+        "P2018M0081"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210422ZMM",
+      "project_ids": [
+        "2018M0375"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "210462ZMK",
+      "project_ids": [
+        "2018K0463"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [],
+      "key": "210480ZMM",
+      "project_ids": [],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220007ZMX",
+      "project_ids": [
+        "2019X0305"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220050ZMQ",
+      "project_ids": [
+        "P2017Q0146"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220062ZMK",
+      "project_ids": [
+        "2021K0237"
+      ],
+      "years": [
+        "2021"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220080ZMK",
+      "project_ids": [
+        "P2017K0249"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220111ZMK",
+      "project_ids": [
+        "2021K0173"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220133ZMQ",
+      "project_ids": [
+        "2020Q0446"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220169ZMQ",
+      "project_ids": [
+        "2020Q0105"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220171ZMX",
+      "project_ids": [
+        "2020X0421"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220185ZMQ",
+      "project_ids": [
+        "2020Q0460"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220188ZMK",
+      "project_ids": [
+        "2019K0461"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220196ZMQ",
+      "project_ids": [
+        "2018Q0491"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220203ZMX",
+      "project_ids": [
+        "2019X0184"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220220ZMM",
+      "project_ids": [
+        "2020M0112"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220232ZMQ",
+      "project_ids": [
+        "2019Q0127"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220250ZMQ",
+      "project_ids": [
+        "2021Q0137"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220267ZMQ",
+      "project_ids": [
+        "2020Q0150"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220274ZMQ",
+      "project_ids": [
+        "2020Q0278"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220283ZMX",
+      "project_ids": [
+        "2019X0240"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220285ZMK",
+      "project_ids": [
+        "2021K0246"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220306ZMX",
+      "project_ids": [
+        "2020X0471"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220312ZMK",
+      "project_ids": [
+        "2019K0038"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220334ZMX",
+      "project_ids": [
+        "P2018X0270"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220364ZMQ",
+      "project_ids": [
+        "2021Q0106"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220414ZMQ",
+      "project_ids": [
+        "2020Q0201"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220426ZMR",
+      "project_ids": [
+        "2020R0348"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220429ZMK",
+      "project_ids": [
+        "2021K0458"
+      ],
+      "years": [
+        "2022"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220438ZMK",
+      "project_ids": [
+        "2020K0390"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220453ZMK",
+      "project_ids": [
+        "2020K0485"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220456ZMR",
+      "project_ids": [
+        "2021R0186"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "220470ZMK",
+      "project_ids": [
+        "2020K0479"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230001ZMK",
+      "project_ids": [
+        "2021K0383"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230006ZMQ",
+      "project_ids": [
+        "2021Q0385"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230010ZMK",
+      "project_ids": [
+        "2020K0491"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230012ZMQ",
+      "project_ids": [
+        "2019Q0281"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230022ZMQ",
+      "project_ids": [
+        "2021Q0290"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230041ZMQ",
+      "project_ids": [
+        "2021Q0363"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230051ZMK",
+      "project_ids": [
+        "2022K0246"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230052ZMQ",
+      "project_ids": [
+        "2022Q0244"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230091ZMQ",
+      "project_ids": [
+        "2021Q0365"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230126ZMQ",
+      "project_ids": [
+        "2022Q0107"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230146ZMK",
+      "project_ids": [
+        "2021K0145"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [],
+      "key": "230182ZMK",
+      "project_ids": [],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230206ZMM",
+      "project_ids": [
+        "2022M0159"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230241ZMM",
+      "project_ids": [
+        "2021M0354"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230250ZMQ",
+      "project_ids": [
+        "2022Q0133"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230255ZMK",
+      "project_ids": [
+        "2021K0449"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230258ZMK",
+      "project_ids": [
+        "2022K0109"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230276ZMQ",
+      "project_ids": [
+        "2022Q0287"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230289ZMK",
+      "project_ids": [
+        "2022K0391"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230291ZMX",
+      "project_ids": [
+        "2021X0108"
+      ],
+      "years": [
+        "2023"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230293ZMK",
+      "project_ids": [
+        "2019K0330"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230306ZMQ",
+      "project_ids": [
+        "2020Q0349"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230307ZMQ",
+      "project_ids": [
+        "2022Q0265"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230323ZMK",
+      "project_ids": [
+        "2022K0343"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230337ZMK",
+      "project_ids": [
+        "2020K0477"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230344ZMM",
+      "project_ids": [
+        "2021M0192"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230351ZMK",
+      "project_ids": [
+        "2021K0194"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230354ZMK",
+      "project_ids": [
+        "2022K0417"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230356ZMK",
+      "project_ids": [
+        "2022K0423"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "230381ZMK",
+      "project_ids": [
+        "2023K0165"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "240015ZMX",
+      "project_ids": [
+        "2022X0431"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "240030ZMK",
+      "project_ids": [
+        "2021K0255"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "240072ZMK",
+      "project_ids": [
+        "2023K0176"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "240075ZMQ",
+      "project_ids": [
+        "2022Q0456"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "240131ZMK",
+      "project_ids": [
+        "2023K0172"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "240237ZMM",
+      "project_ids": [
+        "2022M0359"
+      ],
+      "years": [
+        "2024"
+      ]
+    },
+    {
+      "categories": [
+        "in sample"
+      ],
+      "key": "240328ZMQ",
+      "project_ids": [
+        "2019Q0302"
+      ],
+      "years": [
+        "2024"
+      ]
+    }
+  ],
+  "strict_source_digests_expected": {
+    "map-0.json": "585b1740a108e127bf1ef0e3ed19bce849d7bb6783d483533916f0a43cbf71fd",
+    "map-1200.json": "1173651ffca33cf36e5259c781da6c72ebba1dadabdef7dc18a0d78fe9833568",
+    "map-300.json": "8167ee7cce8b5824ac67256a7dc9af0dc1672039ac8898e7cd8a96dfc7a10e09",
+    "map-600.json": "cf7d5f0cc3708fbd154eaafd4eb26bc665579bb23be30ed084b49f053795f21d",
+    "map-900.json": "7bf2ca9c2912bbf06a44c176c4c5e9edb7bf3c447def13f067d67e62d5c23098",
+    "zap.json": "73d0dc5a51c9f3a88ade1933bb28b33aca01d6d705d75c9b179e5235358f847a"
+  }
+}
