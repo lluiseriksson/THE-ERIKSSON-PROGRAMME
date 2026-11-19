@@ -12,7 +12,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-A benchmark can report accuracy for fixed training sizes while leaving two operational questions open. How many distinct materials must be measured along a sequence of designs? Does the fitted predictor reach its error target on materials that remain unmeasured? We reanalyse two acquisition strategies in an open materials-regression benchmark. At four budgets, 89 of 150 paired property--seed runs reached a specified accuracy on the full library under both strategies. Counting distinct labels changes all 21 nominal ties into lower acquisition counts for the active strategy. We also bound subset error using two rounded published moments. This permits a comparison on the same never-acquired materials across budgets and strategies, without access to individual prediction errors. The resulting counts describe a retrospective grid of designs; operational stopping and monetary savings require further information.
+A benchmark can report accuracy for fixed training sizes while leaving two operational questions open. How many distinct materials must be measured along a sequence of designs? Does the fitted predictor reach its error target on materials that remain unmeasured? We reanalyse two acquisition strategies in an open materials-regression benchmark. At four budgets, 89 of 150 paired property--seed runs reached a specified accuracy on the full library under both strategies. Counting distinct labels changes all 21 nominal ties into lower acquisition counts for the active strategy. We also bound subset error using two rounded published moments. On the same never-acquired materials at every budget, those two summaries certify one cost ordering in 150 pairs. In this case the methods reach the target with 100 and 561 measurements. In 837 of the 838 indeterminate cells, the exact two moments admit residual vectors on both sides of the threshold. The shared normalization across other predictors certifies failure in the remaining cell. In a preselected formation-energy case, reconstructed predictors match all thirty printed scores and reach the target at 100 versus 6,078 distinct labels. The costs describe first crossings on a retrospective grid.
 \end{abstract}
 
 \section{Design and acquisition cost}
@@ -51,6 +51,10 @@ At each of four budgets the certificate returns success, failure or undetermined
 A difference in labels can be translated into a monetary threshold only given a measurement price and selection, fitting and validation costs for both paths. If $c$ is the common price per label and $H_a$ denotes other costs accumulated by crossing, cluster selection is cheaper exactly when $H_c-H_a<c(|S_a|-|S_c|)$, with the two sets taken at their respective crossings. The archive supplies neither prices nor a live stopping signal. Kottke and colleagues explicitly optimize annotation and error costs in transductive classification~\cite{kottke}; here the endpoint is a fixed regression accuracy and the evidence consists of aggregate errors.
 
 \newpage
+\input{identification.tex}
+\newpage
+\input{refits.tex}
+
 \section{Reproduction, attribution and scope}
 The companion program \texttt{reconstruct.py} reads the published results and four index archives at the pinned commit, checks their Git object identifiers, reads the 15 database headers, checks index bounds, and reconstructs the three populations. It requires Python 3, NumPy and read access to the public archive. Run \texttt{python reconstruct.py results.zip} in a clean directory. The two output tables report aggregate counts and all matched curves, including cases that never demonstrably cross. The accompanying expected summary makes it possible to compare a rerun without relying on a figure or a model score. The materials data and predictors originate with the cited benchmark; this paper contributes a secondary analysis.
 

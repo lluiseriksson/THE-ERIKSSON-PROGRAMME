@@ -1,0 +1,1 @@
+{"source": "631296b91a0b2de790de4f4b5cb563f223e2f66b", "task": "qm9-gap", "seed": 7, "arm": "active", "budget": 500, "N": 133885, "T": 121897, "scales_from": 3920, "scale_interval": ["901/18961", "7127/149983"], "guaranteed_fail": true, "uniform_ambiguity": false, "rounded_witness": null}

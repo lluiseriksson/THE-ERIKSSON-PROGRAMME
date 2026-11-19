@@ -1,0 +1,19 @@
+\section{Direct reconstruction on MP21 formation energy}
+We selected a case before reading its row-level errors. Among arm-specific cost advantages that lost their certificate on the common set, we sorted by property identifier and numerical seed. We chose the first pair for which either method's determinate outcome at budget 100 became indeterminate. This gives MP21 formation energy, seed 2. Its fixed test set contains 133,481 of 145,608 rows. This selection is suitable for diagnosing one unresolved comparison. It cannot estimate the accuracy of either strategy across the 149 unresolved pairs.
+
+For each run we preserved the published training index order and multiplicities, standardized the full candidate feature matrix, reset the NumPy seed to 2 and used the authors' grid search and evaluation functions verbatim. The grid has three tree counts, three feature fractions, two depth choices and five folds. We used scikit-learn 1.7.0, as specified by the authors. Our runtime used NumPy 2.4.6 and SciPy 1.16.3. For each fit we checked all six whole-library metrics at the original five-decimal precision and retained the per-row residuals.
+
+\begin{center}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Method & Budget & Labels bought & Common RMSE/SD & Target\\
+\midrule
+Cluster & 100 & 100 & 0.47204 & met\\
+Active & 100 & 100 & 0.82615 & missed\\
+Active & 500 & 575 & 0.58154 & missed\\
+Active & 1000 & 1456 & 0.54978 & missed\\
+Active & 5000 & 6078 & 0.36594 & met\\
+\bottomrule
+\end{tabular}
+\end{center}
+All six archived whole-library metrics matched for each of the five reconstructed fits. On the same 133,481 materials, the cluster predictor reached the threshold at the first budget, and the active predictor first reached it at the fourth. These paths required 100 and 6,078 distinct labels, respectively. The difference of 5,978 is conditional on the specified sequence of designs. The archived final active model also passes by the two-moment certificate. Equality of the six printed scores does not establish row-wise identity with historical predictions.
