@@ -1,0 +1,7 @@
+# Prompt-order and question-weight certificates
+
+The primary numerical source is Table 9 in Gao et al., ICML 2023 (PMLR 202). Table 12 supplies seven sizes. The pinned PAL repository supplies the JSON-lines files used for all eight. The primary PDF SHA-256 is 9f4e97fd779659f8d244b2ab1e108f496368a3ed91776b8519670428a63f7be4. Data revisions, input digests and precision assumptions are recorded in result.json. There is no redistributed benchmark dataset or third-party PDF.
+
+On a dedicated Linux Colab runtime with internet access, run pal-audit.py, count-and-weight-audit.py and block-check.py as separate Python scripts in fresh output directories (/content). Each writes a ZIP and prints its digest. The first and second produce result.json and comparison.json respectively. The review compared every raw triple in both returns and retained a compact overview.json. The third checks finite margins independently of the historical PAL data; its result is block-verification.json. Generation and assessment of this paper do not invoke a model on the benchmark problems. In comparison.json, divisor 6 means sample variance and 9 means population variance, False selects raw order scores and True prior rounding. The two rounded-summary intervals are closed.
+
+The outcome assignments in the ASDiv witness are hypothetical. They bound what the published marginal data imply. The scripts are research-repository code; links to third-party resources confer no rights over those resources.
