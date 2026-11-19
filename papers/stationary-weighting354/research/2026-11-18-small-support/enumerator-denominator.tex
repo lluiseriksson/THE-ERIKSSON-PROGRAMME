@@ -1,0 +1,144 @@
+% Continuation of the grouped manuscript on Boolean Doob chains.
+\section{Controlling the denominator by the weight enumerator}
+\label{sec:enumerator}
+Let \(C=\operatorname{im}(A^\top)\subseteq\mathbb F_2^L\) have rank \(r\).
+Assume \(E\pi=1\), \(\|\pi\|_2\le B\), and marginal matching through order
+\(k\to\infty\). The density is strictly positive in each dimension.
+Define the weighted counts
+\[
+ Z=\sum_{w\in C}2^{-|w|},\qquad T_k=\sum_{w\in C,\ |w|>k}2^{-|w|}.
+\]
+The first counts all available characters; the second uses only those
+whose coefficients may survive matching.
+
+\paragraph{Two criteria.}
+If \(2^{-k} Z\to0\) and \(T_k\to0\), then the entire ordered spectrum
+recovers, for any linear quotient. If the columns instead contain two
+disjoint bases, \(2^{-k} Z\to0\) alone suffices. In this second case
+exponential decay of \(2^{-k} Z\) gives exponential recovery in \(k\).
+In particular a sufficient rank condition for exponential recovery is
+\[
+ \limsup r/k<1/\log_2(5/4).
+ \tag{W1}
+\]
+There is no bound on the peak or inverse of the stationary density among
+these hypotheses. The constants from the ordinary noise operator act on
+the full cube, including eigenvectors that vary within a quotient fiber.
+
+\paragraph{Pointwise denominator control.}
+Put \(F=Qh,\ a=Eh,\ V=\|F-a\|_2^2=1-a^2\).
+Cauchy--Schwarz gives \(1=(Ehg)^2\le a E(\pi g)\).
+The nonconstant coefficients of \(\pi\) vanish through degree \(k\), and
+\(g=QF\). By Parseval,
+\(V\le a\|\pi-1\|_2\,2^{-(k+1)/2}\sqrt V\).
+This includes \(V=0\). Since \(F\) is a quotient function, Cauchy--Schwarz
+in its Walsh expansion gives
+\[
+ \|g-1\|_\infty\le V+\sqrt{Z-1}\sqrt V
+ \le B^2 2^{-(k+1)} + B\,2^{-(k+1)/2}\sqrt{Z-1}=:d_k .
+ \tag{W2}
+\]
+Here \(1-a\le V\) since \(0<a\le1\).
+In particular \(g\ge 1-d_k\) on every vertex. Any exceptional set defined
+by a fixed denominator cutoff below one is eventually empty when
+\(2^{-k} Z\to0\).
+
+\paragraph{Lifting the signed comparison.}
+Write \(H=\|QM_{\pi-1}Q\|\) on the full cube. For a character \(\chi_w\),
+\(QM_{\chi_w}Q\) is a weighted permutation in the orthonormal Walsh basis,
+with largest entry \(2^{-|w|/2}\): its entries have exponents
+\(-(|u|+|u+w|)/2\) and \(u=0\) attains the maximum. Thus
+\(H\le\|\pi-1\|_2\sqrt{T_k}\). When \(d_k\le1/2\), positivity of \(\pi\)
+and (W2) give a quadratic-form bound
+\[
+ \|QM_{U-\pi}Q\|\le 8d_k\,\|QM_\pi Q\|\le8d_k(1+H).
+\]
+Indeed \(|g^{-2}-1|\le 8d_k\) in that range.
+The two Gram products from the preceding section and min--max now give
+\(\Delta\le H+8d_k(1+H)\). This proves the first criterion.
+
+For two bases there is a second bound on \(H\) irrespective of \(T_k\).
+Take \(\lambda=3/4,\ \theta=1/(\sqrt2\lambda)<1\), so
+\(Q=P_\theta P_\lambda\). On the quotient the two full bases give
+\(P_\lambda:L^2\to L^4\) since \(1+\lambda^{-4}>4\).
+The positive leading eigenvector argument for
+\(P_\lambda M_{|\pi-1|}P_\lambda\) lifts its norm bound
+\(\|\pi-1\|_2\) to the full cube and hence bounds the signed form too.
+Projecting at degree \(j=\lfloor k/2\rfloor\) on both sides, the
+low--low block of \(QM_{\pi-1}Q\) vanishes by matching; each other block
+has at least one \(P_\theta\) factor restricted to degrees greater than
+\(j\). Therefore \(H\le3B\theta^{j+1}\). This proves the second criterion.
+
+For disjoint bases \(J_1,J_2\), \(|w|\ge |w_{J_1}|+|w_{J_2}|\).
+Each restriction is a bijection from \(C\) to the binary \(r\)-cube.
+Cauchy--Schwarz in the unnormalized sum gives
+\(Z\le(1+2^{-2})^r\), proving (W1). More generally a fractional packing
+of weight \(t>0\) gives \(Z\le(1+2^{-t})^r\): apply generalized
+H\"older with weights \(b_J/t\) to the factors \(2^{-t|w_J|}\) for the
+positive base weights \(b_J\), using the column capacity constraint.
+This last counting bound alone does not supply the two-base signed estimate.
+
+\paragraph{An example beyond peak control.}
+For comparison, a direct truncation gives a sufficient peak rate
+\(\limsup k^{-1}\log_2\|\pi\|_\infty<7/15\) for two bases at \(p=2\).
+Indeed set \(s=5/3\); \(Q:L^2\to L^5\) on the quotient gives the
+positive multiplier bound from \(L^s\). The preceding section bounds
+\(\|g^{-1}\|_q\) for every \(q<15\).
+For \(E=\{|g-1|>2^{-\beta k}\}\), its matching estimate gives
+\(\mu(E)\le C_B 2^{-(1-2\beta)k}\).
+Then \(\|U{\bf1}_E\|_s\le \|\pi\|_\infty\|g^{-1}\|_q^2
+\mu(E)^{3/5-2/q}\). Taking \(q\) close to 15 and \(\beta>0\) small
+proves exponential decay. The \(\pi{\bf1}_E\) term costs
+\(B\mu(E)^{3/5-1/2}\), and off \(E\) the relative error is
+\(O(2^{-\beta k})\). The signed comparison is as above.
+
+Take odd \(k\ge3\) sufficiently large, \(r=3k\), and two identical
+copies of each of the \(r\) coordinate columns. A \(k\)-dimensional
+subspace \(D\subseteq\mathbb F_2^r\) exists with minimum weight precisely
+\((k+1)/2\). Fix the first generator to have that weight, then choose
+\(k-1\) independent uniformly sampled generator vectors. Every combination
+using a sampled vector is uniform, so the probability of one of these
+combinations having weight \(\le(k-1)/2\), including zero, is at most
+\[
+ 2^{k-r}\sum_{i\le(k-1)/2}\binom ri
+ \le 2^{-k[2-3H_2(1/6)]}<1 .
+\]
+The bound includes linear dependence. Here \(H_2\) is binary entropy and
+\(6^6<16\cdot5^5\) verifies the last strict inequality. Hence such a choice
+exists for each \(k\).
+
+Let \(S=D^\perp,\ u=2^{-k}\) and
+\(\pi_0=1+u^{-1/2}({\bf1}_S-u)\) on the quotient.
+To ensure intrinsic rank \(r\) and permit a vanishing minimum, choose
+\(y_0\notin S\), put \(z=(1,\ldots,1)\), \(\epsilon=2^{-2k}\), and set
+\[
+ W(y)=\frac{\chi_z(y-y_0)+\sum_{i=1}^{r}\chi_{z+e_i}(y-y_0)}{r+1},
+ \qquad
+ \pi=\pi_0-(1-\sqrt u-\epsilon)W .
+\]
+The mean is one and \(\min\pi=\epsilon\) since \(|W|\le1\) and
+\(W(y_0)=1\). Its second moment stays bounded; on mass \(u\) the height
+is comparable to \(u^{-1/2}\), so every fixed moment above two diverges
+and \(k^{-1}\log_2\|\pi\|_\infty\to1/2\). All characters in \(D\)
+have ambient weight twice their quotient weight. The fixed shortest
+word survives because the added characters have quotient weights \(r,r-1\).
+The largest matching order is therefore exactly \(k\).
+All \(r+1\) added characters have nonzero coefficients even if they belong
+to \(D\): the original modulus there is \(\sqrt u\), exponentially smaller
+than the added modulus. Their differences span the quotient. Its intrinsic
+packing is exactly two by column count. Positive symmetric scaling gives
+the corresponding Doob chain in every finite dimension.
+Here \(Z=(5/4)^{3k}\) exactly and \(2^{-k} Z=(125/128)^k\).
+Thus (W2) controls every vertex of a family that exceeds the peak rate
+at its actual matching order and has no bounded higher stationary moment.
+
+\paragraph{Scope.}
+Weight enumerators and noisy functions on binary linear codes have a
+substantial prior literature, including
+\href{https://arxiv.org/abs/1809.09696}{Samorodnitsky's noisy-function
+inequality} and his \href{https://arxiv.org/abs/2205.02051}{work on random
+linear codes}. The random-code volume estimate and Walsh multiplier
+identities above are elementary inputs. The conclusion here couples them
+to stationary scaling and the ordered ambient spectrum, via (W2).
+The rank ceiling is sufficient. This calculation leaves open whether two
+bases and a bounded second moment suffice at unrestricted rank.
