@@ -52,13 +52,14 @@ A difference in labels can be translated into a monetary threshold only given a 
 
 \newpage
 \input{identification.tex}
-\newpage
 \input{refits.tex}
 
 \section{Reproduction, attribution and scope}
 The companion program \texttt{reconstruct.py} reads the published results and four index archives at the pinned commit, checks their Git object identifiers, reads the 15 database headers, checks index bounds, and reconstructs the three populations. It requires Python 3, NumPy and read access to the public archive. Run \texttt{python reconstruct.py results.zip} in a clean directory. The two output tables report aggregate counts and all matched curves, including cases that never demonstrably cross. The accompanying expected summary makes it possible to compare a rerun without relying on a figure or a model score. The materials data and predictors originate with the cited benchmark; this paper contributes a secondary analysis.
 
 The fixed subset excludes materials selected by either arm over the whole grid. It removes changes in test-set composition \emph{within} a paired comparison. Library coverage, outcome-dependent selection, access to candidate features, and the choice of two configurations still limit generalization. Neither the success count nor the unresolved count is an estimate of a population probability. A common target drawn prospectively and individual model predictions would enable direct comparisons for more pairs. The counts do not establish optimality of an acquisition strategy or evidence about other prediction tasks.
+
+The companion directory \texttt{follow-up/} contains the executed scripts, protocols and per-fit comparisons for Sections 5 and 6. Its hash manifest identifies the executed payloads and their returned archives. The thresholds are compared before rounding. In the reconstruction table, only the displayed error ratios are rounded to five decimals.
 
 \section*{Model assessments and review context}
 OpenAI Codex participated in deriving and checking the certificates, implementing the reconstruction and preparing this manuscript. The frozen version and any subsequent assessment must be identified by the PDF digest. Assessment by a model involved in this work is an internal evaluation. This manuscript carries no claim of independent peer review.
