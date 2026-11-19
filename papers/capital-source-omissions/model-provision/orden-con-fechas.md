@@ -1,0 +1,20 @@
+# El efecto de las fechas recuperadas en la clasificación de proveedores
+
+La incorporación de 18 fechas documentadas resuelve el signo de las cuatro comparaciones. En la versión fijada de los datos de Cen et al., Anthropic encabeza el recuento de destinatarios con nombres separados. La ventaja sobre OpenAI es de al menos seis destinatarios incluso tras excluir anthropic.com. Con los nombres de Alphabet agrupados, esa misma exclusión sitúa al grupo en primer lugar por al menos seis. La elección de agrupar entidades y la inclusión de una fuente siguen teniendo consecuencias incluso después de resolver la incertidumbre temporal que podría cambiar el primer puesto.
+
+La medida cuenta destinatarios distintos enlazados en relaciones dirigidas de provisión establecida en la capa de modelos de IA. La ventana comprende del 1 de noviembre de 2022 al 31 de octubre de 2026. Las cinco etiquetas agrupadas son Alphabet, Google, Google Cloud, Google DeepMind y DeepMind, con las variantes ortográficas del protocolo anterior. La agrupación actúa en ambos extremos del enlace.
+
+| Nombres y fuentes | Proveedor por delante | Rival | Diferencias posibles en destinatarios |
+|---|---|---|---|
+| Separados, todos los hosts | Anthropic | OpenAI | 22, 23, 24, 25, 26 |
+| Separados, sin anthropic.com | Anthropic | OpenAI | 6, 7, 8, 9, 10 |
+| Agrupados, todos los hosts | Anthropic | Grupo Alphabet seleccionado | 6, 7, 8, 9, 10 |
+| Agrupados, sin anthropic.com | Grupo Alphabet seleccionado | Anthropic | 6, 7, 8, 9, 10 |
+
+**De dónde salen las fechas.** Se tomaron las 22 URLs distintas que podían aportar destinatarios nuevos a las parejas contendientes de las tres comparaciones abiertas en el análisis sin fechas recuperadas. Se identificó la fecha de publicación de 18 en la fuente editorial, el registro original del artículo o los metadatos públicos del documento. Todas caen dentro de la ventana. En los cuatro registros de LinkedIn se usó el campo de publicación del objeto principal con identificador coincidente. En Frontier Ledger la fecha de publicación del artículo es el 16 de diciembre de 2025 y la página muestra una actualización en marzo de 2026. Las fechas y las fuentes individuales están en [el registro de documentos](source-dates.json).
+
+**Por qué bastan.** Para cada configuración se recalcularon las dos listas de destinatarios a partir de las filas originales, y se identificaron todas las URLs opcionales capaces de añadir algún destinatario a esos dos proveedores. Tras incorporar las fechas verificadas quedan tres decisiones relevantes en cada configuración. La unión de los cuatro casos contiene dos artículos de Wikipedia sin revisión fijada, una página de documentación y un enlace de redirección. Se enumeraron las ocho combinaciones por configuración. Cualquier otra fuente opcional deja intactos los recuentos de la pareja. Se verificó además que, incluso con todas sus fuentes posibles, cualquier tercero queda por debajo de un candidato con sus fuentes ya fijadas.
+
+El resultado parcial anterior era un empate a 155 entre Anthropic y OpenAI al omitir anthropic.com e incorporar sólo cuatro fechas. Al incorporar las 18 fechas y dejar fuera el resto de documentos opcionales, el recuento pasa a 166–159. Tanto el empate como la victoria de OpenAI desaparecen de las posibilidades. La clasificación depende de las relaciones registradas por el conjunto. Interpretarlas como ventas, ingresos o incluso como transacciones confirmadas requeriría verificar evidencia adicional.
+
+**Reproducción.** El [programa](principal-dates.py) comprueba el tamaño y SHA-256 del Parquet de entrada y vuelve a construir las relaciones. El [resultado completo](principal-dates.json) identifica cada escenario y guarda los 32 recuentos, los documentos incorporados en cada escenario y las cotas de los demás proveedores. El manuscrito ya evaluado conserva su versión y este suplemento tiene su propio registro de evidencia. [Artículo fuente](https://arxiv.org/html/2611.24927v1) y [datos fijados](https://huggingface.co/datasets/sarahcen/ai-supply-chain/tree/e737b94a38cf77b2ec3a29cb1c6bd756fb1329fb).

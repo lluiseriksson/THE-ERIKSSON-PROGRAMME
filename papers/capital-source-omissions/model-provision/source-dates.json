@@ -1,0 +1,111 @@
+[
+  {
+    "canonical": "https://frontierledger.ai/investing-in-ai/how-to-invest-in-google-ai",
+    "published": "2025-12-16",
+    "evidence": "datePublished on top-level publisher object with matching @id or url",
+    "source_url_sha256": "88b85cf301fd7d18879252c36d4b293b971c0c30d6cd74ab37484553873631e0"
+  },
+  {
+    "canonical": "https://itweb.africa/article/liquid-c2-announces-cloud-cyber-security-gen-ai-deal-with-google/8OKdWqDXyEkqbznQ",
+    "published": "2024-03-06",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "099dec7e6e54a2f060bc940a4c381c869b4bfc36912ea7ad7427928c6acea044"
+  },
+  {
+    "canonical": "https://jessemarks.substack.com/p/ai-under-fire-how-big-tech-is-responding",
+    "published": "2026-03-14",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "994677f942a8a1042c66a9c287e47a67aaa41f8e3cbeb67cd1e1eb1af05192f9"
+  },
+  {
+    "canonical": "https://lennartjusten.substack.com/p/a-biosecurity-playbook-for-ai-companies",
+    "published": "2026-04-14",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "8593db728cb2741e8e41d28fb3b3e3ea4a31d6167cb21a8a6bc96c5cde501a05"
+  },
+  {
+    "canonical": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11621808/",
+    "published": "2024-12-05",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "bc682b9a867a95ef6f59fc51c7061eb30ea86a24b275453ade00a60676a58f73"
+  },
+  {
+    "canonical": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11989924/",
+    "published": "2025-03-21",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "4f60934e72557da25f0ba23cd733c283ee0c7ba83ac9468cd3324e778b829e16"
+  },
+  {
+    "canonical": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12873610/",
+    "published": "2025-11-17",
+    "evidence": "publication date on the article record",
+    "doi": "10.1017/rsm.2025.10054",
+    "source_url_sha256": "0c99e963f5bd835d9a6d74b3895ab386cfd57f65b6e4f131bd0ed84f6b3d34b7"
+  },
+  {
+    "canonical": "https://theaieconomy.substack.com/p/ai2-olmo-3-reasoning-context-efficiency",
+    "published": "2025-11-20",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "57b09e4eef515960a088dd3398f78be71b9de51256b1d1e1b3ad45294620983f"
+  },
+  {
+    "canonical": "https://thesequence.substack.com/p/four-releases-from-google-deepmind",
+    "published": "2023-12-17",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "fbd9377008da358e699bd1389dd71b433e029cabf222521d776fadf8ab417545"
+  },
+  {
+    "canonical": "https://venturebeat.com/business/anthropic-and-bcg-form-new-alliance-to-deliver-enterprise-ai-to-clients",
+    "published": "2023-09-14",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "de6fb2bcd731a49fa77d913efab32119557ca215889c8e54408601f2cadb8b8f"
+  },
+  {
+    "canonical": "https://venturebeat.com/business/braintrust-data-wants-to-make-enterprise-ai-better-with-faster-evaluations",
+    "published": "2023-12-13",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "d5f8809630a84cca023bcf0bcf0f63a0de2c0e9a73ec9f4981e58e100f8199ec"
+  },
+  {
+    "canonical": "https://venturebeat.com/data/airtables-superagent-maintains-full-execution-visibility-to-solve-multi",
+    "published": "2026-01-28",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "ce43a07820ea43d7f108c9fe821e0a1c0956703a67e752c73749d1a6d1da9112"
+  },
+  {
+    "canonical": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2024.1468676/full",
+    "published": "2025-02-21",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "6542423729abb404ef420173970f7ccfe8b75ee260be54a046adbc13d8d39fbc"
+  },
+  {
+    "canonical": "https://www.linkedin.com/posts/jamiebyrne_new-strategic-partnership-investment-round-activity-7330589833955835904-SLwg",
+    "published": "2025-05-20",
+    "evidence": "datePublished on top-level publisher object with matching @id or url",
+    "source_url_sha256": "27bd63290523d3dfbc78052cf535cb1b0165dd5eed04e1a0144daca05a619d82"
+  },
+  {
+    "canonical": "https://www.linkedin.com/posts/karen-dahut-24135811_a-new-era-of-public-sector-innovation-is-activity-7318014015933173760-v89y",
+    "published": "2025-04-15",
+    "evidence": "datePublished on top-level publisher object with matching @id or url",
+    "source_url_sha256": "49aaecedf81bf410138165d2bfdf9fcf8d156c1f261fce496c6b3b5b0695a64c"
+  },
+  {
+    "canonical": "https://www.linkedin.com/posts/mgorsky_the-observatory-news-agency-activity-7513322248640950272-Ll3S",
+    "published": "2026-10-06",
+    "evidence": "datePublished on top-level publisher object with matching @id or url",
+    "source_url_sha256": "ed78974fb39c971768135ca59bc55bacbf39f105782d6a19e056a26c86bc4dcb"
+  },
+  {
+    "canonical": "https://www.linkedin.com/posts/y-combinator_cua-yc-x25-is-the-docker-for-computer-use-activity-7331348150810566656-0abz",
+    "published": "2025-05-22",
+    "evidence": "datePublished on top-level publisher object with matching @id or url",
+    "source_url_sha256": "009af8f7d8a12d2d31aa79ba3d11682fc6effe3a930c5972b839300910331437"
+  },
+  {
+    "canonical": "https://www.nature.com/articles/s41598-025-25157-3",
+    "published": "2026-01-21",
+    "evidence": "publication date on the article record",
+    "source_url_sha256": "6ba413a3c70849168a40cc1aeefbbd42ebc0112aa887a83ed0a7689ee35b92f5"
+  }
+]

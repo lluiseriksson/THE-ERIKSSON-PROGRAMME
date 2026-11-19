@@ -1,0 +1,434 @@
+{
+  "00": {
+    "ordered_pair": [
+      "anthropic",
+      "openai"
+    ],
+    "unresolved": [
+      "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a",
+      "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+      "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+    ],
+    "other_provider_degree_upper": 114,
+    "baseline": [
+      182,
+      159
+    ],
+    "possible_margins": [
+      22,
+      23,
+      24,
+      25,
+      26
+    ],
+    "worlds": [
+      {
+        "selected": [],
+        "degrees": [
+          182,
+          159
+        ],
+        "margin": 23
+      },
+      {
+        "selected": [
+          "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a"
+        ],
+        "degrees": [
+          182,
+          160
+        ],
+        "margin": 22
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+        ],
+        "degrees": [
+          183,
+          159
+        ],
+        "margin": 24
+      },
+      {
+        "selected": [
+          "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a",
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+        ],
+        "degrees": [
+          183,
+          160
+        ],
+        "margin": 23
+      },
+      {
+        "selected": [
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          184,
+          159
+        ],
+        "margin": 25
+      },
+      {
+        "selected": [
+          "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a",
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          184,
+          160
+        ],
+        "margin": 24
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          185,
+          159
+        ],
+        "margin": 26
+      },
+      {
+        "selected": [
+          "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a",
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          185,
+          160
+        ],
+        "margin": 25
+      }
+    ]
+  },
+  "01": {
+    "ordered_pair": [
+      "anthropic",
+      "openai"
+    ],
+    "unresolved": [
+      "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a",
+      "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+      "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+    ],
+    "other_provider_degree_upper": 114,
+    "baseline": [
+      166,
+      159
+    ],
+    "possible_margins": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "worlds": [
+      {
+        "selected": [],
+        "degrees": [
+          166,
+          159
+        ],
+        "margin": 7
+      },
+      {
+        "selected": [
+          "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a"
+        ],
+        "degrees": [
+          166,
+          160
+        ],
+        "margin": 6
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+        ],
+        "degrees": [
+          167,
+          159
+        ],
+        "margin": 8
+      },
+      {
+        "selected": [
+          "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a",
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+        ],
+        "degrees": [
+          167,
+          160
+        ],
+        "margin": 7
+      },
+      {
+        "selected": [
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          168,
+          159
+        ],
+        "margin": 9
+      },
+      {
+        "selected": [
+          "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a",
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          168,
+          160
+        ],
+        "margin": 8
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          169,
+          159
+        ],
+        "margin": 10
+      },
+      {
+        "selected": [
+          "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a",
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          169,
+          160
+        ],
+        "margin": 9
+      }
+    ]
+  },
+  "10": {
+    "ordered_pair": [
+      "anthropic",
+      "alphabet [selected family]"
+    ],
+    "unresolved": [
+      "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+      "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7",
+      "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+    ],
+    "other_provider_degree_upper": 160,
+    "baseline": [
+      180,
+      173
+    ],
+    "possible_margins": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "worlds": [
+      {
+        "selected": [],
+        "degrees": [
+          180,
+          173
+        ],
+        "margin": 7
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+        ],
+        "degrees": [
+          181,
+          173
+        ],
+        "margin": 8
+      },
+      {
+        "selected": [
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          182,
+          173
+        ],
+        "margin": 9
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          183,
+          173
+        ],
+        "margin": 10
+      },
+      {
+        "selected": [
+          "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+        ],
+        "degrees": [
+          180,
+          174
+        ],
+        "margin": 6
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+          "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+        ],
+        "degrees": [
+          181,
+          174
+        ],
+        "margin": 7
+      },
+      {
+        "selected": [
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7",
+          "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+        ],
+        "degrees": [
+          182,
+          174
+        ],
+        "margin": 8
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7",
+          "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+        ],
+        "degrees": [
+          183,
+          174
+        ],
+        "margin": 9
+      }
+    ]
+  },
+  "11": {
+    "ordered_pair": [
+      "anthropic",
+      "alphabet [selected family]"
+    ],
+    "unresolved": [
+      "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+      "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7",
+      "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+    ],
+    "other_provider_degree_upper": 160,
+    "baseline": [
+      164,
+      173
+    ],
+    "possible_margins": [
+      -10,
+      -9,
+      -8,
+      -7,
+      -6
+    ],
+    "worlds": [
+      {
+        "selected": [],
+        "degrees": [
+          164,
+          173
+        ],
+        "margin": -9
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+        ],
+        "degrees": [
+          165,
+          173
+        ],
+        "margin": -8
+      },
+      {
+        "selected": [
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          166,
+          173
+        ],
+        "margin": -7
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+        ],
+        "degrees": [
+          167,
+          173
+        ],
+        "margin": -6
+      },
+      {
+        "selected": [
+          "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+        ],
+        "degrees": [
+          164,
+          174
+        ],
+        "margin": -10
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+          "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+        ],
+        "degrees": [
+          165,
+          174
+        ],
+        "margin": -9
+      },
+      {
+        "selected": [
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7",
+          "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+        ],
+        "degrees": [
+          166,
+          174
+        ],
+        "margin": -8
+      },
+      {
+        "selected": [
+          "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+          "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7",
+          "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+        ],
+        "degrees": [
+          167,
+          174
+        ],
+        "margin": -7
+      }
+    ]
+  }
+}
