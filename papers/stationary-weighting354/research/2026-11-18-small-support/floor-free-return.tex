@@ -1,0 +1,108 @@
+\section{Local return without a stationary density floor}
+\label{sec:floor-free}
+Let $\mu$ be uniform on the $L$-cube, $P=P_{1/2}$, $Q=P_{1/\sqrt2}$,
+$h>0$, $\mathbb E hPh=1$, $g=Ph$, $\pi=hg$, and $U=h/g$.
+The Doob transition is $K(x,y)=P(x,y)h(y)/g(x)$.
+Suppose $h$ factors through a binary linear quotient with a fractional
+basis packing of fixed weight $b\ge1$. The identity quotient with $b=1$
+allows every positive potential. Write
+\[
+ a_b=1+2^b,\qquad r_b=a_b/(a_b-2).
+\]
+Assume $\|\pi\|_p\le B$ for fixed finite $p>r_b$, and that every
+nonconstant stationary Walsh moment through order $k$ vanishes, $1\le k\le L$.
+
+\paragraph{Theorem.}
+For every sufficiently small fixed $\sigma>0$ depending on $b,p$,
+put $A=\{h/(Ph)>e^{\sigma k}\}$. Let $s$ be the top eigenvalue of the
+chain killed outside $A$, and $R_A$ the largest stationary one-step
+return probability to a nonempty subset of $A$, conditional on starting
+in that subset. Both are zero for empty $A$. For
+$\Delta=\max_j|\lambda_j(K)-\lambda_j(P)|$ in decreasing order,
+\[
+ s/4-Ce^{-ck}\le\Delta\le s+Ce^{-ck},\qquad
+ R_A\le s\le\sqrt{2R_A-R_A^2}.                                      \tag{F1}
+\]
+The constants depend only on $B,b,p,\sigma$. The sorted union of the
+ordinary spectrum and the killed spectrum, truncated to its first $2^L$
+entries, recovers the full ordered list with multiplicities to this
+accuracy. Thus $\Delta\to0$ precisely when $R_A\to0$ as $k\to\infty$.
+This applies to general half-noise for $p>3$ and to two disjoint bases
+for $p>5/3$, including $p=15/7$. The stationary floor in Section
+\ref{sec:local-return-test} is removed by changing the exceptional set.
+No inverse moment is required.
+
+\paragraph{Truncating the actual multiplier.}
+On quotient functions $P_\lambda$ maps $L^u$ contractively into
+$L^{1+(u-1)\lambda^{-2b}}$ by the allocation of noise to bases above.
+For a nonnegative nonzero quotient weight $W$ the unique positive
+Perron vector of $QM_WQ$ is invariant under kernel translations.
+The quotient estimate and H\"older therefore yield
+$\|QM_WQ\|\le\|W\|_{r_b}$ on the ambient cube. Absolute values handle
+signed weights by quadratic-form domination.
+
+Fix $\lambda$ slightly above $1/\sqrt2$ and below one. Since $p>r_b$,
+we can ensure $1+\lambda^{-2b}\ge2p/(p-1)$ and
+$1+(p-1)\lambda^{-2b}\ge2$. Put $\theta=1/(\sqrt2\lambda)<1$.
+Write $F=Qh$, $a=\mathbb E h$ and $V=\|F-a\|_2^2=1-a^2$.
+Cauchy--Schwarz in $h\,d\mu$ gives $1\le a\,\mathbb E(\pi g)$.
+Since $P_\lambda(\pi-1)$ has degrees above $k$,
+\[
+ V\le a|\langle P_\lambda(\pi-1),P_\theta(F-a)\rangle|
+       \le (B+1)\theta^{k+1}\sqrt V .
+\]
+Thus $\|g-1\|_2\le C_B\theta^k$. Choose $0<\eta\le-\log(\theta)/2$.
+The set $D=\{|g-1|>e^{-\eta k}\}$ has $\mu(D)\le C_B e^{-2\eta k}$.
+Put $M=e^{\sigma k}$ and $U_0=U{\bf1}_{A^c}$. On $D$ the $L^{r_b}$
+norms of $U_0$ and $\pi$ are at most $M\mu(D)^{1/r_b}$ and
+$B\mu(D)^{1/r_b-1/p}$, respectively. Choose $\sigma<2\eta/r_b$.
+Off $D$, for large $k$, $|U-\pi|\le Ce^{-\eta k}\pi$, and $U>M$
+implies $\pi>M/2$. The $L^{r_b}$ norm of $\pi{\bf1}_{\pi>M/2}$
+is at most $B^{p/r_b}(M/2)^{1-p/r_b}$. Altogether
+$\|U_0-\pi\|_{r_b}\le Ce^{-ck}$.
+At $\lambda$ the same Perron argument bounds
+$\|P_\lambda M_{\pi-1}P_\lambda\|\le B+1$.
+Sandwich by $P_\theta$ and split both factors at Walsh degree
+$\lfloor k/2\rfloor$. Matching kills the low--low form and each remaining
+block gains $\theta^{\lfloor k/2\rfloor+1}$. Hence
+\[
+ \|QM_UQ-P-S\|\le Ce^{-ck},\qquad S=QM_{U{\bf1}_A}Q .                \tag{F2}
+\]
+
+\paragraph{A fourth-moment test from Markov contraction.}
+The two Gram matrices of $M_{\sqrt U}Q$ have the same spectrum and
+$M_{\sqrt U}PM_{\sqrt U}$ is the reversible conjugate of $K$.
+Consequently $0\le QM_UQ\le I$. Testing on the constant gives
+$\mathbb E U\le1$. Since $\mathbb E\pi=1$ and $U_0$ is exponentially
+close to $\pi$ in $L^1$, $\mathbb E[U{\bf1}_A]\le Ce^{-ck}$.
+For an ambient polynomial $f$ of Walsh degree at most $d$, $\|f\|_2\le1$,
+apply the same contraction to $Q^{-1}f^2$:
+\[
+ \mathbb E[U f^4]\le\|Q^{-1}f^2\|_2^2\le2^{2d}\|f\|_4^4\le36^d .
+\]
+The final inequality is ordinary Boolean hypercontractivity. Therefore
+$\mathbb E[U{\bf1}_A f^2]\le6^d(\mathbb E[U{\bf1}_A])^{1/2}$,
+independently of the multiplicity of the low modes.
+
+Take $d=\lfloor\delta k\rfloor$ for sufficiently small fixed $\delta>0$,
+and let $\Pi$ project through degree $d$. Use $f=Qz$ for unit $z$ in
+this subspace to obtain $\|\Pi S\Pi\|\le Ce^{-c'k}$. Since $0\le S\le I$,
+the off-diagonal block has norm at most $\|\Pi S\Pi\|^{1/2}$.
+Write $S_H$ for the compression to the complementary subspace. There
+$P$ has norm at most $2^{-(d+1)}$. By (F2), $QM_UQ$ is exponentially
+close to the direct sum of the low part of $P$ and $S_H$.
+The nonzero spectrum of $S$ equals that of $K_{AA}$ by the restricted
+Gram identity. On two copies of the space $P\oplus S$ differs to the
+same accuracy from the preceding direct sum padded with zeros.
+Min--max proves the ordered reconstruction.
+
+For the lower bound set $s_H=\|S_H\|=s+O(e^{-c'k})$. If
+$s_H>4\,2^{-d}$, choose $1\le j\le d$ with $s_H/4<2^{-j}\le s_H/2$.
+At the first index of level $2^{-j}$, the high block adds one
+eigenvalue at least $2^{1-j}$ to all ordinary levels above $2^{-j}$.
+This raises that index by at least $2^{-j}$. Smaller $s_H$ is absorbed
+in the error. The upper bound follows from (F2). The indicator and
+level-set argument of Section \ref{sec:local-return-test} gives the two
+inequalities involving $R_A$ using only reversibility.
+The remaining critical question is whether all subsets of this
+high-multiplier set have vanishing return for arbitrary two-base quotients.
