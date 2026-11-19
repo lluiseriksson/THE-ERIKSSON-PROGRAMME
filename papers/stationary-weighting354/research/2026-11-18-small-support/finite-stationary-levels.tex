@@ -1,0 +1,186 @@
+% Part of the grouped supplement on Boolean Doob chains.
+\section{Several exceptional stationary levels}
+\label{sec:several-stationary-levels}
+Let $E_1,\ldots,E_N$ be disjoint nonempty subsets of the cube,
+$m_i=\mu(E_i)$ and $m=\max_i m_i$. Assume $\pi=a$ off their union,
+$b\le a\le1$, and $a\le\pi\le M_i$ on $E_i$. Fix $N,b,H,\kappa$
+independently of dimension, with $b>0$, and assume
+\[
+  M_i m_i^{1/3}\le H,\qquad m_i\ge m^\kappa,\qquad
+  1\le\kappa<21-8\sqrt5 . \tag{F1}
+\]
+The restriction compares logarithms of uniform masses. The mass and height ratios may diverge. The sets have arbitrary geometry.
+
+\paragraph{Theorem.}
+Under (F1) the spectral gap is bounded below by a positive constant
+depending only on $N,b,H,\kappa$. If $\pi$ is constant on each $E_i$,
+then $\Delta\le C_{N,b,\kappa}\|\pi-1\|_3$ without coordinate matching.
+For arbitrary allowed heights, cubic convergence gives full recovery,
+and uniform integrability of the cubed densities suffices under
+diverging matching order. With a fixed $p>3$ and $\|\pi\|_p\le B$, matching
+through order $k$ instead gives $\Delta\le C e^{-ck}$ with constants
+depending only on $N,b,H,\kappa,p,B$; for exact levels one may take $H=B$.
+
+For example, take disjoint sets of masses $2^{-n}$ and $2^{-2n}$ in
+dimension $2n$ for $n\ge2$. Add $m_i^{-1/3}$ to a common background
+on each set, choosing $a=1-\sum_i m_i^{2/3}$ for normalization.
+For large $n$ the floor exceeds $1/2$ and the cubic moment stays bounded.
+Both sets together violate any fixed single-spike envelope (S1):
+the maximum times their combined mass to the power $1/3$ grows at
+least as $2^{n/3}$. Here (F1) applies with $\kappa=2$.
+
+\paragraph{Control between different levels.}
+Set $r=12\sqrt5-15>9$, $s=(r+15)/16$, $T=P^2$, and
+$\eta=1/s-1/3-\kappa/r$. Then $\eta>0$ because
+$r(16/(r+15)-1/3)=21-8\sqrt5$. Differentiation shows this choice
+maximizes the right side over $r>6$; this is a limit of the estimate,
+not a necessary restriction for a gap. For every $\ell\ge1$, $j\ge0$,
+$P^j T^\ell$ contracts $L^s$ into $L^r$.
+Let $Z=\max_i\|Y\|_{r,\mu_i}$, $Y=1/g$, $\mu_i=\mu(\cdot\mid E_i)$.
+The contribution from an individual level to any other satisfies
+\[
+ M_i\|P^jT^\ell(Y{\bf1}_{E_i})\|_{r,\mu_v}
+ \le M_i m_i^{1/s}m_v^{-1/r} Z
+ \le H m^\eta Z. \tag{F2}
+\]
+By Jensen $Y\le Pg/a$, hence
+$Y\le TY+a^{-1}\sum_i M_iT(Y{\bf1}_{E_i})$.
+Iterate $n=1+\lceil\log_{16}(1+\log(1/\min_i m_i))\rceil$ times
+as in (S2). The unrestricted term $P^jT^nY$ has $L^{1+8\cdot16^n}$
+norm at most $1/b$, so its conditional $L^r$ norm on each level is
+at most $e/b$. By (F2), $Z\le e/b+(nNH/b)m^\eta Z$. For all
+sufficiently small $m$, $n=O_\kappa(1+\log(1+\log(1/m)))$ and
+the coefficient is at most $1/2$. Applying the iterated bound also
+with $j=2$ controls $TY$ on every level. Since
+$Pg=T(\pi Y)\le aTY+\sum_i M_iT(Y{\bf1}_{E_i})$, we have
+\[
+ \max_i\big(\|Y\|_{r,\mu_i}+\|Pg\|_{r,\mu_i}\big)\le C. \tag{F3}
+\]
+The conditional estimate does not require pointwise control on $g$.
+When $m$ is bounded below, all the $M_i$ are bounded by (F1) and we
+use the ambient $\|Y\|_9\le1/b$ instead.
+
+\paragraph{Cut escape, including transitions between levels.}
+We prove the uniform gap by contradiction along a sequence. If $m$
+is bounded below, (G3) and the global $L^{9/2}$ bound on $U=\pi Y^2$
+give the gap as in the one-spike proof. Pass therefore to $m\to0$.
+Extract a subsequence along which every ratio $m_i/m_j$ has a limit
+in $[0,\infty]$. Group indices with finite nonzero limiting ratio.
+Each group $C$ denotes the union of its levels, with mass $m_C$ and
+height bound $M_C=\max_{i\in C}M_i$ (indices in this maximum refer
+to the group). Along this subsequence $M_Cm_C^{1/3}\le H_C<\infty$,
+and (F3) holds also under $\mu_C=\mu(\cdot\mid C)$.
+
+For $\varnothing\ne F\subset C$ write $v_F=\nu(F)$,
+$\theta_F=v_F/(M_Cm_C)$ and $R_F=J(F,F)/v_F$. As in (S3) and its
+cut estimate, using $\|Y\|_{8,\mu_C}\le C$ gives
+\[
+ R_F\le C M_C m_C^{1/3}\theta_F^{1/12}.
+\]
+Thus if $R_F$ stays bounded below then $\theta_F$ and
+$M_Cm_C^{1/3}$ both stay bounded below, and
+$v_F$ is comparable to $m_C^{2/3}$. Moreover $\nu(\cdot\mid F)$
+has density at most $1/\theta_F$ relative to $\mu_C$.
+Under this conditional stationary law, the expectations of $Pg$ and
+$P(h{\bf1}_F)$ are uniformly bounded: for the latter,
+\[
+ \|P(h{\bf1}_F)\|_{3,\mu_C}
+ \le m_C^{-1/3} M_C\|Y{\bf1}_C\|_{3/2}
+ \le C M_C m_C^{1/3}.
+\]
+Also $E_{\mu_C}P{\bf1}_C\le m_C^{1/3}$ by ordinary hypercontractivity.
+Consequently, for a fixed sufficiently large $A$ and all large
+dimensions, at least half the conditional stationary mass has
+$Pg\le A$, $P(h{\bf1}_F)\le A$ and $P{\bf1}_{F^c}\ge1/2$, by Markov's
+inequality. On those vertices if $g>2A$, then $K_x(F)\le1/2$.
+Otherwise the row escape bound from (S3) and its proof gives
+$K_x(F^c)\ge b/(8A^2)$. Hence $R_F$ stays bounded away from one.
+
+If the union admitted cuts $F$ with $R_F\to1$, split them into
+$F_C=F\cap C$. Pass to limits of their diagonal return fractions
+$R_{F_C}$, taking zero for empty pieces. The positive semidefinite
+edge form gives
+\[
+ \sqrt{R_F}\le \sum_C \sqrt{R_{F_C}\,\nu(F_C)/\nu(F)}.
+\]
+Groups with vanishing diagonal return contribute $o(1)$. Of those with
+positive limiting return, the one with the largest mass dominates
+all the others: their cut masses are comparable to their respective
+$m_C^{2/3}$, and distinct groups have mass ratios tending to zero or
+infinity. The dominant summand stays bounded away from one by the
+preceding row argument. This contradicts $R_F\to1$ (if there are no
+such groups the sum tends to zero). The killed norm on the union is
+therefore bounded away from one along the extracted subsequence by (LR1).
+Off the union, $\|U\|_{9/2}$ restricted there is at most $1/b^2$.
+Adding Gram multipliers as in the one-spike proof controls all small
+cuts. Larger cuts obey (G3) since $E\pi^3\le1+NH^3$. Cheeger's
+inequality now precludes a sequence with gap tending to zero.
+
+\paragraph{Full spectral estimates.}
+For exact levels take $M_i=\pi|_{E_i}$. Put $\delta=\|\pi-1\|_3$.
+For the Lipschitz estimate it suffices to take $\delta\le1$, when
+$H=2$ works. Away from levels above two, the preceding section proved
+$\|\pi(Y^2-1){\bf1}_{\{\pi\le2\}}\|_3\le C_b\delta$.
+On each higher level, $M_i m_i^{1/3}\le2\delta$; (F3) gives
+$\|U{\bf1}_{E_i}\|_3\le C M_i m_i^{1/3}$. If $m$ is bounded below
+the same conditional $L^6$ control follows from $\|Y\|_9\le1/b$
+and (F1). Sum the finitely many contributions and use the Gram
+inequality $\Delta\le\|U-1\|_3$. The parity example in the previous
+section retains sharpness of the linear order for the full class.
+
+\paragraph{Variable heights within levels.}
+The gap statement allowed variable heights from the outset. The same
+hypotheses yield a quantitative transfer for the entire spectrum even
+when constant heights are unavailable. Put $\alpha=1-6/r>0$.
+For any set $D$ in the small-$m$ regime, conditional H\"older on $E_i$
+with $1/u=1/3-2/r$ and (F3) give
+\[
+ \|U{\bf1}_{E_i\cap D}\|_3
+ \le C m_i^{1/3}\|\pi{\bf1}_D\|_{u,\mu_i}
+ \le C (M_i m_i^{1/3})^{1-\alpha}
+            \|\pi{\bf1}_{E_i\cap D}\|_3^\alpha .
+\]
+Here $3/u=\alpha$. Off the exceptional union use the ambient
+$L^{9/2}$ bound. When $m$ stays above the absorption threshold, the
+same ambient bound holds everywhere. For either regime,
+\[
+ \|U{\bf1}_D\|_3
+ \le C_{N,b,H,\kappa}
+       \big(\|\pi{\bf1}_D\|_3^\alpha+\mu(D)^{1/9}\big). \tag{F4}
+\]
+In particular full recovery without matching holds if
+$\delta=\|\pi-1\|_3\to0$. For a rate on $\{\pi>2\}$, in the small-$m$
+regime use the preceding levelwise inequality there (the background is
+at most one) and $\pi\le2|\pi-1|$. On $\{\pi\le2\}$ use the inverse
+estimate from the one-spike section. In the remaining, bounded-height
+regime use that inverse estimate globally. This gives
+$\Delta\le C(\delta+\delta^\alpha)$.
+
+There is also a matched result at the cubic order: uniform
+integrability of $\pi^3$ under $\mu$ and $k\to\infty$ imply full
+spectral recovery for variable heights satisfying (F1). Indeed (F4)
+transfers that uniform integrability to $U^3$. The matched bad set
+$D=\{|g-1|>2^{-k/8}\}$ has exponentially small mass since the cubic
+cap implies a bounded second moment. The $L^3$ norm of $U-\pi$ on $D$
+therefore tends to zero; outside $D$ it is exponentially small.
+To bound $QM_{\pi-1}Q$ at order three let $A$ project onto Walsh degrees
+at most $\lfloor k/2\rfloor$. The low-low block vanishes by matching of
+products. In each remaining block at least one high factor
+$Q(I-A)$ has $L^2$ operator norm at most $2^{-k/4}$. Truncate
+$\pi-1$ at a fixed height $T>1$, keeping its values on $\{\pi\le T\}$.
+The bounded part in each such block costs at most $(T+1)2^{-k/4}$,
+and the tail costs at most $\|\pi{\bf1}_{\{\pi>T\}}\|_3$ by
+$Q:L^2\to L^3$ and the $L^2$ contractions $A,I-A$ before $Q$.
+Take first the limit in $k$, then in $T$. Min--max proves the claim.
+For $p>3$ and $\|\pi\|_p\le B$, the same proof is exponential:
+in (F4) use $\|\pi{\bf1}_D\|_3\le B\mu(D)^{1/3-1/p}$, and take
+$T=2^{k/8}$ in the spectral blocks, whose tail is at most
+$B^{p/3}T^{1-p/3}$. No bound on the within-level oscillation is needed.
+
+The \href{https://airr.science/papers/ARR-2026-2B2W1WQ7DF9N5VW7/versions/v1/}{published trapping family}
+has a fixed floor and converges in cubic norm. This theorem implies
+that it admits no representation satisfying (F1) with uniform
+parameters. The theorem uses ordinary Boolean hypercontractivity;
+\href{https://arxiv.org/abs/1606.07491}{Polyanskiy and Samorodnitsky}
+give stronger estimates on small supports. Whether such an improvement
+removes the logarithmic mass comparison is open here.
