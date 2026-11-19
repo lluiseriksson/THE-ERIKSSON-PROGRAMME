@@ -1,0 +1,443 @@
+{
+  "n": 125269,
+  "smaller": 22309,
+  "costs": [
+    401564900,
+    616326000
+  ],
+  "cost_ratio": "4015649/6163260",
+  "minimum_equal_count": 41714,
+  "dominant_stratum_survival_at_cut": "20857/51480",
+  "pooled_threshold": 206888,
+  "received_both_per_stratum": false,
+  "common_horizon_required": true,
+  "patterns": [
+    {
+      "measured": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measured_n": 0,
+      "can_certify": false,
+      "max_lower": -50303633458100,
+      "max_equal_lower": -50303633458100
+    },
+    {
+      "measured": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "measured_n": 2601,
+      "can_certify": false,
+      "max_lower": -47656099227200,
+      "max_equal_lower": -48700569532100
+    },
+    {
+      "measured": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "measured_n": 5151,
+      "can_certify": false,
+      "max_lower": -45060477432200,
+      "max_equal_lower": -47128938232100
+    },
+    {
+      "measured": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measured_n": 7752,
+      "can_certify": false,
+      "max_lower": -42412943201300,
+      "max_equal_lower": -45525874306100
+    },
+    {
+      "measured": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "measured_n": 10201,
+      "can_certify": false,
+      "max_lower": -39920128387200,
+      "max_equal_lower": -44016491932100
+    },
+    {
+      "measured": [
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measured_n": 12802,
+      "can_certify": false,
+      "max_lower": -37272594156300,
+      "max_equal_lower": -42413428006100
+    },
+    {
+      "measured": [
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measured_n": 15352,
+      "can_certify": false,
+      "max_lower": -34676972361300,
+      "max_equal_lower": -40841796706100
+    },
+    {
+      "measured": [
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "measured_n": 17953,
+      "can_certify": false,
+      "max_lower": -32029438130400,
+      "max_equal_lower": -39238732780100
+    },
+    {
+      "measured": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measured_n": 4356,
+      "can_certify": false,
+      "max_lower": -45869700697700,
+      "max_equal_lower": -47618917402100
+    },
+    {
+      "measured": [
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "measured_n": 6957,
+      "can_certify": false,
+      "max_lower": -43222166466800,
+      "max_equal_lower": -46015853476100
+    },
+    {
+      "measured": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "measured_n": 9507,
+      "can_certify": false,
+      "max_lower": -40626544671800,
+      "max_equal_lower": -44444222176100
+    },
+    {
+      "measured": [
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measured_n": 12108,
+      "can_certify": false,
+      "max_lower": -37979010440900,
+      "max_equal_lower": -42841158250100
+    },
+    {
+      "measured": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "measured_n": 14557,
+      "can_certify": false,
+      "max_lower": -35486195626800,
+      "max_equal_lower": -41331775876100
+    },
+    {
+      "measured": [
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measured_n": 17158,
+      "can_certify": false,
+      "max_lower": -32838661395900,
+      "max_equal_lower": -39728711950100
+    },
+    {
+      "measured": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measured_n": 19708,
+      "can_certify": false,
+      "max_lower": -30243039600900,
+      "max_equal_lower": -38157080650100
+    },
+    {
+      "measured": [
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "measured_n": 22309,
+      "can_certify": false,
+      "max_lower": -27595505370000,
+      "max_equal_lower": -36554016724100
+    },
+    {
+      "measured": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "measured_n": 102960,
+      "can_certify": true,
+      "max_lower": 54498413605900,
+      "max_equal_lower": 13153291501900
+    },
+    {
+      "measured": [
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "measured_n": 105561,
+      "can_certify": true,
+      "max_lower": 57145947836800,
+      "max_equal_lower": 14756355427900
+    },
+    {
+      "measured": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "measured_n": 108111,
+      "can_certify": true,
+      "max_lower": 59741569631800,
+      "max_equal_lower": 16327986727900
+    },
+    {
+      "measured": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "measured_n": 110712,
+      "can_certify": true,
+      "max_lower": 62389103862700,
+      "max_equal_lower": 17931050653900
+    },
+    {
+      "measured": [
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "measured_n": 113161,
+      "can_certify": true,
+      "max_lower": 64881918676800,
+      "max_equal_lower": 19440433027900
+    },
+    {
+      "measured": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "measured_n": 115762,
+      "can_certify": true,
+      "max_lower": 67529452907700,
+      "max_equal_lower": 21043496953900
+    },
+    {
+      "measured": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "measured_n": 118312,
+      "can_certify": true,
+      "max_lower": 70125074702700,
+      "max_equal_lower": 22615128253900
+    },
+    {
+      "measured": [
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "measured_n": 120913,
+      "can_certify": true,
+      "max_lower": 72772608933600,
+      "max_equal_lower": 24218192179900
+    },
+    {
+      "measured": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "measured_n": 107316,
+      "can_certify": true,
+      "max_lower": 58932346366300,
+      "max_equal_lower": 15838007557900
+    },
+    {
+      "measured": [
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "measured_n": 109917,
+      "can_certify": true,
+      "max_lower": 61579880597200,
+      "max_equal_lower": 17441071483900
+    },
+    {
+      "measured": [
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "measured_n": 112467,
+      "can_certify": true,
+      "max_lower": 64175502392200,
+      "max_equal_lower": 19012702783900
+    },
+    {
+      "measured": [
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "measured_n": 115068,
+      "can_certify": true,
+      "max_lower": 66823036623100,
+      "max_equal_lower": 20615766709900
+    },
+    {
+      "measured": [
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "measured_n": 117517,
+      "can_certify": true,
+      "max_lower": 69315851437200,
+      "max_equal_lower": 22125149083900
+    },
+    {
+      "measured": [
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "measured_n": 120118,
+      "can_certify": true,
+      "max_lower": 71963385668100,
+      "max_equal_lower": 23728213009900
+    },
+    {
+      "measured": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "measured_n": 122668,
+      "can_certify": true,
+      "max_lower": 74559007463100,
+      "max_equal_lower": 25299844309900
+    },
+    {
+      "measured": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "measured_n": 125269,
+      "can_certify": true,
+      "max_lower": 77206541694000,
+      "max_equal_lower": 26902908235900
+    }
+  ],
+  "first_any_nursery_only": 81619,
+  "gov_budget_per_ha": 24879600,
+  "critical_fixed_cost": "233417416000/8423",
+  "cost_per_ha": {
+    "0": "3081630000000/125269",
+    "20000000": "3106899000000/125269",
+    "72000000": "3172598400000/125269",
+    "92000000": "3197867400000/125269"
+  },
+  "local_upper_at_92m": "2124061900000/125269",
+  "p0_gap": 214761100
+}
