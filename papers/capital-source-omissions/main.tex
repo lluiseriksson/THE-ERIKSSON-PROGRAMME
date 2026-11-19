@@ -5,13 +5,14 @@
 \usepackage[hidelinks]{hyperref}
 \urlstyle{same}
 \newcommand{\N}{\mathrm{Nvidia}}
-\title{How many documentary sources sustain Nvidia's lead in reported AI investments?}
+\title{Which sources sustain a lead in reported AI investments and model provision?}
 \author{Lluis Eriksson}
 \date{19 November 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
 Counting the distinct companies in which an investor is reported to have invested puts Nvidia first in a recent public AI supply-chain dataset. We ask how many documentary sources must be omitted before that ranking can change. We retain direction, count a counterparty once, and retain a relationship as long as any supporting source survives. With case-normalized actor names, any 37 hostnames can be omitted without displacing Nvidia. There is a set of 38 whose omission leaves Nvidia and Sequoia Capital tied for first with 43 counterparties each. A second computation reconstructed the graph, verified integer certificates covering every rival, and recounted the witness. Preserving capitalization instead yields a threshold of three because two spellings of Nvidia compete. Grouping hosts by dated headline matches gives thresholds of 35 or 32 groups. Requiring two extraction passes to agree on the same document instead raises the individual-host threshold to 49. Holding the concordant pair list fixed while restoring all its original sources raises it further to 53, despite identical baseline degrees. The estimand is the resilience of a ranking in a fixed documentary record. It does not measure amounts invested or the completeness of the record.
+In a separate model-provision layer, Anthropic's lead survives removal of any one of 541 hosts when actor labels are kept separate. Grouping five Alphabet-related labels on both ends preserves the initial leader but lets the removal of one host reverse the order. These results identify sensitivity of the public documentary record.
 \end{abstract}
 
 \section{The ranking and the evidence behind it}
@@ -63,6 +64,8 @@ If we instead preserve capitalization and trim only outer whitespace, three host
 
 \input{agreement.tex}
 
+\input{provision.tex}
+
 \section{Scope and interpretation}
 Publication errors, undated disclosures, private investments, newly added documents, and incorrect investment direction can change the ranking in ways this omission model does not cover. The graph dates records by publication rather than by transaction close. Multiple domains may belong to one owner. Conversely, a single host can carry many separately reported stories. A documentary threshold should consequently travel with its sampling frame, actor definition, and unit of omission.
 
@@ -78,5 +81,7 @@ The data remain under the upstream CC BY-NC-SA 4.0 license. The accompanying mat
 \bibitem{cen} S.~H. Cen, L.~A. Gailmard, J.~Kim, R.~Bommasani, D.~E. Ho and P.~Liang. Mapping the AI supply chain: dependencies, vulnerabilities, and market concentration in the AI ecosystem. \href{https://arxiv.org/abs/2611.24927v1}{arXiv:2611.24927v1}.
 \bibitem{data} S.~H. Cen and collaborators. AI Supply Chain dataset. \href{https://huggingface.co/datasets/sarahcen/ai-supply-chain/tree/e737b94a38cf77b2ec3a29cb1c6bd756fb1329fb}{Hugging Face, revision e737b94a}.
 \bibitem{errors} S.~P. Borgatti, K.~M. Carley and D.~Krackhardt. On the robustness of centrality measures under conditions of imperfect data. \emph{Social Networks} 28 (2006), 124--136. \href{https://doi.org/10.1016/j.socnet.2005.05.001}{doi:10.1016/j.socnet.2005.05.001}.
+\bibitem{alphabet} Alphabet Inc. 2025 Annual Report, Form 10-K. \href{https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm}{SEC filing}.
+\bibitem{deepmind} S. Pichai. Google DeepMind: Bringing together two world-class AI teams, April 2023. \href{https://blog.google/technology/ai/april-ai-update/}{Google announcement}.
 \end{thebibliography}
 \end{document}

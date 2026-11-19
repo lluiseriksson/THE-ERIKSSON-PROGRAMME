@@ -1,0 +1,83 @@
+{
+  "data_sha256": "89752ca13ef5516cf22805616a5976b0fecc717c4fecb29e739bc7297385f56a",
+  "revision": "e737b94a38cf77b2ec3a29cb1c6bd756fb1329fb",
+  "undated_in_layer_before_time_filter": 463,
+  "period_rows": 4566,
+  "directed_named_host_rows": 4446,
+  "literal": {
+    "pairs": 1940,
+    "providers": 474,
+    "hosts": 541,
+    "top": [
+      [
+        "Anthropic",
+        172
+      ],
+      [
+        "OpenAI",
+        152
+      ],
+      [
+        "Google",
+        112
+      ],
+      [
+        "Meta",
+        55
+      ],
+      [
+        "Google Cloud",
+        54
+      ],
+      [
+        "Mistral AI",
+        53
+      ]
+    ],
+    "margin": 20,
+    "minimal_single_host_margin": 3,
+    "worst_hosts": [
+      "anthropic.com"
+    ],
+    "number_tie_or_loss": 0,
+    "baseline_strict_overtake_by_new_distinct_recipients": 21
+  },
+  "normalized": {
+    "pairs": 1916,
+    "providers": 464,
+    "hosts": 541,
+    "top": [
+      [
+        "anthropic",
+        171
+      ],
+      [
+        "openai",
+        151
+      ],
+      [
+        "google",
+        110
+      ],
+      [
+        "google cloud",
+        54
+      ],
+      [
+        "meta",
+        54
+      ],
+      [
+        "mistral ai",
+        53
+      ]
+    ],
+    "margin": 20,
+    "minimal_single_host_margin": 4,
+    "worst_hosts": [
+      "anthropic.com"
+    ],
+    "number_tie_or_loss": 0,
+    "baseline_strict_overtake_by_new_distinct_recipients": 21
+  }
+}
