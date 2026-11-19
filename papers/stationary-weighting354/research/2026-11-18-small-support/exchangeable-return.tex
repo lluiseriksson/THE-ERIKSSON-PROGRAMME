@@ -1,0 +1,154 @@
+\section{Unrestricted block sizes at the critical moment}
+\label{sec:exchangeable}
+Use two copies of the identity column basis and no other nonzero columns.
+Half noise on the ambient cube induces product noise $P$ with correlation
+$\rho=1/4$ on the syndrome cube. Partition its coordinates into at most
+$b$ nonempty blocks, with $b$ fixed and arbitrary sizes $n_i$. Assume that
+$\pi>0$ is invariant under permutations within each block, has mean one
+and satisfies $\|\pi\|_{15/7}\le B$. Write $\nu=\pi\mu$ and let $Z_i$ be
+the sum of the signs in block $i$ divided by $\sqrt{n_i}$.
+
+\paragraph{Theorem.} If $\mathbb E_\nu Z=0$, both families $(Ph)^{-15}$ and
+$(P\sqrt\pi)^{-15}$ are uniformly integrable under $\mu$, uniformly in
+the block sizes for fixed $B,b$. Hence both weighted compressions of
+Section~\ref{sec:support-size} tend to zero on every sequence of syndrome
+sets of vanishing uniform mass. The sets and test vectors can be asymmetric.
+Stationary matching through ambient order two suffices for these conclusions,
+since each syndrome sign has ambient degree two. If matching holds through $k\to\infty$, (FF1) gives
+full ordered spectral recovery at unrestricted rank, and the normalized
+trial return vanishes on every subset of the critical set $D$.
+Bounds on the ratio of block sizes and on inverse stationary moments
+are unnecessary. The spectral conclusion still uses diverging matching.
+
+\paragraph{One-bit entropy and the central layer.}
+Use signs in one block of size $n$, write its input sum as $nm=z\sqrt n$,
+and let $Y$ be the unstandardized output sum. Set
+\[
+ \ell(t)=\tfrac12\log(\cosh^2t-\rho^2\sinh^2t),\quad
+ s(t)=\operatorname{arctanh}(\rho\tanh t),\quad
+ I(m)=\tfrac{1+m}2\log(1+m)+\tfrac{1-m}2\log(1-m)
+\]
+with the continuous endpoint convention. The log moment generating
+function is $\Lambda(t)=n(\ell(t)+m s(t))$. Apply the Boolean one-bit
+reverse inequality from order zero to order $-15$ to $e^{tx}$,
+whose geometric mean is one. Indeed $(1-0)/(1+15)=\rho^2$.
+The two outputs are $e^{\ell(t)\pm s(t)}$, giving
+$\log\cosh(15s(t))\le15\ell(t)$. The Legendre transform of $\log\cosh$
+is $I$ on $[-1,1]$. Using it at $-15s(t)$ gives the exact global bound
+\[
+             -15\Lambda(t)\le n I(m) \qquad(t\in\mathbb R).    \tag{BX3}
+\]
+This uses the binary sharp reverse inequality already used in (M4);
+for its context see \href{https://arxiv.org/abs/1108.1210}{Mossel,
+Oleszkiewicz and Sen}. The correlated-binomial count representation is
+classical; see \href{https://doi.org/10.1111/j.1467-842X.2012.00654.x}
+{Diaconis and Griffiths}.
+
+Fix $M<\infty$. For each attainable output layer $w=Y/\sqrt n$ with
+$|w|\le M$, write $p_z(w)$ for its row probability and $p_*(w)$ for its
+uniform mass. For $n\ge N(M,\rho)$ let $t_0$ solve $\Lambda'(t_0)=0$,
+and put $a=-t_0\sqrt n$. There are constants depending only on $\rho,M$
+such that uniformly in the input, \emph{including the two extreme layers},
+\[
+ \frac{p_z(w)}{p_*(w)}\ge c_M\exp[-nI(m)/15+a w],
+       \qquad |a|\ge\rho |z|.                                \tag{BX4}
+\]
+Indeed all tilts solving $\Lambda'(t)=w\sqrt n$ with $|w|\le M$ stay
+in a fixed compact interval: the tilted means of the two types of sign are
+$\tanh(t\pm\operatorname{arctanh}\rho)$, and $M/\sqrt n\le1/2$.
+Throughout that interval $c_\rho n\le\Lambda''(t)\le n$.
+In particular $|t_0|\ge|\Lambda'(0)|/n$. For the Legendre transform
+$\Lambda^*$, Taylor's bound gives
+$\Lambda^*(w\sqrt n)\le\Lambda^*(0)+t_0w\sqrt n+C_\rho w^2$;
+(BX3) bounds $\Lambda^*(0)$. At the matching tilt the plus counts are
+two independent binomials with success probabilities bounded away from
+zero and one. One group has size at least $n/2$. With probability at
+least $3/4$ the smaller count is within $\sqrt n$ of its mean by
+Chebyshev. The larger count then needs an integer within $\sqrt n$ of
+its mean; for sufficiently large $n$, Stirling's bounds give probability
+at least $c/\sqrt n$ uniformly there. This also covers an empty smaller
+group. Undo the tilt at that atom and divide by $p_*(w)\le C/\sqrt n$.
+For $n<N(M,\rho)$ simply use the lower bound $(1-\rho)^n$ for the
+row density relative to uniform, valid at every word.
+
+\paragraph{Directional mass from centering.}
+For every unit vector $v$ in the block coordinates, $X=v\cdot Z$
+is subgaussian under $\mu$: the squared sign coefficients sum to one.
+H\"older and the positive stationary moment bound thus give
+$\mathbb E_\nu |X|^4\le C_B$. We need directions supported only on blocks above a fixed size $N_0$.
+For any such unit direction choose $|v_i|\ge1/\sqrt b$ and condition under
+$\mu$ on all other blocks. The largest atom of the remaining binomial is
+at most $C/\sqrt{n_i}$ by Stirling, and its spacing after multiplication
+by $v_i$ is $2|v_i|/\sqrt{n_i}$. Thus
+$\mu(|X|\le t)\le C(t\sqrt b+1/\sqrt{N_0})$. Choose $t>0$ small and
+$N_0=N_0(B,b)$ large enough that H\"older gives $\nu(|X|\le t)\le1/2$.
+In particular $\mathbb E_\nu |X|\ge t/2$ without a covariance hypothesis.
+Centering gives $\mathbb E_\nu X_+\ge t/4$. Cauchy--Schwarz above a
+smaller threshold and the uniform fourth moment yield
+$\nu(X\ge\epsilon)\ge c_{B,b}>0$. Moreover
+$\mathbb E_\nu |Z|^2\le C_B b$ by the same subgaussian moment bound.
+Choose $M=M(B,b)$ so that $G_v=\{v\cdot Z\ge\epsilon,\ |Z|\le M\}$
+has $\nu$-mass at least $c_{B,b}/2$. The direction may depend on the input.
+Both $\int_{G_v}\sqrt\pi\,d\mu$ and $\int_{G_v}h\,d\mu$ are uniformly
+positive. For the first bound interpolate between powers
+$1/2$ and $15/7$ on $G_v$. For the second, $\|g\|_2\le1$ and H\"older give
+$\nu(g>T)\le B T^{-2(1-7/15)}$. Take $T$ fixed large enough and use
+$h=\pi/g$ on $G_v\cap\{g\le T\}$. This does not require matching of
+higher moments.
+
+\paragraph{Endpoint integrability on all layers.}
+Let $J$ contain the blocks with $n_i\ge\max(N_0,N(M,\rho))$. Put
+$T_i=n_i I(Z_i/\sqrt{n_i})$ and $S=\sum_{i\in J}T_i$. Apply (BX4)
+with $a_i$ in each large block and put $a_i=0$ elsewhere. Invariance of
+$\sqrt\pi$ and of $h$ (by uniqueness of the scaling) permits integration
+against the product of the layer density ratios. Restrict the integration
+to $G_{a/|a|}$, taking any direction supported in $J$ when $a=0$ and $J$ is nonempty. Small blocks
+contribute a uniformly positive factor. For $f=h$ or $f=\sqrt\pi$,
+\[
+               (Pf)^{-15}\le C\exp(S-c\sqrt S).                \tag{BX5}
+\]
+In fact the linear gain in the logarithm of the row density is at least
+$\epsilon|a|$, and $|a|\ge\rho(\sum_{i\in J} Z_i^2)^{1/2}$.
+Here $I(m)\le C m^2$ by continuity of $I(m)/m^2$ at zero and at the endpoints.
+Under $\mu$, Chernoff's binomial bound gives
+$\mu(T_i\ge u)\le2e^{-u}$ for $u\ge0$, and the $T_i$ are independent.
+On product cells $j_i\le T_i<j_i+1$, (BX5) times the cell probability
+is at most $C_b\exp(-c\sqrt{\sum j_i})$. The number of such cells with
+$\sum j_i=j$ grows at most polynomially in $j$ for fixed $b$.
+Thus the integral over $S>R$ tends uniformly to zero as $R$ grows,
+and the integrand is uniformly bounded on $S\le R$. If $J=\varnothing$, use the entire cube in place of $G_v$; the bounded-block row lower bound then gives (BX5) directly.
+
+Finally $7/15+2/15=3/5$. H\"older and (CR3) at $v=5/3$ bound each
+compression on $E$ by $B\|1_E/(Pf)\|_{15}^2$, which tends to zero
+by the proved uniform integrability. The trial normalization costs at
+most $B^2$. For the spectral conclusion the high-multiplier set of (FF1)
+has vanishing uniform measure by the fixed positive moment before (CR1);
+$D$ does also by its high-density threshold. The earlier fiber reduction
+passes the exact norm estimate to the ambient chain.
+The product noise and a uniformly bounded number of permutation blocks
+are structural hypotheses of this proof.
+
+\paragraph{An obstruction without directional control.}
+In a single block let $Z$ be its standardized sum. Fix $a>0$ and take
+$\pi_n$ proportional to $1_{\{Z\le-a\}}+e^{-n}$. It is positive, radial,
+and uniformly bounded for all sufficiently large $n$ because its normalizer
+tends to $\Phi(-a)>0$, where $\Phi$ is the standard normal distribution
+function. These densities need not be centered. For every bounded interval
+of input values $z$, the conditional law of the standardized output has
+mean $\rho z$, variance $q=1-\rho^2$, and a normal approximation with
+distribution-function error $O_\rho(n^{-1/2})$, uniformly in $z$.
+Indeed it is a sum of independent bounded signs with total variance $nq$,
+so the independent-summand Berry--Esseen bound applies. Consequently
+$P\sqrt{\pi_n}$ converges on each compact input range, uniformly at the
+attainable layers, to
+$\Phi((-a-\rho z)/\sqrt q)/\sqrt{\Phi(-a)}$.
+With $Z$ under $\mu$ converging to a standard Gaussian, the integral of
+the inverse fifteenth power on each compact interval converges to the
+corresponding Gaussian integral. For $z\ge0$ the Gaussian tail bound
+$\Phi(-v)\le e^{-v^2/2}$ gives an integrand bounded below by a positive
+constant times $\exp(15a\rho z/q)$: the quadratic exponent cancels
+because $15\rho^2=q$. Sending the upper integration limit to infinity
+proves $\mathbb E_\mu(P\sqrt{\pi_n})^{-15}\to\infty$.
+Thus radial symmetry and even a bounded density alone do not ensure
+the endpoint estimate. The example concerns the reciprocal moment of
+the trial denominator; it makes no claim about a matched spectrum.

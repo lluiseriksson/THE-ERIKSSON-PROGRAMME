@@ -1,0 +1,208 @@
+\section{Testing stationary approximations to edge flow}
+\label{sec:trial-flow}
+For a stationary set $F$ the exact probability of returning in one step,
+conditional on starting in $F$, is $J_h(F,F)/\nu(F)$, where
+\[
+ J_v(x,y)=\mu(x)P(x,y)v(x)v(y),\qquad \nu_v(x)=\mu(x)v(x)Pv(x).
+\]
+Here $\nu=\nu_h$. A candidate computable from $\pi$ alone is $u=\pi/(P\sqrt\pi)$.
+We give two residual tests that apply to any positive trial $u$. We also test
+this particular choice against the programme's matched Hamming shell.
+
+\paragraph{Two stationary thresholds at the critical moment.}
+In the setting of (SR1) one can further restrict its set $Z$ to
+$D=Z\cap\{\pi>e^{\beta t}\}$ for any fixed $0<\beta<4/9$. Indeed
+Section~\ref{sec:matched-defect} gives $\|1/g\|_6\le C_B$.
+Thus $\|U1_{\{\pi\le e^{\beta t}\}}\|_3\le C_B^2 e^{\beta t}$.
+On $A=\{U>e^t\}$ truncating from order $3$ to $5/3$ gives a bound
+$C'_B\exp[-(4-9\beta)t/5]$. The portion of $Z$ off $A$ was already
+estimated in (SR3). Add the two nonnegative weights between the two
+copies of $Q$ as in (SR1). This proves $|s_Z-s_D|\le Ce^{-ck}$, hence
+full ordered recovery is equivalent to $R_D\to0$. The rest of this
+section concerns how to evaluate returns once a set has been selected.
+
+\paragraph{An entropy characterization of nonnegative spectrum.}
+Let $P$ now be any strictly positive finite Markov kernel reversible
+with respect to $\mu$. For positive measures use the unnormalized
+relative entropy $H(A\mid B)=\sum[A\log(A/B)-A+B]$. The following
+property is equivalent to $P$ being positive semidefinite in $L^2(\mu)$:
+for every positive $h,u$ with $\langle h,Ph\rangle_\mu=
+\langle u,Pu\rangle_\mu=1$,
+\[
+       H(\nu_h\mid\nu_u)\le H(J_h\mid J_u)
+                    \le 2H(\nu_h\mid\nu_u).                    \tag{EF1}
+\]
+For positive semidefinite $P$ both inequalities continue to hold for
+unnormalized trials. The constant two is attained even for normalized
+inputs when $P(x,y)=\mu(y)$ and the two induced marginals differ.
+Indeed the normalized edge laws then factor as products of their marginals.
+
+The first inequality is marginalization. For the second put $a=u/h$,
+$K(x,y)=P(x,y)h(y)/Ph(x)$, and $\phi(z)=z-1-\log z$.
+Expanding the logarithms and using reversibility gives the exact identity
+\[
+  2H(\nu_h\mid\nu_u)-H(J_h\mid J_u)=
+  \langle u-h,P(u-h)\rangle_\mu+2\sum_x\nu_h(x)\phi(Ka(x)).  \tag{EF2}
+\]
+In particular the right side is nonnegative in the claimed regime.
+To prove necessity, suppose that $P f=\lambda f$ with $\lambda<0$,
+$\mathbb E_\mu f=0$ and $\|f\|_2=1$. Strict positivity ensures $\lambda>-1$.
+Take $h=1$ and $u_s=(1+sf)/\sqrt{1+\lambda s^2}$ for sufficiently small
+real $s$. The scores at $s=0$ of $J_{u_s}$ and $\nu_{u_s}$ are
+$f(x)+f(y)$ and $(1+\lambda)f(x)$ respectively. A normalized finite
+family with score $b$ has relative entropy from its initial law
+$s^2\mathbb E b^2/2+O(s^3)$ in either orientation here, by Taylor
+expansion. The ratio of edge to marginal entropy tends to
+$2/(1+\lambda)>2$, disproving the upper inequality.
+
+\paragraph{Optimal factor for a fixed kernel.}
+Assume at least two states and strict positivity as above. Define
+\[
+ \kappa(P)=\sup_{\substack{f,g\ge0,\ f,g\ne0\\ f g=0}}
+ \frac{\langle f,Pg\rangle_\mu}
+ {\sqrt{\langle f,Pf\rangle_\mu\langle g,Pg\rangle_\mu}} .
+\]
+Both denominators are positive by the diagonal. The least constant
+$C(P)$ in the normalized upper inequality of (EF1), with $2$ replaced
+by $C(P)$, is
+\[
+                   C(P)=\max\{2,1+\kappa(P)\}.               \tag{EF5}
+\]
+In particular a strictly positive definite kernel still has best
+global constant two. Highly uneven positive scalings are allowed.
+
+For a probability density $v$ with positive scaling $h_v$, set
+$G(v)=\frac12 H(J_{h_v}\mid\mu P)$, where $\mu P(x,y)=\mu(x)P(x,y)$.
+Since $G(v)=\langle v,\log h_v\rangle_\mu$, its derivative along
+the probability simplex is $\log h_v$: the remaining differential
+$\langle v,d\log h_v\rangle_\mu$ is half the variation of the unit
+edge mass. Thus the edge entropy from $v$ to $w$ is twice
+$G(v)-G(w)-\langle v-w,\log h_w\rangle_\mu$.
+The Hessian of $G$ on a tangent of score $b=dv/v$ is
+$\langle b,(I+K_v)^{-1}b\rangle_{v\mu}$, by logarithmic
+differentiation of $h_v Ph_v=v$. Existence and smoothness here use the
+positive diagonal and strict positivity of $P$; positive semidefiniteness
+is unnecessary. The entropy of the marginal has Hessian
+$\|b\|_{L^2(v\mu)}^2$. Integrating both Hessians with weight $1-z$
+along the line from $w$ to $v$, and taking arbitrarily short lines
+in the least-eigenvalue direction for the converse, gives
+$C(P)=2/(1+\inf_v\lambda_{\min}(K_v))$. The constant eigenfunction has
+eigenvalue one and all tangents have mean zero.
+
+To evaluate the infimum write $\xi=h f_0$ for a test function $f_0$
+in the Rayleigh quotient of $K_{hPh}$. Its numerator is
+$\langle\xi,P\xi\rangle_\mu$ and its denominator is
+$\sum_{x,y}\mu(x)P(x,y)\xi(x)^2 h(y)/h(x)$.
+The latter is at least $\langle|\xi|,P|\xi|\rangle_\mu$ by pairing
+the two orientations and applying arithmetic--geometric mean.
+Taking $h=|\xi|+\epsilon$ attains equality in the limit, up to the
+irrelevant scale of $h$. For a negative numerator this gives the
+most negative quotient. Write $\xi=f-g$ with nonnegative disjoint
+parts, and put $A=\langle f,Pf\rangle_\mu$, $B=\langle g,Pg\rangle_\mu$,
+$C=\langle f,Pg\rangle_\mu$. The ratio for the optimal denominator is
+$(A+B-2C)/(A+B+2C)$. Rescaling one part to make $A=B$ minimizes it
+for fixed shapes. Hence a negative infimum exists precisely when
+$\kappa(P)>1$, and then equals $(1-\kappa(P))/(1+\kappa(P))$.
+In the remaining case every numerator is nonnegative. Keeping $h$ fixed
+at one on a single state and tending to zero elsewhere makes all rows
+of $K_{hPh}$ tend to the point mass on that state. The nonconstant
+eigenvalues then tend to zero by continuity of the characteristic
+polynomial. This proves (EF5).
+
+\paragraph{A computable error bound for a prescribed return.}
+For Boolean noise, calculate $H_m=H(\nu\mid\nu_u)$ from the target and
+the ordinary kernel. For any nonempty $F$ the log-sum inequality on
+$F\times F$, followed by $(\sqrt v-\sqrt w)^2\le v\log(v/w)-v+w$,
+gives
+\[
+ \left|\sqrt{J_h(F,F)/\nu(F)}-\sqrt{J_u(F,F)/\nu(F)}\right|
+                 \le\sqrt{2H_m/\nu(F)}.                      \tag{EF3}
+\]
+In particular $H_m=o(m_0)$ suffices simultaneously for every tested
+set with $\nu(F)\ge m_0$. This bound uses the actual stationary mass
+even for an unnormalized trial. A small absolute residual alone can
+be inconclusive on exponentially rare sets.
+
+\paragraph{A logarithmic mass cost under uniform relative control.}
+Normalize the trial to have edge mass one and set
+$\eta=\|\log(\nu_u/\nu)\|_\infty$. For any nonempty edge event $E$ put
+$s_0=J_h(E)$ and $s_1=J_u(E)$. There is a numerical $C$ such that
+\[
+ e^{-C\eta}\le
+ \frac{1+\log(1/s_1)}{1+\log(1/s_0)}
+ \le e^{C\eta}.                                                \tag{EF4}
+\]
+Here $P$ is strictly positive, reversible and positive semidefinite.
+To prove this, interpolate the marginal probabilities as
+$\nu_z\propto\nu^{1-z}\nu_u^z$ for $0\le z\le1$.
+Write $h_z$ for the exact scaling along the path. Existence, uniqueness
+and smoothness follow by minimizing the symmetric exponential scaling
+functional used in the \href{https://airr.science/papers/ARR-2026-2B2W1WQ7DF9N5VW7/}{matched-shell proof}:
+its diagonal terms ensure coercivity and a positive definite Hessian,
+and the linear term uses the desired positive marginal. Thus
+$(I+K_z)\partial_z\log h_z=b_z=\partial_z\log\nu_z$,
+with $\|b_z\|_\infty\le2\eta$. The reversible $K_z$ has spectrum in
+$[0,1]$ by diagonal congruence and stochasticity. Put $T_z=(I-K_z)/2$.
+Its infinity norm is at most one and its $L^2(\nu_z)$ norm at most $1/2$.
+Use $(I+K_z)^{-1}=\frac12\sum_{j\ge0}T_z^j$. Conditional on the event
+$E$ of probability $s=J_{h_z}(E)$, each endpoint has density at most
+$1/s$ relative to $\nu_z$ and hence $L^2$ norm at most $s^{-1/2}$.
+Differentiating $\log s$ averages $\partial_z\log h_z$ at both endpoints.
+Bounding each term in the series in both norms yields
+\[
+ |\partial_z\log s|\le 2\eta\sum_{j\ge0}\min(1,2^{-j}s^{-1/2})
+                  \le C\eta(1+\log(1/s)).
+\]
+Integration proves (EF4). If $\eta(1+\log(1/m_0))$ stays bounded, a
+conditional return bounded below by a fixed positive number for a set
+of mass at least $m_0$ under either edge law (using $\nu(F)$ as the
+common denominator) is bounded below under the other. Indeed start at
+the endpoint with $s_i\ge c\,\nu(F)$ and apply (EF4) in the other
+direction: the change in $\log s$ is at most
+$(e^{C\eta}-1)(1+\log(1/s_i))=O_c(1)$. If the product tends to zero,
+the multiplicative error for such persistent returns tends to one.
+This certificate uses the trial's marginal residual and a logarithm
+of the tested mass. No estimate of the mixing gap enters.
+
+\paragraph{A false negative for the one-step formula on a matched shell.}
+Use the positive-floor, single-basis half-noise construction of the
+\href{https://airr.science/papers/ARR-2026-2B2W1WQ7DF9N5VW7/versions/v1/}{matched Hamming shell}.
+For its target sphere $S$ let $q=P(x,S)$ for $x\in S$, and let
+$\pi_S$ be the constant stationary density there. In the source proof,
+with a fixed small exponent $\kappa>0$, the spike amplitude is
+$M=e^{-\kappa L/2}/q$, its potential on $S$ is at most $2M$ before
+normalization, and its noise average there is at most $3e^{-\kappa L/2}$.
+The normalizing constant tends to one. Exact marginal correction changes
+the density by $O(e^{-cL})$ uniformly. Thus $q\pi_S=O(e^{-c'L})$ while
+the actual conditional return to $S$ tends to one exponentially.
+For $u=\pi/(P\sqrt\pi)$, the floor $\pi\ge b>0$ gives $u\le\pi/\sqrt b$.
+For every nonempty $F\subseteq S$,
+\[
+        J_u(F,F)/\nu(F)\le q\pi_S/b=O(e^{-c'L}).
+\]
+Even normalizing the trial edge law does not repair this false negative.
+The shell construction has $\|\pi-1\|_3=O(e^{-cL})$. Hence
+$\|P\sqrt\pi-1\|_2\le\|\pi-1\|_2$ and $\|u-1\|_2=O_b(e^{-cL})$.
+Consequently the trial edge mass tends to one, and its marginal density
+$uPu$ tends to $\pi$ exponentially in $L^1$ by Cauchy--Schwarz.
+The example concerns the actual returning sphere in the single-basis
+model. A floor makes $Z$ empty for large $k$; this example does not
+decide the residual-free trial formula on the two-base critical set $D$.
+
+\paragraph{Relation to scaling theory.}
+Symmetric scaling algorithms such as those of
+\href{https://strathprints.strath.ac.uk/49349/1/main_revised3.pdf}{Knight, Ruiz and U\c{c}ar}
+and entropy estimates for entropic plans such as those of
+\href{https://www.math.columbia.edu/~mnutz/docs/Sinkhorn_rate.pdf}{Ghosal and Nutz}
+provide relevant comparisons. A closer antecedent for the normalized
+upper inequality in (EF1) is the convexity of the Sinkhorn negentropy
+in \href{https://proceedings.mlr.press/v89/feydy19a.html}{Feydy et al.,
+Propositions 3--4}. For the kernel density $P(x,y)/\mu(y)$ and unit
+regularization, their self-transport functional with the negative
+one-half convention equals marginal entropy relative to $\mu$ minus
+$G$, up to an affine term. Its convexity gives the normalized upper
+inequality directly under their positive-kernel assumptions. Formula
+(EF5) also treats kernels with a negative eigenvalue. Here (EF2) concerns two symmetric diagonal
+scalings of the same positive kernel and uses its quadratic form directly.
+The event estimate (EF4) weights the inverse scaling derivative by the
+two endpoint laws conditioned on an event.

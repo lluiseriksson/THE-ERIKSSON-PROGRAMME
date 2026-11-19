@@ -1,0 +1,56 @@
+\section{Matched smoothing and an incomplete third basis}
+\label{sec:matched-defect}
+Continue at $p=15/7$ with two disjoint column bases $B_1,B_2$, quotient rank $r$, and order-$k$ stationary matching. From the unused columns select an independent set $H$ of size $r-d$. The empty choice $d=r$ is permitted. One can minimize $d$ over these choices. No alignment of $H$ with the two bases is required.
+
+\paragraph{Theorem.}
+For $k\to\infty$ full ordered recovery holds whenever
+\[
+                    d=o\big(k^2/\log(k+2)\big).                 \tag{M1}
+\]
+In particular the rank itself may have this order when only two bases are available. With additional columns the total rank can be arbitrarily larger. For fixed $B,\sigma$ as in Section~\ref{sec:floor-free}, there are $A>0$, $b>0$, $C<\infty$ such that for all large $k$ the high-multiplier killed norm satisfies
+\[
+ \log s_{\sigma k}\le C-b\log(k+2)+
+        C d\,\big[A\log(k+2)/k\big]^2.                         \tag{M2}
+\]
+For empty support this means $s_{\sigma k}=0$. The logarithm in the sufficient regime has not been proved necessary.
+
+\paragraph{A short noise step recovers a positive lower level.}
+Here and below $T_u=P_{e^{-u}}$ refers to \emph{ambient} noise at time $u$. Section~\ref{sec:floor-free} gives $\|g-1\|_2\le C_B e^{-ck}$. The fixed negative moment $\|g^{-1}\|_6\le C_B$ from the two-base estimate and $h=\pi/g$ bound $\|h\|_{30/19}\le C_B$, since $7/15+1/6=19/30$. On $|g-1|\le e^{-ck/2}$ use $|\pi-h|=h|g-1|$ and $\mathbb E h\le1$. On the complement use Chebyshev and H\"older for both $h$ and $\pi$. Thus $\|\pi-h\|_1\le C_B e^{-c'k}$. Matching directly gives $\|T_u(\pi-1)\|_2\le B e^{-u(k+1)}$. Markov's inequality on $T_u|h-\pi|$ and Chebyshev on $T_u(\pi-1)$ imply
+\[
+ \mu\{T_u h<1/2\}\le C_B(e^{-c'k}+e^{-2uk}).                 \tag{M3}
+\]
+The ambient degree in this estimate is essential; a syndrome character can have a different degree before pullback.
+
+Take $q=15-\delta$ and $u=\delta/128$, with $0<\delta\le\delta_0$ small. The remaining noise $P_{e^u/2}$ still consists of two full bases and leftover column factors. Reverse hypercontractivity maps the positive starting order
+\[
+ a=1-(16-\delta)e^{4u}/16
+\]
+to $-q$. Since $a/\delta\to1/32$, we have $a\ge c\delta$. If the right side of (M3) is $\eta\le1/2$, then $\|T_u h\|_a\ge(1-\eta)^{1/a}/2$. Consequently
+\[
+ \log\|g^{-1}\|_{15-\delta}\le \log 2+
+       C_B(e^{-c'k}+e^{-k\delta/64})/\delta .                  \tag{M4}
+\]
+In particular fix $A>128$ and set $\delta=A\log(k+2)/k$. For all large $k$ the right side is bounded independently of rank and $k$. This estimate uses matching to control how the inverse moment deteriorates as its order approaches fifteen. It does not evaluate that moment at fifteen.
+
+\paragraph{Only the uncovered coordinates pay the forward cost.}
+Factor the quotient noise into the commuting products $P_1P_2P_H J$, where $P_i$ and $P_H$ use correlation $1/2$ on their chosen columns. For a weighted quadratic form in (CR3) drop $J$ before inserting the weight; put half of $P_H$ on either side of Cauchy--Schwarz. The two forward operators are now $S_i=P_iP_H^{1/2}$. We show for $m=5+\epsilon$ with $0\le\epsilon\le\epsilon_0$
+\[
+                      \|S_i\|_{2\to m}\le e^{Cd\epsilon^2}.     \tag{M5}
+\]
+In $B_i$ select $d$ columns $C_i$ completing $H$ to a basis. Such a set exists by spanning in the quotient modulo the span of $H$. First apply noise at correlation $1/\sqrt3$ on all of $B_i$; it maps $L^2$ to $L^4$ contractively. The remaining correlation on each of its columns is $\sqrt3/2$. Use this remainder on $C_i$, and use correlation $1/\sqrt2$ on $H$. Together these give product noise in the basis $C_i\cup H$. The unused factors are contractions. In the $H$ coordinates $4\to7$ is contractive. On the $d$ completion coordinates the exact contractive boundary is $4\to5$.
+
+For the latter bit, set $y=x^2$ in the input $(1+x,1-x)$, $0\le x\le1$. The logarithmic input/output deficit at order five is
+\[
+ D(y)=\tfrac14\log(1+6y+y^2)-\tfrac15\log(1+15y/2+45y^2/16).
+\]
+After multiplication by the positive denominator $20(1+6y+y^2)(1+15y/2+45y^2/16)$, its derivative is
+$65y/2-45y^2/8+45y^3/8$. This is bounded below by a positive multiple of $y$ on $[0,1]$, so $D(y)\ge c y^2$. The derivative in the output order is $O(y)$ by the same compactness and evenness argument as in Section~\ref{sec:critical-rank}. Positivity reduces optimization to nonnegative inputs. The one-bit cost is at most $e^{C\epsilon^2}$, and tensorization for $m\ge4$ proves (M5).
+
+\paragraph{Closing the estimate.}
+Put $\alpha=7/15+2/(15-\delta)$, $v_0=1/\alpha$, $1/v=\alpha+\delta$, and $m=2/(1-1/v)$. Then $m=5+O(\delta)$, and (M4) gives $\|U\|_{v_0}\le C_B$ for the chosen $\delta$. Truncation at $e^{\sigma k}$ and $v_0/v-1=\delta/\alpha$ give $\|U1_{A_{\sigma k}}\|_v\le C_B e^{-c\sigma k\delta}$. In the proof of (CR3) substitute both factors from (M5), yielding (M2). Under (M1) the positive dimension term is $o(\log k)$. Apply Section~\ref{sec:floor-free} to conclude $\Delta\to0$. At $d=0$ the earlier fractional-packing estimate already supplies an exponential rate.
+
+\paragraph{A limitation of using the raw product norm.}
+For $H$ empty and two copies of the identity basis, each raw forward factor in (CR3) is $N^{\otimes r}$ with $N=P_{1/2}$ on one bit. For all sufficiently small $\epsilon>0$,
+$\|N^{\otimes r}\|_{2\to5+\epsilon}\ge\exp(c r\epsilon^2)$.
+Indeed the logarithmic output/input ratio on $(1+x,1-x)$ is $\epsilon x^2/8+O(x^4)$ uniformly near zero, by Taylor expansion at output order $5+\epsilon$. Take $x^2=c_1\epsilon$ for sufficiently small $c_1>0$, then tensor the test function.
+This persists in a \emph{minimal} matched quotient: for $2(r-1)>k$ and $r\ge3$ use the syndrome characters indexed by the all-ones vector and by that vector plus each coordinate vector. Add their sum divided by $4(r+1)$ to the constant stationary density one. The result lies in $[3/4,5/4]$, and the nonconstant ambient degrees are $2r$ and $2(r-1)$. The Walsh support spans all $r$ syndrome directions. Positive symmetric scaling supplies its potential. Thus matching alone cannot improve the unrestricted raw norm estimate for a minimal quotient. The test vector need not realize a large killed return for that density; necessity of (M1) remains open.

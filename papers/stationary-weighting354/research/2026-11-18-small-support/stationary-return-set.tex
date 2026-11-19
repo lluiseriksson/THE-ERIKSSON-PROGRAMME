@@ -1,0 +1,128 @@
+\section{A return set determined by stationary data}
+\label{sec:stationary-return-set}
+Retain two disjoint column bases, half noise $P$, $\|\pi\|_{15/7}\le B$,
+and stationary matching through ambient order $k$. The dimension is unrestricted.
+Define $V=P\sqrt{\pi}$ on the quotient, or equivalently pull it back to the cube.
+Fix $t=\sigma k$ as in (FF1), choose $0<a<1/153$, and put
+\[
+ Z=\{V<e^{-at}\}.
+\]
+Write $s_E$ for the top killed eigenvalue of $K$ on $E$ and $R_E$ for the
+largest conditional stationary one-step return to any nonempty subset of $E$.
+Both quantities are zero for the empty set.
+
+\paragraph{Theorem.}
+There are positive $c,C$ depending only on $B,\sigma,a$ such that
+\[
+ |s_Z-s_{\{U>e^t\}}|\le Ce^{-ck},\qquad
+ s_Z/4-Ce^{-ck}\le\Delta\le s_Z+Ce^{-ck}.                 \tag{SR1}
+\]
+Consequently full ordered spectral recovery is equivalent to $R_Z\to0$.
+The set to inspect can be computed from the stationary density and the ordinary
+noise alone. Evaluating the return still uses the transformed chain.
+In particular if every noise row hits $\{\pi\ge b\}$ with probability at least
+$\eta$ and $\log(1/(\eta\sqrt b))=o(k)$ for $0<b,\eta\le1$, recovery is exponential.
+Indeed $V\ge\eta\sqrt b$ and $Z$ is eventually empty.
+
+\paragraph{Why the visible part of a high multiplier can be discarded.}
+By Cauchy--Schwarz in each noise row,
+\[
+ V^2=(P\sqrt{hg})^2\le (Ph)(Pg)=g\,Pg.
+\]
+Here $\|g\|_2^2=\langle h,P^2h\rangle\le\langle h,Ph\rangle=1$ by the
+spectrum of $P$. On quotient functions the two bases give consecutive
+contractive forward steps $2\to5\to17$ by the Boolean
+\href{https://doi.org/10.5802/aif.357}{hypercontractive inequality}.
+Any unused columns act contractively. Thus $\|Pg\|_{17}\le1$.
+On $Z^c$, $g^{-1}\le e^{2at}Pg$. With $1/w=7/15+2/17=149/255$,
+H\"older yields $\|U1_{Z^c}\|_w\le B e^{4at}$ from $U=\pi/g^2$.
+Put $A=\{U>e^t\}$ and $v=5/3$. Truncation gives
+\[
+ \|U1_{A\setminus Z}\|_v\le B^{153/149}
+           \exp[-(4-612a)t/149].                            \tag{SR2}
+\]
+Indeed $w/v=153/149$. This estimate also gives the restricted reciprocal
+bound $\|g^{-1}1_{Z^c}\|_{17}\le e^{2at}$ directly, without a bound on
+the mass of edges between $Z$ and its complement.
+
+\paragraph{Why low multipliers inside the new set can be added.}
+The uniform mass of $\{\pi\ge1/2\}$ is at least $(1/(2B))^{15/8}$
+by H\"older and $\mathbb E\pi=1$. For $f=\sqrt\pi$, the generalized
+norm $\|f\|_{7/8}$ is therefore bounded below by a positive constant
+depending only on $B$. The \href{https://arxiv.org/abs/1108.1210}{reverse
+hypercontractive} steps $7/8\to1/2\to-1$ give
+$\mathbb E(1/V)\le C_B$. Markov's inequality yields $\mu(Z)\le C_B e^{-at}$.
+Section~\ref{sec:floor-free} proves $\|U1_{A^c}-\pi\|_{5/3}\le Ce^{-ck}$.
+Since $1/v-7/15=2/15$, it follows that
+\[
+ \|U1_{Z\setminus A}\|_v
+ \le Ce^{-ck}+B\mu(Z)^{2/15}\le C'e^{-c'k}.               \tag{SR3}
+\]
+For $Q=P^{1/2}$ write $S_E=QM_{U1_E}Q$. Its norm equals $s_E$ because
+$LL^*$ and $L^*L$ have the same nonzero spectrum for $L=QM_{\sqrt{U1_E}}$.
+The quotient weight bound of Section~\ref{sec:floor-free} gives
+$\|QM_WQ\|\le\|W\|_v$ for nonnegative quotient weights.
+The triangle inequality with (SR2) and (SR3) now bounds
+$\|S_A-S_Z\|$ exponentially. Apply (FF1) and the killed-chain return
+inequalities $R_Z\le s_Z\le\sqrt{2R_Z-R_Z^2}$, which hold for any set.
+This proves (SR1), including when one set is empty.
+
+\paragraph{Recovery across holes of superlinear column radius.}
+Use the repeated identity bases and full-rank perturbation of
+Section~\ref{sec:coverage}, now with $m=k^2$ blocks of length $\ell=k+1$,
+$n=2^m$, $r\ge m\ell+3$, and $\varepsilon=e^{-n^2}$. On parity words
+of weight at most $\lfloor m/4\rfloor$ put density $\varepsilon$, on
+the all-ones word put $n^{7/15}$, and on the rest put the constant
+that makes the average one. The exceptional ball occupies $o(1)$ of
+the words by the binomial tail, and the spike contributes
+$n^{-8/15}$ to the mean. The bulk value tends to one. Apply the same
+mean-zero full-span perturbation of magnitude at most $\varepsilon/4$.
+Matching follows from ambient degrees at least $2\ell$ and $2(r-1)$.
+The critical moment remains bounded; every fixed larger positive moment
+and every fixed inverse moment diverges by the spike and the zero word,
+respectively.
+
+Starting at any syndrome the output block parities are independent, each
+with bias of absolute value $4^{-\ell}$, since every syndrome coordinate
+receives two independent half-noise factors. The probability of each
+parity word is therefore at least $2^{-m}(1-4^{-\ell})^m$.
+Uniformly in the starting point, the probability of the bulk tends to
+one. There $\pi\ge1/2$ for all large $k$, so (SR1) gives exponential
+recovery for every indicated rank. Yet from the zero word a column
+translation changes at most one parity. Every map of radius $o(k)$
+leaves that starting syndrome in the low ball, with density at most
+$5\varepsilon/4$. No threshold with $\log(1/b)=o(k)$ can include
+that image. Thus the preceding section's local map hypothesis fails
+at every admissible radius and threshold, regardless of allowed load.
+This separation proves the advantage of using the noise distribution
+over a prescribed column radius in this family. Necessity of a
+uniform lower bound on $V$, and unconditional critical recovery at
+arbitrary rank, do not follow.
+
+\paragraph{A nonempty stationary return set can be harmless.}
+For $r=k^3$ take two identity bases on the syndrome cube and let
+$M=\lceil 2k\log_2 r+2\rceil$ for $k\ge2$. There exists a binary linear
+subspace $C$ spanned by at most $M$ vectors whose orthogonal space contains
+no nonzero word of weight at most $k$. Indeed choose $M$ independent uniform
+vectors (linear independence is unnecessary). Each fixed nonzero word is
+orthogonal to all of them with probability $2^{-M}$, and there are at most
+$\sum_{i=1}^k r^i\le 2r^k$ words to exclude. Fix a choice avoiding them all.
+Let $E=C+\{y:|y|\le\lfloor 2r/5\rfloor\}$. Under uniform probability,
+$\mu(E)\le 2^M\exp(-c r)$ by the binomial tail and a union bound.
+Since $M=o(r)$, this tends to zero exponentially in $r$. Put
+$\pi=e^{-2r}$ on $E$ and $\pi=(1-e^{-2r}\mu(E))/(1-\mu(E))$ elsewhere,
+for all sufficiently large $k$. The density is positive, normalized and
+bounded by two. Its invariance under translations by $C$ puts all its
+nonconstant Walsh support in $C^\perp$, hence its stationary moments match
+through order $k$ even before doubling degrees on the ambient cube.
+Positive symmetric scaling realizes it as a stationary density.
+
+The raw syndrome row from zero has independent bits with flip probability
+$(1-1/4)/2=3/8$. Its chance to leave $E$ is at most the upper binomial tail
+above $2r/5$, hence at most $\exp(-c' r)$. Thus
+$V(0)\le e^{-r}+\sqrt2\,\exp(-c'r)$. In particular $Z$ contains zero
+for every fixed admissible $a,\sigma$ and large $k$. Nevertheless (P1)
+gives exponential recovery, using for example $p=3$ and two bases.
+This rules out necessity of uniform one-step visibility even with bounded
+stationary densities. It leaves open the possibility of a returning subset
+of $Z$ at the critical moment in general.

@@ -1,0 +1,56 @@
+\section{Lower tails of the stationary density and local coverage}
+\label{sec:coverage}
+Use the two full bases, optional unused independent columns, and defect $d$ of Section~\ref{sec:matched-defect}. All expectations in this section use the uniform law on the syndrome space. The column distance is the least number of column translations joining two syndromes. A map $R$ has radius at most $j$ if this distance from $x$ to $Rx$ is at most $j$ for every $x$. Let $L=\max_y|R^{-1}(y)|$ and define
+\[
+ J_R=2j\log3+\log L-\mathbb E\log\pi(Rx).
+\]
+This quantity is nonnegative by Jensen and $\mathbb E\pi(Rx)\le L$. For the identity map with $j=0$ it equals the relative entropy of uniform measure with respect to the stationary law.
+
+\paragraph{Two sufficient criteria.} Assume $\|\pi\|_{15/7}\le B$ and stationary matching through ambient order $k\to\infty$.
+\begin{enumerate}
+\item For fixed small $\sigma$ as in Section~\ref{sec:floor-free},
+\[
+ \log s_{\sigma k}\le C_B+C J_R-c\,k^2/(k+d).                 \tag{C1}
+\]
+Thus $d=o(k^2)$ suffices when $J_R$ is uniformly bounded. More generally it suffices that $(1+J_R)(k+d)/k^2\to0$.
+\item Write $G_b=\{x:\pi(x)\ge b\}$ for $0<b\le1$. If $R$ can be chosen to take all its values in $G_b$ and
+\[
+  j+\log L+\log(1/b)=o(k),                                   \tag{C2}
+\]
+the whole ordered spectrum recovers with exponentially small error in $k$, at arbitrary rank and defect. For fixed $j,b$ the least possible load is determined by the sets $N_j(F)$ of vertices at distance at most $j$ from $F$. An integer $L$ suffices precisely when every nonempty syndrome set $F$ satisfies $|F|\le L\,|N_j(F)\cap G_b|$.
+\end{enumerate}
+Both statements allow densities with arbitrarily deep holes. The local coverage and entropy conditions are additional sufficient hypotheses, whose failure does not by itself imply a spectral obstruction.
+
+\paragraph{Translation comparison.} Write $p(x,y)$ for raw quotient transition probabilities. On the ambient cube the likelihood ratio of a noise row when one bit of its target is flipped lies between $1/3$ and $3$. Summing over a syndrome fiber gives the same comparison for translation of $y$ by any one column, even if that column is repeated. Symmetry gives the comparison also for the starting point. Hence
+\[
+  3^{-j}g(x)\le g(Rx)\le3^j g(x),\qquad
+  P(h\circ R)(x)\le 3^j L\,g(x).
+\]
+For the second inequality replace $p(x,y)$ with $3^jp(x,Ry)$ inside the sum and collect the preimages of $Ry$. Consequently $h\circ R\ge(\pi\circ R)/(3^j g)$.
+Two Boolean reverse steps give $\|Pf\|_{-15}\ge\|f\|_0=\exp(\mathbb E\log f)$: the successive orders are $0,-3,-15$ at correlation $1/2$. Extra factors increase the generalized norm by Jensen. This limiting statement also follows by continuity on each finite positive cube from the fractional-basis argument. Apply it to $f=h\circ R$. Since $\mathbb E\log g\le\log\|g\|_2\le0$, the comparisons yield
+\[
+                 \log\|g^{-1}\|_{15}\le J_R .                 \tag{C3}
+\]
+This uses no hypothetical endpoint bound for a density with zeros; each potential here is strictly positive.
+
+\paragraph{Removing the logarithm under an entropy bound.}
+At $v_0=5/3$ we now have $\|U\|_{v_0}\le B e^{2J_R}$ by $2/15+7/15=3/5$. In (CR3), with the partial-basis factors of (M5), take $1/v=3/5+\delta$ and $m=2/(1-1/v)$ for $0<\delta\le\delta_0$. Truncation on $U>e^t$ yields the bound
+\[
+ \log s_t\le C_B+C J_R-c\delta t+C d\delta^2 .
+\]
+Indeed $v_0/v-1=5\delta/3$. Set $\delta=\eta t/(d+t)$ with a sufficiently small fixed $\eta$, take $t=\sigma k$, and apply (FF1). This proves (C1).
+
+\paragraph{Removing the rank bound under local coverage.}
+If $\pi(Rx)\ge b$, then $\|(h\circ R)^{-1}\|_1\le3^j/b$ by $\mathbb E g\le1$. Starting the same reverse steps at $-1$ gives the successive orders $-7$ and $-31$. Thus $\|g^{-1}\|_{31}\le L3^{2j}/b$. Set $1/w=7/15+2/31<3/5$. Then $\|U\|_w\le B(L3^{2j}/b)^2$, and
+\[
+ \|U1_{U>e^{\sigma k}}\|_{5/3}
+     \le \exp[-(3w/5-1)\sigma k]\,\|U\|_w^{3w/5}.
+\]
+In (CR3) the two original basis factors are contractive at $m=5$. Under (C2) the last display is exponentially small; (FF1) completes the proof. For the coverage test, put one vertex on the left for every syndrome and $L$ copies on the right of each good vertex. Join admissible pairs of distance at most $j$. \href{https://doi.org/10.1112/jlms/s1-10.37.26}{Hall's theorem} applied to the resulting bipartite graph gives the stated criterion.
+
+\paragraph{A matched family separating the tail assumptions.}
+Use two copies of the identity basis in rank $r$, with $m=\lceil\log_2(k+2)\rceil$ disjoint parity blocks of size $\ell=k+1$ in the syndrome coordinates. Take any $r\ge m\ell+3$. Under uniform measure the $m$ block parities are independent, so each parity word has mass $1/n$, $n=2^m$. Give word zero density $\varepsilon=e^{-n^2}$, a different word density $n^{7/15}$, and all other words density $(n-\varepsilon-n^{7/15})/(n-2)$. This is normalized and the bulk value tends to one. To ensure minimal quotient rank, add $\varepsilon/[4(r+1)]$ times the sum of the characters indexed by the all-ones vector and its $r$ single-coordinate deletions. Because at least three coordinates are unused by the blocks these characters are distinct from the block characters. They span the full syndrome dual. The perturbation has mean zero and size at most $\varepsilon/4$. Each nonconstant character from the block pattern has ambient degree at least $2\ell$, and the additional ones have degree at least $2(r-1)$. Hence matching holds through $k$.
+The $15/7$ moments stay bounded, every fixed larger moment diverges, every fixed inverse moment diverges, and $\mathbb E[-\log\pi]\to\infty$. Choose one column in the first block. Map the zero-word fiber into the fiber with the first parity toggled by that column, keeping every other syndrome fixed. Its load is at most two and its radius at most one. For large $k$ the target density is at least $1/2$ everywhere in the image. Thus (C2) proves exponential recovery even at unboundedly fast rank growth.
+
+\paragraph{Why matching does not imply the coverage condition at fixed radius.}
+In the same block construction assign the small value $\varepsilon$ to all words of Hamming weight at most $\lfloor m/4\rfloor$. Give the remaining words a common value fixed by normalization and use the same full-rank perturbation. The rare region has measure tending to zero by the binomial tail, so even the stationary supremum stays bounded. From a zero-word syndrome each column translation changes at most one block parity. For every fixed $j$ and all sufficiently large $k$, the entire radius-$j$ ball there still has density below $1/2$. No map of that radius taking values in $G_{1/2}$ exists. Even without the image constraint, every such map sends a set of mass $1/n$ into densities at most $5\varepsilon/4$, so $J_R$ diverges uniformly over those maps. This refutes automatic bounded-radius lower-tail control under matching; it does not refute recovery in the general $d=o(k^2)$ case.
