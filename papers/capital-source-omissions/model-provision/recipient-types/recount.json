@@ -1,0 +1,242 @@
+[
+  {
+    "policy": "recipients",
+    "scenario": "10",
+    "margin": 7,
+    "ranked": {
+      "alphabet [selected family]": 114,
+      "anthropic": 107,
+      "openai": 105
+    }
+  },
+  {
+    "policy": "recipients",
+    "scenario": "10",
+    "margin": 8,
+    "ranked": {
+      "alphabet [selected family]": 114,
+      "anthropic": 106,
+      "openai": 105
+    }
+  },
+  {
+    "policy": "recipients",
+    "scenario": "10",
+    "margin": 9,
+    "ranked": {
+      "alphabet [selected family]": 114,
+      "openai": 105,
+      "anthropic": 104
+    }
+  },
+  {
+    "policy": "recipients",
+    "scenario": "11",
+    "margin": 9,
+    "ranked": {
+      "alphabet [selected family]": 114,
+      "openai": 105,
+      "anthropic": 97
+    }
+  },
+  {
+    "policy": "recipients",
+    "scenario": "00",
+    "margin": 1,
+    "ranked": {
+      "anthropic": 106,
+      "openai": 105,
+      "google": 74
+    }
+  },
+  {
+    "policy": "recipients",
+    "scenario": "00",
+    "margin": 2,
+    "ranked": {
+      "anthropic": 107,
+      "openai": 105,
+      "google": 74
+    }
+  },
+  {
+    "policy": "recipients",
+    "scenario": "00",
+    "margin": 3,
+    "ranked": {
+      "anthropic": 108,
+      "openai": 105,
+      "google": 74
+    }
+  },
+  {
+    "policy": "recipients",
+    "scenario": "00",
+    "margin": 4,
+    "ranked": {
+      "anthropic": 109,
+      "openai": 105,
+      "google": 74
+    }
+  },
+  {
+    "policy": "recipients",
+    "scenario": "01",
+    "margin": 3,
+    "ranked": {
+      "openai": 105,
+      "anthropic": 102,
+      "google": 74
+    }
+  },
+  {
+    "policy": "recipients",
+    "scenario": "01",
+    "margin": 4,
+    "ranked": {
+      "openai": 105,
+      "anthropic": 101,
+      "google": 74
+    }
+  },
+  {
+    "policy": "recipients",
+    "scenario": "01",
+    "margin": 5,
+    "ranked": {
+      "openai": 105,
+      "anthropic": 100,
+      "google": 74
+    }
+  },
+  {
+    "policy": "recipients",
+    "scenario": "01",
+    "margin": 6,
+    "ranked": {
+      "openai": 105,
+      "anthropic": 99,
+      "google": 74
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "10",
+    "margin": 7,
+    "ranked": {
+      "alphabet [selected family]": 114,
+      "anthropic": 107,
+      "openai": 105
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "10",
+    "margin": 8,
+    "ranked": {
+      "alphabet [selected family]": 114,
+      "anthropic": 106,
+      "openai": 105
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "10",
+    "margin": 9,
+    "ranked": {
+      "alphabet [selected family]": 114,
+      "openai": 105,
+      "anthropic": 104
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "11",
+    "margin": 9,
+    "ranked": {
+      "alphabet [selected family]": 114,
+      "openai": 105,
+      "anthropic": 97
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "00",
+    "margin": 1,
+    "ranked": {
+      "anthropic": 106,
+      "openai": 105,
+      "google": 74
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "00",
+    "margin": 2,
+    "ranked": {
+      "anthropic": 107,
+      "openai": 105,
+      "google": 74
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "00",
+    "margin": 3,
+    "ranked": {
+      "anthropic": 108,
+      "openai": 105,
+      "google": 74
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "00",
+    "margin": 4,
+    "ranked": {
+      "anthropic": 109,
+      "openai": 105,
+      "google": 74
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "01",
+    "margin": 3,
+    "ranked": {
+      "openai": 105,
+      "anthropic": 102,
+      "google": 74
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "01",
+    "margin": 4,
+    "ranked": {
+      "openai": 105,
+      "anthropic": 101,
+      "google": 74
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "01",
+    "margin": 5,
+    "ranked": {
+      "openai": 105,
+      "anthropic": 100,
+      "google": 74
+    }
+  },
+  {
+    "policy": "both",
+    "scenario": "01",
+    "margin": 6,
+    "ranked": {
+      "openai": 105,
+      "anthropic": 99,
+      "google": 74
+    }
+  }
+]
