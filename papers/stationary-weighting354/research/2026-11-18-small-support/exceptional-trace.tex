@@ -1,0 +1,82 @@
+\section{A trace obstruction on the actual exceptional set}
+Fix any finite real orders $q_k\ge1$ and any positive targets $H_k$.
+There are half-noise chains in the two-base class, with exact matching
+through $k$ and uniformly bounded stationary densities, for which the
+operator $S$ of (F2) has norm tending to zero but
+$\|S\|_{\mathcal S_{q_k}}\ge H_k$ already on the parity quotient.
+Here the Schatten norms use the ordinary unnormalized trace. On that
+quotient, even the exceptional multiplier has trivial stabilizer among
+state permutations preserving the noise kernel. The dimensions may grow
+arbitrarily rapidly. This rules out estimating the defect by requiring
+such a finite trace norm to vanish uniformly in dimension.
+
+Let $\ell$ be the least even integer greater than $k$ and $t=2^{-\ell}$.
+Partition the ambient signs into $n+m$ disjoint groups of $\ell$ signs,
+and keep their parities. There are $\ell$ disjoint bases. Every nonconstant
+quotient Walsh character has ambient degree at least $\ell$, so any
+normalized stationary density constructed from a quotient potential
+matches through $k$. On the quotient, $P,Q$ are ordinary product noise
+$T_t,T_{\sqrt t}$. Let $n=t^{-4}$, and call the first $n$ parities the
+core, with the remaining $m$ coordinates free. For the core mean sign $d$
+let $C=\{d\ge t/2\}$ and let $F$ consist of core configurations with at
+most one negative sign, crossed with all free configurations. Set
+$a=\exp(-nt^2/128)$. Take an unnormalized potential $h_0$ equal to one
+on $C^c\cup F$ and $a$ on $C\setminus F$. Perturb each quotient value
+upward by an amount strictly between zero and $a^2$, writing $H$ for
+the result. Put $G=T_tH$, $Z=\mathbb E HG$, so $U=H/G$ and $\pi=HG/Z$.
+
+The uniform probability of $C$ is at most $\exp(-nt^2/8)=a^{16}$.
+From any starting point the probability of landing in $F$ is at most
+$(n+1)((1+t)/2)^n\le a^9$ for large $k$. For a row in $F$ the mean
+output core sign is at least $7t/8$ for large $n$.
+The independent-sign Hoeffding bound gives probability at most $a^9$
+of missing $C$. Thus on $F$, $a\le G\le a+a^2+2a^9$.
+On $C^c$ the mean output sign is at most $t^2/2$ and the probability
+of reaching $C$ is at most $\exp(-nt^2/32)=a^4$. There $G=1+O(a^2)$.
+These estimates imply $Z=1+O(a^2)$ and $\pi\le3$ for large $k$.
+On $C\setminus F$, $G\ge a$ gives $U\le1+a$; on $C^c$,
+$U=1+O(a^2)$. On $F$ we have $(2a)^{-1}\le U\le2/a$.
+Consequently $A=\{U>e^{\sigma k}\}=F$ for any fixed $\sigma>0$
+and sufficiently large $k$.
+
+In the quotient the $2$-to-$4$ inequality for $T_{\sqrt t}$ bounds
+the positive sandwich norm by the $L^2$ norm of its multiplier.
+The same bound holds for the full ambient norm by Perron invariance.
+In particular
+\[
+ \|S\|\le (2/a)\sqrt{(n+1)2^{-n}}=o(1).
+\]
+The same estimate on $F$, the bound $O(1)$ for $|U-1|$ on
+$C\setminus F$, and the uniform $O(a^2)$ bound on $C^c$ show
+$\|QM_UQ-P\|=o(1)$. Thus the whole ambient spectrum recovers.
+
+In positive semidefinite order on the quotient, $S$ dominates
+$(2a)^{-1} T_{\sqrt t}^{(n)}M_{\{+\cdots+\}}T_{\sqrt t}^{(n)}
+\otimes T_t^{(m)}$. The first sandwich has rank one and its
+nonzero eigenvalue is the one-step return $((1+t)/2)^n$.
+The eigenvalues of the second factor are $t^j$ with multiplicities
+$\binom mj$. Monotonicity of each ordered eigenvalue yields
+\[
+ \|S\|_{\mathcal S_q}\ge (2a)^{-1}
+       ((1+t)/2)^n(1+t^q)^{m/q}.
+\]
+For $q=q_k$ the last base exceeds one, so a finite $m$ achieves
+any prescribed $H_k$. All preceding estimates are uniform in $m$.
+
+Finally choose the perturbation within the open box so that every ratio
+$H(y)/(T_tH)(y)$ is distinct. For any distinct $y,z$, equality gives
+a nonzero polynomial condition: the coefficient of $H(y)^2$ in
+$H(y)(T_tH)(z)-H(z)(T_tH)(y)$ is $T_t(z,y)>0$. A finite union of
+proper polynomial zero sets cannot fill the box. Any symmetry of
+$U{\bf1}_A$ therefore fixes each point of $F$. Since the noise entries
+strictly distinguish Hamming distances, a noise-preserving permutation
+is a Hamming isometry. The all-plus vertex and all of its individual
+neighbors belong to $F$, and their distances distinguish every vertex.
+The stabilizer is trivial.
+
+The multiplicity factor is elementary tensor-product algebra. The
+additional content is its realization on the \emph{actual} large-$U$
+set of matched Doob chains, after quotienting out the ambient fibers,
+with a vanishing killed norm and no residual permutation reduction.
+Dimension-dependent order or a separate estimate that exploits
+approximate rather than exact symmetry remains possible.
