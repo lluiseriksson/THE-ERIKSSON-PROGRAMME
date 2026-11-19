@@ -1,0 +1,119 @@
+% Source supplement for Rank defects and spectral stability of Boolean Doob chains.
+\section{Fractional basis packing and a direct inverse moment}
+
+Use the notation of the rank paper, with $P=P_{1/2}$, $Q=P_{1/\sqrt2}$,
+$g=Ph$, $\pi=hg$, $E\pi=1$ and $U=h/g$. Let $A$ have full row rank
+and let $\pi$ be a function of $Ax$. By uniqueness of positive symmetric
+scaling, $h$ and $g$ are functions of $Ax$ as well. A fractional packing of
+weight $t$ assigns weights $w_J\ge0$ to column bases $J$ of $A$, with
+$\sum_Jw_J=t$ and $\sum_{J\ni i}w_J\le1$ for each input column $i$.
+Repeated columns have separate capacities.
+
+Suppose $\|\pi\|_p\le B$ for fixed $2\le p<\infty$, and the stationary
+marginals match the uniform law through degree $k$. If $t$ is fixed and
+\[
+       \frac1p+\frac{2}{4^t-1}<\frac{2^t-1}{2^t+1},                 \tag{P1}
+\]
+then the entire ordered spectrum differs from that of $P$ by at most
+$C_{B,p,t}e^{-c_{p,t}k}$, with $c_{p,t}>0$. No stationary minimum
+uniform in dimension is assumed. In particular, at $p=2$ it suffices that
+$t>\log_2(2+\sqrt5)$, so three disjoint full bases suffice. At $t=2$
+it suffices that $p>15/7$, which includes the programme's stationary
+moment endpoint. The strict boundary in (P1) is not decided.
+
+\paragraph{Allocating noise time.}
+On the quotient, the noise contributed by column $i$ acts by retaining
+or translating by that column. Its multipliers are $1$ and $\lambda$.
+Thus two factors in the same column multiply their correlations.
+Allocate a factor of correlation $\lambda^{w_J}$ in each column of $J$
+to basis $J$, omitting zero weights. The unused capacity is another
+commuting noise factor. Each basis acts as ordinary product noise on the
+entire quotient in its own coordinates. Successive applications of
+forward hypercontractivity give contraction from $a>1$ to
+$1+(a-1)\lambda^{-2t}$. For a positive input and $0<a<1$, reverse
+hypercontractivity gives the lower bound from $a$ to
+$1-(1-a)\lambda^{-2t}$, including negative target orders. This follows
+by using the successive equality exponents of the classical inequalities.
+If an intermediate order vanishes, use the geometric mean by continuity;
+all functions are strictly positive on the finite quotient. Leftover
+noise contracts forward norms and increases the generalized reverse norm
+by Jensen. These steps use the usual time convention for Boolean noise
+(\href{https://doi.org/10.5802/aif.357}{Bonami} and
+\href{https://arxiv.org/abs/1108.1210}{Mossel, Oleszkiewicz and Sen,
+Remark 1.13}). Fractional base packing itself is classical, for example
+\href{https://doi.org/10.4230/LIPIcs.ESA.2026.57}{Dynamic Matroids,
+Base Packing and Covering}.
+
+\paragraph{Start with the potential.}
+The normalization $\|Qh\|_2=1$ implies $\|g\|_2\le1$. Since $E\pi=1$
+and $\|\pi\|_2\le B$, Cauchy--Schwarz gives
+$\mu\{\pi\ge1/2\}\ge1/(4B^2)$. Also $\mu\{g>4B\}\le1/(16B^2)$.
+On an intersection of measure at least $3/(16B^2)$, we thus have
+$h=\pi/g\ge1/(8B)$. For every fixed $a>0$, this bounds $\|h\|_a$
+from below solely in terms of $a,B$. In particular, for $0<q<4^t-1$,
+use $a=1-(1+q)4^{-t}$ and the reverse estimate on $Ph$, directly, to obtain
+$\|g^{-1}\|_q\le C_{B,t,q}$. This spends the full noise time on the
+potential and requires neither a floor on $\pi$ nor matching in this step.
+
+\paragraph{Ambient operator comparison.}
+Choose $q<4^t-1$ and $s>1$ so that
+\[
+ \frac1p+\frac2q<\frac1s<\frac{2^t-1}{2^t+1}.
+\]
+Then $U=\pi/g^2$ is uniformly bounded in $L^v$ for
+$1/v=1/p+2/q<1/s$. For any nonnegative nonzero quotient weight $W$,
+the unique positive unit leading eigenvector of $Q M_W Q$ is invariant
+under all translations in $\ker A$. Forward hypercontractivity on this
+vector, with $2s/(s-1)<1+2^t$, bounds $\|Q M_W Q\|\le\|W\|_s$
+on the full cube. Zero weights satisfy the same bound.
+
+The matching-energy estimate of the rank paper gives
+$\|g-1\|_2\le C_B2^{-k/2}$. On
+$E_k=\{|g-1|>2^{-k/8}\}$ the measure is at most $C_B2^{-3k/4}$.
+H\"older bounds $\|(U-\pi){\bf1}_{E_k}\|_s$ by a constant times
+$\mu(E_k)^{1/s-1/v}$. Outside $E_k$, $|U-\pi|\le C2^{-k/8}\pi$
+for large $k$. The multiplier bound applied to $|U-\pi|$ therefore
+gives exponential decay of $\|Q M_{U-\pi}Q\|$.
+
+By the strict inequality for $1/p$, take $\lambda>1/\sqrt2$ sufficiently
+close to $1/\sqrt2$ that $2p/(p-1)\le 1+\lambda^{-2t}$; take $\lambda<1$.
+Set $\theta=1/(\sqrt2\lambda)<1$. The same positive multiplier argument
+gives $\|P_\lambda M_{|\pi-1|}P_\lambda\|\le B+1$, hence the same
+bound for its signed counterpart. In $Q=P_\lambda P_\theta$ split the
+$P_\theta$ factors at degree $j=\lfloor k/2\rfloor$. The low-low term
+against $\pi-1$ is zero by matching; the other three terms each have norm
+at most $(B+1)\theta^{j+1}$. Thus $\|QM_UQ-P\|$ decays exponentially.
+The two Gram products of $M_{\sqrt U}Q$ identify the spectrum of the
+first operator with that of the stationary Doob chain. The claimed
+comparison follows by min--max. For $p=2$, writing $u=2^t$, (P1)
+reduces to $u^2-4u-1>0$. For $t=2$ it reduces to $1/p<7/15$.
+
+\paragraph{Separation from the four-family rank estimate.}
+In each of $n\ge2$ independent rank-two blocks use five columns of
+types $(1,0),(0,1),(1,1)$ with multiplicities $2,2,1$. Assign total
+weights $3/2,1/2,1/2$ to the three distinct pairs of types in the order
+$(1,2),(1,3),(2,3)$, spreading each uniformly over the available copies.
+Each column uses exactly its unit capacity. Normalize the block weights
+to probabilities, take their product across blocks, and multiply by $5/2$.
+This is a fractional packing of global bases of weight $5/2$.
+The coordinate count $5n$ and the basis size $2n$ also give the matching
+upper bound. The full code forces the four-family rank defect to be at
+least $\lceil 2n-5n/4\rceil$ by the support formula of the rank paper.
+
+For an explicit matched law, choose $z$ in the code nonzero in every block
+and a basis $e_1,\ldots,e_{2n}$ consisting of words supported on single
+blocks. Take $0<\epsilon_n<1$ tending to zero and set
+\[
+ \pi=1-\frac{1-\epsilon_n}{2n+1}
+       \left(\chi_z+\sum_{i=1}^{2n}\chi_{z+e_i}\right).
+\]
+Every nonzero word in one block weighs at least three. All displayed
+characters therefore have degree at least $3(n-1)$. They are distinct,
+their differences span the code, and $\pi$ has mean one and takes values
+between $\epsilon_n$ and two, attaining the lower bound at the origin.
+Finite positive symmetric scaling realizes this law. Taking $k=3n-4$
+makes the old four-family bound vacuous, whereas (P1) gives exponential
+recovery at $p=2$. The example separates the two sufficient estimates
+on the intrinsic code. It makes no exclusivity claim about all other
+stability methods. The unrestricted endpoint without quotient information
+remains open.
