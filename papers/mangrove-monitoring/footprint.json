@@ -1,0 +1,106 @@
+{
+  "G": 16,
+  "M": 6435,
+  "K": 81618,
+  "alpha": "1/20",
+  "positive": "all positions in accessible frame established",
+  "rows": [
+    {
+      "d": 1,
+      "null_all_full": "3/4",
+      "sharp_full_power": "1/15",
+      "size": "1/20"
+    },
+    {
+      "d": 2,
+      "null_all_full": "11/20",
+      "sharp_full_power": "1/11",
+      "size": "1/20"
+    },
+    {
+      "d": 3,
+      "null_all_full": "11/28",
+      "sharp_full_power": "7/55",
+      "size": "1/20"
+    },
+    {
+      "d": 4,
+      "null_all_full": "99/364",
+      "sharp_full_power": "91/495",
+      "size": "1/20"
+    },
+    {
+      "d": 5,
+      "null_all_full": "33/182",
+      "sharp_full_power": "91/330",
+      "size": "1/20"
+    },
+    {
+      "d": 6,
+      "null_all_full": "3/26",
+      "sharp_full_power": "13/30",
+      "size": "1/20"
+    },
+    {
+      "d": 7,
+      "null_all_full": "9/130",
+      "sharp_full_power": "13/18",
+      "size": "1/20"
+    },
+    {
+      "d": 8,
+      "null_all_full": "1/26",
+      "sharp_full_power": "1",
+      "size": "1/26"
+    },
+    {
+      "d": 9,
+      "null_all_full": "1/52",
+      "sharp_full_power": "1",
+      "size": "1/52"
+    },
+    {
+      "d": 10,
+      "null_all_full": "3/364",
+      "sharp_full_power": "1",
+      "size": "3/364"
+    },
+    {
+      "d": 11,
+      "null_all_full": "1/364",
+      "sharp_full_power": "1",
+      "size": "1/364"
+    },
+    {
+      "d": 12,
+      "null_all_full": "1/1820",
+      "sharp_full_power": "1",
+      "size": "1/1820"
+    },
+    {
+      "d": 13,
+      "null_all_full": "0",
+      "sharp_full_power": "1",
+      "size": "0"
+    },
+    {
+      "d": 14,
+      "null_all_full": "0",
+      "sharp_full_power": "1",
+      "size": "0"
+    },
+    {
+      "d": 15,
+      "null_all_full": "0",
+      "sharp_full_power": "1",
+      "size": "0"
+    },
+    {
+      "d": 16,
+      "null_all_full": "0",
+      "sharp_full_power": "1",
+      "size": "0"
+    }
+  ],
+  "incidence_grid_checks": 203
+}
