@@ -33,7 +33,7 @@ to $-q$. Since $a/\delta\to1/32$, we have $a\ge c\delta$. If the right side of (
 In particular fix $A>128$ and set $\delta=A\log(k+2)/k$. For all large $k$ the right side is bounded independently of rank and $k$. This estimate uses matching to control how the inverse moment deteriorates as its order approaches fifteen. It does not evaluate that moment at fifteen.
 
 \paragraph{Only the uncovered coordinates pay the forward cost.}
-Factor the quotient noise into the commuting products $P_1P_2P_H J$, where $P_i$ and $P_H$ use correlation $1/2$ on their chosen columns. For a weighted quadratic form in (G3) drop $J$ before inserting the weight; put half of $P_H$ on either side of Cauchy--Schwarz. The two forward operators are now $S_i=P_iP_H^{1/2}$. We show for $m=5+\epsilon$ with $0\le\epsilon\le\epsilon_0$
+Factor the quotient noise into the commuting products $P_1P_2P_H J$, where $P_i$ and $P_H$ use correlation $1/2$ on their chosen columns. For a weighted quadratic form in (CR3) drop $J$ before inserting the weight; put half of $P_H$ on either side of Cauchy--Schwarz. The two forward operators are now $S_i=P_iP_H^{1/2}$. We show for $m=5+\epsilon$ with $0\le\epsilon\le\epsilon_0$
 \[
                       \|S_i\|_{2\to m}\le e^{Cd\epsilon^2}.     \tag{M5}
 \]
@@ -47,10 +47,10 @@ After multiplication by the positive denominator $20(1+6y+y^2)(1+15y/2+45y^2/16)
 $65y/2-45y^2/8+45y^3/8$. This is bounded below by a positive multiple of $y$ on $[0,1]$, so $D(y)\ge c y^2$. The derivative in the output order is $O(y)$ by the same compactness and evenness argument as in Section~\ref{sec:critical-rank}. Positivity reduces optimization to nonnegative inputs. The one-bit cost is at most $e^{C\epsilon^2}$, and tensorization for $m\ge4$ proves (M5).
 
 \paragraph{Closing the estimate.}
-Put $\alpha=7/15+2/(15-\delta)$, $v_0=1/\alpha$, $1/v=\alpha+\delta$, and $m=2/(1-1/v)$. Then $m=5+O(\delta)$, and (M4) gives $\|U\|_{v_0}\le C_B$ for the chosen $\delta$. Truncation at $e^{\sigma k}$ and $v_0/v-1=\delta/\alpha$ give $\|U1_{A_{\sigma k}}\|_v\le C_B e^{-c\sigma k\delta}$. In the proof of (G3) substitute both factors from (M5), yielding (M2). Under (M1) the positive dimension term is $o(\log k)$. Apply Section~\ref{sec:floor-free} to conclude $\Delta\to0$. At $d=0$ the earlier fractional-packing estimate already supplies an exponential rate.
+Put $\alpha=7/15+2/(15-\delta)$, $v_0=1/\alpha$, $1/v=\alpha+\delta$, and $m=2/(1-1/v)$. Then $m=5+O(\delta)$, and (M4) gives $\|U\|_{v_0}\le C_B$ for the chosen $\delta$. Truncation at $e^{\sigma k}$ and $v_0/v-1=\delta/\alpha$ give $\|U1_{A_{\sigma k}}\|_v\le C_B e^{-c\sigma k\delta}$. In the proof of (CR3) substitute both factors from (M5), yielding (M2). Under (M1) the positive dimension term is $o(\log k)$. Apply Section~\ref{sec:floor-free} to conclude $\Delta\to0$. At $d=0$ the earlier fractional-packing estimate already supplies an exponential rate.
 
 \paragraph{A limitation of using the raw product norm.}
-For $H$ empty and two copies of the identity basis, each raw forward factor in (G3) is $N^{\otimes r}$ with $N=P_{1/2}$ on one bit. For all sufficiently small $\epsilon>0$,
+For $H$ empty and two copies of the identity basis, each raw forward factor in (CR3) is $N^{\otimes r}$ with $N=P_{1/2}$ on one bit. For all sufficiently small $\epsilon>0$,
 $\|N^{\otimes r}\|_{2\to5+\epsilon}\ge\exp(c r\epsilon^2)$.
 Indeed the logarithmic output/input ratio on $(1+x,1-x)$ is $\epsilon x^2/8+O(x^4)$ uniformly near zero, by Taylor expansion at output order $5+\epsilon$. Take $x^2=c_1\epsilon$ for sufficiently small $c_1>0$, then tensor the test function.
 This persists in a \emph{minimal} matched quotient: for $2(r-1)>k$ and $r\ge3$ use the syndrome characters indexed by the all-ones vector and by that vector plus each coordinate vector. Add their sum divided by $4(r+1)$ to the constant stationary density one. The result lies in $[3/4,5/4]$, and the nonconstant ambient degrees are $2r$ and $2(r-1)$. The Walsh support spans all $r$ syndrome directions. Positive symmetric scaling supplies its potential. Thus matching alone cannot improve the unrestricted raw norm estimate for a minimal quotient. The test vector need not realize a large killed return for that density; necessity of (M1) remains open.

@@ -5,12 +5,12 @@ Consider two disjoint column bases on a quotient of rank $r$. Throughout this se
 \paragraph{Theorem.}
 Let $k\to\infty$ and impose the matching hypotheses of (FF1). For arbitrary two-base quotients with $r=o(k^{3/2})$ the entire ordered spectrum recovers that of ordinary noise, including multiplicities. More precisely, if $A_t=\{U>e^t\}$ and $s_t$ is the norm of the chain killed outside $A_t$, then for all $t>0$
 \[
- s_t\le \exp\{-c t^2/(r+t)+C_B(1+r/t)\}.                  \tag{G1}
+ s_t\le \exp\{-c t^2/(r+t)+C_B(1+r/t)\}.                  \tag{CR1}
 \]
 This bound for the killed chain requires no matching. For the second condition, suppose the exceptional syndromes in (FF1) lie in the inverse image of at most $L$ values of a rank-$d$ linear map on the syndrome space. Put $\kappa=(2/5)\log 2-\log(5/4)>0$. Its killed norm satisfies
 \[
  s\le \exp\{-\kappa d+(2/5)\log L+
-             C_B[1+(r-d)^{1/3}+\sqrt d]\}.                  \tag{G2}
+             C_B[1+(r-d)^{1/3}+\sqrt d]\}.                  \tag{CR2}
 \]
 In particular a single affine subspace with $d/r^{1/3}\to\infty$ suffices for ordered recovery, even when $d/r\to0$. More generally one can take $L\le 2^{\beta d}$ with fixed $\beta<1-(5/2)\log_2(5/4)$. The constants and powers give sufficient regimes. Sharpness of these regimes is open.
 
@@ -23,7 +23,7 @@ On a union of syndrome fibers the top killed eigenvalue agrees with that of the 
 All quotient function norms use uniform probability. Taking $z=\sqrt W f$, duality and H\"older show the weighted compression has norm at most
 \[
  \|W\|_v\prod_{i=1}^2\|1_{\{W>0\}}P_i\|_{2\to m},
- \qquad m=2/(1-1/v),\quad v>1.                             \tag{G3}
+ \qquad m=2/(1-1/v),\quad v>1.                             \tag{CR3}
 \]
 
 \paragraph{The cost of increasing the one-bit output order.}
@@ -46,7 +46,7 @@ Indeed $h\ge1/(8B)$ on measure at least $3/(16B^2)$, and reverse hypercontractiv
  \|U1_{A_t}\|_v\le e^{-(v_0/v-1)t}\|U\|_{v_0}^{v_0/v}
                \le \exp(-c_1\delta t+C_B/\delta).
 \]
-Here $v_0/v-1=\delta/a$, and $5\le m\le 5+C\delta$. Dropping the support restrictions in (G3) now gives a log norm bound of $-c_1\delta t+C_B/\delta+Cr\delta^2$. Set $\delta=\eta t/(r+t)$ with fixed sufficiently small $\eta>0$. This proves (G1). Put $t=\sigma k$ from (FF1). The negative term dominates when $r=o(k^{3/2})$, and $t^2/(r+t)$ tends to infinity. The upper half of (FF1) yields the assertion.
+Here $v_0/v-1=\delta/a$, and $5\le m\le 5+C\delta$. Dropping the support restrictions in (CR3) now gives a log norm bound of $-c_1\delta t+C_B/\delta+Cr\delta^2$. Set $\delta=\eta t/(r+t)$ with fixed sufficiently small $\eta>0$. This proves (CR1). Put $t=\sigma k$ from (FF1). The negative term dominates when $r=o(k^{3/2})$, and $t^2/(r+t)$ tends to infinity. The upper half of (FF1) yields the assertion.
 
 \paragraph{Affine lists, including diffuse syndromes.}
 In coordinates of either basis choose $d$ pivot coordinates for the given linear map. For each assignment of the remaining coordinates there are at most $L$ acceptable pivot strings. With $E$ the whole list, the product noise in the pivot coordinates maps $L^2$ to $L^\infty$ with norm $(5/4)^{d/2}$: the one-bit row density relative to uniform has squared norm $5/4$. In the other coordinates commute the noise past the pivot noise. Positivity and the triangle inequality bound the pivot $L^2$ norm after complementary noise by that noise applied to the input's pivot $L^2$ norm. Integrating on the allowed strings thus gives in either basis
@@ -54,11 +54,11 @@ In coordinates of either basis choose $d$ pivot coordinates for the given linear
  \|1_EP_i\|_{2\to m}
  \le (L2^{-d})^{1/m}(5/4)^{d/2}\exp(C(r-d)(m-5)^2).
 \]
-Now take $v=v_0$ in (G3), so $2/m=2/5-O(\delta)$, and use $\|U1_E\|_{v_0}\le \exp(C_B/\delta)$. The logarithm of the resulting bound is at most
+Now take $v=v_0$ in (CR3), so $2/m=2/5-O(\delta)$, and use $\|U1_E\|_{v_0}\le \exp(C_B/\delta)$. The logarithm of the resulting bound is at most
 \[
  -\kappa d+(2/5)\log L+C_B/\delta+C d\delta+C(r-d)\delta^2 .
 \]
-Choose $\delta=\delta_0\min((1+r-d)^{-1/3},(1+d)^{-1/2})$. This proves (G2). With $d=r$ the estimate recovers the syndrome-count threshold. For $L=1$ and $r^{1/3}\ll d\ll r$, the affine subspace has $2^{r-d}$ elements, exponentially more than that count threshold permits.
+Choose $\delta=\delta_0\min((1+r-d)^{-1/3},(1+d)^{-1/2})$. This proves (CR2). With $d=r$ the estimate recovers the syndrome-count threshold. For $L=1$ and $r^{1/3}\ll d\ll r$, the affine subspace has $2^{r-d}$ elements, exponentially more than that count threshold permits.
 
 \paragraph{Conditional mass and scope.}
-For any stationary cut $F$ take the counting-space unit vector $f=1_F\sqrt{\nu/\nu(F)}$, where $\nu=\pi\mu$. With $T=M_{\sqrt U}P M_{\sqrt U}$ the return probability is $R=\langle f,Tf\rangle$. For the multiplication projection $D$ onto an affine list, positivity and $\|T\|\le1$ give $\sqrt R\le\sqrt{\|DTD\|}+\|(1-D)f\|$. Consequently a return bounded below by $s_0>0$ forces at least $s_0-o(1)$ of the conditional mass outside every list for which (G2) tends to zero. Taking $d=r$, the largest $\lfloor 2^{\beta r}\rfloor$ atoms give the Shannon entropy bound $\liminf H_2(A X\mid X\in F)/r\ge s_0[1-(5/2)\log_2(5/4)]$ as $r\to\infty$, where $H_2$ here denotes Shannon entropy in bits and $A$ the quotient map. Each atom outside the list has mass at most $1/\lfloor 2^{\beta r}\rfloor$; let $\beta$ increase to the threshold. Unrestricted critical recovery at arbitrarily large rank remains open.
+For any stationary cut $F$ take the counting-space unit vector $f=1_F\sqrt{\nu/\nu(F)}$, where $\nu=\pi\mu$. With $T=M_{\sqrt U}P M_{\sqrt U}$ the return probability is $R=\langle f,Tf\rangle$. For the multiplication projection $D$ onto an affine list, positivity and $\|T\|\le1$ give $\sqrt R\le\sqrt{\|DTD\|}+\|(1-D)f\|$. Consequently a return bounded below by $s_0>0$ forces at least $s_0-o(1)$ of the conditional mass outside every list for which (CR2) tends to zero. Taking $d=r$, the largest $\lfloor 2^{\beta r}\rfloor$ atoms give the Shannon entropy bound $\liminf H_2(A X\mid X\in F)/r\ge s_0[1-(5/2)\log_2(5/4)]$ as $r\to\infty$, where $H_2$ here denotes Shannon entropy in bits and $A$ the quotient map. Each atom outside the list has mass at most $1/\lfloor 2^{\beta r}\rfloor$; let $\beta$ increase to the threshold. Unrestricted critical recovery at arbitrarily large rank remains open.

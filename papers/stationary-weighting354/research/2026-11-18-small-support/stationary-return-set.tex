@@ -15,7 +15,7 @@ Both quantities are zero for the empty set.
 There are positive $c,C$ depending only on $B,\sigma,a$ such that
 \[
  |s_Z-s_{\{U>e^t\}}|\le Ce^{-ck},\qquad
- s_Z/4-Ce^{-ck}\le\Delta\le s_Z+Ce^{-ck}.                 \tag{S1}
+ s_Z/4-Ce^{-ck}\le\Delta\le s_Z+Ce^{-ck}.                 \tag{SR1}
 \]
 Consequently full ordered spectral recovery is equivalent to $R_Z\to0$.
 The set to inspect can be computed from the stationary density and the ordinary
@@ -39,7 +39,7 @@ H\"older yields $\|U1_{Z^c}\|_w\le B e^{4at}$ from $U=\pi/g^2$.
 Put $A=\{U>e^t\}$ and $v=5/3$. Truncation gives
 \[
  \|U1_{A\setminus Z}\|_v\le B^{153/149}
-           \exp[-(4-612a)t/149].                            \tag{S2}
+           \exp[-(4-612a)t/149].                            \tag{SR2}
 \]
 Indeed $w/v=153/149$. This estimate also gives the restricted reciprocal
 bound $\|g^{-1}1_{Z^c}\|_{17}\le e^{2at}$ directly, without a bound on
@@ -56,16 +56,16 @@ Section~\ref{sec:floor-free} proves $\|U1_{A^c}-\pi\|_{5/3}\le Ce^{-ck}$.
 Since $1/v-7/15=2/15$, it follows that
 \[
  \|U1_{Z\setminus A}\|_v
- \le Ce^{-ck}+B\mu(Z)^{2/15}\le C'e^{-c'k}.               \tag{S3}
+ \le Ce^{-ck}+B\mu(Z)^{2/15}\le C'e^{-c'k}.               \tag{SR3}
 \]
 For $Q=P^{1/2}$ write $S_E=QM_{U1_E}Q$. Its norm equals $s_E$ because
 $LL^*$ and $L^*L$ have the same nonzero spectrum for $L=QM_{\sqrt{U1_E}}$.
 The quotient weight bound of Section~\ref{sec:floor-free} gives
 $\|QM_WQ\|\le\|W\|_v$ for nonnegative quotient weights.
-The triangle inequality with (S2) and (S3) now bounds
+The triangle inequality with (SR2) and (SR3) now bounds
 $\|S_A-S_Z\|$ exponentially. Apply (FF1) and the killed-chain return
 inequalities $R_Z\le s_Z\le\sqrt{2R_Z-R_Z^2}$, which hold for any set.
-This proves (S1), including when one set is empty.
+This proves (SR1), including when one set is empty.
 
 \paragraph{Recovery across holes of superlinear column radius.}
 Use the repeated identity bases and full-rank perturbation of
@@ -87,7 +87,7 @@ with bias of absolute value $4^{-\ell}$, since every syndrome coordinate
 receives two independent half-noise factors. The probability of each
 parity word is therefore at least $2^{-m}(1-4^{-\ell})^m$.
 Uniformly in the starting point, the probability of the bulk tends to
-one. There $\pi\ge1/2$ for all large $k$, so (S1) gives exponential
+one. There $\pi\ge1/2$ for all large $k$, so (SR1) gives exponential
 recovery for every indicated rank. Yet from the zero word a column
 translation changes at most one parity. Every map of radius $o(k)$
 leaves that starting syndrome in the low ball, with density at most
@@ -98,3 +98,31 @@ This separation proves the advantage of using the noise distribution
 over a prescribed column radius in this family. Necessity of a
 uniform lower bound on $V$, and unconditional critical recovery at
 arbitrary rank, do not follow.
+
+\paragraph{A nonempty stationary return set can be harmless.}
+For $r=k^3$ take two identity bases on the syndrome cube and let
+$M=\lceil 2k\log_2 r+2\rceil$ for $k\ge2$. There exists a binary linear
+subspace $C$ spanned by at most $M$ vectors whose orthogonal space contains
+no nonzero word of weight at most $k$. Indeed choose $M$ independent uniform
+vectors (linear independence is unnecessary). Each fixed nonzero word is
+orthogonal to all of them with probability $2^{-M}$, and there are at most
+$\sum_{i=1}^k r^i\le 2r^k$ words to exclude. Fix a choice avoiding them all.
+Let $E=C+\{y:|y|\le\lfloor 2r/5\rfloor\}$. Under uniform probability,
+$\mu(E)\le 2^M\exp(-c r)$ by the binomial tail and a union bound.
+Since $M=o(r)$, this tends to zero exponentially in $r$. Put
+$\pi=e^{-2r}$ on $E$ and $\pi=(1-e^{-2r}\mu(E))/(1-\mu(E))$ elsewhere,
+for all sufficiently large $k$. The density is positive, normalized and
+bounded by two. Its invariance under translations by $C$ puts all its
+nonconstant Walsh support in $C^\perp$, hence its stationary moments match
+through order $k$ even before doubling degrees on the ambient cube.
+Positive symmetric scaling realizes it as a stationary density.
+
+The raw syndrome row from zero has independent bits with flip probability
+$(1-1/4)/2=3/8$. Its chance to leave $E$ is at most the upper binomial tail
+above $2r/5$, hence at most $\exp(-c' r)$. Thus
+$V(0)\le e^{-r}+\sqrt2\,\exp(-c'r)$. In particular $Z$ contains zero
+for every fixed admissible $a,\sigma$ and large $k$. Nevertheless (P1)
+gives exponential recovery, using for example $p=3$ and two bases.
+This rules out necessity of uniform one-step visibility even with bounded
+stationary densities. It leaves open the possibility of a returning subset
+of $Z$ at the critical moment in general.

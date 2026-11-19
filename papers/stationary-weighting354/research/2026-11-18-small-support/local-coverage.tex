@@ -34,7 +34,7 @@ Two Boolean reverse steps give $\|Pf\|_{-15}\ge\|f\|_0=\exp(\mathbb E\log f)$: t
 This uses no hypothetical endpoint bound for a density with zeros; each potential here is strictly positive.
 
 \paragraph{Removing the logarithm under an entropy bound.}
-At $v_0=5/3$ we now have $\|U\|_{v_0}\le B e^{2J_R}$ by $2/15+7/15=3/5$. In (G3), with the partial-basis factors of (M5), take $1/v=3/5+\delta$ and $m=2/(1-1/v)$ for $0<\delta\le\delta_0$. Truncation on $U>e^t$ yields the bound
+At $v_0=5/3$ we now have $\|U\|_{v_0}\le B e^{2J_R}$ by $2/15+7/15=3/5$. In (CR3), with the partial-basis factors of (M5), take $1/v=3/5+\delta$ and $m=2/(1-1/v)$ for $0<\delta\le\delta_0$. Truncation on $U>e^t$ yields the bound
 \[
  \log s_t\le C_B+C J_R-c\delta t+C d\delta^2 .
 \]
@@ -46,7 +46,7 @@ If $\pi(Rx)\ge b$, then $\|(h\circ R)^{-1}\|_1\le3^j/b$ by $\mathbb E g\le1$. St
  \|U1_{U>e^{\sigma k}}\|_{5/3}
      \le \exp[-(3w/5-1)\sigma k]\,\|U\|_w^{3w/5}.
 \]
-In (G3) the two original basis factors are contractive at $m=5$. Under (C2) the last display is exponentially small; (FF1) completes the proof. For the coverage test, put one vertex on the left for every syndrome and $L$ copies on the right of each good vertex. Join admissible pairs of distance at most $j$. \href{https://doi.org/10.1112/jlms/s1-10.37.26}{Hall's theorem} applied to the resulting bipartite graph gives the stated criterion.
+In (CR3) the two original basis factors are contractive at $m=5$. Under (C2) the last display is exponentially small; (FF1) completes the proof. For the coverage test, put one vertex on the left for every syndrome and $L$ copies on the right of each good vertex. Join admissible pairs of distance at most $j$. \href{https://doi.org/10.1112/jlms/s1-10.37.26}{Hall's theorem} applied to the resulting bipartite graph gives the stated criterion.
 
 \paragraph{A matched family separating the tail assumptions.}
 Use two copies of the identity basis in rank $r$, with $m=\lceil\log_2(k+2)\rceil$ disjoint parity blocks of size $\ell=k+1$ in the syndrome coordinates. Take any $r\ge m\ell+3$. Under uniform measure the $m$ block parities are independent, so each parity word has mass $1/n$, $n=2^m$. Give word zero density $\varepsilon=e^{-n^2}$, a different word density $n^{7/15}$, and all other words density $(n-\varepsilon-n^{7/15})/(n-2)$. This is normalized and the bulk value tends to one. To ensure minimal quotient rank, add $\varepsilon/[4(r+1)]$ times the sum of the characters indexed by the all-ones vector and its $r$ single-coordinate deletions. Because at least three coordinates are unused by the blocks these characters are distinct from the block characters. They span the full syndrome dual. The perturbation has mean zero and size at most $\varepsilon/4$. Each nonconstant character from the block pattern has ambient degree at least $2\ell$, and the additional ones have degree at least $2(r-1)$. Hence matching holds through $k$.
