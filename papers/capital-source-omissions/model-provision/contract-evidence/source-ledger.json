@@ -1,0 +1,84 @@
+[
+  {
+    "recipient": "microsoft",
+    "provider": "openai",
+    "sources": [
+      {
+        "date": "2025-01-21",
+        "url": "https://blogs.microsoft.com/blog/2025/01/21/microsoft-and-openai-evolve-partnership-to-drive-the-next-phase-of-ai/",
+        "relation_to_sampled_links": "additional_primary_source"
+      },
+      {
+        "date": "2026-02-27",
+        "url": "https://blogs.microsoft.com/blog/2026/02/27/microsoft-and-openai-joint-statement-on-continuing-partnership/",
+        "relation_to_sampled_links": "exact_url"
+      },
+      {
+        "date": "2026-04-27",
+        "url": "https://blogs.microsoft.com/blog/2026/04/27/the-next-phase-of-the-microsoft-openai-partnership/",
+        "relation_to_sampled_links": "additional_primary_source"
+      }
+    ],
+    "assessment": "Microsoft uses licensed OpenAI technology in its products and distributes models through Azure. The January statement described two-way revenue sharing. The April amendment retained the licence through 2032, made it non-exclusive and ended Microsoft's revenue-share payments to OpenAI. Capped revenue sharing from OpenAI to Microsoft continues through 2030. These clauses identify a direction of payment without establishing net transfers or other fees."
+  },
+  {
+    "recipient": "microsoft",
+    "provider": "anthropic",
+    "sources": [
+      {
+        "date": "2025-11-18",
+        "url": "https://blogs.microsoft.com/blog/2025/11/18/microsoft-nvidia-and-anthropic-announce-strategic-partnerships/",
+        "relation_to_sampled_links": "additional_primary_source"
+      }
+    ],
+    "assessment": "The joint announcement describes access to Claude in Foundry and Copilot. Anthropic committed $30 billion to purchase Azure compute. Microsoft separately committed up to $5 billion in equity investment. Neither amount measures Microsoft's spend on Claude."
+  },
+  {
+    "recipient": "snowflake",
+    "provider": "anthropic",
+    "sources": [
+      {
+        "date": "2025-12-03",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-announce-200-million-partnership-to-bring-agentic-ai-to-global-enterprises/",
+        "relation_to_sampled_links": "additional_primary_source"
+      }
+    ],
+    "assessment": "The multiyear $200 million announcement covers Cortex availability and joint sales. Snowflake also documents internal engineering and sales use. The headline does not give realized cash payments by period or distinguish fees for internal use from client consumption."
+  },
+  {
+    "recipient": "snowflake",
+    "provider": "openai",
+    "sources": [
+      {
+        "date": "2026-02-02",
+        "url": "https://www.snowflake.com/en/news/press-releases/snowflake-and-openAI-forge-200-million-partnership-to-bring-enterprise-ready-ai-to-the-worlds-most-trusted-data-platform/",
+        "relation_to_sampled_links": "exact_url"
+      }
+    ],
+    "assessment": "Snowflake reports a separate multiyear $200 million partnership for deploying models on its platform, joint development and sales. The headline gives an agreement value. It supplies neither accrued model revenue nor the allocation between technology and joint commercial activity."
+  },
+  {
+    "recipient": "salesforce",
+    "provider": "openai",
+    "sources": [
+      {
+        "date": "2025-10-14",
+        "url": "https://www.salesforce.com/news/press-releases/2025/10/14/openai-partnership-expansion-announcement/",
+        "relation_to_sampled_links": "additional_primary_source"
+      }
+    ],
+    "assessment": "The joint announcement distinguishes models already available inside Agentforce from planned Salesforce applications inside ChatGPT. This is evidence of distribution and an announced partnership. It does not identify the model-fee payer, rate or realized spend."
+  },
+  {
+    "recipient": "salesforce",
+    "provider": "anthropic",
+    "sources": [
+      {
+        "date": "2025-10-14",
+        "url": "https://investor.salesforce.com/news/news-details/2025/Anthropic-and-Salesforce-Expand-Strategic-Partnership-to-Deliver-Trusted-AI-for-Regulated-Industries/default.aspx",
+        "relation_to_sampled_links": "additional_primary_source"
+      }
+    ],
+    "assessment": "Salesforce names customers using Claude through Amazon Bedrock in Agentforce. Anthropic also uses Salesforce products. The documented hosting chain identifies an intermediary, but does not identify the path or value of model payments."
+  }
+]

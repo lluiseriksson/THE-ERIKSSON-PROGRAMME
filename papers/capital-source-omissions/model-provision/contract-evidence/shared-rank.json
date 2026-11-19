@@ -1,0 +1,194 @@
+{
+  "all_shared": [
+    {
+      "recipient": "microsoft",
+      "anthropic_hosts": 18,
+      "openai_hosts": 33
+    },
+    {
+      "recipient": "snowflake",
+      "anthropic_hosts": 8,
+      "openai_hosts": 4
+    },
+    {
+      "recipient": "salesforce",
+      "anthropic_hosts": 7,
+      "openai_hosts": 4
+    },
+    {
+      "recipient": "amazon",
+      "anthropic_hosts": 7,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "cursor",
+      "anthropic_hosts": 5,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "duckduckgo",
+      "anthropic_hosts": 5,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "amazon web services",
+      "anthropic_hosts": 4,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "windsurf",
+      "anthropic_hosts": 4,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "amazon web services (aws)",
+      "anthropic_hosts": 3,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "github",
+      "anthropic_hosts": 3,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "intuit",
+      "anthropic_hosts": 3,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "perplexity",
+      "anthropic_hosts": 3,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "apple",
+      "anthropic_hosts": 1,
+      "openai_hosts": 8
+    },
+    {
+      "recipient": "aws",
+      "anthropic_hosts": 8,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "quora",
+      "anthropic_hosts": 6,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "google cloud",
+      "anthropic_hosts": 5,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "ibm",
+      "anthropic_hosts": 5,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "anysphere",
+      "anthropic_hosts": 1,
+      "openai_hosts": 3
+    },
+    {
+      "recipient": "block",
+      "anthropic_hosts": 2,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "databricks",
+      "anthropic_hosts": 2,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "harvey",
+      "anthropic_hosts": 1,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "novo nordisk",
+      "anthropic_hosts": 2,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "oracle",
+      "anthropic_hosts": 1,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "servicenow",
+      "anthropic_hosts": 1,
+      "openai_hosts": 2
+    },
+    {
+      "recipient": "amazon web services, inc.",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "bolna",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "deepseek",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "fello ai",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "mongodb",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "neeva",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "nutanix",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "sap",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "thomson reuters",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "uber",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "venice ai",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "vercel",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    },
+    {
+      "recipient": "visa",
+      "anthropic_hosts": 1,
+      "openai_hosts": 1
+    }
+  ],
+  "selected": [
+    "microsoft",
+    "snowflake",
+    "salesforce"
+  ]
+}
