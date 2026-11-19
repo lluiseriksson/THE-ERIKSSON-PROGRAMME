@@ -1,0 +1,201 @@
+{
+  "GSM8K": {
+    "n": 1319,
+    "gap": 4503,
+    "raw_modes": [
+      "9",
+      "6"
+    ],
+    "prior_round_modes": [
+      "9"
+    ],
+    "Rlo": "327372869/283333463",
+    "Rgrid": "433/372",
+    "witness": {
+      "A": 886,
+      "B": 947,
+      "cot_order": [
+        853,
+        858,
+        886
+      ],
+      "gain_loss_both_neither": [
+        433,
+        372,
+        514,
+        0
+      ],
+      "pal_order": [
+        947,
+        949,
+        952
+      ],
+      "tie_weight_ratio": "433/372"
+    },
+    "witness_precision": "False",
+    "witness_divisor": "9"
+  },
+  "SVAMP": {
+    "n": 1000,
+    "gap": 3934,
+    "raw_modes": [],
+    "prior_round_modes": [],
+    "Rlo": "248242271/209899151",
+    "Rgrid": null
+  },
+  "ASDIV": {
+    "n": 2096,
+    "gap": 1468,
+    "raw_modes": [
+      "9",
+      "6"
+    ],
+    "prior_round_modes": [
+      "9"
+    ],
+    "Rlo": "73578953/69016873",
+    "Rgrid": "29/27",
+    "witness": {
+      "A": 1632,
+      "B": 1664,
+      "cot_order": [
+        1602,
+        1604,
+        1632
+      ],
+      "gain_loss_both_neither": [
+        464,
+        432,
+        1200,
+        0
+      ],
+      "pal_order": [
+        1664,
+        1668,
+        1671
+      ],
+      "tie_weight_ratio": "29/27"
+    },
+    "witness_precision": "False",
+    "witness_divisor": "9"
+  },
+  "GSM-HARD": {
+    "n": 1319,
+    "gap": 35805,
+    "raw_modes": [
+      "9",
+      "6"
+    ],
+    "prior_round_modes": [
+      "9",
+      "6"
+    ],
+    "Rlo": "598059887/241000389",
+    "Rgrid": "5/2",
+    "witness": {
+      "A": 316,
+      "B": 790,
+      "cot_order": [
+        301,
+        304,
+        316
+      ],
+      "gain_loss_both_neither": [
+        790,
+        316,
+        0,
+        213
+      ],
+      "pal_order": [
+        790,
+        812,
+        818
+      ],
+      "tie_weight_ratio": "5/2"
+    },
+    "witness_precision": "False",
+    "witness_divisor": "9"
+  },
+  "SingleEq": {
+    "n": 508,
+    "gap": 5697,
+    "raw_modes": [],
+    "prior_round_modes": [],
+    "Rlo": "100292501/44313371",
+    "Rgrid": null
+  },
+  "SingleOp": {
+    "n": 562,
+    "gap": 1298,
+    "raw_modes": [],
+    "prior_round_modes": [
+      "6"
+    ],
+    "Rlo": "72151079/60161903",
+    "Rgrid": "21/16",
+    "witness": {
+      "A": 520,
+      "B": 530,
+      "cot_order": [
+        514,
+        515,
+        520
+      ],
+      "gain_loss_both_neither": [
+        42,
+        32,
+        488,
+        0
+      ],
+      "pal_order": [
+        530,
+        531,
+        534
+      ],
+      "tie_weight_ratio": "21/16"
+    },
+    "witness_precision": "True",
+    "witness_divisor": "6"
+  },
+  "AddSub": {
+    "n": 395,
+    "gap": 5028,
+    "raw_modes": [],
+    "prior_round_modes": [],
+    "Rlo": "130161125/80879059",
+    "Rgrid": null
+  },
+  "MultiArith": {
+    "n": 600,
+    "gap": 1785,
+    "raw_modes": [
+      "6"
+    ],
+    "prior_round_modes": [],
+    "Rlo": "32716767/15858967",
+    "Rgrid": "21/8",
+    "witness": {
+      "A": 579,
+      "B": 592,
+      "cot_order": [
+        573,
+        575,
+        579
+      ],
+      "gain_loss_both_neither": [
+        21,
+        8,
+        571,
+        0
+      ],
+      "pal_order": [
+        592,
+        597,
+        597
+      ],
+      "tie_weight_ratio": "21/8"
+    },
+    "witness_precision": "False",
+    "witness_divisor": "6"
+  }
+}
