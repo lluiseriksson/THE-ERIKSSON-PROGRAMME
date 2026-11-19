@@ -3,11 +3,11 @@
 On the paired quotient $y_i=x_ix_{r+i}$ the ambient $P=P_{1/2}$ acts as $P_\rho$ with $\rho=1/4$. Split the $r$ pairs into $m$ blocks of sizes $n_i$. Write $d_i$ for the mean sign in block $i$ and $z_i=\sqrt{n_i}d_i$. A block-symmetric potential is any positive function of the vector $(d_1,\ldots,d_m)$; the function may couple the blocks arbitrarily.
 
 \begin{theorem}\label{critical}
-Fix $m$ and let $\min_i n_i\to\infty$. If the potential is block-symmetric, $\|\pi\|_{15/7}\le B$ uniformly, and the stationary ambient marginals match through $k\to\infty$, then
+For every $B\ge1$ there are $\delta_B,c_B,C_B>0$ such that if $m\le\delta_B k$, the potential is block-symmetric, $\|\pi\|_{15/7}\le B$, and the stationary ambient marginals match through degree $k$, then
 \[
- \max_j|\lambda_j(K_h)-\lambda_j(P_{1/2})|\longrightarrow0 .
+ \max_j|\lambda_j(K_h)-\lambda_j(P_{1/2})|\le C_B e^{-c_B k}.
 \]
-There is no lower-tail or uniform-integrability hypothesis on the stationary density. For $m=1$ the subcritical examples of Theorem~\ref{two} can all be chosen radial.
+Block sizes are arbitrary positive integers. There is no lower-tail or uniform-integrability hypothesis on the stationary density. For $m=1$ the subcritical examples of Theorem~\ref{two} can all be chosen radial.
 \end{theorem}
 For the last assertion the untilted potential and the set of constraints in Lemma~\ref{tilt} are invariant under coordinate permutations. The strictly convex local minimization there has a unique minimizer in its invariant ball. Its tilt is therefore invariant too.
 
@@ -42,33 +42,5 @@ For $1\le \sqrt n\,|s|\le2$ on the same side of zero as $d$ (either side at zero
  T(d,s)/\mu_s\ \ge\ c\exp[-nE(d)+\rho\sqrt n\,|d|]
 \end{equation}
 uniformly in $d$. Tilt this time to mean zero. The optimizing parameter $t_0$ has opposite sign to $d$ and $|t_0|\ge\rho|d|$, since $L'_d(0)=\rho d$ and $L''_d\le1$. Also $|t_0|\le\operatorname{arctanh}\rho$ by the extreme all-plus and all-minus inputs. Under this tilt the probability of each specified layer in the window is at least $c/\sqrt n$. Indeed the smaller sign group lies within $2\sqrt n$ of its tilted mean with probability at least $3/4$ by Chebyshev. Conditional on such a count, the larger group needs a count within $C\sqrt n$ of its mean and of the correct lattice parity. Stirling's bounds give a uniform lower atom $c/\sqrt n$ there, since its size is at least $n/2$ and its tilted parameter stays in a compact subinterval of $(0,1)$. Undo the tilt, multiplying by $\exp[-nE(d)-nt_0s]$, and use $\mu_s\le C/\sqrt n$.
-
-\paragraph{The central mass supplied by matching.}
-Normalize $\E hPh=1$, and keep $g=Ph$, $Q=P_{1/\sqrt2}$, $U=\pi/g^2$. Under the stationary law the vector $z$ converges in distribution to $m$ independent standard Gaussians. For each fixed total degree, every polynomial moment is eventually the uniform one because a quotient coordinate is a product of two ambient signs. The independent uniform block sums have Gaussian limiting joint moments; tightness, uniform higher moments and Gaussian moment determinacy give the assertion. In particular each of the $2^m$ signed boxes $1\le |z_i|\le2$ has stationary probability bounded below. Each box also has uniformly positive integral of $h$: $\E g=\E h\le1$ by $\|Qh\|_2=1$, and $\E[\pi\one_{g>L}]\le B L^{-1/p'}$ for $p'=p/(p-1)$. Choose $L$ fixed so this is smaller than half the box mass and use $h=\pi/g$. Multiplying \eqref{lowerrow} for the signed box matching the row $d$ and integrating gives
-\begin{equation}\label{gbox}
- g(d)\ge c_{m,B}\exp\!\left[-\sum_i n_i E(d_i)+\rho\sum_i|z_i|\right].
-\end{equation}
-In particular $g$ is bounded below on each fixed central box $\max_i|z_i|\le R$ because $E(d)=O(d^2)$ at zero (Taylor expansion of $L_d$ at its bounded optimizer near zero).
-
-\paragraph{A tail trace on the full ambient space.}
-For any nonnegative orbit weight $W$, the top eigenvector of $QM_WQ$ can be taken invariant under the fiber translations and the within-block permutations. For $W\ne0$ the matrix has strictly positive entries and its Perron eigenvector is unique after normalization. Its norm is thus bounded by the trace on the space of functions of the block magnetizations. On this space $Q^2=P$ has the product transition on layers. Cyclicity of trace, or the orthonormal basis of normalized layer indicators, gives
-\[
- \|QM_WQ\|\le\sum_d W(d)\prod_i T(d_i,d_i).
-\]
-For $W=U\one_{\max |z_i|>R}$ apply H\"older against $\prod_i\mu_{d_i}$, using \eqref{gbox}. The $p'$-power of the resulting multiplier norm in H\"older is bounded by a constant times the tail sum of the product of
-\[
- A_n(d)=\mu_d^{1-p'}T(d,d)^{p'}
-       \exp[2p'n E(d)-2p'\rho\sqrt n\,|d|].
-\]
-For $|d|\le1/2$ the two local prefactors give
-$A_n(d)\le C n^{-1/2}e^{-p'n\Delta(d)-2p'\rho|z|}$.
-For $|d|>1/2$ the weaker estimates and the strict gap in \eqref{delta} give $A_n(d)\le(n+1)^{p'-1}e^{-c n}$. Summing over the mesh $2/\sqrt n$ in $z$ gives a uniformly bounded one-block sum with tail $O(e^{-cR})+o_{n\to\infty}(1)$. The union bound on the product, with fixed $m$, proves
-\[
- \limsup_{\min n_i\to\infty}\|QM_{U\one_{\max|z_i|>R}}Q\|
- \le C_{m,B}e^{-cR}.
-\]
-
-\paragraph{Completing the spectral comparison.}
-On the fixed central box \eqref{gbox} bounds $g^{-2}$ and the matching variance estimate in Theorem~\ref{inverse}'s proof gives $g\to1$ in uniform probability. Thus $\|(U-\pi)\one_{\max|z_i|\le R}\|_{5/3}\to0$: apply H\"older to $\pi(g^{-2}-1)$ with $p>5/3$ and use bounded convergence in probability for the second factor on the box. On the complementary tail $\|\pi\one_{\max|z_i|>R}\|_{5/3}\le B\,\mu(\max |z_i|>R)^{3/5-1/p}$, which tends uniformly to zero as $R\to\infty$ by the uniform-law sign tail bound. The positive multiplier bound from Theorem~\ref{inverse} applies to both terms; the trace estimate treats the remaining $U$ tail. First taking the dimension limit and then $R\to\infty$ yields $\|QM_{U-\pi}Q\|\to0$. The signed comparison $\|QM_{\pi-1}Q\|\to0$ from the same proof uses only matching and bounded second moment. The two Gram products and min--max give Theorem~\ref{critical}. General two-base quotients and growing numbers of blocks are outside this endpoint argument.
 
 \input{critical-rate}
