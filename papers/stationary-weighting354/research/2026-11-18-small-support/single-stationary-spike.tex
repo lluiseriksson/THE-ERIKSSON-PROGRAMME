@@ -1,0 +1,159 @@
+% Supplementary manuscript section.
+\section{A single stationary spike at the cubic moment}
+\label{sec:stationary-spike}
+Keep half noise and put $Y=1/g$. Suppose $\pi=a$ off a set $E$ of
+uniform mass $m>0$, and that
+\[
+ b\le a\le1,\qquad a\le\pi\le M,\qquad M m^{1/3}\le H. \tag{S1}
+\]
+The constants $b,H$ are fixed across dimensions. The shape of $E$ and
+the variation of $\pi$ inside this envelope are arbitrary. Every
+two-valued stationary density with a positive floor and bounded cubic
+norm satisfies (S1), taking its higher level for $E$. The constant
+density gives ordinary noise by uniqueness of positive scaling.
+
+\paragraph{Theorem.}
+Under (S1) the spectral gap is at least $c(b,H)>0$, without coordinate
+matching. For a two-valued stationary density there are two stronger
+conclusions. The ordered spectral error satisfies $\Delta\le C_b\|\pi-1\|_3$
+without matching, and its linear order is sharp. If $p>3$
+is fixed, $\|\pi\|_p\le B$, and the stationary marginals match through
+order $k$, then the ordered spectral error is at most $Ce^{-ck}$,
+with constants depending only on $b,B,p$.
+
+\paragraph{Two-step averaging on the spike.}
+The floor $\pi\ge a$ and Jensen give $Y\le Pg/a$. Since
+$Pg=P^2(\pi Y)$, writing $T=P^2$ gives the pointwise inequality
+$Y\le TY+(M/a)T(Y{\bf1}_E)$. The unweighted term has coefficient one.
+Iteration and positivity give, for $j=0,1,2$,
+\[
+ P^jY\le P^jT^nY+(M/a)\sum_{i=1}^nP^jT^i(Y{\bf1}_E). \tag{S2}
+\]
+As before $\|Y\|_9\le1/b$. Choose
+$n=1+\lceil\log_{16}(1+\log(1/m))\rceil$ and $v=1+8\cdot16^n$.
+Forward hypercontractivity gives $\|P^jT^nY\|_v\le1/b$, so its
+$L^8$ norm on $E$ is at most $m^{1/8-1/v}/b\le e m^{1/8}/b$.
+For $i\ge1$, $P^jT^i$ contracts $L^{23/16}$ into $L^8$:
+two ordinary noise steps have correlation $1/4$. An input supported on
+$E$ gains a factor $m^d$ relative to its $L^8$ norm, with
+$d=16/23-1/8>1/3$. For $m$ sufficiently small in terms of $b,H$,
+$(M/a)n m^d\le (H/b)n m^{d-1/3}\le1/2$. In (S2) with $j=0$
+absorb this term, then apply the result for $j=1,2$. With
+$\mu_E=\mu(\cdot\mid E)$ this gives $\|P^jY\|_{8,\mu_E}\le C_b$.
+
+Now $g=P(\pi Y)$ and $Pg=T(\pi Y)$. The spike contributes at most
+$CM m^d$ to $\|Pg\|_{8,\mu_E}$ by the same two-step bound. For
+$\|g\|_{3,\mu_E}$, use the $L^{3/2}$-to-$L^3$ contraction of $P$ on
+$Y{\bf1}_E$ and its conditional $L^8$ bound; this contribution is
+at most $CMm^{1/3}$. The baseline contributions are controlled by
+(S2), using $\pi Y\le aY+MY{\bf1}_E$. We obtain
+\[
+ \|Y\|_{8,\mu_E}+\|g\|_{3,\mu_E}+\|Pg\|_{8,\mu_E}\le C_{b,H}.
+ \tag{S3}
+\]
+
+\paragraph{All subsets of the spike.}
+For nonempty $F\subseteq E$ put $\theta=\nu(F)/(Mm)$ and
+$r(F)=J(F,F)/\nu(F)$. Then $E_{\mu_E}[{\bf1}_F\pi/M]=\theta$.
+Forward hypercontractivity of $Q$ from $L^{3/2}$ to $L^2$ and
+H\"older in $\mu_E$ give
+\[
+ J(F,F)=\|Q(h{\bf1}_F)\|_2^2
+ \le M^2m^{4/3}\|Y\|_{8,\mu_E}^2
+                 \|{\bf1}_F\pi/M\|_{24/13,\mu_E}^2
+ \le C M^2m^{4/3}\theta^{13/12}.
+\]
+Thus $r(F)\le CH\theta^{1/12}$. If $r(F)\ge1/2$, then $\theta\ge c>0$.
+The density of $\nu(\cdot\mid F)$ relative to $\mu_E$ is at most
+$1/c$, so (S3) bounds its mean of $g\,Pg$. Also
+$E_{\mu_E}P{\bf1}_E\le m^{1/3}$ by the same forward inequality on the
+indicator. Hence $E_{\nu(\cdot\mid F)}P{\bf1}_{F^c}\ge1/2$,
+reducing the fixed threshold on $m$ if necessary.
+Pointwise Cauchy--Schwarz under $P_x$ and the floor give
+$K_x(F^c)\ge b[P_x(F^c)]^2/(g(x)Pg(x))$. A second Cauchy--Schwarz
+under $\nu(\cdot\mid F)$ yields
+\[
+ 1-r(F)\ge b\,\frac{(E_{\nu(\cdot\mid F)}P{\bf1}_{F^c})^2}
+                         {E_{\nu(\cdot\mid F)}[g\,Pg]}\ge c_{b,H}>0 .
+\]
+In the other branch the exit is already at least $1/2$. The coarea
+estimate in (LR1), whose killed-chain part uses only reversibility and
+positivity, gives $\|K_{EE}\|\le1-c'_{b,H}$.
+
+\paragraph{The global gap.}
+For any cut $D$, the positive Gram multipliers for $D\cap E$ and
+$D\setminus E$ add. On $E^c$, $U=aY^2$ has a bounded $L^{9/2}$
+norm. Thus
+\[
+ \|K_{DD}\|\le\|K_{EE}\|+\|U{\bf1}_{D\setminus E}\|_3
+             \le 1-c'_{b,H}+C_b\mu(D)^{1/9}.
+\]
+All sufficiently small cuts have return bounded away from one, at a
+threshold independent of $m,L$. Larger cuts of stationary mass at most
+one half obey (G3) at $p=3$, as $E_\mu\pi^3\le1+H^3$. If $m$
+exceeds the smallness threshold used above, $M$ is bounded in terms of
+$b,H$, and the $L^{9/2}$ argument applies on the whole cube. Cheeger's
+inequality proves the global gap in both cases.
+
+\paragraph{Full recovery for two stationary values.}
+Now $\pi=M$ on $E$. In the small-$m$ regime (S3) gives
+$\|U{\bf1}_E\|_3\le C M m^{1/3}$. Write $\delta=\|\pi-1\|_3$. We prove the quantitative bound
+$\Delta\le C_b\delta$. As $\Delta\le1$, it suffices to take $\delta$
+small in terms of $b$. With $u=E h$ and $V=1-u^2=\|Qh-u\|_2^2$,
+Cauchy--Schwarz gives $1=(E hg)^2\le u E(hg^2)=u E(\pi g)$.
+Subtracting $u^2$ gives $V\le u\delta\sqrt V$ since
+$\|g-u\|_2\le\sqrt V$. Thus $\sqrt V\le\delta$ and $1-u\le\delta^2$.
+Applying forward hypercontractivity to $Qh-u$ yields
+$\|g-u\|_3\le\delta$ and $\|Pg-u\|_9\le\delta$.
+On $\{g\ge b/2\}$ the inverse square is Lipschitz in $g$. On
+$A=\{g<b/2\}$, Jensen gives $Pg\ge b/g>2$, so $Y\le 2(Pg-u)/b$
+there and $\mu(A)\le\delta^9$. Consequently
+\[
+ \|Y^2-1\|_3\le C_b(\delta+\delta^2+\delta^3).
+\]
+If $M\le2$, multiplication by $\pi$ now gives $\|U-\pi\|_3\le C_b\delta$.
+If $M>2$, then $Mm^{1/3}\le2(M-1)m^{1/3}\le2\delta$.
+Hence $m\le\delta^3$, and for sufficiently small $\delta$ we may use
+(S3) with $H=2$. On $E$ both $\|U{\bf1}_E\|_3$ and
+$\|\pi{\bf1}_E\|_3$ are $O_b(\delta)$, and off $E$ we have
+$\pi=a\le1$. In both cases $\|U-1\|_3\le C_b\delta$.
+The Gram comparison $\Delta\le\|QM_{U-1}Q\|\le\|U-1\|_3$
+finishes the upper bound.
+
+The linear order is sharp. In dimension two let $\chi=\chi_1\chi_2$
+be the parity character. For $0<t<1$ take
+$h=(1+t\chi)/\sqrt{1+t^2/4}$. Then
+$\pi=1+\epsilon\chi$, with $\epsilon=(5t/4)/(1+t^2/4)$, and
+$U=(1+t\chi)/(1+t\chi/4)$. On the span of $\chi_1,\chi_2$,
+$Q$ multiplies by $1/\sqrt2$ and $M_U$ has eigenvector
+$\chi_1+\chi_2$ with eigenvalue $(1+t)/(1+t/4)$.
+Thus $QM_UQ$ has a nonleading eigenvalue
+$(1+t)/(2(1+t/4))<1$. As the ordinary second eigenvalue is $1/2$,
+\[
+ \liminf_{t\downarrow0}\frac{\Delta}{\|\pi-1\|_3}
+ \ \ge\ \lim_{t\downarrow0}\frac{3t}{8(1+t/4)\epsilon}
+ \ =\ \frac3{10}.
+\]
+The example obeys every fixed floor $b<1$ for sufficiently small $t$.
+
+For the exponential estimate let $D=\{|g-1|>2^{-k/8}\}$.
+The matching-energy argument gives $\mu(D)\le C_B2^{-3k/4}$.
+On $D^c$, $\|(U-\pi){\bf1}_{D^c}\|_3\le C_B2^{-k/8}$ for large $k$.
+If $m\le e^{-\alpha k}$, then $M m^{1/3}\le Bm^{1/3-1/p}$
+is exponentially small, and the $L^{9/2}$ bound on $E^c$ handles
+$D\setminus E$. If $m>e^{-\alpha k}$ then $M\le Be^{\alpha k/p}$
+and $\|(U-\pi){\bf1}_D\|_3\le C_b M\mu(D)^{1/9}$. Choose
+$0<\alpha<p\log(2)/12$. Both bounds decay exponentially; bounded
+$k$ is covered by contraction. Finally $QM_{\pi-1}Q$ is exponentially
+small by the matched low/high split for $p>3$.
+
+\paragraph{Scope.}
+The
+\href{https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/versions/v2/}{stationary-moment manuscript}
+treats a two-level potential. Here the two values belong to $hPh$;
+the reconstructed $h$ may take many values. The
+\href{https://airr.science/papers/ARR-2026-2B2W1WQ7DF9N5VW7/versions/v1/}{published shell}
+shows why cubic convergence alone cannot yield this conclusion for an
+unrestricted stationary law. The argument for the gap permits multiple
+heights on the exceptional set under (S1) and controls each of its
+subsets. The unrestricted stationary endpoint remains open.
