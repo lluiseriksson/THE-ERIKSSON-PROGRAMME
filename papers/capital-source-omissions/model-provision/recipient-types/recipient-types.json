@@ -1,0 +1,778 @@
+{
+  "cells": {
+    "all": {
+      "00": {
+        "rivals": [
+          "anthropic",
+          "openai"
+        ],
+        "decisions": 3,
+        "dated_top": [
+          [
+            "anthropic",
+            182
+          ],
+          [
+            "openai",
+            159
+          ],
+          [
+            "google",
+            113
+          ],
+          [
+            "google cloud",
+            56
+          ],
+          [
+            "meta",
+            54
+          ]
+        ],
+        "bounds": {
+          "openai": [
+            159,
+            160
+          ],
+          "anthropic": [
+            182,
+            185
+          ]
+        },
+        "winning_margins": {
+          "anthropic": [
+            22,
+            23,
+            24,
+            25,
+            26
+          ]
+        },
+        "witnesses": {
+          "anthropic": {
+            "23": [],
+            "22": [
+              "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a"
+            ],
+            "24": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+            ],
+            "25": [
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "26": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ]
+          }
+        },
+        "worlds": 8
+      },
+      "01": {
+        "rivals": [
+          "anthropic",
+          "openai"
+        ],
+        "decisions": 3,
+        "dated_top": [
+          [
+            "anthropic",
+            166
+          ],
+          [
+            "openai",
+            159
+          ],
+          [
+            "google",
+            113
+          ],
+          [
+            "google cloud",
+            56
+          ],
+          [
+            "meta",
+            54
+          ]
+        ],
+        "bounds": {
+          "openai": [
+            159,
+            160
+          ],
+          "anthropic": [
+            166,
+            169
+          ]
+        },
+        "winning_margins": {
+          "anthropic": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        "witnesses": {
+          "anthropic": {
+            "7": [],
+            "6": [
+              "0687efea7715fef0177b5dfbaec056d6f57f9123b22c907087a3696bc04e942a"
+            ],
+            "8": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+            ],
+            "9": [
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "10": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ]
+          }
+        },
+        "worlds": 8
+      },
+      "10": {
+        "rivals": [
+          "alphabet [selected family]",
+          "anthropic"
+        ],
+        "decisions": 3,
+        "dated_top": [
+          [
+            "anthropic",
+            180
+          ],
+          [
+            "alphabet [selected family]",
+            173
+          ],
+          [
+            "openai",
+            159
+          ],
+          [
+            "meta",
+            53
+          ],
+          [
+            "mistral ai",
+            53
+          ]
+        ],
+        "bounds": {
+          "anthropic": [
+            180,
+            183
+          ],
+          "alphabet [selected family]": [
+            173,
+            174
+          ]
+        },
+        "winning_margins": {
+          "anthropic": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        "witnesses": {
+          "anthropic": {
+            "7": [],
+            "8": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+            ],
+            "9": [
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "10": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "6": [
+              "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+            ]
+          }
+        },
+        "worlds": 8
+      },
+      "11": {
+        "rivals": [
+          "alphabet [selected family]",
+          "anthropic"
+        ],
+        "decisions": 3,
+        "dated_top": [
+          [
+            "alphabet [selected family]",
+            173
+          ],
+          [
+            "anthropic",
+            164
+          ],
+          [
+            "openai",
+            159
+          ],
+          [
+            "meta",
+            53
+          ],
+          [
+            "mistral ai",
+            53
+          ]
+        ],
+        "bounds": {
+          "anthropic": [
+            164,
+            167
+          ],
+          "alphabet [selected family]": [
+            173,
+            174
+          ]
+        },
+        "winning_margins": {
+          "alphabet [selected family]": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        "witnesses": {
+          "alphabet [selected family]": {
+            "9": [],
+            "8": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+            ],
+            "7": [
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "6": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "10": [
+              "a205e1cf6b47c1f39fb0f55e47a4bcec113e6cf7de04ca9a0844a3437b017c14"
+            ]
+          }
+        },
+        "worlds": 8
+      }
+    },
+    "recipients": {
+      "00": {
+        "rivals": [
+          "anthropic",
+          "openai"
+        ],
+        "decisions": 2,
+        "dated_top": [
+          [
+            "anthropic",
+            106
+          ],
+          [
+            "openai",
+            105
+          ],
+          [
+            "google",
+            74
+          ],
+          [
+            "google cloud",
+            49
+          ],
+          [
+            "microsoft",
+            43
+          ]
+        ],
+        "bounds": {
+          "openai": [
+            105,
+            105
+          ],
+          "anthropic": [
+            106,
+            109
+          ]
+        },
+        "winning_margins": {
+          "anthropic": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "witnesses": {
+          "anthropic": {
+            "1": [],
+            "2": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+            ],
+            "3": [
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "4": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ]
+          }
+        },
+        "worlds": 4
+      },
+      "01": {
+        "rivals": [
+          "anthropic",
+          "openai"
+        ],
+        "decisions": 2,
+        "dated_top": [
+          [
+            "openai",
+            105
+          ],
+          [
+            "anthropic",
+            99
+          ],
+          [
+            "google",
+            74
+          ],
+          [
+            "google cloud",
+            49
+          ],
+          [
+            "microsoft",
+            43
+          ]
+        ],
+        "bounds": {
+          "openai": [
+            105,
+            105
+          ],
+          "anthropic": [
+            99,
+            102
+          ]
+        },
+        "winning_margins": {
+          "openai": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "witnesses": {
+          "openai": {
+            "6": [],
+            "5": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+            ],
+            "4": [
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "3": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ]
+          }
+        },
+        "worlds": 4
+      },
+      "10": {
+        "rivals": [
+          "alphabet [selected family]",
+          "anthropic",
+          "openai"
+        ],
+        "decisions": 2,
+        "dated_top": [
+          [
+            "alphabet [selected family]",
+            114
+          ],
+          [
+            "openai",
+            105
+          ],
+          [
+            "anthropic",
+            104
+          ],
+          [
+            "microsoft",
+            43
+          ],
+          [
+            "mistral ai",
+            36
+          ]
+        ],
+        "bounds": {
+          "anthropic": [
+            104,
+            107
+          ],
+          "openai": [
+            105,
+            105
+          ],
+          "alphabet [selected family]": [
+            114,
+            114
+          ]
+        },
+        "winning_margins": {
+          "alphabet [selected family]": [
+            7,
+            8,
+            9
+          ]
+        },
+        "witnesses": {
+          "alphabet [selected family]": {
+            "9": [],
+            "8": [
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "7": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ]
+          }
+        },
+        "worlds": 4
+      },
+      "11": {
+        "rivals": [
+          "alphabet [selected family]",
+          "openai"
+        ],
+        "decisions": 0,
+        "dated_top": [
+          [
+            "alphabet [selected family]",
+            114
+          ],
+          [
+            "openai",
+            105
+          ],
+          [
+            "anthropic",
+            97
+          ],
+          [
+            "microsoft",
+            43
+          ],
+          [
+            "mistral ai",
+            36
+          ]
+        ],
+        "bounds": {
+          "openai": [
+            105,
+            105
+          ],
+          "alphabet [selected family]": [
+            114,
+            114
+          ]
+        },
+        "winning_margins": {
+          "alphabet [selected family]": [
+            9
+          ]
+        },
+        "witnesses": {
+          "alphabet [selected family]": {
+            "9": []
+          }
+        },
+        "worlds": 1
+      }
+    },
+    "both": {
+      "00": {
+        "rivals": [
+          "anthropic",
+          "openai"
+        ],
+        "decisions": 2,
+        "dated_top": [
+          [
+            "anthropic",
+            106
+          ],
+          [
+            "openai",
+            105
+          ],
+          [
+            "google",
+            74
+          ],
+          [
+            "google cloud",
+            49
+          ],
+          [
+            "microsoft",
+            43
+          ]
+        ],
+        "bounds": {
+          "openai": [
+            105,
+            105
+          ],
+          "anthropic": [
+            106,
+            109
+          ]
+        },
+        "winning_margins": {
+          "anthropic": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "witnesses": {
+          "anthropic": {
+            "1": [],
+            "2": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+            ],
+            "3": [
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "4": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ]
+          }
+        },
+        "worlds": 4
+      },
+      "01": {
+        "rivals": [
+          "anthropic",
+          "openai"
+        ],
+        "decisions": 2,
+        "dated_top": [
+          [
+            "openai",
+            105
+          ],
+          [
+            "anthropic",
+            99
+          ],
+          [
+            "google",
+            74
+          ],
+          [
+            "google cloud",
+            49
+          ],
+          [
+            "microsoft",
+            43
+          ]
+        ],
+        "bounds": {
+          "openai": [
+            105,
+            105
+          ],
+          "anthropic": [
+            99,
+            102
+          ]
+        },
+        "winning_margins": {
+          "openai": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "witnesses": {
+          "openai": {
+            "6": [],
+            "5": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221"
+            ],
+            "4": [
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "3": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ]
+          }
+        },
+        "worlds": 4
+      },
+      "10": {
+        "rivals": [
+          "alphabet [selected family]",
+          "anthropic",
+          "openai"
+        ],
+        "decisions": 2,
+        "dated_top": [
+          [
+            "alphabet [selected family]",
+            114
+          ],
+          [
+            "openai",
+            105
+          ],
+          [
+            "anthropic",
+            104
+          ],
+          [
+            "microsoft",
+            43
+          ],
+          [
+            "mistral ai",
+            36
+          ]
+        ],
+        "bounds": {
+          "anthropic": [
+            104,
+            107
+          ],
+          "openai": [
+            105,
+            105
+          ],
+          "alphabet [selected family]": [
+            114,
+            114
+          ]
+        },
+        "winning_margins": {
+          "alphabet [selected family]": [
+            7,
+            8,
+            9
+          ]
+        },
+        "witnesses": {
+          "alphabet [selected family]": {
+            "9": [],
+            "8": [
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ],
+            "7": [
+              "51540788121cfdbdb3496352073cce0623a5fe6d46ff2bbd992e70744b999221",
+              "7c6aec0b8aa0a29ac7afdd395eb751b166504f6294ba09803c7ed8be91c75ab7"
+            ]
+          }
+        },
+        "worlds": 4
+      },
+      "11": {
+        "rivals": [
+          "alphabet [selected family]",
+          "openai"
+        ],
+        "decisions": 0,
+        "dated_top": [
+          [
+            "alphabet [selected family]",
+            114
+          ],
+          [
+            "openai",
+            105
+          ],
+          [
+            "anthropic",
+            97
+          ],
+          [
+            "microsoft",
+            43
+          ],
+          [
+            "mistral ai",
+            36
+          ]
+        ],
+        "bounds": {
+          "openai": [
+            105,
+            105
+          ],
+          "alphabet [selected family]": [
+            114,
+            114
+          ]
+        },
+        "winning_margins": {
+          "alphabet [selected family]": [
+            9
+          ]
+        },
+        "witnesses": {
+          "alphabet [selected family]": {
+            "9": []
+          }
+        },
+        "worlds": 1
+      }
+    }
+  },
+  "source_type_examples": [
+    [
+      "4f60934e72557da25f0ba23cd733c283ee0c7ba83ac9468cd3324e778b829e16",
+      "the study authors",
+      "COMPANY",
+      "PERSON"
+    ],
+    [
+      "6542423729abb404ef420173970f7ccfe8b75ee260be54a046adbc13d8d39fbc",
+      "yavuz selim \u015fahin, nimet sema gen\u00e7er, and hasan \u015fahin",
+      "COMPANY",
+      "PERSON"
+    ],
+    [
+      "bc682b9a867a95ef6f59fc51c7061eb30ea86a24b275453ade00a60676a58f73",
+      "dall-e",
+      "COMPANY",
+      "NOT_AN_ACTOR"
+    ]
+  ]
+}
