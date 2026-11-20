@@ -1,0 +1,57 @@
+{
+  "deposit": {
+    "doi": "10.48448/4h5a-z922",
+    "titles": [
+      {
+        "title": "Osprey: Target-agnostic Pre-training Makes Stronger Drafters in Speculative Decoding"
+      }
+    ],
+    "created": "2026-11-20T17:02:54Z",
+    "published": null,
+    "publicationYear": 2026,
+    "dates": [
+      {
+        "date": "2026-10-15T14:00:00Z",
+        "dateType": "Available"
+      }
+    ],
+    "version": null,
+    "relatedIdentifiers": [],
+    "url": "https://underline.io/lecture/166127-osprey-target-agnostic-pre-training-makes-stronger-drafters-in-speculative-decoding"
+  },
+  "conference_pdf": "https://aclanthology.org/2026.emnlp-main.1641.pdf",
+  "conference_pdf_sha256": "0aa466e2e1e02ae0fc01fca327695997c50ee4a73ada42672d1fd450c9141b73",
+  "code_url": "https://api.github.com/repos/LeanModels/Osprey/commits/HEAD",
+  "code_sha": "f62cd48844b03f3cb929543da25c15756e1f1095",
+  "arxiv": "2609.09338",
+  "checked_at": "2026-11-20T17:08:27.529236+00:00",
+  "table": 2,
+  "hardware_scope": "reported MiniMax-M2.5 five workloads, FP8, TP4/EP4, batch 1",
+  "rates_tokens_per_second": {
+    "HumanEval": [
+      184.4,
+      243.2
+    ],
+    "MATH-500": [
+      206.2,
+      250.0
+    ],
+    "LiveCodeBench": [
+      176.2,
+      249.1
+    ],
+    "MT-Bench": [
+      214.4,
+      201.6
+    ],
+    "Common.-Eval": [
+      154.3,
+      154.8
+    ]
+  },
+  "column_order": [
+    "EAGLE-3",
+    "Osprey"
+  ],
+  "purpose": "A fixed number of output tokens across mixed workloads implies a harmonic aggregate. The arithmetic mean of rates in Table 2 does not specify this mix."
+}
