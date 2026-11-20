@@ -1,0 +1,9 @@
+# Two coordinated random starts for a prospective audit
+
+For the 127 single-stage studies, take the canonical systematic sample of 32 at phase s, then a second sample at phase (s+48) mod 127. Draw s uniformly once before seeing any labels and keep the ordered frame fixed. For **62 or more positives**, the probability that both samples return zero is at most **1/127**. At exactly 62 positives the bound is sharp and optimal among all designs with a uniform global phase and fixed second-phase offset. Two independent starts give a sharp worst-case probability of (34/127)² at 62 positives.
+
+For the finite certificate, write C(s) for the units left uninspected by the pair. Each C(s) has 63 elements. The largest intersection C(s) ∩ C(t) for distinct phases is 61, as verified directly from the floor formula for every one of the 8,001 phase pairs. Consequently no fixed set of 62 positives can evade two global phases. Choosing any 62 elements of C(0) attains the upper bound. For *every* fixed offset the two samples can inspect at most 64 distinct units, leaving at least 63 unseen in phase zero. This supplies the matching minimax lower bound of 1/127 at 62. The proof for the upper bound also covers every larger number of positives.
+
+The design answers a practical question about a new audit. It cannot be applied retrospectively to the historical first draw. It requires a known fixed frame order, the specified phase implementation and a complete second sample. Purposively selected observations in the archive cannot stand in for the second random-phase sample. The bound describes the response of the design to fixed labels. It provides no estimate of the prevalence of industrial deployment.
+
+Run paired-phase.py in Python to reproduce the certificate, including a 62-unit extremal placement. References and the original audit DOI are recorded in systematic-results.md.

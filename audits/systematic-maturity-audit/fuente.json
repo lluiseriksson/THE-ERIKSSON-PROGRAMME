@@ -1,0 +1,35 @@
+{
+  "title": "Dataset: Artificial intelligence across the mechanical product development lifecycle – coding of 188 studies, search records and blind human audit",
+  "doi": "10.5281/zenodo.24095165",
+  "created": "2026-11-20T22:56:56.400457+00:00",
+  "published": "2026-11-10",
+  "creators": [
+    "Manjud Maluf Filho, William",
+    "Figueiredo, Thiago Henrique",
+    "Oliveira, Wellington Silva de",
+    "Andrade, Gabriel Saavedra de",
+    "Alves, Marcelo Augusto Leal",
+    "Dezan, Daniel Jonas",
+    "Ferreira, Wallace Gusmão"
+  ],
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "files": [
+    {
+      "key": "Dataset_RSL_AI_mechanical_lifecycle.xlsx",
+      "size": 68392,
+      "checksum": "md5:0baa4a9ce1db0b610b2129dbf09f13a1"
+    },
+    {
+      "key": "Coding_188_studies.csv",
+      "size": 75823,
+      "checksum": "md5:1a6898b4e623183661d6f97cdacfafe2"
+    },
+    {
+      "key": "README_Dataset.docx",
+      "size": 40367,
+      "checksum": "md5:b4fe6c72caf703bc4d1f4a47a49d9629"
+    }
+  ]
+}

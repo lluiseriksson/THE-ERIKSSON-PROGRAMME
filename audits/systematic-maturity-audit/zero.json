@@ -1,0 +1,20 @@
+{
+  "application": {
+    "N": 127,
+    "assembly_max": 103,
+    "confidence_upper_zero": 89,
+    "joint_miss_84": "12/127",
+    "miss_62": "34/127",
+    "miss_62_independent": [
+      "34/127",
+      "1156/16129",
+      "39304/2048383"
+    ],
+    "n": 32,
+    "single_stage_deterministic_max": 84,
+    "srs_miss_62": "998374/306548645976492645",
+    "targeted_extra_negative_to_exclude_majority": 23,
+    "threshold_for_population_majority": 62
+  },
+  "small_triples": 728
+}
