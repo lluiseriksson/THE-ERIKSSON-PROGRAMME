@@ -1,21 +1,27 @@
 {
-  "source_sha": "b299fa669dca8758a76e39854ff85048074e0cb3",
+  "source_sha": "20fe5fdd9a6f571f190bb5631bb3128c2cf9b7ef",
   "inputs": {
-    "panel.tex": "4e3077ab00423977daa3e68e4b78fe95d1ebd39a62e204d3844f6656f0f1c77d",
-    "verify_panel.py": "65d29f4a49012e93c355fc9dcc8798ddae4a34737868888d4435a125c4310880",
+    "panel.tex": "f80654f035fb67ce21d98d537a0618d96ed724d6fc6a58746e8f37803e4407ed",
+    "verify_panel.py": "096120c347dbebf95751d6241023ac929c2b1ce3c71bb28519be90cfdf7cd746",
     "panel_identify.py": "1bc58e6f0a7d496ccd8c5eeb9dd092713b6803a488fc08f042ab8fa4f9a0f1fb",
     "panel-identification.json": "71686c7e8658472841d4c79a8ed587bd2a221ff3bf07ad443b56b58492a7f1c1",
     "source.json": "5ce459cbc5ff5430f41e3ed206f9edf45bce24ddc6cdce0a9c602739f1cd6653",
     "bench_panel_genes.csv": "d5b01fbbd295d9c052b316effdecb4f4918f9876963918296778ece32131cc9a",
-    "bench_summary.csv": "8d2dcda5a1984ca88e5c37d4e3b326159131bb162afd55fb8c35bfe3ebfe3d66"
+    "bench_summary.csv": "8d2dcda5a1984ca88e5c37d4e3b326159131bb162afd55fb8c35bfe3ebfe3d66",
+    "proxy_bounds.py": "e14df8b6e0534a25c4e78aebc81b1fda8b344ee9fe3e0dd36689849670ff238f",
+    "proxy-median.json": "7fda37103470a7fd7808f02fd870b09d76b58a8307e853b52693af5c8c546c3b",
+    "proxy_overlap.py": "0ab2b30bc779007b15f80955743534db95d1d908400bc81d7107a81a1df9fe3e",
+    "proxy-overlap.json": "847f7067677cfce931d62dd8aa7943a940bdc3519cf5cd2ed98af540be23f2c8",
+    "panel_family.py": "6ea7166b6626a047797328ac2a3618dc54031018e2ed2c96a90c8548791a3de0",
+    "panel-family.json": "b7d1712bfd1462d1b62a41024c115cf891eec4cd653a8a3a8c54abd7c3dd6bad"
   },
-  "started_at": "2026-11-20T19:22:20.042319+00:00",
+  "started_at": "2026-11-20T19:33:04.740200+00:00",
   "status": "reproduced",
-  "pages": 3,
+  "pages": 5,
   "pdf_sha256": [
-    "2b6785cf082fcf1097f17609a3e4a7962c5c8310e28a6a0dcf0c661629af0e8b",
-    "2b6785cf082fcf1097f17609a3e4a7962c5c8310e28a6a0dcf0c661629af0e8b"
+    "0f429298cd4582e8411ccb1b29d829c772047d3f41a9fbe5c8e1b4922b7deca2",
+    "0f429298cd4582e8411ccb1b29d829c772047d3f41a9fbe5c8e1b4922b7deca2"
   ],
-  "pdf_bytes": 232827,
-  "finished_at": "2026-11-20T19:23:15.749697+00:00"
+  "pdf_bytes": 253028,
+  "finished_at": "2026-11-20T19:34:17.750194+00:00"
 }
