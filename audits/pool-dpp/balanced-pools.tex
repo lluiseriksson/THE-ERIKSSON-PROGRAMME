@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb}\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\newcommand{\EE}{\mathbb E}\newcommand{\Var}{\operatorname{Var}}
+\begin{document}
+\begin{center}{\LARGE\bfseries The leading error for balanced subset sampling}\\[7pt]
+Lluis Eriksson\\[2pt]\small Supplement to \emph{Marginal bias and exact sampling in finite determinantal candidate pools}\\20 November 2026\end{center}
+For a sampler that draws a pool of $N$ candidates and then selects $k$ items, agreement with the uniform target on every $(k-1)$-item inclusion can hide a residual error. We compute its first nonzero coefficient for any fixed finite catalog with full support. The proof covers general subset distributions and gives a sharp sixth-order formula for balanced triples. The result concerns the marginal output distribution, averaged over successful pools.
+
+\section{Statement}
+Fix $1\leq k\leq d$, write $M=\binom dk$, and let $U$ be uniform on the $k$-subsets of $[d]$. Suppose $P(S)>0$ for every such subset. Write $h_S=MP(S)-1$. Assume that for each $(k-1)$-subset $A$,
+\[
+                 \sum_{S\supset A} h_S=0.
+\]
+This assumes common inclusion probabilities at order $k-1$ and implies the same balance for all smaller subsets by double counting. For $k=1$ the empty-set condition is normalization. Draw $N\ge k$ independent uniform candidates with counts $n_i$, and select $S$ with probability proportional to $P(S)\prod_{i\in S}n_i$. Redraw if fewer than $k$ distinct candidates occur. This is the finite uniform-proposal marginal pool law $Q_N$; it specializes to the random-pool determinantal sampler of Prada-Corral et al.\ \cite{pool} when $P$ is determinantal.
+
+\textbf{Theorem.} Set $c=d^k/M$ and $v=\EE_U h^2$. As $N$ tends to infinity, with $P,d,k$ fixed,
+\[
+ N^k\left(\frac{Q_N(S)}{P(S)}-1\right)\longrightarrow c(v-h_S),
+ \qquad N^{2k}\mathrm{KL}(P\|Q_N)\longrightarrow
+             \frac{c^2}{2}\Var_P(h).
+\]
+The divergence coefficient is strictly positive for every nonuniform full-support target satisfying the hypothesis. For $P=U$, permutation invariance instead gives exact sampling for every $N\ge k$. Thus a zero coefficient completely characterizes exact sampling in this class. No uniform finite-$N$ bound in $k,d$ is asserted.
+
+\newpage
+\section{The exchangeable pool}
+Condition on a successful pool throughout. Put $\delta_i=dn_i/N-1$, $w_S=\prod_{i\in S}(1+\delta_i)$, $W=\EE_U w_S$, $y_S=w_S/W$, and $x=\EE_U h_S y_S$. The sampler's relative mass is $\EE[y_S/(1+x)]$. Exchangeability gives $\EE y_S=1$, and $\EE x=0$. The bounds $0\le y_S\le M$ and $1+x\ge \min_S MP(S)>0$ hold on every successful pool. Hence exactly
+\[
+ Q_N(S)/P(S)-1=-\EE[y_S x]+\EE[y_S x^2/(1+x)].
+\]
+For fixed $S$, $\EE[y_S y_T]$ depends only on $r=|S\cap T|$. Write $a_r=\sum_{|S\cap T|=r}h_T$. Summing over the $j$-subsets of $S$ shows that $\sum_r\binom rj a_r=0$ for $0\le j<k$ and $a_k=h_S$. Binomial inversion gives $a_r=(-1)^{k-r}\binom kr h_S$. Therefore $\EE[y_Sx]=\lambda_N h_S$ with a scalar common to all $S$. Multiplying by $h_S$ and averaging under $U$ gives $\lambda_N v=\EE x^2$. This argument is the top-degree exchange symmetry on a slice; harmonic analysis on slices is established \cite{filmus}. When $h=0$ the theorem follows immediately, so take $v>0$.
+
+By the inclusion balances all lower degrees vanish in the numerator:
+\[
+  Wx=H(\delta),\qquad H(z)=M^{-1}\sum_T h_T\prod_{i\in T}z_i.
+\]
+The same cancellations give $H(z+t{\bf1})=H(z)$ for every scalar $t$. The multivariate central limit theorem gives $\sqrt N\,\delta\Rightarrow G$ with covariance $dI-J$, where $J$ is the all-ones matrix. One can write $G=Y-\bar Y{\bf1}$ with independent $Y_i\sim\mathcal N(0,d)$. Distinct square-free monomials in $H(Y)$ are orthogonal by independence and centering. Thus
+\[
+ \EE H(G)^2=M^{-2}d^k\sum_T h_T^2=cv.
+\]
+For completeness, the required convergence of expectations holds on $\max|\delta_i|\le1/2$, where $W\ge2^{-k}$, $y_S\to1$ and $x\to0$ in probability. The fourth moments of $H(\sqrt N\,\delta)$ are uniformly bounded: in each centered-coordinate moment of total degree $4k$ only products involving at most $2k$ distinct draws survive. This gives uniform integrability. The complementary event and redraw have exponentially small probabilities, by coordinate concentration and a union bound. The bounded ratios above control their contribution after multiplication by $N^k$. Consequently $N^k\EE x^2$ and $N^k\EE[y_Sx^2/(1+x)]$ both tend to $cv$. Substitution gives the relative-mass limit. Since $\EE_P h=v$ and the relative errors have exactly zero $P$-mean, Taylor expansion of the logarithm gives the divergence limit. \hfill$\square$
+
+\newpage
+\section{Balanced triples}
+For the six-line projection example in the parent paper, $d=6$, $k=3$ and $h_S=\pm u$ where $u=1/\sqrt5$. The signs split the twenty triples equally; each pair lies in two triples of each sign. Thus $v=u^2$, $\Var_P h=u^2(1-u^2)$ and
+\[
+               \lim_{N\to\infty}N^6\mathrm{KL}(P\|Q_N)
+               =\frac12(54/5)^2(1/5)(4/5)=5832/625.
+\]
+The value follows without assuming any group action transitive on the triples of each sign. For another balanced law, pair the six items and let $h_S$ be zero unless $S$ takes one item from each pair. On the eight remaining triples give $h_S$ the alternating signs of a cube times $1/2$. Every pair sum vanishes. The relative error on the twelve zero-contrast triples still has a positive leading term, $cv$: the normalization affects even triples whose target mass agrees with the uniform law.
+
+\textbf{Reproducibility.} The \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/codex/pool-bias-20261120/audits/pool-dpp}{companion source and checker} use direct multinomial enumeration. For rational balanced triple laws, an independent computation expands the conditional probability itself through degree six at the population frequencies. It obtains the $N^{-3}$ coefficient by exact interpolation of multinomial moments. It also evaluates finite successful-pool probabilities for the six-line example. Finite evaluations are separate from the asymptotic proof.
+
+\textbf{Practical scope.} The first two inclusion levels of a size-three sampler can agree with a uniform reference even when triple probabilities differ. Measuring only pairs in a sampler audit can therefore miss a systematic distributional error. The theorem supplies a quantitative benchmark for that case. Estimating tiny triple discrepancies on generated text is a separate statistical problem. If $P$ has zeros, the successful-pool event can lose permutation symmetry and the argument needs a separate analysis.
+
+\section*{Model assessments and review context}
+OpenAI Codex contributed to the proof, exposition and checker in a shared authoring context. The assessment of the parent PDF applies only to that PDF. This supplement has its own source and bytes.
+\begin{thebibliography}{2}\small
+\bibitem{pool} M. Prada-Corral et al. \emph{A Model of Diverse Sampling from Language Models}, 2026. \href{https://arxiv.org/abs/2611.25003v1}{arXiv:2611.25003v1}, Theorem 5.2.
+\bibitem{filmus} Y. Filmus. \emph{An Orthogonal Basis for Functions over a Slice of the Boolean Hypercube}. Electronic Journal of Combinatorics 23(1), P1.23, 2016. \href{https://www.combinatorics.org/ojs/index.php/eljc/article/view/v23i1p23}{Journal article}.
+\end{thebibliography}
+\end{document}
