@@ -1,0 +1,95 @@
+{
+  "strata": [
+    {
+      "sample": "B (purposive)",
+      "stratum": "Two or three stages",
+      "n": 8,
+      "high": 1,
+      "weights": [
+        "None"
+      ]
+    },
+    {
+      "sample": "A (probabilistic)",
+      "stratum": "Single stage",
+      "n": 32,
+      "high": 0,
+      "weights": [
+        "3.9688"
+      ]
+    },
+    {
+      "sample": "B (purposive)",
+      "stratum": "Single stage",
+      "n": 11,
+      "high": 0,
+      "weights": [
+        "None"
+      ]
+    },
+    {
+      "sample": "A (probabilistic)",
+      "stratum": "Two or three stages",
+      "n": 8,
+      "high": 2,
+      "weights": [
+        "2"
+      ]
+    },
+    {
+      "sample": "B (purposive)",
+      "stratum": "Closed loop",
+      "n": 1,
+      "high": 0,
+      "weights": [
+        "None"
+      ]
+    }
+  ],
+  "source": "10.5281/zenodo.24095165",
+  "hypothetical_SRS": {
+    "eligible": 143,
+    "upper95_eligible": 16,
+    "upper95_all_without_using_B": 33,
+    "upper95_all_if_known_outside": 32,
+    "unsupported_size": 17,
+    "other_strata_observed": 1,
+    "positive_in_other_strata": 0,
+    "threshold": [
+      {
+        "total": 16,
+        "strata": [
+          16,
+          0
+        ],
+        "tail": "4971399291/99424804325",
+        "decimal": 0.050001599950345185
+      },
+      {
+        "total": 17,
+        "strata": [
+          17,
+          0
+        ],
+        "tail": "3986076909/105106221715",
+        "decimal": 0.0379242716935294
+      }
+    ],
+    "observed": [
+      0,
+      2
+    ],
+    "design": [
+      [
+        127,
+        32
+      ],
+      [
+        16,
+        8
+      ]
+    ],
+    "ht": "4"
+  },
+  "status": "Rejected for this review: the documented draw is systematic."
+}
