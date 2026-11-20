@@ -1,0 +1,13 @@
+# A change of baseline reverses two reported prompting effects
+
+Pages 5 and 7 of the September 2025 ReViCo preprint and pages 19610 and 19612 of the October 2026 proceedings article support a label-by-label comparison. Four Qwen2.5-VL sizes and five InternVL sizes have direct and background-prompt rows in both articles. GPT-4o appears in both main tables but lacks a 2025 prompt-comparison row. The two articles are separate bibliographic records from overlapping author teams.
+
+Among the nine shared prompt rows, all 36 background-prompt values agree by task label across articles. In the older paper, eight rows of direct scores match the older main table only after swapping token detection and image correction; the ninth, InternVL-38B, requires the identity. Testing all 24 permutations per row therefore excludes a single global header swap. In the main tables, ten model rows share 120 numeric cells. The sole difference there is GPT-4o token-detection F1 printed with an additional decimal in 2025.
+
+For InternVL-2B the reported image-correction effect goes from a decrease of 4.3 points in the older comparison to an increase of 0.4 points in the newer one. The background score is 3.5 in both. Its direct baseline changes from 7.8 to 3.1. Token detection changes from an increase of 4.6 points to a decrease of 0.1, again with a common background score. These are reversals in the printed point estimates. No individual predictions are recovered.
+
+Three later image-correction baselines for InternVL-4B, -8B and -14B coincide with the adjacent token-correction precision column in both main tables. This coincidence cannot identify the source of a transcription or the intended value. A separate arithmetic check compared each printed change against the difference of the two printed scores. Allowing 0.15 points for independent one-decimal rounding of all three quantities leaves three incompatible changes among the 80 later base-model comparisons and four among the 80 earlier direct-versus-alternative comparisons. Full records are in edition-comparison.json. The older count covers OCR and background prompts in ten rows; the later count covers background prompts in twenty base rows.
+
+Run editions_extract.py on Colab Linux to obtain the four layout texts keyed by old5, old7, new5 and new7 in the emitted JSON. Write those four values to the corresponding .txt files and run edition_compare.py in the same directory. The extractor checks both primary PDF hashes. Human-readable page images were also inspected. This evidence supplement postdates the assessed manuscript.
+
+[2025 preprint, Tables 1 and 3](https://arxiv.org/pdf/2509.17418v1) · [2026 proceedings, Tables 1 and 2](https://aclanthology.org/2026.emnlp-main.845.pdf)
