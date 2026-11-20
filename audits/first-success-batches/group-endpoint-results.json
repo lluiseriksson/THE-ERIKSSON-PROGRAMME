@@ -1,0 +1,1301 @@
+{
+  "brute": 33,
+  "rows": [
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 1,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 1,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.85,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 1,
+      "failures": 6,
+      "nonzero": 2,
+      "ratio_min": 0.667647117237845,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 1,
+      "failures": 12,
+      "nonzero": 2,
+      "ratio_min": 0.4294659840885999,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 1,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 1,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.9558823529411765,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 1,
+      "failures": 6,
+      "nonzero": 2,
+      "ratio_min": 0.8944352807242599,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 1,
+      "failures": 12,
+      "nonzero": 2,
+      "ratio_min": 0.7881087991908551,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 1,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 1,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.9884615384615385,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 1,
+      "failures": 6,
+      "nonzero": 2,
+      "ratio_min": 0.9715053392454858,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 1,
+      "failures": 12,
+      "nonzero": 2,
+      "ratio_min": 0.938952874020694,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 1,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 1,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.9970817120622568,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 1,
+      "failures": 6,
+      "nonzero": 2,
+      "ratio_min": 0.9927272831813433,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 1,
+      "failures": 12,
+      "nonzero": 2,
+      "ratio_min": 0.9841103163053152,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 2,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 2,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.77,
+      "ratio_max": 0.98
+    },
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 2,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.43873124480449577,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 2,
+      "failures": 12,
+      "nonzero": 5,
+      "ratio_min": 0.1431105756069884,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 2,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 2,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.9334733893557423,
+      "ratio_max": 0.9985994397759104
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 2,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.8124535713527998,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 2,
+      "failures": 12,
+      "nonzero": 5,
+      "ratio_min": 0.6188103106671066,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 2,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 2,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.9826696832579186,
+      "ratio_max": 0.9999095022624435
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 2,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.9488646645564696,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 2,
+      "failures": 12,
+      "nonzero": 5,
+      "ratio_min": 0.8851326207236665,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 2,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 2,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.9956211417551947,
+      "ratio_max": 0.999994294647238
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 2,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.9869187937999162,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 2,
+      "failures": 12,
+      "nonzero": 5,
+      "ratio_min": 0.9697738817795414,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 3,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 3,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.6933333333333334,
+      "ratio_max": 0.9533333333333334
+    },
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 3,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.28361492538845323,
+      "ratio_max": 0.976015553671687
+    },
+    {
+      "tasks": 16,
+      "cap": 3,
+      "named": 3,
+      "failures": 12,
+      "nonzero": 8,
+      "ratio_min": 0.046660764375568736,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 3,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 3,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.911297852474323,
+      "ratio_max": 0.9967320261437909
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 3,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.7375492882932264,
+      "ratio_max": 0.9981426187261974
+    },
+    {
+      "tasks": 64,
+      "cap": 3,
+      "named": 3,
+      "failures": 12,
+      "nonzero": 8,
+      "ratio_min": 0.48665782131771673,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 3,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 3,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.9768929110105581,
+      "ratio_max": 0.999788838612368
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 3,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.9267219224951967,
+      "ratio_max": 0.9998739242106921
+    },
+    {
+      "tasks": 256,
+      "cap": 3,
+      "named": 3,
+      "failures": 12,
+      "nonzero": 8,
+      "ratio_min": 0.8345136636571849,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 3,
+      "failures": 2,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 3,
+      "failures": 3,
+      "nonzero": 2,
+      "ratio_min": 0.9941615223402597,
+      "ratio_max": 0.9999866875102221
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 3,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.9811423955755626,
+      "ratio_max": 0.9999919339942831
+    },
+    {
+      "tasks": 1024,
+      "cap": 3,
+      "named": 3,
+      "failures": 12,
+      "nonzero": 8,
+      "ratio_min": 0.9556552162150174,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 1,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 1,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.7927461139896373,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 1,
+      "failures": 8,
+      "nonzero": 3,
+      "ratio_min": 0.5616710689727302,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 1,
+      "failures": 16,
+      "nonzero": 3,
+      "ratio_min": 0.2746064933854295,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 1,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 1,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.9403770276194652,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 1,
+      "failures": 8,
+      "nonzero": 3,
+      "ratio_min": 0.8642934493663396,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 1,
+      "failures": 16,
+      "nonzero": 3,
+      "ratio_min": 0.7282220132940161,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 1,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 1,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.9845573604965403,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 1,
+      "failures": 8,
+      "nonzero": 3,
+      "ratio_min": 0.9641803665991021,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 1,
+      "failures": 16,
+      "nonzero": 3,
+      "ratio_min": 0.9244703056747337,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 1,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 1,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.9961051827968803,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 1,
+      "failures": 8,
+      "nonzero": 3,
+      "ratio_min": 0.990925326161829,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 1,
+      "failures": 16,
+      "nonzero": 3,
+      "ratio_min": 0.9806306412465514,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 2,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 2,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.6987910189982729,
+      "ratio_max": 0.9937823834196892
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 2,
+      "failures": 8,
+      "nonzero": 7,
+      "ratio_min": 0.33643311222385686,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 2,
+      "failures": 16,
+      "nonzero": 7,
+      "ratio_min": 0.0714060578433654,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 2,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 2,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.9114284322526321,
+      "ratio_max": 0.9998747416546627
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 2,
+      "failures": 8,
+      "nonzero": 7,
+      "ratio_min": 0.7685899340999321,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 2,
+      "failures": 16,
+      "nonzero": 7,
+      "ratio_min": 0.544035322779413,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 2,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 2,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.9768952025914752,
+      "ratio_max": 0.9999979037140946
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 2,
+      "failures": 8,
+      "nonzero": 7,
+      "ratio_min": 0.9367981764649566,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 2,
+      "failures": 16,
+      "nonzero": 7,
+      "ratio_min": 0.8611827595425595,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 2,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 2,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.9941615592244574,
+      "ratio_max": 0.9999999666680409
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 2,
+      "failures": 8,
+      "nonzero": 7,
+      "ratio_min": 0.9838442072861432,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 2,
+      "failures": 16,
+      "nonzero": 7,
+      "ratio_min": 0.9635080228185944,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 3,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 3,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.6122049510650547,
+      "ratio_max": 0.983419689119171
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 3,
+      "failures": 8,
+      "nonzero": 7,
+      "ratio_min": 0.19664108542912753,
+      "ratio_max": 0.9819512542461719
+    },
+    {
+      "tasks": 16,
+      "cap": 4,
+      "named": 3,
+      "failures": 16,
+      "nonzero": 11,
+      "ratio_min": 0.017631450679456366,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 3,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 3,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.8830736542266573,
+      "ratio_max": 0.9996659777457673
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 3,
+      "failures": 8,
+      "nonzero": 7,
+      "ratio_min": 0.6828057078689733,
+      "ratio_max": 0.9995144268528005
+    },
+    {
+      "tasks": 64,
+      "cap": 4,
+      "named": 3,
+      "failures": 16,
+      "nonzero": 11,
+      "ratio_min": 0.4063792440992088,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 3,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 3,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.9692727964783949,
+      "ratio_max": 0.9999944099042521
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 3,
+      "failures": 8,
+      "nonzero": 7,
+      "ratio_min": 0.9101425860611013,
+      "ratio_max": 0.9999910135418055
+    },
+    {
+      "tasks": 256,
+      "cap": 4,
+      "named": 3,
+      "failures": 16,
+      "nonzero": 11,
+      "ratio_min": 0.8022507520071639,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 3,
+      "failures": 3,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 3,
+      "failures": 4,
+      "nonzero": 3,
+      "ratio_min": 0.9922204639428603,
+      "ratio_max": 0.9999999111147756
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 3,
+      "failures": 8,
+      "nonzero": 7,
+      "ratio_min": 0.9768103502321482,
+      "ratio_max": 0.9999998532052158
+    },
+    {
+      "tasks": 1024,
+      "cap": 4,
+      "named": 3,
+      "failures": 16,
+      "nonzero": 11,
+      "ratio_min": 0.9466866095607527,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 1,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 1,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.7144963869635746,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 1,
+      "failures": 12,
+      "nonzero": 5,
+      "ratio_min": 0.437868765883357,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 1,
+      "failures": 24,
+      "nonzero": 5,
+      "ratio_min": 0.14716672396158875,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 1,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 1,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.9130439657153748,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 1,
+      "failures": 12,
+      "nonzero": 5,
+      "ratio_min": 0.8142469449985631,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 1,
+      "failures": 24,
+      "nonzero": 5,
+      "ratio_min": 0.6437526059009006,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 1,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 1,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.9770114948564965,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 1,
+      "failures": 12,
+      "nonzero": 5,
+      "ratio_min": 0.9498050530104188,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 1,
+      "failures": 24,
+      "nonzero": 5,
+      "ratio_min": 0.8973313378208312,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 1,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 1,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.9941690962105391,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 1,
+      "failures": 12,
+      "nonzero": 5,
+      "ratio_min": 0.987196323083367,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 1,
+      "failures": 24,
+      "nonzero": 5,
+      "ratio_min": 0.9733763115704559,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 2,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 2,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.6001769650494028,
+      "ratio_max": 0.9992626456274886
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 2,
+      "failures": 12,
+      "nonzero": 11,
+      "ratio_min": 0.21655770737628635,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 2,
+      "failures": 24,
+      "nonzero": 11,
+      "ratio_min": 0.022680752161354702,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 2,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 2,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.8721232277561424,
+      "ratio_max": 0.9999986653031403
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 2,
+      "failures": 12,
+      "nonzero": 11,
+      "ratio_min": 0.6921733598022466,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 2,
+      "failures": 24,
+      "nonzero": 11,
+      "ratio_min": 0.43172395794013985,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 2,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 2,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.9656940766355343,
+      "ratio_max": 0.9999999984554355
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 2,
+      "failures": 12,
+      "nonzero": 11,
+      "ratio_min": 0.9125460301116844,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 2,
+      "failures": 24,
+      "nonzero": 11,
+      "ratio_min": 0.8144030596582581,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 2,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 2,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.9912649884862913,
+      "ratio_max": 0.9999999999984245
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 2,
+      "failures": 12,
+      "nonzero": 11,
+      "ratio_min": 0.9774013243408635,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 2,
+      "failures": 24,
+      "nonzero": 11,
+      "ratio_min": 0.9502200992398183,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 3,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 3,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.5019023742810795,
+      "ratio_max": 0.9975421520916286
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 3,
+      "failures": 12,
+      "nonzero": 11,
+      "ratio_min": 0.10320653201500576,
+      "ratio_max": 0.9932375355890112
+    },
+    {
+      "tasks": 16,
+      "cap": 6,
+      "named": 3,
+      "failures": 24,
+      "nonzero": 17,
+      "ratio_min": 0.003152455851307941,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 3,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 3,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.8328311758848395,
+      "ratio_max": 0.9999955510104679
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 3,
+      "failures": 12,
+      "nonzero": 11,
+      "ratio_min": 0.5875004021867783,
+      "ratio_max": 0.9999767375436234
+    },
+    {
+      "tasks": 64,
+      "cap": 6,
+      "named": 3,
+      "failures": 24,
+      "nonzero": 17,
+      "ratio_min": 0.2888374369511103,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 3,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 3,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.9544931826690995,
+      "ratio_max": 0.9999999948514515
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 3,
+      "failures": 12,
+      "nonzero": 11,
+      "ratio_min": 0.8766720019540559,
+      "ratio_max": 0.9999999669414136
+    },
+    {
+      "tasks": 256,
+      "cap": 6,
+      "named": 3,
+      "failures": 24,
+      "nonzero": 17,
+      "ratio_min": 0.7390604945911114,
+      "ratio_max": 1.0
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 3,
+      "failures": 5,
+      "nonzero": 0,
+      "ratio_min": null,
+      "ratio_max": null
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 3,
+      "failures": 6,
+      "nonzero": 5,
+      "ratio_min": 0.9883684214507141,
+      "ratio_max": 0.9999999999947483
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 3,
+      "failures": 12,
+      "nonzero": 11,
+      "ratio_min": 0.9676983430782552,
+      "ratio_max": 0.999999999964525
+    },
+    {
+      "tasks": 1024,
+      "cap": 6,
+      "named": 3,
+      "failures": 24,
+      "nonzero": 17,
+      "ratio_min": 0.9276092239636001,
+      "ratio_max": 1.0
+    }
+  ]
+}
