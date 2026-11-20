@@ -1,0 +1,31 @@
+{
+  "doi": "10.5281/zenodo.24404331",
+  "release": "2026-11-20",
+  "git_commit": "822b2281116ae29b0ca3b947dfa4544b69258c0e",
+  "files": [
+    {
+      "path": "agents/hmz20-B2/B2-Q-r48-maxnorm-117_68886363.json",
+      "url": "https://raw.githubusercontent.com/jeffchen006/tensor-rank-4x4/822b2281116ae29b0ca3b947dfa4544b69258c0e/agents/hmz20-B2/B2-Q-r48-maxnorm-117_68886363.json",
+      "sha256": "b82a3cef30dacb9ee08be73d13449123bb073716888a081d52bfae0a0205b4ee",
+      "bytes": 13505
+    },
+    {
+      "path": "agents/hmz20-B2/indep_gamma.py",
+      "url": "https://raw.githubusercontent.com/jeffchen006/tensor-rank-4x4/822b2281116ae29b0ca3b947dfa4544b69258c0e/agents/hmz20-B2/indep_gamma.py",
+      "sha256": "dbb3d804508461d487678237e80330916c13c2df0e500f0d37adb26ca369a27e",
+      "bytes": 1214
+    },
+    {
+      "path": "agents/ref/ACCURACY19.md",
+      "url": "https://raw.githubusercontent.com/jeffchen006/tensor-rank-4x4/822b2281116ae29b0ca3b947dfa4544b69258c0e/agents/ref/ACCURACY19.md",
+      "sha256": "0c24f59b16ed2372fb09a0366dac477a5f7f4a15e871215f33c28720af35eacb",
+      "bytes": 3065
+    },
+    {
+      "path": "agents/codex/records19/bound_growth.py",
+      "url": "https://raw.githubusercontent.com/jeffchen006/tensor-rank-4x4/822b2281116ae29b0ca3b947dfa4544b69258c0e/agents/codex/records19/bound_growth.py",
+      "sha256": "ce4571e00290660054785447e819d4dc84c5ca0d2b53bb3966fdb4b51cd2a4b8",
+      "bytes": 1318
+    }
+  ]
+}
