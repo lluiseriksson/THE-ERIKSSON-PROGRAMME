@@ -1,0 +1,12 @@
+{
+  "counts": {
+    "all": 1185,
+    "answer_number_anywhere_in_gold": 413,
+    "before_replacement_validation": 412,
+    "failed_replacement_validation": 1,
+    "prepared": 411,
+    "with_passage_and_answer_number": 566
+  },
+  "model_calls": 0,
+  "ordered_prepared_sha256": "b1ef0f3b33be8f388302b1268b45de9840fb91e7b253b448374f09c2f46f8ae6"
+}

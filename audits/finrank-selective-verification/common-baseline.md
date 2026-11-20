@@ -1,0 +1,7 @@
+# Common clean baseline checked in the authors' implementation
+
+The primary experiment constructs a single itemwise indicator of a wrong clean majority and uses its mean for both clean contributions. Its corruption terms use the product of wrong-majority and unflagged indicators. For this metric the common clean contribution therefore follows from the implementation. This closes the item-level convention left conditional in panel-bounds.md. A deployed verifier which also flags clean items needs fresh outcome data.
+
+The cache includes paired clean and corrupt results per item. The script prints an itemwise line and writes an aggregate CSV. A complete listing of the pinned experiment directory had no files under its documented data/ prefix. The thresholds compatible with aggregate margins may be sharpened by recovery of the actual itemwise output. The additional-detection interval for the 60-item Mistral panel is exact even for the realized pairing, because clean errors cancel.
+
+For the 40-item R1 panel the article gives nine additional detections and none in the reverse direction, but one corrupted majority answer was correct (rate 0.03). Depending on whether that answer belongs to the nine exclusive detections, eight or nine of them avert a silent wrong answer. The two counts must not be interchanged. For selective corruption of k items, a strictly positive silent-error reduction is guaranteed for all compatible placements once k reaches 33; the threshold for at least one additional flag alone is 32. A per-item log could distinguish the two cases.

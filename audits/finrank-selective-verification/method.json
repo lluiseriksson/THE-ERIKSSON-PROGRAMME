@@ -1,0 +1,19 @@
+{
+  "repository": "SJSU-CMPE259/AI-Stock-Research-and-Earnings-Assistant",
+  "commit": "bcd455d5f40d2117381ee6326b18a75e8466b704",
+  "path": "ACSESS/finsight/experiments/provenance_verification/scripts/finrank_value_corruption.py",
+  "url": "https://raw.githubusercontent.com/SJSU-CMPE259/AI-Stock-Research-and-Earnings-Assistant/bcd455d5f40d2117381ee6326b18a75e8466b704/ACSESS/finsight/experiments/provenance_verification/scripts/finrank_value_corruption.py",
+  "blob": "016f00c32b0c5f023adcdd40649ec40aa07d19cf",
+  "sha256": "b6594aeb2d414946c533e214251c44217fc405f9f82bdb35c123d07fd21b0abf",
+  "line_numbers": {
+    "common_clean_baseline": 157,
+    "B_corrupt_silent": 158,
+    "C_corrupt_silent": 159,
+    "shared_mixture": 190,
+    "provenance_mixture": 191,
+    "print_per_item": 150,
+    "saved_output": 198
+  },
+  "files_under_experiment_data": [],
+  "caveat": "No matching data files under the documented experiment/data prefix in this tree. This does not establish absence of output elsewhere."
+}

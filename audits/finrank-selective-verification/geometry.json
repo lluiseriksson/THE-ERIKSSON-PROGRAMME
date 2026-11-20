@@ -1,0 +1,36 @@
+{
+  "all_factors": {
+    "alias": 0,
+    "literal_corrupt_in_original": 4,
+    "literal_target_survives": 200,
+    "unmodified": 0,
+    "valid_item_factors": 1644
+  },
+  "all_rows": {
+    "eligible_for_any_factor": 411,
+    "rows_with_some_alias": 0
+  },
+  "blob": "91f35ed1d19f4870771c6842f13dc944df5bd45d",
+  "dataset_commit": "916dc27e77b90e294ea1b3a2cc5b0abcf07392d1",
+  "dataset_rows": 1185,
+  "panel40": {
+    "alias": 0,
+    "literal_corrupt_in_original": 0,
+    "literal_target_survives": 3,
+    "unmodified": 0
+  },
+  "panel60": {
+    "alias": 0,
+    "literal_corrupt_in_original": 0,
+    "literal_target_survives": 7,
+    "unmodified": 0
+  },
+  "seeded_full": {
+    "alias": 0,
+    "literal_corrupt_in_original": 0,
+    "literal_target_survives": 50,
+    "unmodified": 0
+  },
+  "sha256": "e9295f680bd6085362486c90c170bce243be7f85ed18074d6ba21cb75141ac78",
+  "valid_seeded": 411
+}

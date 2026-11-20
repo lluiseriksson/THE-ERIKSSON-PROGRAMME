@@ -1,0 +1,7 @@
+# What does an error refer to?
+
+The original measure function draws five answers for the majority-figure accuracy. It makes a separate model call to extract a figure for both passage checks. The silent-error score then multiplies the wrong-majority indicator by the unflagged indicator from that separate call. Thus every selective-corruption bound here is for the study's composite per-question metric. It does not identify verification of the very same generated answer. Even the published complete-case relative flag counts cannot by themselves establish that same-response endpoint. The initial argument in panel-bounds.md uses the word 'answer' for the majority figure; common-baseline.md interprets prevented silent errors in the composite sense only.
+
+For example, five returned figures can all be wrong while the separately generated sixth figure equals the gold target. A check on that sixth figure answers a different question from testing the majority figure against the gold passage. This logical witness makes no assertion about which figures actually occurred in the experiment. For same-response performance one needs a joined result containing the checked figure, its correctness and both flags, or the flags computed on the actual majority figure. No new model calls are needed if the original answers can be recovered.
+
+Source: the authors' pinned finrank_value_corruption.py, functions measure and main, recorded in method.json. The statistic uses a single common clean error indicator by construction.

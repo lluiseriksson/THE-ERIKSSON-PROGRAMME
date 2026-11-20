@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=26mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\begin{document}
+\begin{center}{\Large\bfseries Which financial answer was checked?\\ Verification gains under selective evidence corruption\par}\vspace{6pt}Lluis Eriksson\end{center}
+\textbf{Abstract.} FinVeriQA measures accuracy on the majority of five draws and checks the figure in an additional generation. We reconstruct the original and modified FinRank passages and show that every additional provenance flag in the published panels identifies a numerically wrong figure on the checked draw, conditional on the documented preparation. This identifies incremental catches without equating the two generations. Absolute silent-error counts remain partially identified. We give exact attainable ranges and quantify what changes when altered evidence is concentrated on selected questions.
+
+\section*{1. Two answers and two outcomes}
+Rajpurohit et al.\ [1] test numerical question answering on FinRank [2]. For a corrupted question, let $G$ be the original passage window and $R$ the modified window, both with commas removed. Let $M_i$ indicate that the majority figure from five model draws is wrong. An additional generation supplies the figure $v_i$ checked against both passages. Let $V_i$ indicate that this figure is wrong. Numerical correctness requires absolute error below $10^{-6}$ against the original target. A missing figure counts as incorrect.
+
+Check B passes a nonempty extracted figure when its string occurs in $R$; check C uses $G$. A missing figure is flagged by both. The published silent-error metric multiplies $M_i$ by a pass indicator. Silent error on the checked figure uses $V_i$ instead. Checking the majority figure itself would define a third endpoint. The code prints item diagnostics and writes aggregate mixtures to CSV [3]. A filename search of four public branches did not locate matching itemwise outputs. It does not establish their absence elsewhere.
+
+\begin{center}\begin{tabular}{lrrrr}\toprule
+Panel & Items & Both flag & Only C flags & Both pass\\\midrule
+Mistral-7B &60&21&25&14\\
+DeepSeek-R1-8B &40&27&9&4\\\bottomrule
+\end{tabular}\end{center}
+These counts follow from Table 11 of [1], including zero B-only flags. All 60 corrupted Mistral majority figures were wrong. One R1 majority figure was correct. Thus in the published composite metric the R1 gain is eight or nine, depending on whether that one item is among the nine C-only flags. We ask whether the gain for the \emph{checked} figure is better identified.
+
+\textbf{Principle.} A C-only flag requires a numerical string in $R$ that does not occur in $G$. If none of these strings represents the true target, each such flag identifies a wrong checked figure. When there are no reverse discordances, the number of C-only flags then equals the reduction in wrong checked figures that pass. This is a statement about extracted numbers, not the semantic correctness of the whole answer.
+\newpage
+\section*{2. Which extracted figures can pass?}
+Using the pinned data and code [2,3], we reconstructed the target, the window of original text and the first replacement in it for each question. The experiment multiplies the target by 1.18, 1.27, 0.82 or 0.73 and rounds according to its original decimal form. For every admissible pair of item and multiplier we searched all digit and decimal substrings of $R$ absent from $G$ for a numerical match to the target. Including strings the extractor would filter out can only enlarge this test set. Thus an empty set is a certificate.
+
+The 1,185-record release produced 411 usable items and 1,644 admissible item/multiplier pairs. \textbf{None had a correct-valued string exclusive to the modified window.} In 200 pairs the literal target still occurred in $R$; in four, the replacement string already occurred in $G$. The reconstruction was checked against the data-preparation functions in the authors' pinned script. The authors' experiment notes list 413 eligible cases. We counted 413 rows with a reference-answer numeral present anywhere in the gold passages, 412 after target/window checks, and 411 after validating the replacement. Both implementations agreed on every retained pair. Historical identity of unpublished outputs is a separate assumption.
+
+Conditional on this preparation and the published flag counts, the gain on the checked draw is exactly 25 in Mistral and nine in R1. This result holds for any selection from the verified pairs. It does not identify whether the R1 majority was wrong on all nine additional flags.
+
+\textbf{Absolute counts.} Reconstruct the first 60 or 40 accepted items at the documented seed. For each item enumerate the extractable strings in $R$, their membership in $G$, and whether their numerical value is correct. This lists its possible both-pass and C-only outcomes. Both flags can always be achieved with an absent figure. Exclude B-only responses to match the observed zero count.
+
+Start with counts $(0,0)$ for C-only and both-pass outcomes, with zero silent errors. For each item append each of its available outcomes, updating the two counts and the attainable sums of silent errors for the check in question. Induction on items gives exactly the possible sums at the required margins. Any witness string can be supplied as the sole number, so extraction has no tie. The raw expression admits comma padding: even a short non-year integer can be extracted with enough trailing commas. A second calculation restricts witnesses to plain single decimals or ungrouped integers of at least four digits, or an empty response.
+
+\begin{center}\begin{tabular}{llrr}\toprule
+Panel & Answer class & Silent under B & Silent under C\\\midrule
+Mistral & Full extractor &30--39&5--14\\
+ & Plain figures or empty &32--39&7--14\\
+R1 & Full extractor &9--13&0--4\\
+ & Plain figures or empty &10--13&1--4\\\bottomrule
+\end{tabular}\end{center}
+Every integer within each interval is attainable. The two columns move together with differences of 25 and nine. These are sharp ranges over parser-compatible hypothetical answers, conditional on panel identity. They do not estimate answer probabilities.
+\newpage
+\section*{3. Concentrating the altered evidence}
+In the Mistral panel suppose exactly $k$ of the 60 questions receive altered evidence. Both checks use the same clean majority-error indicator in the published metric. The extra detections equal the overlap between the selected subset and the 25 C-only cases. Their exact range is $[\max(0,k-35),\min(k,25)]$, attained by filling the C-only cases last or first. For $k=30$ the uniform-subset expectation is 12.5 while the actual subset permits zero to 25. At $k=36$ at least one gain is guaranteed. In R1 the analogous threshold on checked figures is 32; the guarantee across both admissible majority-error pairings starts at 33.
+
+Let $x$ count the additional detections. The number $y$ missed by C among the $k$ corrupted Mistral cases ranges from $\max(0,k-x-21)$ to $\min(14,k-x)$. Among unaffected cases, the clean silent errors $h$ range from $\max(0,30-k)$ to $\min(30,60-k)$. With no itemwise clean/corrupt pairing imposed by the published margins, each such pair of counts is attainable. The reported totals are $h+y$ for C and $h+y+x$ for B. The worst C total is $\min(30,60-k)+\min(14,k)$, strictly below the 30 clean silent errors for every compatible pairing only from $k=45$. Table 10 of [1] explicitly uses mixtures; these bounds answer a question about selection.
+
+\textbf{Practical implication.} Recording the checked string, its own numerical correctness, the two flags and the majority figure on the same item would resolve the remaining endpoint ambiguity. Recovering original model responses could further distinguish string membership from support for an answer in context. The gold-passage check is an experimental upper-bound device. Our results apply to the benchmark, specified multipliers and public preparation, not to financial advice or deployment performance.
+
+\textbf{Materials.} The supplement contains pinned sources, the finite enumeration, data-preparation replay and attained ranges. Calculations ran on Colab Linux without model inference. Only aggregate results are redistributed. FinRank is credited below under its CC BY-NC 4.0 license; our changes consist of reconstructing windows and computing derived counts.
+
+\textbf{Model assessments and review context.} Codex assisted with analysis, verification and writing in a shared context. Assessment of this exact PDF is recorded separately with its hash, model identity, involvement and objections. Independent peer review is not claimed.
+
+\small
+[1] M. Rajpurohit et al. FinVeriQA: Financial Research Agents for Question Answering (2026), experiment E8, Tables 10--11. \href{https://arxiv.org/abs/2611.25071}{arXiv:2611.25071v1}.
+
+[2] S. Mansouri, D. Saad, M. Wahrenburg, M. Weissel and F. Woebbeking. FinRank: An Evidence-Grounded Benchmark for Financial Question Answering and Retrieval over SEC Filings (2026). \href{https://arxiv.org/abs/2608.07400}{arXiv:2608.07400}; \href{https://github.com/datanxt/FinRank/tree/916dc27e77b90e294ea1b3a2cc5b0abcf07392d1}{dataset and license}.
+
+[3] SJSU-CMPE259. FinRank value-corruption experiment, provenance-verification branch. \href{https://github.com/SJSU-CMPE259/AI-Stock-Research-and-Earnings-Assistant/blob/bcd455d5f40d2117381ee6326b18a75e8466b704/ACSESS/finsight/experiments/provenance_verification/scripts/finrank_value_corruption.py}{Pinned experiment implementation}.
+\end{document}
