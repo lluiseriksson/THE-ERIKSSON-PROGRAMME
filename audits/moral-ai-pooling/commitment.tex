@@ -10,7 +10,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-In a one-shot game, people can delegate to an AI that sometimes binds them to cooperate. Others see the choice with a known probability. We characterize when both universal adoption and zero adoption can be supported as perfect Bayesian equilibria at the same population composition. In a region where conditional cooperators are too scarce to sustain voluntary cooperation on their own, the two equilibrium tests impose opposite bounds on visibility. An open set satisfies both strictly. At the same parameters the two outcomes give, respectively, a strict material advantage to selfish preferences and equal material payoffs. For general finite signals, only reports impossible under the incumbent label deter or reward a switch. Arbitrarily rare two-sided label errors eliminate exact universal adoption. This extends a model of Ao and Wu, who study the two frictions separately.
+In a one-shot game, people can delegate to an AI that sometimes binds them to cooperate. Others see the choice with a known probability. We characterize when both universal adoption and zero adoption can be supported as perfect Bayesian equilibria at the same population composition. In a region where conditional cooperators are too scarce to sustain voluntary cooperation on their own, the two equilibrium tests impose opposite bounds on visibility. An open set satisfies both strictly. At the same parameters the two outcomes give, respectively, a strict material advantage to selfish preferences and equal material payoffs. For general finite signals, only reports impossible under the incumbent label deter or reward a switch. Arbitrarily rare two-sided label errors eliminate exact universal adoption. We construct a mixed equilibrium in which the share using the unrestricted AI vanishes linearly with the reporting error. This extends a model of Ao and Wu, who study the two frictions separately.
 \end{abstract}
 
 \section{A choice between two institutions}
@@ -94,7 +94,7 @@ The exact common visibility interval is $[971/2948,2000/4807]$. The material pay
 The supplement enumerates the five binary draws (partner type, two visibility draws and two bypass draws) using rational arithmetic. Each possible label switch is compared under every discretionary plan mapping the two possible on-support signals into actions. Mixed deviations cannot improve on their best pure component. Off-path beliefs and optimality at zero-probability signals are justified in the proof. The checker also tests indifference at both visibility endpoints and compares direct and symbolic margins on a grid. These finite checks illustrate the analytic result; its parameter range follows from the proof.
 
 \paragraph{Scope.}
-This theorem characterizes support for the two pooling outcomes. Equilibria with imperfectly separating adoption may also exist. Equilibrium selection, a time path for preferences, and empirical effects of AI regulation remain open.
+This theorem characterizes support for the two pooling outcomes. The final section constructs an equilibrium with partial separation under label errors. Equilibrium selection, a time path for preferences, and empirical effects of AI regulation remain open.
 
 \paragraph{Model assessments and review context.}
 OpenAI Codex contributed to the derivation, writing and computational checks. The author administers AIRR. Assessment reports are associated with the exact PDF version they evaluate.
@@ -114,7 +114,49 @@ These are the respective probabilities that a switch to $M$ or $A$ generates a s
 
 Under universal adoption every signal with $p_M(s)>0$ leaves the receiver certain of an $M$ partner. Free conditional users cooperate at all such signals, even when the realized signal is much more likely under $A$. After a switch to $A$ the least attainable probability of facing cooperation is $q-\varepsilon x d_A$. The posterior assigning an unexpected $A$ to the selfish type attains this bound at all signals exclusive to $A$ simultaneously. Other signals keep their on-path posteriors; the same type-dependent trembles as above yield these limits. The switched agent's own signal is independent of that response. Substitution of $d_A$ into the universal-adoption margin proves the criterion. Signals impossible under both labels can be discarded. \hfill$\square$
 
-For the erasure channel, $d_A=d_M=\rho$. Now suppose each reported label is independently flipped with probability $0<\eta<1$, while the erasure probability stays fixed. Both labels then have the same signal support and $d_A=d_M=0$. Even arbitrarily rare false reports eliminate exact universal pooling: a selfish switcher regains discretion while eliciting the same response. Zero adoption remains supportable. This statement concerns exact pooling. Interior equilibria may still approach full adoption as $\eta$ tends to zero. The code separately enumerates payoffs for erasures, two-sided flips, one-sided flips and asymmetric exclusive signals.
+For the erasure channel, $d_A=d_M=\rho$. Now suppose each reported label is independently flipped with probability $0<\eta<1$, while the erasure probability stays fixed. Both labels then have the same signal support and $d_A=d_M=0$. Even arbitrarily rare false reports eliminate exact universal pooling: a selfish switcher regains discretion while eliciting the same response. Zero adoption remains supportable. This statement concerns exact pooling. The next section constructs equilibria that approach full adoption as $\eta$ tends to zero. The code separately enumerates payoffs for erasures, two-sided flips, one-sided flips and asymmetric exclusive signals.
+
+
+\newpage
+\section{Near-universal adoption survives small reporting errors}
+Exact universal adoption disappears as soon as both reports have full support. Does the adoption rate itself stay bounded away from one? It does for a \emph{fixed} noisy channel. Suppose $p_M$ is positive throughout the support of $p_A$ and let $\lambda=\max_{s:p_M(s)>0}p_A(s)/p_M(s)$. At adoption share $y$, the posterior probability of $M$ at any signal is at least $y/[y+(1-y)\lambda]$. If $y>\kappa\lambda/(h-\kappa+\kappa\lambda)$, forced cooperation alone exceeds the conditional type's threshold at every signal. All free conditional agents then cooperate and all free selfish agents defect, irrespective of signals. A selfish user strictly prefers $A$, since changing its label has no effect on its partner's action. Adoption can therefore be at most $x$, contradicting the assumed lower bound on $y$ since $\lambda\ge1$ and $x<\kappa$. The resulting upper bound on $y$ tends to one as $\lambda$ diverges.
+
+\textbf{Persistence theorem.} Fix $0<\rho<1$ and parameters satisfying $x<\kappa<h$ and $L<\rho$. For all sufficiently small two-sided flip probabilities $\eta>0$, there is a perfect Bayesian equilibrium in which every conditional type adopts $M$, some selfish types choose $A$, and the total share $d$ choosing $A$ satisfies
+\[
+       \lim_{\eta\downarrow0}\frac{d}{\eta}
+                      =\frac{q-\kappa}{\kappa}>0.
+\]
+Zero adoption is also an equilibrium. Thus the disappearance of the exact universal pool need not produce a discontinuous fall in equilibrium adoption.
+
+\emph{Construction.} Denote a report of $A$ by $a$. Put $\alpha=\rho\eta$, $\beta=\rho(1-\eta)$, $\Delta=\beta-\alpha$ and $r=\alpha/\Delta$. These are respectively the probabilities of $a$ against a true $M$ and a true $A$, their difference, and a ratio. A free conditional $M$ user defects with probability $t$ after $a$ and cooperates after either other signal. Selfish agents always defect when free. Let $Q$ denote the cooperation probability faced by a user of $M$, before observing its signal. All $A$ partners are selfish and defect. Hence
+\[
+ Q=q-hd-x\varepsilon t\alpha,\qquad
+ Q_A=Q-x\varepsilon t\Delta .
+\]
+The latter is the unconditional cooperation probability faced by a user of $A$. Given $a$, the conditional $M$ user's cooperation forecast is $\alpha Q/[\alpha+\Delta d]$: every cooperative partner has label $M$, and conditional on that label the incoming signal is independent of the partner's action. To make the user indifferent at $a$ and the selfish type indifferent over labels, choose
+\[
+ d=r(Q-\kappa)/\kappa,\qquad
+ t=\frac{h c(Q)}{x\varepsilon\Delta(T-P)}.
+\]
+
+\newpage
+\section*{Optimality at the remaining decisions}
+Write $Y=P-S$, $D=T-R$ and $H=T-P$. Substitution into the equation for $Q$ gives the explicit solution
+\[
+ Q=\frac{q+hr(1-Y/H)}
+         {1+hr\{1/\kappa+(D-Y)/H\}}.
+\]
+The denominator tends to one. As $\eta$ tends to zero, $Q\to q>\kappa$, $d\to0$ and $t\to L/\rho\in(0,1)$. Thus $0<t<1$ and $0<d<1-x$ for all sufficiently small positive $\eta$. The selfish type chooses $A$ with probability $d/(1-x)$. Since $r/\eta\to1$, the stated limit follows.
+
+At the null signal the conditional $M$ user's cooperation forecast is $Q$. After a report of $M$ it is $(\rho-\alpha)Q/[(\rho-\alpha)(1-d)+\alpha d]$. Both tend to $q>\kappa$, so cooperation is strictly optimal there. The choice at $a$ is optimal by construction. The selfish type's best discretionary action is defection at all signals. Its expected loss from being forced to cooperate is $h c(Q)$, which exactly balances the label benefit $(Q-Q_A)H$.
+
+It remains to rule out a conditional type switching labels and choosing a new action plan. After switching to $A$, the limiting cooperation forecast at a null or $M$ report is
+\[
+         Q_A^*=q-h c(q)/H > q-\rho\varepsilon x\ge h>\kappa.
+\]
+The strict inequality uses $L<\rho$. The probability of an incoming $a$ report is $\alpha+\Delta d$, which tends to zero regardless of the user's own label. Payoffs are bounded; even the optimal action at this rare signal contributes a vanishing amount. The incumbent conditional user cooperates with probability tending to one and faces cooperation probability tending to $q$. Its limiting utility advantage over its best switch to $A$ is $(q-Q_A^*)(R+b-S)>0$. This establishes optimality for small positive $\eta$. At the switched type's information sets choose best responses signal by signal. Bayes' rule determines partner beliefs since each label is seen in equilibrium and the matching and signal draws are independent of own type. This completes the construction.
+
+For the numerical example, the limiting ratio $d/\eta$ is $3999/8000$ (about $0.50$). The supplement independently sums payoffs over partner types, labels, private signals and bypass draws and checks all label and action incentives for $\eta=10^{-2},10^{-3},10^{-4},10^{-5}$. The rate is a prediction within the model for this particular equilibrium branch. It does not identify which equilibrium a population would select.
 
 
 \small
