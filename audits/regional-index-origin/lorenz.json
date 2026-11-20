@@ -1,0 +1,264 @@
+{
+  "source": "https://arxiv.org/html/2611.23798v1",
+  "html_sha256": "eea93e79dc53f8cfae4df9eecbbe0534ce314ac59573b22a24b60f234defa489",
+  "models": {
+    "nonnegative": {
+      "pieces": [
+        {
+          "left": "0",
+          "right": "4436497/57020000",
+          "at_left": "later_above",
+          "interior": "later_above"
+        },
+        {
+          "left": "4436497/57020000",
+          "right": "6047/76000",
+          "at_left": "uncertified",
+          "interior": "uncertified"
+        },
+        {
+          "left": "6047/76000",
+          "right": "2797617/19490000",
+          "at_left": "uncertified",
+          "interior": "crossing"
+        },
+        {
+          "left": "2797617/19490000",
+          "right": "706863/4832500",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "706863/4832500",
+          "right": "11887079/47260000",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "11887079/47260000",
+          "right": "11960777/46940000",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "11960777/46940000",
+          "right": "20456411/76020000",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "20456411/76020000",
+          "right": "20602853/75300000",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "20602853/75300000",
+          "right": "25794103/19700000",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "25794103/19700000",
+          "right": "25899341/19300000",
+          "at_left": "uncertified",
+          "interior": "uncertified"
+        },
+        {
+          "left": "25899341/19300000",
+          "right": null,
+          "at_left": "uncertified",
+          "interior": "later_below"
+        }
+      ],
+      "ordinary": {
+        "0": "later_above",
+        "1/4": "crossing",
+        "1/3": "crossing",
+        "1/2": "crossing",
+        "1": "crossing"
+      },
+      "lines": {
+        "1": [
+          [
+            "4436497/200000000",
+            "-2851/10000"
+          ],
+          [
+            "901003/40000000",
+            "-2831/10000"
+          ]
+        ],
+        "2": [
+          [
+            "2797617/50000000",
+            "-1949/5000"
+          ],
+          [
+            "706863/12500000",
+            "-1933/5000"
+          ]
+        ],
+        "3": [
+          [
+            "20456411/200000000",
+            "-3801/10000"
+          ],
+          [
+            "20602853/200000000",
+            "-753/2000"
+          ]
+        ],
+        "4": [
+          [
+            "11887079/100000000",
+            "-2363/5000"
+          ],
+          [
+            "11960777/100000000",
+            "-2347/5000"
+          ]
+        ],
+        "5": [
+          [
+            "25794103/200000000",
+            "-197/2000"
+          ],
+          [
+            "25899341/200000000",
+            "-193/2000"
+          ]
+        ]
+      }
+    },
+    "standard": {
+      "pieces": [
+        {
+          "left": "0",
+          "right": "6163127/59620000",
+          "at_left": "later_above",
+          "interior": "later_above"
+        },
+        {
+          "left": "6163127/59620000",
+          "right": "18929/180000",
+          "at_left": "uncertified",
+          "interior": "uncertified"
+        },
+        {
+          "left": "18929/180000",
+          "right": "125551/648000",
+          "at_left": "uncertified",
+          "interior": "crossing"
+        },
+        {
+          "left": "125551/648000",
+          "right": "1897407/9640000",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "1897407/9640000",
+          "right": "1462781/4718000",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "1462781/4718000",
+          "right": "3674717/11715000",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "3674717/11715000",
+          "right": "25077983/76140000",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "25077983/76140000",
+          "right": "25217909/75420000",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "25217909/75420000",
+          "right": "5928751/3564000",
+          "at_left": "crossing",
+          "interior": "crossing"
+        },
+        {
+          "left": "5928751/3564000",
+          "right": "29746173/17420000",
+          "at_left": "uncertified",
+          "interior": "uncertified"
+        },
+        {
+          "left": "29746173/17420000",
+          "right": null,
+          "at_left": "uncertified",
+          "interior": "later_below"
+        }
+      ],
+      "ordinary": {
+        "0": "later_above",
+        "1/4": "crossing",
+        "1/3": "crossing",
+        "1/2": "crossing",
+        "1": "crossing"
+      },
+      "lines": {
+        "1": [
+          [
+            "6163127/200000000",
+            "-2981/10000"
+          ],
+          [
+            "6227641/200000000",
+            "-2961/10000"
+          ]
+        ],
+        "2": [
+          [
+            "376653/5000000",
+            "-243/625"
+          ],
+          [
+            "1897407/25000000",
+            "-241/625"
+          ]
+        ],
+        "3": [
+          [
+            "25077983/200000000",
+            "-3807/10000"
+          ],
+          [
+            "25217909/200000000",
+            "-3771/10000"
+          ]
+        ],
+        "4": [
+          [
+            "1462781/10000000",
+            "-2359/5000"
+          ],
+          [
+            "3674717/25000000",
+            "-2343/5000"
+          ]
+        ],
+        "5": [
+          [
+            "5928751/40000000",
+            "-891/10000"
+          ],
+          [
+            "29746173/200000000",
+            "-871/10000"
+          ]
+        ]
+      }
+    }
+  }
+}

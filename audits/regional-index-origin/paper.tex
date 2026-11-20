@@ -1,0 +1,60 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\title{Origin shifts and regional inequality in Maharashtra's Economic Progress Index}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\begin{center}{\LARGE\bfseries Origin shifts and regional inequality in Maharashtra's Economic Progress Index\par}\medskip Lluis Eriksson \quad 20 November 2026\end{center}
+\begin{abstract}
+Two summaries can agree that regional dispersion has decreased even when the underlying Lorenz curves cross. We demonstrate this using published scores for six Maharashtra revenue divisions. At the reported index origin, the later Lorenz curve is higher at all five interior knots. After adding one quarter of the original index range to every score, both the coefficient of variation and the maximum-to-minimum ratio still decrease, but the curves cross under both principal component specifications. We give certificates valid for every score compatible with four-decimal rounding. These endpoint comparisons describe dispersion between division means.
+\end{abstract}
+
+\section{The comparison}
+Mohan and Chattopadhyay construct a geospatial Economic Progress Index (EPI) and compare relative convergence and widening absolute gaps across six revenue divisions. The authors explicitly recognize that a min--max index has a chosen origin and that relative comparisons depend on it. Which conclusions about the distribution of division scores persist as that origin changes?
+
+We use the twelve division means per specification printed in Table~6 of the \href{https://arxiv.org/html/2611.23798v1#S4.T6}{original study}. The earlier window covers 2015 and the later one 2025 Q3 through 2026 Q2. Each division score already incorporates population weights. Across divisions, each of the six scores receives equal weight. We repeat the analysis for standard principal component analysis (PCA) and the nonnegative specification (NN-PCA).
+
+We consider common recodings $y=(x+c)/(1+c)$ with $c\ge0$. These preserve score order and the original top endpoint. The common divisor cancels in every relative measure studied here. Each calculation allows the latent division score to lie anywhere within $0.00005$ of its displayed value. The audit addresses endpoint sensitivity. A quarterly regression or a causal claim would require different evidence.
+
+\section{Two indicators, two switching points}
+Let $s,\mu,a,r$ denote a period's sample standard deviation, mean, minimum and range. The two measures after recoding are $s/(\mu+c)$ and $1+r/(a+c)$. Using $(v,b)=(s,\mu)$ or $(r,a)$, the sign of later minus earlier equals the sign of
+\[
+               v_1b_0-v_0b_1+(v_1-v_0)c .
+\]
+The six reported scores certify a strictly larger $s$ and $r$ in the later period under either specification. Thus a sign reversal is unique for each indicator. To bound $s$ we use $s^2=\sum_{i<j}(x_i-x_j)^2/[n(n-1)]$, with $n=6$. Each absolute difference varies by at most twice the rounding radius. Squaring and summing the resulting bounds and comparing squared CVs permits exact rational sign tests.
+
+
+\begin{center}
+\begin{tabular}{lcc}\toprule
+Specification & Shift bracketing max/min reversal & Shift bracketing CV reversal\\\midrule
+NN-PCA & $0.304$--$0.309$ & $0.362$--$0.369$\\
+Standard PCA & $0.363$--$0.368$ & $0.440$--$0.447$\\\bottomrule
+\end{tabular}
+\end{center}
+The sign is negative at the lower end and positive at the upper end of each bracket for all compatible data. Between the two brackets the later CV is smaller while its max/min is larger. The intervals are sufficient; conservatism in the pairwise variance bounds can widen a bracket.
+
+\newpage\section{Where the Lorenz curves cross}
+For the $j$ smallest division scores let $S_j$ be their sum and $T$ the total. The Lorenz ordinate after shifting is $(S_j+jc)/(T+6c)$. Clearing positive denominators across periods gives
+\[
+ S_{1j}T_0-S_{0j}T_1+
+ \bigl[6(S_{1j}-S_{0j})+j(T_0-T_1)\bigr]c .
+\]
+The ordering within each period is fixed throughout its rounding box. Raising one of the $j$ smallest scores raises its group's share. Raising an entry outside that group lowers the share. Thus exact lower and upper shares are attained by opposite rounding corners. The lower sign bound for a change compares the later minimum with the earlier maximum; the upper bound reverses those choices. These are sharp per ordinate. For simultaneous conclusions we only use signs that hold throughout both periods' boxes.
+
+We partition the nonnegative shifts at every positive root of these affine comparisons. Checking each resulting interval and its endpoints determines where all five changes are positive, all are negative, or a positive change and a negative change coexist. Linear interpolation between adjacent common knots then gives the relation of the complete curves. Both specifications certify the following common subintervals:
+\begin{center}
+\begin{tabular}{ll}\toprule
+Origin shift & Later curve relative to earlier curve\\\midrule
+$0\le c\le0.077$ & Higher at all five interior knots\\
+$0.106\le c\le1.309$ & Crosses the earlier curve\\
+$c\ge1.708$ & Lower at all five interior knots\\\bottomrule
+\end{tabular}
+\end{center}
+At $c=1/4$ both scalar measures still fall and both pairs of curves cross. Agreement between these summaries therefore does not certify Lorenz dominance. This observation uses the same underlying division scores under both normalizations. The shift $1/4$ is a diagnostic choice, not an estimate of a meaningful economic zero.
+
+\textbf{Omitting one division.} At $c=1/4$ we repeated the calculation six times in each specification, giving equal weight to the five remaining divisions. Omitting Pune, Nashik, Nagpur or Aurangabad preserved both falling scalar measures and the Lorenz crossing in both specifications. Omitting Konkan reversed both scalar comparisons and put the later curve below at every interior knot. Omitting Amravati left both scalar measures falling; the later curve was higher under standard PCA, and rounding prevented our strict classification under NN-PCA. The all-division finding therefore depends on which geographic units enter the comparison.\par\textbf{Data and reproduction.} The \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/325}{reproduction package} includes the scripts, exact breakpoints and all twelve omission comparisons. Each script retrieves Table~6 of arXiv:2611.23798v1. The Lorenz calculation checks its per-ordinate bounds against every corner of each period's rounding box at two shifts. This analysis makes no inference about within-division or individual inequality. The dependence of relative measures on scale has a long history; see S.-C. Kolm, \href{https://doi.org/10.1016/0022-0531(76)90037-5}{Unequal Inequalities I} (1976).
+
+\textbf{Model assessments and review context.} Codex contributed to the calculations and text. Any assessment of this exact PDF is recorded separately with the reviewer's identity, involvement and the artifact hash.
+\end{document}
