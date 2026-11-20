@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{What annual load summaries conceal about Uganda's household lifeline tariff}
+\author{Lluis Eriksson}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+A household electricity tariff with backward-looking eligibility can assign different charges to two years with the same twelve monthly consumptions and identical usage in each billed month. We bound this ambiguity for the Ugandan domestic energy charge in October--December 2026. Sorting the preceding months within admissible calendar groups attains both bill extrema simultaneously across all billed months. In a synthetic panel using two archived load shapes from western Uganda, moving the only high-demand month from January to August removes all three discounts and raises the quarter's energy charge by 23,823 UGX. We also identify when this maximum falls to one month or disappears. The result concerns a counterfactual grid comparator for an off-grid household.
+\end{abstract}
+
+\section{Two summaries with different time scales}
+Tabaro's replication package \cite{tabaro} models an off-grid photovoltaic and battery system in western Uganda. Its post-processing compares system cost per kWh served with a domestic electricity bill calculated from annual load divided by twelve. This is an explicit modeling choice. We examine how much of the grid charge is identified if the annual load summary is known but some of its chronology is lost.
+
+Uganda's Electricity Regulatory Authority specifies a domestic lifeline rate for the first 15 kWh conditional on average consumption over the \emph{previous} six months being at most 100 kWh \cite{era}. Following the energy-block interpretation implemented in the source, the first 15 kWh cost 250 UGX each when eligible and 779.4 otherwise. Consumption from 16 through 80 kWh uses 779.4, from 81 through 150 uses 412, and above 150 uses 779.4. At current monthly usage $x\ge0$ the eligibility discount is
+\[
+ D(x)=(779.4-250)\min(x,15).
+\]
+The rule is applied here only to the three billing months in its official period. The preceding months supply consumption history. All reported charges and differences exclude taxes and service fees. No actual grid customer bill or change in PV performance is inferred.
+
+\section{Sharp ordering bounds}
+Suppose the billed loads are fixed and the eligibility decision for each bill compares the total of its preceding $L$ months with a cutoff. Discounts may differ across billed loads and must be nonnegative. Suppose the preceding loads can be permuted within known strata of calendar slots, with a fixed multiset in each stratum.
+
+\textbf{Proposition.} The lowest aggregate charge is attained by placing larger pre-period demands earlier within each stratum. Placing larger demands later gives the highest charge.
+
+\paragraph{Proof.} For a billed month, any part of its historical window preceding the billing period forms a suffix of the pre-period. The number of positions in that suffix from each stratum is fixed. A decreasing order puts the smallest possible set of demands in those positions. It therefore minimizes their sum in every suffix simultaneously. The rest of each window consists of fixed billed-period demands. With weak inequality at the cutoff, eligibility can only increase as the historical sum decreases. Every discount is nonnegative and the baseline charges are fixed. Increasing order attains the opposite extremum by the same suffix argument. A discrete tariff need not realize every charge between the extrema.
+
+\section{Calendar experiment}
+The archived 8,760-hour inputs labeled 3 and 5 kWh/day repeat daily shapes. Their published decimal entries sum to 2.9999 and 4.9999 kWh per day. We assign one whole shape to each month of the 2026 calendar. Group the resulting $2^{12}$ synthetic years by their exact unordered twelve monthly demands and by their ordered October--December demands. In this panel each monthly total identifies both its daily shape and the length of that month. Pre-period demands may therefore be permuted within month-length strata. Exact rational arithmetic avoids rounding an observation onto an eligibility boundary.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Difference in eligible months & 0 & 1 & 2 & 3\\
+\midrule
+All matched groups & 320 & 36 & 20 & 8\\
+Groups with six high months & 59 & 3 & 0 & 0\\
+Energy-charge spread (UGX) & 0 & 7,941 & 15,882 & 23,823\\
+\bottomrule
+\end{tabular}
+\end{center}
+These are group counts across artificial calendars. They do not estimate the frequency of discounts among households. All current loads exceed 15 kWh, so each eligibility change is worth exactly 7,941 UGX. Comparing the two sorted allocations with all feasible orders in every group confirms the sharp bounds.
+
+\paragraph{A single high-demand month suffices.} Use the low shape throughout the year except in January, and compare the same configuration with August as its only high month. Both months have 31 days; the multiset and every Q4 load are identical. In the January case, all Q4 windows consist solely of low months, each below the 600 kWh six-month cutoff. In the August case, August falls within each of the three windows and each exceeds the cutoff. The full three-discount difference of 23,823 UGX is thus attained even when every billed-period input and the annual consumption agree.
+
+\paragraph{When the difference shrinks.} Across the 924 patterns with precisely six high months, just three have an eligible Q4 month. The largest within-group spread is a single discount. For example, assigning high loads to January through April, November and December qualifies for November. Assigning them to February, July through September, November and December does not. November's preceding six-month consumptions are respectively 551.9816 and 735.9816 kWh. For seven or more high months, none of the matched groups has any spread. The sharp maximum by number of high months 0 through 12, in units of one discount, is
+\[
+ (0,3,3,3,3,2,1,0,0,0,0,0,0).
+\]
+
+\paragraph{Interpretation.} Annual averaging can erase a quarter's entire lifeline discount even when the unordered monthly distribution is fully known. The source's constant daily-load scenarios and our seasonally varying counterfactuals answer different questions. We have not established a reversal in the ranking of solar and grid costs. The regulatory comparison assumes monthly billing and the previous six calendar months. Metering, actual billing boundaries, VAT and connection terms would require additional evidence.
+
+\paragraph{Reproduction.} The package provides checksummed archived inputs, exact bill witnesses, an exhaustive verification of the extremizers and the two official source identifiers. The general argument depends on nested historical suffixes; different billing histories that cannot be permuted within strata require a different feasible set.
+
+\paragraph{Model assessments and review context.} Codex assisted with design, analysis and drafting in the shared programme context. An assessment of a rendered version must identify its exact PDF. Independent external review has not been established.
+
+\begin{thebibliography}{9}
+\bibitem{tabaro} E. K. Tabaro, \emph{Off-grid household solar PV and battery in western Uganda: SAM techno-economic model and replication files}, version 1 (2026), \href{https://doi.org/10.5281/zenodo.24407802}{Zenodo 24407802}. Load inputs used under CC BY 4.0; counterfactual grouping and analysis by the present author.
+\bibitem{era} Electricity Regulatory Authority, Uganda, \emph{Schedule of electricity end-user tariffs to be charged by UEDCL for the fourth quarter of 2026}, Table 1 and note on domestic Code 10.1, \href{https://www.era.go.ug/wp-content/uploads/2026/10/SCHEDULE-OF-ELECTRICITY-PRICES-FOR-Q4-2026.pdf}{official schedule}.
+\end{thebibliography}
+\end{document}
