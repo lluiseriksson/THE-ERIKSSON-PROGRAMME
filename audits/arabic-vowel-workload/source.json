@@ -1,0 +1,42 @@
+{
+  "doi": "10.5281/zenodo.24407151",
+  "conceptdoi": "10.5281/zenodo.24407150",
+  "id": 24407151,
+  "metadata": {
+    "title": "Fill or Show: Cue Rules and a Previous-Word Table for Arabic Case Vowels on the Prague Arabic Dependency Treebank (code and results)",
+    "doi": "10.5281/zenodo.24407151",
+    "publication_date": "2026-11-20",
+    "description": "<p>Scripts, preregistered protocol, result files and run logs for the study \"Fill or Show: Cue Rules and a Previous-Word Table for Arabic Case Vowels on the Prague Arabic Dependency Treebank\". The package contains the cue-rule implementation, the previous-word table and threshold selection on the development split, the statistics scripts, the list of 85 indeclinable forms, the treebank checksum and script hashes.</p>",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Amer, Adel F.",
+        "affiliation": null,
+        "orcid": "0009-0008-9618-3863"
+      }
+    ],
+    "resource_type": {
+      "title": "Dataset",
+      "type": "dataset"
+    },
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "24407150"
+          }
+        }
+      ]
+    }
+  },
+  "filename": "zenodo_p2.zip",
+  "url": "https://zenodo.org/api/records/24407151/files/zenodo_p2.zip/content",
+  "source_checksum": "md5:07bbb04bcf2d0ee43da35124361b941c",
+  "archive_sha256": "8251efc7f0c7557f6cfcd82689c9c843741cf1c88043951f2b9a73fc6cb3c251"
+}
