@@ -1,0 +1,75 @@
+{
+  "toolkit": "0.17.0",
+  "engine": "5.2.4",
+  "rainfall_mm": {
+    "design1": "19.500",
+    "DESIGN2": "650.0",
+    "des2": "8.5"
+  },
+  "files": {
+    "MultiOpt.json": "2423484a58456c597d7eea2241a650d3447e56461c1cb51e3ee77d72ea8f2321",
+    "NTNU_case_withLID.inp": "0d48118a8b9ed836812a67729d14da6464c5151f5f57b58675ebf1f229897fa8"
+  },
+  "gate_lps": 0.1,
+  "designs": [
+    2,
+    169,
+    73,
+    20,
+    6,
+    1,
+    200
+  ],
+  "rounding_rule": "Use exported fractions as decimals with original row order; no fitting.",
+  "zero_design_peak": 750.2216796875,
+  "anchors": [
+    {
+      "row": 2,
+      "published": 749.745,
+      "reconstructed": 749.7449951171875,
+      "difference": -4.8828125045474735e-06
+    },
+    {
+      "row": 169,
+      "published": 640.3915,
+      "reconstructed": 640.4248657226562,
+      "difference": 0.03336572265629911
+    },
+    {
+      "row": 73,
+      "published": 531.7603,
+      "reconstructed": 531.74755859375,
+      "difference": -0.012741406250029286
+    },
+    {
+      "row": 20,
+      "published": 422.1264,
+      "reconstructed": 422.1449890136719,
+      "difference": 0.018589013671885368
+    },
+    {
+      "row": 6,
+      "published": 311.8661,
+      "reconstructed": 311.828369140625,
+      "difference": -0.03773085937501719
+    },
+    {
+      "row": 1,
+      "published": 204.889,
+      "reconstructed": 204.84066772460938,
+      "difference": -0.048332275390635004
+    },
+    {
+      "row": 200,
+      "published": 619.1858,
+      "reconstructed": 619.185791015625,
+      "difference": -8.984374971987563e-06
+    }
+  ],
+  "default_density_exceedances": [
+    31,
+    150
+  ],
+  "base_max_abs_error": 0.10492841796872199,
+  "status": "baseline_reconciliation_failed"
+}

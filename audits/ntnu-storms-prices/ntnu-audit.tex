@@ -1,0 +1,58 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs}
+\usepackage[left=0.90in,right=0.90in,top=0.72in,bottom=0.76in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{Rainfall sensitivity and identifiable costs in a published library of 200 stormwater designs}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A short list of five designs from the published NTNU SWMMLIDopt example incurs at most 107.9319 L/s of excess peak outflow against the affordable library under the exported objective. We examine whether this conclusion survives a change between two rainfall inputs in the model. At a reported cost of 302 thousand units, the only affordable shortlisted design exceeds an affordable alternative by at least 238.88 L/s under the second rainfall, across all 648 and 54 integer allocations allowed by a declared rounding box. We also invert the application's rounded construction-cost objective. Under an explicit tolerance on the displayed design fractions, 8,896 integer price vectors are compatible with the cost and density data. Every one prices permeable pavement at 45 units per square metre. The other three prices admit multiple values. These results concern a simulator and a finite design library.
+\end{abstract}
+\section{A budget decision from the archived outputs}
+Abdalla et al.\ study drainage design for the ZEB laboratory catchment in Trondheim and a second site in Finland [1]. Their public software example supplies 200 pairs of construction cost and maximum total outfall flow, 13 area fractions per row, and a four-subcatchment input file [2]. We use the numerical units of the files. The article describes costs in euros; the interface also contains a USD label. We make no currency conversion. The reported objectives concern model output; no observed discharge series enters this analysis.
+
+For each design, compare its peak with the lowest peak among shortlisted designs costing at most as much. The maximum of the shortlist peak minus the target peak over the library is the one-sided excess. Sorting the archive by cost gives strictly decreasing peak. At a prescribed tolerance, select the first uncovered row in this order. That row has the lowest peak among the affordable rows, so selecting it covers weakly farther than any other affordable replacement. Induction gives the minimum number required. An independent prefix calculation minimizes the maximum of first-minus-last peak over contiguous groups. The two calculations give 107.9319 L/s with five rows and 52.6721 with ten. The five rows, numbered from one in the JSON export, are 2, 169, 73, 20 and 6. These limits use the published numbers and the event implicit in that export. A comparison at an external cash budget would also require the unrounded costs.
+
+\newpage\section{Reconstructing the rainfall comparison}
+The model uses litre/second flow units, a one-minute rainfall volume, a one-minute reporting interval and a 41-minute simulation. Its active series \texttt{des2} totals 8.5 mm. We select the second embedded volume series \texttt{design1}, totalling 19.5 mm, for the sensitivity test. We assign it no return period. All other input settings are held fixed. We use SWMM 5.2.4 with \texttt{swmm-toolkit} 0.17.0 and take the maximum of the 41 system-outfall observations. The author code assigns one square metre of area and one metre of width to each treatment unit. For a subcatchment of area \(A\) square metres it writes \(Ax\) as the number of units. The EPA parser uses integer conversion for that input [3]. Our reconstruction uses ordinary nonnegative decimal notation and explicit integers for enumeration.
+
+First we used the displayed fractions literally. We specified an absolute comparison tolerance of 0.1 L/s before computation. All seven anchors (the five shortlisted rows plus 1 and 200) passed. Across all 200 displayed rows the largest absolute difference was 0.1049285 L/s rounded upwards. We stopped the full-library transfer at that gate. This failed test matters because a design can move across an integer unit boundary during export. Two rows (31 and 150) exceed the default density cap of 0.8 when summed literally. The original R function returns a penalty of 999 for infeasible fractions. Our first pass measured the hydraulic output directly and separately recorded those two rows.
+
+\paragraph{A test at one affordable budget.} Below the second shortlisted cost, row 176 has the lowest published peak. At its cost only row 2 is affordable within the shortlist. We enumerated componentwise unit counts induced by all fractions within 0.00005 of the displayed value, clipped to \([0,1]\), and converted each nonnegative count by truncation. This closed box is an explicit uncertainty model. Ignoring additional cost and density restrictions can only enlarge the set. For each integer vector we ran both events. Separately we restricted the vectors to those reproducing the published base peak to within 0.00005 L/s. For each row the extrema over all vectors bound the output of every vector consistent with this model.
+
+\begin{center}
+\begin{tabular}{rrrrr}\toprule
+Row & Reported cost & Base peak & Allocations & Second-event peak range\\\midrule
+2 & 2 & 749.7450 & 648 & [1760.587, 1760.821]\\
+176 & 302 & 643.0269 & 54 & [1521.502, 1521.708]\\\bottomrule
+\end{tabular}\end{center}
+Costs are in thousands of file units. Flows are in L/s. The displayed interval endpoints are rounded outwards.
+
+The alternative-event excess at this budget is at least 238.88 L/s, strictly above 107.9319 L/s. Among the six and two allocations respectively matching the base peak at the stated precision, the excess lies between 239.038 and 239.232 L/s (rounded outwards). Even the larger unconditioned sets disprove transfer of the original tolerance for this fixed shortlist. A bound at this particular budget tests the existing shortlist. Finding the optimal five designs for the second event is a different question. Hydraulic conclusions are conditional on the archived settings, the stated conversion and the solver version. Matching a published peak need not identify the original unrounded design.
+
+\newpage\section{What the rounded costs identify}
+The four prices \(p_h\) are integers from 0 to 200 in the application's controls. The R optimization routine records the rounded value of \(\sum_i p_{h(i)} A_{g(i)} x_i/1000\), where \(g(i)\) denotes subcatchment, \(h(i)\) treatment type and \(A_g\) area in square metres. We inverted all 200 cost bins jointly. Each row may have its own latent fractions within the closed radius 0.00005. Fractions are nonnegative and sum to at most 0.8 within each subcatchment. We imposed no unrecorded individual type cap. We did not use hydraulic output for this price inversion.
+
+For a proposed price vector and one row, put every fraction at its lower bound. This minimizes cost. To maximize, assign the remaining capacity in each subcatchment, in descending price order, up to the individual upper bounds. An exchange between a cheaper and dearer unsaturated use proves optimality. The feasible fraction set is convex, so every cost between these two extremes occurs. A row is compatible exactly when this interval intersects its rounding bin. For an odd reported integer the half-integer boundaries are open under ties-to-even rounding. Rows have separate fractions and common prices, so feasibility requires success for every row.
+
+The computation prunes price ranges using necessary linear inequalities, then enumerates the remaining possibilities with exact integer arithmetic. A branch can be discarded only when its minimum possible cost exceeds a bin maximum, its maximum falls short, or its price ranges become empty. The supplementary output lists every surviving tuple. Marginal ranges below need not combine freely.
+\begin{center}
+\begin{tabular}{lrrr}\toprule
+Treatment & Minimum & Maximum & Distinct prices\\\midrule
+Bioretention & 72 & 76 & 5\\
+Permeable pavement & 45 & 45 & 1\\
+Vegetated swale & 17 & 48 & 32\\
+Green roof & 0 & 106 & 107\\\bottomrule
+\end{tabular}
+\end{center}
+Row 1 alone forces the pavement price to 45, even when the other prices range independently from 0 to 200. The reproducibility check verifies both bounding inequalities. The 8,896 surviving tuples show that one unit price is identified by these records under the stated model. A numerical fit that returns four point estimates would obscure the three ambiguities. These are prices compatible with the archived objective and its controls. They do not measure prevailing installation costs.
+
+\paragraph{Scope and reproduction.} The rainfall and cost analyses answer different inverse questions. Their feasible sets need not identify a single common original design vector. The raw design export and SWMM file are pinned to Git revision \texttt{a824c03d}. The supplement provides the census, exact budget calculation, row selection, hydraulic outputs, input hashes and scripts to rerun them. The prior study established the optimization tool and its original tradeoff [1]. We claim the specific inverse and event-sensitivity calculations on the public example, without claiming a new hydraulic model.
+
+\paragraph{Model assessments and review context.} OpenAI Codex participated in the analysis and drafting. The author administers AIRR. The assessment is linked to the exact PDF; independent field or peer validation has not been documented.
+
+\begin{thebibliography}{3}\small
+\bibitem{study} E. M. H. Abdalla et al. SWMMLIDopt: a tool for optimization of low-impact development (LID) measures using the SWMM model. J. Hydroinformatics 26 (2024), 2781--2797. \href{https://doi.org/10.2166/hydro.2024.123}{Research article}.
+\bibitem{archive} E. M. H. Abdalla. SWMMLIDopt code, example and data. \href{https://github.com/ElhadiMohsenAbdalla/SWMMLIDOPT/tree/a824c03d1864b02d153c81679b61e2d9125d090a}{Fixed source revision}.
+\bibitem{swmm} US Environmental Protection Agency. Storm Water Management Model 5.2.4. \href{https://github.com/USEPA/Stormwater-Management-Model/blob/v5.2.4/src/solver/lid.c}{LID input parsing}.
+\end{thebibliography}
+\end{document}
