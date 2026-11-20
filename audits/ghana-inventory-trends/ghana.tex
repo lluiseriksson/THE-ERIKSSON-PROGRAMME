@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{Five annual trend reversals between two records of Ghana's greenhouse-gas inventory}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We compare Ghana's December 2024 national inventory document with its accompanying common reporting tables. Of 31 annual transitions in the current recalculation series, five have opposite signs in the electronic trend series when land use and forestry are included. None has opposite signs when that sector is excluded. The five discrepancies persist when the electronic comparison is made in every eligible annual workbook in the deposit. Separately, two electronic sheets disagree on the level excluding land use by the magnitude of the reported harvested-wood-products term, to numerical precision, in 31 of 33 years of the 2022 workbook. These level differences preserve all annual directions. The analysis identifies which reporting choices can change a trend diagnosis. It does not establish which physical emissions occurred.
+\end{abstract}
+\section{Comparison within one national submission}
+Ghana's first national inventory under the enhanced transparency framework includes a national inventory document (NID) [1] and 33 electronic workbooks of common reporting tables (CRTs) [2]. Each workbook is labelled with an inventory year from 1990 to 2022 in the same submission version. A comparison that passes silently between these files could attribute a difference in reporting to a change in emissions. We examine aggregate greenhouse gases in kilotonnes of carbon dioxide equivalent (kt CO$_2$e), with and without land use, land-use change and forestry (LULUCF).
+
+NID Table 97, on printed pages 263--264, gives previous and current estimates for each of those two scopes in 1990--2021. The surrounding discussion concerns recalculation from the previous biennial update report. We use the previous column as printed. The electronic series come from Table 10, specifically rows 71--72 of \texttt{Table10s1} and rows 21--22 of \texttt{Table10s6}. Each annual change uses both endpoints from the same series in the same workbook. We cross-check NID Table 17 and the two totals in \texttt{Summary2}. The comparison concerns the archived estimates and makes no new measurement of emissions.
+
+\newpage
+\section{Where the sign changes}
+Let $\Delta X_t=X_t-X_{t-1}$. The table shows every strict sign difference between the current column of NID Table 97 and sheet 6 of the 2022 electronic workbook for the total including LULUCF. The last two columns repeat the comparison after excluding LULUCF. Values are annual changes in kt CO$_2$e rounded to one decimal.
+\begin{center}
+\begin{tabular}{rrrrr}\toprule
+&\multicolumn{2}{c}{Including LULUCF}&\multicolumn{2}{c}{Excluding LULUCF}\\
+Year ending & NID 97 & CRT & NID 97 & CRT\\\midrule
+1993 & $-711.4$ & $409.3$ & $347.9$ & $354.3$\\
+1996 & $-1342.9$ & $252.9$ & $165.4$ & $192.3$\\
+1999 & $283.4$ & $-190.2$ & $-453.2$ & $-353.0$\\
+2016 & $-2183.3$ & $1503.6$ & $2132.1$ & $2163.3$\\
+2021 & $330.1$ & $-116.1$ & $676.8$ & $109.9$\\\bottomrule
+\end{tabular}
+\end{center}
+For the other 26 transitions the direction including LULUCF agrees. For all 31 the direction excluding LULUCF agrees. A one-decimal NID level rounded to nearest has error at most 0.05, so a change can move by at most 0.10 due to display rounding. Each of the 124 changes in the four printed columns has absolute value above 0.10. This tolerance describes rounding, not uncertainty in physical emissions.
+
+The revision and the choice of sector scope answer different questions. Within Table 97, previous and current estimates have the same annual directions when LULUCF is included. Excluding it, the only reversal is 2012--13, from $-9.7$ to $+745.4$. Comparing the two scopes within the current NID series instead gives four opposite signs, in 1993, 1996, 1999 and 2016. The previous NID series adds 2013 to that list. In the 2022 electronic sheet 6 the only scope reversal is 2021, both on the common window and through 2022. Thus all five displayed rows are years when the two sources give different answers to whether land-sector inclusion changes the sign. This observation alone does not locate an erroneous input.
+
+A constant baseline adjustment cannot remove the discrepancy. At 1990 the current Table 97 inclusive total minus its sheet 6 counterpart is about $-5994.43$. For 1991 it is about $+4053.45$. Under any constant offset, the larger absolute residual at these two years is at least half their separation, over 5023 kt CO$_2$e even allowing display rounding.
+
+\newpage
+\section{An identifiable wood-product term}
+For the 2022 workbook let $W$ denote total emissions including LULUCF, $L$ the signed CRT land-sector aggregate (sheet 6, row 32), $H$ the signed harvested-wood-products contribution (sheet 1, row 49), and $N_1,N_6$ the two totals labelled as excluding LULUCF. The following identities summarize the recorded values, checked with absolute tolerance $10^{-6}$ kt CO$_2$e for the electronic numbers:
+\[
+\begin{array}{ll}
+W-L=N_1,\quad N_1-N_6=-H & (1991\text{--}2021),\\
+W-L=N_1=N_6 & (1990,\ 2022).
+\end{array}
+\]
+For example, in 1991 $N_1=11406.80335$, $N_6=11335.81620$ and $H=-70.98715$. The sheet difference in 2022 is zero despite $H=-202.50081$. The two inclusive series agree to numerical precision throughout. The equality with the wood-product entry identifies a component of a level discrepancy inside the workbook. It cannot account for the five opposite signs in the inclusive series between the NID recalculation table and the workbook.
+
+NID Table 17 gives a separate check at seven selected years. It distinguishes land (row 3B) and harvested wood products (row 3D). For 2022 its total with LULUCF is 54758.55 and its total without LULUCF is 47758.53. Their difference is 7000.02, the land entry. Adding the wood-products entry of $-202.50$ gives a net sector of 6797.52, the electronic sector value to two decimals. Subtracting this net sector from the inclusive total gives 47961.03, the electronic total without LULUCF. In 1990 the analogous gap is 134.53. The seven land-plus-wood sums agree with the CRT sector within 0.01. In 2012 the printed inclusive total is about 0.88 below its electronic counterpart, beyond display rounding. A uniform correction of every total by the wood term would be unwarranted.
+
+\paragraph{All 33 workbooks.} In a book labelled $v$, we calculate annual changes for every adjacent pair through $v$. This yields $\sum_{j=0}^{32}j=528$ comparisons per electronic series, including repeated calendar pairs. For each calendar pair and each of the four sheet/scope choices, the direction never switches between positive and negative across eligible workbooks. In each book the two trend sheets agree with its own annual \texttt{Summary2} totals at its labelled year within $10^{-6}$. These are checks within one release. Agreement in direction does not imply equality of levels or independent replication.
+
+\newpage
+\section{What an inventory user can conclude}
+A user assessing annual progress needs the file, sheet, sector boundary, submission and pair of years. In particular, a 2016 decline and a 2016 increase are both reproducible from records labelled as including LULUCF. The overall multidecade trend and progress against an emissions target are distinct questions.
+
+The UNFCCC technical review [3] already documents category-numbering differences between the NID and the CRTs and limitations in HWP reporting. Our calculations compare named aggregates and signed components. They do not establish that the numbering issue caused the reversals. Tracing how Table 97 was assembled requires its underlying reconciliation worksheets or clarification from the compilers. The analysis does not compare Ghana's emissions with an external model or quantify atmospheric fluxes. It treats the deposit's cached values as reported.
+
+\paragraph{Reproducibility.} The supplement identifies the PDF and ZIP by SHA-256, extracts the named years and rows, and examines every annual workbook using decimal arithmetic. It records every transition, the component residuals and each calendar pair's minimum and maximum changes across eligible books. Repeating the calculation from the same sources tests implementation and packaging.
+
+\paragraph{Model assessments and review context.} OpenAI Codex assisted with data extraction, derivation, verification and writing. The author administers AIRR. Assessment reports are linked to the exact PDF. This work has no documented independent field validation.
+
+\begin{thebibliography}{3}
+\bibitem{nid} Republic of Ghana. \emph{2024 National Inventory Document}. Tables 17, 71 and 97 and Chapters 2, 6 and 8. December 2024. \href{https://unfccc.int/documents/645132}{UNFCCC record 645132}.
+\bibitem{crt} Republic of Ghana. \emph{2024 Common Reporting Tables}. Archive \texttt{GHA-CRT-2024-V0.1}, workbooks 1990--2022. \href{https://unfccc.int/documents/645133}{UNFCCC record 645133}.
+\bibitem{terr} UNFCCC. \emph{Report on the technical expert review of the first biennial transparency report of Ghana. Addendum}. FCCC/ETF/TERR.1/2024/GHA/Add.1, September 2026. Items 2.G.5 and 6.L.15--16. \href{https://unfccc.int/documents/660050}{UNFCCC record 660050}.
+\end{thebibliography}
+\end{document}

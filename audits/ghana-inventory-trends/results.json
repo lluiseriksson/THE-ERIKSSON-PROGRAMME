@@ -1,0 +1,1237 @@
+{
+  "changes": [
+    {
+      "change": {
+        "current_with": "10673.1",
+        "current_without": "14.6",
+        "previous_with": "11015.1",
+        "previous_without": "356.6",
+        "s1_hwp": "63.54285",
+        "s1_with": "625.224134985969",
+        "s1_without": "510.053570181488",
+        "s6_lulucf": "115.1705648044817",
+        "s6_sector_with": "625.224134985969",
+        "s6_with": "625.224134985965",
+        "s6_without": "439.066420181486"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 1991
+    },
+    {
+      "change": {
+        "current_with": "1451.8",
+        "current_without": "1808.0",
+        "previous_with": "1386.1",
+        "previous_without": "1742.4",
+        "s1_hwp": "-13.703950000000006",
+        "s1_with": "1999.195027688522",
+        "s1_without": "1959.633936466027",
+        "s6_lulucf": "39.5610912224948",
+        "s6_sector_with": "1999.195027688522",
+        "s6_with": "1999.195027688526",
+        "s6_without": "1945.929986466029"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": -1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 1992
+    },
+    {
+      "change": {
+        "current_with": "-711.4",
+        "current_without": "347.9",
+        "previous_with": "-764.3",
+        "previous_without": "294.9",
+        "s1_hwp": "-69.886239999999984",
+        "s1_with": "409.267774917203",
+        "s1_without": "424.191528185660",
+        "s6_lulucf": "-14.9237532684593",
+        "s6_sector_with": "409.267774917200",
+        "s6_with": "409.267774917200",
+        "s6_without": "354.305288185660"
+      },
+      "sign": {
+        "current_with": -1,
+        "current_without": 1,
+        "previous_with": -1,
+        "previous_without": 1,
+        "s1_hwp": -1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": -1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 1993
+    },
+    {
+      "change": {
+        "current_with": "137.3",
+        "current_without": "210.9",
+        "previous_with": "2.2",
+        "previous_without": "75.8",
+        "s1_hwp": "-249.81783000000002",
+        "s1_with": "61.236737106261",
+        "s1_without": "254.315067140202",
+        "s6_lulucf": "-193.0783300339344",
+        "s6_sector_with": "61.236737106268",
+        "s6_with": "61.236737106264",
+        "s6_without": "4.497237140202"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": -1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": -1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 1994
+    },
+    {
+      "change": {
+        "current_with": "-38.7",
+        "current_without": "-813.1",
+        "previous_with": "-468.6",
+        "previous_without": "-1243.0",
+        "s1_hwp": "175.20763000000000",
+        "s1_with": "-568.278606912172",
+        "s1_without": "-802.089076506620",
+        "s6_lulucf": "233.8104695944430",
+        "s6_sector_with": "-568.278606912172",
+        "s6_with": "-568.278606912172",
+        "s6_without": "-626.881446506617"
+      },
+      "sign": {
+        "current_with": -1,
+        "current_without": -1,
+        "previous_with": -1,
+        "previous_without": -1,
+        "s1_hwp": 1,
+        "s1_with": -1,
+        "s1_without": -1,
+        "s6_lulucf": 1,
+        "s6_sector_with": -1,
+        "s6_with": -1,
+        "s6_without": -1
+      },
+      "to_year": 1995
+    },
+    {
+      "change": {
+        "current_with": "-1342.9",
+        "current_without": "165.4",
+        "previous_with": "-1418.1",
+        "previous_without": "90.2",
+        "s1_hwp": "14.30406000000002",
+        "s1_with": "252.857601257718",
+        "s1_without": "177.998779283775",
+        "s6_lulucf": "74.8588219739404",
+        "s6_sector_with": "252.857601257710",
+        "s6_with": "252.857601257718",
+        "s6_without": "192.302839283775"
+      },
+      "sign": {
+        "current_with": -1,
+        "current_without": 1,
+        "previous_with": -1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 1996
+    },
+    {
+      "change": {
+        "current_with": "1518.1",
+        "current_without": "1239.8",
+        "previous_with": "1573.1",
+        "previous_without": "1294.8",
+        "s1_hwp": "5.61418000000000",
+        "s1_with": "1312.408827137806",
+        "s1_without": "1244.19262129633",
+        "s6_lulucf": "68.2162058414797",
+        "s6_sector_with": "1312.408827137810",
+        "s6_with": "1312.408827137806",
+        "s6_without": "1249.806801296327"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 1997
+    },
+    {
+      "change": {
+        "current_with": "1337.2",
+        "current_without": "1355.2",
+        "previous_with": "1007.2",
+        "previous_without": "1025.3",
+        "s1_hwp": "-17.81568000000001",
+        "s1_with": "1323.273592434765",
+        "s1_without": "1341.959564589639",
+        "s6_lulucf": "-18.6859721548735",
+        "s6_sector_with": "1323.273592434765",
+        "s6_with": "1323.273592434765",
+        "s6_without": "1324.143884589641"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": -1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": -1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 1998
+    },
+    {
+      "change": {
+        "current_with": "283.4",
+        "current_without": "-453.2",
+        "previous_with": "410.6",
+        "previous_without": "-326.0",
+        "s1_hwp": "115.62063",
+        "s1_with": "-190.178527772667",
+        "s1_without": "-468.576566535178",
+        "s6_lulucf": "278.3980387625124",
+        "s6_sector_with": "-190.178527772667",
+        "s6_with": "-190.178527772667",
+        "s6_without": "-352.955936535182"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": -1,
+        "previous_with": 1,
+        "previous_without": -1,
+        "s1_hwp": 1,
+        "s1_with": -1,
+        "s1_without": -1,
+        "s6_lulucf": 1,
+        "s6_sector_with": -1,
+        "s6_with": -1,
+        "s6_without": -1
+      },
+      "to_year": 1999
+    },
+    {
+      "change": {
+        "current_with": "-2252.1",
+        "current_without": "-408.1",
+        "previous_with": "-3025.2",
+        "previous_without": "-1181.2",
+        "s1_hwp": "-49.78578999999999",
+        "s1_with": "-2206.367893108530",
+        "s1_without": "-318.027325181296",
+        "s6_lulucf": "-1888.3405679272327",
+        "s6_sector_with": "-2206.367893108527",
+        "s6_with": "-2206.367893108530",
+        "s6_without": "-367.813115181296"
+      },
+      "sign": {
+        "current_with": -1,
+        "current_without": -1,
+        "previous_with": -1,
+        "previous_without": -1,
+        "s1_hwp": -1,
+        "s1_with": -1,
+        "s1_without": -1,
+        "s6_lulucf": -1,
+        "s6_sector_with": -1,
+        "s6_with": -1,
+        "s6_without": -1
+      },
+      "to_year": 2000
+    },
+    {
+      "change": {
+        "current_with": "1180.9",
+        "current_without": "637.5",
+        "previous_with": "723.9",
+        "previous_without": "180.4",
+        "s1_hwp": "-23.94339000000002",
+        "s1_with": "1084.024413373307",
+        "s1_without": "559.164564544072",
+        "s6_lulucf": "524.8598488292318",
+        "s6_sector_with": "1084.024413373304",
+        "s6_with": "1084.024413373307",
+        "s6_without": "535.221174544073"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": -1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2001
+    },
+    {
+      "change": {
+        "current_with": "2222.2",
+        "current_without": "2014.0",
+        "previous_with": "1490.1",
+        "previous_without": "1282.0",
+        "s1_hwp": "26.58035000000001",
+        "s1_with": "2207.024909776835",
+        "s1_without": "1967.044164267823",
+        "s6_lulucf": "239.9807455090113",
+        "s6_sector_with": "2207.024909776835",
+        "s6_with": "2207.024909776831",
+        "s6_without": "1993.624514267824"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2002
+    },
+    {
+      "change": {
+        "current_with": "-423.7",
+        "current_without": "-58.5",
+        "previous_with": "-443.3",
+        "previous_without": "-78.1",
+        "s1_hwp": "-14.00107",
+        "s1_with": "-471.848769993423",
+        "s1_without": "-97.706569071968",
+        "s6_lulucf": "-374.1422009214548",
+        "s6_sector_with": "-471.848769993427",
+        "s6_with": "-471.848769993423",
+        "s6_without": "-111.707639071971"
+      },
+      "sign": {
+        "current_with": -1,
+        "current_without": -1,
+        "previous_with": -1,
+        "previous_without": -1,
+        "s1_hwp": -1,
+        "s1_with": -1,
+        "s1_without": -1,
+        "s6_lulucf": -1,
+        "s6_sector_with": -1,
+        "s6_with": -1,
+        "s6_without": -1
+      },
+      "to_year": 2003
+    },
+    {
+      "change": {
+        "current_with": "-1784.9",
+        "current_without": "-1229.8",
+        "previous_with": "-1999.3",
+        "previous_without": "-1444.3",
+        "s1_hwp": "-4.30005",
+        "s1_with": "-1671.652029183606",
+        "s1_without": "-1117.266618383659",
+        "s6_lulucf": "-554.3854107999450",
+        "s6_sector_with": "-1671.652029183602",
+        "s6_with": "-1671.652029183602",
+        "s6_without": "-1121.566668383659"
+      },
+      "sign": {
+        "current_with": -1,
+        "current_without": -1,
+        "previous_with": -1,
+        "previous_without": -1,
+        "s1_hwp": -1,
+        "s1_with": -1,
+        "s1_without": -1,
+        "s6_lulucf": -1,
+        "s6_sector_with": -1,
+        "s6_with": -1,
+        "s6_without": -1
+      },
+      "to_year": 2004
+    },
+    {
+      "change": {
+        "current_with": "2615.1",
+        "current_without": "2532.0",
+        "previous_with": "2254.9",
+        "previous_without": "2171.8",
+        "s1_hwp": "-33.55084999999999",
+        "s1_with": "2355.008610379464",
+        "s1_without": "2300.488782311160",
+        "s6_lulucf": "54.5198280683025",
+        "s6_sector_with": "2355.008610379460",
+        "s6_with": "2355.008610379460",
+        "s6_without": "2266.937932311159"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": -1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2005
+    },
+    {
+      "change": {
+        "current_with": "2235.0",
+        "current_without": "2066.8",
+        "previous_with": "2162.4",
+        "previous_without": "1994.2",
+        "s1_hwp": "-8.71504000000002",
+        "s1_with": "2247.210478447978",
+        "s1_without": "2082.916340946209",
+        "s6_lulucf": "164.2941375017636",
+        "s6_sector_with": "2247.210478447975",
+        "s6_with": "2247.210478447982",
+        "s6_without": "2074.201300946214"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": -1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2006
+    },
+    {
+      "change": {
+        "current_with": "2862.6",
+        "current_without": "2835.6",
+        "previous_with": "2160.9",
+        "previous_without": "2133.9",
+        "s1_hwp": "-40.30438999999998",
+        "s1_with": "2835.833189600664",
+        "s1_without": "2844.414582351612",
+        "s6_lulucf": "-8.5813927509435",
+        "s6_sector_with": "2835.833189600667",
+        "s6_with": "2835.833189600660",
+        "s6_without": "2804.110192351607"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": -1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": -1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2007
+    },
+    {
+      "change": {
+        "current_with": "-1960.6",
+        "current_without": "-2006.9",
+        "previous_with": "-1588.9",
+        "previous_without": "-1635.1",
+        "s1_hwp": "-20.61767000000004",
+        "s1_with": "-1974.694397538268",
+        "s1_without": "-2004.901313111710",
+        "s6_lulucf": "30.2069155734453",
+        "s6_sector_with": "-1974.694397538264",
+        "s6_with": "-1974.694397538260",
+        "s6_without": "-2025.518983111706"
+      },
+      "sign": {
+        "current_with": -1,
+        "current_without": -1,
+        "previous_with": -1,
+        "previous_without": -1,
+        "s1_hwp": -1,
+        "s1_with": -1,
+        "s1_without": -1,
+        "s6_lulucf": 1,
+        "s6_sector_with": -1,
+        "s6_with": -1,
+        "s6_without": -1
+      },
+      "to_year": 2008
+    },
+    {
+      "change": {
+        "current_with": "869.7",
+        "current_without": "1134.4",
+        "previous_with": "1131.9",
+        "previous_without": "1396.6",
+        "s1_hwp": "24.61767000000004",
+        "s1_with": "876.257489928845",
+        "s1_without": "1111.811168682656",
+        "s6_lulucf": "-235.5536787538131",
+        "s6_sector_with": "876.257489928845",
+        "s6_with": "876.257489928838",
+        "s6_without": "1136.428838682652"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": -1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2009
+    },
+    {
+      "change": {
+        "current_with": "3120.2",
+        "current_without": "3595.6",
+        "previous_with": "3674.2",
+        "previous_without": "4149.6",
+        "s1_hwp": "40.44704999999999",
+        "s1_with": "3847.928217045097",
+        "s1_without": "3533.077418150286",
+        "s6_lulucf": "314.8507988948104",
+        "s6_sector_with": "3847.928217045097",
+        "s6_with": "3847.928217045100",
+        "s6_without": "3573.524468150292"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2010
+    },
+    {
+      "change": {
+        "current_with": "2412.8",
+        "current_without": "2579.6",
+        "previous_with": "2213.5",
+        "previous_without": "2380.2",
+        "s1_hwp": "-40.93613",
+        "s1_with": "2436.422457881832",
+        "s1_without": "2592.689807826951",
+        "s6_lulucf": "-156.2673499451230",
+        "s6_sector_with": "2436.422457881825",
+        "s6_with": "2436.422457881825",
+        "s6_without": "2551.753677826946"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": -1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": -1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2011
+    },
+    {
+      "change": {
+        "current_with": "2020.4",
+        "current_without": "2157.2",
+        "previous_with": "2225.6",
+        "previous_without": "2362.5",
+        "s1_hwp": "19.50139999999999",
+        "s1_with": "2383.590909565210",
+        "s1_without": "2255.326407344044",
+        "s6_lulucf": "128.2645022211718",
+        "s6_sector_with": "2383.590909565224",
+        "s6_with": "2383.590909565224",
+        "s6_without": "2274.827807344052"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2012
+    },
+    {
+      "change": {
+        "current_with": "1194.2",
+        "current_without": "745.4",
+        "previous_with": "439.2",
+        "previous_without": "-9.7",
+        "s1_hwp": "10.46464000000001",
+        "s1_with": "1097.084200299418",
+        "s1_without": "754.782807943480",
+        "s6_lulucf": "342.3013923559329",
+        "s6_sector_with": "1097.084200299403",
+        "s6_with": "1097.084200299403",
+        "s6_without": "765.247447943475"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": -1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2013
+    },
+    {
+      "change": {
+        "current_with": "-624.6",
+        "current_without": "-441.4",
+        "previous_with": "-326.8",
+        "previous_without": "-143.6",
+        "s1_hwp": "-24.78815",
+        "s1_with": "-475.340761032349",
+        "s1_without": "-354.246373184894",
+        "s6_lulucf": "-121.0943878474500",
+        "s6_sector_with": "-475.340761032341",
+        "s6_with": "-475.340761032348",
+        "s6_without": "-379.034523184891"
+      },
+      "sign": {
+        "current_with": -1,
+        "current_without": -1,
+        "previous_with": -1,
+        "previous_without": -1,
+        "s1_hwp": -1,
+        "s1_with": -1,
+        "s1_without": -1,
+        "s6_lulucf": -1,
+        "s6_sector_with": -1,
+        "s6_with": -1,
+        "s6_without": -1
+      },
+      "to_year": 2014
+    },
+    {
+      "change": {
+        "current_with": "1373.2",
+        "current_without": "1123.3",
+        "previous_with": "1217.7",
+        "previous_without": "967.7",
+        "s1_hwp": "-35.36140000000001",
+        "s1_with": "1430.466278312422",
+        "s1_without": "1118.375044801436",
+        "s6_lulucf": "312.0912335109825",
+        "s6_sector_with": "1430.466278312422",
+        "s6_with": "1430.466278312422",
+        "s6_without": "1083.013644801438"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": -1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2015
+    },
+    {
+      "change": {
+        "current_with": "-2183.3",
+        "current_without": "2132.1",
+        "previous_with": "-3308.7",
+        "previous_without": "1006.8",
+        "s1_hwp": "6.83219000000003",
+        "s1_with": "1503.607435953491",
+        "s1_without": "2156.426976575629",
+        "s6_lulucf": "-652.8195406221367",
+        "s6_sector_with": "1503.607435953491",
+        "s6_with": "1503.607435953491",
+        "s6_without": "2163.259166575619"
+      },
+      "sign": {
+        "current_with": -1,
+        "current_without": 1,
+        "previous_with": -1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": -1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2016
+    },
+    {
+      "change": {
+        "current_with": "6637.2",
+        "current_without": "3101.1",
+        "previous_with": "6994.2",
+        "previous_without": "3458.1",
+        "s1_hwp": "47.12153999999998",
+        "s1_with": "2786.160647780787",
+        "s1_without": "3062.501742706845",
+        "s6_lulucf": "-276.3410949260578",
+        "s6_sector_with": "2786.160647780787",
+        "s6_with": "2786.160647780794",
+        "s6_without": "3109.623282706845"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": -1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2017
+    },
+    {
+      "change": {
+        "current_with": "2321.7",
+        "current_without": "2358.3",
+        "previous_with": "1716.1",
+        "previous_without": "1752.6",
+        "s1_hwp": "7.70170999999999",
+        "s1_with": "2327.183190748794",
+        "s1_without": "2218.004550420075",
+        "s6_lulucf": "109.1786403287197",
+        "s6_sector_with": "2327.183190748794",
+        "s6_with": "2327.183190748794",
+        "s6_without": "2225.706260420077"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2018
+    },
+    {
+      "change": {
+        "current_with": "4301.8",
+        "current_without": "2489.5",
+        "previous_with": "3792.0",
+        "previous_without": "1979.8",
+        "s1_hwp": "22.62083000000001",
+        "s1_with": "4278.177206209308",
+        "s1_without": "2524.151576130207",
+        "s6_lulucf": "1754.0256300791006",
+        "s6_sector_with": "4278.177206209308",
+        "s6_with": "4278.177206209301",
+        "s6_without": "2546.772406130199"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2019
+    },
+    {
+      "change": {
+        "current_with": "3901.4",
+        "current_without": "4124.9",
+        "previous_with": "4781.7",
+        "previous_without": "5005.1",
+        "s1_hwp": "11.43122",
+        "s1_with": "3532.829748274249",
+        "s1_without": "4096.151227140399",
+        "s6_lulucf": "-563.3214788661507",
+        "s6_sector_with": "3532.829748274249",
+        "s6_with": "3532.829748274249",
+        "s6_without": "4107.582447140405"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": -1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2020
+    },
+    {
+      "change": {
+        "current_with": "330.1",
+        "current_without": "676.8",
+        "previous_with": "1901.8",
+        "previous_without": "2248.6",
+        "s1_hwp": "7.22377",
+        "s1_with": "-116.066568293209",
+        "s1_without": "102.684341292712",
+        "s6_lulucf": "-218.7509095859196",
+        "s6_sector_with": "-116.066568293216",
+        "s6_with": "-116.066568293202",
+        "s6_without": "109.908111292716"
+      },
+      "sign": {
+        "current_with": 1,
+        "current_without": 1,
+        "previous_with": 1,
+        "previous_without": 1,
+        "s1_hwp": 1,
+        "s1_with": -1,
+        "s1_without": 1,
+        "s6_lulucf": -1,
+        "s6_sector_with": -1,
+        "s6_with": -1,
+        "s6_without": 1
+      },
+      "to_year": 2021
+    },
+    {
+      "change": {
+        "s1_hwp": "-19.27490",
+        "s1_with": "1795.574636055361",
+        "s1_without": "1034.736041998622",
+        "s6_lulucf": "760.8385940567378",
+        "s6_sector_with": "1795.574636055361",
+        "s6_with": "1795.574636055361",
+        "s6_without": "1217.961951998616"
+      },
+      "sign": {
+        "s1_hwp": -1,
+        "s1_with": 1,
+        "s1_without": 1,
+        "s6_lulucf": 1,
+        "s6_sector_with": 1,
+        "s6_with": 1,
+        "s6_without": 1
+      },
+      "to_year": 2022
+    }
+  ],
+  "flips": {
+    "coverage_current": [
+      1993,
+      1996,
+      1999,
+      2016
+    ],
+    "coverage_previous": [
+      1993,
+      1996,
+      1999,
+      2013,
+      2016
+    ],
+    "crt_coverage": [
+      2021
+    ],
+    "crt_sheets_with": [],
+    "crt_sheets_without": [],
+    "revision_with": [],
+    "revision_without": [
+      2013
+    ],
+    "table97_vs_crt_with": [
+      1993,
+      1996,
+      1999,
+      2016,
+      2021
+    ],
+    "table97_vs_crt_without": []
+  },
+  "indeterminate": {
+    "current_with": [],
+    "current_without": [],
+    "previous_with": [],
+    "previous_without": []
+  },
+  "reconciliation": {
+    "1990": {
+      "anchor": {
+        "net_land_residual": "0.002496742938",
+        "printed_without_minus_wood_minus_crt": "0.000219705162",
+        "with_residual": "0.002716448099",
+        "without_residual": "-134.529780294838"
+      },
+      "hwp": "-134.53",
+      "sector_closure": "1E-12",
+      "sheet1_matches_sheet6": true,
+      "sheet1_minus_sheet6_equals_minus_hwp": false,
+      "sheet1_minus_sheet6_without": "0E-12"
+    },
+    "1991": {
+      "hwp": "-70.98715",
+      "sector_closure": "70.9871499999983",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "70.987150000002"
+    },
+    "1992": {
+      "hwp": "-84.691100000000006",
+      "sector_closure": "84.6911000000005",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "84.691100000000"
+    },
+    "1993": {
+      "hwp": "-154.57733999999999",
+      "sector_closure": "154.5773399999998",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "154.577340000000"
+    },
+    "1994": {
+      "hwp": "-404.39517000000001",
+      "sector_closure": "404.3951699999962",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "404.395170000000"
+    },
+    "1995": {
+      "hwp": "-229.18754000000001",
+      "sector_closure": "229.1875399999982",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "229.187539999997"
+    },
+    "1996": {
+      "hwp": "-214.88347999999999",
+      "sector_closure": "214.8834800000008",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "214.883479999997"
+    },
+    "1997": {
+      "hwp": "-209.26929999999999",
+      "sector_closure": "209.2693000000001",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "209.2693000000"
+    },
+    "1998": {
+      "hwp": "-227.08498",
+      "sector_closure": "227.0849799999976",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "227.084979999998"
+    },
+    "1999": {
+      "hwp": "-111.46435",
+      "sector_closure": "111.4643500000002",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "111.464350000002"
+    },
+    "2000": {
+      "anchor": {
+        "net_land_residual": "-0.0040720719141",
+        "printed_without_minus_wood_minus_crt": "161.248260785137",
+        "with_residual": "0.004048713224",
+        "without_residual": "-0.001739214863"
+      },
+      "hwp": "-161.25013999999999",
+      "sector_closure": "161.2501399999989",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "161.250140000002"
+    },
+    "2001": {
+      "hwp": "-185.19353000000001",
+      "sector_closure": "185.1935300000011",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "185.193530000001"
+    },
+    "2002": {
+      "hwp": "-158.61318",
+      "sector_closure": "158.6131799999968",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "158.61318000000"
+    },
+    "2003": {
+      "hwp": "-172.61425",
+      "sector_closure": "172.6142499999996",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "172.614250000003"
+    },
+    "2004": {
+      "hwp": "-176.9143",
+      "sector_closure": "176.9143000000016",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "176.914300000003"
+    },
+    "2005": {
+      "hwp": "-210.46514999999999",
+      "sector_closure": "210.4651500000001",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "210.465150000004"
+    },
+    "2006": {
+      "hwp": "-219.18019000000001",
+      "sector_closure": "219.1801900000045",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "219.180189999999"
+    },
+    "2007": {
+      "hwp": "-259.48457999999999",
+      "sector_closure": "259.484580000001",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "259.484580000004"
+    },
+    "2008": {
+      "hwp": "-280.10225000000003",
+      "sector_closure": "280.1022500000017",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "280.102250000000"
+    },
+    "2009": {
+      "hwp": "-255.48457999999999",
+      "sector_closure": "255.4845800000008",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "255.484580000004"
+    },
+    "2010": {
+      "hwp": "-215.03753",
+      "sector_closure": "215.0375299999984",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "215.037529999998"
+    },
+    "2011": {
+      "hwp": "-255.97366",
+      "sector_closure": "255.9736600000004",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "255.973660000003"
+    },
+    "2012": {
+      "anchor": {
+        "net_land_residual": "-0.0008154983714",
+        "printed_without_minus_wood_minus_crt": "235.591644927654",
+        "with_residual": "-0.881430570718",
+        "without_residual": "-0.878355072346"
+      },
+      "hwp": "-236.47226000000001",
+      "sector_closure": "236.4722600000006",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "236.472259999995"
+    },
+    "2013": {
+      "hwp": "-226.00762",
+      "sector_closure": "226.0076199999957",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "226.007620000000"
+    },
+    "2014": {
+      "hwp": "-250.79577",
+      "sector_closure": "250.7957699999887",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "250.795769999997"
+    },
+    "2015": {
+      "hwp": "-286.15717000000001",
+      "sector_closure": "286.1571699999902",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "286.157169999995"
+    },
+    "2016": {
+      "anchor": {
+        "net_land_residual": "0.0004871042999",
+        "printed_without_minus_wood_minus_crt": "279.315908792013",
+        "with_residual": "0.001415896314",
+        "without_residual": "-0.004091207987"
+      },
+      "hwp": "-279.32497999999998",
+      "sector_closure": "279.3249799999989",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "279.324980000005"
+    },
+    "2017": {
+      "hwp": "-232.20344",
+      "sector_closure": "232.2034400000057",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "232.203440000005"
+    },
+    "2018": {
+      "hwp": "-224.50173000000001",
+      "sector_closure": "224.501730000003",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "224.501730000003"
+    },
+    "2019": {
+      "anchor": {
+        "net_land_residual": "-0.0026883774626",
+        "printed_without_minus_wood_minus_crt": "201.883959534892",
+        "with_residual": "0.000371157425",
+        "without_residual": "0.003959534892"
+      },
+      "hwp": "-201.8809",
+      "sector_closure": "201.8809000000044",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "201.880900000011"
+    },
+    "2020": {
+      "hwp": "-190.44968",
+      "sector_closure": "190.4496799999991",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "190.449680000005"
+    },
+    "2021": {
+      "anchor": {
+        "net_land_residual": "-0.0002999253923",
+        "printed_without_minus_wood_minus_crt": "183.233401101771",
+        "with_residual": "-0.002808823622",
+        "without_residual": "0.003401101771"
+      },
+      "hwp": "-183.22591",
+      "sector_closure": "183.2259100000007",
+      "sheet1_matches_sheet6": false,
+      "sheet1_minus_sheet6_equals_minus_hwp": true,
+      "sheet1_minus_sheet6_without": "183.225910000001"
+    },
+    "2022": {
+      "anchor": {
+        "net_land_residual": "0.0011060178699",
+        "printed_without_minus_wood_minus_crt": "0.001449103155",
+        "with_residual": "0.002555121017",
+        "without_residual": "-202.498550896845"
+      },
+      "hwp": "-202.50081",
+      "sector_closure": "7.9E-12",
+      "sheet1_matches_sheet6": true,
+      "sheet1_minus_sheet6_equals_minus_hwp": false,
+      "sheet1_minus_sheet6_without": "7E-12"
+    }
+  }
+}
