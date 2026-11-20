@@ -1,0 +1,81 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{Can a screening audit establish a recent majority in the coffee value-chain literature?}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A coffee value-chain bibliography retains 360 recent documents among 576. We ask which conclusions survive alternative screening decisions and how many more recent than earlier relevant records a stratified audit could reliably detect. Restoring any subset of abstract-only exclusions preserves a recent majority at the search date. Restricting to complete years removes that guarantee. The original 30-record relevance pilot also permits an earlier majority. For a prospective audit of 60 additional records we calculate exact worst-case size and power across every allocation between the two periods. We quantify how the detectable excess changes when up to three decisions can be withheld after the labels are known. The audit calculations describe a proposed design for the original search frame.
+\end{abstract}
+\section{Two questions about a single bibliography}
+The 18 November 2026 Scopus search by Obando Carlos [1] retrieved 713 records on coffee, value-chain organization and sustainability. Its eligibility screen retained 576 records. We call 2021 onward recent. A recent majority among retained publications is a descriptive fact. Establishing a recent majority among relevant records in the entire search requires an audit of relevance. Even that broader claim concerns the records returned by this query. Publication counts alone cannot measure economic activity or research quality.
+
+We first allow any subset of 134 exclusions for absent coffee terms in titles and keywords (C3) to return, while retaining the original treatment of the duplicate and two records without identified authors. Let $R,E$ be retained recent and earlier counts and $r,e$ the respective C3 counts. The fraction of recent publications varies between $R/(R+E+e)$ and $(R+r)/(R+E+r)$. Adding an earlier record decreases the fraction, adding a recent one increases it, and both endpoints are attainable. The endpoints bound a discrete set.
+\newpage
+\section{What survives a change of time window?}
+\begin{center}
+\begin{tabular}{lrrrrll}
+\toprule
+Window & $R$ & $E$ & $r$ & $e$ & Lower & Upper\\
+\midrule
+Through search date &360&216&77&57&$120/211$&$437/653$\\
+Complete years through 2025 &256&216&59&57&$256/529$&$35/59$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first lower endpoint exceeds one half. In the second row, restoring 40 earlier exclusions produces a tie and 41 reverse the majority if no recent exclusions return. Exactly 18 of the 104 retained 2026 records suffice to restore a uniform strict majority to the complete-year corpus: $256+18>216+57$. Seventeen allow a tie.
+
+\section{What can the existing pilot establish?}
+The source reports a random pilot of 30 records with author adjudication after assisted reading [1]. Conditional on a simple random draw and its realized stratum sizes, the two samples are independent simple random samples without replacement. The source labels eight of 14 recent and thirteen of 16 earlier records relevant. Expansion within the 438 recent and 275 earlier records estimates an excess of $438(8/14)-275(13/16)=3007/112$ recent relevant records. The original draw and its adjudications were not independently reproduced.
+
+For stratum sizes $N,M$, draws $n,m$ and true relevant totals $A,B$, the observed counts $X,Y$ have independent hypergeometric laws. Use the upper tail of $NX/n-MY/m$. To test $A-B\le d$, it suffices at each feasible $A$ to set $B=\max(0,A-d)$. Flipping an earlier irrelevant record to relevant decreases the statistic on samples containing it and leaves other samples unchanged. Maximizing the exact tail over that boundary therefore controls size for the entire composite null. Through the search date the one-sided $p$-value for $d=0$ is 0.36715 (attained at $A=B=211$). Inversion gives a 95\% lower bound of $-79$ records. Through 2025 the corresponding bound is $-128$. These are separate window-specific bounds. Treating source labels as correct is a substantive assumption in both calculations.
+\newpage
+\section{A prospective audit with incomplete adjudication}
+Keep the 30 existing labels fixed. Draw $n$ of the 424 unreviewed recent records and $m=60-n$ of the 259 earlier records, independently without replacement. The total excess is $D=A-B-5$, including the original eight versus thirteen relevant records. Fix the complete-label statistic $S=424mX-259nY$. For each allocation use the smallest attainable critical score with worst-case false-positive probability at most $1/20$, allowing a threshold above the maximum if necessary.
+
+Suppose up to $k$ judgments may be withheld, even as a function of the observed labels. Reject only if all completions of the revealed sample reach the critical score. The worst score attainable by suppression from a fully adjudicated sample is
+\[
+ L_k(X,Y)=\min_{0\le a\le k}
+ \{424m\max(0,X-a)-259n\min(m,Y+k-a)\}.
+\]
+Indeed, with $a$ recent and $k-a$ earlier opportunities for suppression, hiding a positive recent judgment or a negative earlier judgment produces the largest drop in its stratum. If fewer such judgments exist, the unused opportunities can be discarded. Conversely these choices attain the stated score. This is a pointwise construction. It does not require an independent response mechanism.
+
+Revealing every judgment attains the worst null size. Under the alternative, an adversary can attain the event $\{L_k\ge c\}$ as the rejection event by choosing a minimizing pattern for each sample. Both scores increase in $X$ and decrease in $Y$. Under $D\le0$ the same boundary argument gives $B=\max(0,A-5)$ for feasible $A$. Under $D\ge d>0$ the worst power at fixed $B$ occurs at $A=B+d+5$. Summing product-hypergeometric masses over these one-dimensional boundaries yields exact extrema. For example, the complete-sample mass at $(i,j)$ has numerator
+\[
+ {A\choose i}{424-A\choose n-i}{B\choose j}{259-B\choose m-j}
+\]
+over $\binom{424}{n}\binom{259}{m}$, with infeasible binomial coefficients zero. The algorithm checks the critical score and its predecessor by integer comparison. It likewise checks the smallest detectable excess and the preceding excess, or certifies that even the maximum fails. Monotonicity supplies the intermediate cases.
+\newpage
+\section{The cost of missing decisions}
+For each of the 59 allocations with positive sample sizes in both periods we computed the smallest $d$ for which worst-case power is at least $4/5$. The table gives all minimizing allocations. Columns headed size and power use the first listed allocation, with decimals rounded for display.
+
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+Missing budget & Recent / earlier & Detectable $d$ & Size & Power\\
+\midrule
+0 & 34/26 & 105 & 0.04966 & 0.80270\\
+1 & 34/26 & 117 & 0.04966 & 0.80072\\
+2 & 34/26, 35/25, 36/24, 37/23 & 130 & 0.04966 & 0.80585\\
+3 & 35/25, 37/23 & 141 & 0.04921 & 0.80107\\
+\bottomrule
+\end{tabular}
+\end{center}
+The unit of $d$ is a difference in the number of relevant records across the entire search. With complete labels even the best allocation needs an excess of 105 for a uniform power guarantee. Under three possible suppressed judgments this threshold rises to 141. The design protects against arbitrary label-dependent suppression up to the stated limit. Systematic mislabeling among the decisions that are returned falls outside this calculation.
+
+\paragraph{Scope and reproducibility.}
+The allocations optimize the prespecified nonrandomized threshold rule with a total budget of 60; other statistics or randomized tests may have different frontiers. Bounds under incomplete response have an established literature [2]. Our contribution is the specific calendar sensitivity and finite-population design for this documented screening frame. The package provides the source-table reader, aggregate pilot results, four sets of 59 design certificates, and executable verification. Reproducing the source counts requires the three screening and adjudication tables in [1]. The restricted full Scopus export is unnecessary.
+
+\paragraph{Model assessments and review context.}
+An OpenAI model assisted with the analysis, code and drafting. Any assessment of this version is attached separately to its PDF digest with its provenance. No independent human assessment was obtained for this study.
+
+\paragraph{References.}
+[1] A. Obando Carlos (2026). \emph{Producci\'on cient\'ifica sobre caf\'e, organizaci\'on de la cadena y sostenibilidad en Scopus, 2000--2026: an\'alisis bibliom\'etrico}. Data and supplement, v08. \href{https://doi.org/10.5281/zenodo.24406553}{doi:10.5281/zenodo.24406553}.
+
+\smallskip\noindent
+[2] J. L. Horowitz and C. F. Manski (1998). Censoring of outcomes and regressors due to survey nonresponse. \emph{Journal of Econometrics}, 84, 37--58. \href{https://doi.org/10.1016/S0304-4076(97)00077-8}{doi:10.1016/S0304-4076(97)00077-8}.
+\end{document}
