@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=0.95in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\title{How many pending studies could erase a run of 15 months without posting delays over 30 days?}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Among 8,667 posted studies in 15 monthly ClinicalTrials.gov cohorts, none took over 30 days from the results submission meeting quality control to posting. We use the released monthly tables to determine how many pending studies would have to join those cohorts for every month to reach a fixed historical benchmark. The minimum is 1,825. At least 1,155 of those studies would eventually have delays exceeding one year. A separate calculation over 116 mature months finds 284 strictly ordered month pairs whose order survives every admissible completion. The bounds use the first-submission month to limit allocation of pending studies. They describe the strength and timing of the selection needed to change a conclusion drawn from a registry snapshot.
+\end{abstract}
+\section{Question and data}
+Watanabe [1] reports a run of zero long delays among the records posted by 19 November 2026, for qualifying-submission months February 2025 through April 2026. Here ``long'' means more than 30 calendar days. A study's qualifying month contains its first results submission that met quality-control (QC) criteria. The posting date is the first results posting after QC. An earlier posting with comments is a distinct registry field [2]. These dates concern the disclosure of results. They do not measure clinical outcomes or by themselves establish regulatory compliance.
+
+We fix the data note's February 2017--June 2026 first-submission cohort and compare eventual shares among studies posted after QC. The pending cohort uses the registry's estimated first-submission date. Our calculation conditions on those reported months. In the earlier 39 qualifying months from October 2021 to December 2024, 2,976 of 17,162 posted records had a long delay. We use that observed fraction as a fixed reference. The question is what the 15 later months could attain simultaneously as pending records acquire a qualifying month and a post date. It differs from estimating the true final rates in either period.
+
+The source released two aggregate tables sufficient for this problem. One gives pending counts by first-submission month. The other gives the posted denominators and five-decimal long-delay shares by qualifying month. Every included long-delay numerator is the unique integer compatible with the rounding. The extractor excludes a suppressed group preceding the study period and the two months whose last day was too recent. This leaves 116 individually dated months through September 2026.
+\newpage
+\section{Feasible completions}
+Let $h_m$ of $n_m$ already-posted studies have long delays in a mature month $m$. Maturity means that even a qualifying submission on the month's last day, posted the day after extraction, exceeds 30 days. Assigning $x_m$ eventual postings to $m$ gives $(h_m+x_m)/(n_m+x_m)$. Pending studies may instead qualify later or never post. We fix the observed posted records and allow the unobserved qualifying months to vary. An assignment only uses pending studies whose reported first-submission month is at or before $m$.
+
+For a target $0\le t<1$, the minimum required in a month is
+\[
+ b_m(t)=\max\{0,\lceil(t n_m-h_m)/(1-t)\rceil\}.
+\]
+To exceed the target strictly, replace the ceiling by the floor plus one before truncating at zero. Let $A_j$ be the cumulative number of eligible pending studies first submitted through month $j$. Monthly targets can hold simultaneously exactly when
+\[
+                   \sum_{m\le j} b_m(t_m)\ \le\ A_j
+                   \quad\text{at every target month } j.
+\]
+Necessity follows by counting distinct studies. For sufficiency, fill the demands in month order from unused eligible studies. Eligibility sets grow with the month. If the inequality holds, the next demand fits; any remaining studies can fall outside the target months. This also proves minimality of the total demand.
+
+For a maximum interval of $W$ calendar months between initial and qualifying submissions, eligibility becomes $m-W\le s\le m$. Allocate the oldest available eligible records first. To verify this rule, consider a feasible allocation that uses a later record for the current month. If the earlier record serves a later month, exchange the two. The later record was available at the current month and expires weakly later than the earlier record. If the earlier record was unused, replace the later one directly. Repeating the exchange gives the greedy allocation. Dates within the recorded months are free in this aggregate model.
+
+A separate calendar bound follows without an allocation algorithm. The earliest eventual posting beyond the snapshot is 20 November. For every item assigned to month $m$, the elapsed time from QC is at least the distance between that date and the last day of $m$. Multiplying the forced counts by indicators for any chosen horizon gives a lower bound on the number of exceptionally late postings. This bound is attainable in the aggregate model by choosing month ends and the first eligible post date. Individual submission histories, operational constraints or later observed postings may exclude such completions.
+\newpage
+\section{Results}
+The 15 zero months together contain 8,667 posted studies. Restoring the earlier pooled reference of $2,976/17,162$ in \emph{every} month requires 1,825 additional studies. Restoring it only in the pooled total requires 1,819. Reaching even the lowest of the earlier 39 monthly shares, $34/373$, requires 876 studies across the 15 months.
+\begin{center}\begin{tabular}{lrr}\toprule
+Required in every later month & Earlier minimum & Earlier pooled rate\\\midrule
+Distinct additional postings & 876 & 1,825\\
+Of which eventual delays over 365 days & 553 & 1,155\\
+Of which eventual delays over 540 days & 201 & 421\\
+Of which eventual delays over 600 days & 68 & 143\\\bottomrule
+\end{tabular}\end{center}
+The earliest qualifying month forces a delay of at least 630 days for some records. The timing requirements are material. If all pending studies must qualify within one calendar month of first submission, the pooled-rate scenario is impossible: February--November 2025 requires 1,258 postings, but its eligible submission months supply only 1,228. Permitting two months suffices, as demonstrated by the archived integer allocation. Excluding the pending studies flagged by the source's \texttt{unreleaseDate} sensitivity reduces this one-month supply to 1,188. Two months still suffice.
+
+Across all 116 mature months, 561 of 6,670 pairs are tied in the snapshot. Of the 6,109 strictly ordered pairs, 5,825 admit a strict reversal and 284 preserve their strict order in every completion. These are separate pairwise possibilities; different reversals can require incompatible uses of the same records. Excluding the flagged pending studies raises the preserved count to 289. For July versus August 2026, the observed rates are $62/443$ and $30/291$. Assigning 13 later postings to August reverses their order; even the most favorable allocation of 12 cannot do so.
+
+For a joint upper bound, raise a common target across all 15 zero months and check the cumulative constraints at the possible integer fractions. With all pending studies the highest attainable minimum is $567/1181$ (48.01\%). The witnessing allocation uses 8,012 studies by April 2026; a strictly higher minimum requires at least 8,013 by that date, one more than available. Excluding flagged records gives $13/28$ (46.43\%). These are extreme possibilities under the stated constraints.
+
+\newpage
+\section{Prospective check and interpretation}
+On the next registry release, dated 20 November 2026 at 10:00:05 in the API version record, five studies with actual first results submission in the source's cohort had their first post dated that day. None had a qualifying submission between February 2025 and April 2026. We requested aggregate totals, checked the registry release immediately before and after the queries, and archived their URLs. A single day's observation provides little evidence about eventual outcomes. The source withholds individual study identifiers, preventing linkage of these five studies to specific members of its pending set. Corrections to earlier records would require a separate vintage comparison.
+
+Tipping-point analyses ask how extensive missing outcomes must be to overturn a finding [3]. Here the missing quantity also determines which month's denominator a study enters. The substantive result is the joint number and age of the cases required to erase the zero pattern relative to a specified benchmark. The allocation argument employs standard counting and exchange reasoning. We make no general priority claim for this method. Earlier work has measured results-submission and review cycles in trial disclosures [4]. Our input is a released aggregate snapshot. The source's primary 90-day endpoint, measured from first submission, and its segmented regression are outside this analysis.
+
+\textbf{Reproducibility and rights.} The accompanying files contain both unmodified input tables from Watanabe [1] under CC BY 4.0, their source and hashes, the algorithms, case-level comparison outputs by month pair, and integer allocation certificates. Two exhaustive three-record toy checks compare the eligibility rules with explicit assignments. The public registry check has its own dated record. Re-running it on another data release answers a different question.
+
+\textbf{Model assessments and review context.} OpenAI Codex participated in the analysis, writing and verification in a shared conversation. The author administers AIRR. Any model assessment records the exact PDF and its context separately.
+
+\small
+[1] K. Watanabe. Share of ClinicalTrials.gov first results submissions posted after quality control within 90 days, by submission month, February 2017 to June 2026: a data note. Zenodo, v1.0.\newline \href{https://doi.org/10.5281/zenodo.24406040}{doi:10.5281/zenodo.24406040}. Record retrieved 20 November. Metadata publication date 21 November 2026.
+
+[2] US National Library of Medicine. \href{https://clinicaltrials.gov/study-basics/glossary}{ClinicalTrials.gov glossary} and \href{https://www.nlm.nih.gov/pubs/techbull/jf20/jf20_clinicaltrials_qc.html}{updated QC and posting procedures} (2020).
+
+[3] \emph{A Tipping Point Method to Evaluate Sensitivity to Potential Violations in Missing Data Assumptions}. Pharmaceutical Statistics. \href{https://doi.org/10.1002/pst.70002}{doi:10.1002/pst.70002}.
+
+[4] \emph{Time From Submission of Johns Hopkins University Trial Results to Posting on ClinicalTrials.gov}. JAMA Internal Medicine (2019). \href{https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2753423}{Article}.
+\end{document}

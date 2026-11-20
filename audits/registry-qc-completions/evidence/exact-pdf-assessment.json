@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-6JZECNTQYB849BZ8",
+  "version": "v1",
+  "version_id": "arr:version:efdf4ca6-4061-489b-96d0-84409ac73266",
+  "canonical_sha256": "ac5958bb1c826f0115d0dd1b3dc181fbc30307cae4e55e2f6ea703630594e883",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T20:09:26.707336+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.7,
+  "overall_stars": 5,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The integer target follows by rearranging the completed proportion. The observed February-November demand exceeds the one-month supply by 30, excluding that scenario."
+    },
+    "rigor": {
+      "stars": 5,
+      "basis": "Nested capacities suffice by forward allocation. With expiry, exchange preserves both eligibility inequalities. Sharpness uses free dates and assignments in the aggregate model."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Tipping-point analysis and earliest-expiry matching are established. The specific joint number and delay-horizon requirements for the registry cohorts are the substantive new application."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "The duration and number of exceptional postings give a health-data analyst an interpretable stress test for selection. One later release offers little predictive validation."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "The analysis provides monthly inputs, integer certificates, release date and verifier. Withheld identifiers prevent checking actual trajectories against the hypothetical completions."
+    }
+  },
+  "summary": "I participated in the analysis and writing. In the exact four-page PDF, the monthly benchmark requires at least 1,825 additional postings, including 1,155 more than a year after qualifying submission. The calculation quantifies the selection needed to erase the observed pattern. It conditions on reported initial submission months and leaves eventual outcomes unidentified.",
+  "strengths": [
+    "A fixed earlier benchmark and strict 30-day cutoff define a reproducible question.",
+    "An attainable integer allocation complements the infeasibility certificate.",
+    "The comparison of 1,825 monthly with 1,819 pooled separates two common claims about the same data."
+  ],
+  "weaknesses": [
+    "Estimated first-submission months can shift after corrections.",
+    "The historical posted-case benchmark can itself move with follow-up.",
+    "The five next-release cases cannot be linked to the original pending set. A longer versioned follow-up would improve empirical relevance."
+  ],
+  "potential_errors": [
+    "The extreme assignment puts several eventual postings on the same day. Operational restrictions can narrow attainability.",
+    "The 5,825 reversals need not be jointly realizable.",
+    "A posting delay cannot be interpreted as a patient outcome or legal violation from these aggregate data."
+  ],
+  "strong_novelty_candidates": [
+    "A joint count and delay-age certificate for erasing all 15 zero months under chronological assignment, including the one-versus-two calendar-month threshold."
+  ],
+  "unresolved_material_objections": []
+}

@@ -1,0 +1,24 @@
+{
+  "source_sha": "908d4226c060032544380132b30a14f59316e9e0",
+  "inputs": {
+    "qc.tex": "0006913cfc81bf74d55811dad73940204e48d516b71c21f8de4febee84f42585",
+    "verify_qc.py": "a024ddf164e346fb0f4da3eedf5562bb6bb74ef3c1530b9e4fe1da1217620e62",
+    "qc_windows.py": "001feab371824dfdbb4244ebd83d0e24f0475e8a583ef981d4c76f31d4a76e41",
+    "qc_frontier.py": "358a4a427c48c2fab6d9de1dd752f1314ee655de5df2e5e383a85536b7b3ec50",
+    "frontier.json": "b56031f81b1b9a0e5dda47cb1c1b6c2c086ce156183396d898d84088e9d579d8",
+    "windows.json": "d6b945661e15ad922995042560a79e936c3ee6e58e80b988a904e6e3dfe0aac2",
+    "registry-20261120.json": "dd7f371ef38aba8573b58217c7e2cd1f46436a64fc5eb13ac073cfc1d20ed8e4",
+    "sources.json": "638e839921fb917f6413af6b6b0fb496904fa8c4471079917438068716f44bdb",
+    "p90_by_month.csv": "a10825a253cc0617723aa8a964cdc19d9e888ce3f109bfde7921f3330f684c09",
+    "s2_qc_to_post_by_qc_month.csv": "ecad66c10cdf0d68b9fc54fe37e31e4836c7d147a9b203bf46d650e4f94c80b8"
+  },
+  "started_at": "2026-11-20T20:05:33.794945+00:00",
+  "status": "reproduced",
+  "pages": 4,
+  "pdf_sha256": [
+    "ac5958bb1c826f0115d0dd1b3dc181fbc30307cae4e55e2f6ea703630594e883",
+    "ac5958bb1c826f0115d0dd1b3dc181fbc30307cae4e55e2f6ea703630594e883"
+  ],
+  "pdf_bytes": 216979,
+  "finished_at": "2026-11-20T20:06:38.804747+00:00"
+}
