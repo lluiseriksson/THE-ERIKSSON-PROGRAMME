@@ -1,0 +1,56 @@
+[
+  {
+    "tasks": 4,
+    "changed": 2,
+    "successes": 6,
+    "denominator": 1000000000000,
+    "lower": 851225128960,
+    "upper": 851225128961,
+    "asymptotic_pair_factor": "5624/6561"
+  },
+  {
+    "tasks": 16,
+    "changed": 4,
+    "successes": 24,
+    "denominator": 1000000000000,
+    "lower": 730445907912,
+    "upper": 730445907913,
+    "asymptotic_pair_factor": "5624/6561"
+  },
+  {
+    "tasks": 32,
+    "changed": 6,
+    "successes": 48,
+    "denominator": 1000000000000,
+    "lower": 626191689997,
+    "upper": 626191689998,
+    "asymptotic_pair_factor": "5624/6561"
+  },
+  {
+    "tasks": 64,
+    "changed": 8,
+    "successes": 96,
+    "denominator": 1000000000000,
+    "lower": 537329078343,
+    "upper": 537329078344,
+    "asymptotic_pair_factor": "5624/6561"
+  },
+  {
+    "tasks": 128,
+    "changed": 12,
+    "successes": 192,
+    "denominator": 1000000000000,
+    "lower": 394733678514,
+    "upper": 394733678515,
+    "asymptotic_pair_factor": "5624/6561"
+  },
+  {
+    "tasks": 256,
+    "changed": 16,
+    "successes": 384,
+    "denominator": 1000000000000,
+    "lower": 290250265863,
+    "upper": 290250265864,
+    "asymptotic_pair_factor": "5624/6561"
+  }
+]
