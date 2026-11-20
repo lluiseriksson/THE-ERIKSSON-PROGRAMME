@@ -1,0 +1,69 @@
+{
+  "models": {
+    "nonnegative": {
+      "Konkan": {
+        "CV": 1,
+        "ratio": 1,
+        "lorenz": "later_below"
+      },
+      "Pune": {
+        "CV": -1,
+        "ratio": -1,
+        "lorenz": "crossing"
+      },
+      "Nashik": {
+        "CV": -1,
+        "ratio": -1,
+        "lorenz": "crossing"
+      },
+      "Nagpur": {
+        "CV": -1,
+        "ratio": -1,
+        "lorenz": "crossing"
+      },
+      "Aurangabad": {
+        "CV": -1,
+        "ratio": -1,
+        "lorenz": "crossing"
+      },
+      "Amravati": {
+        "CV": -1,
+        "ratio": -1,
+        "lorenz": "uncertified"
+      }
+    },
+    "standard": {
+      "Konkan": {
+        "CV": 1,
+        "ratio": 1,
+        "lorenz": "later_below"
+      },
+      "Pune": {
+        "CV": -1,
+        "ratio": -1,
+        "lorenz": "crossing"
+      },
+      "Nashik": {
+        "CV": -1,
+        "ratio": -1,
+        "lorenz": "crossing"
+      },
+      "Nagpur": {
+        "CV": -1,
+        "ratio": -1,
+        "lorenz": "crossing"
+      },
+      "Aurangabad": {
+        "CV": -1,
+        "ratio": -1,
+        "lorenz": "crossing"
+      },
+      "Amravati": {
+        "CV": -1,
+        "ratio": -1,
+        "lorenz": "later_above"
+      }
+    }
+  },
+  "html_sha256": "eea93e79dc53f8cfae4df9eecbbe0534ce314ac59573b22a24b60f234defa489"
+}
