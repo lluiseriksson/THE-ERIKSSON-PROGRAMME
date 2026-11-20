@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,microtype}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{A common wind share for Jeju under incomplete curtailment curves}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+How much extra renewable energy would be curtailed by fixing one wind share instead of using the best reported share in each planning year? We use four years of the Jeju study by Kim et al. and optimize the worst annual difference compatible with rounded point observations and convexity. On the original one-percentage-point grid, Table 11 alone selects 59\% with a bound of 1.20 GWh. One additional published value for 2038 changes the choice to 60\% and halves the bound to 0.60 GWh. Allowing either adjacent whole megawatt in capacity conversion raises the latter guarantee to at most 0.624 GWh. These are guarantees relative to the four reported annual grid optima.
+\end{abstract}
+\section{Decision and observations}
+Kim et al. [1] calculate the curtailed energy for annual wind shares on a 1\% grid and discuss adopting a constant 55--60\% share from 2030. We ask a different question: which fixed share minimizes the largest additional GWh that the published observations alone permit? We examine 2030, 2034, 2036 and 2038 under the reference scenario, the four years with a five-point sensitivity table. No hourly data are required for this conditional decision. The result does not bound other planning years or the error of the reference scenario.
+
+Write $x$ for the numerical percentage of total renewable capacity assigned to wind. At fixed total capacity, profiles and hourly hosting limits, the source's equations (7), (8) and (10) express annual curtailed energy $f_y(x)$ as a sum of positive parts of affine functions. It is convex. The curtailment \emph{rate} has a denominator that depends on the mix; we work in GWh. The benchmark $c_y$ is the reported grid minimizer. Section 2.7 states that constrained and unconstrained optima coincide from 2029. Our regret is $f_y(x)-f_y(c_y)$. It need not equal regret relative to the unknown continuous optimum.
+
+The initial 2029 wind and photovoltaic capacities on the study trajectory are 1,140 and 826 MW. At a 2030 total of 2,097 MW, retaining them gives the interval
+$[100(1140/2097),100(1-826/2097)]$ in percent. Thereafter total capacity increases every year, so a fixed share preserves both capacities in the continuous model. The feasible integer percentages are 55 through 60.
+\newpage
+\section{An exact bound from rounded samples}
+Suppose the recorded heights $h_i$ on ordered knots $x_i$ are rounded to the nearest $0.1$ GWh, with a knot $c$ at the benchmark. For each year form the piecewise linear function $U$ through
+\[
+ U(c)=0,\qquad U(x_i)=h_i-h_c+0.1\quad(x_i\ne c).
+\]
+If $U$ has nondecreasing slopes and its minimum at $c$, it is the sharp upper bound on regret among convex curves consistent with these observations and benchmark optimality on the grid, on the interval spanned by the knots.
+
+Indeed, at each knot the difference of the two rounding errors is at most $0.1$, with exactly zero difference at $c$. Convexity bounds every intermediate value by its endpoint chord. Conversely the polygon through the benchmark height $h_c-0.05$ and the other heights $h_i+0.05$ is convex under the stated slope test. It realizes $U$ everywhere after subtraction of its benchmark height. Extend the first and last segments linearly if required. With half-open rounding intervals, interior approximations give the same supremum here: the nominal polygons have strictly increasing slopes. This construction certifies sharpness in the independent convex-curve class. The hourly curves in [1] share physical profiles across years and may admit tighter bounds.
+
+\begin{center}\small
+\begin{tabular}{rrrrrrr}
+\toprule
+Year & $c_y$ (\%) & $-10$ pp & $-5$ pp & Centre & $+5$ pp & $+10$ pp\\\midrule
+2030&59&10.8&7.1&6.0&6.7&9.2\\
+2034&61&40.2&32.0&29.1&34.2&48.8\\
+2036&60&63.5&51.6&46.7&52.8&71.3\\
+2038&59&91.6&75.1&68.2&74.5&96.3\\\bottomrule
+\end{tabular}
+\end{center}
+The observations above are GWh from Tables 10 and 11 of [1]. Some sampled shares would be infeasible to build; the source evaluated them on the unconstrained curve. They constrain the curve while the final decision lies in the feasible interval. Section 2.7 also gives 68.4 GWh at 60\% in 2038, where the source compares minimizing energy with minimizing its percentage rate.
+
+\section{The observation that changes the decision}
+At fixed $x$, worst annual regret is bounded by $H(x)=\max_y U_y(x)$. Minimizing this convex polygon on a segment requires only its knots, feasible endpoints, and pairwise intersections of affine pieces. With Table 11 alone, the minimizing continuous share is $2803/47$ percent with $192/235$ GWh worst regret. After including the extra 2038 point, the share is $5112/85$ percent (about 60.14\%) and the bound is $219/425$ GWh (about 0.5153). In both cases the 2034 and 2038 curves meet at the optimum. The active slopes in GWh per percentage point change from $(-3/5,32/25)$ to $(-3/5,61/40)$. Their opposite signs certify global minimality.
+\newpage
+\begin{center}\small
+\begin{tabular}{lrrrrrr}
+\toprule
+Common share (\%)&55&56&57&58&59&60\\\midrule
+Table 11 (GWh)&5.60&4.20&3.00&2.00&1.20&1.28\\
+Plus section 2.7 (GWh)&5.60&4.20&3.00&2.00&1.20&0.60\\\bottomrule
+\end{tabular}
+\end{center}
+The discrete decision changes because 2038 no longer determines the bound at 60\%. Its measured difference from the 59\% benchmark is 0.2 GWh, or at most 0.3 after rounding. The limiting year at 60\% becomes 2034. Interpolating one fifth of the way from its 61\% centre to the 56\% observation gives at most $(32.0-29.1+0.1)/5=0.60$ GWh.
+
+\section{Capacity resolution and interpretation}
+For a sensitivity check, suppose that at every reported share the realized wind MW can be either adjacent integer to its nominal capacity, photovoltaic MW are the remainder, and a repeated share in the same year uses the same allocation. Use convexity in realized MW. Bound each chord by evaluating feasible endpoint and target roundings. When the target is itself an observed share, use its measured difference directly. At 60\% the resulting upper bounds for the four years are respectively $88/525$, $81/130$, $0$, and $3/10$ GWh. In 2034 the upper interpolation weight towards the 56\% sample is $(1588-1561)/(1588-1458)=27/130$. Multiply by the 3.0 GWh upper difference. The resulting $81/130$ GWh is a conservative guarantee allowing both adjacent integers even for the published centre. At 60\%, wind and photovoltaic capacities exceed their 2029 floors already in 2030. Subsequent annual increases in both exceed rounding uncertainty.
+
+A planner using these four scenarios can therefore justify a 60\% choice on the source grid with a worst annual excess below 0.624 GWh under the stated allocation model. The result concerns energy, with no conversion into lost revenue, avoided emissions, reliability or social benefit. Convex interpolation and minimax regret have established antecedents [2,3]. The source-specific contribution is the change in decision induced by a recoverable observation and a certificate that survives MW resolution.
+\section*{Model assessments and review context}
+The accompanying code uses rational arithmetic, verifies the polygon slopes, and compares its pointwise bounds with enumerated rounding-box corners. Source URL, XML hash, tables and the additional point are pinned. OpenAI Codex participated in analysis, drafting and assessment. The author administers AIRR. The model assessment concerns the frozen PDF and shares the manuscript context. Independent peer review is undocumented.
+\section*{References}
+\small
+[1] S. H. Kim et al., \href{https://doi.org/10.3390/su182211539}{Optimal Wind--Photovoltaic Capacity Mix for Curtailment Minimization and a Sustainable Energy Transition in an HVDC-Interconnected Island: The Case of Jeju, Korea}, \emph{Sustainability} 18, 11539 (2026).\par
+[2] S. Boyd and L. Vandenberghe, \href{https://web.stanford.edu/~boyd/cvxbook/}{Convex Optimization}, Cambridge University Press (2004), ch.~3.\par
+[3] \href{https://ieeexplore.ieee.org/document/10909558}{Minimax Regret Robust Co-Planning of Transmission and Energy Storage Systems With Mixed Integer Recourse}, IEEE, document 10909558.
+\end{document}
