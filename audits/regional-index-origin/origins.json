@@ -1,0 +1,41 @@
+{
+  "source": "https://arxiv.org/html/2611.23798v1",
+  "table": 6,
+  "html_sha256": "eea93e79dc53f8cfae4df9eecbbe0534ce314ac59573b22a24b60f234defa489",
+  "rounding": "nearest to 0.0001; closed independent boxes of radius 0.00005",
+  "grid_denominator": 1000,
+  "models": {
+    "nonnegative": {
+      "bounds": {
+        "CV": {
+          "negative_through_thousandths": 362,
+          "positive_from_thousandths": 369
+        },
+        "ratio": {
+          "negative_through_thousandths": 304,
+          "positive_from_thousandths": 309
+        }
+      },
+      "at_shift_034": {
+        "CV": -1,
+        "ratio": 1
+      }
+    },
+    "standard": {
+      "bounds": {
+        "CV": {
+          "negative_through_thousandths": 440,
+          "positive_from_thousandths": 447
+        },
+        "ratio": {
+          "negative_through_thousandths": 363,
+          "positive_from_thousandths": 368
+        }
+      },
+      "at_shift_034": {
+        "CV": -1,
+        "ratio": -1
+      }
+    }
+  }
+}
