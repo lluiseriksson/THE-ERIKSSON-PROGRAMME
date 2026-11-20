@@ -1,0 +1,23 @@
+{
+  "version_doi": "10.5281/zenodo.24385766",
+  "concept_doi": "10.5281/zenodo.24385762",
+  "source_pdf_sha256": "0439b530c5a1d8750525c033525f04567008445702c0a2b5fa4c803b729357c9",
+  "table": 3,
+  "units": "USD millions",
+  "scenarios": [
+    "base",
+    "moderate",
+    "severe"
+  ],
+  "annual_service": 112,
+  "cash": [
+    175,
+    132,
+    82
+  ],
+  "combined_reserves": [
+    95,
+    122,
+    165
+  ]
+}

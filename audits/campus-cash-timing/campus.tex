@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{How far can collections move before monthly debt service fails?}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Annual free cash and a combined reserve balance leave the timing and availability of liquidity unresolved. We give exact tests for monthly service under bounded receipts and date-specific caps on cash carried forward. A linear-time algorithm returns the least sufficient retention at every date. A second formula gives the least mass of receipts that must change dates to approach a missed payment from a nominal feasible schedule. In a published hypothetical data-centre scenario, annual free cash of 175 against service of 112 and usable reserves of 95 permits a first shortfall in month eleven. From uniform receipts the infimum transfer is 152.75, in USD millions. The calculation assumes equal monthly service and specifies when collections become available.
+\end{abstract}
+\section{An annual stress table and a monthly decision}
+Adya's Table 3 \cite{adya} reports the three illustrative scenarios below, all in USD millions. Its reserve row combines liquidity and maintenance. It does not identify the portion available for debt service, the payment calendar or the monthly collection paths. A real contractual example illustrates the distinction: the Compass Datacenters indenture defines a Debt Service Advance using specified reserve transfers and distinguishes the event-of-default state \cite{indenture}. We use a hypothetical, exogenously specified balance cap and exclude contingent advances. We do not model that indenture's waterfall.
+\begin{center}
+\begin{tabular}{lrrr}\toprule
+ & Base & Moderate & Severe\\ \midrule
+Annual free net cash $C$&175&132&82\\
+Annual cash interest and scheduled principal $D$&112&112&112\\
+Combined liquidity and maintenance reserves $R$&95&122&165\\ \bottomrule
+\end{tabular}
+\end{center}
+Given $T$ months, admissible receipts satisfy $0\le c_t\le h_t$, $\sum c_t=C$, and $0\le C\le\sum h_t$. Payments $d_t\ge0$ come due after that month's cash arrives. Initial usable cash is $b_0\ge0$. A nonnegative cap $b_t$ limits the cash retained after payment $t$; excess leaves the system permanently. Set $y_0=b_0$ and $y_t=\min(b_t,y_{t-1}+c_t-d_t)$. Negative $y_t$ marks a missed payment. We may continue the algebra after the first failure to test existence of any failure. There is no terminal reserve requirement.
+
+\section{An exact retention profile}
+For $I=(i,t]=\{i+1,\ldots,t\}$ write $D(I)=\sum_{j\in I}d_j$, $H(I)=\sum_{j\in I}h_j$, and $S=\sum h_j-C$. The least receipts the interval can receive are
+\[
+ m(I)=[H(I)-S]_+ .
+\]
+Indeed at most $\sum_{j\notin I}h_j$ can be placed outside $I$, and filling those months first attains the bound. For every $0\le i<T$ define the required amount
+\[
+ K_i=\max\bigl(0,\max_{t>i}\{D((i,t])-m((i,t])\}\bigr).
+\]
+Service succeeds for every admissible schedule if and only if $b_i\ge K_i$ at every date $i<T$. For a fixed schedule, expand the recurrence: $y_t$ is the smaller of $b_t$ and all $b_i+c((i,t])-D((i,t])$ for $0\le i<t$. This follows by induction. Minimising each summand over admissible paths proves sufficiency and necessity, including equality. A failed test has an explicit witness from the outside-first allocation. Different intervals may have different witnesses. The $K_i$ are required capacities; the process need not attain them as actual balances.
+
+For example take receipts fixed at $(3,0,0)$, payments $(0,1,1)$ and initial cash zero. Every cumulative payment is covered by cumulative receipts. With $b_1=1$, $b_2=3$ the balances after the first two payments are 1 and 0, and the third payment fails. The interval $(1,3]$ requires $K_1=2$. No increase in starting cash fixes this cap.
+
+All $K_i$ can be obtained with a linear number of arithmetic operations. Let $D_t,H_t$ denote cumulative sums starting at zero. For each $i$, find the largest $k\ge i$ with $H_k\le H_i+S$. For $i<t\le k$, the largest deficit is $D_k-D_i$ when $k>i$. For $t>k$ it is
+\[
+ H_i+S-D_i+\max_{t>k}(D_t-H_t).
+\]
+Compute the suffix maxima once, omit empty ranges, and take the larger result and zero. The pointer $k$ only moves forward as $i$ increases, even if some monthly caps vanish. Classical storage sizing already maximises accumulated deficits on known inflows \cite{reservoir}, and reflection on moving boundaries has explicit formulas \cite{reflection}. Here the same interval test eliminates a family of unknown receipt paths and yields the whole date-specific retention profile.
+
+\section{Distance to a missed payment}
+Suppose a specified admissible schedule $c^0$ meets every payment. The transfer cost is $\tfrac12\sum_j|c_j-c^0_j|$ in cash units. Call $I=(i,t]$ vulnerable if $b_i+m(I)<D(I)$. If none is vulnerable, no strict shortfall can occur. Otherwise the infimum cost over schedules missing a payment is
+\[
+ \min_{I\ {\rm vulnerable}} \bigl[b_i+c^0(I)-D(I)\bigr].
+\]
+A transfer of size $z$ reduces receipts in an interval by at most $z$. Conversely any reduction up to $c^0(I)-m(I)$ is feasible at exactly that cost: take cash out of $I$ and place it in spare capacity outside. Vulnerability ensures room to go strictly beyond the zero-balance boundary. Equality at the displayed radius is still sufficient to pay. The amount moved need not equal the number of days by which payments shift; the metric charges the same for any change of month.
+
+In the base illustration take uniform nominal receipts, twelve equal payments, all 95 available, and retention large enough to keep all surpluses. Even zero receipts suffice through month ten using the reserve. Annual cash covers the final test. Only the month-eleven prefix is vulnerable. Its nominal slack is
+\[
+ 95+\tfrac{11}{12}(175-112)=152.75.
+\]
+At the boundary the last month receives $175/12+152.75=502/3$, and the first eleven months together receive $23/3$. A further positive delay, however small within the available slack outside, misses month eleven. Equivalently if each monthly receipt has a common feasible cap $H$, all admissible paths pay exactly when $H\le502/3$. For unrestricted monthly timing, the least robust initial reserve with unlimited retention is $\max(0,11D/12,D-C)=308/3$ in each of the three scenarios. Final-month loading attains the maximum. This exceeds 95; for the moderate and severe illustrations it amounts respectively to $154/183$ and $308/495$ of the reported combined reserves. The uniform-receipt starting requirements are respectively 0, 0 and 30. The fractions are bounds under the stated payment schedule, not observed reserve accessibility.
+
+\paragraph{Reproduction and limitations.} The accompanying exact-arithmetic check compares the linear profile with an interval enumeration and direct monthly simulation on small panels. The timing-radius formula allows fractional receipts. Negative monthly free cash, restricted reserve draws, delayed availability, state-dependent cash releases and refinancing require additional inputs. No decision for a named obligor follows from the hypothetical annual table.
+\paragraph{Model assessments and review context.} OpenAI Codex assisted with analysis, transcription and drafting. Version-specific assessments are attached separately. No independent peer review is documented.
+\begin{thebibliography}{9}
+\bibitem{adya} C. Adya. \emph{Bundle the Power Contracts: Securitising Data-Centre Campuses}, Table 3, 2026. \href{https://doi.org/10.5281/zenodo.24385766}{Version of record on Zenodo}.
+\bibitem{indenture} Compass Datacenters Issuer and others, first amendment to second amended and restated indenture, 21 April 2022, Exhibit A. \href{https://www.sec.gov/Archives/edgar/data/2105398/000110465926074624/tm264837d8_ex4-2.htm}{EDGAR Exhibit 4.2}.
+\bibitem{reservoir} J. S. Gidley. \emph{On the equivalence of the sequent peak algorithm and the linear programming method for determining the capacity of a single reservoir}, Journal of Hydrology (1986). \href{https://doi.org/10.1016/0022-1694(86)90146-0}{Article}.
+\bibitem{reflection} K. Burdzy, W. Kang and K. Ramanan. \emph{The Skorokhod problem in a time-dependent interval}. \href{https://arxiv.org/abs/0712.2863}{arXiv:0712.2863}.
+\end{thebibliography}
+\end{document}
+
