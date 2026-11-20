@@ -47,7 +47,21 @@ def audit(r, eps):
     return dict(r=str(r),epsilon=str(eps),plus=str(plus),minus=str(minus),
                 plus_estimate=list(map(str,x)),plus_truth=list(map(str,t)),plus_projection=list(map(str,e)))
 
+def gate_cases():
+    records=[]
+    for s in (Q(1,8),Q(1,2),Q(1),Q(3)):
+        a=Q(1)
+        t=(-a,-s*a)
+        u=(-a,Q(0))
+        y=(-a,a/s)
+        check(t[1]<=0 and t[1]<=s*t[0] and y[1]>0,"Gate feasibility")
+        check(y==(-s*(a/s),a/s),"Joint normal certificate")
+        ratio=dot(t,t)/dot(add(t,u,-1),add(t,u,-1))
+        check(ratio==1+1/s**2,"Gate sharpness")
+        records.append(dict(slope=str(s),ratio=str(ratio)))
+    return records
+
 if __name__=="__main__":
     records=[audit(r,eps) for r in (Q(1,4),Q(1,2),Q(3,4),Q(99,100)) for eps in (Q(1,4),1-r*r)]
     check(records[2]["plus"]=="52/51" and records[2]["minus"]=="4/3","Manuscript example")
-    print(json.dumps(records,sort_keys=True,indent=2))
+    print(json.dumps(dict(wedges=records,gates=gate_cases()),sort_keys=True,indent=2))

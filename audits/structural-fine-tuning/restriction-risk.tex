@@ -6,7 +6,7 @@
 \begin{document}
 \begin{center}{\LARGE\bfseries Prediction risk under intersecting\\[3pt] economic restrictions}\\[8pt]
 Lluis Eriksson\\[2pt]\small Working manuscript, 20 November 2026\end{center}
-\textbf{Abstract.} For a quadratic fit subject to valid polyhedral restrictions, the fitting metric can differ from the population prediction metric. We give the sharp multiplicative deterioration in squared prediction error over feasible truths as a facewise maximum involving tangent and transformed normal cones. Two three-dimensional wedges have the same individual restriction factors and the same largest face Jacobian norm, yet their exact squared-error factors are $52/51$ and $4/3$. The orientation of the inequalities decides which residuals are attainable. We also give a family in which both individual factors approach one and joint deterioration grows without bound as the population metric becomes ill-conditioned.
+\textbf{Abstract.} For a quadratic fit subject to valid polyhedral restrictions, the fitting metric can differ from the population prediction metric. We give the sharp multiplicative deterioration in squared prediction error over feasible truths as a facewise maximum involving tangent and transformed normal cones. Two three-dimensional wedges have the same individual restriction factors and the same largest face Jacobian norm, yet their exact squared-error factors are $52/51$ and $4/3$. The orientation of the inequalities decides which residuals are attainable. We also give a family in which both individual factors approach one and joint deterioration grows without bound as the population metric becomes ill-conditioned. For an ordinary fit already subject to a binding gate, a planar family has unbounded inflation even with equal metrics.
 
 \section{Which errors are compared?}
 In the affine adaptation model of Niu, Su and Yang \cite{niu}, a quadratic criterion fits a predictor using target observations. Economic knowledge restricts the feasible coefficients. Their Corollary 3.2 examines population prediction risk when fitting and population metrics are proportional and treats an ordinary fit with possibly binding gate bounds. Here the ordinary estimate $x$ is the unrestricted minimizer, or it is unrestricted because the ordinary gates are inactive. The restricted estimate $e$ minimizes $(z-x)^\top H(z-x)$ over a nonempty, full-dimensional closed polyhedron $C\subseteq\R^p$. Assume $H$ and $M$ are symmetric positive definite. Write $\|u\|_M^2=u^\top M u$. If $t\in C$ is the population-optimal unrestricted affine coefficient and $M$ is the population feature second-moment matrix, excess squared prediction risk at $z$ equals $\|z-t\|_M^2$ by the normal equations. We study
@@ -65,6 +65,24 @@ for either orientation. The edge is the $e_3$ axis. Projection onto this line ha
 For the lower bound take a relative-interior point of the second facet, for example $(-\epsilon,1,0)$. Translate a sharp halfspace pair to this point and shrink the displacements so the first inequality is slack. Translation along the facet and a common positive scaling preserve the projection and ratio. Thus the single-facet optimum is attained on the wedge.
 
 For $r=1/2$ and $\epsilon=1/4$, the exact factors are $52/51$ and $4/3$. Measuring the worst operator norm on each face overestimates the first wedge; measuring just the two individual restrictions underestimates the second. The companion code checks feasibility, optimality and risk ratios with rational arithmetic. These small-dimensional constructions isolate a mechanism. Whether a given institution faces such metrics or activating directions requires evidence on its design and target population. Simultaneously binding bounds on the ordinary fit require a comparison between two constrained projections.
+
+\newpage
+\section{A binding ordinary gate in the same metric}
+A separate phenomenon occurs even with $H=M=I$. The ordinary estimate is now $u=P_B(y)$ and the restricted estimate is $e=P_C(y)$ for the same raw estimate $y$. The preceding theorem compares $P_C(x)$ to $x$ and does not cover this pair in general. Niu, Su and Yang give an example of deterioration with a binding gate \cite{niu}. The following family gives a sharp factor at each slope.
+
+Let $B=\{z_2\le0\}$ and $C=B\cap\{z_2\le s z_1\}$ in the plane, $s>0$. Then
+\[
+  \sup_{t\in C,\ y:\,P_B(y)\ne t}
+    \frac{\|P_C(y)-t\|^2}{\|P_B(y)-t\|^2}=1+s^{-2}.
+\]
+When $y\in B$, the ordinary estimate is $y$ and Euclidean projection toward any feasible truth cannot increase error. For $y$ above the horizontal gate, $u=(y_1,0)$. If $y_1\ge0$ then $u\in C$ and $P_C(y)=u$. Otherwise write $y=(-a,R)$ with $a>0$ and $R>0$. As $R$ increases, the restricted estimate runs along the segment from $P_C(u)$ to the origin and then stays at zero. Indeed the foot on the sloping line is $(-a+sR)(1,s)/(1+s^2)$ while $sR\le a$. Beyond that threshold $y$ belongs to the origin's normal cone, being $(a/s)(-s,1)+(R-a/s)(0,1)$.
+
+Squared distance to any fixed $t$ is convex along the segment, so it suffices to check its endpoints. At $P_C(u)$ the ratio is at most one. At the origin it is at most one if $t_1\ge0$. If $t_1<0$, feasibility gives $t_2^2\ge s^2t_1^2$ and
+\[
+ (1+s^2)\|t-u\|^2-s^2\|t\|^2
+   =(1+s^2)(t_1+a)^2+t_2^2-s^2t_1^2\ge0 .
+\]
+Equality at the claimed factor holds for $t=(-a,-sa)$ and $R\ge a/s$. For example, at $a=1$, $s=1/2$, and $R=2$, the ordinary and restricted squared errors are $1/4$ and $5/4$. The factor is unbounded as $s$ decreases even with identical fitting and prediction metrics throughout. A bound for the comparison of two fits must account for the geometry of the ordinary gate as well as the new restriction.
 
 \section*{Model assessments and review context}
 OpenAI Codex assisted with the derivations, manuscript and checks in a shared authoring context. An assessment of this exact file is recorded separately; independent peer review has not been documented.
