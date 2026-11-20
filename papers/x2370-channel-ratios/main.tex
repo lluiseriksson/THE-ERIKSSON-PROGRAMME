@@ -1,0 +1,53 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,hyperref}
+\usepackage[T1]{fontenc}
+\hypersetup{colorlinks=true,urlcolor=blue}
+\setlength{\parindent}{0pt}\setlength{\parskip}{.5em}
+\title{A channel-by-channel check of the $K\bar K\eta$ prediction for $X(2370)$}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+We reconstruct the seven charge-summed ratios in Wang's calculation for a pseudoscalar parent. The listed widths give $\Gamma(K\bar K\eta)/\Gamma(K\bar K\pi)=0.0134672$, while the summary gives $0.135$. All six other entries agree at the printed precision, including the normalization. We derive the extrema over the quoted mixing-parameter ranges and exhibit a spectator dependence in the printed phase-space formula. These checks isolate the channel and fix the benchmark for a future measurement within this model.
+\end{abstract}
+
+\section*{Which channel changes?}
+We use the isospin-averaged inputs and constant amplitudes of Wang [1], Eqs.~(19)--(23). Summing the distinct charge states in Eqs.~(27)--(28) gives $2(1.8051\,10^{-10})/[2(8.9358+4.4679)10^{-9}]=0.01346718$. As a second calculation we integrate the squared amplitudes, including the identical-particle factorials, at parent mass $M=2.359$ GeV. The denominator in every column is the sum of the four $K\bar K\pi$ widths.
+\begin{center}
+\begin{tabular}{lrrr}\toprule
+Final state & Printed Eq.~(30) & From listed widths & Invariant integral\\\midrule
+$\pi\pi\eta$ & .641 & .640845 & .640866\\
+$\pi\pi\eta'$ & .226 & .225923 & .225927\\
+$K\bar K\eta$ & .135 & .013467 & .013467\\
+$K\bar K\eta'$ & .193 & .192708 & .192703\\
+$K\bar K\pi$ & 1 & 1 & 1\\
+$\eta\eta\eta$ & .010 & .010231 & .010231\\
+$\eta\eta\eta'$ & .030 & .030310 & .030310\\\bottomrule
+\end{tabular}
+\end{center}
+The experimental comparison in BESIII [4], Table~1, concerns $K\bar K\eta'$ and $K\bar K\pi$. The $\eta$ and $\eta'$ observables must retain separate labels. The present correction changes an inclusive model prediction. Deducing a parent composition or a measured branching fraction would require additional evidence.
+
+\newpage
+\section*{Why the mixing uncertainties matter}
+Write $q=f_q/f_\pi$, $f=f_s/f_\pi$, $k=(2m_K^2-m_\pi^2)/(27.30\,m_\pi^2)$, and let $I_c$ be the invariant phase-space integral for $K\bar Kc$. At fixed masses the normalized ratio is
+\[
+R_\eta={2 I_\eta\over3 I_\pi} A^2,\qquad
+A=q\cos\phi/\sqrt{2}-kf\sin\phi .
+\]
+The orthogonal amplitude $B=q\sin\phi/\sqrt2+kf\cos\phi$ replaces $A$ for $\eta'$. In particular $A^2+B^2=q^2/2+(kf)^2$. The partial cancellation in $A$ makes its sensitivity to the mixing inputs a relevant check.
+
+Feldmann, Kroll and Stech [2], Eqs.~(3.11) and (3.15), quote $\phi=39.3^\circ\pm1.0^\circ$, $q=1.07\pm0.02$, and $f=1.34\pm0.06$. On the Cartesian product of those ranges, $A$ increases with $q$ and decreases with both $f$ and $\phi$. Its extrema therefore occur at opposite corners: $-0.265396$ and $-0.123747$. Squaring in reverse order gives the envelope $0.00547873\leq R_\eta\leq0.0252000$ (rounded). It assigns no joint confidence level. Simultaneously scaling all three quoted half-widths first permits a zero at scale $2.804$ and first reaches $0.1345$, the lower rounding boundary for $0.135$, at scale $5.684$. These factors describe the chosen parameter box.
+
+\section*{A spectator check on the phase-space measure}
+Let $s=(p_a+p_b)^2$, $u$ be the pair-rest-frame momentum of $a$, and $v$ the parent-rest-frame momentum of $c$. Angular integration of invariant phase space gives $I=\int uv\,ds/\sqrt{s}$ up to a common factor [3]. Eq.~(24) of [1], with the momenta defined there, instead yields $J_{ab}=\int uv\,ds/s$. Thus $J_{ab}/I$ is the invariant-weighted mean of $1/\sqrt{s}$, between $1/(M-m_c)$ and $1/(m_a+m_b)$. As $M$ decreases to threshold these bounds coincide. Consequently $J_{ab}/J_{ac}$ tends to $(m_a+m_c)/(m_a+m_b)$ for positive masses, showing a dependence on the pairing when $m_b\ne m_c$. At the stated $M$, for $K\bar K\pi$ both invariant pairings give $0.730421$ in the script convention. The literal formula gives $0.476601$ or $0.608249$. This comparison establishes which measure reproduces the listed ratios. Author code was unavailable for this reconstruction.
+
+\small
+\textbf{Model assessments and review context.} Codex assisted in analysis and drafting. The scripts compare integration variables and particle pairings. Neither constitutes independent peer review. Any assessment of the final PDF belongs to its exact version record.
+
+\textbf{Primary sources.}
+[1] Z.-G. Wang, \href{https://doi.org/10.1140/epjc/s10052-026-16450-0}{Eur. Phys. J. C (2026)}.
+[2] T. Feldmann, P. Kroll and B. Stech, \href{https://doi.org/10.1103/PhysRevD.58.114006}{Phys. Rev. D 58, 114006 (1998)}.
+[3] Particle Data Group, \href{https://pdg.lbl.gov/2023/reviews/rpp2023-rev-kinematics.pdf}{Kinematics (2023)}, Eq.~(49.20).
+[4] BESIII Collaboration, \href{https://arxiv.org/abs/2607.20366}{arXiv:2607.20366}, Table~1.
+\end{document}
