@@ -1,0 +1,13 @@
+We used all 161 tasks in the C++ HumanEval reworded split for StarCoder2 15B, with 50 responses per task. The source identifies one experiment at temperature 0.2, with top-$p$ 0.95 and a 512-token cap. The archive revision starts with \texttt{999e282f}. We sorted problem identifiers lexicographically and constructed two reporting designs from the same 8,050 recorded outcomes.
+
+\begin{center}\begin{tabular}{lr}\toprule
+Disjoint groups with rounded pass@1 and pass@2 & Result\\\midrule
+Groups (53 triples and one pair) & 54\\
+Unique unordered failure histogram & 42 groups\\
+Unique third-order failure count & 43 groups\\
+Attainable global third-order counts & 6,681\\
+Missing integer counts between the extremes & 1,449\\\bottomrule
+\end{tabular}\end{center}
+The global denominator for $A_3$ is $161\binom{50}{3}=3{,}155{,}600$. The exact observed failure count is 1,560,000, giving pass@3 of approximately 50.56408\%. The compatible range extends from approximately 50.53838\% to 50.79598\%. The missing counts concern the integer numerator before rounding. They do not imply that 1,449 different displayed percentages are excluded.
+
+In the second design we formed all 159 consecutive triples, each reporting only pass@1 to the nearest tenth of a percentage point. The three integer ranges for the starting counts were $[0,0]$, $[49,49]$ and $[44,44]$. The reconstruction therefore recovered the failure counts of \emph{all 161 labelled tasks} from the overlapping scores. Raw outcome labels were used to check the reconstruction. They were not inputs to the inverse calculation once the rounded displays had been formed.

@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{What rounded retry scores reveal about a finite AI benchmark}
+\author{Lluis Eriksson}
+\date{November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A reviewer given rounded pass@1 and pass@2 results for small groups of tasks can check which reported pass@3 values could have come from the same recorded responses. We give an exact integer reconstruction for groups of up to three tasks, including ties in the display rule and gaps between attainable scores. An audit on a public StarCoder2 response bank compares disjoint and overlapping group reports. For overlapping triples a rounded single-attempt score can disclose task-level failure counts. All reported reconstructions concern the recorded bank and specified reporting designs.
+\end{abstract}
+
+\section{What a finite-bank audit asks}
+Take $T$ equally weighted tasks with $n\ge3$ recorded attempts apiece. On task $i$, let $f_i$ be the number of failures. The probability that $k$ \emph{distinct} attempts drawn uniformly from this task's bank all fail is $\binom{f_i}{k}/\binom nk$, taking the numerator as zero for $f_i<k$. Its complement, averaged over tasks, is the usual empirical pass@$k$ statistic [1]. Under independent generation it also has a population interpretation as an unbiased estimator. Our inverse question conditions on this particular finite bank, task weights and scoring configuration. For example, results taken at different temperatures in Chen et al.'s Figure~6 need not describe one common bank. Work on forecasting success beyond a response bank [2] addresses a different source of uncertainty.
+
+Put $A_k=\sum_i\binom{f_i}{k}$ and $D_k=T\binom nk$. A displayed percentage rounded to the nearest tenth, with half ties upward, is coded as an integer $j$ in tenths of a percentage point. Its admissible failure counts are exactly the integers $0\le A_k\le D_k$ satisfying
+\[
+        (2j-1)D_k \le 2000(D_k-A_k)<(2j+1)D_k.
+\]
+Applying the specified display rule before inversion matters because a single rounded score may admit several distinct $A_k$.
+
+For an illustration, take two tasks and five attempts. Exact pass@1 of 70\% and pass@2 of 85\% require $A_1=A_2=3$. The only sorted pair of failure counts is $(0,3)$. It gives pass@3 of 95\%. A proposed 90\% is feasible for pass@3 on its own, for instance with $(3,3)$, but fails the joint test. Allowing arbitrary task weights misses the exclusion: a distribution of failure counts on $(0,1,5)$ with weights $(1/10,3/4,3/20)$ has the same first two mean counts and pass@3 of 85\%. Mixing it equally with the true two-task distribution gives 90\%. The resulting weights do not describe two equally weighted tasks.
+
+\newpage
+\section{Inverting two rounded scores}
+For a group of three tasks write the sorted failure counts as $x\le y\le z$. For every admissible pair $s=A_1$, $h=A_2$ the sum of squares is $s+2h$. At each integer $0\le x\le\min(n,\lfloor s/3\rfloor)$ compute
+\[
+        R=s-x,\qquad \Delta=2(s+2h-x^2)-R^2 .
+\]
+Keep the candidate precisely when $\Delta$ is a nonnegative perfect square, $R-\sqrt{\Delta}$ is even, and
+\[
+ x\le y=(R-\sqrt{\Delta})/2 \le z=(R+\sqrt{\Delta})/2\le n .
+\]
+Necessity follows from $\Delta=(z-y)^2$. Conversely, these tests recover the prescribed sum and sum of squares, so both displayed scores agree. For a smaller last group, pad with leading zeros while using its actual task count in the denominators. Taking the union over all candidates gives every attainable $A_3$. For disjoint groups, take sums with one element from each group's attainable set. This gives all possible global $A_3$, including any holes inside its range. Replacing each group by its minimum and maximum alone cannot certify membership at an interior value.
+
+\section{Why overlapping groups behave differently}
+Order the tasks by a public identifier. Suppose the rounded pass@1 score for every consecutive window of length three uniquely fixes its integer sum of failures $s_i=f_i+f_{i+1}+f_{i+2}$. This holds whenever $3n<1000$ under the stated display precision: the spacing of exact window scores then exceeds the display quantum. Subtraction gives $f_{i+3}-f_i=s_{i+1}-s_i$. Set the first three offsets to zero and propagate these differences to obtain known offsets $d_i$. Each $f_i$ equals the unknown starting count of its residue class modulo three plus $d_i$. For residue class $r$ that starting count must lie in
+\[
+ [-\min_{i\equiv r}d_i,\; n-\max_{i\equiv r}d_i].
+\]
+Intersect the integer box formed by these three intervals with the plane on which the three starting counts sum to $s_1$. Each intersection point reconstructs one entire labelled vector. Every such vector has the required first window; subtracting adjacent windows proves that it matches them all. Thus a unique intersection point identifies every task's count without pass@2 or access to individual attempt labels. Rounded scores in disjoint groups only constrain unordered counts within each group.
+
+\newpage
+\section{Replay on a public response bank}
+\input{case.tex}
+
+The source is a public bank of model completions and recorded evaluation outcomes [3,4]. We read only the experiment identifiers, configuration fields, task names, statuses and exit codes. A recorded pass requires status \texttt{OK} and exit code zero, following MultiPL-E's scoring script. We neither execute generated programs nor judge whether the original test suites are adequate. Task groups and rounded displays are constructed for this audit. They are not a reporting scheme attributed to the maintainers.
+
+All exact arithmetic after reading the bank uses integers or rational numbers. A second enumeration of every sorted histogram for each group size cross-checks the discriminant inversion. The code verifies that each observed histogram is recovered and that the exact observed global count is in the reconstructed set. The reported overlap effect depends on task order, observed failure counts, window size and rounding precision. It does not identify which individual attempts failed.
+
+\paragraph{Model assessments and review context.} AI assisted with design, analysis and writing. Assessments are bound to the exact PDF version. The author administers AIRR.
+
+\small
+\paragraph{References.} [1] M. Chen et al., \emph{Evaluating Large Language Models Trained on Code} (2021). \href{https://arxiv.org/abs/2107.03374}{arXiv:2107.03374}.
+
+[2] \emph{Extrapolation Is an Assumption: Sharp Limits for Pass@$k$ Forecasting}. \href{https://doi.org/10.5281/zenodo.22061076}{doi:10.5281/zenodo.22061076}.
+
+[3] BigCode, \href{https://huggingface.co/datasets/bigcode/MultiPL-E-completions/tree/999e282fd3cad526dfe850e093ca671ed3dc5b43/data}{MultiPL-E completions archive}; A. Lozhkov et al., \emph{StarCoder 2 and The Stack v2: The Next Generation} (2024), \href{https://arxiv.org/abs/2402.19173}{arXiv:2402.19173}.
+
+[4] MultiPL-E authors, \href{https://github.com/nuprl/MultiPL-E/blob/3025a531af7450e7df8b96fe0440e9804480bbad/pass_k.py}{archived scoring implementation}. The \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/codex/reintentos-ia-20261120/audits/rounded-retry-scores}{audit package} includes the exact input digest and per-group witnesses.
+\end{document}
