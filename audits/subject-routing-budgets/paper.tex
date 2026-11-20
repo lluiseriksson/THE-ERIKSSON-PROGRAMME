@@ -1,0 +1,77 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.93in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\newcommand{\pos}[1]{[#1]_+}
+\title{Exact call budgets and subject-level guarantees in two-model routing}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Two allocations of the same 1,840 GPT-4 calls on a filtered MMLU response bank both achieve the largest possible total of 11,398 correct answers. One meets the better fixed-model score in every subject. The other falls 339 answers short in moral scenarios. We characterize the exact budgets for which some, and for which every, total-score maximizer meets all subject floors. Each set is an integer interval with endpoints calculated from paired binary labels. A second case, GSM8K, shows how a reference curve for a cap on calls can overstate the best score at a specified realized call count. These are retrospective properties of released responses.
+\end{abstract}
+
+\section{What does an optimal score certify?}
+An evaluation reports the number of questions sent to a designated strong model and the pooled number correct. Two decisions affect the interpretation. First, does the reported budget require exactly that many calls, or permit using fewer? Second, when several assignments maximize accuracy, do their scores agree within each subject? We study both questions for a fixed pair of models with one call per question and two available, already graded responses per row.
+
+Let $N$ be the number of rows and $W$ the number the weak model answers correctly. Switching to the strong model changes the binary score by $+1$, $0$ or $-1$. Let $U$ and $H$ count the positive and negative changes. Write $\pos{x}=\max(0,x)$. The largest attainable number correct with exactly $k$ strong calls is
+\[
+ F(k)=W+\min(k,U)-\pos{k-(N-H)},\qquad 0\le k\le N .
+\]
+Choosing the largest $k$ gains attains this count. Exchanging a selected smaller gain for an unselected larger gain improves a suboptimal selection. With a cap of $k$, the largest score is $W+\min(k,U)$, since one can stop before choosing any negative gain. The two ceilings differ precisely when $k>N-H$.
+
+RouteLLM publishes measured router results and code for an optional optimal reference curve [1]. RouterBench provides a broader framework for offline cost and accuracy comparisons [2]. Lee measures variation across task types and repeat runs [3]. Our question concerns the range \emph{within} a tie at the same best total and the same realized number of strong calls. A static subject-specific policy can supply a floor but does not determine that range.
+
+\newpage
+\section{When subject floors are attainable and guaranteed}
+Partition the rows into disjoint subjects $g$. Lower-case $n_g,w_g,u_g,h_g$ denote the subject totals corresponding to $N,W,U,H$. Its floor is the better fixed-model count $t_g=w_g+\pos{u_g-h_g}$. Write $d_g=t_g-w_g$. Define a safe allocation as one attaining at least $t_g$ in every subject.
+
+\textbf{Existence.} Put $L_g=d_g$ and $R_g=\min(n_g,n_g-h_g+u_g-d_g)$. Some pooled-optimal allocation is safe precisely when
+\[
+                 \sum_g L_g \le k \le \sum_g R_g .
+\]
+Indeed, the single-subject ceiling rises, stays flat, then declines. Solving $F_g(j)\ge t_g$ gives the integer interval $[L_g,R_g]$. Every integer between the summed endpoints is attainable by increasing subject counts one at a time. To also attain the pooled maximum, take each subject's first $L_g$ gains in descending order, exclude its final $n_g-R_g$, then fill the remaining slots with the largest available gains across subjects. Every forced gain is positive and every excluded gain is negative. The selected multiset of gain values is therefore globally optimal.
+
+\textbf{Guarantee.} Every pooled optimum uses $p=\min(k,U)$ positive and $m=\pos{k-(N-H)}$ negative gains. Its worst attainable score in a specified subject is
+\[
+       w_g+\pos{p-(U-u_g)}-\min(h_g,m).
+\]
+Select positive gains outside this subject first and negative gains inside it first. Those choices use disjoint rows. Zero gains fill the remaining slots. This attains both extremes together for the specified subject.
+
+Consequently the entire set of budgets where \emph{every} pooled optimum is safe is the interval $[A,B]$, where
+\[
+\begin{aligned}
+ A&=\max\bigl(\{0\}\cup\{U-h_g:u_g>h_g\}\bigr),\\
+ B&=\min\bigl(\{N\}\cup\{N-H+u_g:h_g>u_g\}\bigr).
+\end{aligned}
+\]
+For $k\le U$ there are no negative picks. A subject with positive required improvement needs $p\ge U-u_g+d_g=U-h_g$ in the worst tie. The other subjects already meet their floor. For $k\ge N-H$ all positive picks are present. A subject with $h_g>u_g$ tolerates at most $u_g$ negative picks in its worst tie. All other subjects can absorb their entire negative count. Between $U$ and $N-H$, all positives and no negatives are used. The defaults in the formulas cover empty constraint sets. The interval cannot be empty because it contains that middle region.
+
+\section{Two recorded benchmarks}
+We use the paired binary labels for GPT-4-1106-preview and Mixtral-8x7B-Instruct-v0.1 from RouteLLM [1]. We apply the upstream exact-prompt exclusion before counting. The GSM8K panel retains 1,307 of 1,319 rows. The models have 382 strong-only and 94 weak-only successes. The exact and capped ceilings first differ at 1,214 calls. At 1,307 calls the capped ceiling is 1,215 correct, while using all calls forces 1,121.
+
+\newpage
+\section{MMLU and sensitivity to repeated prompts}
+MMLU distinguishes 57 subjects [4]. The official row-weighted analysis retains 14,037 of 14,042 rows. The weak and strong models score 9,558 and 11,312. Positive and negative gains number 2,496 and 742. At 1,306 feasible budgets, a tie can determine whether a subject falls below its floor. At 1,840 calls, the two explicit schedules in the supplement score 724 and 385 in moral scenarios while tying on the total. The deficit is measured in answers. Subjects have different sizes.
+
+\input{results.tex}
+
+For each panel we enumerated every integer budget using the worst-subject formula, verified each subject's feasible interval against cumulative sums of sorted gains, and scored explicit allocations using the paired labels. On all 256 four-row binary-label datasets split into two subjects of size two, exhaustive subset enumeration checked the existence condition and worst-subject scores at every budget. These checks supplement the counting proofs.
+
+\section{Interpretation and reproducibility}
+Report numbers of calls and answers correct by subject when assessing an observed route. If only the overall optimum is available, the interval $[A,B]$ identifies budgets at which a subject deficit can be ruled out. The analysis uses fixed labels known in hindsight. Its boundary cases do not describe the prevalence of bad ties, an implementable online decision rule, or a causal change in performance. Token prices, latency, semantic duplicates and run-to-run response variation require other measurements.
+
+The public \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/324}{reproduction package (PR 324)} records the scripts, input hashes, subject counts and explicit schedules. The upstream data are pinned to RouteLLM commit \texttt{0b64fdafe049e596a3f5657c219329f24af24198}.
+
+\textbf{Model assessments and review context.} Codex assisted with the analysis, code and manuscript. Any assessment of this exact PDF is recorded separately with its hash, model identity and involvement. The calculations are reproducible from the cited public labels.
+
+\small
+\textbf{Sources.} [1] I. Ong et al., \href{https://arxiv.org/abs/2406.18665}{RouteLLM: Learning to Route LLMs with Preference Data}.
+[2] Q. J. Hu et al., \href{https://arxiv.org/abs/2403.12031}{RouterBench: A Benchmark for Multi-LLM Routing System}.
+[3] J. Lee, \href{https://arxiv.org/abs/2608.23023}{Most of the LLM Routing Gap Is Task Type}.
+[4] D. Hendrycks et al., \href{https://arxiv.org/abs/2009.03300}{Measuring Massive Multitask Language Understanding}.
+\end{document}

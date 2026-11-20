@@ -56,8 +56,7 @@ def small_check():
             assert feasible==any(all(x>=g["floor"] for x,g in zip(v,groups)) for v in top)
 
 
-def run():
-    small_check()
+def load_panel():
     tree = json.loads(get(f"https://api.github.com/repos/{PROJECT}/git/trees/{PIN}?recursive=1"))
     assert not tree["truncated"]
     blobs = {v["path"]:v["sha"] for v in tree["tree"]}
@@ -77,22 +76,28 @@ def run():
     def load_domain(name):
         return list(csv.DictReader(io.StringIO(source(f"responses/mmlu_{name}.csv"))))
 
-    items, groups, prompts = [], {}, set()
+    rows_by_prompt = {}
+    retained = []
     original = 0
-    bit = {"true":1,"false":0,"1":1,"0":0}
+    bit = {"true":1, "false":0, "1":1, "0":0}
     with ThreadPoolExecutor(max_workers=4) as pool:
         for name,rows in zip(domains,pool.map(load_domain,domains)):
             original += len(rows)
-            pairs = []
             for row in rows:
-                if row["prompt"] in excluded:
+                prompt = row["prompt"]
+                if prompt in excluded:
                     continue
-                prompts.add(row["prompt"])
                 a,b = (bit[row[col].strip().lower()] for col in (WEAK,STRONG))
-                items.append((name,a,b))
-                pairs.append((a,b))
-            groups[name] = subject(pairs)
+                rows_by_prompt.setdefault(prompt, []).append(len(retained))
+                retained.append((name,a,b))
+    return domains, original, retained, rows_by_prompt, manifest
 
+
+def analyze(domains, items):
+    pairs = {name:[] for name in domains}
+    for name,a,b in items:
+        pairs[name].append((a,b))
+    groups = {name:subject(values) for name,values in pairs.items()}
     n = len(items)
     up,down,weak,lo,hi = (sum(g[key] for g in groups.values()) for key in ("up","down","weak","lo","hi"))
     universal = []
@@ -143,12 +148,21 @@ def run():
         schedules[label]=dict(budget=budget,correct=sum(scores.values()),subject_scores=scores,
                               selected_filtered_row_indices=sorted(chosen))
     assert all(lo<=k<=hi for k in universal)
-    return dict(pin=PIN,weak_model=WEAK,strong_model=STRONG,n=n,raw=original,
-                excluded=original-n,unique_retained_prompts=len(prompts),up=up,down=down,weak_correct=weak,
+    return dict(pin=PIN,weak_model=WEAK,strong_model=STRONG,n=n,
+                up=up,down=down,weak_correct=weak,
                 strong_correct=weak+up-down,existential=[lo,hi],universal=intervals,
                 feasible_budgets_with_unsafe_optima=hi-lo+1-len(universal),
                 largest_shortfall=dict(subject=name,budget=k,missed=deficit,floor=groups[name]["floor"]),
-                exhaustive_four_item_cases=256,groups=groups,source_sha256=manifest,schedules=schedules)
+                exhaustive_four_item_cases=256,groups=groups,schedules=schedules)
+
+
+def run():
+    small_check()
+    domains,original,items,prompts,manifest = load_panel()
+    result = analyze(domains,items)
+    result.update(raw=original, excluded=original-len(items), unique_retained_prompts=len(prompts),
+                  source_sha256=manifest)
+    return result
 
 
 if __name__=="__main__":
