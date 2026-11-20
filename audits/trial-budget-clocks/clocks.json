@@ -1,0 +1,10295 @@
+{
+  "source": "04551715c7b74184ec5446fdd1c3221aae557862",
+  "manifest_sha256": "4818c89daba616855989a0eba5590bcc70dfb48e43437996ec76d76ae4553dca",
+  "inputs": [
+    {
+      "path": "experiments/ledgers/deepseek_autoresearch_linux_append_only_summary_s1_trials.jsonl",
+      "sha256": "73587df4941ee310753f6da919ad87b7b14bf11895179a876f6a091569411782",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_autoresearch_linux_append_only_summary_s1",
+      "table7_row": "autoresearch_summary",
+      "arm": "summary",
+      "seed": "s1",
+      "expected_records": 30,
+      "scored": 21,
+      "initial": [
+        "c428345e79217e38fb0d1bd35a7674c055077765ab0aed09c1b1bf4b1fe495de",
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_autoresearch_linux_append_only_summary_s3_trials.jsonl",
+      "sha256": "5b204d817f9aaca63c5ad3704400087e4ad95799b5cb1b07b90b2d575bb9a843",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_autoresearch_linux_append_only_summary_s3",
+      "table7_row": "autoresearch_summary",
+      "arm": "summary",
+      "seed": "s3",
+      "expected_records": 30,
+      "scored": 23,
+      "initial": [
+        "e0e5f9026c9c0e33687ed727487023c36d20f9a0288ffb436a00cc3f9a7ff968",
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_autoresearch_linux_append_only_summary_s4_trials.jsonl",
+      "sha256": "a3505bc7d660d22cf5fd32ded546d63002dfbfcfbf94f3290c82e4e797cd2090",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_autoresearch_linux_append_only_summary_s4",
+      "table7_row": "autoresearch_summary",
+      "arm": "summary",
+      "seed": "s4",
+      "expected_records": 30,
+      "scored": 27,
+      "initial": [
+        "7ab32d4144bef18a6c13671aeaf2f6fc973231c9270b1363713834955d4085d2",
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_autoresearch_linux_none_s1_trials.jsonl",
+      "sha256": "dfc25f261cd75701df57e5c446289753c77f2564004346e9d3ea2f873a0b6c29",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_autoresearch_linux_none_s1",
+      "table7_row": "autoresearch_none",
+      "arm": "none",
+      "seed": "s1",
+      "expected_records": 30,
+      "scored": 0,
+      "initial": [
+        "edfb695cb656d5ca2502ef988647e1ee858bdf4e5e3a39568f027145ad10f6a4",
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_autoresearch_linux_none_s2_trials.jsonl",
+      "sha256": "24b159a2a0eb8ff38bfe13352804b4660d554729e8f62ab9b2417f3d5ff8786a",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_autoresearch_linux_none_s2",
+      "table7_row": "autoresearch_none",
+      "arm": "none",
+      "seed": "s2",
+      "expected_records": 30,
+      "scored": 0,
+      "initial": [
+        "edfb695cb656d5ca2502ef988647e1ee858bdf4e5e3a39568f027145ad10f6a4",
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_autoresearch_linux_none_s3_trials.jsonl",
+      "sha256": "8d33b7f5dfd1ff2c6fc94cdceca256e9506d815e66774ad3176ce7f779905491",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_autoresearch_linux_none_s3",
+      "table7_row": "autoresearch_none",
+      "arm": "none",
+      "seed": "s3",
+      "expected_records": 30,
+      "scored": 0,
+      "initial": [
+        "edfb695cb656d5ca2502ef988647e1ee858bdf4e5e3a39568f027145ad10f6a4",
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_autoresearch_linux_none_s4_trials.jsonl",
+      "sha256": "fbe2b544d2e463413fbef35205e2fb4fc7ec33899b820b867ec55dd19f0310ce",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_autoresearch_linux_none_s4",
+      "table7_row": "autoresearch_none",
+      "arm": "none",
+      "seed": "s4",
+      "expected_records": 30,
+      "scored": 0,
+      "initial": [
+        "edfb695cb656d5ca2502ef988647e1ee858bdf4e5e3a39568f027145ad10f6a4",
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_append_only_summary_b30_s1_trials.jsonl",
+      "sha256": "fbdbc753b1240b8213d5223cafcdb431c37c22fc19eca7a3c97005ad86b69c7b",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_append_only_summary_b30_s1",
+      "table7_row": "lr_synthetic",
+      "arm": "summary",
+      "seed": "s1",
+      "expected_records": 30,
+      "scored": 2,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_append_only_summary_b30_s2_trials.jsonl",
+      "sha256": "1a1b397e2f7510dd2e71e1763c642735f5f61cb20b7f9557413998d327d5e96a",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_append_only_summary_b30_s2",
+      "table7_row": "lr_synthetic",
+      "arm": "summary",
+      "seed": "s2",
+      "expected_records": 30,
+      "scored": 8,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_append_only_summary_b30_s3_trials.jsonl",
+      "sha256": "36f50d6a44404d1c0c32561ff02f7a2f544ab079dd3f427867abb01f4bc56049",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_append_only_summary_b30_s3",
+      "table7_row": "lr_synthetic",
+      "arm": "summary",
+      "seed": "s3",
+      "expected_records": 30,
+      "scored": 2,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_append_only_summary_b30_s4_trials.jsonl",
+      "sha256": "a2505b498a804ebf31a9475c1c1e3be50c8113e7a08ddbd155a16dedd2a36045",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_append_only_summary_b30_s4",
+      "table7_row": "lr_synthetic",
+      "arm": "summary",
+      "seed": "s4",
+      "expected_records": 30,
+      "scored": 19,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_append_only_summary_b30_s5_trials.jsonl",
+      "sha256": "8fa8f1ecb28c210218d1e1d96338c9d946d30ba70afe4bfa53a8637917ffd7da",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_append_only_summary_b30_s5",
+      "table7_row": "lr_synthetic",
+      "arm": "summary",
+      "seed": "s5",
+      "expected_records": 30,
+      "scored": 20,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_append_only_summary_with_rationale_b30_s1_trials.jsonl",
+      "sha256": "35d402f5451d475c5f5bad0685fafe9a65158d937a56786fbe71e77b5bbea288",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_append_only_summary_with_rationale_b30_s1",
+      "table7_row": "lr_synthetic",
+      "arm": "rationale",
+      "seed": "s1",
+      "expected_records": 30,
+      "scored": 25,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_append_only_summary_with_rationale_b30_s2_trials.jsonl",
+      "sha256": "de5c113af52daf76f3cde4fe3cc060935973475ec84467125fe7bee1ad701864",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_append_only_summary_with_rationale_b30_s2",
+      "table7_row": "lr_synthetic",
+      "arm": "rationale",
+      "seed": "s2",
+      "expected_records": 30,
+      "scored": 25,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_append_only_summary_with_rationale_b30_s3_trials.jsonl",
+      "sha256": "38ff50ed20ad8335f8ce1d4e11b57a92a589faf6440fe476d8a98b2e1a73ad12",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_append_only_summary_with_rationale_b30_s3",
+      "table7_row": "lr_synthetic",
+      "arm": "rationale",
+      "seed": "s3",
+      "expected_records": 30,
+      "scored": 24,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_append_only_summary_with_rationale_b30_s4_trials.jsonl",
+      "sha256": "ee360e3e5ecd11b13ead10dedf7d2cfa6a642f3d1ee3bb1a50c5f63b2408fcb5",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_append_only_summary_with_rationale_b30_s4",
+      "table7_row": "lr_synthetic",
+      "arm": "rationale",
+      "seed": "s4",
+      "expected_records": 30,
+      "scored": 22,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_append_only_summary_with_rationale_b30_s5_trials.jsonl",
+      "sha256": "a3aa5ca4d0446f91ee41103f9dedf11cb21f15c68a87872325c64e9f8b1e20ec",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_append_only_summary_with_rationale_b30_s5",
+      "table7_row": "lr_synthetic",
+      "arm": "rationale",
+      "seed": "s5",
+      "expected_records": 30,
+      "scored": 22,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_none_b30_s1_trials.jsonl",
+      "sha256": "09ebaa9f5391cb8b99c083144a85bd0bb1ea107c8d75fdc4b1739fbd6c7d4fc9",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_none_b30_s1",
+      "table7_row": "lr_synthetic",
+      "arm": "none",
+      "seed": "s1",
+      "expected_records": 30,
+      "scored": 21,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_none_b30_s2_trials.jsonl",
+      "sha256": "b7526a630b91a1d0eb63dd68018f22e7bae48a71f37340260aa5d180040f0cbb",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_none_b30_s2",
+      "table7_row": "lr_synthetic",
+      "arm": "none",
+      "seed": "s2",
+      "expected_records": 30,
+      "scored": 19,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_none_b30_s3_trials.jsonl",
+      "sha256": "878f44e4f00b0b34e58a4a7bda790121976a90e563d588ae11755076e465667f",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_none_b30_s3",
+      "table7_row": "lr_synthetic",
+      "arm": "none",
+      "seed": "s3",
+      "expected_records": 30,
+      "scored": 11,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_none_b30_s4_trials.jsonl",
+      "sha256": "b0fa192d392f07917737ae77684f7c353c02916a7acb09a57862a309b317d157",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_none_b30_s4",
+      "table7_row": "lr_synthetic",
+      "arm": "none",
+      "seed": "s4",
+      "expected_records": 30,
+      "scored": 18,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_lr_none_b30_s5_trials.jsonl",
+      "sha256": "c0bace9785238d79241086c1e28dcf9a01055072adf869865f39d946c34e903e",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_lr_none_b30_s5",
+      "table7_row": "lr_synthetic",
+      "arm": "none",
+      "seed": "s5",
+      "expected_records": 30,
+      "scored": 4,
+      "initial": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_append_only_summary_s1_trials.jsonl",
+      "sha256": "d8c92d366c3c7421b6c98c532beed8bda4f79cdf22bcc7dd298699ec9482812c",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_append_only_summary_s1",
+      "table7_row": "resnet_l40s",
+      "arm": "summary",
+      "seed": "s1",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_append_only_summary_s2_trials.jsonl",
+      "sha256": "651c934bf4e74d12126a17771a29bfc57c93b6266d34c8de2acac124ddd6fe62",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_append_only_summary_s2",
+      "table7_row": "resnet_l40s",
+      "arm": "summary",
+      "seed": "s2",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_append_only_summary_s3_trials.jsonl",
+      "sha256": "bf10b1cc901584b63c3691ec4d8e5eaeefdbc35cf99b94b17de59c67ea3da896",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_append_only_summary_s3",
+      "table7_row": "resnet_l40s",
+      "arm": "summary",
+      "seed": "s3",
+      "expected_records": 15,
+      "scored": 14,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_append_only_summary_s4_trials.jsonl",
+      "sha256": "abaa093e15ac964f4600073540314bddb616f07e4b9002ebe2bbc382b422deb8",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_append_only_summary_s4",
+      "table7_row": "resnet_l40s",
+      "arm": "summary",
+      "seed": "s4",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_append_only_summary_s5_trials.jsonl",
+      "sha256": "5cd93884fb58dbccfdfb20c65a73cdffa598cc5f4ed0302933ce9ae45383c312",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_append_only_summary_s5",
+      "table7_row": "resnet_l40s",
+      "arm": "summary",
+      "seed": "s5",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_append_only_summary_with_rationale_s1_trials.jsonl",
+      "sha256": "1ceb2f9a629bdcbf5c49bcd34acf60accf565e2002fef5250512f6cefc2fa8d5",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_append_only_summary_with_rationale_s1",
+      "table7_row": "resnet_l40s",
+      "arm": "rationale",
+      "seed": "s1",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_append_only_summary_with_rationale_s2_trials.jsonl",
+      "sha256": "396fa7912b26c171818d554446d1b2d3d0170d54918dfdb53a0c8d5a69ed7317",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_append_only_summary_with_rationale_s2",
+      "table7_row": "resnet_l40s",
+      "arm": "rationale",
+      "seed": "s2",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_append_only_summary_with_rationale_s3_trials.jsonl",
+      "sha256": "70d4b07df375cdf79c9837a78bd7791f66a9075fc036e73a0a3c2b582b5c89a0",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_append_only_summary_with_rationale_s3",
+      "table7_row": "resnet_l40s",
+      "arm": "rationale",
+      "seed": "s3",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_append_only_summary_with_rationale_s4_trials.jsonl",
+      "sha256": "e8a06801453356d14638a06b5dd97acfa2412b7968ea7e623c60b977992e6580",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_append_only_summary_with_rationale_s4",
+      "table7_row": "resnet_l40s",
+      "arm": "rationale",
+      "seed": "s4",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_append_only_summary_with_rationale_s5_trials.jsonl",
+      "sha256": "f537239acbb836b13d7b9721eb87f01c6653f5f2ade2e3b56b1498cf5f29a7e3",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_append_only_summary_with_rationale_s5",
+      "table7_row": "resnet_l40s",
+      "arm": "rationale",
+      "seed": "s5",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_none_s1_trials.jsonl",
+      "sha256": "4c062dd9214df768d98138c23a7755dfa49aef8a7d58807ccdc6933d47d338af",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_none_s1",
+      "table7_row": "resnet_l40s",
+      "arm": "none",
+      "seed": "s1",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_none_s2_trials.jsonl",
+      "sha256": "d6403fcc8973594b3905a0955cd3f1876f82c4087e34a4fc423b568102b08642",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_none_s2",
+      "table7_row": "resnet_l40s",
+      "arm": "none",
+      "seed": "s2",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_none_s3_trials.jsonl",
+      "sha256": "5488b0f369e79a8c3cf7b75ed62d565a7da8c72e911b6621020b125337799575",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_none_s3",
+      "table7_row": "resnet_l40s",
+      "arm": "none",
+      "seed": "s3",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_none_s4_trials.jsonl",
+      "sha256": "7bb7c4237a9ad4d66f479e1c9c3c9a2184a278cf9839db8c4c037503a671bd66",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_none_s4",
+      "table7_row": "resnet_l40s",
+      "arm": "none",
+      "seed": "s4",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    },
+    {
+      "path": "experiments/ledgers/deepseek_resnet_none_s5_trials.jsonl",
+      "sha256": "5f447a88cd3274150098c95a548c766ba65229cfe995be9363f97a31cb5b04f0",
+      "records": 15,
+      "set": "primary",
+      "campaign_id": "deepseek_resnet_none_s5",
+      "table7_row": "resnet_l40s",
+      "arm": "none",
+      "seed": "s5",
+      "expected_records": 15,
+      "scored": 15,
+      "initial": [
+        "9c0118f33fcb2d3a3a8ef1660c41a9868ba51e1b471811c67cf4b6c0c5a7391d",
+        "123",
+        null
+      ]
+    }
+  ],
+  "quarantined": [
+    {
+      "path": "experiments/ledgers/deepseek_autoresearch_linux_append_only_summary_s2_trials.jsonl",
+      "sha256": "07565ff9fab2a8a704950f12a12b1a0b6f542d643e53e33f769b48349763d76c",
+      "records": 30,
+      "set": "primary",
+      "campaign_id": "deepseek_autoresearch_linux_append_only_summary_s2",
+      "table7_row": "autoresearch_summary",
+      "arm": "summary",
+      "seed": "s2",
+      "expected_records": 30,
+      "mismatches": [
+        [
+          1,
+          2,
+          "deepseek_autoresearch_linux_append_only_summary_s2"
+        ]
+      ]
+    }
+  ],
+  "sequences": {
+    "deepseek_autoresearch_linux_append_only_summary_s1": [
+      null,
+      null,
+      "1.206965",
+      null,
+      "1.219589",
+      "1.219275",
+      "1.223954",
+      "1.214416",
+      "1.221494",
+      "1.207857",
+      "1.207656",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "1.284524",
+      "1.24186",
+      "1.239776",
+      null,
+      "1.229339",
+      "1.18111",
+      "1.195772",
+      "1.211028",
+      "1.194468",
+      "1.331476",
+      "1.160481",
+      "1.162225",
+      "1.145392",
+      "1.1913"
+    ],
+    "deepseek_autoresearch_linux_append_only_summary_s3": [
+      "1.171985",
+      "1.215639",
+      "1.399925",
+      "1.186453",
+      "1.172653",
+      "1.186373",
+      "1.189638",
+      "1.175104",
+      null,
+      "1.178613",
+      "1.179118",
+      null,
+      "1.167504",
+      "1.130855",
+      "1.14355",
+      "1.166046",
+      "1.145544",
+      null,
+      null,
+      null,
+      "1.14565",
+      "1.137509",
+      "1.112063",
+      "1.11356",
+      "1.129496",
+      null,
+      "1.157318",
+      "1.137826",
+      "1.111288",
+      null
+    ],
+    "deepseek_autoresearch_linux_append_only_summary_s4": [
+      "1.169591",
+      "1.174405",
+      "1.17234",
+      "1.166884",
+      "1.157889",
+      "1.216882",
+      "1.407511",
+      "1.19144",
+      "1.506571",
+      null,
+      null,
+      "1.177275",
+      "1.172554",
+      "1.172697",
+      "1.168971",
+      "1.161994",
+      "1.167901",
+      "1.513129",
+      null,
+      "1.184237",
+      "1.231512",
+      "1.175196",
+      "1.132572",
+      "1.166334",
+      "1.174003",
+      "1.105361",
+      "1.137282",
+      "1.129841",
+      "1.150862",
+      "1.122192"
+    ],
+    "deepseek_autoresearch_linux_none_s1": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "deepseek_autoresearch_linux_none_s2": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "deepseek_autoresearch_linux_none_s3": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "deepseek_autoresearch_linux_none_s4": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "deepseek_lr_append_only_summary_b30_s1": [
+      null,
+      null,
+      null,
+      null,
+      "0.922908",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "0.922858",
+      null
+    ],
+    "deepseek_lr_append_only_summary_b30_s2": [
+      "0.922833",
+      "0.922933",
+      "0.923008",
+      "0.922808",
+      "0.922733",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "0.922758",
+      "0.922708",
+      null,
+      "0.922358"
+    ],
+    "deepseek_lr_append_only_summary_b30_s3": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "0.922833",
+      "0.922933"
+    ],
+    "deepseek_lr_append_only_summary_b30_s4": [
+      "0.922833",
+      null,
+      "0.922858",
+      null,
+      "0.922783",
+      null,
+      null,
+      "0.921957",
+      "0.916106",
+      "0.922383",
+      "0.922658",
+      "0.922358",
+      null,
+      null,
+      null,
+      "0.922708",
+      "0.922608",
+      null,
+      "0.922182",
+      "0.922007",
+      "0.921832",
+      "0.922182",
+      "0.922808",
+      "0.922883",
+      "0.922733",
+      null,
+      null,
+      "0.922157",
+      null,
+      "0.922883"
+    ],
+    "deepseek_lr_append_only_summary_b30_s5": [
+      "0.922833",
+      null,
+      "0.921382",
+      "0.921157",
+      "0.921957",
+      "0.922258",
+      "0.922808",
+      "0.922533",
+      null,
+      "0.922157",
+      "0.922358",
+      "0.922733",
+      "0.922207",
+      "0.922708",
+      "0.922207",
+      null,
+      null,
+      null,
+      "0.922182",
+      "0.921832",
+      "0.922858",
+      null,
+      "0.922758",
+      "0.922708",
+      null,
+      null,
+      "0.922057",
+      null,
+      null,
+      "0.922683"
+    ],
+    "deepseek_lr_append_only_summary_with_rationale_b30_s1": [
+      "0.922758",
+      "0.920832",
+      "0.921382",
+      "0.921157",
+      "0.922007",
+      "0.922258",
+      "0.922808",
+      "0.922583",
+      "0.922583",
+      "0.922733",
+      "0.922358",
+      "0.922408",
+      "0.922358",
+      null,
+      null,
+      null,
+      "0.922233",
+      "0.922708",
+      "0.922182",
+      "0.922858",
+      "0.922733",
+      "0.922883",
+      "0.922558",
+      null,
+      "0.922733",
+      "0.922733",
+      "0.922708",
+      "0.922833",
+      null,
+      "0.920907"
+    ],
+    "deepseek_lr_append_only_summary_with_rationale_b30_s2": [
+      "0.922758",
+      "0.918782",
+      null,
+      "0.921957",
+      null,
+      "0.922758",
+      "0.922533",
+      "0.922733",
+      null,
+      "0.922733",
+      "0.922658",
+      "0.922207",
+      "0.922708",
+      "0.922007",
+      "0.922233",
+      "0.922283",
+      "0.921307",
+      "0.922182",
+      "0.922182",
+      null,
+      "0.922758",
+      "0.922733",
+      "0.922733",
+      "0.921957",
+      "0.922708",
+      "0.922733",
+      null,
+      "0.922408",
+      "0.922833",
+      "0.922733"
+    ],
+    "deepseek_lr_append_only_summary_with_rationale_b30_s3": [
+      "0.922408",
+      null,
+      "0.922758",
+      "0.922858",
+      "0.922308",
+      "0.911405",
+      null,
+      null,
+      "0.922258",
+      null,
+      "0.922833",
+      "0.922733",
+      "0.922758",
+      "0.922833",
+      null,
+      "0.922558",
+      "0.922733",
+      "0.922783",
+      "0.922783",
+      "0.922758",
+      "0.922558",
+      "0.922358",
+      "0.921982",
+      "0.922783",
+      "0.922783",
+      "0.922558",
+      "0.922783",
+      "0.922633",
+      "0.921957",
+      null
+    ],
+    "deepseek_lr_append_only_summary_with_rationale_b30_s4": [
+      null,
+      "0.921982",
+      "0.911405",
+      "0.922007",
+      "0.922383",
+      "0.922758",
+      null,
+      "0.922833",
+      "0.922207",
+      "0.922833",
+      "0.922758",
+      "0.922583",
+      null,
+      "0.922758",
+      null,
+      "0.922808",
+      null,
+      null,
+      "0.922783",
+      "0.922558",
+      "0.922508",
+      "0.921957",
+      null,
+      null,
+      "0.922783",
+      "0.922783",
+      "0.922733",
+      "0.921957",
+      "0.921282",
+      "0.920482"
+    ],
+    "deepseek_lr_append_only_summary_with_rationale_b30_s5": [
+      null,
+      null,
+      null,
+      "0.922358",
+      "0.916156",
+      "0.922758",
+      "0.922258",
+      null,
+      null,
+      "0.920057",
+      "0.922583",
+      "0.922783",
+      "0.922808",
+      "0.922808",
+      "0.922808",
+      "0.922683",
+      "0.922758",
+      null,
+      "0.922558",
+      "0.922508",
+      null,
+      "0.922558",
+      "0.922583",
+      "0.922783",
+      null,
+      "0.922733",
+      "0.921957",
+      "0.921282",
+      "0.920482",
+      "0.921907"
+    ],
+    "deepseek_lr_none_b30_s1": [
+      null,
+      null,
+      "0.922858",
+      null,
+      null,
+      "0.922858",
+      "0.922908",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      null,
+      "0.922858",
+      null,
+      null,
+      null,
+      "0.922883",
+      "0.922783",
+      "0.922783",
+      "0.922783",
+      "0.922783",
+      "0.922783",
+      "0.922858",
+      "0.922783",
+      "0.922908",
+      "0.922908",
+      null
+    ],
+    "deepseek_lr_none_b30_s2": [
+      null,
+      null,
+      null,
+      null,
+      "0.922908",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      null,
+      "0.922858",
+      null,
+      "0.922833",
+      "0.922833",
+      "0.922783",
+      "0.922883",
+      "0.922858",
+      "0.922783",
+      "0.922908",
+      "0.922783",
+      null,
+      null,
+      null,
+      null,
+      "0.922908",
+      "0.922808",
+      null
+    ],
+    "deepseek_lr_none_b30_s3": [
+      "0.922758",
+      null,
+      "0.922858",
+      null,
+      null,
+      null,
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "0.922858",
+      null,
+      "0.922858",
+      "0.922908",
+      null,
+      null,
+      "0.922783",
+      "0.922908",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "0.922908",
+      null,
+      null
+    ],
+    "deepseek_lr_none_b30_s4": [
+      null,
+      "0.922858",
+      "0.922858",
+      null,
+      null,
+      null,
+      null,
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      "0.922858",
+      null,
+      "0.922858",
+      null,
+      null,
+      null,
+      "0.922858",
+      null,
+      null,
+      null,
+      "0.922783",
+      "0.922783",
+      "0.922783",
+      "0.922858",
+      "0.922783",
+      "0.922808",
+      "0.922858"
+    ],
+    "deepseek_lr_none_b30_s5": [
+      "0.922833",
+      null,
+      "0.923008",
+      "0.922933",
+      "0.922933",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "deepseek_resnet_append_only_summary_s1": [
+      "0.888458",
+      "0.8951",
+      "0.890292",
+      "0.924797",
+      "0.924611",
+      "0.9308609999999999",
+      "0.918589",
+      "0.925803",
+      "0.932764",
+      "0.934419",
+      "0.933503",
+      "0.934633",
+      "0.938494",
+      "0.937225",
+      "0.934181"
+    ],
+    "deepseek_resnet_append_only_summary_s2": [
+      "0.887842",
+      "0.895664",
+      "0.912539",
+      "0.926169",
+      "0.928575",
+      "0.926656",
+      "0.9288",
+      "0.931019",
+      "0.927025",
+      "0.935758",
+      "0.935792",
+      "0.936867",
+      "0.931975",
+      "0.937358",
+      "0.933439"
+    ],
+    "deepseek_resnet_append_only_summary_s3": [
+      "0.887731",
+      "0.894975",
+      "0.924567",
+      "0.9211860000000001",
+      "0.928211",
+      "0.927867",
+      "0.926628",
+      "0.928336",
+      "0.929453",
+      "0.929742",
+      "0.936828",
+      "0.9343859999999999",
+      null,
+      "0.937239",
+      "0.935472"
+    ],
+    "deepseek_resnet_append_only_summary_s4": [
+      "0.886544",
+      "0.895392",
+      "0.890822",
+      "0.925139",
+      "0.928403",
+      "0.928903",
+      "0.93025",
+      "0.9320390000000001",
+      "0.929906",
+      "0.930858",
+      "0.936717",
+      "0.937292",
+      "0.937467",
+      "0.938006",
+      "0.937242"
+    ],
+    "deepseek_resnet_append_only_summary_s5": [
+      "0.887372",
+      "0.895461",
+      "0.914544",
+      "0.912281",
+      "0.927406",
+      "0.916897",
+      "0.927333",
+      "0.928211",
+      "0.922806",
+      "0.928022",
+      "0.936744",
+      "0.941411",
+      "0.941436",
+      "0.941542",
+      "0.940892"
+    ],
+    "deepseek_resnet_append_only_summary_with_rationale_s1": [
+      "0.888458",
+      "0.894903",
+      "0.894133",
+      "0.914433",
+      "0.893389",
+      "0.916453",
+      "0.916178",
+      "0.927869",
+      "0.930422",
+      "0.939822",
+      "0.938644",
+      "0.937558",
+      "0.937189",
+      "0.93755",
+      "0.939758"
+    ],
+    "deepseek_resnet_append_only_summary_with_rationale_s2": [
+      "0.8878280000000001",
+      "0.89465",
+      "0.925253",
+      "0.921758",
+      "0.922106",
+      "0.928203",
+      "0.926886",
+      "0.928325",
+      "0.92985",
+      "0.928889",
+      "0.940917",
+      "0.943247",
+      "0.938356",
+      "0.942339",
+      "0.938917"
+    ],
+    "deepseek_resnet_append_only_summary_with_rationale_s3": [
+      "0.8883220000000001",
+      "0.894192",
+      "0.910228",
+      "0.927817",
+      "0.918",
+      "0.927486",
+      "0.925889",
+      "0.927964",
+      "0.92735",
+      "0.935681",
+      "0.936125",
+      "0.934906",
+      "0.937483",
+      "0.941486",
+      "0.941503"
+    ],
+    "deepseek_resnet_append_only_summary_with_rationale_s4": [
+      "0.889197",
+      "0.894906",
+      "0.924444",
+      "0.923492",
+      "0.918275",
+      "0.927006",
+      "0.927994",
+      "0.9277029999999999",
+      "0.9347030000000001",
+      "0.934458",
+      "0.937931",
+      "0.938389",
+      "0.939586",
+      "0.943481",
+      "0.941639"
+    ],
+    "deepseek_resnet_append_only_summary_with_rationale_s5": [
+      "0.889292",
+      "0.895356",
+      "0.894108",
+      "0.911381",
+      "0.915772",
+      "0.917797",
+      "0.909269",
+      "0.909203",
+      "0.930675",
+      "0.931397",
+      "0.930006",
+      "0.9310309999999999",
+      "0.9372",
+      "0.938325",
+      "0.937225"
+    ],
+    "deepseek_resnet_none_s1": [
+      "0.887761",
+      "0.886817",
+      "0.887111",
+      "0.886806",
+      "0.887231",
+      "0.887367",
+      "0.887264",
+      "0.886581",
+      "0.886864",
+      "0.886875",
+      "0.88715",
+      "0.886978",
+      "0.912122",
+      "0.909358",
+      "0.909072"
+    ],
+    "deepseek_resnet_none_s2": [
+      "0.889142",
+      "0.887639",
+      "0.886622",
+      "0.887392",
+      "0.887033",
+      "0.8871249999999999",
+      "0.887442",
+      "0.886961",
+      "0.886675",
+      "0.886225",
+      "0.887369",
+      "0.888047",
+      "0.886714",
+      "0.886878",
+      "0.886711"
+    ],
+    "deepseek_resnet_none_s3": [
+      "0.889036",
+      "0.886611",
+      "0.8873219999999999",
+      "0.886925",
+      "0.894983",
+      "0.894431",
+      "0.893275",
+      "0.894153",
+      "0.894072",
+      "0.893864",
+      "0.893697",
+      "0.893625",
+      "0.8940440000000001",
+      "0.893925",
+      "0.893594"
+    ],
+    "deepseek_resnet_none_s4": [
+      "0.887181",
+      "0.887394",
+      "0.893386",
+      "0.892942",
+      "0.892964",
+      "0.893075",
+      "0.893133",
+      "0.892825",
+      "0.893244",
+      "0.892975",
+      "0.892968",
+      "0.906444",
+      "0.905308",
+      "0.905881",
+      "0.904761"
+    ],
+    "deepseek_resnet_none_s5": [
+      "0.887308",
+      "0.886883",
+      "0.886756",
+      "0.887436",
+      "0.887983",
+      "0.887221",
+      "0.887222",
+      "0.89374",
+      "0.893492",
+      "0.893139",
+      "0.892764",
+      "0.892483",
+      "0.892725",
+      "0.892883",
+      "0.8929"
+    ]
+  },
+  "pairs": [
+    {
+      "task": "linux",
+      "seed": "s1",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        0,
+        21
+      ],
+      "counts": {}
+    },
+    {
+      "task": "linux",
+      "seed": "s3",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        0,
+        23
+      ],
+      "counts": {}
+    },
+    {
+      "task": "linux",
+      "seed": "s4",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        0,
+        27
+      ],
+      "counts": {}
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "matched": false,
+      "valid_counts": [
+        21,
+        25
+      ],
+      "counts": {
+        "undefined_attempt": 2,
+        "same": 19
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        21,
+        2
+      ],
+      "counts": {
+        "undefined_attempt": 2
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        25,
+        2
+      ],
+      "counts": {
+        "undefined_attempt": 2
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "matched": false,
+      "valid_counts": [
+        19,
+        25
+      ],
+      "counts": {
+        "undefined_attempt": 4,
+        "same": 15
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        19,
+        8
+      ],
+      "counts": {
+        "undefined_attempt": 4,
+        "same": 4
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        25,
+        8
+      ],
+      "counts": {
+        "same": 8
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "matched": false,
+      "valid_counts": [
+        11,
+        24
+      ],
+      "counts": {
+        "same": 6,
+        "tie_transition": 5
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        11,
+        2
+      ],
+      "counts": {
+        "undefined_attempt": 2
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        24,
+        2
+      ],
+      "counts": {
+        "undefined_attempt": 2
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "matched": false,
+      "valid_counts": [
+        18,
+        22
+      ],
+      "counts": {
+        "undefined_attempt": 1,
+        "same": 17
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        18,
+        19
+      ],
+      "counts": {
+        "undefined_attempt": 1,
+        "tie_transition": 4,
+        "same": 13
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        22,
+        19
+      ],
+      "counts": {
+        "undefined_attempt": 1,
+        "same": 18
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "matched": false,
+      "valid_counts": [
+        4,
+        22
+      ],
+      "counts": {
+        "undefined_attempt": 3,
+        "same": 1
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        4,
+        20
+      ],
+      "counts": {
+        "same": 3,
+        "tie_transition": 1
+      }
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "matched": false,
+      "valid_counts": [
+        22,
+        20
+      ],
+      "counts": {
+        "undefined_attempt": 3,
+        "same": 17
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        14
+      ],
+      "counts": {
+        "same": 14
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        14
+      ],
+      "counts": {
+        "same": 14
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "matched": true,
+      "valid_counts": [
+        15,
+        15
+      ],
+      "counts": {
+        "same": 15
+      }
+    }
+  ],
+  "observations": [
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.922858",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        7,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.922858",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        8,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.922858",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        9,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.922858",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        10,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored_at_attempt": [
+        11,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored_at_attempt": [
+        12,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored_at_attempt": [
+        13,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored_at_attempt": [
+        14,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored_at_attempt": [
+        16,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored_at_attempt": [
+        20,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored_at_attempt": [
+        21,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored_at_attempt": [
+        22,
+        17
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored_at_attempt": [
+        23,
+        18
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 16,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored_at_attempt": [
+        24,
+        19
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 17,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        25,
+        20
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 18,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        26,
+        21
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 19,
+      "attempt": [
+        "0.922908",
+        "0.922808"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922883"
+      ],
+      "scored_at_attempt": [
+        27,
+        22
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 20,
+      "attempt": [
+        "0.922908",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922883"
+      ],
+      "scored_at_attempt": [
+        28,
+        23
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s1",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 21,
+      "attempt": [
+        "0.922908",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922883"
+      ],
+      "scored_at_attempt": [
+        29,
+        25
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        9,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        10,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        11,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        12,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        14,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        16,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        17,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        18,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        19,
+        16
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        20,
+        17
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        21,
+        18
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 16,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        22,
+        19
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 17,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        23,
+        21
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 18,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        28,
+        22
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 19,
+      "attempt": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        29,
+        23
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.922908",
+        "0.923008"
+      ],
+      "scored": [
+        "0.922908",
+        "0.923008"
+      ],
+      "scored_at_attempt": [
+        9,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.922908",
+        "0.923008"
+      ],
+      "scored": [
+        "0.922908",
+        "0.923008"
+      ],
+      "scored_at_attempt": [
+        10,
+        27
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.922908",
+        "0.923008"
+      ],
+      "scored": [
+        "0.922908",
+        "0.923008"
+      ],
+      "scored_at_attempt": [
+        11,
+        28
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.922908",
+        "0.923008"
+      ],
+      "scored": [
+        "0.922908",
+        "0.923008"
+      ],
+      "scored_at_attempt": [
+        12,
+        30
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.922758",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922758",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.922758",
+        "0.922933"
+      ],
+      "scored": [
+        "0.922758",
+        "0.922933"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored_at_attempt": [
+        4,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored_at_attempt": [
+        6,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored_at_attempt": [
+        7,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored_at_attempt": [
+        8,
+        27
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored_at_attempt": [
+        10,
+        28
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s2",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored": [
+        "0.922758",
+        "0.923008"
+      ],
+      "scored_at_attempt": [
+        11,
+        30
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.922758",
+        "0.922408"
+      ],
+      "scored": [
+        "0.922758",
+        "0.922408"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.922758",
+        "0.922408"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.922858",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        7,
+        4
+      ],
+      "classification": "tie_transition"
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        8,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        9,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        15,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        17,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        18,
+        12
+      ],
+      "classification": "tie_transition"
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        21,
+        13
+      ],
+      "classification": "tie_transition"
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        22,
+        14
+      ],
+      "classification": "tie_transition"
+    },
+    {
+      "task": "lr",
+      "seed": "s3",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922908",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        28,
+        16
+      ],
+      "classification": "tie_transition"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.922858",
+        "0.921982"
+      ],
+      "scored": [
+        "0.922858",
+        "0.921982"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.922858",
+        "0.921982"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922007"
+      ],
+      "scored_at_attempt": [
+        8,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.922858",
+        "0.922007"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922383"
+      ],
+      "scored_at_attempt": [
+        9,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.922858",
+        "0.922383"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        10,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.922858",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        11,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.922858",
+        "0.922758"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        12,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        13,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        14,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        16,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        20,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        24,
+        16
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        25,
+        19
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        26,
+        20
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        27,
+        21
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 16,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        28,
+        22
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 17,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        29,
+        25
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 18,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        30,
+        26
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.922858",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "tie_transition"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        8,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        9,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        10,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        11,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        12,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        13,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        14,
+        16
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        16,
+        17
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        20,
+        19
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        24,
+        20
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        25,
+        21
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        26,
+        22
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        27,
+        23
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 16,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922883"
+      ],
+      "scored_at_attempt": [
+        28,
+        24
+      ],
+      "classification": "tie_transition"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 17,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922883"
+      ],
+      "scored_at_attempt": [
+        29,
+        25
+      ],
+      "classification": "tie_transition"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 18,
+      "attempt": [
+        "0.922858",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922858",
+        "0.922883"
+      ],
+      "scored_at_attempt": [
+        30,
+        28
+      ],
+      "classification": "tie_transition"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.921982",
+        "0.922833"
+      ],
+      "scored": [
+        "0.921982",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.921982",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922007",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        4,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.922007",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922383",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        5,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.922383",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922758",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        6,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.922758",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        8,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.922758",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        9,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        10,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        11,
+        16
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        12,
+        17
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        14,
+        19
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        16,
+        20
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        19,
+        21
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        20,
+        22
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        21,
+        23
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 16,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922883"
+      ],
+      "scored_at_attempt": [
+        22,
+        24
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 17,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922883"
+      ],
+      "scored_at_attempt": [
+        25,
+        25
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 18,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922883"
+      ],
+      "scored_at_attempt": [
+        26,
+        28
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s4",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 19,
+      "attempt": [
+        "0.922833",
+        "0.922858"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922883"
+      ],
+      "scored_at_attempt": [
+        27,
+        30
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.923008",
+        "0.922358"
+      ],
+      "scored": [
+        "0.923008",
+        "0.922758"
+      ],
+      "scored_at_attempt": [
+        5,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.922833",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922833",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.922833",
+        "0.922833"
+      ],
+      "scored": [
+        "0.923008",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "tie_transition"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.923008",
+        "0.922833"
+      ],
+      "scored": [
+        "0.923008",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.923008",
+        "0.922833"
+      ],
+      "scored": [
+        "0.923008",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.922358",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922758",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        7,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.922358",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922758",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        10,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.922758",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922758",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        11,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.922758",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922783",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        12,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.922758",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        13,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.922758",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        14,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.922758",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        15,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.922758",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        16,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.922783",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        17,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        19,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        20,
+        19
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored_at_attempt": [
+        22,
+        20
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 16,
+      "attempt": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        23,
+        21
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 17,
+      "attempt": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        24,
+        23
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 18,
+      "attempt": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        26,
+        24
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 19,
+      "attempt": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        27,
+        27
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "lr",
+      "seed": "s5",
+      "matched": false,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 20,
+      "attempt": [
+        "0.922808",
+        "0.922833"
+      ],
+      "scored": [
+        "0.922808",
+        "0.922858"
+      ],
+      "scored_at_attempt": [
+        28,
+        30
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.887761",
+        "0.888458"
+      ],
+      "scored": [
+        "0.887761",
+        "0.888458"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.887761",
+        "0.894903"
+      ],
+      "scored": [
+        "0.887761",
+        "0.894903"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.887761",
+        "0.894903"
+      ],
+      "scored": [
+        "0.887761",
+        "0.894903"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.887761",
+        "0.914433"
+      ],
+      "scored": [
+        "0.887761",
+        "0.914433"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.887761",
+        "0.914433"
+      ],
+      "scored": [
+        "0.887761",
+        "0.914433"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.887761",
+        "0.916453"
+      ],
+      "scored": [
+        "0.887761",
+        "0.916453"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.887761",
+        "0.916453"
+      ],
+      "scored": [
+        "0.887761",
+        "0.916453"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.887761",
+        "0.927869"
+      ],
+      "scored": [
+        "0.887761",
+        "0.927869"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.887761",
+        "0.930422"
+      ],
+      "scored": [
+        "0.887761",
+        "0.930422"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.887761",
+        "0.939822"
+      ],
+      "scored": [
+        "0.887761",
+        "0.939822"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.887761",
+        "0.939822"
+      ],
+      "scored": [
+        "0.887761",
+        "0.939822"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.887761",
+        "0.939822"
+      ],
+      "scored": [
+        "0.887761",
+        "0.939822"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.912122",
+        "0.939822"
+      ],
+      "scored": [
+        "0.912122",
+        "0.939822"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.912122",
+        "0.939822"
+      ],
+      "scored": [
+        "0.912122",
+        "0.939822"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.912122",
+        "0.939822"
+      ],
+      "scored": [
+        "0.912122",
+        "0.939822"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.887761",
+        "0.888458"
+      ],
+      "scored": [
+        "0.887761",
+        "0.888458"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.887761",
+        "0.8951"
+      ],
+      "scored": [
+        "0.887761",
+        "0.8951"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.887761",
+        "0.8951"
+      ],
+      "scored": [
+        "0.887761",
+        "0.8951"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.887761",
+        "0.924797"
+      ],
+      "scored": [
+        "0.887761",
+        "0.924797"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.887761",
+        "0.924797"
+      ],
+      "scored": [
+        "0.887761",
+        "0.924797"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.887761",
+        "0.9308609999999999"
+      ],
+      "scored": [
+        "0.887761",
+        "0.9308609999999999"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.887761",
+        "0.9308609999999999"
+      ],
+      "scored": [
+        "0.887761",
+        "0.9308609999999999"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.887761",
+        "0.9308609999999999"
+      ],
+      "scored": [
+        "0.887761",
+        "0.9308609999999999"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.887761",
+        "0.932764"
+      ],
+      "scored": [
+        "0.887761",
+        "0.932764"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.887761",
+        "0.934419"
+      ],
+      "scored": [
+        "0.887761",
+        "0.934419"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.887761",
+        "0.934419"
+      ],
+      "scored": [
+        "0.887761",
+        "0.934419"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.887761",
+        "0.934633"
+      ],
+      "scored": [
+        "0.887761",
+        "0.934633"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.912122",
+        "0.938494"
+      ],
+      "scored": [
+        "0.912122",
+        "0.938494"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.912122",
+        "0.938494"
+      ],
+      "scored": [
+        "0.912122",
+        "0.938494"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.912122",
+        "0.938494"
+      ],
+      "scored": [
+        "0.912122",
+        "0.938494"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.888458",
+        "0.888458"
+      ],
+      "scored": [
+        "0.888458",
+        "0.888458"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.894903",
+        "0.8951"
+      ],
+      "scored": [
+        "0.894903",
+        "0.8951"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.894903",
+        "0.8951"
+      ],
+      "scored": [
+        "0.894903",
+        "0.8951"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.914433",
+        "0.924797"
+      ],
+      "scored": [
+        "0.914433",
+        "0.924797"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.914433",
+        "0.924797"
+      ],
+      "scored": [
+        "0.914433",
+        "0.924797"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.916453",
+        "0.9308609999999999"
+      ],
+      "scored": [
+        "0.916453",
+        "0.9308609999999999"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.916453",
+        "0.9308609999999999"
+      ],
+      "scored": [
+        "0.916453",
+        "0.9308609999999999"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.927869",
+        "0.9308609999999999"
+      ],
+      "scored": [
+        "0.927869",
+        "0.9308609999999999"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.930422",
+        "0.932764"
+      ],
+      "scored": [
+        "0.930422",
+        "0.932764"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.939822",
+        "0.934419"
+      ],
+      "scored": [
+        "0.939822",
+        "0.934419"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.939822",
+        "0.934419"
+      ],
+      "scored": [
+        "0.939822",
+        "0.934419"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.939822",
+        "0.934633"
+      ],
+      "scored": [
+        "0.939822",
+        "0.934633"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.939822",
+        "0.938494"
+      ],
+      "scored": [
+        "0.939822",
+        "0.938494"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.939822",
+        "0.938494"
+      ],
+      "scored": [
+        "0.939822",
+        "0.938494"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s1",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.939822",
+        "0.938494"
+      ],
+      "scored": [
+        "0.939822",
+        "0.938494"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.889142",
+        "0.8878280000000001"
+      ],
+      "scored": [
+        "0.889142",
+        "0.8878280000000001"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.889142",
+        "0.89465"
+      ],
+      "scored": [
+        "0.889142",
+        "0.89465"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.889142",
+        "0.925253"
+      ],
+      "scored": [
+        "0.889142",
+        "0.925253"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.889142",
+        "0.925253"
+      ],
+      "scored": [
+        "0.889142",
+        "0.925253"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.889142",
+        "0.925253"
+      ],
+      "scored": [
+        "0.889142",
+        "0.925253"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.889142",
+        "0.928203"
+      ],
+      "scored": [
+        "0.889142",
+        "0.928203"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.889142",
+        "0.928203"
+      ],
+      "scored": [
+        "0.889142",
+        "0.928203"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.889142",
+        "0.928325"
+      ],
+      "scored": [
+        "0.889142",
+        "0.928325"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.889142",
+        "0.92985"
+      ],
+      "scored": [
+        "0.889142",
+        "0.92985"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.889142",
+        "0.92985"
+      ],
+      "scored": [
+        "0.889142",
+        "0.92985"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.889142",
+        "0.940917"
+      ],
+      "scored": [
+        "0.889142",
+        "0.940917"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.889142",
+        "0.943247"
+      ],
+      "scored": [
+        "0.889142",
+        "0.943247"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.889142",
+        "0.943247"
+      ],
+      "scored": [
+        "0.889142",
+        "0.943247"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.889142",
+        "0.943247"
+      ],
+      "scored": [
+        "0.889142",
+        "0.943247"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.889142",
+        "0.943247"
+      ],
+      "scored": [
+        "0.889142",
+        "0.943247"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.889142",
+        "0.887842"
+      ],
+      "scored": [
+        "0.889142",
+        "0.887842"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.889142",
+        "0.895664"
+      ],
+      "scored": [
+        "0.889142",
+        "0.895664"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.889142",
+        "0.912539"
+      ],
+      "scored": [
+        "0.889142",
+        "0.912539"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.889142",
+        "0.926169"
+      ],
+      "scored": [
+        "0.889142",
+        "0.926169"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.889142",
+        "0.928575"
+      ],
+      "scored": [
+        "0.889142",
+        "0.928575"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.889142",
+        "0.928575"
+      ],
+      "scored": [
+        "0.889142",
+        "0.928575"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.889142",
+        "0.9288"
+      ],
+      "scored": [
+        "0.889142",
+        "0.9288"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.889142",
+        "0.931019"
+      ],
+      "scored": [
+        "0.889142",
+        "0.931019"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.889142",
+        "0.931019"
+      ],
+      "scored": [
+        "0.889142",
+        "0.931019"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.889142",
+        "0.935758"
+      ],
+      "scored": [
+        "0.889142",
+        "0.935758"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.889142",
+        "0.935792"
+      ],
+      "scored": [
+        "0.889142",
+        "0.935792"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.889142",
+        "0.936867"
+      ],
+      "scored": [
+        "0.889142",
+        "0.936867"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.889142",
+        "0.936867"
+      ],
+      "scored": [
+        "0.889142",
+        "0.936867"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.889142",
+        "0.937358"
+      ],
+      "scored": [
+        "0.889142",
+        "0.937358"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.889142",
+        "0.937358"
+      ],
+      "scored": [
+        "0.889142",
+        "0.937358"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.8878280000000001",
+        "0.887842"
+      ],
+      "scored": [
+        "0.8878280000000001",
+        "0.887842"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.89465",
+        "0.895664"
+      ],
+      "scored": [
+        "0.89465",
+        "0.895664"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.925253",
+        "0.912539"
+      ],
+      "scored": [
+        "0.925253",
+        "0.912539"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.925253",
+        "0.926169"
+      ],
+      "scored": [
+        "0.925253",
+        "0.926169"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.925253",
+        "0.928575"
+      ],
+      "scored": [
+        "0.925253",
+        "0.928575"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.928203",
+        "0.928575"
+      ],
+      "scored": [
+        "0.928203",
+        "0.928575"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.928203",
+        "0.9288"
+      ],
+      "scored": [
+        "0.928203",
+        "0.9288"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.928325",
+        "0.931019"
+      ],
+      "scored": [
+        "0.928325",
+        "0.931019"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.92985",
+        "0.931019"
+      ],
+      "scored": [
+        "0.92985",
+        "0.931019"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.92985",
+        "0.935758"
+      ],
+      "scored": [
+        "0.92985",
+        "0.935758"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.940917",
+        "0.935792"
+      ],
+      "scored": [
+        "0.940917",
+        "0.935792"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.943247",
+        "0.936867"
+      ],
+      "scored": [
+        "0.943247",
+        "0.936867"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.943247",
+        "0.936867"
+      ],
+      "scored": [
+        "0.943247",
+        "0.936867"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.943247",
+        "0.937358"
+      ],
+      "scored": [
+        "0.943247",
+        "0.937358"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s2",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.943247",
+        "0.937358"
+      ],
+      "scored": [
+        "0.943247",
+        "0.937358"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.889036",
+        "0.8883220000000001"
+      ],
+      "scored": [
+        "0.889036",
+        "0.8883220000000001"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.889036",
+        "0.894192"
+      ],
+      "scored": [
+        "0.889036",
+        "0.894192"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.889036",
+        "0.910228"
+      ],
+      "scored": [
+        "0.889036",
+        "0.910228"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.889036",
+        "0.927817"
+      ],
+      "scored": [
+        "0.889036",
+        "0.927817"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.894983",
+        "0.927817"
+      ],
+      "scored": [
+        "0.894983",
+        "0.927817"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.894983",
+        "0.927817"
+      ],
+      "scored": [
+        "0.894983",
+        "0.927817"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.894983",
+        "0.927817"
+      ],
+      "scored": [
+        "0.894983",
+        "0.927817"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.894983",
+        "0.927964"
+      ],
+      "scored": [
+        "0.894983",
+        "0.927964"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.894983",
+        "0.927964"
+      ],
+      "scored": [
+        "0.894983",
+        "0.927964"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.894983",
+        "0.935681"
+      ],
+      "scored": [
+        "0.894983",
+        "0.935681"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.894983",
+        "0.936125"
+      ],
+      "scored": [
+        "0.894983",
+        "0.936125"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.894983",
+        "0.936125"
+      ],
+      "scored": [
+        "0.894983",
+        "0.936125"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.894983",
+        "0.937483"
+      ],
+      "scored": [
+        "0.894983",
+        "0.937483"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.894983",
+        "0.941486"
+      ],
+      "scored": [
+        "0.894983",
+        "0.941486"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.894983",
+        "0.941503"
+      ],
+      "scored": [
+        "0.894983",
+        "0.941503"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.889036",
+        "0.887731"
+      ],
+      "scored": [
+        "0.889036",
+        "0.887731"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.889036",
+        "0.894975"
+      ],
+      "scored": [
+        "0.889036",
+        "0.894975"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.889036",
+        "0.924567"
+      ],
+      "scored": [
+        "0.889036",
+        "0.924567"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.889036",
+        "0.924567"
+      ],
+      "scored": [
+        "0.889036",
+        "0.924567"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.894983",
+        "0.928211"
+      ],
+      "scored": [
+        "0.894983",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.894983",
+        "0.928211"
+      ],
+      "scored": [
+        "0.894983",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.894983",
+        "0.928211"
+      ],
+      "scored": [
+        "0.894983",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.894983",
+        "0.928336"
+      ],
+      "scored": [
+        "0.894983",
+        "0.928336"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.894983",
+        "0.929453"
+      ],
+      "scored": [
+        "0.894983",
+        "0.929453"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.894983",
+        "0.929742"
+      ],
+      "scored": [
+        "0.894983",
+        "0.929742"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.894983",
+        "0.936828"
+      ],
+      "scored": [
+        "0.894983",
+        "0.936828"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.894983",
+        "0.936828"
+      ],
+      "scored": [
+        "0.894983",
+        "0.936828"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.894983",
+        "0.936828"
+      ],
+      "scored": [
+        "0.894983",
+        "0.937239"
+      ],
+      "scored_at_attempt": [
+        13,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.894983",
+        "0.937239"
+      ],
+      "scored": [
+        "0.894983",
+        "0.937239"
+      ],
+      "scored_at_attempt": [
+        14,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.8883220000000001",
+        "0.887731"
+      ],
+      "scored": [
+        "0.8883220000000001",
+        "0.887731"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.894192",
+        "0.894975"
+      ],
+      "scored": [
+        "0.894192",
+        "0.894975"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.910228",
+        "0.924567"
+      ],
+      "scored": [
+        "0.910228",
+        "0.924567"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.927817",
+        "0.924567"
+      ],
+      "scored": [
+        "0.927817",
+        "0.924567"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.927817",
+        "0.928211"
+      ],
+      "scored": [
+        "0.927817",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.927817",
+        "0.928211"
+      ],
+      "scored": [
+        "0.927817",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.927817",
+        "0.928211"
+      ],
+      "scored": [
+        "0.927817",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.927964",
+        "0.928336"
+      ],
+      "scored": [
+        "0.927964",
+        "0.928336"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.927964",
+        "0.929453"
+      ],
+      "scored": [
+        "0.927964",
+        "0.929453"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.935681",
+        "0.929742"
+      ],
+      "scored": [
+        "0.935681",
+        "0.929742"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.936125",
+        "0.936828"
+      ],
+      "scored": [
+        "0.936125",
+        "0.936828"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.936125",
+        "0.936828"
+      ],
+      "scored": [
+        "0.936125",
+        "0.936828"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.937483",
+        "0.936828"
+      ],
+      "scored": [
+        "0.937483",
+        "0.937239"
+      ],
+      "scored_at_attempt": [
+        13,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s3",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.941486",
+        "0.937239"
+      ],
+      "scored": [
+        "0.941486",
+        "0.937239"
+      ],
+      "scored_at_attempt": [
+        14,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.887181",
+        "0.889197"
+      ],
+      "scored": [
+        "0.887181",
+        "0.889197"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.887394",
+        "0.894906"
+      ],
+      "scored": [
+        "0.887394",
+        "0.894906"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.893386",
+        "0.924444"
+      ],
+      "scored": [
+        "0.893386",
+        "0.924444"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.893386",
+        "0.924444"
+      ],
+      "scored": [
+        "0.893386",
+        "0.924444"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.893386",
+        "0.924444"
+      ],
+      "scored": [
+        "0.893386",
+        "0.924444"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.893386",
+        "0.927006"
+      ],
+      "scored": [
+        "0.893386",
+        "0.927006"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.893386",
+        "0.927994"
+      ],
+      "scored": [
+        "0.893386",
+        "0.927994"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.893386",
+        "0.927994"
+      ],
+      "scored": [
+        "0.893386",
+        "0.927994"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.893386",
+        "0.9347030000000001"
+      ],
+      "scored": [
+        "0.893386",
+        "0.9347030000000001"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.893386",
+        "0.9347030000000001"
+      ],
+      "scored": [
+        "0.893386",
+        "0.9347030000000001"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.893386",
+        "0.937931"
+      ],
+      "scored": [
+        "0.893386",
+        "0.937931"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.906444",
+        "0.938389"
+      ],
+      "scored": [
+        "0.906444",
+        "0.938389"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.906444",
+        "0.939586"
+      ],
+      "scored": [
+        "0.906444",
+        "0.939586"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.906444",
+        "0.943481"
+      ],
+      "scored": [
+        "0.906444",
+        "0.943481"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.906444",
+        "0.943481"
+      ],
+      "scored": [
+        "0.906444",
+        "0.943481"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.887181",
+        "0.886544"
+      ],
+      "scored": [
+        "0.887181",
+        "0.886544"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.887394",
+        "0.895392"
+      ],
+      "scored": [
+        "0.887394",
+        "0.895392"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.893386",
+        "0.895392"
+      ],
+      "scored": [
+        "0.893386",
+        "0.895392"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.893386",
+        "0.925139"
+      ],
+      "scored": [
+        "0.893386",
+        "0.925139"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.893386",
+        "0.928403"
+      ],
+      "scored": [
+        "0.893386",
+        "0.928403"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.893386",
+        "0.928903"
+      ],
+      "scored": [
+        "0.893386",
+        "0.928903"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.893386",
+        "0.93025"
+      ],
+      "scored": [
+        "0.893386",
+        "0.93025"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.893386",
+        "0.9320390000000001"
+      ],
+      "scored": [
+        "0.893386",
+        "0.9320390000000001"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.893386",
+        "0.9320390000000001"
+      ],
+      "scored": [
+        "0.893386",
+        "0.9320390000000001"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.893386",
+        "0.9320390000000001"
+      ],
+      "scored": [
+        "0.893386",
+        "0.9320390000000001"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.893386",
+        "0.936717"
+      ],
+      "scored": [
+        "0.893386",
+        "0.936717"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.906444",
+        "0.937292"
+      ],
+      "scored": [
+        "0.906444",
+        "0.937292"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.906444",
+        "0.937467"
+      ],
+      "scored": [
+        "0.906444",
+        "0.937467"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.906444",
+        "0.938006"
+      ],
+      "scored": [
+        "0.906444",
+        "0.938006"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.906444",
+        "0.938006"
+      ],
+      "scored": [
+        "0.906444",
+        "0.938006"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.889197",
+        "0.886544"
+      ],
+      "scored": [
+        "0.889197",
+        "0.886544"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.894906",
+        "0.895392"
+      ],
+      "scored": [
+        "0.894906",
+        "0.895392"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.924444",
+        "0.895392"
+      ],
+      "scored": [
+        "0.924444",
+        "0.895392"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.924444",
+        "0.925139"
+      ],
+      "scored": [
+        "0.924444",
+        "0.925139"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.924444",
+        "0.928403"
+      ],
+      "scored": [
+        "0.924444",
+        "0.928403"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.927006",
+        "0.928903"
+      ],
+      "scored": [
+        "0.927006",
+        "0.928903"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.927994",
+        "0.93025"
+      ],
+      "scored": [
+        "0.927994",
+        "0.93025"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.927994",
+        "0.9320390000000001"
+      ],
+      "scored": [
+        "0.927994",
+        "0.9320390000000001"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.9347030000000001",
+        "0.9320390000000001"
+      ],
+      "scored": [
+        "0.9347030000000001",
+        "0.9320390000000001"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.9347030000000001",
+        "0.9320390000000001"
+      ],
+      "scored": [
+        "0.9347030000000001",
+        "0.9320390000000001"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.937931",
+        "0.936717"
+      ],
+      "scored": [
+        "0.937931",
+        "0.936717"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.938389",
+        "0.937292"
+      ],
+      "scored": [
+        "0.938389",
+        "0.937292"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.939586",
+        "0.937467"
+      ],
+      "scored": [
+        "0.939586",
+        "0.937467"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.943481",
+        "0.938006"
+      ],
+      "scored": [
+        "0.943481",
+        "0.938006"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s4",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.943481",
+        "0.938006"
+      ],
+      "scored": [
+        "0.943481",
+        "0.938006"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.887308",
+        "0.889292"
+      ],
+      "scored": [
+        "0.887308",
+        "0.889292"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.887308",
+        "0.895356"
+      ],
+      "scored": [
+        "0.887308",
+        "0.895356"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.887308",
+        "0.895356"
+      ],
+      "scored": [
+        "0.887308",
+        "0.895356"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.887436",
+        "0.911381"
+      ],
+      "scored": [
+        "0.887436",
+        "0.911381"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.887983",
+        "0.915772"
+      ],
+      "scored": [
+        "0.887983",
+        "0.915772"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.887983",
+        "0.917797"
+      ],
+      "scored": [
+        "0.887983",
+        "0.917797"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.887983",
+        "0.917797"
+      ],
+      "scored": [
+        "0.887983",
+        "0.917797"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.89374",
+        "0.917797"
+      ],
+      "scored": [
+        "0.89374",
+        "0.917797"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.89374",
+        "0.930675"
+      ],
+      "scored": [
+        "0.89374",
+        "0.930675"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.89374",
+        "0.931397"
+      ],
+      "scored": [
+        "0.89374",
+        "0.931397"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.89374",
+        "0.931397"
+      ],
+      "scored": [
+        "0.89374",
+        "0.931397"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.89374",
+        "0.931397"
+      ],
+      "scored": [
+        "0.89374",
+        "0.931397"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.89374",
+        "0.9372"
+      ],
+      "scored": [
+        "0.89374",
+        "0.9372"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.89374",
+        "0.938325"
+      ],
+      "scored": [
+        "0.89374",
+        "0.938325"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "rationale"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.89374",
+        "0.938325"
+      ],
+      "scored": [
+        "0.89374",
+        "0.938325"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.887308",
+        "0.887372"
+      ],
+      "scored": [
+        "0.887308",
+        "0.887372"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.887308",
+        "0.895461"
+      ],
+      "scored": [
+        "0.887308",
+        "0.895461"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.887308",
+        "0.914544"
+      ],
+      "scored": [
+        "0.887308",
+        "0.914544"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.887436",
+        "0.914544"
+      ],
+      "scored": [
+        "0.887436",
+        "0.914544"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.887983",
+        "0.927406"
+      ],
+      "scored": [
+        "0.887983",
+        "0.927406"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.887983",
+        "0.927406"
+      ],
+      "scored": [
+        "0.887983",
+        "0.927406"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.887983",
+        "0.927406"
+      ],
+      "scored": [
+        "0.887983",
+        "0.927406"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.89374",
+        "0.928211"
+      ],
+      "scored": [
+        "0.89374",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.89374",
+        "0.928211"
+      ],
+      "scored": [
+        "0.89374",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.89374",
+        "0.928211"
+      ],
+      "scored": [
+        "0.89374",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.89374",
+        "0.936744"
+      ],
+      "scored": [
+        "0.89374",
+        "0.936744"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.89374",
+        "0.941411"
+      ],
+      "scored": [
+        "0.89374",
+        "0.941411"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.89374",
+        "0.941436"
+      ],
+      "scored": [
+        "0.89374",
+        "0.941436"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.89374",
+        "0.941542"
+      ],
+      "scored": [
+        "0.89374",
+        "0.941542"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "none",
+        "summary"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.89374",
+        "0.941542"
+      ],
+      "scored": [
+        "0.89374",
+        "0.941542"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 1,
+      "attempt": [
+        "0.889292",
+        "0.887372"
+      ],
+      "scored": [
+        "0.889292",
+        "0.887372"
+      ],
+      "scored_at_attempt": [
+        1,
+        1
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 2,
+      "attempt": [
+        "0.895356",
+        "0.895461"
+      ],
+      "scored": [
+        "0.895356",
+        "0.895461"
+      ],
+      "scored_at_attempt": [
+        2,
+        2
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 3,
+      "attempt": [
+        "0.895356",
+        "0.914544"
+      ],
+      "scored": [
+        "0.895356",
+        "0.914544"
+      ],
+      "scored_at_attempt": [
+        3,
+        3
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 4,
+      "attempt": [
+        "0.911381",
+        "0.914544"
+      ],
+      "scored": [
+        "0.911381",
+        "0.914544"
+      ],
+      "scored_at_attempt": [
+        4,
+        4
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 5,
+      "attempt": [
+        "0.915772",
+        "0.927406"
+      ],
+      "scored": [
+        "0.915772",
+        "0.927406"
+      ],
+      "scored_at_attempt": [
+        5,
+        5
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 6,
+      "attempt": [
+        "0.917797",
+        "0.927406"
+      ],
+      "scored": [
+        "0.917797",
+        "0.927406"
+      ],
+      "scored_at_attempt": [
+        6,
+        6
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 7,
+      "attempt": [
+        "0.917797",
+        "0.927406"
+      ],
+      "scored": [
+        "0.917797",
+        "0.927406"
+      ],
+      "scored_at_attempt": [
+        7,
+        7
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 8,
+      "attempt": [
+        "0.917797",
+        "0.928211"
+      ],
+      "scored": [
+        "0.917797",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        8,
+        8
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 9,
+      "attempt": [
+        "0.930675",
+        "0.928211"
+      ],
+      "scored": [
+        "0.930675",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        9,
+        9
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 10,
+      "attempt": [
+        "0.931397",
+        "0.928211"
+      ],
+      "scored": [
+        "0.931397",
+        "0.928211"
+      ],
+      "scored_at_attempt": [
+        10,
+        10
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 11,
+      "attempt": [
+        "0.931397",
+        "0.936744"
+      ],
+      "scored": [
+        "0.931397",
+        "0.936744"
+      ],
+      "scored_at_attempt": [
+        11,
+        11
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 12,
+      "attempt": [
+        "0.931397",
+        "0.941411"
+      ],
+      "scored": [
+        "0.931397",
+        "0.941411"
+      ],
+      "scored_at_attempt": [
+        12,
+        12
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 13,
+      "attempt": [
+        "0.9372",
+        "0.941436"
+      ],
+      "scored": [
+        "0.9372",
+        "0.941436"
+      ],
+      "scored_at_attempt": [
+        13,
+        13
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 14,
+      "attempt": [
+        "0.938325",
+        "0.941542"
+      ],
+      "scored": [
+        "0.938325",
+        "0.941542"
+      ],
+      "scored_at_attempt": [
+        14,
+        14
+      ],
+      "classification": "same"
+    },
+    {
+      "task": "resnet",
+      "seed": "s5",
+      "matched": true,
+      "arms": [
+        "rationale",
+        "summary"
+      ],
+      "k": 15,
+      "attempt": [
+        "0.938325",
+        "0.941542"
+      ],
+      "scored": [
+        "0.938325",
+        "0.941542"
+      ],
+      "scored_at_attempt": [
+        15,
+        15
+      ],
+      "classification": "same"
+    }
+  ]
+}

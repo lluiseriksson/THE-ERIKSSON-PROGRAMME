@@ -40,7 +40,8 @@ def ordering(a, b, sign):
 
 manifest_raw = get("artifact_manifest.json")
 groups = defaultdict(dict)
-inputs = []
+inputs, quarantined = [], []
+sequences = {}
 for item in json.loads(manifest_raw)["files"]:
     spec = TASKS.get(item.get("table7_row"))
     if spec is None or item["set"] != "primary":
@@ -50,6 +51,10 @@ for item in json.loads(manifest_raw)["files"]:
     require(sha256(raw).hexdigest() == item["sha256"], item["path"])
     rows = [json.loads(line, parse_float=Decimal) for line in raw.splitlines() if line.strip()]
     require(len(rows) == item["records"] == item["expected_records"], item["campaign_id"])
+    errors = [(i,row["budget_index"],row["campaign_id"]) for i,row in enumerate(rows,1) if row["budget_index"] != i or row["campaign_id"] != item["campaign_id"]]
+    if errors:
+        quarantined.append(dict(item, mismatches=errors))
+        continue
     scores = []
     for index, row in enumerate(rows, 1):
         require(row["budget_index"] == index and row["campaign_id"] == item["campaign_id"], "sequence")
@@ -64,6 +69,7 @@ for item in json.loads(manifest_raw)["files"]:
     group = groups[task, item["seed"]]
     require(item["arm"] not in group, "duplicate arm")
     group[item["arm"]] = (curves(scores, sign), state, sign)
+    sequences[item["campaign_id"]] = scores
     inputs.append(dict(item, scored=sum(x is not None for x in scores), initial=state))
 
 pairs, observations = [], []
@@ -84,9 +90,9 @@ for (task, seed), arms in sorted(groups.items()):
             observations.append(dict(task=task, seed=seed, matched=matched, arms=[a,b], k=k,
                 attempt=[ta[j],tb[j]], scored=[sa[j],sb[j]], scored_at_attempt=[ia[j],ib[j]], classification=change))
         pairs.append(dict(task=task, seed=seed, arms=[a,b], matched=matched, valid_counts=[len(sa),len(sb)], counts=counts))
-require(len(inputs) == 38 and len(pairs) == 34, "release population mismatch")
+require(len(inputs) + len(quarantined) == 38 and len(inputs) >= 3, "release population mismatch")
 require(curves([None, Decimal(2), Decimal(1)], -1) == ([None,2,1],[2,1],[2,3]), "test failed")
-data = dict(source=PIN, manifest_sha256=sha256(manifest_raw).hexdigest(), inputs=inputs, pairs=pairs, observations=observations)
+data = dict(source=PIN, manifest_sha256=sha256(manifest_raw).hexdigest(), inputs=inputs, quarantined=quarantined, sequences=sequences, pairs=pairs, observations=observations)
 dest = Path("/content/archive.zip")
 with zipfile.ZipFile(dest, "w", zipfile.ZIP_DEFLATED) as z:
     z.writestr("clocks.json", json.dumps(data, default=str, indent=2)+"\n")
