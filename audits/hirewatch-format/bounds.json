@@ -1,0 +1,181 @@
+{
+  "eligible": [
+    "GPT-4o-mini",
+    "Haiku 3.5",
+    "Haiku 4.5",
+    "Sonnet 4.6",
+    "Opus 4.7",
+    "Gemini 2.5 Pro",
+    "Llama 3.3 70B",
+    "Llama 4 Mav",
+    "Qwen3.5 9B",
+    "Qwen3 235B",
+    "DeepSeek V3",
+    "Mistral Small",
+    "Mistral Large"
+  ],
+  "missing_stratum": [
+    "GPT-4.1-mini",
+    "GPT-5.4-mini",
+    "GPT-5.4",
+    "Gemini 2.5 Flash",
+    "Gemini 3 Flash"
+  ],
+  "named_examples": {
+    "1/25": {
+      "Mistral Small": [
+        "39/20",
+        "49/25"
+      ],
+      "Sonnet 4.6": [
+        "1718/625",
+        "69/25"
+      ]
+    },
+    "1/50": {
+      "Mistral Small": [
+        "773/400",
+        "777/400"
+      ],
+      "Sonnet 4.6": [
+        "7111/5000",
+        "7161/5000"
+      ]
+    }
+  },
+  "named_threshold": [
+    "362/13097",
+    "366/13097"
+  ],
+  "robust_reversals": {
+    "DeepSeek V3 vs Mistral Small": [
+      "4448/18375",
+      "4448/6825"
+    ],
+    "GPT-4o-mini vs Gemini 2.5 Pro": [
+      "376623/1671250",
+      "15093/57022"
+    ],
+    "GPT-4o-mini vs Haiku 4.5": [
+      "211653/547540",
+      "151281/383300"
+    ],
+    "GPT-4o-mini vs Llama 3.3 70B": [
+      "1484496/2617825",
+      "2226744/3884825"
+    ],
+    "GPT-4o-mini vs Sonnet 4.6": [
+      "1101087/4594100",
+      "1101789/4574444"
+    ],
+    "Gemini 2.5 Pro vs Llama 3.3 70B": [
+      "29872/98525",
+      "14936/43575"
+    ],
+    "Gemini 2.5 Pro vs Llama 4 Mav": [
+      "704/1225",
+      "704/1075"
+    ],
+    "Gemini 2.5 Pro vs Mistral Small": [
+      "30784/37975",
+      "30784/32025"
+    ],
+    "Gemini 2.5 Pro vs Qwen3 235B": [
+      "7491/10325",
+      "7491/8050"
+    ],
+    "Gemini 2.5 Pro vs Qwen3.5 9B": [
+      "3792/7775",
+      "1264/2175"
+    ],
+    "Haiku 3.5 vs Sonnet 4.6": [
+      "61/13972",
+      "9/1796"
+    ],
+    "Haiku 4.5 vs DeepSeek V3": [
+      "513/6500",
+      "513/5500"
+    ],
+    "Haiku 4.5 vs Gemini 2.5 Pro": [
+      "3681/11305",
+      "3681/10535"
+    ],
+    "Haiku 4.5 vs Llama 3.3 70B": [
+      "12312/35525",
+      "320112/899675"
+    ],
+    "Haiku 4.5 vs Llama 4 Mav": [
+      "14184/223825",
+      "14184/215075"
+    ],
+    "Haiku 4.5 vs Mistral Large": [
+      "36/2975",
+      "3/238"
+    ],
+    "Haiku 4.5 vs Mistral Small": [
+      "2169/70525",
+      "2187/69125"
+    ],
+    "Haiku 4.5 vs Qwen3 235B": [
+      "243/1400",
+      "14337/80675"
+    ],
+    "Haiku 4.5 vs Qwen3.5 9B": [
+      "67608/289975",
+      "67608/283325"
+    ],
+    "Haiku 4.5 vs Sonnet 4.6": [
+      "1089/48748",
+      "1107/47348"
+    ],
+    "Llama 4 Mav vs DeepSeek V3": [
+      "1616/15925",
+      "1616/9975"
+    ],
+    "Llama 4 Mav vs Qwen3 235B": [
+      "1308/3325",
+      "14388/34825"
+    ],
+    "Llama 4 Mav vs Qwen3.5 9B": [
+      "212/275",
+      "636/775"
+    ],
+    "Sonnet 4.6 vs DeepSeek V3": [
+      "23/385",
+      "115/1743"
+    ],
+    "Sonnet 4.6 vs Gemini 2.5 Pro": [
+      "702/2975",
+      "702/2849"
+    ],
+    "Sonnet 4.6 vs Llama 3.3 70B": [
+      "536/2675",
+      "5360/26597"
+    ],
+    "Sonnet 4.6 vs Llama 4 Mav": [
+      "2064/46025",
+      "48/1057"
+    ],
+    "Sonnet 4.6 vs Mistral Large": [
+      "109/6636",
+      "37/2212"
+    ],
+    "Sonnet 4.6 vs Mistral Small": [
+      "362/13097",
+      "366/13097"
+    ],
+    "Sonnet 4.6 vs Qwen3 235B": [
+      "147/1240",
+      "735/6151"
+    ],
+    "Sonnet 4.6 vs Qwen3.5 9B": [
+      "64/427",
+      "24000/159103"
+    ]
+  },
+  "rounding": "closed half-unit at two decimals; table precision only",
+  "sonnet_excluded": [
+    "1658/25",
+    "333/5"
+  ]
+}

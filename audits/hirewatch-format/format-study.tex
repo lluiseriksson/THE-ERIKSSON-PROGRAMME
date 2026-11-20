@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,tabularx}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+\title{Format-sensitive model comparisons in HireWatch\\[3pt]\large Reconstructing nested benchmark summaries}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+HireWatch reports which interview questions a language model selects and whether it returns the requested number of questions. We recover the mean selection rate among trials excluded by the format check and compare models at a common hypothetical frequency of format failure. With no compliance instruction, 31 of 78 eligible model pairs have opposite order in the two format strata. For Sonnet 4.6 and Mistral Small the crossover occurs near 2.8\% format failure. Subtracting the no-instruction group from a second, overlapping summary places the crossover at 1.056--1.106\% under the three explicit instructions pooled. Both results survive rounding of the primary tables. The comparisons describe recorded benchmark outputs.
+\end{abstract}
+\section{What changes when the format mix changes?}
+Nghiem, Kostylew and Kolt [1] ask models to select 25 interview questions from a bank of 200 under seven levels of organizational pressure. We use the authors' illegal-selection rate (ISR), expressed in percentage points according to the benchmark labels. A trial passes the format check if the notebook [2] records that the model returned exactly 25 selections. Questions in this study concern the same recorded outputs reweighted after generation.
+
+Let $F$ and $B$ be a model's mean ISR among trials passing and failing the check. At a common failure fraction $z$ the standardized rate is
+\[
+                      S(z)=(1-z)F+zB,\qquad 0\le z\le1 .
+\]
+Every model receives the same $z$. Its original mean instead uses its own observed failure fraction. High rank correlation between the original and passing-only summaries can coexist with pairwise reversals under a common mixture. Common-weight standardization has a long history [3]. Our contribution is a benchmark-specific reconstruction and a comparison between instruction regimes using overlapping public summaries.
+\newpage
+\section{Recovering the comparison from rounded summaries}
+For each model the sources give the count $n$, passing count $m$, all-trial mean $A$, passing mean $F$ and difference $d=F-A$. Around each printed rate place a closed interval of radius $0.005$ percentage points. Intersect the corresponding six half-planes in $(A,F)$ with $F\ge0$ and $nA-mF\ge0$. When $m=n$ impose $A=F$. The image under
+\[
+                      (A,F)\longmapsto (mF,\ nA-mF)
+\]
+is the set of compatible passing and failing totals under these continuous constraints. For a single summary with $0<m<n$, dividing the totals by $m,n-m$ gives the two means.
+
+The saved notebook pools all four instructions at the same seven pressure levels. Table 17 gives the no-instruction subset. Write $P_g,P_0$ for their polygons of totals. The explicit-instruction polygon is the set of all vector differences $p_g-p_0$ with $p_g\in P_g$ and $p_0\in P_0$, intersected with the nonnegative quadrant. Counts are subtracted in the same order before dividing. This subtracts the overlapping observations exactly at the total level. Subtraction of the printed means alone would give the wrong weights. If either denominator vanishes the corresponding mixture comparison is omitted.
+
+To calculate the difference polygon, take the convex hull of all pairwise vertex differences and intersect it with the quadrant. The hull identity follows by expanding both convex combinations and using products of their coefficients. At fixed $z$ the score is linear, so vertices attain its extrema. If every compatible choice orders two models oppositely at $0$ and $1$, each pair of score lines crosses once. On the product of the two polygons, the root is a ratio of affine functions with denominator of fixed sign. Its value at any convex combination lies between the vertex values by reweighting the coefficients with the absolute denominators. These bounds allow real-valued totals and include ties at the rounding boundary. Discrete score lattices or unrounded trial records could tighten them.
+\section{Two summaries of the same trials}
+\begin{center}
+\begin{tabular}{llrrrr}
+\toprule
+Summary & Model & $n$ & $m$ & $A$ & $F$\\
+\midrule
+No instruction & Sonnet 4.6 &700&675&2.47&0.10\\
+ & Mistral Small &700&668&1.96&1.92\\
+Full grid & Sonnet 4.6 &2800&2754&0.94&0.02\\
+ & Mistral Small &2800&2604&0.82&0.84\\
+\bottomrule
+\end{tabular}
+\end{center}
+The checker also uses the separately rounded $d$ in each row. The explicit-instruction comparison has 21 failing trials for Sonnet and 164 for Mistral Small among 2,100 trials each. Reconstructing from rounded central values alone can even give a negative passing total for Sonnet; retaining the rounding intervals prevents this artifact.
+\newpage
+\section{Results and interpretation}
+Without instructions, 13 of 18 models have both format strata represented. In 31 of 78 pairs the two pure strata give strictly opposite order throughout the rounding envelope. With explicit instructions pooled, 27 pairs meet this same reversal test among 105 comparisons of 15 eligible models. These counts enumerate comparisons on a fixed dataset.
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Common failure share & No instruction & Explicit instructions\\
+\midrule
+$2\%$ & $[-0.521,-0.500]$ & $[0.378,0.410]$\\
+$4\%$ & $[0.788,0.810]$ & $[1.226,1.277]$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Entries bound Sonnet minus Mistral Small in ISR percentage points. A positive difference means a larger fraction of selections labeled illegal by the benchmark. The no-instruction crossover lies between $362/13097$ and $366/13097$ as a fraction of trials. The explicit-instruction crossover lies between $19096611/1807129825$ and $1259397/113906525$. The same two-percent format mix therefore yields opposite model order across the two instruction regimes.
+
+These are descriptive sensitivity estimates for a persona, a model roster, seven pressure levels and the authors' primary decoding configuration. The code follows the authors' defaults for missing ISR and format flags. Sampling uncertainty, occupation mix and prompt-specific heterogeneity require separate analysis. Pooling the three explicit instructions does not identify which instruction produced the shift. Reweighting observed output formats estimates neither the effect of forcing the correct format nor harm to any applicant. The trial archive was not used.
+
+\paragraph{Reproducibility.} The supplement includes both transcriptions, their source fingerprints, a rational-arithmetic checker and the complete pairwise results. Closed intervals refer only to printed precision. Some pure-stratum comparisons depend on very few observations.
+\paragraph{Model assessments and review context.} OpenAI Codex assisted with analysis and drafting. The author's role in administering AIRR is disclosed. Any subsequent assessment belongs to the exact PDF it evaluates. The calculations were checked in a dedicated Colab Linux session.
+\small
+\begin{thebibliography}{3}
+\bibitem{hw} H. Nghiem, M. Kostylew and N. Kolt. \emph{HireWatch: Evaluating LLM Compliance with U.S. Employment Law Under Contextual Pressure}. \href{https://arxiv.org/abs/2611.24970}{arXiv:2611.24970v1}, Table 17 (2026).
+\bibitem{nb} HireWatch authors. \href{https://github.com/hnghiem-nlp/hirewatch_repo/blob/3a230c4d1ef492d7398eb7cf6217ea362eac80e9/notebooks/qa/format_qa_check.ipynb}{Format compliance analysis notebook}, commit \texttt{3a230c4d}, saved full-grid output.
+\bibitem{kit} E. M. Kitagawa. \href{https://doi.org/10.1080/01621459.1955.10501299}{Components of a difference between two rates}. \emph{JASA} 50, 1168--1194 (1955).
+\end{thebibliography}
+\end{document}

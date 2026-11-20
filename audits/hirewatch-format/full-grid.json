@@ -1,0 +1,151 @@
+{
+  "source": "https://raw.githubusercontent.com/hnghiem-nlp/hirewatch_repo/3a230c4d1ef492d7398eb7cf6217ea362eac80e9/notebooks/qa/format_qa_check.ipynb",
+  "source_sha256": "1b288bc25488557de3a57f66c7db342cbf4eb73bf92c3c65b78b09bf53f5cf8b",
+  "scope": "All four instruction settings pooled, figures from saved notebook output. Includes Table 17 no-instruction run.",
+  "rows": [
+    {
+      "model": "GPT-4o-mini",
+      "all": "10.90",
+      "retained": "10.59",
+      "delta": "-0.31",
+      "n": 2800,
+      "f": 1375
+    },
+    {
+      "model": "GPT-4.1-mini",
+      "all": "5.39",
+      "retained": "5.39",
+      "delta": "+0.00",
+      "n": 2800,
+      "f": 2800
+    },
+    {
+      "model": "GPT-5.4-mini",
+      "all": "0.45",
+      "retained": "0.45",
+      "delta": "+0.00",
+      "n": 2800,
+      "f": 2800
+    },
+    {
+      "model": "GPT-5.4",
+      "all": "0.17",
+      "retained": "0.17",
+      "delta": "+0.00",
+      "n": 2800,
+      "f": 2800
+    },
+    {
+      "model": "Haiku 3.5",
+      "all": "0.18",
+      "retained": "0.18",
+      "delta": "+0.00",
+      "n": 2800,
+      "f": 2794
+    },
+    {
+      "model": "Haiku 4.5",
+      "all": "0.42",
+      "retained": "0.29",
+      "delta": "-0.13",
+      "n": 2800,
+      "f": 2770
+    },
+    {
+      "model": "Sonnet 4.6",
+      "all": "0.94",
+      "retained": "0.02",
+      "delta": "-0.91",
+      "n": 2800,
+      "f": 2754
+    },
+    {
+      "model": "Opus 4.7",
+      "all": "0.09",
+      "retained": "0.03",
+      "delta": "-0.07",
+      "n": 2800,
+      "f": 2791
+    },
+    {
+      "model": "Gemini 2.5 Flash",
+      "all": "0.92",
+      "retained": "0.92",
+      "delta": "+0.00",
+      "n": 2800,
+      "f": 2799
+    },
+    {
+      "model": "Gemini 2.5 Pro",
+      "all": "5.81",
+      "retained": "5.82",
+      "delta": "+0.01",
+      "n": 2800,
+      "f": 2797
+    },
+    {
+      "model": "Gemini 3 Flash",
+      "all": "1.46",
+      "retained": "1.46",
+      "delta": "+0.00",
+      "n": 2800,
+      "f": 2799
+    },
+    {
+      "model": "Llama 3.3 70B",
+      "all": "4.35",
+      "retained": "4.11",
+      "delta": "-0.24",
+      "n": 2800,
+      "f": 2542
+    },
+    {
+      "model": "Llama 4 Mav",
+      "all": "1.29",
+      "retained": "1.23",
+      "delta": "-0.06",
+      "n": 2800,
+      "f": 2723
+    },
+    {
+      "model": "Qwen3.5 9B",
+      "all": "6.72",
+      "retained": "6.45",
+      "delta": "-0.27",
+      "n": 2800,
+      "f": 2636
+    },
+    {
+      "model": "Qwen3 235B",
+      "all": "3.66",
+      "retained": "3.75",
+      "delta": "+0.08",
+      "n": 2800,
+      "f": 2651
+    },
+    {
+      "model": "DeepSeek V3",
+      "all": "2.02",
+      "retained": "2.02",
+      "delta": "+0.00",
+      "n": 2800,
+      "f": 2796
+    },
+    {
+      "model": "Mistral Small",
+      "all": "0.82",
+      "retained": "0.84",
+      "delta": "+0.01",
+      "n": 2800,
+      "f": 2604
+    },
+    {
+      "model": "Mistral Large",
+      "all": "0.68",
+      "retained": "0.67",
+      "delta": "-0.01",
+      "n": 2800,
+      "f": 2683
+    }
+  ]
+}

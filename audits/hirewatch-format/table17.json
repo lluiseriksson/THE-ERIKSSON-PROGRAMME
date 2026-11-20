@@ -1,0 +1,153 @@
+{
+  "source": "https://arxiv.org/html/2611.24970v1",
+  "table": 17,
+  "html_sha256": "dc9379a7b775e508a91b6a927cd65208889406de785b4dd73b38a02833f98bb9",
+  "notebook": "https://raw.githubusercontent.com/hnghiem-nlp/hirewatch_repo/3a230c4d1ef492d7398eb7cf6217ea362eac80e9/notebooks/qa/format_qa_check.ipynb",
+  "notebook_sha256": "1b288bc25488557de3a57f66c7db342cbf4eb73bf92c3c65b78b09bf53f5cf8b",
+  "rows": [
+    {
+      "model": "GPT-4o-mini",
+      "all": "16.32",
+      "retained": "15.79",
+      "delta": "-0.53",
+      "n": 700,
+      "f": 349
+    },
+    {
+      "model": "GPT-4.1-mini",
+      "all": "11.82",
+      "retained": "11.82",
+      "delta": "+0.00",
+      "n": 700,
+      "f": 700
+    },
+    {
+      "model": "GPT-5.4-mini",
+      "all": "1.42",
+      "retained": "1.42",
+      "delta": "+0.00",
+      "n": 700,
+      "f": 700
+    },
+    {
+      "model": "GPT-5.4",
+      "all": "0.58",
+      "retained": "0.58",
+      "delta": "+0.00",
+      "n": 700,
+      "f": 700
+    },
+    {
+      "model": "Haiku 3.5",
+      "all": "0.41",
+      "retained": "0.41",
+      "delta": "+0.00",
+      "n": 700,
+      "f": 699
+    },
+    {
+      "model": "Haiku 4.5",
+      "all": "1.22",
+      "retained": "0.71",
+      "delta": "-0.51",
+      "n": 700,
+      "f": 691
+    },
+    {
+      "model": "Sonnet 4.6",
+      "all": "2.47",
+      "retained": "0.10",
+      "delta": "-2.37",
+      "n": 700,
+      "f": 675
+    },
+    {
+      "model": "Opus 4.7",
+      "all": "0.05",
+      "retained": "0.05",
+      "delta": "+0.00",
+      "n": 700,
+      "f": 699
+    },
+    {
+      "model": "Gemini 2.5 Flash",
+      "all": "2.91",
+      "retained": "2.91",
+      "delta": "+0.00",
+      "n": 700,
+      "f": 700
+    },
+    {
+      "model": "Gemini 2.5 Pro",
+      "all": "21.10",
+      "retained": "21.16",
+      "delta": "+0.06",
+      "n": 700,
+      "f": 698
+    },
+    {
+      "model": "Gemini 3 Flash",
+      "all": "5.83",
+      "retained": "5.83",
+      "delta": "+0.00",
+      "n": 700,
+      "f": 700
+    },
+    {
+      "model": "Llama 3.3 70B",
+      "all": "12.56",
+      "retained": "11.82",
+      "delta": "-0.73",
+      "n": 700,
+      "f": 636
+    },
+    {
+      "model": "Llama 4 Mav",
+      "all": "2.89",
+      "retained": "2.68",
+      "delta": "-0.21",
+      "n": 700,
+      "f": 684
+    },
+    {
+      "model": "Qwen3.5 9B",
+      "all": "10.09",
+      "retained": "10.10",
+      "delta": "+0.01",
+      "n": 700,
+      "f": 652
+    },
+    {
+      "model": "Qwen3 235B",
+      "all": "8.58",
+      "retained": "8.67",
+      "delta": "+0.10",
+      "n": 700,
+      "f": 688
+    },
+    {
+      "model": "DeepSeek V3",
+      "all": "4.69",
+      "retained": "4.70",
+      "delta": "+0.01",
+      "n": 700,
+      "f": 699
+    },
+    {
+      "model": "Mistral Small",
+      "all": "1.96",
+      "retained": "1.92",
+      "delta": "-0.04",
+      "n": 700,
+      "f": 668
+    },
+    {
+      "model": "Mistral Large",
+      "all": "1.20",
+      "retained": "1.20",
+      "delta": "-0.00",
+      "n": 700,
+      "f": 659
+    }
+  ]
+}
