@@ -1,0 +1,19 @@
+{
+  "url": "https://aemo.com.au/aemo/data/nem/priceanddemand/PRICE_AND_DEMAND_202501_NSW1.csv",
+  "sha256": "975e8603457f1370f818c880e18a8a7f0c09794410a04d83a0b6f677dca9906a",
+  "transitions": {
+    "both_signs -> both_signs": 681,
+    "both_signs -> early": 1,
+    "early -> early": 40,
+    "late -> late": 21,
+    "tie -> tie": 1
+  },
+  "classifications": {
+    "both_signs": 681,
+    "early": 41,
+    "late": 21,
+    "tie": 1
+  },
+  "strict_width_reductions": 156,
+  "lp_comparisons": 1488
+}

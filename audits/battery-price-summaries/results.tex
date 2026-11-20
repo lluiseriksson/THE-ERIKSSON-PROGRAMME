@@ -1,0 +1,19 @@
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Decisions among 744 hours & Change only$^*$ & Both levels$^*$\\
+\midrule
+First half strictly better & 40 & 41\\
+Second half strictly better & 21 & 21\\
+Exact tie & 1 & 1\\
+Either strict winner possible & 682 & 681\\
+\bottomrule
+\end{tabular}\\[3pt]
+{\small $^*$Both summaries retain the hourly mean and variation cap.}
+\end{center}
+
+Recording the two price levels narrowed the feasible interval in 156 hours. It established just one additional strict winner. No hour in either calculation admitted only a weak ranking with a possible tie. The two-sided witness checks and the direct linear programs agreed on all 1,488 endpoint values to the stated tolerance.
+
+The additional decision occurred in the hour starting at 01:00 market time on 23 January. The original interval in AUD was $[-5261/1200,16909/1200]$. With both levels retained, it collapsed to a single positive value, $104/75$ AUD. The first price was 87.50 and the last 70.86 AUD/MWh. Their variation cap was 44.34 AUD/MWh. Any intervening price $z$ must satisfy $|87.50-z|+|70.86-z|\le44.34$, so $z\ge57.01$. The recorded hourly mean requires the ten interior prices to average exactly 57.01. Each must attain that lower bound. This explains the newly identified winner directly from the market summaries.
+
+We froze the same two schedules, test and classification before examining February 2025 in NSW1. Across the 672 hours of this second month, the extra price level narrowed 110 intervals and added zero strict rankings. Both summaries certified 30 early winners, 19 late winners and one tie. The other 622 hours admitted either winner. Both endpoints for every February hour were checked against direct linear programs. The code in the reproduction package includes the exact input digest for each month.

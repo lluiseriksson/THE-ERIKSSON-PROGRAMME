@@ -1,0 +1,66 @@
+\documentclass[11pt]{article}
+\usepackage[margin=24mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\R}{\mathbb R}
+\newcommand{\conv}{\operatorname{conv}}
+\title{When hourly price summaries determine a battery dispatch ranking}
+\author{Lluis Eriksson}
+\date{November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+An auditor comparing two battery schedules may have the hourly mean electricity price and a bound on intrahour variation, while settlement takes place every five minutes. We derive the sharp interval for the difference in energy revenues when the opening and closing prices are also known. Each endpoint comes with a price path that realizes it. We compare this disclosure with one that reports only the change between opening and closing. An exact replay on the January 2025 New South Wales price series shows how often those summaries identify the better of two fixed half-hour discharge schedules.
+\end{abstract}
+
+\section{The accounting question}
+On $m\ge2$ equal settlement intervals, let $d_i$ be the difference in net electricity delivered by two fixed schedules, in MWh. For prices $p_i$ in currency/MWh, their revenue difference is $R=\sum_{i=1}^m p_i d_i$. A known difference in operating costs can be subtracted from both bounds. The schedules can represent a model and a baseline if both have already been fixed. This analysis concerns energy revenue under a common price path. General assessments of storage also consider other services, forecast uncertainty and degradation [1,2].
+
+We compare two summaries of the same hour. Both retain its arithmetic mean price $M$, net change $g=p_m-p_1$ and a cap $V\ge |g|$ on $\sum_{j<m}|p_{j+1}-p_j|$. The second also retains $a=p_1$, hence $b=p_m=a+g$. $V$ is a cap even if computed as the realized variation of a replay. The admissible set allows real prices of either sign. The conclusions are conditional on these summaries, without an additional price floor, ceiling or continuity constraint.
+
+Write $D=\sum_i d_i$, $B_j=\sum_{i\le j}(d_i-D/m)$, and let $l,h$ denote the minimum and maximum of $B_1,\ldots,B_{m-1}$. Set $P=(V+g)/2$ and $N=(V-g)/2$. Under the first summary, the sharp interval is
+\[
+[MD-Ph+Nl,\ MD-Pl+Nh].
+\]
+Indeed, summation by parts gives $R=MD-\sum_{j<m} B_j(p_{j+1}-p_j)$. Represent the increments by the difference of nonnegative arrays of masses $P$ and $N$. Any unused variation can be padded by adding equal amounts at the same index. Conversely, subtracting arrays with those masses respects the cap and change. Placing the masses at opposite extremes of $B_j$ realizes each bound after translating the prices to mean $M$. Bounded-variation integration inequalities are classical [3].
+
+\newpage
+\section{Retaining the endpoint levels}
+Write $w_j=m-j$ and $c_j=\sum_{i>j}d_i$. Construct the polygon
+\[
+H=\conv\{P(w_j,c_j)-N(w_k,c_k):1\le j,k<m\}.
+\]
+A segment or a point is allowed. Intersect $H$ with the vertical line whose first coordinate is $m(M-a)$. If this intersection is empty, the summaries are inconsistent. Otherwise let its minimum and maximum second coordinates be $L$ and $U$. The sharp interval with fixed endpoints is
+\[
+                         [aD+L,\ aD+U].
+\]
+
+\paragraph{Proof.}
+For increments $x_j=p_{j+1}-p_j$, expanding every $p_i$ about $a$ gives $\sum_i p_i=ma+\sum_j w_j x_j$ and $R=aD+\sum_j c_jx_j$. For $x=u-v$ with $u,v$ nonnegative of masses $P,N$, the image of the pair of linear forms is exactly $H$. To see inclusion, distribute each mass over its indices. When both masses are positive, multiplying their normalized weights expresses the image as a convex combination of the displayed generators. If a mass vanishes, use the remaining distribution alone. If both vanish, the image consists of the origin. Conversely each generator comes from two point masses, and combinations give feasible increments with the required net change. The mean imposes the vertical slice. Extremal points of the slice are polygon vertices or mixtures along one edge. Mixing the generator price paths with the same weights realizes each bound with the specified mean and both endpoints. Every intermediate value follows by convexity. This is a finite moment calculation in the setting of classical extremal moment problems [4].
+
+\paragraph{How the slice can change a decision.}
+Take three prices with $a=b=0$, $M=1$ and $V=6$. The middle price must be 3. A schedule selling one MWh in the middle earns three currency units more than one selling in the first interval. If only $g=0$ is recorded with the same $M,V$, both $(0,3,0)$ and $(2,-1,2)$ are feasible. They reverse the ranking. The extra information is a single absolute price level. Equality of total energy does not make that information redundant when the mean is known.
+
+\section{Market replay}
+We used all 8,928 consecutive five-minute regional reference prices for New South Wales in January 2025 from AEMO [5]. We checked the time grid, region, trade flag and source digest. The competing schedules export 1 MW for either the first or last six intervals in each hour. Each delivers 0.5 MWh. We treat the 744 hours as separate comparisons, each with sufficient initial energy and the same terminal charge for both schedules. For this illustration, efficiency is constant and operating costs for equal throughput coincide.
+
+\newpage
+\input{results.tex}
+
+\paragraph{Interpretation.}
+A strict ranking counts only if every feasible price path gives the same strict winner. A weak ranking permits a tie. Both signs means there are feasible paths giving opposite winners. These are retrospective identification statements for a fixed pair of schedules. Each hour in the real data has one realized price path. The additional paths witness information lost through the chosen summary. One zone, two months and one pair of schedules do not establish how frequently other markets or policies can be ranked. A whole-month operating strategy would also need inter-hour state-of-charge constraints.
+
+\paragraph{Reproduction.}
+The accompanying Python program uses rational arithmetic for prices, hull vertices, intersections and witness checks. A second implementation expresses the problem directly in the original price variables with auxiliary absolute differences and checks both endpoints numerically. Its comparison tolerance is $10^{-7}\max(1,|R|)$ in AUD. The data digest, classifications and exact extrema are in the accompanying source package. [\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/codex/despacho-baterias-20261120/audits/battery-price-summaries}{Reproduction files}]
+
+\paragraph{Model assessments and review context.}
+AI assisted with analysis, software and writing. The author administers AIRR. Any assessment in the archive is tied to the exact PDF and records the reviewer's role.
+
+\paragraph{References.}
+[1] C. Adya, \emph{AI Dispatch for Battery Storage}, September 2026. \href{https://doi.org/10.5281/zenodo.24380609}{Zenodo version record}.\par\noindent
+[2] J. Seel et al., \emph{Identifying Barriers to Solar and Storage Hybrids}, 2026. \href{https://emp.lbl.gov/utility-scale-storage}{Berkeley Lab study and data}.\par\noindent
+[3] C. Aistleitner and J. Dick, \emph{Functions of bounded variation, signed measures, and a general Koksma--Hlawka inequality}, Acta Arith. 167 (2015), 143--171. \href{https://arxiv.org/abs/1406.0230}{arXiv:1406.0230}.\par\noindent
+[4] I. Pinelis, \emph{On the extreme points of moments sets}. \href{https://arxiv.org/abs/1204.0249}{arXiv:1204.0249}.\par\noindent
+[5] Australian Energy Market Operator, \emph{NSW1 Price and Demand, January 2025}. \href{https://aemo.com.au/aemo/data/nem/priceanddemand/PRICE_AND_DEMAND_202501_NSW1.csv}{Monthly source CSV}.
+\end{document}

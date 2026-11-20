@@ -1,0 +1,25 @@
+# Which details of an hourly price record can determine a discharge ranking?
+
+In March 2025 the NSW1 price was nonconstant in every one of 744 hours. Reporting the mean, realized minimum and maximum, and a cap on total variation allowed both the early and late discharge schedules to win in every hour. Replacing the unordered extremes by the opening and closing prices, with the same mean and cap, identified 34 early and 21 late wins. The other 689 hours still admitted both winners. AEMO provides the 8,928 five-minute prices used in the replay. [Market data](https://aemo.com.au/aemo/data/nem/priceanddemand/PRICE_AND_DEMAND_202503_NSW1.csv)
+
+The format with unordered extremes produced a smaller distance between the worst and best feasible revenues in 533 hours. The endpoint format produced a smaller distance in 211. The guarantee about the winner and the distance between extremal revenues measure different properties.
+
+## Exact bounds for unordered extremes
+
+Take an even number m = 2q of equal intervals in an hour. A 1 MW schedule discharges in the first half and the comparator in the second. The early-minus-late revenue is the first-half price sum minus the second-half price sum, divided by m. Let S be the total of the m prices and let L,H be the realized minimum and maximum. The variation cap V is at least H−L. The sorted decreasing price path that starts with all prices at L and allocates the excess S−mL to the first slots up to H gives the greatest possible revenue. Its reverse gives the least. For feasible summaries with L < H, the excess is at least H−L and at most (m−1)(H−L). Both extremes are thus attained on the constructed paths, whose variation is exactly H−L.
+
+The maximum early revenue advantage is min(S−mL, mH−S)/m, and the minimum is its negative. To see the upper bound, the first-half sum is at most both qH and S−qL. The constructed path attains that minimum. Consequently every nonconstant feasible summary admits two opposite strict winners, even if the original price ordering is unknown. This proof is an elementary allocation argument related to classical rearrangement inequalities. [Vince, A Rearrangement Inequality and the Permutahedron](https://people.clas.ufl.edu/avince/files/Rearrangement.pdf)
+
+These two sharp bounds need not describe all intermediate values. When V = H−L, every path visiting both extremes is monotone. For a nondecreasing path the last-half sum exceeds the first-half sum by at least H−L: pair the two endpoints and then pair the remaining lower-half entries with upper-half entries. This difference attains H−L when all interior values equal (S−L−H)/(m−2), for m > 2. The monotone feasible set with fixed endpoints and total is convex. Interpolating with the sorted outer extremizer therefore fills the positive band of possible magnitudes from (H−L)/m to the maximum above. The reversed paths give the opposite band. For m = 2 the bands are singleton values. Three nonconstant March hours met the minimal-variation condition exactly; a tie was impossible in those hours although either schedule could win.
+
+## One piece of timing information
+
+Write r = H−L > 0 and e = V−r. If the minimum occurs before the maximum, total upward movement is at least r and downward movement is at most e. In the late-minus-early sum, the coefficient of the j-th adjacent price increment is min(j,m−j), between 1 and q. Thus the late-minus-early revenue is at least (r−qe)/m. Interchanging high and low gives the symmetric bound when the maximum comes first. One may use the order in which the two extreme prices are first reached. If e < r/q this single bit suffices for a strict ranking. The test certified 26 of the 744 March hours, with 20 early and 6 late wins. It is a sufficient test. Other hours may still have an identifiable sign conditional on the bit and their particular mean.
+
+The threshold is sharp uniformly over means for q ≥ 2. Start at 0, use r in the remaining q−1 early slots, then r−e in all q late slots. For 0 ≤ e ≤ r, this has range r and variation r+e. It reaches its minimum before its maximum, yet the late-minus-early revenue is exactly (r−qe)/m. At e = r/q there is a tie. The example addresses uniform sufficiency; it does not claim a sharp criterion at every fixed mean.
+
+## Checks and scope
+
+The protocol was frozen before computing outcomes. Run `python range_report.py` beside `endpoints.py` with SciPy and NumPy installed. It downloads the AEMO file and checks its digest. For both extrema it verifies a price path with the required sum, range, variation cap and revenue. It also checks the endpoint design against 1,488 separate linear-program solutions. Exhaustive enumeration on 4,096 price vectors checked the outer formula in 269 distinct small summary classes and tested the orientation inequality. Each hour is a separate fixed-dispatch accounting exercise. The unordered design requires the extrema to be realized and treats total variation as an upper bound.
+
+This supplement follows the January–February manuscript at commit `dc0879911f043d76ae8aaf857b0addc09d77c3d5`. The v1 assessment applies to that PDF.
