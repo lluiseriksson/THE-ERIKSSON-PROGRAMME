@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,booktabs,amsmath,geometry,hyperref}
+\geometry{margin=1in}
+\hypersetup{hidelinks}
+\title{What rounded housing regressions identify about nested price thresholds}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Two unadjusted regressions in a German housing study show that condominiums bought to let sell less frequently at both EUR 5,000 and EUR 50,000 multiples than condominiums bought for owner occupation. Restricting the denominator to transactions at EUR 5,000 multiples reverses the direction. Every coefficient vector consistent with three-decimal reporting implies a positive conditional difference. The continuous rounding envelope runs from approximately 0.024 to 0.612 percentage points. The text reports different group rates, yet its figures also imply a positive difference under ordinary rounding. We construct two integer contingency tables that reproduce the unadjusted regression summaries and have identical group sizes. A conventional conditional-proportion test gives opposite decisions on those tables. Thus the printed summaries distinguish a descriptive sign from a sampling claim.
+\end{abstract}
+
+\section{The contrast}
+Prices at multiples of 50,000 form a subset of prices at multiples of 5,000. A lower share of transactions at both thresholds need not imply a lower share at the coarser threshold \emph{among transactions at the finer one}. This question differs from the question of how frequently a transaction reaches either threshold. The role of round prices in housing negotiations has been studied directly with transaction data~\cite{pope,german}. Our contribution is confined to what a specific published summary can identify without those data.
+
+We use columns 1 and 4 of Table 4 of the November 2023 CESifo working paper by Englmaier and colleagues~\cite{german}. The columns share 1,429,097 German condominium sales at prices no higher than EUR 400,000. Each fits an intercept and a binary indicator for purchase to let by ordinary least squares. The intercept is the owner-occupation group rate, and the intercept plus slope is the letting group rate. Purchase purpose is a proxy in this study; the transactions do not identify individual buyer expertise. The 2026 journal record~\cite{journal} is listed for version tracking. The table readings and conclusions here refer to the 2023 working paper.
+
+\section{Sign under two readings}
+Write $A,B$ for the owner-occupation shares at the fine and coarse thresholds and $u,v$ for the respective positive declines in the letting group. The table gives $A=.355$, $B=.051$, $u=.103$, $v=.014$. The conditional difference in proportion units is
+\[
+d=\frac{B-v}{A-u}-\frac BA=\frac{Bu-Av}{A(A-u)}.
+\]
+Substituting the four printed numbers gives $100d=0.31634$ percentage points. If each number represents an unrounded value within $h=.0005$, the denominator is positive and the numerator is at least
+\[
+(.051-h)(.103-h)-(.355+h)(.014+h)=.0000215>0.
+\]
+The exact extrema of this continuous coefficient rectangle are obtained at its corners. The difference increases with $B$ and $u$ and decreases with $v$. It decreases with $A$ because $(B-v)/(A-u)>B/A>0$ and $A-u<A$. The lower endpoint uses $(A+h,B-h,u-h,v+h)$ and the upper uses the opposite corner. The resulting envelope is $[0.0239044\ldots,0.6119387\ldots]$ in percentage points. It bounds the finite-sample possibilities. No claim that the endpoints correspond to integer counts is needed.
+
+The authors' narrative on printed page 15 lists fine/coarse shares of 35.5/5.1 percent for owner occupation and 25.5/3.8 percent for letting. The table's two fine-threshold coefficients imply a letting share between 25.1 and 25.3 percent, disjoint from 25.5 percent even allowing rounding of the prose to the nearest tenth of a percent. We cannot determine the underlying rate from these two accounts together. A separate calculation from the four prose rates puts the conditional difference in $[0.1496001\ldots,0.9223567\ldots]$ percentage points. For instance, the lower bound is $100(.0375/.2555-.0515/.3545)$. The sign survives the discrepancy.
+
+\section{What the aggregate cannot test}
+The 1,451,754 owner-occupation and 132,914 letting transactions in Table 1 precede the price restriction. They do not sum to the Table 4 sample size. Nor does the rounded conditional difference alone specify its standard error. To illustrate exactly what is lost, fix the same illustrative group sizes, 1,311,097 and 118,000, in both reconstructions below. These sizes respect the full-group limits. They are not estimates of the authors' restricted group sizes.
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+& Reconstruction I & Reconstruction II\\
+\midrule
+Owner occupation: multiples of 5,000 & 466,082 & 464,797\\
+Owner occupation: multiples of 50,000 & 66,224 & 67,508\\
+Letting: multiples of 5,000 & 29,852 & 29,620\\
+Letting: multiples of 50,000 & 4,250 & 4,482\\
+\midrule
+Conditional gap (percentage points) & 0.0282 & 0.6075\\
+Pooled score statistic $z$ & 0.1355 & 2.8740\\
+\bottomrule
+\end{tabular}
+\end{center}
+Within each group, the counts in the three disjoint categories are the coarse count, the fine count minus the coarse count, and the group size minus the fine count. They are nonnegative integers. Each reconstruction reproduces both intercepts and slopes, the standard errors as printed under conventional homoskedastic OLS, and the adjusted $R^2$ values in columns 1 and 4. For verification, if $n_g$ and $p_g$ denote group size and rate, the residual sum of squares is $\sum_g n_gp_g(1-p_g)$. Divide by $n_0+n_1-2$ to obtain $s^2$. The squared intercept and slope standard errors are $s^2/n_0$ and $s^2(1/n_0+1/n_1)$. The check uses exact rational inequalities before rounding.
+
+For the conditional test, let $m_g$ be the fine count, $r_g$ the coarse count divided by $m_g$, and $r$ the pooled coarse-to-fine ratio. The independent-transaction score statistic divides $r_1-r_0$ by $\sqrt{r(1-r)(1/m_0+1/m_1)}$. At the conventional two-sided 5 percent normal cutoff, the two compatible tables give opposite decisions. No standard error or decision for the original microdata is asserted. The constructions target only the specified summaries; they impose no claim about price-adjusted regression columns, unobserved clusters, or the source of the textual discrepancy.
+
+\section{Scope and review context}
+Conditioning changes the denominator, so this finding is compatible with an overall lower probability of sales at both thresholds. It establishes no causal effect of experience or bargaining strategy. Exact counts in the three categories by group would settle the descriptive contrast and the simple conditional test. Dependence between transactions would require further information. The supplement provides the coefficient bounds and a verifier for the two reconstructions.
+
+\paragraph{Model assessments and review context.} Codex assisted with this analysis and manuscript. Any assessment attached to an archive version concerns its exact PDF. No independent peer assessment is recorded in this manuscript.
+
+\begin{thebibliography}{9}
+\bibitem{german} F. Englmaier, A. Roider, L. Schlereth and S. Sebastian. Round-number effects in real estate prices: Evidence from Germany. CESifo Working Paper 10746 (2023), Tables 1 and 4. \href{https://www.ifo.de/DocDL/cesifo1_wp10746.pdf}{Authors' working paper}.
+\bibitem{journal} F. Englmaier and colleagues. Round-number effects in real estate prices: Professionals versus nonprofessionals. \href{https://doi.org/10.1080/08965803.2026.2760609}{Journal record}.
+\bibitem{pope} D. Pope, J. Pope and J. Sydnor. Focal points and bargaining in housing markets. \emph{Games and Economic Behavior} 93 (2015), 89--107.
+\end{thebibliography}
+\end{document}
