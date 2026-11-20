@@ -1,0 +1,24 @@
+{
+  "source_sha": "9302c80e2957b245bcfee0e5d49dc920feb5ca4d",
+  "inputs": {
+    "judge.tex": "262f37479c3c736ed91ab0c2528140047e0ee4fc3364fba1edc8a4fc76352cd3",
+    "verify_educational.py": "4d3e2dac0ef9b9d9fd2661825eca132dfe73af7b66c16af078b7072bd171c695",
+    "dual_audit.py": "48e151f56a733f45d398f0eadff6f44604571f515532f889e668461262b5d9df",
+    "dual.json": "630afe279c6b2cd45378bd0dcf35c92aa755b76ae6e97d1bd6a609f3a11225a0",
+    "judge_cases.py": "5107ddd215b88e4c97cc332fea0c99f8aba4d4be21a3682aa40b55b29ad6c8a7",
+    "overlap.json": "0eb2ae7c331587174e0427ac5c7280f3449e06d98734519d4c8767245d5d7176",
+    "source.json": "19d84a3664878e265fdb62053c386275b555f52d97eabb299d9a3fd378edad51",
+    "judge_audit.py": "0e2b0404c194cc9eb2b3d72ed6c79d031cd76edaf135caacd9c0b746fd1f3569",
+    "design.json": "2486d3f49aaedb645c911db7174c0c68fe138941d3b916fe484e7afc12c3ca66",
+    "judge-audit-design.md": "44c34eef3ad0a8058a4970e0339075a6c7d5fc91a3395f4cdf4084d49018c21a"
+  },
+  "started_at": "2026-11-20T20:18:35.069678+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "6878b08959aee9e64e8ae9d712e90d39a7feb724ae7767ea71bb9f38cfad489e",
+    "6878b08959aee9e64e8ae9d712e90d39a7feb724ae7767ea71bb9f38cfad489e"
+  ],
+  "pdf_bytes": 218605,
+  "finished_at": "2026-11-20T20:19:50.632450+00:00"
+}
