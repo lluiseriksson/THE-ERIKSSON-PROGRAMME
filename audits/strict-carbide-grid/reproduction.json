@@ -1,0 +1,22 @@
+{
+  "source_sha": "65ed26d3312d18c84141c83433601e5286aa6380",
+  "inputs": {
+    "reference-carbides.py": "ad413d20606172fad324c84c9bd1d4870156dc3c41e5068ade06c9ee5f88ceed",
+    "reference-errors.json": "61b6059fe69c89046dcd80b638877c0e37ced5d6ae88142ec0a798f10e182e56",
+    "carbide-ranking.tex": "d7af42513fce68259fe5dc99f21ee66518f3d68da65dfda2add6caadcfff1ae5",
+    "verify_carbides.py": "9520becde16853b73a12ac2a91cf1a2cc4410e31d174f910272e904c9b66202d",
+    "read-table.py": "b93c9cd057e3433a15fc0d126a9cc198cbbabb4d308799dbfa9ea3a98d1895bc",
+    "strict-carbides.py": "ca71f636b03a8f9a1153c3d8b2610ebf80dad1fa515f574390fa3a53ddad829c",
+    "grid.json": "c285d40deb66232fb6a9e43a86f11db12461f5c9b7efa762d9ead99f3c7120c8",
+    "strict-grid.md": "130e8c50b8b3feaba032b1066a7c6d3483644c172c75073c9f0f10e8ed8bdbb7"
+  },
+  "started_at": "2026-11-20T23:57:10.631157+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "ff2ebbcedefa764c53072e74aa7d88ac38377d1cd3927791bf34cf50cd559ed8",
+    "ff2ebbcedefa764c53072e74aa7d88ac38377d1cd3927791bf34cf50cd559ed8"
+  ],
+  "pdf_bytes": 216738,
+  "finished_at": "2026-11-20T23:58:23.025409+00:00"
+}
