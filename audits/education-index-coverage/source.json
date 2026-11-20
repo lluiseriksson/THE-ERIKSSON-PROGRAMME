@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "title": "Dados da seleção de estudos de um mapeamento sistemático sobre o uso de LLMs na educação em Engenharia de Requisitos",
+    "doi": "10.5281/zenodo.24407666",
+    "publication_date": "2026-11-20",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Rodrigues de Lima, Graziella",
+        "affiliation": "Universidade Federal do Ceará - Quixadá"
+      }
+    ],
+    "resource_type": {
+      "title": "Dataset",
+      "type": "dataset"
+    },
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "24407665"
+          }
+        }
+      ]
+    }
+  },
+  "url": "https://zenodo.org/api/records/24407666/files/Selecao_artigos.pdf/content",
+  "sha256": "7f28af5ddf8421d4eae228229affe764904480ff6109703d94a09dc1bfb5e538"
+}

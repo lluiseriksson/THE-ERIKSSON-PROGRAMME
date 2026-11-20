@@ -1,0 +1,28 @@
+{
+  "source_sha": "92811b79e16dd8a1c0b438034520ef8c2626041f",
+  "inputs": {
+    "education.tex": "d2c7d74368292201870199898a50f6d5452c4077dd7f7ab2dedfe792a22be02d",
+    "verify_education.py": "4ea891a8c241234d423f62397a99d171d37dc264240441c60ac95ed7c866f8c7",
+    "index.json": "a088e464edd5c0c25a8438b39c2bdea868426fbb4d99b46cce048d53fcb5036e",
+    "replication.json": "d43785d088ccbc1aff01683aee99f9cba040a65066d2ef78fcbe97a53c773047",
+    "certificates.json": "efc7b0d996101ec1bb65fc4544c384ccf195aa9ce6f911f124c6a702c05a0230",
+    "source.json": "f5442c7d1cccec2ec43bf2c7762cc2b1dbfee552cdba76ea5274626e6abd15a2",
+    "publisher-identities.json": "e272a6f253c3dd32761c0a898aeecf069e8e1637d5a9a3e7c093e56bc334229a",
+    "linkage.json": "a74398ea916a3d3a5c1d7b6f83c45e5d7ce4c6141a0e2fd632e207563806972b",
+    "second-register-files.json": "60ea5a5bffdda6976499b2a9ee50b0abc0688c332bb904a9bbfb28901bc4b8f6",
+    "second-register-protocol.md": "fd62916e9d09fe728303576e39a88cb33cf4a85e1f9f24fa216b3a043bca544e",
+    "re-index-verified.py": "44bff2c594506c36945927e5eef0bbd82b9499056bf944629b3495e294053f49",
+    "education-certify.py": "b02c17ec200940a58426194afc9ed08cc3a779c69431aed9c17e5ed9d61619ff",
+    "education-reconciled.py": "f1ea0e71a24a4224ba01a77bfb763c1be41820f8a79aae8dc4d216334d813232",
+    "replication-note.md": "37e2d5ad01b581cd71ccd01a03972454a6412aa8e90900d38272a370715b6cd5"
+  },
+  "started_at": "2026-11-20T23:09:51.431626+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "4a5eec1301703ff0535aea409e8c2bf487ed311d3e36216aa3a4bfaaa3dcbd9e",
+    "4a5eec1301703ff0535aea409e8c2bf487ed311d3e36216aa3a4bfaaa3dcbd9e"
+  ],
+  "pdf_bytes": 164275,
+  "finished_at": "2026-11-20T23:10:50.504351+00:00"
+}

@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-09EBSQZNKA8X5TXX",
+  "version": "v1",
+  "version_id": "arr:version:8b728a58-f98e-4a83-b329-8eb80a6f9db2",
+  "canonical_sha256": "4a5eec1301703ff0535aea409e8c2bf487ed311d3e36216aa3a4bfaaa3dcbd9e",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T23:11:55.797712+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 3.72,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "Both the dropped IEEE counts in the first register and the distinct initial versus backward denominator in the second agree with retained evidence. Raw titles and DOI checks agree for all 18 final title-source pairs."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Coverage and the loss formula follow directly from the incidence sets. The paper could state in the table caption that database names denote the deposited exports. The empirical bounds depend on correct linkage."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Database portfolio comparisons precede this study. The new contribution is the two concrete register reconstructions and the measured effect of source attribution and screening stage in these examples."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "This changes what a reviewer can infer about unnecessary search sources from a shortlist or published inclusion list. Two reviews, one with only three final articles, do not support prospective search advice."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Exact code, hashes and derived panels are present and two builds match. Upstream file retrieval and parsing depend on archived export availability and library versions."
+    }
+  },
+  "summary": "The three-page PDF presents a retrospective counterexample to transferring a minimum search portfolio between two educational reviews. The duplicate and screening-stage calculations are traceable, including the three final publisher identities, the backward-search overlap, and the enumerated single-source losses. Retrospective optimization over two small target sets has limited prospective significance. I contributed to the analysis and drafting and inspected all three pages in shared context.",
+  "strengths": [
+    "Traces the one disagreement between normalized title rules to a specific publisher identity.",
+    "Identifies both studies missing under a three-source denominator in the second shortlist.",
+    "Separates search-source failure from any change in scientific outcomes or future recall."
+  ],
+  "weaknesses": [
+    "The second review has only three final studies.",
+    "Flattening titles to tokens may combine distinct works or miss translations; universal validity is not established.",
+    "A source-by-source table of archival versus published retrieval counts would make the limits of the input exports easier to see."
+  ],
+  "potential_errors": [
+    "Treating a paper’s publisher as its retrieval source would falsely attribute a hit to IEEE.",
+    "Assigning a fourth study to the backward-search row would double-count an existing DOI.",
+    "Interpreting five or six databases as generally redundant would overstate the stage-specific result."
+  ],
+  "strong_novelty_candidates": [
+    "Attribution lowers the IEEE omission cost from eight to one in one register, and changing the target from three final papers to 15 shortlisted papers makes a second source indispensable in another."
+  ],
+  "unresolved_material_objections": []
+}

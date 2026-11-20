@@ -1,0 +1,23 @@
+[
+  {
+    "doi": "10.1145/3674805.3690741",
+    "title": "Evaluating Large Language Models in Exercises of UML Class Diagram Modeling",
+    "publisher": "ACM",
+    "first_author": "De Bari",
+    "url": "https://doi.org/10.1145/3674805.3690741"
+  },
+  {
+    "doi": "10.1109/MODELS-C59198.2023.00034",
+    "title": "Generative AI in Model-Driven Software Engineering Education: Friend or Foe?",
+    "publisher": "IEEE",
+    "first_author": "Morales",
+    "url": "https://doi.org/10.1109/models-c59198.2023.00034"
+  },
+  {
+    "doi": "10.1145/3652620.3687773",
+    "title": "Designing and Generating Lesson Plans combining Open Educational Content and Generative AI",
+    "publisher": "ACM",
+    "first_author": "Bucchiarone",
+    "url": "https://doi.org/10.1145/3652620.3687773"
+  }
+]

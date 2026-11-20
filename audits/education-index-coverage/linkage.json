@@ -1,0 +1,25 @@
+{
+  "register_version": "10.5281/zenodo.24407666",
+  "accepted_location": [
+    2,
+    9
+  ],
+  "duplicate_location": [
+    104,
+    11
+  ],
+  "publisher_url": "https://ieeexplore.ieee.org/abstract/document/11190333",
+  "doi": "10.1109/RE63999.2025.00022",
+  "author_repository": "https://oulurepo.oulu.fi/handle/10024/59453",
+  "author_surnames": [
+    "Guardado",
+    "Parveen",
+    "Zhang",
+    "Rayhan",
+    "Tripathi"
+  ],
+  "difference": "One apostrophe, U+2019 vs U+0027. Both register spellings agree with the publisher title after normalizing this single character.",
+  "implication": "The second IEEE-only result under strict matching has a Scopus duplicate in this register. After resolving this pair the observed omission losses are 1, 1 and 8 for ACM, IEEE and Scopus respectively. All three are still necessary. Further undocumented aliases are possible.",
+  "source_sha256": "7f28af5ddf8421d4eae228229affe764904480ff6109703d94a09dc1bfb5e538",
+  "run_archive_sha256": "7dd3b524e099b9b5edb866ae90c2fdae14addf9b008587cc88a059d0bf346a28"
+}

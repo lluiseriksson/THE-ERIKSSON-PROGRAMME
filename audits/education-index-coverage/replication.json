@@ -1,0 +1,2035 @@
+{
+  "sources": {
+    "acm": {
+      "entries": 905,
+      "declared": 916,
+      "without_title": 0,
+      "raw_missing_title": 0
+    },
+    "springerlink": {
+      "entries": 156,
+      "declared": 156,
+      "without_title": 0,
+      "raw_missing_title": 0
+    },
+    "IEEE Xplore": {
+      "entries": 39,
+      "declared": 1,
+      "without_title": 0,
+      "raw_missing_title": 0
+    },
+    "WebOfScience": {
+      "entries": 8,
+      "declared": 8,
+      "without_title": 0,
+      "raw_missing_title": 0
+    },
+    "scopus": {
+      "entries": 685,
+      "declared": 703,
+      "without_title": 0,
+      "raw_missing_title": 0
+    },
+    "ScienceDirect": {
+      "entries": 4069,
+      "declared": 4069,
+      "without_title": 0,
+      "raw_missing_title": 0
+    }
+  },
+  "stage_one": 15,
+  "assessed_final": 15,
+  "groups": {
+    "initial": {
+      "rows": [
+        {
+          "id": "Id_2",
+          "title": "Evaluating Large Language Models in Exercises of UML Class Diagram Modeling",
+          "doi": "10.1145/3674805.3690741",
+          "matches": {
+            "acm": "doi"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_822",
+          "title": "Generative AI in Model-Driven Software Engineering Education: Friend or Foe?",
+          "doi": "10.1109/models-c59198.2023.00034",
+          "matches": {
+            "acm": "doi",
+            "scopus": "doi"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_1387",
+          "title": "Designing and Generating Lesson Plans combining Open Educational Content and Generative AI",
+          "doi": "10.1145/3652620.3687773",
+          "matches": {
+            "acm": "doi"
+          },
+          "conflicts": []
+        }
+      ],
+      "six": {
+        "union": 3,
+        "minimum": [
+          [
+            "acm"
+          ]
+        ],
+        "loss": {
+          "IEEE Xplore": 0,
+          "ScienceDirect": 0,
+          "WebOfScience": 0,
+          "acm": 2,
+          "scopus": 0,
+          "springerlink": 0
+        },
+        "all": [
+          {
+            "portfolio": [],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "ScienceDirect"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "WebOfScience"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "acm"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "acm",
+              "scopus"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "acm",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm",
+              "scopus"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm",
+              "scopus"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm",
+              "scopus"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 3
+          }
+        ]
+      },
+      "shared": {
+        "union": 3,
+        "minimum": [
+          [
+            "acm"
+          ]
+        ],
+        "loss": {
+          "acm": 2,
+          "IEEE Xplore": 0,
+          "scopus": 0
+        },
+        "all": [
+          {
+            "portfolio": [],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "acm"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "acm",
+              "IEEE Xplore"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "acm",
+              "scopus"
+            ],
+            "covered": 3
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "acm",
+              "IEEE Xplore",
+              "scopus"
+            ],
+            "covered": 3
+          }
+        ]
+      }
+    },
+    "backward": {
+      "rows": [
+        {
+          "id": "ref-1",
+          "title": "Generative AI in Model-Driven Software Engineering Education: Friend or Foe?",
+          "doi": "10.1109/models-c59198.2023.00034",
+          "matches": {
+            "acm": "doi",
+            "scopus": "doi"
+          },
+          "conflicts": []
+        }
+      ],
+      "six": {
+        "union": 1,
+        "minimum": [
+          [
+            "acm"
+          ],
+          [
+            "scopus"
+          ]
+        ],
+        "loss": {
+          "IEEE Xplore": 0,
+          "ScienceDirect": 0,
+          "WebOfScience": 0,
+          "acm": 0,
+          "scopus": 0,
+          "springerlink": 0
+        },
+        "all": [
+          {
+            "portfolio": [],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "ScienceDirect"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "WebOfScience"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "acm"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "acm",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "acm",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 1
+          }
+        ]
+      },
+      "shared": {
+        "union": 1,
+        "minimum": [
+          [
+            "acm"
+          ],
+          [
+            "scopus"
+          ]
+        ],
+        "loss": {
+          "acm": 0,
+          "IEEE Xplore": 0,
+          "scopus": 0
+        },
+        "all": [
+          {
+            "portfolio": [],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "acm"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "acm",
+              "IEEE Xplore"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "acm",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "scopus"
+            ],
+            "covered": 1
+          },
+          {
+            "portfolio": [
+              "acm",
+              "IEEE Xplore",
+              "scopus"
+            ],
+            "covered": 1
+          }
+        ]
+      }
+    },
+    "preliminary": {
+      "rows": [
+        {
+          "id": "Id_2",
+          "title": "Evaluating Large Language Models in Exercises of UML Class Diagram Modeling",
+          "doi": "10.1145/3674805.3690741",
+          "matches": {
+            "acm": "doi"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_118",
+          "title": "Designing a Conceptual Model: Predictors Influencing the Acceptance of ChatGPT Usage in the Academia of Underdeveloped Countries",
+          "doi": null,
+          "matches": {
+            "acm": "title",
+            "IEEE Xplore": "title",
+            "scopus": "title"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_123",
+          "title": "Application Scenario Analysis of Large Language Models Education Based on Activity Theory",
+          "doi": null,
+          "matches": {
+            "acm": "title",
+            "IEEE Xplore": "title"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_136",
+          "title": "Intent Research on the Use of Generative AI by Student Teachers: An Integration Model Based on S-O-R and TAM",
+          "doi": null,
+          "matches": {
+            "acm": "title",
+            "IEEE Xplore": "title"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_140",
+          "title": "On the Workflows and Smells of Leaderboard Operations (LBOps): An Exploratory Study of Foundation Model Leaderboards",
+          "doi": null,
+          "matches": {
+            "acm": "title",
+            "IEEE Xplore": "title"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_164",
+          "title": "Venturing into the Unknown: Critical Insights into Grey Areas and Pioneering Future Directions in Educational Generative AI Research",
+          "doi": "10.1007/s11528-025-01060-6",
+          "matches": {
+            "acm": "doi",
+            "scopus": "doi"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_198",
+          "title": "The Academic Intensity Use of Chatbot-Based Artificial Intelligence and Its Relation to Academic Well-Being: A Correlational Study at the University of Jordan",
+          "doi": "10.3991/ijep.v14i8.50339",
+          "matches": {
+            "acm": "doi",
+            "scopus": "doi"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_227",
+          "title": "AI in STEM education: The relationship between teacher perceptions and ChatGPT use",
+          "doi": "10.1016/j.chbr.2024.100494",
+          "matches": {
+            "acm": "doi",
+            "scopus": "doi",
+            "ScienceDirect": "doi"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_438",
+          "title": "A Visual Analytics Environment for Navigating Large Conceptual Models by Leveraging Generative Artificial Intelligence",
+          "doi": "10.3390/math12131946",
+          "matches": {
+            "acm": "doi",
+            "scopus": "doi"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_505",
+          "title": "Not only ChatGPT: educational approaches for Embodied Artificial Intelligence",
+          "doi": null,
+          "matches": {
+            "acm": "title",
+            "scopus": "title"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_822",
+          "title": "Generative AI in Model-Driven Software Engineering Education: Friend or Foe?",
+          "doi": "10.1109/models-c59198.2023.00034",
+          "matches": {
+            "acm": "doi",
+            "scopus": "doi"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_897",
+          "title": "A hybrid approach to extract conceptual diagram from software requirements",
+          "doi": null,
+          "matches": {
+            "ScienceDirect": "title"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_1282",
+          "title": "Pedagogical agents communicating and scaffolding students' learning: High school teachers' and students' perspectives",
+          "doi": null,
+          "matches": {
+            "acm": "title",
+            "scopus": "title",
+            "ScienceDirect": "title"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_1383",
+          "title": "Artificial intelligence foundation and pre-trained models: Fundamentals, applications, opportunities, and social impacts",
+          "doi": null,
+          "matches": {
+            "ScienceDirect": "title"
+          },
+          "conflicts": []
+        },
+        {
+          "id": "Id_1387",
+          "title": "Designing and Generating Lesson Plans combining Open Educational Content and Generative AI",
+          "doi": "10.1145/3652620.3687773",
+          "matches": {
+            "acm": "doi"
+          },
+          "conflicts": []
+        }
+      ],
+      "six": {
+        "union": 15,
+        "minimum": [
+          [
+            "ScienceDirect",
+            "acm"
+          ]
+        ],
+        "loss": {
+          "IEEE Xplore": 0,
+          "ScienceDirect": 2,
+          "WebOfScience": 0,
+          "acm": 2,
+          "scopus": 0,
+          "springerlink": 0
+        },
+        "all": [
+          {
+            "portfolio": [],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore"
+            ],
+            "covered": 4
+          },
+          {
+            "portfolio": [
+              "ScienceDirect"
+            ],
+            "covered": 4
+          },
+          {
+            "portfolio": [
+              "WebOfScience"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "acm"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "scopus"
+            ],
+            "covered": 8
+          },
+          {
+            "portfolio": [
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect"
+            ],
+            "covered": 8
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience"
+            ],
+            "covered": 4
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "scopus"
+            ],
+            "covered": 11
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "springerlink"
+            ],
+            "covered": 4
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience"
+            ],
+            "covered": 4
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "scopus"
+            ],
+            "covered": 10
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "springerlink"
+            ],
+            "covered": 4
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 8
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "acm",
+              "scopus"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "acm",
+              "springerlink"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 8
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience"
+            ],
+            "covered": 8
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "scopus"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "springerlink"
+            ],
+            "covered": 8
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 11
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 4
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm",
+              "scopus"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 11
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 10
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 4
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm",
+              "scopus"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 10
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 8
+          },
+          {
+            "portfolio": [
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "springerlink"
+            ],
+            "covered": 8
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm",
+              "scopus"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 11
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 10
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "springerlink"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 15
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "ScienceDirect",
+              "WebOfScience",
+              "acm",
+              "scopus",
+              "springerlink"
+            ],
+            "covered": 15
+          }
+        ]
+      },
+      "shared": {
+        "union": 13,
+        "minimum": [
+          [
+            "acm"
+          ]
+        ],
+        "loss": {
+          "acm": 2,
+          "IEEE Xplore": 0,
+          "scopus": 0
+        },
+        "all": [
+          {
+            "portfolio": [],
+            "covered": 0
+          },
+          {
+            "portfolio": [
+              "acm"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore"
+            ],
+            "covered": 4
+          },
+          {
+            "portfolio": [
+              "scopus"
+            ],
+            "covered": 8
+          },
+          {
+            "portfolio": [
+              "acm",
+              "IEEE Xplore"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "acm",
+              "scopus"
+            ],
+            "covered": 13
+          },
+          {
+            "portfolio": [
+              "IEEE Xplore",
+              "scopus"
+            ],
+            "covered": 11
+          },
+          {
+            "portfolio": [
+              "acm",
+              "IEEE Xplore",
+              "scopus"
+            ],
+            "covered": 13
+          }
+        ]
+      }
+    }
+  }
+}

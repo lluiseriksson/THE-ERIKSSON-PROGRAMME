@@ -1,0 +1,52 @@
+{
+  "doi": "10.5281/zenodo.16185787",
+  "title": "Mind the Gap! The Overlooked Ethical Dimensions of GenAI in Software Modeling Education",
+  "creators": [
+    "Chakraborty, Shalini"
+  ],
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "files": [
+    {
+      "key": "Mind the gap_acm.bib",
+      "size": 2211039,
+      "checksum": "md5:bba12b4428333166c661dd7dd602f532"
+    },
+    {
+      "key": "Mind the gap_springerlink.bib",
+      "size": 233249,
+      "checksum": "md5:02574c969b66ed852bd2ff725b9aa3d6"
+    },
+    {
+      "key": "Mind the gap_IEEE Xplore.bib",
+      "size": 78142,
+      "checksum": "md5:40b259b5bae68aa0b22a25d71f1d74a8"
+    },
+    {
+      "key": "Mind the gap_WebOfScience.bib",
+      "size": 15698,
+      "checksum": "md5:984047dca6e0c219c871514999826ffc"
+    },
+    {
+      "key": "Mind the gap_scopus.bib",
+      "size": 1728379,
+      "checksum": "md5:7a4bd1654ebd829bff7098feafaa5180"
+    },
+    {
+      "key": "Mind the gap_papers after duplicate removal.bib",
+      "size": 2343620,
+      "checksum": "md5:31078b3019593855626d9920db2dd2dc"
+    },
+    {
+      "key": "Mind the gap_ScienceDirect.bib",
+      "size": 1945476,
+      "checksum": "md5:77fae49f0ebc501b1bef139b5bc14350"
+    },
+    {
+      "key": "Mind the gap_excusion-snowballing.xlsx",
+      "size": 997499,
+      "checksum": "md5:5d518142853173abf20de4c2f50dc884"
+    }
+  ]
+}

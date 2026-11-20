@@ -1,0 +1,358 @@
+{
+  "fulltext": {
+    "acm": {
+      "Id_2": {
+        "doi": true,
+        "title": true
+      },
+      "Id_822": {
+        "doi": true,
+        "title": true
+      },
+      "Id_1387": {
+        "doi": true,
+        "title": true
+      }
+    },
+    "springerlink": {
+      "Id_2": {
+        "doi": false,
+        "title": false
+      },
+      "Id_822": {
+        "doi": false,
+        "title": false
+      },
+      "Id_1387": {
+        "doi": false,
+        "title": false
+      }
+    },
+    "IEEE Xplore": {
+      "Id_2": {
+        "doi": false,
+        "title": false
+      },
+      "Id_822": {
+        "doi": false,
+        "title": false
+      },
+      "Id_1387": {
+        "doi": false,
+        "title": false
+      }
+    },
+    "WebOfScience": {
+      "Id_2": {
+        "doi": false,
+        "title": false
+      },
+      "Id_822": {
+        "doi": false,
+        "title": false
+      },
+      "Id_1387": {
+        "doi": false,
+        "title": false
+      }
+    },
+    "scopus": {
+      "Id_2": {
+        "doi": false,
+        "title": false
+      },
+      "Id_822": {
+        "doi": true,
+        "title": true
+      },
+      "Id_1387": {
+        "doi": false,
+        "title": false
+      }
+    },
+    "ScienceDirect": {
+      "Id_2": {
+        "doi": false,
+        "title": false
+      },
+      "Id_822": {
+        "doi": false,
+        "title": false
+      },
+      "Id_1387": {
+        "doi": false,
+        "title": false
+      }
+    }
+  },
+  "robustness": {
+    "first": {
+      "1": {
+        "best": 0,
+        "portfolios": [
+          [
+            "ACM Digital Library"
+          ],
+          [
+            "IEEE Digital Library"
+          ],
+          [
+            "Scopus"
+          ]
+        ]
+      },
+      "2": {
+        "best": 11,
+        "portfolios": [
+          [
+            "IEEE Digital Library",
+            "Scopus"
+          ]
+        ]
+      },
+      "3": {
+        "best": 14,
+        "portfolios": [
+          [
+            "ACM Digital Library",
+            "IEEE Digital Library",
+            "Scopus"
+          ]
+        ]
+      }
+    },
+    "initial": {
+      "1": {
+        "best": 0,
+        "portfolios": [
+          [
+            "IEEE Xplore"
+          ],
+          [
+            "ScienceDirect"
+          ],
+          [
+            "WebOfScience"
+          ],
+          [
+            "acm"
+          ],
+          [
+            "scopus"
+          ],
+          [
+            "springerlink"
+          ]
+        ]
+      },
+      "2": {
+        "best": 1,
+        "portfolios": [
+          [
+            "acm",
+            "scopus"
+          ]
+        ]
+      },
+      "3": {
+        "best": 1,
+        "portfolios": [
+          [
+            "IEEE Xplore",
+            "acm",
+            "scopus"
+          ],
+          [
+            "ScienceDirect",
+            "acm",
+            "scopus"
+          ],
+          [
+            "WebOfScience",
+            "acm",
+            "scopus"
+          ],
+          [
+            "acm",
+            "scopus",
+            "springerlink"
+          ]
+        ]
+      },
+      "4": {
+        "best": 1,
+        "portfolios": [
+          [
+            "IEEE Xplore",
+            "ScienceDirect",
+            "acm",
+            "scopus"
+          ],
+          [
+            "IEEE Xplore",
+            "WebOfScience",
+            "acm",
+            "scopus"
+          ],
+          [
+            "IEEE Xplore",
+            "acm",
+            "scopus",
+            "springerlink"
+          ],
+          [
+            "ScienceDirect",
+            "WebOfScience",
+            "acm",
+            "scopus"
+          ],
+          [
+            "ScienceDirect",
+            "acm",
+            "scopus",
+            "springerlink"
+          ],
+          [
+            "WebOfScience",
+            "acm",
+            "scopus",
+            "springerlink"
+          ]
+        ]
+      },
+      "5": {
+        "best": 1,
+        "portfolios": [
+          [
+            "IEEE Xplore",
+            "ScienceDirect",
+            "WebOfScience",
+            "acm",
+            "scopus"
+          ],
+          [
+            "IEEE Xplore",
+            "ScienceDirect",
+            "acm",
+            "scopus",
+            "springerlink"
+          ],
+          [
+            "IEEE Xplore",
+            "WebOfScience",
+            "acm",
+            "scopus",
+            "springerlink"
+          ],
+          [
+            "ScienceDirect",
+            "WebOfScience",
+            "acm",
+            "scopus",
+            "springerlink"
+          ]
+        ]
+      },
+      "6": {
+        "best": 1,
+        "portfolios": [
+          [
+            "IEEE Xplore",
+            "ScienceDirect",
+            "WebOfScience",
+            "acm",
+            "scopus",
+            "springerlink"
+          ]
+        ]
+      }
+    },
+    "preliminary": {
+      "1": {
+        "best": 0,
+        "portfolios": [
+          [
+            "IEEE Xplore"
+          ],
+          [
+            "ScienceDirect"
+          ],
+          [
+            "WebOfScience"
+          ],
+          [
+            "acm"
+          ],
+          [
+            "scopus"
+          ],
+          [
+            "springerlink"
+          ]
+        ]
+      },
+      "2": {
+        "best": 8,
+        "portfolios": [
+          [
+            "acm",
+            "scopus"
+          ]
+        ]
+      },
+      "3": {
+        "best": 11,
+        "portfolios": [
+          [
+            "IEEE Xplore",
+            "acm",
+            "scopus"
+          ]
+        ]
+      },
+      "4": {
+        "best": 13,
+        "portfolios": [
+          [
+            "IEEE Xplore",
+            "ScienceDirect",
+            "acm",
+            "scopus"
+          ]
+        ]
+      },
+      "5": {
+        "best": 13,
+        "portfolios": [
+          [
+            "IEEE Xplore",
+            "ScienceDirect",
+            "WebOfScience",
+            "acm",
+            "scopus"
+          ],
+          [
+            "IEEE Xplore",
+            "ScienceDirect",
+            "acm",
+            "scopus",
+            "springerlink"
+          ]
+        ]
+      },
+      "6": {
+        "best": 13,
+        "portfolios": [
+          [
+            "IEEE Xplore",
+            "ScienceDirect",
+            "WebOfScience",
+            "acm",
+            "scopus",
+            "springerlink"
+          ]
+        ]
+      }
+    }
+  }
+}
