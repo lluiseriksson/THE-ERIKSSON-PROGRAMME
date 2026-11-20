@@ -1,0 +1,97 @@
+{
+  "source": "https://doi.org/10.3390/plants15223588",
+  "article_xml": "https://mdpi-res.com/d_attachment/plants/plants-15-03588/article_deploy/plants-15-03588.xml",
+  "supplement": "https://mdpi-res.com/d_attachment/plants/plants-15-03588/article_deploy/plants-15-03588-s001.zip",
+  "xml_sha256": "47ab3932767e7f8da47a00aa3f4ef9408e14f6ea8fa7771e0aec3a9ca0fe81d7",
+  "supplement_sha256": "122a5df6b3995cb9ade266005d766e1ce95bb77c15ec9e2740f5df49c6057259",
+  "mg_per_plant": {
+    "DZ-01-1825": [
+      "25933/100",
+      "163/20"
+    ],
+    "Genete": [
+      "225",
+      "162/25"
+    ],
+    "Boni": [
+      "22033/100",
+      "61/10"
+    ],
+    "DZ-01-179": [
+      "15567/100",
+      "213/100"
+    ],
+    "Dukem": [
+      "25533/100",
+      "143/20"
+    ],
+    "Yilmana": [
+      "17733/100",
+      "159/50"
+    ],
+    "Koye": [
+      "17067/100",
+      "399/50"
+    ],
+    "Boset": [
+      "118",
+      "553/100"
+    ],
+    "RIL-302": [
+      "222",
+      "359/50"
+    ],
+    "Alba": [
+      "104",
+      "4"
+    ],
+    "Ajora": [
+      "16433/100",
+      "467/100"
+    ],
+    "Tsedey": [
+      "17867/100",
+      "161/20"
+    ],
+    "Dega Tef": [
+      "9433/100",
+      "209/50"
+    ],
+    "Gimbichu": [
+      "162",
+      "117/25"
+    ],
+    "Enatite": [
+      "215",
+      "4"
+    ],
+    "RIL-44": [
+      "247",
+      "1603/100"
+    ],
+    "RIL-94": [
+      "13433/100",
+      "533/100"
+    ],
+    "DZ-01-951": [
+      "12767/100",
+      "217/100"
+    ],
+    "Dtt-2": [
+      "21233/100",
+      "613/100"
+    ],
+    "TDT-4-15": [
+      "266",
+      "63/10"
+    ]
+  },
+  "well_watered_leader": "TDT-4-15",
+  "water_deficit_leader": "RIL-44",
+  "cutoff": "1900/2873",
+  "third_at_cross": "DZ-01-1825",
+  "third_gap": "297491/287300",
+  "proof": "Affineness suffices. On each side of the intersection, compare each rival with the leader at the endpoints. A nonnegative affine difference at both endpoints stays nonnegative throughout.",
+  "scope": "Two treatment means per genotype; the mixing weight is hypothetical. No sampling-based inference or field-frequency estimate.",
+  "version": "Published article 2026-11-16, Table 3 and supplement Table S5."
+}

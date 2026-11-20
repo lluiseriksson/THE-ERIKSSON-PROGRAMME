@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,booktabs,amsmath,geometry,hyperref}
+\geometry{margin=1in}
+\hypersetup{hidelinks}
+\title{Yield rankings and an ANOVA scale check in a two-regime tef trial}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A two-replicate pot trial reported grain yield for twenty tef genotypes under two moisture regimes. Using the reported means, we determine the best-performing genotype for every convex mixture of those regimes. TDT-4-15 leads up to a deficit-regime weight of $1900/2873$, and RIL-44 leads beyond it. We also find an incompatibility under a specific interpretation of the published tables. If the forty cell means summarize pairs of nonnegative, equally weighted pot observations on the reported scale, then their corrected total sum of squares is at most $2{,}238{,}537$, allowing for rounding. The supplemental ANOVA reports a one-degree-of-freedom moisture entry of $6{,}442{,}255$. An ordinary least-squares term on the same response and rows cannot exceed the corrected total. The discrepancy limits the use of that entry for inference until the units, observations and model output can be reconciled.
+\end{abstract}
+\section{Which genotype leads in the observed means?}
+Girma and colleagues~\cite{study} examined twenty genotypes of tef, a cereal crop, in a $5\times4$ alpha-lattice pot experiment with two replications. Their water-deficit treatment included dehydration followed by rewatering. Section 4 of the study describes pot-level grain yield measurement, and Table 3 reports means in mg per plant. The supplement~\cite{sup} includes combined and separate ANOVAs (S1 and S2), within-regime comparisons (S5) and trait definitions (S10). All numerical claims here concern those reports. We have not verified the authors' original analysis input.
+
+For genotype $i$ let $w_i,d_i$ be the Table 3 means for well-watered and water-deficit conditions. Consider $y_i(p)=(1-p)w_i+p d_i$ for a hypothetical weight $0\leq p\leq1$. This linear combination compares expected absolute yields across the two reported regimes given fixed weights. It does not interpolate irrigation intensity or estimate how often drought occurs in a field.
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Genotype & Well-watered & Water-deficit\\
+\midrule
+TDT-4-15 &266.00&6.30\\
+RIL-44 &247.00&16.03\\
+DZ-01-1825 &259.33&8.15\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first two lines cross at $p_* = 19/(19+9.73)=1900/2873$, about 0.6613. The supplement to this analysis checks the twenty scores at 0, $p_*$ and 1. TDT-4-15 leads at 0, RIL-44 leads at 1, and the two tie at $p_*$. At that tie the closest of the other eighteen, DZ-01-1825, is $297491/287300$, about 1.0355 mg per plant, below them. On either segment the difference between the proposed leader and any competitor is affine. Its values at the endpoints prove the whole segment. These are ranks of rounded treatment means, with no estimated sampling precision attached to $p_*$.
+
+\section{A bound requiring no block allocation}
+Consider forty cells with two nonnegative responses $x_{i1},x_{i2}$ per cell, all measured in the same units as the reported arithmetic cell means. Denote the true cell means by $m_i$. Write $N=80$. First, every observation is at most $2\max_i m_i$. Centering at the sample mean minimizes the sum of squared deviations from a constant, so centering instead at $\max_i m_i$ yields the upper bound $N(\max_i m_i)^2$. With ordinary rounding to two decimals, the upper limit on the largest mean is 266.005. This simple bound gives $5{,}660{,}692.802$.
+
+A sharper bound uses all forty means. Nonnegativity gives
+$x_{i1}^2+x_{i2}^2\leq(x_{i1}+x_{i2})^2=4m_i^2$.
+Subtracting the grand-mean correction shows that
+\[
+  SS_{\rm total}\leq 4\sum_i m_i^2-
+      \frac{(2\sum_i m_i)^2}{N}.
+\]
+For exact means this bound is attained by placing $0$ and $2m_i$ in every pair. For reported values $a_i$ and $h=0.005$, replace each $m_i$ in the positive term by $a_i+h$ and each $m_i$ in the subtracted term by $a_i-h$. All lower limits are positive. The resulting conservative upper bound is $2{,}238{,}536.45502$ in squared yield units. It applies regardless of which genotypes shared an incomplete block and uses no printed standard errors.
+
+The GY row in Table S1 displays $6{,}442{,}255$ for moisture, with one degree of freedom. At one degree of freedom a mean square and its sum of squares coincide. In ordinary unweighted least squares a nested-model reduction in residual sum of squares, with an intercept in the reduced model, is at most the corrected total. Even rounding the printed entry to the nearest integer leaves it above both bounds. Thus the ordinary same-scale, two-pot arithmetic-mean interpretation fails. The proof cannot distinguish a transcription issue from different scaling, analysis units, weighting, adjusted means or a different statistic. It supplies neither a replacement ANOVA entry nor grounds for revising the authors' test result. Reconciliation would require the input and output that generated this row.
+
+\section{Precision of a mixed-regime comparison}
+A significant genotype-by-moisture term does not provide a confidence interval for the crossing of two selected genotypes. For a pairwise contrast $D(p)=(1-p)D_W+p D_D$, its variance also depends on the covariance between the endpoint estimates unless independence is justified by the fitted design. The separate reported least significant differences (LSDs) in Table S5 are 102.47 and 1.71 mg per plant for grain yield. For RIL-44 minus TDT-4-15 the endpoint contrasts are $-19.00$ and $9.73$. The water-deficit contrast exceeds the listed LSD; the well-watered contrast falls within it in absolute value.
+
+As a sensitivity calculation, suppose the two endpoint errors fall within the respective reported LSDs for this pair. The lower bound for $D(p)$ is then
+\[
+ (1-p)(-19.00-102.47)+p(9.73-1.71).
+\]
+It is positive only above $121.47/129.49$, approximately 0.9381. Between the crossover and that threshold the rectangle admits both a positive difference and a nonpositive difference. The rectangle imposes no cross-regime correlation assumption. Its calculation is conditional on these two error limits. It is neither a simultaneous 95 percent confidence band after selection among twenty genotypes nor a claim that the fitted design attains every corner. A contrast covariance matrix and an explicit inferential procedure would be needed for such a band.
+
+\section{Reproducibility and review context}
+The package contains the reported cell means, their source links, source-file checksums and an exact rational verifier. It checks both line segments, the extremal sum of squares construction and the printed ANOVA comparison. The methods are elementary. The contribution is the application to the cited trial and a scale check independent of its block allocation. The authors provide a Figshare link for the raw data~\cite{data}; the analyses here use only the article and supplement. Field performance, untested moisture patterns and yield stability across sites remain outside the scope of the results.
+
+\paragraph{Model assessments and review context.} Codex assisted with data extraction, the computations and the manuscript. An assessment attached to a released version applies to its identified PDF. This manuscript records no independent peer review.
+
+\begin{thebibliography}{9}
+\bibitem{study} B. T. Girma, A. G. Roro, K. A. Abebe, Z. Tadele and J. M. Farrant. Physiological and agronomic responses of tef to terminal drought stress. \emph{Plants} 15 (2026), 3588. \href{https://doi.org/10.3390/plants15223588}{Article}.
+\bibitem{sup} Girma and colleagues. \href{https://mdpi-res.com/d_attachment/plants/plants-15-03588/article_deploy/plants-15-03588-s001.zip}{Supplementary material}, Tables S1, S2, S5 and S10.
+\bibitem{data} Girma and colleagues. \href{https://figshare.com/s/0568883f232686727719}{Figshare link provided in the article's data availability statement}.
+\end{thebibliography}
+\end{document}
