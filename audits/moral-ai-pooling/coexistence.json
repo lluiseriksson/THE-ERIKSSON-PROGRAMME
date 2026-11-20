@@ -1,0 +1,16 @@
+{
+  "boundary_checks": 2,
+  "example_margins": {
+    "A conditional": "579/20000",
+    "A selfish": "2889/20000",
+    "M conditional": "407/2000",
+    "M selfish": "3123/160000"
+  },
+  "example_q": "71/80",
+  "example_selfish_fitness_advantage": "971/32000",
+  "profile_grid": 24,
+  "visibility_interval": [
+    "971/2948",
+    "2000/4807"
+  ]
+}

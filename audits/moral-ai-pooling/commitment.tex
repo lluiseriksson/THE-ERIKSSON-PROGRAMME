@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\title{When universal and zero adoption of AI commitment coexist}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+In a one-shot game, people can delegate to an AI that sometimes binds them to cooperate. Others see the choice with a known probability. We characterize when both universal adoption and zero adoption can be supported as perfect Bayesian equilibria at the same population composition. In a region where conditional cooperators are too scarce to sustain voluntary cooperation on their own, the two equilibrium tests impose opposite bounds on visibility. An open set satisfies both strictly. At the same parameters the two outcomes give, respectively, a strict material advantage to selfish preferences and equal material payoffs. A sufficiently small probability of bypass excludes universal adoption regardless of visibility. This extends a model of Ao and Wu, who study the two frictions separately.
+\end{abstract}
+
+\section{A choice between two institutions}
+A counterpart's willingness to cooperate can depend on whether it sees a credible commitment. This makes the payoff from adopting the commitment depend on how widely others adopt it. Ao and Wu [1] analyze imperfect visibility with perfect enforcement, and stochastic enforcement with perfect visibility. They identify the joint case as open. We combine their two information structures. Our question concerns the two extreme adoption outcomes at a fixed population share. More generally, observability restrictions on rules have been studied in commitment games [2].
+
+Two randomly matched agents first choose $A$ (unrestricted action) or $M$ (stochastic commitment). Each independently sees its partner's label with probability $0<\rho\le1$ and otherwise sees a null signal. An $M$ user must cooperate with probability $h=1-\varepsilon$, where $0<\varepsilon<1$. Each agent privately knows its own constraint realization. Visibility, constraints and types are independent across players, and the draws of visibility and constraints are mutually independent. There is no right of refusal. Agents then choose their actions simultaneously whenever free.
+
+Material payoffs for the row player at $(C,C),(C,D),(D,C),(D,D)$ are $R,S,T,P$, with $T>R>P>S$. A share $x$ of agents have type $\theta$ and receive a utility bonus $b>0$ at $(C,C)$, where $R+b>T$. Others have type $\tau$ and maximize material payoffs. Type $\tau$ defects when free. Type $\theta$ strictly prefers cooperation if the probability of partner cooperation exceeds $\kappa=(P-S)/(R+b-T+P-S)$ and strictly prefers defection below it.
+
+\newpage
+\section{A visibility interval for coexistence}
+Fix $0<x<\kappa<h$ and write
+\[
+ q=h+\varepsilon x,\qquad
+ c(q)=(1-q)(P-S)+q(T-R).
+\]
+Here $q$ is partner cooperation under universal adoption; $c(q)$ is the material cost of cooperating instead of defecting against that partner. Define
+\[
+ L=\frac{h\,c(q)}{\varepsilon x(T-P)},\qquad
+ U=\frac{h(P-S)}{x\{h(R+b-S)+\varepsilon(T-P)\}} .
+\]
+
+\textbf{Theorem.} Among type-homogeneous perfect Bayesian equilibria, zero adoption is supportable exactly when $\rho\le U$. Universal adoption is supportable exactly when $\rho\ge L$. The two coexist precisely on $[L,U]\cap(0,1]$, interpreted as empty when $L>U$. In the zero-adoption outcome both types earn $P$. In the universal-adoption outcome the selfish type earns $\varepsilon c(q)$ more in material payoffs than the conditional type.
+
+\paragraph{Zero adoption.}
+On the path all choose $A$. With a label $A$ or a null signal a conditional agent assigns probability at most $x<\kappa$ to partner cooperation, so both types defect. On seeing an unexpected $M$, a free conditional agent strictly prefers to cooperate: even if every free $M$ user defects, partner cooperation has probability at least $h>\kappa$. Thus switching to $M$ elicits cooperation with probability $\rho x$. The switcher's own signal and bypass draw carry no information about its partner's visibility or preference type. A bypassed switcher strictly prefers to defect, since $\rho x<\kappa$.
+
+Relative to $P$, the conditional type's gain from its best switch is
+\[
+ -h(P-S)+\rho x\{h(R+b-S)+\varepsilon(T-P)\}.
+\]
+The selfish type gains $h\rho xb$ less. This proves the zero-adoption test, including indifference at equality. For off-path beliefs, take rare type-independent switches to $M$. A free conditional user seeing $M$ cooperates, while one seeing $A$ or a null signal defects. Even when its own label is $M$, its cooperation forecast against the $A$ population is at most $x$. These continuations are optimal at the unused information sets as well.
+
+\paragraph{Universal adoption.}
+On the path a free conditional user knows the partner has $M$ and cooperates regardless of the signal. A free selfish user defects. The independent constraint and type draws therefore give partner cooperation probability $q$. The conditional user always cooperates and the selfish user cooperates only when forced. Independence of actions on this path gives the stated fitness difference $\varepsilon c(q)$.
+
+\newpage
+\section*{The deviation that limits universal adoption}
+If a user switches to $A$, all its partners still cooperate when forced, and free conditional partners still cooperate when they miss the switch. Consequently the deviator faces a cooperation probability of at least
+\[
+ q'=h+\varepsilon x(1-\rho)=q-\rho\varepsilon x .
+\]
+This lower bound on the return to deviation is attainable simultaneously for both types. Assign probability one to a selfish type after observing an unexpected $A$. A free conditional partner who sees $A$ then defects. The posterior can be obtained by making adoption mistakes toward $A$ of orders $\delta$ for selfish agents and $\delta^2$ for conditional agents, then taking $\delta\downarrow0$. A missed label retains the on-path posterior. A free conditional agent cooperates on seeing $M$ or on missing the label. A free selfish agent always defects. These rules also cover histories where the agent itself chose the unused label.
+
+Against this continuation a conditional deviator always cooperates because $q'\ge h>\kappa$, whether it sees $M$ or receives a null signal. Its loss from switching to $A$ is $(q-q')(R+b-S)>0$. A selfish deviator always defects. Staying with $M$ yields it a benefit $(q-q')(T-P)$ through the partner's response, at own expected cost $h c(q)$. Its net margin is
+\[
+                   \rho\varepsilon x(T-P)-h c(q).
+\]
+This proves sufficiency of $\rho\ge L$. Necessity follows because $q'$ already gives the smallest attainable cooperation probability after the switch. Every other continuation gives a selfish deviator at least as much material payoff from defecting. This completes the proof.
+
+\paragraph{A bound valid at every visibility.}
+Since $q=x+h(1-x)>x$, one has $c(q)>x(T-R)$. Hence
+\[
+ \varepsilon \le \frac{T-R}{(T-R)+(T-P)}
+ \quad\Longrightarrow\quad h c(q)>\varepsilon x(T-P)
+ \quad\Longrightarrow\quad L>1 .
+\]
+Universal adoption cannot occur in this small-bypass range. The same ratio appears among the assumptions of Proposition 4 of [1]. The coexistence example on the next page falls outside that restriction. In the limit of perfect enforcement, the zero-adoption test reduces to $\rho x(R+b-S)\le P-S$. At full visibility it recovers the stochastic-enforcement cutoff of [1] on the common parameter domain.
+
+\paragraph{Interpretation.}
+At zero adoption, visibility allows the first adopter to induce additional cooperation. At universal adoption, visibility allows partners to respond when someone leaves. With occasional bypass, those responses can deter a selfish agent from leaving even though the constraint sometimes forces a materially costly action. The two margins test different unilateral decisions.
+
+\newpage
+\section{An interior example and its interpretation}
+Set $(T,R,P,S,b)=(3.01,3,1,0,0.7)$, $x=0.55$, $\rho=0.4$ and $\varepsilon=0.25$. Then $\kappa=100/169$, $h=3/4$ and $q=71/80$. The inequalities $x<\kappa<h$ and $L<\rho<U$ hold strictly. All four adoption margins below are positive. A margin is the incumbent utility minus the largest utility attainable by changing label and then choosing actions freely whenever permitted.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Incumbent label & Conditional type & Selfish type\\
+\midrule
+Unrestricted $A$ & 0.02895 & 0.14445\\
+Commitment $M$ & 0.2035 & 0.01951875\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The exact common visibility interval is $[971/2948,2000/4807]$. The material payoff advantage of the selfish type at universal adoption is 0.03034375; it vanishes at zero adoption. Continuity of all strict inequalities gives coexistence in a neighborhood of the example. Its small temptation premium $T-R=0.01$ is consequential: increasing that premium raises the cost of forgoing defection. The numerical illustration is a constructed game, without a calibration to an AI market.
+
+\paragraph{Verification.}
+The supplement enumerates the five binary draws (partner type, two visibility draws and two bypass draws) using rational arithmetic. Each possible label switch is compared under every discretionary plan mapping the two possible on-support signals into actions. Mixed deviations cannot improve on their best pure component. Off-path beliefs and optimality at zero-probability signals are justified in the proof. The checker also tests indifference at both visibility endpoints and compares direct and symbolic margins on a grid. These finite checks illustrate the analytic result; its parameter range follows from the proof.
+
+\paragraph{Scope.}
+This theorem characterizes support for the two pooling outcomes. Equilibria with imperfectly separating adoption may also exist. Equilibrium selection, a time path for preferences, and empirical effects of AI regulation remain open.
+
+\paragraph{Model assessments and review context.}
+OpenAI Codex contributed to the derivation, writing and computational checks. The author administers AIRR. Assessment reports are associated with the exact PDF version they evaluate.
+
+\small
+\begin{thebibliography}{9}
+\bibitem{ao} W. Ao and J. Wu, \emph{Moral AI and the Erosion of Its Own Demand}, \href{https://arxiv.org/abs/2611.25213v1}{arXiv:2611.25213v1}, Sections 2 and 4 (2026).
+\bibitem{warneryd} K. W\"arneryd, \emph{Observable Strategies, Commitments, and Contracts}, \href{https://www.ifo.de/DocDL/cesifo1_wp5089.pdf}{CESifo Working Paper 5089} (2014).
+\end{thebibliography}
+\end{document}
