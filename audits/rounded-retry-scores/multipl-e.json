@@ -1,0 +1,1579 @@
+{
+  "n": 50,
+  "tasks": 161,
+  "block_count": 54,
+  "unique_histogram_blocks": 42,
+  "unique_third_blocks": 43,
+  "total_triples": 3155600,
+  "observed_failing_triples": 1560000,
+  "observed_pass3_percent": "398900/7889",
+  "minimum_pass3_percent": "227827/4508",
+  "maximum_pass3_percent": "801459/15778",
+  "distinct_global_counts": 6681,
+  "holes_within_global_interval": 1449,
+  "attainable_failures_bitmap_hex": "0x20000010104020082030104070082030b0c1705860f0a2c1705161e1a283e0d141e5e683e2f343e5478382a3c34d450786a2834b05070582830a0c0405060202080401040200080000040000000000000000020000010106020083030506078283030f0f1787870f0e3f17871f1e7e3f3f3f3e1e7e7f3f3f3efeff7f7f7ffefefffb7f7ffdfffffaff7ffdf7fffefffffdf7fffeffffedffffd7feffebbffff5fffffabcefff77f7d3f9eeaff5f6d179feabb7f6d14175eaaf34b0c3755e6bf5a6c371d76be5e6c7f2f763efeff7f7f77feffffff7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffbfffffffffffbfffffffffffffffffffff7dfffffffeff7d7ffffffede7ff5fefffebaeffd5feff6baeffbff7ff5ffffeaff7ffdf7fffefffffdf7ffffffffedff7ff7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffebffffffffffebbffffffffd4bbffffffe875fefffdf6fa7577fbeff75a65f5feeff7feeff55ffffffeeffffffffffebfeffffffffefffefffffffffffffffffffdfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7ff7fffffffffffdffffffbffffdffffdffeffedffffdfdfff6faffefd7fbf5effbeff7ffeff7dfefffffeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfffffffffffffffffffffbefffffffffffeffffffffeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7fffffffffff5fffffffffffdffffffffffffffffffffffefffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7fffffffffffddffffffffebfdffffffff7bfffffff7ff7fbfffffffff5fffffffffffffffffffafffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffffffffffffffffffff7fefffffffbfdfffffffdfafd77fefdf9daabf57eb9f850e2a550b8001042a010004000400020a84000005474a8c0002a5d75fac0042afdfdfa80047ebbfd57800d57fbeff7802977fffff5002bfddffaad0062aff75fac0043abf5df8800416aafd5080001438a95000000410a8000000001",
+  "bitmap_origin": 1552682,
+  "groups": [
+    {
+      "tasks": [
+        "HumanEval_0_has_close_elements",
+        "HumanEval_100_make_a_pile",
+        "HumanEval_101_words_string"
+      ],
+      "failures_sorted": [
+        0,
+        44,
+        49
+      ],
+      "input_tenths_percent": [
+        380,
+        423
+      ],
+      "possible_histograms": [
+        [
+          0,
+          44,
+          49
+        ]
+      ],
+      "possible_third_counts": [
+        31668
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_102_choose_num",
+        "HumanEval_103_rounded_avg",
+        "HumanEval_104_unique_digits"
+      ],
+      "failures_sorted": [
+        35,
+        39,
+        50
+      ],
+      "input_tenths_percent": [
+        173,
+        303
+      ],
+      "possible_histograms": [
+        [
+          35,
+          39,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        35284
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_105_by_length",
+        "HumanEval_106_f",
+        "HumanEval_107_even_odd_palindrome"
+      ],
+      "failures_sorted": [
+        7,
+        10,
+        48
+      ],
+      "input_tenths_percent": [
+        567,
+        675
+      ],
+      "possible_histograms": [
+        [
+          7,
+          10,
+          48
+        ]
+      ],
+      "possible_third_counts": [
+        17451
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_108_count_nums",
+        "HumanEval_109_move_one_ball",
+        "HumanEval_10_make_palindrome"
+      ],
+      "failures_sorted": [
+        40,
+        40,
+        50
+      ],
+      "input_tenths_percent": [
+        133,
+        242
+      ],
+      "possible_histograms": [
+        [
+          37,
+          45,
+          48
+        ],
+        [
+          39,
+          41,
+          50
+        ],
+        [
+          40,
+          40,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        39256,
+        39360,
+        39399
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_110_exchange",
+        "HumanEval_111_histogram",
+        "HumanEval_112_reverse_delete"
+      ],
+      "failures_sorted": [
+        0,
+        49,
+        50
+      ],
+      "input_tenths_percent": [
+        340,
+        347
+      ],
+      "possible_histograms": [
+        [
+          0,
+          49,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        38024
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_113_odd_count",
+        "HumanEval_114_minSubArraySum",
+        "HumanEval_115_max_fill"
+      ],
+      "failures_sorted": [
+        3,
+        37,
+        50
+      ],
+      "input_tenths_percent": [
+        400,
+        485
+      ],
+      "possible_histograms": [
+        [
+          2,
+          43,
+          45
+        ],
+        [
+          2,
+          44,
+          44
+        ],
+        [
+          3,
+          37,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        26488,
+        26531,
+        27371
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_116_sort_array",
+        "HumanEval_117_select_words",
+        "HumanEval_118_get_closest_vowel"
+      ],
+      "failures_sorted": [
+        50,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        0,
+        0
+      ],
+      "possible_histograms": [
+        [
+          50,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        58800
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_119_match_parens",
+        "HumanEval_11_string_xor",
+        "HumanEval_120_maximum"
+      ],
+      "failures_sorted": [
+        1,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        327,
+        333
+      ],
+      "possible_histograms": [
+        [
+          1,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        39200
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_121_solution",
+        "HumanEval_122_add_elements",
+        "HumanEval_123_get_odd_collatz"
+      ],
+      "failures_sorted": [
+        1,
+        8,
+        50
+      ],
+      "input_tenths_percent": [
+        607,
+        659
+      ],
+      "possible_histograms": [
+        [
+          1,
+          8,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        19656
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_124_valid_date",
+        "HumanEval_125_split_words",
+        "HumanEval_126_is_sorted"
+      ],
+      "failures_sorted": [
+        49,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        7,
+        13
+      ],
+      "possible_histograms": [
+        [
+          49,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        57624
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_127_intersection",
+        "HumanEval_128_prod_signs",
+        "HumanEval_129_minPath"
+      ],
+      "failures_sorted": [
+        16,
+        48,
+        50
+      ],
+      "input_tenths_percent": [
+        240,
+        327
+      ],
+      "possible_histograms": [
+        [
+          16,
+          48,
+          50
+        ],
+        [
+          16,
+          49,
+          49
+        ]
+      ],
+      "possible_third_counts": [
+        37408,
+        37456
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_12_longest",
+        "HumanEval_130_tri",
+        "HumanEval_131_digits"
+      ],
+      "failures_sorted": [
+        0,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        333,
+        333
+      ],
+      "possible_histograms": [
+        [
+          0,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        39200
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_132_is_nested",
+        "HumanEval_133_sum_squares",
+        "HumanEval_134_check_if_last_char_is_a_letter"
+      ],
+      "failures_sorted": [
+        0,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        333,
+        333
+      ],
+      "possible_histograms": [
+        [
+          0,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        39200
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_135_can_arrange",
+        "HumanEval_136_largest_smallest_integers",
+        "HumanEval_137_compare_one"
+      ],
+      "failures_sorted": [
+        47,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        20,
+        39
+      ],
+      "possible_histograms": [
+        [
+          47,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        55415
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_138_is_equal_to_sum_even",
+        "HumanEval_139_special_factorial",
+        "HumanEval_13_greatest_common_divisor"
+      ],
+      "failures_sorted": [
+        0,
+        48,
+        50
+      ],
+      "input_tenths_percent": [
+        347,
+        360
+      ],
+      "possible_histograms": [
+        [
+          0,
+          48,
+          50
+        ],
+        [
+          0,
+          49,
+          49
+        ]
+      ],
+      "possible_third_counts": [
+        36848,
+        36896
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_140_fix_spaces",
+        "HumanEval_141_file_name_check",
+        "HumanEval_142_sum_squares"
+      ],
+      "failures_sorted": [
+        0,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        333,
+        333
+      ],
+      "possible_histograms": [
+        [
+          0,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        39200
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_143_words_in_sentence",
+        "HumanEval_144_simplify",
+        "HumanEval_145_order_by_points"
+      ],
+      "failures_sorted": [
+        31,
+        46,
+        50
+      ],
+      "input_tenths_percent": [
+        153,
+        259
+      ],
+      "possible_histograms": [
+        [
+          31,
+          46,
+          50
+        ],
+        [
+          31,
+          47,
+          49
+        ]
+      ],
+      "possible_third_counts": [
+        39134,
+        39275
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_146_specialFilter",
+        "HumanEval_147_get_max_triples",
+        "HumanEval_148_bf"
+      ],
+      "failures_sorted": [
+        17,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        220,
+        296
+      ],
+      "possible_histograms": [
+        [
+          17,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        39880
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_149_sorted_list_sum",
+        "HumanEval_14_all_prefixes",
+        "HumanEval_150_x_or_y"
+      ],
+      "failures_sorted": [
+        0,
+        47,
+        50
+      ],
+      "input_tenths_percent": [
+        353,
+        373
+      ],
+      "possible_histograms": [
+        [
+          0,
+          47,
+          50
+        ],
+        [
+          0,
+          48,
+          49
+        ]
+      ],
+      "possible_third_counts": [
+        35720,
+        35815
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_151_double_the_difference",
+        "HumanEval_152_compare",
+        "HumanEval_153_Strongest_Extension"
+      ],
+      "failures_sorted": [
+        0,
+        31,
+        47
+      ],
+      "input_tenths_percent": [
+        480,
+        579
+      ],
+      "possible_histograms": [
+        [
+          0,
+          31,
+          47
+        ]
+      ],
+      "possible_third_counts": [
+        20710
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_154_cycpattern_check",
+        "HumanEval_155_even_odd_count",
+        "HumanEval_156_int_to_mini_roman"
+      ],
+      "failures_sorted": [
+        15,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        233,
+        305
+      ],
+      "possible_histograms": [
+        [
+          15,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        39655
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_157_right_angle_triangle",
+        "HumanEval_158_find_max",
+        "HumanEval_159_eat"
+      ],
+      "failures_sorted": [
+        9,
+        15,
+        50
+      ],
+      "input_tenths_percent": [
+        507,
+        628
+      ],
+      "possible_histograms": [
+        [
+          0,
+          31,
+          43
+        ],
+        [
+          1,
+          28,
+          45
+        ],
+        [
+          9,
+          15,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        16836,
+        17466,
+        20139
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_15_string_sequence",
+        "HumanEval_160_do_algebra",
+        "HumanEval_161_solve"
+      ],
+      "failures_sorted": [
+        6,
+        42,
+        49
+      ],
+      "input_tenths_percent": [
+        353,
+        442
+      ],
+      "possible_histograms": [
+        [
+          6,
+          42,
+          49
+        ]
+      ],
+      "possible_third_counts": [
+        29924
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_162_string_to_md5",
+        "HumanEval_163_generate_integers",
+        "HumanEval_16_count_distinct_characters"
+      ],
+      "failures_sorted": [
+        46,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        27,
+        52
+      ],
+      "possible_histograms": [
+        [
+          46,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        54380
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_17_parse_music",
+        "HumanEval_18_how_many_times",
+        "HumanEval_19_sort_numbers"
+      ],
+      "failures_sorted": [
+        3,
+        39,
+        48
+      ],
+      "input_tenths_percent": [
+        400,
+        491
+      ],
+      "possible_histograms": [
+        [
+          3,
+          39,
+          48
+        ]
+      ],
+      "possible_third_counts": [
+        26436
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_1_separate_paren_groups",
+        "HumanEval_20_find_closest_elements",
+        "HumanEval_21_rescale_to_unit"
+      ],
+      "failures_sorted": [
+        3,
+        23,
+        50
+      ],
+      "input_tenths_percent": [
+        493,
+        597
+      ],
+      "possible_histograms": [
+        [
+          3,
+          23,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        21372
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_22_filter_integers",
+        "HumanEval_23_strlen",
+        "HumanEval_24_largest_divisor"
+      ],
+      "failures_sorted": [
+        0,
+        32,
+        50
+      ],
+      "input_tenths_percent": [
+        453,
+        532
+      ],
+      "possible_histograms": [
+        [
+          0,
+          32,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        24560
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_25_factorize",
+        "HumanEval_26_remove_duplicates",
+        "HumanEval_27_flip_case"
+      ],
+      "failures_sorted": [
+        1,
+        1,
+        50
+      ],
+      "input_tenths_percent": [
+        653,
+        667
+      ],
+      "possible_histograms": [
+        [
+          1,
+          1,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        19600
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_28_concatenate",
+        "HumanEval_29_filter_by_prefix",
+        "HumanEval_2_truncate_number"
+      ],
+      "failures_sorted": [
+        0,
+        0,
+        0
+      ],
+      "input_tenths_percent": [
+        1000,
+        1000
+      ],
+      "possible_histograms": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "possible_third_counts": [
+        0
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_30_get_positive",
+        "HumanEval_31_is_prime",
+        "HumanEval_33_sort_third"
+      ],
+      "failures_sorted": [
+        0,
+        1,
+        41
+      ],
+      "input_tenths_percent": [
+        720,
+        777
+      ],
+      "possible_histograms": [
+        [
+          0,
+          1,
+          41
+        ]
+      ],
+      "possible_third_counts": [
+        10660
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_34_unique",
+        "HumanEval_35_max_element",
+        "HumanEval_36_fizz_buzz"
+      ],
+      "failures_sorted": [
+        0,
+        0,
+        0
+      ],
+      "input_tenths_percent": [
+        1000,
+        1000
+      ],
+      "possible_histograms": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "possible_third_counts": [
+        0
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_37_sort_even",
+        "HumanEval_39_prime_fib",
+        "HumanEval_3_below_zero"
+      ],
+      "failures_sorted": [
+        0,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        333,
+        333
+      ],
+      "possible_histograms": [
+        [
+          0,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        39200
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_40_triples_sum_to_zero",
+        "HumanEval_41_car_race_collision",
+        "HumanEval_42_incr_list"
+      ],
+      "failures_sorted": [
+        0,
+        7,
+        50
+      ],
+      "input_tenths_percent": [
+        620,
+        661
+      ],
+      "possible_histograms": [
+        [
+          0,
+          7,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        19635
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_43_pairs_sum_to_zero",
+        "HumanEval_44_change_base",
+        "HumanEval_45_triangle_area"
+      ],
+      "failures_sorted": [
+        0,
+        2,
+        49
+      ],
+      "input_tenths_percent": [
+        660,
+        680
+      ],
+      "possible_histograms": [
+        [
+          0,
+          2,
+          49
+        ],
+        [
+          1,
+          1,
+          49
+        ]
+      ],
+      "possible_third_counts": [
+        18424
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_46_fib4",
+        "HumanEval_47_median",
+        "HumanEval_48_is_palindrome"
+      ],
+      "failures_sorted": [
+        1,
+        21,
+        25
+      ],
+      "input_tenths_percent": [
+        687,
+        861
+      ],
+      "possible_histograms": [
+        [
+          1,
+          21,
+          25
+        ],
+        [
+          5,
+          12,
+          30
+        ]
+      ],
+      "possible_third_counts": [
+        3630,
+        4290
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_49_modp",
+        "HumanEval_4_mean_absolute_deviation",
+        "HumanEval_51_remove_vowels"
+      ],
+      "failures_sorted": [
+        0,
+        40,
+        50
+      ],
+      "input_tenths_percent": [
+        400,
+        454
+      ],
+      "possible_histograms": [
+        [
+          0,
+          40,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        29480
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_52_below_threshold",
+        "HumanEval_53_add",
+        "HumanEval_54_same_chars"
+      ],
+      "failures_sorted": [
+        0,
+        23,
+        50
+      ],
+      "input_tenths_percent": [
+        513,
+        598
+      ],
+      "possible_histograms": [
+        [
+          0,
+          23,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        21371
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_55_fib",
+        "HumanEval_56_correct_bracketing",
+        "HumanEval_57_monotonic"
+      ],
+      "failures_sorted": [
+        0,
+        0,
+        1
+      ],
+      "input_tenths_percent": [
+        993,
+        1000
+      ],
+      "possible_histograms": [
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "possible_third_counts": [
+        0
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_58_common",
+        "HumanEval_59_largest_prime_factor",
+        "HumanEval_5_intersperse"
+      ],
+      "failures_sorted": [
+        0,
+        0,
+        0
+      ],
+      "input_tenths_percent": [
+        1000,
+        1000
+      ],
+      "possible_histograms": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "possible_third_counts": [
+        0
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_60_sum_to_n",
+        "HumanEval_61_correct_bracketing",
+        "HumanEval_62_derivative"
+      ],
+      "failures_sorted": [
+        0,
+        0,
+        0
+      ],
+      "input_tenths_percent": [
+        1000,
+        1000
+      ],
+      "possible_histograms": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "possible_third_counts": [
+        0
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_63_fibfib",
+        "HumanEval_64_vowels_count",
+        "HumanEval_65_circular_shift"
+      ],
+      "failures_sorted": [
+        0,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        333,
+        333
+      ],
+      "possible_histograms": [
+        [
+          0,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        39200
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_66_digitSum",
+        "HumanEval_67_fruit_distribution",
+        "HumanEval_68_pluck"
+      ],
+      "failures_sorted": [
+        0,
+        35,
+        50
+      ],
+      "input_tenths_percent": [
+        433,
+        505
+      ],
+      "possible_histograms": [
+        [
+          0,
+          35,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        26145
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_69_search",
+        "HumanEval_6_parse_nested_parens",
+        "HumanEval_70_strange_sort_list"
+      ],
+      "failures_sorted": [
+        31,
+        40,
+        40
+      ],
+      "input_tenths_percent": [
+        260,
+        449
+      ],
+      "possible_histograms": [
+        [
+          31,
+          39,
+          41
+        ],
+        [
+          31,
+          40,
+          40
+        ],
+        [
+          33,
+          35,
+          43
+        ],
+        [
+          34,
+          34,
+          43
+        ]
+      ],
+      "possible_third_counts": [
+        24255,
+        24294,
+        24309,
+        24342
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_71_triangle_area",
+        "HumanEval_72_will_it_fly",
+        "HumanEval_73_smallest_change"
+      ],
+      "failures_sorted": [
+        20,
+        23,
+        50
+      ],
+      "input_tenths_percent": [
+        380,
+        546
+      ],
+      "possible_histograms": [
+        [
+          12,
+          39,
+          42
+        ],
+        [
+          14,
+          32,
+          47
+        ],
+        [
+          15,
+          30,
+          48
+        ],
+        [
+          20,
+          23,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        20839,
+        21539,
+        21811,
+        22511
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_74_total_match",
+        "HumanEval_75_is_multiply_prime",
+        "HumanEval_76_is_simple_power"
+      ],
+      "failures_sorted": [
+        2,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        320,
+        333
+      ],
+      "possible_histograms": [
+        [
+          2,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        39200
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_77_iscube",
+        "HumanEval_78_hex_key",
+        "HumanEval_79_decimal_to_binary"
+      ],
+      "failures_sorted": [
+        26,
+        26,
+        50
+      ],
+      "input_tenths_percent": [
+        320,
+        490
+      ],
+      "possible_histograms": [
+        [
+          18,
+          41,
+          43
+        ],
+        [
+          18,
+          42,
+          42
+        ],
+        [
+          25,
+          27,
+          50
+        ],
+        [
+          26,
+          26,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        23776,
+        23817,
+        24800,
+        24825
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_7_filter_by_substring",
+        "HumanEval_80_is_happy",
+        "HumanEval_81_numerical_letter_grade"
+      ],
+      "failures_sorted": [
+        0,
+        28,
+        50
+      ],
+      "input_tenths_percent": [
+        480,
+        564
+      ],
+      "possible_histograms": [
+        [
+          0,
+          28,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        22876
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_82_prime_length",
+        "HumanEval_83_starts_one_ends",
+        "HumanEval_84_solve"
+      ],
+      "failures_sorted": [
+        40,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        67,
+        121
+      ],
+      "possible_histograms": [
+        [
+          40,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        49080
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_85_add",
+        "HumanEval_86_anti_shuffle",
+        "HumanEval_87_get_row"
+      ],
+      "failures_sorted": [
+        22,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        187,
+        270
+      ],
+      "possible_histograms": [
+        [
+          22,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        40740
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_88_sort_array",
+        "HumanEval_89_encrypt",
+        "HumanEval_8_sum_product"
+      ],
+      "failures_sorted": [
+        0,
+        2,
+        42
+      ],
+      "input_tenths_percent": [
+        707,
+        765
+      ],
+      "possible_histograms": [
+        [
+          0,
+          2,
+          42
+        ]
+      ],
+      "possible_third_counts": [
+        11480
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_90_next_smallest",
+        "HumanEval_91_is_bored",
+        "HumanEval_92_any_int"
+      ],
+      "failures_sorted": [
+        31,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        127,
+        207
+      ],
+      "possible_histograms": [
+        [
+          31,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        43695
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_93_encode",
+        "HumanEval_94_skjkasdkd",
+        "HumanEval_95_check_dict_case"
+      ],
+      "failures_sorted": [
+        41,
+        50,
+        50
+      ],
+      "input_tenths_percent": [
+        60,
+        110
+      ],
+      "possible_histograms": [
+        [
+          41,
+          50,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        49860
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_96_count_up_to",
+        "HumanEval_97_multiply",
+        "HumanEval_98_count_upper"
+      ],
+      "failures_sorted": [
+        1,
+        7,
+        50
+      ],
+      "input_tenths_percent": [
+        613,
+        661
+      ],
+      "possible_histograms": [
+        [
+          1,
+          7,
+          50
+        ]
+      ],
+      "possible_third_counts": [
+        19635
+      ]
+    },
+    {
+      "tasks": [
+        "HumanEval_99_closest_integer",
+        "HumanEval_9_rolling_max"
+      ],
+      "failures_sorted": [
+        28,
+        48
+      ],
+      "input_tenths_percent": [
+        240,
+        385
+      ],
+      "possible_histograms": [
+        [
+          28,
+          48
+        ]
+      ],
+      "possible_third_counts": [
+        20572
+      ]
+    }
+  ],
+  "rolling": {
+    "identified_single_window_sums": true,
+    "compatible_labelled_vectors": 1,
+    "uniquely_identified_tasks": 161,
+    "residue_start_bounds": [
+      [
+        0,
+        0
+      ],
+      [
+        49,
+        49
+      ],
+      [
+        44,
+        44
+      ]
+    ],
+    "starts": [
+      [
+        0,
+        49,
+        44
+      ]
+    ]
+  },
+  "source_sha256": "a9e40e12d6454d9f6bbaced4f453c3139e71fc8c745535f5f7c2d29616a8e395",
+  "url": "https://huggingface.co/datasets/bigcode/MultiPL-E-completions/resolve/999e282fd3cad526dfe850e093ca671ed3dc5b43/data/humaneval.cpp.StarCoder2_15b_16k.0.2.reworded-00000-of-00001.parquet",
+  "experiment": "humaneval-cpp-StarCoder2_15b_16k-0.2-reworded",
+  "temperature_in_filename": 0.2,
+  "top_p": 0.95,
+  "max_tokens": 512,
+  "language": "cpp",
+  "rounding": "nearest 0.1 percentage point with half ties rounded upward",
+  "grouping": "lexicographic problem ID, consecutive triples, all rows included"
+}
