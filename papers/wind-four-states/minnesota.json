@@ -1,0 +1,81 @@
+{
+  "source": "https://raw.githubusercontent.com/NatLabRockies/SAM/784177b634fa1475fda6672b70595e087a238aea/deploy/",
+  "hours": 8760,
+  "height_m": 80,
+  "assignment": "nearest of four fixed speeds, first on tie; evaluate at realized bin means",
+  "groups": [
+    {
+      "n": 635,
+      "mean": 2.1102425196850394,
+      "lo": 0.137,
+      "hi": 3.076
+    },
+    {
+      "n": 806,
+      "mean": 3.9461985111662523,
+      "lo": 3.087,
+      "hi": 4.715
+    },
+    {
+      "n": 2723,
+      "mean": 6.579573264781491,
+      "lo": 4.725,
+      "hi": 8.182
+    },
+    {
+      "n": 4596,
+      "mean": 11.115833550913838,
+      "lo": 8.192,
+      "hi": 21.226
+    }
+  ],
+  "range_kw": [
+    1000,
+    5000
+  ],
+  "number_curves": 2,
+  "eligible_pairs": 1,
+  "excluded_curves": [],
+  "reversals": [
+    {
+      "a": "Fuhrlander FL 1500_70",
+      "b": "GE 1.5sle",
+      "rating": 1500.0,
+      "hourly_kw": -13.24079900456627,
+      "four_mean_kw": 15.046625214611936
+    }
+  ],
+  "means_by_curve": {
+    "Fuhrlander FL 1500_70": [
+      759.5360504200913,
+      850.5384699086758
+    ],
+    "GE 1.5sle": [
+      772.7768494246576,
+      835.4918446940638
+    ]
+  },
+  "envelope_kw": [
+    -47.295385009258744,
+    18.294322761313374
+  ],
+  "per_bin_envelope_kw": [
+    [
+      0.0,
+      9.144888054890385
+    ],
+    [
+      0.7300032933720126,
+      14.162702967741945
+    ],
+    [
+      -35.89737179091684,
+      -23.183279529930214
+    ],
+    [
+      -69.00509398365924,
+      44.85730962625103
+    ]
+  ],
+  "hinge_reconstruction_kw": -13.240799004566236
+}
