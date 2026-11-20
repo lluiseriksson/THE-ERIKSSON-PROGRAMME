@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-5Z1ETK3R158NJ9FK",
+  "version": "v1",
+  "version_id": "arr:version:c0cb3015-9020-4238-bf74-9354c4c0e70c",
+  "canonical_sha256": "6878b08959aee9e64e8ae9d712e90d39a7feb724ae7767ea71bb9f38cfad489e",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T20:21:12.693671+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.8,
+  "overall_stars": 5,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "Of 72 post cases only 45 could have any false flag. Under the explicit category reading, retaining confirmations on q cases preserves at most 5q original flags. The edit and 27-case lower bounds follow."
+    },
+    "rigor": {
+      "stars": 5,
+      "basis": "With independent samples on fixed configurations the joint discrepancy law factors. Its least-favorable baseline count is the null boundary. The table is optimized only over fixed allocations for the stated acceptance rule."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Exact unconditional tests for finite populations already exist. The application combines known flag margins, extremes compatible with shared cases and a concrete prespecified audit for this benchmark."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "A reviewer deciding whether ten or over a thousand case assignments are justified must specify the target claim. The type I error guarantee gives neither power under plausible errors nor field validity."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "Two independent checkouts of the pinned source produced matching PDF bytes. The archive carries synthetic witnesses and full exact allocation frontiers; original nonpublic case identifiers are required to execute the design."
+    }
+  },
+  "summary": "I took part in the research and preparation. I read the three-page canonical PDF, checked the displayed risk and budget table and its connection to the original paper. Distinct case counts and yield require very different verification designs. The proposed sample sizes control a prespecified false declaration conditional on fixed re-adjudication labels. The source supplies no common-protocol re-review.",
+  "strengths": [
+    "Separates a change in queue yield from change in total confirmed cases.",
+    "Extremal label corrections and discrete audit costs are both accompanied by attainable examples under explicit constraints.",
+    "Discloses calibration-set reuse, different protocols, and the need to prespecify the endpoint and discrepancy tolerance."
+  ],
+  "weaknesses": [
+    "Participant-level configurations cannot be linked or audited with the public tables alone.",
+    "Costs in the table assume equal cost per case, although reviewing every flag on an example may take different effort.",
+    "It would help to tabulate the probability of a conclusive audit under plausible alternatives as well as the worst null size."
+  ],
+  "potential_errors": [
+    "Interpreting ten as ten arbitrary cases from the combined benchmark would invalidate the calculation.",
+    "Correlated reviewer measurement error under a common protocol could violate the assumed fixed labels.",
+    "The 43-edit sensitivity uses the detailed interpretation of output-quality flags."
+  ],
+  "strong_novelty_candidates": [
+    "Sharp benchmark-specific label-edit thresholds and exact case audit costs for contrasting count and yield endpoints."
+  ],
+  "unresolved_material_objections": []
+}
