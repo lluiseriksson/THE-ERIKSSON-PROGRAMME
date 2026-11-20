@@ -31,7 +31,7 @@ From Wong's paper release [3] we selected the 38 primary ResNet L40S, synthetic 
 \begin{center}
 \begin{tabular}{lrrrr}
 \toprule
-& Arm pairs & Comparable prefixes & Tie changes & Strict reversals\\
+& Pairs & Prefixes & Tie changes & Reversals\\
 \midrule
 ResNet, matched start & 15 & 223 & 0 & 0\\
 Logistic regression, unverified start & 15 & 131 & 10 & 0\\
@@ -43,10 +43,8 @@ A comparable integer prefix $k$ requires that each log contain $k$ scores and ha
 
 \paragraph{The record that determines the price.} In synthetic logistic regression, seed 2, the no-memory log attained a record of 0.922908. The summary-memory log first attained at least that target using one more scored trial and four fewer unscored trials. This single record sets the full condition $1-4p\le0$. The summary path dominates for all budgets exactly when $p\ge1/4$. The initial state hash and training seed were absent, so this comparison describes the two logs alone. In the three retained Linux pairs the no-memory arm supplied no valid score for a comparison on both clocks.
 
-\paragraph{Reproduction and scope.} Scripts, exact intervals, file digests and pairwise results are in the programme repository under \texttt{audits/trial-budget-clocks}. A direct budget calculation checked the interval algorithm on all 729 ordered pairs of length-three logs over two scores and an unscored symbol, at nine prices. The target data are the archived validation scores. These results do not estimate future test performance or a causal effect of memory.
+\paragraph{Reproduction and scope.} Scripts, exact intervals, file digests and pairwise results are in the programme repository in PR 326 (\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/326}). A direct budget calculation checked the interval algorithm on all 729 ordered pairs of length-three logs over two scores and an unscored symbol, at nine prices. The target data are the archived validation scores. These results do not estimate future test performance or a causal effect of memory.
 \paragraph{Model assessments and review context.} Codex contributed to the analysis and writing. Any assessment of the frozen PDF is recorded separately with the model identity, involvement and artifact hash.
 \small
-\noindent [1] J. Dodge et al., \emph{Show Your Work: Improved Reporting of Experimental Results}, EMNLP-IJCNLP (2019), doi:10.18653/v1/D19-1224.\\
-[2] N. Hansen et al., \emph{Anytime Performance Assessment in Blackbox Optimization Benchmarking}, IEEE Trans.\ Evol.\ Comput., doi:10.1109/TEVC.2022.3210897.\\
-[3] D. Wong, \emph{Evaluating Governed LLM-Driven ML Experimentation}, arXiv:2611.23678v1 (2026). Paper release: doi:10.5281/zenodo.24174991.
+\noindent [1] J. Dodge et al., \emph{Show Your Work: Improved Reporting of Experimental Results}, EMNLP-IJCNLP (2019), doi:10.18653/v1/D19-1224.\par\noindent [2] N. Hansen et al., \emph{Anytime Performance Assessment in Blackbox Optimization Benchmarking}, IEEE Trans.\ Evol.\ Comput., doi:10.1109/TEVC.2022.3210897.\par\noindent [3] D. Wong, \emph{Evaluating Governed LLM-Driven ML Experimentation}, arXiv:2611.23678v1 (2026). Paper release: doi:10.5281/zenodo.24174991.
 \end{document}
