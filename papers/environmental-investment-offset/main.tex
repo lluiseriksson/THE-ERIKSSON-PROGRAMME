@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=0.95in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{How precisely do published regressions measure the reallocation of green investment?}
+\author{Lluis Eriksson}
+\date{November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+After an increase in environmental political risk, how much of the estimated fall in green investment is offset by other investment? The main asset-scaled regressions in Gustafson, Lel and Qin imply a point ratio of $28/37$. Three control coefficients violate a necessary accounting restriction by more than rounding can explain. The published total-investment variance consequently lacks a demonstrated link to the covariance needed for inference on the ratio. Inverting a contrast using only the marginal standard errors gives a conservative asymptotic 95\% interval of $[0.020,2.956]$, rounded outwards. It includes full compensation. Green capital expenditure subsequently rebounds. Its two horizon coefficients sum to $0.45$ per thousand of assets, but either sign of their population sum is compatible with the marginal evidence. The two results distinguish the direction of a response from the fraction of spending recovered.
+\end{abstract}
+
+\section{An accounting check on the regressions}
+Gustafson, Lel and Qin \cite{glq} relate environmental political risk measured from earnings calls to corporate investment. Their estimates suggest that roughly three quarters of the one-year green investment decline is offset by higher non-green investment. They describe this fraction as an approximate comparison. We examine how precisely the published tables support it, and what their reversal estimates say about recovery over two years.
+
+Let $G,N,T$ denote green, non-green and total investment in the same units. If $T=G+N$ holds in the estimation data and a common linear regression operator $L$ is applied to all three outcomes, then $LT=LG+LN$ for every coefficient, including the controls. Under identical cluster definitions and finite-sample corrections, the residuals and cluster scores then add and the variance of a total coefficient can be used to recover the covariance of its components. The two conditions concern the constructed outcomes and the fitted models. An accounting definition in the source data alone is insufficient.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Regressor & Green & Non-green & Total & $T-G-N$\\
+\midrule
+Environmental political risk & $-0.74$ & $0.56$ & $-0.18$ & $0.00$\\
+Return on assets & $-6.69$ & $11.73$ & $4.99$ & $-0.05$\\
+Debt ratio & $-12.90$ & $-4.98$ & $-17.91$ & $-0.03$\\
+Log market-to-book & $-0.59$ & $4.47$ & $3.90$ & $0.02$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent Source: online appendix, Table IA.4 (7) and Table IA.5 (2, 4). All three columns report 2,826 observations. The coefficients use investment per thousand of assets as the outcome. Rounding three entries to the nearest hundredth allows an error of at most $0.015$ in their identity. Each control shown exceeds it. This test cannot distinguish differences in underlying observations, transformations or reporting. It rules out inferring covariance by assuming the entire printed system is additive up to rounding. The headline equality alone remains consistent with coincidence.
+
+\clearpage
+\section{Inference using the two marginal errors}
+Write $n=0.56$ for the estimated increase in non-green investment and $d=0.74$ for the magnitude of the estimated green decline. The absolute firm-clustered $t$ statistics are $u=2.05$ and $v=4.00$. Thus $s_n=n/u$ and $s_d=d/v$ to printed precision. For a proposed population ratio $r$ (with nonzero population denominator), the contrast $n-rd$ has standard error at most $s_n+|r|s_d$ by Cauchy--Schwarz. Under joint asymptotic normality and consistent marginal errors, an asymptotically conservative confidence set is
+\[
+ \{r: |n-rd|\le z(s_n+|r|s_d)\},\qquad z=1.96 .
+\]
+For a fixed true ratio, the test uses an upper bound for its standard error. Coverage follows from that single contrast. This is an application of ratio-test inversion \cite{fieller} with unrestricted covariance. The worst-case standard error for a linear contrast is also a special case of the marginal-variance bounds studied by Cocci and Plagborg-M{\o}ller \cite{cocci}. It is a comparison of associations from the published specifications. A causal share of money transferred between specific projects would require further identification.
+
+Since $u,v>z$ and $n,d>0$, every negative $r$ fails the inequality. On the positive half-line its two endpoints are
+\[
+ \frac nd\,\frac{1-z/u}{1+z/v}
+ \quad\text{and}\quad
+ \frac nd\,\frac{1+z/u}{1-z/v}.
+\]
+They are about $0.02230$ and $2.90253$ at displayed precision. Both endpoints are attainable in the algebraic union over admissible correlations, including singular limits. The covariance in the actual data may yield a substantially narrower set.
+
+Allow each printed coefficient magnitude and each reported $t$ to vary by $0.005$. Positivity and $u,v>z$ persist. By monotonicity, use the smallest $u,v$ for both outer endpoints, the smallest $n/d$ for the lower and the largest $n/d$ for the upper. This gives
+\[
+ \left[\frac{502571}{24193577},\frac{24106629}{8156687}\right]
+ \subset [0.020,\,2.956].
+\]
+Zero is excluded under the stated approximation. Both one half and complete offset are compatible. Values above two also remain in the set. Inclusion does not imply that such large effects are probable.
+
+\section{Changing the sample changes the check}
+Table IA.6 restricts the estimation period. Its controlled green regression has 1,426 observations versus 1,422 in the non-green and total regressions. The printed coefficients are $-1.31$, $1.69$ and $0.23$. Their discrepancy is $-0.15$. This second example illustrates why adding the component estimates on different samples need not reproduce the total even when investment categories are defined as complements.
+
+\clearpage
+\section{Reversal and cumulative recovery}
+Figure 3 measures the green share of total investment. Figure 4 measures non-green investment relative to assets. The total-investment response in Figure IA.5 is also asset-scaled. A reversal in a percentage series alone cannot determine how much spending returned per unit of assets. For an asset-scaled example with printed estimates at both horizons, consider the capital expenditure (CAPEX) component of Table 7.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Horizon & Green CAPEX ($t$) & Non-green CAPEX & Total CAPEX & $T-G-N$\\
+\midrule
+One year & $-0.62$ ($-3.74$) & $0.61$ & $-0.21$ & $-0.20$\\
+Two years & $1.07$ ($8.41$) & $-1.22$ & $-0.09$ & $0.06$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent Source: Table 7, panel A (4) and panel B (1, 4). Both accounting discrepancies exceed the $0.015$ rounding allowance.
+
+The green coefficients have opposite signs. Their sum is $0.45$. With standard errors $s_1=0.62/3.74$ and $s_2=1.07/8.41$, a covariance-robust conservative interval for the sum is
+\[
+ 0.45\ \pm\ 1.96(s_1+s_2).
+\]
+It includes zero even before allowing for rounding. At the displayed values, a zero covariance would give a positive lower endpoint, whereas a correlation of one gives a negative lower endpoint. The assumed cross-horizon covariance can thus change a two-sided test of whether the rebound exceeded the initial decline. This concerns inference on the sum of two regression coefficients.
+
+Equation (3) fits each lag separately while holding the outcome at $t+1$ and the controls at $t$. At a two-year horizon those controls are measured one year after the risk observation. Figure 3 labels different sample sizes across horizons. A common-cohort estimate of accumulated cash spending would additionally require aligned observations, a common asset denominator or explicit asset weights, and a consistent treatment of controls relative to the shock. A reversal of the fitted flow is evidence about timing. It does not by itself identify the amount recovered by the original firms.
+
+\paragraph{Reproduction.} The accompanying scripts read the original November 2026 PDF, extract its numeric cells and evaluate the inequalities in rational arithmetic. The public tables support this audit without access to the authors' firm-level sample. A joint regression or the covariance of the two estimated responses would permit more informative inference.
+\paragraph{Model assessments and review context.} AI assistance was used in preparing the analysis and its reproduction scripts. Any assessment of this exact PDF belongs to the version-specific review record. The source working paper's empirical findings are attributed to its authors.
+
+\begin{thebibliography}{9}
+\bibitem{glq} M. Gustafson, U. Lel and Z. Qin (2026). \emph{Greening on Hold: Environmental Political Risk and the Reallocation of Corporate Investment}. ECGI Finance Working Paper 1166/2026. \href{https://doi.org/10.67929/ecgi-fin-1166-2026}{doi:10.67929/ecgi-fin-1166-2026}.
+\bibitem{fieller} E. C. Fieller (1954). Some problems in interval estimation. \emph{Journal of the Royal Statistical Society B} 16, 175--185. \href{https://doi.org/10.1111/j.2517-6161.1954.tb00159.x}{doi:10.1111/j.2517-6161.1954.tb00159.x}.
+\bibitem{cocci} M. Cocci and M. Plagborg-M{\o}ller (2025). Standard errors for calibrated parameters. \emph{Review of Economic Studies} 92. \href{https://academic.oup.com/restud/article/92/5/2952/7822151}{Publisher record}.
+\end{thebibliography}
+\end{document}
