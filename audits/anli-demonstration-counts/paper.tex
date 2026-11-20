@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[hidelinks]{hyperref}
+\title{Expected and hard demonstration budgets on ANLI R3}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+How many in-context demonstrations are needed to stay within one macro-F1 point of the best reported result for each of six models? Using the published ANLI R3 length-bin maxima at a 4,000-token budget, we certify a minimum worst-model expected count of 24.742. Yet a rule capped at 29 demonstrations on every draw cannot meet the same target on the displayed scores. The optimum occasionally uses a 67-demonstration configuration. Protecting the guarantee against rounding raises the expected count to 25.158. The distinction holds with zero-shot available. The calculation concerns a common randomized choice of bin per complete evaluation and retains the original model-specific configurations.
+\end{abstract}
+\section{The decision}
+Perez, Gab\'in and Parapar [1, Table 3] report six models on ANLI R3, four demonstration-length bins and a zero-shot baseline. Each model--bin cell gives the highest macro-F1 observed under the token budget and the demonstration count at which it was obtained. The six models are Qwen 30B, Qwen 4B, Phi-4-mini, Phi-4, Gemma 27B and Gemma 4B, in that order. Bin labels $B_1$ through $B_4$ follow their Table 3. Let $S_{ij}$ and $K_{ij}$ denote the score and count in cell $(i,j)$, and $R_{ij}=\max_j S_{ij}-S_{ij}$. Zero-shot has count zero.
+
+Choose bin $j$ once per complete evaluation with probabilities $p_j$ common to all models. Conditional on the draw, use the reported configuration for the model in question. This convention makes the expected score the average of the cell scores. Drawing a bin separately for each test item would require confusion matrices to evaluate pooled macro-F1. Neither policy estimates the performance of new demonstrations or an unseen model.
+
+For a tolerated loss $r$ in macro-F1 points, solve
+\[
+ C(r)=\min_{p\ge0,\ \sum p_j=1}\ \max_i K_i p
+       \qquad\text{subject to } R_i p\le r\quad\text{for each }i .
+\]
+A hard count limit $h$ additionally removes each option $j$ with $\max_i K_{ij}>h$. Counts measure the number of selected demonstrations. They do not measure tokens consumed, latency or money.
+
+\newpage
+\section{A one-point target}
+\begin{center}\small
+\begin{tabular}{lrr}
+\toprule
+Quantity & Displayed scores & Rounding-protected\\\midrule
+Minimum worst expected count at $r=1$ & 24.742 & 25.158\\
+Smallest feasible hard limit at $r=1$ & 67 & 67\\
+Least worst loss with hard limit 29 & 1.00629 & 1.01629\\
+Least worst loss with hard limit 24 & 1.90000 & 1.91000\\
+\bottomrule
+\end{tabular}
+\end{center}
+On the displayed values the optimal probabilities for $(B_1,B_2,B_3,B_4,\mathrm{ZS})$ are $(33,3400,0,1850,0)/5283$. The binding count is Qwen 4B's: $67p_1+28p_2+18p_4=130711/5283$. The Phi-4 and Gemma 4B regret constraints bind. For a direct lower certificate, give these two constraints multipliers $\lambda_1=121550/5283$ and $\lambda_2=11300/587$. For every option $j$, form
+\[
+ d_j=K_{\mathrm{Qwen\,4B},j}+\lambda_1 R_{\mathrm{Phi\text{-}4},j}
+                              +\lambda_2 R_{\mathrm{Gemma\,4B},j}.
+\]
+Every feasible rule costs at least $\min_j d_j-\lambda_1-\lambda_2$. The minimum occurs at the three options with positive probability and gives exactly the displayed optimum. Adding zero-shot cannot improve it.
+
+At a hard limit of 29, $B_1$ is unavailable. The best worst loss is attained by sampling $B_2,B_4$ in proportions $68:37$. On those two options the Phi-4 and Gemma 4B losses are equal at $1761/1750$. Giving Phi-4 weight $23/35$ and Gemma 4B weight $12/35$ yields that same loss on both options and at least that loss on $B_3$ and zero-shot. Every limit from 29 to 66 excludes the identical column. Permitting $B_1$ closes the gap with probability $11/1761$ in the expected-count optimum. Across the four bins, the best fixed choice has worst loss 1.43; randomizing without a count penalty brings it down to $138541/156185$, about 0.887 [2].
+
+\section{Rounding and replication}
+The four bin scores are printed to two decimal places, zero-shot to one. Allow each cell to vary independently by half its display unit. All row winners stay unique. To maximize one row's regret, increase its winner to the top of its interval and lower each other cell to the bottom. The new loss coefficients increase by 0.01 on losing bins and 0.055 on zero-shot. The robust optimizer is $(171,6800,0,3700,0)/10671$, with worst expected count $268457/10671$. A robust guarantee is stronger than a statement about unknown exact scores. For example, at hard limit 29, lowering the $B_1$ scores of Phi-4 and Gemma 4B by 0.004 and raising their $B_2,B_4$ scores by 0.004 makes the $68:37$ rule feasible below one. The published rounding therefore matters to the hard feasibility boundary.
+
+\newpage
+\section{Interpretation and evidence}
+A mean budget near 25 hides a rare high-count draw. If a system must impose 29 as a strict maximum on the published configurations, it must either relax the one-point guarantee or obtain more precise scores before asserting feasibility. The ceiling of 67 pertains to Qwen 4B under the $B_1$ configuration. It does not require 67 demonstrations for every model.
+
+The verifier parses the versioned HTML table and enumerates candidate active constraints with rational arithmetic. For each retained interval of $r$ it checks primal feasibility and a dual lower bound on every admissible option. The supplement contains the segments for the four bins and for the zero-shot extension, with and without display rounding [2]. Display rounding is only one uncertainty source. Model-specific selection of the best demonstration count, random prompt selection and test-sample variation are not corrected by these intervals. Raw prediction-level replications would be needed to judge deployment performance or sampling uncertainty.
+
+\paragraph{Model assessments and review context.}
+OpenAI Codex contributed to the analysis, verifier and manuscript. The numerical certificate addresses the table calculation. Any editorial assessment of this PDF is recorded separately with the exact artifact hash and reviewer context. No independent peer review is documented.
+
+\paragraph{References and materials.}
+[1] A. Perez, J. Gab\'in and J. Parapar. \emph{The ROI of Small Examples: Optimizing In-Context Learning Under Token Budgets}. 2026. \href{https://arxiv.org/html/2611.24971v1#S3.T3}{arXiv:2611.24971v1, Table 3}.\\
+{[2]} L. Eriksson. \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/codex/anli-coste-20261120/audits/anli-demonstration-counts}{Reproducible analysis and rational certificates}, 2026.
+\end{document}
