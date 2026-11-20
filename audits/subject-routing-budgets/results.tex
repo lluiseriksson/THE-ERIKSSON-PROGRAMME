@@ -1,0 +1,17 @@
+We counted 105 distinct repeated prompt strings, comprising 210 retained rows. Of these strings, 78 occurred in multiple subjects and four had different recorded pairs of correctness labels. We tested three alternative treatments. First and last refer to the upstream domain order and within-file order. Singletons discard every occurrence of a repeated string. Each treatment recomputes floors and budgets on its own retained rows.
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Rows retained & Questions & Some optimum safe & Every optimum safe\\
+\midrule
+Official & 14,037 & 1,840--13,951 & 2,495--13,300\\
+First occurrence & 13,932 & 1,836--13,846 & 2,486--13,200\\
+Last occurrence & 13,932 & 1,840--13,846 & 2,486--13,204\\
+Singletons only & 13,827 & 1,836--13,741 & 2,477--13,104\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+On singletons alone, at 1,836 strong calls, two assignments both score 11,229 overall while scoring 724 and 385 respectively in moral scenarios. The 339-answer deficit remains the largest across subjects and feasible budgets under each treatment. Exact-string repetition changes the budget endpoints but is unnecessary for this counterexample.
