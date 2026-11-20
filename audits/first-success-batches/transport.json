@@ -1,0 +1,308 @@
+[
+  {
+    "n": 3,
+    "m": 2,
+    "strata": 5,
+    "edges": 2,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-2.json",
+    "sha256": "dd69ed1ca28939808b97df021ad8104713efb4ffde29693516c02eda3165932b"
+  },
+  {
+    "n": 3,
+    "m": 3,
+    "strata": 7,
+    "edges": 8,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-3.json",
+    "sha256": "121e117b93f094540f5254d81159477b8f1687600fa3e02e4aeb9eafc94529de"
+  },
+  {
+    "n": 3,
+    "m": 4,
+    "strata": 9,
+    "edges": 18,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-4.json",
+    "sha256": "f6fc28948ab01bd44470a6f869d0dd3b36f42e1bf83b2d4ba0a81b7c9a1b53a5"
+  },
+  {
+    "n": 3,
+    "m": 5,
+    "strata": 11,
+    "edges": 33,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-5.json",
+    "sha256": "e3521f978fccea80be873c8cde586b4954954db79558f7d58599d0e5ef8894a3"
+  },
+  {
+    "n": 3,
+    "m": 6,
+    "strata": 13,
+    "edges": 54,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-6.json",
+    "sha256": "ce744a7345808e95a42acd8826f0a1653992f760e57836efb87f85f0a77585c4"
+  },
+  {
+    "n": 3,
+    "m": 7,
+    "strata": 15,
+    "edges": 81,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-7.json",
+    "sha256": "6793c9544552720894ad1dbe32a6fe0bfdcc47d13dea64ea63f07b0af519185b"
+  },
+  {
+    "n": 3,
+    "m": 8,
+    "strata": 17,
+    "edges": 116,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-8.json",
+    "sha256": "2e4696ae6eaaaeb00b12599255c5223306e3fe028ff4232167d5619e3948695e"
+  },
+  {
+    "n": 3,
+    "m": 9,
+    "strata": 19,
+    "edges": 159,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-9.json",
+    "sha256": "b1cea7c652e4a2aff284891a5db014744ca67a8d88beb7adc95749e86c57c667"
+  },
+  {
+    "n": 3,
+    "m": 10,
+    "strata": 21,
+    "edges": 211,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-10.json",
+    "sha256": "9954421e0aa4b36402a83faeb2023535dabaec2055e8e453ec610f62abe785d3"
+  },
+  {
+    "n": 3,
+    "m": 11,
+    "strata": 23,
+    "edges": 273,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-11.json",
+    "sha256": "45580f256322e5f4b962183c15e4726735f13122167b189715e3462be6e9ea55"
+  },
+  {
+    "n": 3,
+    "m": 12,
+    "strata": 25,
+    "edges": 346,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-12.json",
+    "sha256": "aa6ed61d06731560ead8faf8f4e7439f199ed734494ee1998f5959f32acef3db"
+  },
+  {
+    "n": 3,
+    "m": 13,
+    "strata": 27,
+    "edges": 430,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-13.json",
+    "sha256": "5d956626e517fb095d6b2c969c84008716e4842f95ed31707248845bec71448f"
+  },
+  {
+    "n": 3,
+    "m": 14,
+    "strata": 29,
+    "edges": 527,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-14.json",
+    "sha256": "c7ec22aa10adda46f11a416c2fc3de108a48fd1ee49e78fd8fd8448e42b51075"
+  },
+  {
+    "n": 3,
+    "m": 15,
+    "strata": 31,
+    "edges": 637,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-15.json",
+    "sha256": "ab7d4b4c10ce0a3bf2dbe05dd1d75cd6f2c83ee9711331d4f44a8be3026f4ea3"
+  },
+  {
+    "n": 3,
+    "m": 16,
+    "strata": 33,
+    "edges": 761,
+    "failed": [],
+    "file": "certificates/cap-3-tasks-16.json",
+    "sha256": "81fe0c46d4b48c32b5adc14293546c0da64cb69980f71d4e3414a4dbdd6f0519"
+  },
+  {
+    "n": 4,
+    "m": 2,
+    "strata": 7,
+    "edges": 4,
+    "failed": [],
+    "file": "certificates/cap-4-tasks-2.json",
+    "sha256": "46f9d0b925e6ee38a0f2e63a590989accf7d54d001e4b405e5bd93fc926f16ed"
+  },
+  {
+    "n": 4,
+    "m": 3,
+    "strata": 10,
+    "edges": 18,
+    "failed": [],
+    "file": "certificates/cap-4-tasks-3.json",
+    "sha256": "28948fbfcb6d4ac12c3fcb541dce3d3e9a6c51f68cb12de765b2aeeb4c4d8691"
+  },
+  {
+    "n": 4,
+    "m": 4,
+    "strata": 13,
+    "edges": 47,
+    "failed": [],
+    "file": "certificates/cap-4-tasks-4.json",
+    "sha256": "76a73b54ecc08eaa12581f20bfa38ca622f14b93b2dd584c79e0d8b0a48b4bec"
+  },
+  {
+    "n": 4,
+    "m": 5,
+    "strata": 16,
+    "edges": 95,
+    "failed": [],
+    "file": "certificates/cap-4-tasks-5.json",
+    "sha256": "07919e0bc08f32cad2b1459cb2cca4a73ddbcdade8aa91468c8b9346dd8fe575"
+  },
+  {
+    "n": 4,
+    "m": 6,
+    "strata": 19,
+    "edges": 170,
+    "failed": [],
+    "file": "certificates/cap-4-tasks-6.json",
+    "sha256": "c4675caf290117e79e01d979a7c1558f5169c923c9c7b48a6def2c3a841967ba"
+  },
+  {
+    "n": 4,
+    "m": 7,
+    "strata": 22,
+    "edges": 278,
+    "failed": [],
+    "file": "certificates/cap-4-tasks-7.json",
+    "sha256": "c369504d28b97d3d378872c21db8b39cd3bbfbadaa2c5aa5a809ba1d82a5c855"
+  },
+  {
+    "n": 4,
+    "m": 8,
+    "strata": 25,
+    "edges": 429,
+    "failed": [],
+    "file": "certificates/cap-4-tasks-8.json",
+    "sha256": "27b52ff35c074c5765ef1b1d3833c9977a0f4376a7458d4735987a76d87c89bc"
+  },
+  {
+    "n": 4,
+    "m": 9,
+    "strata": 28,
+    "edges": 631,
+    "failed": [],
+    "file": "certificates/cap-4-tasks-9.json",
+    "sha256": "6cadedf6e594ef234516cd2f8720ec21ca150f7e06cc2234cc9de169f2d5ecc0"
+  },
+  {
+    "n": 4,
+    "m": 10,
+    "strata": 31,
+    "edges": 896,
+    "failed": [],
+    "file": "certificates/cap-4-tasks-10.json",
+    "sha256": "ad215f1e741973c62a2f1d3d9adf99e2249058e694959b1f715a1162d51cb165"
+  },
+  {
+    "n": 5,
+    "m": 2,
+    "strata": 9,
+    "edges": 6,
+    "failed": [],
+    "file": "certificates/cap-5-tasks-2.json",
+    "sha256": "a0bba93463b5b742e455654de6241d95b3285dbbf506dccdb9ea121a0109d50c"
+  },
+  {
+    "n": 5,
+    "m": 3,
+    "strata": 13,
+    "edges": 33,
+    "failed": [],
+    "file": "certificates/cap-5-tasks-3.json",
+    "sha256": "780434e4ce3d61113b3cc74f83e2c60d19e56495e2c85dbaffd6901f77136294"
+  },
+  {
+    "n": 5,
+    "m": 4,
+    "strata": 17,
+    "edges": 95,
+    "failed": [],
+    "file": "certificates/cap-5-tasks-4.json",
+    "sha256": "6574a9257864c38b31cd1e2ecf87937ae6737d92e0e959a2b228281b9eda21d4"
+  },
+  {
+    "n": 5,
+    "m": 5,
+    "strata": 21,
+    "edges": 212,
+    "failed": [],
+    "file": "certificates/cap-5-tasks-5.json",
+    "sha256": "2192e2fb7265e9adb93519189bd6f0702948ad1adb7361c4e150597d39d8de5e"
+  },
+  {
+    "n": 5,
+    "m": 6,
+    "strata": 25,
+    "edges": 411,
+    "failed": [],
+    "file": "certificates/cap-5-tasks-6.json",
+    "sha256": "e7cc5aa6aac1711f60451be3279644b0f06808d222c19b73164eb760651e0219"
+  },
+  {
+    "n": 5,
+    "m": 7,
+    "strata": 29,
+    "edges": 727,
+    "failed": [],
+    "file": "certificates/cap-5-tasks-7.json",
+    "sha256": "6a1780447f03181a36ee266c19cf88f0818483c29c460a3fabe19bdb3bca7611"
+  },
+  {
+    "n": 6,
+    "m": 2,
+    "strata": 11,
+    "edges": 9,
+    "failed": [],
+    "file": "certificates/cap-6-tasks-2.json",
+    "sha256": "f110d360308c97e83024d19f91291c06c506e06964e450f9ecacd9c2cd93baf6"
+  },
+  {
+    "n": 6,
+    "m": 3,
+    "strata": 16,
+    "edges": 54,
+    "failed": [],
+    "file": "certificates/cap-6-tasks-3.json",
+    "sha256": "d9f0af349956222d77f677c4c6d64eb826607161c613f479074739a58f80bfb9"
+  },
+  {
+    "n": 6,
+    "m": 4,
+    "strata": 21,
+    "edges": 170,
+    "failed": [],
+    "file": "certificates/cap-6-tasks-4.json",
+    "sha256": "80e80e5981ecb96d6a186b3a44f488f4773a2f3982eb7670d544be674d53bdab"
+  },
+  {
+    "n": 6,
+    "m": 5,
+    "strata": 26,
+    "edges": 411,
+    "failed": [],
+    "file": "certificates/cap-6-tasks-5.json",
+    "sha256": "3cdbb0c8e5bb8e388d2b711e991ee740e6e85268059025ad613ee2e71dcd9981"
+  }
+]
