@@ -1,0 +1,13 @@
+# What the optional optimal routing curve measures on GSM8K
+
+In the RouteLLM evaluation code, measured routing policies are plotted at their realized fraction of calls to the stronger model. The optional curve labelled “Optimal” adds the strong-only successes up to a budget cap. On paired outcomes, the interpretation changes at high realized usage rates. This comparison concerns a hindsight ceiling. It uses neither actual router predictions nor production traffic. [Evaluation code](https://github.com/lm-sys/RouteLLM/blob/0b64fdafe049e596a3f5657c219329f24af24198/routellm/evals/evaluate.py) · [Benchmark implementation](https://github.com/lm-sys/RouteLLM/blob/0b64fdafe049e596a3f5657c219329f24af24198/routellm/evals/benchmarks.py) · [RouteLLM paper](https://arxiv.org/abs/2406.18665)
+
+Let n be the number of retained questions, w the number correctly answered by the weak model alone across all questions (including those both models answer correctly), u the number on which only the strong model is correct, and h the number on which only the weak model is correct. Assigning one question to the strong model changes the baseline score by +1, 0 or −1. With at most k strong calls the best correct-answer count is w + min(k,u). With exactly k calls it is
+
+    w + min(k,u) − max(0,k−(n−h)).
+
+Sorting the marginal gains in descending order attains the second expression, and an exchange of a smaller selected gain for a larger unselected one proves optimality. Stopping after the positive gains proves the first. Both formulas assume indivisible questions and integer k. A fractional expected call count requires its own randomization interpretation.
+
+We applied the repository's exact prompt exclusion to its pinned public paired outcomes. Of 1,319 questions, 1,307 remained, each with a distinct prompt. GPT-4-1106-preview alone answered 1,121 correctly and the designated Mixtral model answered 833. The cross-tabulation contains 739 correct for both, 92 incorrect for both, 382 strong-only successes and 94 weak-only successes. Consequently the optional capped ceiling is attainable at every integer budget up to 1,213 even when exactly that many calls are required. At 1,214 the ceilings separate. At 1,307 calls the cap permits 1,215 correct whereas exact use forces 1,121. All 1,308 integer budgets were checked against explicit ordered allocations. All subsets of 243 small gain vectors were used to check the distinction on five-item cases.
+
+This result leaves the paper's measured router performance unresolved here. It concerns the meaning of the optional oracle overlay. Call counts are a proxy for resource use; actual token bills, latencies and provider outages were not measured.
