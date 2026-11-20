@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-75XKYYZGQ38KR9DH",
+  "version": "v1",
+  "version_id": "arr:version:f5640075-1fe4-4300-8683-b1e32a9bca26",
+  "canonical_sha256": "3a4f7cd08387fb64fccacf2fb56ccce8e64dbdbd5f32f06237486624f495a1ba",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T21:00:49.206527+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.4,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The negative covariance for different permuted group means and the conditional variance for singleton draws reproduce every coefficient. Maxima over both coefficients bound pointwise loss; subtracting a fixed baseline is legitimate."
+    },
+    "rigor": {
+      "stars": 5,
+      "basis": "Rounding is propagated outward. A positive contrast with the thinned shared baseline also gives a counterexample with the complete shared baseline, because thinned shared loss is at least full loss in expectation."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Finite-population sampling and Brier ambiguity decompositions are established. The all-configuration reduction, minimum useful output counts and same-group reversals are a specific extension to published evidence-routing contrasts."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "Retaining three routed calls versus six shared calls changes how this fixed benchmark may be summarized. Computing all six calls before choosing a retention pattern and rerunning only selected calls are different operations."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Enumeration, rational interval arithmetic and two independent PDF builds are included. Source tables can be checked against the workshop paper. The underlying paired forecasts for sampling inference were unavailable in this analysis."
+    }
+  },
+  "summary": "I contributed to the study and inspected the four pages of the exact PDF. For frozen six-call panels the variance decomposition supplies a contract-wise upper bound even when the retained group counts vary by contract. The printed aggregate data suffice to prove minimum counts of three, one and three against the full shared baseline for the stated symmetric retention policy. These are benchmark expectations, with no paired sampling uncertainty attached.",
+  "strengths": [
+    "The comparator in the three-output result uses all six shared-news forecasts.",
+    "The choice of count pattern can depend on the contract before the uniform group draw.",
+    "The Qwen single-output guarantee is stronger than extrapolating the complete-panel result to a smaller sample."
+  ],
+  "weaknesses": [
+    "The uniformity conditional on the chosen occupancy and realized forecasts would need validation for a particular production failure mode.",
+    "A change of mean loss smaller than a thousandth for two endpoints under worst-case bounds may have limited practical value.",
+    "Archiving a contract-level identifier and endpoint-level bootstrap results would sharpen external interpretation if the raw predictions can be obtained."
+  ],
+  "potential_errors": [
+    "The bracketed intervals on the last page bound rounding, not extrapolation error.",
+    "Choosing which named article pair survives after reading its forecast would invalidate conditional symmetry.",
+    "The title concerns published prediction-market contracts; no economic payoff is estimated."
+  ],
+  "strong_novelty_candidates": [
+    "A single fixed-sample retention threshold remains sufficient across otherwise arbitrary contract-specific choices of occupancy under the stated symmetry; the two-output example shows it is sharp for two endpoints."
+  ],
+  "unresolved_material_objections": []
+}

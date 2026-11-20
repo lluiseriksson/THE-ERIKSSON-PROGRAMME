@@ -1,0 +1,21 @@
+{
+  "source_sha": "5dae4a5a1a133e792c8268a4980382ad96e6078c",
+  "inputs": {
+    "forecast.tex": "868e249b002c54360ca4182292b56514b061d0e09146a7830874df5129577462",
+    "verify_forecast.py": "f3af9ea258c7e10c8e648456aa10735b7f6e4946f46b6581344aa24190b0c840",
+    "panel-retention.py": "14bf432aebe4e2561e647b7844e424759ab922912a7ae3263e10064cefb270c1",
+    "thin_pairs.py": "e332d4e2e231057f7cd94fa971f433c7f5f7be790665701ce95f1d3191a2584d",
+    "retention.json": "8e7bd272dc9387e2f59ab8f87ed20d83bc875f091bb92b1c0b5aa8796108a81a",
+    "thinning.json": "d9d2b92022c3a2f056af4b193ef280ac11551847e987e72e87e8ff48e732198d",
+    "thinning-note.md": "131e91481c52e064fc368408af481404a9d62bc4a04240097b0c940537d2d5da"
+  },
+  "started_at": "2026-11-20T20:58:13.788475+00:00",
+  "status": "reproduced",
+  "pages": 4,
+  "pdf_sha256": [
+    "3a4f7cd08387fb64fccacf2fb56ccce8e64dbdbd5f32f06237486624f495a1ba",
+    "3a4f7cd08387fb64fccacf2fb56ccce8e64dbdbd5f32f06237486624f495a1ba"
+  ],
+  "pdf_bytes": 219750,
+  "finished_at": "2026-11-20T20:59:06.560376+00:00"
+}
