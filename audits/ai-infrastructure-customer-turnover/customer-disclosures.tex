@@ -1,0 +1,66 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs}
+\usepackage[letterpaper,margin=0.86in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{What cumulative disclosures reveal about customer turnover in AI infrastructure}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A supplier's largest customers can change rank or disappear below the reporting threshold. We ask how much of the change in its revenue mix can be recovered without persistent customer identifiers. For CoreWeave between the second and third quarters of 2026, the infimum and supremum of turnover compatible with quarterly shares alone are 6 and 100 percentage points. Adding the nine-month column lowers the supremum to 76.5. Adding both cumulative columns raises the infimum to 11 and lowers the supremum to 51. The half-year column alone gives no improvement. We prove these bounds under explicit rounding and nonnegativity assumptions and supply feasible quarterly ledgers approaching each endpoint. Corvex provides a separate test of the customer-linkage step in the presence of a business disposal and refunds.
+\end{abstract}
+
+\section{Estimand and disclosures}
+For a fixed supplier, let $a_i,b_i$ be percentages of its recognized revenue attributable to customer $i$ in successive quarters. A customer absent in a quarter has share zero. For nonnegative shares summing to 100, define turnover as
+\[
+ T=\tfrac12\sum_i|a_i-b_i|=100-\sum_i\min(a_i,b_i).
+\]
+It measures redistribution of revenue shares. Different purchase volumes by the same customers can produce positive turnover. We do not infer new accounts, cancellations, default exposure, or a sector-wide trend. The analysis conditions on the individual 2026 columns specified below and their denominators. Other public information could narrow the bounds.
+
+In Note 2 of CoreWeave's two 10-Qs [1,2], letters identify rows within a table and may change across reports. A customer below 10 percent can be suppressed. We allow each displayed integer percentage an error of half a percentage point and each displayed dollar total an error of half a million dollars. A reported 10 meets the actual disclosure threshold. No assumption about historical continuity of letters or the number of small customers is imposed.
+\begin{center}\begin{tabular}{lrrl}\toprule
+Period & Revenue (\$million) & & Reported customer shares (\%)\\\midrule
+Second quarter & 2,575 && 36, 26, 10\\
+Six months & 4,653 && 40, 23 (same first two June rows)\\
+Third quarter & 3,661 && 24, 30\\
+Nine months & 8,314 && 33, 26 (same two September rows)\\\bottomrule
+\end{tabular}\end{center}
+
+\newpage\section{Which columns change the bounds?}
+Consider four information sets. Every set retains both quarterly columns, the reporting threshold and the period totals. Removing a cumulative column removes its shares, links and censoring constraints.
+\begin{center}\begin{tabular}{lrr}\toprule
+Cumulative columns retained & Infimum of $T$ & Supremum of $T$\\\midrule
+Neither & 6 & 100\\
+Six months only & 6 & 100\\
+Nine months only & 6 & 76.5\\
+Both & 11 & 51\\\bottomrule
+\end{tabular}\end{center}
+All entries are percentage points. They are extrema over possible customer ledgers, with open disclosure thresholds interpreted by limits.
+
+\paragraph{Quarterly shares.} The two June leaders account for at least $35.5+25.5$ points. No two September customers together account for more than $30.5+24.5$. Their collective loss is at least 6. Disjoint quarterly supports give the trivial upper limit of 100. June's half-year column constrains earlier revenue, but permits this complete replacement.
+
+\paragraph{Nine months alone.} The June leader earned at least $0.355(2575-0.5)$ million in that quarter. This exceeds $0.1(8314+0.5)$ million, the largest threshold for the entire nine months. Under nonnegative customer revenue it must therefore be one of the two customers disclosed for nine months. Both have September share at least 23.5, so the quarterly overlap is at least 23.5. This argument needs no later-quarter purchase by the June leader beyond what its linkage to a disclosed row establishes.
+
+\paragraph{Both cumulative columns.} Let $h$ be first-half revenue, $q$ third-quarter revenue, and $s=h+q$. For a September customer with reported nine-month share $y$ and third-quarter share $z$, its implied half-year share is $(sy-qz)/h$ at exact inputs. Substituting lower and upper rounded inputs outwards gives conservative intervals; the positive lower numerators allow division by the upper denominator for the lower endpoints. For the September rows these intervals are contained in $(38,42)$ and $(21,25)$ percent respectively. The only possible June half-year matches are thus the rows displaying 40 and 23. An unreported customer has share below 10. The first June leader consequently falls from at least 35.5 to at most 24.5. On the two linked rows the overlap is at least $23.5+25.5$. These constraints give the last line of the table. An interval match alone is only a necessary condition; feasible joint ledgers are supplied below.
+
+\newpage\section{Sharpness and a second issuer}
+\paragraph{Attaining the limits.} The supplement specifies each customer's first-, second- and third-quarter shares. It uses the displayed dollar totals as a feasible choice and computes both cumulative shares by weighting quarterly revenues. Thus uncertainty about the true totals cannot invalidate the lower examples, and the outer inequalities allow for that uncertainty. For small positive $\epsilon$, the quarterly-only and half-year-only lower constructions match the June leaders to September shares $30.5-\epsilon$ and $24.5-\epsilon$. Their June shares are $35.5+\epsilon$ and $25.5+\epsilon$. The third June customer falls from $10$ to $10-\epsilon$. Splitting the remaining shares among small customers gives $T=6+5\epsilon$. Separate September customers give $T=100$ in either information set.
+
+With only the nine-month column, the same lower assignment is feasible: use the reported nine-month shares to solve for the two linked customers' first-quarter revenues, then distribute the remainder among fresh small accounts. For the upper construction the June leader takes September share $23.5+\epsilon$. All other revenues can be placed on disjoint quarterly supports, yielding $T=76.5-\epsilon$. With both columns, the supplied families give $11+3\epsilon$ and $51-2\epsilon$. Conditional shares in these constructions are affine in $\epsilon$ with fixed positive denominators. Each returned example satisfies the share sums, all retained disclosure bands, positivity of revenue where required and strict upper bounds for undisclosed customers. For each family these are linear inequalities; inspection at zero (allowing equality) and at $0.01$ with each strict constraint satisfied establishes feasibility for every intervening positive $\epsilon$. The scripts also check $0.001$ and $0.0001$ with rational arithmetic.
+
+As a separate check on concentration, let $H=\sum_i a_i^2$ on a 10,000-point scale. June's three leaders give $H\ge35.5^2+25.5^2+10^2=2010.5$. September gives $H\le30.5^2+24.5^2+4(10^2)+5^2=1955.5$. Moving share from a smaller account to a larger one increases its sum of squares, so the September upper bound fills the two largest shares and packs the tail up to its threshold. Thus concentration fell by at least 55 points independently of the identities of the two largest customers. That direction alone does not determine turnover.
+
+\newpage\section{Transfer to a second issuer} Corvex's quarterly filings [3,4] report second-quarter, first-half, third-quarter and nine-month consolidated revenues of 3,801, 4,312, 4,982 and 9,294 thousand dollars. The reported pairs are $(65,28)$, $(64,28)$, $(72,23)$ and $(69,25)$ percent. Subtracting the third quarter from nine months implies two half-year shares compatible respectively with 64 and 28 and incompatible with the opposite label. The smaller implied lower bound exceeds 25 percent. The other half-year customers together have at most 9 percent net. For any one of them to be a candidate, the others would jointly need net negative revenue with magnitude over 16 percent of half-year revenue. This yields a conditional linkage certificate even if signed customer adjustments are allowed below that magnitude. The company reports a disposal on 30 June and subsequent legacy refunds. A net refund figure does not bound gross negative amounts by customer. We do not apply the nonnegative turnover bounds to this issuer or equate consolidated and continuing-business sales.
+
+\paragraph{Scope.} Accounting identities for partial identification have a long history in ecological inference [5]. A recent model of financial links among AI firms motivates the application [6]. Here the contribution is the sharp disclosure-by-disclosure calculation, with compatible ledgers, for these revenue records. It does not estimate contractual spillovers.
+
+\paragraph{Model assessments and review context.} OpenAI Codex helped develop and write this study. The author administers AIRR. The machine assessment accompanies the exact PDF and records that involvement.
+
+\begin{thebibliography}{6}\small
+\bibitem{cr2} CoreWeave, Inc. \href{https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm}{Form 10-Q, June 2026}, Note 2 and income statement.
+\bibitem{cr3} CoreWeave, Inc. \href{https://www.sec.gov/Archives/edgar/data/1769628/000176962826000465/crwv-20260930.htm}{Form 10-Q, September 2026}, Note 2 and income statement.
+\bibitem{cv2} Corvex, Inc. \href{https://www.sec.gov/Archives/edgar/data/1734750/000121390026090091/ea0301480-10q_corvex.htm}{Form 10-Q, June 2026}, actual consolidated statements and significant customers.
+\bibitem{cv3} Corvex, Inc. \href{https://www.sec.gov/Archives/edgar/data/1734750/000121390026118794/ea0309925-10q_corvex.htm}{Form 10-Q, September 2026}, actual consolidated statements, significant customers and asset transfer.
+\bibitem{eco} W. Jiang, G. King, A. Schmaltz and M. A. Tanner (2019). \href{https://gking.harvard.edu/files/gking/files/eiid.pdf}{Ecological Regression with Partial Identification}. Methodological background.
+\bibitem{nber} S. Van Nieuwerburgh and Z. Su. \href{https://doi.org/10.3386/w36032}{Clouds of Credit: Mapping the Financial Web Behind AI Compute}. NBER Working Paper 36032, November 2026.
+\end{thebibliography}
+\end{document}
+
