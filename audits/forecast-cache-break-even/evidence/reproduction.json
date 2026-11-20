@@ -1,0 +1,26 @@
+{
+  "source_sha": "fd70e0f1e6eee56b5eb4e0f1bde3ccc9e288c357",
+  "inputs": {
+    "cache-final.tex": "9de3d4df515dd35fdaf08983e177fcb13c2463ff9bcaffc829b6631f654ad684",
+    "verify_cache.py": "050426e76baac5b62004df6dbbacc33702a90adc4aeef7872bc07a9fe46f1e06",
+    "bgaa-primary.py": "7e8ed482971e4ed12cdb3131269621a362dd2988a992410b53dc90ebb805a6a7",
+    "primary.json": "6bb443740512d4dcc5de7ef4ecb28f813da6b4c85bbf9936136cbd6ba808723e",
+    "bgaa-cache.py": "ad145e0330304ee6531cbb0a50a779e9a9be045955d0df7851173c9932a1e15b",
+    "cache.json": "188b161a5c7b87de48790dfe858ca492f01db794f27bf1b00042affdb146abbb",
+    "bgaa-joint.py": "2220e44c72ea936d4a6c647bd0289d0b0d5f87e8b3d181b8e204118db3165d83",
+    "joint.json": "305554a35a2c33c8a1328e3f8e910ff18e402170e38e0ede4fe6e809b8cc7adc",
+    "bgaa-activation.py": "f61d00a93568013b54502ec5fd37652dbb8f78fedc4b7e336f68b9a079f5dd8e",
+    "activation.json": "a67e348f05d5278c3a1df42942ddf955e79d4dd4902de22a24f9bbb66af2a56c",
+    "bgaa-random.py": "c969391e8d8460f598038eabf9dc812a3af46feb9e617b00ffd12d8a8db01205",
+    "random.json": "934c1ba0f317d3e453ef154f383eedb1f3a092a917a0b021da0f3cce1d685a17"
+  },
+  "started_at": "2026-11-20T21:51:40.166100+00:00",
+  "status": "reproduced",
+  "pages": 4,
+  "pdf_sha256": [
+    "587683ff01989228984087de44a9a51f24b586987ef73eca04b2c16c73c79484",
+    "587683ff01989228984087de44a9a51f24b586987ef73eca04b2c16c73c79484"
+  ],
+  "pdf_bytes": 229463,
+  "finished_at": "2026-11-20T21:52:47.505273+00:00"
+}

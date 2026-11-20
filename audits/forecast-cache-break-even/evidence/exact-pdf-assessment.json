@@ -1,0 +1,55 @@
+{
+  "paper_id": "ARR-2026-6XJ58B27248F9AWG",
+  "version": "v1",
+  "version_id": "arr:version:5f227d38-6c59-4906-83c6-e1fbe25ff4a4",
+  "canonical_sha256": "587683ff01989228984087de44a9a51f24b586987ef73eca04b2c16c73c79484",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T21:55:26.251538+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.45,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The inequality max D < min B allows moving every delayed purchase earlier. Conditioning on a fixed workload permits comparison in expectation with each of the two remaining comparators."
+    },
+    "rigor": {
+      "stars": 5,
+      "basis": "The generalized threshold law has a positive atom at zero. The missed conservative credit is bounded even on a batch that overshoots the threshold. The lower-bound CDF is monotone, ends at one, and equalizes all positive horizons for the homogeneous input."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The buying-time construction belongs to a classical family. The narrow additive-regret certificate with jointly rounded cold and warm timings on these seven rows is the specific contribution. General priority for the homogeneous formula is unestablished."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "Exposes an actual service configuration decision if both forecasting models meet the accuracy requirement. Tail delay and changing contexts can materially alter the operational choice."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "Two pinned builds agree byte for byte and the four verification runs agree. The extracted table, code and rational witness allow checking the reported constants without repeating inference."
+    }
+  },
+  "summary": "For seven reported batch sizes a single randomized activation threshold lowers the worst expected additive latency guarantee. The deterministic comparator, the order of play and the precision model are sufficiently explicit to check the argument. The constant-batch construction gives a numerical lower certificate close to the uniform upper bound. I inspected all four rendered pages and participated in the work.",
+  "strengths": [
+    "Distinguishes a guarantee in expectation from a per-episode maximum.",
+    "Uses linked printed columns and makes the savings credited to the policy computable before deciding.",
+    "The known-row lower certificate applies even if the policy is told the timing values."
+  ],
+  "weaknesses": [
+    "The uncertainty set only describes display precision. Actual run-to-run variability and view refreshes were not characterized.",
+    "The two systems can differ in accuracy, and no trace establishes how often their selected views remain valid across batches.",
+    "A more complete account of prior work on additive regret would clarify what is original beyond this benchmark."
+  ],
+  "potential_errors": [
+    "A workload that adapts to the realized activation time falls outside the randomized guarantee.",
+    "Interpreting 1.695 seconds as a quantile or a hard limit per request would be incorrect."
+  ],
+  "strong_novelty_candidates": [
+    "Explicit upper and lower worst-case additive latency certificates for this heterogeneous timing table under linked rounding constraints."
+  ],
+  "unresolved_material_objections": []
+}
