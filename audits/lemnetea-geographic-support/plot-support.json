@@ -1,0 +1,49 @@
+{
+  "resampled": {
+    "A01": 340,
+    "A02": 227,
+    "A03": 94,
+    "A04": 219,
+    "B01": 976,
+    "B02": 476,
+    "B03": 401,
+    "C01": 468,
+    "C02": 350,
+    "C03": 412,
+    "C04": 58,
+    "D01": 359,
+    "D02": 175,
+    "E01": 697,
+    "E02": 229
+  },
+  "provisional_strata": 21,
+  "witnesses": {
+    "A01": "Iberian Peninsula",
+    "A02": "Italian peninsula",
+    "A03": "Italian peninsula",
+    "A04": "Sicily",
+    "B01": "B01A, Iberian Peninsula",
+    "B02": "Ireland",
+    "B03": "B03A, Iberian Peninsula",
+    "C01": "southern Balkans",
+    "C02": "northern Fennoscandia",
+    "C03": "Italian peninsula",
+    "C04": "east-central Europe",
+    "D01": "Iberian Peninsula",
+    "D02": "Sicily",
+    "E01": "E01A, Iberian Peninsula",
+    "E02": "Anatolia"
+  },
+  "source_urls": [
+    "https://doi.org/10.3897/VCS.188965",
+    "https://binary.pensoft.net/file/1841081",
+    "https://binary.pensoft.net/fig/1841079/oo/file.jpg",
+    "https://www.givd.info/api/givd/EU-NL-001"
+  ],
+  "sha256": {
+    "source-panel.xlsx": "18807b0f256abb2a109e9ebcd027ad45c55c6ecec7b7f93e0f511d0c388320be",
+    "publication.xml": "3eceffd4b86b9dd562cd798b58759aa117570c9f26ef0283ad50a6857dc6d3b6",
+    "figure6.jpg": "a49fe5a8a2bfe50f48ad311c5168ba31c4485ce4bde7107c1587acff98428922",
+    "givd-id.xml": "1df44ab97e99bfa397a58b5d208c555a0f354debb37b36a444d8c7d639832d82"
+  }
+}
