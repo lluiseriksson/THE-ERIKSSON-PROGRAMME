@@ -1,0 +1,25 @@
+{
+  "source_sha": "caf21ff9a699bf48c3e5a759c1845071e98d1980",
+  "inputs": {
+    "lifeline.tex": "3787328e7fccf988654f853e52cd551cceeb07535e3dd4846a9c94658aed423d",
+    "verify_lifeline.py": "c5480e5cae42408308842ea26543ac52d782f8b3cccc7e82a21c34808d1b261f",
+    "uganda-quarter.py": "2f8ab9acb62477fa8b924e8de55008a205f22fb7dfe3c24832ee86a5e96b91df",
+    "uganda-order.py": "1910d00d9a89dd3231c696e865a068e13ccef928fbec98f88a177b256c718edc",
+    "calendar.json": "e9a8019e93bbf5571523c1903a585a557c115541f711385b8905020d8d1941ab",
+    "order.json": "6672c8e0cd3557a17f8aa3f6cd976f6784d49f8ce257b94100ae9d6da8832812",
+    "rule.json": "6245c8da2132e8696bc47bff237cb0c92aeaca2539d9e9e1f52a31fc9708126e",
+    "source.json": "b3ace929fbe096bb53c6ffc9700ad3d40ba7e8f85dadf95147857449eb33ee20",
+    "source.zip": "bcab532b7d0d6496f7a1e23822f28e92a610a9b36bfde00fc488c96ceffef0c5",
+    "load-sources.json": "a9eaa739f9530d83c1761f80991925e9b063f6d9eaba67d48539bfe3e5ae9e92",
+    "uganda-memory.md": "6a3cf4fcf4582d9076f591576ef9ce91bb91316cb15c69f53a0fec04b8130db5"
+  },
+  "started_at": "2026-11-20T22:38:50.767126+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "1343235293a2baa033b5d12640cdd7931077ed42dd1bde57cf1486d99f96106a",
+    "1343235293a2baa033b5d12640cdd7931077ed42dd1bde57cf1486d99f96106a"
+  ],
+  "pdf_bytes": 200764,
+  "finished_at": "2026-11-20T22:40:01.081138+00:00"
+}

@@ -1,0 +1,108 @@
+{
+  "annual_month_multiset": [
+    "89997/1000",
+    "89997/1000",
+    "929969/10000",
+    "929969/10000",
+    "929969/10000",
+    "929969/10000",
+    "349993/2500",
+    "149997/1000",
+    "149997/1000",
+    "1549969/10000",
+    "1549969/10000",
+    "1549969/10000"
+  ],
+  "annual_patterns": 924,
+  "ceiling_UGX": "23823",
+  "eligible_months_distribution": {
+    "0": 921,
+    "1": 3
+  },
+  "group_size": 30,
+  "high_bill_witness": {
+    "charge": "12699203533/50000",
+    "eligible": [
+      false,
+      false,
+      false
+    ],
+    "high_months": [
+      2,
+      7,
+      8,
+      9,
+      11,
+      12
+    ],
+    "previous_six_month_totals": [
+      "7329817/10000",
+      "919977/1250",
+      "7929817/10000"
+    ]
+  },
+  "low_bill_witness": {
+    "charge": "12302153533/50000",
+    "eligible": [
+      false,
+      true,
+      false
+    ],
+    "high_months": [
+      1,
+      2,
+      3,
+      4,
+      11,
+      12
+    ],
+    "previous_six_month_totals": [
+      "6089817/10000",
+      "689977/1250",
+      "6089817/10000"
+    ]
+  },
+  "matched_groups": 62,
+  "maximum_spread_UGX": "7941",
+  "number_nonzero_spread": 3,
+  "original_fixed_shapes": {
+    "3": {
+      "daily": "29999/10000",
+      "difference": "9269691/10000",
+      "disaggregated_q4": "111288256/625",
+      "eligibility": [
+        true,
+        true,
+        true
+      ],
+      "flat_three_bills": "354268481/2000"
+    },
+    "4": {
+      "daily": "40001/10000",
+      "difference": "12360309/10000",
+      "disaggregated_q4": "149872369/625",
+      "eligibility": [
+        false,
+        false,
+        false
+      ],
+      "flat_three_bills": "477119519/2000"
+    },
+    "5": {
+      "daily": "49999/10000",
+      "difference": "584758749/200000",
+      "disaggregated_q4": "7034098293/25000",
+      "eligibility": [
+        false,
+        false,
+        false
+      ],
+      "flat_three_bills": "11137605519/40000"
+    }
+  },
+  "q4_monthly_kWh": [
+    "929969/10000",
+    "149997/1000",
+    "1549969/10000"
+  ]
+}

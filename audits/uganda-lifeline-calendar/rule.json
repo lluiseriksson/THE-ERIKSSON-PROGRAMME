@@ -1,0 +1,14 @@
+{
+  "url": "https://www.era.go.ug/wp-content/uploads/2026/10/SCHEDULE-OF-ELECTRICITY-PRICES-FOR-Q4-2026.pdf",
+  "sha256": "74ea55700898a0fa68aa55046ebf28e220b93298b9e9f417b53e594f802da552",
+  "period": "2026-10 through 2026-12 only",
+  "tariff": "domestic low voltage code 10.1",
+  "rates": [
+    "250",
+    "779.4",
+    "412",
+    "779.4"
+  ],
+  "eligibility": "average over previous six months <=100 kWh",
+  "analysis_scope": "energy charge only"
+}

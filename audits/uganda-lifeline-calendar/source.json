@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "title": "Off-grid household solar PV and battery in western Uganda: SAM techno-economic model and replication files",
+    "doi": "10.5281/zenodo.24407802",
+    "publication_date": "2026-11-20",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Tabaro, Emmanuel Kwezi",
+        "affiliation": "University of Minnesota"
+      }
+    ],
+    "keywords": [
+      "off-grid electrification",
+      "SSA",
+      "Uganda"
+    ],
+    "version": "1",
+    "resource_type": {
+      "title": "Dataset",
+      "type": "dataset"
+    },
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "24407801"
+          }
+        }
+      ]
+    }
+  },
+  "url": "https://zenodo.org/api/records/24407802/files/Uganda_OffGrid_SAM_Replication.zip/content",
+  "md5": "md5:dbeb7eb29a39305d7472d2f598e0e3e1",
+  "sha256": "1266faecadd1d364346b783e47a2411ac01e948518abe44d67df6cf7ef7f6242"
+}
