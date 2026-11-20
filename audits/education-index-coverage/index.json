@@ -1,0 +1,597 @@
+{
+  "accepted_pages": {
+    "1": 12,
+    "2": 10
+  },
+  "comparisons": {
+    "primary": {
+      "accepted_rejected_conflicts": 0,
+      "accepted_titles": 22,
+      "extra_titles": 11,
+      "including_duplicates": {
+        "available": {
+          "ACM Digital Library": 3,
+          "IEEE Digital Library": 11,
+          "Scopus": 19
+        },
+        "minimum_sets": [
+          [
+            "ACM Digital Library",
+            "IEEE Digital Library",
+            "Scopus"
+          ]
+        ],
+        "observed_incidence": 33,
+        "only": {
+          "ACM Digital Library": 1,
+          "IEEE Digital Library": 2,
+          "Scopus": 8
+        },
+        "sources": [
+          "ACM Digital Library",
+          "IEEE Digital Library",
+          "Scopus"
+        ]
+      },
+      "representatives": {
+        "available": {
+          "ACM Digital Library": 2,
+          "IEEE Digital Library": 8,
+          "Scopus": 12
+        },
+        "minimum_sets": [
+          [
+            "ACM Digital Library",
+            "IEEE Digital Library",
+            "Scopus"
+          ]
+        ],
+        "observed_incidence": 22,
+        "only": {
+          "ACM Digital Library": 2,
+          "IEEE Digital Library": 8,
+          "Scopus": 12
+        },
+        "sources": [
+          "ACM Digital Library",
+          "IEEE Digital Library",
+          "Scopus"
+        ]
+      },
+      "table": [
+        {
+          "page": 1,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library"
+          ],
+          "title_sha256": "5d3f9847ec217014029daa5f58f531cae3d9134f6d692a52cee18d43a29f40f0"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "5e86c0957c19754fc2f33c19c90487f8834ce2b0f9403051e708cf6f99fb551b"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "ACM Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "92a82423f97ac87aab756a14bb77f4067f36a1e797663de92561cf22f622c747"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "fa581e0d463637c2e1199e0235cadf238ebd77ef5d1474c2efa5cede67dce896"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "ae1157060a239503b1c1c2d1349dcfb0f16f3f5f08e800ef27e3122f10a5ae3d"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "dd8d23bd1318d2cb17022bd4278e8a1263c8c2bea551662456e3bebcf2c4eb77"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "bca83697f9d5ac84d4f817530facf61700c66a9ff5c8c636c01ae88eab707cbc"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "c57d05278af7f131559da384a548bea26306e1eba250c8e055baed7215923200"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "ACM Digital Library"
+          ],
+          "sources": [
+            "ACM Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "8de8416bce1d85df2042dab1aef9c1be3c423853dee16d7a6fe815681833745a"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "ACM Digital Library"
+          ],
+          "sources": [
+            "ACM Digital Library"
+          ],
+          "title_sha256": "0bff2bf9ad72fa62f71ee95e253464297f123ff4c2a7d3fa8222eb4764c521df"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "d6dc9fbea09b0511985df13c67f78aae4793672eaa9767f108bb5d016a439be2"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "bcd16235202fe48f2f6bd13752f8ac0cdca09608561da7df8902fa685563f1ea"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "6e94e4294505061df4436a9d6a71c17ce5b25b31f044c97157f6fb3f7624a6e4"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "0c824eb28c1b60c4a17b6f96bcb1780dd37f33f0fa861956613a2fae711bcb3c"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "78ae14f12ad422c10a09fc37c3adc7e361c6267c54c1b213add9329cad62e69e"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "265182417149b563b8434da426e8cde70c6121c2776432ef03c3e19b4d2284bb"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "db6af1a81e3ad14ce6614dff5efbf97fff7690219b2ddf451fd94e28d35e3733"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "53d8500a6948cada8b15b5e81773fdf722344f08714212dfdcff2bda11cd4a4e"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "f13b1aca1eea3b24c38ac11a8b9717284f622bea73d402ee2df004e9b67e0a38"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "e609f87d600ea3d5d08a31816e2257063594ff2dfb25bb7a1798c84c0cc229ce"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library"
+          ],
+          "title_sha256": "beb5222313615cc3af68ae1e2b6e6dc53fa316263e838bf54fde674d9d3a2f35"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "36dd4ed50bf13545456e2de7cdf40b95bb2875d28b0da100dab2684981f5ff88"
+        }
+      ]
+    },
+    "tokens": {
+      "accepted_rejected_conflicts": 0,
+      "accepted_titles": 22,
+      "extra_titles": 12,
+      "including_duplicates": {
+        "available": {
+          "ACM Digital Library": 3,
+          "IEEE Digital Library": 11,
+          "Scopus": 20
+        },
+        "minimum_sets": [
+          [
+            "ACM Digital Library",
+            "IEEE Digital Library",
+            "Scopus"
+          ]
+        ],
+        "observed_incidence": 34,
+        "only": {
+          "ACM Digital Library": 1,
+          "IEEE Digital Library": 1,
+          "Scopus": 8
+        },
+        "sources": [
+          "ACM Digital Library",
+          "IEEE Digital Library",
+          "Scopus"
+        ]
+      },
+      "representatives": {
+        "available": {
+          "ACM Digital Library": 2,
+          "IEEE Digital Library": 8,
+          "Scopus": 12
+        },
+        "minimum_sets": [
+          [
+            "ACM Digital Library",
+            "IEEE Digital Library",
+            "Scopus"
+          ]
+        ],
+        "observed_incidence": 22,
+        "only": {
+          "ACM Digital Library": 2,
+          "IEEE Digital Library": 8,
+          "Scopus": 12
+        },
+        "sources": [
+          "ACM Digital Library",
+          "IEEE Digital Library",
+          "Scopus"
+        ]
+      },
+      "table": [
+        {
+          "page": 1,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library"
+          ],
+          "title_sha256": "08fb442ad0adfec84b42b7a90a320e07fa630d5b9fb76f16c7ce142652539d48"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "937882cf63475fb91c280fb085e668380f68a1ec3a7ccce094c52ebf0a366ca4"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "ACM Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "92a82423f97ac87aab756a14bb77f4067f36a1e797663de92561cf22f622c747"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "e5fd4ec87876523d238f9c5dd1aa5a4886d8097a8e196578feb734934de1d84b"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "e4c8ccda0895e087b36772f252eeeac6e957729025e9e9c284e1c6b820d75722"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "94aef7b576f219005a67c5935eee20cc4e129c12456705d1bb4527313f6bc4ba"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "477ed7c4f8bedf81c0a39deb4bc87532bc634b08583f2cd1fb957c3de0e65561"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "c57d05278af7f131559da384a548bea26306e1eba250c8e055baed7215923200"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "ACM Digital Library"
+          ],
+          "sources": [
+            "ACM Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "cfdee686ad4c5923e88978de35d2d4c38fe375db328c73c7c653817ebf6f5d13"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "ACM Digital Library"
+          ],
+          "sources": [
+            "ACM Digital Library"
+          ],
+          "title_sha256": "a9279c790200d91ff8542e46e31cfe67242a627109df91ca81df635974b007ac"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "d6dc9fbea09b0511985df13c67f78aae4793672eaa9767f108bb5d016a439be2"
+        },
+        {
+          "page": 1,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "bcd16235202fe48f2f6bd13752f8ac0cdca09608561da7df8902fa685563f1ea"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "ecdbe5fde0bea6618ea0636714b3a828aa2591e78cb8a29421044ae27eec58e3"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "b05d22423157078a4c33e6558dfffbc1f99688f7b6cc8006a7f93197c30d951a"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "fc082a0eded7d82e07abfb3182f55196857b437e111373aeec0708c9054ab4a1"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "265182417149b563b8434da426e8cde70c6121c2776432ef03c3e19b4d2284bb"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "ec1f5e99203e2e90c1ab3794297afdc41c91426339a2533deba970e03be72477"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "53d8500a6948cada8b15b5e81773fdf722344f08714212dfdcff2bda11cd4a4e"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "f13b1aca1eea3b24c38ac11a8b9717284f622bea73d402ee2df004e9b67e0a38"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "e609f87d600ea3d5d08a31816e2257063594ff2dfb25bb7a1798c84c0cc229ce"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "IEEE Digital Library"
+          ],
+          "sources": [
+            "IEEE Digital Library",
+            "Scopus"
+          ],
+          "title_sha256": "a643c88595e957abcc4bdbd1ea3c5bf453968c55bd7854ba990c16c8f36d9e4c"
+        },
+        {
+          "page": 2,
+          "representatives": [
+            "Scopus"
+          ],
+          "sources": [
+            "Scopus"
+          ],
+          "title_sha256": "36dd4ed50bf13545456e2de7cdf40b95bb2875d28b0da100dab2684981f5ff88"
+        }
+      ]
+    }
+  },
+  "issues": [],
+  "row_count": 1259,
+  "source_counts": {
+    "ACM Digital Library": 820,
+    "IEEE Digital Library": 179,
+    "Scopus": 260
+  },
+  "status_counts": {
+    "Accepted": 22,
+    "Duplicated": 94,
+    "Rejected": 1143
+  }
+}
