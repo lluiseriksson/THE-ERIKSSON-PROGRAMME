@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\newcommand{\F}{F}\newcommand{\Lw}{L}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\begin{document}
+\begin{center}{\LARGE\bfseries Bid increments and tie priority in\\[3pt] two-bidder consignment auctions}\\[8pt]
+Lluis Eriksson\\[2pt]\small Working manuscript, 20 November 2026
+\end{center}
+\textbf{Abstract.} A bidder who sells more units than she buys can raise the clearing price by raising her marginal bid, even while her allocation stays fixed. We give a strict counterexample to the zero-price prescription in a withdrawn model of single-bid consignment auctions. We classify all pure equilibria on continuous and discrete bid spaces for an open family of two-bidder primitives. When bids are unrestricted, a positive probability of losing tie priority eliminates every efficient pure equilibrium in the continuous game. Yet adjacent bids on arbitrarily fine grids can sustain efficient allocations at prices approaching an entire interval. We give the exact mesh and priority threshold for this discrepancy. The results concern strategic possibilities in the model, rather than estimates for an operating permit market.
+
+\section{A price test that requires no ties}
+In Yoon's July preprint \cite{yoon}, section 3 prescribes bids for a uniform-price auction with mandatory consignment. Bidder $i$ submits one bid for her capacity $q_i$ and receives the clearing price on her initial endowment $e_i$. At allocation $x_i$ and price $p$ her payoff is $v_i x_i+(e_i-x_i)p$. The lowest accepted bid sets the price. The author withdrew the preprint on 19 November, citing an error in the equilibrium characterization \cite{withdrawal}. The notice does not specify the error. We test its case [2-1] directly.
+
+Take supply $m=10$, capacities $(8,6)$, values $(10,4)$ and endowments $(1,3)$. The first-round thresholds in equation (1) of \cite{yoon} are $40/7$ and $16/3$. Applying the value cap in equation (2) gives $40/7$ and $4$. Bidder 2 uniquely attains the minimum via the cap, and $q_1<m$, so case [2-1] prescribes $b_1\ge4,\ b_2=0$. The induced quantities are $(8,2)$. Bidder 2 can bid 1 instead. She still obtains two units. Her payment rises by 2 and her proceeds on the three consigned units rise by 3. Her net payoff increases from 8 to 9. Both bids are below or at their respective values if $b_1=4$; no tie occurs in either calculation.
+
+Strategic demand expansion by consignment sellers has been studied in a divisible auction with bid functions \cite{liu}. We isolate a different question: which pure outcomes are consistent with a single bid per agent, a last-accepted price, a price tick, and an explicit allocation at ties?
+\newpage
+\section{Primitives and continuous bids}
+Let $v_1>v_2>0$, $0<q_i<m$, $d=q_1+q_2-m>0$, and let $r_i=m-q_j=q_i-d$ be the residual that $i$ receives when outbid. Endowments obey $0\le e_i<q_i$ and $e_1+e_2\le m$. Throughout assume
+\[
+ e_1<r_1,\quad e_2>r_2,\qquad T=\frac{d v_1}{q_1-e_1}>v_2.
+\]
+In particular $T<v_1$. These strict inequalities describe a nonempty open region inside the feasible set. The two first-round thresholds before capping are $T$ and $d v_2/(q_2-e_2)>v_2$. Case [2-1] again gives $b_2=0$ and $b_1\ge v_2$. The deviation to any $0<t<v_2$ gains $(e_2-r_2)t$.
+
+Both bidders always receive units, so $p=\min(b_1,b_2)$. Define
+\[
+ F_i(p)=q_iv_i+(e_i-q_i)p,\qquad L_i(p)=r_iv_i+(e_i-r_i)p.
+\]
+At a tie the agents are risk-neutral and bidder 1 takes the full quantity with probability $\lambda\in[0,1]$, bidder 2 otherwise. The payoffs at ties are the corresponding mixtures of $F_i$ and $L_i$. Here $L_1$ decreases and $L_2$ increases with price. A full allocation to bidder 1 maximizes welfare since $v_1>v_2$.
+
+\textbf{Proposition 1.} With unrestricted nonnegative continuous bids, the inefficient equilibria are $(0,y)$ for $y\ge T$. For $\lambda=1$ there are also efficient equilibria $(p,p)$ for $v_2\le p\le T$. These lists are exhaustive. With value-capped bids the full list is instead $(y,v_2)$ for $v_2<y\le v_1$, together with $(v_2,v_2)$ if $\lambda=1$.
+
+\textit{Proof.} If $b_1>b_2$, bidder 2 can raise strictly between the bids without changing quantity unless she is already at her bid cap. At that cap $b_2=v_2$, bidder 1 loses nothing by staying high: tying can only reduce her quantity and lowering below $v_2$ gives at most $L_1(0)<F_1(v_2)$. If $b_1<b_2$, bidder 1 shades to zero unless already there. Then jumping above $b_2$ is profitable exactly when $b_2<T$. At $b_2\ge T$ tying cannot do better since both tie components are at most $L_1(0)$; bidder 2 already gets her full quantity at zero. Under value caps $b_2\le v_2<T<v_1$, so the jump is feasible.
+
+At a tie $p$ with $\lambda<1$, bidder 1 gains $(1-\lambda)d(v_1-p)$ by jumping if $p<v_1$. If $p\ge v_1$, her expected allocation exceeds $e_1$, so her payoff is at most $e_1v_1<L_1(0)$. With $\lambda=1$, bidder 1 deters shading precisely when $p\le T$ (automatic at zero). Bidder 2 deters a jump precisely when $p\ge v_2$ and cannot gain from shading. The capped case retains only the tie at $v_2$ for $\lambda=1$. \hfill$\square$
+\newpage
+\section{All pure equilibria on a price grid}
+Let the bid space be $\{0,h,2h,\ldots\}$ with no bid caps and $v_2$ on the grid. Write $a=(e_2-r_2)/d\in(0,1)$ and $P=h\lfloor T/h\rfloor$.
+
+\textbf{Theorem 2.} For every $\lambda$, the reverse-order equilibria are $(0,y)$ for grid $y\ge T$. If $\lambda=1$, the remaining equilibria are ties $(p,p)$ at grid prices in $[v_2,T]$. If $\lambda<1$, the remaining equilibria are exactly
+\[
+ (p+h,p),\qquad p\ \text{on the grid},\qquad
+ v_2-h+\frac{ah}{1-\lambda}\ \le\ p\ \le\ T. \tag{1}
+\]
+Hence an efficient pure equilibrium exists for $\lambda<1$ if and only if
+\[
+ \lambda\ \le\ 1-\frac{ah}{P-v_2+h}. \tag{2}
+\]
+
+\textit{Proof.} The reverse-order and tie arguments of Proposition 1 use only a jump strictly above the rival or shading to zero and remain valid on the unrestricted grid. Suppose $b_1>b_2$. A gap exceeding one tick permits a profitable increase of one tick by bidder 2. Write the remaining case as $(p+h,p)$. For bidder 2, lowering her bid costs money. Crossing the upper bid gives gain
+\[
+ d(v_2-p)-(q_2-e_2)h.
+\]
+Matching the upper bid gives gain
+\[
+ (e_2-r_2)h+(1-\lambda)d(v_2-p-h). \tag{3}
+\]
+If $\lambda=1$ the match is strictly profitable. Otherwise ruling out the match is the lower bound in (1). Ruling out a jump requires $p\ge v_2-h+ah$, which follows from that lower bound. It lies strictly above $v_2-h$, hence any qualifying grid $p$ is positive. For bidder 1 a higher bid has no effect. Dropping below $p$ gives at most $L_1(0)$, attainable at zero. Her current payoff $F_1(p)$ is at least this amount precisely when $p\le T$. Under that condition matching the lower bid cannot help, since $p<v_1$ and she already receives her full capacity. If $p=0$ the lower bound already excludes it. This exhausts both bidders' actions. Substituting the highest admissible grid price $P$ in the lower bound proves (2). \hfill$\square$
+
+\textbf{Example.} For the data on page 1 and $h=1$, $a=1/4$, $T=40/7$, and $P=5$. The efficient profile $(5,4)$ survives for $\lambda\le3/4$. The profile $(6,5)$ survives up to $\lambda=7/8$. Throughout $7/8<\lambda<1$ only reversed zero-price equilibria remain. At $\lambda=1$ efficient ties return. Thus testing the first adjacent price alone understates the range of priorities that admit an efficient equilibrium.
+\newpage
+\section{What disappears in the continuous limit}
+Fix any $\lambda<1$. As $h\downarrow0$ through grids containing $v_2$, the set of limit prices of the efficient grid equilibria is exactly $[v_2,T]$. Indeed the lower endpoint in (1) is $v_2+O(h)$, the largest price differs from $T$ by less than $h$, and every intermediate price has an admissible grid approximation. The limiting bid pairs are ties. The efficient allocations, however, approach from the side where bidder 1 wins for certain. The tie lottery changes the allocation at the limit. Proposition 1 shows that none of these ties is then an equilibrium of the continuous game.
+
+The numerical size of the discrepancy is also explicit. At continuous bids $(v_2+\eta,v_2)$ for $\eta>0$, bidder 1 cannot gain by a unilateral change. Bidder 2 can raise almost to $v_2+\eta$ without losing her residual allocation. Her supremal gain is $(e_2-r_2)\eta$. Matching the upper bid can only lower that limiting payoff because extra units are worth less than their price there. Crossing the upper bid changes her original payoff by $(e_2-q_2)\eta<0$. Thus efficient allocations can have arbitrarily small regret even where no efficient pure equilibrium exists.
+
+In the example the efficient allocation $(8,2)$ has gross welfare 88; the reversed allocation $(4,6)$ has welfare 64. A regulator retaining six units receives 24 at price 4 and zero at price zero. These are comparisons within a two-bidder model. Inferring welfare from clearing price alone would require further information on allocation, admissible bids and the tie rule. We do not estimate the effects of bid increments in any real permit market.
+
+\section*{Model assessments and review context}
+OpenAI Codex assisted with the derivations, numerical examples and preparation of the manuscript in a shared authoring context. Any subsequent model assessment of this exact file belongs to its accompanying version record. This text reports no independent peer review.
+
+\begin{thebibliography}{9}
+\bibitem{yoon} K. Yoon. \emph{Demand reduction and initial endowments in consignment auctions}. July 2026, version 1, sections 2--3. \href{https://arxiv.org/html/2607.03648v1}{arXiv:2607.03648v1}.
+\bibitem{withdrawal} K. Yoon. Withdrawal notice, 19 November 2026. \href{https://arxiv.org/abs/2607.03648v2}{arXiv:2607.03648v2}.
+\bibitem{liu} Y. Liu and B. Tan. \emph{Consignment auctions revisited}. Economics Letters 203 (2021). \href{https://www.sciencedirect.com/science/article/abs/pii/S0165176521001245}{Publisher record}.
+\end{thebibliography}
+\end{document}
