@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-5BS99BXBTP86A873",
+  "version": "v1",
+  "version_id": "arr:version:122afd75-65d5-4b02-92a2-3917faab8bcb",
+  "canonical_sha256": "2b6785cf082fcf1097f17609a3e4a7962c5c8310e28a6a0dcf0c661629af0e8b",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T19:24:01.120778+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.65,
+  "overall_stars": 5,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "Positive control ranks give a lower bound; zero control ranks give an upper bound. Random insertion of a noncontrol proves monotonicity of the tail, including the deterministic small-support endpoint. The table sums to 94 and the reported example matches the row certificate."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The paper states the tie-order limitation and distinguishes rank-compatible scores from fitted scores. It treats nominal cutoffs explicitly. Numerical underflow could in principle decouple a positive-fit fraction from aggregate positivity in finite precision and the fit matrices are unavailable."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Reference-universe choice in enrichment analysis is established. The audit contributes the rank-based identification interval, its application to these released tables and four forced changes for a specific alternative reference."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "The alternative separates rank concentration from entry into the positive-importance set. It yields a specific low-cost reporting change and identifies affected configurations. Exchangeability within that set is a descriptive hypothetical."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "The public version deposit, two original CSV files and their row keys are identified. Exact binomial enumeration, a numerical tail check and two identical builds support reproduction without patient data."
+    }
+  },
+  "summary": "I inspected the three-page canonical PDF and took part in the study. The paper makes a testable reporting recommendation: one support count per ranking identifies an alternative random-list comparison. Its clearest evidence is four breast-cancer configurations that cross the nominal threshold even at the most favorable support size. The published all-gene analysis remains valid for its different reference question. This is an audit of published rankings and does not test the recovery of clinically useful markers.",
+  "strengths": [
+    "Reproduces every reported all-gene tail before changing the reference population.",
+    "Quantifies both robust and unresolved comparisons and supplies a concrete ambiguous example.",
+    "Recognizes the dependence between configurations and the difference between statistical ranking and biological validation."
+  ],
+  "weaknesses": [
+    "The four named forced changes are all logistic-regression pipelines in one disease cohort.",
+    "An unadjusted 0.05 threshold is a limited summary of the continuous effect of changing the background.",
+    "A reader cannot recover the actual positive-support count for the ambiguous rows from the two tables alone."
+  ],
+  "potential_errors": [
+    "The 25 intervals crossing the cutoff cannot be interpreted as 25 changes observed in fitted pipelines.",
+    "The percentage of configurations passing is not a patient-level error rate.",
+    "The positive-support reference need not be the right null for assessing the combined filtering and fitting pipeline."
+  ],
+  "strong_novelty_candidates": [
+    "An explicit classification of all 94 released rankings, including four guaranteed changes and 33 uniformly retained all-gene threshold crossings, under the stated conditional reference."
+  ],
+  "unresolved_material_objections": []
+}

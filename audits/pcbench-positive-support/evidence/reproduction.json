@@ -1,0 +1,21 @@
+{
+  "source_sha": "b299fa669dca8758a76e39854ff85048074e0cb3",
+  "inputs": {
+    "panel.tex": "4e3077ab00423977daa3e68e4b78fe95d1ebd39a62e204d3844f6656f0f1c77d",
+    "verify_panel.py": "65d29f4a49012e93c355fc9dcc8798ddae4a34737868888d4435a125c4310880",
+    "panel_identify.py": "1bc58e6f0a7d496ccd8c5eeb9dd092713b6803a488fc08f042ab8fa4f9a0f1fb",
+    "panel-identification.json": "71686c7e8658472841d4c79a8ed587bd2a221ff3bf07ad443b56b58492a7f1c1",
+    "source.json": "5ce459cbc5ff5430f41e3ed206f9edf45bce24ddc6cdce0a9c602739f1cd6653",
+    "bench_panel_genes.csv": "d5b01fbbd295d9c052b316effdecb4f4918f9876963918296778ece32131cc9a",
+    "bench_summary.csv": "8d2dcda5a1984ca88e5c37d4e3b326159131bb162afd55fb8c35bfe3ebfe3d66"
+  },
+  "started_at": "2026-11-20T19:22:20.042319+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "2b6785cf082fcf1097f17609a3e4a7962c5c8310e28a6a0dcf0c661629af0e8b",
+    "2b6785cf082fcf1097f17609a3e4a7962c5c8310e28a6a0dcf0c661629af0e8b"
+  ],
+  "pdf_bytes": 232827,
+  "finished_at": "2026-11-20T19:23:15.749697+00:00"
+}
