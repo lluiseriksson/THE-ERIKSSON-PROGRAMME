@@ -12,7 +12,7 @@
 A monthly income total can produce different month-end consumption rates, even when the memory parameter and initial rate are known. We derive the full range, the corresponding range of monthly spending, and a joint test for simulations using two decay rates and the same payments. Applied to a published convolution, these results separate the roles of income timing and initialization. The end-of-month weight is exact for lump payments. For a constant income flow, the printed discretization overestimates the long-run level at fixed time step. The results concern the model's information requirements.
 \end{abstract}
 \section{What a monthly amount identifies}
-Pe\~na Velasco [1, Eqs.~7 and 14] studies an exponentially weighted integral of income and a discrete convolution on monthly observations. The analytical examples specify a continuous income path. Consider a reader who has only monthly totals. Measure time in months. Let $M_n$ be the amount received in interval $n$ of length $h$, and $dM_n(s)$ its nonnegative distribution over local time $s$. Modeled consumption $C$ is a \emph{rate}, in amount per month. For $\alpha>0$ put $q=e^{-\alpha h}$. The increment relative to the decayed previous closing rate equals
+Pe\~na Velasco and Abanc\'in Ospina [1, Eqs.~7 and 14] studies an exponentially weighted integral of income and a discrete convolution on monthly observations. The analytical examples specify a continuous income path. Consider a reader who has only monthly totals. Measure time in months. Let $M_n$ be the amount received in interval $n$ of length $h$, and $dM_n(s)$ its nonnegative distribution over local time $s$. Modeled consumption $C$ is a \emph{rate}, in amount per month. For $\alpha>0$ put $q=e^{-\alpha h}$. The increment relative to the decayed previous closing rate equals
 \[
 D_n=C_n-q C_{n-1}=\alpha\int_{[0,h]} e^{-\alpha(h-s)}\,dM_n(s).
 \]
@@ -61,7 +61,7 @@ For $h=1$, take $a=0.03$ and $b=0.15$, both among the rates in [1]. The normaliz
 
 \small
 \paragraph{References.}
-[1] A.~A. Pe\~na Velasco, \emph{Dynamic economic modeling of intertemporal consumption with memory using Volterra integral equations}, Visi\'on Acad\'emica 4 (2026), 550--568. \href{https://doi.org/10.70577/mpwp1487}{doi:10.70577/mpwp1487}.
+[1] A.~A. Pe\~na Velasco and R.~A. Abanc\'in Ospina, \emph{Dynamic economic modeling of intertemporal consumption with memory using Volterra integral equations}, Visi\'on Acad\'emica 4 (2026), 550--568. \href{https://doi.org/10.70577/mpwp1487}{doi:10.70577/mpwp1487}.
 
 [2] M.~Stephens Jr., \emph{3rd of tha Month: Do Social Security Recipients Smooth Consumption Between Checks?}, American Economic Review 93 (2003), 406--422. \href{https://doi.org/10.1257/000282803321455386}{doi:10.1257/000282803321455386}.
 
