@@ -1,0 +1,60 @@
+{
+  "archive_sha256": "ea56e8561cf45359707c2e2e65926701caca4b2821372567b9d5da4573aeb648",
+  "sample_n": 1284,
+  "municipalities": 321,
+  "years": [
+    1900,
+    1910,
+    1920,
+    1930
+  ],
+  "full": {
+    "single": {
+      "beta": 0.2472672589997948,
+      "excluded_instruments": 1,
+      "overid_df": 0,
+      "partial_r_squared": 0.024701002795244384,
+      "minimum_outcome_rms": 0.0166784446413826
+    },
+    "joint": {
+      "beta": 0.2920018276095359,
+      "excluded_instruments": 2,
+      "overid_df": 1,
+      "partial_r_squared": 0.03193808743874957,
+      "minimum_outcome_rms": 0.02239606210733888
+    }
+  },
+  "matches_at_printed_precision": true,
+  "deletion_range": [
+    [
+      0.20434458153139315,
+      0.26088529716694264
+    ],
+    [
+      0.2984376513227099,
+      0.335877673597722
+    ]
+  ],
+  "aligned_tests": {
+    "single": {
+      "ar_null_chi2": 3.3380744018413497,
+      "ar_null_df": 1,
+      "ar_null_p": 0.06769378667269516,
+      "first_stage_wald_chi2": 30.748330300158244,
+      "first_stage_wald_per_restriction": 30.748330300158244,
+      "cluster_covariance": "CR0, no small-sample multiplier",
+      "overidentification_degrees": 0,
+      "clusters": 321
+    },
+    "joint": {
+      "ar_null_chi2": 8.46508447331463,
+      "ar_null_df": 2,
+      "ar_null_p": 0.014515441913699013,
+      "first_stage_wald_chi2": 40.912161651954904,
+      "first_stage_wald_per_restriction": 20.456080825977452,
+      "cluster_covariance": "CR0, no small-sample multiplier",
+      "overidentification_degrees": 1,
+      "clusters": 321
+    }
+  }
+}
