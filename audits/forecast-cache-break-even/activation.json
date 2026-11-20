@@ -1,0 +1,90 @@
+{
+  "Chronos-2": {
+    "sizes": {
+      "1": {
+        "min_setup": "715017/160000",
+        "max_premium": "349/80",
+        "min_saving": "18617/160000"
+      },
+      "10": {
+        "min_setup": "50805183/11380000",
+        "max_premium": "349/80",
+        "min_saving": "1273211/11380000"
+      },
+      "100": {
+        "min_setup": "731817/164000",
+        "max_premium": "8533/2000",
+        "min_saving": "168553/820000"
+      },
+      "500": {
+        "min_setup": "684177/153200",
+        "max_premium": "177/50",
+        "min_saving": "748601/800000"
+      },
+      "1000": {
+        "min_setup": "5654089/1266000",
+        "max_premium": "131/50",
+        "min_saving": "156501/84400"
+      },
+      "2000": {
+        "min_setup": "1784041/400000",
+        "max_premium": "19/25",
+        "min_saving": "1484041/400000"
+      },
+      "10000": {
+        "min_setup": "4433/1000",
+        "max_premium": "-141/10",
+        "min_saving": "62159/3350"
+      }
+    },
+    "min_setup": "4433/1000",
+    "max_premium": "349/80",
+    "min_saving": "1273211/11380000",
+    "adjacent_margin": "141/2000",
+    "immediate_dominates_all_paid": true
+  },
+  "TiRex-2": {
+    "sizes": {
+      "1": {
+        "min_setup": "115635837/2870000",
+        "max_premium": "64453/1600",
+        "min_saving": "2359/32000"
+      },
+      "10": {
+        "min_setup": "98582313/2450000",
+        "max_premium": "16127/400",
+        "min_saving": "80221/4000000"
+      },
+      "100": {
+        "min_setup": "31192253/774000",
+        "max_premium": "81663/2000",
+        "min_saving": "-6923/16000"
+      },
+      "500": {
+        "min_setup": "16099137/400000",
+        "max_premium": "8523/200",
+        "min_saving": "-910191/400000"
+      },
+      "1000": {
+        "min_setup": "4337103/107800",
+        "max_premium": "8979/200",
+        "min_saving": "-123369/26950"
+      },
+      "2000": {
+        "min_setup": "2500371/62200",
+        "max_premium": "9891/200",
+        "min_saving": "-367051/40000"
+      },
+      "10000": {
+        "min_setup": "80131/2000",
+        "max_premium": "1721/20",
+        "min_saving": "-1182151/25820"
+      }
+    },
+    "min_setup": "80131/2000",
+    "max_premium": "1721/20",
+    "min_saving": "-1182151/25820",
+    "adjacent_margin": "-91969/2000",
+    "immediate_dominates_all_paid": false
+  }
+}

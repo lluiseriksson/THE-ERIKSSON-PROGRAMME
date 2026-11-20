@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{When to activate a forecasting cache with an unknown workload}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Selecting forecasting views by historical backtesting incurs a startup cost that can be shared across later batches. We use published H100 timings to compare cached Chronos-2 against Toto-2-2.5B when batch sizes vary and the episode duration is unknown. Forty batches guarantee a lower total service time under the measured cost model, whereas 39 can fall short. This threshold survives rounding when the reported cold-time multiplier is enforced. Among deterministic activation rules, starting immediately minimizes worst-case excess time relative to a service that knows the entire workload. Its worst-case excess is 4.3625 seconds over the display intervals. We give a randomized rule whose worst expected excess is below 1.695 seconds against any workload fixed independently of the draw. A constant-size workload gives a lower bound above 1.626 seconds for any randomized rule. These are bounds on service time while the selected views remain valid. They do not measure live latency variation or the accuracy of stale forecasts.
+\end{abstract}
+\section{The decision before the first forecast}
+Choudhry et al.\ [1] use historical backtests to select transformations of a time-series context, then aggregate predictions from selected views. Their Table~8 reports cold and warm service costs on one H100 GPU and one CPU core. A cold batch pays for historical selection. A warm batch reuses it for the same configuration. Table~7 reports forecast accuracy separately: on GIFT-Eval the larger baseline has better overall MASE and WQL than Chronos-2 with the highest backtesting budget. Our decision criterion is total service time subject to an externally chosen accuracy requirement. We compare only systems considered eligible by the operator.
+
+For each of seven forecast counts $f$, let $T_f$ denote the time using the larger baseline, $C_f$ the time using cold Chronos-2 xhigh, and $W_f$ its warm time. An episode consists of a finite sequence of these batch sizes. The current size is observed before service. A policy may use the baseline until it first activates Chronos; after activation it uses Chronos for that batch and all remaining batches. Times add and the selection stays valid within the episode. The offline comparator may activate at any batch or never. Repeated batches use the same unrounded row values. The timings are benchmarks on synthetic contexts representative of one configuration. No traffic distribution is assumed.
+
+\begin{center}\small
+\begin{tabular}{rrrrr}
+\toprule
+Forecasts & Baseline $T$ (s)& Chronos cold $C$ (s)& Chronos base (s)& Warm/base\\
+\midrule
+1&0.133&4.49&0.0143&1.12\\
+10&0.133&4.49&0.0158&1.30\\
+100&0.319&4.58&0.0203&5.55\\
+500&1.44&4.97&0.0864&5.77\\
+1,000&2.86&5.47&0.173&5.78\\
+2,000&5.70&6.45&0.345&5.74\\
+10,000&28.5&14.3&1.71&5.77\\
+\bottomrule
+\end{tabular}
+\end{center}
+Warm time is the product of the last two columns. The primary table also reports a cold/base ratio; we retain it in the uncertainty analysis. The warm savings $S_f=T_f-W_f$ are positive for all seven Chronos rows. Define the activation cost relative to warm service as $B_f=C_f-W_f$ and the cold premium relative to baseline as $D_f=C_f-T_f=B_f-S_f$.
+
+\section{Batch count and the best deterministic policy}
+For a cold first batch followed by $n-1$ reuses, the largest excess over serving everything on the baseline is $\max_f D_f-(n-1)\min_f S_f$. The first and later sizes can be chosen separately, so the bound is sharp at fixed row values. At the printed point estimates the premium is at most 4.357 s and savings are at least 0.11246 s. The critical sequence uses one forecast at startup and batches of ten thereafter. Lower total time is guaranteed from batch 40. For TiRex-2 xhigh, the warm cost of 10,000 forecasts exceeds baseline time even at the favorable ends of the reported precision; no finite uniform threshold exists on the seven sizes.
+
+We treat each printed time and multiplier as a closed interval extending half a last printed unit in either direction. Write $b$ for unrounded small-model base time and $R$ for its cold multiplier. Admissible values satisfy $C=bR$. For example, intersect the display interval of $b$ with $[C_{\min}/R_{\max},C_{\max}/R_{\min}]$. The warm multiplier and baseline time may each take any value in their own intervals. Cold time and base time must also satisfy their original bounds. Direct optimization over the interval endpoints and the points where $bR$ hits a cold-time bound gives $\max D\le 349/80$ s and $\min S\ge 1273211/11380000$ s. Thirty-nine reuses cover the first premium even at these unfavorable ends. With 38 reuses the one-then-tens sequence can still lose even at favorable ends. Omitting the extra cold/base information would give 41 for the unfavorable calculation. The precision bands describe rounding, not statistical confidence.
+
+Moving a purchase from batch $i+1$ back to batch $i$ changes its two-batch cost by $D_i-B_{i+1}$. Over all allowed rows $\min B=4.433$ s exceeds $\max D=4.3625$ s. Earlier activation thus costs less than any delayed activation that occurs. The offline choice is between immediate activation and never activating. Immediate activation incurs regret at most $\max D$, since all subsequent warm savings are positive. Here regret means episode time minus the offline minimum, in seconds. For a matching deterministic lower bound, repeat a size attaining $\max D$. A policy that never buys has unbounded regret. Otherwise stop at its first activation: it has paid $\max D$ more than the baseline on that prefix. This argument fixes the entire prefix in advance once the deterministic policy is known. The upper endpoint is attainable as a supremum within the linked display intervals.
+
+\section{A randomized rule for variable batch sizes}
+The workload and the underlying timing table are chosen independently of the policy's draw. For each row use a conservative credit $\ell_f$, the smallest admissible $S_f$, and let $\rho=\max_f S_f^{\max}/\ell_f$. Write $b_0=\min_f B_f^{\min}$ and $b_1=\max_f B_f^{\max}$. All are computable from the published columns. Choose $H>0$, no larger than $b_0$. Once per episode draw a threshold $U$ with distribution
+\[
+ F(z)=\exp(z/H-1)\quad(0\le z\le H),\qquad F(z)=1\quad(z>H).
+\]
+There is mass $1/e$ at zero. Start with zero credit. Before each service, add the credit for the observed size and activate if the running sum has reached $U$. The rule requires neither future sizes nor knowledge of the unrounded times.
+
+\paragraph{Uniform upper bound.}
+For a realized sequence let $Z=\sum_i\ell_i$. If activation occurs, credit strictly before the activating batch is at most $U$. Relative to never activating, expected excess is thus at most
+\[
+ b_1 F(Z)-\mathbb{E}(Z-U)_+
+ = b_1 F(Z)-\int_0^Z F(u)\,du\le H/e+b_1-H.
+\]
+The last inequality follows by direct integration on $[0,H]$ and $[H,\infty)$. Relative to immediate activation, missed warm savings are at most $\rho\min(Z,U)$, including the case in which the threshold is never reached. The startup cost actually paid is at most $b_1$, whereas immediate activation pays at least $b_0$. Therefore expected excess over immediate activation is at most $\rho H/e+b_1-b_0$, since $\mathbb E U=H/e$. For a fixed sequence its offline cost is deterministic, so the larger of the two bounds covers regret to the offline optimum.
+
+The certificate uses $u=(\sum_{j=0}^{10}1/j!)^{-1}>1/e$ and $H=b_0/[1+(\rho-1)u]$. Substitution makes the two conservative bounds equal. For these rows $b_0=4.433$, $b_1\approx 4.48384$, $\rho$ is approximately 1.01223, and $H$ is approximately 4.41315 seconds. The resulting upper bound is below 1.695 seconds, including uncertainty in the printed values. The threshold is one example of randomization; optimality for mixed workloads remains open.
+
+\section{An exact lower benchmark for randomized policies}
+Consider a known, repeated batch size with savings $S>0$ and setup $B>S$. An arbitrary rule induces a distribution over the first activating batch. Write $P_n$ for the probability that it has activated by batch $n$. If $k=\lfloor B/S\rfloor$, the exact minimax expected additive regret is
+\[
+ r_* = kS(1-S/B)^k .
+\]
+To see necessity, a regret bound $r$ at each horizon $n\le k$ implies $(B-S)P_n\le r+S\sum_{j<n}P_j$, because expected excess over baseline is $BP_n-S\sum_{j=1}^nP_j$. Induction yields $P_n\le r q^{n-1}/(B-S)$, with $q=B/(B-S)$. Finite worst-case regret forces eventual purchase with probability one; otherwise missed savings diverge. As the horizon tends to infinity the regret over immediate activation is at least $S\sum_{j=1}^k(1-P_j)$. Combining yields $r\ge kS-r(q^k-1)$, as claimed.
+
+For sufficiency take $P_n=r_*q^{n-1}/(B-S)$ for $1\le n\le k$ and $P_n=1$ thereafter. This is a valid distribution since $P_k=kS/B\le1$. Substitution in the exact expected cost gives $r_*$ at every positive horizon. The source checker performs these substitutions using rational numbers. A constant workload is allowed within the variable-size problem. The admissible row in the supplement with 1 forecast per batch gives $r_* >$ 1.626 seconds, even if its timings are revealed. The mixed-workload minimax value therefore lies between 1.626 and 1.695 seconds. Classical randomized rent-or-buy work [2] studies competitive guarantees. Our objective is expected additive excess time on this measured cost table; we do not claim priority for the rent-or-buy formulation.
+
+\section*{Model assessments and review context}
+Codex assisted in deriving the bounds, checking sources and preparing the manuscript. Any assessment by this model shares that context. The record for the exact PDF documents the assessor and objections. The accuracy and service-time experiments were performed by the authors of [1]. No new model inference or hardware timing was performed for this analysis.
+
+\section*{Sources and reproduction}
+\begin{enumerate}\small
+\item Choudhry et al. \href{https://arxiv.org/html/2611.25171v1}{A Verifier from the Past: Test-Time Compute for Time Series Foundation Models}, 2026, Tables 7 and 8.
+\item Karlin, Manasse, McGeoch and Owicki. \href{https://courses.csail.mit.edu/6.895/fall03/handouts/papers/karlin.pdf}{Competitive Randomized Algorithms for Non-Uniform Problems}.
+\end{enumerate}
+The supplementary package contains the timing cells, extractor, interval calculations, rational certificates and PDF build inputs. Run \texttt{python verify\_cache.py} in the extracted directory.
+\end{document}
