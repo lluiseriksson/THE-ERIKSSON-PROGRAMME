@@ -1,0 +1,7 @@
+# Portability across two engineering education reviews
+
+In the modeling-education register, the six downloaded search exports cover the three final electronic selections. The smallest complete portfolio is ACM alone. The 15 studies advancing to final screening require ACM and ScienceDirect together. Removing ScienceDirect at that earlier stage loses two studies. Counting only the union of ACM, IEEE and Scopus would omit those two studies from the denominator. The single positive backward-search row already appears in the three electronic selections, corroborated by its publisher DOI and Table II of the authors' report. Both DOI and normalized title occur in precisely the expected raw exports for all 18 final-study and source pairs.
+
+Under failure of any selected source, the best attainable coverage for the shortlist is 8, 11 and 13 with two, three and four sources. Five or six sources cannot improve this bound in these exports. In the 22-title requirements-education register the three sources together guarantee 14; in the three-title modeling-education register the six sources together guarantee one. These are retrospective comparisons, conditional on the complete frozen exports and linkage rules. They concern recorded sources, not worldwide database holdings.
+
+Primary records: https://doi.org/10.5281/zenodo.24407666 and https://doi.org/10.5281/zenodo.16185787 . Compare the authors' selection narrative and three named studies at https://arxiv.org/html/2509.13896v1#S2 .
