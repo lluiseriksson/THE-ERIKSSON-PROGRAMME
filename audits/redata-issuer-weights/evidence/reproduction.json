@@ -1,0 +1,19 @@
+{
+  "source_sha": "571e7dc6260709eaa28a80e6f3a7af4aa4eec36a",
+  "inputs": {
+    "redata.tex": "1b6af8a814de97c030303d839d7e2d2195100c46f193e50cb10c9b56b99e15d4",
+    "verify_redata.py": "d83c365c656e3bf46b7d4f7ddf2e0869293178d76e66e8521ad245106b9f7510",
+    "metering_certify.py": "4adca6f20bbda2702d1211665e93b25d7790a88fc16a8cb4f20ece642e9ff380",
+    "car-cert.json": "d80b51475bb40e1839d4dbd3a9774c503d797fbed54751b28081e436c6be9d8c",
+    "source.json": "8a7913f3abe289bf00b3ac98dd0bd25844449ccde968bb1a70569a98bb96371c"
+  },
+  "started_at": "2026-11-20T19:05:41.837717+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "5310a889dc50306d5aa67544bd938bfd76f0fbc666550f1014adb8776e9f4a3e",
+    "5310a889dc50306d5aa67544bd938bfd76f0fbc666550f1014adb8776e9f4a3e"
+  ],
+  "pdf_bytes": 208006,
+  "finished_at": "2026-11-20T19:07:05.647483+00:00"
+}

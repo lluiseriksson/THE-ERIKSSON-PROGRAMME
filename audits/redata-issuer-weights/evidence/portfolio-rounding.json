@@ -1,0 +1,1 @@
+{"minima": {"market": {"difference": "151/2000", "sum": "2971/2000"}, "market_smh": {"difference": "229/1000", "sum": "131/80"}}, "vertices_per_form": 70, "independent_linear_programs": 560, "assumption": "Equal-weight portfolio equals the mean of issuer CARs before rounding."}

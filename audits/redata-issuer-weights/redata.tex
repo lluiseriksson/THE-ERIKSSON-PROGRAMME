@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,microtype}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{How much reweighting reverses the Brazilian REDATA event comparison?}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+An event study of Brazil's data-centre tax regime finds a smaller absolute abnormal return at enactment than at the earlier provisional measure for an equally weighted basket of eight utilities. Using the published stock-level three-session returns, we compute the nearest common weighting at which that comparison loses strictness. Redistributing 17.775\% of portfolio mass suffices for the market model; 21.335\% suffices simultaneously for it and a second model including a semiconductor factor. Every portfolio assigning 5--20\% to each issuer preserves the order in both specifications, even allowing for rounding. A common, strictly positive portfolio with weights of 1\% and 24\% reverses it in both. These thresholds measure sensitivity to issuer composition conditional on the reported event returns.
+\end{abstract}
+\section{Events and exposure}
+Brazil introduced REDATA through a provisional measure in September 2025 and sanctioned a data-centre incentive law in September 2026 [1,2]. Merlet Echavarria's replication deposit [3] designates 18 September 2025 as event B1 and 15 September 2026 as B4. Its second hypothesis compares the magnitudes of their three-session cumulative abnormal returns (CARs) for eight Brazilian utilities. It reports 1.53\% versus 0.81\% in a market model and 1.65\% versus 0.83\% after adding SMH as a factor. The author distinguishes the descriptive ordering from statistical evidence of anticipation.
+
+For each specification let $a$ and $b$ denote the two columns in Table~\ref{raw}. Write $A=w\cdot a$ and $B=w\cdot b$ for nonnegative weights summing to one. We use identical issuer weights at both dates and in both specifications. How much must these weights change to reach $|B|\geq|A|$? The exercise holds the reported stock CARs fixed. Daily renormalization around missing observations could yield a different portfolio functional. We do not re-estimate betas, reconstruct individual prices, or infer causality from two events.
+
+\begin{table}[ht]\centering\caption{Stock CARs over the three sessions surrounding each event, in percentage points [3].}\label{raw}
+\begin{tabular}{lrrrr}\toprule
+&\multicolumn{2}{c}{Market}&\multicolumn{2}{c}{Market and SMH}\\
+Issuer & B1 & B4 & B1 & B4\\\midrule
+TAEE11 &0.68&1.62&0.80&1.68\\ EQTL3 &1.14&1.05&1.30&1.13\\
+CPLE3 &1.68&1.65&1.77&1.57\\ CPFE3 &$-0.34$&$-0.08$&$-0.17$&$-0.10$\\
+EGIE3 &2.25&0.74&2.31&1.10\\ ENEV3 &2.88&$-0.71$&2.89&$-0.48$\\
+CMIG4 &$-0.20$&$-0.02$&$-0.02$&$-0.20$\\ AXIA3 &4.14&2.26&4.34&1.98\\\bottomrule
+\end{tabular}\end{table}
+
+\section{Finding the nearest boundary}
+Put $u_i=1/8$. At $u$, both $A-B$ and $A+B$ are positive in each model. Since $A^2-B^2=(A-B)(A+B)$, the first loss of strictness occurs at $w\cdot(a-b)=0$ or $w\cdot(a+b)=0$. For either coefficient vector $g$, minimizing $w\cdot g$ with a budget on total variation $\frac12\sum_i|w_i-u_i|$ is the finite-support linear extremum problem [4]. Transfer mass to a smallest coefficient from the largest available coefficient, exhausting donors in descending order. An exchange from a smaller donor to a larger one, or from a larger recipient to a smaller one, can only reduce the objective at fixed mass transferred. The resulting piecewise linear function gives the exact first zero. A single recipient can absorb the transfers at all boundaries reported here.
+
+For maximum per-issuer departure $\max_i|w_i-u_i|\leq s\leq 1/8$, the minimum assigns $u_i+s$ to the four smallest coefficients and $u_i-s$ to the four largest. This again follows by exchanging mass between coefficient pairs. We check both absolute-value branches. For each model the sum stays strictly positive even in the entire $s=1/8$ box, and the difference hyperplane is closer in total variation than the sum hyperplane.
+
+\section{Which comparisons survive?}
+Treating the printed inputs as exact, the market-only first tie occurs at total variation $401/2256$. The two-factor first tie is $553/2592$. The latter is also the simultaneous threshold: any common witness must reach the more distant boundary. An attaining vector puts $877/2592$ on TAEE11, zero on ENEV3, $95/2592$ on AXIA3 and $1/8$ on each of the remaining five. Both two-factor CARs then equal $46591/43200$ percentage points, while the market-model B4 CAR already exceeds B1. An arbitrarily small additional transfer from AXIA3 to TAEE11 produces strict reversal in both. Thus $553/2592$ is the infimum for strict simultaneous reversal.
+
+For maximum per-issuer departure the two individual thresholds are $143/1684$ and $109/1032$ of total mass. The second is attained simultaneously by assigning $119/516$ each to TAEE11, EQTL3, CPFE3 and CMIG4, and $5/258$ to each remaining issuer. For a strict, whole-percentage example put 24\% on each of the first four named here and 1\% on each of the others. The market CARs become 0.4167\% and 0.6562\%; the two-factor CARs become 0.5715\% and 0.6441\%. These portfolios witness the boundaries; actual holdings are unknown.
+
+\paragraph{Rounding and diversification.}
+If each printed stock CAR has rounding error at most 0.005 percentage points, a weighted difference or sum changes by at most 0.01. Repeating both calculations with those offsets brackets the simultaneous total-variation threshold between $545/2592$ and $187/864$ (21.026--21.644\% of mass, rounded outward). For maximum per-issuer departure the corresponding bounds are $323/3096$ and $331/3096$. Separately reported portfolio totals could restrict the rounding errors further if their aggregation is known. The strict whole-percentage example survives every perturbation in the specified stock cells.
+
+Conversely, if each issuer receives 5--20\%, the minima of $A-B$ are 0.0835 percentage points for the market model and 0.237 for the two-factor model. The minima of $A+B$ are 1.495 and 1.6475. Subtracting 0.01 leaves all four bounds positive. The original comparison therefore survives throughout this diversified class, even though portfolios outside it can reverse the ordering. Neither result measures sampling uncertainty or tests investor anticipation.
+
+\paragraph{Reproduction.} The program checks the source archive digest, computes exact boundaries and common witnesses, and cross-checks the individual total-variation results by a separate linear program. The package contains the source identifiers, code and expected output. No vendor price histories are redistributed.
+\paragraph{Model assessments and review context.} Codex contributed to the derivation and manuscript. The assessment for this exact PDF is recorded separately with its digest, evaluator identity and shared context. Independent peer review has not been documented.
+
+\paragraph{Sources.}
+[1] Casa Civil, \href{https://www.gov.br/casacivil/pt-br/assuntos/noticias/2025/setembro/governo-federal-edita-mp-para-instituir-regime-especial-de-tributacao-para-servicos-de-datacenter}{announcement of the REDATA provisional measure} (2025).
+[2] MDIC, \href{https://www.gov.br/mdic/pt-br/assuntos/noticias/2026/setembro/presidente-sanciona-o-redata-que-estimula-datacenters-e-desenvolvimento-tecnologico-no-brasil}{announcement of sanction} (2026).
+[3] A. A. Merlet Echavarria, replication package for \emph{The Metering Gap: AI Data-Centre Load in Latin America}, \href{https://doi.org/10.5281/zenodo.24405076}{Zenodo version deposit}, 20 November 2026 (CC BY 4.0). Table~\ref{raw} uses the deposited event-study summaries.
+[4] C. D. Charalambous, I. Tzortzis, S. Loyka and T. Charalambous, \href{https://arxiv.org/abs/1301.4763}{Extremum Problems with Total Variation Distance and their Applications} (2013 preprint).
+\end{document}
