@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,booktabs}\usepackage[hidelinks]{hyperref}
+\title{How much denominator variation can two reported dispersions require? A three-seed tokenizer audit}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Perplexity and bits per character on one scored token path are linked by the ratio of scored tokens to characters. We ask whether rounded summary statistics alone can exclude a constant ratio across runs, and how much variation would reconcile them. For three runs, sorting the unknown paired measurements reduces the minimum-range problem to two bounded shape parameters. We enclose the infimum over shapes, last-digit rounding and two standard-deviation conventions. In Table 1 of Singhal et al., a common denominator ratio is incompatible with all twelve rows under the same-loss interpretation. For Hindi StructPiece the range required across seeds is at least 0.00939 tokens per character, and a hypothetical compatible triplet has range below 0.00986. These are bounds on possible summaries, not reconstructions of particular runs.
+\end{abstract}
+\section{What a pair of metrics identifies}
+For seed $i$ let $P_i>1$ be perplexity and $B_i>0$ bits per character (BPC). If both come from the same total negative log likelihood on one scored path, then
+\[
+  C_i=(\log 2)B_i/\log P_i
+\]
+is scored tokens per character. Different likelihood definitions or averaging losses at different stages need not give this identity with the corpus token ratio. Cao and Rimell \cite{cao} discuss the distinct choice of marginalizing likelihood over alternative tokenizations. Here only matched deterministic-path summaries are tested.
+
+Singhal et al.\ report means and standard deviations across three seeds and present token-level perplexity beside BPC \cite{article}. For each row let $(m,s,b,t)$ denote the printed PPL mean, PPL deviation, BPC mean and BPC deviation. We allow half of the last displayed unit in every input and either a common sample or a common population deviation. We minimize $W=\max_i C_i-\min_i C_i$ over all compatible positive observations and pairings. Feasible triples place an upper bound on this infimum. Only a positive lower bound excludes a fixed ratio. This test asks nothing about the direction of the reported mean differences or downstream scores.
+
+\newpage
+\section{Reduction and error bounds}
+For fixed positive marginal observations, pair the sorted $B_i$ with the sorted $\log P_i$. Swapping an inversion puts each new ratio between the two old ratios, so it cannot enlarge their range. Repeated swaps prove that sorted pairing attains the minimum for these marginals.
+
+Every sorted, nonconstant triple with prescribed mean and deviation can be written as its mean plus its deviation times $z(h)$ for $0\le h\le1$. Take
+\[
+ z(h)=\frac{(-1-h,\;2h-1,\;2-h)}
+                 {\sqrt{3(1-h+h^2)}} .
+\]
+This is $(0,h,1)$ after centering and sample standardization. Multiply by $\sqrt{3/2}$ for population standardization. Conversely, translating the minimum to zero and rescaling the maximum to one recovers $h$, including ties. Thus two parameters suffice for the two sorted marginals. Evaluate log ratios on their product grid at the printed moments. An extra grid using slightly larger PPL deviation and smaller BPC deviation gives feasible upper witnesses interior to the rounding intervals.
+
+\paragraph{A global lower certificate.}
+Write $dm=ds=0.05$, $db=dt=0.0005$ for the four rounding half-widths. Let $L=m-dm-\sqrt2(s+ds)$, $U=m+dm+\sqrt2(s+ds)$, $l=\log L$, $u=\log U$, and $Q=(b+db+\sqrt2(t+dt))/(Ll^2)$. Here $L>1$. Each standardized component has magnitude at most $\sqrt2$ and derivative magnitude at most 2: the centered $(0,h,1)$ has norm at least $1/\sqrt2$ and its derivative has norm $\sqrt{2/3}$. Differentiating its normalization gives the bounds in both conventions.
+
+Consider the range before multiplying by $\log 2$. It is the maximum of signed pairwise differences $B_i/\log P_i-B_j/\log P_j$. The individual derivative in $P_i$ has magnitude at most $Q$. In the common BPC mean the pairwise derivative is a difference of reciprocal logs. Consequently the rounding error in the range is at most
+\[
+ E=2Q\,dm+2\sqrt2 Q\,ds+(1/l-1/u)db+2\sqrt2\,dt/l .
+\]
+For a grid with $N$ equal intervals per axis the distance to a nearest grid coordinate is at most $1/(2N)$. The corresponding total shape error is at most $[4(s+ds)Q+4(t+dt)/l]/(2N)$. Subtract both errors from the least grid range, multiply by $\log2$, and truncate the lower bound at zero. The upper bound uses an attained witness, without subtracting either error. Taking the lesser lower and lesser upper over the two conventions encloses their joint infimum. We use $N=128$, 48-digit decimal arithmetic and a $10^{-28}$ outward allowance in the computed bounds; the analytical bounds apply in real arithmetic. The table below adds outward display rounding.
+
+\paragraph{Cross-check.} If $B_i=c\log P_i$ and $L\le P_i\le U$, the identity for variance as a sum of squared pair differences and the mean value theorem imply
+$b s/(U\log U)\le t\le b s/(L\log L)$ for the unrounded moments. The separate verifier expands these bounds for reporting precision. It rejects a constant scale in each of the twelve rows independently of the grid.
+
+\newpage
+\section{Results and provenance}
+The intervals enclose the smallest possible range of tokens per character across three seeds. Entries have been multiplied by 1,000. The combined lower bound and its feasible upper witness may come from different SD conventions.
+\begin{center}
+\begin{tabular}{lrrr}\toprule
+Language & StructPiece & SP-BPE & SP-Unigram\\\midrule
+Hindi & 9.39--9.86 & 0.48--0.60 & 0.41--0.54\\
+Arabic & 6.91--7.25 & 0.97--1.09 & 0.99--1.12\\
+Turkish & 0.39--0.80 & 0.72--0.84 & 0.70--0.83\\
+English & 0.19--0.65 & 0.24--0.36 & 0.06--0.20\\
+\bottomrule\end{tabular}
+\end{center}
+For Hindi StructPiece the printed values are $87.8\pm1.5$ PPL and $3.230\pm0.050$ BPC. The fixed-scale cross-check permits a BPC deviation between about 0.0114 and 0.0134. Ordinary rounding cannot bridge the gap. Allowing variation in $C_i$ can reconcile those summary statistics mathematically. The size of the interval in the table is computational uncertainty about the optimum under the rounding model, rather than a sampling interval. No observed seed-specific change in token density is identified from these summaries.
+
+\paragraph{What the released files establish.}
+At commit \texttt{8292963c}, the Table 1 writer converts mean loss to BPC using tokens per 512 characters and $\log2$, while it formats the supplied loss deviation directly \cite{code}. Only two of those twelve generated deviation fields equal the corresponding printed BPC deviations to the reported precision. Thus the released formatting rule cannot simply be assumed to explain every cell in the conference version. Earlier revisions of the main aggregate file in its history contain the Hindi StructPiece mean fields and omit the standard-deviation fields. The pinned training driver computes a perplexity by exponentiating mean loss over the tail of a training history. We did not identify matched triplets of PPL, BPC and scored tokens and characters for the twelve rows in the inspected artifacts. The repository also contains multi-seed material for distinct ablation and named-entity tasks.
+
+The result rules out one joint reading of the table. Different aggregations, scored subsets, uncertainty definitions or versions could account for it. Identifying the generating procedure would require the relevant per-seed totals or an equivalent primary record. The reproducibility package includes the transcribed inputs, release identifiers, rounding envelopes and feasible moment witnesses.
+
+\paragraph{Model assessments and review context.} OpenAI Codex contributed to the analysis and writing. Any exact-PDF assessment is recorded with the file hash and reviewer involvement. The author administers AIRR. No independent peer review is documented.
+
+\small\begin{thebibliography}{3}
+\bibitem{article} A. Singhal, J. Bedi and J. Singh. \href{https://aclanthology.org/2026.emnlp-main.972/}{Tokenization as Structural Inductive Bias: Grapheme-Constrained Subwords for Multilingual Modeling and Vocabulary Surgery}. EMNLP 2026, Table 1.
+\bibitem{code} StructPiece authors. \href{https://github.com/submissionemnlp26-beep/structpiece-code/blob/8292963c3998f46ea6b7bb2a6df62319685b436e/reproduce/generate_tables.py}{Replication code and aggregate results}, \texttt{8292963c}.
+\bibitem{cao} K. Cao and L. Rimell. \href{https://aclanthology.org/2021.emnlp-main.161/}{You should evaluate your language model on marginal likelihood over tokenisations}. EMNLP 2021.
+\end{thebibliography}\end{document}

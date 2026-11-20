@@ -1,0 +1,122 @@
+[
+  {
+    "language": "Hindi",
+    "tokenizer": "StructPiece",
+    "moments": [
+      "87.8",
+      "1.5",
+      "3.23",
+      "0.05"
+    ]
+  },
+  {
+    "language": "Hindi",
+    "tokenizer": "SP-BPE",
+    "moments": [
+      "844.7",
+      "19.7",
+      "2.909",
+      "0.014"
+    ]
+  },
+  {
+    "language": "Hindi",
+    "tokenizer": "SP-Unigram",
+    "moments": [
+      "577.7",
+      "13.5",
+      "2.879",
+      "0.014"
+    ]
+  },
+  {
+    "language": "Arabic",
+    "tokenizer": "StructPiece",
+    "moments": [
+      "169.8",
+      "4.2",
+      "3.789",
+      "0.05"
+    ]
+  },
+  {
+    "language": "Arabic",
+    "tokenizer": "SP-BPE",
+    "moments": [
+      "1145.0",
+      "25.3",
+      "3.528",
+      "0.018"
+    ]
+  },
+  {
+    "language": "Arabic",
+    "tokenizer": "SP-Unigram",
+    "moments": [
+      "766.9",
+      "16.9",
+      "3.384",
+      "0.018"
+    ]
+  },
+  {
+    "language": "Turkish",
+    "tokenizer": "StructPiece",
+    "moments": [
+      "101.9",
+      "2.3",
+      "3.876",
+      "0.023"
+    ]
+  },
+  {
+    "language": "Turkish",
+    "tokenizer": "SP-BPE",
+    "moments": [
+      "928.9",
+      "22.5",
+      "3.003",
+      "0.016"
+    ]
+  },
+  {
+    "language": "Turkish",
+    "tokenizer": "SP-Unigram",
+    "moments": [
+      "619.4",
+      "15.0",
+      "2.916",
+      "0.016"
+    ]
+  },
+  {
+    "language": "English",
+    "tokenizer": "StructPiece",
+    "moments": [
+      "68.3",
+      "1.1",
+      "3.051",
+      "0.015"
+    ]
+  },
+  {
+    "language": "English",
+    "tokenizer": "SP-BPE",
+    "moments": [
+      "777.8",
+      "18.4",
+      "2.661",
+      "0.012"
+    ]
+  },
+  {
+    "language": "English",
+    "tokenizer": "SP-Unigram",
+    "moments": [
+      "352.3",
+      "8.3",
+      "2.589",
+      "0.012"
+    ]
+  }
+]
