@@ -1,0 +1,176 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\newcommand{\E}{\mathbb E}\newcommand{\Var}{\operatorname{Var}}\newcommand{\KL}{\operatorname{KL}}
+\newcommand{\EE}{\mathbb E}
+\begin{document}
+\begin{center}{\LARGE\bfseries Marginal bias and exact sampling in\\[3pt] finite determinantal candidate pools}\\[7pt]
+Lluis Eriksson\\[2pt]\small Working manuscript, 20 November 2026\end{center}
+\textbf{Abstract.} A language model can generate a pool of candidates and then sample a diverse subset using a determinantal point process. For a fixed finite catalog we compute the first two possible leading terms of the divergence between the target distribution and the sampler's marginal output law. The generic $N^{-2}$ coefficient depends on first-order inclusion probabilities. Matching the proposal to these inclusions removes that coefficient, and the $N^{-4}$ coefficient then depends on pair inclusions. For two-item determinantal samples with redraw, either this second coefficient is positive or the sampler is exact at every pool size $N\ge2$. A three-item example gives coefficients $5/72$ before matching and $4/25$ after matching, at their respective orders. We derive the leading divergence coefficient for balanced subsets of any fixed size, including targets with forbidden subsets. Classical incidence geometry yields different exactness criteria for real and complex kernels.
+
+\section{The output of a random pool}
+Prada-Corral et al.\ \cite{pool} study sampling a set of $K$ distinct strings. They draw a pool of $N$ strings independently from a proposal $q$ and sample from its importance-weighted $K$-DPP. Their Theorem 5.2 gives a finite-sample upper bound on forward KL, including for countable supports under their moment conditions. Here the catalog, $q$, $K$ and the target $P$ are fixed while $N\to\infty$. Constants may depend on the entire instance. The method of weighted resampling is established \cite{kviman}; the issue here is which inclusion probabilities determine its marginal bias.
+
+Let $P$ be a probability law on $K$-subsets of a finite catalog. Retain only active items and assume that $q$ is positive on them, sums to one, and $N\ge K$. In the determinantal case $P(S)$ is proportional to the squared volume of $K$ feature vectors \cite{kt}. Let $n_i$ count occurrences of item $i$. Define
+\[
+ \delta_i=\frac{n_i}{Nq_i}-1,\qquad
+ w_S=\prod_{i\in S}(1+\delta_i),\qquad Z=\sum_T P(T)w_T.
+\]
+Conditional on $Z>0$, output $S$ with probability $P(S)w_S/Z$. Each occurrence contributes a choice of copy, while duplicate columns selected together have zero determinant. This recovers the pool law in \cite{pool}. Redraw the pool when $Z=0$, and write $Q_N$ for the resulting \emph{marginal} distribution of one set. All logarithms are natural. For a particular pool, a positive target set can be missing entirely.
+
+\newpage
+\section{The inclusion coefficients}
+Let $p_i=P(i\in S)$ and $p_{ij}=P(i,j\in S)$ for distinct $i,j$. Use the two scores
+\[
+ T_S=\sum_{i\in S}p_i/q_i,\qquad D_S=\sum_{i<j\in S}p_{ij}/(q_iq_j).
+\]
+\textbf{Theorem.} Uniformly over the fixed support of $P$,
+\[
+ \frac{Q_N(S)}{P(S)}=1+\frac{\E_P T-T_S}{N}+O(N^{-2}),\qquad
+ \KL(P\|Q_N)=\frac{\Var_P(T)}{2N^2}+O(N^{-3}).
+\]
+For the matched proposal $q_i=p_i/K$,
+\[
+ \frac{Q_N(S)}{P(S)}=1+\frac{\E_P D-D_S}{N^2}+O(N^{-3}),\qquad
+ \KL(P\|Q_N)=\frac{\Var_P(D)}{2N^4}+O(N^{-5}).
+\]
+These expansions use the multiplicity formula above; they do not require that $P$ itself be determinantal. For $K=1$ the empty pair sum is zero and matching gives the target exactly.
+
+\textit{Expansion at the population frequencies.} Write $L_S=\sum_{i\in S}\delta_i$, $B_S=\sum_{i<j\in S}\delta_i\delta_j$, and let $V_j$ denote the degree-$j$ part of $Z$. Thus $V_1=\sum_i p_i\delta_i$ and $V_2=\E_P B_S$. Each $\delta$ is a mean of $N$ centered i.i.d.\ vectors $X$ with $X_i=\mathbf1_{\{I=i\}}/q_i-1$, $I\sim q$. Its one-draw covariance is $C_{ij}=\mathbf1_{\{i=j\}}/q_i-1$. Multinomial factorial moments give $\E w_S=(N)_K/N^K$ for every $S$, hence $\E(w_S-Z)=0$.
+
+Expand $(w_S-Z)/Z$ near zero. The first surviving term in expectation at order $N^{-1}$ is $V_1^2-L_SV_1$. Its expectation times $N$ is $\E_P T-T_S$. For justification, all fixed coordinates concentrate exponentially in a fixed neighbourhood where $Z$ stays bounded away from zero. The bounded conditional probabilities and all polynomial terms contribute exponentially little off that event. A degenerate pool is exponentially rare, since one positive target set is present except with probability at most $\sum_{i\in S}(1-q_i)^N$. Redrawing has no effect on the displayed polynomial coefficients. Taylor expansion to degree three gives the first remainder: centered third joint moments are $O(N^{-2})$ and fourth absolute moments are $O(N^{-2})$.
+
+\newpage
+\textit{Matched proposal.} Now $V_1=K\sum q_i\delta_i=0$ identically. Up to terms of degree at least five, the correction to the numerator $w_S-Z$ in the ratio is
+\[
+       -L_S V_2 -(B_S-V_2)V_2 - L_S V_3 .
+\]
+Terms of degree above $K$ in $Z$ are understood to vanish. For a single draw, $V_2(X)=\binom K2-(K-1)p_I/q_I=-\binom K2$ is constant. The expected cubic term is $N^{-2}\E[L_S(X)V_2(X)]=0$ by centering and independence across draws.
+
+The $N^{-2}$ coefficient of a fourth-degree moment is computed by the three covariance pairings. Terms where all four draws coincide contribute only $O(N^{-3})$. In $L_S V_3$, each term of $V_3$ has three distinct indices. Pair two of them: their covariance is $-1$. For a fixed index $h$ of $L_S$, summing the remaining covariances gives $-\binom{K-1}{2}\sum_i p_i C_{hi}=0$. This also covers $K=2$ where $V_3=0$.
+
+To evaluate the middle product, put $A_{ij}=p_{ij}/2$ off the diagonal, $A_{ii}=0$. Then $V_2=\delta^\top A\delta$. The row sums are $(K-1)p_i/2=\binom K2 q_i$. Consequently $(CAC)_{ij}=p_{ij}/(2q_iq_j)-\binom K2$ for $i\ne j$. In the pairing computation for $B_S V_2$, the terms pairing each factor internally cancel against those for $V_2^2$, since $\E B_S=\E V_2$. The two cross-pairings sum to $2\sum_{i<j\in S}(CAC)_{ij}$ for $B_S V_2$, and to its $P$-average for $V_2^2$. Their difference is $\E_P D-D_S$ with the sign in the displayed correction.
+
+Taylor expansion through degree five leaves a sixth absolute moment of order $N^{-3}$; a centered fifth joint moment also has order $N^{-3}$ since a nonzero index pattern has at most two distinct draw indices. This gives the claimed matched remainder. Finally set $r_S=Q_N(S)/P(S)-1$. Since $\E_P r_S=0$ with redraw, the linear term of $-\log(1+r_S)$ cancels exactly. Applying the expansion to the remaining quadratic and higher terms proves both KL formulas. \hfill$\square$
+
+\textbf{Which proposals cancel the first coefficient?} For a $K$-DPP, connect items if exchanging them in a positive set can yield another positive set. Constancy of $T_S$ implies $p_i/q_i$ is constant along each edge. Conversely positive sets are connected by single exchanges: from a basis $A$ toward $B$, use a vector of $B$ outside the span of $A$, if available; otherwise a vector of $B$ uses a nonzero coordinate of $A\setminus B$ in that basis. Each swap can increase the intersection. Thus componentwise constancy suffices. For a connected exchange graph the unique canceling proposal is $p_i/K$.
+
+\newpage
+\section{Two-item samples: fourth order or exact}
+Suppose $K=2$, $q_i=p_i/2$, and $P$ is a finite $2$-DPP. Delete inactive items. Partition the remaining nonzero feature vectors into classes of parallel directions, disregarding sign. A pair is positive exactly when its items belong to different classes.
+
+\textbf{Corollary.} Under redraw, either $\Var_P(D)>0$ and forward KL is asymptotic to a positive constant times $N^{-4}$, or $Q_N=P$ for every $N\ge2$.
+
+\textit{Proof.} If the variance vanishes, the pair score $D_{\{i,j\}}=P(\{i,j\})/(q_iq_j)$ is a common constant $c$ on the positive pairs. If $i$ is in class $g$ with proposal mass $m_g$, summing over its possible partners yields $2q_i=cq_i(1-m_g)$. All classes therefore have equal mass. Conditional on pool counts, the probability of choosing a class pair $g,h$ is proportional to $n_g n_h$. The vector of class counts is exchangeable, also after conditioning on having at least two occupied classes. Every unordered pair of classes has the same marginal selection probability. Given the class counts, within-class labels are independent multinomial samples from $q_i/m_g$; selecting a random occurrence in each chosen class thus gives precisely those conditional item probabilities. The resulting pair law is proportional to $q_iq_j$ across distinct classes, hence equals $P$. The positive-variance case is the theorem. \hfill$\square$
+
+\section{A boundary at three-item samples}
+Use six equiangular lines in $\mathbb R^3$. With $\phi=(1+\sqrt5)/2$, take the columns
+\[
+ (0,\pm1,\phi),\quad (\pm1,\phi,0),\quad(\phi,0,\pm1)
+\]
+and normalize each to length one. Direct multiplication gives $BB^\top=2I$ and every off-diagonal entry of $G=B^\top B$ has magnitude $1/\sqrt5$. Thus $\Pi=G/2$ is a rank-three orthogonal projection. Use its three-item projection DPP. By Cauchy--Binet, inclusion probabilities are the principal minors of $\Pi$: expand $\det(I+B\,\mathrm{diag}(t_i)B^\top/2)$ in the $t_i$, or expand $\det(B\,\mathrm{diag}(1+t_i)B^\top/2)$ in bases and compare coefficients. Hence $p_i=1/2$, $p_{ij}=1/5$, $q_i=1/6$ and $D_S$ is constant. Both displayed KL coefficients vanish.
+
+Yet each triple has probability $(1\pm1/\sqrt5)/20$ according to the sign of its three pairwise inner products multiplied together. Both signs occur: with the columns ordered by taking the plus sign first in each pair, triples $(1,2,3)$ and $(1,3,5)$ have opposite signs. All triples are positive. At $N=K=3$ a successful pool consists of three distinct items, so its unordered triple is uniform over all twenty possibilities. This contradicts exactness. The theorem implies $Q_N/P-1=O(N^{-3})$ and hence $\KL(P\|Q_N)=O(N^{-6})$ for this example. The balanced-subset theorem below determines the sixth-order coefficient.
+
+\newpage
+\section{Checks and implications}
+\textbf{Example.} For diagonal kernel entries $(6,3,2)$ the three pair probabilities in lexicographic order are $(1/2,1/3,1/6)$. Uniform proposals give leading KL coefficient $5/72$ at order $N^{-2}$. Matching gives $q=(5/12,1/3,1/4)$ and pair scores $(18/5,16/5,2)$. The relative bias coefficients at order $N^{-2}$ are $(-2/5,0,6/5)$. Thus the leading KL coefficient is $4/25$ at order $N^{-4}$. The companion checker enumerates every count vector through selected pool sizes up to 64, and computes the two Taylor coefficients independently by expanding the conditional law as a polynomial. A nonuniform parallel-class control checks exact sampling under redraw.
+
+The \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/codex/pool-bias-20261120/audits/pool-dpp}{source and companion checker} also include a diagonal three-item-sample control. Exact rational arithmetic is used for the small-catalog count enumeration, with decimal logarithms only in the final divergence calculation.
+
+\textbf{Scope.} The marginal inclusions may themselves be expensive to compute. This is a criterion for analyzing proposals on fixed catalogs. It gives neither a distribution-free choice of pool size nor a guarantee for greedy MAP, growing supports, or language-model task accuracy. No independent empirical evaluation on model outputs was performed.
+
+\newpage
+\section{Balanced subsets of arbitrary size}
+Fix $1\leq k\leq d$, write $M=\binom dk$, and let $U$ be uniform on the $k$-subsets of $[d]$. Suppose $P(S)>0$ for every such subset. Write $h_S=MP(S)-1$. Assume that for each $(k-1)$-subset $A$,
+\[
+                 \sum_{S\supset A} h_S=0.
+\]
+This assumes common inclusion probabilities at order $k-1$ and implies the same balance for all smaller subsets by double counting. For $k=1$ the empty-set condition is normalization. Draw $N\ge k$ independent uniform candidates with counts $n_i$, and select $S$ with probability proportional to $P(S)\prod_{i\in S}n_i$. Redraw if fewer than $k$ distinct candidates occur. This is the finite uniform-proposal marginal pool law $Q_N$; it specializes to the random-pool determinantal sampler of Prada-Corral et al.\ \cite{pool} when $P$ is determinantal.
+
+\textbf{Theorem.} Set $c=d^k/M$ and $v=\EE_U h^2$. As $N$ tends to infinity, with $P,d,k$ fixed,
+\[
+ N^k\left(\frac{Q_N(S)}{P(S)}-1\right)\longrightarrow c(v-h_S),
+ \qquad N^{2k}\mathrm{KL}(P\|Q_N)\longrightarrow
+             \frac{c^2}{2}\Var_P(h).
+\]
+The divergence coefficient is strictly positive for every nonuniform full-support target satisfying the hypothesis. For $P=U$, permutation invariance instead gives exact sampling for every $N\ge k$. Thus a zero coefficient completely characterizes exact sampling in this class. No uniform finite-$N$ bound in $k,d$ is asserted.
+
+\newpage
+\section{The exchangeable pool}
+Condition on a successful pool throughout. Put $\delta_i=dn_i/N-1$, $w_S=\prod_{i\in S}(1+\delta_i)$, $W=\EE_U w_S$, $y_S=w_S/W$, and $x=\EE_U h_S y_S$. The sampler's relative mass is $\EE[y_S/(1+x)]$. Exchangeability gives $\EE y_S=1$, and $\EE x=0$. The bounds $0\le y_S\le M$ and $1+x\ge \min_S MP(S)>0$ hold on every successful pool. Hence exactly
+\[
+ Q_N(S)/P(S)-1=-\EE[y_S x]+\EE[y_S x^2/(1+x)].
+\]
+For fixed $S$, $\EE[y_S y_T]$ depends only on $r=|S\cap T|$. Write $a_r=\sum_{|S\cap T|=r}h_T$. Summing over the $j$-subsets of $S$ shows that $\sum_r\binom rj a_r=0$ for $0\le j<k$ and $a_k=h_S$. Binomial inversion gives $a_r=(-1)^{k-r}\binom kr h_S$. Therefore $\EE[y_Sx]=\lambda_N h_S$ with a scalar common to all $S$. Multiplying by $h_S$ and averaging under $U$ gives $\lambda_N v=\EE x^2$. This argument is the top-degree exchange symmetry on a slice; harmonic analysis on slices is established \cite{filmus}. When $h=0$ the balanced-subset theorem follows immediately, so take $v>0$.
+
+By the inclusion balances all lower degrees vanish in the numerator:
+\[
+  Wx=H(\delta),\qquad H(z)=M^{-1}\sum_T h_T\prod_{i\in T}z_i.
+\]
+The same cancellations give $H(z+t{\bf1})=H(z)$ for every scalar $t$. The multivariate central limit theorem gives $\sqrt N\,\delta\Rightarrow G$ with covariance $dI-J$, where $J$ is the all-ones matrix. One can write $G=Y-\bar Y{\bf1}$ with independent $Y_i\sim\mathcal N(0,d)$. Distinct square-free monomials in $H(Y)$ are orthogonal by independence and centering. Thus
+\[
+ \EE H(G)^2=M^{-2}d^k\sum_T h_T^2=cv.
+\]
+For completeness, the required convergence of expectations holds on $\max|\delta_i|\le1/2$, where $W\ge2^{-k}$, $y_S\to1$ and $x\to0$ in probability. The fourth moments of $H(\sqrt N\,\delta)$ are uniformly bounded: in each centered-coordinate moment of total degree $4k$ only products involving at most $2k$ distinct draws survive. This gives uniform integrability. The complementary event and redraw have exponentially small probabilities, by coordinate concentration and a union bound. The bounded ratios above control their contribution after multiplication by $N^k$. Consequently $N^k\EE x^2$ and $N^k\EE[y_Sx^2/(1+x)]$ both tend to $cv$. Substitution gives the relative-mass limit. Since $\EE_P h=v$ and the relative errors have exactly zero $P$-mean, Taylor expansion of the logarithm gives the divergence limit. \hfill$\square$
+
+\newpage
+\section{Balanced triples}
+For the six-line projection example in Section 4, $d=6$, $k=3$ and $h_S=\pm u$ where $u=1/\sqrt5$. The signs split the twenty triples equally; each pair lies in two triples of each sign. Thus $v=u^2$, $\Var_P h=u^2(1-u^2)$ and
+\[
+               \lim_{N\to\infty}N^6\mathrm{KL}(P\|Q_N)
+               =\frac12(54/5)^2(1/5)(4/5)=5832/625.
+\]
+The value follows without assuming any group action transitive on the triples of each sign. For another balanced law, pair the six items and let $h_S$ be zero unless $S$ takes one item from each pair. On the eight remaining triples give $h_S$ the alternating signs of a cube times $1/2$. Every pair sum vanishes. The relative error on the twelve zero-contrast triples still has a positive leading term, $cv$: the normalization affects even triples whose target mass agrees with the uniform law.
+
+\textbf{Reproducibility.} The \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/codex/pool-bias-20261120/audits/pool-dpp}{companion source and checker} use direct multinomial enumeration. For rational balanced triple laws, an independent computation expands the conditional probability itself through degree six at the population frequencies. It obtains the $N^{-3}$ coefficient by exact interpolation of multinomial moments. It also evaluates finite successful-pool probabilities for the six-line example. Finite evaluations are separate from the asymptotic proof.
+
+
+\newpage
+\section{When some subsets are forbidden}
+The coefficient formula of the balanced-subset theorem still holds on the support if $P$ can vanish. To see this, condition first on the permutation-invariant event $E$ that at least $k$ distinct labels occur, and denote actual target success by $F\subset E$. One fixed supported subset is present except with probability at most $k(1-1/d)^N$. Thus $\Pr(F^c\mid E)$ is exponentially small. The identity $\mathbb E[y_Sx\mid E]=\lambda_N h_S$ involves only the uniform denominator and remains valid on $E$.
+
+For each supported $S$, $y_S/(1+x)\le 1/P(S)$ on $F$. Its expectation with the indicator of $F$, conditional on $E$, divided by $\Pr(F\mid E)$, gives $Q_N(S)/P(S)$. Expand the ratio on $F$. In its first two terms $y_S$ and $y_Sx$ are bounded on $E$, so adding $F^c$ costs exponentially little. The last term $y_S x^2/(1+x)$ is bounded on $F$ by $\max|h|^2/P(S)$. On $\max|\delta_i|\le1/2$, $F$ holds and the same moment argument applies. Thus the relative coefficient on supported sets is still $c(v-h_S)$ and the KL coefficient is still $c^2\Var_P(h)/2$.
+
+\textbf{A sparse counterexample.} If $P$ is uniform on a proper balanced support then $\Var_P(h)=0$. Yet sampling need not be exact. On the nine residues modulo $9$ take the cyclic translates of
+\[
+ \{0,1,2\},\quad\{0,1,4\},\quad\{0,2,5\},\quad\{0,2,6\}.
+\]
+These are 36 distinct triples, with every pair in three triples. Their target mass is $1/36$. At $N=4$, each supported triple receives weight 36 from its repeated-label pools. Each four-distinct window $W$ containing it adds $24/m(W)$, where $m(W)$ counts the supported triples in $W$. There are 4,320 successful ordered pools among 6,561. The resulting masses are $29/1080$ and $31/1080$, around the common target $30/1080$. A separate enumeration of all ordered pools agrees for every triple. This example concerns general subset distributions.
+
+\textbf{Real Gram kernels.} Suppose $k\ge3$ and the balanced target is a real $k$-DPP. If the KL coefficient vanishes, $h$ is constant on the support. All positive bases therefore have equal mass, and each $(k-1)$-set admits the same positive number $L$ of completions. Fix any $k-3$ labels and quotient by their span. All pairs of the $m=d-k+3$ remaining vectors are independent and some triple is independent. Each pair then determines a projective line containing exactly $m-L$ labels. The real ordinary-line theorem \cite{kelly} gives a line containing just two. In arbitrary dimension one first projects generically to three dimensions, retaining independence on the finitely many independent triples, and chooses an affine chart. Thus every triple in the quotient is independent. Varying the fixed labels proves full support. In this real case exactness at every pool size, vanishing coefficient and a target uniform on all $k$-sets are equivalent.
+
+\newpage
+\section{An exact complex sampler with forbidden triples}
+The Hesse configuration \cite{stacey} gives a different answer over $\mathbb C$. Write $\omega^2+\omega+1=0$ with $\omega\ne1$. Label nine columns by $(a,j)\in\mathbb F_3^2$, using
+\[
+ v_{0j}=(0,1,-\omega^j),\quad
+ v_{1j}=(-\omega^j,0,1),\quad
+ v_{2j}=(1,-\omega^j,0).
+\]
+Use the complex Gram matrix as the kernel of a fixed-size three-item DPP. The weight of a triple is the squared modulus of its column determinant.
+
+Three columns from one row have zero determinant. With two from one row and one from another the modulus is $|1-\omega|=\sqrt3$ by expansion in the zero coordinate. With one column per row the determinant has modulus $|1-\omega^{j_0+j_1+j_2}|$. Thus the zero triples are exactly the affine lines: a vertical line has fixed $a$; a nonvertical line has one $j$ at each $a$ and $j_0+j_1+j_2=0$. The twelve lines have zero mass. Each of the other 72 triples has weight 3, so mass $1/72$. Every pair belongs to six such triangles, giving common pair inclusion $1/12$.
+
+\textbf{Exactness and redraw.} Every ordered noncollinear triangle is an affine basis of $\mathbb F_3^2$, so an invertible affine map sends it to any other ordered triangle. The uniform proposal, redraw event and multiplicity-weighted choice of supported triples are invariant under these permutations. The marginal law is consequently uniform over the triangles for every $N\ge3$. This symmetry argument needs only the weights, without any claim that every relabeling is implemented by a unitary. A failed pool has all its labels on one of the twelve affine lines. Pools containing at least two distinct points determine their line uniquely, whereas each of the nine constant pools is counted four times. Hence
+\[
+       \Pr(\mathrm{redraw})=\frac{12\cdot3^N-27}{9^N}, \qquad N\ge3.
+\]
+The checker computes all 84 determinants over the Eisenstein integers, generates the affine orbit, and independently sums the conditional output masses over count vectors at $N=3,4,6$. This example refutes the extension of the real full-support conclusion to complex kernels. It does not classify general complex kernels.
+
+\textbf{Interpretation.} Matched lower-order frequencies can mask errors in joint selection. Uniformly checking pairs in a benchmark does not certify its triple distribution. Conversely a complex sampler can be exactly correct on a sparse support. These are fixed-catalog statements about sampling probabilities. Measuring improvements in language-model performance requires a separate experiment.
+
+
+\newpage
+\section*{Model assessments and review context}
+OpenAI Codex assisted with derivation, writing and code in a shared authoring context. This consolidated manuscript combines the original analysis and subsequent results. Its exact-PDF assessment is recorded separately. Independent peer review has not been documented.
+\begin{thebibliography}{3}\setlength{\itemsep}{0pt}\small
+\bibitem{pool} M. Prada-Corral et al. A Model of Diverse Sampling from Language Models. \href{https://arxiv.org/abs/2611.25003v1}{arXiv:2611.25003v1} (2026), Sections 4--5 and Appendix A.
+\bibitem{kviman} O. Kviman et al. Variational Resampling. \href{https://proceedings.mlr.press/v238/kviman24a.html}{AISTATS}, 2024.
+\bibitem{kt} A. Kulesza and B. Taskar. $k$-DPPs: Fixed-Size Determinantal Point Processes. \href{https://icml.cc/2011/papers/611_icmlpaper.pdf}{ICML}, 2011.
+\bibitem{filmus} Y. Filmus. An Orthogonal Basis for Functions over a Slice of the Boolean Hypercube. \href{https://www.combinatorics.org/ojs/index.php/eljc/article/view/v23i1p23}{Electronic Journal of Combinatorics} 23(1), P1.23 (2016).
+\bibitem{kelly} L. M. Kelly and W. O. J. Moser. On the Number of Ordinary Lines Determined by $n$ Points. \href{https://doi.org/10.4153/CJM-1958-024-6}{Canadian Journal of Mathematics} 10, 210--219 (1958).
+\bibitem{stacey} B. C. Stacey. SIC-POVMs and Compatibility among Quantum States. \href{https://doi.org/10.3390/math4020036}{Mathematics} 4(2), 36 (2016).
+\end{thebibliography}
+\end{document}
