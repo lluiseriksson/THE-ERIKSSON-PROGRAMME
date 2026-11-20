@@ -1,0 +1,56 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{How many spectral shapes does the VLA correction table for 3C\,138 require?}
+\author{Lluis Eriksson}
+\date{November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+During its radio outburst, 3C\,138 changed brightness differently at different frequencies. We ask how well a time-dependent amplitude and a fixed frequency profile can represent the public VLA correction factors. For 47 monthly entries in eight bands, the smallest possible worst relative error of this representation is 28.94\%. Four entries give the lower bound and a factorization of the full table attains it numerically. With one amplitude per month and separate frequency profiles on contiguous periods, six profiles are necessary and sufficient for a 5\% tolerance. We give the break dates and the band and month factors. These are bounds for representing a particular table, rather than estimates of the uncertainty in astronomical flux measurements.
+\end{abstract}
+\section{A question about calibrating a variable source}
+The NRAO recommends accounting for the flare of the flux calibrator 3C\,138 and provides a table of time- and band-dependent scaling factors [1]. Multiwavelength observations document spectral hardening during the outburst [2]. Consider a reduction that stores one reference value per band and updates a single amplitude each month. Could those choices, optimized after seeing the entire table, approximate every published factor to within a specified tolerance? This matters when deciding whether archived reduction metadata with a single time-dependent scale can encode the published calibration.
+
+We use the CSV linked by the VLA Observing Guide [1], filename ending in \texttt{2025-03-06.csv}. It contains 47 monthly rows from February 2021 through December 2024 and eight labeled columns L, S, C, X, U, K, A, Q. We retain the column names as supplied. Each of the 376 entries is positive. Our unit of analysis is the tabulated factor. No raw visibility data or target measurements enter the calculation.
+
+\section{A check using four entries}
+Write $F_{ib}$ for a published factor and model it as $a_i s_b$, with positive monthly amplitudes and band factors. In log space set $t=\max_{ib}|\log(a_i s_b/F_{ib})|$. The alternating sum of the four model logs on any rectangle of months and bands vanishes. Consequently the corresponding data log cross-ratio has absolute value at most $4t$. For L and Q the February 2021 row gives $(1.013134,1.132233)$ and the December 2024 row $(1.009391,3.714359)$. These entries alone require $\exp(t)\geq 1.347066$ to displayed precision.
+
+Log-Chebyshev rank-one approximation is an established problem [3]. Here a matching upper bound comes from fitting all entries by linear programming in the log factors and checking the residuals. To express the answer as an ordinary relative error $e=\max|a_i s_b/F_{ib}-1|$, the smallest feasible interval of log residuals has width $2t_*$. Centering the multiplicative scale so that its endpoint ratios are $1-e$ and $1+e$ gives $e_*=\tanh(t_*)$. Both bounds agree numerically within $10^{-8}$ in log units.
+\newpage
+\section{The minimum number of contiguous periods}
+Allow a distinct band profile on each contiguous period, with a free amplitude in every month. For a proposed ordinary error $\epsilon$, put $t=\operatorname{atanh}(\epsilon)$ and $L_{ib}=\log F_{ib}$. Eliminating monthly log amplitudes gives the constraints
+\[
+ v_j-v_k \leq 2t + \min_{i\ \mathrm{in\ period}}(L_{ij}-L_{ik})\qquad\text{for every pair } j,k .
+\]
+Indeed the allowed intervals for the monthly amplitude overlap exactly when all these inequalities hold. The band constraints are feasible precisely when their difference graph has no negative cycle. Shortest-path distances yield band offsets; the midpoint of each month's allowed interval yields its amplitude. A common rescaling converts the log-error witness to the desired ordinary relative-error convention.
+
+Feasibility passes to every shorter interval. Thus selecting the longest feasible initial period is optimal: in any optimal partition, extend its first period to this endpoint, discarding covered periods and shortening the next one if necessary. Repeat on the suffix. We also computed the minimum by dynamic programming over all intervals, checked the supplied factors at every entry, and checked each greedy endpoint and its one-month extension (when available) by a separate linear program.
+
+\begin{center}
+\begin{tabular}{lrrr}\toprule
+Months and bands & \multicolumn{3}{c}{Minimum worst relative error, one profile}\\\midrule
+All months, L through Q &\multicolumn{3}{c}{28.94\%}\\
+2024 only, L through Q &\multicolumn{3}{c}{11.22\%}\\
+All months, L through X &\multicolumn{3}{c}{5.72\%}\\
+All months, K, A and Q &\multicolumn{3}{c}{11.86\%}\\\bottomrule
+\end{tabular}
+
+\medskip
+\begin{tabular}{lrrrr}\toprule
+Allowed relative error (all months and bands) & 1\% & 2\% & 5\% & 10\%\\\midrule
+Minimum number of contiguous profiles & 24 & 14 & 6 & 3\\\bottomrule
+\end{tabular}
+\end{center}
+At 5\%, one optimal partition starts in February 2021, March 2022, March 2023, October 2023, April 2024 and September 2024. These dates depend on the tolerance and on the chosen table. They do not locate physical changes in the emission mechanism. The CSV stops in 2024; applying its final factors to later observations would require further evidence. Measurement error, spatially resolved structure, and errors in calibrated target fluxes are outside the bounds proved here.
+
+\paragraph{Reproduction and review context.} The accompanying scripts \texttt{static-shape.py} and \texttt{epochs.py} verify the CSV checksum and return lower-bound entries, constructive factors, and numerical checks. \emph{Model assessments and review context}: AI assisted with the analysis and writing. A subsequent assessment refers to the identified PDF in its separate review record.
+
+\paragraph{References.}
+[1] NRAO, \href{https://science.nrao.edu/facilities/vla/docs/manuals/obsguide/calibration}{VLA Observing Guide, Calibration}, linked monthly scaling-factor table for 3C\,138.\par
+[2] T.~V. Mufakharov et al., \emph{A broadband outburst of the compact steep-spectrum quasar 3C\,138 in 2024--2026}, \href{https://doi.org/10.1093/mnras/stag2220}{MNRAS, doi:10.1093/mnras/stag2220}.\par
+[3] N.~Krivulin, \href{https://pureportal.spbu.ru/en/publications/rankone-approximation-of-positive-matrices-based-on-methods-of-tropical-mathematics(22d1cfd6-44dc-43b1-96a5-b443552061f7).html}{\emph{Rank-one approximation of positive matrices based on methods of tropical mathematics}} (2018).
+\end{document}
