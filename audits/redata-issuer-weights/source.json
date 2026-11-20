@@ -1,0 +1,14 @@
+{
+  "doi": "10.5281/zenodo.24405076",
+  "conceptdoi": "10.5281/zenodo.24405075",
+  "date": "2026-11-20",
+  "creators": [
+    "Merlet Echavarria, Alfredo Agustin"
+  ],
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "file": "Metering_Gap_replication_v1.0.zip",
+  "source_url": "https://zenodo.org/api/records/24405076/files/Metering_Gap_replication_v1.0.zip/content",
+  "source_sha256": "eac22121ea0ddb2a5d3af94a48f2d1b031424ab6377fa86d0a6c87f51243d11d"
+}
