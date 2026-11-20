@@ -1,0 +1,68 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,microtype}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{How many regimes can explain a table of pairwise rainfall skill comparisons?}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Six directed percentage comparisons among four forecast configurations need not identify one score per configuration. We test an explicit alternative: an arithmetic mean of positive within-regime ratios, with common weights across comparisons. For the first six columns of the AROME-France precipitation scorecard of Brousseau et al., the minimum support compatible with printed precision is three at 0.5 mm and two at 2, 5 and 10 mm per 24 hours. At 0.5 mm a sign inequality excludes even a single affine factor with arbitrary finite support. Positive witnesses and rounding certificates establish both sides of each minimum. These results identify representations of the printed comparisons, not the averaging procedure or the meteorological regimes used in the original evaluation.
+\end{abstract}
+\section{What a comparison would have to reproduce}
+Brousseau et al. [1, Sect.~3, Fig.~4] report relative differences of Heidke Skill Score for accumulated precipitation, with the first named experiment compared to the second. Their caption identifies a bootstrap significance test. The labels and significance marks do not provide the paired per-case score vectors or a complete definition of their averaging. We use the numerical cells only. The question is whether the printed ratios can be transferred transitively or explained by averaging across cases.
+
+Label the baseline 3DVar by 0 and the three remaining configurations (Loc h150, Loc h25, Loc h25-150) by 1, 2 and 3. A displayed $d_{ji}$ represents $t_{ji}=1+d_{ji}/100$ under conventional reference-relative change. Allow half a unit in the last displayed decimal, including the cell printed as 1.3. Our model is $t_{ji}=E[S_j/S_i]$ for positive regime scores, with the same probability weights on all six edges within a threshold. Normalize $S_0=1$ separately in each regime; ratios are invariant to this common scaling. If desired all scores including the baseline can then be scaled back into $(0,1]$. The construction concerns numerical scores, not joint contingency tables.
+
+\begin{center}\small
+\begin{tabular}{rrrrrrr}
+\toprule
+mm/24 h & $d_{10}$&$d_{20}$&$d_{30}$&$d_{21}$&$d_{31}$&$d_{32}$\\\midrule
+0.5&2.92&5.42&4.75&2.31&1.75&$-0.62$\\
+2&4.11&5.52&5.52&1.3&1.32&0.03\\
+5&2.31&3.82&4.42&1.43&2.01&0.58\\
+10&4.95&6.21&6.63&1.21&1.77&0.42\\\bottomrule
+\end{tabular}
+\end{center}
+\newpage
+\section{Excluding one score vector and one affine factor}
+With one score vector the ratios telescope around every cycle. If an observed interval for $S_j/S_i$ is $[l,h]$, direct the bound $h$ from $i$ to $j$ and $1/l$ from $j$ to $i$. A directed cycle whose bound product is below one disproves feasibility. Conversely, after taking logarithms these are difference constraints; in the absence of a negative cycle shortest-path distances from an added source give a solution. Enumerating simple cycles suffices. In all four rows the printed intervals have a failing cycle. The smallest \emph{additional} half-width, in percentage points, to restore feasibility is about 0.03514, 0.01140, 0.01260 and 0.05292 in row order. The package includes rational brackets of width at most $2^{-32}$ percentage points.
+
+Now write $\mu_i=E[S_i]$, and let $A=t_{21}\mu_1/\mu_2-1$, $B=t_{31}\mu_1/\mu_3-1$, $C=t_{32}\mu_2/\mu_3-1$. Suppose the normalized scores have one affine factor:
+\[
+ S_i/\mu_i=1+z_i X,\qquad E[X]=0,\qquad 1+z_i X>0.
+\]
+This includes every two-regime model, with arbitrary positive weights: on two atoms, centered random variables span one dimension. For nonconstant $X$ put $g(z)=-E[X/(1+zX)]$. On the span of admissible loadings $g(0)=0$ and $g$ is strictly increasing. Indeed, $g(v)-g(u)$ equals $(v-u)E[X^2/((1+uX)(1+vX))]$. Substituting the affine scores gives
+\[
+ A=g(z_1)(z_1-z_2),\quad B-A=g(z_1)(z_2-z_3),\quad
+ C=g(z_2)(z_2-z_3).
+\]
+If $A<0$, $z_2$ is farther from zero than $z_1$ on the same side of zero. Hence $g(z_2)/g(z_1)>1$. Whenever $B-A>0$ this forces $C>B-A$.
+
+At 0.5 mm each defect has monotone bounds obtained from the positive input intervals. Even using separate adverse endpoints in all three bounds gives $A<-0.00101$, $B-A>0.000596$ and $(B-A)-C>0.000294$. Thus rounding cannot restore the one-factor representation. The argument applies to arbitrary finite positive weights and does not require symmetric loading, equal weights, or a Gaussian latent factor.
+
+\section{Attainment}
+For two equally weighted regimes write $S_i=\mu_i\pm d_i$. For each edge we must have
+\[
+ d_i d_j=\mu_i\mu_j-t_{ji}(\mu_i^2-d_i^2).
+\]
+When $d_1\ne0$, put $Z=d_1^2$ and $a_j=\mu_1\mu_j-t_{j1}\mu_1^2$. Then $d_j=(t_{j1}Z+a_j)/d_1$. The remaining edge gives a quadratic in $Z$. A positive root with $|d_i|<\mu_i$ supplies a witness after checking the six means. At 2 and 10 mm we obtain exact witnesses at the printed centres. At 5 mm we use offsets of $(0,0,-1,-1,1,0)$ quarter-units of the last digit, strictly inside the rounding intervals.
+\newpage
+At 0.5 mm, three regimes suffice even at the printed centres. Set $u=\mu_1$, choose the three values of $S_1$ as $(u-0.02,u,u+0.02)$ and assign equal weights. Set the middle value of $S_2$ to $\mu_2-0.30$. Its other two values solve the linear equations $E[S_2]=\mu_2$ and $E[S_2/S_1]=t_{21}$. Finally solve three linear equations for $S_3$, using its mean and its mean ratios relative to $S_1$ and $S_2$. The resulting entries for the three non-baseline systems are shown rounded below; all equalities and positivity are verified on the rational entries.
+\begin{center}\small
+\begin{tabular}{lrrr}\toprule
+Configuration & Regime 1 & Regime 2 & Regime 3\\\midrule
+Loc h150 &1.0092&1.0292&1.0492\\
+Loc h25 &1.0862&0.7542&1.3222\\
+Loc h25-150 &1.1623&0.7263&1.2539\\\bottomrule
+\end{tabular}
+\end{center}
+The four rows can also share a single three-atom probability space. With weights $(1/4,1/2,1/4)$ the same construction (the two chosen offsets unchanged) gives another positive rational solution for 0.5 mm. For each other threshold, duplicate one of its two equal-weight regimes on the first and third atoms. Thus the minimum common support is exactly three when score vectors may differ by threshold. This imposes no contingency-table or ordering constraints across rainfall thresholds.
+\section{Heterogeneity and limits}
+There is a restriction even without specifying the number of regimes. For any directed triangle set $P=S_i/S_k$ and $Q=S_j/S_i$. Then $E[PQ]=t_{jk}$ and $\operatorname{Cov}(P,Q)=t_{jk}-t_{ik}t_{ji}$. Consequently $\operatorname{sd}(P)\operatorname{sd}(Q)$ is at least the distance of the covariance interval from zero. The strongest bounds over the four triangles, by threshold, exceed respectively 0.001072, 0.000204, 0.000383 and 0.001622 in squared ratio units. This statement concerns variation of ratios under the specified interpretation; it does not estimate sampling uncertainty of the forecast skill. Threshold-specific data retain only one orientation of each edge. The scores and weights constructed here are deliberately nonunique. Different case weights by edge, alternative percentage conventions or different score aggregation could lead to different identifiability conclusions.
+
+\section*{Model assessments and review context}
+OpenAI Codex assisted with derivation, computations and drafting. The version assessment shares that context. The author administers AIRR. Independent peer review is undocumented. The package fixes the source figure and XML by hash and includes exact algebraic, interval and cycle checks. A reader can inspect all 24 transcribed values against the publisher's figure.
+\section*{References}
+\small
+[1] P. Brousseau et al., \href{https://doi.org/10.5194/nhess-26-5769-2026}{The operational 3DEnVar data assimilation scheme for the M\'et\'eo-France convective scale model AROME-France}, \emph{Natural Hazards and Earth System Sciences} 26 (2026), Fig.~4 and Sect.~3.\\
+{}\relax [2] J. Acz\'el and T. L. Saaty, \href{https://doi.org/10.1016/0022-2496(83)90028-7}{Procedures for synthesizing ratio judgements} (1983). Aggregating ratios has a substantial prior literature. Our calculation tests arithmetic means of six directed comparisons with rounding.
+\end{document}
