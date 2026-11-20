@@ -1,0 +1,18 @@
+{
+  "doi": "10.5281/zenodo.24385662",
+  "pdf_sha256": "2ae1d87a644cdde30706a9c61d2ac89f442d7855d72406506168fe38ac160795",
+  "repository": "fsantibanezleal/CEFOP_DinHot",
+  "commit": "743f617919bfb8fd8f35c7365a3dad0e08c11598",
+  "files": {
+    "manuscripts/flicker-bounded-sequences/data/measure.py": {
+      "sha256": "935747ced61b3d74c9e49081bee444119930d27baeb043e58dfb86e84d732dfa",
+      "lines": "156-178, 183-196, 212-221, 237-246",
+      "link": "https://github.com/fsantibanezleal/CEFOP_DinHot/blob/743f617919bfb8fd8f35c7365a3dad0e08c11598/manuscripts/flicker-bounded-sequences/data/measure.py"
+    },
+    "data-pipeline/pipeline/model/holo/methods/beyond/b2_flicker_bounded.py": {
+      "sha256": "424f5ea5bf547e022a34d574f96089a96f13566f976c36ffac8e1f62284e16ed",
+      "lines": "103-107, 138-171",
+      "link": "https://github.com/fsantibanezleal/CEFOP_DinHot/blob/743f617919bfb8fd8f35c7365a3dad0e08c11598/data-pipeline/pipeline/model/holo/methods/beyond/b2_flicker_bounded.py"
+    }
+  }
+}
