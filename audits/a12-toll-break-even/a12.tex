@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{Reconstructing Austrian A12 truck tolls from published section prices}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A route-cost calculation may give a different answer depending on whether it applies kilometre rates to a corridor or sums the operator's section prices. We compare these procedures for the Austrian A12 in 2026. The sum of fifteen consecutive section charges reproduces the published corridor total to the cent in all 24 distinct truck profiles across twelve emission annexes. For a calculation that rounds only at the end, a common effective length leaves a minimum worst discrepancy of 2.445 cents. Even allowing three exposure coefficients and an intercept separately for each axle category leaves 1.136 cents. Exact rational certificates establish these lower bounds. On the last accounting section, two displayed air and noise charges alone rule out one shared length at the precision of the published kilometre rates. The evidence identifies a reproducible route-pricing procedure for this corridor and bounds the accuracy of aggregate alternatives.
+\end{abstract}
+
+\section{Which price is being reconstructed?}
+The Austrian toll schedule distinguishes an infrastructure charge from charges for air pollution and noise, and for carbon dioxide. The 2026 regulation increases the infrastructure component by one quarter along the designated A12 stretch [1]. The ordinary truck rates [2] and Kabir's machine-readable release [3] therefore supply a simple kilometre model. Its ordinary components are denoted by $I,A,C$ in euros per kilometre. Its surcharged rate is $5I/4+A+C$. This changes the cost of one kilometre by a factor $1+I/[4(I+A+C)]$, which varies across vehicles. The 24 rates in our data imply factors from 1.16692 to 1.24159. With an ordinary detour of 1.22 times the distance, the sign of a toll-only comparison therefore depends on the vehicle. The example imposes no assumption about the availability of such a road.
+
+Our target $P_j$ is the price printed in ASFINAG's A12 leaflet for the state border at Kufstein to the Innsbruck-Amras junction, labelled 75 km [4]. The comparison uses the truck rows, prices excluding VAT, and axle categories 2, 3 and 4 or more. The eight emission profiles cover zero emissions, carbon classes 4 through 2, and the four displayed Euro bands in carbon class 1. These are all entries in the truck table. The design has no sampling uncertainty. This audit compares published prices and includes no customer invoices.
+
+\section{Predicting totals at corridor level}
+For the common-length approximation take $X_j=(5I_j/4+A_j+C_j)$. Given a choice of columns $X_j$, define the best possible worst error in euros by
+\[
+ e=\min_b\max_j |X_j b-P_j|.
+\]
+The two-length model keeps infrastructure and the sum of external charges separate. The three-length model uses one coefficient for each of $5I/4,A,C$. Adding a constant permits an intercept. Finally, fitting the affine model separately in each axle category gives twelve coefficients for the 24 prices. We allow all coefficients to take real values. Imposing physical signs could only increase the minima. The displayed figures give rounded decimal values of exact rational optima.
+
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Model fit & Minimum worst error (euro cents)\\
+\midrule
+One common length & 2.4447\\
+Two common lengths & 2.2289\\
+Three common lengths & 2.1804\\
+Three lengths and common intercept & 2.1389\\
+Separate affine fit, 2 axles & 0.9200\\
+Separate affine fit, 3 axles & 0.9886\\
+Separate affine fit, 4 or more axles & 1.1362\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A calculation with a single rounding to the nearest cent must predict every printed price within half a cent. Even the three separate fits exceed that threshold. Fixing the nominal distance at 75 km gives a maximum discrepancy of 22.6875 cents. This measures the largest difference over all listed classes. It does not measure an average loss for road users.
+
+\paragraph{How to check optimality.} The supplement supplies a coefficient vector attaining each stated maximum, and row signs $s_j\in\{-1,1\}$ with nonnegative weights $w_j$. They obey $\sum w_j=1$ and $\sum w_js_jX_j=0$. For every candidate coefficient vector, the maximum absolute residual then bounds its weighted signed residual sum, which equals $-\sum w_js_jP_j$. This lower bound equals the maximum attained by the supplied coefficients. Checking these equalities needs only rational arithmetic. Numerical optimization locates candidates for the certificates; exact upper and lower bounds establish the result independently of solver tolerances.
+
+\section{Adding the published section amounts}
+The Austrian federal toll law provides for section-level calculation [5]. ASFINAG publishes the amounts by accounting section and vehicle category in version 88 of its toll regulations, annexes 4A through 4L [6]. We use the first fifteen consecutive A12 entries starting at Staatsgrenze Kufstein. The last is labelled A12 Innsbruck Ost to Innsbruck Mitte in the section tables. We retain both this name and the different junction label in the route leaflet. The comparison concerns an accounting sum and does not independently locate an interchange.
+
+For each annex and axle column we sum the fifteen daytime totals as exact decimal amounts. We also check agreement with the corresponding nighttime column on each included section. This gives 36 comparisons between the section annexes and the leaflet. The annexes split several emissions bands that share one row in the leaflet; after checking the equality of their section columns, 24 distinct profiles remain. Every sum equals the corresponding printed price. For example, the two-axle Euro VI truck in carbon class 1 totals EUR 25.00. Summing only its first fourteen rows gives EUR 24.33. This is a direct way to reproduce all published corridor prices without fitting a distance or inferring a rounding rule from residuals.
+
+\paragraph{A within-section diagnostic.}
+Consider the last accounting section. For a two-axle zero-emission vehicle the air and noise disclosure is EUR 0.0085 at a displayed rate of EUR 0.004 per kilometre. If the disclosure equals a common length times that rate rounded to four decimal places, the length must be at least $0.00845/0.004=2.1125$ km. For a four-or-more-axle carbon-class-1 Euro 0--III truck the same disclosure is EUR 0.2173 at EUR 0.103 per kilometre. Its compatible length is at most $0.21735/0.103<2.111$ km. Even closed rounding intervals are disjoint. This excludes the common-length explanation using these displayed rates. It does not identify the operator's internal precision, adjustments, or component calculation.
+
+\section{Use and limits}
+For a routing system that promises to reproduce this particular leaflet, summing the published section charges passes all 24 tests. A model using class-specific kilometre rates can still be appropriate for brief estimates: its maximum absolute discrepancy here is small in relation to the route price. The half-cent criterion matters if the intended output is a quoted amount correct to the cent. Other corridors, tariff editions and transaction records require separate checks. The sources already publish the charges and the section principle. Our contribution is the cross-table reconciliation, the exact limits on aggregate alternatives and the local counterexample, with data and certificates for repetition.
+
+\section*{Model assessments and review context}
+Codex assisted with the design, source comparison, calculation and drafting. A model involved in this work shares its preparation context. Version-specific assessments belong to the record for the exact PDF and retain the model identity and objections. Peer review and editorial acceptance are separate processes.
+
+\section*{Sources and reproduction}
+\begin{enumerate}
+\item Republic of Austria. \href{https://ris.bka.gv.at/eli/bgbl/ii/2025/298/P3/NOR40273503}{Mauttarifverordnung 2025, section 3}, BGBl. II 298/2025.
+\item ASFINAG. \href{https://go-maut.at/go-maut-bezahlen/tarife-go-maut/}{GO toll, ordinary heavy-vehicle rates}, 2026.
+\item Kabir. \href{https://doi.org/10.5281/zenodo.24406888}{\textit{carbon-cost}, v0.99.0}. Use the release's production Austrian schedule dated 2026-01-01.
+\item ASFINAG. \href{https://www.go-maut.at/media/zglel2dk/go-maut-tarife-2026_streckenmaut_en.pdf}{\textit{Rates GO toll 2026 for the section toll segments}}, p.~1.
+\item Republic of Austria. \href{https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&FassungVom=2026-11-12&Gesetzesnummer=20002090}{Bundesstra\ss en-Mautgesetz 2002, section 9(5)}, consolidated 12 November 2026.
+\item ASFINAG. \href{https://www.asfinag.at/maut-vignette/mautordnung/}{\textit{Mautordnung}, version 88, annexes 4A--4L}. The supplement records twelve document URLs and SHA-256 hashes, the 15 accounting rows for each profile, the leaflet prices, and all rational certificates. Run \texttt{python verify\_a12.py} alongside the JSON files to check the calculations.
+\end{enumerate}
+\end{document}
