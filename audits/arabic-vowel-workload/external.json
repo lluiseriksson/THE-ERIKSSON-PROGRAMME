@@ -1,0 +1,36 @@
+{
+  "pin": "aa311213e44e4cab6cc3f2848daacd753adc1ce1",
+  "sha256": "d727d08f1e18ac514526ad572c26d9647bdc08395ef9aceb8673c0f69fdd08a9",
+  "padt_pin": "5b1ad7e87c70b0e290f8499b64531c7d6a88eea0",
+  "flow": {
+    "input": 1200,
+    "used": 1191,
+    "bare_eligible": 6758,
+    "scored": 6742,
+    "duplicate": 9
+  },
+  "analysis": {
+    "cells": {
+      "70": 4664,
+      "70_err": 1723,
+      "base": 1788,
+      "60": 209,
+      "base_err": 28,
+      "60_err": 73,
+      "77": 8,
+      "77_err": 2
+    },
+    "gain": "-166/209",
+    "original_fills": 1796,
+    "original_errors": 30,
+    "alternative_errors": "6436/209",
+    "informative_paragraphs": {
+      "77": 7,
+      "60": 175
+    },
+    "leave_one_out_range": [
+      "-302/209",
+      "-20/209"
+    ]
+  }
+}
