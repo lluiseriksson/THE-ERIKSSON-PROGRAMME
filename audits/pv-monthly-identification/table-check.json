@@ -1,0 +1,198 @@
+{
+  "source_sha256": "b7d3f2aaa44c44fd069bd932cd5080fc6dd77368046aa0e879eaed01775783de",
+  "source_pdf_page": 5,
+  "capacity_kWp": "409 x 0.550 = 224.95",
+  "months": [
+    {
+      "month": "Sep-25",
+      "printed": [
+        "1219.02",
+        "735.59",
+        "5.419",
+        "60.3"
+      ],
+      "capacity_interval": [
+        224.93126672202231,
+        224.97462397342437
+      ],
+      "capacity_exact": [
+        "2438030/10839",
+        "2438050/10837"
+      ],
+      "nameplate_compatible": true,
+      "ratio_interval_percent": [
+        60.34207665962552,
+        60.343392000918776
+      ],
+      "printed_pr_compatible": true
+    },
+    {
+      "month": "Oct-25",
+      "printed": [
+        "1186.33",
+        "702.38",
+        "5.274",
+        "59.2"
+      ],
+      "capacity_interval": [
+        224.91705374917055,
+        224.96160045510572
+      ],
+      "capacity_exact": [
+        "338950/1507",
+        "2372670/10547"
+      ],
+      "nameplate_compatible": true,
+      "ratio_interval_percent": [
+        59.205452085625055,
+        59.2067940909953
+      ],
+      "printed_pr_compatible": true
+    },
+    {
+      "month": "Nov-25",
+      "printed": [
+        "1085.61",
+        "630.80",
+        "4.826",
+        "58.1"
+      ],
+      "capacity_interval": [
+        224.92592976276805,
+        224.97461402963424
+      ],
+      "capacity_exact": [
+        "2171210/9653",
+        "2171230/9651"
+      ],
+      "nameplate_compatible": true,
+      "ratio_interval_percent": [
+        58.10485300958443,
+        58.10630938508942
+      ],
+      "printed_pr_compatible": true
+    },
+    {
+      "month": "Dec-25",
+      "printed": [
+        "1254.12",
+        "688.29",
+        "5.575",
+        "54.9"
+      ],
+      "capacity_interval": [
+        224.93318984844407,
+        224.97533411068258
+      ],
+      "capacity_exact": [
+        "2508230/11151",
+        "2508250/11149"
+      ],
+      "nameplate_compatible": true,
+      "ratio_interval_percent": [
+        54.88169042160869,
+        54.88292540955175
+      ],
+      "printed_pr_compatible": true
+    },
+    {
+      "month": "May-26",
+      "printed": [
+        "965.13",
+        "523,323",
+        "4.290",
+        "54.4"
+      ],
+      "capacity_interval": [
+        224.94464514625335,
+        224.9994171814897
+      ],
+      "capacity_exact": [
+        "1930250/8581",
+        "1930270/8579"
+      ],
+      "nameplate_compatible": true,
+      "ratio_interval_percent": [
+        54.22272531821973,
+        54.2233907524932
+      ],
+      "printed_pr_compatible": false
+    },
+    {
+      "month": "Jun-26",
+      "printed": [
+        "920.02",
+        "494,045",
+        "4.095",
+        "53.7"
+      ],
+      "capacity_interval": [
+        224.6404590404102,
+        224.6977652949078
+      ],
+      "capacity_exact": [
+        "1840030/8191",
+        "1840050/8189"
+      ],
+      "nameplate_compatible": false,
+      "ratio_interval_percent": [
+        53.69902991766528,
+        53.69972228713662
+      ],
+      "printed_pr_compatible": true
+    },
+    {
+      "month": "Jul-26",
+      "printed": [
+        "859.01",
+        "441,369",
+        "3.819",
+        "51.4"
+      ],
+      "capacity_interval": [
+        224.8998560020945,
+        224.96137226659684
+      ],
+      "capacity_exact": [
+        "1718010/7639",
+        "1718030/7637"
+      ],
+      "nameplate_compatible": true,
+      "ratio_interval_percent": [
+        51.380767506970194,
+        51.38148206355027
+      ],
+      "printed_pr_compatible": true
+    },
+    {
+      "month": "Aug-26",
+      "printed": [
+        "835.00",
+        "390,526",
+        "3.712",
+        "46.8"
+      ],
+      "capacity_interval": [
+        224.9144781144781,
+        224.97777179038124
+      ],
+      "capacity_exact": [
+        "333998/1485",
+        "1670010/7423"
+      ],
+      "nameplate_compatible": true,
+      "ratio_interval_percent": [
+        46.76924090274908,
+        46.76992077796873
+      ],
+      "printed_pr_compatible": true
+    }
+  ],
+  "incompatible_capacity_pair": [
+    "May-26",
+    "Jun-26"
+  ],
+  "minimum_separation_kwp": 0.24687985134554727,
+  "irradiation_allowance_kwh_m2_at_nameplate": 0.004591131362525006,
+  "mean_ratio_caution": "Average daily performance ratios can differ from the ratio of aggregate generation to aggregate theoretical yield."
+}

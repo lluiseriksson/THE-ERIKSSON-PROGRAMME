@@ -1,0 +1,5 @@
+# Two observationally equivalent explanations of monthly photovoltaic summaries
+
+The 31-day May construction reproduces the mean daily ratio and both yield columns exactly. For June, a small additive offset in irradiation and the omission of one irradiation date give identical reported means. The underlying daily records are synthetic. The interval checks use the precision of the publisher's tables. The source paper and its rights statement are available from the publisher. [Nugroho and Saputra (2026)](https://doi.org/10.25077/aijaset.v6i3.378)
+
+Run `rounding.py` and `construct.py` on Colab Linux. Move `/content/archive.zip` after each run before starting the next. Each script downloads and hashes the original PDF. The results should match `table-check.json` and `mechanisms.json` respectively. Rational daily data are stored as strings. The original publisher PDF is not redistributed in this archive. The source SHA-256 is b7d3f2aaa44c44fd069bd932cd5080fc6dd77368046aa0e879eaed01775783de.
