@@ -9,10 +9,10 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-A two-replicate pot trial reported grain yield for twenty tef genotypes under two moisture regimes. Using the reported means, we determine the best-performing genotype for every convex mixture of those regimes. TDT-4-15 leads up to a deficit-regime weight of $1900/2873$, and RIL-44 leads beyond it. We also find an incompatibility under a specific interpretation of the published tables. If the forty cell means summarize pairs of nonnegative, equally weighted pot observations on the reported scale, then their corrected total sum of squares is at most $2{,}238{,}537$, allowing for rounding. The supplemental ANOVA reports a one-degree-of-freedom moisture entry of $6{,}442{,}255$. An ordinary least-squares term on the same response and rows cannot exceed the corrected total. The discrepancy limits the use of that entry for inference until the units, observations and model output can be reconciled.
+A two-replicate pot trial reported grain yield for twenty tef genotypes under two moisture regimes. Using the reported means, we determine the best-performing genotype for every convex mixture of those regimes. In the pot trial TDT-4-15 leads up to a deficit-regime weight of $1900/2873$, and RIL-44 leads beyond it. The paired field publication reports a different upper envelope at the same numerical weights. We also find an incompatibility under a specific interpretation of the published tables. If the forty cell means summarize pairs of nonnegative, equally weighted pot observations on the reported scale, then their corrected total sum of squares is at most $2{,}238{,}537$, allowing for rounding. The supplemental ANOVA reports a one-degree-of-freedom moisture entry of $6{,}442{,}255$. An ordinary least-squares term on the same response and rows cannot exceed the corrected total. The discrepancy limits the use of that entry for inference until the units, observations and model output can be reconciled.
 \end{abstract}
 \section{Which genotype leads in the observed means?}
-Girma and colleagues~\cite{study} examined twenty genotypes of tef, a cereal crop, in a $5\times4$ alpha-lattice pot experiment with two replications. Their water-deficit treatment included dehydration followed by rewatering. Section 4 of the study describes pot-level grain yield measurement, and Table 3 reports means in mg per plant. The supplement~\cite{sup} includes combined and separate ANOVAs (S1 and S2), within-regime comparisons (S5) and trait definitions (S10). All numerical claims here concern those reports. We have not verified the authors' original analysis input.
+Girma and colleagues~\cite{study} examined twenty genotypes of tef, a cereal crop, in a $5\times4$ alpha-lattice pot experiment with two replications. Their water-deficit treatment included dehydration followed by rewatering. Section 4 of the study describes pot-level grain yield measurement, and Table 3 reports means in mg per plant. The supplement~\cite{sup} includes combined and separate ANOVAs (S1 and S2), within-regime comparisons (S5) and trait definitions (S10). The pot analysis concerns those reports. A separate comparison below uses the field study cited by the authors. We have not verified the authors' original analysis input.
 
 For genotype $i$ let $w_i,d_i$ be the Table 3 means for well-watered and water-deficit conditions. Consider $y_i(p)=(1-p)w_i+p d_i$ for a hypothetical weight $0\leq p\leq1$. This linear combination compares expected absolute yields across the two reported regimes given fixed weights. It does not interpolate irrigation intensity or estimate how often drought occurs in a field.
 \begin{center}
@@ -27,6 +27,22 @@ DZ-01-1825 &259.33&8.15\\
 \end{tabular}
 \end{center}
 The first two lines cross at $p_* = 19/(19+9.73)=1900/2873$, about 0.6613. The supplement to this analysis checks the twenty scores at 0, $p_*$ and 1. TDT-4-15 leads at 0, RIL-44 leads at 1, and the two tie at $p_*$. At that tie the closest of the other eighteen, DZ-01-1825, is $297491/287300$, about 1.0355 mg per plant, below them. On either segment the difference between the proposed leader and any competitor is affine. Its values at the endpoints prove the whole segment. These are ranks of rounded treatment means, with no estimated sampling precision attached to $p_*$.
+
+\section{Do the pot rankings carry over to the field means?}
+Girma and colleagues already compare changes in rank between their lath-house and field trials. We ask a narrower question: at which numerical weights do the two reported panels select the same maximizer? Table 5 of the field publication~\cite{field} reports yields in g per plant for the same twenty genotypes. Rankings are computed within each trial, with no pooling of yield levels across trials.
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Field genotype & Well-watered & Water-deficit\\
+\midrule
+TDT-4-15 & 4.55 & 2.07\\
+Dtt-2 & 3.61 & 3.27\\
+Boni & 3.50 & 3.33\\
+RIL-44 & 2.47 & 2.05\\
+\bottomrule
+\end{tabular}
+\end{center}
+For the field means the upper envelope follows TDT-4-15, Dtt-2 and Boni, switching at $0.94/(0.94+1.20)=47/107$ and $0.11/(0.11+0.06)=11/17$. Checking all twenty lines at the four interval endpoints proves the envelope by the same affine argument. Both panels therefore share a maximizing genotype exactly for $0\le p\le47/107$, including the tie at the right endpoint. RIL-44 is below Boni in both field regimes. The same weight is a comparison device: moisture schedules, pot depth, planting density and sowing dates can differ. This comparison does not attribute the change in rank to any one of them or identify a population winner.
 
 \section{A bound requiring no block allocation}
 Consider forty cells with two nonnegative responses $x_{i1},x_{i2}$ per cell, all measured in the same units as the reported arithmetic cell means. Denote the true cell means by $m_i$. Write $N=80$. First, every observation is at most $2\max_i m_i$. Centering at the sample mean minimizes the sum of squared deviations from a constant, so centering instead at $\max_i m_i$ yields the upper bound $N(\max_i m_i)^2$. With ordinary rounding to two decimals, the upper limit on the largest mean is 266.005. This simple bound gives $5{,}660{,}692.802$.
@@ -52,13 +68,14 @@ As a sensitivity calculation, suppose the two endpoint errors fall within the re
 It is positive only above $121.47/129.49$, approximately 0.9381. Between the crossover and that threshold the rectangle admits both a positive difference and a nonpositive difference. The rectangle imposes no cross-regime correlation assumption. Its calculation is conditional on these two error limits. It is neither a simultaneous 95 percent confidence band after selection among twenty genotypes nor a claim that the fitted design attains every corner. A contrast covariance matrix and an explicit inferential procedure would be needed for such a band.
 
 \section{Reproducibility and review context}
-The package contains the reported cell means, their source links, source-file checksums and an exact rational verifier. It checks both line segments, the extremal sum of squares construction and the printed ANOVA comparison. The methods are elementary. The contribution is the application to the cited trial and a scale check independent of its block allocation. The authors provide a Figshare link for the raw data~\cite{data}; the analyses here use only the article and supplement. Field performance, untested moisture patterns and yield stability across sites remain outside the scope of the results.
+The package contains the reported cell means, their source links, source-file checksums and an exact rational verifier. It checks both line segments, the extremal sum of squares construction and the printed ANOVA comparison. The methods are elementary. The contribution is the application to the cited trial and a scale check independent of its block allocation. The authors provide a Figshare link for the raw data~\cite{data}; the analyses here use only the article and supplement. Transfer to other sites and untested moisture patterns remains open.
 
 \paragraph{Model assessments and review context.} Codex assisted with data extraction, the computations and the manuscript. An assessment attached to a released version applies to its identified PDF. This manuscript records no independent peer review.
 
 \begin{thebibliography}{9}
 \bibitem{study} B. T. Girma, A. G. Roro, K. A. Abebe, Z. Tadele and J. M. Farrant. Physiological and agronomic responses of tef to terminal drought stress. \emph{Plants} 15 (2026), 3588. \href{https://doi.org/10.3390/plants15223588}{Article}.
 \bibitem{sup} Girma and colleagues. \href{https://mdpi-res.com/d_attachment/plants/plants-15-03588/article_deploy/plants-15-03588-s001.zip}{Supplementary material}, Tables S1, S2, S5 and S10.
+\bibitem{field} B. T. Girma and colleagues. The effect of drought on physiological and agronomic traits of tef. \emph{Frontiers in Plant Science} (2026). \href{https://doi.org/10.3389/fpls.2026.1880325}{Field study}, Table 5.
 \bibitem{data} Girma and colleagues. \href{https://figshare.com/s/0568883f232686727719}{Figshare link provided in the article's data availability statement}.
 \end{thebibliography}
 \end{document}
