@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs}
-\usepackage[margin=0.95in]{geometry}\usepackage[hidelinks]{hyperref}
+\usepackage[left=0.90in,right=0.90in,top=0.72in,bottom=0.76in]{geometry}\usepackage[hidelinks]{hyperref}
 \title{Rainfall sensitivity and identifiable costs in a published library of 200 stormwater designs}
 \author{Lluis Eriksson}\date{20 November 2026}
 \begin{document}\maketitle
@@ -44,14 +44,14 @@ Vegetated swale & 17 & 48 & 32\\
 Green roof & 0 & 106 & 107\\\bottomrule
 \end{tabular}
 \end{center}
-The 8,896 surviving tuples show that one unit price is identified by these records under the stated model. A numerical fit that returns four point estimates would obscure the three ambiguities. These are prices compatible with the archived objective and its controls. They do not measure prevailing installation costs.
+Row 1 alone forces the pavement price to 45, even when the other prices range independently from 0 to 200. The reproducibility check verifies both bounding inequalities. The 8,896 surviving tuples show that one unit price is identified by these records under the stated model. A numerical fit that returns four point estimates would obscure the three ambiguities. These are prices compatible with the archived objective and its controls. They do not measure prevailing installation costs.
 
 \paragraph{Scope and reproduction.} The rainfall and cost analyses answer different inverse questions. Their feasible sets need not identify a single common original design vector. The raw design export and SWMM file are pinned to Git revision \texttt{a824c03d}. The supplement provides the census, exact budget calculation, row selection, hydraulic outputs, input hashes and scripts to rerun them. The prior study established the optimization tool and its original tradeoff [1]. We claim the specific inverse and event-sensitivity calculations on the public example, without claiming a new hydraulic model.
 
 \paragraph{Model assessments and review context.} OpenAI Codex participated in the analysis and drafting. The author administers AIRR. The assessment is linked to the exact PDF; independent field or peer validation has not been documented.
 
 \begin{thebibliography}{3}\small
-\bibitem{study} E. M. H. Abdalla et al. SWMMLIDopt: a tool for optimization of low-impact development measures using the SWMM model. J. Hydroinformatics 26 (2024). \href{https://doi.org/10.2166/hydro.2024.123}{Research article}.
+\bibitem{study} E. M. H. Abdalla et al. SWMMLIDopt: a tool for optimization of low-impact development (LID) measures using the SWMM model. J. Hydroinformatics 26 (2024), 2781--2797. \href{https://doi.org/10.2166/hydro.2024.123}{Research article}.
 \bibitem{archive} E. M. H. Abdalla. SWMMLIDopt code, example and data. \href{https://github.com/ElhadiMohsenAbdalla/SWMMLIDOPT/tree/a824c03d1864b02d153c81679b61e2d9125d090a}{Fixed source revision}.
 \bibitem{swmm} US Environmental Protection Agency. Storm Water Management Model 5.2.4. \href{https://github.com/USEPA/Stormwater-Management-Model/blob/v5.2.4/src/solver/lid.c}{LID input parsing}.
 \end{thebibliography}
