@@ -1,0 +1,61 @@
+{
+  "budgets": {
+    "1": {
+      "excess_lps": "544.856",
+      "one_based_row_ids": [
+        2
+      ],
+      "strict_witness_count": 2
+    },
+    "10": {
+      "excess_lps": "52.6721",
+      "one_based_row_ids": [
+        2,
+        115,
+        169,
+        77,
+        73,
+        196,
+        100,
+        14,
+        38,
+        83
+      ],
+      "strict_witness_count": 11
+    },
+    "2": {
+      "excess_lps": "269.9095",
+      "one_based_row_ids": [
+        2,
+        196
+      ],
+      "strict_witness_count": 3
+    },
+    "3": {
+      "excess_lps": "180.9240",
+      "one_based_row_ids": [
+        2,
+        117,
+        101
+      ],
+      "strict_witness_count": 4
+    },
+    "5": {
+      "excess_lps": "107.9319",
+      "one_based_row_ids": [
+        2,
+        169,
+        73,
+        20,
+        6
+      ],
+      "strict_witness_count": 6
+    }
+  },
+  "flagged_dominated": [],
+  "input_sha256": "2423484a58456c597d7eea2241a650d3447e56461c1cb51e3ee77d72ea8f2321",
+  "nondominated_pairs": 200,
+  "rows": 200,
+  "strictly_dominated_rows": [],
+  "unique_objective_pairs": 200
+}
