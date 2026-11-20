@@ -1,0 +1,338 @@
+{
+  "Chronos-2": {
+    "bands": {
+      "1": {
+        "cold_premium": [
+          "8703/2000",
+          "4357/1000",
+          "349/80"
+        ],
+        "warm_saving": [
+          "18617/160000",
+          "14623/125000",
+          "94089/800000"
+        ]
+      },
+      "10": {
+        "cold_premium": [
+          "8703/2000",
+          "4357/1000",
+          "349/80"
+        ],
+        "warm_saving": [
+          "447263/4000000",
+          "5623/50000",
+          "90483/800000"
+        ]
+      },
+      "100": {
+        "cold_premium": [
+          "8511/2000",
+          "4261/1000",
+          "8533/2000"
+        ],
+        "warm_saving": [
+          "821823/4000000",
+          "41267/200000",
+          "165771/800000"
+        ]
+      },
+      "500": {
+        "cold_premium": [
+          "88/25",
+          "353/100",
+          "177/50"
+        ],
+        "warm_saving": [
+          "748601/800000",
+          "29421/31250",
+          "3788769/4000000"
+        ]
+      },
+      "1000": {
+        "cold_premium": [
+          "13/5",
+          "261/100",
+          "131/50"
+        ],
+        "warm_saving": [
+          "740521/400000",
+          "93003/50000",
+          "29901/16000"
+        ]
+      },
+      "2000": {
+        "cold_premium": [
+          "37/50",
+          "3/4",
+          "19/25"
+        ],
+        "warm_saving": [
+          "1484041/400000",
+          "37197/10000",
+          "1491717/400000"
+        ]
+      },
+      "10000": {
+        "cold_premium": [
+          "-143/10",
+          "-71/5",
+          "-141/10"
+        ],
+        "warm_saving": [
+          "148367/8000",
+          "186333/10000",
+          "748827/40000"
+        ]
+      }
+    },
+    "scenarios": {
+      "all": {
+        "printed": {
+          "batches": 40,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "4357/1000",
+          "least_saving": "5623/50000",
+          "at_previous": "261/3125"
+        },
+        "pessimistic": {
+          "batches": 41,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "349/80",
+          "least_saving": "447263/4000000",
+          "at_previous": "6743/4000000"
+        },
+        "optimistic": {
+          "batches": 40,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "8703/2000",
+          "least_saving": "90483/800000",
+          "at_previous": "21423/400000"
+        }
+      },
+      "small": {
+        "printed": {
+          "batches": 40,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "4357/1000",
+          "least_saving": "5623/50000",
+          "at_previous": "261/3125"
+        },
+        "pessimistic": {
+          "batches": 41,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "349/80",
+          "least_saving": "447263/4000000",
+          "at_previous": "6743/4000000"
+        },
+        "optimistic": {
+          "batches": 40,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "8703/2000",
+          "least_saving": "90483/800000",
+          "at_previous": "21423/400000"
+        }
+      },
+      "tiny": {
+        "printed": {
+          "batches": 40,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "4357/1000",
+          "least_saving": "5623/50000",
+          "at_previous": "261/3125"
+        },
+        "pessimistic": {
+          "batches": 41,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "349/80",
+          "least_saving": "447263/4000000",
+          "at_previous": "6743/4000000"
+        },
+        "optimistic": {
+          "batches": 40,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "8703/2000",
+          "least_saving": "90483/800000",
+          "at_previous": "21423/400000"
+        }
+      }
+    }
+  },
+  "TiRex-2": {
+    "bands": {
+      "1": {
+        "cold_premium": [
+          "80433/2000",
+          "40267/1000",
+          "16127/400"
+        ],
+        "warm_saving": [
+          "2359/32000",
+          "9319/125000",
+          "301539/4000000"
+        ]
+      },
+      "10": {
+        "cold_premium": [
+          "80433/2000",
+          "40267/1000",
+          "16127/400"
+        ],
+        "warm_saving": [
+          "80221/4000000",
+          "2097/100000",
+          "87537/4000000"
+        ]
+      },
+      "100": {
+        "cold_premium": [
+          "81461/2000",
+          "40781/1000",
+          "81663/2000"
+        ],
+        "warm_saving": [
+          "-6923/16000",
+          "-5367/12500",
+          "-34083/80000"
+        ]
+      },
+      "500": {
+        "cold_premium": [
+          "8501/200",
+          "1064/25",
+          "8523/200"
+        ],
+        "warm_saving": [
+          "-910191/400000",
+          "-56599/25000",
+          "-900979/400000"
+        ]
+      },
+      "1000": {
+        "cold_premium": [
+          "8957/200",
+          "1121/25",
+          "8979/200"
+        ],
+        "warm_saving": [
+          "-36729/8000",
+          "-45563/10000",
+          "-180861/40000"
+        ]
+      },
+      "2000": {
+        "cold_premium": [
+          "9869/200",
+          "247/5",
+          "9891/200"
+        ],
+        "warm_saving": [
+          "-367051/40000",
+          "-45663/5000",
+          "-363559/40000"
+        ]
+      },
+      "10000": {
+        "cold_premium": [
+          "1699/20",
+          "171/2",
+          "1721/20"
+        ],
+        "warm_saving": [
+          "-36667/800",
+          "-22743/500",
+          "-36111/800"
+        ]
+      }
+    },
+    "scenarios": {
+      "all": {
+        "printed": {
+          "batches": null,
+          "cold_size": 10000,
+          "reuse_size": 10000,
+          "worst_startup": "171/2",
+          "least_saving": "-22743/500",
+          "at_previous": null
+        },
+        "pessimistic": {
+          "batches": null,
+          "cold_size": 10000,
+          "reuse_size": 10000,
+          "worst_startup": "1721/20",
+          "least_saving": "-36667/800",
+          "at_previous": null
+        },
+        "optimistic": {
+          "batches": null,
+          "cold_size": 10000,
+          "reuse_size": 10000,
+          "worst_startup": "1699/20",
+          "least_saving": "-36111/800",
+          "at_previous": null
+        }
+      },
+      "small": {
+        "printed": {
+          "batches": null,
+          "cold_size": 100,
+          "reuse_size": 100,
+          "worst_startup": "40781/1000",
+          "least_saving": "-5367/12500",
+          "at_previous": null
+        },
+        "pessimistic": {
+          "batches": null,
+          "cold_size": 100,
+          "reuse_size": 100,
+          "worst_startup": "81663/2000",
+          "least_saving": "-6923/16000",
+          "at_previous": null
+        },
+        "optimistic": {
+          "batches": null,
+          "cold_size": 100,
+          "reuse_size": 100,
+          "worst_startup": "81461/2000",
+          "least_saving": "-34083/80000",
+          "at_previous": null
+        }
+      },
+      "tiny": {
+        "printed": {
+          "batches": 1922,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "40267/1000",
+          "least_saving": "2097/100000",
+          "at_previous": "23/5000"
+        },
+        "pessimistic": {
+          "batches": 2012,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "16127/400",
+          "least_saving": "80221/4000000",
+          "at_previous": "2579/400000"
+        },
+        "optimistic": {
+          "batches": 1839,
+          "cold_size": 1,
+          "reuse_size": 10,
+          "worst_startup": "80433/2000",
+          "least_saving": "87537/4000000",
+          "at_previous": "60531/4000000"
+        }
+      }
+    }
+  }
+}
