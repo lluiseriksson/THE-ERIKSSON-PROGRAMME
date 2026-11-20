@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[hidelinks]{hyperref}
+\title{Certifying direct pickup deadlines in passenger--parcel routing}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A sampled test of travel-time triangles is used to tighten parcel pickup deadlines in a published routing solver. We check the proposed deadline deterministically on all nine public practice files. All 468 parcels pass, across 13,630 parcel--taxi pairs meeting the capacity requirement. One file violates four ordinary directed travel-time triangles. All nine satisfy the inequalities after the service time at an intermediate stop is included. We give a shortest-path certificate and an explicit feasible counterexample to the same deadline on general inputs.
+\end{abstract}
+\section{What needs to be certified}
+In the model of B\`ui and Nguy\~en [1, Sections III and VII.A], a taxi can serve other requests while carrying a parcel. Each visited request point incurs service time. A passenger's pickup and delivery must be adjacent. Travel times are nonnegative and directed. The authors sample triangles before using a direct journey to tighten a pickup deadline. A shortcut through other stops can make such a bound unsafe.
+
+Let $P,D$ be the tagged parcel's endpoints, $L_D$ its latest permitted start of delivery, and $s_v$ the service time at $v$. Write $T_{uv}$ for the directed travel time. Relax the route by admitting all request points as intermediate stops, ignoring waiting, windows, precedence and load. Define $H_{uv}$ as the least travel time plus the service time of every interior visit. A pickup starting at $t$ necessarily satisfies
+\[
+ t\le L_D-s_P-H_{PD}.
+\]
+Indeed, each feasible itinerary supplies a candidate path in the relaxation after waiting is removed. The direct arc shows $H_{PD}\le T_{PD}$. Equality therefore certifies the direct bound for every taxi, even with other parcels on board. This is a necessary condition for feasibility.
+
+\section{A deterministic test}
+Initialize $H=T$ with zero diagonal. For each request point $k$ admit paths through $k$ by replacing $H_{ij}$ with $\min(H_{ij},H_{ik}+s_k+H_{kj})$ for every ordered pair. This is the Floyd recurrence [2] with a service charge. Nonnegativity permits a shortest simple path. Induction on the allowed interior points proves the update by splitting such a path at $k$. Depots only start routes in this model. The algorithm costs $O(V^3)$ time and $O(V^2)$ memory for $V$ nodes. If $T_{ij}\le T_{ik}+s_k+T_{kj}$ everywhere, no update changes the matrix. Equality can also hold for individual parcels when this global test fails.
+\newpage
+\section{Public files and limits}
+\begin{center}\small
+\begin{tabular}{rrrrrr}
+\toprule
+Taxis & Passengers & Parcels & Capacity pairs & Raw violations & Certified parcels\\
+\midrule
+2&2&2&4&4&2\\2&3&3&6&0&3\\3&5&5&15&0&5\\5&15&15&75&0&15\\
+6&25&25&150&0&25\\10&47&48&480&0&48\\10&50&50&500&0&50\\
+20&120&120&2,400&0&120\\50&200&200&10,000&0&200\\
+\bottomrule
+\end{tabular}
+\end{center}
+We counted strict travel-time triangle violations over all ordered triples, including depots, then tested the service-adjusted condition with each request point as intermediary. The latter count was zero in every file. In the first file the direct time from node 1 to node 7 is 22. Going via node 3 takes $7+14=21$ before service and 26 with its five units of service. All four raw violations are of size one.
+
+The verifier checks each input against its Git blob identifier, scales times to exact integers, checks arithmetic bounds and records the direct and relaxed times per parcel. Exhaustive path enumeration agreed on 1,344 ordered-pair tests in small synthetic graphs. Input hashes, verifier and per-parcel results accompany the article [3]. Capacity pairs count applicability of the bound. Waiting, earlier trips or competing requests may still make a pairing infeasible. The hidden contest instances and solver performance fall outside this audit.
+
+\paragraph{A feasible counterexample on other inputs.}
+Give one taxi a parcel from $P$ to $D$ and one passenger from $U$ to $V$. Use zero service, ample capacity and windows opening at zero. Set $T_{PD}=12$, $T_{PU}=T_{UD}=1$, $T_{UV}=T_{VD}=2$, and all other distinct-node times to 20 except the taxi's zero-time start-to-$P$ arc. Let $L_D=5$ and other windows close at 100. The pickup at time zero and the route $P,U,V,D$ meet the deadline exactly. The direct rule would require pickup by $-7$. The unrestricted relaxation can take $P,U,D$ in two units, but this strand leaves the passenger undelivered. Thus a strict relaxation gap alone cannot establish feasibility.
+
+\paragraph{Model assessments and review context.}
+Codex assisted with the derivation and preparation. The computation above checks the numerical certificate. Any assessment of the frozen PDF is recorded separately with its hash and reviewer context. No human peer review is claimed.
+
+\small
+\paragraph{References and materials.}
+[1] B\`ui Th\'e D\~ung and Nguy\~en H\`a Thu, \emph{A Hybrid Exact--Heuristic Solver for the Integrated Passenger and Parcel Transportation Problem}, 2026. \href{https://arxiv.org/abs/2611.22043v2}{arXiv:2611.22043v2}.\\
+[2] R. W. Floyd, Algorithm 97: Shortest path, \emph{Communications of the ACM} 5 (1962), 345. \href{https://doi.org/10.1145/367766.368168}{doi:10.1145/367766.368168}.\\
+[3] \href{https://github.com/25023189-bit/Integrated-Passenger-and-Parcel-Transportation-SOICT-2026/tree/ecc264d51cae1fb5a3ef85b35b8b7a8c26b2cf47/data}{Pinned public input files}; \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/codex/plazos-publicos-20261120/audits/parcel-deadlines}{audit materials}.
+\end{document}
