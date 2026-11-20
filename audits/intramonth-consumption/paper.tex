@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{Payment timing and the interpretation of monthly consumption with exponential memory}
+\author{Lluis Eriksson}
+\date{November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A monthly income total can produce different month-end consumption rates, even when the memory parameter and initial rate are known. We derive the full range, the corresponding range of monthly spending, and a joint test for simulations using two decay rates and the same payments. Applied to a published convolution, these results separate the roles of income timing and initialization. The end-of-month weight is exact for lump payments. For a constant income flow, the printed discretization overestimates the long-run level at fixed time step. The results concern the model's information requirements.
+\end{abstract}
+\section{What a monthly amount identifies}
+Pe\~na Velasco and Abanc\'in Ospina [1, Eqs.~7 and 14] studies an exponentially weighted integral of income and a discrete convolution on monthly observations. The analytical examples specify a continuous income path. Consider a reader who has only monthly totals. Measure time in months. Let $M_n$ be the amount received in interval $n$ of length $h$, and $dM_n(s)$ its nonnegative distribution over local time $s$. Modeled consumption $C$ is a \emph{rate}, in amount per month. For $\alpha>0$ put $q=e^{-\alpha h}$. The increment relative to the decayed previous closing rate equals
+\[
+D_n=C_n-q C_{n-1}=\alpha\int_{[0,h]} e^{-\alpha(h-s)}\,dM_n(s).
+\]
+An opening payment belongs to the new month immediately after the preceding close; a closing payment is included in the current close. Each payment is counted once.
+
+\textbf{Identified interval.} The possible increments fill $[\alpha q M_n,\alpha M_n]$. The kernel takes its smallest and largest values at the endpoints. Splitting the money between opening and closing realizes every convex combination. For ordinary integrable flows of positive total the endpoints are strict; continuous pulses concentrated near the endpoints approximate them, and mixtures realize interior values. Zero income forces zero increment. With known $C_0$, the interval tests for each increment are jointly necessary and sufficient for a trajectory in the payment-measure model. To see sufficiency, concatenate the constructed monthly payments. Tests of marginal closing levels alone can miss impossible transitions.
+
+\newpage
+\section{Spending and the inclusive sum}
+Let $B_n=\int_{\text{month }n} C(t)\,dt$ be the amount consumed. Integrating $dC=-\alpha C\,dt+\alpha\,dM$ across the month gives
+\[
+ B_n=M_n-(C_n-C_{n-1})/\alpha .
+\]
+The pair $(C_n,B_n)$ therefore lies on a line segment. With $h=1$, $C_0=0$, $M_1=100$ and $\alpha=0.15$ (one of the rates in [1, Fig.~1]), its two endpoints and a constant-flow benchmark are
+\begin{center}\begin{tabular}{lrr}\toprule
+Income timing & Closing rate & Spending during month\\\midrule
+Opening payment & 12.911 & 13.929\\
+Constant flow & 13.929 & 7.139\\
+Closing payment & 15.000 & 0.000\\\bottomrule
+\end{tabular}\end{center}
+All numbers are model illustrations. Daily expenditure diaries and known payment dates have been used empirically to study actual spending around receipt of income [2].
+
+Let $Y_j$ be the sampled income rate, $x=\alpha h$ and $S_n$ the inclusive sum in [1, Eq.~14]. It obeys $S_0=xY_0$ and $S_n=qS_{n-1}+xY_n$. Under the additional interpretation $M_j=hY_j$ for $j\ge1$, the increment $xY_j$ is exactly the effect of a closing lump payment. If $U_n$ denotes the upper trajectory for those amounts from zero, and $F_n$ the trajectory from zero for constant flow within each interval, then
+\[
+ U_n=q U_{n-1}+xY_n,\qquad F_n=q F_{n-1}+(1-q)Y_n,
+\]
+\[
+ S_n=U_n+q^nxY_0=\frac{x}{1-q}F_n+q^nxY_0 .
+\]
+The identity follows by induction. For positive $Y_0$ the printed sum exceeds even the upper timing envelope for those $n$ amounts when the initial state is zero. An additional initial payment of $hY_0$ accounts exactly for the excess. For a permanent constant flow $Y>0$ the printed sum approaches $Yx/(1-q)>Y$ at fixed $h$. Refining the time step makes the multiplier approach one. If the $Y_j$ are only point samples, an interpolation or payment convention is needed to obtain the $M_j$. Identifying an implementation behind a published curve requires more than its displayed equation.
+
+\newpage
+\section{Testing two memory parameters on one payment history}
+Two trajectories can each pass its own increment test while requiring different income histories. For $0<a<b$ and $M_n>0$ normalize $u=D_n(a)/(aM_n)$ and $v=D_n(b)/(bM_n)$. With $\ell=e^{-ah}$ and $p=b/a$, the exact joint region is
+\[
+ \ell\le u\le1,\qquad u^p\le v\le
+ \frac{(1-u)\ell^p+(u-\ell)}{1-\ell}.
+\]
+Draw a payment time with probability proportional to its amount. For $X=e^{-a\,\mathrm{lag}}$, the two normalized increments are $E[X]$ and $E[X^p]$. Jensen's inequality gives the lower curve. The straight chord above $X^p$ gives the upper curve, an instance of classical bounds on convex expectations [3]. A single payment at lag $-\log(u)/a$ realizes the lower curve. Splitting between the opening and the close with the same $u$ realizes the upper curve. Mixing these two distributions fills the interval at fixed $u$. For a full trajectory the same construction applies in each month, using the observed previous closing rate for each parameter. Months with zero income must have two zero increments.
+
+For $h=1$, take $a=0.03$ and $b=0.15$, both among the rates in [1]. The normalized increments $u=0.985$ and $v=0.90$ each pass the single-rate test. Jointly they fail because $0.985^5>0.90$. This hypothetical pair illustrates a test one could apply to simulation output arrays with known units, dates and initialization. The convex bounds are established results. The source-specific contribution is their use together with the spending identity and inclusive-sum comparison to distinguish testable payment conventions.
+
+\paragraph{Reproduction.} The accompanying script checks direct payment sums, recurrences, integrated spending and constructive two-rate witnesses. \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/codex/consumo-intrames-20261120/audits/intramonth-consumption}{Source and verification script.}
+
+\paragraph{Model assessments and review context.} AI assisted with the derivations, calculations and writing. The assessment of this PDF is recorded separately by version and checksum. The author administers AIRR.
+
+\small
+\paragraph{References.}
+[1] A.~A. Pe\~na Velasco and R.~A. Abanc\'in Ospina, \emph{Dynamic economic modeling of intertemporal consumption with memory using Volterra integral equations}, Visi\'on Acad\'emica 4 (2026), 550--568. \href{https://doi.org/10.70577/mpwp1487}{doi:10.70577/mpwp1487}.
+
+[2] M.~Stephens Jr., \emph{3rd of tha Month: Do Social Security Recipients Smooth Consumption Between Checks?}, American Economic Review 93 (2003), 406--422. \href{https://doi.org/10.1257/000282803321455386}{doi:10.1257/000282803321455386}.
+
+[3] C.~C. Huang, W.~T. Ziemba and A.~Ben-Tal, \emph{Bounds on the Expectation of a Convex Function of a Random Variable: With Applications to Stochastic Programming}, Operations Research 25 (1977), 315--325. \href{https://doi.org/10.1287/opre.25.2.315}{doi:10.1287/opre.25.2.315}.
+\end{document}

@@ -1,0 +1,25 @@
+{
+  "endpoint_and_integral_checks": 7500,
+  "constructed_two_rate_points": 121,
+  "one_month": {
+    "monthly_total": 100,
+    "alpha": 0.15,
+    "prior": 0,
+    "close_rate": [
+      12.910619646375867,
+      15
+    ],
+    "spending": [
+      0,
+      13.92920235749422
+    ],
+    "constant_flow_spending": 7.138650950038539
+  },
+  "rates": [
+    0.03,
+    0.08,
+    0.15
+  ],
+  "meaning": "synthetic tests on equal one-month intervals; figures not reproduced",
+  "primary_sha256": "1b0d575e7de631b4719165caa5eae3072071ef51a352a8425e17da418a289a69"
+}
