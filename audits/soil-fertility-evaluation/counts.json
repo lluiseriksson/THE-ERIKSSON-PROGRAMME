@@ -1,0 +1,479 @@
+{
+  "denominators": {
+    "122": [
+      [
+        112
+      ],
+      [
+        111
+      ]
+    ],
+    "244": [
+      [
+        224
+      ],
+      [
+        222
+      ]
+    ],
+    "366": [
+      [
+        336
+      ],
+      [
+        333
+      ]
+    ],
+    "488": [
+      [
+        448
+      ],
+      [
+        444
+      ]
+    ],
+    "610": [
+      [
+        560
+      ],
+      [
+        555
+      ]
+    ],
+    "732": [
+      [
+        672
+      ],
+      [
+        666
+      ]
+    ],
+    "854": [
+      [
+        784
+      ],
+      [
+        777
+      ]
+    ]
+  },
+  "common_N": 122,
+  "resampler_tables": 11,
+  "resampler_exact_p": 1,
+  "correct_counts": {
+    "SVM": 115,
+    "GB": 114,
+    "LightGBM": 114,
+    "DT": 113,
+    "XGBoost": 113,
+    "ET": 112,
+    "RF": 112,
+    "LogR": 111,
+    "MLP": 110,
+    "AdaBoost": 109,
+    "NB": 108,
+    "KNN": 95
+  },
+  "pairs": {
+    "SVM vs GB": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "SVM vs LightGBM": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "SVM vs DT": {
+      "p_min": "1/2",
+      "p_max": "26333/32768",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "SVM vs XGBoost": {
+      "p_min": "1/2",
+      "p_max": "26333/32768",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "SVM vs ET": {
+      "p_min": "1/4",
+      "p_max": "20613/32768",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "SVM vs RF": {
+      "p_min": "1/4",
+      "p_max": "20613/32768",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "SVM vs LogR": {
+      "p_min": "1/8",
+      "p_max": "15751/32768",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "SVM vs MLP": {
+      "p_min": "1/16",
+      "p_max": "11773/32768",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "SVM vs AdaBoost": {
+      "p_min": "1/32",
+      "p_max": "34495/131072",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "SVM vs NB": {
+      "p_min": "1/64",
+      "p_max": "24805/131072",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "SVM vs KNN": {
+      "p_min": "1/524288",
+      "p_max": "1763933/2147483648",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": true
+    },
+    "GB vs LightGBM": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "GB vs DT": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "GB vs XGBoost": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "GB vs ET": {
+      "p_min": "1/2",
+      "p_max": "53381/65536",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "GB vs RF": {
+      "p_min": "1/2",
+      "p_max": "53381/65536",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "GB vs LogR": {
+      "p_min": "1/4",
+      "p_max": "84883/131072",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "GB vs MLP": {
+      "p_min": "1/8",
+      "p_max": "131975/262144",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "GB vs AdaBoost": {
+      "p_min": "1/16",
+      "p_max": "200965/524288",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "GB vs NB": {
+      "p_min": "1/32",
+      "p_max": "300185/1048576",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "GB vs KNN": {
+      "p_min": "1/262144",
+      "p_max": "8066917/4294967296",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LightGBM vs DT": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LightGBM vs XGBoost": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LightGBM vs ET": {
+      "p_min": "1/2",
+      "p_max": "53381/65536",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LightGBM vs RF": {
+      "p_min": "1/2",
+      "p_max": "53381/65536",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LightGBM vs LogR": {
+      "p_min": "1/4",
+      "p_max": "84883/131072",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LightGBM vs MLP": {
+      "p_min": "1/8",
+      "p_max": "131975/262144",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LightGBM vs AdaBoost": {
+      "p_min": "1/16",
+      "p_max": "200965/524288",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LightGBM vs NB": {
+      "p_min": "1/32",
+      "p_max": "300185/1048576",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LightGBM vs KNN": {
+      "p_min": "1/262144",
+      "p_max": "8066917/4294967296",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "DT vs XGBoost": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "DT vs ET": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "DT vs RF": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "DT vs LogR": {
+      "p_min": "1/2",
+      "p_max": "215955/262144",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "DT vs MLP": {
+      "p_min": "1/4",
+      "p_max": "173965/262144",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "DT vs AdaBoost": {
+      "p_min": "1/8",
+      "p_max": "548895/1048576",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "DT vs NB": {
+      "p_min": "1/16",
+      "p_max": "106135/262144",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "DT vs KNN": {
+      "p_min": "1/131072",
+      "p_max": "33785699/8589934592",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "XGBoost vs ET": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "XGBoost vs RF": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "XGBoost vs LogR": {
+      "p_min": "1/2",
+      "p_max": "215955/262144",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "XGBoost vs MLP": {
+      "p_min": "1/4",
+      "p_max": "173965/262144",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "XGBoost vs AdaBoost": {
+      "p_min": "1/8",
+      "p_max": "548895/1048576",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "XGBoost vs NB": {
+      "p_min": "1/16",
+      "p_max": "106135/262144",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "XGBoost vs KNN": {
+      "p_min": "1/131072",
+      "p_max": "33785699/8589934592",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "ET vs RF": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "ET vs LogR": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "ET vs MLP": {
+      "p_min": "1/2",
+      "p_max": "436109/524288",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "ET vs AdaBoost": {
+      "p_min": "1/4",
+      "p_max": "1421113/2097152",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "ET vs NB": {
+      "p_min": "1/8",
+      "p_max": "2270193/4194304",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "ET vs KNN": {
+      "p_min": "1/65536",
+      "p_max": "4097441/536870912",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "RF vs LogR": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "RF vs MLP": {
+      "p_min": "1/2",
+      "p_max": "436109/524288",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "RF vs AdaBoost": {
+      "p_min": "1/4",
+      "p_max": "1421113/2097152",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "RF vs NB": {
+      "p_min": "1/8",
+      "p_max": "2270193/4194304",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "RF vs KNN": {
+      "p_min": "1/65536",
+      "p_max": "4097441/536870912",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LogR vs MLP": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LogR vs AdaBoost": {
+      "p_min": "1/2",
+      "p_max": "3518265/4194304",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LogR vs NB": {
+      "p_min": "1/4",
+      "p_max": "2894229/4194304",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "LogR vs KNN": {
+      "p_min": "1/32768",
+      "p_max": "237992131/17179869184",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "MLP vs AdaBoost": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "MLP vs NB": {
+      "p_min": "1/2",
+      "p_max": "7088533/8388608",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "MLP vs KNN": {
+      "p_min": "1/16384",
+      "p_max": "1628837311/68719476736",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "AdaBoost vs NB": {
+      "p_min": "1",
+      "p_max": "1",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "AdaBoost vs KNN": {
+      "p_min": "1/8192",
+      "p_max": "5288280983/137438953472",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    },
+    "NB vs KNN": {
+      "p_min": "1/4096",
+      "p_max": "8189147213/137438953472",
+      "always_bonferroni_all": false,
+      "always_bonferroni_top": false
+    }
+  },
+  "always_bonferroni_top": [
+    "SVM vs KNN"
+  ],
+  "always_bonferroni_all": []
+}

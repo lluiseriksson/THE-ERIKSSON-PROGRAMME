@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,hyperref}
+\hypersetup{hidelinks}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\begin{document}
+\begin{center}{\LARGE\bfseries Recovering minority-class outcomes from aggregate scores in a soil fertility study}\\[8pt]
+Lluis Eriksson \quad $\cdot$ \quad 20 November 2026
+\end{center}
+\begin{abstract}
+Can two aggregate classifier scores reveal how a rare class fared? In a comparison of soil fertility resampling methods, the reported accuracy, weighted F1 and multiclass Matthews correlation coefficient identify both three-class confusion matrices up to relabeling, under the interpretation that the scores describe a common unweighted test set of at most 176 observations. The only compatible test size is 122. Both methods miss all three members of the least frequent class. The one additional correct prediction under SMOTE is a net gain in the middle-sized class. This reconstruction also identifies a discrepancy with a literal 20 percent holdout of the reported 880 observations. We present the integer certificates and the exact limits of what the reconstructed margins imply about paired comparisons.
+\end{abstract}
+
+\section*{What can be recovered from the published table?}
+Behera and Padhy [1] study soil fertility classifiers trained using different resampling methods. Table 2 reports 880 observations, a stratified 80:20 training--test split and fivefold cross-validation. Table 4 reports a resampled training size of 735 for each method, along with the following test summaries.
+\begin{center}\begin{tabular}{lrrr}\toprule
+Method & Accuracy & Weighted F1 & MCC\\\midrule
+SMOTE & 0.918032787 & 0.91079235 & 0.842682\\
+Borderline-SMOTE & 0.909836066 & 0.906464389 & 0.827407\\\bottomrule
+\end{tabular}\end{center}
+
+Assume an unweighted test set of $1\le N\le176$ shared by both methods, a single prediction per case, three represented true classes, conventional support-weighted F1 and multiclass MCC, and rounding to the printed decimals. These are conditions for reconstruction. In particular, averages over folds would pose a different inverse problem.
+
+\textbf{Identifying the denominator.} The two accuracies round from $112/122$ and $111/122$. Any different fraction $k/N$ with $N\le880$ differs from $111/122$ by at least $1/(122N)>10^{-9}$. Two numbers rounding to the same nine-decimal figure can differ by at most $10^{-9}$. Since $111$ and $122$ are coprime, $N$ is a multiple of 122. The bound of 176 leaves exactly 122. The same separation argument recovers 112 and 111 correct cases. Thus the scores cannot be simple counts on a test set of 176. Additional information on sample exclusions or aggregation would be needed to explain the discrepancy.
+
+\textbf{Recovering the rare-class outcome.} For each method we recover its confusion matrix independently from accuracy, weighted F1 and MCC. Ordering the actual and predicted labels by increasing \emph{actual} support gives the matrices on the next page. The displayed counts give the only solutions up to renaming the classes. No class name or individual case identifier is needed for this recovery.
+\newpage
+
+\section*{Two reconstructions of the confusion matrices}
+\begin{center}\begin{tabular}{r rrr @{\hspace{1cm}} rrr}\toprule
+&\multicolumn{3}{c}{SMOTE} & \multicolumn{3}{c}{Borderline-SMOTE}\\
+Actual support & Small & Middle & Large & Small & Middle & Large\\\midrule
+3 &0&3&0 &0&3&0\\
+58&1&55&2 &2&54&2\\
+61&0&4&57 &0&4&57\\\midrule
+Predicted totals &1&62&59 &2&61&59\\\bottomrule
+\end{tabular}\end{center}
+
+For trace $H$, diagonal counts $t_i$, true supports $R_i$, and predicted totals $C_i$, the two remaining scores (see [2] for MCC) take the forms
+\[
+ F_w=\frac{1}{N}\sum_i\frac{2R_it_i}{R_i+C_i}, \qquad
+ M=\frac{NH-\sum_i R_iC_i}
+ {\sqrt{(N^2-\sum_iR_i^2)(N^2-\sum_i C_i^2)}}.
+\]
+All three $R_i$ are positive. A zero MCC denominator cannot produce either positive published value. Substitution of the matrices reproduces the rounded scores. To check uniqueness, the off-diagonal counts are a weak composition of $N-H$ into six parts. Enumerate them and all weak compositions of $H$ into three diagonal entries. Retain matrices with $0<R_1\le R_2\le R_3$ and with both scores in their respective rounding intervals. The F1 test uses integer cross multiplication. For MCC the numerator must be positive, after which squared rational inequalities suffice. Both endpoints of rounding intervals are allowed, so a convention at exact ties cannot exclude an alternative from the search. Each list contains one matrix.
+
+A second enumeration fixes the diagonal and both sets of off-diagonal margins. The six off-diagonal counts then have only one remaining free entry: after fixing the first-row, second-column count, the other first-row count is fixed, then the last entry in column two, and so on. Scanning the possible first count and checking nonnegativity and the final column sum exhausts the completions. The second enumeration yields the same two matrices. A direct evaluation on the expanded label lists also recovers both reported F1 and MCC values. Code and integer certificates accompany the manuscript.
+
+\section*{What the comparison supports}
+The extra correct prediction in aggregate is in the class of support 58. The two smallest-class recalls are both $0/3$. The published improvement in weighted F1 therefore coexists with identical observed minority recall. These aggregates leave open which named cases changed labels; identical entries in two confusion matrices need not represent the same cases. Three test cases also leave substantial uncertainty about future performance in that class.
+
+Let $b$ and $d$ count cases correct only under the first and only under the second method. From the accuracy margins, $b=d+1$, $0\le d\le10$. The two-sided exact conditional McNemar test [3] gives $p=1$ for every one of these accuracy-compatible overlap tables: the observed split is a central outcome of a fair binomial with odd total $b+d$. Further restrictions from the class-specific margins cannot change this conclusion. Table 5 of [1] tests a different model pair. The result here concerns accuracy, and does not test differences in F1 or MCC.
+
+\newpage
+\section*{Sensitivity and reproducibility}
+Even without the nominal holdout bound, imposing $N\le880$ yields only $N=122m$ for $1\le m\le7$. The accuracy advantage then corresponds to $m$ more correct predictions. The most favorable possible two-sided exact conditional $p$-value is $2^{1-m}$, attained when all $m$ discordances favor the first method. Indeed, starting with any discordance table, increasing both off-diagonal entries by one cannot decrease the two-sided tail probability. For $X$ binomial with $2d+m$ fair trials, add two independent fair trials. The lower-tail difference at the respective cutoffs $d+1$ and $d$ is $\{\Pr(X=d+1)-\Pr(X=d)\}/4\ge0$. Thus even the most favorable arrangement needs at least $732$ test cases ($m\ge6$) to yield $p<0.05$. This sensitivity result uses accuracy only.
+
+Table 3 of [1] supplies another check conditional on $N=122$. For example, the leading two distinct accuracies round from $115/122$ and $114/122$. The accompanying certificate gives all compatible correct counts and sharp pairwise ranges for the exact McNemar $p$-value using accuracy margins alone. Across 11 comparisons to a \emph{prespecified} SVM, its advantage over KNN survives a Bonferroni threshold of $0.05/11$ for every compatible pairing. No single comparison is guaranteed to pass $0.05/66$ across all 66 pairs using those margins alone. Selection of the highest-scoring model after seeing the table changes which family is appropriate. The pairwise range endpoints concern each comparison separately.
+
+This is an audit of a reported evaluation, not a refit of the classifiers. It identifies a precise way to resolve the denominator question: document the effective held-out count and whether each score was computed from one prediction vector or averaged over folds. Class-specific test supports and recalls would make the practical consequence visible directly. Deployment choices also require representative field measurements.
+
+\textbf{Data and code.} Inputs are the numeric summaries in Tables 2--4 of [1]. Reproduction requires no participant records or proprietary soil data. Two enumeration scripts use exact rational score filters and a separate library check. Source files and their certificates are in the programme repository under \texttt{audits/soil-fertility-evaluation}.
+
+\textbf{Model assessments and review context.} OpenAI Codex assisted with analysis, programming and writing. The author operates AIRR. Any model assessment of the exact PDF is recorded with its artifact hash and review context.
+
+\small
+[1] S. Behera and N. Padhy. Adaptive Sampling and Machine Learning-Based Soil Fertility Prediction Framework for Smart Agriculture Sensors. \emph{Engineering Proceedings} 163, 114 (2026). \href{https://doi.org/10.3390/engproc2026163114}{doi:10.3390/engproc2026163114}.
+
+[2] J. Gorodkin. Comparing two K-category assignments by a K-category correlation coefficient. \emph{Computational Biology and Chemistry} 28 (2004), 367--374. \href{https://pubmed.ncbi.nlm.nih.gov/15556477/}{PMID 15556477}.
+
+[3] M. W. Fagerland, S. Lydersen and P. Laake. The McNemar test for binary matched-pairs data: mid-p and asymptotic are better than exact conditional. \emph{BMC Medical Research Methodology} 13, 91 (2013). \href{https://doi.org/10.1186/1471-2288-13-91}{doi:10.1186/1471-2288-13-91}.
+\end{document}
