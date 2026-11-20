@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\newcommand{\R}{\mathbb R}
+\begin{document}
+\begin{center}{\LARGE\bfseries Prediction risk under intersecting\\[3pt] economic restrictions}\\[8pt]
+Lluis Eriksson\\[2pt]\small Working manuscript, 20 November 2026\end{center}
+\textbf{Abstract.} For a quadratic fit subject to valid polyhedral restrictions, the fitting metric can differ from the population prediction metric. We give the sharp multiplicative deterioration in squared prediction error over feasible truths as a facewise maximum involving tangent and transformed normal cones. Two three-dimensional wedges have the same individual restriction factors and the same largest face Jacobian norm, yet their exact squared-error factors are $52/51$ and $4/3$. The orientation of the inequalities decides which residuals are attainable. We also give a family in which both individual factors approach one and joint deterioration grows without bound as the population metric becomes ill-conditioned.
+
+\section{Which errors are compared?}
+In the affine adaptation model of Niu, Su and Yang \cite{niu}, a quadratic criterion fits a predictor using target observations. Economic knowledge restricts the feasible coefficients. Their Corollary 3.2 examines population prediction risk when fitting and population metrics are proportional and treats an ordinary fit with possibly binding gate bounds. Here the ordinary estimate $x$ is the unrestricted minimizer, or it is unrestricted because the ordinary gates are inactive. The restricted estimate $e$ minimizes $(z-x)^\top H(z-x)$ over a nonempty, full-dimensional closed polyhedron $C\subseteq\R^p$. Assume $H$ and $M$ are symmetric positive definite. Write $\|u\|_M^2=u^\top M u$. If $t\in C$ is the population-optimal unrestricted affine coefficient and $M$ is the population feature second-moment matrix, excess squared prediction risk at $z$ equals $\|z-t\|_M^2$ by the normal equations. We study
+\[
+ K(C;H,M)=\sup_{t\in C,\ x\ne t}
+ \frac{\|P_C^H(x)-t\|_M^2}{\|x-t\|_M^2}.
+\]
+This deterministic supremum concerns excess risk; it does not estimate the distribution of realized gains, irreducible noise or policy regret. Restricting the set of ordinary estimates can only lower the supremum if the new estimate remains $P_C^H(x)$.
+
+The square root of $K$ is a restricted Lipschitz constant in the sense used for generalized projections by Traonmilin, Aujol and Guennec \cite{tag}. We use established cone-angle geometry \cite{bow} to compute it for this two-metric problem. A global Lipschitz constant would allow both arguments to lie outside $C$.
+
+\newpage
+\section{A sharp formula over faces}
+For a nonempty face $F$, choose $e$ in its relative interior. Let $T_F$ be its feasible direction cone at $e$: $d\in T_F$ if $e+\eta d\in C$ for all sufficiently small $\eta>0$. For polyhedra this cone is closed, as the active linear inequalities give precisely its description. Its Euclidean polar $N_F$ consists of outward normals. These cones are constant on the relative interior. Put $V_F=H^{-1}N_F$. Define
+\[
+ k_F=\max\bigl(\{0\}\cup\{d^\top Mv:
+     d\in T_F,\ v\in V_F,\ \|d\|_M=\|v\|_M=1\}\bigr).
+\]
+The definition also covers the interior where $V_F=\{0\}$. After applying $M^{1/2}$ to both cones, this is the cosine of their minimal angle with the positive-part convention. Compactness gives a maximum. It is strictly below one. Equality would give $d=v$ and $d^\top Hv>0$, whereas $Hv\in N_F$ implies $d^\top Hv\leq0$.
+
+\textbf{Theorem.} For $p\geq1$,
+\[
+                 K(C;H,M)=\max_F (1-k_F^2)^{-1}.
+\]
+
+\textit{Proof.} Given an ordinary fit $x$ and a feasible truth $t$, put $e=P_C^H(x)$. The quadratic optimality condition gives $x-e\in V_F$, where $F$ contains $e$ in its relative interior. Feasibility of $t$ gives $t-e\in T_F$. If $t=e$ the numerator is zero. Otherwise normalize $t-e$ to have unit $M$-norm by dividing both displacements by its norm. Write the normalized displacements as $d$ and $sv$, with $s\geq0$ and $\|v\|_M=1$ for nonzero residual. The denominator in these units is
+\[
+            1+s^2-2s\,d^\top Mv\ \geq\ 1-k_F^2.
+\]
+A zero residual gives ratio one. Conversely, if $k_F>0$, choose maximizing unit directions $d,v$. Set $t=e+\eta d$ and $x=e+\eta k_Fv$. For small enough positive $\eta$ the truth satisfies every inequality. Since $H(x-e)$ is normal at $e$, the projection is exactly $e$. The ratio attains $(1-k_F^2)^{-1}$. If every $k_F$ is zero, take two distinct feasible points to attain one. \hfill$\square$
+
+The optimization is finite in faces but may be nonconvex in directions. The attainment argument is the reason to keep the signs of the active inequalities. Replacing a normal cone by its linear span can admit residuals that an actual fit at the face cannot have.
+
+\newpage
+\section{One inequality and two orientations}
+For a single halfspace $a^\top z\le b$ with $a\ne0$, write $h=H^{-1}a/(a^\top H^{-1}a)$. The map subtracts $h(a^\top x-b)_+$. Its squared factor is
+\[
+ G(a)=\frac{(a^\top H^{-1} M H^{-1}a)(a^\top M^{-1}a)}
+                {(a^\top H^{-1}a)^2}.
+\]
+Indeed the exterior linear part is $P=I-ha^\top$. In $M$-orthonormal coordinates it becomes $I-uv^\top$ with $u=M^{1/2}h$, $v=M^{-1/2}a$, $v^\top u=1$. Its complement has norm $\|u\|\|v\|$. The complementary oblique projectors have equal norms in dimensions at least two \cite{szyld}. A segment crossing the boundary therefore gives the stated bound, and a maximizing displacement from a boundary truth can be signed to point outside. In dimension one $G=1$ is attained inside. Equality $G=1$ requires and suffices that $MH^{-1}a$ be parallel to $a$.
+
+Now let $H=I$ in three dimensions. Let $M$ have unit diagonal, $M_{23}=M_{32}=r\in(0,1)$ and all other off-diagonal entries zero. Write $D=1-r^2$. Impose two homogeneous inequalities with outward normals $s e_1$ and $a=e_1+\epsilon e_2$, with $\epsilon>0$ and $s\in\{+1,-1\}$. Call the feasible wedge $C_s$. The separate factors are $1$ and
+\[
+       g=\frac{1+\epsilon^2/D}{1+\epsilon^2}
+\]
+for either orientation. The edge is the $e_3$ axis. Projection onto this line has squared $M$-operator norm $1/D$, since its output is $z_3e_3$ and $\sup z_3^2/\|z\|_M^2=(M^{-1})_{33}$. For either wedge, the four affine pieces are the interior identity, the two facet projections and the edge projection. All four have regions with interior. The largest squared Jacobian norm is $1/D$, also a global squared Lipschitz bound by splitting any segment into its affine pieces.
+
+\textbf{Opposing normals.} For $s=-1$, take $x=(0,r,0)$ and $t=(0,0,1)$. The truth is feasible and $x$ is in the normal cone at the origin, being $(r/\epsilon)(-e_1+a)$. Hence $e=0$. The original squared error is $D$ and the restricted error is one. The global bound is attained, so $K(C_-)=1/D$. With $\epsilon=D$ and $r\uparrow1$, $g=(1+D)/(1+D^2)$ tends to one while $K(C_-)$ diverges. With $r$ fixed, letting $\epsilon$ tend to zero keeps $K(C_-)$ fixed above one.
+
+\newpage
+\textbf{Normals with the same orientation.} For $s=+1$, we claim $K(C_+)=g$. Any nonzero residual $n=x-e$ has $n=u e_1+v a$ with $u,v\ge0$, including zero coefficients when a facet is inactive. As $H=I$, $e$ is also the projection of $x$ onto the supporting halfspace $n^\top(z-e)\le0$, which contains the truth. Its factor bounds the observed ratio. Since $n=(n_1,n_2,0)$ with $0\le n_2/n_1\le\epsilon$,
+\[
+    G(n)=1+(D^{-1}-1)\frac{n_2^2}{n_1^2+n_2^2}\le g .
+\]
+For the lower bound take a relative-interior point of the second facet, for example $(-\epsilon,1,0)$. Translate a sharp halfspace pair to this point and shrink the displacements so the first inequality is slack. Translation along the facet and a common positive scaling preserve the projection and ratio. Thus the single-facet optimum is attained on the wedge.
+
+For $r=1/2$ and $\epsilon=1/4$, the exact factors are $52/51$ and $4/3$. Measuring the worst operator norm on each face overestimates the first wedge; measuring just the two individual restrictions underestimates the second. The companion code checks feasibility, optimality and risk ratios with rational arithmetic. These small-dimensional constructions isolate a mechanism. Whether a given institution faces such metrics or activating directions requires evidence on its design and target population. Simultaneously binding bounds on the ordinary fit require a comparison between two constrained projections.
+
+\section*{Model assessments and review context}
+OpenAI Codex assisted with the derivations, manuscript and checks in a shared authoring context. An assessment of this exact file is recorded separately; independent peer review has not been documented.
+
+\begin{thebibliography}{4}\setlength{\itemsep}{1pt}
+\bibitem{niu} Y. Niu, Y. Su and E. Yang. Structural Fine-Tuning under Economic Restrictions. \href{https://arxiv.org/abs/2611.25420v1}{arXiv:2611.25420v1}, 2026. Section 3.3.
+\bibitem{tag} Y. Traonmilin, J.-F. Aujol and A. Guennec. Towards optimal algorithms for the recovery of low-dimensional models with linear rates. \href{https://arxiv.org/abs/2410.06607}{arXiv:2410.06607}, 2024.
+\bibitem{bow} H. H. Bauschke, H. Ouyang and X. Wang. On angles between convex sets in Hilbert spaces. \href{https://arxiv.org/abs/2008.09313}{arXiv:2008.09313}, 2020.
+\bibitem{szyld} D. B. Szyld. The many proofs of an identity on the norm of oblique projections. \emph{Numerical Algorithms} 42 (2006), 309--323. \href{https://doi.org/10.1007/s11075-006-9046-2}{doi:10.1007/s11075-006-9046-2}.
+\end{thebibliography}
+\end{document}
