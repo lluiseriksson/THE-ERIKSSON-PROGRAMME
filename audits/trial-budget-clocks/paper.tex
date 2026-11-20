@@ -1,0 +1,50 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=0.88in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,url}
+\setlength{\parindent}{1em}
+\title{Pricing failed trials in comparisons of machine learning experiments}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+When an unsuccessful trial consumes budget but produces no valid score, experimental paths can be compared at equal numbers of attempts or equal numbers of scores. For finite logs we characterize exactly the failure prices at which one observed best-score path dominates another at every budget. We apply the certificate to archived memory-ablation trials. All 223 comparable integer prefixes from matched ResNet campaign pairs preserve their ranking under the two endpoint prices. In an unmatched synthetic logistic-regression pair, a first-hit certificate places the threshold for all-budget dominance at one quarter of a scored trial. These are properties of the recorded paths.
+\end{abstract}
+\section{A price interval for two experimental paths}
+Benchmarks compare optimizers by best score at a fixed budget or by time to a target [1,2]. A successful trial supplies a score and a failed trial may consume resources without supplying one [3]. Suppose a scored trial costs one unit and every unscored trial costs $p\in[0,1]$. This is a sensitivity parameter. Actual charges and wall times need not follow this accounting rule.
+
+Fix two finite ordered logs $A,B$, change the sign of losses so larger scores are better, and hold each log's final best after its end. Before the first score assign a common bottom value. Let $V_X(t,p)$ be the best score affordable in log $X$ at real budget $t\ge0$. For each strictly new record score $q$ of $B$, let $S_X(q),F_X(q)$ count scored and unscored attempts through $X$'s first score at least $q$.
+\paragraph{Certificate.} If $A$ misses any such $q$, no price yields all-budget dominance. Otherwise the set of $p$ for which $V_A(t,p)\ge V_B(t,p)$ at every budget is the closed interval (possibly empty) cut out of $[0,1]$ by
+\[
+ S_A(q)-S_B(q)+p\,[F_A(q)-F_B(q)]\le0
+ \quad\text{for every record }q\text{ of }B.
+\]
+For necessity, take $t=S_B(q)+pF_B(q)$ when $B$ first reaches $q$. For sufficiency, the best score of $B$ at any budget after the first scored trial is one of its record levels. The corresponding inequality makes that level affordable in $A$. With no score in $B$ the condition is vacuous. The argument also covers $p=0$. Each constraint is linear, giving the interval and a record-level explanation for each bound it imposes.
+
+\paragraph{Why both endpoints can mislead at a single budget.} Write $x$ for an unscored trial and take $A=(1,x,x,x,3,0)$ and $B=(0,x,x,2,0)$. At budget 3, $A$ leads at both $p=0$ and $p=1$. For $1/3<p\le1/2$, $B$ can afford its score 2, while $A$ has only reached 1. The global interval conclusion requires comparison at every budget.
+\newpage
+\section{An audit of archived memory ablations}
+From Wong's paper release [3] we selected the 38 primary ResNet L40S, synthetic logistic-regression and Linux language-model memory-ablation logs. We checked each file against its manifest digest. We required the campaign identity and consecutive one-based budget positions on every row. One Linux summary log (seed 2) begins with two records labelled trial 2 and was excluded. No row was relabelled. The other 37 logs yield 33 arm pairs within task and seed label. A score counts only on a valid, successful row with the specified metric; a valid discarded proposal still counts. Comparisons use AUC for ResNet, validation score for logistic regression, and negative bits per byte for Linux.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+& Pairs & Prefixes & Tie changes & Reversals\\
+\midrule
+ResNet, matched start & 15 & 223 & 0 & 0\\
+Logistic regression, unverified start & 15 & 131 & 10 & 0\\
+Linux, unverified start & 3 & 0 & --- & ---\\
+\bottomrule
+\end{tabular}
+\end{center}
+A comparable integer prefix $k$ requires that each log contain $k$ scores and have a defined best by attempt $k$. The comparison pairs best by attempt $k$ with best by scored trial $k$. The counts include repeated prefixes from the same paths. A matched start requires identical nonempty initial state hashes, matching recorded non-null training seeds and equal initial incumbents, including joint absence. All 15 ResNet pairs meet this rule. In five of the 30 ordered directions one arm weakly dominates throughout every budget at every price; the other 25 admit no price giving all-budget dominance. Neither observation implies that all arms attained equal scores.
+
+\paragraph{The record that determines the price.} In synthetic logistic regression, seed 2, the no-memory log attained a record of 0.922908. The summary-memory log first attained at least that target using one more scored trial and four fewer unscored trials. This single record sets the full condition $1-4p\le0$. The summary path dominates for all budgets exactly when $p\ge1/4$. The initial state hash and training seed were absent, so this comparison describes the two logs alone. In the three retained Linux pairs the no-memory arm supplied no valid score for a comparison on both clocks.
+
+\paragraph{Reproduction and scope.} Scripts, exact intervals, file digests and pairwise results are in the programme repository in PR 326 (\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/326}). A direct budget calculation checked the interval algorithm on all 729 ordered pairs of length-three logs over two scores and an unscored symbol, at nine prices. The target data are the archived validation scores. These results do not estimate future test performance or a causal effect of memory.
+\paragraph{Model assessments and review context.} Codex contributed to the analysis and writing. Any assessment of the frozen PDF is recorded separately with the model identity, involvement and artifact hash.
+\small
+\noindent [1] J. Dodge et al., \emph{Show Your Work: Improved Reporting of Experimental Results}, EMNLP-IJCNLP (2019), doi:10.18653/v1/D19-1224.\par\noindent [2] N. Hansen et al., \emph{Anytime Performance Assessment in Blackbox Optimization Benchmarking}, IEEE Trans.\ Evol.\ Comput., doi:10.1109/TEVC.2022.3210897.\par\noindent [3] D. Wong, \emph{Evaluating Governed LLM-Driven ML Experimentation}, arXiv:2611.23678v1 (2026). Paper release: doi:10.5281/zenodo.24174991.
+\end{document}
