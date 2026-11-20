@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,microtype}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{Can the published ReViCo image scores come from one pooled test set?}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+ReViCo evaluates whether a model can find and fully repair text errors in images. Its counting rules imply that two image-level $F_1$ scores determine the fraction of detected erroneous images completely repaired. We use this identity and integer feasibility to audit the published aggregates. At the 642 erroneous and 587 clean images shown in the benchmark figure, 25 of 40 displayed image recalls pass a necessary rounding test. Only three of twenty direct-prompt vision-model rows admit joint integer counts in our conservative relaxation. Even allowing any positive error count in a dataset of at most 1,229 images, no common pooled population explains all twenty rows. Averaging within-language $F_1$ scores admits nineteen rows. Computing $F_1$ after averaging precision and recall admits all twenty. Under the latter convention, 149 of 190 pairwise conditional repair-rate comparisons have a fixed order, while 41 can reverse. Two additional counts resolve the ambiguity. We identify discrepancies between two tables and show why a change in correction $F_1$ need not have the same sign as a change in conditional repair. The tables do not identify the actual aggregation used.
+\end{abstract}
+\section{What do two published scores identify?}
+Zhang et al.\ [1] distinguish flagging an erroneous image from predicting its entire gold set of error--correction pairs. Let $n$ be the number of erroneous images, $t$ the number flagged, $c$ the number fully repaired, and $f$ the number of clean images flagged. Appendix E counts an incomplete repair on an erroneous image as a false negative for image correction. Thus detection and correction have the same false-positive count, $f$, and $0\le c\le t\le n$. For the published micro-$F_1$ formula with a common stabilizer $\epsilon$, the two scores on a unit scale are
+\[
+ d=\frac{2t}{n+t+f+\epsilon},\qquad
+ h=\frac{2c}{n+c+f+\epsilon}.
+\]
+Solving both for the ratio to $n+f+\epsilon$ yields, when $d>0$,
+\[
+ \frac ct=\frac{h(2-d)}{d(2-h)} .
+\]
+The right side increases in $h$ and decreases in $d$. Endpoints of rounding bins therefore bound this conditional rate without access to individual predictions. The identity requires a common pooled population and the stated scoring rules. With averaged group scores, the result of this transformation need not equal a pooled conditional rate.
+
+\section{Can all twenty rows share a pooled population?}
+In the proceedings PDF, Figure 3 gives 376 erroneous and 354 clean Chinese images, and 266 erroneous and 233 clean English images. Table 1 gives the image-level precision, recall and $F_1$ for detection and correction. We use all twenty vision-model rows in its image-input group, keeping the six oracle-OCR rows separate. For a percentage $r$ printed to one decimal, use the closed interval $[r-0.05,r+0.05]$. We allow any stabilizer between zero and $10^{-3}$ counts, independently for each cell. This relaxation includes the unstabilized rule and common stabilizers in this range.
+
+For image recall a necessary condition on the integer numerator $k$ is
+\[
+ \left\lceil (r-0.05)n/100\right\rceil \le k\le
+ \left\lfloor (r+0.05)(n+10^{-3})/100\right\rfloor .
+\]
+For example, with $n=642$ the 73.3 detection recall of Qwen2.5-VL-3B requires at least 471 and at most 470 detections. Across the twenty models only 25 of 40 recalls have a candidate numerator. For each feasible pair $(t,c)$ we intersect the integer bounds on $f$ from the two precisions and check both $F_1$ bins. The only rows surviving all six cells at the figure's population are as follows.
+\begin{center}\begin{tabular}{lrrr}\toprule Model & Flagged erroneous & Fully repaired & Flagged clean\\\midrule
+Qwen2.5-VL-72B &317&153&21\\
+Qwen3-VL-8B &388&71&286\\
+Gemini3.1-Pro &625&462&159\\\bottomrule\end{tabular}\end{center}
+These are compatible counts in the relaxation, not recovered prediction logs. We also enumerate $n=1,\ldots,1229$, allowing up to $1229-n$ clean images. Of these denominators 253 survive the 40 recall filters, with the smallest equal to 800. None admits all twenty six-cell rows. This rules out explaining the table solely by substituting another common subset of the stated sample. Per-model exclusions, group aggregation or reporting differences require additional evidence.
+
+
+\section{Testing equal weight for the two languages}
+An alternative reports the arithmetic mean of the two within-language precisions, recalls and $F_1$ scores, each computed before averaging. Keep the observed split of 376/354 erroneous/clean Chinese images and 266/233 English images. For each of the two tasks, first retain integer true-positive pairs consistent with the averaged recall. For each possible pair of clean-image false-positive counts, retain the true-positive pairs also satisfying averaged precision and $F_1$. Join the two task lists on their shared false-positive pair, requiring fully repaired counts no larger than detected counts in either language.
+
+For exclusion, each lower rounding endpoint is compared with the largest possible score and each upper endpoint with the smallest, allowing stabilizers to vary independently between zero and $10^{-3}$. For inclusion, each printed witness is replayed with a single stabilizer of $10^{-8}$ in all six metrics. Nineteen rows have explicit witnesses. Qwen3-VL-2B has none even in the relaxation. Thus averaging by language explains the numerical feasibility of many more rows than pooling does, but cannot by itself reproduce the whole table under these assumptions. Feasible counts are not evidence that a particular evaluator used them.
+
+\section{Which repair-rate comparisons survive rounding?}
+The order of averaging matters. For each task we now average precision and recall over the two languages first and then set $F_1=2PR/(P+R)$. With the same denominators, shared clean-image false positives, and $\epsilon=10^{-8}$ inside each within-language precision and recall, all twenty rows admit counts. For Qwen3-VL-2B, Chinese/English detections $(62,17)$, repairs $(9,15)$ and clean false positives $(35,1)$ reproduce all six cells.
+
+For each model we enumerate the integer summaries compatible with this convention and compute the smallest and largest pooled fraction of detected erroneous images fully repaired. We compare precision, recall and the harmonic mean with closed rounding bins by integer cross multiplication. Both optimizing summaries for each model pass a further rational check strictly inside all six bins. Across the twenty rows there are 114,754 feasible summaries. Endpoints can be combined across models because the printed rows impose no restrictions on the overlap of individual models' detections. This is an identification region for the finite test set. It quantifies ambiguity due to aggregation and rounding, without modelling sampling uncertainty.
+
+Of 190 model pairs, 149 have a strict repair-rate order for every compatible assignment, and 41 admit both strict orders. Seed-2.0, Gemini2.5-Pro and Gemini3.1-Pro are each ahead of the other seventeen models for this outcome. Each of the three can rank first. Their attainable extremes are respectively $426/607$ to $487/615$, $373/557$ to $449/579$, and $432/623$ to $493/628$. These comparisons concern the fraction repaired \emph{among errors detected}. A model detecting relatively few, easy errors could perform well on that measure. The supplement lists the other seventeen ranges and exact witnesses.
+
+\paragraph{A sufficient disclosure.} Consider publishing one detection count and one correction count. Independently for each, choose the Chinese, English or pooled count. All nine choices determine the pooled repair fraction. For one task the averaged recall in percent is
+\[
+ 50\left(\frac{a}{376+\epsilon}+\frac{b}{266+\epsilon}\right).
+\]
+If either numerator is disclosed, successive candidates for the other shift the recall by at least $50/(376+\epsilon)>0.1$ percentage points. Only one fits the printed bin. A pooled count supplies the total directly. Applying this argument to both tasks recovers numerator and denominator. This proof requires the stipulated averaging and stabilizer. In the actual rows, among the nine individual Chinese, English or pooled counts of detections, repairs and clean false positives, no single field guarantees identification for the other nineteen models; Qwen3-VL-2B was already identified at $24/79$. The replay tests all 36 pairs of fields and gives counterexamples for each of the 27 remaining choices.
+
+\section{Comparing prompts when baselines differ}
+Table 2 compares direct and background-enhanced prompts. Among the twenty base models its direct scores differ from Table 1 for four model rows. The image-correction baseline for InternVL-4B, 8B and 14B changes from 6.5, 6.3 and 15.4 to 5.0, 10.5 and 16.3, respectively. For GPT-4o, the token-detection and image-correction entries 44.0 and 41.6 appear in reversed order. The tables establish these discrepancies; they do not identify which entry should be replaced.
+
+Applied strictly as a transformation of Table 2, the conditional-rate formula gives 15 increases, seven decreases and two unresolved directions under rounding across its 24 rows (including four trained variants). For Qwen2.5-VL-7B the displayed correction $F_1$ rises from 14.2 to 20.4 while the transformed interval falls from $[33.37,33.75]\%$ to $[25.18,25.39]\%$ (rounded outward). This illustrates how broadening detection can coexist with poorer repair among flagged erroneous images. The integer audit prevents a blanket interpretation of such transformations as observed pooled rates. Nor do these aggregates reveal whether a given image improved. Publishing the joint counts by model, prompt and language, together with exclusions and the order of averaging, would make the interpretation testable.
+
+\paragraph{Model assessments and review context.}
+Codex contributed to the derivation, data extraction and manuscript in a shared context. The report for the exact PDF is recorded separately with its digest and evaluator identity. Independent peer review has not been documented.
+\paragraph{Primary source.}
+[1] B. Zhang, J. Liang, F. Zhai, F. Ji and Y. Zhou. \emph{ReViCo: Unveiling the Limitations of VLMs in Visual Text Understanding via Error Correction}. EMNLP 2026, pp.\ 19606--19622. \href{https://aclanthology.org/2026.emnlp-main.845/}{Proceedings record}, Fig.\ 3, Tables 1--2 and Appendix E. The \href{https://arxiv.org/html/2608.27154v1}{preprint HTML} supplies machine-readable table cells.
+\end{document}
