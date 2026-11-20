@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-32MS6ASX2E88YARM",
+  "version": "v1",
+  "version_id": "arr:version:70f79fb4-59b9-49df-a363-1ae56df5a530",
+  "canonical_sha256": "bc333b592ac3b0d112c2c8793c18eb6f4b0700ba2a153eda16a8de3b187ed7d5",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T21:27:14.824059+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 3.6,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "All 36 published comparisons reduce to the claimed 24 profiles, all seven primal and dual objectives agree exactly, and the two quoted external-charge intervals are disjoint."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The dual lower-bound argument is explicit. The 15-row accounting endpoint is disclosed; independent route geometry and a proof of uniqueness among routes are absent."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The accounting rule is already public and minimax linear fitting is classical. The matched class table, numerical exclusion bounds and two-charge diagnostic add corridor-specific evidence."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "For software quoting an exact corridor charge, the data distinguish two implementations. The maximum absolute discrepancies are small and consequences for actual invoices or route choices have not been measured."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Two byte-identical PDF builds and the rational checker support replication. Reading the raw tariff annexes requires a separate extraction step; the short verifier works from transcribed data."
+    }
+  },
+  "summary": "The three-page PDF compares like-for-like truck classes across two published tariff tables. Fifteen section amounts recover each corridor total and exact signed-weight witnesses exclude seven aggregate fits at half-cent tolerance. The two-charge example isolates a stricter limit for displayed external-cost rates. This is a useful pricing-data validation for one Austrian corridor. I participated in the analysis and drafting and inspected all three rendered pages in shared context.",
+  "strengths": [
+    "Complete coverage of the listed profiles and separate checking of duplicate Euro bands.",
+    "Exhibits attainable fits and lower witnesses rather than relying on optimizer output.",
+    "States prices excluding VAT and the different endpoint labels in the two documents."
+  ],
+  "weaknesses": [
+    "One corridor and one tariff edition provide no out-of-area test.",
+    "The discussion would benefit from the official section identifiers or map that relates the named junction to the accounting endpoint.",
+    "The numerical effect on any real trip-selection decision remains unmeasured."
+  ],
+  "potential_errors": [
+    "Counting all 36 comparisons as independent profiles exaggerates coverage.",
+    "The discrepancy for printed component rates does not determine the internal tariff calculation.",
+    "The 1.22 hypothetical detour does not identify a physically available alternative."
+  ],
+  "strong_novelty_candidates": [
+    "Exact corridor-specific uniform error floors for nested aggregate tariff models checked against the official section ledger."
+  ],
+  "unresolved_material_objections": []
+}

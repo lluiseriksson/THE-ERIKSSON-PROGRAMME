@@ -1,0 +1,59 @@
+{
+  "source": "https://www.go-maut.at/media/zglel2dk/go-maut-tarife-2026_streckenmaut_en.pdf",
+  "eur_ex_vat": [
+    "547/100",
+    "753/100",
+    "278/25",
+    "1141/50",
+    "3163/100",
+    "2349/50",
+    "1231/50",
+    "3427/100",
+    "5099/100",
+    "619/25",
+    "689/20",
+    "5123/100",
+    "25",
+    "1739/50",
+    "5171/100",
+    "1307/50",
+    "3653/100",
+    "5399/100",
+    "1379/50",
+    "3809/100",
+    "5623/100",
+    "1439/50",
+    "3991/100",
+    "2937/50"
+  ],
+  "rows": 24,
+  "minimax_eur": "38457/1573100",
+  "best_km": "1184200/15731",
+  "incompatible_at_cent_rounding": true,
+  "witnesses": [
+    {
+      "co2": 1,
+      "euro": "EURO IV",
+      "axles": 2,
+      "base": "1557/5000",
+      "infrastructure": "1093/5000",
+      "surcharge": "1093/20000",
+      "ratio": "7321/6228",
+      "published": "1379/50",
+      "rate": "7321/20000"
+    },
+    {
+      "co2": 4,
+      "euro": "EURO VI",
+      "axles": 3,
+      "base": "43/125",
+      "infrastructure": "153/500",
+      "surcharge": "153/2000",
+      "ratio": "841/688",
+      "published": "3163/100",
+      "rate": "841/2000"
+    }
+  ],
+  "max_abs_at_75": "363/1600",
+  "within_half_cent_at_75": 0
+}

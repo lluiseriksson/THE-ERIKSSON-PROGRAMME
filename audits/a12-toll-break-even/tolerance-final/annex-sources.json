@@ -1,0 +1,65 @@
+{
+  "index": "https://www.asfinag.at/maut-vignette/mautordnung/",
+  "files": {
+    "a": {
+      "url": "https://media.asfinag.at/media/axyk30eb/09_mo_v88_anhang-4a_mauttarife_co2-emissionsklasse-1_euro-0.pdf",
+      "sha256": "05bc2ee1e52421f49b8d822a2d0591c40e8b6c64cfd712e58089713ac4128308",
+      "bytes": 482808
+    },
+    "b": {
+      "url": "https://media.asfinag.at/media/vqmjhpxu/09_mo_v88_anhang-4b_mauttarife_co2-emissionsklasse-1_euro-i.pdf",
+      "sha256": "68499c7d1f9c24ae031588c55e052bdcce6a0231adbeb5a2573ed32cefef1a69",
+      "bytes": 482699
+    },
+    "c": {
+      "url": "https://media.asfinag.at/media/1ycc4xc3/09_mo_v88_anhang-4c_mauttarife_co2-emissionsklasse-1_euro-ii.pdf",
+      "sha256": "c5fd041e2f85250b1800fa71e982c35b5d1532ad2b1ed492f694f0a79faf25e3",
+      "bytes": 482749
+    },
+    "d": {
+      "url": "https://media.asfinag.at/media/gzgnklwc/09_mo_v88_anhang-4d_mauttarife_co2-emissionsklasse-1_euro-iii.pdf",
+      "sha256": "5202db5656fee9d571d121c6b2214d22a482b1bfe92a45a9c8c8d23733131a9b",
+      "bytes": 482721
+    },
+    "e": {
+      "url": "https://media.asfinag.at/media/xblltlcd/09_mo_v88_anhang-4e_mauttarife_co2-emissionsklasse-1_euro-iv.pdf",
+      "sha256": "e684440bb549b555a2d0434e01cc419e8f05baceee86912aa40cd6e2833a4219",
+      "bytes": 481461
+    },
+    "f": {
+      "url": "https://media.asfinag.at/media/bo4bqu2v/09_mo_v88_anhang-4f_mauttarife_co2-emissionsklasse-1_euro-v.pdf",
+      "sha256": "487cdbf79c46a9de95d5ddacd7c119d495f7308ddc762a96c2ce4a0f0cae28c6",
+      "bytes": 484932
+    },
+    "g": {
+      "url": "https://media.asfinag.at/media/sjja4jax/09_mo_v88_anhang-4g_mauttarife_co2-emissionsklasse-1_euro-eev.pdf",
+      "sha256": "59fbcc342b347a838a5cb49a60bf1a50a85f46d6f8a369760e42de45c8031895",
+      "bytes": 484997
+    },
+    "h": {
+      "url": "https://media.asfinag.at/media/um3iq5rt/09_mo_v88_anhang-4h_mauttarife_co2-emissionsklasse-1_euro-vi.pdf",
+      "sha256": "508ced51eee2675764aa759aef08f48dc7ccc6235eb4dc7c8a837f902bd44ba6",
+      "bytes": 482915
+    },
+    "i": {
+      "url": "https://media.asfinag.at/media/4tnodxam/09_mo_v88_anhang-4i_mauttarife_co2-emissionsklasse-2_euro-vi.pdf",
+      "sha256": "40259db611fefdf01af29f5acd2ef230ebe665644d4f8c1252de2fb396d3894a",
+      "bytes": 482738
+    },
+    "j": {
+      "url": "https://media.asfinag.at/media/4xcoexxf/09_mo_v88_anhang-4j_mauttarife_co2-emissionsklasse-3_euro-vi.pdf",
+      "sha256": "05ca0032322cdc7896f0f69e255e173c1f9a9f64f1f8378d2febbfbe9675279b",
+      "bytes": 482600
+    },
+    "k": {
+      "url": "https://media.asfinag.at/media/z10pckcj/09_mo_v88_anhang-4k_mauttarife_co2-emissionsklasse-4_euro-vi.pdf",
+      "sha256": "ae6cfda8bad807b830421d38eef602e9d391ffbcacc7bcc929dae594c4d22ed3",
+      "bytes": 480543
+    },
+    "l": {
+      "url": "https://media.asfinag.at/media/f4le1awo/09_mo_v88_anhang-4l_mauttarife_co2-emissionsklasse-5_emissionsfrei.pdf",
+      "sha256": "698da7fff9e24772a0476428c7e6b2011d2c295d8bf02ec6d72010c1dfbf337e",
+      "bytes": 457539
+    }
+  }
+}

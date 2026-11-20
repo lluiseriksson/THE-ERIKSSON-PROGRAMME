@@ -1,0 +1,370 @@
+{
+  "rows": [
+    {
+      "co2": 5,
+      "euro": "emissionsfrei",
+      "axles": 2,
+      "base": "587/10000",
+      "infrastructure": "547/10000",
+      "surcharge": "547/40000",
+      "ratio": "2895/2348"
+    },
+    {
+      "co2": 5,
+      "euro": "emissionsfrei",
+      "axles": 3,
+      "base": "403/5000",
+      "infrastructure": "383/5000",
+      "surcharge": "383/20000",
+      "ratio": "1995/1612"
+    },
+    {
+      "co2": 5,
+      "euro": "emissionsfrei",
+      "axles": 4,
+      "base": "1189/10000",
+      "infrastructure": "1149/10000",
+      "surcharge": "1149/40000",
+      "ratio": "5905/4756"
+    },
+    {
+      "co2": 4,
+      "euro": "EURO VI",
+      "axles": 2,
+      "base": "1243/5000",
+      "infrastructure": "1093/5000",
+      "surcharge": "1093/20000",
+      "ratio": "6065/4972"
+    },
+    {
+      "co2": 4,
+      "euro": "EURO VI",
+      "axles": 3,
+      "base": "43/125",
+      "infrastructure": "153/500",
+      "surcharge": "153/2000",
+      "ratio": "841/688"
+    },
+    {
+      "co2": 4,
+      "euro": "EURO VI",
+      "axles": 4,
+      "base": "5091/10000",
+      "infrastructure": "4591/10000",
+      "surcharge": "4591/40000",
+      "ratio": "24955/20364"
+    },
+    {
+      "co2": 3,
+      "euro": "EURO VI",
+      "axles": 2,
+      "base": "681/2500",
+      "infrastructure": "1093/5000",
+      "surcharge": "1093/20000",
+      "ratio": "6541/5448"
+    },
+    {
+      "co2": 3,
+      "euro": "EURO VI",
+      "axles": 3,
+      "base": "947/2500",
+      "infrastructure": "153/500",
+      "surcharge": "153/2000",
+      "ratio": "4553/3788"
+    },
+    {
+      "co2": 3,
+      "euro": "EURO VI",
+      "axles": 4,
+      "base": "9/16",
+      "infrastructure": "4591/10000",
+      "surcharge": "4591/40000",
+      "ratio": "27091/22500"
+    },
+    {
+      "co2": 2,
+      "euro": "EURO VI",
+      "axles": 2,
+      "base": "137/500",
+      "infrastructure": "1093/5000",
+      "surcharge": "1093/20000",
+      "ratio": "6573/5480"
+    },
+    {
+      "co2": 2,
+      "euro": "EURO VI",
+      "axles": 3,
+      "base": "381/1000",
+      "infrastructure": "153/500",
+      "surcharge": "153/2000",
+      "ratio": "305/254"
+    },
+    {
+      "co2": 2,
+      "euro": "EURO VI",
+      "axles": 4,
+      "base": "5657/10000",
+      "infrastructure": "4591/10000",
+      "surcharge": "4591/40000",
+      "ratio": "27219/22628"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO VI",
+      "axles": 2,
+      "base": "1387/5000",
+      "infrastructure": "1093/5000",
+      "surcharge": "1093/20000",
+      "ratio": "6641/5548"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO VI",
+      "axles": 3,
+      "base": "241/625",
+      "infrastructure": "153/500",
+      "surcharge": "153/2000",
+      "ratio": "4621/3856"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO VI",
+      "axles": 4,
+      "base": "1431/2500",
+      "infrastructure": "4591/10000",
+      "surcharge": "4591/40000",
+      "ratio": "27487/22896"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO V / EEV",
+      "axles": 2,
+      "base": "731/2500",
+      "infrastructure": "1093/5000",
+      "surcharge": "1093/20000",
+      "ratio": "6941/5848"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO V / EEV",
+      "axles": 3,
+      "base": "2043/5000",
+      "infrastructure": "153/500",
+      "surcharge": "153/2000",
+      "ratio": "539/454"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO V / EEV",
+      "axles": 4,
+      "base": "753/1250",
+      "infrastructure": "4591/10000",
+      "surcharge": "4591/40000",
+      "ratio": "28687/24096"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO IV",
+      "axles": 2,
+      "base": "1557/5000",
+      "infrastructure": "1093/5000",
+      "surcharge": "1093/20000",
+      "ratio": "7321/6228"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO IV",
+      "axles": 3,
+      "base": "537/1250",
+      "infrastructure": "153/500",
+      "surcharge": "153/2000",
+      "ratio": "1687/1432"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO IV",
+      "axles": 4,
+      "base": "1581/2500",
+      "infrastructure": "4591/10000",
+      "surcharge": "4591/40000",
+      "ratio": "29887/25296"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO 0 - III",
+      "axles": 2,
+      "base": "1637/5000",
+      "infrastructure": "1093/5000",
+      "surcharge": "1093/20000",
+      "ratio": "7641/6548"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO 0 - III",
+      "axles": 3,
+      "base": "567/1250",
+      "infrastructure": "153/500",
+      "surcharge": "153/2000",
+      "ratio": "589/504"
+    },
+    {
+      "co2": 1,
+      "euro": "EURO 0 - III",
+      "axles": 4,
+      "base": "3327/5000",
+      "infrastructure": "4591/10000",
+      "surcharge": "4591/40000",
+      "ratio": "31207/26616"
+    }
+  ],
+  "minimum": "7641/6548",
+  "maximum": "5905/4756",
+  "minimax": "45120105/37503268",
+  "max_relative_error": "290668/9375817",
+  "at_1_22": [
+    {
+      "co2": 5,
+      "euro": "emissionsfrei",
+      "axles": 2,
+      "ordinary_cheaper": true
+    },
+    {
+      "co2": 5,
+      "euro": "emissionsfrei",
+      "axles": 3,
+      "ordinary_cheaper": true
+    },
+    {
+      "co2": 5,
+      "euro": "emissionsfrei",
+      "axles": 4,
+      "ordinary_cheaper": true
+    },
+    {
+      "co2": 4,
+      "euro": "EURO VI",
+      "axles": 2,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 4,
+      "euro": "EURO VI",
+      "axles": 3,
+      "ordinary_cheaper": true
+    },
+    {
+      "co2": 4,
+      "euro": "EURO VI",
+      "axles": 4,
+      "ordinary_cheaper": true
+    },
+    {
+      "co2": 3,
+      "euro": "EURO VI",
+      "axles": 2,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 3,
+      "euro": "EURO VI",
+      "axles": 3,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 3,
+      "euro": "EURO VI",
+      "axles": 4,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 2,
+      "euro": "EURO VI",
+      "axles": 2,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 2,
+      "euro": "EURO VI",
+      "axles": 3,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 2,
+      "euro": "EURO VI",
+      "axles": 4,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO VI",
+      "axles": 2,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO VI",
+      "axles": 3,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO VI",
+      "axles": 4,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO V / EEV",
+      "axles": 2,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO V / EEV",
+      "axles": 3,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO V / EEV",
+      "axles": 4,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO IV",
+      "axles": 2,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO IV",
+      "axles": 3,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO IV",
+      "axles": 4,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO 0 - III",
+      "axles": 2,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO 0 - III",
+      "axles": 3,
+      "ordinary_cheaper": false
+    },
+    {
+      "co2": 1,
+      "euro": "EURO 0 - III",
+      "axles": 4,
+      "ordinary_cheaper": false
+    }
+  ]
+}
