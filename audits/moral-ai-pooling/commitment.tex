@@ -10,7 +10,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-In a one-shot game, people can delegate to an AI that sometimes binds them to cooperate. Others see the choice with a known probability. We characterize when both universal adoption and zero adoption can be supported as perfect Bayesian equilibria at the same population composition. In a region where conditional cooperators are too scarce to sustain voluntary cooperation on their own, the two equilibrium tests impose opposite bounds on visibility. An open set satisfies both strictly. At the same parameters the two outcomes give, respectively, a strict material advantage to selfish preferences and equal material payoffs. A sufficiently small probability of bypass excludes universal adoption regardless of visibility. This extends a model of Ao and Wu, who study the two frictions separately.
+In a one-shot game, people can delegate to an AI that sometimes binds them to cooperate. Others see the choice with a known probability. We characterize when both universal adoption and zero adoption can be supported as perfect Bayesian equilibria at the same population composition. In a region where conditional cooperators are too scarce to sustain voluntary cooperation on their own, the two equilibrium tests impose opposite bounds on visibility. An open set satisfies both strictly. At the same parameters the two outcomes give, respectively, a strict material advantage to selfish preferences and equal material payoffs. For general finite signals, only reports impossible under the incumbent label deter or reward a switch. Arbitrarily rare two-sided label errors eliminate exact universal adoption. This extends a model of Ao and Wu, who study the two frictions separately.
 \end{abstract}
 
 \section{A choice between two institutions}
@@ -98,6 +98,24 @@ This theorem characterizes support for the two pooling outcomes. Equilibria with
 
 \paragraph{Model assessments and review context.}
 OpenAI Codex contributed to the derivation, writing and computational checks. The author administers AIRR. Assessment reports are associated with the exact PDF version they evaluate.
+
+\newpage
+\section{What if a label can be misreported?}
+The observation mechanism above sometimes erases a true label but never reports the wrong one. To distinguish these errors, replace it by any finite signal with conditional laws $p_A$ and $p_M$. Each partner receives a draw about the other's label, independently conditional on the choices. The signal depends only on the label, including when the user is bypassed. Write
+\[
+  d_M=\sum_{s:p_A(s)=0}p_M(s),\qquad
+  d_A=\sum_{s:p_M(s)=0}p_A(s).
+\]
+These are the respective probabilities that a switch to $M$ or $A$ generates a signal impossible under the incumbent label.
+
+\textbf{Signal criterion.} In the same parameter region, zero adoption is supportable exactly when $d_M\le U$ and universal adoption exactly when $d_A\ge L$. Thus signals supporting both extremes need not identify the two labels equally often.
+
+\emph{Proof.} Under zero adoption every signal with $p_A(s)>0$ leaves the receiver certain of an $A$ partner. It gives no type information. Defection is optimal for both types as in Section 2. Only signals exclusive to $M$ induce a conditional response to a switch; they occur with probability $d_M$ and identify a partner bound to cooperate with probability at least $h$. The switch elicits cooperation with probability $xd_M<\kappa$, regardless of the signal the switcher receives. The calculation of the first margin therefore uses $d_M$ in place of $\rho$.
+
+Under universal adoption every signal with $p_M(s)>0$ leaves the receiver certain of an $M$ partner. Free conditional users cooperate at all such signals, even when the realized signal is much more likely under $A$. After a switch to $A$ the least attainable probability of facing cooperation is $q-\varepsilon x d_A$. The posterior assigning an unexpected $A$ to the selfish type attains this bound at all signals exclusive to $A$ simultaneously. Other signals keep their on-path posteriors; the same type-dependent trembles as above yield these limits. The switched agent's own signal is independent of that response. Substitution of $d_A$ into the universal-adoption margin proves the criterion. Signals impossible under both labels can be discarded. \hfill$\square$
+
+For the erasure channel, $d_A=d_M=\rho$. Now suppose each reported label is independently flipped with probability $0<\eta<1$, while the erasure probability stays fixed. Both labels then have the same signal support and $d_A=d_M=0$. Even arbitrarily rare false reports eliminate exact universal pooling: a selfish switcher regains discretion while eliciting the same response. Zero adoption remains supportable. This statement concerns exact pooling. Interior equilibria may still approach full adoption as $\eta$ tends to zero. The code separately enumerates payoffs for erasures, two-sided flips, one-sided flips and asymmetric exclusive signals.
+
 
 \small
 \begin{thebibliography}{9}
