@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,microtype}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{A quantitative stability bound for diagonal balancing of a 48-product matrix multiplication scheme}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For the fixed $h=27/8$ decomposition in Chen's archive for $4\times4$ multiplication, the optimal maximum-entry growth factor under positive diagonal changes of basis is known. We bound the cost of moving away from its balanced representative. Relative to the fourth log scale in each of the three bases, the growth excess is at least $53/32$ times the squared Euclidean displacement, globally. Thus every scaling attaining the growth of the deposited rational approximation or better lies within $7.5\times10^{-6}$ of the optimum in these nine coordinates. A certificate over a quadratic number field and 225 pairs of opposite exponents makes the constant reproducible.
+\end{abstract}
+
+\section{Which stability question?}
+A bilinear scheme with factors $U_s,V_s,W_s$ forms 48 products of linear measurements of two input matrices, then combines them to obtain the output. Following the maximum-entry input metric of Dumas, Pernet and Sedoglavic [1], define the worst output growth as
+\[
+ \Gamma=\max_{i,k}\sum_s |W_s(i,k)|\,\|U_s\|_1\,\|V_s\|_1 ,
+ \qquad \|U\|_1=\sum_{a,b}|U(a,b)|.
+\]
+This is a theoretical coefficient bound. Chen [2] identifies the balanced value for a specific decomposition at $h=27/8$. The diagonal part of the proof in \emph{ORBIT\_CERTIFICATE.md} establishes its global lower bound on this diagonal orbit by convexity, as part of a local result for general real basis changes. The same archive gives a better rational scheme at a different parameter. Our question concerns the distance to the balanced point of the fixed decomposition when a given growth budget is allowed.
+
+Let $\lambda=(2164+2\sqrt{955614})/35$. Use the balanced center of [2], where the 16 output sums equal $\lambda$. Independently multiply the diagonals of the three bases at that center by $\exp x,\exp y,\exp z$, entrywise. For each block of four subtract its fourth coordinate and drop the resulting zero. Let $u\in\mathbb R^9$ consist of the three resulting triples.
+\[
+ \boxed{\quad \Gamma(u)-\lambda\ \geq\ \tfrac{53}{32}\|u\|_2^2
+                 \quad (u\in\mathbb R^9).\quad} 
+\]
+The fourth-coordinate normalization matters for the numerical constant. Multiplying all four scales of a block by a common positive scalar leaves every output sum unchanged.
+
+\section{Pairing exponent directions}
+Write $F_{ik}(u)$ for one output sum. An absolute product with indices $(a,b),(f,h),(i,k)$ contributes its balanced coefficient times
+$\exp(x_a-y_b+y_f-z_h-x_i+z_k)$. Thus $F_{ik}$ is a sum of exponentials with nonnegative coefficients. Choose nonnegative weights $p_{ik}$ summing to one such that $G=\sum p_{ik}F_{ik}$ has zero gradient at the center. The supplied certificate gives strictly positive weights on nine row-major output indices (counted from zero)
+\[
+  1,\ 2,\ 4,\ 8,\ 9,\ 10,\ 11,\ 14,\ 15 .
+\]
+All output values coincide at zero, so $G(0)=\lambda$. Denote by $a_v$ the total coefficient of $\exp(v^\top u)$ in $G$. Because $\sum a_v v=0$,
+\[
+ G(u)-G(0)=\sum_v a_v\{\exp(v^\top u)-1-v^\top u\}.
+\]
+Every summand is nonnegative. For an unordered pair of opposite exponents choose a rational $b_v\leq\min(a_v,a_{-v})$, $b_v>0$. The two terms jointly dominate $2b_v(\cosh(v^\top u)-1)\ge b_v(v^\top u)^2$. Hence $\Gamma(u)-\lambda\ge u^\top H u$, where $H=\sum b_v vv^\top$ counts each pair once.
+
+\section{Exact checks and consequences}
+The replay starts from the public rational coefficient file, identified by its checksum. The three basis changes act on the inputs as $D_x A D_y^{-1},D_y B D_z^{-1}$ and undo the two outer changes on the output. To recover the balanced center, put
+\[
+ a=\frac{7595\lambda-4968}{2508\lambda-25320},\qquad
+ b=\frac{1096\lambda+1472}{2508\lambda-25320}.
+\]
+Relative to the deposited scheme the required outer row scales are $(1,a,1,b)$ divided componentwise by $(1,1406919/427109,1,204129/422224)$. The middle and right bases stay fixed at this step. The verifier checks equality of all outputs at the center and exact positivity, unit sum and zero gradient for the weights in $\mathbb Q(\sqrt{955614})$. It then verifies the coefficient lower bounds for 225 distinct exponent pairs in that same field. All nine leading principal minors of $H-(53/32)I$ are positive by rational arithmetic. Sylvester's criterion proves the displayed bound. Decimal arithmetic only proposes rational lower coefficients; exact comparisons validate each one.
+
+For an allowed excess $\epsilon$ this implies $\|u\|_2\leq\sqrt{32\epsilon/53}$. In particular the optimal diagonal scaling is unique modulo the three common scalars. The deposited scheme has $\Gamma=1485645008633889/12623496929120$ [2], with excess less than $9.25\times10^{-11}$. This gives the stated radius for any competing scaling of that same scheme. It gives neither a measured roundoff error nor an exclusion for nondiagonal bases. The constant is a certified lower bound; sharpness is open.
+
+\paragraph{Model assessments and review context.}
+Codex assisted with the derivation, implementation and manuscript in a shared research context. The exact-version assessment is recorded separately with the PDF digest and the assessor's role. No independent peer review is claimed.
+
+\paragraph{Primary sources.}
+[1] J.-G. Dumas, C. Pernet and A. Sedoglavic, \href{https://arxiv.org/html/2603.18699v3\#S2.E4}{arXiv:2603.18699v3, Eq.\ 4}.
+[2] J. Chen, \href{https://doi.org/10.5281/zenodo.24404331}{archived rank-48 schemes}, 2026. See the \href{https://github.com/jeffchen006/tensor-rank-4x4/blob/822b2281116ae29b0ca3b947dfa4544b69258c0e/agents/hmz20-B2/ORBIT_CERTIFICATE.md}{orbit certificate}, \emph{balance173.py} and \emph{RECORD\_CLAIM.md} at the same revision.
+\end{document}
