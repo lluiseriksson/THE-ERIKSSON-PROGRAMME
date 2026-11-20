@@ -1,0 +1,193 @@
+{
+  "paper": "https://aclanthology.org/2026.emnlp-main.972.pdf",
+  "table": 1,
+  "code": "https://github.com/submissionemnlp26-beep/structpiece-code",
+  "commit": "8292963c3998f46ea6b7bb2a6df62319685b436e",
+  "table_log_commits": [
+    "8292963c3998f46ea6b7bb2a6df62319685b436e",
+    "9acf68658d4bd84df6f0d99875a9084b86e94c44",
+    "6174223d605efa34f4c53c3ca38f1e2b6287079d"
+  ],
+  "rows": [
+    {
+      "language": "Hindi",
+      "tokenizer": "MorphTokenizer",
+      "printed_sd": "0.05",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.0114154807041688161161404669957187995482233705812",
+        "0.0133271044074036133718553137811080912376236363622"
+      ],
+      "rendered_mean": "3.230",
+      "paper_mean": "3.23",
+      "rendered_sd": "0.05",
+      "rescaled_log_sd": "0.0360955536597414477505481155539731216414752630326",
+      "rendered_sd_matches_paper": true
+    },
+    {
+      "language": "Hindi",
+      "tokenizer": "SP-BPE",
+      "printed_sd": "0.014",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.00952628029534487538312888130820638075630196166732",
+        "0.0106663487229910314264290104415261046181076985311"
+      ],
+      "rendered_mean": "2.909",
+      "paper_mean": "2.909",
+      "rendered_sd": "0.06",
+      "rescaled_log_sd": "0.0259008844059596711727586477886120947797377531456",
+      "rendered_sd_matches_paper": false
+    },
+    {
+      "language": "Hindi",
+      "tokenizer": "SP-Unigram",
+      "printed_sd": "0.014",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.00999362437275309250880034144492809823698894333210",
+        "0.0112296724562196644330756639127827821339789877090"
+      ],
+      "rendered_mean": "2.879",
+      "paper_mean": "2.879",
+      "rendered_sd": "0.05",
+      "rescaled_log_sd": "0.0226407317452008222229238179918949283676232426594",
+      "rendered_sd_matches_paper": false
+    },
+    {
+      "language": "Arabic",
+      "tokenizer": "MorphTokenizer",
+      "printed_sd": "0.05",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.0170058522372425671600459796189174069818501201077",
+        "0.0196496478514857739123462642170214953435507743920"
+      ],
+      "rendered_mean": "3.789",
+      "paper_mean": "3.789",
+      "rendered_sd": "0.05",
+      "rescaled_log_sd": "0.0368986163289862808972230736283589405070350171282",
+      "rendered_sd_matches_paper": true
+    },
+    {
+      "language": "Arabic",
+      "tokenizer": "SP-BPE",
+      "printed_sd": "0.018",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.0105112521378895425248040335507709421895419756566",
+        "0.0116812275786528233516533058933861179898900791095"
+      ],
+      "rendered_mean": "3.527",
+      "paper_mean": "3.528",
+      "rendered_sd": "0.07",
+      "rescaled_log_sd": "0.0350501633078472965315431701308252662059571269994",
+      "rendered_sd_matches_paper": false
+    },
+    {
+      "language": "Arabic",
+      "tokenizer": "SP-Unigram",
+      "printed_sd": "0.018",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.0106480414194038787048532756802343600213541860761",
+        "0.0118641952863474040333386946174276765897324224734"
+      ],
+      "rendered_mean": "3.384",
+      "paper_mean": "3.384",
+      "rendered_sd": "0.06",
+      "rescaled_log_sd": "0.0305671011788349121934384041787275896617270611536",
+      "rendered_sd_matches_paper": false
+    },
+    {
+      "language": "Turkish",
+      "tokenizer": "MorphTokenizer",
+      "printed_sd": "0.023",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.0175095160274989523129201297354326350061625408598",
+        "0.0204905925537838350797015801382460378639182597808"
+      ],
+      "rendered_mean": "3.876",
+      "paper_mean": "3.876",
+      "rendered_sd": "0.05",
+      "rescaled_log_sd": "0.0419142358070768177431228117771545811410573409532",
+      "rendered_sd_matches_paper": false
+    },
+    {
+      "language": "Turkish",
+      "tokenizer": "SP-BPE",
+      "printed_sd": "0.016",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.0100562799416723399943395057616926217299494639340",
+        "0.0112966003250898667648179678069519434203825027258"
+      ],
+      "rendered_mean": "3.002",
+      "paper_mean": "3.003",
+      "rendered_sd": "0.07",
+      "rescaled_log_sd": "0.0307502558226977688760133946167454079994863033158",
+      "rendered_sd_matches_paper": false
+    },
+    {
+      "language": "Turkish",
+      "tokenizer": "SP-Unigram",
+      "printed_sd": "0.016",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.0103613429012971007763181248112637874843805863336",
+        "0.0116776771129679723147182047411353674654852648155"
+      ],
+      "rendered_mean": "2.916",
+      "paper_mean": "2.916",
+      "rendered_sd": "0.06",
+      "rescaled_log_sd": "0.0272195978417722392872985789423403868116042967131",
+      "rendered_sd_matches_paper": false
+    },
+    {
+      "language": "English",
+      "tokenizer": "MorphTokenizer",
+      "printed_sd": "0.015",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.0106480288088849134205303079833903226996781264590",
+        "0.0127027205948278356653905430677128836036749541107"
+      ],
+      "rendered_mean": "3.051",
+      "paper_mean": "3.051",
+      "rendered_sd": "0.04",
+      "rescaled_log_sd": "0.0288989850378070482536784912663191518778275017691",
+      "rendered_sd_matches_paper": false
+    },
+    {
+      "language": "English",
+      "tokenizer": "SP-BPE",
+      "printed_sd": "0.012",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.00893950420367585106594271312145269695658268459595",
+        "0.0100308049613002382792838287403905303328424130298"
+      ],
+      "rendered_mean": "2.662",
+      "paper_mean": "2.661",
+      "rendered_sd": "0.06",
+      "rescaled_log_sd": "0.0239904405822824891606687475274416204258798118235",
+      "rendered_sd_matches_paper": false
+    },
+    {
+      "language": "English",
+      "tokenizer": "SP-Unigram",
+      "printed_sd": "0.012",
+      "consistent_with_envelope": false,
+      "envelope": [
+        "0.00978950956348569924610720450865640822725646260010",
+        "0.0110799513091622411656955940362098182216341189531"
+      ],
+      "rendered_mean": "2.589",
+      "paper_mean": "2.589",
+      "rendered_sd": "0.05",
+      "rescaled_log_sd": "0.0220771789948535708919238474133785642514409590836",
+      "rendered_sd_matches_paper": false
+    }
+  ]
+}
