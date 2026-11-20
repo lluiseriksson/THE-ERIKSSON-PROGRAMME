@@ -140,7 +140,7 @@ For a reference failure probability $0<z<1$, let $G$ be the sum of $m$ independe
 \]
 Indeed, $(1-z^n)^m E[w_Y{\bf1}_{Y=j}]=\Pr(G=j)$ at each feasible $j$. Sum on either side of $s$ and use monotonicity.
 
-\textbf{2. Deterministic total.} If $s\to\infty$ and $s/m\to0$, write $h=m(s/m)^n$. For fixed $0<\delta<1$ set $z_\pm=(1\pm\delta)s/m$. The mean of $G$ at $z_-$ is $(1-\delta+o(1))s$ and the mean of $Y$ at $z_+$ is $(1+\delta+o(1))s$. Both variances are $O_n(s)$, by the geometric variance formula and the finite power series for $Y$. Chebyshev's inequality gives $\Pr_{z_-}(G\le s),\Pr_{z_+}(Y\ge s)\to1$. The two comparisons bound $\log w_s$ below and above by $(1\mp\delta)^n h+o(1+h)$, respectively. Taking $\delta\downarrow0$ gives $\log w_s=h+o(1+h)$. For bounded $s$ we have $w_s\to1$: a union bound on a specified part reaching $n$ in a uniform composition is at most $m(s)_n/(s+m-1)_n=O(m^{1-n})$, with falling factorials and zero if $s<n$.
+\textbf{2. Deterministic total.} If $s\to\infty$ and $s/m\to0$, write $h=m(s/m)^n$. For fixed $0<\delta<1$ set $z_\pm=(1\pm\delta)s/m$. The mean of $G$ at $z_-$ is $(1-\delta+o(1))s$ and the mean of $Y$ at $z_+$ is $(1+\delta+o(1))s$. Both variances are $O_n(s)$, by the geometric variance formula and the finite power series for $Y$. Chebyshev's inequality gives $\Pr_{z_-}(G\le s),\Pr_{z_+}(Y\ge s)\to1$. The two comparisons bound $\log w_s$ below and above by $(1\mp\delta)^n h+o(1+h)$, respectively. Taking $\delta\downarrow0$ gives $\log w_s=h+o(1+h)$. For bounded $s$ we have $w_s\to1$: the union bound for any part reaching $n$ in a uniform composition is $m(s)_n/(s+m-1)_n=O(m^{1-n})$, with falling factorials and zero if $s<n$.
 
 \textbf{3. Random total.} Put $M=mt$, $h_0=mt^n$. The elementary bounds $q_i/n\le EU_i\le C_nq_i$ give $t\to0$. If $M\to\infty$, bounded independent waits satisfy
 \[
@@ -174,5 +174,6 @@ The expected count of full failures is $n\sum q_i=o(m)$. Markov's inequality giv
 [4] O. Johnson and C. Goldschmidt. Preservation of log-concavity on summation. \emph{ESAIM: Probability and Statistics} 10 (2006), 206--215. \href{https://doi.org/10.1051/ps:2006008}{doi:10.1051/ps:2006008}.
 
 [5] R. F. Muirhead. Some methods applicable to identities and inequalities of symmetric algebraic functions of $n$ letters. \emph{Proc. Edinburgh Math. Soc.} 21, 144--157. \href{https://doi.org/10.1017/S001309150003460X}{doi:10.1017/S001309150003460X}.
+
 [6] D. Bevan and D. Threlfall. On the evolution of random integer compositions. \emph{Electronic Journal of Combinatorics} 32(1) (2025), P1.21. \href{https://doi.org/10.37236/13010}{doi:10.37236/13010}.
 \end{document}
