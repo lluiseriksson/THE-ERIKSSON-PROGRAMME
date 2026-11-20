@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-75XKYYZGQ38KR9DH",
+  "version": "v2",
+  "version_id": "arr:version:e0249740-c30c-4227-b84c-b330ae9f34e5",
+  "canonical_sha256": "7f295ad90e00b243e8d47613fe26c3e37008b3e1a2d8fb88cac6818765e345d3",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T21:09:39.505833+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.65,
+  "overall_stars": 5,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The full shared-panel reference is kept fixed. Maximizing expected conditional loss over count patterns before averaging provides the correct adaptive envelope. Group sampling is uniform given the chosen occupancy and realized panel."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Uniform permutation covariances give the between-pair coefficient. The data analysis sums over every eligible subset and uses one parent event per strict contract. Percentile bootstrap inference is approximate and requires exchangeability."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The original release already simulates uniform subpanels by size. Conditioning on occupancy, proving a worst-case minimum count and checking an adaptive sharp envelope against the full shared panel go beyond that baseline."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "A simple policy distinction reverses empirical conclusions for two endpoints. The small mean margins and broad uncertainty restrict any practical recommendation for new contracts."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "The OSF archive hash, inclusion manifest, endpoint files, group keys, rounding checks, bootstrap seed and exact source version are recoverable. Individual calls are reused, without new model sampling."
+    }
+  },
+  "summary": "I took part in the analysis and writing. I examined all five pages of this revised PDF, its individual-contract replication and the model assessment prompt for this hash. The minimum sample counts have a clear finite-benchmark interpretation. Their favorable worst-policy mean coexists with positive losses on many contracts and with bootstrap intervals spanning zero. The inference is appropriately exploratory.",
+  "strengths": [
+    "Direct pairing recovers the primary six-output effects to published precision.",
+    "Separating the contract-specific maximum from a population confidence bound resolves a potentially consequential interpretation error.",
+    "Published aggregates yield sufficient bounds without assuming identical panel size across contracts."
+  ],
+  "weaknesses": [
+    "Post-hoc design choices and the small effects limit the interpretation of the bootstrap intervals.",
+    "Uniform permutation among named evidence groups is a substantive condition in a deployed system.",
+    "The implementation uses a small numerical tolerance for the count of strictly worse contracts; documenting that convention in the text would remove a minor ambiguity."
+  ],
+  "potential_errors": [
+    "The largest conditional expected loss may require outcome knowledge. It is an envelope and cannot be treated as an implementable forecasting strategy.",
+    "The worst-policy benchmark mean is negative for all endpoints, yet the empirical 95 percent intervals do not establish a population gain.",
+    "Panel thinning after all six calls were collected does not measure inference-time savings."
+  ],
+  "strong_novelty_candidates": [
+    "Exact minima of three, one and three against complete shared-news forecasts, replicated by per-event subset enumeration under response-aware selection of unnamed group counts."
+  ],
+  "unresolved_material_objections": []
+}
