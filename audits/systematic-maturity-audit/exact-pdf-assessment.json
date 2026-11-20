@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-3W4QNPS88C97G9M9",
+  "version": "v1",
+  "version_id": "arr:version:3b6d1ef1-1c0c-4ec3-9440-4924e256de9e",
+  "canonical_sha256": "96d02b01e516830e48edfcc9577ca35c562dac90029b0d6bbbf23cd627405075",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T23:33:17.255008+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.12,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The support sizes 127+16+1+16 sum to 160. At phase zero a missing second-sample label adds 32 times C(63,2) candidates to the 63 complete-case candidates. The lower-bound argument works for every fixed offset, including overlapping samples."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Translation equivariance justifies conditioning on a failing phase. The finite maximum of two is computationally certified with explicit witnesses. A short analytic proof of that maximum would ease verification apart from enumeration."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "A concrete minimax design for one missing second-stage rating is exhibited. The cyclic-interval argument uses elementary finite sampling geometry and priority beyond this case is unestablished."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "The two-stage construction quantifies the cost of one adversarial missing label in a specified follow-up and separates this from unsupported claims about industrial deployment. The scope is a single finite frame and a large hidden-group threshold."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "The review dataset has a versioned identifier, the source is pinned, the classification and phase formulas are stated, and all 62,559 candidates and all 127 fixed offsets can be checked with the supplied code. Two builds gave identical PDF bytes."
+    }
+  },
+  "summary": "The three-page manuscript links 60 second-rater labels to a finite frame and gives a prospective audit with sharp minimax miss probabilities at the 62-of-127 threshold. I inspected the rendered pages and exact artifact, verified the one-start proof, the paired complement bound and the sensitivity certificate. I contributed to the analysis and drafting in the same context.",
+  "strengths": [
+    "Accounts explicitly for the closed-loop study and the 16 outside the blind frame.",
+    "The same proposed offset attains the worst-case lower bound with complete second-sample ratings and with one adversarial loss.",
+    "Page 3 specifies both the allowed missingness and the limits of transfer to the historical review."
+  ],
+  "weaknesses": [
+    "The study gives no deterministic analytical derivation of the intersection maximum or the nonresponse maximum apart from exhaustive finite certificates.",
+    "No operating curve is supplied for smaller hidden groups, variable sample sizes or nonresponse in the first sample.",
+    "The historical frame order and actual systematic phase algorithm were not recovered."
+  ],
+  "potential_errors": [
+    "The confidence limit of 89 would be misapplied to the historical archive without matching the actual design.",
+    "A user who chooses the second offset after reading the first labels changes the randomization argument.",
+    "Counting unreported maturity as evidence of no industrial use would change the empirical claim."
+  ],
+  "strong_novelty_candidates": [
+    "For the stated finite geometry and fixed-offset class, the same offset 48 achieves 1/127 with full labels and 2/127 with one adversarial second-sample omission."
+  ],
+  "unresolved_material_objections": []
+}

@@ -1,0 +1,29 @@
+{
+  "source_sha": "ef8fdbf28a8d42ef9ed75c9482515dbf82f7b3b2",
+  "inputs": {
+    "mechanical.tex": "42e29281e9a09ff3deebde78afe220aa75fea0d305093c803943de9eaf29f482",
+    "verify_mechanical.py": "5bd793f64a2afb9c4be2cd8f4765d3152cbafc2cecd82c363a38d6789068ad60",
+    "missing-phase.py": "df7ee28b5ffee26ef25328166a9f06a9abdc34557d37eb27de4074b34392680b",
+    "missing-phase.json": "c6a1557f733a9e91394b44d360e083fa433ee0c5b2dd6bb020bce06eedceaab7",
+    "paired-phase.json": "0c9149bc896fa39a6b2debcd52e8aeb1583c161cd3908e59728ae5590e236965",
+    "paired-phase.py": "82fb5e29653934141950943c399cda8d43cffd5538f4b02d367647e0120d6ed6",
+    "zero.json": "6c33aaea0cbdaa00ae1b54a2e11165ee55ae27621be6aaf257bf2f7d25afede0",
+    "systematic-zero.py": "3374241dfe0b18186a3c697a3b49da9be1be425ba6394f6a8d6df7f7cbd72e8c",
+    "fuente.json": "4c06746e666968bdd7e54a79628ac78fb9e059662b0cfab35cbe301109160446",
+    "maturity-bounds.json": "aafb0040dd02eafb787390d009585e45e0ec7cfc5bc37474ba4d988ba9b611f5",
+    "mechanical-bounds.py": "fcc280ae58253262f1c0842c72b105d1e67367db9310227e52d335e9c2e9da4a",
+    "mechanical-strata.py": "de79f907e04b0a1466c9055a577b46f8b7a216938c3c71674843bba6793a4388",
+    "frame.json": "03b0433021de89fff2d011297fba0d8a8304de56b3f00d329af8c86f03e9061b",
+    "paired-proof.md": "4f541a1b81f9ab1f3dc894d210442e4c27c2b2931145d757b3f68707571fdf3b",
+    "systematic-results.md": "12f217880e23b705934cb46d2de655167a98ffcc29e7775c6cd0195e055e26d6"
+  },
+  "started_at": "2026-11-20T23:31:29.889160+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "96d02b01e516830e48edfcc9577ca35c562dac90029b0d6bbbf23cd627405075",
+    "96d02b01e516830e48edfcc9577ca35c562dac90029b0d6bbbf23cd627405075"
+  ],
+  "pdf_bytes": 167942,
+  "finished_at": "2026-11-20T23:32:20.004295+00:00"
+}
