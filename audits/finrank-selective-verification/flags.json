@@ -1,0 +1,102 @@
+{
+  "40": {
+    "absent_reverse_flags_assumed": true,
+    "any_correct_common": 4,
+    "any_correct_exclusive": 0,
+    "canonical_witnesses": {
+      "gain": [
+        9
+      ],
+      "silent_B": [
+        10,
+        11,
+        12,
+        13
+      ],
+      "silent_C": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "full": {
+      "gain": [
+        9
+      ],
+      "silent_B": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "silent_C": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "60": {
+    "absent_reverse_flags_assumed": true,
+    "any_correct_common": 9,
+    "any_correct_exclusive": 0,
+    "canonical_witnesses": {
+      "gain": [
+        25
+      ],
+      "silent_B": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "silent_C": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    "full": {
+      "gain": [
+        25
+      ],
+      "silent_B": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "silent_C": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    }
+  }
+}

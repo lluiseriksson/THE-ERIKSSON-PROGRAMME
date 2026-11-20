@@ -1,0 +1,24 @@
+{
+  "refs": {
+    "exp5/deepseek-r1": {
+      "commit": "8d42a0738c1b6e888825b39a7aaafa74e7346fd9",
+      "data_candidates": []
+    },
+    "experiment/provenance-verification": {
+      "commit": "bcd455d5f40d2117381ee6326b18a75e8466b704",
+      "data_candidates": []
+    },
+    "feat/mcp-server": {
+      "commit": "d0cb6f85a70bece6f4ca67e97d4d06f3f490e20f",
+      "data_candidates": []
+    },
+    "main": {
+      "commit": "e48ebd0715dedbd7e0ef133d3b4b17d224abdd0b",
+      "data_candidates": []
+    }
+  },
+  "scope": "Named main, experiment, R1 and MCP refs; numerical output filenames. Other paths or private logs may exist.",
+  "experiment_data_path_commits": [],
+  "dataset_history_url": "https://api.github.com/repos/datanxt/FinRank/commits?path=FinRank.jsonl",
+  "dataset_license": "https://github.com/datanxt/FinRank/blob/916dc27e77b90e294ea1b3a2cc5b0abcf07392d1/LICENSE"
+}
