@@ -1,0 +1,103 @@
+{
+  "source": "https://arxiv.org/pdf/2611.25218v1",
+  "pdf_sha256": "d62c26aca84b2d8c5f6187d14c182b597ae24106c24f52e78f44873aa85d6dd2",
+  "reference": [
+    123726,
+    124167
+  ],
+  "errors": [
+    {
+      "MLLM": [
+        "6909",
+        "6291"
+      ],
+      "Parser": [
+        "3264",
+        "3034"
+      ],
+      "Combined": [
+        "2716",
+        "2819"
+      ],
+      "Open LLM": [
+        "5113",
+        "2757"
+      ],
+      "Open OCR-LLM": [
+        "7946",
+        "4211"
+      ]
+    },
+    {
+      "MLLM": [
+        "7284",
+        "7312"
+      ],
+      "Parser": [
+        "3169",
+        "4103"
+      ],
+      "Combined": [
+        "2135",
+        "2445"
+      ],
+      "Open LLM": [
+        "6097",
+        "4845"
+      ],
+      "Open OCR-LLM": [
+        "9031",
+        "6159"
+      ]
+    }
+  ],
+  "curves": [
+    {
+      "at_zero": [
+        "Combined"
+      ],
+      "switches": [
+        [
+          "2397/62",
+          [
+            "Combined",
+            "Open LLM"
+          ]
+        ]
+      ],
+      "at_infinity": [
+        "Open LLM"
+      ]
+    },
+    {
+      "at_zero": [
+        "Combined"
+      ],
+      "switches": [],
+      "at_infinity": [
+        "Combined"
+      ]
+    }
+  ],
+  "open_minus_combined": [
+    [
+      "2397",
+      "-62"
+    ],
+    [
+      "3962",
+      "2400"
+    ]
+  ],
+  "share_boundary": "49490400/50773459",
+  "raw_pool": {
+    "at_zero": [
+      "Combined"
+    ],
+    "switches": [],
+    "at_infinity": [
+      "Combined"
+    ]
+  },
+  "appendix_links_checked": 8
+}

@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs,amsmath,amssymb,hyperref}
+\hypersetup{hidelinks}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\title{Choosing transcription workflows and audit rows in two historical directories}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We reanalyse the aggregate validation tables for five machine transcriptions of the 1912 and 1921 American Medical Directory. The combined workflow minimizes two kinds of linkage disagreement across all nonnegative cost weights in 1921. In 1912 an open-weight alternative is preferable when the cost of an unmatched output row exceeds $2397/62$ times that of an unmatched reference row. For the combined workflow, reviewing uncertain entries and all pages with at least 5\% uncertain entries would cover between 1,275 and 2,477 of 2,716 unmatched reference rows in 1912, and between 236 and 461 of 2,135 in 1921. We give attainable bounds relative to the published numeric margins, compare designs at equal row budgets, and quantify the sensitivity of that comparison to names that the scorer cannot link.
+\end{abstract}
+
+\section*{What a disagreement costs}
+Dahl and colleagues [1] compared the output of each workflow with a manually double-entered reference. We use the final links on their 903 and 1,036 analysis pages, respectively. An omitted reference row may reflect a failure of the linkage rule, even if the machine read the scan correctly. Our two decisions are which workflow's table to use and which reference rows a retrospective audit would examine.
+
+Let $M$ count unmatched reference rows and $E$ unmatched output rows. A user who assigns nonnegative weight $\lambda$ to an unmatched output minimizes $M+\lambda E$. The costs concern disagreement counts. Processing charges, the value of particular records and the cost of obtaining manual flags would require additional inputs. From Table 2 of [1], subtracting the matched count from the reference and output totals gives
+\[
+\begin{array}{lrr|rr}
+&\multicolumn{2}{c|}{1912}&\multicolumn{2}{c}{1921}\\
+& M & E & M & E\\
+\text{Combined} &2716&2819&2135&2445\\
+\text{Open LLM} &5113&2757&6097&4845
+\end{array}
+\]
+In each edition Combined improves both coordinates over the other three workflows. In 1912 switching from Open LLM to Combined recovers 2,397 reference links for 62 additional unmatched outputs. The tie is $\lambda=2397/62$. In 1921 Combined improves both coordinates over Open LLM as well. Pooling the two editions by raw counts hides the 1912 reversal. If the 1912 reference rows receive population weight $\alpha$, the slope of the Open-minus-Combined cost per row becomes negative exactly when
+\[
+\alpha>\frac{2400/124167}{2400/124167+62/123726}.
+\]
+The intercept is strictly positive. Only above that share can a sufficiently large finite cost weight reverse the pooled ranking.
+
+\newpage
+\section*{How many unmatched rows the flags can locate}
+Table D.5 of [1] splits pages at a flagged share of 5\% and also reports recall for flagged and unflagged entries. Imagine reviewing the union of two selections: all rows on high-flag pages and all individually flagged rows. A covered omission is an unmatched reference row in this union, irrespective of whether an audit could repair it.
+
+\begin{center}\small
+\begin{tabular}{lrr}
+\toprule &1912&1921\\\midrule
+High-page rows $H$ (pages $p$)&7,884 (61)&5,085 (42)\\
+Low-page rows $L$ (pages $q$)&115,842 (842)&119,082 (994)\\
+Individually flagged rows $F$&2,271&1,627\\
+Combined omissions $M$&2,716&2,135\\
+Omissions on high pages $h$&1,275&236\\
+Flagged omissions $f$&1,202&225\\\midrule
+Omissions covered by the union&1,275--2,477&236--461\\
+Distinct reviewed rows&7,884--9,760&5,102--6,457\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For example, the 1912 high-page recall of 83.83\% fixes the integer matched count at 6,609 of 7,884. We invert the displayed percentages to half a unit in the last printed decimal place and check the complementary group and total. For each workflow the high- and low-page matched counts must also admit integer output totals consistent with both reported precisions and the total number of outputs.
+
+Write $x$ for the number of individual flags on high pages and $z$ for their Combined omissions. In the order high/flagged, high/unflagged, low/flagged, low/unflagged, the cell sizes and omissions are
+\[
+(x,H-x,F-x,L-F+x),\quad (z,h-z,f-z,M-h-f+z).
+\]
+An integer allocation exists exactly when each omission count lies between zero and the corresponding cell size. The union covers $h+f-z$ omissions in $H+F-x$ rows. We also require $p\le x\le H$, $H\le20x$ and $20(F-x)+q\le L$. These conditions construct pages: give each high page at least one flag and add up to 19 unflagged rows per flag. On low pages start with 20 rows per flag plus one row per page, then distribute the surplus. Distinct workflows may omit the same row. For each $x$ we require the omission allocations for all five workflows to be feasible on that same set of cells.
+
+Enumeration then gives every integer in both coverage intervals. The certificate supplies cell and page allocations at each extremum. The extrema of workload and coverage need not occur together. Sharpness refers to the numeric margins used here. Actual page sizes, cross-workflow restrictions on individual names and unpublished intersections could narrow the bounds. In 1921 even the upper endpoint leaves 1,674 omissions outside the review. In 1912 the published counts allow coverage on either side of one half.
+
+\newpage
+\section*{A comparison at equal effort}
+Consider a budget $B=F$ rows. An entry-based audit inspects all individual flags. A page-stratified alternative samples $k$ rows uniformly from high pages and $B-k$ from low pages, without replacement in each stratum. Counting each inspected row once, its expected coverage is
+\[
+ k\,h/H+(B-k)(M-h)/L .
+\]
+In both editions $B\le H$ and the high-page rate is larger. Hence the maximum is attained at $k=B$, for every joint flag allocation. In 1912 it is $2271(1275)/7884$, between 367 and 368 omissions, compared with 1,202 covered by the individual flags. In 1921 it is $1627(236)/5085$, between 75 and 76, compared with 225. This expectation concerns sampling uniformly by row within a page stratum. Per-page access charges or review of whole pages define a different budget.
+
+\textbf{Which disagreements count?} The reference scorers cannot link a transcribed name containing a question mark [1, Table D.5]. Such rows contribute to the apparent advantage of reviewing flags. Suppose $s$ of the $f$ flagged omissions are set aside for this reason, including $t$ on high pages. Keeping the same row budget and scoring only remaining disagreements, the flag audit finds $f-s$. The two page rates become $(h-t)/H$ and $(M-h-s+t)/L$. Each is bounded above by its original rate since $0\le t\le s$. Consequently the flag audit still beats every page-stratified allocation whenever
+\[
+ f-s>B\,h/H.
+\]
+This gives sufficient integer limits of $s\le834$ in 1912 and $s\le149$ in 1921. Beyond a limit the guarantee from this inequality ends; the actual ordering can still favour individual flags. The source describes roughly half of individually flagged 1912 entries as containing such names. It does not report the exact $s,t$ pair in the table. A cross-tabulation of these counts would allow a direct comparison for the revised outcome.
+
+\section*{Reproducibility and review context}
+The accompanying scripts recover the costs from Tables 2 and D.3 and verify the integer constraints against the manually transcribed, rotated Table D.5. The primary PDF is fixed by SHA-256 in the coverage verifier. The analysis uses aggregate data. The manual reference itself is excluded from the public deposit described in Appendix F of [1]. Generalization to new scans, and the time required to obtain manual flags in production, remain unmeasured.
+
+\textbf{Model assessments and review context.} OpenAI Codex assisted with the derivations, implementation and writing. An assessment attached to a frozen PDF version should be read with its model identity and manuscript involvement. The author operates AIRR.
+
+\small [1] C.\ M.\ Dahl, S.\ Li, R.\ E.\ Nyholm, M.\ U.\ Pedersen and A.\ Wray.
+\emph{The American Medical Directory Panel: Comparing AI-Assisted and LLM Transcription with Manual Data Entry at Scale}. 18 November 2026. \href{https://arxiv.org/abs/2611.25218v1}{arXiv:2611.25218v1}, Tables 2, D.3 and D.5.
+\end{document}
