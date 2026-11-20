@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-32MS6ASX2E88YARM",
+  "version": "v2",
+  "version_id": "arr:version:eb6c1721-799c-4da3-9b0b-a8c0fb6a16a6",
+  "canonical_sha256": "edd5d0c84c8a8845f473b7b9dcbcace452f044e1544036069168237fc5101f4d",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T21:39:09.102125+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.0,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The quadratic terms in the necessary determinant inequality cancel. The reported rational tolerance admits a construction checked in all 720 cells; the lower and upper values coincide."
+    },
+    "rigor": {
+      "stars": 5,
+      "basis": "The class of positive length and nonnegative rate products, normalization ambiguity, error norm and zero columns are identified. Dollar or euro billing error is not inferred from a component discrepancy."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Positive rank-one approximation and the toll schedule are prior work. An exact obstruction localized to two vehicle profiles and two specific A12 sections, globally sharp even after adding carbon disclosures, is a new result of this comparison."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "The schedule can now serve as a reproducible test of route-pricing implementations. The excess over a fourth-decimal rounding allowance is only around 4.5 millionths of a euro."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "The source manifest and PDF are hash-bound. The independent rational checker verifies the table sums, corridor-model certificates and section-level factors without requiring the optimization packages."
+    }
+  },
+  "summary": "I examined the four rendered pages of this PDF and participated in its preparation. Section 4 pairs a four-charge determinant inequality with feasible factors for the full 15-by-48 matrix. That proves an exact best achievable worst error even when the profile-specific external-cost rates are free. A second binding rectangle isolates the smaller carbon error. The operational contribution is an audit of one price schedule, with no invoice observation or demonstration of economic harm.",
+  "strengths": [
+    "A small lower witness explains why more precision in unprinted rates cannot suffice.",
+    "The witness for the upper bound covers all allowed vehicle classes and both external charges.",
+    "The exact carbon-only threshold and the positive example on fourteen sections localize the incompatibility."
+  ],
+  "weaknesses": [
+    "Evidence comes from a single edition and one corridor.",
+    "The mapping of the differently labelled geographical and accounting endpoints is justified by the totals but lacks an independent map or route identifier.",
+    "No actual trip or transaction is studied."
+  ],
+  "potential_errors": [
+    "The unknown factors are identifiable only up to a common scale; their numerical values are not surveyed distances.",
+    "The uniform component residual and the cent-level route-price discrepancies have different meanings and units of display.",
+    "Allowing separate unprinted rates by vehicle profile is more permissive than a tariff that ties rates across profiles."
+  ],
+  "strong_novelty_candidates": [
+    "A four-cell lower bound is attained on the entire Austrian external-charge matrix despite 716 additional entries."
+  ],
+  "unresolved_material_objections": []
+}
