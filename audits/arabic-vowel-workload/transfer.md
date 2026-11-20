@@ -1,0 +1,7 @@
+# Does the same-workload improvement transfer from development?
+
+The aggregate test result in auditoria.md suggested filling a lower-confidence band first. Choosing an alternative using development labels alone selects the original 0.77 to below 0.80 group. Its development error rate was 1/31, against 573/1965 and 142/479 in the adjacent lower-confidence bands. On the test split, 8/24 decisions in the selected band were wrong. This procedure thus makes the same 31 errors across 1730 fills as the published rule. The retrospective advantage of about 1.12 automatic errors is wholly lost when the replacement band is chosen on development. These are different sentences and positions on each split. A direct test of deployment benefit would require fresh data.
+
+The independent implementation reconstructs 33580 training, 4142 development and 4327 test positions. It checks each source rule on all three splits, both 0.77 combined counts and all five detailed test thresholds before returning. It retains the original author-provided lists and selects only test positions eligible under the published protocol. The three original SHA-256 hashes match UD Arabic-PADT release 2.18. Corpus and cue-rule sources remain with their respective authors.
+
+To reproduce, obtain and verify the source archive described in source.json, place it beside padt-transfer.py, and run python3 padt-transfer.py on a connected Linux runtime. The program downloads only checksum-verified release inputs used for the analysis. Compare its JSON with transfer.json.
