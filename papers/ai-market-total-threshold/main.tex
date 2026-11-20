@@ -58,7 +58,7 @@ Keep sample, regressors and positive regression weights fixed. Let $D$ be the tr
  \widehat\beta(F_2)-\widehat\beta(F_1)
  =-\sum_{j\in C} q_j\log\!\frac{1+F_2x_j}{1+F_1x_j}.
 \]
-For $F_2\ge F_1$, each log ratio lies in $[0,\log(F_2/F_1)]$. Thus the coefficient change lies in $[-Q_+\log(F_2/F_1),Q_-\log(F_2/F_1)]$ with $Q_\pm=\sum_{j\in C}\max(\pm q_j,0)$. This allows mixed regression weights. For all control-post cells $Q_+-Q_-=1$, because the control-post indicator equals Post minus $D$, and Post is in the cohort-month span.
+Write $t=\log(F_2/F_1)\ge0$. Each log ratio lies between zero and $t$. Define $Q_\pm=\sum_{j\in C}\max(\pm q_j,0)$. The coefficient change is bounded below by $-Q_+t$ and above by $Q_-t$. This allows mixed regression weights. For all control-post cells $Q_+-Q_-=1$, because the control-post indicator equals Post minus $D$, and Post is in the cohort-month span.
 
 Complete cohort rectangles with separable firm and time weights suffice for $q_j\ge0$ on control-post observations: the residual within each cohort is $(\mathrm{Treat}_i-\overline{\mathrm{Treat}})(\mathrm{Post}_t-\overline{\mathrm{Post}})$. Replacing only a subset of these cells then gives total mass at most one. In this case raising the calibration factor weakly lowers the sales coefficient, and the absolute change is bounded by $|\log(F_2/F_1)|$. A pilot that inflated the calibrator would make the corrected historical estimate weakly larger. Actual residual weights for Figure III were unavailable for direct inspection.
 
