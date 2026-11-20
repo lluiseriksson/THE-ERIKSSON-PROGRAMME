@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{Certifying intensity between sampled hologram frames}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+In a finite-pupil field-blend model of moving optical traps, ten temporal subdivisions can report a minimum above 0.9 of the mean frame intensity even though the continuous minimum falls below 0.9. We construct a phase-only example with equal illumination and nonzero motion, valid for affine and minimum-jerk readout. A curvature bound converts sampled intensities into a one-sided certificate, with a sharp interpolation constant. For ideal phase-aligned translations we prove an exact midpoint rule under affine readout and identify why it does not transfer to the quintic trajectory. These statements concern a model and a sampling convention, rather than measured trap losses.
+\end{abstract}
+\section{What the evaluator observes}
+Santib\'a\~nez-Leal evaluates phase-only hologram sequences by linearly blending two successive complex pupil fields and reading the focal intensity at a moving target \cite{source}. In the pinned evaluation code, \texttt{transient\_curve} samples each interval at tenths. The B2 method supplies a quintic trajectory at fractional time. The M16 comparison supplies a linear trajectory at fractional time. Both use the same field blend. The reported minimum is taken over the samples, divided by the mean intensity of the integer frames of that trap. The authors' single-trap reference is a half-time, half-displacement calculation. Prior experiments have measured real inter-frame flicker and phase-dependent trap losses \cite{kim,knott}. Our results concern the ideal scalar evaluator.
+    
+Write $a\in[0,1]$ for fractional time in one interval. Absorb initial target delays into two unit endpoint phasors $p_j,q_j$. For normalized illumination weights $w_j\ge0$, $\sum w_j=1$, and real readout delays $\theta_j(a)$ relative to the initial position, write
+\[
+ E(a)=\sum_jw_j e^{-i\theta_j(a)}[(1-a)p_j+a q_j],\qquad I(a)=|E(a)|^2 .
+\]
+All ratios below assume positive mean frame intensity. The construction uses a common intensity scale throughout.
+
+\section{A threshold missed between two samples}
+Take 43 equally illuminated pixels. Work in unnormalized amplitude units, multiplying $E$ by 43. Ten pixels switch from $+1$ to $-1$, one remains at $+1$, and the other 32 retain their phases. In two groups of 16 their phases are $\pi/2\pm\gamma$, where $\cos\gamma=\sqrt{904}/32$. Their sum is $i\sqrt{904}$. At fixed readout,
+\[
+ 43E(a)=11-20a+i\sqrt{904}.
+\]
+The endpoint intensities in these units are 1025 and 985, with mean 1005. The minimum over the tenths is $905/1005$, attained at $a=0.5,0.6$. The continuous minimum is $904/1005$, attained at $a=11/20$. These two ratios strictly straddle $9/10$.
+
+This strict separation persists for a genuinely moving target. Choose a nonzero translation small enough that every pixel's endpoint delay increment satisfies $|u_j|\le 10^{-4}$ radians. Multiply each final phasor by $e^{iu_j}$ and read at fraction $r(a)$ of the displacement, with $0\le r(a)\le1$, $r(0)=0$, $r(1)=1$. The endpoint fields and their mean intensity stay exact. At each time the two terms of the blend acquire phases $-r(a)u_j$ and $(1-r(a))u_j$. Since $|e^{ix}-1|\le |x|$, the change of the unnormalized field is at most $43/10^4$. Both fields have modulus at most 43, so the intensity change is at most $2(43)^2/10^4<1/2$. At every grid point the intensity therefore exceeds $904.5$, and at $11/20$ it falls below $904.5$. The argument covers a uniform row of pixels, or a square array formed by repeating that row and translating along it. The phases are admissible arbitrary endpoints in the evaluator. We do not assert that an optimization run returns these endpoints.
+
+\section{A computable continuous-time certificate}
+On a sample cell of width $d$, bound $|\theta_j'|\le v_j$ and $|\theta_j''|\le b_j$. Set $D_j=|q_j-p_j|$ and
+\[
+ B_1=\sum_jw_j(D_j+v_j),\quad
+ B_2=\sum_jw_j(2D_jv_j+v_j^2+b_j),\quad M=2(B_1^2+B_2).
+\]
+Differentiating the finite sum gives $|E'|\le B_1$, $|E''|\le B_2$, hence $I''\le M$. At relative cell coordinate $t\in[0,1]$ with endpoint intensities $I_0,I_1$ this yields
+\[
+ I(t)\ \ge\ (1-t)I_0+t I_1-\tfrac12 M d^2t(1-t).
+\]
+Indeed the difference between the two sides is concave in $t$ with zero endpoints. Thus the smaller observed intensity minus $Md^2/8$ is a valid lower bound. Divide by the same frame mean to certify a ratio. If the lower and sampled upper bounds straddle the decision threshold, subdivide the cell and recompute. Under bounded derivatives and strict separation from the threshold the width tends to zero. At equality termination is not guaranteed.
+
+The constant $1/8$ is attained in the stationary construction. There $B_1=20/43$, $B_2=0$, $I''=2(20/43)^2$. On $[0.5,0.6]$ the normalized intensity gap equals $1/43^2=Md^2/8$. For a quintic readout $\theta_j=u_j h((s+a)/S)$ up to an additive constant, $h(x)=10x^3-15x^4+6x^5$, global safe inputs are $v_j=15|u_j|/(8S)$ and $b_j=10|u_j|/(\sqrt3 S^2)$; here $u_j$ denotes the phase excursion over the full move. These follow from $h'=30x^2(1-x)^2$ and the extrema of $h''=60x(1-x)(1-2x)$.
+
+\section{When the midpoint does suffice}
+Consider perfect single-trap endpoint steering with common aligned phase, affine readout and $|u_j|\le\pi$ per frame. After demodulation the pixel factor at $a$ is $(1-a)e^{-iau_j}+a e^{i(1-a)u_j}$. Put $z=|u_j|/2$ and $t=|1-2a|$. Its real part is $\cos z\cos(tz)+t\sin z\sin(tz)\ge\cos z$. For $0<z<\pi/2$ this follows from $\tan(tz/2)\le t\tan(z/2)\le t\tan z$, and the boundary cases follow by continuity. Summing with nonnegative weights shows the amplitude is at least its nonnegative real midpoint value. The midpoint thus attains the continuous intensity minimum for any such finite illuminated pupil.
+
+For two equally illuminated symmetric pixels with excursions $\pm u$, at temporal half-blend the amplitude read at position fraction $r$ is $\cos(u/2)\cos((r-1/2)u)$. On the first of two quintic intervals $r=h(1/4)/h(1/2)=53/256$. For $0<u<\pi$ the affine midpoint prediction strictly overestimates this half-time amplitude. This example tests a change of readout convention. Neither example establishes a failure in the original reported sequences.
+
+\paragraph{Model assessments and review context.} OpenAI Codex assisted with the analysis and manuscript. Any assessment belongs to its exact version. No independent peer review is documented.
+\begin{thebibliography}{9}
+\bibitem{source} F. Santib\'a\~nez-Leal, \emph{Flicker-Bounded Phase-Continuous Hologram Sequences for Moving Optical Traps}, version 002 (2026). \href{https://doi.org/10.5281/zenodo.24385662}{Zenodo record}. \href{https://github.com/fsantibanezleal/CEFOP_DinHot/blob/743f617919bfb8fd8f35c7365a3dad0e08c11598/manuscripts/flicker-bounded-sequences/data/measure.py}{Evaluation code at the audited revision}.
+\bibitem{kim} H. Kim et al., \emph{In situ single-atom array synthesis using dynamic holographic optical tweezers} (2016). \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC5095563/}{Experimental article}.
+\bibitem{knott} I. Knottnerus et al., \emph{Parallel assembly of neutral atom arrays with an SLM using linear phase interpolation}. \href{https://arxiv.org/abs/2501.01391}{arXiv:2501.01391}.
+\end{thebibliography}\end{document}
