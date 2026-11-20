@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-7VHMKFZ6YN8VH909",
+  "version": "v1",
+  "version_id": "arr:version:d5d24adb-958a-456b-b35b-95d54f1f5a7c",
+  "canonical_sha256": "20d8f5a0ae688acdd4b99f47c42d4e1555d031433437674d62886982b5acd6ed",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T23:47:12.301247+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.18,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "A shared-pass/provenance-flag figure must occur only in the altered window. The zero correct-valued candidates across all 1,644 admissible pairs supports the checked-figure interpretation, conditional on the public preprocessing."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The item-category recurrence correctly preserves both flag margins and error totals; the selective-corruption overlap bounds follow by filling exclusive cases first or last. The attainable extremes concern parser-compatible answers, including unusual comma padding."
+    },
+    "novelty": {
+      "stars": 4,
+      "basis": "The original benchmark publishes discordant flag counts, while this analysis identifies when those counts are also wrong same-generation figures. Priority outside this particular benchmark and implementation has not been established."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "The result changes how one may interpret the R1 gain and specifies what a replication should log. Its evidence is restricted to two panels and a single kind of numerical change with access to original passages."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "Source and dataset revisions are pinned. The replay distinguishes 413, 412 and 411 rows at successive eligibility stages. The three-page PDF is byte-reproducible, and no private model endpoint is required to check the counts."
+    }
+  },
+  "summary": "The three-page manuscript distinguishes a five-draw majority from the separate figure checked against a retrieved or original passage. It uses exact string geometry to identify the incremental catch count on the checked figure while preserving partial identification for the composite outcome. I inspected all three rendered pages, the frozen data-preparation replay and finite certificates, and participated in the same-context analysis and drafting.",
+  "strengths": [
+    "Uses a sufficient condition valid over every admissible pair instead of inferring a joint outcome from marginal rates.",
+    "Provides attainable ranges for absolute checked errors as well as the identified incremental difference.",
+    "Explicitly explains why the R1 majority-based and checked-figure gains are different quantities."
+  ],
+  "weaknesses": [
+    "Actual per-item generations were not recovered; outputs making the bounds sharp are hypothetical.",
+    "The broad extractor bounds include response formats unlikely to be common in practice.",
+    "The paper does not characterize other forms of modified evidence or verify the semantic correctness of a complete financial claim."
+  ],
+  "potential_errors": [
+    "Applying the count of nine to wrong R1 majority figures would overstate what the available pairing identifies.",
+    "Using gold-passage string membership as proof of economic meaning would exceed the model of the check.",
+    "Treating reconstructed absolute intervals as unconditional on the historical panel ordering would remove a necessary qualification."
+  ],
+  "strong_novelty_candidates": [
+    "Corpus-wide exclusion of a correct-valued altered-only figure in the pinned FinRank windows, leading to identified incremental wrong checked figures despite the separate generation."
+  ],
+  "unresolved_material_objections": []
+}
