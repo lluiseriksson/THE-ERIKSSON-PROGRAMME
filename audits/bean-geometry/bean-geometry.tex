@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\begin{document}
+\begin{center}{\LARGE\bfseries Geometry and response scaling in a\\[3pt] superconducting-film regression tree}\\[8pt]
+Lluis Eriksson\\[2pt]\small Working manuscript, 20 November 2026\end{center}
+\textbf{Abstract.} A comparison of two printed rectangular Bean-model formulas gives a factor of $3/2$ at the nominal dimensions of the superconducting films studied by Lin and coauthors. Their public learning notebook starts with derived current densities. We ask which conclusions survive a common rescaling of those labels. Sample ranks survive. A recursively fitted oblique-interval tree need not: rescaling a previous response-dependent projection changes its relative ridge penalty against the next raw feature. We exhibit a four-point candidate node whose optimal impurity rises from zero to $1/6$ after undoing the response units, and give a separate root-stopping witness. Normalizing the response with a training-fold scale yields an exactly equivariant procedure in exact arithmetic. These results identify sensitivity of the method, without assigning a conversion error to the experimental data.
+
+\section{Two denominators for one specimen}
+Lin et al.\ \cite{lin} report magnetization hysteresis measurements on EuBCO films in a perpendicular field. Their article-in-press describes nominal $2\,\mathrm{mm}\times3\,\mathrm{mm}$ pieces. In its equation (1) and adjacent definitions the outside length in the denominator is the longer side $a$, while the factor in parentheses uses the shorter-to-longer ratio $b/a$. Polichetti et al.\ \cite{pol} derive the isotropic rectangular expression using the shorter length outside and the same ratio inside. Writing $L$ for the longer side and $w$ for the shorter, the two evaluations at a common loop width are
+\[
+ J_{\mathrm{printed}}=\frac{K\,\Delta M}{L(1-w/(3L))},\qquad
+ J_{\mathrm{short}}=\frac{K\,\Delta M}{w(1-w/(3L))}.
+\]
+Here $K$ is common after conversion to the same units. With lengths in cm, $\Delta M$ in emu/cm$^3$, and $J$ in A/cm$^2$, $K=20$. The parenthesis is $7/9$ for the nominal pieces. The two denominators are $7/30$ and $7/45$ cm, respectively. For a nonzero width, $J_{\mathrm{short}}/J_{\mathrm{printed}}=L/w=3/2$. The ratio is independent of film thickness at fixed $\Delta M$ and survives a coherent change of units.
+
+The public training interface takes four growth variables and a derived label at 50 K and 6 T \cite{code}. It does not calculate the label from the loop. With a common nominal geometry the alternative values are proportional, so rankings, ratios of nonzero values and the maximizer of observed labels are preserved. Either formula can generate any one reported positive label with a suitably chosen unobserved loop width. The label table alone therefore cannot establish which formula generated it.
+\newpage
+\section{A recursive ridge projection changes the question}
+A prediction from an already fitted tree with its leaf means rescaled is distinct from fitting the published procedure again after changing every label. At the root, the candidate intervals use raw normalized growth variables. In a regression node with fixed child membership, the squared-error decrease scales by $c^2$ when the response is multiplied by $c>0$. At the first oblique stage a ridge fit without intercept on fixed columns has coefficients linear in the response. Its score then scales by $c$, preserving interval membership in exact arithmetic. Both observations presume that fitting reaches the same node.
+
+At a later stage the notebook appends the preceding score $z$ and fits a new projection jointly with a raw column $x$. Assume the preceding score scales by $c$ and membership has remained fixed. Write the original ridge penalty as $\alpha>0$. Dividing the new objective by $c^2$ and expressing its fitted score in the old response units gives the effective objective
+\[
+ \min_{u,v}\ \|y-zu-xv\|_2^2+
+ \alpha\left(\frac{u^2}{c^2}+v^2\right).
+\]
+Indeed the coefficients on the new columns $(cz,x)$ for target $cy$ are $(u,cv)$. The relative penalty has changed. Positive scaling preserves the order of the observed responses, yet the refitted scores can change order.
+
+\textbf{Exact candidate-node witness.} Take the four rows $(z,x)=(0,0),(1,0),(0,1),(1,1)$ in that order, responses $(10,10,11,11)$, and $\alpha=1$. Before rescaling the normal equations have diagonal entries $(3,3)$, off-diagonal entry 1, and right-hand side $(21,22)$. Their solution is $(41/8,45/8)$. The scores order the rows $1,2,3,4$. One interval separates the two label values exactly.
+
+Now use $c=3/2$ and express scores in the original response units. The first diagonal entry becomes $2+4/9$, and the solution is $(123/19,295/57)$. The scores order the rows $1,3,2,4$. The two response levels alternate. Neither an interval nor its complement separates them. The best split isolates a singleton, leaving a three-row group with two labels of one value and one of the other. Its residual sum of squares is $2/3$; averaged over all four rows the split loss is $1/6$. This is a candidate-node statement, not a reconstruction of any experimental node.
+
+The public fitted tree contains nodes combining an earlier projected feature with a raw variable \cite{tree}. It is therefore relevant to distinguish these stages. Which splits would change on refitting those films is a separate empirical question.
+\newpage
+\section{Stopping, tests and a scale-equivariant wrapper}
+The same code stops splitting if the node's mean squared deviation is below $10^{-6}$ in the supplied label units. With one binary feature $(0,0,1,1)$ and labels $(1,1,1.0016,1.0016)$, root variance is $6.4\times10^{-7}$. Multiplication by $3/2$ makes it $1.44\times10^{-6}$. With a depth and minimum sample size permitting a split, the original fit returns a single leaf. The rescaled fit can split the two feature groups perfectly. This example concerns the stopping rule, whereas the four-row construction above changes the best attainable split loss away from that threshold.
+
+The companion test calls the training and prediction methods of the source-pinned notebook on synthetic inputs. It checks both constructions. It also searches up to 150 panels of 24 rows generated with seed 20261120 for a pair of refits with the same first two levels of training membership and different third-level membership. The acceptance criteria require a largest rescaled-back prediction difference above or equal to 0.01 and minimum positive node variance of at least $10^{-4}$ in original units. In the returned panel, four rows switch children at depth three, and the largest training prediction difference in the original units is 0.9740. The complete panel and partitions permit direct replay. This is an existence search and provides no estimate of a failure frequency in materials data.
+
+\textbf{Response normalization.} Let $A(X,y)$ be any deterministic training and prediction procedure on a fixed training fold. Choose a positive response scale $s(y)$ satisfying $s(cy)=c\,s(y)$ for $c>0$; for example, take the maximum absolute training response for a nonzero vector. Predict by
+\[
+  B(X,y)(x)=s(y)\,A\bigl(X,y/s(y)\bigr)(x).
+\]
+The normalized training inputs for $y$ and $cy$ are identical. Thus $B(X,cy)(x)=cB(X,y)(x)$ in exact arithmetic. Define $B$ as zero for the all-zero training response. For nested validation, estimate the scale anew within each training fold. With deterministic tie handling, comparison by a pooled mean square error in original response units multiplies every candidate's error by $c^2$ and preserves its minimizers. This argument assumes that any absolute rounding or stopping used to select hyperparameters is applied in normalized units or transformed consistently.
+
+The wrapper defines a different estimator. It gives a reproducibility check across a common rescaling; it does not identify an instrument calibration, remove anisotropy, or correct specimen-specific size differences. A direct test of the experimental conversion would need independent loop widths or moments and volumes linked to the exact specimens and tabulated labels.
+
+\section*{Model assessments and review context}
+OpenAI Codex assisted with the calculations, manuscript and tests in a shared authoring context. The working manuscript has no documented independent peer review. Any assessment of these exact PDF bytes is recorded separately with its provenance.
+\newpage
+\section*{Sources and reproducibility}
+The analysis uses the article-in-press version of Lin et al. available on 20 November 2026. Its methods fix the geometric convention compared here. A later version may clarify the notation. The machine-learning evidence is tied to the authors' public Git revision \texttt{c0f5ea1cec8d}~\cite{code}, including the data schema and saved tree. We did not observe the magnetometer-to-label conversion through this interface. No numerical alteration to the authors' published dataset is proposed.
+
+The companion script \texttt{bean\_label\_scale.py} verifies the notebook's SHA-256 before loading the two class definitions containing the training methods. It uses no experimental data. Run it with Python, NumPy and scikit-learn. The artifact package supplies the exact input pin, the returned environment versions and the panel selected by the declared synthetic search. Ordinary and optimized Python modes are checked. Exact arithmetic in the candidate-node example is independent of those floating-point runs.
+
+\begin{thebibliography}{9}
+\bibitem{lin} G. Lin, P. Hu, X. Xia et al. Interpretable decision tree-assisted optimization of PLD growth of EuBa$_2$Cu$_3$O$_{7-\delta}$ films. \emph{NPG Asia Materials}, article in press, 18 November 2026. Methods, equation (1). \href{https://doi.org/10.1038/s41427-026-00686-z}{doi:10.1038/s41427-026-00686-z}.
+\bibitem{pol} M. Polichetti, A. Galluzzi, R. Kumar and A. Goyal. Equation for calculation of critical current density using the Bean's model with self-consistent magnetic units to prevent unit conversion errors. \emph{Materials} 18 (2025), 269. Equations (2) and (3). \href{https://doi.org/10.3390/ma18020269}{doi:10.3390/ma18020269}.
+\bibitem{code} G. Lin et al. \emph{Ob-Int-CART}, source notebook and data schema. \href{https://github.com/DavidLin628/Ob-Int-CART/tree/c0f5ea1cec8dba55a54039564b5e8104b8c3a69c}{Pinned repository}.
+\bibitem{tree} G. Lin et al. Saved oblique-interval tree at the same revision. \href{https://github.com/DavidLin628/Ob-Int-CART/blob/c0f5ea1cec8dba55a54039564b5e8104b8c3a69c/Ob_Int_CART.dot}{Tree topology and coefficients}.
+\end{thebibliography}
+\end{document}
