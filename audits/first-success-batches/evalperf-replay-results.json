@@ -1,0 +1,340 @@
+{
+  "inputs": {
+    "HumanEval/0": 80,
+    "HumanEval/113": 97,
+    "HumanEval/119": 66,
+    "HumanEval/120": 19,
+    "HumanEval/121": 33,
+    "HumanEval/149": 84,
+    "HumanEval/16": 93,
+    "HumanEval/20": 88,
+    "HumanEval/24": 95,
+    "HumanEval/26": 26,
+    "HumanEval/31": 95,
+    "HumanEval/33": 82,
+    "HumanEval/34": 99,
+    "HumanEval/36": 97,
+    "HumanEval/37": 92,
+    "HumanEval/4": 92,
+    "HumanEval/49": 33,
+    "HumanEval/51": 100,
+    "HumanEval/54": 69,
+    "HumanEval/58": 100,
+    "HumanEval/59": 76,
+    "HumanEval/64": 59,
+    "HumanEval/74": 88,
+    "HumanEval/85": 70,
+    "HumanEval/86": 51,
+    "HumanEval/87": 80,
+    "HumanEval/89": 71,
+    "HumanEval/9": 78,
+    "HumanEval/90": 71,
+    "Mbpp/106": 97,
+    "Mbpp/108": 86,
+    "Mbpp/11": 61,
+    "Mbpp/111": 70,
+    "Mbpp/12": 96,
+    "Mbpp/123": 15,
+    "Mbpp/128": 100,
+    "Mbpp/129": 45,
+    "Mbpp/130": 82,
+    "Mbpp/137": 8,
+    "Mbpp/140": 98,
+    "Mbpp/141": 65,
+    "Mbpp/16": 1,
+    "Mbpp/166": 77,
+    "Mbpp/170": 83,
+    "Mbpp/19": 97,
+    "Mbpp/226": 88,
+    "Mbpp/230": 99,
+    "Mbpp/239": 23,
+    "Mbpp/240": 93,
+    "Mbpp/251": 80,
+    "Mbpp/256": 66,
+    "Mbpp/265": 51,
+    "Mbpp/281": 100,
+    "Mbpp/296": 94,
+    "Mbpp/3": 71,
+    "Mbpp/308": 80,
+    "Mbpp/392": 63,
+    "Mbpp/395": 99,
+    "Mbpp/4": 78,
+    "Mbpp/405": 99,
+    "Mbpp/414": 100,
+    "Mbpp/421": 98,
+    "Mbpp/424": 94,
+    "Mbpp/425": 100,
+    "Mbpp/428": 97,
+    "Mbpp/433": 24,
+    "Mbpp/437": 29,
+    "Mbpp/440": 26,
+    "Mbpp/446": 44,
+    "Mbpp/451": 71,
+    "Mbpp/456": 100,
+    "Mbpp/460": 100,
+    "Mbpp/474": 100,
+    "Mbpp/476": 100,
+    "Mbpp/477": 100,
+    "Mbpp/563": 47,
+    "Mbpp/572": 2,
+    "Mbpp/578": 94,
+    "Mbpp/586": 73,
+    "Mbpp/587": 95,
+    "Mbpp/588": 100,
+    "Mbpp/592": 9,
+    "Mbpp/597": 7,
+    "Mbpp/604": 57,
+    "Mbpp/610": 45,
+    "Mbpp/611": 87,
+    "Mbpp/62": 100,
+    "Mbpp/631": 7,
+    "Mbpp/632": 93,
+    "Mbpp/633": 82,
+    "Mbpp/644": 66,
+    "Mbpp/720": 98,
+    "Mbpp/725": 57,
+    "Mbpp/732": 88,
+    "Mbpp/740": 98,
+    "Mbpp/744": 100,
+    "Mbpp/75": 100,
+    "Mbpp/750": 94,
+    "Mbpp/753": 93,
+    "Mbpp/754": 30,
+    "Mbpp/755": 27,
+    "Mbpp/757": 67,
+    "Mbpp/758": 89,
+    "Mbpp/760": 59,
+    "Mbpp/764": 100,
+    "Mbpp/766": 99,
+    "Mbpp/775": 96,
+    "Mbpp/777": 4,
+    "Mbpp/781": 92,
+    "Mbpp/800": 78,
+    "Mbpp/805": 97,
+    "Mbpp/808": 97,
+    "Mbpp/88": 100,
+    "Mbpp/9": 4,
+    "Mbpp/90": 100,
+    "Mbpp/94": 86,
+    "Mbpp/96": 99,
+    "Mbpp/97": 97
+  },
+  "model": "CodeQwen1.5-7B-Chat",
+  "n_samples": 100,
+  "perfect": 18,
+  "results": [
+    {
+      "cap": 2,
+      "full": {
+        "lower": 9999999999999999,
+        "places": 16,
+        "upper": 10000000000000000
+      },
+      "full_miss": {
+        "lower": 13182750303306816,
+        "places": 43,
+        "upper": 13182750303306817
+      },
+      "panel": "all",
+      "ratio": {
+        "lower": 13734324772656411,
+        "places": 29,
+        "upper": 13734324772656412
+      },
+      "replacement": true,
+      "stopped": {
+        "lower": 13734324772656411,
+        "places": 29,
+        "upper": 13734324772656412
+      },
+      "tasks": 118
+    },
+    {
+      "cap": 2,
+      "full": {
+        "lower": 9999999999999999,
+        "places": 16,
+        "upper": 10000000000000000
+      },
+      "full_miss": {
+        "lower": 56756612779366994,
+        "places": 44,
+        "upper": 56756612779366995
+      },
+      "panel": "all",
+      "ratio": {
+        "lower": 17985246093238269,
+        "places": 29,
+        "upper": 17985246093238270
+      },
+      "replacement": false,
+      "stopped": {
+        "lower": 17985246093238269,
+        "places": 29,
+        "upper": 17985246093238270
+      },
+      "tasks": 118
+    },
+    {
+      "cap": 3,
+      "full": {
+        "lower": 9999999999999999,
+        "places": 16,
+        "upper": 10000000000000000
+      },
+      "full_miss": {
+        "lower": 79930025315949212,
+        "places": 125,
+        "upper": 79930025315949213
+      },
+      "panel": "all",
+      "ratio": {
+        "lower": 94493246614703939,
+        "places": 27,
+        "upper": 94493246614703940
+      },
+      "replacement": true,
+      "stopped": {
+        "lower": 94493246614703939,
+        "places": 27,
+        "upper": 94493246614703940
+      },
+      "tasks": 118
+    },
+    {
+      "cap": 3,
+      "full": {
+        "lower": 9999999999999999,
+        "places": 16,
+        "upper": 10000000000000000
+      },
+      "full_miss": {
+        "lower": 98973835646747946,
+        "places": 130,
+        "upper": 98973835646747947
+      },
+      "panel": "all",
+      "ratio": {
+        "lower": 12358394439625041,
+        "places": 26,
+        "upper": 12358394439625042
+      },
+      "replacement": false,
+      "stopped": {
+        "lower": 12358394439625041,
+        "places": 26,
+        "upper": 12358394439625042
+      },
+      "tasks": 118
+    },
+    {
+      "cap": 2,
+      "full": {
+        "lower": 9999999999999718,
+        "places": 16,
+        "upper": 9999999999999719
+      },
+      "full_miss": {
+        "lower": 28174250068466589,
+        "places": 30,
+        "upper": 28174250068466590
+      },
+      "panel": "interior",
+      "ratio": {
+        "lower": 46308295270448396,
+        "places": 29,
+        "upper": 46308295270448397
+      },
+      "replacement": true,
+      "stopped": {
+        "lower": 46308295270447091,
+        "places": 29,
+        "upper": 46308295270447092
+      },
+      "tasks": 100
+    },
+    {
+      "cap": 2,
+      "full": {
+        "lower": 9999999999999802,
+        "places": 16,
+        "upper": 9999999999999803
+      },
+      "full_miss": {
+        "lower": 19709174615188623,
+        "places": 30,
+        "upper": 19709174615188624
+      },
+      "panel": "interior",
+      "ratio": {
+        "lower": 61981544044225209,
+        "places": 29,
+        "upper": 61981544044225210
+      },
+      "replacement": false,
+      "stopped": {
+        "lower": 61981544044223987,
+        "places": 29,
+        "upper": 61981544044223988
+      },
+      "tasks": 100
+    },
+    {
+      "cap": 3,
+      "full": {
+        "lower": 9999999999999999,
+        "places": 16,
+        "upper": 10000000000000000
+      },
+      "full_miss": {
+        "lower": 132899324087651333,
+        "places": 79,
+        "upper": 132899324087651334
+      },
+      "panel": "interior",
+      "ratio": {
+        "lower": 17346588410144071,
+        "places": 26,
+        "upper": 17346588410144072
+      },
+      "replacement": true,
+      "stopped": {
+        "lower": 17346588410144071,
+        "places": 26,
+        "upper": 17346588410144072
+      },
+      "tasks": 100
+    },
+    {
+      "cap": 3,
+      "full": {
+        "lower": 9999999999999999,
+        "places": 16,
+        "upper": 10000000000000000
+      },
+      "full_miss": {
+        "lower": 12334760061945318,
+        "places": 80,
+        "upper": 12334760061945319
+      },
+      "panel": "interior",
+      "ratio": {
+        "lower": 22833035458347703,
+        "places": 26,
+        "upper": 22833035458347704
+      },
+      "replacement": false,
+      "stopped": {
+        "lower": 22833035458347703,
+        "places": 26,
+        "upper": 22833035458347704
+      },
+      "tasks": 100
+    }
+  ],
+  "sha256": "b42c8e5b5d5bcbd82db388653590e0376604eabf6ba36db26ad65fa96ebdf854",
+  "temperature": 1.0,
+  "tests": 8,
+  "url": "https://raw.githubusercontent.com/evalplus/evalplus.github.io/87418456d3a8c2bc6265f24ff91d2dd0e7993f4b/results/evalperf/Qwen--CodeQwen1.5-7B-Chat_vllm_temp_1.0_evalperf_results.brief.json",
+  "zero": 0
+}

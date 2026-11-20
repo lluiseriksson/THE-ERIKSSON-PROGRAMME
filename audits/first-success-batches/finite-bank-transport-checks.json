@@ -1,0 +1,12 @@
+{
+  "lag_ratios": 4048,
+  "single_pass_checks": 56,
+  "small_witness": {
+    "bank_size": 3,
+    "banks": 2,
+    "cap": 2,
+    "expected_score": "2/3",
+    "full": "4/9"
+  },
+  "strata": 77
+}

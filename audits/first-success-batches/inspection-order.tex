@@ -1,0 +1,96 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,geometry,hyperref}
+\geometry{left=26mm,right=26mm,top=22mm,bottom=24mm}
+\hypersetup{colorlinks=true,urlcolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prb}{\mathbb P}
+\title{\bfseries Transferring inspection order across code models\\for exact pooled benchmark decisions}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+When a benchmark decision depends only on whether enough candidate programs pass, the order of checking candidates can reduce work without changing the decision. We replay a finite-bank experiment on public EvalPerf correctness counts: draw two distinct candidates from each of 118 tasks, and stop as soon as the pooled threshold is decided. For CodeQwen1.5-7B-Chat at a threshold of 118 hits, ordering tasks by another model's correctness reduces the expected number of inspections from 159.12 under uniformly shuffled slots to 131.75. Reversing the proxy ranking costs 176.37. In a secondary comparison, a ranking based on other model groups beats the shuffled baseline for 30 of 31 eligible target releases and incurs a loss for one. Changing the threshold reverses the result: under the primary ranking the greatest penalty against shuffled slots is 79.40 inspections. We derive and verify an exact identity explaining why savings must be paid back across thresholds for a threshold-independent order. All expectations condition on the released banks and count unit-cost label inspections.
+\end{abstract}
+\section{What is being decided?}
+Suppose an evaluator can buy the pass/fail label of any one of $T$ already selected candidates. The question is whether at least $r$ of them pass. Two passes on one task contribute two hits. The rule concerns an aggregate production target; requiring coverage of every task, estimating the average pass rate, or ranking models by code execution speed would pose different decision problems.
+
+After $k$ checks and $h$ hits the attainable number of total hits lies between $h$ and $h+T-k$. Stop with a positive decision if $h\ge r$ and with a negative decision if $h+T-k<r$. Before either condition holds there exist two completions of the same observed path giving opposite answers. For a fixed order this rule uses the shortest prefix sufficient to certify the result from binary labels alone. The pathwise statement allows arbitrarily correlated candidate outcomes. Distributional assumptions enter only to calculate the expected number of checks.
+
+Curtailed inspection has a long history in acceptance sampling [1]. Stochastic Boolean function evaluation studies expected testing costs, including threshold functions, under specified input laws [2]. Our question is empirical: how far can a priority order learned from other models on the same tasks reduce inspections in a two-draw finite-bank design, and over which thresholds does it hurt?
+
+\newpage
+\section{Data and prospective rules for retrospective replay}
+The EvalPerf authors released correctness and efficiency summaries for code generation [3]. We use only the correctness counts. Every eligible target file contains all 118 task identifiers, 100 sampled solutions per task, temperature 1 and integer correctness percentages. At this denominator the percentage equals the passing count $c_i$. Candidate text, timings and hidden test executions are not needed. The pinned directory contains 31 eligible individual releases. The combined file, a script, two alternative-instruction files and one incompatible standard release were excluded. The directory, exact input digests and inclusion decisions are recorded with the analysis [4,5].
+
+Independently in each task, sample two distinct labelled slots uniformly and in random order from its 100 candidates. This defines the full panel before testing. It does not assume independent outcomes for two draws from the same bank. The primary target is CodeQwen1.5-7B-Chat and the proxy is Yi-Coder-9B-Chat, the first alphabetically eligible other file. After earlier work on the target's counts, we froze this proxy and the sorting rule before evaluating inspection costs. No target count enters the primary ranking. In descending and ascending orders, ties use lexicographic task identifier, and the two slots of a task are adjacent. Lexicographic order ignores model counts. The shuffled baseline permutes all 236 slots uniformly and can split pairs.
+
+For the secondary comparison, each eligible release serves once as target. The proxy is the mean per-task correctness of releases outside the target's declared group. The code groups Qwen/QwQ, names containing Llama, DeepSeek, GPT/o1, Claude, Gemini, Mistral/Codestral and Gemma separately; unmatched names use the repository owner prefix or the release name. These string-based groups hold out the target and similarly named relatives. Model derivations across differently named groups and shared training data remain possible. The 31 rows share tasks and proxy data; they are descriptive cases and do not supply 31 independent replications. No fitting or tuning of weights uses a target row.
+
+\section{Exact calculation}
+Write $D=100$, $q_i=D-c_i$, and $m=118$. For a completed task block, the probabilities of zero, one and two hits have common denominator $D(D-1)$ and numerators
+\[
+q_i(q_i-1),\qquad 2q_ic_i,\qquad c_i(c_i-1).
+\]
+For the first slot alone, the probabilities are $q_i/D$ and $c_i/D$. Convolving the complete blocks and, at odd-length prefixes, the first slot of the next block gives the law of the cumulative count $H_k$. For the stopping time $\tau_r$ the expected cost is
+\[
+\E\tau_r=\sum_{k=0}^{T-1}\Prb\{H_k<r\le H_k+T-k\}.
+\]
+All comparisons use rational arithmetic. For uniform shuffling, conditional on $h$ total hits the mean is $r(T+1)/(h+1)$ if $h\ge r$, and $(T-r+1)(T+1)/(T-h+1)$ otherwise. Uniform hit positions divide the misses into $h+1$ exchangeable gaps. Counting the expected gaps before hit $r$, or interchanging the labels for a negative decision, gives these expressions.
+
+\newpage
+\section{Savings, a loss, and the effect of changing the target}
+\begin{center}
+\begin{tabular}{@{}lr@{}}
+\toprule
+Inspection order for the primary comparison & Mean label checks\\
+\midrule
+Yi-Coder proxy, easier tasks first & 131.7544\\
+Uniform shuffle of all slots & 159.1166\\
+Lexicographic task blocks & 159.5012\\
+Yi-Coder proxy, harder tasks first & 176.3658\\
+Exhaustive inspection & 236.0000\\
+\bottomrule
+\end{tabular}
+\end{center}
+At $r=118$, ranking by Yi-Coder saves 27.36 checks against shuffling and 44.61 against sorting the same blocks in the opposite direction. Relative to lexicographic blocks the saving is 27.75. All four early-stopping policies give the exhaustive result on every panel. In the secondary study the descending proxy beats each of the three controls for 30 of the 31 releases. For Meta-Llama-3-8B-Instruct it costs 219.90 checks, exceeding both the shuffled cost of 210.94 and the ascending cost of 183.14. Costs for every target and the individual proxy memberships are included in the executable supplement [5].
+
+\textbf{A pathwise limit on the benefit of any fixed ranking.}
+For the same full order, consider all $T$ thresholds simultaneously. After $k$ observations the unresolved thresholds are the integers in $(H_k,H_k+T-k]$. A hit settles their smallest member and a miss settles their largest. At every inspection exactly one previously unresolved threshold becomes settled. Therefore for every realization
+\[
+\{\tau_1,\ldots,\tau_T\}\ \text{as a multiset}=\{1,\ldots,T\},
+\qquad \sum_{r=1}^T\tau_r=T(T+1)/2 .
+\]
+The same holds under random or outcome-adaptive orders when one common order can be run independently of the chosen threshold. For an independent uniformly weighted threshold the entire cost distribution is uniform. The result gives no such restriction on a family of policies that deliberately use the requested threshold to select their next slot.
+
+For the primary comparison we then evaluated every $r$ on the same released banks, holding the rankings fixed. Against uniform shuffling the descending proxy saves inspections for $5\le r\le174$ and for $r=236$, and costs more for $1\le r\le4$ and $175\le r\le235$. Its largest saving is 27.98 checks at $r=135$, and its largest penalty is 79.40 at $r=218$. Against reverse-ranked blocks it saves checks at $r=1$ and $3\le r\le171$, and costs more at $r=2$ and $172\le r\le236$. Signs near equality were decided with exact fractions. Summing the expected costs over all thresholds gives 27,966 under each of the three orderings. Ranking policies should be evaluated at the thresholds their users actually face.
+
+\newpage
+\section{Scope, reproduction and review}
+The decision itself is preserved exactly. The cost comparison refers to two uniformly sampled slots per task from fixed public banks. These are retrospective expectations, without sampling-error bars for fresh generations. The task-ranking information is free in the reported cost only because the proxy summaries were already public. Offline generation of candidates, per-program variation in execution time, caching, batch parallelism, and interruption costs can change the economic comparison. An implementation needing every per-task label for other purposes cannot count each omitted inspection as a saving.
+
+The underlying stopping rule and order-statistic formula are established. The contribution is the pinned transfer comparison with a reported failure, an exact sensitivity profile across thresholds, and the pathwise accounting of inspection costs for this application. We have not established priority for the general counting identity. The companion first-hit study [6] investigates the statistical consequences of discarding later outcomes. Here the evaluator controls the order in advance and determines the complete panel's decision exactly.
+
+\textbf{Reproduction.} The first program verifies the Git object identifier for each downloaded result before extracting counts and computes every eligible target and control. The second program evaluates all thresholds for the primary comparison, using frozen labels and orders. Its interval updates count precisely which thresholds are unresolved at each prefix. Direct enumeration checks the primary cost recursion for all 64 three-task count vectors with bank size three. Sixteen two-task banks test the full-threshold calculation and the pathwise identity against labelled enumeration. The two computations agree in exact fractions at $r=118$. Source counts, complete numerical results, exact arithmetic and frozen selection rules accompany the study [5].
+
+\textbf{Model assessments and review context.} OpenAI Codex assisted with design, analysis, writing and computational verification. Any assessment of this particular PDF is identified by its file digest in the accompanying record. The author administers AIRR. This manuscript is a working-paper candidate; independent peer review has not been documented.
+
+\small
+\textbf{Primary sources and reproducible materials}
+
+[1] M. A. Girshick, F. Mosteller and L. J. Savage. Unbiased estimates for certain binomial sampling problems with applications. \emph{Annals of Mathematical Statistics} 17 (1946), 13--23. \href{https://doi.org/10.1214/aoms/1177731018}{Publisher record}.
+
+[2] D. Gkenosis, N. Grammel, L. Hellerstein and D. Kletenik. The stochastic Boolean function evaluation problem for symmetric Boolean functions. \emph{Discrete Applied Mathematics} (2021). \href{https://www.sciencedirect.com/science/article/pii/S0166218X21004790}{Publisher record}.
+
+[3] Evaluating language models for efficient code generation. COLM 2024. \href{https://arxiv.org/abs/2408.06450}{Authors' manuscript}.
+
+[4] EvalPlus authors. \href{https://github.com/evalplus/evalplus.github.io/tree/87418456d3a8c2bc6265f24ff91d2dd0e7993f4b/results/evalperf}{Pinned EvalPerf results directory}.
+
+[5] L. Eriksson. \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/77f5f314a1984aa05690775cb2fbcbf9759be0d6/audits/first-success-batches}{Analysis programs, frozen protocols and exact results}.
+
+[6] L. Eriksson. \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/d38ff1364c05b1ad0be15b5283f5bdbb7d01a3a7/audits/first-success-batches/global-quorum.md}{Deciding the pooled target with fewer candidate checks}. Technical supplement (2026).
+\end{document}
+

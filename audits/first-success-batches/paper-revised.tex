@@ -1,0 +1,90 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.90in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,hyperref}
+\hypersetup{hidelinks}\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\begin{document}
+\begin{center}{\LARGE\bfseries The price of an unbiased reliability score\\ after stopping each batch at its first success}\\[8pt]
+Lluis Eriksson \quad $\cdot$ \quad 20 November 2026
+\end{center}
+\begin{abstract}
+Suppose a benchmark logs independent batches of identical Bernoulli trials, terminating each batch at its first success or its own cap. Can these logs estimate the chance of at least $m$ successes in the full budget of $T$ trials, where $m$ is the number of batches? Among all nonnegative scores unbiased for every success probability, the smallest possible upper bound is $\binom{T-1}{m-1}$, regardless of how the budget is split. An explicit score attains this bound and minimizes variance at every success probability within the nonnegative unbiased class. Balancing the batch caps minimizes that variance at fixed full budget, while increasing the expected number of trials actually observed. With unrestricted batch-specific success probabilities a nonnegative unbiased score does not exist for $1<m<T$. With two fixed task difficulties and three attempts per batch, the full-budget probability can tend to one while the calibrated mean score tends to zero. We also give a bounded reporting alternative.
+\end{abstract}
+\section*{The estimand and the log}
+In stochastic evaluation, passing at least once within a budget and passing repeatedly within that budget measure different kinds of reliability. Chen et al.\ [1] report a fixed-sample estimator of pass@$k$. Sherlock, Golightly and Lee [2] estimate a Bernoulli success probability under a success threshold and an iteration cap as a building block for a particle filter. Classical work treats unbiased estimation under binomial stopping plans [3]. Here the target is a binomial \emph{tail} and the observation consists of \emph{multiple} first-success logs. We make no claim about performance on a particular language model or about particle-filter likelihoods.
+
+Fix $m\ge1$ and positive integer caps $n_1,\ldots,n_m$, with $\sum n_i=T$. All proposed trials are independent Bernoulli with a common, unknown $p\in(0,1)$. Each log gives the first success position, or a failure flag after exhausting the cap. Write $q=1-p$. The target is
+\[
+ B_{T,m}(p)=\Pr\{\mathrm{Bin}(T,p)\ge m\}.
+\]
+Several successes in one full batch count toward this target. Merely checking whether every logged batch succeeded estimates a different probability. A score is a function of the logs and, optionally, auxiliary randomness independent of the trials. Its rule cannot depend on the unknown $p$.
+
+\textbf{A two-batch example.} Let both caps equal two. If either batch has no recorded success, every nonnegative unbiased score must be zero almost surely. With both successful, give score one if at least one succeeded immediately and three if both succeeded on their second draw. The expectation is $p^2(1+2q+3q^2)=B_{4,2}(p)$. On the last record the conditional mean score is forced to be three. Thus this simple setting already excludes an unbiased score taking values only in $[0,1]$.
+
+\newpage
+\section*{A sharp bound and its variance-minimizing construction}
+Let $A_l$ count integer vectors $(u_1,\ldots,u_m)$ with $0\le u_i<n_i$ and $\sum u_i=l$. Its generating polynomial is $\prod_i(1+x+\cdots+x^{n_i-1})$. Every $0\le l\le T-m$ is represented. Define $C_l=\binom{m+l-1}{m-1}$. When all batches record success, let $l$ be the total number of failures preceding their successes.
+
+\textbf{Theorem.} The score $Z=C_l/A_l$ on an all-success record, and $Z=0$ otherwise, is nonnegative and unbiased for $B_{T,m}$. It minimizes variance simultaneously for all $p$ among all nonnegative unbiased scores. The minimum essential upper bound over the same class is $C_{T-m}=\binom{T-1}{m-1}$. Its second moment is
+\[
+ E_p Z^2=p^m\sum_{l=0}^{T-m}\frac{C_l^2}{A_l}q^l .
+\]
+
+\textbf{Proof.} Condition away any auxiliary randomness. A record with $j$ successful batches and $l$ observed failures has probability $p^j q^l$. Its nonnegative conditional mean cannot be positive if $j<m$, since $B_{T,m}(p)=O(p^m)$ as $p\downarrow0$. A sum of nonnegative terms cannot cancel its lower-order contribution. Expressing the target by the time of the $m$th success in a full sequence gives
+\[
+ B_{T,m}(p)=p^m\sum_{l=0}^{T-m} C_l q^l.
+\]
+Each all-success record of total wait $l$ has probability $p^m q^l$. Equality for every $p$ equates coefficients after division by $p^m$. Hence the conditional means of the $A_l$ records sum to $C_l$. Equal weights $C_l/A_l$ at each $l$ minimize the sum of their squares, strictly unless the weights coincide. Extra randomized variation only increases the second moment. At $l=T-m$ there is just one record: each success arrived on its batch's last permitted trial. Its forced conditional mean is $C_{T-m}$. As $A_l\ge1$ and $C_l\le C_{T-m}$, the displayed score attains that bound. \hfill$\square$
+
+\textbf{Choosing the caps.} Among partitions of a fixed $T$ into $m$ positive integer caps, the balanced partition (caps differing by at most one) uniquely minimizes the optimum variance up to permutation, for every $0<p<1$. To see this, put $U_n=1+\cdots+x^{n-1}$, with constant term one. For $a\ge b+2$,
+\[
+ U_{a-1}U_{b+1}-U_a U_b=x^b+\cdots+x^{a-2}.
+\]
+Multiplying by the other factors preserves coefficientwise domination and at least one strict increase. Balancing repeatedly thus increases the $A_l$ and strictly reduces the second moment. The mean is unchanged. The worst required score is unchanged too. As an illustration, three batches sharing twelve trials require a possible score of at least 55, for every allocation.
+
+The expected number of observed trials is $\sum_i(1-q^{n_i})/p$. Because this summand has decreasing increments, the same balancing step \emph{increases} expected work. The optimality statement holds at fixed maximum budget and by itself does not optimize the variance--cost product.
+
+\newpage
+\section*{Heterogeneity and a bounded reporting alternative}
+If a separate arbitrary probability $p_i$ governs each batch, the natural full-budget target is the probability that $\sum_i\mathrm{Bin}(n_i,p_i)\ge m$ for independent summands. Suppose $1<m<T$. Some batch has capacity at least two; select a different batch $j$. Its complement has at least $m$ trials. On the homogeneous submodel the theorem forces zero conditional mean whenever fewer than $m$ batches succeed. Let $p_j\downarrow0$ with every other probability fixed strictly between zero and one. The expected score tends to zero: only the finitely many all-success records contribute, each has finite conditional mean and each requires success in batch $j$. The full-budget target tends to a strictly positive probability because the other batches alone can supply $m$ successes. This proves impossibility even without an upper bound. A shared success probability conditional on a task is sufficient for the homogeneous result; arbitrary distinct probabilities across batches are a different model.
+
+There is also a direct criterion for reporting any full-horizon threshold $1\le h\le T$ on the unit interval. A bounded score based on a partial log can be unbiased for $\Pr\{\mathrm{Bin}(T,p)\ge h\}$ for every $p$ only if the log already determines the full threshold event on every possible completion. Indeed, the conditional means of the score given total success count $k$ are its degree-$T$ Bernstein coefficients. The polynomials $\binom{T}{k}p^k(1-p)^{T-k}$ are linearly independent (divide by $q^T$). The coefficients must equal $\mathbf 1\{k\ge h\}$. Since the score lies in $[0,1]$, it must equal that indicator almost surely for every complete sequence. Conversely, a determined event supplies its own bounded score. This argument allows auxiliary randomness independent of the trials.
+
+This criterion specifies a repair for an existing incomplete record. If $s$ successes are known and $u$ trials are unobserved, the event is decided precisely when $s\ge h$ or $s+u<h$. Otherwise reveal missing trials one at a time, stopping at the first decision. Every still-undecided log admits completions on opposite sides of the threshold, so an unbiased unit-interval procedure confined to these $T$ trial positions cannot terminate earlier on such a log. This is a limit on reporting under the specified data model. It does not require an experimenter to collect extra data when estimation with bias or a different target is acceptable.
+
+\section*{A pooled target near one can receive a mean score near zero}
+Suppose the cap is $n\ge2$ in each of $m$ batches. The trials remain independent, but batch $i$ has its own success probability $p_i$. Let $S$ be the number of successes in all $mn$ potential trials. Write $\bar p$ and $g$ for the arithmetic and geometric means of the $p_i$, respectively, and $a_n=(n-1)^{n-1}/n^n$.
+
+\textbf{Theorem.} For fixed $n$, if $\liminf_{m\to\infty} n\bar p>1$ and $\limsup_{m\to\infty}g<a_n$, then $\Pr(S\ge m)\to1$ and $\mathbb E Z\to0$. The deficit tends to its maximum of one. No batch need have probability zero or one.
+
+\textbf{Proof.} Since $\mathbb E S=mn\bar p$ and $\operatorname{Var}S\le mn/4$, Chebyshev bounds $\Pr(S<m)$ by $n/(4m\delta^2)$ whenever $n\bar p\ge1+\delta$. Each all-success log has probability at most $\prod_i p_i$. Summing the calibrated weights over logs gives
+\[
+\mathbb E Z\le\binom{mn}{m}\prod_i p_i\le(g/a_n)^m .
+\]
+The last inequality uses the binomial probability of exactly $m$ successes at parameter $1/n$, which is at most one. Both claims follow. \hfill$\square$
+
+\textbf{A finite example.} Take three attempts per batch and an even number of batches, with half at $p_i=3/4$ and half at $p_i=1/50$. The expected full count is $231m/200$. For $z=3/4$, the event $S<m$ implies $z^S\ge z^m$. Factoring $\mathbb E z^S$ across the trials gives
+\[
+\Pr(S<m)\le\left[\frac{16}{9}\left(\frac{2587}{3200}\right)^3\right]^{m/2},
+\qquad \mathbb E Z\le(2187/3200)^{m/2}.
+\]
+With 300 batches, the full probability exceeds $0.999$ and the expected score is below $10^{-24}$. These numbers describe independent synthetic trials under the stated probabilities. The pooled target can be met by repeated successes on easier tasks, while the stopped score vanishes whenever one task exhausts its cap.
+
+\textbf{A finite sign certificate.} For positive $p_i$, put $C=\binom{mn}{m}$, $h=\binom{n}{2}n^{m-2}$ and $t=\max p_i$. The full probability exceeds the mean score if
+\[
+(1-t)^{mn-m}\left(1+\frac{h}{C}\sum_{i<j}\frac{(p_i-p_j)^2}{p_i p_j}\right)>1 .
+\]
+Indeed, for each $m$-subset of the labelled trials divide the product of its success probabilities by $\prod_i p_i$ and call it $v$. The sum of $\log v$ across subsets is zero by symmetry. In the sum of $v-1-\log v\ge0$ retain subsets taking two trials from batch $i$, none from batch $j$, and one from every other batch. Each ordered pair occurs $h$ times. Pairing reverse orientations gives precisely the displayed squared contrasts. Finally, the probability of exactly $m$ successes is at least $(1-t)^{mn-m}$ times the sum of subset products. Compare it with the bound $\mathbb E Z\le C\prod_i p_i$. The sufficient condition leaves the general sign at intermediate probabilities open.
+
+
+\textbf{Reproduction and scope.} The accompanying code additionally convolves the full and stopped count distributions for the two-difficulty example through 300 batches. The baseline Python code checks finite identities using exact fractions, enumerates cap partitions through $T=18$, and compares complete trajectories through $T=9$. With $p=1/2$ and caps $(2,2)$, the target is $11/16$. The score takes values zero, one and three. The formulae apply to independent attempts; correlation between attempts would require a different sampling model.
+
+\textbf{Model assessments and review context.} OpenAI Codex assisted with the derivation, verification and writing. The author operates AIRR. Any assessment of the frozen PDF is recorded with its hash and the evaluator's participation.
+
+\small
+[1] M. Chen et al. Evaluating Large Language Models Trained on Code. 2021. \href{https://arxiv.org/abs/2107.03374}{arXiv:2107.03374}.
+
+[2] C. Sherlock, A. Golightly and A. Lee. Robust, Partially Alive Particle Metropolis-Hastings via The Frankenfilter. \emph{Journal of Computational and Graphical Statistics} (2026). \href{https://doi.org/10.1080/10618600.2026.2732158}{doi:10.1080/10618600.2026.2732158}.
+
+[3] M. A. Girshick, F. Mosteller and L. J. Savage. Unbiased estimates for certain binomial sampling problems with applications. \emph{Annals of Mathematical Statistics} 17 (1946), 13--23. \href{https://doi.org/10.1214/aoms/1177731018}{doi:10.1214/aoms/1177731018}.
+\end{document}

@@ -1,0 +1,13 @@
+{
+  "conditional_means": [
+    "0",
+    "3/2 - g/2",
+    "g/2 - 3/2",
+    "1",
+    "1",
+    "g"
+  ],
+  "symmetry": "failure, early, late in rows and columns",
+  "bias": "-(p1-p2)^2",
+  "uniform_loss": "1-b"
+}

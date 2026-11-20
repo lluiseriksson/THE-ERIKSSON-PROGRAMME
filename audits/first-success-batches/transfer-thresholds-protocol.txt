@@ -1,0 +1,1 @@
+Enumerate all integer thresholds 1 through 236 in the original 118-task primary CodeQwen/Yi comparison, in the prespecified orders, holding the randomized target panel fixed. Report every sign interval vs uniform slots and reverse-order, without selecting a threshold for performance. Verify the conservation identity and compare at 118 with the original experiment.
