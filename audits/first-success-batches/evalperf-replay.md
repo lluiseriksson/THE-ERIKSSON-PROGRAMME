@@ -1,0 +1,22 @@
+# Retrospective calibration using the released EvalPerf correctness counts
+
+For CodeQwen1.5-7B-Chat at temperature 1.0 the EvalPlus release provides a correctness percentage for each of 118 tasks, based on 100 generated solutions per task. All 118 had at least one passing solution, and 18 had 100 passes. We used the percentages for correctness, including tasks with too few passing solutions for efficiency profiling. The release code calculates pass@1 from all tested candidates before applying the minimum-correct criterion for performance profiling. [Released model results](https://github.com/evalplus/evalplus.github.io/blob/87418456d3a8c2bc6265f24ff91d2dd0e7993f4b/results/evalperf/Qwen--CodeQwen1.5-7B-Chat_vllm_temp_1.0_evalperf_results.brief.json) and [evaluation code](https://github.com/evalplus/evalplus/blob/26d6d00bb1fd0fa37f39c99d5290da67891d1c5e/evalplus/evalperf.py).
+
+We ask what the first-hit score would report under an explicitly specified reassignment of these released outcomes. In each task independently, draw two or three solutions uniformly. Draw either with replacement (a Bernoulli experiment at the observed frequency) or without replacement (distinct candidates from its finite set). The full target is the probability that the total number of hits reaches the number of tasks m. The stopped experiment observes each task only until its first hit and applies the canonical score calibrated for homogeneous Bernoulli attempts. The same rule is evaluated in both designs; the without-replacement design is a sensitivity analysis outside its calibration assumptions. Alongside the full panel we specified in advance a second panel restricted to tasks with both observed passes and failures. A low mean stopped score here does not imply a low EvalPerf pass@1 or a measured decline in the model's reliability.
+
+| Panel | Attempts | Replacement | Full probability of missing the target | Mean stopped score |
+|---|---:|---|---:|---:|
+| All 118 | 2 | With | 1.3183 × 10⁻²⁷ | 1.3734 × 10⁻¹³ |
+| All 118 | 2 | Without | 5.6757 × 10⁻²⁸ | 1.7985 × 10⁻¹³ |
+| All 118 | 3 | With | 7.9930 × 10⁻¹⁰⁹ | 9.4493 × 10⁻¹¹ |
+| All 118 | 3 | Without | 9.8974 × 10⁻¹¹⁴ | 1.2358 × 10⁻¹⁰ |
+| Mixed 100 | 2 | With | 2.8174 × 10⁻¹⁴ | 4.6308 × 10⁻¹³ |
+| Mixed 100 | 2 | Without | 1.9709 × 10⁻¹⁴ | 6.1982 × 10⁻¹³ |
+| Mixed 100 | 3 | With | 1.3290 × 10⁻⁶² | 1.7347 × 10⁻¹⁰ |
+| Mixed 100 | 3 | Without | 1.2335 × 10⁻⁶⁴ | 2.2833 × 10⁻¹⁰ |
+
+**Interpretation.** Repeated hits on easier tasks count in the full pooled tail. In the stopped score every task must record at least one hit to contribute at all. In these panels the composition weights on those records do not recover the full probability. Removing the perfect tasks and requiring distinct candidates both preserve the discrepancy. No task with zero passes is needed. This is a consequence of a specified randomized protocol conditional on the empirical counts. The released aggregates do not determine the original order of the attempts or how fresh generations would perform.
+
+**Computation.** For a task with c passes among D candidates, set q=D-c. With replacement, the unnormalized probability of j full passes in n draws is binom(n,j)c^j q^(n-j), with common denominator D^n. For sampling without replacement replace the powers by falling factorials, including the denominator. The ordered first-hit weight after l initial misses is q^l c D^(n-1-l) with replacement and (q)_l c (D-l-1)_(n-1-l) without replacement. Multiply the single-task polynomials across the panel. Summing full-count coefficients at or above m gives the full tail. Multiply each stopped-wait coefficient by binom(m+l-1,l) divided by the coefficient of x^l in (1+...+x^(n-1))^m and sum. All arithmetic up to decimal output uses integers and fractions. Eight small panels/designs were checked against enumeration of the labelled draws, including boundary counts. The decimal entries above are rounded; the full output gives outward-rounded intervals. The same 100 observed candidates serve as the finite population; the intervals enclose arithmetic values and do not quantify sampling uncertainty about the generating model.
+
+[Program](evalperf-replay.py) · [Input counts and all intervals](evalperf-replay-results.json). Upstream result bytes have SHA-256 b42c8e5b5d5bcbd82db388653590e0376604eabf6ba36db26ad65fa96ebdf854. No model output was executed and no new generations were requested. This analysis postdates the integrated v5 manuscript and its assessment.
