@@ -1,0 +1,63 @@
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,hyperref}
+\hypersetup{hidelinks}\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\begin{document}
+\begin{center}
+{\Large\bfseries Pairing lottery samples with equal endpoints and means\\[2pt] can skew the direction of variance differences}\par
+\vspace{5pt}Lluis Eriksson \quad$\cdot$\quad 20 November 2026
+\end{center}
+
+\begin{abstract}
+When two samples have the same minimum, maximum and mean, four draws suffice for their sample variances to differ. How often can a paired design produce a higher variance in its second arm when both arms draw from the very same lottery? For four independent uniform draws per arm from $0,\ldots,n-1$, the largest probability over joint designs preserving all three controls on every trial is $1-(8n^3-32n^2+67n-54)/n^4$ for $n\ge2$. This probability tends to one although the signed variance difference has expectation zero. For bounded absolutely continuous lotteries the supremum is one and cannot be attained. We also enumerate distinct integer lotteries with identical expected sample ranges at every sample size and provide complete trial schedules for two discrete designs. The conclusions concern the way trials are paired, without assuming any behavioral response.
+\end{abstract}
+
+\section*{What changes when the samples are paired}
+Liu and Scheibehenne [1] report experiments in which people judged variability after seeing samples. A designer wishing to distinguish range from variance might present two number lists with equal endpoints and mean. For instance, $(0,1,1,3)$ and $(0,0,2,3)$ both sum to five, while their sums of squares are 11 and 13. With one to three draws, equality of both endpoints and sum fixes the entire sorted list. With four, the two middle values leave one degree of freedom.
+
+Let $A$ and $B$ each have the law of four iid draws with replacement from the uniform integer lottery $0,\ldots,n-1$. Dependence \emph{between} arms is a design choice. Put $G=(\min,\max,\sum)$ and $Q=\sum x_i^2$. At fixed $G$, ordering $Q$ orders either conventional sample variance. Our target is the maximum of $\Pr(Q_B>Q_A)$ over couplings with $G_A=G_B$ on every trial. This directional probability and the expected signed difference answer different questions. Identical marginal laws force $E[Q_B-Q_A]=0$ under every coupling.
+
+\textbf{Finite matching rule.} Within one stratum of $G$, let $A_q,B_q$ count ordered samples with score $q$ on the two sides. Each sample has weight $1/n^4$. The maximum number of strict pairs, allowing unmatched samples, is
+\[
+ \min\left\{\sum A_q,\ \sum B_q,\ \min_{t:A_t>0}
+       \left(\sum_{q<t} A_q+\sum_{q>t} B_q\right)\right\}.
+\]
+An empty side has capacity zero. Every strict pair uses either a left score below $t$ or a right score above $t$. Conversely the feasible right neighbours of left scores are nested suffixes. At any smallest score $t$ in a subset of left vertices, the greatest shortage of neighbours is obtained by taking the entire suffix $q\ge t$. The matching deficiency theorem gives exactly the displayed bound, and matching each left score in ascending order to the least available strictly larger score attains it. Equal marginal laws give equal stratum sizes, so the unused samples can also be paired within their stratum.
+\newpage
+
+\section*{An exact finite bound and its continuous counterpart}
+In identical arms write $M(g,q)$ for the common multiplicity. The number of unsuccessful pairs in an optimal schedule is $\sum_g\max_q M(g,q)$. Arbitrary probability couplings cannot improve on the threshold cuts. A permutation of the ordered samples attains the bound and keeps the controls equal on the other trials as well.
+
+For endpoints $a,a+d$, the sorted sample has form $(a,a+i,a+j,a+d)$ with $0\le i\le j\le d$. The sum fixes $k=i+j$, and $Q$ fixes $i^2+j^2$, so $(i,j)$ is unique at fixed $g,q$. Its multiplicity is the number of distinct permutations. Sum its largest possible multiplicity over each $k=0,\ldots,2d$. For $d=0,1,2$ the sums are $1,14,44$. For $d\ge3$ the two outermost sums have multiplicity four, and the four sums at distances one or two from the extremes have maximal multiplicity twelve. Every $3\le k\le 2d-3$ admits two distinct interior values: the sums of distinct members of $1,\ldots,d-1$ cover this interval. These cases have multiplicity 24. The total per endpoint pair is $48d-64$. Weighting each span by its $n-d$ possible locations yields
+\[
+ \sum_g\max_q M(g,q)=8n^3-32n^2+67n-54\qquad(n\ge2).
+\]
+For $n=8$ the maximum is $1566/4096$. At $n=16$ it is $39942/65536$, already above one half. Because the excluded proportion is asymptotic to $8/n$, the direction can be almost unanimous even when the lottery is identical in both arms. The remaining comparisons compensate in magnitude. In contrast, a design that randomizes the two arm labels symmetrically is exchangeable and has $\Pr(Q_B>Q_A)=\Pr(Q_A>Q_B)\le1/2$.
+
+\textbf{Continuous lotteries.} Suppose the common prize law has a density on a bounded interval. Almost surely the four ordered prizes are distinct. Conditional on the extreme values $a,b$ and the sum of the two interior values $s$, the smaller interior value has a density for almost every such triple. This follows by the unit-Jacobian change of coordinates $(x_1,x_2,x_3,x_4)\mapsto(x_1,x_4,x_2+x_3,x_2)$ on the ordered sample. The variable part of $Q$, namely $x_2^2+(s-x_2)^2$, is strictly decreasing for $x_2<s/2$. Thus the conditional score law has no atoms.
+
+Within each triple, use one uniform rank $U$ for arm $A$ and $(U+\eta)\bmod 1$ for arm $B$, with $0<\eta<1$. Conditional quantiles give each arm its correct score distribution and give $Q_B>Q_A$ with probability $1-\eta$. Inverting the strictly monotone score determines the ordered interior values. A uniform permutation in each arm restores its ordered-draw iid law. Taking $\eta$ to zero gives supremum one. It is unattainable because the bounded scores have equal expectations. This uses a standard coupling idea for fixed marginals [3]; the endpoint and mean restrictions enter through the conditional score law.
+\newpage
+
+\section*{Different lotteries with the same expected range}
+For a second design, take an even number $n$ of equally likely tickets with sorted integer prizes $x_0,\ldots,x_{n-1}$. Fix endpoints $0,n-1$, mean $(n-1)/2$ and the expected sample range of the uniform baseline at every iid sample size $m$. The general identification problem for expected ranges is studied by Papadatos [2]. Here crossing the gap $g_j=x_j-x_{j-1}$ has probability $1-(j/n)^m-(1-j/n)^m$. Equality at every $m$ is equivalent to fixing each mirrored gap sum $g_j+g_{n-j}$ and the central gap. For necessity subtract the expected ranges and use the common endpoint span. The remaining distinct powers $(j/n)^m$ are linearly independent as sequences in $m$ by the Vandermonde determinant.
+
+All solutions therefore have $x_j=j+s_j$, $s_j=s_{n-1-j}$, $s_0=0$, $|s_{j+1}-s_j|\le1$ and $\sum s_j=0$. Ordering both halves gives the step bound. The variance increase over uniform is $\sum s_j^2/n$, since the centered linear baseline is antisymmetric. For $n=8,10,12,14,16$ enumeration gives respectively $3,7,15,35,87$ ticket lists, counting reflections separately.
+
+Even equal expected ranges can mask different distributions of the realized range $R_m$. At $m=2$, $E R_2^2=2\,\mathrm{Var}(X)$. If two lotteries on $\{0,\ldots,L\}$ have the same expected range, subtracting $LR_2$ from $R_2^2$ gives the lower bound $2|\Delta\mathrm{Var}(X)|/\lfloor L^2/4\rfloor$ on the total variation distance between their two-draw range laws ($L\ge2$). To test all $m$, compute the joint extrema counts by inclusion-exclusion on the number of tickets in each closed prize interval. Each lottery puts mass at least $1-2(1-1/n)^m$ at the full span. This bounds total variation from above by $2(1-1/n)^m$ and certifies the stopping point after the largest observed distance exceeds the remaining tail bound.
+
+For $n=16$, a tolerance of 0.10 in total variation permits a variance increase of $3/4$ if checked at $m=2$ alone. Requiring it at every $m$ lowers the largest increase to $1/2$. One maximizing ticket list is
+\[
+ (0,1,2,2,3,5,7,8,9,10,10,10,11,13,14,15).
+\]
+Its worst distance is $9/128$ at two draws. Within the class meeting the all-size tolerance and the half-unit increase, an optimal four-draw coupling achieves 23,352 strict matched pairs in 65,536 trials. The other trials are retained to preserve both marginal laws; the three controls need only coincide on successful trials for this unequal-lottery design. Selecting only successful rows changes the sampling law.
+
+\small
+\textbf{Reproduction.} Code generates the exact frontiers and complete schedules. \textbf{Model assessments and review context.} OpenAI Codex assisted with the mathematics, implementation and manuscript. The author operates AIRR. Assessment of the frozen PDF is recorded separately with its reviewer context.
+
+[1] T. Liu and B. Scheibehenne. Sample Range as Subjective Variability and Implications for Experience-Based Decision Making. \emph{Management Science} (2026). \href{https://doi.org/10.1287/mnsc.2024.05050}{doi:10.1287/mnsc.2024.05050}.
+
+[2] N. Papadatos. On sequences of expected maxima and expected ranges. \emph{Journal of Applied Probability} 54 (2017). \href{https://arxiv.org/abs/1610.06835v4}{arXiv:1610.06835v4}.
+
+[3] V. Strassen. The existence of probability measures with given marginals. \emph{Annals of Mathematical Statistics} 36 (1965), 423--439.
+\end{document}
