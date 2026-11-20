@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,booktabs,amsmath,geometry,hyperref}
+\geometry{margin=1in}\hypersetup{hidelinks}
+\title{How much reweighting changes the winner of CompAct-Bench?}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+CompAct-Bench reports a three-percentage-point advantage for Claude Opus 5 over Gemini 3.8 Flash when compacted contexts are evaluated across 200 assigned instances. We hold fixed both the domain frequencies and the frequencies of the three compaction boundaries. Over all joint distributions with these margins, the empirical Opus-minus-Gemini accuracy difference ranges from -0.606 to 7.252 percentage points. A change of 28.210\% of the total weight is necessary and sufficient to reach a tie in total variation. Both models can lead while every stratum retains positive weight. Comparing all twelve reported configurations gives the same two possible winners throughout this family of weights. These are sensitivity results for the published cell rates, conditional on the evaluation protocol.
+\end{abstract}
+
+\section{Which mixture does a published score represent?}
+Chen and colleagues evaluate working-context compactors by continuing successful reference trajectories after compressing their histories \cite{chen}. Their main experiment targets 10\% character retention. Search, Coding and Workspace use different tasks, and the Workspace executor differs from that used for the other two domains. The early, middle and late boundary groups also contain different tasks. A change in their weights is a descriptive standardisation. It does not estimate the causal effect of moving a boundary on one task.
+
+Table~11 gives the domain-by-boundary counts $n$, and Table~13 gives strict success percentages. For each of the two leaders the nine cell percentages each admit exactly one integer success count out of $3n_{ij}$ under rounding to one decimal percentage point. We allow both endpoints of the rounding interval. These integers also reproduce each published domain aggregate and the overall score at its displayed precision. With rows in Search, Coding, Workspace order and columns at 25\%, 50\%, 75\%, the counts and the differences in success proportions (Opus minus Gemini) are
+\[
+ n=\begin{pmatrix}26&26&27\\33&31&32\\8&9&8\end{pmatrix},
+ \qquad G=\begin{pmatrix}3/26&0&1/27\\1/33&4/31&1/32\\-1/8&-2/9&-1/8\end{pmatrix}.
+\]
+One simple comparison already changes the interpretation of the leaderboard. Keeping the within-domain boundary mixtures fixed, the three domain differences are $4/79$, $1/16$, and $-4/25$. Moving probability $\delta$ from Coding to Workspace reduces the published margin $3/100$ by $\delta(1/16+4/25)$. No transfer of the same total variation can reduce it further because this is the largest difference between two domain contrasts. The first tie occurs at $\delta=12/89$, a feasible transfer. This experiment allows the domain totals to change. We now preserve them.
+
+\section{Holding both sets of totals fixed}
+Let $x\geq0$ have the row and column sums of $n$. Its entries are weights in task units, allowing fractions. The contrast is $L(x)=\langle G,x\rangle/200$. A transportation linear program gives the following exact range and nearest tie:
+\[
+  \min L=\textstyle -\frac{2303}{380160},\qquad \max L=\textstyle \frac{841687}{11606400},\qquad
+  \min_{L(x)=0}\frac{\sum_{ij}|x_{ij}-n_{ij}|}{400}=\textstyle \frac{67859}{240550}.
+\]
+The denominator 400 converts a two-sided change in weights to total variation of probability distributions. All three extrema are attained if zeros are allowed. For a strict reversal with every stratum represented, take
+\[
+x=\begin{pmatrix}1&41&37\\65&2&29\\1&23&1\end{pmatrix}.
+\]
+Its row totals are $(79,96,25)$ and its column totals are $(67,66,67)$, just as in the original. Its contrast is -0.371 percentage points. Since the published distribution has positive contrast, continuity also gives a tie with positive weights in every cell. The nearest tie need not be that interior tie.
+
+For reproduction, write the three row sums and the first two column sums as $Ax=b$. The final column sum is implied by the rest. For an endpoint solve $\min\{\pm\langle G,x\rangle:Ax=b,x\geq0\}$. For the radius impose $\langle G,x\rangle=0$ and $x-t+s=n$, with $s,t\geq0$, and minimise $\sum t/200$. At optimum $t$ equals the positive part of $x-n$. For each problem the package gives a feasible rational primal point and dual vector. For a minimisation in standard form $Hz=h$, $z\geq0$, cost $c$, the checks are $H^\mathsf{T}y\leq c$ and $c^\mathsf{T}z=h^\mathsf{T}y$. Weak duality then proves optimality irrespective of the solver used to find the certificate.
+
+\section{Can another compactor win?}
+For competitor $k$, let $d_{ak}$ and $d_{bk}$ be the nine cellwise gaps between each of the two leaders and $k$. We minimise $\max(\langle d_{ak},x\rangle,\langle d_{bk},x\rangle)/200$ over the same margins. A positive minimum excludes $k$ even where one individual leader loses to it. We test each reported boundary row against integer success counts and check all aggregates when their component counts exist. For any row with a discrepancy we instead use an upper envelope equal to the printed cell rate plus 0.05 percentage points in each cell. Exclusion using this envelope remains valid for any cell rates within the printed rounding intervals. The corresponding conservative minimum is not claimed to equal the model's exact minimum.
+ 
+Every one of the ten conservative minima is strictly positive. The closest rival is Kimi K3: even in its most favourable admissible joint mixture it trails the better of Opus and Gemini by at least 3.646 percentage points (rounded). Its exact floor is $\frac{100103}{2745600}$ in probability units. The two-model shortlist thus survives every admissible reweighting, although its internal order can change.
+
+Only the DeepSeek V4 Pro row fails the three-continuation reconstruction. Its Coding entries of 62.1, 72.6 and 82.8 percent have no integer numerators over 99, 93 and 96, respectively, even allowing rounding ties. For example, at the first boundary $61/99$ and $62/99$ lie on opposite sides of the entire rounding interval. A different effective denominator can reproduce the display: 41/66, 45/62 and 53/64 give all three entries and 139/192 gives the Coding aggregate. Two equally weighted binary units per task are a numerical witness, not a diagnosis of the actual protocol. The exclusion of this model uses only the conservative upper envelope; it requires no repair of that row.
+
+\section{Interpretation and reproducibility}
+Prior research already showed that reweighting benchmark prompts can change model rankings \cite{siska}. Our contribution is an exact fixed-margin sensitivity analysis of this particular compaction benchmark and a simultaneous comparison against its other reported configurations. The weighting exercise cannot predict accuracy on newly sampled tasks or a different executor. It also gives no paired uncertainty interval for the difference between models. Three continuations from the same compacted context share task information.
+
+The package records Tables~11 and 13 by version and source hash, the reconstructed contrast, optimal weights, dual certificates and an integer interior reversal. Running the checker verifies nonnegativity, the margins and equality of the primal and dual objectives using rational arithmetic.
+\paragraph{Model assessments and review context.} OpenAI Codex assisted with transcription, mathematical analysis and writing. Any assessment attached to a release is tied to its PDF. No independent peer review is documented.
+\begin{thebibliography}{9}
+\bibitem{chen} J. Chen and colleagues. \href{https://arxiv.org/html/2611.25673v1}{CompAct-Bench: A Benchmark for Working-Context Compaction in Long-Horizon Agent Tasks}. arXiv:2611.25673v1 (2026), Tables~2, 11 and 13.
+\bibitem{siska} C. Siska, K. Marazopoulou, M. Ailem and J. Bono. \href{https://aclanthology.org/2024.acl-long.560/}{Examining the robustness of LLM evaluation to the distributional assumptions of benchmarks}. ACL (2024), pp.~10406--10421.
+\end{thebibliography}
+\end{document}
