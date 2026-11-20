@@ -1,0 +1,14 @@
+{
+  "author": "Keisuke Watanabe",
+  "title": "Share of ClinicalTrials.gov first results submissions posted after quality control within 90 days, by submission month, February 2017 to June 2026: a data note",
+  "version": "1.0",
+  "doi": "10.5281/zenodo.24406040",
+  "source_archive_sha256": "c5cae32ad0d9d4f9551ad84a6a5e46f93462bce6817897776ff20807628ab835",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "modifications": "The two CSV files are identical to the deposited files. All certificates and interpretations are separate work.",
+  "table_hashes": {
+    "p90_by_month.csv": "a10825a253cc0617723aa8a964cdc19d9e888ce3f109bfde7921f3330f684c09",
+    "s2_qc_to_post_by_qc_month.csv": "ecad66c10cdf0d68b9fc54fe37e31e4836c7d147a9b203bf46d650e4f94c80b8"
+  }
+}
