@@ -1,0 +1,21 @@
+{
+  "source_sha": "ce6863c23240ceaa5c0a6ac298e7dc194df4828c",
+  "inputs": {
+    "shortlist.tex": "12c1cd2262e834320e306e2139a5ac32f427deef588390d760d6a3560ba5e9b9",
+    "rank_budget.py": "291f1fe1598cb689f27eac161eca87732b9711b2285a2241c3ca20de6abd2905",
+    "verify_shortlist.py": "56099cdb767e439c863f36108b6264b9fe4d692889d3f8e4fa1bf03379b39f98",
+    "aggregate-witnesses.json": "5a48ef9bdf4d9d674523c2581c56a2766571b6f829dd86973b0f1c537faa8140",
+    "context_cut.py": "beabd89c8cde4df7f8c8751811f457a791ea1a5ad8336f2ea9678fa6343a636a",
+    "cut-witnesses.json": "2838db925b126c06f8b080d39d8c5fb94aed178eff1d05f21813e4aff2133398",
+    "figure-meta.json": "aa78112edebc2fcd48f6a79439f525393aaf66e2003d2d0d1e37c5d97fcb280e"
+  },
+  "started_at": "2026-11-20T19:48:20.090110+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "17d8d7ff020b67c0152f731a6e0fe8ebd715b4278bce80998fa06e3bc3fb8c8c",
+    "17d8d7ff020b67c0152f731a6e0fe8ebd715b4278bce80998fa06e3bc3fb8c8c"
+  ],
+  "pdf_bytes": 221516,
+  "finished_at": "2026-11-20T19:49:23.085853+00:00"
+}
