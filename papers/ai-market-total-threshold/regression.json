@@ -1,0 +1,29 @@
+{
+  "estimated_cases": [
+    {
+      "f1": 1.0,
+      "f2": 1.5,
+      "regression_shift": -0.40204362251902726,
+      "formula_shift": -0.40204362251902664
+    },
+    {
+      "f1": 0.8,
+      "f2": 1.2,
+      "regression_shift": -0.4012001929849367,
+      "formula_shift": -0.4012001929849401
+    },
+    {
+      "f1": 1.2,
+      "f2": 1.0,
+      "regression_shift": 0.180612732427197,
+      "formula_shift": 0.18061273242719617
+    }
+  ],
+  "q_sum": 0.9999999999999994,
+  "q_min": 0.05899705014749247,
+  "rows": 35,
+  "positive_mass": 0.9999999999999998,
+  "negative_mass": -2.7755575615628914e-16,
+  "max_discrepancy": 3.3861802251067274e-15,
+  "design": "Two synthetic cohorts, complete rectangles, positive firm weights, cohort-month and firm-cohort fixed effects."
+}

@@ -1,0 +1,50 @@
+{
+  "observed": [
+    119,
+    119
+  ],
+  "pre": [
+    119,
+    59
+  ],
+  "cases": [
+    {
+      "anchor": "1/2",
+      "counter": [
+        239,
+        119
+      ],
+      "common_untreated_multiplier": "2",
+      "total_effect": -120
+    },
+    {
+      "anchor": "3/4",
+      "counter": [
+        159,
+        79
+      ],
+      "common_untreated_multiplier": "4/3",
+      "total_effect": 0
+    },
+    {
+      "anchor": "1",
+      "counter": [
+        119,
+        59
+      ],
+      "common_untreated_multiplier": "1",
+      "total_effect": 60
+    }
+  ],
+  "exp_threshold": "3/4",
+  "max_exp_anchor": "60",
+  "zero_at_high_exposure": {
+    "observed": [
+      119,
+      0
+    ],
+    "exp_threshold": "241/242",
+    "max_exp_anchor": "1/2"
+  },
+  "scope": "Constructed examples, not the platform microdata."
+}

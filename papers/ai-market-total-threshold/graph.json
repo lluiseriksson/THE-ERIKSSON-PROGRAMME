@@ -1,0 +1,19 @@
+{
+  "historical_graphical": [
+    0.34037433155080216,
+    0.3590909090909091
+  ],
+  "baseline_graphical": [
+    0.3163101604278075,
+    0.33502673796791443
+  ],
+  "positive_calibration_required": [
+    0.40547360521976394,
+    0.4320269799252735
+  ],
+  "difference_interval": [
+    0.005347593582887722,
+    0.04278074866310161
+  ],
+  "interpretation": "Graphical calibration envelope in log(1+sales), not a sampling interval or underlying numerical estimate."
+}
