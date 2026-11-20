@@ -1,0 +1,389 @@
+{
+  "files": {
+    "AXIA3.SA.csv": {
+      "path": "data\\raw\\prices\\AXIA3.SA.csv",
+      "bytes": "118716",
+      "sha256": "1092823e3e292889beceffb4858e43d889038cb807d23068a275cf18e5efdaa4",
+      "modified_utc": "2026-11-20T16:19:15"
+    },
+    "AXIA3.SA.json": {
+      "path": "data\\raw\\prices\\AXIA3.SA.json",
+      "bytes": "105643",
+      "sha256": "1d2f5bc0ba53b41f72c64f117fc3ea5171a7dddce6e2e5cf0e847df3d4df55d2",
+      "modified_utc": "2026-11-20T13:51:40"
+    },
+    "BRL_X.csv": {
+      "path": "data\\raw\\prices\\BRL_X.csv",
+      "bytes": "119352",
+      "sha256": "5a8a9794a91b94ec8fda173dd966980f7ae2f828a4143e815f41ab47b0db0ea7",
+      "modified_utc": "2026-11-20T16:19:17"
+    },
+    "BRL_X.json": {
+      "path": "data\\raw\\prices\\BRL_X.json",
+      "bytes": "105403",
+      "sha256": "823502e482d7f69221648da9de628a12204de6ed404dd480ca3f5e9f04091aed",
+      "modified_utc": "2026-11-20T13:51:42"
+    },
+    "CLP_X.csv": {
+      "path": "data\\raw\\prices\\CLP_X.csv",
+      "bytes": "113687",
+      "sha256": "16b0e9dc8664f3d48d72eec7fec567bb84c6880166410c74e04ff6ccf9255288",
+      "modified_utc": "2026-11-20T16:19:21"
+    },
+    "CLP_X.json": {
+      "path": "data\\raw\\prices\\CLP_X.json",
+      "bytes": "99745",
+      "sha256": "8d02b9917857e8ba6389be5319de3193fc7e7960a81039ae8ceb4f11e3b65e66",
+      "modified_utc": "2026-11-20T13:52:14"
+    },
+    "CMIG4.SA.csv": {
+      "path": "data\\raw\\prices\\CMIG4.SA.csv",
+      "bytes": "121059",
+      "sha256": "7f1cb9d15770ae82d00cec977b0db38be414b498ff8b7f853da0f7c1b694cf99",
+      "modified_utc": "2026-11-20T16:19:15"
+    },
+    "CMIG4.SA.json": {
+      "path": "data\\raw\\prices\\CMIG4.SA.json",
+      "bytes": "108877",
+      "sha256": "903c68de1014d2c0405f2a94d05f2800c3dee39159407938f041150b30df2021",
+      "modified_utc": "2026-11-20T13:51:25"
+    },
+    "COLBUN.SN.csv": {
+      "path": "data\\raw\\prices\\COLBUN.SN.csv",
+      "bytes": "103429",
+      "sha256": "d4ef6d428075a5a4ba6a36d86a92dfa24d19e34f583ede3adb22b7bb14315bce",
+      "modified_utc": "2026-11-20T16:19:17"
+    },
+    "COLBUN.SN.json": {
+      "path": "data\\raw\\prices\\COLBUN.SN.json",
+      "bytes": "90436",
+      "sha256": "a1802ad0303650a4e7516acbe5d7d55e5aafa3c85662c0cb52845fbe0eaf6810",
+      "modified_utc": "2026-11-20T13:51:44"
+    },
+    "CPFE3.SA.csv": {
+      "path": "data\\raw\\prices\\CPFE3.SA.csv",
+      "bytes": "118897",
+      "sha256": "ec9b6a7a41812791107def31ccf1f7ebd725145a52518dee7744b0da8b6ed679",
+      "modified_utc": "2026-11-20T16:19:13"
+    },
+    "CPFE3.SA.json": {
+      "path": "data\\raw\\prices\\CPFE3.SA.json",
+      "bytes": "105674",
+      "sha256": "363286429f13ff76650db99f34f80a3bb7440a3afbce9f9f130ec196aac27ae6",
+      "modified_utc": "2026-11-20T13:51:21"
+    },
+    "CPLE3.SA.csv": {
+      "path": "data\\raw\\prices\\CPLE3.SA.csv",
+      "bytes": "118774",
+      "sha256": "76cd82e05168d2f826950e373cc430102a679802d8a63e87222d94a22f88b0bb",
+      "modified_utc": "2026-11-20T16:19:12"
+    },
+    "CPLE3.SA.json": {
+      "path": "data\\raw\\prices\\CPLE3.SA.json",
+      "bytes": "105726",
+      "sha256": "034a97a11d8382658777c5e55ffcac27471f3cf0db33718f5f087e07fec97bdd",
+      "modified_utc": "2026-11-20T16:19:12"
+    },
+    "ECH.csv": {
+      "path": "data\\raw\\prices\\ECH.csv",
+      "bytes": "120035",
+      "sha256": "9456a76dcc4f1999df49facb7b9aff375b8f21f75fac89b4cae46f5c7e690c7e",
+      "modified_utc": "2026-11-20T16:19:20"
+    },
+    "ECH.json": {
+      "path": "data\\raw\\prices\\ECH.json",
+      "bytes": "106951",
+      "sha256": "eaf6793966872c6fc8b98a349ee628d99f9092a8448a493ac000b860d3730e8a",
+      "modified_utc": "2026-11-20T16:19:20"
+    },
+    "ECL.SN.csv": {
+      "path": "data\\raw\\prices\\ECL.SN.csv",
+      "bytes": "89867",
+      "sha256": "b34c96cb7d14b8a1d43cf8ceaf8cf44aa2a4df868973e377287110fcf5f5c913",
+      "modified_utc": "2026-11-20T16:19:18"
+    },
+    "ECL.SN.json": {
+      "path": "data\\raw\\prices\\ECL.SN.json",
+      "bytes": "76652",
+      "sha256": "b312573922b3038192c8507e19acd432f005174fd0987774fb0be31a5aa32c8a",
+      "modified_utc": "2026-11-20T13:51:46"
+    },
+    "EGIE3.SA.csv": {
+      "path": "data\\raw\\prices\\EGIE3.SA.csv",
+      "bytes": "121028",
+      "sha256": "884dd1dc0266c5c6b2203d4c6c068b5fab223a86e2741da3004819627ba3c7f0",
+      "modified_utc": "2026-11-20T16:19:13"
+    },
+    "EGIE3.SA.json": {
+      "path": "data\\raw\\prices\\EGIE3.SA.json",
+      "bytes": "108322",
+      "sha256": "359bbab67e4e61523930bb748c985f25c4f27f2fb8b8e21ea962d4cd97095c6a",
+      "modified_utc": "2026-11-20T13:51:22"
+    },
+    "ENELCHILE.SN.csv": {
+      "path": "data\\raw\\prices\\ENELCHILE.SN.csv",
+      "bytes": "110096",
+      "sha256": "6f08af401139900b36186002ac860421311a5b6389831fbdf3286fcd8be75b21",
+      "modified_utc": "2026-11-20T16:19:18"
+    },
+    "ENELCHILE.SN.json": {
+      "path": "data\\raw\\prices\\ENELCHILE.SN.json",
+      "bytes": "97115",
+      "sha256": "472941701fa8e1ee9254e84a481041d9b31c8d3bcdf9e120de2c6966cb0d514b",
+      "modified_utc": "2026-11-20T13:51:45"
+    },
+    "ENEV3.SA.csv": {
+      "path": "data\\raw\\prices\\ENEV3.SA.csv",
+      "bytes": "120696",
+      "sha256": "75f500333b5705c149c488e74ce2239c01eb7d1fe2cc37765feac52214046cb7",
+      "modified_utc": "2026-11-20T16:19:14"
+    },
+    "ENEV3.SA.json": {
+      "path": "data\\raw\\prices\\ENEV3.SA.json",
+      "bytes": "107285",
+      "sha256": "72ad4af05c6b2c3462e840bcc659fae8a2b0ba7009fa4f142e991f8b65fd34d1",
+      "modified_utc": "2026-11-20T13:51:23"
+    },
+    "EQTL3.SA.csv": {
+      "path": "data\\raw\\prices\\EQTL3.SA.csv",
+      "bytes": "119324",
+      "sha256": "515e05c6467c46e3eba7cda0498e1c4a189726b5e6a6560d54428c5476fe0513",
+      "modified_utc": "2026-11-20T16:19:09"
+    },
+    "EQTL3.SA.json": {
+      "path": "data\\raw\\prices\\EQTL3.SA.json",
+      "bytes": "106249",
+      "sha256": "244edff68223d4eb93e7a5440f40610f88afd4db7e68932397648e8ffcabaa60",
+      "modified_utc": "2026-11-20T13:51:06"
+    },
+    "MXN_X.csv": {
+      "path": "data\\raw\\prices\\MXN_X.csv",
+      "bytes": "122348",
+      "sha256": "336ee47e42a4faabb9632cd17208c3371ffdd1543cdca9c12bdf711180fc481f",
+      "modified_utc": "2026-11-20T16:19:22"
+    },
+    "MXN_X.json": {
+      "path": "data\\raw\\prices\\MXN_X.json",
+      "bytes": "108406",
+      "sha256": "27cd1d269c0602c6c2920eecc4153e7cd6202a2edf79b5a5ef742ca73c9ae29c",
+      "modified_utc": "2026-11-20T13:52:17"
+    },
+    "NVDA.csv": {
+      "path": "data\\raw\\prices\\NVDA.csv",
+      "bytes": "122763",
+      "sha256": "8e4d57ce62edeb9ad4f9dde0a901120924cb13a463876fd30c758d533b027828",
+      "modified_utc": "2026-11-20T16:19:23"
+    },
+    "NVDA.json": {
+      "path": "data\\raw\\prices\\NVDA.json",
+      "bytes": "110122",
+      "sha256": "673823db058cb7ebe84cfcbaa0a2265cfb255a76f2d5b71ab72c7c20677c5647",
+      "modified_utc": "2026-11-20T13:52:19"
+    },
+    "SMH.csv": {
+      "path": "data\\raw\\prices\\SMH.csv",
+      "bytes": "119849",
+      "sha256": "3f447acd0ab58473aa9b7873bc53c10d769442e1d534c120a13ec7c91aa3be24",
+      "modified_utc": "2026-11-20T16:19:23"
+    },
+    "SMH.json": {
+      "path": "data\\raw\\prices\\SMH.json",
+      "bytes": "106645",
+      "sha256": "90d8bb0eb87a0a7b5febd2f4b72e12439baf7be5d3f10c9d8a642f5f67e2e33e",
+      "modified_utc": "2026-11-20T13:52:21"
+    },
+    "TAEE11.SA.csv": {
+      "path": "data\\raw\\prices\\TAEE11.SA.csv",
+      "bytes": "118965",
+      "sha256": "c3c0116b9c5c80a1f0ec84292e1eb2f909eee0d951ff8f3db0c16b98c43bb38e",
+      "modified_utc": "2026-11-20T16:19:09"
+    },
+    "TAEE11.SA.json": {
+      "path": "data\\raw\\prices\\TAEE11.SA.json",
+      "bytes": "106484",
+      "sha256": "75fae13620f5288b8f67e4cf1efacfd688fed042a210d0a10d58bde420a3aab7",
+      "modified_utc": "2026-11-20T13:51:04"
+    },
+    "XLU.csv": {
+      "path": "data\\raw\\prices\\XLU.csv",
+      "bytes": "121387",
+      "sha256": "297f72571fc2e642c1d1c9b269213613cdc54e8616e0b0176cf795aa9a3c40eb",
+      "modified_utc": "2026-11-20T16:19:25"
+    },
+    "XLU.json": {
+      "path": "data\\raw\\prices\\XLU.json",
+      "bytes": "108778",
+      "sha256": "4ac381e29721f2ae8b20403b1831085c05e7bcd1d4951949b12a3961ecdc9b15",
+      "modified_utc": "2026-11-20T13:52:23"
+    },
+    "_BVSP.csv": {
+      "path": "data\\raw\\prices\\_BVSP.csv",
+      "bytes": "77050",
+      "sha256": "61c5e72d1f9a9c6a410c263187640512bcf35184487fa3629fce1c2a77259422",
+      "modified_utc": "2026-11-20T16:19:16"
+    },
+    "_BVSP.json": {
+      "path": "data\\raw\\prices\\_BVSP.json",
+      "bytes": "63645",
+      "sha256": "f846ee2a5f1e6fbc1daa05f791cad2d29a3ae1e2e89be112e99efb8742dca885",
+      "modified_utc": "2026-11-20T13:51:41"
+    },
+    "_GSPC.csv": {
+      "path": "data\\raw\\prices\\_GSPC.csv",
+      "bytes": "113424",
+      "sha256": "50095cf305638d70cdfa32a42895d3dd82a841e0120d64e0b9ae7edb49e38748",
+      "modified_utc": "2026-11-20T16:19:24"
+    },
+    "_GSPC.json": {
+      "path": "data\\raw\\prices\\_GSPC.json",
+      "bytes": "99931",
+      "sha256": "283a3eae82564771ccf3a8f6469ba2005b22f1f562a81f0b8c3ba59f0d6357e8",
+      "modified_utc": "2026-11-20T13:52:22"
+    },
+    "_MXX.csv": {
+      "path": "data\\raw\\prices\\_MXX.csv",
+      "bytes": "102099",
+      "sha256": "d14f803e065e79b1bf8c718622847c314afe6eeaac93f33ab03c0b422112ab93",
+      "modified_utc": "2026-11-20T16:19:21"
+    },
+    "_MXX.json": {
+      "path": "data\\raw\\prices\\_MXX.json",
+      "bytes": "88622",
+      "sha256": "05526f1431dc1f0a85732e59a23a202f7120d74012c2b7fba170d8de7e038098",
+      "modified_utc": "2026-11-20T13:52:16"
+    }
+  },
+  "events": [
+    {
+      "event": "B1",
+      "date": "2025-09-18",
+      "day0": "2025-09-18",
+      "n": 8,
+      "factor2": false,
+      "[0,0]": {
+        "CAR%": -0.04,
+        "t": -0.07,
+        "p_perm": 0.923
+      },
+      "[-1,+1]": {
+        "CAR%": 1.53,
+        "t": 1.43,
+        "p_perm": 0.115
+      },
+      "[-5,+5]": {
+        "CAR%": 1.25,
+        "t": 0.61,
+        "p_perm": 0.471
+      },
+      "stocks": {
+        "TAEE11.SA": 0.68,
+        "EQTL3.SA": 1.14,
+        "CPLE3.SA": 1.68,
+        "CPFE3.SA": -0.34,
+        "EGIE3.SA": 2.25,
+        "ENEV3.SA": 2.88,
+        "CMIG4.SA": -0.2,
+        "AXIA3.SA": 4.14
+      }
+    },
+    {
+      "event": "B1",
+      "date": "2025-09-18",
+      "day0": "2025-09-18",
+      "n": 8,
+      "factor2": true,
+      "[0,0]": {
+        "CAR%": 0.26,
+        "t": 0.44,
+        "p_perm": 0.609
+      },
+      "[-1,+1]": {
+        "CAR%": 1.65,
+        "t": 1.63,
+        "p_perm": 0.06
+      },
+      "[-5,+5]": {
+        "CAR%": 1.55,
+        "t": 0.8,
+        "p_perm": 0.324
+      },
+      "stocks": {
+        "TAEE11.SA": 0.8,
+        "EQTL3.SA": 1.3,
+        "CPLE3.SA": 1.77,
+        "CPFE3.SA": -0.17,
+        "EGIE3.SA": 2.31,
+        "ENEV3.SA": 2.89,
+        "CMIG4.SA": -0.02,
+        "AXIA3.SA": 4.34
+      }
+    },
+    {
+      "event": "B4",
+      "date": "2026-09-15",
+      "day0": "2026-09-15",
+      "n": 8,
+      "factor2": false,
+      "[0,0]": {
+        "CAR%": -0.57,
+        "t": -0.86,
+        "p_perm": 0.309
+      },
+      "[-1,+1]": {
+        "CAR%": 0.81,
+        "t": 0.7,
+        "p_perm": 0.422
+      },
+      "[-5,+5]": {
+        "CAR%": -0.28,
+        "t": -0.13,
+        "p_perm": 0.919
+      },
+      "stocks": {
+        "TAEE11.SA": 1.62,
+        "EQTL3.SA": 1.05,
+        "CPLE3.SA": 1.65,
+        "CPFE3.SA": -0.08,
+        "EGIE3.SA": 0.74,
+        "ENEV3.SA": -0.71,
+        "CMIG4.SA": -0.02,
+        "AXIA3.SA": 2.26
+      }
+    },
+    {
+      "event": "B4",
+      "date": "2026-09-15",
+      "day0": "2026-09-15",
+      "n": 8,
+      "factor2": true,
+      "[0,0]": {
+        "CAR%": -0.57,
+        "t": -0.85,
+        "p_perm": 0.314
+      },
+      "[-1,+1]": {
+        "CAR%": 0.83,
+        "t": 0.72,
+        "p_perm": 0.413
+      },
+      "[-5,+5]": {
+        "CAR%": -0.33,
+        "t": -0.15,
+        "p_perm": 0.919
+      },
+      "stocks": {
+        "TAEE11.SA": 1.68,
+        "EQTL3.SA": 1.13,
+        "CPLE3.SA": 1.57,
+        "CPFE3.SA": -0.1,
+        "EGIE3.SA": 1.1,
+        "ENEV3.SA": -0.48,
+        "CMIG4.SA": -0.2,
+        "AXIA3.SA": 1.98
+      }
+    }
+  ],
+  "zip_sha256": "eac22121ea0ddb2a5d3af94a48f2d1b031424ab6377fa86d0a6c87f51243d11d",
+  "analysis_sha256": "e8c9a0ed25586b891c4ba530611da137021f85ec769554d945751a5941d45aec",
+  "provider_series_embedded": false
+}
