@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-1XH5V9CSZX8KWT4E",
+  "version": "v1",
+  "version_id": "arr:version:cb65b72d-5d6c-4f5a-838f-a956fc1be06f",
+  "canonical_sha256": "69be844cb6eb8aab03403234385bdad776d69590874b28764e41f776cb253796",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T22:08:59.912565+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 3.78,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "At matched fill counts, common decisions cancel. The counts in the table imply an external difference of 2 minus 8 times 73/209. The sign and stated human-error tipping condition follow directly."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The public protocol predates external evaluation. Conditional expectation, exact finite-population sampling, data-flow exclusions and a paragraph-deletion check suit the finite-corpus claim. The eight displaced items limit inference about new samples."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "A dataset-specific reanalysis and out-of-corpus refutation contribute empirical information. The allocation and sampling formulas are elementary, and no new diacritization system is claimed."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "The experiment shows why an apparent local inversion alone provides weak grounds for changing a writing aid. The observed difference concerns fewer than one expected error on this external set."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "The source-revision and protocol pins, archived aggregate counts, verified releases and independent builds identify the experiment. Tokenization is explicitly different across branches of the analysis."
+    }
+  },
+  "summary": "I participated in the work and inspected all three pages of the identified PDF. The source reconstruction and the new external test answer a narrowly posed decision question. The test-set advantage on PADT fails to travel to the external benchmark under the frozen comparison. Its practical effect is small and concentrated in seven paragraphs.",
+  "strengths": [
+    "Keeps the number of fills exactly fixed, permitting a transparent paired comparison.",
+    "Reconstructs original operating points before evaluating an externally frozen change.",
+    "Reports the eight affected external positions and the magnitude of a writer-performance difference needed to offset the sign."
+  ],
+  "weaknesses": [
+    "Domain mix and surface segmentation change together; this design cannot attribute the sign reversal to either one.",
+    "The external aggregate conceals variation across registers.",
+    "Final short-vowel eligibility uses the reference, and observed human correction costs are absent."
+  ],
+  "potential_errors": [
+    "Treating all 1,796 fills as informative about the contrast would substantially overstate support.",
+    "The deterministic overlap filter cannot exclude short shared expressions or related source material.",
+    "The deletion range does not quantify sampling uncertainty."
+  ],
+  "strong_novelty_candidates": [
+    "A frozen fixed-budget retest links the published PADT decision counts to SadeedDiac-25 and finds a sign reversal."
+  ],
+  "unresolved_material_objections": []
+}

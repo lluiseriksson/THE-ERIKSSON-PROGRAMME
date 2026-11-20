@@ -1,0 +1,68 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.92in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,booktabs,amsmath,microtype}
+\usepackage[hidelinks]{hyperref}
+\title{Does a fixed-workload improvement in Arabic case-vowel insertion transfer across corpora?}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A writing aid can supply a case vowel or leave it to the writer. We test whether a reversal in the error ordering of two confidence bands supports changing which positions it fills. In the PADT test split, a retrospective swap reduces the expected number of incorrect automatic vowels from 31 to 29.88 at exactly 1,730 fills. Selecting the band using PADT development labels retains the original rule. We then freeze the retrospective swap and test it on SadeedDiac-25. At 1,796 fills the original rule makes 30 errors, and the swap makes 30.79 in expectation. The reversal persists on deleting any one external paragraph. Only eight external positions are displaced. These finite-corpus results give little reason to change the insertion rule on the evidence of the PADT inversion alone.
+\end{abstract}
+
+\section{The decision and the source of the candidate}
+Amer [1] studies final short vowels on eligible Arabic forms. A cue rule has priority. Otherwise a lookup keyed by the preceding word predicts one of three short vowels and assigns a score. The frequencies come from PADT training data [1,2]. Each class receives a half-count. A key with fewer than 20 training occurrences uses the pooled training distribution. The published operating threshold is 0.77. This paper keeps the predictors and asks where a fixed number of automatic decisions should be spent.
+
+Keep all cue decisions and table scores at or above 0.80. Call this the base. The original policy also fills every position in band \(A=[0.77,0.80)\). The proposed swap drops \(A\) and fills exactly \(|A|\) positions sampled uniformly without replacement from \(B=[0.60,0.70)\). Both policies thus defer the same number of eligible positions in each corpus. Predictions at common positions coincide. We count incorrect automatic decisions. Writers' errors on deferred positions were never observed.
+
+In a band of \(n\) positions with \(e\) incorrect predictions, every equal-probability sample of \(k\) positions has expected error count \(ke/n\). If all decisions in a fixed base are mandatory, a budget constrained to the published bands can therefore be allocated in increasing order of empirical band error rate. Moving any available probability mass to a cheaper band cannot increase expected errors. With retrospective test labels this is an oracle calculation.
+\newpage
+\section{Reconstruction and external design}
+We reconstructed 33,580 eligible training, 4,142 development and 4,327 test positions from all three checksum-matched PADT splits. The reconstruction checks each cue rule's decisions and correct counts on every split and all five detailed published thresholds on the test split. In the original test data, \(B\) has the lowest error rate among the three extra candidate bands. On development, \(A\) has the lowest rate. Band selection was therefore sensitive to which labeled split informed the decision.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Source & \(A\) & \([0.70,0.77)\) & \(B\)\\
+\midrule
+PADT development & \(1/31\) & \(573/1{,}965\) & \(142/479\)\\
+PADT test & \(8/24\) & \(578/2{,}015\) & \(121/422\)\\
+SadeedDiac-25 & \(2/8\) & \(1{,}723/4{,}664\) & \(73/209\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each cell gives errors divided by candidate positions, after removing cue decisions. At threshold 0.77 the PADT test base contributes 23 errors across 1,706 automatic fills before \(A\) is added.
+
+The external protocol and executable were frozen at Git revision
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/7e4740cbde3418df07ba7f0d8fcbe02814285196/audits/arabic-vowel-workload}{\texttt{7e4740cb}} before opening the evaluation labels. SadeedDiac-25 [3] includes modern and classical Arabic. We used the full released benchmark. Its single distribution split is named \texttt{train} by the file host. None of these items trained the current lookup. The external comparison is pooled across registers.
+
+For PADT, the preceding token is a treebank word after the source cleaning. For the external data we used the preceding Arabic surface word within the paragraph, extracting runs of Arabic letters and marks and leaving attached clitics intact. We required exact input-to-reference correspondence of the resulting unmarked word sequence. We removed duplicate normalized paragraphs and screened for any common 64-letter contiguous string with any normalized PADT sentence after removing spaces. Of 1,200 external paragraphs, nine were duplicates. All 1,191 remaining paragraphs aligned and passed this literal-overlap screen. Paraphrases, shorter overlaps and annotation dependencies can survive it.
+
+Eligible noninitial definite forms start with the article, have at least five unmarked letters and satisfy the original lexical and suffix exclusions. Of 6,758 externally eligible forms, 6,742 had one scorable final short vowel under the reference convention. We excluded the remaining 16. This criterion uses gold marks to define evaluation coverage. The resulting workload is conditional on scorable positions. It does not estimate workload on all text that a writer might enter.
+\newpage
+\section{What the swap changes}
+Let \(n_A,e_A,n_B,e_B\) denote band counts and errors. The expected number of automatic errors avoided is \(G=e_A-n_A e_B/n_B\). On PADT test this gives \(8-24(121/422)=236/211\), a gain of about 1.12 errors. On SadeedDiac-25 it gives \(2-8(73/209)=-166/209\), a loss of about 0.79. The common external base has 1,788 decisions and 28 errors. Exactly seven paragraphs contain the eight displaced positions. The 209 replacement candidates occur in 175 paragraphs. Recomputing the full statistic after dropping one paragraph at a time gives a range from \(-302/209\) to \(-20/209\). The sign survives this check; the range is descriptive and carries no population confidence level.
+
+A realized draw can improve even when its mean is worse. Conditional on the reference, the replacement error count has mass
+\[
+ \Pr(X=j)=
+ \binom{e_B}{j}\binom{n_B-e_B}{n_A-j}\big/\binom{n_B}{n_A}.
+\]
+The supplement checks this distribution and reports improvement, tie and loss probabilities for both test corpora. Human correction introduces another quantity. If \(h_A,h_B\) are the average probabilities of writer error when the corresponding positions are deferred, expected final errors avoided equal \(G+n_A(h_B-h_A)\). A difference of \(166/(209\cdot8)\), about 9.93 percentage points, in favor of writers on \(A\) relative to \(B\) would offset the external automatic-error deficit. The corpus contains no estimates of either probability.
+
+The strict external improvement specified in advance failed. The result concerns a particular change of band at the same realized fill budget. Scores are empirical class frequencies from one treebank. Different segmentation, lexical keys, source register, or the scope of the eligibility screen can alter the composition of the bands. Testing the causal effect on the writer requires observed human outcomes and an evaluation protocol that accounts for time spent correcting automatic errors as well as filling omissions.
+
+\section*{Model assessments and review context}
+OpenAI Codex assisted with the design, implementation, analysis and writing. An assessment by the same model shares this context. The record for this exact PDF identifies its reviewer and material objections. The annotation and source corpus results belong to their original authors.
+
+\section*{Sources and reproduction}
+\small
+[1] A. F. Amer. \emph{Fill or Show: Cue Rules and a Previous-Word Table for Arabic Case Vowels on the Prague Arabic Dependency Treebank}. Code and results, 2026. \href{https://doi.org/10.5281/zenodo.24407151}{doi:10.5281/zenodo.24407151}.
+
+[2] O. Smr\v{z} et al. \emph{Prague Arabic Dependency Treebank: A Word on the Million Words}. LREC 2008. \href{https://github.com/UniversalDependencies/UD_Arabic-PADT/tree/5b1ad7e87c70b0e290f8499b64531c7d6a88eea0}{UD Arabic-PADT release 2.18}.
+
+[3] Z. Aldallal et al. \emph{Sadeed: Advancing Arabic Diacritization Through Small Language Model}, 2025. \href{https://arxiv.org/abs/2504.21635}{arXiv:2504.21635}. \href{https://huggingface.co/datasets/Misraj/SadeedDiac-25/tree/aa311213e44e4cab6cc3f2848daacd753adc1ce1}{SadeedDiac-25 release}, CC BY-NC-SA 4.0.
+
+The supplement includes the frozen external protocol, source pointers, extraction scripts, aggregate counts and exact finite-population verifier. It contains no external corpus text.
+\end{document}

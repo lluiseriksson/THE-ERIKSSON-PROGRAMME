@@ -1,0 +1,95 @@
+{
+  "revision": "5b1ad7e87c70b0e290f8499b64531c7d6a88eea0",
+  "file_hashes": {
+    "ar_padt-ud-dev.conllu": "0d95ee511cf2f26a64e229e86e5e9b37851555ebc8b53c5ebb261f2dfbc185e7",
+    "ar_padt-ud-test.conllu": "793c87bf173d491af2092ef7f87b04a2cf6c596490e7347a2065058a053a6389",
+    "ar_padt-ud-train.conllu": "f0b56962b340f5325bb5d293f47717522e706112c19029e82c225355c6d65e85"
+  },
+  "eligible": {
+    "train": 33580,
+    "dev": 4142,
+    "test": 4327
+  },
+  "bands_dev": {
+    "100": [
+      731,
+      1
+    ],
+    "95": [
+      631,
+      1
+    ],
+    "90": [
+      81,
+      4
+    ],
+    "85": [
+      48,
+      4
+    ],
+    "80": [
+      34,
+      4
+    ],
+    "77": [
+      31,
+      1
+    ],
+    "70": [
+      1965,
+      573
+    ],
+    "60": [
+      479,
+      142
+    ],
+    "0": [
+      142,
+      67
+    ]
+  },
+  "bands_test": {
+    "100": [
+      811,
+      1
+    ],
+    "95": [
+      692,
+      1
+    ],
+    "90": [
+      85,
+      3
+    ],
+    "85": [
+      77,
+      11
+    ],
+    "80": [
+      41,
+      7
+    ],
+    "77": [
+      24,
+      8
+    ],
+    "70": [
+      2015,
+      578
+    ],
+    "60": [
+      422,
+      121
+    ],
+    "0": [
+      160,
+      73
+    ]
+  },
+  "chosen_on_development": 77,
+  "test_extra_fills": 24,
+  "test_original_band_errors": 8,
+  "expected_errors_selected_band": "8",
+  "gain": "0",
+  "external_validation": false
+}

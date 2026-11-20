@@ -1,0 +1,24 @@
+{
+  "source_sha": "2bb38405daae081010a3f40810b028ca72a4754b",
+  "inputs": {
+    "vowels.tex": "de12e1e6310a7d9cc5ff8bca54a174f89c014a4f00fe4b79b6bc616132402955",
+    "verify_vowels.py": "4ab0cfadb31444d39515655fff9499048be28a46cca06596b8a4847bf5722c9c",
+    "sadeed-external.py": "760f1a73ac1c6d9a12789bb3265de69a7a38d59cdf95c036b28456cb2045cfc3",
+    "external-protocol.md": "62132c780b517889a35d2b4f9fc7ee1d10edf67ddca9519d8db04a888c6ee841",
+    "external.json": "1ec357b775edd07c1fe38065f6369c6e46dbc2c9762cf09e417020feb1d9655b",
+    "transfer.json": "312483f8f646c79d13d0b6d42b833c2429c0107e47933ed065c75deed62d347b",
+    "frontier.json": "3118922e978cfd7b399412844d894f9f9f988fb392c1ec314572a87912d4dafa",
+    "source.json": "9913111ee8b7f34c789604b5e46145445834dde848a85e45a9b807819878cdf3",
+    "padt-frontier.py": "e50a1deefe10382375556f6d847a459ef78fae8e21953d8740f858da5aea13cf",
+    "padt-transfer.py": "eacaf39426466ed531fcd621f2d32c2e49ee3f2cbdcec786470e5564ebaaee4a"
+  },
+  "started_at": "2026-11-20T22:06:20.311567+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "69be844cb6eb8aab03403234385bdad776d69590874b28764e41f776cb253796",
+    "69be844cb6eb8aab03403234385bdad776d69590874b28764e41f776cb253796"
+  ],
+  "pdf_bytes": 207392,
+  "finished_at": "2026-11-20T22:07:36.104541+00:00"
+}
