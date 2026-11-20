@@ -1,0 +1,40 @@
+{
+  "fks_source": "10.1103/PhysRevD.58.114006 eqs 3.11 and 3.15",
+  "factor_k": 0.918435206121544,
+  "central_node_degrees": 31.582117468041044,
+  "central_angle_solutions": [
+    6.418908527602213,
+    56.745326408479876
+  ],
+  "one_error_box": {
+    "min_a": -0.26539596113655506,
+    "max_a": -0.12374685428761145,
+    "lower": 0.0054787328718951915,
+    "upper": 0.0251999923646849
+  },
+  "first_box_multiple_touching_zero": 2.803528601876946,
+  "first_box_multiple_reaching_rounding_band": 5.684149711126977,
+  "rounding_band_lower": 0.1345,
+  "all_ratios": {
+    "pipi_eta": 0.6408659162293634,
+    "pipi_etap": 0.22592687401692257,
+    "KK_eta": 0.013467088120763792,
+    "KK_etap": 0.19270298524303894,
+    "KK_pi": 1.0,
+    "eta_eta_eta": 0.010230987965516967,
+    "eta_eta_etap": 0.030309855170207727
+  },
+  "by_partial_widths": {
+    "pipi_eta": 0.6408454381999001,
+    "pipi_etap": 0.22592269298775713,
+    "KK_eta": 0.013467176973522236,
+    "KK_etap": 0.1927079836164641,
+    "KK_pi": 1.0,
+    "eta_eta_eta": 0.01023113021031506,
+    "eta_eta_etap": 0.030309914426613543
+  },
+  "out_of_printed_rounding": [
+    "KK_eta"
+  ],
+  "joint_confidence_level": null
+}
