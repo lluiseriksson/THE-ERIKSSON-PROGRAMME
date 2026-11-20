@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\title{Auditing confirmed failures per reviewed case in educational AI}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+An educational AI benchmark reports 24 confirmed flags before evaluator calibration and 43 afterward, with multiple flags possible on one case. We derive the attainable range of distinct confirmed cases after calibration and quantify the sensitivity of two operational claims to re-adjudication. Three flag-label changes can erase the advantage in absolute cases; reversing or tying the yield per reviewed case requires 43 changes under the stated category constraints. We then design a common-protocol audit with finite-sample error control. In a prespecified audit with zero discrepancies, the yield comparison can be certified with 10 case reviews; certifying an increase in absolute cases requires 1,320 under the same sampling design. These budgets govern prospective review of a fixed benchmark.
+\end{abstract}
+\section{From alerts to reviewed cases}
+Rohlfs et al.\ [1] applied 21 evaluators to a benchmark of 2,482 synthetic educational examples. Several evaluators can flag the same example. Let the yield be the proportion of distinct flagged cases with at least one confirmed flag. The baseline generated 4,002 flags on 2,086 cases and had 24 confirmed flags. The calibrated system generated 88 flags on 72 cases and had 43 confirmations. Thus at most 24 baseline cases could contain a confirmation. After calibration at most 45 cases could have any false alert because only 45 flags were false. At least 27 of the 72 cases had exclusively confirmed alerts, and at most 43 contained a confirmation. The yield ratio is therefore at least $(27/72)/(24/2086)>32.59$ under the recorded adjudications. Baseline used rules and human adjudication; the final flags were manually reviewed. Errors in the two protocols can differ systematically.
+
+The published tier counts also constrain joint realizability. Among 72 final cases, 50 have an output-quality flag, 49 only at that tier. The 23 higher-tier flags must occupy 23 different cases, with exactly one also carrying an output flag. Following Section~5 of [1], we take the 20 completeness flags as false and the 16 well-formedness and 14 truncation flags as true. Treating all three groups as true, as the table caption might suggest, would exceed the published total of 43. For the remaining evaluators we impose the reported flag counts and allow unspecified labels to vary. Each case can carry at most one flag from each evaluator. In the supplement, integer multiplicities of case patterns satisfy these margins and attain 27 and 43 cases with any confirmation. The witnesses reproduce disclosed aggregates. The original case-by-flag table is unavailable.
+\section{Sensitivity to label changes}
+Keep flags, case identifiers and denominators fixed. Count each binary reclassification as one edit. The gap in counts of confirmed cases can shrink by at most one per edit. In a realization with 27 positive final cases there are at least 11 single-confirmation cases: placing two confirmations in every positive case would require 54. Removing three singleton confirmations and allowing all 24 baseline confirmations to be distinct attains a tie. This baseline arrangement is compatible with the disclosed total-label model.
+
+The yield comparison is more robust. If $q$ final cases retain any confirmation after editing, they can retain at most $5q$ original confirmations. Each case can contain at most one higher-tier flag, and at most four originally positive output evaluators under the Section~5 reading. The required number of edits is bounded below by
+\[
+  \max(0,43-5q)+\max(0,\lceil 2086q/72\rceil-24).
+\]
+At $q=0,1$ this is 43. At $q=2$ it is 67 and it increases thereafter. Removing all 43 final confirmations produces a tie or reversal. This is a worst-case edit analysis under the stated margins. It does not estimate the number of mistaken labels.
+\section{A prospective audit on both configurations}
+Freeze case identifiers and the old labels before drawing samples. Select 27 distinct provisionally positive final cases by a fixed rule. Set aside 24 baseline cases including all the old confirmations, padding by a fixed rule when necessary. Leave all 24 conservatively capable of being true under the common protocol. Independently draw $m$ cases from the 27 and $n$ from the remaining 2,062 baseline cases, uniformly without replacement within each list. In each draw review all original flags on the case, blinded to prior adjudication when feasible. A baseline discovery or a final case with no confirmed flag counts as one discrepancy. The decision to tolerate $d$ discrepancies in total must precede inspection. Selecting favorable draws or changing tolerance after inspection invalidates the guarantee.
+
+Let $q$ denote the number of genuine positives among the selected 27. Giving the other 45 final cases zero positives and assigning all 24 set-aside baseline cases a positive maximizes the chance of a false declaration. For a tie or reversal in the absolute count, the baseline pool must contain at least $k(q)=\max(0,q-24)$ positives. For yield replace $q$ in this expression by $\lceil 2086q/72\rceil$. Define $H(a;N,K,s)=\binom Ka\binom{N-K}{s-a}/\binom Ns$, with impossible terms zero. The maximal probability of declaring an improvement on a tie or reversal is
+\[
+ \max_{0\le q\le27}\ \sum_{x+y\le d\atop x,y\ge0}
+ H(x;2062,k(q),n)\,H(y;27,27-q,m).
+\]
+For a fixed draw, adding a positive baseline case can only increase discrepancies. Thus the least admissible $k(q)$ suffices. Independent selection of the samples gives the product even if identifiers overlap, conditional on fixed labels for each configuration. For unrestricted configuration-specific labels the boundary is attainable by assigning the remaining cases as above. Extra restrictions tying adjudications across configurations can only tighten the upper bound. Increasing either sample size decreases the acceptance probability by a nested-draw coupling. Testing all 28 final sample sizes and finding the first admissible baseline size for each gives the smallest total for this decision rule.
+
+\begin{center}\small
+\begin{tabular}{llrrr}\toprule
+Claim & Discrepancies allowed & Baseline & Final & Total\\\midrule
+Case count & 0 & 1,302 & 18 & 1,320\\
+Case count & 1 & 1,783 & 24 & 1,807\\
+Case yield & 0 & 7 & 3 & 10\\
+Case yield & 1 & 12 & 4 & 16\\
+\bottomrule\end{tabular}\end{center}
+The table gives one least-cost split at each tolerance, counting review assignments with equal cost. The supplement gives all optimal splits and the exact worst-case risks. Each row tests its prespecified claim at one-sided level 0.05. Simultaneous inference for multiple selected claims needs a separate error allocation. A failed audit is inconclusive under this decision rule.
+
+\section{Scope and reproduction}
+Exact unconditional comparisons of finite-population proportions using two hypergeometric samples precede this analysis [2]. Our specialization uses the existing case-label margins to focus a common-protocol review on two identifiable lists, and compares budgets for two claims frequently conflated in evaluator monitoring. The method cannot establish recall among unflagged cases or quantify performance on another school population. The original study used the benchmark in choosing configurations. Executing the proposed audit requires case-level access and a common adjudication protocol. We did not perform the human re-review.
+The accompanying files give the source reference, synthetic witnesses, full sample-size frontiers and exact rational risk calculations. The distribution formula was compared with explicit sampling in small finite populations. A prospective replication should prespecify sampling seeds, selection and padding rules, discrepancy tolerance and endpoint.
+
+\textbf{Model assessments and review context.} OpenAI Codex participated in analysis, preparation and verification. The author administers AIRR. The exact PDF, model identity and prior participation are recorded with the assessment.
+\par\small
+[1] C. Rohlfs et al. When Evaluators Cry Wolf: Lessons from Production LLM-as-Judge Evaluation in Educational AI. EMNLP Industry Track (2026), 3240--3255. \href{https://aclanthology.org/2026.emnlp-industry.193/}{Publisher record}.
+
+[2] S. S. Dibaj et al. Exact unconditional inference for analyzing contingency tables in finite populations. Journal of Applied Statistics 49, 86--97. \href{https://doi.org/10.1080/02664763.2020.1798363}{doi:10.1080/02664763.2020.1798363}.
+\end{document}
