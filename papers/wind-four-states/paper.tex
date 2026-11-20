@@ -1,0 +1,43 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=0.93in]{geometry}\usepackage{xcolor}\usepackage[colorlinks=true,urlcolor=blue!50!black]{hyperref}
+\title{\vspace{-2em}When four mean wind speeds reverse a turbine choice}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For a representative northern North Dakota wind year, replacing 8,760 hourly speeds with four within-group means reverses 19 of 395 comparisons of equally rated power curves. A 1.5 MW pair selected in this screen also reverses on a second, previously unevaluated, Minnesota resource. We give sharp bounds on the mean power difference for arbitrary within-group distributions with given means and supports, and show how to recover the hourly ranking exactly for linearly interpolated curves. These results concern predicted power under a common inflow. They do not establish measured generation or the relative performance of wind farm layouts.
+\end{abstract}
+\section*{A decision a coarse wind distribution can change}
+A resource summary may be used to choose a turbine before a full energy assessment. Discretization error in energy calculations is well documented \cite{processing,flowers}. The decision here is whether two turbines of the same nominal capacity exchange places, even when each representative is exactly its group's mean. The test combines an open curve library and two public representative wind years with an explicit description of the information discarded. We make no priority claim for discretization error or the underlying moment formulas.
+
+\paragraph{Design.} We used the System Advisor Model (SAM) library and representative resource files \cite{sam}. Each resource gives 8,760 speeds at 80 m. We assign each hour to the nearest of 2.99, 3.18, 6.25 and 10.12 m/s (ties to the first). These speeds come from a recent Winnipeg study \cite{zaidi}; its directional clustering and vertical-axis layouts differ from this one-dimensional test. We evaluate each curve at the four \emph{resulting means} and average with the actual group sizes. The reference averages the interpolated power over all hours. Within the observed speed range, we accept only finite, nonnegative power arrays on strictly increasing finite speed grids, extending with zero beyond a table only at a zero endpoint. We compare one turbine of each type at the same imposed inflow, omitting wakes, availability and air-density corrections.
+
+\paragraph{Screen and second resource.} In North Dakota, 103 eligible curves in the 1--5 MW range yield 395 equal-rating pairs. Nineteen have strictly opposite mean-power orderings with both margins exceeding $10^{-7}$ kW. Among reversals, we selected the pair maximizing the smaller absolute margin divided by rating. We fixed that pair before evaluating the southwestern Minnesota flat-land file. Both curves are rated 1.5 MW. Positive gaps favor the Fuhrlander FL 1500\_70 over the GE 1.5sle.
+\begin{center}\begin{tabular}{lrr}\toprule
+Representative resource & Four group means (kW) & All hours (kW)\\\midrule
+Northern North Dakota & $+16.97$ & $-13.36$\\
+Southwestern Minnesota & $+15.05$ & $-13.24$\\\bottomrule
+\end{tabular}\end{center}
+\newpage
+\section*{Recovering the gap from aggregate data}
+Write $D=A-B$ for the difference of two piecewise-linear power curves. Let $a$ be the lowest speed on the support, $s$ its initial slope, and $\delta_k$ its slope jump at an interior knot $k$. For the speed $V$ of a uniformly chosen hour,
+\[
+ E[D(V)] = D(a)+s(E[V]-a)+\sum_k\delta_k E[(V-k)_+].
+\]
+Both sides before averaging agree at $a$ and have identical slopes between knots. Thus a resource archive can disclose mean speed and the mean excess above each relevant knot to recover this comparison exactly. Knots where the two curves have identical slope jumps drop out. For both files, a second computation using excesses reproduced the direct hourly gap within $10^{-7}$ kW.
+
+If only a group's weight, mean $m$ and supporting interval $[l,h]$ are available, form the points $(v,D(v))$ at $l,h$ and all intervening knots. All pairs $(E[V],E[D(V)])$ lie in their convex hull since every point of the interpolated curve is a convex combination of adjacent vertices. Conversely any convex combination is realized by a distribution on those vertices. The vertical slice of the hull at $m$ gives the sharp interval. Its endpoints are achieved by at most two speeds per group. Combining intervals with group weights yields sharp bounds over arbitrary within-group laws. The bounds still enclose the finite-hour answer when masses must be integer multiples of one hour, though sharpness for that smaller class is not claimed.
+
+For this pair, the northern North Dakota interval is $[-48.99,19.62]$ kW (endpoints rounded to nearest), and Minnesota's is $[-47.30,18.29]$ kW. Both contain zero in their interior. Even supplementing group weights and means with the observed speed ranges therefore permits either sign in the stated distribution class. In North Dakota the four group sizes were 543, 888, 2,826 and 4,503. The respective mean speeds were 2.15, 3.97, 6.54 and 11.20 m/s. Evaluating the four means gives 843.49 and 826.52 kW for the two curves, compared with 748.36 and 761.72 kW on the hourly resource.
+
+\paragraph{Scope.} The second resource checks one fixed pair in the same modelling library. It supplies neither an independent field measurement nor a population reversal rate. An industrial procurement comparison would require site-specific inflow, hub-height feasibility, costs and uncertainty in both curves. Reproducing the Winnipeg layout result would additionally require directional assignments and wake-dependent power responses.
+
+\paragraph{Model assessments and review context.} OpenAI Codex participated in source selection, analysis and drafting. Numerical evidence comes from dedicated Linux computations on the pinned inputs. Any model assessment must identify its reviewed PDF. Independent scientific peer review has not been documented.
+
+{\small\begin{thebibliography}{9}\setlength{\itemsep}{0pt}
+\bibitem{processing}\href{https://doi.org/10.3390/en18133402}{Practices and Considerations in Wind Data Processing for Accurate and Efficient Wind Farm Energy Calculation}. \emph{Energies} 18 (2025), 3402.
+\bibitem{flowers}\href{https://doi.org/10.1002/we.2954}{FLOWERS AEP: An Analytical Model for Wind Farm Layout Optimization}. \emph{Wind Energy}.
+\bibitem{sam}System Advisor Model. \href{https://github.com/NatLabRockies/SAM/tree/784177b634fa1475fda6672b70595e087a238aea/deploy}{Turbine library and hourly resources}, git revision 784177b6.
+\bibitem{zaidi}A. Zaidi. \href{https://doi.org/10.1177/0309524X261506803}{A surrogate-assisted reinforcement learning framework for layout optimization and economic assessment of dense urban vertical-axis wind turbine arrays}. \emph{Wind Engineering} (2026).
+\end{thebibliography}}
+\end{document}
