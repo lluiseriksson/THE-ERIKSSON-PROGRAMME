@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{Which carbide composition leads after recalibration?\\Sharp error budgets for a published screening grid}
+\author{Lluis Eriksson}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+A recent machine-learning screening study ranked compositions of six metal carbides by a mixing-energy descriptor. We ask which strictly unequal mixture leads and what changes in its energy inputs would erase its lead. Of the 1,281 full-support entries, 30 are equimolar. The leader among the remaining 1,251 is the mixture with Ta and Zr metal fractions $3/8$ and $5/8$. With independently bounded configuration-energy errors and shared endmember-reference errors, the mirror composition controls the entire two-parameter stability boundary. If all endmember references move by a single common offset, the first challenger is instead a ternary Hf--Ta--Zr mixture. Bounds on the unpublished tail suffice for both conclusions.
+\end{abstract}
+\section{Population and decision}
+Svinukhova et al.\ [1] screen a metal sublattice with Hf, Nb, Ta, Ti, V and Zr at fractions in eighths. Their Table S1 ranks candidates by a descriptor defined using the energetics of the structure and its binary references, following [2]. We minimize this descriptor over mixtures with at least two distinct positive metal fractions. This choice answers which unequal stoichiometry ranks first, including binary mixtures of metal species. A restriction to four or more species would answer a different question.
+
+For exactly $k$ occupied metals, choose the $k$ species and write eight as an ordered sum of $k$ positive integers. There are $\binom6k\binom7{k-1}$ possibilities. The counts for $k=2,\ldots,6$ are 105, 420, 525, 210 and 21. Every vector also appears once for each nominal superset of its support before the authors' filter. Weighting by $2^{6-k}$ gives their raw total 7,581. Requiring the full nominal support leaves 1,281 distinct vectors. Equal fractions require $k$ to divide eight, giving 15 binaries and 15 quaternaries. The equimolar entries among the reported top 100 occupy ranks 1, 19, 20, 31 and 61. The first eligible entry is therefore rank 2, at $-801.049$ K.
+
+\section{A worst-case certificate}
+Write $S_x=-(k_B/2)\sum_{i:x_i>0}x_i\log x_i$ per atom for rocksalt MC, with $k_B$ in eV/K. For fixed stoichiometry the descriptor is
+$T_x=(E_x-\sum_i x_i R_i)/S_x$. Let $w$ be the leader and $D_j=T_j-T_w$ the gap to another eligible candidate. Perturb each configuration energy $E_x$ by an independent value of magnitude at most $\epsilon$ and each of the six $R_i$ by a value of magnitude at most $\eta$, shared across all structures. Define
+\[
+ A_j=S_w^{-1}+S_j^{-1},\qquad
+ B_j=\sum_i |w_i/S_w-x_{ji}/S_j|.
+\]
+The leader is uniquely optimal for every admissible perturbation exactly when
+$A_j\epsilon+B_j\eta<D_j$ for every $j$. Indeed the two configuration errors can move the two descriptors together by $A_j\epsilon$, and choosing the sign of each reference error attains the additional decrease $B_j\eta$ in their gap. A witness for a single competitor suffices to destroy a unique lead. There is no requirement that the same witness destabilize all competitors.
+
+If one rival attains both the minimum $D_j/A_j$ and the minimum $D_j/B_j$ (ignoring zero sensitivities), dividing the inequalities by $D_j$ shows that this rival controls every nonnegative combination of budgets. If instead every reference has the same signed offset and configurations remain fixed, replace $B_j$ by $C_j=|S_w^{-1}-S_j^{-1}|$. An identical shift of configurations \emph{and} references cancels in every mixing energy.
+
+\section{Results on the reported grid}
+We use decimal temperatures as printed, allowing nearest rounding of each by $0.0005$ K. For each listed competitor, we replace $D_j$ by $D_j\pm0.001$ K. For each omitted vector, the lower endpoint from rank 100 bounds its temperature below, assuming Table S1 gives the ordered first 100 of this grid. This combines the known composition and entropy with a lower bound on its gap. It requires no invented temperature for the omitted 1,156 strictly unequal mixtures.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Energy perturbation & Rival rank & Tie radius & Omitted lower bound\\
+\midrule
+Configuration only & 3 & $0.78661$--$0.78665$ & $4.8709$\\
+Shared references & 3 & $3.14644$--$3.14657$ & $4.8709$\\
+Single reference offset & 4 & $8.88597$--$8.88616$ & $17.7592$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Radii are in meV/atom. The next eligible listed competitor in each calculation has a radius above $1.4370$, $3.5779$ and $9.4008$ meV/atom, respectively. These strict margins exclude both rounding ambiguity and competition from the tail.
+
+Rank 3 reverses the Ta and Zr fractions. It has identical entropy and $B_3/A_3=1/4$. Thus the threshold for the mixed model is $\epsilon+\eta/4\approx0.78663$ meV/atom, with the rounding interval in the first row. In the single-offset model this rival cannot close the gap. Rank 4, with Hf $1/8$, Ta $3/8$ and Zr $1/2$, has higher entropy. A downward shift of all reference energies raises the leader's descriptor more than the ternary's. Testing this ternary alongside the two mirror compositions would distinguish the sensitivity to these error mechanisms.
+
+\section{Scope and reproduction}
+The bounds answer a deterministic ranking question. They estimate neither the realized energy errors nor the probability of a rank change. Test-set mean absolute error cannot serve as a uniform bound on these inputs. The calculation holds entropies fixed and concerns a predicted descriptor. Experimental phase stability requires additional evidence. The response to changes in reference values, class counts and rounding bounds are the contributions of this reanalysis.
+
+The accompanying scripts read Table S1 and enumerate the eighth grid. The archive records the derived values and the primary source version. The analysis uses $k_B=(1.380649\times10^{-23})/(1.602176634\times10^{-19})$ in eV/K. Source tables remain available from the authors.
+\paragraph{Model assessments and review context.} Codex assisted the derivation and preparation. An assessment of the exact rendered version, when available, belongs in the version-linked record. The authors of the screening study have not been asked to endorse this reanalysis.
+\paragraph{References.} [1] A.~A. Svinukhova et al., \emph{Machine Learning-Driven High-Throughput Screening of Equimolar and Non-Equimolar High-Entropy Carbides}, \href{https://arxiv.org/abs/2611.25127v1}{arXiv:2611.25127v1} (2026), Secs.~II.3.1 and III.4 and Table~S1.
+[2] S.~J. Magorrian et al., \emph{Computational tuning of the elastic properties of low- and high-entropy ultra-high temperature ceramics}, \href{https://arxiv.org/abs/2512.13204}{arXiv:2512.13204} (2025).
+\end{document}
