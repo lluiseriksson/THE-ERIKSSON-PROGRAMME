@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{A treatment-label ambiguity changes the return to film in a greenhouse watermelon trial}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A grower comparing ground covers needs to know how much extra yield can pay for the film. In the public workbook of a greenhouse trial, the three 2025 plot yields labelled straw with film average 34.82 tonnes per hectare, while the paper reports 37.78. The corresponding manure treatment without film shows the reverse discrepancy. Across all 720 permutations only their exchange reconciles all six means and sample standard deviations. It also recovers the published interaction test to the displayed precision. The field identities remain unresolved. Carrying both assignments through a partial budget reverses the sign of the estimated return in yield from adding film to manure. For divisible acreage we give the exact worst-case margin over the two assignments, allowing treatment-specific costs. Its optimum requires comparing the six individual packages and a single equal-area mixture. This is a sensitivity analysis of one experiment.
+\end{abstract}
+
+\section{An ambiguity in the primary record}
+Shi and colleagues [1] studied small-fruited watermelon in one greenhouse at Fengyang, China. Six ground covers were randomly arranged in 18 plots. The 2024 preliminary trial and the 2025 main experiment used the same plots and assignments. The authors report that they recorded total plot yield and converted it to tonnes per hectare. Our unit of comparison is a treatment package in the 2025 experiment. The decision at issue is whether the additional crop value covers the additional cost.
+
+The primary supplement [2] contains yield replicates, means and sample standard deviations for both years. On the sheet \emph{Fruit yield and quality}, columns O and P are labelled T3 (straw with film) and T4 (sheep manure without film). Their 2025 yield entries in rows 56--58 are
+\[
+  (33.62,35.22,35.62)\quad\hbox{and}\quad(37.38,39.10,36.87).
+\]
+Their means are 34.8200 and 37.7833 respectively. Row 59 instead gives 37.78 and 34.82. The printed sample standard deviations in row 60, 1.17 and 1.06, also match in the opposite order. Numerical values in this paper are in tonnes per hectare unless stated otherwise.
+
+\newpage
+\section{Which comparisons survive the discrepancy?}
+Write R for taking the replicate headers literally and S for exchanging the two 2025 yield triplets, keeping every other triplet fixed. The implied means below use the underlying triplets throughout, with rounding for display.
+\begin{center}
+\begin{tabular}{llrr}\toprule
+ & Package & R & S\\ \midrule
+CK & Bare soil &31.020&31.020\\
+T1 & Film only &33.417&33.417\\
+T2 & Straw &32.280&32.280\\
+T3 & Straw and film &34.820&37.783\\
+T4 & Sheep manure &37.783&34.820\\
+T5 & Sheep manure and film &36.750&36.750\\ \bottomrule
+\end{tabular}
+\end{center}
+For each of the $6!$ assignments we recomputed the six means and sample variances from the three recorded numbers per column. We required each mean and each standard deviation to be within 0.005 of the corresponding printed summary. Squaring the nonnegative bounds on the standard deviations allows the test to use exact fractions. Only S qualifies in 2025. In 2024 only the identity permutation qualifies. This localizes the incompatibility to the reported 2025 yield assignments under the triplet-permutation model. The analysis does not identify which plots received which intervention.
+
+A second diagnostic uses the balanced two-by-three analysis of variance described in [1]. If $g_i$ denotes the difference between the film and no-film means on base $i$, the interaction sum of squares is $(3/2)\sum_i(g_i-\bar g)^2$, with two degrees of freedom. The within-group sum of squares has twelve degrees of freedom and is invariant to swapping two triplets. The resulting interaction $p$-values are 0.13593 under R and 0.15542 under S. The article reports 0.155. This arithmetic agreement connects the published test with S, but does not independently verify a field label. Neither reconstruction gives an omnibus interaction significant at 0.05.
+
+\paragraph{Thresholds for adding film.} Let $p>0$ be a common net crop price per tonne and $K_i$ the all-in incremental cost per hectare of adding film on base $i$. Include laying, removal and disposal as applicable. Conditional on these sample means, film raises the partial margin exactly when $K_i/p<g_i$. Mineral fertilizer rates and organic material doses match within each pair in Tables 1--2 of [1]. Between pairs they can differ. The table gives the thresholds under each assignment.
+\begin{center}
+\begin{tabular}{lrr}\toprule Base & R & S\\ \midrule
+Bare &2.397&2.397\\ Straw &2.540&5.503\\ Sheep manure &$-1.033$&1.930\\ \bottomrule
+\end{tabular}
+\end{center}
+At a film cost worth three tonnes of crop per hectare, adding film to straw passes the threshold only under S. With manure, even the sign of the mean yield difference is unresolved. Rounding the underlying centesimal plot values by up to 0.005 can change a difference by at most 0.010. Sampling error and field transferability are separate concerns.
+
+\newpage
+\section{Deciding with both assignments still possible}
+For treatment $j$, let $c_j$ be the noncommon variable cost per hectare divided by $p$, including delivered organic material, mineral products, labour and film. One can use local prices for each of the three mineral products and their rates in Table 2 of [1]. Both organic packages used 9000 kg dry material per hectare. Costs are taken to be fixed across the two assignments. The conventional partial-budget comparison [3] maximizes $y_j-c_j$ for each specified yield vector. The penalty for uncertainty here concerns which vector to use.
+
+Suppose land is divisible, yields and costs scale linearly with area, and the same one of the two assignments applies to every plot. Let $a_j\geq0$ denote area shares summing to one. The guaranteed sample-based margin in crop-equivalent units is
+\[
+ \min_{s\in\{\mathrm R,\mathrm S\}}\sum_j a_j(y_j^s-c_j).
+\]
+Write $H=2267/60$, $L=1741/50$ for the two ambiguous means. The optimum equals
+\[
+ \max\left\{\max_j [\min_s y_j^s-c_j],\
+              \tfrac12(H+L-c_{\rm T3}-c_{\rm T4})\right\}.
+\]
+Indeed the difference between the two scenario margins is, up to sign, $(H-L)(a_{\rm T3}-a_{\rm T4})$. On each side of equality the smaller margin is linear. Alternatively, any portfolio is a convex combination of an equal T3/T4 mixture, the leftover share of at most one ambiguous treatment, and unambiguous pure treatments. On each such combination the same assignment attains the minimum, so averaging cannot improve on its best component. Each candidate in the maximum is feasible. For indivisible acreage restricted to a single treatment only the first maximum applies.
+
+\paragraph{Example with a change in the best decision.} Set the net costs of the three base packages equal and let film have common cost $k=K/p\geq0$. These are hypothetical cost assumptions. Write $C=36.75$, the invariant mean of T5. The other three invariant packages have lower margins than T4's guarantee $L$ for every $k\ge0$. The optimum reduces to
+\[
+   \max\{ C-k,\ (H+L-k)/2,\ L\}.
+\]
+T5 is optimal below $k=2C-H-L=269/300$. The equal split between T3 and T4 is optimal between $269/300$ and $H-L=889/300$. T4 is optimal above $889/300$, with ties at the transitions. At $k=2$, the equal split guarantees about 35.302, against 34.820 for the best pure package. This numerical gain protects against the specific label ambiguity. It is not a lower confidence limit on farm income.
+
+\newpage
+\section{What would resolve the field comparison?}
+A dated plot-to-treatment key linked to the eighteen unaggregated 2025 harvest records would directly distinguish R and S, or identify an error beyond either assignment. A revised spreadsheet with provenance could then be checked against all six groups. Recovering the article's test from one assignment does not provide those links. Both years had the same plot layout, so the earlier season is an internal workbook check, not independent validation.
+
+The highest-yielding treatment changes between R and S. T5 is second in both. A uniform crop price deliberately omits potential quality premia, which matter because the original article reports differences in soluble solids and other fruit traits. Treatment-specific prices, fixed setup costs on small areas, covariance of future yields or interactions across plots can change the allocation. Three plots per treatment at one site provide limited information about future returns. We do not estimate market prices, long-run environmental costs or the frequency of either assignment.
+
+\paragraph{Model assessments and review context.} OpenAI Codex assisted in the data audit, derivation, reproducible calculations and writing. The author administers AIRR. Reports evaluating this version are linked to its exact PDF. The computation is a reanalysis of published data. No field record was obtained directly from the trial investigators.
+
+\begin{thebibliography}{3}
+\bibitem{shi} H. Shi, Y. Wu, H. Li, M. Chen, Q. Gao and M. Toselli. Effects of Different Mulching Patterns on Soil Properties, Microbial Communities, Fruit Yield, and Quality of Greenhouse-Grown Watermelon. \emph{Horticulturae} 12, 1452 (2026). \href{https://doi.org/10.3390/horticulturae12111452}{doi:10.3390/horticulturae12111452}.
+\bibitem{data} Shi et al. Supplementary workbook for [1], sheet \emph{Fruit yield and quality}, rows 55--60. \href{https://mdpi-res.com/d_attachment/horticulturae/horticulturae-12-01452/article_deploy/horticulturae-12-01452-s001.zip}{Publisher's archive}. The accompanying checker pins the archive by SHA-256.
+\bibitem{cimmyt} CIMMYT. \emph{From Agronomic Data to Farmer Recommendations: An Economics Training Manual}. Revised edition, Mexico, 1988. \href{https://knowledgecenter.cimmyt.org/bib/46420}{CIMMYT catalogue}.
+\end{thebibliography}
+\end{document}
