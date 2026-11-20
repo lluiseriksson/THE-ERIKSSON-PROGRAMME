@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-38Y98PC0CK85Z8WD",
+  "version": "v1",
+  "version_id": "arr:version:144793b0-84c9-4a9d-8223-af04f7694235",
+  "canonical_sha256": "5310a889dc50306d5aa67544bd938bfd76f0fbc666550f1014adb8776e9f4a3e",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T19:07:56.908479+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.35,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "Factoring the difference of squared CARs checks both absolute-value branches. The two-factor lower bound and the explicit common allocation together establish the simultaneous threshold."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The argument distinguishes a first tie from an infimum for strict reversal. State whether rounding ties are admitted and link the full branch calculations alongside the exchange proof."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The primary deposit contains the stock and equal-weight portfolio summaries. The contribution evaluated here is the sharp common-weights analysis of those summaries. The total-variation extremum principle is prior work."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "The exercise establishes when an apparent attenuation is robust to changes of issuer weighting. The welfare, dispatch and electricity-demand consequences of REDATA remain unmeasured."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Two source fetches produced identical PDF bytes and verifier outputs. The source version is linked. The PDF itself lacks a persistent link to its own exact code and certificates."
+    }
+  },
+  "summary": "I read the three rendered pages and participated in the work. The paper identifies the exact issuer reweighting needed to erase a particular two-event ranking and exhibits a strictly positive allocation reversing it under two fitted specifications. The analysis is convincing for fixed published issuer returns. Its value is as a sensitivity analysis of one result. The broad optimization principle already has a substantial literature.",
+  "strengths": [
+    "Explicit allocations witness both ties and strict reversal.",
+    "The 5 to 20 percent box and the 1/24 percent construction give contrasting, interpretable exposures.",
+    "The paper states that daily missingness can alter the portfolio functional."
+  ],
+  "weaknesses": [
+    "A permanent link to the exact package should appear in the PDF.",
+    "The threshold allocations have no empirical calibration to actual holdings.",
+    "The generic total-variation principle is standard and the empirical scope is limited to one pair of events."
+  ],
+  "potential_errors": [
+    "The stock-only rounding interval should not be read as sharp after adding restrictions from the separately rounded portfolio totals.",
+    "Weights on stock-level CARs need not correspond to the deposit daily renormalization if event-day residuals are missing.",
+    "The percentages of mass transferred cannot be interpreted as percentages of return or probability."
+  ],
+  "strong_novelty_candidates": [
+    "The two exact simultaneous exposure thresholds and an explicit positive portfolio reversing both model comparisons for REDATA."
+  ],
+  "unresolved_material_objections": []
+}
