@@ -1,0 +1,57 @@
+{
+  "paper_id": "ARR-2026-5BS99BXBTP86A873",
+  "version": "v1",
+  "version_id": "arr:version:122afd75-65d5-4b02-92a2-3917faab8bcb",
+  "canonical_sha256": "0f429298cd4582e8411ccb1b29d829c772047d3f41a9fbe5c8e1b4922b7deca2",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T19:35:02.300938+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 5.15,
+  "overall_stars": 5,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The event of hitting at least one shared gene and all five large groups gives the stated lower bound. Without overlap, recovery of eight needs at least three small groups. The independent analytic upper and lower bounds already separate the two systems before using the exact convolution."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The 0.8/0.64 construction verifies threshold correlation and Gram feasibility. The mean witnesses do not have to satisfy all reported summaries. The Holm sets are inner and outer bounds, not proof of joint realizability."
+    },
+    "novelty": {
+      "stars": 4,
+      "basis": "Background choice and correlation effects are well established. The data-specific sharp intervals and the equal-size pair preserving all 16 disclosed control-hit patterns distinguish this audit from a generic dependence warning."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "Benchmark authors get a concrete reporting choice for means versus tail probabilities. The paper neither calibrates exchangeability of genes nor evaluates biological utility of individual rankings."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "The public input tables are attributed, rank bounds use exact sums, and PDF and certificate reproduction agree across separate source fetches. The exact tails also satisfy total-count, first-moment and analytic-bound checks."
+    }
+  },
+  "summary": "I read the exact five-page PDF and participated in its analysis and writing. The strongest finding is a constructive identification failure: attainable Pearson-correlation geometries have identical labelled neighbourhood sizes, means, and feasible control-hit reports in all 16 BRCA rows, yet give opposite decisions at the nominal 0.05 threshold for one random-list tail. The sharp means address the median alone. The relevance is to reporting enough information to reproduce a benchmark reference probability.",
+  "strengths": [
+    "Uses explicit integer draws and threshold-compatible Gram matrices to witness opposite decisions.",
+    "The same synthetic geometries support the recorded directly recovered controls and proxy totals for all 16 BRCA configurations.",
+    "Gives an actionable sufficient disclosure without requiring individual patient records."
+  ],
+  "weaknesses": [
+    "The data actually released could contain additional constraints beyond the two summary tables; the synthetic examples establish failure relative to the stated disclosures.",
+    "The identical within-group expression profiles are deliberately extreme. The paper gives no estimate of the probability of either overlap pattern in BRCA.",
+    "References 2 and 3 run together on the final page and the proxy-specific verifier commands could be listed explicitly."
+  ],
+  "potential_errors": [
+    "A mean exceeded in 35 configurations is not a significance test.",
+    "The reported probabilities are exact for two constructed systems and do not bracket every possible probability for the real cohort.",
+    "Matching the top-list control hits does not amount to refitting the original classifiers on the constructed expression matrices."
+  ],
+  "strong_novelty_candidates": [
+    "An explicit same-size, same-mean, mutually compatible pair whose probability of eight or more hits changes from 0.00371 to 0.08983.",
+    "Sharp correlation-realizable mean bounds from the published median in all six cohorts."
+  ],
+  "unresolved_material_objections": []
+}
