@@ -1,0 +1,22 @@
+{
+  "source_sha": "0763b05f4c5d6deb6103f318c1c19c580bdfecc7",
+  "inputs": {
+    "tides.tex": "2d8febbd3b54c7a46b1336e2ef4ca4dc2ac45d27668dd7078420440c5a604d98",
+    "verify_tides.py": "4a8ee14305beb21001bd4f8bbbc510e87221092e6e6fe2adfada7b3dbac2edf3",
+    "ocean-protocol.md": "cef2d13547ea4ccb475bd51082062678d1a437379505c68665a884a9eae3ecd4",
+    "ocean-correlation.md": "79836b440e58035e9275236b0b0b6e418bd786a95098a68b1159aa66e108f17e",
+    "tide_coverage.py": "182e6049055cf0df3af81587c8ab28ae3ac1b8dedf0bcea8e57bd8dcea9dad4c",
+    "tides.json": "618903822a155c94d211787d1676fa8b2faecdd3c11f9998610e02eacf94f842",
+    "noaa-manifest.json": "f731f37d7cebf1696f5fb623cbef2d05f9c8e204b2eb8dd11f4b6c1a56834f5a",
+    "noaa-inputs.zip": "c698ea9052ec8ded7533a27e72363c89b1cfc4f34dfe2639dd1434ca7209f7d9"
+  },
+  "started_at": "2026-11-20T22:31:13.507454+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "dd17e1abafb73f5cc815ef1e0a90faaa3bb521fe740fefd1a86c5e8927ba1350",
+    "dd17e1abafb73f5cc815ef1e0a90faaa3bb521fe740fefd1a86c5e8927ba1350"
+  ],
+  "pdf_bytes": 199659,
+  "finished_at": "2026-11-20T22:32:09.743220+00:00"
+}
