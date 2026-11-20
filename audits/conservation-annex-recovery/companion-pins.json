@@ -1,0 +1,90 @@
+[
+  {
+    "dataset": "314945",
+    "title": "Birds Directive Annex I - Bird species of Community interest whose conservation requires the designation of special protection areas",
+    "concept": "10.48580/dgxj7",
+    "attempt": 7,
+    "finished": "2026-10-11T05:17:54.08081",
+    "archive": "annex-314945-7.zip",
+    "sha256": "cb3109b6ff589640dadbdd73857bb1e683bc657d5a729ce77f1ab3a1ca61bc95",
+    "members": [
+      "NameUsage.csv",
+      "TaxonProperty.csv"
+    ]
+  },
+  {
+    "dataset": "314974",
+    "title": "Birds Directive Annex II - Bird species that may be hunted under specific circumstances",
+    "concept": "10.48580/dgxk7",
+    "attempt": 2,
+    "finished": "2026-10-11T05:20:02.228085",
+    "archive": "annex-314974-2.zip",
+    "sha256": "6a838e17303c04948483a96c92a63ff96f0e626b80ac160e5d7a3967927e2954",
+    "members": [
+      "TaxonProperty.tsv",
+      "NameUsage.tsv"
+    ]
+  },
+  {
+    "dataset": "314380",
+    "title": "Birds Directive Annex III - Bird species with special provisions",
+    "concept": "10.48580/dgwtq",
+    "attempt": 6,
+    "finished": "2026-10-11T01:41:59.647864",
+    "archive": "annex-314380-6.zip",
+    "sha256": "3dc9708e9d1fde96073063136562cbea470adb202d3ff70d8513c307c9296a8e",
+    "members": [
+      "taxonProperty.csv",
+      "NameUsage.csv"
+    ]
+  },
+  {
+    "dataset": "313964",
+    "title": "Characteristic species of Annex I habitats of the EU Habitats Directive",
+    "concept": "10.48580/dgwcd",
+    "attempt": 21,
+    "finished": "2026-10-11T01:24:48.015379",
+    "archive": "annex-313964-21.zip",
+    "sha256": "79d0f8eda09badf39a02023929012ae9d171c3f3ae238657ad1dde7311b231fe",
+    "members": [
+      "NameUsage.tsv",
+      "TaxonProperty.tsv"
+    ]
+  },
+  {
+    "dataset": "314298",
+    "title": "Habitats Directive Annex II - Animal and plant species of Community interest whose conservation requires the designation of special areas of conservation.",
+    "concept": "10.48580/dgwqw",
+    "attempt": 15,
+    "finished": "2026-10-11T01:38:23.211906",
+    "archive": "annex-314298-15.zip",
+    "sha256": "1b29bc11c2172240bf8a8819b3b5f40dc094e753ebdac435fe45677826ffaacc",
+    "members": [
+      "NameUsage.csv"
+    ]
+  },
+  {
+    "dataset": "314304",
+    "title": "Habitats Directive Annex IV - Animal and plant species of Community interest in need of strict protection",
+    "concept": "10.48580/dgwr4",
+    "attempt": 5,
+    "finished": "2026-10-11T01:38:43.585204",
+    "archive": "annex-314304-5.zip",
+    "sha256": "8265071640c2fa6821150e96e0148015f8873aa155c634e57f6aafd59ea3588e",
+    "members": [
+      "NameUsage.csv"
+    ]
+  },
+  {
+    "dataset": "314308",
+    "title": "Habitats Directive Annex V - Animal and plant species of community interest whose taking in the wild and exploitation may be subject to management measures",
+    "concept": "10.48580/dgwr8",
+    "attempt": 4,
+    "finished": "2026-10-11T01:38:52.9688",
+    "archive": "annex-314308-4.zip",
+    "sha256": "a13df8f2ba98f0c03c1b522023cff889762810795b97920477169869569ffaea",
+    "members": [
+      "NameUsage.csv"
+    ]
+  }
+]
