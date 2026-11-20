@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=27mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\newcommand{\pass}{\mathop{\rm miss}}
+\begin{document}
+\begin{center}{\Large\bfseries What a systematic audit can miss in a review of AI for mechanical product development\par}\vspace{6pt}
+Lluis Eriksson\end{center}
+\textbf{Abstract.} A second rater classified 60 studies in a review with 160 primary studies. Which population conclusions do these labels support, and how could a follow-up detect a large unseen group? We reconstruct the sampling frame and derive a sharp, order-free miss probability for a specified fractional systematic design. We then give a coordinated two-start design for the 127-study single-stage stratum and a finite certificate for the loss of one second-sample label. The empirical results concern recorded maturity ratings. The prospective guarantees require a specified sampling algorithm and a fixed frame.
+
+\section*{1. Which studies do the audit weights cover?}
+We link the master register to the blind audit in the deposited review workbook of Manjud Maluf Filho et al.\ [1]. A positive label is either \emph{industrial pilot} or \emph{operational deployment}. A different or unreported label is outside this endpoint. Restrict the master register to the 160 primary studies. Sixteen single-stage studies, previously adjudicated by the same rater, were excluded from the blind frame. The deposit describes stratified systematic sampling with random start for sample A. Sample B added cases by a prespecified priority rule.
+
+\begin{center}\begin{tabular}{lrrrr}\toprule
+Stratum & Total & A: positive/rated & B: positive/rated & Unrated here\\\midrule
+Single stage, in frame&127&0/32&0/11&84\\
+Two or three stages&16&2/8&1/8&0\\
+Closed loop&1&---&0/1&0\\
+Outside blind frame&16&---&---&16\\\bottomrule
+\end{tabular}\end{center}
+The A weights represent 143 studies. The blind frame contains 144 because it includes the closed-loop case. With the 60 observed labels fixed, all totals from 3 to 103 are attainable by varying the 100 remaining labels. Retaining master codes at those 100 rows gives a baseline of seven positives. At most $b$ changes then allow precisely the integers from $7-\min(b,4)$ to $7+\min(b,96)$. Indeed there are four positive and 96 other master codes among those rows. A strict majority requires 74 upward changes. Alternatively, 23 new, distinct, negative blind ratings would rule it out even if all remaining unseen cases were positive. With only 22, a configuration of 81 positives remains possible.
+\newpage
+\section*{2. Sharp zero-detection probability for one start}
+On positions $0,\ldots,N-1$, let $1\le n\le N$. Draw $U$ uniformly on $[0,N/n)$ and select $\lfloor U+jN/n\rfloor$ for $0\le j<n$. Write $g=\gcd(N,n)$, $L=N/g$, $d=n/g$. For any positive count $1\le m\le N$, the largest probability of missing every positive, over all placements, is
+\[
+ p_m=\frac{\max(0,L-d-\lceil m/g\rceil+1)}{L},\qquad p_0=1.
+\]
+\textit{Proof.} The phase $s=\lfloor nU\rfloor$ is uniform on the $N$ residues. Unit $i$ is sampled for exactly the $n$ consecutive phase residues beginning at $in\bmod N$, by the floor inequalities. Their endpoints partition into blocks of $g$ phases since every interval starts at a multiple of $g$. On the compressed $L$-cycle, these intervals have length $d$, with $g$ units for every possible origin. The positives therefore occupy at least $k=\lceil m/g\rceil$ origins. Adding a unit shift to a nonempty proper subset of a cycle enlarges its union by at least one point. Iterating $d-1$ times gives coverage of at least $\min(L,k+d-1)$ phases. Consecutive origins attain equality, filling up to $g$ units per origin. Taking the complement proves the formula.
+
+For $N=127,n=32$, $p_{89}=7/127$ and $p_{90}=6/127$. Thus a zero count in the random sample alone gives a conservative one-sided 95\% upper limit of 89 (use 127 when a positive is found). The 11 additional recorded negatives tighten the deterministic cap to 84. A population of 84 positives can miss both stages under an admissible priority ordering. Use the extremal arrangement above, rank all 43 negatives above every positive, and take the highest-ranked 11 remaining units after the random draw. At each of the 12 missing phases, all 11 follow-ups are negative. This example does not reconstruct the historical ordering.
+
+\textbf{Why phase matters.} To obtain 81 positives in the entire register requires at least $81-3-16=62$ in the 127 stratum. A single start can miss 62 with probability $34/127$. Independent fresh starts on the same ordered frame have worst-case joint miss probability $(34/127)^r$, as one fixed placement attains the bound in every draw. A hypergeometric tail assumes a different design. The deposit specifies neither the exact fractional implementation nor the ordering used for the historical draw, so these probabilities describe the specified plan. They cannot be read off the archive as historical confidence statements.
+
+\section*{3. A prospective two-start design}
+Let $A_s$ be the 32 units at phase $s$ and take $B_s=A_{s+48\bmod127}$. Draw a single uniform global phase before rating. At every phase the two samples inspect 64 distinct units. The unseen set $C_s$ has size 63, and direct enumeration of all 8,001 unordered pairs gives $\max_{s\ne t}|C_s\cap C_t|=61$. Hence 62 fixed positives cannot evade any two phases. Any 62 members of $C_0$ evade phase zero. The exact worst case is $1/127$. Every fixed offset leaves at least 63 units unseen at phase zero; this proves optimality among uniform-phase, fixed-offset designs for exactly 62 positives.
+\newpage
+\section*{4. Losing one rating in the second sample}
+Suppose all first-sample labels are available, while up to one second-sample label can be lost after the phase and labels are known. Failure means that zero positive labels are observed. For a fixed positive set $P$ this is possible precisely when
+\[
+ P\cap A_s=\emptyset,\qquad |P\cap B_s|\le1.
+\]
+By monotonicity, the worst case for at least 62 positives occurs at exactly 62. Every set with a failing phase can be relabelled to fail at phase zero. Indeed translation of units by $u$ translates their phase origins by $32u\bmod127$, and 32 is invertible modulo 127. This relabelling preserves the offset, the number of failing phases and which sample may lose a label.
+
+At phase zero a candidate either selects 62 of the 63 unseen units or selects 61 such units and one of the 32 second-sample units. The resulting $63+32\binom{63}{2}=62{,}559$ sets are distinct and cover every failing placement up to translation; each is tested at all 127 phases. The largest number of failing phases is \textbf{2}, giving a sharp worst-case probability of \textbf{2/127}. The supplement retains an explicit placement and its list of failing phases.
+
+For any fixed offset $\delta$, consecutive first samples exchange one unit. At least 62 units therefore lie outside $A_0\cup A_\delta\cup A_1$. Choose any 62 of them. They evade phase zero and avoid the first sample at phase one. The second sample $A_{\delta+1}$ differs from $A_\delta$ by one unit, so a single missing second label suffices there as well. This proves the universal lower bound $2/127$. Thus offset 48 is minimax in the fixed-offset class even with this one-label loss.
+
+\textbf{Scope and relevance.} The follow-up design addresses detection of a large hidden group of rated studies. It does not estimate deployment in industry. Implementation requires an ordered frame, a recorded uniform phase, the specified floor rule, a complete first sample and a known bound on second-sample nonresponse. Fresh prospective sampling would be needed to apply it. General comparisons of systematic and other designs predate this work [2]. We make no historical priority claim for the cyclic-interval formula.
+
+\textbf{Reproducibility.} The supplement includes the linked-frame counts, code for reconstructing them from the source workbook, the 728 small-frame parameter checks, the complete two-start certificate and the missing-label witness. The finite claims are checked by enumeration in Python on Colab Linux.
+
+\textbf{Model assessments and review context.} Codex assisted with analysis, verification and drafting in a shared context. Any assessment of this exact PDF is recorded separately with its hash, reviewer identity, involvement and objections. No independent review is claimed here.
+
+\small [1] W. Manjud Maluf Filho et al. Dataset: Artificial intelligence across the mechanical product development lifecycle (2026). \href{https://doi.org/10.5281/zenodo.24095165}{doi:10.5281/zenodo.24095165}. CC BY 4.0. The counts and designs in this paper are our analysis of the archived data.
+
+[2] L. H. Madow. Systematic Sampling and its Relation to other Sampling Designs (1946). \href{https://doi.org/10.1080/01621459.1946.10501864}{doi:10.1080/01621459.1946.10501864}.
+\end{document}
