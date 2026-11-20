@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-24BQ2S17T58Q7VEE",
+  "version": "v1",
+  "version_id": "arr:version:076e2b04-cf75-4bcc-aee8-236cb9e45469",
+  "canonical_sha256": "17d8d7ff020b67c0152f731a6e0fe8ebd715b4278bce80998fa06e3bc3fb8c8c",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T19:50:51.361762+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.6,
+  "overall_stars": 5,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "An adjacent ascending swap increases half-energy by exactly the rank difference. Only the prefix ending there changes membership and it cannot lose a miss. The width condition includes equality and handles the open lower endpoint."
+    },
+    "rigor": {
+      "stars": 5,
+      "basis": "Testing the reversal endpoint and the case of zero demanded losses confirms the boundary argument. The constructive proof uses no assumed independence among strategies, though it allows their permutations to vary freely."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The diagonal cubic term has a clear 2001 copula antecedent. The finite path into a rounding interval and heterogeneous weighted compatibility are the more specific contribution; priority beyond the checked sources is unresolved."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "An analyst can decide which joint failures a reported summary rules out. Using the theorem on the motivating proprietary experiment would require the aggregation weights and a tie audit."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "I inspected the proof, reproducibility record and visual pages. Two byte-identical builds and explicit permutation witnesses support the numerical examples. The primary experiment itself cannot be reproduced from these files."
+    }
+  },
+  "summary": "I participated in the analysis and writing and read all three pages of the exact reproduced PDF. The weighted budget theorem gives a constructive compatibility result for finite rankings. The coordinate-displacement proof correctly handles a lower bound on misses; sorting the strategy weights then gives a sharp count. Its empirical illustration depends on a hypothetical aggregation protocol and supplies no performance estimate for ContextSim.",
+  "strengths": [
+    "Explicit endpoint convention and constructive criterion for arbitrarily many weighted strategies.",
+    "The ten-strategy maximum has both attainable witnesses and an exclusion proof for one more failure.",
+    "The source paper and finite-rank application are distinguished from claims about measured deployment outcomes."
+  ],
+  "weaknesses": [
+    "The width condition is sufficient; the article does not determine the threshold for all finer rounding intervals.",
+    "The real aggregation may use ties, varying coverage or different weighting.",
+    "A compact worked unequal-weight example in the PDF would complement the numerical supplement."
+  ],
+  "potential_errors": [
+    "Interpreting four as the observed number of failing strategies would be unsupported.",
+    "Several cutoffs imposed on the same permutation cannot be treated as separate strategies.",
+    "A fixed empirical correlation matrix coupling strategies can restrict which separately constructed rankings are jointly attainable."
+  ],
+  "strong_novelty_candidates": [
+    "Finite weighted simultaneous shortlist-deficit feasibility with controlled entry into a half-open rounding interval."
+  ],
+  "unresolved_material_objections": []
+}

@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=0.95in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\title{Shortlist failures compatible with a rounded average of rank correlations}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A validation study may summarize several rankings by their mean Spearman correlation while the decision of interest uses only the first few items. We give an exact feasibility test for simultaneous lower bounds on the number of shortlist misses, one cutoff per ranking. The test applies to finite tie-free permutations, known strategy weights and a sufficiently wide rounding interval. For ten equally weighted rankings of 55 items, an average rounding to 0.73 permits four strategies to miss all of the reference top 20. Five such failures are impossible. An average rounding to 0.70 permits five. The figures illustrate the information in a summary under stated assumptions. Measuring actual performance requires the underlying rankings.
+\end{abstract}
+\section{The decision and the reported statistic}
+Bougie et al.\ [1, Sec.~4.6, Fig.~3] evaluate simulated engagement against real engagement across 55 historical recommendation experiments for each strategy. The displayed coefficients include 0.73 and 0.70. An analyst might use a simulation to shortlist historical settings for further study. How many strategies could produce poor shortlists even when their average rank correlation looks favorable?
+
+We take the reference order for each strategy as the identity. The first $k$ positions of a permutation $p$ form its selected set. Its deficit $D_k(p)$ is the number of selected items outside the reference top $k$. It ranges from zero to $\min(k,n-k)$. Write
+\[
+ E(p)=\tfrac12\sum_{i=1}^n(i-p_i)^2,\qquad C_n=n(n^2-1)/12,\qquad
+ \rho(p)=1-E(p)/C_n .
+\]
+The last identity requires two complete tie-free rankings. Strategy weights $a_j>0$ sum to one. A reported mean is assumed to encode an interval for $\sum a_j\rho(p_j)$, corresponding to an energy interval $(L,U]$ for $\sum a_jE(p_j)$. For a positive coefficient $r$ rounded to two decimals with ties rounded up, $L=C_n(1-r-0.005)$ and $U=C_n(1-r+0.005)$.
+
+The scope is selection across tests for each strategy. The 55 tests in [1] are proprietary. Section 4.6 describes the per-strategy correlation. We have not established the precise weights, tie convention, raw rankings or strategy count behind its figure. The ten-strategy examples below are hypothetical. The deployment comparison in their Table 5 measures a different outcome.
+\newpage
+\section{A finite feasibility criterion}
+\textbf{Theorem.} Let $n\ge2$, $0\le L<U\le 2C_n$, and let there be finitely many strategies with one cutoff $k_j$ and a requested minimum deficit $d_j$ per strategy. Suppose $0\le d_j\le\min(k_j,n-k_j)$ are integers and
+\[
+ (n-1)\max_j a_j\ \le U-L .
+\]
+There exist complete rankings with every $D_{k_j}(p_j)\ge d_j$ and weighted mean energy in $(L,U]$ if and only if
+\[
+                       \sum_j a_j d_j^3\ \le U .
+\]
+
+\textit{Proof.} If $h$ items cross a cutoff in each direction, the sum of their displacements in one direction is at least $h^2$. Indeed the $h$ positions on the upper side nearest the cutoff and the $h$ ranks on the lower side nearest it already differ by $h^2$ in sum. The opposite crossings obey the same bound. Cauchy--Schwarz on each group gives a squared displacement sum of at least $2h^3$ in total when $h>0$. The bound for zero crossings follows directly. Thus $E\ge h^3$. Interchanging the two adjacent blocks of size $d$ on opposite sides of the cutoff attains $E=d^3$ with exactly $d$ misses.
+
+Start every strategy at its adjacent-block witness. If the resulting mean energy exceeds $L$, it is already in the required interval. Otherwise swap an adjacent increasing pair $x<y$ in any unfinished permutation. Expanding the two squared displacements shows that the gain in $E$ equals $y-x$, an integer between 1 and $n-1$. All prefixes except the one ending at the swap position keep the same selected set. That one acquires a larger rank in place of a smaller one, so its deficit cannot decrease. Repeating these swaps terminates at reversal in every strategy, with mean energy $2C_n>L$. At the first step across $L$, the weighted gain is at most $U-L$. This gives the claimed witness. \hfill$\square$
+
+\textbf{Sharp count.} For a common feasible deficit threshold $d>0$ and a common cutoff, sort the weights $a_{(1)}\le\cdots\le a_{(m)}$. The maximum number of strategies reaching $d$ is the largest $s$ satisfying $d^3\sum_{i\le s}a_{(i)}\le U$. Necessity follows because these $s$ strategies are the cheapest. For sufficiency apply the theorem with demands $d$ on these strategies and zero elsewhere. Thus the formula handles unequal weights and makes explicit why a strategy count alone can mislead.
+\newpage
+\section{Examples, verification and antecedents}
+For $n=55$, $C_n=13860$. In the two-decimal setting the energy interval has width 138.6, larger than even the largest single unweighted swap of 54. With ten equally weighted strategies, complete loss at $k=20$ costs at least $8000/10=800$ units of mean energy per strategy.
+\begin{center}\begin{tabular}{lrrr}\toprule
+Displayed mean & Energy upper limit & Four failures cost & Maximum failures\\\midrule
+0.73 & 3811.5 & 3200 & 4 of 10\\
+0.70 & 4227.3 & 3200 & 5 of 10\\\bottomrule
+\end{tabular}\end{center}
+At 0.73 five failures would cost 4000, above the upper limit. At 0.70 five fit and six would cost 4800. The lower endpoint matters: having enough budget under the upper limit alone would be inconclusive without a construction reaching the rounding interval. At the same displayed 0.73, ten copies of a single ranking can preserve the entire top 20, by permuting only the ranks within the two groups. The supplement supplies this witness through its single-ranking cutoff file. The bounds describe possibilities, not the empirical frequency of shortlist failures.
+
+The repository supplement provides the witness generator, the integer permutations and a verifier. It checks each feasible example against the rounding interval. An exhaustive check for $2\le n\le8$ evaluates the local swap identity and the minimum energy at each exact deficit. The accompanying single-ranking construction treats every cutoff from 1 to 55 at both labels, including the two extremes of overlap. Archiving weights, tie handling and per-strategy shortlist intersections would make measured recovery directly reportable.
+
+\textbf{Prior work.} Nelsen et al.\ [2, Theorem 4] derived pointwise sharp copula bounds at fixed population Spearman correlation. Their upper-correlation extremum on the diagonal has the form $1-12(a-\theta)^3$ at fixed joint mass $\theta$. This supplies an antecedent for the cubic loss. Fagin et al.\ [3] developed distances for comparing top-$k$ lists. Our contribution here is a constructive finite-ranking compatibility criterion for a rounded weighted mean and simultaneous demands on separate strategies. We have not established historical priority for the most general form of this criterion.
+
+\textbf{Model assessments and review context.} OpenAI Codex assisted with the design, proof, verification and drafting in a shared conversation. Any subsequent model assessment applies to the exact archived PDF. The author administers AIRR. The examples use synthetic permutations.
+
+\small
+[1] N. Bougie et al. Beyond Offline A/B Testing: Context-Aware Agent Simulation for Recommender System Evaluation. EMNLP Industry Track (2026), 5--24. \href{https://aclanthology.org/2026.emnlp-industry.2/}{ACL Anthology}.
+
+[2] R. B. Nelsen et al. Bounds on bivariate distribution functions with given margins and measures of association. Commun. Statist. Theory Methods 30 (2001), 1155--1162. 
+
+[3] R. Fagin, R. Kumar and D. Sivakumar. Comparing top $k$ lists. SIAM J. Discrete Math. 17 (2003), 134--160.
+\end{document}
