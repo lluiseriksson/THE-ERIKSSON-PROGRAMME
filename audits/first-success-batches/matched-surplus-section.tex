@@ -1,0 +1,69 @@
+\section*{Growing heterogeneity at a matched full count}
+Write $k$ for the observed full success count, $a=k/(mn)$, $P_k$ for the homogeneous full law given $S=k$, and $Q_k=ZP_k$ for its score-weighted law. Homogeneous calibration gives $E_{P_k}Z=1$. Let $r=o(m)$ tasks have individual failure-odds multipliers $t_i$ relative to the remaining tasks. The following comparison conditions on the exact full count. It can therefore detect a change in the mean score even in two banks matched on both their expected and observed totals.
+
+\textbf{Interior strata.} Fix $n$ and a compact subinterval $I\subset(1/n,1)$. Use the limiting one-site counts $B\sim\mathrm{Bin}(n,a)$ and $W$ from the preceding section: $W=1+\mathrm{Bin}(n-1-U,a)$ given $U$, where $\Pr(U=u)\propto z^u$ for $0\le u<n$ and $EU=(1-a)/a$. Set $R_a(t)=E[t^{n-W}]/E[t^{n-B}]$. Uniformly for $a\in I$ and $0\le t_i<\infty$,
+\[
+ \log E_{\rm het}[Z\mid S=k]=\sum_{i=1}^r\log R_a(t_i)
+      + O_{n,I}\!\left(r\sqrt{(r+\log m)/m}\right).
+\]
+A task that can never hit gives zero score exactly. For finite multipliers the likelihood ratio on the stratum is a constant times $\prod_i t_i^{Y_i}$, with $Y_i$ the full site failure counts. The required conditional mean is thus a ratio of product expectations under $Q_k$ and $P_k$.
+
+For either law its empirical failure histogram is within $\epsilon$ of its limiting one-site law, except with probability at most $C m^C e^{-c m\epsilon^2}$, for small $\epsilon\ge C/m$. Under $P_k$ start with independent binomial sites and condition on the total at its mean, whose probability is at least $c/\sqrt m$. Under $Q_k$ the total wait $s$ is the position of the $m$th success minus $m$ in a uniform full string on the stratum. Counts in prefixes around $m/a$ give an exponential concentration bound for $s/m$ around $(1-a)/a$ by sampling without replacement [8]. Given a central $s$, draw independent capped waits of tilted mean $s/m$ and fill the suffixes independently at probability $(k-m)/(m(n-1)-s)$. Condition on total wait $s$ and total suffix hits $k-m$. The first event costs a factor at most $C\sqrt m$ by the bounded-lattice estimate above. Given that event the slot count is fixed and the second cost is at most $C\sqrt m$ by Stirling. Both one-site parameters are Lipschitz in $s/m$ on the central range. Concentration for independent category indicators before conditioning proves the histogram estimate.
+
+Conditional on a good histogram, sampling $r$ labels without replacement changes the independent probability of each ordered pattern by a factor $\exp[O(r\epsilon+r^2/m)]$. Indeed all limiting categories on each law's support have mass bounded below; the log ratio at draw $j$ is $O(\epsilon+j/m)$. Normalize the full site weight $t^y$ by $\max(1,t)^n$ and the weighted site weight by $\max(1,t)^{n-1}$. Each normalized product is bounded by one, and its independent expectation is at least $b^r$ for a uniform $b>0$ by the two endpoint categories. Choosing $\epsilon=K\sqrt{(r+\log m)/m}$ makes the bad-event contribution at most $m^{-2}$ relative to that expectation. Undoing each deterministic normalization yields the formula. The strict hinge comparisons above imply $R_a(t)<1$ for $t\ne1$. Accordingly, if a positive fraction of the changed odds remains separated from one, the conditional mean decays exponentially in $r$.
+
+At cap three with background probability $1/2$ and $k=3m/2$, replace pairs by probabilities $1/3$ and $2/3$. The expected full count stays fixed. The numerator and denominator of $R_{1/2}(t)$ are $(1+4t+7t^2)/12$ and $(1+t)^3/8$. The limiting factor per pair is $5624/6561$ when $r$ diverges. At $m=256,r=16$ the conditional score lies in $[0.290250265863,0.290250265864]$.
+
+\section*{Where the allocation of surplus successes matters}
+Now fix $k=m+h$, $N=n-1$, and let $E_i$ be the hits after the first on task $i$ under $Q_k$. For a labelled vector $e$ of sum $h$ with entries at most $N$, put $b(e)=\#\{i:e_i=N\}$ and $C_{m,h}=\binom{m+h-1}{h}$. The unrestricted count $C_{m,h}$ gives a common reference density for comparing specified allocations.
+\[
+\begin{aligned}
+ C_{m,h}Q_k(E=e)&=1+O_n((h+1)^2/m), &&h=o(\sqrt m),\ n\ge2,\\
+ C_{m,h}Q_k(E=e)&=\exp[-n(n-1)b(e)h/m]\,(1+o(1)),
+       &&h=o(m^{2/3}),\ n\ge3 .
+\end{aligned}
+\]
+Both errors are uniform in the labelled vector and relative, including in the second line when the exponential tends to zero. At cap two all admissible vectors have $h$ distinct occupied labels with probability $1/\binom mh$ each.
+
+\textbf{Suffix representation.} Write $R$ for the sum of all unobserved suffix lengths. Under $Q_k$ it has mass
+\[
+ \Pr(R=u)=\binom{mn-u-1}{m-1}\binom uh\Big/\binom{mn}{m+h}.
+\]
+This follows by counting unrestricted wait compositions after weighting, then completing the suffix. It also counts the slots after the $m$th hit in a uniform $(m+h)$-subset. Given $R$, the suffix lengths form a uniform capped weak composition of $R$, and the $h$ hits form a uniform subset of the suffix slots.
+
+An urn with $m$ colours initially of weight one, adding unit weight to the selected colour at each draw, generates a uniform unrestricted weak composition. A specified sequence of length $R$ has probability $\prod_j v_j!/(m)^{\overline R}$, where $v_j$ are its counts and the overline denotes a rising factorial. Conditional on the counts, the first $h$ draws represent a uniform subset. This is the classical compound multinomial construction [7]. With $A$ the event that the final counts are all at most $N$, the required density $C_{m,h}Q_k(E=e)$ equals the expectation over $R$ of
+\[
+ D_R(e)=\Pr(A\mid\text{urn counts at }h=e,R)/\Pr(A\mid R).
+\]
+The conditioning in this expression allows a relative comparison even for profiles that almost never occur.
+
+For $R\le\delta m$, distinct draws have probability $\prod_{j<R}(m-j)/(m+j)\ge\exp(-C R^2/m)$ (the index starts at zero). This lower-bounds the denominator. Before or after a prescribed admissible history, a union bound puts the probability of an additional repeated colour at most $C R^2/m$ because the colours already used have total weight at most $2R$. It follows that $|D_R-1|\le C(R^2/m)e^{CR^2/m}$. For $u\ge K_n(h+1)$ the last $u$ slots of the full string contain at most $h$ hits on $\{R\ge u\}$, against mean at least $u/n$. Thus $\Pr(R\ge u)\le e^{-c_n u}$ by [8]. For $R\le K_n(h+1)$ the density error is $O_n((h+1)^2/m)$ when $h=o(\sqrt m)$. Between that cutoff and $\delta m$ choose $\delta$ so the exponential correction consumes at most half the tail exponent, and sum $C R^2 e^{-c_n R/2}/m$. Above $\delta m$ use $D_R\le C_{m,h}=\exp(o(m))$. This proves the first line.
+
+\textbf{Correction for full tasks.} Assume $n\ge3$, $h=o(m^{2/3})$ and $R\le K_n(h+1)$. Write $d=R-h$, $w=n b(e)$. The unconditioned overflow probability is $O_n(R^n/m^{n-1})$, by counting $n$ draws of one colour. In the conditional numerator, avoiding the saturated labels costs exactly $\prod_{j<d}(1-w/(m+h+j))$. Given avoidance, initially occupied but unsaturated colours, at most $h$ of them, require at least two additional draws to overflow. A union bound costs $O_n(h d^2/m^2)$ since their initial weights are bounded. Empty colours cost $O_n(d^n/m^{n-1})$. The remaining total initial weight is at least $m-O_n(h)$. Expanding the log of the avoidance product yields
+\[
+ D_R(e)=\exp(-wd/m)\left(1+O_n((h+1)^3/m^2)\right).
+\]
+
+To average this equivalent, let $a=(m+h)/(mn)$ and $u_0=h/a$. Counting hits in the last $\lfloor u_0+x\rfloor$ and $\lceil u_0-x\rceil$ slots gives
+$\Pr(|R-u_0|>x)\le C\exp[-c x^2/(h+x)]$ for $x\ge2$ by [8], with rounding absorbed into the constants. Set $\theta=w/m$. Then $\theta\sqrt h=o(1)$ uniformly. Integrating $\theta e^{\theta x}$ against the tail bound gives $Ee^{\theta|R-u_0|}=1+o(1)$: for $x\le h$ complete the square in the Gaussian bound, and for $x>h$ use exponential decay. Also $\theta|u_0-nh|=O_n(h^3/m^2)=o(1)$. Thus $E e^{-wd/m}=e^{-w(n-1)h/m}(1+o(1))$. For unbounded $h$ the tail beyond $K_n(h+1)$ is exponentially small in $h$ even relative to this factor, using the preceding bounds on $D_R$ and $h^2/m=o(h)$. For bounded $h$ the first line suffices. This proves the second line.
+
+When $h/\sqrt m\to c>0$, a profile packed into $h/N$ saturated tasks has limiting density $e^{-nc^2}$ (take $N\mid h$); a profile with $h$ distinct labels has limiting density one. Thus the uncorrected uniform allocation already fails on the square-root scale.
+
+\textbf{A second boundary.} At cap four, let $h$ be even and $h/m^{2/3}\to c>0$. For $h/2$ labels holding two extra hits each, the density tends to $e^{-27c^3}$. With $h$ distinct labels it tends to one. Both profiles have $b(e)=0$.
+
+Indeed $R/h\to4$ in probability and $d/h\to3$. For $R=O(h)$ the unconditioned overflow probability is $O(R^4/m^3)=o(1)$, and empty colours in the conditional numerator cost $O(d^4/m^3)$. For the paired profile let $V$ count initially occupied colours that receive at least two further draws. For $\ell$ specified occupied colours, the joint expectation of $\prod_{i=1}^\ell\binom{X_i}{2}$, with $X_i$ their new counts, is $(d)_{2\ell}6^\ell/(m+h)^{\overline{2\ell}}$, using disjoint pairs of draw positions and initial weights three. Here the subscript denotes a falling factorial. Replacing each factor by $\mathbf1_{\{X_i\ge2\}}$ changes the product expectation by relative $O_\ell(d/m)$: the one-factor excess is bounded by $3\binom{X_i}{3}$. Multiplying by $(h/2)_\ell$ makes the factorial moments of $V$ tend to $(27c^3)^\ell$. Inclusion--exclusion of successive fixed even and odd orders, then passage to infinite order, gives $\Pr(V=0)\to e^{-27c^3}$. For distinct labels, an initially occupied colour needs three new draws and their total contribution is $O(h d^3/m^3)=o(1)$. The central denominators tend uniformly to one and the same exponential tail argument controls large $R$.
+
+\textbf{What this changes in a score calculation.} The weighted likelihood of heterogeneous tasks factors as $\prod_i t_i^{n-1}$ times $E_{Q_k}\prod_i t_i^{-E_i}$. A uniform relative estimate on each labelled density transfers by positivity even when multipliers vary without bound. For one replacement $t=1/(\lambda m)$ and fixed $h$, the residual expectation tends to $\sum_{j=0}^{\min(h,N)}(h)_j\lambda^j$. With $E_1=j$, filling the other sites gives $m^{h-j}/(h-j)!$ possibilities to leading order, from distinct sites. At $h=2$ and $n\ge3$, the correction is $1+2\lambda+2\lambda^2$; assigning both hits independently to random labels gives $(1+\lambda)^2$.
+
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+Tasks & Cap & Extra hits & Distinct labels & Concentrated labels\\
+\midrule
+1024 & 3 & 2 & 1.000033 & 0.983075\\
+1024 & 3 & 32 & 1.170289 & 0.099728\\
+1728 & 4 & 36 & 1.015048 & 0.744039\\
+\bottomrule
+\end{tabular}
+\end{center}
+Entries are rounded labelled densities $C_{m,h}Q_k(E=e)$. In the concentrated column every occupied task carries two extra hits. The accompanying integer certificates bracket each underlying density by rounding outwards before summation over $R$. Small banks were also checked by enumerating all labelled full strings. The two transition scales describe this stopped independent-trial model; they do not establish an effect in an observed language model.
