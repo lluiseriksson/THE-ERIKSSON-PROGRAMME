@@ -1,0 +1,52 @@
+{
+  "issuer": "CoreWeave, Inc.",
+  "unit": "USD millions as printed",
+  "metric": "recognized revenue",
+  "sources": [
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm",
+      "as_of": "2026-06-30",
+      "quarter_revenue": 2575,
+      "ytd_revenue": 4653,
+      "customer_shares_pct": [
+        {
+          "label": "A",
+          "quarter": 36,
+          "ytd": 40
+        },
+        {
+          "label": "B",
+          "quarter": 26,
+          "ytd": 23
+        },
+        {
+          "label": "C",
+          "quarter": 10,
+          "ytd": null
+        }
+      ]
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000465/crwv-20260930.htm",
+      "as_of": "2026-09-30",
+      "quarter_revenue": 3661,
+      "ytd_revenue": 8314,
+      "customer_shares_pct": [
+        {
+          "label": "A",
+          "quarter": 24,
+          "ytd": 33
+        },
+        {
+          "label": "B",
+          "quarter": 30,
+          "ytd": 26
+        }
+      ]
+    }
+  ],
+  "unlisted_share": "strictly less than 10 percent",
+  "precision_assumption": "reported percentages within 0.5 percentage points and dollars within 0.5 million; do not silently set uncited shares to zero",
+  "matching": "The notes caution that letter labels can change between filings. Identify compatible links by subtracting Q3 from YTD9 for each September label and testing the H1 interval against the June note.",
+  "next_check": "Linear constraints on unrounded dollars with jointly consistent totals. Compare exact LP endpoints with candidate customer vectors; include all residual and cumulative limits."
+}
