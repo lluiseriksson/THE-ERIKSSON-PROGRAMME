@@ -1,0 +1,60 @@
+{
+  "pdf_sha256": "81eb23297a51050a88da84ec98064118e8d2369acbaab9c1a0153650f261cf09",
+  "url": "https://www.ecgi.global/sites/default/files/2026-11/fin-1166-2026_greening_on_hold_environmental_political_risk_and_the_reallo_0.pdf",
+  "physical_pages": [
+    69,
+    70
+  ],
+  "rows": {
+    "E-PRisk": {
+      "green": "-37/50",
+      "non_green": "14/25",
+      "total": "-9/50",
+      "discrepancy": "0",
+      "exceeds_rounding": false
+    },
+    "ROA": {
+      "green": "-669/100",
+      "non_green": "1173/100",
+      "total": "499/100",
+      "discrepancy": "-1/20",
+      "exceeds_rounding": true
+    },
+    "Debt Ratio": {
+      "green": "-129/10",
+      "non_green": "-249/50",
+      "total": "-1791/100",
+      "discrepancy": "-3/100",
+      "exceeds_rounding": true
+    },
+    "log(Market-to-Book)": {
+      "green": "-59/100",
+      "non_green": "447/100",
+      "total": "39/10",
+      "discrepancy": "1/50",
+      "exceeds_rounding": true
+    }
+  },
+  "t_absolute": [
+    "41/20",
+    "4"
+  ],
+  "critical_value": "49/25",
+  "point": "28/37",
+  "nominal_endpoints": [
+    "5040/226033",
+    "224560/77367"
+  ],
+  "rounding_outer_endpoints": [
+    "502571/24193577",
+    "24106629/8156687"
+  ],
+  "outer_decimals": [
+    0.02077291009923832,
+    2.9554436746193646
+  ],
+  "nominal_decimals": [
+    0.02229762910725425,
+    2.902529502242558
+  ]
+}
