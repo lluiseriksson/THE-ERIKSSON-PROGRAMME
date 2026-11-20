@@ -1,0 +1,30 @@
+{
+  "title": "Replication package: Who gets paid for cleaner water? A hydrological diagnostic of section-based eco-compensation on the Nanpan River, China",
+  "authors": [
+    {
+      "name": "Hantang, Chen",
+      "affiliation": null
+    },
+    {
+      "name": "Lei, Zha",
+      "affiliation": null
+    },
+    {
+      "name": "SIYuan, Chen",
+      "affiliation": null
+    },
+    {
+      "name": "Adrián Szilárd, Nagy",
+      "affiliation": null
+    }
+  ],
+  "doi": "10.5281/zenodo.24406441",
+  "concept": "10.5281/zenodo.24406440",
+  "version": "1.2",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "source_archive_sha256": "a48b4761d2895981234cca8019f574b337b2cbdfa89516ad2ea001d833dd6507",
+  "table_sha256": "d8938aecb347a7ea88d801bb3f38cb2ffd04be17121a83dd591b4b27ebe015d2",
+  "where": "data/derived/ring_spatial_incidence.csv",
+  "changes": "Source CSV unmodified; normalized shares, certificates and interpretations supplied separately."
+}
