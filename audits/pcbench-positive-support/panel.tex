@@ -1,11 +1,11 @@
 \documentclass[11pt]{article}
 \usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,microtype}
 \usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
-\title{Which positive-control enrichment results survive conditioning on nonzero importance? A rank audit of PC-Bench}
+\title{Which enrichment claims survive? Direct controls and correlated substitutes in PC-Bench}
 \author{Lluis Eriksson}\date{20 November 2026}
 \begin{document}\maketitle
 \begin{abstract}
-PC-Bench reports recovery of known controls among the top 50 genes ranked by model importance. A draw from all measured genes evaluates the whole pipeline. A draw from genes that received positive importance asks whether the ranking concentrates controls beyond entry into that group. The size of the latter group is missing from the released summary tables. We bound it from the ranks of positive and zero-importance controls and compute exact hypergeometric tail bounds. Among 94 configurations, 62 pass the nominal 0.05 cutoff against all measured genes. Of these, 33 pass at every support size admitted by the rank bounds, four fail at every such size, and 25 have bounds spanning the cutoff. The four forced changes occur in breast-cancer logistic-regression analyses. These are comparisons of reference distributions for fixed rankings, with no patient-level or clinical inference.
+PC-Bench ranks genes by learned importance. We audit two random-list references using its released results. Of 62 direct-control comparisons below 0.05 against all measured genes, 33 remain below throughout the rank-compatible positive-support range, four necessarily cross the cutoff and 25 span it. For proxy recovery we derive sharp bounds on the mean from the reported median neighbourhood sizes. Two positive-semidefinite BRCA correlation constructions agree on every labelled neighbourhood size and accommodate the direct controls and proxy counts of all 16 BRCA configurations. Yet the probabilities of recovering at least eight controls in a uniformly random top-50 list are 0.00371 and 0.08983. A count per ranking identifies the direct reference; membership-pattern tallies suffice for the full proxy reference. These results concern reporting and statistical interpretation.
 \end{abstract}
 
 \section{Two questions for one ranking}
@@ -41,12 +41,51 @@ For example, in the BRCA random-validation logistic regression with a median-abs
 Four other BRCA logistic-regression configurations have the same nominal all-gene tail of 0.02929. For the median-absolute-deviation filter of size 5,000, even the smallest possible conditioned tails are 0.06848 and 0.06834 for random and site-held-out validation. For the variance filter of size 2,000 the corresponding minima both round to 0.06865. No choice of the unknown positive support size within the rank bounds restores a below-cutoff result for these four rows.
 
 \newpage
+\section{Recovery through correlated substitutes}
+PC-Bench also credits control $i$ if the list intersects its neighbourhood of size $s_i$. The neighbourhood includes the control and all genes whose absolute Pearson correlation with it is at least 0.7. Under a uniform draw of $K$ distinct genes from all $G$, write $R$ for the number of credited controls. Linearity of expectation gives
+\[
+ E R=\sum_i f(s_i),\qquad f(s)=1-\binom{G-s}{K}/\binom{G}{K}.
+\]
+Individual sizes suffice for the mean, irrespective of overlap. The source table instead reports the median of $s_i-1$. How informative is that single number?
+
+For $2r$ controls let $a,b$ be the two ordered middle sizes. Their sum is fixed at twice the median size. For each feasible integer $a\le b$, monotonicity gives two extreme sorted lists. The minimum uses $r-1$ ones, one $a$, and $r$ copies of $b$. The maximum uses $r$ copies of $a$, one $b$ and $r-1$ copies of $G$. Take the least and greatest sums over the feasible middle pairs. For a single control the size is known. Table~\ref{median} gives the resulting limits.
+\begin{table}[h]\centering
+\caption{Sharp mean counts from the cohort size, control count and median alone. Display rounded to three decimals.}\label{median}
+\begin{tabular}{lrrrrr}\toprule
+Cohort & Genes & Controls & Median size & Minimum & Maximum\\\midrule
+BRCA &20,211&12&21&0.367&5.355\\
+CRC &17,496&1&2&0.006&0.006\\
+LGG &20,204&4&4&0.032&1.030\\
+METABRIC &20,373&12&8&0.149&5.136\\
+STAD &16,755&4&4&0.039&1.036\\
+UCEC &17,496&4&3.5&0.034&1.028\\\bottomrule
+\end{tabular}\end{table}
+
+For these six cohorts the bounds can be attained by correlation matrices. At the lower endpoint, place each control in a separate clique of its required size, with correlations one within and zero across cliques. Put filler genes on an orthogonal axis. At the upper endpoint let $q$ entries of size $G$ be copies of a unit vector $e_0$. For each remaining control of size $s$ use a group of $s-q$ copies of $0.8e_0+0.6e_j$ on its own axis $e_j$. Leftover genes have a separate group of the same form. Every regular gene correlates 0.8 with the universal controls and 0.64 with other regular groups. The supplied multiplicities are positive and fit the universe in each case. When $q=0$ the separate clique construction suffices. These Gram matrices can be represented by centred expression columns in sufficient dimension. The witnesses address the median alone; they need not reproduce other cohort summaries.
+
+Of the 94 observed proxy-recovery counts, 35 exceed every mean in their respective median intervals, 28 fall below every mean, and 31 lie inside. Exceeding a mean supplies no tail probability. The following construction shows why even all twelve labelled sizes would be insufficient for that purpose.
+
+\newpage
+\section{Two geometries with the same BRCA disclosures}
+The random-validation BRCA logistic regression with ANOVA screening to 2,000 genes recovers four controls directly and eight with proxies. Construct two systems on its 20,211 genes. In both, seven labelled controls have neighbourhood size 21 and five have size 3,000. These hypothetical sizes have the published median of 21. All five large neighbourhoods are disjoint cliques in both systems. In the first system, the seven smaller neighbourhoods are also disjoint cliques.
+
+In the second system, divide the seven small controls into groups of three and four. Within each group put 19 shared noncontrol genes on an axis $e_0$. Put each control and one private copy on its own vector $0.8e_0+0.6e_j$. Use orthogonal spaces for different groups, large cliques and background. Thus each control has exactly its original neighbourhood size while the 19 common genes credit every control in their group. Both systems admit the named directly recovered controls and the reported proxy count in \emph{every one of the 16 BRCA configurations}. For a given row, choose its named direct controls, add one private proxy for each extra control needed, and complete the top 50 with background genes. The remaining labelled controls can occupy their disclosed ranks below 50. This establishes compatibility with those disclosures, without claiming to reproduce the classifiers, patient data or full top lists.
+
+In the disjoint system, recovering eight requires hitting at least three of the seven small cliques. A union bound over triples and one representative per clique gives
+\[
+ \Pr(R\ge8)\ \le\ \binom73\binom{50}3 21^3/\binom{20{,}211}3 .
+\]
+In the shared system, hitting a shared gene and all five large cliques suffices. Hence $\Pr(R\ge8)\ge f(38)-5[1-f(3000)]$. The first bound is below 0.05 and the second exceeds it. Exact enumeration gives the two tails as 0.00371 and 0.08983, respectively. For each disjoint block the enumeration counts draws by number of genes selected and number of controls credited, convolves across blocks and fills the remaining draws from the background. Its counts sum to $\binom{20{,}211}{50}$ and recover the same expectation under both constructions.
+
+The missing information matters for the design of a public benchmark. Publishing one support count resolves the conditional direct-hit reference. Publishing individual neighbourhood sizes resolves the proxy-hit expectation. To reproduce the full proxy tail one can additionally release the number of genes with each distinct pattern of control memberships, including the all-zero pattern. Under uniform sampling gene identities within a pattern are immaterial. Correlation-aware enrichment has a long history [3]; the specific conclusion here is an incompatibility between what the BRCA summaries disclose and what a proxy-tail claim would require.
+
+\newpage
 \section{Interpretation and reproduction}
 The four changes establish a specific limitation on interpretation. An enrichment result against all measured genes can coexist with an ordinary top-50 hit count among the genes that received positive importance. These four configurations still measure the combined effects of screening, fitting and ranking under their original reference. The analysis does not apportion effects between those stages or establish a biological mechanism.
 
 The intervals are deterministic consequences of the supplied marginal ranks and flags. They describe neither patient sampling uncertainty nor uncertainty in model training. Further restrictions from folds, architecture, numerical precision or tie ordering can narrow them. Reporting the positive-support count would resolve the reference calculation directly. For another dataset, the positive-hit count should also be stated if the top list contains zero scores.
 
-The row counts use a nominal cutoff for the specified comparison. The 94 configurations do not constitute independent replications or multiplicity-adjusted discoveries. The result concerns direct control recovery. Proxy recovery through correlated genes uses a different counting rule.
+The row counts use a nominal cutoff for the specified comparison. The 94 configurations do not constitute independent replications or multiplicity-adjusted discoveries. For a separate family-wide sensitivity analysis over all 94 configurations, Holm adjustment at 0.05 retains 25 under the whole-universe reference. Under the conditioned reference, 22 of those 25 always survive and only the remaining three can be added. This follows by applying the coordinatewise monotone step-down rule to the vectors of upper and lower tail bounds [4].
 
 \paragraph{Reproduction.} The two original CSV tables are distributed with attribution under CC BY 4.0 [1]. The accompanying verifier joins configurations and checks their ranks, positive-fit indicators and hit counts. It recomputes all 94 original tails, calculates the conditioned bounds by exact rational binomial sums, checks their endpoints against a separate numerical implementation, and outputs the full row-wise table. The package is maintained in the \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/research/pcbench-positive-support/audits/pcbench-positive-support}{programme repository}; the reproduction record pins the exact source commit.
 
@@ -56,4 +95,7 @@ The row counts use a nominal cutoff for the specified comparison. The 94 configu
 [1] H. Zogan, N. A. Almolhis, A. Alhazmi, H. Shafei and M. Okmi. \emph{PC-Bench: Code, Data Splits and Results for ``Do SHAP Biomarker Pipelines Recover Known Cancer Biology?''} Version deposit, 20 November 2026. \href{https://doi.org/10.5281/zenodo.24405487}{doi:10.5281/zenodo.24405487}. Source tables: \texttt{bench\_summary.csv} and \texttt{bench\_panel\_genes.csv}.
 
 [2] J. A. Timmons, K. J. Szkop and I. J. Gallagher. Multiple sources of bias confound functional enrichment analysis of global omics data. \emph{Genome Biology} 16, 186 (2015). \href{https://doi.org/10.1186/s13059-015-0761-7}{doi:10.1186/s13059-015-0761-7}.
+[3] D. Wu and G. K. Smyth. Camera: a competitive gene set test accounting for inter-gene correlation. \emph{Nucleic Acids Research} 40, e133 (2012). \href{https://doi.org/10.1093/nar/gks461}{doi:10.1093/nar/gks461}.
+
+[4] S. Holm. A simple sequentially rejective multiple test procedure. \emph{Scandinavian Journal of Statistics} 6, 65--70 (1979). \href{https://www.jstor.org/stable/4615733}{JSTOR 4615733}.
 \end{document}
