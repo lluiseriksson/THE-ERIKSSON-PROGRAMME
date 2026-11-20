@@ -1,0 +1,705 @@
+{
+  "unique_lost": 2645,
+  "by_dataset": {
+    "313964": {
+      "property_types": [
+        "Habitats Directive ID",
+        "Habitats Directive name"
+      ],
+      "role": "habitat characterization, different relation",
+      "shared_names": 127
+    },
+    "314298": {
+      "all_names": 1068,
+      "all_rows": 1068,
+      "annex": "II",
+      "comparison_all_v12": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 785,
+        "missing": 277,
+        "missing_examples": [
+          [
+            "Achondrostoma arcasii",
+            "II"
+          ],
+          [
+            "Achondrostoma occidentale",
+            "II"
+          ],
+          [
+            "Achondrostoma oligolepis",
+            "II"
+          ],
+          [
+            "Achondrostoma salmantinum",
+            "II"
+          ],
+          [
+            "Acipenser oxyrinchus",
+            "II"
+          ],
+          [
+            "Acis nicaeensis",
+            "II"
+          ],
+          [
+            "Aeonium gomerense",
+            "II"
+          ],
+          [
+            "Alburnus mandrensis",
+            "II"
+          ]
+        ],
+        "proposed": 785
+      },
+      "missing_exact_relations": 1050,
+      "outside_reference_ranks": {},
+      "presence_broad": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 785,
+        "missing": 265,
+        "missing_examples": [
+          "Achondrostoma arcasii",
+          "Achondrostoma occidentale",
+          "Achondrostoma oligolepis",
+          "Achondrostoma salmantinum",
+          "Acipenser oxyrinchus",
+          "Acis nicaeensis",
+          "Aeonium gomerense",
+          "Alburnus mandrensis"
+        ],
+        "proposed": 785
+      },
+      "rank_filtered": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 783,
+        "missing": 267,
+        "missing_examples": [
+          "Achondrostoma arcasii",
+          "Achondrostoma occidentale",
+          "Achondrostoma oligolepis",
+          "Achondrostoma salmantinum",
+          "Acipenser oxyrinchus",
+          "Acis nicaeensis",
+          "Aeonium gomerense",
+          "Alburnus mandrensis"
+        ],
+        "proposed": 783
+      },
+      "title": "Habitats Directive Annex II - Animal and plant species of Community interest whose conservation requires the designation of special areas of conservation.",
+      "within_universe": 785
+    },
+    "314304": {
+      "all_names": 1127,
+      "all_rows": 1127,
+      "annex": "IV",
+      "comparison_all_v12": {
+        "extra": 27,
+        "extra_examples": [
+          [
+            "Bruchia vogesiaca",
+            "IV"
+          ],
+          [
+            "Bryhnia novae-angliae",
+            "IV"
+          ],
+          [
+            "Bryoerythrophyllum campylocarpum",
+            "IV"
+          ],
+          [
+            "Buxbaumia viridis",
+            "IV"
+          ],
+          [
+            "Cephalozia macounii",
+            "IV"
+          ],
+          [
+            "Cynodontium suecicum",
+            "IV"
+          ],
+          [
+            "Dichelyma capillaceum",
+            "IV"
+          ],
+          [
+            "Dicranum viride",
+            "IV"
+          ]
+        ],
+        "matched": 794,
+        "missing": 269,
+        "missing_examples": [
+          [
+            "Ablepharus budaki",
+            "IV"
+          ],
+          [
+            "Acipenser oxyrinchus",
+            "IV"
+          ],
+          [
+            "Acis nicaeensis",
+            "IV"
+          ],
+          [
+            "Aeonium gomerense",
+            "IV"
+          ],
+          [
+            "Alytes dickhilleni",
+            "IV"
+          ],
+          [
+            "Anatololacerta anatolica",
+            "IV"
+          ],
+          [
+            "Anatololacerta oertzeni",
+            "IV"
+          ],
+          [
+            "Angelica lignescens",
+            "IV"
+          ]
+        ],
+        "proposed": 821
+      },
+      "missing_exact_relations": 1063,
+      "outside_reference_ranks": {
+        "species": 27
+      },
+      "presence_broad": {
+        "extra": 27,
+        "extra_examples": [
+          "Bruchia vogesiaca",
+          "Bryhnia novae-angliae",
+          "Bryoerythrophyllum campylocarpum",
+          "Buxbaumia viridis",
+          "Cephalozia macounii",
+          "Cynodontium suecicum",
+          "Dichelyma capillaceum",
+          "Dicranum viride"
+        ],
+        "matched": 794,
+        "missing": 269,
+        "missing_examples": [
+          "Ablepharus budaki",
+          "Acipenser oxyrinchus",
+          "Acis nicaeensis",
+          "Aeonium gomerense",
+          "Alytes dickhilleni",
+          "Anatololacerta anatolica",
+          "Anatololacerta oertzeni",
+          "Angelica lignescens"
+        ],
+        "proposed": 821
+      },
+      "rank_filtered": {
+        "extra": 27,
+        "extra_examples": [
+          "Bruchia vogesiaca",
+          "Bryhnia novae-angliae",
+          "Bryoerythrophyllum campylocarpum",
+          "Buxbaumia viridis",
+          "Cephalozia macounii",
+          "Cynodontium suecicum",
+          "Dichelyma capillaceum",
+          "Dicranum viride"
+        ],
+        "matched": 794,
+        "missing": 269,
+        "missing_examples": [
+          "Ablepharus budaki",
+          "Acipenser oxyrinchus",
+          "Acis nicaeensis",
+          "Aeonium gomerense",
+          "Alytes dickhilleni",
+          "Anatololacerta anatolica",
+          "Anatololacerta oertzeni",
+          "Angelica lignescens"
+        ],
+        "proposed": 821
+      },
+      "title": "Habitats Directive Annex IV - Animal and plant species of Community interest in need of strict protection",
+      "within_universe": 821
+    },
+    "314308": {
+      "all_names": 148,
+      "all_rows": 148,
+      "annex": "V",
+      "comparison_all_v12": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 52,
+        "missing": 86,
+        "missing_examples": [
+          [
+            "Acipenser gueldenstaedtii",
+            "V"
+          ],
+          [
+            "Acipenser nudiventris",
+            "V"
+          ],
+          [
+            "Acipenser ruthenus",
+            "V"
+          ],
+          [
+            "Acipenser stellatus",
+            "V"
+          ],
+          [
+            "Alosa agone",
+            "V"
+          ],
+          [
+            "Alosa alosa",
+            "V"
+          ],
+          [
+            "Alosa fallax",
+            "V"
+          ],
+          [
+            "Alosa immaculata",
+            "V"
+          ]
+        ],
+        "proposed": 52
+      },
+      "missing_exact_relations": 138,
+      "outside_reference_ranks": {},
+      "presence_broad": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 52,
+        "missing": 86,
+        "missing_examples": [
+          "Acipenser gueldenstaedtii",
+          "Acipenser nudiventris",
+          "Acipenser ruthenus",
+          "Acipenser stellatus",
+          "Alosa agone",
+          "Alosa alosa",
+          "Alosa fallax",
+          "Alosa immaculata"
+        ],
+        "proposed": 52
+      },
+      "rank_filtered": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 50,
+        "missing": 88,
+        "missing_examples": [
+          "Acipenser gueldenstaedtii",
+          "Acipenser nudiventris",
+          "Acipenser ruthenus",
+          "Acipenser stellatus",
+          "Alosa agone",
+          "Alosa alosa",
+          "Alosa fallax",
+          "Alosa immaculata"
+        ],
+        "proposed": 50
+      },
+      "title": "Habitats Directive Annex V - Animal and plant species of community interest whose taking in the wild and exploitation may be subject to management measures",
+      "within_universe": 52
+    },
+    "314380": {
+      "all_names": 26,
+      "all_rows": 26,
+      "annex": "III",
+      "comparison_all_v12": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 21,
+        "missing": 18,
+        "missing_examples": [
+          [
+            "Anas crecca crecca",
+            "III/B"
+          ],
+          [
+            "Anas platyrhynchos platyrhynchos",
+            "III/A"
+          ],
+          [
+            "Columba palumbus azorica",
+            "III/A"
+          ],
+          [
+            "Columba palumbus palumbus",
+            "III/A"
+          ],
+          [
+            "Fulica atra atra",
+            "III/B"
+          ],
+          [
+            "Lagopus lagopus hibernica",
+            "III/A"
+          ],
+          [
+            "Lagopus lagopus lagopus",
+            "III/A"
+          ],
+          [
+            "Lagopus lagopus scotica",
+            "III/A"
+          ]
+        ],
+        "proposed": 21
+      },
+      "explicit_broad": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 21,
+        "missing": 18,
+        "missing_examples": [
+          "Anas crecca crecca",
+          "Anas platyrhynchos platyrhynchos",
+          "Columba palumbus azorica",
+          "Columba palumbus palumbus",
+          "Fulica atra atra",
+          "Lagopus lagopus hibernica",
+          "Lagopus lagopus lagopus",
+          "Lagopus lagopus scotica"
+        ],
+        "proposed": 21
+      },
+      "explicit_exact": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 21,
+        "missing": 18,
+        "missing_examples": [
+          [
+            "Anas crecca crecca",
+            "III/B"
+          ],
+          [
+            "Anas platyrhynchos platyrhynchos",
+            "III/A"
+          ],
+          [
+            "Columba palumbus azorica",
+            "III/A"
+          ],
+          [
+            "Columba palumbus palumbus",
+            "III/A"
+          ],
+          [
+            "Fulica atra atra",
+            "III/B"
+          ],
+          [
+            "Lagopus lagopus hibernica",
+            "III/A"
+          ],
+          [
+            "Lagopus lagopus lagopus",
+            "III/A"
+          ],
+          [
+            "Lagopus lagopus scotica",
+            "III/A"
+          ]
+        ],
+        "proposed": 21
+      },
+      "missing_exact_relations": 39,
+      "presence_broad": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 21,
+        "missing": 18,
+        "missing_examples": [
+          "Anas crecca crecca",
+          "Anas platyrhynchos platyrhynchos",
+          "Columba palumbus azorica",
+          "Columba palumbus palumbus",
+          "Fulica atra atra",
+          "Lagopus lagopus hibernica",
+          "Lagopus lagopus lagopus",
+          "Lagopus lagopus scotica"
+        ],
+        "proposed": 21
+      },
+      "property_values": {
+        "III PART A": 7,
+        "III PART B": 19
+      },
+      "title": "Birds Directive Annex III - Bird species with special provisions",
+      "unmapped_values": [],
+      "within_universe": 21
+    },
+    "314945": {
+      "all_names": 274,
+      "all_rows": 274,
+      "annex": "I",
+      "comparison_all_v12": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 164,
+        "missing": 67,
+        "missing_examples": [
+          [
+            "Alectoris graeca graeca",
+            "I"
+          ],
+          [
+            "Alectoris graeca saxatilis",
+            "I"
+          ],
+          [
+            "Alectoris graeca whitakeri",
+            "I"
+          ],
+          [
+            "Aquila fasciata",
+            "I"
+          ],
+          [
+            "Ardea alba",
+            "I"
+          ],
+          [
+            "Ardea purpurea purpurea",
+            "I"
+          ],
+          [
+            "Ardeola ralloides ralloides",
+            "I"
+          ],
+          [
+            "Botaurus stellaris stellaris",
+            "I"
+          ]
+        ],
+        "proposed": 164
+      },
+      "explicit_broad": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 164,
+        "missing": 67,
+        "missing_examples": [
+          "Alectoris graeca graeca",
+          "Alectoris graeca saxatilis",
+          "Alectoris graeca whitakeri",
+          "Aquila fasciata",
+          "Ardea alba",
+          "Ardea purpurea purpurea",
+          "Ardeola ralloides ralloides",
+          "Botaurus stellaris stellaris"
+        ],
+        "proposed": 164
+      },
+      "explicit_exact": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 164,
+        "missing": 67,
+        "missing_examples": [
+          [
+            "Alectoris graeca graeca",
+            "I"
+          ],
+          [
+            "Alectoris graeca saxatilis",
+            "I"
+          ],
+          [
+            "Alectoris graeca whitakeri",
+            "I"
+          ],
+          [
+            "Aquila fasciata",
+            "I"
+          ],
+          [
+            "Ardea alba",
+            "I"
+          ],
+          [
+            "Ardea purpurea purpurea",
+            "I"
+          ],
+          [
+            "Ardeola ralloides ralloides",
+            "I"
+          ],
+          [
+            "Botaurus stellaris stellaris",
+            "I"
+          ]
+        ],
+        "proposed": 164
+      },
+      "missing_exact_relations": 231,
+      "presence_broad": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 169,
+        "missing": 62,
+        "missing_examples": [
+          "Alectoris graeca graeca",
+          "Alectoris graeca saxatilis",
+          "Alectoris graeca whitakeri",
+          "Aquila fasciata",
+          "Ardea purpurea purpurea",
+          "Ardeola ralloides ralloides",
+          "Botaurus stellaris stellaris",
+          "Bubo scandiacus"
+        ],
+        "proposed": 169
+      },
+      "property_values": {
+        "I": 193
+      },
+      "title": "Birds Directive Annex I - Bird species of Community interest whose conservation requires the designation of special protection areas",
+      "unmapped_values": [],
+      "within_universe": 169
+    },
+    "314974": {
+      "all_names": 75,
+      "all_rows": 75,
+      "annex": "II",
+      "comparison_all_v12": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 68,
+        "missing": 56,
+        "missing_examples": [
+          [
+            "Alectoris barbara",
+            "II/B"
+          ],
+          [
+            "Alectoris graeca",
+            "II/A"
+          ],
+          [
+            "Alectoris graeca graeca",
+            "II/A"
+          ],
+          [
+            "Alectoris graeca saxatilis",
+            "II/A"
+          ],
+          [
+            "Alectoris graeca whitakeri",
+            "II/A"
+          ],
+          [
+            "Anas crecca crecca",
+            "II/A"
+          ],
+          [
+            "Anas platyrhynchos platyrhynchos",
+            "II/A"
+          ],
+          [
+            "Anas strepera strepera",
+            "II/A"
+          ]
+        ],
+        "proposed": 68
+      },
+      "explicit_broad": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 68,
+        "missing": 56,
+        "missing_examples": [
+          "Alectoris barbara",
+          "Alectoris graeca",
+          "Alectoris graeca graeca",
+          "Alectoris graeca saxatilis",
+          "Alectoris graeca whitakeri",
+          "Anas crecca crecca",
+          "Anas platyrhynchos platyrhynchos",
+          "Anas strepera strepera"
+        ],
+        "proposed": 68
+      },
+      "explicit_exact": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 68,
+        "missing": 56,
+        "missing_examples": [
+          [
+            "Alectoris barbara",
+            "II/B"
+          ],
+          [
+            "Alectoris graeca",
+            "II/A"
+          ],
+          [
+            "Alectoris graeca graeca",
+            "II/A"
+          ],
+          [
+            "Alectoris graeca saxatilis",
+            "II/A"
+          ],
+          [
+            "Alectoris graeca whitakeri",
+            "II/A"
+          ],
+          [
+            "Anas crecca crecca",
+            "II/A"
+          ],
+          [
+            "Anas platyrhynchos platyrhynchos",
+            "II/A"
+          ],
+          [
+            "Anas strepera strepera",
+            "II/A"
+          ]
+        ],
+        "proposed": 68
+      },
+      "missing_exact_relations": 124,
+      "presence_broad": {
+        "extra": 0,
+        "extra_examples": [],
+        "matched": 68,
+        "missing": 56,
+        "missing_examples": [
+          "Alectoris barbara",
+          "Alectoris graeca",
+          "Alectoris graeca graeca",
+          "Alectoris graeca saxatilis",
+          "Alectoris graeca whitakeri",
+          "Anas crecca crecca",
+          "Anas platyrhynchos platyrhynchos",
+          "Anas strepera strepera"
+        ],
+        "proposed": 68
+      },
+      "property_values": {
+        "II PART A": 23,
+        "II PART B": 52
+      },
+      "title": "Birds Directive Annex II - Bird species that may be hunted under specific circumstances",
+      "unmapped_values": [],
+      "within_universe": 68
+    }
+  },
+  "reconstruction_sha256": "1757439ae4b6fce18f7220af4326dbb9e13a73cb1b9f240ebd7ef8b38b9a1c2e"
+}

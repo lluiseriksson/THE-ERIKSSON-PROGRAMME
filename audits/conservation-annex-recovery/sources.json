@@ -1,0 +1,38 @@
+{
+  "archive-12.zip": {
+    "url": "https://api.checklistbank.org/dataset/314822/archive?attempt=12",
+    "sha256": "c8124fa7ab03d08d7c2a9b5ac57a9d6332a133f5de776bd1825dd0f311860e9a"
+  },
+  "archive-13.zip": {
+    "url": "https://api.checklistbank.org/dataset/314822/archive?attempt=13",
+    "sha256": "1e5677730b8b109899313331fe7860d796b265560bce7f93a5e2d8d47b2b5200"
+  },
+  "annex-314945-7.zip": {
+    "url": "https://api.checklistbank.org/dataset/314945/archive?attempt=7",
+    "sha256": "cb3109b6ff589640dadbdd73857bb1e683bc657d5a729ce77f1ab3a1ca61bc95"
+  },
+  "annex-314974-2.zip": {
+    "url": "https://api.checklistbank.org/dataset/314974/archive?attempt=2",
+    "sha256": "6a838e17303c04948483a96c92a63ff96f0e626b80ac160e5d7a3967927e2954"
+  },
+  "annex-314380-6.zip": {
+    "url": "https://api.checklistbank.org/dataset/314380/archive?attempt=6",
+    "sha256": "3dc9708e9d1fde96073063136562cbea470adb202d3ff70d8513c307c9296a8e"
+  },
+  "annex-313964-21.zip": {
+    "url": "https://api.checklistbank.org/dataset/313964/archive?attempt=21",
+    "sha256": "79d0f8eda09badf39a02023929012ae9d171c3f3ae238657ad1dde7311b231fe"
+  },
+  "annex-314298-15.zip": {
+    "url": "https://api.checklistbank.org/dataset/314298/archive?attempt=15",
+    "sha256": "1b29bc11c2172240bf8a8819b3b5f40dc094e753ebdac435fe45677826ffaacc"
+  },
+  "annex-314304-5.zip": {
+    "url": "https://api.checklistbank.org/dataset/314304/archive?attempt=5",
+    "sha256": "8265071640c2fa6821150e96e0148015f8873aa155c634e57f6aafd59ea3588e"
+  },
+  "annex-314308-4.zip": {
+    "url": "https://api.checklistbank.org/dataset/314308/archive?attempt=4",
+    "sha256": "a13df8f2ba98f0c03c1b522023cff889762810795b97920477169869569ffaea"
+  }
+}

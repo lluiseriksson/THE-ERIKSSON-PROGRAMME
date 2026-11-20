@@ -1,0 +1,49 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,booktabs,microtype}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{Recovering missing annex labels from versioned European conservation checklists}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Two consecutive Natura 2000 checklist archives preserve all 2,030 scientific names and their identifiers while losing 2,645 distinct name--annex relations. Can a consumer reconstruct them from the companion lists available at the time? An exact-name join with explicit bird properties recovers 253 relations. Presence in three annex-specific habitat lists reproduces a further 1,631 and proposes 27 Annex IV assignments absent in the earlier aggregate. All 27 have species rank. Together these rules recover 1,884 relations and leave 761 unresolved. A historical repair needs to distinguish links supported by a property attached to a name from links inferred from the file containing it.
+\end{abstract}
+\section{Historical target}
+A species-by-annex analysis depends on a relation between a name and a label. The name table can survive a change of version even when the analyst can no longer reproduce the grouping. We compare the deposited input archives of ChecklistBank dataset 314822, imports 12 and 13 [1,2]. Both have unique name identifiers and unique scientific names. The name at every identifier is unchanged, although two records change rank from variety to subspecies. The property table falls from 2,657 rows to 12. All retained rows occurred in the earlier version and every property identifier resolves within its own archive.
+
+Define $R_v$ as the set of triples (scientific name, directive, annex value) in version $v$. Our target $T=R_{12}\setminus R_{13}$ has 2,645 elements. Agreement means reproduction of a historical data record. A discrepancy does not establish changed legal protection, changed taxonomy or a species decline. The difficulty of harmonizing scientific names is established [3,4]. Here we measure a specific loss across two archived releases and test two proposed recovery rules against the earlier record.
+\section{Evidence rules}
+For each companion dataset we took the last completed import at or before the completion of import 13, retaining its version and archive hash. The seven lists need not be independent. All candidate scientific names must occur verbatim in the unchanged aggregate name table. We use identifiers only within their own source. We do not expand synonyms, parents or regional populations.
+\newpage
+For birds, a property references a local taxon identifier. Joining it to the name preserves the literal annex, including the distinction between parts A and B. We translate the companion spelling \texttt{II PART A} to \texttt{II/A}, and likewise for the other part labels. For Habitats II, IV and V, the files contain name records only. A name present in a file proposes the corresponding annex. Dataset 313964 (import 21) describes characteristic species of Annex I habitats. Its properties record habitat names and identifiers. Although 127 of its names occur in the aggregate, this different relation supplies no species--annex assignments under either rule.
+\section{Recovered assignments}
+\begin{center}\small
+\begin{tabular}{llrrrr}
+\toprule
+List & Dataset/import & Target & Recovered & Unresolved & Extra\\\midrule
+Birds I &314945/7 &231&164&67&0\\
+Birds II &314974/2 &124&68&56&0\\
+Birds III &314380/6 &39&21&18&0\\
+Habitats II &314298/15 &1,050&785&265&0\\
+Habitats IV &314304/5 &1,063&794&269&27\\
+Habitats V &314308/4 &138&52&86&0\\\midrule
+Total &&2,645&1,884&761&27\\\bottomrule
+\end{tabular}
+\end{center}
+The bird totals count the exact subannex where applicable. All 27 extra candidates are also absent from the entire v12 relation for that annex. None of the 1,911 candidates duplicates a surviving v13 relation. For instance, the Habitats IV companion contains \emph{Bruchia vogesiaca} and \emph{Buxbaumia viridis}; the earlier aggregate supplies neither corresponding Annex IV link. Restricting the Habitats files to species, subspecies, variety and form retains all 27 disagreements and removes four matches, two in II and two in V. Removing higher ranks is strictly worse on these two observed counts.
+
+For Birds I the presence rule gives 169 historical matches, compared with 164 from explicit properties. The five additional names occur in both lists and have an Annex I label in the earlier aggregate. The companion file does not supply a matching attached property for them. A consumer can thus recover five further historical assignments only by relaxing the kind of evidence required in this comparison.
+\section{Use and limits}
+A restoration workflow can retain property-level provenance for 253 bird assignments, file-level provenance for 1,631 matching habitat assignments, and send unresolved or discordant records for curator review. We cannot determine why the archive changed, whether downstream services used the inputs unchanged, or which archive best reflects a legal instrument. A match on text cannot establish that both sources delimit the same taxon.
+\newpage
+\section*{Reproducibility}
+The source package fixes the nine archive URLs and SHA-256 hashes. Running \texttt{python3 replay\_archives.py} retrieves the files, checks their hashes, repeats the join and emits the complete candidate list with membership flags for the reference and target. Both the output digest and per-list results must match the deposited summary. The comparison rejects duplicate companion identifiers and dangling property references. Archive availability and stable source bytes are required for a fresh download.
+\section*{Model assessments and review context}
+OpenAI Codex assisted with analysis, software and drafting. The assessment of the frozen PDF belongs with its version record. A participating model shares the research context. The author administers AIRR. Independent peer review has not been documented.
+\section*{Sources}
+\begin{enumerate}
+\item ChecklistBank, dataset 314822, \href{https://doi.org/10.48580/dgxcy.v12}{version 12, DOI 10.48580/dgxcy.v12}.
+\item ChecklistBank, same dataset, \href{https://doi.org/10.48580/dgxcy.v13}{version 13, DOI 10.48580/dgxcy.v13}. The \href{https://www.catalogueoflife.org/2022/08/15/archive-repository}{Catalogue of Life archive repository} documents retrieval by import.
+\item R. D. M. Page, \href{https://doi.org/10.1093/bib/bbn022}{Biodiversity informatics: the challenge of linking data and the role of shared identifiers}, \emph{Briefings in Bioinformatics} 9 (2008), 345--354.
+\item GBIF, \href{https://techdocs.gbif.org/en/data-processing/taxonomy-interpretation}{Taxonomy interpretation}, documentation of identifier and scientific-name matching, including higher-rank matches.
+\end{enumerate}
+\end{document}
