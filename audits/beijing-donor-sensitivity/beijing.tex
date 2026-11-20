@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\title{When can one contaminated donor erase a station-level contrast?\\A fixed-design sensitivity analysis of Beijing PM$_{2.5}$}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We bound a target prediction from a factor model when an unknown subset of donor responses can depart arbitrarily from the model. The sharp worst-response diameter equals twice the largest weighted cost of representing the target loading on an overlap of two admissible clean sets. Applying this characterization to a published Beijing air-quality panel, we find a worst-case diameter of 2.714 per unit clean-donor error with 107 clean donors and 3.164 with one possibly invalid donor. The first nonpositive contrast is feasible at 116.915; a zero contrast first becomes feasible at 117.242. These sensitivity statements condition on seven fitted loading coordinates and a specified donor model.
+\end{abstract}
+\section{A target-specific recovery problem}
+He, Li, Shi and Miao study synthetic control with interference and provide data for the Beijing air-pollution alert \cite{he,data}. A reader interpreting a station-level contrast might want to know how much contamination would suffice to remove its sign. The answer depends on both the geometry of the fitted controls and the observed responses. We compute both quantities. Our worst-response calculation is related to the modulus of continuity of a functional in optimal recovery \cite{donoho}. For noiseless clean responses, target-specific separation is related to protecting a function of a message in the presence of errors \cite{lenz}.
+
+Let $x_i\in\mathbb R^r$ be known donor loadings and $v\in\mathbb R^r$ a known target loading. A factor $f$ is admissible for responses $y$ if $|y_i-x_i^\top f|\le a_i$ for all but at most $k$ donors. Each $a_i$ is a fixed nonnegative number. Write $T(y)$ for the set of admissible predictions $v^\top f$, and $X_S$ for the matrix with rows $x_i^\top$, $i\in S$. Assume $2k\le n$.
+
+\paragraph{Proposition.} With the supremum over responses admitting at least one fit,
+\[
+ \sup_y\operatorname{diam} T(y)
+ =2\max_{|S|=n-2k}\ \inf_{X_S^\top w=v}\ \sum_{i\in S}a_i|w_i|,
+\]
+where an infeasible infimum is $+\infty$.
+
+\paragraph{Proof.} Two admissible fits share at least $n-2k$ valid donors. Half their difference, $h$, satisfies $|X_Sh|\le a_S$ on any $n-2k$ of these. Conversely, given such an $S,h$, choose rival factors $+h,-h$. Set responses to zero on $S$. Partition its complement into two sets of $k$ donors and assign responses from $+h$ to one set and from $-h$ to the other. Both factors then fit the same observations, and their target separation is $2|v^\top h|$. The support function of $|X_Sh|\le a_S$ in direction $v$ has the indicated dual: the difference of the two nonnegative multiplier vectors represents $v$, with least coordinatewise cost $a_i|w_i|$. The primal contains $h=0$. If $v$ is outside the row span, a null direction with $v^\top h\ne0$ gives arbitrarily large separation. Finite optima are attained by linear programming duality. \hfill$\square$
+
+With $a_i=0$, the target alone is identified precisely when $v$ lies in every overlap span. For example, take four donor rows $e_1,e_1,e_1,e_2$ and allow one corruption. Every two-row overlap contains $e_1$. The first coordinate is then identified although the second is unbounded for some data. An invertible change of factor coordinates preserves the predictions and the representation costs.
+
+\section{Design and error calibration}
+We preserved the released ordering of the two input panels, excluded the all-missing extended-panel station S110001 as in the source code, and used the first retained station G110003 as the target before optimization. The other 107 stations form the donor set. The source covers 48 hours before and 24 hours following the alert. We used its neighbor imputation, column centering without scaling, and seven-factor maximum-likelihood fit on the transpose of the pre-alert panel. Repeating the imputation with just the first 48 hours changed zero pre-alert cells. Checking both neighbors for each missing pre-alert reading found zero dependencies across the alert boundary. Both fits reported convergence in 25 iterations and gave identical archived loading coordinates. We conditioned on these coordinates at twelve significant figures.
+
+Let $y_i$ be the post-alert mean PM$_{2.5}$ concentration at station $i$ after imputation; $y_0$ denotes the target mean. The diagnostic predicts the raw mean by $x_i^\top f$ with no separate station offset. An unrestricted station offset in this single post-period mean model would make a held-out target uninformative without additional restrictions. Station G110003 contributes pre-alert observations to the joint loading fit and contributes no post-alert observation to the donor inequalities. The originating paper estimates effects via robust regression and uses bootstrap inference. Our deterministic analysis asks what follows under an explicit common bound on donor residuals.
+
+For each omitted donor $j$ (including a no-omission option), minimize $t$ subject to $|y_i-x_i^\top f|\le t$ for each retained donor. Denote the smallest such optimum over omissions by $t_{\rm fit}$. At a fixed tolerance, the extreme target predictions are the extrema of $v^\top f$ over the union of these feasible sets. For a sign test add $v^\top f\ge y_0$ before minimizing $t$, and denote the smallest optimum by $t_{\rm sign}$. This single extra constraint tests any nonpositive contrast, including the possibility that disjoint feasible components straddle zero.
+
+\section{Certified results}
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Quantity for G110003 & Value\\\midrule
+Worst diameter per unit error, all donors valid & 2.713536\\
+Worst diameter per unit error, one unrestricted donor & 3.163782\\
+Minimum tolerance, all donors valid & 125.172698\\
+Minimum tolerance, one unrestricted donor ($t_{\rm fit}$) & 115.691061\\
+Minimum tolerance for nonpositive contrast ($t_{\rm sign}$) & 116.914530\\
+Observed target mean & 120.291667\\
+Compatible target prediction at tolerance 116 & 53.055267--99.255722\\
+Observed minus predicted at tolerance 116 & 21.035944--67.236400\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first two rows are amplification factors. All subsequent rows are in the concentration units of the released series. The largest overlap diameter is attained by deleting G110002 and S110005 from the common clean rows. Two competing fits may each have a single invalid donor. The deleted pair describes their overlap and does not identify actual interference.
+
+Rounding $t_{\rm fit}$ upward gives 116. Only the omission of S110004 admits an observed-data fit at this tolerance. The sign conclusion holds for $t_{\rm fit}\le t<t_{\rm sign}$: a smaller tolerance than $t_{\rm fit}$ would reject the model itself. At $t_{\rm sign}$, a fit omitting S110020 already has a negative contrast. Imposing $v^\top f=y_0$ and eliminating one factor coordinate gives a second certified threshold of 117.241742 (omission S110020). Thus on the interval between these thresholds, including its lower endpoint only, positive and negative contrasts both occur while zero remains impossible. A positive fit persists from tolerance 116. Reporting the convex hull would incorrectly include zero throughout this interval. The same numerical confidence cannot be transferred to a causal alert effect. The donor tolerance is data-calibrated, uncertainty in loadings is unaccounted for, and the sign need not generalize to another station or alert.
+
+\paragraph{Certificates and replication.} Candidate optima were found by floating-point linear programming and checked with rational arithmetic on the archived decimals. For the diameter, a sparse representation gives an upper bound after any deletion disjoint from its support. A feasible factor direction attains the same cost on each solved overlap. This reduces 5,779 deletion sets (sizes zero, one or two) to 46 certified optimization nodes. For the observed-response tests, a feasible factor vector and nonnegative dual weights with equal objectives certify each optimum. The verifier covers each of the 108 omission options, recomputes the target and donor means from the readings, and rejects a deliberately perturbed representation weight. The package includes the source-data version, fitting code, archived designs, and verifier.
+
+\paragraph{Model assessments and review context.} OpenAI Codex assisted with formulation, implementation and drafting. Any assessment of this frozen version is recorded separately with the assessed file digest and the model's prior involvement. The author administers AIRR. No independent peer review is documented.
+
+\begin{thebibliography}{4}
+\bibitem{he} He, Li, Shi and Miao. A robust regression approach to synthetic control with interference. \emph{Journal of the American Statistical Association}. \href{https://doi.org/10.1080/01621459.2026.2761034}{doi:10.1080/01621459.2026.2761034}.
+\bibitem{data} Replication material for He et al. Version 1, Figshare, CC BY 4.0. \href{https://doi.org/10.6084/m9.figshare.35076895.v1}{doi:10.6084/m9.figshare.35076895.v1}. Data transformed by the present author.
+\bibitem{donoho} D. L. Donoho. Statistical estimation and optimal recovery. \emph{Annals of Statistics} 22 (1994), 238--270. \href{https://doi.org/10.1214/aos/1176325367}{doi:10.1214/aos/1176325367}.
+\bibitem{lenz} A. Lenz et al. Function-correcting codes. \href{https://arxiv.org/abs/2102.03094}{arXiv:2102.03094}.
+\end{thebibliography}
+\end{document}
