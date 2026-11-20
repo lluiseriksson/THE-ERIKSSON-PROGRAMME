@@ -1,0 +1,9 @@
+# One surcharge schedule chosen before calibration is known
+
+For a scenario with positive signed net downstream total R, define r_i=d_i/R. Fix the boost x=tR, t>0, and require one common vector of nonnegative surcharge shares u, summing to one, across calibrations. Exact alignment in scenario j forces
+
+    t u = (1+t) s_j − r_j.
+
+This supplies a falsifier even when all individual scenarios admit exact alignment. Two calibrations with the same normalized benefit vector require identical r vectors to align at the same finite t. In the released upper-project, central-retention rows, primary and all-months calibrations have identical downstream load shares. However, the Kunming signed transfer divided by the Qujing return exceeds 0.47 in the primary rows and is below 0.36 in the all-months rows (positive-payment convention, absolute discrepancy from budget closure below 1e−13). Consequently no common surcharge-share vector gives exact alignment under both at the same finite proportional boost. The inequalities are deliberately rounded outward and the gap exceeds the rounding discrepancy. This is a restriction on prescribing weights before the scenario is known.
+
+When every final signed payment is nonnegative, the worst-case total-variation discrepancy for this pair is at least ||r_primary−r_all||_1 / [4(1+t)] by the triangle inequality. This lower bound concerns the nonnegative-payment region. Minimizing discrepancy with clipping and with uncertain retention is a separate optimization problem. The next test is to compute its exact or certified interval optimum by active-set enumeration, comparing against individually calibrated schedules.
