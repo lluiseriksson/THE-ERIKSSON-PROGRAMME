@@ -1,0 +1,73 @@
+{
+  "source": "https://arxiv.org/html/2610.39621v2",
+  "html_sha256": "e1f28b21f8cc673b7829c265f0f3b7d929d4996135dd642730890263d4f7c040",
+  "table_sha256": "6917432e83d17e399a68d223a2c267d2daad671456b212f019df3b6027dda5fb",
+  "grid_points": 80,
+  "portfolios": 3240,
+  "comparable_unordered_pairs": 28160,
+  "nominal_reversals": 2609,
+  "rounding_robust": 2574,
+  "maximum_guaranteed_energy_decrease": {
+    "a": [
+      [
+        50000,
+        500
+      ],
+      [
+        160000,
+        2000
+      ]
+    ],
+    "b": [
+      [
+        10000,
+        2000
+      ],
+      [
+        200000,
+        500
+      ]
+    ],
+    "api_ms": "945/2",
+    "local_ms": "-9705/2",
+    "energy_Wh": "-14727/20000",
+    "energy_radius_Wh": "69/40000",
+    "time_radius_ms": "69/4"
+  },
+  "simple_example": {
+    "a": [
+      [
+        40000,
+        500
+      ],
+      [
+        40000,
+        1500
+      ]
+    ],
+    "b": [
+      [
+        10000,
+        1500
+      ],
+      [
+        70000,
+        500
+      ]
+    ],
+    "estimates_and_radii": [
+      [
+        "117",
+        "12/5"
+      ],
+      [
+        "-594",
+        "12/5"
+      ],
+      [
+        "-489/6250",
+        "3/12500"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,booktabs,hyperref}
+\hypersetup{hidelinks}\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\begin{document}
+\begin{center}
+{\Large\bfseries When equal-token inference workloads rank differently\\[2pt] by fitted API time and GPU energy}\par
+\vspace{5pt} Lluis Eriksson \quad$\cdot$\quad 20 November 2026
+\end{center}
+
+\begin{abstract}
+We compare sums of fitted compute time and GPU energy for two-request workloads built from the Mistral-Small-2603 grid of Krupp et al. Among 28,160 comparisons with identical input and output token totals, 2,609 give opposite rankings for API time and local H200 energy. Of these, 2,574 survive rounding of the printed coefficients. The most robust fixed comparison retains both signs under a common relative cell-error bound below a critical value of approximately 1.8166\%. Conversely, a single perturbation of at most 2.193\% per cell makes all rankings agree. These are deterministic tests of fitted surfaces; the public coefficient table supplies neither the realized cell errors nor provider energy measurements.
+\end{abstract}
+
+\section*{Two requests with the same independently counted token totals}
+Krupp et al.\ [1] fit separate identity-link regressions to API compute time and to local compute time and GPU energy, including 20 input lengths from 10,000 to 200,000 and four output lengths from 500 to 2,000. Their selected local configuration uses two H200 GPUs, tensor parallelism two, and a batch size of one. We add the fitted costs of two sequential requests, allowing the same grid cell to occur twice. Token-equivalent workloads need not accomplish the same task.
+
+For either fitted quantity, the per-request prediction at input $i$ and output $o$ is $\beta_0+\beta_1 i+\beta_2 i^2+\beta_3 o+\beta_4 io$. For two workloads with equal counts of requests and equal input and output sums, only two moments survive subtraction. Write $X=\Delta\sum i^2$ and $Y=\Delta\sum io$. The predicted change is $\beta_2 X+\beta_4 Y$. For $X>0$, positive API time change and negative local energy change occur exactly when $-Y/X$ lies strictly between the respective energy and time values of $\beta_2/\beta_4$, in increasing order.
+
+\begin{center}\small
+\begin{tabular}{lrrr}\toprule & API time (ms)& H200 time (ms)& H200 energy (Wh)\\\midrule
+$\beta_2$&$2.70\,10^{-7}$&$2.65\,10^{-7}$&$9.97\,10^{-11}$\\
+$\beta_4$&$1.23\,10^{-5}$&$3.57\,10^{-5}$&$8.59\,10^{-9}$\\\bottomrule\end{tabular}
+\end{center}
+For example, set $A=((40000,500),(40000,1500))$ and $B=((10000,1500),(70000,500))$. Both require 80,000 input and 2,000 output tokens. Going from $A$ to $B$ gives $X=1.8\,10^9$ and $Y=-3\,10^7$. API time increases by 117 ms, local time decreases by 594 ms, and local energy decreases by 0.07824 Wh. The API result concerns the fitted compute-time measure of [1]. A local energy advantage cannot establish lower provider consumption.
+\newpage
+
+\section*{Choosing a comparison that can survive measurement error}
+There are $\binom{81}{2}=3240$ unordered two-request workloads with repetition. Group them by both token totals, and compare every two distinct workloads within each group once. This yields 28,160 comparisons. Input data for the audit are the printed coefficients in Table 2 of [1]. Let $q_j$ be half the last printed unit of coefficient $j$. The rounding radius of a paired contrast is exactly $r=|X|q_2+|Y|q_4$ in the rectangular rounding model. Coefficients are shared across cells and each is perturbed only once per outcome. The time and energy models have separate coefficient boxes.
+
+Orient a reversal so the nominal time change is $T>0$ and energy change $E<0$. Add cell-specific discrepancies bounded in absolute value by $\epsilon$ ms and $\gamma$ Wh, respectively. Two distinct workloads in a comparison cannot share a cell: removing a shared cell would leave one request on each side with equal input and output counts. Their multiplicity difference therefore has absolute sum four, including repeated cells. The two signs survive every permitted perturbation exactly when
+\[
+4\epsilon<T-r_T,\qquad 4\gamma<-E-r_E.
+\]
+Both margins are attainable: choose the adverse coefficient endpoints and give cells on opposite sides opposite errors. At equality an adversary can attain a tie for the chosen pair.
+
+Exactly 2,574 of the 2,609 nominal reversals pass the strict zero-error test after allowing for coefficient rounding. Four open rectangles cover the entire set of nonnegative absolute error bounds for which one can preselect a guaranteed reversal. Their upper corners, in ms and Wh per request, are
+\[
+(448.9875,0.02949375),\ (294.875,0.1015875),\
+(152.8,0.104),\ (113.8125,0.18365625).
+\]
+In each rectangle zero error is allowed and its two upper boundaries are excluded. Under this model a design tolerating 200 ms and 0.10 Wh per request exists. Increasing the time tolerance to 300 ms at the same energy tolerance rules out every fixed comparison.
+
+For relative error, measure the additive cell discrepancy against each cell's positive nominal fitted value. For example, a time error of at most $\rho$ times the printed fit in every cell has worst-case contrast magnitude $\rho S_T$, where $S_T$ is the sum of the four time predictions counted with multiplicities. Use $S_E$ analogously. The largest radius approached for a fixed witness is
+\[
+ \max_{A,B}\min\{(T-r_T)/S_T,(-E-r_E)/S_E\}
+ =58975/3246444 .
+\]
+Strict inequality below this number is necessary for that guarantee. A maximizing change is from $((60000,500),(150000,2000))$ to $((10000,2000),(200000,500))$. It raises fitted API time by 1,197 ms and reduces fitted local energy by 0.4081 Wh. Equal token totals alone omit the information needed to reproduce the comparison.
+\newpage
+\section*{A single perturbation that removes all reversals}
+Failing to protect any \emph{fixed} comparison at a chosen radius leaves open whether every admissible perturbation still preserves \emph{some} reversal. We give one constructive upper bound for this second question. Take the allowed nominal coefficients. Let $t$ be a cell's fitted API time in units of 10 seconds, $e$ its fitted GPU energy in Wh, $u=i/100000$, and $v=o/1000$. Seek positive $k$ and affine offsets $a,b,c$ such that the corrected values satisfy
+\[
+ e'=kt'+a+bu+cv .
+\]
+Summing over any two workloads with equal request count and equal token totals cancels the offsets. All such workloads have the same ordering on the corrected surfaces.
+
+At a proposed common relative radius $\rho$, the following conditions on the 80 cells are linear in $k,a,b,c$:
+\[
+ |e-kt-a-bu-cv|\le \rho(e+kt).
+\]
+Whenever they hold, take $f=(e-kt-a-bu-cv)/(e+kt)$ and set $e'=e(1-f)$ and $t'=t(1+f)$. Thus the displayed relation holds identically and each relative adjustment is at most $\rho$. The certificate uses
+\[
+ k=4.4550,\quad a=-0.03866,\quad b=-0.55944,\quad c=-2.26621
+\]
+with exact decimal parameters in the supplement; the values here are rounded for display. Computing all 80 fractions exactly certifies a common radius below 2.193\%. At these adjusted cell values, the 28,160 comparisons all obey $\Delta e'=k\Delta t'$. This is an existence bound in a restricted family of corrections. The smallest radius that permits eliminating all reversals may be lower. Conversely the best fixed witness proves that this smallest radius is at least $58975/3246444$ when coefficient rounding is also allowed.
+
+\section*{What a measurement would settle}
+These results identify workloads and measurement precision targets. An empirical test would pair API timing and local GPU observations at the four cells of a specified witness, using the same timing and energy definitions as [1]. The source describes outlier filtering and goodness of fit. Neither a fit statistic nor a standardized residual cutoff supplies a uniform error bound in ms or Wh. The arXiv v2 source archive contains the manuscript, support files and figure PDFs. We did not locate a per-cell measurement table there. No probability or frequency in production follows from the deterministic error boxes.
+
+\textbf{Reproduction.} The supplement includes exact-rational outputs for enumeration and both robustness tests. Numerical optimization proposes parameters for the common ordering. Rational substitution verifies the final certificate independently of the solver's status.
+
+\textbf{Model assessments and review context.} OpenAI Codex assisted with the analysis, code and writing. The author operates AIRR. Model involvement and the assessment of the frozen PDF are recorded with that version.
+
+\small [1] L.\ Krupp, D.\ Gei{\ss}ler, F.\,M.\ Calatrava-Nicolas, S.\,G.\ Fritsch, P.\ Lukowicz and J.\ Karolus. \emph{The Real Cost of Context: Predicting Compute Time and Energy Consumption in LLM Prefill and Decode Phases}. \href{https://arxiv.org/abs/2610.39621v2}{arXiv:2610.39621v2}, 19 November 2026, Sections 3--5 and Table 2.
+\end{document}
