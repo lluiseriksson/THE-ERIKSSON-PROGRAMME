@@ -1,0 +1,14 @@
+# What 84% exact agreement permits across ordered action thresholds
+
+Zhang and colleagues (New Zealand Journal of Health and Safety Practice, 2026; DOI 10.26686/nzjhsp.v3i4.11869) report 84% agreement of video and reference REBA risk categories on 132 trials. Under nearest-integer percentage rounding there are 111 agreements and 21 disagreements. Neither directed errors per action threshold nor risk-category marginals appear in the abstract. Hignett and McAtamney's original REBA Table 4 distinguishes five ordered action levels (DOI 10.1016/S0003-6870(99)00039-3).
+
+For a cut t between adjacent ordered categories define d_t as the number of trials called below the cut when their reference is above it, and u_t for the reverse. With n total and e discordant trials, 0 <= e <= n, nonnegative integer profiles d,u are jointly attainable with unrestricted marginals exactly when
+
+    m(d)+m(u) <= e <= sum(d)+sum(u),
+    m(x) = sum_t max(0, x_t-x_(t-1)), with x_0=0 and cuts indexed from 1.
+
+Every discordant trial contributes one nonempty interval of cuts, in exactly one direction. A positive rise forces at least that many intervals to start. For the matching construction, on each positive integer height draw an interval over every maximal consecutive run above or equal to that height. The number of intervals is exactly the sum of positive rises. Splitting any nonsingleton interval at an internal boundary increases the number by one and preserves all threshold counts. This reaches every intermediate number up to the total area. Convert each interval back to its two endpoint labels, with the specified direction, then put the remaining agreements on the diagonal.
+
+All 21 disagreements can affect every downward cut simultaneously (a four-level drop each), or just one. There cannot be 21 undercalls at each of the first and third cuts and zero at the intervening cut: this profile would require at least 42 discordant trials. There also cannot be just ten undercalls at each of two cuts and zero other threshold crossings, because that would account for at most 20 discordant trials. These examples are mathematical witnesses, not observed errors of the video system. Agreement percentages alone do not identify any injury rate or clinical outcome.
+
+The positive-rise identity has prior art in consecutive-ones decomposition, see https://pure.tue.nl/ws/files/1883689/624120.pdf . Here it is used in both directions with a fixed total disagreement count. The independent enumeration in reba-ordinal.py compares all candidate profiles for two through five categories and zero through three discordances with direct sums of all possible ordered errors, then checks reconstructed confusion matrices. The result for arbitrary counts follows from the construction. Run python3 reba-ordinal.py and compare with ordinal.json. No claim of priority for the interval identity.

@@ -1,0 +1,281 @@
+{
+  "checks": [
+    {
+      "categories": 2,
+      "trials": 0,
+      "matrices": 1,
+      "summaries": 1
+    },
+    {
+      "categories": 2,
+      "trials": 1,
+      "matrices": 4,
+      "summaries": 4
+    },
+    {
+      "categories": 2,
+      "trials": 2,
+      "matrices": 10,
+      "summaries": 10
+    },
+    {
+      "categories": 2,
+      "trials": 3,
+      "matrices": 20,
+      "summaries": 20
+    },
+    {
+      "categories": 2,
+      "trials": 4,
+      "matrices": 35,
+      "summaries": 35
+    },
+    {
+      "categories": 2,
+      "trials": 5,
+      "matrices": 56,
+      "summaries": 56
+    },
+    {
+      "categories": 3,
+      "trials": 0,
+      "matrices": 1,
+      "summaries": 1
+    },
+    {
+      "categories": 3,
+      "trials": 1,
+      "matrices": 9,
+      "summaries": 9
+    },
+    {
+      "categories": 3,
+      "trials": 2,
+      "matrices": 45,
+      "summaries": 45
+    },
+    {
+      "categories": 3,
+      "trials": 3,
+      "matrices": 165,
+      "summaries": 164
+    },
+    {
+      "categories": 3,
+      "trials": 4,
+      "matrices": 495,
+      "summaries": 486
+    },
+    {
+      "categories": 3,
+      "trials": 5,
+      "matrices": 1287,
+      "summaries": 1242
+    },
+    {
+      "categories": 4,
+      "trials": 0,
+      "matrices": 1,
+      "summaries": 1
+    },
+    {
+      "categories": 4,
+      "trials": 1,
+      "matrices": 16,
+      "summaries": 16
+    },
+    {
+      "categories": 4,
+      "trials": 2,
+      "matrices": 136,
+      "summaries": 134
+    },
+    {
+      "categories": 4,
+      "trials": 3,
+      "matrices": 816,
+      "summaries": 774
+    },
+    {
+      "categories": 5,
+      "trials": 0,
+      "matrices": 1,
+      "summaries": 1
+    },
+    {
+      "categories": 5,
+      "trials": 1,
+      "matrices": 25,
+      "summaries": 25
+    },
+    {
+      "categories": 5,
+      "trials": 2,
+      "matrices": 325,
+      "summaries": 315
+    }
+  ],
+  "tables": [
+    {
+      "name": "RULA",
+      "expert_rows": [
+        32,
+        171,
+        97
+      ],
+      "system_cols": [
+        38,
+        170,
+        92
+      ],
+      "discordant": 35,
+      "observed_up": [
+        2,
+        10
+      ],
+      "observed_down": [
+        8,
+        15
+      ],
+      "possible_directed_profiles": 162,
+      "down_ranges": [
+        [
+          6,
+          20
+        ],
+        [
+          5,
+          20
+        ]
+      ],
+      "both_upper_attained": true,
+      "high_down_given_observed_low": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "mismatch_range_given_actual_cuts": [
+        25,
+        35
+      ],
+      "extreme_high_witnesses": {
+        "minimum": [
+          [
+            20,
+            12,
+            0
+          ],
+          [
+            18,
+            153,
+            0
+          ],
+          [
+            0,
+            5,
+            92
+          ]
+        ],
+        "maximum": [
+          [
+            32,
+            0,
+            0
+          ],
+          [
+            0,
+            156,
+            15
+          ],
+          [
+            6,
+            14,
+            77
+          ]
+        ]
+      }
+    },
+    {
+      "name": "REBA",
+      "expert_rows": [
+        19,
+        203,
+        78
+      ],
+      "system_cols": [
+        19,
+        204,
+        77
+      ],
+      "discordant": 25,
+      "observed_up": [
+        1,
+        11
+      ],
+      "observed_down": [
+        1,
+        12
+      ],
+      "possible_directed_profiles": 91,
+      "down_ranges": [
+        [
+          0,
+          12
+        ],
+        [
+          1,
+          13
+        ]
+      ],
+      "both_upper_attained": true,
+      "high_down_given_observed_low": [
+        12,
+        13
+      ],
+      "mismatch_range_given_actual_cuts": [
+        23,
+        25
+      ],
+      "extreme_high_witnesses": {
+        "minimum": [
+          [
+            7,
+            12,
+            0
+          ],
+          [
+            12,
+            191,
+            0
+          ],
+          [
+            0,
+            1,
+            77
+          ]
+        ],
+        "maximum": [
+          [
+            19,
+            0,
+            0
+          ],
+          [
+            0,
+            191,
+            12
+          ],
+          [
+            0,
+            13,
+            65
+          ]
+        ]
+      }
+    }
+  ],
+  "source": "https://doi.org/10.3390/ijerph17176050"
+}

@@ -1,0 +1,21 @@
+{
+  "source_sha": "ffdb0321ad78f44353380c0fa22b8f44775b33bc",
+  "inputs": {
+    "thresholds.tex": "153d188bef02952510dfaee3a2a589b741f1f294164a9bd3e3467280f4c48551",
+    "verify_ordinal.py": "a152d935442fb9192b25175c302e351c838c674396a419a8245ed54ab3dd3867",
+    "reba-ordinal.py": "aaecc9cc3b386c5e447d1bec0cd0ad17dad76922c3acb83ac82aa263326771ab",
+    "ordinal.json": "e547e875f42cd2c713fea54802a12199e9e57fa5e72563c30b77b4a475c6ea2c",
+    "reba-margins.py": "3af7b3eb8c820e9b50ec9df49a52f3e17727e51375ce5b727f23178f92c7771e",
+    "paired.json": "2f29d971fcda58d5c20b23598e3be24eda4e1d93f78dba34177a821dfee7ea6f",
+    "source.json": "ede54e52af7303c6362b1f1a125f21b9468253f38f7abf6caf666c72a45cabd6"
+  },
+  "started_at": "2026-11-20T22:20:22.204522+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "36d149f231179f0e557f58acf91e7b961c1210d10e71fa9c72bd2c6433c4aa01",
+    "36d149f231179f0e557f58acf91e7b961c1210d10e71fa9c72bd2c6433c4aa01"
+  ],
+  "pdf_bytes": 206865,
+  "finished_at": "2026-11-20T22:21:30.212454+00:00"
+}

@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{What ordinal agreement reveals about missed ergonomic action thresholds}
+\author{Lluis Eriksson}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Two assessments may agree on most tasks while disagreeing about which tasks reach an action threshold. We characterize all joint counts of upward and downward threshold crossings compatible with exact agreement, with and without the two category histograms. A constructive integer criterion gives a witness for every feasible disagreement count. Applied to a wearable ergonomic assessment system, its published REBA histograms and agreement allow 1 through 13 missed high-risk assessments. Reporting one additional count at the lower threshold reduces this range to 12 through 13.
+\end{abstract}
+\section{What exact agreement identifies}
+Let an integer table have reference labels in its rows and system labels in its columns, ordered from 1 to $k$. Let $n$ be its total and $e$ its off-diagonal sum. At cut $i$ between $i$ and $i+1$, $u_i$ counts observations with reference at most $i$ and system above $i$, and $d_i$ counts the reverse.
+
+Zhang et al.\ report 84\% exact risk-category agreement over 132 trials for a video REBA system \cite{zhang}. Assuming pooled trials and rounding to the nearest whole percent, $83.5\le 100a/132<84.5$ gives exactly $a=111$ agreements and $e=21$. On the five-level REBA action scale \cite{reba}, all 21 discordances could cross every cut downward on the same trials. They could also cross only one cut. These examples describe possibilities consistent with the aggregate statistic.
+
+\paragraph{Unrestricted histograms.} For either direction set $x_0=0$ and $V(x)=\sum_{i=1}^{k-1}\max(0,x_i-x_{i-1})$. At $0\le e\le n$, nonnegative integer profiles are attainable exactly when
+\[
+ V(u)+V(d)\le e\le\sum_{i=1}^{k-1}(u_i+d_i).
+\]
+Each discordance gives a nonempty interval of adjacent cuts. Positive rises force interval starts. At each integer height lay an interval on every connected component that reaches that height. This realizes $V$ intervals. Splitting nonsingleton intervals one at a time preserves all cut counts until every interval is a singleton. Use their endpoints to recover the discordant pairs and add $n-e$ diagonal observations. Positive-rise complexity also occurs in consecutive-ones decomposition \cite{segments}. For example, downward counts $(21,0,21,0)$ alone require at least 42 disagreements.
+
+\section{Both histograms fixed}
+Let $r_i,c_i$ be reference and system totals with equal grand totals. Set $u_0=u_k=d_0=d_k=0$. Define
+\begin{align*}
+ O_i&=u_i+d_{i-1}, & I_i&=u_{i-1}+d_i,\\
+ L_i&=\max(0,O_i-r_i), & M_i&=\min(u_{i-1},u_i)+\min(d_{i-1},d_i).
+\end{align*}
+\textbf{Criterion.} For nonnegative integer inputs, feasibility is equivalent to $r_i-c_i=O_i-I_i$ and $L_i\le M_i$ at every label, together with
+\[
+ \sum_i(O_i-M_i)\ \le\ e\ \le\ \sum_i(O_i-L_i).
+\]
+Every integer in this interval is attainable.
+
+\paragraph{Proof.} Represent each discordance by a unit path along the ordered labels. At label $i$ pair incoming and outgoing edges of the same direction when a path continues. Write $s_i$ for the number of pairs. At most $M_i$ pairs can continue. There are $O_i-s_i$ starts and $I_i-s_i$ ends. The diagonal is both $r_i-O_i+s_i$ and $c_i-I_i+s_i$, giving the balance equation and the lower bound. Summing starts gives $e$.
+
+Conversely choose $s_i\in[L_i,M_i]$ with sum $\sum O_i-e$. Start at the lower bounds and distribute surplus up to the successive upper bounds. At each label assign as many continuations as possible to the upward direction up to its capacity, and the rest downward. Pair distinct incident units accordingly. Following the pairs produces monotone paths; cycles are impossible. Every path supplies one observation at its endpoints. Fill the diagonals as above. This constructs the required table. It also identifies the entire set of diagonal vectors: each $t_{ii}$ ranges independently from $r_i-O_i+L_i$ to $r_i-O_i+M_i$ before imposing the specified trace $n-e$. Cumulative balance gives $u_i-d_i=\sum_{j\le i}(r_j-c_j)$.
+
+\section{The value of disclosing one further count}
+The wearable-system study \cite{huang} reports RULA and REBA three-category tables over 300 assessments. We transpose Tables 2 and 3 to reference rows. We retain both category histograms and the trace, mask the individual cells, then reveal the observed lower-cut undercall count. A missed high assessment is any expert-high observation classified low or medium.
+\begin{center}
+\begin{tabular}{lrrrrr}
+\toprule
+Scale & Errors & Profiles & Missed high & With lower cut & Actual\\
+\midrule
+RULA & 35 & 162 & 5--20 & 15--20 & 15\\
+REBA & 25 & 91  & 1--13 & 12--13 & 12\\
+\bottomrule
+\end{tabular}
+\end{center}
+For RULA the histograms are $(32,171,97)$ and $(38,170,92)$ and the revealed count is 8. For REBA they are $(19,203,78)$ and $(19,204,77)$ with revealed count 1. Profiles are distinct directed crossing vectors. Each displayed range contains all intermediate integers. For example, two REBA tables attaining the unconditional endpoints are
+\[
+ \begin{pmatrix}7&12&0\\12&191&0\\0&1&77\end{pmatrix}
+ \qquad
+ \begin{pmatrix}19&0&0\\0&191&12\\0&13&65\end{pmatrix}.
+\]
+The published table identifies 12 missed cases among the 78 expert-high assessments. The interval quantifies the information lost if individual cells are withheld. The two systems in the cited studies differ. We do not impute the missing video-study cells from the wearable study. Sampling independence is unnecessary for these finite-table conclusions; population injury risk requires additional evidence.
+
+\paragraph{Reproduction.} The accompanying scripts compare all actual and predicted summaries at small table sizes and verify explicit witnesses. A second three-category enumerator reconstructs feasible profiles directly from off-diagonal cell counts. The construction proves the general criterion. No priority is claimed for the positive-rise identity.
+
+\paragraph{Model assessments and review context.} Codex assisted with the derivation and drafting in the shared programme context. Any assessment of a rendered version must identify the exact PDF. Independent external review has not been established.
+
+\begin{thebibliography}{9}
+\bibitem{zhang} M. Zhang et al., video-based ergonomic risk assessment, \emph{New Zealand Journal of Health and Safety Practice} (2026), \href{https://doi.org/10.26686/nzjhsp.v3i4.11869}{doi:10.26686/nzjhsp.v3i4.11869}.
+\bibitem{reba} S. Hignett and L. McAtamney, Rapid Entire Body Assessment (REBA), \emph{Applied Ergonomics} 31 (2000), 201--205.
+\bibitem{segments} D. Baatar et al., Decomposition of integer matrices and multileaf collimator sequencing, \emph{Discrete Applied Mathematics} 152 (2005), 6--34.
+\bibitem{huang} Development and validation of a wearable inertial sensors-based automated system for assessing work-related musculoskeletal disorders in the workspace, \emph{IJERPH} 17 (2020), 6050, \href{https://doi.org/10.3390/ijerph17176050}{doi:10.3390/ijerph17176050}. Tables 2 and 3, transposed and analyzed here, published under CC BY 4.0.
+\end{thebibliography}
+\end{document}
