@@ -1,0 +1,178 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.90in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,hyperref}
+\hypersetup{hidelinks}\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
+\begin{document}
+\begin{center}{\LARGE\bfseries The price of an unbiased reliability score\\ after stopping each batch at its first success}\\[8pt]
+Lluis Eriksson \quad $\cdot$ \quad 20 November 2026
+\end{center}
+\begin{abstract}
+Suppose a benchmark logs independent batches of identical Bernoulli trials, terminating each batch at its first success or its own cap. Can these logs estimate the chance of at least $m$ successes in the full budget of $T$ trials, where $m$ is the number of batches? Among all nonnegative scores unbiased for every success probability, the smallest possible upper bound is $\binom{T-1}{m-1}$, regardless of how the budget is split. An explicit score attains this bound and minimizes variance at every success probability within the nonnegative unbiased class. Balancing the batch caps minimizes that variance at fixed full budget, while increasing the expected number of trials actually observed. With unrestricted batch-specific success probabilities a nonnegative unbiased score does not exist for $1<m<T$. At a fixed common cap, persistent variation in task difficulty can make the expected score exponentially small relative to the target, even when the target itself is rare. With two attempts per task the mean underestimates the target for unequal interior probabilities. For any fixed cap we derive the log rate at which calibration changes as task failures become sparse, including examples with a full target of one and a limiting mean score strictly below one.
+\end{abstract}
+\section*{The estimand and the log}
+In stochastic evaluation, passing at least once within a budget and passing repeatedly within that budget measure different kinds of reliability. Chen et al.\ [1] report a fixed-sample estimator of pass@$k$. Sherlock, Golightly and Lee [2] estimate a Bernoulli success probability under a success threshold and an iteration cap as a building block for a particle filter. Classical work treats unbiased estimation under binomial stopping plans [3]. Here the target is a binomial \emph{tail} and the observation consists of \emph{multiple} first-success logs. We make no claim about performance on a particular language model or about particle-filter likelihoods.
+
+Fix $m\ge1$ and positive integer caps $n_1,\ldots,n_m$, with $\sum n_i=T$. All proposed trials are independent Bernoulli with a common, unknown $p\in(0,1)$. Each log gives the first success position, or a failure flag after exhausting the cap. Write $q=1-p$. The target is
+\[
+ B_{T,m}(p)=\Pr\{\mathrm{Bin}(T,p)\ge m\}.
+\]
+Several successes in one full batch count toward this target. Merely checking whether every logged batch succeeded estimates a different probability. A score is a function of the logs and, optionally, auxiliary randomness independent of the trials. Its rule cannot depend on the unknown $p$.
+
+\textbf{A two-batch example.} Let both caps equal two. If either batch has no recorded success, every nonnegative unbiased score must be zero almost surely. With both successful, give score one if at least one succeeded immediately and three if both succeeded on their second draw. The expectation is $p^2(1+2q+3q^2)=B_{4,2}(p)$. On the last record the conditional mean score is forced to be three. Thus this simple setting already excludes an unbiased score taking values only in $[0,1]$.
+
+\newpage
+\section*{A sharp bound and its variance-minimizing construction}
+Let $A_l$ count integer vectors $(u_1,\ldots,u_m)$ with $0\le u_i<n_i$ and $\sum u_i=l$. Its generating polynomial is $\prod_i(1+x+\cdots+x^{n_i-1})$. Every $0\le l\le T-m$ is represented. Define $C_l=\binom{m+l-1}{m-1}$. When all batches record success, let $l$ be the total number of failures preceding their successes.
+
+\textbf{Theorem.} The score $Z=C_l/A_l$ on an all-success record, and $Z=0$ otherwise, is nonnegative and unbiased for $B_{T,m}$. It minimizes variance simultaneously for all $p$ among all nonnegative unbiased scores. The minimum essential upper bound over the same class is $C_{T-m}=\binom{T-1}{m-1}$. Its second moment is
+\[
+ E_p Z^2=p^m\sum_{l=0}^{T-m}\frac{C_l^2}{A_l}q^l .
+\]
+
+\textbf{Proof.} Condition away any auxiliary randomness. A record with $j$ successful batches and $l$ observed failures has probability $p^j q^l$. Its nonnegative conditional mean cannot be positive if $j<m$, since $B_{T,m}(p)=O(p^m)$ as $p\downarrow0$. A sum of nonnegative terms cannot cancel its lower-order contribution. Expressing the target by the time of the $m$th success in a full sequence gives
+\[
+ B_{T,m}(p)=p^m\sum_{l=0}^{T-m} C_l q^l.
+\]
+Each all-success record of total wait $l$ has probability $p^m q^l$. Equality for every $p$ equates coefficients after division by $p^m$. Hence the conditional means of the $A_l$ records sum to $C_l$. Equal weights $C_l/A_l$ at each $l$ minimize the sum of their squares, strictly unless the weights coincide. Extra randomized variation only increases the second moment. At $l=T-m$ there is just one record: each success arrived on its batch's last permitted trial. Its forced conditional mean is $C_{T-m}$. As $A_l\ge1$ and $C_l\le C_{T-m}$, the displayed score attains that bound. \hfill$\square$
+
+\textbf{Choosing the caps.} Among partitions of a fixed $T$ into $m$ positive integer caps, the balanced partition (caps differing by at most one) uniquely minimizes the optimum variance up to permutation, for every $0<p<1$. To see this, put $U_n=1+\cdots+x^{n-1}$, with constant term one. For $a\ge b+2$,
+\[
+ U_{a-1}U_{b+1}-U_a U_b=x^b+\cdots+x^{a-2}.
+\]
+Multiplying by the other factors preserves coefficientwise domination and at least one strict increase. Balancing repeatedly thus increases the $A_l$ and strictly reduces the second moment. The mean is unchanged. The worst required score is unchanged too. As an illustration, three batches sharing twelve trials require a possible score of at least 55, for every allocation.
+
+The expected number of observed trials is $\sum_i(1-q^{n_i})/p$. Because this summand has decreasing increments, the same balancing step \emph{increases} expected work. The optimality statement holds at fixed maximum budget and by itself does not optimize the variance--cost product.
+
+\newpage
+\section*{Heterogeneity and a bounded reporting alternative}
+If a separate arbitrary probability $p_i$ governs each batch, the natural full-budget target is the probability that $\sum_i\mathrm{Bin}(n_i,p_i)\ge m$ for independent summands. Suppose $1<m<T$. Some batch has capacity at least two; select a different batch $j$. Its complement has at least $m$ trials. On the homogeneous submodel the theorem forces zero conditional mean whenever fewer than $m$ batches succeed. Let $p_j\downarrow0$ with every other probability fixed strictly between zero and one. The expected score tends to zero: only the finitely many all-success records contribute, each has finite conditional mean and each requires success in batch $j$. The full-budget target tends to a strictly positive probability because the other batches alone can supply $m$ successes. This proves impossibility even without an upper bound. A shared success probability conditional on a task is sufficient for the homogeneous result; arbitrary distinct probabilities across batches are a different model.
+
+There is also a direct criterion for reporting any full-horizon threshold $1\le h\le T$ on the unit interval. A bounded score based on a partial log can be unbiased for $\Pr\{\mathrm{Bin}(T,p)\ge h\}$ for every $p$ only if the log already determines the full threshold event on every possible completion. Indeed, the conditional means of the score given total success count $k$ are its degree-$T$ Bernstein coefficients. The polynomials $\binom{T}{k}p^k(1-p)^{T-k}$ are linearly independent (divide by $q^T$). The coefficients must equal $\mathbf 1\{k\ge h\}$. Since the score lies in $[0,1]$, it must equal that indicator almost surely for every complete sequence. Conversely, a determined event supplies its own bounded score. This argument allows auxiliary randomness independent of the trials.
+
+This criterion specifies a repair for an existing incomplete record. If $s$ successes are known and $u$ trials are unobserved, the event is decided precisely when $s\ge h$ or $s+u<h$. Otherwise reveal missing trials one at a time, stopping at the first decision. Every still-undecided log admits completions on opposite sides of the threshold, so an unbiased unit-interval procedure confined to these $T$ trial positions cannot terminate earlier on such a log. This is a limit on reporting under the specified data model. It does not require an experimenter to collect extra data when estimation with bias or a different target is acceptable.
+
+\newpage
+\section*{A pooled target near one can receive a mean score near zero}
+Suppose the cap is $n\ge2$ in each of $m$ batches. The trials remain independent, but batch $i$ has its own success probability $p_i$. Let $S$ be the number of successes in all $mn$ potential trials. Write $\bar p$ and $g$ for the arithmetic and geometric means of the $p_i$, respectively, and $a_n=(n-1)^{n-1}/n^n$.
+
+\textbf{Theorem.} For fixed $n$, if $\liminf_{m\to\infty} n\bar p>1$ and $\limsup_{m\to\infty}g<a_n$, then $\Pr(S\ge m)\to1$ and $\mathbb E Z\to0$. The deficit tends to its maximum of one. No batch need have probability zero or one.
+
+\textbf{Proof.} Since $\mathbb E S=mn\bar p$ and $\operatorname{Var}S\le mn/4$, Chebyshev bounds $\Pr(S<m)$ by $n/(4m\delta^2)$ whenever $n\bar p\ge1+\delta$. Each all-success log has probability at most $\prod_i p_i$. Summing the calibrated weights over logs gives
+\[
+\mathbb E Z\le\binom{mn}{m}\prod_i p_i\le(g/a_n)^m .
+\]
+The last inequality uses the binomial probability of exactly $m$ successes at parameter $1/n$, which is at most one. Both claims follow. \hfill$\square$
+
+\textbf{A finite example.} Take three attempts per batch and an even number of batches, with half at $p_i=3/4$ and half at $p_i=1/50$. The expected full count is $231m/200$. For $z=3/4$, the event $S<m$ implies $z^S\ge z^m$. Factoring $\mathbb E z^S$ across the trials gives
+\[
+\Pr(S<m)\le\left[\frac{16}{9}\left(\frac{2587}{3200}\right)^3\right]^{m/2},
+\qquad \mathbb E Z\le(2187/3200)^{m/2}.
+\]
+With 300 batches, the full probability exceeds $0.999$ and the expected score is below $10^{-24}$. These numbers describe independent synthetic trials under the stated probabilities. The pooled target can be met by repeated successes on easier tasks, while the stopped score vanishes whenever one task exhausts its cap.
+
+\textbf{A finite sign certificate.} For positive $p_i$, put $C=\binom{mn}{m}$, $h=\binom{n}{2}n^{m-2}$ and $t=\max p_i$. The full probability exceeds the mean score if
+\[
+(1-t)^{mn-m}\left(1+\frac{h}{C}\sum_{i<j}\frac{(p_i-p_j)^2}{p_i p_j}\right)>1 .
+\]
+Indeed, for each $m$-subset of the labelled trials divide the product of its success probabilities by $\prod_i p_i$ and call it $v$. The sum of $\log v$ across subsets is zero by symmetry. In the sum of $v-1-\log v\ge0$ retain subsets taking two trials from batch $i$, none from batch $j$, and one from every other batch. Each ordered pair occurs $h$ times. Pairing reverse orientations gives precisely the displayed squared contrasts. Finally, the probability of exactly $m$ successes is at least $(1-t)^{mn-m}$ times the sum of subset products. Compare it with the bound $\mathbb E Z\le C\prod_i p_i$. The sufficient condition leaves the general sign at intermediate probabilities open.
+
+
+\newpage
+\section*{Persistent differences between tasks}
+Suppose $n\ge2$ is fixed, $m$ varies, and $a\le p_i\le b$ with $0<a\le b<1$. Write $P_m=\Pr(S\ge m)$ and $V_m=m^{-1}\sum_i(p_i-\bar p)^2$. For some $c=c(n,a,b)>0$,
+\[
+\frac{\mathbb E Z}{P_m}\le(mn+1)^5\exp(-cmV_m).
+\]
+Consequently two different fixed task probabilities in fixed positive proportions already force the relative score to zero. This applies even when the full target is rare. At $m=300$, $n=3$, with half the probabilities $0.49$ and half $0.51$, exact integer convolution places $\mathbb E Z/P_m$ between $0.922929152525834$ and $0.922929152525836$. The probabilities in this example are synthetic.
+
+Here is the coefficient argument. Put $U(x)=1+x+\cdots+x^{n-1}$, $q_i=1-p_i$, and $L=m(n-1)$. For an interior total wait $s$, choose $x>0$ such that $xU'(x)/U(x)=s/m$, and put $v=s/(s+m)$. A sum of $m$ independent variables with weights proportional to $x^j$, $0\le j<n$, has mean $s$ and a log-concave distribution by the convolution theorem [4]. Its mass at $s$ is at least $(L+1)^{-2}$: each closed half interval at the integer mean has mass at least $1/(L+1)$ by the integer gap, and unimodality bounds the central atom from below. Apply this lower bound to $[z^s]U(z)^m$ and the generating-function upper bounds at $x/v$ and $v$ to $[z^s]\prod_i U(q_i z)$ and $\binom{m+s-1}{m-1}$, respectively. The contribution to $\mathbb E Z$ is at most $(L+1)^2\prod_i F_v(q_i)/F_v(v)$, where $F_v(q)=(1-q)U(xq/v)$. Its unique maximum is at $q=v$: $F_v'(v)=0$ and $F_v'(q)/q^{n-1}$ has strictly negative derivative. The limiting normalized profiles at the two ends are $1-q^n$ and $(1-q)q^{n-1}/[(1-v)v^{n-1}]$ with $v=(n-1)/n$ for the latter. They also bound the endpoint waits directly. On compact interior $q$-intervals the strict maximum and negative curvature on the diagonal give $F_v(q)/F_v(v)\le\exp[-c_0(q-v)^2]$ uniformly (see the supplementary proof for endpoint details). Sum over the waits.
+
+If $\mathbb ES\ge m$, then $P_m\ge1/(mn+1)$. Otherwise tilt all trial odds by the common factor $\lambda>1$ that gives mean $m$. This factor is bounded in terms of $a,n$, so the tilted probabilities stay in a compact interior interval and their variance across tasks is at least a fixed positive multiple of $V_m$. The likelihood ratio is proportional to $\lambda^{-S}$, while $Z>0$ implies $S\ge m$. Thus $\mathbb EZ/P_m\le\mathbb E_\lambda Z/\Pr_\lambda(S=m)$, and the tilted atom is at least $(mn+1)^{-2}$ by the same log-concavity argument. This proves the stated bound. It leaves open the sign for arbitrary finite designs.
+
+\newpage
+\section*{An exact sign at two attempts}
+
+With two attempts per task the direction of bias can be decided at every finite sample size. If $m\ge2$ and $p_i\in[0,1]$, then
+\[
+\Pr(S\ge m)-\mathbb EZ \ \ge\
+\sum_{i<j}(p_i-p_j)^2\prod_{\ell\ne i,j}2p_\ell(1-p_\ell).
+\]
+Thus for interior probabilities the mean underestimates the target strictly whenever any two tasks differ. For three tasks with probabilities $1/4,1/2,3/4$, direct enumeration gives a deficit of $57/256$. The contributions from exactly three and four successes are $11/64$ and $13/256$, respectively; all remaining contributions vanish.
+
+\textbf{Proof.} Write $\theta_i=p_i/(1-p_i)$ for interior probabilities and remove the common factor $D=\prod_i(1-p_i)^2$ from all outcome masses. For each total $k\ge m$, group labelled full outcomes by their unordered count profile $r$. Write $M_r$ for the mean of the monomial $\prod_i\theta_i^{r_i}$ over permutations of its exponents. A profile representing $N_r$ outcomes contributes $N_r M_r$ to the mass of the stratum, with $\sum_r N_r=\binom{2m}{k}$.
+
+A nonzero stopped score requires all tasks to hit, so its only possible profile $\beta$ at fixed $k$ has $k-m$ twos and all remaining entries one. Task symmetry implies its score-weighted mass is a constant times $M_\beta$. Setting all odds equal to $t$ and comparing coefficients of $t^k$ in the homogeneous unbiasedness identity after division by $D$ gives the constant $\binom{2m}{k}$. Every other profile balances to $\beta$ by replacing pairs $(2,0)$ by $(1,1)$. Each replacement decreases the symmetric mean weakly since $(x^2+y^2)/2-xy=(x-y)^2/2$ on averaging the two assignments to those slots [5]. Hence the stratum deficit is nonnegative. For $k<m$ both contributions vanish.
+
+At $k=m$, keep just the profile with one double and one empty task. Each ordered choice of the doubled and empty slots occurs $2^{m-2}$ times. Pairing the choices $(i,j)$ and $(j,i)$ gives the contribution $D\,2^{m-2}\sum_{i<j}(\theta_i-\theta_j)^2\prod_{\ell\ne i,j}\theta_\ell$, which equals the displayed bound. Continuity covers the closed cube. With higher caps the all-hit profile need not be unique; the same comparison applies at $k=m$ and $k=m+1$, but leaves the general sign open.
+
+\newpage
+\section*{Calibration when per-task failures become sparse}
+Fix a common cap $n\ge2$ and let $m\to\infty$. Let $q_i=1-p_i$, let $P$ be the full probability of at least $m$ successes, and define
+\[
+ B=\prod_i(1-q_i^n),\quad H(x)=\sum_{j=0}^{n-1}x^j,\quad
+ t=\frac1m\sum_i \frac{q_i H'(q_i)}{H(q_i)}.
+\]
+Here $B$ is the all-hit probability. To interpret $t$, introduce independent auxiliary waits $U_i$ with mass $q_i^j/H(q_i)$ at $j=0,\ldots,n-1$. These are the waits conditional on each task hitting when that event has positive probability. At $q_i=1$ the auxiliary law is defined by continuity. With $W=\sum_i U_i$ we have $EW=mt$ and the exact identity $EZ=B\,E w_W$, where $w_s=C_s/A_s$.
+
+\textbf{Dilute-limit theorem.} Suppose $m^{-1}\sum_i q_i\to0$. Individual tasks may remain difficult. Then $P\to1$ and, for the auxiliary expectation,
+\[
+ \log E w_W = mt^n+o(1+mt^n).
+\]
+Consequently, if $q_i=\epsilon_m\theta_i$ with $\epsilon_m\to0$, bounded nonnegative $\theta_i$, and empirical first and $n$-th moments tending to $u$ and $v$, then
+\[
+ \log(EZ/P)=-m\epsilon_m^n(v-u^n)+o(1+m\epsilon_m^n).
+\]
+If $v>u^n$, this gives three different outcomes. When $m\epsilon_m^n\to0$ the ratio tends to one. When it tends to $\lambda\in(0,\infty)$ the ratio tends to $\exp[-\lambda(v-u^n)]$. When it diverges, the ratio tends to zero with log rate $-(v-u^n)m\epsilon_m^n$, even for arbitrarily slow divergence. When $v=u^n$, a smaller-order discrepancy can require a finer analysis.
+
+\textbf{An exact target and a nonunit limit.} For even $m$ let half the tasks never fail and half have $q_i=2\epsilon_m$. The certain tasks alone guarantee $P=1$. At $\epsilon_m=m^{-1/n}$ the score tends in mean to $\exp(1-2^{n-1})$. This gives $e^{-1}$ for two attempts and $e^{-3}$ for three. At $\epsilon_m=(\log\log m/m)^{1/n}$ the log mean instead equals $-(2^{n-1}-1+o(1))\log\log m$. These are independent-trial examples. The same task-specific generators and stopping policy would need validation before using this formula with real benchmark logs.
+
+\textbf{Where the effect comes from.} A given all-hit log with total wait $s$ receives the reciprocal of the probability that a uniform weak composition of $s$ into $m$ parts respects the cap. The threshold for a component of fixed size in random weak compositions has been studied by Bevan and Threlfall [6]. The calculation below transfers a fixed-total comparison to an expectation with heterogeneous random waits. This last step matters because the weights can be very large on rare records.
+
+\newpage
+\section*{Proof of the dilute-limit theorem}
+\textbf{1. Two finite comparisons.} The weights $w_s$ increase weakly on $0\le s\le m(n-1)$. Starting with all parts zero, add a unit to part $i$ with probability $(1+r_i)/(m+s)$ at composition $r$. At the next total the incoming mass is the previous common mass times $(s+1)/(m+s)$, by summing over predecessors of each composition. Thus every level is uniform, and the event that all parts remain below $n$ decreases along each path.
+
+For a reference failure probability $0<z<1$, let $G$ be the sum of $m$ independent geometric waits with masses $(1-z)z^j$, $j\ge0$. Let $Y$ sum $m$ independent waits with masses proportional to $z^j$ restricted to $j<n$. For every feasible $s$,
+\[
+ \Pr(G\le s)\ \le\ (1-z^n)^m w_s,\qquad
+ (1-z^n)^m w_s\Pr(Y\ge s)\ \le\ 1 .
+\]
+Indeed, $(1-z^n)^m E[w_Y{\bf1}_{Y=j}]=\Pr(G=j)$ at each feasible $j$. Sum on either side of $s$ and use monotonicity.
+
+\textbf{2. Deterministic total.} If $s\to\infty$ and $s/m\to0$, write $h=m(s/m)^n$. For fixed $0<\delta<1$ set $z_\pm=(1\pm\delta)s/m$. The mean of $G$ at $z_-$ is $(1-\delta+o(1))s$ and the mean of $Y$ at $z_+$ is $(1+\delta+o(1))s$. Both variances are $O_n(s)$, by the geometric variance formula and the finite power series for $Y$. Chebyshev's inequality gives $\Pr_{z_-}(G\le s),\Pr_{z_+}(Y\ge s)\to1$. The two comparisons bound $\log w_s$ below and above by $(1\mp\delta)^n h+o(1+h)$, respectively. Taking $\delta\downarrow0$ gives $\log w_s=h+o(1+h)$. For bounded $s$ we have $w_s\to1$: a union bound on a specified part reaching $n$ in a uniform composition is at most $m(s)_n/(s+m-1)_n=O(m^{1-n})$, with falling factorials and zero if $s<n$.
+
+\textbf{3. Random total.} Put $M=mt$, $h_0=mt^n$. The elementary bounds $q_i/n\le EU_i\le C_nq_i$ give $t\to0$. If $M\to\infty$, bounded independent waits satisfy
+\[
+ \Pr(|W-M|>\delta M)\le 2e^{-c_{\delta,n}M}.
+\]
+For example, apply exponential Markov bounds with a small positive or negative exponent, using $EU_i^2\le(n-1)EU_i$ to bound the Taylor remainder. Also $w_s\le D_n^s$ for $D_n=2^{2n}$: for $s\le m/2$ the capped count includes $\binom ms$ zero-one compositions and $C_s/\binom ms\le3^s$; otherwise $C_s\le2^{mn}$. Thus, for sufficiently large fixed $K$,
+\[
+ E[w_W{\bf1}_{W>KM}]\le e^{-KM} E[(eD_n)^W]\le e^{-M}.
+\]
+The last bound uses $\log E(eD_n)^{U_i}\le C'_n EU_i$, since $0\le U_i\le n-1$.
+
+\newpage
+For $W$ between $(1+\delta)M$ and $KM$ the expectation is at most $w_{\lceil KM\rceil}\,2e^{-c_{\delta,n}M}=o(1)$: step 2 gives $\log w_{\lceil KM\rceil}=O(1+h_0)=o(M)$. With probability tending to one, $W$ lies between $(1-\delta)M$ and $(1+\delta)M$. Monotonicity and step 2 at these endpoints (rounded down and up) bound $\log Ew_W$ between $(1-\delta)^n h_0+o(1+h_0)$ and $(1+\delta)^n h_0+o(1+h_0)$. Sending $\delta$ to zero proves the claim. If $M$ is bounded, the weights tend to one on every fixed finite range and the bound with $eD_n$ makes the weighted tails uniformly small. Then $Ew_W\to1$ and $h_0\to0$. Taking subsequences covers oscillating $M$.
+
+The expected count of full failures is $n\sum q_i=o(m)$. Markov's inequality gives $P\to1$. In the bounded-profile model, $t=\epsilon_m(m^{-1}\sum\theta_i)+O_n(\epsilon_m^2)$ with a constant depending on the profile bound, and $\log B=-\sum q_i^n+O(\sum q_i^{2n})$. Substitution gives the stated rate.
+
+\textbf{Finite checks and interpretation.} The accompanying audit counts capped compositions by polynomial multiplication and checks both finite comparisons in exact rational arithmetic at caps two through six. The proof covers arbitrary fixed caps and task counts tending to infinity. The finite sign question at higher caps for all task counts and all probability vectors remains open. The analysis concerns a pooled full-budget success count. The probability of solving each task at least once, averaged over tasks, has a different denominator and interpretation.
+
+
+\textbf{Reproduction and scope.} The accompanying code additionally convolves the full and stopped count distributions for the two-difficulty example through 300 batches. The baseline Python code checks finite identities using exact fractions, enumerates cap partitions through $T=18$, and compares complete trajectories through $T=9$. With $p=1/2$ and caps $(2,2)$, the target is $11/16$. The score takes values zero, one and three. The formulae apply to independent attempts; correlation between attempts would require a different sampling model.
+
+\textbf{Model assessments and review context.} OpenAI Codex assisted with the derivation, verification and writing. The author operates AIRR. Any assessment of the frozen PDF is recorded with its hash and the evaluator's participation.
+
+\small
+[1] M. Chen et al. Evaluating Large Language Models Trained on Code. 2021. \href{https://arxiv.org/abs/2107.03374}{arXiv:2107.03374}.
+
+[2] C. Sherlock, A. Golightly and A. Lee. Robust, Partially Alive Particle Metropolis-Hastings via The Frankenfilter. \emph{Journal of Computational and Graphical Statistics} (2026). \href{https://doi.org/10.1080/10618600.2026.2732158}{doi:10.1080/10618600.2026.2732158}.
+
+[3] M. A. Girshick, F. Mosteller and L. J. Savage. Unbiased estimates for certain binomial sampling problems with applications. \emph{Annals of Mathematical Statistics} 17 (1946), 13--23. \href{https://doi.org/10.1214/aoms/1177731018}{doi:10.1214/aoms/1177731018}.
+
+[4] O. Johnson and C. Goldschmidt. Preservation of log-concavity on summation. \emph{ESAIM: Probability and Statistics} 10 (2006), 206--215. \href{https://doi.org/10.1051/ps:2006008}{doi:10.1051/ps:2006008}.
+
+[5] R. F. Muirhead. Some methods applicable to identities and inequalities of symmetric algebraic functions of $n$ letters. \emph{Proc. Edinburgh Math. Soc.} 21, 144--157. \href{https://doi.org/10.1017/S001309150003460X}{doi:10.1017/S001309150003460X}.
+[6] D. Bevan and D. Threlfall. On the evolution of random integer compositions. \emph{Electronic Journal of Combinatorics} 32(1) (2025), P1.21. \href{https://doi.org/10.37236/13010}{doi:10.37236/13010}.
+\end{document}
