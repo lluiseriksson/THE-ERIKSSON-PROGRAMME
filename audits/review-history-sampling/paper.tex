@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs,url}
+\usepackage[margin=0.9in]{geometry}
+\title{Which two reviews to read?\\ Sharp coverage bounds for documented preregistration checks}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+In 201 public PLOS review histories coded by Syed, we compare two ways of reading two positions per article. Sampling two positions uniformly detects a written comparison with the preregistration in 5.96% of articles in expectation. Requiring the editor and sampling a reviewer yields 5.12%. The sign remains identifiable from article panel sizes, comparison counts and the total of two positive editor positions, even if every editor-to-article link is removed. We give attainable bounds and an exact sensitivity calculation for article-level recoding. These are retrospective detection probabilities for the coded sample.
+\end{abstract}
+\section{Sampling existing reports}
+A review-history audit may have time to inspect two positions per article. Should it reserve one for the editor? Syed [1] coded public review histories of preregistered articles in the PLOS family. We use those codes to determine how often two sampling rules recover a written comparison of a preregistration with its manuscript. A position is an editor or reviewer slot in the source coding. A mention of preregistration alone does not qualify.
+
+We applied the original selection rules and checked article keys, numbers of positions and positive flags against the working file [2]. Among 201 articles, 23 of 689 positions documented a comparison. Seventeen articles had one positive position and three had two. Two positives were editors. An auditor selecting one position per article uniformly would detect a comparison in $673/21105$ (3.19\%) of articles in expectation. Choosing uniformly among all 689 positions gives $23/689$ (3.34\%) and gives articles with more positions greater weight.
+
+Write $n$ for the panel size, $y$ for its positive positions, and $e$ for the editor flag. With $k$ uniform draws without replacement, detection has probability
+\[
+ U(n,y,k)=1-\binom{n-y}{h}/\binom{n}{h},\qquad h=\min(n,k).
+\]
+Here $\binom{a}{b}=0$ when $a<b$. Reserving a slot for the editor gives probability one if $e=1$, and $U(n-1,y,k-1)$ otherwise. The table gives the mean over articles.
+\begin{center}\small
+\begin{tabular}{lrrr}
+\toprule Positions read & Uniform & Editor included & Difference (points)\\\midrule
+1 & 3.19\% & 1.00\% & $-2.19$\\
+2 & 5.96\% & 5.12\% & $-0.85$\\
+3 & 8.32\% & 8.08\% & $-0.25$\\
+All & 9.95\% & 9.95\% & $0$\\\bottomrule
+\end{tabular}
+\end{center}
+At budget two the editor rule increases coverage for two articles, decreases it for 16 and gives the same probability for 183. The observed difference is $-143/16884$. All histories remain fixed.
+\newpage
+\section{What if editor-to-article links are unavailable?}
+Retain each article's $(n,y)$ and the total number of positive editor positions. Although the exact contrast depends on which editors are positive, its sign can be determined from these margins.
+
+\paragraph{Sharp bounds.} Every observed panel has $n\ge2$. Articles with $y=0$ or $y=n$ force the editor flag and give equal coverage under both rules. For $0<y<n$, if the editor is negative, editor-plus-reviewer coverage is $y/(n-1)$. Moving one positive flag from a reviewer to the editor increases this to one. Uniform coverage is invariant, so the change in the two-policy difference is
+\[
+ g(n,y)=1-y/(n-1).
+\]
+Begin with all mutable editors negative. Subtract any forced positives from the specified total, leaving $j$ assignments. Add the $j$ smallest gains to the baseline sum for the lower bound, or the $j$ largest for the upper bound, then divide by the article count. Both extremes are attained: each selected article assigns $y-1$ positives to reviewers and each unselected article assigns $y$. These assignments respect every specified margin.
+
+At two positive editors the sharp difference interval is $[-241/16884,-173/28140]$, or approximately $[-1.43,-0.61]$ percentage points. Four is the first positive-editor total that permits a strictly positive mean contrast; nine is the first that forces one. A separate dynamic program reproduced both extrema at all 21 possible totals.
+
+\paragraph{Sensitivity to coding errors.} Keep panel sizes fixed and allow arbitrary changes to the binary comparison flags in an affected article. For each article enumerate its possible $(y,e)$ and take the greatest increase in the difference. With $m$ affected articles the maximal increase is the sum of the $m$ largest gains because changes across histories are unrestricted in this error model. Before dividing by 201 the deficit is $143/84$. The two largest gains sum to $49/30$, which falls short. The three largest sum to $143/60$, which suffices to reverse the direction. This bound quantifies sensitivity to hypothetical recoding.
+
+\paragraph{Scope and reproduction.} Direct subset enumeration checked all seven budgets in every history. The scripts and aggregate results are in the programme repository under \texttt{audits/review-history-sampling}. The sample was selected for available PLOS review histories and preregistered studies. The results concern what a reader could retrieve from the coded public record. They do not establish private reviewer behavior, the quality of a comparison, or how reviewers would respond to a change in editorial policy.
+
+\paragraph{Model assessments and review context.} Codex contributed to the analysis and writing. Any assessment of the frozen PDF is retained separately with the model identity, involvement and artifact hash.
+\par\small\noindent [1] M. Syed, \emph{Some Data Indicating That Editors and Reviewers Do Not Check Preregistrations During the Review Process}, Journal of Trial and Error. DOI \url{10.36850/e5ce-4cc5}.
+\par\noindent [2] M. Syed, primary data and analysis scripts, Open Science Framework, \url{https://osf.io/nmhbf/}. Both CSV files are verified by SHA-256.
+\end{document}
