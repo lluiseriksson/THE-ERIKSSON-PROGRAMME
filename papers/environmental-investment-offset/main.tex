@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern,amsmath,booktabs}
-\usepackage[margin=0.95in]{geometry}
+\usepackage[a4paper,top=0.78in,bottom=0.8in,left=0.75in,right=0.75in]{geometry}
 \usepackage[hidelinks]{hyperref}
 \title{How precisely do published regressions measure the reallocation of green investment?}
 \author{Lluis Eriksson}
@@ -77,7 +77,7 @@ The green coefficients have opposite signs. Their sum is $0.45$. With standard e
 \[
  0.45\ \pm\ 1.96(s_1+s_2).
 \]
-It includes zero even before allowing for rounding. At the displayed values, a zero covariance would give a positive lower endpoint, whereas a correlation of one gives a negative lower endpoint. The assumed cross-horizon covariance can thus change a two-sided test of whether the rebound exceeded the initial decline. This concerns inference on the sum of two regression coefficients.
+Allowing each coefficient and absolute $t$ to vary by $0.005$ gives an outer interval of $[-0.137,1.034]$ rounded outwards. It includes zero even before allowing for rounding. At the displayed values, a zero covariance would give a positive lower endpoint, whereas a correlation of one gives a negative lower endpoint. The assumed cross-horizon covariance can thus change a two-sided test of whether the rebound exceeded the initial decline. This concerns inference on the sum of two regression coefficients.
 
 Equation (3) fits each lag separately while holding the outcome at $t+1$ and the controls at $t$. At a two-year horizon those controls are measured one year after the risk observation. Figure 3 labels different sample sizes across horizons. A common-cohort estimate of accumulated cash spending would additionally require aligned observations, a common asset denominator or explicit asset weights, and a consistent treatment of controls relative to the shock. A reversal of the fitted flow is evidence about timing. It does not by itself identify the amount recovered by the original firms.
 
