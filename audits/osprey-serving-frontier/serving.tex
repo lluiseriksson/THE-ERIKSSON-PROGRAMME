@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,booktabs}
+\usepackage[hidelinks]{hyperref}
+\title{When does speculative-decoding pretraining pay back?\\A workload-sensitive frontier for Osprey}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A throughput benchmark reports tokens per second within tasks, while a serving operator often knows only the proportions of incoming requests. We derive the smallest saving per output token when request shares may shift in total variation and mean response lengths may differ by a bounded factor. One extremal request distribution works for every payback horizon. Applied to five MiniMax-M2.5 workloads in Bie et al., equal request shares permit a finite robust payback precisely when the length ratio is below 12.976 at the displayed rates. Allowing 0.20 total variation in request shares lowers this boundary to 3.684. These are conditional deployment scenarios computed from published measurements.
+\end{abstract}
+\section{From benchmark rates to time saved}
+Bie et al.\ report 187.1 and 219.8 tokens/s as means across five benchmark rates for EAGLE-3 and Osprey. They estimate that about 3.5 billion generated tokens can cover a 3,040 H100-hour pretraining investment \cite{osprey}. The question here is what token volume suffices for \emph{every} workload satisfying explicit restrictions on request shares and output lengths.
+
+Let $a_i,b_i>0$ be the measured rates for EAGLE-3 and Osprey on task $i$, and $d_i=1/a_i-1/b_i$ the seconds saved by Osprey per output token there. Assume sequential batches, stable within-task rates, and a common output volume for the two systems. Let $q_i$ be the fraction of requests and $\ell_i$ the mean output tokens per request of type $i$. Then the saving per token is
+\[
+  S(q,\ell)=\frac{\sum_i q_i\ell_i d_i}{\sum_i q_i\ell_i}.
+\]
+The released MiniMax script selects 64 prompts per benchmark at batch size one. Its metric sums completion tokens across answer keys and divides by elapsed batch time. The summary writer also records mean output length, question count and latency. We found the writer but no corresponding run summary in the pinned source tree \cite{code}. Equal numbers of prompts alone do not recover token shares. Longer outputs can also change the measured rate through prefill and scheduling; our counterfactual holds the rates fixed. Related serving research explicitly models load-dependent performance \cite{goodput}.
+
+\newpage
+\section{A sharp robust frontier}
+Fix a nominal distribution $p$, a radius $\rho$ with $\frac12\|q-p\|_1\le\rho$, and a common bound $K\ge1$ on the ratio of longest to shortest task mean. By scale invariance we may take $1\le\ell_i\le K$. Sort the $d_i$ in increasing order. Form $q^*$ by moving up to $\rho$ mass from the highest occupied indices, successively, to the first index until it is full. Ties may be ordered arbitrarily.
+
+\paragraph{Proposition.} The minimum of $S$ is attained at $q^*$. Its value $m$ is the least of the $n+1$ ratios obtained by setting lengths equal to $K$ on an initial segment of the sorted tasks and to 1 elsewhere. For a target saving $z$, define
+\[
+ A(z)=\sum_i q_i^*(d_i-z)_+,\qquad
+ B(z)=\sum_i q_i^*(z-d_i)_+ .
+\]
+A saving of at least $z$ per token is guaranteed if and only if $A(z)-KB(z)\ge0$.
+
+\paragraph{Proof.} Multiplying $S-z$ by its strictly positive denominator reduces its sign to that of $\sum_i q_i\ell_i(d_i-z)$. Minimizing coordinatewise over lengths gives the coefficient $g_z(d_i)=\min(d_i-z,K(d_i-z))$. It is nondecreasing in $d_i$ for every $z$. For every prefix of the ordered tasks, the mass under any admissible $q$ is bounded by the smaller of one and its original mass plus $\rho$. The construction of $q^*$ attains these bounds simultaneously for every nonempty prefix. Summation by parts thus minimizes the expectation of every nondecreasing coefficient vector at $q^*$. Substitution gives $A(z)-KB(z)$. The feasible set is compact; at the attained minimum $m$ the smallest transformed objective is zero. An optimal length vector there takes value $K$ below $m$ and 1 above it. At ties either endpoint works. This proves the finite search and the criterion. \hfill$\square$
+
+For $B(0)>0$ the boundary is $K_{\rm crit}=A(0)/B(0)$. At equality a zero-saving mix is attainable. When $m>0$, a training investment of $H$ device-hours is recovered by $3600H/(Gm)$ output tokens on $G$ equally priced serving devices. With different hourly prices replace $H$ by its cost in serving-device hours. When $m\le0$ no finite volume guarantees payback of a positive investment. If $B(0)=0$, the sign follows directly from $A(0)$.
+
+Ratio tests and optimization over total-variation balls have established precedents \cite{dinkel,tv}. Here a common length-ratio bound preserves the ordering of task coefficients for every horizon. This step would fail with arbitrary task-specific caps. For $d=(0,1,2)$, $z=1.5$ and upper length bounds $(1,10,1)$, the first two minimized coefficients are $-1.5$ and $-5$. Moving requests into the first task would no longer minimize the transformed objective.
+
+\newpage
+\section{Five workloads on MiniMax-M2.5}
+We use the Table 2 rates in \cite{osprey}, in tokens/s, with EAGLE-3 first: HumanEval $(184.4,243.2)$, MATH-500 $(206.2,250.0)$, LiveCodeBench $(176.2,249.1)$, MT-Bench $(214.4,201.6)$ and Common.-Eval $(154.3,154.8)$. MT-Bench has negative saving. We start from equal request shares and use the paper's four-device scenario and the 3,040 device-hour investment. Table entries are sufficient volumes in billions of output tokens, rounded for display. A dash denotes absence of a finite uniform guarantee.
+\begin{center}
+\begin{tabular}{rrrrrr}\toprule
+Request TV radius & $K_{\rm crit}$ & $K=1$ & $K=2$ & $K=4$ & $K=8$\\\midrule
+0.00 &12.976&3.86&5.85&11.06&32.09\\
+0.10 &6.781&5.33&9.57&26.34&---\\
+0.20 &3.684&8.61&21.50&---&---\\
+0.30 &2.061&17.41&451.21&---&---\\
+0.40 &0.980&---&---&---&---\\\bottomrule
+\end{tabular}
+\end{center}
+At radius 0.20 the extremal request mix shifts LiveCodeBench's entire share to MT-Bench. With $K=4$, making those MT-Bench responses four times as long as the others already yields an adverse token mix. At equal lengths, the exact distance to a tie from equal shares is 0.397782: move the entire LiveCodeBench share and a further 0.197782 from HumanEval to MT-Bench. This follows by the same descending transfer with $K=1$. With equal shares the displayed-rate length boundary of 12.9759 ranges from 12.8386 to 13.1154 if each rate independently varies by half its last digit. Monotonicity in each rate puts the extremes at opposite corners; this quantifies rounding only.
+
+The verifier checks the table by a second computation. It partitions the request simplex at $q_i=p_i$, enumerates vertices after intersecting each resulting box with the variation bound, and evaluates all 32 endpoint length vectors. Linear-fractional extrema over each block occur at vertices by the positive-denominator test. Across the 25 panels it checks 28,000 vertex--length combinations. The benchmark does not estimate the actual deployment mix, the range of mean lengths or the sampling variation of each rate. Hardware cost, queuing, batch changes and performance changes with response length can move these frontiers.
+
+\paragraph{Model assessments and review context.} OpenAI Codex assisted in the analysis and writing. Exact-PDF assessments are recorded with the file hash and reviewer involvement. The author administers AIRR. No independent peer review is documented.
+
+\small\begin{thebibliography}{5}\setlength{\itemsep}{0pt}
+\bibitem{osprey} F. Bie et al. Osprey: Target-agnostic pre-training makes stronger drafters in speculative decoding. \href{https://aclanthology.org/2026.emnlp-main.1641/}{EMNLP 2026}, Table 2 and Sec.~4.3.4.
+\bibitem{code} LeanModels. \href{https://github.com/LeanModels/Osprey/tree/f62cd48844b03f3cb929543da25c15756e1f1095}{Osprey implementation}, commit \texttt{f62cd488}.
+\bibitem{goodput} \href{https://arxiv.org/abs/2406.14066}{Optimizing speculative decoding for serving large language models using goodput}, 2024.
+\bibitem{dinkel} W. Dinkelbach. On nonlinear fractional programming. \emph{Management Science} 13 (1967), 492--498.
+\bibitem{tv} C. D. Charalambous et al. \href{https://arxiv.org/abs/1301.4763}{Extremum problems with total variation distance and their applications}, 2013 preprint.
+\end{thebibliography}
+\end{document}
