@@ -1,0 +1,38 @@
+{
+  "source": "https://arxiv.org/src/2610.39621v2",
+  "source_sha256": "4059c2d5e84903cea2a811a53d1aa58a3ee4b4d22e8a308b7ba08364b684965b",
+  "files": [
+    {
+      "name": "00README.json",
+      "bytes": 217
+    },
+    {
+      "name": "arxiv.sty",
+      "bytes": 7641
+    },
+    {
+      "name": "arxiv_v2.tex",
+      "bytes": 65046
+    },
+    {
+      "name": "bibliography.bib",
+      "bytes": 32673
+    },
+    {
+      "name": "figures/prediction_time_n_energy_facets_2000out.pdf",
+      "bytes": 66575
+    },
+    {
+      "name": "figures/prediction_time_n_energy_best_match.pdf",
+      "bytes": 50216
+    },
+    {
+      "name": "figures/api_model_fits_faceted_v3.pdf",
+      "bytes": 45213
+    },
+    {
+      "name": "orcid.pdf",
+      "bytes": 12397
+    }
+  ]
+}
