@@ -1,0 +1,62 @@
+{
+  "8443970-hourly_height.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=8443970&product=hourly_height&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research",
+    "sha256": "f13b925bbf8c62ea25093cee79634ab1faed7101af767aec9b2ee01ba3249863",
+    "bytes": 89109
+  },
+  "8443970-predictions.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=8443970&product=predictions&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research&interval=h",
+    "sha256": "13eed6e64f71323063aa085fa9012e94dd1305f0d1b35bd0a05ce3ab4fddb505",
+    "bytes": 54649
+  },
+  "8724580-hourly_height.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=8724580&product=hourly_height&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research",
+    "sha256": "84aa02228bebd63be38c899a1a4e43aa1177cf876ebde3cddcf88922609e641e",
+    "bytes": 89130
+  },
+  "8724580-predictions.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=8724580&product=predictions&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research&interval=h",
+    "sha256": "962ae378abc56b3effce6dbd9d7fd33bad684946b19812b42ccd4d9af09c372b",
+    "bytes": 54800
+  },
+  "8771450-hourly_height.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=8771450&product=hourly_height&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research",
+    "sha256": "46081c9e433ba652aa68e6a06d650c3549713623f3d08816d663657268d8377f",
+    "bytes": 89398
+  },
+  "8771450-predictions.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=8771450&product=predictions&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research&interval=h",
+    "sha256": "ebee4ddb2a8c29bb9b6413ba9075001787ef37f6b1f88c7cfa746aee0d922f99",
+    "bytes": 54941
+  },
+  "9414290-hourly_height.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=9414290&product=hourly_height&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research",
+    "sha256": "500bdf8b7540e3b178fa94711e95e7bd7633578dac4778da5faed9dc45cbfb0f",
+    "bytes": 115
+  },
+  "9414290-predictions.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=9414290&product=predictions&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research&interval=h",
+    "sha256": "cc36bd1183875d17b49431e23ee2ad3eed820f1c269c9a4ddb10191ee4c6d680",
+    "bytes": 54680
+  },
+  "9447130-hourly_height.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=9447130&product=hourly_height&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research",
+    "sha256": "faa3ebbabd1ff7b9f40b01f9fd948ef4f98e64456be906781ad670aaa090ad0c",
+    "bytes": 88992
+  },
+  "9447130-predictions.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=9447130&product=predictions&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research&interval=h",
+    "sha256": "d088539cd4a0ba11d56d445ac775e03aa0a8fc70b5229415f8a0c90b2bc3547d",
+    "bytes": 54659
+  },
+  "1612340-hourly_height.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=1612340&product=hourly_height&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research",
+    "sha256": "49758e4dd79738b80e576a198c675ec42e03724a2384c64099f44b29e1836871",
+    "bytes": 89030
+  },
+  "1612340-predictions.json": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20240101&end_date=20240229&station=1612340&product=predictions&datum=MLLW&time_zone=gmt&units=metric&format=json&application=eriksson_research&interval=h",
+    "sha256": "738802f48d0db4ec338fe96ab03e1faf8112b9388d2d0abc755121b378c2d026",
+    "bytes": 54726
+  }
+}

@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{How much station coverage secures a pooled tidal correlation?}
+\author{Lluis Eriksson}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+A pooled score for tide prediction depends on the weight given to each gauge. We ask how much of the total weight must be distributed equally to secure a specified within-station centered correlation, regardless of where the remainder is placed. A reduction to pairs of stations gives sharp bounds with exact witnesses. Using archived hourly observations and harmonic predictions from five eligible US gauges, the minimum evenly distributed fraction needed to secure a correlation of 0.95 lies between 0.6088 and 0.6089 in January 2024, and between 0.3277 and 0.3278 in February. Equal station weighting alone gives 0.9770 and 0.9846, concealing this difference in coverage sensitivity.
+\end{abstract}
+
+\section{A coverage question}
+A tidal prediction and a measured water level describe different physical quantities: water levels also respond to weather and other processes. Here the target is agreement of paired, within-station anomalies. A station receives a total weight $w_i$ divided equally among its retained hours. We ask which correlations can result from every allocation satisfying $w_i\ge\lambda/S$, where $S$ is the number of eligible stations and the weights sum to one. Thus $\lambda$ reserves a fraction of the weight for equal distribution; the remaining fraction can be distributed arbitrarily. A guarantee is deterministic for the observed station-months.
+
+The distinction arose in examining figure code for concurrent ocean forecasts and SWOT observations \cite{eddies}. Figure 11 plots dispersion across repeats at each location and annotates a spatial association of dispersion estimates. A temporal correlation pooled after centering within locations is a different estimand. We use directly paired gauge data to study the latter. We report no inferred SWOT correlation.
+
+\section{Sharp extrema under coverage floors}
+At each station let $y_i>0$ and $f_i>0$ denote observation and prediction variances and $c_i$ their covariance. With common paired hours and denominator, departure variance is $y_i+f_i-2c_i$, the familiar Taylor identity \cite{taylor}. Center both series at their own station means. With $(Y,F,C)=\sum_i w_i(y_i,f_i,c_i)$, the pooled correlation is $C/\sqrt{YF}$. It is generally different from a weighted mean of the local correlations.
+
+\textbf{Proposition.} At either extremum, the weight above the floor can be placed on at most two stations. On any of these edges linear interpolation in the physical weight gives at most one isolated interior stationary point.
+
+\paragraph{Proof.} Write $m_i=(y_i,f_i,c_i)$, $\bar m=S^{-1}\sum m_i$ and $v_i=\lambda\bar m+(1-\lambda)m_i$. The possible pooled triples fill the convex hull of $v_i$. Project each triple to $(A,B)=(F/Y,C/Y)$. The image is exactly the hull of the projected vertices: multiplying a convex coefficient by the vertex's $Y_i$ and normalizing yields the projected coefficient, and dividing by $Y_i$ reverses the construction. The objective becomes $B/\sqrt A$, strictly increasing in $B$ at fixed $A$. Its extrema are therefore on boundary segments or vertices, including a degenerate segment or singleton. Each such segment uses just two original vertices.
+
+Write an edge as $(Y,F,C)=(y,f,c)+t(a,b,d)$, $0\le t\le1$. The derivative of the correlation has the sign of
+\[
+ 2dyf-c(af+by)+t\{d(af+by)-2cab\}.
+\]
+It suffices to evaluate the endpoints and the root if it is interior. A zero derivative throughout gives constant correlation. The feasible set is connected, so every intermediate value is attainable. The set shrinks as $\lambda$ increases; the lower bound is nondecreasing. Rational moments permit exact comparisons using $C|C|/(YF)$, a strictly increasing transform of correlation.
+
+Even perfect local correlations need not secure a perfect pooled value. Taking station triples $(1,1,1)$ and $(4,16,8)$, weights $(8/9,1/9)$ attain $2\sqrt{2}/3$ despite both local correlations equalling one. Such perfect-alignment examples have antecedents in operator-angle theory \cite{angle}. Our application is the coverage fraction for a given empirical threshold, with nonproportional series and positive floors.
+
+\section{A test with hourly tide gauges}
+We fixed six stations, two months, two thresholds and a missingness rule in the public protocol \cite{protocol}. NOAA CO-OPS supplies verified hourly heights and hourly harmonic predictions \cite{noaa}. We requested GMT and metric units relative to mean lower low water, matched timestamps and discarded flagged or missing readings. Each station-month needed at least 90\% of its calendar hours and positive variances. San Francisco returned no verified hourly heights in this query. We retained the reply and made no replacement. Boston, Key West, Galveston Pier 21, Seattle and Honolulu supplied 742, 744, 744, 729 and 739 matched hours in January, and 692, 696, 696, 694 and 696 in February. The same hours enter all three moments at each station.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Month & Unrestricted range & Half distributed equally & Equal weights\\
+\midrule
+January & 0.6192--0.9923 & 0.9367--0.9881 & 0.9770\\
+February & 0.7474--0.9916 & 0.9663--0.9896 & 0.9846\\
+\bottomrule
+\end{tabular}
+\end{center}
+In both months the unrestricted minimum equals the lowest station correlation, at Galveston. Thus the strict interior loss in the algebraic example did not reduce the observed minimum below the worst local value. Reserving half the weight equally (at least 10\% per station) suffices for a correlation of 0.95 in February. It falls short in January.
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Target correlation & January critical fraction & February critical fraction\\
+\midrule
+0.90 & $(0.3153,\,0.3154]$ & $(0.1301,\,0.1302]$\\
+0.95 & $(0.6088,\,0.6089]$ & $(0.3277,\,0.3278]$\\
+\bottomrule
+\end{tabular}
+\end{center}
+At each lower endpoint there exists an explicit failing allocation. At each upper endpoint every allocation meets the target. For example, the first passing grid point for 0.95 in January corresponds to 12.178\% of total weight per station as a floor. These are coverage choices among the eligible stations, not minimum fractions of calendar hours.
+
+\paragraph{Reproduction and limits.} The archive includes the twelve NOAA replies, query URLs and hashes, the protocol, and a standard-library verifier. Direct cross-products agree exactly with covariance from paired departures. The edge derivative and a separate calculation in projected coordinates agree on both extrema; the code also reconstructs each optimizing allocation. The selected gauges and two months give a reproducible example, not a representative sample. Correlation is insensitive to mean bias and does not measure absolute water-level error or flood-warning performance. NOAA harmonic predictions are not an issued storm-surge forecast. Different datum conventions, masks or centering would require a different analysis.
+
+\paragraph{Model assessments and review context.} Codex assisted in the derivation, code and drafting in the programme's shared context. Any assessment of this version is recorded against the exact PDF. We claim no independent external review.
+
+\begin{thebibliography}{9}
+\bibitem{eddies} B. Tchonang, Figure code for evaluating mesoscale eddies in global ocean forecasts, version 1.0.1, \href{https://doi.org/10.5281/zenodo.24407734}{Zenodo 24407734} (2026).
+\bibitem{taylor} K. E. Taylor, Summarizing multiple aspects of model performance in a single diagram, \emph{JGR} 106 (2001), 7183--7192.
+\bibitem{angle} M. Seddighin and K. Gustafson, On the eigenvalues which express antieigenvalues, \emph{IJMMS} (2005), \href{https://doi.org/10.1155/IJMMS.2005.1543}{doi:10.1155/IJMMS.2005.1543}.
+\bibitem{protocol} L. Eriksson, \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/3ad9fe5d3f61810f4bad3412d031c047c1845e72/audits/tide-coverage-sensitivity/ocean-protocol.md}{Station selection and coverage protocol}, archived before retrieval (2026).
+\bibitem{noaa} NOAA Center for Operational Oceanographic Products and Services, \href{https://api.tidesandcurrents.noaa.gov/api/prod/}{Data Retrieval API}. Source responses and station identifiers accompany this manuscript.
+\end{thebibliography}
+\end{document}
