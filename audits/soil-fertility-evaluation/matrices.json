@@ -1,0 +1,84 @@
+{
+  "assumptions": "Three nonempty actual classes, sorted actual supports, shared unweighted 122 cases. Rows are truth, columns prediction. Rounding intervals conservatively include both endpoints.",
+  "smote": [
+    {
+      "rows": [
+        3,
+        58,
+        61
+      ],
+      "cols": [
+        1,
+        62,
+        59
+      ],
+      "diagonal": [
+        0,
+        55,
+        57
+      ],
+      "table": [
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          1,
+          55,
+          2
+        ],
+        [
+          0,
+          4,
+          57
+        ]
+      ]
+    }
+  ],
+  "borderline": [
+    {
+      "rows": [
+        3,
+        58,
+        61
+      ],
+      "cols": [
+        2,
+        61,
+        59
+      ],
+      "diagonal": [
+        0,
+        54,
+        57
+      ],
+      "table": [
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          2,
+          54,
+          2
+        ],
+        [
+          0,
+          4,
+          57
+        ]
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "first": 0,
+      "second": 0,
+      "minority_deltas": [
+        "0"
+      ]
+    }
+  ]
+}
