@@ -1,0 +1,26 @@
+{
+  "source_sha": "af59c63436c94e8bb631f4ac982831602c79818c",
+  "inputs": {
+    "a12.tex": "b9b5498b30b31f08bb1a80dfaa8cf12326842002416d24f632e48a28239cbec8",
+    "verify_a12.py": "7a215122e353bc52d3efc146395fbe5433e29bac7f346e8b51768aacb39b15ac",
+    "components.json": "6072751e01636f7e4f0dc431aee322bc7a6da7b17a5c11adc2665a6cc3c070de",
+    "a12-components.py": "d9cd0169351e76441d84356e45d1d831eec459b418a754ff51d550c7a0623ac1",
+    "sections.json": "3367522895bb1197185a3e568d1f6d6d4a57c561c96fb77c59cfb5931a0c202c",
+    "a12-sections.py": "0f7c20652b46993a813f6ac8fe3dc2e16d3575acd59b912d3dc13d179c4b04e9",
+    "annex-sources.json": "da001779c3bd4142c895181c4fe1eddc7647b5bc5b9db754f269838be92f0b3e",
+    "corridor.json": "e2eab3de281cee8ec15ef4a19d03ae42175e6e0e3e616384f1220da941cb7397",
+    "threshold.json": "ddbdf4474503bde337aa56e9f5cc7b185f51ff74d5e8248cc8997ffa92b9d450",
+    "a12-corridor.py": "f2be85058f90b8a8d8ef9c8bf69da3240232ee0776db79ea3ebf98ef11eca26f",
+    "a12-inputs.py": "98546fff6336e6e4cf298b0f0cb7de35adb4633074384799ce95caedc9635119",
+    "carbon-threshold.py": "9bffff5a4fd18d4ed148b3c9a9a4cc4d002a43f76284da51b1e1a5fe41d178fa"
+  },
+  "started_at": "2026-11-20T21:25:14.611813+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "bc333b592ac3b0d112c2c8793c18eb6f4b0700ba2a153eda16a8de3b187ed7d5",
+    "bc333b592ac3b0d112c2c8793c18eb6f4b0700ba2a153eda16a8de3b187ed7d5"
+  ],
+  "pdf_bytes": 209340,
+  "finished_at": "2026-11-20T21:26:04.395199+00:00"
+}
