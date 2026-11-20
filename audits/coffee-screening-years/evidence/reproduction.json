@@ -1,0 +1,26 @@
+{
+  "source_sha": "66da37d706126e5525f5c0a23a5e555631969970",
+  "inputs": {
+    "coffee.tex": "decd0b80b4594ddc9f87917805538edfa235e11ac2919feadce3942956a98f75",
+    "verify_coffee.py": "fa161d9085426e73e643a5089fc4d9a806f3326dac1d73dc418810a36868c58f",
+    "coffee_nonresponse.py": "932f47bbf9441f7dc5c8231f87e1b3bd72862c934ae1105f505181b4eed5b640",
+    "missing.json": "08778b5442ce46850e5a9f274b80a4d1302ac89c9b8085ec105ec1cb88a97123",
+    "coffee_bounds.py": "f4772ef919b540a9aeb2c88bfc48c324f8a2c2c1be8423d3803c650ba413fd44",
+    "coffee_power.py": "77fc49fedd481f8d30911398edd737bf1ae1fa489ea1872a016274d1c357daa3",
+    "coffee_stratified.py": "d97585344fc9394895e0899621e3b44f8ce7ab645321928143a53cdb722889ca",
+    "coffee.json": "59b72f4e0493b9e0de8f6c9456369bb0ce42d770699036ba31fc6e93b1c5d27c",
+    "conditional.json": "ac2e8d197a93c1d297fdce3a6439ac59f4399cc6c82600984aabd5039082ef53",
+    "power.json": "d9afdb26908b5316a67dfeef4dd03fb37a7c14759f0bf75c8bffb69cd4a501f7",
+    "coffee-note.md": "7a12fb8bec81864e644af5f93b2fd20f3b3738a69f7365165476526d04836679",
+    "power-design.md": "d86f1b629b0ce5e346a1f411222ab97a157c02c20058684b47fbae578f22d111"
+  },
+  "started_at": "2026-11-20T20:48:49.946156+00:00",
+  "status": "reproduced",
+  "pages": 4,
+  "pdf_sha256": [
+    "825e87c3bc700bd5d2bf0a5cd0ee6bd9164b56093f060507c423c2cff7301585",
+    "825e87c3bc700bd5d2bf0a5cd0ee6bd9164b56093f060507c423c2cff7301585"
+  ],
+  "pdf_bytes": 220927,
+  "finished_at": "2026-11-20T20:49:50.347880+00:00"
+}

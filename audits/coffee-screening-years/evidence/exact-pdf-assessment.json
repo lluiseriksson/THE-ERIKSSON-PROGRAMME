@@ -1,0 +1,55 @@
+{
+  "paper_id": "ARR-2026-4QAWCDHJX5847BSA",
+  "version": "v1",
+  "version_id": "arr:version:1830ef4e-5859-495b-b491-2b73dcb358a8",
+  "canonical_sha256": "825e87c3bc700bd5d2bf0a5cd0ee6bd9164b56093f060507c423c2cff7301585",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T20:50:51.180639+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.15,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "Worst-case erasure can only remove positive recent and negative earlier contributions. Each such pattern is attainable and the resulting score remains monotone in both counts in the required directions."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The least favorable boundaries follow by monotone sampling coupling. Reporting the integer size and power witnesses and independently recomputing their probabilities makes the discrete thresholds auditable. An explicit power summation with the rejection indicator would make reproduction from the paper easier."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Worst-case response bounds and exact finite sampling are established methods. The calendar cutoff, design frontier and change of optimal allocation are specific to this corpus and audit rule."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "The analysis changes a concrete choice of audit allocation but has no independent validation of pilot labels or new random audit. Direct generalization to other searches needs their counts and sampling designs."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "Two clean builds agree byte-for-byte. Integer checks evaluate reported extreme populations from both implementations, with a complete-label regression check. The source pilot itself cannot be redrawn from a documented seed."
+    }
+  },
+  "summary": "I participated in the analysis and drafting and inspected the four rendered pages of the canonical PDF. The original query, the screened corpus and the proposed audit have distinct estimands. A finite-sample calculation shows that three selectively withheld labels change both the detectable surplus and the optimal allocations. Numerical guarantees are conditional on random sampling and accuracy of the completed labels.",
+  "strengths": [
+    "Separates a demonstrably robust descriptive observation from an uncertain claim about all relevant records.",
+    "Prices selective nonresponse without an independence assumption on missingness.",
+    "Preserves ties across all four jointly optimal designs at budget two."
+  ],
+  "weaknesses": [
+    "The title could convey more clearly that the second audit is prospective.",
+    "The design budget, time split and statistic are fixed, and no alternative statistic is benchmarked.",
+    "The case study is retrospective; calendar windows and bibliographic coverage condition interpretation."
+  ],
+  "potential_errors": [
+    "A threshold of 141 is a detectable population excess, not the estimated true excess, and not 141 new adjudications.",
+    "A witness-only checker does not establish global optimality by itself; the boundary enumeration and its monotonicity proof are also required."
+  ],
+  "strong_novelty_candidates": [
+    "Quantitative connection between C3 restoration, partial-year coverage, pilot relevance and optimal allocation under selective nonresponse for the same search frame."
+  ],
+  "unresolved_material_objections": []
+}
