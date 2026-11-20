@@ -1,0 +1,24 @@
+{
+  "source_sha": "253121cdef34858db3406dfbf156df97ddad947d",
+  "inputs": {
+    "water.tex": "6b52d56a2e5636f1adfc627ea9e8f4fb4a2f4dab7ddd30aa1b5c5463d8d24c37",
+    "verify_water.py": "cb5d2bd4de344168cd484d138b517d5f84b0f90f0fc1b0a65e83e52e7dde61f5",
+    "robust_water.py": "e3b9850b7bd5dae4433400165b3807b4bb19437af0366d15a74a00ac64a58765",
+    "robust.json": "4aeac986889205c5bd1df80bed89fc3f060036631fede23ca446765db8ffb74d",
+    "water_ranges.py": "417bad086979f0e0530f9e80ec37d540cd11d2d55d9932734b310c62e5e85667",
+    "ranges.json": "ed7fc678aa4edf4f768222846a12ca3669273729f9935fdd1065de27b69e53eb",
+    "signed.json": "13a798ca290430fccec0abef34968e8d4dd42886c5e5c6f658d3688974e98d51",
+    "nanpan_alignment_signed.py": "1a010386aa4e93a3c486e76116af0bd09638e5f3e9fbb3ec03f9f9905298fcd7",
+    "ring_spatial_incidence.csv": "d8938aecb347a7ea88d801bb3f38cb2ffd04be17121a83dd591b4b27ebe015d2",
+    "water-source.json": "7b622aece66fd54f3a376b17721930166448168013abf9b18f6fc8886f265fdc"
+  },
+  "started_at": "2026-11-20T20:37:06.138202+00:00",
+  "status": "reproduced",
+  "pages": 4,
+  "pdf_sha256": [
+    "22f98066943910eaeb4bdb7d9da3b321ab1d40efa5e9d974a971b354a61f3a7a",
+    "22f98066943910eaeb4bdb7d9da3b321ab1d40efa5e9d974a971b354a61f3a7a"
+  ],
+  "pdf_bytes": 220174,
+  "finished_at": "2026-11-20T20:38:10.014718+00:00"
+}

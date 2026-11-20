@@ -1,0 +1,289 @@
+calibration,retention,location,kind,unit,value
+primary,low,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.45476417134827507
+primary,low,upper,benefit_share_load,Kunming,0.4024940216955157
+primary,low,upper,benefit_share_load,Yuxi,0.04467965161281185
+primary,low,upper,benefit_share_load,Honghe,0.07393953728050823
+primary,low,upper,benefit_share_load,Wenshan,0.0156700350369227
+primary,low,upper,benefit_share_load,Qujing lower and downstream provinces,0.008452583025966381
+primary,low,upper,transfer_change_share_of_base_per_year,Qujing,0.03316310563617882
+primary,low,upper,transfer_change_share_of_base_per_year,Kunming,-0.02712784808523298
+primary,low,upper,transfer_change_share_of_base_per_year,Yuxi,0.0002071818799480596
+primary,low,upper,transfer_change_share_of_base_per_year,Honghe,-0.004949014190903729
+primary,low,upper,transfer_change_share_of_base_per_year,Wenshan,-0.0012934252399902462
+primary,low,upper,exceedance_months_avoided,five sections,0.22042670288776442
+primary,low,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+primary,low,lower,benefit_share_load,Kunming,0.0
+primary,low,lower,benefit_share_load,Yuxi,0.0
+primary,low,lower,benefit_share_load,Honghe,0.0
+primary,low,lower,benefit_share_load,Wenshan,0.0
+primary,low,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+primary,low,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+primary,low,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+primary,low,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+primary,low,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+primary,low,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+primary,low,lower,exceedance_months_avoided,five sections,0.0
+primary,central,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.26089223900256087
+primary,central,upper,benefit_share_load,Kunming,0.36623238966435917
+primary,central,upper,benefit_share_load,Yuxi,0.08374312664914195
+primary,central,upper,benefit_share_load,Honghe,0.17509559106040257
+primary,central,upper,benefit_share_load,Wenshan,0.06126226943341865
+primary,central,upper,benefit_share_load,Qujing lower and downstream provinces,0.05277438419011689
+primary,central,upper,transfer_change_share_of_base_per_year,Qujing,0.02873266303421847
+primary,central,upper,transfer_change_share_of_base_per_year,Kunming,-0.013808405522181802
+primary,central,upper,transfer_change_share_of_base_per_year,Yuxi,0.002960668002768655
+primary,central,upper,transfer_change_share_of_base_per_year,Honghe,-0.012455657152662317
+primary,central,upper,transfer_change_share_of_base_per_year,Wenshan,-0.00542926836214308
+primary,central,upper,exceedance_months_avoided,five sections,0.3087739635711338
+primary,central,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+primary,central,lower,benefit_share_load,Kunming,0.0
+primary,central,lower,benefit_share_load,Yuxi,0.0
+primary,central,lower,benefit_share_load,Honghe,0.0
+primary,central,lower,benefit_share_load,Wenshan,0.0
+primary,central,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+primary,central,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+primary,central,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+primary,central,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+primary,central,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+primary,central,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+primary,central,lower,exceedance_months_avoided,five sections,0.0
+primary,high,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.17972349038980606
+primary,high,upper,benefit_share_load,Kunming,0.3312795700046442
+primary,high,upper,benefit_share_load,Yuxi,0.09452526970609064
+primary,high,upper,benefit_share_load,Honghe,0.2118779979102214
+primary,high,upper,benefit_share_load,Wenshan,0.08879335020702483
+primary,high,upper,benefit_share_load,Qujing lower and downstream provinces,0.09380032178221277
+primary,high,upper,transfer_change_share_of_base_per_year,Qujing,0.021736307717375336
+primary,high,upper,transfer_change_share_of_base_per_year,Kunming,-0.0026497821353435036
+primary,high,upper,transfer_change_share_of_base_per_year,Yuxi,0.006591316489366061
+primary,high,upper,transfer_change_share_of_base_per_year,Honghe,-0.017525177420784594
+primary,high,upper,transfer_change_share_of_base_per_year,Wenshan,-0.008152664650613373
+primary,high,upper,exceedance_months_avoided,five sections,0.3948697921678903
+primary,high,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+primary,high,lower,benefit_share_load,Kunming,0.0
+primary,high,lower,benefit_share_load,Yuxi,0.0
+primary,high,lower,benefit_share_load,Honghe,0.0
+primary,high,lower,benefit_share_load,Wenshan,0.0
+primary,high,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+primary,high,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+primary,high,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+primary,high,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+primary,high,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+primary,high,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+primary,high,lower,exceedance_months_avoided,five sections,0.0
+all_months,low,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.45476417134827507
+all_months,low,upper,benefit_share_load,Kunming,0.4024940216955157
+all_months,low,upper,benefit_share_load,Yuxi,0.04467965161281185
+all_months,low,upper,benefit_share_load,Honghe,0.07393953728050823
+all_months,low,upper,benefit_share_load,Wenshan,0.0156700350369227
+all_months,low,upper,benefit_share_load,Qujing lower and downstream provinces,0.008452583025966381
+all_months,low,upper,transfer_change_share_of_base_per_year,Qujing,0.03689958729195664
+all_months,low,upper,transfer_change_share_of_base_per_year,Kunming,-0.029111011718101636
+all_months,low,upper,transfer_change_share_of_base_per_year,Yuxi,0.0004234879109374923
+all_months,low,upper,transfer_change_share_of_base_per_year,Honghe,-0.0072668523000081935
+all_months,low,upper,transfer_change_share_of_base_per_year,Wenshan,-0.0009452111847843373
+all_months,low,upper,exceedance_months_avoided,five sections,0.349962711634209
+all_months,low,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+all_months,low,lower,benefit_share_load,Kunming,0.0
+all_months,low,lower,benefit_share_load,Yuxi,0.0
+all_months,low,lower,benefit_share_load,Honghe,0.0
+all_months,low,lower,benefit_share_load,Wenshan,0.0
+all_months,low,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+all_months,low,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+all_months,low,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+all_months,low,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+all_months,low,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+all_months,low,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+all_months,low,lower,exceedance_months_avoided,five sections,0.0
+all_months,central,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.26089223900256087
+all_months,central,upper,benefit_share_load,Kunming,0.36623238966435917
+all_months,central,upper,benefit_share_load,Yuxi,0.08374312664914195
+all_months,central,upper,benefit_share_load,Honghe,0.17509559106040257
+all_months,central,upper,benefit_share_load,Wenshan,0.06126226943341865
+all_months,central,upper,benefit_share_load,Qujing lower and downstream provinces,0.05277438419011689
+all_months,central,upper,transfer_change_share_of_base_per_year,Qujing,0.03290508422683406
+all_months,central,upper,transfer_change_share_of_base_per_year,Kunming,-0.011676146982847838
+all_months,central,upper,transfer_change_share_of_base_per_year,Yuxi,0.00389296812226414
+all_months,central,upper,transfer_change_share_of_base_per_year,Honghe,-0.021409127915769766
+all_months,central,upper,transfer_change_share_of_base_per_year,Wenshan,-0.0037127774504806346
+all_months,central,upper,exceedance_months_avoided,five sections,0.5896295633731733
+all_months,central,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+all_months,central,lower,benefit_share_load,Kunming,0.0
+all_months,central,lower,benefit_share_load,Yuxi,0.0
+all_months,central,lower,benefit_share_load,Honghe,0.0
+all_months,central,lower,benefit_share_load,Wenshan,0.0
+all_months,central,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+all_months,central,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+all_months,central,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+all_months,central,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+all_months,central,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+all_months,central,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+all_months,central,lower,exceedance_months_avoided,five sections,0.0
+all_months,high,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.17972349038980606
+all_months,high,upper,benefit_share_load,Kunming,0.3312795700046442
+all_months,high,upper,benefit_share_load,Yuxi,0.09452526970609064
+all_months,high,upper,benefit_share_load,Honghe,0.2118779979102214
+all_months,high,upper,benefit_share_load,Wenshan,0.08879335020702483
+all_months,high,upper,benefit_share_load,Qujing lower and downstream provinces,0.09380032178221277
+all_months,high,upper,transfer_change_share_of_base_per_year,Qujing,0.026891269721397586
+all_months,high,upper,transfer_change_share_of_base_per_year,Kunming,0.0037491622748079636
+all_months,high,upper,transfer_change_share_of_base_per_year,Yuxi,0.007505754579442581
+all_months,high,upper,transfer_change_share_of_base_per_year,Honghe,-0.0327632772732794
+all_months,high,upper,transfer_change_share_of_base_per_year,Wenshan,-0.00538290930236877
+all_months,high,upper,exceedance_months_avoided,five sections,0.8190449989270531
+all_months,high,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+all_months,high,lower,benefit_share_load,Kunming,0.0
+all_months,high,lower,benefit_share_load,Yuxi,0.0
+all_months,high,lower,benefit_share_load,Honghe,0.0
+all_months,high,lower,benefit_share_load,Wenshan,0.0
+all_months,high,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+all_months,high,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+all_months,high,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+all_months,high,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+all_months,high,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+all_months,high,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+all_months,high,lower,exceedance_months_avoided,five sections,0.0
+mar2024_II,low,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.45476417134827507
+mar2024_II,low,upper,benefit_share_load,Kunming,0.4024940216955157
+mar2024_II,low,upper,benefit_share_load,Yuxi,0.04467965161281185
+mar2024_II,low,upper,benefit_share_load,Honghe,0.07393953728050823
+mar2024_II,low,upper,benefit_share_load,Wenshan,0.0156700350369227
+mar2024_II,low,upper,benefit_share_load,Qujing lower and downstream provinces,0.008452583025966381
+mar2024_II,low,upper,transfer_change_share_of_base_per_year,Qujing,0.009618028467846132
+mar2024_II,low,upper,transfer_change_share_of_base_per_year,Kunming,-0.007091051356931111
+mar2024_II,low,upper,transfer_change_share_of_base_per_year,Yuxi,-0.0007887126879138803
+mar2024_II,low,upper,transfer_change_share_of_base_per_year,Honghe,-0.000925108984600076
+mar2024_II,low,upper,transfer_change_share_of_base_per_year,Wenshan,-0.00081315543840114
+mar2024_II,low,upper,exceedance_months_avoided,five sections,0.1235739237751605
+mar2024_II,low,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+mar2024_II,low,lower,benefit_share_load,Kunming,0.0
+mar2024_II,low,lower,benefit_share_load,Yuxi,0.0
+mar2024_II,low,lower,benefit_share_load,Honghe,0.0
+mar2024_II,low,lower,benefit_share_load,Wenshan,0.0
+mar2024_II,low,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+mar2024_II,low,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+mar2024_II,low,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+mar2024_II,low,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+mar2024_II,low,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+mar2024_II,low,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+mar2024_II,low,lower,exceedance_months_avoided,five sections,0.0
+mar2024_II,central,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.26089223900256087
+mar2024_II,central,upper,benefit_share_load,Kunming,0.36623238966435917
+mar2024_II,central,upper,benefit_share_load,Yuxi,0.08374312664914195
+mar2024_II,central,upper,benefit_share_load,Honghe,0.17509559106040257
+mar2024_II,central,upper,benefit_share_load,Wenshan,0.06126226943341865
+mar2024_II,central,upper,benefit_share_load,Qujing lower and downstream provinces,0.05277438419011689
+mar2024_II,central,upper,transfer_change_share_of_base_per_year,Qujing,0.005906781335825266
+mar2024_II,central,upper,transfer_change_share_of_base_per_year,Kunming,-0.0009542424592572374
+mar2024_II,central,upper,transfer_change_share_of_base_per_year,Yuxi,-0.0019082166840667842
+mar2024_II,central,upper,transfer_change_share_of_base_per_year,Honghe,-2.7980575804035606e-05
+mar2024_II,central,upper,transfer_change_share_of_base_per_year,Wenshan,-0.0030163416166972823
+mar2024_II,central,upper,exceedance_months_avoided,five sections,0.16234796662999
+mar2024_II,central,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+mar2024_II,central,lower,benefit_share_load,Kunming,0.0
+mar2024_II,central,lower,benefit_share_load,Yuxi,0.0
+mar2024_II,central,lower,benefit_share_load,Honghe,0.0
+mar2024_II,central,lower,benefit_share_load,Wenshan,0.0
+mar2024_II,central,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+mar2024_II,central,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+mar2024_II,central,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+mar2024_II,central,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+mar2024_II,central,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+mar2024_II,central,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+mar2024_II,central,lower,exceedance_months_avoided,five sections,0.0
+mar2024_II,high,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.17972349038980606
+mar2024_II,high,upper,benefit_share_load,Kunming,0.3312795700046442
+mar2024_II,high,upper,benefit_share_load,Yuxi,0.09452526970609064
+mar2024_II,high,upper,benefit_share_load,Honghe,0.2118779979102214
+mar2024_II,high,upper,benefit_share_load,Wenshan,0.08879335020702483
+mar2024_II,high,upper,benefit_share_load,Qujing lower and downstream provinces,0.09380032178221277
+mar2024_II,high,upper,transfer_change_share_of_base_per_year,Qujing,-7.677380868057841e-05
+mar2024_II,high,upper,transfer_change_share_of_base_per_year,Kunming,0.004460675951259319
+mar2024_II,high,upper,transfer_change_share_of_base_per_year,Yuxi,-0.0027757798196711056
+mar2024_II,high,upper,transfer_change_share_of_base_per_year,Honghe,0.0021498022448267484
+mar2024_II,high,upper,transfer_change_share_of_base_per_year,Wenshan,-0.003757924567734494
+mar2024_II,high,upper,exceedance_months_avoided,five sections,0.20309576081215908
+mar2024_II,high,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+mar2024_II,high,lower,benefit_share_load,Kunming,0.0
+mar2024_II,high,lower,benefit_share_load,Yuxi,0.0
+mar2024_II,high,lower,benefit_share_load,Honghe,0.0
+mar2024_II,high,lower,benefit_share_load,Wenshan,0.0
+mar2024_II,high,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+mar2024_II,high,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+mar2024_II,high,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+mar2024_II,high,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+mar2024_II,high,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+mar2024_II,high,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+mar2024_II,high,lower,exceedance_months_avoided,five sections,0.0
+excl_jul2025,low,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.45476417134827507
+excl_jul2025,low,upper,benefit_share_load,Kunming,0.4024940216955157
+excl_jul2025,low,upper,benefit_share_load,Yuxi,0.04467965161281185
+excl_jul2025,low,upper,benefit_share_load,Honghe,0.07393953728050823
+excl_jul2025,low,upper,benefit_share_load,Wenshan,0.0156700350369227
+excl_jul2025,low,upper,benefit_share_load,Qujing lower and downstream provinces,0.008452583025966381
+excl_jul2025,low,upper,transfer_change_share_of_base_per_year,Qujing,0.03279965340903016
+excl_jul2025,low,upper,transfer_change_share_of_base_per_year,Kunming,-0.026977451891981197
+excl_jul2025,low,upper,transfer_change_share_of_base_per_year,Yuxi,0.00013153898938655928
+excl_jul2025,low,upper,transfer_change_share_of_base_per_year,Honghe,-0.004657360626177424
+excl_jul2025,low,upper,transfer_change_share_of_base_per_year,Wenshan,-0.0012963798802581767
+excl_jul2025,low,upper,exceedance_months_avoided,five sections,0.19785178138830284
+excl_jul2025,low,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+excl_jul2025,low,lower,benefit_share_load,Kunming,0.0
+excl_jul2025,low,lower,benefit_share_load,Yuxi,0.0
+excl_jul2025,low,lower,benefit_share_load,Honghe,0.0
+excl_jul2025,low,lower,benefit_share_load,Wenshan,0.0
+excl_jul2025,low,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+excl_jul2025,low,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+excl_jul2025,low,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+excl_jul2025,low,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+excl_jul2025,low,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+excl_jul2025,low,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+excl_jul2025,low,lower,exceedance_months_avoided,five sections,0.0
+excl_jul2025,central,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.26089223900256087
+excl_jul2025,central,upper,benefit_share_load,Kunming,0.36623238966435917
+excl_jul2025,central,upper,benefit_share_load,Yuxi,0.08374312664914195
+excl_jul2025,central,upper,benefit_share_load,Honghe,0.17509559106040257
+excl_jul2025,central,upper,benefit_share_load,Wenshan,0.06126226943341865
+excl_jul2025,central,upper,benefit_share_load,Qujing lower and downstream provinces,0.05277438419011689
+excl_jul2025,central,upper,transfer_change_share_of_base_per_year,Qujing,0.02837816068026755
+excl_jul2025,central,upper,transfer_change_share_of_base_per_year,Kunming,-0.014116769950001107
+excl_jul2025,central,upper,transfer_change_share_of_base_per_year,Yuxi,0.00263626712706877
+excl_jul2025,central,upper,transfer_change_share_of_base_per_year,Honghe,-0.011452464041581992
+excl_jul2025,central,upper,transfer_change_share_of_base_per_year,Wenshan,-0.0054451938157532576
+excl_jul2025,central,upper,exceedance_months_avoided,five sections,0.2812923008126555
+excl_jul2025,central,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+excl_jul2025,central,lower,benefit_share_load,Kunming,0.0
+excl_jul2025,central,lower,benefit_share_load,Yuxi,0.0
+excl_jul2025,central,lower,benefit_share_load,Honghe,0.0
+excl_jul2025,central,lower,benefit_share_load,Wenshan,0.0
+excl_jul2025,central,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+excl_jul2025,central,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+excl_jul2025,central,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+excl_jul2025,central,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+excl_jul2025,central,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+excl_jul2025,central,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+excl_jul2025,central,lower,exceedance_months_avoided,five sections,0.0
+excl_jul2025,high,upper,benefit_share_load,Qujing upper (project to Tianshengqiao),0.17972349038980606
+excl_jul2025,high,upper,benefit_share_load,Kunming,0.3312795700046442
+excl_jul2025,high,upper,benefit_share_load,Yuxi,0.09452526970609064
+excl_jul2025,high,upper,benefit_share_load,Honghe,0.2118779979102214
+excl_jul2025,high,upper,benefit_share_load,Wenshan,0.08879335020702483
+excl_jul2025,high,upper,benefit_share_load,Qujing lower and downstream provinces,0.09380032178221277
+excl_jul2025,high,upper,transfer_change_share_of_base_per_year,Qujing,0.021371120435409747
+excl_jul2025,high,upper,transfer_change_share_of_base_per_year,Kunming,-0.0033541628406252855
+excl_jul2025,high,upper,transfer_change_share_of_base_per_year,Yuxi,0.006029352965558103
+excl_jul2025,high,upper,transfer_change_share_of_base_per_year,Honghe,-0.015883876396104668
+excl_jul2025,high,upper,transfer_change_share_of_base_per_year,Wenshan,-0.008162434164237972
+excl_jul2025,high,upper,exceedance_months_avoided,five sections,0.36325502595664233
+excl_jul2025,high,lower,benefit_share_load,Qujing upper (project to Tianshengqiao),0.0
+excl_jul2025,high,lower,benefit_share_load,Kunming,0.0
+excl_jul2025,high,lower,benefit_share_load,Yuxi,0.0
+excl_jul2025,high,lower,benefit_share_load,Honghe,0.0
+excl_jul2025,high,lower,benefit_share_load,Wenshan,0.0
+excl_jul2025,high,lower,benefit_share_load,Qujing lower and downstream provinces,1.0
+excl_jul2025,high,lower,transfer_change_share_of_base_per_year,Qujing,0.0
+excl_jul2025,high,lower,transfer_change_share_of_base_per_year,Kunming,0.0
+excl_jul2025,high,lower,transfer_change_share_of_base_per_year,Yuxi,0.0
+excl_jul2025,high,lower,transfer_change_share_of_base_per_year,Honghe,0.0
+excl_jul2025,high,lower,transfer_change_share_of_base_per_year,Wenshan,0.0
+excl_jul2025,high,lower,exceedance_months_avoided,five sections,0.0

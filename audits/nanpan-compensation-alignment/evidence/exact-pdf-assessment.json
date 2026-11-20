@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-5PT6W99A669FHTW9",
+  "version": "v1",
+  "version_id": "arr:version:9eb41e97-6c6a-4c04-8d00-1a1ad1a82d09",
+  "canonical_sha256": "22f98066943910eaeb4bdb7d9da3b321ab1d40efa5e9d974a971b354a61f3a7a",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-20T20:39:15.747009+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.9,
+  "overall_stars": 5,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "Positive target shares force positive payments in any exactly aligned solution. At doubling the positive-part denominator is at least two, so all subset constraints can safely be multiplied by it."
+    },
+    "rigor": {
+      "stars": 5,
+      "basis": "The knots cover every possible sign change. For any box the certificate is a nonnegative combination of valid rows whose affine minimum on the simplex exceeds zero. Rounding is isolated from the acceptance checks."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The level-set feasibility method and benefit-based cost allocation have precedents. The signed compensation model, exact share envelopes and comparison across information structures constitute a specific application."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "The result quantifies how much geographic flexibility is lost by choosing shares early. The high-retention all-months scenario limits the value of information with this budget and worst-case objective."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "Both builds used immutable source inputs and yielded the same bytes. The archive contains the attributed source table, schedules, box multipliers and a standard-library verifier. It conditions on the published hydrological table."
+    }
+  },
+  "summary": "I participated in the analysis and writing and inspected the four pages of this canonical PDF. Rational upper schedules and box-wide lower certificates establish a narrow minimax interval for total variation across the eleven eligible scenarios. Most worst-case disagreement remains even with scenario-specific shares. The result concerns a modeled point-source project with a budget pegged to its incremental return.",
+  "strengths": [
+    "Preserves the sign of credits and explicitly handles zero downstream benefit and negative return.",
+    "Distinguishes a single witness from coordinate ranges of near-optimal schedules.",
+    "Compares knowing calibration, knowing retention and knowing both using verifiable bounds."
+  ],
+  "weaknesses": [
+    "Only eleven positive-return scenarios support the common proportional budget; interpolation or misspecification of the hydrology could affect all geographic ranges.",
+    "The relative rather than absolute budget can vary substantially in currency across scenarios.",
+    "A field deployment would require a separate assessment of fiscal capacity, fairness and alternative benefit measures."
+  ],
+  "potential_errors": [
+    "The payer shares in the near-optimal intervals cannot be independently combined.",
+    "Interpreting total variation as a percentage change in measured water quality would misstate the estimand.",
+    "Using the separate policy experiment table with different project assumptions would not reproduce these bounds."
+  ],
+  "strong_novelty_candidates": [
+    "Certified minimax and coordinatewise near-optimal contribution shares under uncertain hydrology and clipped initial net liabilities in this dataset."
+  ],
+  "unresolved_material_objections": []
+}

@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\title{How closely can one payment schedule track downstream water benefits on the Nanpan River?}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+In a published hydrological model of the Nanpan River, four downstream prefectures can add payments to the jurisdiction financing an upstream project. We ask how closely their shares of total payments can track their shares of modeled pollution-load benefits. Doubling the upstream return permits exact alignment by scenario-specific payments in three of eleven positive-return scenarios. If a single set of surcharge shares must apply across scenarios, the smallest worst-case discrepancy is approximately 0.24752 in total variation. We bound this value by an explicit schedule and an impossibility certificate covering every payment vector, including cases in which a prefecture remains a net recipient. The comparison is conditional on a model of transfers and benefits. It does not evaluate realized payments or measured improvements in river quality.
+\end{abstract}
+\section{What is allocated?}
+The replication package of Chen and coauthors [1] evaluates an upper point-source project on the Nanpan River. The signed change in each prefecture's net transfer differs from its share of modeled downstream load reduction. Their P5 instrument charges an additional amount in proportion to downstream load benefit. We study an alternative in which a budget is fixed and geographic surcharge shares can vary. The operational question is whether those shares can be agreed before the calibration and pollutant retention are known.
+
+We use the package's spatial-incidence table and its generator. Each downstream payment $d_i$ is minus the reported annualized change in net transfer, in units of the common contract base. The four prefectures are Kunming, Yuxi, Honghe and Wenshan. We divide each modeled load-benefit share by their sum over those four; this removes the financing prefecture, Qujing, and reaches outside the comparison group. Let $s_i$ denote these normalized shares and $R=\sum_i d_i$ the modeled incremental return to Qujing. The reported Qujing value agrees with this sum within $10^{-13}$ in every row group. We take the printed decimal inputs as given.
+
+For the upper project all four $s_i$ are positive. Eleven of twelve calibration--retention combinations have $R>0$. The high-retention, March-2024 class-II combination has $R<0$; a budget defined as doubling a positive return does not apply there. In the twelve lower-project combinations the table assigns zero load benefit to all four downstream prefectures, so their relative benefit shares are undefined. We use the spatial experiment throughout. Other policy tables in [1] can use different project assumptions.
+
+\section{Exact alignment under a known scenario}
+Let $z_i\ge0$ be the additional payment from prefecture $i$, with $\sum_i z_i=x$. The realized payer shares are calculated using positive parts of $d_i+z_i$, allowing a prefecture to start as a net recipient. If all $s_i>0$, exact alignment forces every final signed payment to be positive. Summing before normalization then gives
+\[
+ z_i=(R+x)s_i-d_i,\qquad x_{\min}=\max_i d_i/s_i-R .
+\]
+The maximum is at least the share-weighted mean $R$. If $\max_i d_i/s_i>0$, the displayed threshold is attained since all resulting payments are positive and every surcharge is nonnegative. It works in currency units even for the negative-return case. If $z_i=xs_i$, the residual from exact proportionality is $d_i-Rs_i$ at every finite budget. A uniform benefit-proportional surcharge can reduce an existing discrepancy continuously while never attaining zero.
+
+In the primary calibration with central retention, $x_{\min}/R=1.11693$ to five decimal places and Wenshan binds. Across the eleven positive-return combinations, the least extra budget ranges from 0.33603 to 4.72100 times $R$, rounded. A budget of $R$ suffices for exact alignment in three. These statements allow a different schedule in each scenario.
+
+\section{A schedule chosen in advance}
+Fix the budget at $x=R$ in each eligible scenario. The budget changes with $R$ while the proportions $u_i=z_i/R$ can be fixed in advance. Write $r_i=d_i/R$ and
+\[
+ h_i=(r_i+u_i)_+,\quad M=\sum_i h_i,\quad
+ L(u)=\tfrac12\sum_i |h_i/M-s_i| .
+\]
+Here $M\ge2$ since $\sum_i(r_i+u_i)=2$. Total variation equals the greatest gap in share on any subset of prefectures. The objective minimizes the maximum scenario loss over nonnegative $u_i$ summing to one. No scenario probabilities enter.
+
+Split each coordinate at the thresholds $-r_i$ that lie strictly between zero and one, including all scenarios in the group under consideration. The resulting closed boxes cover the simplex; discard only boxes whose lower or upper endpoint sums rule out intersection. On a box every $h_i$ is affine; either formula agrees at a shared boundary. For a proposed loss level $v$, the constraints for each scenario and nonempty proper subset $A$ are
+\[
+ \sum_{i\in A} h_i-\bigl(\sum_{i\in A}s_i+v\bigr)M\le0.
+\]
+Thus testing a level requires only finite linear feasibility problems. For an upper bound we evaluate a rational schedule directly with the original clipping rule. For a positive lower bound each surviving box has a saved nonnegative linear combination of its constraints, including its box bounds, whose affine left side is positive on the whole simplex. In particular a row $a^\top u+c$ has minimum $c+\min_i a_i$ there. This proves infeasibility at the given level. Numerical linear programming proposes schedules and multipliers. A separate exact-arithmetic replay verifies the bounds, including cell coverage. For a lower bound of zero nonnegativity suffices.
+
+\section{Cost of using the same geographic shares}
+The common-schedule optimum lies between 0.247514 and 0.247517. In one feasible schedule the contributions are 91.1144\%, approximately zero, 1.0465\% and 7.8391\% of the top-up from Kunming, Yuxi, Honghe and Wenshan, respectively (rounded). The archived witness keeps full rational precision. Total variation is a share of normalized downstream payments; it is not a fraction of avoided pollution. The table compares what can be achieved when an aspect of the scenario is revealed before the schedule is chosen. For each information level, solve once per observable group and take the worst group optimum.
+\begin{center}
+\begin{tabular}{lr}\toprule Information available & Worst optimal discrepancy\\\midrule
+Neither input & 0.24752\\
+Calibration only & 0.24292\\
+Retention only & 0.24292\\
+Both inputs & 0.24292\\
+\bottomrule\end{tabular}
+\end{center}
+The worst value under either partial information structure differs from the fully informed value by less than $3$ parts per million, by comparing certified intervals. Even with both inputs known, the all-months, high-retention case prevents a worst loss below 0.242922. The price of choosing shares before either input is revealed is about 0.46 percentage points of total variation. Individual scenarios can benefit more from advance information than this worst-case comparison suggests.
+
+The common witness is not unique at the accuracy reported here. At the fixed cap 0.247520, we extremized each share over all admissible schedules. Kunming can contribute between about 91.113 and 98.954 percent of the surcharge. Wenshan can contribute zero or as much as 7.841 percent. Honghe's entire range fits between 1.0457 and 1.0474 percent, while Yuxi must contribute less than 0.00285 percent. Each range projects the feasible set onto one coordinate; combining arbitrary endpoints need not produce a feasible schedule. For each endpoint the supplement gives a rational feasible allocation and a linear bound on every sign box. The narrow ranges result from the chosen loss cap and do not constitute recommendations for a negotiated contract.
+
+\clearpage
+\section{Interpretation and reproduction}
+The shares reflect modeled load benefit on specified reaches, including the source's allocation of shared boundary reaches. Another benefit measure, fiscal objective, transfer budget or site can change the answer. Total variation gives equal weight to a unit of excess share regardless of prefecture. The finite-scenario objective offers protection over the released combinations only. It does not characterize uncertainty between them or establish legal or political feasibility.
+
+Benefit-based cost allocation in water projects has a long history, including the method based on separable costs and remaining benefits [2]. Linear feasibility at fixed levels is a standard approach in quasiconvex optimization [3]. Here the substantive contribution is the numerical budget and information comparison for a signed prefecture-payment model with clipping and the certificates that make it checkable. The supplement includes the unmodified spatial-incidence table from [1] under CC BY 4.0, the original version and file identifiers, and our code and outputs. A standard-library verifier reconstructs the lower and upper certificates from the archived inputs.
+
+\textbf{Model assessments and review context.} OpenAI Codex participated in the analysis, writing and verification. The author administers AIRR. The assessment of the exact PDF records model identity and prior involvement.
+\par\small
+[1] H. Chen and coauthors. \emph{Replication package: Who gets paid for cleaner water? A hydrological diagnostic of section-based eco-compensation on the Nanpan River, China}. Version 1.2, 20 November 2026. \href{https://doi.org/10.5281/zenodo.24406441}{doi:10.5281/zenodo.24406441}.
+
+[2] U.S. Army Corps of Engineers. \emph{Planning Guidance Notebook}, ER 1105-2-100, Appendix E, cost allocation. \href{https://www.publications.usace.army.mil/portals/76/publications/engineerregulations/er_1105-2-100.pdf}{Agency document}.
+
+[3] S. Boyd and L. Vandenberghe. \emph{Convex Optimization}. Cambridge University Press, 2004, Algorithm 4.1. \href{https://stanford.edu/~boyd/cvxbook/}{Authors' edition}.
+\end{document}
