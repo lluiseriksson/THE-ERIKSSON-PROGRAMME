@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,booktabs,amsmath,geometry,hyperref}
+\geometry{margin=1in}
+\hypersetup{hidelinks}
+\title{Geographic support after country deletion in a European aquatic vegetation classification}
+\author{Lluis Eriksson}
+\date{20 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A European classification of free-floating aquatic vegetation pooled observations from 87 sources. The largest source contributed more plots than the total assigned to the 15 recognised associations in the complete dataset. This leaves geographic support unidentified from those two sets of margins alone. We derive deletion guarantees from the sampling design, the resampled association counts and the published distribution maps. Removing any one small country leaves at least 4,641 of the 5,481 resampled plots assigned to recognised associations. At least nine associations retain 50 plots each. For a medium or large country the corresponding guarantees are six or four associations. All 15 have a plotted observation outside the Netherlands, the geographic scope of the largest contributing database. These results concern retention of observations with the published classification held fixed.
+\end{abstract}
+
+\section{What the source totals identify}
+Von Lampe and colleagues classified aquatic vegetation from 125,029 plots across Europe \cite{study}. Their Supplement 2 lists 15,551 plots contributed by the Dutch National Vegetation Database, the largest contribution. In the complete dataset, the 15 recognised associations in System A sum to 15,461 plots in Table~1. This sum includes subassociations exactly once and excludes two unranked communities. The whole class, including plots assigned at higher ranks or to unranked units, contains 16,127 plots. Removing the largest source therefore leaves at least 576 class plots. In contrast, all recognised-association observations fit inside the largest source's capacity with 90 places to spare. They also all fit outside it. Both allocations match the source and association totals after filling residual positions with other plots. Neither allocation is proposed as a geographic reconstruction.
+
+For reuse of this classification, two questions are distinct. How many labelled observations must remain if a concentrated source or country is removed? Does each named association retain observations? We use different parts of the primary study to answer these questions without access to its restricted plot records.
+
+\section{A deletion bound for the resampled data}
+The published sampling procedure stratifies by country and by each of 21 \emph{provisional} associations. It retains at most $c=40$, 80 or 120 plots per stratum in a small, medium or large country, respectively. Thus a single country supplies at most $B=21c$ resampled plots. Subsequent relabelling into the final associations cannot increase that country's total. Applying the cap directly to each \emph{final} association would need a correspondence to the provisional strata. Our bound requires none. Throughout, deletion removes existing rows from the published resample. A new draw or a reclassification could change the labels.
+
+Let $n_i$ be the number in final association $i$. For a threshold $t\geq1$, reducing its retained count below $t$ costs at least
+\[
+d_i(t)=\max(0,n_i-t+1)
+\]
+row deletions. For $m$ disjoint associations, sort these costs as $d_{(1)}\leq\cdots\leq d_{(m)}$. The number guaranteed to retain at least $t$ observations is bounded below by
+\[
+m-\max\left\{k\in\{0,\ldots,m\}:\sum_{j=1}^{k} d_{(j)}\leq B\right\}.
+\]
+Indeed, removing the threshold from any $k$ associations costs at least the sum of the $k$ cheapest costs. Conversely, under an unrestricted row-deletion budget that sum suffices by taking the required rows in those associations. This proves sharpness for that relaxation. A geographic deletion can be more constrained.
+
+The 15 resampled counts in Table~1 of the source sum to 5,481. We use the association sample, excluding unranked communities, higher-rank assignments and the distinct ordination subset. The guarantees are:
+\begin{center}
+\begin{tabular}{lrrrrrr}
+\toprule
+Deleted country & Budget & Plots left, min. & \multicolumn{4}{c}{Associations left at threshold}\\
+& & & 1 & 20 & 50 & 100\\
+\midrule
+Small & 840 & 4,641 & 10 & 10 & 9 & 8\\
+Medium & 1,680 & 3,801 & 8 & 7 & 6 & 5\\
+Large & 2,520 & 2,961 & 5 & 5 & 4 & 3\\
+\bottomrule
+\end{tabular}
+\end{center}
+For example, six associations dropping below 50 plots cost at least 708 deletions, whereas seven cost at least 999. Hence any small-country deletion preserves that threshold for at least nine associations. Thresholds indicate retained observations. They carry no assumption that plots are independent sites or that 50 observations ensure ecological representativeness.
+
+\section{A geographic witness for each recognised association}
+Figure~6 of the study plots geolocated resampled observations as points. The background also incorporates information from the literature and inferred distributions. We use only observed points. Supplement~2 identifies the largest source as EU-NL-001. The registry lists the Netherlands as its sole country with 100\% coverage \cite{registry}. The following panel checks use broad locations well away from its boundary. One subordinate panel suffices to witness its parent association.
+\begin{center}
+\begin{tabular}{ll@{\hspace{1em}}ll}
+\toprule
+Panel & Observed region & Panel & Observed region\\
+\midrule
+A01 & Iberian Peninsula & C01 & Southern Balkans\\
+A02 & Italian peninsula & C02 & Northern Fennoscandia\\
+A03 & Italian peninsula & C03 & Italian peninsula\\
+A04 & Sicily & C04 & East-central Europe\\
+B01A & Iberian Peninsula & D01 & Iberian Peninsula\\
+B02 & Ireland & D02 & Sicily\\
+B03A & Iberian Peninsula & E01A & Iberian Peninsula\\
+E02 & Anatolia & &\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each of the 15 associations thus has at least one retained observation outside the Netherlands. This establishes representation following deletion of the Dutch source given its registered scope. It supplies neither an exact count outside that source for each association nor evidence of present-day persistence. In particular, a parent can have a mapped witness even if a subordinate unit lacks geolocated points.
+
+\section{Scope and reproduction}
+The source study reports geographic concentration and constructs the resample to reduce it. Our contribution is to translate its stratum caps into quantitative simultaneous retention guarantees for its final named associations and to check the Dutch-source case against the mapped observations. This is a descriptive assessment of fixed labels. Taxonomic validity after refitting, diversity estimates after source removal and geographic transferability require further evidence. The package provides the transcribed counts, broad map witnesses, source hashes and an exact subset-enumeration check of the sorted-cost formula.
+
+\paragraph{Model assessments and review context.} OpenAI Codex assisted in the analysis, map reading and writing. Any attached model assessment applies to its identified PDF. No independent peer review is documented.
+\begin{thebibliography}{9}
+\bibitem{study} F. von Lampe and colleagues (2026). Classification of European free-floating aquatic vegetation (\emph{Lemnetea}) to the association level. \href{https://doi.org/10.3897/VCS.188965}{Primary article}, Table~1, resampling methods, \href{https://binary.pensoft.net/fig/1841079/oo/file.jpg}{Figure~6} and \href{https://binary.pensoft.net/file/1841081}{Supplement~2}.
+\bibitem{registry} Global Index of Vegetation-Plot Databases. \href{https://www.givd.info/api/givd/EU-NL-001}{Dutch National Vegetation Database, EU-NL-001}. Registry record consulted 20 November 2026.
+\end{thebibliography}
+\end{document}
