@@ -1,0 +1,3390 @@
+{
+  "pin": "ecc264d51cae1fb5a3ef85b35b8b7a8c26b2cf47",
+  "enumerated_pairs": 1344,
+  "instances": [
+    {
+      "path": "data/10 47 48.txt",
+      "git_blob": "54def71f536baab3768bb864233a787bb4f77c41",
+      "sha256": "7ec352f860655bfdad90213c71183dc687d799466496b17230c0e2d858daf029",
+      "scale": 1,
+      "vertices": 200,
+      "ordered_triangle_violations": 0,
+      "worst_raw_defect": 0,
+      "service_adjusted_violations": 0,
+      "parcels": [
+        {
+          "p": 105,
+          "d": 106,
+          "direct": 9,
+          "lower": 9,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 107,
+          "d": 108,
+          "direct": 18,
+          "lower": 18,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 109,
+          "d": 110,
+          "direct": 47,
+          "lower": 47,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 111,
+          "d": 112,
+          "direct": 22,
+          "lower": 22,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 113,
+          "d": 114,
+          "direct": 50,
+          "lower": 50,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 115,
+          "d": 116,
+          "direct": 11,
+          "lower": 11,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 117,
+          "d": 118,
+          "direct": 74,
+          "lower": 74,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 119,
+          "d": 120,
+          "direct": 59,
+          "lower": 59,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 121,
+          "d": 122,
+          "direct": 87,
+          "lower": 87,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 123,
+          "d": 124,
+          "direct": 25,
+          "lower": 25,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 125,
+          "d": 126,
+          "direct": 76,
+          "lower": 76,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 127,
+          "d": 128,
+          "direct": 48,
+          "lower": 48,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 129,
+          "d": 130,
+          "direct": 83,
+          "lower": 83,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 131,
+          "d": 132,
+          "direct": 26,
+          "lower": 26,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 133,
+          "d": 134,
+          "direct": 41,
+          "lower": 41,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 135,
+          "d": 136,
+          "direct": 49,
+          "lower": 49,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 137,
+          "d": 138,
+          "direct": 53,
+          "lower": 53,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 139,
+          "d": 140,
+          "direct": 52,
+          "lower": 52,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 141,
+          "d": 142,
+          "direct": 72,
+          "lower": 72,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 143,
+          "d": 144,
+          "direct": 104,
+          "lower": 104,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 145,
+          "d": 146,
+          "direct": 12,
+          "lower": 12,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 147,
+          "d": 148,
+          "direct": 47,
+          "lower": 47,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 149,
+          "d": 150,
+          "direct": 9,
+          "lower": 9,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 151,
+          "d": 152,
+          "direct": 123,
+          "lower": 123,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 153,
+          "d": 154,
+          "direct": 64,
+          "lower": 64,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 155,
+          "d": 156,
+          "direct": 31,
+          "lower": 31,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 157,
+          "d": 158,
+          "direct": 90,
+          "lower": 90,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 159,
+          "d": 160,
+          "direct": 49,
+          "lower": 49,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 161,
+          "d": 162,
+          "direct": 67,
+          "lower": 67,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 163,
+          "d": 164,
+          "direct": 50,
+          "lower": 50,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 165,
+          "d": 166,
+          "direct": 59,
+          "lower": 59,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 167,
+          "d": 168,
+          "direct": 90,
+          "lower": 90,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 169,
+          "d": 170,
+          "direct": 55,
+          "lower": 55,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 171,
+          "d": 172,
+          "direct": 35,
+          "lower": 35,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 173,
+          "d": 174,
+          "direct": 89,
+          "lower": 89,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 175,
+          "d": 176,
+          "direct": 44,
+          "lower": 44,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 177,
+          "d": 178,
+          "direct": 19,
+          "lower": 19,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 179,
+          "d": 180,
+          "direct": 57,
+          "lower": 57,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 181,
+          "d": 182,
+          "direct": 37,
+          "lower": 37,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 183,
+          "d": 184,
+          "direct": 39,
+          "lower": 39,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 185,
+          "d": 186,
+          "direct": 17,
+          "lower": 17,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 187,
+          "d": 188,
+          "direct": 28,
+          "lower": 28,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 189,
+          "d": 190,
+          "direct": 62,
+          "lower": 62,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 191,
+          "d": 192,
+          "direct": 81,
+          "lower": 81,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 193,
+          "d": 194,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 195,
+          "d": 196,
+          "direct": 53,
+          "lower": 53,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 197,
+          "d": 198,
+          "direct": 76,
+          "lower": 76,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 199,
+          "d": 200,
+          "direct": 98,
+          "lower": 98,
+          "admissible_taxis": 10
+        }
+      ]
+    },
+    {
+      "path": "data/10 50 50.txt",
+      "git_blob": "fcc0ec780a4c51c1a2ea2095d6f704a6396326dd",
+      "sha256": "8536961497a725a8840a556a639ea43b2f906709144cad125be34207fe7731fb",
+      "scale": 1,
+      "vertices": 210,
+      "ordered_triangle_violations": 0,
+      "worst_raw_defect": 0,
+      "service_adjusted_violations": 0,
+      "parcels": [
+        {
+          "p": 111,
+          "d": 112,
+          "direct": 75,
+          "lower": 75,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 113,
+          "d": 114,
+          "direct": 55,
+          "lower": 55,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 115,
+          "d": 116,
+          "direct": 37,
+          "lower": 37,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 117,
+          "d": 118,
+          "direct": 58,
+          "lower": 58,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 119,
+          "d": 120,
+          "direct": 15,
+          "lower": 15,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 121,
+          "d": 122,
+          "direct": 44,
+          "lower": 44,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 123,
+          "d": 124,
+          "direct": 49,
+          "lower": 49,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 125,
+          "d": 126,
+          "direct": 64,
+          "lower": 64,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 127,
+          "d": 128,
+          "direct": 43,
+          "lower": 43,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 129,
+          "d": 130,
+          "direct": 74,
+          "lower": 74,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 131,
+          "d": 132,
+          "direct": 43,
+          "lower": 43,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 133,
+          "d": 134,
+          "direct": 49,
+          "lower": 49,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 135,
+          "d": 136,
+          "direct": 4,
+          "lower": 4,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 137,
+          "d": 138,
+          "direct": 55,
+          "lower": 55,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 139,
+          "d": 140,
+          "direct": 15,
+          "lower": 15,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 141,
+          "d": 142,
+          "direct": 9,
+          "lower": 9,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 143,
+          "d": 144,
+          "direct": 74,
+          "lower": 74,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 145,
+          "d": 146,
+          "direct": 94,
+          "lower": 94,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 147,
+          "d": 148,
+          "direct": 10,
+          "lower": 10,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 149,
+          "d": 150,
+          "direct": 52,
+          "lower": 52,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 151,
+          "d": 152,
+          "direct": 36,
+          "lower": 36,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 153,
+          "d": 154,
+          "direct": 89,
+          "lower": 89,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 155,
+          "d": 156,
+          "direct": 23,
+          "lower": 23,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 157,
+          "d": 158,
+          "direct": 48,
+          "lower": 48,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 159,
+          "d": 160,
+          "direct": 45,
+          "lower": 45,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 161,
+          "d": 162,
+          "direct": 57,
+          "lower": 57,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 163,
+          "d": 164,
+          "direct": 32,
+          "lower": 32,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 165,
+          "d": 166,
+          "direct": 59,
+          "lower": 59,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 167,
+          "d": 168,
+          "direct": 15,
+          "lower": 15,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 169,
+          "d": 170,
+          "direct": 26,
+          "lower": 26,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 171,
+          "d": 172,
+          "direct": 51,
+          "lower": 51,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 173,
+          "d": 174,
+          "direct": 86,
+          "lower": 86,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 175,
+          "d": 176,
+          "direct": 50,
+          "lower": 50,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 177,
+          "d": 178,
+          "direct": 71,
+          "lower": 71,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 179,
+          "d": 180,
+          "direct": 55,
+          "lower": 55,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 181,
+          "d": 182,
+          "direct": 62,
+          "lower": 62,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 183,
+          "d": 184,
+          "direct": 48,
+          "lower": 48,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 185,
+          "d": 186,
+          "direct": 63,
+          "lower": 63,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 187,
+          "d": 188,
+          "direct": 71,
+          "lower": 71,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 189,
+          "d": 190,
+          "direct": 84,
+          "lower": 84,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 191,
+          "d": 192,
+          "direct": 47,
+          "lower": 47,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 193,
+          "d": 194,
+          "direct": 28,
+          "lower": 28,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 195,
+          "d": 196,
+          "direct": 51,
+          "lower": 51,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 197,
+          "d": 198,
+          "direct": 9,
+          "lower": 9,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 199,
+          "d": 200,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 201,
+          "d": 202,
+          "direct": 22,
+          "lower": 22,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 203,
+          "d": 204,
+          "direct": 30,
+          "lower": 30,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 205,
+          "d": 206,
+          "direct": 69,
+          "lower": 69,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 207,
+          "d": 208,
+          "direct": 36,
+          "lower": 36,
+          "admissible_taxis": 10
+        },
+        {
+          "p": 209,
+          "d": 210,
+          "direct": 33,
+          "lower": 33,
+          "admissible_taxis": 10
+        }
+      ]
+    },
+    {
+      "path": "data/2 2 2.txt",
+      "git_blob": "aa4aa1aa82a0eda7212823f583375f7a169db0bc",
+      "sha256": "0aafea6e504ad61748b19f0861346e274c069d78353dfa09ef8019df48377453",
+      "scale": 1,
+      "vertices": 10,
+      "ordered_triangle_violations": 4,
+      "worst_raw_defect": 1,
+      "service_adjusted_violations": 0,
+      "parcels": [
+        {
+          "p": 7,
+          "d": 8,
+          "direct": 7,
+          "lower": 7,
+          "admissible_taxis": 2
+        },
+        {
+          "p": 9,
+          "d": 10,
+          "direct": 10,
+          "lower": 10,
+          "admissible_taxis": 2
+        }
+      ]
+    },
+    {
+      "path": "data/2 3 3.txt",
+      "git_blob": "6dcd70c1583dfd7891320b73f5f0deec48f9dd06",
+      "sha256": "b050e229212d2819cb77601370933b333da93303997b1b3a7cdc66d444144592",
+      "scale": 1,
+      "vertices": 14,
+      "ordered_triangle_violations": 0,
+      "worst_raw_defect": 0,
+      "service_adjusted_violations": 0,
+      "parcels": [
+        {
+          "p": 9,
+          "d": 10,
+          "direct": 57,
+          "lower": 57,
+          "admissible_taxis": 2
+        },
+        {
+          "p": 11,
+          "d": 12,
+          "direct": 81,
+          "lower": 81,
+          "admissible_taxis": 2
+        },
+        {
+          "p": 13,
+          "d": 14,
+          "direct": 24,
+          "lower": 24,
+          "admissible_taxis": 2
+        }
+      ]
+    },
+    {
+      "path": "data/20 120 120.txt",
+      "git_blob": "7a26fc945867a532a82179402b5ab374e5388d0a",
+      "sha256": "93baf239e2d2ccb44cfb2b2a14bb15c42804acfc6f8f186cc9f05896e62b86e4",
+      "scale": 1,
+      "vertices": 500,
+      "ordered_triangle_violations": 0,
+      "worst_raw_defect": 0,
+      "service_adjusted_violations": 0,
+      "parcels": [
+        {
+          "p": 261,
+          "d": 262,
+          "direct": 16,
+          "lower": 16,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 263,
+          "d": 264,
+          "direct": 93,
+          "lower": 93,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 265,
+          "d": 266,
+          "direct": 76,
+          "lower": 76,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 267,
+          "d": 268,
+          "direct": 8,
+          "lower": 8,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 269,
+          "d": 270,
+          "direct": 67,
+          "lower": 67,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 271,
+          "d": 272,
+          "direct": 22,
+          "lower": 22,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 273,
+          "d": 274,
+          "direct": 73,
+          "lower": 73,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 275,
+          "d": 276,
+          "direct": 47,
+          "lower": 47,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 277,
+          "d": 278,
+          "direct": 67,
+          "lower": 67,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 279,
+          "d": 280,
+          "direct": 56,
+          "lower": 56,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 281,
+          "d": 282,
+          "direct": 29,
+          "lower": 29,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 283,
+          "d": 284,
+          "direct": 81,
+          "lower": 81,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 285,
+          "d": 286,
+          "direct": 79,
+          "lower": 79,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 287,
+          "d": 288,
+          "direct": 97,
+          "lower": 97,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 289,
+          "d": 290,
+          "direct": 46,
+          "lower": 46,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 291,
+          "d": 292,
+          "direct": 58,
+          "lower": 58,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 293,
+          "d": 294,
+          "direct": 35,
+          "lower": 35,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 295,
+          "d": 296,
+          "direct": 42,
+          "lower": 42,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 297,
+          "d": 298,
+          "direct": 74,
+          "lower": 74,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 299,
+          "d": 300,
+          "direct": 80,
+          "lower": 80,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 301,
+          "d": 302,
+          "direct": 15,
+          "lower": 15,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 303,
+          "d": 304,
+          "direct": 48,
+          "lower": 48,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 305,
+          "d": 306,
+          "direct": 70,
+          "lower": 70,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 307,
+          "d": 308,
+          "direct": 28,
+          "lower": 28,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 309,
+          "d": 310,
+          "direct": 106,
+          "lower": 106,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 311,
+          "d": 312,
+          "direct": 42,
+          "lower": 42,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 313,
+          "d": 314,
+          "direct": 60,
+          "lower": 60,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 315,
+          "d": 316,
+          "direct": 83,
+          "lower": 83,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 317,
+          "d": 318,
+          "direct": 65,
+          "lower": 65,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 319,
+          "d": 320,
+          "direct": 48,
+          "lower": 48,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 321,
+          "d": 322,
+          "direct": 75,
+          "lower": 75,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 323,
+          "d": 324,
+          "direct": 70,
+          "lower": 70,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 325,
+          "d": 326,
+          "direct": 37,
+          "lower": 37,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 327,
+          "d": 328,
+          "direct": 44,
+          "lower": 44,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 329,
+          "d": 330,
+          "direct": 84,
+          "lower": 84,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 331,
+          "d": 332,
+          "direct": 55,
+          "lower": 55,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 333,
+          "d": 334,
+          "direct": 73,
+          "lower": 73,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 335,
+          "d": 336,
+          "direct": 11,
+          "lower": 11,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 337,
+          "d": 338,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 339,
+          "d": 340,
+          "direct": 94,
+          "lower": 94,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 341,
+          "d": 342,
+          "direct": 23,
+          "lower": 23,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 343,
+          "d": 344,
+          "direct": 30,
+          "lower": 30,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 345,
+          "d": 346,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 347,
+          "d": 348,
+          "direct": 65,
+          "lower": 65,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 349,
+          "d": 350,
+          "direct": 63,
+          "lower": 63,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 351,
+          "d": 352,
+          "direct": 36,
+          "lower": 36,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 353,
+          "d": 354,
+          "direct": 16,
+          "lower": 16,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 355,
+          "d": 356,
+          "direct": 28,
+          "lower": 28,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 357,
+          "d": 358,
+          "direct": 104,
+          "lower": 104,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 359,
+          "d": 360,
+          "direct": 42,
+          "lower": 42,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 361,
+          "d": 362,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 363,
+          "d": 364,
+          "direct": 72,
+          "lower": 72,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 365,
+          "d": 366,
+          "direct": 102,
+          "lower": 102,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 367,
+          "d": 368,
+          "direct": 55,
+          "lower": 55,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 369,
+          "d": 370,
+          "direct": 80,
+          "lower": 80,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 371,
+          "d": 372,
+          "direct": 71,
+          "lower": 71,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 373,
+          "d": 374,
+          "direct": 58,
+          "lower": 58,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 375,
+          "d": 376,
+          "direct": 93,
+          "lower": 93,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 377,
+          "d": 378,
+          "direct": 64,
+          "lower": 64,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 379,
+          "d": 380,
+          "direct": 53,
+          "lower": 53,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 381,
+          "d": 382,
+          "direct": 63,
+          "lower": 63,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 383,
+          "d": 384,
+          "direct": 68,
+          "lower": 68,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 385,
+          "d": 386,
+          "direct": 95,
+          "lower": 95,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 387,
+          "d": 388,
+          "direct": 52,
+          "lower": 52,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 389,
+          "d": 390,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 391,
+          "d": 392,
+          "direct": 59,
+          "lower": 59,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 393,
+          "d": 394,
+          "direct": 74,
+          "lower": 74,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 395,
+          "d": 396,
+          "direct": 24,
+          "lower": 24,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 397,
+          "d": 398,
+          "direct": 43,
+          "lower": 43,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 399,
+          "d": 400,
+          "direct": 64,
+          "lower": 64,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 401,
+          "d": 402,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 403,
+          "d": 404,
+          "direct": 63,
+          "lower": 63,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 405,
+          "d": 406,
+          "direct": 55,
+          "lower": 55,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 407,
+          "d": 408,
+          "direct": 30,
+          "lower": 30,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 409,
+          "d": 410,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 411,
+          "d": 412,
+          "direct": 29,
+          "lower": 29,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 413,
+          "d": 414,
+          "direct": 72,
+          "lower": 72,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 415,
+          "d": 416,
+          "direct": 31,
+          "lower": 31,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 417,
+          "d": 418,
+          "direct": 30,
+          "lower": 30,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 419,
+          "d": 420,
+          "direct": 67,
+          "lower": 67,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 421,
+          "d": 422,
+          "direct": 62,
+          "lower": 62,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 423,
+          "d": 424,
+          "direct": 33,
+          "lower": 33,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 425,
+          "d": 426,
+          "direct": 102,
+          "lower": 102,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 427,
+          "d": 428,
+          "direct": 36,
+          "lower": 36,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 429,
+          "d": 430,
+          "direct": 72,
+          "lower": 72,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 431,
+          "d": 432,
+          "direct": 60,
+          "lower": 60,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 433,
+          "d": 434,
+          "direct": 64,
+          "lower": 64,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 435,
+          "d": 436,
+          "direct": 24,
+          "lower": 24,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 437,
+          "d": 438,
+          "direct": 84,
+          "lower": 84,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 439,
+          "d": 440,
+          "direct": 84,
+          "lower": 84,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 441,
+          "d": 442,
+          "direct": 19,
+          "lower": 19,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 443,
+          "d": 444,
+          "direct": 69,
+          "lower": 69,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 445,
+          "d": 446,
+          "direct": 23,
+          "lower": 23,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 447,
+          "d": 448,
+          "direct": 96,
+          "lower": 96,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 449,
+          "d": 450,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 451,
+          "d": 452,
+          "direct": 43,
+          "lower": 43,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 453,
+          "d": 454,
+          "direct": 28,
+          "lower": 28,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 455,
+          "d": 456,
+          "direct": 81,
+          "lower": 81,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 457,
+          "d": 458,
+          "direct": 42,
+          "lower": 42,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 459,
+          "d": 460,
+          "direct": 49,
+          "lower": 49,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 461,
+          "d": 462,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 463,
+          "d": 464,
+          "direct": 37,
+          "lower": 37,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 465,
+          "d": 466,
+          "direct": 36,
+          "lower": 36,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 467,
+          "d": 468,
+          "direct": 90,
+          "lower": 90,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 469,
+          "d": 470,
+          "direct": 65,
+          "lower": 65,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 471,
+          "d": 472,
+          "direct": 45,
+          "lower": 45,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 473,
+          "d": 474,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 475,
+          "d": 476,
+          "direct": 76,
+          "lower": 76,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 477,
+          "d": 478,
+          "direct": 34,
+          "lower": 34,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 479,
+          "d": 480,
+          "direct": 87,
+          "lower": 87,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 481,
+          "d": 482,
+          "direct": 44,
+          "lower": 44,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 483,
+          "d": 484,
+          "direct": 15,
+          "lower": 15,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 485,
+          "d": 486,
+          "direct": 35,
+          "lower": 35,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 487,
+          "d": 488,
+          "direct": 64,
+          "lower": 64,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 489,
+          "d": 490,
+          "direct": 93,
+          "lower": 93,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 491,
+          "d": 492,
+          "direct": 37,
+          "lower": 37,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 493,
+          "d": 494,
+          "direct": 35,
+          "lower": 35,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 495,
+          "d": 496,
+          "direct": 46,
+          "lower": 46,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 497,
+          "d": 498,
+          "direct": 31,
+          "lower": 31,
+          "admissible_taxis": 20
+        },
+        {
+          "p": 499,
+          "d": 500,
+          "direct": 64,
+          "lower": 64,
+          "admissible_taxis": 20
+        }
+      ]
+    },
+    {
+      "path": "data/3 5 5.txt",
+      "git_blob": "bd9b8ec881c1702b8c19039ff464eecd3dc20ac1",
+      "sha256": "8f361e840b400122073d803ea2bcc4014846acc6e2be97988137ad33cdb9780b",
+      "scale": 1,
+      "vertices": 23,
+      "ordered_triangle_violations": 0,
+      "worst_raw_defect": 0,
+      "service_adjusted_violations": 0,
+      "parcels": [
+        {
+          "p": 14,
+          "d": 15,
+          "direct": 81,
+          "lower": 81,
+          "admissible_taxis": 3
+        },
+        {
+          "p": 16,
+          "d": 17,
+          "direct": 2,
+          "lower": 2,
+          "admissible_taxis": 3
+        },
+        {
+          "p": 18,
+          "d": 19,
+          "direct": 20,
+          "lower": 20,
+          "admissible_taxis": 3
+        },
+        {
+          "p": 20,
+          "d": 21,
+          "direct": 62,
+          "lower": 62,
+          "admissible_taxis": 3
+        },
+        {
+          "p": 22,
+          "d": 23,
+          "direct": 81,
+          "lower": 81,
+          "admissible_taxis": 3
+        }
+      ]
+    },
+    {
+      "path": "data/5 15 15.txt",
+      "git_blob": "44e260523dec3481cb0bf610cbeb7bbc43cf36f7",
+      "sha256": "43a51df111f47623bf90e2615129c009eb275ccae13cd8c2d39e3fd08a344e32",
+      "scale": 1,
+      "vertices": 65,
+      "ordered_triangle_violations": 0,
+      "worst_raw_defect": 0,
+      "service_adjusted_violations": 0,
+      "parcels": [
+        {
+          "p": 36,
+          "d": 37,
+          "direct": 93,
+          "lower": 93,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 38,
+          "d": 39,
+          "direct": 79,
+          "lower": 79,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 40,
+          "d": 41,
+          "direct": 65,
+          "lower": 65,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 42,
+          "d": 43,
+          "direct": 24,
+          "lower": 24,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 44,
+          "d": 45,
+          "direct": 45,
+          "lower": 45,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 46,
+          "d": 47,
+          "direct": 32,
+          "lower": 32,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 48,
+          "d": 49,
+          "direct": 40,
+          "lower": 40,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 50,
+          "d": 51,
+          "direct": 89,
+          "lower": 89,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 52,
+          "d": 53,
+          "direct": 50,
+          "lower": 50,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 54,
+          "d": 55,
+          "direct": 50,
+          "lower": 50,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 56,
+          "d": 57,
+          "direct": 92,
+          "lower": 92,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 58,
+          "d": 59,
+          "direct": 20,
+          "lower": 20,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 60,
+          "d": 61,
+          "direct": 86,
+          "lower": 86,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 62,
+          "d": 63,
+          "direct": 37,
+          "lower": 37,
+          "admissible_taxis": 5
+        },
+        {
+          "p": 64,
+          "d": 65,
+          "direct": 73,
+          "lower": 73,
+          "admissible_taxis": 5
+        }
+      ]
+    },
+    {
+      "path": "data/50 200 200.txt",
+      "git_blob": "06c60c33aa0b7e261861be7bce42e27d73104000",
+      "sha256": "dd328fe997fa6196238548a10677e43ac74c953963761a17aa81322d132d592b",
+      "scale": 1,
+      "vertices": 850,
+      "ordered_triangle_violations": 0,
+      "worst_raw_defect": 0,
+      "service_adjusted_violations": 0,
+      "parcels": [
+        {
+          "p": 451,
+          "d": 452,
+          "direct": 55,
+          "lower": 55,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 453,
+          "d": 454,
+          "direct": 96,
+          "lower": 96,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 455,
+          "d": 456,
+          "direct": 39,
+          "lower": 39,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 457,
+          "d": 458,
+          "direct": 54,
+          "lower": 54,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 459,
+          "d": 460,
+          "direct": 59,
+          "lower": 59,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 461,
+          "d": 462,
+          "direct": 31,
+          "lower": 31,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 463,
+          "d": 464,
+          "direct": 45,
+          "lower": 45,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 465,
+          "d": 466,
+          "direct": 55,
+          "lower": 55,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 467,
+          "d": 468,
+          "direct": 15,
+          "lower": 15,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 469,
+          "d": 470,
+          "direct": 11,
+          "lower": 11,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 471,
+          "d": 472,
+          "direct": 58,
+          "lower": 58,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 473,
+          "d": 474,
+          "direct": 65,
+          "lower": 65,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 475,
+          "d": 476,
+          "direct": 90,
+          "lower": 90,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 477,
+          "d": 478,
+          "direct": 33,
+          "lower": 33,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 479,
+          "d": 480,
+          "direct": 84,
+          "lower": 84,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 481,
+          "d": 482,
+          "direct": 58,
+          "lower": 58,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 483,
+          "d": 484,
+          "direct": 83,
+          "lower": 83,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 485,
+          "d": 486,
+          "direct": 48,
+          "lower": 48,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 487,
+          "d": 488,
+          "direct": 16,
+          "lower": 16,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 489,
+          "d": 490,
+          "direct": 33,
+          "lower": 33,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 491,
+          "d": 492,
+          "direct": 43,
+          "lower": 43,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 493,
+          "d": 494,
+          "direct": 82,
+          "lower": 82,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 495,
+          "d": 496,
+          "direct": 36,
+          "lower": 36,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 497,
+          "d": 498,
+          "direct": 67,
+          "lower": 67,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 499,
+          "d": 500,
+          "direct": 52,
+          "lower": 52,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 501,
+          "d": 502,
+          "direct": 66,
+          "lower": 66,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 503,
+          "d": 504,
+          "direct": 107,
+          "lower": 107,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 505,
+          "d": 506,
+          "direct": 100,
+          "lower": 100,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 507,
+          "d": 508,
+          "direct": 47,
+          "lower": 47,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 509,
+          "d": 510,
+          "direct": 36,
+          "lower": 36,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 511,
+          "d": 512,
+          "direct": 92,
+          "lower": 92,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 513,
+          "d": 514,
+          "direct": 79,
+          "lower": 79,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 515,
+          "d": 516,
+          "direct": 53,
+          "lower": 53,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 517,
+          "d": 518,
+          "direct": 31,
+          "lower": 31,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 519,
+          "d": 520,
+          "direct": 60,
+          "lower": 60,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 521,
+          "d": 522,
+          "direct": 56,
+          "lower": 56,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 523,
+          "d": 524,
+          "direct": 64,
+          "lower": 64,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 525,
+          "d": 526,
+          "direct": 53,
+          "lower": 53,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 527,
+          "d": 528,
+          "direct": 67,
+          "lower": 67,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 529,
+          "d": 530,
+          "direct": 82,
+          "lower": 82,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 531,
+          "d": 532,
+          "direct": 41,
+          "lower": 41,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 533,
+          "d": 534,
+          "direct": 42,
+          "lower": 42,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 535,
+          "d": 536,
+          "direct": 32,
+          "lower": 32,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 537,
+          "d": 538,
+          "direct": 34,
+          "lower": 34,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 539,
+          "d": 540,
+          "direct": 48,
+          "lower": 48,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 541,
+          "d": 542,
+          "direct": 96,
+          "lower": 96,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 543,
+          "d": 544,
+          "direct": 51,
+          "lower": 51,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 545,
+          "d": 546,
+          "direct": 29,
+          "lower": 29,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 547,
+          "d": 548,
+          "direct": 67,
+          "lower": 67,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 549,
+          "d": 550,
+          "direct": 69,
+          "lower": 69,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 551,
+          "d": 552,
+          "direct": 47,
+          "lower": 47,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 553,
+          "d": 554,
+          "direct": 12,
+          "lower": 12,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 555,
+          "d": 556,
+          "direct": 58,
+          "lower": 58,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 557,
+          "d": 558,
+          "direct": 54,
+          "lower": 54,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 559,
+          "d": 560,
+          "direct": 80,
+          "lower": 80,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 561,
+          "d": 562,
+          "direct": 30,
+          "lower": 30,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 563,
+          "d": 564,
+          "direct": 39,
+          "lower": 39,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 565,
+          "d": 566,
+          "direct": 66,
+          "lower": 66,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 567,
+          "d": 568,
+          "direct": 67,
+          "lower": 67,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 569,
+          "d": 570,
+          "direct": 15,
+          "lower": 15,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 571,
+          "d": 572,
+          "direct": 9,
+          "lower": 9,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 573,
+          "d": 574,
+          "direct": 35,
+          "lower": 35,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 575,
+          "d": 576,
+          "direct": 58,
+          "lower": 58,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 577,
+          "d": 578,
+          "direct": 29,
+          "lower": 29,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 579,
+          "d": 580,
+          "direct": 9,
+          "lower": 9,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 581,
+          "d": 582,
+          "direct": 60,
+          "lower": 60,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 583,
+          "d": 584,
+          "direct": 60,
+          "lower": 60,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 585,
+          "d": 586,
+          "direct": 95,
+          "lower": 95,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 587,
+          "d": 588,
+          "direct": 36,
+          "lower": 36,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 589,
+          "d": 590,
+          "direct": 62,
+          "lower": 62,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 591,
+          "d": 592,
+          "direct": 23,
+          "lower": 23,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 593,
+          "d": 594,
+          "direct": 59,
+          "lower": 59,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 595,
+          "d": 596,
+          "direct": 87,
+          "lower": 87,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 597,
+          "d": 598,
+          "direct": 43,
+          "lower": 43,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 599,
+          "d": 600,
+          "direct": 63,
+          "lower": 63,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 601,
+          "d": 602,
+          "direct": 102,
+          "lower": 102,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 603,
+          "d": 604,
+          "direct": 15,
+          "lower": 15,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 605,
+          "d": 606,
+          "direct": 34,
+          "lower": 34,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 607,
+          "d": 608,
+          "direct": 61,
+          "lower": 61,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 609,
+          "d": 610,
+          "direct": 55,
+          "lower": 55,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 611,
+          "d": 612,
+          "direct": 85,
+          "lower": 85,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 613,
+          "d": 614,
+          "direct": 60,
+          "lower": 60,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 615,
+          "d": 616,
+          "direct": 87,
+          "lower": 87,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 617,
+          "d": 618,
+          "direct": 71,
+          "lower": 71,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 619,
+          "d": 620,
+          "direct": 37,
+          "lower": 37,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 621,
+          "d": 622,
+          "direct": 52,
+          "lower": 52,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 623,
+          "d": 624,
+          "direct": 31,
+          "lower": 31,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 625,
+          "d": 626,
+          "direct": 31,
+          "lower": 31,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 627,
+          "d": 628,
+          "direct": 15,
+          "lower": 15,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 629,
+          "d": 630,
+          "direct": 89,
+          "lower": 89,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 631,
+          "d": 632,
+          "direct": 44,
+          "lower": 44,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 633,
+          "d": 634,
+          "direct": 70,
+          "lower": 70,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 635,
+          "d": 636,
+          "direct": 46,
+          "lower": 46,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 637,
+          "d": 638,
+          "direct": 95,
+          "lower": 95,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 639,
+          "d": 640,
+          "direct": 35,
+          "lower": 35,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 641,
+          "d": 642,
+          "direct": 84,
+          "lower": 84,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 643,
+          "d": 644,
+          "direct": 88,
+          "lower": 88,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 645,
+          "d": 646,
+          "direct": 18,
+          "lower": 18,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 647,
+          "d": 648,
+          "direct": 23,
+          "lower": 23,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 649,
+          "d": 650,
+          "direct": 23,
+          "lower": 23,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 651,
+          "d": 652,
+          "direct": 71,
+          "lower": 71,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 653,
+          "d": 654,
+          "direct": 62,
+          "lower": 62,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 655,
+          "d": 656,
+          "direct": 45,
+          "lower": 45,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 657,
+          "d": 658,
+          "direct": 34,
+          "lower": 34,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 659,
+          "d": 660,
+          "direct": 67,
+          "lower": 67,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 661,
+          "d": 662,
+          "direct": 83,
+          "lower": 83,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 663,
+          "d": 664,
+          "direct": 69,
+          "lower": 69,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 665,
+          "d": 666,
+          "direct": 11,
+          "lower": 11,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 667,
+          "d": 668,
+          "direct": 23,
+          "lower": 23,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 669,
+          "d": 670,
+          "direct": 76,
+          "lower": 76,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 671,
+          "d": 672,
+          "direct": 30,
+          "lower": 30,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 673,
+          "d": 674,
+          "direct": 101,
+          "lower": 101,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 675,
+          "d": 676,
+          "direct": 42,
+          "lower": 42,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 677,
+          "d": 678,
+          "direct": 36,
+          "lower": 36,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 679,
+          "d": 680,
+          "direct": 51,
+          "lower": 51,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 681,
+          "d": 682,
+          "direct": 37,
+          "lower": 37,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 683,
+          "d": 684,
+          "direct": 22,
+          "lower": 22,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 685,
+          "d": 686,
+          "direct": 13,
+          "lower": 13,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 687,
+          "d": 688,
+          "direct": 54,
+          "lower": 54,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 689,
+          "d": 690,
+          "direct": 102,
+          "lower": 102,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 691,
+          "d": 692,
+          "direct": 71,
+          "lower": 71,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 693,
+          "d": 694,
+          "direct": 23,
+          "lower": 23,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 695,
+          "d": 696,
+          "direct": 71,
+          "lower": 71,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 697,
+          "d": 698,
+          "direct": 72,
+          "lower": 72,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 699,
+          "d": 700,
+          "direct": 96,
+          "lower": 96,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 701,
+          "d": 702,
+          "direct": 41,
+          "lower": 41,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 703,
+          "d": 704,
+          "direct": 93,
+          "lower": 93,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 705,
+          "d": 706,
+          "direct": 48,
+          "lower": 48,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 707,
+          "d": 708,
+          "direct": 64,
+          "lower": 64,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 709,
+          "d": 710,
+          "direct": 41,
+          "lower": 41,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 711,
+          "d": 712,
+          "direct": 23,
+          "lower": 23,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 713,
+          "d": 714,
+          "direct": 80,
+          "lower": 80,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 715,
+          "d": 716,
+          "direct": 41,
+          "lower": 41,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 717,
+          "d": 718,
+          "direct": 64,
+          "lower": 64,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 719,
+          "d": 720,
+          "direct": 58,
+          "lower": 58,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 721,
+          "d": 722,
+          "direct": 84,
+          "lower": 84,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 723,
+          "d": 724,
+          "direct": 36,
+          "lower": 36,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 725,
+          "d": 726,
+          "direct": 85,
+          "lower": 85,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 727,
+          "d": 728,
+          "direct": 30,
+          "lower": 30,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 729,
+          "d": 730,
+          "direct": 53,
+          "lower": 53,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 731,
+          "d": 732,
+          "direct": 56,
+          "lower": 56,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 733,
+          "d": 734,
+          "direct": 33,
+          "lower": 33,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 735,
+          "d": 736,
+          "direct": 82,
+          "lower": 82,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 737,
+          "d": 738,
+          "direct": 50,
+          "lower": 50,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 739,
+          "d": 740,
+          "direct": 23,
+          "lower": 23,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 741,
+          "d": 742,
+          "direct": 22,
+          "lower": 22,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 743,
+          "d": 744,
+          "direct": 50,
+          "lower": 50,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 745,
+          "d": 746,
+          "direct": 114,
+          "lower": 114,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 747,
+          "d": 748,
+          "direct": 42,
+          "lower": 42,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 749,
+          "d": 750,
+          "direct": 39,
+          "lower": 39,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 751,
+          "d": 752,
+          "direct": 35,
+          "lower": 35,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 753,
+          "d": 754,
+          "direct": 78,
+          "lower": 78,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 755,
+          "d": 756,
+          "direct": 15,
+          "lower": 15,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 757,
+          "d": 758,
+          "direct": 23,
+          "lower": 23,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 759,
+          "d": 760,
+          "direct": 60,
+          "lower": 60,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 761,
+          "d": 762,
+          "direct": 52,
+          "lower": 52,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 763,
+          "d": 764,
+          "direct": 89,
+          "lower": 89,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 765,
+          "d": 766,
+          "direct": 66,
+          "lower": 66,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 767,
+          "d": 768,
+          "direct": 50,
+          "lower": 50,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 769,
+          "d": 770,
+          "direct": 47,
+          "lower": 47,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 771,
+          "d": 772,
+          "direct": 42,
+          "lower": 42,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 773,
+          "d": 774,
+          "direct": 14,
+          "lower": 14,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 775,
+          "d": 776,
+          "direct": 51,
+          "lower": 51,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 777,
+          "d": 778,
+          "direct": 87,
+          "lower": 87,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 779,
+          "d": 780,
+          "direct": 42,
+          "lower": 42,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 781,
+          "d": 782,
+          "direct": 86,
+          "lower": 86,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 783,
+          "d": 784,
+          "direct": 17,
+          "lower": 17,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 785,
+          "d": 786,
+          "direct": 62,
+          "lower": 62,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 787,
+          "d": 788,
+          "direct": 41,
+          "lower": 41,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 789,
+          "d": 790,
+          "direct": 69,
+          "lower": 69,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 791,
+          "d": 792,
+          "direct": 93,
+          "lower": 93,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 793,
+          "d": 794,
+          "direct": 48,
+          "lower": 48,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 795,
+          "d": 796,
+          "direct": 59,
+          "lower": 59,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 797,
+          "d": 798,
+          "direct": 37,
+          "lower": 37,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 799,
+          "d": 800,
+          "direct": 32,
+          "lower": 32,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 801,
+          "d": 802,
+          "direct": 85,
+          "lower": 85,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 803,
+          "d": 804,
+          "direct": 95,
+          "lower": 95,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 805,
+          "d": 806,
+          "direct": 11,
+          "lower": 11,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 807,
+          "d": 808,
+          "direct": 56,
+          "lower": 56,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 809,
+          "d": 810,
+          "direct": 91,
+          "lower": 91,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 811,
+          "d": 812,
+          "direct": 15,
+          "lower": 15,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 813,
+          "d": 814,
+          "direct": 50,
+          "lower": 50,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 815,
+          "d": 816,
+          "direct": 35,
+          "lower": 35,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 817,
+          "d": 818,
+          "direct": 65,
+          "lower": 65,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 819,
+          "d": 820,
+          "direct": 72,
+          "lower": 72,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 821,
+          "d": 822,
+          "direct": 46,
+          "lower": 46,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 823,
+          "d": 824,
+          "direct": 77,
+          "lower": 77,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 825,
+          "d": 826,
+          "direct": 46,
+          "lower": 46,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 827,
+          "d": 828,
+          "direct": 56,
+          "lower": 56,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 829,
+          "d": 830,
+          "direct": 62,
+          "lower": 62,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 831,
+          "d": 832,
+          "direct": 60,
+          "lower": 60,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 833,
+          "d": 834,
+          "direct": 75,
+          "lower": 75,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 835,
+          "d": 836,
+          "direct": 39,
+          "lower": 39,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 837,
+          "d": 838,
+          "direct": 31,
+          "lower": 31,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 839,
+          "d": 840,
+          "direct": 12,
+          "lower": 12,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 841,
+          "d": 842,
+          "direct": 67,
+          "lower": 67,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 843,
+          "d": 844,
+          "direct": 34,
+          "lower": 34,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 845,
+          "d": 846,
+          "direct": 41,
+          "lower": 41,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 847,
+          "d": 848,
+          "direct": 78,
+          "lower": 78,
+          "admissible_taxis": 50
+        },
+        {
+          "p": 849,
+          "d": 850,
+          "direct": 76,
+          "lower": 76,
+          "admissible_taxis": 50
+        }
+      ]
+    },
+    {
+      "path": "data/6 25 25.txt",
+      "git_blob": "f30cb23fceda95f3aad7ae746a5352658e7521c5",
+      "sha256": "efd60b42b4d73588d5dc3199eb32988e42a5e038f9108037c907920805478d0f",
+      "scale": 1,
+      "vertices": 106,
+      "ordered_triangle_violations": 0,
+      "worst_raw_defect": 0,
+      "service_adjusted_violations": 0,
+      "parcels": [
+        {
+          "p": 57,
+          "d": 58,
+          "direct": 55,
+          "lower": 55,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 59,
+          "d": 60,
+          "direct": 30,
+          "lower": 30,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 61,
+          "d": 62,
+          "direct": 53,
+          "lower": 53,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 63,
+          "d": 64,
+          "direct": 81,
+          "lower": 81,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 65,
+          "d": 66,
+          "direct": 44,
+          "lower": 44,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 67,
+          "d": 68,
+          "direct": 49,
+          "lower": 49,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 69,
+          "d": 70,
+          "direct": 82,
+          "lower": 82,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 71,
+          "d": 72,
+          "direct": 37,
+          "lower": 37,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 73,
+          "d": 74,
+          "direct": 95,
+          "lower": 95,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 75,
+          "d": 76,
+          "direct": 4,
+          "lower": 4,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 77,
+          "d": 78,
+          "direct": 41,
+          "lower": 41,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 79,
+          "d": 80,
+          "direct": 91,
+          "lower": 91,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 81,
+          "d": 82,
+          "direct": 85,
+          "lower": 85,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 83,
+          "d": 84,
+          "direct": 42,
+          "lower": 42,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 85,
+          "d": 86,
+          "direct": 42,
+          "lower": 42,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 87,
+          "d": 88,
+          "direct": 48,
+          "lower": 48,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 89,
+          "d": 90,
+          "direct": 72,
+          "lower": 72,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 91,
+          "d": 92,
+          "direct": 48,
+          "lower": 48,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 93,
+          "d": 94,
+          "direct": 1,
+          "lower": 1,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 95,
+          "d": 96,
+          "direct": 83,
+          "lower": 83,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 97,
+          "d": 98,
+          "direct": 69,
+          "lower": 69,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 99,
+          "d": 100,
+          "direct": 24,
+          "lower": 24,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 101,
+          "d": 102,
+          "direct": 39,
+          "lower": 39,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 103,
+          "d": 104,
+          "direct": 60,
+          "lower": 60,
+          "admissible_taxis": 6
+        },
+        {
+          "p": 105,
+          "d": 106,
+          "direct": 53,
+          "lower": 53,
+          "admissible_taxis": 6
+        }
+      ]
+    }
+  ]
+}
