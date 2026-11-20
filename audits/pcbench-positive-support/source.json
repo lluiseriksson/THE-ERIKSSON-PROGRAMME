@@ -1,0 +1,18 @@
+{
+  "doi": "10.5281/zenodo.24405487",
+  "authors": [
+    "Zogan, Hamad",
+    "Nawaf Abdualaziz Almolhis",
+    "Alhazmi, Ali",
+    "Shafei, Hassan",
+    "Okmi, Mohammed"
+  ],
+  "license": "CC BY 4.0",
+  "original_archive_sha256": "8009448892796d23e2aab1f242fe1297dfd8cc8f6cad897fd9a2344cca841bcb",
+  "table_sha256": {
+    "bench_summary.csv": "8d2dcda5a1984ca88e5c37d4e3b326159131bb162afd55fb8c35bfe3ebfe3d66",
+    "bench_panel_genes.csv": "d5b01fbbd295d9c052b316effdecb4f4918f9876963918296778ece32131cc9a"
+  },
+  "original_paths": "tcga_code/results/tables",
+  "changes": "Source CSVs reproduced without edits; derived certificate and article by Lluis Eriksson."
+}

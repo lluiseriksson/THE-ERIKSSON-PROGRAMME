@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,microtype}
+\usepackage[margin=1in]{geometry}\usepackage[hidelinks]{hyperref}
+\title{Which positive-control enrichment results survive conditioning on nonzero importance? A rank audit of PC-Bench}
+\author{Lluis Eriksson}\date{20 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+PC-Bench reports recovery of known controls among the top 50 genes ranked by model importance. A draw from all measured genes evaluates the whole pipeline. A draw from genes that received positive importance asks whether the ranking concentrates controls beyond entry into that group. The size of the latter group is missing from the released summary tables. We bound it from the ranks of positive and zero-importance controls and compute exact hypergeometric tail bounds. Among 94 configurations, 62 pass the nominal 0.05 cutoff against all measured genes. Of these, 33 pass at every support size admitted by the rank bounds, four fail at every such size, and 25 have bounds spanning the cutoff. The four forced changes occur in breast-cancer logistic-regression analyses. These are comparisons of reference distributions for fixed rankings, with no patient-level or clinical inference.
+\end{abstract}
+
+\section{Two questions for one ranking}
+PC-Bench [1] compares gene rankings from classifiers across filter choices, cohorts and validation protocols. In its analysis script, a gene that never receives positive model importance can still occupy an ordinal rank because the sort breaks ties. The same script reports, for each panel control, its rank and the fraction of fits with positive importance. This combination lets a reader address a second question without the patient data. Does the top of the ranking concentrate the controls that received any positive importance, when compared with a uniform draw from all genes that received positive importance?
+
+Let $G$ denote the total number of genes, $H_0$ the number of measured controls and $K=50$. The published reference draws $K$ genes without replacement from $G$ and counts controls. Our alternative uses the set of $M$ genes with strictly positive aggregate importance and its $H$ positive controls. The importances averaged in the released implementation are nonnegative, so positivity in any fit implies positive aggregate importance in exact arithmetic. We use the ordering of published ranks and positive-fit fractions and check their mutual consistency. If $M<K$, the alternative selects all $M$. The hit count $r$ for this alternative includes only positive controls in the published top $K$. In these tables it equals the published hit count for all 94 rows.
+
+The two nulls describe different reference populations. Neither implements label shuffling, refits the classifiers, or asserts that real genes are exchangeable. Background-set choice is a known problem in enrichment analysis [2]. We evaluate its consequences for these released results.
+
+\newpage
+\section{Bounds from the disclosed ranks}
+Let $L$ be the largest rank of a positive control, or zero if there is none. Let $U$ be one less than the smallest rank of a zero-importance control, or $G$ if there is none. Every strictly positive score precedes every zero score. Thus $L\le M\le U$. For the rank and positivity disclosures alone, every integer in this interval can be realized if tie order is unspecified: assign positive descending scores to the first $M$ positions and zero to the rest, keeping the labelled positions fixed. This argument does not assert that the fitted classifiers can produce every such arrangement.
+
+Write $k=\min(K,M)$. The upper-tail probability for the support-conditioned draw is
+\[
+ p_M(r)=\sum_{j\ge r}\binom{H}{j}\binom{M-H}{k-j}\big/\binom{M}{k},
+\]
+where terms outside the support vanish. For $M<K$ the draw is deterministic. For $M\ge K$, adding a noncontrol cannot increase the tail: randomly order the $M$ old genes, insert the new noncontrol uniformly, and take the first $K$ positions. At most one hit can be lost. Thus $p_U\le p_M\le p_L$. When $M=H=r=0$ the tail is one. One additional scalar per ranking, $M$, identifies the alternative tail exactly.
+
+\begin{table}[h]\centering
+\caption{Configurations by nominal tail probability. Each row is one pipeline configuration; configurations share data.}
+\begin{tabular}{lrr}\toprule
+Conditioned reference across $[L,U]$ & All-gene $p<0.05$ & All-gene $p\ge0.05$\\\midrule
+Always below 0.05 & 33 & 0\\
+Range spans the cutoff & 25 & 0\\
+Always at or above 0.05 & 4 & 32\\\midrule
+Total & 62 & 32\\\bottomrule
+\end{tabular}
+\end{table}
+
+For example, in the BRCA random-validation logistic regression with a median-absolute-deviation filter of size 2,000, one of twelve measured controls is in the top 50, and five controls have positive importance. The ranks bound the positive support between 1,152 and 5,663 among 20,211 measured genes. The all-gene tail is 0.02929. The alternative ranges from approximately 0.04339 to 0.19929. The ranks alone cannot settle which side of 0.05 this configuration falls on.
+
+Four other BRCA logistic-regression configurations have the same nominal all-gene tail of 0.02929. For the median-absolute-deviation filter of size 5,000, even the smallest possible conditioned tails are 0.06848 and 0.06834 for random and site-held-out validation. For the variance filter of size 2,000 the corresponding minima both round to 0.06865. No choice of the unknown positive support size within the rank bounds restores a below-cutoff result for these four rows.
+
+\newpage
+\section{Interpretation and reproduction}
+The four changes establish a specific limitation on interpretation. An enrichment result against all measured genes can coexist with an ordinary top-50 hit count among the genes that received positive importance. These four configurations still measure the combined effects of screening, fitting and ranking under their original reference. The analysis does not apportion effects between those stages or establish a biological mechanism.
+
+The intervals are deterministic consequences of the supplied marginal ranks and flags. They describe neither patient sampling uncertainty nor uncertainty in model training. Further restrictions from folds, architecture, numerical precision or tie ordering can narrow them. Reporting the positive-support count would resolve the reference calculation directly. For another dataset, the positive-hit count should also be stated if the top list contains zero scores.
+
+The row counts use a nominal cutoff for the specified comparison. The 94 configurations do not constitute independent replications or multiplicity-adjusted discoveries. The result concerns direct control recovery. Proxy recovery through correlated genes uses a different counting rule.
+
+\paragraph{Reproduction.} The two original CSV tables are distributed with attribution under CC BY 4.0 [1]. The accompanying verifier joins configurations and checks their ranks, positive-fit indicators and hit counts. It recomputes all 94 original tails, calculates the conditioned bounds by exact rational binomial sums, checks their endpoints against a separate numerical implementation, and outputs the full row-wise table. The package is maintained in the \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/research/pcbench-positive-support/audits/pcbench-positive-support}{programme repository}; the reproduction record pins the exact source commit.
+
+\paragraph{Model assessments and review context.} OpenAI Codex contributed to the calculation and manuscript. The exact PDF is assessed separately with model identity, file digest and shared-context disclosure. Independent peer review has not been documented.
+
+\paragraph{Sources.}
+[1] H. Zogan, N. A. Almolhis, A. Alhazmi, H. Shafei and M. Okmi. \emph{PC-Bench: Code, Data Splits and Results for ``Do SHAP Biomarker Pipelines Recover Known Cancer Biology?''} Version deposit, 20 November 2026. \href{https://doi.org/10.5281/zenodo.24405487}{doi:10.5281/zenodo.24405487}. Source tables: \texttt{bench\_summary.csv} and \texttt{bench\_panel\_genes.csv}.
+
+[2] J. A. Timmons, K. J. Szkop and I. J. Gallagher. Multiple sources of bias confound functional enrichment analysis of global omics data. \emph{Genome Biology} 16, 186 (2015). \href{https://doi.org/10.1186/s13059-015-0761-7}{doi:10.1186/s13059-015-0761-7}.
+\end{document}
