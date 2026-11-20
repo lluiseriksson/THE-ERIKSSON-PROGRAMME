@@ -1,0 +1,20 @@
+{
+  "url": "https://aemo.com.au/aemo/data/nem/priceanddemand/PRICE_AND_DEMAND_202503_NSW1.csv",
+  "digest": "bc5589d85400e2ce9dcbf93232ca17676280f3b0d6369a208c37efb923a04986",
+  "intervals": 8928,
+  "counts": {
+    "A_both_signs": 689,
+    "A_early": 34,
+    "A_late": 21,
+    "B_both_signs": 744,
+    "nonflat_minimal_variation": 3,
+    "order_bit_certified": 26,
+    "order_bit_early": 20,
+    "order_bit_late": 6,
+    "width_A_smaller": 211,
+    "width_B_smaller": 533
+  },
+  "tiny_vectors": 4096,
+  "tiny_summary_classes": 269,
+  "lp_checks": 1488
+}
