@@ -49,7 +49,7 @@ We used all 8,928 consecutive five-minute regional reference prices for New Sout
 \input{results.tex}
 
 \paragraph{Interpretation.}
-A strict ranking counts only if every feasible price path gives the same strict winner. A weak ranking permits a tie. Both signs means there are feasible paths giving opposite winners. These are retrospective identification statements for a fixed pair of schedules. Each hour in the real data has one realized price path. The additional paths witness information lost through the chosen summary. One zone, one month and one pair of schedules do not establish how frequently other markets or policies can be ranked. A whole-month operating strategy would also need inter-hour state-of-charge constraints.
+A strict ranking counts only if every feasible price path gives the same strict winner. A weak ranking permits a tie. Both signs means there are feasible paths giving opposite winners. These are retrospective identification statements for a fixed pair of schedules. Each hour in the real data has one realized price path. The additional paths witness information lost through the chosen summary. One zone, two months and one pair of schedules do not establish how frequently other markets or policies can be ranked. A whole-month operating strategy would also need inter-hour state-of-charge constraints.
 
 \paragraph{Reproduction.}
 The accompanying Python program uses rational arithmetic for prices, hull vertices, intersections and witness checks. A second implementation expresses the problem directly in the original price variables with auxiliary absolute differences and checks both endpoints numerically. Its comparison tolerance is $10^{-7}\max(1,|R|)$ in AUD. The data digest, classifications and exact extrema are in the accompanying source package. [\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/codex/despacho-baterias-20261120/audits/battery-price-summaries}{Reproduction files}]
@@ -58,9 +58,9 @@ The accompanying Python program uses rational arithmetic for prices, hull vertic
 AI assisted with analysis, software and writing. The author administers AIRR. Any assessment in the archive is tied to the exact PDF and records the reviewer's role.
 
 \paragraph{References.}
-[1] C. Adya, \emph{AI Dispatch for Battery Storage}, September 2026. \href{https://doi.org/10.5281/zenodo.24380609}{Zenodo version record}.\\
-[2] J. Seel et al., \emph{Identifying Barriers to Solar and Storage Hybrids}, 2026. \href{https://emp.lbl.gov/utility-scale-storage}{Berkeley Lab study and data}.\\
-[3] C. Aistleitner and J. Dick, \emph{Functions of bounded variation, signed measures, and a general Koksma--Hlawka inequality}, Acta Arith. 167 (2015), 143--171. \href{https://arxiv.org/abs/1406.0230}{arXiv:1406.0230}.\\
-[4] I. Pinelis, \emph{On the extreme points of moments sets}. \href{https://arxiv.org/abs/1204.0249}{arXiv:1204.0249}.\\
+[1] C. Adya, \emph{AI Dispatch for Battery Storage}, September 2026. \href{https://doi.org/10.5281/zenodo.24380609}{Zenodo version record}.\par\noindent
+[2] J. Seel et al., \emph{Identifying Barriers to Solar and Storage Hybrids}, 2026. \href{https://emp.lbl.gov/utility-scale-storage}{Berkeley Lab study and data}.\par\noindent
+[3] C. Aistleitner and J. Dick, \emph{Functions of bounded variation, signed measures, and a general Koksma--Hlawka inequality}, Acta Arith. 167 (2015), 143--171. \href{https://arxiv.org/abs/1406.0230}{arXiv:1406.0230}.\par\noindent
+[4] I. Pinelis, \emph{On the extreme points of moments sets}. \href{https://arxiv.org/abs/1204.0249}{arXiv:1204.0249}.\par\noindent
 [5] Australian Energy Market Operator, \emph{NSW1 Price and Demand, January 2025}. \href{https://aemo.com.au/aemo/data/nem/priceanddemand/PRICE_AND_DEMAND_202501_NSW1.csv}{Monthly source CSV}.
 \end{document}

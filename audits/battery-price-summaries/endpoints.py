@@ -96,20 +96,19 @@ def classify(lo,hi):
     return 'both_signs'
 
 
-def study():
-    with urlopen(Request(URL,headers={'User-Agent':'Mozilla/5.0 (research replay)'}),timeout=60) as response:
+def study(url=URL, digest=DIGEST, start=datetime(2025,1,1), hours=744):
+    with urlopen(Request(url,headers={'User-Agent':'Mozilla/5.0 (research replay)'}),timeout=60) as response:
         raw=response.read()
-    assert hashlib.sha256(raw).hexdigest()==DIGEST
+    assert hashlib.sha256(raw).hexdigest()==digest
     rows=list(csv.DictReader(io.StringIO(raw.decode('utf-8-sig'))))
-    start=datetime(2025,1,1)
-    assert len(rows)==744*12
+    assert len(rows)==hours*12
     for i,r in enumerate(rows,1):
         assert r['REGION']=='NSW1' and r['PERIODTYPE']=='TRADE'
         assert datetime.strptime(r['SETTLEMENTDATE'],'%Y/%m/%d %H:%M:%S')==start+timedelta(minutes=5*i)
     d=[Q(1,12)]*6+[Q(-1,12)]*6
     B=list(accumulate(d))[:-1]
     reports=[];transitions=Counter()
-    for h in range(744):
+    for h in range(hours):
         p=[Q(r['RRP']) for r in rows[12*h:12*h+12]]
         mean=sum(p)/12;g=p[-1]-p[0];v=sum(abs(x-y) for x,y in zip(p,p[1:]))
         pos,neg=(v+g)/2,(v-g)/2
@@ -123,7 +122,7 @@ def study():
         transitions[old+' -> '+new]+=1
         reports.append(dict(hour=(start+timedelta(hours=h)).isoformat(),old=[oldlo,oldhi],new=[lo,hi],
                             observed=observed,lower_witness=low_path,upper_witness=high_path,classification=new))
-    return dict(url=URL,sha256=DIGEST,hours=reports,transitions=dict(sorted(transitions.items())),
+    return dict(url=url,sha256=digest,hours=reports,transitions=dict(sorted(transitions.items())),
                 classifications=dict(Counter(r['classification'] for r in reports)),
                 strict_width_reductions=sum(r['new'][1]-r['new'][0]<r['old'][1]-r['old'][0] for r in reports),
                 lp_comparisons=2*len(reports))
