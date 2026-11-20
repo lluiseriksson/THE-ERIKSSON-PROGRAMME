@@ -1,0 +1,54 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{What monthly photovoltaic summaries can identify about sensors and missing days}
+\author{Lluis Eriksson}
+\date{November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We audit four columns of eight monthly summaries from an industrial rooftop photovoltaic system. Under the usual linear reference-yield model with common days and weights, the implied capacity intervals for May and June 2026 are disjoint even after rounding. Two positive daily records reproduce all four columns at their published precision: one retains every date and offsets the June irradiation reading; the other uses an unbiased sensor and omits one June irradiation reading. In May the printed performance ratio also differs from the quotient of mean yields. If it is a mean of daily ratios, we give a sharp lower bound on the product of daily reference-yield variability and performance-ratio dispersion. The constructive results identify which additional records could distinguish the explanations.
+\end{abstract}
+\section{A check on a common set of dates}
+Nugroho and Saputra [1] report monthly means for a plant with 409 modules rated at 550 Wp, giving $C=224.95$ kWp. Tables 1 and 2 cover September--December 2025 and May--August 2026. Let $T$ be daily theoretical yield (kWh), $H$ daily irradiation in the reference plane (kWh/m$^2$), $E$ generation (kWh), and $r=E/T$. With standard reference irradiance of 1 kW/m$^2$, the usual reference-yield model gives $T=C H$ numerically in these units [2]. Averaging preserves this identity for the same dates and weights.
+
+We interpret the commas in the second table's generation column as decimal separators. This choice is needed for the performance-ratio check. The capacity check uses only $T$ and $H$. With bars denoting means and half a final printed unit allowed on either side of each value, a common capacity must lie in
+\[
+\left[(\bar T-.005)/(\bar H+.0005),\quad(\bar T+.005)/(\bar H-.0005)\right].
+\]
+\begin{center}\begin{tabular}{lrrrr}\toprule
+Month & Printed $\bar T$ & Printed $\bar H$ & Capacity interval (kWp) & Printed PR\\\midrule
+May 2026 & 965.13 & 4.290 & $[224.9446,224.9994]$ & 54.4\%\\
+June 2026 & 920.02 & 4.095 & $[224.6405,224.6978]$ & 53.7\%\\\bottomrule
+\end{tabular}\end{center}
+The exact endpoints are separated by 0.24687985 kWp. Seven of the eight rows admit the stated nameplate; June is the exception. A single constant multiplicative recalibration of one column would merely rescale the common capacity and cannot close the gap. The paper reports platform exports. It does not establish that the two columns use one irradiance input, reference plane, or completeness rule.
+\newpage
+\section{Two daily records with the same monthly output}
+Take every calendar day in each month. In June, put true irradiation at 4.095 on 29 days and $30(920.02/224.95)-29(4.095)=3.94159924\ldots$ on the other. Set $T=C H$ daily. In the first record add $4.095-920.02/224.95=0.00511336\ldots$ kWh/m$^2$ to each June irradiation reading and retain all 30 readings. In the second record use true irradiation and omit the lower reading only from the irradiation mean. Both report 4.095 and the same theoretical mean of 920.02. In both, generation and performance ratio use all dates.
+
+For months other than May and June, constant $H=\bar T/C$ and $r=\bar E/\bar T$ reproduce all four rounded columns; the same constant-ratio rule works in June. In May only, split the 31 dates into groups of 15 and 16. Let $z$ be $16/31$ on the first group and $-15/31$ on the second. Choose
+\[
+ H=\bar T/C+0.5z,\quad r=.544+bz,\qquad
+ b=\frac{\bar E/C-(\bar T/C)(.544)}{0.5\,\overline{z^2}} .
+\]
+With $\bar E=523.323$ this yields the displayed means and $\overline{C H r}=\bar E$ exactly. Every constructed daily irradiation is positive and every performance ratio lies between zero and one. Thus the two synthetic explanations agree on all four audited columns in all eight months. Neither implies that the site actually missed a reading or suffered a sensor fault. The daily log in Table 5 covers August 2025, outside both monthly windows, and cannot distinguish these constructions.
+
+\section{A sharp variability requirement in May}
+The ratio of the two displayed mean yields in May is 54.2231\%. Even allowing rounding, its largest possible value is 54.2234\%, below the lower endpoint 54.35\% for the printed PR. If the latter is the unweighted daily mean $\bar r$, the identity
+\[
+ \bar E/\bar T-\bar r=\operatorname{Cov}(T,r)/\bar T
+\]
+forces negative covariance. Using population moments over the days and Cauchy--Schwarz gives the following bound in fractional PR units:
+\[
+ \operatorname{CV}(T)\operatorname{SD}(r)\ \geq\
+ .5435-\frac{523.3235}{965.125}=\frac{2793}{2206000}.
+\]
+Equivalently, the product is at least 0.126609 percentage points when PR dispersion is expressed in percentage points. This is sharp: set $\bar T=965.125$, $\bar E=523.3235$ and $\bar r=.5435$ in the two-level construction. Its centered ratio and yield are proportional with opposite signs, attaining equality in closed rounding bins. Moving the means into the bins gives the same infimum for tie-breaking conventions that exclude an endpoint. Day-level yields, sensor identifiers and the date masks actually used by each export could test these mechanisms. The calculation does not identify soiling losses or an optimal cleaning schedule.
+
+\paragraph{Model assessments and review context.} AI assisted with the analysis and writing. Assessments of this PDF are recorded separately by version and checksum. The accompanying scripts reconstruct the results from the publisher's PDF using rational arithmetic.
+\paragraph{References.}
+[1] D.~Nugroho and P.~P.~S.~Saputra, \emph{Assessment of Performance Ratio Variation in a 225 kWp Rooftop PV System Exposed to Industrial Fly Ash at PT Jaya Energi} (2026), \href{https://doi.org/10.25077/aijaset.v6i3.378}{doi:10.25077/aijaset.v6i3.378}.\par
+[2] B.~Marion et al., \emph{Performance Parameters for Grid-Connected PV Systems} (2005), \href{https://docs.nrel.gov/docs/fy05osti/37358.pdf}{NREL/CP-520-37358}.
+\end{document}
