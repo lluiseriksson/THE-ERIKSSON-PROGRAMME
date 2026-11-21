@@ -1,0 +1,23 @@
+{
+  "source_sha": "9047ead342efcb930281a8b4b6607a99dd3ccd55",
+  "inputs": {
+    "observed-commitment.tex": "594b497048d58d6b4dcf3dc89a6442d80d4b43bdb53575dd2beb6567be248dc1",
+    "verify_observation.py": "3906d947add55bd8f5c6192baea99b550263ee342d9908d4d96c46e37e2d5c1f",
+    "observation-gap.md": "00ce3bfd003cfbed43fee2c85973caa980c2fe0a66e97b14a26f73d58d65ca8d",
+    "low-observation.md": "826c428ddcbba75ef71c7ac23b43b21945b69965741bba8ef6e27cac33068384",
+    "stationary-adoption.md": "eed24074a6dcffb3a22ea32528f9c6f25fcd140465b3e735dc41a8c653dd7151",
+    "pooling-check.py": "b008a0e98f27e18bf5e25111997a1c4aacd543e3c0ccd5b6bb419effd0a03300",
+    "mixed-adoption.py": "476aa3ec8ea1f5cedd66947a37b7a0f460e6c9d9a9f76a363699527f040514eb",
+    "pooling.json": "13d98606d448cbfa5fd61080f61cfe2c62450542345cad364d5803563bec1fb1",
+    "mixture.json": "4becec6c44ba20467d62783a56bb0d3e369dd207f41592a923313e75499bfc6b"
+  },
+  "started_at": "2026-11-21T00:18:47.764653+00:00",
+  "status": "reproduced",
+  "pages": 4,
+  "pdf_sha256": [
+    "751122bf87b10f4f81b000ad17bdc07dc7e67618f39d6f75761508e1b25e5d9c",
+    "751122bf87b10f4f81b000ad17bdc07dc7e67618f39d6f75761508e1b25e5d9c"
+  ],
+  "pdf_bytes": 220544,
+  "finished_at": "2026-11-21T00:19:46.771360+00:00"
+}

@@ -1,0 +1,57 @@
+{
+  "paper_id": "ARR-2026-6ZKKRNH52D8X7SYV",
+  "version": "v1",
+  "version_id": "arr:version:85336508-5d76-4832-99c5-a9d7dc7d2177",
+  "canonical_sha256": "751122bf87b10f4f81b000ad17bdc07dc7e67618f39d6f75761508e1b25e5d9c",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-21T00:21:01.441992+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.65,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The pooling profiles yield the two required gap signs; the mixed example has y=2/5 and gap -9/10. The response-coupling bound isolates probability rho*x*(1-m), and minimization of max(0,d-(d+K)t)+dt gives d squared over d+K."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Attainability is constructive with Lipschitz fields. The statement about averaged adoption follows by integration of log odds on an interior absolutely continuous solution. The proof compresses off-path beliefs and private randomization into a few lines, though observing commitment makes the action known."
+    },
+    "novelty": {
+      "stars": 4,
+      "basis": "The source explicitly leaves lower observability open. Identification of limiting preference shares without full equilibrium classification, together with the selection-law comparison, adds a distinct analytical result in this game. Wider priority remains unestablished."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "Shows precisely how predictions for persistent AI commitment depend on the equilibrium-to-fitness rule. The conclusion remains model-specific to one-shot, randomly matched interactions."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "Parameters and fields are explicit. The runnable finite checks evaluate the pooling incentives in 197 cases and all pure technology/continuation deviations at the rational mixed witness. The four-page PDF was built twice with identical bytes."
+    }
+  },
+  "summary": "I inspected all four PDF pages and assessed the proofs against the source definition. They separate admissible dynamics constrained by all equilibrium signs from a realized-equilibrium replicator law. The positive-adoption path and the uniform material-gap bound address different dynamical claims. I assisted in deriving and writing this manuscript in the same context.",
+  "strengths": [
+    "Covers the threshold equality and allows the adoption cutoff to exceed one.",
+    "Supplies a positive-adoption path, with both type incentives and the material fitness gap computed.",
+    "Derives an observability-uniform lower bound sufficient for continuous-time cumulative adoption."
+  ],
+  "weaknesses": [
+    "The proof does not establish sharpness of the uniform fitness constant over the equilibrium set.",
+    "The compact discussion of posterior beliefs could be expanded for readers unfamiliar with perfect Bayesian equilibrium.",
+    "A reference near the end extends slightly into the right margin but remains legible."
+  ],
+  "potential_errors": [
+    "Stasis at negative realized gap is permissible under the source sign axiom only because another equilibrium has zero gap.",
+    "A finite integral controls the continuous-time average, not unrestricted pointwise convergence.",
+    "The coupling bound would require modification under correlated observation, assortative matching, or sequential responses."
+  ],
+  "strong_novelty_candidates": [
+    "The sharp low-observation limit interval and explicit positive limiting adoption go beyond a single equilibrium construction.",
+    "A simple uniform selection bound restores vanishing time-average adoption when evolution uses the realized payoff gap."
+  ],
+  "unresolved_material_objections": []
+}
