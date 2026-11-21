@@ -1,0 +1,39 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,geometry}\geometry{margin=1in}\usepackage[hidelinks]{hyperref}
+\title{Which dialect search engine wins after one query is removed?\\A cost-sensitive audit of a Palestinian Arabic retail pilot}
+\author{Lluis Eriksson}\date{21 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Seven retrieval methods were evaluated on the same Palestinian Arabic store queries. When every search event receives equal weight, the combined lexical method M3 cannot maximize a linear reward for successful retrieval minus a positive cost for false matches. Yet deleting either of two individual queries makes M3 strictly best at the same specified cost. The published comparison identifies their linguistic categories. We reconstruct the weight at which M3 leaves the operating frontier and bound the number of influential queries compatible with published margins and archived frequencies. These are sensitivity results for one catalogue.
+\end{abstract}
+\section{An operating decision hidden by the average}
+Sweity compared normalization, lexical expansion and the production engine on 57 distinct in-catalogue queries (93 events) and 17 catalogue gaps (26 events) \cite{sweity}. Success means that a relevant item appears in the top ten. A false hit is a nonempty response for a gap. The objective here is one unit per successful event and a loss $\lambda>0$ per false-hit event. It is a specified decision rule. The pilot did not elicit merchant costs or measure purchases. Comparing supporting lines follows the established convex-hull approach to uncertain costs \cite{provost}.
+\begin{center}\begin{tabular}{lrrrr}\toprule
+Method & Successes & Success events & False hits & False-hit events\\\midrule
+M0 raw &25&32&0&0\\ M1 normalization &28&36&0&0\\ M2 lexical base &35&61&1&2\\
+M2a partial matching &47&77&5&6\\ M2b spelling &39&69&2&3\\ M3 both &51&85&8&11\\
+LIVE production &51&87&9&12\\\bottomrule\end{tabular}\end{center}
+Each count is the sole integer in its printed rounding interval in Table 3 of the pilot. Queries, including their repetitions, receive the binary outcome of their method on the frozen catalogue.
+\newpage
+\section{Weighting repeat searches changes the choice}
+Give the first occurrence weight one and each repeat weight $t\in[0,1]$. A count with distinct-query total $a$ and event total $b$ becomes $a+t(b-a)$. Write $X$ for false hits and $Y$ for successes. At fixed $t$, any method maximizing $Y-\lambda X$ lies on the upper frontier of these seven points.
+At the false-hit count of M3, interpolating M2a and LIVE gives an expected excess over M3 of
+\[
+\frac{2t^2+t-2}{2+t}.
+\]
+Indeed the mixture fraction assigned to LIVE is $(3+2t)/(4+2t)$, found by matching false hits. Enumerating triples shows that M3 is strictly supported below $t_*=(\sqrt{17}-1)/4$, ties along this segment at $t_*$ and falls strictly below it above $t_*$. At $t=0$ M3 shares the largest success count with LIVE at fewer false hits and is strictly preferred at a sufficiently small positive cost.
+At $t=1$ the mixture uses LIVE five times in six in expectation. It obtains $85+1/3$ successes at the same 11 false hits as M3. Randomization is a mathematical comparator; this mixture was not deployed.
+\section{Two single-query reversals are forced}
+Table 4 reports two in-catalogue queries gained and two lost by LIVE relative to M3. Table 5 identifies the gains. For standard queries LIVE scored 22/22 versus 21/22, and for truncated queries 6/6 versus 5/6. Exactly one gain occurs in each category. The two losses occur among spelling variants.
+Remove either gained query and all of its occurrences. The seven false-hit counts are unchanged. M3 keeps all 85 successes, LIVE falls from 87 to at most 86, and the other methods can only lose successes. For $1<\lambda<8/5$ M3 then strictly beats LIVE because $85-11\lambda>86-12\lambda$. It beats M2a because $85-11\lambda>77-6\lambda$, and comparison with each remaining row yields a weaker upper bound. For instance, $\lambda=4/3$ works for either deletion. Before deleting anything, M3 strictly loses to the interpolated pair for every positive cost.
+\newpage
+\section{How many deletions can matter?}
+For each catalogue status, linguistic group (in-catalogue) and archived frequency, assign nonnegative integer numbers of queries to binary outcome patterns for all seven methods. Out-of-catalogue queries are pooled over language categories. Match the counts per frequency block, all four margins above, the paired constraints in Table 4 including the gap comparison, and the category-specific successes in Table 5. The supplement identifies frequencies but omits per-query historical method outputs.
+For each pattern and frequency, subtract its events from the seven points and intersect the six strict linear inequalities asking whether M3 is uniquely best at some positive cost. Minimizing and maximizing the sum of the resulting binary indicators times the assigned counts yields \textbf{3 to 9 queries out of 74}. Both endpoints have feasible integer witnesses. A separate exact checker reconstructs the margins and tests every candidate interval between pairwise cost intersections for each witness. The endpoints are solver bounds for this stated information set; a different cost may witness each deletion. They do not identify the exact count for the original rankings.
+\paragraph{Limits.} The calculation conditions on the published outcomes, binary labels and one frozen catalogue. Constraints do not encode precision, reciprocal rank, ranking lists or additional relations between search implementations beyond the reported pairings. Correlated visits by a shopper, alternative relevance judgments and time drift could change the operational verdict. A leave-one-query reversal is a sensitivity diagnostic, not an estimate of future sales or a recommendation to remove queries from evaluation.
+\paragraph{Reproduction and rights.} The supplement provides derived counts, anonymous frequency-block witnesses and scripts. Sweity's source code and labels are deposited under CC BY 4.0 \cite{sweity}. The archive hash is checked before reading data. The computation requires neither shopper strings in the output nor access to the merchant's current site.
+\paragraph{Model assessments and review context.} AI assistance was used in analysis, writing and verification. Any assessment of this exact version is recorded separately by PDF hash with its model identity and involvement. There was no external peer review in preparing this manuscript.
+\begin{thebibliography}{9}
+\bibitem{sweity} Y. Sweity. Searching in Dialect: A Pilot Study of Query Failures and Lexical Fixes in a Palestinian Arabic E-commerce Store. Zenodo, 2026. \href{https://doi.org/10.5281/zenodo.24409547}{doi:10.5281/zenodo.24409547}.
+\bibitem{provost} F. Provost and T. Fawcett. Robust Classification for Imprecise Environments. \emph{Machine Learning} 42, 203--231 (2001). \href{https://arxiv.org/abs/cs/0009007}{Author preprint}.
+\end{thebibliography}\end{document}

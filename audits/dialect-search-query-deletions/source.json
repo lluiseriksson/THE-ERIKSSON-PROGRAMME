@@ -1,0 +1,24 @@
+{
+  "doi": "10.5281/zenodo.24409547",
+  "concept": "10.5281/zenodo.24409546",
+  "title": "Searching in Dialect: A Pilot Study of Query Failures and Lexical Fixes in a Palestinian Arabic E-commerce Store",
+  "version": null,
+  "published": "2026-11-21",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "relations": [],
+  "artifacts": [
+    {
+      "name": "searching-in-dialect-data-code.zip",
+      "members": [
+        "data/labels.tsv",
+        "data/queries.json",
+        "scripts/evaluate.py",
+        "scripts/export_catalog.py",
+        "scripts/run_live.py"
+      ],
+      "sha256": "de12df29cbab125814ddd31141f7e4a5051dae5159d6da08ee75d4a5fa74cc86"
+    }
+  ]
+}

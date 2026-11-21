@@ -1,0 +1,55 @@
+{
+  "paper_id": "ARR-2026-3T11735HTM8NNRWY",
+  "version": "v1",
+  "version_id": "arr:version:da4039da-d433-4807-b483-dcc9ba548a60",
+  "canonical_sha256": "bc2345c469e53a5e9adaf9c14c7c5038ee239830c1eda16e001c79c6fb40e17d",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-21T02:00:44.067012+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.08,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "At cost 4/3, M3 beats LIVE after either gain is deleted, and M2a is its binding lower-false-hit competitor. The two endpoint histograms match marginals with integral counts."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Strict support is distinguished from ties, and different deletions may require different costs. Optimality for the gap between the endpoints and impossible alternatives relies on a numerical integer solver bound."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Cost-sensitive envelopes are classical. The recoverable linguistic categories and case-specific identified range supplement the original aggregate pilot; broader priority was not established."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "The same merchant could reverse a cost-sensitive choice by omitting one of two queries. A single shop and an assumed utility limit external economic implications."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Archive digest, scripts, feasible witnesses, and normal and optimized checks are available. Pin exact SciPy/HiGHS versions and archive independently checkable optimality proofs for stronger repeatability."
+    }
+  },
+  "summary": "I inspected the three rendered pages, computed the cost comparisons in sections 2 and 3 against the published margins and examined the endpoint witness checks. The two categorical reversals follow analytically. The 3–9 range is a computational partial-identification result within the declared information set. I participated in the construction and writing in the same context.",
+  "strengths": [
+    "Uses one cost for both guaranteed reversals.",
+    "Establishes both endpoint attainments for a clearly described information set.",
+    "Avoids treating repeated searches as independent merchants or sales."
+  ],
+  "weaknesses": [
+    "No cross-shop validation or elicited false-hit costs.",
+    "No independently verifiable solver optimality certificate beyond the objective bound and rerunnable program.",
+    "Full per-query outcome matrix and ranks were not obtained."
+  ],
+  "potential_errors": [
+    "Replacing raw counts with class-normalized rates while keeping the penalty 4/3 changes the decision.",
+    "A sharp bound for the reported binary margins need not be sharp when full rankings or dataset-specific algorithmic constraints are imposed."
+  ],
+  "strong_novelty_candidates": [
+    "Two specific linguistic categories force single-query decision reversals and the number of individually influential queries is bounded by two attainable endpoints."
+  ],
+  "unresolved_material_objections": []
+}
