@@ -1,0 +1,28 @@
+{
+  "doi": "10.5281/zenodo.24409217",
+  "concept": "10.5281/zenodo.24409216",
+  "title": "The Testability Atlas: Which Questions in Indian Historical Statistics Can Surviving Data Decide?",
+  "date": "2026-11-21",
+  "related": [
+    {
+      "identifier": "https://github.com/atharva-chourey-lab/testability-atlas",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ],
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "sha256": "1fe518a884782984b2f830f47c63df4a9ecf87d45888408f6b8e68a1465730ac",
+  "members": [
+    "atharva-chourey-lab-testability-atlas-9fa9fa6/",
+    "atharva-chourey-lab-testability-atlas-9fa9fa6/.zenodo.json",
+    "atharva-chourey-lab-testability-atlas-9fa9fa6/CITATION.cff",
+    "atharva-chourey-lab-testability-atlas-9fa9fa6/LICENSE",
+    "atharva-chourey-lab-testability-atlas-9fa9fa6/README.md",
+    "atharva-chourey-lab-testability-atlas-9fa9fa6/SOURCES.md",
+    "atharva-chourey-lab-testability-atlas-9fa9fa6/paper.md",
+    "atharva-chourey-lab-testability-atlas-9fa9fa6/paper.pdf"
+  ]
+}
