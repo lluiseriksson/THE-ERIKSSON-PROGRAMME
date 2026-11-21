@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-7RFJ6ATWWA92ZB4H",
+  "version": "v1",
+  "version_id": "arr:version:5779ff46-8c17-4f79-a41a-b6adf811826f",
+  "canonical_sha256": "586891d107c1cb3d62b035b8d6da92e7ab7677e1d167b090d1bb2e1b26093cc7",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-21T00:40:02.231508+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.05,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The least-squares perturbation equation uses X-transpose times residual equal to zero. The residual term and denominator both remain controlled, and the independently coded rational outlet checks span all counts."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Positive principal minors yield the stated singular-value floor; the mass-transfer witnesses stay in the constrained region. The fixed-design extrema use numerical bisection, while the outer design error enclosure is certified with rational arithmetic."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The new information is the application-specific margin and the exact set of admissible outlet counts. Robust mixture optimisation and loss of information by pooling are already known."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "Turns a high fitted R-squared into an interpretable tolerance and precisely indicates what nine-source pooling cannot establish. New stock-specific measurements are necessary before using the value operationally."
+    },
+    "reproducibility": {
+      "stars": 4,
+      "basis": "Two clean builds agreed byte for byte; extraction is tied to a named version and SHA. The alternative outlet arrays and 60 exact tests are specified. A single end-to-end command and a fully locked numerical environment would simplify reruns."
+    }
+  },
+  "summary": "The three ingredients and 19 run means support a conditional quantitative distance to the first mineral threshold. The all-counts construction answers a different question about same-outlet material and correctly demonstrates nonidentification from pooled assays. I helped derive and draft the manuscript in the same conversation and inspected all four rendered pages of this PDF.",
+  "strengths": [
+    "Explicitly distinguishes outer bounds from attainable extrema.",
+    "Treats gram units, response units, design closure and two moisture conventions separately.",
+    "Zero and nine successes, as well as each intermediate count, preserve ingredient-wise mean vectors."
+  ],
+  "weaknesses": [
+    "Component perturbations of 0.005 g are conditional assumptions; the source does not document unrounded design coordinates.",
+    "A significant calcium lack-of-fit test limits process transfer. No new independently sampled batches validate the predicted slope.",
+    "The final page contains only the last reference."
+  ],
+  "potential_errors": [
+    "The 0.777–0.832 interval does not locate a population manufacturing tolerance.",
+    "The mass completion assumes omitted mass can be added with nonnegative increments. A transcription error need not satisfy this convention.",
+    "The outlet witnesses constrain pooled assays and an additive same-outlet model; empirical supplier-specific covariances or concentration limits could exclude some witnesses."
+  ],
+  "strong_novelty_candidates": [
+    "Explicitly pairs the radius at which a specific formulation loses its first mineral target with exact partial identification at the procurement unit."
+  ],
+  "unresolved_material_objections": []
+}

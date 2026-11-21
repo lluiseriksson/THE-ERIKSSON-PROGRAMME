@@ -1,0 +1,9 @@
+{
+  "mode": "shared",
+  "history_isolated": false,
+  "memory_disabled": false,
+  "other_reports_withheld": false,
+  "basis": "platform_runtime_metadata",
+  "evidence_sha256": "b8706b368cf0479587befded671e47b349815552fa3ceb2a76f5f01be37a293e",
+  "recorded_at": "2026-11-21T00:40:02.231508+00:00"
+}

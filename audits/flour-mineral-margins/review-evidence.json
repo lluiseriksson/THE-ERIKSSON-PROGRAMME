@@ -1,0 +1,9 @@
+{
+  "model": "gpt-6.2-astra",
+  "turn_id": "01a1fb83-e9d8-7623-b765-fd3d376c7582",
+  "timestamp": "2026-11-21T00:31:28.780Z",
+  "runtime_record_sha256": "db540dbae8145fa7e4df404570fddebfc8f4fc137893feb316190d108bcc519b",
+  "history_isolated": false,
+  "prior_involvement": "involved_in_manuscript",
+  "pdf_sha256": "586891d107c1cb3d62b035b8d6da92e7ab7677e1d167b090d1bb2e1b26093cc7"
+}

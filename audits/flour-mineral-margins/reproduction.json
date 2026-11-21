@@ -1,0 +1,27 @@
+{
+  "source_sha": "601c93a0f28095a12f03a0bd4a03392e08de92f7",
+  "inputs": {
+    "flour-margins.tex": "4f70ab7e19b9e736d117a57463c06910e7c1bdce0601198fde363399fd8f4cb8",
+    "verify_flour.py": "5522c9dc4f1f1d13f5946491ebfc19f5728db0271e4805bbc8054ea5ba733f6c",
+    "reproduce-flour.md": "84910281217757d07c2a01a200d9f0686988a8b1ec612bee7c18a87ee1edfc22",
+    "millet-tables.py": "c88f142862ae0a8643f0a08a8b93fd28f7ba1b9e0accb45da70bc971c4079fa6",
+    "source.json": "75da68af7cfe1fd60429953770d279820543a469c2d8275532777e5556c963ef",
+    "mineral-margin.py": "ddcd6acc7ba5f608f2bce2e3a47195d3709eea6abc95ada83e8f7961e6ffd543",
+    "mineral-precision.py": "3f3341247b5e6f6c74414323259982e065a7622b4e4eb2a9a1fc7697c8011360",
+    "design-uncertainty.py": "77369d843d849ca729d7560b9570ca3f29fa957138ca0ac4d9e47e41a2bad6aa",
+    "pooled-outlets.py": "fed11a29a32fd63b8e8544ff2ba090b521b5d939a86db5bda2c9525889bfa484",
+    "design.json": "9a7a1eed39c7ed8efd781dc7adfd1ffda7109d2bc7c9c9fdaa6954df84e1a341",
+    "outlets.json": "97da39d15ee4e1a1e134867c3a6eb883d877de54883c65627a7f3dffd672a856",
+    "precision.json": "60ff9c4e1c8a5a8a2e7c4268770fe98c15bd47d77c3529ac9a8e07d227ad36bd",
+    "linear-margins.json": "0897c743648eed4de7a2522d73d02383c7048e0dbbe8e02f2e61e0c7ce12abb9"
+  },
+  "started_at": "2026-11-21T00:38:00.080415+00:00",
+  "status": "reproduced",
+  "pages": 4,
+  "pdf_sha256": [
+    "586891d107c1cb3d62b035b8d6da92e7ab7677e1d167b090d1bb2e1b26093cc7",
+    "586891d107c1cb3d62b035b8d6da92e7ab7677e1d167b090d1bb2e1b26093cc7"
+  ],
+  "pdf_bytes": 215328,
+  "finished_at": "2026-11-21T00:39:03.521099+00:00"
+}
