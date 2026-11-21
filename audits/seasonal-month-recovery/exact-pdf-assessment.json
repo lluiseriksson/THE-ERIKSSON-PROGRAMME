@@ -1,0 +1,55 @@
+{
+  "paper_id": "ARR-2026-07R4Q7FQ368FXA9T",
+  "version": "v1",
+  "version_id": "arr:version:1b12e2dd-3a79-4207-a8a2-334365de7ef1",
+  "canonical_sha256": "e21413b0e29cdeb7605e1dbb9298b781fe61b70eb93c5067e88e3656792a0db0",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-21T01:32:16.983747+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.31,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The half-difference construction realizes indistinguishable pairs from two different corrupted coordinates. Coordinate midranges attain the bound for the maximum norm. The witnesses on page 2 obey the four mean bounds and survive the claimed deletions."
+    },
+    "rigor": {
+      "stars": 5,
+      "basis": "The proof reduces nonconvex compatibility to finitely many linear support problems, establishes the four-month impossibility and checks all six omissions. Rational crossings suffice, including the ratio one third."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Sparse-error correction, temporal disaggregation and bounded-error optimal recovery are established. The exact constants and equality of all one-omission designs are plausible design-specific contributions. Priority across all moving-average designs has not been established."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "The constants quantify the value of saving the sixth observation and its dependence on relative precision. No ecological effect or monthly sensor uncertainty is estimated."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "Two separate fetches produced byte-identical PDFs. The verifier enumerates survivor designs, recomputes the symbolic branches and checks explicit lower witnesses at several ratios against a primal linear program."
+    }
+  },
+  "summary": "The three-page manuscript determines the exact worst reconstruction error for six monthly values measured via four overlapping averages, with one arbitrary monthly fault. The distinction between seasonal p-values and measurements of levels is explicit. I inspected the three rendered pages, the source study and the rational certificate. I contributed to drafting and verification in the same context.",
+  "strengths": [
+    "Relates the estimable monthly contrasts to the two-dimensional nullspace.",
+    "The precision-dependent formulas give an exact decision rule for an additional measurement.",
+    "Explicitly locates the data required beyond the ecological publication."
+  ],
+  "weaknesses": [
+    "A short human-checkable dual certificate for each branch would make the precise constants easier to audit without the supplement.",
+    "Equal within-season weighting and deterministic uniform envelopes need justification for a field application.",
+    "The ecological example supplies the sampling geometry and significance map, without sample-specific monthly reconstruction."
+  ],
+  "potential_errors": [
+    "Identifiability across the four spring windows cannot be transferred directly to all other seasons or to unequal event-year weights.",
+    "Coordinate midpoint recovery can return a vector outside the feasible set. The minimax claim would need reconsideration if the estimator were required to return a compatible signal."
+  ],
+  "strong_novelty_candidates": [
+    "The design-specific sharp expressions 9s+2d and max(3s+2d,6s+d), including invariance under any single omitted month."
+  ],
+  "unresolved_material_objections": []
+}
