@@ -1,0 +1,55 @@
+{
+  "paper_id": "ARR-2026-6WX2CJ4GBT9XYR1Y",
+  "version": "v1",
+  "version_id": "arr:version:99b44fbf-59ef-44d6-9d1f-69acbecbbae5",
+  "canonical_sha256": "691573f955e91b154c5bea80d49ee13691a1a0960d7d368b58b131d4e0995426",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-21T00:55:56.691801+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.18,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "A shared indicator realizes each within-plate extremum. Nesting the fold all-zero events realizes the smaller of their probabilities while preserving both fold laws. Integer balancing yields 24 triples and 19 pairs."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The proof states how to condition on accepted counts and constructs an attainable endpoint. For numerical users it could explicitly restrict alpha to (0,1) and explain the zero-weight convention when padding empty slots."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The link from coarse parity totals to sharp minimum endpoints in this selective reconstruction is specific. The optimization has substantial precedents in weighted binomial inference, and broader priority remains unverified."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "The result materially alters what one can infer from zero errors on 110 accepted units under plausible dependence. Inference for the historical roll and transfer to other collections remain unresolved."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "The two endpoints can be obtained directly from the printed totals and expressions. The PDF is byte-reproducible, and the linked computations supply exact rational comparisons and small partition checks."
+    }
+  },
+  "summary": "The manuscript gives the sharp deterministic zero-error upper endpoint for a weighted mean under independent plate vectors, then shows why the published parity totals alone preclude a uniform three-percent guarantee in that model. I checked the rendered four-page PDF, balancing argument, coupling construction and numerical thresholds. I participated in the analysis and drafting.",
+  "strengths": [
+    "Distinguishes the five reading-test plates from the plates in the placement task.",
+    "Proves both necessity and attainability even with fold dependence.",
+    "Preserves the observed count and separates acceptance coverage from conditional placement risk."
+  ],
+  "weaknesses": [
+    "The actual accepted counts by plate and the dependence structure are unknown.",
+    "Connections to optimal weighted zero-count inference are cited broadly rather than compared theorem by theorem.",
+    "The bibliography occupies an otherwise mostly empty fourth page."
+  ],
+  "potential_errors": [
+    "Treating 7.68% as an estimated failure rate, or even as a valid upper limit for an unknown allocation, would invert the direction of the result.",
+    "Conditioning on counts can induce dependence, so independent plate vectors after conditioning require justification."
+  ],
+  "strong_novelty_candidates": [
+    "Balanced integer reconstruction of both parity profiles gives sharp floors for the zero-error endpoint with and without cross-fold independence."
+  ],
+  "unresolved_material_objections": []
+}
