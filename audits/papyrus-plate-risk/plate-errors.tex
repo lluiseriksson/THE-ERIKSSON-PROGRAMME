@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,booktabs,microtype}
+\usepackage[margin=25mm]{geometry}\usepackage[hidelinks]{hyperref}
+\title{Zero false placements in a papyrus reconstruction:\\what can a plate-level evaluation certify?}
+\author{Lluis Eriksson}\date{21 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A reconstruction of P.\ Fouad 266b placed 110 held-out units without an observed error. We study what that result can certify if placements from the same plate can fail together. For fixed numbers of accepted placements, we give the sharp one-sided confidence endpoint after zero errors under independence across plates and unrestricted within-plate dependence. Integer allocation of the reported odd- and even-plate totals gives a lower bound of 7.68\% on this endpoint, even under the most favourable allocation. Allowing arbitrary dependence between the two folds gives a larger best-case endpoint of 14.27\%. These numbers measure limits on inference. They do not estimate how many fragments were misplaced.
+\end{abstract}
+\section{What the experiment counted}
+Ahsan and Ahsan \cite{aa} evaluate two different tasks. In the reading task, the units include 943 letters across five held-out validation and test plates. In the placement task, physical units are matched to reference text with an option to abstain. Plates 4 through 48 contribute to this experiment except 45 and 46, which supply no units. This leaves at most 21 odd and 22 even plates. A unit spanning two plates is attributed to its left part. Results on the two held-out halves are:
+\begin{center}
+\begin{tabular}{lrrrr}\toprule
+Test plates & Eligible & Correctly placed & Falsely placed & Abstained\\\midrule
+Odd &64&58&0&6\\
+Even &61&52&0&9\\\bottomrule
+\end{tabular}
+\end{center}
+The fractions $110/125$ and $0/110$ describe coverage and observed error among accepted placements. Section 8 of the preprint also invokes the rule of three \cite{hanley}. With 110 independent Bernoulli placements sharing one risk, the exact one-sided 95\% endpoint is $1-0.05^{1/110}$, about 2.69\%. For extension to another panel the number of independent opportunities for an error is a modelling assumption. Even when no label from a test plate is used to choose parameters, decisions on the same plate can share evidence.
+\newpage
+\section{The zero-error endpoint for clustered decisions}
+Fix the accepted counts before error evaluation, or posit the model conditionally on them. For plate $i$ let $w_i>0$ be its share of the accepted units, with $\sum_i w_i=1$. Let $p_i$ be the mean of the marginal error probabilities on that plate. Our parameter $R=\sum_i w_i p_i$ weights units as in a repeat panel with the same design. We assume independent plate error vectors; the entries of one vector may be arbitrarily dependent. This is a sensitivity model for a fixed decision rule. The original split alone does not establish these assumptions.
+
+\paragraph{Proposition.} Write $\alpha$ for the noncoverage probability. The smallest upper confidence endpoint reportable on the all-zero outcome with uniform coverage $1-\alpha$ is
+\[
+ U_\alpha(w)=\sum_i(w_i-t)_+,\qquad
+ \prod_i\min(1,t/w_i)=\alpha.
+\]
+The root is unique in $(0,\max_i w_i)$. An attainable procedure reports $U_\alpha$ on the all-zero outcome and one otherwise.
+
+\paragraph{Proof.} The indicator that a plate contains any error dominates the mean of its error indicators. Thus the probability of no error anywhere is at most $\prod_i(1-p_i)$. A single shared Bernoulli error per plate attains equality. With $q_i=1-p_i$, maximizing $R$ over the parameter values for which zero errors can have probability at least $\alpha$ amounts to minimizing $\sum_i w_i q_i$ subject to $\sum_i\log(q_i)\ge\log\alpha$ and $0<q_i\le1$. At the optimum the constraint binds. The multiplier equations for this convex problem give $q_i=\min(1,t/w_i)$, yielding the result. If an endpoint were smaller, take an attaining boundary configuration and reduce all its $p_i$ slightly. Its mean risk still exceeds that endpoint and the probability of reporting it exceeds $\alpha$. This also establishes optimality against procedures choosing different values on nonzero data.
+
+\paragraph{Two folds.} Suppose only the plate vectors within each fold are mutually independent, with arbitrary coupling between folds. Let $v_f$ be the fraction of units in fold $f$ and $w^{(f)}$ its internally normalized weights. The sharp zero-error endpoint becomes
+\[
+                \sum_f v_f U_\alpha(w^{(f)}).
+\]
+Indeed the probability of no error in either fold is bounded by the smaller of the two foldwise no-error probabilities. If the weighted risk exceeds the display, at least one fold exceeds its own bound. Conversely, take the extremal law in each fold and couple their all-zero events using one shared Bernoulli indicator of probability $\alpha$, drawing the conditional fold vectors from their respective laws. This preserves each within-fold joint law. Slightly lowering both sets of risks gives the strict counterexample to any smaller endpoint as above. This argument concerns unconditional independence within each fold in the posited panel law. A varying fitted rule can produce a mixture of laws without that property.
+\newpage
+\section{What the published totals imply}
+The exact accepted counts per plate are not required for a best-case statement. For any fixed number of slots, including empty slots, $U_\alpha(w)$ is the supremum of linear functions $\sum_i w_i p_i$ over a symmetric feasible set. It is convex and invariant under permutation. Moving one count from a larger slot to a smaller one when they differ by at least two makes the weight vector a convex combination of its previous value and a two-coordinate permutation. This cannot increase the endpoint. Apply this operation within each parity until counts differ by at most one.
+
+The balanced odd half has sixteen triples and five pairs; the even half has eight triples and fourteen pairs. These allocations respect the reported totals of eligible units: the six and nine abstentions can be distributed without changing the accepted counts. Under joint plate independence, the 24 triples determine the extremal risk; the 19 pairs can have zero error probability. In counts rather than normalized weights the threshold is $3\alpha^{1/24}>2$ at $\alpha=0.05$. Hence even the most favourable endpoint allowed by the fold totals is
+\[
+ \frac{72}{110}(1-\alpha^{1/24})\simeq 0.076808.
+\]
+When the folds may be dependent, the corresponding minimum is
+\[
+ \frac{48(1-\alpha^{1/16})+24(1-\alpha^{1/8})}{110}
+ \simeq 0.142656.
+\]
+Here $3\alpha^{1/16}>2$ and $3\alpha^{1/8}>2$. These are lower bounds on the required upper endpoints for the historical, unreported allocation; an analyst lacking the allocation cannot safely use either favourable number as their own upper limit. They are sharp over allocations constrained only by the stated parity totals and plate counts. They are not lower bounds on the error rate. Under unrestricted dependence even between all plates, one shared error indicator makes a 95\% endpoint necessary after zero errors.
+
+\paragraph{Implications.} The source selects settings on the opposite parity, and every candidate setting runs a greedy search across all 125 units with shared text occupancy. Some auxiliary parameters also use pseudo-fragments from the full roll. Independent plates or independent test folds would therefore require additional justification; we do not assert either dependence model fits this roll. The source's stated future code release and the absence of a per-plate list of accepted decisions in its results table motivate an audit using only the public totals. For new rolls, reporting plate-level accepted counts, using a frozen model on fresh panels, and separating coverage from conditional risk would make stronger claims testable. Exact intervals for weighted binomial parameters and the dependence of cross-validation estimates have substantial precedents \cite{lu,bengio}. Our contribution is the extremal calculation for these grouped, selective results.
+\paragraph{Model assessments and review context.} An AI assistant participated in analysis and writing. Any assessment for this version is recorded separately against the exact PDF with its model and context.
+\newpage
+\begin{thebibliography}{9}\small
+\bibitem{aa} T. S. Ahsan and S. Ahsan. Reconstructing a fragmentary text from priors. Zenodo, 2026. \href{https://doi.org/10.5281/zenodo.24408889}{doi:10.5281/zenodo.24408889}, pp.~9, 13, 15--17, 27--28.
+\bibitem{hanley} J. A. Hanley and A. Lippman-Hand. If nothing goes wrong, is everything all right? \emph{JAMA} 249 (1983), 1743--1745.
+\bibitem{lu} S. Lu, W. Wang and T. Xie. Exact interval estimation for the linear combination of binomial proportions. \href{https://doi.org/10.1177/09622802241229200}{doi:10.1177/09622802241229200} (2024).
+\bibitem{bengio} Y. Bengio and Y. Grandvalet. No unbiased estimator of the variance of K-fold cross-validation. \emph{JMLR} 5 (2004), 1089--1105.
+\end{thebibliography}
+\end{document}
