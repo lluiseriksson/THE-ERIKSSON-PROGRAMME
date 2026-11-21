@@ -1,0 +1,53 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,booktabs,geometry}\geometry{margin=1in}\usepackage[hidelinks]{hyperref}
+\title{How many monthly readings resolve four overlapping seasonal means?}
+\author{Lluis Eriksson}\date{21 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Seasonal composites can detect an association with an ecological event while leaving its monthly timing unresolved. We derive sharp error guarantees for recovering six monthly anomalies from four overlapping three-month means and supplementary monthly measurements. One supplementary month may be arbitrarily inaccurate. Four supplementary readings cannot guarantee a finite error. Any five achieve the same sharp radius $9s+2d$, where $s$ and $d$ bound errors in the seasonal means and the honest monthly readings. With all six readings the radius drops to $\max(3s+2d,6s+d)$. The improvement changes at $s=d/3$. The application concerns which measurements would permit reconstruction in a spring lag study of East Asian mangroves. Its published significance levels cannot supply the four numerical means required for reconstruction.
+\end{abstract}
+\section{What a spring lag records}
+Chen et al.\ \cite{chen} study the association of vegetation greenness with seasonal climate extremes in East Asian mangroves. Their Section 2.5 describes seasonal means and lagged coincidence analysis. For a fixed set of complete spring years, the climate windows MAM, FMA, JFM and DJF cover six months. Their Figure 3a reports significance levels. We examine a more informative hypothetical release containing actual window means in physical units on identical years, weights and anomaly scale. Inferring a monthly ecological effect or reconstructing historical climate from the plotted significance levels would require different information.
+
+In chronological order let $x\in\mathbb R^6$ run from December to May. Let $(Ax)_i=(x_i+x_{i+1}+x_{i+2})/3$ for $1\leq i\leq4$. Successive differences of the zero window sums show that
+\[
+ \ker A=\{(a,b,-a-b,a,b,-a-b):a,b\in\mathbb R\}.
+\]
+Thus a linear contrast is determined exactly when the three sums of its coefficients at positions congruent modulo three agree. March minus December is identifiable. January minus December is ambiguous. Calendar anomaly processing alone need not resolve this ambiguity. Apply the same null vector with amplitudes $1,-2,1$ in three consecutive interior spring years. Each calendar month retains its mean and linear time trend, and all four composites in each year are unchanged. A selected group of years changes a monthly average when its amplitudes have nonzero sum. This last condition depends on the actual event years. Observations for other seasons can also constrain these alternatives.
+
+\section{Reconstruction with one corrupted month}
+Suppose all four measured averages differ from $Ax$ by at most $s$. In a chosen set $S$ of months, all but at most one reading differ from their respective $x_i$ by at most $d$. The exceptional month and its error are unknown. Errors may be dependent. Define the radius as the infimum over estimators of the worst possible maximum absolute error over all six months and all admissible signals and errors.
+
+\paragraph{Proposition.} For $|S|\leq4$ the radius is infinite. For each of the six sets with $|S|=5$ it equals $9s+2d$. For $|S|=6$ it equals $\max(3s+2d,6s+d)$.
+
+\paragraph{Proof.} For $|S|\geq2$, let $R$ range over the sets obtained by removing two distinct months from $S$. Set
+\[
+ L(R)=\sup\{\,\|h\|_\infty:\ \|Ah\|_\infty\leq s,\ |h_i|\leq d\text{ for }i\in R\,\}.
+\]
+Two signals compatible with the same data agree within twice the noise bounds on the seasonal means and on all but two sampled months. Their half-difference is feasible for some $R$. Conversely, take signals $h,-h$, set the common seasonal readings and the readings in $R$ to zero, and assign each removed month's reading to a different signal's exact reading. Both signals are compatible. Thus the worst-case radius is at least $\max_R L(R)$. Taking the midpoint of each coordinate's feasible range gives a single estimator achieving the bound in the maximum norm. The midpoint vector is allowed to lie outside the feasible set.
+
+A nonzero null vector can vanish on either pair of congruent months. Among four sampled months some pair is congruent. Removing the other two makes $L(R)$ unbounded, and taking fewer measurements cannot improve the radius. Any three remaining months include at least two residue classes, sufficient for full column rank. This establishes finiteness for five or six measurements.
+
+For the sharp values, form $H$ by stacking the four mean rows and the coordinate rows for $R$. The support in coordinate $j$ is the linear-programming dual minimum of $s\|\lambda_{1:4}\|_1+d\|\lambda_{5:}\|_1$ subject to $H^\top\lambda=e_j$. Splitting signs yields a nonnegative program of rank six. An optimum can be chosen with linearly independent active columns and extended to a basis of six. Therefore one need only enumerate six-row nonsingular subsets of $H$ and evaluate the corresponding row of the inverse. For $d>0$, write $r=s/d$. Each basis gives an affine upper bound in $r$. Take the minimum for each coordinate, then the maximum over coordinates and survivors. Table~\ref{tab:bounds} gives the exhaustive result. The verifier uses rational arithmetic for all coefficients and crossover points. The formulas extend to $d=0$ by the same finite collection of linear forms.
+\begin{table}[h]\centering
+\begin{tabular}{lcc}\toprule
+Supplementary design & $0\le r\le 1/3$ & $r\ge1/3$\\\midrule
+Any five months & $9r+2$ & $9r+2$\\
+All six months & $3r+2$ & $6r+1$\\\bottomrule
+\end{tabular}\caption{Worst error in units of the honest monthly error bound $d>0$.}\label{tab:bounds}
+\end{table}
+
+For example at $s=d=1$, take $S=\{1,2,3,4,5\}$ and $h=(-1,-1,5,-1,-7,11)$. Its four mean magnitudes are at most one. Three sampled coordinates have magnitudes at most one. The preceding construction gives two indistinguishable signals at distance 22. With six observations the vector $(-1,-1,1,-1,-3,7)$ gives distance 14. The supplement supplies exact lower witnesses at four precision ratios and checks the results with a second, primal implementation.
+
+\section{Interpretation and scope}
+With one possibly corrupted month, the identity of the omitted month has no effect on the five-reading worst case. At equal precision, storing the sixth month reduces the sharp radius from eleven units to seven. When seasonal means are exact, both designs have radius $2d$. If honest monthly readings are exact, the sixth reduces the radius from $9s$ to $6s$. The guarantees apply to deterministic error envelopes. They do not give sampling coverage or account for unequal monthly observation weights, and cannot justify attributing greenness changes to individual months. Raw monthly data and event membership would be needed for such an empirical analysis.
+
+Temporal disaggregation has long used higher-frequency information \cite{denton}. Sparse corruption of linear measurements \cite{candes} and worst-case recovery under bounded errors \cite{ettehad} supply the mathematical context. The design-specific formulas concern these four box means, direct monthly readings and one corrupted coordinate. We do not claim the general feasibility or linear-programming principles as original.
+\section*{Model assessments and review context}
+Codex assisted with derivation, writing and construction of the verification package. The rational and floating-point programs used different numerical procedures in the same research workflow. Their agreement checks the calculation. Any formal assessment must identify the exact PDF and the assessor's involvement.
+\begin{thebibliography}{9}
+\bibitem{chen} Chen et al. Climate suitability of East Asian mangroves for nature-based solutions is limited by climate extremes. \emph{Earth System Dynamics} (2026). \href{https://doi.org/10.5194/esd-17-1687-2026}{doi:10.5194/esd-17-1687-2026}.
+\bibitem{denton} F. T. Denton. Adjustment of monthly or quarterly series to annual totals. \emph{JASA} (1971). \href{https://doi.org/10.1080/01621459.1971.10482227}{doi:10.1080/01621459.1971.10482227}.
+\bibitem{candes} E. J. Cand\`es and T. Tao. Decoding by linear programming. \emph{IEEE Transactions on Information Theory} (2005). \href{https://arxiv.org/abs/math/0502327}{arXiv:math/0502327}.
+\bibitem{ettehad} M. Ettehad and S. Foucart. Instances of computational optimal recovery: dealing with observation errors. \emph{SIAM/ASA Journal on Uncertainty Quantification} (2021). \href{https://doi.org/10.1137/20M1328476}{doi:10.1137/20M1328476}.
+\end{thebibliography}\end{document}
