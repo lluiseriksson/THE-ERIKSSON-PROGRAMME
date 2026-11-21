@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-5597JFB9JY9VX9ZN",
+  "version": "v1",
+  "version_id": "arr:version:299282a4-c1de-444e-8c82-525ff6349500",
+  "canonical_sha256": "ab7b20e5fcfbb62978520e9b112c64353a5c7daa5cfa2680d34d89af02cd0331",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-21T01:13:47.112454+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.23,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The three coefficients follow by dividing products of centred regressors by kl/T. Class averaging attains the relaxed optimum; the displayed positive semidefinite decomposition covers the case with positive cross correlation."
+    },
+    "rigor": {
+      "stars": 5,
+      "basis": "The argument includes cap feasibility, the singular boundary, and different state budgets with a common average. The middle-branch inversion and corner checks are reproducible."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Cluster effects on regression precision have an extensive literature. The attained cap-and-budget envelope for this design is explicit. Priority beyond the inspected Moulton and application references remains unresolved."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "The cap near 0.611 translates a precision concern into a checkable planning requirement. The seven-election design is hypothetical; external significance hinges on obtaining actual calendar and residual covariance information."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "The two matrices and central inputs appear in the paper or pinned certificate. The workbook-free verifier checks matrix quadratic forms, rounding and thresholds. Two fresh fetches reproduced the same PDF."
+    }
+  },
+  "summary": "The exact PDF gives a sharp variance bound for a specified binary OLS design with an average and a cap on nonnegative within-group correlations. The same mean effective size permits a prospective contrast to pass or fail the 0.25-point planning benchmark. I inspected the three rendered pages and participated in analysis and drafting.",
+  "strengths": [
+    "Keeps the independent-error scale fixed when comparing covariances.",
+    "Proves attainment including heterogeneous group budgets with the same average.",
+    "Uses actual rounded planning inputs while distinguishing Khemani’s instrumental-variable design."
+  ],
+  "weaknesses": [
+    "Equal state lengths, equal election counts and nonnegative, potentially nonstationary correlations restrict transport.",
+    "There is no data-driven estimate of the cap for the fiscal series.",
+    "The prior-work discussion could compare the explicit maximum with other covariance uncertainty sets."
+  ],
+  "potential_errors": [
+    "The exchangeable value 0.1197 is an example; the manuscript does not prove it is the global minimum MDE in the full class.",
+    "A design effect estimated for the regression coefficient would not have the grand-mean interpretation stipulated here.",
+    "Applying the result to residualized year indicators or covariate-adjusted instruments would require recomputing the coefficient ordering."
+  ],
+  "strong_novelty_candidates": [
+    "Attainable maximum with both an average and a uniform cap on positive correlations, coupled to a rounding-robust fiscal power threshold."
+  ],
+  "unresolved_material_objections": []
+}
