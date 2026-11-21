@@ -1,0 +1,64 @@
+{
+  "correlation": 0.9967196491827829,
+  "covariance": [
+    [
+      383085.28944491304,
+      379796.22200307634
+    ],
+    [
+      379796.22200307634,
+      379017.9387223842
+    ]
+  ],
+  "estimand": "Zero-random-intercept logistic sensitivity, common scaling held fixed, CR0 sandwich clustered on matched players. No cluster correction or bootstrap.",
+  "input_sha256": {
+    "S1": "ad8bf5c69467b9e1cd1d562221c69434e8180475b1c7ab0b83d11b5216064cc4",
+    "S4": "73370791d7141d64431b9ace21beb592397dee035fe57ad17cee2cd831340dd2"
+  },
+  "interval": [
+    -81.79601393792065,
+    114.6226609653336
+  ],
+  "largest_cluster_variance_share": 0.44028369050541294,
+  "largest_ten_variance_share": 0.9346552142830262,
+  "models": [
+    {
+      "cluster_se": 618.9388414414735,
+      "coefficients": [
+        0.377993895013573,
+        0.236210967068548,
+        -0.000359267614259078,
+        -0.00219620640385948,
+        -0.650625592098097
+      ],
+      "hessian_condition": 11.233668458904834,
+      "max_coef_change": 0.0,
+      "model_based_se": 16.288147243596704,
+      "reference_singular": "TRUE",
+      "root": 3669.979403146032,
+      "root_at_published": 3669.97940314603,
+      "steps": 0
+    },
+    {
+      "cluster_se": 615.6443281005558,
+      "coefficients": [
+        0.376675047635714,
+        0.221695368701838,
+        -0.000728886650887496,
+        -0.00172265602447572,
+        -0.605841779361504
+      ],
+      "hessian_condition": 10.680556256464186,
+      "max_coef_change": 0.0,
+      "model_based_se": 16.75164666724606,
+      "reference_singular": "TRUE",
+      "root": 3686.3927266597384,
+      "root_at_published": 3686.39272665973,
+      "steps": 0
+    }
+  ],
+  "players": 29493,
+  "rows_per_fit": 4691033,
+  "se": 50.10772556347457,
+  "shift": 16.413323513706473
+}
