@@ -1,0 +1,53 @@
+{
+  "paper_id": "ARR-2026-3BRJQESRZV9Z98JD",
+  "version": "v1",
+  "version_id": "arr:version:b931ec54-cdee-4d94-9b64-1653b7d25b69",
+  "canonical_sha256": "be160e1c79eee26d9fdb9a6ebf0f51a734fff07c6ae160106740219e6daf250e",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-21T02:51:16.887737+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.31,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "At the right endpoint the positive initial minors cover both degree-60 forms. A negative unshifted norm of degree 61 proves necessity there. Strict negativity of every transformed coefficient and the leading term covers both endpoints of every cell."
+    },
+    "rigor": {
+      "stars": 5,
+      "basis": "The squared polynomial is transported with a positive denominator. The degree estimate accommodates the shifted form; exact interpolation and a distinct subdivision calculation check the sign identities. The perturbation and coefficient-norm argument yields the stated liminf."
+    },
+    "novelty": {
+      "stars": 4,
+      "basis": "The cited comparison work supplies the classification, smaller interval and rational examples. The uniform sharp bound through 49/50 adds an interval result beyond those comparisons. A broader claim of priority is unestablished."
+    },
+    "significance": {
+      "stars": 3,
+      "basis": "This quantifies the difficulty of the finite Stieltjes test at a specified cutoff. The cutoff is selected, and the rate of a matching upper bound as the parameter tends to one is open."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "The linked code and integer witnesses give executable checks. The final source produced matching PDF bytes and the separate clone checked 554 interval coefficients and 459 leading minors. The four rendered pages have complete formulas and tables."
+    }
+  },
+  "summary": "Four explicit witnesses with parameter-dependent dilations extend the earlier finite certificate interval. Eight sign proofs on closed cells and the positive minors at the final endpoint yield a sharp maximum degree of 61 for this truncated problem. The asymptotic lower bound is one-sided. I contributed to the work and read the four-page PDF in shared context.",
+  "strengths": [
+    "Sharpness requires both the complete interval upper bound and a lower bound for both moment forms at the same parameter.",
+    "The control parameters reproduce antecedent finite tests. The interpolation check avoids reliance on the subdivision generator."
+  ],
+  "weaknesses": [
+    "A practical reason to select 49/50 beyond the achieved range would help readers assess relevance.",
+    "The proof uses an externally established finite result below 2/3. Giving its exact lemma or theorem number and a permanent version identifier in the text would simplify replication."
+  ],
+  "potential_errors": [
+    "Reading 61 as matrix order would introduce an off-by-one error. The PDF explicitly defines degree and size.",
+    "Finite certificates at these parameters alone do not identify the order of divergence as x tends to one."
+  ],
+  "strong_novelty_candidates": [
+    "The exact maximum of the least witness degree over the continuum 0<x<=49/50, with an explicit finite cover and sharp endpoint."
+  ],
+  "unresolved_material_objections": []
+}

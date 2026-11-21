@@ -1,0 +1,28 @@
+{
+  "source_sha": "e284ac5afde5244323f36dcfb97bfa779ed5c15b",
+  "inputs": {
+    "apery.tex": "943ee7eae780cb4b6a3253f89c24d6e659d7bf43a2442afa4bfd67b8bf00053d",
+    "apery-minors.cpp": "7dea950d7766427c13f521f09e2f56e964aae2272808aee6845f0a9231b0c2f5",
+    "apery-check.py": "09af46f4d5c05d2caec191c9a8cd6e20793d77273d0494fc9ab22777a376a9d1",
+    "apery-witness.py": "320b0588d125071b152ef62c00479a22b662890ff8ec46f9c4ecbe213b5d0bcc",
+    "results.json": "1043679bb35cc694167797bf383cde342b5904701e809607fb8b4abe1d8283f3",
+    "witnesses.json.gz": "4ca4b36411654b420ccd9ddc59148a93f4cc2c05e9e948f0a75f6b378770c849",
+    "comparison.md": "ab6f7808ecd541a20b9261101007b212b84688da1dfde548cd698fb639c93eab",
+    "finite-obstruction.md": "cbee7ee99d70ed300e1fdb90543ba9d0939a7b275bd18fb0185e7d49dc0bdca0",
+    "finite-windows.md": "35b3c2a353362730938fd7672678b92ef3f54be38323d83a54297111eac7b61b",
+    "protocol.json": "41d98d2fc333f47a5ee8ac464893d09f49f4d41b09483fbe3569dbad08a52d25",
+    "verify-cover.py": "308ea9a4b9c1d8ae75975a84b47da4e2895169ca9f3608a21885d7a990b6fbd2",
+    "apery-cover.py": "c68faffa2ccfc563f328acd1b1e62bb39c31c4da092ea73736a899a459d5546f",
+    "cover.json": "1581c4fec9e88c8858b0ac553505adbd0fc8c069bcac67d209e331e4c9309cf6",
+    "transport-protocol.json": "e29ff716d4e46802bca4ba390fbe2c1f2cd131cbeb9db5af4241737e4d91cc07"
+  },
+  "started_at": "2026-11-21T02:46:07.456313+00:00",
+  "status": "reproduced",
+  "pages": 4,
+  "pdf_sha256": [
+    "be160e1c79eee26d9fdb9a6ebf0f51a734fff07c6ae160106740219e6daf250e",
+    "be160e1c79eee26d9fdb9a6ebf0f51a734fff07c6ae160106740219e6daf250e"
+  ],
+  "pdf_bytes": 233411,
+  "finished_at": "2026-11-21T02:47:57.912164+00:00"
+}
