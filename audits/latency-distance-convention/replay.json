@@ -1,0 +1,71 @@
+{
+  "offset_ms": "21703/100",
+  "primary_sha256": "e1f28b21f8cc673b7829c265f0f3b7d929d4996135dd642730890263d4f7c040",
+  "results": {
+    "intercepts_included": {
+      "center": [
+        1870.011542,
+        1870.011543
+      ],
+      "compatible": true,
+      "max_squared": "28633983399/8000",
+      "min_squared": "136805882779/40000",
+      "sharp_range": [
+        1849.363963,
+        1891.890041
+      ]
+    },
+    "weights": {
+      "minimum_contamination_all_roundings_lower": "2176440427/16171521427",
+      "minimum_contamination_nominal": "128497773/826858181",
+      "minimum_tv_all_roundings_lower": "2176440427/108257782090",
+      "minimum_tv_nominal": "4115423377/159241907600",
+      "nominal_contamination": 0.15540485170576065,
+      "nominal_target_ms": 1870,
+      "nominal_tv": 0.025843846252693346,
+      "recipient": [
+        180000,
+        1500
+      ],
+      "robust_contamination_lower": 0.1345847659927786,
+      "robust_tv_lower": 0.020104239944529978,
+      "uniform_mass_donors": [
+        [
+          [
+            10000,
+            2000
+          ],
+          "1/80"
+        ],
+        [
+          [
+            20000,
+            2000
+          ],
+          "1/80"
+        ],
+        [
+          [
+            30000,
+            2000
+          ],
+          "134375687/159241907600"
+        ]
+      ]
+    },
+    "zero_intercepts": {
+      "center": [
+        2034.548811,
+        2034.548812
+      ],
+      "compatible": false,
+      "max_squared": "16965583827/4000",
+      "min_squared": "16171521427/4000",
+      "sharp_range": [
+        2010.691512,
+        2059.464969
+      ]
+    }
+  },
+  "url": "https://arxiv.org/html/2610.39621v2"
+}

@@ -1,0 +1,21 @@
+{
+  "source_sha": "5b038ef8e433a87b555f48d473d63c2bea6b299c",
+  "inputs": {
+    "time-grid.tex": "4d8fbe1a3863131c136d5f7f25a085e358c7679252c626460cbf56d8798b821c",
+    "verify_latency.py": "754425002d46fa4aaf49ec1917e3dfce4073123a88e90f4efcfe5bfc1fcd786b",
+    "fuente.json": "5f9a85c80b34973d4206f375f485463ee151b510914df9113e6df393ccbde03e",
+    "time-distance.py": "dd4d79ad0a4fafe09ec80bb79831d3a3ab02650e740e8830879de8f4c4201170",
+    "reconcile-time.py": "f5f770fc2ff54292a59656f34691c58bcfd2a8fd7f8d2609719e4c2e47ab9f21",
+    "rms.json": "f39971275994ef1417fabe0fded76df7c3c23133b2feae4501178463e59463e3",
+    "replay.json": "5cd3a0bf9c5adaa2eb0d5c4e78af7d19c172571f1d9a2f4db3b6d962e8ab5b59"
+  },
+  "started_at": "2026-11-21T00:07:03.240290+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "54f103b6b69bce1677f21d337f35cc3e7bd81160b85ffc75d034af494dd0bb7c",
+    "54f103b6b69bce1677f21d337f35cc3e7bd81160b85ffc75d034af494dd0bb7c"
+  ],
+  "pdf_bytes": 211886,
+  "finished_at": "2026-11-21T00:07:59.935416+00:00"
+}

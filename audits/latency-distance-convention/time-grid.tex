@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{An intercept convention changes the reported latency distance for an AI energy proxy}
+\author{Lluis Eriksson}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+A proposed estimator for the energy used by an AI service transfers the energy model of the local server that best matches the service's latency. We audit the distance assigned to that server. Evaluating the printed time coefficients on the stated 80-cell input--output grid gives 2,034.55 ms, compared with 1,870 ms reported. Over all coefficients compatible with nearest rounding, the attainable interval is 2,010.69--2,059.47 ms. Keeping the two printed intercepts instead gives 1,870.012 ms and reproduces the reported integer. We give exact certificates for those extrema and quantify how far workload weights would have to change to reconcile the two tables. The comparison concerns one intermediate latency statistic. Direct API energy use and the identity of the true closest server remain unresolved.
+\end{abstract}
+\section{What needs to reproduce}
+Krupp et al.\ [1] fit compute-time models to both a Mistral API and 15 local hardware and batch configurations. They choose the local configuration with the smallest root mean squared difference in predicted time from the API over a shared grid. The chosen server's energy model then provides a conditional energy estimate for the API. A reproducible server comparison matters because different hardware can consume different energy at the same latency.
+
+We use the nominal design of Sec.~3.1, comprising all pairs $I=10{,}000,20{,}000,\ldots,200{,}000$ input tokens and $O=500,1000,1500,2000$ output tokens. In Sec.~4.2, equations (5)--(7) omit the intercept and give each cell equal weight. Our question is whether this design, these equations and the rounded entries in Table~2 admit the value in Table~3. The source mentions reruns when output length deviates. Calculations on retained observations or other token counts would require the actual grid and weights.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Latency coefficient & API & Local pair of H200s, batch 1\\
+\midrule
+$I$ & $0.0181$ & $0.00738$\\
+$I^2$ & $2.70\,10^{-7}$ & $2.65\,10^{-7}$\\
+$O$ & $6.71$ & $3.94$\\
+$IO$ & $1.23\,10^{-5}$ & $3.57\,10^{-5}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Here $I$ and $O$ count tokens and fitted time is in milliseconds. The published intercepts are 91.97 ms for the API and 309.0 ms locally. The reported distances for first and second place are 1,870 and 3,367 ms. Only the leading local server's coefficient vector is tabulated alongside the API in Table~2.
+
+\section{A rounding certificate}
+Let $x=(I,I^2,O,IO)^\top$ and $b$ denote the local coefficients minus the API coefficients. With $G=\sum_x xx^\top/80$ the mean squared discrepancy is $b^\top G b$. At the printed central values this is exactly $827877773/200$ ms$^2$. The squared discrepancies from a direct rowwise evaluation give the same rational number.
+
+Each coefficient was allowed half of its last printed unit in either direction. For a difference of coefficients the two half widths add. Since the loss is convex, its maximum on the difference box occurs at a vertex. For the minimum one can solve the normal equations on each face and retain the feasible stationary points. A second check uses only the gradient at a minimizing vertex: its components must be nonnegative on active lower bounds and nonpositive on active upper bounds. Convexity makes those signs sufficient. All finite comparisons in these calculations use rational arithmetic.
+
+The smallest and largest squared distances are respectively $16171521427/4000$ and $16965583827/4000$ ms$^2$. The minimum exceeds $(1870.5)^2$. Thus even allowing a half millisecond of rounding in the reported distance leaves more than 140 ms between the two intervals. The reported timing advantage of the leading local server over its nearest rival is much larger than this discrepancy. Our audit cannot verify the rival's distance from its coefficients because those coefficients are absent from Table~2.
+
+\section{Which changes could reconcile the numbers?}
+The printed local-minus-API intercept is $309.0-91.97=217.03$ ms. Adding it to every signed residual gives 1,870.01154 ms, which rounds to the published integer. Allowing rounding in the intercepts as well as the four slopes gives 1,849.36--1,891.90 ms. This alternative reproduces the published entry on the stated grid. The agreement does not identify the authors' implementation. In general $D(c)^2=D(0)^2+2c\bar r+c^2$, where $\bar r$ is the signed mean residual and $c$ is a constant. A single distance can therefore be compatible with two different constant offsets. Retaining fixed overhead changes the question from matching variation across workloads to matching absolute latency.
+
+Write $u$ for the uniform distribution on the 80 cells and let $\ell_i=(b^\top x_i)^2$. At the printed coefficients, $\bar\ell$ is the mean and $\ell_{\min}$ is the smallest squared residual. The least fraction $t$ of benchmark requests that one must replace by an arbitrary new workload in order to reach the target $T=1870^2$ is
+\[
+ t_*=\frac{\bar\ell-T}{\bar\ell-\ell_{\min}}.
+\]
+Indeed the minimum under $(1-t)u+tq$ occurs when every draw from $q$ is assigned to a minimum-loss cell. This fraction measures replacement of a uniform workload. If a planner can selectively remove requests, the relevant quantity is total variation: moving mass $m$ from cell $i$ to a minimum-loss cell decreases the mean by $m(\ell_i-\ell_{\min})$. Subject to the available mass $1/80$ in each cell, taking the largest losses first is optimal by exchange. The last donor can be used fractionally. These two policies quantify different interventions.
+
+At the central slopes, reaching 1,870 ms without intercepts requires replacing 15.54\% of the uniform workload if original requests are removed indiscriminately. With selective removal the minimum variation is 2.5844\%. One witness moves all mass from the $(10{,}000,2000)$ and $(20{,}000,2000)$ cells and part of the mass from $(30{,}000,2000)$ to $(180{,}000,1500)$. The formulas give lower bounds of 13.45\% and 2.01\%, respectively, even after allowing the specified roundings. These are counterfactuals on a fixed grid; the actual serving distribution is unobserved.
+
+For all admissible roundings, let $L$ denote the certified minimum of the uniform squared distance and $U$ an upper bound on the squared residual in any individual cell. Since cell losses are nonnegative, replacing fraction $t$ leaves mean loss at least $(1-t)L$. Selective redistribution by total variation $v$ lowers the mean by at most $vU$. These yield conservative lower bounds $1-(1870.5)^2/L$ and $(L-(1870.5)^2)/U$. Our implementation bounds $U$ by maximizing the absolute error across the difference box cell by cell.
+
+\section{Interpretation and reproduction}
+The calculation identifies a discrepancy between reported summaries under a specified reconstruction. Changes to input lengths, weights, unreported precision conventions or the prediction formula can be examined if the actual prediction grid becomes available. A correction to a single distance does not identify another server as best and does not measure the energy use of the API. No hardware workload or commercial API calls were required for this audit.
+
+The reproducibility package includes the exact grid, printed inputs, finite extrema, the redistribution witness, a reader for the primary table and the archive manifest. The publication version and equations define the scope of the comparison.
+\paragraph{Model assessments and review context.} Codex assisted the analysis and manuscript preparation. A version-linked assessment of the rendered PDF is recorded separately. The source authors have not reviewed this reanalysis.
+\paragraph{Reference.} [1] L.~Krupp, D.~Gei{\ss}ler, F.~M.~Calatrava-Nicolas, S.~G.~Fritsch, P.~Lukowicz and J.~Karolus, \emph{The Real Cost of Context: Predicting Compute Time and Energy Consumption in LLM Prefill and Decode Phases}, \href{https://arxiv.org/abs/2610.39621v2}{arXiv:2610.39621v2} (2026), Secs.~3.1 and 4.2, Tables~2 and 3.
+\end{document}
