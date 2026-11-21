@@ -1,0 +1,21 @@
+{
+  "source_sha": "50a79917b3ca719fa17e129dfd0cc5d9aec5786e",
+  "inputs": {
+    "query-deletions.tex": "504f90bc976634a9b8581c420b819756b7e085e64d0be5e25b0f4664ebed7383",
+    "verify_query_bounds.py": "702fd972558ce5cf3471c6b717b0402f0abbcb8a28e7329818bc466041d16941",
+    "source.json": "08112b05a9371c3e416ca019aa54b413d48feb064b92293dee81016cc75360c2",
+    "shop-frontier.py": "dcf16cf456cbe4323dcce724d8d123286ab164762729d6b247b8da7e1ba0d010",
+    "shop-deletion-portable.py": "b1b5fbcdde1bbb20edaf5f1de279c72fba7c4017fcd0e51e48e2e0a6ee2c6701",
+    "deletion.json": "1c0872a8e140bd64ed0cef403958a6b7f248c42bb808f8eaed05b5bf19d6cb01",
+    "baseline-frontier.json": "20800d732c6b6352e4a9d636da361fdd1270611054a0c9aafa07a510f445dfcd"
+  },
+  "started_at": "2026-11-21T01:58:40.630668+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "bc2345c469e53a5e9adaf9c14c7c5038ee239830c1eda16e001c79c6fb40e17d",
+    "bc2345c469e53a5e9adaf9c14c7c5038ee239830c1eda16e001c79c6fb40e17d"
+  ],
+  "pdf_bytes": 201489,
+  "finished_at": "2026-11-21T01:59:46.131873+00:00"
+}
