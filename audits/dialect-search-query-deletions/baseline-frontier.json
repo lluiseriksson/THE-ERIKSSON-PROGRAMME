@@ -1,0 +1,105 @@
+{
+  "boundary0": [
+    [
+      "M1",
+      "M2",
+      "M2b",
+      "M2a",
+      "M3"
+    ],
+    [
+      "7",
+      "4",
+      "8/3",
+      "4/3"
+    ]
+  ],
+  "boundary1": [
+    [
+      "M1",
+      "M2",
+      "M2b",
+      "M2a",
+      "LIVE"
+    ],
+    [
+      "25/2",
+      "8",
+      "8/3",
+      "5/3"
+    ]
+  ],
+  "interior_collinearities": [
+    "-1/4 + sqrt(17)/4"
+  ],
+  "positive_cost_intervals": [
+    {
+      "left": "0",
+      "right": "-1/4 + sqrt(17)/4",
+      "strict_hull": [
+        "M1",
+        "M2",
+        "M2b",
+        "M2a",
+        "M3",
+        "LIVE"
+      ]
+    },
+    {
+      "left": "-1/4 + sqrt(17)/4",
+      "right": "1",
+      "strict_hull": [
+        "M1",
+        "M2",
+        "M2b",
+        "M2a",
+        "LIVE"
+      ]
+    }
+  ],
+  "rounding": "tenths of percentage points; integer solution unique in each denominator",
+  "tab": {
+    "LIVE": [
+      51,
+      87,
+      9,
+      12
+    ],
+    "M0": [
+      25,
+      32,
+      0,
+      0
+    ],
+    "M1": [
+      28,
+      36,
+      0,
+      0
+    ],
+    "M2": [
+      35,
+      61,
+      1,
+      2
+    ],
+    "M2a": [
+      47,
+      77,
+      5,
+      6
+    ],
+    "M2b": [
+      39,
+      69,
+      2,
+      3
+    ],
+    "M3": [
+      51,
+      85,
+      8,
+      11
+    ]
+  }
+}
