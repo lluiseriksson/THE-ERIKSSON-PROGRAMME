@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,booktabs,microtype}
+\usepackage[margin=27mm]{geometry}\usepackage[hidelinks]{hyperref}
+\newcommand{\TV}{\operatorname{TV}}
+\title{How much millet flour can move before a mineral target is lost?}
+\author{Lluis Eriksson}
+\date{21 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A blend prepared from pooled grains can have a reproducible composition even when the frequency of successful blends from individual suppliers is unidentified. We examine both questions for a recent wheat and millet experiment. Refitting three linear mineral responses to its 19 published runs, we find that calcium reaches its dry-weight target first when finger millet is replaced by pearl millet. The minimum transfer lies between 0.777 and 0.832 g per 100 g across a stated uncertainty set for the printed data. For the same-outlet additive mixing model, the pooled ingredient assays are compatible with every possible count, from zero to nine, of outlets meeting all three mineral targets. Both statements concern deterministic information in the study design.
+\end{abstract}
+
+\section{The batch and the outlet are different units}
+Vishnoi et al.\ combined equal quantities of grain from nine outlets within each of three grain types, prepared 19 mixtures from the pooled stocks and tested one selected formulation \cite{primary}. The study reports linear mineral responses, dry-basis mineral targets, and a separate sensory assessment. Its calcium lack-of-fit test gave $p=0.0396$. Its predicted calcium mean for the selected recipe was 162.56 mg per 100 g and its confirmation mean was 166.33. Because the target was 160, the model prediction leaves little room for a composition change. The confirmation mean gives useful information about one batch. Neither value directly measures the steepest decline per gram transferred, or the performance of flour purchased from a single outlet.
+
+Robust design of mixtures under ingredient errors is established \cite{steiner,sahni}. Our contribution is a threshold distance and a finite-population identification result for this experiment. We treat elemental content on the analytical basis used for the study's optimisation. Sensory liking, serving sizes and nutrient absorption are outside the model.
+
+\section{Distance in the experimental region}
+Let $c$ be grams of whole wheat, finger millet and pearl millet per 100 g of flour, with each component between 10 and 80 and $\sum_i c_i=100$. The published recipe is $(24.50,41.83,33.65)$, which sums to 99.98. We let any nonnegative allocation of the remaining 0.02 g complete the recipe. This convention defines a sensitivity set. It cannot recover undisclosed preparation weights. Ordinary rounding of three components to the nearest 0.01 alone cannot account for a 0.02 shortfall.
+
+Fit $y=X\beta$ by unweighted least squares to each column of mineral means in Table 3, using the 19 corresponding recipes in Table 1. Concentrations are in mg per 100 g dry matter. The iron, zinc and calcium thresholds are 3.0, 2.2 and 160. At the proportionally normalised recipe the three reconstructed predictions are 4.1122, 2.3676 and 162.5617. The authors report 4.11, 2.36 and 162.56. Allowing each printed response its half-unit rounding interval makes all three reported predictions compatible simultaneously. We neither assume nor infer a unique unrounded dataset.
+
+The mass transferred is $\TV(c,c')=\tfrac12\sum_i |c_i-c'_i|$, in grams. For an affine response above threshold $t$, let $b_+$ and $b_-$ be its largest and smallest coefficients. Any move of mass $r$ lowers the fitted mean by at most $r(b_+-b_-)$. Transferring mass directly from the largest to the smallest coefficient attains equality until a component boundary intervenes. If that move fits inside the design, the distance to equality is therefore
+\[
+     r_t(c)=\frac{c^\top\beta-t}{b_+-b_-}.
+\]
+One can go strictly below the threshold by increasing that transfer slightly if the receiving and donating components are still interior. The code checks these inequalities explicitly.
+
+\begin{center}
+\begin{tabular}{lcc}\toprule
+Data allowed to vary & Calcium distance & Zinc distance\\
+ & \multicolumn{2}{c}{g transferred per 100 g flour}\\\midrule
+Printed design fixed; response rounding & 0.7930--0.8162 & 11.0167--11.9610\\
+Design and response rounding, outer bounds & 0.777--0.832 & 10.320--12.714\\\bottomrule
+\end{tabular}
+\end{center}
+The first line shows extrema rounded for display. In both calculations the iron threshold is below the predicted iron content throughout the entire design. Calcium reaches its threshold by transferring finger millet to pearl millet, with the other ingredient held fixed. These are distances to a fitted surface, conditional on the three empirical stocks. The paper's dry-basis targets differ from its as-is labelling assessments.
+
+\section{Certifying rounding sensitivity}
+For fixed $X$, set $B=(X^\top X)^{-1}X^\top$ and let $e_i,e_j$ denote the extremal ingredient directions. For any trial radius $r$, the margin is $(c-r(e_i-e_j))^\top By-t$. Over independent perturbations of the responses by at most $h=0.005$, the two extremes are the central margin plus or minus $h\|(c-r(e_i-e_j))^\top B\|_1$. For fixed responses the margin is affine in $c$, so testing the three vertices of the 0.02 g completion region suffices. Witnesses reconstructed from the signs of the weights attain both extremes. Linear programs in the original ingredient coordinates independently check the central distances.
+
+For the second line, permit perturbations $E$ to $X$ of at most 0.005 g per coordinate, with every row still summing to 100; also permit response errors $u$ bounded by $h$. Rows of $E$ have Euclidean norm at most $\sqrt2 h$, and $\|E\|_2<0.031$. Exact positive leading principal minors of $X^\top X-105^2I$ certify $\sigma_{\min}(X)>105$. Put $s=105-0.031$ and $v=y-X\beta$. With $A=X+E$, subtracting the normal equations gives
+\[
+ \beta'-\beta=A^+(u-E\beta)+(A^\top A)^{-1}E^\top v .
+\]
+The zero row sums imply $|(E\beta)_i|\le h(b_+-b_-)$. A valid Euclidean bound on coefficient error is thus
+\[
+ D=\frac{\sqrt{19}\,h(1+b_+-b_-)}{s}
+       +\frac{0.031\,\|v\|_2}{s^2}.
+\]
+The executable calculation rounds norm bounds upward, bounds the numerator by the extrema over completion vertices of $c^\top\beta-t\pm\|c\|_2D$, and allows $2D$ error in the spread. It checks coefficient ordering, interior feasibility and positivity before taking quotients. This enclosure covers joint perturbations and makes no claim that its endpoints are attained. Biological variation or a misspecified response surface could be larger.
+
+\section{What nine pooled outlets can identify}
+Consider a separate, additive model: obtain all three flours from the same outlet and combine their elemental concentrations by dry-mass weights. Use the nonnegative ingredient means in Table 2 as the equal-outlet means. For each ingredient take the same moisture across outlets, equal to its published mean. This is one possible allocation under the pooled observations. We test both interpreting recipe shares as dry mass and converting as-weighed shares using these moistures. In each case the homogeneous outlet population passes all three targets. The following constructions leave every pooled ingredient mean unchanged.
+
+For zero passing outlets, subtract 12 mg calcium and add 0.40 mg zinc per 100 g of each dry ingredient at four outlets. At the other five add 9.6 mg calcium and subtract 0.32 mg zinc. Iron is fixed. All concentrations stay nonnegative. For every allowed recipe completion, the first group fails calcium and the second fails zinc. For exactly $k$ successes, $1\le k\le8$, decrease calcium by 12 at $9-k$ outlets and increase it by $12(9-k)/k$ at the others, leaving zinc and iron fixed. The $k$ enriched outlets pass. Taking all nine identical gives nine successes. The shifts cancel for each ingredient separately, hence all experiments on the pooled material see the same stocks. These are constructed populations; the large positive shifts needed for some counts illustrate the absence of measured outlet-specific bounds.
+
+For as-weighed recipes, each test against a fixed concentration threshold becomes affine in the recipe masses after multiplying by the positive total dry mass. Vertex checks thus cover the continuum of completions in both interpretations. The exact rational verifier tests 60 combinations of vertex, weight convention and passing count. No frequency, uncertainty interval or calibration for a real outlet population follows from the replicate assays on one pool. Outlet-specific assays, independently assembled batches or justified bounds on between-outlet differences would restrict the constructions.
+
+\section*{Model assessments and review context}
+An AI assistant participated in the reconstruction, proof and drafting. Any AIRR assessment bound to this version accompanies its exact PDF as a separate report. It should be interpreted with that report's recorded model, role and context.
+
+\begin{thebibliography}{9}
+\bibitem{primary} S. Vishnoi et al. D-optimal mixture design for development of millet-wheat composite flour balancing iron, zinc and calcium with sensory acceptability of four traditional Indian foods. \emph{Foods} 15 (2026), 4153. \href{https://doi.org/10.3390/foods15224153}{doi:10.3390/foods15224153}.
+\bibitem{steiner} S. H. Steiner and M. Hamada. Making mixtures robust to noise factors and mixing measurement errors. University of Waterloo, research report RR-96-03.
+\bibitem{sahni} N. S. Sahni, G. F. Piepel and T. N{\ae}s. Product and process improvement using mixture-process variable designs and robust optimization techniques. \emph{Journal of Quality Technology} 41 (2009), 181--197.
+\end{thebibliography}
+\end{document}

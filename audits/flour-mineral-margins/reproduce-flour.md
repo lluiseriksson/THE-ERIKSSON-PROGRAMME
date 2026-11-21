@@ -1,0 +1,5 @@
+# Reproduction
+
+On Linux Colab with Python 3, NumPy, SciPy and PyMuPDF 1.26.6, download the publisher PDF from the URL in source.json as source.pdf and check its SHA-256. Run design-uncertainty.py source.pdf and compare its JSON against design.json. Run pooled-outlets.py and compare its JSON with outlets.json. These checks use the printed values on the analytical basis in the source.
+
+For the fixed-design analysis, run millet-tables.py from this directory to generate index.json from the pinned publisher PDF, then archive index.json as tables.zip. Run mineral-margin.py and mineral-precision.py and compare their JSON against linear-margins.json and precision.json. The private working archive with source text is unnecessary for distribution. verify_flour.py checks the retained results and reruns the rational outlet constructions. The two PDF builds use the pinned source tree and a fixed source date. The estimated distances refer to fitted means, with no claim about the probability of success at a retail outlet.

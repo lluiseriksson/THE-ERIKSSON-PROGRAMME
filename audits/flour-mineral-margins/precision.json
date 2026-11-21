@@ -1,0 +1,35 @@
+{
+  "margins": {
+    "iron": {
+      "attainable": false
+    },
+    "calcium": {
+      "donor": 1,
+      "recipient": 2,
+      "minimum": 0.793005418144059,
+      "maximum": 0.8161871761511386
+    },
+    "zinc": {
+      "donor": 0,
+      "recipient": 1,
+      "minimum": 11.016710280373493,
+      "maximum": 11.960908755625848
+    }
+  },
+  "prediction_bounds": [
+    [
+      4.107136348544471,
+      4.1172907348860415
+    ],
+    [
+      162.55661040474214,
+      162.56676479108373
+    ],
+    [
+      2.362540979383316,
+      2.372695365724886
+    ]
+  ],
+  "rounding_witness": true,
+  "scope": "Fixed printed experimental designs; response means within half a hundredth; arbitrary nonnegative completion of the 0.02 g deficit; dry-basis mineral targets only. These are deterministic compatibility bounds."
+}
