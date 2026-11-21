@@ -1,0 +1,23 @@
+{
+  "source_sha": "89765bb94615eed67fb92206be75d709d4dfc0f4",
+  "inputs": {
+    "speech.tex": "7f780bec2f53f18a1e9f1cbf0887296297763e83a4d61be9e3860ca9e3a77942",
+    "verify_speech_frame.py": "47c828eea446ca2ed29bb8bc82b7f0c012f002a3bf0a756ce0718e20605368a4",
+    "lags-gate.py": "d9b1e5de75e18aee0577f746855c50a348796dc5d5a3c1fcb62ec8eaea85e7e8",
+    "lags-frame-split.py": "abcc1d4cfc3fd3edc2b54a476fce2b9f851de276ca2a54c3bf47e676f2d5e0c7",
+    "reels-frame-split.py": "46dfd1cb9ecf0fe89080064faf5a3aad7693cc799e35067e3728d1ad52caa472",
+    "frame.json": "65ab3803d8bf5b03a7f3c0c166b04550246a3936c5630f541a24e5c549803b39",
+    "gate.json": "e41549929d0d65fc0ebbdc34eaa40f9d5ab39f0a600b3c5ddad1f90074783214",
+    "primary.json": "95c9243737326e702a28139d857dbaccc49bb26fea71d44b32aaa14e2896ed39",
+    "public-protocol-search.json": "4033c99bc5fbba6d526b64594e48d728f207c209fdb2fce9042223697f31064b"
+  },
+  "started_at": "2026-11-21T01:45:34.249764+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "2a029daad1bd13f1de78d652e8ea9df70cf6b87971179d3f1147a9e99eaead9f",
+    "2a029daad1bd13f1de78d652e8ea9df70cf6b87971179d3f1147a9e99eaead9f"
+  ],
+  "pdf_bytes": 177128,
+  "finished_at": "2026-11-21T01:46:30.321456+00:00"
+}

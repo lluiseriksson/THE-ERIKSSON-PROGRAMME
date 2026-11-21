@@ -1,0 +1,17 @@
+{
+  "doi": "10.5281/zenodo.24409285",
+  "title": "The Transcripts Were Never There: A Full-Pile Audit of the Linguistic Atlas of the Gulf States Web Archive, and a Failed Calibration for ASR Re-Transcription",
+  "version": "v1.0.0-publication",
+  "publication_date": "2026-11-21",
+  "git": "d984ef1c7ba789851627a012934dddcbfcd6fab1",
+  "docs": {
+    "paper.md": {
+      "url": "https://raw.githubusercontent.com/atharva-chourey-lab/lags-transcription-audit/d984ef1c7ba789851627a012934dddcbfcd6fab1/paper.md",
+      "sha256": "a828658f70132ea57d0fc6995d7bbe413c25bed78f8b50a6bde25df533573f16"
+    },
+    "SOURCES.md": {
+      "url": "https://raw.githubusercontent.com/atharva-chourey-lab/lags-transcription-audit/d984ef1c7ba789851627a012934dddcbfcd6fab1/SOURCES.md",
+      "sha256": "74642fac67d092616015228fe36898a8cb33e94915d076bc294ceadfc225553e"
+    }
+  }
+}

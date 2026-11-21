@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,geometry}\geometry{margin=1in}\usepackage[hidelinks]{hyperref}
+\title{Could four more speakers change a failed speech-recognition calibration?\\A denominator audit of the Gulf States dialect archive}
+\author{Lluis Eriksson}\date{21 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A published speech-recognition calibration on two dialect interviews fell below an 85\% word-agreement threshold. The study argued that reducing the planned sample from six speakers could not affect the verdict. We reconstruct the integer edit counts compatible with the published table and determine when this extrapolation holds for pooled agreement. The two tested speakers necessarily fail. A perfect continuation would need between 28,389 and 28,435 additional reference words to reverse the pooled result. We compare these limits with independently counted first-reel transcripts in the Digital Archive of Southern Speech, enumerating every four-speaker supplement in the resolved frame. The comparison identifies feasible denominators. Actual recognition accuracy on untested speech remains unknown.
+\end{abstract}
+\section{Two calibration frames}
+Chourey \cite{audit} tested Whisper large-v3 on first-reel segments of two speakers also transcribed by the Digital Archive of Southern Speech (DASS2019). Section 4.3 reports word error rates (WERs) of 0.426 on 7,515 reference words and 0.351 on 10,910, with pooled WER 0.381. The calibration target was 85\% agreement. One failed decode was counted as deletions. We preserve that choice. The methods state that the earlier six-speaker design was reduced because of computing constraints and describe the gate as already arithmetically unreachable after speaker one.
+
+The distinction is between the final two-speaker frame and the original six. We use corpus-level agreement $1-(S+D+I)/N$, where $S,D,I$ are substitutions, deletions and insertions in fixed scored alignments and $N$ is reference length. Summation before division gives longer transcripts greater weight \cite{sampling}. A requirement for every speaker individually to pass would be a different rule. We located the source map and manuscript on the linked repository's main and deposited revisions. Those trees did not include the named preregistration, amendments or per-segment score files. The original four additional identities and exact normalization are unresolved here.
+\section{An exact stopping certificate}
+Let $E$ be the observed edits on $N$ words. A future block with $e$ edits on $M$ additional words passes exactly when
+\[
+20(E+e)\leq3(N+M).
+\]
+Given an upper bound $U$ on remaining words, failure is certain if $20E>3(N+U)$, even with perfect transcription. If $U$ is attainable and this inequality fails, a continuation of length $U$ with zero errors witnesses that the incurred errors alone do not force failure.
+
+For WER printed as $k/1000$, enumerate integer edits bounded by $N(k\pm0.5)/1000$. None of the endpoints in these three rows is integral. Require the two individual counts to sum to a count compatible with the pooled row. Every integer from 7,022 through 7,029 occurs. For the first speaker alone the range is 3,198--3,205. In the final two-speaker design even the first speaker's minimum exceeds the total allowance of $\lfloor0.15(18{,}425)\rfloor=2{,}763$ edits.
+
+In a six-speaker design of unknown size the requisite number of perfect future words is $\lceil20E/3\rceil-N$, giving 28,389--28,435 after the observed pair. At 28,388 additional words every compatible count still fails. At 28,435 all compatible counts can pass. Four hypothetical further speakers with 10,000 perfectly transcribed words each would reverse the verdict even at 7,029 incurred edits. Neither their lengths nor their accuracy are observations.
+\section{First-reel denominators in the archive}
+We enumerated the public DASS2019 speaker index \cite{archive} and counted first-reel Transcriber XML, including separately labelled parts when a single first-reel file was unavailable. IDs 025 and 027 were excluded from four-speaker supplements. We counted letter sequences with optional internal apostrophes across all turns. Rule A includes annotations, B removes brace-delimited annotations, and C also drops one-letter words. These are proxies. For the observed pair B yields 7,443 and 10,475 against the published 7,515 and 10,910. Counts from these different conventions cannot be treated as matched scoring denominators. The supplement records source URLs and SHA-256 digests.
+\begin{table}[h]\centering\small
+\begin{tabular}{lrrr}\toprule
+Word-count rule & Impossible & Rounding-sensitive & Possible throughout\\\midrule
+A. Includes annotations & 799 & 36 & 557,010\\
+B. Removes annotations & 3,372 & 121 & 554,352\\
+C. Also drops single letters & 10,709 & 333 & 546,803\\
+\bottomrule\end{tabular}\caption{Four-speaker choices under perfect hypothetical future recognition. Throughout refers to all edit counts compatible with the printed table.}\end{table}
+
+We resolved first reels for all 64 archive speakers. Among the 557,845 possible supplements to the observed pair, 799 are too short even under the most inclusive count and most favorable rounding. For 546,803 supplements a perfect continuation could pass under every one of the three proxy rules and all admissible roundings. The counts describe designs and carry no sampling weights. A second algorithm sorts word totals and, for each increasing triple of indices, uses binary search to count eligible fourth indices. It reproduces each marginal classification.
+
+At fixed prospective length the allowance for future edits is $\lfloor3(N+M)/20\rfloor-E$. For the next four speakers in lexical order (030, 040, 079, 100), rule B gives $M=36{,}385$. The four combined can then incur 1,192--1,199 edits, depending on rounding. Passing would require substantially better recognition than either measured reel.
+\section{Implications for a stopping decision}
+Recording the incurred edits and the remaining reference-word budget before stopping distinguishes an irrevocable pooled failure from a decision to stop for cost. In this archive the two speakers fail under every admissible rounding. Extending that conclusion to six requires the remaining exposure and the original rule. A related curated DASS2019 resource evaluates fine-tuned systems \cite{coats}. Its scores cannot supply the missing outcomes without matching systems, speakers, segments and scoring rules.
+
+\paragraph{Materials.} We obtained DASS2019 materials from the University of Georgia Linguistic Atlas Project. Copying and distribution of LAP materials are governed by its cost-of-reproduction condition. The supplement retains code, links, digests and counts.
+\section*{Model assessments and review context}
+Codex assisted with analysis and drafting. The integer enumeration and second counting algorithm belong to the same research workflow. An assessment of this version must identify the exact PDF and the assessor's involvement.
+\begin{thebibliography}{9}
+\bibitem{audit} A. Chourey. The transcripts were never there. Zenodo (2026). \href{https://doi.org/10.5281/zenodo.24409285}{doi:10.5281/zenodo.24409285}.
+\bibitem{archive} W. A. Kretzschmar Jr., M. E. L. Renwick, L. M. Lipani, M. L. Olsen, R. M. Olsen, Y. Shi and J. A. Stanley. \emph{Transcriptions of the Digital Archive of Southern Speech}. Linguistic Atlas Project, University of Georgia (2019). \href{https://www.lap.uga.edu/Projects/DASS2019/}{Archive and documentation}.
+\bibitem{sampling} J. Pylkk\"onen, T. Drugman and M. Bisani. Optimizing speech recognition evaluation using stratified sampling. \emph{Interspeech} (2016). \href{https://www.isca-archive.org/interspeech_2016/pylkkonen16_interspeech.pdf}{Proceedings paper}.
+\bibitem{coats} S. Coats. A fine-tuned ASR model for historical American dialect recordings. \emph{LREC} (2026). \href{https://aclanthology.org/2026.lrec-1.107/}{ACL Anthology}.
+\end{thebibliography}\end{document}
