@@ -1,0 +1,15 @@
+{
+  "S1": {
+    "url": "https://keeper.mpdl.mpg.de/d/28c50dc3a6bf4d10995d/files/",
+    "path": "/empowermentexploration/data/regression/20220824-1210-alchemy2-valuedifferences-human-1.csv",
+    "size": 603154861,
+    "sha256": "ad8bf5c69467b9e1cd1d562221c69434e8180475b1c7ab0b83d11b5216064cc4"
+  },
+  "S4": {
+    "url": "https://keeper.mpdl.mpg.de/d/28c50dc3a6bf4d10995d/files/",
+    "path": "/empowermentexploration/data/regression/20221108-1655-alchemy2-valuedifferences-human-0.csv",
+    "size": 803398577,
+    "sha256": "73370791d7141d64431b9ace21beb592397dee035fe57ad17cee2cd831340dd2"
+  },
+  "rep_sha256": "940203f567d74be15f38d1cfe97f7b2ea3ebfa9c68dcc1fb93884af381e8b41b"
+}

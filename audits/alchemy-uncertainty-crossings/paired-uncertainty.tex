@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,geometry}\geometry{margin=1in}\usepackage[hidelinks]{hyperref}
+\title{When does uncertainty stop predicting exploration?\\Paired thresholds and observed player coverage in Little Alchemy}
+\author{Lluis Eriksson}\date{21 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+Two fitted choice models place the change in sign of the association with count-based uncertainty near the 3,670th unique combination. The shift of 16.41 combinations passes a nominal two-sided 5\% delta test only if the correlation between the estimated crossings exceeds 0.8719. In a separate refit of both processed snapshots, player-clustered paired inference gives a shift of 16.41 combinations and a nominal 95\% interval of $[-81.80,114.62]$. A different finding survives unknown cross-fit dependence. Simultaneous model-based bands certify a positive uncertainty association at first encounters and a negative one at repeat encounters over unique progress 0 to 3,641 inclusive. We match this window to recorded choices and players in the 6,212,596-row snapshot.
+\end{abstract}
+\section{Two meanings of a crossing}
+In Little Alchemy, players combine elements to discover new ones. Br\"andle et al.\ studied how empowerment and count-based uncertainty predict a choice between combinations \cite{orig}. Dowling and Fiala reproduced the focal results and showed that retaining repeat encounters changes the fitted association with uncertainty \cite{rep}. Their replication reports the individual crossing estimates. We ask whether the published uncertainty estimates distinguish those crossings and how many recorded choices fall in a region where opposite signs are supported simultaneously.
+
+Unique progress increases when a player tries a new ordered pair. The first distinct pair is indexed zero. We compare S1 and the first occurrences in S4, both fitted on common unique-combination progress. We then compare first occurrences and repeats within S4, using the same progress scale and uncertainty-predictor scaling. A positive slope means a positive association with choice conditional on the other model terms. A population coefficient can cross zero without any individual player's association changing sign at that point.
+\newpage
+\section{How much correlation would the root contrast require?}
+Write the fitted uncertainty coefficient as $m(p)=a+h(p-p_0)$ at progress $p$. Its estimated variance is $V(p)=v+2c(p-p_0)+w(p-p_0)^2$. Three progress values identify $v,c,w$ from marginal standard errors. We checked the resulting variance and affine mean against all 240 grid points for each model. All three reconstructed coefficient covariance matrices are positive definite.
+
+The root is $r=p_0-a/h$. Inverting $m(p)^2\le z^2V(p)$ gives a Fieller-type interval. For the two first-occurrence roots use $z=\Phi^{-1}(0.9875)$ to obtain nominal 95\% joint coverage by Bonferroni. The intervals are $[3633.78,3706.80]$ and $[3649.17,3724.28]$. Their differences allow $[-57.63,90.49]$ without a cross-fit covariance estimate.
+
+The delta-method standard error of each root is $s=\sqrt{V(r)}/|h|$. Here $s_1=16.2881$, $s_2=16.7516$, and $d=r_2-r_1=16.4133$. Given correlation $\rho$ between the two estimated roots, the two-sided Wald interval is
+\[
+d\ \pm\ z_{.975}\sqrt{(s_2-s_1)^2+2s_1s_2(1-\rho)} .
+\]
+Its lower endpoint is positive precisely when
+\[
+\rho>\frac{s_1^2+s_2^2-(d/z_{.975})^2}{2s_1s_2}=0.871883\ldots .
+\]
+At $\rho=0$ the interval is $[-29.38,62.21]$; at $\rho=0.9$ it is $[1.91,30.92]$. The marginal summaries allow both outcomes. Shared players do not specify the cross-fit score covariance. The next section estimates dependence using the separately released inputs and a specified working model. The negative fitted root for the repeat-only model lies outside its observed domain.
+\newpage
+\section{Paired analysis of the same players}
+Both original common-scale mixed fits are flagged singular. We fit a logistic working model with its random intercept fixed at zero, holding the published centering and scaling constants fixed. Each model uses five terms: empowerment, uncertainty, progress and the two predictor-by-progress interactions. The logit has no fixed intercept, matching the fixed part of the source specification. We downloaded S1 and S4, verified their manifest hashes, and retained only S4 first occurrences under the published pair rule. Each fit contains 4,691,033 rows and the same 29,493 player identifiers. The two fitted roots are 3669.98 and 3686.39; each is within 0.01 combinations of the corresponding published fit.
+
+For fit $j$, let $H_j=\sum_i x_ix_i^\top \hat\pi_i(1-\hat\pi_i)$ be its observed information, and let $S_{gj}$ be the summed logistic score for player $g$. With $r_j$ the root functional, the estimated contribution is $u_{gj}=\nabla r_j^\top H_j^{-1}S_{gj}$. The paired sandwich variance of the shift is $\sum_g(u_{g2}-u_{g1})^2$. It allows dependence among a player's trials and across that player's two fits. It treats different players as independent. We checked the result against subtracting twice the estimated covariance from the sum of the two estimated variances.
+
+The working-model estimated correlation is 0.9967. The marginal cluster standard errors are 618.94 and 615.64 and the paired standard error is 50.11. The estimated shift of 16.41 has a nominal 95\% interval $[-81.80,114.62]$. Its interpretation uses the new marginal standard errors as well as their covariance; plugging the cluster correlation into the earlier threshold while retaining model-based standard errors mixes two variance estimators. The largest single player contributes 44.03\% of the estimated contrast variance; the largest ten contribute 93.47\%. Wald coverage is approximate, and a small effective number of influential players, unmodeled selection, or uncertainty in estimated scaling would affect inference. The bands below continue to use the published marginal covariance estimates. Their simultaneous coverage has not been calibrated for player clustering. The paired root analysis is not a bootstrap or a refit of the random-intercept model.
+\section{Where the signs differ simultaneously}
+For each S4 subgroup, project the two-dimensional asymptotic coefficient ellipse onto every progress value. Radius $k=\sqrt{-2\log(0.025)}=2.7162$ gives nominal coverage 97.5\% for one ellipse by the $\chi^2_2$ reference distribution. By the union bound the two bands $m(p)\pm k\sqrt{V(p)}$ hold simultaneously at every progress value with nominal coverage at least 95\%, irrespective of cross-fit dependence. This argument relies on the adequacy of the marginal standard errors and asymptotic approximations.
+\newpage
+On the common observed integer range $0,\ldots,67677$, the first-encounter lower band is positive and the repeat upper band negative from 0 to 3,641. The repeat upper band remains negative throughout. The first lower band exceeds the repeat upper band through 64,029. Overlapping bands beyond a boundary leave the ordering unresolved. These regions are conservative.
+\section{How many observed choices fall in the window?}
+We verified the public processed S4 file against the replication manifest, sorted observations by player and trial, and marked repeats of ordered element pairs within player using the replication rule. The result reproduced 29,493 players, 4,691,033 first-occurrence rows, 1,521,563 repeats and 6,212,596 rows overall.
+\begin{center}\begin{tabular}{lrr}\toprule
+Subset, progress 0--3,641 & Rows in window & Players in window\\\midrule
+First occurrences & 4,320,495 & 29,493\\
+Repeat occurrences & 1,383,857 & 24,886\\\bottomrule\end{tabular}\end{center}
+24,886 players contributed observations of both kinds in the window. These are counts of observed choices and exposure to the two conditions. Opposite individual effects were not estimated for each such player.
+\paragraph{Limits.} Selection into long trajectories, repeated observations from the same people, and the random sampling of comparison combinations matter. The replicators note that comparison-combination identities are absent from the processed snapshots. The sensitivity calculation inherits the fitted associations and standard errors. Neither causal effects of repeated play nor equivalence across snapshots follow from these calculations.
+\paragraph{Model assessments and review context.} AI assistance contributed to the analysis, writing and checks. Any assessment of this version is recorded against its PDF hash with reviewer involvement disclosed. No independent peer review was available in preparing this version.
+\begin{thebibliography}{9}
+\bibitem{orig} F. Br\"andle et al. Empowerment contributes to exploration behaviour in a creative video game. \emph{Nature Human Behaviour} 7, 1481--1489 (2023). \href{https://doi.org/10.1038/s41562-023-01661-2}{Article and data availability}.
+\bibitem{rep} J. Dowling and L. Fiala. Comment on the Little Alchemy empowerment study. Zenodo (2026). \href{https://doi.org/10.5281/zenodo.24409714}{Versioned report and replication package}.
+\end{thebibliography}\end{document}

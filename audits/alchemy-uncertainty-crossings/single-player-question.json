@@ -1,0 +1,11 @@
+{
+  "statement": "¿Al retirar al jugador con mayor influencia pareada cambia el signo de la diferencia entre raíces en un reajuste completo, y queda el cambio dentro del intervalo obtenido con todos los jugadores?",
+  "hypotheses": [
+    "Mismo juego, snapshots S1/S4 verificados y estandarización congelada al valor completo. Selección única por mayor contribución cuadrática del contraste original, antes de inspeccionar el reajuste."
+  ],
+  "mechanism": "Reproducir la influencia de los 29493 jugadores emparejados, elegir un único máximo con regla de empate determinista, quitar sus filas de ambos ajustes, recalcular coeficientes, raíces y covarianza con Newton. No exponer identificadores ni microdatos.",
+  "falsifier": "El signo coincide y el cambio queda dentro del intervalo completo, o las matrices dejan de identificar las raíces.",
+  "abandonment": "Conservar también una falta de inversión. No seguir retirando jugadores ni probar umbrales hasta producir un cambio de signo. Integrar como sensibilidad de la misma investigación.",
+  "impact": "Un solo jugador aporta el 44 % de la varianza del contraste. El reajuste permite distinguir influencia sobre la precisión de influencia sobre la dirección.",
+  "primary": "https://doi.org/10.5281/zenodo.24409714"
+}

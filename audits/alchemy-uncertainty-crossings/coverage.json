@@ -1,0 +1,55 @@
+{
+  "coverage": {
+    "first_above_repeat": {
+      "first": {
+        "covered_rows": 4687383,
+        "players_covered": 29493,
+        "players_in_subset": 29493,
+        "rows_total": 4691033
+      },
+      "players_with_both": 24886,
+      "repeat": {
+        "covered_rows": 1520862,
+        "players_covered": 24886,
+        "players_in_subset": 24886,
+        "rows_total": 1521563
+      }
+    },
+    "first_positive_repeat_negative": {
+      "first": {
+        "covered_rows": 4320495,
+        "players_covered": 29493,
+        "players_in_subset": 29493,
+        "rows_total": 4691033
+      },
+      "players_with_both": 24886,
+      "repeat": {
+        "covered_rows": 1383857,
+        "players_covered": 24886,
+        "players_in_subset": 24886,
+        "rows_total": 1521563
+      }
+    }
+  },
+  "regions": {
+    "first_above_repeat": [
+      [
+        0,
+        64029
+      ]
+    ],
+    "first_positive_repeat_negative": [
+      [
+        0,
+        3641
+      ]
+    ]
+  },
+  "source_sha256": "73370791d7141d64431b9ace21beb592397dee035fe57ad17cee2cd831340dd2",
+  "totals": [
+    6212596,
+    4691033,
+    1521563,
+    29493
+  ]
+}

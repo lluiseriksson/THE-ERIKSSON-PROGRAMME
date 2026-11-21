@@ -1,0 +1,28 @@
+{
+  "coverage": "Nominal asymptotic 95% simultaneous for the two true zeros under the reported marginal Wald models, by Bonferroni; cross-fit covariance unspecified.",
+  "critical": 2.2414027276049464,
+  "difference_outer": [
+    -57.630353323998406,
+    90.49462978731435
+  ],
+  "models": {
+    "S1_common_unique": {
+      "interval": [
+        3633.781345841232,
+        3706.8046714620696
+      ],
+      "point": 3669.979403146032,
+      "relative_variance_residual": 3.6415315207705135e-14,
+      "tested_rows": 240
+    },
+    "S4_first_occurrences_unique_common": {
+      "interval": [
+        3649.174318138071,
+        3724.2759756285463
+      ],
+      "point": 3686.3927266597384,
+      "relative_variance_residual": 4.418687638008123e-14,
+      "tested_rows": 240
+    }
+  }
+}
