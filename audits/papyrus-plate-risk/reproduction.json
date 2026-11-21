@@ -1,0 +1,19 @@
+{
+  "source_sha": "18f8d3fa5504bbd34e6d3a111fe020cc1006378f",
+  "inputs": {
+    "plate-errors.tex": "1325e3a2640dde76108db41add42acb5dde1db65ae2d5256d55b1a1534914236",
+    "verify_plates.py": "7caadc3e56d54a540c691bdc4cfff4a93dda939fc4f1bee74f92bb02e5ef679a",
+    "source.json": "9d9d7226fb6b0c0f4853bcf13b91c4ad28d6ee55e4fad9b2df9edd2645fed128",
+    "plate-endpoints.py": "5cbd1fcc67bc93b04beb4d22a68d2126283986230b19da1605a0dea5a8b45f0e",
+    "bounds.json": "be45b02bb971cd76e456d21b21be185ee017e6e1e45f2a6bda712d5b7534149d"
+  },
+  "started_at": "2026-11-21T00:51:43.441744+00:00",
+  "status": "reproduced",
+  "pages": 4,
+  "pdf_sha256": [
+    "691573f955e91b154c5bea80d49ee13691a1a0960d7d368b58b131d4e0995426",
+    "691573f955e91b154c5bea80d49ee13691a1a0960d7d368b58b131d4e0995426"
+  ],
+  "pdf_bytes": 205742,
+  "finished_at": "2026-11-21T00:52:31.464563+00:00"
+}
