@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=25mm]{geometry}\usepackage[hidelinks]{hyperref}
+\title{When does time weighting change joint AI exposure?\\Sharp bounds for six occupational task inventories}
+\author{Lluis Eriksson}\date{21 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A task can meet both a direct AI-exposure criterion and a reinforcement-learning feasibility threshold. Published shares for each criterion do not report their overlap. We determine what the rounded shares and inventory counts in TaskNet imply about the change in joint exposure when equal task weights are replaced by estimated working time. For software developers the increase is between 12.91 and 28.50 percentage points (rounded). For emergency physicians an increase is impossible. For dishwashers the change is zero. For three other occupations either sign is compatible with the tables. We show when releasing just one joint count would resolve these ambiguities, and how much relative distortion in estimated task times the developer result can withstand.
+\end{abstract}
+\section{Two ways to weight the same inventory}
+Wang et al.\ study 202 task statements in six occupations [1]. Table 25 reports separate shares for direct exposure (Eloundou E1) and a reinforcement-learning feasibility score of at least 50. Let $E,R$ be these binary labels on the $n$ statements of one occupation. Let $k$ count statements with both labels and $B$ be their share of estimated working time. Our target is
+\[
+                 \Delta=B-k/n .
+\]
+A positive value means the doubly labelled tasks occupy a larger fraction of estimated time than of task statements. This is a contrast within one inventory, holding the labels fixed. Estimated time combines reported frequency, duration and relevance. The labels measure potential exposure. Adoption, changes in output and employment are separate outcomes.
+
+We link the occupation counts of Table 1 to Table 25. The maintained assumptions are a shared complete denominator for the two statement percentages, nonnegative time shares summing to one on that same support, and nearest-integer percentage rounding. Half-percentage ties are included on either side. The authors' code repository describes its example inventories as synthetic and the survey data as access-restricted [2]. We use the published aggregates only.
+\newpage
+\section{Sharp bounds from the rounded margins}
+For a reported $p$ percent, write $I(p)=[(p-0.5)/100,(p+0.5)/100]\cap[0,1]$. Enumerate integer counts $i,j$ whose shares are in the reported statement intervals. Then
+\[
+ \max(0,i+j-n)\le k\le\min(i,j),\qquad c=(k,i-k,j-k,n-i-j+k).
+\]
+The entries of $c$ count the cells with both labels, E only, R only, and neither. For each table let $u_h$ be 1 for a nonempty cell and 0 for an empty cell. A vector of time shares $w$ is feasible precisely when $0\le w_h\le u_h$, $\sum w_h=1$, and its two margins are in the published time intervals. Indeed, cell mass can be divided equally over the statements of any nonempty cell. This support condition couples the count and time tables.
+
+Write $x=w_1$ and let $[e_l,e_h]$ and $[r_l,r_h]$ be the time intervals. Conditional on $x$, the ranges for $w_2,w_3$ are
+\begin{align*}
+[a,b]&=[\max(0,e_l-x),\min(u_2,e_h-x)],\\
+[d,f]&=[\max(0,r_l-x),\min(u_3,r_h-x)].
+\end{align*}
+Feasibility is equivalent to $0\le x\le u_1$, $a\le b$, $d\le f$, $a+d\le1-x$ and $b+f\ge1-x-u_4$. The last two constraints make the attainable sum $w_2+w_3$ intersect the required interval for the fourth cell. Expanding the maxima and minima gives linear inequalities in $x$. Subtracting $k/n$ from the resulting interval yields the conditional set of changes. Its union over admissible tables gives all feasible changes. The extrema of that union are sharp for these summaries. There may be gaps between them.
+
+\begin{center}\small
+\begin{tabular}{lrrrrr}\toprule
+Occupation & $n$ & E1, count/time (\%) & RL, count/time (\%) &\multicolumn{2}{c}{$\Delta$, points}\\
+ & & & & Min. & Max.\\\midrule
+Software developers &44&61/78&86/95&12.91&28.50\\
+Lawyers &32&16/11&62/61&$-12.50$&8.38\\
+Elementary teachers &39&26/12&38/19&$-23.08$&9.94\\
+Emergency physicians &38&3/0&29/29&$-2.63$&0.00\\
+Personal care aides &36&11/6&17/7&$-8.33$&3.72\\
+Dishwashers &13&0/0&0/0&0.00&0.00\\\bottomrule
+\end{tabular}\end{center}
+\noindent Inputs from [1], Tables 1 and 25. Endpoints use percentage points rounded to two decimals. The ranges quantify compatibility with the summaries. Sampling uncertainty in the worker surveys is outside this calculation.
+
+\newpage
+\section{Which additional disclosure resolves the sign?}
+For three occupations the table admits both an increase and a decrease. A count of doubly labelled statements can settle some of these ambiguities without task-level time data. At $k=0$ both shares are zero. For positive $k$ the following cutoffs are exact.
+\begin{center}
+\begin{tabular}{lcc}\toprule Occupation & Either sign & Strict decrease\\\midrule
+Lawyers & $1\le k\le3$ & $4\le k\le5$\\
+Elementary teachers & $1\le k\le4$ & $5\le k\le10$\\
+Personal care aides & $1\le k\le2$ & $3\le k\le4$\\\bottomrule
+\end{tabular}\end{center}
+Among lawyers the maximum time share of the overlap is 0.115. With four doubly labelled tasks the equal share is $4/32=0.125$, hence weighting must reduce exposure. With three tasks, assigning overlap times on either side of $3/32$ is feasible. The accompanying file gives both endpoint allocations for every count. For emergency physicians exactly one statement has E1. If it also has the RL label, the change lies in $[-1/38,\ 0.005-1/38]$. Otherwise it is zero. Most values between the minimum and maximum are consequently excluded.
+
+\section{How far could the time weights be wrong?}
+For developers, $i=27$, $j=38$ and $21\le k\le27$. For $22\le k\le26$ the possible overlap time lies in $[0.720,0.785]$. For $k=21$ the neither cell is empty and the range is $[0.720,0.740]$. For $k=27$ the E-only cell is empty and the range is $[0.775,0.785]$. The sharp extrema of $\Delta$ are $71/550$ and $57/200$. The lower witness has counts $(26,1,12,5)$ and time shares $(0.720,0.055,0.225,0)$. The upper witness has counts $(22,5,16,1)$ and time shares $(0.785,0,0.160,0.055)$. Interior approximations give the same limiting values under positive times or tie conventions that exclude the developer time endpoints.
+
+Suppose estimated task times are multiplied by positive factors with largest-to-smallest ratio at most $\Gamma$, then renormalized. The smallest corrected share for a given $B$ is $B/(B+\Gamma(1-B))$, attained by applying the smallest factor to every doubly labelled task and the largest to every other task. For $t=k/n$ in $(0,1)$ a strict increase therefore survives whenever
+\[
+             \Gamma < \frac{B_{\min}(1-t)}{t(1-B_{\min})}.
+\]
+The minimum over the seven developer tables occurs at $k=26$ and equals $162/91\approx1.7802$. At equality the lower witness gives zero after rescaling. Above it the corrected contrast can be negative. This sensitivity model holds the original labels and inventory fixed. The published time margins describe the estimates before correction.
+
+\newpage
+\section{Scope and reproduction}
+Classical bounds for cell entries treat marginal totals as constraints [3]. The contribution here is their application to two weightings of the same finite support, with rounded margins, occupation-specific sign disclosures, and a sharp sensitivity threshold. The original paper already shows that both separate estimated time shares for developers exceed the corresponding statement shares. That fact alone does not generally imply the same conclusion for the overlap.
+
+The accompanying files give an exact rational projection, all compatible tables and extremizing allocations, and a check with a separately formulated four-cell linear program. Both optimization directions are checked for all 32 candidate tables. The disclosure cutoffs can be verified against every feasible count. Only the counts and published percentages are inputs.
+
+The bounds use the information in Tables 1 and 25. More granular summaries, constraints on individual task weights, or original survey data can narrow them. Counts at half-percentage ties matter. For lawyers $20/32=62.5\%$ is compatible with the reported 62\% under the stated convention. A different denominator or a documented rounding rule excluding this tie would require revisiting this row. Extending the conclusion to other occupations requires new inputs.
+
+\paragraph{Model assessments and review context.} OpenAI Codex assisted with mathematical development, computational verification and writing. The author administers AIRR. The assessment for the exact PDF, including the model's involvement and objections, is recorded separately. Algorithmic agreement concerns the computations. Independent human peer review has not been documented.
+
+\smallskip\noindent\textbf{References}
+\begin{enumerate}\small
+\item J. Wang, A. Haupt, I. Robinson, P. Lewis, E. Brynjolfsson and D. Yang. \emph{TaskNet: Building Occupational Task Inventories from Worker Interviews at Scale}. NBER Working Paper 35987 (2026), Tables 1 and 25. \href{https://doi.org/10.3386/w35987}{doi:10.3386/w35987}.
+\item J. Wang et al. \emph{TaskNet System}, readme and example inventory at commit \texttt{17af7529}. \href{https://github.com/jennjwang/tasknet-system/tree/17af7529b697f6fbc7fc6832b30f4248572f717f}{Versioned source}.
+\item A. Dobra and S. E. Fienberg. Bounds for cell entries in contingency tables given marginal totals and decomposable graphs. \emph{Proceedings of the National Academy of Sciences} 97 (2000), 11885--11892. \href{https://sites.stat.washington.edu/adobra/Files/Papers/pnas.pdf}{Article}.
+\end{enumerate}
+\end{document}
