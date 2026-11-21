@@ -1,0 +1,7 @@
+# What the primary sources already establish
+
+Brandon Li and Ethan Yeroushalmi, subsection “Finite tests near x=1”, explicitly prove that every fixed finite collection of initial Hankel matrices stays positive definite for x sufficiently close to 1. Their proof uses Edgar's density, polynomial Gram matrices and continuity. The following proposition treats a different limit, the shift N going to infinity at fixed dimension. Neither statement by itself specifies a size as a function of 1-x. Source: https://github.com/brandonlign/apery-moments/blob/0802ad3508bb2dc65f5f1b9faba400559220e149/source/manuscript.tex#L347-L395
+
+Davis's companion includes exact example certificates, including a shifted determinant of size 13 at x=3/4 and size 23 at x=9/10. The checked source files include both registration and results. Evidence: https://doi.org/10.5281/zenodo.24331682, record/step3b. A sparse collection of parameter values cannot decide an asymptotic rate.
+
+The internal note makes the continuity estimate quantitative using a Legendre coefficient bound. Exponential conditioning of moment matrices on intervals is classical (Widom and Wilf, https://doi.org/10.1090/S0002-9939-1966-0189237-7). Record the quantified application as a research lead. The qualitative obstruction, the conditioning mechanism and the classification are established work. A matching upper bound or a substantial improvement linked to the specific Apéry weights would justify revisiting publication.
