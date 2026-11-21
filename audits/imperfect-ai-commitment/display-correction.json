@@ -1,0 +1,12 @@
+{
+  "before": "778a932d0c21d2510e2a47254b5a4d308b55db6edc760cdc3b7233e4d9815b3b",
+  "after": "4663f43d7cacae1e0a0cf6d73567f48e211c19d28685e92e940978aee4628261",
+  "changed": {
+    "overall_stars": [
+      4,
+      5
+    ]
+  },
+  "unchanged_scientific_score": 4.65,
+  "reason": "AIRR native validator requires nearest whole star at fixed score. Presentation correction, no new evaluation or altered opinion."
+}

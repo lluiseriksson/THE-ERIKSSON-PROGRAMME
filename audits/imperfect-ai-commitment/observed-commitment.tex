@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\title{When does partly observed AI commitment disappear?\\Selection across equilibria and selection on realized payoffs}
+\author{Lluis Eriksson}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Ao and Wu find that adoption of a device committing its user to cooperate disappears under sufficiently high observability. We study the complementary range of their one-shot matching model. We identify every limiting preference share allowed by their selection axiom without classifying every continuation equilibrium. Two pooling equilibria can have different material fitness gaps at the same population share. A third, mixed equilibrium can support positive limiting adoption under that axiom. In contrast, when selection follows the realized equilibrium's material payoffs, a bound uniform in observability forces long-run average adoption to vanish in continuous time. The distinction turns on what fitness information determines changes in the population.
+\end{abstract}
+\section{Environment and question}
+Use the game of Ao and Wu [1, Sec.~4.1]. Players match at random. A conditional type (share $x$) receives a private utility bonus $b$ for mutual cooperation, while the other type maximizes material payoffs. The prisoner's dilemma has payoffs $T>R>P>S$, with $R+b>T$. Players simultaneously choose a device. Device $M$ forces cooperation; device $A$ permits cooperation or defection. Each independently observes the other's device with probability $\rho>0$ before simultaneous play. Observation does not reveal the other player's private observation event. We use the source's type-homogeneous perfect Bayesian equilibria. Human behavior outside this model is not measured.
+
+Write $p=P-S$, $h=R+b-T$, $L=R+b-S$, $k=p/(p+h)$ and $c=p/(\rho L)$. A conditional player prefers cooperation if the probability of opponent cooperation exceeds $k$, with indifference at equality. Let $\Delta$ be the conditional type's material payoff minus the selfish type's. Definition 1 of [1] imposes a continuous velocity $V(x)$ with zero values at the boundary. If all equilibrium gaps are nonpositive the velocity is nonpositive, strictly so when all gaps are strictly negative. The analogous restriction holds for nonnegative gaps. It does not require the velocity to respond strictly to the particular equilibrium played.
+
+\section{The attainable limits}
+\textbf{Proposition 1.} Suppose $0<\rho\le(p+h)/L$ and $0<x_0<1$. The set of limiting conditional-type shares under Definition 1 is
+\[
+  [\,\min(x_0,k),\,\min(x_0,c)\,].
+\]
+In this regime $c\ge k$ and $c$ may exceed one.
+
+\paragraph{Incentives.} The selfish type can imitate the conditional type's device choice and defect whenever discretionary. This weakly improves material fitness, strictly whenever the conditional type voluntarily cooperates with positive probability. Selfish types never use $M$. To see this, let $q_M,q_A$ denote the opponent's cooperation probabilities conditional on one's own device. One has $q_M\ge q_A$: upon seeing $M$ a discretionary conditional opponent must cooperate. Without observing one's device the opponent's response is unchanged. On $M$, the utility advantage of being conditional is $bq_M$. On $A$ the advantage over an optimizing selfish user is at most $bq_A$, strictly less when $q_A>0$. Indeed forfeiting any positive-probability cooperation bonus or voluntarily cooperating at a strictly positive material cost makes the upper bound strict. Positive selfish adoption forces $q_A>0$ and hence strict conditional preference for $M$. If every conditional type uses $M$, opponents are forced cooperators or selfish defectors irrespective of one's device. Selfish players then strictly prefer $A$, a contradiction.
+
+If any users choose $M$ and some conditional players use $A$, the latter sometimes see $M$ and cooperate. Imitation then gives a strictly negative gap. If every conditional player uses $M$, the gap is $x(R-T)+(1-x)(S-P)<0$. With nobody adopting, equality requires full on-path defection. In a pooling all-defect profile a conditional player's gain from switching to $M$ is $\rho xL-p$. Only an informed conditional opponent responds to the deviation by cooperating. The selfish player's gain is weakly smaller. Thus a zero-gap equilibrium exists exactly for $x\le c$.
+
+\paragraph{Below the cooperation threshold.} For $x<k$, after seeing $A$ the posterior conditional-type probability is at most $x$, because selfish types always use $A$. Without a signal the opponent cooperates with probability at most $x$. Hence discretionary conditional players cooperate exactly upon observing $M$. Let $m$ denote their type's adoption rate. Its adoption gain is affine in $m$. At $m=0$ the gain is $\rho xL-p$. At $m=1$ it is $x(1-\rho)h-(1-x)p$: against a committed opponent discretion permits defection when the label is unseen, while against a selfish opponent discretion avoids exploitation. Both endpoints are strictly negative for $x<k\le c$. Thus there is no adoption, the only outcome is full defection, and $V=0$ below $k$. Continuity gives $V(k)=0$.
+
+\paragraph{Multiplicity and sharpness.} At every $x\ge k$, a pooling equilibrium has all players using $A$ and every conditional player cooperating on both on-path signals. The cooperation probability is $x$; seeing $M$ off path also induces cooperation. Changing one's device cannot change the opponent's response. The conditional type is indifferent and the selfish type strictly prefers $A$. The material gap is strictly negative. Hence for interior shares between $k$ and $c$, both zero and negative gaps occur; above $c$ all gaps are strictly negative. Every trajectory is nonincreasing, cannot cross the flat region below $k$, and cannot converge from above to an interior point strictly above $c$ where the continuous velocity is negative. Conversely for $\ell\in[k,\min(1,c)]$ take
+\[
+  V_\ell(x)=-x(1-x)\max(x-\ell,0).
+\]
+This Lipschitz field obeys every sign restriction and gives limit $\min(x_0,\ell)$. This completes the proof, including the case $k=c$.
+
+\section{An equilibrium path with positive limiting adoption}
+Take the source's illustrative payoffs $(T,R,P,S,b)=(5,3,1,0,3)$ and let $\rho=1/4$, so $k=1/2$, $c=2/3$. Consider a continuation in which discretionary conditional players cooperate only upon seeing $M$. With adoption share $y=xm$, conditional adoption indifference is
+\[
+ 0=\rho xL-p+y\{(1-\rho)(h+p)-\rho(R+b-P)\}.
+\]
+This follows by conditioning on a committed opponent, a conditional discretionary opponent and a selfish opponent. In the example it gives $y=4-6x$. For $7/12<x<2/3$ we have $0<y<x$ and $y<k$. Seeing $A$ induces defection; without a signal, the probability that the opponent cooperates against one's $A$ is exactly $y$. The selfish type strictly prefers discretion by the incentive comparison above. Thus this is a sequentially rational mixed equilibrium throughout that open interval.
+
+Choose $\ell=3/5$ and $x_0\in(3/5,2/3)$. Along the resulting trajectory take this mixed equilibrium. Then $x\to3/5$ and $y\to2/5$. At the limiting state both devices yield conditional expected utility $27/10$. The selfish type receives $13/5$ with $A$ and $27/20$ if it deviates to $M$. The realized material gap is $-9/10$. Stasis is admissible under Definition 1 because a distinct equilibrium has zero gap there. Universal extinction of adoption therefore does not extend to this observation regime under that definition.
+
+\section{A quantitative result for realized-fitness selection}
+\textbf{Proposition 2.} Put $d=\min(T-R,P-S)>0$, $K=R-P$. In every interior-state equilibrium at any positive observation rate,
+\[
+  -\Delta \ \ge\ \frac{d^2}{d+K}\,y .
+\]
+Let $z=1-m$ and let $g\ge0$ denote the selfish type's gain from $A$ relative to a deviation to $M$. Couple the two responses of an opponent with the same type, device, observation and private randomization. Only a conditional discretionary opponent who observes the device can change action, an event of probability $\rho xz$. Otherwise the advantage of defection over cooperation is at least $d$. Even on that event the advantage is at least $P-R=-K$. Hence $g\ge\max(0,d-(d+K)\rho xz)$. Both types using $M$ receive identical material payoffs. With $A$, the selfish type defects even upon seeing $M$, whereas the conditional type must cooperate then. This event has probability $\rho y$, and elsewhere defection weakly improves material returns. Consequently $-\Delta\ge mg+z\rho y d$. For $y>0$, divide by $y=xm$ and put $t=\rho z$ to get
+\[
+  -\Delta/y\ge\max(0,d-(d+K)t)+dt\ge d^2/(d+K).
+\]
+The right-hand piecewise linear function is minimized at $t=d/(d+K)$. Imitation covers $y=0$. We do not assert optimality of the constant over feasible equilibria.
+
+Now impose the realized-equilibrium replicator law $\dot x=x(1-x)\Delta$. For an interior absolutely continuous solution, integrate the derivative of $\log(x/(1-x))$. Below $k$ in the low-observation regime all gaps vanish, so $x(t)\ge\min(x_0,k)>0$. Writing $H(x)=\log(x/(1-x))$, we obtain
+\[
+ \int_0^\infty y(t)\,dt
+ \le \frac{d+K}{d^2}\bigl[H(x_0)-H(\min(x_0,k))\bigr].
+\]
+In particular long-run time-average adoption is zero, and any existing pointwise limit is zero. Integrability alone permits spikes. This stronger law uses the equilibrium actually played in every match; it restricts the trajectories that the original sign axiom permits.
+
+\section{Scope and reproduction}
+The proof identifies a set of limits across dynamics and provides one path with positive adoption. It estimates neither adoption demand in markets nor welfare. The supplied rational-arithmetic checks evaluate device and contingent-action deviations at both pooling profiles across 197 parameter and population cases, and at the positive-adoption example. They supplement the arguments for untested parameters. Assortative matching, repeated interaction and endogenous disclosure could change the response bounds. Work on preference evolution with other information and matching structures includes [2].
+\paragraph{Model assessments and review context.} Codex assisted the derivations and writing. Assessment of the exact rendered version is documented separately. This work has not been reviewed by the authors of the underlying model.
+\paragraph{References.} [1] W. Ao and J. Wu, \emph{Moral AI and the Erosion of Its Own Demand}, \href{https://arxiv.org/abs/2611.25213v1}{arXiv:2611.25213v1} (2026), Definition~1, Proposition~3 and Appendix~A.4.
+[2] I. Alger and J. W. Weibull, \emph{Homo Moralis: preference evolution under incomplete information and assortative matching}, \href{https://publications.ut-capitole.fr/id/eprint/16435/1/12.03.360.pdf}{Toulouse working paper} (2012).
+\end{document}

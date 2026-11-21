@@ -1,0 +1,53 @@
+{
+  "pooling": {
+    "cases": 197,
+    "defensive": 170,
+    "cooperative": 97,
+    "coexist": 70,
+    "on_k": 16,
+    "on_c": 8
+  },
+  "games": [
+    [
+      5,
+      3,
+      1,
+      0,
+      3
+    ],
+    [
+      8,
+      5,
+      3,
+      1,
+      7
+    ],
+    [
+      7,
+      4,
+      2,
+      -1,
+      4
+    ],
+    [
+      9,
+      3,
+      1,
+      -2,
+      8
+    ]
+  ],
+  "reference_example": [
+    {
+      "x": "1/2",
+      "zero_gap": "0",
+      "negative_gap": "-3/2"
+    },
+    {
+      "x": "2/3",
+      "zero_gap": "0",
+      "negative_gap": "-5/3"
+    }
+  ],
+  "interpretation": "Pure device and contingent action deviations at the pooling profiles. Mixed deviations follow by linearity. This finite panel does not enumerate mixed equilibria."
+}
