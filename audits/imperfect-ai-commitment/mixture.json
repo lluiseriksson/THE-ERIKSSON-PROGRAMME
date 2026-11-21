@@ -1,0 +1,12 @@
+{
+  "share": "3/5",
+  "observation": "1/4",
+  "theta_adoption": "2/3",
+  "population_adoption": "2/5",
+  "utility_when_committed": "27/10",
+  "utility_when_discretionary": "27/10",
+  "selfish_utility": "13/5",
+  "selfish_deviation": "27/20",
+  "fitness_gap": "-9/10",
+  "checked": "All eight discretionary signal rules plus the committed device for both types."
+}
