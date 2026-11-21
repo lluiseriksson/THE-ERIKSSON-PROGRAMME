@@ -1,0 +1,97 @@
+{
+  "model": "area may be subdivided; resulting upper bound applies to every pixel map",
+  "audited": "P1564 Table 5",
+  "results": {
+    "AlphaEarth": {
+      "vertex_count": 4,
+      "min_optimum_millionths": [
+        583007,
+        583008
+      ],
+      "max_optimum_millionths": [
+        584111,
+        584112
+      ],
+      "loss_area_interval": [
+        "493/100",
+        "247/50"
+      ],
+      "gain_area_interval": [
+        "3/20",
+        "4/25"
+      ],
+      "lost_local_score_upper": 0.9981238207505189,
+      "entered_local_score_lower": 0.6668761792494813,
+      "source_centroid_cosine": "93/100",
+      "local_map_year": 2022,
+      "vertices": [
+        [
+          "1493/200",
+          "537/200",
+          "101/40"
+        ],
+        [
+          "1493/200",
+          "537/200",
+          "507/200"
+        ],
+        [
+          "1493/200",
+          "539/200",
+          "507/200"
+        ],
+        [
+          "299/40",
+          "537/200",
+          "507/200"
+        ]
+      ]
+    },
+    "Tessera": {
+      "vertex_count": 4,
+      "min_optimum_millionths": [
+        142082,
+        142083
+      ],
+      "max_optimum_millionths": [
+        147419,
+        147420
+      ],
+      "loss_area_interval": [
+        "153/25",
+        "613/100"
+      ],
+      "gain_area_interval": [
+        "3/50",
+        "7/100"
+      ],
+      "lost_local_score_upper": 0.9993614511483401,
+      "entered_local_score_lower": 0.6476385488516601,
+      "source_centroid_cosine": "23/25",
+      "local_map_year": 2024,
+      "vertices": [
+        [
+          "1239/200",
+          "29/200",
+          "3/40"
+        ],
+        [
+          "1241/200",
+          "27/200",
+          "3/40"
+        ],
+        [
+          "1241/200",
+          "29/200",
+          "3/40"
+        ],
+        [
+          "1241/200",
+          "29/200",
+          "17/200"
+        ]
+      ]
+    }
+  },
+  "discrete_tests": 961
+}

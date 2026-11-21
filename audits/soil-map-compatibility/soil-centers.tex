@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,geometry}
+\geometry{margin=1in}\usepackage[hidelinks]{hyperref}
+\title{Can one soil map agree with two reference populations?\\An area-weighted compatibility bound}
+\author{Lluis Eriksson}\date{21 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A change in the reference population can change which sites a satellite model nominates for a field survey. Using published UK soil maps, we ask how well any third map could agree with both nominations. We solve the two-map area-weighted Jaccard centre problem in divisible area, bound the cost of retaining whole pixels, and propagate rounding in all five reported summaries. For the P1564 unit the highest attainable simultaneous overlap is between 0.5830 and 0.5842 for AlphaEarth and between 0.1420 and 0.1475 for Tessera in the divisible model. The upper bounds hold for every binary raster, including any output of a recalibrated classifier. The comparison concerns agreement with the two maps. It requires no labels for true soil condition.
+\end{abstract}
+
+\section{A question about competing field surveys}
+Pach\'on Maldonado et al.\ \cite{soil} compared two ways of nominating UK sites within each mapped pedogenon, a spatial unit grouping soils with similar soil-forming conditions. Within each embedding product, one reference centroid came from local low-human-modification sites and one from the closest available foreign analogue. Normalized target vectors with cosine similarity at least 0.90 to a centroid were selected. For the P1564 unit the two references gave particularly different candidate areas. Suppose a survey planner must produce a single candidate mask while remaining accountable to either reference. An overlap between the two original masks quantifies their disagreement but does not give the highest overlap a third mask can simultaneously achieve.
+
+Write $J(X,Y)=|X\cap Y|/|X\cup Y|$, with area as the measure. We seek $\sup_C\min(J(C,A),J(C,B))$. The centre objective and a polynomial algorithm for its general continuous counterpart were established in earlier work \cite{center}. Here the binary two-reference case yields a closed form that can be evaluated from published, rounded areas. There is no assumption about how $C$ was fitted.
+
+\section{Two-map optimum}
+Let $a=|A|\ge b=|B|>0$, $i=|A\cap B|$, and $u=a+b-i$. For divisible area the optimum is the unique positive root $r$ of
+\[
+   u r^2+(b-i)r-b=0.
+\]
+For a pixel partition whose largest cell in $A\setminus B$ has area $\delta$, the discrete optimum belongs to $[r-\delta/u,r]$; if $A=B$ it is one.
+
+\paragraph{Proof.} Adding the common intersection and discarding anything outside the union can only improve both similarities. Let $x,y$ be the areas retained in $A\setminus B,B\setminus A$. For simultaneous overlap $s$ we need
+\[
+ i+x\ge s(a+y),\qquad i+y\ge s(b+x).
+\]
+Eliminating $x$ and using $y\le b-i$ gives $u s^2+(b-i)s\le b$. To attain the root include all of $B$. As $x$ increases from zero to $a-i$, the first similarity $(i+x)/u$ increases and the second $b/(b+x)$ decreases. At zero the second is one, and at $a-i$ the first is $a/u\ge b/u$. Their intersection gives the stated root and a centre of the desired area. On a raster traverse the cells of $A\setminus B$ in any order and take the last prefix whose area does not exceed the crossing value. Its deficit is at most $\delta$. The first similarity loses at most $\delta/u$, and the second can only improve. This construction concerns unrestricted masks, not masks required to come from a single centroid.
+
+\section{Application and rounding certificate}
+The UK-versus-foreign comparisons in Table~5 of \cite{soil} use identical valid target pixels within product and surface-area weights \cite{code}. AlphaEarth uses 2022 embeddings and Tessera uses 2024. The local Tessera mask in the earlier three-method comparison uses 2022. Combining that area with the 2024 intersection would change the estimand.
+
+\begin{center}
+\begin{tabular}{lrrrrrc}\toprule
+Product & UK & Foreign & Both & Union & $J$ & Optimal simultaneous $J$\\\midrule
+AlphaEarth &7.47&2.69&2.53&7.62&.33&[0.5830, 0.5842]\\
+Tessera    &6.20&0.14&0.08&6.27&.01&[0.1420, 0.1475]\\\bottomrule
+\end{tabular}
+\end{center}
+Areas are in $\mathrm{km}^2$. Each displayed area and each pairwise $J$ was allowed half a unit of its last printed hundredth, including endpoints. We imposed $u=a+b-i$ and the interval for $i/u$ simultaneously. This matters because the printed centres of the rounding intervals need not satisfy the area identity. At fixed trial $s$, $b(1-s)+is-us^2$ is linear in the unknown areas. Its extrema therefore occur at vertices of the bounded rounding polytope. The accompanying rational calculation enumerates those vertices and brackets the minimum and maximum possible root to one millionth; the table rounds outwards. The calculation also checks the universal upper bound against every possible centre for each of 961 ordered pairs of nonempty masks on five unequally weighted cells.
+
+\paragraph{What a survey could promise.} A requirement of simultaneous IoU $0.20$ with both P1564 Tessera maps already exceeds what any mask could attain. The AlphaEarth pair permits $0.50$ in divisible area. Constructing the survey raster would also require both masks and their cell areas. Neither score measures field validity. Predictions compared to measured soil properties require an independently sampled field reference.
+
+\paragraph{Which pixels must change?} If unit centroids have angle $\phi$ and the cap threshold has angle $\theta=\arccos(0.90)$, a cell entering the foreign map has local angle in $(\theta,\min(\pi,\theta+\phi)]$. A cell leaving has local angle in $[0,\theta]$ and strictly greater than $\theta-\phi$, by the spherical triangle inequality. These are necessary conditions; they cannot locate a single changed pixel from aggregate areas. In particular two centroids can be close while many pixels lie close to the threshold. The closed-form compatibility ceiling uses only the maps and is unaffected by this missing score information.
+
+\paragraph{Model assessments and review context.} An AI assistant participated in the analysis and writing. The version-specific assessment is retained separately with the exact PDF, model identity and participation declaration.
+
+\begin{thebibliography}{9}
+\bibitem{soil} J. C. Pach\'on Maldonado et al. Use of spatial embeddings in genosoil identification. \emph{SOIL} 12 (2026), 1213--1227. \href{https://doi.org/10.5194/soil-12-1213-2026}{doi:10.5194/soil-12-1213-2026}, Sects.~2.2, 3.4--3.5 and Table~5.
+\bibitem{code} J. C. Pach\'on Maldonado et al. Companion code and candidate products. \href{https://doi.org/10.5281/zenodo.19424156}{Zenodo record 19424156}, in particular \texttt{native\_grid.py}.
+\bibitem{center} M. Bury and C. Schwiegelshohn. On Finding the Jaccard Center. \emph{44th International Colloquium on Automata, Languages, and Programming} (2017), 23:1--23:14. \href{https://doi.org/10.4230/LIPIcs.ICALP.2017.23}{doi:10.4230/LIPIcs.ICALP.2017.23}.
+\end{thebibliography}\end{document}

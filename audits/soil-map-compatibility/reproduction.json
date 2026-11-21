@@ -1,0 +1,20 @@
+{
+  "source_sha": "6c063246db02ecdac4d16529a864db3cdbc5b931",
+  "inputs": {
+    "soil-centers.tex": "f2594877013e989cfd4b1a5981a4a476641ea70b2a2a61110437927a2e61d9ca",
+    "verify_soil.py": "2779193c61d7762365cc96663f450f1f4b292286f9459a6a49592a644390f24b",
+    "soil-compatibility.py": "e55537e6837b175657d4fb075c67057388b9275222bc7ff82a3c6fba292f0240",
+    "sources.json": "30f647766a7f04c918628ed3d558325af2ac224ddb489d6c4be5e0d87ed483ae",
+    "tables-values.json": "30f2c3910cdf3ab11e6d79c6974891dfac87bece472721d664ccf7abc53b35af",
+    "compatibility.json": "37712638471fae53f5a3e163c24de92ddbd7272b2f447f11a892604e96d88a05"
+  },
+  "started_at": "2026-11-21T01:02:38.710176+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "f80fa63e5e88ef1f2f05be3100b37844006d21494efa16101746c556836799a9",
+    "f80fa63e5e88ef1f2f05be3100b37844006d21494efa16101746c556836799a9"
+  ],
+  "pdf_bytes": 227877,
+  "finished_at": "2026-11-21T01:03:46.779429+00:00"
+}

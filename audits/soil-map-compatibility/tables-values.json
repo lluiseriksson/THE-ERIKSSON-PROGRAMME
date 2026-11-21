@@ -1,0 +1,95 @@
+{
+  "t05": [
+    [
+      [
+        null,
+        null,
+        "P1564"
+      ],
+      [
+        "AlphaEarth",
+        null,
+        null
+      ],
+      [
+        "Strongest non-UK analogue",
+        null,
+        "Germany"
+      ],
+      [
+        "Centroid cosine similarity to UK",
+        null,
+        0.93
+      ],
+      [
+        "UK local candidate area (km2)",
+        null,
+        7.47
+      ],
+      [
+        "UK foreign derived candidate area (km2)",
+        null,
+        2.69
+      ],
+      [
+        "Intersection (km2)",
+        null,
+        2.53
+      ],
+      [
+        "Union (km2)",
+        null,
+        7.62
+      ],
+      [
+        "IoU",
+        null,
+        0.33
+      ],
+      [
+        "Tessera",
+        null,
+        null
+      ],
+      [
+        "Strongest non-UK analogue",
+        null,
+        "Spain"
+      ],
+      [
+        "Centroid cosine similarity to UK",
+        null,
+        0.92
+      ],
+      [
+        "UK local candidate area (km2)",
+        null,
+        6.2
+      ],
+      [
+        "UK foreign derived candidate area (km2)",
+        null,
+        0.14
+      ],
+      [
+        "Intersection (km2)",
+        null,
+        0.08
+      ],
+      [
+        "Union (km2)",
+        null,
+        6.27
+      ],
+      [
+        "IoU",
+        null,
+        0.01
+      ]
+    ]
+  ],
+  "source": {
+    "url": "https://soil.copernicus.org/articles/12/1213/2026/soil-12-1213-2026-t05.xlsx",
+    "sha256": "faa9f4d57a74d15e3b6f6f4e52a180d6b74150ed9fcf5e2c80d1e3a9365096ce"
+  }
+}
