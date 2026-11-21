@@ -1,0 +1,50 @@
+\paragraph{A denominator estimate uniform in the block count.}
+Put $p=15/7$, $\E hPh=1$, $g=Ph$, $Q=P_{1/\sqrt2}$ and $U=\pi/g^2$. For a vector of target means $u$, write $S_0=\|u\|_2^2$ and $\eta_i=u_i/\sqrt{n_i}$. If $|\eta_i|\le1/2$, the product likelihood
+\[
+ f=\prod_i\prod_{\ell\in i}(1+\eta_i y_\ell)
+\]
+has uniform expectation one and tilts the independent block sums $z_i$ to means $u_i$, each with variance at most one. Let $D=\lfloor k/2\rfloor-2$. Truncate the Walsh expansion of $f$ at quotient degree $D$ to obtain $f_D$. Ordinary forward hypercontractivity on the quotient cube, applied with noise $1/\sqrt3$ to the inverse-noise rescaling of the tail polynomial, gives
+\[
+ \|f-f_D\|_4^2\le\sum_{|S|>D}3^{|S|}\widehat f(S)^2
+ \le2^{-D}\prod_i(1+6\eta_i^2)^{n_i}\le2^{-D}e^{6S_0}.
+\]
+For $V=1$ or $V=(a\cdot(z-u))^2$ with any Euclidean unit vector $a$, matching gives $\E[(\pi-1)f_DV]=0$. Indeed, each quotient coordinate is the product of two ambient signs. Under the uniform law $a\cdot z$ is a sum of independent mean-zero signs with squared coefficients summing to one. Thus $\|V\|_q\le C_q(1+S_0)$ for $1/q=1-1/p-1/4>0$; the constants are independent of the number and sizes of blocks. By H\"older,
+\[
+ |\E[(\pi-1)f V]|\le C_B(1+S_0)2^{-D/2} e^{3S_0}.
+\]
+For $S_0\le\epsilon k$ with $\epsilon>0$ sufficiently small this is exponentially small. For all sufficiently large $k$ the measure $f\pi\,d\mu$ has mass at least $3/4$, directional centered second moments at most two, and centered squared Euclidean norm integral at most $2m$ (sum over an orthonormal basis).
+
+The change of measure for a single row in fact gives, for \emph{every} output layer $s$,
+\[
+ \frac{T(d,s)}{\mu_s}\ge\exp[-nE(d)+v_d z_s-C(1+z_s^2)],
+ \qquad v_d=-\sqrt n\,t_0(d),\qquad z_s=\sqrt n\,s .
+\]
+For $|s|\le\delta$ with small absolute $\delta>0$, in the proof of \eqref{lowerrow} the larger group needs a binomial count within $C\sqrt n+n|s|$ of its tilted mean. Stirling's lower bound and the quadratic upper bound on binary relative entropy in a compact interior fraction give probability at least $c n^{-1/2}\exp(-Cz_s^2)$ uniformly for the selected smaller-group counts. For $|s|>\delta$, any specified configuration in the layer has tilted probability at least $c_0^n$, since the tilt and both biases are bounded. Here $n\le z_s^2/\delta^2$. Finitely many small sizes are covered by increasing $C$. Undo the tilt, retaining the signed linear term also when it is negative. We have $\rho |z_d|\le |v_d|\le C|z_d|$, since $L'_d(0)=\rho d$ and $L''_d$ is bounded above by one and below by a positive constant throughout $|t|\le\operatorname{arctanh}\rho$.
+
+Fix a row vector $d$ and let $v_i=-\sqrt{n_i}\,t_0(d_i)$. In the tilted stationary measure require both $\|z-u\|_2^2\le16m$ and $|v\cdot(z-u)|\le4\|v\|_2$ (the second condition is automatic at $v=0$). The second-moment bounds show the resulting event $F$ has $f\pi\,d\mu$ mass at least $1/2$. On $F$, $\log f\le u\cdot z\le C(S_0+m)$, hence $\nu(F)\ge c\exp[-C(S_0+m)]$. We have $\E g=\E h\le1$ from $\|Qh\|_2=1$. Since $\E[\pi\one_{g>L}]\le B L^{-1/p'}$, integration of $h=\pi/g$ over $F$ with $L=(2B/\nu(F))^{p'}$ gives $\E[h\one_F]\ge c_B\exp[-C(S_0+m)]$. Multiply the layer lower bounds and integrate on $F$. The result is
+\begin{equation}\label{grow}
+ g(d)\ge c_B\exp\!\left[-\sum_i n_iE(d_i)+v\cdot u
+           -4\|v\|_2-C(S_0+m)\right].
+\end{equation}
+All constants here are independent of the partition.
+
+\paragraph{Tail trace and choice of parameters.}
+For any nonnegative orbit weight $W$, the top eigenvector of $QM_WQ$ can be taken invariant under the fiber translations and within-block permutations: when $W\ne0$ the sandwich has strictly positive entries. The full norm is therefore bounded by the trace on the orbit space. There $Q^2=P$ has the product layer transition. Cyclicity of trace in the normalized layer basis gives
+\[
+ \|QM_WQ\|\le\sum_d W(d)\prod_i T(d_i,d_i).
+\]
+Let $R=\gamma\sqrt{k}$. On $\|z\|_2>R$ choose $u=t v/\|v\|_2$, $t=\alpha R$. Since $\|v\|_2\ge\rho R$ and $|v_i|/\sqrt{n_i}\le\operatorname{arctanh}\rho$, small fixed $\alpha$ ensures $|\eta_i|\le1/2$. Also $S_0=\alpha^2R^2\le\epsilon k$. Choose $\alpha$ small enough that $C t^2\le t\|v\|_2/4$. For large $k$, absorb $4\|v\|_2$ with another quarter. Then \eqref{grow} gives, for some $b_0>0$,
+\[
+ g(d)\ge c_B\exp[-\textstyle\sum_i n_iE(d_i)+b_0R\|z\|_2-Cm].
+\]
+If $m\le R^2$, then $R\|z\|_2\ge\sum_i|z_i|$. Keeping half the gain for this sum and half for $R^2$, apply H\"older to the preceding trace with $W=(\pi/g^2)\one_{\|z\|_2>R}$ against the product of the layer masses $\mu_{d_i}$. The resulting bound is
+\[
+ C_B e^{Cm-b_0R^2}\prod_i
+ \left(\sum_{d_i} A_{n_i}(d_i)\right)^{1/p'},\qquad
+ A_n(d)=\mu_d^{1-p'}T(d,d)^{p'}e^{2p'nE(d)-b_0p'|\sqrt n d|}.
+\]
+Every one-block sum is bounded by an absolute constant depending only on the chosen $b_0$. For $|d|\le1/2$, the two local prefactors give $A_n(d)\le Cn^{-1/2}\exp[-p'n\Delta(d)-b_0p'|\sqrt n d|]$. Sum on the mesh $2/\sqrt n$ using \eqref{delta}. On $|d|>1/2$ the global estimates and the strict gap give $A_n(d)\le(n+1)^{p'-1}\exp(-cn)$. This includes the two end layers and arbitrarily small block sizes by a uniform enlargement of the constant. The tail trace is therefore at most $C_B\exp(C'm-b_0R^2)$.
+
+\paragraph{Central and signed parts of the operator.}
+On $\|z\|_2\le R$ take $u=0$ in \eqref{grow}. Since $E(d)\le b I(d)\le C d^2$ on the whole interval, $g^{-2}\le C_B\exp(C(m+R^2+1))$. By the variance estimate in Theorem~\ref{inverse}'s proof the uniform mass of $|g-1|>2^{-k/8}$ is at most $C_B2^{-3k/4}$. There the restricted $L^{5/3}$ norm of $\pi$ is bounded by $B$ times this mass to the power $3/5-1/p>0$. Off the exceptional set, $|U-\pi|\le C2^{-k/8}\pi$. For the remaining $\pi$ tail, independence and the subgaussian sign estimate give $\E_\mu e^{c\|z\|_2^2}\le C_1^m$ for some fixed $c>0$ (integrate the one-block tail). Thus $\mu(\|z\|_2>R)\le C_1^m e^{-cR^2}$ and H\"older again applies.
+Choose $\gamma>0$ small enough to absorb the central factor in the exponentially small exceptional-set bound, then $m/k\le\delta_B$ sufficiently small to absorb all factors exponential in $m$, including the tail-trace factor. All three estimates decay exponentially in $k$. The bound $\|QM_WQ\|\le\|W\|_{5/3}$ for nonnegative quotient weights treats the $\pi$ tail and the central absolute difference. The $U$ tail was treated by its trace. The signed comparison for $\pi-1$ in Theorem~\ref{inverse} uses only matching and a bounded second moment; applying it here gives $\|QM_UQ-P\|\le C_Be^{-c_B k}$. The Gram-product and min--max comparison completes the proof of Theorem~\ref{critical}.

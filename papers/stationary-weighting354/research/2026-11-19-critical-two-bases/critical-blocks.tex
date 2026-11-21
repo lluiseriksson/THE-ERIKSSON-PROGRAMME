@@ -1,0 +1,46 @@
+\section{The critical exponent for block-symmetric paired coordinates}
+\label{sec:critical}
+On the paired quotient $y_i=x_ix_{r+i}$ the ambient $P=P_{1/2}$ acts as $P_\rho$ with $\rho=1/4$. Split the $r$ pairs into $m$ blocks of sizes $n_i$. Write $d_i$ for the mean sign in block $i$ and $z_i=\sqrt{n_i}d_i$. A block-symmetric potential is any positive function of the vector $(d_1,\ldots,d_m)$; the function may couple the blocks arbitrarily.
+
+\begin{theorem}\label{critical}
+For every $B\ge1$ there are $\delta_B,c_B,C_B>0$ such that if $m\le\delta_B k$, the potential is block-symmetric, $\|\pi\|_{15/7}\le B$, and the stationary ambient marginals match through degree $k$, then
+\[
+ \max_j|\lambda_j(K_h)-\lambda_j(P_{1/2})|\le C_B e^{-c_B k}.
+\]
+Block sizes are arbitrary positive integers. There is no lower-tail or uniform-integrability hypothesis on the stationary density. For $m=1$ the subcritical examples of Theorem~\ref{two} can all be chosen radial.
+\end{theorem}
+For the last assertion the untilted potential and the set of constraints in Lemma~\ref{tilt} are invariant under coordinate permutations. The strictly convex local minimization there has a unique minimizer in its invariant ball. Its tilt is therefore invariant too.
+
+\paragraph{Two rates for one block.}
+For a block of $n$ signs let $\mu_d$ denote the uniform mass of the layer $d$ and $T(d,s)$ the ordinary quotient transition between layers. Let $I_2(d,s)$ be the Legendre transform of the joint log moment-generating function of one uniform stationary noise pair. Define
+\[
+ J(d)=I_2(d,d)-I(d),\qquad E(d)=I_2(d,0)-I(d).
+\]
+These are the conditional rates at $d$ and zero for a row starting at $d$. Indeed, for dual parameter $t$ on the output, optimizing over the input parameter gives the binary marginal cost $I(d)$ and leaves the conditional log moment-generating function
+\[
+ L_d(t)=\tfrac{1+d}{2}\log(\cosh t+\rho\sinh t)
+       +\tfrac{1-d}{2}\log(\cosh t-\rho\sinh t).
+\]
+This follows by tilting the input Bernoulli marginal to mean $d$, with endpoint values by continuity. In particular $E(d)=-\min_t L_d(t)$.
+At $p=15/7$ set $\Delta(d)=J(d)-2E(d)-I(d)/p$. Then
+\begin{equation}\label{delta}
+ \Delta(d)\ge0,\qquad \inf_{|d|\ge1/2}\Delta(d)>0.
+\end{equation}
+To check this, write $v=(1+\rho)/2$, $j=(1-\rho)/(1+\rho)$ and $b=\rho^2/(1-\rho^2)$. The diagonal rate is the transform of $\log(1-v+v\cosh t)$: by symmetry the two dual parameters can be taken equal. This function is at most $v^{-1}\log\cosh(vt)$, with strictly increasing difference (larger minus smaller) for $t>0$. Differentiation reduces the latter assertion to $(1-v)\sinh(vt)>v\sinh((1-v)t)$. Inserting the optimizer $t=v^{-1}\operatorname{arctanh}d$ of the comparison transform shows that $J\ge jI$, with a uniform additive gain for $|d|\ge1/2$, including the endpoints by continuity.
+
+For the other direction apply the two-function reverse hypercontractive inequality for binary noise \cite{mos} to indicators of layers at $d$ and zero. For $a,b'\in(0,1)$ with $(1-a)(1-b')=\rho^2$, their joint probability is at least $\mu_d^{1/a}\mu_0^{1/b'}$. On even block lengths approximate $d$ by admissible layer values. The joint exponential rate is $I_2(d,0)$: enumerating the four-cell types gives the minimum relative entropy with these margins, since there are polynomially many types and a minimizing table can be rounded with the prescribed margins and $O(1/n)$ entry errors. Stirling's formula gives the marginal rates $I(d)$ and zero. Taking the dimension limit first, then $b'\downarrow0$, gives $E\le bI$. Both rate functions are continuous on the closed interval by the same finite table formula. Now $j-2b=1/p$ proves \eqref{delta}.
+
+\paragraph{Layer transition estimates.}
+Uniformly for the lattice values with $|d|\le1/2$,
+\[
+ \mu_d\ge c n^{-1/2}e^{-nI(d)},\qquad T(d,d)\le C n^{-1/2}e^{-nJ(d)} .
+\]
+The first estimate is Stirling's formula. For the second, tilt the independent output signs to mean sum $nd$. The tilt is bounded because the target stays in a compact subinterval of $(-1,1)$ and both initial success probabilities are bounded away from zero and one. At least one of the two sign groups has size $\ge n/2$. Its tilted binomial count has maximum atom $O(n^{-1/2})$, and convolution preserves this upper bound. The change of measure on the target layer is exactly $e^{-nJ(d)}$. For arbitrary $d$ the weaker bounds $\mu_d\ge(n+1)^{-1}e^{-nI(d)}$ and $T(d,d)\le e^{-nJ(d)}$ follow from the binomial type bound and Chernoff's inequality, including end layers.
+
+For $1\le \sqrt n\,|s|\le2$ on the same side of zero as $d$ (either side at zero), we also have
+\begin{equation}\label{lowerrow}
+ T(d,s)/\mu_s\ \ge\ c\exp[-nE(d)+\rho\sqrt n\,|d|]
+\end{equation}
+uniformly in $d$. Tilt this time to mean zero. The optimizing parameter $t_0$ has opposite sign to $d$ and $|t_0|\ge\rho|d|$, since $L'_d(0)=\rho d$ and $L''_d\le1$. Also $|t_0|\le\operatorname{arctanh}\rho$ by the extreme all-plus and all-minus inputs. Under this tilt the probability of each specified layer in the window is at least $c/\sqrt n$. Indeed the smaller sign group lies within $2\sqrt n$ of its tilted mean with probability at least $3/4$ by Chebyshev. Conditional on such a count, the larger group needs a count within $C\sqrt n$ of its mean and of the correct lattice parity. Stirling's bounds give a uniform lower atom $c/\sqrt n$ there, since its size is at least $n/2$ and its tilted parameter stays in a compact subinterval of $(0,1)$. Undo the tilt, multiplying by $\exp[-nE(d)-nt_0s]$, and use $\mu_s\le C/\sqrt n$.
+
+\input{critical-rate}
