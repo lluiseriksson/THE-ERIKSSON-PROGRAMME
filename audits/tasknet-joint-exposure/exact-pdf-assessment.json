@@ -1,0 +1,55 @@
+{
+  "paper_id": "ARR-2026-6KTMY07FGG8GJRPN",
+  "version": "v1",
+  "version_id": "arr:version:8f9dd8c2-8d8a-448b-b11a-2f797eeb2b1e",
+  "canonical_sha256": "03b1d36ccf806cc5d65762e164dfdf725906e8892fe154ff065d2426ccfc3ae0",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-21T03:04:03.250854+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 3.95,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The count and time constraints couple through empty cells. The fourth-cell restriction supplies the two sum inequalities. For 26 of 44 developer tasks and overlap mass 0.720, the threshold ratio is exactly 162/91."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The endpoint construction and equal within-cell allocation prove sharpness under nonnegative time shares. The actual survey may impose additional restrictions, and strict positive weights can change attainment. Assumptions and closure are explicit."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Sharp cell bounds and odds rescaling are established tools. The useful contribution is the finite-support application to this newly released occupational summary, especially the sign cutoffs and the threshold conditional on a shared inventory."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "The result says exactly when one low-dimensional disclosure would settle the sign for three occupations. For developers the guaranteed increase persists under a quantified distortion. The analysis concerns a selected metric in six inventories."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "Tables 1 and 25 supply all numerical inputs. The exact rational witnesses, the alternative LP for both extrema on 32 count tables and the count disclosure verification correspond to the printed results. The pinned source yielded two identical PDFs."
+    }
+  },
+  "summary": "This four-page paper recovers exact limits on a joint AI-exposure contrast from six occupational inventories and specifies the counts that would resolve otherwise ambiguous signs. The conclusions follow within the explicitly stated shared-support and rounding model. Calibration addresses changes in time weights with fixed labels. I contributed to the manuscript, inspected the four rendered pages and checked the published aggregates and computations in shared context.",
+  "strengths": [
+    "Reports that the physician identified set has a gap instead of implying every value between its extrema is feasible.",
+    "Specifies an attainable reversal threshold for plausible measurement error and the relative-error model that defines it.",
+    "Avoids using demonstration records as participant data."
+  ],
+  "weaknesses": [
+    "The study does not validate the reported task times against observed time use. The size of the tolerable distortion therefore has no empirical calibration in this study.",
+    "The interpretation of the lawyer row specifically allows a half-percentage tie. Additional precision or author confirmation would make that row easier to reuse.",
+    "The direct sources for the two underlying exposure rubrics could be cited alongside the TaskNet table."
+  ],
+  "potential_errors": [
+    "Using data from a different O*NET inventory or restricting the denominator to core tasks would alter the support constraints.",
+    "Treating the critical ratio as a symmetric 78 percent per-task error tolerance would use a different sensitivity model."
+  ],
+  "strong_novelty_candidates": [
+    "Conditional count thresholds of 4, 5 and 3 resolve the sign for lawyers, elementary teachers and personal care aides; under lower positive counts both signs remain feasible."
+  ],
+  "unresolved_material_objections": []
+}

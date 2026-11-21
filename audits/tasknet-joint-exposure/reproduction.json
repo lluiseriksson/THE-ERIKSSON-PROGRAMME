@@ -1,0 +1,21 @@
+{
+  "source_sha": "4d73536a85aa969dff04664f05344e96e6c441bd",
+  "inputs": {
+    "joint-exposure.tex": "c7bb76a59948828593e9ca20e0f44e4c8daa295f53c1a374e1fd301e2c33d192",
+    "tasknet_bounds.py": "78502605ca2c09193c0317dfa975a347821d13ea4887b260a981fa7ba31e29d3",
+    "tasknet_verify.py": "4293cf18f243223dc1fce3cf963f31c9ef5db5113475f618d49e0a5de05c6f3f",
+    "tasknet_disclosure.py": "436423a04ce0ec1d4427fc72a605d049deb618cf9bf855cd47a450b7d8dbe509",
+    "bounds.json": "07217bd1aa5870568aecae5f7f43337aba55c25d65af3856268b6a072b241aa5",
+    "verification.json": "174a26323e87f2c026eff5930b6be5e9d688433fe94eaba4dfdfba3ae9885a9e",
+    "sources.json": "5be35a53066d6170f114690dcb56d9a6733b2795e222d3cbbe8d1268de535771"
+  },
+  "started_at": "2026-11-21T03:01:43.862603+00:00",
+  "status": "reproduced",
+  "pages": 4,
+  "pdf_sha256": [
+    "03b1d36ccf806cc5d65762e164dfdf725906e8892fe154ff065d2426ccfc3ae0",
+    "03b1d36ccf806cc5d65762e164dfdf725906e8892fe154ff065d2426ccfc3ae0"
+  ],
+  "pdf_bytes": 237507,
+  "finished_at": "2026-11-21T03:02:38.611451+00:00"
+}
