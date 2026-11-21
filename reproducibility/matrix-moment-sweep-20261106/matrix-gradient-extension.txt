@@ -1,0 +1,156 @@
+Base: 88f31a1981b757b9240a9076e2012545066b9028
+Unit158, 6 November 2026. Analytic finite-lattice adapter, not a new Cwikel theorem.
+
+MATRIX INVERSE MOMENTS REMOVE THE SHARED-SCALAR RESTRICTION
+
+Status: analytic derivation using an explicitly imported classical theorem.
+Not Lean-verified, not numerically replayed in this unit, not externally reviewed.
+This is a supplement to the existing coarse-information dossier, not a separate
+paper or a claim of independent priority. The frozen v6 PDF is not modified.
+
+1. Statement and actual objects
+
+Fix D>=3, h>=1, n>=2, p=D/2, V=n^D, r=D*h. Let X=(Z/nZ)^D with
+the COUNTING inner product. A real cochain is u:X -> R^h. Write
+du(x)=(u(x+e_i)-u(x))_(i=1,...,D) in R^r. At each actual vertex x let
+A(x) be ANY real symmetric positive definite r-by-r matrix. In particular,
+different directions and components may mix, and A(x),A(y) need not commute.
+Set
+
+ Q_A(u)=sum_x du(x)^T A(x)du(x),   L_A=d* M_A d,
+ alpha_D=(D/2)*(D/(D-2))^(D-1)*(3/4)^D.
+
+For every c>0, the ordinary real multiplicity satisfies
+
+ N_[0,c)(L_A) <= h+alpha_D*c^p*sum_x tr(A(x)^(-p)).                 (1)
+
+Consequently there is an actual real linear observation C retaining precisely
+the eigenvectors of L_A with eigenvalue<c, such that
+
+ Q_A(u)+c*||C u||^2 >= c*||u||^2,     dim F=N_[0,c)(L_A).        (2)
+
+C(0)=0 and Phi(y)=c||y||^2. No bound on this spectral subspace is assumed.
+For n=1, d=0 and C is the identity on R^h; dim F=h.
+
+Under the genuine distribution hypothesis
+
+ (1/(V*r))*sum_x tr((m*A(x)^(-1))^p)<=M,  m>=1,                (3)
+
+one obtains the original order max(1,(n/sqrt(1+m))^D), with coefficient
+h+2^p*alpha_D*c^p*r*M. Condition (3) is additional: neither an arithmetic
+matrix mean nor positivity alone proves it. There is no assumption that
+A(x)>=m*I, no scalar profile supplied in a structure, and no simultaneous
+diagonalization. The pointwise SPD premise remains essential to this proof.
+
+For the actual finite flat cochain application take h=D*(Nc^2-1). This
+statement is about the defined gradient quadratic form. An interacting
+covariant Hessian or a differently weighted curl/divergence form is NOT
+identified with Q_A without a separate dictionary/equality proof.
+
+2. Exact classical input and finite normalization
+
+Rupert L. Frank, Cwikel's theorem and the CLR inequality, arXiv:1206.3325v1,
+Section3.1, Theorem3.1:
+https://arxiv.org/html/1206.3325v1#S3.SS1
+
+Use its general-measure-space, operator-valued estimate at q=D>2. With
+counting measures, the r-component unitary finite Fourier transform F_r
+has L1(l2^r)->Linfinity(l2^r) norm V^(-1/2), independently of r. The
+theorem therefore gives, for matrix-valued multipliers f(x),G(k),
+
+ N_s(M_f F_r* M_G)
+ <= [D/2*(D/(D-2))^(D-1)]*V^(-1)*s^(-D)
+    *sum_x tr(|f(x)|^D)*sup_(t>0) t^D*#{k:||G(k)||>t}.         (4)
+
+N_s counts singular values STRICTLY above s. This is the weak Schatten
+counting convention, not a normalized trace or a strong Schatten norm.
+Finite sets are sigma-finite measure spaces, and all fibre spaces here are
+finite dimensional. Thus this is a direct application of the stated primary
+theorem, not an unproved continuum-to-lattice analogy. We credit the full
+operator-valued mechanism to Frank and its cited predecessors.
+
+3. Actual Fourier multiplier, including its rectangular shape and zeros
+
+On mean-zero h-component fields H0, L0=d*d is invertible. Its symbol is
+lambda(k)=4*sum_i sin(pi*k_i/n)^2, and J=d L0^(-1) has symbol
+J(k):v -> (z_i(k)*v/lambda(k))_i, z_i=exp(2*pi*i*k_i/n)-1.
+Set J(0)=0. This is r-by-h and ||J(k)||=lambda(k)^(-1/2) for k!=0.
+
+Let I:R^h->R^r embed in the first h coordinates. Define the SQUARE
+r-by-r G(k)=J(k) I*, so G(0)=0 and ||G(k)||=||J(k)||. Then
+J=F_r* M_G F_r I on fields (I acts pointwise), including the constant
+mode as zero. This padding is explicit; no nonsquare Fourier unitary is
+silently inserted into the classical theorem.
+
+Choose centered integer frequency representatives b_i, with one representative
+at the even-n endpoint. Concavity of sine gives lambda(k)>=16*|b|^2/n^2.
+If ||G(k)||>t, then 0<|b|<R=n/(4t). When R<=1 there is no such frequency;
+when R>1 the number is at most (2 floor(R)+1)^D <=(3R)^D. Thus
+
+ sup_(t>0) t^D*#{k:||G(k)||>t} <=(3/4)^D*V.                  (5)
+
+The operator norm here has NO fibre-multiplicity factor; the trace moment
+in (4) already accounts for the matrix fibre. The V in (5) cancels the
+V^(-1) from the Fourier L1->Linfinity norm, exactly once.
+
+4. Actual inverse comparison, with noncommuting coefficients
+
+For b in H0, let v=L_A^(-1)b and j_*=M_A d v. Then d*j_*=b.
+For any j with d*j=b, put k=j-j_*. Because d*k=0,
+
+ <j,M_A^(-1)j>=<b,L_A^(-1)b>+<k,M_A^(-1)k>.
+
+Indeed the cross term is <d v,k>=<v,d*k>=0. This proves the minimizing
+identity without commuting A with d or the Fourier transform. Taking the
+explicit feasible flow j=Jb yields, on H0,
+
+ L_A^(-1) <= J* M_A^(-1) J = B*B,  B=M_A^(-1/2)J.           (6)
+
+By (4)-(5) at f(x)=A(x)^(-1/2),
+
+ N_s(M_A^(-1/2)F_r* M_G)
+ <=alpha_D*s^(-D)*sum_x tr(A(x)^(-D/2)).                    (7)
+
+The remaining factor F_r I is an isometry, so restricting the domain cannot
+increase any singular-value count. The same bound holds for B. Apply finite
+min-max to (6), at the inverse threshold 1/c, to count eigenvalues of L_A
+STRICTLY below c on H0. The kernel of L_A consists of the h constant fields:
+SPD forces du=0 and the torus is connected. Add these h modes to obtain (1).
+Real symmetry ensures that complexification does not double multiplicities.
+Choosing the actual spectral coordinates proves (2). Inserting (3), and
+(1+m)/m<=2, proves the asserted mean-budget order. No locality is inferred.
+
+5. What is improved, and what is not
+
+The old scalar case A(x)=a(x)I_r is recovered, with a safe dimension-dependent
+constant. The new family admits cross-direction and cross-component terms,
+including variable eigenspaces: scalar shared weights are no longer required.
+As a simple noncommuting admissible example, on a two-dimensional fibre block
+choose at two sites A0=diag(1,4), A1=[[2,-1],[-1,2]], and identity on all
+remaining directions. Their commutator is [[0,3],[-3,0]], while both are SPD.
+No common diagonalizing basis exists. Negative cross entries do not make a
+quadratic form indefinite.
+
+This DOES NOT cover the indefinite signed forms of units155/156: their
+negative directions violate SPD. It does not prove a local rectangular mean
+construction, eliminate the inverse-moment premise, or change PR29's 20/41
+and TermSource=0. The original positive critical rectangular question stays
+OPEN; common-refinement stays STOPPED at three units. This closed supporting
+derivation creates no second ongoing question. The classical mechanism and
+this finite adapter are not asserted as an independently original discovery.
+
+6. Objections, verification and falsifier
+
+This derivation has been checked in writing by the same continuing Codex agent
+against the exact primary Theorem3.1, the zero-frequency case, normalization,
+padding, inverse-comparison direction and real multiplicity. No independent
+review, numerical run, new Lean compilation, or exact-PDF score is claimed.
+The effective preparation backend is not exposed by the application.
+
+Before manuscript integration: replay rational finite noncommuting-coefficient
+fixtures in this chat's own Colab Linux runtime, in normal and -O modes with
+actual mutations; obtain a separate audit of (4), padding and the form dictionary.
+A counterexample must use actual SPD A(x), the counting incidence d, and
+violate (1) with its full trace moment; an indefinite form is not a falsifier.
+The finite examples cannot certify the universal theorem. No PDF or AIRR
+submission is generated for this supplement alone.
