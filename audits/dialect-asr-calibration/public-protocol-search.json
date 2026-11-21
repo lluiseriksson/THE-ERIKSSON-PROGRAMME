@@ -1,0 +1,47 @@
+{
+  "repository": "atharva-chourey-lab/lags-transcription-audit",
+  "branches": {
+    "main": "239b3c863f595ba2dd607faf884dcd4ec579c6aa",
+    "deposited": "d984ef1c7ba789851627a012934dddcbfcd6fab1"
+  },
+  "trees": {
+    "d984ef1c7ba789851627a012934dddcbfcd6fab1": {
+      "files": [
+        ".zenodo.json",
+        "CITATION.cff",
+        "LICENSE",
+        "README.md",
+        "SOURCES.md",
+        "figures/figure1_census.pdf",
+        "figures/figure1_census.png",
+        "figures/figure2_index_integrity.pdf",
+        "figures/figure2_index_integrity.png",
+        "figures/figure3_calibration.pdf",
+        "figures/figure3_calibration.png",
+        "paper.md",
+        "paper.pdf"
+      ],
+      "candidates": []
+    },
+    "239b3c863f595ba2dd607faf884dcd4ec579c6aa": {
+      "files": [
+        ".zenodo.json",
+        "CITATION.cff",
+        "LICENSE",
+        "README.md",
+        "SOURCES.md",
+        "figures/figure1_census.pdf",
+        "figures/figure1_census.png",
+        "figures/figure2_index_integrity.pdf",
+        "figures/figure2_index_integrity.png",
+        "figures/figure3_calibration.pdf",
+        "figures/figure3_calibration.png",
+        "paper.md",
+        "paper.pdf"
+      ],
+      "candidates": []
+    }
+  },
+  "scope": "Version deposited and current public branches in the linked repository; no inference about other locations.",
+  "observed_date": "2026-11-21"
+}

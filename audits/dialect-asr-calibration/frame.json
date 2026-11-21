@@ -1,0 +1,1133 @@
+{
+  "conditions": "https://www.lap.uga.edu/Projects/DASS2019/readme_DASS2019.txt",
+  "credit": "Kretzschmar, Renwick, Lipani, Olsen, Olsen, Shi and Stanley (2019). Transcriptions of the Digital Archive of Southern Speech. Materials obtained from the University of Georgia Linguistic Atlas Project. Copying and redistribution of LAP materials are governed by its cost-of-reproduction condition. This report distributes counts, links and hashes only.",
+  "rows": {
+    "025": {
+      "counts": {
+        "all_letter_words": 7657,
+        "multi_letter_words": 7079,
+        "spoken_letter_words": 7443
+      },
+      "parts": [
+        {
+          "bytes": 113052,
+          "sha256": "0ea813edc17868f083c47bd389c6c3b771d98245d34d810bed081c4fb8614e8c",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/025/xml/025_1.xml"
+        }
+      ],
+      "turns": 477
+    },
+    "027": {
+      "counts": {
+        "all_letter_words": 10702,
+        "multi_letter_words": 9939,
+        "spoken_letter_words": 10475
+      },
+      "parts": [
+        {
+          "bytes": 165145,
+          "sha256": "826de8163ce40ef674783094addbd85626e33a3c011c1532c4831ef5c120c034",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/027/xml/027_1.xml"
+        }
+      ],
+      "turns": 916
+    },
+    "030": {
+      "counts": {
+        "all_letter_words": 7952,
+        "multi_letter_words": 7412,
+        "spoken_letter_words": 7853
+      },
+      "parts": [
+        {
+          "bytes": 127643,
+          "sha256": "c248338b42b2a270fa9ae749ea13efae63283535d897b7d26ea83dd5c69660bf",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/030/xml/030_1.xml"
+        }
+      ],
+      "turns": 776
+    },
+    "040": {
+      "counts": {
+        "all_letter_words": 7701,
+        "multi_letter_words": 7031,
+        "spoken_letter_words": 7489
+      },
+      "parts": [
+        {
+          "bytes": 139696,
+          "sha256": "77551ff03205e87d5260887a1232a3cfa116c675a72111ffcfe40284eeac5e22",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/040/xml/040_1.xml"
+        }
+      ],
+      "turns": 782
+    },
+    "079": {
+      "counts": {
+        "all_letter_words": 10362,
+        "multi_letter_words": 9522,
+        "spoken_letter_words": 9965
+      },
+      "parts": [
+        {
+          "bytes": 146162,
+          "sha256": "ab00658e55edab5d3811ff6c1e07de8b57709de9346814791e896d04bf9c5958",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/079/xml/079_1.xml"
+        }
+      ],
+      "turns": 582
+    },
+    "100": {
+      "counts": {
+        "all_letter_words": 11330,
+        "multi_letter_words": 10389,
+        "spoken_letter_words": 11078
+      },
+      "parts": [
+        {
+          "bytes": 260818,
+          "sha256": "766b01c0d91e8fd31374f406cffd0e4a5bffe3a6f6d088f89927e2d5890e970f",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/100/xml/100_1.xml"
+        }
+      ],
+      "turns": 1390
+    },
+    "105": {
+      "counts": {
+        "all_letter_words": 8232,
+        "multi_letter_words": 7406,
+        "spoken_letter_words": 7796
+      },
+      "parts": [
+        {
+          "bytes": 139750,
+          "sha256": "359e37981e44db25f2390d34e58b6591023321ca81af589b314006fba0115ec6",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/105/xml/105_1.xml"
+        }
+      ],
+      "turns": 420
+    },
+    "117": {
+      "counts": {
+        "all_letter_words": 7838,
+        "multi_letter_words": 6856,
+        "spoken_letter_words": 7367
+      },
+      "parts": [
+        {
+          "bytes": 141651,
+          "sha256": "7fd1e3dd727ba86ae3b6e976b2f8d375fcb0b88c702233b79c8bd6895fb2e74c",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/117/xml/117_1.xml"
+        }
+      ],
+      "turns": 756
+    },
+    "165": {
+      "counts": {
+        "all_letter_words": 14523,
+        "multi_letter_words": 13392,
+        "spoken_letter_words": 14091
+      },
+      "parts": [
+        {
+          "bytes": 252635,
+          "sha256": "463a1e0b73a31e1091fc3a707c189e8be62ce0f27900b8a025c547b13af23737",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/165/xml/165_1.xml"
+        }
+      ],
+      "turns": 1384
+    },
+    "166": {
+      "counts": {
+        "all_letter_words": 18352,
+        "multi_letter_words": 15595,
+        "spoken_letter_words": 16504
+      },
+      "parts": [
+        {
+          "bytes": 189123,
+          "sha256": "a23e1ff64204d9e683d2580d2cd03e50efb2cf3a31fcb6c7a3d66a45474041f2",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/166/xml/166_1a.xml"
+        },
+        {
+          "bytes": 141025,
+          "sha256": "7276b7a1c2c7d124e9d98b0dcbd2b81a5f8609be3e3663d2ce1c3870ba7d8269",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/166/xml/166_1b.xml"
+        }
+      ],
+      "turns": 1777
+    },
+    "176": {
+      "counts": {
+        "all_letter_words": 5600,
+        "multi_letter_words": 5015,
+        "spoken_letter_words": 5216
+      },
+      "parts": [
+        {
+          "bytes": 109181,
+          "sha256": "b10e8eb78f6ec28920dfbf4e664445c5e24eec86a24d2ad038be16ae5f3de87a",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/176/xml/176_1.xml"
+        }
+      ],
+      "turns": 503
+    },
+    "185": {
+      "counts": {
+        "all_letter_words": 8818,
+        "multi_letter_words": 8016,
+        "spoken_letter_words": 8512
+      },
+      "parts": [
+        {
+          "bytes": 170247,
+          "sha256": "5ace2854a6ce231a180ca54b5b88b69e95686df755a837b4c1cb52dc24afce17",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/185/xml/185_1.xml"
+        }
+      ],
+      "turns": 661
+    },
+    "252": {
+      "counts": {
+        "all_letter_words": 12860,
+        "multi_letter_words": 12028,
+        "spoken_letter_words": 12628
+      },
+      "parts": [
+        {
+          "bytes": 153421,
+          "sha256": "39ef677ed381add4d9476c4bca0d2e37142f675c1530abd894558508c31c4aff",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/252/xml/252_1a.xml"
+        },
+        {
+          "bytes": 113392,
+          "sha256": "7fbd8bcf9e19709dda97586cc7bd7e338532936cd436375794cf55512769b16f",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/252/xml/252_1b.xml"
+        }
+      ],
+      "turns": 1586
+    },
+    "255": {
+      "counts": {
+        "all_letter_words": 7980,
+        "multi_letter_words": 7063,
+        "spoken_letter_words": 7579
+      },
+      "parts": [
+        {
+          "bytes": 135131,
+          "sha256": "21029f1e4f410f497e2fcd298159c984cab27289a7e74b5edbe1485dd123c39a",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/255/xml/255_1.xml"
+        }
+      ],
+      "turns": 453
+    },
+    "270": {
+      "counts": {
+        "all_letter_words": 6786,
+        "multi_letter_words": 5811,
+        "spoken_letter_words": 6158
+      },
+      "parts": [
+        {
+          "bytes": 193950,
+          "sha256": "08d5c63481565d20825e13893123e74e87d74d045d5bee5572d709b5fe25579f",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/270/xml/270_1e.xml"
+        }
+      ],
+      "turns": 885
+    },
+    "289": {
+      "counts": {
+        "all_letter_words": 11956,
+        "multi_letter_words": 10957,
+        "spoken_letter_words": 11579
+      },
+      "parts": [
+        {
+          "bytes": 146840,
+          "sha256": "d5acf19c49cb557b5da976965984d98b390e8f6c4daa357170e929ca471005a0",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/289/xml/289_1.xml"
+        }
+      ],
+      "turns": 614
+    },
+    "299": {
+      "counts": {
+        "all_letter_words": 8118,
+        "multi_letter_words": 6863,
+        "spoken_letter_words": 7218
+      },
+      "parts": [
+        {
+          "bytes": 127059,
+          "sha256": "4a7d7b7616ea5b987d16ba10bf375a826edad177d82cae69980193de29f2b81d",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/299/xml/299_1.xml"
+        }
+      ],
+      "turns": 393
+    },
+    "303": {
+      "counts": {
+        "all_letter_words": 6321,
+        "multi_letter_words": 5512,
+        "spoken_letter_words": 5850
+      },
+      "parts": [
+        {
+          "bytes": 125760,
+          "sha256": "dca5ba5c4ea9e14ecc97cafc46dd30f48c3e1db1c365d7c631e3809c95030df5",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/303/xml/303_1.xml"
+        }
+      ],
+      "turns": 565
+    },
+    "312": {
+      "counts": {
+        "all_letter_words": 10342,
+        "multi_letter_words": 8885,
+        "spoken_letter_words": 9426
+      },
+      "parts": [
+        {
+          "bytes": 167039,
+          "sha256": "a2672634ebe4df3d52fc32b233b24453d80ebb456230dd7520aaeff28f6d97a8",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/312/xml/312_1.xml"
+        }
+      ],
+      "turns": 807
+    },
+    "330": {
+      "counts": {
+        "all_letter_words": 6992,
+        "multi_letter_words": 5586,
+        "spoken_letter_words": 5955
+      },
+      "parts": [
+        {
+          "bytes": 120895,
+          "sha256": "43be0259954b12bfd10aa8531dd6298ad1120a25e71fda902b454891df37fb68",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/330/xml/330_1.xml"
+        }
+      ],
+      "turns": 569
+    },
+    "342": {
+      "counts": {
+        "all_letter_words": 11274,
+        "multi_letter_words": 10182,
+        "spoken_letter_words": 10796
+      },
+      "parts": [
+        {
+          "bytes": 166788,
+          "sha256": "59f1347b270f33931f1e091a9e172fb7a2b538227dfffb96323545329c747831",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/342/xml/342_1.xml"
+        }
+      ],
+      "turns": 574
+    },
+    "364": {
+      "counts": {
+        "all_letter_words": 9425,
+        "multi_letter_words": 8457,
+        "spoken_letter_words": 9060
+      },
+      "parts": [
+        {
+          "bytes": 187398,
+          "sha256": "615d7ea4895eae1398590a3d0ac40aa66c7813fa6470be56c65cbc523376691e",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/364/xml/364_1.xml"
+        }
+      ],
+      "turns": 1086
+    },
+    "370B": {
+      "counts": {
+        "all_letter_words": 7779,
+        "multi_letter_words": 7372,
+        "spoken_letter_words": 7721
+      },
+      "parts": [
+        {
+          "bytes": 101874,
+          "sha256": "a856c1401d5b044f278a83ff2d9ff1695b15c898d982ba3ee70c380ab8ff659b",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/370B/xml/370B_1.xml"
+        }
+      ],
+      "turns": 363
+    },
+    "387": {
+      "counts": {
+        "all_letter_words": 12756,
+        "multi_letter_words": 11568,
+        "spoken_letter_words": 12415
+      },
+      "parts": [
+        {
+          "bytes": 244516,
+          "sha256": "62ef930b6a54f04f90ae39545132fbefe5b54a927d148f9a60da7afa57cc78df",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/387/xml/387_1.xml"
+        }
+      ],
+      "turns": 1199
+    },
+    "412": {
+      "counts": {
+        "all_letter_words": 9605,
+        "multi_letter_words": 8816,
+        "spoken_letter_words": 9351
+      },
+      "parts": [
+        {
+          "bytes": 151682,
+          "sha256": "91f16e0a16d03882d616e41832194dce57aa906b158e96b81077a597ae7ca2ce",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/412/xml/412_1.xml"
+        }
+      ],
+      "turns": 513
+    },
+    "434": {
+      "counts": {
+        "all_letter_words": 10616,
+        "multi_letter_words": 9643,
+        "spoken_letter_words": 10215
+      },
+      "parts": [
+        {
+          "bytes": 178783,
+          "sha256": "6e710ed3e8420ee8ca928b547efd8146637ba87a810544f4843b66dbc2b4de0e",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/434/xml/434_1.xml"
+        }
+      ],
+      "turns": 853
+    },
+    "444": {
+      "counts": {
+        "all_letter_words": 7454,
+        "multi_letter_words": 6836,
+        "spoken_letter_words": 7178
+      },
+      "parts": [
+        {
+          "bytes": 144817,
+          "sha256": "6bce64b3aa68f1e62ae9e978a0794cf02a5773f8b83f18d5d153c3c72eebc4c1",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/444/xml/444_1.xml"
+        }
+      ],
+      "turns": 692
+    },
+    "446": {
+      "counts": {
+        "all_letter_words": 9581,
+        "multi_letter_words": 8941,
+        "spoken_letter_words": 9386
+      },
+      "parts": [
+        {
+          "bytes": 161388,
+          "sha256": "05cee70afaa0ba4640443bc7b6f22f64b6a2af193551de39cb6cce711340f111",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/446/xml/446_1.xml"
+        }
+      ],
+      "turns": 933
+    },
+    "456": {
+      "counts": {
+        "all_letter_words": 15443,
+        "multi_letter_words": 14533,
+        "spoken_letter_words": 15245
+      },
+      "parts": [
+        {
+          "bytes": 195915,
+          "sha256": "8424918cec4f379fc76e2741cc4b6c6c11c95409e0851fe8cf1dc1b76cd7fc56",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/456/xml/456_1a.xml"
+        },
+        {
+          "bytes": 62250,
+          "sha256": "ab7beb4af60f8f9ff08fb57c5be6cfe8029e8be1d35378e8b7c5b36bbbc2a3ca",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/456/xml/456_1b.xml"
+        }
+      ],
+      "turns": 1376
+    },
+    "461": {
+      "counts": {
+        "all_letter_words": 16611,
+        "multi_letter_words": 15586,
+        "spoken_letter_words": 16527
+      },
+      "parts": [
+        {
+          "bytes": 188824,
+          "sha256": "c2cb22cbfd97a00a8cc87203aa28cdb671dcdc6b8ad7f6b2403f9ea86cf0e769",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/461/xml/461_1a.xml"
+        },
+        {
+          "bytes": 85664,
+          "sha256": "57acecb9f954f05942418b59a5df7dc09d05c4ddf5bac6b9790ebd83bab9eac2",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/461/xml/461_1b.xml"
+        }
+      ],
+      "turns": 1103
+    },
+    "464": {
+      "counts": {
+        "all_letter_words": 8440,
+        "multi_letter_words": 7357,
+        "spoken_letter_words": 7822
+      },
+      "parts": [
+        {
+          "bytes": 197250,
+          "sha256": "c1e9e74695e26bd60d178656d76ff6236f69697b213daff96fbb5b756df2278a",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/464/xml/464_1.xml"
+        }
+      ],
+      "turns": 952
+    },
+    "472": {
+      "counts": {
+        "all_letter_words": 10322,
+        "multi_letter_words": 9173,
+        "spoken_letter_words": 9830
+      },
+      "parts": [
+        {
+          "bytes": 173329,
+          "sha256": "80ea2e1edfb6b623aaa3afd83ab4cdd0a2dc2dd7f03110ad656b421a22540e66",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/472/xml/472_1.xml"
+        }
+      ],
+      "turns": 500
+    },
+    "490": {
+      "counts": {
+        "all_letter_words": 12751,
+        "multi_letter_words": 11104,
+        "spoken_letter_words": 11810
+      },
+      "parts": [
+        {
+          "bytes": 193143,
+          "sha256": "27dc683afed20e5720271e3b05c3c6261653d5568d285dbe51e2f5e7a1b9902f",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/490/xml/490_1.xml"
+        }
+      ],
+      "turns": 962
+    },
+    "494": {
+      "counts": {
+        "all_letter_words": 9911,
+        "multi_letter_words": 8873,
+        "spoken_letter_words": 9498
+      },
+      "parts": [
+        {
+          "bytes": 170409,
+          "sha256": "1c53b23a0789d4c4f5a3bc60384da003e5d9561cd506d0bb008eb2f7067b22f4",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/494/xml/494_1.xml"
+        }
+      ],
+      "turns": 904
+    },
+    "503": {
+      "counts": {
+        "all_letter_words": 9586,
+        "multi_letter_words": 8600,
+        "spoken_letter_words": 9145
+      },
+      "parts": [
+        {
+          "bytes": 194123,
+          "sha256": "a659a1fbf06094075f80ab32e384846799ac75e6ac3d16d9e22aa7e7ccc8b30d",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/503/xml/503_1.xml"
+        }
+      ],
+      "turns": 986
+    },
+    "505": {
+      "counts": {
+        "all_letter_words": 10963,
+        "multi_letter_words": 8805,
+        "spoken_letter_words": 9509
+      },
+      "parts": [
+        {
+          "bytes": 148348,
+          "sha256": "c1aa98003369b1db6097e27c737fa1f9ca6da8f33bd42f9ce4e9e140cb40b30a",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/505/xml/505_1.xml"
+        }
+      ],
+      "turns": 347
+    },
+    "533": {
+      "counts": {
+        "all_letter_words": 15089,
+        "multi_letter_words": 13193,
+        "spoken_letter_words": 14204
+      },
+      "parts": [
+        {
+          "bytes": 240739,
+          "sha256": "496bc4a05045c623e523f8fc20a488c43e21847d0615fb187c73d8b2149f2e1f",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/533/xml/533_1.xml"
+        }
+      ],
+      "turns": 518
+    },
+    "543": {
+      "counts": {
+        "all_letter_words": 9837,
+        "multi_letter_words": 9069,
+        "spoken_letter_words": 9411
+      },
+      "parts": [
+        {
+          "bytes": 150948,
+          "sha256": "f0e4d6b872dd0b4db966a07132f125058660e0d18e6b9af046c709440d255ec3",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/543/xml/543_1.xml"
+        }
+      ],
+      "turns": 743
+    },
+    "548": {
+      "counts": {
+        "all_letter_words": 8710,
+        "multi_letter_words": 8098,
+        "spoken_letter_words": 8554
+      },
+      "parts": [
+        {
+          "bytes": 152876,
+          "sha256": "0f9b0ea4cd108ab8d9159d72197221d04a46d07e1954e7e558c110e3d30767cb",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/548/xml/548_1.xml"
+        }
+      ],
+      "turns": 667
+    },
+    "556": {
+      "counts": {
+        "all_letter_words": 11595,
+        "multi_letter_words": 10828,
+        "spoken_letter_words": 11414
+      },
+      "parts": [
+        {
+          "bytes": 117619,
+          "sha256": "72d202c3bae50b71d260d48f39a26a69dca1f95d04a92eb46539d47cc3016c14",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/556/xml/556_1.xml"
+        }
+      ],
+      "turns": 405
+    },
+    "579": {
+      "counts": {
+        "all_letter_words": 11572,
+        "multi_letter_words": 10861,
+        "spoken_letter_words": 11454
+      },
+      "parts": [
+        {
+          "bytes": 127630,
+          "sha256": "34eb545aaa482688bf176d849f1bdfdcae3081e475390ec3a9a50ca46e1a5c8a",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/579/xml/579_1a.xml"
+        },
+        {
+          "bytes": 86753,
+          "sha256": "b78bcaa6a62c45e560965053b0892078d533582cdc2fd7ae4d80ed28bb7b0182",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/579/xml/579_1b.xml"
+        }
+      ],
+      "turns": 910
+    },
+    "595": {
+      "counts": {
+        "all_letter_words": 14025,
+        "multi_letter_words": 11662,
+        "spoken_letter_words": 12359
+      },
+      "parts": [
+        {
+          "bytes": 232456,
+          "sha256": "881eb70a3c48fc7da9c3c9809c8a7f1dd73bd276e6c2a2d0f085b9525e940a5c",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/595/xml/595_1a.xml"
+        },
+        {
+          "bytes": 69532,
+          "sha256": "95b6618b6d597780f5908d4deec64d7a7d9e266ea8512e830943aceac5c803e1",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/595/xml/595_1b.xml"
+        }
+      ],
+      "turns": 1618
+    },
+    "596": {
+      "counts": {
+        "all_letter_words": 9427,
+        "multi_letter_words": 8564,
+        "spoken_letter_words": 9138
+      },
+      "parts": [
+        {
+          "bytes": 150996,
+          "sha256": "c210fca962be428423a03f910d7765294524a759c345fdbe458fb453b3de6e69",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/596/xml/596_1.xml"
+        }
+      ],
+      "turns": 831
+    },
+    "604": {
+      "counts": {
+        "all_letter_words": 6101,
+        "multi_letter_words": 5459,
+        "spoken_letter_words": 5755
+      },
+      "parts": [
+        {
+          "bytes": 126842,
+          "sha256": "f885ab689d1f9b3b335585838ddb4e4d710a67364cace09a2c1bcc0367b2172d",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/604/xml/604_1.xml"
+        }
+      ],
+      "turns": 614
+    },
+    "625": {
+      "counts": {
+        "all_letter_words": 12042,
+        "multi_letter_words": 10305,
+        "spoken_letter_words": 11050
+      },
+      "parts": [
+        {
+          "bytes": 183776,
+          "sha256": "3e9a8016e0d875590a5fdc4d48ee6a8eea2a032c611b494d1a7475cad4424cb3",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/625/xml/625_1.xml"
+        }
+      ],
+      "turns": 440
+    },
+    "647": {
+      "counts": {
+        "all_letter_words": 16878,
+        "multi_letter_words": 13830,
+        "spoken_letter_words": 14718
+      },
+      "parts": [
+        {
+          "bytes": 236303,
+          "sha256": "4308b0202754f8fa17c3f8d8a4deab13796dfe21a2890016fd2e4774411e1dbe",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/647/xml/647_1a.xml"
+        },
+        {
+          "bytes": 69752,
+          "sha256": "3b0ab6fa2453d7019e323ff065c8157435d5c3166d04432fcf6f62b09f6d3a4a",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/647/xml/647_1b.xml"
+        }
+      ],
+      "turns": 1588
+    },
+    "657X": {
+      "counts": {
+        "all_letter_words": 9680,
+        "multi_letter_words": 8734,
+        "spoken_letter_words": 9299
+      },
+      "parts": [
+        {
+          "bytes": 190187,
+          "sha256": "e5a7c67b33af5128cfeb0cd80d722c569c10637449cd41222a690ba8743e5f75",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/657X/xml/657X_1.xml"
+        }
+      ],
+      "turns": 1064
+    },
+    "662": {
+      "counts": {
+        "all_letter_words": 14151,
+        "multi_letter_words": 13161,
+        "spoken_letter_words": 13997
+      },
+      "parts": [
+        {
+          "bytes": 200631,
+          "sha256": "8914bac3c8bf8f5d3629bb33139ab69c6b774859fded2bd7e97ee5c496915e5b",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/662/xml/662_1a.xml"
+        },
+        {
+          "bytes": 78397,
+          "sha256": "dd842fd14a5f480e2eb066a4ba979f05e6d8e856b8adeeaf139958d2b39eeb08",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/662/xml/662_1b.xml"
+        }
+      ],
+      "turns": 1477
+    },
+    "678": {
+      "counts": {
+        "all_letter_words": 10970,
+        "multi_letter_words": 10201,
+        "spoken_letter_words": 10698
+      },
+      "parts": [
+        {
+          "bytes": 212322,
+          "sha256": "422559a11ed87fd9141d4da53fea95f1bb578b9cbc92723e144c1a98187b1791",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/678/xml/678_1.xml"
+        }
+      ],
+      "turns": 1169
+    },
+    "703": {
+      "counts": {
+        "all_letter_words": 5899,
+        "multi_letter_words": 5547,
+        "spoken_letter_words": 5750
+      },
+      "parts": [
+        {
+          "bytes": 111955,
+          "sha256": "94c6c945528eadebf658d3ad7bd6c1dcbbd70101625b46ba7a547db7ceaa6bee",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/703/xml/703_1.xml"
+        }
+      ],
+      "turns": 625
+    },
+    "741": {
+      "counts": {
+        "all_letter_words": 10147,
+        "multi_letter_words": 9275,
+        "spoken_letter_words": 9891
+      },
+      "parts": [
+        {
+          "bytes": 176148,
+          "sha256": "357f0e8af596c086eb5232f2f6d20b39cdd94f40aad2a9c9dbbf482f642c5800",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/741/xml/741_1.xml"
+        }
+      ],
+      "turns": 758
+    },
+    "748": {
+      "counts": {
+        "all_letter_words": 10188,
+        "multi_letter_words": 9335,
+        "spoken_letter_words": 9878
+      },
+      "parts": [
+        {
+          "bytes": 156459,
+          "sha256": "700fc74118822c437afe15b118ca9af54a07d252cf37a457027a34337a37e9c3",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/748/xml/748_1.xml"
+        }
+      ],
+      "turns": 551
+    },
+    "779": {
+      "counts": {
+        "all_letter_words": 8224,
+        "multi_letter_words": 7358,
+        "spoken_letter_words": 7792
+      },
+      "parts": [
+        {
+          "bytes": 145595,
+          "sha256": "02969bd90f68199415a2698c29ffc1175255fa5937e79b9205e76bfa522c14d2",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/779/xml/779_1.xml"
+        }
+      ],
+      "turns": 707
+    },
+    "791": {
+      "counts": {
+        "all_letter_words": 10523,
+        "multi_letter_words": 9915,
+        "spoken_letter_words": 10374
+      },
+      "parts": [
+        {
+          "bytes": 153336,
+          "sha256": "cbdb49e21cb4090b9eec5d5dad8cdcc701798b249f2dec820d4bf8683c1bc480",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/791/xml/791_1.xml"
+        }
+      ],
+      "turns": 632
+    },
+    "794": {
+      "counts": {
+        "all_letter_words": 8069,
+        "multi_letter_words": 7556,
+        "spoken_letter_words": 7983
+      },
+      "parts": [
+        {
+          "bytes": 126080,
+          "sha256": "758dfee4bb04d47f93dd9cf7f34dee3e9104560bec3fe2e8da1109744ec55f0c",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/794/xml/794_1.xml"
+        }
+      ],
+      "turns": 597
+    },
+    "811": {
+      "counts": {
+        "all_letter_words": 10672,
+        "multi_letter_words": 9482,
+        "spoken_letter_words": 9937
+      },
+      "parts": [
+        {
+          "bytes": 173604,
+          "sha256": "69c6a1831d5fa1b686058f41c33560e0e9329fcc6c9c2b8be6eae031057877b2",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/811/xml/811_1.xml"
+        }
+      ],
+      "turns": 680
+    },
+    "847": {
+      "counts": {
+        "all_letter_words": 9338,
+        "multi_letter_words": 8429,
+        "spoken_letter_words": 8975
+      },
+      "parts": [
+        {
+          "bytes": 151604,
+          "sha256": "2a180728e82d975c3fe4c8dcac7b62c7054a78f2f176e4dfe978b0e1f841bc2a",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/847/xml/847_1.xml"
+        }
+      ],
+      "turns": 665
+    },
+    "853": {
+      "counts": {
+        "all_letter_words": 10477,
+        "multi_letter_words": 9584,
+        "spoken_letter_words": 10181
+      },
+      "parts": [
+        {
+          "bytes": 200625,
+          "sha256": "26d620a3b26053cb37d5ce6c5da9be4d40c731b18a171eac7c8b58f5283af517",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/853/xml/853_1.xml"
+        }
+      ],
+      "turns": 1214
+    },
+    "856C": {
+      "counts": {
+        "all_letter_words": 11809,
+        "multi_letter_words": 10894,
+        "spoken_letter_words": 11423
+      },
+      "parts": [
+        {
+          "bytes": 157600,
+          "sha256": "5d9e5038c663d0f0ead3b10bc6f1a79d2e08849e1e88235252fb8f1dca7c55f3",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/856C/xml/856C_1.xml"
+        }
+      ],
+      "turns": 781
+    },
+    "863": {
+      "counts": {
+        "all_letter_words": 10841,
+        "multi_letter_words": 10242,
+        "spoken_letter_words": 10752
+      },
+      "parts": [
+        {
+          "bytes": 147711,
+          "sha256": "d6c748a137569d8b9cd7d27b3e82a86688ed50ae70f8a0a6dae3345858d5a4f9",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/863/xml/863_1.xml"
+        }
+      ],
+      "turns": 761
+    },
+    "888": {
+      "counts": {
+        "all_letter_words": 10506,
+        "multi_letter_words": 9508,
+        "spoken_letter_words": 10068
+      },
+      "parts": [
+        {
+          "bytes": 183332,
+          "sha256": "1869a8ee1bb19a90c0dcab27949d2f99b6d8a5fb3721eef2cd1bc81cd414c4ec",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/888/xml/888_1.xml"
+        }
+      ],
+      "turns": 955
+    },
+    "893": {
+      "counts": {
+        "all_letter_words": 8922,
+        "multi_letter_words": 8165,
+        "spoken_letter_words": 8718
+      },
+      "parts": [
+        {
+          "bytes": 150419,
+          "sha256": "edafb94db13a31f7eaee601185804e990e4d2d87ad77a007c0238691a3e6d1d3",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/893/xml/893_1.xml"
+        }
+      ],
+      "turns": 861
+    },
+    "894": {
+      "counts": {
+        "all_letter_words": 9620,
+        "multi_letter_words": 8639,
+        "spoken_letter_words": 9060
+      },
+      "parts": [
+        {
+          "bytes": 211829,
+          "sha256": "89326210ea9658ee4245eb3786c601f69420eb81e9bee28cecbfa082fdbe2044",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/894/xml/894_1.xml"
+        }
+      ],
+      "turns": 1137
+    },
+    "911": {
+      "counts": {
+        "all_letter_words": 10173,
+        "multi_letter_words": 9300,
+        "spoken_letter_words": 9912
+      },
+      "parts": [
+        {
+          "bytes": 163095,
+          "sha256": "a482db19d4c4b9b557a891e4a19a7070d326226a475b7158a7f4442002101b10",
+          "url": "https://www.lap.uga.edu/Projects/DASS2019/Speakers/911/xml/911_1.xml"
+        }
+      ],
+      "turns": 837
+    }
+  },
+  "selection": "All 64 public DASS2019 speaker IDs, reel 1; no assertion about the original unobserved four.",
+  "summary": {
+    "classes": {
+      "impossible/impossible/impossible": 799,
+      "impossible/impossible/possible_all_roundings": 2537,
+      "impossible/impossible/rounding_sensitive": 36,
+      "impossible/possible_all_roundings/possible_all_roundings": 7216,
+      "impossible/rounding_sensitive/possible_all_roundings": 121,
+      "possible_all_roundings/possible_all_roundings/possible_all_roundings": 546803,
+      "rounding_sensitive/possible_all_roundings/possible_all_roundings": 333
+    },
+    "designs": 557845,
+    "examples": {
+      "impossible/impossible/impossible": {
+        "counts": {
+          "all_letter_words": 28039,
+          "multi_letter_words": 25269,
+          "spoken_letter_words": 26716
+        },
+        "ids": [
+          "030",
+          "040",
+          "176",
+          "270"
+        ]
+      },
+      "impossible/impossible/possible_all_roundings": {
+        "counts": {
+          "all_letter_words": 29485,
+          "multi_letter_words": 26864,
+          "spoken_letter_words": 28354
+        },
+        "ids": [
+          "030",
+          "040",
+          "105",
+          "176"
+        ]
+      },
+      "impossible/impossible/rounding_sensitive": {
+        "counts": {
+          "all_letter_words": 28404,
+          "multi_letter_words": 25877,
+          "spoken_letter_words": 27249
+        },
+        "ids": [
+          "030",
+          "105",
+          "303",
+          "703"
+        ]
+      },
+      "impossible/possible_all_roundings/possible_all_roundings": {
+        "counts": {
+          "all_letter_words": 30671,
+          "multi_letter_words": 27660,
+          "spoken_letter_words": 29296
+        },
+        "ids": [
+          "030",
+          "040",
+          "105",
+          "270"
+        ]
+      },
+      "impossible/rounding_sensitive/possible_all_roundings": {
+        "counts": {
+          "all_letter_words": 30092,
+          "multi_letter_words": 26818,
+          "spoken_letter_words": 28410
+        },
+        "ids": [
+          "030",
+          "040",
+          "299",
+          "303"
+        ]
+      },
+      "possible_all_roundings/possible_all_roundings/possible_all_roundings": {
+        "counts": {
+          "all_letter_words": 37345,
+          "multi_letter_words": 34354,
+          "spoken_letter_words": 36385
+        },
+        "ids": [
+          "030",
+          "040",
+          "079",
+          "100"
+        ]
+      },
+      "rounding_sensitive/possible_all_roundings/possible_all_roundings": {
+        "counts": {
+          "all_letter_words": 30834,
+          "multi_letter_words": 28399,
+          "spoken_letter_words": 29944
+        },
+        "ids": [
+          "030",
+          "040",
+          "176",
+          "446"
+        ]
+      }
+    },
+    "ranges": {
+      "all_letter_words": [
+        23921,
+        67284
+      ],
+      "multi_letter_words": [
+        21533,
+        59544
+      ],
+      "spoken_letter_words": [
+        22571,
+        62994
+      ]
+    },
+    "rule_order": [
+      "multi_letter_words",
+      "spoken_letter_words",
+      "all_letter_words"
+    ],
+    "unresolved": [],
+    "usable": 62
+  }
+}
