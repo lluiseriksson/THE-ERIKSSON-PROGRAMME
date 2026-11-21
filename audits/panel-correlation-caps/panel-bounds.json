@@ -1,0 +1,135 @@
+{
+  "exact": {
+    "mean_factor": "952/359",
+    "rho": "593/11847",
+    "critical_cap": "52637/86160",
+    "uniform": [
+      119703,
+      119704
+    ],
+    "uncapped": [
+      297630,
+      297631
+    ],
+    "cap_half": [
+      234656,
+      234657
+    ],
+    "cap_seven_tenths": [
+      261671,
+      261672
+    ],
+    "worst_correlations": [
+      "1",
+      "2542/126009",
+      "0"
+    ]
+  },
+  "rounding_corners": [
+    {
+      "mean_factor": "1904/717",
+      "rho": "1187/23661",
+      "critical_cap": "2401027/3635190",
+      "uniform": [
+        116623,
+        116624
+      ],
+      "uncapped": [
+        290011,
+        290012
+      ],
+      "cap_half": [
+        228661,
+        228662
+      ],
+      "cap_seven_tenths": [
+        254978,
+        254979
+      ],
+      "worst_correlations": [
+        "1",
+        "394/19359",
+        "0"
+      ]
+    },
+    {
+      "mean_factor": "1904/717",
+      "rho": "1187/23661",
+      "critical_cap": "20502523/36158310",
+      "uniform": [
+        122603,
+        122604
+      ],
+      "uncapped": [
+        304883,
+        304884
+      ],
+      "cap_half": [
+        240387,
+        240388
+      ],
+      "cap_seven_tenths": [
+        268054,
+        268055
+      ],
+      "worst_correlations": [
+        "1",
+        "394/19359",
+        "0"
+      ]
+    },
+    {
+      "mean_factor": "1904/719",
+      "rho": "395/7909",
+      "critical_cap": "799779/1215110",
+      "uniform": [
+        116799,
+        116800
+      ],
+      "uncapped": [
+        290368,
+        290369
+      ],
+      "cap_half": [
+        228919,
+        228920
+      ],
+      "cap_seven_tenths": [
+        255280,
+        255281
+      ],
+      "worst_correlations": [
+        "1",
+        "1682/84123",
+        "0"
+      ]
+    },
+    {
+      "mean_factor": "1904/719",
+      "rho": "395/7909",
+      "critical_cap": "6828571/12086390",
+      "uniform": [
+        122789,
+        122790
+      ],
+      "uncapped": [
+        305258,
+        305259
+      ],
+      "cap_half": [
+        240659,
+        240660
+      ],
+      "cap_seven_tenths": [
+        268371,
+        268372
+      ],
+      "worst_correlations": [
+        "1",
+        "1682/84123",
+        "0"
+      ]
+    }
+  ],
+  "checked_small_budgets": 933
+}

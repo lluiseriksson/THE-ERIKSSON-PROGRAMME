@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,booktabs,geometry}\geometry{margin=1in}
+\usepackage[hidelinks]{hyperref}
+\title{How much within-state dependence can an electoral power calculation tolerate?}
+\author{Lluis Eriksson}\date{21 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+A scalar design effect fixes the variance of a panel mean but can leave substantial ambiguity about the precision of an election-year contrast. We find the sharp upper variance factor for a centred binary regressor when the mean within-state correlation is known and every pairwise correlation is nonnegative and capped. The extremal matrix admits a block construction. In a prospective design calibrated to a published Indian state-budget power calculation, the minimum detectable effect can move from 0.1197 to 0.2976 percentage points at the same effective sample size for the mean. We identify the correlation cap that guarantees the published effect-size benchmark in this design. The exercise measures sensitivity to the orientation of residual dependence. It does not estimate a fiscal election effect.
+\end{abstract}
+
+\section{A scalar input to a panel design}
+Chourey's \emph{Testability Atlas} \cite{atlas} reports 952 observations spanning 28 states and 34 years, a planning effective sample size of 359, and a minimum detectable effect (MDE) of 0.20 percentage points of state GDP on capital outlay. The benchmark for a meaningful effect is 0.25 points. The Atlas grades the capacity of the design and uses a registered regression planning formula. Khemani's historical work \cite{khemani} distinguishes scheduled elections from early elections using an instrument. Neither that instrument nor the modern state-level calendar is reconstructed here.
+
+Our question is conditional. Suppose the effective sample size describes the grand mean. With this information alone, what standard error can one guarantee for a fixed prospective election contrast? We allow independent states with unit marginal error variances and, initially, the same correlation budget in each state. Each state contributes $k$ election and $l$ other years, $2\le k\le l$, $T=k+l$. A state intercept is fitted. The residualized regressor has entries $l/T$ and $-k/T$ respectively. We use common marginal variance and keep the normal-approximation multiplier fixed throughout. Moulton \cite{moulton} studied the effect of within-group dependence on regression precision. Our calculation optimizes that precision over a class of nonexchangeable correlation matrices.
+
+\section{A sharp bound for capped positive correlations}
+Let $R$ be the within-state correlation matrix with off-diagonals in $[0,h]$. Its ordered off-diagonal sum is $S$, so feasibility requires $0\le S\le hT(T-1)$. The mean variance inflation is $D_m=1+S/T$. For the centred regressor $x$, the OLS contrast variance relative to its independent-error variance is $D_x=x^\top R x/(x^\top x)$, obtained by substituting $R$ in the fixed-design variance of the slope.
+
+\paragraph{Proposition.} Write $n_1=k(k-1)$, $n_0=l(l-1)$ and $n_c=2kl$. Allocate the ordered correlation mass $S$ first to the $n_1$ same-election entries, then to the $n_0$ same-nonelection entries, and lastly to the $n_c$ cross entries, up to $h$ per entry. Call the resulting masses $s_1,s_0,s_c$. The largest possible $D_x$ is
+\[
+  D_{\max}=1+\{(l/k)s_1+(k/l)s_0-s_c\}/T .
+\]
+
+\paragraph{Proof.} Since $x^\top x=kl/T$, every off-diagonal entry has coefficient $(l/k)/T$, $(k/l)/T$ or $-1/T$ in the variance factor. Moving unassigned mass to the largest available coefficient maximizes this linear functional before imposing positive semidefiniteness. Give each entry in a class its class mean $r_j=s_j/n_j$. This allocation is symmetric with unit diagonal. If $r_c=0$ it consists of two positive semidefinite compound-symmetric blocks. If $r_c>0$, both within-block correlations equal $h$. The matrix then has the decomposition
+\[
+ (1-h)I+(h-r_c)\operatorname{diag}(J_k,J_l)+r_cJ_T ,
+\]
+where $J_d$ is the $d$ by $d$ all-ones matrix. All coefficients are nonnegative. Thus the upper bound is attainable even by a Gaussian error law, allowing singular covariance at the boundary. The same maximum holds if only the across-state average of $S$ is fixed: the fill rule gives a concave piecewise-linear function of $S$, and identical state budgets attain the Jensen bound.
+
+\section{A sensitivity certificate for the fiscal benchmark}
+Take $k=7$, $l=27$ as a specified schedule count, with a single binary regressor and state intercepts. The published calibration uses $D_m=952/359$. For this exercise define the independent-error MDE scale to be $d/\sqrt{D_m}$ with $d=0.20$. This fixes units without imputing an unreported residual standard deviation. For a particular $R$ the recalibrated effect size is $d\sqrt{D_x/D_m}$. At the smallest feasible cap $h=S/[T(T-1)]$, all off-diagonals equal that cap and $D_x=1-h$. At $h=1$ the sharp upper factor uses perfect correlation among election years, weaker positive dependence among the other years, and zero cross correlation. These choices have the same mean effective size. No causal interpretation or claim about the historical residuals is needed.
+
+\begin{center}\begin{tabular}{ll}\toprule
+Cap on every pairwise correlation & Worst-case MDE (approx., percentage points)\\\midrule
+Smallest feasible cap (exchangeable) & 0.1197\\
+0.50 & 0.2347\\
+0.70 & 0.2617\\
+1.00 & 0.2976\\\bottomrule
+\end{tabular}\end{center}
+
+The crossover $h_*$ at which the maximal MDE reaches $0.25$ is approximately 0.6109 for these central inputs. A cap below $h_*$ guarantees the target in this planning formula. Above $h_*$ an admissible covariance can defeat it. In the middle allocation regime $s_1=n_1h$, $s_c=0$ and $s_0=S-n_1h$, so
+\[
+ h_*=\frac{D_m(0.25/d)^2-1-(k/l)(D_m-1)}
+                 {(n_1/T)(l/k-k/l)} .
+\]
+If the reported $d$ and effective size were rounded to nearest 0.01 and nearest integer respectively, their closed rounding ranges give $h_*$ between 0.5649 and 0.6605. The displayed expression is decreasing in $d$ and in effective size throughout that rectangle, and the middle-regime conditions hold at its extremes (equivalently check $n_1h_*\le S\le(n_1+n_0)h_*$ after substitution). The code provides rational certificates and small-design checks.
+
+\paragraph{Scope.} Election dates, additional controls, year effects, instruments, serial stationarity or restrictions on negative correlations would change the problem. The sharp bound is for the stated prospective class. Its practical use is to distinguish two inputs: an analyst who knows the mean effective size still needs evidence on the within-state covariance in the direction of the electoral regressor before claiming power at a specific benchmark.
+
+\paragraph{Model assessments and review context.} An AI assistant participated in analysis and drafting. The assessment for this exact PDF is recorded with model identity and prior involvement.
+
+\begin{thebibliography}{9}
+\bibitem{atlas} A. Chourey. The Testability Atlas: Which Questions in Indian Historical Statistics Can Surviving Data Decide? Version published 21 November 2026. \href{https://doi.org/10.5281/zenodo.24409217}{Zenodo 24409217}, regression methods and row 20.
+\bibitem{khemani} S. Khemani. Political cycles in a developing economy: effect of elections in the Indian States. \emph{Journal of Development Economics} 73 (2004), 125--154. \href{https://doi.org/10.1016/j.jdeveco.2003.01.002}{doi:10.1016/j.jdeveco.2003.01.002}.
+\bibitem{moulton} B. R. Moulton. Random group effects and the precision of regression estimates. \emph{Journal of Econometrics} 32 (1986), 385--397. \href{https://doi.org/10.1016/0304-4076(86)90021-7}{doi:10.1016/0304-4076(86)90021-7}.
+\end{thebibliography}\end{document}

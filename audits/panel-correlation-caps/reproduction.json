@@ -1,0 +1,19 @@
+{
+  "source_sha": "d6c9154c237e87c11906a7c127b7435c5a4f3248",
+  "inputs": {
+    "panel.tex": "5bdba5c1dd69b0692d8c848ef9deb03a760efc8ec52125bc4c19143051e0481e",
+    "verify_panel.py": "fd064f833c6954d58ccf1af99d2c7707234895db21879d41e14a3c66fb58a189",
+    "panel-power.py": "4f61eb0a2af1b8309ee67e1534f61fa2220d6afb2319870dc79b5655a43828e6",
+    "sources.json": "98d0da2cd158b5bd5a6158ed532c8bc8b2b2005ac7e5c42b17d48f83be1c2a42",
+    "panel-bounds.json": "0f5eacf3b55fc1e08d0954208a8e30b1cdff5cc70a5ef646f638e7a3c06c9f14"
+  },
+  "started_at": "2026-11-21T01:10:56.864656+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "ab7b20e5fcfbb62978520e9b112c64353a5c7daa5cfa2680d34d89af02cd0331",
+    "ab7b20e5fcfbb62978520e9b112c64353a5c7daa5cfa2680d34d89af02cd0331"
+  ],
+  "pdf_bytes": 214210,
+  "finished_at": "2026-11-21T01:12:43.229389+00:00"
+}
