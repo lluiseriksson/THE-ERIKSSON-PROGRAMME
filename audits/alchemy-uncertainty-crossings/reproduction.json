@@ -1,0 +1,27 @@
+{
+  "source_sha": "7859c4c82c4093e0e61ce69b489404a960f4fd3f",
+  "inputs": {
+    "paired-uncertainty.tex": "b4edb33aae9ea5800bed702c5b1d6c15b3976fe1869fb19551868d59937cc439",
+    "verify_paired_game.py": "0a752f77c928159911aac7854b341f8b9bfd40f8529a851b0b5e6005b2879ecf",
+    "game-player-pair.py": "5c089dbcd68a491dc0abe88b2dfdf8176b2e5e9ed38d3b33f44ddb56f20dec19",
+    "inputs.json": "380ca65cf8dff7116a4d52f552bd480e0643e1fcfdda76a8147823a62f7c7b38",
+    "player-pair.json": "a73c0db13d30a2c8ebf77ac64da4caa89930fa48700eff4f2a38c37597b99cd0",
+    "game-paired.py": "f6f20259ed99d2700bae97bf00254f7ed7d24d7ebb4a89083d1975e0eef4feba",
+    "game-coverage.py": "a45e44693d7d5b1d4d6c7695e6f1fea3152ffeb68983882d3345ea7aca323b55",
+    "two-crossings.py": "098bd0e56000f5ca85053eecaff90aca052c729090181785ef8dd13770b4ac9a",
+    "two-crossings.json": "481e0d2aaf56942b059ac20503c99d91b6399c82758b189a61d9b8623a74693c",
+    "paired-crossings.json": "c8b8af773c276a67f4eb6217f04d22b8f5a83b181ca437c79cfd15114b7161e1",
+    "spec.json": "5ee26f7812e610e51e762fe553e8f5fbdde96c24f00da4d7b9a23545b1c95ceb",
+    "coverage.json": "d438efd2bce01cb5ea63ad1dd3dbc7ea9ebed2bb8ededa2d4807eb96c5811ea6",
+    "sources.json": "8ff5a37716776314e13b59a77f9fa4a2d9c14493b8d95e1f45bd33b00cc90311"
+  },
+  "started_at": "2026-11-21T02:15:52.003348+00:00",
+  "status": "reproduced",
+  "pages": 4,
+  "pdf_sha256": [
+    "971f9322513f0e88577f031d699c04f44d9f10f4491ec222441c972b74d4465c",
+    "971f9322513f0e88577f031d699c04f44d9f10f4491ec222441c972b74d4465c"
+  ],
+  "pdf_bytes": 217031,
+  "finished_at": "2026-11-21T02:16:51.052449+00:00"
+}
