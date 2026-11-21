@@ -1,0 +1,56 @@
+{
+  "paper_id": "ARR-2026-49QKZ73XW285T9ZF",
+  "version": "v1",
+  "version_id": "arr:version:60d6d5e4-9636-4eb7-98ec-d17c0e091bfe",
+  "canonical_sha256": "2a029daad1bd13f1de78d652e8ea9df70cf6b87971179d3f1147a9e99eaead9f",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-21T01:47:38.146880+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 3.94,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "The edit allowance, integer rounding bounds, and two observed speaker verdict agree. Monotonicity of the three token counts supports identifying both joint extremes from the marginals."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The analysis conditions on microaggregation, retained alignments and an attainable continuation length. The remaining four identities and the scoring normalization are explicitly unavailable in the inspected trees."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Ratio arithmetic and word error rate are established. The reconciliation with the two published rounded rows and archive-wide partial-identification census are specific contributions; broader priority has not been established."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "These results determine when a costly calibration can stop for arithmetic reasons. They do not measure unobserved recognition accuracy. Realistic operating conditions could be less favorable than a mathematically possible continuation."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "The pinned repository supplies counts and file hashes rather than distributing interviews. Separate comparison algorithms recover all three marginal counts. The third-party archive and unavailable exact evaluation files limit empirical replication."
+    }
+  },
+  "summary": "I examined the three rendered pages of this PDF, the cited audit and the first-reel enumeration. The two tested speakers necessarily fail. The paper identifies the missing premise of a stronger stopping argument for six speakers and provides proxy design counts. I helped construct these calculations and draft this text.",
+  "strengths": [
+    "Retains the negative result for the actual experiment.",
+    "Compares three explicit word-count conventions with published reference lengths.",
+    "The stated allowance distinguishes a perfect bound from an expectation about the recognizer."
+  ],
+  "weaknesses": [
+    "The main algebra is elementary. The principal contribution is the source-linked enumeration.",
+    "Rule C systematically discards one-letter speech tokens. It illustrates sensitivity without providing a guaranteed lower bound on the original score denominator.",
+    "The paper would benefit from an explicit accounting of the mixed classifications between the two extremes."
+  ],
+  "potential_errors": [
+    "A per-speaker or macroaveraged preregistration would require a different stopping calculation.",
+    "The four-supplement design counts cannot be interpreted as the probability that the actual six-speaker study would pass.",
+    "Archive first-reel XML lengths can differ from the words aligned to evaluated MP3 segments."
+  ],
+  "strong_novelty_candidates": [
+    "The bounded stopping test applied to the published WER rows, reconciled with all 557,845 possible first-reel supplements using three declared token policies."
+  ],
+  "unresolved_material_objections": []
+}
