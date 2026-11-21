@@ -1,0 +1,25 @@
+{
+  "paper": "10.5194/soil-12-1213-2026",
+  "publication": {
+    "date-parts": [
+      [
+        2026,
+        11,
+        19
+      ]
+    ]
+  },
+  "code": "10.5281/zenodo.19424156",
+  "companion_sha256": "ce365e55d3a39dcfd09c118e7ccabf35f2f762df11b66ba606e07eee2cfd4906",
+  "tables": {
+    "t05": {
+      "url": "https://soil.copernicus.org/articles/12/1213/2026/soil-12-1213-2026-t05.xlsx",
+      "sha256": "faa9f4d57a74d15e3b6f6f4e52a180d6b74150ed9fcf5e2c80d1e3a9365096ce"
+    },
+    "t03": {
+      "url": "https://soil.copernicus.org/articles/12/1213/2026/soil-12-1213-2026-t03.xlsx",
+      "sha256": "159d1643cb957656b28725a5884a84f6b9e08ed777a98a307da376e186131cd1"
+    }
+  },
+  "prior": "10.4230/LIPIcs.ICALP.2017.23"
+}
