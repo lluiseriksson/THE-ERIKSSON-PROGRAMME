@@ -1,0 +1,22 @@
+{
+  "source_sha": "c17a3d3e0cf59469422a80ee2bd69560b046cee4",
+  "inputs": {
+    "spring-months.tex": "68169faafcf51e2da2ee6fe0e197198980e5c283c7e720901d74700a909af901",
+    "verify_months.py": "37cfd0dbd473ec4fb6f97f1daa30cc4d8a962075d086bc3efd8cab0619191c9f",
+    "season-inverse.py": "ec619e1c59de1680289241ff7ecca942877ef77f3fee18d05edb1b721e603161",
+    "season-robust.py": "c0035a5bc3c20e8e9168d1d977c6425189787dad4bf2e712d5fbeb5527a1521a",
+    "season-precision.py": "7ddc0474c088d0e9b8c9e4591851bb8e61779d0f5a6e40b444534c028bcfa915",
+    "robust-anchors.json": "f1c2d15ffab50d57692aa1436891e83fb20102a87fd468791526b187d13aea79",
+    "unequal-precision.json": "19bf96860bfcb3e99cf0033604d63eeb3d5e2c57ebd98f5fbede60c7941ef5be",
+    "primary.json": "08568aecfacb20a36fbb0fc6e4f31ea699158783c0c2235d7d645eb6325497c6"
+  },
+  "started_at": "2026-11-21T01:29:35.878592+00:00",
+  "status": "reproduced",
+  "pages": 3,
+  "pdf_sha256": [
+    "e21413b0e29cdeb7605e1dbb9298b781fe61b70eb93c5067e88e3656792a0db0",
+    "e21413b0e29cdeb7605e1dbb9298b781fe61b70eb93c5067e88e3656792a0db0"
+  ],
+  "pdf_bytes": 213460,
+  "finished_at": "2026-11-21T01:31:05.102413+00:00"
+}

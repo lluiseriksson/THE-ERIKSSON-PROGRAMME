@@ -1,0 +1,29 @@
+{
+  "doi": "10.5194/esd-17-1687-2026",
+  "title": [
+    "Climate suitability of East Asian mangroves for nature-based solutions is limited by climate extremes"
+  ],
+  "publication": {
+    "date-parts": [
+      [
+        2026,
+        11,
+        19
+      ]
+    ]
+  },
+  "url": "https://esd.copernicus.org/articles/17/1687/2026/esd-17-1687-2026.xml",
+  "sha256": "c2663f306832849f53ef0d906c20e98087f4608f2feebff0f7cef7e0e0b77e29",
+  "preprint": [
+    {
+      "id-type": "doi",
+      "id": "10.5194/egusphere-2025-5805",
+      "asserted-by": "subject"
+    }
+  ],
+  "sections": [
+    "2.5",
+    "3.2-3.3",
+    "Figure 3"
+  ]
+}
