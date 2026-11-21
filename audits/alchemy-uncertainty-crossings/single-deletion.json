@@ -1,0 +1,51 @@
+{
+  "conditional_se": 49.362558437639834,
+  "exact_deleted_shift": 56.82569811584517,
+  "full_shift": 16.413323513706473,
+  "full_variance_share": 0.44028369050540817,
+  "interval": [
+    -39.92313860668264,
+    153.57453483837298
+  ],
+  "linearized_deleted_shift": 49.66174176978624,
+  "models": [
+    {
+      "cluster_se": 754.849162057759,
+      "coefficients": [
+        0.38087035516943435,
+        0.2398895941111328,
+        -0.0005395034607913798,
+        0.00523692804392692,
+        -0.6644390962085085
+      ],
+      "hessian_condition": 13.636764992406412,
+      "max_coef_change": 0.01381350411041149,
+      "model_based_se": 17.345687846710998,
+      "reference_singular": "TRUE",
+      "root": 3658.5064924451476,
+      "root_at_published": 3669.97940314603,
+      "steps": 3
+    },
+    {
+      "cluster_se": 758.7376090583178,
+      "coefficients": [
+        0.3796627178925236,
+        0.22639414887904813,
+        -0.0006294233746024436,
+        0.006335962852792542,
+        -0.6102221299428868
+      ],
+      "hessian_condition": 12.915154508309275,
+      "max_coef_change": 0.008058618877268262,
+      "model_based_se": 18.250575096075618,
+      "reference_singular": "TRUE",
+      "root": 3715.332190560993,
+      "root_at_published": 3686.39272665973,
+      "steps": 3
+    }
+  ],
+  "remaining_clusters": 29492,
+  "selection": "single maximum squared full-sample paired contrast influence; ties by ascending player id",
+  "tied_maxima": 1,
+  "total_clusters": 29493
+}
