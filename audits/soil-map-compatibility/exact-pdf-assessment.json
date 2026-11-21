@@ -1,0 +1,55 @@
+{
+  "paper_id": "ARR-2026-1XEZQ74WY38A19X0",
+  "version": "v1",
+  "version_id": "arr:version:d6c0426c-147a-4948-a68b-4db02cbac0a7",
+  "canonical_sha256": "f80fa63e5e88ef1f2f05be3100b37844006d21494efa16101746c556836799a9",
+  "provider": "OpenAI",
+  "model_id": "gpt-6.2-astra",
+  "assessed_at": "2026-11-21T01:04:52.069485+00:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "involved_in_manuscript",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.07,
+  "overall_stars": 4,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 5,
+      "basis": "Eliminating x from the two fractional-overlap inequalities bounds y, and saturating the smaller mask attains equality with split area. For a contained mask the formula reduces to the square root of the area ratio."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "The whole-cell prefix proof accounts for indivisibility. At a fixed overlap each rounding test is affine, so checking vertices suffices. The threshold argument assumes ideal normalized features and omits numerical tolerance near ties."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "The general continuous Jaccard centre is already algorithmically soluble. The useful contribution here is the explicit expression, finite-cell certificate and rounding-aware application; priority for the formula itself is unestablished."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "Regardless of the method generating a third map, no Tessera mask can achieve an overlap of 0.20 with both published P1564 masks. The analysis is restricted to one UK unit and tests agreement, not soil quality or downstream sampling utility."
+    },
+    "reproducibility": {
+      "stars": 5,
+      "basis": "The five input summaries per product are printed. The source year and domain are addressed, the linear constraints can be reconstructed, and the archived arithmetic and proof were reproduced against a fixed source commit."
+    }
+  },
+  "summary": "I inspected all three pages of this exact PDF and participated in deriving the result and drafting the paper. The two-map compatibility bound survives disjoint, nested and equal-mask checks. The Tessera ceiling provides a specific and testable constraint on mapping practice, conditional on the two observed delineations.",
+  "strengths": [
+    "The comparison points to an infeasible tolerance even for a hypothetical ideal classifier.",
+    "A finite-pixel constructive bound and the analytic relaxation have distinct interpretations.",
+    "The local Tessera area is correctly paired to the cross-border analysis year."
+  ],
+  "weaknesses": [
+    "The paper does not bound the actual maximum native pixel area for P1564 or exhibit a geographically useful centre.",
+    "Only one nontrivial unit is analyzed and other practical constraints, such as connected survey areas, are outside the model.",
+    "No comparative survey establishes priority of the two-set closed form."
+  ],
+  "potential_errors": [
+    "Using the 2022 local Tessera footprint would mix classification years.",
+    "Using a lower endpoint of the divisible optimum as a guaranteed attainable product-model IoU would ignore both pixel and classifier constraints."
+  ],
+  "strong_novelty_candidates": [
+    "A universal compatibility limit for the P1564 reference pairs remains certified after simultaneous rounding of all five map summaries."
+  ],
+  "unresolved_material_objections": []
+}
