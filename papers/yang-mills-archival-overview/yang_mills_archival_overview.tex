@@ -1,0 +1,325 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array,placeins}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\title{The Eriksson Programme (Yang--Mills):\\
+Machine-Checked Lattice Gauge Foundations,\\
+Certified Obstructions, and the Open Frontier}
+\author{Lluis Eriksson\\
+\small Independent Researcher, Sweden}
+\date{22 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present an archival technical synthesis and handoff specification for the
+Yang--Mills formalization programme inside \texttt{THE-ERIKSSON-PROGRAMME}
+(archival release \texttt{yang-mills-archive-v1.0}). The repository pins
+Lean~4 (\texttt{v4.29.0-rc6}) and \texttt{mathlib}
+(\texttt{07642720480157414db592fa85b626dafb71355b}) and maintains a
+continuously verified core module, \texttt{YangMillsCore}, whose build and
+axiom oracle pass in GitHub Actions with zero \texttt{sorry} declarations,
+zero project-specific axioms, and every headline declaration restricted to
+Lean's three foundational axioms
+\texttt{[propext, Classical.choice, Quot.sound]}.
+
+Within this verified core, the programme establishes: (i) a reusable
+Koteck\'y--Preiss and Mayer--Ursell polymer cluster-expansion engine
+(including Penrose's tree-graph inequality and zero-free polydiscs);
+(ii) finite-volume and volume-uniform strong-coupling Wilson-loop area laws
+and unconditional exponential decay of truncated plaquette correlations for
+$\mathrm{SU}(N)$ lattice gauge theory without invoking Peter--Weyl, together
+with fixed-spacing thermodynamic limits; (iii) exact $\mathbb{Z}_N$
+centre-symmetry selection rules and fundamental Haar/Schur identities;
+(iv) machine-checked modified-Bessel/Amos ratio bounds and global ratio
+monotonicity for killed von Mises bridges; (v) complete Osterwalder--Seiler
+reflection-positivity and transfer-operator chains for $\mathbb{Z}_2$
+lattice gauge systems; and (vi) certified negative obstructions isolating
+exact walls in block-Poincar\'e coercivity, flat lattice Hodge rank, spatial
+coupling, and sine-series monotonicity.
+
+We state the limits with equal precision. No four-dimensional continuum
+limit ($a \to 0$), no physical $\mathrm{SU}(N)$ Osterwalder--Schrader or
+Wightman reconstruction, and no solution to the Clay Millennium Yang--Mills
+Mass Gap problem is claimed; the repository's historical Clay-distance
+shorthand remains ${\sim}0\%$ ($<0.1\%$). Three open fronts are isolated and
+documented for future researchers and automated provers: the concrete
+Balaban/Dimock physical activity estimate \texttt{hRpoly} (frozen in draft
+PR~\#29 at $20/41$ terminal producers and $\mathrm{TermSource}=0$), physical
+$\mathrm{SU}(N)$ reflection positivity and transfer-operator gaps beyond
+finite-cylinder geometry (R1/R2), and continuum/OS--Wightman reconstruction.
+All accompanying preprints in the AIRR archive (\url{https://airr.science/})
+and reproduction steps are indexed in one citable record.
+\end{abstract}
+
+\section{Scope, Verification Standard, and Epistemic Boundary}
+
+Formalizing constructive quantum field theory in an interactive theorem
+prover exposes two distinct failure modes: silent logical gaps
+(\texttt{sorry} or unproved \texttt{axiom} declarations) and vacuous
+formalizations whose top-level statements hold for degenerate models
+(such as trivial gauge groups or coordinated dummy scalings). Early phases
+of \texttt{THE-ERIKSSON-PROGRAMME} encountered both; the mature repository
+enforces a strict archival discipline verified automatically on every push
+and pull request to \texttt{main}:
+
+\begin{enumerate}
+  \item \textbf{Pinned toolchain and dependencies.}
+  \texttt{lean-toolchain} pins \texttt{leanprover/lean4:v4.29.0-rc6};
+  \texttt{lakefile.lean} and \texttt{lake-manifest.json} pin \texttt{mathlib}
+  to commit \texttt{07642720480157414db592fa85b626dafb71355b} and fix all
+  transitive dependency revisions.
+  \item \textbf{Automated compilation and axiom oracle.}
+  GitHub Actions workflow \texttt{lean-build.yml} builds
+  \texttt{YangMillsCore} (recorded core count: $8466$ Lake jobs in
+  \texttt{project-state.json}) and runs \texttt{oracle\_check.lean},
+  requiring every \texttt{\#print axioms} readout to depend on nothing
+  beyond \texttt{[propext, Classical.choice, Quot.sound]}.
+  \item \textbf{Zero-sorry and zero-core-axiom textual guard.}
+  Workflow \texttt{ci.yml} runs \texttt{scripts/check\_consistency.py}, a
+  comment-aware scanner forbidding \texttt{sorry} across the proof tree and
+  forbidding \texttt{axiom} declarations across the verified-core source
+  directories (\texttt{L0\_Lattice}, \texttt{L1\_GibbsMeasure}, \texttt{KP},
+  \texttt{ClayCore}, \texttt{Paper}, \texttt{RG}, and the core
+  \texttt{P8\_PhysicalGap} Haar/compactness modules). Missing analytic
+  theorems are carried strictly as explicit theorem hypotheses
+  (\texttt{HYPOTHESIS\_FRONTIER.md}), never as axioms.
+  \item \textbf{Explicit Clay-distance boundary.}
+  The programme does \emph{not} prove existence of a four-dimensional
+  continuum Yang--Mills theory on $\mathbb{R}^4$, Osterwalder--Schrader or
+  Wightman axioms for $\mathrm{SU}(N)$ ($N \ge 2$), or a continuum mass gap.
+  The assembly lemmas in \texttt{YangMills/Paper/ClusteringToGap.lean} are
+  explicitly documented as real-sequence exponential-decay lemmas; their
+  physical role is conditional on genuine gauge-theoretic IR and UV inputs.
+\end{enumerate}
+
+\section{Summary of Machine-Checked Results in \texttt{YangMillsCore}}
+
+Table~\ref{tab:core} summarizes the verified mathematical engines available
+for direct reuse by downstream formalization efforts and automated provers.
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.50\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}@{}}
+\toprule
+\textbf{Layer} & \textbf{Verified Content (0 \texttt{sorry}, 0 project axioms)} & \textbf{Lean Location} \\
+\midrule
+KP / Mayer polymer engine &
+Mayer--Ursell inversion ($\Xi = \exp(\mathrm{clusterSum})$), Penrose
+tree-graph inequality via greedy BFS partition schemes, polymer
+reconstruction $Z=\Xi$, Koteck\'y--Preiss convergence, and activity-domain
+zero-free polydiscs. &
+\texttt{YangMills/KP/} \\
+\addlinespace
+Wilson area laws \& IR clustering &
+Finite-volume and volume-uniform strong-coupling Wilson-loop area laws
+(linearized and exact activity); unconditional exponential decay of
+truncated plaquette correlations for $\mathrm{SU}(N)$ in an explicit
+non-empty coupling window without Peter--Weyl; fixed-spacing thermodynamic
+limit on integer coordinates. &
+\texttt{YangMills/L1\_GibbsMeasure/}\newline\texttt{paper/area-law/} \\
+\addlinespace
+Haar \& $\mathbb{Z}_N$ centre symmetry &
+Left-invariant vanishing engine, interacting Wilson-loop $N$-ality selection
+rules at any coupling $\beta$, fundamental Schur orthogonality on
+$\mathrm{SU}(N)$, $\mathrm{U}(1)$ character orthogonality on
+\texttt{AddCircle}, and certification of $\mathrm{SU}(1)$ degeneracy. &
+\texttt{YangMills/ClayCore/} \\
+\addlinespace
+Conditional RG substrates &
+Block-spin averaging with gauge covariance and $\ell^2$ contraction,
+finite-dimensional Gaussian pushforwards, exponential-decay kernel calculus,
+marginal-coupling 4D summability (\texttt{MarginalUVMassGap.lean}), and
+source-plus-defect error-budget landing pads (\texttt{YMActivityBudget}). &
+\texttt{YangMills/RG/}\newline\texttt{YangMills/Paper/} \\
+\addlinespace
+Bessel / Amos \& 2D surface suite &
+Machine-checked Amos-type bounds for modified Bessel ratios at integer and
+real order, quantitative crossing classification, Tur\'an-type monotonicity,
+sine-series Wronskian identity, and global ratio monotonicity for killed
+von Mises bridges. &
+\texttt{AmosClosure/}\newline\texttt{MarkedRootedClosure/} \\
+\addlinespace
+$\mathbb{Z}_2$ / $\mathbb{Z}_N$ OS \& transfer chains &
+Complete machine-checked Osterwalder--Seiler chain for the $\mathbb{Z}_2$
+gauge chain, degenerate reflection pairing and GNS quotient, Perron theorem
+for strictly positive kernels, spatial coupling obstructions, and
+congruence-spectrum rigidity. &
+\texttt{YangMills/OS/} \\
+\addlinespace
+Finite $\mathrm{SU}(2)$ cylinder (R1/R2) &
+Four-vertex, six-link, two-plaquette $\mathrm{SU}(2)$ cylinder geometry,
+normalized product-Haar Gibbs measure, and exact reflection/Fubini
+identities (standalone, outside \texttt{YangMillsCore}; positivity and
+transfer remain open). &
+\texttt{docs/evidence/}\newline\texttt{physical-cylinder-r2-20260906/} \\
+\bottomrule
+\end{tabular}
+\caption{Verified mathematical engines in the archival release
+\texttt{yang-mills-archive-v1.0}.}
+\label{tab:core}
+\end{table}
+\FloatBarrier
+
+\section{Certified Obstructions and Negative Results}
+
+A central contribution of the programme for future researchers is a body of
+machine-checked negative theorems ruling out tempting but mathematically
+false shortcuts:
+
+\begin{itemize}
+  \item \textbf{Volume-uniform Poincar\'e walls}
+  (\texttt{ARR-2026-3Q0VH7PMNV8C9VQE}): obstructs flat and
+  fluctuation-sector block-Poincar\'e routes to Combes--Thomas coercivity in
+  lattice Yang--Mills.
+  \item \textbf{Flat lattice Hodge factorized-penalty and coarse-rank walls}
+  (\texttt{ARR-2026-627PF1B4KK9VTRYT}, \texttt{ARR-2026-7EPM3V3DP796BBRR},
+  and expanded revision dossier \texttt{papers/flat-coarse-rank/}):
+  exact-kernel Fourier families obstruct every penalty factored through a
+  block map in a flat lattice gauge form.
+  \item \textbf{Spatial coupling and Birkhoff obstructions in $\mathbb{Z}_2$
+  slices} (\texttt{ARR-2026-4X084GVAYF87PB3F},
+  \texttt{ARR-2026-6M8PMVHTMH8YZ9ND}, \texttt{ARR-2026-1A608PTGTC9XX9JZ}):
+  isolates where elementary uniform-vacuum and extent-independent spectral
+  arguments break under spatial coupling.
+  \item \textbf{Parity barriers for decoupling inequalities}
+  (\texttt{ARR-2026-5HRC3PS9HZ9WDAA5}): no comparison functional of bounded
+  marginal order can certify uniform decoupling.
+  \item \textbf{Failure of Biernacki--Krzy\.z for sine series}
+  (\texttt{papers/wronskian-reduction/}): explicit counterexample
+  $a=(3,4,3)$, $b=(3,2,1)$ showing coefficient-ratio monotonicity cannot
+  certify the sign of the antisymmetrized sine-sum Wronskian.
+  \item \textbf{Two-transporter Haar projection design no-go}
+  (\texttt{docs/SU2-TWO-TRANSPORTER-NOGO-20260731.md}): two free
+  Haar-integrated transporters absent from the observable project the
+  reduced $\mathrm{SU}(2)$ quadratic form to the trivial sector.
+\end{itemize}
+
+\section{Open Frontiers for Continuation}
+
+Future human teams or autonomous theorem provers picking up this archive
+should start from \texttt{HORIZON.md}, \texttt{HYPOTHESIS\_FRONTIER.md}, and
+\texttt{YangMills/CLOSURE.md}. Three concrete frontiers remain open:
+
+\begin{enumerate}
+  \item \textbf{Physical UV activity estimate (\texttt{hRpoly}), frozen in
+  draft PR~\#29.}
+  Construct the concrete Balaban/Dimock cluster-expansion-with-holes
+  remainder decay bound for the actual gauge RG operator. At the frozen
+  September 2026 checkpoint (\texttt{docs/HRPOLY-STATUS.md}), the checklist
+  records $20/41$ terminal \texttt{PreEq136} producers,
+  $\mathrm{TermSource}=0$, physical window~15 compatible but not attained,
+  and uniform physical $(B_0,\delta_0)$ plus regional transport (F5) open.
+  \item \textbf{Physical $\mathrm{SU}(N)$ reflection positivity and
+  transfer-operator spectral gap at fixed spacing.}
+  Extend the verified R1/R2 finite $\mathrm{SU}(2)$ cylinder geometry and
+  product-Haar measure to genuine complex Gram-matrix positivity retaining
+  all crossing plaquette weights, a strictly positive centered norm, and a
+  physical transfer operator (\texttt{docs/POST-HRPOLY-CONTINUUM-AUDIT-20260906.md}).
+  \item \textbf{Four-dimensional continuum limit ($a \to 0$) and
+  Osterwalder--Schrader / Wightman reconstruction (M4--M5).}
+  This remains open mathematics well beyond current formalization
+  infrastructure: removing the ultraviolet regulator while retaining a
+  non-perturbative positive mass gap for $\mathrm{SU}(N)$ ($N \ge 2$) and
+  constructing the continuum Hilbert space and fields.
+\end{enumerate}
+
+Late-2026 open research branches on GitHub (not merged into
+\texttt{YangMillsCore}) preserve additional work on concentric
+integer-shell energy control and flat cochains (PRs~\#180--\#190) and
+Boolean Doob chain retention criteria (PRs~\#292, \#299).
+
+\section{Cross-Referenced AIRR Preprint Index}
+
+Table~\ref{tab:airr} links the core mathematical-physics manuscripts in
+\texttt{THE-ERIKSSON-PROGRAMME} to their stable records in the AIRR archive
+(\url{https://airr.science/}). Unrelated empirical audit manuscripts added
+under \texttt{papers/} in November 2026 are excluded from this index.
+
+{\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.31\textwidth}>{\raggedright\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}@{}}
+\toprule
+\textbf{Repository Folder} & \textbf{AIRR Identifier} & \textbf{Topic / Role} \\
+\midrule
+\endhead
+\texttt{paper/area-law} & \texttt{ARR-2026-2ZQ6F57N2H8MG91V} & Volume-uniform Wilson-loop area law \\
+\texttt{papers/c1-rooted-tree-majorants} & \texttt{ARR-2026-505NQZHR7P9TQ8SA} & Rooted-tree majorants for polymers with holes \\
+\texttt{papers/c2-amos-closure} & \texttt{ARR-2026-6DP8SDRZ678H9AY9} & Amos Bessel-ratio calculus across three sites \\
+\texttt{papers/c3-amos-proof} & \texttt{ARR-2026-17K7KRR6NH9ZVAEJ} & Machine-checked Amos bound (integer order) \\
+\texttt{papers/c4-amos-real} & \texttt{ARR-2026-3AJ7W5BS3N9VR8KM} & Machine-checked Amos-type bound (real order) \\
+\texttt{papers/c5-crossing} & \texttt{ARR-2026-39Y0F83F4Z9JK90G} & Diagonal Amos-type crossing classification \\
+\texttt{papers/c6-rg-interface} & \texttt{ARR-2026-0WG9YDY5BA9S3RF4} & Non-circular RG interface for Wilson correlators \\
+\texttt{papers/bessel-amos-fh} & \texttt{ARR-2026-5PXDYNR2ER89HTQG} & Order-monotonicity of $(\log I_\nu)'$ \& 2D LGT \\
+\texttt{papers/phi-lemma} & \texttt{ARR-2026-72G1SSCNNG8YDVC2} & Weighted Tur\'an-type Bessel monotonicity \\
+\texttt{papers/surface-theorem} & \texttt{ARR-2026-1FPFA1TSMY9M3T9S} & Killed von Mises bridge ratio monotonicity \\
+\texttt{papers/surface-complete} & \texttt{ARR-2026-3CEWH763KG84B8TM} & Global ratio monotonicity (closure) \\
+\texttt{papers/poincare-wall} & \texttt{ARR-2026-3Q0VH7PMNV8C9VQE} & Volume-uniform Poincar\'e walls \\
+\texttt{papers/flat-coarse-rank} & \texttt{ARR-2026-7EPM3V3DP796BBRR} & Flat Hodge factorized-penalty wall (v2 dossier) \\
+\texttt{papers/parity-barriers} & \texttt{ARR-2026-5HRC3PS9HZ9WDAA5} & Parity barriers for decoupling inequalities \\
+\texttt{papers/o-bridge} & \texttt{ARR-2026-31ED4MTKC18JPSDE} & Dense-family clustering-to-gap criterion \\
+\texttt{papers/reflection-positivity} & \texttt{ARR-2026-10JJK0VCCS87VTQH} & $\mathbb{Z}_N$ reflection positivity ($\mathbb{Z}_2$ instance) \\
+\texttt{papers/os-quotient} & \texttt{ARR-2026-2TBRDN2DE598KSXD} & Degenerate reflection pairing \& GNS quotient \\
+\texttt{papers/perron-kernel} & \texttt{ARR-2026-2YDE42KFDY8Y3AA0} & Perron theorem for strictly positive kernels \\
+\texttt{papers/perron-gap} & \texttt{ARR-2026-1A608PTGTC9XX9JZ} & Finite-extent spectral gap (not uniform) \\
+\texttt{papers/spatial-extent} & \texttt{ARR-2026-4X084GVAYF87PB3F} & Spatial coupling breaks uniform vacuum \\
+\texttt{papers/spatial-birkhoff} & \texttt{ARR-2026-6M8PMVHTMH8YZ9ND} & Second spatial-extent obstruction \\
+\texttt{papers/spatial-gibbs} & \texttt{ARR-2026-2TTA0WSQBT89X964} & Transfer bridge for spatial $\mathbb{Z}_2$ slice \\
+\texttt{papers/spatial-reflection} & \texttt{ARR-2026-02YRWX53DG9M3R0R} & Endpoint reflection positivity ($\mathbb{Z}_2$ slice) \\
+\texttt{papers/spatial-os} & \texttt{ARR-2026-223XBWQ8PQ8Z2RDS} & Bond reflection positivity \& site form \\
+\texttt{papers/spatial-spectral} & \texttt{ARR-2026-1A7WS4SDF0894BPS} & Fluctuation-sector operator bound \\
+\texttt{papers/spatial-uniform} & \texttt{ARR-2026-3EXXMXJD119J1R6R} & Extent-independent rate (decoupled slice) \\
+\texttt{papers/congruence-spectrum} & \texttt{ARR-2026-7S1XA3PZEB9QM8FQ} & Congruence rigidity and the fusion bound \\
+\texttt{papers/su2-crossing-compensated} & \texttt{ARR-2026-5V5K6T6DQT9J8SY6} & Compensated-flow $\mathrm{SU}(2)$ crossing Ward \\
+\texttt{papers/thermodynamic-limit-kp} & \texttt{ARR-2026-5SGNYDASRB9V9VF9} & Thermodynamic limit for local Gibbs states \\
+\texttt{papers/stationary-doob347} & \texttt{ARR-2026-1AS15VP0199VZ847} & Boolean Doob kernels: stationary marginals \\
+\texttt{papers/stationary-weighting354} & \texttt{ARR-2026-4T35VQ6MZB8F99F4} & Boolean Doob kernels: moment transfer \\
+\texttt{papers/os-chain-z2} & \emph{Pending AIRR deposit} & Complete $\mathbb{Z}_2$ Osterwalder--Seiler chain \\
+\texttt{papers/wronskian-reduction} & \emph{Pending AIRR deposit} & Wronskian identity for antisymmetrized sine sums \\
+\bottomrule
+\caption{Cross-reference of Yang--Mills and mathematical-physics manuscripts
+in \texttt{THE-ERIKSSON-PROGRAMME} to AIRR archive identifiers.}
+\label{tab:airr}
+\end{longtable}
+}
+
+\section{Reproducibility and Citation}
+
+To reproduce the verified Lean~4 core from scratch (on Windows, pass
+\texttt{-c core.longpaths=true} due to nested historical audit paths under
+\texttt{papers/marginal-transfer/}):
+
+\begin{verbatim}
+git clone -c core.longpaths=true \
+  https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
+cd THE-ERIKSSON-PROGRAMME
+git checkout yang-mills-archive-v1.0
+lake exe cache get
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts/check_consistency.py
+\end{verbatim}
+
+The code is released under \texttt{AGPL-3.0-or-later} with machine-readable
+citation metadata in \texttt{CITATION.cff} and \texttt{.zenodo.json}.
+
+\section*{Disclosure of AI Assistance and Editorial Independence}
+
+Parts of the Lean~4 formalization, audit tooling, and manuscript preparation
+in \texttt{THE-ERIKSSON-PROGRAMME} were assisted by large language models
+under the supervision of the author; every core mathematical claim is
+independently checked by the Lean~4 kernel (\texttt{YangMillsCore}) with
+standard axioms only. The author (Lluis Eriksson) administers the AIRR
+archive (\url{https://airr.science/}); accordingly, this technical note
+claims no independent editorial admission or peer-review endorsement beyond
+its transparent machine-checked evidence and explicit scope boundaries.
+
+\end{document}

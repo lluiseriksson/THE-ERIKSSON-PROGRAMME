@@ -2,6 +2,7 @@
 
 **Archival date:** 2026-11-22  
 **Archival release tag:** `yang-mills-archive-v1.0`  
+**Archival overview manuscript (PDF + TeX):** [`papers/yang-mills-archival-overview/yang_mills_archival_overview.pdf`](../papers/yang-mills-archival-overview/yang_mills_archival_overview.pdf)  
 **Canonical Lean core contract:** [`project-state.json`](../project-state.json)  
 **Citation metadata:** [`CITATION.cff`](../CITATION.cff) · [`.zenodo.json`](../.zenodo.json)  
 **Companion preprint archive:** [airr.science](https://airr.science/)
@@ -58,47 +59,48 @@ Anyone continuing this programme should start from [`HORIZON.md`](../HORIZON.md)
 
 > **Repository scope note (November 2026):** In mid-November 2026, several unrelated empirical/audit manuscripts (e.g., `caidp-rank-sensitivity`, `neso-price-order`, `nyc-zoning-event-dates`, `mangrove-monitoring`, `phoenix-peak-coincidence`, `acquisition-cost-certificates`, `capital-source-omissions`, `prompt-order-certificates`) were added under `papers/` in this repository. They are **not** part of the Yang–Mills programme. The table below isolates the **Yang–Mills and mathematical-physics corpus**.
 
-### A. Core Lattice Gauge Theory, Cluster Expansions & RG Obstructions (5 compiled PDFs)
-* [`paper/area-law/`](../paper/area-law/) — *A Machine-Checked Volume-Uniform Wilson-Loop Area Law via a Formalized Cluster Expansion*
-* [`papers/c1-rooted-tree-majorants/`](../papers/c1-rooted-tree-majorants/) — *Machine-checked rooted-tree majorants for polymer expansions with holes*
-* [`papers/c6-rg-interface/`](../papers/c6-rg-interface/) — *A Mechanized, Non-Circular Renormalization-Group Interface for Wilson Lattice Gauge Correlators*
-* [`papers/poincare-wall/`](../papers/poincare-wall/) — *The Volume-Uniform Poincaré Walls: Machine-Checked Obstructions for Flat and Fluctuation-Sector Block-Poincaré Routes to Combes–Thomas Coercivity in Lattice Yang–Mills*
-* [`papers/flat-coarse-rank/`](../papers/flat-coarse-rank/) — *Coarse information and finite rank obstructions for flat lattice Hodge forms* (expanded revision dossier; see `papers/flat-coarse-rank/README.md` for exact formal anchor split)
+### A. Core Lattice Gauge Theory, Cluster Expansions & RG Obstructions (6 compiled PDFs)
+* [`papers/yang-mills-archival-overview/`](../papers/yang-mills-archival-overview/) — *The Eriksson Programme (Yang–Mills): Machine-Checked Lattice Gauge Foundations, Certified Obstructions, and the Open Frontier* (Archival synthesis PDF + TeX; pending AIRR deposit)
+* [`paper/area-law/`](../paper/area-law/) — *A Machine-Checked Volume-Uniform Wilson-Loop Area Law via a Formalized Cluster Expansion* (`ARR-2026-2ZQ6F57N2H8MG91V`)
+* [`papers/c1-rooted-tree-majorants/`](../papers/c1-rooted-tree-majorants/) — *Machine-checked rooted-tree majorants for polymer expansions with holes* (`ARR-2026-505NQZHR7P9TQ8SA`)
+* [`papers/c6-rg-interface/`](../papers/c6-rg-interface/) — *A Mechanized, Non-Circular Renormalization-Group Interface for Wilson Lattice Gauge Correlators* (`ARR-2026-0WG9YDY5BA9S3RF4`)
+* [`papers/poincare-wall/`](../papers/poincare-wall/) — *The Volume-Uniform Poincaré Walls: Machine-Checked Obstructions for Flat and Fluctuation-Sector Block-Poincaré Routes to Combes–Thomas Coercivity in Lattice Yang–Mills* (`ARR-2026-3Q0VH7PMNV8C9VQE`)
+* [`papers/flat-coarse-rank/`](../papers/flat-coarse-rank/) — *Coarse information and finite rank obstructions for flat lattice Hodge forms* (expanded v2 revision dossier for `ARR-2026-7EPM3V3DP796BBRR`; see `papers/flat-coarse-rank/README.md`)
 
 ### B. Modified Bessel / Amos Bounds & 2D Surface Expansion Suite (9 compiled PDFs)
-* [`papers/bessel-amos-fh/`](../papers/bessel-amos-fh/) — *An Elementary Recurrence–Amos Proof of the Unit-Step Order-Monotonicity of $(\log I_\nu)'$, with a Feynman–Hellmann Application to 2D LGT*
-* [`papers/c2-amos-closure/`](../papers/c2-amos-closure/) — *One Amos bound, three consumer sites: machine-checked Bessel-ratio calculus for lattice gauge expansions*
-* [`papers/c3-amos-proof/`](../papers/c3-amos-proof/) — *A machine-checked proof of the Amos bound for modified Bessel function ratios*
-* [`papers/c4-amos-real/`](../papers/c4-amos-real/) — *A machine-checked proof of an Amos-type bound for modified Bessel ratios at real order*
-* [`papers/c5-crossing/`](../papers/c5-crossing/) — *The diagonal Amos-type family at real order: a machine-checked quantitative crossing classification*
-* [`papers/phi-lemma/`](../papers/phi-lemma/) — *A Weighted Turán-Type Monotonicity Lemma for Modified Bessel Functions via the Calibrated Amos Bound*
-* [`papers/surface-theorem/`](../papers/surface-theorem/) — *Ratio Monotonicity for a Killed von Mises Bridge: exact bridge structure, certified negative results, a single-Bessel reduction, and a two-scale closure map*
-* [`papers/surface-complete/`](../papers/surface-complete/) — *Global Ratio Monotonicity for a Killed von Mises Bridge*
-* [`papers/wronskian-reduction/`](../papers/wronskian-reduction/) — *A Wronskian Identity for Antisymmetrized Sine Sums*
+* [`papers/bessel-amos-fh/`](../papers/bessel-amos-fh/) — *An Elementary Recurrence–Amos Proof of the Unit-Step Order-Monotonicity of $(\log I_\nu)'$, with a Feynman–Hellmann Application to 2D LGT* (`ARR-2026-5PXDYNR2ER89HTQG`)
+* [`papers/c2-amos-closure/`](../papers/c2-amos-closure/) — *One Amos bound, three consumer sites: machine-checked Bessel-ratio calculus for lattice gauge expansions* (`ARR-2026-6DP8SDRZ678H9AY9`)
+* [`papers/c3-amos-proof/`](../papers/c3-amos-proof/) — *A machine-checked proof of the Amos bound for modified Bessel function ratios* (`ARR-2026-17K7KRR6NH9ZVAEJ`)
+* [`papers/c4-amos-real/`](../papers/c4-amos-real/) — *A machine-checked proof of an Amos-type bound for modified Bessel ratios at real order* (`ARR-2026-3AJ7W5BS3N9VR8KM`)
+* [`papers/c5-crossing/`](../papers/c5-crossing/) — *The diagonal Amos-type family at real order: a machine-checked quantitative crossing classification* (`ARR-2026-39Y0F83F4Z9JK90G`)
+* [`papers/phi-lemma/`](../papers/phi-lemma/) — *A Weighted Turán-Type Monotonicity Lemma for Modified Bessel Functions via the Calibrated Amos Bound* (`ARR-2026-72G1SSCNNG8YDVC2`)
+* [`papers/surface-theorem/`](../papers/surface-theorem/) — *Ratio Monotonicity for a Killed von Mises Bridge: exact bridge structure, certified negative results, a single-Bessel reduction, and a two-scale closure map* (`ARR-2026-1FPFA1TSMY9M3T9S`)
+* [`papers/surface-complete/`](../papers/surface-complete/) — *Global Ratio Monotonicity for a Killed von Mises Bridge* (`ARR-2026-3CEWH763KG84B8TM`)
+* [`papers/wronskian-reduction/`](../papers/wronskian-reduction/) — *A Wronskian Identity for Antisymmetrized Sine Sums* (PDF + TeX; pending AIRR deposit)
 
 ### C. Reflection Positivity, Osterwalder–Seiler Chains & Transfer Operators (13 compiled PDFs)
-* [`papers/o-bridge/`](../papers/o-bridge/) — *Clustering and the Transfer-Operator Gap: A Machine-Checked Dense-Family Criterion*
-* [`papers/reflection-positivity/`](../papers/reflection-positivity/) — *A Machine-Checked Reflection-Positivity Framework for $\mathbb{Z}_N$ Lattice Gauge Theory, with the $\mathbb{Z}_2$ Wilson Instance*
-* [`papers/os-chain-z2/`](../papers/os-chain-z2/) — *From the Gibbs Weight to the Spectral Gap: A Complete Machine-Checked Osterwalder–Seiler Chain for the $\mathbb{Z}_2$ Lattice Gauge Chain*
-* [`papers/os-quotient/`](../papers/os-quotient/) — *The Quotient That Is Not the Identity: A Machine-Checked Degenerate Reflection Pairing and Its GNS Quotient*
-* [`papers/perron-kernel/`](../papers/perron-kernel/) — *The Vacuum Was Never Absent: A Machine-Checked Perron Theorem for Strictly Positive Kernels*
-* [`papers/perron-gap/`](../papers/perron-gap/) — *Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite Extent of the Coupled Slice*
-* [`papers/spatial-extent/`](../papers/spatial-extent/) — *Where the Elementary Reconstruction Stops: Spatial Coupling Breaks the Uniform Vacuum, Machine-Checked*
-* [`papers/spatial-birkhoff/`](../papers/spatial-birkhoff/) — *Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial Extent*
-* [`papers/spatial-gibbs/`](../papers/spatial-gibbs/) — *The Measure the Spectral Results Were About: a Machine-Checked Transfer Bridge for the Spatial $\mathbb{Z}_2$ Slice*
-* [`papers/spatial-reflection/`](../papers/spatial-reflection/) — *The Weight That Could Not Break It: Machine-Checked Endpoint Reflection Positivity for the Coupled $\mathbb{Z}_2$ Slice*
-* [`papers/spatial-os/`](../papers/spatial-os/) — *The Collapse: Machine-Checked Bond Reflection Positivity and a Site Reflection Form for the Coupled $\mathbb{Z}_2$ Slice*
-* [`papers/spatial-spectral/`](../papers/spatial-spectral/) — *The Modulus: a Machine-Checked Operator Bound on the Fluctuation Sector of the Coupled $\mathbb{Z}_2$ Slice*
-* [`papers/spatial-uniform/`](../papers/spatial-uniform/) — *The Rate Without the Extent: a Machine-Checked Extent-Independent Spectral Rate for the Decoupled $\mathbb{Z}_2$ Slice*
-* [`papers/congruence-spectrum/`](../papers/congruence-spectrum/) — *Congruence Rigidity and the Fusion Bound: what a positive weight can and cannot do to the spectrum of a transfer kernel*
+* [`papers/o-bridge/`](../papers/o-bridge/) — *Clustering and the Transfer-Operator Gap: A Machine-Checked Dense-Family Criterion* (`ARR-2026-31ED4MTKC18JPSDE`)
+* [`papers/reflection-positivity/`](../papers/reflection-positivity/) — *A Machine-Checked Reflection-Positivity Framework for $\mathbb{Z}_N$ Lattice Gauge Theory, with the $\mathbb{Z}_2$ Wilson Instance* (`ARR-2026-10JJK0VCCS87VTQH`)
+* [`papers/os-chain-z2/`](../papers/os-chain-z2/) — *From the Gibbs Weight to the Spectral Gap: A Complete Machine-Checked Osterwalder–Seiler Chain for the $\mathbb{Z}_2$ Lattice Gauge Chain* (PDF + TeX; pending AIRR deposit)
+* [`papers/os-quotient/`](../papers/os-quotient/) — *The Quotient That Is Not the Identity: A Machine-Checked Degenerate Reflection Pairing and Its GNS Quotient* (`ARR-2026-2TBRDN2DE598KSXD`)
+* [`papers/perron-kernel/`](../papers/perron-kernel/) — *The Vacuum Was Never Absent: A Machine-Checked Perron Theorem for Strictly Positive Kernels* (`ARR-2026-2YDE42KFDY8Y3AA0`)
+* [`papers/perron-gap/`](../papers/perron-gap/) — *Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite Extent of the Coupled Slice* (`ARR-2026-1A608PTGTC9XX9JZ`)
+* [`papers/spatial-extent/`](../papers/spatial-extent/) — *Where the Elementary Reconstruction Stops: Spatial Coupling Breaks the Uniform Vacuum, Machine-Checked* (`ARR-2026-4X084GVAYF87PB3F`)
+* [`papers/spatial-birkhoff/`](../papers/spatial-birkhoff/) — *Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial Extent* (`ARR-2026-6M8PMVHTMH8YZ9ND`)
+* [`papers/spatial-gibbs/`](../papers/spatial-gibbs/) — *The Measure the Spectral Results Were About: a Machine-Checked Transfer Bridge for the Spatial $\mathbb{Z}_2$ Slice* (`ARR-2026-2TTA0WSQBT89X964`)
+* [`papers/spatial-reflection/`](../papers/spatial-reflection/) — *The Weight That Could Not Break It: Machine-Checked Endpoint Reflection Positivity for the Coupled $\mathbb{Z}_2$ Slice* (`ARR-2026-02YRWX53DG9M3R0R`)
+* [`papers/spatial-os/`](../papers/spatial-os/) — *The Collapse: Machine-Checked Bond Reflection Positivity and a Site Reflection Form for the Coupled $\mathbb{Z}_2$ Slice* (`ARR-2026-223XBWQ8PQ8Z2RDS`)
+* [`papers/spatial-spectral/`](../papers/spatial-spectral/) — *The Modulus: a Machine-Checked Operator Bound on the Fluctuation Sector of the Coupled $\mathbb{Z}_2$ Slice* (`ARR-2026-1A7WS4SDF0894BPS`)
+* [`papers/spatial-uniform/`](../papers/spatial-uniform/) — *The Rate Without the Extent: a Machine-Checked Extent-Independent Spectral Rate for the Decoupled $\mathbb{Z}_2$ Slice* (`ARR-2026-3EXXMXJD119J1R6R`)
+* [`papers/congruence-spectrum/`](../papers/congruence-spectrum/) — *Congruence Rigidity and the Fusion Bound: what a positive weight can and cannot do to the spectrum of a transfer kernel* (`ARR-2026-7S1XA3PZEB9QM8FQ`)
 
 ### D. Decoupling, Boolean Doob Kernels & Supporting Dossiers (1 PDF + TeX/audit dossiers)
-* [`papers/parity-barriers/`](../papers/parity-barriers/) — *Parity Barriers for Decoupling Inequalities* (PDF + TeX)
-* [`papers/stationary-doob347/`](../papers/stationary-doob347/) — *Stationary marginals and bottleneck restrictions for Boolean Doob kernels* (TeX dossier)
-* [`papers/stationary-weighting354/`](../papers/stationary-weighting354/) — *Stationary-to-weighting moment transfer and spectral rigidity for Boolean Doob kernels* (TeX dossier)
+* [`papers/parity-barriers/`](../papers/parity-barriers/) — *Parity Barriers for Decoupling Inequalities* (`ARR-2026-5HRC3PS9HZ9WDAA5`)
+* [`papers/stationary-doob347/`](../papers/stationary-doob347/) — *Stationary marginals and bottleneck restrictions for Boolean Doob kernels* (`ARR-2026-1AS15VP0199VZ847`)
+* [`papers/stationary-weighting354/`](../papers/stationary-weighting354/) — *Stationary-to-weighting moment transfer and spectral rigidity for Boolean Doob kernels* (`ARR-2026-4T35VQ6MZB8F99F4`)
 * [`papers/marginal-transfer/`](../papers/marginal-transfer/) — multi-file TeX workspace and audit snapshots
-* [`papers/su2-crossing-compensated/`](../papers/su2-crossing-compensated/) — $\mathrm{SU}(2)$ crossing differential descent audit & source bundle
-* [`papers/thermodynamic-limit-kp/`](../papers/thermodynamic-limit-kp/) — paper generator script (`generate_paper.py`)
+* [`papers/su2-crossing-compensated/`](../papers/su2-crossing-compensated/) — $\mathrm{SU}(2)$ crossing differential descent audit & source bundle (`ARR-2026-5V5K6T6DQT9J8SY6`)
+* [`papers/thermodynamic-limit-kp/`](../papers/thermodynamic-limit-kp/) — thermodynamic limit generator script (`ARR-2026-5SGNYDASRB9V9VF9`)
 
 ---
 
