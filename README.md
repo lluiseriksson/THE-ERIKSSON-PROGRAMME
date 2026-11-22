@@ -10,7 +10,7 @@
 [![Source scan](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-AGPL--3.0-lightgrey)](LICENSE)
 
-[Explore YangMills](YangMills/README.md) · [What's new](NEWS.md) · [hRpoly status](docs/HRPOLY-STATUS.md) · [Documentation](docs/README.md) · [Reproduce](REPRODUCIBILITY.md)
+[Archival Closure & 2027 Handoff](YangMills/CLOSURE.md) · [Cite (`CITATION.cff`)](CITATION.cff) · [Explore YangMills](YangMills/README.md) · [What's new](NEWS.md) · [hRpoly status](docs/HRPOLY-STATUS.md) · [Documentation](docs/README.md) · [Reproduce](REPRODUCIBILITY.md)
 
 The Eriksson Programme develops Lean 4 / Mathlib proofs for SU(N) lattice
 Yang–Mills theory: polymer cluster expansions, Wilson-loop area laws,

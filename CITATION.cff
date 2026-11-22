@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+title: "The Eriksson Programme: Machine-Checked Lattice Yang-Mills Foundations and Open Frontier in Lean 4"
+message: "If you use this software, Lean 4 formalization, verification ledgers, or accompanying manuscripts, please cite this archival release."
+type: software
+authors:
+  - family-names: "Eriksson"
+    given-names: "Lluis"
+    country: "SE"
+repository-code: "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME"
+url: "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/main/YangMills"
+abstract: >-
+  Archival release of the Yang-Mills mathematical source tree in The Eriksson
+  Programme: a pinned Lean 4 (v4.29.0-rc6) and Mathlib formalization of SU(N)
+  lattice gauge theory foundations with a verified, zero-sorry, zero-axiom
+  core (YangMillsCore, depending only on [propext, Classical.choice,
+  Quot.sound]). Verified core results include the Kotecky-Preiss / Mayer
+  polymer cluster-expansion engine, volume-uniform strong-coupling Wilson-loop
+  area laws, unconditional IR exponential clustering for SU(N) without
+  Peter-Weyl, fixed-spacing thermodynamic limits, SU(N)/U(1) Haar and center
+  symmetry rules, Amos/Bessel ratio bounds, Z_2 reflection-positivity and
+  transfer-operator chains, certified obstructions (volume-uniform Poincare
+  walls, flat Hodge rank bounds), and source-grounded conditional
+  renormalization-group interfaces. The physical hRpoly activity estimate
+  (PR #29), 4D SU(N) reflection positivity/transfer, continuum limit (a -> 0),
+  and Osterwalder-Schrader/Wightman reconstruction remain explicitly open.
+keywords:
+  - "Yang-Mills"
+  - "lattice gauge theory"
+  - "Lean 4"
+  - "Mathlib"
+  - "formal verification"
+  - "cluster expansion"
+  - "Kotecky-Preiss"
+  - "Wilson loop area law"
+  - "reflection positivity"
+  - "renormalization group"
+license: "AGPL-3.0-or-later"
+version: "yang-mills-archive-v1.0"
+date-released: "2026-11-22"
+references:
+  - type: article
+    title: "A Machine-Checked Volume-Uniform Wilson-Loop Area Law via a Formalized Cluster Expansion"
+    authors:
+      - family-names: "Eriksson"
+        given-names: "Lluis"
+    year: 2026
+    url: "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/main/paper/area-law"

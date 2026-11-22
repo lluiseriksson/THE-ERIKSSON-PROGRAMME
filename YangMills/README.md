@@ -2,7 +2,16 @@
 
 **From lattice gauge theory to a source-specific renormalization-group programme.**
 
-[Latest developments](../NEWS.md) · [hRpoly status](../docs/HRPOLY-STATUS.md) · [Documentation](../docs/README.md) · [Reproduce](../REPRODUCIBILITY.md)
+[Archival Closure & 2027 Handoff](CLOSURE.md) · [Cite (`CITATION.cff`)](../CITATION.cff) · [Latest developments](../NEWS.md) · [hRpoly status](../docs/HRPOLY-STATUS.md) · [Documentation](../docs/README.md) · [Reproduce](../REPRODUCIBILITY.md)
+
+> **Archival status · 22 November 2026 (`yang-mills-archive-v1.0`)**
+>
+> The Yang–Mills formalization is now packaged as a citable, self-contained
+> archival checkpoint for external researchers, frontier laboratories, and
+> automated theorem provers. Start with **[`CLOSURE.md`](CLOSURE.md)** for the
+> complete map of verified `YangMillsCore` theorems, the 28 compiled
+> mathematical-physics manuscripts, the frozen `hRpoly` (PR #29) and continuum
+> frontiers, and exact reproduction/citation instructions.
 
 This is the mathematical source tree of **The Eriksson Programme**. It brings
 together SU(N) lattice gauge theory, polymer cluster expansions, Wilson-loop

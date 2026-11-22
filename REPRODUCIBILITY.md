@@ -22,6 +22,10 @@ lakefile (rather than `@ "master"`) means even `lake update` reproduces.
 
 ## Rebuild
 
+> **Windows cloning note:** Historical nested audit paths under
+> `papers/marginal-transfer/` exceed Windows' legacy 260-character path limit.
+> On Windows, clone with `git clone -c core.longpaths=true https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git`.
+
 ```sh
 # 1. install the toolchain (elan reads lean-toolchain automatically)
 # 2. fetch the pinned dependencies and the Mathlib build cache:
