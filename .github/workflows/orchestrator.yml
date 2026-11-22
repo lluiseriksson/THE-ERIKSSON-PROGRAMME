@@ -1,7 +1,8 @@
 name: orchestrator
 on:
-  schedule:
-    - cron: '31 * * * *'
+  # Hourly fleet schedule paused at archival closure (2026-11-22) so the
+  # archived repository stays green and does not append stale alerts.
+  # Trigger manually via Actions -> orchestrator -> Run workflow if needed.
   workflow_dispatch:
 
 permissions: { contents: write, issues: write }

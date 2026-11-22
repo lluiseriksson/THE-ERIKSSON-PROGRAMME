@@ -1,0 +1,37 @@
+{
+  "title": "The Eriksson Programme: Machine-Checked Lattice Yang-Mills Foundations and Open Frontier in Lean 4 (Archival Release)",
+  "upload_type": "software",
+  "description": "Pinned Lean 4 (v4.29.0-rc6) / Mathlib archival release of the Yang-Mills formalization programme (YangMillsCore verified green in CI with zero sorry and zero project axioms beyond [propext, Classical.choice, Quot.sound]), together with 28 compiled mathematical-physics manuscripts, verification ledgers, and an explicit handoff map of open frontiers (hRpoly, physical SU(N) reflection positivity/transfer, and 4D continuum/OS-Wightman reconstruction). No 4D continuum mass gap or Clay Millennium Prize solution is claimed.",
+  "creators": [
+    {
+      "name": "Eriksson, Lluis",
+      "affiliation": "Independent Researcher, Sweden"
+    }
+  ],
+  "license": "AGPL-3.0-or-later",
+  "access_right": "open",
+  "keywords": [
+    "Yang-Mills",
+    "Lattice Gauge Theory",
+    "Lean 4",
+    "Mathlib",
+    "Cluster Expansion",
+    "Kotecky-Preiss",
+    "Wilson Loop Area Law",
+    "Reflection Positivity",
+    "Constructive Quantum Field Theory",
+    "Formal Verification"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/main/YangMills",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://airr.science/",
+      "relation": "isReferencedBy",
+      "scheme": "url"
+    }
+  ]
+}
