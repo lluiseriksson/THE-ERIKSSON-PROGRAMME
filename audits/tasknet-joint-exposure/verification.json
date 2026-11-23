@@ -1,0 +1,12 @@
+{
+  "lp_runs": {
+    "Software Developers": 14,
+    "Lawyers": 12,
+    "Elementary School Teachers": 22,
+    "Emergency Medicine Physicians": 4,
+    "Personal Care Aides": 10,
+    "Dishwashers": 2
+  },
+  "sharp_control": true,
+  "threshold": "162/91"
+}

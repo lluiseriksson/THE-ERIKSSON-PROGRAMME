@@ -1,0 +1,14 @@
+{
+  "doi": "10.3386/w35987",
+  "source": "https://www.nber.org/system/files/working_papers/w35987/w35987.pdf",
+  "sha256": "a8f58801b8eb78301429074d35d1859f24bc06fe3c621010db3cc11555fdfbb6",
+  "example_url": "https://raw.githubusercontent.com/jennjwang/tasknet-system/17af7529b697f6fbc7fc6832b30f4248572f717f/validation/tools/inputs/inventories.json",
+  "example_sha256": "f877fc1b4ea883adbf93279490290ff57fd1f3abfeff12d1b44bfdaa89195033",
+  "example_source": {
+    "built_from": "simulated interview sessions (generator since removed)",
+    "note": "a synthetic example so the app runs; build real lists with build_inputs.py",
+    "sample_n": 0,
+    "sample_rule": "no subsample — every task is shown"
+  },
+  "disposition": "Exclude synthetic inventories from empirical estimates. Check paper appendices or linked release for observations."
+}
