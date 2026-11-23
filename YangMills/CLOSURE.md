@@ -1,8 +1,8 @@
 # Yang–Mills Programme — Archival Closure & 2027 Handoff Guide
 
-**Archival date:** 2026-11-22  
-**Archival release tag:** `yang-mills-archive-v1.0`  
-**Archival overview manuscript (PDF + TeX):** [`papers/yang-mills-archival-overview/yang_mills_archival_overview.pdf`](../papers/yang-mills-archival-overview/yang_mills_archival_overview.pdf)  
+**Archival date:** 2026-11-23  
+**Archival release tag:** `yang-mills-archive-v1.0` (frozen Lean core commit `6b54eca695e96b3038ceda18276c4e28fb45983f`)  
+**Archival overview manuscript (PDF + TeX, AIRR v3):** [`papers/yang-mills-archival-overview/yang_mills_archival_overview.pdf`](../papers/yang-mills-archival-overview/yang_mills_archival_overview.pdf) · [`ARR-2026-7DYZAEKGJP8FPTJ1` v3](https://airr.science/notes/ARR-2026-7DYZAEKGJP8FPTJ1/versions/v3/)  
 **Canonical Lean core contract:** [`project-state.json`](../project-state.json)  
 **Citation metadata:** [`CITATION.cff`](../CITATION.cff) · [`.zenodo.json`](../.zenodo.json)  
 **Companion preprint archive:** [airr.science](https://airr.science/)
@@ -16,7 +16,7 @@ This document closes the active exploratory phase of the **Yang–Mills** formal
 Every claim in this archive adheres to the repository's strict epistemic boundary:
 
 * **Verified core (`YangMillsCore`):** compiles in GitHub Actions (`.github/workflows/lean-build.yml` + `.github/workflows/ci.yml`) against pinned Lean `v4.29.0-rc6` and pinned Mathlib `07642720480157414db592fa85b626dafb71355b`, with **zero `sorry`**, **zero project-specific axioms**, and every headline `#print axioms` readout in `oracle_check.lean` restricted to `[propext, Classical.choice, Quot.sound]`.
-* **Honest Clay scope:** **no four-dimensional continuum limit, no Osterwalder–Schrader / Wightman reconstruction, and no Clay Millennium Prize solution is claimed.** The repository's historical Clay-distance shorthand remains **~0% (<0.1%)**.
+* **Honest Clay scope:** **no four-dimensional continuum limit, no Osterwalder–Schrader / Wightman reconstruction, and no Clay Millennium Prize solution is claimed.** Open formalization tasks (fixed-spacing physical $\mathrm{SU}(N)$ reflection positivity and Balaban/Dimock `hRpoly` in draft PR #29) are separated cleanly from open mathematics (4D continuum Yang–Mills existence and mass gap).
 
 ---
 
@@ -60,7 +60,7 @@ Anyone continuing this programme should start from [`HORIZON.md`](../HORIZON.md)
 > **Repository scope note (November 2026):** In mid-November 2026, several unrelated empirical/audit manuscripts (e.g., `caidp-rank-sensitivity`, `neso-price-order`, `nyc-zoning-event-dates`, `mangrove-monitoring`, `phoenix-peak-coincidence`, `acquisition-cost-certificates`, `capital-source-omissions`, `prompt-order-certificates`) were added under `papers/` in this repository. They are **not** part of the Yang–Mills programme. The table below isolates the **Yang–Mills and mathematical-physics corpus**.
 
 ### A. Core Lattice Gauge Theory, Cluster Expansions & RG Obstructions (6 compiled PDFs)
-* [`papers/yang-mills-archival-overview/`](../papers/yang-mills-archival-overview/) — *The Eriksson Programme (Yang–Mills): Machine-Checked Lattice Gauge Foundations, Certified Obstructions, and the Open Frontier* (Archival synthesis PDF + TeX; pending AIRR deposit)
+* [`papers/yang-mills-archival-overview/`](../papers/yang-mills-archival-overview/) — *The Eriksson Programme (Yang–Mills): Auditable Claim-to-Theorem Manifest, Certified Obstructions, and Continuation Frontier* ([`ARR-2026-7DYZAEKGJP8FPTJ1` v3](https://airr.science/notes/ARR-2026-7DYZAEKGJP8FPTJ1/versions/v3/))
 * [`paper/area-law/`](../paper/area-law/) — *A Machine-Checked Volume-Uniform Wilson-Loop Area Law via a Formalized Cluster Expansion* (`ARR-2026-2ZQ6F57N2H8MG91V`)
 * [`papers/c1-rooted-tree-majorants/`](../papers/c1-rooted-tree-majorants/) — *Machine-checked rooted-tree majorants for polymer expansions with holes* (`ARR-2026-505NQZHR7P9TQ8SA`)
 * [`papers/c6-rg-interface/`](../papers/c6-rg-interface/) — *A Mechanized, Non-Circular Renormalization-Group Interface for Wilson Lattice Gauge Correlators* (`ARR-2026-0WG9YDY5BA9S3RF4`)
@@ -76,12 +76,12 @@ Anyone continuing this programme should start from [`HORIZON.md`](../HORIZON.md)
 * [`papers/phi-lemma/`](../papers/phi-lemma/) — *A Weighted Turán-Type Monotonicity Lemma for Modified Bessel Functions via the Calibrated Amos Bound* (`ARR-2026-72G1SSCNNG8YDVC2`)
 * [`papers/surface-theorem/`](../papers/surface-theorem/) — *Ratio Monotonicity for a Killed von Mises Bridge: exact bridge structure, certified negative results, a single-Bessel reduction, and a two-scale closure map* (`ARR-2026-1FPFA1TSMY9M3T9S`)
 * [`papers/surface-complete/`](../papers/surface-complete/) — *Global Ratio Monotonicity for a Killed von Mises Bridge* (`ARR-2026-3CEWH763KG84B8TM`)
-* [`papers/wronskian-reduction/`](../papers/wronskian-reduction/) — *A Wronskian Identity for Antisymmetrized Sine Sums* (PDF + TeX; pending AIRR deposit)
+* [`papers/wronskian-reduction/`](../papers/wronskian-reduction/) — *A Wronskian Identity for Antisymmetrized Sine Sums: unconditional denominator positivity via circular convolution, sharp monotonicity distinctions, and counterexamples to naive sine-series principles* ([`ARR-2026-5FKM2GGK348CPTE9` v3](https://airr.science/papers/ARR-2026-5FKM2GGK348CPTE9/versions/v3/))
 
 ### C. Reflection Positivity, Osterwalder–Seiler Chains & Transfer Operators (13 compiled PDFs)
 * [`papers/o-bridge/`](../papers/o-bridge/) — *Clustering and the Transfer-Operator Gap: A Machine-Checked Dense-Family Criterion* (`ARR-2026-31ED4MTKC18JPSDE`)
 * [`papers/reflection-positivity/`](../papers/reflection-positivity/) — *A Machine-Checked Reflection-Positivity Framework for $\mathbb{Z}_N$ Lattice Gauge Theory, with the $\mathbb{Z}_2$ Wilson Instance* (`ARR-2026-10JJK0VCCS87VTQH`)
-* [`papers/os-chain-z2/`](../papers/os-chain-z2/) — *From the Gibbs Weight to the Spectral Gap: A Complete Machine-Checked Osterwalder–Seiler Chain for the $\mathbb{Z}_2$ Lattice Gauge Chain* (PDF + TeX; pending AIRR deposit)
+* [`papers/os-chain-z2/`](../papers/os-chain-z2/) — *From the Gibbs Weight to the Spectral Gap: A Machine-Checked Transfer-Matrix Identification and Spectral-Gap Chain for the Open $\mathbb{Z}_2$ Ising Spin Chain* ([`ARR-2026-7PRDH0DHH280HRKH` v3](https://airr.science/papers/ARR-2026-7PRDH0DHH280HRKH/versions/v3/))
 * [`papers/os-quotient/`](../papers/os-quotient/) — *The Quotient That Is Not the Identity: A Machine-Checked Degenerate Reflection Pairing and Its GNS Quotient* (`ARR-2026-2TBRDN2DE598KSXD`)
 * [`papers/perron-kernel/`](../papers/perron-kernel/) — *The Vacuum Was Never Absent: A Machine-Checked Perron Theorem for Strictly Positive Kernels* (`ARR-2026-2YDE42KFDY8Y3AA0`)
 * [`papers/perron-gap/`](../papers/perron-gap/) — *Strict but Not Uniform: a Machine-Checked Spectral Gap at Every Finite Extent of the Coupled Slice* (`ARR-2026-1A608PTGTC9XX9JZ`)
@@ -112,10 +112,12 @@ On **Windows**, enable long paths during clone (nested historical audit paths un
 
 ```bash
 git clone -c core.longpaths=true https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
-cd THE-ERIKSSON-PROGRAMME
+cd THE-ERIKSSON-PROGRAMME && git checkout yang-mills-archive-v1.0
 lake exe cache get
-lake build YangMillsCore
-lake env lean oracle_check.lean
+lake build YangMillsCore AmosClosure YangMills.RG.UniformPhysicalCoarseRankWallOracle
+grep -E '^import ' oracle_check.lean | awk '{print $2}' | xargs lake build
+lake env lean oracle_check.lean > oracle-output.txt
+python scripts/check_oracle_output.py --output oracle-output.txt
 python scripts/check_consistency.py
 ```
 
