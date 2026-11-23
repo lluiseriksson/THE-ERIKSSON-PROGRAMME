@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}\usepackage{lmodern,amsmath,amssymb,booktabs}
+\usepackage[margin=26mm]{geometry}\usepackage[hidelinks]{hyperref}
+\newcommand{\A}{A}\newcommand{\Lx}{\mathcal L_x}
+\title{A sharp finite degree bound for Ap\'ery moment obstructions through \(x=49/50\)}
+\author{Lluis Eriksson}
+\date{21 November 2026}
+\begin{document}\maketitle
+\begin{abstract}
+The Ap\'ery polynomials fail the Stieltjes moment condition throughout \(0<x<1\), although every fixed finite test passes sufficiently close to \(1\). We determine the smallest uniform degree bound on the truncated interval \(0<x\le49/50\). Degree 61 suffices, and at \(49/50\) both moment forms are positive definite through degree 60. To extend the previously certified interval \(0<x\le2/3\), we transport explicit test polynomials between parameter values and certify their signs on eight closed intervals using integer arithmetic. We also give a logarithmic lower bound on the required degree as \(x\) tends to 1 from below. The rate of a matching upper bound remains undetermined.
+\end{abstract}
+\section{What a finite test can detect}
+Put \(\A_k(x)=\sum_{j=0}^k {k\choose j}^2{k+j\choose j}^2 x^j\). Define the linear functional \(\Lx(t^k)=\A_k(x)\) on real polynomials. A Stieltjes moment sequence has a representing positive measure on the nonnegative half-line. Hence both \(\Lx(P^2)\) and \(\Lx(tP^2)\) must be nonnegative for every real polynomial \(P\). Let \(N(x)\) be the least degree making either form negative, or infinity if there is none. Degree \(n\) uses matrices of size \(n+1\) with entries \(\A_{i+j+s}(x)\), \(s=0,1\).
+
+Edgar proved the positive density representation at \(x=1\) [1]. Li and Yeroushalmi classified the Stieltjes parameters and gave explicit negative determinants of sizes at most 10 throughout \(0<x\le2/3\) [2]. Their continuity argument explains why fixed finite tests eventually fail to distinguish \(x<1\) from \(x=1\). Davis studied both Hamburger and Stieltjes tests and provided finite exact examples [3,4]. These results supply the classification, the initial interval and two controls for the computations below.
+
+\textbf{Theorem 1.} \(\max_{0<x\le49/50}N(x)=61\). On \([2/3,49/50]\) a certificate can be selected from four explicit polynomials, allowing a positive parameter-dependent rescaling of the argument.
+\newpage
+\section{A certificate for the whole interval}
+At a rational center \(x_0=p/q\), set \(m_j=q^j\A_j(x_0)\). For \(s=0,1\) form the Gram matrix \(G_n=(m_{i+j+s})_{0\le i,j\le n}\). This normalization is a diagonal congruence times a positive scalar. We generated primitive integer orthogonal polynomials in increasing degree, fixing positive leading coefficients and stopping at the first negative squared norm. The earlier basis vectors have strictly positive squared norms. The unit-triangular monic basis, or its integer-scaled version, spans all polynomials through that degree. A negative norm therefore supplies a witness and the earlier positive norms establish minimality for that shift.
+
+Write \(P(u)=\sum_{i=0}^n p_i u^i\) for a generated integer witness. Its transport to \(x\) uses
+\[
+   L=1+\tau(x-x_0),\qquad R_x(t)=L^n P(qt/L).
+\]
+On each interval below \(L>0\). Let \(b_k=\sum_{i+j=k}p_i p_j\). Exact expansion gives
+\[
+  F(x)=\Lx(t^sR_x(t)^2)
+      =\sum_{k=0}^{2n}b_k q^k L^{\,2n-k}\A_{k+s}(x),
+  \qquad \deg F\le 2n+s .
+\]
+For each cell \([a,b]\) we prove \(F(x)<0\) by certifying strictly negative coefficients of
+\((1+z)^{2n+s}F((a+bz)/(1+z))\). Nonnegative \(z\) gives \([a,b)\); the leading coefficient certifies \(b\). The archived polynomials are primitive and use ascending powers. Centers and shifts identify them unambiguously in the certificate file.
+\begin{center}\small
+\begin{tabular}{llllrr}\toprule
+Left & Right & Center & \(\tau\) & \(s\)& Degree\\\midrule
+\(2/3\)&\(149/200\)&\(19/20\)&0&0&35\\
+\(149/200\)&\(941/1200\)&\(24/25\)&0&1&39\\
+\(941/1200\)&\(247/300\)&\(9/10\)&\(3/4\)&1&22\\
+\(247/300\)&\(69/80\)&\(9/10\)&0&1&22\\
+\(69/80\)&\(2117/2400\)&\(9/10\)&0&1&22\\
+\(2117/2400\)&\(541/600\)&\(19/20\)&\(3/4\)&0&35\\
+\(541/600\)&\(1129/1200\)&\(19/20\)&0&0&35\\
+\(1129/1200\)&\(49/50\)&\(49/50\)&\(3/4\)&0&61\\\bottomrule
+\end{tabular}
+\end{center}
+The subdivisions certify the full closed interval. They do not require interpolating a sign from sampled parameters. Together with the degree-nine upper bound in [2] below \(2/3\), the table proves the upper half of Theorem 1.
+\newpage
+\section{Sharpness and the two competing tests}
+At \(49/50\) exact fraction-free elimination gives strictly positive leading determinants for sizes 1 through 61 in both matrices. At size 62 the unshifted determinant is negative. Sylvester's criterion yields positive definiteness for both forms through degree 60, and the unshifted degree-61 polynomial gives a negative form. This proves sharpness. The shifted matrix first fails two degrees later.
+
+\begin{center}
+\begin{tabular}{lrr}\toprule
+Parameter & First negative degree, \(s=0\) & First negative degree, \(s=1\)\\\midrule
+\(1/2\)&8&\(>9\)\\
+\(9/10\)&\(>23\)&22\\
+\(19/20\)&35&37\\
+\(24/25\)&42&39\\
+\(39/40\)&53&55\\
+\(49/50\)&61&63\\\bottomrule
+\end{tabular}
+\end{center}
+The first two rows reproduce controls in [4]. As the parameter increases from \(9/10\) to \(19/20\), \(24/25\), and \(39/40\), the earlier test alternates between shifts 1, 0, 1, and 0. A fixed preference for one shift can increase the degree required at these parameters. The table makes no monotonicity assertion between them. The finite uniform bound concerns polynomial degree in the two initial moment forms. It does not bound the degree of every other procedure for testing the classification.
+
+\section{A lower bound as the endpoint approaches one}
+Let \(c=17+12\sqrt2\). By [1], \(\A_j(1)\) are probability moments on \([0,c]\) with density \(\phi\) positive and analytic on \((1/c,c)\). Normalize by \(c^j\) and set \(a=1/4,\ b=3/4,\ h=\min_{[a,b]} c\phi(cy)>0\). For \(x=1-\delta\), \(0\le\delta\le1\), coefficient positivity and \(1-(1-\delta)^i\le i\delta\) bound the change of normalized moment \(j\) by \(j\delta\). Thus the spectral norm of either perturbation through degree \(n\) is at most \((n+1)(2n+1)\delta\), using the maximum absolute row sum.
+
+Write \(K=6+\sqrt{35}\). For either shift, the unperturbed form on the coefficient vector \(v\) of \(P\) dominates \(ah\int_a^b|P|^2\). To compare the coefficient and integral norms, expand \(P\) in the orthonormal shifted Legendre basis of \([a,b]\). Each basis polynomial has only positive zeros, so the sum of absolute coefficients is its absolute value at \(-1\). The affine Legendre argument there is \(-6\). The Laplace integral for the ordinary degree-\(j\) Legendre polynomial bounds its value at 6 by \(K^j\) [5]. The squared coefficient norm of the normalized basis element is therefore at most \((2j+1)K^{2j}/(b-a)\).
+\newpage
+Cauchy--Schwarz now yields
+\[
+  \|v\|_2^2\le \frac{(n+1)(2n+1)K^{2n}}{b-a}\int_a^b|P|^2 .
+\]
+Both perturbed matrices stay positive definite if
+\[
+  \delta < \frac{ah(b-a)}{(n+1)^2(2n+1)^2 K^{2n}}.
+\]
+Taking \(n=\lfloor\alpha\log(1/\delta)\rfloor\) for any \(\alpha<1/(2\log K)\), \(\alpha>0\), gives
+\(\liminf_{\delta\downarrow0}N(1-\delta)/\log(1/\delta)\ge1/(2\log K)\).
+This quantitative continuity bound uses classical interval moment conditioning [6]. It leaves a gap between the lower bound and available finite witnesses. Whether the minimum degree grows at this rate remains open here.
+
+\section{Reproduction and review context}
+The source package contains the integer coefficients, the eight-cell partition, and verifiers. A fraction-free symmetric elimination recomputes determinant signs independently of the orthogonalization. A second interval calculation evaluates the homogenized squared functional at \(d+1\) integers, \(d=2n+s\), and recovers monomial coefficients by exact Newton interpolation. The generator uses Bernstein subdivision. The two algorithms test the same identities. The archived checks include altered certificates to test rejection. The inputs and sources can be inspected in \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/390}{the research record}.
+
+\textbf{Model assessments and review context.} OpenAI Codex assisted with the argument, certificate programs and writing. The author administers AIRR. Any model assessment of this exact PDF is recorded separately with its model identity, involvement and full objections. The algorithmic cross-check concerns arithmetic. Independent human peer review is not documented.
+
+\section*{References}
+\small
+[1] G. A. Edgar. \emph{The Ap\'ery numbers as a Stieltjes moment sequence}. Preprint (2020). \href{https://arxiv.org/abs/2005.10733}{arXiv:2005.10733}.
+
+[2] B. Li and E. Yeroushalmi. \emph{Stieltjes moment classification of Ap\'ery polynomials} (2026), section on finite Hankel certificates. \href{https://doi.org/10.5281/zenodo.24022053}{Archival materials}.
+
+[3] J. W. Davis. \emph{The Ap\'ery polynomials as Hamburger and Stieltjes moment sequences} (2026). \href{https://doi.org/10.5281/zenodo.24331816}{Manuscript}.
+
+[4] J. W. Davis. \emph{Companion materials} (2026), record/step3b. \href{https://doi.org/10.5281/zenodo.24331682}{Archived certificates}.
+
+[5] NIST Digital Library of Mathematical Functions. \href{https://dlmf.nist.gov/14.12}{Section 14.12}, integral representations.
+
+[6] H. Widom and H. S. Wilf. \emph{Small eigenvalues of large Hankel matrices}. Proc. Amer. Math. Soc. 17 (1966). \href{https://doi.org/10.1090/S0002-9939-1966-0189237-7}{Article}.
+\end{document}

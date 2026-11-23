@@ -1,0 +1,14 @@
+{
+  "statement": "¿Bastan los seis certificados congelados y el control de 3/4, fijos o transportados con pendiente 3/4, para cubrir todo [2/3,49/50] con grado como máximo 61?",
+  "hypotheses": [
+    "Sólo dos transportes por certificado; positividad exacta del denominador."
+  ],
+  "mechanism": "Homogeneizar el funcional y certificar estricta negatividad con Bernstein y subdivisión por mitades.",
+  "falsifier": "Conservar toda porción no certificada a profundidad diez. Una laguna computacional no prueba que el momento sea positivo ni que no exista otro certificado.",
+  "abandonment": "No alterar pendientes después de la prueba para dar por aprobado el ensayo. Reutilizar las zonas descubiertas para una construcción posterior identificada.",
+  "sha_inputs": {
+    "apery-cover.py": "c68faffa2ccfc563f328acd1b1e62bb39c31c4da092ea73736a899a459d5546f",
+    "apery-witness.py": "320b0588d125071b152ef62c00479a22b662890ff8ec46f9c4ecbe213b5d0bcc",
+    "witnesses.json.gz": "4ca4b36411654b420ccd9ddc59148a93f4cc2c05e9e948f0a75f6b378770c849"
+  }
+}
