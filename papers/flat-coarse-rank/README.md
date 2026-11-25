@@ -36,7 +36,7 @@ historical reviews transfers to these new bytes. Scientific assessment remains
 pending; the local exact-artifact review request is prepared, not dispatched.
 
 Intended publication route: linked revision/consolidation in the existing
-ARR-2026-7EPM3V3DP796BBRR / ai.viXra2608.0015 dossier, never a duplicate ordinary
+ARR-2026-7EPM3V3DP796BBRR dossier, never a duplicate ordinary
 deposit. Keep PR97 draft pending exact scientific assessment and actual supported
 revision route. Do not infer permissions, provider consent, license expansion,
 acceptance or publication from access to an old or ordinary deposit grant.
