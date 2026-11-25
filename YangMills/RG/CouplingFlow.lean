@@ -36,7 +36,7 @@ not the marginal gauge coupling.  Recorded so the Clay-distance audit
 stays honest.
 
 **Source.** Faria da Veiga–O'Carroll 2024; Goswami AHP 2019; Bałaban
-CMP 109 (1987).  Strategy/framing: Lluis Eriksson (ai.viXra:2602.0088).
+CMP 109 (1987).  Strategy/framing: Lluis Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no
 axioms.

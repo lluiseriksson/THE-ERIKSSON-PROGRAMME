@@ -1522,7 +1522,7 @@ continuum-facing Balaban renormalization-group track.  After producing
 the exact 7-brick Lean-facing ladder (`docs/BALABAN-RG-PLAN.md`, B1–B7),
 this addendum closes **B1**, the block-lattice geometry, source-faithful
 to **Bałaban, CMP 98 (1985) eqs (1)–(3)** (strategy/framing: **Lluis
-Eriksson**, ai.viXra:2602.0088): `blockSite L N' : FinBox d (L·N') →
+Eriksson**, [ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)): `blockSite L N' : FinBox d (L·N') →
 FinBox d N'`, coordinatewise integer division by the block size `L`
 (the order-1 block map of the torus `(ℤ/(L·N'))^d → (ℤ/N')^d`), with
 `blockSite_eq_iff_cube` (the half-open `L`-cube characterisation
@@ -1564,7 +1564,7 @@ of the non-abelian averaging operator `Ū` of CMP 98 (14)–(15)
 (`log Ū(e^{iA}) = QA + O(‖A‖²)`); the full `Ū` (brick B3-full) remains
 BLOCKED on a clean scan of CMP 98 p.19–20 (request in
 `docs/BALABAN-RG-PLAN.md`).  Strategy/framing: **Lluis Eriksson**,
-ai.viXra:2602.0069, 2602.0088.  Continuum (M4) track; reduces no M4/M5
+[ARR-2026-5FCQWZC9RM9TF9DV](https://airr.science/papers/ARR-2026-5FCQWZC9RM9TF9DV/), 2602.0088.  Continuum (M4) track; reduces no M4/M5
 obstruction yet; Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 25 (2026-06-12, **gauge-RG brick B2 — coarse/fine block
@@ -1604,7 +1604,7 @@ source-faithful for our constructions):
    the block-translated site `x(c) = x + L·e_μ`) with `iterShift_apply_ne`
    (other coordinates fixed).  Pure lattice geometry; reused by the
    averaging operator.  Strategy/framing: **Lluis Eriksson**
-   (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0%
+   ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0%
    (<0.1%), unchanged.
 
 ## Addendum 26 (2026-06-12, **gauge-RG brick B3-full interface — the
@@ -1641,7 +1641,7 @@ straight length-`L` line, `L^{-d}`); CMP 98 (14)/CMP 109 (0.12) use the
 Euclidean-symmetric refined contour `Γ_{c,x}` with `L^{-(d+1)}`, so
 `linAvg` is the CMP 95 prototype, not (yet) Balaban's final averaging —
 not overclaimed.  `ssrn-5836022` (Borom) remains set aside.
-Strategy/framing: **Lluis Eriksson** (ai.viXra:2602.0069, 2602.0088);
+Strategy/framing: **Lluis Eriksson** ([ARR-2026-5FCQWZC9RM9TF9DV](https://airr.science/papers/ARR-2026-5FCQWZC9RM9TF9DV/), 2602.0088);
 group average due to Bałaban (CMP 109) / Federbush.  Continuum (M4)
 track; Clay distance ~0% (<0.1%), unchanged.
 
@@ -1675,7 +1675,7 @@ non-abelian (0.8) tying `M` to `linAvg`.  The non-abelian (0.8), the
 Federbush characterisation (0.10), and the operator `Ū` (CMP 109 (0.12))
 remain carried obligations awaiting a near-identity matrix-`log`
 framework.  Source: Bałaban CMP 109 (0.5)–(0.10); Federbush [35];
-strategy **Lluis Eriksson** (ai.viXra:2602.0069).  Continuum (M4) track;
+strategy **Lluis Eriksson** ([ARR-2026-5FCQWZC9RM9TF9DV](https://airr.science/papers/ARR-2026-5FCQWZC9RM9TF9DV/)).  Continuum (M4) track;
 Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 28 (2026-06-12, **gauge-RG brick B4-prep — holonomy
@@ -1706,7 +1706,7 @@ by a clean telescoping induction over the core `wilsonLine`/`gaugeAct`.
 This is exactly the law (CMP 98 (11)) that, combined with
 `GroupAverage.conj_equiv`/`biequiv`, makes the averaged contour variable
 (0.11) — and hence `Ū` — gauge covariant (brick B4).  Strategy/framing:
-**Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
+**Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay
 distance ~0% (<0.1%), unchanged.
 
 ## Addendum 29 (2026-06-12, **gauge-RG brick B5-linear — locality of the
@@ -1729,7 +1729,7 @@ bond fields agreeing on those bonds have equal `Q`-averages at `c`.
 With B4-prep (the holonomy gauge law, Add. 28) this completes the
 *algebraic* half of B4/B5 for the linear operator; the full non-abelian
 `Ū` versions await the matrix-`log` layer.  Source: Bałaban CMP 95
-(1.8)/116; strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum
+(1.8)/116; strategy **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum
 (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 30 (2026-06-12, **gauge-RG brick B4 — gauge covariance of the
@@ -1763,7 +1763,7 @@ This needs **no matrix logarithm** — it is the gauge covariance (CMP 98
 What remains for the full field map `Ū` (brick B4-Ū) is to apply this
 pointwise once `Ū` is defined (which does need the matrix-`log` layer).
 Source: Bałaban CMP 109 (0.6),(0.11); CMP 98 (11).  Strategy/framing
-**Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
+**Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay
 distance ~0% (<0.1%), unchanged.
 
 ## Addendum 31 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-1
@@ -1805,7 +1805,7 @@ identity `log(exp X) = X` near `0` with the `O(‖X‖²)` remainder, which
 unblocks the linearisation axiom (0.8) and then `Ū`.  Source: standard
 analytic construction; applied to CMP 109 (0.8),(0.12); BCH references
 (BCHD.pdf) in hand.  Strategy/framing **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
 ## Addendum 32 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-2a
@@ -1834,7 +1834,7 @@ tail `Σ_{n≥2} logCoeff n • Y^n`; bound it by `Σ_{n≥2} ‖Y‖^n =
 What remains for the full (0.8) is **M-log-2b**, `log(exp X) = X` near
 `0` (composition of the `exp`/`log` power series) — the genuinely hard
 analytic brick.  Source: standard; applied to CMP 109 (0.8).
-Strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum
+Strategy/framing **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum
 (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 33 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-2a′
@@ -1867,7 +1867,7 @@ defined (a `Ū` without its linearisation/covariance theorems would be
 hollow, which the honesty rule forbids), and axiom (0.8) is **not**
 claimed proved — only its `O(‖·‖²)` remainder (Add. 32) and the linear
 bound (this addendum) are.  Strategy/framing **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
 ## Addendum 34 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-2c
@@ -1899,7 +1899,7 @@ Banach algebra (that still needs formal-power-series composition, the
 Mathlib gap), and `Ū`/(0.8) remain unclaimed — but it removes any doubt
 that `nearLog` is the right object.  Source: Mathlib real-log series;
 applied to CMP 109 (0.8)/(0.12).  Strategy/framing **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
 ## Addendum 35 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-3
@@ -1921,7 +1921,7 @@ together with B4-prep (holonomy law) and `GroupAverage.biequiv` it
 supplies every algebraic ingredient of `Ū`'s gauge covariance, leaving
 only the analytic linearisation (0.8, brick M-log-2b) as the carried
 gap.  Source CMP 98 (11)/109 (0.12); strategy **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
 ## Addendum 36 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-3
@@ -1943,7 +1943,7 @@ field map is now assembled from existing oracle-clean pieces —
 `nearLog_sum_smul_conj` (this) ∘ `exp_units_conj` (Mathlib) — modulo
 only the carried analytic linearisation (0.8, brick M-log-2b, still
 open).  No `log(exp)=id` used.  Source CMP 109 (0.12); strategy **Lluis
-Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance
+Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance
 ~0% (<0.1%), unchanged.
 
 ## Addendum 37 (2026-06-12, **gauge-RG brick B4-Ū (algebra level) — gauge
@@ -1971,7 +1971,7 @@ lattice group `G` to `𝔸ˣ` and instantiation on the concrete `Ū` — not an
 analytic gap.  The fixed-point linearisation (0.8) still needs the
 operator `log(exp)=id` (M-log-2b), which covariance does not.  Source
 CMP 109 (0.12)/CMP 98 (11); strategy **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
 ## Addendum 38 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-4
@@ -2000,7 +2000,7 @@ order) **without** the exact local-inverse identity `log(exp)=id` (brick
 M-log-2b).  Carries one explicit, satisfiable instance `[NormOneClass 𝔸]`
 (the `n=0` term `1` needs `‖1‖=1`; satisfied by matrix algebras).
 Source standard / CMP 109 (0.8); strategy **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
 ## Addendum 39 (2026-06-12, **gauge-RG matrix-`log` layer, brick M-log-5
@@ -2027,7 +2027,7 @@ algebras).
 (M-log-2b) is now demoted from blocker to optional polish: gauge
 covariance never needed it (B4-Ū closed, Add. 37) and the (0.8)
 linearisation is obtained without it (this addendum).  Source CMP 109
-(0.8); strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4)
+(0.8); strategy **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4)
 track; Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 40 (2026-06-12, **gauge-RG brick B4-Ū lattice bridge —
@@ -2056,7 +2056,7 @@ make `Ū` gauge covariant.  What remains (B4-Ū full) is to assemble the
 concrete lattice `Ū` from the realized contour variables and instantiate
 `UbarBlock_conj` — a definitional task on top of this bridge, no analysis.
 Source CMP 98 (11)/109; strategy **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
 ## Addendum 41 (2026-06-12, **gauge-RG matrix-`log` layer — small-field
@@ -2075,7 +2075,7 @@ single-scale bound (UV plan **U1**) is built on — the small-field region
 is preserved by the `exp ∘ nearLog` step.  Immediate from the
 linearisation (M-log-5, Add. 39) by the triangle inequality.  Carries
 `[NormOneClass 𝔸]`.  Source CMP 109 small-field / UV plan U1; strategy
-**Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
+**Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay
 distance ~0% (<0.1%), unchanged.
 
 ## Addendum 42 (2026-06-12, **gauge-RG UV-U1 brick S1 — ℓ² averaging
@@ -2111,7 +2111,7 @@ Honest scope: S1 is the deterministic Cauchy–Schwarz seed; the genuine
 analytic core (**S2**, the Gaussian/propagator covariance contraction,
 Bałaban CMP 95–96) remains a months-scale campaign requiring the
 renormalized Gaussian measure (not in Mathlib).  Source CMP 95; strategy
-**Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay
+**Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay
 distance ~0% (<0.1%), unchanged.
 
 ## Addendum 43 (2026-06-12, **gauge-RG UV-U1 brick S1′ — the ℓ²(lattice)
@@ -2147,7 +2147,7 @@ Proof: `Finset.sum_fiberwise_of_maps_to` (partition),
 This is the genuine, certified deterministic contraction of brick S1′;
 the remaining **S2** (the rescaled version against the renormalized
 Gaussian covariance, Bałaban CMP 95–96) is the months-scale analytic
-core.  Source CMP 95; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
+core.  Source CMP 95; strategy **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).
 Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 44 (2026-06-12, **gauge-RG UV-U1 — explicit ℓ²-contraction
@@ -2163,7 +2163,7 @@ contracts the bond ℓ²-norm by a factor of at least `1/L` (`< 1` for
 decay (`Paper.uv_geometric_summation`, UV plan U3) consumes.  From
 `linAvg_l2_le` (Add. 43) and `L^{2-d} ≤ L^{-1}` (i.e. `L³ ≤ L^d`,
 `gcongr` on the inverse-power) with `(L^3)⁻¹·L² = L⁻¹` (`field_simp`).
-Source CMP 95; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
+Source CMP 95; strategy **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).
 Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 45 (2026-06-12, **gauge-RG UV-S2 brick G1 — the averaging
@@ -2192,7 +2192,7 @@ the interacting correction (G5, the gauge fluctuation integral) remains
 the months-scale wall and is the subject of a precise source request
 (UV-S2 plan §"Precise source request": Bałaban CMP 95 §2–3 covariance
 bound, CMP 96 transformation law, CMP 122-II Thm 1).  Source CMP 95;
-strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track;
+strategy **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track;
 Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 46 (2026-06-12, **gauge-RG UV-S2 brick G3 — covariance
@@ -2224,7 +2224,7 @@ contracting by `≤ L⁻¹` in `d = 4`.  Stated abstractly for any CLM, so it
 is reusable and instantiates at `linAvgCLM`.  The interacting correction
 (G5, the gauge fluctuation integral) remains the months-scale wall
 (precise source request: UV-S2 plan).  Source standard / CMP 95–96;
-strategy **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track;
+strategy **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track;
 Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 47 (2026-06-12, **gauge-RG UV-S2 brick G4 — free covariance
@@ -2259,7 +2259,7 @@ simplified surrogate valid only under an extra coupling-flow assumption
 caveat; the existing U0 theorems remain honest implications from their
 stated (surrogate) hypothesis, but the true §6.3 obligation is the
 polymer bound + coupling-flow assumption.  Source CMP 95/122-II, Dimock
-arXiv:1212.5562; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
+arXiv:1212.5562; strategy **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).
 Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 48 (2026-06-12, **gauge-RG UV audit-gap closer — the
@@ -2291,7 +2291,7 @@ via a faithful, oracle-clean implication from Bałaban's true bound +
 coupling decay, with the open content sharply isolated.  Sources
 (BALABAN-SOURCE-BOUNDS.md): CMP 122-II Thm 1; Dimock arXiv:1212.5562
 §§3.8/3.13–3.14.  Strategy/framing **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
 ## Addendum 49 (2026-06-12, **gauge-RG UV `hg` discharge — geometric
@@ -2338,7 +2338,7 @@ This discharges one of the bridge's two hypotheses (`hg`) for the
 relevant mechanism; the other (`hpoly`, the cluster expansion / Dimock
 fluctuation integral) remains the months-scale analytic core (sources
 now transcribed: Dimock II Appendix F, §4–5 of BALABAN-SOURCE-BOUNDS).
-Strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4)
+Strategy/framing **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4)
 track; Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 50 (2026-06-12, **gauge-RG UV `hpoly` summation step + full
@@ -2380,7 +2380,7 @@ precisely: the carried `hact`/`hwK` (the cluster expansion itself) and
 `hrec` (the coupling recursion) are the genuinely-unproved analytic
 inputs — the months-scale core, NOT done here, NOT claimed.
 
-Source Dimock I/II/III; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
+Source Dimock I/II/III; strategy **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).
 Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 51 (2026-06-12, **gauge-RG UV — geometric summability core**
@@ -2404,7 +2404,7 @@ into (i) the activity-decay bound `hact` (the renormalized polymer
 activity estimate, Dimock II/III — still the months-scale core) and
 (ii) the summability `hwK`, whose analytic convergence is now reduced
 (this addendum) to the combinatorial animal count.  Source Dimock I/II/III,
-Kotecký–Preiss; strategy **Lluis Eriksson** (ai.viXra:2602.0088).
+Kotecký–Preiss; strategy **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).
 Continuum (M4) track; Clay distance ~0% (<0.1%), unchanged.
 
 ## Addendum 52 (2026-06-12, **gauge-RG — end-to-end UV conditional:
@@ -2440,7 +2440,7 @@ mechanism (4D marginal coupling is logarithmic, Add. 49); discharging
 `hRpoly` is the months-scale cluster-expansion-with-holes core; and even
 a full discharge gives only the *lattice* gap (M4/M5 untouched, Clay
 distance ~0% (<0.1%)).  Source CMP 122-II / Dimock; strategy **Lluis
-Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track.
+Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track.
 
 ## Addendum 53 (2026-06-12, **gauge-RG UV — summability `hwK` reduced to
 the polymer animal-count** `YangMills.RG.polymer_weight_summability`;
@@ -2469,7 +2469,7 @@ integral + holes localization — the months-scale analytic core, carried);
 Source Dimock I/II/III, Kotecký–Preiss; the existing `KP` layer's
 `kp_per_size_bound` is the matching abstract framework
 (`docs/BALABAN-SOURCE-BOUNDS.md` §6).  Strategy/framing **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
 ## Addendum 54 (2026-06-12, **gauge-RG — asymptotic freedom: the 4D
@@ -2494,7 +2494,7 @@ contraction in 4D comes from the *irrelevant operators'* scaling, not the
 marginal coupling.  Source: Faria da Veiga–O'Carroll 2024 (marginal
 case); the inverse-square form is Bałaban CMP 109 / 1988 eq (2.24)
 (`docs/BALABAN-SOURCE-BOUNDS.md` §4).  Strategy/framing **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
 ## Addendum 55 (2026-06-12, **gauge-RG — end-to-end UV conditional with
@@ -2518,7 +2518,7 @@ the only remaining genuinely-analytic carried input is the
 cluster-expansion activity-decay bound `hRpoly` (the Dimock fluctuation
 integral with holes — months-scale).  Source CMP 122-II / Dimock /
 Faria da Veiga–O'Carroll; strategy **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance ~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance ~0% (<0.1%),
 unchanged.
 
 ## Addendum 56 (2026-06-12, **gauge-RG — non-vacuity of the end-to-end UV
@@ -2543,7 +2543,7 @@ valid logistic step; β>0 witnesses also exist.)
 
 This closes the audit loop for the UV chain: the end-to-end conditional
 is verified AND certified non-vacuous.  Strategy/framing **Lluis
-Eriksson** (ai.viXra:2602.0088).  Continuum (M4) track; Clay distance
+Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance
 ~0% (<0.1%), unchanged.
 
 ## Addendum 57 (2026-06-13, **hRpoly campaign brick P1a — the bounded-degree
@@ -2578,7 +2578,7 @@ is satisfiable for every finite graph.  Not a restatement, not vacuous.
 size-`n` polymer into a length-`≤ 2n` walk, then `Fintype.card_le_of_injective`)
 → `RG.polymer_weight_summability`.  Source: standard self-avoiding-walk /
 lattice-animal counting (Madras–Slade); strategy/framing **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance **~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance **~0% (<0.1%),
 unchanged**.
 
 ## Addendum 58 (2026-06-13, **hRpoly P1b-ii engine — the detour splice**
@@ -2612,7 +2612,7 @@ walk is the injection `animal ↪ walk` consumed against P1a
 (P1b-iii → branch C).  Remaining in P1b: the leaf-induction assembly
 (P1b-i/ii glue) and the injection/count (P1b-iii).  Source: standard
 lattice-animal counting; strategy/framing **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance **~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance **~0% (<0.1%),
 unchanged**.
 
 ## Addendum 59 (2026-06-13, **hRpoly P1b/P1c — the lattice animal count**
@@ -2656,7 +2656,7 @@ type, and feed `animal_card_le` into `RG.polymer_weight_summability` (whose
 `hcount` wants `c_n` as a `Fintype.card`).  The hard analytic cores P3/P4
 (cluster expansion with holes; fluctuation integral) still await verbatim
 Dimock source.  Source: Madras–Slade; strategy/framing **Lluis Eriksson**
-(ai.viXra:2602.0088).  Continuum (M4) track; Clay distance **~0% (<0.1%),
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4) track; Clay distance **~0% (<0.1%),
 unchanged**.
 
 ## Addendum 60 (2026-06-13, **hRpoly branch C closed as graph combinatorics**
@@ -2695,7 +2695,7 @@ integral) still await verbatim Dimock source.  **Non-vacuity:** the
 summability bound holds on a satisfiable hypothesis set (`Δ ≥ 1`, `Δ²q < 1`,
 e.g. small `q`); the constants are explicit and finite.  Source:
 Madras–Slade (animal counting), Kotecký–Preiss (the geometric criterion);
-strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).  Continuum (M4)
+strategy/framing **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).  Continuum (M4)
 track; Clay distance **~0% (<0.1%), unchanged** — this is a lattice
 combinatorial estimate, not a continuum or OS-reconstruction result.
 
@@ -2904,7 +2904,7 @@ the analytic toolkit that bound's proof must consume.  **Non-vacuity:** the
 composition is a genuine quantitative inequality; the hypotheses are jointly
 satisfiable (any bounded-degree lattice with `d` the graph distance gives the
 summability via the animal count, e.g. `cubeAdj`).  Source: Combes–Thomas,
-Bałaban CMP 95/99; strategy/framing **Lluis Eriksson** (ai.viXra:2602.0088).
+Bałaban CMP 95/99; strategy/framing **Lluis Eriksson** ([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)).
 Continuum (M4) track; Clay distance **~0% (<0.1%), unchanged**.
 
 ## Addendum 67 (2026-06-13, **fixed-rate iterated kernel composition — the
@@ -4876,7 +4876,7 @@ Full-core and oracle verification are recorded with the commit carrying this
 addendum.
 
 This addendum records the first Lean brick extracted from the collar
-factorization idea suggested by Lluis Eriksson's `ai.vixra:2512.0064v1`
+factorization idea suggested by Lluis Eriksson's `[ARR-2025-1Q29S482V08T1VV0](https://airr.science/papers/ARR-2025-1Q29S482V08T1VV0/)`
 outlook and the follow-up audit notes.  The thermodynamic maintenance-power
 interpretation is deliberately **not** imported into `YangMillsCore`; the useful
 mathematical content is the static covariance-decay step.
@@ -4925,7 +4925,7 @@ coarse but robust two-sided dictionary
 `‖Y‖ ≤ 2‖nearLog Y‖ ∧ ‖nearLog Y‖ ≤ 2‖Y‖`.
 
 This matches the formal need behind the large-field cutoff translation
-highlighted in Lluis Eriksson's `ai.vixra:2602.0056` (Lemma 2.1 shape:
+highlighted in Lluis Eriksson's `[ARR-2026-1KD8YWD6KE8SKTHQ](https://airr.science/papers/ARR-2026-1KD8YWD6KE8SKTHQ/)` (Lemma 2.1 shape:
 Hilbert-Schmidt deviation versus principal logarithm), but in the repository it
 is proved at the existing Banach-algebra `nearLog` level and consumed only as a
 local analytic comparison.  It also reinforces the semantic correction already
@@ -24160,7 +24160,7 @@ documentary corrections) EXECUTED:
    (v1.3, bibliography with "identifier pending"); the LATEST artifact
    in this checkpoint is tag `c4-v1.0.1` = commit `cb0e8dd7`, pdf sha256
    `006DE940...` (v1.3.1, identifiers DELIVERED: C2 =
-   ai.viXra.org:2607.0033, C3 = 2607.0032; C4 own id on record =
+   [ARR-2026-6DP8SDRZ678H9AY9](https://airr.science/papers/ARR-2026-6DP8SDRZ678H9AY9/), C3 = 2607.0032; C4 own id on record =
    2607.0030).  Tags never move; from now on say "canonical c4-v1.0
    artifact" or "latest c4-v1.0.1 artifact", never "vigente" bare.
 
@@ -24312,7 +24312,7 @@ Volume-uniform Poincare, adjoint model, Wilson-Hessian
 identification, root localization, G5, `hRpoly`, mass gap, Clay:
 unchanged and open.
 
-## Addendum 482 (2026-07-13, **cross-repo recon update + the P4-CT provenance note + viXra citation map**)
+## Addendum 482 (2026-07-13, **cross-repo recon update + the P4-CT provenance note + preprint-archive citation map**)
 
 `docs/CROSS-REPO-RECON-20260713.md` records the delta over the 2026-07-11
 eighteen-repo inventory (four parallel web-recon passes, satellite theorem
@@ -25372,7 +25372,7 @@ checkpoint `12ca1a87` (sealed `64969b35`, 8410 jobs, transcript
 `ORACLE-20260714-12ca1a87.txt`, Addendum 503); this manuscript commit is
 strictly editorial (no Lean file, no oracle change).
 
-**Citations:** the lane's viXra artifacts with their catalog ids —
+**Citations:** the lane's preprint-archive artifacts with their catalog ids —
 2607.0005 (VU area law, the volume-uniform discipline antecedent),
 2607.0025 (polymer holes), 2607.0030/0032/0033 (the Amos lane),
 2607.0035 (2D exact SU(2)), 2607.0001 (Catalan), 2602.0117 (master map)
@@ -25694,7 +25694,7 @@ source module at the immutable full source commit
 `a17d78165eaf7fc9ad505e8d3ed8e544848f8518`.  The reproducibility section
 also links the repository, frozen tree, W-3c seal, corrected oracle
 transcript, and verification ledger.  The eight programme papers actually
-cited by the manuscript now link to their `ai.viXra.org` abstract pages.
+cited by the manuscript now link to their `the preprint archive` abstract pages.
 No unrelated SSH, quantum-control, parity-barrier, or surface-theorem paper
 was added merely because it exists in the author's catalogue.
 

@@ -1,6 +1,6 @@
 # Reconciliation of the historical paper with the consolidated revision
 
-Historical identity: ARR-2026-7EPM3V3DP796BBRR v1 / ai.viXra2608.0015v1,
+Historical identity: ARR-2026-7EPM3V3DP796BBRR v1 / [ARR-2026-7EPM3V3DP796BBRR](https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/),
 internal edition1.4, thirteen pages. The exact historical PDF recovered from
 its existing revision-cycle original folder matches the public canonical hash
 48b2b725422263a272d9862621fa723d3d82c9d186dd7151be39c6ff1e3ff2e7.
@@ -57,4 +57,4 @@ deposit was used.
 
 The authorized reviewer subsequently assessed the exact eight-page119ea6 PDF. Its complete report and six objections are preserved under reproducibility/flat-wall-integrated-pdf-20261030/reviews/astra-exact-pdf-024/. The earlier paragraphs describing the review as pending record the prior preparation state; they do not imply that assessment remains unperformed.
 
-The revised source77b8ec26 and PDFb37f2fe8 incorporate the author's O1-O5 corrections with a point-by-point response. The principal-results qualification now explicitly excludes a claim to reproduce old square-wave AppendixA; v1 remains preserved. The new candidate has its own rendering and assessment records and inherits no approval or score from119ea6. O6 remains the limit that the reviewer did not independently rebuild Lean or audit the full dependency/evidence closure. No published AIRR/ai.viXra version is changed by this work.
+The revised source77b8ec26 and PDFb37f2fe8 incorporate the author's O1-O5 corrections with a point-by-point response. The principal-results qualification now explicitly excludes a claim to reproduce old square-wave AppendixA; v1 remains preserved. The new candidate has its own rendering and assessment records and inherits no approval or score from119ea6. O6 remains the limit that the reviewer did not independently rebuild Lean or audit the full dependency/evidence closure. No published AIRR version is changed by this work.

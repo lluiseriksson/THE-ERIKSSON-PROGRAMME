@@ -37,7 +37,7 @@ not reconstructed.
 
 **Source.** Dimock I/II/III (arXiv:1108.1335 / 1212.5562 / 1304.0705);
 Bałaban CMP 122-II.  Strategy/framing: Lluis Eriksson
-(ai.viXra:2602.0088).
+(AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no
 axioms.

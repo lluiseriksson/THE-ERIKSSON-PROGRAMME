@@ -628,8 +628,8 @@ PREFLIGHT RECORDED (external, on v1 = 2076d9c3, pdf 9F6B713A):
 technical pass (16pp Letter, 201KB, fonts embedded, no active
 content, clean render, abstract ~327 < 400 words, IA-assistance
 declared, conditional scope clear, zero pending identifiers).  TWO
-ADJUSTMENTS EXECUTED BEFORE SUBMISSION: (1) route = ai.viXra.org
-(the ordinary viXra form directs AI-assisted work there); exact
+ADJUSTMENTS EXECUTED BEFORE SUBMISSION: (1) route = the preprint archive
+(the ordinary the preprint archive form directs AI-assisted work there); exact
 category dropdown "Physics - Mathematical Physics"; (2) ONE
 abstract sentence corrected (v1.1, strictly editorial, tex+pdf same
 commit): "probability-preserving" as a property of the MAP replaced

@@ -127,7 +127,7 @@ post-tag commits — tags never move (C2/C3/C4 pattern).
 
 ## Owner release order
 
-Companion viXra identifiers for C2 (`c2-v1.2.1`), C3 (`c3-v1.0.1`),
+Companion preprint-archive identifiers for C2 (`c2-v1.2.1`), C3 (`c3-v1.0.1`),
 C4 (`c4-v1.0`) were not yet assigned at tag time; per the C4
 Amendment-9 precedent the tagged bibliography cites "identifier
 pending at the time of this release".  The release click itself is
@@ -136,9 +136,9 @@ the owner's; this manifest only stages it.
 ## Post-tag patch c5-v1.0.1 (identifier insertion)
 
 The three companion identifiers were assigned and supplied by the
-owner on 2026-07-13: C2 = ai.viXra.org:2607.0033, C3 =
-ai.viXra.org:2607.0032, C4 = ai.viXra.org:2607.0030 (titles
-verified against the viXra listing one by one).  Paper v1.2.1 =
+owner on 2026-07-13: C2 = [ARR-2026-6DP8SDRZ678H9AY9](https://airr.science/papers/ARR-2026-6DP8SDRZ678H9AY9/), C3 =
+[ARR-2026-17K7KRR6NH9ZVAEJ](https://airr.science/papers/ARR-2026-17K7KRR6NH9ZVAEJ/), C4 = [ARR-2026-3AJ7W5BS3N9VR8KM](https://airr.science/papers/ARR-2026-3AJ7W5BS3N9VR8KM/) (titles
+verified against the preprint-archive listing one by one).  Paper v1.2.1 =
 this patch commit, tag `c5-v1.0.1` (ANNOTATED): the ONLY changes
 are the three bibliography identifier insertions; mathematics,
 theorems, and all other prose are byte-unchanged from v1.2.
@@ -146,5 +146,5 @@ Patched artifact hashes (LF blob / binary):
 tex `5DFBE961160D1B91358DC52F0CDC9C0A53E7A3F1BB2DBA6F6731F8751D236872`,
 pdf `95EED84D8C6F85B03BB92BA8F3FE29E3E7664AAFB06C4D0C9998E7F5840EC2F0`
 (10 pp).  The `c5-v1.0` rows above remain the tagged-release record;
-tags never move.  C5's OWN viXra identifier remains pending (the
+tags never move.  C5's OWN preprint-archive identifier remains pending (the
 paper is not yet submitted; owner's click).

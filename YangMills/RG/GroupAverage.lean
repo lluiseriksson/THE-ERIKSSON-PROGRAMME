@@ -18,7 +18,7 @@ Gauge Field Theories. I*, Commun. Math. Phys. **109** (1987) 249–301,
 equations (0.5)–(0.10); the explicit realisation is P. Federbush,
 *A phase cell approach to Yang–Mills theory* (ref. [35] there).
 Strategy/framing: Lluis Eriksson, *The Balaban–Dimock Structural
-Package* (ai.viXra:2602.0069).
+Package* (AIRR ARR-2026-5FCQWZC9RM9TF9DV).
 
 Axioms formalised (the purely algebraic part — no analysis needed):
 

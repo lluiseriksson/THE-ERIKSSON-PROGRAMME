@@ -40,7 +40,7 @@ that Dimock's constants are for `φ⁴₃`, not 4D Yang–Mills — remain open
 (`docs/BALABAN-SOURCE-BOUNDS.md`).
 
 **Source.**  Dimock II (arXiv:1212.5562) §3.1.2; Madras–Slade (animal
-counting); strategy/framing Lluis Eriksson (ai.viXra:2602.0088).
+counting); strategy/framing Lluis Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/

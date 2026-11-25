@@ -31,7 +31,7 @@ the §6.3 obligation, now reduced to its faithful form.
 
 **Source.** Bałaban CMP 122-II (the `R`-term polymer bound); Dimock
 I/II/III (the cluster expansion); strategy/framing Lluis Eriksson
-(ai.viXra:2602.0088).
+(AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no
 axioms.

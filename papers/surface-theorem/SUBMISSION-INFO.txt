@@ -18,7 +18,7 @@ VENUE PLAN (per the programme's publication counsel, on record)
   Journal:   Journal of Mathematical Analysis and Applications (JMAA) —
              natural home of the Amos/Segura bound literature the paper
              builds on. Submit the same PDF; cover letter below.
-  NOT viXra: this paper's readers must be able to try to break it.
+  NOT the preprint archive: this paper's readers must be able to try to break it.
 
 ARXIV FIELDS
   Primary category:  math.CA (Classical Analysis and ODEs)

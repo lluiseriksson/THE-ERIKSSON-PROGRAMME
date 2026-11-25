@@ -18,7 +18,7 @@ block-translated site `x(c) = x + L·e_μ` of the renormalization step.
 Theories*, Commun. Math. Phys. **98** (1985) eqs (1)–(5); *RG Approach
 I*, Commun. Math. Phys. **109** (1987) eqs (0.4)/(0.12) — the
 translation `x(c) = x + L·e_μ`.  Strategy: Lluis Eriksson
-(ai.viXra:2602.0088).
+(AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Pure lattice geometry; reused by the averaging operator (B3).
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no

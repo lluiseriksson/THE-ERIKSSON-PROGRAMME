@@ -86,7 +86,7 @@ spanning the hard regimes, all passing at 128 bits.
   month        = jul,
   howpublished = {Repository release \texttt{c5-v1.0},
                   \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}},
-  note         = {ai.viXra.org identifier pending at the time of
+  note         = {preprint-archive identifier pending at the time of
                   this release}
 }
 ```

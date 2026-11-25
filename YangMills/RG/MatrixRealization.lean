@@ -19,7 +19,7 @@ transports the lattice holonomy gauge law into the matrix algebra.
 
 **Source.** The matrix realization is the defining representation used
 throughout Bałaban's series (CMP 98/109); strategy/framing: Lluis
-Eriksson (ai.viXra:2602.0088).
+Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no
 axioms.

@@ -2,7 +2,7 @@
 
 Artifact reviewed: *Exact-Kernel Fourier Families Obstruct Every Penalty Factored
 Through a Block Map in a Flat Lattice Gauge Form*, internal edition 1.4,
-public ai.viXra 2608.0015v1 / AIRR ARR-2026-7EPM3V3DP796BBRR v1.
+public [ARR-2026-7EPM3V3DP796BBRR](https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/) / AIRR ARR-2026-7EPM3V3DP796BBRR v1.
 Exact PDF SHA-256:
 `48b2b725422263a272d9862621fa723d3d82c9d186dd7151be39c6ff1e3ff2e7`.
 

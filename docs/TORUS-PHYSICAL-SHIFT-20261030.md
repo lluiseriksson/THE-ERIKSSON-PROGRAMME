@@ -133,5 +133,5 @@ Construction and orchestration are by this chat's Codex assistant; the exact
 backend model identifier is not exposed in this run. Lean reproductions in
 this same workflow are mechanical checks, not independent model assessments
 or independent scientific reviews. No score, peer review, acceptance, new AIRR
-publication or repeated ai.viXra deposit is claimed. No assessment of a prior
+publication or repeated preprint-archive deposit is claimed. No assessment of a prior
 PDF is inherited. No new PDF is produced by this internal code bridge unit.

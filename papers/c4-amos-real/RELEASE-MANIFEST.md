@@ -38,20 +38,20 @@ above; the release-tree audit re-derives them.
 
 ## Owner release order (Amendment 9)
 
-The two companion viXra identifiers (C2 release `c2-v1.2.1`, C3
+The two companion preprint-archive identifiers (C2 release `c2-v1.2.1`, C3
 release `c3-v1.0.1`) were NOT yet assigned at release time.  BY
 OWNER ORDER (2026-07-12) the release proceeds with the bibliography
-citing "ai.viXra.org identifier pending at the time of this
+citing "preprint-archive identifier pending at the time of this
 release"; the identifiers will be inserted in a post-tag patch
 (`c4-v1.0.x`) when assigned.  The former [BIB-ID-SLOT] blockers are
 waived by the release authority; the waiver is registered in
 docs/C4-CHARTER.md Amendment 9.
 
 DELIVERED 2026-07-13 (post-tag patch `c4-v1.0.1` = manuscript
-v1.3.1): C2 = ai.viXra.org:2607.0033 and C3 = ai.viXra.org:2607.0032
-inserted, title-verified against the viXra listing; patched hashes
+v1.3.1): C2 = [ARR-2026-6DP8SDRZ678H9AY9](https://airr.science/papers/ARR-2026-6DP8SDRZ678H9AY9/) and C3 = [ARR-2026-17K7KRR6NH9ZVAEJ](https://airr.science/papers/ARR-2026-17K7KRR6NH9ZVAEJ/)
+inserted, title-verified against the preprint-archive listing; patched hashes
 in the CHANGELOG; also on record for citation elsewhere: C4's own
-identifier is ai.viXra.org:2607.0030.  Tag `c4-v1.0` untouched;
+identifier is [ARR-2026-3AJ7W5BS3N9VR8KM](https://airr.science/papers/ARR-2026-3AJ7W5BS3N9VR8KM/).  Tag `c4-v1.0` untouched;
 tags never move.
 
 ## Audit expedient

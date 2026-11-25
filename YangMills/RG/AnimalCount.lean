@@ -29,7 +29,7 @@ engine; the documented consumer is the animal-count brick P1b feeding
 
 **Source.**  Standard self-avoiding-walk / lattice-animal counting (e.g.
 Madras–Slade, *The Self-Avoiding Walk*); strategy/framing Lluis Eriksson
-(ai.viXra:2602.0088).
+(AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no
 axioms.

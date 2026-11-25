@@ -37,7 +37,7 @@ model P2 instantiates this against `RG.polymer_weight_summability` (which
 needs `c_n ≤ Cⁿ`).
 
 **Source.**  Standard lattice-animal / self-avoiding-walk counting
-(Madras–Slade); strategy/framing Lluis Eriksson (ai.viXra:2602.0088).
+(Madras–Slade); strategy/framing Lluis Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/

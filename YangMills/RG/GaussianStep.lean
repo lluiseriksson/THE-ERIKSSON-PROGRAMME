@@ -24,7 +24,7 @@ This is the **free fixed-point** half of S2; the interacting correction
 (the gauge fluctuation integral) is the open analytic core (G5).
 
 **Source.** Standard Gaussian calculus; the application is Bałaban's RG
-(CMP 95–96).  Strategy/framing: Lluis Eriksson (ai.viXra:2602.0088).
+(CMP 95–96).  Strategy/framing: Lluis Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no
 axioms.

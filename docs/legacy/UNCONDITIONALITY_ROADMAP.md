@@ -135,19 +135,19 @@ This axiom encodes the continuum mass gap existence result.
 It is established mathematically by papers [58]–[68] (see below)
 but has not yet been formalized in Lean 4 / Mathlib.
 ## Source papers [58]–[68]
-| Ref  | viXra ID         | Content |
+| Ref  | AIRR record | Content |
 |------|------------------|---------|
-| [58] | viXra:2602.0073  | Bałaban RG framework: fluctuation-field integration (step 1) |
-| [59] | viXra:2602.0077  | RG step 2: small/large field decomposition |
-| [60] | viXra:2602.0084  | RG step 3: effective action |
-| [61] | viXra:2602.0085  | RG step 4: integration bounds |
-| [62] | viXra:2602.0087  | RG step 5: flow equations |
-| [63] | viXra:2602.0088  | RG step 6: large-field control |
-| [64] | viXra:2602.0089  | RG step 7: renormalized coupling |
-| [65] | viXra:2602.0091  | RG step 8: convergence |
-| [66] | viXra:2602.0092  | KP activity bounds (step 9) |
-| [67] | viXra:2602.0096  | Terminal KP bound assembly (step 10) |
-| [68] | viXra:2602.0117  | Exponential clustering + mass gap assembly |
+| [58] | [ARR-2026-70T922KQ6294MT24](https://airr.science/papers/ARR-2026-70T922KQ6294MT24/)  | Bałaban RG framework: fluctuation-field integration (step 1) |
+| [59] | [ARR-2026-6RC0ZG5NW08AZ9WD](https://airr.science/papers/ARR-2026-6RC0ZG5NW08AZ9WD/)  | RG step 2: small/large field decomposition |
+| [60] | [ARR-2026-6GVNY9YDSY8V9B86](https://airr.science/papers/ARR-2026-6GVNY9YDSY8V9B86/)  | RG step 3: effective action |
+| [61] | [ARR-2026-5E8SDS6DM8826ABE](https://airr.science/papers/ARR-2026-5E8SDS6DM8826ABE/)  | RG step 4: integration bounds |
+| [62] | [ARR-2026-2BNVY391BQ9A5VM6](https://airr.science/papers/ARR-2026-2BNVY391BQ9A5VM6/)  | RG step 5: flow equations |
+| [63] | [ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/)  | RG step 6: large-field control |
+| [64] | [ARR-2026-7APPCT8GM198ERNP](https://airr.science/papers/ARR-2026-7APPCT8GM198ERNP/)  | RG step 7: renormalized coupling |
+| [65] | [ARR-2026-11MS45KY8Q8YTSN6](https://airr.science/papers/ARR-2026-11MS45KY8Q8YTSN6/)  | RG step 8: convergence |
+| [66] | [ARR-2026-2A2CRNRPDC9WCRDQ](https://airr.science/papers/ARR-2026-2A2CRNRPDC9WCRDQ/)  | KP activity bounds (step 9) |
+| [67] | [ARR-2026-6XR934XYNJ9V1B0P](https://airr.science/papers/ARR-2026-6XR934XYNJ9V1B0P/)  | Terminal KP bound assembly (step 10) |
+| [68] | [ARR-2026-07WK42E0ZR9H8AXE](https://airr.science/papers/ARR-2026-07WK42E0ZR9H8AXE/)  | Exponential clustering + mass gap assembly |
 ## 6-step proof chain
 ### Step 1–2: Bałaban RG framework + coupling control
 - **Papers**: [58]–[65]

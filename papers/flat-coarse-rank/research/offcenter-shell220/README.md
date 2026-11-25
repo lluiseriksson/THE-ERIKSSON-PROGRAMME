@@ -1,6 +1,6 @@
 # Off-center shell220 evidence
 
-A local geometric boundary result in the existing flat-coarse-rank dossier; not a separate paper, PDF or AIRR deposit.
+A local geometric boundary result in the existing flat-coarse-rank dossier; not a separate paper, PDF or AIRR/ai.viXra deposit.
 
 For every D>=3,s>=2, the annulus [0,4L]^D minus[1,2L]^D, L=s^D, has actual coefficients A=s^(2(D-1)) on a one-site-thick outer plate and H=(4L+1)^2 elsewhere. The actual mean/envelope and original normalized critical moment have fixed dimension-only bounds. A product tent gives an ACTUAL annular low mode, while a mixed-width slab/fiber-transport proof gives matching best counting Poincare order Theta_D(s^2), B_3=7350. The dimension-only centered critical-moment bound cannot extend unconditionally to these near-boundary shifted holes. Quantitative clearance may still suffice; exact centering is not proved the weakest possible geometry.
 

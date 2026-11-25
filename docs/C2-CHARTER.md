@@ -81,7 +81,7 @@ paper, and no continuum/YM significance is claimed.
   single engine; the exact factorization of the phi step); related
   work verified online (Amos 1974, Segura 2011,
   Ruiz-Antolin--Segura 2016, DLMF 10.29(i)); OWN same-lane preprints
-  cited from draft v1: ai.viXra:2607.0020 (the FH prose paper whose
+  cited from draft v1: [ARR-2026-5PXDYNR2ER89HTQG](https://airr.science/papers/ARR-2026-5PXDYNR2ER89HTQG/) (the FH prose paper whose
   machine core FHBesselAmos.lean is), 2607.0017 (weighted Turan),
   2607.0023 (von Mises bridge / surface closure map), and C1's
   2607.0001/0005 where the toolkit is referenced; quantitative

@@ -29,7 +29,7 @@ fluctuation-bound toolkit that the gauge construction consumes.
 
 **Source.**  Standard Gaussian MGF (Mathlib `mgf_gaussianReal`); the
 application is Bałaban CMP 95/109's small-field integral; strategy/framing
-Lluis Eriksson (ai.viXra:2602.0088).
+Lluis Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/

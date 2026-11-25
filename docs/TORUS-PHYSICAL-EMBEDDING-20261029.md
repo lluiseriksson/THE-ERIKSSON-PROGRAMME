@@ -107,7 +107,7 @@ assistant; the backend model identifier is not exposed in this execution.
 The Colab runs are mechanical Lean reproductions in this same workflow, not
 independent scientific reviews. No model score, peer review, acceptance, AIRR
 submission or publication is claimed. No previous PDF assessment is inherited.
-The existing AIRR/ai.viXra paper has not been deposited again.
+The existing AIRR paper has not been deposited again.
 
 ## Next falsifiable step
 

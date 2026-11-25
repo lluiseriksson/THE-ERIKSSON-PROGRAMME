@@ -359,8 +359,8 @@ Target (fully unconditional):
 ## Source papers for the remaining axiom
 
 `lsi_normalized_gibbs_from_haar` is established in:
-- Paper [44] (viXra:2602.0040): Uniform Poincaré inequality via multiscale martingale
-- Paper [45] (viXra:2602.0041): Uniform log-Sobolev inequality and mass gap
+- Paper [44] ([ARR-2026-6RKVSY9K529RTVRV](https://airr.science/papers/ARR-2026-6RKVSY9K529RTVRV/)): Uniform Poincaré inequality via multiscale martingale
+- Paper [45] ([ARR-2026-3TG8KQ8WTF9M4SP7](https://airr.science/papers/ARR-2026-3TG8KQ8WTF9M4SP7/)): Uniform log-Sobolev inequality and mass gap
 
 The mathematical content is the Holley-Stroock perturbation lemma, applied specifically
 to the **normalized** SU(N_c) Gibbs probability measure. The normalization

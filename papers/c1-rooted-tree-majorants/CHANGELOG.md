@@ -101,13 +101,13 @@ correct as scoped (they are tag-scoped to c1-v1.0.1/.2).
 
 ## v6.3 (self-citation correction - MATERIAL)
 The Catalan identity was publicly announced by the author on
-2026-07-02 as ai.viXra.org:2607.0001 (the companion repository's own
+2026-07-02 as [ARR-2026-70YEZS0RW882CVNM](https://airr.science/papers/ARR-2026-70YEZS0RW882CVNM/) (the companion repository's own
 README cites it); the related-work claim 'we are not aware of a
 published statement in exactly this form' was therefore false by the
 author's own record.  Corrected: the preprint is now cited
 ([Eriksson26]), the novelty claim is scoped to INDEPENDENT prior
 sources, and the paper states explicitly that it subsumes the
 announcement into the hole-respecting toolkit.  Found by the owner
-cross-checking his viXra author page; the fabricating desk had read
+cross-checking his preprint-archive author page; the fabricating desk had read
 that repository during reconnaissance and missed the README pointer
 - recorded as this arc's miss.

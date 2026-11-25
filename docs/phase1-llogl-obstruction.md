@@ -240,7 +240,7 @@ which macro-strategy is eventually chosen, and ~80–150 lines of Lean.
 - `HYPOTHESIS_FRONTIER.md` — user-facing hypothesis ledger
 - `PHASE8_SUMMARY.md` — stale; retained with an obsolescence header, not
   updated
-- viXra paper [45] ("Uniform Log-Sobolev Inequality and Mass Gap for Lattice
+- preprint-archive paper [45] ("Uniform Log-Sobolev Inequality and Mass Gap for Lattice
   Yang–Mills Theory") — external writeup; its claims are stronger than the
   formalization presently supports. This document is the reconciliation point.
 - Mathlib 4 `Mathlib/MeasureTheory/Function/LpSeminorm/CompareExp.lean:118` —

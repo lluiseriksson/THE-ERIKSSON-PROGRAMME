@@ -20,19 +20,19 @@ heredoc corruption; autopsy + general rule in Amendment 8).
 
 ## v1.3 (release commit, tag `c4-v1.0`)
 
-OWNER RELEASE ORDER without the companion viXra ids (Amendment 9):
+OWNER RELEASE ORDER without the companion preprint-archive ids (Amendment 9):
 the two [BIB-ID-SLOT] markers removed from the bibliography, whose
-entries now read "ai.viXra.org identifier pending at the time of
+entries now read "preprint-archive identifier pending at the time of
 this release"; ids to be inserted in a post-tag patch when
 assigned.  No mathematical or structural change.
 
 ## v1.3.1 (post-tag patch, tag `c4-v1.0.1`)
 
 The Amendment-9 promised identifier insertion, ids supplied by the
-owner 2026-07-13 and title-verified against the viXra listing:
-ErikssonC2 = ai.viXra.org:2607.0033, ErikssonC3 =
-ai.viXra.org:2607.0032.  (C4's own id, for citation elsewhere:
-ai.viXra.org:2607.0030.)  ONLY the two bibliography entries change;
+owner 2026-07-13 and title-verified against the preprint-archive listing:
+ErikssonC2 = [ARR-2026-6DP8SDRZ678H9AY9](https://airr.science/papers/ARR-2026-6DP8SDRZ678H9AY9/), ErikssonC3 =
+[ARR-2026-17K7KRR6NH9ZVAEJ](https://airr.science/papers/ARR-2026-17K7KRR6NH9ZVAEJ/).  (C4's own id, for citation elsewhere:
+[ARR-2026-3AJ7W5BS3N9VR8KM](https://airr.science/papers/ARR-2026-3AJ7W5BS3N9VR8KM/).)  ONLY the two bibliography entries change;
 mathematics and all other prose byte-unchanged from v1.3.  Patched
 hashes: tex (LF blob)
 `4D7C497CEB494FD9F34D82F83E27E78718DDD9CE7394103D1E2C378E5CA6DB76`,

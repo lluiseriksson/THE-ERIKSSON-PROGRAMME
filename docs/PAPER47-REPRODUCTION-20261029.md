@@ -2,7 +2,7 @@
 
 This dossier concerns the existing paper *Exact-Kernel Fourier Families Obstruct
 Every Penalty Factored Through a Block Map in a Flat Lattice Gauge Form*,
-[ai.viXra 2608.0015v1](https://www.ai.vixra.org/abs/2608.0015) and
+[ARR-2026-7EPM3V3DP796BBRR](https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/) and
 [AIRR ARR-2026-7EPM3V3DP796BBRR v1](https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v1/).
 Internal manuscript edition 1.4 is distinct from the public archive version v1.
 This is a reproducibility supplement to that existing record, not a new paper.
