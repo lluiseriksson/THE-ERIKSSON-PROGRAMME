@@ -36,7 +36,7 @@ The first114 allocation stayed connecting without executing; it was explicitly d
 
 Successful114 request2026-11-03T15:20:10.219Z; driver15:20:24.177287Z--15:21:43.006087Z, automatically unassigned. Resources afterwards show0active sessions and approximately0units/hour. Visible1765.76roundedunits do not prove zero cost. The interrupted allocation and all requests/releases are retained in the owner's evidence directory. PDF metadata keeps manuscript date2November2026 through a fixed SOURCE_DATE_EPOCH; actual run/review date is3November2026.
 
-This assembly performs NO new Lean execution or mathematical fixture run. Prior109 diagnostics remain4profiles,16real mutation rejections per Pythonmode and12distinctdensityexamples repeated for48evaluations. New analytic adapters remain unformalized. No terminal two-fresh-clone claim or independent novelty follows from two matching render outputs. No AIRR/ai.viXra deposit, grant, upload, receipt, acceptance or publication occurs here. Existing publicv4 and pending exact97bd author question remain unchanged.
+This assembly performs NO new Lean execution or mathematical fixture run. Prior109 diagnostics remain4profiles,16real mutation rejections per Pythonmode and12distinctdensityexamples repeated for48evaluations. New analytic adapters remain unformalized. No terminal two-fresh-clone claim or independent novelty follows from two matching render outputs. No AIRR deposit, grant, upload, receipt, acceptance or publication occurs here. Existing publicv4 and pending exact97bd author question remain unchanged.
 
 ## Next bounded action
 

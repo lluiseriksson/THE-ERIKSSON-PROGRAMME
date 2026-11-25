@@ -362,7 +362,7 @@ original checkpoint scope.
 **Submitted 2026-08-03 as a v2 replacement; moderation outcome not yet
 recorded.**  The 20-page v5.5 edition of *The Row Sums Were the Method, Not the
 Theorem: a Machine-Checked Chain from a Positive Weight to Exponential Decay
-of Correlations, and a Misattributed Uniformity Wall* was sent to viXra.  The
+of Correlations, and a Misattributed Uniformity Wall* was deposited.  The
 exact PDF is pinned at paper commit [`e68b821f7`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e68b821f7b5a766551c7e249706aaf7dc4d0eb66/papers/dobrushin-matrix/dobrushin_matrix.pdf)
 and has SHA-256
 `3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`.
