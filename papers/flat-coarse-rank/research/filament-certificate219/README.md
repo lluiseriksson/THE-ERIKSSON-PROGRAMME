@@ -1,6 +1,6 @@
 # Axial filament internal-certificate219 evidence
 
-A scoped negative result in the existing flat-coarse-rank dossier, not a new paper, PDF or AIRR/ai.viXra deposit.
+A scoped negative result in the existing flat-coarse-rank dossier, not a new paper, PDF or AIRR deposit.
 
 For every D>=3, R=s^D,n=2R+1,actual a=s^2 on all2D punctured coordinate half-axes and a=n^2 elsewhere has exact mean comparable to n^2 and original normalized critical moment M_a<2D+1. The actual full energy has a proved one-cell rectangular solution at fixed c_D=1/[64D^2(2D+1)]. The original target-order factor is bounded.
 
