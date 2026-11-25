@@ -1,7 +1,7 @@
 # Eriksson Programme — Papers Closure Tree
 
 Full map of all 17+ papers feeding `ClayYangMillsTheorem`.
-Click any paper name to see the source on viXra.
+Click any paper name to see the source on the preprint archive.
 
 ## Legend
 - 🟢 **TRUNK** — directly on the unconditional YM closure path
@@ -12,32 +12,32 @@ Click any paper name to see the source on viXra.
 
 ## 🟢 TRUNK — Unconditional closure of ClayYangMillsTheorem
 
-| Internal | viXra | Title | Key result |
+| Internal | Archive id | Title | Key result |
 |----------|-------|-------|-----------|
-| P91 | [2602.0117](https://vixra.org/abs/2602.0117) | Mechanical Audit | 29/29 PASS ≈70s Colab CPU |
-| P90 | [2602.0096](https://vixra.org/abs/2602.0096) | Master Map | Threat model, KP margin κ=8.5, δ=0.021 |
-| P89 | [2602.0091](https://vixra.org/abs/2602.0091) | Terminal KP | H1–H3 → KP bound δ<1; C_anim=512, κ>6.24 |
-| P88 | [2602.0092](https://vixra.org/abs/2602.0092) | Rotational Symmetry + Wightman | OS1 via Ward; η²·log(η⁻¹)→0 |
-| P87 | [2602.0087](https://vixra.org/abs/2602.0087) | Irrelevant Operators + Anisotropy | h_aniso; sector aniso 1D |
-| P86 | [2602.0088](https://vixra.org/abs/2602.0088) | Exponential Clustering + Mass Gap | m=min(m*,c₀); multiscale telescoping |
-| P85 | [2602.0089](https://vixra.org/abs/2602.0089) | Spectral Gap + LSI via CA | Dual paths LSI ‖ gap |
+| P91 | [ARR-2026-07WK42E0ZR9H8AXE](https://airr.science/papers/ARR-2026-07WK42E0ZR9H8AXE/) | Mechanical Audit | 29/29 PASS ≈70s Colab CPU |
+| P90 | [ARR-2026-6XR934XYNJ9V1B0P](https://airr.science/papers/ARR-2026-6XR934XYNJ9V1B0P/) | Master Map | Threat model, KP margin κ=8.5, δ=0.021 |
+| P89 | [ARR-2026-11MS45KY8Q8YTSN6](https://airr.science/papers/ARR-2026-11MS45KY8Q8YTSN6/) | Terminal KP | H1–H3 → KP bound δ<1; C_anim=512, κ>6.24 |
+| P88 | [ARR-2026-2A2CRNRPDC9WCRDQ](https://airr.science/papers/ARR-2026-2A2CRNRPDC9WCRDQ/) | Rotational Symmetry + Wightman | OS1 via Ward; η²·log(η⁻¹)→0 |
+| P87 | [ARR-2026-2BNVY391BQ9A5VM6](https://airr.science/papers/ARR-2026-2BNVY391BQ9A5VM6/) | Irrelevant Operators + Anisotropy | h_aniso; sector aniso 1D |
+| P86 | [ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/) | Exponential Clustering + Mass Gap | m=min(m*,c₀); multiscale telescoping |
+| P85 | [ARR-2026-7APPCT8GM198ERNP](https://airr.science/papers/ARR-2026-7APPCT8GM198ERNP/) | Spectral Gap + LSI via CA | Dual paths LSI ‖ gap |
 
 ---
 
 ## 🔵 BRANCH — Infrastructure feeding trunk
 
-| viXra | Title | Key result |
+| Archive id | Title | Key result |
 |-------|-------|-----------|
-| [2602.0085](https://vixra.org/abs/2602.0085) | UV Closure via Gradient Flow | Assumption A → theorem |
-| [2602.0084](https://vixra.org/abs/2602.0084) | Almost Reflection Positivity | 2-level RP, OS2 |
-| [2602.0046](https://vixra.org/abs/2602.0046) | Interface Lemmas | Gaps A/B/C → unconditional DLR-LSI |
-| [2602.0073](https://vixra.org/abs/2602.0073) | Uniform DLR-LSI | α* > 0 uniform in Λ', ω |
-| [2602.0072](https://vixra.org/abs/2602.0072) | B6 Influence Bounds | σ(V^irr) ≤ C; scale cancel. d=4 |
-| [2602.0070](https://vixra.org/abs/2602.0070) | Doob Influence (E26XI) | Replaces Efron-Stein (invalid for non-product) |
-| [2602.0069](https://vixra.org/abs/2602.0069) | Bałaban–Dimock Package | (A1)(A2)(B5) from CMP 95–122 |
-| [2602.0053](https://vixra.org/abs/2602.0053) | DLR-Uniform LSI + Mass Gap | Closes G1–G4; α* no circularity |
-| [2602.0063](https://vixra.org/abs/2602.0063) | Two-Layer Continuum Limit | Conditional Ass.RG-Cauchy; RP from lattice |
-| [2602.0074](https://vixra.org/abs/2602.0074) | UV Stability Conditional | Doob vs Efron-Stein distinction |
+| [ARR-2026-5E8SDS6DM8826ABE](https://airr.science/papers/ARR-2026-5E8SDS6DM8826ABE/) | UV Closure via Gradient Flow | Assumption A → theorem |
+| [ARR-2026-6GVNY9YDSY8V9B86](https://airr.science/papers/ARR-2026-6GVNY9YDSY8V9B86/) | Almost Reflection Positivity | 2-level RP, OS2 |
+| [ARR-2026-7709A2RGAP84Y9YZ](https://airr.science/papers/ARR-2026-7709A2RGAP84Y9YZ/) | Interface Lemmas | Gaps A/B/C → unconditional DLR-LSI |
+| [ARR-2026-70T922KQ6294MT24](https://airr.science/papers/ARR-2026-70T922KQ6294MT24/) | Uniform DLR-LSI | α* > 0 uniform in Λ', ω |
+| [ARR-2026-6TNWJANDFS91097E](https://airr.science/papers/ARR-2026-6TNWJANDFS91097E/) | B6 Influence Bounds | σ(V^irr) ≤ C; scale cancel. d=4 |
+| [ARR-2026-15XPZCFB4T847870](https://airr.science/papers/ARR-2026-15XPZCFB4T847870/) | Doob Influence (E26XI) | Replaces Efron-Stein (invalid for non-product) |
+| [ARR-2026-5FCQWZC9RM9TF9DV](https://airr.science/papers/ARR-2026-5FCQWZC9RM9TF9DV/) | Bałaban–Dimock Package | (A1)(A2)(B5) from CMP 95–122 |
+| [ARR-2026-0S1R9TEN1580VT82](https://airr.science/papers/ARR-2026-0S1R9TEN1580VT82/) | DLR-Uniform LSI + Mass Gap | Closes G1–G4; α* no circularity |
+| [ARR-2026-1P88SB34HC8V492J](https://airr.science/papers/ARR-2026-1P88SB34HC8V492J/) | Two-Layer Continuum Limit | Conditional Ass.RG-Cauchy; RP from lattice |
+| 2602.0074 | UV Stability Conditional | Doob vs Efron-Stein distinction |
 | E26VI | Uniform LSI → Mass Gap | DLR-LSI → DS Mixing → RP → Δ_phys > 0 |
 | E26V | Unconditional Uniform LSI | Hyp 3.2 polymer deriv. bounds (q=1) |
 | E26IV | Large-Field Suppression | Hyp 4.2: Z_k⊂L_k → T-op esssup |

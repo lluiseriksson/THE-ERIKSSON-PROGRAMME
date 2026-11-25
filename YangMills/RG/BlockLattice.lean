@@ -22,7 +22,7 @@ division by `L`, mapping `(ℤ/(L·N'))^d → (ℤ/N')^d`.
 
 **Strategy / framing.** Lluis Eriksson, *Exponential Clustering and
 Mass Gap for 4D SU(N) Lattice Yang–Mills via Balaban's Renormalization
-Group and Multiscale Correlator Decoupling* (ai.viXra:2602.0088).
+Group and Multiscale Correlator Decoupling* (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 This brick is pure lattice geometry — no gauge field, no measure — and
 is reused by every later brick (coarse edges/plaquettes, the averaging

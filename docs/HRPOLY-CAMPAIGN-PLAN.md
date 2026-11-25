@@ -503,7 +503,7 @@ entropy estimate and the final activity bound (642) open.
 ### P4 route refinement: collar factorization from covariance decay
 
 Lluis Eriksson's outlook paper
-`The Heisenberg Cut as a Resource Boundary` (`ai.vixra:2512.0064v1`) should not
+`The Heisenberg Cut as a Resource Boundary` (`[ARR-2025-1Q29S482V08T1VV0](https://airr.science/papers/ARR-2025-1Q29S482V08T1VV0/)`) should not
 be imported literally into `YangMillsCore`: its thermodynamic power,
 battery-assisted operations, Heisenberg-cut interpretation, and Type-III
 maintenance discussion are a different physical programme.  The useful

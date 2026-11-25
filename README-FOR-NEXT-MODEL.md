@@ -47,7 +47,7 @@ unitary bridge Addendum 466, while the latest measured source checkpoint is
 `a17d7816` (on `main`).
 
 Publication-only update (2026-08-03): the 20-page Dobrushin matrix manuscript
-v5.5 was submitted to viXra as its v2 replacement.  The exact paper commit,
+v5.5 was submitted to the preprint archive as its v2 replacement.  The exact paper commit,
 PDF hash, fresh-clone 8,475-job/2,980-report evidence, and the fact that this
 lane remains outside `main` are recorded in
 [`docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md).

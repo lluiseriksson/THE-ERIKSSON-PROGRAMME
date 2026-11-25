@@ -42,7 +42,7 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
+**Latest preprint-archive submission (2026-08-03; v2 replacement submitted).**  The
 20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
 sent as the v2 replacement.  Its exact PDF is pinned at paper commit
 `e68b821f7`, has SHA-256

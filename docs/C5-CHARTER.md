@@ -2,7 +2,7 @@
 
 Registered 2026-07-12, BEFORE the page.  Owner decision (evaluator
 verdict on record): publish C4 clean (release blocked solely on the
-two viXra ids), and open C5 as a clearly separate arc whose GOAL is
+two preprint-archive ids), and open C5 as a clearly separate arc whose GOAL is
 new mathematical content, not more formal hygiene — "the next
 increment is turning the machinery into a factory of new theorems."
 All C1-C4 lessons bind, PLUS the new rules: registering amendments
@@ -567,7 +567,7 @@ runs 1–2 failed on registered environment defects, diagnoses in
 their own commits; run 3 in flight from the short-path frozen
 clone) followed by the release commit + annotated tag c5-v1.0.
 (2) and (3) are post-release by nature (referee + specialist); they
-join the viXra-id item in the post-tag queue and CANNOT be closed
+join the preprint-archive-id item in the post-tag queue and CANNOT be closed
 from this desk — no self-arbitration.  Scope/impact 3.90 is
 accepted as-is: the honest-scope sections already state the narrow
 reach; no wording change is warranted or permitted (no importance

@@ -24,7 +24,7 @@ recorded, committed logs before the first page. Readable setting,
 six exact statements, proof architecture (the 1/U − U = 2a/b engine
 and the phi factorization in full), certified section, non-vacuity,
 site-by-site closure table, related work (all classical refs
-verified online; own same-lane preprints ai.viXra 2607.0020/0017/0023
+verified online; own same-lane preprints [ARR-2026-5PXDYNR2ER89HTQG](https://airr.science/papers/ARR-2026-5PXDYNR2ER89HTQG/)/0017/0023
 cited from v1), reproducibility with theorem-to-artifact map
 including the classical-cited row.
 

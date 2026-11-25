@@ -26,7 +26,7 @@ S2) — it is a property of the rescaled covariance, not of this single
 estimate.  S1 is the certified Cauchy–Schwarz input to that analysis.
 
 **Source.** T. Bałaban, CMP 95 (1984); strategy/framing Lluis Eriksson
-(ai.viXra:2602.0088).
+(AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no
 axioms.

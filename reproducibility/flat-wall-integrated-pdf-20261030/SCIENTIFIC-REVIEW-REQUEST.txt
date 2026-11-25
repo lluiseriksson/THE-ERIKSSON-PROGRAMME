@@ -1,5 +1,5 @@
 Review the attached exact eight-page PDF as a local candidate scientific preassessment.
-Target historical dossier: ARR-2026-7EPM3V3DP796BBRR / ai.viXra2608.0015.
+Target historical dossier: ARR-2026-7EPM3V3DP796BBRR.
 This local candidate has no private SUB receipt and no editorial acceptance.
 Exact PDF SHA256:119ea6ae2f0434598aab39d0f1ba338fec8fd8a27ca67faef2474f7d58561eed.
 Source commit:d803cd3b920a7547420352ed28abc204593d1685.

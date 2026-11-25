@@ -24,7 +24,7 @@ estimates are the subsequent bricks of this layer.
 
 **Source.** Standard analytic construction; the application is
 T. Bałaban, CMP 109 (1987) (0.8),(0.12).  Strategy/framing: Lluis
-Eriksson (ai.viXra:2602.0088).
+Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no
 axioms.

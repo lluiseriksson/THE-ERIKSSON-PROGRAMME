@@ -1,8 +1,8 @@
-# Dobrushin matrix paper — viXra v2 submission record
+# Dobrushin matrix paper — preprint-archive v2 submission record
 
 Date recorded: **2026-08-03**
 
-Operation: **v2 replacement submitted to viXra**
+Operation: **v2 replacement submitted to the preprint archive**
 
 Moderation/publication outcome: **not recorded here**
 
@@ -12,7 +12,7 @@ Title: *The Row Sums Were the Method, Not the Theorem: a Machine-Checked
 Chain from a Positive Weight to Exponential Decay of Correlations, and a
 Misattributed Uniformity Wall*
 
-- Edition: v5.5 manuscript, used as the viXra v2 replacement
+- Edition: v5.5 manuscript, used as the preprint-archive v2 replacement
 - Length: 20 pages
 - Paper commit: [`e68b821f7b5a766551c7e249706aaf7dc4d0eb66`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/e68b821f7b5a766551c7e249706aaf7dc4d0eb66)
 - Verified source anchor: [`8e8375d3415575e997765e61515e1a8af283df97`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/8e8375d3415575e997765e61515e1a8af283df97)
@@ -52,7 +52,7 @@ must not replace the canonical `main` checkpoint until the exact source history
 is integrated and independently checked under the repository's merge rules.
 
 The earlier 11-page `dobrushin_matrix3.pdf` at `c3d8e32d` is a superseded
-ancestor of this manuscript. It must not be used as the viXra v2 replacement.
+ancestor of this manuscript. It must not be used as the preprint-archive v2 replacement.
 The v5.5 paper absorbs that earlier three-theorem version and closes the
 formerly open Dobrushin comparison step; it does not prove a continuum limit,
 a Yang–Mills mass gap, or a volume-family theorem beyond the hypotheses and

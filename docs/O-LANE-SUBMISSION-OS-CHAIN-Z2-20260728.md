@@ -1,6 +1,6 @@
 # O-lane paper 3 submission record (2026-07-28)
 
-**State:** submitted, as reported by the owner; public viXra identifier
+**State:** submitted, as reported by the owner; public preprint-archive identifier
 pending.
 
 **Frozen version:** v1.3, 9 pages.

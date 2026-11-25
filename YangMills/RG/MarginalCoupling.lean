@@ -46,7 +46,7 @@ carried analytic input; see `BALABAN-SOURCE-BOUNDS.md`).
 
 **Source.**  Bałaban CMP 109 (the recursive coupling renormalization / β-
 functions, marginal in 4D); the p-series comparison is elementary; asymptotic
-freedom of pure SU(N).  Strategy/framing Lluis Eriksson (ai.viXra:2602.0088).
+freedom of pure SU(N).  Strategy/framing Lluis Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/

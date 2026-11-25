@@ -125,7 +125,7 @@ Label conventions used in this file:
 
 - **Stack:** Lean 4 (lean-patch overlay onto the mother repo at pinned base
   commit; 11 files, ~2.5k LOC) + Python integer cross-checks + TeX paper
-  (ai.viXra 2607.0001).
+  ([ARR-2026-70YEZS0RW882CVNM](https://airr.science/papers/ARR-2026-70YEZS0RW882CVNM/)).
 - **Strongest artifact:** the exact identity, proved unconditionally
   [oracle-logged: closure PR #5, replay commit `1eff8fc6`, CI run
   28610948452; `#print axioms` in-file]:
@@ -146,7 +146,7 @@ Label conventions used in this file:
   MOTHER repo still exposes the proposition as an explicit hypothesis
   (instantiation into the mother core not yet merged there).
 - **Mismatch flag:** none found — README status table distinguishes
-  recovery vs. theorem-completeness cleanly. Venue is ai.viXra, not arXiv.
+  recovery vs. theorem-completeness cleanly. Venue is the preprint archive, not arXiv.
 - **Shared machinery:** Catalan/plane trees (#6), spanning-tree
   combinatorics (#3), Appendix-F H# bounds (mother).
 
@@ -172,7 +172,7 @@ Label conventions used in this file:
 ### 6. mathlib-plane-tree-catalan
 
 - **Stack:** Lean 4, single Mathlib-styled file (222 lines) + prepared PR
-  apparatus + paper (same ai.viXra preprint as #4).
+  apparatus + paper (same preprint as #4).
 - **Strongest artifact:** `Mathlib/Combinatorics/Enumerative/PlaneTree.lean`
   [oracle-logged: committed `verification/pr1-compile-oracle.log`, exit 0,
   axioms exactly `[propext, Classical.choice, Quot.sound]` on the three
@@ -447,7 +447,7 @@ Label conventions used in this file:
 
 ### 18. aqft-split-inclusion-series
 
-- **Stack:** TeX (5 papers, v2, ai.viXra 2512 series) + Python verification
+- **Stack:** TeX (5 papers, v2, the preprint archive 2512 series) + Python verification
   suites (13 scripts, 9 committed logs) + CSV/NPY results. No Lean.
 - **Strongest artifact:** the verification discipline itself: every v2
   correction is driven or confirmed by an exact numerical check with

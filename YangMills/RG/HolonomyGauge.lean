@@ -17,7 +17,7 @@ the foundation of B4 (gauge covariance) — using only the existing core
 
 **Source.** The contour/holonomy gauge law is standard; it is the law
 underlying T. Bałaban, CMP 98 (1985) eq (11) and CMP 109 (1987) §0.
-Strategy/framing: Lluis Eriksson (ai.viXra:2602.0088).
+Strategy/framing: Lluis Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no
 axioms.

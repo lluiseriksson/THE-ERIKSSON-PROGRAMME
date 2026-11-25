@@ -55,7 +55,7 @@ Amendment 2).  All sustained findings applied:
   Amendment 1 named).
 - Hostile-editor 6: "provably strictly" -> "with certified strict
   interval enclosures" (tricotomy-consistent).
-- Hostile-editor 7: full subtitles restored for viXra 2607.0023 and
+- Hostile-editor 7: full subtitles restored for [ARR-2026-1FPFA1TSMY9M3T9S](https://airr.science/papers/ARR-2026-1FPFA1TSMY9M3T9S/) and
   2607.0017 (match the archive listing and the C2 bibliography).
 - Hostile-editor 8: "top-level namespace" -> "largest namespace".
 - Hostile-editor 9: "consumer" glossed at first use.

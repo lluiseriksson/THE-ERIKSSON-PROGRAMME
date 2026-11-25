@@ -66,8 +66,8 @@ Method exposition: J. Dimock, *RG according to Balaban* I–III (φ⁴).
 **Strategy / framing / §6.3 target:** Lluis Eriksson, *Exponential
 Clustering and Mass Gap for 4D SU(N) Lattice Yang–Mills via Balaban's
 Renormalization Group and Multiscale Correlator Decoupling*
-(ai.viXra:2602.0088 [63]); *The Balaban–Dimock Structural Package*
-(ai.viXra:2602.0069 [55]).
+([ARR-2026-4P13YY8RKA84FRBQ](https://airr.science/papers/ARR-2026-4P13YY8RKA84FRBQ/) [63]); *The Balaban–Dimock Structural Package*
+([ARR-2026-5FCQWZC9RM9TF9DV](https://airr.science/papers/ARR-2026-5FCQWZC9RM9TF9DV/) [55]).
 
 ## Lattice-core facts used
 
@@ -151,7 +151,7 @@ violates 0.7–0.8), so NOT vacuous; (ii) define `Ū` from it via (0.12);
 (iii) Federbush inhabitation (0.10) and the analytic linearisation (0.8)
 are the genuinely hard pieces, carried as interface obligations
 (hypotheses, never axioms) until proved.  Strategy/framing: **Lluis
-Eriksson** (ai.viXra:2602.0069, 2602.0088).
+Eriksson** ([ARR-2026-5FCQWZC9RM9TF9DV](https://airr.science/papers/ARR-2026-5FCQWZC9RM9TF9DV/), 2602.0088).
 
 ## Missing source (precise request)
 

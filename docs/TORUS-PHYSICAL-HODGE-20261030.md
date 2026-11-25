@@ -115,7 +115,7 @@ Construction and orchestration are by this chat's Codex assistant. The exact
 backend identifier is not exposed in this run. Same-workflow Colab Lean checks
 are mechanical reproductions, not independent scientific reviews, peer review,
 model scores, acceptance or publication. No previous PDF assessment is
-inherited. This internal code note creates no new AIRR/ai.viXra deposit or PDF.
+inherited. This internal code note creates no new AIRR deposit or PDF.
 
 ## Next question and abandonment criterion
 

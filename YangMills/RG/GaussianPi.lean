@@ -46,7 +46,7 @@ non-abstract `IsGaussian` measures to consume.
 **Source.**  Mathlib's `ProbabilityTheory.iIndepFun.hasGaussianLaw` (independent
 Gaussians are jointly Gaussian), `iIndepFun_pi`, `Measure.pi_map_eval`,
 `isGaussian_map_of_measurable`; the application is Bałaban CMP 95/109's small-field
-integral; strategy/framing Lluis Eriksson (ai.viXra:2602.0088).
+integral; strategy/framing Lluis Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/

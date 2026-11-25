@@ -532,7 +532,7 @@ footer {
   if (meta.latest_submission) {
     const submission = meta.latest_submission;
     $("submission").innerHTML = `
-      <strong>Latest viXra submission.</strong>
+      <strong>Latest preprint-archive submission.</strong>
       ${escapeHtml(submission.status)} (${escapeHtml(submission.date)}):
       <a href="${submission.pdf}" rel="noreferrer">${escapeHtml(submission.title)}</a>.
       PDF SHA-256 <code>${escapeHtml(submission.pdf_sha256)}</code>.

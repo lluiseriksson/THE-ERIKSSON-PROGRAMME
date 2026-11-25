@@ -8,7 +8,7 @@ frontier. The canonical proof-state contract in `project-state.json` is unchange
 
 The published manuscript *Exact-Kernel Fourier Families Obstruct Every Penalty
 Factored Through a Block Map in a Flat Lattice Gauge Form* is already archived as
-[ai.viXra 2608.0015v1](https://www.ai.vixra.org/abs/2608.0015) and
+[ARR-2026-7EPM3V3DP796BBRR](https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/) and
 [AIRR ARR-2026-7EPM3V3DP796BBRR v1](https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v1/).
 Its internal manuscript edition is 1.4; that is distinct from the archive's v1.
 It supersedes the proposed scalar-rescaling escape for the **same unrestricted

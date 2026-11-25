@@ -27,7 +27,7 @@ bound (carried `hRpoly`); it is the boundedness toolkit that bound's proof
 consumes, alongside the decay/resolvent calculus.
 
 **Source.**  The Schur test (elementary); Bałaban CMP 95–96 (the covariance
-bounds it abstracts); strategy/framing Lluis Eriksson (ai.viXra:2602.0088).
+bounds it abstracts); strategy/framing Lluis Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/

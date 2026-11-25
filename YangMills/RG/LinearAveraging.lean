@@ -25,8 +25,8 @@ of the non-abelian averaging operator of CMP 98 eqs (14)–(15)
 (`log Ū(e^{iA}) = QA + O(‖A‖²)`).
 
 **Strategy / framing.** Lluis Eriksson, *The Balaban–Dimock Structural
-Package* (ai.viXra:2602.0069); *Exponential Clustering and Mass Gap …
-via Balaban's Renormalization Group* (ai.viXra:2602.0088).
+Package* (AIRR ARR-2026-5FCQWZC9RM9TF9DV); *Exponential Clustering and Mass Gap …
+via Balaban's Renormalization Group* (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 `Q` acts on additive bond fields valued in any real vector space `V`
 (the Lie algebra in the gauge application).  This brick: the definition

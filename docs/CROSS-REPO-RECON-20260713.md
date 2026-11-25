@@ -6,7 +6,7 @@ pages + raw READMEs + spot-fetched source files), cross-checked against the
 LOCAL mother clone by grepping for satellite theorem names.  The 2026-07-11
 recon (`docs/REPO-RECON-2026-07-11.md`) remains the per-repo inventory of
 record; THIS file records only what CHANGED, what its five bridges' status
-is now, the viXra-catalog citation map, and the alignment with the frontier
+is now, the preprint-archive-catalog citation map, and the alignment with the frontier
 as it stands after Addenda 469-480 (P4-CT complete, C6 charter registered).
 Honesty rule of the house applies throughout: importance is not inherited
 by thematic proximity; only a proved reduction transfers it.
@@ -109,7 +109,7 @@ inspected heads — auditable claim, not a totality claim)
   `YangMills.KP.ActivityDomain` (the "first upstreamed satellite
   consumer", CURRENT-STATE) covers it.
 
-## 4. viXra catalog -> citation map for the live lanes
+## 4. preprint-archive catalog -> citation map for the live lanes
 
 Standing rule: these are SAME-AUTHOR PRIOR-ART citations ("conditional,
 paper-level" unless stated); none is a proof source without the

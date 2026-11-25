@@ -45,7 +45,7 @@ Clay distance ~0% (<0.1%), unchanged.
 
 **Source.**  Bałaban CMP 109 (marginal coupling renormalization); the
 summation/assembly is `Paper/ClusteringToGap.lean`; strategy/framing Lluis
-Eriksson (ai.viXra:2602.0088).
+Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/

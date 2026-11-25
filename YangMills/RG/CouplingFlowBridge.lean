@@ -27,7 +27,7 @@ stays honest about what remains open.
 
 **Source.** Bałaban CMP 122-II Thm 1 / [III] §2; the bridge is the
 elementary `rpow` transfer.  Strategy/framing: Lluis Eriksson
-(ai.viXra:2602.0088).
+(AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no
 axioms.

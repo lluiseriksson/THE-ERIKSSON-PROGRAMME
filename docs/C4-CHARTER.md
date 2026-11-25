@@ -1,7 +1,7 @@
 # C4 CHARTER — "The Amos bound at real order: Gamma-series Bessel functions and the identification theorem"
 
 Registered 2026-07-12, BEFORE the page.  Owner order (same date,
-after C2+C3 published on viXra): open C4 = real-order extension,
+after C2+C3 published on the preprint archive): open C4 = real-order extension,
 the recommended candidate.  Part I remains temporarily postponed by
 owner decision; C5 (two-sided/lower bound) is the registered
 runner-up, explicitly deferred because any lower bound matches the
@@ -13,7 +13,7 @@ hashes, tag-after-rebase with ANNOTATED tags ONLY (git tag -a; the
 lightweight/--follow-tags trap is twice-burned), commit ids from
 POST-PUSH git log only (the orphan-twin ghost is twice-burned),
 explicit staging (never add -A), same-lane self-citations from v1
-(request the NEW viXra ids of C2/C3 from the owner at paper phase),
+(request the NEW preprint-archive ids of C2/C3 from the owner at paper phase),
 no hand-assembled predictions, audit enclosure methods not just
 verdicts, tricotomy everywhere.
 
@@ -419,8 +419,7 @@ THREE-DESK ROUND (workflow, independent sessions):
   all replaced) + 6 LOW applied ("real in its order parameter",
   "the bound and its consumers" quantifier fix, "verified" defined
   in the status paragraph, radius, grammar nits, display colon).
-  FH26 bibliography title COLLATED against the live ai.viXra
-  2607.0020 listing this session: the listing title matches our
+  FH26 bibliography title COLLATED against the live [ARR-2026-5PXDYNR2ER89HTQG](https://airr.science/papers/ARR-2026-5PXDYNR2ER89HTQG/) listing this session: the listing title matches our
   entry (the listing, not any local manuscript file, is
   authoritative).
 - CHECKLIST: PASS - oracle re-run 74/74 byte-identical; grid
@@ -440,7 +439,7 @@ THREE-DESK ROUND (workflow, independent sessions):
 
 v1.1 residue declared: one underfull hbox badness 1715 (sloppy
 paragraph, sub-threshold; the C3 sub-3pt precedent).  RELEASE
-BLOCKERS unchanged: the two [BIB-ID-SLOT] viXra ids; then manifest
+BLOCKERS unchanged: the two [BIB-ID-SLOT] preprint-archive ids; then manifest
 + ANNOTATED tag c4-v1.0 + release-tree formal+repro + external-tool
 desk.
 
@@ -461,13 +460,13 @@ tool's exact-match replacement.  The two [BIB-ID-SLOT]s remain the
 only release blockers.
 
 ## AMENDMENT 9 (2026-07-12, RELEASE BY OWNER ORDER without the
-companion viXra ids)
+companion preprint-archive ids)
 
 The owner (release authority, non-delegable) ordered submission of
-C4 to viXra WITHOUT waiting for the C2/C3 identifiers.  The two
+C4 to the preprint archive WITHOUT waiting for the C2/C3 identifiers.  The two
 [BIB-ID-SLOT] release blockers are WAIVED by that order: manuscript
 v1.3 removes the slot markers and cites both companions as
-"ai.viXra.org identifier pending at the time of this release";
+"preprint-archive identifier pending at the time of this release";
 the identifiers will be inserted in a post-tag patch (c4-v1.0.x)
 when assigned — tags never move.  Release sequence executed per the
 C2/C3 pattern: manifest + changelog committed WITH the manuscript,

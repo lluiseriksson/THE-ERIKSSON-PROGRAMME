@@ -26,7 +26,7 @@ holonomy law `wilsonLine_gaugeAct_path` composed with
 `GroupAverage.biequiv`.
 
 **Source.** T. Bałaban, CMP 109 (1987) (0.6), (0.11); CMP 98 (1985)
-(11).  Strategy/framing: Lluis Eriksson (ai.viXra:2602.0088).
+(11).  Strategy/framing: Lluis Eriksson (AIRR ARR-2026-4P13YY8RKA84FRBQ).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no
 axioms.
