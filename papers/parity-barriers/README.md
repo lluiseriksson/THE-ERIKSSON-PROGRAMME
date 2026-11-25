@@ -1,4 +1,4 @@
-# Parity Barriers for Decoupling Inequalities (v4 - FINAL, submitted to viXra)
+# Parity Barriers for Decoupling Inequalities (v4 - FINAL)
 
 Why no comparison functional of bounded marginal order can CERTIFY uniform decoupling.
 
