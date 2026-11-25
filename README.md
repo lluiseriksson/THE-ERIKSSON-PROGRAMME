@@ -421,3 +421,58 @@ rounding noise.
 ## License
 
 GNU Affero General Public License v3.0 — see [`LICENSE`](LICENSE). © 2026 Lluis Eriksson.
+
+<!-- papers-index:start -->
+## Papers
+
+This repository accompanies the following papers by Lluis Eriksson.
+AIRR status is the archive's own label for the record; it is not peer review.
+
+| Title | AIRR | ai.viXra | AIRR status |
+|---|---|---|---|
+| A Machine-Checked Volume-Uniform Wilson-Loop Area Law via a Formalized Cluster Expansion | [ARR-2026-2ZQ6F57N2H8MG91V](https://airr.science/papers/ARR-2026-2ZQ6F57N2H8MG91V/) | [2607.0005](https://www.ai.vixra.org/abs/2607.0005) | archived |
+| Recurrence-Amos Proof of the Unit-Step Order-Monotonicity of (log I_nu)', with a Feynman-Hellmann Application to Two-Dimensional Lattice Gauge Theory | [ARR-2026-5PXDYNR2ER89HTQG](https://airr.science/papers/ARR-2026-5PXDYNR2ER89HTQG/) | [2607.0020](https://www.ai.vixra.org/abs/2607.0020) | archived |
+| Machine-Checked Rooted-Tree Majorants for Polymer Expansions with Holes | [ARR-2026-505NQZHR7P9TQ8SA](https://airr.science/papers/ARR-2026-505NQZHR7P9TQ8SA/) | [2607.0025](https://www.ai.vixra.org/abs/2607.0025) | archived |
+| One Amos Bound, Three Consumer Sites: Machine-Checked Bessel-Ratio Calculus for Lattice Gauge Expansions | [ARR-2026-6DP8SDRZ678H9AY9](https://airr.science/papers/ARR-2026-6DP8SDRZ678H9AY9/) | [2607.0033](https://www.ai.vixra.org/abs/2607.0033) | archived |
+| A Machine-Checked Proof of the Amos Bound for Modified Bessel Function Ratios | [ARR-2026-17K7KRR6NH9ZVAEJ](https://airr.science/papers/ARR-2026-17K7KRR6NH9ZVAEJ/) | [2607.0032](https://www.ai.vixra.org/abs/2607.0032) | archived |
+| A Machine-Checked Proof of an Amos-Type Bound for Modified Bessel Ratios at Real Order | [ARR-2026-3AJ7W5BS3N9VR8KM](https://airr.science/papers/ARR-2026-3AJ7W5BS3N9VR8KM/) | [2607.0030](https://www.ai.vixra.org/abs/2607.0030) | archived |
+| The Diagonal Amos-Type Family at Real Order: a Machine-Checked Quantitative Crossing Classification | [ARR-2026-39Y0F83F4Z9JK90G](https://airr.science/papers/ARR-2026-39Y0F83F4Z9JK90G/) | [2607.0037](https://www.ai.vixra.org/abs/2607.0037) | archived |
+| A Mechanized, Non-Circular Renormalization-Group Interface for Wilson Lattice Gauge Correlators | [ARR-2026-0WG9YDY5BA9S3RF4](https://airr.science/papers/ARR-2026-0WG9YDY5BA9S3RF4/) | [2607.0043](https://www.ai.vixra.org/abs/2607.0043) | archived |
+| A Weighted Turan Unit-Step Inequality for Modified Bessel Functions and Its Determinant Corollary | [ARR-2026-72G1SSCNNG8YDVC2](https://airr.science/papers/ARR-2026-72G1SSCNNG8YDVC2/) | [2607.0017](https://www.ai.vixra.org/abs/2607.0017) | archived |
+| Ratio Monotonicity for a Killed von Mises Bridge: Exact Bridge Structure, Certified Negative Results, a Single-Bessel Reduction, and a Two-Scale Closure Map for a Surface Expansion in Two-Dimensional Lattice Gauge Theory | [ARR-2026-1FPFA1TSMY9M3T9S](https://airr.science/papers/ARR-2026-1FPFA1TSMY9M3T9S/) | [2607.0023](https://www.ai.vixra.org/abs/2607.0023) | archived |
+| Global Ratio Monotonicity for a Killed von Mises Bridge | [ARR-2026-3CEWH763KG84B8TM](https://airr.science/papers/ARR-2026-3CEWH763KG84B8TM/) | [2607.0089](https://www.ai.vixra.org/abs/2607.0089) | archived |
+| A Wronskian Identity for Antisymmetrized Sine Sums: unconditional denominator positivity via circular convolution, sharp monotonicity distinctions, and counterexamples to naive sine-series principles | [ARR-2026-5FKM2GGK348CPTE9](https://airr.science/papers/ARR-2026-5FKM2GGK348CPTE9/) | — | working_paper |
+| Congruence Rigidity and the Fusion Bound: What a Positive Weight Can and Cannot do to the Spectrum of a Transfer Kernel | [ARR-2026-7S1XA3PZEB9QM8FQ](https://airr.science/papers/ARR-2026-7S1XA3PZEB9QM8FQ/) | [2608.0008](https://www.ai.vixra.org/abs/2608.0008) | archived |
+| Strictly Positive Parity Laws and the Limits of Marginal Certificates: Exact Heat-Bath Spectrum and Optimal Variance Tensorization | [ARR-2026-5HRC3PS9HZ9WDAA5](https://airr.science/papers/ARR-2026-5HRC3PS9HZ9WDAA5/) | [2607.0018](https://www.ai.vixra.org/abs/2607.0018) | archived |
+| Strictly Positive Parity Laws and the Limits of Marginal Certificates: Exact Heat-Bath Spectrum and Optimal Variance Tensorization | [ARR-2026-5HRC3PS9HZ9WDAA5](https://airr.science/papers/ARR-2026-5HRC3PS9HZ9WDAA5/) | — | archived |
+| Product Marginals and Density-Moment Thresholds for Ising Transfer Kernels | [ARR-2026-7KV9Y9ASX48H7A7N](https://airr.science/papers/ARR-2026-7KV9Y9ASX48H7A7N/) | — | working_paper |
+| Stationary marginals and bottleneck restrictions for Boolean Doob kernels | [ARR-2026-1AS15VP0199VZ847](https://airr.science/papers/ARR-2026-1AS15VP0199VZ847/) | — | working_paper |
+| Moment transfer and spectral bounds for Boolean Doob kernels | [ARR-2026-4T35VQ6MZB8F99F4](https://airr.science/papers/ARR-2026-4T35VQ6MZB8F99F4/) | — | working_paper |
+| Rectangular observations for finite matrix gradients: observation classes and critical endpoints | [ARR-2026-7EPM3V3DP796BBRR](https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/) | — | archived |
+| Canonical and unrestricted observations in a finite checkerboard gradient model | [ARR-2026-597T88D7WZ98HR0Z](https://airr.science/papers/ARR-2026-597T88D7WZ98HR0Z/) | — | working_paper |
+| Coverage and coexactness in checkerboard slice observations | [ARR-2026-451FW8N5MC8KYV5S](https://airr.science/papers/ARR-2026-451FW8N5MC8KYV5S/) | — | working_paper |
+| Canonical rectangle observations for matrix gradients: fixed weak spaces and checkerboard counterexamples | [ARR-2026-5XANPRA7E891Q9FZ](https://airr.science/papers/ARR-2026-5XANPRA7E891Q9FZ/) | — | working_paper |
+| What does a materials prediction target cost? Distinct labels and error certificates on a common test population | [ARR-2026-2FDKAKD7CC9G4BNQ](https://airr.science/papers/ARR-2026-2FDKAKD7CC9G4BNQ/) | — | working_paper |
+| Weight sensitivity of leadership in the CAIDP AI Index | [ARR-2026-7S4DYK6VRE8A9RF8](https://airr.science/papers/ARR-2026-7S4DYK6VRE8A9RF8/) | — | working_paper |
+| What would establish a lower cost per surviving mangrove? A finite-population audit of a restoration plan | [ARR-2026-6DPRKPKVYA9PN89M](https://airr.science/papers/ARR-2026-6DPRKPKVYA9PN89M/) | — | working_paper |
+| Prices and unused volume in Britain's demand flexibility auctions | [ARR-2026-30XJ0Y39DG886RFP](https://airr.science/papers/ARR-2026-30XJ0Y39DG886RFP/) | — | working_paper |
+| When did a rezoning happen? Coverage and event dates in two New York City administrative records | [ARR-2026-4HG7ET9WKP8ZJ8R9](https://airr.science/papers/ARR-2026-4HG7ET9WKP8ZJ8R9/) | — | working_paper |
+| How much power did an AI cluster draw at the grid peak? A two-date reconstruction of the Phoenix field trial | [ARR-2026-719P30AK2R9AGVKP](https://airr.science/papers/ARR-2026-719P30AK2R9AGVKP/) | — | working_paper |
+| Prompt-order dominance and question-weight sensitivity in published language-model evaluations | [ARR-2026-1EFJS8JXH08Q5SF8](https://airr.science/papers/ARR-2026-1EFJS8JXH08Q5SF8/) | — | working_paper |
+| Clustering and the Transfer-Operator Gap: A Machine-Checked Dense-Family Criterion | [ARR-2026-31ED4MTKC18JPSDE](https://airr.science/papers/ARR-2026-31ED4MTKC18JPSDE/) | [2607.0070](https://www.ai.vixra.org/abs/2607.0070) | archived |
+| From the Gibbs Weight to the Spectral Gap: A Machine-Checked Transfer-Matrix Identification and Spectral-Gap Chain for the Open Z_2 Ising Spin Chain | [ARR-2026-7PRDH0DHH280HRKH](https://airr.science/papers/ARR-2026-7PRDH0DHH280HRKH/) | — | working_paper |
+| Finite Source-Weighted Kernels: Strict Peripheral Separation and an Explicit Shrinking-Gap Family | [ARR-2026-1A608PTGTC9XX9JZ](https://airr.science/papers/ARR-2026-1A608PTGTC9XX9JZ/) | [2607.0084](https://www.ai.vixra.org/abs/2607.0084) | archived |
+| Blind to the Coupling: a Second Machine-Checked Obstruction at Spatial Extent | [ARR-2026-6M8PMVHTMH8YZ9ND](https://airr.science/papers/ARR-2026-6M8PMVHTMH8YZ9ND/) | [2607.0088](https://www.ai.vixra.org/abs/2607.0088) | archived |
+| The Measure the Spectral Results Were About: a Machine-Checked Transfer Bridge for the Spatial Z_2 Slice | [ARR-2026-2TTA0WSQBT89X964](https://airr.science/papers/ARR-2026-2TTA0WSQBT89X964/) | [2607.0083](https://www.ai.vixra.org/abs/2607.0083) | archived |
+| The Collapse: Machine-Checked Bond Reflection Positivity and a Site Reflection Form for the Coupled Z_2 Slice | [ARR-2026-223XBWQ8PQ8Z2RDS](https://airr.science/papers/ARR-2026-223XBWQ8PQ8Z2RDS/) | [2607.0094](https://www.ai.vixra.org/abs/2607.0094) | archived |
+| The Weight That Could Not Break It: Machine-Checked Endpoint Reflection Positivity for the Coupled Z_2 Slice | [ARR-2026-02YRWX53DG9M3R0R](https://airr.science/papers/ARR-2026-02YRWX53DG9M3R0R/) | [2607.0090](https://www.ai.vixra.org/abs/2607.0090) | archived |
+| The Modulus: a Machine-Checked Operator Bound on the Fluctuation Sector of the Coupled Z_2 Slice | [ARR-2026-1A7WS4SDF0894BPS](https://airr.science/papers/ARR-2026-1A7WS4SDF0894BPS/) | [2607.0093](https://www.ai.vixra.org/abs/2607.0093) | archived |
+| A Machine-Checked Reflection-Positivity Framework for Z_N Lattice Gauge Theory, with the Z_2 Wilson Instance | [ARR-2026-10JJK0VCCS87VTQH](https://airr.science/papers/ARR-2026-10JJK0VCCS87VTQH/) | [2607.0073](https://www.ai.vixra.org/abs/2607.0073) | archived |
+| The Volume-Uniform Poincaré Walls: Machine-Checked Obstructions for Flat and Fluctuation-Sector Block-Poincaré Routes to Combes—Thomas Coercivity in Lattice Yang—Mills | [ARR-2026-3Q0VH7PMNV8C9VQE](https://airr.science/papers/ARR-2026-3Q0VH7PMNV8C9VQE/) | [2607.0042](https://www.ai.vixra.org/abs/2607.0042) | archived |
+| The Eriksson Programme (Yang-Mills): Auditable Claim-to-Theorem Manifest, Certified Obstructions, and Continuation Frontier (Release yang-mills-archive-v1.0) | [ARR-2026-7DYZAEKGJP8FPTJ1](https://airr.science/papers/ARR-2026-7DYZAEKGJP8FPTJ1/) | — | working_paper |
+| The Quotient That Is Not the Identity: A Machine-Checked Degenerate Reflection Pairing and Its Gelfand-Naimark-Segal Quotient | [ARR-2026-2TBRDN2DE598KSXD](https://airr.science/papers/ARR-2026-2TBRDN2DE598KSXD/) | [2607.0076](https://www.ai.vixra.org/abs/2607.0076) | archived |
+| The Vacuum Was Never Absent: A Machine-Checked Perron Theorem for Strictly Positive Kernels, and the Coupled-Slice Vacuum at Every Spatial Extent | [ARR-2026-2YDE42KFDY8Y3AA0](https://airr.science/papers/ARR-2026-2YDE42KFDY8Y3AA0/) | [2607.0085](https://www.ai.vixra.org/abs/2607.0085) | archived |
+| Where the Elementary Reconstruction Stops: Spatial Coupling Breaks the Uniform Vacuum, Machine-Checked | [ARR-2026-4X084GVAYF87PB3F](https://airr.science/papers/ARR-2026-4X084GVAYF87PB3F/) | [2607.0075](https://www.ai.vixra.org/abs/2607.0075) | archived |
+| The Rate Without the Extent: a Machine-Checked Uniform Spectral Modulus for the Decoupled Z_2 Slice | [ARR-2026-3EXXMXJD119J1R6R](https://airr.science/papers/ARR-2026-3EXXMXJD119J1R6R/) | [2607.0092](https://www.ai.vixra.org/abs/2607.0092) | archived |
+| The Row Sums Were the Method, Not the Theorem: a Machine-Checked Chain from a Positive Weight to Exponential Decay of Correlations, and a Misattributed Uniformity Wall | [ARR-2026-3BQ8ENXN868SKV43](https://airr.science/papers/ARR-2026-3BQ8ENXN868SKV43/) | [2608.0013](https://www.ai.vixra.org/abs/2608.0013) | archived |
+<!-- papers-index:end -->
